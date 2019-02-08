@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: e57142631668ba0b74573b2953e84f581023b24f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660642"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870431"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby on Rails ve službě App Service v Linuxu
 
@@ -53,7 +53,7 @@ Spusťte aplikaci místně, abyste viděli, jak by měla vypadat po nasazení do
 
 Prvním krokem je instalace požadovaných souborů gem. Součástí ukázky je soubor `Gemfile`, takže nemusíte určovat, jaké soubory gem se mají nainstalovat. K tomuto účelu použijeme příkaz bundler:
 
-```
+```bash
 bundle install
 ```
 

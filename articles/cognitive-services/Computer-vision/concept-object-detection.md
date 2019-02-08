@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Koncepty související s zjišťování objektu pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ee85e6bd171fc9415e5c7606d6e18a7a22fa6570
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567158"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866912"
 ---
 # <a name="object-detection"></a>Detekce objektů
 

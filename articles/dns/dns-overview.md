@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 51869bcc2ee892bc150102595de09782eb01547c
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 07230b061f9b18e1efe6ce8c65abe0f7e7f73b34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770516"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893489"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
@@ -30,7 +30,7 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 
  Služba Azure DNS je postavená na Azure Resource Manageru, který poskytuje například následující funkce:
 
-* [Řízení přístupu na základě role](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control), abyste mohli určit, kdo má přístup ke konkrétním akcím v organizaci.
+* [Řízení přístupu na základě role](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), abyste mohli určit, kdo má přístup ke konkrétním akcím v organizaci.
 
 * [Protokoly aktivit](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), abyste mohli monitorovat, jakým způsobem uživatel v organizaci upravil prostředek, nebo vyhledat chyby při řešení potíží.
 

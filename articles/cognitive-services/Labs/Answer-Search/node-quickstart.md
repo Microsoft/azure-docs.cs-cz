@@ -3,18 +3,18 @@ title: 'Rychlý start: Hledání odpovědí projektu, uzlu'
 description: Začněte používat Project Answer Search s jazykem Node.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 2e79a2d248a81298cb1dd19415a0d9eb75a275c4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7a749efca0e8acacff4dac49e7a524d25ef5acad
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224492"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878574"
 ---
 # <a name="quickstart-project-answer-search-with-node"></a>Rychlý start: Hledání odpovědí projektu s uzlem
 

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 792589f4aa2a80c05378224ffe4e4d1dad2f935c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165944"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888635"
 ---
-<!--author=alkohli last changed:02/22/16-->
-
 #### <a name="to-attach-the-sas-cables"></a>Připojení SAS kabely
 1. Určete primární a EBOD skříně. Dvě skříně lze identifikovat podle jejich příslušných back rovinami. Viz následující obrázek pro doprovodné materiály. 
    

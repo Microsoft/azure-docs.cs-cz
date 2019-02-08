@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 310d662782ff7d9713007b59f0d9b75620a03f5f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 426c090a79931f252a5daeacbdd83d0238ecf672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455095"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868106"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování elastického fondu prostředků ve službě Azure SQL Database
 
@@ -27,8 +27,8 @@ Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dos
 
 - Úložiště lze zřídit až do limitu maximální velikost:
 
-  - Pro úložiště úrovně Standard zvětšit nebo zmenšit velikost v přírůstcích po 10 GB
-  - Pro Premium storage zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
+  - Pro úložiště úrovně standard nebo obecné účely zvětšit nebo zmenšit velikost v přírůstcích po 10 GB
+  - Pro úložiště úrovně premium nebo pro důležité obchodní informace úrovně služeb, zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
 - Zvýšením nebo snížením své maximální velikosti se dá zřídit úložiště pro elastický fond.
 - Cena úložiště pro elastický fond je velikost úložiště vynásobí jednotkovou cenu úložiště na úrovni služby. Podrobnosti o cenách dodatečného úložiště najdete v tématu [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 

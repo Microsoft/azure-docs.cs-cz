@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729999"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869088"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvořit vzorec automatického škálování pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -376,7 +376,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Při vytváření fondu povoleným automatickým Škálováním, nezadávejte _targetDedicatedComputeNodes_ parametr nebo _targetLowPriorityComputeNodes_ parametru při volání **CreatePool** . Místo toho zadat **AutoScaleEnabled** a **AutoScaleFormula** vlastnosti ve fondu. Hodnoty pro tyto vlastnosti určují cílový počet každého typu uzlu. Také do ručně automatickým Škálováním podporou změny velikosti fondu (třeba index Mei [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), první **zakázat** automatické škálování na fond a potom změňte jeho velikost.
+> Při vytváření fondu povoleným automatickým Škálováním, nezadávejte _targetDedicatedNodes_ parametr nebo _targetLowPriorityNodes_ parametru při volání **CreatePool** . Místo toho zadat **AutoScaleEnabled** a **AutoScaleFormula** vlastnosti ve fondu. Hodnoty pro tyto vlastnosti určují cílový počet každého typu uzlu. Také do ručně automatickým Škálováním podporou změny velikosti fondu (třeba index Mei [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), první **zakázat** automatické škálování na fond a potom změňte jeho velikost.
 >
 >
 
@@ -412,7 +412,7 @@ Když povolíte automatické škálování na existující fond, mějte na pamě
   * Pokud vynecháte vzorec automatického škálování nebo vyhodnocení interval, služba Batch nadále používá aktuální hodnotu daného nastavení.
 
 > [!NOTE]
-> Pokud jste zadali hodnoty *targetDedicatedComputeNodes* nebo *targetLowPriorityComputeNodes* parametry **CreatePool** metoda při vytváření fondu v .NET, nebo srovnatelný parametrů v jiném jazyce, pak tyto hodnoty jsou ignorovány, pokud je vyhodnocen vzorec automatického škálování.
+> Pokud jste zadali hodnoty *targetDedicatedNodes* nebo *targetLowPriorityNodes* parametry **CreatePool** metoda při vytváření fondu v .NET, nebo pro srovnatelné parametry v jiném jazyce a potom tyto hodnoty jsou ignorovány při vyhodnocování vzorec automatického škálování.
 >
 >
 

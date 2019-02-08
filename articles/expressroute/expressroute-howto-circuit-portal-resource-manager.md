@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091523"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894713"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Vytvoření a úprava okruhu ExpressRoute
 > [!div class="op_single_selector"]
@@ -51,7 +51,8 @@ V prohlížeči přejděte na web [Azure Portal](http://portal.azure.com) a při
   ![Nakonfigurujte úroveň skladové položky a měření dat.](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
   * **Úroveň** Určuje, zda je povolen ExpressRoute standard nebo doplněk ExpressRoute premium. Můžete zadat **standardní** získat standardní SKU nebo **Premium** pořídit si doplněk premium.
-  * **Data monitorování míry využívání** Určuje typ fakturace. Můžete zadat **Metered** pro tarif podle objemu dat a **Unlimited** pro tarif s neomezenými daty. Mějte na paměti, že můžete změnit typ fakturační z **Metered** k **Unlimited**, ale nemůže změnit typ z **neomezený** k **Metered**.
+  * **Data monitorování míry využívání** Určuje typ fakturace. Můžete zadat **Metered** pro tarif podle objemu dat a **Unlimited** pro tarif s neomezenými daty. Všimněte si, že můžete změnit typ fakturace z **Metered** k **Unlimited**.
+    > [!IMPORTANT] Nelze změnit typ z **Unlimited** k **Metered**.
   * **Umístění partnerského vztahu** je fyzického umístění, kde se partnerský vztah Microsoftu.
 
     > [!IMPORTANT]
@@ -77,20 +78,20 @@ Na této stránce **stav poskytovatele** poskytuje informace o aktuálním stavu
 
 Při vytváření nového okruhu ExpressRoute, je okruh v následujícím stavu:
 
-Stav poskytovatele: není zajišťováno<BR>
-Stav okruhu: povoleno
+Stav poskytovatele: Není zajišťováno<BR>
+Stav okruhu: Povoleno
 
 ![Zahájení procesu zřizování](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Když probíhá proces jeho povolení pro vás poskytovatel připojení okruhu změní na následující stav:
 
-Stav poskytovatele: zřizování<BR>
-Stav okruhu: povoleno
+Stav poskytovatele: Zřizování<BR>
+Stav okruhu: Povoleno
 
 Abyste mohli použít okruhu ExpressRoute musí být v následujícím stavu:
 
-Stav poskytovatele: zřízené<BR>
-Stav okruhu: povoleno
+Stav poskytovatele: Zajištěno<BR>
+Stav okruhu: Povoleno
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Pravidelně kontrolovat stav a stav okruhu klávesy
 Můžete zobrazit vlastnosti okruhu, který vás zajímá, vyberte ho. Zkontrolujte **stav poskytovatele** a ujistěte se, že ji přesunula do **zřízená** předtím, než budete pokračovat.
@@ -117,10 +118,11 @@ Můžete upravit některé vlastnosti okruhu ExpressRoute bez dopadu na připoje
 Můžete provádět následující úlohy došlo k výpadku:
 
 * Povolit nebo zakázat doplněk ExpressRoute Premium pro váš okruh ExpressRoute.
-* Zvětšete šířku pásma okruhu ExpressRoute zadaný na portu je k dispozici kapacita. Šířku pásma okruhu downgradu není podporován. 
-* Změna plánu měření z *měření podle objemu dat* k *neomezená Data*. Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
+* Zvětšete šířku pásma okruhu ExpressRoute zadaný na portu je k dispozici kapacita.
+  > [!IMPORTANT] Šířku pásma okruhu downgradu není podporován. 
+* Změna plánu měření z *měření podle objemu dat* k *neomezená Data*.
+  > [!IMPORTANT] Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
 * Můžete povolit nebo zakázat *povolit klasické operace*.
-
 > [!IMPORTANT]
 > Bude pravděpodobně nutné znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nemůže upgradovat okruh.
 >

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0cc9c8dc214589e03e5a6a5405c07c9f6b3e53e6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105181"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895835"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii virtuálních počítačů VMware v místním nebo fyzické servery do sekundární lokality
 
@@ -100,20 +100,20 @@ Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update7) soubor .zip a [My
   - InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10 – aktualizace SP1-32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10 – aktualizace SP1-64_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10-SP2 – 32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10-SP2 – 64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11 – aktualizace SP1-32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11 – aktualizace SP1-64_GA_04Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11-SP2 – 32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11-SP2 – 64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
@@ -218,7 +218,7 @@ Aktualizace Scout 5 je kumulativní aktualizace. Obsahuje všechny opravy z Upda
 
 #### <a name="new-platform-support"></a>Nová podpora platformy
 * SUSE Linux Enterprise Server 11, aktualizace Service Pack 4(SP4)
-* 64bitový SLES 11 SP4 **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** je součástí balíčku balíček základní Scout GA (**InMage_Scout_Standard_8.0.1 GA.zip**). Stáhnout balíček verze GA z portálu, jak je popsáno v [vytvořit trezor](#create-a-vault).
+* 64bitový SLES 11 SP4 **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** je součástí balíčku balíček základní Scout GA (**InMage_Scout_Standard_8.0.1 GA.zip**). Stažení balíčku verze GA z portálu, jak je popsáno v vytvořte trezor.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
@@ -252,7 +252,7 @@ Scout Update 4 je kumulativní aktualizace. Zahrnuje všechny opravy aktualizace
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64-bit **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** je součástí balíčku balíček základní Scout GA **InMage_Scout_Standard_8.0.1 GA.zip**. Stáhněte si balíček Scout GA z portálu, jak je popsáno v [vytvořit trezor](#create-a-vault).
+> RHEL/CentOS 7 64-bit **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** je součástí balíčku balíček základní Scout GA **InMage_Scout_Standard_8.0.1 GA.zip**. Stažení balíčku Scout GA z portálu, jak je popsáno v vytvořte trezor.
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
 
@@ -330,9 +330,9 @@ Aktualizace Update 1 zahrnuje následující opravy chyb a nové funkce:
 * Byla přidána podpora rozhraní příkazového řádku (vCLI) vSphere 5.5 Update 2.
 * Přidali jsme podporu těchto operačních systémů Linux na zdrojovém serveru:
     * RHEL 6 aktualizace 6
-    * RHEL 5 aktualizace 11
+    * RHEL 5 Update 11
     * CentOS 6 aktualizace 6
-    * CentOS 5 aktualizace 11
+    * CentOS 5 Update 11
 * Opravy chyb pro řeší následující problémy:
   * Pro konfigurační server nebo RX server neúspěšné registrace trezoru.
   * Svazky clusteru nejsou zobrazeny jako očekávané při clusterovaný, že znovunastavení ochrany virtuálních počítačů podle jejich obnovení.

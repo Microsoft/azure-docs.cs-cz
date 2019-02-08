@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0265de5b224e62d188fe6e3b9322d5c2e3f77fa1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302117"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883130"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Poznámky k verzi Azure Data Box brány ve verzi Preview
 
@@ -52,9 +52,8 @@ Následující tabulka obsahuje souhrn známé problémy pro bránu dat pole spu
 | **7.** |Obnovení | Mezi operace aktualizace není zachováno oprávnění a seznamy řízení přístupu (ACL).  | |
 | **8.** |Kopírovat | Kopírování dat se nezdaří s chybou:  Požadovanou operaci nelze dokončit z důvodu omezení systému souborů.  |Tato chyba nastane, pokud Stream alternativní Data (reklamy) přidružené k souboru přesahuje 128 KB (maximální limit pro odolný systém souborů).  |
 | **9.** |Symbolické odkazy |Symbolické odkazy nejsou podporovány.  |Symbolické odkazy k adresářům za následek adresáře nikdy načtení označený v režimu offline. V důsledku toho nemusí zobrazit šedé napříč na adresáře, které označuje, že adresáře jsou offline a související obsah byl zcela nahráli do Azure. |
-| **10.** |Online nápověda |Odkazy nápovědy na webu Azure Portal nesmí odkazovat na dokumentaci.|Odkazy nápovědy bude fungovat ve verzi všeobecné dostupnosti. |
-
-
+| **10.** |Sdílené složky |Aktualizuje existující kontejner s objekty BLOB stránky do sdílené složky objektů Blob bloku (nebo naopak) vede k nahrání chyby na úpravy souboru.  |K tomuto chování dochází, když jste provedli následující kroky: <li> Vytvořte sdílenou složku objektů Blob bloku v zařízení. </li><li> Přidružení sdílené složky cloudového kontejneru, který obsahuje objekty BLOB stránky.</li><li>Obnovte tuto sdílenou složku. </li><li>Upravte některé aktualizovat soubory, které jsou už uložené jako objekty BLOB stránky v cloudu.</li> Odeslat chyby jsou vidět. |
+| **11.** |Online nápověda |Odkazy nápovědy na webu Azure Portal nesmí odkazovat na dokumentaci.|Odkazy nápovědy bude fungovat ve verzi všeobecné dostupnosti. |
 
 ## <a name="next-steps"></a>Další postup
 

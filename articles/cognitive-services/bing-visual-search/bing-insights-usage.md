@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Jsou uvedeny příklady insights obrázku je znázorněno na adrese Bing.com.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: d3619521644a9d0d3f44715a92cfef178cda73c9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b120ad6c116b5722e5d2a982e93960232b0baf94
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158719"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869343"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Příklady použití insights Bingu
 

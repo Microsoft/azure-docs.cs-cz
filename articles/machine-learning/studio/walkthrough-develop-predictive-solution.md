@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: 2c21c08e71592e417d8ee3850af61ca2c1486a76
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 67f893f0e201b6800e6c1a4bc1f656003f6daee5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464719"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879407"
 ---
 # <a name="walkthrough-develop-predictive-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>Průvodce: Vývoj prediktivního řešení pro posuzování úvěrového rizika v nástroji Azure Machine Learning Studio
 
@@ -28,7 +28,7 @@ V tomto názorném průvodci se zaměříme na proces vývoje řešení predikti
 
 Tento názorný průvodce předpokládá, že jste nejméně jednou předtím použili Machine Learning Studio a že rozumíte konceptům strojového učení. Bere ale v úvahu, že nejste odborníkem ani na jedno.
 
-Pokud jste nástroj **Azure Machine Learning Studio** ještě nikdy nepoužívali, možná budete chtít začít kurzem [Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio](create-experiment.md). Tento kurz vás poprvé provede nástrojem Machine Learning Studio. Ukáže vám základy toho, jak pomocí myši přetáhnout moduly do experimentu, vzájemně je propojit, spustit experiment a prohlédnout si výsledky. Dalším nástrojem, který vám může pomoci začít, je diagram s přehledem možností nástroje Machine Learning Studio. Můžete stáhnout a vytisknout ho odsud: [Diagram s přehledem funkcí Azure Machine Learning Studio](studio-overview-diagram.md).
+Pokud jste nástroj **Azure Machine Learning Studio** ještě nikdy nepoužívali, možná budete chtít začít kurzem [Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio](create-experiment.md). Tento kurz vás poprvé provede nástrojem Machine Learning Studio. Ukáže vám základy toho, jak pomocí myši přetáhnout moduly do experimentu, vzájemně je propojit, spustit experiment a prohlédnout si výsledky.
  
 Pokud se strojovým učením obecně teprve začínáte, může vám pomoci série videí. Má název [Datová věda pro začátečníky](data-science-for-beginners-the-5-questions-data-science-answers.md) a poskytuje vynikající úvod do strojového učení s využitím jazyka a konceptů každodenního života.
 

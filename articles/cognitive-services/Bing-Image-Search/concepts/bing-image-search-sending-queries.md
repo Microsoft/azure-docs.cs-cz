@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Další informace o přizpůsobení vyhledávacích dotazů, které odesíláte do rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.assetid: C2862E98-8BCC-423B-9C4A-AC79A287BE38
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: 9e5995809630e160e38a5be700b058035fffc653
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dde690cfd6a74c1810e8fa75d0dcc1a88491d357
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188529"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864379"
 ---
 # <a name="send-queries-to-the-bing-image-search-api"></a>Odesílání dotazů na rozhraní API Bingu pro vyhledávání obrázků
 

@@ -13,20 +13,20 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: db7d47005b2855ffe3e28c43086a2bfa6b22c8f3
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659503"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894047"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
 Azure Media Services umožňuje doručovat živé události do vašich zákazníků v cloudu Azure. Pokud chcete nakonfigurovat živě streamovaných událostí v Media Services v3, je potřeba pochopit principy probírané v tomto článku:
 
 * [Události v reálném čase](#live-events)
-* [Live typy událostí](#live-vent-types)
-* [Porovnání typů živé události](#live-event-types-comparison)
+* Live typy událostí
+* Porovnání typů živé události
 * [Možnosti vytvoření živé události](#live-event-creation-options)
 * [Živá událost ingestované adresy URL](#live-event-ingest-urls)
 * [Náhled adresy URL pro živé události](#live-event-preview-url)

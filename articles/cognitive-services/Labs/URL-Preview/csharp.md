@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Začněte používat funkci Project URL Preview za použití jazyka C#.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 88429aa10ef847800d0d1be60261c94934233016
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e2d4b783068cfd14385eb1712ea246c94dc9500
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227790"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877265"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>Rychlý start: Náhled adresy URL dotazu vC#
 

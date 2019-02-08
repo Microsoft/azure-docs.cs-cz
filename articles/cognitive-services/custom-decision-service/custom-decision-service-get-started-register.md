@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Krok za krokem provede postup registrace nové aplikace pomocí služby Azure Custom Decision Service.
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: f642e0d4e21c180a92b4b76d05fb2c9bac9f2976
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0771c417a526c17d1bef7b0d40405efd94333929
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219732"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869989"
 ---
 # <a name="register-your-application"></a>Registrace vaší aplikace
 

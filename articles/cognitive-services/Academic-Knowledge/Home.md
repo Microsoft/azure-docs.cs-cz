@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Pomocí rozhraní Academic Knowledge API můžete interpretovat dotazy uživatelů a načítat velké množství dat ze služby Academic Graph.
 services: cognitive-services
 author: darrine
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: 8575b51bfc3f9013e984ac6c81352a7559439ff2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 975c36451f0f00ce374a0bbf0a6dd87ec39eb912
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154546"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871553"
 ---
 # <a name="academic-knowledge-api"></a>Rozhraní Academic Knowledge API
 

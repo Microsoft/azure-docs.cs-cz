@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: c0602d44a5b01e31cd2082e2b05d17c4289adaa1
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e8305c5a69fa3fda29f4f1292b7faa59f8ec3608
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824010"
+ms.locfileid: "55870142"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Registrace aplikace prostředků v Azure Active Directory
 
@@ -42,7 +42,9 @@ Aplikace prostředků má identifikátor URI (identifikátor URI ID aplikace), k
 
 2. Klikněte na tlačítko **nastavit** vedle *identifikátor URI ID aplikace*.
 
-3. Klikněte na tlačítko **přidat obor** a přidejte všechny rozsahy, které chcete definovat pro vás rozhraní API. Azure AD momentálně neumožňuje lomítka (`/`) v oboru názvů. Doporučujeme používat `$` místo. Obor, jako jsou `patient/*.read` by `patient$*.read`.
+3. Zadejte identifikátor URI a klikněte na tlačítko **Uložit**. Dobrý identifikátor URI by být identifikátor URI serveru FHIR.
+
+4. Klikněte na tlačítko **přidat obor** a přidejte všechny rozsahy, které chcete definovat pro vás rozhraní API. Azure AD momentálně neumožňuje lomítka (`/`) v oboru názvů. Doporučujeme používat `$` místo. Obor, jako jsou `patient/*.read` by `patient$*.read`.
 
     ![Cílové skupiny a oboru](media/how-to-aad/portal-aad-register-new-app-registration-AUD-SCOPE.png)
 

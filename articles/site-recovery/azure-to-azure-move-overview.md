@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 5d844692b6199d93fa835da1021c9753311e17de
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 55ab80dc0d914810ad430f59acc304620a7054d4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823366"
+ms.locfileid: "55882977"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -33,7 +33,7 @@ Tento dokument vás provede různé scénáře, ve které chcete přesunout virt
 Zákazníci, kteří přesouvat virtuální počítače z následujících důvodů:-
 
 - Pokud jste už nasadili v jedné oblasti a novou oblast byla přidána podpora, který je blíž ke koncovým uživatelům vaší aplikace nebo služby, budete pravděpodobně chtít **přesunout virtuální počítače, do nové oblasti je** snížit latenci. Stejný přístup nastane, pokud chcete konsolidovat předplatná nebo existují zásady správného řízení / organizace pravidla, která vyžadují, abyste přesunout. 
-- Pokud byl váš počítač nasazený jako jedna instance virtuálního počítače nebo jako součást dostupnost sady a chcete zvýšit dostupnost SLAsm můžete **vaše virtuální počítače přesunout skupinu dostupnosti**. 
+- Pokud byl váš počítač nasazený jako jedna instance virtuálního počítače nebo jako součást dostupnost sady a chcete zvýšit dostupnost smlouvy o úrovni služeb můžete **přesunout virtuální počítače v zóně dostupnosti**. 
 
 ## <a name="how-to-move-azure-vms"></a>Postup přesunutí virtuálních počítačů Azure
 Přesun virtuálních počítačů zahrnuje následující kroky:

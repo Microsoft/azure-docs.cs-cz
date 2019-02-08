@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak použít metodu interpretaci v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4f950734081be6cf76770b1c6cb2feca7efdae70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 88776e2f4167c950d60c0405dcf950b5173fb989
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221399"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870924"
 ---
 # <a name="interpret-method"></a>interpretace – metoda
 
@@ -25,7 +25,7 @@ ms.locfileid: "55221399"
 
 `http://<host>/interpret?query=<query>[&<options>]`
 
-Name|Value| Popis
+Název|Hodnota| Popis
 ----|----|----
 query    | Textový řetězec | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
 Dokončení | 0 (výchozí) nebo 1 | 1 znamená, že návrhy automatického dokončování jsou generovány na základě dat gramatiky a index.         

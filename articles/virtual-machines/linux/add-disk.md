@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 8457df9ba809e183122fd53de75a40108e4a4ed1
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1f545747b883ab70b597b4e598a86b192f89b027
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754298"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892757"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 V tomto článku se dozvíte, jak připojit trvalý disk k virtuálnímu počítači tak, aby můžete zachovat vaše data – i v případě, že váš virtuální počítač se znovu poskytne z důvodu údržby nebo změnou velikosti.
@@ -73,10 +73,10 @@ Výstup se podobá následujícímu příkladu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Tady *sdc* je disk, který chceme. Rozdělit disk s `parted`, pokud je velikost disku 2 tebibytes (TiB) nebo větší, pak je třeba použít GPT rozdělení do oddílů, pokud je v části 2TiB, můžete použít MBR nebo GPT dělení. Byl primární disku v oddílu 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `parted` zpracovat na */dev/sdc*:
+Tady *sdc* je disk, který chceme. Rozdělit disk s `parted`, pokud je velikost disku 2 tebibytes (TiB) nebo větší, pak je třeba použít GPT rozdělení do oddílů, pokud je v části 2TiB, můžete použít MBR nebo GPT dělení. Pokud používáte vytváření oddílů MBR, můžete použít `fdisk`. Byl primární disku v oddílu 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` zpracovat na */dev/sdc*:
 
 ```bash
-sudo parted /dev/sdc
+sudo fdisk /dev/sdc
 ```
 
 Použití `n` příkaz pro přidání nového oddílu. V tomto příkladu jsme také zvolit `p` pro primární oddíl a přijměte ostatní výchozí hodnoty. Výstup bude podobný následujícím příkladu:

@@ -14,19 +14,22 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 7f0af2c64d04d83cc3eb4043007979c17c75e051
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599906"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877282"
 ---
+> [!NOTE]
+> Každé prostředí App Service má virtuální IP (VIP), který slouží ke kontaktování služby App Service Environment.
+>
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment #
 
 Azure App Service Environment je nasazení služby Azure App Service do podsítě ve virtuální síti Azure. Služba App Service Environment (ASE) se dá nasadit dvěma způsoby:
 
 - Pomocí virtuální IP adresy na externí IP adresu – často se označuje jako externí služba ASE
-- Pomocí virtuální IP adresy na interní IP adresa často se označuje ILB ASE protože interním koncovým bodem je interní nástroj pro vyrovnávání zatížení (ILB).
+- Pomocí virtuální IP adresy na interní IP adresa často se označuje ILB ASE protože interním koncovým bodem je interní zatížení Balancer (ILB).
 
 Tento článek ukazuje, jak vytvořit externí služby ASE. Přehled služby ASE najdete v tématu [Úvod do služby App Service Environment][Intro]. Informace o tom, jak vytvořit prostředí ILB ASE najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
 

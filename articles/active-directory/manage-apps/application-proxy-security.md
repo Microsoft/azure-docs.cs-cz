@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f7df77447d0571b6d111e316f3f2bcf85b4e1aa4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813819"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893749"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Informace o zabezpečení pro přístup k aplikacím s využitím Azure AD Application Proxy
 
@@ -147,7 +147,7 @@ Pokud jste nakonfigurovali aplikaci preauthenticate s Azure AD, uživatelé jsou
 
 2. Poté, co prošly všechny kontroly, služba tokenů zabezpečení služby Azure AD vydá token podepsaný držitelem pro aplikaci a přesměruje uživatele zpět na Proxy aplikace služby.
 
-3. Proxy aplikace ověřuje, zda byl token vydán Chcete-li aplikace. Provede další kontroly také třeba zajistit, že byl token podepsán pomocí Azure AD a že je stále platný okna.
+3. Proxy aplikace ověřuje, zda byl token vydán pro správnou aplikaci. Provede další kontroly také třeba zajistit, že byl token podepsán pomocí Azure AD a že je stále platný okna.
 
 4. Nastavuje Proxy aplikace šifrované ověřovací soubor cookie k označení, že ověřování do aplikace došlo k chybě. Soubor cookie zahrnuje razítkem vypršení platnosti, která je založena na token ze služby Azure AD a dalších dat, jako je například uživatelské jméno ověřování založené na. Soubor cookie se šifruje s privátním klíčem, který znáte jenom službu Proxy aplikací.
 

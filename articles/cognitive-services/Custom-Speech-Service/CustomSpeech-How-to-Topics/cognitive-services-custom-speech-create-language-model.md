@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
-ms.author: panosper
-ms.openlocfilehash: 0798fb16954d2d0b5e0d614d619cd772670d30c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: fe486cb31aa77cf130ca852d022543d1400c6470
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218083"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862400"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
 
@@ -53,7 +53,7 @@ Pokud chcete, aby některé věty měly větší váhu (důležitost), můžete 
 
 Následující tabulka obsahuje souhrn hlavních požadavků na jazyková data.
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |----------|-------|
 | Kódování textu | en-US: USA ACSII nebo UTF-8 nebo zh-CN: UTF-8|
 | počet promluv na řádek | 1 |

@@ -3,21 +3,21 @@ title: Profilování živých Azure Cloud Services službou Application Insights
 description: Povolte Application Insights Profiler pro Azure Cloud Services.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: cawa
+ms.reviewer: mbullwin
 ms.date: 08/06/2018
-ms.author: mbullwin
-ms.openlocfilehash: 76512a2c930f44ae5a9b57d85ca34544788a538a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: cweining
+ms.openlocfilehash: e050122984c19e46f3782c8364331323b403caad
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435885"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893830"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilování živých Azure Cloud Services službou Application Insights
 
@@ -45,7 +45,7 @@ Application Insights Profiler je nainstalován pomocí rozšíření Azure Diagn
 
       ![Umístění souboru konfigurace diagnostiky](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Pokud nemůže najít soubor, přečtěte si téma [nastavení diagnostiky pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
+      Pokud nemůže najít soubor, přečtěte si téma [nastavení diagnostiky pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
     b. Přidejte následující `SinksConfig` oddílu jako podřízený prvek `WadCfg`:  
 

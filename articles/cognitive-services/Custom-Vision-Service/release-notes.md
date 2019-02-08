@@ -3,21 +3,23 @@ title: Zpráva k vydání verze – Custom Vision Service
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: bba65a495963142e8b3201a026dc13a8cfff8e70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b712f47fe9272e0ae6ccb9ab9847462729434698
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207356"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894407"
 ---
 # <a name="custom-vision-service-release-notes"></a>Zpráva k vydání verze služby Custom Vision
 
+## <a name="january-22-2019"></a>22. ledna 2019
+- Byla přidána podpora pro nové oblasti Azure: Západní USA 2, USA – východ, USA – východ 2, západní Evropa, Severní Evropa, jihovýchodní Asie, Austrálie – východ, střed Indie, Velká Británie – Jih, Japonsko – východ a USA (střed) – sever. Podpora pokračuje, střed USA – jih. 
 
 ## <a name="december-12-2018"></a>12. prosince 2018
 - Export podporu modely detekce objektů (zavedení objektu zjišťování Compact domény).

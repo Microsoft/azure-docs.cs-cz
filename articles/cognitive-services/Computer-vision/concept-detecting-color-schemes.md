@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Koncepty související se zjišťováním barevné schéma v obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d882ad89e68936d07ae4d76218c6e3ac450185a8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0793f572e043248af409e65cca4fd854f1371900
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151324"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880870"
 ---
 # <a name="detect-color-schemes-in-images"></a>Zjištění barevná schémata v obrázcích
 

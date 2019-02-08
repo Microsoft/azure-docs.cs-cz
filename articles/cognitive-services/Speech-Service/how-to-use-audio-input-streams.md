@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Přehled možností SDK řeči zvukový vstupní datový proud rozhraní API.
 services: cognitive-services
 author: fmegen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 4b7386ad800bea69e7227554c5e4d71ba0c1c101
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f34504dddaa21cc162476d1fdb462e7be5c48629
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213125"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877299"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>O sadou SDK pro řeč zvukový vstup datového proudu rozhraní API
 
@@ -48,7 +48,7 @@ Následující kroky jsou potřeba při používání zvuk vstupní datové prou
           this.config = config;
       }
 
-      public size_t Read(byte *buffer, size_t size) {
+      public int Read(byte[] buffer, uint size) {
           // returns audio data to the caller.
           // e.g. return read(config.YYY, buffer, size);
       }

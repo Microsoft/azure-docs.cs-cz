@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Popisuje, jak hledat vlastní zobrazení webu.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: c2fb387026f077ac2b111f2d482cc6c5226642aa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c44c3c01d749962dc7fe9a9f7031efa74f3d2920
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198176"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868595"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání vaší instance vlastního vyhledávání Bingu z portálu
 

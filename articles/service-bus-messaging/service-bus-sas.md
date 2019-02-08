@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 3e2fa51bcf6040eb94a9d270a7f5f375f726e62a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846332"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895852"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy
 
@@ -96,7 +96,7 @@ SAS token je platný pro všechny prostředky s předponou `<resourceURI>` použ
 
 Doporučujeme pravidelně obnovovat klíče používané v [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektu. Primární a sekundární klíče sloty existují, takže můžete obměňovat klíče postupně. Pokud vaše aplikace se obvykle používá primární klíč, můžete zkopírujte primární klíč do sekundárního klíče slotu a pak znovu vygenerovat primární klíč. Nová hodnota primárního klíče může být nakonfigurována do klientské aplikace, které mít nadále přístup pomocí staré primární klíč v sekundárním slot. Jakmile všichni klienti se aktualizují, můžete obnovit sekundární klíč se nakonec vyřadit staré primární klíč.
 
-Pokud znáte nebo podezření, že dojde k narušení klíč a je nutné odvolat klíče, můžete vygenerovat znovu i [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) a [sekundární klíč](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), jejich náhradu za nové klíče. Tento postup zruší platnost všech tokenů, které jsou podepsané pomocí starého klíče.
+Pokud znáte nebo podezření, že dojde k narušení klíč a je nutné odvolat klíče, můžete vygenerovat znovu i [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) a [sekundární klíč](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), jejich náhradu za nové klíče. Tento postup zruší platnost všech tokenů, které jsou podepsané pomocí starého klíče.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Ověření pomocí sdíleného přístupového podpisu se Service Bus
 

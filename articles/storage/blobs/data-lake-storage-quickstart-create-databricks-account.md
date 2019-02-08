@@ -8,16 +8,16 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 01/24/2019
-ms.openlocfilehash: e5a1a17e60d73a041bf7850875287c753aeda16f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0ec682ea852f3c6da6248f3c16b539725ca18c0f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694163"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895801"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
-V tomto rychlém startu se dozvíte, jak se spouští úloha Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu úložiště, který má povolenou verzí preview služby Azure Data Lake Storage Gen2.
+V tomto rychlém startu se dozvíte, jak se spouští úloha Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu úložiště, který má Azure Data Lake Storage Gen2 povolena.
 
 V rámci úlohy Spark analyzujete data o předplatných rozhlasových a získejte přehled o bezplatném a placeném využití na základě demografických údajů.
 

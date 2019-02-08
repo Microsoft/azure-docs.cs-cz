@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
-ms.author: panosper
-ms.openlocfilehash: 0e4c21a064cdb0a60aef49482eee4b768112b899
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 19a7f3e5a807066aacda593be64cda61a0a77fe7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216417"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868068"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 
@@ -65,7 +65,7 @@ Akustický datové sady pro přizpůsobení akustického modelu se skládá ze d
 > Importy dat přes webový portál jsou momentálně omezené na 2 GB, což je maximální velikost sady akustických dat. Odpovídá to přibližně 17 hodinám zvukového záznamu na frekvenci 16 kHz nebo 34 hodinám zvukového záznamu na frekvenci 8 kHz. Následující tabulka obsahuje souhrn hlavních požadavků na zvuková data.
 >
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |---------- |----------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 Hz nebo 16 000 Hz |

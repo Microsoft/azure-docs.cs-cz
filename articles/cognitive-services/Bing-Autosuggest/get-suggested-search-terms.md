@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Naučte se používat rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 09/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: e1e1ec2a9f5329f5d7331b7ce3ced4924d001a49
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b5959e014b7e531b8f52fcbe6f6492576eedd61a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174172"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875667"
 ---
 # <a name="what-is-bing-autosuggest"></a>Co jsou Automatické návrhy Bingu?
 

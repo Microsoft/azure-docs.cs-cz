@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: a4fc037ed566905133f59163ef99d5e107ca4bcc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e47bf2a75b06f0804e446b0fdde4215b6e8193f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190917"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874715"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) umožňuje automatizovat vytváření, údržb
 
 * Možnost tak, aby odpovídala stávající identit mezi zdrojovým a cílovým systémem.
 * Přizpůsobitelný atribut mapování, které definují, jaká data uživatele jakým způsobem se předávají ze zdrojového systému do cílového systému.
-* Volitelná e-mailová oznámení pro chyby zřizování
+* Volitelná e-mailová oznámení pro chyby zřizování.
 * Vytváření sestav a protokolů aktivit usnadňující sledování a řešení potíží.
 
 ## <a name="why-use-automated-provisioning"></a>Proč používat automatického zřizování?
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) umožňuje automatizovat vytváření, údržb
 Některé běžné motivace pro použití této funkce patří:
 
 * Jak se vyhnout náklady, umožňuje zvýšit efektivitu a lidské chyby spojené s ručními procesy pro zřizování.
-* Jak se vyhnout náklady spojené s hostitelem a vlastní řešení pro zřizování a skripty
+* Jak se vyhnout náklady spojené s hostitelem a vlastní řešení pro zřizování a skripty.
 * Chcete-li zabezpečit svou organizaci odebráním okamžitě identit uživatelů z klíčových aplikací SaaS při opuštění organizace.
 * Snadno importovat velký počet uživatelů v určité aplikaci SaaS nebo systému.
 * Chcete-li využívat, s jedinou sadu zásady určující, který je zřízený a který můžete přihlásit k aplikaci.
@@ -107,7 +107,7 @@ Na obrazovce správy aplikací, zřizování je nakonfigurovaný v **zřizován�
 
 ![Nastavení](./media/user-provisioning/provisioning_settings1.PNG)
 
-* **Filtry oborů** zjistit službu zřizování, kteří uživatelé a skupiny ve zdrojovém systému by měl být zřízené a/nebo zrušení zřízení cílového systému. Existují dva aspekty filtry, které jsou vyhodnocovány společně oborů, které definují, kdo je v oboru pro zřizování:
+* **Filtry oborů** zjistit službu zřizování, kteří uživatelé a skupiny ve zdrojovém systému musí zřízení nebo zrušení zřízení cílového systému. Existují dva aspekty filtry, které jsou vyhodnocovány společně oborů, které definují, kdo je v oboru pro zřizování:
 
     * **Filtrováním podle hodnot atributů** -nabídky "Obor zdrojového objektu" v mapování atributů umožňuje filtrování podle hodnoty konkrétního atributu. Například můžete určit, že pouze uživatelé s atributem "Oddělení", "Prodeje" by měla být v oboru pro zřizování. Další informace najdete v tématu [pomocí filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -214,13 +214,13 @@ Pro konfiguraci **synchronizace přiřazené uživatele a skupiny pouze**, těch
     
 Seznam faktorů, které ovlivňují čas potřebný k dokončení **počáteční synchronizace**:
 
-* Celkový počet uživatelů a skupin v oboru pro zřizování
+* Celkový počet uživatelů a skupin v oboru pro zřizování.
 
-* Celkový počet uživatelů, skupin a členů skupiny, které jsou k dispozici ve zdrojovém systému (Azure AD)
+* Celkový počet uživatelů, skupin a členů skupiny, které jsou k dispozici ve zdrojovém systému (Azure AD).
 
 * Určuje, jestli uživatelé v oboru pro zřizování odpovídají existujícím uživatelům v cílové aplikaci nebo pokud potřebujete vytvořit první. Úlohy synchronizace pro které všichni uživatelé jsou vytvořeni poprvé trvat přibližně *dvakrát tak dlouho,* tak, jak synchronizovat úlohy, pro které všichni uživatelé budou odpovídat existujícím uživatelům.
 
-* Počet chyb v [protokoly auditu](check-status-user-account-provisioning.md). Pokud je mnoho chyb a služby zřizování přešel do stavu karantény je pomalejší výkon 
+* Počet chyb v [protokoly auditu](check-status-user-account-provisioning.md). Pokud je mnoho chyb a služby zřizování přešel do stavu karantény je pomalejší výkon.    
 
 * Požádat o šířku pásma a omezení šířky pásma implementovány cílovým systémem. Některé cílové systémy implementovat omezení frekvence požadavků a omezení, což může ovlivnit výkon během operací velký synchronizace. Aplikace, která přijímá příliš mnoho požadavků příliš rychle za těchto podmínek může zpomalit jeho míry odezvy nebo uzavřením připojení. Kvůli zvýšení výkonu se konektoru je potřeba upravit odesláním žádosti o aplikace rychleji, než dokáže zpracovat aplikace. Zřizování konektory vytvořené microsoftem provést tuto úpravu. 
 

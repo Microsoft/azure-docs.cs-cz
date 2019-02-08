@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
-ms.author: panosper
-ms.openlocfilehash: e5c1f7d9648f404512f366be4f4d16ea0cb0f778
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: c40cf951e59094470443d7244052e6214aaeba82
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217114"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864260"
 ---
 # <a name="supported-locales-in-custom-speech-service"></a>Podporovaná národní prostředí ve službě Custom Speech Service
 

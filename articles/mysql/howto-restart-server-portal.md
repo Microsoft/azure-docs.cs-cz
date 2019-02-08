@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/16/2018
-ms.openlocfilehash: 83e862aea5b1f2de5a3f80970c2331fc9d81704e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 2/7/2019
+ms.openlocfilehash: cd9275e9e112d24d9dbb3d1d5a60c871d7d8ae5c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540240"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890448"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Restartovat – Azure Database for MySQL pomocí webu Azure portal
-Toto téma popisuje, jak je možné restartovat server Azure Database for MySQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
+Toto téma popisuje, jak je možné restartovat serveru Azure Database for MySQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
 
 Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Například služba může zpracovávat dříve požadovaná operace, jako je například škálování virtuálních jader.
 
@@ -34,7 +34,7 @@ MySQL server restartovat následující kroky:
 
    ![Azure Database for MySQL – přehled – restartování tlačítko](./media/howto-restart-server-portal/2-server.png)
 
-3. Klikněte na tlačítko **Ano** potvrďte restartování serveru. 
+3. Klikněte na tlačítko **Ano** potvrďte restartování serveru.
 
    ![Azure Database for MySQL – potvrzení restartování ](./media/howto-restart-server-portal/3-restart-confirm.png)
 
@@ -48,4 +48,4 @@ MySQL server restartovat následující kroky:
 
 ## <a name="next-steps"></a>Další postup
 
-[Rychlý start: Vytvoření Azure Database for MySQL pomocí webu Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Rychlé zprovoznění: Vytvoření Azure Database for MySQL pomocí webu Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)

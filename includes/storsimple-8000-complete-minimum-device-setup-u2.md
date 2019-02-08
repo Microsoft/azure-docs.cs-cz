@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 879241b56ddb3be76b1b54d7a3bb5429facf148a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166384"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888549"
 ---
-<!--author=alkohli last changed: 09/28/17-->
-
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>Dokončení minimální instalace zařízení StorSimple
 
    > [!NOTE]

@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak strukturu pojmenování lingvistické analýzy analyzátor rozhraní API umožňuje flexibilitu a přesnost.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 997dcdd6ce99815a79006b40b87568e573c63ff3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b2e956b099022751712f96ab0b15aa57c752b458
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221671"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873372"
 ---
 # <a name="analyzer-names"></a>Názvy analyzátorů
 

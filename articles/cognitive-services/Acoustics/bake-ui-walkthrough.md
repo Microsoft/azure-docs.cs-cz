@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Tento dokument popisuje proces odesílání Akustika která má označení vytvoření pomocí rozšíření Unity editor.
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: f376b6bcb0238f96b4f5bb35d898cc600e108c65
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ce377234cceb22bc2c6979bedd92d800355e75da
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169752"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872080"
 ---
 # <a name="bake-acoustics"></a>Vytvoření Akustika
 

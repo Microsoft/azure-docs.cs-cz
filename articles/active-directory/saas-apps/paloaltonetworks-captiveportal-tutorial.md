@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 15ddb29f090ca8dc14befc93e3377c181038b554
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1888ac8098773d6110e5510a3dd6c0ca1220f5d7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816156"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vnitropodnikové Palo Alto sítě
 
@@ -81,7 +81,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí portálu 
 2. **[Konfigurace portálu vnitropodnikové sítě Palo Alto jednotného přihlašování](#configure-palo-alto-networks-captive-portal-single-sign-on)**: Konfigurovat nastavení jednotného přihlašování v aplikaci.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**: Testování Azure AD jednotné přihlašování s uživatelem *Britta Simon*.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**: Nastavení Britta Simon pro použití služby Azure AD jednotného přihlašování.
-5. **[Vytvoření zkušebního uživatele Palo Alto sítě vnitropodnikové portál](#create-palo-alto-networks-captive-portal-test-user)**: Vytvoření uživatele protějšek *Britta Simon* portálu Palo Alto sítě další zpracování, který je propojený s uživatele Azure AD.
+5. **Vytvoření zkušebního uživatele Palo Alto sítě vnitropodnikové portál**: Vytvoření uživatele protějšek *Britta Simon* portálu Palo Alto sítě další zpracování, který je propojený s uživatele Azure AD.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**: Zkontrolujte, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování

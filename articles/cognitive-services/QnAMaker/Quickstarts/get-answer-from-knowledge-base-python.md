@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: V tomto rychlém startu založené na protokolu REST Python provede získat odpověď ze znalostní báze, prostřednictvím kódu programu.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 0647d850491f31d0f66de18a593ac7ff471e8906
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 403886f543b21d2f9ed8ef457838fe2c93b7ca73
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206404"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875463"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze pomocí Pythonu
 

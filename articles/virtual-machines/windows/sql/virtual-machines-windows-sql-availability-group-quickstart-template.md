@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0ac37c2bb0430cc4299947638596be8698ae4a34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814533"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892335"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>Vytvoření služby WSFC, naslouchací proces a nakonfigurujte ILB pro skupiny dostupnosti Always On na virtuálním počítači SQL serveru pomocí šablony Azure Quickstart
 Tento článek popisuje, jak pomocí šablon Azure Quickstart částečně automatizovat nasazení konfigurace dostupnosti skupin Always On pro SQL Server Virtual Machines v Azure. Existují dvě šablony Quickstart pro Azure, které se používají v tomto procesu. 
@@ -166,7 +166,7 @@ Vybraná skupina dostupnosti skupiny už používá v naslouchacím procesu AG �
 ### <a name="connection-only-works-from-primary-replica"></a>Připojení funguje jenom z primární repliky
 Toto chování je pravděpodobně z nezdařené **101--vm-aglistener – instalační program systému sql** nasazení šablony byste museli opustit ILB konfigurace v nekonzistentním stavu. Ověřte, že back-endový fond obsahuje skupinu dostupnosti a existují pravidla pro sondu stavu a pro pravidla Vyrovnávání zatížení. Pokud něco chybí, je konfigurace ILB nekonzistentním stavu. 
 
-Chcete-li tento problém vyřešit, odeberte naslouchací proces, pomocí [PowerShell](#remove-availability-group-listener), odstraňte interního nástroje Load Balancer přes Azure portal a znovu začít rychlým [kroku 3](#step-3---manually-create-the-internal-load-balanced-ilb). 
+Chcete-li tento problém vyřešit, odeberte naslouchací proces, pomocí [Powershellu](#remove-availability-group-listener), odstraňte interního nástroje Load Balancer přes Azure portal a znovu spusťte v kroku 3. 
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>Chybného požadavku – je možné aktualizovat pouze seznam virtuálních počítačů SQL
 K této chybě může dojít při nasazování **101--vm-aglistener – instalační program systému sql** šablony, pokud naslouchacího procesu se odstranila přes SQL Server Management Studio (SSMS), nebyl ale odstraněn z poskytovatele prostředků virtuálního počítače s SQL. Odstraňuje se naslouchací proces prostřednictvím aplikace SSMS neodebere metadata naslouchacího procesu od zprostředkovatele prostředků virtuálního počítače SQL; naslouchací proces je nutné odstranit z poskytovatele prostředků pomocí [Powershellu](#remove-availability-group-listener). 

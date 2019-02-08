@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Verze Preview rozhraní API už skončila a nahrazuje ji šablona řešení Doporučení.
 services: cognitive-services
 author: LuisCabrer
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: recommendations
 ms.topic: overview
 ms.date: 02/15/2018
 ms.author: luisca
-ms.openlocfilehash: 77ecea3a24f80f988bef79a3cd22d5b868dbfa4f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e04cc127e08ee219fbd82470a87a79fce657231c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877572"
 ---
 # <a name="recommendations-api-discontinued"></a>Rozhraní API pro doporučování (ukončené)
 

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0e8db8779958afe1fd3cf4bf12f2a6fd4a97c61c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164561"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888970"
 ---
-<!--author=alkohli last changed: 9/16/15-->
-
 #### <a name="to-cable-for-power"></a>K zapojení výkon
 1. Ujistěte se, že výkon přepínače na všech napájení a chlazení moduly (PCMs) jsou na jinou pozici.
 2. Připojte kabely power ke každému PCMs ve primárního skříni.

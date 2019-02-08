@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 360fd9247684fea483d744d9be77d095b667d66d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4cffbb1aaa438bac08ec77f576b32a901abacabd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165014"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888706"
 ---
-<!--author=alkohli last changed: 07/05/2017-->
-
 > [!NOTE] 
 > Nelze změnit nastavení šifrování a přihlašovací údaje účtu úložiště přidruženého kontejner svazků po jeho vytvoření.
 

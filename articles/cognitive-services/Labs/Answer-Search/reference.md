@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Referenční informace pro koncový bod hledání odpovědí projektu.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 5e9ae8fcd756619c83ebde12df9f8405f1a39bf6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e0d005725730680798b78acab0c90e1c0a02a7b8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812571"
+ms.locfileid: "55876348"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
 
@@ -141,7 +141,7 @@ Definuje smluvní pravidlo pro přiřazení licence.
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na LicenseAttribution.|String|  
-|Licence|Licence, pod kterým mohou být použity obsah.|[Licence](#license)|  
+|licence|Licence, pod kterým mohou být použity obsah.|[Licence](#license)|  
 |licenseNotice|Licence, který se zobrazí vedle cílové pole. Například "Text v rámci licence kopie SA".<br /><br /> Použijte název a adresu URL licenci `license` pole, které chcete vytvořit hypertextový odkaz na web, který popisuje podrobnosti o licenci. Potom nahraďte název licence v `licenseNotice` řetězec (například CC-podle-SA) s odkazem, který jste právě vytvořili.|String|  
 |mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Logická hodnota|  
 |targetPropertyName|Název pole, které se pravidlo vztahuje.|String|  
@@ -270,7 +270,7 @@ Definuje pravidlo smluvní pro attribution prostý text.
 
 Tady jsou možné stavové kódy HTTP, které vrátí žádost o.  
   
-|Kód stavu|Popis|  
+|Stavový kód|Popis|  
 |-----------------|-----------------|  
 |200|Úspěch|  
 |400|Jeden z parametrů dotazu je chybí nebo není platný.|  

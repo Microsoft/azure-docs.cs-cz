@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí hodnocení můžete zobrazit výsledky z rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 4a46b7bbc99971ba2c142a816f7c41175a113cba
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c2e6a553d29f71b0b7ca8d267e8d396ddb2a2922
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167695"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875174"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Použití pořadí zobrazení výsledků rozhraní API webové vyhledávání Bingu  
 

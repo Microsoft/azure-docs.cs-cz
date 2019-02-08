@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 630ecb5f6efff9f08bbf5d2f1dec1c35af30b673
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 1ebbce89c7a977dd9620bd8be67da647c107eadc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166004"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889623"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Aktualizace SharePoint 2010 pro službu SharePoint 2013 a potom nainstalujte adaptér StorSomple pro SharePoint
 > [!IMPORTANT]
 > Všechny soubory, které byly dříve přesunuty do externího úložiště prostřednictvím RBS nebude k dispozici, až do dokončení upgradu a funkci RBS opět povolena. Pokud chcete omezit dopad na uživatele, provedení jakékoli upgradu nebo přeinstalování během naplánovaného časového období údržby.

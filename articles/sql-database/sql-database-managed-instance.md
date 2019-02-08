@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 2e2bf4f0f7ba4546c2f8609ee3ec7efc072024ae
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: c0067dc96837d758e4c2551bcb29faf63c1a7715
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751544"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895037"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -93,8 +93,8 @@ Obě úrovně služeb 99,99 % dostupnost a vám umožní nezávisle na sobě vyb
 Následující seznam popisuje úrovni General Purpose služeb klíčovou vlastnost:
 
 - Návrh pro většinu obchodních aplikací s požadavky na typické výkon
-- Vysoce výkonné služby Azure Premium storage (8 TB)
-- Integrované [vysoké dostupnosti](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) na základě spolehlivé úložiště Azure úrovně Premium a [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
+- Vysoce výkonné úložiště objektů Blob v Azure (8 TB)
+- Integrované [vysoké dostupnosti](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) na základě spolehlivé úložiště objektů Blob v Azure a [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 
 Další informace najdete v tématu [vrstvy úložiště obecně účel úrovně](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) a [úložiště osvědčené postupy z hlediska výkonu a důležité informace pro spravované instance (Obecné)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
@@ -107,7 +107,7 @@ Obchodní vrstvy kritické služby je sestaven pro aplikace s vysokými požadav
 Následující seznam popisuje klíčové vlastnosti pro důležité obchodní informace vrstvy služby:
 
 - Je určená pro obchodní aplikace s nejvyšší výkon a požadavky na vysokou dostupnost
-- Se dodává s mimořádně rychlé úložiště SSD (až 1 TB na Gen 4 a až 4 TB generace 5)
+- Se dodává s mimořádně rychlým místní úložiště SSD (až 1 TB na Gen 4 a až 4 TB generace 5)
 - Integrované [vysoké dostupnosti](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) na základě [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../service-fabric/service-fabric-overview.md).
 - Integrované Další [repliky jen pro čtení databáze](sql-database-read-scale-out.md) , který lze použít pro vytváření sestav a další úlohy jen pro čtení
 - [OLTP v paměti](sql-database-in-memory.md) , který lze použít pro úlohy vysokovýkonného požadavky  
@@ -179,7 +179,7 @@ Databáze spravované instance nasazení možnost cíle uživatelské scénáře
 
 ### <a name="back-up-and-restore"></a>Zálohování a obnovení  
 
-Postup migrace využívá zálohování SQL na úložiště objektů blob v Azure. Zálohy uložené v Azure storage blob do spravované instance pomocí přímo obnovena [příkaz T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
+Postup migrace využívá zálohování SQL na úložiště objektů Blob v Azure. Zálohy uložené v Azure storage blob do spravované instance pomocí přímo obnovena [příkaz T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
 
 - Rychlý start ukazuje, jak obnovit Wide World Importers – Standard záložního souboru, naleznete v tématu [obnovit záložní soubor do spravované instance](sql-database-managed-instance-get-started-restore.md). Tento rychlý start ukazuje, jak nahrát soubor zálohy úložištěm objektů BLOB Azure a zabezpečené ho pomocí sdíleného přístupového podpisu (SAS) klíče.
 - Informace o obnovení z adresy URL, najdete v části [nativní obnovit z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).

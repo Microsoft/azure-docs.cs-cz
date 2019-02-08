@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 49598eb8579e20dd20ca63d11529ba106a510102
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71ddf1d70953b721911a7315ab6875dd41a9a4db
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170517"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894169"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Kurz: Stream živé pomocí Media Services v3 pomocí .NET
 
@@ -166,7 +166,7 @@ Následující kód ukazuje, jak vyčistit účtu všechny živé události:
 
 ## <a name="watch-the-event"></a>Sledování události
 
-Pokud chcete sledovat událost, zkopírujte adresu URL streamování, které jste získali při spuštění kódu v [vytvořit lokátor streamování](#create-a-streaminglocator) a použijte přehrávač dle vašeho výběru. K testování streamování na webu http://ampdemo.azureedge.net můžete použít [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html). 
+Pokud chcete sledovat událost, zkopírujte adresu URL streamování, které jste získali při spuštění kódu je popsáno v vytvořit lokátor streamování a použijte přehrávač dle vašeho výběru. K testování streamování na webu http://ampdemo.azureedge.net můžete použít [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html). 
 
 Živá událost automaticky převede na obsah na vyžádání při zastavení. I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 

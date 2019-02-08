@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658330"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894152"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k tržišti Marketplace
 
@@ -350,7 +350,7 @@ Pokud ještě nemáte účet Microsoft, můžete si [vytvořit účet](https://s
 
 **Proč je potřeba účet vývojáře pro?**
 
-Aby Microsoft mohl účtuje zákazníkům jménem vydavatele pro výpis typy příkazů jazyka Transact se vyžaduje účet Dev Center. Účtu centra vývojářů pro registraci umožňuje společnosti Microsoft pro ověření právní, daňové a bankovní informace. Další informace najdete v tématu [registraci v centru vývojářů pro](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center).
+Aby Microsoft mohl účtuje zákazníkům jménem vydavatele pro výpis typy příkazů jazyka Transact se vyžaduje účet Dev Center. Účtu centra vývojářů pro registraci umožňuje společnosti Microsoft pro ověření právní, daňové a bankovní informace. Další informace najdete v tématu [registraci v centru vývojářů pro](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
 **Které vydavatelé vyžadují registraci účtu Dev Center?**
 

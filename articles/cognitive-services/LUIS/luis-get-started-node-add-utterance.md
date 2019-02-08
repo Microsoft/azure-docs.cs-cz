@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu pro Node.js přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: f0ccb076615b9db7010deb216febbde5b8d64eb6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e2a8bed2b07934bf178ea338e074ec8e239ee646
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206847"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874834"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>Rychlý start: Změna modelu pomocí Node.js
 

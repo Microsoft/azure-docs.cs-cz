@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Rozhraní API pro počítačové zpracování obrazu nabízí vývojářům přístup k pokročilým algoritmům, které zpracovávají obrázky a vrací informace.
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 1ee28d04bfce00a6fe47d6914b75cfd7b18e634d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 35002ccfc294b59a13e6826b4ca75a1ab6c68b62
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816539"
+ms.locfileid: "55870295"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co je rozhraní API pro počítačové zpracování obrazu verze 1.0?
 

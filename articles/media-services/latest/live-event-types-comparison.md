@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/06/2019
 ms.author: juliako
-ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153959"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878353"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živé události
 
@@ -45,7 +45,7 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů živá ud
 | Maximální rozlišení výstup videa|Stejné jako vstup|720p (na 30 snímků za sekundu)|
 | Vstupní protokoly|RTMP, fragmentovaný soubor MP4 (technologie Smooth Streaming)|RTMP, fragmentovaný soubor MP4 (technologie Smooth Streaming)|
 | Cena|Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Živé Video"|Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Živé Video"|
-| Maximální doba běhu|živé lineární 24 × 365|Nepřetržitě|
+| Maximální doba běhu| 24 hodin x 365 dní živé lineární | Až 24 hodin|
 | Možnost předat prostřednictvím vloženého 608 skryté titulky CEA/708 popisky dat|Ano|Ano|
 | Podpora vkládaní slaty|Ne|Ne|
 | Podpora ad signalizace přes rozhraní API| Ne|Ne|

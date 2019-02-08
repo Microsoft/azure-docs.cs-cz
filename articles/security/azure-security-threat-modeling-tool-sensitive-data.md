@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002050"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892554"
 ---
-# <a name="security-frame-sensitive-data--mitigations"></a>Zabezpečení Frame: Citlivá Data | Zmírnění rizik 
+# <a name="security-frame-sensitive-data--mitigations"></a>Zabezpečení rámce: Citlivá Data | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Hranice vztahů důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že binární soubory jsou zakódovány, pokud obsahují citlivé informace](#binaries-info)</li><li>[Vezměte v úvahu, že pomocí šifrované File System (EFS) se používá k ochraně důvěrných údajů konkrétního uživatele](#efs-user)</li><li>[Ujistěte se, že citlivá data uložená v aplikaci na systém souborů je šifrovaná](#filesystem)</li></ul> | 
@@ -38,7 +38,7 @@ ms.locfileid: "53002050"
 
 ## <a id="binaries-info"></a>Ujistěte se, že binární soubory jsou zakódovány, pokud obsahují citlivé informace
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -49,7 +49,7 @@ ms.locfileid: "53002050"
 
 ## <a id="efs-user"></a>Vezměte v úvahu, že pomocí šifrované File System (EFS) se používá k ochraně důvěrných údajů konkrétního uživatele
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Sestavení |  
@@ -60,7 +60,7 @@ ms.locfileid: "53002050"
 
 ## <a id="filesystem"></a>Ujistěte se, že citlivá data uložená v aplikaci na systém souborů je šifrovaná
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -71,7 +71,7 @@ ms.locfileid: "53002050"
 
 ## <a id="cache-browser"></a>Ujistěte se, že není citlivý obsah do mezipaměti, v prohlížeči
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -124,18 +124,18 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="encrypt-data"></a>Šifrování oddíly konfiguračních souborů webové aplikace, které obsahují citlivá data
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Postupy: Šifrování konfigurační oddíly funkce v ASP.NET 2.0 pomocí DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [určení konfigurace poskytovatele chráněné](https://msdn.microsoft.com/library/68ze1hb2.aspx), [pomocí služby Azure Key Vault k ochraně tajných klíčů aplikací](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Odkazy**              | [Postup: Zašifrovat konfigurační oddíly funkce v ASP.NET 2.0 pomocí DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [určení konfigurace poskytovatele chráněné](https://msdn.microsoft.com/library/68ze1hb2.aspx), [pomocí služby Azure Key Vault k ochraně tajných klíčů aplikací](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **Kroky** | Konfigurační soubory, například jako soubor Web.config, appsettings.json se často používají k uložení citlivé informace, včetně uživatelská jména, hesla, připojovací řetězce databáze a šifrovací klíče. Pokud tyto informace not protect, vaše aplikace je zranitelný vůči útočníci nebo uživatelé se zlými úmysly získání citlivé informace, jako je například účet uživatelská jména a hesla, názvy databáze a názvy serverů. Podle typu nasazení (azure nebo v místním prostředí), Zašifrujte citlivá části konfigurační soubory pomocí rozhraní DPAPI nebo službám, jako je Azure Key Vault. |
 
 ## <a id="autocomplete-input"></a>Explicitně zakážete automatické dokončování atributu HTML ve formulářích citlivé a vstupy
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -154,7 +154,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="data-mask"></a>Ujistěte se, že je zakryté hvězdičkami citlivá data zobrazí na obrazovce pro uživatele
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -165,7 +165,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="dynamic-users"></a>Maskování dynamických dat implementují omezení citlivá data bez ohrožení privilegovaných uživatelů
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -176,7 +176,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="salted-hash"></a>Ujistěte se, že hesla jsou uložena ve formátu hashe
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -187,18 +187,18 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="db-encrypted"></a>Ujistěte se, že je zašifrovaný citlivá data v databázi sloupce
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | Verze SQL - všechny |
-| **Odkazy**              | [Šifrování citlivých dat v systému SQL server](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [postupy: šifrování sloupce dat v systému SQL Server](https://msdn.microsoft.com/library/ms179331), [šifrovat pomocí certifikátu](https://msdn.microsoft.com/library/ms188061) |
+| **Odkazy**              | [Šifrování citlivých dat v systému SQL server](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [jak: Šifrování sloupce dat v systému SQL Server](https://msdn.microsoft.com/library/ms179331), [šifrovat pomocí certifikátu](https://msdn.microsoft.com/library/ms188061) |
 | **Kroky** | Citlivá data, jako jsou čísla kreditních karet má šifrování v databázi. Data lze zašifrovat pomocí šifrování na úrovni sloupce nebo funkcí aplikace pomocí funkcí šifrování. |
 
 ## <a id="tde-enabled"></a>Ujistěte se, že je povoleno šifrování databáze (TDE)
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -209,7 +209,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="backup"></a>Ujistěte se, že jsou šifrovaná zálohování databáze
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -220,7 +220,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="api-browser"></a>Ujistěte se, že citlivá data, které jsou relevantní pro webové rozhraní API není uložený v úložišti v prohlížeči
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -244,7 +244,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="encrypt-docdb"></a>Šifrovat citlivá data uložená ve službě Cosmos DB
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Documentdb | 
 | **SDL fáze**               | Sestavení |  
@@ -255,7 +255,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="disk-vm"></a>Použití Azure Disk Encryption pro šifrování disků, které jsou používány virtuálními počítači
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti virtuálních počítačů Azure IaaS | 
 | **SDL fáze**               | Nasazení |  
@@ -266,7 +266,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="fabric-apps"></a>Šifrování tajných kódů aplikace Service Fabric
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Service Fabric | 
 | **SDL fáze**               | Sestavení |  
@@ -277,7 +277,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="modeling-teams"></a>Provádět modelování zabezpečení a použití obchodní jednotky nebo týmy vyžadováno
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Sestavení |  
@@ -288,7 +288,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="entities"></a>Minimalizovat přístup ke sdílení funkcí na důležité entity
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Nasazení |  
@@ -299,7 +299,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="good-practices"></a>Naučím uživatele na rizicích spojených s postupy vhodné zabezpečení a funkce sdílení Dynamics CRM
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Nasazení |  
@@ -310,7 +310,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="exception-mgmt"></a>Zahrnout pravidlo standardů vývoje proscribing zobrazující podrobnosti konfigurace v Správa výjimek
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Nasazení |  
@@ -321,7 +321,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="sse-preview"></a>Použijte šifrování služby Azure Storage (SSE) pro Data v klidovém stavu (Preview)
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -332,24 +332,24 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="client-storage"></a>Šifrování na straně klienta používá k ukládání citlivých dat ve službě Azure Storage
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Šifrování na straně klienta a služby Azure Key Vault pro Microsoft Azure Storage](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [kurz: šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [bezpečné ukládání dat do objektů Blob v Azure Úložiště s rozšířeními Azure šifrování](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **Odkazy**              | [Šifrování na straně klienta a Azure trezor klíčů pro Microsoft Azure Storage](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [kurzu: Šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [bezpečné ukládání dat v Azure Blob Storage s využitím rozšíření šifrování Azure](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
 | **Kroky** | <p>Klientská knihovna pro úložiště Azure pro balíček Nuget pro rozhraní .NET podporuje šifrování dat v rámci klientské aplikace před nahráním do služby Azure Storage a dešifrování dat při stahování do klienta. Knihovna také podporuje integraci se službou Azure Key Vault pro správu klíčů účtu úložiště. Tady je stručný popis toho, jak funguje šifrování na straně klienta:</p><ul><li>Klient služby Azure Storage SDK generuje obsahu šifrovací klíč (CEK), což je použití jednoho jednorázových symetrický klíč</li><li>Zákaznická data se šifrují pomocí této CEK</li><li>CEK je vnořena (zašifrovaný) pomocí šifrovací klíč klíče (KEK). Klíče KEK je identifikovaná identifikátorem klíče a mohou být asymetrický pár klíčů nebo symetrický klíč a může být spravovaný místně nebo uloženy ve službě Azure Key Vault. Klienta úložiště samotné nikdy má přístup k klíče KEK. Vyvolá pouze algoritmus klíče zabalení, která je k dispozici ve službě Key Vault. Zákazníci můžou zvolit pro klíč zabalení a rozbalení chtějí-li použít vlastní zprostředkovatelé</li><li>Šifrovaná data se pak nahrají do služby Azure Storage. Zkontrolujte na odkazy v části odkazy pro podrobnosti nízké úrovně implementace.</li></ul>|
 
 ## <a id="pii-phones"></a>Šifrování citlivé nebo identifikovatelné osobní údaje data zapsaná do místního úložiště telefony
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Mobilního klienta | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné, Xamarin  |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Správa nastavení a funkcí v zařízeních pomocí zásad Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy), [osobního řetězce klíčů](https://components.xamarin.com/view/square.valet) |
+| **Odkazy**              | [Správa nastavení a funkcí v zařízeních pomocí zásad Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies), [osobního řetězce klíčů](https://components.xamarin.com/view/square.valet) |
 | **Kroky** | <p>Pokud aplikace zapíše citlivé informace, jako jsou identifikovatelné osobní údaje uživatele (e-mailu, telefonní číslo, křestní jméno, příjmení, předvolby atd.) – v systému souborů pro mobilní zařízení, pak se by se měla šifrovat před zápisem do místního systému souborů. Pokud aplikace je podniková aplikace, pak si projděte možnost publikování aplikací pomocí služby Windows Intune.</p>|
 
 ### <a name="example"></a>Příklad:
@@ -393,7 +393,7 @@ Pokud aplikace není podniková aplikace, pak použijte platformu poskytuje úlo
 
 ## <a id="binaries-end"></a>Před distribucí koncovým uživatelům obfuskaci generovaný binární soubory
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Mobilního klienta | 
 | **SDL fáze**               | Sestavení |  
@@ -404,13 +404,13 @@ Pokud aplikace není podniková aplikace, pak použijte platformu poskytuje úlo
 
 ## <a id="cert"></a>Typ clientCredentialType nastaven na certifikátu nebo Windows
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
-| **Použitelných technologiích** | Rozhraní .NET framework 3 |
+| **Použitelných technologiích** | .NET Framework 3 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Obohacení](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
+| **Odkazy**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **Kroky** | Heslo pro útočníky, kteří zprávy protokolu SOAP, můžete sledovat pomocí hesla ve formátu prostého textu UsernameToken přes nezašifrované kanály zpřístupňuje. Poskytovatelé služeb používajících UsernameToken může přijmout hesla odesílají v prostém textu. Odesílání nezašifrovaná hesla přes nezašifrované kanály mohou vystavit přihlašovací údaje, které útočníci, kteří si zprávu protokolu SOAP, můžete zachytit. | 
 
 ### <a name="example"></a>Příklad:
@@ -423,7 +423,7 @@ Typ clientCredentialType nastaven na certifikátu nebo Windows.
 
 ## <a id="security"></a>Není povolen režim zabezpečení WCF
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  

@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766499"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895054"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště ve službě Azure Stack
 
@@ -67,7 +67,7 @@ Je možné v situaci, kdy potřebujete k obnovení odstraněného účtu.
 
 Ve službě Azure Stack je jednoduchý způsob, jak to udělat:
 
-1. Přejděte do seznamu účtů úložiště. Zobrazit [Najít účet úložiště](#find) v tomto článku pro další informace.
+1. Přejděte do seznamu účtů úložiště. Podívejte se najít účet úložiště v tomto článku pro další informace.
 2. V seznamu vyhledejte konkrétního účtu. Budete muset filtrovat.
 3. Zkontrolujte, *stavu* účtu. By mělo být uvedeno **odstraněné**.
 4. Vyberte účet, který se otevře podokno Podrobnosti účtu.
@@ -113,7 +113,7 @@ Jednou z vedlejší efekty s dobou uchování je, že odstraněný účet i nad�
 Můžete získat zpět kapacitu pomocí portálu nebo Powershellu.
 
 **Získat kapacitu pomocí portálu:**
-1. Přejděte do podokna s účty úložiště. Zobrazit [Najít účet úložiště](#find).
+1. Přejděte do podokna s účty úložiště. Podívejte se najít účet úložiště.
 2. Vyberte **uvolnění místa** v horní části podokna.
 3. Přečte zprávu a pak vyberte **OK**.
 

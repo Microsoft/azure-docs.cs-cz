@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Dotazy na entity pomocí Project Answer Search
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 2ec11412b5b0e713742029f05c91a6ecbe78c344
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0536831d22f40cb9783e95de2708f40010eb62d9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210688"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883861"
 ---
 # <a name="quickstart-query-for-entities"></a>Rychlý start: Dotazy na entity
 

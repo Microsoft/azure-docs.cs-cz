@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Získejte 86 kategorie taxonomii pro rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 06556372b89a3a3bf8969ed838934e25197fd216
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: efdcf68799dcd0d3fd83365c36ca00500c3fbbc6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196680"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865182"
 ---
 # <a name="86-categories-taxonomy"></a>Taxonomie kategorií 86
 

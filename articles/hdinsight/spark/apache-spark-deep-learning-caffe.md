@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118230"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891075"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
 
@@ -64,7 +64,7 @@ Existují dva kroky v akci skriptu. Prvním krokem je instalace potřebných kni
 
 Druhým krokem je ke stažení, kompilaci a instalace protobuf 2.5.0 Caffe za běhu. Protobuf 2.5.0 [vyžádáním](https://github.com/yahoo/CaffeOnSpark/issues/87), ale tato verze není k dispozici jako balíček na Ubuntu 16, takže je musíte je zkompilovat ze zdrojového kódu. Existují také několik prostředků na Internetu o tom, jak jej zkompilovat. Další informace najdete v tématu [tady](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
-Abyste mohli začít, lze pouze spustit tuto akci se skripty u vašeho clusteru na všechny uzly pracovního procesu a hlavní uzly (pro HDInsight 3.5). Můžete spustit skript akce v existujícím clusteru, nebo při vytváření clusteru pomocí skriptových akcí. Další informace o akcí skriptů najdete v dokumentaci [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
+Abyste mohli začít, lze pouze spustit tuto akci se skripty u vašeho clusteru na všechny uzly pracovního procesu a hlavní uzly (pro HDInsight 3.5). Můžete spustit skript akce v existujícím clusteru, nebo při vytváření clusteru pomocí skriptových akcí. Další informace o akcí skriptů najdete v dokumentaci [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
 ![Skript akce instalace závislostí](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 

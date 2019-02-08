@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a8ad5c3091c3c78aa31dbf38eb6b3032e4dc7662
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812293"
+ms.locfileid: "55870958"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolení možnosti zůstat přihlášeni v (políčko zůstat Přihlášeni) v Azure Active Directory B2C
 
@@ -154,7 +154,7 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 
     Hodnota **SessionExpiryInSeconds** představuje čas vypršení platnosti relace jednotného přihlašování. To se používá interně službou Azure AD B2C ke kontrole, jestli je platnost relace pro políčko zůstat Přihlášeni, nebo ne. Hodnota **KeepAliveInDays** určuje platnost vyprší, Max-Age hodnotu souboru cookie jednotného přihlašování ve webovém prohlížeči. Na rozdíl od **SessionExpiryInSeconds**, **KeepAliveInDays** umožňuje zabránit uzavřený vymazání souboru cookie prohlížeče. Uživatel může bez upozornění přihlásit jenom v případě, že existuje soubor cookie relace jednotného přihlašování, které řídí **KeepAliveInDays**a ne vypršela platnost, která řídí **SessionExpiryInSeconds**. 
     
-    Pokud uživatel nemá povolení **neodhlašovat** na stránce registrace a přihlášení relace vyprší po času indikován **SessionExpiryInSeconds** uplynutí nebo prohlížeč je zavřený. Pokud uživatel povolí **neodhlašovat**, hodnota **KeepAliveInDays** přepíše hodnotu **SessionExpiryInSeconds** a určí čas vypršení platnosti relace. Dokonce i uživatelé zavřete prohlížeč a znovu otevřete, se můžete stále tiše přihlásit, dokud je v době **KeepAliveInDays**. Doporučuje se, že nastavíte hodnotu **SessionExpiryInSeconds** krátká období (1 200 sekund), při hodnotu **KeepAliveInDays** lze nastavit relativně dlouhou dobu (7 dní), jak je znázorněno Následující příklad:
+    Pokud uživatel nemá povolení **neodhlašovat** na stránce registrace a přihlášení relace vyprší po času indikován **SessionExpiryInSeconds** uplynutí nebo prohlížeč je zavřený. Pokud uživatel povolí **neodhlašovat**, hodnota **KeepAliveInDays** přepíše hodnotu **SessionExpiryInSeconds** a určí čas vypršení platnosti relace. I v případě, že uživatelé zavřete prohlížeč a znovu otevřete, se můžete stále tiše přihlásit, dokud je v době **KeepAliveInDays**. Doporučuje se, že nastavíte hodnotu **SessionExpiryInSeconds** krátká období (1 200 sekund), při hodnotu **KeepAliveInDays** lze nastavit relativně dlouhou dobu (7 dní), jak je znázorněno Následující příklad:
 
     ```XML
     <RelyingParty>

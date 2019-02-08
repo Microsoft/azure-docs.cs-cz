@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 152e1e5892e3a72286205c2f5bf4e18b2a2bcbf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c71c7423b4cde2a24c8154899eec256e5746b6d7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814839"
+ms.locfileid: "55865358"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -56,13 +56,13 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
     ```
     Zkopírujte ID pole je mimo výsledek výše uvedeného příkazu
     
-2. A získat objekt ID z Azure Key Vault pro službu objektu zabezpečení následující příkaz
+2. Získání ID objektu z Azure Key Vault služby hlavní spuštěním následující příkaz
 
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
     
-    Po úspěšném dokončení tohoto příkazu najdete ID objektu ve výsledku
+    Po úspěšném dokončení tohoto příkazu najdete ID objektu ve výsledku:
     ```console
         {
             ...
@@ -71,7 +71,7 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
         }
     ```
     
-3. Přiřadit roli operátora klíč úložiště do služby Azure Key Vault Identity
+3. Přiřadíte roli operátora klíč úložiště pro Azure Key Vault Identity.
 
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope <IdOfStorageAccount>

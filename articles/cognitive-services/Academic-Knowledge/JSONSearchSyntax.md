@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Další informace o syntaxi vyhledávání souboru JSON, která vám pomůže v rozhraní Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: b3f0c5c22775a6eb0ab7a34592d816ed174539c0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fddd2291fe7fbb46c57d31e9aebc7fc6244df971
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196561"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884796"
 ---
 # <a name="json-search-syntax"></a>Syntaxe prohledávání JSON
 

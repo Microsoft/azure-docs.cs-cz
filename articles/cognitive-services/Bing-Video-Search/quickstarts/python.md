@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: V tomto rychlém startu používáme k odeslání žádosti pro vyhledávání videí do Bingu Video Search REST API pomocí Pythonu.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 2027797e6eeb73e6e1da3e778aaed265c89a565f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 1ac4a2ce5027606706367b43eea759fb953994c6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569506"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876846"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Rychlý start: Hledání videí pomocí API REST pro vyhledávání videí Bingu a Pythonu
 

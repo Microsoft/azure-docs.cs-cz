@@ -1,6 +1,6 @@
 ---
-title: Konfigurace replikace v Azure SQL Database Managed Instance | Dokumentace Microsoftu
-description: Další informace o konfiguraci replikace transakcí do Azure SQL Database Managed Instance
+title: Konfigurace replikace databáze spravované instance Azure SQL Database | Dokumentace Microsoftu
+description: Další informace o konfiguraci transakční replikace databáze spravované instance Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,61 +11,58 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 038d8c919e68e68f886525a6c78139496edef8e1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467659"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893007"
 ---
-# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Konfigurace replikace v Azure SQL Database Managed Instance
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace databáze spravované instance Azure SQL Database
 
-Transakční replikace umožňuje replikovat data z databáze systému SQL Server nebo Azure SQL Database Managed Instance do spravované Instance nebo nasdílení změn provedených ve vašich databázích ve spravované instanci jiný SQL Server, izolovanou databázi SQL Database nebo elastický fond, nebo jiné mi. Replikace je ve verzi public preview na [Azure SQL Database Managed Instance](sql-database-managed-instance.md). Managed Instance může hostovat databáze vydavatele, distributor a odběratele. Zobrazit [transakční replikace konfigurace](sql-database-managed-instance-transactional-replication.md#common-configurations) pro dostupné konfigurace.
+Transakční replikace umožňuje replikovat data do databáze spravované instance Azure SQL Database z databáze systému SQL Server nebo jiné instanci databáze. Transakční replikace můžete použít také tak, aby nabízel změny provedené v databázi instance ve spravované instanci Azure SQL Database k databázi SQL serveru do izolované databáze ve službě Azure SQL Database pro databázi ve fondu v elastickém fondu Azure SQL Database. Transakční replikace je ve verzi public preview na [Azure SQL Database managed instance](sql-database-managed-instance.md). Spravovaná instance může hostovat databáze vydavatele, distributor a odběratele. Zobrazit [transakční replikace konfigurace](sql-database-managed-instance-transactional-replication.md#common-configurations) pro dostupné konfigurace.
 
 ## <a name="requirements"></a>Požadavky
 
-Vyžaduje vydavatelem a distributorem pro službu Azure SQL Database:
+Konfigurace managed instance fungovat jako vydavatel nebo distributora vyžaduje:
 
-- Azure SQL Database Managed Instance, který není v konfiguraci Geo-DR.
+- Spravované instance se teď neúčastní relace geografickou replikaci.
 
    >[!NOTE]
-   >Azure SQL Database, které nejsou nakonfigurované pro Managed Instance je možné pouze Odběratelé.
+   >Předplatitelé mohou být pouze izolované databáze a databáze ve fondu ve službě Azure SQL Database.
 
-- Všechny instance systému SQL Server musí být ve stejné virtuální síti.
+- Všechny spravované instance musí být ve stejné virtuální síti.
 
 - Připojení pomocí ověřování SQL mezi účastníky replikace.
 
 - Sdílenou účtu úložiště Azure pro replikaci pracovní adresář.
 
-- Port 445 (odchozí TCP) musí být otevřené v pravidlech zabezpečení podsíť Managed Instance pro přístup ke sdílené složce Azure
+- Port 445 (odchozí TCP) musí být otevřené v pravidlech zabezpečení v podsíti spravované instance pro přístup ke sdílené složce Azure
 
 ## <a name="features"></a>Funkce
 
 Podporuje:
 
-- Transakční replikace a replikace snímků směs místních a instance Azure SQL Database Managed Instance.
-
-- Předplatitelé může být místní, izolované databáze ve službě Azure SQL Database nebo databáze ve fondu v elastických fondů Azure SQL Database.
-
+- Transakční replikace a replikace snímků kombinaci místní SQL Server a spravované instance Azure SQL Database.
+- Předplatitelé může být v místních databází SQL serveru, izolované databáze ve službě Azure SQL Database nebo databáze ve fondu v elastických fondů Azure SQL Database.
 - Jednosměrné nebo obousměrné replikace.
 
-Nejsou podporovány následující funkce:
+Ve službě Azure SQL Database managed instance nepodporuje následující funkce:
 
 - Aktualizovatelné odběry.
-
 - Aktivní geografickou replikaci.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurace publikování a distribuci příklad
 
-1. [Vytvoření Azure SQL Database Managed Instance](sql-database-managed-instance-create-tutorial-portal.md) na portálu.
+1. [Vytvoření spravované instance Azure SQL Database](sql-database-managed-instance-create-tutorial-portal.md) na portálu.
 2. [Vytvoření účtu služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář.
 
    Nezapomeňte si zkopírovat klíče úložiště. Zobrazit [zobrazení a zkopírování přístupových klíčů úložiště](../storage/common/storage-account-manage.md#access-keys
 ).
-3. Vytvoření databáze vydavatele.
+3. Vytvoření instance databáze vydavatele.
 
-   V níže uvedené příklady skriptů, nahraďte `<Publishing_DB>` s názvem této databáze.
+   V níže uvedené příklady skriptů, nahraďte `<Publishing_DB>` s názvem instance databáze.
 
 4. Vytvořte uživatele databáze s ověřováním SQL pro daného distributora. Použijte zabezpečené heslo.
 

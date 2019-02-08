@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Nejčastější dotazy na posouzení vašich osobnostních chatu
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personality-chat
 ms.topic: faq
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 95a6511ce818fda6db0cec507a1f9e3b034f17b0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 22a8077dd373fc648f59ed4c3b0a89a05960d572
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219052"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872097"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

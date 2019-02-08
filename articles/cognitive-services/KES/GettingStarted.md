@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Použijte rozhraní API služby KES (Knowledge Exploration Service) k vytvoření modulu pro interaktivní hledání v akademických publikacích.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: e2bb5550cfe07064d595151305955d87f9c61050
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c9c336b9aed06095849f33060ff6969e8b7bfcaf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819531"
+ms.locfileid: "55881702"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 

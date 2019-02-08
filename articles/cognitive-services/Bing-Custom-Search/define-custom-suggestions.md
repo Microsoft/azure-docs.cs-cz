@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Popisuje, jak nakonfigurovat vlastní automatické návrhy vlastní návrhy
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 2724f0562c9fe4887b1728127b12df5390993076
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3e8ce9f69749bdb12563b058796d95f0fd95cc6b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157348"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882194"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurace prostředí pro funkci vlastních automatických návrhů
 

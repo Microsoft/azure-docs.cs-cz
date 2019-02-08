@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak vytvořit akustický model s využitím služby Speech ve službách Azure Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 8bee93c4bb932730000a06cc2bc3fe5a3e330a1f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b644d1d227b5dbd69af38cc32defffb8152b0cde
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217624"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878115"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 
@@ -63,7 +63,7 @@ Akustický datové sady pro přizpůsobení akustického modelu se skládá ze d
 > Importy dat přes webový portál jsou momentálně omezené na 2 GB, což je maximální velikost sady akustických dat. Tato velikost odpovídá přibližně 17 hodinám zvukového záznamu na frekvenci 16 kHz nebo 34 hodinám zvukového záznamu na frekvenci 8 kHz. Následující tabulka obsahuje souhrn hlavních požadavků na zvuková data:
 >
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |---------- |----------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 hertzů (Hz) nebo 16 000 Hz |

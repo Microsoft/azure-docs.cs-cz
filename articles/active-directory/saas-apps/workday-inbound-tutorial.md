@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
-ms.openlocfilehash: d4a47130dadb782f41579bd20c4b5e1d1e9978bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 11541318ca7e693cc422ecaeab182407cc5bd736
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188588"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895750"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro automatické zřizování uživatelů
 
@@ -713,7 +713,7 @@ Po dokončení konfigurace zřizování aplikací Workday můžete zapnout služ
 
 3. Tato operace spustí počáteční synchronizaci, to může trvat proměnný počet hodin v závislosti na tom, kolik uživatelů je v tenantovi Workday. 
 
-4. V okamžiku, zkontrolujte **protokoly auditu** kartu na webu Azure Portal najdete v článku jaké akce proběhla zřizovací služba. Protokoly auditu zobrazuje všechny události jednotlivou synchronizaci provést zřizovací služba, například kteří uživatelé jsou číst z Workday a pak následně přidáním nebo aktualizací do služby Active Directory. Odkazovat [Poradce při potížích s](#troubleshooting-provisioning-issues) části pokyny, jak kontrolovat protokoly auditu a opravte chyby zřizování.
+4. V okamžiku, zkontrolujte **protokoly auditu** kartu na webu Azure Portal najdete v článku jaké akce proběhla zřizovací služba. Protokoly auditu zobrazuje všechny události jednotlivou synchronizaci provést zřizovací služba, například kteří uživatelé jsou číst z Workday a pak následně přidáním nebo aktualizací do služby Active Directory. Přečtěte si část Poradce při potížích s pokyny o tom, jak kontrolovat protokoly auditu a opravte chyby zřizování.
 
 5. Po dokončení počáteční synchronizace bude zapisovat souhrnnou sestavu auditu **zřizování** kartu, jak je znázorněno níže.
 

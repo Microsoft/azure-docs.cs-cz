@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f9172418f15b129a71242038efd4cdb7683bbf7
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516143"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873015"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Spravovat přístup, napájení a režimu připojení pro bránu Azure Data Box (preview)
 
@@ -35,7 +35,7 @@ Přístup k zařízení Data Box brány se řídí použití hesla správce zař
 
 ### <a name="change-device-administrator-password"></a>Změna hesla správce zařízení
 
-Pokud jste zapomněli svoje heslo, můžete změnit heslo. Následující postup v místním uživatelském rozhraní ke změně hesla správce zařízení.
+Následující postup v místním uživatelském rozhraní ke změně hesla správce zařízení.
 
 1. V místním webovém uživatelském rozhraní, přejděte na **údržby > Změna hesla**.
 2. Zadejte aktuální heslo a pak nové heslo. Zadané heslo musí být dlouhé 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číselné a speciální znaky. Potvrzení nového hesla.

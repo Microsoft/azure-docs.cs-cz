@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Tento názorný postup popisuje ukázkovou scénu Unity pro Project Acoustics, včetně nasazení na desktopu a platformě VR.
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ecd19ec343b2744a70456fd1d3ad226856768d71
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174257"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880707"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity – ukázkový názorný postup
 Toto je názorný postup ukázkou z Project Acoustics. Další informace o tom co Project Acoustics je, najdete v části [Úvod do Project Acoustics](what-is-acoustics.md). Pokud potřebujete pomoc s přidáním balíčku Project Acoustics do již existujícího projektu Unity, nahlédněte do [příručky Začínáme](getting-started.md).

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Získejte odpovědi na běžné dotazy týkající se rozhraní API Bingu pro kontrolu pravopisu zkontrolujte v Azure.
 services: cognitive-services
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: 90acc80b19058c2a7eb963f9e423883846519b2c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 552e6fb3375c04e2f157842b13f72151e122f17b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164924"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866334"
 ---
 # <a name="frequently-asked-questions-about-the-bing-spell-check-api"></a>Nejčastější dotazy týkající se pravopisu Bingu najdete rozhraní API
 

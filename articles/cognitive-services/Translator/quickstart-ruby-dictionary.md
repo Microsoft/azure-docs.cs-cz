@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API a Ruby.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 76357db32ad676cc5246e7f9edfae238d33b0696
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f6c85693933aaf8559ff8eda04e31db6c2fd0302
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461147"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876306"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-ruby"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Ruby
 

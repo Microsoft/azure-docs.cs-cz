@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Další informace o použití syntaxe výrazu dotazu v rozhraní Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: c130c6cd5fcb5191195712f570db66408734200a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 95c2e9d3f54f967b3ebb434c742f69251b80573e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150863"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872029"
 ---
 # <a name="query-expression-syntax"></a>Syntaxe výrazu dotazu
 
