@@ -4,19 +4,19 @@ titleSuffix: Language Understadning - Azure Cognitive Services
 description: Služba LUIS používá dva klíče, zdarma pro tvorbu klíč pro vytvoření modelu a klíče koncového bodu Účtovaná podle objemu dat pro dotazování na koncový bod předpovědi s projevy uživatele.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 81744e2af75410da911ee17f2c4acd05d5a57051
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0bb535a75d1eefcb835d25d28dc65c565655d2c5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222589"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881804"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Vytváření obsahu a dotaz předpovědi klíče koncového bodu v LUIS
 Služba LUIS používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připraveni k publikování aplikace LUIS, budete muset [vytvořit klíče koncového bodu](luis-how-to-azure-subscription.md), [ji přiřadit](luis-how-to-azure-subscription.md) do vaší aplikace LUIS a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 

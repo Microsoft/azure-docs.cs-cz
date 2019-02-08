@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu můžete převést text v jednom jazyce z jednoho skriptu do druhého pomocí služby Translator Text API a Ruby.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 10f74e04349984885f9c69ac17ac1aa9b41e710f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3f3ce3e509b690de57cfabfafa29ef1f7487877
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461181"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856611"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Transkripce text pomocí rozhraní Translator Text REST API (Ruby)
 

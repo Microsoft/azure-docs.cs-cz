@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Další informace o použití sémantického výkladu v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 2b0065dbdac8e3bdbc535f2d7d103b24110e1d02
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217267"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860809"
 ---
 # <a name="semantic-interpretation"></a>Sémantického výkladu
 
@@ -35,9 +35,9 @@ Dále je uveden seznam aktuálně podporované datové typy:
 
 |Type|Popis|Příklady|
 |----|----|----|
-|Řetězec|Posloupnost 0 nebo více znaků|"Hello World!"<br/>""|
-|BOOL|Logická hodnota|true (pravda)<br/>false (nepravda)|
-|Datový typ Int32|32bitové celé číslo se znaménkem.  -2.1e9 k 2.1e9|123<br/>-321|
+|String|Posloupnost 0 nebo více znaků|"Hello World!"<br/>""|
+|Bool|Logická hodnota|true (pravda)<br/>false (nepravda)|
+|Int32|32bitové celé číslo se znaménkem.  -2.1e9 k 2.1e9|123<br/>-321|
 |Int64|64bitové celé číslo se znaménkem. -9.2e18 a 9.2e18|9876543210|
 |Double|Dvojité přesnosti s plovoucí desetinnou čárkou. 1, 7E +/-308 (15 číslic)|123.456789<br/>1.23456789e2|
 |Guid|Globálně jedinečný identifikátor|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
@@ -139,10 +139,10 @@ Proměnné s rozsahem žádosti jsou sdíleny napříč všechny interpretace v 
 
 Systémové proměnné jsou předdefinovány službou a slouží k načtení obsahují různé statistické údaje o aktuálním stavu systému.  Níže je sada proměnných aktuálně podporovaný systémový:
 
-|Name|Typ|Popis|
+|Název|Typ|Popis|
 |----|----|----|
-|IsAtEndOfQuery|BOOL|Hodnota TRUE, pokud aktuální interpretace odpovídá všechny vstupní text|
-|IsBeyondEndOfQuery|BOOL|Hodnota TRUE, pokud aktuální interpretace navrhl dokončování nad rámec vstupní text|
+|IsAtEndOfQuery|Bool|Hodnota TRUE, pokud aktuální interpretace odpovídá všechny vstupní text|
+|IsBeyondEndOfQuery|Bool|Hodnota TRUE, pokud aktuální interpretace navrhl dokončování nad rámec vstupní text|
 
 ### <a name="setvariable-function"></a>Funkce SetVariable
 

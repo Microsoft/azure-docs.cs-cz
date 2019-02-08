@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Tento průvodce vám vytvořit speech to text konzolovou aplikaci, která používá řeč SDK pro Python. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
 services: cognitive-services
 author: chlandsi
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 1/16/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2a0ef42a2904b661b0076c9e84700ce61e3a7248
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 43ae1339b2b6880656c68957a3d4ed2d2f13b559
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746798"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859536"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Python
 

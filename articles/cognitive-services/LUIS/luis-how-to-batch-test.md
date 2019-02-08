@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Pomocí služby batch Language Understanding (LUIS) testování sad vyhledejte projevy s nesprávnou záměry a entity.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: dcc5e463eab6c5de612df45963f160156315a34a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fddd54e7c4e88b85f6e6fa8f7319661db96e9524
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213221"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877537"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testování pomocí sady projevy příklad služby batch
 

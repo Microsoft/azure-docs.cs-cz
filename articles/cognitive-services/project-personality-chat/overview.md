@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Tento článek poskytuje přehled o Azure Project Personality Chat, což je cloudové rozhraní API pro zlepšení konverzačních schopností vašeho robota.
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personality-chat
 ms.topic: overview
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 053d43d0f17df2008106bda38318615e60778935
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c7f7a8c65717acd5a19e92b7e0437dc4b8628909
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207509"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867082"
 ---
 # <a name="what-is-project-personality-chat"></a>Co je Project Personality Chat?
 

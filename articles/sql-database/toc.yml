@@ -191,6 +191,8 @@ items:
       href: sql-database-automated-backups.md
     - name: Dlouhodobé uchovávání záloh
       href: sql-database-long-term-retention.md
+    - name: Události plánované údržby
+      href: sql-database-planned-maintenance.md
     - name: Skupiny převzetí služeb při selhání a geografická replikace
       items:
       - name: Aktivní geografická replikace
@@ -295,8 +297,6 @@ items:
       href: sql-database-elastic-query-overview.md
     - name: Elastické transakce
       href: sql-database-elastic-transactions-overview.md
-  - name: Porovnání funkcí SQL
-    href: sql-database-features.md
   - name: Sledování a ladění
     items:
     - name: Přehled sledování a ladění
@@ -321,24 +321,28 @@ items:
         href: sql-database-performance.md
       - name: Doporučení ohledně výkonu pro nástroj Database Advisor
         href: sql-database-advisor.md
-  - name: Načtení a přesun dat
-    items:
-    - name: Synchronizace dat SQL
-      href: sql-database-sync-data.md
-    - name: Transakční replikace
-      href: sql-database-managed-instance-transactional-replication.md
   - name: Funkce databází
     items:
-    - name: Funkce databází
-      href: sql-database-develop-overview.md
+    - name: Porovnání funkcí SQL
+      href: sql-database-features.md
     - name: Možnosti s více modely
       href: sql-database-multi-model-features.md
     - name: V paměti
       href: sql-database-in-memory.md
+    - name: Transakční replikace
+      href: sql-database-managed-instance-transactional-replication.md
+    - name: Synchronizace dat SQL
+      href: sql-database-sync-data.md
     - name: Dočasné tabulky
       href: sql-database-temporal-tables.md
     - name: Automatizace úloh
       href: sql-database-job-automation-overview.md
+    - name: Strojové učení
+      items:
+      - name: Přehled služby Machine Learning
+        href: sql-database-machine-learning-services-overview.md
+      - name: Klíčové rozdíly
+        href: sql-database-machine-learning-services-differences.md
 - name: Návody
   items:
   - name: Přehled
@@ -523,8 +527,8 @@ items:
       href: sql-database-manage-automation.md
   - name: Vývoj aplikací
     items:
-    - name: Připojení
-      href: sql-database-libraries.md
+    - name: Přehled
+      href: sql-database-develop-overview.md
     - name: Práce s daty JSON
       href: sql-database-json-features.md
     - name: Použití konektoru Spark
@@ -712,9 +716,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9a04e463a7324b1021594a8fbefc5988ad8471f2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1b32688e6e9ed6b826dd9191c8d58e85b1b2b128
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756729"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813668"

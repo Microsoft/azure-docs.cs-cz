@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dd413f9a7eba60fd72e7cc29f44f49b72eaaf806
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 50f95ea10308e27fa36bda77c4f3e1bd4914bb30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769402"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Kurz: Integrace Azure Active Directory s G Suite
 
@@ -42,7 +42,7 @@ Konfigurace integrace Azure AD s G Suite, potřebujete následující položky:
 - Google Apps předplatného nebo předplatného Google Cloud Platform.
 
 > [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí. Tento dokument byl vytvořen pomocí nového uživatele prostředí jednotného přihlašování. Pokud stále používáte starý, instalační program bude vypadat diferent. Můžete povolit nové prostředí v nastavení jednotného přihlašování aplikace G Suite. Přejděte na **Azure AD, podnikové aplikace**vyberte **G Suite**vyberte **Single Sign-on** a potom klikněte na **vyzkoušet naše nové rozhraní**.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí. Tento dokument byl vytvořen pomocí nového uživatele prostředí jednotného přihlašování. Pokud stále používáte starý, instalační program bude vypadat jinak. Můžete povolit nové prostředí v nastavení jednotného přihlašování aplikace G Suite. Přejděte na **Azure AD, podnikové aplikace**vyberte **G Suite**vyberte **Single Sign-on** a potom klikněte na **vyzkoušet naše nové rozhraní**.
 
 Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
@@ -146,7 +146,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následu
 
     ![G Suite domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte URL adresu URL pomocí následujícímu vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |
@@ -163,7 +163,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následu
 
     ![G Suite domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte URL adresu URL pomocí následujícímu vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |

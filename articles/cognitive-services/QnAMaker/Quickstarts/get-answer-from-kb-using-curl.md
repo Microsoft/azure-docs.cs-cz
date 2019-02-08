@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Tento rychlý start vás provede získat odpověď ze znalostní báze pomocí příkazu cURL.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 6eccf4014eb663d0a3275d70c4e997f9ed324762
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b269785d41931ce68827e2b48cc543d35ee47597
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211980"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870278"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Rychlý start: Získání odpovědí ze znalostní báze pomocí cURL
 

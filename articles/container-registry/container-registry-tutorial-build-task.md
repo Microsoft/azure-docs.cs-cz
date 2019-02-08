@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: dd99a6b49894b3489d1cc01f1fcbc56d29247b41
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 763ff0d5f619d2808fb06c05d5b266160b3a7069
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756355"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868561"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: Pokud jste se zavázali zdrojový kód. automatizace sestavování imagí kontejneru v cloudu
 
@@ -51,6 +51,8 @@ ACR Tasks v současné době podporuje následující triggery:
 
 * Vložení do úložiště Git
 * Aktualizace základní image
+
+Úloha služby ACR v tomto kurzu se vytvoří a předá jedním kontejnerem image zadanou v souboru Dockerfile. Můžete také spouštět úlohy ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md) (aktuálně ve verzi preview), použití YAML souboru k definování kroky sestavení, vkládat a volitelně test několik kontejnerů.
 
 ## <a name="create-a-build-task"></a>Vytvoření úlohy sestavení
 
@@ -99,7 +101,7 @@ az acr task create \
 > [!IMPORTANT]
 > Pokud jste už dříve vytvořili úlohy ve verzi Preview pomocí příkazu `az acr build-task`, tyto úlohy bude potřeba vytvořit znovu pomocí příkazu [az acr task][az-acr-task].
 
-Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. Použije se soubor Dockerfile určený parametrem `--file` z kořenového adresáře úložiště. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
+Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. Určený soubor Dockerfile `--file` v úložišti kořenové slouží k sestavení image. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
 
 Výstup úspěšného příkazu [az acr task create][az-acr-task-create] je podobný následujícímu:
 

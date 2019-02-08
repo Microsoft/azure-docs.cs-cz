@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Nástroj QnA Maker umožňuje přidat metadata ve formě dvojice klíč/hodnota do sad otázek a odpovědí. Tyto informace slouží k filtrování výsledků na dotazy uživatelů a k ukládání dalších informací, lze použít v následných konverzace.
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: tulasim88
-ms.openlocfilehash: 8712f9e79965e09e21df768b1c06561a896b8e01
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1294b714c217178d53ed69cc886cd89f23620274
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214088"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859483"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Pomocí metadat a rozhraní API GenerateAnswer
 

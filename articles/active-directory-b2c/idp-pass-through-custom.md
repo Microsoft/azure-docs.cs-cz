@@ -10,20 +10,17 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b291c8e15b771163d7986f78695bc74ef3084162
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150797"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882994"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Předat token přístupu pomocí vlastních zásad do vaší aplikace v Azure Active Directory B2C
 
 > [!NOTE]
 > Tato funkce je aktuálně ve verzi public preview.
-
-> [!Important]
-> Tato funkce ve verzi public preview je dočasně nedostupný.
 
 A [vlastní zásady](active-directory-b2c-get-started-custom.md) v Azure Active Directory (Azure AD) B2C poskytuje uživatelům vaší aplikace příležitost k registraci nebo přihlášení pomocí zprostředkovatele identity. Pokud k tomu dojde, obdrží Azure AD B2C [přístupový token](active-directory-b2c-reference-tokens.md) od zprostředkovatele identity. Azure AD B2C používá tento token k načtení informací o uživateli. Můžete přidat že typ deklarace identity a výstupní deklaraci identity pro vaše vlastní zásada vypadat předat token prostřednictvím aplikace, které zaregistrujete v Azure AD B2C. 
 

@@ -4,19 +4,19 @@ titlesuffix: Face - Azure Cognitive Services
 description: Jak si stáhnout, nainstalovat a spouštění kontejnerů v tomto kurzu návod pro rozpoznávání tváře.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: diberry
-ms.openlocfilehash: d738f089ff7af59c340a2ea9f67918c1298f9e47
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 93fbcb96415aa2c800a772fdeb925b1513d7512d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769789"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863002"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 

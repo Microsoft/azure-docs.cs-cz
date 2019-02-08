@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734619"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893592"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -65,14 +65,14 @@ Azure SQL Database můžete nastavit shromažďování následujících telemetr
 
 | Monitorování telemetrických dat pro databáze | Izolovaná databáze a podpora databáze ve fondu | Managed instance podpory |
 | :------------------- | ------------------- | ------------------- |
-| [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics): Obsahuje procento využití DTU/procesoru, omezení jednotek DTU a procesoru, fyzických čtení dat procento, protokolu zapisovat procento, úspěšné/neúspěšné/blokovaná bránou připojení brány firewall, relace procento, procento pracovních procesů, úložiště, procento úložiště a XTP úložiště. | Ano | Ne |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Obsahuje informace o dotazu běhové statistiky, jako je například využití procesoru a statistiky doba trvání dotazu. | Ano | Ano |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Obsahuje informace o statistiky čekání dotazu (co vaše dotazy čekat) jako jsou procesor, protokol a UZAMČENÍ. | Ano | Ano |
-| [Chyby](sql-database-metrics-diag-logging.md#errors-dataset): Obsahuje informace o chybách SQL v databázi. | Ano | Ano |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Obsahuje informace o tom, kolik času stráví databáze čeká čekání různých typů. | Ano | Ne |
-| [Vypršení časových limitů](sql-database-metrics-diag-logging.md#time-outs-dataset): Obsahuje informace o vypršení časového limitu pro v databázi. | Ano | Ne |
-| [Bloky](sql-database-metrics-diag-logging.md#blockings-dataset): Obsahuje informace o blokování události v databázi. | Ano | Ne |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Obsahuje užitečné přehledy o výkonu. Další informace najdete v tématu [Intelligent Insights](sql-database-intelligent-insights.md). | Ano | Ano |
+| [Všechny metriky](#all-metrics): Obsahuje procento využití DTU/procesoru, omezení jednotek DTU a procesoru, fyzických čtení dat procento, protokolu zapisovat procento, úspěšné/neúspěšné/blokovaná bránou připojení brány firewall, relace procento, procento pracovních procesů, úložiště, procento úložiště a XTP úložiště. | Ano | Ne |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Obsahuje informace o dotazu běhové statistiky, jako je například využití procesoru a statistiky doba trvání dotazu. | Ano | Ano |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Obsahuje informace o statistiky čekání dotazu (co vaše dotazy čekat) jako jsou procesor, protokol a UZAMČENÍ. | Ano | Ano |
+| [Chyby](#errors-dataset): Obsahuje informace o chybách SQL v databázi. | Ano | Ano |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Obsahuje informace o tom, kolik času stráví databáze čeká čekání různých typů. | Ano | Ne |
+| [Vypršení časových limitů](#time-outs-dataset): Obsahuje informace o vypršení časového limitu pro v databázi. | Ano | Ne |
+| [Bloky](#blockings-dataset): Obsahuje informace o blokování události v databázi. | Ano | Ne |
+| [SQLInsights](#intelligent-insights-dataset): Obsahuje užitečné přehledy o výkonu. Další informace najdete v tématu [Intelligent Insights](sql-database-intelligent-insights.md). | Ano | Ano |
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -169,7 +169,7 @@ Můžete nastavit shromažďovat následující telemetrická data diagnostiky p
 
 | Prostředek | Monitorování telemetrických dat |
 | :------------------- | ------------------- |
-| **Spravovaná instance** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
+| **Spravovaná instance** | [ResourceUsageStats](#logs-for-managed-instances) obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
 
 Pokud chcete povolit streamování telemetrická data diagnostiky pro prostředek spravované instance, postupujte podle těchto kroků:
 

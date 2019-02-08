@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Získejte odpovědi na nejčastější dotazy o Content Moderatoru.
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: faq
 ms.date: 11/21/2016
 ms.author: sajagtap
-ms.openlocfilehash: 1c55ef6fdfefbd50442da63637ba98bc43865d27
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 174e382fca780c778b3dfc020052015dd0e212e2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206098"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864447"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 

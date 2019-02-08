@@ -8,19 +8,19 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: df1efc1506fbbe51ba5afb03f147c51a57d9bbdb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f4541bb9516855c4391188fb57e5ab64bc03c76e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727054"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890480"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Vytváření a konfigurace clusterů Azure Kubernetes Service v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat službu Azure Kubernetes Service (AKS). V tomto článku se dozvíte, jak pomocí Ansible vytvořit a nakonfigurovat cluster Azure Kubernetes Service.
 
 ## <a name="prerequisites"></a>Požadavky
 - **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- **Instanční objekt Azure** – Při [vytváření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal) si poznamenejte následující hodnoty: **appId**, **displayName**, **password** a **tenant**.
+- **Instanční objekt Azure** – Při [vytváření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) si poznamenejte následující hodnoty: **appId**, **displayName**, **password** a **tenant**.
 
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 

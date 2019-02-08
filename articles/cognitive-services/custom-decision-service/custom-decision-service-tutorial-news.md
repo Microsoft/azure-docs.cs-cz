@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Tento kurz je určen pro přizpůsobení článků pro kontextové rozhodování.
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: fce90c05fb2e79be23cfd7a58875f8cb6b3ddbf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f61c47e6c3baf574c17a40298c3a164800b143a0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819769"
+ms.locfileid: "55867184"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článku kontextové rozhodování
 

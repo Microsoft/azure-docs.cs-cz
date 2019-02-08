@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 9323b393edb808f3d2d069f868deb0b67cd0c871
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 621dc22ead8fbb6882c692851d39b658da043c55
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855186"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894679"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Upgradovat konfiguraci clusteru v Azure 
 
 Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infrastruktury pro cluster Service Fabric. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru.
 
 > [!NOTE]
-> Ne všechna nastavení jsou k dispozici na portálu. V případě nastavení tady není k dispozici prostřednictvím portálu pro přizpůsobení pomocí šablony Azure Resource Manageru.> 
+> Ne všechna nastavení jsou k dispozici na portálu a jde [osvědčený postup a přizpůsobit pomocí šablony Azure Resource Manageru](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Portál je pro Service Fabric Dev\Test ve scénáři pouze.> 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Nastavení clusteru pomocí šablon Resource Manageru
 Clustery Azure je možné nakonfigurovat pomocí šablony JSON Resource Manageru. Další informace o různých nastaveních najdete v tématu [nastavení konfigurace pro clustery](service-fabric-cluster-fabric-settings.md). Například následující kroky ukazují, jak přidat nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části pomocí Průzkumníka prostředků Azure.

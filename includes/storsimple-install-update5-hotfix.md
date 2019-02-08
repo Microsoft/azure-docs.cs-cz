@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 450f62cd3605656ff8907c0020775f634dba0b4a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 8abc6129e1179378ac90278fd2032737b2b828b2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148009"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889080"
 ---
-<!--author=alkohli last changed: 08/21/17-->
-
 #### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
 
 Provedením následujících kroků si stáhněte aktualizace softwaru z Katalogu služby Microsoft Update.

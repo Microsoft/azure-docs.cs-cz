@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: d49c8a8434dfa7202707731f46ea31c77d32541d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ec63251e73e694a69f84262e9de7cce6eb8f11f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812255"
+ms.locfileid: "55878489"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Rychlý start: Nastavení clusterů v HDInsight
 
-V tomto rychlém startu se dozvíte, jak nastavit a nakonfigurovat clusterů v HDInsight pomocí Hadoop, Spark, Kafka, Interactive Query, HBase, R Server nebo Storm. Také se naučíte přizpůsobení clusterů, připojení k doméně a připojit k účtu úložiště pomocí [ve verzi preview Azure Data Lake Storage Gen2](data-lake-storage-introduction.md) povolena.
+V tomto rychlém startu se dozvíte, jak nastavit a nakonfigurovat clusterů v HDInsight pomocí Hadoop, Spark, Kafka, Interactive Query, HBase, R Server nebo Storm. Také se naučíte přizpůsobení clusterů, připojení k doméně a připojit k účtu úložiště pomocí [Azure Data Lake Storage Gen2](data-lake-storage-introduction.md) povolena.
 
 Hadoop cluster se skládá z několika virtuálních počítačů (uzlů), které se používají pro distribuované zpracování úloh. Azure HDInsight zpracovává podrobnosti implementace, instalace a konfigurace jednotlivých uzlů, takže budete muset zadat informace o obecné konfiguraci.
 

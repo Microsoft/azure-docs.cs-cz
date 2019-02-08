@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Jak používat metodu analyzovat v rozhraní API pro jazykovou analýzu k analýze určité vstupy přirozeného jazyka.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208631"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861676"
 ---
 # <a name="analyze-method"></a>Analýza – metoda
 
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Name | Type | Povinné | Popis
+Název | Type | Povinné | Popis
 -----|-------|----------|------------
 **Jazyk**    | řetězec | Ano | Dvě písmena kód ISO jazyka použitého pro analýzu. Angličtina je například "en".
 **analyzerIds** | seznam řetězců | Ano | Seznam identifikátorů GUID analyzátory použít. Další informace v dokumentaci analyzátory.
@@ -50,7 +50,7 @@ Pole analýzy výstupy, jeden pro každý atribut v požadavku.
 
 Výsledky budou vypadat takto:
 
-Name | Typ | Popis
+Název | Typ | Popis
 -----|------|--------------
 analyzerId | řetězec | Analyzátor zadaný identifikátor GUID
 výsledek | objekt | výsledek analyzátoru
@@ -59,7 +59,7 @@ Všimněte si, že typ výsledku závisí na typu vstupu analyzátor.
 
 ### <a name="tokens-response-json"></a>Tokeny odpovědí (JSON)
 
-Name | Typ | Popis
+Název | Typ | Popis
 -----|------|-------------
 výsledek | seznam objektů větu | hranice věty identifikované v textu |
 výsledek [x]. Posun | int | počáteční odsazení znaku každé věty. |

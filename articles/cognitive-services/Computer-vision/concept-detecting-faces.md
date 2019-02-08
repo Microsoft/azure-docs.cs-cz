@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Koncepty související s funkce rozpoznávání tváře z rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c4ff513a337c9bba6d75aa0fbca4540faaac1035
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 81e846c6ffc0361b7154c962dbc047b9e5ae55e7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160657"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872981"
 ---
 # <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře se pro počítačové zpracování obrazu
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.openlocfilehash: dfc47c40ce82eb8e9d414cb49c22bee033d000a6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1c50a6e14955b2c31222ff1317aa99ad28866ec8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239024"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864729"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Pro potřeby velkého objemu dat pomocí Azure Data Lake Storage Gen2
 
@@ -82,6 +82,8 @@ Pro nahrání datových sad, které v rozsahu v několika terabajtů, pomocí me
 Jakmile jsou data dostupná v Data Lake Storage Gen2 je na těchto datech pomocí aplikací podporovaných velké objemy dat spustit analýzu. V současné době můžete použít Azure HDInsight a Azure Databricks můžete spouštět úlohy analýzy dat na data uložená v Data Lake Storage Gen2.
 
 ![Analýza dat v Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "analýzy dat v Data Lake Storage Gen2")
+
+Příklad najdete v tématu [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
 
 
 ## <a name="download-data-from-data-lake-storage-gen2"></a>Stáhnout data z Data Lake Storage Gen2

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Tento glosář vysvětluje termíny, na které můžete při práci se službou rozhraní API pro rozpoznávání tváře narazit.
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 06c385b1ca43277b59c337646c41cae360ce48a5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ad3ea9b0cde16d5c9645e7eacee9ba7f9a08ed2d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816556"
+ms.locfileid: "55859161"
 ---
 # <a name="glossary"></a>Glosář
 

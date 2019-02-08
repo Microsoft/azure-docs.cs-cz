@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: juliako
-ms.openlocfilehash: be4c08bc31c8811655230ab89b48271f4c2b3164
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756576"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875487"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Azure Media Services v3
 
@@ -36,17 +36,7 @@ Odeslání úlohy pomocí adresy URL pro http (s), video se doporučuje. Další
 
 ### <a name="how-does-pagination-work"></a>Jak funguje stránkování?
 
-Služba Media Services podporuje pro prostředky, které podporují OData $top, ale hodnota předaná $top musí být menší než 1 000 (například velikost stránky pro stránkování).
-
-Díky tomu můžete buď získat malým vzorkem položek pomocí $top (například 100 nejnovější položky) nebo na stránce ale všechny položky pomocí stránkování. 
-
-Media Services nepodporuje stránkování dat s uživatelem zadaná velikost stránky.
-
-Další informace najdete v tématu [filtrování, řazení, stránkování](entities-overview.md).
-
-### <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Jak načíst entitu v Media Services v3?
-
-V3 je založen na sjednocené rozhraní API povrch, který zpřístupňuje funkce správy a operace založená na **Azure Resource Manageru**. V souladu s maticí **Azure Resource Manageru**, jsou vždy jedinečné názvy prostředků. Proto můžete použít libovolný jedinečný identifikátor řetězce (například identifikátory GUID) pro prostředek.
+Při použití stránkování, vždy používejte odkaz na další a výčet kolekce není závislý na konkrétní stránce velikost. Podrobnosti a příklady najdete v tématu [filtrování, řazení, stránkování](entities-overview.md).
 
 ## <a name="live-streaming"></a>Živé streamování 
 

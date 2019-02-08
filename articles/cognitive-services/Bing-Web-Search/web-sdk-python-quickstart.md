@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v Pythonu. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: ae1cc8282b9e7d939e04bc9fc1a9865b21c54c7e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ec7221837145db73386f146aa839b83ee23c1510
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187824"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865102"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Python
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Rozpoznávání řeči Software Development Kit (SDK) poskytuje vaše aplikace přístup k funkce Speech service usnadňují vývoj softwaru podporou řeči. V současné době se sadami SDK poskytují přístup k převodu řeči na Text, překlad řeči a rozpoznávání záměru.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2df835265abdaad4ec8bc99d1b99c53a9823da15
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e3374a94848dc4fdc192b941f81700151271c63a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220209"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866793"
 ---
 # <a name="speech-sdk-api-reference"></a>Reference rozhraní API sady SDK pro řeč
 

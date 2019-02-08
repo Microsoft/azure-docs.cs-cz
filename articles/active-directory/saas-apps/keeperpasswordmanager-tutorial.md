@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 70dfc03c37b2e7a93218ff7e710dbd22f622d418
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 01c6fd8cb0e4995bfd4409072d47d2743d1aed1f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813300"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Kurz: Integrace Azure Active Directory pomocí správce hesel držitel & digitální trezoru
 
@@ -78,7 +78,7 @@ Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí služby správce hesel držitel & digitální trezor, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Nakonfigurovat správce hesel držitel & digitální trezor Single Sign-On](#configure-keeper-password-manager-&-digital-vault-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **Nakonfigurovat správce hesel držitel & digitální trezor Single Sign-On** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 5. **[Vytvoření správce hesel držitel & digitální trezor testovacího uživatele](#create-keeper-password-manager--digital-vault-test-user)**  – Pokud chcete mít protějšek Britta Simon správce hesel držitel & digitální trezor, který je propojený s Azure AD reprezentace uživatele.

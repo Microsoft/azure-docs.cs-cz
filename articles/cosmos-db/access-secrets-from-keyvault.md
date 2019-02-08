@@ -1,6 +1,6 @@
 ---
 title: Použití služby Key Vault k ukládání a přístupové klíče služby Azure Cosmos DB
-description: Použití Azure Key Vault k ukládání a přístup ke službě Azure Cosmos DB připojovacího řetězce, klíče, identifikátor URI.
+description: Azure Key Vault umožňuje ukládat a přistupovat k připojovací řetězec Azure Cosmos DB, klíče a koncových bodů.
 author: rafats
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
 ms.reviewer: sngun
-ms.openlocfilehash: 8a3863ff67549c77692f8629c2e7315aec94faf8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 770e1e543a16bb54acc216aa550c44be26ab7a1a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463306"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858447"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečovací klíče Azure Cosmos pomocí služby Azure Key Vault 
 
-Při použití služby Azure Cosmos DB pro aplikace, můžete přistupovat databází, kolekcí, dokumentů s použitím identifikátor URI koncového bodu a klíče v konfiguračním souboru aplikace.  Však není bezpečné umístění klíče a adresy URL přímo v kódu aplikace, protože jsou k dispozici ve formátu prostého textu pro všechny uživatele. Budete chtít ověřit, že identifikátor URI a klíče jsou k dispozici, ale zabezpečené mechanismem. Je to, kde Azure Key Vault umožňuje bezpečně ukládat a spravovat tajné kódy aplikace.
+Při použití služby Azure Cosmos DB pro aplikace, můžete přistupovat databází, kolekcí, dokumentů pomocí koncového bodu a klíče v konfiguračním souboru aplikace.  Však není bezpečné umístění klíče a adresy URL přímo v kódu aplikace, protože jsou k dispozici ve formátu prostého textu pro všechny uživatele. Chcete, abyste měli jistotu, že koncový bod a klíče jsou k dispozici, ale zabezpečené mechanismem. Je to, kde Azure Key Vault umožňuje bezpečně ukládat a spravovat tajné kódy aplikace.
 
 Následující kroky jsou nutné pro ukládání a čtení přístupové klíče služby Azure Cosmos DB ze služby Key Vault:
 

@@ -5,19 +5,19 @@ description: Použít tento rychlý start k odesílání požadavků vyhledává
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7015d22222113c1b38c9fd43f218f243d9be7bbd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5a6cdc5912936b4b73fb45f37e30958b30dbcf0f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181533"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876619"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a PHP
 

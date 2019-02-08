@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: a2851272d15ed2ce2c7f940cc3e429ef9f8b4446
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1752ec8b2f846b51ef8222c54a00d5a5a0cdd05a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824008"
+ms.locfileid: "55875191"
 ---
 # <a name="features"></a>Funkce
 
@@ -102,7 +102,7 @@ Všechny typy parametrů hledání se nepodporuje. Zřetězené parametry a reve
 
 ## <a name="persistence"></a>Trvalost
 
-Microsoft FHIR Server má modulární trvalého modulu (viz [ `Microsoft.Health.Fhir.Core.Features.Persistence` ](https://github.com/Microsoft/fhir-server/src/Microsoft.Health.Fhir.Core/Features/Persistence)).
+Microsoft FHIR Server má modulární trvalého modulu (viz [ `Microsoft.Health.Fhir.Core.Features.Persistence` ](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence)).
 
 Aktuálně otevřený zdrojový kód FHIR Server obsahuje implementaci pro [služby Azure Cosmos DB](../cosmos-db/index-overview.md).
 

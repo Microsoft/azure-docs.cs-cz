@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: Tento článek obsahuje měny informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 0ba2c3229a806cd45e8ef27ac1dd8a258057d0ff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f3d4c8aeabb33e9f0f8b53f63c60c8d6ca702a83
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206081"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876670"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Měna předem připravených entit pro aplikace LUIS
 Měny předem připravených entit rozpozná měny v mnoha označení a zemí, bez ohledu na jazykovou verzi aplikace LUIS. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující Měna, která se záměry aplikace. Entita měny se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9d3b1c14ce872cd02fc8d4a8c2596d7d1e270895
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754369"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860469"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Sestavování a nasazování imagí kontejnerů v cloudu pomocí služby Azure Container Registry úlohy
 
@@ -21,7 +21,7 @@ ms.locfileid: "53754369"
 
 Vývojový cyklus typu „vnitřní smyčka“ je iterativní proces psaní kódu, sestavení a testování aplikace před potvrzením do správy zdrojového kódu. Rychlá úloha rozšiřuje vnitřní smyčku do cloudu, poskytuje ověření úspěšnosti sestavení a automatické odesílání úspěšně sestavených imagí do registru kontejneru. Vaše image se nativně sestavují v cloudu, blízko registru, a umožňují tak rychlejší nasazení.
 
-Veškeré vaše znalosti ohledně souboru Dockerfile můžete přímo aplikovat ve službě ACR Tasks. Pokud chcete provádět sestavení v cloudu pomocí ACR Tasks, nemusíte soubory Dockerfile měnit, stačí změnit jen spouštěný příkaz.
+Veškeré vaše znalosti ohledně souboru Dockerfile můžete přímo aplikovat ve službě ACR Tasks. Pokud chcete provádět sestavení v cloudu pomocí ACR Tasks, nemusíte soubory Dockerfile měnit, stačí změnit jen spouštěný příkaz. 
 
 V tomto kurzu, který je první částí série, se naučíte:
 
@@ -30,7 +30,7 @@ V tomto kurzu, který je první částí série, se naučíte:
 > * Sestavit image kontejneru v Azure
 > * Nasazení kontejneru do služby Azure Container Instances
 
-V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image.
+V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. Můžete také spouštět úlohy ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md) (aktuálně ve verzi preview), použití YAML souboru k definování kroky sestavení, vkládat a volitelně test několik kontejnerů.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

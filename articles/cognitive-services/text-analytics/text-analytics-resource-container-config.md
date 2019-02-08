@@ -4,19 +4,19 @@ titlesuffix: Text Analytics - Azure Cognitive Services
 description: Rozhraní text Analytics poskytuje každý kontejner se společnou architekturu konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrická data a nastavení zabezpečení pro vaše kontejnery.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 2360cb56f40bf899cec5d4a5fb6637eaac59f4d1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e390b3fbaca23dd60d1ab7553a2d69cfb9b4897c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224322"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878251"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnery dockeru pro analýzu textu
 
@@ -53,7 +53,7 @@ Toto nastavení najdete v následujícím místě:
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
 
-## <a name="eula-setting"></a>Smlouva EULA nastavení
+## <a name="eula-setting"></a>Nastavení Eula
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
@@ -65,11 +65,11 @@ Toto nastavení najdete v následujícím místě:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Nastavení protokolování
+## <a name="logging-settings"></a>Nastavení Logging
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Nastavení připojování
+## <a name="mount-settings"></a>Nastavení Mounts
 
 Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
 
@@ -77,10 +77,10 @@ Kontejnery pro analýzu textu nepoužívejte vstup nebo výstup připojí k ulo�
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Name | Typ dat | Popis |
+|Nepovinné| Název | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | Řetězec | Text Analytics kontejnery Nepoužívejte toto.|
-|Nepovinné| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | String | Text Analytics kontejnery Nepoužívejte toto.|
+|Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="hierarchical-settings"></a>Hierarchické nastavení
 

@@ -4,19 +4,19 @@ titleSuffix: QnA Maker- Azure Cognitive Services
 description: To C# založené na protokolu REST rychlý start vás provede s publikování znalostní báze, která odesílá na nejnovější verzi znalostní báze otestované vyhrazené index Azure Search představující publikované znalostní báze. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/18/2018
 ms.author: diberry
-ms.openlocfilehash: d8ca655eb3c1c06871b421acb840948aaee25dcd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 587661236e28b9e0fdf7d527b762897d417d0d98
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214417"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866844"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Publikování znalostní báze v pomocí nástroje QnA MakerC#
 

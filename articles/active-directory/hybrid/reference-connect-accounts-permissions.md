@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: abfdf75c6460efe50dcc9959ffb297f77a72f8c4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 539567634b940584c3bff47011e0891cc96ff0bd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813207"
+ms.locfileid: "55862067"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -89,7 +89,7 @@ Následuje souhrn stránkách průvodce Expresní instalace, přihlašovací úd
 
 | Stránka Průvodce | Přihlašovací údaje shromážděné | Oprávnění vyžadovaná | Používá pro |
 | --- | --- | --- | --- |
-| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří ADSync účet účet služby, který se používá ke spuštění synchronizační služby. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet ADSync service, který se používá ke spuštění synchronizační služby. |
 | Připojení k Azure AD |Přihlašovací údaje Azure AD directory |Roli globálního správce ve službě Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu Azure AD konektoru, který se používá pro operace probíhající synchronizace ve službě Azure AD.</li> |
 | Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří účet konektoru služby AD DS ve službě Active Directory a udělí oprávnění k němu. Vytvoření účtu slouží ke čtení a zápisu informací adresáře během synchronizace.</li> |
 

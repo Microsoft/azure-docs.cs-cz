@@ -1,25 +1,18 @@
 ---
 title: Azure Resource Health – nejčastější dotazy | Dokumentace Microsoftu
 description: Přehled Azure Resource Health
-services: Resource health
-documentationcenter: dev-center-name
-author: BernardoAMunoz
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
+author: stephbaron
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.date: 01/29/2019
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: BernardoAMunoz
-ms.openlocfilehash: 1e22c62c291909bb4079ebaf389cfbd15ae9d8d5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055633"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884532"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – nejčastější dotazy
 Přečtěte si odpovědi na běžné otázky o Azure Resource Health.
@@ -38,9 +31,9 @@ Služba Resource health provádí na základě různých kontrol [typ prostředk
 
 ## <a name="what-does-each-of-the-health-status-mean"></a>Co každý stav znamená?
 Existují tři stavy různých stavů:
-- K dispozici: Nejsou známé žádné problémy, na platformě Azure, který by mohl být ovlivňující tento prostředek
-- Není k dispozici: Resource health zjistila problémy, které mají vliv na prostředek
-- Neznámé: Resource health nemůže určit stav tohoto prostředku vzhledem k tomu, že se zastavila, obdrží informace o tom. 
+- K dispozici: Na platformě Azure, který by mohl být ovlivňující tento prostředek nejsou žádné známé problémy
+- Není k dispozici: Služba Resource health zjistila problémy, které mají vliv na prostředek
+- Neznámé: Stav prostředku nelze určit stav prostředku, protože byla zastavena, příjem informací o něm. 
 
 ## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Co znamená Neznámý stav Je něco špatného Můj prostředek?
 Stav je nastavena na neznámý při zastavení Resource Health obdrží informace o konkrétní prostředek. Přestože tento stav není úplným a rozhodujícím údaj o stavu prostředků v případech, kdy dochází k problému, může to znamenat, že došlo k potížím Azure.

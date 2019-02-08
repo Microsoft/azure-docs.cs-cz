@@ -12,16 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: f75ea7bd728b16c91122119c3e14da2a1e123d45
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9459aa9df74efa500109d7c281daad28355bd0d0
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452307"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895722"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rychlý start: Obnovit databázi do Managed Instance 
 
-V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnovení databáze (Wide World Importers – Standard záložní soubor) z Azure blob storage do služby Azure SQL Database [Managed Instance](sql-database-managed-instance.md). 
+V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnovení databáze (Wide World Importers – Standard záložní soubor) z úložiště objektů Blob v Azure do Azure SQL Database [Managed Instance](sql-database-managed-instance.md). 
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
@@ -40,11 +40,11 @@ Tento rychlý start:
   - [Konfigurace připojení typu point-to-site k Azure SQL Database Managed Instance z místní](sql-database-managed-instance-configure-p2s.md).
 
 > [!NOTE]
-> Další informace o zálohování a obnovení serveru SQL database s využitím úložiště objektů blob v Azure a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), naleznete v tématu [zálohování SQL serveru na adresu URL](sql-database-managed-instance-get-started-restore.md).
+> Další informace o zálohování a obnovení serveru SQL database s využitím úložiště objektů Blob v Azure a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), naleznete v tématu [zálohování SQL serveru na adresu URL](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Obnovte databázi ze zálohy
 
-V aplikaci SSMS postupujte podle těchto kroků k obnovení databáze Wide World Importers k Managed Instance. Záložní soubor databáze je uložena v účtu úložiště objektů blob v Azure předem nakonfigurovaná.
+V aplikaci SSMS postupujte podle těchto kroků k obnovení databáze Wide World Importers k Managed Instance. Záložní soubor databáze je uložen v předem nakonfigurovaný účet úložiště objektů Blob v Azure.
 
 1. Otevřete SMSS a připojte se k Managed Instance.
 2. Z nabídky na levé straně, klikněte pravým tlačítkem na Managed Instance a vyberte **nový dotaz** otevřete nové okno dotazu.

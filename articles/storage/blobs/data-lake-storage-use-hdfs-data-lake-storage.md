@@ -1,6 +1,6 @@
 ---
-title: Použití HDFS CLI s Azure Data Lake Storage Gen2 ve verzi Preview
-description: Úvod do rozhraní HDFS příkazového řádku pro verzi Preview služby Data Lake Storage Gen2
+title: Použití HDFS CLI s Azure Data Lake Storage Gen2
+description: Úvod do rozhraní HDFS příkazového řádku pro Data Lake Storage Gen2
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2691346433b3cc29b22446152ea797cefb02a380
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241266"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874174"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 Preview umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ať už máte cluster HDInsight připojený nebo spuštění úlohy Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu služby Azure Storage, můžete použít rozhraní příkazového řádku (CLI) pro načítání a manipulaci s načtená data.
+Azure Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ať už máte cluster HDInsight připojený nebo spuštění úlohy Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu služby Azure Storage, můžete použít rozhraní příkazového řádku (CLI) pro načítání a manipulaci s načtená data.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS rozhraní příkazového řádku s HDInsight
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak chcete filtrovat a zobrazit výsledky z rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: c59cb173480fbeefa890317fb4804f07b9f58f76
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 945f89633060df7f57aa937be392149340acc21d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158175"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55855998"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrování odpovědi, které jsou zahrnuty v odpovědi na vyhledávání  
 

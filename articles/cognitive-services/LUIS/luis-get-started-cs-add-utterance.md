@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: V tomto rychlém startu pro C# přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 77c85e5f2734c07f4a9fb91450cacd14b3a0151c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fb976842f3ea6f5df81c795b3be775ed57798b90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213153"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870941"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rychlý start: Změnit model použitíC#
 

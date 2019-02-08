@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Využijte cloudové algoritmy pro rozpoznávání emocí k vytváření lépe přizpůsobených aplikací.
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: overview
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 555b03be679b0d1ea61371d22ec9865e0e72b558
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 75bb742a111be980cf52b85353122a9acee37be3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215788"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879822"
 ---
 # <a name="what-is-the-emotion-api"></a>Co je rozhraní API pro rozpoznávání emocí?
 

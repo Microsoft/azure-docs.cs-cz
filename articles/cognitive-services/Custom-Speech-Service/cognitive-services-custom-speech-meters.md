@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
-ms.author: panosper
-ms.openlocfilehash: eb5a9e4a3a27a2a8c044749b8b4df0f198583bde
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 3f94ac32198c0d95488f207802ed5693e49b839d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223659"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872556"
 ---
 # <a name="custom-speech-service-meters-and-quotas"></a>Vlastní měření Speech Service a kvóty
 

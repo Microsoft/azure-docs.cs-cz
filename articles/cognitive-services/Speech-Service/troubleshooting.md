@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat, když použijete služby SDK řeči.
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217149"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859313"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Řešení potíží se službou Speech SDK
 
@@ -67,6 +67,8 @@ Můžete ověřit, že máte klíč platné předplatné spuštěním jednoho z 
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
+Pokud jste zadali klíč platným předplatným, příkaz vrátí autorizační token, jinak vrátí chybu.
+
 ### <a name="validate-an-authorization-token"></a>Ověření tokenu autorizace
 
 Pokud používáte autorizační token pro ověření, spusťte jeden z následujících příkazů ověřte, že ověřovací token, který je stále platný. Tokeny jsou platné po dobu 10 minut.
@@ -101,6 +103,8 @@ Pokud používáte autorizační token pro ověření, spusťte jeden z následu
     ```
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
+
+Pokud jste zadali platný autorizační token, příkaz vrátí přepisu zvuku souboru, jinak vrátí chybu.
 
 ---
 

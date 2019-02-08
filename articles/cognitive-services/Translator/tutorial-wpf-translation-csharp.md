@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se dozvíte, jak sestavit aplikaci WPF v jazyce C#, která používá rozhraní Translator Text API k překladu textu, načtení lokalizovaného seznamu podporovaných jazyků a dalším akcím.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: erhopf
-ms.openlocfilehash: f9fe1f40f758ead06c1e86fc0daeb64b72c5fd8b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e0d09c857a3b90682415252656effba189083d65
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476498"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857970"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Kurz: Napíšeme aplikaci WPF pro Translator Text pomocí jazyka C&#35;
 

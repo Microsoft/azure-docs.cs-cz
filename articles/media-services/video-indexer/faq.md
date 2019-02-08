@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0b74b6ef1d849f40e7a8e6f50d87e7b322e919e7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567268"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891772"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -66,7 +66,7 @@ V Video Indexer webový portál, můžete nahrát soubor média pomocí dialogu 
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak dlouho trvá Video Indexer k extrahování přehledů z média?
 
-Množství čas potřebný k indexování videa nebo zvukový soubor, pomocí rozhraní Video Indexer API a webové rozhraní Video Indexer, závisí na několika parametrů, třeba soubor délky a kvality, počet přehledů, které se nacházejí v souboru, počet [jednotky rezervované pro](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) k dispozici a zda [koncový bod streamování](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) je nebo není povolená. U většiny typů obsahu za předpokladu, že jsou povolené 10 rezervovaných jednotek S3 typu, můžeme předpovídat, že indexování přebírá z 1/3 ½ doby trvání zvukový nebo video soubor (například zdroj během 10 minut videa přebírá 3.5 až 5 minut). Doporučujeme však, že při spuštění několika testovacích souborů s vlastním obsahem a průměr získat lepší představu.
+Množství čas potřebný k indexování videa nebo zvukový soubor, pomocí rozhraní Video Indexer API a webové rozhraní Video Indexer, závisí na několika parametrů, třeba soubor délky a kvality, počet přehledů, které se nacházejí v souboru, počet [jednotky rezervované pro](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) k dispozici a zda [koncový bod streamování](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) je nebo není povolená. Doporučujeme spustit několik testovacích souborů s vlastním obsahem a využijte průměr získat lepší představu.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Můžete vytvořit vlastní pracovní postupy pro automatizaci procesů pomocí funkce Video Indexer
 

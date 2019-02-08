@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 121b5542f9388355b97744aa224ac824dd8d8728
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631936"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867201"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analyzátory pro zpracování ve službě Azure Search textu
 
@@ -92,7 +92,7 @@ Provede v tomto příkladu:
 * Analyzátory jsou vlastnosti třídy pole pro prohledávatelné pole.
 * Vlastní analyzátor je součástí definice indexu. Pravděpodobně je lehce přizpůsobit (například přizpůsobení jednu možnost v jednom filtru) nebo přizpůsobit na více místech.
 * V takovém případě je vlastní analyzátor "my_analyzer", která dále používá vlastní standardní tokenizátor "my_standard_tokenizer" a dva filtry token: malá písmena a přizpůsobené asciifolding filtr "my_asciifolding".
-* Definuje také filtr vlastních "map_dash" char nahradit všechny pomlčky podtržítky před Tokenizace (standardní tokenizátor konce čárka – ale ne podtržítko).
+* Definuje také 2 vlastní char filtry "map_dash" a "remove_whitespace". První z nich nahradí všechny pomlčky podtržítky, zatímco druhá odebere všechny mezery. Mezery musí být v pravidlech mapování kódování UTF-8. Char filtry se použijí před Tokenizace a bude mít vliv na použitím výsledných tokenů (standardní tokenizátor zalomení na pomlčky a mezery, ale ne na podtržítko).
 
 ~~~~
   {
@@ -116,7 +116,8 @@ Provede v tomto příkladu:
            "name":"my_analyzer",
            "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",
            "charFilters":[
-              "map_dash"
+              "map_dash",
+              "remove_whitespace"
            ],
            "tokenizer":"my_standard_tokenizer",
            "tokenFilters":[
@@ -130,6 +131,11 @@ Provede v tomto příkladu:
            "name":"map_dash",
            "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
            "mappings":["-=>_"]
+        },
+        {
+           "name":"remove_whitespace",
+           "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
+           "mappings":["\\u0020=>"]
         }
      ],
      "tokenizers":[

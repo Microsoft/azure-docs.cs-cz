@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: f4ae164a9862a32b45fd5bd0ae7bc09a1180c344
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 373bcecfb1780aa567b1250e53096b9eed0d0f21
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733480"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858735"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Aktuální verze jsou:
 * Service Fabric Tools pro Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 obsahuje Service Fabric Tools for Visual Studio 2.4.11024.1 
 
-Seznam podporovaných verzí najdete v tématu [Podpora pro Service Fabric](service-fabric-support.md)
+Seznam podporovaných verzí najdete v tématu [verzí Service Fabric](service-fabric-versions.md)
 
 > [!NOTE]
 > Upgraduje se jeden počítač pro aplikaci nebo clusteru se nepodporují clustery (OneBox); Odstranění clusteru OneBox a znovu jej vytvořte, pokud je potřeba provést inovaci clusteru nebo jakýchkoli problémů provádí upgrade aplikace. 

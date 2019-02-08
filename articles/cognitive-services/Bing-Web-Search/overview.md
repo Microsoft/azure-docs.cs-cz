@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Rozhraní API Bingu pro vyhledávání na webu je služba RESTful, která poskytuje okamžité odpovědi na dotazy uživatelů. Výsledky hledání je možné snadno nakonfigurovat tak, aby zahrnovaly webové stránky, obrázky, videa, zprávy, překlady a další. Výsledky jsou ve formátu JSON a vycházejí z relevance hledání a vašich předplatných rozhraní API Bingu pro vyhledávání na webu.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 46d79b1ac6c56ba953eb0908e46338387b69ff1f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768226"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861795"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Co je rozhraní API Bingu pro vyhledávání webu?
 

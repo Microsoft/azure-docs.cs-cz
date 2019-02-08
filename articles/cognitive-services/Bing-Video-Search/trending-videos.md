@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Další informace o použití API pro vyhledávání videí Bingu pro vyhledávání na webu populárních videí.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 55f29a31a9574c7c32e6708565e961950520593f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 2aa3c0cd9112f2de9ccda818e74b0b2c377133bf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566065"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869360"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>Získat populární videa s API pro vyhledávání videí Bingu 
 

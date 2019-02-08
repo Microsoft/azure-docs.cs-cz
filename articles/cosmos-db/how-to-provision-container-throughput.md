@@ -6,34 +6,34 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 550201e692bb79197d50c2f44017c43ab9ea2016
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4df8a12581b5d71a76964ca1e3d40c6c53185f67
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477318"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860316"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Zřizování propustnosti kontejneru Azure Cosmos
 
-Tento článek vysvětluje, jak zřídit propustnost pro kontejner (kolekci, graf, tabulku) ve službě Azure Cosmos DB. Propustnost můžete zřídit pro jeden kontejner nebo [pro databázi](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost pro kontejner můžete zřídit pomocí webu Azure Portal, Azure CLI nebo sad SDK služby Cosmos DB.
+Tento článek vysvětluje, jak zřídit propustnost pro kontejner (kolekci, graf nebo tabulku) ve službě Azure Cosmos DB. Můžete zřídit propustnost pro jedním kontejnerem nebo [zřizování pro databázi](how-to-provision-database-throughput.md) a sdílet mezi kontejnery v rámci databáze. Propustnost kontejneru můžete zřídit pomocí webu Azure portal, rozhraní příkazového řádku Azure nebo sady SDK služby Azure Cosmos DB.
 
-## <a name="provision-throughput-using-azure-portal"></a>Zřízení propustnosti pomocí webu Azure Portal
+## <a name="provision-throughput-by-using-azure-portal"></a>Propustnost zřízení pomocí webu Azure portal
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvořte nový účet služby Cosmos DB](create-sql-api-dotnet.md#create-a-database-account) nebo vyberte existující účet.
+1. [Vytvoření nového účtu služby Azure Cosmos DB](create-sql-api-dotnet.md#create-a-database-account), nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nová kolekce**. Potom ve formuláři vyplňte následující podrobnosti:
+1. Otevřít **Průzkumník dat** podokně a vyberte **novou kolekci**. Dále zadejte následující podrobnosti:
 
-   * Vytvořte novou databázi nebo použijte existující.
-   * Zadejte ID kolekce (případně tabulky nebo grafu).
-   * Zadejte hodnotu klíče oddílu, například `/userid`.
-   * Zadejte propustnost, například 1 000 RU.
+   * Označuje, zda vytváříte novou databázi nebo použití existující.
+   * Zadejte ID kolekce (nebo tabulka nebo graf).
+   * Zadejte hodnotu klíče oddílu (například `/userid`).
+   * Zadejte propustnost (třeba 1 000 ru).
    * Vyberte **OK**.
 
-![Zřízení propustnosti kontejneru v rozhraní SQL API](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+![Snímek obrazovky z Průzkumníku dat s novou kolekci zvýrazněnou](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli"></a>Zřízení propustnosti pomocí Azure CLI
+## <a name="provision-throughput-by-using-azure-cli"></a>Zřizování propustnosti s použitím rozhraní příkazového řádku Azure
 
 ```azurecli-interactive
 # Create a container with a partition key and provision throughput of 1000 RU/s
@@ -46,9 +46,9 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-Pokud zřizujete propustnosti pro účet Cosmos nakonfigurovaný pro MongoDB API služby Azure Cosmos DB, použijte ' / myShardKey "pro cestu ke klíči oddílů a při zřizování propustnosti pro účet Cosmos nakonfigurovaný pro rozhraní Cassandra API, použijte ' / myPrimaryKey" pro Cesta klíče oddílu.
+Pokud zřizujete propustnosti pro účet služby Azure Cosmos DB nakonfigurovaný pro MongoDB API služby Azure Cosmos DB, použijte `/myShardKey` pro cestu ke klíči oddílů. Pokud zřizujete propustnosti pro účet služby Azure Cosmos DB nakonfigurovaný pro rozhraní Cassandra API, použijte `/myPrimaryKey` pro cestu ke klíči oddílů.
 
-## <a name="provision-throughput-using-net-sdk"></a>Zřízení propustnosti pomocí sady .NET SDK
+## <a name="provision-throughput-by-using-net-sdk"></a>Zřizování propustnosti s použitím sady .NET SDK
 
 > [!Note]
 > Propustnost pro všechna rozhraní API s výjimkou rozhraní API Cassandra můžete zřídit pomocí rozhraní SQL API.
@@ -79,7 +79,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 ## <a name="next-steps"></a>Další postup
 
-V následujících článcích najdete informace o zřizování propustnosti ve službě Cosmos DB:
+Zobrazit další informace o zřizování propustnosti ve službě Azure Cosmos DB v následujících článcích:
 
 * [Zřízení propustnosti pro databázi](how-to-provision-database-throughput.md)
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)

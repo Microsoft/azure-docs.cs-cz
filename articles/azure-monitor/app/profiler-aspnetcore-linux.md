@@ -3,20 +3,21 @@ title: Profilování webových aplikací ASP.NET Core Azure s Linuxem pomocí Ap
 description: Koncepční přehled a podrobný kurz o tom, jak používat Application Insights Profiler.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
+ms.reviewer: mbullwin
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb294f0a3c22d52bc40f30e1d8655aed185857c6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.author: cweining
+ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118485"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884303"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilování webových aplikací ASP.NET Core Azure s Linuxem pomocí Application Insights Profiler
 
@@ -174,4 +175,4 @@ Pracujeme na řešení tohoto problému.
 ## <a name="next-steps"></a>Další postup
 Pokud používáte vlastní kontejnery, které jsou hostované ve službě Azure App Service, postupujte podle pokynů v [ povolit Profiler služby pro kontejnerizované aplikace ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) povolit Application Insights Profiler.
 
-Nahlásit případné problémy nebo návrhy k úložišti Application Insights GitHub: [ApplicationInsights Profiler AspNetCore: Problémy s](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+Nahlásit případné problémy nebo návrhy k úložišti Application Insights GitHub: [ApplicationInsights-Profiler-AspNetCore: Problémy s](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

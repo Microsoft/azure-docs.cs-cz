@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 734e337ba8dff996e9b9cecd7602115bf97b4810
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 97785927d5629aeca81b08353f2f9850c0a31ea0
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773267"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894628"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů účtu v aplikaci Microsoft Authenticator
 
@@ -83,7 +83,7 @@ Pro osobní účty Microsoft můžete prokázat vaši identitu zadáním hesla s
     ![Aplikace Microsoft Authenticator, abyste mohli naskenovat QR kód](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Další informace o tom, jak získat kód QR, naleznete v tématu [Začínáme s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install#add-accounts-to-the-app) nebo [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app)závislosti na tom, zda váš správce aktivoval na bezpečnostní údaje.
+    >Další informace o tom, jak získat kód QR, naleznete v tématu [Začínáme s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) nebo [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app)závislosti na tom, zda váš správce aktivoval na bezpečnostní údaje.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Řešení potíží se zálohování a obnovení
 Existuje několik důvodů, proč vaše záloha nemusí být k dispozici:

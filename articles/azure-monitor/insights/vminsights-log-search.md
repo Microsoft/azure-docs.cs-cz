@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: e9e00dd9d05ff7339a6b5fd93e86bae61fbbf5ee
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3ab70febbb41b26fd824f9ae6ef0d00358c7530f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188419"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864413"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, počítače a zpracování dat inventáře a informace o stavu a předá jej do úložiště dat Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -112,14 +112,14 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 |ReportReferenceLink |Obsahuje odkazy na sestavy související se daný pozorovat. |
 |AdditionalInformation |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL záznamů
+### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenta závislostí. Tyto záznamy mají vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--|:--|
-| Typ | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
-| ID prostředku | Jedinečný identifikátor pro počítač v pracovním prostoru |
+| ResourceId | Jedinečný identifikátor pro počítač v pracovním prostoru |
 | ResourceName_s | Jedinečný identifikátor pro počítač v pracovním prostoru |
 | ComputerName_s | Plně kvalifikovaný název domény počítače |
 | Ipv4Addresses_s | Seznam serveru IPv4 adres |
@@ -142,9 +142,9 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 
 | Vlastnost | Popis |
 |:--|:--|
-| Typ | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
-| ID prostředku | Jedinečný identifikátor procesu v rámci pracovního prostoru |
+| ResourceId | Jedinečný identifikátor procesu v rámci pracovního prostoru |
 | ResourceName_s | Jedinečný identifikátor procesu v počítači, na kterém je spuštěná|
 | MachineResourceName_s | Název prostředku počítače |
 | ExecutableName_s | Název spustitelného souboru procesu |
@@ -167,6 +167,12 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 ### <a name="list-all-known-machines"></a>Seznam všech známých počítačů
 `ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
+### <a name="when-was-the-vm-last-rebooted"></a>Pokud byl virtuální počítač poslední restartovat
+`let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+
+### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Přehled virtuálních počítačů Azure pomocí bitové kopie, umístění a skladové položky
+`ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Seznam kapacita fyzické paměti všech spravovaných počítačů.
 `ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
@@ -185,7 +191,7 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Seznam všech známých procesů v zadaném počítači
 `ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
-### <a name="list-all-computers-running-sql"></a>Seznam všech počítačů s SQL
+### <a name="list-all-computers-running-sql-server"></a>Seznam všech počítačů s SQL serverem
 `ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Zobrazí seznam všech verzí produktu jedinečné nástroje curl do svého datacentra
@@ -193,6 +199,18 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvořit skupinu počítačů všechny počítače se systémem CentOS
 `ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+
+### <a name="bytes-sent-and-received-trends"></a>Bajty odeslané a přijaté trendů
+`VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+
+### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Které virtuální počítače Azure na maximum bajtů přenosu
+`VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+
+### <a name="link-status-trends"></a>Trendy stavu propojení
+`VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+
+### <a name="connection-failures-trend"></a>Trend selhání připojení
+`VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozí připojení ze skupiny počítačů
 ```

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak připravit text pro přizpůsobení akustických a jazykových modelů a hlasová písma pro službu rozpoznávání řeči.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 44f2cb9e95a9a79c85c23b0eebd919851b94c1f8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 31813cbbe4bdb647d43e99e7585d1eb3bb6e8a5c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228130"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857171"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Přepis pokyny k používání Speech Service
 

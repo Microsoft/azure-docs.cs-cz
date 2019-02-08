@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Použití rozhraní API Bingu pro vyhledávání entit extrahovat a vyhledávat entity a místa z vyhledávacích dotazů.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9190c87b7afff66162e25fb3cd08bfeac76aff74
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 957a104b8fea7274763f16320cc094ede1f94567
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757451"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871829"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Co je API pro vyhledávání entit Bingu?
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: b49c69a488402e593573e7f9e4fda81057519149
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732443"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884456"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2
 
@@ -93,7 +93,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 6. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
 7. Vyberte **Další: Upřesnit >**
 8. Ponechte hodnoty v rámci **zabezpečení** a **VIRTUÁLNÍCH sítí** pole výchozí nastavení.
-9. V části **Data Lake Storage Gen2 (Preview)** nastavte **Hierarchický obor názvů** na **Povoleno**.
+9. V **Data Lake Storage Gen2** části sada **hierarchického oboru názvů** k **povoleno**.
 10. Klikněte na tlačítko **revize + vytvořit** k vytvoření účtu úložiště.
 
     ![Snímek obrazovky znázorňující vytvoření účtu úložiště na webu Azure Portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)

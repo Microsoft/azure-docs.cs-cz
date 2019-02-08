@@ -1,6 +1,6 @@
 ---
 title: Nastavení oprávnění pro Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage
-description: V tento postup se dozvíte, jak nastavit oprávnění pomocí Průzkumníka služby Azure Storage pro soubory a adresáře v Azure Data Lake Storage Gen2 účet úložiště, které podporuje (Preview).
+description: V tomto jak, se dozvíte, jak nastavit oprávnění pomocí Průzkumníka služby Azure Storage pro souborů a adresářů v účtu úložiště, které podporuje Azure Data Lake Storage Gen2.
 services: storage
 author: roygara
 ms.custom: mvc
@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: fd4ca3946ed4c32a8fd2f08c1c242c33dbca2aaf
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238309"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867048"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2-preview"></a>Nastavení souborů a adresářů úrovně oprávnění pomocí Průzkumníka služby Azure Storage s Azure Data Lake Storage Gen2 (Preview)
+# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Nastavení souborů a adresářů úrovně oprávnění pomocí Průzkumníka služby Azure Storage s Azure Data Lake Storage Gen2
 
-Soubory uložené v Azure Data Lake Storage Gen2 (Preview) podporu jemně odstupňovaná oprávnění a řízení přístupu Správa seznamu (ACL). Společně jemně odstupňovaná oprávnění a správy seznamu ACL umožňují spravovat přístup k vašim datům na velmi podrobné úrovni.
+Soubory uložené v Azure Data Lake Storage Gen2 podporují podrobné oprávnění a přístup k řízení seznamu ACL. Společně jemně odstupňovaná oprávnění a správy seznamu ACL umožňují spravovat přístup k vašim datům na velmi podrobné úrovni.
 
 V tomto článku se dozvíte, jak používat Azure Storage Explorer:
 

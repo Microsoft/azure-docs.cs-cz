@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c796ccf9466f83714b429f6551618529e5fef47c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 74a9764187b15bddf1dc48fa2b7988217d31abce
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164197"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888724"
 ---
-<!--author=alkohli last changed: 03/17/16-->
-
 ## <a name="troubleshooting-update-failures"></a>Řešení potíží se selháním aktualizací
 **Co dělat, pokud se zobrazí oznámení o selhání kontrol před upgradem?**
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Použít tento rychlý start k odesílání požadavků na rozhraní Web API vyhledávání Bingu REST pomocí PHP a přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 68d2542cb4f3ecafb942a0a60327bf7420bdc190
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 555e2a3a3f591803346d351daec136d1999ea081
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193586"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866123"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API webové vyhledávání Bingu  
 

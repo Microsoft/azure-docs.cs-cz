@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: e4b217ada2aae159680b113b6ddcb41c9d121f24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753057"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894696"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse IP pravidla brány firewall
 
@@ -92,7 +92,7 @@ Kvůli zvýšení výkonu se pravidla brány firewall na úrovni serveru IP se d
 > [!TIP]
 > Můžete použít [auditování služby SQL Database](sql-database-auditing.md) auditovat změny brány firewall na úrovni serveru a databáze.
 
-## <a name="manage-ip-firewall-rules-using-the-azure-portal"></a>Správa pravidel brány firewall protokolu IP pomocí webu Azure portal
+## <a name="manage-server-level-ip-firewall-rules-using-the-azure-portal"></a>Spravovat pravidla brány firewall na úrovni serveru IP pomocí webu Azure portal
 
 Pokud chcete nastavit pravidlo firewallu protokolu IP úrovni serveru na webu Azure Portal, můžete buď přejít na stránku přehled pro vaši databázi Azure SQL nebo na stránce Přehled pro váš server SQL Database.
 
@@ -196,7 +196,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [Odstranění pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Server |Odebere pravidla brány firewall na úrovni serveru IP |
 | [Získání pravidla brány Firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Server | Získá pravidla brány firewall na úrovni serveru IP |
 
-## <a name="server-level-ip-firewall-rule-versus-a-database-level-ip-firewall-rule"></a>Pravidlo brány firewall na úrovni serveru IP a pravidlo firewallu protokolu IP na úrovni databáze
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Úroveň serveru a pravidla brány firewall na úrovni databáze IP
 
 Otázka: By měl být uživatelé jednu databázi plně izolované od jiné databáze?
 Pokud ano, udělení přístupu pomocí pravidel brány firewall na úrovni databáze IP. Tím předejdete pomocí pravidla firewallu protokolu IP serveru, které povolují přístup přes bránu firewall, aby všechny databáze, zmenšete hloubku vaší ochrany.

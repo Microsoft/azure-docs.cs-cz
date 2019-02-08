@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0c2ff94d65e775a12fd76b3115aa8b69ae9a405f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9b4dc2e48093398077071eb2423a80c86eb62c67
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815009"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894934"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Směrování provozu sítě s směrovací tabulky pomocí Powershellu
 
@@ -248,7 +248,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 
 Přestože k otestování směrování v tomto článku se používá trasování tras, povolení průchodu protokolu ICMP bránou Windows Firewall v produkčních prostředích se nedoporučuje.
 
-V části [Povolení předávání IP](#enable-ip-forwarding) jste povolili předávání IP v rámci Azure pro síťové rozhraní virtuálního počítače. Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolení předávání IP v rámci operačního systému *myVmNva*.
+Jste povolili předávání IP v rámci Azure pro síťové rozhraní Virtuálního počítače v povolit předávání IP. Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolení předávání IP v rámci operačního systému *myVmNva*.
 
 Z příkazového řádku na *myVmPrivate* virtuálního počítače, připojení k vzdálené plochy *myVmNva*:
 

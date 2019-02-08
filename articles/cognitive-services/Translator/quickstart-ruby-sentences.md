@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte délky vět v textu pomocí rozhraní Translator Text API a Ruby.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 07da6172b53b9904eb30a61d8b69b0f5b6693fdd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f56029fb0d5ca0d9105064400f9e1f9e90a8fa38
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470106"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857290"
 ---
 # <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Získání délky větu s rozhraním Translator Text REST API (Ruby)
 

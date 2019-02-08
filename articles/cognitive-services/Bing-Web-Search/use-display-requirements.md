@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Požadavky pro zobrazení výsledky hledání z rozhraní API pro vyhledávání Bingu ve svých aplikacích.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 088d4ba763e8f2996dfbed1dbcc11c8eeaad3a06
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 25636cad514df18a289c9c81ea95bc53e6ec203c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513128"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861319"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
 

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Další informace o různých moderování obsahu a projděte si rozhraní API pro Content Moderator.
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 0620ee1d0969a57801fe524684d02e2ef9ef6ba6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a6bd92a675885cb343b07ef981c38571af0a931c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223374"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862458"
 ---
 # <a name="content-moderator-api-reference"></a>Referenční informace k rozhraní API Content Moderatoru
 

@@ -85,7 +85,7 @@ items:
       href: Quickstarts/create-publish-knowledge-base.md
     - name: Přidání komentářů do znalostní báze
       href: How-to/chit-chat-knowledge-base.md
-    - name: Migrace znalostní báze z verze Preview
+    - name: Migrace znalostní báze
       href: Tutorials/migrate-knowledge-base.md
     - name: Úprava znalostní báze
       href: How-To/edit-knowledge-base.md
@@ -184,9 +184,9 @@ items:
     href: https://docs.microsoft.com/search/index?search=QnAMaker
   - name: Blog
     href: https://blog.botframework.com/category/QnAMaker/
-ms.openlocfilehash: 5c62ae1762a9e86a3fb57bda8347bda57df72484
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bf02f89a0a3269552f53d1f17adad3f6003dbbee
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091953"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818562"

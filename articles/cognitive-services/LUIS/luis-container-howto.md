@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Kontejner LUIS načte trénovaného nebo publikované aplikace do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 1ae4396c6b91f81e273e6ad171f4cac9b55445f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296895"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864720"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -252,7 +252,7 @@ Další [příklady](luis-container-configuration.md#example-docker-run-commands
 
 Kontejner poskytuje koncový bod předpovědi dotazů založených na REST API. Koncové body pro publikované aplikace (přípravné nebo produkční) mít _různých_ trasy než koncové body pro trénovaný aplikace. 
 
-Použít hostitele, https://localhost:5000, pro kontejner rozhraní API. 
+Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API. 
 
 |Typ balíčku|Metoda|Trasa|Parametry dotazu|
 |--|--|--|--|

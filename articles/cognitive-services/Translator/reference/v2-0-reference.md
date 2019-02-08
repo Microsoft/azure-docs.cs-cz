@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro verze 2.0 Translator Text API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9491550aae8f88621d947572741f492adcf9cdd0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8d57723f6e51fb392e4fdbfb2b2a445d48635e3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463221"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861710"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -327,7 +327,7 @@ Typ obsahu odpovědi: application/xml
 |text|(prázdné)   |Povinná hodnota. Řetězec obsahující věty nebo věty zadaného jazyka, který má být používaný wave Stream. Velikost textu mluvit nesmí přesáhnout 2000 znaků.|query|řetězec|
 |language|(prázdné)   |Povinná hodnota. Řetězec představující kód podporovaného jazyka mluvit textu. Kód musí být uvedený v seznamu kódů vrátil z metody `GetLanguagesForSpeak`.|query|řetězec|
 |formát|(prázdné)|Volitelné. Řetězec určující identifikátor typu obsahu V současné době `audio/wav` a `audio/mp3` jsou k dispozici. Výchozí hodnota je `audio/wav`.|query|řetězec|
-|Možnosti|(prázdné)    |<ul><li>Volitelné. Řetězec určující vlastnosti syntetizovaný řeči:<li>`MaxQuality` a `MinSize` je možné určit kvalitu zvukového signálu. S `MaxQuality`, můžete získat hlasy s nejvyšší kvalitu a `MinSize`, můžete získat hlasy s nejmenší velikost. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` je možné určit požadovanou pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára.|` to include multiple options. For example  `MaxQuality|Muž ".</li></li></ul> |query|řetězec|
+|Možnosti|(prázdné)    |<ul><li>Volitelné. Řetězec určující vlastnosti syntetizovaný řeči:<li>`MaxQuality` a `MinSize` je možné určit kvalitu zvukového signálu. S `MaxQuality`, můžete získat hlasy s nejvyšší kvalitu a `MinSize`, můžete získat hlasy s nejmenší velikost. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` je možné určit požadovanou pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára `|` zahrnout více možností. Například `MaxQuality|Male`.</li></li></ul> |query|řetězec|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
 |OCP-Apim-Subscription-Key|(prázdné)  |Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|řetězec|
 

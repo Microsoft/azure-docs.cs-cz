@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Připojte se k rozhraní API Bingu pro vyhledávání zpráv z webové aplikace ASP.NET Core.
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: e90b630b46f9c54175e30cf28e631ba40146f9ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189166"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875429"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Kurz: Připojení k Bingu pro vyhledávání zpráv rozhraní API pomocí připojené služby v sadě Visual Studio aC#
 

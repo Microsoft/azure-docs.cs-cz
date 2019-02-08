@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: bffdbf58929a0cb7525726be53d83794adf315bf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a180dd92af20df5cd8f7dbfd12687e7cddd223f2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295572"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856618"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Machine learning s příklady algoritmů základy
 Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine learning základní informace o další informace o Oblíbené algoritmy, které jsou použity jako odpovědi na běžné dotazy machine learning. Příklady algoritmů pomoct pochopit, jaké algoritmy mají použít, a co slouží pro začátečníky learning počítače.
@@ -32,8 +32,8 @@ Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine 
 * Podrobnější diskuzi o různé typy algoritmů strojového učení, jak se používají a jak zvolit ten správný pro vaše řešení, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
 * Seznam podle kategorie všechny dostupných algoritmů strojového učení v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] Machine Learning Studio algoritmus a pomůže modulu.
 * Úplný abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] Studio algoritmu strojového učení a pomůže modulu.
-* Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
 * Přehled o galerii Azure AI a mnoho vytvářené komunitou prostředky k dispozici, najdete v části [sdílené složky a vyhledejte prostředky v galerii Azure AI](gallery-how-to-use-contribute-publish.md).
+* Můžete stáhnout a vytisknout diagram s přehledem možností nástroje Machine Learning Studio: [Microsoft Azure Machine Learning Studio přehled možností (PDF)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf).
 
 
 

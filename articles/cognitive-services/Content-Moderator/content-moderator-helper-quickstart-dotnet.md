@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Jak vracet klienta Content Moderatoru pomocí sady Azure Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 08902df231fedd2c1c5653052540cb1cdabba9cf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 94a16d03e47a9bec29e5e1c4326beab376dd33dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224935"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864396"
 ---
 # <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>Rychlý start: Kód pomocného objektu vrátit Content Moderator klienta
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Pythonu a rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 72cc14bf9dfece008a96ef57f86053647d8fa8e7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 36ff3f4b73db8889349e977aaf80a754894d75ae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207255"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857333"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převést převod textu na řeč pomocí Pythonu
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157461"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895631"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrování provozu sítě s směrovací tabulky pomocí rozhraní příkazového řádku Azure
 
@@ -44,7 +44,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-route-table"></a>Vytvoření směrovací tabulky
 
-Než vytvoříte směrovací tabulku, vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az_group_create) pro všechny prostředky vytvořené v tomto článku. 
+Než vytvoříte směrovací tabulku, vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group) pro všechny prostředky vytvořené v tomto článku. 
 
 ```azurecli-interactive
 # Create a resource group.
@@ -78,7 +78,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
 
-Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvořit virtuální síť a podsíť. Vytvoření virtuální sítě s jednou podsítí s [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create).
+Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvořit virtuální síť a podsíť. Vytvoření virtuální sítě s jednou podsítí s [az network vnet vytvořit](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Přidružit *myRouteTablePublic* tabulky tras, abyste *veřejné* podsíť s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update).
+Přidružit *myRouteTablePublic* tabulky tras, abyste *veřejné* podsíť s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet).
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -136,7 +136,7 @@ az vm create \
 
 Vytvoření virtuálního počítače trvá několik minut. Nepokračujte k dalšímu kroku dokud Azure nedokončí vytváření virtuálního počítače a vrátí výstup o virtuálním počítači. 
 
-Aby síťové rozhraní mohlo směrovat síťový provoz, který se do něj odešle a který není určený pro jeho vlastní IP adresu, musí být pro síťové rozhraní povolené předávání IP. Povolit předávání IP pro síťové rozhraní s [az network nic update](/cli/azure/network/nic#az_network_nic_update).
+Aby síťové rozhraní mohlo směrovat síťový provoz, který se do něj odešle a který není určený pro jeho vlastní IP adresu, musí být pro síťové rozhraní povolené předávání IP. Povolit předávání IP pro síťové rozhraní s [az network nic update](/cli/azure/network/nic).
 
 ```azurecli-interactive
 az network nic update \
@@ -145,7 +145,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolení předávání IP v rámci Virtuálního počítače s operačním systémem [sada rozšíření az vm](/cli/azure/vm/extension#az_vm_extension_set):
+Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolení předávání IP v rámci Virtuálního počítače s operačním systémem [sada rozšíření az vm](/cli/azure/vm/extension):
 
 ```azurecli-interactive
 az vm extension set \
@@ -268,7 +268,7 @@ Zavření relace SSH k oběma *myVmPublic* a *myVmPrivate* virtuálních počít
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, použijte [odstranění skupiny az](/cli/azure/group#az_group_delete) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
+Pokud už je nepotřebujete, použijte [odstranění skupiny az](/cli/azure/group) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

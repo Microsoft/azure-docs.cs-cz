@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 1430bc4a9de863c25e40a2655f0a1cd7a75ae0f7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561381"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858276"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení služby Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání
 
@@ -32,6 +32,9 @@ Hlavní nutný kompromis je, že Správa procesu pro zotavení po havárii ve ve
 ## <a name="how-to-configure-logins-and-users"></a>Konfigurace přihlašovacích údajů a uživatelů
 
 Pokud použijete přihlášení a uživatele (místo uživatelé s omezením), musejí udělat dodatečné kroky k zajištění, že existují stejné přihlášení v hlavní databázi. Následující oddíly popisují kroky zahrnuté a další důležité informace.
+
+  >[!NOTE]
+  > Je také možné používat přihlašovací údaje Azure Active Directory (AAD) ke správě vašich databází. Další informace najdete v tématu [přihlášeních Azure SQL a uživatelé](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Nastavení přístupu uživatelů k sekundární nebo obnovené databáze
 

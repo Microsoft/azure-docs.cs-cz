@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak zadat doménu kategorizace obrázků vrací podrobné informace o obrázku.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 76484a2340e527dc016f321dbafa29adb7c358b5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: df7e61bb9d064c4530c0212cc02fbdd849017612
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157529"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871995"
 ---
 # <a name="detecting-domain-specific-content"></a>Rozpoznávání obsahu specifického pro doménu
 
@@ -33,7 +33,7 @@ Existují dvě možnosti, jak používat modely určité domény:
 
 Můžete vytvořit seznam doménově specifické modely podporované pro počítačové zpracování obrazu. Počítačové zpracování obrazu v současné době podporuje následující doménově specifické modely pro zjišťování obsahu specifického pro doménu:
 
-| Name | Popis |
+| Název | Popis |
 |------|-------------|
 | celebrit | Rozpoznávání celebrit, podporované pro klasifikaci obrázků v `people_` kategorie |
 | Zajímavá | Rozpoznávání památek, podporované pro klasifikaci obrázků v `outdoor_` nebo `building_` kategorie |

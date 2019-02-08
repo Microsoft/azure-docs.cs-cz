@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Jak volat rozhraní API pro vlastní rozhodnutí služeb z aplikace pro smartphone.
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: slivkins
-ms.openlocfilehash: fed45ec10eca26c58bc3b3c70991c1f7f468e393
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e5c99aae61fb927ea7f101bab74d661a747f88b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219409"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870006"
 ---
 # <a name="call-api-from-an-app"></a>Volání rozhraní API z aplikace
 

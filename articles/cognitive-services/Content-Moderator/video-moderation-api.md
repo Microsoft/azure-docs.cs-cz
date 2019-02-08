@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Jak analyzovat obsah videa pro různé nežádoucím pomocí sady obsahu Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: bb34d05a476e51722d7bccf14e41d960083f0b25
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7e987c1249360b14fddf8af57c61fdd1a46ee6c5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207447"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864787"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analýza videa obsah pro nežádoucím vC#
 

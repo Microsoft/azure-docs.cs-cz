@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Přidání entity (klíčových dat v doméně vaší aplikace) v aplikacích Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6dba36eadde9bc9bb1e6ca778a3bce07b561e54
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 61211db72928bebf0e1ea50cad6362337f66f0eb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207288"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859606"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 

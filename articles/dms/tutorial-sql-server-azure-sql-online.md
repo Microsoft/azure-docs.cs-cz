@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: ac7b4dc563fa663dd016971ba6a27104860c8cce
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.date: 02/07/2019
+ms.openlocfilehash: e28aba5c482cbacefbe42be9c8825e58c130fe76
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767962"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858939"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Kurz: Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do služby [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) s minimálními výpadky. V tomto kurzu pomocí služby Azure Database Migration Service provedete migraci databáze **Adventureworks2012** obnovené do místní instance SQL Serveru 2016 (nebo novější) do služby Azure SQL Database.
@@ -233,7 +233,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
  
 3. Vyberte **+ Nový projekt migrace**.
 4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **Typ zdrojového serveru** vyberte **SQL Server** a v textovém poli **Typ cílového serveru** vyberte **Azure SQL Database**.
-5. V části **Zvolte typ aktivity** vyberte **Online migrace dat**.
+5. V **zvolte typ aktivity** vyberte **Online data migrace**.
 
     ![Vytvoření projektu Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-create-project3.png)
 
@@ -312,6 +312,6 @@ Po dokončení počátečního úplného načtení se databáze označí jako **
     ![Stav aktivity – Dokončeno](media/tutorial-sql-server-to-azure-sql-online/dms-activity-completed.png)
 
 ## <a name="next-steps"></a>Další postup
-- Informace o známých problémech a omezeních při provádění online migrací do služby Azure Database for MySQL najdete v článku [Známé problémy s online migracemi do služby Azure SQL Database a jejich řešení](known-issues-azure-sql-online.md).
+- Informace o známých problémech a omezeních při provádění online migraci do Azure SQL Database, najdete v článku [– známé problémy a řešení pro Azure SQL Database online migrace](known-issues-azure-sql-online.md).
 - Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-- Informace o službě Azure SQL Database najdete v článku [Co je služba Azure SQL Database?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+- Informace o službě Azure SQL Database, najdete v článku [novinky službě Azure SQL Database?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).

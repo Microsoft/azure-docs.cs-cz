@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 824bedf782d6d227f2fa3adcf52492bb5a3eb478
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c018bec98fc9e1edc22a8535d06961d192f4c992
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696859"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880410"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Verze Preview: Nasazení ochrany hesel Azure AD
 
@@ -169,7 +169,7 @@ Existují dva instalační programy požadovaných pro ochranu hesel služby Azu
       Výše uvedených příkladech bude úspěšné pouze v případě, že aktuálně přihlášeného uživatele je také správcem domény služby Active Directory pro kořenovou doménu. Pokud to není tento případ, může poskytnout alternativní pověření pomocí parametru - ForestCredential.
 
    > [!NOTE]
-   > Pokud více proxy serverů jsou nainstalovány ve vašem prostředí, nezáleží na tom, které proxy serveru se používá k registraci doménové struktury.
+   > Pokud více proxy serverů jsou nainstalovány ve vašem prostředí, nezáleží na tom, které proxy serveru se použije k registraci doménové struktury.
 
    > [!TIP]
    > Může být značné zpoždění (sekund) při prvním spuštění této rutiny pro daného tenanta Azure před dokončením provádění rutiny. Pokud se použije v hlášení selhání Tato prodleva by neměly být zahrnuté znepokojující.

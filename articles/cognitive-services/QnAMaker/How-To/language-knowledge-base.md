@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Nástroj QnA Maker podporuje obsah znalostní báze v řadě jazyků. Každá služba QnA Maker však by měl být vyhrazen pro jeden jazyk. První znalostní báze vytvořen cílení na konkrétní služba QnA Maker nastaví jazyk této služby.
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
-ms.openlocfilehash: 44870e0f6a8c9ce69c3e3dfb99e0307f5855e773
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f6c317cc1281a5a9bc18a2057fa12b7b61bb7689
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206149"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875259"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Podpora jazyků znalostní báze obsahu pro nástroj QnA Maker
 Nástroj QnA Maker podporuje obsah znalostní báze v řadě jazyků. Každá služba QnA Maker však by měl být vyhrazen pro jeden jazyk. První znalostní báze vytvořen cílení na konkrétní služba QnA Maker nastaví jazyk této služby. Zobrazit [tady](../Overview/languages-supported.md) pro seznam podporovaných jazyků.

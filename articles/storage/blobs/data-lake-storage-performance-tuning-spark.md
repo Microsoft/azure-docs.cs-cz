@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 78402299aa0abc9b51b2995ffe6d2fc9b55c02aa
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bfd6e715e907925a1ba3db3b60c0d3eccb637930
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241420"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866096"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro Spark v HDInsight a Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Při ladění výkonu ve Sparku, je potřeba zvážit počet aplikací, které b
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen2. Ujistěte se, že se že povolení vzdálené plochy pro cluster. 
+* **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen2. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
 * **Spuštění clusteru Spark v Data Lake Storage Gen2**.  Další informace najdete v tématu [clusteru HDInsight Spark použít k analýze dat v Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
 * **Pokyny pro Data Lake Storage Gen2 pro optimalizaci výkonu**.  Obecné informace o výkonu koncepty, najdete v části [Data Lake Storage Gen2 ladění Průvodce výkonem](data-lake-storage-performance-tuning-guidance.md) 
 

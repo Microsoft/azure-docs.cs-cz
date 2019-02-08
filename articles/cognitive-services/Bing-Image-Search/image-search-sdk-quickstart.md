@@ -4,19 +4,19 @@ description: Pomocí tohoto rychlého startu můžete vytvořit své první vyhl
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8895cdd5cb40af94ad54d431744d4a3bcccc5567
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4e48300e8f1a5512ad9391659cc282a29f0137a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157087"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877316"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Rychlý start: Pro Image s SDK vyhledávání obrázků Bingu pro vyhledáváníC#
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2ef37e9661139b0b1d24ddc005df7bf338397803
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163802"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856355"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Správa jednotného přihlašování a token přizpůsobení pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -52,7 +52,18 @@ Následující hodnoty jsou nastavené v předchozím příkladu:
 - **Doba života obnovovacího tokenu** – aktualizace dobu životnosti tokenu hodnota se nastaví pomocí **refresh_token_lifetime_secs** položku metadat. Výchozí hodnota je 1209600 sekund (14 dnů).
 - **Token doba života posuvného okna obnovovacího** – Pokud chcete nastavit doba života posuvného okna k aktualizaci tokenu, nastavte hodnotu **rolling_refresh_token_lifetime_secs** položku metadat. Výchozí hodnota je 7776000 (90 dnů). Pokud nechcete, aby k vynucení doba života posuvného okna, nahraďte položku s `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
 - **Deklarace identity vystavitele (iss)** – deklarace identity vystavitele (iss) nastavená **IssuanceClaimPattern** položku metadat. Příslušné hodnoty jsou `AuthorityAndTenantGuid` a `AuthorityWithTfp`.
-- **Nastavení deklarace identity představující ID zásady** – možnosti pro nastavení této hodnoty jsou `TFP` (framework zásady důvěryhodnosti) a `ACR` (informace o kontextu ověřování). `TFP` Doporučená hodnota. Nastavte **AuthenticationContextReferenceClaimPattern** s hodnotou `None`. Ve vaší **OutputClaims** položky, přidejte tento element:
+- **Nastavení deklarace identity představující ID zásady** – možnosti pro nastavení této hodnoty jsou `TFP` (framework zásady důvěryhodnosti) a `ACR` (informace o kontextu ověřování). `TFP` Doporučená hodnota. Nastavte **AuthenticationContextReferenceClaimPattern** s hodnotou `None`. 
+
+    V **ClaimsSchema** prvku, přidejte tento element: 
+    
+    ```XML
+    <ClaimType Id="trustFrameworkPolicy">
+      <DisplayName>Trust framework policy name</DisplayName>
+      <DataType>string</DataType>
+    </ClaimType>
+    ```
+    
+    Ve vaší **OutputClaims** prvku, přidejte tento element:
     
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />

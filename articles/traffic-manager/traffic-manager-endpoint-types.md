@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: fb8922424de064bc63f793479d8c3a98b506b844
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3f41edef56b238d8789264d00d73998794fec7eb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232511"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881991"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 Microsoft Azure Traffic Manager umožňuje řídit, jak je zatížení sítě distribuováno do nasazení aplikace spuštěné v různých datových centrech. Konfigurace nasazení každé aplikace jako "koncový bod' v Traffic Manageru. Když Traffic Manager obdrží žádost o DNS, vybere dostupný koncový bod vrátit v odpovědi DNS. Volba Traffic Manageru založen na aktuální stav koncového bodu a metodu směrování provozu. Další informace najdete v tématu [jak funguje Traffic Manager](traffic-manager-how-it-works.md).
@@ -63,7 +63,7 @@ Vnořené koncové body kombinovat více profily Traffic Manageru k vytvoření 
 
 Několik dalších důležitých informací platí při konfiguraci webových aplikací jako koncových bodů v Traffic Manageru:
 
-1. Jsou vhodné pro použití s Traffic Managerem jenom u Web Apps v SKU "Standard" nebo novější. Pokusy o přidání webovou aplikaci z nižší SKU selžou. Downgradování SKU existující webové aplikace výsledků v Traffic Manageru už odesílání provozu do příslušné webové aplikace.
+1. Jsou vhodné pro použití s Traffic Managerem jenom u Web Apps v SKU "Standard" nebo novější. Pokusy o přidání webovou aplikaci z nižší SKU selžou. Downgradování SKU existující webové aplikace výsledků v Traffic Manageru už odesílání provozu do příslušné webové aplikace. Další informace o podporovaných plánech najdete v článku [plány služby App Service](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)
 2. Když koncový bod přijme požadavek HTTP, používá "hostitel" hlavičky v požadavku k určení by měl zpracovat požadavek, která sada webových aplikací. Hlavička hostitele obsahuje název DNS použitý k provedení požadavku, například contosoapp.azurewebsites.net. Pokud chcete použít jiný název DNS s vaší webovou aplikací, musí název DNS zaregistrovat jako název vlastní domény pro aplikaci. Při přidávání koncový bod webové aplikace jako koncový bod Azure, se automaticky registruje název DNS Traffic Manageru profil pro aplikaci. Tuto registrace automaticky odstraní při odstranění koncového bodu.
 3. Každý profil služby Traffic Manager může mít maximálně jednu webovou aplikaci koncového bodu z každé oblasti Azure. Pro toto omezení obejít, můžete nakonfigurovat webovou aplikaci jako externí koncový bod. Další informace najdete v tématu [nejčastější dotazy k](traffic-manager-faqs.md#traffic-manager-endpoints).
 

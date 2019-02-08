@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Vizuální vyhledávání Bingu poskytuje podrobnosti nebo přehledy o obrázku, například podobné obrázky nebo nákupní zdroje.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 61a851b0efbcc4fdb55308e47447d218014ef9e0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9e323e9ec928d9f8b0592850adcd088a589ebf28
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154350"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863087"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Určíte, které části vaší aplikace vyžadovat aktualizace se mají použít rozhraní API Bingu pro vyhledávání na webu v7.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: reference
 ms.date: 01/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 7c3e19fd809e442d58f7cb0e6922d4e565673fe2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 74afd08aaa2e512ae3bcae302f50585eb8024306
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188928"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864073"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade ze služby Bing webové rozhraní API pro vyhledávání v5 na v7
 

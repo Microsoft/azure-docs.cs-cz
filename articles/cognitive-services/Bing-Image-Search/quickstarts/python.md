@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Použít tento rychlý start k odesílání požadavků vyhledávání obrázků Bingu Image Search REST API pomocí Pythonu a přijímat odpověďmi ve formátu JSON.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 018f2b4b3f75ed9cef3fbc63ac4e93b56a756e14
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fb88db7d06345b7828e31f67ac67be65d7d96b96
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174021"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884235"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a Pythonu
 

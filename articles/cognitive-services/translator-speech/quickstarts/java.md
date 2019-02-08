@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d0e9545a6bc8ec56bc5ae9c9532d80822bfe3505
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b9a20439bd1c926753921e2ece5dfc083128be92
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753125"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869921"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Rychlý start: Translator Speech API s využitím Javy 
 <a name="HOLTop"></a>

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak používat rozhraní REST API řeči na text a převod textu na řeč. V tomto článku se dozvíte o autorizaci, možnosti dotazu, jak strukturovat žádost a přijetí odpovědi.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c1693c5e04c33da3f21847aada0adfe1b66c4b52
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247438"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878064"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 

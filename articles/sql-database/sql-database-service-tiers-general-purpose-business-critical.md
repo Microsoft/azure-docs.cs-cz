@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: bdb4db2d1a9447e8e328728288c1cf425c65a988
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: 3521f910ded2e24de9cfa7b1aa1d635843527ef5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511820"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878812"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Úrovně služby Azure SQL Database
 
 Azure SQL Database je založené na architektuře databázový stroj SQL serveru, která je upravená pro cloudové prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají ve službě Azure SQL Database:
+
 - [Obecné účely](sql-database-service-tier-general-purpose.md) navržené pro většinu obecných úloh.
 - [Důležité obchodní informace](sql-database-service-tier-business-critical.md) navržené pro úlohy s nízkou latencí pomocí jednoho čitelných replik.
 - [Velkokapacitní](sql-database-service-tier-hyperscale.md) je určená pro velké databáze (až 100 TB) s více čitelné repliky.
@@ -40,8 +41,8 @@ Zvažte použití těchto zdrojů:
 - Když konfigurujete velikost požadované izolovanou databázi (velikost MDF), 30 % dalšího úložiště, je automaticky přidaná kvůli podpoře LDF
 - Velikost úložiště ve spravované instanci musí být určena v násobcích po 32 GB.
 - Můžete vybrat libovolné velikosti izolované databáze mezi 10 GB a podporované maximum
-  - Pro úložiště úrovně Standard zvětšit nebo zmenšit velikost v přírůstcích po 10 GB
-  - Pro Premium storage zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
+  - Pro úložiště úrovně standard nebo obecné účely zvětšit nebo zmenšit velikost v přírůstcích po 10 GB
+  - Pro úložiště úrovně premium nebo buxiness kritických služeb zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
 - V úrovni General Purpose služby `tempdb` používá připojené SSD a náklady na toto úložiště je zahrnutá v ceně vCore.
 - V rámci úrovně služeb pro důležité obchodní informace `tempdb` sdílené složky připojené SSD se soubory MDF a LDF a náklady na úložiště databáze tempDB je zahrnutá v ceně vCore.
 

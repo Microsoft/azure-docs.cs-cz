@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: V tomto kurzu se dozvíte, jak používat na základě machine learningu Content Moderator moderování příspěvků na Facebooku a komentáře.
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: b43f3645a2fb9cc6ede4b27b4412b9e70e2b26f8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 86c89164e3ccd5bf5df303b98cf6d336f3916e2b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213833"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878048"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Kurz: Moderování obsahu Facebooku s Content Moderator
 
@@ -134,7 +134,7 @@ Azure Functions je možné vytvářet po přihlášení k [portálu pro správu 
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. Aktualizujte tyto proměnné prostředí:
     
-    | Klíč | Value   | 
+    | Klíč | Hodnota   | 
     | -------------------- |-------------|
     | appId   | Sem vložte identifikátor vaší aplikace pro Facebooku  | 
     | appSecret | Sem vložte tajný klíč vaší aplikace pro Facebooku | 

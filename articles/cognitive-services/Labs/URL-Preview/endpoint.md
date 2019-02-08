@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Přehled koncového bodu adresy URL náhledu.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 985e08a9622e08d2a4b52dae996952cd6a7e7ad4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7cc52493ec0e2b9c81d52da4bb22102c2c7e5e5c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207443"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861983"
 ---
 # <a name="project-url-preview-endpoint"></a>Projekt ve verzi Preview se adresy URL koncového bodu
 
@@ -31,10 +31,10 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ```
 
 ### <a name="query-parameters"></a>Parametry dotazu
-|Name|Value|Type|Požaduje se|  
+|Název|Hodnota|Type|Požaduje se|  
 |----------|-----------|----------|--------------|  
-|q|Adresa URL ve verzi preview|Řetězec |Ano|
-|safeSearch|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>safeSearch=strict: Název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.| 
+|q|Adresa URL ve verzi preview|String |Ano|
+|safeSearch|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>safeSearch=strict: Název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |String|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.| 
 
 ## <a name="response-object"></a>Objekt odpovědi
 

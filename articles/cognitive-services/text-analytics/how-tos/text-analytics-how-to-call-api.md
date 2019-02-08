@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak zavolat REST API pro analýzu textu.
 services: cognitive-services
 author: ashmaka
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 579040c3a1466d431a9ae2105edbf02fa41570b6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 60aa51e4dac796e034b7b0506be0e205951226de
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211582"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870771"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 

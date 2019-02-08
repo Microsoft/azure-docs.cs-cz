@@ -94,27 +94,13 @@ items:
       href: storage-samples-blobs-cli.md
   - name: Koncepty
     items:
-    - name: Správa účtů úložiště
+    - name: Účty úložiště
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      items:
-      - name: Správa účtu úložiště
-        href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Upgrade účtu úložiště
-        href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Autorizace
       href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       items:
       - name: Ověřování pomocí Azure AD
         href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        items:
-        - name: Správa přístupových práv pomocí RBAC
-          href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Ověření z aplikace
-          href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Ověřování pomocí spravovaných identit
-          href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Použití identity Azure AD s CLI nebo PowerShellem
-          href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Autorizace s využitím sdíleného klíče
         href: /rest/api/storageservices/authorize-with-shared-key
       - name: Autorizace s využitím SAS
@@ -150,8 +136,6 @@ items:
         href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Šifrování v klidovém stavu pomocí klíčů zákazníka
         href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Vyžádání bezpečného přenosu
-        href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Přístup k objektům blob s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN
         href: storage-https-custom-domain-cdn.md
       - name: Neměnné objekty blob
@@ -159,7 +143,9 @@ items:
       - name: Rozšířená ochrana před internetovými útoky (Preview)
         href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Povolení zabezpečeného TLS pro klienta Azure Storage
-        href: ../common/storage-security-tls.md
+        href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Vyžádání bezpečného přenosu
+        href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Výkon a škálování
       items:
       - name: Škálovatelnost a cíle výkonnosti
@@ -171,109 +157,109 @@ items:
     - name: Migrace dat
       items:
       - name: Porovnání řešení přenosu dat
-        href: ../common/storage-choose-data-transfer-solution.md
+        href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         items:
         - name: Rozsáhlá datová sada, malá šířka pásma sítě
-          href: ../common/storage-solution-large-dataset-low-network.md
+          href: ../common/storage-solution-large-dataset-low-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Rozsáhlá datová sada, střední až velká šířka pásma sítě
-          href: ../common/storage-solution-large-dataset-moderate-high-network.md
+          href: ../common/storage-solution-large-dataset-moderate-high-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Malá datová sada, malá až střední šířka pásma sítě
-          href: ../common/storage-solution-small-dataset-low-moderate-network.md
+          href: ../common/storage-solution-small-dataset-low-moderate-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Pravidelné přenosy dat
-          href: ../common/storage-solution-periodic-data-transfer.md
+          href: ../common/storage-solution-periodic-data-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Import/export dat
-        href: ../common/storage-import-export-service.md
+        href: ../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         items:
         - name: Kontrola požadavků
-          href: ../common/storage-import-export-requirements.md
+          href: ../common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Import dat do objektů blob
-          href: ../common/storage-import-export-data-to-blobs.md
+          href: ../common/storage-import-export-data-to-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Import dat do souborů
-          href: ../common/storage-import-export-data-to-files.md
+          href: ../common/storage-import-export-data-to-files.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Export dat z objektů blob
-          href: ../common/storage-import-export-data-from-blobs.md
+          href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Postupy
           items:
           - name: Zobrazení stavu jednotky
-            href: ../common/storage-import-export-view-drive-status.md
+            href: ../common/storage-import-export-view-drive-status.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Kontrola stavu úlohy
-            href: ../common/storage-import-export-tool-reviewing-job-status-v1.md
+            href: ../common/storage-import-export-tool-reviewing-job-status-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Oprava úlohy importu
-            href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md
+            href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Oprava úlohy exportu
-            href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md
+            href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Nejčastější dotazy
-          href: ../common/storage-import-export-service-faq.md
+          href: ../common/storage-import-export-service-faq.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: REST API
           href: https://docs.microsoft.com/rest/api/storageimportexport/jobs
         - name: Kontaktování podpory
-          href: ../common/storage-import-export-contact-microsoft-support.md
+          href: ../common/storage-import-export-contact-microsoft-support.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Archiv
           items:
           - name: Příprava jednotek pro import (v1)
-            href: ../common/storage-import-export-tool-preparing-hard-drives-import-v1.md
+            href: ../common/storage-import-export-tool-preparing-hard-drives-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             items:
             - name: Nastavení vlastností a metadat
-              href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md
+              href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Ukázka – Příprava jednotek pro import
-              href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md
+              href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Stručný přehled příkazů pro import
-              href: ../common/storage-import-export-tool-quick-reference-v1.md
+              href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Příprava jednotek pro import (v2)
-            href: ../common/storage-import-export-tool-preparing-hard-drives-import.md
+            href: ../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             items:
             - name: Nastavení vlastností a metadat
-              href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md
+              href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Ukázka – Příprava jednotek pro import
-              href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md
+              href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Stručný přehled příkazů pro import
-              href: ../common/storage-import-export-tool-quick-reference-v1.md
+              href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Vytvoření úlohy importu
-            href: ../common/storage-import-export-creating-an-import-job.md
+            href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Vytvoření úlohy exportu
-            href: ../common/storage-import-export-creating-an-import-job.md
+            href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Zjištění stavu úlohy
-            href: ../common/storage-import-export-retrieving-state-info-for-a-job.md
+            href: ../common/storage-import-export-retrieving-state-info-for-a-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Vytvoření úlohy exportu
-            href: ../common/storage-import-export-creating-an-import-job.md
+            href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Zobrazení výčtu úloh
-            href: ../common/storage-import-export-enumerating-jobs.md
+            href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Zrušení a odstranění úlohy
-            href: ../common/storage-import-export-cancelling-and-deleting-jobs.md
+            href: ../common/storage-import-export-cancelling-and-deleting-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Zálohování manifestu jednotky
-            href: ../common/storage-import-export-backing-up-drive-manifests.md
+            href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Zobrazení výčtu úloh
-            href: ../common/storage-import-export-enumerating-jobs.md
+            href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Diagnostika a zotavení z chyb
-            href: ../common/storage-import-export-diagnostics-and-error-recovery.md
+            href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Příkazy pro úlohy importu
-            href: ../common/storage-import-export-tool-quick-reference-v1.md
+            href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Vytvoření úlohy importu
-          href: ../common/storage-import-export-creating-an-import-job.md
+          href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Vytvoření úlohy exportu
-          href: ../common/storage-import-export-creating-an-import-job.md
+          href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Zjištění stavu úlohy
-          href: ../common/storage-import-export-retrieving-state-info-for-a-job.md
+          href: ../common/storage-import-export-retrieving-state-info-for-a-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Vytvoření úlohy exportu
-          href: ../common/storage-import-export-creating-an-import-job.md
+          href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Zobrazení výčtu úloh
-          href: ../common/storage-import-export-enumerating-jobs.md
+          href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Zrušení a odstranění úlohy
-          href: ../common/storage-import-export-cancelling-and-deleting-jobs.md
+          href: ../common/storage-import-export-cancelling-and-deleting-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Zálohování manifestu jednotky
-          href: ../common/storage-import-export-backing-up-drive-manifests.md
+          href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Zobrazení výčtu úloh
-          href: ../common/storage-import-export-enumerating-jobs.md
+          href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Diagnostika a zotavení z chyb
-          href: ../common/storage-import-export-diagnostics-and-error-recovery.md
+          href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Příkazy pro úlohy importu
-          href: ../common/storage-import-export-tool-quick-reference-v1.md
+          href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Soubor manifestu služby
-          href: ../common/storage-import-export-file-format-manifest.md
+          href: ../common/storage-import-export-file-format-manifest.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Soubor vlastností a metadat služby
-          href: ../common/storage-import-export-file-format-metadata-and-properties.md
+          href: ../common/storage-import-export-file-format-metadata-and-properties.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Soubor protokolu služby
-          href: ../common/storage-import-export-file-format-log.md
+          href: ../common/storage-import-export-file-format-log.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Monitorování a odstraňování potíží
       items:
       - name: Kurz odstraňování potíží
@@ -296,6 +282,12 @@ items:
       href: storage-blob-pageblob-overview.md
   - name: Postup
     items:
+    - name: Účty úložiště
+      items:
+      - name: Správa účtu úložiště
+        href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Upgrade účtu úložiště
+        href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Autorizace požadavků na úložiště
       items:
       - name: Ověřování pomocí Azure AD
@@ -308,60 +300,46 @@ items:
           href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Použití identity Azure AD s CLI nebo PowerShellem
           href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Vývoj s využitím objektů blob
-      items:
-      - name: REST
-        href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: C++
-        href: storage-c-plus-plus-how-to-use-blobs.md
-      - name: iOS
-        href: storage-ios-how-to-use-blob-storage.md
-      - name: Java
+      - name: Autorizace s využitím sdíleného klíče
         items:
-        - name: Použití aplikace Spring Boot Starter
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
-      - name: Xamarin
-        href: storage-xamarin-blob-storage.md
-      - name: Starší verze sad SDK
+        - name: Konfigurace připojovacích řetězců
+          href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Použití rozhraní REST API služby Azure Storage
+          href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Zabezpečení
+      items:
+      - name: Konfigurace bran firewall a virtuálních sítí
+        href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Povolení zabezpečeného TLS pro klienta Azure Storage
+        href: ../common/storage-security-tls.md
+      - name: Šifrování na straně klienta
         items:
-        - name: Java (Storage SDK V7)
-          href: storage-quickstart-blobs-java.md
-        - name: Node.js (Storage SDK v2)
-          href: storage-quickstart-blobs-nodejs.md
-    - name: Spravovat
+        - name: .NET
+          href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Java
+          href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Python
+          href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Vyžádání bezpečného přenosu
+        href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Šifrování a dešifrování objektů blob pomocí Azure Key Vaultu
+        href: storage-encrypt-decrypt-blobs-key-vault.md
+    - name: Zotavení po havárii
       items:
-      - name: PowerShell
-        href: /powershell/module/azure.storage
-      - name: Azure CLI
-        href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Azure Classic CLI
-        href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Šifrování na straně klienta
-      items:
-      - name: .NET
-        href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Java
-        href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Python
-        href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Konfigurace připojovacích řetězců
-      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Šifrování a dešifrování objektů blob pomocí Azure Key Vaultu
-      href: storage-encrypt-decrypt-blobs-key-vault.md
-    - name: Nastavení a načtení vlastností a metadat
-      href: storage-properties-metadata.md
+      - name: Zahájení převzetí služeb při selhání účtu
+        href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Obnovení odstraněných objektů blob
+        href: storage-blob-soft-delete.md
     - name: Použití emulátoru úložiště
       href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Směrování událostí na vlastní koncový bod
-      href: storage-blob-event-quickstart.md
-    - name: Zahájení převzetí služeb při selhání účtu
-      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Obnovení odstraněných objektů blob
-      href: storage-blob-soft-delete.md
+    - name: Nastavení a načtení vlastností a metadat
+      href: storage-properties-metadata.md
     - name: Hostování statického webu
       href: storage-blob-static-website.md
     - name: Konfigurace vlastní domény
       href: storage-custom-domain-name.md
+    - name: Směrování událostí na vlastní koncový bod
+      href: storage-blob-event-quickstart.md
     - name: Prohledávání Blob Storage pomocí služby Azure Search
       href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Přenos dat
@@ -378,6 +356,32 @@ items:
         href: storage-how-to-mount-container-linux.md
       - name: Nejčastější dotazy k migraci úložiště
         href: ../common/storage-migration-faq.md
+    - name: Vývoj s využitím objektů blob
+      items:
+      - name: C++
+        href: storage-c-plus-plus-how-to-use-blobs.md
+      - name: iOS
+        href: storage-ios-how-to-use-blob-storage.md
+      - name: Java
+        items:
+        - name: Použití aplikace Spring Boot Starter
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
+      - name: Xamarin
+        href: storage-xamarin-blob-storage.md
+      - name: Starší verze sad SDK
+        items:
+        - name: Java (Storage SDK V7)
+          href: storage-quickstart-blobs-java.md
+        - name: Node.js (Storage SDK v2)
+          href: storage-quickstart-blobs-nodejs.md
+    - name: Správa objektů blob
+      items:
+      - name: PowerShell
+        href: /powershell/module/azure.storage
+      - name: Azure CLI
+        href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Azure Classic CLI
+        href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Referenční informace
     items:
     - name: PowerShell
@@ -606,9 +610,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: Videa
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: b6e90dc71e0bb5f81aeaf690217115e39531db93
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: dec146846ac3bf889ac0d694fc769c899ab1d12e
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753176"
+ms.locfileid: "55767662"

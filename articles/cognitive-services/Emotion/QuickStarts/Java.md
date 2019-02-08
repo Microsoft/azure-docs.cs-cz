@@ -3,19 +3,19 @@ title: 'Rychlý start: Na tváří v jazyce Java obrázek – rozhraní API pro 
 description: Získáte informace a ukázku kódu, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí založené na Javě pro Android.
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: a3250771c51495890c54060dc46b8bd88a8f54af
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1e91bfafabe243f9e4f1c2363f2a0ab51faa9f2f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228674"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866861"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvářejte aplikace pro rozpoznávání emocí na tváří v obrázku.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: 667d32c825f61751970bbcaa47045929ad708490
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e935aff95c0a37525de343e808cf2e88791fce30
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160264"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893873"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Ukázkový skript pro směrování provozu přes síťové virtuální zařízení
 
@@ -49,17 +49,17 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Vytvoří virtuální síť Azure a front-endovou podsíť. |
-| [az network subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | Vytvoří back-endovou podsíť a podsíť DMZ. |
-| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | Vytvoří veřejnou IP adresu pro přístup k virtuálnímu počítači z internetu. |
-| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | Vytvoří virtuální síťové rozhraní a povolí pro něj předávání IP. |
-| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | Vytvoří skupinu zabezpečení sítě (NSG). |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az network vnet create](/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a front-endovou podsíť. |
+| [az network subnet create](/cli/azure/network/vnet/subnet) | Vytvoří back-endovou podsíť a podsíť DMZ. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Vytvoří veřejnou IP adresu pro přístup k virtuálnímu počítači z internetu. |
+| [az network nic create](/cli/azure/network/nic) | Vytvoří virtuální síťové rozhraní a povolí pro něj předávání IP. |
+| [az network nsg create](/cli/azure/network/nsg) | Vytvoří skupinu zabezpečení sítě (NSG). |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | Vytvoří pravidla NSG, která povolí příchozí provoz na portech HTTP a HTTPS do virtuálního počítače. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Přidruží k podsítím skupiny zabezpečení sítě a směrovací tabulky. |
 | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Vytvoří směrovací tabulku pro všechny trasy. |
 | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Vytvoří trasy pro směrování provozu mezi podsítěmi a internetem přes virtuální počítač. |
-| [az vm create](/cli/azure/vm#az_vm_create) | Vytvoří virtuální počítač a připojí k němu síťovou kartu. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu. |
+| [az vm create](/cli/azure/vm) | Vytvoří virtuální počítač a připojí k němu síťovou kartu. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu. |
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků a všechny prostředky, které obsahuje. |
 
 ## <a name="next-steps"></a>Další postup

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e4f8b99cfeaa35644ed51fd8ad712fe4744c0226
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751493"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890939"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS s koncovými body služby virtuální sítě pomocí Azure CLI
 
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-Vytvoření další podsítě ve virtuální síti s [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). V tomto příkladu koncový bod služby pro *Microsoft.Storage* pro podsíť se vytvoří: 
+Vytvoření další podsítě ve virtuální síti s [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet). V tomto příkladu koncový bod služby pro *Microsoft.Storage* pro podsíť se vytvoří: 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Omezení síťového přístupu pro podsíť
 
-Vytvořte skupinu zabezpečení sítě pomocí [az network nsg vytvořit](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNsgPrivate*.
+Vytvořte skupinu zabezpečení sítě pomocí [az network nsg vytvořit](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNsgPrivate*.
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-Přidružení skupiny zabezpečení sítě k *privátní* podsíť s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). V následujícím příkladu *myNsgPrivate* skupiny zabezpečení sítě *privátní* podsítě:
+Přidružení skupiny zabezpečení sítě k *privátní* podsíť s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet). V následujícím příkladu *myNsgPrivate* skupiny zabezpečení sítě *privátní* podsítě:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným 
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Vytvoření účtu služby Azure storage s [vytvořit účet úložiště az](/cli/azure/storage/account#az_storage_account_create). Nahraďte `<replace-with-your-unique-storage-account-name>` s názvem, který je jedinečný ve všech umístěních Azure, mezi 3 až 24 znaků a používat pouze číslice a malá písmena.
+Vytvoření účtu služby Azure storage s [vytvořit účet úložiště az](/cli/azure/storage/account). Nahraďte `<replace-with-your-unique-storage-account-name>` s názvem, který je jedinečný ve všech umístěních Azure, mezi 3 až 24 znaků a používat pouze číslice a malá písmena.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -197,7 +197,7 @@ az storage share create \
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>Zakázat všechny přístup k účtu úložiště
 
-Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti. Omezení přístupu k vybrané sítě, změňte výchozí akci na *Odepřít* s [aktualizace účtu úložiště az](/cli/azure/storage/account#az_storage_account_update). Jakmile byl odepřen přístup k síti, účet úložiště není přístupná z libovolné sítě.
+Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti. Omezení přístupu k vybrané sítě, změňte výchozí akci na *Odepřít* s [aktualizace účtu úložiště az](/cli/azure/storage/account). Jakmile byl odepřen přístup k síti, účet úložiště není přístupná z libovolné sítě.
 
 ```azurecli-interactive
 az storage account update \
@@ -208,7 +208,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>Povolení síťového přístupu z podsítě
 
-Povolení síťového přístupu k účtu úložiště u *privátní* podsíť s [přidat účet úložiště az network-rule](/cli/azure/storage/account/network-rule#az_storage_account_network_rule_add).
+Povolení síťového přístupu k účtu úložiště u *privátní* podsíť s [přidat účet úložiště az network-rule](/cli/azure/storage/account/network-rule).
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -334,7 +334,7 @@ Přístup se odepře a zobrazí *tento požadavek není autorizovaný k proveden
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, použijte [odstranění skupiny az](/cli/azure#az_group_delete) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
+Pokud už je nepotřebujete, použijte [odstranění skupiny az](/cli/azure) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak použít metodu CalcHistogram v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: aaa5b3a85c08f11d821557257de451b8ffc8a3fc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214309"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860452"
 ---
 # <a name="calchistogram-method"></a>calchistogram – metoda
 *Calchistogram* metoda vypočítá objektů, které odpovídají výrazu strukturovaných dotazů a vypočítá distribuci hodnot jejich atributů.
@@ -23,7 +23,7 @@ ms.locfileid: "55214309"
 ## <a name="request"></a>Žádost
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Name|Value|Popis
+Název|Hodnota|Popis
 ----|-----|-----------
 expr | Textový řetězec | Výraz strukturovaných dotazů, který určuje index entity, přes která chcete vypočítat histogramy.
 Atributy | Textový řetězec (výchozí = "") | Čárkami oddělený seznam atributu, který má zahrnout do odpovědi.

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text určit délku věty (ve znacích).
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: ad5af3e43e1419246d1692c5028cb2453b04516c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1fdee0d8c73c4cdd60bbe4a3520583588bfc385b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696132"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861098"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Rychlý start: Použití rozhraní Translator Text API k určení délky větu pomocí Pythonu
 

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734602"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894305"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database managed instance T-SQL rozdíly v systému SQL Server
 
@@ -27,7 +27,7 @@ Možnost nasazení spravované instance poskytuje vysokou kompatibilitu díky m�
 
 Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly. <a name="Differences"></a>
 - [Dostupnost](#availability) včetně rozdílů v [vždy na](#always-on-availability) a [zálohy](#backup),
-- [Zabezpečení](#security) včetně rozdílů v [auditování](#auditing), [certifikáty](#certificates), [pověření](#credentials), [zprostředkovatelé kryptografických služeb](#cryptographic-providers), [Přihlášení / uživatelé](#logins--users), [klíče a hlavní klíč služby služby](#service-key-and-service-master-key),
+- [Zabezpečení](#security) včetně rozdílů v [auditování](#auditing), [certifikáty](#certificates), [pověření](#credential), [zprostředkovatelé kryptografických služeb](#cryptographic-providers), [Přihlášení / uživatelé](#logins--users), [klíče a hlavní klíč služby služby](#service-key-and-service-master-key),
 - [Konfigurace](#configuration) včetně rozdílů v [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [kolace](#collation), [úrovně kompatibility](#compatibility-levels),[databáze zrcadlení](#database-mirroring), [volby databáze](#database-options), [agenta systému SQL Server](#sql-server-agent), [možnosti tabulky](#tables),
 - [Funkce](#functionalities) včetně [HROMADNÉ vložení/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [ Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [Filestream a Filetable](#filestream-and-filetable), [sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [Polybase](#polybase), [replikace](#replication), [obnovení](#restore-statement), [služby Service Broker](#service-broker), [ Uložené procedury, funkce a aktivační události](#stored-procedures-functions-triggers),
 - [Funkce, které mají různé chování v spravované instance](#Changes)
@@ -74,13 +74,13 @@ Informace o zálohách pomocí jazyka T-SQL najdete v tématu [zálohování](ht
 
 Hlavní rozdíly mezi auditování v databázích v Azure SQL Database a databází v systému SQL Server jsou:
 
-- S možností nasazení spravované instance Azure SQL Database, auditování funguje na úrovni serveru nebo úložišti `.xel` soubory protokolu na účet úložiště objektů blob v Azure.
+- S možností nasazení spravované instance Azure SQL Database, auditování funguje na úrovni serveru nebo úložišti `.xel` soubory protokolů ve službě Azure Blob storage.
 - Izolované databáze a elastický fond možnosti nasazení ve službě Azure SQL Database auditování funguje na úrovni databáze.
 - V místním SQL serverem / virtuální počítače, audit funguje na serveru úrovně, ale ukládá události do protokolů událostí systému a soubory.
   
-Auditování ve spravované instanci relace XEvent podporuje cíle úložiště objektů blob v Azure. Protokolování souborů a systému windows nejsou podporované.
+Relace XEvent auditování ve spravované instanci podporuje cíle úložiště objektů Blob v Azure. Protokolování souborů a systému windows nejsou podporované.
 
-Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage jsou:
+Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování pro Azure Blob storage jsou:
 
 - Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, ve kterém `.xel` budou umístěné soubory
 - Syntaxe `TO FILE` se nepodporuje, protože spravovanou instanci nejde přístup ke sdíleným složkám Windows.
@@ -170,7 +170,7 @@ Další informace najdete v tématu [ALTER DATABASE SET PARTNER a SET WITNESS](h
 - Objekty v paměti nejsou podporovány v rámci úrovně služeb pro obecné účely.  
 - Platí limit 280 souborů na jednu instanci zdání maximální 280 počet souborů v databázi. Soubory protokolu a data se počítají do tohoto limitu.  
 - Databáze nemůže obsahovat příkaz, který obsahuje filestream data.  Obnovení se nezdaří, pokud obsahuje .bak `FILESTREAM` data.  
-- Každý soubor je umístěn ve službě Azure Premium storage. Vstupně-výstupních operací a propustnosti na soubor závisí na velikosti jednotlivých souborů, stejným způsobem jako pro disky Azure Premium Storage. Zobrazit [výkon disku úrovně Premium pro Azure](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
+- Každý soubor je umístěn v úložišti objektů Blob v Azure. Vstupně-výstupních operací a propustnosti na soubor závisí na velikosti jednotlivých souborů.  
 
 #### <a name="create-database-statement"></a>Příkaz CREATE DATABASE
 
@@ -275,10 +275,10 @@ Informace o vytváření a změny tabulek naleznete v tématu [CREATE TABLE](htt
 
 ### <a name="bulk-insert--openrowset"></a>Příkaz Bulk insert / openrowset
 
-Managed instance nelze získat přístup k sdílených složek a složek Windows, tak soubory musí být importovány z úložiště objektů blob v Azure:
+Managed instance nelze získat přístup k sdílených složek a složek Windows, tak soubory musí být importovány z úložiště objektů Blob v Azure:
 
-- `DATASOURCE` je nutné v `BULK INSERT` příkaz při importu souborů z Azure blob storage. Zobrazit [HROMADNÉ vložení](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE` je nutné v `OPENROWSET` fungovat-li si přečíst obsah souboru z úložiště objektů blob v Azure. Zobrazit [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `DATASOURCE` je nutné v `BULK INSERT` příkaz při importu souborů z úložiště objektů Blob v Azure. Zobrazit [HROMADNÉ vložení](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
+- `DATASOURCE` je nutné v `OPENROWSET` fungovat-li si přečíst obsah souboru z úložiště objektů Blob v Azure. Zobrazit [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 
 ### <a name="clr"></a>CLR
 
@@ -305,7 +305,7 @@ Ani jedna služba MSDTC ani [elastické transakce](sql-database-elastic-transact
 
 Některé cíle Windows specifické pro události Xevent nepodporuje:
 
-- `etw_classic_sync target` není podporováno. Store `.xel` souborů v Azure blob storage. See [etw_classic_sync target](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
+- `etw_classic_sync target` není podporováno. Store `.xel` souborů v Azure blob storage. See [etw_classic_sync target](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
 - `event_file target`není podporováno. Store `.xel` souborů v Azure blob storage. Zobrazit [event_file cílové](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externí knihovny
@@ -347,7 +347,7 @@ Operace
 
 ### <a name="polybase"></a>Polybase
 
-Odkazování na soubory v HDFS nebo Azure blob storage externí tabulky nejsou podporovány. Informace o Polybase najdete v tématu [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
+Odkazování na soubory v HDFS nebo Azure Blob storage externí tabulky nejsou podporovány. Informace o Polybase najdete v tématu [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikace
 
@@ -365,7 +365,7 @@ Replikace je dostupná ve veřejné verzi preview pro spravované instance. Info
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
 - Zdroj  
-  - `FROM URL` (Úložiště objektů blob v azure) je pouze podporované možnosti.
+  - `FROM URL` (Úložiště objektů Blob v azure) je pouze podporované možnosti.
   - `FROM DISK`/`TAPE`/ zálohovací zařízení se nepodporuje.
   - Zálohovacích skladů nejsou podporovány.
 - `WITH` možnosti nejsou podporovány (ne `DIFFERENTIAL`, `STATS`atd.)

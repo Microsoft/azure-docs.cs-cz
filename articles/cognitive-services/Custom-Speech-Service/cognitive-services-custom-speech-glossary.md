@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
-ms.author: panosper
-ms.openlocfilehash: 889eabf38f25923d9bd84ea6ceaa5567c74216df
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: d25ef4d5549d7674c2846a28745b4c9c7a90beb4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223812"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856049"
 ---
 # <a name="glossary"></a>Glosář
 

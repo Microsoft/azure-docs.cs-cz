@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Koncepty související s funkcí Popis bitové kopie z rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 933c4e4a6731a492a5aa461de7c782af422fb6fb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7919a84ffe948c9b6a8f68fc1372f1976c09bc79
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162697"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864277"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Popis bitové kopie v lidsky čitelném jazyce
 

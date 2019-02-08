@@ -4,7 +4,7 @@ titleSuffix: Azure Cognitive Services
 description: Použít tento rychlý start k odesílání požadavků na rozhraní Web API vyhledávání Bingu REST pomocí jazyka Go a přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
@@ -12,12 +12,12 @@ ms.date: 8/16/2018
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 11f15d37830bb177031ff90d93ea1053b66013ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 49bfcf7ea9758cc17d8e83ebf813e7334239e6d2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203219"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856508"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Go
 

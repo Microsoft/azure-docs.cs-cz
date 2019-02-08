@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 14b1199891599123a14d30e85a032f05974d7d0d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ac4095d19904db10d4d60364dd2c739e8105c171
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210235"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863615"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
 Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 

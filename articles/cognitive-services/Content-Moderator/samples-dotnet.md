@@ -3,18 +3,18 @@ title: Ukázky kódu – Content Moderator, .NET
 description: Content Moderator použijte v aplikacích .NET pomocí sady SDK.
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 43aa1ca624bce78fa113c34fa19da9ccfea69bbc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4049211acd760f74fbb4a725f878e5c51acbe7dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222095"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875936"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>Ukázky Content Moderator .NET SDK
 

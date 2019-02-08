@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/22/2017
+ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 76ebdc85db2c65b1ad99c1e7abe5e697f1c1284c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: dd09dd337cfe11729ef3ddc5d9b19f024d64300e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063994"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872998"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurujte jeden nebo více Always On naslouchacích procesů skupin dostupnosti - Resource Manageru
 Toto téma ukazuje, jak:
@@ -40,16 +40,42 @@ Související témata:
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
+## <a name="verify-powershell-version"></a>Ověřit verzi prostředí PowerShell
+
+V příkladech v tomto článku jsou testovány pomocí modul Azure PowerShell verze 5.4.1.
+
+Modul Powershellu ověřte 5.4.1 nebo novější.
+
+Zobrazit [instalace modulu Azure PowerShell](http://docs.microsoft.com/powershell/azure/install-az-ps).
+
 ## <a name="configure-the-windows-firewall"></a>Konfigurace brány Windows Firewall
+
 Konfigurace Windows Firewall a povolit přístup k SQL serveru. Pravidla brány firewall umožňují připojení TCP ke portů používá instanci systému SQL Server a naslouchacího procesu kontroly. Podrobné pokyny najdete v tématu [konfigurovat bránu Windows Firewall pro přístup k databázovému stroji](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvořte příchozí pravidlo pro port SQL serveru a portu sondy.
 
 Pokud jste omezení přístupu se skupinou zabezpečení sítě Azure, zajistěte, aby pravidla povolit zahrnují adres back-end IP adresy virtuálního počítače SQL serveru a nástroje pro vyrovnávání zatížení plovoucí IP adres pro naslouchacího procesu AG a IP adresu clusteru core Pokud je k dispozici.
 
+## <a name="determine-the-load-balancer-sku-required"></a>Určení nástroje pro vyrovnávání zatížení vyžaduje SKU
+
+[Nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-overview.md) je k dispozici ve skladových položkách 2: Basic a Standard. Doporučuje se load balanceru úrovně standard. Pokud jsou virtuální počítače ve skupině dostupnosti je povolený load balanceru úrovně basic. Load balancer úrovně standard vyžaduje, aby všechny adresy IP na virtuální počítač používal standardní IP adresy.
+
+Aktuální [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) pro skupinu dostupnosti používá skupiny load balanceru úrovně basic s základní IP adresy.
+
+V příkladech v tomto článku určení load balanceru úrovně standard. V příkladech skript obsahuje `-sku Standard`.
+
+```PowerShell
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+```
+
+Chcete-li vytvořit load balanceru úrovně basic, odeberte `-sku Standard` z řádku, který vytvoří nástroj pro vyrovnávání zatížení. Příklad:
+
+```PowerShell
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
+```
+
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Ukázkový skript: Vytvoření interního nástroje pomocí prostředí PowerShell
+
 > [!NOTE]
-> Pokud jste vytvořili vaší skupiny dostupnosti s [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), interní služby load balancer už byl vytvořen. 
-> 
-> 
+> Pokud jste vytvořili vaší skupiny dostupnosti s [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), interní služby load balancer už byl vytvořen.
 
 Následující skript Powershellu vytvoří interního nástroje, nakonfiguruje pravidla Vyrovnávání zatížení a nastaví IP adresu nástroje pro vyrovnávání zatížení. Pro spuštění skriptu, otevřete Windows PowerShell ISE a vložte skript v podokně skriptu. Použití `Connect-AzureRmAccount` pro přihlášení k prostředí PowerShell. Pokud máte více předplatných Azure, použijte `Select-AzureRmSubscription ` nastavte předplatné. 
 
@@ -86,7 +112,7 @@ $SQLHealthProbe = New-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -Protoco
 
 $ILBRule = New-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
 
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe 
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 
 $bepool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Seznam podporovaných jazyků a oblastí pro rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 7caf6a9f6bce90c6ffbaa7fa4040484938d6eafd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 94a887e06af1963b16d244103de407493d4c8eb7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177760"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857103"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Podpora jazyka a oblasti pro rozhraní API pro automatické návrhy Bingu
 

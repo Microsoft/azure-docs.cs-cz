@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Přepis batch je ideální, pokud chcete přepisy velké množství zvuk v úložišti, jako jsou objekty BLOB Azure. Pomocí vyhrazené rozhraní REST API můžete odkazovat na zvukové soubory pomocí sdíleného přístupového podpisu (SAS) identifikátor URI a asynchronně přijímat přepisů.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: bf89180ea98473d2da3495286396a12c6f25288f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e03c388dac4a70fc45150287154406551ac2672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228657"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867116"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -49,7 +49,7 @@ Rozhraní API služby Batch určené k transkripci podporuje následující form
 > [!NOTE]
 > Rozhraní API služby Batch určené k transkripci vyžaduje klíč rozhraní S0 (platit úroveň). Nefunguje s klíčem free (f0).
 
-Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Podle následující ukázky JSON ukazuje výstup kanál, includuing vlastností pro nastavení filtr vulgárních výrazů a interpunkční znaménka modelu.
+Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Požadavky na ukázky, ukazuje následující kód JSON includuing vlastností pro nastavení vulgárních výrazů filtru, interpunkční znaménka modelu a word úrovně časová razítka
 
 ```json
 {
@@ -60,7 +60,8 @@ Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozděl�
   "description": "An optional description of the transcription.",
   "properties": {
     "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic"
+    "PunctuationMode": "DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True"
   },
 ```
 
@@ -208,7 +209,7 @@ Pokud nechcete použít směrný plán, předejte ID modelu akustických a jazyk
 Ukázka v tomto článku můžete najít na [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> Přepisování zvukového záznamu obvykle vyžaduje časový rozsah, který je rovna hodnotě doba trvání zvukový soubor a dvěma na tři minuty režii.
+> Neposkytujeme žádnou smlouvu SLA čas pro zvuk trascriptions prostřednictvím služby batch. Ale po actioned (ve spuštěném stavu) úlohy určené k transkripci typially zpracování rychleji než reálném čase.
 
 ## <a name="next-steps"></a>Další postup
 

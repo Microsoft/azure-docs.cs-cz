@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: cb44311ecdf6a2c9284b14884184863237422f96
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e7939b8d7a6a64519ac8239591c37e06ced56599
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754536"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890514"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
 Podle jiných platforem, aplikace na platformě Azure Service Fabric obvykle prochází následující fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric poskytuje prvotřídní podporu pro celou aplikaci životního cyklu cloudových aplikací, od vývoje až po nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se účastnit životního cyklu aplikací nezávisle na sobě. Tento článek poskytuje přehled rozhraní API a jak se používají v různých rolích v průběhu fáze životního cyklu aplikací Service Fabric.
@@ -58,7 +58,7 @@ Zobrazit [nasazení aplikace](service-fabric-deploy-remove-applications.md) př�
 
 ## <a name="test"></a>Test
 1. Po nasazení do místního vývojového clusteru nebo clusteru testu, *služby pro vývojáře* spustí testovací scénář integrované převzetí služeb při selhání pomocí [ **FailoverTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) a [ **FailoverTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) třídy, nebo [ **Invoke-ServiceFabricFailoverTestScenario** rutiny](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps). Scénáře převzetí služeb při selhání testu zadaná služba projde důležité přechody a převzetí služeb při selhání pro zajištění, že je stále k dispozici a fungují.
-2. *Služby pro vývojáře* pak spustí pomocí integrované chaos testovací scénář [ **ChaosTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) a [  **ChaosTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario#System_Fabric_Testability_Scenario_ChaosTestScenario) třídy, nebo [ **Invoke-ServiceFabricChaosTestScenario** rutiny](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). Testovací scénář chaos náhodně indukuje více uzlu, balíček kódu a repliky chyb do clusteru.
+2. *Služby pro vývojáře* pak spustí pomocí integrované chaos testovací scénář [ **ChaosTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) a [  **ChaosTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) třídy, nebo [ **Invoke-ServiceFabricChaosTestScenario** rutiny](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). Testovací scénář chaos náhodně indukuje více uzlu, balíček kódu a repliky chyb do clusteru.
 3. *Služby pro vývojáře* [testuje komunikace service to service](service-fabric-testability-scenarios-service-communication.md) vytvářením testovací scénáře, které přepínají primární repliky kolem clusteru.
 
 Zobrazit [Úvod do Fault Analysis Service](service-fabric-testability-overview.md) Další informace.

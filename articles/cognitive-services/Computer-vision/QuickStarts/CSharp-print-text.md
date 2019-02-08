@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a C#.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 55a67c9d7f1978b4a481aa2bd762c81199516763
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f476efebc6b37b0a8d157a5cb3f59fba9e29e90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211079"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864838"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>Rychlý start: Extrahovat tištěný text (OCR) pomocí rozhraní REST API a C&#35; v počítačové zpracování obrazu
 

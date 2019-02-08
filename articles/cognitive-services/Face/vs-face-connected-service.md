@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Vytvořte jednoduchou aplikaci pro Windows, která využívá rozhraní API pro rozpoznávání tváře služeb Cognitive Services k detekci rysů tváře na obrázku.
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: 00b1d3ed636bb1690e9d5026c558ca989de95375
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a8c3bc7a3a659809f1602ffae303f9bd26f2c35a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209430"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857779"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Připojení k rozhraní API pro rozpoznávání tváře služeb Cognitive Services pomocí připojených služeb v sadě Visual Studio
 

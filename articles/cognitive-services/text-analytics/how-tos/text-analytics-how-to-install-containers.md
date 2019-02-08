@@ -4,19 +4,19 @@ titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Postup stažení, instalaci a spouštění kontejnerů v tomto kurzu návod pro analýzu textu.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 105b4e34d307ac08b8efbb5e263825f2df28e28c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55294824"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862322"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spouštění kontejnerů pro analýzu textu
 

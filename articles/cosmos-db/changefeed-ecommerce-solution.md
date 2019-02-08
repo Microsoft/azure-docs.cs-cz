@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 3f42e149b88c2405a37366c3c7b886c7a8613e00
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 90f9a13882e370d6d0c67826750b3edd27603ede
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382547"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862288"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
@@ -165,7 +165,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
 
 1. Přejděte zpět do úložiště v Průzkumníkovi souborů a klikněte pravým tlačítkem na **ChangeFeedFunction.sln** znovu otevřít nové okno Visual Studio.  
 
-2. Přejděte **App.config** souboru. V rámci <appSettings> blokovat, přidejte identifikátor URI a jedinečný **primární klíč** u účtu služby Azure Cosmos DB, který jste získali dříve.  
+2. Přejděte **App.config** souboru. V rámci <appSettings> blokovat, přidat koncový bod a jedinečný **primární klíč** u účtu služby Azure Cosmos DB, který jste získali dříve.  
 
 3. Přidejte **kolekce** a **databáze** názvy. (Tyto názvy musí být **changefeedlabcollection** a **changefeedlabdatabase** nerozhodnete pojmenujte svůj odlišně.)
 

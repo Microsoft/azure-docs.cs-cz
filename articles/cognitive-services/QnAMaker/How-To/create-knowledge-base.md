@@ -4,19 +4,19 @@ titleSuffix: QnA Maker - Azure Cognitive Services
 description: Použijte portál QnA Maker, chcete-li přidat vytvořte znalostní bázi s chit konverzace. Díky tomu aplikace zapojení. Přidat sadu nejčastější konverzace chit předvyplněný do znalostní BÁZÍ jako výchozí bod pro svého robota chit chat a vám ušetří čas a náklady na jejich vytváření od začátku.
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: cb62be34f7f294bda83920f95c9f7c7bd63cfbda
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4ba744c3d8cc3a785c04bbbb1b476a857859e244
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219681"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876847"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>Rychlý start: Vytvoření znalostní báze na portálu pro nástroj QnA Maker
 

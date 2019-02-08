@@ -18,7 +18,7 @@ items:
   items:
   - name: Vytvoření clusteru Apache Hadoop – portál
     href: apache-hadoop-linux-create-cluster-get-started-portal.md
-  - name: Vytvoření clusteru Apache Hadoop – Resource Manager
+  - name: Vytvoření clusteru Apache Hadoop – šablona Resource Manageru
     href: apache-hadoop-linux-tutorial-get-started.md
 - name: Kurzy
   items:
@@ -36,8 +36,8 @@ items:
   - name: Dostupnost a spolehlivost
     href: ../hdinsight-high-availability-linux.md
     maintainContext: true
-  - name: Data Lake Storage Gen2
-    href: ../hdinsight-hadoop-data-lake-storage-gen2.md
+  - name: Porovnání možností úložiště
+    href: ../hdinsight-hadoop-compare-storage-options.md
     maintainContext: true
 - name: Postup
   items:
@@ -50,6 +50,9 @@ items:
       maintainContext: true
     - name: S využitím Azure Data Lake Storage
       href: ../hdinsight-hadoop-use-data-lake-store.md
+      maintainContext: true
+    - name: S využitím služby Azure Data Lake Store Gen2
+      href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
       maintainContext: true
   - name: Použití Apache Hadoopu pro dávkové dotazy
     items:
@@ -561,9 +564,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 45797e5440f0d01ec3049fff2ff5f7fdf5858d5b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 291eefe2e9dba12975ab7d04140a6161352af454
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321688"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817791"

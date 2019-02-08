@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pomocí Node.js a rozhraní REST API služby Translator Text provést transkripci (převod) textu z jednoho skriptu do druhého. V této ukázce se provádí transkripce z japonštiny do latinky.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 2fe70e570cc5cb5b2572719c496f044c39b1bfa4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1d957adb58104b0c635999f724d99f089c1d1c30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207917"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55855862"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>Rychlý start: Použití rozhraní Translator Text API transkripce textu s využitím Node.js
 

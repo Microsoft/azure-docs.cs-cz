@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 40a43fd8ea1f47b564d0c0ee2b5e67fd011f2ff9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730760"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895971"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -182,7 +182,7 @@ Importujte stažený soubor do vCenter Serveru.
     - Vyberte cloud Azure, ke kterému plánujete migrovat (globálního Azure nebo Azure Government).
     - Přijměte licenční podmínky a přečtěte si informace třetích stran.
     - Kolektor zkontrolujte, jestli má virtuální počítač přístup k internetu.
-    - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) týkající se požadavků na připojení k Internetu a [seznam adres URL](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls) , který přistupuje k kolektoru.
+    - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) týkající se požadavků na připojení k Internetu a [seznam adres URL](https://docs.microsoft.com/azure/migrate/concepts-collector) , který přistupuje k kolektoru.
 
       > [!NOTE]
       > Adresu proxy serveru je potřeba zadat ve formátu http://ProxyIPAddress nebo http://ProxyFQDN. Podporuje se jen proxy protokolu HTTP. Pokud máte prověřuje zachycovací proxy server, připojení k Internetu může zpočátku selhat, pokud jste neimportovali certifikát proxy serveru; [Další](https://docs.microsoft.com/azure/migrate/concepts-collector) na jak to vyřešit importem certifikátu proxy jako důvěryhodný certifikát na virtuálním počítači kolektoru.

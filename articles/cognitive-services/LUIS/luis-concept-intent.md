@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Záměru představuje úkol nebo akci uživatel chce provést. Jedná o účely nebo cíl vyjádřeny utterance uživatele.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ce95e5c9f5a71a23f4da6273a01c8f89fe687c1a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ae1dd16e3296c11d6bce6ea623f590deaee8f65d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215312"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871349"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Principy záměry aplikace LUIS
 

@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Custom Speech Service je teď součástí Speech Service. Přepnout na Speech Service, abyste využili výhod nejnovější aktualizace kvality a funkcí.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 594233b9e345f9578c218b042a64ea167d50addb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211028"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856884"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrace ze služby Custom Speech Service na Speech Service
 
@@ -40,12 +40,6 @@ Cenový model je jednodušší, pomocí cenového modelu založeného na hodinu 
 3. Postupujte podle příručky rychlý úvod a ukázky SDK použít správné rozhraní API. Pokud používáte rozhraní REST API, musíte taky použít správné koncové body a klíče prostředku.
 
 4. Aktualizace klientské aplikace používat rozhraní API a Speech Service.
-
-> [!NOTE]
-> * Pokud jste povolili řeči v Language Understanding (LUIS), bude fungovat na jeden prostředek LUIS ve stejné oblasti pro LUIS, stejně jako hlasové služby. Další informace najdete v tématu [rozpoznat záměry z řeči](how-to-recognize-intents-from-speech-csharp.md).
-> * Text – text překladu není součástí Speech Service. Tato funkce vyžaduje svou vlastní předplatné prostředků Azure.
- 
-
 
 ## <a name="migration-for-existing-customers"></a>Migrace pro stávající zákazníky
 

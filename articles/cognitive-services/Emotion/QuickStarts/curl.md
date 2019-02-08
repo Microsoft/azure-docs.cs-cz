@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Získejte informace a vzorky kódu, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí nástroje cURL.
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2cd139fc47177d429bada454a5e720b7eb4f192b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8ecaf5e6de958a0f0af0ccccf9c712a227b504b9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220548"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857716"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvářejte aplikace pro rozpoznávání emocí na tváří v obrázku.
 

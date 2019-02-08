@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vytvoříte jednoduchou aplikaci Java zaznamenat uživatelské řeči, přeloží ji do jiného jazyka a panelem text do příkazového řádku. Tato příručka je určená pro uživatele Windows a Linux.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: d2408b894f58a17ab4f6423329114e0f0c0773c4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 61f35b9616794501d5a7300cd8a54d95f1330b00
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216298"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861693"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro Javu
 

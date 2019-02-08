@@ -1,23 +1,23 @@
 ---
-title: Co je API pro vyhledávání videí Bingu?
+title: Co je rozhraní API Bingu pro vyhledávání videí?
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak hledat videa na webu, pomocí rozhraní API Bingu pro vyhledávání videa.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 86722f1a69d2f12ec1689854999db52f0ff8f158
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a7fbd9eb70c50f3bbd154726bdaa807c2bc41818
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569483"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863954"
 ---
-# <a name="what-is-the-bing-video-search-api"></a>Co je API pro vyhledávání videí Bingu?
+# <a name="what-is-the-bing-video-search-api"></a>Co je rozhraní API Bingu pro vyhledávání videí?
 
 Video API Bingu pro vyhledávání umožňuje snadno přidat video možnosti vyhledávání do služby a aplikace. Odesláním uživatele vyhledávací dotazy s rozhraním API měli lepší přehled a zobrazí relevantní a kvalitního videa podobný [Video Bingu](https://www.bing.com/video). Pomocí tohoto rozhraní API pro výsledky hledání, které obsahují pouze videa. [API vyhledávání na webu Bingu](../bing-web-search/search-the-web.md) může vrátit jiné typy webového obsahu, včetně webových stránek, videa, zprávy a obrázky.
 

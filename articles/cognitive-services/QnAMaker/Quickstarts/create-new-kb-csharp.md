@@ -4,19 +4,19 @@ titlesuffix: QnA Maker- Azure Cognitive Services
 description: Tento rychlý start založený na REST a jazyce C# vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 54a33a135557fdf310e860a083dd953c9ec3d495
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 86acf4586fc7d6ae630a5a84a8c9d0e8e00c7e99
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733616"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861818"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Vytvoření znalostní báze v pomocí nástroje QnA MakerC#
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pro zadaný text vyhledat alternativní překlady a příklady použití pomocí Node.js a rozhraní REST API služby Translator Text.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 502455c6302a19176b29e9e5dcbac4a9897a04ea
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e7757b05ba0e99c5c326f3c63aa6b1d3be06a365
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214037"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856967"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Node.js
 

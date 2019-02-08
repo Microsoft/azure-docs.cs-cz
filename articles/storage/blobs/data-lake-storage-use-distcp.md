@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do Azure Data Lake Storage Gen2 Preview pomocí DistCp | Dokumentace Microsoftu
-description: Pomocí DistCp nástroje pro kopírování dat do a z Data Lake Storage Gen2 ve verzi Preview
+title: Kopírování dat do Azure Data Lake Storage Gen2 pomocí DistCp | Dokumentace Microsoftu
+description: Pomocí DistCp nástroje pro kopírování dat do a z Data Lake Storage Gen2
 services: storage
 author: seguler
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 9c12f96399de218241c8aa7ed686113c17a7410c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244143"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864056"
 ---
-# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2-preview"></a>Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2 ve verzi Preview
+# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2
 
 Můžete použít [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) ke kopírování dat mezi účet úložiště pro obecné účely V2 a účet úložiště pro obecné účely V2 s hierarchického oboru názvů povolené. Tento článek obsahuje pokyny, jak používat nástroj DistCp.
 
@@ -24,8 +24,8 @@ DistCp poskytuje celou řadu parametrů příkazového řádku a důrazně dopor
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Existující účet úložiště Azure Data Lake Storage Gen2 funkce ve verzi preview (hierarchického oboru názvů) povolena**.
-* **Účet služby Azure Storage s Data Lake Storage Gen2 (Preview) funkce povolena**. Pokyny k jeho vytvoření najdete v tématu [vytvoření účtu úložiště Azure Data Lake Storage Gen2 ve verzi Preview](data-lake-storage-quickstart-create-account.md)
+* **Existující účet úložiště Azure bez Data Lake Storage Gen2 funkcích (hierarchického oboru názvů), které přináší**.
+* **Účet služby Azure Storage s povolenou funkcí Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 * **Systém souborů** , který byl vytvořen v účtu úložiště s hierarchického oboru názvů povolené.
 * **Azure HDInsight cluster** s přístupem k účtu úložiště pomocí Data Lake Storage Gen2 povolena. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](data-lake-storage-use-hdi-cluster.md). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
 

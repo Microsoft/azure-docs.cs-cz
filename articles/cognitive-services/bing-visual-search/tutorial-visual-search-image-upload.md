@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Rozděluje proces nahrávání obrázku do Bingu, aby o něm získal přehledy, a potom parsuje a zobrazí odpověď.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 7b461a46fdda9da3a1033122e4e576e92eff4de6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 919690dcef69bd6c142a692e992bfff45b995605
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195643"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858566"
 ---
 # <a name="tutorial-uploading-images-to-the-bing-visual-search-api"></a>Kurz: Nahrávání imagí do rozhraní API vizuální vyhledávání Bingu
 

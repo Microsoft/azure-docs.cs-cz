@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c89a239cd3abbdd59813626f4b64596ee8a1fd7e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 521d9f3e435e972d373f62619904f9fa478e0685
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756797"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858633"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Při aktualizaci základní image do služby Azure container registry. automatizace sestavování imagí kontejneru 
 
@@ -78,6 +78,8 @@ Tento kurz vás provede scénářem aktualizace základní image. [Vzorový kód
 [Soubor Dockerfile base][dockerfile-base]: Na obrázku, který `Dockerfile-app` určuje jako její základ. Je založená na imagi [Node][base-node] a zahrnuje proměnnou prostředí `NODE_VERSION`.
 
 V následujících částech vytvoříte úlohu, aktualizujete hodnotu `NODE_VERSION` v souboru Dockerfile základní image a potom použijete ACR Tasks k sestavení základní image. Když úloha ACR odešle do registru novou základní image, automaticky aktivuje sestavení image aplikace. Volitelně můžete spustit image kontejneru aplikace místně, abyste se mohli podívat na různé řetězce verze v sestavených imagích.
+
+Úloha služby ACR v tomto kurzu se vytvoří a předá jedním kontejnerem image zadanou v souboru Dockerfile. Můžete také spouštět úlohy ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md) (aktuálně ve verzi preview), použití YAML souboru k definování kroky sestavení, vkládat a volitelně test několik kontejnerů.
 
 ## <a name="build-the-base-image"></a>Sestavit základní image
 

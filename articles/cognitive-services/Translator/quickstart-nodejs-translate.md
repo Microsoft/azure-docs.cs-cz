@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API a Node.js.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 40b38fdf2773bd58cf1635d089aec7340b04ce07
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c28839d03b2c4cc2e5f7d754fbb3264d72110e77
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214011"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856831"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce s využitím Node.js
 

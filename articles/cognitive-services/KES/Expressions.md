@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak používat strukturované výrazy dotazu v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 335bcc025d2f3e972a02234da89e35c90c91afeb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a544cdca1ef4be56fcf368a39040f4ee85076a9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222690"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860129"
 ---
 # <a name="structured-query-expression"></a>Výraz strukturovaných dotazů
 
@@ -31,9 +31,9 @@ Výraz dotazu atribut identifikuje sadu objektů na základě shody s konkrétn�
 
 | Type | Operace | Příklady |
 |------|-------------|------------|
-| Řetězec | rovná se | Název = "skryté sémantické analýzy" (canonical + synonym) |
-| Řetězec | rovná se | Author.Name=='susan t dumais (canonical jenom)|
-| Řetězec | starts_with | Název = 'skryté s'... |
+| String | rovná se | Název = "skryté sémantické analýzy" (canonical + synonym) |
+| String | rovná se | Author.Name=='susan t dumais (canonical jenom)|
+| String | starts_with | Název = 'skryté s'... |
 | Datový typ Int32 nebo Int64/Double | rovná se | Rok = 2000 |
 | Datový typ Int32 nebo Int64/Double | starts_with | Rok = "20"... (žádné Desítková hodnota začíná "20") |
 | Datový typ Int32 nebo Int64/Double | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(obsahuje hodnotu pouze levé hranice: 2010, 2011)* <br/> Rok = [2000,2012] *(zahrnuje obě hodnoty hranic: 2010, 2011, 2012)* |

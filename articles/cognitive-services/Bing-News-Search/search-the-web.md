@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Další informace o použití rozhraní API pro vyhledávání zpráv Bingu pro vyhledávání na webu pro aktuální titulky v několika kategoriích, včetně titulky a sledování trendů témata.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 1409839718b7ea2f685952a396ea2f52bd34fae1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55148808"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877095"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Co je rozhraní API Bingu pro vyhledávání zpráv?
 

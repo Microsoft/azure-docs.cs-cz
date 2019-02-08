@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Rozhraní API pro rozpoznávání tváře můžete použít k identifikaci tváří na obrázcích.
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: c61852763353189321b8f98711928e0e8b3a389d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 013467cb64220b525d429c901c48028bf65b3852
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208087"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864923"
 ---
 # <a name="example-how-to-identify-faces-in-images"></a>Příklad: Postup identifikace tváří na obrázcích
 

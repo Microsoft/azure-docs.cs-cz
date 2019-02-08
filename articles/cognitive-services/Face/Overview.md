@@ -3,18 +3,18 @@ title: Co je rozhraní API pro rozpoznávání tváře?
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí služby Rozpoznávání tváře rozpoznávat a analyzovat tváře na obrázcích.
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 361d80bcca0b0a151e9fcdaab938de0c8ff5f8bc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 655234bfec650ef027e325ff8df23fe91eecfd43
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220106"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861048"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
 

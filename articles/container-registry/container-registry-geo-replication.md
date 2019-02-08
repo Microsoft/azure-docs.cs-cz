@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a83cf6b37a28ec38165778faa7a9ecc266cce7bd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870334"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858252"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 
@@ -26,14 +26,18 @@ Geograficky replikovaný registr poskytuje následující výhody:
 * Žádné poplatky za další odchozí přenosy jako obrázky se berou z místní replikovaný registr ve stejné oblasti jako váš hostitel kontejneru
 * Správu jednoho registru napříč několika oblastmi
 
+> [!NOTE]
+> Pokud je potřeba udržovat kopie imagí kontejnerů ve více než jeden Azure container registry, Azure Container Registry podporuje také [obrázku import](container-registry-import-images.md). Například v pracovním postupu DevOps, můžete importovat image z registru vývoje do registru produkčního prostředí, aniž by bylo nutné použít příkazy Dockeru.
+>
+
 ## <a name="example-use-case"></a>Případy použití příklad
-Contoso se spustí web veřejné přítomnost umístění v rámci USA, Kanadě a Evropa. K poskytování těchto trzích s místní a síťové blízkosti obsah, spustí Contoso [Azure Container Service](/azure/container-service/kubernetes/) clusterů Kubernetes (ACS) v oblasti západní USA, USA – východ, Kanada – střed a západní Evropa. Webovou aplikaci, nasazené jako image Dockeru, využívá stejný kód a image ve všech oblastech. Z databáze, která je jednoznačně zřízené v jednotlivých oblastech se načítá obsah, místní pro tuto oblast. Každý místní nasazení má jeho jedinečnou konfiguraci pro zdroje, jako jsou místní databáze.
+Contoso se spustí web veřejné přítomnost umístění v rámci USA, Kanadě a Evropa. K poskytování těchto trzích s místní a síťové blízkosti obsah, spustí Contoso [Azure Kubernetes Service](/azure/aks/) clusterů (AKS) v oblasti západní USA, USA – východ, Kanada – střed a západní Evropa. Webovou aplikaci, nasazené jako image Dockeru, využívá stejný kód a image ve všech oblastech. Z databáze, která je jednoznačně zřízené v jednotlivých oblastech se načítá obsah, místní pro tuto oblast. Každý místní nasazení má jeho jedinečnou konfiguraci pro zdroje, jako jsou místní databáze.
 
 Vývojový tým se nachází v Seattlu, WA, využitím datové centrum západ USA.
 
 ![Doručením (push) do více registrů](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Doručením (push) do více registrů*
 
-Před použitím funkce geografickou replikaci, měl Contoso registru umístěné v USA v oblasti západní USA s další registru v oblasti západní Evropa. K poskytování těchto různých oblastech, vývojový tým měl k nahrávání imagí do dvou různých registrů.
+Před použitím funkce geografickou replikaci, měl Contoso registru umístěné v USA v oblasti západní USA s další registru v oblasti západní Evropa. K poskytování těchto různých oblastech, vývojový tým do dvou různých registry nabídnout Image.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2

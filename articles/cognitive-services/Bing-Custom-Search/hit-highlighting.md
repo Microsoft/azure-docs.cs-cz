@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ukazuje, jak povolit dekorace textu v odpovědi na vyhledávání.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: a535a31678dcdb611acb1606e6091a1a40a6d42e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 17297b651d672cee746076d563b5c410390c0fa2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184066"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862798"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Pomocí značek dekorace zvýraznění textu
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 0ef206cf4407c6392ae5d9a70ba156f5635715e9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814788"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892061"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak provedením následujících úkolů vytvořit po
 
 - **Nakonfigurujte Terraform**: Postupujte podle pokynů v článku, [Terraform a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Poznamenejte si hodnoty appId, displayName, password a tenant.
+- **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty appId, displayName, password a tenant.
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu pro toto cvičení.

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Další informace o formátu schématu v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4fa8f072d420a0245b9de65482ab4c97fa775bdf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227297"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860707"
 ---
 # <a name="schema-format"></a>Formát schémat
 
@@ -43,8 +43,8 @@ Tady je seznam podporovaných atributů datové typy:
 
 | Type | Popis | Operace | Příklad: |
 |------|-------------|------------|---------|
-| Řetězec | Řetězec (1-1024 znaků). | je rovno, starts_with | "hello world" |
-| Datový typ Int32 | 32bitové celé číslo se znaménkem | je rovno, starts_with, is_between | 2016 |
+| String | Řetězec (1-1024 znaků). | je rovno, starts_with | "hello world" |
+| Int32 | 32bitové celé číslo se znaménkem | je rovno, starts_with, is_between | 2016 |
 | Int64 | 64bitové celé číslo se znaménkem | je rovno, starts_with, is_between | 9876543210 |
 | Double | Dvojité přesnosti s plovoucí desetinnou čárkou | je rovno, starts_with, is_between | 1.602e-19 |
 | Datum | Datum (1400-01-01 do 9999-12-31) | je rovno, is_between | '2016-03-14' |

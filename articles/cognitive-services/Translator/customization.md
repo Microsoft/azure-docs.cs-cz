@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Pomocí Microsoft Translatoru Hub můžete vytvářet strojový překlad systému pomocí upřednostňované terminologie a stylu.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: e4e512a69fc783e6c4878298d848a9dccf8768c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226918"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876058"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 

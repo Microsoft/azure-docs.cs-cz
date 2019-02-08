@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak k nahrání obrázku do Visual API Bingu pro vyhledávání a získávat přehledy o něm.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 37fef6100d78b46d0fb52e486f1788eb78ea2578
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 873da64592c2c2e925d8731d4b1154db95bed31d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193756"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863223"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>Rychlý start: Svůj první dotaz v jazyce Python pro vizuální vyhledávání Bingu
 

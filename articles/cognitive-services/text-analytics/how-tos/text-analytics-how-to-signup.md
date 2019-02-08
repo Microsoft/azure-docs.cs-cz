@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Pokyny pro registraci k používání analýzy textu a fungování v rámci omezení.
 services: cognitive-services
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 1461682e01d25e1b076ec2be130b9c3844aa0884
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8471befc72ce72d81212385994cbd2d1e7cb91f9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208359"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882297"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>Jak se zaregistrovat pro rozhraní Text Analytics API
 

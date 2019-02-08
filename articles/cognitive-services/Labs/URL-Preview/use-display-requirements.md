@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Použít a zobrazit požadavky pro koncový bod rozhraní API ve verzi Preview adresy URL projektu.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: b41a73c9f8f3952e02f04f597f970a20131061ca
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8078fe17ae3b282887f4bceb1bb10b34d6a007f4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214224"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861472"
 ---
 # <a name="project-url-preview-use-and-display-requirements"></a>Náhled adresy URL projektu použít a zobrazit požadavky
 

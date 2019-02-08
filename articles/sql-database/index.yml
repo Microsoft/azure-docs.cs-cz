@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7a6372f90cde75cb3314a049de41a4826510bd3f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 437ab5fe8eec2a7c097805f3328df4dd9a2398c6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752241"
+ms.locfileid: "55769944"
 documentType: LandingData
 title: Dokumentace ke službě Azure SQL Database
 metadata:
@@ -68,7 +68,7 @@ sections:
       html: <p>Spravovaná instance umožňuje snadno migrovat vaše místní databáze do plně spravované databázové služby Azure PaaS s minimálními změnami kódu nebo dokonce úplně beze změn.</p>
       image:
         src: media/index/i_mi.svg
-      title: MI
+      title: Spravovaná instance
     - href: /azure/sql-database/sql-database-paas
       html: <p>Integrovaná vysoká dostupnost, automatizované zálohování a geografická replikace zabraňují tomu, aby operace údržby nebo selhání hardwaru a infrastruktury negativně ovlivnily vaše podnikání.</p>
       image:
@@ -110,18 +110,18 @@ sections:
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
-    - title: Vytvoření spravované instance
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: Vytvoření elastického fondu
       values:
       - href: /azure/sql-database/sql-database-elastic-pool-manage
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
+    - title: Vytvoření spravované instance
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-get-started
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -129,9 +129,9 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Naši průvodci rychlým zprovozněním vám pomohou začít s <a href="/azure/sql-database/sql-database-quickstart-guide">databází Singleton</a> a <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">spravovanou instancí</a>.
+    - html: Naši průvodci rychlým zprovozněním vám pomohou začít s <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">izolovanými databázemi</a> a <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">spravovanými instancemi</a>.
     - html: Vytvoření a návrh schématu pro novou izolovanou databázi s využitím <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> nebo <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-    - html: Migrace existující databáze do Azure s využitím funkcí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">Database RESTORE</a>, <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> nebo <a href="/azure/sql-database/sql-database-import">BACPAC Import</a>
+    - html: Migrace existující databáze do Azure s využitím <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">nativního záložního souboru SQL Serveru</a>, <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">nástroje Database Migration Assistant</a> nebo <a href="/azure/sql-database/sql-database-import">importu souboru BACPAC</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení SQL Database</a>
     - html: Globální distribuce dat s využitím <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geograficky distribuované databáze</a>
 - title: Získávání dovedností pomocí Microsoft Learn
