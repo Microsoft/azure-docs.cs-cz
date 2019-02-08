@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770482"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860403"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
@@ -33,6 +33,10 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se nasazení zo
 
 ### <a name="how-is-site-recovery-priced"></a>Jak se účtuje Site Recovery?
 Kontrola [ceny za Azure Site Recovery](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) podrobnosti.
+### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Jak funguje úroveň Free pro práci v rámci Azure Site Recovery?
+Každá instance chráněná Azure Site Recovery je prvních 31 dní ochrany zadarmo. Od 32. dne dál se ochrana instance účtuje podle sazeb uvedených nahoře.
+###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Budu se mi během prvních 31 dní účtovat nějaké další poplatky Azure?
+Ano, i když je Azure Site Recovery během prvních 31 dní chráněné instance zadarmo, můžou vám být účtovány poplatky za Azure Storage, transakce úložiště a přenosy dat. U obnoveného virtuálního počítače se můžou účtovat taky poplatky za výpočty Azure. Získejte kompletní podrobnosti o cenách za [zde](https://azure.microsoft.com/pricing/details/site-recovery)
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Co jsou osvědčené postupy pro konfiguraci Site Recovery na virtuálních počítačích Azure?
 1. [Vysvětlení architektury Azure do Azure](azure-to-azure-architecture.md)
@@ -70,6 +74,10 @@ Pomocí služby Site Recovery můžete replikovat a obnovovat virtuální počí
 
 Ne, Site Recovery nevyžaduje připojení k Internetu. Ale vyžaduje přístup k adresám URL služby Site Recovery a IP rozsahy, jak je uvedeno v [v tomto článku](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Můžete replikovat aplikace má samostatné skupiny prostředků pro samostatné úrovně? 
+Ano, můžete replikovat aplikace a konfigurace zotavení po havárii mějte samostatné skupiny prostředků moc.
+Například pokud máte aplikace s jednotlivých úrovní aplikace, databáze a webové v samostatné skupiny prostředků, pak budete muset kliknout [Průvodce replikace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) třikrát pro ochranu u všech úrovní. Azure Site Recovery replikuje tyto tři úrovně ve třech jinou skupinu prostředků.
+
 ## <a name="replication-policy"></a>Zásady replikace
 
 ### <a name="what-is-a-replication-policy"></a>Co jsou zásady replikace?
@@ -89,9 +97,12 @@ V současné době většina aplikací můžete obnovit také ze snímků konzis
 Site Recovery vytvoří bod obnovení konzistentní při selhání každých 5 minut.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Co je bod obnovení konzistentní? 
-Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentních s aplikací. Konzistentní snímky zachycují stejná data jako snímky konzistentní při selhání, a uveďte všechna data v paměti a všechny probíhající transakce. 
+Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentních s aplikací. Body obnovení konzistentní zachycení stejná data jako snímky konzistentní při selhání, a uveďte všechna data v paměti a všechny probíhající transakce. 
 
 Kvůli další obsah snímky konzistentními se nejvíce podílejí a trvat nejdéle provádět. Doporučujeme, abyste body obnovení konzistentní pro databázi operačních systémů a aplikací, jako je SQL Server.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Co je dopad existence body obnovení konzistentní s aplikací na výkon aplikace?
+Vzhledem k tomu, body obnovení konzistentní zachytí všechna data v paměti a v procesu vyžaduje architekturu jako třeba stínové kopie svazku v systému windows pro uvedení aplikace. To, v případě velmi často aktivace může mít dopad na výkon Pokud už je velmi vytížený zatížení. Obvykle doporučuje nepoužívat s nízkou frekvencí pro body obnovení konzistentní vzhledem k aplikaci pro jiné databázové úlohy a to i pro databázové úlohy 1 hodinu je dostatečná. 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Co je minimální frekvenci generování bod obnovení konzistentní s aplikací?
 Site Recovery můžete vytvoří bod obnovení konzistentní s minimální frekvenci za 1 hodinu.

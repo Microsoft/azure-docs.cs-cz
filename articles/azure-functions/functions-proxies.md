@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: da46d33e05a6f76687d3b8982855d477cbabfe86
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766210"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895614"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s proxy služby Azure Functions
 
@@ -94,7 +94,7 @@ Parametry odpovědi může sloužit jako součást úpravy odpověď klientovi. 
 
 ### <a name="use-appsettings"></a>Nastavení odkazu na aplikaci
 
-Je také možné odkazovat [definované pro aplikaci function app nastavení aplikace](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop) tím, že název nastavení znaky procenta (%).
+Je také možné odkazovat [definované pro aplikaci function app nastavení aplikace](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) tím, že název nastavení znaky procenta (%).
 
 Například adresu URL back-end z *https://%ORDER_PROCESSING_HOST%/api/orders* musela "ORDER_PROCESSING_HOST %" nahrazeno hodnotou ORDER_PROCESSING_HOST nastavení.
 

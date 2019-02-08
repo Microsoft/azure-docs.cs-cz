@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299040"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893727"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
@@ -28,14 +28,15 @@ Zdroje dat a konektory zobrazují v získat Data nebo Průvodce importem v sadě
 |Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
 |Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Ano       |    Ne      |
 |Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Ano        |  Ne        |
-|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup> [4](#gen2)</sup>      |   Ano       |    Ne      |
 |Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Ano     |   Ne       |
 |Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup> [3](#databricks)</sup>     |   Ano       |   Ne       |
 ||||
 
-<a name="tab1400a">1</a> pouze vyšší modely a model tabulkový 1400.   
-<a name="azsqlmanaged">2</a> azure SQL Database Managed Instance je podporována. Proto spravované instance běží v rámci virtuální sítě Azure s použitím privátní IP adresy, není nutná On-premises Data Gateway.   
-<a name="databricks">3</a> azure Databricks pomocí konektoru Spark v tuto chvíli nepodporuje.
+<a name="tab1400a">1</a> – model tabulkový 1400 a pouze vyšší modely.   
+<a name="azsqlmanaged">2</a> – azure SQL Database Managed Instance je podporována. Proto spravované instance běží v rámci virtuální sítě Azure s použitím privátní IP adresy, není nutná On-premises Data Gateway.   
+<a name="databricks">3</a> – azure Databricks pomocí Spark konektor v tuto chvíli nepodporuje.   
+<a name="gen2">4</a> -ADLS Gen2 v tuto chvíli nepodporuje.
 
 
 **Zprostředkovatel**   

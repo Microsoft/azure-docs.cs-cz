@@ -1,22 +1,22 @@
 ---
-title: Použití Azure Data Lake Storage Gen2 Preview s využitím clusterů Azure HDInsight
-description: Zjistěte, jak k dotazování dat ze služby Azure Data Lake Storage Gen2 ve verzi Preview a uložte výsledky analýzy.
+title: Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
+description: Zjistěte, jak k dotazování dat ze služby Azure Data Lake Storage Gen2 a uložte výsledky analýzy.
 author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 739076289a1324cb47f0c980f0d21b153c7b5edc
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0932c576a47af85c496d5d2d12dbc1b997d48e16
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662954"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874324"
 ---
-# <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 Preview s využitím clusterů Azure HDInsight
+# <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
-Pokud chcete analyzovat data v clusteru služby HDInsight, můžete ukládat data v libovolnou kombinaci služby Azure Blob Storage, Azure Blob Storage s Azure Data Lake Storage Gen2 povolenou verzí Preview nebo Azure Data Lake Storage Gen1. Všechny možnosti ukládání umožňují bezpečné odstranění clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data.
+Pokud chcete analyzovat data v clusteru služby HDInsight, můžete ukládat data v libovolnou kombinaci služby Azure Blob Storage, Azure Blob Storage s Azure Data Lake Storage Gen2 povolená nebo Azure Data Lake Storage Gen1. Všechny možnosti ukládání umožňují bezpečné odstranění clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data.
 
 Hadoop podporuje hodnoty výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete zadat kontejner objektů blob v Azure Storage nebo hierarchického oboru názvů, které nabízí Data Lake Storage Gen2 jako výchozí systém souborů. Můžete také u služby HDInsight 3.5 můžete vybrat kontejner nebo hierarchického oboru názvů jako výchozí systém souborů s několika výjimkami.
 
@@ -154,7 +154,7 @@ az storage account create \
 ```
 
 > [!NOTE]
-> Ve verzi public preview služby Data Lake Storage Gen2 pouze `--sku Standard_LRS` je podporována.
+> Během pouze veřejná Data Lake Storage Gen2 `--sku Standard_LRS` je podporována.
 
 Budete vyzváni k zadání geografické oblasti, ve které se vytvoří účet úložiště. Vytvořte účet úložiště ve stejné oblasti, kterou chcete použít k vytvoření clusteru HDInsight.
 

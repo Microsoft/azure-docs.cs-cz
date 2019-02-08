@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 018171d4b2253c2cf7942f9f10424a9c695438b9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9992e7d280472186b32dea3c102a02e3df4d25ce
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809432"
+ms.locfileid: "55872896"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do služby Azure Data Lake Storage Gen2
 

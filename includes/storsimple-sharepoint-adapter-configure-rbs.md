@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3888242f0379cc97bbe511e49a31a0f7eb8c5372
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166399"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888735"
 ---
-<!--author=SharS last changed: 1/14/2016 -->
-
 > [!NOTE]
 > Při provádění změn StorSimple Adapter pro SharePoint RBS konfigurace, musíte být přihlášeni pomocí uživatelského účtu, který patří do skupiny Domain Admins. Na stránce konfigurace musíte kromě toho přistupují z prohlížeče běží na stejném hostiteli jako centrální správy.
 > 
@@ -115,7 +113,7 @@ ms.locfileid: "50166399"
    > [!WARNING]
    > Pokud jste ještě nepovolili RBS, nedoporučujeme přesun databáze obsahu do zařízení StorSimple. Toto je netestované konfigurace.
    
-9. Přejděte k dalšímu kroku: [konfigurace uvolňování](#configure-garbage-collection).
+9. Přejděte k dalšímu kroku: [Konfigurace uvolnění paměti](#configure-garbage-collection).
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

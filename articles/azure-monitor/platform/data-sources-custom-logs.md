@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 628cbcbfb712d2fcaa53bdaee262f88a78dd1527
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198775"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895665"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Vlastní protokolů v Log Analytics
 Zdroj dat vlastních protokolů v Log Analytics umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog. Po shromáždění, můžete analyzovat data do jednotlivých polí v dotazech nebo extrahovat data během shromažďování u jednotlivých polí.
@@ -29,7 +29,7 @@ Soubory protokolů, které se mají shromažďovat musí odpovídat následujíc
 
 - V protokolu musí mít každý řádek jednu položku nebo použít časové razítko odpovídající jednomu z následujících formátů na začátku každé položky.
 
-    RRRR MM-DD HH: MM:<br>M/D/RRRR HH: MM: SS AM/PM<br>MON DD, rrrr hh: mm:<br />rrmmdd hh: mm:<br />ddmmrr hh: mm:<br />MMM d hh<br />dd/MMM/yyyy:HH:mm:ss zzz<br />rrrr-MM-ddTHH:mm:ssK
+    YYYY-MM-DD HH:MM:SS<br>M/D/RRRR HH: MM: SS AM/PM<br>MON DD, rrrr hh: mm:<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - Soubor protokolu nesmí povolit cyklické protokolování nebo rotace protokolů, kde je soubor přepsán pomocí nové položky.
 - Soubor protokolu musí používat kódování ASCII nebo UTF-8.  Nejsou podporovány jiných formátů, například UTF-16.
@@ -40,6 +40,10 @@ Soubory protokolů, které se mají shromažďovat musí odpovídat následujíc
   
 >[!NOTE]
 > Pokud vaše aplikace vytvoří nový soubor protokolu, každý den nebo když dosáhne určité velikosti, agenta Log Analytics pro Linux nevyhledává až po restartování. Je to proto, že agent pouze vytvoří výčet a zahájí monitorování pro vzory pomocí zadaného protokolů při spuštění a z tohoto důvodu je potřeba naplánovat automatickou restartování agenta.  Toto omezení neexistuje pomocí agenta Log Analytics pro Windows.  
+>
+
+>[!NOTE]
+> Za pracovní prostor Log Analytics můžete vytvořit maximálně 500 vlastních protokolů. 
 >
 
 ## <a name="defining-a-custom-log"></a>Definování vlastního protokolu
@@ -83,7 +87,7 @@ Následující tabulka obsahuje příklady platných vzorů k určení různých
 | Všechny soubory v *C:\Logs* s příponou .txt agenta Windows |C:\Logs\\\*.txt |
 | Všechny soubory v *C:\Logs* s názvem počínaje protokolu a příponu .txt agenta Windows |C:\Logs\log\*.txt |
 | Všechny soubory v */var/log/audit* s příponou .txt na agenta pro Linux |/var/log/audit/*.txt |
-| Všechny soubory v */var/log/audit* s názvem počínaje protokolu a příponu .txt na agenta pro Linux |/var/log/audit/log\*txt |
+| Všechny soubory v */var/log/audit* s názvem počínaje protokolu a příponu .txt na agenta pro Linux |/var/log/audit/log\*.txt |
 
 1. Vyberte Windows nebo Linux k určení, jaký formát cesty, kterou přidáváte.
 2. Zadejte cestu a kliknutím **+** tlačítko.

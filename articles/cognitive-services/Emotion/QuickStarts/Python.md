@@ -3,19 +3,19 @@ title: 'Rychlý start: Rozpoznávání emocí na tváří v obrázku – rozhran
 description: Získejte informace a vzorové kódy, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí Pythonu.
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: bdc42233d027134ca42e52398eeefd83ae45669f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: cb22e627c8da6a5a869458980b3b98ce7f287465
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211249"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869972"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvářejte aplikace pro rozpoznávání emocí na tváří v obrázku.
 
