@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 8beebfc0bd845fc7dbe8b1f1665aba7820c78767
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: cc1405d2dd972aff6091a9d5b60ff9da18185286
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432077"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978098"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Šifrování operačního systému a připojené datové disky ve virtuálním počítači škálovací sady pomocí Azure Powershellu (Preview)
 
@@ -36,49 +36,53 @@ Azure disk encryption je podporována:
 
 Škálovací sady virtuálního počítače reimage a upgrade operace nejsou podporovány v aktuální verzi preview. Azure disk encryption pro verzi preview sady škálování virtuálních počítačů se doporučuje jenom v testovacích prostředích. Ve verzi preview Nepovolovat šifrování disku v produkčních prostředích, kde je třeba upgradovat image operačního systému v šifrované škálovací sady.
 
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="register-for-disk-encryption-preview"></a>Zaregistrovat se na disk encryption ve verzi preview
 
-Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
+Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Když `RegistrationState` sestavy *registrované*, přeregistrovat *Microsoft.Compute* zprostředkovatele s [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
+
+Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [Get-AzProviderFeature](/powershell/module/az.resources/Get-AzProviderFeature). Když `RegistrationState` sestavy *registrované*, znovu zaregistrovat *Microsoft.Compute* zprostředkovatele s [Register-AzResourceProvider](/powershell/module/az.resources/Register-AzResourceProvider):
+
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Vytvoření služby Azure Key Vault nepovoluje šifrování disku
 
 Azure Key Vault umí ukládat klíče, tajné kódy nebo hesla, které umožňují bezpečný je implementovat ve svých aplikacích a službách. Kryptografické klíče jsou uložené ve službě Azure Key Vault software ochrany, nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 úrovně 2 standardů. Tyto klíče se používají k šifrování a dešifrování virtuální disky připojené k virtuálnímu počítači. Uchování kontroly nad těmito kryptografické klíče a můžete kontrolovat jejich použití.
 
-Vytvoření služby Key Vault pomocí [nové AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). Chcete-li povolit služby Key Vault má být použit pro šifrování disků, nastavte *EnabledForDiskEncryption* parametru. Následující příklad také definuje proměnné pro název skupiny prostředků, název trezoru klíčů a umístění. Zadejte vlastním jedinečným názvem služby Key Vault:
+Vytvoření služby Key Vault pomocí [nové AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Chcete-li povolit služby Key Vault má být použit pro šifrování disků, nastavte *EnabledForDiskEncryption* parametru. Následující příklad také definuje proměnné pro název skupiny prostředků, název trezoru klíčů a umístění. Zadejte vlastním jedinečným názvem služby Key Vault:
 
 ```azurepowershell-interactive
 $rgName="myResourceGroup"
 $vaultName="myuniquekeyvault"
 $location = "EastUS"
 
-New-AzureRmResourceGroup -Name $rgName -Location $location
-New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
+New-AzResourceGroup -Name $rgName -Location $location
+New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
 
 ### <a name="use-an-existing-key-vault"></a>Použít existující služby Key Vault
 
 Tento krok je jenom nutné, pokud máte existující Key Vault, kterou chcete použít šifrování disku. Tento krok přeskočte, pokud jste vytvořili službu Key Vault v předchozí části.
 
-Můžete povolit existující službu Key Vault ve stejném předplatném a oblasti jako škálovací sady pro šifrování disků s [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy). Definovat název existující službu Key Vault v *$vaultName* proměnné následujícím způsobem:
+Můžete povolit existující službu Key Vault ve stejném předplatném a oblasti jako škálovací sady pro šifrování disků s [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-AzKeyVaultAccessPolicy). Definovat název existující službu Key Vault v *$vaultName* proměnné následujícím způsobem:
+
 
 ```azurepowershell-interactive
 $vaultName="myexistingkeyvault"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
+Set-AzKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
 ```
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
@@ -89,12 +93,12 @@ Nejprve pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/re
 $cred = Get-Credential
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí rutiny [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985:
+Teď vytvořte virtuální počítač škálovací sadu s [New-AzVmss](/powershell/module/az.compute/new-azvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985:
 
 ```azurepowershell-interactive
 $vmssName="myScaleSet"
 
-New-AzureRmVmss `
+New-AzVmss `
     -ResourceGroupName $rgName `
     -VMScaleSetName $vmssName `
     -Location $location `
@@ -108,13 +112,14 @@ New-AzureRmVmss `
 
 ## <a name="enable-encryption"></a>Povolit šifrování
 
-K šifrování instancí virtuálních počítačů ve škálovací sadě, nejdřív získejte některé informace o ID identifikátor URI služby Key Vault a prostředek s [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault). Tyto proměnné se používají k spusťte proces šifrování s [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension):
+K šifrování instancí virtuálních počítačů ve škálovací sadě, nejdřív získejte některé informace o ID identifikátor URI služby Key Vault a prostředek s [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault). Tyto proměnné se používají k spusťte proces šifrování s [Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/Set-AzVmssDiskEncryptionExtension):
+
 
 ```azurepowershell-interactive
-$diskEncryptionKeyVaultUrl=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
-$keyVaultResourceId=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
+$diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
+$keyVaultResourceId=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
 
-Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
+Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
 ```
 
@@ -122,10 +127,11 @@ Po zobrazení výzvy zadejte *y* pokračujte v procesu šifrování disku škál
 
 ## <a name="check-encryption-progress"></a>Kontrola průběhu šifrování
 
-Chcete-li zkontrolovat stav šifrování disku, použijte [Get-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Get-AzureRmVmssDiskEncryption):
+Chcete-li zkontrolovat stav šifrování disku, použijte [Get-AzVmssDiskEncryption](/powershell/module/az.compute/Get-AzVmssDiskEncryption):
+
 
 ```azurepowershell-interactive
-Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
+Get-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
 Když instance virtuálních počítačů jsou zašifrované, *EncryptionSummary* kódu sestavy *bylo úspěšné a Stav zřizování* jak je znázorněno v následujícím příkladu výstupu:
@@ -150,10 +156,11 @@ EncryptionExtensionInstalled : True
 
 ## <a name="disable-encryption"></a>Zakázat šifrování
 
-Pokud již nechcete používat šifrovanými disky instancí virtuálních počítačů, můžete zakázat šifrování s [Disable-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) následujícím způsobem:
+Pokud již nechcete používat šifrovanými disky instancí virtuálních počítačů, můžete zakázat šifrování s [zakázat AzVmssDiskEncryption](/powershell/module/az.compute/Disable-AzVmssDiskEncryption) následujícím způsobem:
+
 
 ```azurepowershell-interactive
-Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
+Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
 ## <a name="next-steps"></a>Další postup

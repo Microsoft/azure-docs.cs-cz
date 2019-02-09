@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e95440f72580b928cd41b6d03f30459cfb70a510
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817656"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965388"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Apache Hive v HDInsight
 [Apache Hive](https://hive.apache.org/) poskytuje způsob spuštění [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) úlohy prostřednictvím skriptovacím jazyce podobném SQL volat *[HiveQL] [ hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování a analýze velkých objemů dat.
@@ -66,13 +66,13 @@ Pokud chcete se dozvědět jak get/nahrávání dat do účtu úložiště a vyt
 
 Následující tabulka uvádí soubory používané v tomto kurzu:
 
-<table border="1">
-<tr><th>Soubory</th><th>Popis</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Soubor skriptu HiveQL používané úlohy Hive. Tento skript se odeslal do účtu úložiště objektů Blob v Azure pomocí veřejného přístupu. <a href="#appendix-b">Dodatek B</a> obsahuje pokyny k přípravě a nahrávání tohoto souboru si vlastní účet úložiště objektů Blob v Azure.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Vstupní data pro úlohy Hive. Data byla nahrána do účtu úložiště objektů Blob v Azure pomocí veřejného přístupu. <a href="#appendix-a">Příloha A</a> obsahuje informace o získání dat a nahrávání dat do vlastního účtu úložiště objektů Blob v Azure.</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>Výstupní cesta pro úlohy Hive. Pro ukládání výstupních dat se používá výchozí kontejner.</td></tr>
-<tr><td>\tutorials\flightdelays\jobstatus</td><td>Úloha Hive stav složky na výchozí kontejner.</td></tr>
-</table>
+|Soubory|Popis|  
+|----|----|   
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql|Soubor skriptu HiveQL používané úlohy Hive. Tento skript se odeslal do účtu úložiště objektů Blob v Azure pomocí veřejného přístupu. <a href="#appendix-b">Dodatek B</a> obsahuje pokyny k přípravě a nahrávání tohoto souboru si vlastní účet úložiště objektů Blob v Azure.|
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data|Vstupní data pro úlohy Hive. Data byla nahrána do účtu úložiště objektů Blob v Azure pomocí veřejného přístupu. <a href="#appendix-a">Příloha A</a> obsahuje informace o získání dat a nahrávání dat do vlastního účtu úložiště objektů Blob v Azure.|
+|\tutorials\flightdelays\output|Výstupní cesta pro úlohy Hive. Pro ukládání výstupních dat se používá výchozí kontejner.|
+|\tutorials\flightdelays\jobstatus|Úloha Hive stav složky na výchozí kontejner.|
+
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Vytvoření clusteru a spouštět úlohy Hive a Sqoop
 Hadoop MapReduce je dávkové zpracování. Cenově nejvýhodnější způsob spuštění úlohy Hive je vytvoření clusteru pro úlohy a odstraňte úlohu po dokončení úlohy. Následující skript pokrývá celý proces.
@@ -250,12 +250,11 @@ Nahrání datového souboru a [HiveQL](https://cwiki.apache.org/confluence/displ
 1. Přejděte na web [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].
 2. Na stránce vyberte následující hodnoty:
 
-    <table border="1">
-    <tr><th>Název</th><th>Hodnota</th></tr>
-    <tr><td>Filter Year (Filtr roku)</td><td>2013 </td></tr>
-    <tr><td>Filter Period (Filtr období)</td><td>January (Leden)</td></tr>
-    <tr><td>Pole</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *dopravce*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
-    </table>
+    |Název|Hodnota|
+    |---|---|
+    |Filter Year (Filtr roku)|2013|
+    |Filter Period (Filtr období)|January (Leden)|
+    |Pole|*Rok*, *FlightDate*, *UniqueCarrier*, *dopravce*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)|
 
 3. Klikněte na **Stáhnout**.
 4. Rozbalte soubor, který má **C:\Tutorials\FlightDelay\2013Data** složky. Každý soubor je soubor CSV a velikost přibližně 60GB.
@@ -266,11 +265,10 @@ Nahrání datového souboru a [HiveQL](https://cwiki.apache.org/confluence/displ
 
 1. Příprava parametry:
 
-    <table border="1">
-    <tr><th>Název proměnné</th><th>Poznámky</th></tr>
-    <tr><td>$storageAccountName</td><td>Pokud chcete nahrát data do účtu Azure Storage.</td></tr>
-    <tr><td>$blobContainerName</td><td>Pokud chcete nahrát data do kontejneru objektů Blob.</td></tr>
-    </table>
+    |Název proměnné|Poznámky|
+    |---|---|
+    |$storageAccountName|Pokud chcete nahrát data do účtu Azure Storage.|
+    |$blobContainerName|Pokud chcete nahrát data do kontejneru objektů Blob.|
     
 2. Otevřete Azure PowerShell ISE.
 3. Vložte následující skript do podokna skriptu:
@@ -375,11 +373,10 @@ Skript HiveQL provede následující:
 
 1. Příprava parametry:
 
-    <table border="1">
-    <tr><th>Název proměnné</th><th>Poznámky</th></tr>
-    <tr><td>$storageAccountName</td><td>Pokud chcete nahrát skript HiveQL k účtu Azure Storage.</td></tr>
-    <tr><td>$blobContainerName</td><td>Kontejner objektů Blob, ve které chcete nahrát skript HiveQL k.</td></tr>
-    </table>
+    |Název proměnné|Poznámky|
+    |---|---|
+    |$storageAccountName|Pokud chcete nahrát skript HiveQL k účtu Azure Storage.|
+    |$blobContainerName|Kontejner objektů Blob, ve které chcete nahrát skript HiveQL k.|
     
 2. Otevřete Azure PowerShell ISE.  
 
@@ -564,14 +561,14 @@ Skript HiveQL provede následující:
 
 1. Příprava parametry:
 
-    <table border="1">
-    <tr><th>Název proměnné</th><th>Poznámky</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Název serveru Azure SQL database. Zadejte co vytvořit nový server.</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>Přihlašovací jméno pro server Azure SQL database. Pokud $sqlDatabaseServerName stávajícího serveru, přihlašovací jméno a heslo pro přihlášení se používají k ověření serveru. V opačném případě se používají k vytvoření nového serveru.</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Heslo pro přihlášení k serveru Azure SQL database.</td></tr>
-    <tr><td>$sqlDatabaseLocation</td><td>Tato hodnota se používá pouze při vytváření nového serveru Azure database.</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>SQL database používá k vytvoření tabulky AvgDelays Sqoop úlohy. Ponechejte toto pole prázdné, vytvoří databázi s názvem HDISqoop. Název tabulky pro výstup úlohy Sqoop je AvgDelays. </td></tr>
-    </table>
+    |Název proměnné|Poznámky|
+    |---|---|
+    |$sqlDatabaseServerName|Název serveru Azure SQL database. Zadejte co vytvořit nový server.|
+    |$sqlDatabaseUsername|Přihlašovací jméno pro server Azure SQL database. Pokud $sqlDatabaseServerName stávajícího serveru, přihlašovací jméno a heslo pro přihlášení se používají k ověření serveru. V opačném případě se používají k vytvoření nového serveru.|
+    |$sqlDatabasePassword|Heslo pro přihlášení k serveru Azure SQL database.|
+    |$sqlDatabaseLocation|Tato hodnota se používá pouze při vytváření nového serveru Azure database.|
+    |$sqlDatabaseName|SQL database používá k vytvoření tabulky AvgDelays Sqoop úlohy. Ponechejte toto pole prázdné, vytvoří databázi s názvem HDISqoop. Název tabulky pro výstup úlohy Sqoop je AvgDelays.|
+
     
 2. Otevřete Azure PowerShell ISE.
 

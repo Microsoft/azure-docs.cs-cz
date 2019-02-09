@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b725713777eb6ca25c829d327f91921b28cd4203
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: a2e056baa2dd27ca0bf054d0dacf15d35e0ef384
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035964"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977915"
 ---
-# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytvoření a správa virtuálních počítačů s Windows pomocí Azure Powershellu
 
 Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní výpočetní prostředí. Tento kurz se zaměřuje na základní úlohy při nasazování virtuálních počítačů Azure, jako jsou výběr velikosti virtuálního počítače, výběr image virtuálního počítače a nasazení virtuálního počítače. Získáte informace o těchto tématech:
 
@@ -42,12 +42,12 @@ Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním roh
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).
+Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) příkazu.
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením virtuálního počítače. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroupVM* v oblasti *EastUS*:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -ResourceGroupName "myResourceGroupVM" `
    -Location "EastUS"
 ```
@@ -56,7 +56,7 @@ Skupinu prostředků je třeba zadat při vytváření nebo úpravách virtuáln
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Při vytváření virtuálního počítače je k dispozici několik možností, jako jsou image operačního systému, konfigurace sítě a přihlašovací údaje pro správu. Tento příklad vytvoří virtuální počítač *myVM* s výchozí verzí Windows Serveru 2016 Datacenter.
+Při vytváření virtuálního počítače, několik možností, jak jsou k dispozici jako bitovou kopii operačního systému, konfigurace sítě a přihlašovací údaje pro správu. Tento příklad vytvoří virtuální počítač *myVM* s výchozí verzí Windows Serveru 2016 Datacenter.
 
 Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači pomocí rutiny [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6):
 
@@ -64,10 +64,10 @@ Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuál
 $cred = Get-Credential
 ```
 
-Vytvořte virtuální počítač pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Vytvoření virtuálního počítače s [nové AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Location "EastUS" `
@@ -85,7 +85,7 @@ Po dokončení nasazení vytvořte připojení ke vzdálené ploše virtuálníh
 Spuštění následujících příkazů vrátí veřejnou IP adresu virtuálního počítače. Poznamenejte si tuto IP adresu, abyste se k ní v dalším kroku mohli pomocí prohlížeče připojit a otestovat připojení k webu.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
    -ResourceGroupName "myResourceGroupVM"  | Select IpAddress
 ```
 
@@ -101,16 +101,18 @@ V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak *
 
 Azure Marketplace obsahuje celou řadu imagí, které je možné použít k vytvoření virtuálního počítače. V předchozích krocích jsme vytvořili virtuální počítač pomocí image Windows Serveru 2016 Datacenter. V tomto kroku pomocí modulu PowerShell na webu Marketplace vyhledáme další image Windows, které je také možné použít jako základ pro nové virtuální počítače. Tento proces se skládá z vyhledání vydavatele, nabídky, skladové položky a volitelně čísla verze pro [identifikaci](cli-ps-findimage.md#terminology) image.
 
-Seznam vydavatelů imagí můžete získat pomocí příkazu [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher):
+Použití [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) příkaz, který vrátí seznam vydavatelů imagí:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImagePublisher -Location "EastUS"
+Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Seznam nabídek imagí pak můžete získat pomocí příkazu [Get-AzureRmVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer). Při použití tohoto příkazu se ve vráceném seznamu vyfiltruje zadaný vydavatel `MicrosoftWindowsServer`:
+Použití [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) vrátit seznam nabídek imagí. Při použití tohoto příkazu se ve vráceném seznamu vyfiltruje zadaný vydavatel `MicrosoftWindowsServer`:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageOffer -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
+Get-AzVMImageOffer `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer"
 ```
 
 Výsledky budou vypadat přibližně jako v tomto příkladu: 
@@ -123,10 +125,13 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-Příkaz [Get-AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) potom vyfiltruje vydavatele a název nabídky a vrátí seznam názvů imagí.
+[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) příkaz potom vyfiltruje vydavatele a nabídky Název vrátit seznam názvů imagí.
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
+Get-AzVMImageSku `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer" `
+   -Offer "WindowsServer"
 ```
 
 Výsledky budou vypadat přibližně jako v tomto příkladu: 
@@ -153,7 +158,7 @@ Skus                                      Offer         PublisherName          L
 Pomocí těchto informací můžete nasadit virtuální počítač s konkrétní imagí. Tento příklad nasadí virtuální počítač s použitím nejnovější verze image Windows Serveru 2016 s kontejnery.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM2" `
     -Location "EastUS" `
@@ -170,12 +175,12 @@ Parametr `-AsJob` vytvoří virtuální počítač jako úlohu na pozadí, takž
 
 ## <a name="understand-vm-sizes"></a>Vysvětlení velikostí virtuálních počítačů
 
-Velikost virtuálního počítače určuje množství výpočetních prostředků, jako jsou procesor, grafický procesor a paměť, které jsou pro virtuální počítač k dispozici. Virtuální počítače by se měly vytvářet s použitím velikosti virtuálního počítače odpovídající pracovní zátěži. Pokud se pracovní zátěž zvýší, je také možné velikost existujícího virtuálního počítače změnit.
+Velikost virtuálního počítače určuje množství výpočetních prostředků, jako je procesor, grafický procesor a paměť, které jsou k dispozici k virtuálnímu počítači. Virtuální počítače musí být vytvořené pomocí vhodné pro úlohy pro velikost virtuálního počítače. Pokud se pracovní zátěž zvýší, je také možné velikost existujícího virtuálního počítače změnit.
 
 ### <a name="vm-sizes"></a>Velikosti virtuálních počítačů
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
-| Typ                     | Běžné velikosti           |    Popis       |
+| Type                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)   | Fsv2, Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -186,69 +191,71 @@ V následující tabulce jsou velikosti rozdělené podle způsobů použití.
 
 ### <a name="find-available-vm-sizes"></a>Zjištění dostupných velikostí virtuálních počítačů
 
-Pokud chcete zobrazit seznam velikostí virtuálních počítačů dostupných v konkrétní oblasti, použijte příkaz [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize).
+Chcete-li zobrazit seznam velikostí virtuálních počítačů dostupných v konkrétní oblasti, použijte [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) příkazu.
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -Location "EastUS"
+Get-AzVMSize -Location "EastUS"
 ```
 
 ## <a name="resize-a-vm"></a>Změna velikosti virtuálního počítače
 
 Po nasazení virtuálního počítače můžete jeho velikost změnit, čímž se zvýší nebo sníží přidělení prostředků.
 
-Před změnou velikosti virtuálního počítače zkontrolujte, jestli je požadovaná velikost dostupná v aktuálním clusteru virtuálních počítačů. Seznam velikostí můžete získat pomocí příkazu [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize).
+Před změnou velikosti virtuálního počítače, zkontrolujte, jestli je požadovanou velikost dostupná v aktuálním clusteru virtuálních počítačů. [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) příkaz vrátí seznam hodnot velikostí.
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
+Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
 ```
 
-Pokud je požadovaná velikost dostupná, dá se velikost virtuálního počítače změnit i za provozu, ale během této operace se bude vyžadovat restartování.
+Pokud velikost je k dispozici, virtuální počítač můžete změnit velikost ze stavu provozu, ale se bude vyžadovat restartování během operace.
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupVM"  -VMName "myVM"
+$vm = Get-AzVM `
+   -ResourceGroupName "myResourceGroupVM"  `
+   -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_DS3_v2"
-Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroupVM"
+Update-AzVM `
+   -VM $vm `
+   -ResourceGroupName "myResourceGroupVM"
 ```
 
-Pokud požadovaná velikost není v aktuálním clusteru dostupná, je třeba nejprve virtuální počítač uvolnit, aby mohla změna velikosti proběhnout. Uvolněním virtuálního počítače se odeberou všechna data na dočasném disku. Změní se také jeho veřejná IP adresa, pokud nepoužíváte statickou IP adresu.
+Pokud požadovanou velikost není k dispozici v aktuálním clusteru, musí být uvolněný předtím, než může dojít, operace změny velikosti virtuálního počítače. Uvolněním virtuálního počítače se odeberou všechna data na dočasném disku. Změní se také jeho veřejná IP adresa, pokud nepoužíváte statickou IP adresu.
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
-$vm = Get-AzureRmVM `
+$vm = Get-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_E2s_v3"
-Update-AzureRmVM -VM $vm `
+Update-AzVM -VM $vm `
    -ResourceGroupName "myResourceGroupVM"
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -Name $vm.name
 ```
 
 ## <a name="vm-power-states"></a>Stavy napájení virtuálního počítače
 
-Virtuální počítač Azure může mít jeden z mnoha stavů napájení. Tento stav představuje aktuální stav virtuálního počítače z pohledu hypervisoru.
+Virtuální počítač Azure může mít jeden z mnoha stavů napájení. 
 
-### <a name="power-states"></a>Stavy napájení
 
 | Stav napájení | Popis
 |----|----|
-| Spouštění | Označuje, že virtuální počítač se právě spouští. |
-| Spuštěno | Označuje, že virtuální počítač běží (je spuštěný). |
-| Zastavování | Označuje, že virtuální počítač se právě zastavuje. |
-| Zastaveno | Označuje, že virtuální počítač je zastavený. Poplatky za výpočetní výkon se účtují i za virtuální počítače v zastaveném stavu.  |
-| Rušení přidělení | Označuje, že virtuální počítač se právě uvolňuje. |
-| Přidělení zrušeno | Označuje, že virtuální počítač je odebraný z hypervisoru, ale stále je dostupný v rovině řízení. Za virtuální počítače ve stavu `Deallocated` se neúčtují poplatky za výpočetní výkon. |
-| - | Označuje, že stav napájení virtuálního počítače není známý. |
+| Spouštění | Virtuální počítač se spouští. |
+| Spuštěno | Virtuální počítač je spuštěný. |
+| Zastavování | Virtuální počítač se zastavuje. |
+| Zastaveno | Virtuální počítač je zastavený. Poplatky za výpočetní výkon se účtují i za virtuální počítače v zastaveném stavu.  |
+| Rušení přidělení | Virtuální počítač se právě ruší přidělení. |
+| Přidělení zrušeno | Označuje, že virtuální počítač se odebere z hypervisoru, ale je dál dostupný v rovině řízení. Za virtuální počítače ve stavu `Deallocated` se neúčtují poplatky za výpočetní výkon. |
+| - | Stav napájení virtuálního počítače neznámý. |
 
-### <a name="find-power-state"></a>Zjištění stavu napájení
 
-Pokud chcete zjistit stav konkrétního virtuálního počítače, použijte příkaz [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm). Nezapomeňte zadat platný název virtuálního počítače a skupiny prostředků.
+Chcete-li získat informace o stavu z konkrétního virtuálního počítače, použijte [rutiny Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) příkazu. Nezapomeňte zadat platný název virtuálního počítače a skupiny prostředků.
 
 ```azurepowershell-interactive
-Get-AzureRmVM `
+Get-AzVM `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
@@ -264,14 +271,14 @@ PowerState/running
 
 ## <a name="management-tasks"></a>Úlohy správy
 
-Během životního cyklu virtuálního počítače možná budete chtít provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Možná také budete chtít vytvořit skripty pro automatizaci opakovaných nebo komplexních úloh. Pomocí Azure PowerShellu se dá mnoho běžných úloh správy spustit z příkazového řádku nebo ve skriptech.
+Během životního cyklu virtuálního počítače můžete chtít spustit úlohy správy, například spuštění, zastavení nebo odstranění virtuálního počítače. Možná také budete chtít vytvořit skripty pro automatizaci opakovaných nebo komplexních úloh. Pomocí Azure PowerShellu se dá mnoho běžných úloh správy spustit z příkazového řádku nebo ve skriptech.
 
 ### <a name="stop-a-vm"></a>Zastavení virtuálního počítače
 
-Virtuální počítač můžete zastavit a uvolnit pomocí rutiny [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm):
+Zastavení a uvolnění virtuálního počítače s [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm):
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
 ```
@@ -281,22 +288,22 @@ Pokud chcete zachovat virtuální počítač ve zřízeném stavu, použijte par
 ### <a name="start-a-vm"></a>Spuštění virtuálního počítače
 
 ```azurepowershell-interactive
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM"
 ```
 
 ### <a name="delete-resource-group"></a>Odstranění skupiny prostředků
 
-Odstraněním skupiny prostředků se odstraní také všechny prostředky v ní obsažené.
+Všechno v rámci skupiny prostředků se odstraní při odstranění skupiny prostředků.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
    -Name "myResourceGroupVM" `
    -Force
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a správě virtuálních počítačů, jako jsou:
 

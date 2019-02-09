@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 57ba4b35cf470eff040d4a2dca42c60820fa9d9e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a119e2797c4771551b6087e148d609c68ffd36db
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079966"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977504"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
 
@@ -66,6 +66,14 @@ Zápatí obsahuje značky společnosti Microsoft a umožní příjemce vědět, 
 
   ![Když příjemce nemusí uplatnění pozvánky](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
+## <a name="how-the-language-is-determined"></a>Jak se určuje jazyk
+Jazyk, budou zobrazovat uživateli guest v e-mailová pozvánka se určuje podle následující nastavení. Tato nastavení jsou uvedeny v pořadí podle priority. Pokud nastavení není nakonfigurované, určuje další nastavení v seznamu jazyk. 
+- **MessageLanguage** vlastnost [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) objektu, pokud se použije Pozvánka vytvořit rozhraní API
+-   **PreferredLanguage** zadána vlastnost na hostu [objekt uživatele](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)
+-   **Jazyk oznámení** nastavte ve vlastnostech domovském tenantovi uživatele typu Host (pro pouze klienty Azure AD)
+-   **Jazyk oznámení** nastavte ve vlastnostech prostředku tenanta
+
+Pokud žádná z těchto nastavení nejsou nakonfigurována, výchozí hodnota je jazyk na angličtinu (US).
 
 ## <a name="next-steps"></a>Další postup
 

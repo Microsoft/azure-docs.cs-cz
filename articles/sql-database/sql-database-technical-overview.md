@@ -12,15 +12,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f4b72a95c64467ce287d2cb762222d17334aad57
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755421"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982263"
 ---
-# <a name="the-azure-sql-database-service"></a>Služba Azure SQL Database
+# <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
 SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí dynamicky škálovatelný výkon v rámci dva různé modely nákupu: nákupní model založený na virtuálních jádrech a nákupní model založený na DTU. SQL Database také poskytuje možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](sql-database-in-memory.md) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury.
 
@@ -67,10 +67,10 @@ Dynamická škálovatelnost se liší od automatického škálování. K automat
 SQL Database nabízí dva modely nákupu:
 
 - [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí výpočetní, paměti, vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
-- [Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) umožňuje výběr počtu virtuálních jader, velikost nebo paměti a množství a rychlosti úložiště.
+- [Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) umožňuje výběr počtu virtuálních jader, velikost nebo paměti a množství a rychlosti úložiště. Nákupní model založený na virtuálních jádrech také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) získat úspory nákladů. Další informace o programu Azure Hybrid Benefit najdete v tématu [– nejčastější dotazy](#sql-database-frequently-asked-questions-faq).
 
   > [!IMPORTANT]
-  > [Úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md) je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii hyperškálovatelného vrstvu služby.
+  > [Úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md) pro izolované databáze je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii hyperškálovatelného vrstvu služby.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -195,6 +195,41 @@ SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL
   Editor kódu zdarma ke stažení, open source pro Windows, macOS a Linux, který podporuje rozšíření, včetně [rozšíření mssql](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a SQL Data Warehouse.
 
 SQL Database podporuje vytváření aplikací pomocí Pythonu, Javy, Node.js, PHP, Ruby a .NET v systémech MacOS, Linux a Windows. SQL Database podporuje stejné [knihovny připojení](sql-database-libraries.md) jako SQL Server.
+
+## <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database – nejčastější dotazy (FAQ)
+
+### <a name="what-is-the-current-version-of-sql-database"></a>Co je aktuální verze služby SQL Database
+
+Je aktuální verze služby SQL Database V12. Verze 11 verze je vyřazený.
+
+### <a name="can-i-control-when-patching-downtime-occurs"></a>Můžete řídit při použití dílčích oprav výpadek nastane
+
+Ne. Dopad opravy není obecně patrné Pokud jste [použít logiku opakování](sql-database-develop-overview.md#resiliency) ve vaší aplikaci. Další informace o tom, jak připravit pro události plánované údržby v Azure SQL database najdete v tématu [plánování údržby Azure událostí ve službě Azure SQL Database](sql-database-planned-maintenance.md).
+
+### <a name="azure-hybrid-benefit-questions"></a>Dotazy týkající se Azure Hybrid Benefit
+
+#### <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Existují dvojího užití práva s programem Azure Hybrid Benefit pro SQL Server
+
+Máte 180denní dvojí použití práv licence, ujistěte se, že migrace běží bez problémů. Po uplynutí této doby 180denní licenci systému SQL Server jde použít jenom v cloudu ve službě SQL Database a nemá žádné dvojí použití práv v místním prostředí i v cloudu.
+
+#### <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Jak zvýhodněné hybridní využití Azure pro SQL Server se liší od mobilitu licencí
+
+V současné době nabízíme využijete mobilitu licencí zákazníkům s SQL serverem s programem Software Assurance, umožňující opětovné přiřazení licence na sdílené servery třetích stran. Tento benefit je možné na Azure IaaS a EC2 služby AWS.
+Zvýhodněné hybridní využití Azure pro SQL Server se liší od mobilitu licencí v dvě klíčové oblasti:
+
+- Poskytuje ekonomické přínosy pro přesun vysoce virtualizované úlohy do Azure. SQL EE zákazníci mohou získat 4 jádra v Azure v SKU pro obecné účely pro každé jádro, které vlastní v místním pro vysoce virtualizované aplikace. Mobility licencí v rámci nepovoluje žádné náklady na zvláštní výhody pro přesun virtualizovaných úloh do cloudu.
+- Poskytuje pro cíl PaaS v Azure (SQL Database Managed Instance), která je vysoce kompatibilní s místním SQL serverem
+
+#### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Jaké jsou konkrétní práva zvýhodněné hybridní využití Azure pro SQL Server
+
+Zákazníci SQL Database bude mít následující práva spojená s programem Azure Hybrid Benefit pro SQL Server:
+
+|Licence nároky na místo|Co dělá zvýhodněné hybridní využití Azure pro SQL Server získat?|
+|---|---|
+|Zákazníci jádra SQL Server Enterprise Edition s SA|<li>Můžete platit základní sazba pro obecné účely nebo SKU pro důležité obchodní</li><br><li>1 jádro v místním = 4 jádra v SKU pro obecné účely</li><br><li>1 jádro v místním = 1 jádro v SKU pro důležité obchodní</li>|
+|SQL Server Standard Edition core zákazníkům s SA|<li>Můžete platit základní míra na SKU pro obecné účely pouze</li><br><li>1 jádro v místním = 1 jádro v SKU pro obecné účely</li>|
+|||
+
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Spolupráce s technickým týmem SQL Serveru
 

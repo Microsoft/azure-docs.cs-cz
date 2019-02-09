@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 52e115aa7f54eccc2be4e500c544aa38ca3bc32d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6618906f7b1b063de18a4f8a418c1c2744ca1533
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631272"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975780"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Předávat přihlašovací údaje k obslužné rutině Azure DSCExtension
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
-
 Tento článek se týká rozšíření Desired State Configuration (DSC) pro Azure. Přehled obslužné rutiny rozšíření DSC, naleznete v tématu [Úvod do obslužné rutiny rozšíření Azure Desired State Configuration](dsc-overview.md).
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="pass-in-credentials"></a>Předejte přihlašovacích údajů
 
@@ -65,7 +65,7 @@ Je důležité zahrnout **uzel localhost** jako součást konfigurace. Obslužn�
 
 Chcete-li publikovat tento skript do Azure Blob storage:
 
-`Publish-AzureRmVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
+`Publish-AzVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
 
 Chcete-li nastavit rozšíření DSC Azure a zadejte přihlašovací údaje:
 
@@ -73,16 +73,16 @@ Chcete-li nastavit rozšíření DSC Azure a zadejte přihlašovací údaje:
 $configurationName = 'Main'
 $configurationArguments = @{ Credential = Get-Credential }
 $configurationArchive = 'user_configuration.ps1.zip'
-$vm = Get-AzureRmVM -Name 'example-1'
+$vm = Get-AzVM -Name 'example-1'
 
-$vm = Set-AzureRmVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchive -ConfigurationName $configurationName -ConfigurationArgument @configurationArguments
+$vm = Set-AzVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchive -ConfigurationName $configurationName -ConfigurationArgument @configurationArguments
 
-$vm | Update-AzureRmVM
+$vm | Update-AzVM
 ```
 
 ## <a name="how-a-credential-is-secured"></a>Jak je zabezpečené přihlašovací údaje
 
-Spuštěním tohoto kódu zobrazí výzvu k zadání přihlašovacích údajů. Jakmile přihlašovací údaje, které je k dispozici jsou stručně uložená v paměti. Při publikování pověření s použitím **Set-AzureRmVMDscExtension** rutiny, přihlašovací údaje, které se přenášejí prostřednictvím protokolu HTTPS do virtuálního počítače. Na virtuálním počítači Azure ukládá přihlašovací údaje, které šifrují na disku s použitím certifikátu místního virtuálního počítače. Přihlašovací údaje se dešifrují stručně v paměti a potom je znovu zašifrován předat DSC.
+Spuštěním tohoto kódu zobrazí výzvu k zadání přihlašovacích údajů. Jakmile přihlašovací údaje, které je k dispozici jsou stručně uložená v paměti. Při publikování pověření s použitím **Set-AzVMDscExtension** rutiny, přihlašovací údaje, které se přenášejí prostřednictvím protokolu HTTPS do virtuálního počítače. Na virtuálním počítači Azure ukládá přihlašovací údaje, které šifrují na disku s použitím certifikátu místního virtuálního počítače. Přihlašovací údaje se dešifrují stručně v paměti a potom je znovu zašifrován předat DSC.
 
 Tento proces se liší od [pomocí zabezpečené konfigurace bez obslužné rutiny rozšíření](/powershell/dsc/securemof). Prostředí Azure poskytuje způsob, jak přenášet data konfigurace zabezpečené pomocí certifikátů. Když použijete obslužné rutiny rozšíření DSC, není potřeba zadávat **$CertificatePath** nebo **$CertificateID**/ **$Thumbprint** záznam v **ConfigurationData**.
 

@@ -1,7 +1,7 @@
 ---
 title: Podpora SSH pro službu App Service v Linuxu – Azure | Dokumentace Microsoftu
 description: Další informace o používání SSH se službou Azure App Service v Linuxu.
-keywords: služby Azure app service, webové aplikace, linux a oss
+keywords: azure app service, web app, linux, oss
 services: app-service
 documentationcenter: ''
 author: wesmc7777
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251286"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984460"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v Linuxu
 
@@ -58,7 +58,7 @@ Tyto kroky jsou uvedeny v úložišti Azure App Service jako [příklad](https:/
     > [!NOTE]
     > Tato konfigurace nepovoluje externí připojení ke kontejneru. SSH lze přistupovat pouze prostřednictvím Kudu / SCM webu, což je ověřený pomocí přihlašovacích údajů pro publikování.
 
-    ```docker
+    ```Dockerfile
     # ------------------------
     # SSH Server support
     # ------------------------
@@ -74,13 +74,13 @@ Tyto kroky jsou uvedeny v úložišti Azure App Service jako [příklad](https:/
     > * `Ciphers` musí obsahovat alespoň jeden z následujících akcí: `aes128-cbc,3des-cbc,aes256-cbc`.
     > * `MACs` musí obsahovat alespoň jeden z následujících akcí: `hmac-sha1,hmac-sha1-96`.
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
 3. Zahrnovat port 2222 [ `EXPOSE` instrukce](https://docs.docker.com/engine/reference/builder/#expose) pro soubor Dockerfile. I když je známé kořenové heslo, port 2222 není přístupný z internetu. Jde interní pouze port přístupný pouze kontejnery v rámci síťového mostu privátní virtuální síť.
 
-    ```docker
+    ```Dockerfile
     EXPOSE 2222 80
     ```
 
@@ -93,7 +93,7 @@ Tyto kroky jsou uvedeny v úložišti Azure App Service jako [příklad](https:/
 
 Soubor Dockerfile použije [ `ENTRYPOINT` instrukce](https://docs.docker.com/engine/reference/builder/#entrypoint) pro spuštění skriptu.
 
-    ```docker
+    ```Dockerfile
     COPY init_container.sh /opt/startup
     ...
     RUN chmod 755 /opt/startup/init_container.sh

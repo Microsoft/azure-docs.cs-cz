@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816590"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962124"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -34,7 +34,7 @@ Managed Instance má vlastnosti a omezení prostředků, které závisí na zák
 
 Azure SQL Database Managed Instance je možné nasadit na generování dvě hardwaru (Gen4 i Gen5). Generacemi hardwaru mají jiné charakteristiky, které jsou popsány v následující tabulce:
 
-|   | **4. generace** | **Generace 5** |
+|   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, vCore = 1 LP (hyper vlákno) |
 | Compute | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
@@ -51,7 +51,7 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | --- | --- | --- |
 | Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
 | Memory (Paměť) | Gen4: 56 GB - 168 GB<br/>Gen5: 40.8 GB - 408 GB<br/>\*Proporční na počet virtuálních jader | Gen4: 56 GB - 168 GB <br/> Gen5: 40.8 GB - 408 GB<br/>\*Proporční na počet virtuálních jader |
-| Maximální velikost úložiště | 8 TB | Gen 4: 1 TB <br/> Generace 5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
+| Maximální velikost úložiště | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |

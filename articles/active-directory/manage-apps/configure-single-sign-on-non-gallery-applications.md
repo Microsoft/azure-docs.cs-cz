@@ -2,21 +2,21 @@
 title: Jednotné přihlašování – aplikace mimo Galerii – Azure Active Directory | Dokumentace Microsoftu
 description: Nakonfigurovat jednotné přihlašování (SSO) tak, aby aplikace mimo galerii v Azure Active Directory (Azure AD)
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
 ms.date: 01/08/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser,luleon
-ms.openlocfilehash: 1c364b3be0c2203c64e64df1bd0e4ab5ec2078a0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e988c3d9847c340fbd7bed7a4bbfbe3d9f17dede
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153875"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961971"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v Azure Active Directory
 

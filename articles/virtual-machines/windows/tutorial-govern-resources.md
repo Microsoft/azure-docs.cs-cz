@@ -1,5 +1,5 @@
 ---
-title: Kurz řízení virtuálních počítačů Azure pomocí Azure PowerShellu | Microsoft Docs
+title: Kurz – Správa virtuálních počítačů Azure pomocí Azure Powershellu | Dokumentace Microsoftu
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu spravovat virtuální počítače Azure s využitím RBAC, zásad, zámků a značek.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -11,23 +11,25 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/12/2018
+ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 6b36cdecb178a7189773abbfe963411e19764401
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9154680048b90c76961142398733ed390e36e130
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438656"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983895"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Kurz: Další informace o řízení virtuálních počítačů Windows pomocí Azure Powershellu
+# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Kurz: Další informace o správě virtuálního počítače Windows pomocí Azure Powershellu
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud používáte PowerShell místně a nemáte verzi 6.0 nebo novější, [proveďte aktualizaci](/powershell/azure/azurerm/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure. Pro místní instalace musíte také [stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) k vytvoření nové skupiny Azure Active Directory.
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="understand-scope"></a>Orientace v oborech
 
@@ -38,7 +40,7 @@ V tomto kurzu se nastavení pro správu aplikují na skupinu prostředků, takž
 Vytvoříme skupinu prostředků.
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 V tuto chvíli je skupina prostředků prázdná.
@@ -57,12 +59,12 @@ Pro správu řešení virtuálních počítačů existují v závislosti na pros
 
 Místo přiřazování rolí jednotlivým uživatelům je často jednodušší použít skupinu Azure Active Directory obsahující uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro účely tohoto článku použijte buď existující skupinu pro správu virtuálního počítače, nebo pomocí portálu [vytvořte skupinu Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Po vytvoření nové skupiny nebo vyhledání existující skupiny pomocí příkazu [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) přiřaďte skupinu Azure Active Directory k roli Přispěvatel virtuálních počítačů v dané skupině prostředků.  
+Po vytvoření nové skupiny nebo vyhledání existujícího jeden, použijte [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) příkazu přiřaďte skupiny Azure Active Directory k roli Přispěvatel virtuálních počítačů pro skupinu prostředků.  
 
 ```azurepowershell-interactive
-$adgroup = Get-AzureRmADGroup -DisplayName <your-group-name>
+$adgroup = Get-AzADGroup -DisplayName <your-group-name>
 
-New-AzureRmRoleAssignment -ObjectId $adgroup.id `
+New-AzRoleAssignment -ObjectId $adgroup.id `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
@@ -73,10 +75,10 @@ Obvykle tento postup zopakujete pro role *Přispěvatel sítě* a *Přispěvatel
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../azure-policy/azure-policy-introduction.md) pomáhá zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit definice dostupných zásad, použijte příkaz [Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition):
+[Azure Policy](../../azure-policy/azure-policy-introduction.md) pomáhá zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit dostupné definice zásad, použijte [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) příkaz:
 
 ```azurepowershell-interactive
-(Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
+(Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
 Zobrazí se definice existujících zásad. Typ zásad je buď **Předdefinované** nebo **Vlastní**. Najděte definice zásad popisující podmínku, kterou chcete přiřadit. V tomto článku můžete přiřadit zásady s těmito funkcemi:
@@ -85,7 +87,7 @@ Zobrazí se definice existujících zásad. Typ zásad je buď **Předdefinovan�
 * Omezení SKU pro virtuální počítače
 * Audit virtuálních počítačů, které nepoužívají spravované disky
 
-V následujícím příkladu načtete definice tří zásad na základě zobrazovaného názvu. K přiřazení těchto definic do skupiny prostředků můžete použít příkaz [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment). U některých zásad určíte povolené hodnoty zadáním hodnot parametrů.
+V následujícím příkladu načtete definice tří zásad na základě zobrazovaného názvu. Můžete použít [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) příkazu přiřaďte tyto definice do skupiny prostředků. U některých zásad určíte povolené hodnoty zadáním hodnot parametrů.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -93,27 +95,27 @@ $locations ="eastus", "eastus2"
 $skus = "Standard_DS1_v2", "Standard_E2s_v2"
 
 # Get the resource group
-$rg = Get-AzureRmResourceGroup -Name myResourceGroup
+$rg = Get-AzResourceGroup -Name myResourceGroup
 
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
-$locationDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
-$skuDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
-$auditDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
+$locationDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
+$skuDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$auditDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
 
 # Assign policy for allowed locations
-New-AzureRMPolicyAssignment -Name "Set permitted locations" `
+New-AzPolicyAssignment -Name "Set permitted locations" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $locationDefinition `
   -listOfAllowedLocations $locations
 
 # Assign policy for allowed SKUs
-New-AzureRMPolicyAssignment -Name "Set permitted VM SKUs" `
+New-AzPolicyAssignment -Name "Set permitted VM SKUs" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $skuDefinition `
   -listOfAllowedSKUs $skus
 
 # Assign policy for auditing unmanaged disks
-New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
+New-AzPolicyAssignment -Name "Audit unmanaged disks" `
   -Scope $rg.ResourceId `
   -PolicyDefinition $auditDefinition
 ```
@@ -123,7 +125,7 @@ New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
 Přiřadili jste role a zásady, takže jste připravení nasadit řešení. Výchozí velikost je Standard_DS1_v2, což je jedno z povolených SKU. Při spuštění tohoto kroku se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač.
 
 ```azurepowershell-interactive
-New-AzureRmVm -ResourceGroupName "myResourceGroup" `
+New-AzVm -ResourceGroupName "myResourceGroup" `
      -Name "myVM" `
      -Location "East US" `
      -VirtualNetworkName "myVnet" `
@@ -139,18 +141,18 @@ Po dokončení nasazování můžete použít další nastavení pro správu ře
 
 [Zámky prostředků](../../azure-resource-manager/resource-group-lock-resources.md) zabraňují tomu, aby uživatelé ve vaší organizaci neúmyslně odstranili nebo změnili důležité prostředky. Na rozdíl od řízení přístupu na základě role používají zámky prostředků omezení pro všechny uživatele a role. Zámek můžete nastavit na úroveň *CanNotDelete* nebo *ReadOnly*.
 
-Pokud chcete zamknout virtuální počítač a skupinu zabezpečení sítě, použijte příkaz [New-AzureRmResourceLock](/powershell/module/azurerm.resources/new-azurermresourcelock):
+Zamknout virtuálního počítače a skupiny zabezpečení sítě, použijte [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) příkaz:
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
-New-AzureRmResourceLock -LockLevel CanNotDelete `
+New-AzResourceLock -LockLevel CanNotDelete `
   -LockName LockVM `
   -ResourceName myVM `
   -ResourceType Microsoft.Compute/virtualMachines `
   -ResourceGroupName myResourceGroup
 
 # Add CanNotDelete lock to the network security group
-New-AzureRmResourceLock -LockLevel CanNotDelete `
+New-AzResourceLock -LockLevel CanNotDelete `
   -LockName LockNSG `
   -ResourceName myNetworkSecurityGroup `
   -ResourceType Microsoft.Network/networkSecurityGroups `
@@ -160,7 +162,7 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
 Zámky otestujete pomocí následujícího příkazu:
 
 ```azurepowershell-interactive 
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 Zobrazí se chyba s oznámením, že operaci odstranění nelze kvůli zámku dokončit. Skupinu prostředků odstraníte, pouze pokud skutečně odeberete zámky. Tento krok najdete v části o [vyčištění prostředků](#clean-up-resources).
@@ -171,30 +173,30 @@ K logickému uspořádání prostředků Azure podle kategorií slouží [značk
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-K virtuálnímu počítači přidáte značky pomocí příkazu [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource):
+Chcete-li použít značky na virtuální počítač, použijte [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) příkaz:
 
 ```azurepowershell-interactive
 # Get the virtual machine
-$r = Get-AzureRmResource -ResourceName myVM `
+$r = Get-AzResource -ResourceName myVM `
   -ResourceGroupName myResourceGroup `
   -ResourceType Microsoft.Compute/virtualMachines
 
 # Apply tags to the virtual machine
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
+Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
 ### <a name="find-resources-by-tag"></a>Hledání prostředků podle značky
 
-K vyhledání prostředků pomocí názvu značky a hodnoty použijte příkaz [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource):
+K vyhledání prostředků pomocí značek název a hodnotu, použijte [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) příkaz:
 
 ```azurepowershell-interactive
-(Get-AzureRmResource -Tag @{ Environment="Test"}).Name
+(Get-AzResource -Tag @{ Environment="Test"}).Name
 ```
 
 Vrácené hodnoty můžete použít pro úlohy správy, jako je zastavení všech virtuálních počítačů s určitou hodnotou značky.
 
 ```azurepowershell-interactive
-Get-AzureRmResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
+Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzVM
 ```
 
 ### <a name="view-costs-by-tag-values"></a>Zobrazení nákladů podle hodnoty značky
@@ -203,23 +205,23 @@ Get-AzureRmResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Zámek odeberete pomocí příkazu [Remove-AzureRmResourceLock](/powershell/module/azurerm.resources/remove-azurermresourcelock):
+Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Chcete-li odebrat zámek proti, použijte [odebrat AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) příkaz:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceLock -LockName LockVM `
+Remove-AzResourceLock -LockName LockVM `
   -ResourceName myVM `
   -ResourceType Microsoft.Compute/virtualMachines `
   -ResourceGroupName myResourceGroup
-Remove-AzureRmResourceLock -LockName LockNSG `
+Remove-AzResourceLock -LockName LockNSG `
   -ResourceName myNetworkSecurityGroup `
   -ResourceType Microsoft.Network/networkSecurityGroups `
   -ResourceGroupName myResourceGroup
 ```
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) příkazu k odebrání skupiny prostředků, virtuálního počítače, a všechny související prostředky.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup

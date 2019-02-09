@@ -3,8 +3,8 @@ title: Jak nakonfigurovat federované jednotné přihlašování pro aplikaci mi
 description: Jak nakonfigurovat federované jednotné přihlašování pro vlastní aplikaci mimo galerii, kterou chcete integrovat s Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: d79076a0669f725c3f1864a979812ede1020cd75
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: celested
+ms.openlocfilehash: c4d064fcdc8af08058cfde3ea564005459236195
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812119"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960220"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Jak nakonfigurovat federované jednotné přihlašování pro aplikaci mimo Galerii
 

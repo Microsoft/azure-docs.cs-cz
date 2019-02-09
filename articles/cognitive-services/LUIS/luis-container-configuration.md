@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 9678259f4eb6fc634459f80e47b507ebe435ea37
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 281358e51ed8585e5deb407b2432ee3b7ee1537f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878914"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983259"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnery Dockeru Language Understanding 
 
@@ -59,7 +59,7 @@ Nepoužívejte starter klíč nebo klíč pro vytváření obsahu.
 
 ## <a name="billing-setting"></a>Nastavení Billing
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _Language Understanding_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _Language Understanding_ prostředků v Azure.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _Language Understanding_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _Language Understanding_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 Toto nastavení najdete v následujících umístěních:
 

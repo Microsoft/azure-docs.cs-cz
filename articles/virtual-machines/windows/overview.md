@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f08ef19e6829fc1563eced54ade1e4f59c0c33be
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2b442137f8e7ca8e5b01a03da81af6259ac8e03e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728567"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984745"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -61,8 +61,8 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 | Metoda | Popis |
 | --- | --- |
 | portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
-| Azure PowerShell |Použijte příkaz [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
-| REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions). |
+| Azure PowerShell |Použití [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) příkazu. |
+| REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations). |
 | Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="vm-size"></a>Velikost virtuálního počítače
@@ -83,7 +83,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 | Metoda | Popis |
 | --- | --- |
 | portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *umístění*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *umístění* -Publisher *název_vydavatele*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *umístění* -Publisher *název_vydavatele* -Offer *název_nabídky* |
+| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) – umístění *umístění* -vydavatel *Název_vydavatele*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | Rozhraní REST API |[Vypsat vydavatele imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 | Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *umístění*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *umístění* --publisher *název_vydavatele*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *umístění* --publisher *název_vydavatele* --offer *název_nabídky*|
 

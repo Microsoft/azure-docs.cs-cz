@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6a888df453a2626756fa47115ef97d04be701265
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892849"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981753"
 ---
-# <a name="understand-cost-management-data"></a>Porozumět datům Cost managementu
+# <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
 Tento článek pomůže lépe pochopit, jaká data budou zahrnuta ve službě Azure Cost Management. A vysvětluje, jak často zpracování dat jsou shromažďovány, zobrazené a uzavřené. Bude se vám účtovat využití Azure každý měsíc. Typ vašeho předplatného Azure určuje po fakturačního měsíce ukončení. Jak často Cost Management přijímá využití dat se liší na základě různých faktorů. Tyto faktory zahrnují jak dlouho trvá zpracování dat a jak často služeb Azure generování informací o využití a fakturace systému.
 
@@ -28,14 +28,13 @@ Tyto informace zobrazí aktuálně podporované [Microsoft Azure nabízí](https
 | Kategorie  | **Název nabídky** | **Číslo nabídky** |
 | --- | --- | --- |
 | **Azure Germany** | [Azure Germany – průběžné platby](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
-|**Azure Government**|Azure Government Enterprise|MS-AZR-USGOV-0017P|
-| **Smlouva Enterprise (EA)**| Enterprise pro vývoj/testování | MS-AZR-0148P |
+| **Azure Government** | Azure Government Enterprise | MS-AZR-USGOV-0017P |
+| **Smlouva Enterprise (EA)** | Enterprise pro vývoj/testování | MS-AZR-0148P |
 | **Smlouva Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
 | **Microsoft Developer Network (MSDN)** | [Předplatné MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
 | **Pay-As-You-Go** | [Vývoj/testování s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
 | **Pay-As-You-Go** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
-| **Pay-As-You-Go** | [Sponzorství Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Pay-As-You-Go** | [Bezplatná zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
 | **Pay-As-You-Go** | [Azure v programu Open](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
 | **Pay-As-You-Go** | [Nabídka Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) | MS-AZR-0170P |
@@ -54,6 +53,7 @@ Následující tabulka uvádí nepodporované nabídky.
 | **Cloud Solution Provider (CSP)** | Azure Government CSP | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Germany v CSP pro Microsoft Cloud Germany | MS-AZR-DE-0145P |
 | **Pay-As-You-Go** | Azure for Students Starter | MS-AZR-0144P |
+| **Pay-As-You-Go** | [Sponzorství Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Plány podpory** | Standard Support | MS-AZR-0041P |
 | **Plány podpory** | Plán podpory Professional Direct | MS-AZR-0042P |
 | **Plány podpory** | Plán Developer support | MS-AZR-0043P |
@@ -69,17 +69,6 @@ Pokud se vám nezobrazují žádná data k předplatnému a k určení, pokud va
 ## <a name="costs-included-in-cost-management"></a>Náklady na zahrnuté ve službě Cost Management
 
 Následující tabulky popisují data, která je součástí nebo není ve službě Cost Management.
-
-**Typy účtů**
-
-| **Zahrnuté** | **Nezahrnuto** |
-| --- | --- |
-| Smlouva Enterprise (EA) | Cloud Solution Provider (CSP) – Další informace naleznete v tématu [partnerského centra přehled](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview). |
-| Průběžných plateb (PAYG) |   |
-| Vývoj/testování |   |
-| Bezplatné a zkušební verze |   |
-| Partner Network |   |
-| Azure v rámci licenčního programu Open | &nbsp;  |
 
 **Data o využití a nákladů**
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dbf614f9749039b054e1134df31334a6248e2b78
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816233"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981396"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření škálovací sady virtuálního počítače, který používá zóny dostupnosti
 
@@ -117,12 +117,12 @@ Trvá několik minut vytvořit a nakonfigurovat vše, co škálovací sady prost
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
-K používání zón dostupnosti, musíte vytvořit svou škálovací sadu v podporované oblasti Azure. Přidat `-Zone` parametr [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) příkaz a zadejte zóně, ve které chcete použít (například zóny *1*, *2*, nebo *3*).
+K používání zón dostupnosti, musíte vytvořit svou škálovací sadu v podporované oblasti Azure. Přidat `-Zone` parametr [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) příkaz a zadejte zóně, ve které chcete použít (například zóny *1*, *2*, nebo *3*).
 
 Následující příklad vytvoří škálovací sadu s názvem pro jednu zónu *myScaleSet* v *USA – východ 2* zóny *1*. Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `
@@ -139,7 +139,7 @@ New-AzureRmVmss `
 Pokud chcete vytvořit zónově redundantní škálovací sady, zadejte více zón se `-Zone` parametru. Následující příklad vytvoří zónově redundantní škálovací sadu s názvem *myScaleSet* napříč *USA – východ 2* zóny *1, 2, 3*. Zónově redundantní síťové prostředky Azure pro virtuální síť, veřejnou IP adresu a nástroje pro vyrovnávání zatížení se automaticky vytvoří. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `

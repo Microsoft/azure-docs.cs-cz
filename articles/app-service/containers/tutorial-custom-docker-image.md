@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632972"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984813"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Použití vlastní image Dockeru pro službu Web App for Containers
 
@@ -59,7 +59,7 @@ cd docker-django-webapp-linux
 
 V úložišti Git si prohlédněte soubor _Dockerfile_. Tento soubor popisuje prostředí Pythonu potřebné pro spuštění vaší aplikace. Kromě toho image nastaví server [SSH](https://www.ssh.com/ssh/protocol/) pro zabezpečení komunikace mezi kontejnerem a hostitelem.
 
-```docker
+```Dockerfile
 FROM python:3.4
 
 RUN mkdir /code
@@ -254,7 +254,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="test-the-web-app"></a>Test webové aplikace
 
-Ověřte fungování webové aplikace tím, že do ní přejdete (`http://<app_name>azurewebsites.net`). 
+Ověřte fungování webové aplikace tím, že do ní přejdete (`http://<app_name>.azurewebsites.net`). 
 
 ![Test konfigurace portů webové aplikace](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -280,7 +280,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastn�
 
 * Pokyn [RUN](https://docs.docker.com/engine/reference/builder/#run), který zavolá `apt-get` a pak nastaví heslo pro kořenový účet na `"Docker!"`.
 
-    ```docker
+    ```Dockerfile
     ENV SSH_PASSWD "root:Docker!"
     RUN apt-get update \
             && apt-get install -y --no-install-recommends dialog \
@@ -294,7 +294,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastn�
 
 * Pokyn [COPY](https://docs.docker.com/engine/reference/builder/#copy), který dává modulu Dockeru pokyn ke zkopírování souboru [sshd_config](https://man.openbsd.org/sshd_config) do adresáře */etc/ssh/*. Váš konfigurační soubor by měl být založený na [tomto souboru sshd_config](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config).
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
@@ -305,7 +305,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastn�
 
 * Pokyn [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose), který v kontejneru zveřejní port 2222. I když je známé kořenové heslo, port 2222 není přístupný z internetu. Je to interní port přístupný pouze pro kontejnery v rámci síťového mostu privátní virtuální sítě. Potom příkazy zkopírují podrobnosti o konfiguraci SSH a spustí službu `ssh`.
 
-    ```docker
+    ```Dockerfile
     EXPOSE 8000 2222
     ```
 

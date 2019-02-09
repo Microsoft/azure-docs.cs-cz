@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 09/10/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.lastreviewed: 09/10/2018
-ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: 0fb3e9cd193e570a965d6bbd3e16c86dc39de350
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247727"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984269"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Nasazení ASDK z příkazového řádku
 ASDK je vývoj a testování prostředí, které můžete nasadit k vyhodnocení a k předvedení funkcí služby Azure Stack a služeb. K jeho získání pracovat, musíte připravit prostředí hardwaru a spustit některé skripty (bude to trvat i několik hodin). Potom můžete přihlásit na portály správce a uživatele chcete začít používat Azure Stack.
@@ -134,7 +134,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 Pokud vaše prostředí nemá server DHCP, je nutné zahrnout další parametry pro jednu z možností výše (k dispozici příklady použití): 
 
 ```powershell
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1 -TimeServer 10.222.112.26
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -TimeServer 10.222.112.26
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>Volitelné parametry ASDK InstallAzureStackPOC.ps1
@@ -146,9 +146,6 @@ Pokud vaše prostředí nemá server DHCP, je nutné zahrnout další parametry 
 |InfraAzureDirectoryTenantAdminCredential|Nepovinné|Nastaví Azure Active Directory uživatelské jméno a heslo. Tyto přihlašovací údaje Azure musí být identifikátor organizace.|
 |InfraAzureEnvironment|Nepovinné|Vyberte prostředí Azure, se kterou chcete zaregistrovat toto nasazení Azure Stack. Mezi možnosti patří veřejný Azure, Azure – Čína, Azure – pro státní správu USA.|
 |DNSForwarder|Nepovinné|DNS server se vytvoří jako součást nasazení Azure Stack. Povolit počítačům uvnitř řešení k překladu názvů mimo razítka, zadejte existující infrastrukturu DNS server. Server DNS v razítku předá požadavky na řešení Neznámý název k tomuto serveru.|
-|NatIPv4Address|Vyžadované pro podporu překladu síťových adres DHCP|Nastaví statickou IP adresu pro MAS-BGPNAT01. Tento parametr použijte jenom v případě, že protokol DHCP nemůže přiřadit platnou IP adresu pro přístup k internetu.|
-|NatIPv4Subnet|Vyžadované pro podporu překladu síťových adres DHCP|Předpona podsítě IP používané k DHCP přes podpora překladu adres. Tento parametr použijte jenom v případě, že protokol DHCP nemůže přiřadit platnou IP adresu pro přístup k internetu.|
-|PublicVlanId|Nepovinné|Nastaví ID sítě VLAN. Tento parametr použijte pouze v případě, že hostitel a MAS-BGPNAT01 musíte nakonfigurovat ID sítě VLAN pro přístup k fyzické síti (a Internetu). Například.\InstallAzureStackPOC.ps1-Verbose – PublicVLan 305|
 |Znovu spustit|Nepovinné|Pomocí tohoto příznaku znovu spustit nasazení. Používá se všechny předchozí vstup. Znovu zadávat data dříve k dispozici není podporována, protože jsou generovány a použita pro nasazení několika jedinečné hodnoty.|
 
 

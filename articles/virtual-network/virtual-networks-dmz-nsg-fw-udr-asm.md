@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448462"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965252"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Příklad 3 – vytvoření DMZ k ochraně sítě pomocí brány Firewall, směrování definovaného uživatelem a skupiny zabezpečení sítě
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -109,35 +109,46 @@ Po vytvoření směrovací tabulky jsou vázány na podsítě. Front-endové pod
 V tomto příkladu se používají následující příkazy k vytvoření směrovací tabulky, přidejte trasu definovanou uživatelem a svážou směrovací tabulky k podsíti (Poznámka; všechny položky pod začíná znakem dolaru (např: $BESubnet) jsou uživatelem definované proměnné ze skriptu v referenční části tohoto dokumentu):
 
 1. Nejprve musí být vytvořená v základní tabulce směrování. Tento fragment kódu ukazuje vytvoření objektu v tabulce pro podsíť back-endu. Ve skriptu příslušné tabulky se vytvoří také pro front-endové podsítě.
-   
-     New-AzureRouteTable -Name $BERouteTableName `
-   
-         -Location $DeploymentLocation `
-         -Label "Route table for $BESubnet subnet"
+
+   ```powershell
+   New-AzureRouteTable -Name $BERouteTableName `
+       -Location $DeploymentLocation `
+       -Label "Route table for $BESubnet subnet"
+   ```
+
 2. Po vytvoření směrovací tabulky je možné přidat konkrétní uživatelsky definované trasy. V tomto uvádíme se budou směrovat veškerý provoz (0.0.0.0/0) přes toto virtuální zařízení (proměnnou $VMIP [0], se používá k předávání IP adresa přiřazená při vytváření virtuálního zařízení dříve ve skriptu). Ve skriptu se také vytvoří odpovídající pravidlo v tabulce front-endu.
-   
-     Get-AzureRouteTable $BERouteTableName | `
-   
-         Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
-         -NextHopType VirtualAppliance `
-         -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 3. Výše uvedené položky trasy se přepíšou výchozí "0.0.0.0/0" trasy, ale výchozí pravidlo 10.0.0.0/16 stále existující která umožní provoz v rámci virtuální sítě pro směrování přímo do cíle a ne do síťového virtuálního zařízení. Pro správné toto chování, postupujte podle pravidel musí být přidán.
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
-            -NextHopType VirtualAppliance `
-            -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 4. V tomto okamžiku je volba má být provedeno. Pomocí výše uvedené dvě cesty bude směrovat veškerý provoz do brány firewall pro posouzení, dokonce i provoz v rámci jedné podsíti. To může být žádoucí, ale pro povolení provozu v rámci podsítě pro směrování místně bez zapojení bránu firewall jiného, velmi konkrétní pravidlo dá přidat. Tato trasa stavy, které libovolnou adresu destine pro stačí, když místní podsíti směrovat existuje přímo (NextHopType = VNETLocal).
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
-            -NextHopType VNETLocal
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
+           -NextHopType VNETLocal
+   ```
+
 5. Nakonec se do směrovací tabulky vytvořena a naplněna trasy definované uživatelem v tabulce musí nyní být vázán na podsíť. Ve skriptu je dále vázané směrovací tabulka front-endu na front-endové podsítě. Tady je skript vazby pro podsíť back-endu.
-   
-     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
-   
-        -SubnetName $BESubnet `
-        -RouteTableName $BERouteTableName
+
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
+       -SubnetName $BESubnet `
+       -RouteTableName $BERouteTableName
+   ```
 
 ## <a name="ip-forwarding"></a>Předávání IP
 Funkce, která doprovodná uživatelem definovaná TRASA, je předávání IP adres. Toto je nastavení na virtuální zařízení, které umožňuje přijímání dat adresovaných konkrétně zkoumaly zařízení a potom je předejte tento provoz do konečného ultimate.
@@ -152,10 +163,11 @@ Například pokud provoz z AppVM01 učiní žádost vůči serveru DNS01 uživat
 Nastavení předávání IP adres je jediným příkazem a můžete provést při vytváření virtuálního počítače. Tok v tomto příkladu fragment kódu je na konci skript a seskupenou s uživatelem definovaná TRASA příkazy:
 
 1. Volání instance virtuálního počítače, který v tomto případě je vaše virtuální zařízení brány firewall a povolení předávání IP adres (Poznámka; libovolnou položku v red od znak dolaru (např: $VMName[0]) je uživatelem definované proměnné ze skriptu v referenční části tohoto dokumentu. Nula v hranatých závorkách [0] představuje první virtuální počítač v poli virtuálních počítačů pro ukázkový skript pro fungovat bez úprav, první virtuální počítač (VM 0) musí být brána firewall):
-   
-     Get-AzureVM – název $VMName [0] - ServiceName $ServiceName [0] | `
-   
+
+    ```powershell
+    Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
         Set-AzureIPForwarding -Enable
+    ```
 
 ## <a name="network-security-groups-nsg"></a>Skupiny zabezpečení sítě (NSG)
 V tomto příkladu je skupina NSG vytvořené a pak načíst s jedním pravidlem. Tato skupina je pak vázat pouze na podsítě front-endových a back-end (ne SecNet). Deklarativně se vytváří následující pravidlo:
@@ -166,22 +178,26 @@ I když v tomto příkladu se používají skupiny zabezpečení sítě, je hlav
 
 Jeden bod zajímavé týkající se skupina zabezpečení sítě v tomto příkladu je, že obsahuje jenom jedno pravidlo je uvedeno níže, což je pro odepření provozu internet celý virtuální sítě, která by obsahovat podsíť zabezpečení. 
 
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
-        Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
-        from the Internet" `
-        -Type Inbound -Priority 100 -Action Deny `
-        -SourceAddressPrefix INTERNET -SourcePortRange '*' `
-        -DestinationAddressPrefix VIRTUAL_NETWORK `
-        -DestinationPortRange '*' `
-        -Protocol *
+```powershell
+Get-AzureNetworkSecurityGroup -Name $NSGName | `
+    Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
+    from the Internet" `
+    -Type Inbound -Priority 100 -Action Deny `
+    -SourceAddressPrefix INTERNET -SourcePortRange '*' `
+    -DestinationAddressPrefix VIRTUAL_NETWORK `
+    -DestinationPortRange '*' `
+    -Protocol *
+```
 
 Ale vzhledem k tomu, že skupina zabezpečení sítě je vázaný jenom na front-endových a back-endové podsítě, pravidlo není zpracován za přenos příchozích zabezpečení podsítě. V důsledku toho i v případě, že pravidlo skupiny zabezpečení sítě říká žádné přenosy z Internetu na jakoukoli adresu ve virtuální síti, protože skupiny zabezpečení sítě se nikdy vázán na podsítě zabezpečení, budou směrovat provoz do podsítě zabezpečení.
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $FESubnet -VirtualNetworkName $VNetName
+```powershell
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $FESubnet -VirtualNetworkName $VNetName
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $BESubnet -VirtualNetworkName $VNetName
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $BESubnet -VirtualNetworkName $VNetName
+```
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
 V bráně firewall pravidla předávání bude nutné vytvořit. Vzhledem k tomu, že brána firewall je provoz blokuje nebo předávání všech příchozích, odchozích a uvnitř virtuální sítě jsou potřeba více pravidel brány firewall. Veškerý příchozí provoz se navíc dostanou služby zabezpečení veřejnou IP adresu (na jiném portu), pro zpracování branou firewall. Osvědčeným postupem je diagram logické toky před nastavením podsítí a pravidla brány firewall, aby se zabránilo Přepracujte později. Na následujícím obrázku je logické zobrazení pravidla brány firewall v tomto příkladu:
@@ -233,9 +249,11 @@ Jeden požadavek pro virtuální počítač s brány firewall jsou veřejné kon
 
 Koncový bod můžete otevřít buď v době vytvoření virtuálního počítače nebo odeslat sestavení je v příkladu skript a níže v tomto fragmentu kódu (Poznámka; všechny položky začíná znakem dolaru (např: $VMName[$i]) je uživatelem definované proměnné ze skriptu v odkaz na oddíl n tohoto dokumentu. "$I" v závorkách [$i] představuje číslo pole konkrétního virtuálního počítače v poli virtuálních počítačů):
 
-    Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
-        -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
-        Update-AzureVM
+```powershell
+Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
+    -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
+    Update-AzureVM
+```
 
 I když není jasně zobrazen zde kvůli použití proměnné, ale koncové body jsou **pouze** otevřít v cloudové službě zabezpečení. Tím je zajištěno, že veškerý příchozí provoz probíhá (směrovat, NAT měli, vynechané) bránou firewall.
 
@@ -338,7 +356,7 @@ Specifika každé pravidlo předpokladem pro dokončení v tomto příkladu jsou
   
     Toto pravidlo Pass umožňuje jakýkoli server služby IIS na front-endové podsítě k dosažení AppVM01 (IP adresy 10.0.2.5) na jiný port pomocí libovolného protokolu pro přístup k datům vyžadované webovou aplikaci.
   
-    Na tomto snímku obrazovky "\<explicitní dest\>" se používá v cílovém poli místo 10.0.2.5 jako cíl. To může být buď explicitní znázorněno nebo název objektu sítě (jak tomu bylo v rámci požadavků pro DNS server). To záleží na správce brány firewall, která bude použita metoda. Přidat explicitní Desitnation 10.0.2.5, dvakrát klikněte na první prázdný řádek pod \<explicitní dest\> a zadejte adresu v okně nastavení.
+    Na tomto snímku obrazovky "\<explicitní dest\>" se používá v cílovém poli místo 10.0.2.5 jako cíl. To může být buď explicitní znázorněno nebo název objektu sítě (jak tomu bylo v rámci požadavků pro DNS server). To záleží na správce brány firewall, která bude použita metoda. Chcete-li přidat 10.0.2.5 za cíl explicitní, dvakrát klikněte na první prázdný řádek pod \<explicitní dest\> a zadejte adresu v okně nastavení.
   
     S tímto pravidlem předat bez překladu adres je potřeba, protože se jedná interního provozu, takže způsob připojení může být nastaven na "Ne SNAT".
   
@@ -389,7 +407,7 @@ Díky aktivaci sady pravidel brány firewall prostředí sestavení tohoto pří
 
 ## <a name="traffic-scenarios"></a>Provoz scénáře
 > [!IMPORTANT]
-> Klíče takeway je si zapamatovat, že **všechny** přijde přenosů přes bránu firewall. Tak vzdálené plochy k serveru IIS01, i když je v cloudové službě Front End a na front-endové podsítě přístup k tomuto serveru jsme bude muset bránu firewall na portu 8014 pro protokol RDP a pak povolit bránu firewall pro směrování požadavku protokolu RDP interně k Por IIS01 protokolu RDP t. Tlačítko "Připojit" webu Azure portal nebude fungovat, protože není žádné přímé cestu protokolu RDP k IIS01 (jde o vidí portálu). To znamená, že všechna připojení z Internetu bude služba zabezpečení a Port, třeba secscv001.cloudapp.net:xxxx.
+> Si zapamatovat, že je hlavní, co vyplývá **všechny** přijde přenosů přes bránu firewall. Tak vzdálené plochy k serveru IIS01, i když je v cloudové službě Front End a na front-endové podsítě přístup k tomuto serveru jsme bude muset bránu firewall na portu 8014 pro protokol RDP a pak povolit bránu firewall pro směrování požadavku protokolu RDP interně k Por IIS01 protokolu RDP t. Tlačítko "Připojit" webu Azure portal nebude fungovat, protože není žádné přímé cestu protokolu RDP k IIS01 (jde o vidí portálu). To znamená, že všechna připojení z Internetu bude služba zabezpečení a Port, třeba secscv001.cloudapp.net:xxxx.
 > 
 > 
 
@@ -592,6 +610,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
 > 
 > 
 
+```powershell
     <# 
      .SYNOPSIS
       Example of DMZ and User Defined Routing in an isolated network (Azure only, no hybrid connections)
@@ -604,7 +623,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
        - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
        - One server on the FrontEnd Subnet
        - Three Servers on the BackEnd Subnet
-       - IP Forwading from the FireWall out to the internet
+       - IP Forwarding from the FireWall out to the internet
        - User Defined Routing FrontEnd and BackEnd Subnets to the NVA
 
       Before running script, ensure the network configuration file is created in
@@ -702,7 +721,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
           $SubnetName += $FESubnet
           $VMIP += "10.0.1.4"
 
-        # VM 2 - The First Appliaction Server
+        # VM 2 - The First Application Server
           $VMName += "AppVM01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -711,7 +730,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.5"
 
-        # VM 3 - The Second Appliaction Server
+        # VM 3 - The Second Application Server
           $VMName += "AppVM02"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -730,7 +749,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Varibles or   #
+    # No User Defined Variables or   #
     # Configuration past this point #
     # ----------------------------- #
 
@@ -741,7 +760,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
 
       # Create Storage Account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
-            Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
+            Write-Host "Fatal Error: This storage account name is already in use, please pick a different name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
@@ -872,7 +891,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
             |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $FEPrefix `
             -NextHopType VNETLocal
 
-      # Assoicate the Route Tables with the Subnets
+      # Associate the Route Tables with the Subnets
         Write-Host "Binding Route Tables to the Subnets" -ForegroundColor Cyan 
         Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
             -SubnetName $BESubnet `
@@ -920,11 +939,12 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
       Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
       Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
-
+```
 
 #### <a name="network-config-file"></a>Soubor konfigurace sítě
 Uložte tento soubor xml s aktualizované umístění a přidání odkazu do tohoto souboru $NetworkConfigFile proměnné ve skriptu výše.
 
+```xml
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
@@ -957,6 +977,7 @@ Uložte tento soubor xml s aktualizované umístění a přidání odkazu do toh
         </VirtualNetworkSites>
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
+```
 
 #### <a name="sample-application-scripts"></a>Ukázky skriptů aplikace
 Pokud chcete nainstalovat ukázkovou aplikaci pro tuto a další příklady hraniční sítě, jednu byl poskytnut na následující odkaz: [Ukázkový skript aplikace][SampleApp]

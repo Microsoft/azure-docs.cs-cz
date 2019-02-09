@@ -8,20 +8,22 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 33f96c67e7179104d1895cf62f834d3b592bee04
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 86ccd35d14df529a22bd4cdcd50566e7dc0c1375
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487621"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983709"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Spouštění skriptů prostředí PowerShell ve virtuálním počítači Windows pomocí příkazu Spustit
 
 Spusťte příkaz používá agent virtuálního počítače ke spouštění skriptů prostředí PowerShell v rámci virtuálního počítače Windows Azure. Tyto skripty lze použít obecné počítače nebo Správa aplikací a umožňuje rychle diagnostikovat a opravit problémy s přístup a síť virtuálního počítače a získat zpět na dobrý stav virtuálního počítače.
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="benefits"></a>Výhody
 
-Existuje několik možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz můžete spustit skripty na virtuálních počítačích vzdáleně pomocí agenta virtuálního počítače. Spusťte příkaz se dá použít prostřednictvím webu Azure portal, [rozhraní REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), nebo [Powershellu](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) pro virtuální počítače s Windows.
+Existuje několik možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz můžete spustit skripty na virtuálních počítačích vzdáleně pomocí agenta virtuálního počítače. Spusťte příkaz se dá použít prostřednictvím webu Azure portal, [rozhraní REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), nebo [Powershellu](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) pro virtuální počítače s Windows.
 
 Tato možnost je užitečná ve všech scénářích, kde chcete spustit skript v rámci virtuálních počítačů a je jedním z jediný způsob, jak odstraňovat potíže a opravte virtuální počítač, který nemá protokol RDP nebo otevřít SSH port z důvodu nesprávné sítě nebo správce konfigurace.
 
@@ -72,10 +74,11 @@ Tato tabulka zobrazuje seznam příkazů, které jsou k dispozici pro virtuáln�
 
 ## <a name="powershell"></a>PowerShell
 
-Následuje příklad použití [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) rutinu spustit skript prostředí PowerShell na Virtuálním počítači Azure. Rutina očekává, že skript odkazuje `ScriptPath` proměnnou deklarovanou místní kde rutina se spustila.
+Následuje příklad použití [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) rutinu spustit skript prostředí PowerShell na Virtuálním počítači Azure. Rutina očekává, že skript odkazuje `-ScriptPath` parametr bude místní kde se rutina spouští.
+
 
 ```azurepowershell-interactive
-Invoke-AzureRmVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
 ## <a name="limiting-access-to-run-command"></a>Omezení přístupu ke spuštění příkazu

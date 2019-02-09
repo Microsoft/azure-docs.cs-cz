@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e79b85a2dd47706ca83b6cbc2c59100b05574fab
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 24dfc9602f7329b4ea56db2257f29f5711510d22
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425556"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977792"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače se systémy Windows a SQL Server v prostředí Azure PowerShell
 
@@ -38,14 +38,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a id="powershell"></a>Získání Azure PowerShellu
 
-Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ## <a name="configure-powershell"></a>Konfigurace prostředí PowerShell
 
-1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním příkazu **Connect-AzureRmAccount**.
+1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním **připojit AzAccount** příkazu.
 
    ```PowerShell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 1. Měli byste vidět obrazovku pro zadání přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
@@ -67,7 +67,7 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 1. Vytvořte skupinu prostředků.
 
    ```PowerShell
-   New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+   New-AzResourceGroup -Name $ResourceGroupName -Location $Location
    ```
 
 ## <a name="configure-network-settings"></a>Konfigurace nastavení sítě
@@ -80,14 +80,14 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
    $PipName = $ResourceGroupName + $(Get-Random)
 
    # Create a subnet configuration
-   $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix 192.168.1.0/24
+   $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix 192.168.1.0/24
 
    # Create a virtual network
-   $Vnet = New-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location `
+   $Vnet = New-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location `
       -Name $VnetName -AddressPrefix 192.168.0.0/16 -Subnet $SubnetConfig
 
    # Create a public IP address and specify a DNS name
-   $Pip = New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName -Location $Location `
+   $Pip = New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Location $Location `
       -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $PipName
    ```
 
@@ -95,18 +95,18 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 
    ```PowerShell
    # Rule to allow remote desktop (RDP)
-   $NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
+   $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
 
    #Rule to allow SQL Server connections on port 1433
-   $NsgRuleSQL = New-AzureRmNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
+   $NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
       -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
 
    # Create the network security group
    $NsgName = $ResourceGroupName + "nsg"
-   $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
+   $Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
       -Location $Location -Name $NsgName `
       -SecurityRules $NsgRuleRDP,$NsgRuleSQL
    ```
@@ -115,7 +115,7 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 
    ```PowerShell
    $InterfaceName = $ResourceGroupName + "int"
-   $Interface = New-AzureRmNetworkInterface -Name $InterfaceName `
+   $Interface = New-AzNetworkInterface -Name $InterfaceName `
       -ResourceGroupName $ResourceGroupName -Location $Location `
       -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $Pip.Id `
       -NetworkSecurityGroupId $Nsg.Id
@@ -137,13 +137,13 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
    ```PowerShell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
-      Set-AzureRmVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
-      Set-AzureRmVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
-      Add-AzureRmVMNetworkInterface -Id $Interface.Id
+   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
+      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
+      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
+      Add-AzVMNetworkInterface -Id $Interface.Id
    
    # Create the VM
-   New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VMConfig
+   New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VMConfig
    ```
 
    > [!TIP]
@@ -154,7 +154,7 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete nainstalovat agenta k novému virtuálnímu počítači, spusťte následující příkaz, po vytvoření virtuálního počítače.
 
    ```PowerShell
-   Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
 ## <a name="remote-desktop-into-the-vm"></a>Připojení k virtuálnímu počítači pomocí Vzdálené plochy
@@ -162,7 +162,7 @@ Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je 
 1. Použijte následující příkaz pro načtení veřejnou IP adresu nového virtuálního počítače.
 
    ```PowerShell
-   Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
+   Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
 1. Předat jako parametr příkazového řádku pro tuto IP adresu **mstsc** spustit relaci vzdálené plochy nového virtuálního počítače.
@@ -186,10 +186,10 @@ Jste teď připojeni k serveru SQL Server místně. Pokud chcete připojit vzdá
 Pokud nepotřebujete, virtuálnímu počítači spouštět nepřetržitě, byste se vyhnout zbytečným poplatkům? zastavte ho, když se nepoužívá. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
 
 ```PowerShell
-Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
+Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu příkazem **Remove-AzureRmResourceGroup**. Tím trvale odstraní virtuální počítač, proto tento příkaz používejte s opatrností.
+Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači **odebrat AzResourceGroup** příkazu. Tím trvale odstraní virtuální počítač, proto tento příkaz používejte s opatrností.
 
 ## <a name="next-steps"></a>Další postup
 

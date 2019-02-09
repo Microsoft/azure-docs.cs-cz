@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0aa4b8fd606c45f2dea702140c34fc93bcd4c5a4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 10fc55886e4c91a2d468704d13d3b206f4a9cf51
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885367"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980240"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a Správa virtuálního počítače škálovací sady pomocí Azure Powershellu
+
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -35,16 +36,17 @@ ms.locfileid: "54885367"
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením škálovací sady virtuálních počítačů. Vytvořte skupinu prostředků pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). V tomto příkladu se vytvoří skupina prostředků *myResourceGroup* v oblasti *EastUS*. 
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením škálovací sady virtuálních počítačů. Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkazu. V tomto příkladu se vytvoří skupina prostředků *myResourceGroup* v oblasti *EastUS*. 
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
 Název skupiny prostředků zadáte při vytváření nebo úpravě škálovací sady v rámci tohoto kurzu.
 
@@ -56,10 +58,10 @@ Nejprve pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/re
 $cred = Get-Credential
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí rutiny [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985:
+Teď vytvořte virtuální počítač škálovací sadu s [New-AzVmss](/powershell/module/az.compute/new-azvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -VMScaleSetName "myScaleSet" `
   -Location "EastUS" `
@@ -74,10 +76,10 @@ Vytvoření a konfigurace všech prostředků škálovací sady a instancí virt
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Zobrazení instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte rutinu [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) následujícím způsobem:
+Chcete-li zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) následujícím způsobem:
 
 ```azurepowershell-interactive
-Get-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 Následující příklad výstupu ukazuje dvě instance virtuálních počítačů ve škálovací sadě:
@@ -89,24 +91,25 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Pokud chcete zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte k rutině [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) parametr `-InstanceId`. Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
+Chcete-li zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte `-InstanceId` parametr [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
 
 ```azurepowershell-interactive
-Get-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
+Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
 ```
 
 
 ## <a name="list-connection-information"></a>Výpis informací o připojení
 K nástroji pro vyrovnávání zatížení, který směruje provoz do jednotlivých instancí virtuálních počítačů, se přiřadí veřejná IP adresa. Ve výchozím nastavení se k nástroji pro vyrovnávání zatížení Azure, který směruje provoz vzdáleného připojení do jednotlivých virtuálních počítačů na daném portu, přidají pravidla překladu adres (NAT). Pokud se chcete připojit k instancím virtuálních počítačů ve škálovací sadě, vytvořte vzdálené připojení k přiřazené veřejné IP adrese a číslu portu.
 
-Pokud chcete vypsat porty překladu adres pro připojení k instancím virtuálních počítačů ve škálovací sadě, získejte nejprve objekt nástroje pro vyrovnávání zatížení pomocí rutiny [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer). Pak zobrazte pravidla příchozího překladu adres pomocí rutiny [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig):
+Pokud chcete vypsat porty překladu adres k připojení k instancím virtuálních počítačů ve škálovací sadě, získejte nejprve objekt nástroje pro vyrovnávání zatížení pomocí [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Pak zobrazte pravidla příchozího překladu adres pomocí [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig):
+
 
 ```azurepowershell-interactive
 # Get the load balancer object
-$lb = Get-AzureRmLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
+$lb = Get-AzLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
 
 # View the list of inbound NAT rules
-Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
+Get-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
 ```
 
 Následující příklad výstupu ukazuje název instance, veřejnou IP adresu nástroje pro vyrovnávání zatížení a číslo portu, na které pravidla překladu adres směrují provoz:
@@ -120,12 +123,13 @@ myScaleSet3389.1 Tcp             50002        3389
 myScaleSet5985.1 Tcp             51002        5985
 ```
 
-Název (*Name*) pravidla odpovídá názvu instance virtuálního počítače uvedenému ve výstupu předchozího příkazu [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm). Pokud se například chcete připojit k instanci virtuálního počítače *0*, použijte *myScaleSet3389.0* a připojte se k portu *50001*. Pokud se chcete připojit k instanci virtuálního počítače *1*, použijte hodnotu z *myScaleSet3389.1* a připojte se k portu *50002*. Pokud chcete využít vzdálenou komunikaci PowerShellu, připojte se k odpovídajícímu pravidlu instance virtuálního počítače pro port *TCP* *5985*.
+*Název* pravidla odpovídá názvu instance virtuálního počítače jak je znázorněno v předchozím [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) příkazu. Pokud se například chcete připojit k instanci virtuálního počítače *0*, použijte *myScaleSet3389.0* a připojte se k portu *50001*. Pokud se chcete připojit k instanci virtuálního počítače *1*, použijte hodnotu z *myScaleSet3389.1* a připojte se k portu *50002*. Pokud chcete využít vzdálenou komunikaci PowerShellu, připojte se k odpovídajícímu pravidlu instance virtuálního počítače pro port *TCP* *5985*.
 
-Zobrazte veřejnou IP adresu nástroje pro vyrovnávání zatížení pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/Get-AzureRmPublicIpAddress):
+Zobrazení veřejné IP adresy nástroje pro vyrovnávání zatížení s [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" -Name "myPublicIPAddress" | Select IpAddress
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" -Name "myPublicIPAddress" | Select IpAddress
 ```
 
 Příklad výstupu:
@@ -146,16 +150,16 @@ Po přihlášení k instanci virtuálního počítače můžete podle potřeby p
 
 
 ## <a name="understand-vm-instance-images"></a>Vysvětlení imagí instancí virtuálních počítačů
-Azure Marketplace obsahuje celou řadu imagí, které je možné využít k vytváření instancí virtuálních počítačů. Pokud chcete zobrazit seznam dostupných vydavatelů, použijte příkaz [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher).
+Azure Marketplace obsahuje celou řadu imagí, které je možné využít k vytváření instancí virtuálních počítačů. Chcete-li zobrazit seznam dostupných vydavatelů, použijte [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) příkazu.
 
 ```azurepowershell-interactive
-Get-AzureRmVMImagePublisher -Location "EastUS"
+Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Pokud chcete zobrazit seznam imagí daného vydavatele, použijte příkaz [Get-AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku). Seznam imagí je také možné filtrovat podle parametrů `-PublisherName` nebo `–Offer`. V následujícím příkladu se v seznamu vyfiltrují všechny image s názvem vydavatele *MicrosoftWindowsServer*, jejichž nabídka je *WindowsServer*:
+Chcete-li zobrazit seznam imagí daného vydavatele, použijte [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku). Seznam imagí je také možné filtrovat podle parametrů `-PublisherName` nebo `–Offer`. V následujícím příkladu se v seznamu vyfiltrují všechny image s názvem vydavatele *MicrosoftWindowsServer*, jejichž nabídka je *WindowsServer*:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
+Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
 ```
 
 Následující příklad výstupu ukazuje všechny dostupné image Windows Serveru:
@@ -178,10 +182,10 @@ Skus                                  Offer         PublisherName          Locat
 2016-Nano-Server                      WindowsServer MicrosoftWindowsServer eastus
 ```
 
-Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí image virtuálního počítače *Windows Server 2016 DataCenter*. Na základě výstupu rutiny [Get-AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) můžete zadat jinou image virtuálního počítače. Následující příklad vytvoří škálovací sadu s použitím parametru `-ImageName`, který určí image virtuálního počítače *MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
+Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí image virtuálního počítače *Windows Server 2016 DataCenter*. Můžete zadat jinou image virtuálního počítače na základě výstupu z [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku). Následující příklad vytvoří škálovací sadu s použitím parametru `-ImageName`, který určí image virtuálního počítače *MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup2" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet2" `
@@ -201,7 +205,7 @@ Velikost instance virtuálního počítače neboli *skladová položka* určuje 
 ### <a name="vm-instance-sizes"></a>Velikosti instancí virtuálních počítačů
 V následující tabulce jsou běžné velikosti virtuálních počítačů rozdělené podle způsobů použití.
 
-| Typ                     | Běžné velikosti           |    Popis       |
+| Type                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -211,10 +215,10 @@ V následující tabulce jsou běžné velikosti virtuálních počítačů rozd
 | [Vysoký výkon](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | Naše procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). 
 
 ### <a name="find-available-vm-instance-sizes"></a>Vyhledání dostupných velikostí instancí virtuálních počítačů
-Pokud chcete zobrazit seznam velikostí instancí virtuálních počítačů dostupných v konkrétní oblasti, použijte příkaz [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize). 
+Chcete-li zobrazit seznam velikostí instancí virtuálních počítačů dostupných v konkrétní oblasti, použijte [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) příkazu. 
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -Location "EastUS"
+Get-AzVMSize -Location "EastUS"
 ```
 
 Výstup se podobá následujícímu zhuštěnému příkladu, který ukazuje prostředky přiřazené k jednotlivým velikostem virtuálních počítačů:
@@ -235,10 +239,10 @@ Standard_NV6                       6      57344               24        1047552 
 Standard_NV12                     12     114688               48        1047552               696320
 ```
 
-Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí skladovou položku virtuálního počítače *Standard_DS1_v2*. Na základě výstupu rutiny [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) můžete zadat jinou velikost instancí virtuálních počítačů. Následující příklad vytvoří škálovací sadu s použitím parametru `-VmSize`, který určí velikost instancí virtuálních počítačů *Standard_F1*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
+Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí skladovou položku virtuálního počítače *Standard_DS1_v2*. Můžete zadat jinou velikost instancí virtuálních počítačů na základě výstupu z [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize). Následující příklad vytvoří škálovací sadu s použitím parametru `-VmSize`, který určí velikost instancí virtuálních počítačů *Standard_F1*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup3" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet3" `
@@ -255,21 +259,21 @@ New-AzureRmVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sady
 Při vytváření škálovací sady jste vyžádali dvě instance virtuálních počítačů. Pokud chcete zvýšit nebo snížit počet instancí virtuálních počítačů ve škálovací sadě, můžete ručně změnit kapacitu. Škálovací sada vytvoří nebo odebere požadovaný počet instancí virtuálních počítačů a pak nakonfiguruje nástroj pro vyrovnávání zatížení pro distribuci provozu.
 
-Nejprve vytvořte objekt škálovací sady pomocí rutiny [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) a pak zadejte novou hodnotu `sku.capacity`. Změnu kapacity použijete pomocí rutiny [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
+Nejprve vytvořte objekt škálovací sady s [Get-AzVmss](/powershell/module/az.compute/get-azvmss), zadejte novou hodnotu pro `sku.capacity`. Chcete-li použít změnu kapacity, použijte [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
 
 ```azurepowershell-interactive
 # Get current scale set
-$vmss = Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+$vmss = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 # Set and update the capacity of your scale set
 $vmss.sku.capacity = 3
-Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMachineScaleSet $vmss 
+Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMachineScaleSet $vmss 
 ```
 
-Aktualizace kapacity škálovací sady trvá několik minut. Pokud chcete zobrazit počet instancí, které teď máte ve škálovací sadě, použijte rutinu [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
+Aktualizace kapacity škálovací sady trvá několik minut. Pokud chcete zobrazit počet instancí, které teď máte ve škálovací sadě, použijte [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
 
 ```azurepowershell-interactive
-Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 Následující příklad výstupu ukazuje, že kapacita škálovací sady je teď *3*:
@@ -286,26 +290,26 @@ Sku        :
 Teď můžete vytvořit škálovací sadu, vypsat informace o připojení a připojit se k instancím virtuálních počítačů. Zjistili jste, jak pro instance virtuálních počítačů použít jinou image operačního systému, vybrat jinou velikost virtuálních počítačů nebo ručně škálovat počet instancí. V rámci každodenní správy můžete potřebovat zastavit, spustit nebo restartovat instance virtuálních počítačů ve své škálovací sadě.
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>Zastavení a uvolnění instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete zastavit jeden nebo několik virtuálních počítačů ve škálovací sadě, použijte rutinu [Stop-AzureRmVmss](/powershell/module/azurerm.compute/stop-azurermvmss). Pomocí parametru `-InstanceId` můžete zadat jeden nebo několik virtuálních počítačů, které se mají zastavit. Pokud nezadáte ID instance, zastaví se všechny virtuální počítače ve škálovací sadě. Následující příklad zastaví instanci *1*:
+Pokud chcete zastavit jeden nebo více virtuálních počítačů ve škálovací sadě, použijte [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss). Pomocí parametru `-InstanceId` můžete zadat jeden nebo několik virtuálních počítačů, které se mají zastavit. Pokud nezadáte ID instance, zastaví se všechny virtuální počítače ve škálovací sadě. Následující příklad zastaví instanci *1*:
 
 ```azurepowershell-interactive
-Stop-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
+Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
 ```
 
 Ve výchozím nastavení se zastavené virtuální počítače uvolní a neúčtují se u nich poplatky za výpočty. Pokud chcete, aby virtuální počítače po zastavení zůstaly ve zřízeném stavu, přidejte k předchozímu příkazu parametr `-StayProvisioned`. U zastavených virtuálních počítačů, které zůstanou zřízené, se účtují obvyklé poplatky za výpočty.
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>Spuštění instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete spustit jeden nebo několik virtuálních počítačů ve škálovací sadě, použijte rutinu [Start-AzureRmVmss](/powershell/module/azurerm.compute/start-azurermvmss). Pomocí parametru `-InstanceId` můžete zadat jeden nebo několik virtuálních počítačů, které se mají spustit. Pokud nezadáte ID instance, spustí se všechny virtuální počítače ve škálovací sadě. Následující příklad spustí instanci *1*:
+Chcete-li spustit jeden nebo více virtuálních počítačů ve škálovací sadě, použijte [Start AzVmss](/powershell/module/az.compute/start-azvmss). Pomocí parametru `-InstanceId` můžete zadat jeden nebo několik virtuálních počítačů, které se mají spustit. Pokud nezadáte ID instance, spustí se všechny virtuální počítače ve škálovací sadě. Následující příklad spustí instanci *1*:
 
 ```azurepowershell-interactive
-Start-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
+Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>Restartování instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete restartovat jeden nebo několik virtuálních počítačů ve škálovací sadě, použijte rutinu [Restart-AzureRmVmss](/powershell/module/azurerm.compute/restart-azurermvmss). Pomocí parametru `-InstanceId` můžete zadat jeden nebo několik virtuálních počítačů, které se mají restartovat. Pokud nezadáte ID instance, restartují se všechny virtuální počítače ve škálovací sadě. Následující příklad restartuje instanci *1*:
+Chcete-li restartovat jeden nebo více virtuálních počítačů ve škálovací sadě, použijte [rutinu AzVmss](/powershell/module/az.compute/restart-azvmss). Pomocí parametru `-InstanceId` můžete zadat jeden nebo několik virtuálních počítačů, které se mají restartovat. Pokud nezadáte ID instance, restartují se všechny virtuální počítače ve škálovací sadě. Následující příklad restartuje instanci *1*:
 
 ```azurepowershell-interactive
-Restart-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
+Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
 ```
 
 
@@ -313,7 +317,7 @@ Restart-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScal
 Když odstraníte skupinu prostředků, odstraní se také všechny prostředky v ní obsažené, například instance virtuálních počítačů, virtuální síť a disky. Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
+Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 

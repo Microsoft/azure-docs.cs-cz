@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 43305efc146151d131152e712869e283af65f0b2
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ddf36c97a8aebd3cd7446dca07e77c7f743afcb9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359761"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982943"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 
@@ -86,7 +86,7 @@ Používání vlastní licence, můžete buď převést existující virtuální
 Je možné nasadit starších image SQL serveru, která není k dispozici na portálu Azure pomocí Powershellu. Chcete-li zobrazit všechny dostupné Image pomocí Powershellu, použijte následující příkaz:
 
   ```PowerShell
-  Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
+  Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
   ```
 
 Další informace o nasazování virtuálních počítačů SQL Server pomocí Powershellu, zobrazit [jak zřídit virtuální počítače systému SQL Server v prostředí Azure PowerShell](virtual-machines-windows-ps-sql-create.md).

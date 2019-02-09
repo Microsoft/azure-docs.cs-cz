@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 93fbcb96415aa2c800a772fdeb925b1513d7512d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2be50b7f2583f7f15b2a0783ef729b91bc158234
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863002"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983657"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 
@@ -68,7 +68,7 @@ Image kontejneru pro rozhraní API pro rozpoznávání tváře jsou k dispozici.
 
 ### <a name="docker-pull-for-the-face-container"></a>Operace docker pull pro kontejner pro rozpoznávání tváře
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
 ```
 
@@ -132,18 +132,7 @@ Pokud spouštíte kontejner s výstupem [připojit](./face-resource-container-co
 
 Odeslat kontejnery API pro rozpoznávání tváře fakturační údaje do Azure, pomocí _API pro rozpoznávání tváře_ prostředků v účtu Azure. 
 
-Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků společnosti Microsoft. 
-
-`docker run` Příkaz používá následující argumenty pro účely fakturace:
-
-| Možnost | Popis |
-|--------|-------------|
-| `ApiKey` | Klíč rozhraní API _API pro rozpoznávání tváře_ prostředek, který používá ke sledování fakturační údaje. |
-| `Billing` | Koncový bod _API pro rozpoznávání tváře_ prostředek, který používá ke sledování fakturační údaje.|
-| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
-
-> [!IMPORTANT]
-> Všechny tři možnosti je nutné zadat platnou hodnotou nebo kontejneru se nespustí.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](./face-resource-container-config.md).
 

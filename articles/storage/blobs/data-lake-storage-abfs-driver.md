@@ -8,12 +8,12 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: c2830cb92df0794e9afbaadfe872ab3e044669cb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865948"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962430"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů Azure Blob (ABFS): Vyhrazené ovladač Azure Storage pro Hadoop
 
@@ -62,6 +62,5 @@ Ovladač ABFS je plně dokumentovány v článku [Hadoop oficiální dokumentaci
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nastavení clusterů HDInsight](./data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 - [Vytvoření clusteru služby Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
 - [Použití Azure Data Lake Storage Gen2 identifikátoru URI](./data-lake-storage-introduction-abfs-uri.md)

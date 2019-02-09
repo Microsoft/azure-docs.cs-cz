@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fb27386881e89cd9056d0efccb7d3c301867bd83
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823122"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965983"
 ---
 1. V **Android Studio**vyberte **nástroje** v nabídce a vyberte **správce sady SDK**. 
 2. Vyberte cílovou verzi sady SDK pro Android, který se používá v projektu a vyberte **zobrazit podrobnosti balíčku**. 
@@ -29,7 +29,7 @@ ms.locfileid: "55823122"
 4. Vyberte **OK** zavřete **nastavení pro nové projekty** dialogové okno.  
 5. Otevřít `build.gradle` soubor **aplikace** adresáře a přidejte tento řádek pod `dependencies`. 
 
-    ```text
+    ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
 5. Vyberte **synchronizovat nyní** ikonu na panelu nástrojů.

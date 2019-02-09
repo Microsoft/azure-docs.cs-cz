@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 803c9af7b6c40f7deee2b81fb7ff0ae82ef6778a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158158"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965150"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat Azure Mobile Apps SDK pro Android
 
@@ -55,7 +55,7 @@ Obě tyto hodnoty změnit **build.gradle** soubory:
 
 1. Přidejte tento kód *projektu* úroveň **build.gradle** soubor uvnitř *buildscript* značky:
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
@@ -65,7 +65,7 @@ Obě tyto hodnoty změnit **build.gradle** soubory:
 
 2. Přidejte tento kód *modul app* úroveň **build.gradle** soubor uvnitř *závislosti* značky:
 
-    ```text
+    ```gradle
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
@@ -496,7 +496,7 @@ Rozložení je definováno více fragmentů kódu XML. Zadaný existující rozl
 
 V předchozím kódu *listitem* atribut určuje id rozložení pro jednotlivé řádek v seznamu. Tento kód určuje zaškrtávací políčko a příslušný text a získá vytvořit jednou pro každou položku v seznamu. Toto rozložení nezobrazí **id** pole a složitější rozložení, zadejte další pole v zobrazení. Tento kód je v **row_list_to_do.xml** souboru.
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +520,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 Přepsat adaptéry **getView** metody. Příklad:
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -959,7 +959,7 @@ Budete potřebovat ke konfiguraci projektu pro customtabs.  Nejprve zadejte adre
 
 Přidat **redirectUriScheme** k `build.gradle` souboru pro vaši aplikaci:
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -976,7 +976,7 @@ android {
 
 Nakonec přidejte `com.android.support:customtabs:23.0.1` do seznamu závislosti `build.gradle` souboru:
 
-```text
+```gradle
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
@@ -1076,7 +1076,7 @@ Můžete používat Active Directory Authentication Library (ADAL) pro přihlá�
 1. Konfigurace back-endu mobilní aplikace pro přihlášení k AAD pomocí následujících [konfigurace služby App Service pro přihlášení služby Active Directory] [ 22] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace.
 2. Nainstalujte knihovnu ADAL pomocí úpravy souboru build.gradle zahrnout následující definice:
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {

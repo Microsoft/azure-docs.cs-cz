@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: f0f3ec25f10faa25b6b90ba4d8114c15d25131c6
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359983"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979135"
 ---
-# <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování 
+# <a name="streaming-endpoints-overview-legacy"></a>Přehled koncových bodů streamování (starší verze)
 
 ## <a name="overview"></a>Přehled
 
@@ -48,7 +48,7 @@ Pro všechny další koncové body: `{EndpointName}-{AccountName}.streaming.medi
 
 Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **Standardní** a **Premium**. Tyto typy jsou součástí verze koncový bod streamování "2.0".
 
-Typ|Popis
+Type|Popis
 ---|---
 **Standard**|Toto je výchozí možnost, která bude fungovat pro většinu scénářů.<br/>Pomocí této možnosti získáte/limited SLA, prvních 15 dnů po spuštění koncový bod streamování je zdarma.<br/>Pokud vytvoříte více než jeden datový proud koncové body, pouze první z nich je zdarma pro prvních 15 dnů, ostatní se účtují, jakmile je spuštění. <br/>Všimněte si, že bezplatné zkušební verze platí jenom pro účty služby nově vytvořené médium a výchozí koncový bod streamování. Stávající koncové body streamování a kromě vytvořených koncových bodů streamování není zahrnuje bezplatné zkušební období ještě jsou upgradovány na verzi 2.0 nebo jsou vytvořené jako verze 2.0.
 **Premium**|Tato možnost je vhodná pro profesionální scénáře, které vyžadují větší měřítko nebo ovládací prvek.<br/>Proměnné SLA, která je založena na premium streamování (SU) jednotky zakoupená kapacita služby vyhrazené koncové body streamování živě v izolovaném prostředí a nesoupeřily o prostředky.
@@ -71,7 +71,7 @@ Pokud vaše **verze "1.0"** koncový bod streamování má > = 1 (SU), jednotky 
 
 ### <a name="versions"></a>Verze
 
-|Typ|StreamingEndpointVersion|ScaleUnits|CDN|Fakturace|SLA| 
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|Fakturace|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |Classic|1.0|0|Není k dispozici|Free|Není k dispozici|
 |Koncový bod streamování Standard|2.0|0|Ano|Placené|Ano|

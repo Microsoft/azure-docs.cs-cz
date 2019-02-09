@@ -16,28 +16,31 @@ ms.workload: na
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 20bf851cc9b2965a355286699e1ef255887d7650
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 22de937c33edc7c8ec6944acf657937a1ce604f7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697084"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981890"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Vytvoření úplné škálovací sady virtuálních počítačů pomocí PowerShellu
-Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016. Jednotlivé prostředky jsou nakonfigurovaná a vytvořená, místo použití [vytvoření vestavěné prostředku možnosti k dispozici tady v New-AzureRmVmss](powershell-sample-create-simple-scale-set.md). Po spuštění skriptu můžete k instancím virtuálních počítačů přistupovat přes SSH.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016. Jednotlivé prostředky jsou nakonfigurovaná a vytvořená, místo použití [integrované prostředků vytváření možnosti k dispozici tady v New-AzVmss](powershell-sample-create-simple-scale-set.md). Po spuštění skriptu můžete k instancím virtuálních počítačů přistupovat přes SSH.
+
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="sample-script"></a>Ukázkový skript
+
 [!code-powershell[main](../../../powershell_scripts/virtual-machine-scale-sets/complete-scale-set/complete-scale-set.ps1 "Create a complete virtual machine scale set")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 Spuštěním následujícího příkazu odeberte skupinu prostředků, škálovací sadu a všechny související prostředky.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroupName
+Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
@@ -45,24 +48,24 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě. |
-| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | Vytvoří virtuální síť. |
-| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Vytvoří veřejnou IP adresu. |
-| [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig) | Vytvoří konfiguraci front-endových IP adres pro nástroj pro vyrovnávání zatížení. |
-| [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig) | Vytvoří konfiguraci back-endového fondu adres pro nástroj pro vyrovnávání zatížení. |
-| [New-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerinboundnatruleconfig) | Vytvoří konfiguraci příchozího pravidla NAT pro nástroj pro vyrovnávání zatížení. |
-| [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) | Vytvoří nástroj pro vyrovnávání zatížení. |
-| [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig) | Vytvoří konfiguraci sondy pro nástroj pro vyrovnávání zatížení. |
-| [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerruleconfig) | Vytvoří konfiguraci pravidla pro nástroj pro vyrovnávání zatížení. |
-| [Set-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Set-AzureRmLoadBalancer) | Aktualizujte nástroj pro vyrovnávání zatížení zadanými informacemi. |
-| [New-AzureRmVmssIpConfig](/powershell/module/AzureRM.Compute/New-AzureRmVmssIpConfig) | Vytvořte konfiguraci protokolu IP pro instance virtuálních počítačů pro škálovací sady. Instance virtuálních počítačů jsou připojené k fondu back-endu nástroje pro vyrovnávání zatížení, fondu NAT a podsíti virtuální sítě. |
-| [New-AzureRmVmssConfig](/powershell/module/AzureRM.Compute/New-AzureRmVmssConfig) | Vytvoří konfiguraci škálovací sady. Tato konfigurace zahrnuje informace, jako je počet instancí virtuálního počítače, které se mají vytvořit, SKU (velikost) virtuálních počítačů a režim zásad upgradování. Konfigurace se přidá pomocí dalších rutin a používá se během vytvoření škálovací sady. |
-| [Set-AzureRmVmssStorageProfile](/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile) | Definujte image, která se má pro instance virtuálních počítačů použít, a přidejte ji do konfigurace škálovací sady. |
-| [Set-AzureRmVmssOsProfile](/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile) | Definujte přihlašovací údaje pro správu (uživatelské jméno a heslo) a předponu názvu virtuálního počítače. Tyto hodnoty přidejte do konfigurace škálovací sady. |
-| [Add-AzureRmVmssNetworkInterfaceConfiguration](/powershell/module/AzureRM.Compute/Add-AzureRmVmssNetworkInterfaceConfiguration) | Rozhraní virtuální sítě přidejte do instancí virtuálních počítačů na základě konfigurace protokolu IP. Tyto hodnoty přidejte do konfigurace škálovací sady. |
-| [New-AzureRmVmss](/powershell/module/AzureRM.Compute/New-AzureRmVmss) | Vytvořte škálovací sadu na základě informací zadaných v konfiguraci škálovací sady. |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě. |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť. |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Vytvoří veřejnou IP adresu. |
+| [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) | Vytvoří konfiguraci front-endových IP adres pro nástroj pro vyrovnávání zatížení. |
+| [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) | Vytvoří konfiguraci back-endového fondu adres pro nástroj pro vyrovnávání zatížení. |
+| [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) | Vytvoří konfiguraci příchozího pravidla NAT pro nástroj pro vyrovnávání zatížení. |
+| [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) | Vytvoří nástroj pro vyrovnávání zatížení. |
+| [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) | Vytvoří konfiguraci sondy pro nástroj pro vyrovnávání zatížení. |
+| [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) | Vytvoří konfiguraci pravidla pro nástroj pro vyrovnávání zatížení. |
+| [Set-AzLoadBalancer](/powershell/module/az.Network/Set-azLoadBalancer) | Aktualizujte nástroj pro vyrovnávání zatížení zadanými informacemi. |
+| [New-AzVmssIpConfig](/powershell/module/az.Compute/New-azVmssIpConfig) | Vytvořte konfiguraci protokolu IP pro instance virtuálních počítačů pro škálovací sady. Instance virtuálních počítačů jsou připojené k fondu back-endu nástroje pro vyrovnávání zatížení, fondu NAT a podsíti virtuální sítě. |
+| [New-AzVmssConfig](/powershell/module/az.Compute/New-azVmssConfig) | Vytvoří konfiguraci škálovací sady. Tato konfigurace zahrnuje informace, jako je počet instancí virtuálního počítače, které se mají vytvořit, SKU (velikost) virtuálních počítačů a režim zásad upgradování. Konfigurace se přidá pomocí dalších rutin a používá se během vytvoření škálovací sady. |
+| [Set-AzVmssStorageProfile](/powershell/module/az.Compute/Set-azVmssStorageProfile) | Definujte image, která se má pro instance virtuálních počítačů použít, a přidejte ji do konfigurace škálovací sady. |
+| [Set-AzVmssOsProfile](/powershell/module/az.Compute/Set-azVmssStorageProfile) | Definujte přihlašovací údaje pro správu (uživatelské jméno a heslo) a předponu názvu virtuálního počítače. Tyto hodnoty přidejte do konfigurace škálovací sady. |
+| [Add-AzVmssNetworkInterfaceConfiguration](/powershell/module/az.Compute/Add-azVmssNetworkInterfaceConfiguration) | Rozhraní virtuální sítě přidejte do instancí virtuálních počítačů na základě konfigurace protokolu IP. Tyto hodnoty přidejte do konfigurace škálovací sady. |
+| [New-AzVmss](/powershell/module/az.Compute/New-azVmss) | Vytvořte škálovací sadu na základě informací zadaných v konfiguraci škálovací sady. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
 ## <a name="next-steps"></a>Další postup
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).

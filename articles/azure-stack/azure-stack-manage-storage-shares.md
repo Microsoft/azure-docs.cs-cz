@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819514"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960560"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack 
 
@@ -91,7 +91,7 @@ Jako operátor cloudu můžete na portálu pro správu k zobrazení všech sdíl
 1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
 2. Vyberte **všechny služby** > **úložiště** otevřete seznam souborů sdílené složky, kde můžete zobrazit informace o využití. 
 
-  ![Příklad: Sdílené složky úložiště](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![Příklad: Sdílené složky úložiště](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - **Celkový počet** je místo na celkový počet bajtů, které jsou k dispozici na sdílené složce. Zde se používá pro data a metadata, která se spravuje pomocí služby úložiště.
   - **POUŽÍT** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.

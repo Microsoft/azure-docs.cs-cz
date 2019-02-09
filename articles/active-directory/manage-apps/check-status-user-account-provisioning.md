@@ -3,8 +3,8 @@ title: Vytváření sestav v Azure Active Directory automatické zřizování u�
 description: Zjistěte, jak zkontrolovat stav automatické uživatelský účet zřizování úloh a řešení potíží s zřizování jednotlivým uživatelům.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 833fe24f83a2f159fd00d24c67b6864ce614c445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a013c8d3c78801414ab83fd89a59caa316f1c28f
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203908"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958698"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Vytváření sestav o zřizování automatické uživatelských účtů
 
@@ -58,13 +58,13 @@ Z tohoto místa souhrnnou sestavu zřizování a zřizování protokolů auditu 
 
 Zřizování Souhrnná sestava se nezobrazuje **zřizování** kartu pro danou aplikaci. Nachází se ve **podrobnosti synchronizace** části pod **nastavení**a obsahuje následující informace:
 
-* Celkový počet uživatelů a / skupiny, které byly synchronizované a jsou nyní v oboru pro zřizování mezi systémem zdrojového a cílového systému
+* Celkový počet uživatelů a / skupiny, které byly synchronizované a jsou nyní v oboru pro zřizování mezi systémem zdrojového a cílového systému.
 
 * Čas poslední synchronizace byla spuštěna. Synchronizace každých 20 – 40 minut, obvykle dochází po [počáteční synchronizace](user-provisioning.md#what-happens-during-provisioning) byla dokončena.
 
-* Určuje, jestli [počáteční synchronizace](user-provisioning.md#what-happens-during-provisioning) bylo dokončeno
+* Určuje, jestli [počáteční synchronizace](user-provisioning.md#what-happens-during-provisioning) bylo dokončeno.
 
-* Určuje, jestli během procesu zřizování se nachází v umístění do karantény a Důvod stavu karantény je (například selhání ke komunikaci s cílový systém z důvodu neplatné správce přihlašovacích údajů)
+* Určuje, jestli během procesu zřizování se nachází v umístění do karantény a Důvod stavu karantény je (například selhání ke komunikaci s cílový systém z důvodu neplatné správce přihlašovacích údajů).
 
 Zřizování Souhrnná sestava by měla být první pohled správci místě můžete zkontrolovat na provozní stav úlohy zřizování.
 
@@ -79,7 +79,7 @@ Všechny aktivity prováděné zřizovací služby se zaznamenávají do protoko
 
 * **Exportovat události** – pokaždé, když služba zřizování Azure AD zapíše objekt uživatele účtu nebo skupiny na cílovém systému se zaznamená událost "export". Tyto události zaznamenat všechny atributy uživatele a jejich hodnoty, které byly vytvořeny ve službě Azure AD služby zřizování v době události. Pokud došlo k chybě při zápisu objektu účet nebo skupinu uživatele do cílového systému, zobrazí se tady.
 
-* **Zpracování událostí v úschově** – proces escrows dojít, když dojde k chybě při pokusu o operaci služby zřizování a začne a zkuste operaci zopakovat na regresní interval času. Pokaždé, když operaci zřizování skončil se zaznamená událost "od".
+* **Zpracování událostí v úschově** – proces escrows dojít, když dojde k chybě při pokusu o operaci služby zřizování a začne a zkuste operaci zopakovat na regresní interval času. Zřizování operace pokaždé, když se zaznamená událost "od".
 
 Při prohlížení zřizování události pro jednotlivé uživatele, obvykle dojde k událostem v tomto pořadí:
 
@@ -102,7 +102,7 @@ Nejběžnější případ použití pro zřizování protokoly auditu se ke kont
 
 2. Z **kategorie** nabídce vyberte možnost **zřizování účtů**.
 
-3. V **rozsah** nabídce vyberte rozsah dat, kterou chcete vyhledat,
+3. V **rozsah** nabídce vyberte rozsah dat, kterou chcete vyhledat.
 
 4. V **hledání** panelu, zadejte uživatelské ID uživatele, kterou chcete vyhledat. Formát ID hodnoty musí odpovídat cokoli, co jste vybrali jako primární odpovídající ID v konfiguraci mapování atributů (například userPrincipalName zdravotní nebo zaměstnanecká identifikační číslo). Hodnota ID, vyžaduje se nebude zobrazovat ve sloupci cíle.
 

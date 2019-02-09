@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 968c8aa74a35bf753d92e7c417aaec2a1361f425
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0caa88939e263aa5d18460144893cdbce72f10ec
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467964"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961529"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>O diskové úložiště pro virtuální počítače Azure s Windows
 
@@ -34,7 +34,7 @@ Každý virtuální počítač má jeden disk připojený operačního systému.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [opětovné nasazení virtuálního počítače](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Při úspěšném standardní restartování virtuálního počítače byste neměli zachovat data na dočasné jednotce. Existují však případy, kde nemusí uchovávat data, jako je například přesun do nového hostitele. Odpovídajícím způsobem všechna data na dočasné jednotky by neměl být data, která jsou zásadní pro systém.
+Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [opětovné nasazení virtuálního počítače](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Při úspěšném standardní restartování virtuálního počítače byste neměli zachovat data na dočasné jednotce. Existují však případy, kde nemusí uchovávat data, jako je například přesun do nového hostitele. Odpovídajícím způsobem všechna data na dočasné jednotky by neměl být data, která jsou zásadní pro systém. Při návrhu aplikace, která používá dočasné jednotky jako mezipaměť dat ke zvýšení výkonu aplikací se předpokládá v návrhu, mezipaměti dat na dočasné jednotky nejsou ztracena během restartování a že aplikace potřebuje čas opětovné sestavení mezipaměti dat před podobná výkon je dosaženo.
 
 Dočasný disk je označena jako jednotku D: ve výchozím nastavení a to se používá k ukládání pagefile.sys. Pokud chcete přemapovat tento disk na jiné písmeno jednotky, přečtěte si téma [změnit písmeno jednotky dočasného disku Windows](change-drive-letter.md). Velikost dočasného disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [Windows pro velikosti virtuálních počítačů](sizes.md).
 

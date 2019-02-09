@@ -2,22 +2,22 @@
 title: Proxy aplikací Azure Active Directory a tableau. představují | Dokumentace Microsoftu
 description: Další informace o použití Proxy aplikace Azure Active Directory (Azure AD) pro zajištění vzdáleného přístupu pro vaše nasazení Tableau.
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: b775d9377b95c3c63e3c38cd477ce47209a6f419
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 07a715bd55e50aaad975306dcfe450a47fa4cf50
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149965"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961852"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikací Azure Active Directory a tableau. představují 
 

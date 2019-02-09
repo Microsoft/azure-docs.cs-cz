@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se přes rozšíření virtuálního počítače s Windows | Microsoft Docs
-description: Další informace o řešení potíží se přes rozšíření virtuálního počítače Windows Azure
+title: Řešení potíží s chybami rozšíření virtuálních počítačů Windows | Dokumentace Microsoftu
+description: Další informace o řešení potíží s chybami rozšíření virtuálních počítačů Windows Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 9973eaa7e930d38e78289219e726b5934d82ee86
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf53df30dfccb76a6f33621038ba7f031a69f6de
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33945418"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979689"
 ---
-# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží se přes rozšíření virtuálního počítače Windows Azure
+# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží s chybami rozšíření virtuálních počítačů Windows Azure
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## <a name="viewing-extension-status"></a>Zobrazení stavu rozšíření
-Šablony Azure Resource Manager lze spustit z prostředí Azure PowerShell. Jakmile se spustí šablony, lze zobrazit stav rozšíření z Průzkumníka prostředků Azure nebo nástroje příkazového řádku.
+Šablony Azure Resource Manageru můžete spustit z prostředí Azure PowerShell. Po spuštění šablony stav extension lze zobrazit v Průzkumníku prostředků Azure nebo nástroje příkazového řádku.
 
 Zde naleznete příklad:
 
 Azure PowerShell:
 
-      Get-AzureRmVM -ResourceGroupName $RGName -Name $vmName -Status
+      Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
 
-Zde je ukázkový výstup:
+Tady je ukázkový výstup:
 
       Extensions:  {
       "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
@@ -59,13 +59,13 @@ Zde je ukázkový výstup:
     }
   ]
 
-## <a name="troubleshooting-extension-failures"></a>Řešení potíží s chyby rozšíření
-### <a name="rerun-the-extension-on-the-vm"></a>Znovu spustit rozšíření ve virtuálním počítači
-Pokud se spouštění skriptů na virtuálním počítači pomocí rozšíření vlastních skriptů, může někdy spustit došlo k chybě, kde byl virtuální počítač úspěšně vytvořen, ale došlo k selhání skriptu. Doporučený způsob obnovení z této chyby je za těchto podmínek, odeberte rozšíření a znovu spustit šablonu.
-Poznámka: V budoucnosti, tato funkce by vylepšit odebrat potřeba odinstalovat rozšíření.
+## <a name="troubleshooting-extension-failures"></a>Řešení potíží s chybami rozšíření
+### <a name="rerun-the-extension-on-the-vm"></a>Znovu spusťte rozšíření na virtuálním počítači
+Pokud se spouštění skriptů na virtuálním počítači pomocí rozšíření vlastních skriptů, může občas spouštějí došlo k chybě, kde byl virtuální počítač vytvořen úspěšně, ale došlo k selhání skriptu. Za těchto podmínek je doporučeným způsobem, jak tuto chybu odebrat rozšíření a znovu spustit šablonu.
+Poznámka: Tato funkce v budoucích verzích by se zvýšila odebrat potřeba odinstalovat rozšíření.
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Odeberte rozšíření z prostředí Azure PowerShell
-    Remove-AzureRmVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+    Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-Po odebrání rozšíření šablony lze spouštět skripty ve virtuálním počítači znovu spustit.
+Odebraný rozšíření šablonou může být znovu spustit na spouštění skriptů na virtuálním počítači.
 

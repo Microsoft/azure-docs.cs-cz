@@ -3,8 +3,8 @@ title: Podívejte se, kdy konkrétní uživatel bude mít přístup k aplikaci |
 description: Jak zjistit, kdy kriticky důležité uživatel moct získat přístup k aplikaci, kterou jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 13568c42ed520ba9963541eb7c890612d9657b91
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2f6ebd6d9024c912e1af427ac5a5b62a817651ab
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174189"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964368"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Zjistit, kdy konkrétní uživatel bude mít přístup k aplikaci
 Používáte automatické zřizování uživatelů pomocí aplikace Azure AD automaticky zřizovat a aktualizace uživatelských účtů v aplikaci na základě věci, jako je [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) při pravidelném plánovaném časový interval, obvykle každých 10 minut.

@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816352"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977743"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
 
@@ -38,11 +38,11 @@ Interní infrastrukturu virtuálních IP adres nejsou uvedené, protože nejsou 
 |Koncový bod (VIP)|DNS host A record|Protocol (Protokol)|Porty|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Portál (správce)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|Portál (správce)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Adminhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
-|Azure Resource Manager (správce)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|Portál (uživatel)|Portál.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
-|Azure Resource Manageru (uživatel)|Správa.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>30024|
+|Azure Resource Manager (správce)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Portál (uživatel)|Portál.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
+|Azure Resource Manageru (uživatel)|Správa.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Seznam odvolaných certifikátů|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP A UDP|53|
@@ -79,7 +79,6 @@ Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde t
 |NTP|(K dispozici pro nasazení serveru IP NTP)|UDP|123|Veřejné virtuální IP adresy – velikost/27|
 |DNS|(K dispozici pro nasazení IP adresy DNS serveru)|TCP<br>UDP|53|Veřejné virtuální IP adresy – velikost/27|
 |CRL|(Adresa URL v rámci distribučních bodů seznamu CRL na váš certifikát)|HTTP|80|Veřejné virtuální IP adresy – velikost/27|
-|Infrastruktura zálohování|(IP nebo plně kvalifikovaný název domény externího cílový souborový server)|SMB|445|Infrastruktura veřejných sítě|
 |LDAP|K dispozici pro integraci Graphu doménové struktury služby Active Directory|TCP<br>UDP|389|Veřejné virtuální IP adresy – velikost/27|
 |LDAP SSL|K dispozici pro integraci Graphu doménové struktury služby Active Directory|TCP|636|Veřejné virtuální IP adresy – velikost/27|
 |LDAP GC|K dispozici pro integraci Graphu doménové struktury služby Active Directory|TCP|3268|Veřejné virtuální IP adresy – velikost/27|
@@ -89,9 +88,6 @@ Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde t
 
 > [!Note]  
 > Odchozí adresy URL jsou vyrovnávání zatížení pomocí Azure traffic Manageru k zajištění nejlepší možné připojení zeměpisné umístění. Pomocí adresy URL s vyrovnáváním zatížení, Microsoft můžete aktualizovat a změnit koncových bodů back-end bez dopadu na zákazníky. Společnost Microsoft neposkytuje seznam IP adres pro adresy URL na skupinu s vyrovnáváním zatížení. Měli byste použít zařízení, která podporuje filtrování podle adresy URL, nikoli podle IP.
-
-> [!Note]  
-> V 1809 infrastruktura zálohování služba komunikuje s externí souborový server z veřejné sítě VIP. Před 1809 služba přenášená přes síť infrastruktury veřejného. Pokud vaše prostředí neumožňuje přístup k prostředkům infrastruktury z veřejné sítě VIP, použít nejnovější [opravu hotfix 1809](azure-stack-update-1809.md#post-update-steps) pro službu Azure Stack. Tato oprava hotfix se přesune zálohovací služby infrastruktury zpět k síti infrastruktury veřejných. V 1811 Jestliže nenainstalujete opravu 1809 hotfix zůstává zálohovací služby infrastruktury v síti infrastruktura veřejných. Pokud se nevztahují opravu hotfix, aktualizace se přesune služby zpět k síti infrastruktury veřejných.
 
 ## <a name="next-steps"></a>Další postup
 

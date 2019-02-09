@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/04/2017
+ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1bee08800eb5b480024001f742e8965cbd609a73
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2e7e67236a2f9709bafc0a0383f6ac12b26ca57e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428881"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984184"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorovat a aktualizovat virtuální počítač s Windows v Azure
 
@@ -40,7 +40,11 @@ V tomto kurzu se naučíte:
 > * Monitorování změn a inventáře
 > * Nastavení pokročilého monitorování
 
-Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -50,10 +54,10 @@ Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete 
 $cred = Get-Credential
 ```
 
-Nyní vytvořte virtuální počítač pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupMonitorMonitor* a podpůrné síťové prostředky:
+Teď vytvořte virtuální počítač s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupMonitorMonitor* a podpůrné síťové prostředky:
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupMonitor" `
     -Name "myVM" `
     -Location "East US" `
@@ -66,10 +70,10 @@ Vytvoření prostředků a virtuálního počítače trvá několik minut.
 
 Při spouštění virtuálních počítačů s Windows zachytí agent diagnostiky spouštění výstup na obrazovce, který můžete použít pro účely řešení potíží. Tato funkce je ve výchozím nastavení zapnuta. Zachycené snímky obrazovky se ukládají do účtu úložiště Azure, které se vytvoří také ve výchozím nastavení.
 
-Diagnostická data spouštění můžete získat pomocí příkazu [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata). V následujícím příkladu se diagnostika spouštění stáhne do kořenové složky na jednotce *c:\*.
+Diagnostická data spouštění můžete získat pomocí příkazu [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata). V následujícím příkladu se diagnostika spouštění stáhne do kořenové složky na jednotce *c:\*.
 
 ```powershell
-Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
+Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
 ```
 
 ## <a name="view-host-metrics"></a>Zobrazení metrik hostitele
@@ -259,13 +263,13 @@ Tento graf ukazuje změny, ke kterým došlo v průběhu času. Po přidání p�
 
 K pokročilejšímu monitorování virtuálního počítače můžete použít řešení, jako jsou Update Management, Change Tracking a Inventory, která poskytuje [Azure Automation](../../automation/automation-intro.md).
 
-Pokud máte přístup k pracovnímu prostoru Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. Pomocí příkazu [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) přidejte na virtuální počítač rozšíření Microsoft Monitoring Agent. Aktualizujte hodnoty proměnných v níže uvedené ukázce pomocí svého klíče a ID pracovního prostoru Log Analytics.
+Pokud máte přístup k pracovnímu prostoru Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. Použití [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) příkaz pro přidání rozšíření Microsoft Monitoring agent k virtuálnímu počítači. Aktualizujte hodnoty proměnných v níže uvedené ukázce pomocí svého klíče a ID pracovního prostoru Log Analytics.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
 $key = "<Replace with your primary key>"
 
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupMonitor" `
+Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
   -VMName "myVM" `
   -Publisher "Microsoft.EnterpriseCloud.Monitoring" `

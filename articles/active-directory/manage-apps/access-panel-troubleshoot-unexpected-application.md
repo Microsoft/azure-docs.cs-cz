@@ -3,8 +3,8 @@ title: Jak se zobrazují na přístupovém panelu aplikací | Dokumentace Micros
 description: Řešení potíží s důvod, proč se aplikace zobrazuje na přístupovém panelu
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewr: japere
-ms.openlocfilehash: 83aa3b1b132c52944d350a9d2b5231857a10c7fb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 299024bffc8f876527ca42c4143a0076d64ce727
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191750"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964981"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>Jak se zobrazují na přístupovém panelu aplikací
 

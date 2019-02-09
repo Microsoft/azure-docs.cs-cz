@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9abfd410e9137a897753fcf04ee113bd04749a7a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f3b49efa5e28eab2168c9a85d17e39ca7f0fce4a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881677"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984779"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a použití disků se škálovací sady pomocí Azure Powershellu virtuálních počítačů
+
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -35,9 +36,9 @@ ms.locfileid: "54881677"
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
@@ -48,7 +49,7 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 **Dočasný disk** – Dočasné disky používají disk SSD, který je umístěný na stejném hostiteli Azure jako instance virtuálního počítače. Tyto disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. Pokud však dojde k přesunu instance virtuálního počítače na nového hostitele, všechna data uložená na dočasném disku se odeberou. Velikost dočasného disku se určuje podle velikosti instance virtuálního počítače. Dočasné disky mají popisek */dev/sdb* a mají přípojný bod */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Velikosti dočasného disku
-| Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
+| Type | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
 |----|----|----|
 | [Obecné účely](../virtual-machines/windows/sizes-general.md) | Řady A, B a D | 1600 |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | Řada F | 576 |
@@ -62,7 +63,7 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost instance virtuálního počítače určuje, kolik datových disků je možné připojit. Na každý virtuální procesor virtuálního počítače je možné připojit dva datové disky.
 
 ### <a name="max-data-disks-per-vm"></a>Maximum datových disků na virtuální počítač
-| Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
+| Type | Běžné velikosti | Maximum datových disků na virtuální počítač |
 |----|----|----|
 | [Obecné účely](../virtual-machines/windows/sizes-general.md) | Řady A, B a D | 64 |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | Řada F | 64 |
@@ -95,12 +96,12 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
-Vytvořte škálovací sadu virtuálních počítačů pomocí rutiny [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Po zobrazení výzvy zadejte uživatelské jméno a heslo pro instance virtuálních počítačů. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985.
+Vytvoření virtuálního počítače škálovací sady s [New-AzVmss](/powershell/module/az.compute/new-azvmss). Po zobrazení výzvy zadejte uživatelské jméno a heslo pro instance virtuálních počítačů. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985.
 
 Pomocí parametru `-DataDiskSizeGb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet" `
@@ -115,23 +116,23 @@ New-AzureRmVmss `
 Vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Připojení disku k existující škálovací sadě
-Disky můžete připojit také k existující škálovací sadě. Použijte škálovací sadu vytvořenou v předchozím kroku a přidejte další disk pomocí rutiny [Add-AzureRmVmssDataDisk](/powershell/module/azurerm.compute/add-azurermvmssdatadisk). Následující příklad připojí k existující škálovací sadě další *128*GB disk:
+Disky můžete připojit také k existující škálovací sadě. Použijte škálovací sadu vytvořenou v předchozím kroku a přidejte další disk pomocí [přidat AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk). Následující příklad připojí k existující škálovací sadě další *128*GB disk:
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
 # Attach a 128 GB data disk to LUN 2
-Add-AzureRmVmssDataDisk `
+Add-AzVmssDataDisk `
   -VirtualMachineScaleSet $vmss `
   -CreateOption Empty `
   -Lun 2 `
   -DiskSizeGB 128
 
 # Update the scale set to apply the change
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -143,11 +144,13 @@ Disky, které se vytvoří a připojí k instancím virtuálních počítačů v
 
 K automatizaci tohoto procesu napříč několika instancemi virtuálních počítačů ve škálovací sadě můžete použít rozšíření vlastních skriptů Azure. Toto rozšíření může na jednotlivých instancích virtuálních počítačů místně spouštět skripty, například pro přípravu připojených datových disků. Další informace najdete v tématu [Přehled rozšíření vlastních skriptů](../virtual-machines/windows/extensions-customscript.md).
 
-Následující příklad na každé instanci virtuálního počítače pomocí rutiny [Add-AzureRmVmssExtension](/powershell/module/AzureRM.Compute/Add-AzureRmVmssExtension) spustí skript z ukázkového úložiště GitHub, který připraví všechny připojené holé datové disky:
+
+Následující příklad spustí skript z ukázkového úložiště GitHub na jednotlivých instancích virtuálních počítačů s [přidat AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) , který připraví všechny připojené holé datové disky:
+
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
@@ -158,7 +161,7 @@ $publicSettings = @{
 }
 
 # Use Custom Script Extension to prepare the attached data disks
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
   -Name "customScript" `
   -Publisher "Microsoft.Compute" `
   -Type "CustomScriptExtension" `
@@ -166,7 +169,7 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
   -Setting $publicSettings
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -174,17 +177,18 @@ Update-AzureRmVmss `
 
 Pokud chcete potvrdit, že se disky správně připravily, připojte se přes RDP k některé z instancí virtuálních počítačů. 
 
-Nejprve získejte objekt nástroje pro vyrovnávání zatížení pomocí rutiny [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer). Pak zobrazte pravidla příchozího překladu adres pomocí rutiny [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig). V seznamu pravidel překladu adres bude u jednotlivých instancí virtuálních počítačů uvedený port *FrontendPort*, na kterém naslouchá protokol RDP. Nakonec získejte veřejnou IP adresu nástroje pro vyrovnávání zatížení pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/Get-AzureRmPublicIpAddress):
+Nejprve získejte objekt nástroje pro vyrovnávání zatížení pomocí [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Pak zobrazte pravidla příchozího překladu adres pomocí [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). V seznamu pravidel překladu adres bude u jednotlivých instancí virtuálních počítačů uvedený port *FrontendPort*, na kterém naslouchá protokol RDP. Nakonec získejte veřejnou IP adresu nástroje pro vyrovnávání zatížení s [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+
 
 ```azurepowershell-interactive
 # Get the load balancer object
-$lb = Get-AzureRmLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
+$lb = Get-AzLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
 
 # View the list of inbound NAT rules
-Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
+Get-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
 
 # View the public IP address of the load balancer
-Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" -Name myPublicIPAddress | Select IpAddress
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" -Name myPublicIPAddress | Select IpAddress
 ```
 
 Pokud se chcete připojit k virtuálnímu počítači, zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření škálovací sady. Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *1*:
@@ -245,10 +249,10 @@ Ukončete relaci připojení ke vzdálené ploše instance virtuálního počít
 
 
 ## <a name="list-attached-disks"></a>Výpis připojených disků
-Pokud chcete zobrazit informace o discích připojených ke škálovací sadě, použijte rutinu [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) následujícím způsobem:
+Chcete-li zobrazit informace o discích připojených ke škálovací sadě, použijte [Get-AzVmss](/powershell/module/az.compute/get-azvmss) následujícím způsobem:
 
 ```azurepowershell-interactive
-Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
+Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
 ```
 
 Ve vlastnosti *VirtualMachineProfile.StorageProfile* se zobrazí seznam *datových disků*. Zobrazí se informace o velikosti disku, úrovni úložiště a logické jednotce (LUN). Následující příklad výstupu ukazuje podrobnosti o třech datových discích připojených ke škálovací sadě:
@@ -279,21 +283,21 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Odpojení disku
-Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. K odpojení disku od škálovací sady použijte rutinu [Remove-AzureRmVmssDataDisk](/powershell/module/azurerm.compute/remove-azurermvmssdatadisk) a zadejte logickou jednotku (LUN) disku. Logické jednotky (LUN) se zobrazí ve výstupu rutiny [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) z předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *3*:
+Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. K odpojení disku od škálovací sady použijte [odebrat AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) a zadejte logickou jednotku je disk. Logické jednotky jsou uvedeny ve výstupu [Get-AzVmss](/powershell/module/az.compute/get-azvmss) v předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *3*:
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
 # Detach a disk from the scale set
-Remove-AzureRmVmssDataDisk `
+Remove-AzVmssDataDisk `
   -VirtualMachineScaleSet $vmss `
   -Lun 2
 
 # Update the scale set and detach the disk from the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -301,10 +305,10 @@ Update-AzureRmVmss `
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odebrat škálovací sadu a disky, odstraňte skupinu prostředků a všechny její prostředky pomocí rutiny [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
+Chcete odebrat škálovací sadu a disky, odstraňte skupinu prostředků a všechny její prostředky pomocí [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
+Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 

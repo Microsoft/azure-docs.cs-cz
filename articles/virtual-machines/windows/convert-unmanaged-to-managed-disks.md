@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: fecf17d95231cc37a141cfb72397f44ce2e980b5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: bcfb227b8ced6b17fe23c1a60468de24f1835ba0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435596"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979951"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na managed disks
 
 Pokud máte existující Windows virtuální počítače (VM), které používají nespravované disky virtuálních počítačů určených k použití spravovaných disků prostřednictvím můžete převést [Azure Managed Disks](managed-disks-overview.md) služby. Tento proces převede disk s operačním systémem i všechny připojené datové disky.
 
-V tomto článku se dozvíte, jak převést virtuální počítače pomocí Azure Powershellu. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -43,18 +43,18 @@ V tomto článku se dozvíte, jak převést virtuální počítače pomocí Azur
 ## <a name="convert-single-instance-vms"></a>Převést virtuální počítače s jednou instancí
 Tato část popisuje, jak převést virtuální počítače Azure s jednou instancí z nespravovaných disků na managed disks. (Pokud jsou vaše virtuální počítače ve skupině dostupnosti, najdete v další části.) 
 
-1. Uvolněte virtuální počítač s použitím [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) rutiny. V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`: 
+1. Uvolněte virtuální počítač s použitím [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) rutiny. V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`: 
 
   ```azurepowershell-interactive
   $rgName = "myResourceGroup"
   $vmName = "myVM"
-  Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+  Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. Převod virtuálního počítače na managed disks pomocí [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) rutiny. Následující proces převede předchozí virtuálního počítače, včetně disk s operačním systémem a všechny datové disky a spouští virtuální počítač:
+2. Převod virtuálního počítače na managed disks pomocí [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) rutiny. Následující proces převede předchozí virtuálního počítače, včetně disk s operačním systémem a všechny datové disky a spouští virtuální počítač:
 
   ```azurepowershell-interactive
-  ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
+  ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
   ```
 
 
@@ -63,40 +63,40 @@ Tato část popisuje, jak převést virtuální počítače Azure s jednou insta
 
 Pokud virtuální počítače, které chcete převést na spravované disky jsou ve skupině dostupnosti, musíte nejprve převést dostupnosti na spravované skupině dostupnosti.
 
-1. Převést skupině dostupnosti s využitím [Update-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/update-azurermavailabilityset) rutiny. Následující příklad aktualizuje skupinu dostupnosti `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
+1. Převést skupině dostupnosti s využitím [aktualizace AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) rutiny. Následující příklad aktualizuje skupinu dostupnosti `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
 
   ```azurepowershell-interactive
   $rgName = 'myResourceGroup'
   $avSetName = 'myAvailabilitySet'
 
-  $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
-  Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
+  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
   ```
 
   Pokud se nachází v oblasti, kde vaší skupiny dostupnosti má pouze 2 domén selhání spravovaných, ale počet domén selhání nespravované je 3, tento příkaz zobrazí chybu podobný "počet domén selhání zadané 3 musí spadat do rozsahu 1 až 2." Chybu vyřešit, aktualizujte doméně selhání 2 a update `Sku` k `Aligned` následujícím způsobem:
 
   ```azurepowershell-interactive
   $avSet.PlatformFaultDomainCount = 2
-  Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
+  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. Zrušit přidělení a k převodu virtuálních počítačů ve skupině dostupnosti. Následující skript uvolní každý virtuální počítač s použitím [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) rutiny, převede ho pomocí [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk)a restartuje automaticky dvou procesu převodu :
+2. Zrušit přidělení a k převodu virtuálních počítačů ve skupině dostupnosti. Následující skript uvolní každý virtuální počítač s použitím [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) rutiny, převede ho pomocí [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)a restartuje automaticky dvou procesu převodu:
 
   ```azurepowershell-interactive
-  $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
 
   foreach($vmInfo in $avSet.VirtualMachinesReferences)
   {
-     $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
-     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
-     ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
+     $vm = Get-AzVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
+     Stop-AzVM -ResourceGroupName $rgName -Name $vm.Name -Force
+     ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
   }
   ```
 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud dojde k chybě při převodu nebo pokud virtuální počítač je v chybovém stavu kvůli problémům v předchozí převodu, spusťte `ConvertTo-AzureRmVMManagedDisk` rutinu znovu. Jednoduché opakování obvykle odblokuje situace.
+Pokud dojde k chybě při převodu nebo pokud virtuální počítač je v chybovém stavu kvůli problémům v předchozí převodu, spusťte `ConvertTo-AzVMManagedDisk` rutinu znovu. Jednoduché opakování obvykle odblokuje situace.
 Před převodem, ujistěte se, že všechna rozšíření virtuálního počítače jsou ve stavu "Zřizování bylo úspěšné" nebo převod selže s kódem chyby 409.
 
 

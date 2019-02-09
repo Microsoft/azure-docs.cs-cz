@@ -3,8 +3,8 @@ title: Problém s vytvořením aplikace Proxy aplikací | Dokumentace Microsoftu
 description: Jak řešit problémy s vytvářením aplikace Proxy aplikací v portálu pro správu Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: c7c4211e95c4ffe140e65c376b23d018b7f0291d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 832624844930b724c54b6df47601ae2f5d37e2d2
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195201"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961699"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>Problém s vytvořením aplikace Proxy aplikací 
 

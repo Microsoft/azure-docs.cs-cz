@@ -14,16 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 34b70b1a6a77a20a034a7822d9c4961c36cdd51c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d3ed1078f1f334a5732befa49cbdc5043767ad2c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663957"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978676"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft.OSTCExtensions.DSCForLinux)
-
-## <a name="overview"></a>Přehled
 
 Desired State Configuration (DSC) je platforma pro správu, který umožňuje spravovat vaši IT a rozvoj infrastruktury s konfigurací jako kód.
 
@@ -35,6 +33,8 @@ Rozšíření DSCForLinux je publikována a podporované společností Microsoft
 - Použijte Meta MOF konfiguraci virtuálního počítače s Linuxem ke konfiguraci serveru vyžádané replikace, aby bylo možné o přijetí změn konfigurace uzlu (ExtensionAction o přijetí změn)
 - Instalace vlastních modulů DSC virtuálního počítače s Linuxem (ExtensionAction instalace)
 - Odebrat vlastní moduly DSC do virtuálního počítače s Linuxem (odebrat ExtensionAction)
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -366,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 Ke svému účtu Azure (v režimu Azure Resource Manageru) se můžete přihlásit pomocí:
 
 ```powershell>
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 Klikněte na tlačítko [ **TADY** ](../../azure-resource-manager/powershell-azure-resource-manager.md) Další informace o tom, jak pomocí Azure Powershellu s Azure Resource Manageru.
@@ -398,7 +398,7 @@ $publicConfig = '{
 ```
 
 ```
-Set-AzureRmVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
+Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```

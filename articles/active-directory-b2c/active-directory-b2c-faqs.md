@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8774792879443cb39238285b0fdc63ca1097dbea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cef6f47b62a500737e5b01865f73253f18fa470c
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191172"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960594"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
@@ -83,7 +83,7 @@ Azure AD Graph API můžete použít k zápisu vašeho nástroje pro migraci. Na
 Tok uživatele Azure AD B2C heslo pro místní účty je na základě zásad pro službu Azure AD. V Azure AD B2C registrovat a zaregistrujte se nebo přihlašovací jméno a heslo toky uživatelů pro resetování použít síly hesla "silné" a není vypršení platnosti hesla. Přečtěte si [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) další podrobnosti. Informace o uzamčení účtu a hesla najdete v tématu [spravuje hrozby k prostředkům a datům v Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Můžete použít Azure AD Connect k migraci identit zákazníků, které jsou uložené na můj místní služby Active Directory k Azure AD B2C?
-Ne, Azure AD Connect není navržena pro práci s Azure AD B2C. Zvažte použití [rozhraní Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) pro migraci uživatele.  Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.
+Ne, Azure AD Connect není navržena pro práci s Azure AD B2C. Zvažte použití [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) pro migraci uživatele.  Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Může Azure AD B2C stránky v rámci elementu iFrame otevřete Moje aplikace?
 Ne, z bezpečnostních důvodů Azure AD B2C stránky nelze otevřít v elementu iFrame.  Naše služba komunikuje s prohlížečem, který chcete zakázat prvky IFRAME.  Bezpečnostní komunitě v obecné a specifikace OAUTH2 nedoporučujeme používání prvky IFrame pro činnosti identity kvůli riziku opěry pro kliknutí.

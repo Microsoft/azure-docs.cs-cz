@@ -3,8 +3,8 @@ title: Jak nakonfigurovat aplikaci Proxy aplikací pro používání Pingaccessu
 description: Další informace o použití PingAccess rozšířit výhody aplikace Proxy aplikací pomocí předběžného ověřování založené na hlavičkách
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 5c042a6573d854bcdcd97c28231db0c1afbd2d8b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ac1345afa34e35bb29ad49d2322bd15e8e4e69ec
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189387"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963637"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Jak nakonfigurovat aplikaci Proxy aplikací pro používání Pingaccessu
 

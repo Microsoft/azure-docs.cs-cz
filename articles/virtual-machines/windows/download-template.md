@@ -1,6 +1,6 @@
 ---
-title: Stáhnout šablonu pro virtuální počítač Azure | Microsoft Docs
-description: Stáhněte si templatefor virtuálního počítače můžete k automatizaci nasazení v modelu nasazení Resource Manager
+title: Stažení šablony pro virtuální počítač Azure | Dokumentace Microsoftu
+description: Stáhněte si templatefor virtuálního počítače, které vám pomůžou s automatizací nasazení v modelu nasazení Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,40 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 93ed84cb146119c877c3a143c5f7af9ca8ba0656
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 574227e010a37340ce7248d2e4657f6a3f231d0a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2017
-ms.locfileid: "26055785"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984524"
 ---
 # <a name="download-the-template-for-a-vm"></a>Stažení šablony pro virtuální počítač
-Při vytváření virtuálního počítače v Azure pomocí portálu nebo prostředí PowerShell, je pro vás automaticky vytvoří šablonu Resource Manager. Tuto šablonu můžete použít k rychlé duplicitní nasazení. Šablona obsahuje informace o všechny prostředky ve skupině prostředků. Pro virtuální počítač to znamená, že šablona obsahuje všechno, která je vytvořena na podporu virtuálních počítačů v příslušné skupině prostředků, včetně síťových prostředků.
+Při vytváření virtuálního počítače v Azure pomocí portálu nebo prostředí PowerShell, šablony Resource Manageru se automaticky vytvoří za vás. Tuto šablonu můžete použít k rychlému duplicitní nasazení. Šablona obsahuje informace o všech prostředků ve skupině prostředků. Pro virtuální počítač to znamená, že šablona obsahuje všechno, co se vytvoření efektivnějších virtuálního počítače v příslušné skupině prostředků, včetně síťových prostředků.
 
-## <a name="download-the-template-using-the-portal"></a>Stažení šablony pomocí portálu
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. Jeden v levé nabídce vyberte **virtuální počítače**.
+## <a name="download-the-template-using-the-portal"></a>Stáhněte si šablonu pomocí portálu
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Jeden v levé nabídce vyberte **virtuálních počítačů**.
 3. Ze seznamu vyberte virtuální počítač.
-4. Vyberte **skriptu pro automatizaci**.
-5. Vyberte **Stáhnout** v nabídce v horní části a uložte soubor .zip do místního počítače.
-6. Otevřete soubor .zip a rozbalte soubory do složky. Soubor ZIP obsahuje:
+4. Vyberte **automatizační skript**.
+5. Vyberte **Stáhnout** v nabídce v horní části a uložte soubor .zip na místním počítači.
+6. Otevřete soubor ZIP a rozbalit soubory do složky. Soubor ZIP obsahuje:
    
-   * Deploy.ps1
-   * Deploy.SH 
-   * deployer.RB
+   * deploy.ps1
+   * deploy.sh 
+   * deployer.rb
    * DeploymentHelper.cs
-   * Parameters.JSON tímto kódem
-   * Template.JSON
+   * parameters.json
+   * template.json
 
 Soubor template.json je šablona.
 
-## <a name="download-the-template-using-powershell"></a>Stažení šablony pomocí prostředí PowerShell
-Můžete také stáhnout pomocí soubor .json [Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx) rutiny. Můžete použít `-path` parametru zadat název a cesta k souboru .json. Tento příklad ukazuje, jak stáhnout šablonu pro skupinu prostředků s názvem **myResourceGroup** k **C:\users\public\downloads** složky v místním počítači.
+## <a name="download-the-template-using-powershell"></a>Stáhněte si šablonu pomocí Powershellu
+Můžete také stáhnout pomocí souboru .json šablony [Export AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) rutiny. Můžete použít `-path` parametr zadejte cestu a název souboru pro soubor .json. Tento příklad ukazuje, jak stáhnout šablonu pro skupinu prostředků s názvem **myResourceGroup** k **C:\users\public\downloads** složky na místním počítači.
 
 ```powershell
-    Export-AzureRmResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
+    Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
-## <a name="next-steps"></a>Další kroky
-Další informace o nasazení prostředků pomocí šablony najdete v tématu [názorný Průvodce šablonou Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+## <a name="next-steps"></a>Další postup
+Další informace o nasazení prostředků pomocí šablon najdete v tématu [názorný Průvodce šablonou Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 

@@ -1,11 +1,11 @@
 ---
 title: Správa koncových bodů streamování pomocí .NET SDK. | Dokumenty Microsoft
-description: Tento článek ukazuje, jak spravovat koncových bodů streamování pomocí portálu Azure.
+description: Tento článek ukazuje, jak spravovat koncové body streamování pomocí webu Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
 writer: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0da34a97-f36c-48d0-8ea2-ec12584a2215
 ms.service: media-services
@@ -13,29 +13,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 741eb35c58fb723985a60f6ac071892c02d08412
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: caa2ef878100394fe4bb3282024958bb9dcb46aa
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788316"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977079"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí .NET SDK
+# <a name="manage-streaming-endpoints-with-net-sdk-legacy"></a>Správa koncových bodů streamování pomocí .NET SDK (starší verze)
 
 >[!NOTE]
->Projděte si [přehled](media-services-streaming-endpoints-overview.md) článku. Projděte si také téma [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Přečtěte si [přehled](media-services-streaming-endpoints-overview.md) článku. Projděte si také, [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-Kód v tomto článku ukazuje, jak provést tyto úlohy pomocí Azure Media Services .NET SDK:
+Kód v tomto článku ukazuje, jak provádět následující úlohy pomocí Azure Media Services .NET SDK:
 
 - Zkontrolujte výchozí koncový bod streamování.
 - Vytvořit nebo přidáte nový koncový bod streamování.
 
-    Můžete chtít mít několik koncových bodů streamování, pokud chcete mít jiný sítím CDN nebo CDN a přímý přístup.
+    Můžete chtít mít několik koncových bodů streamování, pokud budete chtít mít různé CDN nebo CDN a přímý přístup.
 
     > [!NOTE]
-    > Fakturuje se jenom, když je v běžícím stavu je koncový bod streamování.
+    > Nebudete dostávat faktury, pokud je váš koncový bod streamování ve spuštěném stavu.
     
 - Aktualizujte koncový bod streamování.
     
@@ -46,13 +46,13 @@ Kód v tomto článku ukazuje, jak provést tyto úlohy pomocí Azure Media Serv
     >[!NOTE]
     >Nelze odstranit výchozí koncový bod streamování.
 
-Informace o tom, jak škálování koncový bod streamování najdete v tématu [to](media-services-portal-scale-streaming-endpoints.md) článku.
+Informace o tom, jak škálovat koncový bod streamování najdete v tématu [to](media-services-portal-scale-streaming-endpoints.md) článku.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-## <a name="add-code-that-manages-streaming-endpoints"></a>Přidejte kód, který spravuje koncových bodů streamování
+## <a name="add-code-that-manages-streaming-endpoints"></a>Přidejte kód, který spravuje koncové body streamování
     
 Nahraďte kód souboru Program.cs následujícím kódem:
 

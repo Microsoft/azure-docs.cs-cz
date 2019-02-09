@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733128"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980070"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
+
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsobů, jak vytvářet vlastní image virtuálního počítače pro instancí ve škálovací, nastavení nebo automatické spouštění skriptů instalace v existujících instancích virtuálních počítačů. Také se dozvíte, jak spravovat aplikace nebo aktualizace operačního systému na škálovací sadu.
 
 
@@ -50,8 +51,8 @@ Rozšíření PowerShell DSC umožňuje přizpůsobit instancí virtuálních po
 
 - Dává pokyn stáhnout DSC balíček z webu GitHub - instance virtuálních počítačů *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Nastaví rozšíření pro spuštění skriptu install- `configure-http.ps1`
-- Získá informace o škálovací sadu s [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss)
-- Rozšíření se vztahuje na instance virtuálních počítačů s [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)
+- Získá informace o škálovací sadu s [Get AzVmss](/powershell/module/az.compute/get-azvmss)
+- Rozšíření se vztahuje na instance virtuálních počítačů s [AzVmss aktualizace](/powershell/module/az.compute/update-azvmss)
 
 K použití tohoto rozšíření DSC *myScaleSet* instancí virtuálních počítačů ve skupině prostředků s názvem *myResourceGroup*. Zadejte vlastní názvy následujícím způsobem:
 
@@ -67,12 +68,12 @@ $dscConfig = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
                 -ResourceGroupName "myResourceGroup" `
                 -VMScaleSetName "myScaleSet"
 
 # Add the Desired State Configuration extension to install IIS and configure basic website
-$vmss = Add-AzureRmVmssExtension `
+$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss `
     -Publisher Microsoft.Powershell `
     -Type DSC `
@@ -81,13 +82,13 @@ $vmss = Add-AzureRmVmssExtension `
     -Setting $dscConfig
 
 # Update the scale set and apply the Desired State Configuration extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
     -ResourceGroupName "myResourceGroup" `
     -Name "myScaleSet"  `
     -VirtualMachineScaleSet $vmss
 ```
 
-Pokud zásady upgradu ve škálovací sadě je *ruční*, aktualizovat vaše instance virtuálních počítačů s [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance). Tato rutina konfigurace aktualizace škálovací sady se vztahuje na instance virtuálních počítačů a nainstaluje vaši aplikaci.
+Pokud zásady upgradu ve škálovací sadě je *ruční*, aktualizovat vaše instance virtuálních počítačů s [aktualizace AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance). Tato rutina konfigurace aktualizace škálovací sady se vztahuje na instance virtuálních počítačů a nainstaluje vaši aplikaci.
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Instalace aplikace na virtuální počítač s Linuxem pomocí cloud-init

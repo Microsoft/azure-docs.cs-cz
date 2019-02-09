@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 2f07107ad63ddd04e67528bf4f409dabf4a4d0c0
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055041"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976911"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Síť rozšíření virtuálních počítačů sledovacích procesů agenta pro Windows
 
@@ -79,10 +79,10 @@ Rozšíření virtuálních počítačů Azure pomocí šablon Azure Resource Ma
 
 ## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 
-Použití `Set-AzureRmVMExtension` příkaz pro nasazení do existujícího virtuálního počítače rozšíření virtuálního počítače Network Watcher Agent:
+Použití `Set-AzVMExtension` příkaz pro nasazení do existujícího virtuálního počítače rozšíření virtuálního počítače Network Watcher Agent:
 
 ```powershell
-Set-AzureRmVMExtension `
+Set-AzVMExtension `
   -ResourceGroupName "myResourceGroup1" `
   -Location "WestUS" `
   -VMName "myVM1" `
@@ -99,7 +99,7 @@ Set-AzureRmVMExtension `
 Data o stavu nasazení rozšíření můžete načíst z webu Azure portal a PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell:
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
+Get-AzVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
 Rozšíření provádění výstup je zaznamenán soubory nalezené v následujícím adresáři:

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: c0067dc96837d758e4c2551bcb29faf63c1a7715
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895037"
+ms.locfileid: "55964147"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -107,7 +107,7 @@ Obchodní vrstvy kritické služby je sestaven pro aplikace s vysokými požadav
 Následující seznam popisuje klíčové vlastnosti pro důležité obchodní informace vrstvy služby:
 
 - Je určená pro obchodní aplikace s nejvyšší výkon a požadavky na vysokou dostupnost
-- Se dodává s mimořádně rychlým místní úložiště SSD (až 1 TB na Gen 4 a až 4 TB generace 5)
+- Se dodává s mimořádně rychlým místní úložiště SSD (až 1 TB na Gen4 a až do 4 TB Gen5)
 - Integrované [vysoké dostupnosti](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) na základě [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../service-fabric/service-fabric-overview.md).
 - Integrované Další [repliky jen pro čtení databáze](sql-database-read-scale-out.md) , který lze použít pro vytváření sestav a další úlohy jen pro čtení
 - [OLTP v paměti](sql-database-in-memory.md) , který lze použít pro úlohy vysokovýkonného požadavky  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c0bf4d1684ca5a0921173dc90f51fec9fb052efc
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b10c0be91a4b12af72d48124b225dac777c4d936
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993267"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982654"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Opětovné nasazení Windows virtuálního počítače do nového uzlu Azure
 Pokud mají byla připojena potíže je řešení potíží s Remote Desktop (RDP) připojení nebo aplikací přístup k systémem Windows virtuální počítač Azure (VM), znovu se nasazuje virtuální počítač může pomoct. Při opětovném nasazování virtuálního počítače Azure se vypnout virtuální počítač, přesuňte virtuální počítač do nového uzlu v rámci infrastruktury Azure a pak power zpět na možnosti konfigurace a přidružených prostředků. Tento článek ukazuje, jak znovu nasadit virtuální počítač pomocí Azure Powershellu nebo na webu Azure portal.
@@ -34,7 +34,7 @@ Ujistěte se, že máte nejnovější Azure PowerShell 1.x na vašem počítači
 Tento příklad nasadí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
 ```powershell
-Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
+Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]

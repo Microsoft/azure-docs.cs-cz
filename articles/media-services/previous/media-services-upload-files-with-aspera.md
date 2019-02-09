@@ -4,7 +4,7 @@ description: Tento kurz vás provede jednotlivými kroky pro nahrávání soubor
 services: media-services
 documentationcenter: ''
 author: johndeu
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 8812623a-b425-4a0f-9e05-0ee6c839b6f9
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/17/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: d2a1fc23f4ff725a08a1be433c7a5373c01a12a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: c9705611803e63c41e906b020e9f908a2cdd6779
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780581"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979985"
 ---
-# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Nahrávání souborů do účtu Media Services pomocí služby Aspera Server On Demand v Azure
+# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure-legacy"></a>Nahrání souborů do účtu Azure Media Services pomocí služby Aspera Server On Demand v Azure (starší verze)
 
 ## <a name="overview"></a>Přehled
 
@@ -42,7 +42,7 @@ Příklad, který ukazuje, jak používat Azure Functions s Asperou a službou M
 Pro absolvování tohoto kurzu potřebujete:
 
 * Windows Live ID
-* [Účet Azure](https://azure.microsoft.com). Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+* [Účet Azure](https://azure.microsoft.com). Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 * [Účet Azure Media Services](media-services-portal-create-account.md).
 
 ## <a name="purchase-aspera-on-demand-for-azure"></a>Nákup služby Aspera On Demand pro Azure
@@ -128,7 +128,7 @@ V tomto článku byly zmíněny následující zdroje informací.
 * [Klient Aspera](http://downloads.asperasoft.com/en/downloads/2)
 * [Příručka klienta](http://downloads.asperasoft.com/en/documentation/2)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď můžete [zkopírovat objekty blob z účtu úložiště do účtu AMS](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account).
 

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ca9c7611197de001265f70fd1b34314d90ee83b2
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 99439c2b6bd4fdd271dda7a49850c5b6f44330b3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329833"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984711"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatizovaná záloha pro SQL Server 2014 Virtual Machines (Resource Manager)
 
@@ -103,16 +103,18 @@ Pokud povolíte automatizované zálohování pro první, Azure nakonfiguruje ag
 Konfigurace automatizovaného zálohování můžete použít PowerShell. Než začnete, musíte mít:
 
 - [Stáhněte a nainstalujte nejnovější Azure PowerShell](https://aka.ms/webpi-azps).
-- Otevřete prostředí Windows PowerShell a přidružíte ho k účtu se **Connect-AzureRmAccount** příkazu.
+- Otevřete prostředí Windows PowerShell a přidružíte ho k účtu se **připojit AzAccount** příkazu.
+
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ### <a name="install-the-sql-iaas-extension"></a>Instalace rozšíření SQL IaaS
-Zřízení virtuálního počítače s SQL serverem na webu Azure Portal by již nainstalována rozšíření SQL Server IaaS. Můžete určit, pokud je nainstalován pro váš virtuální počítač pomocí volání **Get-AzureRmVM** příkazu a podíváte **rozšíření** vlastnost.
+Zřízení virtuálního počítače s SQL serverem na webu Azure Portal by již nainstalována rozšíření SQL Server IaaS. Můžete určit, pokud je nainstalován pro váš virtuální počítač pomocí volání **rutiny Get-AzVM** příkazu a podíváte **rozšíření** vlastnost.
 
 ```powershell
 $vmname = "vmname"
 $resourcegroupname = "resourcegroupname"
 
-(Get-AzureRmVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
+(Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
 ```
 
 Pokud je nainstalovaná rozšíření agenta SQL Server IaaS, měli byste vidět, že je uveden jako "SqlIaaSAgent" nebo "SQLIaaSExtension". **Stav zřizování** pro rozšíření by měl také zobrazí "ÚSPĚCH".
@@ -121,7 +123,7 @@ Pokud není nainstalovaná nebo se nepovedlo zřídit, můžete ho nainstalovat 
 
 ```powershell
 $region = "EASTUS2"
-Set-AzureRmVMSqlServerExtension -VMName $vmname `
+Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 ```
@@ -131,10 +133,10 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
 
 ### <a id="verifysettings"></a> Ověřit aktuální nastavení
 
-Pokud jste povolili automatizované zálohování během zřizování, můžete pomocí prostředí PowerShell zkontrolovat konfiguraci vašeho aktuální ho. Spustit **Get-AzureRmVMSqlServerExtension** příkaz a zkontrolujte **AutoBackupSettings** vlastnost:
+Pokud jste povolili automatizované zálohování během zřizování, můžete pomocí prostředí PowerShell zkontrolovat konfiguraci vašeho aktuální ho. Spustit **Get-AzVMSqlServerExtension** příkaz a prověřte **AutoBackupSettings** vlastnost:
 
 ```powershell
-(Get-AzureRmVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
+(Get-AzVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
 ```
 
 By měl získat výstup podobný následujícímu:
@@ -168,31 +170,31 @@ Nejprve vyberte nebo vytvořte účet úložiště pro zálohování souborů. N
 $storage_accountname = “yourstorageaccount”
 $storage_resourcegroupname = $resourcegroupname
 
-$storage = Get-AzureRmStorageAccount -ResourceGroupName $resourcegroupname `
+$storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
     -Name $storage_accountname -ErrorAction SilentlyContinue
 If (-Not $storage)
-    { $storage = New-AzureRmStorageAccount -ResourceGroupName $storage_resourcegroupname `
+    { $storage = New-AzStorageAccount -ResourceGroupName $storage_resourcegroupname `
     -Name $storage_accountname -SkuName Standard_GRS -Location $region }
 ```
 
 > [!NOTE]
 > Automatizované zálohování nepodporuje ukládání záloh ve službě storage úrovně premium, ale může trvat zálohování disků virtuálních počítačů, které používají službu Premium Storage.
 
-Potom použijte **New-AzureRmVMSqlServerAutoBackupConfig** příkaz pro povolení a konfigurace nastavení automatizovaného zálohování pro ukládání záloh v účtu úložiště Azure. V tomto příkladu zálohy se uchovávají po dobu 10 dnů. Druhý příkaz **Set-AzureRmVMSqlServerExtension**, aktualizuje zadaný virtuální počítač Azure s těmito nastaveními.
+Potom použijte **New-AzVMSqlServerAutoBackupConfig** příkaz pro povolení a konfigurace nastavení automatizovaného zálohování pro ukládání záloh v účtu úložiště Azure. V tomto příkladu zálohy se uchovávají po dobu 10 dnů. Druhý příkaz **Set-AzVMSqlServerExtension**, aktualizuje zadaný virtuální počítač Azure s těmito nastaveními.
 
 ```powershell
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -RetentionPeriodInDays 10 -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
 To může trvat několik minut, instalaci a konfiguraci agenta SQL Server IaaS.
 
 > [!NOTE]
-> Existují další nastavení pro **New-AzureRmVMSqlServerAutoBackupConfig** , která platí jenom pro SQL Server 2016 a automatizovaného zálohování v2. SQL Server 2014 nepodporuje následující nastavení: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**, a **LogBackupFrequencyInMinutes**. Při pokusu o konfiguraci těchto nastavení na virtuálním počítači s SQL Server 2014, se nezobrazí žádná chyba, ale není položka konfigurace použije. Pokud chcete použít tato nastavení na virtuálním počítači s SQL serverem 2016, přečtěte si téma [v2 automatizované zálohování pro SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
+> Existují další nastavení pro **New-AzVMSqlServerAutoBackupConfig** , která platí jenom pro SQL Server 2016 a automatizovaného zálohování v2. SQL Server 2014 nepodporuje následující nastavení: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**, a **LogBackupFrequencyInMinutes**. Při pokusu o konfiguraci těchto nastavení na virtuálním počítači s SQL Server 2014, se nezobrazí žádná chyba, ale není položka konfigurace použije. Pokud chcete použít tato nastavení na virtuálním počítači s SQL serverem 2016, přečtěte si téma [v2 automatizované zálohování pro SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
 
 Pokud chcete povolit šifrování, upravit předchozí skript k předání **EnableEncryption** parametr spolu s heslem (zabezpečený řetězec) **CertificatePassword** parametru. Následující skript povolí nastavení automatizovaného zálohování v předchozím příkladu a přidá šifrování.
 
@@ -200,12 +202,12 @@ Pokud chcete povolit šifrování, upravit předchozí skript k předání **Ena
 $password = "P@ssw0rd"
 $encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -EnableEncryption -CertificatePassword $encryptionpassword `
     -RetentionPeriodInDays 10 -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
@@ -213,12 +215,12 @@ Potvrďte nastavení se použijí, [ověřit konfiguraci automatizovaného zálo
 
 ### <a name="disable-automated-backup"></a>Zakázat automatické zálohování
 
-Chcete-li zakázat automatické zálohování, spusťte stejný skript bez **-povolit** parametr **AzureRmVMSqlServerAutoBackupConfig nový** příkaz. Chybí **-povolit** parametr signály příkazu zakažte funkci. Stejně jako u instalace to může trvat několik minut zakázat automatizovaného zálohování.
+Chcete-li zakázat automatické zálohování, spusťte stejný skript bez **-povolit** parametr **AzVMSqlServerAutoBackupConfig nový** příkaz. Chybí **-povolit** parametr signály příkazu zakažte funkci. Stejně jako u instalace to může trvat několik minut zakázat automatizovaného zálohování.
 
 ```powershell
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
@@ -236,27 +238,27 @@ $retentionperiod = 10
 
 # ResourceGroupName is the resource group which is hosting the VM where you are deploying the SQL IaaS Extension
 
-Set-AzureRmVMSqlServerExtension -VMName $vmname `
+Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 
 # Creates/use a storage account to store the backups
 
-$storage = Get-AzureRmStorageAccount -ResourceGroupName $resourcegroupname `
+$storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
     -Name $storage_accountname -ErrorAction SilentlyContinue
 If (-Not $storage)
-    { $storage = New-AzureRmStorageAccount -ResourceGroupName $storage_resourcegroupname `
+    { $storage = New-AzStorageAccount -ResourceGroupName $storage_resourcegroupname `
     -Name $storage_accountname -SkuName Standard_GRS -Location $region }
 
 # Configure Automated Backup settings
 
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -RetentionPeriodInDays $retentionperiod -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname
 
 # Apply the Automated Backup settings to the VM
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 

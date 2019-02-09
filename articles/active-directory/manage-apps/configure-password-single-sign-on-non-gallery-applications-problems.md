@@ -3,8 +3,8 @@ title: Potíže s konfigurací heslem jednotného přihlašování pro aplikaci 
 description: Vysvětlení běžných tváří lidí problémy při konfiguraci hesla Single Sign-on pro vlastní aplikace mimo galerii, které nejsou uvedené v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: f7d6d381177bd2bd6b50e933b7a5157364fa0dfd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 9ff5c0ae460de36f953ebfb2f61240767575e50e
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203993"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963824"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Potíže s konfigurací heslem jednotného přihlašování pro aplikaci mimo Galerii
 

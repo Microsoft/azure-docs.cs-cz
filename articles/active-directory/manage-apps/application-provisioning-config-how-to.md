@@ -3,8 +3,8 @@ title: Postup konfigurace zřizování uživatelů pro aplikaci Galerie Azure AD
 description: Jak můžete snadno konfigurovat bohaté uživatelský účet zřizování a jeho rušení pro aplikace již uveden v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 762fe4614d247341120c5ec5073b1774651655b0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9cc9704cafad2009fa4f5a5af18f80fac89f1412
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163071"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959336"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Postup konfigurace zřizování uživatelů pro aplikaci Galerie Azure AD
 

@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: b213642b093c3b5f79e5993af91ae51517f09c70
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747940"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981668"
 ---
-# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Vývoj pro mobilní zařízení pomocí sad SDK Azure IoT
-[Sady SDK služby Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) podporují první úroveň pro širokou řadu oblíbených platforem, včetně Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci naší snahy o povolení větší možnost volby a flexibilitu v nasazení IoT, sady Java SDK podporuje také [Android věci](https://developer.android.com/things/) platformy.  Vývojáři mohou využít výhod operačního systému Android věci na straně zařízení při používání [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) jako centrální zprávy centru s možností škálování na miliony současně připojených zařízení. 
+# <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Vývoj pro platformu Android věci pomocí sad SDK Azure IoT
+[Sady SDK služby Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) podporují první úroveň pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci naší snahy o povolení větší možnost volby a flexibilitu v nasazení IoT, sady Java SDK podporuje také [Android věci](https://developer.android.com/things/) platformy.  Vývojáři mohou využít výhod operačního systému Android věci na straně zařízení při používání [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) jako centrální zprávy centru s možností škálování na miliony současně připojených zařízení. 
 
 Tento kurz popisuje postup pro vytvoření aplikace na straně zařízení na Android pomocí sady Java SDK Azure IoT.
 
 ## <a name="prerequisites"></a>Požadavky
-* Android věci nepodporuje hardwaru s Androidem věci operační systém.  Můžete postupovat podle [dokumentaci Android věci](https://developer.android.com/things/get-started/kits#flash-at) o tom, jak flash Android věci.  Zajistěte, aby že vaše zařízení s Androidem věcí je připojený k Internetu pomocí základní periferních zařízení, jako je například klávesnici, zobrazení a myš, připojená.  Tento kurz používá Raspberry Pi 3.
+* Android věci nepodporuje hardwaru s Androidem věci operační systém.  Můžete postupovat podle [dokumentaci Android věci](https://developer.android.com/things/get-started/kits#flash-at) o tom, jak flash operační systém Android věci.  Zajistěte, aby že vaše zařízení s Androidem věcí je připojený k Internetu pomocí základní periferních zařízení, jako je například klávesnice, obrazovky a myš, připojená.  Tento kurz používá Raspberry Pi 3.
 * Nejnovější verzi [Android Studio](https://developer.android.com/studio/)
 * Nejnovější verzi [Git](https://git-scm.com/)
 
@@ -69,12 +69,13 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     ```
 4.  V nástroji Android Studio otevřete projekt pro Android v umístěný v "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample".
 5.  Otevřete soubor gradle.properties a nahraďte "Device_connection_string" vaším připojovacím řetězcem zařízení jste si předtím poznamenali.
+    ![Snímek obrazovky s hlavní větví úložiště](./media/how-to-android-things/connection-string.png)
 6.  Klikněte na tlačítko na spuštění – ladění a vyberte zařízení k nasazení tohoto kódu do zařízení s Androidem věci.
 7.  Když je aplikace spuštěna úspěšně, uvidíte aplikaci spuštěnou na zařízení s Androidem věci.  Tato ukázková aplikace odešle náhodně generované teplotní hodnoty.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-Ukázková aplikace, kterou jste spustili v emulátoru XCode, ukazuje data o zprávách odeslaných ze zařízení. Můžete zobrazit také přijatá data procházející přes vaše centrum IoT. Rozšíření IoT Hub CLI se může ve vaší službě IoT Hub připojit ke koncovému bodu **Události** na straně služby. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
+Po přijetí, můžete zobrazit data prostřednictvím služby IoT hub. Rozšíření IoT Hub CLI se může ve vaší službě IoT Hub připojit ke koncovému bodu **Události** na straně služby. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
 Ve službě Azure Cloud Shell spusťte následující příkazy a položku `YourIoTHubName` nahraďte názvem centra IoT:
 

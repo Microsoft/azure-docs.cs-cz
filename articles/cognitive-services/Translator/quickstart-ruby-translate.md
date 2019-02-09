@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 88688b06e3ae86978be9080688b17504ef2535c6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f54421460e3af46570b67bb541df3afb755a1347
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884643"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979288"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Přeložení textu s rozhraním Translator Text REST API (Ruby)
 

@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 1daf04e3f878d0748bfa0904259c7b7187481843
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580478"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980699"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Přesunout do jiného Azure předplatné nebo skupinu prostředků virtuálního počítače s Windows
 Tento článek vás provede postupy přesunout virtuální počítač s Windows (VM) mezi skupinami prostředků nebo předplatná. Přesun mezi předplatnými může být užitečné, pokud původně vytvořili virtuální počítač v rámci osobní předplatného a teď chcete přesunout do předplatného vaší společnosti chcete-li pokračovat v práci.
 
 > [!IMPORTANT]
->V tuto chvíli nelze přesunout Azure Managed Disks. 
->
 >Nové ID prostředků vytvořených jako součást přesunu. Po přesunutí virtuálního počítače, je potřeba aktualizovat nástroje a skripty, které používaly nové ID prostředků. 
 > 
 > 
@@ -36,23 +34,23 @@ Tento článek vás provede postupy přesunout virtuální počítač s Windows 
 
 ## <a name="use-powershell-to-move-a-vm"></a>Přesun virtuálního počítače pomocí Powershellu
 
-Chcete-li přesunout virtuální počítač do jiné skupiny prostředků, ujistěte se, že také přesunout všechny závislé prostředky. Chcete-li získat seznam s ID prostředku, každý z těchto prostředků, použijte [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource) rutiny.
+Chcete-li přesunout virtuální počítač do jiné skupiny prostředků, ujistěte se, že také přesunout všechny závislé prostředky. Chcete-li získat seznam s ID prostředku, každý z těchto prostředků, použijte [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) rutiny.
 
 ```azurepowershell-interactive
- Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-Výstup předchozího příkazu, můžete použít jako čárkami oddělený seznam ID prostředku pro [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) přesunout do cílového umístění každého prostředku. 
+Výstup předchozího příkazu, můžete použít jako čárkami oddělený seznam ID prostředku pro [přesunout AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) přesunout do cílového umístění každého prostředku. 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
     
 Prostředky přesunout do jiného předplatného, zahrňte **- DestinationSubscriptionId** parametru. 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
+Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
     -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```

@@ -3,8 +3,8 @@ title: Zápis výrazů pro mapování atributů ve službě Azure Active Directo
 description: Další informace o použití mapování výrazů má být transformován hodnoty atributů přijatelný formát během automatického zřizování objektů aplikace SaaS ve službě Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: 3361bc384f3da3d2bde6eab703056dd85356b5f8
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c97fd915e9022171125c7c0f687413e433f82871
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895410"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983830"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -49,7 +49,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
 | **Přípona** |Požaduje se |Řetězec |Řetězec, který chcete přidat do konce zdrojové hodnoty. |
 
 - - -
@@ -72,7 +72,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 
 **Popis:**<br> Join() je podobný Append(), s tím rozdílem, že ho můžete zkombinovat více **zdroj** hodnoty řetězce do jednoho řetězce a pro jednotlivé hodnoty oddělené bránou **oddělovač** řetězec.
 
-Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v atributu budou spojeny, oddělovači oddělovač.
+Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v tomto atributu budou připojeny společně, oddělené hodnota oddělovače.
 
 **Parametry:**<br> 
 
@@ -105,7 +105,7 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v at
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdroj** |Požaduje se |Řetězec | Obvykle křestní jméno nebo poslední název atributu |
+| **Zdroj** |Požaduje se |String | Obvykle křestní jméno nebo poslední atribut name. |
 
 - - -
 ### <a name="not"></a>Not
@@ -117,7 +117,7 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v at
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdroj** |Požaduje se |Logického řetězce |Byl očekáván **zdroj** hodnoty jsou "True" nebo "False"... |
+| **Zdroj** |Požaduje se |Logického řetězce |Byl očekáván **zdroj** hodnoty jsou "True" nebo "False". |
 
 - - -
 ### <a name="replace"></a>Nahradit
@@ -128,7 +128,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 
 * Když **oldValue** a **zastaralá** jsou k dispozici:
   
-  * Nahradí všechny výskyty oldValue ve zdroji zastaralá
+  * Nahradí všechny výskyty **oldValue** v **zdroj** s *zastaralá**
 * Když **oldValue** a **šablony** jsou k dispozici:
   
   * Nahradí všechny výskyty **oldValue** v **šablony** s **zdroj** hodnota
@@ -167,7 +167,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **uniqueValueRule1... uniqueValueRuleN** |Minimálně 2 jsou povinné, ne horní mez |Řetězec | Seznam pravidel pro vytvoření jedinečnou hodnotu pro vyhodnocení |
+| **uniqueValueRule1... uniqueValueRuleN** |Minimálně 2 jsou povinné, ne horní mez |String | Seznam pravidel pro vytvoření jedinečnou hodnotu pro vyhodnocení. |
 
 
 - - -
@@ -219,7 +219,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
 | **Jazyková verze** |Nepovinné |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
 
 - - -
@@ -232,7 +232,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
 | **Jazyková verze** |Nepovinné |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
 
 ## <a name="examples"></a>Příklady

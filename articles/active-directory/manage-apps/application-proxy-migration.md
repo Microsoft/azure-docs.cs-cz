@@ -3,8 +3,8 @@ title: Upgrade na Azure AD Application Proxy | Dokumentace Microsoftu
 description: Vyberte řešení, které proxy je vhodná, pokud provádíte upgrade z Microsoft Forefront nebo sjednocené brány přístup.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/27/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0d38fa458ae87ce29110b2423e832ff5c6262a01
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 313827b1061b2d0e37db0396581079516681e257
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817576"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960713"
 ---
 # <a name="compare-remote-access-solutions"></a>Porovnání řešení vzdáleného přístupu
 

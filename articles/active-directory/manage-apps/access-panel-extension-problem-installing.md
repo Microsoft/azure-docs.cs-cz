@@ -3,8 +3,8 @@ title: Instalovat aplikací rozšíření prohlížeče přístupového panelu �
 description: Oprava běžných chyb při instalaci rozšíření prohlížeče přístupového panelu.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/4/18
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 69a05b8fad222baa5ab367215751857e0d0385fb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 950c675d49a840644935e5c7ae037760f14c1809
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153212"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958835"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření prohlížeče přístupového panelu
 

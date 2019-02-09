@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 2b90457ed939999b5163078750650c92a3516cca
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 17a7b0e0ee76490ef43fb869260dceef83cbd124
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816573"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984490"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a správa pomocí Azure monitoru upozornění protokolu aktivit  
 
@@ -203,20 +203,28 @@ Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleActivityLog
 [Azure Monitor – rozhraní API upozornění protokolu aktivit](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
 
 ## <a name="powershell"></a>PowerShell
-V části šablony prostředků je znázorněno níže využití přes rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleActivityLogAlert.json):
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
-```
-Ve které sampleActivityLogAlert.parameters.json má hodnoty poskytnutý pro parametry potřebné pro vytvoření pravidla upozornění.
+
+Upozornění protokolu aktivit mít vyhrazené rutiny Powershellu, které jsou k dispozici:
+
+- [Set-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermactivitylogalert): Vytvořit novou nebo aktualizovat existující prostředek pravidlo upozornění protokolu aktivit
+- [Get-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermactivitylogalert): Načíst jeden nebo více prostředků pravidlo upozornění protokolu aktivit
+- [Remove-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/remove-azurermactivitylogalert): Chcete-li odstranit prostředek pravidlo upozornění protokolu aktivit s potvrzení uživatelem
+- [Enable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/enable-azurermactivitylogalert): Chcete-li povolit existující prostředek pravidlo upozornění protokolu aktivit
+- [Disable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/disable-azurermactivitylogalert): Chcete-li zakázat existující prostředek pravidlo upozornění protokolu aktivit
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
-V části šablony prostředků je znázorněno níže použití pomocí příkazu Azure Resource Manageru v Azure CLI v ukázce výše uvedenou šablonu prostředků (sampleActivityLogAlert.json):
 
-```azurecli
-az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
-```
-*SampleActivityLogAlert.parameters.json* soubor obsahuje hodnoty poskytnutý pro parametry potřebné pro vytvoření pravidla upozornění.
+Vyhrazené příkazy rozhraní příkazového řádku Azure v rámci sady [upozornění protokolu aktivit monitorování az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) jsou dostupné pro správu pravidla upozornění protokolu aktivit.
 
+Pokud chcete vytvořit nové pravidlo upozornění protokolu aktivit, použijte v tomto pořadí:
+
+1. [Vytvoření upozornění protokolu aktivit monitorování az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create): Vytvořit nový prostředek pravidlo upozornění protokolu aktivit
+1. [upozornění oboru protokolu aktivit az monitor](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope): Přidat obor pro pravidel upozornění protokolů vytvořené aktivity
+1. [AZ monitor protokolu aktivit výstrahy – skupina akcí](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group): Přidat skupinu akcí pro pravidlo upozornění protokolu aktivit
+
+K načtení některý pravidlo upozornění protokolu aktivit z prostředků, pomocí příkazu Azure CLI [az monitor protokolu aktivit upozornění zobrazit](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+) lze použít. A pro zobrazení všech prostředků pravidlo upozornění protokolu aktivit ve skupině prostředků, použijte [seznam výstrah protokolu aktivit az monitor](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
+Prostředky pravidlo upozornění protokolu aktivit můžete odebrat pomocí příkazového řádku Azure [odstranění upozornění protokolu aktivit az monitor](https://docs.microsoft.com/en-us/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
 
 ## <a name="next-steps"></a>Další postup
 

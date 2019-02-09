@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 027d4a9f93032bfdd0f4cda96df74c92b5679540
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 02ecb3cdec9ddb07bf48dfe77d1ed5fbf07975e0
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251567"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965320"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Použít ASDK k ověření zálohování Azure stacku
 Po nasazení služby Azure Stack a zřizování uživatelů prostředky, jako jsou nabídky, plány, kvót a předplatných, měli byste [povolit zálohování infrastruktury Azure stacku](../azure-stack-backup-enable-backup-console.md). Plánování a spouštění pravidelných infrastruktura zálohování se zajistí, že infrastruktura správy nedojde ke ztrátě dat při katastrofických hardwaru nebo Chyba služby.
@@ -47,7 +47,7 @@ Zálohování infrastruktury z integrované systémy pro nasazení může být o
 
 
 
-### <a name="cloud-recovery-prerequisites"></a>Požadavky na obnovení cloudu
+### <a name="prereqs"></a>Požadavky na obnovení cloudu
 Před zahájením nasazení cloudu pro obnovení ASDK, ujistěte se, že máte následující informace:
 
 |Požadavek|Popis|
@@ -80,6 +80,43 @@ V dalším kroku zkopírujte nejnovější záložní soubory Azure Stack do nov
 > [!IMPORTANT]
 > Instalace ASDK podporuje přesně jednu síťovou kartu (NIC) sítě. Pokud máte více síťových adaptérů, ujistěte se, že je povolená jenom jedna (a všechny ostatní jsou zakázané) před spuštěním skriptu nasazení.
 
+### <a name="use-the-installer-to-deploy-the-asdk-in-recovery-mode"></a>Použití instalačního programu pro nasazení ASDK v režimu obnovení
+Kroky v této části ukazují, jak nasadit ASDK pomocí grafického uživatelského rozhraní (GUI) poskytované stáhnete a nainstalujete **asdk installer.ps1** skript prostředí PowerShell.
+
+> [!NOTE]
+> Uživatelské rozhraní instalačního programu pro Azure Stack Development Kit je skriptu open source na základě WCF a prostředí PowerShell.
+
+1. Po hostitelský počítač úspěšně spustí do bitové kopie CloudBuilder.vhdx, přihlášení pomocí přihlašovacích údajů správce zadán při vám [připravili development kit hostitelský počítač](asdk-prepare-host.md) ASDK instalace. To by měla být stejná jako přihlašovací údaje development kit hostitele místního správce.
+2. Otevřete konzolu Powershellu se zvýšenými oprávněními a spusťte  **&lt;písmeno jednotky > \AzureStack_Installer\asdk-installer.ps1** skript prostředí PowerShell. Skript může být nyní na jinou jednotku než C:\ CloudBuilder.vhdx obrázku. Klikněte na tlačítko **obnovit**.
+
+    ![Skript instalačního programu ASDK](media/asdk-validate-backup/1.PNG) 
+
+3. Zadejte údaje adresáře Azure AD (volitelné) a heslo místního správce pro ASDK hostitelského počítače na stránce zprostředkovatele a přihlašovací údaje identity. Klikněte na **Další**.
+
+    ![Stránka identity a přihlašovací údaje](media/asdk-validate-backup/2.PNG) 
+
+4. Vyberte síťový adaptér použije ASDK hostitelský počítač a klikněte na tlačítko **Další**. Během instalace ASDK vypne všechna další síťová rozhraní. 
+
+    ![Síťového adaptéru rozhraní](media/asdk-validate-backup/3.PNG) 
+
+5. Na stránce konfigurace sítě zadejte platný čas serveru a předávání IP adres DNS. Klikněte na **Další**.
+
+    ![Stránka Konfigurace sítě](media/asdk-validate-backup/4.PNG) 
+
+6. Pokud byly ověřeny vlastnosti karty síťového rozhraní, klikněte na tlačítko **Další**. 
+
+    ![Ověření nastavení síťové karty](media/asdk-validate-backup/5.PNG) 
+
+7. Zadejte požadované informace popsané výše v [části s předpoklady](#prereqs) na stránce nastavení zálohování a uživatelské jméno a heslo pro přístup ke sdílené složce. Klikněte na tlačítko **Další**: 
+
+   ![Stránka nastavení zálohování](media/asdk-validate-backup/6.PNG) 
+
+8. Skript nasazení použije pro nasazení ASDK na stránce Souhrn zkontrolujte. Klikněte na tlačítko **nasadit** zahájíte nasazení. 
+
+    ![Stránka souhrnu](media/asdk-validate-backup/7.PNG) 
+
+
+### <a name="use-powershell-to-deploy-the-asdk-in-recovery-mode"></a>Použití Powershellu k nasazení ASDK v režimu obnovení
 Upravte následující příkazy Powershellu pro vaše prostředí a spustit nasazení ASDK v režimu obnovení cloudu:
 
 ```powershell

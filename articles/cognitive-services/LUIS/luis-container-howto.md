@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 1ae4396c6b91f81e273e6ad171f4cac9b55445f6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a8251881b114d7b102481476d3e77923b34d34c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864720"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982382"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -60,7 +60,7 @@ Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
 
 Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru z `mcr.microsoft.com/azure-cognitive-services/luis` úložiště:
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
@@ -324,18 +324,7 @@ Pokud spouštíte kontejner s výstupem [připojit](luis-container-configuration
 
 Odešle kontejneru LUIS fakturační údaje do Azure, pomocí _Language Understanding_ prostředků v účtu Azure. 
 
-Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (utterance) společnosti Microsoft. 
-
-`docker run` Používá následující argumenty pro účely fakturace:
-
-| Možnost | Popis |
-|--------|-------------|
-| `ApiKey` | Klíč rozhraní API _Language Understanding_ prostředek, který používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musí být nastavená na klíče rozhraní API pro zřízené LUIS Azure prostředek určený v `Billing`. |
-| `Billing` | Koncový bod _Language Understanding_ prostředek, který používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musí nastavena na identifikátor URI se zřídil prostředek LUIS Azure koncový bod.|
-| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
-
-> [!IMPORTANT]
-> Všechny tři možnosti je nutné zadat platnou hodnotou nebo kontejneru se nespustí.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](luis-container-configuration.md).
 

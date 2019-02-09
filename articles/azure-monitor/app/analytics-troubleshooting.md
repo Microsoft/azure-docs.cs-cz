@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/11/2016
+ms.date: 02/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189928"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960679"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Řešení potíží s analýzami v nástroji Application Insights
 Problémy s [Application Insights Analytics](analytics.md)? Začněte tady. Analytics je nástroj výkonné hledání služby Azure Application Insights.
@@ -36,7 +36,7 @@ Zakázat rozšíření nebo použijte jiný prohlížeč.
 
 Během portálu runtime neošetřené výjimky došlo k vnitřní chybě.
 
-* Vymazat mezipaměť prohlížeče. 
+* Vymazat mezipaměť prohlížeče.
 
 ## <a name="e-b"></a>403... Zkuste to prosím znovu načíst
 ![403... Zkuste to prosím znovu načíst](media/analytics-troubleshooting/020.png)
@@ -71,7 +71,7 @@ Došlo k chybě související s ověřováním (během ověřování nebo při g
 ## <a name="e-d"></a>404 ... Prostředek se nenašel
 ![404... prostředek se nenašel](media/analytics-troubleshooting/040.png)
 
-Prostředek aplikace už odstranil z Application Insights a t není k dispozici. To může nastat, pokud jste uložili adresu URL na stránce analýzy.
+Prostředek služby Application byl odstraněn ze služby Application Insights a není už k dispozici. To může nastat, pokud jste uložili adresu URL na stránce analýzy.
 
 ## <a name="e-e"></a>403 ... Žádné autorizace
 ![403... Neautorizováno](media/analytics-troubleshooting/050.png)
@@ -81,7 +81,7 @@ Nemáte oprávnění otevřít tuto aplikaci v Analytics.
 * Obdrželi jste od někoho jiného odkaz? Požádejte ho, abyste měli jistotu, které jsou v [čtenáři a přispěvatelé této skupiny prostředků](../../azure-monitor/app/resources-roles-access-control.md).
 * Jste uložili odkaz použitím různých přihlašovacích údajů? Otevřít [webu Azure portal](https://portal.azure.com), odhlaste se a pak zkuste tento odkaz znovu, poskytování správných přihlašovacích údajů.
 
-## <a name="html-storage"></a>403 ... Úložiště HTML5
+## <a name="html-storage"></a>403 ... HTML5 Storage
 Náš portál používá HTML5 localStorage a sessionStorage.
 
 * Chrome: Nastavení ochrany osobních údajů, nastavení obsahu.

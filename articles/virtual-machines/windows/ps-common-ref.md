@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: cb9f03ab87079ba33135840e3e7599d2e8cc95e9
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 7be31a9390dfb0d663b27979a42fffe6f7a0afca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054009"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977521"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Běžné příkazy prostředí PowerShell pro vytváření a správa virtuálních počítačů Azure
 
 Tento článek popisuje některé příkazy prostředí Azure PowerShell, které můžete použít k vytvoření a správa virtuálních počítačů ve vašem předplatném Azure.  Podrobnější nápovědu k určité přepínače příkazového řádku a možnosti, můžete použít **Get-Help** *příkaz*.
 
-Projděte si článek [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview), kde najdete informace o instalaci nejnovější verze prostředí Azure PowerShell, výběru předplatného a přihlášení k účtu.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 Tyto proměnné může být užitečné pro vás, pokud používá více než jeden z příkazů v tomto článku:
 
-- $location – umístění virtuálního počítače. Můžete použít [Get-AzureRmLocation](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermlocation) k vyhledání [geografické oblasti](https://azure.microsoft.com/regions/) , který vám vyhovuje.
+- $location – umístění virtuálního počítače. Můžete použít [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) k vyhledání [geografické oblasti](https://azure.microsoft.com/regions/) , který vám vyhovuje.
 - $myResourceGroup – název skupiny prostředků, která obsahuje virtuální počítač.
 - $myVM – název virtuálního počítače.
 
@@ -38,8 +38,8 @@ Tyto proměnné může být užitečné pro vás, pokud používá více než je
 
 | Úkol | Příkaz |
 | ---- | ------- |
-| Vytvoření jednoduchého virtuálního počítače | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) – název $myVM <BR></BR><BR></BR> New-AzureRMVM obsahuje sadu *zjednodušené* parametry, kde všechny, které je nutné je jediný název. Hodnota pro – název se použije jako název pro všechny prostředky potřebné pro vytvoření nového virtuálního počítače. Můžete zadat informace, ale to je vše, co je povinný.|
-| Vytvoření virtuálního počítače z vlastní image | New-AzureRmVm - ResourceGroupName $myResourceGroup – název ImageName $myVM "myImage"-umístění $location  <BR></BR><BR></BR>Je potřeba jste již vytvořili vlastní [spravované image](capture-image-resource.md). Můžete použít obraz lze zviditelnit několik, identických virtuálních počítačů. |
+| Vytvoření jednoduchého virtuálního počítače | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -Name $myVM <BR></BR><BR></BR> Nový-AzVM obsahuje sadu *zjednodušené* parametry, kde všechny, které je nutné je jediný název. Hodnota pro – název se použije jako název pro všechny prostředky potřebné pro vytvoření nového virtuálního počítače. Můžete zadat informace, ale to je vše, co je povinný.|
+| Vytvoření virtuálního počítače z vlastní image | New-AzVm -ResourceGroupName $myResourceGroup -Name $myVM ImageName "myImage" -Location $location  <BR></BR><BR></BR>Je potřeba jste již vytvořili vlastní [spravované image](capture-image-resource.md). Můžete použít obraz lze zviditelnit několik, identických virtuálních počítačů. |
 
 
 
@@ -47,28 +47,28 @@ Tyto proměnné může být užitečné pro vás, pokud používá více než je
 
 | Úkol | Příkaz |
 | ---- | ------- |
-| Vytvořte konfiguraci virtuálního počítače |$vm = [New-AzureRmVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig) - VMName $myVM - VMSize "Standard_D1_v1"<BR></BR><BR></BR>Konfigurace virtuálního počítače se používá k definování nebo aktualizovat nastavení virtuálního počítače. Konfigurace se inicializuje s názvem virtuálního počítače a jeho [velikost](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
-| Přidat nastavení konfigurace |$vm = [set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) - VM $vm-Windows - ComputerName $myVM-přihlašovacích údajů $cred - ProvisionVMAgent - EnableAutoUpdate<BR></BR><BR></BR>Nastavení operačního systému, včetně [pověření](https://technet.microsoft.com/library/hh849815.aspx) jsou přidány do konfigurační objekt, který jste předtím vytvořili pomocí New-AzureRmVMConfig. |
-| Přidat síťové rozhraní |$vm = [Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.compute/Add-AzureRmVMNetworkInterface) - VM $vm – Id $nic. ID<BR></BR><BR></BR>Virtuální počítač musí mít [síťové rozhraní](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pro komunikaci ve virtuální síti. Můžete také použít [Get-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) načíst existující objekt síťového rozhraní. |
-| Zadat image platformy |$vm = [set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage) publisher_name"- VM $vm - Název_vydavatele"-nabízejí "publisher_offer" - Skus "product_sku"-"nejnovější" verze<BR></BR><BR></BR>[Informace o obrazu](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) se přidá do konfigurační objekt, který jste předtím vytvořili pomocí New-AzureRmVMConfig. Objekt vrácený z tohoto příkazu se používá jenom při nastavení disku s operačním systémem používat image platformy. |
-| Vytvoření virtuálního počítače |[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) - ResourceGroupName $myResourceGroup – umístění $location - VM $vm<BR></BR><BR></BR>Všechny prostředky vytvořené v [skupiny prostředků](../../azure-resource-manager/powershell-azure-resource-manager.md). Před spuštěním tohoto příkazu spusťte New-AzureRmVMConfig, Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface a Set-AzureRmVMOSDisk. |
-| Aktualizovat virtuální počítač |[Update-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvm) - ResourceGroupName $myResourceGroup - VM $vm<BR></BR><BR></BR>Získat aktuální konfiguraci virtuálního počítače pomocí Get-AzureRmVM, změnit nastavení konfigurace v objektu VM a potom spusťte tento příkaz. |
+| Vytvořte konfiguraci virtuálního počítače |$vm = [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) -VMName $myVM -VMSize "Standard_D1_v1"<BR></BR><BR></BR>Konfigurace virtuálního počítače se používá k definování nebo aktualizovat nastavení virtuálního počítače. Konfigurace se inicializuje s názvem virtuálního počítače a jeho [velikost](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
+| Přidat nastavení konfigurace |$vm = [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) -VM $vm -Windows -ComputerName $myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate<BR></BR><BR></BR>Nastavení operačního systému, včetně [pověření](https://technet.microsoft.com/library/hh849815.aspx) jsou přidány do konfigurační objekt, který jste předtím vytvořili pomocí New-AzVMConfig. |
+| Přidat síťové rozhraní |$vm = [přidat AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) - VM $vm – Id $nic. ID<BR></BR><BR></BR>Virtuální počítač musí mít [síťové rozhraní](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pro komunikaci ve virtuální síti. Můžete také použít [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) načíst existující objekt síťového rozhraní. |
+| Zadat image platformy |$vm = [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) publisher_name"- VM $vm - Název_vydavatele"-nabízejí "publisher_offer" - Skus "product_sku"-"nejnovější" verze<BR></BR><BR></BR>[Informace o obrazu](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) se přidá do konfigurační objekt, který jste předtím vytvořili pomocí New-AzVMConfig. Objekt vrácený z tohoto příkazu se používá jenom při nastavení disku s operačním systémem používat image platformy. |
+| Vytvoření virtuálního počítače |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Location $location -VM $vm<BR></BR><BR></BR>Všechny prostředky vytvořené v [skupiny prostředků](../../azure-resource-manager/powershell-azure-resource-manager.md). Před spuštěním tohoto příkazu spusťte AzVMConfig nový, AzVMOperatingSystem sady, Set-AzVMSourceImage, AzVMNetworkInterface přidat a AzVMOSDisk sady. |
+| Aktualizovat virtuální počítač |[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>Získat aktuální konfiguraci virtuálního počítače pomocí rutiny Get-AzVM, změnit nastavení konfigurace v objektu VM a potom spusťte tento příkaz. |
 
 ## <a name="get-information-about-vms"></a>Získejte informace o virtuálních počítačích
 
 | Úkol | Příkaz |
 | ---- | ------- |
-| Seznam virtuálních počítačů v rámci předplatného |[Get-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvm) |
-| Seznam virtuálních počítačů ve skupině prostředků |Get-AzureRmVM -ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Chcete-li získat seznam skupin prostředků ve vašem předplatném, použijte [Get-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermresourcegroup). |
-| Získání informací o virtuálním počítači |Get-AzureRmVM - ResourceGroupName $myResourceGroup – název $myVM |
+| Seznam virtuálních počítačů v rámci předplatného |[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) |
+| Seznam virtuálních počítačů ve skupině prostředků |Get-AzVM -ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Chcete-li získat seznam skupin prostředků ve vašem předplatném, použijte [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup). |
+| Získání informací o virtuálním počítači |Get-AzVM -ResourceGroupName $myResourceGroup -Name $myVM |
 
 ## <a name="manage-vms"></a>Správa virtuálních počítačů
 | Úkol | Příkaz |
 | --- | --- |
-| Spuštění virtuálního počítače |[Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm) - ResourceGroupName $myResourceGroup – název $myVM |
-| Zastavení virtuálního počítače |[Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/stop-azurermvm) - ResourceGroupName $myResourceGroup – název $myVM |
-| Restartujte spuštěného virtuálního počítače |[Restart-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/restart-azurermvm) - ResourceGroupName $myResourceGroup – název $myVM |
-| Odstranění virtuálního počítače |[Remove-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/remove-azurermvm) - ResourceGroupName $myResourceGroup – název $myVM |
+| Spuštění virtuálního počítače |[Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
+| Zastavení virtuálního počítače |[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
+| Restartujte spuštěného virtuálního počítače |[Restart-AzVM](https://docs.microsoft.com/powershell/module/az.compute/restart-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
+| Odstranění virtuálního počítače |[Remove-AzVM](https://docs.microsoft.com/powershell/module/az.compute/remove-azvm) -ResourceGroupName $myResourceGroup -Name $myVM |
 
 
 ## <a name="next-steps"></a>Další postup

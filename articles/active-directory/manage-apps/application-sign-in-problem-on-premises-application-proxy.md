@@ -3,8 +3,8 @@ title: Potíže při přihlašování k místní aplikaci pomocí proxy aplikac�
 description: Řešení běžných potíží čelí při nemůžete se přihlásit k místní aplikaci integrovaná s Azure AD pomocí služby Azure AD Application Proxy
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 9c90a3ea053795fe50b226524af4b7f95e5dd256
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9c94f25d415e3ef5ae03488ca117a846d2d1c4e6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170364"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964691"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Potíže při přihlašování k místní aplikaci pomocí proxy aplikací služby Azure AD
 

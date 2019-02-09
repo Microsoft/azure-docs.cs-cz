@@ -4,7 +4,7 @@ description: Tato specifikace obsahuje dva režimy, které jsou podporovaných s
 services: media-services
 documentationcenter: ''
 author: johndeu
-manager: cfowler
+manager: femila
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3c51b5fd5bf577479aaeb316d5c1b5f8704f2d19
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265886"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980427"
 ---
-# <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace časovaných metadat v živém streamování
+# <a name="signaling-timed-metadata-in-live-streaming-legacy"></a>Signalizace vypršel časový limit metadat v Live Streaming (starší verze)
 
 
 ## <a name="1-introduction"></a>1 Úvod 
@@ -68,8 +68,8 @@ Jednoduchý režim RTMP Media Services podporuje jednu zprávu upozornění tuk 
 
 | Název pole | Typ pole | Povinné? | Popisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| upozornění        | Řetězec     | Požaduje se | Zpráva o události.  Musí být "SpliceOut" k označení jednoduchý režim splice.                                              |
-| id         | Řetězec     | Požaduje se | Jedinečný identifikátor popisující spojení nebo segmentu. Určuje tato instance zprávy                            |
+| upozornění        | String     | Požaduje se | Zpráva o události.  Musí být "SpliceOut" k označení jednoduchý režim splice.                                              |
+| id         | String     | Požaduje se | Jedinečný identifikátor popisující spojení nebo segmentu. Určuje tato instance zprávy                            |
 | doba trvání   | Číslo     | Požaduje se | Doba trvání spojení. Jednotky jsou zlomků sekund.                                                                |
 | elapsed    | Číslo     | Nepovinné | Když signál, který se opakuje za účelem podpory nalaďte, toto pole musí být prezentace dobu, která uplynula od začátku spojení. Jednotky jsou zlomků sekund. Při použití režimu jednoduchého, tato hodnota by neměla překročit původní trvání spojení.                                                  |
 | time       | Číslo     | Požaduje se | Musí být čas spojení, v čase prezentace. Jednotky jsou zlomků sekund.                                     |
@@ -80,9 +80,9 @@ Jednoduchý režim RTMP Media Services podporuje jednu zprávu upozornění tuk 
 
 | Název pole | Typ pole | Povinné? | Popisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| upozornění        | Řetězec     | Požaduje se | Zpráva o události.  Zprávy [SCTE – 35] musí být kódování base64 binární soubor (IETF RFC 4648) kódovaný splice_info_section() zprávy k odeslání HLS, Smooth a Dash klientům v souladu s [SCTE 67].                                              |
-| type       | Řetězec     | Požaduje se | Název URN nebo adresy URL identifikující zprávu schéma. Zprávy [SCTE – 35] musí být "urn: scte:scte35:2013a:bin" zprávy k odeslání HLS, Smooth a Dash klientům v souladu s [SCTE 67].  |
-| id         | Řetězec     | Požaduje se | Jedinečný identifikátor popisující spojení nebo segmentu. Určuje tato instance zprávy.  Zprávy se sémantikou ekvivalentní musí mít stejnou hodnotu.|
+| upozornění        | String     | Požaduje se | Zpráva o události.  Zprávy [SCTE – 35] musí být kódování base64 binární soubor (IETF RFC 4648) kódovaný splice_info_section() zprávy k odeslání HLS, Smooth a Dash klientům v souladu s [SCTE 67].                                              |
+| type       | String     | Požaduje se | Název URN nebo adresy URL identifikující zprávu schéma. Zprávy [SCTE – 35] musí být "urn: scte:scte35:2013a:bin" zprávy k odeslání HLS, Smooth a Dash klientům v souladu s [SCTE 67].  |
+| id         | String     | Požaduje se | Jedinečný identifikátor popisující spojení nebo segmentu. Určuje tato instance zprávy.  Zprávy se sémantikou ekvivalentní musí mít stejnou hodnotu.|
 | doba trvání   | Číslo     | Požaduje se | Doba trvání události nebo ad spojení-segmentu, pokud je známý. Pokud je neznámý, hodnota musí být 0.                                                                 |
 | elapsed    | Číslo     | Nepovinné | Při reklamním signálu [SCTE – 35] se se opakuje, aby bylo možné ladit, toto pole musí být prezentace dobu, která uplynula od začátku spojení. Jednotky jsou zlomků sekund. V režimu [SCTE – 35] Tato hodnota může překročit původní zadaná doba trvání spojení nebo segmentu.                                                  |
 | time       | Číslo     | Požaduje se | Prezentace čas spojení události nebo ad.  Čas prezentace a doba trvání by MĚLO odpovídat s Stream přístup body (SAP) typu 1 nebo 2, jak jsou definovány v [ISO-14496-12] přílohy I. Pro výchozí přenos dat HLS čas a dobu trvání by MĚLO odpovídat segmentu hranice. Čas prezentace a doby trvání různých událostí zpráv v rámci stejného datového proudu událostí se nesmí překrývat. Jednotky jsou zlomků sekund.
@@ -102,11 +102,11 @@ Zhuštěný sledování musí být deklarována v poli Live Server Manifest s \<
 | **Název atributu** | **Typ pole** | **Vyžaduje?** | **Popis**                                                                                                                                                                                                                                                 |
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | systemBitrate      | Číslo         | Požaduje se      | MUSÍ být "0", určující stopy s neznámým, proměnné s přenosovou rychlostí.                                                                                                                                                                                                 |
-| parentTrackName    | Řetězec         | Požaduje se      | MUSÍ být název dráhy nadřazené časové kódy zhuštěné sledování jsou zarovnána časový rámec. Jeden směr určený nadřazený nemůže být zhuštěné sledování.                                                                                                                    |
+| parentTrackName    | String         | Požaduje se      | MUSÍ být název dráhy nadřazené časové kódy zhuštěné sledování jsou zarovnána časový rámec. Jeden směr určený nadřazený nemůže být zhuštěné sledování.                                                                                                                    |
 | manifestOutput     | Logická hodnota        | Požaduje se      | MUSÍ být "true", označíte, že zhuštěné sledování vloží v manifestu klienta funkce Smooth.                                                                                                                                                               |
-| Podtyp            | Řetězec         | Požaduje se      | MUSÍ být čtyři kód znaku "DATA".                                                                                                                                                                                                                         |
-| Schéma             | Řetězec         | Požaduje se      | MUSÍ být název URN nebo adresa URL identifikaci schéma zprávy. Zprávy [SCTE – 35] musí být "urn: scte:scte35:2013a:bin" zprávy k odeslání HLS, Smooth a Dash klientům v souladu s [SCTE 67]. |
-| TrackName          | Řetězec         | Požaduje se      | MUSÍ být název zhuštěné sledování. TrackName slouží k rozlišení více datových proudů událostí se stejným schématem. Každého datového proudu událostí jedinečný, musí mít název jedinečný sledování.                                                                           |
+| Podtyp            | String         | Požaduje se      | MUSÍ být čtyři kód znaku "DATA".                                                                                                                                                                                                                         |
+| Schéma             | String         | Požaduje se      | MUSÍ být název URN nebo adresa URL identifikaci schéma zprávy. Zprávy [SCTE – 35] musí být "urn: scte:scte35:2013a:bin" zprávy k odeslání HLS, Smooth a Dash klientům v souladu s [SCTE 67]. |
+| TrackName          | String         | Požaduje se      | MUSÍ být název zhuštěné sledování. TrackName slouží k rozlišení více datových proudů událostí se stejným schématem. Každého datového proudu událostí jedinečný, musí mít název jedinečný sledování.                                                                           |
 | Časová osa          | Číslo         | Nepovinné      | MUSÍ být na časové ose dráhy nadřazené.                                                                                                                                                                                                                      |
 
 -------------------------------------

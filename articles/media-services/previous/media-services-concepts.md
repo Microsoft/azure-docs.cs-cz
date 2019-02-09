@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/08/2018
 ms.author: juliako
-ms.openlocfilehash: 06c6451a7c8532b32a1c130f6b71df97857d2e7f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b3805cf46fe0fbf2461ab11959de101d8d4154f0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353696"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984592"
 ---
-# <a name="azure-media-services-concepts"></a>Koncepty služby Azure Media Services
+# <a name="azure-media-services-concepts-legacy"></a>Koncepty Azure Media Services (starší verze)
+
 Toto téma poskytuje přehled o nejdůležitějších pojmů Media Services.
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Prostředky a úložiště
@@ -74,7 +75,7 @@ Kontejner objektů blob poskytuje seskupení sady objektů BLOB. Kontejnery obje
 ### <a name="a-idlocatorslocators"></a><a id="locators"/>Lokátory
 [Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator)s poskytují vstupní bod pro přístup k souborům obsaženy v assetu. Zásady přístupu slouží k definování oprávnění a dobu trvání, že má klient přístup k dané assetu. Lokátory může mít mnoho na jeden vztah s zásadu přístupu tak, aby různé lokátory poskytnout různé spuštění a typy připojení různých klientů přitom všechny stejné oprávnění a nastavení doby trvání; z důvodu omezení zásad sdíleného přístupu nastavit pomocí služby Azure storage, ale nemůže mít více než pět jedinečné lokátory přidružené k dané assetu najednou. 
 
-Služba Media Services podporuje dva typy lokátorů: ondemandorigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming) nebo progresivně stahovat média a lokátory adresy URL SAS, používá k odeslání nebo stažení to\from soubory médií Azure storage. 
+Služba Media Services podporuje dva typy lokátorů: Ondemandorigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming) nebo progresivně stahovat média a lokátory adresy URL SAS, používá k odeslání nebo stažení to\from soubory médií Azure storage. 
 
 >[!NOTE]
 >Seznam oprávnění (AccessPermissions.List) by neměl být použili při vytváření Lokátor OnDemandOrigin. 
@@ -107,7 +108,7 @@ Informace o podporovaných kodérů najdete v tématu [kodérů](media-services-
 ## <a name="live-streaming"></a>Živé streamování
 Ve službě Azure Media Services představuje kanál kanál pro zpracování obsahu živého streamování. Kanál obdrží živé vstupní datové proudy v jednom ze dvou způsobů:
 
-* Místní kodér služby live Encoding odešle do kanálu s více přenosovými rychlostmi RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4). Můžete použít následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision a Transkodéry kodérů. Ingestované datové proudy prochází kanály bez kódování a překódování dalšího. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodér služby live Encoding odešle do kanálu s více přenosovými rychlostmi RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4). Následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi můžete použít: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision a Transkodéry kodérů. Ingestované datové proudy prochází kanály bez kódování a překódování dalšího. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 * Datový proud s jednou přenosovou rychlostí (v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4)) je odesílá do kanálu, který má povolené provádět živé kódování pomocí Media Services. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 ### <a name="channel"></a>Kanál

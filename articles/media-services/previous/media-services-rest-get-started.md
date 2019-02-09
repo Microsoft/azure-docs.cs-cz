@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b76adda6e09cdce1f94c2d0691cbe7e4cc2b6b50
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237600"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983521"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
+# <a name="get-started-with-delivering-content-on-demand-using-rest-legacy"></a>Začínáme s doručováním obsahu na vyžádání pomocí rozhraní REST (starší verze)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 Tento rychlý start vás provede jednotlivými kroky implementace aplikace pro doručování obsahu videa na vyžádání (Video-on-demand) pomocí rozhraní REST API služby Azure Media Services (AMS).
@@ -268,7 +269,7 @@ Adresa URL SAS má následující formát:
 Musí být splněny určité předpoklady:
 
 * Nemůžete mít více než pět jedinečné lokátory přidružené k dané Assetu najednou. 
-* Pokud je potřeba nahrát soubory hned, byste měli nastavit položka StartTime hodnotu 5 minut před aktuálním časem. Je to proto můžou existovat hodiny nerovnoměrné rozdělení mezi klientské počítače a služby Media Services. Navíc musí být hodnota StartTime v následujícím formátu data a času: rrrr-MM-: ssZ (například "2014-05-23T17:53:50Z").    
+* Pokud je potřeba nahrát soubory hned, byste měli nastavit položka StartTime hodnotu 5 minut před aktuálním časem. Je to proto můžou existovat hodiny nerovnoměrné rozdělení mezi klientské počítače a služby Media Services. Také vaše hodnoty StartTime musí být ve formátu data a času: RRRR-MM-: ssZ (například "2014-05-23T17:53:50Z").    
 * Může být druhý 30 – 40 zpoždění, jakmile se vytvoří Lokátor, až bude k dispozici pro použití. Tento problém se vztahuje [adresy URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) a lokátory původu.
 
 Následující příklad ukazuje, jak vytvořit lokátor adresy URL SAS, tak jak je definoval vlastnost typ v textu požadavku ("1" pro Lokátor SAS) a "2" pro Lokátor origin na vyžádání. **Cesta** vlastnost vrácená obsahuje adresu URL, kterou je nutné použít k odeslání souboru.
@@ -407,7 +408,7 @@ V případě úspěchu se vrátí následující:
 
 Po ingestování, které je možné kódovat prostředky do Media Services, média, transmuxovat, označit a tak dále než ho se doručí do klientů. Tyto aktivity se plánují a spouštějí s několika instancemi role na pozadí, abyste měli zajištěný vysoký výkon a dostupnost. Tyto aktivity se nazývají úlohy a každá úloha se skládá z atomických úloh, které vykonávají samotnou práci na souboru prostředku (Další informace najdete v tématu [úlohy](https://docs.microsoft.com/rest/api/media/operations/job), [úloh](https://docs.microsoft.com/rest/api/media/operations/task) popisy).
 
-Jak jsem už zmínili dřív, při práci se službou Azure Media Services je jedním nejběžnější scénářů doručování adaptivní přenosové rychlosti streamování vašim klientům. Služba Media Services umí dynamicky balit sady souborů MP4 do jedné z následujících formátů: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH.
+Jak jsem už zmínili dřív, při práci se službou Azure Media Services je jedním nejběžnější scénářů doručování adaptivní přenosové rychlosti streamování vašim klientům. Služba Media Services umí dynamicky balit sady souborů MP4 s adaptivní přenosovou rychlostí do následujících formátů: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
 Následující části ukazuje, jak vytvořit úlohu, která obsahuje jednu úlohu kódování. Úloha Určuje převod souboru mezzanine do sady s adaptivní přenosovou rychlostí soubory MP4 rychlostmi pomocí **kodéru Media Encoder Standard**. V části také ukazuje, jak monitorovat úlohu průběh zpracování. Po dokončení úlohy by mohli k vytvoření lokátorů, které jsou potřeba k získání přístupu k vaše prostředky.
 
@@ -458,7 +459,7 @@ Následující kód požádá o id kodér.
     }
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
-Každá úloha může mít jednu nebo více úloh v závislosti na typu zpracování, které chcete dosáhnout. Prostřednictvím rozhraní REST API, můžete vytvořit úlohy a jejich související úlohy v jedné ze dvou způsobů: úloh může být definována vložením prostřednictvím navigační vlastnost úkoly u úlohy entit nebo dávkovým zpracováním OData. Media Services SDK používá dávkové zpracování. Pro lepší čitelnost příklady kódu v tomto článku, ale úlohy jsou definována vložením. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Každá úloha může mít jednu nebo více úloh v závislosti na typu zpracování, které chcete dosáhnout. Prostřednictvím rozhraní REST API můžete vytvořit úloh a jejich související úlohy v jedné ze dvou způsobů: Úkoly mohou být definována vložením prostřednictvím navigační vlastnost úkoly u úlohy entit nebo dávkovým zpracováním OData. Media Services SDK používá dávkové zpracování. Pro lepší čitelnost příklady kódu v tomto článku, ale úlohy jsou definována vložením. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Následující příklad ukazuje, jak vytvořit a odeslat úlohu pomocí jednoho úkolu nastavená na kódování videa na konkrétní řešení a kvalitu. Následující část dokumentace obsahuje seznam všech [předvolby úloh](https://msdn.microsoft.com/library/mt269960) podporován pomocí procesoru Media Encoder Standard.  
 
@@ -692,7 +693,7 @@ Následující kód ukazuje, jak požádat o prostředku výstupu ID.
 
 ## <a id="publish_get_urls"></a>Publikování assetu a získání streamování a progresivního stahování adresy URL pomocí rozhraní REST API
 
-Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: lokátor OnDemandOrigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming), a lokátor s přístupovým podpisem (SAS), používaný ke stahování mediálních souborů. 
+Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: Ondemandorigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming) a lokátory přístupového podpisu (SAS), používá ke stahování mediálních souborů. 
 
 Po vytvoření lokátorů můžete sestavit adresy URL, které se používají ke streamování a stahování souborů.
 
@@ -742,7 +743,7 @@ Následující příklad ukazuje, jak určit AccessPolicy pro oprávnění ke č
 Pokud je úspěšná, kód 201 úspěchu je vrácena popisující AccessPolicy entitu, kterou jste vytvořili. Potom použijte AccessPolicy Id spolu s Id prostředku asset, který obsahuje soubor, který má být dodána mohla vytvořit entita Lokátor (například výstupní asset).
 
 > [!NOTE]
-> Tento základní pracovní postup je stejný jako nahrání souboru při ingestování prostředek (jak bylo popsáno dříve v tomto tématu). Také jako je odesílání souborů, pokud vy (nebo klienty) potřebovat přístup k souborům okamžitě, můžete nastavte položka StartTime hodnotu 5 minut před aktuálním časem. Tato akce je nezbytná, protože můžou existovat hodiny nerovnoměrné rozdělení mezi klientem a Media Services. Hodnota StartTime musí být ve formátu data a času: rrrr-MM-: ssZ (například "2014-05-23T17:53:50Z").
+> Tento základní pracovní postup je stejný jako nahrání souboru při ingestování prostředek (jak bylo popsáno dříve v tomto tématu). Také jako je odesílání souborů, pokud vy (nebo klienty) potřebovat přístup k souborům okamžitě, můžete nastavte položka StartTime hodnotu 5 minut před aktuálním časem. Tato akce je nezbytná, protože můžou existovat hodiny nerovnoměrné rozdělení mezi klientem a Media Services. Hodnota StartTime musí být ve formátu data a času: RRRR-MM-: ssZ (například "2014-05-23T17:53:50Z").
 >
 >
 

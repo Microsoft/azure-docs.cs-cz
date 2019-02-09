@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 1/30/2019
+ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658382"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979645"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -209,7 +209,7 @@ V následující tabulce jsou uvedeny proměnných vytvořené v účtu Automati
 |External_AutoStop_TimeAggregationOperator | Operátor agregace času, který se použije pro vybrané okno velikost vyhodnocení podmínky. Přípustné hodnoty jsou **průměrné**, **minimální**, **maximální**, **celkový**, a **poslední**.|
 |External_AutoStop_TimeWindow | Velikost okna, během kterého Azure analyzuje vybrané metriky pro aktivaci výstrahy. Tento parametr přijímá vstup ve formátu timespan. Možné hodnoty jsou od 5 minut až 6 hodin.|
 |External_EnableClassicVMs| Určuje, zda klasické virtuální počítače jsou cílem řešení. Výchozí hodnota je True. Měla by být nastavena na hodnotu False pro předplatná CSP.|
-|External_ExcludeVMNames | Zadejte názvy virtuálních počítačů, které se mají vyloučit, oddělení názvy oddělte čárkou bez mezer.|
+|External_ExcludeVMNames | Zadejte názvy virtuálních počítačů, které se mají vyloučit, oddělení názvy oddělte čárkou bez mezer. Tento požadavek omezuje na 140 virtuálních počítačů. Pokud chcete přidat více než 140 virtuální počítače se přidávají virtuální počítače určené k vyloučení může spuštění nebo vypnutí neúmyslně|
 |External_Start_ResourceGroupNames | Určuje jeden nebo více skupin prostředků oddělení hodnoty oddělte čárkou, je určená pro zahájení akce.|
 |External_Stop_ResourceGroupNames | Určuje jeden nebo více skupin prostředků oddělení hodnoty oddělte čárkou, je určená pro zastavení akce.|
 |Internal_AutomationAccountName | Určuje název účtu služby Automation.|
@@ -333,7 +333,7 @@ Existuje několik možností, které vám pomůže se ujistěte, že virtuální
 
 ### <a name="exclude-a-vm"></a>Vyloučit virtuální počítač
 
-Vyloučit virtuální počítač z řešení, můžete přidat tak, **External_ExcludeVMNames** proměnné. Tato proměnná je čárkou oddělený seznam konkrétních virtuálních počítačů určených k vyloučení z operací spustit/zastavit řešení.
+Vyloučit virtuální počítač z řešení, můžete přidat tak, **External_ExcludeVMNames** proměnné. Tato proměnná je čárkou oddělený seznam konkrétních virtuálních počítačů určených k vyloučení z operací spustit/zastavit řešení. Tento seznam je omezená na 140 virtuálních počítačů. Pokud přidáte více než 140 virtuální počítače do tohoto seznamu oddělených čárkami, virtuální počítače, které jsou nastaveny k vyloučení může být neúmyslně spuštěna nebo zastavena.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Úprava plánů spouštění a vypínání
 

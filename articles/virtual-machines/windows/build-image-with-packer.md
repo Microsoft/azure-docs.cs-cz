@@ -14,44 +14,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: cynthn
-ms.openlocfilehash: bab3b37d2d5063c77f8aceee84646b1ee72b0617
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0ae4c883baa156276646755273547a17d23edc55
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892537"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982484"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak vytvořit Image virtuálních počítačů s Windows v Azure pomocí Packeru
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje Windows distribuce a verze operačního systému. Image můžete zahrnout předinstalované aplikace a konfigurace. Na webu Azure Marketplace obsahuje celou řadu imagí první a třetí strany pro nejběžnější operační systém a prostředí aplikace, nebo můžete vytvořit vlastní Image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source nástroj [Packeru](https://www.packer.io/) k definování a vytvoření vlastních imagí v Azure.
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
 Během procesu sestavování vytvoří Packeru dočasné prostředky Azure jako sestavení zdrojového virtuálního počítače. K zachycení této zdrojový virtuální počítač pro použití jako image, je nutné definovat skupinu prostředků. V této skupině prostředků se ukládá výstup z procesu sestavení Packeru.
 
-Vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Vytvořte skupinu prostředků s [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```powershell
 $rgName = "myResourceGroup"
 $location = "East US"
-New-AzureRmResourceGroup -Name $rgName -Location $location
+New-AzResourceGroup -Name $rgName -Location $location
 ```
 
 ## <a name="create-azure-credentials"></a>Vytvoření přihlašovacích údajů Azure
 Packeru se ověřuje pomocí Azure s využitím instančního objektu. Instanční objekt Azure je identita zabezpečení, který vám pomůže s aplikací, služeb a nástrojů automatizace, jako je Packeru. Kontrolou a můžete definovat oprávnění, jaké operace lze provádět instanční objekt služby v Azure.
 
-Vytvořit instanční objekt s [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) a přiřadit oprávnění pro instanční objekt pro vytváření a správě prostředků s [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment). Nahraďte *&lt;heslo&gt;* v příkladu nahraďte vlastním heslem.  
+Vytvořit instanční objekt s [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) a přiřadit oprávnění pro instanční objekt pro vytváření a správě prostředků s [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment). Nahraďte *&lt;heslo&gt;* v příkladu nahraďte vlastním heslem.  
 
 ```powershell
-$sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
+$sp = New-AzADServicePrincipal -DisplayName "AzurePacker" `
     -Password (ConvertTo-SecureString "<password>" -AsPlainText -Force)
 Sleep 20
-New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-Pro ověření do Azure, budete potřebovat získat vaše Azure ID tenanta a předplatné s [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
+Pro ověření do Azure, budete potřebovat získat vaše Azure ID tenanta a předplatné s [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription):
 
 ```powershell
-$sub = Get-AzureRmSubscription
+$sub = Get-AzSubscription
 $sub.TenantId[0]
 $sub.SubscriptionId[0]
 ```
@@ -206,10 +207,10 @@ Trvá několik minut, než Packeru pro vytvoření virtuálního počítače, sp
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>Vytvoření virtuálního počítače z image Packeru
-Nyní můžete vytvořit virtuální počítač z bitové kopie s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Podpůrné síťové prostředky se vytvoří, pokud ještě neexistují. Po zobrazení výzvy zadejte uživatelské jméno správce a heslo má být vytvořen na virtuálním počítači. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage*:
+Nyní můžete vytvořit virtuální počítač z bitové kopie s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Podpůrné síťové prostředky se vytvoří, pokud ještě neexistují. Po zobrazení výzvy zadejte uživatelské jméno správce a heslo má být vytvořen na virtuálním počítači. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage*:
 
 ```powershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
     -Location $location `
@@ -221,16 +222,16 @@ New-AzureRmVm `
     -Image "myPackerImage"
 ```
 
-Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo oblasti než vaší image Packeru, zadejte ID bitové kopie nikoli název image. Můžete získat ID bitové kopie s [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
+Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo oblasti než vaší image Packeru, zadejte ID bitové kopie nikoli název image. Můžete získat ID bitové kopie s [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage).
 
 Trvá několik minut, vytvoření virtuálního počítače z image Packeru.
 
 
 ## <a name="test-vm-and-webserver"></a>Testovací virtuální počítač a webového serveru
-Získejte veřejnou IP adresu virtuálního počítače pomocí rutiny [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
+Získat veřejnou IP adresu vašeho virtuálního počítače s [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
 
 ```powershell
-Get-AzureRmPublicIPAddress `
+Get-AzPublicIPAddress `
     -ResourceGroupName $rgName `
     -Name "myPublicIPAddress" | select "IpAddress"
 ```

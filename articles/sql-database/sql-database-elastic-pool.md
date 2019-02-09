@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e7ec07c29f742202b17e94d96d88b0dfb223100
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464343"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963841"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
@@ -34,6 +34,9 @@ Elastické fondy tento problém řeší tím, že zajišťuje, aby databáze dos
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
+
+> [!IMPORTANT]
+> Neplatí žádné poplatky za databáze pro elastické fondy. Účtuje se vám každá hodina existence fondu na eDTU nejvyšší nebo virtuálních jader, bez ohledu na využití nebo na to, jestli byl fondu aktivní kratší dobu než hodinu.
 
 Elastické fondy umožňují vývojářům zakoupit prostředky pro fond sdílený více databázemi na umožňují zajistit nepředvídatelná období využití strany jednotlivých databází. Prostředky můžete nakonfigurovat fond podle buď [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Požadavek na prostředek pro fond je určeno agregačním využitím jeho databází. Řídí rozpočet vývojáře určuje objem prostředků fondu k dispozici. Vývojář jednoduše do fondu přidá databáze, nastaví minimální a maximální prostředky, pro databáze (buď minimální a maximální počet jednotek Dtu nebo minimální nebo maximální virtuální jádra podle svého výběru pravděpodobně model) a pak nastaví prostředků fondu na základě jejich rozpočtu. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
 

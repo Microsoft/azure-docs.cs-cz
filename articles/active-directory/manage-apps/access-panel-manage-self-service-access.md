@@ -3,8 +3,8 @@ title: Jak používat samoobslužný přístup k aplikacím | Dokumentace Micros
 description: Povolení samoobslužného přístupu k aplikacím umožňuje uživatelům najít jejich vlastních aplikací
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 525fe45359902c6e5b962b87df4ed53e6071a4c9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cd5dd4a9f32887f0a0006bf396a3952abb204e2d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182485"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962464"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Jak používat samoobslužný přístup k aplikacím
 

@@ -3,8 +3,8 @@ title: V seznamu aplikací neočekávaná aplikace | Dokumentace Microsoftu
 description: Jak zobrazit všechny aplikace ve vašem tenantovi a pochopit, jak aplikace se objeví v seznamu všechny aplikace v rámci podnikových aplikací
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.author: celested
+ms.openlocfilehash: 716d6d1c39a671e3da28f8005ee82e1c2022f932
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755373"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959848"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>V seznamu aplikací neočekávaná aplikace
 

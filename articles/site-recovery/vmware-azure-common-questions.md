@@ -1,19 +1,19 @@
 ---
 title: Časté otázky – VMware na zotavení po havárii Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek shrnuje běžné otázky při nastavování zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 1/29/2019
+ms.date: 2/7/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fb4add1194f7fe6d10859f76f244f027b35ad92d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212227"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960577"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -108,6 +108,9 @@ Pro účely replikace virtuálního počítače VMware musí běžet podporovan�
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Jak často můžete replikovat do Azure?
 Při replikaci virtuálních počítačů VMware do Azure je průběžné replikace.
+
+### <a name="can-i-retain-the-ip-address-on-failover"></a>Můžete zachovat IP adresu na převzetí služeb při selhání?
+Ano, můžete zachovat IP adresu na převzetí služeb při selhání. Ujistěte se, že cílová IP adresa zmíníte v okně "výpočty a síť' před převzetí služeb při selhání. Také se ujistěte, vypnutí počítače v okamžiku převzetí služeb při selhání aby nedocházelo ke konfliktům IP během navrácení služeb po obnovení.
 
 ### <a name="can-i-extend-replication"></a>Je možné rozšířit replikaci?
 Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).

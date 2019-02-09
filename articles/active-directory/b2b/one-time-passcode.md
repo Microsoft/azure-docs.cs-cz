@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 412e114fde8f9b9017d476083f1237c922c67bc8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c6bfa9acb29820a2c9646d6302871bb6a2dd1ac6
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463051"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982161"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Ověření e-mailu jednorázové heslo (preview)
 
@@ -29,7 +29,7 @@ Funkce jednorázové heslo e-mailu ověří uživatele typu Host B2B, když nem�
 Tato funkce je aktuálně dostupná ve verzi preview (viz [vyjádření výslovného souhlasu s Náhled](#opting-in-to-the-preview) níže). Za verzi preview tato funkce bude mít ve výchozím nastavení zapnutá pro všechny tenanty.
 
 > [!NOTE]
-> Jednorázové heslo uživatele musíte se přihlásit pomocí odkazu, který zahrnuje kontextu tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`, nebo v případě výchozí ověřenou doménu, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy k aplikacím a prostředkům také fungovat tak dlouho, dokud zahrnují kontextu tenanta. K přihlášení pomocí koncových bodů, které nemají žádný kontext tenanta v tuto chvíli nedaří uživatele typu Host. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`, nebo koncový bod pro běžné týmy způsobí chybu. 
+> Jednorázové heslo uživatele musíte se přihlásit pomocí odkazu, který zahrnuje kontextu tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`, nebo v případě ověřenou doménu, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy k aplikacím a prostředkům také fungovat tak dlouho, dokud zahrnují kontextu tenanta. K přihlášení pomocí koncových bodů, které nemají žádný kontext tenanta v tuto chvíli nedaří uživatele typu Host. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`, nebo koncový bod pro běžné týmy způsobí chybu. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Činnost koncového uživatele pro uživatele typu Host jednorázové heslo
 S ověřováním jednorázovým heslem může uživatel typu Host uplatnit pozvání, kliknutím na přímý odkaz nebo s použitím e-mailová pozvánka. V obou případech se zobrazí v prohlížeči se zpráva, že kód se pošle e-mailovou adresu uživatele typu Host. Uživatel typu Host vybere **poslat kód**:

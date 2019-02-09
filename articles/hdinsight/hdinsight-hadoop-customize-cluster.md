@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f67ad04fed2018ba71dd39ed03c24e6aebecf90
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746776"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984728"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Přizpůsobení clusterů HDInsight se systémem Windows pomocí akce skriptu
 **Skript akce** můžete použít k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci dalšího softwaru v clusteru.
@@ -62,17 +62,12 @@ HDInsight poskytuje několik skriptů v clusterech HDInsight nainstalovat násle
 
     ![Přizpůsobení clusteru pomocí akce skriptu](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "přizpůsobení clusteru pomocí akce skriptu")
 
-    <table border='1'>
-        <tr><th>Vlastnost</th><th>Hodnota</th></tr>
-        <tr><td>Název</td>
-            <td>Zadejte název akce skriptu.</td></tr>
-        <tr><td>Identifikátor URI skriptu</td>
-            <td>Zadejte identifikátor URI pro skript, který je vyvolán přizpůsobení clusteru. s</td></tr>
-        <tr><td>HEAD/pracovního procesu</td>
-            <td>Zadat uzly (**Head** nebo **pracovního procesu**) podle kterého se spouští skript vlastního nastavení.</b>.
-        <tr><td>Parametry</td>
-            <td>Zadejte parametry, pokud je to nutné skript.</td></tr>
-    </table>
+      |Vlastnost|Hodnota|  
+      |---|---|
+      |Název|Zadejte název akce skriptu.|
+      |Identifikátor URI skriptu|Zadejte identifikátor URI pro skript, který je vyvolán pro přizpůsobení clusterů.|
+      |HEAD/pracovního procesu|Zadat uzly (**Head** nebo **pracovního procesu**) podle kterého se spouští skript vlastního nastavení.|
+      |Parametry|Zadejte parametry, pokud je to nutné skript.|
 
     Stisknutím klávesy ENTER přidejte více než jednu akci se skripty pro instalaci více součástí clusteru.
 3. Klikněte na tlačítko **vyberte** uložit konfigurační skript akce a pokračujte vytvoření clusteru.
@@ -80,7 +75,7 @@ HDInsight poskytuje několik skriptů v clusterech HDInsight nainstalovat násle
 ## <a name="call-scripts-using-azure-powershell"></a>Volání skriptů pomocí Azure Powershellu
 Tento následující skript prostředí PowerShell ukazuje, jak nainstalovat Windows založené na clusteru HDInsight Spark.  
 
-    ```powershell
+```powershell  
     # Provide values for these variables
     $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
@@ -159,7 +154,7 @@ Tento následující skript prostředí PowerShell ukazuje, jak nainstalovat Win
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-    ```
+```
 
 Pokud chcete nainstalovat další software, budete muset nahradit soubor skriptu ve skriptu:
 
@@ -172,12 +167,14 @@ Následující příklad ukazuje, jak nainstalovat Apache Spark v clusteru HDIns
 
 1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio.
 2. Z konzoly Správce balíčků Nuget spusťte následující příkaz.
-    ```powershell
+
+    ```powershell  
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
     ```
-3. Použijte následující příkazy using do souboru Program.cs:
+
+1. Použijte následující příkazy using do souboru Program.cs:
 
     ```csharp
         using System;

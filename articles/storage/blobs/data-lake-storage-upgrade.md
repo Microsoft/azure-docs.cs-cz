@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 750f66b0957262a62f71cb90f7035749b2128224
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: feb656fcdbb98dcab0a3ccf372a05b3f3dca91c4
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895903"
+ms.locfileid: "55961376"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgradovat řešení analýzy velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2
 
@@ -128,7 +128,7 @@ Při použití Data Lake Storage Gen1, můžete použít širokou škálu služb
 | Využití          | [Power BI Desktop  ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-power-bi)                                                                           | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
 |                      | [Excel ](https://techcommunity.microsoft.com/t5/Excel-Blog/Announcing-the-Azure-Data-Lake-Store-Connector-in-Excel/ba-p/91677)                                                 | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
 |                      | [Analysis Services ](https://blogs.msdn.microsoft.com/analysisservices/2017/09/05/using-azure-analysis-services-on-top-of-azure-data-lake-storage/)                            | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
-| Produktivita         | [Azure Portal](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)                                                                      | *Nepodporuje se*                                                                                                                                                              | Správa účtů *– nyní k dispozici* <br><br>Operace s daty *–**zatím není k dispozici*                                                                    |
+| Produktivita         | [Azure Portal](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)                                                                      | *Nepodporuje se*                                                                                                                                                              | Správa účtů *– nyní k dispozici* <br><br>Operace s daty *–**zatím není k dispozici*                                                                   |
 |                      | [Data Lake Tools pro Visual Studio ](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-data-lake-tools-install)                                   | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
 |                      | [Azure Storage Explorer ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)                                                          | *Teď k dispozici*                                                                                                                                                              | *Teď k dispozici*                                                                                                                                 |
 |                      | [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=usqlextpublisher.usql-vscode-ext)                                                                     | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
@@ -232,7 +232,7 @@ Všimněte si, že jsou třetích stran, které dokáže zpracovat Data Lake Sto
 
 * Pokud používáte nástroj, který nekopíruje seznamy ACL nebo nechcete zkopírovat seznamy ACL, pak budete muset nastavit seznamy ACL v cílovém ručně na odpovídající nejvyšší úrovni. Uděláte to pomocí Průzkumníka služby Storage. Ujistěte se, že tyto seznamy ACL jsou výchozí seznamy ACL, tak, aby soubory a složky, které můžete zkopírovat dědí je.
 
-* V Data Lake Storage Gen1 nejvyšší úrovně můžete nastavit seznamy ACL je v kořenovém adresáři účtu. V Data Lake Storage Gen1 nejvyšší úrovně můžete nastavit seznamy ACL je však v kořenové složce v systému souborů, ne celý účet. Takže pokud chcete nastavit výchozí seznamy ACL na úrovni účtu, budete muset duplicitní těch všechny systémy souborů ve vašem účtu Data Lake Storage Gen2.
+* V Data Lake Storage Gen1 nejvyšší úrovně můžete nastavit seznamy ACL je v kořenovém adresáři účtu. V Data Lake Storage Gen2 nejvyšší úrovně můžete nastavit seznamy ACL je však v kořenové složce v systému souborů, ne celý účet. Takže pokud chcete nastavit výchozí seznamy ACL na úrovni účtu, budete muset duplicitní těch všechny systémy souborů ve vašem účtu Data Lake Storage Gen2.
 
 * Omezení pojmenování souboru se liší mezi těmito dvěma systémy úložiště. Tyto rozdíly jsou zejména při kopírování z Data Lake Storage Gen2 do Data Lake Storage Gen1 protože ten má více omezené omezení.
 

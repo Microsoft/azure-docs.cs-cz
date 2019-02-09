@@ -10,18 +10,18 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: bc0a4d4ce13c4013d634748503f98451e5fae9be
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a12ae074d82fda329c30b367e4ef76285d92e0a1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216145"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983470"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
 Pomocí nastavení federace se službou Google, můžete povolit pozvaným uživatelům se přihlásit do sdílené aplikace a prostředky s jejich vlastními účty Google bez nutnosti vytvářet Accounts Microsoft (MSA) nebo účty služby Azure AD.  
 > [!NOTE]
-> Uživatelé typu Host Google musíte se přihlásit pomocí odkazu, který zahrnuje kontextu tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`, nebo v případě výchozí ověřenou doménu, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy k aplikacím a prostředkům také fungovat tak dlouho, dokud zahrnují kontextu tenanta. K přihlášení pomocí koncových bodů, které nemají žádný kontext tenanta v tuto chvíli nedaří uživatele typu Host. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`, nebo koncový bod pro běžné týmy způsobí chybu.
+> Uživatelé typu Host Google musíte se přihlásit pomocí odkazu, který zahrnuje kontextu tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`, nebo v případě ověřenou doménu, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy k aplikacím a prostředkům také fungovat tak dlouho, dokud zahrnují kontextu tenanta. K přihlášení pomocí koncových bodů, které nemají žádný kontext tenanta v tuto chvíli nedaří uživatele typu Host. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`, nebo koncový bod pro běžné týmy způsobí chybu.
  
 ## <a name="what-is-the-experience-for-the-google-user"></a>Co je prostředí pro uživatele služby Google?
 Při odeslání pozvánky uživateli služby Google Gmail uživatele typu Host by měl přístup k sdílených aplikací nebo prostředků pomocí odkazu, který zahrnuje kontextu tenanta. Jejich prostředí se liší v závislosti na tom, jestli jsou už jste přihlášení ke Googlu:

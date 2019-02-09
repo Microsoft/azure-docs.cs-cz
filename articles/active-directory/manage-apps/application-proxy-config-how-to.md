@@ -3,8 +3,8 @@ title: Jak nakonfigurovat aplikaci Proxy aplikací | Dokumentace Microsoftu
 description: Zjistěte, jak vytvořit aplikaci Proxy aplikací konfigurace v několika jednoduchých krocích
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 2a19dc92da29118d8455a892e54d9a9ae8f82f1f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87f77f055cda12b604e78c57f05a976879a855e1
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179684"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962056"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Jak nakonfigurovat aplikaci Proxy aplikací
 

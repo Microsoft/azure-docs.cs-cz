@@ -4,24 +4,24 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 32d09722e8c396a64451018ac92fbc7bc072f461
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133704"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55905260"
 ---
 ## <a name="create-client"></a>Vytvoření připojení klienta
 Vytvořte připojení klienta tak, že vytvoříte objekt `WindowsAzure.MobileServiceClient`.  Nahraďte `appUrl` adresou URL vaší mobilní aplikace.
 
-```
+```javascript
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
 ## <a name="table-reference"></a>Práce s tabulkami
 Pro přístup k datům a jejich aktualizaci vytvořte odkaz na back-endovou tabulku. Nahraďte `tableName` názvem vaší tabulky.
 
-```
+```javascript
 var table = client.getTable(tableName);
 ```
 
@@ -35,11 +35,11 @@ Jakmile budete mít odkaz na tabulku, můžete s ní dále pracovat:
 * [Úprava dat](#modifying)
 * [Odstranění dat](#deleting)
 
-### <a name="querying"></a>Postup: Dotazování odkazu na tabulku
+### <a name="querying"></a>Jak: Dotazování odkazu na tabulku
 Jakmile budete mít odkaz na tabulku, můžete jej použít k dotazování na data na serveru.  Dotazy se sestavují v jazyce podobném jazyku LINQ.
 Pokud chcete vrátit všechna data z tabulky, použijte následující kód:
 
-```
+```javascript
 /**
  * Process the results that are received by a call to table.read()
  *
@@ -72,7 +72,7 @@ Další informace o syntaxi dotazu najdete v [Dokumentaci k objektu dotazu].
 #### <a name="table-filter"></a>Filtrování dat na serveru
 Můžete použít klauzuli `where` na odkaz na tabulku:
 
-```
+```javascript
 table
     .where({ userId: user.userId, complete: false })
     .read()
@@ -81,7 +81,7 @@ table
 
 Můžete také použít funkci, která filtruje objekt.  V takovém případě se právě filtrovanému objektu přiřadí proměnná `this`.  Následující kód je funkčně srovnatelný s předchozím příkladem:
 
-```
+```javascript
 function filterByUserId(currentUserId) {
     return this.userId === currentUserId && this.complete === false;
 }
@@ -95,7 +95,7 @@ table
 #### <a name="table-paging"></a>Procházení dat po stránkách
 Použijte metody `take()` a `skip()`.  Pokud například chcete rozdělit tabulku na záznamy po stovkách řádků:
 
-```
+```javascript
 var totalCount = 0, pages = 0;
 
 // Step 1 - get the total number of records
@@ -120,10 +120,10 @@ Metoda `.includeTotalCount()` slouží k přidání pole totalCount do objektu v
 
 Následně můžete pomocí proměnné pages a několika tlačítek uživatelského rozhraní zobrazit seznam stránek. K načtení nových záznamů pro jednotlivé stránky použijte metodu `loadPage()`.  Pro rychlý přístup k již načteným záznamům implementujte ukládání do mezipaměti.
 
-#### <a name="sorting-data"></a>Postup: Vrácení seřazených dat
+#### <a name="sorting-data"></a>Jak: Vrácení seřazených dat
 Použijte metody dotazu `.orderBy()` nebo `.orderByDescending()`:
 
-```
+```javascript
 table
     .orderBy('name')
     .read()
@@ -132,7 +132,7 @@ table
 
 Další informace o objektu dotazu najdete v [Dokumentaci k objektu dotazu].
 
-### <a name="inserting"></a>Postup: Vkládání dat
+### <a name="inserting"></a>Jak: Vložení dat
 Vytvořte objekt JavaScriptu s vhodným datem a asynchronně zavolejte metodu `table.insert()`:
 
 ```javascript
@@ -152,7 +152,7 @@ Po úspěšném vložení se vrátí vložená položka i s dalšími poli poža
 
 Sada Node.js Server SDK ve funkci Azure Mobile Apps podporuje dynamické schéma pro účely vývoje.  Dynamické schéma umožňuje přidávat do tabulky sloupce tak, že je zadáte v operaci insert nebo update.  Před nasazením aplikace do ostrého provozu doporučujeme dynamické schéma vypnout.
 
-### <a name="modifying"></a>Postup: Úprava dat
+### <a name="modifying"></a>Jak: Úprava dat
 Podobně jako u metody `.insert()` byste měli vytvořit objekt aktualizace a pak zavolat metodu `.update()`.  Objekt aktualizace musí obsahovat ID záznamu, který se má aktualizovat – ID získáte při čtení záznamu nebo zavoláním metody `.insert()`.
 
 ```javascript
@@ -168,10 +168,10 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>Postup: Odstranění dat
+### <a name="deleting"></a>Jak: Odstranění dat
 Pokud chcete odstranit záznam, zavolejte metodu `.del()`.  V odkazu na objekt předejte ID:
 
-```
+```javascript
 table
     .del({ id: '7163bc7a-70b2-4dde-98e9-8818969611bd' })
     .done(function () {

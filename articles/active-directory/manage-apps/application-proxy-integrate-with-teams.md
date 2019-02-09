@@ -3,8 +3,8 @@ title: Přístup k aplikacím Proxy aplikací Azure AD v Teams | Dokumentace Mic
 description: Pomocí Proxy aplikací Azure AD pro přístup k místní aplikaci pomocí Microsoft Teams.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3f515861b7b54651665c378305070b4a8261ca70
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 07c71c898df27c53e8f7f7b480bb04c0f09d8699
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163020"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962753"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k místním aplikacím přes Microsoft Teams
 

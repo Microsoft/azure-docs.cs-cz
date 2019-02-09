@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 17fdcb4a57379fd11e841715a6908a4a0d280bd9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 67217b63588946782d42b4287cf5f24e29ebe5bd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891466"
+ms.locfileid: "55961257"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače (preview)
 Azure obsahuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování, ale poskytuje perspektivy podrobný stav operačního systému hostované na Azure virtual machines nebyl k dispozici.  V průběhu monitorování může pro různé podmínky použití Log Analytics nebo Azure Monitor, nejsou určeny pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače.  Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
@@ -44,7 +44,7 @@ Informace o konfiguraci monitorování Azure pro virtuální počítače najdete
 >
 >Neexistuje žádná regrese funkcí doručit ještě dnes s funkcí stavu služby Azure Monitor pro virtuální počítače.
 
->V důsledku této změny bude některých přerušení pro krátké době se služby a historie stavu. Dvě prostředí ve stavu diagnostiky se to týká – obnoví historii změn stavu a předchozí změny stavu pro kritéria nebudou k dispozici ke kontrole ve sloupci stav změní stav stránky diagnostiky. Pokud vás zajímají historických datech kteréhokoli stěžejní kritické virtuální počítač, pak můžete pořídit snímek kritéria data o stavu a odpovídající změny stavu pro vaši informaci. 
+>V důsledku této změny dvě prostředí ve stavu diagnostiky se to týká – obnoví historii změn stavu a předchozí změny stavu pro kritéria nebudou k dispozici ke kontrole ve sloupci stav změní stav stránky diagnostiky. Pokud vás zajímají historických datech kteréhokoli stěžejní kritické virtuální počítač, pak můžete pořídit snímek kritéria data o stavu a odpovídající změny stavu pro vaši informaci. 
 
 ## <a name="monitoring-configuration-details"></a>Podrobnosti o konfiguraci monitorování
 Tato část popisuje výchozí stav kritéria definovat za účelem monitorování Windows Azure a virtuální počítače s Linuxem. Všechna kritéria stavu jsou nakonfigurovaná tak, aby upozornění, když je splněna podmínka není v pořádku. 

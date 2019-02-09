@@ -12,19 +12,19 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e0455ef99016fe1029f17256a6dbf5d9bbd8aa4d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 3e4e9d9fb3b7e9a66ec3522e046bdca1ecad98c9
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890565"
+ms.locfileid: "55965082"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 
 Azure SQL Database umožňuje jednoduše koupit plně spravovanou PaaS databázový stroj, který nejlépe vyhovuje vašim potřebám výkonu a nákladů. V závislosti na modelu nasazení Azure SQL Database můžete vybrat nákupní model, který nejlépe vyhovuje vašim potřebám:
 
 - [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) (doporučeno), která umožňuje vybrat přesné množství kapacity úložiště a výpočetní potřebné pro vaši úlohu.
-- [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) kde můžete vybrat dodávat výpočetní a úložné balíčky s vyrovnáváním pro běžné úlohy.
+- [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) kde můžete vybrat dodávat výpočetní výkon a úložiště balíčků s vyrovnáváním pro běžné úlohy.
 
 V modelech nasazení Azure SQL Database k dispozici jsou různé modely nákupu:
 
@@ -39,10 +39,20 @@ Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 |**Nákupní model**|**Popis**|**Nejlepší pro**|
 |---|---|---|
 |Model na základě DTU|Tento model je založen na připojené míře výpočetní prostředky, úložiště a vstupně-VÝSTUPNÍCH prostředků. Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu?](sql-database-service-tiers.md#dtu-based-purchasing-model).|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředku.|
-|Model na základě virtuálních jader|Tento model umožňuje zvolit nezávisle na sobě výpočetní a úložnou kapacitu. Také umožňuje používat zvýhodněné hybridní využití Azure pro SQL Server k získání úspory nákladů.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a transparentnost.|
+|Model na základě virtuálních jader|Tento model umožňuje zvolit nezávisle na sobě výpočetní a úložnou kapacitu. Nákupní model založený na virtuálních jádrech také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) získat úspory nákladů.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a transparentnost.|
 ||||  
 
 ![cenový model](./media/sql-database-service-tiers/pricing-model.png)
+
+## <a name="compute-costs"></a>Náklady na výpočetní výkon
+
+Náklady na výpočetní odráží celkové výpočetní kapacitu, pro kterého je zřízené pro aplikaci. V obchodní vrstvě důležité služby můžeme automaticky přidělit nejméně 3 repliky. Tak, aby odrážela tuto další přidělování výpočetních prostředků, cena v nákupní model založený na virtuálních jádrech je přibližně 2.7 x vyšší v obchodní vrstvě kritické služby než v rámci úrovně služeb pro obecné účely. Ze stejného důvodu vyšší úložiště cena za GB obchodní vrstvě kritické služby odráží vysoké vstupně-výstupní operace a úložiště SSD s nízkou latencí. Ve stejnou dobu náklady na úložiště pro zálohování není liší tyto dvě úrovně vzhledem k tomu v obou případech používáme třídu úložiště úrovně standard.
+
+## <a name="storage-costs"></a>Cena za uložení
+
+Různé typy úložiště se účtují různě. Pro ukládání dat bude vám účtována zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je spojen s automatickým zálohám vaší instance a dynamicky přidělit. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. Za úložiště zálohování do 100 % celkového zajišťovaného úložiště serveru se neplatí žádné dodatečné poplatky. Využití úložiště zálohování je účtovat GB za měsíc. Když například máte databázové úložiště velikosti 100 GB, získáte 100 GB úložiště zálohování zdarma. Ale pokud je záloha mít objem 110 GB, zaplatíte za dalších 10 GB.
+
+Pro úložiště záloh u jediné databáze bude se vám účtovat na základě průběžné pro úložiště, která byla přidělena k zálohování databáze minus velikosti databáze. Pro úložiště záloh elastického fondu bude se vám účtovat na základě průběžné pro úložiště, která byla přidělena k zálohování databáze všech databází ve fondu minus maximální velikost dat elastického fondu. Libovolný nárůst velikosti databáze nebo elastického fondu nebo zvýšení rychlost transakcí vyžaduje další úložiště a zvyšuje se tím vaše faktura za úložiště zálohování.  Pokud zvýšíte maximální velikost dat, je toto nové množství odečte od velikost úložiště pro zálohování se fakturuje.
 
 ## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
@@ -97,6 +107,22 @@ Pokud jste v úmyslu migrovat existující místní nebo úloha virtuálního po
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají samosprávné elastického fondu prostředků
 
 Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi tento vzor charakterizován průměr nízké využití s relativně málo častými nárůsty využití. SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Další informace najdete v tématu [Kdy je vhodné používat elastický fond?](sql-database-elastic-pool.md)
+
+## <a name="service-tier-frequently-asked-questions-faq"></a>Úrovně služeb – nejčastější dotazy (FAQ)
+
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Je nutné nastavit aplikaci offline převést z databáze založený na DTU pro vrstvu služby založený na virtuálních jádrech
+
+Nové úrovně služeb nabízejí jednoduchý způsob online převodu, který je obdobou stávajícího procesu upgradu databází z úrovně služeb Standard na Premium (a naopak). Tento převod lze inicializovat pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. Zobrazit [Správa izolovaných databází](sql-database-single-database-scale.md) a [Správa elastických fondů](sql-database-elastic-pool.md).
+
+### <a name="can-i-convert-a-database-from-a-vcore-based-service-tier-to-a-dtu-based-one"></a>Můžu převést databázi z vrstvy služby s využitím virtuálních jader na jeden založený na DTU
+
+Ano, můžete snadno převést databázi do jakékoli objective podporované výkonu pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. Zobrazit [Správa izolovaných databází](sql-database-single-database-scale.md) a [Správa elastických fondů](sql-database-elastic-pool.md).
+
+### <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Můžete upgradovat nebo downgradovat mezi úrovněmi služeb pro obecné účely a pro důležité obchodní informace
+
+Ano, s určitými omezeními. Cíl SKU, musí splňovat maximální databáze nebo elastického fondu velikost, které jste nakonfigurovali pro vaše stávající nasazení. Pokud používáte [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/), SKU pro důležité obchodní je dostupná jenom pro zákazníky s licencemi Enterprise Edition. Pouze zákazníci, kteří migrovat z místního na úrovni general purpose služby pomocí programu zvýhodněné hybridní využití Azure pro SQL Server s licencemi Enterprise Edition, můžete upgradovat na obchodní vrstvu služby. Podrobnosti najdete v tématu [jaké jsou konkrétní práva zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)?
+
+Tento převod nemá za následek výpadek a lze inicializovat pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. Zobrazit [Správa izolovaných databází](sql-database-single-database-scale.md) a [Správa elastických fondů](sql-database-elastic-pool.md).
 
 ## <a name="next-steps"></a>Další postup
 

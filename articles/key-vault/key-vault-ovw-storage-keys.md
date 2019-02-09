@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: c71c7423b4cde2a24c8154899eec256e5746b6d7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9bff93fbec73eb73dca01660d46e35e194edb626
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865358"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963484"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -44,6 +44,12 @@ ms.locfileid: "55865358"
       
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Krok pokyny o tom, jak používat ke správě klíčů účtu úložiště služby Key Vault
 --------------------------------------------------------------------------------
+Obecně jsou seznam kroků, kterými se nepoužijí
+- Nejprve získáme (existující) účet úložiště
+- My pak načíst (existující) služby key vault
+- Potom přidáme účet služby KeyVault spravované úložiště do trezoru, nastavení Key1 jako aktivní klíč a opětovné vygenerování období trvajícího 180 dní
+- Nakonec nastavíme kontext úložiště pro zadaný účet úložiště, s Key1
+
 V následujících pokynů, jsme služby Key Vault přiřazování jako službu, která mají oprávnění operátora na vašem účtu úložiště
 
 > [!NOTE]
@@ -85,9 +91,41 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
     ```
     V případě uživatel nevytvořili účet úložiště a nemá oprávnění k účtu úložiště, následujícím způsobem nastavit oprávnění pro svůj účet a ujistěte se, že můžete spravovat všechna úložiště oprávnění ve službě Key Vault.
     
+
+<a name="step-by-step-instructions-on-how-to-use-key-vault-to-create-and-generate-sas-tokens"></a>Krok pokyny o tom, jak vytvořit a generovat tokeny SAS pomocí služby Key Vault
+--------------------------------------------------------------------------------
+Můžete také požádat služby Key Vault ke generování tokenů SAS (sdíleným přístupovým podpisům). Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit klientům přístup k prostředkům ve vašem účtu úložiště, aniž byste sdíleli své klíče účtu. Toto je zásadní aspekt používání sdílených přístupových podpisů v aplikacích – SAS představuje bezpečný způsob sdílení prostředků úložiště, aniž byste ohrozili své klíče účtu.
+
+Po dokončení kroků uvedených výše můžete můžete spusťte následující příkazy Key Vault ke generování tokenů SAS pro vás požádat. 
+
+Seznam věcí, které by se dají naplnit v níže uvedené kroky jsou
+- Nastaví účet definice SAS s názvem "<YourSASDefinitionName>"v účtu úložiště služby KeyVault spravované"<YourStorageAccountName>"ve vašem trezoru"<VaultName>". 
+- Vytvoří token SAS účtu služby Blob, soubor, tabulka a fronta, pro typy prostředků, služby kontejneru a objektu, se všechna oprávnění, přes protokol https a se zadaným počátečním a koncovým datem.
+- Nastaví KeyVault cloudově spravovaného úložiště definice SAS v trezoru se šablona identifikátoru uri jako token SAS vytvořili výše, SAS typu "účet" a platný N dní
+- Načte skutečnou přístupový token z tajného kódu trezoru klíčů, které odpovídají jeho definice SAS
+
+1. V tomto kroku vytvoříme definice SAS. Po vytvoření této definice SAS, můžete požádat o službě Key Vault ke generování více tokenů SAS za vás. Tato operace vyžaduje oprávnění úložiště/setsas.
+
+```
+$sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
+```
+Zobrazí se další nápovědu výše uvedené operace [zde](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)
+
+Pokud tuto operace proběhne úspěšně, byste měli vidět výstup podobný jak je znázorněno níže. Kopírování, která
+
+```console
+   "se=2020-01-01&sp=***"
+```
+
+2. V tomto kroku použijeme výstup ($sasToken) generovaný nad k vytvoření definice SAS. Další dokumentaci najdete [zde](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
+
+```
+az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
+```
+                        
+
  > [!NOTE] 
  > V případě, že uživatel nemá oprávnění k účtu úložiště dostaneme nejprve Id objektu uživatele
-
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
@@ -96,11 +134,11 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
     
     ```
     
-## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>Jak získat přístup k účtu úložiště se tokeny SAS
+## <a name="fetch-sas-tokens-in-code"></a>Načíst tokeny SAS v kódu
 
 V této části probereme, jak lze provést operace v účtu úložiště načítání [tokeny SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) ze služby Key Vault
 
-V níže uvedený oddíl, jsme ukazují, jak načíst klíč účtu úložiště, který je uložený ve službě Key Vault a který používá k vytváření definice SAS (sdíleným přístupovým podpisům) pro účet úložiště.
+V níže uvedený oddíl, jsme ukazují, jak načíst tokeny SAS, jakmile se vytvoří definice SAS, jak je znázorněno výše.
 
 > [!NOTE] 
   Existují 3 způsoby ověření do služby Key Vault, jak si můžete přečíst [základní koncepty](key-vault-whatis.md#basic-concepts)

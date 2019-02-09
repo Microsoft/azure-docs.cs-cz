@@ -3,9 +3,8 @@ title: Správa federačních certifikátů ve službě Azure AD | Dokumentace Mi
 description: Zjistěte, jak přizpůsobit datum vypršení platnosti federačních certifikátů a jak obnovit certifikáty, které budou brzy vyprší.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: jeedes
-ms.openlocfilehash: efdcdb8dd2f7917bd1270b9da1d87be655ea675f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 73aa9d232567f7c0994c29c29076ef4c8d9319fc
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170993"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963943"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory
 Tento článek se věnuje běžné otázky a informace související s certifikáty, které vytvoří Azure Active Directory (Azure AD) k vytvoření federovaného jednotného přihlašování (SSO) k aplikacím SaaS. Přidáte aplikace z Galerie aplikací Azure AD nebo pomocí šablony aplikace mimo galerii. Konfigurace aplikace s použitím možnosti federované jednotné přihlašování.

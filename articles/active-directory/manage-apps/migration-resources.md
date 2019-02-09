@@ -2,21 +2,21 @@
 title: Zdroje pro migraci aplikací do Azure Active Directory | Dokumentace Microsoftu
 description: Prostředky vám pomůžeme s migrací aplikace přístup a ověřování do Azure Active Directory (Azure AD).
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: baselden
-ms.openlocfilehash: 40e9a6a7a8693f710fdb41e1c6738ecc70e5a0b7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5aaef7b2d281254037a051b1e91bfface653a013
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189540"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961937"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zdroje pro migraci aplikací do Azure Active Directory
 

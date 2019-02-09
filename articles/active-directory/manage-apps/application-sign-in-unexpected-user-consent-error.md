@@ -3,8 +3,8 @@ title: Neočekávaná chyba při povolování spuštění aplikace | Dokumentace
 description: Tento článek popisuje chyby, které mohou nastat při vyjadřování souhlasu s aplikací a co můžete dělat o nich
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 262fa6600892b34d473f0ee1f9c52aab43634a3b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 24cf2da101b3d72e985e9c797e61131d6755b989
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170670"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959353"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při povolování spuštění aplikace
 

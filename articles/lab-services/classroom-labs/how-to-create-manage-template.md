@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b287a67c470cc1697065838e52916c285a2233a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815240"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960186"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Vytvářet a spravovat šablony classroom ve službě Azure Lab Services
 Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Potom můžete publikovat šablony, která má instance šablony virtuálního počítače zpřístupnit uživatelům testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
@@ -92,7 +92,7 @@ Pomocí následujícího postupu k nastavení názvu a popisu poprvé a později
 1. V **šablony** části, najeďte myší **název** šablony nebo **popis** šablony a vyberte ji. 
 2. Zadejte **nový název** nebo **nový popis** šablony a stiskněte klávesu **ENTER**.
 
-    ![Templae název a popis](../media/how-to-create-manage-template/template-name-description.png)
+    ![Název a popis šablony](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="set-up-or-update-a-template-vm"></a>Nastavení nebo aktualizaci šablony virtuálního počítače
  Než šablonu virtuálního počítače zpřístupníte studentům, připojíte se k ní a nainstalujete na ní požadovaný software. Následujícím postupem nastavit šablonu virtuálního počítače poprvé nebo aktualizovat virtuální počítač. 
@@ -103,7 +103,12 @@ Pomocí následujícího postupu k nastavení názvu a popisu poprvé a později
 1. Přečtěte si upozornění a vyberte **Start**. 
 
     ![Spustit šablonu – upozornění](../media/how-to-create-manage-template/start-template-warning.png)
+2. Zobrazí stav v testovacím prostředí v dlaždici **šablony** oddílu.
+
+    ![Úvodní šablona – stav](../media/how-to-create-manage-template/template-start-status.png)
 1. Po spuštění pro připojení k virtuálnímu počítači, vybrat **připojit**a postupujte podle pokynů. 
+
+    ![Připojte se k nebo zastavení šablony virtuálního počítače](../media/how-to-create-manage-template/connect-stop-vm.png)
 1. Nainstalujte software, který studenti v testovacím prostředí potřebují (například sadu Visual Studio, Průzkumníka služby Azure Storage atd.). 
 2. Odpojte se od šablony virtuálního počítače (ukončete relaci vzdálené plochy). 
 3. **Zastavte** šablonu virtuálního počítače výběrem **Stop** (Zastavit). 

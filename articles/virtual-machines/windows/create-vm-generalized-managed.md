@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c452341567055e0272c8e6a90c43d6b886d6a928
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9157765afaa610d207a47e19b73f80ae3898fd68
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425590"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977554"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
 Můžete vytvořit několik virtuálních počítačů (VM) z virtuálního počítače Azure spravované image pomocí webu Azure portal nebo Powershellu. Spravované image virtuálního počítače obsahuje informace potřebné k vytvoření virtuálního počítače, včetně operačního systému a datové disky. Virtuální pevné disky (VHD), které tvoří image, včetně disků operačního systému a všechny datové disky se ukládají jako spravované disky. 
 
 Před vytvořením nového virtuálního počítače, budete muset [vytvoření spravované image virtuálního počítače](capture-image-resource.md) chcete použít jako zdroj bitové kopie. 
+
 
 ## <a name="use-the-portal"></a>Použití portálu
 
@@ -41,17 +42,17 @@ Před vytvořením nového virtuálního počítače, budete muset [vytvoření 
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Můžete použít PowerShell k vytvoření virtuálního počítače z image pomocí zjednodušené sady parametrů [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) rutiny. Na obrázku musí být ve stejné skupině prostředků, kde vytvoříte virtuální počítač.
+Můžete použít PowerShell k vytvoření virtuálního počítače z image pomocí zjednodušené sady parametrů [rutiny New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) rutiny. Na obrázku musí být ve stejné skupině prostředků, kde vytvoříte virtuální počítač.
 
-Tento příklad vyžaduje AzureRM modulu verze 5.6.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-Zjednodušené sady parametrů pro [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) vyžaduje pouze, že zadáte název, skupinu prostředků a název image vytvořit virtuální počítač z bitové kopie. New-AzureRmVm použije hodnotu **– název** parametr jako název všech prostředků, které se vytvoří automaticky. V tomto příkladu budeme poskytovat podrobnější názvy pro všechny prostředky ale nechat rutiny automaticky vytvořit. Můžete také vytvořit prostředky předem, jako je například virtuální síť a předat název prostředku do rutiny. New-AzureRmVm použije stávající prostředky, pokud jej lze najít podle názvu.
+Zjednodušené sady parametrů pro [rutiny New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) vyžaduje pouze, že zadáte název, skupinu prostředků a název image vytvořit virtuální počítač z bitové kopie. Nový-AzVm použije hodnotu **– název** parametr jako název všech prostředků, které se vytvoří automaticky. V tomto příkladu budeme poskytovat podrobnější názvy pro všechny prostředky ale nechat rutiny automaticky vytvořit. Můžete také vytvořit prostředky předem, jako je například virtuální síť a předat název prostředku do rutiny. Nový-AzVm bude používat existující prostředky, pokud jej lze najít podle názvu.
 
 Následující příklad vytvoří virtuální počítač s názvem *myVMFromImage*v *myResourceGroup* skupinu prostředků z image s názvem *myImage*. 
 
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVMfromImage" `
     -ImageName "myImage" `

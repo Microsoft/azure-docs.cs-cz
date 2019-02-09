@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 11/07/2018
+ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f4641125d15f159c6f50d2889e13b06ba954401b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 90c4db4ac481f3853ca4e8256ce8fdb4c4ae9bd4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886810"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983250"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Kurz: Vytvoření škálovací sady virtuálních počítačů a nasazení vysoce dostupné aplikace na Windows pomocí Azure Powershellu
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických, automatické škálování virtuálních počítačů. Můžete škálovat počet virtuálních počítačů ve škálovací sadě ručně. Můžete také definovat pravidla pro automatické škálování podle využití prostředků, například CPU, požadavky na paměť nebo podle provozu. V tomto kurzu nasadíte škálovací sadu virtuálních počítačů v Azure a zjistěte, jak:
@@ -33,10 +33,11 @@ ms.locfileid: "54886810"
 > * Zvýšení nebo snížení počtu instancí ve škálovací sadě
 > * Vytvoření pravidel automatického škálování
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzureRmAccount` vytvořit připojení k Azure.
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="scale-set-overview"></a>Přehled škálovací sady
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických, automatické škálování virtuálních počítačů. Virtuální počítače ve škálovací sadě se distribuují napříč logickými doménami selhání a aktualizačními doménami v jedné nebo více *skupinách umístění*. Umístění skupiny jsou skupiny podobně nakonfigurovaných virtuálních počítačů, podobně jako [dostupnosti](tutorial-availability-sets.md).
@@ -47,10 +48,10 @@ Virtuální počítače se ve škálovací sadě vytvářejí podle potřeby. Pr
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Vytvořte škálovací sadu virtuálních počítačů pomocí rutiny [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Následující příklad vytvoří škálovací sadu *myScaleSet*, která používá image platformy *Windows Server 2016 Datacenter*. Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy, můžete nastavit vlastní pověření správce pro instance virtuálních počítačů ve škálovací sadě:
+Vytvoření virtuálního počítače škálovací sady s [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss). Následující příklad vytvoří škálovací sadu *myScaleSet*, která používá image platformy *Windows Server 2016 Datacenter*. Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy, můžete nastavit vlastní pověření správce pro instance virtuálních počítačů ve škálovací sadě:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroupScaleSet" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet" `
@@ -77,37 +78,37 @@ $publicSettings = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
-            -ResourceGroupName "myResourceGroupScaleSet" `
-            -VMScaleSetName "myScaleSet"
+$vmss = Get-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet"
 
 # Use Custom Script Extension to install IIS and configure basic website
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
-    -Name "customScript" `
-    -Publisher "Microsoft.Compute" `
-    -Type "CustomScriptExtension" `
-    -TypeHandlerVersion 1.8 `
-    -Setting $publicSettings
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
+  -Name "customScript" `
+  -Publisher "Microsoft.Compute" `
+  -Type "CustomScriptExtension" `
+  -TypeHandlerVersion 1.8 `
+  -Setting $publicSettings
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
-    -ResourceGroupName "myResourceGroupScaleSet" `
-    -Name "myScaleSet" `
-    -VirtualMachineScaleSet $vmss
+Update-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -Name "myScaleSet" `
+  -VirtualMachineScaleSet $vmss
 ```
 
 ## <a name="allow-traffic-to-application"></a>Povolení provozu do aplikace
 
-Povolit přístup k základní webovou aplikaci, vytvořte skupinu zabezpečení sítě s [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) a [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Další informace najdete v tématu [síťové služby pro škálovací sady virtuálních počítačů Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
+Povolit přístup k základní webovou aplikaci, vytvořte skupinu zabezpečení sítě s [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) a [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup). Další informace najdete v tématu [síťové služby pro škálovací sady virtuálních počítačů Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
 
 ```azurepowershell-interactive
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
-            -ResourceGroupName "myResourceGroupScaleSet" `
-            -VMScaleSetName "myScaleSet"
+$vmss = Get-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet"
 
 #Create a rule to allow traffic over port 80
-$nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+$nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Name myFrontendNSGRule `
   -Protocol Tcp `
   -Direction Inbound `
@@ -119,40 +120,40 @@ $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 
 #Create a network security group and associate it with the rule
-$nsgFrontend = New-AzureRmNetworkSecurityGroup `
+$nsgFrontend = New-AzNetworkSecurityGroup `
   -ResourceGroupName  "myResourceGroupScaleSet" `
   -Location EastUS `
   -Name myFrontendNSG `
   -SecurityRules $nsgFrontendRule
 
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName  "myResourceGroupScaleSet" `
   -Name myVnet
 
 $frontendSubnet = $vnet.Subnets[0]
 
-$frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+$frontendSubnetConfig = Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name mySubnet `
   -AddressPrefix $frontendSubnet.AddressPrefix `
   -NetworkSecurityGroup $nsgFrontend
 
-Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
-    -ResourceGroupName "myResourceGroupScaleSet" `
-    -Name "myScaleSet" `
-    -VirtualMachineScaleSet $vmss
+Update-AzVmss `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -Name "myScaleSet" `
+  -VirtualMachineScaleSet $vmss
 ```
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Chcete vidět svou škálovací sadu v akci, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení s [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad zobrazuje IP adresu pro *myPublicIP* vytvořených jako součást škálovací sady:
+Chcete vidět svou škálovací sadu v akci, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení s [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad zobrazuje IP adresu pro *myPublicIP* vytvořených jako součást škálovací sady:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress `
-    -ResourceGroupName "myResourceGroupScaleSet" `
-    -Name "myPublicIPAddress" | select IpAddress
+Get-AzPublicIPAddress `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -Name "myPublicIPAddress" | select IpAddress
 ```
 
 Zadejte veřejnou IP adresu do webového prohlížeče. Zobrazí se webová aplikace, včetně názvu hostitele virtuálního počítače, do kterého nástroj pro vyrovnávání zatížení distribuoval provoz:
@@ -166,10 +167,12 @@ Pokud chcete vidět škálovací sadu v akci, můžete vynutit aktualizaci webov
 V průběhu životního cyklu škálovací sady možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Azure PowerShell nabízí rychlý způsob, jak tyto úlohy provést. Tady je několik běžných úloh.
 
 ### <a name="view-vms-in-a-scale-set"></a>Zobrazení virtuálních počítačů ve škálovací sadě
-Pokud chcete zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte rutinu [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) následujícím způsobem:
+Chcete-li zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) následujícím způsobem:
 
 ```azurepowershell-interactive
-Get-AzureRmVmssVM -ResourceGroupName "myResourceGroupScaleSet" -VMScaleSetName "myScaleSet"
+Get-AzVmssVM `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet"
 ```
 
 Následující příklad výstupu ukazuje dvě instance virtuálních počítačů ve škálovací sadě:
@@ -181,33 +184,36 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Pokud chcete zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte k rutině [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) parametr `-InstanceId`. Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
+Chcete-li zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte `-InstanceId` parametr [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm). Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
 
 ```azurepowershell-interactive
-Get-AzureRmVmssVM -ResourceGroupName "myResourceGroupScaleSet" -VMScaleSetName "myScaleSet" -InstanceId "1"
+Get-AzVmssVM `
+  -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet" `
+  -InstanceId "1"
 ```
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>Navýšení nebo snížení počtu instancí virtuálních počítačů
-Pokud chcete zobrazit počet instancí, které aktuálně máte ve škálovací sadě, použijte příkaz [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) s dotazem na *sku.capacity*:
+Pokud chcete zobrazit počet instancí, které aktuálně máte ve škálovací sadě, použijte [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) s dotazem na *sku.capacity*:
 
 ```azurepowershell-interactive
-Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
-    -VMScaleSetName "myScaleSet" | `
-    Select -ExpandProperty Sku
+Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
+  -VMScaleSetName "myScaleSet" | `
+  Select -ExpandProperty Sku
 ```
 
-Pak můžete ručně navýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí příkazu [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). Následující příklad nastaví počet virtuálních počítačů ve vaší škálovací sadě na *3*:
+Potom můžete ručně zvýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí [aktualizace AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss). Následující příklad nastaví počet virtuálních počítačů ve vaší škálovací sadě na *3*:
 
 ```azurepowershell-interactive
 # Get current scale set
-$scaleset = Get-AzureRmVmss `
+$scaleset = Get-AzVmss `
   -ResourceGroupName "myResourceGroupScaleSet" `
   -VMScaleSetName "myScaleSet"
 
 # Set and update the capacity of your scale set
 $scaleset.sku.capacity = 3
-Update-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
+Update-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
     -Name "myScaleSet" `
     -VirtualMachineScaleSet $scaleset
 ```
@@ -220,14 +226,14 @@ Místo ručního škálování počtu instancí ve škálovací sadě definujete
 
 ```azurepowershell-interactive
 # Define your scale set information
-$mySubscriptionId = (Get-AzureRmSubscription)[0].Id
+$mySubscriptionId = (Get-AzSubscription)[0].Id
 $myResourceGroup = "myResourceGroupScaleSet"
 $myScaleSet = "myScaleSet"
 $myLocation = "East US"
-$myScaleSetId = (Get-AzureRmVmss -ResourceGroupName $myResourceGroup -VMScaleSetName $myScaleSet).Id 
+$myScaleSetId = (Get-AzVmss -ResourceGroupName $myResourceGroup -VMScaleSetName $myScaleSet).Id 
 
 # Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5-minute period
-$myRuleScaleUp = New-AzureRmAutoscaleRule `
+$myRuleScaleUp = New-AzAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId $myScaleSetId `
   -Operator GreaterThan `
@@ -240,7 +246,7 @@ $myRuleScaleUp = New-AzureRmAutoscaleRule `
   -ScaleActionValue 1
 
 # Create a scale down rule to decrease the number of instances after 30% average CPU usage over a 5-minute period
-$myRuleScaleDown = New-AzureRmAutoscaleRule `
+$myRuleScaleDown = New-AzAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId $myScaleSetId `
   -Operator LessThan `
@@ -253,7 +259,7 @@ $myRuleScaleDown = New-AzureRmAutoscaleRule `
   -ScaleActionValue 1
 
 # Create a scale profile with your scale up and scale down rules
-$myScaleProfile = New-AzureRmAutoscaleProfile `
+$myScaleProfile = New-AzAutoscaleProfile `
   -DefaultCapacity 2  `
   -MaximumCapacity 10 `
   -MinimumCapacity 2 `
@@ -261,7 +267,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
   -Name "autoprofile"
 
 # Apply the autoscale rules
-Add-AzureRmAutoscaleSetting `
+Add-AzAutoscaleSetting `
   -Location $myLocation `
   -Name "autosetting" `
   -ResourceGroup $myResourceGroup `

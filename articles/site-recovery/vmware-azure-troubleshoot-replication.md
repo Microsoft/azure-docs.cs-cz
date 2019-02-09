@@ -1,22 +1,61 @@
 ---
 title: Řešení problémů s replikací pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek obsahuje informace o odstraňování potíží pro běžné potíže s replikací během zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/18/2019
-ms.author: ramamill
-ms.openlocfilehash: 5c2d33b39614ded95ac38e07c844b0a8cafa7cd2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/7/2019
+ms.author: mayg
+ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411471"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964769"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
 Pokud chráníte virtuální počítače VMware nebo fyzické servery s využitím Azure Site Recovery, může se zobrazit zpráva konkrétní chyba. Tento článek popisuje některé běžné problémy se můžou vyskytnout při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure pomocí [Site Recovery](site-recovery-overview.md).
+
+## <a name="monitor-process-server-health-to-avoid-replication-issues"></a>Monitorování stavu procesového serveru, abyste předešli problémům s replikací
+
+Doporučuje se pro monitorování stavu procesu serveru (PS) na portálu chcete zajistit, že replikace probíhá pro související zdrojové počítače. V trezoru, přejděte na Správa > infrastruktura Site Recovery > konfigurační servery. V okně konfiguračního serveru klikněte na tlačítko na Procesovém serveru podle přidružené servery. Proces serveru otevře se okno se statistikami jeho stavu. Můžete sledovat využití procesoru, využití paměti, stav služeb PS vyžadované pro replikaci, datum vypršení platnosti certifikátu a dostupné volné místo. Stav všech statistiky by měl být zelená. 
+
+**Doporučuje se mít k dispozici paměť a využití procesoru v části 70 % a volné místo nad 25 %**. Volné místo odkazuje na místo na disku mezipaměti Procesovém serveru, který se používá k ukládání dat replikace ze zdrojového počítače před nahráním do Azure. Pokud se omezuje na méně než 20 %, replikace se omezí pro všechny přidružené zdrojové počítače. Postupujte podle [kapacity pokyny](./site-recovery-plan-capacity-vmware.md#capacity-considerations) pochopit požadované konfigurace pro replikaci zdrojového počítače.
+
+Ujistěte se, že na počítači PS běží následující služby. Spusťte nebo restartujte jakoukoliv službu, která není spuštěná.
+
+**Integrovaný procesový Server**
+
+* cxprocessserver
+* InMage PushInstall
+* Služba nahrávání protokolu (LogUpload)
+* InMage Scout Application Service
+* Agent Microsoft Azure Recovery Services (obengine)
+* Nástroje InMage Scout VX Agent – Sentinel/Outpost (svagents)
+* tmansvc
+* Světě služby publikování na webu (W3SVC)
+* MySQL
+* Služba Microsoft Azure Site Recovery (dra)
+
+**Horizontální navýšení kapacity procesového serveru**
+
+* cxprocessserver
+* InMage PushInstall
+* Služba nahrávání protokolu (LogUpload)
+* InMage Scout Application Service
+* Agent Microsoft Azure Recovery Services (obengine)
+* Nástroje InMage Scout VX Agent – Sentinel/Outpost (svagents)
+* tmansvc
+
+**Procesový Server v Azure pro navrácení služeb po obnovení**
+
+* cxprocessserver
+* InMage PushInstall
+* Služba nahrávání protokolu (LogUpload)
+
+Ujistěte se, zda programu všechny služby nastaven na **automaticky nebo automaticky (zpožděné spuštění)**. Služba Microsoft Azure Recovery Services Agent (obengine) nemusí mít jeho programu nastavit jak je uvedeno výše.
 
 ## <a name="initial-replication-issues"></a>Potíže s úvodní replikací
 
@@ -26,7 +65,7 @@ Počáteční replikace selhání často jsou způsobeny problémy s připojení
 
 Seznam ukazuje takto můžete zkontrolovat zdrojový počítač:
 
-*  Na příkazovém řádku na zdrojovém serveru použijte příkaz ping na procesovém serveru přes port HTTPS (výchozí port HTTPS je 9443) spuštěním následujícího příkazu Telnet. Příkaz zkontroluje problémy se síťovým připojením a problémy tento blok port brány firewall.
+*  Na příkazovém řádku na zdrojovém serveru použijte příkaz ping na procesovém serveru přes HTTPS port spuštěním následujícího příkazu Telnet. Protokol HTTPS Port 9443 je jako výchozí procesový Server pro odesílání a příjem provozu replikace. Můžete upravit tento port v době registrace. Následující příkaz ověří pro problémy se síťovým připojením a problémy tento blok port brány firewall.
 
 
    `telnet <process server IP address> <port>`
@@ -35,13 +74,42 @@ Seznam ukazuje takto můžete zkontrolovat zdrojový počítač:
    > [!NOTE]
    > Použijte službu Telnet k testování připojení. Nepoužívejte `ping`. Pokud není nainstalovaný protokol Telnet, proveďte kroky uvedené v [nainstalovat klient služby Telnet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx).
 
+   Pokud telnet je mohli úspěšně připojit k portu PS, by se zobrazí prázdnou obrazovku.
+
    Pokud se nemůžete připojit k procesového serveru, povolte příchozí port 9443 na procesovém serveru. Například může být nutné k povolení příchozího portu 9443 na procesovém serveru, pokud síť obsahuje hraniční síti a monitorována podsíť. Potom zkontrolujte, jestli problém přetrvává.
 
-*  Zkontrolujte stav **InMage Scout VX Agent – Sentinel/OutpostStart** služby. Pokud služba není spuštěná, spusťte službu a potom zkontrolujte, zda problém přetrvává.   
+*  Pokud telnet je úspěšné a ještě zdrojového počítače hlásí, že PS není dostupný, otevřete webový prohlížeč na zdrojovém počítači a zkontrolujte, jestli je adresa https://<PS_IP>:<PS_Data_Port>/ dostupný.
+
+    Chyba certifikátu HTTPS je očekáván dosažení této adresy. Ignoruje se chyba certifikátu a pokračování by měly končit 400 – Chybný požadavek, což znamená, že server požadavek nelze zpracovat, prohlížeče a, že standardní připojení HTTPS k serveru funguje dobře a kvalitní.
+
+    Pokud tato akce nepomůže, podrobnosti o chybě v prohlížeči bude poskytovat pokyny. Pro třeba pokud ověřování proxy serveru je nesprávná, proxy server vrátí 407 – proxy serveru ověřování vyžaduje spolu s požadované akce v chybové zprávě. 
+
+*  Zkontrolujte, že tyto protokoly na zdrojovém virtuálním počítači pro chyby související se sítí chyby nahrávání:
+
+       C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
 ### <a name="check-the-process-server"></a>Zkontrolujte, že procesový server
 
 Seznam ukazuje takto můžete zkontrolovat procesový server:
+
+> [!NOTE]
+> Procesový Server musí mít statickou adresu IPv4 a nemůže na něm konfigurována překladu adres IP.
+
+* **Zkontrolujte připojení mezi zdrojové počítače a procesového serveru**
+1. V případě, je možné k Telnetu ze zdrojového počítače a zatím není PS ze zdroje dostupný, zkontrolujte připojení k začátku do konce se cxprocessserver ze zdrojového virtuálního počítače spuštěním nástroje cxpsclient na zdrojovém virtuálním počítači:
+
+       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+
+    V protokolech generovaných na PS v následujících adresářích podrobnosti o příslušné chyby:
+
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+       and
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+2. V případě, že neexistuje žádný prezenční signál z PS, zkontrolujte následující protokoly na PS:
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
 *  **Zkontrolujte, zda procesový server je aktivně doručením (push) dat do Azure**.
 

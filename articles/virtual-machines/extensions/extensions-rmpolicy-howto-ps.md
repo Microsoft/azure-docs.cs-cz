@@ -13,18 +13,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434985"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980869"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Instalace rozšíření na virtuálních počítačích s Windows pomocí zásad Azure
 
 Pokud chcete zabránit použití nebo instalace některých rozšíření na vašich virtuálních počítačích s Windows, můžete vytvořit zásady služby Azure pomocí prostředí PowerShell k omezení rozšíření pro virtuální počítače v rámci skupiny prostředků. 
 
-Tento kurz používá prostředí Azure PowerShell ve službě Cloud Shell, která se neustále aktualizuje na nejnovější verzi. Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte pro tento kurz použít modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
+Tento kurz používá prostředí Azure PowerShell ve službě Cloud Shell, která se neustále aktualizuje na nejnovější verzi. 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 
@@ -97,13 +99,13 @@ Jakmile budete hotovi, klikněte **Ctrl + O** a potom **Enter** k uložení soub
 
 ## <a name="create-the-policy"></a>Vytvoření zásad
 
-Definice zásad není objekt použitý k uložení konfigurace, který chcete použít. Definice zásady používá k definování zásady souborů pravidel a parametry. Vytvoření definice zásady pomocí [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) rutiny.
+Definice zásad není objekt použitý k uložení konfigurace, který chcete použít. Definice zásady používá k definování zásady souborů pravidel a parametry. Vytvoření definice zásady pomocí [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) rutiny.
 
  Pravidla zásad a parametry jsou soubory vytvořeny a uloženy jako soubory .json ve službě cloud shell.
 
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
    -Name "not-allowed-vmextension-windows" `
    -DisplayName "Not allowed VM Extensions" `
    -description "This policy governs which VM extensions that are explicitly denied."   `
@@ -116,13 +118,13 @@ $definition = New-AzureRmPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>Přiřazení zásad
 
-Tento příklad přiřadí zásady skupiny prostředků pomocí [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment). Jakýkoli virtuální počítač vytvořený v **myResourceGroup** skupinu prostředků, nebude možné nainstalovat rozšíření přístupu Agent virtuálního počítače nebo vlastního skriptu. 
+Tento příklad přiřadí zásady skupiny prostředků pomocí [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). Jakýkoli virtuální počítač vytvořený v **myResourceGroup** skupinu prostředků, nebude možné nainstalovat rozšíření přístupu Agent virtuálního počítače nebo vlastního skriptu. 
 
-Použití [Get-AzureRMSubscription | Format-Table](/powershell/module/azurerm.profile/get-azurermsubscription) rutiny pro získání ID vašeho předplatného oznamujícím v příkladu.
+Použití [Get AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) rutiny pro získání ID vašeho předplatného oznamujícím v příkladu.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
-$assignment = New-AzureRMPolicyAssignment `
+$assignment = New-AzPolicyAssignment `
    -Name "not-allowed-vmextension-windows" `
    -Scope $scope `
    -PolicyDefinition $definition `
@@ -139,10 +141,10 @@ $assignment
 
 ## <a name="test-the-policy"></a>Testování zásad
 
-K otestování zásady, zkuste použít rozšíření přístupu virtuálních počítačů. Následující by selhat se zprávou "AzureRmVMAccessExtension sady: Prostředek "myVMAccess" zásady nepovolily."
+K otestování zásady, zkuste použít rozšíření přístupu virtuálních počítačů. Následující by selhat se zprávou "AzVMAccessExtension sady: Prostředek "myVMAccess" zásady nepovolily."
 
 ```azurepowershell-interactive
-Set-AzureRmVMAccessExtension `
+Set-AzVMAccessExtension `
    -ResourceGroupName "myResourceGroup" `
    -VMName "myVM" `
    -Name "myVMAccess" `
@@ -154,13 +156,13 @@ Na portálu by selhat Změna hesla se "nasazení šablony se nezdařilo z důvod
 ## <a name="remove-the-assignment"></a>Odebrat přiřazení
 
 ```azurepowershell-interactive
-Remove-AzureRMPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
+Remove-AzPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
 ```
 
 ## <a name="remove-the-policy"></a>Odebrání zásady
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyDefinition -Name not-allowed-vmextension-windows
+Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>Další postup

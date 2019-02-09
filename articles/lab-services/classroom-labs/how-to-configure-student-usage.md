@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 577860baa74d9f0cd7f411a64d9e6bfa9322731c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894986"
+ms.locfileid: "55964810"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady
 Tento článek popisuje, jak přidat uživatele do testovacího prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další. 
@@ -66,11 +66,14 @@ Kvóty uživatele můžete nastavit pomocí následujících kroků:
 
 1. Vyberte **uživatelé** v nabídce vlevo.
 2. Vyberte **kvóty na uživatele: neomezená** na panelu nástrojů. 
-3. Na **kvóty uživatele** stránce **omezit počet hodin, může uživatel používat virtuální počítač**. 
-4. Pro **kolik hodin chcete poskytnout všem uživatelům**, zadejte počet hodin a vyberte **Uložit**. 
+3. Na **kvóty uživatele** stránky, vyberte jednu z následujících možností: 
+    1. **Žádný**. Uživatelé mohou používat své virtuální počítače pouze při naplánovaném čase nebo když vlastník testovacího prostředí se změní na virtuálních počítačích pro ně.
+    2. **Neomezené (výchozí)**. Uživatelé mohou používat své virtuální počítače bez jakýchkoli časových omezení.
+    3. **Zadejte počet hodin na uživatele**. Uživatelé můžou používat své virtuální počítače pro zadaného počtu hodin (níže uvedených) kromě naplánovaném čase. Pokud vyberete tuto možnost, zadejte **počet hodin** v textovém poli. 
 
-    ![Počet hodin na uživatele](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Nyní uvidíte počet hodin na panelu nástrojů: **Kvóta na uživatele: &lt;počet hodin&gt;**. 
+        ![Počet hodin na uživatele](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Vyberte **Uložit**. 
+5. Nyní uvidíte změněné hodnoty na panelu nástrojů: **Kvóta na uživatele: &lt;počet hodin&gt;**. 
 
     ![Kvóta na uživatele](../media/how-to-configure-student-usage/quota-per-user.png)
 
@@ -80,8 +83,19 @@ Kvóty uživatele můžete nastavit pomocí následujících kroků:
 ### <a name="add-users-by-uploading-a-csv-file"></a>Přidání uživatelů tím, že nahrajete soubor CSV
 Nahrajete soubor .csv s e-mailové adresy uživatelů, můžete také přidat uživatele.
 
-1. Vyberte **nahrát CSV** na panelu nástrojů.
-2. Vyberte soubor CSV s e-mailové adresy uživatele. E-mailových adres by měl být v jednom sloupci otevřít pomocí aplikace Excel. 
+1. Vytvořte soubor CSV s e-mailové adresy uživatelů do jednoho sloupce.
+
+    ![Kvóta na uživatele](../media/how-to-configure-student-usage/csv-file-with-users.png)
+2. Na **uživatelé** stránce testovacího prostředí, vyberte **nahrát CSV** na panelu nástrojů.
+
+    ![Sdílený svazek clusteru tlačítko Nahrát](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. Vyberte soubor CSV s e-mailové adresy uživatele. Když vyberete **otevřít** po výběru souboru CSV, zobrazí se následující **přidat uživatele** okna. Seznamu e-mailová adresa je vyplněna e-mailové adresy ze souboru CSV. 
+
+    ![Přidat okno Uživatelé naplněný e-mailové adresy ze souboru CSV](../media/how-to-configure-student-usage/add-users-window.png)
+4. Vyberte **Uložit** v **přidat uživatele** okna. 
+5. Ověřte, že se uživatelé ze seznamu uživatelů. 
+
+    ![Seznam přidaných uživatelů](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>Správa virtuálních počítačů uživatele
 Jakmile studenty registru pomocí Azure Lab Services pomocí registrace propojení za předpokladu, uvidíte virtuální počítače přiřazené pro studenty na **virtuálních počítačů** kartu. 

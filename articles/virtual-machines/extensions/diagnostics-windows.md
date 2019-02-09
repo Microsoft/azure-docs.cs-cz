@@ -14,61 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 26e902cb31a77ffb1516f084bb71b5a99a89fba9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 520211f3499931281d3ac86a1da1144564a8bb48
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188639"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980750"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Diagnostiky Azure na virtuálním počítači s Windows
 
-Diagnostika Azure je funkce v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít ke shromažďování diagnostických dat, jako jsou protokoly aplikací a čítače výkonu z virtuálního počítače Azure (VM), na kterém běží Windows. Tento článek popisuje, jak povolit rozšíření diagnostiky pro virtuální počítač pomocí Windows Powershellu. Zobrazit [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) pro součásti potřebné pro účely tohoto článku.
+Diagnostika Azure je funkce v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít ke shromažďování diagnostických dat, jako jsou protokoly aplikací a čítače výkonu z virtuálního počítače Azure (VM), na kterém běží Windows. 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Povolení diagnostického rozšíření, pokud používáte model nasazení Resource Manager
 Při vytváření virtuálního počítače s Windows prostřednictvím modelu nasazení Azure Resource Manageru tak, že přidáte konfigurace rozšíření šablony Resource Manageru, můžete povolit rozšíření diagnostiky. Zobrazit [vytvořit virtuální počítač Windows s monitorováním a diagnostikou pomocí šablony Azure Resource Manageru](diagnostics-template.md).
 
-Pokud chcete povolit rozšíření diagnostiky na existující virtuální počítač, který byl vytvořen pomocí modelu nasazení Resource Manager, můžete použít [Set-AzureRMVMDiagnosticsExtension](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) rutiny Powershellu, jak je znázorněno níže.
+Pokud chcete povolit rozšíření diagnostiky na existující virtuální počítač, který byl vytvořen pomocí modelu nasazení Resource Manager, můžete použít [Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) rutiny Powershellu, jak je znázorněno níže.
 
     $vm_resourcegroup = "myvmresourcegroup"
     $vm_name = "myvm"
     $diagnosticsconfig_path = "DiagnosticsPubConfig.xml"
 
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
+    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
 
 
 *$diagnosticsconfig_path* je cesta k souboru, který obsahuje konfiguraci diagnostiky ve formátu XML, jak je popsáno v [ukázka](#sample-diagnostics-configuration) níže.  
 
-Pokud konfigurační soubor diagnostiky má **StorageAccount** element s názvem účtu úložiště, pak bude *Set-AzureRMVMDiagnosticsExtension* skriptu automaticky nastaví Diagnostika rozšíření posílat diagnostická data do účtu úložiště. Aby to fungovalo musí být ve stejném předplatném jako virtuální počítač účtu úložiště.
+Pokud konfigurační soubor diagnostiky má **StorageAccount** element s názvem účtu úložiště, pak bude *Set-AzVMDiagnosticsExtension* skriptu automaticky nastaví Diagnostika rozšíření posílat diagnostická data do účtu úložiště. Aby to fungovalo musí být ve stejném předplatném jako virtuální počítač účtu úložiště.
 
 Pokud ne **StorageAccount** byl zadaný v konfiguraci diagnostiky, je nutné předat *StorageAccountName* do rutiny parametr. Pokud *StorageAccountName* zadaný parametr, bude rutina bude vždy používat účet úložiště, který je zadaný v parametru a není ten, který je zadaný v konfigurační soubor diagnostiky.
 
 Pokud je účet úložiště diagnostiky v jiném předplatném než virtuální počítač, je nutné explicitně předávat *StorageAccountName* a *StorageAccountKey* parametry rutiny. *StorageAccountKey* parametr není nutná, pokud účet úložiště diagnostiky je ve stejném předplatném, protože rutina automaticky můžete zadávat dotazy a nastavte hodnotu klíče při povolování rozšíření diagnostiky. Pokud je účet úložiště diagnostiky v jiném předplatném, pak rutina nemusí být možné získat klíč automaticky a je potřeba explicitně zadat klíč prostřednictvím *StorageAccountKey* parametru.  
 
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
+    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-Po povolení diagnostického rozšíření ve virtuálním počítači můžete získat aktuální nastavení pomocí [Get-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) rutiny.
+Po povolení diagnostického rozšíření ve virtuálním počítači můžete získat aktuální nastavení pomocí [Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) rutiny.
 
-    Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
+    Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
 Vrátí rutina *PublicSettings*, který obsahuje konfiguraci diagnostiky. Existují dva typy konfigurace podporovaná, WadCfg a xmlCfg. WadCfg je konfigurace JSON a xmlCfg je konfigurace XML ve formátu s kódováním Base64. Chcete-li čtení dat XML, dekódovat.
 
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
-[Odebrat AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) rutina slouží k odebrání diagnostické rozšíření z virtuálního počítače.  
+[Odebrat AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) rutina slouží k odebrání diagnostické rozšíření z virtuálního počítače.  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Povolení diagnostického rozšíření, pokud používáte model nasazení classic
-Můžete použít [Set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) rutina pro povolení diagnostického rozšíření na virtuální počítač, který lze vytvořit pomocí modelu nasazení classic. Následující příklad ukazuje, jak vytvořit nový virtuální počítač prostřednictvím modelu nasazení classic s diagnostickým rozšířením povolena.
+Můžete použít [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) rutina pro povolení diagnostického rozšíření na virtuální počítač, který lze vytvořit pomocí modelu nasazení classic. Následující příklad ukazuje, jak vytvořit nový virtuální počítač prostřednictvím modelu nasazení classic s diagnostickým rozšířením povolena.
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
     $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-Pokud chcete povolit rozšíření diagnostiky na existující virtuální počítač, který byl vytvořen prostřednictvím modelu nasazení classic, nejprve pomocí [Get-AzureVM](/powershell/module/servicemanagement/azure/get-azurevm) rutiny pro získání konfigurace virtuálního počítače. Aktualizujte konfiguraci virtuálního počítače pro zahrnutí rozšíření diagnostiky pomocí [Set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) rutiny. Nakonec platí aktualizovanou konfiguraci pro virtuální počítač s použitím [Update-AzureVM](/powershell/module/servicemanagement/azure/update-azurevm).
+Pokud chcete povolit rozšíření diagnostiky na existující virtuální počítač, který byl vytvořen prostřednictvím modelu nasazení classic, nejprve pomocí [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) rutiny pro získání konfigurace virtuálního počítače. Aktualizujte konfiguraci virtuálního počítače pro zahrnutí rozšíření diagnostiky pomocí [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) rutiny. Nakonec platí aktualizovanou konfiguraci pro virtuální počítač s použitím [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
 
     $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context

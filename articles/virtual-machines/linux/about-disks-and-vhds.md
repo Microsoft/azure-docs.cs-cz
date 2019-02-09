@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 07d26590799f169e8e252557287b5c7e0003ea87
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3bc7853ea306a5872e34c7e90f2bd7d6c334eafd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469409"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958962"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>O diskové úložiště pro virtuální počítače Azure s Linuxem
 Stejně jako jakýkoli jiný počítač virtuální počítače v Azure používat disky jako místo pro uložení operačního systému, aplikace a data. Všechny virtuální počítače Azure obsahovat aspoň dva disky – disk operačního systému Linux a dočasný disk. Disk s operačním systémem je vytvořen z bitové kopie a disku s operačním systémem a image jsou virtuální pevné disky (VHD) uložené v účtu služby Azure storage. Virtuální počítače také může mít jeden nebo více datových disků, které jsou také uloženy jako virtuální pevné disky.
@@ -33,7 +33,7 @@ Každý virtuální počítač má jeden disk připojený operačního systému.
 
 ## <a name="temporary-disk"></a>Dočasný disk
 
-Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [opětovné nasazení virtuálního počítače](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Během standardní restartování virtuálního počítače byste neměli zachovat data na dočasné jednotce. Existují však případy, kde nemusí uchovávat data, jako je například přesun do nového hostitele. Odpovídajícím způsobem všechna data na dočasné jednotky by neměl být data, která jsou zásadní pro systém.
+Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [opětovné nasazení virtuálního počítače](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Během standardní restartování virtuálního počítače byste neměli zachovat data na dočasné jednotce. Existují však případy, kde nemusí uchovávat data, jako je například přesun do nového hostitele. Odpovídajícím způsobem všechna data na dočasné jednotky by neměl být data, která jsou zásadní pro systém. Při návrhu aplikace, která používá dočasné jednotky jako mezipaměť dat ke zvýšení výkonu aplikací se předpokládá v návrhu, mezipaměti dat na dočasné jednotky nejsou ztracena během restartování a že aplikace potřebuje čas opětovné sestavení mezipaměti dat před podobná výkon je dosaženo.
 
 Na virtuální počítače s Linuxem, tento disk je obvykle **/dev/sdb** a je ve formátu a připojený k **/mnt** pomocí agenta Azure Linux. Velikost dočasného disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [velikostí pro virtuální počítače s Linuxem](../windows/sizes.md).
 

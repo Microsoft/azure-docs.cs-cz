@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1b5c32d79e3664caf18cfc81fca563b295574cf4
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 7cc65c0564b6171e66c4337ce02e1c2d6449e101
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329313"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975411"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Automatizace úloh správy ve službě Azure Virtual Machines pomocí rozšíření agenta SQL serveru (Resource Manager)
 > [!div class="op_single_selector"]
@@ -64,6 +64,8 @@ Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuál
 
 * [Stáhnout a nakonfigurovat nejnovější příkazy Azure Powershellu](/powershell/azure/overview)
 
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > V tuto chvíli [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) není podporována pro FCI Server SQL v Azure. Doporučujeme odinstalovat rozšíření z virtuálních počítačů, které jsou součástí FCI. Funkce podporované rozšíření nejsou k dispozici pro virtuální počítače s SQL, po daný agent nebude odinstalován.
 
@@ -71,7 +73,7 @@ Požadavky pro použití rozšíření agenta SQL Server IaaS na vašem virtuál
 Rozšíření agenta SQL Server IaaS je automaticky nainstalován při zřizování Image Galerie virtuálních počítačů SQL serveru. Pokud je potřeba ručně znovu nainstalujte rozšíření na jednom z těchto virtuálních počítačů SQL serveru, použijte následující příkaz Powershellu:
 
 ```powershell
-Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
+Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
 ```
 
 > [!IMPORTANT]
@@ -85,13 +87,13 @@ Chcete-li zobrazit stav agenta na webu Azure Portal je jeden způsob, jak ověř
 
 ![Rozšíření agenta SQL Server IaaS na webu Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
-Můžete také použít **Get-AzureRmVMSqlServerExtension** rutiny Azure Powershellu.
+Můžete také použít **Get-AzVMSqlServerExtension** rutiny Azure Powershellu.
 
-    Get-AzureRmVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
+    Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
 
 Předchozí příkaz potvrdí, agent je nainstalovaný a poskytuje obecné informace stavu. Získáte také konkrétní stavové informace o automatické zálohování a opravy pomocí následujících příkazů.
 
-    $sqlext = Get-AzureRmVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
+    $sqlext = Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
     $sqlext.AutoPatchingSettings
     $sqlext.AutoBackupSettings
 
@@ -100,9 +102,9 @@ Na webu Azure Portal můžete odinstalovat rozšíření po kliknutí na tři te
 
 ![Odinstalace rozšíření agenta SQL Server IaaS na webu Azure portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 
-Můžete také použít **Remove-AzureRmVMSqlServerExtension** rutiny Powershellu.
+Můžete také použít **odebrat AzVMSqlServerExtension** rutiny Powershellu.
 
-    Remove-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
+    Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
 
 ## <a name="next-steps"></a>Další postup
 Začněte používat jednu ze služeb podporovaný rozšířením. Další podrobnosti najdete v článcích odkazuje [podporované služby](#supported-services) části tohoto článku.

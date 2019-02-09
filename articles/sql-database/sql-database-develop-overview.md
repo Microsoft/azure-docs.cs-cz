@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: d9de6100e3bb7c3cc71a7a251d790df4907be5f2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: 01c4bcfcea038f3e69620cdce78719c8c5128faf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820347"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964793"
 ---
 # <a name="sql-database-application-development-overview"></a>Přehled vývoje databázových aplikací SQL Database
 
@@ -49,14 +49,16 @@ Vyhněte se dlouhotrvajících transakcí, protože jakékoli neúspěchy infras
 
 ## <a name="resiliency"></a>Odolnost
 
-Azure SQL Database je Cloudová služba, ve kterém by se dalo očekávat přechodné chyby, ke kterým dochází v základní infrastruktuře nebo komunikaci mezi cloudové entity.
-Sice odolné na selhání přechodné infrastruktury Azure SQL Database, tyto chyby může ovlivnit vaše připojení. V případě přechodné chyby při připojování ke službě SQL Database by měl váš kód [volání zopakovat](sql-database-connectivity-issues.md). Doporučujeme, aby logika dalších pokusů používala logiku opakování, aby služba SQL Database nebyla zaplavená opakovanými pokusy několika klientů současně. Logika opakovaných pokusů závisí [chybové zprávy klientských programů služby SQL Database](sql-database-develop-error-messages.md).
+Azure SQL Database je Cloudová služba, ve kterém by se dalo očekávat přechodné chyby, ke kterým dochází v základní infrastruktuře nebo komunikaci mezi cloudové entity. Sice odolné na selhání přechodné infrastruktury Azure SQL Database, tyto chyby může ovlivnit vaše připojení. V případě přechodné chyby při připojování ke službě SQL Database by měl váš kód [volání zopakovat](sql-database-connectivity-issues.md). Doporučujeme, aby logika dalších pokusů používala logiku opakování, aby služba SQL Database nebyla zaplavená opakovanými pokusy několika klientů současně. Logika opakovaných pokusů závisí [chybové zprávy klientských programů služby SQL Database](sql-database-develop-error-messages.md).
+
+Další informace o tom, jak připravit pro události plánované údržby v Azure SQL database najdete v tématu [plánování údržby Azure událostí ve službě Azure SQL Database](sql-database-planned-maintenance.md).
 
 ## <a name="network-considerations"></a>Důležité informace o síti
 
 - Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [Konfigurace brány firewall Azure SQL Database](sql-database-configure-firewall-settings.md).
 - Pokud váš klientský program připojuje ke službě SQL Database, zatímco vašeho klienta běží na virtuálním počítači Azure (VM), je nutné otevřít určité rozsahy portů na virtuálním počítači. Další informace: [Porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Připojení klienta ke službě Azure SQL Database někdy obcházejí proxy a pracovat přímo s databází. Na významu nabývají jiné porty než 1433. Další informace najdete [architektura připojení k Azure SQL Database](sql-database-connectivity-architecture.md) a [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Sítě configation pro spravovanou instanci, najdete v části [konfiguraci sítě pro spravované instance](sql-database-howto-managed-instance.md#network-configuration).
 
 ## <a name="next-steps"></a>Další postup
 

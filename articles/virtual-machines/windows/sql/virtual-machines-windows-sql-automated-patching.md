@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0f6677cce369117886a8b4534423414c2fd56d0c
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d9cedd05e949d9684473d620629314a34802c1fc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331057"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977299"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Resource Manager)
 > [!div class="op_single_selector"]
@@ -53,6 +53,8 @@ Pokud chcete použít, automatické opravy, vezměte v úvahu následující po�
 **Azure PowerShell**:
 
 * [Nainstalujte nejnovější Azure PowerShell příkazy](/powershell/azure/overview) Pokud plánujete nakonfigurovat automatické opravy s využitím Powershellu.
+
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 > [!NOTE]
 > Automatizované opravy spoléhá na rozšíření agenta SQL Server IaaS. Aktuální Image SQL z Galerie virtuálních počítačů přidat toto rozšíření ve výchozím nastavení. Další informace najdete v tématu [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
@@ -103,13 +105,13 @@ Chcete-li povolit automatické opravy poprvé, Azure nakonfiguruje agenta SQL Se
 ## <a name="configuration-with-powershell"></a>Konfigurace pomocí Powershellu
 Po zřízení virtuálního počítače s SQL, pomocí prostředí PowerShell můžete nakonfigurovat automatizované opravy.
 
-V následujícím příkladu prostředí PowerShell slouží ke konfiguraci automatické opravy na existujícím virtuálním počítači SQL serveru. **AzureRM.Compute\New AzureRmVMSqlServerAutoPatchingConfig** příkaz nakonfiguruje nové časové období údržby pro automatické aktualizace.
+V následujícím příkladu prostředí PowerShell slouží ke konfiguraci automatické opravy na existujícím virtuálním počítači SQL serveru. **AzureRM.Compute\New AzVMSqlServerAutoPatchingConfig** příkaz nakonfiguruje nové časové období údržby pro automatické aktualizace.
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
-    $aps = AzureRM.Compute\New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+    $aps = AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
-    Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 
 > [!IMPORTANT]
 > Pokud rozšíření ještě není nainstalovaná, instalaci rozšíření restartuje službu systému SQL Server.
@@ -125,7 +127,7 @@ Podle tohoto příkladu, následující tabulka popisuje praktický na cílovém
 
 To může trvat několik minut, instalaci a konfiguraci agenta SQL Server IaaS.
 
-Chcete-li zakázat automatické opravy, spusťte stejný skript bez **-povolit** parametr **AzureRM.Compute\New AzureRmVMSqlServerAutoPatchingConfig**. Chybí **-povolit** parametr signály příkazu zakažte funkci.
+Chcete-li zakázat automatické opravy, spusťte stejný skript bez **-povolit** parametr **AzureRM.Compute\New AzVMSqlServerAutoPatchingConfig**. Chybí **-povolit** parametr signály příkazu zakažte funkci.
 
 ## <a name="next-steps"></a>Další postup
 Informace o dalších úlohách dostupných automation najdete v tématu [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).

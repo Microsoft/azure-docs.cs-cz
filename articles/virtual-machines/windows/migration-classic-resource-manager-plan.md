@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 540abeed3587959af5ca229f59343774b824547b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566233"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982892"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager
 Zatímco Azure Resource Manager nabízí spoustu skvělých funkcí, je velmi důležité naplánovat, aby to bylo jistě hladký chod průběhu migrace. Plánování zbavuje čas zajistí, že není narazíte na problémy při provádění aktivity migrace.
@@ -131,23 +131,25 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
     - Směrovací tabulky
 
     Můžete zkontrolovat aktuální kvóty správce prostředků Azure pomocí následujících příkazů v nejnovější verzi Azure Powershellu.
+    
+    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
     **COMPUTE** *(počet jader, sady dostupnosti)*
 
     ```powershell
-    Get-AzureRmVMUsage -Location <azure-region>
+    Get-AzVMUsage -Location <azure-region>
     ```
 
     **Síť** *(virtuálních sítí, statických veřejných IP adres, veřejné IP adresy nebo skupiny zabezpečení sítě, síťová rozhraní, nástrojů pro vyrovnávání zatížení, směrovací tabulky)*
 
     ```powershell
-    Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
+    Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **Úložiště** *(účet služby Storage)*
 
     ```powershell
-    Get-AzureRmStorageUsage
+    Get-AzStorageUsage
     ```
 
 - **Rozhraní API Azure Resource Manageru limitů omezování** – Pokud máte dostatečně velký prostředí (např.) > 400 virtuálních počítačů ve virtuální síti), pravděpodobně dojde k rozhraní API výchozí omezení pro zápis (aktuálně `1200 writes/hour`) v Azure Resource Manageru. Před zahájením migrace, by měla vyvolat lístku podpory zvýšit tento limit pro vaše předplatné.

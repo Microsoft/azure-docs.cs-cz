@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295776"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982841"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
 
@@ -37,7 +37,7 @@ az acr login --name myregistry
 
 Také se můžete přihlásit pomocí [docker login](https://docs.docker.com/engine/reference/commandline/login/). Například můžete mít [přiřadit instanční objekt služby](container-registry-authentication.md#service-principal) do vašeho registru pro účely scénáře automatizace. Když spustíte následující příkaz, interaktivně zadejte ID aplikace instančního objektu služby (uživatelské jméno) a heslo po zobrazení výzvy. Osvědčené postupy pro správu přihlašovací údaje, najdete v článku [docker login](https://docs.docker.com/engine/reference/commandline/login/) referenčních příkazu:
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -50,7 +50,7 @@ Vrátí oba příkazy `Login Succeeded` po dokončení.
 
 Nejprve si stáhněte veřejnou image serveru Nginx do místního počítače.
 
-```Docker
+```
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 Spusťte následující [dockeru spustit](https://docs.docker.com/engine/reference/run/) příkaz spustit místní instanci kontejneru Nginx interaktivně (`-it`) na portu 8080. `--rm` Argument určuje, že má být odebrána kontejneru při jeho zastavení.
 
-```Docker
+```
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ Chcete-li zastavit a odebrat kontejneru, stiskněte `Control` + `C`.
 
 Použití [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) vytvoření aliasu Image s plně kvalifikovanou cestou k vašemu registru. V tomto příkladu se určí obor názvů `samples`, aby se zabránilo nepořádku v kořenovém adresáři registru.
 
-```Docker
+```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ Další informace o značkách s obory názvů najdete v tématu [obory názvů 
 
 Teď, když jste označili image s plně kvalifikovanou cestu do privátního registru, můžete ho odeslat do registru příkazem [docker push](https://docs.docker.com/engine/reference/commandline/push/):
 
-```Docker
+```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Použití [operace docker pull](https://docs.docker.com/engine/reference/commandline/pull/) příkaz a vyžádejte si image z registru:
 
-```Docker
+```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/run/) příkaz ke spuštění image jste stáhli ze svého registru:
 
-```Docker
+```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ Chcete-li zastavit a odebrat kontejneru, stiskněte `Control` + `C`.
 
 Pokud image serveru Nginx už nepotřebujete, můžete ho místně pomocí odstranit [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) příkazu.
 
-```Docker
+```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 

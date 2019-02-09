@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6581c389cb7b1aa9c6ce6b9e84b56017264822f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 7ef7216b2d3adf99b0c1fd9ace84991169106529
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232949"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976261"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services-legacy"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services (starší verze)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa pomocí služby Azure Media Services s využitím Java SDK.
@@ -34,7 +35,7 @@ Pro dokončení tohoto kurzu potřebujete následující položky:
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Aktuální [Azure Media Services Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Postupy: Import klientského balíčku Azure Media Services Java SDK
+## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Postup: Import balíčku Azure Media Services Java SDK klienta
 
 Pokud chcete začít používat Media Services SDK pro Javu, přidejte odkaz na aktuální verzi (0.9.8) balíčku `azure-media` ze sady [Azure Media Services Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest).
 
@@ -48,7 +49,7 @@ Pokud například jako nástroj pro sestavování používáte `gradle`, přidej
 >[!NOTE]
 >Zdrojový kód pro Azure Media Services Java SDK najdete v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Zkontrolujte, že jste přešli k větvi 0.9, nikoli k hlavní větvi. 
 
-## <a name="how-to-use-azure-media-services-with-java"></a>Postupy: Používání Azure Media Services s Javou
+## <a name="how-to-use-azure-media-services-with-java"></a>Postup: Použití služby Azure Media Services s Javou
 
 >[!NOTE]
 >Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**.

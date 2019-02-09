@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/19/2018
-ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112e9aa023fb29bd960b61139861db4007c61b4d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245953"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962243"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Důležité informace týkající se používání virtuálních počítačů ve službě Azure Stack
 
@@ -41,8 +41,9 @@ Virtuální počítače Azure Stack poskytují na vyžádání, škálovatelnýc
 | Výkon disků virtuálních počítačů | Závisí na typ a velikost disku. | Závisí na velikosti virtuálního počítače z virtuálního počítače, které disky jsou připojené k odkazování [velikostí virtuálních počítačů, které jsou podporované ve službě Azure Stack](azure-stack-vm-sizes.md) článku.
 | Verze rozhraní API | Azure má vždy nejnovější verze rozhraní API pro všechny součásti virtuálního počítače. | Azure Stack podporuje konkrétních služeb Azure a konkrétní verze rozhraní API pro tyto služby. Chcete-li zobrazit seznam podporovaných verzí rozhraní API, přečtěte si [verze rozhraní API](#api-versions) části tohoto článku. |
 | Azure Instance Metadata service | Služba Azure Instance Metadata poskytuje informace o spuštěných instancí virtuálních počítačů, které lze použít ke správě nebo konfiguraci virtuálních počítačů.  | Služba Instance metadata se nepodporuje v Azure stacku. |
-|Skupinách dostupnosti virtuálních počítačů|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén<br>Spravované podporu pro disky|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén (až na 20)<br>Žádná podpora spravovaného disku|
-|Škálovací sady virtuálních počítačů|Nepodporuje automatické škálování|Automatické škálování není podporován.<br>Přidáte další instance škálovací sady s použitím webu portal, šablon Resource Manageru nebo prostředí PowerShell.
+| Skupinách dostupnosti virtuálních počítačů|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén (až na 20)|
+| Škálovací sady virtuálních počítačů|Nepodporuje automatické škálování|Automatické škálování není podporován.<br>Přidáte další instance škálovací sady s použitím webu portal, šablon Resource Manageru nebo prostředí PowerShell. |
+| Diagnostika virtuálního počítače | Diagnostika virtuálních počítačů s Linuxem | Diagnostika virtuálních počítačů s Linuxem nejsou podporované ve službě Azure Stack. Při nasazení virtuálního počítače s Linuxem s povolenou diagnostikou virtuálního počítače, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem prostřednictvím nastavení diagnostiky.
 
 ## <a name="virtual-machine-sizes"></a>Velikosti virtuálních počítačů
 
@@ -71,7 +72,7 @@ Velikosti virtuálních počítačů a jejich množství přidružený prostřed
 
 ## <a name="virtual-machine-extensions"></a>Rozšíření virtuálních počítačů
 
- Azure Stack zahrnuje malou sadu rozšíření. Další rozšíření a aktualizace jsou dostupné prostřednictvím webu Marketplace syndikace.
+Azure Stack zahrnuje malou sadu rozšíření. Další rozšíření a aktualizace jsou dostupné prostřednictvím webu Marketplace syndikace.
 
 Pomocí následujícího skriptu prostředí PowerShell se načíst seznam rozšíření virtuálních počítačů, které jsou k dispozici ve vašem prostředí Azure Stack:
 
@@ -82,6 +83,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+Pokud zřizování rozšíření na nasazení virtuálního počítače trvá příliš dlouho, dejte zřizování vypršení časového limitu namísto pokusu o zastavení procesu uvolnění nebo odstranění virtuálního počítače.
 
 ## <a name="api-versions"></a>Verze rozhraní API
 

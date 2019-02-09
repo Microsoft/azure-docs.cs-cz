@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: e390b3fbaca23dd60d1ab7553a2d69cfb9b4897c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 53ebb8ce51527adbd67310b19dccd6c7cbabf37f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878251"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977512"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnery dockeru pro analýzu textu
 
@@ -43,7 +43,7 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _rozhraní Text Analytics_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný koncový bod identifikátoru URI pro výraz __rozhraní Text Analytics_ prostředků v Azure.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _rozhraní Text Analytics_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný koncový bod identifikátoru URI pro výraz __rozhraní Text Analytics_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 Toto nastavení najdete v následujícím místě:
 
@@ -110,19 +110,19 @@ Následující příklady docker jsou pro kontejner keyphrase extrakce.
 
 ### <a name="basic-example"></a>Základní příklad 
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
   ```
 
 ### <a name="logging-example-with-command-line-arguments"></a>Příklad protokolování s argumenty příkazového řádku
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
   ```
 
 ### <a name="logging-example-with-environment-variable"></a>Příklad protokolování se proměnná prostředí
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase  Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY}
   ```
@@ -133,19 +133,19 @@ Následující příklady docker jsou pro kontejner detekce jazyka.
 
 ### <a name="basic-example"></a>Základní příklad
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
   ```
 
 ### <a name="logging-example-with-command-line-arguments"></a>Příklad protokolování s argumenty příkazového řádku
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
   ```
 
 ### <a name="logging-example-with-environment-variable"></a>Příklad protokolování se proměnná prostředí
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language  Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY}
   ```
@@ -156,19 +156,19 @@ Následující příklady docker jsou pro kontejner analýzy mínění.
 
 ### <a name="basic-example"></a>Základní příklad
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
   ```
 
 ### <a name="logging-example-with-command-line-arguments"></a>Příklad protokolování s argumenty příkazového řádku
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel=Information
   ```
 
 ### <a name="logging-example-with-environment-variable"></a>Příklad protokolování se proměnná prostředí
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY}
   ```

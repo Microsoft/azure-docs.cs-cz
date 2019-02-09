@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: cc8813b0ac90ded1c777f9b1200f4e26737168b9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 15b82455813c75ca14903f019a17828156638569
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459691"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983555"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Vyhledat a odstranit nepřipojené spravovaných a nespravovaných disků v Azure
 Když odstraníte virtuální počítač (VM) v Azure, ve výchozím nastavení, nebudou odstraněny všechny disky, které jsou připojené k virtuálnímu počítači. Tato funkce pomáhá zabránit ztrátě dat v důsledku neúmyslnému odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete i nadále platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky a omezení zbytečných nákladů. 
@@ -43,7 +43,7 @@ Následující skript hledá nepřipojené [spravované disky](managed-disks-ove
 # Set deleteUnattachedDisks=0 if you want to see the Id of the unattached Managed Disks
 $deleteUnattachedDisks=0
 
-$managedDisks = Get-AzureRmDisk
+$managedDisks = Get-AzDisk
 
 foreach ($md in $managedDisks) {
     
@@ -55,7 +55,7 @@ foreach ($md in $managedDisks) {
             
             Write-Host "Deleting unattached Managed Disk with Id: $($md.Id)"
 
-            $md | Remove-AzureRmDisk -Force
+            $md | Remove-AzDisk -Force
 
             Write-Host "Deleted unattached Managed Disk with Id: $($md.Id) "
 
@@ -86,11 +86,11 @@ Nespravované disky jsou soubory virtuálního pevného disku, které jsou ulož
 # Set deleteUnattachedVHDs=0 if you want to see the Uri of the unattached VHDs
 $deleteUnattachedVHDs=0
 
-$storageAccounts = Get-AzureRmStorageAccount
+$storageAccounts = Get-AzStorageAccount
 
 foreach($storageAccount in $storageAccounts){
 
-    $storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
+    $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
 
     $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $storageKey
 

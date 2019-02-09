@@ -14,45 +14,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 47f02c008a0498492af3503d90fda8ff6e2eefa8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: cc4fb07874015112791ef2eaf9c39b31b690006c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059086"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978659"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače Windows, který má více síťových rozhraní
 Virtuální počítače (VM) v Azure může mít více adaptéry virtuální sítě (NIC) připojených k nim. Běžný scénář, kdy je, aby různé podsítě pro front-endu a back-end připojení k síti. Můžete přiřadit více síťových adaptérů na virtuálním počítači s několika podsítěmi, ale tyto podsítě musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s více síťovými kartami připojenými k němu. Také se dozvíte, jak k přidání nebo odebrání síťových rozhraní z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače.
 
 ## <a name="prerequisites"></a>Požadavky
-Ujistěte se, že máte [nejnovější verze prostředí Azure PowerShell nainstalovaný a nakonfigurovaný](/powershell/azure/overview).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *myVM*.
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-a-vm-with-multiple-nics"></a>Vytvoření virtuálního počítače s několika síťovými kartami
 Nejprve vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *EastUs* umístění:
 
 ```powershell
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
 ### <a name="create-virtual-network-and-subnets"></a>Vytvoření virtuální sítě a podsítě
 Běžný scénář, kdy je pro virtuální síť má dvě nebo více podsítí. Jedna podsíť může být pro front-endu provoz, druhé pro back-end provoz. Pro připojení k obě podsítě, pak použijte několik síťových adaptérů na virtuálním počítači.
 
-1. Definovat dvě podsítě virtuální sítě s [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Následující příklad definuje podsítě pro *mySubnetFrontEnd* a *mySubnetBackEnd*:
+1. Definovat dvě podsítě virtuální sítě s [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Následující příklad definuje podsítě pro *mySubnetFrontEnd* a *mySubnetBackEnd*:
 
     ```powershell
-    $mySubnetFrontEnd = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
+    $mySubnetFrontEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
         -AddressPrefix "192.168.1.0/24"
-    $mySubnetBackEnd = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnetBackEnd" `
+    $mySubnetBackEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetBackEnd" `
         -AddressPrefix "192.168.2.0/24"
     ```
 
-2. Vytvoření virtuální sítě a podsítě s [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVnet*:
+2. Vytvoření virtuální sítě a podsítě s [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVnet*:
 
     ```powershell
-    $myVnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
+    $myVnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
         -Location "EastUs" `
         -Name "myVnet" `
         -AddressPrefix "192.168.0.0/16" `
@@ -61,17 +61,17 @@ Běžný scénář, kdy je pro virtuální síť má dvě nebo více podsítí. 
 
 
 ### <a name="create-multiple-nics"></a>Vytvoření více síťových rozhraní
-Vytvořit dva síťové adaptéry s [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Připojení k back endové podsítě jednu síťovou kartu pro front-endové podsítě a jednou síťovou KARTOU. Následující příklad vytvoří síťové adaptéry s názvem *myNic1* a *myNic2*:
+Vytvořit dva síťové adaptéry s [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Připojení k back endové podsítě jednu síťovou kartu pro front-endové podsítě a jednou síťovou KARTOU. Následující příklad vytvoří síťové adaptéry s názvem *myNic1* a *myNic2*:
 
 ```powershell
 $frontEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetFrontEnd'}
-$myNic1 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+$myNic1 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic1" `
     -Location "EastUs" `
     -SubnetId $frontEnd.Id
 
 $backEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetBackEnd'}
-$myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+$myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic2" `
     -Location "EastUs" `
     -SubnetId $backEnd.Id
@@ -88,39 +88,39 @@ Začněte vytvářet vaše konfigurace virtuálního počítače. Všechny velik
     $cred = Get-Credential
     ```
 
-2. Definování váš virtuální počítač s [nové AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). Následující příklad definuje virtuální počítač s názvem *myVM* a používá velikost virtuálního počítače, který podporuje více než dva síťové adaptéry (*Standard_DS3_v2*):
+2. Definování váš virtuální počítač s [nové AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig). Následující příklad definuje virtuální počítač s názvem *myVM* a používá velikost virtuálního počítače, který podporuje více než dva síťové adaptéry (*Standard_DS3_v2*):
 
     ```powershell
-    $vmConfig = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
+    $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
     ```
 
-3. Vytvoření rest konfiguraci virtuálního počítače s [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) a [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage). Následující příklad vytvoří virtuální počítač s Windows serverem 2016:
+3. Vytvoření rest konfiguraci virtuálního počítače s [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) a [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage). Následující příklad vytvoří virtuální počítač s Windows serverem 2016:
 
     ```powershell
-    $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig `
+    $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
         -Windows `
         -ComputerName "myVM" `
         -Credential $cred `
         -ProvisionVMAgent `
         -EnableAutoUpdate
-    $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig `
+    $vmConfig = Set-AzVMSourceImage -VM $vmConfig `
         -PublisherName "MicrosoftWindowsServer" `
         -Offer "WindowsServer" `
         -Skus "2016-Datacenter" `
         -Version "latest"
    ```
 
-4. Připojit dva síťové adaptéry, které jste předtím vytvořili pomocí [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
+4. Připojit dva síťové adaptéry, které jste předtím vytvořili pomocí [přidat AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
 
     ```powershell
-    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
-    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
+    $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
+    $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. Vytvoření virtuálního počítače s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
+5. Vytvoření virtuálního počítače s [nové AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
 
     ```powershell
-    New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
+    New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
 
 6. Přidání tras pro sekundární síťové karty pro operační systém podle postupu uvedeného v [konfigurace operačního systému pro několik síťových karet](#configure-guest-os-for-multiple-nics).
@@ -128,34 +128,34 @@ Začněte vytvářet vaše konfigurace virtuálního počítače. Všechny velik
 ## <a name="add-a-nic-to-an-existing-vm"></a>Přidat síťové rozhraní existujícímu virtuálnímu počítači
 Chcete-li přidat virtuální síťovou kartu k existujícímu virtuálnímu počítači, uvolněte virtuální počítač, přidejte virtuální síťovou kartu a pak spusťte virtuální počítač. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](resize-vm.md).
 
-1. Uvolněte virtuální počítač s [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* v *myResourceGroup*:
+1. Uvolněte virtuální počítač s [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* v *myResourceGroup*:
 
     ```powershell
-    Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+    Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. Získat existující konfiguraci virtuálního počítače pomocí [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm). Následující příklad získá informace o virtuální počítač s názvem *myVM* v *myResourceGroup*:
+2. Získat existující konfiguraci virtuálního počítače pomocí [rutiny Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Následující příklad získá informace o virtuální počítač s názvem *myVM* v *myResourceGroup*:
 
     ```powershell
-    $vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
+    $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. Následující příklad vytvoří virtuální síťovou kartu s [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) s názvem *myNic3* , který je připojen k *mySubnetBackEnd*. Virtuální síťová karta je pak připojené k virtuálnímu počítači s názvem *myVM* v *myResourceGroup* s [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
+3. Následující příklad vytvoří virtuální síťovou kartu s [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) s názvem *myNic3* , který je připojen k *mySubnetBackEnd*. Virtuální síťová karta je pak připojené k virtuálnímu počítači s názvem *myVM* v *myResourceGroup* s [přidat AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
 
     ```powershell
     # Get info for the back end subnet
-    $myVnet = Get-AzureRmVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
+    $myVnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
     $backEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetBackEnd'}
 
     # Create a virtual NIC
-    $myNic3 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+    $myNic3 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
         -Name "myNic3" `
         -Location "EastUs" `
         -SubnetId $backEnd.Id
 
     # Get the ID of the new virtual NIC and add to VM
-    $nicId = (Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" -Name "MyNic3").Id
-    Add-AzureRmVMNetworkInterface -VM $vm -Id $nicId | Update-AzureRmVm -ResourceGroupName "myResourceGroup"
+    $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "MyNic3").Id
+    Add-AzVMNetworkInterface -VM $vm -Id $nicId | Update-AzVm -ResourceGroupName "myResourceGroup"
     ```
 
     ### <a name="primary-virtual-nics"></a>Primární virtuální síťové karty
@@ -170,13 +170,13 @@ Chcete-li přidat virtuální síťovou kartu k existujícímu virtuálnímu po�
     $vm.NetworkProfile.NetworkInterfaces[1].Primary = $false
     
     # Update the VM state in Azure
-    Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroup"
+    Update-AzVM -VM $vm -ResourceGroupName "myResourceGroup"
     ```
 
-4. Spusťte virtuální počítač s [Start-AzureRmVm](/powershell/module/azurerm.compute/start-azurermvm):
+4. Spusťte virtuální počítač s [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
 
     ```powershell
-    Start-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+    Start-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 5. Přidání tras pro sekundární síťové karty pro operační systém podle postupu uvedeného v [konfigurace operačního systému pro několik síťových karet](#configure-guest-os-for-multiple-nics).
@@ -184,38 +184,38 @@ Chcete-li přidat virtuální síťovou kartu k existujícímu virtuálnímu po�
 ## <a name="remove-a-nic-from-an-existing-vm"></a>Odstranit síťové rozhraní z existujícího virtuálního počítače
 Odebrat virtuální síťovou kartu z existujícího virtuálního počítače, zrušit přidělení virtuálního počítače, odeberte virtuální síťovou kartu pak spusťte virtuální počítač.
 
-1. Uvolněte virtuální počítač s [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* v *myResourceGroup*:
+1. Uvolněte virtuální počítač s [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* v *myResourceGroup*:
 
     ```powershell
-    Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+    Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. Získat existující konfiguraci virtuálního počítače pomocí [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm). Následující příklad získá informace o virtuální počítač s názvem *myVM* v *myResourceGroup*:
+2. Získat existující konfiguraci virtuálního počítače pomocí [rutiny Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Následující příklad získá informace o virtuální počítač s názvem *myVM* v *myResourceGroup*:
 
     ```powershell
-    $vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
+    $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. Získání informací o odebrat síťovou kartu s [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface). Následující příklad získá informace *myNic3*:
+3. Získání informací o odebrat síťovou kartu s [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface). Následující příklad získá informace *myNic3*:
 
     ```powershell
     # List existing NICs on the VM if you need to determine NIC name
     $vm.NetworkProfile.NetworkInterfaces
 
-    $nicId = (Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
+    $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Odebrání síťového adaptéru s [Remove-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface) a pak aktualizujte virtuální počítač pomocí [Update-AzureRmVm](/powershell/module/azurerm.compute/update-azurermvm). Následující příklad odebere *myNic3* získány `$nicId` v předchozím kroku:
+4. Odebrání síťového adaptéru s [odebrat AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) a pak aktualizujte virtuální počítač pomocí [rutiny Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Následující příklad odebere *myNic3* získány `$nicId` v předchozím kroku:
 
     ```powershell
-    Remove-AzureRmVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
-        Update-AzureRmVm -ResourceGroupName "myResourceGroup"
+    Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
+        Update-AzVm -ResourceGroupName "myResourceGroup"
     ```   
 
-5. Spusťte virtuální počítač s [Start-AzureRmVm](/powershell/module/azurerm.compute/start-azurermvm):
+5. Spusťte virtuální počítač s [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
 
     ```powershell
-    Start-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+    Start-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>Vytvořte několik síťových karet s využitím šablon

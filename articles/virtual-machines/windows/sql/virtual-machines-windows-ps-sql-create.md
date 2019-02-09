@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60f04ac857079a1019ca744f3b26b0d05ae6ca6c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c37347928e75986fa8aee0d3d0a4db2667312f56
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426926"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984371"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak zřídit virtuální počítače SQL serveru pomocí Azure Powershellu
 
@@ -29,14 +29,14 @@ Tato příručka vysvětluje možnosti k vytvoření virtuálních počítačů 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento článek vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ## <a name="configure-your-subscription"></a>Konfigurace předplatného
 
-1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním příkazu **Connect-AzureRmAccount**.
+1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním **připojit AzAccount** příkazu.
 
    ```PowerShell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 1. Měli byste vidět obrazovku pro zadání přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
@@ -104,10 +104,10 @@ $OSDiskName = $VMName + "OSDisk"
 
 Použijte následující proměnné k definování image SQL serveru používat pro virtuální počítač. 
 
-1. Nejprve vypište všechny nabídky imagí SQL serveru s `Get-AzureRmVMImageOffer` příkazu. Tento příkaz zobrazí seznam aktuálních imagí, které jsou k dispozici na webu Azure Portal a také starší imagí, které se dá nainstalovat jenom pomocí prostředí PowerShell:
+1. Nejprve vypište všechny nabídky imagí SQL serveru s `Get-AzVMImageOffer` příkazu. Tento příkaz zobrazí seznam aktuálních imagí, které jsou k dispozici na webu Azure Portal a také starší imagí, které se dá nainstalovat jenom pomocí prostředí PowerShell:
 
    ```PowerShell
-   Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
+   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
    ```
 
 1. Pro účely tohoto kurzu použijte následující proměnné k určení a SQL serverem 2017 na Windows serveru 2016.
@@ -121,7 +121,7 @@ Použijte následující proměnné k definování image SQL serveru používat 
 1. Potom zobrazte seznam dostupných edice pro vaši nabídku.
 
    ```PowerShell
-   Get-AzureRmVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
+   Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
 1. Pro účely tohoto kurzu použijte SQL Server 2017 Developer edition (**SQLDEV**). U verze Developer edition je volně licencované pro vývoj a testování a platíte jenom náklady na provozování virtuálního počítače.
@@ -131,21 +131,21 @@ Použijte následující proměnné k definování image SQL serveru používat 
    ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Pomocí modelu nasazení Resource Manageru je první objekt, který vytvoříte skupinu prostředků. Použití [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) rutina pro vytvoření skupiny prostředků Azure a její prostředky. Určete proměnné, které dřív inicializovaný na název skupiny prostředků a umístění.
+Pomocí modelu nasazení Resource Manageru je první objekt, který vytvoříte skupinu prostředků. Použití [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) rutina pro vytvoření skupiny prostředků Azure a její prostředky. Určete proměnné, které dřív inicializovaný na název skupiny prostředků a umístění.
 
 Spusťte tuto rutinu k vytvoření nové skupiny prostředků.
 
 ```PowerShell
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
-Virtuální počítač vyžaduje prostředky úložiště pro disk s operačním systémem a soubory protokolu a data systému SQL Server. Pro jednoduchost vytvoříte jednoho disku pro obojí. Další disky můžete připojit později pomocí [Azure přidat Disk](/powershell/module/servicemanagement/azure/add-azuredisk) rutiny umístit data systému SQL Server a protokolu se soubory ve vyhrazených disků. Použití [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny v nové skupině prostředků vytvořte účet úložiště úrovně standard. Určete proměnné, které jste dříve inicializován pro název účtu úložiště, název Sku úložiště a umístění.
+Virtuální počítač vyžaduje prostředky úložiště pro disk s operačním systémem a soubory protokolu a data systému SQL Server. Pro jednoduchost vytvoříte jednoho disku pro obojí. Další disky můžete připojit později pomocí [Azure přidat Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) rutiny umístit data systému SQL Server a protokolu se soubory ve vyhrazených disků. Použití [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) rutiny v nové skupině prostředků vytvořte účet úložiště úrovně standard. Určete proměnné, které jste dříve inicializován pro název účtu úložiště, název Sku úložiště a umístění.
 
 Spusťte tuto rutinu k vytvoření nového účtu úložiště.
 
 ```PowerShell
-$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName `
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
    -Name $StorageName -SkuName $StorageSku `
    -Kind "Storage" -Location $Location
 ```
@@ -161,7 +161,7 @@ Virtuální počítač vyžaduje pro připojení k síti, počet síťových pro
 * Síťové rozhraní musí být definované s veřejné nebo privátní IP adresu.
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>Vytvořte konfiguraci podsítě virtuální sítě
-Začněte vytvořením konfiguraci podsítě pro virtuální síť. Pro účely tohoto kurzu vytvořte s využitím výchozí podsíť [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) rutiny. Určete proměnné, které dříve inicializován pro předponu názvu a adresy podsítě.
+Začněte vytvořením konfiguraci podsítě pro virtuální síť. Pro účely tohoto kurzu vytvořte s využitím výchozí podsíť [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) rutiny. Určete proměnné, které dříve inicializován pro předponu názvu a adresy podsítě.
 
 > [!NOTE]
 > Můžete definovat další vlastnosti konfigurace podsítě virtuální sítě pomocí této rutiny, ale to je nad rámec tohoto kurzu.
@@ -169,22 +169,22 @@ Začněte vytvořením konfiguraci podsítě pro virtuální síť. Pro účely 
 Spusťte tuto rutinu vytvořte vlastní konfiguraci virtuální podsítě.
 
 ```PowerShell
-$SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
+$SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
 ```
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-V dalším kroku vytvořte virtuální síť v nové skupině prostředků pomocí [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) rutiny. Určete proměnné, které jste dříve inicializován pro název, umístění a předpony adresy. Použijte konfiguraci podsítě, který jste definovali v předchozím kroku.
+V dalším kroku vytvořte virtuální síť v nové skupině prostředků pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) rutiny. Určete proměnné, které jste dříve inicializován pro název, umístění a předpony adresy. Použijte konfiguraci podsítě, který jste definovali v předchozím kroku.
 
 Spusťte tuto rutinu k vytvoření svojí virtuální sítě.
 
 ```PowerShell
-$VNet = New-AzureRmVirtualNetwork -Name $VNetName `
+$VNet = New-AzVirtualNetwork -Name $VNetName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
 ```
 
 ### <a name="create-the-public-ip-address"></a>Vytvoření veřejné IP adresy
-Teď, když je definována vaší virtuální sítě, musíte nakonfigurovat IP adresu pro připojení k virtuálnímu počítači. Pro účely tohoto kurzu vytvořte veřejnou IP adresu pomocí dynamických IP adres pro podporu připojení k Internetu. Použití [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) rutina pro vytvoření veřejné IP adresy v nové skupiny prostředků. Určete proměnné, které jste dříve inicializován pro název, umístění, metodu přidělování a popisek názvu domény DNS.
+Teď, když je definována vaší virtuální sítě, musíte nakonfigurovat IP adresu pro připojení k virtuálnímu počítači. Pro účely tohoto kurzu vytvořte veřejnou IP adresu pomocí dynamických IP adres pro podporu připojení k Internetu. Použití [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) rutina pro vytvoření veřejné IP adresy v nové skupiny prostředků. Určete proměnné, které jste dříve inicializován pro název, umístění, metodu přidělování a popisek názvu domény DNS.
 
 > [!NOTE]
 > Můžete definovat další vlastnosti veřejné IP adresy pomocí této rutiny, ale to je nad rámec tento úvodní kurz. Můžete také vytvořit privátní adresu nebo adresu se statickou adresou, která je však také nad rámec tohoto kurzu.
@@ -192,7 +192,7 @@ Teď, když je definována vaší virtuální sítě, musíte nakonfigurovat IP 
 Spusťte tuto rutinu k vytvoření veřejné IP adresy.
 
 ```PowerShell
-$PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName `
+$PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
 ```
@@ -203,14 +203,14 @@ K zabezpečení přenosů virtuálního počítače a serveru SQL Server, vytvo�
 1. Nejprve vytvořte pravidlo skupiny zabezpečení sítě pro připojení RDP k povolení připojení ke vzdálené ploše.
 
    ```PowerShell
-   $NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
+   $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
    ```
 1. Konfigurace pravidla skupiny zabezpečení sítě, které umožní provoz na portu TCP 1433. Tento postup umožňuje připojení k SQL serveru přes internet.
 
    ```PowerShell
-   $NsgRuleSQL = New-AzureRmNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
+   $NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
       -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
    ```
@@ -218,18 +218,18 @@ K zabezpečení přenosů virtuálního počítače a serveru SQL Server, vytvo�
 1. Vytvořte skupinu zabezpečení sítě.
 
    ```PowerShell
-   $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
+   $Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
       -Location $Location -Name $NsgName `
       -SecurityRules $NsgRuleRDP,$NsgRuleSQL
    ```
 
 ### <a name="create-the-network-interface"></a>Vytvořte síťové rozhraní
-Nyní jste připraveni vytvořit síťové rozhraní pro váš virtuální počítač. Použití [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) rutina pro vytvoření síťového rozhraní v nové skupiny prostředků. Zadejte název, umístění, podsíť a veřejnou IP adresu definovaný dříve.
+Nyní jste připraveni vytvořit síťové rozhraní pro váš virtuální počítač. Použití [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) rutina pro vytvoření síťového rozhraní v nové skupiny prostředků. Zadejte název, umístění, podsíť a veřejnou IP adresu definovaný dříve.
 
 Spusťte tuto rutinu k vytvoření síťového rozhraní.
 
 ```PowerShell
-$Interface = New-AzureRmNetworkInterface -Name $InterfaceName `
+$Interface = New-AzNetworkInterface -Name $InterfaceName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id `
    -NetworkSecurityGroupId $Nsg.Id
@@ -244,12 +244,12 @@ Teď, když jsou definovány úložné a síťové prostředky, jste připraveni
 - Zadejte disk s operačním systémem.
 
 ### <a name="create-the-vm-object"></a>Vytvoření objektu VM
-Začněte tak, že určíte velikost virtuálního počítače. Pro účely tohoto kurzu zadejte DS13. Použití [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) rutina pro vytvoření objektu konfigurovat virtuální počítač. Určete proměnné, které jste dříve inicializován pro název a velikost.
+Začněte tak, že určíte velikost virtuálního počítače. Pro účely tohoto kurzu zadejte DS13. Použití [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) rutina pro vytvoření objektu konfigurovat virtuální počítač. Určete proměnné, které jste dříve inicializován pro název a velikost.
 
 Spuštění této rutiny se vytvořit objekt virtuálního počítače.
 
 ```PowerShell
-$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 ```
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>Vytvořte objekt přihlašovacích údajů pro uložení jméno a heslo pro přihlašovací údaje místního správce
@@ -262,7 +262,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>Nastavit vlastnosti operačního systému pro virtuální počítač
-Nyní jste připraveni nastavit vlastnosti operačního systému virtuálního počítače s [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) rutiny.
+Nyní jste připraveni nastavit vlastnosti operačního systému virtuálního počítače s [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) rutiny.
 
 - Nastavte typ operačního systému jako Windows.
 - Vyžadují [agenta virtuálního počítače](../../extensions/agent-windows.md) k instalaci.
@@ -272,18 +272,18 @@ Nyní jste připraveni nastavit vlastnosti operačního systému virtuálního p
 Spusťte tuto rutinu můžete nastavit vlastnosti operačního systému pro virtuální počítač.
 
 ```PowerShell
-$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
    -Windows -ComputerName $ComputerName -Credential $Credential `
    -ProvisionVMAgent -EnableAutoUpdate
 ```
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>Přidání síťového rozhraní k virtuálnímu počítači
-Pak pomocí [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) rutiny pro přidání síťového rozhraní pomocí proměnné, kterou jste definovali dříve.
+Pak pomocí [přidat AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) rutiny pro přidání síťového rozhraní pomocí proměnné, kterou jste definovali dříve.
 
 Spuštění této rutiny k nastavení síťového rozhraní pro váš virtuální počítač.
 
 ```PowerShell
-$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
 ```
 
 ### <a name="set-the-blob-storage-location-for-the-disk-to-be-used-by-the-virtual-machine"></a>Nastavte umístění úložiště objektů blob disku, který se použije pro virtuální počítač
@@ -296,7 +296,7 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 ```
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>Nastavit vlastnosti disku pro virtuální počítač operační systém
-Dále nastavte vlastnosti disku virtuálního počítače s využitím operačního systému [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) rutiny. 
+Dále nastavte vlastnosti disku virtuálního počítače s využitím operačního systému [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) rutiny. 
 
 - Zadejte, že operační systém pro virtuální počítače budou přicházet z image.
 - Nastavení ukládání do mezipaměti pro čtení jenom (protože systém SQL Server je instalován na stejném disku).
@@ -305,23 +305,23 @@ Dále nastavte vlastnosti disku virtuálního počítače s využitím operačn�
 Spusťte tuto rutinu můžete nastavit vlastnosti disku pro virtuální počítač operační systém.
 
 ```PowerShell
-$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name `
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
    $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
 ```
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>Zadat image platformy pro virtuální počítač
-Posledním krokem konfigurace je zadat image platformy pro váš virtuální počítač. V tomto kurzu pomocí nejnovější image SQL Server 2016 CTP. Použít [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) rutiny k použití této image s proměnnými, které jste definovali dříve.
+Posledním krokem konfigurace je zadat image platformy pro váš virtuální počítač. V tomto kurzu pomocí nejnovější image SQL Server 2016 CTP. Použít [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) rutiny k použití této image s proměnnými, které jste definovali dříve.
 
 Spusťte tuto rutinu zadat image platformy pro váš virtuální počítač.
 
 ```PowerShell
-$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine `
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
    -PublisherName $PublisherName -Offer $OfferName `
    -Skus $Sku -Version $Version
 ```
 
 ## <a name="create-the-sql-vm"></a>Vytvoření virtuálního počítače pro SQL
-Teď, když jste dokončili kroky konfigurace, jste připraveni vytvořit virtuální počítač. Použití [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) rutina pro vytvoření virtuálního počítače pomocí proměnné, které jste definovali.
+Teď, když jste dokončili kroky konfigurace, jste připraveni vytvořit virtuální počítač. Použití [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) rutina pro vytvoření virtuálního počítače pomocí proměnné, které jste definovali.
 
 > [!TIP]
 > Vytvoření virtuálního počítače může trvat několik minut.
@@ -329,7 +329,7 @@ Teď, když jste dokončili kroky konfigurace, jste připraveni vytvořit virtu�
 Spusťte tuto rutinu k vytvoření virtuálního počítače.
 
 ```PowerShell
-New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 ```
 
 Vytvoření virtuálního počítače.
@@ -342,7 +342,7 @@ Automatizovanou správu funkce se podporují virtuální počítače s SQL serve
 
 
    ```PowerShell
-   Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
 ## <a name="stop-or-remove-a-vm"></a>Zastavení nebo odstranění virtuálního počítače
@@ -350,13 +350,13 @@ Automatizovanou správu funkce se podporují virtuální počítače s SQL serve
 Pokud nepotřebujete, virtuálnímu počítači spouštět nepřetržitě, byste se vyhnout zbytečným poplatkům? zastavte ho, když se nepoužívá. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
 
 ```PowerShell
-Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
+Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu příkazem **Remove-AzureRmResourceGroup**. Tím trvale odstraní virtuální počítač, proto tento příkaz používejte s opatrností.
+Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači **odebrat AzResourceGroup** příkazu. Tím trvale odstraní virtuální počítač, proto tento příkaz používejte s opatrností.
 
 ## <a name="example-script"></a>Ukázkový skript
-Následující skript obsahuje celý skript prostředí PowerShell pro účely tohoto kurzu. Předpokládá, že jste již nastavili předplatné Azure pro použití s **Connect-AzureRmAccount** a **Select-AzureRmSubscription** příkazy.
+Následující skript obsahuje celý skript prostředí PowerShell pro účely tohoto kurzu. Předpokládá, že jste již nastavili předplatné Azure pro použití s **připojit AzAccount** a **vyberte AzSubscription** příkazy.
 
 ```PowerShell
 # Variables
@@ -392,36 +392,36 @@ $Sku = "SQLDEV"
 $Version = "latest"
 
 # Resource Group
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 # Storage
-$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
 
 # Network
-$SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
-$VNet = New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
-$PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
-$NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
-$NsgRuleSQL = New-AzureRmNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
-$Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location -Name $NsgName -SecurityRules $NsgRuleRDP,$NsgRuleSQL
-$Interface = New-AzureRmNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id -NetworkSecurityGroupId $Nsg.Id
+$SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
+$VNet = New-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
+$PublicIp = New-AzPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
+$NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
+$NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
+$Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location -Name $NsgName -SecurityRules $NsgRuleRDP,$NsgRuleSQL
+$Interface = New-AzNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id -NetworkSecurityGroupId $Nsg.Id
 
 # Compute
-$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
-$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate #-TimeZone = $TimeZone
-$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate #-TimeZone = $TimeZone
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
 $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
-$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
 
 # Image
-$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
 
 # Create the VM in Azure
-New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
 # Add the SQL IaaS Extension
-Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
 ```
 
 ## <a name="next-steps"></a>Další postup

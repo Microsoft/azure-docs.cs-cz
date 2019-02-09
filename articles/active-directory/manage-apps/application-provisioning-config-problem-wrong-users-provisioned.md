@@ -3,8 +3,8 @@ title: Zřizuje se špatná sada uživatelů k aplikaci Galerie Azure AD | Dokum
 description: Zjistěte, jak zjistit, proč jinou sadu uživatelé se nezřizují k aplikaci než ty, které jste očekávali
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 18768b6023077cb48f6189ddcf3c9a7e80610ab7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a7feadc2006d813d6827d6a8a4ebd94d220412ec
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160356"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959540"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Zřizuje se špatná sada uživatelů k aplikaci Galerie Azure AD
 

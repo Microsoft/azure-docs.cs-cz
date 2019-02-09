@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24a12c9144535fecd23be432ee33402eb6528b28
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413270"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984337"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Řešení problémů s nasazením při vytváření nového virtuálního počítače Windows v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -44,23 +44,23 @@ Proces řešení potíží, shromažďování protokolů aktivit k identifikaci 
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** Pokud operační systém Windows zobecněn a je nahraný a zachytit pomocí nastavení zobecněný, pak nebudou všechny chyby. Podobně pokud je operační systém Windows specializovaná a je nahraný a zachytit pomocí speciální nastavení, pak nebudou všechny chyby.
+**ACOVNÍ ADRESÁŘ:** Pokud je operační systém Windows generalizovaný a je nahraný a zachytit pomocí nastavení zobecněný, pak nebudou všechny chyby. Podobně pokud je operační systém Windows specializovaná a je nahraný a zachytit pomocí speciální nastavení, pak nebudou všechny chyby.
 
 **Chyby nahrávání:**
 
 **N<sup>1</sup>:** Pokud je operační systém Windows generalizovaný a nahrát ho jako specializovaná, budete mít k vypršení časového limitu zřizování se zablokuje a na obrazovce OOBE virtuálního počítače.
 
-**N<sup>2</sup>:** Pokud je operační systém Windows specializované a nahrání generalizovaného, zobrazí se zřizování chyba s virtuálním Počítačem, zaseknuto v OOBE obrazovky, protože nový virtuální počítač běží s původní název počítače uživatelské jméno a heslo.
+**N<sup>2</sup>:** Pokud je operační systém Windows specializované a nahrání generalizovaného, zobrazí se zřizování chyba s virtuálním Počítačem, zaseknuto v OOBE obrazovky, protože nový virtuální počítač běží s původní název počítače, uživatelské jméno a heslo.
 
 **Řešení**
 
-Chcete-li oba tyto chyby vyřešit, použijte [Add-AzureRmVhd původní virtuální pevný disk nahrát](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd), k dispozici místně, stejné nastavení jako, který pro operační systém (zobecněný/specializované). Pokud chcete nahrát jako generalizovaná, nezapomeňte nejdřív spusťte nástroj sysprep.
+Chcete-li oba tyto chyby vyřešit, použijte [přidat AzVhd původní virtuální pevný disk nahrát](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), k dispozici místně, stejné nastavení jako, který pro operační systém (zobecněný/specializované). Pokud chcete nahrát jako generalizovaná, nezapomeňte nejdřív spusťte nástroj sysprep.
 
 **Zachycení chyb:**
 
 **N<sup>3</sup>:** Pokud je operační systém Windows zobecněn, a jsou zachyceny jako specializovaná, obdržíte chybu časového limitu zřizování protože původní virtuální počítač se nedá použít jako ho označí jako zobecněný.
 
-**N<sup>4</sup>:** Pokud operační systém je Windows specializovaný, se zaznamenávají jako generalizovaná, obdržíte chybu zřizování selhání, protože nový virtuální počítač běží s původní název počítače, uživatelské jméno a heslo. Navíc původní virtuální počítač je nepoužitelný protože je označená jako specializované.
+**N<sup>4</sup>:** Pokud je operační systém Windows specializované a jejím zaznamenání jako generalizovaná, obdržíte chybu zřizování selhání, protože nový virtuální počítač běží s původní název počítače, uživatelské jméno a heslo. Navíc původní virtuální počítač je nepoužitelný protože je označená jako specializované.
 
 **Řešení**
 
@@ -69,7 +69,7 @@ Chcete-li oba tyto chyby vyřešit, odstraňte aktuální image na portálu, a [
 ## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problém: Vlastní/galerie/marketplace image; došlo k chybě přidělení
 Tato chyba nastane v situacích, když je připnutá novou žádost o virtuální počítač do clusteru, který nemůže zajišťovat podporu žádá velikost virtuálního počítače, nebo nemá žádné dostupné volné místo tak, aby vyhovovaly žádosti.
 
-**1. příčina:** clusteru nepodporuje požadovanou velikost virtuálního počítače.
+**1. příčina:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
 
 **Řešení 1:**
 
@@ -80,7 +80,7 @@ Tato chyba nastane v situacích, když je připnutá novou žádost o virtuáln�
   * Po zastavení všech virtuálních počítačů, vytvoření nového virtuálního počítače v požadovanou velikost.
   * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Start**.
 
-**2. příčina:** clusteru nemá žádné volné prostředky.
+**2. příčina:** Cluster nemá žádné volné prostředky.
 
 **Řešení 2:**
 

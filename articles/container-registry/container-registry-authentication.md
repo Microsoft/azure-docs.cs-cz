@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6ae388107e527b399dc758abccbefcec955a60d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9682b9b832a8fd7374cb84e8cc6faad69df15945
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661628"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979060"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Dockeru
 
@@ -60,7 +60,7 @@ Instanční objekty umožňují bezobslužného připojení k registru v pull a 
 
 Můžete taky přihlásit přímo pomocí instančního objektu. Když spustíte následující příkaz, interaktivně zadejte ID aplikace instančního objektu služby (uživatelské jméno) a heslo po zobrazení výzvy. Osvědčené postupy pro správu přihlašovací údaje, najdete v článku [docker login](https://docs.docker.com/engine/reference/commandline/login/) referenčních příkazu:
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -80,7 +80,7 @@ Každý registr kontejnerů zahrnuje uživatelský účet správce, který je ve
 
 Účet správce je k dispozici se dvě hesla, které může být znovu vygenerován. Dvě hesla bylo možné zachovat připojení k registru pomocí jednoho hesla, zatímco si znovu vygenerujete druhé. Pokud je povolený účet správce, můžete předat uživatelské jméno a heslo buď `docker login` příkaz po zobrazení výzvy pro základní ověřování do registru. Příklad:
 
-```Docker
+```
 docker login myregistry.azurecr.io 
 ```
 

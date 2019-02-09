@@ -3,8 +3,8 @@ title: Potíže při přihlašování k aplikaci mimo Galerii konfigurované pro
 description: Pokyny pro specifické problémy mohou nastat při přihlašování k aplikaci konfigurované pro založené na SAML federované jednotné přihlašování s Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 279f0290bb873e06146ec83d921caa50d482f924
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 99fadd89c79b0c173123fa4ca62612b3cf74ad79
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182876"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959779"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci mimo Galerii konfigurované pro federované jednotné přihlašování
 

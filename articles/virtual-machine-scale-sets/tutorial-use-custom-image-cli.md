@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7e2e092af0fc0340a0db7b958b02d3d16942ca77
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b6eaf6989a6ae155402b2c90f3da4917e43dad60
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755182"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983317"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. V tomto kurzu se naučíte:
@@ -87,7 +87,8 @@ exit
 ## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Vytvoření vlastní image virtuálního počítače ze zdrojového virtuálního počítače
 Zdrojový virtuální počítač je teď přizpůsobený a obsahuje nainstalovaný webový server NGINX. Teď vytvoříme vlastní image virtuálního počítače pro použití se škálovací sadou.
 
-Abyste mohli vytvořit image, virtuální počítač musí být uvolněný. Uvolněte virtuální počítač pomocí příkazu [az vm deallocate](/cli//azure/vm). Pak pomocí příkazu [az vm generalize](/cli//azure/vm) nastavte virtuální počítač do generalizovaného stavu, aby platforma Azure věděla, že je virtuální počítač připravený k použití pro vlastní image. Image můžete vytvořit pouze z generalizovaného počítače:
+Abyste mohli vytvořit image, virtuální počítač musí být uvolněný. Uvolněte virtuální počítač pomocí příkazu [az vm deallocate](/cli//azure/vm). Pak pomocí příkazu [az vm generalize](/cli//azure/vm#az_vm_generalize) nastavte virtuální počítač do generalizovaného stavu, aby platforma Azure věděla, že je virtuální počítač připravený k použití pro vlastní image. Image můžete vytvořit pouze z generalizovaného počítače:
+
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroup --name myVM

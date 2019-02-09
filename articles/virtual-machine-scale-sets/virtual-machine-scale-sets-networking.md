@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: a939438ad657066805f0179eb06f829abf301763
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: 9203e786f701929a25251066190f5d507eacac02
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740123"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982020"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
 Když nasadíte škálovací sadu virtuálních počítačů Azure prostřednictvím portálu, pro určité vlastnosti sítě se nastaví výchozí hodnoty, jako například příchozí pravidla NAT pro Azure Load Balancer. Tento článek popisuje, jak používat některé pokročilejší síťové funkce, které můžete nakonfigurovat se škálovacími sadami.
 
-Všechny funkce popsané v tomto článku můžete nakonfigurovat pomocí šablon Azure Resource Manageru. Pro vybrané funkce jsou zahrnuté také příklady Azure CLI a PowerShellu. Použijte Azure CLI 2.0.10 nebo novější a PowerShell 4.2.0 nebo novější.
+Všechny funkce popsané v tomto článku můžete nakonfigurovat pomocí šablon Azure Resource Manageru. Pro vybrané funkce jsou zahrnuté také příklady Azure CLI a PowerShellu.
 
 ## <a name="accelerated-networking"></a>Akcelerované síťové služby
 Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virtuálním počítači povolují rozhraní SR-IOV (single-root I/O virtualization). Další informace o akcelerovaných síťových službách najdete v tématech věnovaných akcelerovaným síťovým službám pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Pokud chcete používat akcelerované síťové služby se škálovacími sadami, v nastavení networkInterfaceConfigurations vaší škálovací sady nastavte enableAcceleratedNetworking na hodnotu **true**. Příklad:
@@ -169,14 +169,14 @@ Ukázková šablona: [201-vmss-public-ip-linux](https://github.com/Azure/azure-q
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Dotazování veřejných IP adres virtuálních počítačů ve škálovací sadě
 Pokud chcete zobrazit seznam veřejných IP adres přiřazených k virtuálním počítačům ve škálovací sadě pomocí rozhraní příkazového řádku, použijte příkaz **az vmss list-instance-public-ips**.
 
-Pokud chcete zobrazit seznam veřejných IP adres škálovací sady pomocí PowerShellu, použijte příkaz _Get-AzureRmPublicIpAddress_. Příklad:
+Seznam škálovací sadě veřejné IP adresy, které používají Powershellu, použijte _Get-AzPublicIpAddress_ příkazu. Příklad:
 ```PowerShell
-Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 Veřejné IP adresy můžete také zjistit přímo z ID prostředku nakonfigurované veřejné IP adresy. Příklad:
 ```PowerShell
-Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
 Veřejné IP adresy přiřazené k virtuálním počítačům ve škálovací sadě můžete také zobrazit prostřednictvím dotazování [Azure Resource Exploreru](https://resources.azure.com) nebo rozhraní Azure REST API verze **2017-03-30** nebo novější.
@@ -401,5 +401,5 @@ az vmss show \
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o virtuálních sítích Azure najdete v [přehledu virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/05/2018
+ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 1db4dd2f1aa550ea4ccac55882f147c0585cdd0c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 50470edff81194b9c8885aa94d1eab1e6c18ad88
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466723"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984082"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 
@@ -81,10 +81,10 @@ K dokončení příkladu v tomto kurzu potřebujete existující virtuální po�
 Uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači můžete nastavit pomocí příkazu [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 
-Vytvořte virtuální počítač pomocí příkazu [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Zobrazí se výzva k zadání uživatelského jména a hesla pro účet správce virtuálního počítače.
+Vytvoření virtuálního počítače s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Zobrazí se výzva k zadání uživatelského jména a hesla pro účet správce virtuálního počítače.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupDisk" `
     -Name "myVM" `
     -Location "East US" `
@@ -95,34 +95,34 @@ New-AzureRmVm `
 ```
 
 
-Vytvořte počáteční konfiguraci pomocí rutiny [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig). Následující příklad nakonfiguruje disk o velikosti 128 GB.
+Vytvořte počáteční konfiguraci pomocí [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). Následující příklad nakonfiguruje disk o velikosti 128 GB.
 
 ```azurepowershell-interactive
-$diskConfig = New-AzureRmDiskConfig `
+$diskConfig = New-AzDiskConfig `
     -Location "EastUS" `
     -CreateOption Empty `
     -DiskSizeGB 128
 ```
 
-Vytvořte datový disk pomocí příkazu [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk).
+Vytvořit datový disk se [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) příkazu.
 
 ```azurepowershell-interactive
-$dataDisk = New-AzureRmDisk `
+$dataDisk = New-AzDisk `
     -ResourceGroupName "myResourceGroupDisk" `
     -DiskName "myDataDisk" `
     -Disk $diskConfig
 ```
 
-Získejte virtuální počítač, ke kterému chcete přidat datový disk, pomocí příkazu [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm).
+Převeďte virtuální počítač, který chcete přidat datový disk, pomocí [rutiny Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) příkazu.
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
+$vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Přidejte datový disk do konfigurace virtuálního počítače pomocí příkazu [Add-AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk).
+Přidání datového disku do konfigurace virtuálního počítače s [přidat AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) příkazu.
 
 ```azurepowershell-interactive
-$vm = Add-AzureRmVMDataDisk `
+$vm = Add-AzVMDataDisk `
     -VM $vm `
     -Name "myDataDisk" `
     -CreateOption Attach `
@@ -130,10 +130,10 @@ $vm = Add-AzureRmVMDataDisk `
     -Lun 1
 ```
 
-Aktualizujte virtuální počítač pomocí příkazu [Update-AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk).
+Aktualizovat virtuální počítač s [rutiny Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) příkazu.
 
 ```azurepowershell-interactive
-Update-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
+Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
 ```
 
 ## <a name="prepare-data-disks"></a>Příprava datových disků

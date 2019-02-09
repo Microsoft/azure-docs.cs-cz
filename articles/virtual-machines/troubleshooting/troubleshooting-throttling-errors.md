@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 401bd3badc555ee001fbc355c7bdb77786c2d053
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741109"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977809"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení potíží s chybami omezení rozhraní API 
 
@@ -34,8 +34,8 @@ Když klienta aplikace Azure API získá omezení chybu, je stav protokolu HTTP 
 
 | Hlavička                            | Formát hodnoty                           | Příklad:                               | Popis                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| x-ms-ratelimit – zbývající prostředků |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Zbývající počet volání rozhraní API pro zásady omezování pokrývající kontejneru nebo operace skupinu prostředků včetně cíl této žádosti                                                                   |
-| x-ms žádost poplatek               | ```<count>   ```                             | 1                                     | Počet volání vrátí "účtovat" pro tento požadavek HTTP směrem k příslušné zásady omezení. Toto je nejčastěji 1. Požadavky služby batch, například škálování škálovací sady virtuálních počítačů může účtovat více počty. |
+| x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Zbývající počet volání rozhraní API pro zásady omezování pokrývající kontejneru nebo operace skupinu prostředků včetně cíl této žádosti                                                                   |
+| x-ms-request-charge               | ```<count>   ```                             | 1                                     | Počet volání vrátí "účtovat" pro tento požadavek HTTP směrem k příslušné zásady omezení. Toto je nejčastěji 1. Požadavky služby batch, například škálování škálovací sady virtuálních počítačů může účtovat více počty. |
 
 
 Všimněte si, že požadavek na rozhraní API může být podroben více omezení zásad. Bude samostatný `x-ms-ratelimit-remaining-resource` záhlaví pro každou zásadu. 
@@ -79,8 +79,8 @@ Jak je znázorněno výše, zahrnuje každé chybě omezení `Retry-After` hlavi
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>Rychlost a omezování Chyba analyzátoru volání rozhraní API
 Verze preview funkce Poradce při potížích je k dispozici pro rozhraní API poskytovatele výpočetních prostředků. Tyto rutiny prostředí PowerShell představují statistické údaje o frekvence požadavků rozhraní API za časový interval pro operace a porušení omezení na skupinu operace (zásady):
--   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
--   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+-   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-AzLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequests)
 
 Statistiky volání rozhraní API můžete poskytují skvělý přehled o chování naprogramovaná předplatného a povolte snadné identifikaci vzorů volání, které způsobují omezení šířky pásma.
 

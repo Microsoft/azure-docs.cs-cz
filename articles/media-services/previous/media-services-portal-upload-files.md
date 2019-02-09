@@ -4,7 +4,7 @@ description: Tento kurz vás provede postupem nahrání souborů do účtu Media
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/07/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 36e1f797263e367a73fde140d979243f96e83948
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 7730d15b0d3be9c0ffc7c7fbafe40fece713afbd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780547"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976788"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Nahrání souborů do účtu Media Services na webu Azure Portal
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal-legacy"></a>Nahrání souborů do účtu Media Services na webu Azure Portal (starší verze)
+
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
@@ -60,9 +61,9 @@ Po dokončení nahrávání bude nový prostředek uvedený v podokně **Prostř
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zjistěte, jak [kódovat nahrané prostředky](media-services-portal-encode.md).
 
-* Můžete také použít službu Azure Functions k aktivaci úlohy kódování při doručení souboru do nakonfigurovaného kontejneru. Další informace najdete v ukázce v tématu [Media Services: Integrace služby Azure Media Services se službou Azure Functions a Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/).
+* Můžete také použít službu Azure Functions k aktivaci úlohy kódování při doručení souboru do nakonfigurovaného kontejneru. Další informace najdete v ukázce kódu na [Media Services: Integrace služby Azure Media Services pomocí Azure Functions a Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/).
 
 

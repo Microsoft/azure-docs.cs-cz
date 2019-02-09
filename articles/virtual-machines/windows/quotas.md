@@ -15,24 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: c766303920913a3ed6e654b3f9b29a0b99bb012a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 92fee850b6ba013c759d3441219f1946a0faedb3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041271"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984121"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů virtuálního počítače
 
 Kvóty virtuálních procesorů pro virtuální počítače a škálovací sady virtuálních počítačů jsou uspořádány ve dvou úrovních pro každé předplatné, v jednotlivých oblastech. První vrstva je celkový počet místních virtuálních procesorů a druhé vrstvy je různé velikost řady počet jader virtuálního počítače jako je například virtuální procesory řady D-series. Pokaždé, když je nový virtuální počítač nasazený virtuálních procesorů pro virtuální počítač nesmí překročit kvóty virtuálních procesorů pro řadu velikostí virtuálních počítačů nebo celkový počet virtuálních procesorů regionální kvóta. Pokud některý z těchto kvót je překročena, nasazení virtuálního počítače nebude možné. Je také kvóty pro celkový počet virtuálních počítačů v oblasti. Podrobnosti o každé z těchto kvót si můžete prohlédnout ve **využití a kvóty** část **předplatné** stránku [webu Azure portal](https://portal.azure.com), nebo můžete zadat dotaz na hodnoty pomocí Prostředí PowerShell.
 
+ [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)] 
  
 ## <a name="check-usage"></a>Kontrola využití
 
-Můžete použít [Get-AzureRmVMUsage](/powershell/module/azurerm.compute/get-azurermvmusage) rutiny můžete zkontrolovat na využití kvóty.
+Můžete použít [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) rutiny můžete zkontrolovat na využití kvóty.
 
 ```azurepowershell-interactive
-Get-AzureRmVMUsage -Location "East US"
+Get-AzVMUsage -Location "East US"
 ```
 
 Výstup bude vypadat nějak takto:

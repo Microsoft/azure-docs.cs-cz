@@ -3,8 +3,8 @@ title: Odkazy na stránce nefungují pro aplikaci Proxy aplikací | Dokumentace 
 description: Řešení potíží s nefunkční odkazy na aplikace Proxy aplikací, které mají integrované s Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 585ffd966bc3ba985e2b5b93529cadba8ce65960
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d426a0185d7425a7e32699dce511bbafa7c0e623
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151851"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961512"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci Proxy aplikací
 

@@ -11,46 +11,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 02/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 20412efac553458f3028f873bcc6d918a673f261
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7e3142e0274f2328d3e0c8a3e6f9a2e4c3d45d87
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838805"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959133"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Správa účtů testovacího prostředí ve službě Azure Lab Services 
 Ve službě Azure Lab Services účet testovacího prostředí je kontejner pro spravované testovací prostředí, jako je například testovací prostředí v učebnách. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytuje přístup k vlastníků testovacího prostředí, kteří můžou vytvářet testovací prostředí v rámci účtu. Tento článek popisuje, jak vytvořit účet testovacího prostředí, zobrazit všechny účty testovacího prostředí nebo odstranění účtu služby testovacího prostředí.
 
 ## <a name="create-a-lab-account"></a>Vytvoření účtu testovacího prostředí
+Následující kroky ukazují postup vytvoření účtu testovacího prostředí se službou Azure Lab Services pomocí webu Azure Portal. 
+
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V hlavní nabídce na levé straně vyberte **Vytvořit prostředek**.
-3. V Azure Marketplace vyhledejte **Lab Services** a v rozevíracím seznamu vyberte **Lab Services**. 
-4. Ve filtrovaném seznamu služeb vyberte **Lab Services (Preview)**. 
-5. V okně **Create a lab account** (Vytvořit účet testovacího prostředí) vyberte **Create** (Vytvořit).
-7. V okně **Lab account** (Účet testovacího prostředí) proveďte následující akce: 
+2. Vyberte **všechny služby** v nabídce vlevo. Vyberte **účtů testovacího prostředí** v **DEVOPS** oddílu. Pokud vyberte hvězdičku (`*`) vedle položky **účtů testovacího prostředí**, přidá se do **Oblíbené** části v nabídce vlevo. V příštím a vyšší, vyberte **účtů testovacího prostředí** pod **Oblíbené**.
+
+    ![Všechny služby -> účtů testovacího prostředí](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Na **účtů testovacího prostředí** stránce **přidat** na panelu nástrojů. 
+
+    ![Vyberte možnost přidat na stránku účtů testovacího prostředí](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. Na **účet testovacího prostředí** stránce, proveďte následující akce: 
     1. V části **Lab account name** (Název účtu testovacího prostředí) zadejte název. 
     2. Vyberte **předplatné Azure**, ve kterém chcete účet testovacího prostředí vytvořit.
     3. V části **Skupina prostředků** vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
     4. V části **Umístění** vyberte umístění nebo oblast, ve které chcete účet testovacího prostředí vytvořit. 
     5. Vyberte **Vytvořit**. 
 
-        ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/how-to-manage-lab-accounts/lab-account-settings.png)
-5. Pokud se vám nezobrazuje stránka účtu testovacího prostředí, vyberte tlačítko **oznámení** a potom v oznámeních klikněte na tlačítko **Přejít k prostředku**. 
+        ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/tutorial-setup-lab-account/lab-account-settings.png)
+5. Vyberte **ikonu zvonku** na panelu nástrojů (**oznámení**), potvrďte, že nasazení proběhlo úspěšně a pak vyberte **přejít k prostředku**. 
 
-    ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/how-to-manage-lab-accounts/notification-go-to-resource.png)    
+    Můžete také vybrat **aktualizovat** na **účtů testovacího prostředí** stránky a vyberte účet testovacího prostředí, který jste vytvořili. 
+
+    ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. Zobrazí se následující stránka **účtu testovacího prostředí**:
 
-    ![Stránka účtu testovacího prostředí](../media/how-to-manage-lab-accounts/lab-account-page.png)
+    ![Stránka účtu testovacího prostředí](../media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Přidání uživatele do role Autor testovacího prostředí
 Pokud chcete v účtu testovacího prostředí nastavit testovací prostředí v učebně, musí být uživatel v účtu testovacího prostředí členem role **Autor testovacího prostředí**. Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Pokud máte v úmyslu použít k vytvoření testovacího prostředí v učebně stejný uživatelský účet, můžete tento krok přeskočit. Pokud chcete k vytvoření testovacího prostředí v učebně použít jiný uživatelský účet, postupujte takto: 
 
-1. Na **účet testovacího prostředí** stránce **řízení přístupu (IAM)** a klikněte na tlačítko **+ přidat přiřazení role** na panelu nástrojů. 
-2. Na stránce **Add permissions** (Přidat oprávnění) vyberte **Lab Creator** (Autor testovacího prostředí) v části **Role**, vyberte uživatele, kterého chcete přidat do role Autoři testovacího prostředí, a vyberte **Save** (Uložit).
+Přidejte vyučující do role **Autor testovacího prostředí**, abyste jim poskytli oprávnění k vytvoření testovacích prostředí pro jejich třídy:
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>Určení imagí v Marketplace dostupných pro vlastníky testovacích prostředí
+1. Na **účet testovacího prostředí** stránce **řízení přístupu (IAM)** a klikněte na tlačítko **+ přidat přiřazení role** na panelu nástrojů. 
+
+    ![Řízení přístupu -> tlačítko Přidat přiřazení Role](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. Na **přidat přiřazení role** stránce **Autor testovacího prostředí** pro **Role**, vyberte uživatele, kterou chcete přidat do role Tvůrce prostředí a vyberte **Uložit**. 
+
+    ![Přidat Autor testovacího prostředí](../media/tutorial-setup-lab-account/add-lab-creator.png)
+
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>Zadejte Image z Marketplace k dispozici pro tvůrce prostředí
 Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 
 
 1. V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Pomocí možnosti **Enabled only**/**Disabled only** (Jenom povolené / Jenom zakázané) v rozevíracím seznamu v horní části můžete seznam filtrovat, aby se v něm zobrazovaly jen povolené/zakázané image. 
@@ -76,16 +89,23 @@ Jako vlastník účtu testovacího prostředí můžete určit image z Marketpla
 ## <a name="view-lab-accounts"></a>Zobrazení účtů testovacího prostředí
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny prostředky** z nabídky. 
-3. Vyberte **Lab Services** pro **typ**. 
+3. Vyberte **účtů testovacího prostředí** pro **typ**. 
     Můžete také filtrovat podle předplatného, skupinu prostředků, míst a značky. 
+
+    ![Všechny prostředky -> účtů testovacího prostředí](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
+
 
 ## <a name="delete-a-lab-account"></a>Odstranění účtu služby testovacího prostředí
 Postupujte podle pokynů v předchozí části, která se zobrazí v seznamu účtů testovacího prostředí. Odstranění účtu služby testovacího prostředí použijte následující pokyny: 
 
 1. Vyberte **účet testovacího prostředí** , kterou chcete odstranit. 
 2. Vyberte **odstranit** z panelu nástrojů. 
-3. Typ **Ano** pro potvrzení.
-4. Vyberte **Odstranit**. 
+
+    ![Účtů testovacího prostředí -> tlačítko Odstranit](../media/how-to-manage-lab-accounts/delete-button.png)
+1. Typ **Ano** pro potvrzení.
+1. Vyberte **Odstranit**. 
+
+    ![Odstranit účet testovacího prostředí – potvrzení](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 ## <a name="view-and-manage-labs-in-the-lab-account"></a>Zobrazení a správa testovacích prostředí v rámci účtu testovacího prostředí
 
@@ -107,7 +127,7 @@ Postupujte podle pokynů v předchozí části zobrazíte seznam testovacích pr
     ![Odstranění testovacího prostředí – tlačítko](../media/how-to-manage-lab-accounts/delete-lab-button.png)
 2. Vyberte **Ano** na upozornění. 
 
-
+    ![Potvrzení odstranění testovacího prostředí](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
 
 ## <a name="next-steps"></a>Další postup
 Viz následující články:

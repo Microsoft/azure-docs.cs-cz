@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: a7ebceff18016a5aa527a032a644d2723aceee7a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 46abd71d4621bad7ee47f6579b1675b75819b16d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558562"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979917"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
 
@@ -56,10 +56,12 @@ K ověření aplikace používá Azure Data Explorer ID vašeho tenanta Azure Ac
 Před spuštěním tohoto kódu nastavte hodnoty `authorityId`, `kustoUri`, `kustoIngestUri` a `kustoDatabase`.
 
 ```javascript
-const authorityId = "<TenantId>";
-const kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443";
-const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443";
-const kustoDatabase  = "<DatabaseName>";
+const cluster = "MyCluster";
+const region = "westus";
+const authorityId = "microsoft.com";
+const kustoUri = `https://${cluster}.${region}.kusto.windows.net:443`;
+const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net:443`;
+const kustoDatabase  = "Weather";
 ```
 
 Teď sestavte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít certifikát, klíč a uživatelské jméno a heslo aplikace Azure Active Directory.
@@ -94,7 +96,7 @@ const kustoClient = new KustoClient(kcsbData);
 const createTableCommand = `.create table ${destTable} (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)`;
 
 kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
-    console.log(result.primaryResults[0]);
+    console.log(results.primaryResults[0][0].toString());
 });
 ```
 
@@ -106,7 +108,7 @@ Namapujte příchozí data CSV na názvy sloupců a datové typy použité při 
 const createMappingCommand = `.create table ${destTable} ingestion csv mapping '${destTableMapping}' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'`;
 
 kustoClient.executeMgmt(kustoDatabase, createMappingCommand, (err, results) => {
-    console.log(result.primaryResults[0]);
+    console.log(results.primaryResults[0][0].toString());
 });
 ```
 
@@ -134,7 +136,7 @@ const query = `${destTable} | count`;
 
 kustoClient.execute(kustoDatabase, query, (err, results) => {
     if (err) throw new Error(err);  
-    console.log(results.primaryResults[0].toString());
+    console.log(results.primaryResults[0][0].toString());
 });
 ```
 

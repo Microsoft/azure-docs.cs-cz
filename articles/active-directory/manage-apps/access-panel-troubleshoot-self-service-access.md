@@ -3,8 +3,8 @@ title: Potíže s použitím samoobslužného přístupu k aplikacím | Dokument
 description: Řešení potíží s problémy související s samoobslužného přístupu k aplikacím
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: a3fe327113a62ad35dcc1843b00eb40cefdfb38c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 06deb1fc072026fd9fa59f14aefdf303864b891c
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161610"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960101"
 ---
 # <a name="problem-using-self-service-application-access"></a>Potíže s použitím samoobslužného přístupu k aplikacím
 

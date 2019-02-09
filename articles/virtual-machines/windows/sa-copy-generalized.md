@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 63fdf9cf24c7e412533f15ff0701bc8fb481602a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cf0eb7a0b9e38397034c03ef2b4310ed67c6e6dd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240609"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980376"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření nespravované image virtuálního počítače z virtuálního počítače Azure
 
@@ -29,11 +29,10 @@ Tento článek se týká použití účtů úložiště. Doporučujeme použít 
 
 Tento článek popisuje, jak používat Azure PowerShell k vytvoření image generalizovaného virtuálního počítače Azure pomocí účtu úložiště. Potom můžete image k vytvoření virtuálního počítače s jinou. Na obrázku obsahuje disk s operačním systémem a datové disky, které jsou připojené k virtuálnímu počítači. Na obrázku neobsahuje prostředky virtuální sítě, proto musíte nastavit tyto prostředky při vytváření nového virtuálního počítače. 
 
-## <a name="prerequisites"></a>Požadavky
-Musíte mít verzi Azure Powershellu 1.0.x nebo novější nainstalován. Pokud jste ještě nenainstalovali Powershellu, přečtěte si [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) kroky instalace.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="generalize-the-vm"></a>Generalizace virtuálního počítače 
-Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Zobecňuje se virtuální počítač odebere všechny osobní informace o vašem účtu, mimo jiné a připraví počítač, který má být použit jako obrázek. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
+Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Zobecňuje se virtuální počítač odebere všechny osobní informace o vašem účtu, mimo jiné a připraví počítač, který má být použit jako obrázek. Podrobnosti o nástroji Sysprep najdete v tématu [použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
 
 Ujistěte se, že na počítači spuštěná role serveru jsou podporované pomocí nástroje Sysprep. Další informace najdete v tématu [podpory nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -63,19 +62,19 @@ Můžete také zobecnit virtuální počítač s Linuxem pomocí `sudo waagent -
 1. Otevřete prostředí Azure PowerShell a přihlaste se ke svému účtu Azure.
    
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
    
     K zadání přihlašovacích údajů k účtu Azure se otevře automaticky otevírané okno.
 2. Získejte ID předplatného pro předplatné k dispozici.
    
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 3. Nastavit správné předplatné pomocí ID předplatného.
    
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
+    Select-AzSubscription -SubscriptionId "<subscriptionID>"
     ```
 
 ## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Uvolněte virtuální počítač a nastavit stav na generalizovaný
@@ -87,19 +86,19 @@ Můžete také zobecnit virtuální počítač s Linuxem pomocí `sudo waagent -
 1. Uvolnit prostředky virtuálních počítačů.
    
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName>
+    Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
     *Stav* pro virtuální počítač v Azure portal se změní z **Zastaveno** k **zastaveno (přidělení zrušeno)**.
 2. Nastavte stav virtuálního počítače na **zobecněno**. 
    
     ```powershell
-    Set-AzureRmVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
+    Set-AzVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
 3. Zkontrolujte stav virtuálního počítače. **OSState/zobecněný** části pro virtuální počítač by měl mít **DisplayStatus** nastavena na **virtuální počítač generalizovaný**.  
    
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
+    $vm = Get-AzVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
     $vm.Statuses
     ```
 
@@ -108,7 +107,7 @@ Můžete také zobecnit virtuální počítač s Linuxem pomocí `sudo waagent -
 Vytvoření nespravovaného virtuálního počítače image v cílový kontejner úložiště pomocí tohoto příkazu. Image se vytvoří ve stejném účtu úložiště jako původní virtuální počítač. `-Path` Parametr uloží kopii šablony JSON pro zdrojový virtuální počítač do místního počítače. `-DestinationContainerName` Parametr je název, který chcete pro uložení Image kontejneru. Pokud kontejner neexistuje, vytvoří se pro vás.
    
 ```powershell
-Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
+Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -DestinationContainerName <destinationContainerName> -VHDNamePrefix <templateNamePrefix> `
     -Path <C:\local\Filepath\Filename.json>
 ```
@@ -138,14 +137,14 @@ Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-networ
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubnet"
-    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+    $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
 2. Vytvořte virtuální síť. Následující příklad vytvoří virtuální síť s názvem **myVnet** v **USA – západ** umístění s předponou adresy **10.0.0.0/16**.  
    
     ```powershell
     $location = "West US"
     $vnetName = "myVnet"
-    $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
+    $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
 
@@ -156,14 +155,14 @@ Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti
    
     ```powershell
     $ipName = "myPip"
-    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
+    $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
 2. Vytvořte síťové rozhraní Tento příklad vytvoří síťové rozhraní s názvem **myNic**. 
    
     ```powershell
     $nicName = "myNic"
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location `
+    $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location `
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
@@ -175,12 +174,12 @@ Tento příklad vytvoří skupinu zabezpečení sítě s názvem **myNsg** , kte
 ```powershell
 $nsgName = "myNsg"
 
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
     -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
 
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
     -Name $nsgName -SecurityRules $rdpRule
 ```
 
@@ -189,7 +188,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 Vytvořte proměnnou pro dokončené virtuální sítě. 
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>Vytvořte virtuální počítač.
@@ -228,33 +227,33 @@ Následující příkaz Powershellu dokončení konfigurace virtuálních počí
     $skuName = "Standard_LRS"
 
     # Get the storage account where the uploaded image is stored
-    $storageAcc = Get-AzureRmStorageAccount -ResourceGroupName $rgName -AccountName $storageAccName
+    $storageAcc = Get-AzStorageAccount -ResourceGroupName $rgName -AccountName $storageAccName
 
     # Set the VM name and size
-    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
+    $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $vmSize
 
     #Set the Windows operating system configuration and add the NIC
-    $vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName `
+    $vm = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName `
         -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-    $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
+    $vm = Add-AzVMNetworkInterface -VM $vm -Id $nic.Id
 
     # Create the OS disk URI
     $osDiskUri = '{0}vhds/{1}-{2}.vhd' `
         -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 
     # Configure the OS disk to be created from the existing VHD image (-CreateOption fromImage).
-    $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri `
+    $vm = Set-AzVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri `
         -CreateOption fromImage -SourceImageUri $imageURI -Windows
 
     # Create the new VM
-    New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
+    New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Ověřte, že se vytvořil virtuální počítač
 Jakmile budete hotovi, zobrazí se nově vytvořenému virtuálnímu počítači v [webu Azure portal](https://portal.azure.com) pod **Procházet** > **virtuálních počítačů**, nebo použijte následující příkaz Powershellu příkazy:
 
 ```powershell
-    $vmList = Get-AzureRmVM -ResourceGroupName $rgName
+    $vmList = Get-AzVM -ResourceGroupName $rgName
     $vmList.Name
 ```
 

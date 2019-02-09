@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: e7c58978c7d6542887854c5a1996b15252fdb025
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902156"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982399"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení a připojte se k zařízení Azure Data Box
 
@@ -40,7 +40,7 @@ Než začnete, ujistěte se, že:
     - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
 6. Data Box je potřeba umístit na rovnou plochu. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
 7. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
-    - Dva 10 GbE SFP + Twinax Cu kabely (pomocí DATA 1, síťová rozhraní DATA 2). Zařízení data Box má adaptéry Mellanox ConnectX®-3 Pro EN dva porty 10GBASE T plánovaným bodem obnovení kratším PCI Express 3.0 síťové rozhraní, takže by měla fungovat kabely, které jsou kompatibilní s tímto rozhraním. Pro příklad, CISCO SFP-H10GB-CU3M 10GBASE CU TWINMAX SFP + 3 M kabel byl použit pro inhouse testování.
+    - Jeden nebo více 10 GbE SFP + Twinax mědi nebo SFP + kabely optického vlákna (pomocí DATA 1, DATA 2 síťových rozhraní). Zařízení data Box má adaptéry Mellanox ConnectX®-3 Pro EN dva porty 10GBASE T plánovaným bodem obnovení kratším PCI Express 3.0 síťové rozhraní, takže by měla fungovat kabely, které jsou kompatibilní s tímto rozhraním. Pro příklad, CISCO SFP-H10GB-CU3M 10GBASE CU TWINMAX SFP + 3 M kabel byl použit pro inhouse testování.
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
     - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 
@@ -57,7 +57,7 @@ Při zapojování kabeláže zařízení postupujte následovně.
     1. Zapojte napájecí kabel do označeného umístění síťového napájení. Druhý konec napájecího kabelu by měl být připojený k rozvodné energetické jednotce.
     2. Pomocí kabelu RJ-45 kategorie 6 propojte port MGMT na jednom konci a přenosný počítač na druhém konci.            
     3. Kabel RJ-45 kategorie 6A zapojte na jedné straně k portu DATA 3. Pokud k síťovému rozhraní DATA 3 připojíte kabel RJ-45 kategorie 6A, nakonfiguruje se jako 10 GbE. Pokud k němu připojíte kabel RJ-45 kategorie 6, nakonfiguruje se jako 1 GbE.
-    4. Pomocí měděných kabelů 10 GbE SFP+ Twinax propojte porty DATA 1 a DATA 2 v tomto pořadí. 
+    4. V závislosti na síťová rozhraní, které chcete pro připojení pro přenos dat použijte k připojení portů DATA 1 a DATA 2 v uvedeném pořadí až dvě 10 GbE SFP + Twinax mědi nebo SFP + kabely optického vlákna. 
     5. Druhé konce kabelů z datových portů jsou připojené k hostitelskému počítači přes přepínač 10 GbE.
 
 4. Na předním ovládacím panelu zařízení vyhledejte tlačítko napájení. Zapněte zařízení.

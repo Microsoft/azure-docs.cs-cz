@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 2e5838046cdb60023495c7e9e111506c333cecc7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f19693853672b6274265c95b851f478b4f3ef4a2
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102392"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961886"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade a aktualizuje se cluster Azure Service Fabric
 
@@ -27,7 +27,7 @@ Návrh pro zdokonalovány moderního systému, je klíčem k dosažení dlouhodo
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Řízení verze prostředků infrastruktury, na kterém běží v clusteru
 
-Ujistěte se, že zachovat cluster vždy používá verzi podporovanou prostředků infrastruktury. Jak a kdy jsme oznamujeme vydání nové verze service Fabric, předchozí verze budou označena k ukončení podpory po minimálně za 60 dní od data. Nové verze jsou zveřejněných na blog týmu service fabric. Vyberete, pak k dispozici je nová verze.
+Ujistěte se, aby se svůj cluster během [podporovaná verze prostředků infrastruktury](service-fabric-versions.md) vždy. Jak a kdy jsme oznamujeme vydání nové verze service Fabric, předchozí verze budou označena k ukončení podpory po minimálně za 60 dní od data. Nové verze jsou zveřejněných na blog týmu service fabric. Vyberete, pak k dispozici je nová verze.
 
 14 dní před vypršení platnosti vydané verze, po který váš cluster běží, vygeneruje událost stavu, který váš cluster přepne do stavu upozornění. Cluster zůstane ve varovném stavu, dokud neprovedete upgrade na verzi podporovaných prostředků infrastruktury.
 

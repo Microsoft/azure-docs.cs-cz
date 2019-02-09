@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 12f7c52f916f385ddf95cf16aa89c4848ab7c118
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6a128f8fbfd39c364d63ff03a156788e44f37119
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406598"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981287"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics rozšíření virtuálního počítače pro Windows
 
@@ -140,13 +140,13 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, název pr
 
 ## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 
-`Set-AzureRmVMExtension` Příkaz lze použít k nasazení do existujícího virtuálního počítače rozšíření virtuálního počítače agenta Log Analytics. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell. 
+`Set-AzVMExtension` Příkaz lze použít k nasazení do existujícího virtuálního počítače rozšíření virtuálního počítače agenta Log Analytics. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
@@ -164,7 +164,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell.
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Rozšíření provádění výstup je zaznamenán soubory nalezené v následujícím adresáři:

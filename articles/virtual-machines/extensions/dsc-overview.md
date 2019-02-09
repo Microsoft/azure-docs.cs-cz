@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 18d6478763fd6551cc8baac6ea54e8d91f1a28e6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629964"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980597"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do obslužné rutiny rozšíření Azure Desired State Configuration
 
@@ -35,16 +35,16 @@ Tento článek obsahuje informace o oba scénáře: použití rozšíření DSC 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Místní počítač**: pro interakci s rozšíření virtuálního počítače Azure, je nutné použít na webu Azure portal nebo Azure PowerShell SDK.
-- **Agent hosta**: Azure virtuální počítač, který je nakonfigurovaný v konfiguraci DSC musí být operační systém, který podporuje Windows Management Frameworku (WMF) 4.0 nebo novější. Úplný seznam podporovaných verzí operačního systému, najdete v článku [historie verzí rozšíření DSC](/powershell/dsc/azuredscexthistory).
+- **Místní počítač**: K interakci s rozšíření virtuálního počítače Azure, musíte použít na webu Azure portal nebo Azure PowerShell SDK.
+- **Agent hosta**: Virtuální počítač Azure, který je nakonfigurovaný v konfiguraci DSC, musí být operační systém, který podporuje Windows Management Frameworku (WMF) 4.0 nebo novější. Úplný seznam podporovaných verzí operačního systému, najdete v článku [historie verzí rozšíření DSC](/powershell/dsc/azuredscexthistory).
 
 ## <a name="terms-and-concepts"></a>Terminologie a koncepty
 
 Tento průvodce to předpokládá znalost následujících konceptů:
 
-- **Konfigurace**: dokument konfigurace DSC A.
-- **Uzel**: cíl pro konfiguraci DSC. V tomto dokumentu *uzel* vždy odkazuje na Virtuálním počítači Azure.
-- **Konfigurační data**: .psd1 soubor obsahující údaje o životním prostředí pro konfiguraci.
+- **Konfigurace**: Dokument konfigurace DSC.
+- **Uzel**: Cíl pro konfiguraci DSC. V tomto dokumentu *uzel* vždy odkazuje na Virtuálním počítači Azure.
+- **Konfigurační data**: .Psd1 soubor obsahující údaje o životním prostředí pro konfiguraci.
 
 ## <a name="architecture"></a>Architektura
 
@@ -70,17 +70,17 @@ Ve většině scénářů nasazení šablony Resource Manageru jsou očekávané
 
 Rutiny Powershellu, které se používají ke správě rozšíření DSC se uplatňují nejlépe v interaktivní řešení potíží a získávání informací o scénáře. Rutiny slouží k zabalení, publikování a monitorování nasazení rozšíření DSC. Rutiny pro rozšíření DSC nejsou ještě neaktualizovaly pracovat [výchozí konfigurační skript](#default-configuration-script).
 
-**Publikovat AzureRmVMDscConfiguration** rutiny trvá v konfiguračním souboru, hledá závislé prostředky DSC a vytvoří soubor ZIP. Soubor .zip obsahuje soubor konfigurace a prostředky DSC, je nutná k vydává konfigurace. Rutinu můžete také vytvořit balíček místně pomocí *- OutputArchivePath* parametru. V opačném případě rutina publikuje soubor ZIP do úložiště objektů blob a pak zabezpečuje s tokenem SAS.
+**Publikovat AzVMDscConfiguration** rutiny trvá v konfiguračním souboru, hledá závislé prostředky DSC a vytvoří soubor ZIP. Soubor .zip obsahuje soubor konfigurace a prostředky DSC, je nutná k vydává konfigurace. Rutinu můžete také vytvořit balíček místně pomocí *- OutputArchivePath* parametru. V opačném případě rutina publikuje soubor ZIP do úložiště objektů blob a pak zabezpečuje s tokenem SAS.
 
 .Ps1 konfigurační skript, který vytváří rutina je v souboru ZIP v kořenové složce archivu. Složku modulu je umístěn ve složce Archiv v prostředcích.
 
-**Set-AzureRmVMDscExtension** rutiny vkládá nastavení, která vyžaduje rozšíření PowerShell DSC do objektu konfigurace virtuálního počítače.
+**Set-AzVMDscExtension** rutiny vkládá nastavení, která vyžaduje rozšíření PowerShell DSC do objektu konfigurace virtuálního počítače.
 
-**Get-AzureRmVMDscExtension** rutina načte stav rozšíření DSC konkrétního virtuálního počítače.
+**Get-AzVMDscExtension** rutina načte stav rozšíření DSC konkrétního virtuálního počítače.
 
-**Get-AzureRmVMDscExtensionStatus** rutina načte stav konfiguraci DSC, která budou přijaty ve obslužné rutiny rozšíření DSC. Tuto akci může provést na jeden virtuální počítač nebo skupinu virtuálních počítačů.
+**Get-AzVMDscExtensionStatus** rutina načte stav konfiguraci DSC, která budou přijaty ve obslužné rutiny rozšíření DSC. Tuto akci může provést na jeden virtuální počítač nebo skupinu virtuálních počítačů.
 
-**Odebrat AzureRmVMDscExtension** rutina odebere obslužné rutiny rozšíření z konkrétního virtuálního počítače. Tato rutina provede *není* odebrat konfiguraci, WMF odinstalovat nebo změnit nastavení použitá na virtuálním počítači. Odebere jenom obslužné rutiny rozšíření. 
+**Odebrat AzVMDscExtension** rutina odebere obslužné rutiny rozšíření z konkrétního virtuálního počítače. Tato rutina provede *není* odebrat konfiguraci, WMF odinstalovat nebo změnit nastavení použitá na virtuálním počítači. Odebere jenom obslužné rutiny rozšíření. 
 
 Důležité informace o rutiny rozšíření DSC Resource Manageru:
 
@@ -117,9 +117,9 @@ $location = 'westus'
 $vmName = 'myVM'
 $storageName = 'demostorage'
 #Publish the configuration script to user storage
-Publish-AzureRmVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
+Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
-Set-AzureRmVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
 ```
 
 ## <a name="azure-portal-functionality"></a>Funkce Azure portal
@@ -133,13 +133,13 @@ Nastavení DSC na portálu:
 
 Na portálu shromažďuje následující vstup:
 
-- **Konfigurace moduly nebo skript**: Toto pole je povinné (se neaktualizoval formuláři [výchozí konfigurační skript](#default-configuration-script)). Konfigurace moduly a skripty vyžadují soubor .ps1, který má konfigurace skriptu nebo soubor .zip s .ps1 konfigurační skript v kořenovém adresáři. Pokud používáte soubor ZIP, všechny závislé prostředky musí být součástí modulu složky ZIP. Můžete vytvořit soubor .zip s použitím **publikovat AzureVMDscConfiguration - OutputArchivePath** rutinu, která je součástí sady SDK Azure Powershellu. Soubor ZIP je nahráli do úložiště objektů blob uživatele a zabezpečené pomocí tokenu SAS.
+- **Konfigurace moduly nebo skript**: Toto pole je povinné (se neaktualizoval formulář [výchozí konfigurační skript](#default-configuration-script)). Konfigurace moduly a skripty vyžadují soubor .ps1, který má konfigurace skriptu nebo soubor .zip s .ps1 konfigurační skript v kořenovém adresáři. Pokud používáte soubor ZIP, všechny závislé prostředky musí být součástí modulu složky ZIP. Můžete vytvořit soubor .zip s použitím **publikovat AzureVMDscConfiguration - OutputArchivePath** rutinu, která je součástí sady SDK Azure Powershellu. Soubor ZIP je nahráli do úložiště objektů blob uživatele a zabezpečené pomocí tokenu SAS.
 
-- **Modul kvalifikovaný název konfigurace**: více konfiguračních funkcí můžete zahrnout do souboru s příponou .ps1. Zadejte název skriptu .ps1 konfigurace, za nímž následuje \\ a název konfigurace funkce. Například pokud má vaše skriptu .ps1 configuration.ps1 název a konfigurace je **IisInstall**, zadejte **configuration.ps1\IisInstall**.
+- **Název konfigurace s kvalifikací modulu**: Může obsahovat více funkcí konfigurace v souboru s příponou .ps1. Zadejte název skriptu .ps1 konfigurace, za nímž následuje \\ a název konfigurace funkce. Například pokud má vaše skriptu .ps1 configuration.ps1 název a konfigurace je **IisInstall**, zadejte **configuration.ps1\IisInstall**.
 
-- **Konfigurace argumenty**: Pokud konfigurace funkce má argumenty, je zde zadat ve formátu **argumentName1 = value1, argumentName2 = hodnota2**. Tento formát je v jiném formátu, ve kterém jsou přijímány konfigurační argumenty rutin Powershellu nebo šablony Resource Manageru.
+- **Konfigurace argumenty**: Pokud funkce konfigurace má argumenty, je zde zadat ve formátu **argumentName1 = value1, argumentName2 = hodnota2**. Tento formát je v jiném formátu, ve kterém jsou přijímány konfigurační argumenty rutin Powershellu nebo šablony Resource Manageru.
 
-- **Soubor konfiguračních dat PSD1**: Toto pole je volitelné. Pokud vaše konfigurace vyžaduje soubor konfiguračních dat v .psd1, použijte toto pole vybrat pole dat a nahrajte ho do úložiště objektů blob uživatele. Soubor konfiguračních dat je zabezpečena pomocí tokenu SAS ve službě blob storage.
+- **Soubor konfiguračních dat PSD1**: Toto pole je nepovinné. Pokud vaše konfigurace vyžaduje soubor konfiguračních dat v .psd1, použijte toto pole vybrat pole dat a nahrajte ho do úložiště objektů blob uživatele. Soubor konfiguračních dat je zabezpečena pomocí tokenu SAS ve službě blob storage.
 
 - **Verze WMF**: Určuje verzi Windows Management Frameworku (WMF), který musí být nainstalován na váš virtuální počítač. Nastavení této vlastnosti na nejnovější nainstaluje nejnovější verzi WMF. V současné době pouze možné hodnoty této vlastnosti jsou 4.0, 5.0, 5.1 a nejnovější. Tyto možné hodnoty jsou v souladu s aktualizací. Výchozí hodnota je **nejnovější**.
 

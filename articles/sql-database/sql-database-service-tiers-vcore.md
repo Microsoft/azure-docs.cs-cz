@@ -11,22 +11,22 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 240715fe6d3e8344c15cddf80a23829ec84e81a2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: 48180d4a9dcf7219815b5bc397647d7d97467cf7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511985"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961784"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Umožňuje také můžete vybrat generaci:
 
-- Až 24 logické procesory generace 4 - podle Intel E5-2673 v3 (Haswell) 2,4 GHz, vCore = 1 PP (fyzických jader), 7 GB na jádro, připojené SSD
-- Až 80 logické procesory generace 5 - podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.1 GB na jádro, rychlé eNVM SSD
+- Gen4 - až 24 logických procesorů podle Intel E5-2673 v3 (Haswell) 2,4 GHz, vCore = 1 PP (fyzických jader), 7 GB na jádro, připojené SSD
+- Gen5 - až 80 logických procesorů podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.1 GB na jádro, rychlé eNVM SSD
 
-modelu virt. jader také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) získat úspory nákladů.
+Gen4 hardware nabízí podstatně více paměti na vCore. Gen5 hardware však umožňuje vertikálně navýšit kapacitu výpočetních prostředků mnohem vyšší.
 
 > [!NOTE]
 > Informace o úrovních služeb na základě DTU najdete v tématu [založený na DTU úrovně](sql-database-service-tiers-dtu.md). Informace o odlišení těchto služeb na základě jednotek DTU úrovně a úrovní služeb založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-service-tiers.md).
@@ -58,8 +58,6 @@ Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
 
 > [!IMPORTANT]
 > Pokud budete potřebovat méně než jedno virtuální jádro výpočetní kapacity, použijte nákupní model založený na DTU.
-
-Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi na nejčastější dotazy.
 
 ## <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 

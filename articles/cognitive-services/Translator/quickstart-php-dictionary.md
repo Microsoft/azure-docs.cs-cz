@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: cd73aba2ffd8504851894c3c27d19eed3ceee6dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d58a85ac8160d3e7c413f58bb0095ede8ffb30b3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864481"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981498"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí PHP
 

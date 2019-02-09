@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/27/2018
+ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1d07990abcceace81f718bcbac28ff372a784172
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 568631705b590bb2ee312b9519164be17c8443ab
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427708"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984235"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytvoření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure Powershellu
 
-Virtuální počítače Azure používají pro interní i externí síťovou komunikaci sítě Azure. Tento kurz vás provede nasazením dvou virtuálních počítačů a konfigurací sítě Azure pro tyto virtuální počítače. Příklady v tomto kurzu předpokládají, že virtuální počítače hostují webovou aplikaci s back-endovou databází, ale aplikace se v tomto kurzu nenasazuje. V tomto kurzu se naučíte:
+Virtuální počítače Azure používají pro interní i externí síťovou komunikaci sítě Azure. Tento kurz vás provede nasazením dvou virtuálních počítačů a konfigurací sítě Azure pro tyto virtuální počítače. Příklady v tomto kurzu předpokládají, že virtuální počítače hostují webovou aplikaci s back-end databáze, ale není v tomto kurzu nasazení aplikace. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě a podsítě
@@ -34,9 +34,6 @@ Virtuální počítače Azure používají pro interní i externí síťovou kom
 > * Zabezpečení provozu sítě
 > * Vytvoření back-endového virtuálního počítače
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="vm-networking-overview"></a>Přehled sítí virtuálních počítačů
 
@@ -57,22 +54,27 @@ Při práci na tomto kurzu vytvoříte tyto prostředky:
 - *myBackendVM* – virtuální počítač, který používá port 1433 ke komunikaci s virtuálním počítačem *myFrontendVM*.
 
 
-## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+
+
+## <a name="create-subnet"></a>Vytvoření podsítě 
 
 V tomto kurzu vytvoříte virtuální síť se dvěma podsítěmi. Front-endovou podsíť k hostování webové aplikace a back-endovou podsíť pro hostování databázového serveru.
 
-Před vytvořením virtuální sítě vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků *myRGNetwork* v umístění *EastUS*:
+Než vytvoříte virtuální síť, abyste vytvořili skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků *myRGNetwork* v umístění *EastUS*:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
+New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-### <a name="create-subnet-configurations"></a>Vytvoření konfigurací podsítí
-
-Vytvořte konfiguraci podsítě *myFrontendSubnet* pomocí rutiny [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig):
+Vytvořte konfiguraci podsítě s názvem *myFrontendSubnet* pomocí [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
-$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name myFrontendSubnet `
   -AddressPrefix 10.0.0.0/24
 ```
@@ -80,17 +82,17 @@ $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
 Vytvořte také konfiguraci podsítě *myBackendSubnet*:
 
 ```azurepowershell-interactive
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
   -AddressPrefix 10.0.1.0/24
 ```
 
-### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť *myVNet* využívající podsítě *myFrontendSubnet* a *myBackendSubnet* pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork):
+Vytvoření virtuální sítě s názvem *myVNet* pomocí *myFrontendSubnet* a *myBackendSubnet* pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
-$vnet = New-AzureRmVirtualNetwork `
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myVNet `
@@ -104,12 +106,12 @@ Nyní jste vytvořili síť rozdělenou do dvou podsítí – jedné pro front-e
 
 Veřejná IP adresa umožňuje připojení k prostředkům Azure z internetu. Metodu přidělování veřejné IP adresy je možné nakonfigurovat dynamicky nebo staticky. Ve výchozím nastavení se veřejná IP adresa přiděluje dynamicky. Dynamické IP adresy se vydávají při zrušení přidělení virtuálního počítače. Toto chování znamená, že se IP adresa změní při libovolné operaci, která zahrnuje zrušení přidělení virtuálního počítače.
 
-Metodu přidělování je možné nastavit staticky, což zajistí, že IP adresa zůstane virtuálnímu počítači přidělená i ve stavu zrušeného přidělení. Když používáte staticky přidělenou IP adresu, není ji možné určit. Místo toho se přiděluje z fondu dostupných adres.
+Metodu přidělování můžete nastavit staticky, což zajišťuje, že IP adresa zůstane přiřazená k virtuálnímu počítači, dokonce i ve stavu zrušeného přidělení. Pokud používáte statické IP adresy, nelze zadat IP adresu. Místo toho se přiděluje z fondu dostupných adres.
 
-Vytvořte veřejnou IP adresu *myPublicIPAddress* pomocí rutiny [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress):
+Vytvoření veřejné IP adresy s názvem *myPublicIPAddress* pomocí [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
 
 ```azurepowershell-interactive
-$pip = New-AzureRmPublicIpAddress `
+$pip = New-AzPublicIpAddress `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -AllocationMethod Dynamic `
@@ -120,10 +122,10 @@ Pokud chcete přiřadit statickou veřejnou IP adresu, můžete změnit parametr
 
 ## <a name="create-a-front-end-vm"></a>Vytvoření front-endového virtuálního počítače
 
-Virtuální počítač ke komunikaci ve virtuální síti potřebuje virtuální síťové rozhraní. Vytvořte virtuální síťové rozhraní pomocí rutiny [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface):
+Virtuální počítač ke komunikaci ve virtuální síti potřebuje virtuální síťové rozhraní. Vytvořte síťové rozhraní s využitím [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface):
 
 ```azurepowershell-interactive
-$frontendNic = New-AzureRmNetworkInterface `
+$frontendNic = New-AzNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myFrontend `
@@ -137,10 +139,10 @@ Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuál
 $cred = Get-Credential
 ```
 
-Vytvořte virtuální počítače pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Vytvoření virtuálních počítačů pomocí [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
-New-AzureRmVM `
+New-AzVM `
    -Credential $cred `
    -Name myFrontend `
    -PublicIpAddressName myPublicIPAddress `
@@ -153,13 +155,13 @@ New-AzureRmVM `
 
 ## <a name="secure-network-traffic"></a>Zabezpečení provozu sítě
 
-Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel zabezpečení, která prostředkům připojeným k virtuálním sítím Azure povolují nebo odpírají síťový provoz. Skupinu zabezpečení sítě můžete přidružit k podsítím nebo jednotlivým síťovým rozhraním. Pokud skupinu zabezpečení sítě přidružíte k síťovému rozhraní, bude se vztahovat pouze k přidruženému virtuálnímu počítači. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla se vztahují na všechny prostředky, které jsou připojené k příslušné podsíti.
+Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel zabezpečení, která prostředkům připojeným k virtuálním sítím Azure povolují nebo odpírají síťový provoz. Skupinu zabezpečení sítě můžete přidružit k podsítím nebo jednotlivým síťovým rozhraním. Skupina zabezpečení sítě je přidružen k síti rozhraní se týká pouze k přidruženému virtuálnímu počítači. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla se vztahují na všechny prostředky, které jsou připojené k příslušné podsíti.
 
 ### <a name="network-security-group-rules"></a>Pravidla skupiny zabezpečení sítě
 
 Pravidla skupiny zabezpečení sítě definují síťové porty, které provoz buď povolují, nebo zakazují. Pravidla mohou zahrnovat zdrojové a cílové rozsahy IP adres, aby se provoz řídil mezi určitými systémy nebo podsítěmi. Pravidla skupiny zabezpečení sítě také obsahují prioritu (1–4096). Pravidla se vyhodnocují v pořadí podle priority. Pravidlo s prioritou 100 se vyhodnotí před pravidlem s prioritou 200.
 
-Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla se nedají odstranit, ale protože je jim přiřazená nejnižší priorita, dají se přepsat pravidly, která vytvoříte.
+Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla nejde odstranit, ale protože je jim přiřazená nejnižší priorita, dají se přepsat pravidly, která vytvoříte.
 
 - **Virtuální síť** – provoz směřující z virtuální sítě a do ní je povolený v příchozím i odchozím směru.
 - **Internet** – odchozí provoz je povolený, ale příchozí provoz se blokuje.
@@ -167,10 +169,10 @@ Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla se 
 
 ### <a name="create-network-security-groups"></a>Vytvoření skupin zabezpečení sítě
 
-Pomocí rutiny [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) vytvořte příchozí pravidlo *myFrontendNSGRule* pro povolení příchozího webového provozu na virtuálním počítači *myFrontendVM*:
+Vytvořte příchozí pravidlo s názvem *myFrontendNSGRule* povolit příchozí webový provoz na *myFrontendVM* pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig):
 
 ```azurepowershell-interactive
-$nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+$nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Name myFrontendNSGRule `
   -Protocol Tcp `
   -Direction Inbound `
@@ -185,7 +187,7 @@ $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
 Vytvořením skupiny zabezpečení sítě pro back-endovou podsíť můžete omezit zdroj interního provozu do virtuálního počítače *myBackendVM* pouze na virtuální počítač *myFrontendVM*. Následující příklad vytvoří pravidlo NSG *myBackendNSGRule*:
 
 ```azurepowershell-interactive
-$nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
+$nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Name myBackendNSGRule `
   -Protocol Tcp `
   -Direction Inbound `
@@ -197,20 +199,20 @@ $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Přidejte skupinu zabezpečení sítě *myFrontendNSG* pomocí rutiny [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup):
+Přidat skupinu zabezpečení sítě s názvem *myFrontendNSG* pomocí [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup):
 
 ```azurepowershell-interactive
-$nsgFrontend = New-AzureRmNetworkSecurityGroup `
+$nsgFrontend = New-AzNetworkSecurityGroup `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myFrontendNSG `
   -SecurityRules $nsgFrontendRule
 ```
 
-Teď přidejte skupinu zabezpečení sítě *myBackendNSG* pomocí rutiny New-AzureRmNetworkSecurityGroup:
+Teď přidejte skupinu zabezpečení sítě s názvem *myBackendNSG* pomocí New-AzNetworkSecurityGroup:
 
 ```azurepowershell-interactive
-$nsgBackend = New-AzureRmNetworkSecurityGroup `
+$nsgBackend = New-AzNetworkSecurityGroup `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myBackendNSG `
@@ -220,22 +222,22 @@ $nsgBackend = New-AzureRmNetworkSecurityGroup `
 Přidejte skupiny zabezpečení sítě do podsítí:
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myRGNetwork `
   -Name myVNet
 $frontendSubnet = $vnet.Subnets[0]
 $backendSubnet = $vnet.Subnets[1]
-$frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+$frontendSubnetConfig = Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name myFrontendSubnet `
   -AddressPrefix $frontendSubnet.AddressPrefix `
   -NetworkSecurityGroup $nsgFrontend
-$backendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnetConfig = Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name myBackendSubnet `
   -AddressPrefix $backendSubnet.AddressPrefix `
   -NetworkSecurityGroup $nsgBackend
-Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
 
 ## <a name="create-a-back-end-vm"></a>Vytvoření back-endového virtuálního počítače
@@ -245,7 +247,7 @@ Nejjednodušším způsobem, jak vytvořit back-endový virtuální počítač p
 Vytvořte virtuální síťové rozhraní *myBackendNic*:
 
 ```azurepowershell-interactive
-$backendNic = New-AzureRmNetworkInterface `
+$backendNic = New-AzNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myBackend `
@@ -261,7 +263,7 @@ $cred = Get-Credential
 Vytvořte virtuální počítač *myBackendVM*.
 
 ```azurepowershell-interactive
-New-AzureRmVM `
+New-AzVM `
    -Credential $cred `
    -Name myBackend `
    -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
@@ -271,7 +273,7 @@ New-AzureRmVM `
    -VirtualNetworkName myVNet
 ```
 
-Použitá image obsahuje nainstalovaný SQL Server, který se však v tomto kurzu nepoužívá. Je zahrnutý pro účely ukázky, jak můžete nakonfigurovat virtuální počítač pro zpracování webového provozu a virtuální počítač pro zpracování správy databáze.
+Bitová kopie v tomto příkladu je nainstalován systém SQL Server, ale není použit v tomto kurzu. Je zahrnutý až vám ukážeme, jak lze nakonfigurovat pro zpracování webových přenosů virtuálního počítače a virtuální počítač pro správu databáze.
 
 ## <a name="next-steps"></a>Další postup
 

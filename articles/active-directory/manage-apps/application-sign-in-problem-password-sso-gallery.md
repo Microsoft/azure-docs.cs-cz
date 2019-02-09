@@ -2,8 +2,8 @@
 title: Potíže při přihlašování k aplikaci Galerie Azure AD konfigurované pro heslo jednotného přihlašování | Dokumentace Microsoftu
 description: Řešení potíží s aplikaci Galerie Azure AD nakonfigurované pro heslo jednotného přihlašování
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 734169a0bce546ee2492d100b2abcb2ba8b6ffc9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ca71cb06b32f0db81c7795ded5121f9212e641c4
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822523"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962770"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Potíže při přihlašování k aplikaci Galerie Azure AD konfigurované pro heslo jednotného přihlašování
 

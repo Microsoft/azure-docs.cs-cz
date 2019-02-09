@@ -3,8 +3,8 @@ title: Potížím při přihlašování k webu přístupového panelu | Dokument
 description: Pokyny k odstraňování problémů, na které můžete narazit při pokusu o přihlášení k použití na přístupovém panelu
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviwer: japere,asteen
-ms.openlocfilehash: 2421cdbb192500e0544e5711ae988c3a89c49e80
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 60d80d6d611c9e24bb76d2437ee555151789a3fd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731049"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961080"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Potížím při přihlašování k webu přístupového panelu
 

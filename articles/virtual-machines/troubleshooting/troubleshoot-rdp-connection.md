@@ -15,17 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4fb31721da679b21fa311340269cf07f93cd903
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817322"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981260"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure
 Připojení protokolu RDP (Remote Desktop) k založené na Windows Azure virtuálnímu počítači (VM) může selhat z různých důvodů, poskytne vám nelze získat přístup k vašemu virtuálnímu počítači. Pomocí služby Vzdálená plocha na virtuální počítač, síťové připojení nebo klient vzdálené plochy na hostitelském počítači může být problém. Tento článek vás provede některé z nejběžnějších metody k řešení problémů s připojením RDP. 
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 <a id="quickfixrdp"></a>
 
@@ -107,7 +109,7 @@ Pokud jste tak dosud neučinili, [instalace a konfigurace nejnovější Azure Po
 Následující příklady používají proměnné, jako `myResourceGroup`, `myVM`, a `myVMAccessExtension`. Tyto názvy proměnných a umístění nahraďte vlastními hodnotami.
 
 > [!NOTE]
-> Resetovat přihlašovací údaje uživatele a konfigurace protokolu RDP s použitím [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) rutiny Powershellu. V následujících příkladech `myVMAccessExtension` je název, který zadáte jako součást procesu. Pokud jste již dříve pracovali s VMAccessAgent, můžete získat název existující rozšíření pomocí `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` zkontrolovat vlastnosti virtuálního počítače. Chcete-li zobrazit název, vyhledejte v části "Rozšíření" výstupu.
+> Resetovat přihlašovací údaje uživatele a konfigurace protokolu RDP s použitím [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) rutiny Powershellu. V následujících příkladech `myVMAccessExtension` je název, který zadáte jako součást procesu. Pokud jste již dříve pracovali s VMAccessAgent, můžete získat název existující rozšíření pomocí `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` zkontrolovat vlastnosti virtuálního počítače. Chcete-li zobrazit název, vyhledejte v části "Rozšíření" výstupu.
 
 Po provedení každého kroku Poradce při potížích zkuste se znovu připojit k virtuálnímu počítači. Pokud se pořád nemůžete připojit, vyzkoušejte další krok.
 
@@ -116,7 +118,7 @@ Po provedení každého kroku Poradce při potížích zkuste se znovu připojit
     Následující příklad resetuje připojení RDP na virtuální počítač s názvem `myVM` v `WestUS` umístění a skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location Westus -Name "myVMAccessExtension"
     ```
 2. **Pravidla skupiny zabezpečení sítě ověřte, zda**. Tento poradce při potížích krok ověřuje, že máte pravidlo skupiny zabezpečení sítě tak, aby povolovala provoz protokolu RDP. Výchozí port pro protokol RDP je TCP port 3389. Pravidlo pro povolení provozu protokolu RDP nemusí být vytvořen automaticky při vytvoření virtuálního počítače.
@@ -124,7 +126,7 @@ Po provedení každého kroku Poradce při potížích zkuste se znovu připojit
     Nejprve přiřadit všechna konfigurační data pro vaše skupiny zabezpečení sítě `$rules` proměnné. Následující příklad získá informace o skupině zabezpečení sítě s názvem `myNetworkSecurityGroup` ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
-    $rules = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
+    $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
         -Name "myNetworkSecurityGroup"
     ```
    
@@ -164,7 +166,7 @@ Po provedení každého kroku Poradce při potížích zkuste se znovu připojit
     Nyní aktualizujte přihlašovací údaje na vašem virtuálním počítači. Následující příklad aktualizuje přihlašovací údaje na virtuálním počítači s názvem `myVM` v `WestUS` umístění a skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location WestUS -Name "myVMAccessExtension" `
         -UserName $cred.GetNetworkCredential().Username `
         -Password $cred.GetNetworkCredential().Password
@@ -174,14 +176,14 @@ Po provedení každého kroku Poradce při potížích zkuste se znovu připojit
     Následující příklad restartuje virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
-    Restart-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+    Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **Opětovné nasazení virtuálního počítače**. Tento poradce při potížích krok znovu nasadí virtuální počítač do jiného hostitele v rámci Azure a opravte všechny základní platformy nebo problémy se sítí.
    
     Následující příklad znovu nasadí virtuální počítač s názvem `myVM` v `WestUS` umístění a skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
-    Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
+    Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 6. **Zkontrolujte směrování**. Network Watcher můžete využít [směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte trasu nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy, pokud chcete zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [provoz řešení potíží s virtuálního počítače pomocí efektivních tras](../../virtual-network/diagnose-network-routing-problem.md).

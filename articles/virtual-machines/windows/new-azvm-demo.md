@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows pomocí zjednodušené rutiny New-AzureRMVM ve službě Azure Cloud Shell | Dokumentace Microsoftu
-description: Rychle se naučíte, jak vytvářet virtuální počítače Windows pomocí rutiny New-AzureRMVM zjednodušené ve službě Azure Cloud Shell.
+title: Vytvoření virtuálního počítače s Windows pomocí zjednodušené rutiny New-AzVM ve službě Azure Cloud Shell | Dokumentace Microsoftu
+description: Rychle se naučíte, jak vytvářet virtuální počítače Windows pomocí zjednodušené rutiny New-AzVM ve službě Azure Cloud Shell.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,40 +16,40 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: d078a9d319ea914c0cab9113ee71283213471261
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 32862d06cfa6a9a8dd9b99459362ec53fd88cec2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428661"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978936"
 ---
-# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Vytvoření virtuálního počítače s Windows pomocí rutiny New-AzureRMVM zjednodušené ve službě Cloud Shell 
+# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azvm-cmdlet-in-cloud-shell"></a>Vytvoření virtuálního počítače s Windows pomocí zjednodušené rutiny New-AzVM ve službě Cloud Shell 
 
-[New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) rutiny přidal zjednodušené sady parametrů pro vytvoření nového virtuálního počítače pomocí Powershellu. V tomto tématu se dozvíte, jak pomocí prostředí PowerShell ve službě Azure Cloud Shell s nejnovější verzí rutinu New-AzureVM předinstalován, chcete-li vytvořit nový virtuální počítač. Použijeme sadu zjednodušené parametr, který automaticky vytvoří všechny potřebné prostředky využitím inteligentních výchozích hodnot. 
+[Rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) rutiny přidal zjednodušené sady parametrů pro vytvoření nového virtuálního počítače pomocí Powershellu. V tomto tématu se dozvíte, jak pomocí prostředí PowerShell ve službě Azure Cloud Shell s nejnovější verzí rutinu New-AzureVM předinstalován, chcete-li vytvořit nový virtuální počítač. Použijeme sadu zjednodušené parametr, který automaticky vytvoří všechny potřebné prostředky využitím inteligentních výchozích hodnot. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.1.1 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Můžete použít [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) rutina pro vytvoření virtuálního počítače s inteligentním výchozím nastavením, které zahrnuje použití image Windows serveru 2016 Datacenter z Azure Marketplace. Můžete použít New-AzureRMVM s jenom **– název** parametr a použije tuto hodnotu pro všechny názvy prostředků. V tomto příkladu jsme jako parametr **-Name** nastavili *myVM*. 
+Pomocí rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) můžete vytvořit virtuální počítač s inteligentním výchozím nastavením, které zahrnuje použití image Windows Serveru 2016 Datacenter z Azure Marketplace. Můžete použít rutiny New-AzVM s jenom **– název** parametr a použije tuto hodnotu pro všechny názvy prostředků. V tomto příkladu jsme jako parametr **-Name** nastavili *myVM*. 
 
 Ověřte, že ve službě Cloud Shell je vybraný **PowerShell**, a zadejte:
 
 ```azurepowershell-interactive
-New-AzureRMVm -Name myVM
+New-AzVm -Name myVM
 ```
 
 Zobrazí se výzva k vytvoření uživatelského jména a hesla pro virtuální počítač, které se dále v tomto tématu použijí při připojení k tomuto virtuálnímu počítači. Heslo musí mít 12 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak.
 
-Vytvoření virtuálního počítače a přidružených prostředků trvá zhruba minutu. Až budete hotovi, uvidíte všechny prostředky, které byly vytvořeny pomocí [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) rutiny.
+Vytvoření virtuálního počítače a přidružených prostředků trvá zhruba minutu. Až budete hotovi, uvidíte všechny prostředky, které byly vytvořeny pomocí [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) rutiny.
 
 ```azurepowershell-interactive
-Get-AzureRmResource `
+Get-AzResource `
     -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
@@ -57,10 +57,10 @@ Get-AzureRmResource `
 
 Po dokončení nasazení vytvořte připojení ke vzdálené ploše virtuálního počítače.
 
-Použijte příkaz [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress), který vrátí veřejnou IP adresu virtuálního počítače. Poznamenejte si tuto IP adresu.
+Použití [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) příkaz, který vrátí veřejnou IP adresu virtuálního počítače. Poznamenejte si tuto IP adresu.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
     -ResourceGroupName myVMResourceGroup | Select IpAddress
 ```
 
@@ -74,7 +74,7 @@ mstsc /v:<publicIpAddress>
 Můžete také poskytnout více popisné názvy pro prostředky a ještě další je vytvořen automaticky. Tady je příklad kde několik prostředků mají pojmenované pro nový virtuální počítač, včetně novou skupinu prostředků.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
     -Location "East US" `
@@ -87,11 +87,11 @@ New-AzureRmVm `
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) příkazu k odebrání skupiny prostředků, virtuálního počítače, a všechny související prostředky.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myVM
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myVM
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup

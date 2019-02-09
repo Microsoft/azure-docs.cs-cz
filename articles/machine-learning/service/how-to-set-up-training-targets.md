@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 292063183561722eae76c3d30ce242facd22df26
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756525"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981447"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -47,6 +47,11 @@ Služba Azure Machine Learning nabízí různé podporu napříč různými výp
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
+**Všechny výpočetní cíle lze opětovně použít pro více úlohy trénování**. Například po připojení vzdáleném virtuálním počítači do svého pracovního prostoru, jej můžete znovu použít pro více úloh.
+
+> [!NOTE]
+> Azure Machine Learning Compute můžou vytvořit jako prostředek trvalé nebo dynamicky vytvoří, když požádáte o spuštění. Na základě spuštění vytvoření odebere cílové výpočetní prostředí po spuštění školení je dokončeno, proto nelze znovu použít cílových výpočetních prostředí vytvořené tímto způsobem.
+
 ## <a name="whats-a-run-configuration"></a>Co je konfigurace spuštění?
 
 Při tréninku, je společný pro spuštění v místním počítači a později spustit trénovací skript v jiného cílového výpočetního prostředí. Pomocí služby Azure Machine Learning můžete spustit skript v různých cílových výpočetních prostředí bez nutnosti změny vašeho skriptu. 
@@ -65,7 +70,7 @@ Použijte prostředí spravované systému, když potřebujete [Conda](https://c
 
 Vše je třeba provést, je určit závislosti každého balíčku pomocí [CondaDependency třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) Conda pak vytvoří soubor s názvem **conda_dependencies.yml** v **aml_config** adresář ve vašem pracovním prostoru s seznamu závislosti balíčků a nastaví prostředí Pythonu při odesílání vašeho výukového experimentu. 
 
-Počáteční nastavení nové prostředí může trvat několik minut v závislosti na velikosti požadované závislosti. Tak dlouho, dokud seznam balíčků zůstane beze změny, nastavte čas dojde jenom jednou.
+Počáteční nastavení nové prostředí může trvat několik minut v závislosti na velikosti požadované závislosti. Tak dlouho, dokud seznam balíčků zůstane beze změny, doba instalace dojde jenom jednou.
   
 Následující kód ukazuje příklad pro prostředí systému spravované vyžadující scikit-informace:
     
@@ -73,7 +78,7 @@ Následující kód ukazuje příklad pro prostředí systému spravované vyža
 
 #### <a name="user-managed-environment"></a>Uživatel spravován prostředí
 
-Pro uživatele, spravovat prostředí jste zodpovědní za nastavením vašeho prostředí a instalace všech balíčků musí cvičný skript v cílové výpočetní prostředí. Pokud vaše prostředí školení je už nakonfigurovaný (například na místním počítači), nastavte krok můžete přeskočit tím, že nastavíte `user_managed_dependencies` na hodnotu True. Conda nebude kontrolovat vaše prostředí nebo nic instalovat za vás.
+Pro prostředí uživatel spravován jste zodpovědní za nastavením vašeho prostředí a instalace všech balíčků musí cvičný skript v cílové výpočetní prostředí. Pokud prostředí školení je už nakonfigurovaný (například na místním počítači), můžete přeskočit krok instalace pomocí nastavení `user_managed_dependencies` na hodnotu True. Conda nebude kontrolovat vaše prostředí nebo nic instalovat za vás.
 
 Následující kód ukazuje příklad konfigurace tréninkových spuštění pro uživatele, spravovat prostředí:
 
@@ -242,7 +247,7 @@ Můžete přistupovat cílových výpočetních prostředí, které jsou spojeny
 
 * [Zobrazení cílových výpočetních prostředí](#portal-view) připojené k vašemu pracovnímu prostoru
 * [Vytvořte cílové výpočetní prostředí](#portal-create) ve vašem pracovním prostoru
-* [Znovu použít existující cílových výpočetních prostředí](#portal-reuse)
+* [Připojit cílové výpočetní prostředí](#portal-reuse) , který byl vytvořen mimo pracovní prostor
 
 Po cíl se vytvoří a připojí k vašemu pracovnímu prostoru, budete ho používat v konfiguraci spuštění s `ComputeTarget` objektu: 
 
@@ -293,9 +298,11 @@ Postupujte podle předchozích kroků a zobrazí se seznam cílových výpočetn
 
 
 
-### <a id="portal-reuse"></a>Znovu použít existující cílových výpočetních prostředí
+### <a id="portal-reuse"></a>Připojit cílových výpočetních prostředí
 
-Postupujte podle kroků popsaných dříve zobrazí seznam cílových výpočetních prostředí. Pak pomocí těchto kroků můžete znovu použít cílového výpočetního prostředí: 
+Pokud chcete použít cílových výpočetních prostředí vytvořená mimo pracovní prostor služby Azure Machine Learning, je nutné připojit je. Připojení cílového výpočetního prostředí je k dispozici pro váš pracovní prostor.
+
+Postupujte podle kroků popsaných dříve zobrazí seznam cílových výpočetních prostředí. Pak použijte následující kroky k připojení cílového výpočetního prostředí: 
 
 1. Vyberte znaménko plus (+) Chcete-li přidat cílové výpočetní prostředí. 
 1. Zadejte název cílového výpočetního prostředí. 

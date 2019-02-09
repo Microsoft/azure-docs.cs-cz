@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 90d95d7ad1ffb3200a69e0e7980dae2d7ed97470
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: bdb89a89713c093768de3e40eda2bcbb6a311b2b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894322"
+ms.locfileid: "55960873"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -100,6 +100,7 @@ Použití skupin – automatické převzetí služeb při selhání, pokud vaše
 - Další náklady na aktivní geografickou replikaci jsou nižší než potenciální finanční závazky a související ztráta podnikání.
 
 Když přijmete opatření, jak dlouho trvá, vám umožní obnovit a množství ztracených dat v závisí na tom, jak se rozhodnete pomocí těchto funkcí provozní kontinuity ve vaší aplikaci. Ve skutečnosti můžete rozhodnout pro použití kombinace záloh databáze a aktivní geografickou replikaci v závislosti na požadavcích aplikace. Diskuzi o aspektech návrhu aplikací pro samostatné databáze a pro elastické fondy pomocí těchto funkcí provozní kontinuity, naleznete v tématu [návrh aplikace pro zotavení po havárii cloudu](sql-database-designing-cloud-solutions-for-disaster-recovery.md) a [Elastic fond strategie zotavení po havárii](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+
 
 Následující části poskytují přehled postupů k obnovení pomocí záloh databáze nebo aktivní geografické replikace. Podrobné pokyny, včetně plánování požadavky, postupů po obnovení a informace o simulaci výpadku provedení postupu zotavení po havárii, najdete v článku [obnovení služby SQL Database po výpadku](sql-database-disaster-recovery.md).
 

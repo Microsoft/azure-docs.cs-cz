@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/27/2018
+ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c5fa818a7f0d25a91ea6d272c30384de4c1765b3
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: aa8f4e188761c50391cd2ead49ae8d8b9081188f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887100"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983487"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Kurz: Instalace SQL, služby IIS a .NET zásobníku ve virtuálním počítači Windows pomocí Azure Powershellu
 
@@ -32,20 +32,22 @@ V tomto kurzu nainstalujeme SQL, IIS, .NET zásobníku pomocí Azure Powershellu
 > * Vytvoření virtuálního počítače s SQL Serverem
 > * Instalace rozšíření SQL Serveru
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul AzureRM.Compute verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM.Compute`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="create-a-iis-vm"></a>Vytvoření virtuálního počítače se službou IIS 
 
-V tomto příkladu pomocí rutiny [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) v PowerShellu nebo službě Cloud Shell rychle vytvoříme virtuální počítač s Windows Serverem 2016 a pak nainstalujeme službu IIS a rozhraní .NET Framework. Virtuální počítače se službou IIS a s SQL sdílí skupinu prostředků a virtuální síť, takže pro jejich názvy vytvoříme proměnné.
+V tomto příkladu používáme [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) rutiny v prostředí PowerShell Cloud Shell rychle vytvořit virtuální počítač s Windows serverem 2016 a potom nainstalovat službu IIS a rozhraní .NET Framework. Virtuální počítače se službou IIS a s SQL sdílí skupinu prostředků a virtuální síť, takže pro jejich názvy vytvoříme proměnné.
 
 
 ```azurepowershell-interactive
 $vmName = "IISVM"
 $vNetName = "myIISSQLvNet"
 $resourceGroup = "myIISSQLGroup"
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $resourceGroup `
     -Name $vmName `
     -Location "East US" `
@@ -57,10 +59,10 @@ New-AzureRmVm `
     -OpenPorts 80,3389 
 ```
 
-Instalace IIS a rozhraní .NET framework pomocí rozšíření vlastních skriptů [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny.
+Instalace IIS a rozhraní .NET framework pomocí rozšíření vlastních skriptů s [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) rutiny.
 
 ```azurepowershell-interactive
-Set-AzureRmVMExtension `
+Set-AzVMExtension `
     -ResourceGroupName $resourceGroup `
     -ExtensionName IIS `
     -VMName $vmName `
@@ -73,29 +75,29 @@ Set-AzureRmVMExtension `
 
 ## <a name="create-another-subnet"></a>Vytvoření další podsítě
 
-Vytvořte druhou podsíť pro virtuální počítač SQL. Virtuální síť získáte pomocí rutiny [Get-AzureRmVirtualNetwork]{/powershell/module/azurerm.network/get-azurermvirtualnetwork}.
+Vytvořte druhou podsíť pro virtuální počítač SQL. Získejte virtuální síť pomocí [Get-AzVirtualNetwork]{/powershell/module/az.network/get-azvirtualnetwork}.
 
 ```azurepowershell-interactive
-$vNet = Get-AzureRmVirtualNetwork `
+$vNet = Get-AzVirtualNetwork `
    -Name $vNetName `
    -ResourceGroupName $resourceGroup
 ```
 
-Vytvořte konfiguraci podsítě pomocí rutiny [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig).
+Vytvořte konfiguraci podsítě pomocí [přidat AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig).
 
 
 ```azurepowershell-interactive
-Add-AzureRmVirtualNetworkSubnetConfig `
+Add-AzVirtualNetworkSubnetConfig `
    -AddressPrefix 192.168.0.0/24 `
    -Name mySQLSubnet `
    -VirtualNetwork $vNet `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-Aktualizujte virtuální síť s použitím informací o nové podsíti pomocí rutiny [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork).
+Aktualizovat virtuální síť s použitím informace o nové podsíti [Set AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork)
    
 ```azurepowershell-interactive   
-$vNet | Set-AzureRmVirtualNetwork
+$vNet | Set-AzVirtualNetwork
 ```
 
 ## <a name="azure-sql-vm"></a>Virtuální počítač Azure SQL
@@ -104,7 +106,7 @@ K vytvoření virtuálního počítače SQL použijte předkonfigurovanou image 
 
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $resourceGroup `
     -Name "mySQLVM" `
     -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
@@ -116,10 +118,10 @@ New-AzureRmVm `
     -OpenPorts 3389,1401 
 ```
 
-Pomocí rutiny [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) přidejte na virtuální počítač SQL [rozšíření SQL Serveru](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Použití [Set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) přidáte [rozšíření SQL serveru](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) na virtuální počítač SQL.
 
 ```azurepowershell-interactive
-Set-AzureRmVMSqlServerExtension `
+Set-AzVMSqlServerExtension `
    -ResourceGroupName $resourceGroup  `
    -VMName mySQLVM `
    -Name "SQLExtension" `

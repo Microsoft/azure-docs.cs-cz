@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3b9de282b95b27a04ac6d182b1045e18e65c5f6
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e4b737117880393e24fe6ea00223fb0f719be4e4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025901"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980463"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálních počítačů a funkce pro Windows
 
@@ -75,12 +75,12 @@ Agent hosta Windows nemá podporu můžete přesměrovat žádosti o přenos age
 
 ## <a name="discover-vm-extensions"></a>Zjistit rozšíření virtuálních počítačů
 
-Mnoho různých rozšíření virtuálního počítače jsou k dispozici pro použití s virtuálními počítači Azure. Pokud chcete zobrazit úplný seznam, použijte [Get-AzureRmVMExtensionImage](/powershell/module/azurerm.compute/get-azurermvmextensionimage). Následující příklad zobrazí seznam všech dostupných rozšíření v *WestUS* umístění:
+Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. Pokud chcete zobrazit úplný seznam, použijte [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). Následující příklad zobrazí seznam všech dostupných rozšíření v *WestUS* umístění:
 
 ```powershell
-Get-AzureRmVmImagePublisher -Location "WestUS" | `
-Get-AzureRmVMExtensionImageType | `
-Get-AzureRmVMExtensionImage | Select Type, Version
+Get-AzVmImagePublisher -Location "WestUS" | `
+Get-AzVMExtensionImageType | `
+Get-AzVMExtensionImage | Select Type, Version
 ```
 
 ## <a name="run-vm-extensions"></a>Spuštění rozšíření virtuálních počítačů
@@ -91,10 +91,10 @@ Následující metody můžete použít ke spuštění rozšíření existujíc�
 
 ### <a name="powershell"></a>PowerShell
 
-Pro spouštění jednotlivých rozšíření existovat několik příkazů Powershellu. Chcete-li zobrazit seznam, použijte [Get-Command](/powershell/module/microsoft.powershell.core/get-command) a filtrujte *rozšíření*:
+Pro spouštění jednotlivých rozšíření existovat několik příkazů Powershellu. Chcete-li zobrazit seznam, použijte [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) a filtrujte *rozšíření*:
 
 ```powershell
-Get-Command Set-AzureRM*Extension* -Module AzureRM.Compute
+Get-Command Set-Az*Extension* -Module AzureRM.Compute
 ```
 
 Získáte výstup podobný následujícímu:
@@ -102,25 +102,25 @@ Získáte výstup podobný následujícímu:
 ```powershell
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Cmdlet          Set-AzureRmVMAccessExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMADDomainExtension                     4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMAEMExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMBackupExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMBginfoExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMChefExtension                         4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMCustomScriptExtension                 4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDscExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMExtension                             4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMSqlServerExtension                    4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMAccessExtension                       4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMADDomainExtension                     4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMAEMExtension                          4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMBackupExtension                       4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMBginfoExtension                       4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMChefExtension                         4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMDscExtension                          4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMExtension                             4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
 ```
 
 Následující příklad používá rozšíření vlastních skriptů stáhněte si skript z úložiště GitHub do cílového virtuálního počítače a pak spusťte skript. Další informace o rozšíření vlastních skriptů, najdete v části [přehled rozšíření vlastních skriptů](custom-script-windows.md).
 
 ```powershell
-Set-AzureRmVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
+Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" -Name "myCustomScript" `
     -FileUri "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1" `
     -Run "Create-File.ps1" -Location "West US"
@@ -131,12 +131,12 @@ V následujícím příkladu se používá rozšíření přístupu virtuálníc
 ```powershell
 $cred=Get-Credential
 
-Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" `
+Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" `
     -Location WestUS -UserName $cred.GetNetworkCredential().Username `
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzureRmVMExtension` Příkaz je možné spustit libovolné rozšíření virtuálního počítače. Další informace najdete v tématu [Set-AzureRmVMExtension odkaz](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension).
+`Set-AzVMExtension` Příkaz je možné spustit libovolné rozšíření virtuálního počítače. Další informace najdete v tématu [odkaz na sadu AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
 ### <a name="azure-portal"></a>portál Azure
@@ -269,7 +269,7 @@ Vydavatelé zpřístupnění aktualizací pro regiony v různých časech, takž
 #### <a name="listing-extensions-deployed-to-a-vm"></a>Seznam rozšíření, které jsou nasazené do virtuálního počítače
 
 ```powershell
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
+$vm = Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
 $vm.Extensions | select Publisher, VirtualMachineExtensionType, TypeHandlerVersion
 ```
 
@@ -310,10 +310,10 @@ Pokud chcete získat nejnovější podverzi opravy, důrazně doporučujeme vžd
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Identifikace, pokud je rozšíření nastavená možnost autoupgrademinorversion na virtuálním počítači
 
-Je vidět z modelu virtuálního počítače, pokud rozšíření a byla opatřena "verzi autoUpgradeMinorVersion". Chcete-li zkontrolovat, použijte [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm) a zadejte skupinu prostředků a virtuální počítač pojmenujte následujícím způsobem:
+Je vidět z modelu virtuálního počítače, pokud rozšíření a byla opatřena "verzi autoUpgradeMinorVersion". Chcete-li zkontrolovat, použijte [rutiny Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a zadejte skupinu prostředků a virtuální počítač pojmenujte následujícím způsobem:
 
 ```powerShell
- $vm = Get-AzureRmVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
+ $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
  $vm.Extensions
 ```
 
@@ -366,10 +366,10 @@ Následující postup platí pro všechna rozšíření virtuálních počítač
 
 ### <a name="view-extension-status"></a>Zobrazit stav rozšíření
 
-Po spuštění rozšíření virtuálního počítače na virtuálním počítači použít [Get-AzureRmVM ](/powershell/module/azurerm.compute/get-azurermvm) vrátit stav rozšíření. *Dílčí stavy [0]* odhalí zřizování rozšíření bylo úspěšné, což znamená, že se úspěšně nasadit do virtuálních počítačů, ale provádění rozšíření ve virtuálním počítači se nezdařilo, *dílčí stavy [1]*.
+Po spuštění rozšíření virtuálního počítače na virtuálním počítači použít [rutiny Get-AzVM ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) vrátit stav rozšíření. *Dílčí stavy [0]* odhalí zřizování rozšíření bylo úspěšné, což znamená, že se úspěšně nasadit do virtuálních počítačů, ale provádění rozšíření ve virtuálním počítači se nezdařilo, *dílčí stavy [1]*.
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
+Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
 ```
 
 Výstup se podobá následující příklad výstupu:
@@ -402,10 +402,10 @@ Stav spuštění rozšíření najdete také na webu Azure Portal. Chcete-li zob
 
 ### <a name="rerun-vm-extensions"></a>Znovu spusťte rozšíření virtuálních počítačů
 
-Můžou nastat případy, ve kterých je rozšíření virtuálního počítače potřeba znovu spustit. Rozšíření můžete znovu spustit ho odebrat, a potom znovu spustit rozšíření s metodou spuštění podle vašeho výběru. Chcete-li odebrat rozšíření, použijte [Remove-AzureRmVMExtension](/powershell/module/AzureRM.Compute/Remove-AzureRmVMExtension) následujícím způsobem:
+Můžou nastat případy, ve kterých je rozšíření virtuálního počítače potřeba znovu spustit. Rozšíření můžete znovu spustit ho odebrat, a potom znovu spustit rozšíření s metodou spuštění podle vašeho výběru. Chcete-li odebrat rozšíření, použijte [odebrat AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) následujícím způsobem:
 
 ```powershell
-Remove-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
+Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
 ```
 
 Můžete také odebrat rozšíření na webu Azure Portal následujícím způsobem:

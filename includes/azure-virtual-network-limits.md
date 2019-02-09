@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: fe1993a914ea4d3bd8ab9116748198cbb0c1c43c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513956"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55905120"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -76,11 +76,12 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md)
 
 | Prostředek | Výchozí omezení |
-| --- | --- | --- |
+| --- | --- |
 | Nástroje pro vyrovnávání zatížení | 1000 | 
 | Pravidla pro každý prostředek, Basic | 250 |
 | Pravidla pro každý prostředek, Standard | 1 500 | 
 | Pravidla na konfiguraci IP adresy | 299 |
+| Pravidla pro síťové rozhraní | 500 |
 | Konfigurace protokolu IP front-endu, Basic | 200 |
 | Konfigurace protokolu IP front-endu, Standard | 600 |
 | Back-endový fond Basic | 100, jedna skupina dostupnosti |
@@ -88,7 +89,5 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Back-Endovým prostředkům za nástroj pro vyrovnávání zatížení, standardní * | 150 |
 | HA portů a Standard | 1 za interní front-endu |
 
-** Až 150 zdrojů libovolnou kombinaci samostatné virtuální počítače, skupiny dostupnosti a škálovací sady virtuálních počítačů.
-
-Pokud potřebujete navýšit výchozí omezení, [kontaktujte podporu](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
+** Až do 150 zdrojů, jakékoli kombinace prostředků samostatný virtuální počítač, ke skupinám dostupnosti prostředků a škálovací sady virtuálních počítačů prostředky.
 

@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9df44f658deaa9fde9cc356eb8d7ff6806cc9738
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ea17db9af92887ff775e580224b66fed22c65d41
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731027"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963858"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled služby Azure App Service místní mezipaměti
 
@@ -72,7 +72,7 @@ Povolit místní mezipaměti na základě aplikace na web pomocí tohoto nastave
 ### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Konfigurovat místní mezipaměti pomocí Azure Resource Manageru
 <a name="Configure-Local-Cache-ARM"></a>
 
-```
+```json
 
 ...
 
@@ -84,7 +84,7 @@ Povolit místní mezipaměti na základě aplikace na web pomocí tohoto nastave
         "[resourceId('Microsoft.Web/sites/', variables('siteName'))]"
     ],
 
-"properties": {
+    "properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
         "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
     }

@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: f61c47e6c3baf574c17a40298c3a164800b143a0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867184"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983028"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článku kontextové rozhodování
 
@@ -50,7 +50,7 @@ Další informace o formátu informačního kanálu najdete v [referenčních in
 
 ## <a name="register-a-new-app"></a>Registrace nové aplikace
 
-1. Přihlaste se pomocí [účtu Microsoft](https://account.microsoft.com/account). Na pásu karet klikněte na **My Portal** (Můj portál).
+1. Přihlaste se pomocí [účtu Microsoft](https://portal.ds.microsoft.com/). Na pásu karet klikněte na **My Portal** (Můj portál).
 
 2. Pokud chcete zaregistrovat novou aplikaci, klikněte na tlačítko **New App** (Nová aplikace).
 

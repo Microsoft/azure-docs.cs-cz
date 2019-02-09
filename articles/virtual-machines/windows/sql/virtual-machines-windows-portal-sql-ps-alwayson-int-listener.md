@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: dd09dd337cfe11729ef3ddc5d9b19f024d64300e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b412d2b054fc8703c7524479359a3670782fd646
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872998"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980887"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurujte jeden nebo více Always On naslouchacích procesů skupin dostupnosti - Resource Manageru
 Toto téma ukazuje, jak:
@@ -37,6 +37,8 @@ Související témata:
 
 * [Konfigurace skupin dostupnosti AlwaysOn na virtuálním počítači Azure (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Konfigurace připojení typu VNet-to-VNet pomocí Azure Resource Manageru a Powershellu](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
@@ -77,11 +79,11 @@ $ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupN
 > [!NOTE]
 > Pokud jste vytvořili vaší skupiny dostupnosti s [šablony aplikace Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), interní služby load balancer už byl vytvořen.
 
-Následující skript Powershellu vytvoří interního nástroje, nakonfiguruje pravidla Vyrovnávání zatížení a nastaví IP adresu nástroje pro vyrovnávání zatížení. Pro spuštění skriptu, otevřete Windows PowerShell ISE a vložte skript v podokně skriptu. Použití `Connect-AzureRmAccount` pro přihlášení k prostředí PowerShell. Pokud máte více předplatných Azure, použijte `Select-AzureRmSubscription ` nastavte předplatné. 
+Následující skript Powershellu vytvoří interního nástroje, nakonfiguruje pravidla Vyrovnávání zatížení a nastaví IP adresu nástroje pro vyrovnávání zatížení. Pro spuštění skriptu, otevřete Windows PowerShell ISE a vložte skript v podokně skriptu. Použití `Connect-AzAccount` pro přihlášení k prostředí PowerShell. Pokud máte více předplatných Azure, použijte `Select-AzSubscription ` nastavte předplatné. 
 
 ```powershell
-# Connect-AzureRmAccount
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+# Connect-AzAccount
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<Resource Group Name>" # Resource group name
 $VNetName = "<Virtual Network Name>"         # Virtual network name
@@ -100,30 +102,30 @@ $LBConfigRuleName = "ILBCR_$ListenerPort"    # The Load Balancer Rule Object Nam
 $FrontEndConfigurationName = "FE_SQLAGILB_1" # Object name for the front-end configuration 
 $BackEndConfigurationName ="BE_SQLAGILB_1"   # Object name for the back-end configuration
 
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
 
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName 
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName 
 
-$FEConfig = New-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.id
+$FEConfig = New-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.id
 
-$BEConfig = New-AzureRMLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName 
+$BEConfig = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName 
 
-$SQLHealthProbe = New-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -Protocol tcp -Port $ProbePort -IntervalInSeconds 15 -ProbeCount 2
+$SQLHealthProbe = New-AzLoadBalancerProbeConfig -Name $LBProbeName -Protocol tcp -Port $ProbePort -IntervalInSeconds 15 -ProbeCount 2
 
-$ILBRule = New-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
+$ILBRule = New-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
 
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe 
 
-$bepool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
+$bepool = Get-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
 
 foreach($VMName in $VMNames)
     {
-        $VM = Get-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VMName 
+        $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName 
         $NICName = ($vm.NetworkProfile.NetworkInterfaces.Id.split('/') | select -last 1)
-        $NIC = Get-AzureRmNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName
+        $NIC = Get-AzNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName
         $NIC.IpConfigurations[0].LoadBalancerBackendAddressPools = $BEPool
-        Set-AzureRmNetworkInterface -NetworkInterface $NIC
-        start-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VM.Name 
+        Set-AzNetworkInterface -NetworkInterface $NIC
+        start-AzVM -ResourceGroupName $ResourceGroupName -Name $VM.Name 
     }
 ```
 
@@ -141,8 +143,8 @@ Front-endový port je port, který se aplikace používají pro připojení k in
 Následující skript přidá novou IP adresu existující nástroj pro vyrovnávání zatížení. Port naslouchacího procesu ILB používá pro front-endový port pro vyrovnávání zatížení. Tento port může být port, který naslouchá SQL Server. Pro výchozí instance SQL serveru port je 1433. Pravidlo pro skupinu dostupnosti Vyrovnávání zatížení vyžaduje plovoucí IP (přímá odpověď ze serveru vrácené), takže port back-end je stejný jako front-endový port. Aktualizujte proměnné pro vaše prostředí. 
 
 ```powershell
-# Connect-AzureRmAccount
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+# Connect-AzAccount
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<ResourceGroup>"          # Resource group name
 $VNetName = "<VirtualNetwork>"                  # Virtual network name
@@ -153,7 +155,7 @@ $ILBIP = "<n.n.n.n>"                            # IP address
 [int]$ListenerPort = "<nnnn>"                   # AG listener port
 [int]$ProbePort = "<nnnnn>"                     # Probe port 
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName 
+$ILB = Get-AzLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName 
 
 $count = $ILB.FrontendIpConfigurations.Count+1
 $FrontEndConfigurationName ="FE_SQLAGILB_$count"  
@@ -161,22 +163,22 @@ $FrontEndConfigurationName ="FE_SQLAGILB_$count"
 $LBProbeName = "ILBPROBE_$count"
 $LBConfigrulename = "ILBCR_$count"
 
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
-$ILB | Add-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id 
+$ILB | Add-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id 
 
-$ILB | Add-AzureRmLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 15  | Set-AzureRmLoadBalancer 
+$ILB | Add-AzLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 15  | Set-AzLoadBalancer 
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
-$FEConfig = get-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
+$FEConfig = get-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
 
-$SQLHealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
+$SQLHealthProbe  = Get-AzLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
-$BEConfig = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $ILB.BackendAddressPools[0].Name -LoadBalancer $ILB 
+$BEConfig = Get-AzLoadBalancerBackendAddressPoolConfig -Name $ILB.BackendAddressPools[0].Name -LoadBalancer $ILB 
 
-$ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort  $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP | Set-AzureRmLoadBalancer   
+$ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort  $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP | Set-AzLoadBalancer   
 ```
 
 ## <a name="configure-the-listener"></a>Nakonfigurujte naslouchací proces
@@ -231,9 +233,9 @@ Další informace najdete v tématu [skupiny dostupnosti nakonfigurujte Always O
 ## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
 Pomocí následujících rutin prostředí PowerShell k vytvoření interního nástroje pro Azure virtual machines.
 
-* [Nový-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) vytvoří nástroj pro vyrovnávání zatížení. 
-* [Nový-AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) vytvoří konfiguraci front-end IP adresy nástroje pro vyrovnávání zatížení. 
-* [Nový-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) vytvoří konfiguraci pravidla nástroje pro vyrovnávání zatížení. 
-* [Nový-AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) vytvoří konfiguraci fondu adres back-end pro nástroj pro vyrovnávání zatížení. 
-* [Nový-AzureRmLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) vytvoří konfiguraci sondy pro nástroj pro vyrovnávání zatížení.
-* [Remove-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) odebere nástroj pro vyrovnávání zatížení ze skupiny prostředků Azure.
+* [Nové AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) vytvoří nástroj pro vyrovnávání zatížení. 
+* [Nové AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) vytvoří konfiguraci front-end IP adresy nástroje pro vyrovnávání zatížení. 
+* [Nové AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) vytvoří konfiguraci pravidla nástroje pro vyrovnávání zatížení. 
+* [Nové AzLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) vytvoří konfiguraci fondu adres back-end pro nástroj pro vyrovnávání zatížení. 
+* [Nové AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) vytvoří konfiguraci sondy pro nástroj pro vyrovnávání zatížení.
+* [Odebrat AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) odebere nástroj pro vyrovnávání zatížení ze skupiny prostředků Azure.

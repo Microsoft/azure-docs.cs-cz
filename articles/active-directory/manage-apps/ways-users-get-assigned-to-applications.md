@@ -3,8 +3,8 @@ title: Postup přiřazení uživatelů k aplikacím | Dokumentace Microsoftu
 description: Vysvětlení, jak přiřadit uživatele k aplikaci ve vašem tenantovi
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: fd677a34caa5a1871808b31477e91746ec9fdccb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 84e341b4ec63bd0cd038e1f010e4f09c7ccceffd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170398"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961461"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Přiřazení uživatelů k aplikacím
 

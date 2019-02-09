@@ -3,8 +3,8 @@ title: Potíže s konfigurací zřizování uživatelů pro aplikaci Galerie Azu
 description: Jak řešit běžné problémy, kterým čelí při konfiguraci zřizování uživatelů pro aplikace již uvedená v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 38075c9216eab955a023fee53aad74f3768d783c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 90f53624a05b462f517c8e2b36034326348f9899
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822268"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959370"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Potíže s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 
@@ -55,7 +55,7 @@ Pokud jste nastavili **stavu zřizování** bude **na** v **Azure Active Directo
 
 ## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Nelze uložit konfiguraci z důvodu přihlašovacích údajů aplikace nefunguje
 
-V pořadí pro zřizování pro práci Azure AD vyžaduje platné přihlašovací údaje, které umožňují připojení k rozhraní API poskytuje tuto aplikaci pro správu uživatelů. Pokud tyto přihlašovací údaje, nebudou fungovat, nebo si nejste jisti wat, ve které je, přečtěte si kurz pro nastavení této aplikace, je popsáno výše.
+V pořadí pro zřizování pro práci Azure AD vyžaduje platné přihlašovací údaje, které umožňují připojení k rozhraní API poskytuje tuto aplikaci pro správu uživatelů. Pokud tyto přihlašovací údaje nejsou k dispozici nebo zatím nevíte, co jsou, přečtěte si kurz pro nastavení této aplikace, je popsáno výše.
 
 ## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Protokoly auditu Řekněme, že uživatelé jsou vynechány a není zřízený, i když jsou přiřazeny
 

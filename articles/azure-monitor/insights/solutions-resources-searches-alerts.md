@@ -13,14 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901186"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980104"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
+
+> [!IMPORTANT]
+> Podrobnosti na tomto místě pro vytvoření upozornění pomocí šablony Resource Manageru jsou z data nyní [upozornění Log Analytics se rozšířily a Azure Monitor](../platform/alerts-extend.md). Podrobnosti o vytváření upozornění na protokol pomocí šablony Resource Manageru najdete v tématu [Správa upozornění protokolů pomocí šablony Azure Resource](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template).
 
 > [!NOTE]
 > Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.
@@ -180,7 +183,7 @@ Vlastnosti pro akce upozornění prostředky jsou popsány v následujících ta
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Typ | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
+| Type | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
 | Název | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidla upozornění. |
 | Popis | Ne | Popis výstrahy. |
 | Severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4bcd7bcef0969cec82d42ead6307e72a3abea6e1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260483"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978864"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalace a využít Apache Giraph u clusterů HDInsight se systémem Windows
 
@@ -46,17 +46,12 @@ Giraph můžete nainstalovat na libovolný typ clusteru Azure HDInsight (Hadoop,
 
     ![Přizpůsobení clusteru pomocí akce skriptu](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "přizpůsobení clusteru pomocí akce skriptu")
 
-    <table border='1'>
-        <tr><th>Vlastnost</th><th>Hodnota</th></tr>
-        <tr><td>Název</td>
-            <td>Zadejte název akce skriptu. Například <b>nainstalovat Giraph</b>.</td></tr>
-        <tr><td>Identifikátor URI skriptu</td>
-            <td>Zadejte identifikátor URI (Uniform Resource), která je volána k přizpůsobení clusteru skriptu. Například <i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
-        <tr><td>Typ uzlu</td>
-            <td>Zadejte uzly, na kterých běží přizpůsobení skriptu. Můžete zvolit <b>všechny uzly</b>, <b>hlavním uzlům pouze</b>, nebo <b>pracovní uzly pouze</b>.
-        <tr><td>Parametry</td>
-            <td>Zadejte parametry, pokud je to nutné skript. Skript, který chcete nainstalovat Giraph nevyžaduje žádné parametry, takže můžete nechat prázdné.</td></tr>
-    </table>
+    |Vlastnost|Hodnota|  
+    |---|---|  
+    |Název|Zadejte název akce skriptu. Například **nainstalovat Giraph**|
+    |Identifikátor URI skriptu|Zadejte identifikátor URI (Uniform Resource), která je volána k přizpůsobení clusteru skriptu. Například *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |Typ uzlu|Zadejte uzly, na kterých běží přizpůsobení skriptu. Můžete zvolit **všechny uzly**, **hlavním uzlům pouze**, nebo **pracovní uzly pouze**.
+    |Parametry|Zadejte parametry, pokud je to nutné skript. Skript, který chcete nainstalovat Giraph nevyžaduje žádné parametry, takže můžete nechat prázdné.|  
 
     Můžete přidat více než jednu akci se skripty pro instalaci více součástí clusteru. Po přidání skripty, klikněte na značku zaškrtnutí zahájíte vytváření clusteru.
 
@@ -78,6 +73,7 @@ K předvedení na úrovni basic použijeme příklad SimpleShortestPathsComputat
     Vleklým, a pomocí hodnoty (nebo váha) jako vzdálenosti mezi objekty, výše uvedená data může vypadat třeba takto:
 
     ![tiny_graph.txt vykreslen jako kroužky s různou vzdálenost mezi řádky](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
+
 2. Spustíte příklad SimpleShortestPathsComputation. Pomocí následujících rutin prostředí Azure PowerShell ke spuštění příkladu s použitím souboru tiny_graph.txt jako vstup.
 
     > [!IMPORTANT]  

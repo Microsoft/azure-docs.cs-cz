@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732766"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984507"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>Kurz: Managed instance zabezpečení ve službě Azure SQL Database pomocí přihlášení Azure AD
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte přihlašovací údaje Azure Active Directory (AD) pro spravovanou instanci
 > - Udělení oprávnění k přihlášení Azure AD do spravované instance
 > - Vytvoření uživatele služby Azure AD z přihlašovací údaje Azure AD
-> - Přiřazení oprávnění pro uživatele Azure AD a zabezpečení spravované databáze
+> - Přiřazení oprávnění pro uživatele Azure AD a Správa zabezpečení databáze
 > - Použití zosobnění se službou Azure AD uživatelům
 > - Mezidatabázové dotazy pomocí uživatele Azure AD
 > - Další informace o funkcích zabezpečení, jako je ochrana před internetovými útoky, auditování, maskování dat a šifrování

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: e1144611c68e8a3c450f8017388cfa84629f9921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e905168ab2c2f10bcfadfc605fdcaa800e70332
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256489"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982003"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrovat prostředky IaaS z modelu classic na Azure Resource Manager pomocí Azure Powershellu
 Tyto kroky ukazují, jak používat příkazy Azure Powershellu k migraci infrastruktury jako služby (IaaS) prostředky z modelu nasazení classic do modelu nasazení Azure Resource Manageru.
@@ -36,6 +36,8 @@ Tady je Vývojový diagram k identifikaci pořadí, ve kterém kroky je nutné p
 
 ![Snímek obrazovky, který ukazuje kroky migrace](media/migration-classic-resource-manager/migration-flow.png)
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="step-1-plan-for-migration"></a>Krok 1: Plánování migrace
 Tady je několik osvědčených postupů, které doporučujeme při hodnocení migrace prostředků IaaS z classic do Resource Manageru:
 
@@ -47,8 +49,8 @@ Tady je několik osvědčených postupů, které doporučujeme při hodnocení m
 >
 >Brány ExpressRoute se připojuje k okruhů ExpressRoute v jiném předplatném není možné migrovat automaticky. V takovém případě odeberte bránu ExpressRoute, migraci virtuální sítě a znovu vytvořte bránu. Podrobnosti najdete na [migrace okruhů ExpressRoute a přidružených virtuálních sítí z klasického modelu nasazení Resource Manageru](../../expressroute/expressroute-migration-classic-resource-manager.md) Další informace.
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Krok 2: Instalace nejnovější verzi Azure Powershellu
-Existují dvě hlavní možnosti, jak nainstalovat Azure PowerShell: [Galerie prostředí PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) nebo [instalačního programu webové platformy (WebPI)](https://aka.ms/webpi-azps). Instalace webové platformy obdrží měsíčních aktualizací. Galerie prostředí PowerShell získává aktualizace průběžně. Tento článek je založen na prostředí Azure PowerShell verze 2.1.0.
+## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Krok 2: Nainstalujte nejnovější verzi Azure Powershellu
+Existují dvě hlavní možnosti, jak nainstalovat Azure PowerShell: [Galerie prostředí PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) nebo [webové platformy (Webpi)](https://aka.ms/webpi-azps). Instalace webové platformy obdrží měsíčních aktualizací. Galerie prostředí PowerShell získává aktualizace průběžně. Tento článek je založen na prostředí Azure PowerShell verze 2.1.0.
 
 Pokyny k instalaci, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
@@ -69,19 +71,19 @@ Nejprve spusťte příkazový řádek Powershellu. Pro migraci, je nutné nastav
 Přihlaste se ke svému účtu pro model Resource Manageru.
 
 ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
 ```
 
 Získáte dostupná předplatná pomocí následujícího příkazu:
 
 ```powershell
-    Get-AzureRMSubscription | Sort Name | Select Name
+    Get-AzSubscription | Sort Name | Select Name
 ```
 
 Nastavte své předplatné Azure pro aktuální relaci. Tento příklad nastaví výchozí název předplatného **Moje předplatné Azure**. Nahraďte název předplatného příkladu vlastní.
 
 ```powershell
-    Select-AzureRmSubscription –SubscriptionName "My Azure Subscription"
+    Select-AzSubscription –SubscriptionName "My Azure Subscription"
 ```
 
 > [!NOTE]
@@ -92,13 +94,13 @@ Nastavte své předplatné Azure pro aktuální relaci. Tento příklad nastaví
 Zaregistrovat poskytovatele prostředků migrace s použitím následujícího příkazu:
 
 ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 Počkejte prosím 5 minut pro registraci dokončit. Stav schválení můžete zkontrolovat pomocí následujícího příkazu:
 
 ```powershell
-    Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 Ujistěte se, že je RegistrationState `Registered` předtím, než budete pokračovat.
@@ -129,10 +131,10 @@ Následující příkaz prostředí PowerShell můžete použít ke kontrole akt
 Tento příklad kontroluje dostupnost **USA – západ** oblasti. Ukázkový název oblasti nahraďte vlastními.
 
 ```powershell
-Get-AzureRmVMUsage -Location "West US"
+Get-AzVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6: Spuštění příkazů pro migraci prostředků IaaS
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6: Spouštění příkazů migrace prostředků IaaS
 * [Migrace virtuálních počítačů v cloudové službě (ne ve virtuální síti)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
 * [Migrace virtuálních počítačů ve virtuální síti](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
 * [Migrace účtu úložiště](#step-62-migrate-a-storage-account)

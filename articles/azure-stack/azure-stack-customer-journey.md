@@ -16,18 +16,18 @@ ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 491664067c87de8f94d2395cb2ffbdeade2595b0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249487"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979543"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Integrace datových center Azure Stack
 
-Tento článek popisuje uživatelské prostředí Azure Stack začátku do konce koupili prostřednictvím integrované řešení pro úspěšné nasazení na místě od poskytovatele řešení. Tyto informace slouží k usnadnění vaší cestě a chcete pomoct vytvořit očekávání toho, co, jako zákazník Azure Stack očekávat při integraci služby Azure Stack do vašeho datacentra.
+Tento článek popisuje uživatelské prostředí Azure Stack začátku do konce z nákup integrovaného systému prostřednictvím na úspěšné nasazení na místě od poskytovatele řešení. Tyto informace slouží k usnadnění vaší cestě a pomoct vytvořit očekávání pro vás, zákazník Azure Stack.
 
-Jako zákazník Azure Stack by měl očekáváte, že tyto fáze integrace datacenter:
+Jako zákazník Azure Stack by měl očekáváte, že tyto fáze:
 
 |     |Fáze plánování|Objednávky procesů|Před nasazením|Objekt pro vytváření procesu|Doručování hardwaru|Místní nasazení|
 |-----|-----|-----|-----|-----|-----|-----|
@@ -63,7 +63,7 @@ V této fázi musíte rozhodnout, jak integrovat do vašeho datového centra Azu
 [Důležité informace o integraci obecné datacenter](azure-stack-datacenter-integration.md) článek obsahuje informace, které vám pomohou dokončit šablony označované jako list nasazení. 
 
 > [!IMPORTANT]
-> Během této fáze je důležité, aby všechny předběžné informace, je prozkoumat a jste se rozhodli před řazení řešení. Mějte na paměti, že tento krok je časově náročné a vyžaduje koordinaci a shromažďování dat z více oborů v rámci vaší organizace. 
+> Během této fáze je důležité, aby všechny předběžné informace, je prozkoumat a jste se rozhodli před řazení řešení. Mějte na paměti, že tento krok je časově náročné a vyžaduje koordinaci a shromažďování dat z více oborů v rámci vaší organizace. Nesprávných nebo neúplných informací může způsobit delší nasazení. 
 
 Ve fázi předběžného nasazení je potřeba rozhodnout o následujícím:
 
@@ -90,7 +90,7 @@ Je **zásadní** , že všechna data požadovaného je zamknuté a k dispozici *
 
 -   Všechny certifikáty si musíte koupit a připravené.
 
--   Název domény musí být rozhodnuto o.
+-   Název oblasti musí být rozhodnuto o.
 
 -   Všechny parametry integrace sítě jsou dokončeny a odpovídá co sdílet se svým poskytovatelem řešení.
 
@@ -102,16 +102,16 @@ Nasazení Azure Stack, inženýr získáte od svého poskytovatele hardwaru ře�
 
 Toto je, co lze očekávat od pracovníka místní během nasazení prostředí:
 
-- Zkontrolujte všechny kabelů a ohraničení připojení k zajištění řešení správně dohromady a vyhovuje vašim požadavkům
-- Konfigurovat řešení HLH (hardwaru životního cyklu hostitelů)
+- Zkontrolujte všechny kabelů a ohraničení připojení k zajištění řešení správně dohromady a vyhovuje vašim požadavkům.
+- Konfigurovat řešení HLH (hardwaru životního cyklu hostitelů), pokud jsou k dispozici.
 - Zkontrolujte, ujistěte se, že se používají správná nastavení BMC, systému BIOS a sítě.
-- Ujistěte se, že je firmware všechny součásti ve schválené verzi řešení
-- Spustit nasazení
+- Ujistěte se, že je firmware všechny součásti ve schválené verzi řešení.
+- Spusťte nasazení.
 
 > [!NOTE]
 > Postup nasazení pracovníkem místní dokončení, může trvat přibližně týden firmy.
 
-## <a name="post-integration-phase"></a>Po integraci fáze
+## <a name="post-deployment-phase"></a>Po nasazení fáze
 Partnera musí provést několik kroků před řešení je předáno zákazníkovi ve fázi po integraci. V této fázi ověřování je důležité zajistit, že je systém nasazen a provést správně. 
 
 Akce, které by měl být partnerem OEM jsou:
@@ -122,13 +122,13 @@ Akce, které by měl být partnerem OEM jsou:
 
 -   [Syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   Přepínač zálohování konfiguračních souborů
+-   Zálohování konfigurace přepínače a HLH konfiguračních souborů
 
 -   Odebrat DVM
 
 -   Při přípravě souhrnu zákazník nasazení
 
--   [Zkontrolovat dostupnost aktualizací, abyste měli jistotu, že software řešení se aktualizuje na nejnovější verzi](azure-stack-updates.md)
+-   [Zkontrolovat dostupnost aktualizací, abyste měli jistotu, že software řešení se aktualizuje na nejnovější verzi](.\azure-stack-updates.md)
 
 Existuje několik kroků, které jsou povinné nebo volitelné v závislosti na typu instalace.
 

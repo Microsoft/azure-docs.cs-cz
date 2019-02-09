@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/31/2016
+ms.date: 02/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: c284236af64c3981a5d15570bcd2705bb7d6a99b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121050"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962107"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní detekce ve službě Application Insights
  Inteligentní zjišťování automaticky upozorní vás na potenciální problémy s výkonem ve webové aplikaci. Provádí proaktivní analýzy telemetrie, která vaše aplikace odesílá do [Application Insights](../../azure-monitor/app/app-insights-overview.md). Pokud je nečekané zvýšení míry selhání nebo nestandardní vzorce výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce vyžaduje žádná konfigurace. To funguje, pokud vaše aplikace odesílá dostatek telemetrie.
@@ -46,6 +46,14 @@ Existují tři typy detekce:
 * [Inteligentní zjišťování – potíže s cloudovými službami Azure](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Získáváte upozornění, pokud je vaše aplikace hostovaná v Azure Cloud Services a role instance má selhání spuštění, častému restartování nebo selhání modulu runtime.
 
 (Odkazy nápovědy v jednotlivých oznámení dostanete v příslušných článcích.)
+
+## <a name="smart-detection-email-notifications"></a>Inteligentní detekce e-mailových oznámení
+
+Všechna pravidla inteligentního zjišťování, s výjimkou pravidla označené jako verze Preview, jsou nakonfigurované ve výchozím nastavení k odesílání e-mailová oznámení, pokud nenajdou detekcí.
+
+Konfigurace e-mailová oznámení pro konkrétní pravidlo inteligentní zjišťování můžete udělat tak, že otevřete inteligentního zjišťování **nastavení** vyberte pravidlo, které se otevře se okno **upravit pravidlo** okno.
+
+Alternativně můžete změnit konfiguraci pomocí šablon Azure Resource Manageru. [Pravidla inteligentního zjišťování spravovat Application Insights pomocí šablon Azure Resource Manageru najdete v článku](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) další podrobnosti.
 
 ## <a name="video"></a>Video
 

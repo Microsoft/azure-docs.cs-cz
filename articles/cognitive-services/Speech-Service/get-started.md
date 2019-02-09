@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a378948d1bd9a48e85122a18ce34260056c9a1f1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 203cb07c9450a590b45caa66092fe0199d985058
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860996"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978149"
 ---
 # <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 

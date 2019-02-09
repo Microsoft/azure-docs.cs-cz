@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 47b9d25f8db2241bb578528780e28f43d56371e5
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413179"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963076"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
@@ -31,8 +31,8 @@ Musí mít zaregistrovaný předplatné poskytovatele prostředků NetApp a funk
 
 ## <a name="steps"></a>Kroky 
 
-1. Verze preview webu Azure portal vyhledejte adresu URL z pozvánku ve verzi preview a přihlaste se k portálu. 
-2.  Přejděte do okna Azure NetApp Files pomocí jedné z následujících metod:  
+1. Přihlaste se k portálu Azure. 
+2. Přejděte do okna Azure NetApp Files pomocí jedné z následujících metod:  
   * Vyhledejte **Azure NetApp Files** ve vyhledávacím poli webu Azure Portal.  
   * Klikněte na **Všechny služby** v navigaci a potom filtrujte Azure NetApp Files.  
 
@@ -50,7 +50,6 @@ Musí mít zaregistrovaný předplatné poskytovatele prostředků NetApp a funk
     Použijte existující skupinu prostředků, nebo vytvořte novou.
   * **Umístění**  
     Vyberte oblast, kde má být umístěný účet a jeho podřízené prostředky.  
-    V současné době se služba Azure NetApp Files podporuje jenom v oblasti USA – východ.  
 
     ![Nový účet NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 

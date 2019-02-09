@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: c0c9554a6c8868a8aeb90947dbbb0e251e42733f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4e6186310f63fde8648ded03a62b207b5f81a8e2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733219"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984796"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
+
 V průběhu životního cyklu aplikací můžete změnit nebo aktualizovat škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci škálovací sady nebo změnit konfiguraci aplikace. Tento článek popisuje, jak změnit existující škálovací sady pomocí rozhraní REST API, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
 ## <a name="fundamental-concepts"></a>Základní koncepty
@@ -36,10 +37,10 @@ V průběhu životního cyklu aplikací můžete změnit nebo aktualizovat šká
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
+- Prostředí Azure PowerShell s [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
 
     ```powershell
-    Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+    Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
     ```
 
 - Azure CLI s [az vmss show](/cli/azure/vmss):
@@ -80,10 +81,10 @@ Tyto vlastnosti se vztahují do škálovací sady jako celek.
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/instanceView?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
+- Prostředí Azure PowerShell s [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
 
     ```powershell
-    Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
+    Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
     ```
 
 - Azure CLI s [az vmss get-instance-view](/cli/azure/vmss):
@@ -134,10 +135,10 @@ Podobně jako u jak škálovací sada obsahovat zobrazení modelu, všechny inst
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
+- Prostředí Azure PowerShell s [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
 
     ```powershell
-    Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
+    Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
 - Azure CLI s [az vmss show](/cli/azure/vmss):
@@ -174,10 +175,10 @@ Podobně jako u jak škálovací sady má zobrazení instance, všechny instance
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId/instanceView?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm):
+- Prostředí Azure PowerShell s [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
 
     ```powershell
-    Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
+    Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
 - Azure CLI s [az vmss get-instance-view](/cli/azure/vmss)
@@ -253,10 +254,10 @@ Pokud chcete aktualizovat vlastnosti globálních škálovací sady, je nutné a
 
 - Můžete nasadit šablonu Resource Manageru s vlastnostmi z rozhraní REST API k aktualizaci vlastností globální škálovací sady.
 
-- Prostředí Azure PowerShell s [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss):
+- Prostředí Azure PowerShell s [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss):
 
     ```powershell
-    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
+    Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
     ```
 
 - Azure CLI s [az vmss update](/cli/azure/vmss):
@@ -300,10 +301,10 @@ Pokud chcete aktualizovat stávající virtuální počítače, musíte udělat 
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/manualupgrade?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance):
+- Prostředí Azure PowerShell s [aktualizace AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance):
     
     ```powershell
-    Update-AzureRmVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
+    Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
 - Azure CLI s [az vmss update-instances](/cli/azure/vmss)
@@ -325,10 +326,10 @@ Existuje jeden typ změny nastavení vlastností globální škálování, kter�
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Set-AzureRmVmssVm](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm):
+- Prostředí Azure PowerShell s [Set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
 
     ```powershell
-    Set-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
+    Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
 - Azure CLI s [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss):
@@ -386,10 +387,10 @@ Pokud používáte vlastní Image, můžete aktualizovat image aktualizací *ima
 ### <a name="update-the-os-image-for-your-scale-set"></a>Aktualizace image operačního systému pro škálovací sady
 Může mít škálovací sady, na kterém běží stará verze Ubuntu LTS 16.04. Chcete ji aktualizovat na novější verze Ubuntu LTS 16.04, jako je například verze *16.04.201801090*. Vlastnosti verze image odkaz není součástí seznamu, proto mohou přímo upravit tyto vlastnosti s jednou z následujících příkazů:
 
-- Prostředí Azure PowerShell s [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) následujícím způsobem:
+- Prostředí Azure PowerShell s [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
 
     ```powershell
-    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
+    Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
     ```
 
 - Azure CLI s [az vmss update](/cli/azure/vmss):
@@ -400,10 +401,10 @@ Může mít škálovací sady, na kterém běží stará verze Ubuntu LTS 16.04.
 
 Alternativně můžete změnit obrázek, vaše škálovací sada používá. Například můžete aktualizovat nebo změnit vlastní bitovou kopii používanou škálovací sadou. Obrázek, vaše škálovací sada používá aktualizací vlastnost ID bitové kopie referenčního můžete změnit. Vlastnost ID obrázku odkaz není součástí seznamu, proto mohou přímo upravit tuto vlastnost s jedním z následujících příkazů:
 
-- Prostředí Azure PowerShell s [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) následujícím způsobem:
+- Prostředí Azure PowerShell s [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
 
     ```powershell
-    Update-AzureRmVmss `
+    Update-AzVmss `
         -ResourceGroupName "myResourceGroup" `
         -VMScaleSetName "myScaleSet" `
         -ImageReferenceId /subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myNewImage
@@ -426,16 +427,16 @@ Alternativně můžete změnit obrázek, vaše škálovací sada používá. Nap
 
     ```powershell
     # Get the current model of the scale set and store it in a local PowerShell object named $vmss
-    $vmss=Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
+    $vmss=Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
     
     # Create a local PowerShell object for the new desired IP configuration, which includes the reference to the application gateway
-    $ipconf = New-AzureRmVmssIPConfig "myNic" -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
+    $ipconf = New-AzVmssIPConfig "myNic" -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
     
     # Replace the existing IP configuration in the local PowerShell object (which contains the references to the current Azure Load Balancer) with the new IP configuration
     $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0] = $ipconf
     
     # Update the model of the scale set with the new configuration in the local PowerShell object
-    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
+    Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
     ```
 
 - Azure CLI:

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 0a5d0f87b31652b1e1ab32c6b1594021937751b6
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: e09dd56c766083b70a881a647d0dca0f5e860a6f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40046968"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984932"
 ---
 ## <a name="prepare-for-akv-integration"></a>Příprava pro integrace se službou AZURE
 Konfigurace virtuálního počítače s SQL serverem pomocí integrace Azure Key Vaultu, existuje několik požadavků: 
@@ -36,7 +36,7 @@ Ujistěte se, že máte nainstalovanou nejnovější Azure PowerShell SDK. Dalš
 
 Nejprve je potřeba mít [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) v rámci vašeho předplatného. Mezi řadu výhod díky tomu můžete udělit oprávnění k trezoru klíčů pro určité uživatele nebo aplikace.
 
-V dalším kroku registrace aplikace v AAD. Tím získáte účet instančního objektu, který má přístup k trezoru klíčů, který váš virtuální počítač potřebovat. V Azure Key Vault článku najdete postup v [registraci aplikace v Azure Active Directory](../articles/key-vault/key-vault-get-started.md#register) oddílu, nebo můžete zobrazit kroky, snímky obrazovky v **získat identitu pro části aplikace** z [tento příspěvek na blogu](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Před dokončením těchto kroků, potřebujete shromažďovat následující informace během této registrace, který je budete později potřebovat při povolení integrace se službou Azure Key Vault na váš virtuální počítač SQL.
+V dalším kroku registrace aplikace v AAD. Tím získáte účet instančního objektu, který má přístup k trezoru klíčů, který váš virtuální počítač potřebovat. V Azure Key Vault článku najdete postup v [registraci aplikace v Azure Active Directory](../articles/key-vault/key-vault-get-started.md#register) oddílu, nebo můžete zobrazit kroky, snímky obrazovky v **získat identitu pro části aplikace**  z [tento příspěvek na blogu](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Před dokončením těchto kroků, potřebujete shromažďovat následující informace během této registrace, který je budete později potřebovat při povolení integrace se službou Azure Key Vault na váš virtuální počítač SQL.
 
 * Po přidání aplikace najít **ID aplikace** na **registrovaná aplikace** okno.
     ID aplikace je přiřazena později **$spName** parametru (název instančního objektu) ve skriptu Powershellu k povolení integrace se službou Azure Key Vault.
@@ -49,12 +49,12 @@ V dalším kroku registrace aplikace v AAD. Tím získáte účet instančního 
 
 * ID aplikace a tajný kód se taky použije k vytvoření přihlašovacích údajů v systému SQL Server.
 
-* Musíte povolit toto nové ID klienta mají následující přístupová oprávnění: **získat**, **wrapKey**, **unwrapKey**. Používá se k tomu [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) rutiny. Další informace najdete v tématu [aplikaci autorizujte pro použití klíče nebo tajného klíče](../articles/key-vault/key-vault-get-started.md#authorize).
+* Musíte povolit toto nové ID klienta mají následující přístupová oprávnění: **získat**, **wrapKey**, **unwrapKey**. Používá se k tomu [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzKeyVaultAccessPolicy) rutiny. Další informace najdete v tématu [aplikaci autorizujte pro použití klíče nebo tajného klíče](../articles/key-vault/key-vault-get-started.md#authorize).
 
 ### <a id="createkeyvault"></a> Vytvoření trezoru klíčů
 Chcete-li používat Azure Key Vault pro ukládání klíčů, které budete používat pro šifrování ve virtuálním počítači, musíte mít přístup k trezoru klíčů. Pokud už jste nenastavili trezoru klíčů, vytvořte ho provedením kroků v [Začínáme se službou Azure Key Vault](../articles/key-vault/key-vault-get-started.md) článku. Před dokončením těchto kroků, se některé informace, které je potřeba shromáždit během této sady až budete později potřebovat při povolení integrace se službou Azure Key Vault na vašem virtuálním počítači SQL.
 
-    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
 Když dojde k vytvoření služby key vault krok, mějte na paměti vráceného **vaultUri** vlastnost, což je adresa URL služby key vault. V příkladu v tomto kroku, vidíte níže, název trezoru klíčů je ContosoKeyVault, proto trezor klíčů by měla adresa URL https://contosokeyvault.vault.azure.net/.
 

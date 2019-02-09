@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5f1e5838fcf6eeac3b58fb0eef8fe08eb9202d4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7c2c8967cbdb404ca23f860f019cfbb6cce5415b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167134"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982722"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -56,15 +56,17 @@ Abyste lépe pochopili PIM a jeho dokumentace, měli byste zkontrolovat následu
 
 | Ukončení nebo koncept | Kategorie přiřazení role | Popis |
 | --- | --- | --- |
-| Oprávněné | Typ | Přiřazení role, které musí uživatel provést jeden nebo více akcí umožňujících využití roli. Pokud uživatel provedl oprávněné pro roli, znamená to, že se aktivovat roli, kdy potřebují k provedení privilegovaných úloh. Není žádný rozdíl v přístupu k někdo s trvalou oproti přiřazení oprávněné role. Jediným rozdílem je, že někteří uživatelé nepotřebují tento přístup neustále. |
-| aktivní | Typ | Přiřazení role, která nevyžaduje, aby uživatel podnikat žádné kroky, chcete-li použít roli. Přiřazeno jako aktivní uživatelé mají oprávnění přiřazená k roli. |
-| aktivovat |  | Proces provádí jeden nebo více akcí umožňujících využití roli, která uživatel má nárok. Akce může zahrnovat provedení kontroly ověřování službou Multi-Factor Authentication (MFA), poskytuje obchodní odůvodnění, nebo z určených schvalovatelů odesílání žádostí o schválení. |
+| Oprávněné | Type | Přiřazení role, které musí uživatel provést jeden nebo více akcí umožňujících využití roli. Pokud uživatel provedl oprávněné pro roli, znamená to, že se aktivovat roli, kdy potřebují k provedení privilegovaných úloh. Není žádný rozdíl v přístupu k někdo s trvalou oproti přiřazení oprávněné role. Jediným rozdílem je, že někteří uživatelé nepotřebují tento přístup neustále. |
+| aktivní | Type | Přiřazení role, která nevyžaduje, aby uživatel podnikat žádné kroky, chcete-li použít roli. Přiřazeno jako aktivní uživatelé mají oprávnění přiřazená k roli. |
+| aktivovat |  | Proces provedení jedné nebo více akcí umožňujících využití roli, jejímž je uživatel nárok. Akce může zahrnovat provedení kontroly ověřování službou Multi-Factor Authentication (MFA), poskytuje obchodní odůvodnění, nebo z určených schvalovatelů odesílání žádostí o schválení. |
 | Přiřazeno | Stav | Uživatel, který má aktivní přiřazení role. |
-| Aktivovat | Stav | Jako uživatel, který má přiřazení oprávněné role provádět akce, které chcete aktivovat roli a je teď aktivní. |
+| Aktivovat | Stav | Jako uživatel, který má přiřazení oprávněné role provádět akce, které chcete aktivovat roli a je teď aktivní.  Po aktivaci, může uživatel použít roli zadanou dobu období sady-předtím, než je nutné znovu aktivovat. |
 | trvalé oprávněné | Doba trvání | Přiřazení role, kde je uživatel vždy nárok na aktivaci role. |
 | Trvalá aktivní | Doba trvání | Přiřazení role, ve kterém může uživatel vždy používat roli bez provedení nějaké akce. |
 | vypršení platnosti oprávnění | Doba trvání | Přiřazení role, kde je uživatel nárok na aktivaci role v rámci zadané počáteční a koncové datum. |
 | vypršení platnosti je aktivní | Doba trvání | Přiřazení role, ve kterém může uživatel používat roli bez provedení libovolné akce v rámci zadané počáteční a koncové datum. |
+| přístup k just-in-time (JIT) |  | Model ve kterém uživatelé dostanou dočasné oprávnění k provedení privilegovaných úlohy, což zabrání zlými úmysly nebo neoprávněným uživatelům v získání přístupu po vypršení platnosti oprávnění. Přístup je udělen jenom v případě, že ji uživatelé potřebovat. |
+| Princip nejnižších oprávnění přístupu |  | Doporučené zabezpečení praxe, ve kterém je každý uživatel součástí pouze minimální oprávnění jsou nutné k provedení úlohy, které mají oprávnění k provedení. Tento postup minimalizuje počet globálních správců a místo toho používá konkrétní správce role pro určité scénáře. |
 
 ## <a name="what-does-pim-look-like"></a>Jak vypadá PIM?
 
@@ -104,6 +106,6 @@ PIM podporuje následující scénáře:
 
 ## <a name="next-steps"></a>Další postup
 
-- [Zahájení práce s PIM](pim-getting-started.md)
 - [Licenční požadavky pro použití PIM](subscription-requirements.md)
 - [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [Nasazení PIM](pim-deployment-plan.md)

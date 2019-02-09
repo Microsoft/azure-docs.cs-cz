@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fbfe32ee8eede6666e0c7086ef4c586af1c1b4c4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 58a22253efb6928c87937e4aba852dd93a3e4422
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861302"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978540"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalace a spouštění kontejnerů rozpoznat Text
 
@@ -72,7 +72,7 @@ Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline
 
 ### <a name="docker-pull-for-the-recognize-text-container"></a>Operace docker pull pro kontejner rozpoznat Text
 
-```Docker
+```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-rocognize-text:latest
 ```
 
@@ -146,18 +146,7 @@ Pokud spouštíte kontejner s výstupem [připojit](./computer-vision-resource-c
 
 Odeslat kontejnery rozpoznat Text fakturační údaje do Azure, pomocí _rozpoznat Text_ prostředků v účtu Azure. 
 
-Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků společnosti Microsoft. 
-
-`docker run` Příkaz používá následující argumenty pro účely fakturace:
-
-| Možnost | Popis |
-|--------|-------------|
-| `ApiKey` | Klíč rozhraní API _rozpoznat Text_ prostředek, který používá ke sledování fakturační údaje. |
-| `Billing` | Koncový bod _rozpoznat Text_ prostředek, který používá ke sledování fakturační údaje.|
-| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
-
-> [!IMPORTANT]
-> Všechny tři možnosti je nutné zadat platnou hodnotou nebo kontejneru se nespustí.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](./computer-vision-resource-container-config.md).
 

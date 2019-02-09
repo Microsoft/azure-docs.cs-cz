@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c223b55e8854c9d304354d917e07f4dd7720e72c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: aa9f3b42bbbe8255be328240d26ed4b8740cc5f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507804"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958486"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Úroveň služby Azure SQL Database úrovně Premium RS (preview) se vyřazuje – možnosti pro migraci
 
@@ -50,8 +50,8 @@ Pro úlohy náročné na výpočetní úroveň Premium RS doporučujeme migrovat
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|Premium RS 1|Obecné účely 1 vCore (Gen 4)|Standard 3|
-|Premium RS 2|Obecné účely, 2 virtuální jádra (Gen 4)|Standard 4|
+|Premium RS 1|Obecné účely 1 vCore (Gen4)|Standard 3|
+|Premium RS 2|Obecné účely, 2 virtuální jádra (Gen4)|Standard 4|
 |Premium RS 4|Virtuální jádra pro obecné účely 4 (Gen4)|Standard 6|
 |Premium RS 6|Virtuální jádra pro obecné účely 6 (Gen4)|Standard 7|
 
@@ -59,8 +59,8 @@ Pro úlohy náročné na výpočetní úroveň Premium RS doporučujeme migrovat
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|Premium RS pool 125 DTU|Obecné účely 1 vCore (Gen 4)|Fond Standard 100 Edtu|
-|Premium RS pool 250 DTU|Obecné účely, 2 virtuální jádra (Gen 4)|Jednotky Edtu fondu úrovně Standard 250|
+|Premium RS pool 125 DTU|Obecné účely 1 vCore (Gen4)|Fond Standard 100 Edtu|
+|Premium RS pool 250 DTU|Obecné účely, 2 virtuální jádra (Gen4)|Jednotky Edtu fondu úrovně Standard 250|
 |Premium RS pool 500 DTU|Virtuální jádra pro obecné účely 4 (Gen4)|Standardní fond 500 Edtu|
 |Premium RS pool 1000 DTU|Virtuální jádra pro obecné účely 8 (Gen4)|Fond Standard 1000 Edtu|
 
@@ -70,10 +70,10 @@ Doporučujeme migrovat vaše izolované databáze náročné na vstupně-výstup
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|Premium RS 1|(Preview) VCore Hyperškálovatelného 1 (Gen 4) nebo – 1 kritické obchodní vCore (Gen 4)|Premium 1|
-|Premium RS 2|(Preview) Velkokapacitní 2 virtuální jádra (Gen 4) nebo kritické obchodní 2 virtuální jádra (Gen 4|Premium 2|
-|Premium RS 4|(Preview) Velkokapacitní 4 virtuální jádra (Gen 4) nebo kritické obchodní 4 virtuální jádra (Gen4)|Premium 4
-|Premium RS 6|(Preview) Velkokapacitní 6 virtuální jádra (Gen 4) nebo virtuální jádra pro důležité obchodní 6 (Gen4)|Premium 6|
+|Premium RS 1|(Preview) VCore Hyperškálovatelného 1 (Gen4) nebo – 1 kritické obchodní vCore (Gen4)|Premium 1|
+|Premium RS 2|(Preview) Velkokapacitní 2 virtuální jádra (Gen4) nebo kritické obchodní 2 virtuální jádra (Gen4|Premium 2|
+|Premium RS 4|(Preview) Velkokapacitní 4 virtuální jádra (Gen4) nebo kritické obchodní 4 virtuální jádra (Gen4)|Premium 4
+|Premium RS 6|(Preview) Velkokapacitní 6 virtuální jádra (Gen4) nebo virtuální jádra pro důležité obchodní 6 (Gen4)|Premium 6|
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|

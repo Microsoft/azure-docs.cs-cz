@@ -9,14 +9,14 @@ items:
     items:
     - name: Nejnovější aktualizace
       href: azure-stack-servicing-policy.md#update-package-release-cadence
+    - name: aktualizace 1901
+      href: azure-stack-update-1901.md
     - name: aktualizace 1811
       href: azure-stack-update-1811.md
     - name: aktualizace 1809
       href: azure-stack-update-1809.md
     - name: aktualizace. 1808
       href: azure-stack-update-1808.md
-    - name: aktualizace 1807
-      href: azure-stack-update-1807.md
 - name: Šablony Rychlý start
   items:
   - name: Použití portálu pro správu
@@ -129,16 +129,8 @@ items:
       href: azure-stack-registration.md
     - name: Správa oblastí
       href: azure-stack-region-management.md
-    - name: Připojení k Azure
-      items:
-      - name: Připojení pomocí VPN
-        href: azure-stack-connect-vpn.md
-      - name: Informace o službě VPN gateway
-        href: azure-stack-vpn-gateway-about-vpn-gateways.md
-      - name: Nastavení služby VPN gateway
-        href: azure-stack-vpn-gateway-settings.md
-      - name: Připojení pomocí ExpressRoute
-        href: azure-stack-connect-expressroute.md
+    - name: Připojení k Azure pomocí ExpressRoute
+      href: azure-stack-connect-expressroute.md
     - name: Povolení rozhraní příkazového řádku pro uživatele
       href: azure-stack-cli-admin.md
     - name: Nastavení prostředí pro správu
@@ -403,9 +395,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 03f8d00216ee555e0e7fddd946382577bb0c1904
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.openlocfilehash: eaed1b2c9a2e3ebad5b87873cfe646b4f40e2c79
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382145"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961801"

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 749a599936825f5f69ae18affad0fa89a4f1118f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 95b5bbb6c227b5001865a751abddddc4924e7b2d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259627"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981073"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Instalace a použití Apache Solr na clusterech HDInsight se systémem Windows
 
@@ -46,17 +46,12 @@ Ukázkový skript použít v tomto tématu vytvoří cluster na základě Window
 
     ![Přizpůsobení clusteru pomocí akce skriptu](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "přizpůsobení clusteru pomocí akce skriptu")
 
-    <table border='1'>
-        <tr><th>Vlastnost</th><th>Hodnota</th></tr>
-        <tr><td>Název</td>
-            <td>Zadejte název akce skriptu. Například <b>nainstalovat Solr</b>.</td></tr>
-        <tr><td>Identifikátor URI skriptu</td>
-            <td>Zadejte identifikátor URI (Uniform Resource), která je volána k přizpůsobení clusteru skriptu. Například <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
-        <tr><td>Typ uzlu</td>
-            <td>Zadejte uzly, na kterých běží přizpůsobení skriptu. Můžete zvolit <b>všechny uzly</b>, <b>hlavním uzlům pouze</b>, nebo <b>pracovní uzly pouze</b>.
-        <tr><td>Parametry</td>
-            <td>Zadejte parametry, pokud je to nutné skript. Skript, který chcete nainstalovat Solr nevyžaduje žádné parametry, takže můžete nechat prázdné.</td></tr>
-    </table>
+    |Vlastnost|Hodnota|
+    |---|---|
+    |Název|Zadejte název akce skriptu. Například **nainstalovat Solr**.|
+    |Identifikátor URI skriptu|Zadejte identifikátor URI (Uniform Resource), která je volána k přizpůsobení clusteru skriptu. Například *https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1*|
+    |Typ uzlu|Zadejte uzly, na kterých běží přizpůsobení skriptu. Můžete zvolit **všechny uzly**, **hlavním uzlům pouze**, nebo **pracovní uzly pouze**.
+    |Parametry|Zadejte parametry, pokud je to nutné skript. Skript, který chcete nainstalovat Solr nevyžaduje žádné parametry, takže můžete nechat prázdné.|
 
     Můžete přidat více než jednu akci se skripty pro instalaci více součástí clusteru. Po přidání skripty, klikněte na značku zaškrtnutí zahájíte vytváření clusteru.
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 983ea87a7387c4ce6bb0c1c67bf46d81c717e69a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993067"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984252"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -123,26 +123,23 @@ Existují dvě akce, které jsou definovány v pracovním postupu. Je tato akce 
 
 RunHiveScript má několik proměnných. Můžete předat hodnoty, když odešlete úlohu Oozie z pracovní stanice pomocí Azure Powershellu.
 
-<table border = "1">
-<tr><th>Proměnné pracovního postupu</th><th>Popis</th></tr>
-<tr><td>${jobTracker}</td><td>Určuje adresu URL sledování úloh Hadoopu. Použití <strong>jobtrackerhost:9010</strong> v HDInsight verze 3.0 a 2.1.</td></tr>
-<tr><td>${nameNode}</td><td>Určuje adresu URL uzlu název Hadoop. Použít výchozí adresu systému souboru, například <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-<tr><td>${queueName}</td><td>Určuje název fronty, odeslání úlohy. Použití <strong>výchozí</strong>.</td></tr>
-</table>
+|Proměnné pracovního postupu|Popis|
+|---|---|
+|${jobTracker}|Určuje adresu URL sledování úloh Hadoopu. Použití **jobtrackerhost:9010** v HDInsight verze 3.0 a 2.1.|
+|${nameNode}|Určuje adresu URL uzlu název Hadoop. Použít výchozí adresu systému souboru, například *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+|${queueName}|Určuje název fronty, odeslání úlohy. Použití **výchozí**.|
 
-<table border = "1">
-<tr><th>Proměnné akcí Hive</th><th>Popis</th></tr>
-<tr><td>${hiveDataFolder}</td><td>Určuje zdrojový adresář pro příkaz Hive Create Table.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Určuje výstupní složka pro příkaz INSERT PŘEPSAT.</td></tr>
-<tr><td>${hiveTableName}</td><td>Určuje název tabulky Hive, který odkazuje log4j datových souborů.</td></tr>
-</table>
+|Proměnné akcí Hive|Popis|
+|---|---|
+|${hiveDataFolder}|Určuje zdrojový adresář pro příkaz Hive Create Table.|
+|${hiveOutputFolder}|Určuje výstupní složka pro příkaz INSERT PŘEPSAT.|
+|${hiveTableName}|Určuje název tabulky Hive, který odkazuje log4j datových souborů.|
 
-<table border = "1">
-<tr><th>Proměnné akcí Sqoop</th><th>Popis</th></tr>
-<tr><td>${sqlDatabaseConnectionString}</td><td>Určuje připojovací řetězec databáze Azure SQL.</td></tr>
-<tr><td>${sqlDatabaseTableName}</td><td>Určuje, kde data se exportují do tabulky databáze Azure SQL.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Určuje výstupní složka pro příkaz Hive vložit PŘEPSAT. Toto je stejné složce, Sqoop export (export-dir).</td></tr>
-</table>
+|Proměnné akcí Sqoop|Popis|
+|---|---|
+|${sqlDatabaseConnectionString}|Určuje připojovací řetězec databáze Azure SQL.|
+|${sqlDatabaseTableName}|Určuje, kde data se exportují do tabulky databáze Azure SQL.|
+|${hiveOutputFolder}|Určuje výstupní složka pro příkaz Hive vložit PŘEPSAT. Toto je stejné složce, Sqoop export (export-dir).|
 
 Další informace o pracovním postupu Oozie a pomocí akce pracovního postupu najdete v tématu [dokumentaci Apache Oozie 4.0][apache-oozie-400] (pro HDInsight verze 3.0) nebo [dokumentaci Apache Oozie 3.3.2][apache-oozie-332] (pro HDInsight verze 2.1).
 

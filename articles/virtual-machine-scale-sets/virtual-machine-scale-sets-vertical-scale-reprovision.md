@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 6cd42675fa70f338fd4e1223d6a48bf8c6773915
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1a8bfbe12156156944d4527ebb11fa6f1a1de544
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579307"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977231"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Nastaví vertikální automatické škálování díky škálování virtuálního počítače
+
 Tento článek popisuje, jak vertikální škálování Azure [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) s nebo bez něj neukončil. Vertikální škálování virtuálních počítačů, které nejsou ve škálovacích sadách najdete v tématu [vertikální škálování virtuálních počítačů Azure s využitím Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Vertikální škálování, označované také jako *vertikálně navýšit kapacitu* a *vertikálně snížit kapacitu*, znamená, že zvýšením nebo snížením velikosti virtuálních počítačů (VM) v reakci zatížení. Porovnat s tímto chováním [horizontální škálování](virtual-machine-scale-sets-autoscale-overview.md), která se také označují jako *horizontální navýšení kapacity* a *horizontálně*, kde je počet virtuálních počítačů změnit v závislosti na zatížení.
@@ -87,8 +88,8 @@ Po importu sady runbook, přidání webhooku do sady runbook, může být aktivo
 Následující skript prostředí PowerShell, který ukazuje, jak přidat upozornění na škálovací sadu virtuálních počítačů nastavena. Přečtěte si následující článek a získat tak název metriky, která se aktivuje upozornění na: [Azure Monitor běžné metriky automatického škálování](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```
-$actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
-$actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
+$actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
+$actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
 $rg = <resource-group-name>
 $id = <resource-id-to-add-the-alert-to>
@@ -99,7 +100,7 @@ $timeWindow = <time-window-in-hh:mm:ss-format>
 $condition = <condition-for-the-threshold> # Other valid values are LessThanOrEqual, GreaterThan, GreaterThanOrEqual
 $description = <description-for-the-alert>
 
-Add-AzureRmMetricAlertRule  -Name  $alertName `
+Add-AzMetricAlertRule  -Name  $alertName `
                             -Location  $location `
                             -ResourceGroup $rg `
                             -TargetResourceId $id `

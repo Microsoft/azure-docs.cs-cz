@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 786dbb258fa4299f80f7ff9d24a1c129a9506bb7
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: 7245fd60af91833dab26772e2aac08f675b14e6c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663741"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982450"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače
 
@@ -30,6 +30,8 @@ Tento skript vezme z generalizovaného virtuálního počítače místní soubor
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -60,53 +62,53 @@ $vmSize = 'Standard_DS1_v2'
 $cred = Get-Credential
 
 # Upload the VHD
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccount -Location $location `
+New-AzResourceGroup -Name $resourceGroup -Location $location
+New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccount -Location $location `
     -SkuName $storageType -Kind "Storage"
 $urlOfUploadedImageVhd = ('https://' + $storageaccount + '.blob.core.windows.net/' + $containername + '/' + $vhdName)
-Add-AzureRmVhd -ResourceGroupName $resourceGroup -Destination $urlOfUploadedImageVhd `
+Add-AzVhd -ResourceGroupName $resourceGroup -Destination $urlOfUploadedImageVhd `
     -LocalFilePath $localPath
 
 # Note: Uploading the VHD may take awhile!
 
 # Create a managed image from the uploaded VHD 
-$imageConfig = New-AzureRmImageConfig -Location $location
-$imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized `
+$imageConfig = New-AzImageConfig -Location $location
+$imageConfig = Set-AzImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized `
     -BlobUri $urlOfUploadedImageVhd
-$image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $resourceGroup -Image $imageConfig
+$image = New-AzImage -ImageName $imageName -ResourceGroupName $resourceGroup -Image $imageConfig
  
 # Create the networking resources
-$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup -Location $location `
+$singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup -Location $location `
     -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
-$pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $resourceGroup -Location $location `
+$pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $resourceGroup -Location $location `
     -AllocationMethod Dynamic
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -Description 'Allow RDP' -Access Allow `
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name $ruleName -Description 'Allow RDP' -Access Allow `
     -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
     -Name $nsgName -SecurityRules $rdpRule
-$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $location `
+$nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $location `
     -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Name $vnetName
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroup -Name $vnetName
 
 # Start building the VM configuration
-$vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
+$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize
 
 # Set the VM image as source image for the new VM
-$vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
+$vm = Set-AzVMSourceImage -VM $vm -Id $image.Id
 
 # Finish the VM configuration and add the NIC.
-$vm = Set-AzureRmVMOSDisk -VM $vm  -DiskSizeInGB $diskSizeGB -CreateOption FromImage -Caching ReadWrite
-$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -Credential $cred `
+$vm = Set-AzVMOSDisk -VM $vm  -DiskSizeInGB $diskSizeGB -CreateOption FromImage -Caching ReadWrite
+$vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -Credential $cred `
     -ProvisionVMAgent -EnableAutoUpdate
-$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
+$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic.Id
 
 # Create the VM
-New-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup -Location $location
+New-AzVM -VM $vm -ResourceGroupName $resourceGroup -Location $location
 
 # Verify that the VM was created
-$vmList = Get-AzureRmVM -ResourceGroupName $resourceGroup
+$vmList = Get-AzVM -ResourceGroupName $resourceGroup
 $vmList.Name
 
 
@@ -121,7 +123,7 @@ $vmList.Name
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
@@ -130,28 +132,28 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 | Příkaz                                                                                                             | Poznámky                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky.                                                                                                                          |
-| [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount)                         | Vytvoří účet úložiště.                                                                                                                                                           |
-| [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd)                                               | Nahraje virtuální pevný disk z místního virtuálního počítače do objektu blob na cloudovém účtu úložiště v Azure.                                                                       |
-| [New-AzureRmImageConfig](/powershell/module/azurerm.compute/new-azurermimageconfig)                               | Vytvoří konfigurovatelný objekt image.                                                                                                                                                 |
-| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.compute/set-azurermimageosdisk)                               | Nastaví vlastnosti disku s operačním systémem na objektu image.                                                                                                                        |
-| [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage)                                           | Vytvoří novou image.                                                                                                                                                                 |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě.                                                                                |
-| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)                         | Vytvoří virtuální síť.                                                                                                                                                           |
-| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)                       | Vytvoří veřejnou IP adresu.                                                                                                                                                         |
-| [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)                     | Vytvoří síťové rozhraní.                                                                                                                                                         |
-| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)   | Vytvoří konfiguraci pravidla skupiny zabezpečení sítě. Tato konfigurace se použije k vytvoření pravidla skupiny zabezpečení sítě při jejím vytváření.                                                       |
-| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)             | Vytvoří skupinu zabezpečení sítě.                                                                                                                                                    |
-| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork)                         | Získá ve skupině prostředků virtuální síť.                                                                                                                                          |
-| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig)                                     | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
-| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage)                           | Určuje image pro virtuální počítač.                                                                                                                                            |
-| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk)                                     | Nastaví vlastnosti disku s operačním systémem na virtuálním počítači.                                                                                                                      |
-| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem)                   | Nastaví vlastnosti disku s operačním systémem na virtuálním počítači.                                                                                                                      |
-| [Add-AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmnetworkinterface?view=azurermps-6.8.1)                 | Přidá do virtuálního počítače síťové rozhraní.                                                                                                                                       |
-| [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)                                                 | Vytvoří virtuální počítač.                                                                                                                                                            |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Odebere skupinu prostředků a všechny prostředky, které obsahuje.                                                                                                                         |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)                           | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky.                                                                                                                          |
+| [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)                         | Vytvoří účet úložiště.                                                                                                                                                           |
+| [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)                                               | Nahraje virtuální pevný disk z místního virtuálního počítače do objektu blob na cloudovém účtu úložiště v Azure.                                                                       |
+| [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig)                               | Vytvoří konfigurovatelný objekt image.                                                                                                                                                 |
+| [Set-AzImageOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azimageosdisk)                               | Nastaví vlastnosti disku s operačním systémem na objektu image.                                                                                                                        |
+| [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage)                                           | Vytvoří novou image.                                                                                                                                                                 |
+| [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě.                                                                                |
+| [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)                         | Vytvoří virtuální síť.                                                                                                                                                           |
+| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress)                       | Vytvoří veřejnou IP adresu.                                                                                                                                                         |
+| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)                     | Vytvoří síťové rozhraní.                                                                                                                                                         |
+| [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig)   | Vytvoří konfiguraci pravidla skupiny zabezpečení sítě. Tato konfigurace se použije k vytvoření pravidla skupiny zabezpečení sítě při jejím vytváření.                                                       |
+| [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup)             | Vytvoří skupinu zabezpečení sítě.                                                                                                                                                    |
+| [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)                         | Získá ve skupině prostředků virtuální síť.                                                                                                                                          |
+| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig)                                     | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
+| [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage)                           | Určuje image pro virtuální počítač.                                                                                                                                            |
+| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)                                     | Nastaví vlastnosti disku s operačním systémem na virtuálním počítači.                                                                                                                      |
+| [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem)                   | Nastaví vlastnosti disku s operačním systémem na virtuálním počítači.                                                                                                                      |
+| [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface?view=azurermps-6.8.1)                 | Přidá do virtuálního počítače síťové rozhraní.                                                                                                                                       |
+| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)                                                 | Vytvoří virtuální počítač.                                                                                                                                                            |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup)                     | Odebere skupinu prostředků a všechny prostředky, které obsahuje.                                                                                                                         |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

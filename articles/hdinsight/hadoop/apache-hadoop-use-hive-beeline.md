@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1c4637bf3b71ade6cceb4427180edf8bc408670
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3470caec801c5be54f04fc09a5da734a973f0c82
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408098"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962158"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití Apache Beeline klienta s Apache Hive
 
@@ -25,6 +25,7 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 
 * __Použití Beeline z připojení SSH k hlavnímu uzlu nebo hraničnímu uzlu__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
 * __Použití Beeline na klientovi, připojení k HDInsight prostřednictvím služby Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
+* __Použití Beeline v klientském počítači připojení ke clusteru HDInsight Enterprise Security Package (ESP) prostřednictvím služby Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
 * __Použití Beeline na klientovi, připojení k HDInsight prostřednictvím veřejného Internetu__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -35,6 +36,8 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 > Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight.
 >
 > Při připojování ke clusteru přes virtuální síť, nahraďte `<headnode-FQDN>` s plně kvalifikovaný název domény hlavního uzlu clusteru.
+>
+> Při připojování ke clusteru služby Enterprise Security Package (ESP), nahraďte `<AAD-Domain>` s názvem aplikace Azure Active Directory (AAD), ke které je připojený clusteru. Nahraďte `<username>` s názvem účtu domény s oprávněními pro přístup ke clusteru.
 
 ## <a id="prereq"></a>Požadavky
 
@@ -67,6 +70,12 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 
         ```bash
         beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
+        ```
+    * Při připojování ke clusteru služby Enterprise Security Package (ESP) připojené k Azure Active Directory (AAD), musíte také zadat název domény `<AAD-Domain>` a název domény uživatelského účtu s oprávněními pro přístup ke clusteru `<username>`:
+        
+        ```bash
+        kinit <username>
+        beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
         ```
 
 2. Příkazy beeline začínat `!` znak, třeba `!help` zobrazí nápovědu. Ale `!` může vynechat některé příkazy. Například `help` také funguje.

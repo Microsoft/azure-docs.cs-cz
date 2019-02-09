@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 71330e72ef27b62472622472b37e2ec8c78211d7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: b121996530ea0618fc757f1ae12dfafde10ed7bb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075562"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979373"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace Windows selže v případě vynuceného tunelování
 
@@ -39,17 +39,19 @@ Chcete-li tento problém vyřešit, použijte Azure aktivace vlastní trasy pro 
 
 IP adresa serveru služby správy KLÍČŮ pro Azure globální cloud je 23.102.135.246. Názvu DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure jako Azure Germany, je nutné použít IP adresu odpovídající serveru služby správy KLÍČŮ. Další informace najdete v tématu v následující tabulce:
 
-|Platforma| DNS SLUŽBY SPRÁVY KLÍČŮ|SLUŽBY SPRÁVY KLÍČŮ IP|
+|Platforma| KMS DNS|KMS IP|
 |------|-------|-------|
-|Globální Azure|KMS.Core.Windows.NET|23.102.135.246|
-|Azure Germany|KMS.Core.cloudapi.de|51.4.143.248|
-|Azure US Government|KMS.Core.usgovcloudapi.NET|23.97.0.13|
-|Azure China 21Vianet|KMS.Core.chinacloudapi.CN|42.159.7.249|
+|Azure Global|kms.core.windows.net|23.102.135.246|
+|Azure Germany|kms.core.cloudapi.de|51.4.143.248|
+|Azure US Government|kms.core.usgovcloudapi.net|23.97.0.13|
+|Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
 
 
 Chcete-li přidat vlastní trasy, postupujte takto:
 
 ### <a name="for-resource-manager-vms"></a>Pro virtuální počítače Resource Manageru
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 1. Otevřete prostředí Azure PowerShell a potom [přihlásit ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
@@ -57,15 +59,15 @@ Chcete-li přidat vlastní trasy, postupujte takto:
     ```powershell
     # First, get the virtual network that hosts the VMs that have activation problems. In this case, we get virtual network ArmVNet-DM in Resource Group ArmVNet-DM:
 
-    $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
+    $vnet = Get-AzVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
 
     # Next, create a route table and specify that traffic bound to the KMS IP (23.102.135.246) will go directly out:
 
-    $RouteTable = New-AzureRmRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
+    $RouteTable = New-AzRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
 
-    Add-AzureRmRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
+    Add-AzRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
 
-    Set-AzureRmRouteTable -RouteTable $RouteTable
+    Set-AzRouteTable -RouteTable $RouteTable
     ```
 3. Přejděte k virtuálnímu počítači, který má problémy s aktivací. Použití [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) chcete otestovat, jestli se můžete připojit k serveru služby správy KLÍČŮ:
 

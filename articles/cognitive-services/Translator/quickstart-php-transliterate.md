@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d3d62d5ff785e5bbc40f7cc22bdd29d809e745a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: add0dd2898ebaf91991c0d07e90d34c345d6b3cb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854808"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982064"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-php"></a>Rychlý start: Transkripce text s Translator Text REST API (PHP)
 

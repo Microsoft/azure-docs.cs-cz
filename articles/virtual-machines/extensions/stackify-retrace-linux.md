@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: b286ebc2e50166e8491b45346a81b161227f8d21
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e80134729c33741aa3007deb2d93a2de3e3fe697
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415117"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979713"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify obsluhy vrátit rozšíření agenta pro Linux
 
@@ -46,8 +46,8 @@ Agent vrátit dají spustit pro tyto Linuxové distribuce
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS, 16.10 a č. 17.04 |
 | Debian | 7.9 + a 8.2 +, 9 |
-| Red Hat | 6.7 +, 7.1 + |
-| CentOS | 6.3 +, 7.0 + |
+| Red Hat | 6.7+, 7.1+ |
+| CentOS | 6.3+, 7.0+ |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 Rozšíření stackify obsluhy agenta pro Linux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
@@ -147,7 +147,7 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, název pr
 
 ## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 
-`Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření stackify obsluhy vrátit linuxového agenta virtuálního počítače do existujícího virtuálního počítače. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell.
+`Set-AzVMExtension` Příkaz lze použít k nasazení rozšíření stackify obsluhy vrátit linuxového agenta virtuálního počítače do existujícího virtuálního počítače. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell.
 
 Rozšíření vyžaduje `environment` a `activationKey`.
 
@@ -155,7 +155,7 @@ Rozšíření vyžaduje `environment` a `activationKey`.
 $PublicSettings = @{"environment" = "myEnvironment"}
 $ProtectedSettings = @{"activationKey" = "myActivationKey"}
 
-Set-AzureRmVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
+Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Stackify.LinuxAgent.Extension" `

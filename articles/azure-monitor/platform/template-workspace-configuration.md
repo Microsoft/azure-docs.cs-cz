@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: e402cc214f25447407754bc6269300f4f052af4f
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 30d9de5653db385760155d533ad747c3cf6d2400
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232732"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960347"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Správa služby Log Analytics pomocí šablon Azure Resource Manageru
 Můžete použít [šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory Log Analytics. Mezi příklady úloh, které můžete provádět pomocí šablony patří:
@@ -41,10 +41,10 @@ Následující tabulka uvádí verze rozhraní API pro prostředky používané 
 
 | Prostředek | Typ prostředku | Verze API |
 |:---|:---|:---|:---|
-| Pracovní prostor   | pracovní prostory    | 2017-03-15-preview |
+| Pracovní prostor   | workspaces    | 2017-03-15-preview |
 | Search      | savedSearches | 2017-03-15-preview |
 | Zdroj dat | zdroje dat   | 2015-11-01-preview |
-| Řešení    | Řešení     | 2015-11-01-preview |
+| Řešení    | solutions     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 Následující příklad vytvoří pracovní prostor pomocí šablony ze svého místního počítače. Šablona JSON je nakonfigurován pouze s výzvou k zadání názvu pracovního prostoru a určí výchozí hodnotu pro parametry, které se pravděpodobně použije jako standardní konfigurace ve vašem prostředí.  
@@ -54,9 +54,9 @@ Následující parametry nastavení výchozí hodnoty:
 * umístění – výchozí hodnota je USA – východ
 * Skladová položka – výchozí hodnota je novou cenovou úroveň Per GB vydáno v dubnu 2018 cenový model
 
->[!WARNING]
->Pokud vytváříte nebo konfigurace pracovního prostoru Log Analytics v rámci předplatného, který je zapojen do nové platný od dubna 2018 cenový model, platné pouze v Log Analytics cenová úroveň je **PerGB2018**. 
->
+> [!NOTE]
+>Pokud vytváříte nebo konfigurace pracovního prostoru Log Analytics v rámci předplatného, který je zapojen do nové platný od dubna 2018 cenový model, platné pouze v Log Analytics cenová úroveň je **PerGB2018**.  
+>Pokud máte některá předplatná v (pre dubna 2018 cenovém modelu) [https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], můžete zadat **samostatné** cenová úroveň a to bude úspěšné pro obě předplatného v cenovém modelu před dubnem 2018 a pro nové ceny předplatných. Pro pracovní prostory v předplatných, které přijaly nový model proicing cenová úroveň bude nastavena na **PerGB2018**. 
 
 ### <a name="create-and-deploy-template"></a>Vytvoření a nasazení šablony
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 105b4e34d307ac08b8efbb5e263825f2df28e28c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f2b8b97878fc0970c8cfc95e5bd4420306e34cc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862322"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977096"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spouštění kontejnerů pro analýzu textu
 
@@ -77,19 +77,19 @@ Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Operace docker pull pro kontejner klíče frázi extrakce
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 ```
 
 ### <a name="docker-pull-for-the-language-detection-container"></a>Operace docker pull pro kontejner detekce jazyka
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
 ### <a name="docker-pull-for-the-sentiment-container"></a>Operace docker pull pro kontejner mínění
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
@@ -156,18 +156,7 @@ Pokud spouštíte kontejner s výstupem [připojit](../text-analytics-resource-c
 
 Fakturační údaje do Azure, pomocí odesílání kontejnery pro analýzu textu _rozhraní Text Analytics_ prostředků v účtu Azure. 
 
-Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků společnosti Microsoft. 
-
-`docker run` Příkaz používá následující argumenty pro účely fakturace:
-
-| Možnost | Popis |
-|--------|-------------|
-| `ApiKey` | Klíč rozhraní API _rozhraní Text Analytics_ prostředek, který používá ke sledování fakturační údaje. |
-| `Billing` | Koncový bod _rozhraní Text Analytics_ prostředek, který používá ke sledování fakturační údaje.|
-| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
-
-> [!IMPORTANT]
-> Všechny tři možnosti je nutné zadat platnou hodnotou nebo kontejneru se nespustí.
+[!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](../text-analytics-resource-container-config.md).
 

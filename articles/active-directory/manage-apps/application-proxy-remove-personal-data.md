@@ -2,8 +2,8 @@
 title: Odebrání osobních údajů – Azure Active Directory Application Proxy | Dokumentace Microsoftu
 description: Odeberte osobní údaje z konektorů, které jsou nainstalované na zařízeních pro Azure Active Directory Application Proxy.
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 9b17d3b339bf2c873e8e4c02586e814febfefaec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1a4f5db66e5bcfa8b77930165534b943ed725209
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177334"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964912"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Odebrání osobních údajů pro Azure Active Directory Application Proxy  
 

@@ -3,9 +3,8 @@ title: Správa přístupu k aplikacím pomocí služby Azure AD | Dokumentace Mi
 description: Popisuje, jak Azure Active Directory umožňuje organizacím zadejte aplikace, ke kterým má každý uživatel přístup.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: barbkess
-ms.openlocfilehash: 0c8450523890430587bedebbcd77ceddd8a03e42
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 1be695384ff6828561fe8e1e858d052cba302dc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183386"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982689"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 Probíhající access managementu, využití hodnocení a vytváření sestav i nadále být náročné z těchto po integraci aplikace do systému identity vaší organizace. V mnoha případech třeba provádět průběžnou aktivní roli při správě přístupu k vašim aplikacím správci IT nebo helpdesk. Přiřazení v některých případech se provádí pomocí obecné nebo oddělení IT tým. Často se má rozhodnutí přiřazení delegovat na obchodní rozhodovací pravomocí vyžadující schválení před IT díky přiřazení.  Další organizace investovat do integrace s existující automatizované identit a přístupu systémem správy, jako je řízení přístupu na základě Role (RBAC) nebo řízení přístupu na základě atributů (ABAC). Integrace a vývoje pravidla jsou obvykle specializovaných a drahých. Monitorování a vytváření sestav o buď způsob správy je svůj vlastní samostatný, nákladné a komplexní investice.
@@ -39,7 +38,7 @@ Pomocí těchto režimech dvě přiřazení, Správce může dosáhnout jakékol
 S Azure AD používání a vytváření sestav přiřazení je plně integrovaná, umožňuje správcům snadno sestav o stavu přiřazení, chyby přiřazení a dokonce i využití.
 
 ## <a name="complex-application-assignment-with-azure-ad"></a>Přiřazení komplexních aplikací s Azure AD
-Vezměte v úvahu aplikace, jako je Salesforce. V mnoha organizacích Salesforce primárně využívá marketingové a prodejní organizace. Často členové týmu, marketingu vysoce privilegovaný přístup k Salesforce, zatímco členové prodejního týmu mít omezený přístup. V mnoha případech široké naplnění informačních pracovníků vynutit omezil přístup k aplikaci. Výjimky pro tato pravidla zpracovávaný. Často je vyhrazeny vedení týmů marketingové a prodejní udělit přístup uživatelům nebo změnit jejich role nezávisle na tato obecná pravidla.
+Vezměte v úvahu aplikace, jako je Salesforce. V mnoha organizacích Salesforce primárně využívá marketingové a prodejní týmy. Často členové týmu, marketingu vysoce privilegovaný přístup k Salesforce, zatímco členové prodejního týmu mít omezený přístup. V mnoha případech široké naplnění informačních pracovníků vynutit omezil přístup k aplikaci. Výjimky pro tato pravidla zpracovávaný. Často je vyhrazeny vedení týmů marketingové a prodejní udělit přístup uživatelům nebo změnit jejich role nezávisle na tato obecná pravidla.
 
 S Azure AD může být předem konfigurované pro jednotné přihlašování (SSO) a automatického zřizování aplikací, jako je Salesforce. Jakmile je aplikace nakonfigurována, Správce může převzít jednorázová akce vytvoření a přidání příslušných skupin. V tomto příkladu může správce provést následující přiřazení:
 
@@ -47,7 +46,7 @@ S Azure AD může být předem konfigurované pro jednotné přihlašování (SS
   
   * Všichni členové skupiny marketing by byli přiřazeni k roli "marketing" v Salesforce.
   * Všichni členové prodejní tým, které skupiny by byli přiřazeni k roli "prodeje" v Salesforce. Další vylepšení použít víc skupin, které představují regionálních prodejních týmů na přiřazené pro různé role Salesforce.
-* Pokud chcete povolit mechanismu výjimek, nemohl být vytvořen samoobslužné skupiny pro každou roli. Můžete například vytvořit skupinu, "Salesforce marketingové výjimka" jako samoobslužné skupiny. Je možné přiřadit skupiny k roli marketingové Salesforce a marketingový tým vedení možné vlastníky. Členové marketingový tým vedení může přidat nebo odebrat uživatele, nastavit zásady, spojení, nebo dokonce Schvalte nebo zamítněte jednotlivým uživatelům žádosti o připojení. Tento mechanismus je podporované prostřednictvím informace pracovního procesu vhodné prostředí, které nevyžaduje specializované školení pro vlastníky nebo členy.
+* Pokud chcete povolit mechanismu výjimek, nemohl být vytvořen samoobslužné skupiny pro každou roli. Můžete například vytvořit skupinu, "Salesforce marketingové výjimka" jako samoobslužné skupiny. Je možné přiřadit skupiny k roli marketingové Salesforce a marketingový tým vedení provádět vlastníka. Členové marketingový tým vedení může přidat nebo odebrat uživatele, nastavit zásady, spojení, nebo dokonce Schvalte nebo zamítněte jednotlivým uživatelům žádosti o připojení. Tento mechanismus je podporované prostřednictvím informace pracovního procesu vhodné prostředí, které nevyžaduje specializované školení pro vlastníky nebo členy.
 
 V takovém případě všechny přiřazené uživatele by být automaticky přiřazeni k Salesforce, jako jsou přidány do jiné skupiny, které se aktualizují přiřazení role v Salesforce. Uživatelé by mohli vyhledat a získat přístup k Salesforce přes přístupový panel aplikací Microsoftu, klienti Office web, nebo dokonce i v případě, že přejdete na jejich organizace přihlašovací stránka Salesforce. Správci by mohli snadno zobrazit využití a přiřazení stavu pomocí vytváření sestav Azure AD.
 

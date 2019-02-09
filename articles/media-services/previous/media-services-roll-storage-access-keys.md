@@ -4,7 +4,7 @@ description: Tento článek poskytují pokyny o tom, jak aktualizace Media Servi
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 4ab2c58e5a0f9e04d824eeea443a13af7a32617d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 096372215ae44902c633489d197dc1d8aa60f193
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619652"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983011"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
+# <a name="update-media-services-after-rolling-storage-access-keys-legacy"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti (starší verze)
 
 Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se výzva, vyberte účet služby Azure Storage, který se používá k ukládání vašeho mediálního obsahu. Můžete přidat více účtů úložiště do účtu Media Services. Tento článek ukazuje, jak otočení klíčů úložiště. Také ukazuje, jak přidat účty úložiště do účtu media. 
 
@@ -68,7 +68,7 @@ Následující příklad ukazuje, jak načíst účet úložiště a synchronizo
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Postup přidání účtů úložiště pro svůj účet AMS
 
-V následujícím článku ukazuje, jak přidat účty úložiště pro svůj účet AMS: [k účtu Azure Media Services připojit více účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
+V následujícím článku ukazuje, jak přidat účty úložiště pro svůj účet AMS: [K účtu Azure Media Services připojit více účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

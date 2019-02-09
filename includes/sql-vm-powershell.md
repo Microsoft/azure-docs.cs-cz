@@ -4,26 +4,25 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: mikeray
-ms.openlocfilehash: e81cdb478a63e1e584aef2c32754bd321d245365
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f9a45da2703518000aa464da067c5cf71a198fd4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440070"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984966"
 ---
 ## <a name="start-your-powershell-session"></a>Spuštění relace prostředí PowerShell
-Nejdřív je potřeba mít na nejnovější verzi [prostředí Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) nainstalovaná a spuštěná. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs).
+ 
 
-> [!NOTE]
-> V příkladech v tomto tématu využívají [modelu nasazení Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md), takže se používají příklady [rutiny Azure Resource Manageru](https://msdn.microsoft.com/library/azure/mt125356.aspx). 
-> 
-> 
+Spustit [ **připojit Az Account** ](https://docs.microsoft.com/powershell/module/az.accounts/connect-azmaccount) rutinu se zobrazí přihlašovací obrazovku pro zadání přihlašovacích údajů. Použijte stejné přihlašovací údaje, pomocí kterých se přihlašujete na portál Azure.
 
-Spustit [ **Connect-AzureRmAccount** ](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) rutinu se zobrazí přihlašovací obrazovku pro zadání přihlašovacích údajů. Použijte stejné přihlašovací údaje, pomocí kterých se přihlašujete na portál Azure.
+```powershell
+Connect-AzAccount
+```
 
-    Connect-AzureRmAccount
+Pokud máte více předplatných, pomocí [ **Set-AzContext** ](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) rutiny vyberte, které předplatné má relace prostředí PowerShell použít. Chcete-li zjistit, jaké předplatné používá aktuální relace prostředí PowerShell, spusťte [ **Get-AzContext**](https://docs.microsoft.com/powershell/module/az.accounts/get-azcontext). Pokud chcete zobrazit všechna předplatná, spusťte [ **Get-AzSubscription**](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription).
 
-Pokud máte víc předplatných, pomocí rutiny [**Set-AzureRmContext**](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext) vyberte, které předplatné má relace prostředí PowerShell použít. Pokud chcete zjistit, jaké předplatné používá aktuální relace prostředí PowerShell, spusťte rutinu [**Get-AzureRmContext**](https://docs.microsoft.com/powershell/module/azurerm.profile/get-azurermcontext). Pokud chcete zobrazit všechna předplatná, spusťte rutinu [**Get-AzureRmSubscription**](https://docs.microsoft.com/powershell/module/servicemanagement/azurerm.profile/get-azurermsubscription).
-
-    Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
+```powershell
+Set-AzContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
+```
 

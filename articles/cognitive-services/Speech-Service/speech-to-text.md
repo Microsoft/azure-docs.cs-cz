@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5dd544f221699bb342021f9bbd3432c70cff37de
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5012245a79295f1e05079f6c0a368ac832b8974a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862526"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978574"
 ---
 # <a name="about-the-speech-to-text-api"></a>O Speech to Text API
 

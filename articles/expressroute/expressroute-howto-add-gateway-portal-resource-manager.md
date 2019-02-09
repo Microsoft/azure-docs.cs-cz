@@ -1,5 +1,5 @@
 ---
-title: 'Přidání brány do virtuální síť Azure pro ExpressRoute: portál | Dokumentace Microsoftu'
+title: 'Přidání brány do virtuální síť Azure pro ExpressRoute: Portál | Dokumentace Microsoftu'
 description: Tento článek vás provede přidání brány virtuální sítě k již vytvořené virtuální síti správce prostředků pro ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a21c9682cfeaa7421d089bf75eb9d8b45e1d3d46
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091199"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982756"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí webu Azure portal
 > [!div class="op_single_selector"]
@@ -42,9 +42,8 @@ Kroky pro tuto úlohu použijte na základě hodnot v seznamu následující odk
 * Název podsítě brány: "GatewaySubnet" je nutné vždy pojmenovat podsíť brány *GatewaySubnet*.
     * Adresní prostor podsítě brány = "192.168.200.0/26"
 * Název brány = "ERGW"
-* Název IP brány = "MyERGWVIP"
-* Typ brány "ExpressRoute" = Tento typ je požadován pro konfiguraci služby ExpressRoute.
 * Název veřejné IP adresy brány = "MyERGWVIP"
+* Typ brány "ExpressRoute" = Tento typ je požadován pro konfiguraci služby ExpressRoute.
 
 Můžete zobrazit [Video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) z těchto kroků před zahájením konfigurace.
 
@@ -67,13 +66,13 @@ Můžete zobrazit [Video](https://azure.microsoft.com/documentation/videos/azure
 2. V okně **Vytvořit bránu virtuální sítě** zadejte hodnoty pro příslušnou bránu virtuální sítě.
 
     ![Pole v okně Vytvořit bránu virtuální sítě](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Pole v okně Vytvořit bránu virtuální sítě")
-3. **Název**: Zadejte pro bránu název. Toto není název podsítě brány. Jedná se o název objektu brány, který vytváříte.
-4. **Typ brány**: vyberte **ExpressRoute**.
-5. **SKU**: Z rozevíracího seznamu vyberte SKU brány.
-6. **Umístění**: Upravte pole **Umístění** tak, aby odkazovalo na umístění, ve kterém se nachází vaše virtuální síť. Pokud umístění neukazuje na oblast, ve které je vaše virtuální síť umístěná, tato síť se nezobrazí v rozevírací nabídce Zvolit virtuální síť.
+3. **Název**: Název brány. Toto není název podsítě brány. Jedná se o název objektu brány, který vytváříte.
+4. **Typ brány**: Vyberte **ExpressRoute**.
+5. **SKLADOVÁ POLOŽKA**: Z rozevíracího seznamu vyberte SKU brány.
+6. **Umístění**: Upravte pole **Umístění**, aby odkazovalo na umístění, kde se nachází vaše virtuální síť. Pokud umístění neukazuje na oblast, ve které je vaše virtuální síť umístěná, tato síť se nezobrazí v rozevírací nabídce Zvolit virtuální síť.
 7. Zvolte virtuální síť, do které chcete tuto bránu přidat. Klikněte na **Virtuální síť** a otevře se okno **Zvolit virtuální síť**. Vyberte virtuální síť. Pokud svou virtuální síť nevidíte, zkontrolujte, že pole **Umístění** odkazuje na oblast, ve které se nachází vaše virtuální síť.
 9. Zvolte veřejnou IP adresu. Kliknutím na **Veřejná IP adresa** otevřete okno **Zvolte veřejnou IP adresu**. Kliknutím na **+Vytvořit novou** otevřete okno **Vytvořit veřejnou IP adresu**. Zadejte název veřejné IP adresy. Prostřednictvím tohoto okna můžete vytvořit objekt veřejné IP adresy, ke kterému bude dynamicky přiřazena veřejná IP adresa. Kliknutím na tlačítko **OK** uložte změny v tomto okně.
-10. **Předplatné**: Zkontrolujte, jestli je vybráno správné předplatné.
+10. **Předplatné**: Ověřte, že je vybrané správné předplatné.
 11. **Skupina prostředků**: Toto nastavení je určeno vámi vybranou virtuální sítí.
 12. Po zadání předchozích nastavení už hodnotu **Umístění** neupravujte.
 13. Ověřte nastavení. Pokud chcete, aby se brána zobrazovala na řídicím panelu, můžete v dolní části okna vybrat **Připnout na řídicí panel**.

@@ -3,8 +3,8 @@ title: Postup odebrání přístupu uživatele k aplikaci | Dokumentace Microsof
 description: Vysvětlení k odebrání přístupu uživatele k aplikaci
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
-ms.author: barbkess
-ms.openlocfilehash: 00f0df4612fe523b8b585bc2c9458386422256e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 9e0c7db1ecdcdd0f21e65f53a167d29786a58b92
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180496"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963399"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 

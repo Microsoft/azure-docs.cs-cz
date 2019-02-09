@@ -3,8 +3,8 @@ title: Chyba na stránce aplikace po přihlášení | Dokumentace Microsoftu
 description: Jak řešit problémy pomocí přihlášení Azure AD při samotná aplikace generuje chybu
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 98824a823b3cc696fe45977424655ce47d76d9fe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 70771393713851fb8d0b730d133d223214d6d5a8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177810"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960764"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Chyba na stránce aplikace po přihlášení
 

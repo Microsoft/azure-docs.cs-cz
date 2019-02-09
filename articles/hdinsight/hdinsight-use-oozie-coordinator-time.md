@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e45dfbea9545c72d80a17e8ae144f4dacc70a63
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 000f8de4d40fda39f183b0824bea6a09605e6e9d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995010"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977605"
 ---
 # <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Použití koordinátoru Apache Oozie založeného na čase s Apache Hadoop v HDInsight k definování pracovních postupů a koordinace úloh
 V tomto článku se dozvíte, jak definovat pracovní postupy a koordinátory a jak aktivovat koordinátor úlohy, na základě času. Je užitečné projít [použití Apache Oozie s HDInsight] [ hdinsight-use-oozie] předtím, než v tomto článku. Kromě Oozie toho můžete také plánovat úlohy pomocí služby Azure Data Factory. Další služby Azure Data Factory najdete v tématu [použití Apache Pig a Apache Hivu se službou Data Factory](../data-factory/transform-data.md).
@@ -68,24 +68,23 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **HDInsight cluster**. Informace o vytvoření clusteru HDInsight najdete v tématu [clusterů HDInsight vytvořit][hdinsight-provision], nebo [Začínáme s HDInsight][hdinsight-get-started]. Budete potřebovat následující data a absolvovat kurz:
 
-    <table border = "1">
-    <tr><th>Vlastnost clusteru</th><th>Název proměnné prostředí Windows PowerShell</th><th>Hodnota</th><th>Popis</th></tr>
-    <tr><td>Název clusteru HDInsight</td><td>$clusterName</td><td></td><td>Cluster HDInsight, na kterém budete spouštět v tomto kurzu.</td></tr>
-    <tr><td>Uživatelské jméno clusteru HDInsight</td><td>$clusterUsername</td><td></td><td>Uživatelské jméno clusteru HDInsight. </td></tr>
-    <tr><td>Heslo uživatele clusteru HDInsight </td><td>$clusterPassword</td><td></td><td>Heslo uživatele clusteru HDInsight.</td></tr>
-    <tr><td>Název účtu služby Azure storage</td><td>$storageAccountName</td><td></td><td>Účet služby Azure Storage k dispozici pro HDInsight cluster. Pro účely tohoto kurzu použijte výchozí účet úložiště, který jste zadali během procesu zřizování clusteru.</td></tr>
-    <tr><td>Název kontejneru Azure Blob</td><td>$containerName</td><td></td><td>V tomto příkladu pomocí kontejneru Azure Blob storage, který se používá pro výchozí systém souborů clusteru HDInsight. Ve výchozím nastavení má stejný název jako HDInsight cluster.</td></tr>
-    </table>
+    |Vlastnost clusteru|Název proměnné prostředí Windows PowerShell|Hodnota|Popis|
+    |---|---|---|---|
+    |Název clusteru HDInsight|$clusterName||Cluster HDInsight, na kterém budete spouštět v tomto kurzu.|
+    |Uživatelské jméno clusteru HDInsight|$clusterUsername||Uživatelské jméno clusteru HDInsight. |
+    |Heslo uživatele clusteru HDInsight |$clusterPassword||Heslo uživatele clusteru HDInsight.|
+    |Název účtu služby Azure storage|$storageAccountName||Účet služby Azure Storage k dispozici pro HDInsight cluster. Pro účely tohoto kurzu použijte výchozí účet úložiště, který jste zadali během procesu zřizování clusteru.|
+    |Název kontejneru Azure Blob|$containerName||V tomto příkladu pomocí kontejneru Azure Blob storage, který se používá pro výchozí systém souborů clusteru HDInsight. Ve výchozím nastavení má stejný název jako HDInsight cluster.|
+
 
 * **Azure SQL database**. Je nutné nakonfigurovat pravidlo brány firewall pro server SQL Database k povolení přístupu z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. Tento článek obsahuje skript prostředí Windows PowerShell pro vytvoření tabulky databáze Azure SQL, které potřebujete pro účely tohoto kurzu.
 
-    <table border = "1">
-    <tr><th>Vlastnost databáze SQL</th><th>Název proměnné prostředí Windows PowerShell</th><th>Hodnota</th><th>Popis</th></tr>
-    <tr><td>Název databázového serveru SQL</td><td>$sqlDatabaseServer</td><td></td><td>Databáze SQL server, ke kterému bude Sqoopu exportovat data. </td></tr>
-    <tr><td>Přihlašovací jméno SQL database</td><td>$sqlDatabaseLogin</td><td></td><td>Přihlašovací jméno SQL Database.</td></tr>
-    <tr><td>Heslo přihlášení k databázi SQL</td><td>$sqlDatabaseLoginPassword</td><td></td><td>Heslo pro přihlášení SQL Database.</td></tr>
-    <tr><td>Název databáze SQL</td><td>$sqlDatabaseName</td><td></td><td>Azure SQL database, ke kterému bude Sqoopu exportovat data. </td></tr>
-    </table>
+    |Vlastnost databáze SQL|Název proměnné prostředí Windows PowerShell|Hodnota|Popis|
+    |---|---|---|---|
+    |Název databázového serveru SQL|$sqlDatabaseServer||Databáze SQL server, ke kterému bude Sqoopu exportovat data. |
+    |Přihlašovací jméno SQL database|$sqlDatabaseLogin||Přihlašovací jméno SQL Database.|
+    |Heslo přihlášení k databázi SQL|$sqlDatabaseLoginPassword||Heslo pro přihlášení SQL Database.|
+    |Název databáze SQL|$sqlDatabaseName||Azure SQL database, ke kterému bude Sqoopu exportovat data. |
 
   > [!NOTE]   
   > Ve výchozím nastavení umožňuje službě Azure SQL database připojení ze služeb Azure, jako je Azure HDInsight. Pokud toto nastavení brány firewall je zakázaná, musíte ho povolit z portálu Azure Portal. Pokyny týkající se vytvoření databáze SQL a konfigurace pravidla brány firewall naleznete v tématu [vytvoření a konfigurace služby SQL Database][sqldatabase-get-started].
@@ -190,30 +189,27 @@ Akce Hive v pracovním postupu volá skript HiveQL. Tento soubor skriptu obsahuj
 
     Proměnné pracovního postupu
 
-    <table border = "1">
-    <tr><th>Proměnné pracovního postupu</th><th>Popis</th></tr>
-    <tr><td>${jobTracker}</td><td>Zadejte adresu URL sledování úloh Hadoopu. Použití <strong>jobtrackerhost:9010</strong> clusteru HDInsight verze 3.0 a 2.0.</td></tr>
-    <tr><td>${nameNode}</td><td>Zadejte adresu URL uzlu název Hadoop. Použít výchozí soubor systému wasb: / / adresa, třeba <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-    <tr><td>${queueName}</td><td>Určuje název fronty, který úloha bude odeslána k. Použití <strong>výchozí</strong>.</td></tr>
-    </table>
+    |Proměnné pracovního postupu|Popis|
+    |---|---|
+    |${jobTracker}|Zadejte adresu URL sledování úloh Hadoopu. Použití **jobtrackerhost:9010** clusteru HDInsight verze 3.0 a 2.0.|
+    |${nameNode}|Zadejte adresu URL uzlu název Hadoop. Použít výchozí soubor systému wasb: / / adresa, třeba *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+    |${queueName}|Určuje název fronty, který úloha bude odeslána k. Použití **výchozí**.|
 
     Proměnné akcí v hivu
 
-    <table border = "1">
-    <tr><th>Proměnné akcí Hive</th><th>Popis</th></tr>
-    <tr><td>${hiveDataFolder}</td><td>Zdrojový adresář pro příkaz Hive Create Table.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>Výstupní složka pro příkaz INSERT PŘEPSAT.</td></tr>
-    <tr><td>${hiveTableName}</td><td>Název tabulky Hive, který odkazuje log4j datových souborů.</td></tr>
-    </table>
+    |Proměnné akcí Hive|Popis|
+    |----|----|
+    |${hiveDataFolder}|Zdrojový adresář pro příkaz Hive Create Table.|
+    |${hiveOutputFolder}|Výstupní složka pro příkaz INSERT PŘEPSAT.|
+    |${hiveTableName}|Název tabulky Hive, který odkazuje log4j datových souborů.|
 
     Proměnné akcí v Sqoop
 
-    <table border = "1">
-    <tr><th>Proměnné akcí Sqoop</th><th>Popis</th></tr>
-    <tr><td>${sqlDatabaseConnectionString}</td><td>Připojovací řetězec databáze SQL.</td></tr>
-    <tr><td>${sqlDatabaseTableName}</td><td>Tabulky databáze Azure SQL, ve kterém se exportují data.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>Výstupní složka pro příkaz Hive vložit PŘEPSAT. Toto je stejné složce, Sqoop export (export-dir).</td></tr>
-    </table>
+    |Proměnné akcí Sqoop|Popis|
+    |---|---|
+    |${sqlDatabaseConnectionString}|Připojovací řetězec databáze SQL.|
+    |${sqlDatabaseTableName}|Tabulky databáze Azure SQL, ve kterém se exportují data.|
+    |${hiveOutputFolder}|Výstupní složka pro příkaz Hive vložit PŘEPSAT. Toto je stejné složce, Sqoop export (export-dir).|
 
     Další informace o pracovním postupu Oozie a pomocí akce pracovního postupu najdete v tématu [dokumentaci Apache Oozie 4.0][apache-oozie-400] (u clusteru HDInsight verze 3.0) nebo [dokumentaci Apache Oozie 3.3.2][apache-oozie-332] (u clusteru HDInsight verze 2.1).
 

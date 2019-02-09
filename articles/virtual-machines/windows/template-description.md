@@ -15,18 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e32e2833edc7027a984bb27b34608e4b1b898113
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 094df21bb0264ebbd8ad23c594ceb52db19d9c2f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767071"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979611"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manageru
 
 Tento článek popisuje aspekty šablony Azure Resource Manageru, které se vztahují k virtuálním počítačům. Tento článek nepopisuje úplnou šablonu při vytváření virtuálního počítače; k tomu potřebujete definice prostředku pro účty úložiště, síťová rozhraní, veřejné IP adresy a virtuální sítě. Další informace o tom, jak tyto prostředky je možné definovat společně, najdete v článku [názorný Průvodce šablonou Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
 Existuje několik instancí [šablon v galerii](https://azure.microsoft.com/documentation/templates/?term=VM) , které zahrnují prostředku virtuálního počítače. Ne všechny prvky, které mohou být součástí šablony jsou zde popsány.
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 Tento příklad ukazuje typické prostředků část o šablonu pro vytvoření zadaný počet virtuálních počítačů:
 
@@ -163,8 +165,9 @@ Verze rozhraní API služby jste zadali v šabloně má vliv na vlastnosti, kter
 Použijte tyto příležitosti, jak získat nejnovější verze rozhraní API:
 
 - Rozhraní REST API – [seznamu všechny poskytovatele prostředků](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI – [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI – [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+
 
 ## <a name="parameters-and-variables"></a>Parametry a proměnné
 
@@ -442,7 +445,7 @@ Můžete zobrazit stav nainstalovaná rozšíření z rozšíření nastavení n
 
 ![Načíst stav rozšíření](./media/template-description/virtual-machines-show-extensions.png)
 
-Můžete také získat informace o rozšíření pomocí **Get-AzureRmVMExtension** příkazu Powershellu **get rozšíření virtuálního počítače** rozhraní příkazového řádku Azure, nebo **získat informace o rozšíření**Rozhraní REST API.
+Můžete také získat informace o rozšíření pomocí **Get-AzVMExtension** příkazu Powershellu **get rozšíření virtuálního počítače** rozhraní příkazového řádku Azure, nebo **získat informace o rozšíření**Rozhraní REST API.
 
 ## <a name="deployments"></a>Nasazení
 

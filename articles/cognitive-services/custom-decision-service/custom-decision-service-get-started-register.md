@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: 0771c417a526c17d1bef7b0d40405efd94333929
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869989"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980682"
 ---
 # <a name="register-your-application"></a>Registrace vaší aplikace
 
 Použití služby Custom Decision Service pro vaši aplikaci, zaregistrujte ho na portálu. Tento článek vysvětluje, jak.
 
-1. Přejděte [přední stránce](https://ds.microsoft.com/) ze služby Custom Decision Service. Na pásu karet klikněte na tlačítko **Moje portál**, jak již bylo zdůrazněno na obrázku:
+1. Přejděte [přední stránce](https://portal.ds.microsoft.com/) ze služby Custom Decision Service. Na pásu karet klikněte na tlačítko **Moje portál**, jak již bylo zdůrazněno na obrázku:
 
     ![Můj portál](./media/portal.png)
 

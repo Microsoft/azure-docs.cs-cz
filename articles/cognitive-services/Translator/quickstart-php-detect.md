@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 0122cac2a98cead88d6a6406fef5a7d2aba0cd16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b444c535a3fceb7c7e84017d419a8e67f598d2f7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884575"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984405"
 ---
 # <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-php"></a>Rychlý start: Identifikujte jazyk z textu s Translator Text REST API (PHP)
 

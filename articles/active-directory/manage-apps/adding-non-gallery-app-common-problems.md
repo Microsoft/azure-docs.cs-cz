@@ -3,8 +3,8 @@ title: Potíže při přidávání aplikace mimo Galerii | Dokumentace Microsoft
 description: Vysvětlení tváří lidí běžné problémy při přidávání vlastní aplikace mimo Galerii
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
-ms.openlocfilehash: 65a6eee2be0dfdd75370c153c8c8e5010c24d096
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 72f90ea30535ac3d297e6750c9a3623cdf45de68
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160863"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959438"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Potíže při přidávání aplikace mimo Galerii
 

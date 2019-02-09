@@ -10,18 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4d336f657baef99d97568ba722e64a1f4440367f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580939"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984575"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými
+# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions-in-different-azure-active-directory-tenants"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými v různých tenantů Azure Active Directory
 
-Tento článek prochází metodu shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics pomocí konektoru Kolekce dat Azure Log Analytics pro Logic Apps. Postup v tomto článku použijte v případě, že potřebujete odesílat protokoly do pracovního prostoru v jiné službě Azure Active Directory. Například pokud jste poskytovatel spravované služby, můžete chtít shromažďovat protokoly aktivit z předplatného zákazníka a ukládat je do pracovního prostoru Log Analytics ve vlastním předplatném.
+Tento článek prochází metodu shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics pomocí konektoru Kolekce dat Azure Log Analytics pro Logic Apps. V tomto článku pomocí procesu, když potřebujete odesílat protokoly do pracovního prostoru v jiném tenantovi Azure Active Directory. Například pokud jste poskytovatel spravované služby, můžete chtít shromažďovat protokoly aktivit z předplatného zákazníka a ukládat je do pracovního prostoru Log Analytics ve vlastním předplatném.
 
 Pokud je pracovní prostor Log Analytics ve stejném předplatném Azure nebo v jiném předplatném, ale ve stejné službě Azure Active Directory, použijte ke shromažďování protokolů aktivit Azure postup uvedený v tématu [Řešení protokolu aktivit Azure](collect-activity-logs.md).
 

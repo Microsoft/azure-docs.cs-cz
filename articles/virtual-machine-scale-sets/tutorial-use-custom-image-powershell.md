@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bca92b5079b5ef21c954b46bfbeab9b973828fc8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a3b0f9b2b158bd36259ee96633682e1777333499
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427436"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981039"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure Powershellu
+
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -34,9 +35,9 @@ Při vytváření škálovací sady zadáte image, která se použije při nasaz
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 
 ## <a name="create-and-configure-a-source-vm"></a>Vytvoření a konfigurace zdrojového virtuálního počítače
@@ -44,24 +45,24 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použ
 >[!NOTE]
 > Tento kurz vás provede procesem vytvoření a použití image generalizovaného virtuálního počítače. Vytvoření škálovací sady ze specializovaného virtuálního pevného disku se nepodporuje.
 
-Nejprve vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) a pak vytvořte virtuální počítač pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Tento virtuální počítač se použije jako zdroj pro vlastní image virtuálního počítače. Následující příklad vytvoří virtuální počítač *myCustomVM* ve skupině prostředků *myResourceGroup*. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které se použijí jako přihlašovací údaje pro virtuální počítač:
+Nejprve vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup), pak vytvořte virtuální počítač s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm). Tento virtuální počítač se použije jako zdroj pro vlastní image virtuálního počítače. Následující příklad vytvoří virtuální počítač *myCustomVM* ve skupině prostředků *myResourceGroup*. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které se použijí jako přihlašovací údaje pro virtuální počítač:
 
 ```azurepowershell-interactive
 # Create a resource a group
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 # Create a Windows Server 2016 Datacenter VM
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Name "myCustomVM" `
   -ImageName "Win2016Datacenter" `
   -OpenPorts 3389
 ```
 
-Pokud se chcete připojit ke svému virtuálnímu počítači, následujícím způsobem vypište jeho veřejnou IP adresu pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress):
+Pro připojení k vašemu virtuálnímu počítači, seznam veřejnou IP adresu pomocí [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) následujícím způsobem:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
 Vytvořte vzdálené připojení k virtuálnímu počítači. Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Zadejte vlastní IP adresu z předchozího příkazu. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření virtuálního počítače v prvním kroku:
@@ -90,34 +91,34 @@ Až Sysprep tento proces dokončí a virtuální počítač se vypne, vzdálené
 ## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Vytvoření vlastní image virtuálního počítače ze zdrojového virtuálního počítače
 Zdrojový virtuální počítač je teď přizpůsobený a obsahuje nainstalovaný webový server služby IIS. Teď vytvoříme vlastní image virtuálního počítače pro použití se škálovací sadou.
 
-Abyste mohli vytvořit image, virtuální počítač musí být uvolněný. Uvolněte virtuální počítač pomocí rutiny [Stop-AzureRmVm](/powershell/module/azurerm.compute/stop-azurermvm). Pak pomocí rutiny [Set-AzureRmVm](/powershell/module/azurerm.compute/set-azurermvm) nastavte virtuální počítač do generalizovaného stavu, aby platforma Azure věděla, že je virtuální počítač připravený k použití pro vlastní image. Image můžete vytvořit pouze z generalizovaného počítače:
+Abyste mohli vytvořit image, virtuální počítač musí být uvolněný. Uvolněte virtuální počítač s [Stop-AzVm](/powershell/module/az.compute/stop-azvm). Potom nastavte stav virtuálního počítače za generalizovaný s [Set-AzVm](/powershell/module/az.compute/set-azvm) tak, aby Platforma Azure věděla, virtuální počítač je připravený k použití vlastní image. Image můžete vytvořit pouze z generalizovaného počítače:
 
 ```azurepowershell-interactive
-Stop-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
-Set-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
+Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
+Set-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
 ```
 
 Uvolnění a generalizace virtuálního počítače může několik minut trvat.
 
-Teď vytvořte image virtuálního počítače pomocí rutin [New-AzureRmImageConfig](/powershell/module/azurerm.compute/new-azurermimageconfig) a [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage). Následující příklad z vašeho virtuálního počítače vytvoří image *myImage*:
+Teď vytvořte image virtuálního počítače pomocí [New-AzImageConfig](/powershell/module/az.compute/new-azimageconfig) a [New-AzImage](/powershell/module/az.compute/new-azimage). Následující příklad z vašeho virtuálního počítače vytvoří image *myImage*:
 
 ```azurepowershell-interactive
 # Get VM object
-$vm = Get-AzureRmVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
+$vm = Get-AzVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
 
 # Create the VM image configuration based on the source VM
-$image = New-AzureRmImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID 
+$image = New-AzImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID 
 
 # Create the custom VM image
-New-AzureRmImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
+New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
 ```
 
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Vytvoření škálovací sady z vlastní image virtuálního počítače
-Teď vytvořte škálovací sadu pomocí rutiny [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss), která v parametru `-ImageName` definuje vlastní image virtuálního počítače vytvořenou v předchozím kroku. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
+Teď vytvořte škálovací sadu s [New-AzVmss](/powershell/module/az.compute/new-azvmss) , která používá `-ImageName` parametr k definování vlastní image virtuálního počítače vytvořené v předchozím kroku. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet" `
@@ -133,10 +134,11 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete vidět svou škálovací sadu v akci, následujícím způsobem získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/Get-AzureRmPublicIpAddress):
+Chcete vidět svou škálovací sadu v akci, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení s [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) následujícím způsobem:
+
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Name "myPublicIPAddress" | Select IpAddress
 ```
@@ -147,10 +149,10 @@ Zadejte veřejnou IP adresu do svého webového prohlížeče. Zobrazí se vých
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí rutiny [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
+Pokud chcete odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
+Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 

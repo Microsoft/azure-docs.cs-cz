@@ -12,33 +12,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/21/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2cee4d75a111f56012782228d8070bb728720aca
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9157acc7517aea56f087a3dbff0fe7114f8b4c87
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238329"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958801"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Architektura Microsoft Azure Stack Development Kit
-Azure Stack Development Kit (ASDK) je jedním uzlem nasazení služby Azure Stack. Všechny součásti se instalují do virtuálních počítačů spuštěných na jeden hostitelský počítač. 
+Azure Stack Development Kit (ASDK) je jedním uzlem nasazení služby Azure Stack na jednom hostiteli počítači. Směrování compontents hrany jsou nainstalovány na hostitelském počítači a poskytují schopnosti NAT a síť VPN pro službu Azure Stack. Role služby infrastruktury Azure Stack spustit ve vrstvě Hyper-V fyzickém hostitelském počítači.
 
-## <a name="logical-architecture-diagram"></a>Logická architektura diagramu
-Následující diagram znázorňuje logickou architekturu ASDK a jeho součástí.
-
-![Architektura ASDK](media/asdk-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>Role virtuálních počítačů
 ASDK nabízí služby pomocí následující virtuální počítače hostované na hostitelském počítači development kit:
 
-| Name | Popis |
+| Název | Popis |
 | ----- | ----- |
 | **AzS-ACS01** | Úložiště služby Azure Stack.|
 | **AzS-ADFS01** | Active Directory Federation Services (ADFS).  |
-| **AzS-BGPNAT01** | Hraniční směrovač a poskytuje funkce pro NAT a síť VPN pro službu Azure Stack. |
 | **AzS-CA01** | Certifikační autority služby role služby Azure Stack.|
 | **AzS-DC01** | Active Directory, DNS a DHCP services pro Microsoft Azure Stack.|
 | **AzS-ERCS01** | Konzola pro nouzový zotavení virtuálního počítače. |

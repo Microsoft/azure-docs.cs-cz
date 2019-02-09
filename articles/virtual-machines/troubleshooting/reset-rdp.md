@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 77eb372bbe3647e03919aae21087d3270c22148a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 875f2d9dbbece4e9587462c6e8bdb2b2d8536c86
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506553"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979883"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jeho heslo správce virtuálního počítače s Windows
 Pokud se nemůžete připojit k virtuálnímu počítači Windows (VM), můžete resetovat heslo místního správce nebo resetujte konfiguraci služby Vzdálená plocha (není podporováno ve Windows řadiče domény). Heslo můžete resetovat pomocí webu Azure Portal nebo rozšíření VMAccess v Azure PowerShellu. Po přihlášení k virtuálnímu počítači resetujte heslo příslušného místního správce.  
@@ -54,11 +54,11 @@ Nejprve se přihlaste k [webu Azure portal](https://portal.azure.com) a pak vybe
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Resetovat pomocí rozšíření VMAccess a prostředí PowerShell
 
-Nejprve zkontrolujte, že máte [nejnovější modul Powershellu nainstalovanou a nakonfigurovanou](/powershell/azure/overview) a přihlášeni ke svému předplatnému Azure pomocí [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) rutiny.
+Nejprve zkontrolujte, že máte [nejnovější modul Powershellu nainstalovanou a nakonfigurovanou](/powershell/azure/overview) a přihlášeni ke svému předplatnému Azure pomocí [připojit AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) rutiny.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Resetování hesla účtu místního správce**
 
-- Obnovení správce heslo nebo uživatelské jméno s [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) rutiny Powershellu. `typeHandlerVersion` Nastavení musí být 2.0 nebo novější, protože verze 1 je zastaralý. 
+- Obnovení správce heslo nebo uživatelské jméno s [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) rutiny Powershellu. `typeHandlerVersion` Nastavení musí být 2.0 nebo novější, protože verze 1 je zastaralý. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -66,9 +66,9 @@ Nejprve zkontrolujte, že máte [nejnovější modul Powershellu nainstalovanou 
     $VmName = "<VM NAME>" 
     $Location = "<LOCATION>" 
  
-    Connect-AzureRmAccount 
-    Select-AzureRMSubscription -SubscriptionId $SubID 
-    Set-AzureRmVMAccessExtension -ResourceGroupName $RgName -Location $Location -VMName $VmName -Credential (get-credential) -typeHandlerVersion "2.0" -Name VMAccessAgent 
+    Connect-AzAccount 
+    Select-AzSubscription -SubscriptionId $SubID 
+    Set-AzVMAccessExtension -ResourceGroupName $RgName -Location $Location -VMName $VmName -Credential (get-credential) -typeHandlerVersion "2.0" -Name VMAccessAgent 
     ```
 
     > [!NOTE] 
@@ -76,10 +76,10 @@ Nejprve zkontrolujte, že máte [nejnovější modul Powershellu nainstalovanou 
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Resetovat konfiguraci služby Vzdálená plocha**
 
-1. Resetování vzdáleného přístupu k vašemu virtuálnímu počítači s [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) rutiny Powershellu. Následující příklad resetuje rozšíření přístupu s názvem `myVMAccess` na virtuálním počítači s názvem `myVM` v `myResourceGroup` skupina prostředků:
+1. Resetování vzdáleného přístupu k vašemu virtuálnímu počítači s [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) rutiny Powershellu. Následující příklad resetuje rozšíření přístupu s názvem `myVMAccess` na virtuálním počítači s názvem `myVM` v `myResourceGroup` skupina prostředků:
 
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
+    Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]

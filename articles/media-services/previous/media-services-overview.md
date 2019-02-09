@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/15/2018
+ms.date: 02/08/2018
 ms.author: juliako
-ms.openlocfilehash: c3d9b0660ab7803fc0c2696ded7bbffa90e07a5a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: eacb01d11799b7e739fa3d05beeef994ca187e84
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211600"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977639"
 ---
-# <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services 
+# <a name="azure-media-services-overview-legacy"></a>Přehled služby Azure Media Services (starší verze)
 
-> [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [Verze 2](media-services-overview.md)
 > * [Verze 3](../latest/media-services-overview.md)
 
@@ -61,7 +61,7 @@ Pokud chcete vytvořit řešení Media Services, můžete použít následujíc�
 
 ## <a name="code-samples"></a>Ukázky kódů
 
-V galerii **vzorových kódů Azure** najdete několik vzorových kódů: [Vzorové kódy pro Azure Media Services](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Najdete několik vzorových kódů v **vzorových kódů Azure** galerie: [Ukázky kódu Azure Media Services](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 ## <a name="concepts"></a>Koncepty
 

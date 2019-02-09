@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 02/07/2019
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 0b56451231f1fda4e5bd156d0aded6e84c9c0162
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8e9cb570f69eb29887f4f904ba7b2b35548f3771
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117448"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965354"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -195,6 +195,63 @@ Když jste [konfigurace webové stránky pro službu Application Insights](../..
 Procento vzorkování zvolte procento blíží 100/N, kde N je celé číslo.  Aktuálně vzorkování není podporováno jiné hodnoty.
 
 Pokud povolíte také vzorkování pevnou sazbou na serveru, klienty a server bude synchronizovat tak, aby, v hledání, můžete procházet zobrazení související stránky a požadavků.
+
+## <a name="aspnet-core-sampling"></a>Vzorkování s ASP.NET Core
+
+Adaptivní vzorkování je povoleno standardně pro všechny aplikace ASP.NET Core. Můžete zakázat nebo přizpůsobit chování vzorkování.
+
+### <a name="turning-off-adaptive-sampling"></a>Vypnutí adaptivní vzorkování
+
+Výchozí vzorkování funkci lze zakázat, když jsme v metodě přidat službu Application Insights, ```ConfigureServices```s použitím ```ApplicationInsightsServiceOptions```:
+
+``` c#
+public void ConfigureServices(IServiceCollection services)
+{
+// ...
+
+var aiOptions = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+aiOptions.EnableAdaptiveSampling = false;
+services.AddApplicationInsightsTelemetry(aiOptions);
+
+//...
+}
+```
+
+Výše uvedený kód zakážete funkci vzorkování. Podle následujících pokynů pro přidání vzorkování s další možnosti vlastního nastavení.
+
+### <a name="configure-sampling-settings"></a>Konfigurace nastavení vzorkování
+
+Použití rozšíření metod pro posunutí ```TelemetryProcessorChainBuilder``` jak je znázorněno níže můžete přizpůsobit chování vzorkování.
+
+> [!IMPORTANT]
+> Pokud použijete tuto metodu můžete nakonfigurovat vzorkování, ujistěte se prosím, že používáte aiOptions.EnableAdaptiveSampling = false;. nastavení s AddApplicationInsightsTelemetry().
+
+``` c#
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
+
+var builder = configuration .TelemetryProcessorChainBuilder;
+// version 2.5.0-beta2 and above should use the following line instead of above. (https://github.com/Microsoft/ApplicationInsights-aspnetcore/blob/develop/CHANGELOG.md#version-250-beta2)
+// var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+
+// Using adaptive sampling
+builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond:10);
+ 
+// OR Using fixed rate sampling   
+double fixedSamplingPercentage = 50;
+builder.UseSampling(fixedSamplingPercentage);
+
+builder.Build();
+
+// ...
+}
+
+```
+
+**Při použití výše uvedené metody ke konfiguraci odběru vzorků, ujistěte se prosím, že používáte ```aiOptions.EnableAdaptiveSampling = false;``` nastavení s AddApplicationInsightsTelemetry().**
+
+Bez toho bude více procesorů vzorkování v řetězci TelemetryProcessor, což vede k nežádoucí důsledky.
 
 ## <a name="fixed-rate-sampling-for-aspnet-and-java-web-sites"></a>Míra vzorkování pro weby technologie ASP.NET a jazyka Java
 Pevná sazba vzorkování omezuje provoz odeslaný z webového serveru a webových prohlížečů. Na rozdíl od adaptivního vzorkování snižuje telemetrie s pevnou sazbou rozhodla sami. Také synchronizuje klient a server vzorkování tak, aby se zachovají související položky – například při pohledu na zobrazení stránky v hledání můžete najít jeho související požadavek.

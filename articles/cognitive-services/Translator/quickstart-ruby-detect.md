@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 2bb4426d66a3e80c60c4736fb2b8162bf9c7692b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d3b56b057a33d58bb0572a0e06f6284551f05cc1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865796"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982324"
 ---
 # <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Identifikujte jazyk z textu s rozhraním Translator Text REST API (Ruby)
 

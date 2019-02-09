@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: bb5bea5fb74c48e4568898d77763d442db5b41c7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870533"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979101"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnery Dockeru pro rozpoznávání tváře
 
@@ -45,7 +45,7 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _pro rozpoznávání tváře_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _pro rozpoznávání tváře_ prostředků v Azure.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _pro rozpoznávání tváře_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _pro rozpoznávání tváře_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 Toto nastavení najdete v následujícím místě:
 
@@ -112,7 +112,7 @@ Následující příklady Docker jsou pro kontejner pro rozpoznávání tváře.
 
 ### <a name="basic-example"></a>Základní příklad 
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
@@ -122,7 +122,7 @@ Následující příklady Docker jsou pro kontejner pro rozpoznávání tváře.
 
 ### <a name="logging-example-with-command-line-arguments"></a>Příklad protokolování s argumenty příkazového řádku
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
@@ -131,7 +131,7 @@ Následující příklady Docker jsou pro kontejner pro rozpoznávání tváře.
 
 ### <a name="logging-example-with-environment-variable"></a>Příklad protokolování se proměnná prostředí
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \

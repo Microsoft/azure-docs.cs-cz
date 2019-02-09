@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: d43adf7009fcd668299f018b6308765bb115b237
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: e103124b2b0e720517106f9b4453ee8a76688eca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565900"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977214"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa prostředků služby Media Services ve více účtech úložiště
+# <a name="managing-media-services-assets-across-multiple-storage-accounts-legacy"></a>Správa prostředků služby Media Services napříč několika účty úložiště (starší verze)
 
 K jednomu účtu Media Services připojit více účtů úložiště. Možnost připojit více účtů úložiště do účtu Azure Media Services nabízí následující výhody:
 

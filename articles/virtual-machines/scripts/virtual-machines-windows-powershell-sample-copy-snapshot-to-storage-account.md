@@ -1,6 +1,6 @@
 ---
-title: Azure ukázkový skript prostředí PowerShell - Export nebo zkopírování snímku jako virtuální pevný disk na účet úložiště v jiné oblasti. | Microsoft Docs
-description: Azure ukázkový skript prostředí PowerShell - Export nebo zkopírování snímku jako virtuální pevný disk na účet úložiště ve stejné oblasti jiné
+title: Ukázkový skript Azure Powershellu – Export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště v jiné oblasti | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu – Export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné různé oblasti
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,20 +15,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: be21a891121df1d645b430d87b572cde6c945d61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 8406119da75932da288d9a95cef3a9b1d26e9a9f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879642"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984122"
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Export nebo zkopírování spravované snímků jako virtuální pevný disk na účet úložiště v jiné oblasti pomocí prostředí PowerShell
+# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Export nebo kopírování spravovaných snímků jako virtuálního pevného disku do účtu úložiště v jiné oblasti pomocí Powershellu
 
-Tento skript exporty spravované snímku na účet úložiště v jiné oblasti. Nejprve generuje identifikátor URI SAS snímku a používá je zkopírovat do účtu úložiště v jiné oblasti. Tento skript lze použijte k udržování zálohování spravované disky v jiné oblasti pro obnovení po havárii.  
+Tento skript exportuje spravovaný snímek do účtu úložiště v jiné oblasti. Nejprve vygeneruje identifikátor URI SAS snímku a pak pomocí něj zkopíruje snímek do účtu úložiště v jiné oblasti. Tento skript můžete použít k udržování zálohy spravovaných disků v jiné oblasti pro účely zotavení po havárii.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -37,20 +39,20 @@ Tento skript exporty spravované snímku na účet úložiště v jiné oblasti.
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá tyto příkazy ke generování identifikátor URI pro SAS pro spravované snímek a zkopíruje snímku na účet úložiště pomocí SAS URI. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a zkopírování snímku do účtu úložiště s použitím tohoto identifikátoru URI SAS používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Udělení AzureRmSnapshotAccess](/powershell/module/azurerm.compute/New-AzureRmDisk) | Identifikátor URI pro SAS se generuje pro snímek, který se používá ke zkopírování na účet úložiště. |
-| [Nové AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Vytvoří kontext účtu úložiště pomocí názvu účtu a klíč. Tento kontext lze použít k provedení operace čtení a zápisu v účtu úložiště. |
-| [Počáteční AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Zkopíruje základní virtuální pevný disk snímku na účet úložiště |
+| [Grant-AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Vygeneruje identifikátor URI SAS pro snímek, který se použije ke zkopírování do účtu úložiště. |
+| [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Vytvoří kontext účtu úložiště s použitím názvu a klíče účtu. Tento kontext je možné použít k provádění operací čtení a zápisu v účtu úložiště. |
+| [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Zkopíruje základní virtuální pevný disk snímku do účtu úložiště. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Vytvoření spravovaného disku z virtuálního pevného disku](virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-[Vytvoření virtuálního počítače z spravovaného disku](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Vytvoření virtuálního počítače ze spravovaného disku](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Ukázky skriptu PowerShell další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty PowerShellu pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -2,21 +2,21 @@
 title: Jednotné přihlašování k aplikacím – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak vybrat jedinou metodu přihlašování, při konfiguraci aplikací v Azure Active Directory (Azure AD). Použití jednotného přihlašování, aby uživatelé nemuseli si pamatuje hesla pro každou aplikaci a zjednodušit správu správu účtů.
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7903094efc75ec54811bf565f407752f958498b7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664025"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959201"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 Jednotné přihlašování (SSO) přidává zabezpečení a pohodlí při přihlašování uživatelů k aplikacím v Azure Active Directory (Azure AD). Tento článek popisuje metody přihlašování a vám pomůže vybrat nejvhodnější metodu jednotného přihlašování, při konfiguraci vašich aplikací.

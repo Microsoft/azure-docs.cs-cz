@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 95dc004e1a4b34f1f3a3c547da4ea7cd35e8c753
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 45ecc1cbe2a9cf7d11d7b17a7a72887dcb7aa1e3
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821469"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965405"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Správa nákladů a využití pro Log Analytics
 
@@ -117,6 +117,9 @@ Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, bud
 > [!NOTE]
 > Pokud je váš pracovní prostor propojený s účtem Automation, musíte před tím, než budete moci vybrat cenovou úroveň *Standalone (za GB)*, odstranit všechna řešení **Automation and Control** a zrušit propojení s účtem Automation. V okně pracovního prostoru v části **Obecné** klikněte na **Řešení**. Zobrazí se řešení a můžete je odstranit. Propojení s účtem Automation zrušíte kliknutím na název účtu Automation v okně **Cenová úroveň**.
 
+> [!NOTE]
+> Další informace o (Nastavení cenové úrovně přes ARM) [https://docs.microsoft.com/en-us/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace] a jak zajistit, že vaše nasazení ARM bude úspěšné bez ohledu na to, zda předplatné je ve starší verzi nebo nový cenový model. 
+
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží způsobujících Log Analytics je už shromažďování dat
 Pokud jsou na starší verzi cenové úrovně Free a odeslali více než 500 MB dat za den, zastaví shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  Log Analytics, vytváří událost typu operace při shromažďování dat spustí a zastaví. Spuštěním následujícího dotazu ve službě search zkontrolujte, jestli jsou dosažení denního limitu a chybějící data: 
@@ -128,7 +131,7 @@ Když se zastaví shromažďování dat, je upozornění stav OperationStatus. P
 |Zastaví shromažďování důvod| Řešení| 
 |-----------------------|---------|
 |Dosáhlo se denního limitu starších verzí cenové úrovně Free |Počkejte, až další den pro kolekci k automatickému restartu, nebo změňte na placenou cenovou úroveň.|
-|Dosáhlo se denního limitu vašeho pracovního prostoru|Počkejte kolekce k automatickému restartu, nebo spravovat maximální denní objem dat zvýšit denní limit objemu dat je popsáno v. Čas obnovení denního limitu se zobrazují na **Správa objemu dat** stránky. |
+|Dosáhlo se denního limitu vašeho pracovního prostoru|Počkejte kolekce k automatickému restartu, nebo zvýšit denní limit objemu dat je popsáno v [spravovat maximální denní objem dat](#manage-the-maximum-daily-volume). Čas obnovení denního limitu se zobrazují na **Správa objemu dat** stránky. |
 |Předplatné Azure je v pozastaveném stavu z důvodu:<br> Bezplatná zkušební verze skončila<br> Vypršení platnosti Azure passu<br> Měsíční limit útraty dosaženo (například na předplatné MSDN nebo Visual Studio)|Převést na placené předplatné<br> Odeberte limit, nebo počkejte, dokud limit se resetuje|
 
 Která vás upozorní, když se zastaví shromažďování dat, použijte postup popsaný v *vytvořit denním datovém limitu* upozornění, která vás upozorní, když se zastaví shromažďování dat a postupujte podle kroků, pomocí kroků popsaných v přidání akcí, které výstrahy, pravidla konfigurace e-mailu webhook nebo runbook akce pro pravidlo upozornění. 

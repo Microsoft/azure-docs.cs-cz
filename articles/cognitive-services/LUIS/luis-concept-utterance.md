@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 63334c861cc85c7119ccd3111429dee47ada3162
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862934"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984354"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Porozumění projevy vhodné pro aplikace LUIS
 
@@ -39,7 +39,7 @@ Pokud můžete nejprve začít tím, že [přidání projevů příklad](luis-ho
 
 ### <a name="utterances-arent-always-well-formed"></a>Projevy nejsou vždy ve správném
 
-To může být věty, jako je "Rezervovat lístek do Paříže pro mě" nebo fragment věty, stejně jako "Rezervace" nebo "Paříž let."  Uživatelé často musíte dělat pravopisných chyb. Při plánování vaší aplikace, zvažte, jestli používáte [Check][(luis-tutorial-bing-spellcheck) pravopisu Bingu opravit před předáním LUIS vstup uživatele. 
+To může být věty, jako je "Rezervovat lístek do Paříže pro mě" nebo fragment věty, stejně jako "Rezervace" nebo "Paříž let."  Uživatelé často musíte dělat pravopisných chyb. Při plánování vaší aplikace, zvažte, jestli používáte [kontrolu pravopisu Bingu](luis-tutorial-bing-spellcheck.md) opravit před předáním LUIS vstup uživatele. 
 
 Pokud není pravopisu kontrola uživatele projevy, by měl trénování LUIS na projevy, které zahrnují překlepy nebo chybně napsaných slov.
 

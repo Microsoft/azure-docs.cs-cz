@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 7e4756fb241500a2f153b452c6dc5a4e332bdd6b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881592"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962226"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Spravovat pravidla inteligentního zjišťování služby Application Insights pomocí šablon Azure Resource Manageru
 
@@ -31,6 +31,7 @@ Můžete nakonfigurovat následující nastavení pro pravidlo inteligentní zji
 - Pokud je pravidlo povolené (výchozí hodnota je **true**.)
 - Pokud mají být e-maily zasílány vlastníkům předplatného, přispěvatelé a čtenáři při detekce nenajde (výchozí hodnota je **true**.)
 - Žádné další e-mailové příjemce, kteří by měl dostat oznámení při zjištění nebyl nalezen.
+- * E-mailové konfigurace není k dispozici pro pravidla inteligentního zjišťování označen jako _ve verzi Preview_.
 
 Pokud chcete povolit, konfigurace nastavení pravidla prostřednictvím Azure Resource Manageru, konfigurace pravidla inteligentního zjišťování je teď dostupná jako vnitřní prostředků v rámci prostředku Application Insights s názvem **ProactiveDetectionConfigs**.
 Pro maximální flexibilitu a každé pravidlo inteligentní zjišťování můžete použít nastavení jedinečné oznámení.

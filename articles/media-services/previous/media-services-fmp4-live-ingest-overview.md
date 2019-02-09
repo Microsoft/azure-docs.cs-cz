@@ -4,7 +4,7 @@ description: Tato specifikace popisuje protokol a formáty fragmentovaného MP4 
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 43fac263-a5ea-44af-8dd5-cc88e423b4de
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228874"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984830"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specifikace ingestování fragmentovaného MP4 za Azure Media Services
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Azure Media Services fragmentovaného MP4 živé ingestování specifikace (starší verze)
+
 Tato specifikace popisuje protokol a formáty fragmentovaného MP4 podle živého streamování ingestování pro Azure Media Services. Služba Media Services poskytuje služby živého streamování, které zákazníci mohou používat streamování události v reálném čase a vysílat obsah v reálném čase s využitím Azure jako cloudovou platformu. Tento dokument popisuje také osvědčené postupy pro sestavování vysoce redundantní a robustní živé ingestování mechanismy.
 
 ## <a name="1-conformance-notation"></a>1. Zápis shody
@@ -82,12 +83,12 @@ Video – 3000 kB/s, 1 500 kb/s, 750 kb/s
 
 Audio – 128 kb/s
 
-### <a name="option-1-all-tracks-in-one-stream"></a>Možnost 1: Všechny stopy do jednoho datového proudu
+### <a name="option-1-all-tracks-in-one-stream"></a>Option 1: Všechny stopy do jednoho datového proudu
 Při použití této možnosti jedné kodér vygeneruje všechny stopy audio/video a potom jim obsahuje ureitou do jednoho fragmentovaný proud MP4. Fragmentovaný proud MP4 se pak odešlou přes samostatné připojení HTTP POST. V tomto příkladu je pouze jeden datový proud pro tato živá prezentace.
 
 ![Sledování datových proudů: 1][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>Možnost 2: Každý sledovat v samostatných datového proudu
+### <a name="option-2-each-track-in-a-separate-stream"></a>Option 2: Každý sledovat v samostatných datového proudu
 Při použití této možnosti kodér do jednotlivých proud fragment MP4 Vloží jednu stopu a publikuje všechny datové proudy přes samostatné připojení prostřednictvím protokolu HTTP. To můžete udělat s kodér jeden nebo více kodérů. Živé ingestování vidí tato živá prezentace, jak se skládá ze čtyř datových proudů.
 
 ![Datové proudy samostatné stopy][image3]

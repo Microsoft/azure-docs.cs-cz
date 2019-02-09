@@ -3,8 +3,8 @@ title: S deklaracemi identity aplikace – Proxy aplikací Azure AD | Dokumentac
 description: Jak publikovat místní aplikace ASP.NET, které přijímají deklarací služby AD FS pro zabezpečený vzdálený přístup vašich uživatelů.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: efab95e926e72397f15a5b6a79e63833e19f0676
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3cb1849f9fbf99bcd811761f6b72b0d0cb61945d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153466"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965048"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s deklaracemi identity aplikace v Proxy aplikací
 [S deklaracemi identity aplikace](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provést přesměrování do tokenů zabezpečení služby (STS). Služba tokenů zabezpečení přihlašovacích údajů požádá uživatele výměnou za token a pak přesměruje uživatele k aplikaci. Existuje několik způsobů, jak povolit Proxy aplikace pro práci s těmito přesměrování. Tento článek slouží ke konfiguraci svého nasazení s deklaracemi identity aplikace. 

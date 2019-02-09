@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6066ca586ce9923158026fbeaa405de16681de9b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 080cfb43f8fef04d2459dd0bb8779d2aa66cc359
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461335"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960969"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
@@ -68,6 +68,7 @@ Přihlaste se k hlavní databázi pomocí hlavního přihlášení úrovni serve
 Zahájit kopírování zdrojová databáze s [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) příkazu. Spouštění tohoto příkazu se zahájí proces kopírování databáze. Kopírování databáze je asynchronního procesu, vrátí příkaz CREATE DATABASE před dokončením kopírování databáze.
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>Kopírování databáze SQL database na stejný server
+
 Přihlaste se k hlavní databázi pomocí hlavního přihlášení úrovni serveru nebo přihlášení, které vytvořili databázi, kterou chcete zkopírovat. Uživatelé, kteří nejsou hlavním přihlášením na úrovni serveru databáze kopírování úspěšné, musí být členem dbmanager role.
 
 Tento příkaz zkopíruje databáze 1 pro novou databázi s názvem databáze 2 na stejném serveru. V závislosti na velikosti databáze kopírování operace může trvat nějakou dobu.
@@ -86,6 +87,9 @@ Tento příkaz zkopíruje databáze 1 na serveru1 do nové databáze s názvem d
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
+## <a name="to-move-a-database-between-subscriptions"></a>Přesun databáze mezi předplatnými
+
+V [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **SQL servery** a pak vyberte server, který je hostitelem databáze ze seznamu. Klikněte na tlačítko **přesunout**a pak vyberte prostředky k přesunutí a předplatné, které chcete přesunout.
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Sledovat průběh operace kopírování
 
@@ -96,7 +100,6 @@ Pomocí dotazu na zobrazení sys.databases a sys.dm_database_copies monitorujte 
 
 > [!NOTE]
 > Pokud se rozhodnete zrušit kopírování, zatímco bude probíhat, spusťte [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) příkaz na novou databázi. Další možností spouštění příkazu DROP DATABASE ve zdrojové databázi zruší také proces kopírování.
-> 
 
 ## <a name="resolve-logins"></a>Vyřešení přihlášení
 
