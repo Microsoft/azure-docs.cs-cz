@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ec8fa6c06dff0091627a800c895d45fd3b0e778e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e55058d6b1f76b4afcb847b946df85d5ab69971b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381423"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985392"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Povolení Azure Ultra disky SSD
 
@@ -23,15 +23,15 @@ V současné době ve verzi preview jsou Ultra disků SSD a vy musíte [zaregist
 
 Po schválení se spuštěním jednoho z následujících příkazů můžete určit, které zóna v oblasti východní USA 2 pro nasazení vaší Ultra SSD pro:
 
-PowerShell: `Get-AzureRmComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
+PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
 
-ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU: `az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS’]”`
+CLI: `az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS’]”`
 
 Odpověď bude podobná formuláři níže, kde X je pásmo má být použito pro nasazení v oblasti východní USA 2. X může být buď 1, 2 nebo 3.
 
 |ResourceType  |Název  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
 |---------|---------|---------|---------|---------|---------|---------|
-|Disky     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 Pokud příkaz neodpověděl, znamená to registrace pro funkci je buď stále čekající na vyřízení nebo není schváleno ještě.
 

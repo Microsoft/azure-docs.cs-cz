@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: c65fb1f0f635e79d594a7f080124827e3218f612
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193348"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985395"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Pomocí Galerie obrázků Shared můžete sdílet vaše Image jiným uživatelům, objektů služby nebo skupiny služby AD v rámci vaší organizace. Sdílené bitové kopie je možné replikovat do více oblastí, pro rychlejší škálování vašeho nasazení.
 
@@ -110,18 +110,18 @@ Můžete vytvořit Galerie obrázků sdílených prostředků pomocí šablon. N
  
  A. Pokud se chcete zaregistrovat ve galerii Imagí sdílené veřejné verzi preview, budete muset zaregistrovat pro funkci spuštěním následujících příkazů z každého předplatného, ve kterých máte v úmyslu vytvořit Galerie obrázků sdílené, definici Image nebo Image verze prostředky, a také pokud máte v úmyslu nasadit virtuální počítače pomocí verze image.
 
-**ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU**: 
+**CLI**: 
 
 ```bash 
 az feature register --namespace Microsoft.Compute --name GalleryPreview
 az provider register --name Microsoft.Compute
 ```
 
-**Prostředí PowerShell**: 
+**PowerShell**: 
 
 ```powershell
-Register-AzureRmProviderFeature -FeatureName GalleryPreview -ProviderNamespace Microsoft.Compute
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+Register-AzProviderFeature -FeatureName GalleryPreview -ProviderNamespace Microsoft.Compute
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 **Otázka:** Jak vytvořit seznam všech prostředků Galerie obrázků sdílené napříč předplatnými? 

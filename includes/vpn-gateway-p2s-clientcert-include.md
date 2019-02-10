@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7ae3886db6391836cd8d281e44c95c5253cc8dd5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323693"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985398"
 ---
 Každý klientský počítač, který můžete připojit k virtuální síti pomocí připojení Point-to-Site musí mít nainstalovaný certifikát klienta. Generovat z kořenového certifikátu a nainstalujte ho na každý klientský počítač. Pokud nechcete nainstalovat platný klientský certifikát, ověření se nezdaří, když se klient pokusí připojit k virtuální síti.
 
@@ -31,4 +31,8 @@ Klientské certifikáty můžete vygenerovat pomocí následujících metod:
   * [Pokyny pro MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Použijte MakeCert, pokud nemáte přístup k počítači s Windows 10 pro generování certifikátů. I když MakeCert je zastaralý, slouží stále ke generování certifikátů. Vygenerované certifikáty můžete nainstalovat na libovolný podporovaný klient P2S.
   * [Pokyny pro Linux](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  Pokud generujete klientský certifikát z certifikátu podepsaného svým držitelem, je automaticky nainstalován v počítači, který jste použili k jeho vygenerování. Pokud chcete nainstalovat klientský certifikát na jiný klientský počítač, můžete ho exportujte jako soubor .pfx spolu s celý řetěz certifikátů. Díky tomu se vytvoří soubor .pfx, který obsahuje informace o kořenovém certifikátu potřebné pro klienta k ověření. Postup exportování certifikátu najdete v tématu [generování a export certifikátů pro Point-to-Site pomocí Powershellu](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).
+  Pokud generujete klientský certifikát z certifikátu podepsaného svým držitelem, je automaticky nainstalován v počítači, který jste použili k jeho vygenerování. Pokud chcete nainstalovat klientský certifikát na jiný klientský počítač, můžete ho exportujte jako soubor .pfx spolu s celý řetěz certifikátů. Díky tomu se vytvoří soubor .pfx, který obsahuje informace o kořenovém certifikátu potřebné pro klienta k ověření. 
+
+**Export certifikátu**
+
+Postup exportování certifikátu najdete v tématu [generování a export certifikátů pro Point-to-Site pomocí Powershellu](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).

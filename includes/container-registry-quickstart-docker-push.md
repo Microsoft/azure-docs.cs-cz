@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7ed8b96a528d56b28262936c4b200762b3e93b8e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302239"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985401"
 ---
 ## <a name="push-image-to-registry"></a>Odeslání image do registru
 
 Pokud chcete nasdílet image do služby Azure Container Registry, musíte nejprve mít nějakou image. Pokud ještě nemáte žádné Image místního kontejneru, spusťte následující příkaz [operace docker pull] [ docker-pull] příkaz a vyžádejte si existující image z Docker Hubu. V tomto příkladu o přijetí změn `hello-world` bitové kopie.
 
-```Docker
+```
 docker pull hello-world
 ```
 
@@ -27,19 +27,19 @@ Předtím než můžete nasdílet image do registru, musíte ji označit plně k
 
 Označte image pomocí příkazu [docker tag][docker-tag]. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru vaší instance ACR.
 
-```Docker
+```
 docker tag hello-world <acrLoginServer>/hello-world:v1
 ```
 
 Nakonec pomocí příkazu [docker push][docker-push] nasdílejte image do instance služby ACR. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru vaší instance ACR. Tento příklad vytvoří **hello-world** úložiště, který obsahuje `hello-world:v1` image.
 
-```Docker
+```
 docker push <acrLoginServer>/hello-world:v1
 ```
 
 Po nasdílení změn image do vašeho registru kontejneru, odeberte `hello-world:v1` obrázek z vašeho místního prostředí Docker. (Všimněte si, že tento [docker rmi] [ docker-rmi] příkazem neodebere image z **hello-world** úložiště v Azure container registry.)
 
-```Docker
+```
 docker rmi <acrLoginServer>/hello-world:v1
 ```
 
