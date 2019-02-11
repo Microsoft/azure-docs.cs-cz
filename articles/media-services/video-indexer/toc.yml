@@ -19,6 +19,8 @@ items:
   items:
   - name: Porovnání předvoleb Media Services a Video Indexeru
     href: compare-video-indexer-with-media-services-presets.md
+  - name: Správa několika klientů
+    href: manage-multiple-tenants.md
   - name: Přizpůsobení modelů obsahu
     items:
     - name: Značky
@@ -81,9 +83,9 @@ items:
     href: regions.md
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 6b3510a967a24232997e6394142348048769c507
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: c805ae4149bab0d5ce72a1fd0d63cc74fbe4272d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306178"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984459"

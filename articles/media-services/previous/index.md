@@ -10,16 +10,16 @@ ms.service: media-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 02/08/2018
 ms.author: carolz
-ms.openlocfilehash: a38158467664eb12b388ad6bdc4bb5d783aa8762
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 742e6a556045874d57c810373f2297582ca8140e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283594"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979662"
 ---
-# <a name="media-services-documentation"></a>Dokumentace ke službě Media Services
+# <a name="media-services-documentation-legacy"></a>Dokumentace ke službě Media Services (starší verze)
 
 Zjistěte, jak pomocí služby Media Services, rozšiřitelné cloudové platformy, streamovat video ve vysílací kvalitě. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 
