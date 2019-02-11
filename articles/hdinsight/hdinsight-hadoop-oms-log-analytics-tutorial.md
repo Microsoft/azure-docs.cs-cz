@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2af68c0b9deb9d5b065f5fae42cf4bf927f0c671
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2f45b8e5a8fbf06a86a16336b825d185baf4976b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386440"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959663"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight pomocí Azure Log Analytics
 
@@ -46,9 +46,19 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 V této části nakonfigurujete existujícího clusteru HDInsight Hadoop pomocí pracovnímu prostoru Azure Log Analytics můžete sledovat úlohy, protokoly ladění atd.
 
-1. Otevřete HDInsight cluster na webu Azure Portal.
-2. V levém podokně vyberte **monitorování**.
-3. V pravém podokně vyberte **povolit**, vyberte existující pracovní prostor Log Analytics a pak vyberte **Uložit**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+
+2. V nabídce vlevo vyberte **všechny služby**.
+
+3. V části **ANALYTICS**vyberte **clustery HDInsight**.
+
+4. Z levé straně v části **monitorování**vyberte **Operations Management Suite**.
+
+5. Hlavní zobrazení v části **monitorování OMS**vyberte **povolit**.
+
+6. Z **vyberte pracovní prostor** rozevíracího seznamu vyberte existující pracovní prostor Log Analytics.
+
+7. Vyberte **Uložit**.
 
     ![Zapněte sledování pro clustery HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "zapněte sledování pro clustery HDInsight")
 

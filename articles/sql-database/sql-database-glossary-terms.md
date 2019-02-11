@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 0ae6dea86019b84e8d086a595995f8bd5b2a55ed
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: d773d270b3b352bcaef189d201d824695b42bcef
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753295"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980138"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář termínů
 
@@ -28,7 +28,7 @@ ms.locfileid: "55753295"
 ||Elastický fond|[Elastický fond](sql-database-elastic-pool.md)|
 ||Spravovaná instance|[Spravovaná instance](sql-database-managed-instance.md)|
 |Serverové objekty|Databáze SQL server nebo databázový server|[Databázový server](sql-database-servers.md)|
-||Spravovaná instance SQL Database nebo spravované instance|[Spravovaná instance](sql-database-managed-instance.md)|
+||Spravovaná instance serveru SQL Database, spravované instance serveru nebo instance serveru|[Spravovaná instance](sql-database-managed-instance.md)|
 Databázové objekty|Databáze SQL Azure|Všechny databáze ve službě Azure SQL Database|
 ||Izolovaná databáze|Databáze vytvořené jako samostatné databáze pomocí volby nasazení izolovaná databáze|
 ||Databázi ve fondu|Databáze vytvořené v rámci nebo přesunout do elastického fondu|
@@ -47,6 +47,6 @@ Databázové objekty|Databáze SQL Azure|Všechny databáze ve službě Azure SQ
 ||Velikost úložiště|Velikost úložiště, které jsou dostupné pro izolované databáze, elastický fond nebo spravované instance|
 ||Generace výpočetních funkcí|Generování procesoru v rámci úrovně služeb|
 |Pravidla brány firewall protokolu IP databázového serveru|Pravidla firewallu protokolu IP|[Pravidla firewallu protokolu IP](sql-database-firewall-configure.md)|
-||Pravidla brány firewall na úrovni serveru IP|[Pravidla brány firewall na úrovni serveru IP](sql-database-firewall-configure.md#overview)|
+||Pravidla brány firewall protokolu IP na úrovni serveru|[Pravidla brány firewall na úrovni serveru IP](sql-database-firewall-configure.md#overview)|
 || Pravidla brány firewall na úrovni databáze IP|[Pravidla brány firewall na úrovni databáze IP](sql-database-firewall-configure.md#overview)|
 ||Koncové body virtuální sítě a pravidel|[Pravidla a koncové body virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md)|
