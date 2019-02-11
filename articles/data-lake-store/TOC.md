@@ -1,5 +1,5 @@
 # [Dokumentace ke službě Data Lake Storage Gen1](index.md)
-# [Dokumentace k přechodu ke službě Data Lake Storage Gen2 (Preview)](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
+# [Dokumentace k přechodu na Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
 
 # Přehled
 ## [Přehled Data Lake Storage Gen1](data-lake-store-overview.md)
@@ -28,7 +28,7 @@
 ### [Řízení přístupu](data-lake-store-access-control.md)
 ### [Zabezpečení uložených dat](data-lake-store-secure-data.md)
 ### [Šifrování](data-lake-store-encryption.md)
-### [Integrace virtuální sítě (Preview)](data-lake-store-network-security.md)
+### [Integrace virtuální sítě](data-lake-store-network-security.md)
 
 ## Ověřování s využitím služby Data Lake Storage Gen1
 ### [Možnosti ověřování](data-lakes-store-authentication-using-azure-active-directory.md)

@@ -4,16 +4,16 @@ description: Vytvoření vlastní definice zásady Azure Policy pro vynucení vl
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/24/2019
+ms.date: 02/08/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 9474fa843541e0a70a27fa00583d097bfe24fb8a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb9ead3dc10c7f3b5e561196624c4798775d5c3d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885556"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962974"
 ---
 # <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásady
 
@@ -182,13 +182,13 @@ Ve výsledcích zobrazí alias nepodporuje účty úložiště s názvem **suppo
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-V prostředí Azure PowerShell `Get-AzureRmPolicyAlias` rutina se používá k vyhledání prostředků aliasy.
+V prostředí Azure PowerShell `Get-AzPolicyAlias` rutina se používá k vyhledání prostředků aliasy.
 Budeme filtrovat pro **Microsoft.Storage** oboru názvů na základě informací jsme získali dříve o prostředků Azure.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
 
-# Use Get-AzureRmPolicyAlias to list aliases for Microsoft.Storage
+# Use Get-AzPolicyAlias to list aliases for Microsoft.Storage
 (Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Storage').Aliases
 ```
 
@@ -207,7 +207,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
+Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 Výsledky vypadat podobně jako My, co uvidí v šablonách Resource Manageru a pomocí Průzkumníka prostředků Azure. Však také obsahovat výsledky Azure Graph prostředků [alias](../concepts/definition-structure.md#aliases) podrobnosti. Tady je příklad výstupu z účtu úložiště pro aliasy:

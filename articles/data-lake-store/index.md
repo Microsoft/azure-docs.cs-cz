@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e2fcdac282d0cca9fe993efdaf787e43c2b6e9d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68e4a7bd73b7fdd4b21140c912422b062f51c775
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433812"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869190"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentace ke službě Azure Data Lake Storage Gen1
 
-Naučte se používat Azure Data Lake Storage Gen1 (dříve označované jako Azure Data Lake Store) k vytvoření úložiště ve velkém měřítku, které je kompatibilní s Hadoopem, pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu. Kurzy, odkazy na rozhraní API a další dokumentace obsahují informace o tom, jak nastavit a úložiště Data Lake a přistupovat k němu pro účely provozní a zjišťovací analýzy.
+Platforma Azure Data Lake Storage Gen2 je teď obecně dostupná. Doporučujeme začít ji používat ještě dnes. Další informace najdete na [stránce produktu](https://aka.ms/adlsgen2-product).
 
-Pokud se chcete o verzi Preview služby Data Lake Storage Gen2 dozvědět víc, podívejte se na [produktovou stránku](https://aka.ms/adlsgen2-product).
+Naučte se používat Azure Data Lake Storage Gen1 (dříve označované jako Azure Data Lake Store) k vytvoření úložiště ve velkém měřítku, které je kompatibilní s Hadoopem, pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu. Kurzy, odkazy na rozhraní API a další dokumentace obsahují informace o tom, jak nastavit a úložiště Data Lake a přistupovat k němu pro účely provozní a zjišťovací analýzy.
 
 <ul class="panelContent cardsFTitle">
     <li>

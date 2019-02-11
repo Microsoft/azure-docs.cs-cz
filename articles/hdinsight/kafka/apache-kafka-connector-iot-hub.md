@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd7254a9ec1ce5671aa5271ca26c678b20ef48cb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608626"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978064"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Použití Apache Kafka v HDInsight pomocí Azure IoT Hub
 
@@ -127,7 +127,7 @@ Z připojení SSH k hraničnímu uzlu použijte následující postup ke konfigu
 
     * Změnit `key.converter=` a `value.converter=` řádky následující hodnoty:
 
-        ```text
+        ```ini
         key.converter=org.apache.kafka.connect.storage.StringConverter
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
@@ -189,7 +189,7 @@ Pokud chcete načíst informace o IoT hub používá konektorem, použijte násl
 
         Nahraďte `myhubname` s názvem služby IoT hub. Odpověď se podobá následujícímu textu:
 
-        ```text
+        ```json
         "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
         "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
         "Partitions": 2
@@ -349,7 +349,7 @@ K odesílání zpráv prostřednictvím konektoru použijte následující kroky
     > [!IMPORTANT]  
     > Musíte nastavit hodnotu `"deviceId"` položku s ID zařízení. V následujícím příkladu je název zařízení `fakepi`:
 
-    ```text
+    ```json
     {"messageId":"msg1","message":"Turn On","deviceId":"fakepi"}
     ```
 

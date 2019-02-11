@@ -181,6 +181,8 @@ items:
       href: vpn-gateway-3rdparty-device-config-overview.md
     - name: 'Ukázka: Zařízení Cisco ASA (IKEv2, bez BGP)'
       href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+  - name: Přechod na certifikát veřejné brány CA pro P2S
+    href: vpn-gateway-point-to-site-gateway-public-ca.md
   - name: Řešení potíží
     href: vpn-gateway-troubleshoot.md
     items:
@@ -252,9 +254,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: 0917b0d30244cc6b00df71a3ed17ead22db35c99
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d3e9783ab898478d5f356a573458a7034c67ac0d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159521"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894869"
