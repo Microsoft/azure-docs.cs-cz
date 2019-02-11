@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 0932c576a47af85c496d5d2d12dbc1b997d48e16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874324"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964573"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -20,7 +20,7 @@ Pokud chcete analyzovat data v clusteru služby HDInsight, můžete ukládat dat
 
 Hadoop podporuje hodnoty výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete zadat kontejner objektů blob v Azure Storage nebo hierarchického oboru názvů, které nabízí Data Lake Storage Gen2 jako výchozí systém souborů. Můžete také u služby HDInsight 3.5 můžete vybrat kontejner nebo hierarchického oboru názvů jako výchozí systém souborů s několika výjimkami.
 
-V tomto článku se dozvíte, jak služba Data Lake Storage Gen2 pracuje s clustery HDInsight. Další informace o vytvoření clusteru HDInsight najdete v tématu [nastavení HDInsight clustery pomocí Hadoop, Spark, Kafka a další služby Azure Data Lake Storage](data-lake-storage-quickstart-create-connect-hdi-cluster.md).
+V tomto článku se dozvíte, jak služba Data Lake Storage Gen2 pracuje s clustery HDInsight. Další informace o vytvoření clusteru HDInsight najdete v tématu [nastavení HDInsight clustery pomocí Hadoop, Spark, Kafka a další služby Azure Data Lake Storage](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).
 
 Azure Storage je robustní řešení úložiště pro obecné účely, které se jednoduše integruje se službou HDInsight. HDInsight můžete jako výchozí systém souborů pro cluster použít Azure Data Lake Storage. Pomocí rozhraní Hadoop distributed file system (HDFS) může celá sada komponent v HDInsight pracovat přímo se soubory ve službě Azure Data Lake Storage.
 
@@ -209,7 +209,6 @@ Další informace naleznete v tématu:
 
 * [Ovladač systému souborů Hadoop ABFS pro Azure Data Lake Storage Gen2](data-lake-storage-abfs-driver.md)
 * [Úvod do služby Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)
-* [Nastavení clusterů HDInsight pomocí Azure Data Lake Storage Gen2 s Hadoop, Spark, Kafka a další](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [Ingestovat data do Azure Data Lake Storage Gen2 pomocí distcp](data-lake-storage-use-distcp.md)
 
 [powershell-install]: /powershell/azure/install-az-ps

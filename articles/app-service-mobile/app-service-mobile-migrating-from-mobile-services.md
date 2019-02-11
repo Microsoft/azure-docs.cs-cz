@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118988"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960730"
 ---
 # <a name="article-top"></a>Migrace existující mobilní služby Azure do služby Azure App Service
 S [Obecná dostupnost služby Azure App Service], weby, Azure Mobile Services můžete snadno migrovat místní využívat všechny funkce služby Azure App Service.  Tento dokument popisuje, co očekávat při migraci webu z Azure Mobile Services do služby Azure App Service.
@@ -202,7 +202,7 @@ Tabulku můžete přidat kliknutím **přidat** tlačítko nebo přístup k vaš
 * Vymazání obsahu tabulky
 * Odstraňuje se konkrétní řádky v tabulce
 
-### <a name="easyapis"></a>ROZHRANÍ API
+### <a name="easyapis"></a>API
 *API* kartu v Mobile Services se nahradil *jednoduchá rozhraní API* na webu Azure portal.  Pro přístup k jednoduchá rozhraní API:
 
 1. Přihlaste se k webu [Azure Portal].
@@ -270,8 +270,8 @@ Následující nastavení další aplikace jsou migrovat ze svojí mobilní slu�
 | Nastavení aplikace | Popis |
 |:--- |:--- |
 | **MS\_MobileServiceName** |Název vaší aplikace |
-| **MS\_MobileServiceDomainSuffix** |Předpona domény. tj azure-mobile.net |
-| **MS\_vlastnosti ApplicationKey** |Klíč aplikace |
+| **MS\_MobileServiceDomainSuffix** |Předpona domény. i.e azure-mobile.net |
+| **MS\_ApplicationKey** |Klíč aplikace |
 | **MS\_MasterKey** |Hlavní klíč vaší aplikace |
 
 Klíč aplikace a hlavní klíč jsou stejné jako klíče aplikace z původního mobilních službách.  Konkrétně se klíč aplikace posílá mobilní klienty ověřit jejich používání mobilní rozhraní API.
@@ -321,7 +321,7 @@ K zobrazení protokolů:
 3. Klikněte na tlačítko **nástroje** tlačítko
 4. Vyberte **Stream protokolů** nabídce dodržovat.
 
-Protokoly se zobrazují v okně, jako jsou generovány.  Můžete také stáhnout protokoly pro pozdější analýzu pomocí přihlašovacích údajů pro nasazení. Další informace najdete v tématu [protokolování] dokumentaci.
+Protokoly se zobrazují v okně, jako jsou generovány.  Můžete také stáhnout protokoly pro pozdější analýzu pomocí přihlašovacích údajů pro nasazení. Další informace najdete v tématu [Logging] dokumentaci.
 
 ## <a name="known-issues"></a>Známé problémy
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>Odstranění klon migrovat mobilní aplikace způsobí, že výpadku lokality
@@ -332,7 +332,7 @@ Pokud klonovat migrované mobilní služby pomocí Azure Powershellu a pak odstr
 ### <a name="changing-webconfig-does-not-work"></a>Změna souboru Web.config nefunguje
 Pokud máte webová aplikace ASP.NET, se změní na `Web.config` souboru není použije.  Azure App Service vytvoří vhodný `Web.config` souboru při spuštění pro podporu modulu runtime Mobile Services.  Určitá nastavení (například vlastní záhlaví) můžete přepsat pomocí transformačnímu souboru XML.  Vytvořte soubor kromě volá `applicationHost.xdt` – tento soubor musí končit `D:\home\site` ve službě Azure.  Nahrát `applicationHost.xdt` souboru prostřednictvím skriptu vlastní nasazení nebo přímo pomocí Kudu.  Následuje ukázkový dokument:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <system.webServer>
@@ -388,7 +388,7 @@ Teď, když vaše aplikace je migrovat do služby App Service, existují ještě
 [Fiddler]: https://www.telerik.com/fiddler
 [Obecná dostupnost služby Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[Protokolování]: ../app-service/troubleshoot-diagnostic-logs.md
+[Logging]: ../app-service/troubleshoot-diagnostic-logs.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services versus App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md

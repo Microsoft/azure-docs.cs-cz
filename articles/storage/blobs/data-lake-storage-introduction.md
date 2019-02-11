@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 9992e7d280472186b32dea3c102a02e3df4d25ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 871b6314bff7c984bc6cc779c43800883b8ff767
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872896"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963807"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do služby Azure Data Lake Storage Gen2
 
@@ -87,5 +87,4 @@ Následující články popisují některé hlavní koncepty nástroje Data Lake
 
 -   [Hierarchického oboru názvů](data-lake-storage-namespace.md)
 -   [Vytvoření účtu úložiště](data-lake-storage-quickstart-create-account.md)
--   [Vytvoření clusteru HDInsight s Data Lake Storage Gen2](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 -   [Použití účtu Data Lake Storage Gen2 v Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md)

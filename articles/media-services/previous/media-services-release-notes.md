@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: aa2a059dd470e671aa3483f2259bcf91796c070d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3cf819ceb01e52b029e8654dddc355afd27a9b63
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631664"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982994"
 ---
-# <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
+# <a name="azure-media-services-release-notes-legacy"></a>Azure Media Services poznámky (starší verze)
+
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
 
 > [!NOTE]
@@ -476,18 +477,18 @@ Tyto změny jsou zahrnuty v červnu 2013 Media Services SDK verze. Nejnovější
 * Od verze 2.3.0.0, Media Services SDK podporuje propojování více úložiště účtů k účtu Media Services. Tuto funkci podporovat následující rozhraní API:
   
     * Typ IStorageAccount
-    * Vlastnost Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts
+    * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
     * Účet úložiště vlastností
     * Vlastnost StorageAccountName
   
       Další informace najdete v tématu [Media Services spravovat prostředky ve více účtech úložiště](https://msdn.microsoft.com/library/azure/dn271889.aspx).
 * Rozhraní API související s oznámení. Počínaje verzí 2.2.0.0, může naslouchat oznámení Azure Queue storage. Další informace najdete v tématu [zpracování Media Services úlohy oznámení](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
-    * Vlastnost Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions
-    * Typ Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint
-    * Typ Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription
-    * Typ Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection
-    * Typ Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType
+    * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions property
+    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
+    * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription type
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
 * Závislost na klienta úložiště SDK 2.0 (Microsoft.WindowsAzure.StorageClient.dll)
 * Závislost na protokolu OData 5.5 (Microsoft.Data.OData.dll)
 
@@ -526,7 +527,7 @@ Změny uvedené v této části jsou zahrnuté v listopadu 2012 (verze 2.0.0.0) 
     * IAssetFile nahradí FileInfo a má různé chování. Ho Pokud chcete použít, vytvořte instanci objektu IAssetFiles, za nímž následuje nahrávání souborů pomocí sady Media Services SDK nebo sady SDK služby Storage. Je možné použít následující IAssetFile.Upload přetížení:
   
         * IAssetFile.Upload(filePath): Blokuje vlákno, této synchronní metody, a My ho doporučujeme pouze v případě, že můžete nahrát jeden soubor.
-        * IAssetFile.UploadAsync (CestakSouboru, blobTransferClient, Lokátor, cancellationToken): Tato asynchronní metoda je mechanismus upřednostňované nahrávání. 
+        * IAssetFile.UploadAsync(filePath, blobTransferClient, locator, cancellationToken): Tato asynchronní metoda je mechanismus upřednostňované nahrávání. 
     
             Známého problému: Pokud používáte token zrušení, nahrávání se zrušila. Úlohy může mít mnoho stavů zrušení. Musí správně zachytila a zpracovala výjimky.
 * Lokátory

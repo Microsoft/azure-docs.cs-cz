@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/04/2019
-ms.openlocfilehash: 73c7acb563f0f6236ff49274bb1880692a3742e6
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 10bc12879ea30f75ee5af3bd9226ff1626b72ae3
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563116"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962736"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Jak používat Notification Hubs z Pythonu
 
@@ -369,11 +369,11 @@ Když povolíte příznak ladění při inicializaci NotificationHub, uvidíte p
 Uvidíte, například podrobný výsledek centra oznámení.
 
 - Pokud zpráva úspěšně odeslána pro službu nabízených oznámení.
-    ```text
+    ```xml
     <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
     ```
 - Pokud neexistují žádné cíle pro nabízená oznámení se nenašly, pak se pravděpodobně Chystáte se zobrazit následující výstup jako odpověď (což znamená, že neexistují žádné registrace nalezen pravděpodobně doručit oznámení, protože registrace má některé neshoda značky)
-    ```text
+    ```xml
     '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
     ```
 

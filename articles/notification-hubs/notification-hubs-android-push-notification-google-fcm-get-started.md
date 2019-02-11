@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/05/2019
 ms.author: jowargo
-ms.openlocfilehash: 9467197715d79527699eac0acf9c23f204b0e639
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d2de4a4be8838cf696d2d3ed6589e8f154a6ca05
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814891"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959823"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Google Firebase Cloud Messaging
 
@@ -91,14 +91,14 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
 
 1. Do souboru `Build.Gradle` pro **aplikaci** přidejte následující řádky v části **závislosti**.
 
-    ```text
+    ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
 2. Přidejte následující úložiště za část **závislosti**.
 
-    ```text
+    ```gradle
     repositories {
         maven {
             url "http://dl.bintray.com/microsoftazuremobile/SDK"
@@ -110,13 +110,13 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
 
 1. V `Build.Gradle` souboru **aplikace**, přidejte následující řádky v **závislosti** části, pokud ještě neexistuje. 
 
-    ```text
+    ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.0'
     ```
 
 2. Pokud ještě neexistuje, přidejte následující modul plug-in na konci souboru. 
 
-    ```text
+    ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
 
@@ -160,7 +160,7 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
     > [!IMPORTANT]
     > Nahraďte zástupný symbol `<your package NAME>` skutečným názvem vašeho balíčku zobrazeného v horní části souboru `AndroidManifest.xml`.
 4. Vyberte **synchronizovat nyní** na panelu nástrojů.
-5. Přidejte následující nezbytná oprávnění související s FCM **níže** `</application>` značky.  
+5. Přidejte následující nezbytná oprávnění související s FCM **níže** `</application>` značky.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>

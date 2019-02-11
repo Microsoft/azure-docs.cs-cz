@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cddb3769cfc5a2ba002e19036d986f4165670dc1
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959729"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962447"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu pro Apache Cordova pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -55,7 +55,7 @@ ionic plugin add cordova-plugin-ms-azure-mobile-apps
 
 Přidejte následující řádky do `app.component.ts` k vytvoření objektu klienta:
 
-```
+```typescript
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
@@ -71,8 +71,8 @@ Modul plug-in Azure Mobile Apps Cordova podporuje obě Ionic aplikace v1 a v2.  
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Postupy: ověřování uživatelů
-Azure App Service podporuje ověřování a autorizace uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, Account Microsoft a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v serverových skriptů. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
+## <a name="auth"></a>Jak: Ověřování uživatelů
+Azure App Service podporuje ověřování a autorizace uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v serverových skriptů. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
 
 Pokud používáte ověřování v aplikaci Apache Cordova, musí být k dispozici následující moduly plug-in Cordova:
 
@@ -83,7 +83,7 @@ Jsou podporovány dvě toky ověřování: serveru a klienta tok.  Tok server po
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Postupy: Konfigurace služby Mobile App pro adresy URL pro externí přesměrování.
+### <a name="configure-external-redirect-urls"></a>Jak: Nakonfigurujte službu Mobile App Service pro adresy URL pro externí přesměrování.
 Několik typů aplikací Apache Cordova pomocí funkce zpětné smyčky pro zpracování toky OAuth uživatelského rozhraní.  Toky OAuth uživatelského rozhraní na místním hostiteli způsobit problémy vzhledem k tomu, že ověřovací službu pouze ví, jak využít vaše služba ve výchozím nastavení.  Příklady problematické toky OAuth uživatelského rozhraní:
 
 * Emulátor Ripple.
@@ -123,10 +123,10 @@ Tyto adresy URL zpětné smyčky je také možné přidáte do nastavení CORS p
 
 Trvá přibližně 10 – 15 sekund nové nastavení projevilo.
 
-## <a name="register-for-push"></a>Postupy: registrace pro nabízená oznámení
+## <a name="register-for-push"></a>Jak: Registrace pro nabízená oznámení
 Nainstalujte [nabízené oznámení phonegap plugin] pro zpracování nabízených oznámení.  Tento modul plug-in můžete snadno přidat pomocí `cordova plugin add` příkazu na příkazovém řádku, nebo prostřednictvím instalačního programu modulu plug-in Git v sadě Visual Studio.  Následující kód do aplikace Apache Cordova zaregistruje zařízení pro nabízená oznámení:
 
-```
+```javascript
 var pushOptions = {
     android: {
         senderId: '<from-gcm-console>'
