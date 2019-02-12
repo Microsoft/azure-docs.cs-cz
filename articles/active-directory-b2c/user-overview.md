@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a901072875d6810711cb0b23d17555d9492c240a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d4bcc66cfd82fee13ce57d096e061ddd8706720
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157971"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100121"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -47,21 +47,21 @@ Když přidáte nový pracovní účet, je potřeba zvážit následující nast
 Tyto informace slouží k vytvoření nové pracovní účet:
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Aktualizovat profil uživatele.
 
 Aktualizovat profil uživatele můžete použít následující informace:
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Resetování hesla pro uživatele
 
 Resetovat heslo uživatele, můžete použít následující informace: 
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Uživatel typu host
 
@@ -69,7 +69,7 @@ Externí uživatelé do svého tenanta můžete pozvat jako uživatele typu Host
 
 Pozvat uživatele typu Host do tenanta, zadáte e-mailová adresa příjemce a zprávu s popisem e-mailové pozvánce. Odkaz žádosti přejde stránka pro odsouhlasení podmínek kde **Začínáme** výběru tlačítka a přijmout kontrolu oprávnění. Pokud doručené pošty není připojena k e-mailovou adresu, můžete uživatele tak, že přejdete na stránku Microsoft pomocí pozvaného přihlašovacích údajů přejděte na stránka pro odsouhlasení podmínek. Uživatel pak musí pro uplatnění pozvání stejným způsobem jako při kliknutí na odkaz v e-mailu. Například: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Můžete také použít [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/invitation_post) pozvat uživatele typu Host.
+Můžete také použít [Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) pozvat uživatele typu Host.
 
 ## <a name="consumer-user"></a>Příjemce uživatele
 

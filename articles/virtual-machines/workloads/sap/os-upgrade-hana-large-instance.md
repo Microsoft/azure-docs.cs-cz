@@ -1,6 +1,6 @@
 ---
-title: Upgrade operačního systému pro SAP HANA v Azure (velké instance) | Microsoft Docs
-description: Provedení upgradu operačního systému pro SAP HANA v Azure (velké instance)
+title: Upgrade operačního systému pro SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
+description: Proveďte upgrade operačního systému pro SAP HANA v Azure (velké instance)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,33 +14,42 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff9be3b074dde4a0335675663133a8df81ae62d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: d7d451f3831309b4755170915b35a23da8910510
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114588"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100750"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade operačního systému
-Tento dokument popisuje podrobnosti na upgrady operačního systému v rámci instancí velké HANA.
+Tento dokument popisuje podrobnosti pro upgrady operačního systému na velkých instancích HANA.
 
 >[!NOTE]
->Upgrade operačního systému je zodpovědností zákazníků, operace podporu společnosti Microsoft můžete navést na klíčové oblasti, které je sledujte během upgradu. Byste se měli obrátit dodavatele operačního systému před naplánování pro upgrade.
+>Upgrade operačního systému je zodpovědností zákazníků, podpora v nástroji Microsoft operations může vás provede hlavními k dávejte pozor při upgradu. Předtím, než máte v plánu pro účely upgradu, by se měli obrátit dodavatele operačního systému.
 
-V době HLI jednotky zřizování provozní tým Microsoft instalace operačního systému. V čase, mají povinnost zachovávat operačního systému (Příklad: opravy, ladění, upgrade atd.) na jednotce HLI.
+Při zřizování jednotek HLI provozní tým Microsoft instalace operačního systému. V čase, budete muset udržovat operačního systému (Příklad: Opravy chyb, ladění, upgrade atd.) na jednotce HLI.
 
-Před hlavní změny v operačním systému (například Upgrade SP1 na SP2), obraťte se na tým Microsoft Operations otevřením lístku podpory prostudovat.
+Předtím, než hlavní změny v operačním systému (například Upgrade SP1 na SP2), musí kontaktovat tým Microsoft Operations tak, že otevřete lístek podpory poradit.
+
+Uveďte prosím v lístku:
+
+* HLI ID předplatného.
+* Název vašeho serveru.
+* Úroveň oprav, které máte v úmyslu použít.
+* Datum, plánujete tuto změnu. 
+
+Doporučujeme by, že otevřete tento lístek alespoň týden před datem žádoucí upgradu z důvodu existence provozního týmu, kontrole, jestli se upgrade firmwaru, bude nutné v okně serveru.
 
 
-Na matici podpory různých verzí SAP HANA s různými verzemi systému Linux, najdete v části [2235581 # Poznámka SAP](https://launchpad.support.sap.com/#/notes/2235581).
+Matice podpory různých verzí SAP HANA s různými verzemi systému Linux, najdete v části [2235581 # Poznámka SAP](https://launchpad.support.sap.com/#/notes/2235581).
 
 
 ## <a name="known-issues"></a>Známé problémy
 
-Následuje několik běžných známé problémy v během upgradu:
-- U třídy SKU typu II SKU odeberou se software foundation softwaru (SFS) po upgradu operačního systému. Po upgradu operačního systému, je třeba přeinstalovat SFS kompatibilní.
-- Ovladače karty Ethernet (ENIC a FNIC) vrátit zpět na starší verze. Po dokončení upgradu znovu nainstalujte kompatibilní verzi ovladače.
+Tady jsou známo několik běžných problémů při upgradu:
+- Ve třídě SKU typu II skladovou Položku bude odebrán software foundation softwaru (SFS), po upgradu operačního systému. Po upgradu operačního systému, je třeba přeinstalovat SFS kompatibilní.
+- Ethernet ovladače karty (ENIC a FNIC) vrátit zpátky na starší verzi. Po upgradu je třeba přeinstalovat kompatibilní verzi ovladače.
 
 ## <a name="next-steps"></a>Další postup
-- Odkazovat [zálohování a obnovení](hana-overview-high-availability-disaster-recovery.md) pro operační systém zálohování – třída typu I SKU.
-- Odkazovat [zálohování operačního systému pro typ II SKU](os-backup-type-ii-skus.md) pro třídu typu II SKU.
+- Přečtěte si [zálohování a obnovení](hana-overview-high-availability-disaster-recovery.md) pro operační systém zálohování třídy typu I SKU.
+- Přečtěte si [zálohování operačního systému pro SKU typu II](os-backup-type-ii-skus.md) pro SKU typu II třídu.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: 7c35961894cbc8fb33f15b36910021f8ad38fac8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3d97f84ba7809ba54fe7a5670fc1602f1ed6e180
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976388"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100863"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
@@ -185,6 +185,6 @@ Tento scénář je příklad toho, jak přečíst záznamy v protokolů toku NSG
 
 ## <a name="next-steps"></a>Další postup
 
-Navštivte [vizualizace protokolů toku NSG sledovací proces sítě Azure s využitím opensourcových nástrojů](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) Další informace o dalších způsobech k zobrazení protokolů toku NSG.
+Navštivte [pomocí řešení Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [použití Grafana](network-watcher-nsg-grafana.md), a [použití Graylogu](network-watcher-nsg-graylog.md) získat další informace o způsoby, jak zobrazit protokoly toků NSG. Otevřít zdroj funkce Azure Functions přístup, který přímo využívající objekty BLOB a generování do různých log analytics příjemci lze nalézt zde: [Konektor protokolů toku NSG sledovací proces sítě Azure](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
 Další informace o objektech BLOB storage najdete tady: [Vazby služby Azure Functions Blob storage](../azure-functions/functions-bindings-storage-blob.md)

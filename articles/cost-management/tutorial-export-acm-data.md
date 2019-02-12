@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 5f979f562ee871e7ae5f48de5bc53405cb3d1116
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a7c503fba534b72323472fa58b14188bc412003c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766400"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100682"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaná data
 
@@ -71,7 +71,7 @@ Existují tři typy možností:
 
 **Denní export náklady za měsíc k datu** – počáteční export se spustí okamžitě. Následující export spustit následující den ve stejnou dobu jako počáteční export. Nejnovější data se shromažďuje od předchozí denní exporty.
 
-**Týdenní náklady za posledních sedm dní** – počáteční export se spustí okamžitě. Spusťte následující export dne v týdnu a ve stejnou dobu jako počáteční export. Náklady jsou za posledních sedm dní.
+**Týdenní export nákladů za posledních 7 dní** – počáteční export se spustí okamžitě. Spusťte následující export dne v týdnu a ve stejnou dobu jako počáteční export. Náklady jsou za posledních sedm dní.
 
 **Vlastní** – umožňuje naplánovat týdenní a měsíční exportuje s možnostmi pro týden k datu a měsíc k datu. *Počáteční export se spustí okamžitě.*
 

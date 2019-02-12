@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 009fbd3b86518758e9654fab547bab99bec369de
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 904c96d71194a097f2750ad2c1076b30b80f3745
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105198"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100223"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Postup škálování Azure mezipaměti Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti je možné škálovat velikost a cenovou úroveň mezipaměti, pokud se změní požadavky aplikace. Tento článek popisuje, jak se dá škálovat mezipaměť pomocí webu Azure portal a nástrojů, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
@@ -69,9 +69,12 @@ Kromě škálování vaše instance mezipaměti na webu Azure Portal, můžete �
 * [Škálování pomocí MAML](#scale-using-maml)
 
 ### <a name="scale-using-powershell"></a>Škálování pomocí Powershellu
-Mezipaměť Azure pro instance Redis pomocí prostředí PowerShell můžete škálovat s použitím [Set-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/set-azurermrediscache?view=azurermps-6.6.0) rutiny při `Size`, `Sku`, nebo `ShardCount` jsou upraveny vlastnosti Description. Následující příklad ukazuje, jak na škálování mezipaměti s názvem `myCache` 2,5 GB mezipaměti. 
 
-    Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Mezipaměť Azure pro instance Redis pomocí prostředí PowerShell můžete škálovat s použitím [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) rutiny při `Size`, `Sku`, nebo `ShardCount` jsou upraveny vlastnosti Description. Následující příklad ukazuje, jak na škálování mezipaměti s názvem `myCache` 2,5 GB mezipaměti. 
+
+    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
 Další informace o škálování s využitím Powershellu najdete v tématu [škálování pro Redis pomocí prostředí Powershell Azure Cache](cache-howto-manage-redis-cache-powershell.md#scale).
 

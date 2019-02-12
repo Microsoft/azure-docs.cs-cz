@@ -11,22 +11,58 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
-ms.reviewer: wfayed
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.reviewer: justini
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729930"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099288"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Použití aktualizací ve službě Azure Stack
 
 *Platí pro: Integrované systémy Azure Stack*
 
-Můžete použít **aktualizovat** dlaždici v portálu pro správu použít Microsoft nebo výrobce OEM balíčky aktualizací pro Azure Stack. Musíte stáhnout balíček aktualizace, importovat soubory balíčku do služby Azure Stack a potom nainstalujte balíček aktualizace.
+Můžete použít **aktualizovat** dlaždici v portálu pro správu použít Microsoft nebo výrobce OEM balíčky aktualizací pro Azure Stack.
+
+Pokud používáte verzi integrovaných systémech 1807 nebo starší, musíte stáhnout balíček aktualizace, importovat soubory balíčku do služby Azure Stack a potom instalaci balíčku aktualizace. Pokyny najdete v tématu [aktualizace Azure Stack, stáhněte si balíček](#update-azure-stack-by-downloading-the-package)
+
+Upgradujte tyto pokyny práce s integrované systémy Azure Stack. Pokud používáte systém Azure Stack Development, musíte stáhnout instalační balíček pro aktuální verzi. Pokyny najdete v tématu [instalace sady Azure Stack Development Kit](.\asdk\asdk-install.md)
+
+## <a name="update-azure-stack"></a>Aktualizace služby Azure Stack
+
+### <a name="select-and-apply-an-update-package"></a>Výběr a použití balíčku aktualizace
+
+1. Otevřete na portálu pro správu.
+
+2. Vyberte **řídicí panel**. Vyberte **aktualizace** dlaždici.
+
+    ![Azure je dostupná aktualizace zásobníku](media/azure-stack-apply-updates/azure-stack-updates-1901-dashboard.png)
+
+3. Poznamenejte si aktuální verzi služby Azure Stack. Můžete aktualizovat na novou plnou verzi. Například pokud používáte Azure Stack 1811 další vydané verze je 1901.
+
+    ![Použít aktualizace služby Azure Stack](media/azure-stack-apply-updates/azure-stack-updates-1901-updateavailable.png)
+
+4. V seznamu aktualizací vyberte následující dostupnou verzi. Můžete vybrat **zobrazení** ve vydané verzi sloupec Poznámky k otevření tématu poznámky k vydání verze pro, pokud chcete zkontrolovat změny verze.
+
+5. Vyberte aktualizaci. Aktualizace se spustí.
+
+### <a name="review-update-history"></a>Kontrola historie aktualizace
+
+1. Otevřete na portálu pro správu.
+
+2. Vyberte **řídicí panel**. Vyberte **aktualizace** dlaždici.
+
+3. Vyberte **aktualizace historie**.
+
+![Historie aktualizace služby Azure Stack](media/azure-stack-apply-updates/azure-stack-update-history.PNG)
+
+## <a name="update-azure-stack-by-downloading-the-package"></a>Stažení balíčku aktualizace služby Azure Stack
+
+Pokud používáte verzi integrovaných systémech 1807 nebo starší, musíte stáhnout balíček aktualizace, importovat soubory balíčku do služby Azure Stack a potom instalaci balíčku aktualizace.
 
 ## <a name="download-the-update-package"></a>Stáhněte si balíček aktualizací
 

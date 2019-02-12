@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d86cbcf4f5c5029f215cd6c327e05fb93f7144
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c31711b5b8972187449807fd2cc6ea750208e5d2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453889"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Kurz: Integrace Azure Active Directory s Expensify
 
@@ -104,9 +104,12 @@ Ke konfiguraci Azure AD jednotné přihlašování s Expensify, proveďte násle
 
     ![Expensify domény a adresy URL jednotné přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL: `https://www.expensify.com/authentication/saml/login`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.expensify.com/authentication/saml/loginCallback?domain=[yourdomain]`
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL: `https://www.expensify.com`
+
+    > [!NOTE]
+    > Přihlašovací adresa URL není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresu URL. Kontakt [tým podpory Expensify klienta](mailto:help@expensify.com) tuto výhodu získáte.
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -125,18 +128,18 @@ Ke konfiguraci Azure AD jednotné přihlašování s Expensify, proveďte násle
 ### <a name="configure-expensify-single-sign-on"></a>Konfigurace Expensify jednotného přihlašování
 
 Pokud chcete povolit jednotné přihlašování v Expensify, je nejprve potřeba povolit **ovládací prvek domény** v aplikaci. Ovládací prvek domény můžete povolit v aplikaci pomocí kroků uvedených v tomto [tady](https://help.expensify.com/domain-control). Potřebujete další podporu, pracovat s [tým podpory Expensify klienta](mailto:help@expensify.com). Jakmile budete mít povolený nástroj řízení domény, postupujte podle těchto kroků:
-   
+
 ![Konfigurace jednotného přihlašování](./media/expensify-tutorial/tutorial_expensify_51.png)
-    
+
 1. Přihlaste se k aplikaci Expensify.
-    
+
 2. Na levém panelu klikněte na tlačítko **nastavení** a přejděte do **SAML**.
-    
+
 3. Přepnout **SAML přihlášení** možnost jako **povoleno**.
-    
+
 4. Otevřete stažený federační Metadata ze služby Azure AD v programu Poznámkový blok, zkopírujte obsah a vložte jej do **metadat zprostředkovatele Identity** textového pole.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -191,7 +194,7 @@ V této části je povolit Britta Simon k udělení přístupu k Expensify použ
 
 V této části vytvoříte uživatele v Expensify jako Britta Simon. Práce s [tým podpory Expensify klienta](mailto:help@expensify.com) přidat uživatele na platformě Expensify.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -204,4 +207,3 @@ Po kliknutí na dlaždici Expensify na přístupovém panelu, můžete by měl b
 - [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

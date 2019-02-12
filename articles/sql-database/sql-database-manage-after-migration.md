@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751935"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099730"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -310,7 +310,7 @@ SQL Database používá některé inteligentní techniky, které umožňují zpr
 Máte několik způsobů, jak toho dosáhnout:
 
 - **[Synchronizace dat](sql-database-sync-data.md)**  – tato funkce umožňuje synchronizovat data obousměrně mezi několika místních databází SQL serveru a SQL Database. K synchronizaci s místní databází SQL serveru, musíte nainstalovat a nakonfigurovat agenta synchronizace na místním počítači a otevřít odchozí port TCP 1433.
-- **[Transakce replikace](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – pomocí transakční replikace můžete synchronizovat data z místního ke službě Azure SQL DB místní vydavatele a odběratele se služby Azure SQL DB. Nyní je podporována pouze tento instalační program. Další informace o tom, jak migrovat data z místních Azure SQL s minimálními výpadky najdete v tématu: [Použití transakční replikace](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Transakce replikace](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – pomocí transakční replikace můžete synchronizovat data z místního ke službě Azure SQL DB místní vydavatele a odběratele se služby Azure SQL DB. Nyní je podporována pouze tento instalační program. Další informace o tom, jak migrovat data z místních Azure SQL s minimálními výpadky najdete v tématu: [Použití transakční replikace](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Další postup
 

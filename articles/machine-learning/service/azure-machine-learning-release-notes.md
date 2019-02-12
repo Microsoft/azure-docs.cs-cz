@@ -11,18 +11,40 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564336"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100172"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný popis jednotlivých sadách SDK navštivte referenční dokumenty pro:
 + Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-11"></a>2019-02-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Azure Machine Learning sady SDK pro Python v1.0.15
+
++ **Nové funkce**
+  + Azure Machine Learning kanály přidali AzureBatchStep ([Poznámkový blok](https://aka.ms/pl-azbatch)), HyperDriveStep ([Poznámkový blok](https://aka.ms/pl-hyperdrive)) a podle času plánování fuctionality ([Poznámkový blok](https://aka.ms/pl-schedule)).
+  +  Aktualizovat DataTranferStep pro práci s Azure SQL Server a Azure database for PostgreSQL ([Poznámkový blok](https://aka.ms/pl-data-trans)).
+
++ **Změny**
+  + Zastaralé `PublishedPipeline.get_published_pipeline` nahrazený `PublishedPipeline.get`.
+  + Zastaralé `Schedule.get_schedule` nahrazený `Schedule.get`.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Sada SDK v1.0.12 pro přípravu dat Azure Machine Learning
+
++ **Nové funkce**
+  + Teď podporuje čtení ze služby Azure SQL database s využitím úložiště dat pro přípravu dat.
+ 
++ **Změny**
+  + Výkon paměti určitých operací velkých objemů dat je výrazně vyšší.
+  + `read_pandas_dataframe()` nyní vyžaduje `temp_folder` zadání.
+  + `name` Vlastnost `ColumnProfile` bylo zastaralé - použít `column_name` místo.
 
 ## <a name="2019-01-28"></a>2019-01-28
 

@@ -14,15 +14,17 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 0f86bd807bf7bf0d00ad659f86b6e1170f31074c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 72e27b7098d9891dc54b31c34e2211362e7c9f50
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019362"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099968"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Správa mezipaměti Azure pro Redis
 Toto téma popisuje, jak provádět úlohy správy, například [restartování](#reboot) a [plánování aktualizace](#schedule-updates) pro mezipaměť Azure pro instance Redis.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="reboot"></a>Restartování
 **Restartování** okno umožňuje restartovat jeden nebo více uzly mezipaměti. Tato možnost restartování umožňuje testovat aplikaci pro odolnost proti chybám, pokud dojde k selhání uzlu mezipaměti.
@@ -92,7 +94,7 @@ Restart je k dispozici pro všechny cenové úrovně.
 
 Zadejte časové období údržby, zkontrolujte požadované dnů a zadat počáteční hodina časového období údržby pro každý den a klikněte na tlačítko **OK**. Všimněte si, že časového období údržby se ve standardu UTC. 
 
-Výchozí a minimální období údržby pro aktualizace je pět hodin. Tato hodnota není konfigurovatelné z webu Azure portal, můžete ji ale konfigurovat pomocí prostředí PowerShell `MaintenanceWindow` parametr [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) rutiny. Další informace najdete v tématu [můžete spravovat plánované aktualizace pomocí prostředí PowerShell, CLI nebo jiné nástroje pro správu?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+Výchozí a minimální období údržby pro aktualizace je pět hodin. Tato hodnota není konfigurovatelné z webu Azure portal, můžete ji ale konfigurovat pomocí prostředí PowerShell `MaintenanceWindow` parametr [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) rutiny. Další informace najdete v tématu [můžete spravovat plánované aktualizace pomocí prostředí PowerShell, CLI nebo jiné nástroje pro správu?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
 
 
 ## <a name="schedule-updates-faq"></a>Naplánovat aktualizace – nejčastější dotazy
@@ -110,10 +112,10 @@ Pouze Redis server provedeny aktualizace během plánované časové období úd
 ### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>Je možné spravované plánované aktualizace pomocí prostředí PowerShell, CLI nebo jiné nástroje pro správu?
 Ano, můžete spravovat vaše naplánované aktualizace pomocí následujících rutin Powershellu:
 
-* [Get-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry)
-* [Remove-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule)
+* [Get-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/get-azrediscachepatchschedule)
+* [New-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
+* [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
+* [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>Cenových úrovní pomocí funkce aktualizace plánu?
 **Naplánovat aktualizace** funkce dostupná jenom v cenové úrovně premium.

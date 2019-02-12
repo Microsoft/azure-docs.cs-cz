@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: d0176cde824346c80fff097b87c107b7052e822f
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3588496a2f41af0af273497ea3952d138385f0af
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959557"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100852"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD
 
@@ -59,7 +59,7 @@ Ano. Pokud už používáte tato instance aplikace pro jednotné přihlašován�
 1. Přihlaste se k webu Azure portal na https://portal.azure.com.
 2. V **Azure Active Directory > podnikové aplikace** části na webu Azure Portal, vyhledejte a vyberte svou stávající aplikaci SCIM.
 3.  V **vlastnosti** část vaší existující aplikace SCIM kopírování **ID objektu**.
-4.  V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/en-us/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
+4.  V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
 5. V Graph Exploreru spusťte následující příkaz k vyhledání ID zřizování úlohy. Nahraďte ID objektu zabezpečení (ID objektu) zkopírovanými z třetí krok služba "[object-id]".
  
  `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -99,7 +99,7 @@ Ano. Pokud měl programového aplikace do staré chování, které existovaly p�
 1.  Přihlaste se k webu Azure portal na https://portal.azure.com.
 2. v **Azure Active Directory > podnikové aplikace > Vytvoření aplikace** části na webu Azure Portal vytvořte novou **mimo galerii** aplikace.
 3.  V **vlastnosti** části nové vlastní aplikace, kopie **ID objektu**.
-4.  V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/en-us/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
+4.  V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
 5. V Graph Exploreru spusťte následující příkaz k inicializaci konfigurace zřizování pro vaši aplikaci.
 Nahraďte ID objektu zabezpečení (ID objektu) zkopírovanými z třetí krok služba "[object-id]".
 

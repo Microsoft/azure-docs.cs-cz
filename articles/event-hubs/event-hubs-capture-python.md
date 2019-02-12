@@ -15,14 +15,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 72efe156920bb78631ea71a0f47f7f5fe19c7e23
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 639bc4ff9c69bca3d5f8bca6967bfc3e8e6a13d4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133651"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100539"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture návod: Python
+# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture názorný postup: Python
 
 Sběr dat je funkce služby Azure Event Hubs. Můžete ho automaticky doručovat streamovaná data ve službě event hub k účtu úložiště objektů Blob v Azure podle vašeho výběru. Tato funkce usnadňuje provádění dávkovému zpracování na streamovaných datech v reálném čase. Tento článek popisuje, jak používat Event Hubs Capture pomocí Pythonu. Další informace o Event Hubs Capture najdete v tématu [přehledovém článku](event-hubs-capture-overview.md).
 
@@ -41,7 +41,7 @@ Tento příklad používá [sady Azure Python SDK](https://azure.microsoft.com/d
 - Python 2.7.x
 - Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Aktivní [Event Hubs oboru názvů a Centrum událostí](event-hubs-create.md). 
-- Povolit **zachycení** funkce pro Centrum událostí podle pokynů z: [povolení funkce Event Hubs Capture pomocí webu Azure portal](event-hubs-capture-enable-through-portal.md)
+- Povolit **zachycení** funkce pro Centrum událostí podle pokynů od: [Povolení funkce Event Hubs Capture pomocí webu Azure portal](event-hubs-capture-enable-through-portal.md)
 
 ## <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu úložiště objektů Blob v Azure
 1. Přihlaste se na web [Azure Portal][Azure portal].
@@ -62,7 +62,7 @@ Tento příklad používá [sady Azure Python SDK](https://azure.microsoft.com/d
    import datetime
    import random
    import json
-   from azure.servicebus import ServiceBusService
+   from azure.servicebus.control_client import ServiceBusService
    
    sbs = ServiceBusService(service_namespace='INSERT YOUR NAMESPACE NAME', shared_access_key_name='RootManageSharedAccessKey', shared_access_key_value='INSERT YOUR KEY')
    devices = []

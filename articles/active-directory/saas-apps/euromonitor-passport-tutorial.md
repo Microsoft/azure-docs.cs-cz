@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bdc3b88109a8d8c46f0a6a09297b0ca197165
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 95d61ac5fc1f7bcafb09107034c7b1588003f8cc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479181"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>Kurz: Integrace Azure Active Directory s Euromonitor Passport
 
@@ -66,7 +66,7 @@ Ke konfiguraci integrace Euromonitor Passport do služby Azure AD, budete muset 
 
 4. Do vyhledávacího pole zadejte **Euromonitor Passport**vyberte **Euromonitor Passport** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Euromonitor Passport v seznamu výsledků](common/search-new-app.png)
+    ![Euromonitor Passport v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -104,17 +104,17 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí účtu služby Euromo
 
     ![Euromonitor Passport domény a adresy URL jednotného přihlašování – informace](common/preintegrated.png)
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu, potřebujete získat přihlašovací adresa URL formuláře [tým podpory služby Euromonitor Passport](mailto:passport.support@euromonitor.com). Po získání adresy URL přihlašování od týmu podporu Euromonitor Passport, klikněte na tlačítko **nastavit další adresy URL** a postupujte následovně:
 
     ![Euromonitor Passport domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://portal.euromonitor.com`
+    Do textového pole Přihlašovací adresa URL vložte načtenou hodnotou přihlašovací adresa URL od týmu podporu Euromonitor Passport.
 
 6. Euromonitor Passport aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
 
     ![image](./media/euromonitor-passport-tutorial/attribute1.png)
 
-7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
+7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
     | Název | Zdrojový atribut|
     | ---------------| --------- |

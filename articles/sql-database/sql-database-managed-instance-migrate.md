@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 8127abf19c31b8a50079f416e73c98efebfd0983
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.date: 02/11/2019
+ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999415"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098353"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do služby Azure SQL Database managed instance
 
-V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo novější verze instance [Azure SQL Database managed instance](sql-database-managed-instance.md).
+V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo novější verze instance [Azure SQL Database managed instance](sql-database-managed-instance.md). Informace o migraci na elastický fond nebo izolovanou databázi, naleznete v tématu [migrovat jednu, nebo součástí fondu databáze](sql-database-cloud-migrate.md). Informace o migraci o migraci z jiných platforem, naleznete v tématu [Průvodce migrací databází Azure](https://datamigration.microsoft.com/).
 
 Na vysoké úrovni procesu migrace databáze vypadá takto:
 
@@ -34,7 +34,7 @@ Na vysoké úrovni procesu migrace databáze vypadá takto:
 - [Monitorování aplikací](#monitor-applications)
 
 > [!NOTE]
-> Migrace jednotlivých databází do izolované databáze nebo elastického fondu, naleznete v tématu [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-cloud-migrate.md).
+> Migrace jednotlivých databází do izolované databáze nebo elastického fondu, naleznete v tématu [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-single-database-migrate.md).
 
 ## <a name="assess-managed-instance-compatibility"></a>Vyhodnocení kompatibility spravované instance
 

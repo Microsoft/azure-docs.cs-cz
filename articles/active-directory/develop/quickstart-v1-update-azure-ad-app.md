@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 49aa4751ce5e9b5addfc1b1d131d5287cce77154
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819089"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098608"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Rychlý start: Aktualizace aplikace v Azure Active Directory
 
@@ -144,7 +144,7 @@ Další informace o obecných konceptech manifestu aplikace získáte v [manifes
 
 Jak už jsme zmiňovali dříve, kromě zveřejnění a zpřístupnění rozhraní API pro vlastní aplikace můžete klientské aplikace zaregistrovat i pro přístup k rozhraním API zveřejněným prostředky Microsoftu. Rozhraní API pro Microsoft Graph, které se v seznamu prostředků či rozhraní API na webu Azure Portal označuje jako „Microsoft Graph“, je k dispozici všem aplikacím, které jsou zaregistrované pomocí Azure AD. Pokud registrujete klientskou aplikaci v tenantovi, který obsahuje účty s předplatným Office 365, můžete získat přístup i k oborům zveřejněným různými prostředky Office 365.
 
-Úplné informace o oborech zveřejněných rozhraním API pro Microsoft Graph najdete v článku s [referenčními informacemi k oprávněním Microsoft Graphu](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference).
+Úplné informace o oborech zveřejněných rozhraním API pro Microsoft Graph najdete v článku s [referenčními informacemi k oprávněním Microsoft Graphu](https://docs.microsoft.com/graph/permissions-reference).
 
 > [!NOTE]
 > Pokud nativní klientské aplikace používají oprávnění pro „přístup k adresáři organizace“, mohou vzhledem k aktuálnímu omezení volat pouze rozhraní Azure AD Graph API. Toto omezení neplatí pro webové aplikace.

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/03/2018
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f58bb8a1a3a0f0593513570355b8d3ba46816b9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9a399b78ed4afa0391f8e1479a22cfb2a2fd8ffd
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825829"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Kurz: Integrace Azure Active Directory s Zendesku.
 
@@ -108,7 +108,12 @@ Ke konfiguraci Azure AD jednotné přihlašování s Zendesku, proveďte násled
 
     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.zendesk.com`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `<subdomain>.zendesk.com`
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    | |
+    |-|-|
+    | `<subdomain>.zendesk.com` |
+    | `https://<subdomain>.zendesk.com` |
+    | |
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Zendesku klienta](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
@@ -162,7 +167,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Zendesku, proveďte násled
 
 11. Po přidání rozšíření do prohlížeče, klikněte na **nastavení Zendesku** nasměruje na aplikace platformy Zendesk. Odtud zadejte přihlašovací údaje správce pro přihlášení do Zendesku. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat části **konfigurace Zendesku Single Sign-On**.
 
-     ![image](./media/zendesk-tutorial/d2_saml.png)
+    ![image](./media/zendesk-tutorial/d2_saml.png)
 
 ### <a name="configure-zendesk-single-sign-on"></a>Konfigurace přihlašování jedním Zendesku.
 
@@ -190,7 +195,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Zendesku, proveďte násled
 
     f. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -278,5 +283,4 @@ Po kliknutí na dlaždici Zendesku na přístupovém panelu, vám by měl být a
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurace zřizování uživatelů](zendesk-provisioning-tutorial.md) 
-
+- [Konfigurace zřizování uživatelů](zendesk-provisioning-tutorial.md)

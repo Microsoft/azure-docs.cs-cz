@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46ea73e0a0c2dd14dcafcaa332c7feb1c70445df
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602643"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098881"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rychlý start: Zkuste cloudové řešení ke správě mých průmyslová zařízení IoT
 
@@ -42,7 +42,7 @@ Na dlaždici **Vytvořit řešení připojené továrny** zadejte jedinečný **
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém zprovoznění používáme možnosti **Visual Studio Enterprise** a **Východní USA**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
-Kliknutím na **Vytvořit řešení** zahájíte nasazování. Dokončení tohoto procesu trvá minimálně pět minut:
+Klikněte na tlačítko **vytvořit** k zahájení nasazení. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení připojené továrny](./media/quickstart-connected-factory-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení p
 
 ![Výběr nového řešení](./media/quickstart-connected-factory-deploy/choosenew.png)
 
-Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení připojené továrny. Zvolte **Řídicí panel řešení** a zobrazte akcelerátor řešení připojené továrny:
+Zobrazí se informace o akcelerátor řešení připojená továrna na stránce, které se zobrazí. Zvolte **přejít na akcelerátor řešení** zobrazíte akcelerátor řešení připojená továrna:
 
 ![Panel řešení](./media/quickstart-connected-factory-deploy/solutionpanel.png)
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8d4290f1411749e2d8d3d27fbd792ceeeea47ef7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726557"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100485"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Obnovení aplikace v Azure ze snímku
 V tomto článku se dozvíte, jak obnovit aplikaci v [služby Azure App Service](../app-service/overview.md) ze snímku. Aplikaci můžete obnovit do předchozího stavu, na základě jedné z vaší aplikace snímky. Není potřeba povolit snímky zálohování, platformu automaticky uloží snímek pro účely obnovení dat. všechny aplikace.
@@ -38,6 +38,7 @@ Obnovení ze snímků je k dispozici pro aplikace běžící **Premium** vrstvy 
 - App Service přestane cílové aplikace nebo cílovém slotu během operace obnovení.
 - App Service zajišťuje tři měsíce za snímky pro účely obnovení dat. platformy.
 - Snímky lze obnovit pouze za posledních 30 dní.
+- Aplikace služby spuštěné v App Service Environment nepodporují snímky.
  
 
 ## <a name="restore-an-app-from-a-snapshot"></a>Obnovení aplikace ze snímku

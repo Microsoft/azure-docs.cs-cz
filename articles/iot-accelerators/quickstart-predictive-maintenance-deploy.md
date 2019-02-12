@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fdb481961680d5f84170a25c7a76bffa8423e0cc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604333"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097163"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Zkuste cloudové řešení pro spuštění analýzy prediktivní údržby na připojené zařízení
 
@@ -42,7 +42,7 @@ Na stránce **vytvoření řešení prediktivní údržby** zadejte jedinečný 
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém zprovoznění používáme možnosti **Visual Studio Enterprise** a **Východní USA**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
-Kliknutím na **Vytvořit řešení** zahájíte nasazování. Dokončení tohoto procesu trvá minimálně pět minut:
+Klikněte na tlačítko **vytvořit** spusťte nasazení. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení prediktivní údržby](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -50,9 +50,13 @@ Kliknutím na **Vytvořit řešení** zahájíte nasazování. Dokončení tohot
 
 Po dokončení nasazení předplatného Azure se na dlaždici řešení zobrazí zelené zaškrtnutí a **Připraveno**. Nyní se můžete přihlásit k řídicímu panelu akcelerátoru řešení prediktivní údržby.
 
-Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení prediktivní údržby. Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení. Zvolte **Řídicí panel řešení** a zobrazte akcelerátor řešení prediktivní údržby:
+Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení prediktivní údržby.
 
-![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solutionpanel.png)
+![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solution.png)
+
+ Informace o akcelerátor řešení můžete zobrazit na stránce, které se zobrazí. Zvolte **přejít na akcelerátor řešení** zobrazíte akcelerátor řešení prediktivní údržby:
+
+![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
 Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohlížeči se zobrazí řídicí panel řešení prediktivní údržby:
 

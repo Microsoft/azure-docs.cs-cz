@@ -3,6 +3,7 @@ title: SQL Server na virtuálním počítači Azure zpráva k vydání verze | D
 description: Další informace o nové funkce a vylepšení systému SQL Server na Virtuálním počítači Azure
 services: virtual-machines-windows
 author: MashaMSFT
+ms.author: mathoma
 manager: craigg
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -12,17 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/5/2019
-ms.author: mathoma
-ms.openlocfilehash: e6640725c1c2de4676cbaad2698f77887d4f0547
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 1be413e2c09033268a13d1eb954c8f0922911ba2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004685"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098557"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server na virtuálním počítači Azure zpráva k vydání verze
 
-Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systému SQL Server. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [systému SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
+Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systému SQL Server. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [systému SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/).  V článku jsou uvedeny také důležité aktualizace obsahu, které nejsou direclty související s vydáním, ale publikovaná ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
 
 ## <a name="december-2018"></a>Prosinec 2018
 

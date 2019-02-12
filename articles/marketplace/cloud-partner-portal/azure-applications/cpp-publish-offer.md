@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177028"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098217"
 ---
 # <a name="publish-azure-application-offer"></a>Publikovat nabídku aplikací Azure
 
@@ -46,7 +46,6 @@ Následující tabulka uvádí a popisuje jednotlivé kroky pro publikování a 
 | Živé                           | < 1 den | Nabídka je uvolněna, replikovaná do oblastí, zadaný a veřejně k dispozici. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
 
- 
 Můžete monitorovat v procesu publikování **stav** kartu pro vaši nabídku v portál partnerů cloudu.
 
 ![Stav karty pro nabídky aplikace Azure](./media/offer-status-tab.png)
@@ -54,38 +53,13 @@ Můžete monitorovat v procesu publikování **stav** kartu pro vaši nabídku v
 Po dokončení procesu publikování vaší nabídky nebude uvedené [kategorie aplikace Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
 
 
-
 ## <a name="errors-and-review-feedback"></a>Chyby a zpětné vazby z revize
 
-Kromě zobrazení Stav publikování vaší nabídky **stav** kartu také zobrazí chybové zprávy a zpětnou vazbu od **Microsoft revize** kroku.  Kontrola problémů obvykle jsou odkazovány jako žádosti o přijetí změn (žádost o přijetí změn).  Každá žádost o přijetí změn je propojen online Visual Studio Team Services (VSTS, přejmenován na [Azure DevOps](https://azure.microsoft.com/services/devops/)) položky, který obsahuje podrobnosti o problému.  Následující obrázek ukazuje příklad odkazu na revizi žádosti o přijetí změn.  Pro složitější situace revize a podporu týmy mohou e-mailem. 
-
-![Stav karty zobrazení zpětné vazby z revize](./media/status-tab-ms-review.png)
-
-Předtím, než nabídka pokračuje přes proces publikování, je třeba vyřešit všechny oznámené problémy.  Následující diagram znázorňuje, jak tento proces zpětná vazba se vztahuje k procesu publikování.
-
-![Publikování kroky VSTS odeslání zpětné vazby](./media/pub-flow-vsts-access.png)
-
-
-### <a name="vsts-access"></a>Přístup k VSTS
-
-Chcete-li zobrazit tyto položky VSTS v zpětné vazby z revize, musí být vydavatelé udělena příslušná oprávnění.  Jinak se zobrazí nové vydavatelé `401 - Not Authorized` stránky odpovědi.  Požádat o přístup k systému nabídka revize VSTS, proveďte následující kroky:
-
-1. Shromážděte následující informace:
-    - Název vydavatele a ID
-    - Nabízí typ (aplikace Azure), název a ID skladové položky
-    - Žádost o přijetí změn propojit, například: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  Tuto adresu URL můžete získat z zprávy oznámení nebo adresu skončí odpovědí 401 stránky.
-    - E-mailové adresy osob, od publikování organizace, které chcete udělit přístup.  Ty by měly zahrnovat vlastníka adresy, které jste zadali při registraci jako vydavatel na portál partnerů cloudu.
-2. Vytvořte incident podpory.  V záhlaví na portál Cloud Partner, vyberte **pomáhají** tlačítko a pak zvolte **podporu** z nabídky.  Výchozí webové prohlížeče by měl spustit a přejděte na stránku Microsoft nové podpory incidentů.  (Může mít pro první přihlášení.)
-3. Zadejte **typ problému** jako **marketplace připojování** a **kategorie** jako **potíže při přístupu k**a pak vyberte **Start žádost o**.
-
-    ![Kategorie lístku podpory](./media/support-incident1.png)
-
-4. V **krok 1 z 2** stránky, zadejte svoje kontaktní informace a vyberte **pokračovat**.
-5. V **krok 2 ze 2** stránky, zadejte název incidentu (například `Request VSTS access`) a zadejte informace shromážděné v prvním kroku (viz výše).  Přečtěte si a přijměte smlouvu a pak vyberte **odeslat**.
-
-Pokud vytvářet incidenty byl úspěšný, zobrazí se stránka s potvrzením.  Uložte informace o potvrzení pro vaši informaci.  Podpora Microsoftu by měl odpovídat vaše žádost o přístup do několika pracovních dnů.
+Kromě zobrazení Stav publikování vaší nabídky **stav** kartu také zobrazí chybové zprávy a zpětnou vazbu od všech publikování kroků, kdy došlo k problému.  Pokud tento problém je velmi důležité, pak tuto aplikaci publikovat se zruší.  Pak musíte opravit nahlášené problémy a opětovné publikování nabídky.  Protože **Microsoft revize** krok představuje rozsáhlý přehled vaší nabídky a její přidružené technické prostředky (hlavně šablony Azure Resource Manageru), problémy jsou obvykle uvedeny jako o přijetí změn odkazy žádostí o přijetí změn.  Vysvětlení, jak zobrazit a reagovat na tyto žádosti o přijetí změn, naleznete v tématu [zpětné vazby z revize zpracování](./cpp-handling-review-feedback.md).
 
 
 ## <a name="next-steps"></a>Další postup
 
-Po publikování aplikaci Azure můžete [aktualizace stávající nabídky](./cpp-update-existing-offer.md) tak, aby odrážely změny obchodní nebo technické požadavky. 
+Pokud jste narazili na chyby v jedné nebo více kroků, publikování, musíte je opravit a znovu publikovat vaši nabídku.  Pokud nedojde k kritické problémy v **Microsoft revize** kroku, je nutné [zpracování zpětné vazby z revize](./cpp-handling-review-feedback.md) díky přístupu do Microsoft zkontrolujte úložiště týmu Azure DevOps.
+
+Po úspěšném publikování aplikaci Azure můžete [aktualizace stávající nabídky](./cpp-update-existing-offer.md) tak, aby odrážely změny obchodní nebo technické požadavky. 

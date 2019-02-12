@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: wesmc
-ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 30288c338785c45b860b4b2b29a646662572e179
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106320"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100597"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak používat nástroj příkazového řádku Redis s mezipamětí Azure pro Redis
 
@@ -30,10 +30,12 @@ Pokud chcete spustit nástroj příkazového řádku na jiné platformě, mezipa
 
 ## <a name="gather-cache-access-information"></a>Shromážděte informace o přístupu k mezipaměti
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Můžete shromáždit informace potřebné pro přístup do mezipaměti ze tří metod:
 
 1. Pomocí Azure CLI [az redis list-keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
-2. Pomocí Azure Powershellu [Get AzureRmRedisCacheKey](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Get-AzureRmRedisCacheKey?view=azurermps-4.4.1)
+2. Pomocí Azure Powershellu [Get AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
 3. Pomocí webu Azure portal.
 
 V této části načtete klíče z portálu Azure portal.

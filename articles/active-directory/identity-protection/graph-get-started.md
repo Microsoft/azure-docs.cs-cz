@@ -17,20 +17,20 @@ ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 4ee2f0387ee3c56dda7cd1a89f5c808f55699856
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 47786ac687272cc2a88c3fa885fece9c858a3c2b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658619"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099067"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
 Microsoft Graph je Microsoft unified koncový bod rozhraní API a Domovská [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) rozhraní API. Existují tři rozhraní API, které poskytují informace o rizikových uživatelů a přihlášení. Prvního rozhraní API, **identityRiskEvents**, umožňuje dotazů Microsoft Graphu seznam [rizikových událostí](../reports-monitoring/concept-risk-events.md) a související informace. Druhé rozhraní API, **riskyUsers**, informace o uživatelích Identity Protection zjistilo, že rizik vám umožní dotazů Microsoft Graphu. Rozhraní API třetí **signIn**, umožňuje dotazů Microsoft Graphu informace o službě Azure AD přihlášení mají určité vlastnosti související s stav rizika, podrobnosti a úroveň. Tento článek vám pomůže začít s [připojení k Microsoft Graphu](#Connect-to-Microsoft-Graph) a [dotazování těchto rozhraní API](#Query-the-APIs). Důkladný úvod, úplnou dokumentaci a přístup ke Graph Exploreru, najdete v článku [webu Microsoft Graphu](https://graph.microsoft.io/) nebo konkrétní referenční dokumentaci pro tato rozhraní API:
 
-* [identityRiskEvents rozhraní API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/identityriskevent)
-* [riskyUsers rozhraní API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/riskyuser)
-* [signIn rozhraní API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin)
+* [identityRiskEvents rozhraní API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [riskyUsers rozhraní API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [signIn rozhraní API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
 
 
 ## <a name="connect-to-microsoft-graph"></a>Připojte se k Microsoft graphu
@@ -217,7 +217,7 @@ Stačí přidáte doména tenanta, ID klienta a tajný klíč.
 
 ## <a name="query-the-apis"></a>Dotaz rozhraní API
 
-Tyto tři API poskytují množství příležitostí k načtení informací o rizikových uživatelů a přihlášení ve vaší organizaci. Níže jsou uvedeny některé běžné případy použití pro tato rozhraní API a související ukázkové požadavky. Můžete spustit tyto dotazy pomocí ukázkového kódu nad nebo s použitím [Graph Exploreru](https://developer.microsoft.com/en-us/graph/graph-explorer).
+Tyto tři API poskytují množství příležitostí k načtení informací o rizikových uživatelů a přihlášení ve vaší organizaci. Níže jsou uvedeny některé běžné případy použití pro tato rozhraní API a související ukázkové požadavky. Můžete spustit tyto dotazy pomocí ukázkového kódu nad nebo s použitím [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer).
 
 ### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Získat události (identityRiskEvents rozhraní API) s vysokým rizikem a středním rizikem
 
@@ -251,7 +251,7 @@ Blahopřejeme, právě provedli první volání Microsoft graphu.
 Teď můžete zadávat dotazy identity rizikové události a používat data, ale podle potřeby.
 
 
-Další informace o tom, jak vytvářet aplikace využívající rozhraní Graph API a Microsoft Graph, podívejte se [dokumentaci](https://docs.microsoft.com/graph/overview) a mnohem více na [webu Microsoft Graphu](https://developer.microsoft.com/en-us/graph). 
+Další informace o tom, jak vytvářet aplikace využívající rozhraní Graph API a Microsoft Graph, podívejte se [dokumentaci](https://docs.microsoft.com/graph/overview) a mnohem více na [webu Microsoft Graphu](https://developer.microsoft.com/graph). 
 
 
 Související informace naleznete v tématu:

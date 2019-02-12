@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769317"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098098"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí služby Azure Machine Learning
 
@@ -82,6 +82,16 @@ Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nast
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
++ **Nasazení na pole Programmable Gate Array (FPGA)**
+
+  Při nasazování do FPGA, zadejte hodnoty pro parametry související s protokolem SSL, jak znázorňuje fragment kódu:
+
+    ```python
+    from azureml.contrib.brainwave import BrainwaveWebservice
+
+    deployment_config = BrainwaveWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem")
+    ```
+
 ## <a name="update-your-dns"></a>Aktualizujte svoji službu DNS
 
 V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou službu.
@@ -97,10 +107,6 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
   Aktualizace DNS na kartě "Konfigurace" z "Veřejné IP adresy" clusteru AKS, jak je znázorněno na obrázku. Veřejnou IP adresu najdete jako jeden z typů prostředků vytvořené v rámci skupiny prostředků, která obsahuje agentské uzly AKS a jiných síťových prostředků.
 
   ![Služba Azure Machine Learning: Zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
-
-+ **Pro FPGA**:
-
-Použití protokolu SSL se službami nasazenými do FPGA se momentálně nepodporuje.
 
 ## <a name="next-steps"></a>Další postup
 Naučte se:

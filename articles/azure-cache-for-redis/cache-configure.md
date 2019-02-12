@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c9158eebb876f5c3349528ffb7707629791421ce
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819837"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099934"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Postup konfigurace mezipaměti Azure Redis
 Toto téma popisuje dostupné konfigurace pro mezipaměť Azure pro instance Redis. Toto téma také popisuje výchozí konfigurace serveru Redis pro mezipaměť Azure pro instance Redis.
@@ -429,7 +429,7 @@ Novou mezipaměť Azure pro instance Redis jsou nakonfigurovány s následujíc�
 Další informace o databázích, naleznete v tématu [co jsou databáze Redis?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> `databases` Nastavení může být nakonfigurovaný jenom během vytváření mezipaměti a pouze pomocí prostředí PowerShell, CLI nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí Powershellu, najdete v článku [New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
+> `databases` Nastavení může být nakonfigurovaný jenom během vytváření mezipaměti a pouze pomocí prostředí PowerShell, CLI nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí Powershellu, najdete v článku [New-AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
 > 
 > 
 

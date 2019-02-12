@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332298"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097644"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod k protokolování toků pro skupiny zabezpečení sítě
 
@@ -287,5 +287,6 @@ Text, který následuje je příkladem protokolu toku. Jak je vidět, existují 
 ## <a name="next-steps"></a>Další postup
 
 - Informace o povolení protokolů toku, najdete v článku [protokolování toků NSG povolení](network-watcher-nsg-flow-logging-portal.md).
+- Další způsob čtení protokolů toku najdete v tématu [čtení protokolů toku NSG](network-watcher-read-nsg-flow-logs.md).
 - Další informace o protokolování NSG najdete v tématu [Log analytics pro skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - Pokud chcete zjistit, jestli provoz je povolený nebo zakázaný do nebo z virtuálního počítače, naleznete v tématu [Diagnostika potíží s filtrováním na provoz sítě virtuálního počítače](diagnose-vm-network-traffic-filtering-problem.md)

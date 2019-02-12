@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 45905b5180ac248394e52b1d03a034acc47e8dbc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.lastreviewed: 02/09/2019
+ms.openlocfilehash: 0865227a05d5cb25a44114fc053f61b8f70ffb94
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993584"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100087"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 

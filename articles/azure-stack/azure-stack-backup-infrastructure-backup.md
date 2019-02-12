@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 607356bb59550626c9fe5f71d4609b9c3e2b2fe0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 77493782802eeb29313b57d11442535f1734c12e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251295"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097381"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Zálohování a obnovení dat pro Azure Stack pomocí infrastruktury služby Backup
 
@@ -52,12 +52,16 @@ Služby obsahují následující funkce.
   Budete potřebovat sdílené složky přístupné z Azure Stack, který může obsahovat sedm zálohy. Každá záloha je přibližně 10 GB. Vaše sdílené složky měli být schopni uložit 140 GB místa zálohy. Další informace o výběru umístění úložiště pro zálohy služby Azure Stack infrastruktury, najdete v části [záložní řadič požadavky](azure-stack-backup-reference.md#backup-controller-requirements).
 - **Přihlašovací údaje**  
   Budete potřebovat účet uživatele domény a přihlašovací údaje, například můžete použít přihlašovací údaje Správce služby Azure Stack.
-- **Šifrovací klíč**  
-  Záložní soubory jsou šifrované pomocí tohoto klíče. Ujistěte se, že tento klíč uložit na bezpečném místě. Po nastavení tohoto klíče poprvé nebo v budoucnu obměně klíče za nemůže zobrazit tento klíč z tohoto rozhraní. Další pokyny ke generování předsdíleným klíčem, postupujte podle skripty na [povolit zálohování pro Azure Stack s prostředím PowerShell](azure-stack-backup-enable-backup-powershell.md).
+- **Šifrovací certifikát**  
+  Záložní soubory jsou šifrované pomocí veřejného klíče v certifikátu. Ujistěte se, že se tento certifikát uložit na bezpečném místě. 
+
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [povolit zálohování pro Azure Stack z portálu pro správu](azure-stack-backup-enable-backup-console.md).
-- Zjistěte, jak [povolit zálohování pro Azure Stack s prostředím PowerShell](azure-stack-backup-enable-backup-powershell.md).
-- Zjistěte, jak [zálohování Azure stacku](azure-stack-backup-back-up-azure-stack.md )
-- Zjistěte, jak [obnovit ze ztráty dat](azure-stack-backup-recover-data.md)
+Zjistěte, jak [povolit zálohování pro Azure Stack z portálu pro správu](azure-stack-backup-enable-backup-console.md).
+
+Zjistěte, jak [povolit zálohování pro Azure Stack s prostředím PowerShell](azure-stack-backup-enable-backup-powershell.md).
+
+Zjistěte, jak [zálohování Azure stacku](azure-stack-backup-back-up-azure-stack.md )
+
+Zjistěte, jak [obnovit ze ztráty dat](azure-stack-backup-recover-data.md)

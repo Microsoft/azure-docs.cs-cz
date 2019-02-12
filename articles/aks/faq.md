@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: a7a7c8a6f16183d677aeb09ca62ac601cbd01289
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2366bd5543a7c3ee4a45eff74f71232a9c60989f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694036"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098526"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -60,7 +60,7 @@ Pokud jste vytvořili prostředky pro použití s vaším clusterem AKS, jako je
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Můžete upravit značky a dalších vlastností AKS prostředky ve skupině prostředků MC_ *?
 
-Úprava a odstranění značky Azure vytvořilo a dalších vlastností prostředků v rámci *MC_** skupina prostředků může vést k neočekávaným výsledkům, například škálování a upgradu chyby. Podporuje se vytvářet a upravovat další vlastní značky, například přiřadit obchodní jednotky nebo nákladů centra. Úprava prostředků v rámci *MC_** v AKS cluster, přestane fungovat cíle na úrovni služby.
+Úprava a odstranění značky Azure vytvořilo a dalších vlastností prostředků v rámci *MC_** skupina prostředků může vést k neočekávaným výsledkům, například škálování a upgradu chyby. Podporuje se vytvářet a upravovat další vlastní značky, například přiřadit obchodní jednotky nebo nákladů centra. Úprava prostředků v rámci *MC_** v AKS cluster, přestane fungovat cíl na úrovni služby (SLO). Další informace najdete v tématu [nemá AKS nabízí smlouvu o úrovni služeb?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Můžete jejich příchodu řadiče přidat nebo odebrat?
 

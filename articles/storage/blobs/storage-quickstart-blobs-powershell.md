@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 3bf6fae2b539ee3a21b4a96071fed67dd8bd1597
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4a8c3a1291faad6b952b5fddacde1ded1f4be7ca
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983606"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098064"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Azure Powershellu
 
@@ -74,7 +74,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte objekty blob na svůj místní disk. Pro každý objekt blob, kterou chcete stáhnout, nastavte název a zavoláním [Get-AzStorageBlobConten](/powershell/module/az.storage/get-AzStorageblobcontent) stáhnout objekt blob.
+Stáhněte objekty blob na svůj místní disk. Pro každý objekt blob, kterou chcete stáhnout, nastavte název a zavoláním [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) stáhnout objekt blob.
 
 Tento příklad stáhne objekty blob do složky D:*D:\\_TestImages\Downloads* na místním disku. 
 

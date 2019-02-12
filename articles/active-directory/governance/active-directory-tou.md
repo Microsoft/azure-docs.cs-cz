@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2019
+ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d063fd27d4de2fa37825294cd10f4f9a69731f63
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822506"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099985"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -266,7 +266,7 @@ Podmínky použití na zařízení má následující omezení:
 
 - Zařízení lze připojit pouze do jednoho tenanta.
 - Uživatel musí mít oprávnění pro připojení zařízení.
-- Registrace aplikace Intune se nepodporuje.
+- Registrace do Intune aplikace se nepodporuje.
 
 Pokud zařízení uživatele není připojený, obdrží zprávu, která se potřebují připojit svoje zařízení. Jejich prostředí budou závislé na platformy a software.
 
@@ -333,6 +333,9 @@ Můžete nakonfigurovat zásady podmíněného přístupu pro aplikace Azure Inf
 Můžete nakonfigurovat zásady podmíněného přístupu pro aplikaci registrace v Microsoft Intune a vyžadují podmínky použití ještě před registrací zařízení v Intune. Další informace najdete v tématu čtení [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ![Cloudové aplikace pro Microsoft Intune](./media/active-directory-tou/cloud-app-intune.png)
+
+> [!NOTE]
+> Registrace do Intune aplikace se nepodporuje pro [jednotlivá zařízení podmínky použití](#per-device-terms-of-use).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 0f36439cba4a946fb05466f2d961e537196f0095
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7cbfb8ec55d79f47b4f0aa4ec1e95e01a44c5448
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818596"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099305"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -34,7 +34,7 @@ Tato funkce je dostupná pro následující služby a oblasti Azure:
 - **[Azure Database for PostgreSQL server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecně dostupná v oblastech Azure, ve kterém je služba databáze k dispozici.
 - **[Azure Database for MySQL server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecně dostupná v oblastech Azure, ve kterém je služba databáze k dispozici.
 - **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecně dostupná ve všech veřejných cloudových oblastech Azure.
-- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: Obecně dostupná ve všech veřejných cloudových oblastech Azure.
+- **[Azure Key Vault](.../key-vault/key-vault-overview-vnet-service-endpoints)**: Obecně dostupná ve všech veřejných cloudových oblastech Azure.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecně dostupná ve všech veřejných cloudových oblastech Azure.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecně dostupná ve všech veřejných cloudových oblastech Azure.
 - **[Azure Data Lake Store 1. generace](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecně dostupné ve všech oblastech Azure, kde je k dispozici ADLS Gen1.

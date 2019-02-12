@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 751a1dc84f81b388a1fffb82cc3dfbc4996eed1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a6f558fd97dc13044d1ea4da63ff5879e6599f9e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249625"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100693"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -230,3 +230,4 @@ Abyste mohli začít se službou Azure Machine Learning, naleznete v tématu:
 * [Co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
 * [Rychlé zprovoznění: Vytvoření pracovního prostoru s využitím Pythonu](quickstart-get-started.md)
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)
+* [Vytvořit pracovní prostor s pomocí šablony resource Manageru](how-to-create-workspace-template.md)

@@ -6,17 +6,17 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 11/05/2018
+ms.lastreviewed: 02/11/2019
 keywords: ''
-ms.openlocfilehash: 8622619c56b618a1f5e4c91efcd047ab0ba9ce0a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c04ec1213d48179e203a8bef47f304fd23203afe
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247693"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098966"
 ---
 # <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Integrace datových center Azure Stack – auditování fyzického zařízení
 

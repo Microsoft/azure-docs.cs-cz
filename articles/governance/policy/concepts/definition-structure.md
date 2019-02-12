@@ -4,17 +4,17 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 14c5a9a5d9e3bd71ca1fdaf3545af3e74b3973c2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698284"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100618"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -90,8 +90,20 @@ Parametry fungovat stejným způsobem jako při vytváření zásad. Včetně pa
 > [!NOTE]
 > Parametry lze přidat do definice existující a přiřazená. Nový parametr musí obsahovat **defaultValue** vlastnost. To zabrání existující přiřazení zásady nebo iniciativa nepřímo prováděné neplatný.
 
-Například můžete definovat zásady pro omezení umístění, kde můžete nasadit prostředky.
-Při vytváření zásady, by deklarovat následující parametry:
+### <a name="parameter-properties"></a>Vlastnosti parametru
+
+Parametr má následující vlastnosti, které se používají v definici zásad:
+
+- **Název**: Název parametru. Používá `parameters` nasazení funkce v pravidlu zásad. Další informace najdete v tématu [pomocí hodnotu parametru](#using-a-parameter-value).
+- `type`: Určuje, zda je parametr **řetězec** nebo **pole**.
+- `metadata`: Definuje objektu třídy subproperties primárně slouží k zobrazení uživatelsky přívětivé informací pomocí webu Azure portal:
+  - `description`: Vysvětlení, co tento parametr se používá pro. Je možné příklady přijatelných hodnot.
+  - `displayName`: Popisný název na portálu pro parametr nezobrazuje.
+  - `strongType`: (Volitelné) Při přiřazení definice zásady na portálu. Obsahuje seznam vědět kontextu. Další informace najdete v tématu [strongType](#strongtype).
+- `defaultValue`: (Volitelné) Nastaví hodnotu parametru v přiřazení-li zadána žádná hodnota. Vyžadováno při aktualizaci existující definice zásad, který je přiřazen.
+- `allowedValues`: (Volitelné) Poskytuje seznam hodnot, které přijímá parametr během přiřazení.
+
+Například můžete definovat definici zásady možné omezit místa, kde můžete nasadit prostředky. Může být parametr pro tuto definici zásady **allowedLocations**. Tento parametr by jednotlivé přiřazení definice zásady používá k omezení přijatelných hodnot. Použití **strongType** poskytuje vylepšené prostředí při dokončení přiřazení prostřednictvím portálu:
 
 ```json
 "parameters": {
@@ -102,21 +114,17 @@ Při vytváření zásady, by deklarovat následující parametry:
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2"
+        "defaultValue": "westus2",
+        "allowedValues": [
+            "eastus2",
+            "westus2",
+            "westus"
+        ]
     }
 }
 ```
 
-Typ parametru může být řetězec nebo pole. Vlastnost metadat se používá pro nástroje, jako je na webu Azure portal k zobrazení informací uživatelsky přívětivé.
-
-V rámci vlastnost metadat, můžete použít **strongType** poskytnout vícenásobný výběr seznam možností na webu Azure portal. Povolené hodnoty pro **strongType** aktuálně zahrnují:
-
-- `"location"`
-- `"resourceTypes"`
-- `"storageSkus"`
-- `"vmSKUs"`
-- `"existingResourceGroups"`
-- `"omsWorkspace"`
+### <a name="using-a-parameter-value"></a>Pomocí hodnoty parametru
 
 V pravidlu zásad můžete odkazovat na parametry u následujících `parameters` syntaxe funkce hodnotu nasazení:
 
@@ -126,6 +134,19 @@ V pravidlu zásad můžete odkazovat na parametry u následujících `parameters
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+Tato ukázka odkazuje **allowedLocations** parametr předváděnou v [vlastnosti parametru](#parameter-properties).
+
+### <a name="strongtype"></a>strongType
+
+V rámci `metadata` vlastností, můžete použít **strongType** poskytnout vícenásobný výběr seznam možností na webu Azure portal. Povolené hodnoty pro **strongType** aktuálně zahrnují:
+
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 ## <a name="definition-location"></a>Umístění definice
 

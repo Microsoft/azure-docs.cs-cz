@@ -14,16 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1fe847bd0cdceec7eccab8218ccf787d8f4366ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196670"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097786"
 ---
 # <a name="azure-application-prerequisites"></a>Požadavky na aplikace Azure
 
-Tento článek popisuje technické a podnikové požadavky pro publikování nabídka spravované aplikace na Azure Marketplace.
+Tento článek popisuje technické a podnikové požadavky pro publikování nabídka spravované aplikace na Azure Marketplace.  Pokud jste tak již neučinili, podívejte se na video [sestavování řešení šablony a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+
 
 ## <a name="technical-requirements"></a>Technické požadavky
 
@@ -36,6 +37,7 @@ Technické požadavky zahrnují následující položky:
   * [GitHub: Šablony rychlý start Azure Resource Manageru](https://github.com/azure/azure-quickstart-templates). Toto úložiště obsahuje všechny aktuálně k dispozici Azure Resource Manageru šablony přispěla komunita. Index prohledávatelných šablon je udržován na úrovni https://azure.microsoft.com/en-us/documentation/templates/.
 * Vytvoření definice uživatelského rozhraní<br>
 Další informace najdete v tématu [vytvořit Azure portal uživatelského rozhraní pro vaše spravovaná aplikace](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview). Tento článek představuje základní koncepty createUiDefinition.json souboru. Na webu Azure portal tento soubor používá k vygenerování uživatelského rozhraní pro vytvoření spravované aplikace.
+
 
 ## <a name="business-requirements"></a>Obchodní požadavky
 
@@ -54,6 +56,7 @@ Obchodní požadavky zahrnují následující procesní, smluvní a právní zá
 * Musíte souhlasit s podmínkami zásadách pro účast na Microsoft Azure Marketplace a smlouvě s vydavatelem.
 * Musíte dodržovat Microsoft Azure web podmínky použití, prohlášení o ochraně osobních údajů Microsoft a Microsoft Azure Certified Program Agreement.
 
+
 ## <a name="publishing-requirements"></a>Publikování požadavky
 
 Chcete-li publikovat novou nabídku aplikací Azure, musí splňovat následující požadavky:
@@ -62,10 +65,12 @@ Chcete-li publikovat novou nabídku aplikací Azure, musí splňovat následují
   * Název
   * Popis (ve formátu HTML)
   * Obrázek loga (ve formátu PNG) a v nich pevné velikosti obrázků: 40 x 40 pixelů, 90 x 90 pixelů, 115 x 115 pixelů a 255 x 115 pixelů.
-* Podmínky použití a zásady ochrany osobních údajů
+* A *podmínky použití* a *zásady ochrany osobních údajů*
 * Dokumentace
 * Kontaktní údaje podpory
 
+
 ## <a name="next-steps"></a>Další postup
 
-[Vytvoření nabídky aplikace Azure](./cpp-create-offer.md) 
+Po splnění všech požadavků, budete připraveni k [vytvořte nabídku aplikací Azure](./cpp-create-offer.md). 
+ 

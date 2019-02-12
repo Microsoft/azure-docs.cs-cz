@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fbafd2d224879dbe33c581c13dfe52fc9a22ae55
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510813"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098527"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -145,7 +145,7 @@ Tento příklad ukazuje, jak podporovat přípravné požadavků, například ty
 Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 - **Části zásad:** příchozí
-- **Obory zásad:** Rozhraní API, operace
+- **Zásady obory:** globální, rozhraní API, operace
 
 ## <a name="JSONP"></a> JSONP
 `jsonp` Zásad přidá JSON s podporou odsazení (JSONP) pro operaci nebo rozhraní API pro volání mezi doménami založené na prohlížeči klientů JavaScript povolit. JSONP je metoda použita v programech jazyka JavaScript požadovat data ze serveru v jiné doméně. JSONP obchází omezení vynucená většina webových prohlížečů, ve kterém přístup k webovým stránkám musí být ve stejné doméně.

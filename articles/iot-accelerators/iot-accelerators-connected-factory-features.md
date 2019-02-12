@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: af2a2c84f9eb420a7ca9a8bd5909cbf856d29a5e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b54331e644d55497a7c7d33344cf29a82404847e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309191"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56096908"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co je akcelerátor řešení připojené továrny IoT?
 
@@ -25,21 +25,21 @@ Akcelerátor řešení připojená továrna [kód je k dispozici na Githubu](htt
 
 Propojená továrna zahrnuje následující funkce:
 
-## <a name="industrial-device-interoperability"></a>Vzájemná funkční spolupráce průmyslová zařízení
+## <a name="industrial-device-interoperability"></a>Vzájemná funkční spolupráce průmyslových zařízení
 
-- Připojte se k průmyslových prostředků pomocí rozhraní OPC UA.
+- Připojte se k průmyslovým prostředkům pomocí rozhraní OPC UA.
 - Použití simulovaných výrobních linek (servery OPC UA v kontejnerech Dockeru) zobrazíte živou telemetrii z nich.
 - Procházejte model informace o OPC UA serverů OPC UA z řídicího panelu cloud.
 
 ## <a name="remote-management"></a>Vzdálená správa
 
-- Konfigurujte vaše prostředky OPC UA na řídicím panelu cloud (volání metody, číst a zapisovat data).
-- Publikování a zrušení publikování telemetrická data z vašich prostředků OPC UA z řídicího panelu cloud.
+- Prostředky OPC UA můžete konfigurovat na řídicím panelu cloudu (volat metody, číst a zapisovat data).
+- Na řídicím panelu cloudu můžete publikovat telemetrická data z prostředků OPC UA nebo jejich publikování zrušit.
 
-## <a name="cloud-dashboard"></a>Řídicí panel cloud
+## <a name="cloud-dashboard"></a>Řídicí panel cloudu
 
 - Zobrazit náhledy telemetrie přímo na řídicím panelu cloud.
-- Zobrazit trendy v telemetrických dat a vytvoření korelace na řídicím panelu Průzkumník Time Series Insights.
+- Prohlédněte si trendy v telemetrických datech a vytvářejte korelace s využitím řídicího panelu průzkumníka Time Series Insights.
 - Z řídicího panelu cloud, najdete v článku vypočtené celkové efektivity zařízení (OEE) a klíčových ukazatelů výkonu (KPI).
 - Zobrazení asset průmyslové hierarchie v topologii stromu i na interaktivní mapu.
 - Zobrazení, potvrzení a zavírání výstrah z řídicího panelu cloud.
@@ -53,9 +53,9 @@ Propojená továrna zahrnuje následující funkce:
 
 [Konfigurace pravidel založené na prahových hodnotách pro výstrahy](iot-accelerators-connected-factory-configure.md).
 
-## <a name="end-to-end-security"></a>Koncové zabezpečení
+## <a name="end-to-end-security"></a>Komplexní zabezpečení
 
-- Konfigurace oprávnění zabezpečení pro uživatele, kteří používají řízení přístupu na základě Role (RBAC).
+- Konfigurujte pro uživatele oprávnění zabezpečení s využitím řízení přístupu na základě role (RBAC).
 - Koncové šifrování je implementováno pomocí OPC UA ověřování (pomocí certifikátů X.509), stejně jako tokeny zabezpečení.
 
 ## <a name="customizability"></a>Přizpůsobitelnost

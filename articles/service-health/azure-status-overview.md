@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 11/16/2018
+ms.date: 02/11/2019
 ms.author: stbaron
-ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6054b33e4068d36c5bfbb80120086a92a03525c8
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308276"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097504"
 ---
 # <a name="azure-status"></a>Stav Azure
-[Stav Azure](https://azure.microsoft.com/status/) vám poskytuje globální přehled o stavu služeb Azure. Stav služby Azure umožňuje získat nejčerstvější informace na dostupnost služby. Všichni mají přístup ke stavu Azure a můžete zobrazit všechny služby, které hlásit jejich stav služby. 
+[Stav Azure](https://azure.microsoft.com/status/) vám poskytuje globální přehled o stavu služby a oblasti Azure. Stav služby Azure umožňuje získat nejčerstvější informace na dostupnost služby. Stav služby Azure je k dispozici všem uživatelům, chcete-li zobrazit všechny služby, které podléhají jejich stav služeb, jakož i incidenty s rozsáhlou dopad. Pokud jste uživatelem Azure, ale důrazně doporučujeme použít přizpůsobený vzhled v [Azure Service Health](https://aka.ms/azureservicehealth). Azure Service Health zahrnuje výpadky, aktivity chystanou plánovanou údržbu a poradci pro služby.
 
 ![Stránce stavu Azure](./media/azure-status-overview/azure-status.PNG)
 

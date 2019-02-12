@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 198fb3376d44123d39a0b3ca2fb1edbd070f1f09
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 7822b5abe78bf969171f7f6ee7d706dadb8d0188
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510982"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100444"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -66,7 +66,7 @@ Musíte změnit nebo odstranit takových prostředků ve vašem adresáři Azure
 
 ### <a name="forcedelete-option"></a>Možnost ForceDelete
 
-Je možné **ForceDelete** názvu domény v [centra pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete). Tyto možnosti použít asynchronní operaci a aktualizujte všechny odkazy z vlastního názvu domény jako "user@contoso.com"na počáteční výchozí název domény, jako"user@contoso.onmicrosoft.com." 
+Je možné **ForceDelete** názvu domény v [centra pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Tyto možnosti použít asynchronní operaci a aktualizujte všechny odkazy z vlastního názvu domény jako "user@contoso.com"na počáteční výchozí název domény, jako"user@contoso.onmicrosoft.com." 
 
 Chcete-li volat **ForceDelete** na webu Azure Portal, musíte zajistit, že existují méně než 1000 odkazy na název domény, a všechny odkazy, kde je zřizovací služba Exchange musí aktualizovat nebo odebrat v [ Centra pro správu Exchange](https://outlook.office365.com/ecp/). To zahrnuje Exchange Mail-Enabled zabezpečení skupin a distribuovaných seznamů; Další informace najdete v tématu [odebírají skupiny zabezpečení s povolenou poštou](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Také **ForceDelete** operace nebude úspěšná, pokud je splněna jedna z následujících akcí:
 
@@ -112,4 +112,4 @@ Většina úkolů správy pro názvy domén v Azure Active Directory je možné 
 
 * [Přidání vlastních názvů domén](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Odebrat skupiny zabezpečení s povoleným e-mailu Exchange v Centru pro správu Exchange na vlastní název domény ve službě Azure AD](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [ForceDelete vlastního názvu domény pomocí rozhraní Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)
+* [ForceDelete vlastního názvu domény pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 698cae13b9e78de6318c28bde998e195540c513c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87c55634b6502a8a0c00fe52c7740a60f3afd80d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256795"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098278"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET pro role Azure Cloud Services
 Tento článek popisuje, jak nainstalovat verze rozhraní .NET Framework, které nejsou součástí hostovaného operačního systému Azure. .NET na hostovaný operační systém můžete nakonfigurovat role cloudové služby webové a pracovní proces.
@@ -183,10 +183,11 @@ Když se přidají soubory do složky obsahu role tímto způsobem, automaticky 
        if %ERRORLEVEL%== 3010 goto restart
        if %ERRORLEVEL%== 1641 goto restart
        echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
-   
+       goto exit
+       
    :restart
    echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
-   EXIT /B %ERRORLEVEL%
+   shutdown.exe /r /t 5 /c "Installed .NET framework" /f /d p:2:4
    
    :installed
    echo .NET (%netfx%) is installed >> %startuptasklog%
@@ -223,7 +224,7 @@ Tato konfigurace XML nakonfiguruje diagnostiky pro přenos souborů v adresáři
 ## <a name="deploy-your-cloud-service"></a>Nasazení cloudové služby
 Při nasazení cloudové služby, úlohy po spuštění instalace rozhraní .NET Framework, pokud ještě není nainstalovaná. Role cloudové služby jsou v *zaneprázdněný* stavu během instalace rozhraní framework. Pokud instalace rozhraní framework vyžaduje restartování, může také restartovat službu role. 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Instalace rozhraní .NET Framework][Installing the .NET Framework]
 * [Zjištění nainstalovaných verzí rozhraní .NET Framework][How to: Determine Which .NET Framework Versions Are Installed]
 * [Řešení potíží s instalací rozhraní .NET Framework][Troubleshooting .NET Framework Installations]

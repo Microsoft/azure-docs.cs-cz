@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1076ddfb840ba845718c5ca0deea8c5788e7d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096700"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100325"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu služby Azure Automation
 
@@ -24,7 +24,8 @@ Stejně jako [PowerShell Desired State Configuration](/powershell/dsc/overview),
 
 Konfigurace stavu Azure Automation můžete použít ke správě různých počítačů:
 
-- Virtuální počítače Azure (nasazené jak v modelu classic a modelu nasazení Azure Resource Manager)
+- Virtuální počítače Azure
+- Virtuální počítače Azure (klasické)
 - Amazon Web Services (AWS) EC2 instances
 - Windows fyzické nebo virtuální počítače, místně nebo v jiném cloudu než Azure nebo AWS
 - Linux fyzické nebo virtuální počítače v místním prostředí, v Azure nebo v jiném cloudu než Azure
@@ -35,6 +36,31 @@ Kromě toho pokud si nejste připraveni ke správě konfigurace počítačů z c
 > Správa virtuálních počítačů Azure pomocí konfigurace stavu je zahrnutých bez dalších poplatků, pokud je nainstalované rozšíření virtuálního počítače DSC vyšší než 2.70. Odkazovat [ **stránce s cenami služby Automation** ](https://azure.microsoft.com/pricing/details/automation/) další podrobnosti.
 
 Následující oddíly popisují, jak můžete připojit každého typu počítače do Azure Automation State Configuration.
+
+## <a name="azure-virtual-machines"></a>Virtuální počítače Azure
+
+Konfigurace stavu Azure Automation vám umožní snadno připojit virtuální počítače Azure pro správu konfigurace pomocí webu Azure portal, šablon Azure Resource Manageru nebo PowerShell. Pod pokličkou a bez nutnosti vzdáleném připojení k virtuálnímu počítači Správce rozšíření virtuálního počítače Azure, Desired State Configuration zaregistruje virtuálního počítače pomocí Azure Automation State Configuration.
+Rozšíření Azure VM Desired State Configuration běží asynchronně, postup sledovat její průběh nebo vyřešit potíže s jeho jsou k dispozici v následujících [ **připojování virtuálního počítače Azure pro řešení potíží s** ](#troubleshooting-azure-virtual-machine-onboarding) oddílu.
+
+### <a name="azure-portal"></a>portál Azure
+
+V [webu Azure portal](https://portal.azure.com/), přejděte do účtu Azure Automation, ve které chcete připojit virtuální počítače. Na stránce konfigurace stavu a **uzly** klikněte na tlačítko **+ přidat**.
+
+Vyberte virtuální počítač Azure připojit.
+
+Pokud počítač nemá žádné PowerShell desired nainstalované rozšíření stav a stav napájení je spuštěna, klikněte na tlačítko **připojit**.
+
+V části **registrace**, zadejte [hodnoty prostředí PowerShell DSC Local Configuration Manageru](/powershell/dsc/metaconfig4) vyžadované pro vašemu případu použití a volitelně konfigurace uzlu přiřazení k virtuálnímu počítači.
+
+![Registrace](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+
+### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
+
+Azure virtual machines můžete nasadit a zapojený do služby Azure Automation stav konfigurace prostřednictvím šablon Azure Resource Manageru. V tématu [konfigurace virtuálního počítače pomocí rozšíření DSC a Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) pro příklad šablony, který připojí existujícího virtuálního počítače do Azure Automation stavu konfigurace. Najít registrační klíč a adresa URL pro registraci provést jako vstup do této šablony, přečtěte si následující [ **zabezpečení registrace** ](#secure-registration) oddílu.
+
+### <a name="powershell"></a>PowerShell
+
+[Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) rutinu je možné připojit virtuální počítače na webu Azure Portal přes PowerShell.
 
 ## <a name="azure-virtual-machines-classic"></a>Virtuální počítače Azure (klasické)
 
@@ -116,31 +142,6 @@ $VM | Update-AzureVM
 
 > [!NOTE]
 > Stav konfigurace uzlu názvy jsou malá a velká písmena na portálu. Pokud jsou neodpovídající uzel nezobrazí v části **uzly** kartu.
-
-## <a name="azure-virtual-machines"></a>Virtuální počítače Azure
-
-Konfigurace stavu Azure Automation vám umožní snadno připojit virtuální počítače Azure pro správu konfigurace pomocí webu Azure portal, šablon Azure Resource Manageru nebo PowerShell. Pod pokličkou a bez nutnosti vzdáleném připojení k virtuálnímu počítači Správce rozšíření virtuálního počítače Azure, Desired State Configuration zaregistruje virtuálního počítače pomocí Azure Automation State Configuration.
-Rozšíření Azure VM Desired State Configuration běží asynchronně, postup sledovat její průběh nebo vyřešit potíže s jeho jsou k dispozici v následujících [ **připojování virtuálního počítače Azure pro řešení potíží s** ](#troubleshooting-azure-virtual-machine-onboarding) oddílu.
-
-### <a name="azure-portal"></a>portál Azure
-
-V [webu Azure portal](https://portal.azure.com/), přejděte do účtu Azure Automation, ve které chcete připojit virtuální počítače. Na stránce konfigurace stavu a **uzly** klikněte na tlačítko **+ přidat**.
-
-Vyberte virtuální počítač Azure připojit.
-
-Pokud počítač nemá žádné PowerShell desired nainstalované rozšíření stav a stav napájení je spuštěna, klikněte na tlačítko **připojit**.
-
-V části **registrace**, zadejte [hodnoty prostředí PowerShell DSC Local Configuration Manageru](/powershell/dsc/metaconfig4) vyžadované pro vašemu případu použití a volitelně konfigurace uzlu přiřazení k virtuálnímu počítači.
-
-![Registrace](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
-
-### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
-
-Azure virtual machines můžete nasadit a zapojený do služby Azure Automation stav konfigurace prostřednictvím šablon Azure Resource Manageru. V tématu [konfigurace virtuálního počítače pomocí rozšíření DSC a Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) pro příklad šablony, který připojí existujícího virtuálního počítače do Azure Automation stavu konfigurace. Najít registrační klíč a adresa URL pro registraci provést jako vstup do této šablony, přečtěte si následující [ **zabezpečení registrace** ](#secure-registration) oddílu.
-
-### <a name="powershell"></a>PowerShell
-
-[Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) rutinu je možné připojit virtuální počítače na webu Azure Portal přes PowerShell.
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Virtuální počítače služby Amazon Web Services (AWS)
 

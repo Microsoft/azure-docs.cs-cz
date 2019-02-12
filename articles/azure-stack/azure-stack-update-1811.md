@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766091"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099135"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -118,6 +118,18 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
 - Spravované disky je nyní povolena ve výchozím nastavení při vytváření virtuálních počítačů pomocí portálu Azure Stack. Zobrazit [známé problémy](#known-issues-post-installation) části Další kroky potřebné pro Managed Disks, aby se zabránilo selhání vytvoření virtuálního počítače.
 
 - Tato verze přináší upozornění **opravit** akce pro operátory Azure stacku. Některé výstrahy v 1811 poskytují **opravit** tlačítko ve výstraze, které můžete vybrat k vyřešení daného problému. Další informace najdete v tématu [monitorovat stav a výstrahy ve službě Azure Stack](azure-stack-monitor-health.md).
+
+- Aktualizace prostředí aktualizací ve službě Azure Stack. Vylepšení aktualizace zahrnují: 
+    - Karty, které rozdělí aktualizace z historie aktualizace pro lepší sledování aktualizace v průběhu a dokončení aktualizace.
+    - Data budou aktualizovat Vylepšený stav vizualizace v části Základy pomocí nové ikony a rozložení pro verze aktuální a výrobce OEM, stejně jako poslední.
+    - **Zobrazení** odkaz pro sloupec Poznámky k verzi přejde přímo v dokumentaci k konkrétní, aby update spíše než na stránce Obecné aktualizace.
+    - **Aktualizace historie** karta používá k určení spuštění časy pro každou z aktualizace i rozšířené možnosti filtrování.  
+    - Azure Stack jednotek škálování, které jsou připojené stále automaticky přijme **k dispozici je aktualizace** , jakmile budou k dispozici.
+    - Azure Stack jednotek škálování, které nejsou připojené můžete naimportovat stejně jako před. 
+    - Neexistují žádné změny v procesu ke stažení protokolů JSON z portálu. Operátoři Azure stacku se zobrazí, rozbalení kroků vyjádření průběh.
+
+    Další informace najdete v tématu [použití aktualizací ve službě Azure Stack](azure-stack-apply-updates.md).
+
 
 ## <a name="fixed-issues"></a>Oprava potíží
 

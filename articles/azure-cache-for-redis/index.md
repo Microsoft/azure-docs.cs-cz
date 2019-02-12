@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 9204e12abbbdfdf9ac303497b828ebc39a629f37
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cd7cb65f6f76987eb891759bb50f4bb92b2e6234
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198322"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098813"
 ---
 # <a name="azure-cache-for-redis-documentation"></a>Dokumentace ke službě Azure Cache for Redis
 
@@ -205,8 +205,8 @@ Naučte se využívat službu Azure Cache for Redis. Tento zprostředkovatel zas
                 <div class="card">
                     <div class="cardText">
                         <h3>Příkazový řádek</h3>
-                        <p><a href="/powershell/module/azurerm.rediscache">PowerShell</a></p>
-                        <p><a href="/cli/azure/redis">Azure CLI 2.0 (Preview)</a></p>
+                        <p><a href="/powershell/module/az.rediscache">PowerShell</a></p>
+                        <p><a href="/cli/azure/redis">Azure CLI</a></p>
                     </div>
                 </div>
             </div>

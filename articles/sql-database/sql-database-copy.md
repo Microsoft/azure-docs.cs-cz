@@ -1,25 +1,25 @@
 ---
 title: Kopírovat databázi Azure SQL | Dokumentace Microsoftu
-description: Vytvoření transakčně konzistentní kopie stávající databázi Azure SQL na stejném serveru nebo na jiný server.
+description: Vytvoření transakčně konzistentní kopie existující databázi Azure SQL na stejném serveru nebo na jiný server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 080cfb43f8fef04d2459dd0bb8779d2aa66cc359
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6e25c0970a48674e157dac5f51c9508596ff6ea1
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960969"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097078"
 ---
-# <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
+# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
 Azure SQL Database nabízí několik metod pro vytvoření transakčně konzistentní kopie stávající databázi Azure SQL na stejný server nebo jiný server. Zkopírování databáze SQL pomocí webu Azure portal, Powershellu nebo T-SQL. 
 

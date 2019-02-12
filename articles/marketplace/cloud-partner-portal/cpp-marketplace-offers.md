@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 02/07/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f13d49fde7f0e40f6dcb026fcb20cb11c028c64b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658704"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100877"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure a nabídky na webu Marketplace AppSource
 
@@ -32,6 +32,18 @@ Následující video představuje různé možnosti a typy různé nabídky dost
 **Vytváření aplikací a služeb pro Azure Marketplace a AppSource – sestavení 2018**
 
 Další informace o těchto tržišť s řešeními najdete v tématu [Průvodce publikováním webu Azure Marketplace a AppSource](../marketplace-publishers-guide.md).
+
+
+## <a name="common-offer-operations"></a>Běžné operace nabídky
+
+Procesem vytvoření nové nabídky se značně liší mezi typy nabídek, například mezi [nabídku aplikací Azure](./azure-applications/cpp-azure-app-offer.md) a [konzultační nabídky](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  Naproti tomu spoustu dalších operací je provést v rámci nabídky v [portál partnerů cloudu](https://cloudpartner.azure.com) jsou poměrně standardizované mezi typy nabídek.  Tyto běžné operace – včetně publikovat, zobrazení stavu, update a delete, jsou popsané v části [správa nabídek](./manage-offers/cpp-manage-offers.md)
+
+
+## <a name="test-drive"></a>Testovací verze
+
+*Vyzkoušejte si* je marketplace funkce, která poskytuje zákazníkům možnost ukázku "před zakoupením vyzkoušet" pro každou nabídku, proto je povoleno.  Testovací verze funkce je omezená na následující dílčí sadu typy nabídek: [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 pro Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ Aplikace SaaS](./saas-app/cpp-saas-offer.md), a [virtuálních počítačů](./virtual-machine/cpp-virtual-machine-offer.md).  Tato funkce vyžaduje publisher k vytvoření šablony Test Drive, přizpůsobit jeho nabídky.  Další informace najdete v části [Test Drive](../cloud-partner-portal-orig/what-is-test-drive.md).
+
+Můžete procházet existující nabídky marketplace, které mají testovací verze ukázky použitím [test jednotky filtr](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive). 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace a AppSource nabízí typy
