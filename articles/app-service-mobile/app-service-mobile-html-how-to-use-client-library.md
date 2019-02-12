@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 16871bdc59d141334bc2c95f26929f270d7971cf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488888"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100529"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Použití knihovny JavaScript klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "38488888"
 Tento průvodce vás naučí, provádět běžné scénáře pomocí nejnovější [Sada JavaScript SDK pro Azure Mobile Apps]. Pokud jste ještě na službu Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlým startem] vytvoření back-endu a vytvořte tabulku. V této příručce se zaměříme na používání mobilní back-end v HTML/JavaScript webových aplikací.
 
 ## <a name="supported-platforms"></a>Podporované platformy
-Omezená podpora prohlížečů na aktuální a poslední verze nejpoužívanějších prohlížečích: Google Chrome, Microsoft Edge, Microsoft Internet Explorer a Mozilla Firefox.  Očekáváme, že sada SDK pro funkci v libovolném relativně moderním prohlížeči.
+Omezená podpora prohlížečů na aktuální a poslední verze hlavní prohlížeče:  Google Chrome, Microsoft Edge, Microsoft Internet Explorer a Mozilla Firefox.  Očekáváme, že sada SDK pro funkci v libovolném relativně moderním prohlížeči.
 
 Balíček je distribuován jako univerzální modul JavaScript, tak podporuje globals, AMD, a CommonJS formáty.
 
@@ -42,10 +42,10 @@ npm install azure-mobile-apps-client --save
 
 Knihovny můžete použít také jako modul ES2015 v rámci CommonJS prostředí, jako je například Browserify a Webpacku a jako knihovny AMD.  Příklad:
 
-```
-# For ECMAScript 5.1 CommonJS
+```javascript
+// For ECMAScript 5.1 CommonJS
 var WindowsAzure = require('azure-mobile-apps-client');
-# For ES2015 modules
+// For ES2015 modules
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
@@ -57,14 +57,14 @@ Předem připravené verzi sady SDK můžete také stáhnout přímo z naší s�
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Postupy: ověřování uživatelů
-Azure App Service podporuje ověřování a autorizace uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, Account Microsoft a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v serverových skriptů. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
+## <a name="auth"></a>Jak: Ověřování uživatelů
+Azure App Service podporuje ověřování a autorizace uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v serverových skriptů. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
 
 Jsou podporovány dvě toky ověřování: serveru a klienta tok.  Tok server poskytuje nejjednodušší prostředí pro ověřování, spoléhá na zprostředkovatele webového ověření rozhraní. Tok klienta umožňuje hlubší integraci s funkcemi konkrétní zařízení, jako single-sign-on jako spoléhá na SDK specifickým pro zprostředkovatele.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Postupy: Konfigurace služby Mobile App pro adresy URL pro externí přesměrování.
+### <a name="configure-external-redirect-urls"></a>Jak: Nakonfigurujte službu Mobile App Service pro adresy URL pro externí přesměrování.
 Několik typů aplikací jazyka JavaScript pomocí funkce zpětné smyčky pro zpracování toky OAuth uživatelského rozhraní.  Mezi tyto možnosti patří:
 
 * Vaše služba spuštěná místně

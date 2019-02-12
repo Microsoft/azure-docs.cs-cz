@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: db1bdeed75264e32d5a96800096b6b433c62c44a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: eb05d1b28b80cb7bf48bc1160c251936423763e6
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822625"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100778"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
@@ -982,7 +982,7 @@ Webhooky umožňují reagovat na události v Microsoft Graphu. Pro podporu webho
 - A [odběr webhooku Microsoft Graph vstupní vazby](#webhook-input) umožňuje seznam stávajících předplatných a obnovit je.
 - A [odběr webhooku Microsoft Graph výstupní vazby](#webhook-output) umožňuje vytvořit nebo odstranit odběry webhooků.
 
-Vazby sami se nevyžaduje žádná oprávnění Azure AD, ale budete muset požádat o oprávnění, které jsou relevantní pro typ prostředku, který chcete reagovat na ně. Seznam, které jsou potřeba oprávnění pro jednotlivé typy prostředků najdete v tématu [oprávnění pro předplatné](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
+Vazby sami se nevyžaduje žádná oprávnění Azure AD, ale budete muset požádat o oprávnění, které jsou relevantní pro typ prostředku, který chcete reagovat na ně. Seznam, které jsou potřeba oprávnění pro jednotlivé typy prostředků najdete v tématu [oprávnění pro předplatné](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
 Další informace o webhooků najdete v tématu [práce s webhooky v aplikaci Microsoft Graph].
 

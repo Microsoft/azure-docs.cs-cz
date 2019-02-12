@@ -4,14 +4,14 @@ description: Další informace o vzoru návrhu pro sociální sítě s využití
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/11/2019
 ms.author: maquaran
-ms.openlocfilehash: 8d6dfa292bd597c2e37f7111e3a068010dc4653c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 36b77ff6666c2c8b0d27cbdc8552ade15b21d005
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042679"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100359"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociální funkce s Azure Cosmos DB
 
@@ -222,7 +222,7 @@ K dispozici další možností je použít [Azure Cognitive Services](https://ww
 
 Je last, ale ne nejméně důležité článku můžu musí řešit: **škálovatelnost**. Při návrhu architekturu jednotlivé komponenty by se měly škálovat sama o sobě. Nakonec bude potřeba zpracovávat další data, nebo chcete mít větší zeměpisném pokrytí. Naštěstí je dosažení obě úlohy **předpřipravené prostředí** pomocí služby Cosmos DB.
 
-Cosmos DB podporuje [dynamické dělení na oddíly](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) out-of-the-box. Automaticky vytvoří oddíly na základě danou **klíč oddílu**, který je definován jako atribut v dokumentech. Definování správného klíče oddílu je třeba provést v době návrhu. Další informace najdete v tématu [zvolit klíč oddílu správné](partitioning-overview.md#choose-partitionkey) článku.
+Cosmos DB podporuje dynamické dělení out-of-the-box. Automaticky vytvoří oddíly na základě danou **klíč oddílu**, který je definován jako atribut v dokumentech. Definování správného klíče oddílu je třeba provést v době návrhu. Další informace najdete v tématu [dělení ve službě Azure Cosmos DB](partitioning-overview.md).
 
 Sociálních prostředí které musí být v souladu strategii dělení do toho, jak dotazovat a zápis. (Například čtení v rámci stejného oddílu jsou žádoucí a vyhnout se "hotspotů" tím, že rozprostírá zápisy na několik oddílů.) Některé možnosti jsou: oddíly na základě dočasné klíče (den/měsíc/týden), kategorie obsahu, geografické oblasti nebo uživatele. Všechno ve skutečnosti závisí na jak budete zadávat dotazy na data a zobrazit data ve vašem prostředí sociálních sítí.
 
