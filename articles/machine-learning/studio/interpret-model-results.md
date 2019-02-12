@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: fe22a465c21e9522b70ba307e2ec9772674000f2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488539"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997001"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretace výsledků modelu v nástroji Azure Machine Learning Studio
 Toto téma vysvětluje, jak vizualizovat a interpretace výsledků predikce v Azure Machine Learning Studio. Po Trénink modelu a provádí predictions nad rámec jeho ("skóre modelu"), musíte pochopit a interpretace výsledků předpovědí.
@@ -74,7 +74,7 @@ Existuje šest sloupců v tabulce výsledků. Levé čtyři sloupce obsahují č
 
 **Publikování webové služby**
 
-Poté, co byly porozuměl jsem jim a neobsahuje zvukový výsledků předpovědí, experiment můžete publikovat jako webovou službu tak, že můžete nasadit v různých aplikacích a volat ho k získání třídy předpovědí na všechny nové květinu iris. Zjistěte, jak změnit výukového experimentu na hodnocení experiment a publikovat jako webovou službu, najdete v článku [publikovat webové služby Azure Machine Learning](walkthrough-5-publish-web-service.md). Tento postup poskytuje bodování experiment, jak je znázorněno na obrázku 3.
+Poté, co byly porozuměl jsem jim a neobsahuje zvukový výsledků předpovědí, experiment můžete publikovat jako webovou službu tak, že můžete nasadit v různých aplikacích a volat ho k získání třídy předpovědí na všechny nové květinu iris. Zjistěte, jak změnit výukového experimentu na hodnocení experiment a publikovat jako webovou službu, najdete v článku [Tutorial 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md). Tento postup poskytuje bodování experiment, jak je znázorněno na obrázku 3.
 
 ![Snímek obrazovky vyhodnocování experimentu](./media/interpret-model-results/3.png)
 

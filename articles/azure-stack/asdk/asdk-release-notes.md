@@ -15,12 +15,12 @@ ms.date: 02/09/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 35a3850cdda7f6844258439b74b29dcc20852a89
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 485d88a4765d7cedcb171a5b325fe5f366fff1f9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959591"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004743"
 ---
 # <a name="asdk-release-notes"></a>Zpráva k vydání verze ASDK
 

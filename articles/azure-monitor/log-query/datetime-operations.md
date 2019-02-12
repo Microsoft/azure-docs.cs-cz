@@ -1,6 +1,6 @@
 ---
-title: Práce s hodnotami data a času v dotazech Azure Log Analytics | Dokumentace Microsoftu
-description: Popisuje, jak pracovat s daty datum a čas v dotazy Log Analytics.
+title: Práce s hodnotami data a času v dotazech protokolu Azure Monitor | Dokumentace Microsoftu
+description: Popisuje, jak pracovat s daty datum a čas v dotazů na protokoly Azure monitoru.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 15767107a5c535cfda98da2a5177e15ca221f35d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 2465fdcc3bf7128d4813fa5f682ffda8f504f2b6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214690"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999245"
 ---
-# <a name="working-with-date-time-values-in-log-analytics-queries"></a>Práce s hodnotami data a času v dotazy Log Analytics
+# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Práce s hodnotami data a času v dotazů na protokoly Azure monitoru
 
 > [!NOTE]
 > By se měla Dokončit [začít používat portál Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje, jak pracovat s daty datum a čas v dotazy Log Analytics.
+Tento článek popisuje, jak pracovat s daty datum a čas v dotazů na protokoly Azure monitoru.
 
 
 ## <a name="date-time-basics"></a>Datum čas základy
-Dotazovací jazyk Log Analytics má dva hlavní datové typy související s daty a časy: datetime a timespan. Všechna data jsou vyjádřeny ve standardu UTC. I když jsou podporované více formátů data a času, formát ISO8601 je upřednostňována. 
+Průzkumník dat dotazovací jazyk má dva hlavní datové typy související s daty a časy: datetime a timespan. Všechna data jsou vyjádřeny ve standardu UTC. I když jsou podporované více formátů data a času, formát ISO8601 je upřednostňována. 
 
 Časových rozpětí jsou vyjádřeny jako desítkové číslo, za nímž následuje časovou jednotku:
 
@@ -157,11 +157,11 @@ Event
 | Převést datové typy | [ToDateTime](/azure/kusto/query/todatetimefunction)[totimespan](/azure/kusto/query/totimespanfunction)  |
 | Kruhové hodnota, která má velikost přihrádky | [Koš](/azure/kusto/query/binfunction) |
 | Určité datum a čas | [před](/azure/kusto/query/agofunction) [nyní](/azure/kusto/query/nowfunction)   |
-| Získat část hodnoty | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [měsíc roku](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
+| Získat část hodnoty | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
 | Získat datum vzhledem k hodnotě  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro používání dotazovací jazyk Log Analytics:
+Zobrazit další lekce pro použití [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
 
 - [Operace s řetězci](string-operations.md)
 - [Agregační funkce](aggregations.md)

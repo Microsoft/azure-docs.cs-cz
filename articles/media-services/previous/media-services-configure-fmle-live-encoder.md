@@ -4,7 +4,7 @@ description: Toto téma ukazuje, jak konfigurovat kodér rozhraní Flash Media L
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 1a7cbd19b89663ab874fc5a7a86587e292b86f81
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665881"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003733"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Kodér FMLE můžete odesílat živý datový proud s jednou přenosovou rychlostí
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>Kodér FMLE můžete odesílat živý stream s jednou přenosovou rychlostí (starší verze)
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -33,7 +33,7 @@ Tento článek popisuje, jak nakonfigurovat [Flash Media Live Encoder](http://ww
 
 Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud jste v systému Mac nebo Linux, pomocí webu Azure portal k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-Tento kurz popisuje použití AAC. Nicméně FMLE není ve výchozím nastavení podporuje AAC. Měl by si koupit modul plug-in AAC kódování, například kvůli Mainconceptu: [modulu plug-in AAC](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+Tento kurz popisuje použití AAC. Nicméně FMLE není ve výchozím nastavení podporuje AAC. Je třeba zakoupit modul plug-in AAC kódování, jako třeba z Mainconceptu: [Modul plug-in AAC](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Požadavky
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
@@ -77,15 +77,15 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 **Video**:
 
 * Kodek: H.264
-* Profil: Vysoce (úroveň 4.0)
-* S přenosovou rychlostí: 5000 kB /
+* Profil: Vysoká (úroveň 4.0)
+* S přenosovou rychlostí: 5000 kb/s
 * Klíčový snímek: 2 sekundy (60 sekund)
-* Frekvence snímků: 30
+* Snímková frekvence: 30
 
 **Zvuk**:
 
-* Kodek: AAC (LC –)
-* S přenosovou rychlostí: 192 kb /
+* Kodek: AAC (LC)
+* S přenosovou rychlostí: 192 kb/s
 * Vzorkovací frekvence: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Postup konfigurace
@@ -93,8 +93,8 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 
     Rozhraní je jeden hlavní stránky nastavení. Poznamenejte si následující doporučené nastavení, abyste mohli začít se streamováním pomocí FMLE.
 
-   * Formát: H.264 Snímková frekvence: 30,00
-   * Velikost vstupu: 1280 × 720
+   * Formát: H.264 Snímková frekvence: 30.00
+   * Velikost vstupu: 1280 x 720
    * Přenosová rychlost: 5000 kb/s (můžete třeba nastavit podle omezení sítě)  
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
@@ -102,7 +102,7 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
      Při použití prokládanou zdroje, prosím zaškrtnutí možnost "volby odstranit prokládání"
 2. Vyberte ikonu klíče vedle formátu, by měla být tato další nastavení:
 
-   * Profil: hlavní
+   * Profil: Hlavní
    * Úroveň: 4.0
    * Klíčový snímek frekvence: 2 sekundy
 
@@ -110,8 +110,8 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 3. Nastavte následující důležité zvuku nastavení:
 
    * Formát: AAC
-   * Vzorkovací frekvence: Hz 44100
-   * S přenosovou rychlostí: 192 kb /
+   * Vzorkovací frekvence: 44100 Hz
+   * S přenosovou rychlostí: 192 Kbps
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
 4. Get kanál se uživatelovo zadání adresy URL, abyste mohli přiřadit k FMLE **koncový bod RTMP**.

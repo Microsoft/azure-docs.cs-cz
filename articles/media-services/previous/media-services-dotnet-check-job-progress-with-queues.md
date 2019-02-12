@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 5ddee0ca94535688a0634ef8575f3aedad649a43
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a863915ceef437957170d87ac4cc452d651a8dab
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037487"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994940"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Pomocí Azure Queue storage pro monitorování oznámení úloh pro Media Services s .NET
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net-legacy"></a>Pomocí Azure Queue storage pro monitorování oznámení úloh pro Media Services pomocí rozhraní .NET (starší verze)
+
 Při spuštění úloh kódování, často vyžadují způsob, jak sledovat průběh úlohy. Můžete nakonfigurovat Media Services k poskytování oznámení [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). Průběh úlohy můžete sledovat oznámení s informacemi z Queue storage. 
 
 Doručování zpráv do fronty úložiště můžete přistupovat z kdekoli na světě. Architektura zasílání zpráv fronty úložiště je spolehlivé a vysoce škálovatelné. Dotazování úložiště fronty zpráv se doporučuje oproti použití jiných metod.
@@ -338,7 +339,7 @@ namespace JobNotification
 }
 ```
 
-Předchozí příklad vytváří následující výstup: vaše hodnoty se budou lišit.
+Předchozí příklad vytváří následující výstup: Vaše hodnoty se budou lišit.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

@@ -4,7 +4,7 @@ description: Tento článek ukazuje, jak pomocí webu Azure portal nakonfigurova
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423533"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996927"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí webu Azure portal
  Pomocí služby Azure Media Services můžete zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Služba Media Services můžete použít k doručování dynamicky šifrovaných s na Standard AES (Advanced Encryption) s použitím 128bitové šifrování klíče obsahu. Také můžete ho s používat standard common encryption (CENC) pomocí technologie PlayReady nebo Widevine správy digitálních práv (DRM) a Apple FairPlay. 
@@ -71,7 +71,7 @@ Pokud konfigurujete licenci jako trvalé, se uloží do trvalého úložiště n
 ### <a name="basic"></a>Basic
 Když vyberete **základní**, vytvoření šablony s použitím všech výchozích hodnot.
 
-### <a name="advanced"></a>Advanced
+### <a name="advanced"></a>Rozšířený 
 Další informace o šablona práv Widevine, najdete v článku [Přehled šablon licencování Widevine](media-services-widevine-license-template-overview.md).
 
 ![Rozšířená ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)
@@ -93,7 +93,7 @@ Pokud chcete zobrazit všechny vaše prostředky, vyberte **nastavení** > **pro
 Když vyberete **šifrovat** pro určitý prostředek, se zobrazí dvě možnosti: **AES** nebo **DRM**. 
 
 #### <a name="aes"></a>AES
-AES jasné, klíče šifrování je povoleno na všechny streamovací protokoly: Smooth Streaming, HLS a MPEG-DASH.
+AES je jasné, že je povoleno šifrování klíče na všechny streamovací protokoly: Technologie Smooth Streaming, HLS a MPEG-DASH.
 
 ![Konfigurace šifrování](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 

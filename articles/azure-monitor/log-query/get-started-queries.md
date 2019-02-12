@@ -1,6 +1,6 @@
 ---
-title: Začínáme s dotazy ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro získávání spuštěn zápis dotazů v Log Analytics.
+title: Začínáme s dotazy protokolu ve službě Azure Monitor | Dokumentace Microsoftu
+description: Tento článek obsahuje kurz pro zahájení práce psaní dotazů protokolu ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 326e12444067e950b9d6ae0862424589d444b83d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882336"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994874"
 ---
-# <a name="get-started-with-queries-in-log-analytics"></a>Začínáme s dotazy v Log Analytics
+# <a name="get-started-with-azure-monitor-log-queries"></a>Začínáme s dotazy protokolů Azure Monitor
 
 
 > [!NOTE]
-> By se měla Dokončit [začít používat portál Analytics](get-started-portal.md) před tímto kurzem.
+> By se měla Dokončit [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) před tímto kurzem.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-V tomto kurzu se dozvíte, psaní dotazů Azure Log Analytics. To se dozvíte, jak do:
+V tomto kurzu se dozvíte, jak napsat Azure LMonitor protokolu dotazy. To se dozvíte, jak do:
 
 - Zjistit strukturu dotazy.
 - Řazení výsledků dotazu
@@ -43,10 +43,10 @@ V tomto kurzu se dozvíte, psaní dotazů Azure Log Analytics. To se dozvíte, j
 Dotazy můžete spustit buď pomocí názvu tabulky nebo *hledání* příkazu. Měli byste začít s názvem tabulky, protože definuje vymazat obor pro dotaz a zvyšuje výkon dotazů a relevance výsledků.
 
 > [!NOTE]
-> Dotazovací jazyk Azure Log Analytics je velká a malá písmena. Klíčová slova jazyka jsou obvykle napsány malé. Při použití názvy tabulek nebo sloupců v dotazu, ujistěte se, že chcete mít správnou velikost, jak je znázorněno v podokně schématu.
+> Jazyk dotazu Průzkumník dat používaný službou Azure Monitor je velká a malá písmena. Klíčová slova jazyka jsou obvykle napsány malé. Při použití názvy tabulek nebo sloupců v dotazu, ujistěte se, že chcete mít správnou velikost, jak je znázorněno v podokně schématu.
 
 ### <a name="table-based-queries"></a>Dotazy založené na tabulku
-Azure Log Analytics slouží k uspořádání dat v tabulkách, každá skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu portálu Analytics. Identifikujte tabulku zajímá a potom se podívejte na části dat:
+Azure Monitor uspořádá data protokolu v tabulkách, každá skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku zajímá a potom se podívejte na části dat:
 
 ```Kusto
 SecurityEvent
@@ -112,7 +112,7 @@ Při psaní podmínky filtru, můžete použít následující výrazy:
 |:---|:---|:---|
 | == | Kontroly rovnosti<br>(malá a velká písmena) | `Level == 8` |
 | =~ | Kontroly rovnosti<br>(velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =, <> | Kontrola nerovnosti<br>(i výraz je shodný s) | `Level != 4` |
+| !=, <> | Kontrola nerovnosti<br>(i výraz je shodný s) | `Level != 4` |
 | *a*, *nebo* | Vyžaduje mezi podmínky| `Level == 16 or CommandLine != ""` |
 
 Chcete-li filtrovat podle několika podmínek, můžete použít **a**:
@@ -164,7 +164,7 @@ SecurityEvent
 
 Předchozí příklad generuje tento výstup:
 
-![Protokolovat výsledky analýzy projektu](media/get-started-queries/project.png)
+![Výsledky dotazu projektu](media/get-started-queries/project.png)
 
 Můžete také použít **projektu** přejmenování sloupců a definovat nové značky. Následující příklad používá projektu provést následující kroky:
 
@@ -236,7 +236,7 @@ Perf
 
 Aby byl srozumitelnější výstup, vyberete zobrazíte jako čas – graf, zobrazuje dostupné paměti v průběhu času:
 
-![Log Analytics paměti v čase](media/get-started-queries/chart.png)
+![Dotaz paměti v čase](media/get-started-queries/chart.png)
 
 
 

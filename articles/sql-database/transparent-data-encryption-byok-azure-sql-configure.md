@@ -1,5 +1,5 @@
 ---
-title: 'Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat SQL - key - Azure SQL Database | Dokumentace Microsoftu'
+title: 'Prostředí PowerShell a rozhraní příkazového řádku: Povolení šifrování TDE SQL - pomocí služby Azure Key Vault – přineste si vlastní klíč – Azure SQL Database | Dokumentace Microsoftu'
 description: Další informace o konfiguraci Azure SQL Database a Data Warehouse, pokud chcete začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém stavu pomocí Powershellu nebo rozhraní příkazového řádku.
 services: sql-database
 ms.service: sql-database
@@ -12,16 +12,16 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: be73f5cb7db232538f301b2eb56bf61267fce5d5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b6abfa24d790554de239171ffef1899cdc135d26
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566716"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996249"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat pomocí vlastní klíče ze služby Azure Key Vault
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat s použitím klíče spravovaného zákazníkem ze služby Azure Key Vault
 
-Tento článek vás provede postupem použití klíče ze služby Azure Key Vault pro transparentní šifrování dat (TDE) pro SQL Database nebo datového skladu. Další informace o transparentní šifrování dat s podporou přineste si vlastní klíč (BYOK), najdete v tématu [TDE vlastního klíče do Azure SQL](transparent-data-encryption-byok-azure-sql.md). 
+Tento článek vás provede postupem použití klíče ze služby Azure Key Vault pro transparentní šifrování dat (TDE) pro SQL Database nebo datového skladu. Další informace o transparentní šifrování dat díky integraci služby Azure Key Vault – podpora přineste si vlastní klíč (BYOK), najdete v tématu [transparentní šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](transparent-data-encryption-byok-azure-sql.md). 
 
 ## <a name="prerequisites-for-powershell"></a>Požadavky na prostředí PowerShell
 

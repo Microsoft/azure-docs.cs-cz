@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/24/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 58124ab5938c7bee9f83a8c37ab5c5618b4b7d54
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 78b362eb75ab4e0ca17045f8c32761a65897d449
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789819"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000178"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -22,7 +22,7 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
  
 - **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, japonština, ruština a brazilská portugalština. Pokud jazyk nejde rozpoznat, přejde se zpátky k angličtině.
 - **Přepisování zvukového záznamu**: Převede řeči na text v 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, portugalština (Brazílie), hindština a korejštině.
-- **Skryté titulky**: Vytvoří titulků v tří formátů: VTT TTML, SRT APLIKACE.
+- **Skryté titulky**: Vytvoří titulků v tří formátů: VTT, TTML, SRT.
 - **Dvě kanálu zpracování**: Automaticky detekuje, oddělte přepisu a sloučí do jediné časové osy.
 - **Noise snížení**:  Vymaže nahoru nahrávky zvuku nebo hlučného telefonního subsystému (na základě Skype filtrů).
 - **Přizpůsobení přepisu (CRIS která)**: Trénovat a spustí rozšířenou vlastní převod řeči na text modely a vytvořte záznamy o studiu specifických pro dané odvětví.

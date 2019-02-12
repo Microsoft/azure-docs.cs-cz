@@ -4,21 +4,21 @@ description: Další informace o získání mediálního obsahu do Media Service
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: f7615911d39ea66cdcf5ed9913ac420f2d1c9de9
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53636168"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995386"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní REST
 

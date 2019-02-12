@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3dac11ac4409ddde5264307439533bd583d75a9d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888647"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993047"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI 
 
@@ -116,7 +116,7 @@ Po importu souboru, ověření zóny DNS, můžete použít některou z následu
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* Pomocí rutiny prostředí PowerShell můžete vytvořit seznam záznamů `Get-AzureRmDnsRecordSet`.
+* Záznamy můžete vypsat pomocí příkazu Azure CLI `az network dns record-set ns list`.
 * Můžete použít `nslookup` k ověření překladu názvů u záznamů. Protože ještě není přidělena zóny, musíte explicitně zadat správné názvové servery Azure DNS. Následující příklad ukazuje, jak načíst názvy názvových serverů, které jsou přiřazeny k zóně. To také ukazuje, jak provádět dotazy pomocí záznamu "www" `nslookup`.
 
     ```azurecli
@@ -188,6 +188,6 @@ Jako importu zóny je nejprve nutné pro přihlášení, vaše předplatné a ko
 
 Chcete-li exportovat existující zónu Azure DNS **contoso.com** ve skupině prostředků **myresourcegroup** do souboru **contoso.com.txt** (v aktuální složce), spusťte `azure network dns zone export`. Tento příkaz volá služba Azure DNS vytvořit výčet sady záznamů v zóně a exportovat výsledky do souboru zóny vazby kompatibilní.
 
-    ```
-    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
-    ```
+```
+az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
+```

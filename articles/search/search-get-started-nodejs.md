@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 0b36ee9aa54f0d8dd3d246d6c5a96e767326d2d8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634673"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005331"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Začínáme se službou Azure Search v Node.js
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ Může taky zkusit kterýkoli z těchto výrazů:
 ## <a name="next-steps"></a>Další postup
 Toto je první kurz služby Azure Search založený na Node.js a sadě dat USGS. Postupně ho budeme rozšiřovat o ukázky dalších vyhledávacích funkcí, které by se vám ve vlastních řešeních mohly hodit.
 
-Pokud již máte základní informace ve službě Azure Search, můžete použít tuto ukázku jako odrazový můstek za vyzkoušení moduly pro návrhy (našeptávání nebo automatické dokončování dotazů), filtrů a Fasetové navigace. Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.
+Pokud už službu Azure Search trochu znáte, tato ukázka vám může posloužit jako odrazový můstek k vyzkoušení modulů pro automatické návrhy (našeptávání nebo automatické dokončování dotazů), filtrů a fasetové navigace. Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.
 
 Jste nováčky ve službě Azure Search? Doporučujeme vyzkoušet ostatní kurzy a vytvořit si představu o tom, co se dá vytvořit. Pokud hledáte další zdroje, přejděte na [stránku dokumentace](https://azure.microsoft.com/documentation/services/search/). 
 

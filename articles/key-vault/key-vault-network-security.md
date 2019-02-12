@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: d95ede3b6e99d6791a2642c6059281dedca3fcf2
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: caf649c51346f63aa05d8f2d460e2870493b1587
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423156"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991612"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace bran firewall služby Azure Key Vault a virtuální sítě
 
@@ -38,11 +38,11 @@ Tady je postup konfigurace brány firewall služby Key Vault a virtuální sít�
 
 Můžete také přidat nové virtuální sítě a podsítě a pak povolit koncové body služby pro nově vytvořený virtuální sítě a podsítě, tak, že vyberete **+ přidat novou virtuální síť**. Postupujte podle pokynů.
 
-## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
+## <a name="use-the-azure-cli"></a>Použití Azure CLI 
 
-Tady je postup konfigurace brány firewall služby Key Vault a virtuální sítě pomocí rozhraní příkazového řádku Azure CLI 2.0:
+Tady je postup konfigurace brány firewall služby Key Vault a virtuální sítě pomocí rozhraní příkazového řádku Azure
 
-1. [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) a [přihlášení](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+1. [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a [přihlášení](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
 
 2. Seznam pravidel virtuální sítě k dispozici. Pokud jste nenastavili všechna pravidla pro tento trezor klíčů, bude seznam prázdný.
    ```azurecli
@@ -77,45 +77,47 @@ Tady je postup konfigurace brány firewall služby Key Vault a virtuální sít�
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Tady je postup konfigurace brány firewall služby Key Vault a virtuální sítě pomocí prostředí PowerShell:
 
-1. Nainstalujte nejnovější [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps), a [přihlášení](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Nainstalujte nejnovější [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps), a [přihlášení](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 2. Seznam pravidel virtuální sítě k dispozici. Pokud jste nenastavili všechna pravidla pro tento trezor klíčů, bude seznam prázdný.
    ```PowerShell
-   (Get-AzureRmKeyVault -VaultName "mykeyvault").NetworkAcls
+   (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```
 
 3. Povolte koncový bod služby Key Vault na existující virtuální síť a podsíť.
    ```PowerShell
-   Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzureRmVirtualNetwork
+   Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
    ```
 
 4. Přidáte pravidlo pro sítě pro virtuální síť a podsíť.
    ```PowerShell
-   $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
+   $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
+   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
    ```
 
 5. Přidáte rozsah IP adres, ze kterého chcete povolit přenosy.
    ```PowerShell
-   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
+   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
 6. Pokud tento trezor klíčů by měly být přístupné pro všechny důvěryhodné služby, nastavte `bypass` k `AzureServices`.
    ```PowerShell
-   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
+   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
 7. Zapnout pravidel sítě tak, že nastavíte výchozí akce `Deny`.
    ```PowerShell
-   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
+   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
 ## <a name="references"></a>Odkazy
 
-* Příkazy Azure CLI 2.0: [az keyvault sítě rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Rutiny Powershellu pro Azure: [Get-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurermkeyvault), [Add-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureRmKeyVaultNetworkRule), [Remove-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureRmKeyVaultNetworkRule), [Update-AzureRmKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureRmKeyVaultNetworkRuleSet)
+* Příkazy Azure CLI: [az keyvault sítě rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Rutiny Powershellu pro Azure: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Další postup
 

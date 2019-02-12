@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1e2511ed22cfc6e81844bfdc4672d5fc67ea744f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893214"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998514"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -28,7 +28,7 @@ V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
 > * Vytvoření testovacího prostředí v učebně
-> * Konfigurace testovacího prostředí v učebně
+> * Přidání uživatelů do testovacího prostředí
 > * Odeslání odkazu pro registraci studentům
 
 ## <a name="prerequisites"></a>Požadavky
@@ -76,7 +76,7 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
     5. Zadejte **popis** šablony.
 9. Na stránce šablony vyberte **Next** (Další). 
 10. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 
-    1. Pokud chcete šablonu publikovat okamžitě, zaškrtněte políčko *I understand I can't modify the template after publishing. This process can only be done once and can take up to an hour* (Chápu, že publikovanou šablonu není možné upravit. Tento postup je možné provést pouze jednou a může trvat až hodinu.) a vyberte **Publish** (Publikovat).  
+    1. Chcete-li publikovat šablony okamžitě a vyberte **publikovat**.  
 
         > [!WARNING]
         > Publikování nejde vrátit zpět. 

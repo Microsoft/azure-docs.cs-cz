@@ -1,6 +1,6 @@
 ---
-title: Dotazovací jazyk Azure Log Analytics monitorování | Dokumentace Microsoftu
-description: Odkazy na zdroje informací, jak psát dotazy v Log Analytics.
+title: Azure Monitor vyžaduje protokol | Dokumentace Microsoftu
+description: Odkazy na zdroje informací o psaní dotazů protokolu ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,55 +11,57 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 32e64ce7772d562ea34a0d74afbd737be27d247d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968864"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989241"
 ---
-# <a name="log-analytics-query-language"></a>Protokolovat dotazovací jazyk Analytics
-Log Analytics poskytuje shromažďování protokolů a analýzu pro monitorování Azure. Je založená na Průzkumník dat Azure a používá verzi stejné dotazovací jazyk. [Dokumentace k jazyku dotazu Průzkumník dat Azure](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro zápis dotazy Log Analytics. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a na rozdíly s implementací jazyka Log Analytics.
+# <a name="azure-monitor-log-queries"></a>Dotazů na protokoly Azure monitoru
+Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a dotazů na protokoly Azure monitoru používá verzi stejné dotazovací jazyk. [Dokumentace k jazyku dotazu Průzkumník dat Azure](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro psaní dotazů na protokoly Azure monitoru. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a rozdíly mezi Azure Monitor implementace jazyka.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="getting-started"></a>Začínáme
 
-- [Začínáme se službou Log Analytics na portálu Azure portal](get-started-portal.md) je lekce pro zápis dotazů a práci s výsledky na webu Azure Portal.
--  [Začínáme s dotazy v Log Analytics](get-started-queries.md) je lekce pro psaní dotazů pomocí dat Log Analytics.
+- [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) je lekce pro zápis dotazů a práci s výsledky na webu Azure Portal.
+- [Začínáme s Azure Monitor protokolu dotazy](get-started-queries.md) je lekce pro psaní dotazů pomocí Azure monitoru data protokolu.
 
 ## <a name="concepts"></a>Koncepty
-- [Analýza dat Log Analytics ve službě Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) poskytuje stručný přehled protokolu dotazuje a popisuje, jakým způsobem je strukturovaná data služby Log Analytics.
-- [Zobrazení a analýza dat v Log Analytics](../../azure-monitor/log-query/portals.md) vysvětluje portály, kde můžete vytvářet a spouštět dotazy Log Analytics.
+- [Analyzuje data protokolů ve službě Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) poskytuje stručný přehled protokolu dotazuje a popisuje, jak strukturovaná data protokolů Azure Monitor.
+- [Zobrazení a analýza dat protokolu ve službě Azure Monitor](../../azure-monitor/log-query/portals.md) vysvětluje portály, kde vytvářet a spouštět dotazy log.
 
 ## <a name="reference"></a>Referenční informace
 
 - [Referenční informace k jazyku dotazování](/azure/kusto/query) je kompletní jazykovou referenci pro Průzkumníka dat dotazovací jazyk.
-- [Protokolovat rozdíly jazyk dotazu Analytics](data-explorer-difference.md) popisuje rozdíly mezi verzemi nástroje Průzkumník dat dotazovací jazyk.
-- [Standardní vlastnosti v Log Analytics záznamy](../../azure-monitor/platform/log-standard-properties.md) popisuje vlastnosti, které jsou standardní pro všechna data Log Analytics.
-- [Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics](../../azure-monitor/log-query/cross-workspace-query.md) popisuje, jak psát dotazy, které používají data z více aplikací služby Application Insights a pracovní prostory Log Analytics.
+- [Monitorování protokolu dotazu jazyka rozdíly ve službě Azure](data-explorer-difference.md) popisuje rozdíly mezi verzemi nástroje Průzkumník dat dotazovací jazyk.
+- [Standardní vlastnosti ve službě Azure Monitor protokolování záznamů](../../azure-monitor/platform/log-standard-properties.md) popisuje vlastnosti, které jsou standardní pro všechna data protokolů Azure Monitor.
+- [Provádění dotazů protokolů napříč prostředky ve službě Azure Monitor](../../azure-monitor/log-query/cross-workspace-query.md) popisuje postup při psaní dotazů na protokoly, které používají data z více aplikací služby Application Insights a pracovní prostory Log Analytics.
 
 
 ## <a name="examples"></a>Příklady
 
-- [Příklady dotazů Analytics protokolovat](examples.md) poskytuje příklady dotazů použití dat Log Analytics.
+- [Příklady dotazů protokolu Azure Monitor](examples.md) poskytuje příklady dotazů pomocí Azure monitoru data protokolu.
 
 
 
 ## <a name="lessons"></a>Lekce
 
-- [Práce s řetězci v dotazech Log Analytics](string-operations.md) popisuje, jak pracovat s řetězcovými daty.
-- [Práce s hodnotami data a času v dotazy Log Analytics](datetime-operations.md) popisuje, jak pracovat s daty datum a čas. 
-- [Agregace v dotazy Log Analytics](aggregations.md) a [Advanced agregace v dotazy Log Analytics](advanced-aggregations.md) popisují, jak agregují a shrnují data.
-- [Spojení v dotazy Log Analytics](joins.md) popisuje, jak propojit data z více tabulek.
-- [Práce s formátem JSON a datovými struktury v dotazy Log Analytics](json-data-structures.md) popisuje, jak analyzovat json data.
-- [Zápis pokročilé dotazy v Log Analytics](advanced-query-writing.md) popisuje strategie pro vytváření složitých dotazů a opětovné použití kódu.
-- [Vytváření grafů a diagramů z dotazy Log Analytics](charts.md) popisuje, jak vizualizovat data z dotazu.
+- [Práce s řetězci v dotazech protokolu Azure Monitor](string-operations.md) popisuje, jak pracovat s řetězcovými daty.
+- [Práce s hodnotami data a času v dotazů na protokoly Azure monitoru](datetime-operations.md) popisuje, jak pracovat s daty datum a čas. 
+- [Agregace ve službě Azure Monitor protokolu dotazy](aggregations.md) a [Advanced agregace v dotazů na protokoly Azure monitoru](advanced-aggregations.md) popisují, jak agregují a shrnují data.
+- [Spojení v dotazů na protokoly Azure monitoru](joins.md) popisuje, jak propojit data z více tabulek.
+- [Práce s formátem JSON a datovými struktury v dotazů na protokoly Azure monitoru](json-data-structures.md) popisuje, jak analyzovat json data.
+- [Zápis rozšířeného protokolu dotazů ve službě Azure Monitor](advanced-query-writing.md) popisuje strategie pro vytváření složitých dotazů a opětovné použití kódu.
+- [Vytváření grafů a diagramů z dotazů na protokoly Azure monitoru](charts.md) popisuje, jak vizualizovat data z dotazu protokolu.
 
 ## <a name="cheatsheets"></a>Přehledy
 
--  [SQL do Log Analytics dotazovacímu jazyku](sql-cheatsheet.md) pomáhá zajistit uživatelům, kteří jsou již obeznámeni s SQL.
--  [Splunk do Log Analytics dotazovacímu jazyku](sql-cheatsheet.md) pomáhá zajistit uživatelům, kteří jsou již znáte Splunk.
+-  [SQL k dotazování protokolu Azure Monitor](sql-cheatsheet.md) pomáhá zajistit uživatelům, kteří jsou již obeznámeni s SQL.
+-  [Splunk dotazu protokolu Azure Monitor](sql-cheatsheet.md) pomáhá zajistit uživatelům, kteří jsou již znáte Splunk.
  
 ## <a name="next-steps"></a>Další postup
 

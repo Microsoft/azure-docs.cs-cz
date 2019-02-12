@@ -1,10 +1,10 @@
 ---
-title: Konfigurace služby Azure Media Services telemetrie se zbytkem | Microsoft Docs
-description: V tomto článku se dozvíte, jak používat Azure Media Services telemetrii pomocí rozhraní REST API...
+title: Konfigurace telemetrie Azure Media Services pomocí REST | Dokumentace Microsoftu
+description: Tento článek ukazuje, jak pomocí Azure Media Services telemetrická data pomocí rozhraní REST API...
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
@@ -12,39 +12,39 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: ceb2eafdb3df0d24a98d0d3b4afc7d1d9424b4de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b2028b16c395b770e935fdba47dc0e965284fc2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790353"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993655"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace služby Azure Media Services telemetrie se zbytkem
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace telemetrie Azure Media Services pomocí REST
 
-Toto téma popisuje obecné kroky, které může provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí rozhraní REST API. 
+Toto téma popisuje obecné kroky, které můžete chtít provést při konfiguraci telemetrie Azure Media Services (AMS) pomocí rozhraní REST API. 
 
 >[!NOTE]
->Podrobné vysvětlení, co je AMS telemetrie a jak ho zpracovat, najdete v části [přehled](media-services-telemetry-overview.md) tématu.
+>Podrobné vysvětlení, co je AMS telemetrie a jak ho používat, najdete v článku [přehled](media-services-telemetry-overview.md) tématu.
 
-Podle pokynů popsaných v tomto tématu jsou:
+Podle kroků popsaných v tomto tématu jsou:
 
-- Získání účtu úložiště přidruženého k účtu Media Services
+- Získání účtu úložiště, které jsou přidružené k účtu Azure Media Services
 - Získání koncových bodů oznámení
-- Vytvoření koncového bodu oznámení pro monitorování. 
+- Vytváří se koncový bod oznámení pro sledování. 
 
-    Vytvoření koncového bodu oznámení, nastavte EndPointType na AzureTable (2) a endPontAddress nastavení do tabulky úložiště (například https://telemetryvalidationstore.table.core.windows.net/).
+    Vytvoření koncového bodu oznámení, nastavte EndPointType AzureTable (2) a endPontAddress nastavení do tabulky úložiště (například https://telemetryvalidationstore.table.core.windows.net/).
   
 - Získání konfigurace monitorování
 
-    Vytvořte monitorování konfiguraci nastavení pro služby, které chcete monitorovat. Více než jeden monitorování nastavení konfigurace je povolen. 
+    Vytvořte konfiguraci monitorování nastavení pro služby, které chcete monitorovat. Více než jednu konfiguraci nastavení monitorování je povolen. 
 
 - Přidat konfiguraci monitorování
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Získat účet úložiště, které jsou přidružené k účtu Media Services
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Získat účet úložiště přidružený k účtu Azure Media Services
 
 ### <a name="request"></a>Žádost
 
@@ -72,7 +72,7 @@ Podle pokynů popsaných v tomto tématu jsou:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>Získat koncových bodů oznámení
+## <a name="get-the-notification-endpoints"></a>Získání koncových bodů oznámení
 
 ### <a name="request"></a>Žádost
 
@@ -126,7 +126,7 @@ Podle pokynů popsaných v tomto tématu jsou:
     }
 
 >[!NOTE]
->Nezapomeňte změnit "https://telemetryvalidationstore.table.core.windows.net" hodnota k vašemu účtu úložiště.
+>Nezapomeňte změnit "https://telemetryvalidationstore.table.core.windows.net" hodnotu do vašeho účtu úložiště.
 
 ### <a name="response"></a>Odpověď
 
@@ -233,9 +233,9 @@ Podle pokynů popsaných v tomto tématu jsou:
     Content-Type: application/json; charset=utf-8
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-## <a name="consuming-telemetry-information"></a>Využívání telemetrické informace
+## <a name="consuming-telemetry-information"></a>Informace o používání telemetrii
 
-Informace o využívání telemetrické informace najdete v tématu [to](media-services-telemetry-overview.md) tématu.
+Informace o používání telemetrické informace najdete v tématu [to](media-services-telemetry-overview.md) tématu.
 
 ## <a name="next-steps"></a>Další postup
 

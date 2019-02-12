@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2f6ceeebd18a91472ee12f04c0ac8e602b05f269
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a65e88e3f94f64a56bde882b535030968ae354d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197547"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991272"
 ---
 # <a name="create-highlights-from-existing-videos"></a>Vytvoření vybraná vystoupení z existujících videí
 
@@ -27,17 +27,14 @@ Toto téma ukazuje, jak vytvářet a publikovat přehledy videí na základě ji
     Na této stránce se zobrazí souhrnný přehled videa. 
 
     ![Insights](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
-
 3. Stiskněte tlačítko **Edit** (Upravit).
 
     Tato stránka zobrazuje úplný rozpis videa. Rozpis je rozdělený do bloků. Bloky usnadňují procházení dat. Blok může být rozdělený třeba podle toho, jak se mění přednášející, nebo když nastane dlouhá pauza. Můžete vytvořit vlastní seznam stop obsahující jenom řádky, které chcete. Pokud chcete zobrazit jenom konkrétní části zdrojového videa, můžete filtrovat podle témat / klíčových slov, pocitového zabarvení, lidí nebo mluvčích. Můžete zobrazit jenom přepis videa nebo optické rozpoznávání znaků (OCR) ve videu.    
 
     ![Insights](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
-
 4. Vytvořte si seznam stop.
 
     Pokud chcete na seznam přidat nebo z něho odebrat řádky, stiskněte **+**/**-**.
-
 5. Zobrazte náhled seznamu stop.
 
     Po dokončení vytváření seznamu stop stiskněte **Preview** (Náhled).

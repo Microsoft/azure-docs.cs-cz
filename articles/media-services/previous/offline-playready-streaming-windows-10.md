@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/30/2018
+ms.date: 02/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 75ed9a3c2a9f2c5418af5d024cfcf979e3552035
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9f5ccccaffbd11b482ed04875563fc33fb054d03
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812042"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995149"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>PlayReady offline Streaming pro Windows 10
+# <a name="offline-playready-streaming-for-windows-10"></a>PlayReady offline Streaming pro Windows 10  
 
 Azure Media Services podporují offline stažení/přehrávání s ochranou DRM. Tento článek se zaměřuje na offline podporu Azure Media Services pro Windows 10/PlayReady klientů. Si můžete přečíst o podporu offline režimu pro iOS/FairPlay a zařízení s Androidem/Widevine v následujících článcích:
 

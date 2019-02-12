@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: cd680f24eafe61bc73fa6eb91df4b4dfa5f5399b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 24f725f7b83c4f043ec2b977917d5bb09665c96d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073420"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990321"
 ---
 # <a name="grant-several-applications-access-to-a-key-vault"></a>Udělit několik aplikací přístup k trezoru klíčů
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Zásada řízení přístupu je možné udělit několik aplikací přístup k trezoru klíčů. Zásady řízení přístupu může podporovat až 1024 aplikace a je konfigurován takto:
 
@@ -28,12 +30,16 @@ Zásada řízení přístupu je možné udělit několik aplikací přístup k t
 2. Přidejte všechny aplikace přiřazené instanční objekty do skupiny zabezpečení.
 3. Udělte přístup skupiny zabezpečení ke službě Key Vault.
 
-Tady jsou požadavky:
-* [Instalace modulu Azure Active Directory V2 PowerShell](https://www.powershellgallery.com/packages/AzureAD).
-* [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
-* Spustit následující příkazy, budete potřebovat oprávnění k vytvoření nebo úpravě skupiny v tenantovi Azure Active Directory. Pokud nemáte příslušná oprávnění, budete muset kontaktovat svého správce Azure Active Directory. Zobrazit [o službě Azure Key Vault klíče, tajné kódy a certifikáty](about-keys-secrets-and-certificates.md) podrobnosti o službě Key Vault přístup k oprávnění zásad.
+## <a name="prerequisites"></a>Požadavky
 
-Nyní spusťte následující příkazy v prostředí PowerShell:
+Tady jsou požadavky:
+* [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
+* [Instalace modulu Azure Active Directory V2 PowerShell](https://www.powershellgallery.com/packages/AzureAD).
+* Oprávnění k vytvoření nebo úpravě skupiny v tenantovi Azure Active Directory. Pokud nemáte příslušná oprávnění, budete muset kontaktovat svého správce Azure Active Directory. Zobrazit [o službě Azure Key Vault klíče, tajné kódy a certifikáty](about-keys-secrets-and-certificates.md) podrobnosti o službě Key Vault přístup k oprávnění zásad.
+
+## <a name="granting-key-vault-access-to-applications"></a>Udělení přístupu službě Key Vault do aplikací
+
+Spusťte následující příkazy v prostředí PowerShell:
 
 ```powershell
 # Connect to Azure AD 
@@ -49,7 +55,7 @@ Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId
 # You can add several members to this group, in this fashion. 
  
 # Set the Key Vault ACLs 
-Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId `
+Set-AzKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId `
 -PermissionsToKeys decrypt,encrypt,unwrapKey,wrapKey,verify,sign,get,list,update,create,import,delete,backup,restore,recover,purge `
 –PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge `
 –PermissionsToCertificates get,list,delete,create,import,update,managecontacts,getissuers,listissuers,setissuers,deleteissuers,manageissuers,recover,purge,backup,restore `

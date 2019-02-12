@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464377"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998075"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Způsob využívání webové služby Azure Machine Learning Studio
 
@@ -70,7 +70,7 @@ Načíst klíč rozhraní API pro službu Web Microsoft Learning klasické poč�
 ## <a id="connect"></a>Připojení ke službě Machine Learning Web
 Můžete připojit ke službě Machine Learning Web použitím libovolného programovacího jazyka, který podporuje HTTP požadavku a odpovědi. Můžete zobrazit příklady v C#, Pythonu a r. od stránce nápovědy služby Machine Learning Web.
 
-**Machine Learning API nápovědy** nápovědy Machine Learning API se vytvoří při nasazení webové služby. Zobrazit [Azure Machine Learning názorný postup nasazení webové služby](walkthrough-5-publish-web-service.md).
+**Machine Learning API nápovědy** nápovědy Machine Learning API se vytvoří při nasazení webové služby. Zobrazit [tutoriál 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md).
 Machine Learning API nápovědy obsahuje podrobnosti o predikcí webové služby.
 
 1. Klikněte na webovou službu, se kterým pracujete.

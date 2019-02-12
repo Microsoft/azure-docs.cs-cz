@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827444"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991323"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
 
-Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje vykreslení grafy, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Průzkumník metrik je nezbytné výchozí bod pro zkoumání různých výkon a dostupnost problémy s vaší aplikací a infrastruktury hostované v Azure nebo monitorovat pomocí služby Azure Monitor.
+Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje zobrazování grafů, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Průzkumník metrik je nezbytné výchozí bod pro zkoumání různých výkon a dostupnost problémy s vaší aplikací a infrastruktury hostované v Azure nebo monitorovat pomocí služby Azure Monitor.
 
 ## <a name="metrics-in-azure"></a>Metriky v Azure
 
-Metriky ve službě Microsoft Azure jsou řady měřené hodnoty a výčty, které jsou shromážděná a uložená v čase. Existují metriky standard (nebo "platformy") a vlastní metriky. Standardní metriky jsou které jste získali od platformě Azure jako takové. Standardní metriky odrážejí statistické údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, vlastní metriky se odesílají do Azure ve svých aplikacích pomocí [API pro Application Insights pro vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Vlastní metriky jsou uloženy v prostředky Application Insights spolu s dalšími metrikami konkrétní aplikace.
+[Metriky ve službě Azure Monitor](data-collection.md#metrics) budou série měřené hodnoty a výčty, které jsou shromážděná a uložená v čase. Existují metriky standard (nebo "platformy") a vlastní metriky. Standardní metriky jsou které jste získali od platformě Azure jako takové. Standardní metriky odrážejí statistické údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, vlastní metriky se odesílají do Azure ve svých aplikacích pomocí [API pro Application Insights pro vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Vlastní metriky jsou uloženy v prostředky Application Insights spolu s dalšími metrikami konkrétní aplikace.
 
 ## <a name="create-a-new-chart"></a>Vytvořit nový graf
 

@@ -9,22 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/08/19
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6fc85bd96294650eb2bbf9495642851ade7c7868
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b38be081a7fefe465f0b6fa3683c183891c6e7bf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731508"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002289"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
 Pomocí Azure Active Directory (Azure AD), můžete určit samostatné správcům slouží různým funkcím. Správci můžou určené na portálu Azure AD k provádění úlohy, jako je přidání nebo změna uživatelů, přiřazení správních rolí, resetovat hesla uživatelů, Správa uživatelských licencí a správa názvů domén.
 
-Globální správce má přístup ke všem funkcím pro správu. Ve výchozím nastavení je osoba, která uživatel zaregistruje do služby pro předplatné Azure přiřadit roli globálního správce adresáře. Jenom globální správci a správci privilegovaných rolí můžete delegovat role správců.
+Globální správce má přístup ke všem funkcím pro správu. Ve výchozím nastavení je osoba, která uživatel zaregistruje do služby pro předplatné Azure přiřadit roli globálního správce adresáře. Jenom globální správci a správci privilegovaných rolí můžete delegovat role správců. Aby se snížilo riziko pro vaši firmu, doporučujeme, že jste tuto roli přiřazovat jenom pár lidí ve vaší společnosti.
+
 
 ## <a name="assign-or-remove-administrator-roles"></a>Přiřazení nebo odebrání rolí správce
 
@@ -86,6 +87,9 @@ K dispozici jsou následující role správce:
   > [!NOTE]
   > Pokud chcete nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, musí uživatel také být globálním správcem.
   
+* **[Schvalovatel přístupu Lockboxu zákazníka](#customer-lockbox-access-approver)**: Spravuje [požádá zákazníka Lockboxu](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests) ve vaší organizaci. Dostávat e-mailová oznámení pro požadavky zákazníka Lockboxu a mohou schválit a odmítnout žádosti o Centru pro správu služeb Microsoft 365. Funkci Lockboxu zákazníka, můžete zapnout také v zapnutí nebo vypnutí. Jenom globální správci můžou resetovat hesla uživatelů přiřazených k této roli.
+<!--  This was announced in August of 2018. https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Customer-Lockbox-Approver-Role-Now-Available/ba-p/223393-->
+
 * **[Správci zařízení](#device-administrators)**: Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí se na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory, stávají správci místních počítačů. Nemají možnost spravovat objekty zařízení v Azure Active Directory. 
 
 * **[Uživatelé Čtoucí z adresáře](#directory-readers)**: Toto je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Neměla být přiřazena k žádným uživatelům.
@@ -98,9 +102,10 @@ K dispozici jsou následující role správce:
   > [!NOTE] 
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce služby Dynamics 365". Je "Dynamics 365 správce" v [webu Azure portal](https://portal.azure.com).
 
-* **[Správce Exchange](#exchange-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud se tato služba používá. a také možnost vytvářet a spravovat všechny skupiny Office 365 spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Správce Exchange](#exchange-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud se tato služba používá. Má také možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]
-  > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Exchange". Je "Správce systému Exchange" v [webu Azure portal](https://portal.azure.com).
+  > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Exchange". Je "Správce systému Exchange" v [webu Azure portal](https://portal.azure.com). Je "Exchange Online uživatelské" v [centra pro správu Exchange](https://go.microsoft.com/fwlink/p/?LinkID=529144). 
+
 
 * **[Globální správce / správce společnosti](#company-administrator)**: Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory, jakož i služeb, které používají identity Azure Active Directory jako Centrum zabezpečení Microsoft 365, Microsoft 365 centru dodržování předpisů, Exchange Online, SharePoint Online, a Online Skype pro firmy. Osoba, která se zaregistruje k tenantovi Azure Active Directory se stane globálním správcem. Další role správců můžou přiřazovat jenom globální správci. Ve vaší společnosti může být více než jednoho globálního správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
 
@@ -511,7 +516,7 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 
-### <a name="customer-lockbox-access-approver"></a>Schvalovatel přístupu ke Customer LockBoxu
+### <a name="customer-lockbox-access-approver"></a>Schvalovatel přístupu Lockboxu zákazníka
 Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace zákazníka. Tato role nemá přístup k zobrazení, vytvořit nebo spravovat lístky podpory.
 
   > [!NOTE]

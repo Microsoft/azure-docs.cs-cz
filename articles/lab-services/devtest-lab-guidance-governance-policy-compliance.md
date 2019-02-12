@@ -3,21 +3,23 @@ title: Zásady správného řízení infrastruktury Azure DevTest Labs
 description: Tento článek obsahuje pokyny pro zásady správného řízení infrastruktury Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: spelluru
+author: christianreddington
 manager: femila
+editor: spelluru
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 8165efaa10eb31410f00dfa9bfffb2c02d7396ae
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 02/11/2019
+ms.author: chredd
+ms.reviewer: anthdela,juselph
+ms.openlocfilehash: f4459d43452aa2066f4a7f841bb7d92914e7a073
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872321"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998307"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – firemní zásady a dodržování předpisů
 Tento článek poskytuje pokyny pro firemní zásady a dodržování předpisů pro infrastrukturu Azure DevTest Labs. 

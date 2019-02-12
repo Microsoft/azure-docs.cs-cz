@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 22603de40e2ebafb1354377898f5a0432e4f6129
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3bc42bf5b83f9ff983c3d8d88a9a496cc395096c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388758"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992581"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a formáty Media Encoderu Standard
 
@@ -29,15 +29,15 @@ Tento článek obsahuje seznam nejběžnějších import a export formátů soub
 | Formáty souborů (přípony souborů) | Podporováno |
 | --- | --- | --- | --- |
 | FLV (s kodeky H.264 a AAC) (.flv) |Ano |
-| MXF (.mxf) |Ano |
+| MXF    (.mxf) |Ano |
 | GXF (.gxf) |Ano |
 | 3GP MPEG2-PS, MPEG2-TS (.ts, PS, .3gp, .3gpp, MPG) |Ano |
 | Windows Media Video (WMV) a ASF (.wmv, .asf) |Ano |
 | AVI (nekomprimovaný 8 bitů nebo 10bitovým) (.avi) |Ano |
-| MP4 (.mp4, .m4a, .m4v) a ISMV (.isma, .ismv) |Ano |
+| MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Ano |
 | [Microsoft Digital Video Recording](https://msdn.microsoft.com/library/windows/desktop/dd692984) (dvr ms) |Ano |
 | Matroska a WebM (.mkv) |Ano |
-| WAVE a WAV (.wav) |Ano |
+| WAVE/WAV (.wav) |Ano |
 | QuickTime (QuickTime) |Ano |
 
 > [!NOTE]
@@ -58,8 +58,8 @@ nebo
 | Kodeky vstupního videa | Podporováno |
 | --- | --- | --- | --- |
 | AVC 8-bit/10-bit, až 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |
-| Avid DNxHD (v souborech MXF) |Ano |
-| DVCPro a DVCProHD (v souborech MXF) |Ano |
+| Avid DNxHD (in MXF) |Ano |
+| DVCPro/DVCProHD (in MXF) |Ano |
 | Digitální video (DV) (v souborech AVI) |Ano |
 | JPEG 2000 |Ano |
 | MPEG-2 (až do profilu 422 a vysoké úrovně; včetně variant, jako jsou XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10) |Až do profilu 422 |
@@ -82,25 +82,25 @@ nebo
 | --- | --- | --- | --- |
 | AAC (AAC-LC, AAC-HE a AAC-HEv2; až 5.1) |Ano |
 | MPEG vrstvy 2 |Ano |
-| MP3 (zvuk vrstvu MPEG-1 3) |Ano |
-| Windows Media zvuku |Ano |
+| MP3 (MPEG-1 Audio Layer 3) |Ano |
+| Windows Media Audio |Ano |
 | WAV/PCM |Ano |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |
-| [Díle](https://go.microsoft.com/fwlink/?LinkId=822667) |Ano |
+| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Ano |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ano |
 | AMR (Adaptivní s více rychlost) |Ano |
 | AES (SMPTE 331 M a 302 M, AES3-2003) |Ne |
 | Dolby® E |Ne |
 | Digitální Dolby® (AC3) |Ne |
-| Digitální Dolby® Plus (E-AC3) |Ne |
+| Dolby® Digital Plus (E-AC3) |Ne |
 
 ## <a name="output-formats-and-codecs"></a>Kodeky a formáty výstupu
 V následující tabulce jsou uvedeny kodeky a soubor formáty, které jsou podporovány pro export.
 
 | Formát souboru | Kodek videa | Zvukový kodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H.264 (vysoká, hlavní a standardních hodnot profily) |AAC-LC, HE-AAC v1, v2 HE-AAC |
-| MPEG2-TS |H.264 (vysoká, hlavní a standardních hodnot profily) |AAC-LC, HE-AAC v1, v2 HE-AAC |
+| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H.264 (vysoká, hlavní a standardních hodnot profily) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MPEG2-TS |H.264 (vysoká, hlavní a standardních hodnot profily) |AAC-LC, HE-AAC v1, HE-AAC v2 |
 
 ## <a name="next-steps"></a>Další postup
 

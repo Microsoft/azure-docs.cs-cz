@@ -10,17 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/08/2018
+ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c9392d910098e8a2dfadc4842dfcfe185f01fafc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120882"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004515"
 ---
 # <a name="analytics-in-application-insights"></a>Analýzy ve službě Application Insights
-Analýza je výkonný nástroj hledání a dotaz z [Application Insights](../../azure-monitor/app/app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení. Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace [okno přehledu](../../azure-monitor/app/app-insights-dashboards.md).
+Analýza je výkonný nástroj hledání a dotaz z [Application Insights](app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení.
+Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace [okno přehledu](app-insights-dashboards.md).
 
 ![Otevřené stránce portal.azure.com otevřete prostředek Application Insights a klikněte na tlačítko Analytics.](./media/analytics/001.png)
 
@@ -28,6 +29,12 @@ Můžete také použít [Analytics playground](https://go.microsoft.com/fwlink/?
 <br>
 <br>
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
+
+## <a name="relation-to-azure-monitor-logs"></a>Vztah k protokoly Azure monitoru
+Application Insights analytics vychází [Průzkumník dat Azure](/azure/data-explorer) jako protokoly Azure monitoru a také používá [Průzkumník dat dotazovací jazyk](/azure/kusto/query). Používá stejný [portál log analytics](../log-query/get-started-portal.md) jako protokoly Azure monitoru, i když jeho data se ukládají v samostatném oddílu.
+
+Můžete přímo k datům nelze přistoupit v pracovním prostoru Log Analytics z Application Insights analytics ani můžete jste přímý přístup k aplikaci data ze služby log analytics. Aby bylo možné dotazovat obě sady dat společně, zápisu [dotazu v log analytics](../log-query/log-query-overview.md) a použití [App() použijte výraz](../log-query/app-expression.md) pro přístup k datům aplikace.
+
 
 ## <a name="query-data-in-analytics"></a>Dotazování dat v Analytics
 Typický dotaz začíná název tabulky, za nímž následuje řadu *operátory* oddělené `|`.

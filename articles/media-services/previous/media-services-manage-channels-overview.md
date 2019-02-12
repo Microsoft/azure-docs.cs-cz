@@ -4,7 +4,7 @@ description: Toto téma s přehledem živého streamování využívajícího sl
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3814041359884fc2862b0e90a58aabd1ad26c4cb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 318ec5a4f9aceaf02048768cbf630eff08feff6b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382142"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998004"
 ---
-# <a name="overview-of-live-streaming-using-azure-media-services"></a>Přehled živého streamování využívajícího službu Azure Media Services
+# <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování využívajícího službu Media Services
 
 > [!NOTE]
 > Od 12. května 2018, živé kanály budou nadále podporu přenosového streamu RTP/MPEG-2 protokol ingestování. Migrujte prosím z RTP/MPEG-2 na RTMP nebo MP4 s fragmentací (Smooth Streaming) ingestovací protokoly.

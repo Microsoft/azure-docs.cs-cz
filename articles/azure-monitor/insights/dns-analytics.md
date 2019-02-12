@@ -1,6 +1,6 @@
 ---
-title: Řešení DNS Analytics ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Nastavit a používat řešení DNS Analytics ve službě Log Analytics shromažďovat informace o infrastruktuře DNS na zabezpečení, výkon a operace.
+title: Řešení DNS Analytics ve službě Azure Monitor | Dokumentace Microsoftu
+description: Nastavení a pomocí řešení DNS Analytics ve službě Azure Monitor můžete získat informace o infrastruktuře DNS na zabezpečení, výkon a operace.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 21b44b1c739818206fdba9d10250a2976f1d90db
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746859"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992717"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
 ![Symbol DNS Analytics](./media/dns-analytics/dns-analytics-symbol.png)
 
-Tento článek popisuje, jak nastavit a začít používat Azure DNS analytického řešení ve službě Azure Log Analytics shromažďovat informace o infrastruktuře DNS na zabezpečení, výkon a operace.
+Tento článek popisuje, jak nastavit a začít používat Azure DNS analytického řešení ve službě Azure Monitor k získání přehledu o infrastruktuře DNS na zabezpečení, výkon a operace.
 
 DNS Analytics vám umožní:
 
@@ -42,21 +42,21 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
-| [Skupina pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
+| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
+| [Skupina pro správu System Center Operations Manager](../platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta nástroje Operations Manager do Azure monitoru se nevyžaduje. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
 
 ### <a name="data-collection-details"></a>Podrobné informace o shromažďování dat
 
-Řešení shromažďuje inventář DNS a dat týkajících se události DNS ze serverů DNS instalaci agenta Log Analytics. Tato data pak je nahraje do služby Log Analytics a zobrazují na řídicím panelu řešení. Shromažďuje data související s inventářem, jako je například počet serverů DNS, zóny a záznamy o prostředcích, spuštěním rutin Powershellu DNS. Data se aktualizují jednou každé dva dny. Událost související data se shromažďují v reálném čase z [analýzy a protokoly auditu](https://technet.microsoft.com/library/dn800669.aspx#enhanc) poskytuje rozšířené protokolování DNS a Diagnostika ve Windows serveru 2012 R2.
+Řešení shromažďuje inventář DNS a dat týkajících se události DNS ze serverů DNS instalaci agenta Log Analytics. Tato data se potom nahráli do Azure monitoru a zobrazují na řídicím panelu řešení. Shromažďuje data související s inventářem, jako je například počet serverů DNS, zóny a záznamy o prostředcích, spuštěním rutin Powershellu DNS. Data se aktualizují jednou každé dva dny. Událost související data se shromažďují v reálném čase z [analýzy a protokoly auditu](https://technet.microsoft.com/library/dn800669.aspx#enhanc) poskytuje rozšířené protokolování DNS a Diagnostika ve Windows serveru 2012 R2.
 
 ## <a name="configuration"></a>Konfigurace
 
 Ke konfigurování řešení, použijte následující informace:
 
-- Musíte mít [Windows](../../azure-monitor/platform/agent-windows.md) nebo [nástroje Operations Manager](../../azure-monitor/platform/om-agents.md) agent na každém serveru DNS, který chcete monitorovat.
-- Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md).
+- Musíte mít [Windows](../platform/agent-windows.md) nebo [nástroje Operations Manager](../platform/om-agents.md) agent na každém serveru DNS, který chcete monitorovat.
+- Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v [řešení pro monitorování Azure přidat z Galerie řešení](solutions.md).
 
 Shromažďování dat bez nutnosti další konfigurace spuštění řešení. Přizpůsobení shromažďování dat lze však použijte následující konfiguraci.
 
@@ -64,7 +64,7 @@ Shromažďování dat bez nutnosti další konfigurace spuštění řešení. P�
 
 Na řídicím panelu řešení, klikněte na tlačítko **konfigurace** otevřete stránku konfigurace DNS Analytics. Existují dva typy změn konfigurace, které můžete použít:
 
-- **Názvy domén na seznamu povolených**. Řešení nezpracovává vyhledávací dotazy. Udržuje seznam povolených přípon názvů domén. Řešení nezpracovávají vyhledávací dotazy, které odkazují na názvy domén, které odpovídají přípon názvů domén v tomto seznamu povolených IP adres. Zpracování nejsou povolené názvy domén umožňuje optimalizovat data odesílají do Log Analytics. Výchozí seznam povolených obsahuje názvy populárních veřejných domén, například www.google.com a www.facebook.com. Zobrazení seznamu dokončení výchozí posunutím.
+- **Názvy domén na seznamu povolených**. Řešení nezpracovává vyhledávací dotazy. Udržuje seznam povolených přípon názvů domén. Řešení nezpracovávají vyhledávací dotazy, které odkazují na názvy domén, které odpovídají přípon názvů domén v tomto seznamu povolených IP adres. Zpracování nejsou povolené názvy domén umožňuje optimalizovat data odeslaná do Azure monitoru. Výchozí seznam povolených obsahuje názvy populárních veřejných domén, například www.google.com a www.facebook.com. Zobrazení seznamu dokončení výchozí posunutím.
 
  Můžete upravit seznam přidat příponu názvu domény, kterou chcete zobrazit přehledy vyhledávání pro. Můžete také odebrat příponu názvu domény, které nechcete zobrazit přehledy vyhledávání pro.
 
@@ -83,13 +83,14 @@ Pokud vaši skupinu pro správu Operations Manageru je připojený k pracovnímu
 - Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
 - Konfigurace DNS Analytics Microsoft System Center Advisor (Microsoft.IntelligencePack.Dns.Configuration)
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../platform/om-agents.md).
 
 ## <a name="use-the-dns-analytics-solution"></a>Použití řešení DNS Analytics
 
-Tato část vysvětluje všechny řídicí panel funkce a jejich použití.
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Po přidání řešení do pracovního prostoru Log Analytics – přehled stránka na webu Azure portal obsahuje **zobrazit řešení** odkaz na stručný přehled infrastruktury služby DNS. Obsahuje počet serverů DNS, kde se shromažďují data. Zahrnuje také počet požadavků provedených klientům přeložit škodlivé domény za posledních 24 hodin. Když kliknete na dlaždici, otevře se řídicí panel řešení.
+
+Na dlaždici DNS obsahuje počet serverů DNS, kde se shromažďují data. Zahrnuje také počet požadavků provedených klientům přeložit škodlivé domény za posledních 24 hodin. Když kliknete na dlaždici, otevře se řídicí panel řešení.
 
 ![Dlaždice DNS Analytics](./media/dns-analytics/dns-tile.png)
 
@@ -188,4 +189,4 @@ Existují dva způsoby, jak můžete poskytnout zpětnou vazbu:
 
 ## <a name="next-steps"></a>Další postup
 
-[Hledání protokolů](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné záznamy protokolu DNS.
+[Dotazování protokolů](../log-query/log-query-overview.md) zobrazíte podrobné záznamy protokolu DNS.

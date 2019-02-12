@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/08/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: eacb01d11799b7e739fa3d05beeef994ca187e84
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: aaf2f400d9c620e8087015a9fa1529c3c1b4e633
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977639"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003682"
 ---
 # <a name="azure-media-services-overview-legacy"></a>Přehled služby Azure Media Services (starší verze)
 

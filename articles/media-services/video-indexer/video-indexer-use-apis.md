@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: fcde97c76e11c6ecbdb22befcb1a8d1ce0437942
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: dc3e654e741fd1a326c83e51c72284f41ad74798
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299023"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55988047"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Použití rozhraní API Video Indexeru
 

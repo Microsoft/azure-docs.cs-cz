@@ -1,8 +1,8 @@
 ---
-title: Vložení do aplikace HTML5 s DASH.js Video adaptivní streamování MPEG-DASH | Microsoft Docs
-description: Toto téma ukazuje, jak pro vložení do aplikace HTML5 s DASH.js Video adaptivní streamování MPEG-DASH.
+title: Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js | Dokumentace Microsoftu
+description: Toto téma ukazuje postup vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,35 +12,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2b0e6bf643f55e1809b29def7766c58b59f4bb50
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2c8e71a058b2c770741c38f07c6c440fea90f2b2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788631"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998429"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení do aplikace HTML5 s DASH.js MPEG-DASH adaptivní streamování videa
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs-legacy"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js (starší verze)
+
 ## <a name="overview"></a>Přehled
-MPEG-DASH je standard ISO pro adaptivní streamování videa obsah, který nabízí významné výhody pro vývojáře, kteří chtějí poskytování vysoce kvalitních, adaptivní video streamování výstup. S MPEG-DASH datový proud videa automaticky upraví nižší definice stane zahlcení sítě. Tím se snižuje pravděpodobnost, že v prohlížeči zobrazuje "pozastavený" video při přehrávač stáhne další několik sekund přehrávání (neboli ukládání do vyrovnávací paměti). Jako zahlcení sítě snižuje, přehrávání videa pak vrátí datový proud s vyšší kvality. Tato schopnost přizpůsobit se šířky pásma požadované výsledkem také rychlejší čas spuštění videa. To znamená, že první několik sekund můžete přehrávají v segment fast stažení nižší kvality a potom krok až vyšší jednou dostatečný obsah kvality má byla uložená do vyrovnávací paměti.
+MPEG-DASH je standard ISO pro adaptivní streamování obsahu videa, která nabízí významné výhody pro vývojáře, kteří chtějí dodávat vysoce kvalitní, adaptivní streamování výstup videa. S MPEG-DASH datový proud videa při automaticky upraví na nižší definici stane zahlcení sítě. Tím se snižuje pravděpodobnost, že prohlížeč zobrazuje "pozastaveno" videa, když hráč stáhne další několik sekund přehrávání (označuje se také jako ukládání do vyrovnávací paměti). Jak snižuje zahlcení sítě, přehrávače videa zase vrátit datový proud vyšší kvality. Tato schopnost přizpůsobit požadovanou šířku pásma výsledkem také rychlejší spouštění pro video. To znamená, že prvních pár sekund můžete přehrát v segmentu rychlé stažení nižší kvality a potom krok až vyšší Jakmile dostatečná kvalitního obsahu má byla uložená do vyrovnávací paměti.
 
-Dash.js je open-source MPEG-DASH přehrávání videa napsané v jazyce JavaScript. Jeho cílem je zajistit přehrávač robustní, a platformy, které můžete volně opakovaně použít v aplikacích, které vyžadují přehrávání videa. Poskytuje MPEG-DASH přehrávání v žádný prohlížeč, který podporuje dnes W3C média zdrojového rozšíření (MSE), je Chrome, Microsoft Edge a IE11 (dalších prohlížečích označili jejich záměr pro podporu MSE). Další informace o DASH.js js, najdete v části dash.js úložiště GitHub.
+Souborem Dash.js je open source MPEG-DASH videopřehrávače napsané v jazyce JavaScript. Jeho cílem je poskytovat robustní, napříč platformami přehrávač, který lze libovolně opětovně použít v aplikacích, které vyžadují přehrávání videa. Poskytuje přehrávání MPEG-DASH v jakémkoli prohlížeči, které dnes podporuje W3C média zdrojového rozšíření (MSE), Chrome, Microsoft Edge a 11 (ostatní prohlížeče označili jejich cílem je podporovat MSE). Další informace o souborem DASH.js js, najdete v článku souborem dash.js úložiště GitHub.
 
-## <a name="creating-a-browser-based-streaming-video-player"></a>Vytváření založené na prohlížeči streamování videa přehrávač
-K vytvoření jednoduché webové stránky, která zobrazuje přehrávání videa s očekávané řídí takové a play, pozastavení, rewind atd., budete muset:
+## <a name="creating-a-browser-based-streaming-video-player"></a>Vytváření založené na prohlížeči streamování přehrávač videa
+K vytvoření jednoduché webové stránky, která zobrazuje přehrávač videa s očekávané řídí takové play, pozastavení, rewind atd., budete muset:
 
 1. Vytvoření stránky HTML
-2. Přidat video značky
-3. Přidat dash.js player
-4. Inicializace player
-5. Přidat některé stylu CSS
-6. Zobrazit výsledky v prohlížeči, který implementuje MSE
+2. Přidat značku pro video
+3. Přidat přehrávači souborem dash.js
+4. Inicializovat přehrávači
+5. Přidat některé šablony stylů CSS
+6. Zobrazení výsledků v prohlížeči, který implementuje MSE
 
-Inicializace přehrávač může dokončit jenom pár řádků kódu JavaScript. Pomocí dash.js, ve skutečnosti je to jednoduché vložit video MPEG-DASH do aplikace založené na prohlížeči.
+Inicializace přehrávač je možné dokončit v pouze několika řádků kódu jazyka JavaScript. Pomocí souborem dash.js, je to v podstatě to jednoduše vložit video MPEG-DASH do aplikace založené na prohlížeči.
 
 ## <a name="creating-the-html-page"></a>Vytvoření stránky HTML
-Prvním krokem je vytvoření standardní stránku HTML obsahující **video** elementu, uložte tento soubor jako basicPlayer.html jako následující příklad znázorňuje:
+Prvním krokem je vytvoření standardní stránku HTML obsahující **videa** element uložit tento soubor jako basicPlayer.html jako následující příklad ukazuje:
 
 ```html
     <!DOCTYPE html>
@@ -53,17 +54,17 @@ Prvním krokem je vytvoření standardní stránku HTML obsahující **video** e
     </html>
 ```
 
-## <a name="adding-the-dashjs-player"></a>Přidání DASH.js Player
-Chcete-li přidat odkaz na implementaci dash.js k aplikaci, získat soubor dash.all.js z verzi 1.0 dash.js projektu. To má být uložen ve složce JavaScript vaší aplikace. Tento soubor je soubor pohodlí, který vrátí všechny nezbytné dash.js kód do jediného souboru. Pokud máte podívejte kolem dash.js úložiště, můžete najít jednotlivých souborů, testování kódu a mnoho dalšího, ale když všechny ji chcete je použít dash.js, je soubor dash.all.js co potřebujete.
+## <a name="adding-the-dashjs-player"></a>Přidání přehrávači souborem DASH.js
+Chcete-li přidat souborem dash.js referenční implementaci k aplikaci, budete muset vzít dash.all.js soubor z projektu souborem dash.js verzi 1.0. To by měl být uloženy ve složce JavaScript vaší aplikace. Tento soubor je soubor usnadnění práce, která stáhne všechny potřebné souborem dash.js kódu do jednoho souboru. Pokud máte najdete kolem souborem dash.js úložiště, můžete najít jednotlivé soubory, otestovat kód a spoustu dalších věcí, ale pokud vše, co chcete udělat je použít souborem dash.js, dash.all.js souboru je, co potřebujete.
 
-Pokud chcete přidat dash.js player do aplikací, přidejte do části head basicPlayer.html značky script:
+K přehrávači souborem dash.js přidejte do svých aplikací, přidáte značky skriptu do hlavní části basicPlayer.html:
 
 ```html
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 ```
 
-Dál vytvořte funkci k chybě při inicializaci přehrávač při načtení stránky. Přidejte následující skript po řádek, ve kterém můžete načíst dash.all.js:
+V dalším kroku vytvořte funkci inicializace hráč při načtení stránky. Přidejte následující skript po řádek, ve kterém můžete načíst dash.all.js:
 
 ```html
     <script>
@@ -79,19 +80,19 @@ Dál vytvořte funkci k chybě při inicializaci přehrávač při načtení str
     </script>
 ```
 
-Tato funkce nejprve vytvoří DashContext. Slouží ke konfiguraci aplikace pro konkrétní běhového prostředí. Z technického hlediska definuje třídy, které rozhraní vkládání závislostí musí použít při vytváření aplikace. Ve většině případů použijete Dash.di.DashContext.
+Tato funkce vytvoří nejprve DashContext. To slouží ke konfiguraci aplikací pro konkrétní běhového prostředí. Z technického hlediska definuje třídy, které rozhraní injektáž závislostí musí použít při vytváření aplikace. Ve většině případů použít Dash.di.DashContext.
 
-Dále vytvořte instanci primární třídu rozhraní dash.js Media Player. Tato třída obsahuje metody, jako například potřeby přehrání a pozastavit, spravuje relaci s video element a také výklad soubor média prezentace popis (MPD), který popisuje video má být přehráván základní.
+V dalším kroku vytvoření instance třídy primární rozhraní souborem dash.js MediaPlayer. Tato třída obsahuje základní metody, jako třeba přehrát a pozastavit, spravuje relace s element videa a také řídí výklad soubor média prezentace popis (MPD), který popisuje video přehrát.
 
-K zajištění, že přehrávač je připraven k přehrávání videa je volána funkce startup() třídy Media Player. Kromě jiných věcí funkce zajišťuje, že všechny potřebné třídy (podle definice v kontextu) byly načteny. Jakmile přehrávač je připraven, můžete připojit video element se pomocí funkce attachView(). Spuštění funkce umožňuje Media Player vložit do elementu datový proud videa a také řídit přehrávání podle potřeby.
+Voláním funkce startup() MediaPlayer třídy se ujistěte se, že hráč připravené k přehrání videa. Mimo jiné funkce zajišťuje, že všechny nezbytné třídy (podle definice v rámci) byly načteny. Když hráč je připravená, můžete připojit element videa pomocí funkce attachView(). Po spuštění funkce umožňuje MediaPlayer k vložení do prvku datový proud videa a také řídit přehrávání podle potřeby.
 
-Předejte adresu URL souboru MPD Media Player tak, že o video ví, že se očekává, přehrávání. Funkce setupVideo() právě vytvořili, bude nutné provést po plně načtení stránky. To provést pomocí události při načtení textu elementu. Změna vaší <body> elementu, který chcete:
+Předejte adresu URL souboru MPD MediaPlayer takže ví o videa, že se má přehrát. Funkci setupVideo() právě vytvořili, bude nutné provést, jakmile plně načtení stránky. To lze proveďte pomocí události při načtení elementu těla. Změna vašeho <body> element:
 
 ```html
     <body onload="setupVideo()">
 ```
 
-Nakonec nastavte velikost element video pomocí šablon stylů CSS. V adaptivní streamování prostředí je to možnost obzvláště důležité, protože velikost přehrávání videa může změnit při přehrávání přizpůsobuje na měnící se síťové podmínky. V této ukázce jednoduché jednoduše vynuťte element video být 80 % okna prohlížeče dostupné přidáním následujících šablon stylů CSS do části head stránky:
+Nastavte velikost elementu videa pomocí šablon stylů CSS. V prostředí adaptivní streamování totiž obzvláště důležité, velikost přehrávaného videa můžou změnit, protože přehrávání se přizpůsobí měnící se síťové podmínky. V této ukázce jednoduché jednoduše vynuťte elementu video o 80 % okna prohlížeče k dispozici přidáním následující šablony stylů CSS do hlavní části stránky:
 
 ```html
     <style>
@@ -103,7 +104,7 @@ Nakonec nastavte velikost element video pomocí šablon stylů CSS. V adaptivní
 ```
 
 ## <a name="playing-a-video"></a>Přehrávání videa
-Pokud chcete přehrát video, přejděte v prohlížeči na soubor basicPlayback.html a kliknutím na tlačítko Přehrát na přehrávání videa zobrazí.
+Přehrát video, přejděte v prohlížeči na basicPlayback.html souboru a klikněte na tlačítko Přehrát v videopřehrávač zobrazí.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -114,5 +115,5 @@ Pokud chcete přehrát video, přejděte v prohlížeči na soubor basicPlayback
 ## <a name="see-also"></a>Viz také
 [Vývoj aplikací videopřehrávače](media-services-develop-video-players.md)
 
-[Dash.js úložiště GitHub](https://github.com/Dash-Industry-Forum/dash.js) 
+[Úložiště GitHub souborem dash.js](https://github.com/Dash-Industry-Forum/dash.js) 
 

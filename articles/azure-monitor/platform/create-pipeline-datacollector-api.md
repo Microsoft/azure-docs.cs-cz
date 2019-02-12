@@ -1,6 +1,6 @@
 ---
-title: Vytvoření datového kanálu pomocí rozhraní API Azure Log Analytics Data kolekce | Dokumentace Microsoftu
-description: V Log Analytics HTTP rozhraní API kolekce dat slouží k přidání dat POST JSON do úložiště Log Analytics z libovolného klienta, která může volat rozhraní REST API. Tento článek popisuje, jak nahrát data uložená v souborech automatizovaným způsobem.
+title: Vytvoření datového kanálu pomocí rozhraní API Azure Azure Monitor dat kolekce | Dokumentace Microsoftu
+description: Azure Monitor HTTP rozhraní API kolekce dat slouží k přidání dat POST JSON do pracovního prostoru Log Analytics z libovolného klienta, která může volat rozhraní REST API. Tento článek popisuje, jak nahrát data uložená v souborech automatizovaným způsobem.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 94d026ce1d055d18a615919df6ed5021b15bf108
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d2736e397827373949da1634a99056420dc13b8a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186068"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003852"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Vytvoření datového kanálu pomocí rozhraní API kolekce dat
 
-[Rozhraní API kolekce dat Log Analytics](../../azure-monitor/platform/data-collector-api.md) umožňuje importovat všechny vlastní data do Log Analytics. Jediným požadavkem je, že data ve formátu JSON a rozdělení do 30 MB nebo méně segmenty. Toto je zcela flexibilní mechanismus, který může být připojeno do mnoha způsoby: z dat odesílaných přímo z vaší aplikace, odešle do jednorázové ad hoc. V tomto článku se popisují některé počáteční body pro běžné scénáře: potřeba nahrát data uložená v souborech na základě pravidelné a automatizované. Během kanálu uvedené tady nesmí být většina výkonné nebo jinak k optimalizaci, je určené k sloužit jako výchozí bod na vytváření procesních toků pro produkční vlastní.
+[Rozhraní API kolekce dat Azure Monitor](data-collector-api.md) umožňuje importovat všechna data vlastního protokolu do pracovního prostoru Log Analytics ve službě Azure Monitor. Jediným požadavkem je, že data ve formátu JSON a rozdělení do 30 MB nebo méně segmenty. Toto je zcela flexibilní mechanismus, který může být připojeno do mnoha způsoby: z dat odesílaných přímo z vaší aplikace, odešle do jednorázové ad hoc. V tomto článku se popisují některé počáteční body pro běžné scénáře: potřeba nahrát data uložená v souborech na základě pravidelné a automatizované. Během kanálu uvedené tady nesmí být většina výkonné nebo jinak k optimalizaci, je určené k sloužit jako výchozí bod na vytváření procesních toků pro produkční vlastní.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Příklad problému
 Pro zbývající část tohoto článku prozkoumáme data o zobrazeních stránek ve službě Application Insights. V tomto scénáři hypotetické chceme korelovat zeměpisné údaje shromážděné ve výchozím nastavení Application Insights SDK na vlastní data obsahují počet obyvatel každé zemi na světě, s cílem identifikovat, kde jsme by měl být útraty na maximum marketingové dolarech. 
@@ -42,13 +44,13 @@ Tento článek se nevztahuje na tom, jak vytvořit data nebo [nahrajte ho do ú�
 
 1. Proces zjistí, že nová data se odeslal.  Naše Ukázka používá [aplikace logiky Azure](../../logic-apps/logic-apps-overview.md), který má k dispozici triggeru pro rozpoznávání nových dat odesílaných do objektu blob.
 
-2. Procesor těmito novými daty čte a převede do formátu JSON, formát vyžadované Log Analytics.  V tomto příkladu vytvoříme s využitím [funkce Azure Functions](../../azure-functions/functions-overview.md) jako jednoduché, nákladově efektivní způsob, jak provádění kódu pro zpracování. Funkce je vydáno ve stejné aplikaci logiky, kterou jste použili ke zjištění a nová data.
+2. Procesor těmito novými daty čte a převede do formátu JSON, formát vyžaduje Azure Monitor v tomto příkladu, použijeme [funkce Azure Functions](../../azure-functions/functions-overview.md) jako jednoduché, nákladově efektivní způsob, jak provádění kódu pro zpracování. Funkce je vydáno ve stejné aplikaci logiky, kterou jste použili ke zjištění a nová data.
 
-3. A konečně Jakmile je objekt JSON je k dispozici, zasláním ke službě Log Analytics. Aplikace logiky odešle data do Log Analytics pomocí integrovaného v aktivitě kolekce dat Log Analytics.
+3. A konečně Jakmile je objekt JSON je k dispozici, zasláním do Azure monitoru. Aplikace logiky odešle data do Azure monitoru pomocí integrovaného v aktivitě kolekce dat Log Analytics.
 
 Zatímco podrobné nastavení úložiště objektů blob, funkce Azure nebo aplikace logiky není popsané v tomto článku, podrobné pokyny jsou k dispozici na stránkách konkrétní produkty.
 
-Sledovat tento kanál, použijeme k monitorování naší funkce Azure Application Insights [podrobnosti tady](../../azure-functions/functions-monitoring.md)a Log Analytics k monitorování naší aplikace logiky [podrobnosti tady](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md). 
+Sledovat tento kanál, použijeme k monitorování naší funkce Azure Application Insights [podrobnosti tady](../../azure-functions/functions-monitoring.md)a Azure Monitor k monitorování naší aplikace logiky [podrobnosti tady](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md). 
 
 ## <a name="setting-up-the-pipeline"></a>Nastavení kanálu
 Nastavení kanálu, nejprve zkontrolujte, zda že máte vytvořený a nakonfigurovaný kontejneru objektů blob. Podobně Ujistěte se, že se vytvoří pracovní prostor Log Analytics, ve kterém chcete odesílat data do.
@@ -136,10 +138,10 @@ Nyní potřebujeme vrátíte k úpravě aplikace logiky, můžeme začít vytvá
 ![Kompletní příklad pracovního postupu Logic Apps](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
 ## <a name="testing-the-pipeline"></a>Testování kanálu
-Teď můžete nahrát nový soubor do objektu blob nakonfigurovali v předchozích krocích a jeho monitoruje vaše aplikace logiky. By měla brzy, najdete v článku novou instanci aplikace logiky odstartoval, vyžadují pro vaši funkci Azure functions a úspěšně odeslat data do Log Analytics. 
+Teď můžete nahrát nový soubor do objektu blob nakonfigurovali v předchozích krocích a jeho monitoruje vaše aplikace logiky. By měla brzy, najdete v článku novou instanci aplikace logiky odstartoval, vyžadují pro vaši funkci Azure functions a úspěšně odeslat data do Azure monitoru. 
 
 >[!NOTE]
->Může trvat až 30 minut, než se zobrazí v Log Analytics první, když odesíláte nový datový typ data.
+>Může trvat až 30 minut, než se data ve službě Azure Monitor zobrazí při prvním odeslání nového datového typu.
 
 
 ## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>Korelace s jinými daty v Log Analytics a Application Insights
@@ -163,7 +165,7 @@ Tento článek zobrazí prototyp pracovní nedají použít logice true řešen�
 
 * Přidání zpracování chyb a logika opakování v aplikaci logiky a funkce.
 * Přidejte logiku a ujistěte se, že není překročen limit volání rozhraní API služby Log Analytics Ingestování 30MB/jednou. V případě potřeby rozdělte data do menších částí.
-* Nastavení zásady čištění v úložišti objektů blob. Jakmile se úspěšně odesílají do Log Analytics, pokud byste chtěli zachovat nezpracovaná data, která je k dispozici pro účely archivace, neexistuje žádný důvod k dalšímu ukládání ho. 
+* Nastavení zásady čištění v úložišti objektů blob. Jakmile úspěšně odeslána do pracovního prostoru Log Analytics, pokud byste chtěli zachovat nezpracovaná data, která je k dispozici pro účely archivace, neexistuje žádný důvod k dalšímu ukládání ho. 
 * Ověření monitorování je povoleno napříč úplný kanál přidání body sledování a výstrahy podle potřeby.
 * Využijte správy zdrojového kódu ke správě kódu pro funkce a aplikace logiky.
 * Ujistěte se, že je a potom zásadu správy správné změn, tak, že pokud se změní schéma, funkce a Logic Apps jsou upraveny.
@@ -171,4 +173,4 @@ Tento článek zobrazí prototyp pracovní nedají použít logice true řešen�
 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.
+Další informace o [rozhraní API kolekce dat](data-collector-api.md) zapsat data do pracovního prostoru Log Analytics z jakéhokoli klienta REST API.

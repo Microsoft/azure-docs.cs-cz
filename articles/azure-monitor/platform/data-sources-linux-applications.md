@@ -1,5 +1,5 @@
 ---
-title: Výkon Linuxových aplikací v Log Analytics shromažďovat | Dokumentace Microsoftu
+title: Shromažďovat výkon aplikací Linux ve službě Azure Monitor | Dokumentace Microsoftu
 description: Tento článek obsahuje podrobnosti pro konfiguraci agenta Log Analytics pro Linux ke shromažďování čítačů výkonu pro MySQL a serveru Apache HTTP Server.
 services: log-analytics
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104841"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001321"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linuxové aplikace ve službě Log Analytics 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromáždit čítače výkonu pro Linuxové aplikace ve službě Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Tento článek obsahuje podrobné informace pro konfiguraci [agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítačů výkonu pro určité aplikace do Log Analytics.  Aplikací obsažených v tomto článku jsou:  
+Tento článek obsahuje podrobné informace pro konfiguraci [agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) získat čítače výkonu pro určité aplikace do služby Azure Monitor.  Aplikací obsažených v tomto článku jsou:  
 
 - [MySQL](#MySQL)
-- [Serveru Apache HTTP Server](#apache-http-server)
+- [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
 Pokud se MySQL Server nebo MariaDB serveru při instalaci agenta Log Analytics zjistí na počítači, se automaticky nainstaluje poskytovatele pro MySQL Server monitorování výkonu. Tento zprostředkovatel připojení k místnímu serveru MySQL/MariaDB vystavit statistiky výkonu. Přihlašovací údaje uživatele MySQL je třeba nastavit tak, aby zprostředkovatel má přístup k serveru MySQL.
@@ -51,7 +51,7 @@ Položky v souboru ověřování jsou popsané v následující tabulce.
 | Vlastnost | Popis |
 |:--|:--|
 | Port | Představuje aktuální port, který naslouchá instanci MySQL. Port 0 určuje, že se používají následující vlastnosti pro výchozí instanci. |
-| Adresy vazby| Aktuální vazby MySQL-adresu. |
+| Bind-Address| Aktuální vazby MySQL-adresu. |
 | uživatelské jméno| Uživatel MySQL lze použít k monitorování instance serveru MySQL. |
 | Heslo s kódováním base64| Heslo uživatele MySQL monitorování kódovaný jako Base64. |
 | Automatickou aktualizaci| Určuje, jestli se má prohledat znovu na změny v souboru my.cnf a přepsat soubor MySQL OMI ověřování při upgradu infrastruktury OMI poskytovatele MySQL. |
@@ -100,8 +100,8 @@ Uživatel MySQL vyžaduje přístup k následující dotazy ke shromažďování
 
 Uživatel MySQL také vyžaduje přístup SELECT k následující výchozí tabulky.
 
-- INFORMATION_SCHEMA
-- MySQL. 
+- information_schema
+- mysql. 
 
 Tato oprávnění lze udělit spuštěním následujících příkazů udělení.
 
@@ -114,7 +114,7 @@ Tato oprávnění lze udělit spuštěním následujících příkazů udělení
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](data-sources-performance-counters.md) s čítače v následující tabulce.
+Jakmile nakonfigurujete agenta Log Analytics pro Linux k odesílání dat do Azure monitoru, musíte nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor](data-sources-performance-counters.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](data-sources-performance-counters.md) s čítače v následující tabulce.
+Jakmile nakonfigurujete agenta Log Analytics pro Linux k odesílání dat do Azure monitoru, musíte nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor](data-sources-performance-counters.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|
@@ -158,14 +158,14 @@ Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do L
 | Apache HTTP Server | Nečinných pracovních procesů |
 | Apache HTTP Server | Procentní hodnota vytížených pracovních procesů |
 | Apache HTTP Server | Celkové procento CPU |
-| Apache virtuální hostitel | Chyby za minutu - klient |
-| Apache virtuální hostitel | Chyby za minutu - Server |
-| Apache virtuální hostitel | KB na žádost |
-| Apache virtuální hostitel | KB požadavků za sekundu |
-| Apache virtuální hostitel | Počet požadavků za sekundu |
+| Apache Virtual Host | Chyby za minutu - klient |
+| Apache Virtual Host | Chyby za minutu - Server |
+| Apache Virtual Host | KB na žádost |
+| Apache Virtual Host | KB požadavků za sekundu |
+| Apache Virtual Host | Počet požadavků za sekundu |
 
 
 
 ## <a name="next-steps"></a>Další postup
 * [Shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Linuxu.
-* Další informace o [protokolu dotazy](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

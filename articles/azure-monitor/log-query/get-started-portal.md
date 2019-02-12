@@ -1,5 +1,5 @@
 ---
-title: Začínáme se službou Log Analytics na portálu Azure portal | Dokumentace Microsoftu
+title: Začínáme se službou Azure Monitor log analytics | Dokumentace Microsoftu
 description: Tento článek obsahuje kurz pro psaní dotazů pomocí Log Analytics na portálu Azure portal.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 6ed8906066d66b6e16ec482a53137f9ca70ae9c7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b9a5c78ff9d6c1e2c7194f5b92511e94dfafb058
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000053"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990492"
 ---
-# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Začínáme se službou Log Analytics na portálu Azure portal
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Začínáme se službou Azure Monitor log analytics
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-V tomto kurzu se dozvíte, jak psát dotazy Log Analytics pomocí Log Analytics stránky na webu Azure Portal (aktuálně ve verzi preview). To se dozvíte, jak do:
+V tomto kurzu se dozvíte, jak používat Azure Monitor log analytics na portálu Azure portal pro zápis dotazů na protokoly Azure monitoru. To se dozvíte, jak do:
 
 - Zápis jednoduchých dotazů
 - Pochopení schématu dat
@@ -35,8 +35,8 @@ V tomto kurzu se dozvíte, jak psát dotazy Log Analytics pomocí Log Analytics 
 - Export a sdílet dotazy
 
 
-## <a name="meet-the-log-analytics-page"></a>Splnění stránce Log Analytics 
-Na stránce Log Analytics je webový nástroj pro zápis a spouštění dotazů Azure Log Analytics. Otevřete ho tak, že vyberete **protokoly (preview)** v nabídce Log Analytics. Spustí se nový prázdný dotaz.
+## <a name="meet-log-analytics"></a>Musí splňovat log analytics
+Log analytics je webový nástroj pro zápis a spouštění dotazů na protokoly Azure monitoru. Otevřete ho tak, že vyberete **protokoly** v nabídce Azure Monitor. Spustí se nový prázdný dotaz.
 
 ![Domovská stránka](media/get-started-portal/homepage.png)
 
@@ -64,7 +64,7 @@ V tomto příkladu **hledání** je vymezen _události_ tabulku a všechny zázn
 ## <a name="running-a-query"></a>Spuštění dotazu
 Spusťte dotaz kliknutím **spustit** tlačítko nebo stisknutím klávesy **Shift + Enter**. Vezměte v úvahu následující informace, které určíte, kód, který se spustí a data, která je vrácena:
 
-- Konce řádků: jeden konec umožňuje volbu dotazu. Více konce řádků ho rozdělit na samostatné dotazy.
+- Konce řádků: Jediné přerušení umožňuje volbu dotazu. Více konce řádků ho rozdělit na samostatné dotazy.
 - Cursor: Umístěte kurzor někam uvnitř dotazu k jeho provedení. Aktuální dotaz se považuje za kód, dokud nenajde prázdný řádek.
 - Časový rozsah - časový rozsah _posledních 24 hodin_ ve výchozím nastavení. Pokud chcete použít jiný rozsah, použijte Výběr času nebo přidat explicitní čas filtr rozsahu do dotazu.
 
@@ -83,10 +83,10 @@ Začněte tím, že tu být všechno _události_ tabulky.
 Event
 ```
 
-Na stránce Log Analytics automaticky obory výsledky podle:
+Analýza protokolů automaticky obory výsledky podle:
 
-- Časový rozsah: ve výchozím nastavení, dotazy jsou omezené na poslední 24 hodin.
-- Počet výsledků: výsledky jsou omezeny na maximálně 10 000 záznamů.
+- Časový rozsah:  Ve výchozím nastavení dotazy jsou omezené na poslední 24 hodin.
+- Počet výsledků: Výsledky jsou omezeny na maximálně 10 000 záznamů.
 
 Tento dotaz je velmi obecná a vrátí příliš mnoho výsledků. aby byla užitečná. Můžete filtrovat výsledky přes prvky tabulky nebo tak, že explicitně přidáte filtr do dotazu. Filtrování výsledků přes prvky tabulky platí pro stávající sadu výsledků, zatímco filtru samotný dotaz vrátí novou filtrovaných výsledků nastavit a může proto poskytuje přesnější výsledky.
 
@@ -121,7 +121,7 @@ Tabulka výsledků často obsahuje mnoho sloupců. Můžete zjistit, že někter
 
 
 ## <a name="select-a-time-range"></a>Vybrat časový rozsah
-Ve výchozím nastavení, Log Analytics stránka se vztahuje _posledních 24 hodin_ časový rozsah. Pokud chcete použít jiný rozsah, vyberte jinou hodnotu prostřednictvím nástroje pro výběr času a klikněte na **spustit**. Kromě přednastavené hodnoty, můžete použít _vlastního časového rozsahu_ možnost vybrat si absolutní rozsahu pro váš dotaz.
+Ve výchozím nastavení, log analytics se vztahuje _posledních 24 hodin_ časový rozsah. Pokud chcete použít jiný rozsah, vyberte jinou hodnotu prostřednictvím nástroje pro výběr času a klikněte na **spustit**. Kromě přednastavené hodnoty, můžete použít _vlastního časového rozsahu_ možnost vybrat si absolutní rozsahu pro váš dotaz.
 
 ![Výběr času](media/get-started-portal/time-picker.png)
 
@@ -164,8 +164,8 @@ Pro Připnutí diagramu nebo tabulku k jedné sdílené řídicí panely Azure, 
 
 Některé zjednodušení jsou použity pro graf připnout na řídicí panel:
 
-- Sloupce a řádky tabulky: Pokud chcete připnout tabulku na řídicí panel, musí mít čtyři nebo méně sloupců. Zobrazí se jenom prvních řádků sedm.
-- Čas omezení: dotazy jsou automaticky omezeny na posledních 14 dní.
+- Sloupce tabulky a řádky: Pokud chcete připnout tabulku na řídicí panel, musí mít čtyři nebo méně sloupců. Zobrazí se jenom prvních řádků sedm.
+- Čas omezení: Dotazy jsou automaticky omezeny na posledních 14 dní.
 - Omezení počtu Bin: Pokud zobrazíte graf, který obsahuje mnoho intervalů diskrétní méně mají údaj vyplněný přihrádek budou automaticky seskupeny do jednoho _ostatní_ bin.
 
 ## <a name="save-queries"></a>Ukládání dotazů
@@ -175,7 +175,7 @@ Na stránce celý dotaz nebo pomocí jediného dotazu můžete uložit jako funk
 
 ![Uložit – funkce](media/get-started-portal/save-function.png)
 
-Dotazy log Analytics jsou vždy uloženy do vybraného pracovního prostoru a sdílet s ostatními uživateli daného pracovního prostoru.
+Dotazy log analytics jsou vždy uloženy do vybraného pracovního prostoru a sdílet s ostatními uživateli daného pracovního prostoru.
 
 ## <a name="load-queries"></a>Načíst dotazy
 Ikona Průzkumníka dotazů je v horní pravé oblasti. Vypíšou se všechny uložené dotazy podle kategorie. Také umožňuje označit jako oblíbené položky v budoucnu je rychle vyhledat konkrétní dotazy. Klikněte dvakrát na uložený dotaz se přidá do aktuálního okna.
@@ -183,12 +183,12 @@ Ikona Průzkumníka dotazů je v horní pravé oblasti. Vypíšou se všechny ul
 ![Průzkumník dotazů](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Export a sdílenou složku jako odkaz
-Na stránce Log Analytics podporuje několik metod pro export:
+Log analytics podporuje několik metod pro export:
 
 - Excel: Uložte výsledky do souboru .csv.
-- Power BI: Exportujte výsledky do power BI. Zobrazit [Import Azure Log Analytics data do Power BI](../../azure-monitor/platform/powerbi.md) podrobnosti.
-- Sdílet odkaz: samotný dotaz je možné sdílet jako odkaz, který lze potom odeslat a spustit další uživatelé, kteří mají přístup do stejného pracovního prostoru.
+- Power BI: Exportujte výsledky do power BI. Zobrazit [data protokolu Azure Monitor importovat do Power BI](../../azure-monitor/platform/powerbi.md) podrobnosti.
+- Sdílejte odkaz: Samotný dotaz mohou být sdíleny jako odkaz, který lze potom odeslat a spustit další uživatelé, kteří mají přístup do stejného pracovního prostoru.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [zápis dotazy Log Analytics](get-started-queries.md).
+- Další informace o [psaní dotazů na protokoly Azure monitoru](get-started-queries.md).

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 156d06b3c3fab5df1cd4360fb9e6ec2648d8d0b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1935c670b5c7622f45f8c96b8c2faf03da6282f3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455061"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993628"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -237,7 +237,7 @@ Další informace najdete v tématu [Úvod do paměťově optimalizovaných tabu
 
 Tento model zjistitelná výkonu indikuje snížení výkonnosti v porovnání se směrným plánem posledních sedmi dnů výkon úloh aktuální databáze. Je z důvodu nedostatku dostupné Dtu v elastickém fondu vašeho předplatného. 
 
-Prostředky pro službu SQL Database se obvykle označují jako [DTU prostředky](sql-database-service-tiers.md#dtu-based-purchasing-model), obsahovat kombinaci měření prostředky procesoru a vstupů/výstupů (dat a protokolů transakcí vstupně-výstupní operace). [Elastický fond Azure prostředky](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi několika databázemi pro účely škálování. Když prostředky k dispozici eDTU v elastickém fondu nejsou dostatečně velký pro podporu všech databází ve fondu, systém zjistí problém nedostatek výkonu jednotek DTU elastického fondu.
+Prostředky pro službu SQL Database se obvykle označují jako [DTU prostředky](sql-database-purchase-models.md#dtu-based-purchasing-model), obsahovat kombinaci měření prostředky procesoru a vstupů/výstupů (dat a protokolů transakcí vstupně-výstupní operace). [Elastický fond Azure prostředky](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi několika databázemi pro účely škálování. Když prostředky k dispozici eDTU v elastickém fondu nejsou dostatečně velký pro podporu všech databází ve fondu, systém zjistí problém nedostatek výkonu jednotek DTU elastického fondu.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 

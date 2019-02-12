@@ -11,19 +11,20 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: fc4b1dce1b01d9294cf422c910f39d68cbd49c87
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.openlocfilehash: 6f5a4e04c0d135e85624b04dbcdcda6b7d15a427
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018243"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989385"
 ---
-# <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Vytvoření datové továrny pomocí uživatelského rozhraní služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý start: Vytvoření datové továrny pomocí uživatelského rozhraní služby Azure Data Factory
+
+> [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](quickstart-create-data-factory-portal.md)
 
-Tento rychlý start popisuje vytvoření a monitorování datové továrny pomocí uživatelského rozhraní služby Azure Data Factory. Kanál, který vytvoříte v této datové továrně, *kopíruje* data z jedné složky do jiné složky v úložišti objektů blob v Azure. Kurz předvádějící způsoby *transformace* dat pomocí služby Azure Data Factory najdete v tématu [Kurz: Transformace dat pomocí Sparku](tutorial-transform-data-spark-portal.md).
+Tento rychlý start popisuje vytvoření a monitorování datové továrny pomocí uživatelského rozhraní služby Azure Data Factory. Kanál, který vytvoříte v této datové továrně, *kopíruje* data z jedné složky do jiné složky v úložišti objektů blob v Azure. Kurz o tom, jak *transformace* dat pomocí Azure Data Factory najdete v tématu [kurzu: Transformace dat pomocí Sparku](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](data-factory-introduction.md), než s tímto rychlým startem začnete. 
@@ -91,7 +92,7 @@ V tomto postupu vytvoříte propojenou službu, která propojí váš účet úl
    ![Nastavení propojené služby Azure Storage](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
-V tomto postupu vytvoříte dvě datové sady:**InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **AzureBlob**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. 
+V tomto postupu vytvoříte dvě datové sady: **InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **AzureBlob**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. 
 
 Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**input**) a soubor (**emp.txt**) obsahující zdrojová data. 
 
@@ -117,7 +118,8 @@ V nastavení propojené služby jste zadali účet úložiště Azure obsahujíc
 
     ![Vyhledání vstupního souboru](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
-   d. (volitelné) Výměrem možnosti **Náhled dat** zobrazíte náhled dat v souboru emp.txt.     
+    d. (volitelné) Výměrem možnosti **Náhled dat** zobrazíte náhled dat v souboru emp.txt.     
+
 1. Pomocí stejného postupu vytvořte výstupní datovou sadu:  
 
    a. Vyberte tlačítko **+** (plus) a pak vyberte **Datová sada**.
@@ -208,5 +210,5 @@ Tento postup je v tomto kurzu volitelný. Můžete vytvořit *aktivační událo
    ![Přepnutí na zobrazení Spuštění aktivační události](./media/quickstart-create-data-factory-portal/monitor-trigger-runs.png)    
 1. Ověřte, že se ve složce **output** vytvořil výstupní soubor pro každé spuštění kanálu až do zadaného koncového data a času. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Pokud se chcete naučit používat službu Data Factory ve více scénářích, projděte si příslušné [kurzy](tutorial-copy-data-portal.md). 

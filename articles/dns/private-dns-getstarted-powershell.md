@@ -7,16 +7,18 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/24/2018
 ms.author: victorh
-ms.openlocfilehash: 872227e0521bd54e6bf7fdbe3626dfca34170863
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
-ms.translationtype: HT
+ms.openlocfilehash: 73b8dfd741543560cd6ebf26178618a70bdae5f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257721"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992768"
 ---
-# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Kurz: Vytvoření privátní zóny Azure DNS pomocí Azure PowerShellu
+# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Kurz: Vytvoření privátní zóny DNS pomocí Azure Powershellu
 
 Tento kurz vás provede kroky k vytvoření první privátní zóny a záznamu DNS pomocí Azure PowerShellu.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -46,25 +48,25 @@ These instructions assume you have already installed and signed in to Azure Powe
 Nejdřív vytvořte skupinu prostředků, která bude obsahovat zónu DNS: 
 
 ```azurepowershell
-New-AzureRMResourceGroup -name MyAzureResourceGroup -location "eastus"
+New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
 ## <a name="create-a-dns-private-zone"></a>Vytvoření privátní zóny DNS
 
-Zónu DNS vytvoříte pomocí rutiny `New-AzureRmDnsZone` s parametrem **ZoneType** s hodnotou *Private*. Následující příklad vytvoří zónu DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup** a zpřístupní tuto zónu DNS pro virtuální síť **MyAzureVnet**.
+Zónu DNS vytvoříte pomocí rutiny `New-AzDnsZone` s parametrem **ZoneType** s hodnotou *Private*. Následující příklad vytvoří zónu DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup** a zpřístupní tuto zónu DNS pro virtuální síť **MyAzureVnet**.
 
 Pokud parametr **ZoneType** vynecháte, zóna se vytvoří jako veřejná zóna. Pokud potřebujete vytvořit privátní zónu, je tento parametr povinný. 
 
 ```azurepowershell
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
-$vnet = New-AzureRmVirtualNetwork `
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName MyAzureResourceGroup `
   -Location eastus `
   -Name myAzureVNet `
   -AddressPrefix 10.2.0.0/16 `
   -Subnet $backendSubnet
 
-New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
+New-AzDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
    -ZoneType Private `
    -RegistrationVirtualNetworkId @($vnet.Id)
 ```
@@ -76,16 +78,16 @@ Kdybyste chtěli vytvořit zónu jenom pro překlad adres (bez automatického vy
 
 ### <a name="list-dns-private-zones"></a>Výpis privátních zón DNS
 
-Vynecháním názvu zóny v rutině `Get-AzureRmDnsZone` můžete zobrazit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zón.
+Vynecháním názvu zóny v rutině `Get-AzDnsZone` můžete zobrazit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zón.
 
 ```azurepowershell
-Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
+Get-AzDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-Vynecháním názvu zóny i názvu skupiny prostředků v rutině `Get-AzureRmDnsZone` můžete zobrazit výčet všech zón v předplatném Azure.
+Vynecháním názvu zóny i názvu skupiny prostředků v rutině `Get-AzDnsZone` můžete zobrazit výčet všech zón v předplatném Azure.
 
 ```azurepowershell
-Get-AzureRmDnsZone
+Get-AzDnsZone
 ```
 
 ## <a name="create-the-test-virtual-machines"></a>Vytvoření testovacích virtuálních počítačů
@@ -93,7 +95,7 @@ Get-AzureRmDnsZone
 Teď vytvořte dva virtuální počítače, abyste mohli privátní zónu DNS otestovat:
 
 ```azurepowershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myAzureResourceGroup" `
     -Name "myVM01" `
     -Location "East US" `
@@ -102,7 +104,7 @@ New-AzureRmVm `
     -addressprefix 10.2.0.0/24 `
     -OpenPorts 3389
 
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myAzureResourceGroup" `
     -Name "myVM02" `
     -Location "East US" `
@@ -116,12 +118,12 @@ Dokončení tohoto procesu může několik minut trvat.
 
 ## <a name="create-an-additional-dns-record"></a>Vytvoření dalšího záznamu DNS
 
-Sady záznamů vytvoříte pomocí rutiny `New-AzureRmDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.contoso.local**. Typ záznamu je A, IP adresa je 10.2.0.4 a hodnota TTL je 3600 sekund.
+Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.contoso.local**. Typ záznamu je A, IP adresa je 10.2.0.4 a hodnota TTL je 3600 sekund.
 
 ```azurepowershell
-New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
+New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
    -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
-   -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "10.2.0.4")
+   -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
 
 ### <a name="view-dns-records"></a>Zobrazení záznamů DNS
@@ -129,7 +131,7 @@ New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
 K výpisu záznamů DNS ve vaší zóně použijte následující příkaz:
 
 ```azurepowershell
-Get-AzureRmDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
+Get-AzDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
 ```
 Nezapomeňte, že automaticky se vytvořené záznamy A pro vaše dva testovací virtuální počítače se nezobrazí.
 
@@ -198,10 +200,10 @@ Totéž zopakujte pro virtuální počítač myVM02.
 Pokud už nejsou potřeba, můžete všechny prostředky vytvořené v rámci tohoto kurzu odstranit odstraněním skupiny prostředků **MyAzureResourceGroup**.
 
 ```azurepowershell
-Remove-AzureRMResourceGroup -Name MyAzureResourceGroup
+Remove-AzResourceGroup -Name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nasadili privátní zónu DNS, vytvořili záznam DNS nasadila a zónu otestovali.
 Teď se můžete o privátních zónách DNS dozvědět podrobnější informace.

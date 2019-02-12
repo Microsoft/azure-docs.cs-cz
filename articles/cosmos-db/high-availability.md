@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0903756ba7df34e7dba20301d45cbd4b6cc4d5ea
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471313"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992513"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 
@@ -63,6 +63,20 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 - Pro účty Cosmos ve více oblastech, které jsou nakonfigurovány s oblastí zápisu jedním [povolit automatické – převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#automatic-failover). Když povolíte automatické převzetí služeb při selhání, vždycky, když je regionálního, Cosmos DB bude automaticky převzetí služeb při selhání vašeho účtu.  
 
 - I v případě, že je váš účet Cosmos s vysokou dostupností, aplikace nemusí správně navržená k dispozici. K otestování začátku do konce vysoká dostupnost pro aplikace, pravidelně vyvolat [ruční převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover), jako součást vašeho testování aplikace nebo zotavení po havárii (DR) cvičení.
+
+
+Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako plánovaná doba obnovení (RTO). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako cíl bodu obnovení (RPO).
+
+V následující tabulce jsou uvedeny RPO a RTO pro nejběžnější scénáře.
+
+|Číslo z oblasti |Konfigurace |Úrovně konzistence|Cíl bodu obnovení (RPO) |RTO |
+|---------|---------|---------|-------|-------|
+|1    | *    |*   | < 240 minut | < 1 týden |
+|>1     | Jedinou předlohou replikace | Relace, konzistentní předpona, konečný výsledek | < 15 minut | < 15 minut |
+|>1     | Jedinou předlohou replikace | Omezená neaktuálnost | K & T | < 15 minut |
+|>1     | Multimasterovou replikací | Relace, konzistentní předpona, konečný výsledek | < 15 minut | 0 |
+|>1     | Multimasterovou replikací | Omezená neaktuálnost | K & T | 0 |
+|>1     | * | Silné | 0 | < 15 minut |
 
 ## <a name="next-steps"></a>Další postup
 

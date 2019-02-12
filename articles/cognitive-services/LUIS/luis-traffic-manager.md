@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: ba3ca363afe96c137a4a9eecdeda33e0f9129111
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 89778375c6362007a81eab72663f56492f4fe206
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868425"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997902"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager můžete používat ke správě kvóty koncový bod napříč klíče
 Language Understanding (LUIS) nabízí možnost zvýšení kvóty požadavku koncového bodu nad rámec kvót jeden klíč. Uděláte to pomocí vytváření více klíčů pro LUIS a jejich přidání do aplikace LUIS na **publikovat** stránku **prostředky a klíče** oddílu. 
@@ -362,6 +362,9 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 ## <a name="use-the-traffic-manager-parent-profile"></a>Použití nadřazené profil Traffic Manageru
 Pokud chcete spravovat provoz napříč koncovými body, je potřeba vložit volání do DNS Traffic Manageru se najít koncový bod služby LUIS. Toto volání se provádí pro každý požadavek pro koncový bod služby LUIS a potřebuje k simulaci geografické umístění uživatelů klientské aplikace LUIS. Přidejte kód odpovědi DNS mezi klientské aplikace LUIS a žádost do služby LUIS pro předpověď koncový bod. 
 
+## <a name="resolving-a-degraded-state"></a>Řešení ke špatnému stavu
+
+Povolit [diagnostické protokoly](../../traffic-manager/traffic-manager-diagnostic-logs.md) pro Traffic Manager zobrazíte, proč je degradovaný stav koncového bodu.
 
 ## <a name="clean-up"></a>Vyčištění
 Odeberte dva klíče koncového bodu služby LUIS, tři profily Traffic Manageru a skupinu prostředků, který obsahoval těchto pět zdrojů. To provedete z webu Azure portal. V seznamu prostředků odstraníte pět prostředky. Potom odstraňte skupinu prostředků. 

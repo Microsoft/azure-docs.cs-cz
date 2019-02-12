@@ -1,6 +1,6 @@
 ---
-title: SQL pro Azure Log Analytics dotazovacímu jazyku | Dokumentace Microsoftu
-description: Běžné funkce pro různé scénáře v dotazy Log Analytics.
+title: SQL tak, aby tahák pro dotazy protokolů Azure Monitor | Dokumentace Microsoftu
+description: Nápověda pro uživatele znáte SQL při psaní dotazů na protokoly ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 35438644842d5280bd789efa135805ba9943cb8b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183043"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993656"
 ---
-# <a name="sql-to-log-analytics-query-language-cheat-sheet"></a>Do Log Analytics dotazovacímu jazyku SQL 
+# <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL pro monitorování Azure tahák pro dotazy log 
 
-Následující tabulka pomáhá uživatelům, kteří znají SQL další dotazovací jazyk Log Analytics. Podíváme se na příkaz T-SQL pro řešení běžných scénářů a ekvivalentní používat službu Log Analytics.
+Následující tabulka pomáhá uživatelům, kteří znají SQL další dotazovací jazyk Průzkumník dat psaní dotazů protokolu ve službě Azure Monitor. Podíváme se na příkaz T-SQL pro řešení běžných scénářů a ekvivalent v dotazu protokolu Azure Monitor.
 
-## <a name="sql-to-log-analytics"></a>SQL ke službě Log Analytics
+## <a name="sql-to-azure-monitor"></a>SQL Azure monitor
 
-Popis                             |Příkaz jazyka SQL                                                                                          |Azure Log Analytics dotazu
+Popis                             |Příkaz jazyka SQL                                                                                          |Azure Monitor dotaz protokolu
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 Vyberte všechna data z tabulky            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 Vyberte konkrétní sloupce z tabulky    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
@@ -50,4 +50,4 @@ Spojit                                    |`SELECT * FROM dependencies JOIN exce
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si lekci [zápis dotazů v Log Analytics](get-started-queries.md).
+- Projděte si lekci [psaní dotazů protokolu ve službě Azure Monitor](get-started-queries.md).

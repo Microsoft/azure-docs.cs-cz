@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c02d3483a98c358e53964d3932944b5d2dad9c53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ed4b581cb962c7db706a71ab995963a3c445af55
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240269"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998145"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Přehled a porovnání Azure na vyžádání kodérů médií
+# <a name="overview-and-comparison-of-azure-on-demand-media-encoders-legacy"></a>Přehled a porovnání Azure na vyžádání kodérů médií (starší verze)
+
 ## <a name="encoding-overview"></a>Kódování – přehled
 Azure Media Services nabízí několik možností pro kódování multimédií v cloudu.
 

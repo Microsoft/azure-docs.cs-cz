@@ -6,15 +6,15 @@ keywords: kódování; kodérů; média
 author: dbgeorge
 manager: johndeu
 ms.author: johndeu
-ms.date: 09/13/2018
+ms.date: 02/09/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c90d6a5784fe9d80df4fab304b6122d3fa24d0b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f07b2d128bd770854b7c240fd3c964d880029d3c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605160"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999007"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
 Když živého streamování pomocí služby Azure Media Services, můžete zadat, jak chcete, aby váš kanál pro příjem vstupního datového proudu. Pokud se rozhodnete použít kodér v místním prostředí pomocí živého kódování kanálu, by měl váš kodér push datový proud s jednou přenosovou rychlostí vysoce kvalitní jako výstup. Pokud se rozhodnete používat pro místní kodér průchodu přes kanál, by měl váš kodér push datového proudu s více přenosovými rychlostmi jako výstup s všechny požadované výstupu kvality. Další informace najdete v tématu [živé streamování pomocí místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
@@ -27,7 +27,7 @@ Azure Media Services doporučuje používat jednu z následujících kodéry, kt
 - Telestream Wirecast S
 - Řez Teradek 756
 - TriCaster 8000
-- Tricaster Mini HD, High Density-4
+- Tricaster Mini HD-4
 - OBS Studio
 - VMIX
 - xStream
@@ -36,7 +36,7 @@ Azure Media Services doporučuje používat jednu z následujících kodéry, kt
 Azure Media Services doporučuje používat jednu z následující kodéry, které mají s více přenosovými rychlostmi fragmentovaný soubor MP4 (technologie Smooth Streaming) jako výstup:
 - Média pro Excel Hero za provozu a Hero 4K (UHD/HEVC)
 - Ateme TITAN za provozu
-- Cisco digitální Media Encoderu 2200
+- Cisco Digital Media Encoder 2200
 - Elemental Live
 - Envivio 4Caster C4 obecné III
 - Imagine Communications Selenio MCP3

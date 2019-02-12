@@ -10,18 +10,21 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 637cdb338496764e64c18a887673808ef4e8415a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fa48d3825b5b942497b1eabd19a1eeb7e0141058
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203449"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003138"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Vyberte stránku smlouvu v Azure Active Directory B2C pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Kontrakt stránky můžete vybrat v Azure Active Directory (Azure AD) B2C tím, že nakonfigurujete v [vlastní zásady](active-directory-b2c-overview-custom.md). Kontrakt stránky je přidružení prvky, které poskytuje Azure AD B2C a obsah, který zadáte. Pokud máte v úmyslu použít [Javascript](javascript-samples.md), budete muset definovat verze kontraktu stránky pro všechny vaše definice obsahu ve vlastních zásadách.
+Kód jazyka JavaScript na straně klienta můžete povolit v Azure Active Directory (Azure AD) B2C zásady, ať už používáte toky uživatelů nebo vlastními zásadami. Tento článek popisuje, jak v Azure AD B2C vyberte stránku smlouvy tím, že nakonfigurujete v [vlastní zásady](active-directory-b2c-overview-custom.md). Kontrakt stránky je sdružení prvky, které poskytuje Azure AD B2C a obsah, který zadáte. Pokud máte v úmyslu použít [Javascript](javascript-samples.md), budete muset definovat verze kontraktu stránky pro všechny vaše definice obsahu ve vlastních zásadách.
+
+> [!NOTE]
+> Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [o používání jazyka JavaScript a stránky verze kontraktu v toku uživatele](user-flow-javascript-overview.md).
 
 ## <a name="replace-datauri-values"></a>Nahraďte parametr hodnoty
 

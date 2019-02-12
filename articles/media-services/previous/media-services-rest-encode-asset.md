@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ada3210a59e0c3044551bee54b0a705b4b513594
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254430"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005144"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Kódování prostředku pomocí kodéru Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -30,6 +30,7 @@ ms.locfileid: "51254430"
 >
 
 ## <a name="overview"></a>Přehled
+
 Pokud chcete poskytovat digitální video přes Internet, je nutné médium komprimovat. Digitální video soubory jsou velké a může být příliš velký, aby poskytování přes Internet nebo pro zařízení vašich zákazníků a zobrazeny správně. Kódování je proces komprese videa a zvuku, takže vaši zákazníci mohou zobrazit médií.
 
 Kódování úloh je jednou z nejběžnějších operací zpracování ve službě Azure Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované kodér Media Services (Media Encoder Standard). Můžete také použít kodér poskytovanými partnerem Media Services. Kodérů třetích stran jsou k dispozici prostřednictvím Azure Marketplace. Můžete zadat podrobnosti úlohy kódování pomocí přednastavení, které jsou definovány pro váš kodér, nebo pomocí přednastavených konfiguračních souborů. Typy předvolby, které jsou k dispozici, najdete v sekci [předvolby úloh pro Media Encoder Standard](https://msdn.microsoft.com/library/mt269960).
@@ -54,6 +55,7 @@ Než začnete, odkazující na procesory médií, ověřte, že máte správná 
 Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>Vytvoření úlohy pomocí jediné úlohy kódování
+
 > [!NOTE]
 > Při práci s rozhraní REST API pro Media Services, platí následující aspekty:
 >

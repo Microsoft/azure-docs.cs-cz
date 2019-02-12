@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat výstrahy Nagios a Zabbix v Log Analytics | Dokumentace Microsoftu
-description: Nagios a Zabbix jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do Log Analytics, aby bylo možné analyzovat taky výstrahy z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
+title: Shromažďovat výstrahy Nagios a Zabbix ve službě Azure Monitor | Dokumentace Microsoftu
+description: Nagios a Zabbix jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do služby Azure Monitor, aby bylo možné analyzovat taky výstrahy z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ae719237cb1afee6d2340e1734d008799da8a86
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ac8e214df6b6990e2b27b5897350c85e0a944e0c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107527"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997953"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix ve službě Azure Monitor z agenta Log Analytics pro Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do Log Analytics, aby bylo možné analyzovat data protokolů z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
+[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do služby Azure Monitor, abyste mohli analyzovat data protokolů z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
 
 
 > [!NOTE]
-> [Upozornění vytvořená službou Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) jsou uloženy odděleně od dat protokolu a není přístupný z dotazů na protokoly.
+> [Upozornění vytvořená službou Azure Monitor](alerts-overview.md) jsou uloženy odděleně od dat protokolu a není přístupný z dotazů na protokoly.
 
  
 ## <a name="prerequisites"></a>Požadavky
@@ -84,7 +84,7 @@ Shromažďovat výstrahy Nagios serveru, proveďte následující kroky.
 
 
 ## <a name="alert-records"></a>Záznamy upozornění
-Záznamy upozornění můžete načíst z řešení Nagios a Zabbix pomocí [protokolu dotazy](../log-query/log-query-overview.md) v Log Analytics.
+Záznamy upozornění můžete načíst z řešení Nagios a Zabbix pomocí [protokolu dotazy](../log-query/log-query-overview.md) ve službě Azure Monitor.
 
 ### <a name="nagios-alert-records"></a>Výstrahy Nagios záznamů
 
@@ -122,5 +122,5 @@ Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **Sourc
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) ve službě Azure Monitor.
+* Další informace o [výstrahy](alerts-overview.md) ve službě Azure Monitor.
 * Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

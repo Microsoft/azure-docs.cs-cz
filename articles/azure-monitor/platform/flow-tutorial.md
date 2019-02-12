@@ -1,5 +1,5 @@
 ---
-title: Automatizace procesů Azure Log Analytics pomocí Microsoft Flow
+title: Automatizace procesů Azure Monitor protokolu pomocí Microsoft Flow
 description: Zjistěte, jak můžete pomocí Microsoft Flow k automatizaci rychle opakovatelnou procesů pomocí konektoru služby Azure Log Analytics.
 services: log-analytics
 documentationcenter: ''
@@ -11,19 +11,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 441064d6cbb5b3b2fae77caef3125c8db3467553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f38d9b40143391be34ce5f72627720e2f5119dc6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187445"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993771"
 ---
-# <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Log Analytics pomocí konektoru pro Microsoft Flow
-[Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které zahrnují data načtená pomocí prohledávání protokolů v Log Analytics.
+# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Monitor protokolu pomocí konektoru pro Microsoft Flow
+[Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které obsahují data načíst pomocí dotazů na protokoly z pracovního prostoru Log Analytics ve službě Azure Monitor.
 
-Například můžete použít Microsoft Flow k použití dat Log Analytics v e-mailové oznámení z Office 365, vytvořit chybu ve službě Azure DevOps nebo publikovat zprávu Slack.  Pracovní postup můžete aktivovat podle jednoduchého plánu nebo z některé akce propojené služby, například při přijetí e-mailu nebo tweet.  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesílá výsledky prohledávání protokolu Log Analytics prostřednictvím e-mailu, jenom jeden příklad použití Log Analytics v Microsoft Flow. 
+Například můžete použít Microsoft Flow používat LAzure monitorování protokolu data v e-mailové oznámení z Office 365, vytvořit chybu ve službě Azure DevOps nebo publikovat zprávu Slack.  Pracovní postup můžete aktivovat podle jednoduchého plánu nebo z některé akce propojené služby, například při přijetí e-mailu nebo tweet.  
+
+Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesílá výsledky dotazu protokolu Azure Monitor e-mailem, pouze jeden příklad použití konektoru Log Analytics v Microsoft Flow. 
 
 
 ## <a name="step-1-create-a-flow"></a>Krok 1: Vytvořit tok
@@ -45,7 +47,7 @@ Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesíl
 ## <a name="step-4-configure-the-log-analytics-action"></a>Krok 4: Nakonfigurujte akci, která Log Analytics
 
 1. Zadejte podrobnosti pro váš pracovní prostor, včetně ID předplatného, skupinu prostředků a název pracovního prostoru.
-2. Přidejte následující dotaz Log Analytics, který **dotazu** okna.  Toto je ukázkový dotaz a můžete nahradit všechny jiné, které vrací data.
+2. Přidejte následující dotaz protokolu, který **dotazu** okna.  Toto je ukázkový dotaz a můžete nahradit všechny jiné, které vrací data.
 ```
     Event
     | where EventLevelName == "Error" 
@@ -77,7 +79,7 @@ Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesíl
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+- Další informace o [protokolu dotazů ve službě Azure Monitor](../log-query/log-query-overview.md).
 - Další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

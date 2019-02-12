@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 5a328e64128503f98476deccf33a4395f99eeeb0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 9423fc844e766129ad81a8a286cb5bbdc722e2ca
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985166"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989306"
 ---
-# <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradujte zprostředkovatele služby Microsoft Azure Site Recovery
+# <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
 
 Tento článek pomůže při řešení problémů, které může dojít k chybám při zprostředkovatele Microsoft Azure Site Recovery upgradovat.
 

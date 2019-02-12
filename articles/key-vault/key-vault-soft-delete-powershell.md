@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: bryanla
-ms.openlocfilehash: c979d6eccd5c185d89252302b40fdd674e3c5916
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 48c471e17fb28843bf61f1591faafc119eb8dec8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657497"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002322"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím Powershellu
 
@@ -23,14 +23,16 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Prostředí Azure PowerShell 4.0.0 nebo později – Pokud nemáte tomto již instalační program, nainstalujte Azure PowerShell a přidružit ho k vašemu předplatnému Azure, přečtěte si téma [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview). 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+- Prostředí Azure PowerShell 1.0.0 nebo později – Pokud nemáte tomto již instalační program, nainstalujte Azure PowerShell a přidružit ho k vašemu předplatnému Azure, přečtěte si téma [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview). 
 
 >[!NOTE]
 > Soubor zastaralou verzi naší formátování výstupu Key Vault prostředí PowerShell, který je **může** načíst do vašeho prostředí místo správnou verzi. Jsou předvídání aktualizovanou verzi prostředí PowerShell tak, aby obsahovala potřebné opravy pro formátování výstupu jsme v tuto chvíli aktualizuje v tomto tématu. Aktuálním řešením, by měl narazíte na potíže formátování je:
-> - Pomocí následujícího dotazu, pokud si všimnete, že se nezobrazují obnovitelného odstranění povolena vlastnost popsané v tomto tématu: `$vault = Get-AzureRmKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
+> - Pomocí následujícího dotazu, pokud si všimnete, že se nezobrazují obnovitelného odstranění povolena vlastnost popsané v tomto tématu: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
 
 
-Informace o konkrétní refernece služby Key Vault pro prostředí PowerShell najdete v tématu [Azure Key Vault prostředí PowerShell odkaz](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0).
+Key Vault konkrétní referenční informace pro prostředí PowerShell najdete v tématu [Azure Key Vault prostředí PowerShell odkaz](/powershell/module/az.keyvault).
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
@@ -56,9 +58,9 @@ Povolíte "obnovitelného odstranění" aby bylo možné obnovit odstraněný tr
 U existujícího trezoru klíčů s názvem ContosoVault povolte obnovitelné odstranění následujícím způsobem. 
 
 ```powershell
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```
 
 ### <a name="new-key-vault"></a>Nový trezor klíčů
@@ -66,7 +68,7 @@ Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Prope
 Povolení obnovitelného odstranění pro nový trezor klíčů se provádí v okamžiku vytvoření přidáním příznak povolení obnovitelného odstranění pro vaše vytvořit příkaz.
 
 ```powershell
-New-AzureRmKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
+New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
 ```
 
 ### <a name="verify-soft-delete-enablement"></a>Ověření povolení obnovitelného odstranění
@@ -74,7 +76,7 @@ New-AzureRmKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Locatio
 Chcete-li zkontrolovat, jestli má trezor klíčů povolené obnovitelné odstranění, *zobrazit* příkaz a vyhledejte "Obnovitelné odstranění povolené?" Atribut:
 
 ```powershell
-Get-AzureRmKeyVault -VaultName "ContosoVault"
+Get-AzKeyVault -VaultName "ContosoVault"
 ```
 
 ## <a name="deleting-a-soft-delete-protected-key-vault"></a>Odstraňuje se obnovitelného odstranění chráněné služby key vault
@@ -85,7 +87,7 @@ Příkaz pro odstranění trezoru klíčů změny v chování v závislosti na t
 >Pokud spustíte následující příkaz pro trezor klíčů, který nemá povolené obnovitelné odstranění, trvale odstraníte tento trezor klíčů a veškerý jeho obsah bez použití možností pro obnovení!
 
 ```powershell
-Remove-AzureRmKeyVault -VaultName 'ContosoVault'
+Remove-AzKeyVault -VaultName 'ContosoVault'
 ```
 
 ### <a name="how-soft-delete-protects-your-key-vaults"></a>Jak se obnovitelného odstranění chrání vaše trezory klíčů
@@ -99,7 +101,7 @@ S obnovitelným odstraněním povoleno:
 Trezory klíčů stavu odstraněno, přidružených k vašemu předplatnému, mohou zobrazit pomocí následujícího příkazu:
 
 ```powershell
-PS C:\> Get-AzureRmKeyVault -InRemovedState 
+PS C:\> Get-AzKeyVault -InRemovedState 
 ```
 
 - *ID* slouží k identifikaci prostředku při obnovení nebo vyprazdňování. 
@@ -111,7 +113,7 @@ PS C:\> Get-AzureRmKeyVault -InRemovedState
 Obnovení služby key vault, zadejte název služby key vault, skupinu prostředků a umístění. Poznamenejte si umístění a skupině prostředků odstraněného trezoru klíčů, podle potřeby pro proces obnovení.
 
 ```powershell
-Undo-AzureRmKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
+Undo-AzKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
 ```
 
 Při obnovení služby key vault je vytvořen nový prostředek s ID služby key vault původního zdroje. Pokud je odebrán původní skupiny prostředků, jeden je nutné vytvořit se stejným názvem před pokusem o obnovení.
@@ -121,7 +123,7 @@ Při obnovení služby key vault je vytvořen nový prostředek s ID služby key
 Následující příkaz odstraní klíči "ContosoFirstKey" v trezoru klíčů s názvem "ContosoVault", který má povolené obnovitelné odstranění:
 
 ```powershell
-Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey
+Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
 Pomocí trezoru klíčů povolená pro obnovitelné odstranění odstraněný klíč stále se zobrazí, která se má odstranit, pokud explicitně uvádět odstraněné klíče. Většinu operací s klíči ve stavu odstraněno selže s výjimkou výpis, obnovení, mazání odstraněných klíč. 
@@ -129,7 +131,7 @@ Pomocí trezoru klíčů povolená pro obnovitelné odstranění odstraněný kl
 Například následující příkaz zobrazí seznam odstraněných klíče v trezoru klíčů "ContosoVault":
 
 ```powershell
-Get-AzureKeyVaultKey -VaultName ContosoVault -InRemovedState
+Get-AzKeyVaultKey -VaultName ContosoVault -InRemovedState
 ```
 
 ### <a name="transition-state"></a>Přechod stavu 
@@ -145,7 +147,7 @@ Stejně jako trezorů klíčů odstraněné klíče, tajné nebo certifikát, z�
 Obnovit klíč obnovitelně odstraněný:
 
 ```powershell
-Undo-AzureKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
+Undo-AzKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
 Trvale odstranit, (označované také jako vyprazdňování) obnovitelně odstraněný klíč:
@@ -154,7 +156,7 @@ Trvale odstranit, (označované také jako vyprazdňování) obnovitelně odstra
 > Odstranění klíče ho trvale odstraníte a nesmí být obnovitelná! 
 
 ```powershell
-Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
+Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
 **Obnovit** a **vyprázdnit** akce mají své vlastní oprávnění přidružené zásady přístupu trezoru klíčů. Pro uživatele nebo instanční objekt, který bude moci být prováděny **obnovit** nebo **vyprázdnit** akce, musí mít odpovídající oprávnění pro tento klíč nebo tajný klíč. Ve výchozím nastavení **vyprázdnit** není přidán do zásady přístupu trezoru klíčů, když místní 'vše' se používá k udělení oprávnění. Konkrétně je nutné udělit **vyprázdnit** oprávnění. 
@@ -164,7 +166,7 @@ Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemoved
 Zadáním následujícího příkazu uděluje user@contoso.com oprávnění používat několik operací s klíči v *ContosoVault* včetně **vyprázdnit**:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
+Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
 ```
 
 >[!NOTE] 
@@ -176,17 +178,17 @@ Podobně jako klíče tajné kódy se spravují pomocí vlastních příkazů:
 
 - Odstranění tajného kódu s názvem SQLPassword: 
 ```powershell
-Remove-AzureKeyVaultSecret -VaultName ContosoVault -name SQLPassword
+Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
 ```
 
 - Vypište všechny odstraněné tajné kódy ve službě key vault: 
 ```powershell
-Get-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState
+Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
 ```
 
 - Obnovte tajný klíč ve stavu odstraněno: 
 ```powershell
-Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
+Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
 ```
 
 - Odstranění tajného kódu ve stavu odstraněno: 
@@ -195,7 +197,7 @@ Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
   > Odstranění tajného kódu ho trvale odstraníte a nesmí být obnovitelná!
 
   ```powershell
-  Remove-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
+  Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
 ## <a name="purging-a-soft-delete-protected-key-vault"></a>Odstraňovat zařízení nepřipojená k obnovitelné odstranění chráněné služby key vault
@@ -204,19 +206,19 @@ Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
 > Odstraňovat zařízení nepřipojená k trezoru klíčů nebo jeden z jeho obsažené objekty, ho trvale odstraníte, což znamená, že ho nepůjde obnovit.
 
 Funkce vyprázdnění se používá pro trvalé odstranění trezoru klíčů objektu nebo celý trezoru klíčů, který byl dříve dočasně odstraněné. Jak je uvedeno v předchozí části, objekty uložené ve službě key vault se funkce obnovitelného odstranění povolená, můžete přejít přes více stavů:
-
 - **Aktivní**: před odstraněním.
 - **Obnovitelně odstraněný**: po jejím odstranění uvedené a obnovovat zpět do stavu aktivní.
 - **Trvale odstraní**: Po vymazání, není možné obnovit.
+
 
 Totéž platí pro trezor klíčů. Chcete-li trvale odstranit obnovitelně odstraněný trezor klíčů a její obsah, je nutné odstranit na samotný trezor klíčů.
 
 ### <a name="purging-a-key-vault"></a>Odstraňovat zařízení nepřipojená k trezoru klíčů
 
-Při vymazání se trezor klíčů, jeho celý obsah se trvale odstraní, včetně klíče, tajné kódy a certifikáty. Chcete-li vymazat obnovitelně odstraněný trezor klíčů, použijte `Remove-AzureRmKeyVault` příkaz s možností `-InRemovedState` a zadáním umístění odstraněného trezoru klíčů s `-Location location` argument. Můžete najít umístění odstraněného trezoru pomocí příkazu `Get-AzureRmKeyVault -InRemovedState`.
+Při vymazání se trezor klíčů, jeho celý obsah se trvale odstraní, včetně klíče, tajné kódy a certifikáty. Chcete-li vymazat obnovitelně odstraněný trezor klíčů, použijte `Remove-AzKeyVault` příkaz s možností `-InRemovedState` a zadáním umístění odstraněného trezoru klíčů s `-Location location` argument. Můžete najít umístění odstraněného trezoru pomocí příkazu `Get-AzKeyVault -InRemovedState`.
 
 ```powershell
-Remove-AzureRmKeyVault -VaultName ContosoVault -InRemovedState -Location westus
+Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 ```
 
 ### <a name="purge-permissions-required"></a>Vyprázdnit oprávněních

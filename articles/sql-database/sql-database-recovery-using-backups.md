@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 8d2cac7635b9d97561b3cebf517c95855407cbe3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 27a8e160fc33729c5b5266dffeb346f0296276fd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462779"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005280"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -71,7 +71,7 @@ Neexistuje žádná vestavěná funkce hromadné obnovení. [Azure SQL Database:
 
 ## <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-Dokáže obnovit samostatnou ve fondu, nebo instanci databáze k dřívějšímu bodu v čase jako novou databázi na stejném serveru pomocí webu Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases). Databázi můžete obnovit na všech úrovních služby nebo vypočítat velikost. Ujistěte se, že máte dostatek prostředků na serveru, na který provádíte obnovení databáze. Jakmile budete hotovi, obnovené databáze je normální, plně přístupné, online databáze. Obnovená databáze se účtuje za běžné sazby podle úrovně služeb a jeho velikost výpočetních. Není účtovat poplatky, dokud se nedokončí obnovení databáze.
+Můžete obnovit jeden, ve fondu nebo instanci databáze k dřívějšímu bodu v čase jako novou databázi na stejném serveru pomocí webu Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases). Databázi můžete obnovit na všech úrovních služby nebo vypočítat velikost. Ujistěte se, že máte dostatek prostředků na serveru, na který provádíte obnovení databáze. Jakmile budete hotovi, obnovené databáze je normální, plně přístupné, online databáze. Obnovená databáze se účtuje za běžné sazby podle úrovně služeb a jeho velikost výpočetních. Není účtovat poplatky, dokud se nedokončí obnovení databáze.
 
 Obecně obnovení databáze k dřívějšímu bodu pro účely obnovení. Pokud tak učiníte, můžete považovat za náhradu za původní databázi obnovené databáze nebo ho použít k načtení dat z a pak aktualizujte původní databáze.
 
@@ -83,7 +83,7 @@ Obecně obnovení databáze k dřívějšímu bodu pro účely obnovení. Pokud 
 
   Pokud budete chtít načíst data z obnovené databáze pro obnovení po chybě uživatele nebo aplikace, musíte pro zápis a spouštění skriptů obnovení potřebná data extrahovat data z obnovené databáze do původní databáze. I když operace obnovení může trvat dlouhou dobu pro dokončení, obnovení databáze je zobrazen v seznamu databází v průběhu procesu obnovení. Pokud během obnovení odstraníte databáze, operace obnovení byla zrušena a se vám neúčtují poplatky pro databáze, která nebyla dokončena, obnovení.
 
-Obnovit samostatnou ve fondu, nebo instanci databáze do bodu v čase pomocí webu Azure portal, otevřete stránku pro vaši databázi a klikněte na tlačítko **obnovení** na panelu nástrojů.
+Obnovení jedné, ve fondu, nebo instanci databáze do bodu v čase pomocí webu Azure portal, otevřete stránku pro vaši databázi a klikněte na tlačítko **obnovení** na panelu nástrojů.
 
 ![point-in-time-restore](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -139,7 +139,7 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
 
 ### <a name="powershell"></a>PowerShell
 
-- K obnovení samostatné nebo databázi ve fondu, naleznete v tématu [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)
+- Obnovení databáze jedné, nebo součástí fondu, naleznete v tématu [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)
 
   | Rutina | Popis |
   | --- | --- |
@@ -155,7 +155,7 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
 
 ### <a name="rest-api"></a>REST API
 
-Chcete-li obnovit samostatné nebo databázi ve fondu pomocí rozhraní REST API:
+Obnovení databáze jedné, nebo součástí fondu pomocí rozhraní REST API:
 
 | Rozhraní API | Popis |
 | --- | --- |
@@ -164,7 +164,7 @@ Chcete-li obnovit samostatné nebo databázi ve fondu pomocí rozhraní REST API
 
 ### <a name="azure-cli"></a>Azure CLI
 
-K obnovení samostatné nebo databázi ve fondu pomocí Azure CLI, najdete v článku [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
+Obnovení databáze jedné, nebo součástí fondu pomocí Azure CLI, najdete v článku [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
 
 ## <a name="summary"></a>Souhrn
 

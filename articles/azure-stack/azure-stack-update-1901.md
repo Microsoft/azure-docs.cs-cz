@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/09/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: cf86fafc1fcb0ffd6513abc9d02da16d1f00f22b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: MT
+ms.openlocfilehash: 45905b5180ac248394e52b1d03a034acc47e8dbc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978920"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993584"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 
@@ -68,6 +68,35 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu Azure Stack:
 
 - Spravované Image na povolení služby Azure Stack můžete vytvořit objekt spravované image zobecněného virtuálního počítače (nespravované i spravovat), která může vytvářet pouze spravovaný disk virtuálních počítačů do budoucna. Další informace najdete v tématu [Azure Stack Managed Disks](user/azure-stack-managed-disk-considerations.md#managed-images).
+
+- **AzureRm 2.4.0**
+   * **AzureRm.Profile**  
+         Oprava chyby - `Import-AzureRmContext` správně deserializovat uložené token.  
+   * **AzureRm.Resources**  
+         Oprava chyby - `Get-AzureRmResource` dotazu případem insensitively podle typu prostředku.  
+   * **Azure.Storage**  
+         Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 4.5.0 **verze rozhraní api 2017-07-29**.  
+   * **AzureRm.Storage**  
+         Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 5.0.4 **verze rozhraní api 2017-10-01**.  
+   * **AzureRm.Compute**  
+         Přidání jednoduchého parametru nastaví v `New-AzureRMVM` a `NewAzureRMVMSS`, `-ImageName` parametr podporuje zadání Image uživatele.  
+   * **AzureRm.Insights**  
+         Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 5.1.5 **verze api-version 2018-01-01** pro metriky, typy prostředků definice metrik.
+
+- **AzureStack 1.7.0** to k zásadní změně verze. Podrobnosti o nejnovějších změnách najdete v tématu https://aka.ms/azspshmigration170
+   * **Azs.Backup.Admin modulu**  
+         Zásadní změna: Zálohování se změní na režim šifrování založené na certifikátu. Podpora pro symetrické klíče je zastaralá.  
+   * **Azs.Fabric.Admin modulu**  
+         `Get-AzsInfrastructureVolume` se už nepoužívá. Pomocí nové rutiny `Get-AzsVolume`.  
+         `Get-AzsStorageSystem` se už nepoužívá.  Pomocí nové rutiny nové `Get-AzsStorageSubSystem`.  
+         `Get-AzsStoragePool` se už nepoužívá. `StorageSubSystem` Objekt obsahuje vlastnost capacity.  
+   * **Azs.Compute.Admin modulu**  
+         Oprava chyby - `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Volání `ConvertTo-PlatformImageObject` pouze v cestě k úspěchu.  
+         Opravu - `Add-AzsVmExtension`, `Get-AzsVmExtension`: Volání ConvertTo-VmExtensionObject pouze v cestě k úspěchu.  
+   * **Azs.Storage.Admin Module**  
+         Oprava chyby – nová kvóta úložiště použije výchozí hodnoty, pokud nebyl zadán.
+
+Referenční informace pro aktualizovaný modulů najdete v tématu [referenčních informacích k modulu Azure Stack](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
 
 ## <a name="fixed-issues"></a>Oprava potíží
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: ab31ee82e8035fe888fa70b5796aef2c2b2939b2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728541"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56008521"
 ---
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

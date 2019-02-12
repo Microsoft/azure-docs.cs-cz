@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 02/10/2019
 ms.author: adsolank
-ms.openlocfilehash: 3b361202d2d80f879ae6d23ec29782bc6f837f96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c3ef977e7e8742f4d6de0f85d2d1684aa7eaa887
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632870"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993754"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Zpracování multimediálních souborů pomocí Azure Media Hyperlapse
 
@@ -217,7 +217,7 @@ Následující metoda nahraje soubor média jako prostředek a vytvoří úlohu 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Azure Media Services Analytics – přehled](media-services-analytics-overview.md)
+[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
 
-[Ukázky Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

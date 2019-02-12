@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2aabdc503a694de46796b7c3afeedfcdb2f39ca9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 810d1bf6a550539b402721d089d8b041cfb48634
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037857"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991445"
 ---
 # <a name="change-the-reserved-unit-type"></a>Změna typu rezervované jednotky
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "51037857"
 
 ## <a name="overview"></a>Přehled
 
-Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
+Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2**, nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
 
 Kromě určení typu rezervované jednotky můžete určit, že chcete účet zřídit s **rezervovanými jednotkami** (RU). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
 
@@ -53,7 +53,7 @@ Změna typu rezervované jednotky a počtu rezervovaných jednotek, postupujte t
    
     Chcete-li změnit počet jednotek rezervovaných pro jednotku rezervovanou pro vybraný typ, použijte **jednotky zpracování médií** posuvník v horní části obrazovky.
    
-    Chcete-li změnit **typu REZERVOVANÉ jednotky**, klikněte na **rychlost rezervovaných jednotek zpracování** panelu. Vyberte cenovou úroveň, budete potřebovat: S1, S2 nebo S3.
+    Chcete-li změnit **typu REZERVOVANÉ jednotky**, klikněte na **rychlost rezervovaných jednotek zpracování** panelu. Vyberte cenovou úroveň, které potřebujete: S1, S2 nebo S3.
    
 3. Stisknutím tlačítka ULOŽIT uložte provedené změny.
    

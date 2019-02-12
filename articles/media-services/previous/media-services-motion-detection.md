@@ -4,21 +4,21 @@ description: Procesor médií Azure Media Motion Detectoru (PP) umožňuje efekt
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/10/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: 12af87ab0a8b15528acbd9ce8a1bc92f478aba28
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 26090067923c468b7102ac5b7bb78b9d7b7960bb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820967"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995608"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Zjištění mají s Azure Media Analytics
 ## <a name="overview"></a>Přehled
@@ -103,7 +103,7 @@ Následující tabulka popisuje prvky výstupního souboru JSON.
 | Doba trvání |Délka události v "značky". |
 | Interval |Interval každá položka v události v "značky". |
 | Události |Každá událost fragment obsahuje pohybu, během tohoto dobu trvání. |
-| Typ |V aktuální verzi je to vždy pro obecné pohybu ' 2'. Tento popisek poskytuje rozhraní API pro Video flexibilitu zařadit do pohybu v budoucích verzích. |
+| Type |V aktuální verzi je to vždy pro obecné pohybu ' 2'. Tento popisek poskytuje rozhraní API pro Video flexibilitu zařadit do pohybu v budoucích verzích. |
 | RegionID |Jak jsme vysvětlili výše, bude vždy 0 v této verzi. Tento popisek poskytuje rozhraní Video API flexibilitu při hledání pohybu v různých oblastech v budoucích verzích. |
 | Oblasti |Odkazuje na oblast ve videu, pokud vás zajímají pohybu. <br/><br/>-"id" představuje oblasti oblast – v této verzi je pouze jeden, ID 0. <br/>-"type" představuje obrazec oblasti záleží pro pohybu. V současné době jsou podporovány "Obdélník" a "mnohoúhelníku".<br/> Pokud jste zadali "Obdélník", oblast má dimenze v X, Y, šířku a výšku. Souřadnice X a Y představují horní levé prvků jejich souřadnice XY oblasti v normalizovaných rozsahu od 0,0 do 1,0. Šířku a výšku reprezentaci velikosti oblasti v normalizovaných rozsahu od 0,0 do 1,0. V aktuální verzi jsou X, Y, šířka a výška vždy pevně nastavena na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelníku", má oblast rozměrů v bodech. <br/> |
 | Fragments |Metadata je rozdělený do bloků dat až do různých segmentů zvaných fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události. Fragment se žádné události znamená, že se během tohoto čas spuštění a trvání zjistil bez pohybu. |

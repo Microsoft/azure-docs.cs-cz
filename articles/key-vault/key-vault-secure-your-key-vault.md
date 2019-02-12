@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 8a0300eeda49d85ffc08db8f285550e217613dcf
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7dfda29525d73bebd7a2201e5c9e85314e08d46a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821610"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993839"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 
 Služba Azure Key Vault je Cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce a hesla). Protože tato data jsou citlivá a pro důležité obchodní informace, třeba zabezpečený přístup k vašim trezorům klíčů, umožňuje jenom autorizovaným aplikacím a uživatelům. Tento článek obsahuje přehled modelu access Key Vault. Vysvětluje ověření a autorizaci a popisuje, jak zabezpečit přístup.
 
 ## <a name="overview"></a>Přehled
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Přístup k trezoru klíčů je řízen prostřednictvím dvou oddělených rozhraní: rovina správy a rovina dat. 
 **Rovina správy** se zabývá Správa trezoru, například – vytvoření trezoru, aktualizuje se trezor, odstranění trezoru služby. 
@@ -176,24 +178,24 @@ Následující fragmenty kódu PowerShellu předpokládají:
 Nejprve správce předplatného přiřadí `key vault Contributor` a `User Access Administrator` bezpečnostnímu týmu role. Pracovníci v těchto rolích povolit bezpečnostnímu týmu spravovat přístup k dalším prostředkům a spravovat trezory klíčů ve skupině prostředků ContosoAppRG.
 
 ```PowerShell
-New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
-New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
+New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
+New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
 Tento skript je ukázkou, jak může bezpečnostní tým vytvořit trezor klíčů a nastavit oprávnění přístupu a protokolování. Podrobnosti o oprávnění zásad přístupu trezoru klíčů najdete v tématu [o službě Azure Key Vault klíče, tajné kódy a certifikáty](about-keys-secrets-and-certificates.md).
 
 ```PowerShell
 # Create key vault and enable logging
-$sa = Get-AzureRmStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
-$kv = New-AzureRmKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+$sa = Get-AzStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
+$kv = New-AzKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 
 # Data plane permissions for Security team
-Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -PermissionsToKeys backup,create,delete,get,import,list,restore -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge
+Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -PermissionsToKeys backup,create,delete,get,import,list,restore -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge
 
 # Management plane permissions for Dev/ops
 # Create a new role from an existing role
-$devopsrole = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
+$devopsrole = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
 $devopsrole.Id = $null
 $devopsrole.Name = "Contoso App Devops"
 $devopsrole.Description = "Can deploy VMs that need secrets from key vault"
@@ -201,13 +203,13 @@ $devopsrole.AssignableScopes = @("/subscriptions/<SUBSCRIPTION-GUID>")
 
 # Add permission for dev/ops so they can deploy VMs that have secrets deployed from key vaults
 $devopsrole.Actions.Add("Microsoft.KeyVault/vaults/deploy/action")
-New-AzureRmRoleDefinition -Role $devopsrole
+New-AzRoleDefinition -Role $devopsrole
 
 # Assign this newly defined role to Dev ops security group
-New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso App Devops')[0].Id -RoleDefinitionName "Contoso App Devops" -ResourceGroupName ContosoAppRG
+New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso App Devops')[0].Id -RoleDefinitionName "Contoso App Devops" -ResourceGroupName ContosoAppRG
 
 # Data plane permissions for Auditors
-Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso App Auditors')[0].Id -PermissionsToKeys list -PermissionsToSecrets list
+Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -SearchString 'Contoso App Auditors')[0].Id -PermissionsToKeys list -PermissionsToSecrets list
 ```
 
 Definovanou vlastní roli je možné přiřadit k předplatnému, jenom Pokud `ContosoAppRG` se vytvoří skupina prostředků. Pokud budou stejné vlastní role se použije pro jiné projekty v jiných předplatných, může mít svého oboru přidat další předplatná.
@@ -247,7 +249,7 @@ Důrazně doporučujeme další zabezpečený přístup k vašemu trezoru klíč
   
 * [Řízení přístupu k tajným klíčům](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
-* [Nastavte](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) a [odebrat](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy) zásad přístupu trezoru klíčů pomocí Powershellu
+* [Nastavte](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) a [odebrat](/powershell/module/az.keyvault/Remove-azKeyVaultAccessPolicy) zásad přístupu trezoru klíčů pomocí Powershellu.
   
 ## <a name="next-steps"></a>Další postup
 

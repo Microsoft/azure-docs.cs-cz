@@ -8,22 +8,24 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 59b190065c678ef61b3e0dec8df13db4215a8229
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486296"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003308"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
 Tento článek popisuje, jaké výstrahy jsou jejich výhody a jak je začít používat.  
 
 
+
+
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure?
 Proaktivně upozornění se zobrazí důležitých podmínky se nacházejí ve vašich dat z monitorování. Umožňují vám identifikovat a vyřešit problémy dříve, než uživatelé vašeho systému Všimněte si, že je. 
 
-Tento článek popisuje jednotné prostředí výstrah ve službě Azure Monitor, který nyní obsahuje Log Analytics a Application Insights. [Předchozí zkušenosti upozornění](alerts-classic.overview.md) a typy výstrah, se nazývají **klasických upozornění**. Tento starší prostředí a starší typu výstrahy můžete zobrazit kliknutím na **zobrazit upozornění classic** v horní části stránky upozornění. 
+Tento článek popisuje jednotné prostředí výstrah ve službě Azure Monitor, který nyní obsahuje upozornění, která byla spravovaná pomocí Log Analytics a Application Insights. [Předchozí zkušenosti upozornění](alerts-classic.overview.md) a typy výstrah, se nazývají **klasických upozornění**. Tento starší prostředí a starší typu výstrahy můžete zobrazit kliknutím na **zobrazit upozornění classic** v horní části stránky upozornění. 
 
 ## <a name="overview"></a>Přehled
 

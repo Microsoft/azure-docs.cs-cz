@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 23faf3b88584f8031b4a2fdbc6d94ac2ae861431
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cca3c69997865f22d22fc5b86565ae9f206b9aee
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104450"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990134"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Podrobnosti o konfiguraci sítě pro službu App Service Environment pro PowerApps s využitím Azure ExpressRoute
 
@@ -59,9 +59,9 @@ App Service Environment vyžaduje následující nastavení síťového připoje
 
 * Příchozí síťový přístup k požadované porty pro App Service Environment musí být povoleno. Podrobnosti najdete v tématu [řízení příchozího provozu do služby App Service Environment][requiredports].
 
-Ke splnění požadavků na DNS, ujistěte se, že je platný infrastruktury DNS konfiguraci a údržbu pro virtuální síť. Pokud se po vytvoření služby App Service Environment se změnila konfigurace DNS, můžete vynutit vývojáři App Service Environment, aby se získaly novou konfiguraci DNS. Postupné restartování prostředí můžete aktivovat pomocí **restartovat** ikonu spravován pomocí služby App Service Environment na [webu Azure Portal] [NewPortal]. Restartování způsobí, že prostředí tak, aby získaly novou konfiguraci DNS.
+Ke splnění požadavků na DNS, ujistěte se, že je platný infrastruktury DNS konfiguraci a údržbu pro virtuální síť. Pokud se po vytvoření služby App Service Environment se změnila konfigurace DNS, můžete vynutit vývojáři App Service Environment, aby se získaly novou konfiguraci DNS. Postupné restartování prostředí můžete aktivovat pomocí **restartovat** ikonu spravován pomocí služby App Service Environment v [webu Azure portal][NewPortal]. Restartování způsobí, že prostředí tak, aby získaly novou konfiguraci DNS.
 
-Ke splnění požadavků na přístup příchozích dat, konfigurace [skupina zabezpečení sítě (NSG)][NetworkSecurityGroups] v podsíti služby App Service Environment. Skupiny zabezpečení sítě povoluje požadovaný přístup [řízení příchozího provozu do služby App Service Environment][requiredports].
+Ke splnění požadavků na přístup příchozích dat, konfigurace [skupina zabezpečení sítě (NSG)] [ NetworkSecurityGroups] v podsíti služby App Service Environment. Skupiny zabezpečení sítě povoluje požadovaný přístup [řízení příchozího provozu do služby App Service Environment][requiredports].
 
 ## <a name="outbound-network-connectivity"></a>Odchozího síťového připojení
 
@@ -87,7 +87,7 @@ Celkové požadavky tato konfigurace je, že uživatelem definovaná TRASA úrov
 
 Informace o trasách definovaných uživatelem najdete v tématu [směrování provozu virtuální sítě][UDROverview].  
 
-Zjistěte, jak vytvořit a nakonfigurovat trasy definované uživatelem, najdete v článku [směrování síťového provozu pomocí směrovací tabulky pomocí Powershellu] [UDRHowTo].
+Zjistěte, jak vytvořit a nakonfigurovat trasy definované uživatelem, najdete v článku [směrování síťového provozu s využitím směrovací tabulky pomocí prostředí PowerShell][UDRHowTo].
 
 ## <a name="udr-configuration"></a>Konfigurace směrování definovaného uživatelem
 
@@ -95,7 +95,7 @@ Tato část popisuje příklad konfigurace uživatelem definovaná TRASA pro App
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Instalace Azure Powershellu z [Azure stáhne stránka] [AzureDownloads]. Zvolte download s datem. června 2015 nebo novější. V části **nástroje příkazového řádku** > **prostředí Windows PowerShell**vyberte **nainstalovat** nainstalovat nejnovější rutiny prostředí PowerShell.
+* Instalace Azure Powershellu z [stránku soubory ke stažení Azure][AzureDownloads]. Zvolte download s datem. června 2015 nebo novější. V části **nástroje příkazového řádku** > **prostředí Windows PowerShell**vyberte **nainstalovat** nainstalovat nejnovější rutiny prostředí PowerShell.
 
 * Vytvořte jedinečnou podsíť pro výhradní použití ve službě App Service Environment. Jedinečnou podsíť zajišťuje, že u otevřít odchozí provoz podsítě služby App Service Environment pouze trasy definované uživatelem.
 
@@ -118,7 +118,7 @@ Konfigurace odchozího přístupu k Internetu. Definujte trasu pro 0.0.0.0/0, ja
 
 0.0.0.0/0 je rozsah široké adres. Rozsah je přepsán rozsahy adres inzerovanými ExpressRoute jsou konkrétnější. Trasu UDR s trasy 0.0.0.0/0 byste měli použít ve spojení s konfigurací ExpressRoute, který zajistí inzerci pouze 0.0.0.0/0. 
 
-Jako alternativu stáhněte si aktuální, komplexní seznam rozsahy CIDR používaných službou Azure. Soubor XML pro všechny rozsahy adres IP adres Azure je k dispozici [Microsoft Download Center] [DownloadCenterAddressRanges].  
+Jako alternativu stáhněte si aktuální, komplexní seznam rozsahy CIDR používaných službou Azure. Soubor XML pro všechny rozsahy adres IP adres Azure je k dispozici [Microsoft Download Center][DownloadCenterAddressRanges].  
 
 > [!NOTE]
 >
@@ -148,16 +148,23 @@ Nyní jste připraveni nasadit službu App Service Environment!
 
 ## <a name="next-steps"></a>Další postup
 
-Začínáme s App Service Environment pro PowerApps, najdete v článku [Úvod do služby App Service Environment] [IntroToAppServiceEnvironment].
+Začínáme s App Service Environment pro PowerApps, najdete v článku [Úvod do služby App Service Environment][IntroToAppServiceEnvironment].
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md
-[networkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md [AzureDownloads]: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ [IntroToAppServiceEnvironment]: app-service-app-service-environment-intro.md [NewPortal]:  https://portal.azure.com
+<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
+
+[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell
+[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
+[AzureDownloads]: https://azure.microsoft.com/downloads/ 
+[DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
+[NewPortal]:  https://portal.azure.com
 
 
 <!-- IMAGES -->

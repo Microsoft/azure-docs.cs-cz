@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f2be733fc0f127288a86372adf54a547983285db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250763"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998701"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Pokročilé kódování přizpůsobením přednastavení MES 
 
@@ -239,14 +239,14 @@ Platí následující aspekty:
 * JPG nebo Png/BmpImage elementy mají počáteční krok a být v rozsahu atributy řetězce – to může být interpretován jako:
 
   * Číslo snímku, pokud jsou nezáporná celá čísla, například "Start": "120",
-  * Vzhledem ke zdrojové doby trvání, pokud je vyjádřená s příponou %, například "Start": "15 %", nebo
-  * Časové razítko, pokud je vyjádřená jako hh: mm:... formátování, například "Start": "00: 01:00"
+  * Relativní vzhledem k době trvání zdroje, pokud je vyjádřená s příponou %, například "Start": "15 %", NEBO
+  * Časové razítko, pokud je vyjádřená jako hh: mm:... formátování, například "Start": "00:01:00"
 
     Můžete kombinovat a párovat zápisy, jako je prosím.
 
-    Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit prvního "zajímavý" rámce obsahu Poznámka: (krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
-  * Výchozí: Spustit: {nejlepší}
-* Výstupní formát musí být explicitně zadat pro každou formát obrázku: Jpg nebo Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
+    Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit "zajímavý" prvního rámce obsahu poznámky: (Krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
+  * Výchozí hodnoty: Spustit: {nejlepší}
+* Výstupní formát, musí se explicitně zadat pro každou formát obrázku: Jpg/Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
 
 ## <a id="trim_video"></a>Střih videa (výstřižek)
 Tato část pojednává o Úprava přednastavení kodér klipu nebo oříznout vstupního videa, kde je vstupní soubor mezzanine takzvané nebo soubor na vyžádání. Kodér také umožňuje oříznout nebo oříznout prostředku, která je zachycena nebo archivovat v živém datovém proudu – podrobnosti k tomu je k dispozici v [tento blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
@@ -752,9 +752,9 @@ Můžete vypnout automatické zrušení prokládání. Tato možnost se nedoporu
 
 
 ## <a id="audio_only"></a>Přednastavení pouze se zvukem
-Tato část ukazuje dvě pouze se zvukem přednastavení MES: AAC zvuku a AAC vhodné kvality zvuku.
+Tato část ukazuje dvě pouze se zvukem přednastavení MES: AAC zvuk a AAC kvalitních zvuku.
 
-### <a name="aac-audio"></a>Zvuk AAC
+### <a name="aac-audio"></a>AAC Audio
     {
       "Version": 1.0,
       "Codecs": [
@@ -776,7 +776,7 @@ Tato část ukazuje dvě pouze se zvukem přednastavení MES: AAC zvuku a AAC vh
       ]
     }
 
-### <a name="aac-good-quality-audio"></a>Zvuk kvalitních AAC
+### <a name="aac-good-quality-audio"></a>AAC Good Quality Audio
     {
       "Version": 1.0,
       "Codecs": [

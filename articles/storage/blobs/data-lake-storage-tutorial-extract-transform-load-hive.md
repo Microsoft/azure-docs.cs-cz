@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jamesbak
-ms.openlocfilehash: 977d3535ad6c06b5dacd786905585d27f6d3d996
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: cfe06720d0afa0f9f5cf22552ba7ab21d4e617c0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964266"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993142"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hive v Azure HDInsight
 
@@ -42,28 +42,33 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 * **Azure CLI**: Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **Klient SSH**: Další informace najdete v tématu [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient Secure Shell (SSH)**: Další informace najdete v tématu [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 > [!IMPORTANT]
 > Kroky v tomto článku vyžadují clusteru služby HDInsight, který využívá systém Linux. Linux je jediným operačním systémem, který se používá v Azure HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-### <a name="download-the-flight-data"></a>Stažení letových údajů
+## <a name="download-the-flight-data"></a>Stažení letových údajů
 
 Tento kurz používá zapisovači letových údajů z kanceláře Transportation statistiky a ukazuje, jak k provádění operací ETL. Tato data k dokončení tohoto kurzu musíte stáhnout.
 
 1. Přejděte na [výzkumu a inovativní technologie správy, Bureau of Transportation statistiky](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-2. Vyberte **Prezipped souboru** zaškrtávací políčko Vybrat všechna datová pole.
+1. Na stránce vyberte následující hodnoty:
 
-3. Vyberte **Stáhnout** tlačítko a uložte výsledky do počítače. 
+   | Název | Hodnota |
+   | --- | --- |
+   | **Filtrovat období** |January (Leden) |
+   | **Pole** |FlightDate, OriginCityName, WeatherDelay |
 
-4. Rozbalte obsah souboru ZIP a poznamenejte si název souboru a cestu k souboru. Tyto informace v pozdějším kroku budete potřebovat.
+1. Zrušte zaškrtnutí všech ostatních polí.
+
+1. Vyberte **Download** (Stáhnout). Můžete získat soubor .zip s datová pole, které jste vybrali.
 
 ## <a name="extract-and-upload-the-data"></a>Extrahování a nahrávání dat
 
-V této části použijete `scp` k odesílání dat do vašeho clusteru HDInsight.
+V této části byste budete nahrávat data do vašeho clusteru HDInsight. 
 
-1. Otevřete příkazový řádek a pomocí následujícího příkazu nahrajte soubor .zip do hlavního uzlu clusteru HDInsight:
+1. Otevřete příkazový řádek a použijte následující příkaz zabezpečení Copy (Scp) pro nahrání souboru ZIP k hlavnímu uzlu clusteru HDInsight:
 
    ```bash
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
@@ -73,7 +78,7 @@ V této části použijete `scp` k odesílání dat do vašeho clusteru HDInsigh
    * Nahradit `<ssh-user-name>` zástupný symbol přihlašování přes SSH pro HDInsight cluster.
    * Nahradit `<cluster-name>` zástupný symbol název clusteru HDInsight.
 
-   Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla. 
+   Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla.
 
    Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například, `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
 
@@ -96,7 +101,7 @@ V této části použijete `scp` k odesílání dat do vašeho clusteru HDInsigh
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
    ```
-   
+
    Nahradit `<file-system-name>` zástupným názvem, který chcete udělit systému souborů.
 
    Nahradit `<storage-account-name>` zástupný symbol s názvem účtu úložiště.
@@ -132,28 +137,9 @@ Jako součást úlohy Apache Hive, importujete data ze souboru CSV do tabulky Ap
    ```hiveql
    DROP TABLE delays_raw;
     CREATE EXTERNAL TABLE delays_raw (
-       YEAR string,
        FL_DATE string,
-       UNIQUE_CARRIER string,
-       CARRIER string,
-       FL_NUM string,
-       ORIGIN_AIRPORT_ID string,
-       ORIGIN string,
        ORIGIN_CITY_NAME string,
-       ORIGIN_CITY_NAME_TEMP string,
-       ORIGIN_STATE_ABR string,
-       DEST_AIRPORT_ID string,
-       DEST string,
-       DEST_CITY_NAME string,
-       DEST_CITY_NAME_TEMP string,
-       DEST_STATE_ABR string,
-       DEP_DELAY_NEW float,
-       ARR_DELAY_NEW float,
-       CARRIER_DELAY float,
-       WEATHER_DELAY float,
-       NAS_DELAY float,
-       SECURITY_DELAY float,
-      LATE_AIRCRAFT_DELAY float)
+       WEATHER_DELAY float)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
@@ -162,26 +148,9 @@ Jako součást úlohy Apache Hive, importujete data ze souboru CSV do tabulky Ap
    CREATE TABLE delays
    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
    AS
-   SELECT YEAR AS Year,
-       FL_DATE AS FlightDate,
-       substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS Reporting_Airline,
-       substring(CARRIER, 2, length(CARRIER) -1) AS  IATA_CODE_Reporting_Airline,
-       substring(FL_NUM, 2, length(FL_NUM) -1) AS  Flight_Number_Reporting_Airline,
-       ORIGIN_AIRPORT_ID AS OriginAirportID,
-       substring(ORIGIN, 2, length(ORIGIN) -1) AS Origin,
+   SELECT FL_DATE AS FlightDate,
        substring(ORIGIN_CITY_NAME, 2) AS OriginCityName,
-       substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS OriginStateName,
-       DEST_AIRPORT_ID AS DestAirportID,
-       substring(DEST, 2, length(DEST) -1) AS Dest,
-       substring(DEST_CITY_NAME,2) AS DestCityName,
-       substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS DestState,
-       DEP_DELAY_NEW AS DepDelay,
-       ARR_DELAY_NEW AS ArrDelay,
-       CARRIER_DELAY AS CarrierDelay,
        WEATHER_DELAY AS WeatherDelay
-       NAS_DELAY AS NASDelay,
-       SECURITY_DELAY AS SecurityDelay,
-       LATE_AIRCRAFT_DELAY AS LateAircraftDelay
    FROM delays_raw;
    ```
 

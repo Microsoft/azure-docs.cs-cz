@@ -4,7 +4,7 @@ description: Tento článek poskytuje stručný přehled Azure StorSimple Data M
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 1dd09328-262b-43ef-8099-73241b49a925
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2992be9aa289f4f5fda63b9b59d3e80e234dd434
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 22cf9b66ecf7bbbe8ef226635e84f0aaf9d26b17
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780564"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993924"
 ---
-# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Odesílání souborů do účtu Azure Media Services z Azure StorSimple | Dokumentace Microsoftu
+# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Odesílání souborů do účtu Azure Media Services z Azure StorSimple | Dokumentace Microsoftu  
 
 Tento článek poskytuje stručný přehled Azure StorSimple Data Manageru. Článek taky obsahuje odkazy na kurzy, které ukazují, jak extrahovat data ze StorSimple a jako prostředky je odeslat do účtu Azure Media Services (AMS).
 
@@ -45,7 +45,7 @@ Ve službě Media Services můžete digitální soubory nahrát do assetu. Asset
 
     Při spuštění úlohy se vytvoří fronta úložiště. Tato fronta je naplňována zprávami o transformovaných objektech blob, jakmile jsou připravené. Název této fronty je stejný jako název definice úlohy. Tuto frontu můžete použít k určení, kdy je prostředek připravený, a zavolat požadovanou operaci Media Services, která pro něj má být spuštěná. Tuto frontu můžete například použít k aktivaci funkce Azure, která obsahuje potřebný kód Media Services.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Použití sady .NET SDK k aktivaci úloh v Data Manageru](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
@@ -55,6 +55,6 @@ Ve službě Media Services můžete digitální soubory nahrát do assetu. Asset
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nyní můžete kódovat nahrané assety. Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).

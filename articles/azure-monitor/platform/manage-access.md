@@ -1,6 +1,6 @@
 ---
-title: Správa pracovních prostorů v Azure Log Analytics a na portálu OMS | Dokumentace Microsoftu
-description: Pracovní prostory můžete spravovat v Log Analytics a na portálu OMS pomocí různých úloh správy prováděných s uživateli, účty, pracovními prostory a účty Azure.
+title: Správa pracovních prostorů Log Analytics ve službě Azure Monitor | Dokumentace Microsoftu
+description: Můžete spravovat pracovní prostory Log Analytics ve službě Azure Monitor pomocí různých úloh správy uživatelů, účty, pracovními prostory a účty Azure.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656749"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005365"
 ---
-# <a name="manage-workspaces"></a>Správa pracovních prostorů
-
-Pro správu přístupu k Log Analytics provádíte různé úlohy správy související s pracovními prostory. Tento článek obsahuje pokyny a postupy při správě pracovních prostorů. Pracovní prostor je v podstatě kontejner, který obsahuje informace o účtu a jednoduché konfigurační informace. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
+# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>Správa pracovních prostorů Log Analytics ve službě Azure Monitor
+Azure Monitor úložiště vytvářet protokoly dat v pracovním prostoru Log Analytics, která je v podstatě kontejner, který obsahuje data a informace o konfiguraci. Ke správě přístupu k protokolování dat, můžete provádět různé úlohy správy související s pracovními prostory. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
 
 K vytvoření pracovního prostoru budete muset:
 
@@ -32,11 +31,11 @@ K vytvoření pracovního prostoru budete muset:
 4. Vybrat zeměpisné umístění.
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Určení potřebného počtu pracovních prostorů
-Pracovní prostor je prostředek Azure v podobě kontejneru, ve kterém se data shromažďují, agregují, analyzují a zobrazují na webu Azure Portal.
+Pracovní prostor Log Analytics je prostředek Azure a je kontejner se shromažďují data, agregují, analyzují a zobrazí ve službě Azure Monitor.
 
-V rámci jednoho předplatného Azure můžete mít více pracovních prostorů a přístup k více než jednomu pracovnímu prostoru s možností snadného dotazování napříč pracovními prostory. Tato část popisuje případy, kdy je užitečné mít víc než jeden pracovní prostor.
+Můžete mít několik pracovních prostorů na předplatné Azure a budete mít přístup k více než jednomu pracovnímu prostoru, umožňuje snadno vytvářet dotazy mezi nimi. Tato část popisuje případy, kdy je užitečné mít víc než jeden pracovní prostor.
 
-V současné době pracovní prostor nabízí:
+Pracovní prostor Log Analytics nabízí:
 
 * Zeměpisné umístění úložiště dat
 * Izolace dat k definování různých uživatelská přístupová práva
@@ -44,7 +43,7 @@ V současné době pracovní prostor nabízí:
 
 Z využití pohledu doporučujeme, abyste že nejdříve vytvoříte jako několik pracovních prostorů. Správa a práce s dotazy díky jednodušší a rychlejší. Ale podle výše uvedených charakteristik, můžete chtít vytvořit víc pracovních prostorů, pokud:
 
-* Jste globální společnost a potřebujete ukládat data v různých oblastech z důvodů suverenity dat nebo dodržování předpisů.
+* Jste globální společnost a potřebujete protokolovat data uložená v různých oblastech z důvodů suverenity nebo dodržování předpisů data.
 * Používáte Azure a chcete se vyhnout poplatkům za odchozí datové přenosy tím, že budete mít pracovní prostor ve stejné oblasti jako prostředky Azure, které spravuje.
 * Chcete rozdělit náklady na různá oddělení nebo obchodní skupiny na základě jejich využití tak, že vytvoříte pracovní prostor pro každé oddělení nebo obchodní skupiny ve vlastním předplatném Azure.
 * Jste poskytovatel spravované služby a potřebujete uchovávat data Log Analytics pro každého zákazníka odděleně od dat ostatních zákazníků.
@@ -55,16 +54,14 @@ Při používání agentů Windows ke shromažďování dat můžete [každého 
 Pokud používáte System Center Operations Manager, můžete připojit každou skupinu nástroje Operations Manager jen do jednoho pracovního prostoru. Můžete nainstalovat Microsoft Monitoring Agent do počítačů spravovaných nástrojem Operations Manager a nastavit agenta tak, aby odesílal data do nástroje Operations Manager i do jiného pracovního prostoru Log Analytics.
 
 ## <a name="workspace-information"></a>Informace o pracovním prostoru
+Při analýze dat v pracovním prostoru Log Analytics v **Azure Monitor** nabídky na webu Azure Portal, můžete vytvořit a spravovat pracovní prostory v **pracovních prostorů Log Analytics** nabídky.
+ 
 
-Podrobnosti o pracovním prostoru můžete zobrazit na webu Azure Portal. 
-
-1. Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com).
-
-2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.  
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a klikněte na tlačítko **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics** pracovní prostory.  
 
     ![portál Azure](media/manage-access/azure-portal-01.png)  
 
-3. V podokně předplatná Log Analytics vyberte pracovní prostor.
+3. Vyberte pracovní prostor ze seznamu.
 
 4. Na stránce pracovního prostoru se zobrazí podrobnosti o zahájení práce, konfiguraci a odkazy na další informace.  
 
@@ -84,10 +81,10 @@ Následující aktivity také vyžadují oprávnění Azure:
 | Vytvoření pracovního prostoru na webu Azure Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Správa přístupu k Log Analytics pomocí oprávnění Azure
+### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>Správa přístupu k pracovnímu prostoru Log Analytics pomocí oprávnění Azure
 Pokud chcete udělit přístup k Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 
-Azure má pro Log Analytics dvě předdefinované role uživatele:
+Azure má dvě předdefinované role uživatele pro pracovní prostory Log Analytics:
 - Čtenář Log Analytics
 - Přispěvatel Log Analytics
 
@@ -149,5 +146,4 @@ Doporučujeme provést přiřazení na úrovni prostředků (pracovního prostor
 ## <a name="next-steps"></a>Další postup
 * Zobrazit [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
 * V článku [Shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md) najdete informace o konfiguraci shromažďování dat z virtuálních počítačů Azure.  
-* Článek [Přidání řešení Log Analytics z galerie řešení](../../azure-monitor/insights/solutions.md) popisuje přidání funkcí a shromažďování dat.
 

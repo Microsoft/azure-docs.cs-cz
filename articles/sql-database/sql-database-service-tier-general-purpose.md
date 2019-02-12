@@ -12,17 +12,17 @@ ms.author: jovanpop-msft
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: d8a7ffd680ab38d78fa3675f49569dd79b91efe4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 83be636317299adf820a60716866aa35d318d6dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895104"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997358"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Obecné úrovni služby – Azure SQL Database
 
 > [!NOTE]
-> Služba úrovni general purpose v nákupní model založený na virtuálních jádrech je volána v nákupní model založený na DTU úrovně služeb standard. Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-service-tiers.md).
+> Služba úrovni general purpose v nákupní model založený na virtuálních jádrech je volána v nákupní model založený na DTU úrovně služeb standard. Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-purchase-models.md).
 
 Azure SQL Database je založené na architektuře modul databáze serveru SQL Server upravené pro cloudovém prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři úrovně služby, které se používají ve službě Azure SQL Database, každý s různými modely architektury. Tyto úrovně služby jsou:
 

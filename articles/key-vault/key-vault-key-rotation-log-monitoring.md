@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 10e60076fe527e6e773e966ccdae52a7fe99c4b2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077704"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997195"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení služby Azure Key Vault s obměny klíčů a auditování
 
 ## <a name="introduction"></a>Úvod
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Jakmile máte trezor klíčů, chcete začít, používat k ukládání klíčů a tajných kódů. Vaše aplikace, které už nepotřebujete k uchování vašich klíčů nebo tajných klíčů, ale můžou o ně požádat z trezoru podle potřeby. Umožňuje aktualizovat klíče a tajné kódy bez ovlivnění chování aplikace, která otevírá široké možnosti týkající se klíč a správa tajných kódů.
 
@@ -45,7 +47,7 @@ Tento článek vás provede:
 Povolení aplikace načíst tajného klíče ze služby Key Vault, musíte nejprve vytvořit tajný kód a nahrajte ho do svého trezoru. To můžete provést spuštěním relaci Azure Powershellu a přihlášení k účtu Azure pomocí následujícího příkazu:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. PowerShell získá všechna předplatná, které jsou spojeny s tímto účtem. Prostředí PowerShell použije první předplatné ve výchozím nastavení.
@@ -53,19 +55,19 @@ V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno
 Pokud máte více předplatných, možná budete muset určit ten, který byl použit k vytvoření trezoru klíčů. Zadejte následující příkaz k zobrazení předplatných pro váš účet:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Chcete-li specifikovat předplatné přidružené k trezoru klíčů, který budete protokolovat, zadejte:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscriptionID>
+Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
 Protože tento článek ukazuje ukládání klíče účtu úložiště jako tajný klíč, musíte získat tento klíč účtu úložiště.
 
 ```powershell
-Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
+Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
 Po načtení váš tajný klíč (v tomto případě klíč účtu úložiště), musíte převést, který na zabezpečený řetězec a pak vytvořte tajného kódu s touto hodnotou v trezoru klíčů.
@@ -73,13 +75,13 @@ Po načtení váš tajný klíč (v tomto případě klíč účtu úložiště)
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
-Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
+Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
 Potom získejte identifikátor URI pro tajný klíč, který jste vytvořili. Používá se v pozdějším kroku při volání načíst vaše tajný kód trezoru klíčů. Spuštěním následujícího příkazu prostředí PowerShell a poznamenejte si hodnotu ID, což je identifikátor URI tajného kódu:
 
 ```powershell
-Get-AzureKeyVaultSecret –VaultName <vaultName>
+Get-AzKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>Nastavení aplikace
@@ -110,7 +112,7 @@ Dále vygenerujte klíč pro vaše aplikace tak může komunikovat s Azure Activ
 Před vytvořením všechna volání z aplikace do služby key vault, musíte upozornit služby key vault o vaší aplikaci a její oprávnění. Následující příkaz má název trezoru a ID aplikace z aplikace Azure Active Directory a udělení **získat** přístup k trezoru klíčů pro aplikaci.
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
 V tomto okamžiku jste připravení začít vytvářet vaše aplikace volání. Ve vaší aplikaci je nutné nainstalovat balíčky NuGet, které jsou nutné k interakci s Azure Key Vault a Azure Active Directory. Z konzoly Správce balíčků Visual Studio zadejte následující příkazy. Při psaní tohoto článku je aktuální verze balíčku Azure Active Directory 3.10.305231913, proto je vhodné k potvrzení na nejnovější verzi a příslušně aktualizovat.
@@ -188,7 +190,7 @@ V **prostředky**, zvolte **moduly**. Z **moduly**vyberte **Galerie**a poté vyh
 Po načtení ID aplikací pro připojení k Azure Automation, je zapotřebí sdělit trezoru klíčů, že tato aplikace má přístup k aktualizaci tajným kódům v trezoru. Můžete to provést pomocí následujícího příkazu Powershellu:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
 V dalším kroku vyberte **sady Runbook** pod vaší instance služby Azure Automation a pak vyberte **přidat Runbook**. Vyberte možnost **Rychle vytvořit**. Zadejte název vaší sady runbook a vyberte **Powershellu** jako typ runbooku. Máte možnost přidat její popis. Nakonec klikněte na tlačítko **vytvořit**.
@@ -205,7 +207,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -230,12 +232,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 Z podokna editoru zvolte **testovací podokno** k otestování vašeho skriptu. Po bez chyb je spuštěný skript, můžete vybrat **publikovat**, a pak může použít plán pro runbook zpátky v podokně Konfigurace sady runbook.
@@ -246,9 +248,9 @@ Když nastavíte trezor klíčů, můžete zapnout auditování pro shromažďov
 Nejprve je třeba povolit protokolování na váš trezor klíčů. To můžete udělat pomocí následujících příkazů Powershellu (úplné podrobnosti lze zobrazit na [protokolování key vault](key-vault-logging.md)):
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
-$kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+$sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
+$kv = Get-AzKeyVault -VaultName '<vaultName>'
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
 Jakmile je tato možnost povolena, protokoly auditu zahájení shromažďování do účtu úložiště určený. Tyto protokoly obsahovat události o tom, jak a kdy přistupují k vašim trezorům klíčů a kým.

@@ -4,7 +4,7 @@ description: Toto téma obsahuje seznam stávajících přehrávačů, můžete 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3fe82b98163182c73a144b72da371e8aa195e8cf
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: ae057feb70d9ddb2c2dae10bae20eca1b613f76f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435853"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996928"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu ve stávajících přehrávačích
 Azure Media Services podporuje řadu oblíbených streamování formátů, jako je například technologie Smooth Streaming, HTTP Live Streaming a MPEG-Dash. Toto téma odkazuje na stávajících přehrávačů, které můžete použít k testování vašich streamů.
@@ -41,7 +41,7 @@ Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplay
 * Technologie Smooth Streaming
 * MPEG DASH
 * HLS
-* Progresivní MP4
+* Progressive MP4
 
 ### <a name="flash-player"></a>Přehrávače pro Flash
 #### <a name="aes-encrypted-with-token"></a>Šifrováním AES s tokenem

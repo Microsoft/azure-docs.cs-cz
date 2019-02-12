@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/12/2018
-ms.openlocfilehash: 8ffda7fd1b987e34dc0e8157b535ccef65571247
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 95a86dafc4705d58ac459ff57e4f221d19fb7a37
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567889"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990287"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrat ochranného transparentní šifrování dat (TDE) pomocí Powershellu
 
@@ -25,11 +25,11 @@ ms.locfileid: "55567889"
 
 - Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné
 - Musíte mít Azure PowerShell verze 4.2.0 nebo novější nainstalován a spuštěn. 
-- Tato příručka předpokládá, že už používáte klíče z trezoru klíčů Azure jako ochrana TDE pro služby Azure SQL Database a Data Warehouse. Zobrazit [transparentního šifrování dat s podporou modelu BYOK](transparent-data-encryption-byok-azure-sql.md) Další informace.
+- Tato příručka předpokládá, že už používáte klíče z trezoru klíčů Azure jako ochrana TDE pro služby Azure SQL Database a Data Warehouse. Zobrazit [transparentního šifrování dat díky integraci služby Azure Key Vault – podporou modelu BYOK](transparent-data-encryption-byok-azure-sql.md) Další informace.
 
 ## <a name="overview"></a>Přehled
 
-Tato příručka popisuje, jak reagovat na potenciálně ohroženými ochrana TDE pro služby Azure SQL Database a datový sklad, který používá transparentní šifrování dat s podporou přineste si vlastní klíč (BYOK). Další informace o podpoře funkce BYOK pro transparentní šifrování dat, najdete v článku [stránka s přehledem](transparent-data-encryption-byok-azure-sql.md). 
+Tato příručka popisuje, jak reagovat na potenciálně ohroženými ochrana TDE pro služby Azure SQL Database a datový sklad, který je transparentní šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault – podpora přineste si vlastní klíč (BYOK). Další informace o podpoře funkce BYOK pro transparentní šifrování dat, najdete v článku [stránka s přehledem](transparent-data-encryption-byok-azure-sql.md). 
 
 Následující postupy lze provádět pouze ve výjimečných případech nebo v testovacích prostředích. Pečlivě zkontrolujte průvodce, protože odstranění aktivně používanými TDE ochrany z Azure Key Vault může vést k **ztrátě dat**. 
 

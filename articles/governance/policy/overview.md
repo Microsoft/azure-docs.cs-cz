@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 11384d1bbffb675bd322469d129464f58a48bb6b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 1cfe7dab907a332f1a38560c39d4f6476cee81aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311827"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004726"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -135,7 +135,7 @@ Například máte definici zásady *policyDefA* a vytvořit v rámci definice in
 
 - Při vyhodnocování přiřazení iniciativy se vyhodnocují taky všechny zásady v rámci této iniciativy. Pokud je potřeba vyhodnotit zásadu samostatně, je lepší položky nebudou zahrnuty v iniciativy.
 
-## <a name="video-overview"></a>Úvodní video
+## <a name="video-overview"></a>Video s přehledem
 
 Následující přehled služby Azure Policy se týká sestavení 2018. Pro snímky nebo video stáhnout, navštivte [řízení prostředí Azure prostřednictvím Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) na webu Channel 9.
 

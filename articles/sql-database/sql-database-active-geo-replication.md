@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 0c574aab722cdce91cd5a2569c14c4f1710483ed
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/08/2019
+ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965218"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995048"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Vytvoření čitelné sekundární databáze pomocí aktivní geografické replikace
 
@@ -102,7 +102,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Konfigurovat výpočty velikosti sekundární databáze**
 
-  Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, že se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Sekundární s menší velikostí výpočetních ohrožen zvýšenou replikace prodlevy, potenciální nedostupnost sekundární databáze a proto riziko ztráty dat podstatné po převzetí služeb při. V důsledku toho publikované cíle bodu obnovení = 5 s nemůže být zaručena. Další rizika je, že po převzetí služeb při selhání vaší aplikace bude mít dopad na výkon kvůli nedostatku výpočetní kapacity nový primární dokud nebude upgradována na vyšší výpočetní velikost. Doba upgradu závisí na velikosti databáze. Kromě toho právě takové upgrade vyžaduje, že primární i sekundární databáze jsou online a proto nelze dokončit, dokud je zmírněna výpadek. Pokud se rozhodnete vytvořit sekundární s menší velikostí výpočetních, graf procento protokolu vstupně-výstupních operací na portálu Azure portal poskytuje vhodný způsob, jak odhadovat velikost minimální výpočetní sekundární databáze, která je nutná pro udržení zatížení replikace. Například, pokud primární databáze je P6 (1 000 DTU) a jeho protokolem procent vstupně-výstupních operací je sekundární musí být nejméně 50 % P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupních operací s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Další informace o velikostech výpočetních SQL Database najdete v tématu [co jsou úrovně služby SQL Database](sql-database-service-tiers.md).
+  Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, že se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Sekundární s menší velikostí výpočetních ohrožen zvýšenou replikace prodlevy, potenciální nedostupnost sekundární databáze a proto riziko ztráty dat podstatné po převzetí služeb při. V důsledku toho publikované cíle bodu obnovení = 5 s nemůže být zaručena. Další rizika je, že po převzetí služeb při selhání vaší aplikace bude mít dopad na výkon kvůli nedostatku výpočetní kapacity nový primární dokud nebude upgradována na vyšší výpočetní velikost. Doba upgradu závisí na velikosti databáze. Kromě toho právě takové upgrade vyžaduje, že primární i sekundární databáze jsou online a proto nelze dokončit, dokud je zmírněna výpadek. Pokud se rozhodnete vytvořit sekundární s menší velikostí výpočetních, graf procento protokolu vstupně-výstupních operací na portálu Azure portal poskytuje vhodný způsob, jak odhadovat velikost minimální výpočetní sekundární databáze, která je nutná pro udržení zatížení replikace. Například, pokud primární databáze je P6 (1 000 DTU) a jeho protokolem procent vstupně-výstupních operací je sekundární musí být nejméně 50 % P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupních operací s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Další informace o velikostech výpočetních SQL Database najdete v tématu [co jsou úrovně služby SQL Database](sql-database-purchase-models.md).
 
 - **Řízené uživatelem převzetí služeb při selhání a navrácení služeb po obnovení**
 
@@ -130,7 +130,7 @@ Z důvodu vysoké latenci sítě WAN průběžného kopírování používá mec
 
 Jak je popsáno výše, aktivní geografickou replikaci můžete také spravovat prostřednictvím kódu programu pomocí Azure Powershellu a rozhraní REST API. Následující tabulky popisují sadu příkazů, které jsou k dispozici. Aktivní geografická replikace zahrnuje sadu rozhraní API Azure Resource Manageru pro správu, včetně [REST API služby Azure SQL Database](https://docs.microsoft.com/rest/api/sql/) a [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). Tato rozhraní API vyžaduje použití skupin prostředků a podporu zabezpečení na základě role (RBAC). Další informace o tom, jak implementovat přístup rolí, najdete v části [řízení přístupu](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL: Správa převzetí služeb při selhání nasazení samostatné služby a databáze ve fondu
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Správa převzetí služeb při selhání jednoho a ve fondu databází
 
 > [!IMPORTANT]
 > Tyto příkazy jazyka Transact-SQL pouze platí pro aktivní geografickou replikaci a se nevztahují na skupiny převzetí služeb při selhání. V důsledku toho se také nevztahují na Managed instance, jak podporují pouze skupiny převzetí služeb při selhání.
@@ -146,7 +146,7 @@ Jak je popsáno výše, aktivní geografickou replikaci můžete také spravovat
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |způsobí, že aplikace počkejte, dokud všechny potvrzené transakce jsou replikována a projdou potvrzením většinovým aktivní sekundární databáze. |
 |  | |
 
-### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>PowerShell: Správa převzetí služeb při selhání nasazení samostatné služby a databáze ve fondu
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Správa převzetí služeb při selhání jednoho a ve fondu databází
 
 | Rutina | Popis |
 | --- | --- |
@@ -160,7 +160,7 @@ Jak je popsáno výše, aktivní geografickou replikaci můžete také spravovat
 > [!IMPORTANT]
 > Ukázky skriptů, najdete v části [konfigurace a převzetí služeb při selhání izolované databáze pomocí aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) a [konfigurace a převzetí služeb při selhání pomocí aktivní geografické replikace databázi ve fondu](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>REST API: Správa převzetí služeb při selhání nasazení samostatné služby a databáze ve fondu
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Správa převzetí služeb při selhání jednoho a ve fondu databází
 
 | Rozhraní API | Popis |
 | --- | --- |

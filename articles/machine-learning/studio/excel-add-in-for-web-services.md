@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 57c9f9a0b6f3a0502a07ca3124cbe157d8008117
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c9c5ad0af39b698175c4bc7cb7f720452546ec10
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486890"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997062"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio
 Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli kód.
@@ -24,8 +24,8 @@ Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli 
 
 1. Otevřít [Excelový soubor ukázka](https://aka.ms/amlexcel-sample-2), který obsahuje doplněk aplikace Excel a data o cestujících Titaniku. 
  
-> [!NOTE]
-> Zobrazí se že seznam webových služeb týkající se do souboru a v dolní části zaškrtávacího políčka "Automatické předpovědět". Pokud povolíte automatické odhad predikce **všechny** vašich služeb se aktualizují pokaždé, když dojde ke změně na vstupy. Pokud není zaškrtnuto budete muset kliknout na "Předpovědět vše" pro aktualizaci. Pro povolení automatického. odhad na úrovni služby přejít ke kroku 6.
+    > [!NOTE]
+    > Zobrazí se že seznam webových služeb týkající se do souboru a v dolní části zaškrtávacího políčka "Automatické předpovědět". Pokud povolíte automatické odhad predikce **všechny** vašich služeb se aktualizují pokaždé, když dojde ke změně na vstupy. Pokud není zaškrtnuto budete muset kliknout na "Předpovědět vše" pro aktualizaci. Pro povolení automatického. odhad na úrovni služby přejít ke kroku 6.
 
 2. Kliknutím ji vyberte webovou službu – "Titanic pozůstalým prediktivní (ukázka doplňku Excel) [skóre]" v tomto příkladu.
    
@@ -37,7 +37,7 @@ Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli 
    
     ![Předpověď oddílu][02]
 
-Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [návod krok 5: Nasazení služby Azure Machine Learning Web](walkthrough-5-publish-web-service.md).
+Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [Tutorial 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md).
 
 Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci závisí na, jestli jste publikovali webovou službu Classic Machine Learning webové služby Machine Learning nové.
 
@@ -65,7 +65,7 @@ Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci 
 
 ## <a name="steps-to-add-a-new-web-service"></a>Postup přidání nové webové služby
 
-1. Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [návod krok 5: Nasazení služby Azure Machine Learning Web](walkthrough-5-publish-web-service.md).
+1. Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [Tutorial 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md).
 2. Klikněte na tlačítko **využívat**.
 3. Hledat **informace o základní spotřeby** oddílu. Zkopírujte a uložte **primární klíč** a **Request-Response** adresy URL.
 4. V aplikaci Excel přejděte na **webových služeb** části (Pokud jste v **Predict** klikněte na šipku zpět a přejděte na seznam webové služby).

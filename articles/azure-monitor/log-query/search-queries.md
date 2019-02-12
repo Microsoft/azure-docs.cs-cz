@@ -1,6 +1,6 @@
 ---
-title: Vyhledávací dotazy v Log Analytics | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro zahájení práce zápis vyhledávací dotazy v Log Analytics.
+title: Vyhledávací dotazy protokolů Azure Monitor | Dokumentace Microsoftu
+description: Tento článek obsahuje kurz pro získání začít používat vyhledávací dotazy protokolů Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 1f3131585a8f6581690eda777b8ffc96768b3cc6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882285"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004447"
 ---
-# <a name="search-queries-in-log-analytics"></a>Vyhledávací dotazy v Log Analytics
+# <a name="search-queries-in-azure-monitor-logs"></a>Vyhledávací dotazy protokolů Azure Monitor
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme s dotazy v Log Analytics](get-started-queries.md) před dokončením v této lekci.
+> By se měla Dokončit [Začínáme s Azure Monitor protokolu dotazy](get-started-queries.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Dotazy služby Azure Log Analytics můžete začít pomocí názvu tabulky nebo příkaz pro hledání. Tento kurz se zabývá vyhledávacích dotazů. Existují výhody každé metody.
+Pomocí názvu tabulky nebo příkaz vyhledávání můžete spustit dotazů na protokoly Azure monitoru. Tento kurz se zabývá vyhledávacích dotazů. Existují výhody každé metody.
 
 Dotazy založené na tabulce začněte tím, že vytváření oboru dotazu a proto jsou obvykle mnohem efektivnější než vyhledávací dotazy. Vyhledávací dotazy jsou že menší strukturovaná, což je lepší volbou při vyhledávání pro konkrétní hodnoty napříč sloupců nebo tabulek. **hledání** můžete zkontrolovat všechny sloupce z dané tabulky, nebo všechny tabulky, pro zadanou hodnotu. Množství zpracovávaných dat může být obrovské, což je důvod, proč může trvat delší dobu pro dokončení těchto dotazů a může vrátit velmi velké množství výsledků.
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Další postup
 
-- Další kurzy na [lokality jazyk dotazu Log Analytics](https://aka.ms/LogAnalyticsLanguage).
+- Další kurzy na [Průzkumník dat dotaz jazyka lokality](/azure/kusto/query/).

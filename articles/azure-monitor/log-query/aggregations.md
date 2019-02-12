@@ -1,6 +1,6 @@
 ---
-title: Agregace v dotazech Azure Log Analytics | Dokumentace Microsoftu
-description: Popisuje funkce agregace v Log Analytics dotazů, které nabízejí užitečné způsoby, jak analyzovat data.
+title: Agregace ve službě Azure Monitor protokolu dotazy | Dokumentace Microsoftu
+description: Popisuje funkce agregace v dotazů na protokoly Azure monitoru, které nabízejí užitečné způsoby, jak analyzovat data.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f5ecd68c1538fb9e21345221aa22c28217002271
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 31ff0435487592577915e526abcb97197f591449
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185745"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000843"
 ---
-# <a name="aggregations-in-log-analytics-queries"></a>Agregace v dotazy Log Analytics
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Agregace v dotazů na protokoly Azure monitoru
 
 > [!NOTE]
 > By se měla Dokončit [začít používat portál Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje funkce agregace v Log Analytics dotazů, které nabízejí užitečné způsoby, jak analyzovat data. Všechny tyto funkce pracují s `summarize` operátor, který vytvoří tabulku s agregované výsledky ve vstupní tabulce.
+Tento článek popisuje funkce agregace v dotazů na protokoly Azure monitoru, které nabízejí užitečné způsoby, jak analyzovat data. Všechny tyto funkce pracují s `summarize` operátor, který vytvoří tabulku s agregované výsledky ve vstupní tabulce.
 
 ## <a name="counts"></a>Počty
 
@@ -147,7 +147,7 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Zobrazit další lekce pro používání dotazovací jazyk Log Analytics:
+Zobrazit další lekce pro použití [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
 
 - [Operace s řetězci](string-operations.md)
 - [Datum a čas operace](datetime-operations.md)

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: ce7892401b2b04565a00c33c5301b9c0cd05d5f5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: 8127abf19c31b8a50079f416e73c98efebfd0983
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732749"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999415"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do služby Azure SQL Database managed instance
 
@@ -47,7 +47,7 @@ Pokud jsou některé hlášené omezujícím problémům, které se neodeberou s
 - Pokud budete vyžadovat přímý přístup k operačnímu systému nebo systému souborů, například instalace třetích stran nebo vlastních agentů na stejný virtuální počítač s SQL serverem.
 - Pokud máte striktní závislost na funkcích, které se ještě nepodporují, jako je například FileStream a FileTable, PolyBase a transakce mezi instance.
 - Pokud vůbec budete muset zůstat na konkrétní verzi systému SQL Server (2012, například).
-- Pokud vaše požadavky na výpočetní výkon jsou mnohem nižší ve veřejné verzi preview nabízí spravované instance (jedno virtuální jádro pro instanci) a konsolidace databáze není nepřijatelnou možností.
+- Pokud vaše požadavky na výpočetní výkon jsou mnohem nižší nabízí spravované instance (jedno virtuální jádro pro instanci) a konsolidace databáze není nepřijatelnou možností.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Nasazení do optimálně dimenzované mi
 

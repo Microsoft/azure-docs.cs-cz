@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c9705611803e63c41e906b020e9f908a2cdd6779
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: aeeacdd5a83ff41eeb900b142e09030b5642f4f8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979985"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993822"
 ---
-# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure-legacy"></a>Nahrání souborů do účtu Azure Media Services pomocí služby Aspera Server On Demand v Azure (starší verze)
+# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Nahrávání souborů do účtu Media Services pomocí služby Aspera Server On Demand v Azure 
 
 ## <a name="overview"></a>Přehled
 

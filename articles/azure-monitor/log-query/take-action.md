@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809625"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005348"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Provést akci s Runbook Automation z výsledků na vyhledávacím protokolu Log Analytics
 
-Ve výsledku hledání protokolů ve službě Azure Log Analytics, můžete teď vybrat **provést akci** spustit runbook služby Automation. Sada runbook lze napravit problém nebo provést jiné akce, jak shromažďovat informace o odstraňování potíží, odeslat e-mailu nebo vytvořit žádost o službu. 
+> [!NOTE]
+> Spuštění runbooku z výsledků hledání je funkce klasický portál pro prohledávání protokolů, které se stanou zastaralými 15. února 2019. Můžete nakonfigurovat skupinu akcí, které můžete spustit sady runbook kromě jiných akcí ze [pravidlo upozornění](../platform/alerts-log.md) ve službě Azure Monitor.
+
+Ve výsledku hledání protokolů ve službě Azure Log Analytics, můžete teď vybrat **provést akci** spustit runbook služby Automation.  Sada runbook lze napravit problém nebo provést jiné akce, jak shromažďovat informace o odstraňování potíží, odeslat e-mailu nebo vytvořit žádost o službu. 
+
 
 ## <a name="components-and-features-used"></a>Použité komponenty a funkce
 * [Účet Azure Automation](../../automation/automation-quickstart-create-account.md)

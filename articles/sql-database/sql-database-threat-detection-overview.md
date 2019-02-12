@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 395bf57b967ebeefe0a4168b53a4341c304e3d4f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/08/2019
+ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729502"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001881"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Detekce hrozeb služby Azure SQL Database
 
@@ -77,7 +77,7 @@ Klikněte na tlačítko **výstrahu o detekci hrozeb** spustit Azure Security Ce
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [detekce v samostatných nasazeních a databáze ve fondu hrozeb](sql-database-threat-detection.md).
+- Další informace o [detekce v jedné a ve fondu databází hrozeb](sql-database-threat-detection.md).
 - Další informace o [detekce hrozeb ve spravované instanci](sql-database-managed-instance-threat-detection.md).
 - Další informace o [rozšířené zabezpečení dat](sql-database-advanced-data-security.md).
 - Další informace o [auditování služby Azure SQL Database](sql-database-auditing.md)

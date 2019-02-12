@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 32f3f4fd3f4f299c9b084ab8604b56ea70e639a4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 49b763cba505a3423b47e5a2601db53b8e47a5fe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368219"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993961"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Chránit obsah pomocí Apple FairPlay nebo Microsoft PlayReady HLS
 Azure Media Services umožňuje dynamicky šifrovat obsah HTTP Live Streaming (HLS) pomocí následujících formátů:  
@@ -69,11 +69,11 @@ Na straně doručení klíče služby Media Services musí být nastaveny násle
     3. V příkazovém řádku spusťte následující příkaz. Soubor .pem tím převedete do souboru .pfx s privátním klíčem. Heslo pro soubor .pfx se zobrazí výzva, pomocí OpenSSL.
 
         "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-export - out FairPlay out.pfx-inkey privatekey.pem – v file:privatekey-pem-pass.txt - passin FairPlay out.pem
-  * **Heslo certifikátu aplikace**: heslo pro vytvoření souboru .pfx.
-  * **ID heslo certifikátu aplikace**: musíte nahrát heslo, podobně jako jak odesílají další klíče služby Media Services. Použití **ContentKeyType.FairPlayPfxPassword** hodnotu výčtu, chcete-li získat ID Media Services Toto je to, co chtějí používat uvnitř možnost doručení klíče zásad.
-  * **vektor IV**: Jedná se o náhodné hodnotu 16 bajtů. Musí se shodovat iv v zásady doručení assetu. Generovat vektor iv a vložit ho do obou místech: zásady doručení assetu a možnost doručení klíče zásad.
-  * **Požádejte**: Tento klíč je dostanete při generování certifikace prostřednictvím portálu pro vývojáře Apple. Jednotlivé vývojové týmy obdrží jedinečný položit dotaz. Uložit kopii zadání a uložte ho na bezpečném místě. Musíte nakonfigurovat položit dotaz jako FairPlayAsk ke službě Media Services později.
-  * **Požádejte ID**: Toto ID získáte při odeslat dotaz do Media Services. ZEPTEJTE se musí nahrát pomocí **ContentKeyType.FairPlayAsk** hodnotu výčtu. V důsledku toho se vrátí Media Services ID a je to, co má být použit při nastavení možnosti doručení klíče zásad.
+  * **Heslo certifikátu aplikace**: Heslo pro vytvoření souboru .pfx.
+  * **ID heslo certifikátu aplikace**: Heslo, podobně jako jak odesílají další klíče služby Media Services, musíte nahrát. Použití **ContentKeyType.FairPlayPfxPassword** hodnotu výčtu, chcete-li získat ID Media Services Toto je to, co chtějí používat uvnitř možnost doručení klíče zásad.
+  * **iv**: Jedná se o náhodné hodnotu 16 bajtů. Musí se shodovat iv v zásady doručení assetu. Generovat vektor iv a vložit ho do obou místech: zásady doručení assetu a možnost doručení klíče zásad.
+  * **POŽÁDEJTE**: Tento klíč je dostanete při generování certifikace prostřednictvím portálu pro vývojáře Apple. Jednotlivé vývojové týmy obdrží jedinečný položit dotaz. Uložit kopii zadání a uložte ho na bezpečném místě. Musíte nakonfigurovat položit dotaz jako FairPlayAsk ke službě Media Services později.
+  * **POŽÁDEJTE ID**: Toto ID získáte při odeslat dotaz do Media Services. ZEPTEJTE se musí nahrát pomocí **ContentKeyType.FairPlayAsk** hodnotu výčtu. V důsledku toho se vrátí Media Services ID a je to, co má být použit při nastavení možnosti doručení klíče zásad.
 
 Snímků za Sekundu na straně klienta je nutné nastavit následující věci:
 
@@ -138,9 +138,9 @@ Platí následující aspekty:
 * Typ šifrování nemusí být zadané v adrese URL, pokud pouze jeden šifrování byla použita k assetu.
 * Typ šifrování se nerozlišují malá a velká písmena.
 * Můžete zadat následující typy šifrování:  
-  * **šifrování cenc**: Standard Common encryption (PlayReady nebo Widevine)
+  * **šifrování cenc**:  Používat standard Common encryption (PlayReady nebo Widevine)
   * **cbcs-aapl**: FairPlay
-  * **CBC**: šifrování standardu AES envelope
+  * **cbc**: Šifrování standardu AES envelope
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 

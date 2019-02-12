@@ -4,23 +4,23 @@ description: Toto téma ukazuje, jak pomocí Azure media analytics tváří zák
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/09/2019
 ms.author: juliako;
-ms.openlocfilehash: 910cc246aa19e19b109fc660682c6b2dc239cbb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7fa1bec1b6f83b18684f6139bf6ac8db1ae9daec
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "33789380"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004889"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>Zákona o svobodném přístupu tváří pomocí Azure Media Analytics
+# <a name="redact-faces-with-azure-media-analytics-legacy"></a>Zákona o svobodném přístupu tváří pomocí služby Azure Media Analytics (zastaralé)
 ## <a name="overview"></a>Přehled
 **Azure Media Redactor** je [Azure Media Analytics](media-services-analytics-overview.md) procesor médií (PP), která nabízí škálovatelné face redactoru v cloudu. Rozmazání obličejů umožňuje upravovat vaše video, aby bylo možné rozostření tváří vybraných jedinců. Můžete chtít použít službu rozmazání tváří v veřejného scénáře a sdělovací. Pár minut záběrů, který obsahuje více ploch může trvat hodiny zákona o svobodném přístupu ručně, ale s touto službou procesu rozmazání tváří vyžaduje jenom pár jednoduchých kroků. Další informace najdete v tématu [to](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
 
@@ -135,7 +135,7 @@ Příklad foo_IDList.txt
 
 ## <a name="blur-types"></a>Rozostření typy
 
-V **kombinované** nebo **Redact** režimu 5 různých rozostření režimech, můžete si vybrat z prostřednictvím konfigurace vstupu JSON: **nízká**, **Med**, **Vysokou**, **pole**, a **černé**. Ve výchozím nastavení **Med** se používá.
+V **kombinované** nebo **Redact** režimu, můžete si vybrat z prostřednictvím konfigurace vstupu JSON 5 různých rozostření režimech: **Nízká**, **Med**, **vysokou**, **pole**, a **černé**. Ve výchozím nastavení **Med** se používá.
 
 Můžete najít ukázky níže rozostření typů.
 
@@ -371,7 +371,7 @@ namespace FaceRedaction
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Azure Media Services Analytics – přehled](media-services-analytics-overview.md)
+[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
 
-[Ukázky Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

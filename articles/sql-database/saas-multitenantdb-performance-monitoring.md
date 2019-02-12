@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458121"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002370"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu horizontálně dělené databázi Azure SQL s více tenanty v aplikaci SaaS s více tenanty
 
 V tomto kurzu jsou prozkoumali několika důležitým scénářům řízení výkonu použít v aplikacích SaaS. Pomocí generátoru zatížení simulovat aktivity v horizontálně dělené databáze s více tenanty, integrované monitorování a upozorňování funkcí služby SQL Database je ukázán.
 
-Aplikace s víceklientskou databázi s SaaS aplikace Wingtip Tickets používá model horizontálně dělených dat s více tenanty, kde místo (tenant) data jsou distribuovaná podle ID tenanta v potenciálně více databázích. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Chcete-li využít výhod tohoto typického vzoru používání databáze, databáze je možné škálovat nahoru a dolů optimalizovat náklady na řešení. S tímto typem vzorců je důležité monitorovat využití prostředků databáze k zajištění, že zatížení jsou přiměřeně vyvážená přetížení mezi potenciálně více databází. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a nedosahují jejich [DTU](sql-database-service-tiers.md#dtu-based-purchasing-model) omezení. Tento kurz se věnuje způsobům monitorování a Správa databází a jak k provedení nápravné akce v reakci na variace v úloze.
+Aplikace s víceklientskou databázi s SaaS aplikace Wingtip Tickets používá model horizontálně dělených dat s více tenanty, kde místo (tenant) data jsou distribuovaná podle ID tenanta v potenciálně více databázích. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Chcete-li využít výhod tohoto typického vzoru používání databáze, databáze je možné škálovat nahoru a dolů optimalizovat náklady na řešení. S tímto typem vzorců je důležité monitorovat využití prostředků databáze k zajištění, že zatížení jsou přiměřeně vyvážená přetížení mezi potenciálně více databází. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a nedosahují jejich [DTU](sql-database-purchase-models.md#dtu-based-purchasing-model) omezení. Tento kurz se věnuje způsobům monitorování a Správa databází a jak k provedení nápravné akce v reakci na variace v úloze.
 
 V tomto kurzu se naučíte:
 

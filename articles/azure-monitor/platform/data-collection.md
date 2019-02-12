@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: efc5fb022d117caeaec9da014252b501f2d06769
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450002"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002274"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -81,7 +81,7 @@ Například určitý počet uživatelů ve vaší aplikaci v daném okamžiku m�
 ### <a name="sources-of-metric-data"></a>Zdroje dat metriky
 Existují tři základní zdroje z metrik shromážděných službou Azure Monitor. Všechny tyto metriky jsou k dispozici v úložišti metrik, kde lze vyhodnotit jejich společně bez ohledu na jejich zdroj.
 
-**Platforma metriky** vytvářejí prostředky Azure a získáte přehled o jejich stav a výkon. Vytvoří jednotlivých typů prostředků [odlišnou sadu metriky](../../azure-monitor/platform/metrics-supported.md) bez veškeré požadované konfigurace.
+**Platforma metriky** vytvářejí prostředky Azure a získáte přehled o jejich stav a výkon. Vytvoří jednotlivých typů prostředků [odlišnou sadu metriky](metrics-supported.md) bez veškeré požadované konfigurace. 
 
 **Metriky aplikací** jsou vytvořeny pomocí Application Insights pro monitorované aplikace a pomáhají detekovat problémy s výkonem a sledování trendů ve využití vaší aplikace. To zahrnuje tyto hodnoty jako _doba odezvy serveru_ a _výjimky prohlížeče_.
 
@@ -96,32 +96,39 @@ Existují tři základní zdroje z metrik shromážděných službou Azure Monit
 ### <a name="what-can-you-do-with-metrics"></a>Co můžete dělat s metrikami?
 Úlohy, které můžete provádět pomocí metrik, patří:
 
-- Použití [Průzkumníka metrik](../../azure-monitor/platform/metrics-charts.md) k analýze shromážděných metrik a vykreslit v grafu. Sledování výkonu prostředků (jako je například virtuální počítač, webu nebo logiky aplikace) tak, že připnete grafy [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).
+- Použití [metriky analytics](metrics-charts.md) k analýze shromážděných metrik a vykreslit v grafu. Sledování výkonu prostředků (jako je například virtuální počítač, webu nebo logiky aplikace) tak, že připnete grafy [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurace [metriky pravidlo upozornění](alerts-metric.md) , který odešle oznámení, nebo má [automatizované akce](action-groups.md) Pokud metrika překročí mezní hodnotu.
-- Použití [automatického škálování](../../azure-monitor/platform/autoscale-overview.md) zvýšení nebo snížení prostředků na základě metriky překročení prahové hodnoty.
-- Metriky tras do Log Analytics k analýze dat metriky spolu s daty log a k uložení hodnoty metrik déle než 93 dní.
-- Stream metrik [centra událostí](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) směrovat je do [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) nebo k externím systémům.
+- Použití [automatického škálování](autoscale-overview.md) zvýšení nebo snížení prostředků na základě metriky překročení prahové hodnoty.
+- Metriky tras s protokoly k analýze dat metriky spolu s daty log a k uložení hodnoty metrik déle než 93 dní. 
+- Stream metrik [centra událostí](stream-monitoring-data-event-hubs.md) směrovat je do [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) nebo k externím systémům.
 - [Archiv](../../azure-monitor/learn/tutorial-archive-data.md) historii výkon nebo stav prostředku pro dodržování předpisů, auditování, nebo v režimu offline pro účely vykazování.
-- Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) nebo [rozhraní REST API](../../azure-monitor/platform/rest-api-walkthrough.md).
+- Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) nebo [rozhraní REST API](rest-api-walkthrough.md).
+
+
 
 ### <a name="viewing-metrics"></a>Zobrazení metrik
 Metriky ve službě Azure Monitor jsou uloženy v časové řadě databáze optimalizovaný pro rychlé načítání a ukládá hodnoty metrik 93 dní. Zkopírujte metriky do protokolů pro dlouhodobé analýzy a sledování trendů.
 
-Data metriky se používá v mnoha různými způsoby, jak je popsáno výše. Použití [Průzkumníka metrik](../../azure-monitor/platform/metrics-charts.md) přímo analyzovat data v úložišti metriky a graf hodnoty několika metrik v čase. Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst metriky pomocí [Azure, rozhraní REST API pro monitorování](../../azure-monitor/platform/rest-api-walkthrough.md).
+Data metriky se používá v mnoha různými způsoby, jak je popsáno výše. Použití [metriky analytics](metrics-charts.md) přímo analyzovat data v úložišti metriky a graf hodnoty několika metrik v čase. Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst metriky pomocí [Azure, rozhraní REST API pro monitorování](rest-api-walkthrough.md).
 
-![Průzkumník metrik](media/data-collection/metrics-explorer.png)
+![Metriky Analytics](media/data-collection/metrics-explorer.png)
 
 ## <a name="logs"></a>Logs
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 Protokoly obsahovat různé druhy dat uspořádaných do s různými sadami vlastností pro jednotlivé typy záznamů. Protokoly mohou obsahovat číselných hodnot, jako třeba metriky, ale obvykle obsahují textová data se podrobný popis. Tyto další se liší od metriky v tom, že se liší v jejich strukturu a často nejsou shromážděny v pravidelných intervalech.
 
 Běžný typ položky protokolu je událost, která se shromažďují nedojde. Jsou už vytvořené aplikace nebo služby a obvykle zahrnují dostatek informací, které poskytují úplný kontext na své vlastní. Například událost může znamenat, že určitý prostředek vytvořil nebo změnil, nový hostitel spuštěna v reakci na zvýšení provozu, nebo v aplikaci došlo k chybě.
 
 Protokoly jsou zvláště užitečné pro kombinování dat z různých zdrojů, pro komplexní analýzu a trendy v čase. Vzhledem k tomu, že formát dat se může lišit, aplikace můžete vytvořit vlastní protokoly pomocí struktura, která potřebují. Metriky jsou replikovány i v protokolech kombinovat s dalšími daty monitorování pro vytvoření trendu a ostatní data analýzy.
 
+
+
 ### <a name="sources-of-log-data"></a>Zdroje dat protokolu
 Azure Monitor může shromažďovat data protokolu z různých zdrojů v rámci Azure a z místních prostředků. Zdroje dat protokolu, patří:
 
-- [Protokoly aktivit](collect-activity-logs.md) z prostředků Azure, které obsahují informace o své konfiguraci a stavu a [diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) , které poskytují přehled o jejich operace.
+- [Protokoly aktivit](collect-activity-logs.md) z prostředků Azure, které obsahují informace o své konfiguraci a stavu a [diagnostické protokoly](diagnostic-logs-stream-log-store.md) , které poskytují přehled o jejich operace.
 - Agenty na [Windows](agent-windows.md) a [Linux](../learn/quick-collect-linux-computer.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Azure monitoru podle [zdroje dat](data-sources.md) , který můžete nakonfigurovat.
 - Aplikace data shromážděná pomocí [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Data a poskytují přehled o konkrétní aplikaci nebo službu [řešení monitorování](../insights/solutions.md) nebo funkce, jako jsou přehledy o kontejnerech, Insights virtuálního počítače nebo Insights skupiny prostředků.
@@ -159,12 +166,12 @@ Pokyny pro shromažďování metrik z prostředků v Azure můžete získat [pro
 ### <a name="logs-to-metrics"></a>Protokoly a metriky
 Jak je popsáno výše, jsou responzivní více než tento počet protokolů, metrik, takže můžete vytvářet upozornění s nižší latencí a s nižšími náklady. Významné množství číselná data se ukládá jako protokoly, které by bylo vhodné pro metriky, ale není uložený jako metriky ve službě Azure Monitor. Běžným příkladem jsou data o výkonu shromážděná z agentů a řešení pro správu. Některé z těchto hodnot je možné zkopírovat do metrik, kde jsou k dispozici pro výstrahy a analýzy s Průzkumníkem metrik.
 
-Vysvětlení této funkce je k dispozici na [vytvořit upozornění metriky pro protokoly ve službě Azure Monitor](../../azure-monitor/platform/alerts-metric-logs.md). Seznam hodnot podpora je k dispozici na [podporované metriky ve službě Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces).
+Vysvětlení této funkce je k dispozici na [vytvořit upozornění metriky pro protokoly ve službě Azure Monitor](alerts-metric-logs.md). Seznam hodnot podpora je k dispozici na [podporované metriky ve službě Azure Monitor](metrics-supported.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Datový Stream k externím systémům
 Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mít povinnost předat externího nástroje, jako jsou informace o zabezpečení a událostí produktů pro správu (SIEM). Toto přesměrování se obvykle provádí přímo z monitorovaných prostředků prostřednictvím [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 
-Získejte pokyny různých typů údajů o monitorování na [pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Získejte pokyny různých typů údajů o monitorování na [pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream](stream-monitoring-data-event-hubs.md).
 
 ## <a name="next-steps"></a>Další postup
 

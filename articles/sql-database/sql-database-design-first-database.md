@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Návrh první databáze jeden ve službě Azure SQL Database pomocí SSMS | Dokumentace Microsoftu'
-description: Zjistěte, jak navrhnout první databázi SQL Azure pomocí aplikace SQL Server Management Studio.
+title: 'Kurz: Návrh první relační databáze ve službě Azure SQL Database pomocí SSMS | Dokumentace Microsoftu'
+description: Zjistěte, jak navrhnout první relační databáze v jedné databázi ve službě Azure SQL Database pomocí aplikace SQL Server Management Studio.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,30 +9,30 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: e7229a0816cf74fed08397a68dd34e305bf8c0ea
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 3ca17ae905fff0911b58a0d336e0899ff385085c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459532"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990475"
 ---
-# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Kurz: Návrh první databáze SQL Azure pomocí SSMS
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Kurz: Návrh relační databáze v jedné databázi v rámci Azure SQL Database pomocí SSMS
 
-Azure SQL database je relační databáze as-a-service (DBaaS) v Microsoft cloudu (Azure). V tomto kurzu se naučíte používat web Azure Portal a aplikaci [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS), když chcete:
+Azure SQL database je relační databáze as-a-service (DBaaS) v Microsoft cloudu (Azure). V tomto kurzu se naučíte používat web Azure Portal a aplikaci [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS), když chcete:
 
 > [!div class="checklist"]
-> * Vytvořit databázi na portálu Azure Portal*
-> * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
-> * Připojit se k databázi pomocí SSMS
-> * Vytvářet tabulky pomocí SSMS
-> * Hromadně načítat data pomocí BCP
-> * Dotazování dat pomocí aplikace SSMS
+> - Vytvoření izolované databáze pomocí Azure portal *
+> - Nastavit pravidlo firewallu protokolu IP úrovni serveru pomocí webu Azure portal
+> - Připojit se k databázi pomocí SSMS
+> - Vytvářet tabulky pomocí SSMS
+> - Hromadně načítat data pomocí BCP
+> - Dotazování dat pomocí aplikace SSMS
 
 * Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) předtím, než začnete.
 
 > [!NOTE]
-> Pro účely tohoto kurzu používáme [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale můžete si zvolit i [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+> Pro účely tohoto kurzu používáme izolované databáze. Můžete také použít ve fondu databáze v elastickém fondu nebo instanci databáze do spravované instance. Připojení k managed instance najdete v těchto rychlých startů pro spravovanou instanci: [Rychlé zprovoznění: Konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance](sql-database-managed-instance-configure-vm.md) a [rychlý start: Konfigurace připojení typu point-to-site k Azure SQL Database Managed Instance z místní](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,90 +45,84 @@ K dokončení tohoto kurzu, ujistěte se, že jste nainstalovali:
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-database"></a>Vytvoření prázdné databáze
+## <a name="create-a-blank-single-database"></a>Vytvoření prázdné jedné databáze
 
-Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](sql-database-service-tiers-dtu.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a [serveru Azure SQL Database](sql-database-features.md).
+Izolované databáze ve službě Azure SQL Database se vytvoří s definovanou sadou výpočetních a úložných prostředků. Vytvoření databáze v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a spravuje se pomocí [databázový server](sql-database-servers.md).
 
-Pomocí následujících kroků vytvořte prázdnou databázi SQL.
+Postupujte podle těchto kroků můžete vytvořit prázdné jedné databáze.
 
 1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-
-1. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
+2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
 
    ![Vytvoření prázdné databáze](./media/sql-database-design-first-database/create-empty-database.png)
 
-   1. Vyplňte **SQL Database** formuláře následující informace, jak je znázorněno na předchozím obrázku:
+3. Vyplňte **SQL Database** formuláře následující informace, jak je znázorněno na předchozím obrázku:
 
-      | Nastavení       | Navrhovaná hodnota | Popis |
-      | ------------ | ------------------ | ------------------------------------------------- |
-      | **Název databáze** | *yourDatabase* | Platné názvy databází najdete v tématu [databáze identifikátory](/sql/relational-databases/databases/database-identifiers). |
-      | **Předplatné** | *yourSubscription*  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-      | **Skupina prostředků** | *yourResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions). |
-      | **Výběr zdroje** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. |
+    | Nastavení       | Navrhovaná hodnota | Popis |
+    | ------------ | ------------------ | ------------------------------------------------- |
+    | **Název databáze** | *yourDatabase* | Platné názvy databází najdete v tématu [databáze identifikátory](/sql/relational-databases/databases/database-identifiers). |
+    | **Předplatné** | *yourSubscription*  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
+    | **Skupina prostředků** | *yourResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions). |
+    | **Výběr zdroje** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. |
 
-   1. Klikněte na tlačítko **Server** chcete použít existující server nebo vytvořte a nakonfigurujte nový server pro vaši databázi. Vyberte server, nebo klikněte na tlačítko **vytvořit nový server** a vyplňte **nový server** formuláře následující informace:
+4. Klikněte na tlačítko **Server** použít existující databázový server nebo vytvořte a nakonfigurujte nový server databáze. Vyberte existující server, nebo klikněte na tlačítko **vytvořit nový server** a vyplňte **nový server** formuláře následující informace:
 
-      | Nastavení       | Navrhovaná hodnota | Popis |
-      | ------------ | ------------------ | ------------------------------------------------- |
-      | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions). |
-      | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [databáze identifikátory](/sql/relational-databases/databases/database-identifiers). |
-      | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí používat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-      | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
+    | Nastavení       | Navrhovaná hodnota | Popis |
+    | ------------ | ------------------ | ------------------------------------------------- |
+    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions). |
+    | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [databáze identifikátory](/sql/relational-databases/databases/database-identifiers). |
+    | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí používat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
+    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
-      ![create database-server](./media/sql-database-design-first-database/create-database-server.png)
+    ![create database-server](./media/sql-database-design-first-database/create-database-server.png)
 
-      Klikněte na **Vybrat**.
+5. Klikněte na **Vybrat**.
+6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Může prozkoumejte možnosti počtu Dtu nebo virtuálních jader a úložiště, které je k dispozici na jednotlivých úrovních služby.
 
-   1. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Může prozkoumejte možnosti počtu Dtu nebo virtuálních jader a úložiště, které je k dispozici na jednotlivých úrovních služby. Ve výchozím nastavení **standardní** [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) je vybrána, ale je nutné zvolit [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+    Po výběru úrovně služby, počet Dtu nebo virtuálních jader a velikost úložiště, klikněte na tlačítko **použít**.
 
-      > [!IMPORTANT]
-      > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: Velká Británie – sever, střed USA – Západ, Velká Británie South2, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USA (gov) – jih – střed, Německo-severovýchod, Čína – sever, USA (gov) – východ. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).
+7. Zadejte **kolace** pro prázdnou databázi (pro účely tohoto kurzu použijte výchozí hodnotu). Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
 
-      Po výběru úrovně služby, počet Dtu a velikost úložiště, klikněte na **použít**.
+8. Teď, když jste dokončili **SQL Database** formuláře, klikněte na tlačítko **vytvořit** ke zřízení izolované databáze. Tento krok může trvat několik minut.
 
-   1. Zadejte **kolace** pro prázdnou databázi (pro účely tohoto kurzu použijte výchozí hodnotu). Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
+9. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
 
-1. Teď, když jste dokončili **SQL Database** formuláře, klikněte na tlačítko **vytvořit** a databázi zřiďte. Tento krok může trvat několik minut.
+   ![oznámení](./media/sql-database-design-first-database/notification.png)
 
-1. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
+## <a name="create-a-server-level-ip-firewall-rule"></a>Vytvoření pravidla brány firewall úrovni serveru IP
 
-     ![oznámení](./media/sql-database-design-first-database/notification.png)
+Služba SQL Database vytvoří bránu firewall IP na úrovni serveru. Tato brána firewall brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru, pokud pravidlo brány firewall umožňuje jejich IP přes bránu firewall. Pokud chcete povolit externí připojení k izolované databáze, musíte nejprve přidat pravidlo IP brány firewall pro IP adresu (nebo rozsah IP adres). Postupujte podle těchto kroků můžete vytvořit [pravidlo firewallu protokolu IP serveru SQL Database](sql-database-firewall-configure.md).
 
-## <a name="create-a-firewall-rule"></a>Vytvoření pravidla brány firewall
-
-Službu SQL database vytvoří bránu firewall na úrovni serveru. Brána firewall brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru. Pokud chcete povolit externí připojení k databázi, musí nejprve přidat pravidlo pro vaši IP adresu do brány firewall. Postupujte podle těchto kroků můžete vytvořit [pravidlo brány firewall na úrovni serveru služby SQL Database](sql-database-firewall-configure.md).
-
-> [!NOTE]
-> SQL database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete připojit k serveru Azure SQL Database, dokud správce otevře port 1433.
+> [!IMPORTANT]
+> Služba SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit k této službě z podnikové sítě, nemusí odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete připojit k izolované databáze, dokud správce otevře port 1433.
 
 1. Jakmile se nasazení dokončí, klikněte na tlačítko **databází SQL** z nabídky na levé straně a pak klikněte na tlačítko *yourDatabase* na **databází SQL** stránky. Otevře se stránka s přehledem pro vaši databázi, zobrazí plně kvalifikovaný **název serveru** (například *yourserver.database.windows.net*) a poskytne vám možnosti další konfigurace.
 
-1. Zkopírujte tento plně kvalifikovaný název serveru použít pro připojení k vašemu serveru a databáze z SQL Server Management Studio.
+2. Zkopírujte tento plně kvalifikovaný název serveru použít pro připojení k vašemu serveru a databáze z SQL Server Management Studio.
 
    ![název serveru](./media/sql-database-design-first-database/server-name.png)
 
-1. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru**. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
+3. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru**. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
-   ![pravidlo brány firewall serveru](./media/sql-database-design-first-database/server-firewall-rule.png)
+   ![pravidlo brány firewall na úrovni serveru IP](./media/sql-database-design-first-database/server-firewall-rule.png)
 
-   1. Klikněte na **Přidat IP adresu klienta** na panelu nástrojů a přidejte svoji aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
+4. Klikněte na tlačítko **přidat IP adresu klienta** na panelu nástrojů přidat vaši aktuální IP adresu na nové pravidlo brány firewall protokolu IP. Pravidla brány firewall protokolu IP můžete otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-   1. Klikněte na **Uložit**. Pro vaši aktuální IP adresu, které otevře port 1433 na databáze SQL serveru se vytvoří pravidlo brány firewall na úrovni serveru.
+5. Klikněte na **Uložit**. Pravidlo firewallu protokolu IP úrovni serveru se vytvoří pro vaši aktuální IP adresu, které otevře port 1433 na serveru SQL Database.
 
-   1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
+6. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 
-IP adresu můžete nyní průchod branou firewall. Teď můžete připojit k serveru SQL Database a jeho databázím pomocí aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Nezapomeňte použít účet správce serveru, který jste vytvořili dříve.
+Vaši IP adresu můžete nyní procházet brány firewall protokolu IP. Teď můžete připojit k vaší izolované databáze pomocí SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Nezapomeňte použít účet správce serveru, který jste vytvořili dříve.
 
 > [!IMPORTANT]
-> Přístup přes bránu firewall služby SQL database je ve výchozím nastavení povolené pro všechny služby Azure. Kliknutím na **OFF** na této stránce provedete zákaz pro všechny služby Azure.
+> Ve výchozím nastavení je přístup přes bránu firewall služby SQL Database IP povolené pro všechny služby Azure. Kliknutím na **OFF** na této stránce provedete zákaz pro všechny služby Azure.
 
 ## <a name="connect-to-the-database"></a>Připojení k databázi
 
-Pomocí aplikace [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) navažte připojení ke svému serveru Azure SQL Database.
+Použití [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) k navázání připojení k izolované databáze.
 
 1. Otevřete SQL Server Management Studio.
-
-1. V dialogovém okně **Připojení k serveru** zadejte následující informace:
+2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -140,17 +134,17 @@ Pomocí aplikace [SQL Server Management Studio](/sql/ssms/sql-server-management-
 
    ![Připojení k serveru](./media/sql-database-design-first-database/connect.png)
 
-   1. Klikněte na **Možnosti** v dialogovém okně **Připojit k serveru**. V **připojit k databázi** části, zadejte *yourDatabase* pro připojení k této databázi.
+3. Klikněte na **Možnosti** v dialogovém okně **Připojit k serveru**. V **připojit k databázi** části, zadejte *yourDatabase* pro připojení k této databázi.
 
-      ![připojení k databázi na serveru](./media/sql-database-design-first-database/options-connect-to-db.png)  
+    ![připojení k databázi na serveru](./media/sql-database-design-first-database/options-connect-to-db.png)  
 
-   1. Klikněte na **Připojit**. **Průzkumník objektů systému** v aplikaci SSMS se otevře okno.
+4. Klikněte na **Připojit**. **Průzkumník objektů systému** v aplikaci SSMS se otevře okno.
 
-1. V **Průzkumník objektů**, rozbalte **databází** a potom rozbalte *yourDatabase* a zobrazte objekty v ukázkové databázi.
+5. V **Průzkumník objektů**, rozbalte **databází** a potom rozbalte *yourDatabase* a zobrazte objekty v ukázkové databázi.
 
    ![databázové objekty](./media/sql-database-design-first-database/connected.png)  
 
-## <a name="create-tables-in-the-database"></a>Vytvoření tabulek v databázi
+## <a name="create-tables-in-your-database"></a>Vytvoření tabulek v databázi
 
 Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém správy studentů univerzity, pomocí [Transact-SQL](/sql/t-sql/language-reference):
 
@@ -168,7 +162,7 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
 
 1. V **Průzkumník objektů**, klikněte pravým tlačítkem na *yourDatabase* a vyberte **nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
 
-1. V okně dotazu vytvořte v databázi čtyři tabulky spuštěním následujícího dotazu:
+2. V okně dotazu vytvořte v databázi čtyři tabulky spuštěním následujícího dotazu:
 
    ```sql
    -- Create Person table
@@ -213,7 +207,7 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
 
    ![Vytvoření tabulek](./media/sql-database-design-first-database/create-tables.png)
 
-1. Rozbalte **tabulky** pod uzlem *yourDatabase* v **Průzkumník objektů** zobrazíte tabulky, které jste vytvořili.
+3. Rozbalte **tabulky** pod uzlem *yourDatabase* v **Průzkumník objektů** zobrazíte tabulky, které jste vytvořili.
 
    ![Vytvořené tabulky aplikace SSMS](./media/sql-database-design-first-database/ssms-tables-created.png)
 
@@ -221,17 +215,17 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
 
 1. Vytvořte složku s názvem *sampleData* ve složce stažené soubory ukládat ukázková data pro vaši databázi.
 
-1. Klikněte pravým tlačítkem na následující odkazy a uložte je do *sampleData* složky.
+2. Klikněte pravým tlačítkem na následující odkazy a uložte je do *sampleData* složky.
 
    - [SampleCourseData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCourseData)
    - [SamplePersonData](https://sqldbtutorial.blob.core.windows.net/tutorials/SamplePersonData)
    - [SampleStudentData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleStudentData)
    - [SampleCreditData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCreditData)
 
-1. Otevřete okno příkazového řádku a přejděte *sampleData* složky.
+3. Otevřete okno příkazového řádku a přejděte *sampleData* složky.
 
-1. Spuštěním následujících příkazů vložte ukázková data do tabulek a zároveň nahraďte hodnoty *server*, *databáze*, *uživatele*, a *heslo* hodnotami pro vaše prostředí.
-  
+4. Spuštěním následujících příkazů vložte ukázková data do tabulek a zároveň nahraďte hodnoty *server*, *databáze*, *uživatele*, a *heslo* hodnotami pro vaše prostředí.
+
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    bcp Person in SamplePersonData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
@@ -258,7 +252,7 @@ Informace z databázových tabulek můžete načíst spuštěním následující
        AND Grade > 75
    ```
 
-1. V okně dotazu spusťte následující dotaz:
+2. V okně dotazu spusťte následující dotaz:
 
    ```sql
    -- Find all the courses in which Noe Coleman has ever enrolled
@@ -276,14 +270,14 @@ Informace z databázových tabulek můžete načíst spuštěním následující
 V tomto kurzu jste zjistili, mnoho běžných úloh. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Vytvoření databáze
-> * Nastavení pravidla brány firewall
-> * Připojení k databázi pomocí aplikace [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)
-> * Vytvoření tabulek
-> * Hromadné načtení dat
-> * Dotazování těchto dat
+> - Vytvoření izolované databáze
+> - Nastavit pravidlo brány firewall na úrovni serveru IP
+> - Připojení k databázi pomocí aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)
+> - Vytvoření tabulek
+> - Hromadné načtení dat
+> - Dotazování těchto dat
 
 V následujícím kurzu se dozvíte, jak navrhnout databázi pomocí sady Visual Studio a jazyka C#.
 
 > [!div class="nextstepaction"]
-> [Návrh databáze SQL Azure SQL database a její připojení pomocí C# a ADO.NET](sql-database-design-first-database-csharp.md)
+> [Návrh relační databáze v jedné databázi v rámci Azure SQL Database C# a ADO.NET](sql-database-design-first-database-csharp.md)

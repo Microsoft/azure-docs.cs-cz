@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a8b80c02da148d18daf39fb6196ebcb388c96ee4
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: c1b26b8a59ac0306fc06bf90f01642d4585a45be
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292227"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991563"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Zobrazení a úprava přehledů služby Video Indexer
 

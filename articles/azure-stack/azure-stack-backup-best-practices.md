@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 11829256451990401b6de4bcf62f2b0b51010832
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: d2568a4dfc4fefe9628fc63dcc0526b0876fde00
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241148"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993873"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Osvědčené postupy infrastruktury služby Backup
 
@@ -43,9 +43,18 @@ Povolte zálohování infrastruktury po nasazení každý Cloud Azure Stack. Pom
 
 ### <a name="encryption"></a>Šifrování
 
+#### <a name="version-1901-and-newer"></a>Verze 1901 a novější
+
+Šifrovací certifikát se používá k šifrování zálohovaných dat, které bude exportováno do externího úložiště. Certifikát může být certifikát podepsaný svým držitelem, protože tento certifikát slouží pouze k přenosu klíče. New-SelfSignedCertificate najdete další informace o tom, jak vytvořit certifikát.  
+Klíč musí být uložen na bezpečném místě (například certifikát globální služby Azure Key Vault). Formátu CER certifikátu se používá k šifrování dat. Formát PFX musíte použít během obnovení nasazení cloudové služby Azure Stack dešifrovat data záloh.
+
+![Certifikát se ukládají na bezpečném místě.](media/azure-stack-backup/azure-stack-backup-encryption-store-cert.png)
+
+#### <a name="1811-and-older"></a>1811 a starší
+
 Šifrovací klíč se používá k šifrování zálohovaných dat, které bude exportováno do externího úložiště. Klíč je generována jako součást [povolení zálohování pro Azure Stack s prostředím PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
-Klíč musí být uložen na bezpečném místě (například veřejné služby Azure Key Vault tajný klíč). Tento klíč musíte použít při opětovné nasazení Azure stacku. 
+Klíč musí být uložen na bezpečném místě (například globální služby Azure Key Vault tajný klíč). Tento klíč musíte použít při opětovné nasazení Azure stacku. 
 
 ![Uloží klíč na bezpečném místě.](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
@@ -74,7 +83,7 @@ Oblast: nyc
 
 Složka MASBackup je, kde Azure Stack ukládá svých dat záloh. Tuto složku byste neměli používat k ukládání svoje vlastní data. Výrobce OEM neměli používat této složky k ukládání dat záloh buď. 
 
-Výrobci OEM doporučujeme zálohovat data pro jejich komponent ve složce oblasti. Každé síťové přepínače, hardware životního cyklu hostitelů (HLH) a tak dále mohou uloženy ve vlastní podsložce. Příklad:
+Výrobci OEM doporučujeme zálohovat data pro jejich komponent ve složce oblasti. Každé síťové přepínače, hardware životního cyklu hostitelů (HLH) a tak dále, může uloženy ve vlastní podsložce. Příklad:
 
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\HLH
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Switches
@@ -95,6 +104,6 @@ Tyto výstrahy jsou podporovány v systému:
 
 ## <a name="next-steps"></a>Další postup
 
-Projděte si referenční materiál pro [infrastruktury služby Backup](azure-stack-backup-reference.md).
+Projděte si referenční materiál pro [infrastruktury služby Backup](azure-stack-backup-reference.md)
 
-Povolit [zálohovací služby infrastruktury](azure-stack-backup-enable-backup-console.md).
+Povolit [zálohovací služby infrastruktury](azure-stack-backup-enable-backup-console.md)

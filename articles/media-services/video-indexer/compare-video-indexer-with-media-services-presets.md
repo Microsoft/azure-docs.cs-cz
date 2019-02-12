@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 968614d183fe6857336ea92791ba4f1d279a5016
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: b4c74a67c66b12e3a7333f3e679e7c61a750cf7e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198095"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002387"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnání služeb Azure Media Services v3 přednastavení a Video Indexer 
 
@@ -30,7 +30,7 @@ V současné době je k překrytí mezi součástmi, které nabízí [Video Inde
 
 |Funkce|Video Indexer API |Analyzátor videa a zvuku analyzátor přednastavení<br/>v rozhraní API služby Media Services v3|
 |---|---|---|
-|Přehled Media|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/intelligence-concept.md)|
+|Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/intelligence-concept.md)|
 |Prostředí|Podívejte se na seznam podporovaných funkcí: <br/> [Přehled](video-indexer-overview.md)|Vrátí pouze poznatků z videí|
 |Fakturace|[Ceny za Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Ceny za Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Dodržování předpisů|[Dodržování předpisů Azure](https://aka.ms/AzureCompliance)|Služba Media Services je kompatibilní s mnoha certifikace. Podívejte se na [Offerings.pdf dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte položku "Media Services", chcete-li zobrazit, pokud je v souladu s certifikátem, které vás zajímají.|

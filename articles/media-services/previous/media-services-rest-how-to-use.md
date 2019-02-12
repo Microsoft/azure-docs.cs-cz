@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159736"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005450"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Přehled rozhraní REST API služby Media Services operace
+# <a name="media-services-operations-rest-api-overview"></a>Přehled rozhraní REST API služby Media Services operace 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 **Media Services operace REST** rozhraní API slouží k vytvoření úlohy, prostředky, živých kanálů a dalších prostředků v účtu Azure Media Services. Další informace najdete v tématu [referenční dokumentace rozhraní API služby Media Services operace REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
@@ -55,12 +55,12 @@ Při používání REST, platí následující aspekty.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardní hlavičky požadavků HTTP podporovaných službou Media Services
 Pro každé volání, které provedete do Media Services je sada požadované hlavičky, které je třeba zahrnout vaši žádost a také sadu volitelná záhlaví můžete chtít zahrnout. Následující tabulka uvádí požadované hlavičky:
 
-| Hlavička | Typ | Hodnota |
+| Hlavička | Type | Hodnota |
 | --- | --- | --- |
 | Autorizace |Nosiče |Nosiče je pouze přijaté autorizační mechanismus. Hodnota musí obsahovat také přístupový token poskytovaný službou Azure Active Directory. |
-| x-ms-version |Desítkově |2.17 (nebo nejnovější verze)|
-| DataServiceVersion |Desítkově |3.0 |
-| MaxDataServiceVersion |Desítkově |3.0 |
+| x-ms-version |Decimal |2.17 (nebo nejnovější verze)|
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > Protože Media Services využívá k tomu jeho rozhraní REST API OData, záhlaví DataServiceVersion a MaxDataServiceVersion, měly by být součástí všech požadavků. ale pokud nejsou, pak aktuálně Media Services se předpokládá, že DataServiceVersion používá hodnotu 3.0.
@@ -69,24 +69,24 @@ Pro každé volání, které provedete do Media Services je sada požadované hl
 
 Následuje sadu volitelné hlavičky:
 
-| Hlavička | Typ | Hodnota |
+| Hlavička | Type | Hodnota |
 | --- | --- | --- |
 | Datum |RFC 1123 datum |Časové razítko požadavku |
-| Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, jako je následující:<p> -application/json; odata = verbose<p> -application/atom + xml<p> Odpovědi může mít jiný typ obsahu, jako je například načtení objektu blob, kde úspěšná odpověď obsahuje objekt blob datového proudu jako datovou část. |
-| Přijmout kódování |GZIP, deflate |GZIP a DEFLATE kódování, pokud se používá. Poznámka: Pro velké prostředky může ignorovat tuto hlavičku Media Services a vrátit nekomprimované data. |
+| Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, jako je následující:<p> -application/json;odata=verbose<p> -application/atom + xml<p> Odpovědi může mít jiný typ obsahu, jako je například načtení objektu blob, kde úspěšná odpověď obsahuje objekt blob datového proudu jako datovou část. |
+| Přijmout kódování |Gzip, deflate |GZIP a DEFLATE kódování, pokud se používá. Poznámka: Pro velké prostředky může ignorovat tuto hlavičku Media Services a vrátit nekomprimované data. |
 | Přijměte jazyka |"en", "es" a tak dále. |Určuje upřednostňovaný jazyk pro odpověď. |
-| Přijměte znaková sada |Znaková sada typ jako "UTF-8" |Výchozí hodnota je UTF-8. |
+| Accept-Charset |Znaková sada typ jako "UTF-8" |Výchozí hodnota je UTF-8. |
 | X-HTTP-Method |Metoda HTTP |Umožňuje klientům NAT nebo branami firewall, které nepodporují metod HTTP PUT nebo DELETE používat tyto metody, tunelové propojení prostřednictvím volání GET. |
 | Typ obsahu |Typ obsahu |Požádá o obsahu typ textu žádosti PUT nebo POST. |
-| Client-request-id |Řetězec |Volající definované hodnotu, která identifikuje daného požadavku. Je-li zadána, tato hodnota se zahrnou ve zprávě s odpovědí jako způsob mapování požadavku. <p><p>**Důležité upozornění**<p>Hodnoty by měly být omezené na 2096b (tis. 2). |
+| Client-request-id |String |Volající definované hodnotu, která identifikuje daného požadavku. Je-li zadána, tato hodnota se zahrnou ve zprávě s odpovědí jako způsob mapování požadavku. <p><p>**Důležité upozornění**<p>Hodnoty by měly být omezené na 2096b (tis. 2). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Hlavičky standardních odpovědí HTTP podporovaných službou Media Services
 Následuje sadu hlavičky, které mohou být vráceny, v závislosti na prostředek, který se požaduje a akci, kterou máte v úmyslu provést.
 
-| Hlavička | Typ | Hodnota |
+| Hlavička | Type | Hodnota |
 | --- | --- | --- |
-| id požadavku |Řetězec |Jedinečný identifikátor pro aktuální operaci, vygeneruje služby. |
-| Client-request-id |Řetězec |Identifikátor určený volajícím v původní požadavek, pokud jsou k dispozici. |
+| id požadavku |String |Jedinečný identifikátor pro aktuální operaci, vygeneruje služby. |
+| Client-request-id |String |Identifikátor určený volajícím v původní požadavek, pokud jsou k dispozici. |
 | Datum |RFC 1123 datum |Datum/čas zpracování žádosti. |
 | Typ obsahu |Různé |Typ obsahu těla odpovědi. |
 | Kódování obsahu |Různé |Gzip nebo deflate podle potřeby. |
@@ -106,7 +106,7 @@ Následuje úplný seznam příkazů HTTP, které se dá použít při vytváře
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Vyhledat a procházet entity model služby Media Services
 Chcete-li zjistitelnější entity Media Services, je možné $metadata operace. Umožňuje načíst všechny typy entit platný, vlastností entity, přidružení, funkce, akce a tak dále. Přidáním $metadata operaci za účelem váš koncový bod REST API služby Media Services, dostanete tuto službu zjišťování.
 
- /API/$ metadata.
+ /api/$metadata.
 
 By měl připojit "? api-version=2.x" na konec identifikátoru URI, chcete-li v prohlížeči zobrazit metadata, nebo nesmí obsahovat hlavičku x-ms-version pro vaši žádost.
 

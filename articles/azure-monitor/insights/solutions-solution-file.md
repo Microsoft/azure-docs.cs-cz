@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6511eb7a4651f0b95b7821e1959ba7e4130c2d6e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105793"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999364"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytváření souboru řešení správy v Azure (Preview)
 > [!NOTE]
@@ -53,7 +53,7 @@ Základní struktura souboru řešení správy je stejné jako [šablony Resourc
 ## <a name="parameters"></a>Parametry
 [Parametry](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) jsou hodnoty, které požadujete od uživatele při instalaci řešení pro správu.  Existuje standardní parametry, které budou mít všechna řešení, a podle potřeby můžete přidat další parametry pro konkrétní řešení.  Jak se uživatelé zadáním hodnot parametrů při instalaci řešení bude záviset na konkrétních parametrů a jak se instaluje řešení.
 
-Když se uživatel [nainstaluje řešení pro správu](solutions.md#install-a-management-solution) prostřednictvím šablon Azure Marketplace nebo Azure pro rychlý start, zobrazí se výzva k výběru [pracovní prostor Log Analytics a účet Automation](solutions.md#log-analytics-workspace-and-automation-account).  Ty se používají k naplnění hodnoty každého standardní parametry.  Uživatel není vyzván, aby přímo zadat hodnoty pro standardní parametry, ale zobrazí se výzva k zadání hodnoty pro žádné další parametry.
+Když se uživatel [nainstaluje řešení pro správu](solutions.md#install-a-monitoring-solution) prostřednictvím šablon Azure Marketplace nebo Azure pro rychlý start, zobrazí se výzva k výběru [pracovní prostor Log Analytics a účet Automation](solutions.md#log-analytics-workspace-and-automation-account).  Ty se používají k naplnění hodnoty každého standardní parametry.  Uživatel není vyzván, aby přímo zadat hodnoty pro standardní parametry, ale zobrazí se výzva k zadání hodnoty pro žádné další parametry.
 
 
 Parametr vzorku je uveden níže.  
@@ -83,12 +83,12 @@ Následující tabulka uvádí standardní parametry pro všechna řešení pro 
 >
 >
 
-| Parametr | Typ | Popis |
+| Parametr | Type | Popis |
 |:--- |:--- |:--- |
-| název účtu |řetězec |Název účtu Azure Automation. |
+| accountName |řetězec |Název účtu Azure Automation. |
 | pricingTier |řetězec |Cenová úroveň pracovního prostoru Log Analytics a účet Azure Automation. |
 | regionId |řetězec |Oblast účtu Azure Automation. |
-| Název řešení |řetězec |Název řešení.  Pokud provádíte nasazení vašeho řešení prostřednictvím šablon rychlý start, pak byste měli definovat solutionName jako parametr, můžete definovat místo toho by uživatel musel zadejte jeden řetězec. |
+| solutionName |řetězec |Název řešení.  Pokud provádíte nasazení vašeho řešení prostřednictvím šablon rychlý start, pak byste měli definovat solutionName jako parametr, můžete definovat místo toho by uživatel musel zadejte jeden řetězec. |
 | workspaceName |řetězec |Název pracovního prostoru log Analytics. |
 | workspaceRegionId |řetězec |Oblasti pracovního prostoru Log Analytics. |
 

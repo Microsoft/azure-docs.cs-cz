@@ -1,6 +1,6 @@
 ---
-title: Pokročilé agregace v dotazech Azure Log Analytics | Dokumentace Microsoftu
-description: Popisuje některé pokročilejší možnosti agregace, která je k dispozici pro dotazy Log Analytics.
+title: Pokročilé agregace v dotazech protokolu Azure Monitor | Dokumentace Microsoftu
+description: Popisuje některé pokročilejší možnosti agregace dostupné dotazů na protokoly Azure monitoru.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 1116d03fc9c2328365b0bde29cf9ea900e58b7ed
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5e2152397a4a965e6d62f8fafc2a59bf318b4a5e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186357"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005416"
 ---
-# <a name="advanced-aggregations-in-log-analytics-queries"></a>Pokročilé agregace v dotazy Log Analytics
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v dotazů na protokoly Azure monitoru
 
 > [!NOTE]
-> By se měla Dokončit [agregace v dotazy Log Analytics](./aggregations.md) před dokončením v této lekci.
+> By se měla Dokončit [agregace v Azure Monitor vyžaduje](./aggregations.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje některé pokročilejší možnosti agregace, která je k dispozici pro dotazy Log Analytics.
+Tento článek popisuje některé pokročilejší možnosti agregace, která je k dispozici pro dotazy Azure Monitor.
 
 ## <a name="generating-lists-and-sets"></a>Generování seznamy a sad
 Můžete použít `makelist` kontingenční data pořadím hodnot v určitém sloupci. Můžete třeba prozkoumat nejběžnější pořadí událostí se provádějí na počítačích. V podstatě můžete přesouvat data pořadím identifikátory EventID v rozmezí na každém počítači. 
@@ -41,7 +41,7 @@ Event
 |Počítač|list_EventID|
 |---|---|
 | POČÍTAČ1 | [704,701,1501,1500,1085,704,704,701] |
-| POČÍTAČ2 | [326,105,302,301,300,102] |
+| computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
 `makelist` vygeneruje seznam v pořadí, ve kterém dat byl předán do něj. Chcete-li seřadit události od nejstarších k nejnovějším, použijte `asc` v příkazu pořadí místo `desc`. 
@@ -57,7 +57,7 @@ Event
 |Počítač|list_EventID|
 |---|---|
 | POČÍTAČ1 | [704,701,1501,1500,1085] |
-| POČÍTAČ2 | [326,105,302,301,300,102] |
+| computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
 Stejně jako `makelist`, `makeset` také pracuje s seřazených dat a bude generovat pole na základě pořadí řádky, které jsou předány do něj.
@@ -73,9 +73,9 @@ Heartbeat
 
 | Počítač | Řešení | 
 |--------------|----------------------|
-| POČÍTAČ1 | "zabezpečení", "aktualizace", "sledování změn ve" |
-| POČÍTAČ2 | "zabezpečení", "aktualizace" |
-| POČÍTAČ3 | "Antimalwarové", "sledování změn ve" |
+| POČÍTAČ1 | "security", "updates", "changeTracking" |
+| computer2 | "zabezpečení", "aktualizace" |
+| computer3 | "Antimalwarové", "sledování změn ve" |
 | ... | ... | ... |
 
 Použití `mvexpand` zobrazíte každá hodnota na samostatném řádku namísto seznam oddělený čárkami:
@@ -90,12 +90,12 @@ Heartbeat
 | Počítač | Řešení | 
 |--------------|----------------------|
 | POČÍTAČ1 | "zabezpečení" |
-| POČÍTAČ1 | "aktualizace" |
-| POČÍTAČ1 | "sledování změn ve" |
-| POČÍTAČ2 | "zabezpečení" |
-| POČÍTAČ2 | "aktualizace" |
-| POČÍTAČ3 | "Antimalwarové" |
-| POČÍTAČ3 | "sledování změn ve" |
+| POČÍTAČ1 | "updates" |
+| POČÍTAČ1 | "changeTracking" |
+| computer2 | "zabezpečení" |
+| computer2 | "updates" |
+| computer3 | "Antimalwarové" |
+| computer3 | "changeTracking" |
 | ... | ... | ... |
 
 
@@ -110,10 +110,10 @@ Heartbeat
 ```
 |Řešení | list_Computer |
 |--------------|----------------------|
-| "zabezpečení" | ["Počítač1", "počítač2"] |
-| "aktualizace" | ["Počítač1", "počítač2"] |
-| "sledování změn ve" | ["Počítač1", "POČÍTAČ3"] |
-| "Antimalwarové" | ["POČÍTAČ3"] |
+| "zabezpečení" | ["computer1", "computer2"] |
+| "updates" | ["computer1", "computer2"] |
+| "changeTracking" | ["computer1", "computer3"] |
+| "Antimalwarové" | ["computer3"] |
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>Chybějící přihrádek zpracování
@@ -181,7 +181,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit další lekce pro používání dotazovací jazyk Log Analytics:
+Zobrazit další lekce pro použití [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
 
 - [Operace s řetězci](string-operations.md)
 - [Datum a čas operace](datetime-operations.md)

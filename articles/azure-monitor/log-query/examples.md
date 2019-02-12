@@ -1,6 +1,6 @@
 ---
-title: Příklady dotazů Azure Monitor Log Analytics | Dokumentace Microsoftu
-description: Příklady dotazů ve službě Log Analytics v jazyce Kusto.
+title: Příklady dotazů protokolu Azure monitorování Azure Monitor | Dokumentace Microsoftu
+description: Příklady dotazů protokolu ve službě Azure Monitor, pomocí Průzkumníka dat dotazovací jazyk.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882459"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993193"
 ---
-# <a name="log-analytics-query-examples"></a>Příklady dotazů analýzy protokolů
-Tento článek obsahuje příklady různých [dotazy](../../azure-monitor/log-query/log-query-overview.md) pomocí [Kusto jazyk](https://docs.microsoft.com/azure/kusto/query/) načíst různé typy dat ze služby Log Analytics. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  
+# <a name="azure-monitor-log-query-examples"></a>Příklady dotazů protokolu Azure Monitor
+Tento článek obsahuje příklady různých [dotazy](log-query-overview.md) pomocí [Průzkumník dat dotazovací jazyk](https://docs.microsoft.com/azure/kusto/query/) načíst různé typy dat protokolu z Azure monitoru. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  
 
-Najdete v článku [referenční informace k jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) podrobnosti o jiná klíčová slova použít v těchto ukázek. Projděte si [lekce týkající se vytváření dotazů](get-started-queries.md) Pokud začínáte ke službě Log Analytics.
+Najdete v článku [referenční informace k jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) podrobnosti o jiná klíčová slova použít v těchto ukázek. Projděte si [lekce týkající se vytváření dotazů](get-started-queries.md) Pokud začínáte do Azure monitoru.
 
 ## <a name="events"></a>Události
 
@@ -237,7 +237,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Počet událostí zabezpečení pomocí ID aktivity
 
 
-V tomto příkladu spoléhá na pevnou struktury **aktivity** sloupec: \<ID\>-\<název\>.
+V tomto příkladu spoléhá na pevnou struktury **aktivity** sloupce: \<ID\>-\<název\>.
 Analyzuje **aktivity** hodnoty do dva nové sloupce a počet výskytů jednotlivých **activityID**.
 
 ```Kusto
@@ -278,7 +278,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Parsovat název aktivity a ID
-Následující dva příklady spoléhají na pevný struktury **aktivity** sloupec: \<ID\>-\<název\>. V prvním příkladu se používá **analyzovat** operátor přiřazení hodnoty k dva nové sloupce: **activityID** a **activityDesc**.
+Následující dva příklady spoléhají na pevný struktury **aktivity** sloupce: \<ID\>-\<název\>. V prvním příkladu se používá **analyzovat** operátor přiřazení hodnoty k dva nové sloupce: **activityID** a **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -440,4 +440,4 @@ Update
 ## <a name="next-steps"></a>Další postup
 
 - Odkazovat [referenční informace k jazyku Kusto](/azure/kusto/query) o na jazyku.
-- Projít [lekci o psaní dotazů ve službě Log Analytics](get-started-queries.md).
+- Projít [lekci o psaní dotazů protokolu ve službě Azure Monitor](get-started-queries.md).

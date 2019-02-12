@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 928ed383c08dd87cb003d1f729bc3fecce0c6935
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693880"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999228"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Pro jistotu při použití Azure Key Vault, můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice modulu hardwarového zabezpečení. Tento scénář se často označuje jako *přineste si vlastní klíč*, nebo BYOK. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Služba Azure Key Vault využívá moduly hardwarového zabezpečení Thales nShield řady chrání vaše klíče.
 
@@ -78,21 +80,19 @@ Pro tento první krok proveďte následující postupy na pracovní stanici při
 
 ### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalace prostředí Azure PowerShell
 
-Z pracovní stanice připojené k Internetu stáhněte a nainstalujte modul Azure PowerShell, který obsahuje rutiny pro správu služby Azure Key Vault. To vyžaduje minimální verzi 0.8.13.
-
-Pokyny k instalaci, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
+Z pracovní stanice připojené k Internetu stáhněte a nainstalujte modul Azure PowerShell, který obsahuje rutiny pro správu služby Azure Key Vault. Pokyny k instalaci, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>Krok 1.2: Získejte ID vašeho předplatného Azure
 
 Spusťte relaci Azure Powershellu a přihlaste se ke svému účtu Azure pomocí následujícího příkazu:
 
 ```Powershell
-   Add-AzureRMAccount
+   Connect-AzAccount
 ```
-V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Potom použijte [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) příkaz:
+V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Potom použijte [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) příkaz:
 
 ```powershell
-   Get-AzureRMSubscription
+   Get-AzSubscription
 ```
 Ve výstupu vyhledejte ID pro předplatné, které budete používat pro Azure Key Vault. Toto ID předplatného budete potřebovat později.
 
@@ -493,10 +493,10 @@ Pomocí USB Flash disku nebo jiného přenosného úložiště zkopírujte výst
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5: Přenos vašeho klíče do služby Azure Key Vault
 
-Pro tento závěrečný krok na pracovní stanici připojené k Internetu, použijte [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) rutinu k odeslání balíčku pro přenos klíče, který jste zkopírovali z odpojené pracovní stanice do modulu hardwarového zabezpečení Azure Key Vault:
+Pro tento závěrečný krok na pracovní stanici připojené k Internetu, použijte [přidat AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) rutinu k odeslání balíčku pro přenos klíče, který jste zkopírovali z odpojené pracovní stanice do modulu hardwarového zabezpečení Azure Key Vault:
 
    ```powershell
-        Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+        Add-AzKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
    ```
 
 Pokud bude odesílání úspěšné, zobrazí zobrazí vlastnosti klíče, který jste právě přidali.

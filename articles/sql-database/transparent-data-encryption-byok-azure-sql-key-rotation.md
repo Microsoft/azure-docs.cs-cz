@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
 ms.date: 12/06/2018
-ms.openlocfilehash: 14a39d283d9ec4f8d5267e6a6628609ac79879ee
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 45cd4e884530836d515e0c6cce8a6fc9be109d88
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567498"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992003"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Otočit ochrana transparentní šifrování dat (TDE) pomocí Powershellu
 
@@ -35,26 +35,13 @@ Tato příručka popisuje dvě možnosti, jak otočit ochrana TDE serveru.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Tato příručka předpokládá, že už používáte klíče z trezoru klíčů Azure jako ochrana TDE pro služby Azure SQL Database a Data Warehouse. Zobrazit [transparentní šifrování dat s podporou modelu BYOK](transparent-data-encryption-byok-azure-sql.md).
+- Tato příručka předpokládá, že už používáte klíče z trezoru klíčů Azure jako ochrana TDE pro služby Azure SQL Database a Data Warehouse. Zobrazit [transparentního šifrování dat díky integraci služby Azure Key Vault – podporou modelu BYOK](transparent-data-encryption-byok-azure-sql.md).
 - Musíte mít Azure PowerShell verze 3.7.0 nebo novější nainstalován a spuštěn. 
 - [Nepovinné ale doporučeno] Vytvoření klíče materiál pro ochrana TDE v modulu hardwarového zabezpečení (HSM) nebo ukládání první místní klíč a importovat materiál klíče do služby Azure Key Vault. Postupujte podle [pokyny, jak pomocí modulu hardwarového zabezpečení (HSM) a služby Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started) Další informace.
 
-## <a name="option-1-auto-rotation"></a>Option 1: Automatické střídání
+## <a name="manual-key-rotation"></a>Ruční obměna klíčů
 
-Generujte novou verzi existujícího ochranné zařízení klíče transparentní šifrování dat ve službě Key Vault za stejný název klíče služby key vault. Spuštění služby Azure SQL pomocí této nové verzi během 24 hodin. 
-
-Vytvořit novou verzi transparentní šifrování dat pomocí ochrany [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) rutiny:
-
-   ```powershell
-   Add-AzureKeyVaultKey `
-   -VaultName <KeyVaultName> `
-   -Name <KeyVaultKeyName> `
-   -Destination <HardwareOrSoftware>
-   ```
-
-## <a name="option-2-manual-rotation"></a>Option 2: Ruční otáčení
-
-Tato možnost používá [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey), [přidat AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey), a [rutiny Set-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) rutiny pro přidání úplně nový klíč, které by mohly být v rámci nového názvu klíče nebo dokonce pro jiný trezor klíčů. 
+Ruční obměna klíčů používá [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey), [přidat AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey), a [rutiny Set-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) rutiny pro přidání zcela nový klíč, který může být v rámci nového názvu klíče nebo dokonce pro jiný trezor klíčů. Tento přístup podporuje přidávání stejný klíč do jiných trezorech klíčů pro zajištění podpory scénářů vysoké dostupnosti a geo-dr.
 
 >[!NOTE]
 >Celková délka pro název trezoru klíčů a název klíče nemůže být delší než 94 znaků.
@@ -107,4 +94,4 @@ Tato možnost používá [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyva
 
 - V případě ohrožení zabezpečení zjistěte, jak odebrat potenciálně ohroženými ochrana TDE: [Odebrání potenciálně ohroženými klíče](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
-- Začínáme s přineste si vlastní klíč podpory pro transparentní šifrování dat: [Zapnout transparentní šifrování dat pomocí vlastní klíče ze služby Key Vault pomocí Powershellu](transparent-data-encryption-byok-azure-sql-configure.md)
+- Začínáme s Azure Key Vault integrace a podpora vlastního klíče pro transparentní šifrování dat: [Zapnout transparentní šifrování dat pomocí vlastní klíče ze služby Key Vault pomocí Powershellu](transparent-data-encryption-byok-azure-sql-configure.md)

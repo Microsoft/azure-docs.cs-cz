@@ -1,6 +1,6 @@
 ---
 title: Transakční replikace s Azure SQL Database | Microsoft Docs"
-description: Další informace o použití transakční replikace systému SQL Server se samostatným ve fondu a instanci databáze ve službě Azure SQL Database.
+description: Další informace o použití transakční replikace systému SQL Server s jednoduché, ve fondu, a instanci databáze ve službě Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,15 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/08/2019
+ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814108"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993805"
 ---
-# <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace se samostatným, ve fondu a instanci databáze ve službě Azure SQL Database
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s jedním, ve fondu a instanci databáze ve službě Azure SQL Database
 
 Transakční replikace je funkce služby Azure SQL Database a SQL Server, který umožňuje replikovat data z tabulky ve službě Azure SQL Database nebo SQL Server do tabulek umístit do vzdálené databáze. Tato funkce umožňuje synchronizovat více tabulek v různých databázích.
 
@@ -37,22 +37,21 @@ Klíčové komponenty v transakční replikaci můžete vidět na následující
 
 ![Replikace SQL Database](media/replication-to-sql-database/replication-to-sql-database.png)
 
-
 **Vydavatele** odesláním aktualizací k distributorovi je instance nebo serveru, který publikuje změny provedené na některé tabulky (články). Publikování do jakékoli SQL Azure je databáze z SQL serveru v místním podporuje následující verze systému SQL Server:
 
-   - SQL Server 2019 (preview)
-   - SQL Server 2016 na SQL 2017
-   - SQL Server 2014 SP1 CU3 nebo větší (12.00.4427)
-   - SQL Server 2014 RTM CU10 (12.00.2556)
-   - SQL Server 2012 SP3 nebo větší (11.0.6020)
-   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-   - Pro jiné verze systému SQL Server, které nepodporují publikování na objekty v Azure, je možné využívat [znovu publikovat data](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metody pro přesun dat do novější verze systému SQL Server. 
+- SQL Server 2019 (preview)
+- SQL Server 2016 na SQL 2017
+- SQL Server 2014 SP1 CU3 nebo větší (12.00.4427)
+- SQL Server 2014 RTM CU10 (12.00.2556)
+- SQL Server 2012 SP3 nebo větší (11.0.6020)
+- SQL Server 2012 SP2 CU8 (11.0.5634.0)
+- Pro jiné verze systému SQL Server, které nepodporují publikování na objekty v Azure, je možné využívat [znovu publikovat data](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metody pro přesun dat do novější verze systému SQL Server. 
 
 **Distributora** je instance nebo serveru, který shromažďuje údaje o změnách v článcích od vydavatele a distribuuje je pro předplatitele. Distributor může být Azure SQL Database Managed Instance nebo SQL Server (libovolná verze jak dlouhé je se rovná nebo je vyšší než verze, vydavatel). 
 
-**Odběratele** je instance nebo serveru, který přijímá změny provedené ve vydavateli. Předplatitelé může být buď samostatně, ve fondu a instance databází do databází Azure SQL Database nebo SQL Server. Odběratel v samostatné nebo dotazů databáze musí být nakonfigurován jako odběratel nabízených oznámení. 
+**Odběratele** je instance nebo serveru, který přijímá změny provedené ve vydavateli. Předplatitelé může být buď jedno, ve fondu, a instance databází do databází Azure SQL Database nebo SQL Server. Odběratel na jeden nebo součástí fondu databáze musí být nakonfigurován jako nabízených oznámení odběrateli. 
 
-| Role | Nasazení samostatné služby a databáze ve fondu | Instance databáze |
+| Role | Databáze ve fondu a jeden | Instance databáze |
 | :----| :------------- | :--------------- |
 | **Publisher** | Ne | Ano | 
 | **Distributor** | Ne | Ano|
@@ -63,7 +62,7 @@ Klíčové komponenty v transakční replikaci můžete vidět na následující
 Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
 
 
-| Replikace | Nasazení samostatné služby a databáze ve fondu | Instance databáze|
+| Replikace | Databáze ve fondu a jeden | Instance databáze|
 | :----| :------------- | :--------------- |
 | [**transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano | 
 | [**snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
@@ -107,11 +106,11 @@ Vydavateli a distributorovi konfigurují na dvou spravovaných instancí. V tét
 - Obě Managed instance jsou ve stejném umístění.
 - Publikování spravované instance, které jsou hostiteli a nejde ho distributora databází [geograficky replikovaný pomocí automatického převzetí služeb při selhání groups](sql-database-auto-failover-group.md).
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-standalone-pooled-and-instance-database"></a>Vydavateli a distributorovi místně pomocí odběratele na samostatném, ve fondu a instanci databáze 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Vydavateli a distributorovi místně pomocí předplatitele v rámci jednoho ve fondu a instanci databáze 
 
 ![Azure SQL Database jako odběratele](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-V této konfiguraci je Azure SQL Database (samostatný, ve fondu a instanci databáze) odběratele. Tato konfigurace podporuje migraci z místního do Azure. Pokud je předplatitel v samostatné nebo databázi ve fondu, musí být v režimu nabízení.  
+V této konfiguraci je Azure SQL Database (jednou, ve fondu a instanci databáze) odběratele. Tato konfigurace podporuje migraci z místního do Azure. Pokud je předplatitel sady na jednu, nebo součástí fondu databáze, musí být v režimu nabízení.  
 
 ## <a name="next-steps"></a>Další postup
 

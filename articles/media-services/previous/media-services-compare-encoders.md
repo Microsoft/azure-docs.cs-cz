@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: c08759f4682c6010c2338ff7aaf61cda92eb0484
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3dac469c2932276a903a516b71caa860f8870fa6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232083"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989334"
 ---
-# <a name="comparison-of-azure-on-demand-media-encoders"></a>Porovnání Azure na vyžádání kodérů médií
+# <a name="comparison-of-azure-on-demand-media-encoders"></a>Porovnání Azure na vyžádání kodérů médií  
 
 Toto téma porovnává možnosti kódování **kodéru Media Encoder Standard** a **pracovní postup kodéru Media Encoder Premium**.
 
@@ -33,7 +33,7 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 |---|---|---|
 |Použití podmíněné logiky při kódování<br/>(například, pokud je vstup HD, High Density, pak kódování zvuk 5.1)|Ne|Ano|
 |Skryté titulky|Ne|[Ano](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Oprava Dolby® profesionální hlasitosti](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> pomocí dialogu Intelligence™|Ne|Ano|
+|[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> pomocí dialogu Intelligence™|Ne|Ano|
 |Odstraňování prokládání, inverzní telecine|Basic|Kvalitě pro vysílání|
 |Zjistit a odebrat černé ohraničení <br/>(pillarboxes letterboxes)|Ne|Ano|
 |Generování miniatur|[Ano](media-services-dotnet-generate-thumbnail-with-mes.md)|[Ano](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -57,7 +57,7 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 | Datové proudy MPEG-2 Transport |Ano |Ano |
 | Datové proudy MPEG-2 programu |Ano |Ano |
 | MPEG-4/MP4 |Ano |Ano |
-| Windows Media/amp |Ano |Ano |
+| Windows Media/ASF |Ano |Ano |
 | AVI (nekomprimovaný 8 bitů nebo 10bitovým) |Ano |Ano |
 | 3GPP/3GPP2 |Ano |Ne |
 | Technologie Smooth Streaming formát souboru (PIFF 1.3) |Ano |Ne |
@@ -69,8 +69,8 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 | Kodeky vstupního videa | Media Encoder Standard | Pracovní postup kodéru Media Encoder Premium |
 | --- | --- | --- |
 | AVC 8-bit/10-bit, až 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |Ano |
-| Avid DNxHD (v souborech MXF) |Ano |Ano |
-| DVCPro a DVCProHD (v souborech MXF) |Ano |Ano |
+| Avid DNxHD (in MXF) |Ano |Ano |
+| DVCPro/DVCProHD (in MXF) |Ano |Ano |
 | JPEG2000 |Ano |Ano |
 | MPEG-2 (až do profilu 422 a vysoké úrovně; včetně variant, jako jsou XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10) |Až do profilu 422 |Ano |
 | MPEG-1 |Ano |Ano |
@@ -92,14 +92,14 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 | AES (SMPTE 331 M a 302 M, AES3-2003) |Ne |Ano |
 | Dolby® E |Ne |Ano |
 | Digitální Dolby® (AC3) |Ne |Ano |
-| Digitální Dolby® Plus (E-AC3) |Ne |Ano |
+| Dolby® Digital Plus (E-AC3) |Ne |Ano |
 | AAC (AAC-LC, AAC-HE a AAC-HEv2; až 5.1) |Ano |Ano |
 | MPEG vrstvy 2 |Ano |Ano |
-| MP3 (zvuk vrstvu MPEG-1 3) |Ano |Ano |
-| Windows Media zvuku |Ano |Ano |
+| MP3 (MPEG-1 Audio Layer 3) |Ano |Ano |
+| Windows Media Audio |Ano |Ano |
 | WAV/PCM |Ano |Ano |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |Ne |
-| [Díle](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Ano |Ne |
+| [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Ano |Ne |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ano |Ne |
 
 ## <a name="output-containerfile-formats"></a>Formáty výstupu kontejneru nebo souboru
@@ -111,7 +111,7 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 | GXF |Ne |Ano |
 | MPEG-4/MP4 |Ano |Ano |
 | MPEG-TS |Ano |Ano |
-| Windows Media/amp |Ne |Ano |
+| Windows Media/ASF |Ne |Ano |
 | AVI (nekomprimovaný 8 bitů nebo 10bitovým) |Ne |Ano |
 | Technologie Smooth Streaming formát souboru (PIFF 1.3) |Ne |Ano |
 
@@ -120,7 +120,7 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 | --- | --- | --- |
 | AVC (H.264; 8-bit; až do profilu vysokou úroveň 5.2; 4 kB Ultra HD, High Density; Uvnitř AVC) |Pouze 8bitová hloubka, 4:2:0 |Ano |
 | HEVC (H.265; 8 bitů a 10-bit;)  |Ne |Ano |
-| Avid DNxHD (v souborech MXF) |Ne |Ano |
+| Avid DNxHD (in MXF) |Ne |Ano |
 | MPEG-2 (až do profilu 422 a vysoké úrovně; včetně variant, jako jsou XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10) |Ne |Ano |
 | MPEG-1 |Ne |Ano |
 | Windows Media Video/VC-1 |Ne |Ano |
@@ -136,8 +136,8 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 | Dolby® digitální Plus (E-AC3) až 7.1 |Ne |Ano |
 | AAC (AAC-LC, AAC-HE a AAC-HEv2; až 5.1) |Ano |Ano |
 | MPEG vrstvy 2 |Ne |Ano |
-| MP3 (zvuk vrstvu MPEG-1 3) |Ne |Ano |
-| Windows Media zvuku |Ne |Ano |
+| MP3 (MPEG-1 Audio Layer 3) |Ne |Ano |
+| Windows Media Audio |Ne |Ano |
 
 >[!NOTE]
 >Pokud kódujete do Dolby® digitální (AC3), můžete výstup zapsat pouze do souboru ISO MP4.

@@ -4,17 +4,17 @@ description: Podrobné plány Azure Blueprint slouží k vytváření, definová
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 78ce7c1063623e0c002bb6084d8c18139b3f889f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7b2e6848c88d9c3ac61f2eaf059e0836dc19903
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566946"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989962"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -329,6 +329,12 @@ Hodnota `{BlueprintVersion}` představuje řetězec složený z písmen, čísli
 
 Po publikování podrobného plánu pomocí rozhraní REST API je možné ho přiřadit k předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud podrobný plán je uložený na předplatné, můžete přiřadit pouze k tomuto předplatnému. **Text požadavku** určuje přiřazovaný podrobný plán, poskytuje název a umístění všech skupin prostředků v definici podrobného plánu a nabízí také všechny parametry definované v podrobném plánu a používané jedním nebo několika připojenými artefakty.
 
+Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
+
+- `{tenantId}` -Nahraďte ID vašeho tenanta
+- `{YourMG}` -Nahraďte ID skupiny pro správu
+- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
+
 1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. Hodnota AppId je statická (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale ID instančního objektu se liší podle tenanta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) s jinou autorizací.
 
    - Identifikátor URI v REST API
@@ -387,6 +393,25 @@ Po publikování podrobného plánu pomocí rozhraní REST API je možné ho př
          "location": "westus"
      }
      ```
+
+   - uživatel přiřazenou spravované identity
+
+     Přiřazení podrobného plánu můžete použít také [uživatelsky přiřazené identity spravované](../../active-directory/managed-identities-azure-resources/overview.md). V takovém případě **identity** část obsahu žádosti změní následujícím způsobem.  Nahraďte `{yourRG}` a `{userIdentity}` s vaším prostředkem název skupiny a název vaší uživatelsky přiřazené spravovanou identitu, v uvedeném pořadí.
+
+     ```json
+     "identity": {
+         "type": "userAssigned",
+         "tenantId": "{tenantId}",
+         "userAssignedIdentities": {
+             "/subscriptions/{subscriptionId}/resourceGroups/{yourRG}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userIdentity}": {}
+         }
+     },
+     ```
+
+     **Uživatelsky přiřazené identity spravované** může být v každé předplatné a skupinu prostředků uživatele přiřazení podrobný plán má oprávnění k.
+
+     > [!IMPORTANT]
+     > Plány nespravuje uživatelsky přiřazené spravovaná identita. Uživatelé nesou zodpovědnost za přiřazení dostatečná rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
 
 ## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
 

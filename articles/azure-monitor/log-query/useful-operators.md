@@ -1,6 +1,6 @@
 ---
-title: Užitečné operátorů v dotazech Azure Log Analytics | Dokumentace Microsoftu
-description: Běžné funkce pro různé scénáře v dotazy Log Analytics.
+title: Dotazy protokolů užitečné operátory ve službě Azure Monitor | Dokumentace Microsoftu
+description: Běžné funkce pro různé scénáře v dotazů na protokoly Azure monitoru.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 060b1e469a31c335f062ccd332157d13e64f9318
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183978"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000144"
 ---
-# <a name="useful-operators-in-log-analytics-queries"></a>Užitečné operátorů v dotazech Log Analytics
+# <a name="useful-operators-in-azure-monitor-log-queries"></a>Užitečné operátorů v dotazech protokolu Azure Monitor
 
-Následující tabulka obsahuje některé běžné funkce pro různé scénáře v dotazy Log Analytics.
+Následující tabulka obsahuje některé běžné funkce pro různé scénáře v dotazů na protokoly Azure monitoru.
 
 ## <a name="useful-operators"></a>Užitečné operátory
 
@@ -46,4 +46,4 @@ Strojové učení                        |`evaluate autocluster`, `basket`, `dif
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si lekci [zápis dotazů v Log Analytics](get-started-queries.md).
+- Projděte si lekci [psaní dotazů protokolu ve službě Azure Monitor](get-started-queries.md).

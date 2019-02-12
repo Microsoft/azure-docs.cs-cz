@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/04/2018
+ms.date: 02/08/2019
 ms.author: juliako;dbgeorge
-ms.openlocfilehash: f6d4fcf5e6ec8029bb0e7c303849fdceef5bace7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1672eb2ef0db36c9b30ca444fa4224eb1afbe828
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012084"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998480"
 ---
-# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití živého kodér Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí
+# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití živého kodér Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí  
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
@@ -59,30 +59,30 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 
 Video:
 -   Kodek: H.264
--   Profil: Vysoce (úroveň 4.0)
--   S přenosovou rychlostí: 5000 kB /
+-   Profil: Vysoká (úroveň 4.0)
+-   S přenosovou rychlostí: 5000 kb/s
 -   Klíčový snímek: 2 sekundy (60 snímků)
--   Frekvence snímků: 30
+-   Snímková frekvence: 30
 
-Zvuk:
--   Kodek: AAC (LC –)
--   S přenosovou rychlostí: 192 kb /
+Audio:
+-   Kodek: AAC (LC)
+-   S přenosovou rychlostí: 192 kb/s
 -   Vzorkovací frekvence: 44,1 kHz
 
 ## <a name="configuration-steps"></a>Postup konfigurace
 1.  Přihlaste se k uživatelské rozhraní Haivision KB.
 2.  Klikněte na **tlačítko nabídky** v control centeru kanálu a vyberte **přidat kanálu**  
-    ![Snímek 2017-08-14 na 9.15.09 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step2.png)
+    ![Snímek obrazovky 2017-08-14 na 9.15.09 AM](./media/media-services-configure-kb-live-encoder/step2.png)
 3.  Typ **název kanálu** v názvu pole a klikněte na tlačítko Další.  
-    ![Snímek 2017-08-14 na 9.19.07 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step3.png)
+    ![Snímek obrazovky 2017-08-14 na 9.19.07 AM](./media/media-services-configure-kb-live-encoder/step3.png)
 4.  Vyberte **kanál vstupní zdroj** z **vstupní zdroj** rozevíracího seznamu a klikněte na tlačítko Další.
-    ![Snímek 2017-08-14 na 9.20.44 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step4.png)
+    ![Snímek obrazovky 2017-08-14 na 9.20.44 AM](./media/media-services-configure-kb-live-encoder/step4.png)
 5.  Z **šablony Encoder** rozevíracího seznamu zvolte **H264 – 720-AAC-192** a klikněte na tlačítko Další.
-    ![Snímek 2017-08-14 na 9.23.15 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step5.png)
+    ![Snímek obrazovky 2017-08-14 na 9.23.15 AM](./media/media-services-configure-kb-live-encoder/step5.png)
 6.  Z **vyberte nový výstup** rozevíracího seznamu zvolte **RTMP** a klikněte na tlačítko Další.  
-    ![Snímek 2017-08-14 na 9.27.51 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step6.png)
+    ![Snímek obrazovky 2017-08-14 na 9.27.51 AM](./media/media-services-configure-kb-live-encoder/step6.png)
 7.  Z **výstupní kanál** okně naplnit informace o Azure stream. Vložit **RTMP** odkaz z nastavení počáteční kanál ve **Server** oblasti. V **název výstupního** oblasti zadejte název kanálu. V oblasti Stream název šablony použijte šablonu RTMPStreamName_ % video_bitrate % název datového proudu.
-    ![Snímek 2017-08-14 na 9.33.17 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step7.png)
+    ![Snímek obrazovky 2017-08-14 na 9.33.17 AM](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  Klikněte na tlačítko Další a pak klikněte na Hotovo.
 9.  Klikněte na tlačítko **tlačítko Přehrát** spuštění kanálu kodér.  
     ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 3f01d5342fbeeb5cb5e19af63a0dd91128778859
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7358f259d4c38157a203369e9eadae28710f4290
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823228"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993703"
 ---
-# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
+# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění  
 ## <a name="overview"></a>Přehled
 **Návrháře postupu provádění** je nástroj klasické pracovní plochy Windows, který umožňuje navrhovat a vytvářet vlastní pracovní postupy pro kódování pomocí **pracovní postup kodéru Media Encoder Premium**.
 Pomocí power tool Návrháře pracovního postupu můžete navrhovat a vytvářet komplexní pracovní postupy, které se spustí v **Media Encoder Premium**.  

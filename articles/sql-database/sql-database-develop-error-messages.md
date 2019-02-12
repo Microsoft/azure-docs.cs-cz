@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6bbb2bfa0fe3c157114d53b070d6c98e68099643
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464724"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003665"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: Chyby připojení databáze a další problémy
 
@@ -99,8 +99,8 @@ Související témata:
 
 | Kód chyby | Severity | Popis |
 | ---:| ---:|:--- |
-| 10928 |20 |ID prostředku: %d. Limit %s pro databázi je %d a bylo ho dosaženo. Další informace najdete v tématu [limity pro nasazení samostatné služby a databáze ve fondu prostředků SQL Database](sql-database-resource-limits-database-server.md).<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |ID prostředku: %d. Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Další informace najdete v tématu [limity pro nasazení samostatné služby a databáze ve fondu prostředků SQL Database](sql-database-resource-limits-database-server.md). Jinak zkuste to prosím znovu později.<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |ID prostředku: %d. Limit %s pro databázi je %d a bylo ho dosaženo. Další informace najdete v tématu [limity prostředků SQL Database pro databáze ve fondu a jeden](sql-database-resource-limits-database-server.md).<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |ID prostředku: %d. Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Další informace najdete v tématu [limity prostředků SQL Database pro databáze ve fondu a jeden](sql-database-resource-limits-database-server.md). Jinak zkuste to prosím znovu později.<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Databáze dosáhla své kvóty velikosti. Oddíl nebo odstranění dat, případně odstraňte indexy najdete v dokumentaci k možná řešení. |
 | 40549 |16 |Relace je ukončena, protože máte dlouhotrvající transakci. Zkuste transakci zkrátit. |
 | 40550 |16 |Relace byla ukončena, protože získala příliš mnoho zámků. Zkuste problém se čtením nebo upravit menší počet řádků v rámci jedné transakce. |

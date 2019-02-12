@@ -12,17 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 89e28a9b70d078c3fe385225af305252ececefce
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3ac07b06e1cf7b5b24956c10e202f9baeab60b2b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249918"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992242"
 ---
-# <a name="content-protection-overview"></a>Přehled ochrany obsahu
- Azure Media Services můžete použít k zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Pomocí služby Media Services můžete doručovat na vyžádání a živého obsahu dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některý z systémy tři hlavní digital rights management (DRM): Apple FairPlay, Microsoft PlayReady a Google Widevine. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
+# <a name="content-protection-overview"></a>Přehled ochrany obsahu 
+
+ Azure Media Services můžete použít k zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Pomocí služby Media Services můžete doručovat na vyžádání a živé obsah dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některým z tři systémů hlavní digital rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
 
 Následující obrázek ukazuje pracovní postup služby Media Services content protection: 
 
@@ -80,9 +81,9 @@ Platí následující aspekty:
 * Typ šifrování nemusí být zadané v adrese URL, pokud pouze jeden šifrování byla použita k assetu.
 * Typ šifrování se nerozlišují malá a velká písmena.
 * Můžete zadat následující typy šifrování:
-  * **šifrování cenc**: pro PlayReady nebo Widevine (Standard common encryption)
-  * **cbcs-aapl**: pro FairPlay (AES CBC šifrování)
-  * **CBC**: šifrování AES pro obálky
+  * **šifrování cenc**: PlayReady nebo Widevine (Standard common encryption)
+  * **cbcs-aapl**: Pro FairPlay (AES CBC šifrování)
+  * **cbc**: Pro šifrování standardu AES envelope
 
 ## <a name="next-steps"></a>Další postup
 Následující články popisují kroků, které vám pomůžou začít s ochranou obsahu:

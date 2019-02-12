@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: b8e9f65476ac3e3172d0c8cb4fb6eb582d9116b0
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6e39fb11151c93c8e1a8798ce986c53f5949b416
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250425"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993397"
 ---
-# <a name="h264-multiple-bitrate-4x3-sd-audio-51"></a>Předvolby H264 Více 4 x 3 s přenosovou rychlostí SD zvuku 5.1
+# <a name="h264-multiple-bitrate-4x3-sd-audio-51"></a>H264 Multiple Bitrate 4x3 SD Audio 5.1
 `Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Toto téma ukazuje, `H264 Multiple Bitrate 4x3 SD Audio 5.1` přednastavení ve formátu XML a JSON.  
@@ -29,7 +29,7 @@ ms.locfileid: "50250425"
  Tato předvolba vytvoří sadu 5 soubory MP4 zarovnaný GOP od 1600 kb/s až 400 kb/s a zvuku AAC 5.1. Podrobné informace o profilech s přenosovou rychlostí, vzorkování rychlost atd. to přednastavení, zkontrolujte XML nebo JSON, definovaná níže. Vysvětlení znamená, co každý prvek a platné hodnoty pro každý prvek, najdete v článku [schéma Media Encoderu Standard](media-services-mes-schema.md)...  
   
 > [!NOTE]
->  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576, 640 x 360. Neměli byste používat kombinaci poměry stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
+>  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat kombinaci poměry stran, jako například: 1280x720, 720x480, 640x360.  
   
  XML  
   

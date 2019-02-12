@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení samostatného nebo databázi ve fondu ve službě Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o techniky a funkce pro zabezpečení samostatné nebo databázi ve fondu ve službě Azure SQL Database.
+title: Zabezpečení databáze jedné, nebo součástí fondu ve službě Azure SQL Database | Dokumentace Microsoftu
+description: Další informace o techniky a funkce pro zabezpečení jeden, nebo součástí fondu databáze ve službě Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752513"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004576"
 ---
-# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Kurz: Zabezpečení samostatného nebo databázi ve fondu
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: Zabezpečení databáze jedné, nebo součástí fondu
 
-Azure SQL Database chrání data v samostatné nebo databázi ve fondu, neboť umožňuje:
+Azure SQL Database chrání data v databázi jednoho nebo ve fondu, neboť umožňuje:
 
 - Omezení přístupu pomocí pravidel brány firewall
 - Použití mechanismů ověřování vyžadujících identitu

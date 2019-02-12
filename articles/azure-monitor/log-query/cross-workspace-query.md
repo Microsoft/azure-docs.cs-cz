@@ -1,5 +1,5 @@
 ---
-title: Hledání napříč prostředky pomocí Azure Log Analytics | Dokumentace Microsoftu
+title: Dotazování napříč prostředky prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
 description: Tento článek popisuje, jak můžete zadávat dotazy na prostředky z několika pracovních prostorů a aplikace pro App Insights ve vašem předplatném.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 42191b21faec7bb1929a12e6bc1a724d269acb1d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ccc9a74c4e238ebfcab0fc05a3bf825000917843
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298870"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998930"
 ---
-# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
+# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolů napříč prostředky ve službě Azure Monitor  
 
-Dříve pomocí Azure Log Analytics, jste mohli analyzovat data pouze z v rámci aktuálního pracovního prostoru a omezený možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho může hledat pouze položky telemetrická data shromážděná z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights nebo ze sady Visual Studio.  Kvůli tomu také bylo obtížné analyzovat nativně provozní a data aplikací společně.   
+Dříve prostřednictvím služby Azure Monitor je mohli analyzovat data pouze z v rámci aktuálního pracovního prostoru a omezený možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho může hledat pouze položky telemetrická data shromážděná z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights nebo ze sady Visual Studio.  Kvůli tomu také bylo obtížné analyzovat nativně provozní a data aplikací společně.   
 
-Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech.  Lze provést pouze tyto typy dotazů v [Log Analytics](portals.md#log-analytics-page). Počet prostředků (pracovních prostorů Log Analytics a Application Insights aplikaci), které mohou obsahovat v jediném dotazu je omezený na 100. 
+Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech.  Lze provést pouze tyto typy dotazů v [Log Analytics](portals.md). Počet prostředků (pracovních prostorů Log Analytics a Application Insights aplikaci), které mohou obsahovat v jediném dotazu je omezený na 100. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč pracovních prostorů Log Analytics a ze služby Application Insights
 Chcete-li odkazovat na jiný pracovní prostor v dotazu, použijte [ *pracovní prostor* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) identifikátor a pro aplikace ze služby Application Insights, použijte [ *aplikace* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)identifikátor.  
@@ -101,9 +101,9 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ```
 
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Pomocí dotazu napříč prostředky u několika prostředků
-Při použití dotazy napříč prostředky pro korelaci dat z více Log Analytics a prostředky Application Insights, dotaz může být složité a obtížné na správu. By je měli využít [funkcí ve službě Log Analytics](../../azure-monitor/log-query/functions.md) oddělení logiku dotazu od nepříznivě prostředky dotazu, což zjednodušuje struktura dotazu. Následující příklad ukazuje, jak můžete monitorovat různé prostředky Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. 
+Při použití dotazy napříč prostředky pro korelaci dat z více pracovních prostorů Log Analytics a prostředky Application Insights, dotaz může být složité a obtížné na správu. By je měli využít [dotazů protokolu funkcí ve službě Azure Monitor](functions.md) oddělení logiku dotazu od nepříznivě prostředky dotazu, což zjednodušuje struktura dotazu. Následující příklad ukazuje, jak můžete monitorovat různé prostředky Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. 
 
-Vytvořte dotaz následujícím postupem, který odkazuje na obor prostředky Application Insights. `withsource= SourceApp` Příkaz přidá sloupec, který určuje název aplikace, které odeslání protokolu. [Uložit dotaz jako funkce](../../azure-monitor/log-query/functions.md#create-a-function) s aliasem _applicationsScoping_.
+Vytvořte dotaz následujícím postupem, který odkazuje na obor prostředky Application Insights. `withsource= SourceApp` Příkaz přidá sloupec, který určuje název aplikace, které odeslání protokolu. [Uložit dotaz jako funkce](functions.md#create-a-function) s aliasem _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -131,4 +131,5 @@ applicationsScoping
 
 ## <a name="next-steps"></a>Další postup
 
-Zkontrolujte [protokolu v log Analytics search odkaz](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) zobrazíte všechny možnosti syntaxi dotazů k dispozici ve službě Log Analytics.    
+- Kontrola [analyzovat data protokolů ve službě Azure Monitor](log-query-overview.md) přehledné informace o protokolu dotazy a strukturování dat protokolu Azure Monitor.
+- Kontrola [dotazů na protokoly Azure monitoru](query-language.md) Chcete-li zobrazit všechny prostředky pro dotazů na protokoly Azure monitoru.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fdccb4e94d9b9fd8b698575c890efad56a115a3e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452815"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994010"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování prostřednictvím služby Azure Monitor
 
@@ -64,7 +64,7 @@ Průběžná integrace / průběžné nasazování umožňuje automaticky integr
 
 - Použití [kanály Azure](/azure/devops/pipelines) implementovat průběžné nasazování a automatizovat celý proces od potvrzení změn kódu do produkčního prostředí založené na vaše testy CI/CD.
 - Použití [brány kvality](/azure/devops/pipelines/release/approvals/gates) integrovat monitorování do před nasazením nebo po nasazení. Tím se zajistí, že vaše aplikace přesunout z dev do produkčního prostředí a případné rozdíly v prostředí infrastruktury nebo škálování není mít negativní vliv klíčových ukazatelů výkonu naplňujete metriky stavu a výkonu (KPI).
-- [Udržovat samostatné monitorování instance](../azure-monitor/app/separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../azure-monitor/platform/metrics-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](log-query/cross-workspace-query.md).
+- [Udržovat samostatné monitorování instance](../azure-monitor/app/separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../azure-monitor/platform/metrics-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Azure Monitor](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Vytváření užitečných výstrahy s akcemi

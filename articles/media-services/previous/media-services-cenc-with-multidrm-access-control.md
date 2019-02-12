@@ -4,23 +4,23 @@ description: Další informace o tom, jak licencovat Microsoft Smooth Streaming 
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2018
+ms.date: 02/08/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: c19b43f652b490ceb86606633f543f4e455b6116
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 94baa1235388ce99d013f8267f8410dcc206a51d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189299"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998344"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu pomocí řízení přístupu pomocí Azure Media Services
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu pomocí řízení přístupu pomocí Azure Media Services 
 
 ## <a name="overview"></a>Přehled
 
@@ -60,7 +60,7 @@ Následující tabulka shrnuje nativní platformy/nativní aplikace a prohlíže
 | **Klientskou platformu** | **Nativní podpora DRM** | **Prohlížeč nebo aplikaci** | **Formáty datových proudů** |
 | --- | --- | --- | --- |
 | **Smart TV, operátor STB, OTT STB** |PlayReady primárně, a/nebo Widevine, nebo jiné |Linux, Opera, komponenty WebKit, jiné |Různé formáty |
-| **Zařízení s Windows 10 (PC s Windows, tablety Windows, Windows Phone, Xbox)** |PlayReady |Microsoft Edge/11/EME<br/><br/><br/>Univerzální platforma Windows |POMLČKA (HLS, technologie PlayReady nepodporuje)<br/><br/>DASH, Smooth Streaming (HLS, technologie PlayReady nepodporuje) |
+| **Zařízení s Windows 10 (PC s Windows, tablety Windows, Windows Phone, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Univerzální platforma Windows |POMLČKA (HLS, technologie PlayReady nepodporuje)<br/><br/>DASH, Smooth Streaming (HLS, technologie PlayReady nepodporuje) |
 | **Zařízení s androidem (telefony, tablety, TV)** |Widevine |Chrome/EME |DASH, HLS |
 | **iOS (iPhone, iPad), klienti OS X a Apple TV** |FairPlay |Safari 8 +/ EME |HLS |
 

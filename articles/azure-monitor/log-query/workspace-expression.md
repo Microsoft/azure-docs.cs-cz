@@ -1,6 +1,6 @@
 ---
-title: výraz Workspace() v dotazu Azure Log Analytics | Dokumentace Microsoftu
-description: Pracovní prostor výraz je použit v dotazu Log Analytics k načtení dat z konkrétní pracovní prostor ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného.
+title: výraz Workspace() v dotazu protokolu Azure Monitor | Dokumentace Microsoftu
+description: Pracovní prostor výraz je použit v dotazu protokolu Azure Monitor k načtení dat z konkrétní pracovní prostor ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d1bb3c99c82683dde9247da86e80d800fe06631
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182940"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992975"
 ---
-# <a name="workspace-expression-in-log-analytics-query"></a>výraz Workspace() v dotazu Log Analytics
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>výraz Workspace() v dotazu protokolu Azure Monitor
 
-`workspace` Výrazu v dotazu Log Analytics slouží k načtení dat z konkrétní pracovní prostor ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To je užitečné zahrnout data protokolu v dotazu Application Insights a provádět dotazy na data napříč několika pracovními prostory v dotazu protokolu.
+`workspace` Výrazu se používá v dotazu Azure Monitor k načtení dat z konkrétní pracovní prostor ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To je užitečné zahrnout data protokolu v dotazu Application Insights a provádět dotazy na data napříč několika pracovními prostory v dotazu protokolu.
 
 
 ## <a name="syntax"></a>Syntaxe
@@ -37,7 +37,7 @@ ms.locfileid: "53182940"
 |:---|:---|:---|
 | Název prostředku | Lidské čitelný název pracovního prostoru (NEBOLI "název komponenty") | Workspace("contosoretail") |
 | Kvalifikovaný název | Celý název pracovního prostoru ve formě: "subscriptionName/skupina prostředků/název komponenty" | Workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | Identifikátor GUID pracovního prostoru | Workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| ID | Identifikátor GUID pracovního prostoru | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | ID prostředku Azure | Identifikátor prostředku Azure | Workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
@@ -71,5 +71,6 @@ union
 
 ## <a name="next-steps"></a>Další postup
 
-- Najdete v článku [aplikace výraz](workspace-expression.md) odkázat na aplikaci Application Insights.
-- Přečtěte si, jak [dat Log Analytics](../../azure-monitor/log-query/log-query-overview.md) uložená.
+- Najdete v článku [aplikace výraz](app-expression.md) odkázat na aplikaci Application Insights.
+- Přečtěte si, jak [dat monitorování Azure](log-query-overview.md) uložená.
+- Přístup ke kompletní dokumentaci k [Průzkumník dat dotazovací jazyk](/azure/kusto/query/).

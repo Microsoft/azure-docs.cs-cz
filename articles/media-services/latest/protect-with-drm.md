@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2018
+ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 84bdc560a135f8f1eb7d6c86fe4f3749135ff7e1
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f1fa78c9345d5bbe0120ad203c738c441b2e1917
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139040"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991544"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí
 

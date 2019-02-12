@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885792"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001961"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Používat data monitorování z Azure
 
 Celou platformu Azure Dáváme dohromady data monitorování na jednom místě díky Azure monitoru kanálu, ale prakticky vědomí, že se ještě dnes nejsou všechna data monitorování zatím k dispozici v tomto kanálu. V tomto článku se Shrneme informace z různých způsobů, jak můžete programově přístup k datům monitorování ze služeb Azure.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="options-for-data-consumption"></a>Možnosti využití dat
 
@@ -40,7 +42,7 @@ Celou platformu Azure Dáváme dohromady data monitorování na jednom místě d
 | Upozornění metrik Azure monitoru | Oznámení | [Podívejte se sem seznam](metrics-supported.md) | <ul><li>**Webhook:** [Upozornění metrik v Azure](alerts-webhooks.md)</li></ul> |
 | Upozornění protokolu aktivit monitorování Azure | Oznámení | Všechny služby Azure | <ul><li>**Webhook:** Upozornění protokolu aktivit Azure</li></ul> |
 | Oznámení o automatickém škálování | Oznámení | [Podívejte se sem seznam](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Schéma datová část webhooku oznámení automatického škálování](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Vyhledávací dotaz upozornění protokolů | Oznámení | Log Analytics | <ul><li>**Webhook:** [Akce Webhooku pro pravidla upozornění protokolů](alerts-log-webhook.md)</li></ul> |
+| Vyhledávací dotaz upozornění protokolů | Oznámení | Protokoly Azure monitoru | <ul><li>**Webhook:** [Akce Webhooku pro pravidla upozornění protokolů](alerts-log-webhook.md)</li></ul> |
 | Upozornění metrik Application Insights | Oznámení | Application Insights | <ul><li>**Webhook:** [Application Insights alerts](../../azure-monitor/app/alerts.md)</li></ul> |
 | Webové testy Application Insights | Oznámení | Application Insights | <ul><li>**Webhook:** [Application Insights alerts](../../azure-monitor/app/alerts.md)</li></ul> |
 

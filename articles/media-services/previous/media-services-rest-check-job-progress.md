@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dc78dce667bf00dd6e923b86b9859e29e4a5fde6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 20fa58215db226b1825f2922331e0d380612c4e5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034995"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991374"
 ---
 # <a name="how-to-check-job-progress"></a>Postupy: Kontrola průběhu úlohy
 > [!div class="op_single_selector"]
@@ -35,7 +35,6 @@ Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy
 
 Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-
 ## <a name="check-job-progress"></a>Kontrola průběhu úlohy
 
 Požadavek:
@@ -48,8 +47,6 @@ Požadavek:
     Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     Host: media.windows.net
-
-
 
 Odpověď:
 

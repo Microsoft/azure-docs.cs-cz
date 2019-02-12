@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 0733b4179793e88759ca1c3330880546650fbe09
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9a4c31df51f804d4738e3a2eb4ce904e793c3f1b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856371"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004991"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co je Azure Monitor pro virtuální počítače (preview)?
 
@@ -41,7 +41,7 @@ Funkce jsou uspořádané do tří perspektiv:
 >[!NOTE]
 >V současné době funkce stavu nabízí pouze pro Azure virtual machines a virtual machine scale sets. Výkon a mapování funkce podporují virtuální počítače Azure a virtuální počítače, které jsou hostované ve vašem prostředí nebo jiný poskytovatel cloudu.
 
-Integraci s Log Analytics poskytuje výkonné agregace a filtrování, a to analyzovat trendy v datech v čase. Tyto úlohy komplexní monitorování není možné dosáhnout s Azure Monitor, řešení Service Map nebo Log Analytics samostatně.  
+Integrace s protokoly Azure monitoru poskytuje výkonné agregace a filtrování, a to analyzovat trendy v datech v čase. Tyto úlohy komplexní monitorování není možné dosáhnout s Azure Monitor nebo Service Map samostatně.  
 
 Tato data můžete zobrazit v jeden virtuální počítač z virtuálního počítače přímo, nebo Azure Monitor můžete použít k zajištění souhrnný náhled na vašich virtuálních počítačů. Toto zobrazení vychází z perspektivy jednotlivých funkcí:
 

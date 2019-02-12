@@ -9,16 +9,29 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214823"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005042"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Typy dotazů a skládání ve službě Azure Search
+# <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
 
-Dotaz ve službě Azure Search je úplná specifikace operaci round-trip. Parametry zadejte kritéria shody pro hledání dokumentů v indexu, provozním pokynům pro modul a direktivy pro strukturování odpovědi. Přesněji řečeno můžete určit, která pole jsou v oboru, jak hledat, která pole se vraťte k řazení nebo filtrování a tak dále. Tento parametr zadán, spustí se dotaz všechna prohledatelná pole jako operace hledání textu v plném znění, vrací výsledek nemůže dostat skóre, nastavte v pořadí.
+Dotaz ve službě Azure Search je úplná specifikace operaci round-trip. Parametry v požadavku hledání dokumentů v indexu, provozním pokynům pro modul a direktivy pro strukturování odpovědi představují kritéria shody. 
+
+Dotaz je bohaté konstrukce, která určuje pole, která jsou v oboru, jak hledat, která pole se vraťte k řazení nebo filtrování a tak dále. Tento parametr zadán, spustí se dotaz všechna prohledatelná pole jako operace hledání textu v plném znění, vrací výsledek nemůže dostat skóre, nastavte v pořadí.
+
+### <a name="apis-and-tools-for-testing"></a>Rozhraní API a nástroje pro testování
+
+V následující tabulce jsou uvedeny rozhraní API a detekce založené na nástroj pro zadávání dotazů.
+
+| Metodologie | Popis |
+|-------------|-------------|
+| [Průzkumník služby Search (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro výběr index a verze api-version. Výsledky jsou vráceny jako dokumenty JSON. <br/>[Další informace](search-get-started-portal.md#query-index) | 
+| [Postman nebo jiný nástroj pro testování protokolu HTTP](search-fiddler.md) | Vysvětluje, jak nastavit hlavičku požadavku HTTP a text pro odesílání dotazů do služby Azure Search.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který můžete použít k dotazování indexu Azure Search.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Hledání dokumentů (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | V indexu pomocí parametrů dotazu další vstupní metody POST nebo GET.  |
 
 ## <a name="a-first-look-at-query-requests"></a>První pohled na požadavků na dotazy
 
@@ -52,7 +65,7 @@ Ke spuštění tohoto dotazu, použijte [hledat explorer a index ukázku nemovit
 
 Vložte tento řetězec dotazu do panelu hledání v Průzkumníku: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-### <a name="how-query-operations-are-enabled-by-the-index"></a>Jak jsou povoleny operace dotazu podle indexu
+## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak jsou povoleny operace dotazu podle indexu
 
 Index návrhu a dotaz návrhu jsou úzce svázány ve službě Azure Search. Základní fakt vědět před jeho zahájením je, že *schéma indexu*, s atributy u každé pole určuje druh dotazu můžete vytvořit. 
 
@@ -148,17 +161,6 @@ Pokud chcete Azure Search vracela výsledky seřazené podle hodnoty místo skó
 
 ### <a name="hit-highlighting"></a>Zvýrazňování položek
 Ve službě Azure Search je zvýrazňování přesné části výsledků vyhledávání, která odpovídá vyhledávacímu dotazu je snadné pomocí **`highlight`**, **`highlightPreTag`**, a **`highlightPostTag`** parametry. Můžete určit, u jakých *prohledávatelných* polí má být odpovídající text zvýrazněný, stejně tak můžete zadat značky řetězce, které se mají připojit k začátku a ke konci odpovídajícího text vráceného službou Azure Search.
-
-## <a name="apis-and-tools-for-testing"></a>Rozhraní API a nástroje pro testování
-
-V následující tabulce jsou uvedeny rozhraní API a detekce založené na nástroj pro zadávání dotazů.
-
-| Metodologie | Popis |
-|-------------|-------------|
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který můžete použít k dotazování indexu Azure Search.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Hledání dokumentů (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | V indexu pomocí parametrů dotazu další vstupní metody POST nebo GET.  |
-| [Fiddler, Postman nebo jiný nástroj pro testování protokolu HTTP](search-fiddler.md) | Vysvětluje, jak vytvořit žádost o hlavička a tělo zprávy při odesílání dotazů do služby Azure Search.  |
-| [Průzkumník služby Search na webu Azure portal](search-explorer.md) | Poskytuje panel hledání a možnosti pro výběr index a verze api-version. Výsledky jsou vráceny jako dokumenty JSON. <br/>[Další informace](search-get-started-portal.md#query-index) | 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

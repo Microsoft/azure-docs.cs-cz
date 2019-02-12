@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5df3b9541dafad64e012519802b09b19ef199a03
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 1c812a77429e13ea39b2f4946043c13e10aaf097
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231730"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993738"
 ---
 # <a name="add-html-markers-to-the-map"></a>Přidejte značky HTML do mapy
 
@@ -68,20 +68,11 @@ Tato ukázka předvádí, jak je nechat přetažitelného značku HTML. Podpora 
 
 ## <a name="add-mouse-events-to-html-markers"></a>Přidání události myši do značky HTML
 
-Tyto ukázky předvádějí, jak přidat události myši do značku HTML tak, že přidáte standardních událostí JavaScript obsah HTML značky. 
-
-Pokud `htmlContent` značky je prvek modelu DOM (div, img...), můžete přidat události přímo pro ně. 
+Tyto ukázky předvádějí, jak přidat myši a tažením události značku HTML.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Přidání událostí myši do značky HTML' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>přidání událostí myši do značky HTML</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-Pokud `htmlContent` je řetězec (např.) Podobně výchozí nastavení), můžete vytvořit prvek modelu DOM a přidejte řetězec jako innerHTML do něj a pak přidejte prvek modelu DOM jako htmlContent. Pokud `htmlContent` je řetězec bez vizuálního vzhledu, budete muset najít/nahradit `{text}` a `{color}` nejdříve hodnoty v řetězci.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='Přidání událostí myši do výchozí značky HTML' src='//codepen.io/azuremaps/embed/ZmZLBa/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/ZmZLBa/'>přidání události myši výchozí značky HTML</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další postup

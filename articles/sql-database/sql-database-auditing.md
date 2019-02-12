@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 26517e55685de6e1fd9174bb1892b877f0e263d6
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 26e131ef598feae099e789bc51909c4eb249bd79
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895648"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001971"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -125,6 +125,7 @@ Pokud jste zvolili pro zápis protokolů auditu do Log Analytics:
 Pokud jste zvolili pro zápis protokolů auditu do centra událostí:
 
 - Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v tématu [dokumentace k Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+- Protokoly auditu v Centru událostí jsou zachyceny v těle [Apache Avro](http://avro.apache.org/) události a uložit pomocí formátování JSON s kódováním UTF-8. Čtení protokolů auditu, můžete použít [nástroje Avro](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) nebo podobné nástroje, které zpracovávají tento formát.
 
 Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage, existuje několik metod, které lze použít k zobrazení protokolů:
 

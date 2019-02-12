@@ -1,5 +1,5 @@
 ---
-title: Prostředí PowerShell příklad geografické replikace převzetí služeb při selhání skupiny samostatná Azure SQL Database | Dokumentace Microsoftu
+title: Příklad PowerShellu – Skupina převzetí služeb při selhání geografické replikace – Jedna databáze SQL Azure | Microsoft Docs
 description: Ukázkový skript Azure Powershellu nastavit aktivní geografické replikace převzetí služeb při selhání skupiny pro izolovanou databázi ve službě Azure SQL Database a převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 31027e266f29ae0308ed70abfea5dbec3736f824
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 8b3d92829fa3209565435df458fc8d501b338f4e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469290"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992836"
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání aktivní geografické replikace pro izolovanou databázi ve službě Azure SQL Database pomocí Powershellu
 

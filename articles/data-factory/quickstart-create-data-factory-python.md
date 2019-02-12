@@ -13,14 +13,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 49a2e16d198130d1c72d36377be1d914cbe3351b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745244"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001864"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-python"></a>Vytvoření datové továrny a kanálu pomocí Pythonu
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý start: Vytvoření datové továrny a kanálu pomocí Pythonu
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](quickstart-create-data-factory-python.md)
@@ -47,6 +48,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 2.  Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/), vytvořte kontejner **adfv2tutorial** a v něm složku **input**. Potom do složky **input** odešlete soubor **input.txt**.
 
 ## <a name="install-the-python-package"></a>Instalace balíčku Pythonu
+
 1. Otevřete terminál nebo příkazový řádek s oprávněními správce. 
 2. Nejdřív nainstalujte balíček Pythonu pro prostředky správy Azure:
 
@@ -104,7 +106,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
             print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-
     ```
 3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
@@ -165,9 +166,11 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     print_item(ls)
 ```
 ## <a name="create-datasets"></a>Vytvoření datových sad
+
 V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jímku.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Vytvoření datové sady pro zdrojový objekt blob Azure
+
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
 Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
@@ -184,6 +187,7 @@ Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azu
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
+
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
 Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
@@ -218,7 +222,6 @@ Do metody **Main** přidejte následující kód, který vytvoří **kanál s ak
     print_item(p)
 ```
 
-
 ## <a name="create-a-pipeline-run"></a>Vytvoření spuštění kanálu
 
 Do metody **Main** přidejte následující kód, který **aktivuje spuštění kanálu**.
@@ -232,6 +235,7 @@ Do metody **Main** přidejte následující kód, který **aktivuje spuštění 
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Monitorování spuštění kanálu
+
 Pokud chcete monitorovat spuštění kanálu, přidejte do metody **Main** následující kód:
 
 ```python
@@ -251,6 +255,7 @@ main()
 ```
 
 ## <a name="full-script"></a>Celý skript
+
 Tady je kompletní kód v Pythonu:
 
 ```python
@@ -381,6 +386,7 @@ main()
 ```
 
 ## <a name="run-the-code"></a>Spuštění kódu
+
 Sestavte a spusťte aplikaci a potom ověřte spuštění kanálu.
 
 Konzola vytiskne průběh vytváření datové továrny, propojených služeb, datových sad, kanálu a spuštění kanálu. Počkejte, dokud aktivita kopírování nezobrazí údaje o velikosti načtených/zapsaných dat. Potom použijte nástroj, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), a zkontrolujte, že se objekty blob zkopírovaly z inputBlobPath do outputBlobPath, jak jste zadali v proměnných.
@@ -417,8 +423,8 @@ Number of bytes written: 18
 Copy duration: 4
 ```
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Pokud chcete odstranit datovou továrnu, přidejte do programu následující kód:
 
 ```python
@@ -426,4 +432,5 @@ adf_client.factories.delete(rg_name,df_name)
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

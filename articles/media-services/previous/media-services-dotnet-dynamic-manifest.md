@@ -1,10 +1,10 @@
 ---
 title: Vytváření filtrů pomocí sady Azure Media Services .NET SDK
-description: Toto téma popisuje, jak vytvářet filtry, takže vašeho klienta můžete použít datový proud určité části datového proudu. Služba Media Services vytvoří dynamické manifesty k dosažení této selektivní streamování.
+description: Toto téma popisuje, jak vytvářet filtry, takže klient může používat na určité části datový proud stream. Služba Media Services vytvoří dynamických manifestů k selektivní Streamovat.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
 ms.service: media-services
@@ -12,40 +12,40 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 02/09/2019
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 04e6a1ac9b1fc94388580f03c6767da3da226c3a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2ee2e85188c4294060ef3effdc2d443f604aff61
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788540"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003325"
 ---
-# <a name="creating-filters-with-azure-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Azure Media Services .NET SDK
+# <a name="creating-filters-with-media-services-net-sdk-legacy"></a>Vytváření filtrů pomocí sady Media Services .NET SDK (starší verze)
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Od verze 2.17, Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou serverové pravidla, která umožňují vašim zákazníkům, kde můžete provádět například následující akce: přehrávání pouze část videa (namísto přehrávání celou video), nebo zadejte pouze podmnožinu interpretace audia a videa, které může zpracovat vašeho zákazníka zařízení (ne z všechny interpretace přidružených asset). Tento filtrování vaše prostředky je dosaženo pomocí **dynamické Manifest**ů, které jsou vytvořené na žádost zákazníka Streamovat videa podle zadané filtry.
+Od verze 2.17, Media Services vám umožní definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která umožňují zákazníkům zadáte věci, jako je: přehrávání pouze část videa (namísto přehrání celý video), nebo zadejte pouze podmnožinu audio a video interpretace, které dokáže zpracovat zařízení zákazníka (nikoli z všechny interpretace, které jsou spojeny s asset). Toto filtrování vaše prostředky se dosahuje prostřednictvím **dynamické Manifest**, které jsou vytvořeny na vyžádání vašich zákazníků, abyste mohli Streamovat video podle zadané filtry.
 
-Podrobné informace týkající se filtrů a dynamické Manifest, najdete v části [dynamické manifesty přehled](media-services-dynamic-manifest-overview.md).
+Podrobnější informace týkající se filtry a dynamický Manifest, najdete v článku [dynamických manifestů přehled](media-services-dynamic-manifest-overview.md).
 
 Tento článek ukazuje, jak používat sadu Media Services .NET SDK vytvářet, aktualizovat a odstraňovat filtry. 
 
-Poznámka: Pokud aktualizujete filtr, může trvat až dvě minuty pro koncový bod k aktualizaci pravidla streamování. Pokud obsah zpracování pomocí tohoto filtru (a uložené v mezipaměti v proxy servery a CDN mezipaměti), aktualizace tento filtr může způsobit selhání přehrávač. Po aktualizaci filtr vždy vymazání mezipaměti. Pokud tato možnost není možné, zvažte použití jiný filtr. 
+Mějte na paměti, že pokud aktualizujete filtr, může trvat až dvě minuty pro koncový bod aktualizovat pravidla streamování. Pokud se obsah vyřídila pomocí tohoto filtru (a uložit do mezipaměti v proxy servery a CDN mezipaměti), aktualizuje tento filtr může způsobit selhání přehrávače. Vždy vymažte mezipaměť po aktualizaci filtr. Pokud tato možnost není možné, zvažte použití jiného filtru. 
 
-## <a name="types-used-to-create-filters"></a>Typy používané pro vytvoření filtrů
-Následující typy se používají při vytváření filtrů: 
+## <a name="types-used-to-create-filters"></a>Typy, které slouží k vytváření filtrů
+Při vytváření filtrů se používají následující typy: 
 
-* **IStreamingFilter**.  Tento typ je založena na následující volání rozhraní REST API [filtru](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Tento typ je založena na následující volání rozhraní REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Tento typ je založena na následující volání rozhraní REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** a **IFilterTrackPropertyCondition**. Tyto typy jsou založené na následující rozhraní API REST [FilterTrackSelect a FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Tento typ je založen na následující rozhraní REST API [filtru](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**. Tento typ je založen na následující rozhraní REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Tento typ je založen na následující rozhraní REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** a **IFilterTrackPropertyCondition**. Tyto typy jsou založeny na následující rozhraní REST API [FilterTrackSelect a FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
-## <a name="createupdatereaddelete-global-filters"></a>Vytvoření, aktualizace nebo pro čtení nebo odstranění globálních filtrů
-Následující kód ukazuje, jak pomocí rozhraní .NET k vytváření, aktualizaci, přečtěte si a odstraňte asset filtry.
+## <a name="createupdatereaddelete-global-filters"></a>Vytvoření, aktualizaci, čtení nebo odstranění globálních filtrů
+Následující kód ukazuje, jak pomocí .NET k vytváření, aktualizaci, čtení a odstranění prostředku filtrů.
 
 ```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -74,8 +74,8 @@ Následující kód ukazuje, jak pomocí rozhraní .NET k vytváření, aktualiz
     filter.Delete();
 ```
 
-## <a name="createupdatereaddelete-asset-filters"></a>Vytvoření, aktualizace nebo pro čtení nebo odstranění asset filtry
-Následující kód ukazuje, jak pomocí rozhraní .NET k vytváření, aktualizaci, přečtěte si a odstraňte asset filtry.
+## <a name="createupdatereaddelete-asset-filters"></a>Vytvoření, aktualizaci, čtení nebo odstranění prostředku filtry
+Následující kód ukazuje, jak pomocí .NET k vytváření, aktualizaci, čtení a odstranění prostředku filtrů.
 
 ```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -107,9 +107,9 @@ Následující kód ukazuje, jak pomocí rozhraní .NET k vytváření, aktualiz
 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>Vytvoření adresy URL, které používají filtry pro streamování
-Informace o tom, jak publikovat a poskytovat vaše prostředky najdete v tématu [doručování obsahu zákazníkům přehled](media-services-deliver-content-overview.md).
+Informace o tom, jak publikovat a doručovat vaše prostředky, najdete v části [doručování obsahu zákazníkům přehled](media-services-deliver-content-overview.md).
 
-Následující příklady ukazují, jak přidat filtry k adresám URL streamování.
+Následující příklady ukazují, jak přidat filtry vaší adresy URL pro streamování.
 
 **MPEG DASH** 
 
@@ -135,5 +135,5 @@ Následující příklady ukazují, jak přidat filtry k adresám URL streamová
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Přehled dynamické manifestů](media-services-dynamic-manifest-overview.md)
+[Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md)
 

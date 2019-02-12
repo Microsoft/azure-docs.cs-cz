@@ -1,10 +1,10 @@
 ---
-title: Media Analytics na platformě Media Services | Microsoft Docs
-description: Přehled verze public Preview Media Analytics, kolekce řečových a počítače služby vize na škálování enterprise, dodržování předpisů, zabezpečení a globální sítě
+title: Analýzy mediálních služeb na platformě Media Services | Dokumentace Microsoftu
+description: Přehled verze public preview služby Media Analytics, kolekce pro zpracování řeči a počítače služby pro zpracování obrazu v podnikovém měřítku, dodržování předpisů, zabezpečením a globálním dosahem
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services
@@ -12,59 +12,60 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0ac8b9fad35267ceaec5b5acec4722b6005f68a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c60fd90adda4c362b15fe2e324aa55a581c9e59a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788778"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003760"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics na platformě Media Services
+# <a name="media-analytics-on-the-media-services-platform"></a>Analýzy mediálních služeb na platformě Media Services 
+
 ## <a name="overview"></a>Přehled
-Další organizace používají video jako upřednostňovaný střední cvičení svým zaměstnancům, zaujmout zákazníků a dokumentu podnikovým funkcím. Cloud computing poskytuje způsob, jak uložit, stream a přístup k tyto soubory médií velké. Ale s růstem společnosti knihovny obsahu videa, je nutné stejně účinný prostředek extrahování statistiky z obsahu. 
+Další organizace využívají videa jako střední preferované trénování svým zaměstnancům zapojit zákazníky a dokumentu obchodní funkce. Cloud computingu, poskytuje způsob, jak ukládat, streamování a přístup k těmto souborům velké média. Ale s růstem vaší společnosti knihovny videoobsahu, které potřebuje stejně efektivní způsob extrahování přehledů z obsahu. 
 
-Chcete-li vyřešit tento rostoucí potřeby, Azure Media Services nabízí Azure Media Analytics. Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Vytvořené pomocí platformy Media Services základní komponenty, Media Analytics může zpracovávat média zpracování škálované na jeden den.
+Tyto rostoucí potřeby řeší Azure Media Services nabízí službu Azure Media Analytics. Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Vytvořené s použitím základní součásti platformy Media Services, Media Analytics dokáže zpracovat ve velkém měřítku na začátku zpracování médií.
 
-Pomocí Media Analytics vývojáři rychle uveďte pokročilé funkce video do aplikace. Poskytne podnikových prostředích úplné škálování, dodržování předpisů, zabezpečení a globální reach potřebné ve velkých organizacích.
+Pomocí Media Analytics vývojáři rychle přenést pokročilé funkce videa do aplikací. Podniková prostředí umožňuje plném rozsahu, dodržování předpisů, zabezpečení a globální dosah vyžadují velké organizace.
 
-Následující diagram znázorňuje analýzy mediálních služeb a jiných hlavní části platformy Media Services. 
+Následující diagram znázorňuje analýzy mediálních služeb a další hlavní části platformy Media Services. 
 
 ![Pracovní postup videa na vyžádání (VoD)](./media/media-services-analytics-overview/media-services-analytics-overview01.png)
 
-Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. Pokud procesor médií vytvoří soubor MP4, můžete progresivně stáhnout soubor. Pokud procesor médií vytvoří soubor JSON, můžete stáhnout soubor z Azure Blob storage. 
+Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. Pokud procesor médií vytvoří soubor MP4, můžete ho progresivně stahovat. Pokud procesor médií vytvoří soubor JSON, si můžete stáhnout soubor z úložiště objektů Blob v Azure. 
 
-## <a name="media-analytics-services"></a>Služeb Media Analytics
+## <a name="media-analytics-services"></a>Media Analytics services
 
 ### <a name="indexer"></a>Indexovací modul
-S Azure Media Indexer můžete provést s možností vyhledávání obsahu a generovat titulky sleduje. Ve srovnání s předchozí verze, Azure Media Indexer 2 Preview má rychlejší indexování a širší jazykové podpory. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština, portugalština a arabské. Podrobné informace a příklady naleznete v tématu [zpracování videí pomocí Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
+S Azure Media Indexer měli prohledávatelný obsah a generovat stopy titulků. Ve srovnání s předchozí verzí, má Azure Media Indexer 2 Preview language rychleji indexování a širší podporu. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština, portugalské a arabština. Podrobné informace a příklady najdete v tématu [zpracování videí pomocí Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
 ### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse kombinuje video ustálení a časové závislosti schopnost vytvořit rychlý, použití videa z dlouhých obsah webu. Kromě vytvoření časové závislosti video, můžete vytvořit stabilní videa z zobrazuje rozostřený videa zachytit přes mobilní telefony a videokamer Hyperlapse. Podrobné informace a příklady naleznete v tématu [Hyperlapse mediálních souborů pomocí Azure Media Hyperlapse](media-services-hyperlapse-content.md).
+Microsoft Hyperlapse kombinuje stabilizaci videa a časové závislosti schopnost vytvářet rychlá, použitelné videa ze svého obsahu dlouhá. Kromě vytvoření časové závislosti videa, můžete vytvořit stabilní videa z roztřesených videí zachycené přes mobilní telefony a videokamer Hyperlapse. Podrobné informace a příklady najdete v tématu [Hyperlapse mediálních souborů pomocí Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Detektor pohybu
-Detektor pohybu můžete použít k detekci pohybu v video s stojící pozadí. To umožňuje kontrolovat falešně pozitivních na pohybu událostí detekovaných službou sledováním kamery. Podrobné informace a příklady naleznete v tématu [pro Azure Media Analytics detekce pohybu](media-services-motion-detection.md).
+Detektor pohybu můžete použít k detekci pohybu ve videu s nehybným. To umožňuje zkontrolovat počet falešně pozitivních výsledků v pohybu událostí detekovaných službou bezpečnostních kamer. Podrobné informace a příklady najdete v tématu [pro Azure Media Analytics detekce pohybu](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Detektor tváří
-Pomocí detektor vzhled, můžete zjistit řezy uživatelů a jejich emoce, včetně štěstí, sadness a neočekávaném. To má několik užitečné odvětví aplikace, popsané dál, včetně agregaci a analýzu reakce lidí, kteří se účastní událost. Podrobné informace a příklady naleznete v tématu [vzhled a rozpoznávání emocí úrovně zjišťování pro Azure Media Analytics](media-services-face-and-emotion-detection.md).
-### <a name="video-summarization"></a>Videosouhrn
-Videosouhrn vám pomůžou vytvořit souhrnných informací o dlouho videa automaticky výběrem zajímavé fragmenty kódu z zdroj videa. Tato možnost je užitečné, když chcete poskytovat rychlý přehled toho, co očekávat při dlouhé video. Podrobné informace a příklady naleznete v tématu [Video miniatur média pomocí Azure k vytvoření videosouhrn](media-services-video-summarization.md).
+Pomocí Face Detectoru může zjistit tváří lidí a jejich emocí, včetně štěstí, smutek a překvapení. To má několik užitečných oboru aplikace, je popsáno dále, včetně agregaci a analýzu reakcí s palcem lidí účast na akci v události. Podrobné informace a příklady najdete v tématu [rozpoznávání tváří a emocí pro Azure Media Analytics](media-services-face-and-emotion-detection.md).
+### <a name="video-summarization"></a>Souhrn videa
+Souhrn videa můžete vytvořit souhrny z dlouhých videí automaticky výběrem zajímavé fragmenty kódu ze zdrojového videa. Tato možnost je užitečná, pokud byste chtěli poskytnout rychlý přehled toho, co očekávat při dlouhé videa. Podrobné informace a příklady najdete v tématu [Video Thumbnails použití Azure Media k vytvoření videosouhrn](media-services-video-summarization.md).
 ### <a name="optical-character-recognition"></a>Optické rozpoznávání znaků
-S Azure Media rozpoznávání znaků (optické rozpoznávání znaků) můžete upravovat, vyhledávat digitální text převést textového obsahu v video soubory. Pak můžete automatizovat extrakce smysluplný metadata z video signál média.
-### <a name="scalable-face-redaction"></a>Škálovatelné vzhled redigování
-Azure Media Redactor je procesor Media Analytics médií, která nabízí redigování škálovatelné řez v cloudu. Pomocí redigování vzhled, můžete upravit videa na rozostření řezy vybrané jednotlivce. Můžete chtít používat službu redigování vzhled zprávy médiu nebo veřejné bezpečnosti je zahrnuta. Pár minut záznamů, která obsahuje více řezy může trvat hodiny redigovat ručně, ale s touto službou vzhled redigování trvá jenom pár jednoduchých kroků. Další informace najdete v tématu [redigovat řezy s Azure Media Analytics](media-services-face-redaction.md) článku.
+S Azure Media OCR (optické rozpoznávání znaků) můžete převést textový obsah v videosoubory lze upravovat, prohledávatelné digitální textu. Pak můžete automatizovat extrakce smysluplná metadata z videa signál médií.
+### <a name="scalable-face-redaction"></a>Škálovatelné face redactoru
+Azure Media Redactor je procesor multimédií Media Analytics, která nabízí škálovatelné face redactoru v cloudu. Pomocí face redactoru můžete upravovat vaše video k rozostření tváří vybraných jedinců. Můžete chtít použít službu rozmazání tváří v sdělovacích nebo pokud se jedná o veřejný pořádek. Pár minut záběrů, který obsahuje více ploch může trvat hodiny zákona o svobodném přístupu ručně, ale s touto službou rozmazání obličejů trvá jenom pár jednoduchých kroků. Další informace najdete v tématu [zákona o svobodném přístupu tváří pomocí Azure Media Analytics](media-services-face-redaction.md) článku.
 ### <a name="content-moderation"></a>Moderování obsahu
-Azure obsahu moderátora umožňuje použít počítač s asistencí přerušování pro videa. Můžete například zjistit možné obsah pro dospělé a zájem v videa a zkontrolujte označení obsah týmy lidského přerušování. Ručně moderování videa pro nežádoucího obsahu je úloha je časově náročná a nákladná. Pomocí této služby a nástroje přidružené kontrolní kombinovat s asistencí počítač přerušování s možnostmi lidské v the smyčky nejlepších výsledků dosáhnete efektivní a cenově výhodnou. Další informace najdete v tématu [zpracujte videa s Azure obsahu moderátora](media-services-content-moderation.md) článku.
+Azure Content Moderator umožňuje používat moderování s podporou počítače pro svá videa. Můžete například zjistit možné obsahu pro dospělé nebo pikantního obsahu ve videích a zkontrolovat obsah s příznakem vaše týmy lidské moderování. Ručně moderování videa pro nežádoucí obsah je nákladné a časově náročné úlohy. Pomocí této služby a nástroje pro recenze přidružené kombinovat moderování s podporou počítače s funkcemi lidských v the smyčky pro dosažení co nejlepších výsledků efektivně a s nízkými náklady. Další informace najdete v tématu [zpracování videa s využitím Azure Content Moderator](media-services-content-moderation.md) článku.
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
-Media Analytics může pomoci organizacím a podnikům glean nové přehledy z video a další efektivně spravovat velké objemy obsahu videa. Tady je několik scénářů:
+Media Analytics může pomoct organizacím a podnikům glean nové poznatky z videa a informace efektivně spravovat velké objemy obsahu videa. Tady je několik scénářů:
 
-* **Volání centrech**. I s nástupem sociálních médií stále zákazníka telefonní centra usnadnění vysoké procento oddělení služeb zákazníkům transakce. V této zvuková data kódování je velké množství informace o zákazníkovi, který lze analyzovat k dosažení vyšší spokojenost zákazníků. Pomocí Media Indexer organizace rozbalte text a vytvářejte indexy vyhledávání a řídicí panely. Potom mohli extrahovat intelligence kolem častých stížností, zdroje stížností a další relevantní data.
-* **Uživatelem generovaný obsah přerušování**. Z média zprávy výstupy k oddělení policie má řada organizací veřejné portály, které přijímají uživatelem generovaný média, například videa a obrázků. Z důvodu neočekávané události můžete špiček množstvím obsahu. V těchto scénářích je obtížné chování efektivní ruční recenze obsahu na základě vhodnosti. Zákazníci mohou spoléhají na službu přerušování obsah a zaměřit se na obsah, který je vhodný.
-* **Sledováním**. S růstem používá kamery IP dodává rostoucí inventáře dohledu videa. Ruční kontrola sledováním video je čas náročné a náchylné k lidským chybám. Media Analytics poskytuje službám, jako je detekce pohybu, detekce vzhled a Hyperlapse proces projdete, Správa a vytváření odvozené konfigurace jednodušší.
+* **Volání centra**. I s nástupem sociálních médií stále zákazníka volání Centra usnadnění vysoké procento transakce služby zákazníkům. Kódování v této zvuková data je velké množství informací o zákaznících, které můžou být analyzována s cílem dosáhnout vyšší spokojenost zákazníků. Pomocí Media Indexer organizace můžete extrahovat text a vytváření vyhledávacích indexů a řídicí panely. Potom extrahovat intelligence kolem častých stížností zdroje stížností a další relevantní data.
+* **Moderování obsahu uživatelem generovaný**. Z sdělovacích výstupy pro oddělení policejních jednotek řada organizací má veřejnou portály, které přijímají uživatelem generovaný médií, jako jsou videa a obrázků. Množství obsahu může vystoupat z důvodu neočekávané události. V těchto scénářích je obtížné provádět efektivní ruční kontroly obsahu pro vhodnost. Zákazníci můžou využívají službu moderování obsahu a zaměřte se na obsah, který je vhodný.
+* **Sledování**. S nárůstem v použití kamer IP obsahuje rostoucí seznam sledování videa. Ruční kontrolu dozoru video je čas náročné a náchylné k lidským chybám. Media Analytics poskytuje služby, jako je detekce pohybu, rozpoznávání tváří a Hyperlapse pro proces kontroly, Správa a vytváření odvozené jednodušší.
 
-## <a name="media-analytics-media-processors"></a>Procesory médií z Media Analytics
-V této části jsou uvedeny procesory médií z Media Analytics a ukazuje, jak získat objekt média procesoru (PP) pomocí rozhraní .NET nebo REST.
+## <a name="media-analytics-media-processors"></a>Analýzy mediálních služeb procesory médií
+Tato část uvádí procesory médií Media Analytics a ukazuje, jak získat objekt procesoru (PP) médií pomocí .NET nebo REST.
 
-### <a name="mp-names"></a>Názvy MP
+### <a name="mp-names"></a>Názvy sady Management Pack
 * Azure Media Indexer 2 Preview
 * Azure Media Indexer
 * Azure Media Hyperlapse
@@ -72,10 +73,10 @@ V této části jsou uvedeny procesory médií z Media Analytics a ukazuje, jak 
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
 * Azure Media OCR
-* Azure Media obsahu moderátora
+* Azure Media Content Moderator
 
 ### <a name="net"></a>.NET
-Následující funkce trvá některý zadaný název sady Management Pack a vrátí objekt sady Management Pack.
+Následující funkce vezme jeden z názvů zadané sady Management Pack a vrátí objekt sady Management Pack.
 
     static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {
@@ -94,7 +95,7 @@ Následující funkce trvá některý zadaný název sady Management Pack a vrá
 
 
 ### <a name="rest"></a>REST
-Žádost:
+Požadavek:
 
     GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
     DataServiceVersion: 1.0;NetFx
@@ -125,13 +126,13 @@ Odpověď:
     }
 
 ## <a name="demos"></a>Ukázky
-V tématu [ukázek Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html).
+Zobrazit [ukázek Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články
-V tématu [Media Services Analytics oznámení](https://azure.microsoft.com/blog/introducing-azure-media-analytics/).
+Zobrazit [Media Services Analytics oznámení](https://azure.microsoft.com/blog/introducing-azure-media-analytics/).
 
 <!-- Images -->
 

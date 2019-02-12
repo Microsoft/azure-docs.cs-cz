@@ -1,6 +1,6 @@
 ---
-title: Protokolování rozhraní API kolekce dat HTTP Analytics | Dokumentace Microsoftu
-description: V Log Analytics HTTP rozhraní API kolekce dat slouží k přidání dat POST JSON do úložiště Log Analytics z libovolného klienta, která může volat rozhraní REST API. Tento článek popisuje, jak použít rozhraní API a obsahuje příklady toho, jak publikovat data pomocí různých programovacích jazycích.
+title: Rozhraní API kolekce dat HTTP Azure Monitor | Dokumentace Microsoftu
+description: Azure Monitor HTTP rozhraní API kolekce dat slouží k přidání dat POST JSON do pracovního prostoru Log Analytics z libovolného klienta, která může volat rozhraní REST API. Tento článek popisuje, jak použít rozhraní API a obsahuje příklady toho, jak publikovat data pomocí různých programovacích jazycích.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,23 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: bwren
-ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 918cfb36c3afb9fc5c9a3f2c25b7c14b04354db1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211096"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002183"
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Posílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (public preview)
-V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odesílání dat do Log Analytics z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na oprávnění od Log Analytics.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
+# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslat data protokolu pro monitorování Azure pomocí rozhraní API kolekce dat HTTP (public preview)
+V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odeslání dat protokolů do Azure monitoru z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na autorizaci pomocí Azure monitoru.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
-> V Log Analytics HTTP rozhraní API kolekce dat je ve verzi public preview.
+> Azure Monitor HTTP rozhraní API kolekce dat je ve verzi public preview.
 
 ## <a name="concepts"></a>Koncepty
-Rozhraní API kolekce dat HTTP slouží k odesílání dat do Log Analytics z libovolného klienta, která může volat rozhraní REST API.  To může být sady runbook ve službě Azure Automation, který shromažďuje správu dat z Azure nebo jiného cloudu nebo ji může být systém alternativní správy, který používá ke konsolidaci a analýzu dat Log Analytics.
+Rozhraní API kolekce dat HTTP slouží k odesílání dat protokolu do pracovního prostoru Log Analytics ve službě Azure Monitor z libovolného klienta, která může volat rozhraní REST API.  To může být sady runbook ve službě Azure Automation, který shromažďuje správu dat z Azure nebo jiného cloudu nebo ji může být systém alternativní správy, který používá Azure monitoru ke konsolidaci a analyzuje data protokolů.
 
-Všechna data v úložišti Log Analytics se ukládá jako záznam s konkrétní typ záznamu.  Formátování dat k odeslání do rozhraní API kolekce dat HTTP jako více záznamů ve formátu JSON.  Při odesílání dat vrátí jednotlivý záznam se vytvoří v úložišti pro každý záznam v datové části požadavku.
+Všechna data v pracovním prostoru Log Analytics se ukládá jako záznam s konkrétní typ záznamu.  Formátování dat k odeslání do rozhraní API kolekce dat HTTP jako více záznamů ve formátu JSON.  Při odesílání dat vrátí jednotlivý záznam se vytvoří v úložišti pro každý záznam v datové části požadavku.
 
 
 ![Přehled kolekce dat HTTP](media/data-collector-api/overview.png)
@@ -62,7 +64,7 @@ Pokud chcete používat rozhraní API kolekce dat HTTP, můžete vytvořit poža
 | čas vygenerované pole |Název pole v datech, která obsahuje časové razítko datová položka. Pokud určíte pole, pak jeho obsah se používají pro **TimeGenerated**. Pokud toto pole není zadán, výchozí hodnota pro **TimeGenerated** je čas, který se ingestuje zprávy. Obsah pole zprávy postupujte podle ISO 8601 formátu RRRR-MM-: ssZ. |
 
 ## <a name="authorization"></a>Autorizace
-Jakákoli žádost Log Analytics HTTP rozhraní API kolekce dat musí obsahovat hlavičku autorizace. Pro žádost o ověření, musíte podepsat žádost s primární nebo sekundární klíč pro pracovní prostor, který provádí požadavek. Předejte tento podpis jako součást požadavku.   
+Jakákoli žádost Azure Monitor HTTP rozhraní API kolekce dat musí obsahovat hlavičku autorizace. Pro žádost o ověření, musíte podepsat žádost s primární nebo sekundární klíč pro pracovní prostor, který provádí požadavek. Předejte tento podpis jako součást požadavku.   
 
 Tady je formát pro autorizační hlavičky:
 
@@ -130,24 +132,24 @@ Pomocí následujícího formátu může hromadně společně v jedné žádosti
 ```
 
 ## <a name="record-type-and-properties"></a>Typ záznamu a vlastnosti
-Při odesílání dat Log Analytics HTTP rozhraní API kolekce dat definujete vlastní typ záznamu. V současné době nelze zapisovat data do existující typy záznamů, které byly vytvořeny v jiných datových typů a řešení. Log Analytics přečte příchozích dat a pak vytvoří vlastnosti, které odpovídají datové typy hodnot, které zadáte.
+Při odesílání dat prostřednictvím rozhraní Azure Monitor HTTP API kolekce dat, definovat vlastní typ záznamu. V současné době nelze zapisovat data do existující typy záznamů, které byly vytvořeny v jiných datových typů a řešení. Azure Monitor přečte příchozích dat a pak vytvoří vlastnosti, které odpovídají datové typy hodnot, které zadáte.
 
-Každý požadavek na rozhraní API pro analýzu protokolů jsou povinné **typ protokolu** záhlaví s názvem pro příslušný typ záznamu. Přípona **_CL** se automaticky připojí k názvu zadáte, aby se odlišil od ostatních typů protokolu jako vlastní protokol. Například, pokud zadáte název **MyNewRecordType**, Log Analytics vytvoří záznam s typem **MyNewRecordType_CL**. To pomáhá zajistit, že neexistují žádné konflikty mezi názvy typů vytvořené uživatelem a poskytuje současný nebo budoucí řešení Microsoftu.
+Musí zahrnovat každého požadavku rozhraní API kolekce dat **typ protokolu** záhlaví s názvem pro příslušný typ záznamu. Přípona **_CL** se automaticky připojí k názvu zadáte, aby se odlišil od ostatních typů protokolu jako vlastní protokol. Například, pokud zadáte název **MyNewRecordType**, Azure Monitor vytvoří záznam s typem **MyNewRecordType_CL**. To pomáhá zajistit, že neexistují žádné konflikty mezi názvy typů vytvořené uživatelem a poskytuje současný nebo budoucí řešení Microsoftu.
 
-Log Analytics k identifikaci typ dat vlastnosti, přidá příponu k názvu vlastnosti. Pokud vlastnost obsahuje hodnotu null, vlastnost není zahrnutý v daném záznamu. Tato tabulka uvádí typ dat vlastnosti a odpovídající přípony:
+Azure Monitor k identifikaci typ dat vlastnosti, přidá příponu název vlastnosti. Pokud vlastnost obsahuje hodnotu null, vlastnost není zahrnutý v daném záznamu. Tato tabulka uvádí typ dat vlastnosti a odpovídající přípony:
 
 | Typ dat vlastnosti | Přípona |
 |:--- |:--- |
-| Řetězec |_s |
+| String |_s |
 | Logická hodnota |_b |
 | Double |_d |
 | Datum a čas |_t |
 | GUID |_g |
 
-Datový typ, který používá Log Analytics pro každou vlastnost závisí na tom, zda již existuje typ záznamu pro nový záznam.
+Datový typ, který používá Azure Monitor pro každou vlastnost závisí na tom, zda již existuje typ záznamu pro nový záznam.
 
-* Pokud typ záznamu neexistuje, vytvoří Log Analytics nový. Log Analytics používá odvození typu JSON k určení datový typ pro každou vlastnost u nového záznamu.
-* Typ záznamu neexistuje, Log Analytics se pokusí vytvořit nový záznam na základě existující vlastností. Pokud datový typ pro vlastnost v novém záznamu zadané informace neodpovídají a nelze jej převést na stávající typ, nebo pokud tento záznam obsahuje vlastnost, která neexistuje, Log Analytics vytvoří novou vlastnost, která má příponu relevantní.
+* Pokud typ záznamu neexistuje, vytvoří Azure Monitor novou zásadu pomocí odvození typu JSON určit typ dat pro každou vlastnost u nového záznamu.
+* Typ záznamu neexistuje, Azure Monitor se pokusí vytvořit nový záznam na základě existující vlastností. Pokud datový typ pro vlastnost v novém záznamu zadané informace neodpovídají a nelze jej převést na stávající typ, nebo pokud tento záznam obsahuje vlastnost, která neexistuje, vytvoří Azure Monitor novou vlastnost, která má odpovídající příponu.
 
 Například by tato položka odeslání vytvořit záznam s tři vlastnosti **number_d**, **boolean_b**, a **string_s**:
 
@@ -157,18 +159,18 @@ Pokud pak odešle tento další položce s všechny hodnoty ve formátu jako ře
 
 ![Ukázka záznamu 2](media/data-collector-api/record-02.png)
 
-Ale pokud jste provedli poté toto další odeslání, Log Analytics by vytvořit nové vlastnosti **boolean_d** a **string_d**. Nelze převést tyto hodnoty:
+Ale pokud jste provedli poté toto další odeslání, Azure Monitor byste vytvořit nové vlastnosti **boolean_d** a **string_d**. Nelze převést tyto hodnoty:
 
 ![Ukázka záznamu 3](media/data-collector-api/record-03.png)
 
-Pokud potom odeslali následující položku předtím, než byl vytvořen typ záznamu, Log Analytics by u tři vlastnosti, vytvořit záznam **úspěch**, **boolean_s**, a **string_s**. Na tuto položku se všechny počáteční hodnoty naformátovaná jako řetězec:
+Pokud potom odeslali následující položku předtím, než byl vytvořen typ záznamu, monitorování Azure by u tři vlastnosti, vytvořit záznam **úspěch**, **boolean_s**, a **string_s**. Na tuto položku se všechny počáteční hodnoty naformátovaná jako řetězec:
 
 ![Ukázka záznamu 4](media/data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>Omezení dat
-Existují některá omezení kolem data vystavená pro rozhraní API pro shromažďování dat Log Analytics.
+Existují některá omezení kolem data vystavená pro rozhraní API pro shromažďování dat monitorování Azure.
 
-* Maximálně 30 MB na příspěvek k rozhraní API kolekce dat Log Analytics. Toto je omezení velikosti pro jeden příspěvek. Pokud se data z jedné příspěvku, který překračuje 30 MB, měli rozdělit data do menších bloků velikosti dat a odešlete je současně.
+* Maximálně 30 MB na příspěvek k rozhraní API kolekce dat monitorování Azure. Toto je omezení velikosti pro jeden příspěvek. Pokud se data z jedné příspěvku, který překračuje 30 MB, měli rozdělit data do menších bloků velikosti dat a odešlete je současně.
 * Maximální limit 32 KB pro hodnoty pole. Pokud hodnota pole je větší než 32 KB, data se zkrátí.
 * Doporučený maximální počet polí pro daný typ je 50. To je praktické omezení použitelnosti a perspektivy vyhledávací prostředí.  
 
@@ -196,15 +198,10 @@ Tato tabulka uvádí kompletní sadu stavové kódy, které může vrátit služ
 | 503 |Služba není dostupná |ServiceUnavailable |Služba je momentálně nedostupný a nepřijímá žádosti. Zkuste to prosím znovu, vaši žádost. |
 
 ## <a name="query-data"></a>Dotazování dat
-Zadat dotaz na data odeslaná Log Analytics HTTP rozhraní API kolekce dat, hledat záznamy s **typ** , který je roven **LogType** hodnotu, která jste zadali, s příponou **_CL**. Například, pokud jste použili **MyCustomLog**, pak by vrátí všechny záznamy s **typ = MyCustomLog_CL**.
-
->[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../../azure-monitor/log-query/log-query-overview.md), pak se změní výše uvedeném dotazu následující.
-
-> `MyCustomLog_CL`
+Zadat dotaz na data odeslaná Azure monitoru HTTP rozhraní API kolekce dat, hledat záznamy s **typ** , který je roven **LogType** hodnotu, která jste zadali, s příponou **_CL**. Například, pokud jste použili **MyCustomLog**, pak by vrátí všechny záznamy s `MyCustomLog_CL`.
 
 ## <a name="sample-requests"></a>Požadavky na ukázky
-V následujících částech najdete ukázky toho, jak odesílat data Log Analytics HTTP rozhraní API kolekce dat pomocí různých programovacích jazycích.
+V následujících částech najdete ukázky toho, jak odesílat data Azure monitoru HTTP rozhraní API kolekce dat pomocí různých programovacích jazycích.
 
 Pro každý vzorek proveďte tyto kroky k nastavení proměnných pro autorizační hlavičky:
 
@@ -226,7 +223,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 # Specify the name of the record type that you'll be creating
 $LogType = "MyRecordType"
 
-# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
 $TimeStampField = ""
 
 
@@ -321,10 +318,10 @@ namespace OIAPIExample
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of the event type that is being submitted to Azure Monitor
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
         static string TimeStampField = "";
 
         static void Main()
@@ -468,6 +465,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Použití [rozhraní API pro vyhledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) k načtení dat v úložišti Log Analytics.
+- Použití [rozhraní API pro vyhledávání protokolu](../log-query/log-query-overview.md) k načtení dat z pracovního prostoru Log Analytics.
 
-- Další informace o tom [vytvoření datového kanálu pomocí rozhraní API kolekce dat](../../azure-monitor/platform/create-pipeline-datacollector-api.md) pomocí pracovního postupu aplikace logiky do Log Analytics.
+- Další informace o tom [vytvoření datového kanálu pomocí rozhraní API kolekce dat](create-pipeline-datacollector-api.md) pomocí pracovního postupu Logic Apps do Azure monitoru.

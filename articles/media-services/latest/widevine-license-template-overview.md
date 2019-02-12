@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bd09205d4bdc60891044728cf0dcafa092ae9846
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3615bd88cfadf2f59942fab7678d36d4d20d8c9f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377439"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992734"
 ---
 # <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine 
 
@@ -81,9 +81,9 @@ Každá hodnota content_key_specs je nutné zadat pro všechny stopy, bez ohledu
 | Název | Hodnota | Popis |
 | --- | --- | --- |
 | content_key_specs. track_type |řetězec |Název typu sledování. Pokud content_key_specs je zadaná v žádosti o licenci, ujistěte se, že chcete určit, že všechny typy sledovat explicitně. Pokud tak neučiníte za následek selhání při přehrávání za 10 sekund. |
-| content_key_specs  <br/> security_level |UInt32 |Definuje požadavky na klienta odolnosti pro přehrávání. <br/> -Softwarových kryptografie prázdné pole je povinné. <br/> -Vyžaduje se šifrování software a dekodér obfuskovaný. <br/> -Klíčové materiálu a kryptografické operace je provést v rámci prostředí pro důvěryhodného spouštění podporovaný hardware. <br/> -Kryptografie a dekódování obsahu se musí provádět v rámci prostředí pro důvěryhodného spouštění podporovaný hardware.  <br/> -Kryptografie, dekódování a všechny zpracování médií (komprimovaným a nekomprimovaným formátem) musí zpracovat v rámci prostředí pro důvěryhodného spouštění podporovaný hardware. |
-| content_key_specs <br/> required_output_protection.hDC |řetězec, jeden z HDCP_V2 HDCP_NONE HDCP_V1, |Označuje, zda HDCP je povinný. |
-| content_key_specs <br/>key |Ve formátu Base64-<br/>řetězce s kódováním |Klíč k obsahu pro tento blok. Je-li zadána, je požadován track_type nebo key_id. Poskytovatel obsahu můžete použít tuto možnost vkládat klíče k obsahu pro toto sledování licenční server Widevine Generovat nebo vyhledat klíče místo. |
+| content_key_specs  <br/> security_level |uint32 |Definuje požadavky na klienta odolnosti pro přehrávání. <br/> -Softwarových kryptografie prázdné pole je povinné. <br/> -Vyžaduje se šifrování software a dekodér obfuskovaný. <br/> -Klíčové materiálu a kryptografické operace je provést v rámci prostředí pro důvěryhodného spouštění podporovaný hardware. <br/> -Kryptografie a dekódování obsahu se musí provádět v rámci prostředí pro důvěryhodného spouštění podporovaný hardware.  <br/> -Kryptografie, dekódování a všechny zpracování médií (komprimovaným a nekomprimovaným formátem) musí zpracovat v rámci prostředí pro důvěryhodného spouštění podporovaný hardware. |
+| content_key_specs <br/> required_output_protection.hdc |řetězec, jeden z HDCP_V2 HDCP_NONE HDCP_V1, |Označuje, zda HDCP je povinný. |
+| content_key_specs <br/>key |Base64-<br/>řetězce s kódováním |Klíč k obsahu pro tento blok. Je-li zadána, je požadován track_type nebo key_id. Poskytovatel obsahu můžete použít tuto možnost vkládat klíče k obsahu pro toto sledování licenční server Widevine Generovat nebo vyhledat klíče místo. |
 | content_key_specs.key_id |Řetězec s kódováním base64 binární, 16 bajtů |Jedinečný identifikátor pro klíč. |
 
 ## <a name="policy-overrides"></a>Přepsání zásad

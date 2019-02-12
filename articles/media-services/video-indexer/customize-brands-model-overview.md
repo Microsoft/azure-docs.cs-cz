@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 59a865cf6e822ecd1918d0c04b98f0edc0355223
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b01de55003f620363ed27b95a2bd27bc39fdee3a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815468"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991205"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Přizpůsobení modelu značky v Video Indexer
 

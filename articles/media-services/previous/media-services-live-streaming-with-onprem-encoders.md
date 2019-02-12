@@ -4,7 +4,7 @@ description: 'Toto téma popisuje, jak vytvořit kanál, který přijímá živ�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: b0a047c4bf2c0c95896699e50e943277a138ecca
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809021"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990212"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi
 

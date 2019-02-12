@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 7903094efc75ec54811bf565f407752f958498b7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 2e70746de4b744daf7242e91c51a3ccc1b331878
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959201"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997298"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 Jednotné přihlašování (SSO) přidává zabezpečení a pohodlí při přihlašování uživatelů k aplikacím v Azure Active Directory (Azure AD). Tento článek popisuje metody přihlašování a vám pomůže vybrat nejvhodnější metodu jednotného přihlašování, při konfiguraci vašich aplikací.
@@ -27,7 +27,7 @@ Jednotné přihlašování (SSO) přidává zabezpečení a pohodlí při přihl
 
 ## <a name="choosing-a-single-sign-on-method"></a>Volba metody jednotné přihlašování
 
-Existuje několik způsobů, jak nakonfigurovat aplikaci pro jednotné přihlašování. Volba metody jednotné přihlašování, závisí na konfiguraci aplikace k ověřování. 
+Existuje několik způsobů, jak nakonfigurovat aplikaci pro jednotné přihlašování. Volba jedinou metodu přihlašování závisí na konfiguraci aplikace k ověřování. 
 
 - Cloudové aplikace můžete použít OpenID Connect, OAuth, SAML, založené na heslech, propojené nebo zakázaný metody pro jednotné přihlašování. 
 - U místních aplikací můžete použít založené na heslech, integrované Windows ověření, založené na hlavičkách, propojené nebo zakázáno metody pro jednotné přihlašování. Volby místní fungovat, když aplikace jsou konfigurovány pro Proxy aplikací.
@@ -58,7 +58,7 @@ Další informace naleznete v tématu:
 - [Příručka pro Azure Active Directory vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
 ## <a name="saml-sso"></a>JEDNOTNÉ PŘIHLAŠOVÁNÍ SAML
-S **SAML jednotného přihlašování**, Azure AD ověří k aplikaci pomocí účtu uživatele Azure AD. Azure AD komunikuje informace přihlašování k aplikaci pomocí připojení protokolu. S založené na SAML jednotného přihlašování můžete mapování uživatelů na konkrétní aplikační role na základě pravidel, které definujete váš SAML deklaracemi identity
+S **SAML jednotného přihlašování**, Azure AD ověří k aplikaci pomocí účtu uživatele Azure AD. Azure AD komunikuje informace přihlašování k aplikaci pomocí připojení protokolu. S založené na SAML jednotného přihlašování můžete mapování uživatelů na konkrétní aplikační role na základě pravidel, které definujete váš SAML deklaracemi identity.
 
 Zvolte založené na SAML jednotného přihlašování, pokud aplikace podporuje.
 
@@ -85,7 +85,7 @@ Zvolte založené na heslech single sign-on při:
 Založené na heslech jednotného přihlašování se podporuje pro každou aplikaci založené na cloudu, který má založeného na HTML přihlašovací stránky. Uživatele můžete použít některý z následujících prohlížečů:
 
 - Internet Explorer 11 na Windows 7 nebo novější
-- Microsoft Edge ve Windows 10 Anniversary Edition nebo novější 
+- Microsoft Edge ve Windows 10 Anniversary Edition nebo novější
 - Chrome ve Windows 7 nebo novější a v systému MacOS X nebo novější
 - Firefox 26.0 nebo novější, Windows XP SP2 nebo novější a na Mac OS X 10.6 nebo novější
 

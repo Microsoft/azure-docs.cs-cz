@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: feb74b923a1f15105a2d80f8fefb09184162cb9b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810699"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990458"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -91,7 +91,7 @@ Tato část uvádí přehled informací.
 |značky| Může obsahovat nula nebo více značek. Další informace najdete v tématu [značky](#brands).|
 |statistiky | Další informace najdete v tématu [statistiky](#statistics).|
 |emocí| Může obsahovat nula nebo více emocí. Další informace najdete v tématu [emoce](#emotions).|
-|témata|Může obsahovat nula nebo více témata. [Témata](#topics) dimenze.|
+|topics|Může obsahovat nula nebo více témata. [Témata](#topics) dimenze.|
 
 ## <a name="videos"></a>videa
 
@@ -168,7 +168,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) dimenze.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) dimenze.|
 |emocí| [Emoce](#emotions) dimenze.|
-|témata|[Témata](#topics) dimenze.|
+|topics|[Témata](#topics) dimenze.|
 
 Příklad:
 
@@ -760,7 +760,7 @@ Video Indexer identifikuje emoce podle pomůcky pro zpracování řeči a zvuku.
 ],
 ```
 
-#### <a name="topics"></a>témata
+#### <a name="topics"></a>topics
 
 Video Indexer umožňuje odvození hlavní témata z záznamy o studiu. Pokud je to možné, 1. úrovně [IPTC](https://iptc.org/standards/media-topics/) taxonomie zahrnuje epics zahrnuté. 
 

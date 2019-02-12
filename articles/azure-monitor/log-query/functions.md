@@ -1,6 +1,6 @@
 ---
-title: Funkce Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek popisuje, jak pomocí služby functions volání dotazu z jiného dotazu v Log Analytics.
+title: Funkce v dotazech protokolu Azure Monitor | Dokumentace Microsoftu
+description: Tento článek popisuje, jak pomocí služby functions volání dotazu z jiného dotazu protokolu ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 8f2855ed56d298ec4c6abee02dd59ce9471f0d2e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882291"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005093"
 ---
-# <a name="using-functions-in-azure-monitor-log-analytics"></a>Pomocí funkcí ve službě Azure Monitor Log Analytics
+# <a name="using-functions-in-azure-monitor-log-queries"></a>Pomocí funkcí v dotazech protokolu Azure Monitor
 
 > [!NOTE]
 > By se měla Dokončit [začít používat portál Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
@@ -28,11 +28,11 @@ ms.locfileid: "52882291"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 
-Použijte dotaz Log Analytics s jiným dotazem ho můžete uložit jako funkce. To umožňuje zjednodušení složitých dotazů pomocí jejich rozdělení na oddíly a umožňuje opakovaně používat společný kód s více dotazy.
+Použít protokol dotaz s jiným dotazem ho můžete uložit jako funkce. To umožňuje zjednodušení složitých dotazů pomocí jejich rozdělení na oddíly a umožňuje opakovaně používat společný kód s více dotazy.
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
-Vytvoření funkce na webu Azure Portal kliknutím **Uložit** a potom zadat informace v následující tabulce.
+Vytvoření funkce v log analytics na portálu Azure portal kliknutím **Uložit** a potom zadat informace v následující tabulce.
 
 | Nastavení | Popis |
 |:---|:---|
@@ -42,10 +42,10 @@ Vytvoření funkce na webu Azure Portal kliknutím **Uložit** a potom zadat inf
 | Kategorie       | Kategorie pro uspořádání uložených dotazů a funkce v **Průzkumníka dotazů**. |
 
 > [!NOTE]
-> Funkce v Log Analytics nemůže obsahovat jiné funkci.
+> Funkce ve službě Azure Monitor nemůže obsahovat jiné funkci.
 
 > [!NOTE]
-> Ukládají se funkce je možné v dotazy Log Analytics, ale aktuálně není pro dotazy Application Insights.
+> Ukládají se funkce je možné v Azure Monitor dotazů na protokoly, ale aktuálně není pro dotazy Application Insights.
 
 
 
@@ -69,7 +69,7 @@ security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro používání dotazovací jazyk Log Analytics:
+Zobrazit další lekce pro psaní dotazů na protokoly Azure monitoru:
 
 - [Operace s řetězci](string-operations.md)
 - [Datum a čas operace](datetime-operations.md)

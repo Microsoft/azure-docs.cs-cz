@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 096372215ae44902c633489d197dc1d8aa60f193
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 419e7b1ae05f92b5b97f5317c0315a71958eff9e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983011"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005161"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys-legacy"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti (starší verze)
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti 
 
 Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se výzva, vyberte účet služby Azure Storage, který se používá k ukládání vašeho mediálního obsahu. Můžete přidat více účtů úložiště do účtu Media Services. Tento článek ukazuje, jak otočení klíčů úložiště. Také ukazuje, jak přidat účty úložiště do účtu media. 
 

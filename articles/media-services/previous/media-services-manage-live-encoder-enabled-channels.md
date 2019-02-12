@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: e7159a8e3acf45105a11cc4574f9474457bed3ea
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: ecdb6d7a225d3a2f2c5bbf90a36b91367faf04b0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682652"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003342"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -29,8 +29,8 @@ ms.locfileid: "52682652"
 ## <a name="overview"></a>Přehled
 V Azure Media Services (AMS) **kanál** představuje kanál pro zpracování obsahu živého streamování. A **kanál** přijímat živé vstupní datové proudy v jednom ze dvou způsobů:
 
-* Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí do kanálu, který má povolené provádět živé kódování pomocí Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
-* Místní kodér služby live Encoding odešle s více přenosovými rychlostmi **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) na kanál, který není povolené provádět živé kódování pomocí AMS. Ingestované datové proudy prochází **kanál**bez dalšího zpracování. Tato metoda je volána **předávací**. Můžete použít následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a Tricaster kodérů.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí do kanálu, který má povolené provádět živé kódování pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodér služby live Encoding odešle s více přenosovými rychlostmi **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) na kanál, který není povolené provádět živé kódování pomocí AMS. Ingestované datové proudy prochází **kanál**bez dalšího zpracování. Tato metoda je volána **předávací**. Následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi můžete použít: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a Tricaster kodérů.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
   
   > [!NOTE]
   > Použití průchozí metody je nejekonomičtější způsob, jak živě Streamovat.
@@ -80,7 +80,7 @@ Od 25. ledna 2016, Media Services nasazeny v aktualizaci, která se automaticky 
 Prahová hodnota pro nepoužívané období je formálně 12 hodin, ale může se změnit.
 
 ## <a name="live-encoding-workflow"></a>Živé kódování pracovního postupu
-Následující diagram představuje živého streamování pracovního postupu kde kanál přijímá datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo technologie Smooth Streaming; potom kóduje datový proud na datový proud s více přenosovými rychlostmi. 
+Následující diagram představuje živého streamování pracovního postupu kde kanál přijímá datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming; potom kóduje datový proud na datový proud s více přenosovými rychlostmi. 
 
 ![Živý pracovní postup][live-overview]
 
@@ -92,7 +92,7 @@ Následující část představuje obecné kroky, které jsou součástí proces
 > 
 > 
 
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat **jeden** datový proud s přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo technologie Smooth Streaming. 
+1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat **jeden** datový proud s přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. 
    
     Tento krok můžete provést i po vytvoření kanálu.
 2. Vytvořte a spusťte kanál. 
@@ -136,11 +136,11 @@ Požadavky:
 * Datový proud videa by měl mít průměrné s přenosovou rychlostí nižší než 15 MB/s
 * Zvukový datový proud musí mít průměrné s přenosovou rychlostí nižší než 1 MB/s
 * Podporované kodeky jsou následující:
-* AVC MPEG-4 / videa H.264
+* MPEG-4 AVC / H.264 Video
 * Směrný plán, hlavní, vysoce profilu (8 bitů 4:2:0)
 * Vysoká 10 profilu (10-bit 4:2:0)
 * Vysoká do profilu 422 (10-bit 4:2:2)
-* Zvuk MPEG-2 AAC-LC
+* MPEG-2 AAC-LC Audio
 * Mono, Stereo obklopit (5.1, 7.1)
 * 44,1 kHz vzorkovací frekvence
 * Balení ADTS styl MPEG-2
@@ -358,7 +358,7 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [Správa kanálů pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
  
-[Koncepty služby Media Services](media-services-concepts.md)
+[Media Services Concepts](media-services-concepts.md)
 
 [Specifikace Ingestování fragmentovaného MP4 za služby Azure Media Services](media-services-fmp4-live-ingest-overview.md)
 

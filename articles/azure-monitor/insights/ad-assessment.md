@@ -1,5 +1,5 @@
 ---
-title: Optimalizace prostředí služby Active Directory s Azure Log Analytics | Dokumentace Microsoftu
+title: Optimalizace prostředí služby Active Directory prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
 description: Kontrola stavu služby Active Directory řešení můžete použít k vyhodnocení v pravidelných intervalech rizika a stav různých prostředí.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 063cedc679c3365e6352549e78c75ecff903cae7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8a1e08263790f1a04e672fd9d5a17c2bd1b45ce8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193004"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999024"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizace prostředí služby Active Directory s řešením Kontrola stavu služby Active Directory v Log Analytics
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí služby Active Directory s řešením Kontrola stavu služby Active Directory ve službě Azure Monitor
 
 ![Symbol kontroly stavu AD](./media/ad-assessment/ad-assessment-symbol.png)
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Kontrola stavu služby Active Directory řešení můžete použít k vyhodnocení v pravidelných intervalech rizika a stav různých prostředí serveru. Tento článek vám pomůže nainstalovat a mohli řešení používat, takže můžete provést opravné akce pro potenciální problémy.
 
@@ -40,22 +42,22 @@ Poté, co jste přidali řešení a kontrola je dokončené a souhrnné informac
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Kontrola stavu služby Active Directory řešení vyžaduje podporovanou verzi rozhraní .NET Framework 4.5.2 nebo nad nainstalovaný na každém počítači, který má Microsoft Monitoring Agent (MMA) nainstalovaný.  MMA agent používá System Center 2016 – Operations Manager a Operations Manageru 2012 R2 a služby Log Analytics.
+* Kontrola stavu služby Active Directory řešení vyžaduje podporovanou verzi rozhraní .NET Framework 4.5.2 nebo nad nainstalovaný na každém počítači, který má Microsoft Monitoring Agent (MMA) nainstalovaný.  MMA agent používá System Center 2016 – Operations Manager a Operations Manageru 2012 R2 a Azure Monitor.
 * Řešení podporuje řadiče domény se systémem Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows serveru 2016.
 * Pracovní prostor Log Analytics můžete přidat Kontrola stavu služby Active Directory řešení z Azure marketplace na webu Azure Portal.  Není nutná žádná další konfigurace.
 
   > [!NOTE]
-  > Po přidání řešení, se přidá soubor AdvisorAssessment.exe na servery s agenty. Konfigurační data je čtení a pak posílají do služby Log Analytics v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
+  > Po přidání řešení, se přidá soubor AdvisorAssessment.exe na servery s agenty. Konfigurační data je čtení a následně odesílána do Azure monitoru v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
   >
   >
 
-Provádění kontroly stavu proti řadiči domény, které jsou členy domény, který se má vyhodnotit, vyžadují agenta a připojení ke službě Log Analytics pomocí jedné z následujících podporovaných metod:
+Provádění kontroly stavu proti řadiči domény, které jsou členy domény, který se má vyhodnotit, vyžadují agenta a připojení k Azure Monitor pomocí jedné z následujících podporovaných metod:
 
 1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Pokud řadič domény není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
-2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná se službou Log Analytics, může být řadič domény s více adresami pomocí Log Analytics ke shromažďování a předávání služby a pořád monitorované nástrojem Operations Manager.  
+2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná s Azure Monitor, může být řadič domény s více adresami pomocí Azure monitoru pro shromažďování dat a předat službě a stále sledování Operations Managerem.  
 3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
 
-Agent na vašem řadiči domény, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu služby Log Analytics.  Data není zapsána do databáze nástroje Operations Manager.  
+Agent na vašem řadiči domény, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu Azure Monitor.  Data není zapsána do databáze nástroje Operations Manager.  
 
 ## <a name="active-directory-health-check-data-collection-details"></a>Active Directory zkontrolujte stav podrobnosti dat kolekce
 
@@ -73,7 +75,7 @@ Kontrola stavu služby Active Directory shromažďuje data z následujících zd
 - Rozhraní API služby (NTFRS) replikace souborů
 - Vlastní C# kód
 
-Data se shromažďují na řadiči domény a předávají do Log Analytics každých sedm dní.  
+Data se shromažďují na řadiči domény a předávaných do Azure monitoru každých sedm dní.  
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>Vysvětlení, jak mají určenou prioritu doporučení
 Každé doporučení je přiřazena hodnota váhu, která identifikuje relativní důležitost doporučení. Zobrazí jenom 10 nejdůležitější doporučení.
@@ -107,30 +109,33 @@ Po instalaci, zobrazí se přehled doporučení pomocí kontroly stavu dlaždice
 Zobrazení posouzení souhrnné dodržování předpisů pro infrastrukturu a pak přejít k podrobnostem doporučení.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Zobrazit doporučení pro oblast zaměření a provedení nápravné akce
-3. Klikněte na tlačítko **přehled** dlaždici pro váš pracovní prostor Log Analytics na portálu Azure portal.
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 4. Na **přehled** stránky, klikněte na tlačítko **Kontrola stavu služby Active Directory** dlaždici.
 5. Na **kontroly stavu** stránky, zkontrolujte souhrnné informace u některého okna oblasti zaměření a klikněte na z nich se má zobrazit doporučení pro tuto oblast zaměření.
 6. Na žádném z oblasti stránek fokus můžete zobrazit prioritizovaných doporučení pro vaše prostředí. Kliknutím na doporučení v části **vliv na objekty** zobrazíte podrobnosti o tom, proč je provedeny doporučení.<br><br> ![Obrázek kontroly stavu doporučení](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 7. Můžete provést opravné akce navržený v **doporučené akce**. Když položka vyřeší, novější posouzení záznamy, které doporučené akce byly provedeny a zvýší vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předaný objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorujte doporučení
-Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který brání doporučení povolí, nebude vaše výsledky posouzení pomocí Log Analytics.
+Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který zabránit doporučení povolí, nebude vaše výsledky posouzení bude používat Azure Monitor.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>K identifikaci doporučení, která se bude ignorovat.
-1. Na portálu Azure na stránce pracovního prostoru Log Analytics pro váš vybraný pracovní prostor, klikněte na tlačítko **prohledávání protokolů** dlaždici.
-2. Následující dotaz tak, aby seznam doporučení, které se nepodařilo použijte pro počítače se ve vašem prostředí.
+[!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-    ```
-    ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
-    ```
-    Zde je snímek obrazovky zobrazující z dotazu prohledávání protokolu:<br><br> ![doporučení se nezdařilo](./media/ad-assessment/ad-failed-recommendations.png)
+Následující dotaz tak, aby seznam doporučení, které se nepodařilo použijte pro počítače se ve vašem prostředí.
 
-3. Zvolte doporučení, která má být ignorována. V dalším postupu budete používat hodnoty pro ID doporučení.
+```
+ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
+```
+
+Zde je snímek obrazovky zobrazující dotaz protokolu:<br><br> ![doporučení se nezdařilo](media/ad-assessment/ad-failed-recommendations.png)
+
+Zvolte doporučení, která má být ignorována. V dalším postupu budete používat hodnoty pro ID doporučení.
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
 1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
-2. Vložte nebo zadejte ID jednotlivých doporučení pro jednotlivá doporučení, který má Log Analytics ignorovat na samostatném řádku a potom uložte a zavřete soubor.
-3. Uložte soubor v následující složce na každém počítači místo, kam chcete Log Analytics pro ignorování doporučení.
+2. Vložte nebo zadejte ID jednotlivých doporučení pro jednotlivá doporučení, který má Azure Monitor ignorovat na samostatném řádku a potom uložte a zavřete soubor.
+3. Uložte soubor v následující složce na každém počítači místo, kam chcete ignorujte doporučení Azure Monitor.
    * Na počítačích s Microsoft Monitoring Agent (připojené přímo nebo prostřednictvím Operations managera) - *systemdrive % musí být*: \Program Files\Microsoft Monitoring Agent\Agent
    * Na serveru pro správu Operations Manageru 2012 R2 - *systemdrive % musí být*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * Na serveru pro správu Operations Manageru 2016 - *systemdrive % musí být*: \Program Files\Microsoft System Center 2016\Operations Manager\Server
@@ -138,7 +143,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Chcete-li ověřit, že jsou ignorovány doporučení
 Až dalšího naplánovaného spuštění kontroly stavu, ve výchozím nastavení každých sedm dní, jsou označené zadanou doporučení *ignorováno* a nezobrazí se na řídicím panelu.
 
-1. Do seznamu ignorovaných doporučení můžete použít následující dotazy prohledávání protokolů.
+1. Můžete použít následující dotazy protokolu do seznamu ignorovaných doporučení.
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
@@ -177,11 +182,11 @@ Až dalšího naplánovaného spuštění kontroly stavu, ve výchozím nastaven
 
 *Proč zobrazit pouze prvních 10 doporučení?*
 
-* Místo získáte vyčerpávající seznam náročné úkoly, doporučujeme vám zaměřit nejprve adresování prioritizovaných doporučení. Po jejich řešení, budou k dispozici další doporučení. Pokud chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení, pomocí prohledávání protokolů.
+* Místo získáte vyčerpávající seznam náročné úkoly, doporučujeme vám zaměřit nejprve adresování prioritizovaných doporučení. Po jejich řešení, budou k dispozici další doporučení. Pokud chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení pomocí protokolu dotazu.
 
 *Existuje způsob, jak ignorujte doporučení?*
 
 * Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md) informace o analýze podrobné doporučení a údaje o kontrolu stavu AD.
+* Použití [dotazů na protokoly Azure monitoru](../log-query/log-query-overview.md) informace o analýze podrobné doporučení a údaje o kontrolu stavu AD.

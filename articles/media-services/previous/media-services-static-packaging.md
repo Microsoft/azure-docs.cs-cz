@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 1ea4639d547616f2cfdf1d5e2b78c1388ef09dc4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80c9f1c7e2bec3e3f3fa696134a23f0760598a29
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826118"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001132"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Použití služby Azure Media Packager k provádění úloh statické balení
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Použití služby Azure Media Packager k provádění úloh statické balení  
 > [!NOTE]
 > Do 1. března 2017 bylo rozšířeno konci životnosti data pro Microsoft Azure Media Packageru a Microsoft Azure Media Encryptoru. Před tímto datem funkce procesory se přidají do Media Encoder Standard (MES). S pokyny o tom, jak migrovat své pracovní postupy k odeslání úloh pro MES jsou k dispozici zákazníkům. Formát funkce převodu a šifrování můžou být taky dostupné prostřednictvím dynamického balení a dynamického šifrování.
 > 

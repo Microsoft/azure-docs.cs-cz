@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883768"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002095"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -83,7 +83,7 @@ Na webu Azure Portal můžete filtrovat protokol aktivit na základě těchto po
 
 Po definování sady filtrů můžete připnout dotaz na řídicím panelu Azure vždy dohlížet na konkrétní události.
 
-Pro ještě větší výkon, můžete kliknout na **protokoly** ikonu, která zobrazuje data protokolu aktivit v [řešení Log Analytics Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md). Okno Protokol aktivit nabízí prostředí základní filtr nebo přejděte na protokoly, ale Log Analytics umožňuje otáčení, dotazování a vizualizace dat výkonnější způsoby.
+Pro ještě větší výkon, můžete kliknout na **protokoly** ikonu, která zobrazuje data protokolu aktivit v [shromažďovat a analyzovat protokoly aktivit řešení](../../azure-monitor/platform/collect-activity-logs.md). Okno Protokol aktivit nabízí prostředí základní filtr nebo přejděte na protokoly, ale umožňuje funkci protokoly Azure monitoru otáčení, dotazování a vizualizace dat výkonnější způsoby.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Exportovat protokol aktivit k profilu protokolu
 A **profilu protokolu** řídí, jak exportovat protokol aktivit. Pomocí profilu protokolu, můžete nakonfigurovat:
@@ -142,7 +142,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| Název |Ano |Název profilu protokolu. |
+| Name |Ano |Název profilu protokolu. |
 | StorageAccountId |Ne |ID prostředku účtu úložiště, ke kterému má být uložen v protokolu aktivit. |
 | serviceBusRuleId |Ne |ID pravidla služby Service Bus pro obor názvů služby Service Bus, by měl mít vytvořené v služby event hubs. Je řetězec v tomto formátu: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Umístění |Ano |Čárkami oddělený seznam oblasti, pro které chcete shromažďovat události protokolu aktivit. |

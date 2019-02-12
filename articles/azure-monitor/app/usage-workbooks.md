@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fecd5cf3b5a6aac1133f94b4dc220eec826392f6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54056878"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993414"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav se sešity Azure Monitor
 
@@ -77,7 +77,7 @@ Dotaz oddíly jsou vysoce flexibilní a umožňuje zodpovědět dotazy jako:
 
 * Kolik výjimky váš web vyvolat za stejné období jako pokles využití?
 * Jaký byl distribuční časy načtení stránek uživatelům, kteří zobrazují některé stránky?
-* Kolik uživatelů zobrazit některé sadu stránek na webu, ale není některých dalších nastavení stránek? To může být užitečné k pochopení, pokud máte clustery uživatelů, kteří používají různé podmnožiny funkčnosti vaší lokality (použít `join` operátor s `kind=leftanti` modifikátor v dotazovací jazyk Log Analytics).
+* Kolik uživatelů zobrazit některé sadu stránek na webu, ale není některých dalších nastavení stránek? To může být užitečné k pochopení, pokud máte clustery uživatelů, kteří používají různé podmnožiny funkčnosti vaší lokality (použít `join` operátor s `kind=leftanti` modifikátor v dotazovacím jazyce Průzkumník dat).
 
 Můžete také nejsou pouze omezeni na dotazování v kontextu aplikace spustí ze sešitu. Můžete zadávat dotazy napříč více Application Insights monitorovat aplikace a zároveň pracovních prostorů Log Analytics, dokud máte přístupová oprávnění k těmto prostředkům.
 

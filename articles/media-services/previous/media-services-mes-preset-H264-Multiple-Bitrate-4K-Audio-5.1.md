@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 6fb7e3001ec1d1e4d530f289a2a445c76aa36dea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9bf1b39e8cd0192a3d516bf64b32da4fcc500080
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247023"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003121"
 ---
-# <a name="h264-multiple-bitrate-4k-audio-51"></a>Předvolby H264 Více přenosovými rychlostmi 4 kB zvuku 5.1
+# <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
 `Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Toto téma ukazuje, `H264 Multiple Bitrate 4K Audio 5.1` přednastavení ve formátu XML a JSON.  
@@ -32,7 +32,7 @@ ms.locfileid: "50247023"
 >  Měli byste obdržet rezervovaných jednotek Premium kóduje typ s 4 kB. Další informace najdete v tématu [postupy škálování kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
   
 > [!NOTE]
->  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576, 640 x 360. Neměli byste používat kombinaci poměry stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
+>  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat kombinaci poměry stran, jako například: 1280x720, 720x480, 640x360.  
   
  XML  
   

@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0275eb83feec46f21b55ca36e5d77c5b1fcd6f28
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488373"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997281"
 ---
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Kurz: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio
 
@@ -329,9 +329,9 @@ Příklad porovnávání několik modelů v jednom experimentu najdete v tématu
 
 [publish]: publish-a-machine-learning-web-service.md
 
-Chcete se dozvědět víc? Rozsáhlejší a podrobnější návod k technikám pro vytváření, natrénování, stanovení skóre a nasazení modelu najdete v tématu [Vývoj prediktivního řešení pomocí služby Azure Machine Learning][walkthrough].
+Chcete se dozvědět víc? Rozsáhlejší a podrobnější návod k technikám vytváření, školení, vyhodnocení a nasazení modelu najdete v části [kurz 1: Předpovědět úvěrové riziko ] [ walkthrough].
 
-[walkthrough]: walkthrough-develop-predictive-solution.md
+[walkthrough]: tutorial-part1-credit-risk.md
 
 <!-- Images -->
 [sign-in-to-studio]: ./media/create-experiment/sign-in-to-studio.png

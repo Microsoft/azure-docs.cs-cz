@@ -12,14 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: e45b3bde0d5077a5d18369236e81bcd467527940
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2d576a0d51eb723efdd1652898c2c019ee7475a8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990140"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999211"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitel zón reverzního vyhledávání DNS v Azure DNS
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Tento článek vysvětluje, jak k hostování zón reverzního vyhledávání DNS pro vaši přiřazené rozsahy IP adres v Azure DNS. Rozsahy IP adres, který je reprezentován zóny zpětného vyhledávání musí přiřazené pro vaši organizaci, obvykle podle svého poskytovatele internetových služeb.
 
@@ -60,10 +62,10 @@ Následující příklady ukazují, jak tento úkol provést pomocí prostředí
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
+New-AzDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
 azure network dns zone create MyResourceGroup 2.0.192.in-addr.arpa
@@ -91,10 +93,10 @@ Následující příklady ukazují, jak tento úkol provést pomocí prostředí
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
+New-AzDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
 azure network dns zone create MyResourceGroup 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
@@ -136,9 +138,9 @@ Následující příklady ukazují, jak tento úkol provést pomocí Powershellu
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ptrdname "dc1.contoso.com")
+New-AzDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc1.contoso.com")
 ```
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
 azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 PTR --ptrdname dc1.contoso.com  
@@ -172,10 +174,10 @@ Následující příklady ukazují, jak tento úkol provést pomocí Powershellu
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ptrdname "dc2.contoso.com")
+New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc2.contoso.com")
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
@@ -202,10 +204,10 @@ Následující příklady znázorňují způsob zobrazení záznamů PTR pomocí
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureRmDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
+Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
     azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
@@ -228,10 +230,10 @@ Následující příklady znázorňují způsob zobrazení záznamů pomocí Pow
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureRmDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
+Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
     azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa

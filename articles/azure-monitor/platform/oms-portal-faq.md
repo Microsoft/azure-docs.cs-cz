@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883394"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990424"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -105,7 +105,7 @@ Spravovat většinu dat nastavení v **upřesňující nastavení** nabídce pra
 Spravovat řešení v **řešení** nabídce pracovního prostoru. 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>Jak nainstalovat a odebrání řešení pro správu?
-Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrána z **nastavení**. Na webu Azure Portal [nainstalovat řešení pro správu](../insights/solutions.md#install-a-management-solution) z Azure Marketplace. [Odebrat řešení](../insights/solutions.md#remove-a-management-solution) ze seznamu nainstalovaná řešení.
+Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrána z **nastavení**. Na webu Azure Portal [nainstalovat řešení pro správu](../insights/solutions.md#install-a-monitoring-solution) z Azure Marketplace. [Odebrat řešení](../insights/solutions.md#remove-a-monitoring-solution) ze seznamu nainstalovaná řešení.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Jak vytvořit a spravovat upozornění?
 Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../../azure-monitor/platform/alerts-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../../azure-monitor/platform/alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.

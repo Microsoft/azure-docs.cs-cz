@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/25/2018
+ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312965"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000003"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
 
@@ -35,7 +35,7 @@ Toto téma popisuje běžné scénáře, ve kterém pomocí filtrů by být uži
 Při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vaším cílem je poskytovat vysoce kvalitní videa pro různá zařízení v různých síťových podmínkách. K dosažení tohoto cíle provést následující kroky:
 
 * zakódovat váš datový proud s více přenosovými rychlostmi ([s adaptivní přenosovou rychlostí](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) datový proud videa (to se postará o kvalitu i síťové podmínky) a 
-* pomocí Media Services [dynamické balení](media-services-dynamic-packaging-overview.md) a dynamicky znovu zabalte datový proud do různých protokolů (to se postará o streamování na různá zařízení). Služba Media Services podporuje doručování následujících technologií streamování adaptivní přenosové rychlosti: HTTP Live Streaming (HLS), technologie Smooth Streaming a MPEG DASH. 
+* pomocí Media Services [dynamické balení](media-services-dynamic-packaging-overview.md) a dynamicky znovu zabalte datový proud do různých protokolů (to se postará o streamování na různá zařízení). Služba Media Services podporuje doručování následujících adaptivní přenosové rychlosti streamování technologií: HTTP Live Streaming (HLS), technologie Smooth Streaming a MPEG DASH. 
 
 ### <a name="manifest-files"></a>Soubory manifestu
 Při kódování prostředku pro streamování s adaptivní přenosovou rychlostí **manifest** se vytvoří soubor (seznam testů) (soubor je založený na textu nebo na základě XML). **Manifest** soubor obsahuje, jako datový proud metadat: sledování typu (zvuk, video nebo text), sledování název, počáteční a koncový čas, s přenosovou rychlostí (Vlastnosti), sledování jazyků, prezentace okno (posuvné okno pevnou platnost), (kodek videa FourCC). Nastaví také přehrávače pro načtení další fragment tím, že poskytuje informace o tyto další možné přehrát video fragmenty dostupné a jejich umístění. Fragmenty (nebo segmenty) jsou skutečné "bloky" obsah videa.
@@ -120,7 +120,7 @@ Díky dynamický Manifest, můžete vytvořit profily zařízení jako jsou mobi
 
 ![Interpretace filtrování příklad][renditions2]
 
-V následujícím příkladu byl použit pro kodér má kódovat mezzanine asset do sedmi interpretace video soubory MP4 rychlostmi ISO (z 180p 1080p). Zakódovanému assetu můžete dynamicky zabalené do některé z následujících protokolů streamování: MPEG DASH, HLS a Smooth.  V horní části diagramu se zobrazí HLS manifestu pro prostředek s žádné filtry (obsahuje všechny sedm interpretace).  Vlevo dole se zobrazí v manifestu HLS, do které byl použit filtr s názvem "ott". Filtr "ott" Určuje odebrání všech přenosových rychlostí nižší než 1 MB/s, což způsobilo v dolní části dvě úrovně kvality se odstraní v odpovědi. V pravém dolním rohu se zobrazí v manifestu HLS, do které byl použit filtr s názvem "mobilní". "Mobilní" filtr určuje odebrání interpretací, kde je větší než 720p, což způsobilo ve dvou rozlišení 1080p interpretace se odstraní.
+V následujícím příkladu byl použit pro kodér má kódovat mezzanine asset do sedmi interpretace video soubory MP4 rychlostmi ISO (z 180p 1080p). Zakódovanému assetu můžete dynamicky zabalené do některé z následujících protokolů streamování: HLS, Smooth a MPEG DASH.  V horní části diagramu se zobrazí HLS manifestu pro prostředek s žádné filtry (obsahuje všechny sedm interpretace).  Vlevo dole se zobrazí v manifestu HLS, do které byl použit filtr s názvem "ott". Filtr "ott" Určuje odebrání všech přenosových rychlostí nižší než 1 MB/s, což způsobilo v dolní části dvě úrovně kvality se odstraní v odpovědi. V pravém dolním rohu se zobrazí v manifestu HLS, do které byl použit filtr s názvem "mobilní". "Mobilní" filtr určuje odebrání interpretací, kde je větší než 720p, což způsobilo ve dvou rozlišení 1080p interpretace se odstraní.
 
 ![Interpretace filtrování][renditions1]
 
@@ -130,7 +130,7 @@ Vaše prostředky mohou zahrnovat více zvuku jazyků, jako je angličtina, špa
 ![Sleduje jazyka filtrování][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Oříznutí začátek prostředek
-Ve většině živě streamovaných událostí operátoři spustit některé testy před skutečné události. Například může zahrnovat břidlicová takto před začátkem události: "Programu Zbývá: okamžik". Pokud program je archivace, testování a slatu data jsou také archivovat a zahrnuty v prezentaci. Tyto informace však by neměly být uváděny klientům. S dynamický Manifest můžete vytvořit filtr času spuštění a odebrat nežádoucí data z manifestu.
+Ve většině živě streamovaných událostí operátoři spustit některé testy před skutečné události. Například může patří mezi ně břidlicová takto před začátkem události: "Programu Zbývá: okamžik". Pokud program je archivace, testování a slatu data jsou také archivovat a zahrnuty v prezentaci. Tyto informace však by neměly být uváděny klientům. S dynamický Manifest můžete vytvořit filtr času spuštění a odebrat nežádoucí data z manifestu.
 
 ![Oříznutí start][trim_filter]
 

@@ -11,15 +11,16 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 94b793d4ab68ae4d2b8a28961d76eed1ea875ff7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: cf73708682a8434ffabaff101d6d6928671af4b6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468627"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003716"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
+
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
 
 ## <a name="overview"></a>Přehled
@@ -33,11 +34,14 @@ V následujících scénářích může být potřeba monitorovat využití pros
 - Povolení změny jednoúčelové databáze nebo elastického fondu na jinou úroveň služby nebo výkonu s nižší maximální velikostí
 
 ### <a name="monitoring-file-space-usage"></a>Monitorování využití místa na souboru
+
 Většina metrik úložiště prostor zobrazí na webu Azure portal a rozhraní API pro následující míru jenom velikost stránky používaná data:
+
 - Metriky rozhraní API využívající Azure Resource Manager včetně Powershellu [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Ale následující rozhraní API také měření velikost místa vyhrazeného pro databáze a elastické fondy:
+
 - T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
@@ -62,13 +66,14 @@ Principy následující množství prostoru úložiště jsou důležité pro sp
 
 Následující diagram znázorňuje vztah mezi různými typy prostor úložiště pro databázi.
 
-![úložiště místo typů a vztahů](./media/sql-database-file-space-management/storage-types.png) 
+![úložiště místo typů a vztahů](./media/sql-database-file-space-management/storage-types.png)
 
 ## <a name="query-a-database-for-storage-space-information"></a>Dotaz na databázi pro informace o úložišti
 
 Následující dotazy můžete použít k určení množství prostoru úložiště pro databázi.  
 
 ### <a name="database-data-space-used"></a>Použít místo data v databázi
+
 Upravte následující dotaz, který vrací množství místa dat databáze použít.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
@@ -81,6 +86,7 @@ ORDER BY end_time DESC
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Přidělené místo na data databáze a nepoužívané přiděleného místa
+
 Použijte tento dotaz vrátí velikost přidělené místo na data databáze a množství nevyužité místo přidělené.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
@@ -94,6 +100,7 @@ HAVING type_desc = 'ROWS'
 ```
  
 ### <a name="database-data-max-size"></a>Maximální velikost dat databáze
+
 Upravte následující dotaz, který vrátí maximální velikost dat databáze.  Jednotky výsledku dotazu jsou v bajtech.
 
 ```sql

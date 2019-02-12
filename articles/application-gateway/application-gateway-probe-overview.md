@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018704"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998616"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -27,7 +27,7 @@ Kromě používání výchozího stavu testu monitorování, můžete také při
 
 Službu application gateway automaticky nakonfiguruje výchozí kontroly stavu, pokud nenastavíte žádnou konfiguraci vlastní test paměti. Monitorování chování funguje tak, že požadavek HTTP na IP adresy nakonfigurované pro back endový fond. Pro výchozí sondy Pokud nastavení http back-end jsou nakonfigurovány pro protokol HTTPS, sondy používá protokol HTTPS a testování stavu back-EndY.
 
-Příklad: Konfigurace vaše brána application gateway pomocí back-end serverů A, B a C přijímat síťový provoz protokolu HTTP na portu 80. Monitorování stavu výchozí testuje tři servery každých 30 sekund pro v dobrém stavu odpovědi HTTP. Je v dobrém stavu odpovědi HTTP [stavový kód](https://msdn.microsoft.com/library/aa287675.aspx) mezi 200 a 399.
+Příklad: Nakonfigurujete vaše brána application gateway pomocí back-end serverů A, B a C přijímat síťový provoz protokolu HTTP na portu 80. Monitorování stavu výchozí testuje tři servery každých 30 sekund pro v dobrém stavu odpovědi HTTP. Je v dobrém stavu odpovědi HTTP [stavový kód](https://msdn.microsoft.com/library/aa287675.aspx) mezi 200 a 399.
 
 Pokud selže server A kontrola testu výchozí, application gateway, odebere ho z jeho back endového fondu a síťový provoz přestanou přicházet do tohoto serveru. Výchozí kontroly i nadále pokračuje v kontrole pro server každých 30 sekund. Když serveru A odpoví na žádost o jeden z výchozí kontroly stavu úspěšně, je přidána zpět jako v pořádku do back endového fondu a začne provoz směřující do serveru znovu.
 
@@ -44,7 +44,7 @@ Kritéria shody se dá nastavit pomocí `New-AzureRmApplicationGatewayProbeHealt
 
 Příklad:
 
-```
+```powershell
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```

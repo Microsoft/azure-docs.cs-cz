@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: b3805cf46fe0fbf2461ab11959de101d8d4154f0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984592"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993907"
 ---
-# <a name="azure-media-services-concepts-legacy"></a>Koncepty Azure Media Services (starší verze)
+# <a name="azure-media-services-concepts"></a>Koncepty služby Azure Media Services 
 
 Toto téma poskytuje přehled o nejdůležitějších pojmů Media Services.
 

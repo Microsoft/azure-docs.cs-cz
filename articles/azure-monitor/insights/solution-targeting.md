@@ -1,6 +1,6 @@
 ---
-title: Cílení na řešení pro správu v Azure | Dokumentace Microsoftu
-description: Cílení na řešení pro správu lze omezit řešení pro správu pro konkrétní sadu agentů.  Tento článek popisuje, jak vytvořit konfiguraci oboru a použijte ji pro řešení.
+title: Cílení na monitorování řešení ve službě Azure Monitor | Dokumentace Microsoftu
+description: Cílení na řešení monitorování lze omezit na konkrétní sadu agentů monitorování řešení.  Tento článek popisuje, jak vytvořit konfiguraci oboru a použijte ji pro řešení.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d82c42fa734932655f536d4fc04a50b4d6904ac5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192749"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989181"
 ---
-# <a name="targeting-management-solutions-in-azure-preview"></a>Cílení na řešení pro správu v Azure (Preview)
-Když přidáte řešení pro správu k vašemu předplatnému, se automaticky nasadí ve výchozím nastavení pro všechny agenty Windows a Linuxem, připojený k pracovnímu prostoru Log Analytics.  Můžete chtít spravovat náklady a omezit objem dat shromážděných pro řešení podle omezení na konkrétní sadu agentů.  Tento článek popisuje způsob použití **cílení řešení** což je funkce, která vám umožní použít obor do vašich řešení.
+# <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Cílení na řešení monitorování v Azure Monitor (Preview)
+Když přidáte řešení pro monitorování ke svému předplatnému, se automaticky nasadí ve výchozím nastavení pro všechny agenty Windows a Linuxem, připojený k pracovnímu prostoru Log Analytics.  Můžete chtít spravovat náklady a omezit objem dat shromážděných pro řešení podle omezení na konkrétní sadu agentů.  Tento článek popisuje způsob použití **cílení řešení** což je funkce, která vám umožní použít obor do vašich řešení.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="how-to-target-a-solution"></a>Jak se zaměřit na řešení
 Existují tři kroky pro cílení na řešení, jak je popsáno v následujících částech. 
 
 
 ### <a name="1-create-a-computer-group"></a>1. Vytvořit skupinu počítačů
-Zadejte počítače, které chcete zahrnout do oboru tak, že vytvoříte [skupinu počítačů](../../azure-monitor/platform/computer-groups.md) v Log Analytics.  Skupina počítačů můžete podle hledání v protokolu nebo importovat z jiných zdrojů, jako jsou skupiny služby Active Directory nebo služby WSUS. Jako [popisovaném](#solutions-and-agents-that-cant-be-targeted), zahrne jenom počítače, které jsou připojeny přímo k Log Analytics v oboru.
+Zadejte počítače, které chcete zahrnout do oboru tak, že vytvoříte [skupinu počítačů](../platform/computer-groups.md) ve službě Azure Monitor.  Skupina počítačů můžete na základě dotazu protokolu nebo importovat z jiných zdrojů, jako jsou skupiny služby Active Directory nebo služby WSUS. Jako [popisovaném](#solutions-and-agents-that-cant-be-targeted), jenom počítače, které jsou připojeny přímo do Azure monitoru budou zahrnuty v oboru.
 
 Jakmile máte skupinu počítačů, které jsou vytvořené v pracovním prostoru, budete jej zahrnout v konfiguraci oboru, který lze použít na jeden nebo více řešení.
  
@@ -38,7 +40,7 @@ Jakmile máte skupinu počítačů, které jsou vytvořené v pracovním prostor
  
  Vytvořte konfiguraci oboru podle následujícího postupu.  
 
- 1. Na webu Azure Portal, přejděte na **Log Analytics** a vyberte svůj pracovní prostor.
+ 1. Na webu Azure Portal, přejděte na **pracovních prostorů Log Analytics** a vyberte svůj pracovní prostor.
  2. Ve vlastnostech pro pracovní prostor v rámci **zdroje dat pracovního prostoru** vyberte **konfigurace oboru**.
  3. Klikněte na tlačítko **přidat** vytvořit novou konfiguraci oboru.
  4. Zadejte **název** pro konfiguraci oboru.
@@ -52,7 +54,7 @@ Jakmile se konfigurace oboru, můžete ji použít na jeden nebo více řešení
 
 Použijte konfiguraci oboru podle následujícího postupu.  
 
- 1. Na webu Azure Portal, přejděte na **Log Analytics** a vyberte svůj pracovní prostor.
+ 1. Na webu Azure Portal, přejděte na **pracovních prostorů Log Analytics** a vyberte svůj pracovní prostor.
  2. V okně vlastností pracovního prostoru vyberte **řešení**.
  3. Klikněte na řešení, které chcete do oboru.
  4. Ve vlastnostech řešení ve složce **zdroje dat pracovního prostoru** vyberte **cílení řešení**.  Pokud možnost není k dispozici pak [nemůžou být cílem tohoto řešení](#solutions-and-agents-that-cant-be-targeted).
@@ -65,7 +67,7 @@ Toto jsou kritéria pro agenty a řešení, které nemohou být součástí cíl
 
 - Cílení na řešení platí jenom pro řešení, které nasazujete agenty.
 - Cílení na řešení platí jenom pro řešení poskytovaná microsoftem.  Nevztahuje se na řešení [vytvořili sami nebo partnery](solutions-creating.md).
-- Můžete filtrovat pouze agenty, které se připojují přímo ke službě Log Analytics.  Řešení se automaticky nasadí do všech agentů, které jsou součástí připojené skupiny pro správu nástroje Operations Manager, jestli jsou zahrnuté v konfiguraci oboru.
+- Můžete filtrovat pouze agenty, které se připojují přímo do Azure monitoru.  Řešení se automaticky nasadí do všech agentů, které jsou součástí připojené skupiny pro správu nástroje Operations Manager, jestli jsou zahrnuté v konfiguraci oboru.
 
 ### <a name="exceptions"></a>Výjimky
 Cílení na řešení nelze použít s následující řešení i v případě, že se vešly uvedená kritéria.
@@ -73,5 +75,5 @@ Cílení na řešení nelze použít s následující řešení i v případě, 
 - Hodnocení stavu agenta
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o řešení pro správu řešení, které je možné nainstalovat ve vašem prostředí na včetně [řešení pro správu přidat Azure Log Analytics pro váš pracovní prostor](solutions.md).
-- Další informace o vytváření skupin počítačů na [prohledávání protokolů skupiny počítačů v Log Analytics](../../azure-monitor/platform/computer-groups.md).
+- Další informace o monitorování řešení, včetně řešení, které je možné nainstalovat ve vašem prostředí na [přidat Azure Log Analytics řešení do pracovního prostoru monitorování](solutions.md).
+- Další informace o vytváření skupin počítačů na [skupiny počítačů ve službě Azure Monitor protokolu dotazy](../platform/computer-groups.md).

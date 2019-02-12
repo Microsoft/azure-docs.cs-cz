@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585266"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997018"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Sledování skupiny prostředků pomocí Azure monitoru (preview)
 
@@ -93,9 +93,9 @@ Chcete-li získat přehled o tom interně funkci tento sešit, vyberte **upravit
 
 ![Snímek obrazovky textových polí](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Zobrazí se dotaz Log Analytics, která řídí vizualizaci s tabulkou.
+Zobrazí se dotaz protokolu, která řídí vizualizaci s tabulkou.
 
- ![Snímek obrazovky okna dotazu log analytics](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![Snímek obrazovky okna dotazu protokolu](./media/resource-group-insights/0010-failure-edit-query.png)
 
 Můžete upravit dotaz přímo. Nebo můžete použít jako referenci a vypůjčit z něj při návrhu vlastní parametry sešitu.
 
@@ -121,6 +121,6 @@ Azure Monitor pro skupiny prostředků závisí na systému pro správu výstrah
 
 ## <a name="next-steps"></a>Další postup
 
-- [Azure Monitor sešity](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Monitor Workbooks](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Monitor výstrah](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitor Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

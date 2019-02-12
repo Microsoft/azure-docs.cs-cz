@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 320afdb1e4f71150680e9bed6a4c1c9955c99936
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230620"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994097"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD  
  
 Rozhraní API služby Azure Media Services je rozhraní RESTful API. Slouží k provádění operací s prostředky media pomocí rozhraní REST API nebo pomocí sady SDK klienta k dispozici. Azure Media Services nabízí Media Services Klientská sada SDK pro rozhraní Microsoft .NET. K autorizaci pro přístup k prostředkům služby Media Services a rozhraní API služby Media Services, musíte nejprve být ověřeni. 
 
@@ -138,9 +138,9 @@ Pokud nepoužíváte klienta Media Services .NET SDK, musíte ručně vytvořit 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Výjimka: "vzdálený server vrátil chybu: (401) Neoprávněno."
+Výjimka: "Vzdálený server vrátil chybu: (401) Neoprávněno."
 
-Řešení: Media Services REST žádost proběhla úspěšně, volajícího uživatele musí být roli Přispěvatel nebo vlastník účtu Media Services, který se pokouší o přístup. Další informace najdete v tématu [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) oddílu.
+Řešení: Media Services REST žádost proběhla úspěšně musí být volajícího uživatele roli Přispěvatel nebo vlastník účtu Media Services, který se pokouší o přístup. Další informace najdete v tématu [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) oddílu.
 
 ## <a name="resources"></a>Zdroje a prostředky
 

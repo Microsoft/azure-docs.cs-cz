@@ -1,10 +1,10 @@
 ---
-title: Vytvoření ContentKeys s rozhraním .NET
-description: Informace o vytváření obsahu klíče, které zajišťují zabezpečený přístup k prostředkům.
+title: Vytvoření klíčů ContentKeys s využitím .NET
+description: Zjistěte, jak vytvořit symetrické klíče, které zajišťují zabezpečený přístup k prostředkům.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services
@@ -12,37 +12,37 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 53df4c4cef19f6eef99aa15bb265317aa0cd1d58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: af8c2b547e1ce1b15410ee20eb59934559ac41ac
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788183"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992156"
 ---
-# <a name="create-contentkeys-with-net"></a>Vytvoření ContentKeys s rozhraním .NET
+# <a name="create-contentkeys-with-net-legacy"></a>Vytvoření klíčů ContentKeys s využitím .NET (starší verze)
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-Služba Media Services umožňuje vytvářet a doručovat šifrované prostředky. A **ContentKey** zajišťuje zabezpečený přístup k vaší **Asset**s. 
+Služba Media Services umožňuje vytváření a doručování šifrované prostředků. A **ContentKey** zajišťuje zabezpečený přístup k vaší **Asset**s. 
 
-Při vytváření nového prostředku (například před [nahrání souborů](media-services-dotnet-upload-files.md)), můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**, nebo **EnvelopeEncryptionProtected**. 
+Při vytváření nového prostředku (například před [nahrávání souborů](media-services-dotnet-upload-files.md)), můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**, nebo **EnvelopeEncryptionProtected**. 
 
-Při předvádění prostředky pro klienty, můžete [konfigurace pro prostředky dynamicky šifrovat](media-services-dotnet-configure-asset-delivery-policy.md) s jedním z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo  **DynamicCommonEncryption**.
+Při doručování prostředků pro vaše klienty, je možné [konfigurace pro prostředky dynamicky šifrovat](media-services-dotnet-configure-asset-delivery-policy.md) s jedním z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo **DynamicCommonEncryption**.
 
-Šifrované prostředky musí být přidružený **ContentKey**s. Tento článek popisuje postup vytvoření klíče k obsahu.
+Šifrované prostředky mají přidruženo **ContentKey**s. Tento článek popisuje postup vytvoření klíče k obsahu.
 
 > [!NOTE]
-> Při vytváření nového **StorageEncrypted** asset pomocí sady Media Services .NET SDK **ContentKey** je automaticky vytvořené a připojené k assetu.
+> Při vytváření nového **StorageEncrypted** prostředku pomocí Media Services .NET SDK **ContentKey** je automaticky vytvořen a spojen assetu.
 > 
 > 
 
 ## <a name="contentkeytype"></a>ContentKeyType
-Jedna z hodnot musí nastavit při vytváření obsahu klíč je typ obsahu klíče. Vyberte jednu z následujících hodnot. 
+Jedna z hodnot, je nutné nastavit při vytváření obsahu je klíč obsahu typ klíče. Vyberte jednu z následujících hodnot. 
 
 ```csharp
     public enum ContentKeyType
@@ -70,8 +70,8 @@ Jedna z hodnot musí nastavit při vytváření obsahu klíč je typ obsahu klí
     }
 ```
 
-## <a id="envelope_contentkey"></a>Vytvoření typu obálky ContentKey
-Následující fragment kódu vytvoří klíč obsahu typu šifrování obálku. Potom přidruží klíč zadaný prostředek.
+## <a id="envelope_contentkey"></a>Vytvoření obálky typu ContentKey
+Následující fragment kódu vytvoří klíč obsahu šifrovací typu obálky. Pak přiřadí klíč zadaný assetu.
 
 ```csharp
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -108,8 +108,8 @@ call
 ```
 
 
-## <a id="common_contentkey"></a>Vytvoření stejného typu ContentKey
-Následující fragment kódu vytvoří klíč obsahu běžné typu šifrování. Potom přidruží klíč zadaný prostředek.
+## <a id="common_contentkey"></a>Vytvoření ContentKey společný typ.
+Následující fragment kódu vytvoří typu běžné šifrovací klíč k obsahu. Pak přiřadí klíč zadaný assetu.
 
 ```csharp
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)

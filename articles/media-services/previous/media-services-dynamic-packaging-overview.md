@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: eccb141101e4d402fcc79fe5dd433f2fc3382e27
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 987928d98752d5f32255b94a5e0177a20c12daf3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263838"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989078"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 

@@ -3,21 +3,23 @@ title: Začínáme s využitím Azure DevTest Labs
 description: Tento článek obsahuje primární scnearios pro pomocí Azure DevTest Labs a dvě obecné cesty Pokud chcete začít používat službu ve vaší organizaci.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: spelluru
+author: christianreddington
 manager: femila
+editor: spelluru
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 87baef8ddb5b5d8fc979ba5afb9f9b13cb4fc2ef
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 02/11/2019
+ms.author: chredd
+ms.reviewer: anthdela,juselph
+ms.openlocfilehash: dfb73778a9d30ba50e69bff6414381235ad8b1d1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876532"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005229"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>Začínáme s využitím Azure DevTest Labs
 Jakmile se rozhodnete prozkoumejte DevTest Labs, existují dvě obecné cesty vpřed – testování konceptu vs horizontální nasazení. 
@@ -62,4 +64,4 @@ Testovací prostředí v Azure DevTest Labs funguje jako kontejner skvělé pro 
 
 
 ## <a name="next-steps"></a>Další postup
-Přečtěte si další článek v této sérii: [vertikálně navýšit kapacitu vašeho nasazení DevTest Labs](devtest-lab-guidance-scale.md)
+Zobrazit další článek v této sérii: [Vertikální navýšení kapacity nasazení DevTest Labs](devtest-lab-guidance-scale.md)

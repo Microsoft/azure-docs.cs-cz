@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 70f53ed06daad8adf10ef5a88f0672f86d6a8b48
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745703"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004124"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
-Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
+Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](../platform/alerts-overview.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
 
-Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvořených pro [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Další informace o jejich využití najdete v tématu [vytvoření upozornění protokolu v Azure](../../azure-monitor/platform/alerts-log.md)
+Upozornění protokolu se skládá z protokolu dotazu pravidel vytvořených pro [Azure Monitor](../learn/tutorial-viewdata.md) nebo [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events). Další informace o jejich využití najdete v tématu [vytvoření upozornění protokolu v Azure](../platform/alerts-log.md)
 
 > [!NOTE]
-> Data z oblíbených protokolů [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
+> Data z oblíbených protokolů [Azure Monitor](../learn/tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](../platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Hledání pravidel upozornění protokolů – definice a typy
@@ -41,7 +41,7 @@ Pravidla vyhledávání protokolů jsou definovány následující podrobnosti:
 
 - **Prahová hodnota**.  K určení, zda má být vytvořena výstraha se vyhodnocují výsledky prohledávání protokolů.  Prahová hodnota se liší pro různé typy pravidel upozornění na prohledávání protokolu.
 
-Pravidla vyhledávání protokolů už to pro [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), mohou být dvou typů. Každý z těchto typů je podrobně popsány v následující části.
+Pravidla dotazu protokolu, už to pro [Azure Monitor](../learn/tutorial-viewdata.md) nebo [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events), mohou být dvou typů. Každý z těchto typů je podrobně popsány v následující části.
 
 - **[Počet výsledků](#number-of-results-alert-rules)**. Jediná výstraha vytvořena, když počet záznamů vrácených prohledávání protokolů překročí zadaný počet.
 - **[Metriky měření](#metric-measurement-alert-rules)**.  Upozornění bylo vytvořeno pro každý objekt ve výsledcích prohledávání protokolů s hodnotami, které překročí zadanou prahovou hodnotu.
@@ -114,11 +114,11 @@ Pravidel upozornění protokolů vyhledávání funguje na logiku zabezpečuje p
 
 Nyní předpokládejme máme pravidel upozornění protokolů volá *Contoso upozornění protokolu*, protože podle konfigurace v [ukázkové chatovací aplikaci obsažené upozornění protokolu typu Number výsledků](#example-of-number-of-records-type-log-alert). 
 - Výsledek hledání v protokolu: 05: 00 provedení Contoso upozornění protokolu pomocí výstrah služby Azure, vrátil 0 záznamů. pod prahovou hodnotu a proto se nespustí, výstrahu. 
-- Výsledek hledání v protokolu na další iteraci: 10: 00 provedení Contoso upozornění protokolu pomocí výstrah služby Azure k dispozici 5 záznamů. překračující prahovou hodnotu a aktivaci výstrahy, krátce po aktivací [skupiny akcí](../../azure-monitor/platform/action-groups.md) spojené. 
-- Výsledek hledání v protokolu v 1:15 PM provedení Contoso upozornění protokolu pomocí výstrah služby Azure, poskytuje 2 záznamů. překračující prahovou hodnotu a aktivaci výstrahy, krátce po aktivací [skupiny akcí](../../azure-monitor/platform/action-groups.md) spojené.
+- Výsledek hledání v protokolu na další iteraci: 10: 00 provedení Contoso upozornění protokolu pomocí výstrah služby Azure k dispozici 5 záznamů. překračující prahovou hodnotu a aktivaci výstrahy, krátce po aktivací [skupiny akcí](../platform/action-groups.md) spojené. 
+- Výsledek hledání v protokolu v 1:15 PM provedení Contoso upozornění protokolu pomocí výstrah služby Azure, poskytuje 2 záznamů. překračující prahovou hodnotu a aktivaci výstrahy, krátce po aktivací [skupiny akcí](../platform/action-groups.md) spojené.
 - Nyní na další iteraci: 20: 00 provedení upozornění protokolu Contoso upozorněním na Azure, poskytuje výsledek hledání v protokolu znovu 0 záznamů. pod prahovou hodnotu a proto se nespustí, výstrahu.
 
-Ale v případě výše uvedené v 1:15 PM - upozornění Azure nemůže určit, že základní problémy zaznamenáno v 1:10 přetrvávají a pokud je net nové neúspěšné; uživatelem zadaný dotaz může být zohlední starší záznamy - jistotu upozornění v Azure. Proto k chyba na straně upozornění, když Contoso upozornění protokolu spuštění 1:15 PM, nakonfigurované [skupiny akcí](../../azure-monitor/platform/action-groups.md) se znovu aktivuje. Nyní: 20: 00 Když jsou vidět žádné záznamy – upozornění Azure nemůže být jisti, že příčinou záznamy vyřešen; proto bude Contoso upozornění protokolu nebyl změněn na vyřešený v řídicím panelu Azure výstrahy a/nebo oznámení odeslaných s informacemi o tom vyřešení upozornění.
+Ale v případě výše uvedené v 1:15 PM - upozornění Azure nemůže určit, že základní problémy zaznamenáno v 1:10 přetrvávají a pokud je net nové neúspěšné; uživatelem zadaný dotaz může být zohlední starší záznamy - jistotu upozornění v Azure. Proto k chyba na straně upozornění, když Contoso upozornění protokolu spuštění 1:15 PM, nakonfigurované [skupiny akcí](../platform/action-groups.md) se znovu aktivuje. Nyní: 20: 00 Když jsou vidět žádné záznamy – upozornění Azure nemůže být jisti, že příčinou záznamy vyřešen; proto bude Contoso upozornění protokolu nebyl změněn na vyřešený v řídicím panelu Azure výstrahy a/nebo oznámení odeslaných s informacemi o tom vyřešení upozornění.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Ceny a fakturace protokol výstrah
@@ -133,9 +133,8 @@ Ceny za upozornění protokolů použít je uvedeno v [ceny služby Azure Monito
     > Pokud platné znaky, jako `<, >, %, &, \, ?, /` jsou k dispozici, nahradí se `_` ve vyúčtování. Odstraňte prostředky scheduleQueryRules vytvořené pro účely fakturace pomocí pravidel upozornění [starší verze rozhraní API pro analýzu protokolů](api-alerts.md) -uživatel musí odstranit původní plán a akce upozornění pomocí [starší verze rozhraní API Log Analytics](api-alerts.md)
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [vytváření v protokolu upozornění v Azure](../../azure-monitor/platform/alerts-log.md).
+* Další informace o [vytváření v protokolu upozornění v Azure](../platform/alerts-log.md).
 * Vysvětlení [webhooky v protokolu upozornění v Azure](alerts-log-webhook.md).
-* Další informace o [upozornění Azure](../../azure-monitor/platform/alerts-overview.md).
-* Další informace o [Application Insights](../../azure-monitor/app/analytics.md).
-* Další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).    
-
+* Další informace o [upozornění Azure](../platform/alerts-overview.md).
+* Další informace o [Application Insights](../app/analytics.md).
+* Další informace o [dotazů na protokoly Azure monitoru](../log-query/log-query-overview.md).    

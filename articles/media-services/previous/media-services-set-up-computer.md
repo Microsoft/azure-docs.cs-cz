@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/08/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bb857a0457b3c75bcb3f7d2f3c5cc560452a7df5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 108fd47eea88e4fe0bd8e3eb22cb03e1a092a29e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977248"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999143"
 ---
-# <a name="set-up-your-media-services-development-environment-legacy"></a>Nastavení vývojového prostředí Media Services (starší verze)
+# <a name="set-up-your-media-services-development-environment"></a>Nastavení vývojového prostředí Media Services  
 
 Následující kroky popisují nezbytné součásti potřebné pro vývoj pomocí Azure Media Services.
 

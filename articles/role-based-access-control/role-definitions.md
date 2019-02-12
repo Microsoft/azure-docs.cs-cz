@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ecfcfd5026f310a617f81af42483c29d89385288
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700719"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991357"
 ---
 # <a name="understand-role-definitions"></a>Vysvětlení definic rolí
 
@@ -147,7 +147,7 @@ Přispěvatel dat objektu blob služby Storage (Preview)
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Vzhledem k tomu, že Alice obsahuje zástupný znak (`*`) akci v oboru předplatného, své oprávnění dědí dolů povolit jí provádět veškeré akce správy. Alice však nemohou provádět operace s daty. Například ve výchozím nastavení, Alice nelze číst objekty BLOB v kontejneru, ale může číst, zapisovat a odstranění kontejnerů.
+Vzhledem k tomu, že Alice obsahuje zástupný znak (`*`) akci v oboru předplatného, své oprávnění dědí dolů povolit jí provádět veškeré akce správy. Alice může čtení, zápisu a odstranění kontejnerů. Alice však nelze provádět operace s daty bez dalších kroků. Ve výchozím nastavení, například Alice nelze číst objekty BLOB v kontejneru. Ke čtení objektů BLOB, Alice musel načíst přístupových klíčů úložiště a použít pro přístup k objektům BLOB.
 
 Oprávnění Boba jsou omezeny na jenom `Actions` a `DataActions` zadané v poli [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role. Na základě role, Bob provádět správu a operace s daty. Například Bob čtení, zápis a odstranění kontejnerů ze zadaný účet úložiště a si můžete také čtení, zápisu a odstranění objektů BLOB.
 

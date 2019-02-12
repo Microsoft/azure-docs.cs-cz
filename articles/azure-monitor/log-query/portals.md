@@ -1,6 +1,6 @@
 ---
-title: Zobrazení a analýza dat v Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek popisuje portály, které můžete v Azure Log Analytics můžete vytvářet a upravovat prohledávání protokolů.
+title: Zobrazení a analýza dat protokolu ve službě Azure Monitor | Dokumentace Microsoftu
+description: Tento článek popisuje, používat službu Log Analytics na portálu Azure portal můžete vytvářet a upravovat dotazy protokolu ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,22 +10,19 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 12/22/2018
 ms.author: bwren
-ms.openlocfilehash: 9a5472a6dfc944eb793e863704897c92b1a7572e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9567f8a6b581d7c246ebaa8eb8d72ad201bf2641
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183348"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990407"
 ---
-# <a name="viewing-and-analyzing-data-in-log-analytics"></a>Zobrazení a analýza dat v Log Analytics
-Existují dvě možnosti k dispozici na webu Azure Portal pro analýzu dat uložených ve službě Log analytics a k vytváření dotazů ad hoc analýzy. Pro další funkce, jako je například výstrahy a řídicí panely je možné dotazy, které vytvoříte pomocí těchto portálů.
+# <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Zobrazení a analýza dat protokolu ve službě Azure Monitor
+Log Analytics je primární prostředí pro práci s daty protokolů a vytváření dotazů ve službě Azure Monitor. Otevřete Log Analytics z **protokoly** v **Azure Monitor** nabídky. Můžete získat Úvod k tomuto portálu a zkontrolujte jeho funkce v [Začínáme se službou Log Analytics na portálu Azure portal](get-started-portal.md).
 
-## <a name="log-analytics-page"></a>Stránka log Analytics
-Otevřete stránku Log Analytics z **protokoly** v nabídce Log Analytics. Jedná se o nové prostředí pro práci s daty protokolů a vytváření dotazů. Můžete získat Úvod k tomuto portálu a zkontrolujte jeho funkce v [Začínáme s Log Analytics stránky na webu Azure Portal](../../azure-monitor/log-query/get-started-portal.md).
-
-Na stránce Log Analytics nabízí v porovnání s následujícími vylepšeními [prohledávání protokolu (classic)](#log-search-classic) prostředí.
+Log Analytics poskytuje následující funkce pro práci s dotazů na protokoly.
 
 * Více karet – vytvoření samostatných kartách pro práci s více dotazy.
 * Přehledné vizualizace – různé možnosti grafu.
@@ -38,14 +35,14 @@ Na stránce Log Analytics nabízí v porovnání s následujícími vylepšením
 * Výběr sloupce – řazení a seskupení sloupců ve výsledcích dotazu.
 
 > [!NOTE]
-> Na stránce Log Analytics obsahuje stejné funkce jako portál pro pokročilou analýzu, což je externího nástroje mimo na webu Azure portal. Je stále k dispozici portálu pro pokročilou analýzu, ale s touto novou stránkou se nahrazují odkazy a odkazy na ni na portálu Azure portal.
+> Log Analytics má stejné funkce jako portál pro pokročilou analýzu, což je externího nástroje mimo na webu Azure portal. Je stále k dispozici portálu pro pokročilou analýzu, ale s touto novou stránkou se nahrazují odkazy a odkazy na ni na portálu Azure portal.
 
-![Rozšířený portál Analytics](media/portals/advanced-analytics-portal.png)
+![Log Analytics](media/portals/log-analytics.png)
 
 ### <a name="resource-logs"></a>Protokoly prostředku
-Nové prostředí Log Analytics se integruje se s různými prostředky Azure, jako jsou virtuální počítače. To znamená, že můžete otevřít stránku Log Analytics přímo prostřednictvím nabídky monitorování prostředku bez přechodu k Azure Monitor nebo Log Analytics a ztráty kontextu prostředků. **Protokoly** ještě nepovolila pro všechny prostředky Azure, ale to se začnou zobrazovat v nabídce portálu pro různé prostředky typy.
+Log Analytics se integruje se s různými prostředky Azure, jako jsou virtuální počítače. To znamená, že můžete otevřít Log Analytics přímo prostřednictvím nabídky monitorování prostředku bez přepnutí do Azure monitoru a ztráty kontextu prostředků. **Protokoly** ještě nepovolila pro všechny prostředky Azure, ale to se začnou zobrazovat v nabídce portálu pro různé prostředky typy.
 
-Když otevřete Log Analytics z konkrétního prostředku, je automaticky vymezí na protokolování záznamů pouze tento prostředek.   Pokud chcete vytvořit dotaz, který obsahuje další záznamy, pak by muset otevřít z nabídky Log Analytics nebo Azure Monitor.
+Když otevřete Log Analytics z konkrétního prostředku, je automaticky vymezí na protokolování záznamů pouze tento prostředek.   Pokud chcete vytvořit dotaz, který obsahuje další záznamy, pak by muset otevřít z nabídky Azure Monitor.
 
 Následující možnosti nejsou k dispozici prostřednictvím zobrazení prostředků služby Log Analytics:
 
@@ -56,7 +53,7 @@ Následující možnosti nejsou k dispozici prostřednictvím zobrazení prostř
 
 
 ### <a name="firewall-requirements"></a>Požadavky na bránu firewall
-Váš prohlížeč vyžaduje přístup k následující adresy, které mají přístup ke stránce Log Analytics a portál pro pokročilou analýzu.  Pokud váš prohlížeč je přístup k portálu Azure přes bránu firewall, je třeba povolit přístup pro tyto adresy.
+Váš prohlížeč vyžaduje přístup na následující adresy pro přístup k Log Analytics.  Pokud váš prohlížeč je přístup k portálu Azure přes bránu firewall, je třeba povolit přístup pro tyto adresy.
 
 | URI | IP adresa | Porty |
 |:---|:---|:---|
@@ -66,15 +63,15 @@ Váš prohlížeč vyžaduje přístup k následující adresy, které mají př
 
 
 ## <a name="log-search-classic"></a>Prohledávání protokolu (classic)
-Otevřete stránku vyhledávání protokolu z **protokoly (Classic)** v nabídce Log Analytics nebo z **Log Analytics** v nabídce Azure Monitor. Toto je stránka classic používané pro práci s dotazy Log Analytics, které nejsou uvedeny další funkce [stránce Log Analytics](#log-analytics-page) uvedené výše.
+Hledání v protokolu je starší verze prostředí na webu Azure Portal pro dotazování a analýze dat protokolů ve službě Azure Monitor. Bude se už brzy nebude podporováno, ale aktuálně je stále k dispozici. Otevřete prohledávání protokolů z **protokoly (Classic)** v nabídce Log Analytics.
 
 
 
-![Stránka hledání protokolů](media/portals/log-search-portal.png)
+![Prohledávání protokolů](media/portals/log-search-portal.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Projít [kurz pomocí prohledávání protokolů](../../azure-monitor/learn/tutorial-viewdata.md) Další informace o vytváření dotazů pomocí dotazovacího jazyka
-- Projít [lekce pomocí portálu pro pokročilou analýzu](../../azure-monitor/log-query/get-started-portal.md) poskytující stejné prostředí jako stránce Log Analytics.
+- Projít [kurz pomocí Log Analytics](../../azure-monitor/log-query/get-started-portal.md).
+- Projít [kurz pomocí prohledávání protokolů](../../azure-monitor/learn/tutorial-viewdata.md).
 

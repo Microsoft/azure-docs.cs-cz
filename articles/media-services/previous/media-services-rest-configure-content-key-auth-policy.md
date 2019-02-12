@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: bb24fcddf9218db491e8c2e486e29446d5d9c0ed
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 25aeb1f0f82be2ad575164d78106fd799d59c96d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365617"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003617"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Nakonfigurujte zásady autorizace klíče obsahu
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy-legacy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu (starší verze)
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled
@@ -63,7 +63,7 @@ Otevřít omezení znamená, že systém poskytuje všem uživatelům, kteří v
 
 Následující příklad vytvoří zásadu autorizace otevřít a přidá jej do klíče k obsahu.
 
-#### <a id="ContentKeyAuthorizationPolicies"></a>Vytvoření ContentKeyAuthorizationPolicies
+#### <a id="ContentKeyAuthorizationPolicies"></a>Create ContentKeyAuthorizationPolicies
 Požadavek:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -99,7 +99,7 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicies/@Element","Id":"nb:ckpid:UUID:db4593da-f4d1-4cc5-a92a-d20eacbabee4","Name":"Open Authorization Policy"}
 
-#### <a id="ContentKeyAuthorizationPolicyOptions"></a>Vytvoření ContentKeyAuthorizationPolicyOptions
+#### <a id="ContentKeyAuthorizationPolicyOptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Požadavek:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -235,10 +235,10 @@ Když konfigurujete zásady omezení tokenem, musíte zadat primární ověřova
 
 Následující příklad vytvoří zásadu autorizace se omezení s tokenem. V tomto příkladu klient musí poskytnout token, který obsahuje požadované deklarace identit, podpisový klíč (VerificationKey) a vydavatel tokenu.
 
-### <a name="create-contentkeyauthorizationpolicies"></a>Vytvoření ContentKeyAuthorizationPolicies
+### <a name="create-contentkeyauthorizationpolicies"></a>Create ContentKeyAuthorizationPolicies
 Vytvořit zásadu omezení s tokenem, jak je uvedeno v části "[vytvořit ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)."
 
-### <a name="create-contentkeyauthorizationpolicyoptions"></a>Vytvoření ContentKeyAuthorizationPolicyOptions
+### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Požadavek:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -290,7 +290,7 @@ Otevřít omezení znamená, že systém poskytuje všem uživatelům, kteří v
 
 Následující příklad vytvoří zásadu autorizace otevřít a přidá jej do klíče k obsahu.
 
-#### <a id="ContentKeyAuthorizationPolicies2"></a>Vytvoření ContentKeyAuthorizationPolicies
+#### <a id="ContentKeyAuthorizationPolicies2"></a>Create ContentKeyAuthorizationPolicies
 Požadavek:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -327,7 +327,7 @@ Odpověď:
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicies/@Element","Id":"nb:ckpid:UUID:cc3c64a8-e2fc-4e09-bf60-ac954251a387","Name":"Deliver Common Content Key"}
 
 
-#### <a name="create-contentkeyauthorizationpolicyoptions"></a>Vytvoření ContentKeyAuthorizationPolicyOptions
+#### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Požadavek:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -372,10 +372,10 @@ Přidejte AuthorizationPolicy k ContentKey, jak je uvedeno v části "[přidat z
 ### <a name="token-restriction"></a>Omezení s tokenem
 Konfigurace omezení s tokenem možnost, budete muset použít XML pro popis tokenu autorizace požadavky. Konfigurace omezení s tokenem XML musí odpovídat schématu XML, které jsou uvedené v části "[Token omezení schématu](#schema)."
 
-#### <a name="create-contentkeyauthorizationpolicies"></a>Vytvoření ContentKeyAuthorizationPolicies
+#### <a name="create-contentkeyauthorizationpolicies"></a>Create ContentKeyAuthorizationPolicies
 Vytvořte ContentKeyAuthorizationPolicies, jak je uvedeno v části "[vytvořit ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies2)."
 
-#### <a name="create-contentkeyauthorizationpolicyoptions"></a>Vytvoření ContentKeyAuthorizationPolicyOptions
+#### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Požadavek:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1

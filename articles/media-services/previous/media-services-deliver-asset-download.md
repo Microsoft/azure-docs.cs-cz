@@ -1,10 +1,10 @@
 ---
-title: Stáhnout do počítače - Azure Media Services prostředky | Microsoft Docs
-description: Další informace se stáhne prostředků do vašeho počítače. Ukázky kódu jsou napsané v jazyce C# a pomocí sady Media Services SDK pro .NET.
+title: Stáhnout prostředky služby Media Services do svého počítače – Azure | Dokumentace Microsoftu
+description: Přečtěte si, jak stáhnout prostředky do svého počítače. Ukázky kódu jsou napsané C# a používat Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 8908a1dd-3ffb-4f18-955d-4c8e2d82fc5d
 ms.service: media-services
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ed53fe191dcf740f949b2d9cdcc3c97e30d85544
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 798c7e4b5efa3ca016f5e1b7e5c0967599fa6436
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788225"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993108"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Postupy: poskytování prostředek službou
-Tento článek popisuje možnosti pro doručování média prostředky nahrán do Media Services. V mnoha případech aplikace můžete doručování obsahu Media Services. Po kódování, stažení prostředky generovaného média nebo k nim přistupovat pomocí Lokátor streamování. Pro lepší výkon a škálovatelnost můžete také doručovat obsah pomocí sítě doručování obsahu (CDN).
+# <a name="how-to-deliver-an-asset-by-download"></a>Postup: Prostředek doručení materiálu stažením  
+Tento článek popisuje možnosti pro poskytování mediálních materiálů nahráli do Media Services. V mnoha scénářích aplikací může doručovat obsah Media Services. Po kódování, stáhněte si vygenerované mediálních materiálů nebo k nim přistupovat pomocí Lokátor streamování. Vylepšení výkonu a škálovatelnosti může také doručovat obsah s využitím Content Delivery Network (CDN).
 
-Tento příklad ukazuje, jak stáhnout datových zdrojů médií z Media Services do místního počítače. Kód dotazuje úlohy přidružené k účtu Media Services tak, že ID úlohy a přístupů jeho **OutputMediaAssets** kolekce (což je sada jeden nebo více prostředků výstup média, která je výsledkem spuštění úlohy). Tento příklad ukazuje, jak stáhnout prostředky média výstup z úlohy, ale můžete použít ve stejný přístup ke stažení dalších prostředků.
+Tento příklad ukazuje, jak stáhnout mediálních materiálů ze služby Media Services k místnímu počítači. Kód dotazuje úlohy přidružené k účtu Media Services tak, že ID úlohy a přístup k jeho **OutputMediaAssets** kolekce (což je sada jeden nebo více výstupních mediálních materiálů, která je výsledkem spuštění úlohy). Tento příklad ukazuje způsob stahování mediálních materiálů výstup z úlohy, ale můžete použít stejný přístup ke stažení Další prostředky.
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Stejné ID zásady použijte, pokud vždy používají stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určeny k zůstat na místě po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždycky používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odesílání), použijte stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
 ```csharp
     // Download the output asset of the specified job to a local folder.
@@ -88,5 +88,5 @@ Tento příklad ukazuje, jak stáhnout datových zdrojů médií z Media Service
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Doručování streamování obsahu](media-services-deliver-streaming-content.md)
+[Doručení streamovaného obsahu](media-services-deliver-streaming-content.md)
 

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 300673ffd62324de1207a29551694f12dd84ea93
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: bb64aff27aaacc3523552beb9eada12bdeb37ca8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366365"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995709"
 ---
-# <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Používání Azure Media Services k doručování licencí DRM nebo AES klíče
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Pomocí Media Services k doručování licencí DRM nebo AES klíče 
 
 Azure Media Services umožňuje ingestovat, zakódovat, přidat ochranu obsahu a streamování vašeho obsahu. Další informace najdete v tématu [běžného dynamického šifrování pomocí PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md). Zákazníci, kteří mají používat Media Services jenom k doručování licencí a klíčů a kódování, šifrování a streamování pomocí místních serverů. Tento článek popisuje, jak můžete pomocí Media Services k doručování licencí PlayReady nebo Widevine, ale udělá zbytek s místními servery. 
 

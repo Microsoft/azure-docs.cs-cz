@@ -4,7 +4,7 @@ description: Další informace o tom, k licencování Microsoft® technologie Sm
 services: media-services
 documentationcenter: ''
 author: xpouyat
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/08/2019
 ms.author: xpouyat
-ms.openlocfilehash: 71cb4ff7c5948067dfb039caf69241cfa9e22408
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1954ccf07badbd4632c653bb1af4d6e96153e1fb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243892"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000069"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování Microsoft® technologie Smooth Streaming portování klienta
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování Microsoft® technologie Smooth Streaming portování klienta 
 ## <a name="overview"></a>Přehled
 Microsoft Smooth Streaming klienta portování Kit (**SSPK** zkráceně) je technologie Smooth Streaming klienta implementace, která je optimalizována pro pomáhají výrobci zařízení se systémem embedded, kabelu a mobilní operátoři, poskytovatelé služeb obsahu, telefonu výrobci, nezávislí výrobci softwaru (ISV) a poskytovatelé řešení k vytvoření produktů a služeb pro streamování obsahu s adaptivním ve formátu technologie Smooth Streaming. SSPK je nezávislá na platformě implementace klienta Smooth Streaming, který může přenést pomocí licence na jakékoli zařízení a platformy a zařízení. 
 
@@ -78,83 +78,83 @@ E-mailu [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) pro všechny l
 Prozatím a finální SSPK nabyvatelů licence můžete odeslat technické dotazy do [ smoothpk@microsoft.com ](mailto:smoothpk@microsoft.com).
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming nabyvatelů klienta dočasné produktu smlouvy licence
-* Adroit obchodních řešení, Inc.
-* Pokročilé digitální vysílání SA
-* AirTies Kablosuz Iletism Sanayive Dis Ticaret a. s.
-* Albis technologie Ltd.
+* Adroit Business Solutions, Inc
+* Advanced Digital Broadcast SA
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
+* Albis Technologies Ltd.
 * Alticast Corporation
-* Amazon digitálních služeb, Inc.
-* Arion technologie, Inc.
-* Software multimédia AVC Co., Ltd.
+* Amazon Digital Services, Inc.
+* Arion Technology, Inc.
+* AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
 * EchoStar zakoupení Corporation
 * Enseo, Inc.
-* S.A. Fluendo
+* Fluendo S.A.
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* S.A. iWEDIA 
-* Globální služby BV svobody
+* iWEDIA S.A. 
+* Liberty Global Services BV
 * MediaTek Inc.
-* Co MStar, Ltd
-* NINTENDO Co., Ltd.
+* MStar Co, Ltd
+* Nintendo Co., Ltd.
 * OpenTV, Inc.
 * Šafrán digitální Limited
-* Sichuan Changhong Electric Co., Ltd.
+* Sichuan Changhong Electric Co., Ltd
 * SoftAtHome
 * Sony Corporation
 * Tatung technologie Inc.
-* TCL technologie (Huizhou) Electronics Co., Ltd.
+* TCL Technology Electronics (Huizhou) Co., Ltd.
 * Horní vítězství investic, Ltd.
-* Odebrat Vestel Elektronik Sanayi Ticaret a. s.
+* Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
 * ZTE Corporation
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming nabyvatelů licence smlouvu konečného produktu klienta
-* Pokročilé digitální vysílání SA
-* AirTies Kablosuz Iletism Sanayive Dis Ticaret a. s.
-* Albis technologie Ltd.
-* Amazon digitálních služeb, Inc.
-* Technologie AmTRAN Co., Ltd.
-* Arcadyan technologie Corporation
-* Arion technologie, Inc.
-* ATMACA ELEKTRONİK PO SÍTI SAN. ODEBRAT TİC. A.Ş
-* Britské Sky všesměrové vysílání Limited
-* CastPal technologie Inc. Shenzhen
+* Advanced Digital Broadcast SA
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
+* Albis Technologies Ltd.
+* Amazon Digital Services, Inc.
+* AmTRAN Technology Co., Ltd.
+* Arcadyan Technology Corporation
+* Arion Technology, Inc.
+* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
+* British Sky Broadcasting Limited
+* CastPal Technology Inc., Shenzhen
 * Compal Electronics, Inc.
-* Digitální Dongguan antivirová ochrana v programu Technology Corp., Ltd.
+* Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar zakoupení Corporation
 * Enseo, Inc.
-* Omezené Filmflex filmy
-* S.A. Fluendo
-* Omezené Gibson inovace
+* Filmflex Movies Limited
+* Fluendo S.A.
+* Gibson Innovations Limited
 * Informace o Applicantion Haier S.R.L
 * HANDAN BroadInfoCom Co., Ltd.
-* Mezinárodní Hisense Co., Ltd. 
-* Homecast Co., Ltd.
-* Svazek Hai přesnost Industry Co., Ltd.
+* Hisense International Co., Ltd. 
+* Homecast Co., Ltd
+* Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
-* NINTENDO Co., Ltd.
+* Nintendo Co., Ltd.
 * Oranžová SA
 * Šafrán digitální Limited
-* Širokopásmové připojení Sagemcom SAS
-* Shenzhen Coship Electronics CO., Ltd.
-* Shenzhen Jiuzhou Electric Co., Ltd.
-* Shenzhen Skyworth digitální technologie Co., Ltd.
+* Sagemcom Broadband SAS
+* Shenzhen Coship Electronics CO., LTD
+* Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
-* Skardin průmyslové Corp.
-* Nebeská Deutschland Fernsehen GmbH & Co. KG
-* S.A. SmarDTV
+* Skardin Industrial Corp.
+* Sky Deutschland Fernsehen GmbH & Co. KG
+* SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
-* Omezené TCL zámořské Marketing (Macao komerční moři)
+* TCL Overseas Marketing (Macao Commercial Offshore) Limited
 * Technicolor doručování technologie SAS
-* Globální Tongfang Ltd.
+* Tongfang Global Ltd.
 * Horní vítězství investic, Ltd.
 * Toshiba Lifestyle produkty a služby Corporation
-* S.r.o. /Slovakia/ univerzální Corporation média
+* Universal Media Corporation /Slovakia/ s.r.o.
 * VIZIO, Inc.
 * Wistron Corporation
 * ZTE Corporation

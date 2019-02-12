@@ -4,255 +4,233 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 333394c1-b5a7-489c-8f7b-d1a5b4e782ea
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/30/2017
+ms.topic: tutorial
+ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1da86d67356bf1c03f62b505d5bb339e4fe2cdfb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 643aaf15fe00a7aa229e40b404dabc81a79b92d6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179289"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Kurz: Integrace Azure Active Directory s Benefitsolver
 
 V tomto kurzu se dozvíte, jak integrovat Benefitsolver s Azure Active Directory (Azure AD).
-
 Benefitsolver integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Benefitsolver.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Benefitsolver (Single Sign-On) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Benefitsolver.
+* Můžete povolit uživatelům být automaticky přihlášeni k Benefitsolver (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Benefitsolver, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Benefitsolver jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Benefitsolver jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Benefitsolver z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Podporuje Benefitsolver **SP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-benefitsolver-from-the-gallery"></a>Přidání Benefitsolver z Galerie
+
 Konfigurace integrace Benefitsolver do služby Azure AD, budete muset přidat Benefitsolver z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Benefitsolver z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **Benefitsolver**vyberte **Benefitsolver** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Benefitsolver v seznamu výsledků](./media/benefitsolver-tutorial/tutorial_benefitsolver_addfromgallery.png)
+4. Do vyhledávacího pole zadejte **Benefitsolver**vyberte **Benefitsolver** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+    ![Benefitsolver v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Benefitsolver podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Benefitsolver je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Benefitsolver potřeba navázat.
-
-V Benefitsolver, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Benefitsolver podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Benefitsolver.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Benefitsolver, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele Benefitsolver](#create-a-benefitsolver-test-user)**  – Pokud chcete mít protějšek Britta Simon Benefitsolver, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Konfigurace Benefitsolver Single Sign-On](#configure-benefitsolver-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Benefitsolver](#create-benefitsolver-test-user)**  – Pokud chcete mít protějšek Britta Simon Benefitsolver, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Benefitsolver.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Benefitsolver, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s Benefitsolver, proveďte následující kroky:
 
-1. Na webu Azure Portal na **Benefitsolver** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Benefitsolver** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/benefitsolver-tutorial/tutorial_benefitsolver_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **Benefitsolver domény a adresy URL** části, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Benefitsolver domény a adresy URL jednotného přihlašování – informace](./media/benefitsolver-tutorial/tutorial_benefitsolver_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `http://<companyname>.benefitsolver.com`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.benefitsolver.com/saml20`
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    c. V **adresy URL odpovědi** textového pole zadejte adresu URL: `https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml`
+    ![Benefitsolver domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact) k získání těchto hodnot.
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `http://<companyname>.benefitsolver.com`
 
-1. Vaše aplikace Benefitsolver očekává, že kontrolní výrazy SAML v určitém formátu, které je potřeba přidat vlastní atribut mapování vaší **atributy tokenu saml** konfigurace.
+    b. V **identifikátor** pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.benefitsolver.com/saml20`
 
-    ![Část Benefitsolver atribut](./media/benefitsolver-tutorial/tutorial_attribute.png)
+    c. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml`
 
-1. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
-    
-    | Název atributu| Hodnota atributu|
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+
+5. Benefitsolver aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+
+    ![image](common/edit-attribute.png)
+
+6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
+
+    | Název |  Zdrojový atribut|
     |---------------|----------------|
     | ID klienta | Je potřeba získat tuto hodnotu z vašich [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact).|
     | ClientKey | Je potřeba získat tuto hodnotu z vašich [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact).|
     | LogoutURL | Je potřeba získat tuto hodnotu z vašich [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact).|
     | EmployeeID | Je potřeba získat tuto hodnotu z vašich [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact).|
+    | | |
 
-    a. Klikněte na Přidat atribut otevřete dialogové okno Přidat atribut.
+    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
-    ![Část Benefitsolver atribut](./media/benefitsolver-tutorial/tutorial_attribute_04.png)
-    
-    ![Část Benefitsolver atribut](./media/benefitsolver-tutorial/tutorial_attribute_05.png)
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
 
     b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
-    
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-    
-    d. Klikněte na tlačítko **OK**.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+    c. Nechte **Namespace** prázdné.
 
-    ![Odkaz ke stažení certifikátu](./media/benefitsolver-tutorial/tutorial_benefitsolver_certificate.png) 
+    d. Vyberte zdroj jako **atribut**.
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/benefitsolver-tutorial/tutorial_general_400.png)
+    f. Klikněte na tlačítko **Ok**
 
-1. Ke konfiguraci jednotného přihlašování na **Benefitsolver** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Benefitsolver](https://www.businessolver.com/contact).
+    g. Klikněte na **Uložit**.
 
-    > [!NOTE]
-    > Má váš tým podpory Benefitsolver udělat skutečnou konfiguraci jednotného přihlašování. Když se povolila jednotného přihlašování pro vaše předplatné se dostanete oznámení.
+7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+8. Na **nastavení Benefitsolver** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-benefitsolver-single-sign-on"></a>Konfigurace Benefitsolver jednotné přihlašování
+
+Ke konfiguraci jednotného přihlašování na **Benefitsolver** straně, je nutné odeslat na stažený **soubor XML s metadaty** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Benefitsolver](https://www.businessolver.com/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+
+> [!NOTE]
+> Má váš tým podpory Benefitsolver udělat skutečnou konfiguraci jednotného přihlašování. Když se povolila jednotného přihlašování pro vaše předplatné se dostanete oznámení.
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/benefitsolver-tutorial/create_aaduser_01.png)
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/benefitsolver-tutorial/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/benefitsolver-tutorial/create_aaduser_03.png)
-
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/benefitsolver-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-benefitsolver-test-user"></a>Vytvoření zkušebního uživatele Benefitsolver
-
-Chcete-li povolit uživatele Azure AD k přihlášení do Benefitsolver, musí být poskytnuty do Benefitsolver. V případě Benefitsolver data zaměstnanců je ve vaší aplikaci vyplní prostřednictvím souboru sčítání ze systému HRIS (obvykle je každou noc).
-
-> [!NOTE]
-> Můžete použít jakékoli jiné Benefitsolver uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Benefitsolver uživatelským účtům, zřídit AAD.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon k udělení přístupu k Benefitsolver použití Azure jednotného přihlašování.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Benefitsolver**.
 
-**Přiřadit Benefitsolver Britta Simon, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **Benefitsolver**.
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz Benefitsolver v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **Benefitsolver**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Odkaz Benefitsolver v seznamu aplikací](./media/benefitsolver-tutorial/tutorial_benefitsolver_app.png)  
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Podokno Přidat přiřazení][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-benefitsolver-test-user"></a>Vytvoření Benefitsolver testovacího uživatele
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+V této části vytvoříte uživatele v Benefitsolver jako Britta Simon. Práce s [tým podpory Benefitsolver](https://www.businessolver.com/contact) přidat uživatele na platformě Benefitsolver. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Benefitsolver na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Benefitsolver.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici Benefitsolver na přístupovém panelu, můžete by měl být automaticky přihlášeni k Benefitsolver, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/benefitsolver-tutorial/tutorial_general_01.png
-[2]: ./media/benefitsolver-tutorial/tutorial_general_02.png
-[3]: ./media/benefitsolver-tutorial/tutorial_general_03.png
-[4]: ./media/benefitsolver-tutorial/tutorial_general_04.png
-
-[100]: ./media/benefitsolver-tutorial/tutorial_general_100.png
-
-[200]: ./media/benefitsolver-tutorial/tutorial_general_200.png
-[201]: ./media/benefitsolver-tutorial/tutorial_general_201.png
-[202]: ./media/benefitsolver-tutorial/tutorial_general_202.png
-[203]: ./media/benefitsolver-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

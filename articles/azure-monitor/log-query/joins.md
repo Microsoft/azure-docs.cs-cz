@@ -1,6 +1,6 @@
 ---
-title: Spojení v Azure Log Analytics dotazů | Dokumentace Microsoftu
-description: Tento článek obsahuje lekce týkající se použití spojení ve dotazovací jazyk Log Analytics.
+title: Spojení v dotazů na protokoly Azure Monitor | Dokumentace Microsoftu
+description: Tento článek obsahuje lekce týkající se použití spojení ve dotazů na protokoly Azure monitoru.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: c1f578c11fff963ee4bec47bd3737cd224b14720
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882317"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004634"
 ---
-# <a name="joins-in-log-analytics-queries"></a>Spojení v dotazy Log Analytics
+# <a name="joins-in-azure-monitor-log-queries"></a>Spojení v dotazů na protokoly Azure monitoru
 
 > [!NOTE]
-> By se měla Dokončit [začít používat portál Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
+> By se měla Dokončit [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) a [dotazů na protokoly Azure monitoru](get-started-queries.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -105,7 +105,7 @@ Vezměte v úvahu následující body pro zajištění optimálního výkonu:
 
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro používání dotazovací jazyk Log Analytics:
+Zobrazit další lekce pro používání dotazů na protokoly Azure monitoru:
 
 - [Operace s řetězci](string-operations.md)
 - [Agregační funkce](aggregations.md)

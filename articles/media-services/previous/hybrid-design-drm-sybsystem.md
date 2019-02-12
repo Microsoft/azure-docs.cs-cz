@@ -4,7 +4,7 @@ description: Toto téma popisuje hybridní návrh systému DRM subsystem(s) pomo
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/08/2019
 ms.author: willzhan;juliako
-ms.openlocfilehash: 9026cab0651cd5f8433f9a8a7db0366a6ab13464
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 349bc45305539578aeebe851cf42df123bbd863e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190251"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998201"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh systému DRM subsystem(s)
+# <a name="hybrid-design-of-drm-subsystems-legacy"></a>Hybridní návrh subsystémů DRM (starší verze)
 
 Toto téma popisuje hybridní návrh systému DRM subsystem(s) pomocí Azure Media Services.
 

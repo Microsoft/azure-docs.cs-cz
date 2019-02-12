@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 43e08298618f059ff706d11ce6bbb3d486642872
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292212"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004533"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa připojení k Azure účet služby Video Indexer
 
@@ -75,6 +75,6 @@ Pokud váš účet potřebuje některé změny, se zobrazí relevantní chyby a 
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete pracovat prostřednictvím kódu programu pomocí zkušebního účtu nebo s Video Indexer účty, které jsou připojené do azure pomocí následujících pokynů: [pomocí rozhraní API](video-indexer-use-apis.md).
+Můžete pracovat prostřednictvím kódu programu pomocí zkušebního účtu nebo s Video Indexer účty, které jsou připojené do azure pomocí následujících pokynů: [Použití rozhraní API](video-indexer-use-apis.md).
 
 Měli byste použít stejné uživatele Azure AD, který jste použili při připojování ke službě Azure.

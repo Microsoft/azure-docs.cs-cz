@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: c97fd915e9022171125c7c0f687413e433f82871
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d601425ee5641c1bb07c47dcc0f9a1d94ff3dc87
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983830"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990373"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -37,7 +37,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 * Pro řetězcové konstanty Pokud potřebujete zpětného lomítka (\) nebo uvozovky (") v řetězci, se musejí být uvozeny symbol zpětného lomítka (\). Příklad: "Název společnosti: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>Seznam funkcí
-[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Přepínač](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
+[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Rozdělení](#split) &nbsp; &nbsp; &nbsp; &nbsp; [ StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [přepínač](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
 - - -
 ### <a name="append"></a>Připojit
@@ -128,7 +128,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 
 * Když **oldValue** a **zastaralá** jsou k dispozici:
   
-  * Nahradí všechny výskyty **oldValue** v **zdroj** s *zastaralá**
+  * Nahradí všechny výskyty oldValue ve zdroji zastaralá
 * Když **oldValue** a **šablony** jsou k dispozici:
   
   * Nahradí všechny výskyty **oldValue** v **šablony** s **zdroj** hodnota
@@ -183,6 +183,19 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **[appRoleAssignments]** |Požaduje se |Řetězec |**[appRoleAssignments]**  objektu. |
 
 - - -
+### <a name="split"></a>Rozdělit
+**Funkce:**<br> Split (zdroj, oddělovač)
+
+**Popis:**<br> Rozdělí řetězec s hodnotou mulit pole, pomocí zadané oddělovací znak.
+
+**Parametry:**<br> 
+
+| Název | Požadovaný / s opakováním | Typ | Poznámky |
+| --- | --- | --- | --- |
+| **Zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
+| **delimiter** |Požaduje se |String |Určuje znak, který se použije k rozdělení řetězce (Příklad: ",") |
+
+- - -
 ### <a name="stripspaces"></a>StripSpaces
 **Funkce:**<br> StripSpaces(source)
 
@@ -219,7 +232,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
 | **Jazyková verze** |Nepovinné |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
 
 - - -
@@ -282,8 +295,18 @@ NormalizeDiacritics([givenName])
 * **VSTUP** (givenName): "Zoë"
 * **VÝSTUP**:  "Zoe"
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Výstupní data jako řetězec v určitém formátu
+### <a name="split-a-string-into-a-multi-valued-array"></a>Rozdělit řetězec do pole s více hodnotami
+Budete muset provést čárkami oddělený seznam řetězců a rozdělit na pole, které může být připojeno do vícehodnotový atribut jako atribut PermissionSets v Salesforce. V tomto příkladu seznamu sad oprávnění naplněné v extensionAttribute5 ve službě Azure AD.
 
+**Výraz:** <br>
+Split ([extensionAttribute5] ",")
+
+**Ukázkový vstup/výstup:** <br>
+
+* **VSTUP** (extensionAttribute5): "PermissionSetOne PermisionSetTwo"
+* **VÝSTUP**: ["PermissionSetOne", "PermissionSetTwo"]
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Výstupní data jako řetězec v určitém formátu
 Chcete odesílat data do aplikace SaaS v určitém formátu. <br>
 Je třeba k formátování kalendářních dat pro ServiceNow.
 
@@ -302,7 +325,6 @@ Budete muset definovat časové pásmo uživatele na základě kódu stavu ulož
 Pokud kód stavu neodpovídá žádné z předdefinovaných možností, použijte výchozí hodnotu "Austrálie/Sydney".
 
 **Výraz:** <br>
-
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **Ukázkový vstup/výstup:**
@@ -310,8 +332,19 @@ Pokud kód stavu neodpovídá žádné z předdefinovaných možností, použijt
 * **VSTUP** (stav): "QLD"
 * **VÝSTUP**: "Austrálie/Brisbane"
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Hodnotu generovanou userPrincipalName (UPN) převést na malá písmena
+### <a name="replace-characters-using-a-regular-expression"></a>Nahradit znaky pomocí regulárních výrazů
+Je nutné vyhledat znaky, které odpovídají hodnotě regulárního výrazu a jejich odebrání.
 
+**Výraz:** <br>
+
+Nahraďte ([mailNickname], "[-zA-Z_] *", "",)
+
+**Ukázkový vstup/výstup:**
+
+* **VSTUP** (mailNickname: "john_doe72"
+* **VÝSTUP**: "72"
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Hodnotu generovanou userPrincipalName (UPN) převést na malá písmena
 V následujícím příkladu se zřetězením polí zdroj PreferredFirstName a PreferredLastName vygeneruje hodnotu hlavního názvu uživatele a funkce ToLower pracuje vygenerovaný řetězec převádí všechny znaky na malá písmena. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -323,7 +356,6 @@ V následujícím příkladu se zřetězením polí zdroj PreferredFirstName a P
 * **VÝSTUP**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generovat jedinečnou hodnotu pro atribut userPrincipalName (UPN)
-
 Založené na uživatele křestní jméno, křestní jméno a příjmení, je potřeba vygenerovat hodnotu pro atribut hlavního názvu uživatele a vyhledat jeho jedinečnosti v adresáři cílového AD před přiřazením hodnoty pro atribut hlavního názvu uživatele.
 
 **Výraz:** <br>
@@ -349,4 +381,3 @@ Založené na uživatele křestní jméno, křestní jméno a příjmení, je po
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](use-scim-to-provision-users-and-groups.md)
 * [Oznámení o zřizování účtů](user-provisioning.md)
 * [Seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md)
-

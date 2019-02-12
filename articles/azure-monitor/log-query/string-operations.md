@@ -1,6 +1,6 @@
 ---
-title: Práce s řetězci v dotazech Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro používání portálu Analytics psát dotazy v Log Analytics.
+title: Práce s řetězci v dotazech protokolu Azure Monitor | Dokumentace Microsoftu
+description: Popisuje, jak upravit, porovnat, vyhledávat a provádět řadu dalších operací s řetězci v dotazech protokolu Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186238"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995403"
 ---
-# <a name="working-with-strings-in-log-analytics-queries"></a>Práce s řetězci v dotazech Log Analytics
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v dotazech protokolu Azure Monitor
 
 
 > [!NOTE]
-> By se měla Dokončit [začít používat portál Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před tímto kurzem.
+> By se měla Dokončit [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) a [Začínáme se službou Azure Monitor protokolu dotazy](get-started-queries.md) před tímto kurzem.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje, jak upravit, porovnat, vyhledávat a provádět řadu dalších operací s řetězci. 
+Tento článek popisuje, jak upravit, porovnat, vyhledávat a provádět řadu dalších operací s řetězci.
 
 Každý znak v řetězci má pořadové číslo, podle místa. První znak, který je v indexu 0, že následující znak je 1 a tedy. Funkce různých řetězců pomocí čísla indexů, jak je znázorněno v následujících částech. Mnoho z následujících příkladů použití **tisk** příkazu pro předvedení zacházení s řetězci bez použití konkrétnímu zdroji dat.
 
@@ -64,9 +64,9 @@ Operátor       |Popis                         |Malá a velká písmena|Příkla
 `hasprefix_cs`    |Pravé straně je předpona termín v levé straně         |Ano            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |Pravé straně není předponu termín v levé straně     |Ano            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |Pravé straně je výraz přípony v levé straně         |Ne            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Pravé straně není výraz přípony v levé straně     |Ne            |""Severní Amerika"!"americ"hassuffix
+`!hassuffix`   |Pravé straně není výraz přípony v levé straně     |Ne            |`"North America" !hassuffix "americ"
 `hassuffix_cs`    |Pravé straně je výraz přípony v levé straně         |Ano            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Pravé straně není výraz přípony v levé straně     |Ano            |""Severní Amerika"! hassuffix_cs"icA"
+`!hassuffix_cs`   |Pravé straně není výraz přípony v levé straně     |Ano            |`"North America" !hassuffix_cs "icA"
 `contains`     |Dojde k pravé straně jako dílčí sekvenci z levé straně  |Ne            |`"FabriKam" contains "BRik"`
 `!contains`    |V levé straně nedojde, pravé straně           |Ne            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |Dojde k pravé straně jako dílčí sekvenci z levé straně  |Ano           |`"FabriKam" contains_cs "Kam"`

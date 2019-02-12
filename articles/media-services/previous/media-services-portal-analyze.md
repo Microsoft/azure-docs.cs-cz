@@ -4,7 +4,7 @@ description: Toto téma popisuje, jak zpracovat vašich multimédií pomocí Med
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 02b972c0591bb05f72887e3e1c3d057d373ff48c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666166"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004865"
 ---
-# <a name="analyze-your-media-using-the-azure-portal"></a>Analýza médií s využitím webu Azure Portal
+# <a name="analyze-your-media-using-the-azure-portal-legacy"></a>Analýza médií s využitím webu Azure portal (starší verze)
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
@@ -53,7 +53,7 @@ Toto téma popisuje, jak zpracovat vašich multimédií pomocí Media Analytics 
 ### <a name="language"></a>Jazyk
 Přirozeného jazyka k rozpoznat v multimediálním souboru. Například angličtina nebo španělština. 
 
-### <a name="captions"></a>titulky
+### <a name="captions"></a>Titulky
 Můžete zvolit popisek formátu, který se vygeneruje ze svého obsahu. Úloha indexování můžete vygenerovat soubory s titulky uvedené v následujících formátech:  
 
 * **SAMI**
@@ -65,7 +65,7 @@ Zavření titulek (kopie) soubory do těchto formátů je možné provést zvuko
 ### <a name="aib-file"></a>Soubor AIB
 Tuto možnost vyberte, pokud chcete vygenerovat soubor Audio Index Blob pro použití s vlastním Ifilterem SQL serveru. Další informace najdete v tématu [to](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blogu.
 
-### <a name="keywords"></a>klíčová slova
+### <a name="keywords"></a>Klíčová slova
 Tuto možnost vyberte, pokud chcete vygenerovat soubor XML klíčových slov. Tento soubor obsahuje klíčová slova extrahovaná z mluveného obsahu s frekvencí a informace o posunu.
 
 ### <a name="job-name"></a>Název úlohy
@@ -108,7 +108,7 @@ Popisný název, který vám umožní identifikovat výstupní obsah.
 ### <a name="detection-mode"></a>Režim detekce
 Jeden z následujících režimů může využívat procesoru:
 
-* rozpoznávání tváře
+* Rozpoznávání tváře
 * detekce emocí podle obličeje
 * Agregovat detekci emocí
 

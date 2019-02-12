@@ -1,6 +1,6 @@
 ---
-title: Úrovně služby Azure SQL Database – DTU | Dokumentace Microsoftu
-description: Další informace o úrovních služeb pro zadání jedné a databáze ve fondu k poskytování výpočty velikosti a velikosti úložiště.
+title: Úrovně služby Azure SQL Database – model nákupu založený na DTU | Dokumentace Microsoftu
+description: Další informace o úrovních služeb v model nákupu založený na DTU pro databáze ve fondu a jeden kvůli velikosti výpočetního výkonu a úložiště.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,22 +11,22 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6319deb36088317cb289134b7068720e97cb10b7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/08/2019
+ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507650"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993594"
 ---
-# <a name="dtu-based-service-tiers"></a>Úrovně služeb na základě DTU
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v model nákupu založený na DTU
 
-Na základě jednotek DTU úrovně jsou rozlišené pomocí celou řadu velikostí výpočetních s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služby poskytují flexibilitu změny velikosti výpočetních bez jakýchkoli prostojů. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
+Úrovně služeb v model nákupu založený na DTU jsou rozlišené pomocí celou řadu velikostí výpočetních s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služeb v model nákupu založený na DTU poskytují flexibilitu změny velikosti výpočetních bez jakýchkoli prostojů. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
 
 > [!IMPORTANT]
-> SQL Database Managed Instance aktuálně ve verzi public preview nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
+> Spravovaná instance SQL Database nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
 > [!NOTE]
-> Informace o úrovních služeb založený na virtuálních jádrech najdete v tématu [úrovně služeb založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Informace o odlišení těchto služeb na základě jednotek DTU úrovně a úrovní služeb založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-service-tiers.md).
+> Informace o úrovních služeb založený na virtuálních jádrech najdete v tématu [úrovně služeb založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Informace o odlišení těchto služeb na základě jednotek DTU úrovně a úrovní služeb založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-purchase-models.md).
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>Porovnání úrovní služeb na základě DTU
 
@@ -34,8 +34,8 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:| --:|
-|Cílové úlohy|Vývoj a provoz|Vývoj a provoz|Vývoj a provoz||
-|Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|Není k dispozici ve verzi preview|
+|Cílové úlohy|Vývoj a provoz|Vývoj a provoz|Vývoj a provoz|
+|Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|
 |Uchování záloh|7 dní|po dobu 35 dní|po dobu 35 dní|
 |Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
 |Vstupně-výstupní propustnost (přibližné) |2.5 vstupně-výstupních operací za DTU| 2.5 vstupně-výstupních operací za DTU | 48 vstupně-výstupních operací za DTU|
@@ -49,12 +49,12 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Omezení úložiště a jednotek DTU izolované databáze
 
-Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers.md#dtu-based-purchasing-model)?
+Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [nákupní model založený na DTU](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
 | Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
-| Maximální počet jednotek Dtu | 5 | 3000 | 4000 | |
+| Maximální počet jednotek Dtu | 5 | 3000 | 4000 | 
 ||||||
 
 > [!IMPORTANT]
@@ -72,7 +72,7 @@ Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro 
 ||||||
 
 > [!IMPORTANT]
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: Střed USA – Západ, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USGov Iowa, Německo – severovýchod, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Více než 1 TB úložiště na úrovni premium je aktuálně k dispozici ve všech oblastech kromě následujících: Střed USA – Západ, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USGov Iowa, Německo – severovýchod, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
@@ -88,7 +88,7 @@ Test výkonnosti a jeho metodologie jsou popsány podrobněji níže.
 
 ### <a name="benchmark-summary"></a>Přehled srovnávacích testů
 
-ASDB měří výkon kombinaci základní databázových operací, které se vyskytují nejčastěji v online (OLTP) úloh zpracování transakcí. I když testu je navržená s cloud computingu v paměti, schéma databáze, pro naplnění dat a transakcí byly navrženy široce reprezentativní základní elementy nejčastěji používané úlohy OLTP.
+Test výkonnosti se měří výkon kombinaci základní databázových operací, které se vyskytují nejčastěji v online (OLTP) úloh zpracování transakcí. I když testu je navržená s cloud computingu v paměti, schéma databáze, pro naplnění dat a transakcí byly navrženy široce reprezentativní základní elementy nejčastěji používané úlohy OLTP.
 
 ### <a name="schema"></a>Schéma
 

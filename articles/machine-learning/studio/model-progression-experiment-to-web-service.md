@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: a2e7c45615c1f9d07ef3392ee10579a1b5e3588f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31005077c9c149f9aff055432d9577a63bac8e1c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477977"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992270"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu ke zprovozněné službě webové
 Azure Machine Learning Studio poskytuje interaktivní plátno, která umožňuje vyvíjet, spouštět, testovat a iterovat ***experimentovat*** představující model prediktivní analýzy. Existují nejrůznější moduly, které můžete:
@@ -46,7 +46,7 @@ Tady jsou v jednotlivých fázích, které následuje Typická řešení a nasa�
 *Obrázek 1 – fáze model typické prediktivní analýzy*
 
 ### <a name="the-training-experiment"></a>Výukového experimentu
-***Výukového experimentu*** je počáteční fáze vývoje webovou službu v nástroji Machine Learning Studio. Účelem výukového experimentu je vám místo pro vývoj, testování, iterovat a nakonec trénování model strojového učení. Můžete dokonce tréninku více modelů současně lze najít nejlepší řešení, ale po dokončení můžete experimentovat vyberete jeden školení model a eliminovat rest z experimentu. Příklad vývoje experiment prediktivní analýzy, najdete v části [vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+***Výukového experimentu*** je počáteční fáze vývoje webovou službu v nástroji Machine Learning Studio. Účelem výukového experimentu je vám místo pro vývoj, testování, iterovat a nakonec trénování model strojového učení. Můžete dokonce tréninku více modelů současně lze najít nejlepší řešení, ale po dokončení můžete experimentovat vyberete jeden školení model a eliminovat rest z experimentu. Příklad vývoje experiment prediktivní analýzy, najdete v části [vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Prediktivní experiment
 Jakmile budete mít trénovaný model v experimentu školení, klikněte na tlačítko **nastavení webové služby** a vyberte **prediktivní webová služba** v nástroji Machine Learning Studio zahájit proces převodu trénování Experimentováním ***prediktivní experiment***. Účelem prediktivní experiment je trénovaný model použít ke stanovení skóre pro nová data s cílem nakonec stávají zprovozněný jako Azure webové služby.
@@ -104,7 +104,7 @@ Pokud chcete zachovat váš model strojového učení, ale chcete přeučování
 
 Pokud chcete změnit váš původním prediktivní experiment, jako je například výběr jiné algoritmu strojového učení, zkusit školení různé metody, atd., pak budete muset použijte druhý postup popsaný výše pro přetrénování modelu: otevřít školení experiment, klikněte na tlačítko **uložit jako** vytvořit kopii, a poté spusťte nové rozhodli vývoj modelu, vytváření prediktivní experiment a nasazení webové služby. Tím se vytvoří nové webové služby nesouvisející k původnímu – můžete rozhodnout, které z nich nebo obě běžela.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Podrobné informace o procesu vývoje a experimentu najdete v následujících článcích:
 
 * Převod experiment - [přípravu modelu pro nasazení v Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md)
@@ -114,5 +114,5 @@ Podrobné informace o procesu vývoje a experimentu najdete v následujících �
 Příklady celého procesu naleznete v tématu:
 
 * [Kurz strojového učení: Vytvoření prvního experimentu v nástroji Azure Machine Learning Studio](create-experiment.md)
-* [Návod: Vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+* [Návod: Vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](tutorial-part1-credit-risk.md)
 

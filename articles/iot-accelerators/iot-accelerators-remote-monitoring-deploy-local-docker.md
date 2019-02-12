@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 208526b745a117c9ee14bab21f8a5ce05accd1fe
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382229"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997179"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně - Dockeru
 
@@ -54,6 +54,8 @@ set PCS
 Příkaz zobrazí všechny proměnné prostředí nastavuje **start.cmd** skriptu.
 
 Ujistěte se, že Dockeru běží na místním počítači.
+> [!NOTE]
+> Docker musí běžet [kontejnery Linuxu](https://docs.docker.com/docker-for-windows/) Pokud běží na Windows.
 
 Mikroslužeb spouštěných v kontejnerech Dockeru místní potřebují přístup k Azure cloud services. Můžete otestovat připojení k Internetu pomocí následujícího příkazu ping internetovou adresu z uvnitř kontejneru Docker prostředí:
 
@@ -66,6 +68,9 @@ Ke spuštění akcelerátor řešení, přejděte na **služby\\skripty\\místn�
 ```cmd/sh
 docker-compose up
 ```
+
+> [!NOTE] 
+> Ujistěte se, že jste [sdílet místní jednotku](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) s Dockerem předtím, než spustíte `docker-compose up`.
 
 Při prvním spuštění tohoto příkazu Docker stáhne mikroslužeb Image z Docker hubu vytvářet kontejnery místně. V následujícím spuštění Docker spouští kontejnery okamžitě.
 

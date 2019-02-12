@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 7ff4a4d64b69809c53ad70edf1455880da24d52a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892503"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990441"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru
 
@@ -106,8 +106,7 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
     Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
-Uživatelé můžou také finalizován jejich analytického dotazu v [protokoly analýzy stránky na webu Azure portal](../../azure-monitor/log-query/portals.md#log-analytics-page
-) a potom je nabídnout k vytvoření výstrahy prostřednictvím "+ nové pravidlo upozornění" tlačítko – potom postupujte podle pokynů v kroku 6 a vyšší v tomto kurzu výše.
+Uživatelé můžou také finalizován jejich analytického dotazu v [protokolu analytics](../log-query/portals.md) a poslat ho chcete vytvořit upozornění přes tlačítko "nastavit upozornění - pak postupujte podle pokynů v kroku 6 a vyšší v tomto kurzu výše.
 
  ![Log Analytics – nastavení upozornění](media/alerts-log/AlertsAnalyticsCreate.png)
 

@@ -1,6 +1,6 @@
 ---
-title: výraz App() použijte v dotazu Azure Log Analytics | Dokumentace Microsoftu
-description: Aplikace výraz je použit v dotazu Log Analytics k načtení dat z konkrétní aplikaci Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného.
+title: App() použijte výraz v dotazech protokolu Azure Monitor | Dokumentace Microsoftu
+description: Aplikace výraz je použit v dotazu protokolu Azure Monitor k načtení dat z konkrétní aplikaci Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: db92db315875348ff05ec3a34b1a9fa946479c27
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104656"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998531"
 ---
-# <a name="app-expression-in-log-analytics-query"></a>výraz App() použijte v dotazu Log Analytics
+# <a name="app-expression-in-azure-monitor-query"></a>výraz App() použijte v dotazu Azure Monitor
 
-`app` Výrazu v dotazu Log Analytics slouží k načtení dat z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To je užitečné zahrnout data aplikací v dotazu Log Analytics a provádět dotazy na data napříč více aplikacemi v dotazu Application Insights.
+`app` Výrazu se používá v dotazu Azure Monitor k načtení dat z konkrétní aplikaci Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To je užitečné zahrnout data aplikací v dotazu protokolu Azure Monitor a provádět dotazy na data napříč více aplikacemi v dotazu Application Insights.
 
 
 
@@ -79,4 +79,5 @@ union
 ## <a name="next-steps"></a>Další postup
 
 - Najdete v článku [pracovní prostor výraz](workspace-expression.md) k odkazování na pracovní prostor Log Analytics.
-- Přečtěte si, jak [dat Log Analytics](../../azure-monitor/log-query/log-query-overview.md) uložená.
+- Přečtěte si, jak [dat monitorování Azure](../../azure-monitor/log-query/log-query-overview.md) uložená.
+- Přístup ke kompletní dokumentaci k [Průzkumník dat dotazovací jazyk](/azure/kusto/query/).

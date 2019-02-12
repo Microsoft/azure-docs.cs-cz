@@ -8,16 +8,18 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 388bea528b138d78b9ec23ceea295108306c61e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 9c0874199a21f7357ae387e7ac4a26267c6635fc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31613598"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56078513"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Nastavení Azure PowerShellu pro Azure DNS
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
+
+[!INCLUDE [requires-azurerm](requires-azurerm.md)]
 
 Před zahájením konfigurace ověřte, zda máte následující.
 
@@ -36,7 +38,7 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-Ve výstupu výše uvedených příkazů se musí zobrazit verze AzureRM.Dns 4.1.0 nebo vyšší a verze AzureRM.Network 5.4.0 nebo vyšší.  
+Výstup z výše uvedených příkazů musí zobrazit, že verze AzureRM.Dns 4.1.0 nebo vyšší verzi rozhraní .NET a azurerm.Network 5.4.0 nebo vyšší.  
 
 V případě, že váš systém obsahuje starší verze, můžete nainstalovat nejnovější verzi Azure PowerShellu nebo stáhnout a nainstalovat výše uvedené moduly z Galerie prostředí PowerShell přes odkazy uvedené výše vedle verzí modulů. Pak je můžete nainstalovat pomocí níže uvedených příkazů. Vyžadují se oba moduly a oba jsou plně zpětně kompatibilní. 
 

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 64276047410280f8e818cf695f1fbb0c80fdd693
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497668"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997247"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio webové služby: Nasazení a využití
 Azure Machine Learning můžete použít k nasazení pracovních postupů machine learning a modely jako webové služby. Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes Internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu. Protože jsou webové služby RESTful, můžete je volat z různé programovací jazyky a platformy, jako je .NET nebo Javě a z aplikace, jako je Excel.
@@ -31,10 +31,10 @@ Následující odkazy obsahují obecné informace o tom, jak nasadit nové webov
 
 * Přehled o tom, jak nasadit novou webovou službu, která je založená na Azure Resource Manageru najdete v tématu [nasazení nové webové služby](publish-a-machine-learning-web-service.md).
 * Návod, jak nasadit webovou službu, naleznete v tématu [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
-* Úplný návod o tom, jak vytvořit a nasadit webovou službu, naleznete v tématu [návod krok 1: Vytvoření pracovního prostoru Machine Learning](walkthrough-1-create-ml-workspace.md).
+* Úplný návod o tom, jak vytvořit a nasadit webovou službu, začněte s [ kurz 1: Předpovědět úvěrové riziko](tutorial-part1-credit-risk.md).
 * Konkrétní příklady, které nasazení webové služby naleznete v tématu:
 
-  * [Krok 5 průvodce: Nasazení webové služby Azure Machine Learning](walkthrough-5-publish-web-service.md)
+  * [Tutoriál 3: Úvěrové riziko model nasazení](tutorial-part3-credit-risk-deploy.md)
   * [Jak nasadit webovou službu do více oblastí](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>U poskytovatele prostředků služby webového rozhraní API (rozhraní API Azure Resource Manager)
@@ -84,7 +84,7 @@ Můžete testovat webové služby z portálu Azure Machine Learning Web Services
 
 * [Nasazení nové webové služby](publish-a-machine-learning-web-service.md)
 * [Nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* [Krok 5 průvodce: Nasazení webové služby Azure Machine Learning](walkthrough-5-publish-web-service.md)
+* [Tutoriál 3: Úvěrové riziko model nasazení](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z aplikace Excel
 Si můžete stáhnout šablony aplikace Excel, která využívá webovou službu:

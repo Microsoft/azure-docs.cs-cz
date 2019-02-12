@@ -14,14 +14,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: d3f2682c7e750885a6c3947ce47b5da45f251a25
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8f3045394afbfbc9ae4839069c85ed405477a423
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421381"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003869"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md). V tomto rychlém startu vytvoříte trezor klíčů pomocí PowerShellu. Do nově vytvořeného trezoru pak uložíte tajný klíč.
 
@@ -29,18 +31,18 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.1.1 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Typ `$PSVersionTable.PSVersion` k vyhledání verze. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzAccount` pro vytvoření připojení k Azure.
 
 ```azurepowershell-interactive
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name ContosoResourceGroup -Location EastUS
+New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 ```
 
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
@@ -54,7 +56,7 @@ Přestože v tomto rychlém startu jako název služby Key Vault používáme �
 - **Umístění:** Východní USA
 
 ```azurepowershell-interactive
-New-AzureRmKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
+New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
 ```
 
 Výstup této rutiny zobrazuje vlastnosti nově vytvořeného trezoru klíčů. Poznamenejte si hodnoty dvou vlastností uvedených níže:
@@ -68,24 +70,24 @@ Po vytvoření trezoru bude jakékoli operace s tímto novým trezorem moct prov
 
 ## <a name="adding-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
-Pokud chcete do trezoru přidat tajný klíč, stačí provést několik kroků. V tomto případě přidáte heslo, které může používat aplikace. Heslo se nazývá **ExamplePassword** a uchovává hodnotu **Pa$$w0rd**.
+Pokud chcete do trezoru přidat tajný klíč, stačí provést několik kroků. V tomto případě přidáte heslo, které může používat aplikace. Heslo se nazývá **ExamplePassword** a uloží hodnotu **hVFkk965BuUv** v ní.
 
-Nejprve převeďte hodnotu Pa$$w0rd na zabezpečený řetězec zadáním:
+Nejprve převeďte hodnotu **hVFkk965BuUv** na zabezpečený řetězec zadáním:
 
 ```azurepowershell-interactive
-$secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force
+$secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 ```
 
-Pak zadáním následujících příkazů PowerShellu vytvořte ve službě Key Vault tajný klíč **ExamplePassword** s hodnotou **Pa$$w0rd**:
+Zadáním následujících příkazů Powershellu k vytvoření tajného klíče ve službě Key Vault volá **ExamplePassword** s hodnotou **hVFkk965BuUv** :
 
 ```azurepowershell-interactive
-$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePassword' -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePassword' -SecretValue $secretvalue
 ```
 
 Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 
 ```azurepowershell-interactive
-(Get-AzureKeyVaultSecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
+(Get-AzKeyVaultSecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
 ```
 
 Právě jste vytvořili službu Key Vault, uložili jste tajný klíč a načetli jste ho.
@@ -94,15 +96,17 @@ Právě jste vytvořili službu Key Vault, uložili jste tajný klíč a načetl
 
  Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, služby Key Vault a všech souvisejících prostředků použít příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu k odebrání skupiny prostředků, služby Key Vault a všech souvisejících prostředků.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name ContosoResourceGroup
+Remove-AzResourceGroup -Name ContosoResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili službu Key Vault a uložili do ní softwarový klíč. Další informace o službě Key Vault a jejím použití s vašimi aplikacemi najdete v kurzu pro webové aplikace pracující se službou Key Vault.
 
+Informace o čtení tajného klíče ze služby Key Vault z webové aplikace s využitím spravované identity pro prostředky Azure, pokračujte v následujícím kurzu
+
 > [!div class="nextstepaction"]
-> Informace o načtení tajného kódu ze služby Key Vault webovou aplikací pomocí spravovaných identit prostředků Azure najdete v následujícím kurzu [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](quick-create-net.md).
+> [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key vault](quick-create-net.md).

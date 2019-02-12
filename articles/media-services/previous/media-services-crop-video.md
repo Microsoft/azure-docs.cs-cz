@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: anilmur;juliako;
-ms.openlocfilehash: 3a8888148e1f58cdf2b1893c624b74ec6d6c93da
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 34db659232a27a18344ed492897641b92c0c1fa9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282539"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001327"
 ---
-# <a name="crop-videos-with-media-encoder-standard"></a>Oříznutí videa pomocí kodéru Media Encoder Standard
+# <a name="crop-videos-with-media-encoder-standard"></a>Oříznutí videa pomocí kodéru Media Encoder Standard  
+
 Media Encoder Standard (MES) slouží k oříznutí váš vstup videa. Oříznutí je proces výběru obdélníkové okna nejvyšší úrovně v rámci video a kódování pixely v rámci tohoto okna. Následující diagram pomůže ukazují proces.
 
 ![Oříznutí videa](./media/media-services-crop-video/media-services-crop-video01.png)

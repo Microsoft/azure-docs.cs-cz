@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 7229cedf2ad5e211847054b53c34e54f633f57e0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d1b270a5b572707ba94be8584c0e6a80ef4a5f09
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434763"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002323"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vault
 
 Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Úvod
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Poté, co jste vytvořili jeden nebo více trezorů klíčů, budete pravděpodobně chtít monitorovat kdo, jak a kdy k vašim trezorům klíčů přistupuje. Toho docílíte povolením protokolování pro Key Vault, které ukládá informace v zadaném účtu úložiště Azure. Nový kontejner s názvem **insights-logs-auditevent** je automaticky vytvořený pro zadaný účet úložiště a ten samý účet úložiště můžete použít pro shromažďování protokolů více trezorů klíčů.
 
@@ -49,7 +51,7 @@ Souhrnné informace o Azure Key Vault naleznete v tématu [Co je Azure Key Vault
 K dokončení tohoto kurzu potřebujete:
 
 * Existující trezor klíčů, který již používáte.  
-* Azure PowerShell v **minimální verzi 1.0.1**. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již Azure PowerShell nainstalovali, ale neznáte jeho verzi, z konzoly Azure PowerShell zadejte `(Get-Module azure -ListAvailable).Version`.  
+* Azure PowerShell, **minimální verze 1.0.0**. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již Azure PowerShell nainstalovali, ale neznáte jeho verzi, z konzoly Azure PowerShell zadejte `$PSVersionTable.PSVersion`.  
 * Dostatečné úložiště v Azure pro vaše protokoly Key Vault.
 
 ## <a id="connect"></a>Připojení k předplatným
@@ -57,7 +59,7 @@ K dokončení tohoto kurzu potřebujete:
 Spusťte relaci Azure PowerShellu a přihlaste se k účtu Azure pomocí následujícího příkazu:  
 
 ```PowerShell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Azure PowerShell získá všechna předplatná přidružená k tomuto účtu a ve výchozím nastavení použije první předplatné.
@@ -65,13 +67,13 @@ V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno
 Máte-li více předplatných, možná budete muset zadat předplatné, které jste použili pro vytvoření Azure Key Vault. Chcete-li zobrazit předplatná vašeho účtu, zadejte následující:
 
 ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
 ```
 
 Chcete-li specifikovat předplatné přidružené k trezoru klíčů, který budete protokolovat, zadejte:
 
 ```PowerShell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -88,7 +90,7 @@ Pro svoje protokoly můžete použít i stávající účet úložiště, my vš
 Pro další usnadnění správy použijeme také stejnou skupinu prostředků, jako ta, která obsahuje náš trezor klíčů. Z [kurzu Začínáme](key-vault-get-started.md) je název této skupiny prostředků **ContosoResourceGroup** a budeme pokračovat v používání umístění ve východní Asii. Tyto hodnoty nahraďte příslušnými vlastními hodnotami:
 
 ```PowerShell
- $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
+ $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
 > [!NOTE]
@@ -101,15 +103,15 @@ Pro další usnadnění správy použijeme také stejnou skupinu prostředků, j
 V našem kurzu Začínáme byl název trezoru klíčů **ContosoKeyVault**, budeme tedy pokračovat v používání tohoto názvu a podrobnosti uložíme do proměnné s názvem **kv**:
 
 ```PowerShell
-$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+$kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
 ## <a id="enable"></a>Povolení protokolování
 
-K povolení protokolování pro Key Vault použijeme rutinu Set-AzureRmDiagnosticSetting spolu s proměnnými, které jsme vytvořili pro nový účet úložiště a nový trezor zámků. Také nastavíme **-povoleno** příznak **$true** a kategorii nastavíme na AuditEvent (jediná kategorie pro protokolování v Key Vault):
+Povolení protokolování pro Key Vault použijeme rutinu Set-AzDiagnosticSetting spolu s proměnnými, které jsme vytvořili pro náš nový účet úložiště a nový trezor. Také nastavíme **-povoleno** příznak **$true** a kategorii nastavíme na AuditEvent (jediná kategorie pro protokolování v Key Vault):
 
 ```PowerShell
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
 Výstup bude vypadat takto:
@@ -129,7 +131,7 @@ To potvrzuje, že je protokolování pro váš trezor klíčů nyní povolené a
 Volitelně můžete pro své protokoly nastavit také zásady uchovávání informací tak, aby se starší protokoly automaticky odstraňovaly. Například po nastavení zásad uchovávání informací pomocí příznaku **-RetentionEnabled** nastaveného na **$true** a parametru **-RetentionInDays** nastaveného na **90** budou protokoly starší než 90 dnů automaticky odstraněny.
 
 ```PowerShell
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
 Co je protokolováno:
@@ -152,7 +154,7 @@ $container = 'insights-logs-auditevent'
 Chcete-li vypsat všechny objekty blob v tomto kontejneru, zadejte:
 
 ```PowerShell
-Get-AzureStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 Výstup bude vypadat nějak takto:
@@ -183,13 +185,13 @@ New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Forc
 Poté získejte seznam všech objektů blob:  
 
 ```PowerShell
-$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Předejte tento seznam prostřednictvím „GetAzureStorageBlobContent“ pro stažení objektů blob do naší cílové složky:
+Předejte tento seznam prostřednictvím "Get-AzStorageBlobContent" pro stažení objektů BLOB do naší cílové složky:
 
 ```PowerShell
-$blobs | Get-AzureStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
+$blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
 Když spustíte tento druhý příkaz, oddělovač **/** v názvech objektů blob vytvoří v cílové složce úplnou strukturu složek, a tato struktura bude sloužit ke stažení a uložení objektů blob ve formě souborů.
@@ -199,32 +201,32 @@ Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Příkl
 * Máte-li více trezorů klíčů a chcete stáhnout pouze protokoly pro jeden trezor klíčů s názvem CONTOSOKEYVAULT3:
 
 ```PowerShell
-Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 ```
 
 * Máte-li více skupin prostředků a chcete stáhnout pouze protokoly pro jednu skupinu prostředků, použijte `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
 ```PowerShell
-Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 ```
 
 * Chcete-li stáhnout všechny protokoly pro měsíc leden 2016, použijte `-Blob '*/year=2016/m=01/*'`:
 
 ```PowerShell
-Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 ```
 
-Nyní jste připraveni podívat se, co je v protokolech. Ale ještě předtím si ukážeme další dva parametry Get-AzureRmDiagnosticSetting, které byste mohli potřebovat:
+Nyní jste připraveni podívat se, co je v protokolech. Ale předtím, další dva parametry Get-AzDiagnosticSetting, které byste mohli potřebovat znát:
 
-* Dotaz na stav nastavení diagnostiky pro prostředek trezoru klíčů provedete pomocí:`Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
-* Zakázat protokolování pro prostředek trezoru klíčů můžete pomocí:`Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
+* Dotaz na stav nastavení diagnostiky pro prostředek trezoru klíčů provedete pomocí:`Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
+* Zakázat protokolování pro prostředek trezoru klíčů můžete pomocí:`Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
 ## <a id="interpret"></a>Interpretace protokolů služby Key Vault
 
 Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Spuštěno
 
 ```PowerShell
-Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
+Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 
 Vrátí položku protokolu podobná následující:

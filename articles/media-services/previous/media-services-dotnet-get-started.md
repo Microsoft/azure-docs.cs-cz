@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6098c8646da6e0240036f4e0f69dfbb731b5da41
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 34a6676444c4723f64264e41cb0e3c4842486bf6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980213"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003087"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-net-sdk-legacy"></a>Začínáme s doručováním obsahu na vyžádání pomocí .NET SDK (starší verze)
+# <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET  
 
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 

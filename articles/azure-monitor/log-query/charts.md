@@ -1,6 +1,6 @@
 ---
-title: Vytváříte grafy a diagramy z dotazů Azure Log Analytics | Dokumentace Microsoftu
-description: Popisuje různé vizualizace ve službě Azure Log Analytics k zobrazení dat různými způsoby.
+title: Vytváření grafů a diagramů z dotazů na protokoly Azure Monitor | Dokumentace Microsoftu
+description: Popisuje různé vizualizace ve službě Azure Monitor k zobrazení dat protokolů různými způsoby.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 049e50f5800194c4126003f7e5ff7ae60b3de768
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 381e8361d31660d90eaee3f7a500139af1ef2a82
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186221"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992976"
 ---
-# <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Vytváření grafů a diagramů z dotazy Log Analytics
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Vytváření grafů a diagramů z dotazů na protokoly Azure monitoru
 
 > [!NOTE]
-> By se měla Dokončit [Advanced agregace v dotazy Log Analytics](advanced-aggregations.md) před dokončením v této lekci.
+> By se měla Dokončit [Advanced agregace v dotazů na protokoly Azure monitoru](advanced-aggregations.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje různé vizualizace ve službě Azure Log Analytics k zobrazení dat různými způsoby.
+Tento článek popisuje různé vizualizace ve službě Azure Monitor k zobrazení dat protokolů různými způsoby.
 
 ## <a name="charting-the-results"></a>Vytvoření grafu výsledků
 Nejdřív si prostudujte kolika počítačích během poslední hodiny na operační systém, jsou:
@@ -93,7 +93,7 @@ Můžete přepínat mezi tak, že vyberete rozevírací seznam s názvem sloupce
 ![AccountType pruhový graf](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro používání dotazovací jazyk Log Analytics:
+Zobrazit další lekce pro použití [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
 
 - [Operace s řetězci](string-operations.md)
 - [Datum a čas operace](datetime-operations.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 880b4e4ce09fec3caf70586c2cfb54236d13b668
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812445"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996300"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: Sledování závislostí
 A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](../../azure-monitor/app/app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
@@ -133,7 +133,7 @@ Proklikejte se k výskytu neúspěšných požadavků a podívejte se na jeho so
 ![Klikněte na typ požadavku, klikněte na instance, kterou chcete získat do jiného zobrazení stejné instance, klikněte na něj zobrazíte podrobnosti o výjimce.](./media/asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analýzy
-Můžete sledovat v závislosti [dotazovací jazyk Log Analytics](https://aka.ms/LogAnalyticsLanguage). Zde je několik příkladů:
+Můžete sledovat v závislosti [Průzkumník dat dotazovací jazyk](https://aka.ms/LogAnalyticsLanguage). Zde je několik příkladů:
 
 * Najdete všechna neúspěšná volání:
 

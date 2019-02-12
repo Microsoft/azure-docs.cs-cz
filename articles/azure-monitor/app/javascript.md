@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 55cbca97d369bea80ea9caece14754e81b5738a1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fee172eccd79fd28e281b2beece9702630ac39b5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661509"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001183"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
-Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](../../azure-monitor/app/app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
+Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
 
-Application Insights můžete použít s jakýmikoli webovými stránkami – stačí přidat krátký kód jazyka JavaScript. Pokud používáte webovou službu [Java](java-get-started.md) nebo [ASP.NET](../../azure-monitor/app/asp-net.md), můžete integrovat telemetrii ze serveru a klientů.
+Application Insights můžete použít s jakýmikoli webovými stránkami – stačí přidat krátký kód jazyka JavaScript. Pokud používáte webovou službu [Java](java-get-started.md) nebo [ASP.NET](asp-net.md), můžete integrovat telemetrii ze serveru a klientů.
 
-![Na stránce portal.azure.com otevřete prostředek vaší aplikace a klikněte na Prohlížeč.](./media/javascript/03.png)
+![Na stránce portal.azure.com otevřete prostředek vaší aplikace a klikněte na Prohlížeč.](media/javascript/03.png)
 
 Potřebujete předplatné [Microsoft Azure](https://azure.com). Pokud má váš tým předplatné pro společnosti, požádejte vlastníka, aby do něj přidal váš účet Microsoft.
 
@@ -38,13 +38,13 @@ Přihlaste se na [portál Azure](https://portal.azure.com).
 
 Pokud jste už nastavili monitorování pro aplikaci na straně serveru, už máte prostředek:
 
-![Zvolte Procházet, služby pro vývojáře, Application Insights.](./media/javascript/01-find.png)
+![Zvolte Procházet, služby pro vývojáře, Application Insights.](media/javascript/01-find.png)
 
 Pokud ji nemáte, vytvořte ji:
 
-![Zvolte Nový, služby pro vývojáře, Application Insights.](./media/javascript/01-create.png)
+![Zvolte Nový, služby pro vývojáře, Application Insights.](media/javascript/01-create.png)
 
-*Již máte dotazy?* [Další informace o vytvoření prostředku](../../azure-monitor/app/create-new-resource.md ).
+*Již máte dotazy?* [Další informace o vytvoření prostředku](create-new-resource.md ).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Přidejte skript SDK do aplikace nebo webové stránky
 
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 Vložte skript těsně před značku `</head>` každé stránky, kterou chcete sledovat. Pokud má daný web stránku předlohy, můžete se skript vložit. Příklad:
 
 * Vložíte ho do projektu aplikace ASP.NET MVC do složky `View\Shared\_Layout.cshtml`.
-* Na webu služby SharePoint, v Ovládacích panelech, otevřete [Nastavení webu / stránky předlohy](../../azure-monitor/app/sharepoint.md).
+* Na webu služby SharePoint, v Ovládacích panelech, otevřete [Nastavení webu / stránky předlohy](sharepoint.md).
 
 Skript obsahuje klíč instrumentace, který nasměruje data pro daný prostředek Application Insights. 
 
@@ -118,9 +118,9 @@ Otevřete okno prohlížeče zobrazující agregovaná data výkonu z prohlíže
 
 ![Na stránce portal.azure.com otevřete prostředek vaší aplikace a klikněte na tlačítko Nastavení, Prohlížeč](./media/javascript/03.png)
 
-Žádná data? V horní části stránky klikněte na **Obnovit**. Stále nic? Viz [Poradce při potížích](../../azure-monitor/app/troubleshoot-faq.md).
+Žádná data? V horní části stránky klikněte na **Obnovit**. Stále nic? Viz [Poradce při potížích](troubleshoot-faq.md).
 
-Okno prohlížeče je [okno Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md) s přednastavenými filtry a výběry grafu. Pokud chcete, můžete upravit časové rozmezí, filtry a konfiguraci grafu a uložit výsledek jako oblíbenou položku. Klikněte na tlačítko **Obnovit výchozí nastavení** a vraťte se zpět do původní konfigurace okna.
+Okno prohlížeče je [okno Průzkumníka metrik](metrics-explorer.md) s přednastavenými filtry a výběry grafu. Pokud chcete, můžete upravit časové rozmezí, filtry a konfiguraci grafu a uložit výsledek jako oblíbenou položku. Klikněte na tlačítko **Obnovit výchozí nastavení** a vraťte se zpět do původní konfigurace okna.
 
 ## <a name="page-load-performance"></a>Stav zatížení stránky
 V horní části naleznete segmentovaný grafu časů načtení stránky. Celková výška grafu představuje průměrný čas načtení a zobrazuje stránky z vaší aplikace v prohlížečích vašich uživatelů. Čas se měří od chvíle, když prohlížeč odesílá počáteční požadavek HTTP, po zpracování veškerých synchronních zatížení, včetně rozložení a spouštění skriptů. Neobsahuje asynchronní úlohy, například načítání webových součástí z volání AJAX.
@@ -178,7 +178,6 @@ Klikněte na libovolný řádek pro konkrétní podrobnosti.
 
 ![](./media/javascript/37.png)
 
-
 Klikněte na tlačítko `...` pro úplnou telemetrii volání Ajax.
 
 ### <a name="no-ajax-calls-reported"></a>Žádná nahlášená volání Ajax?
@@ -202,7 +201,7 @@ V okně diagnostické vyhledávání nastavte filtry pro zobrazení stránky.
 Vyberte další události pro zobrazení dalších podrobností. Na stránce podrobností klikněte na tlačítko „...“, chcete-li zobrazit více podrobností.
 
 > [!NOTE]
-> Pokud používáte [hledání](../../azure-monitor/app/diagnostic-search.md), Všimněte si, že musíte Hledat celá slova: "Abou" a "bout" se neshodují s "About".
+> Pokud používáte [hledání](diagnostic-search.md), Všimněte si, že musíte Hledat celá slova: "Abou" a "bout" se neshodují s "About".
 > 
 > 
 
@@ -227,8 +226,8 @@ Název stránky může obsahovat stejné znaky jako adresa URL, ale cokoli za �
 ## <a name="usage-tracking"></a>Sledování využití
 Chcete zjistit, co uživatelé provádějí s vaší aplikací?
 
-* [Další informace o nástrojích pro analýzu chování uživatele](../../azure-monitor/app/usage-overview.md)
-* [Další informace o vlastních událostech a metrikách rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md).
+* [Další informace o nástrojích pro analýzu chování uživatele](usage-overview.md)
+* [Další informace o vlastních událostech a metrikách rozhraní API](api-custom-events-metrics.md).
 
 ## <a name="video"></a> Video
 
@@ -238,7 +237,7 @@ Chcete zjistit, co uživatelé provádějí s vaší aplikací?
 
 
 ## <a name="next"></a> Další kroky
-* [Sledování využití](../../azure-monitor/app/usage-overview.md)
-* [Vlastní události a metriky](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Sestavení vyhodnocení poučení](../../azure-monitor/app/usage-overview.md)
+* [Sledování využití](usage-overview.md)
+* [Vlastní události a metriky](api-custom-events-metrics.md)
+* [Sestavení vyhodnocení poučení](usage-overview.md)
 

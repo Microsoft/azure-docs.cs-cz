@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 9689854d9a28debbfbcf908391806fffac6a2006
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450171"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005511"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
-Upozornění metrik ve službě Azure Monitor pracovat nad vícedimenzionálních metrik. Tyto metriky můžou být metriky platformy [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [oblíbených protokolů ze služby Log Analytics převést na metriky](../../azure-monitor/platform/alerts-metric-logs.md), standardních metrik Application Insights. Upozornění metrik hodnocení v pravidelných intervalech a zkontrolujte, zda podmínky na jeden nebo více metrika časových řad jsou true a vás upozorní, pokud se splní hodnocení. Upozornění na metriky jsou stavová, to znamená, že pouze odeslat oznámení při změně stavu.
+Upozornění metrik ve službě Azure Monitor pracovat nad vícedimenzionálních metrik. Tyto metriky můžou být metriky platformy [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [oblíbených protokolů ze služby Azure Monitor převést na metriky](../../azure-monitor/platform/alerts-metric-logs.md), standardních metrik Application Insights. Upozornění metrik hodnocení v pravidelných intervalech a zkontrolujte, zda podmínky na jeden nebo více metrika časových řad jsou true a vás upozorní, pokud se splní hodnocení. Upozornění na metriky jsou stavová, to znamená, že pouze odeslat oznámení při změně stavu.
 
 ## <a name="how-do-metric-alerts-work"></a>Jak fungují upozornění na metriku
 

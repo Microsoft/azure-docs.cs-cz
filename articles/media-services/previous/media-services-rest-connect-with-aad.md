@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 02/10/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ef81e0c4d04d57edbffa16b817b34af5f3bf8c26
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818026"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995625"
 ---
-# <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Ověřování pomocí služby Azure AD pro přístup k rozhraní API Azure Media Services pomocí REST
+# <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Ověřování pomocí služby Azure AD pro přístup k rozhraní API služby Media Services pomocí REST
 
 Pokud používáte ověřování Azure AD pomocí služby Azure Media Services, můžete se ověřit jedním ze dvou způsobů:
 

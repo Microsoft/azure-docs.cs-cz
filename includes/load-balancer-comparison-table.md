@@ -5,15 +5,15 @@ services: load balancer
 author: KumudD
 ms.service: load-balancer
 ms.topic: include
-ms.date: 01/09/2018
+ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: c4989016d31880e1c1990c0eb46091c8f50018bc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211820"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56078512"
 ---
 | | Standardní SKU | Základní SKU |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "54211820"
 | HA porty | Interní nástroj pro vyrovnávání zatížení | Není k dispozici. |
 | Ve výchozím nastavení zabezpečení | Veřejná IP adresa, veřejné koncové body nástroje pro vyrovnávání zatížení, interního nástroje pro vyrovnávání zatížení, které jsou koncové body jsou uzavřené příchozích toků, není-li přidat na seznam povolených skupinou zabezpečení sítě. | Otevřít ve výchozím nastavení, volitelné skupiny zabezpečení sítě. |
 | [Odchozí připojení](../articles/load-balancer/load-balancer-outbound-connections.md) | Můžete definovat explicitně fondu na základě odchozí NAT s [odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Můžete použít několik front-endů se podle zatížení vyrovnávání pravidlo odhlásit. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, skupinu dostupnosti virtuálního počítače škálovací sady pomocí odchozího připojení.  Koncové body služeb virtuální sítě se dá kontaktovat bez definování odchozího připojení a na zpracování dat se nepočítají.  Všechny veřejné IP adresy, včetně služeb Azure PaaS, která není k dispozici jako koncové body služby virtuální sítě, musíte kontaktovat prostřednictvím odchozího připojení a počet směrem k zpracovaná data. Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, dostupnost sady nebo škálovací sady virtuálních počítačů, odchozí připojení přes výchozí SNAT nejsou k dispozici. použít [odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) místo. Přenosový protokol konkrétní založené na protokolu Příchozí pravidlo Vyrovnávání zatížení je výstupní programování SNAT. | Jeden front-endu, když jsou k dispozici několik front-endů vybraného náhodně.  Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, skupinu dostupnosti nebo škálovací sady virtuálních počítačů, výchozí použita SNAT. |
-| [Odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklarativní odchozí NAT konfiguraci pomocí veřejné IP adresy nebo veřejné předpony IP nebo obojí, Konfigurovatelný časový limit odchozí nečinnosti, vlastní SNAT přiřazování portů | Není k dispozici. |
+| [Odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklarativní odchozí NAT konfiguraci pomocí veřejné IP adresy nebo veřejné předpony IP nebo obojí, konfigurovatelné odchozí časový limit nečinnosti (4 – 120 minut), vlastních SNAT přiřazování portů | Není k dispozici. |
 |  [Resetování TCP v nečinnosti](../articles/load-balancer/load-balancer-tcp-reset.md) | Povolit TCP vynulují časového limitu nečinnosti (TCP RVNÍ) u libovolného pravidla | Není k dispozici. |
 | [Několik front-endů](../articles/load-balancer/load-balancer-multivip-overview.md) | Příchozí a [odchozí](../articles/load-balancer/load-balancer-outbound-connections.md) | Pouze příchozí |
 | Operace správy | Většina operací < 30 sekund | 60 – 90 sekund typické. |

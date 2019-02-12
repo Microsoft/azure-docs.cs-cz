@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/09/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: e557b7220077be7fcca418f0c2cf8aceeace1eb5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2d910c5f031329e952f4892431877ec690c2a5a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809577"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991188"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování prostředku pomocí kodéru Media Encoder Standard pomocí rozhraní .NET 
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování prostředku pomocí kodéru Media Encoder Standard pomocí rozhraní .NET  
+
 Kódování úloh je jednou z nejběžnějších operací zpracování ve službě Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované Media Encoder Media Services. Můžete také použít kodér poskytovanými partnerem Media Services; kodérů třetích stran jsou k dispozici prostřednictvím Azure Marketplace. 
 
 Tento článek ukazuje, jak pomocí .NET určený ke kódování vašich prostředků pomocí Media Encoder Standard (MES). Media Encoder Standard je nakonfigurovaný pomocí jedné z přednastavení kodérů popsané [tady](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).

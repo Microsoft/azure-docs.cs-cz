@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 26721aa0eac69875f6a3704025e6ab71a54a1e31
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 086816bdb93873a39575564496cf043797f3a530
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078096"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993261"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění podmíněného přístupu Azure Active Directory? 
 
@@ -34,9 +34,9 @@ Tento článek obsahuje informace, na kterých je nutné nakonfigurovat podmínk
 
 Azure AD umožňuje jednotné přihlašování na zařízení, aplikací a službám odkudkoli na veřejném Internetu. Podmínka umístění můžete řídit přístup k vašim cloudovým aplikacím založené na síťovém umístění uživatele. Běžné případy použití pro podmínku umístění jsou:
 
-- Vyžadování vícefaktorového ověřování pro uživatele, kteří používají službu, když jsou mimo firemní síť  
+- Vyžadování vícefaktorového ověřování pro uživatele, kteří používají službu, když jsou mimo firemní síť.
 
-- Blokuje přístup pro uživatele, kteří používají službu z určitých zemích nebo oblastech. 
+- Blokuje přístup pro uživatele, kteří používají službu z určitých zemích nebo oblastech.
 
 Umístění je popisek pro umístění v síti, že buď představuje umístění s názvem nebo ověřování službou Multi-Factor Authentication důvěryhodné IP adresy.
 
@@ -62,9 +62,9 @@ Pojmenované umístění má následující komponenty:
 
 - **Označit jako důvěryhodné umístění** -příznak, který můžete nastavit pro pojmenované umístění pro důvěryhodného umístění. Důvěryhodná umístění jsou obvykle oblastem sítě, které jsou řízené vaším IT oddělením. Kromě podmíněného přístupu, důvěryhodné pojmenovaná umístění jsou také používány zprávy o zabezpečení Azure Identity Protection a Azure AD ke snížení [počet falešně pozitivních výsledků](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 
-- **Země / oblasti** – tato možnost umožňuje vybrat jeden nebo více zemi nebo oblast pro definování pojmenovaných umístění. 
+- **Země nebo oblasti** – tato možnost umožňuje vybrat jeden nebo více zemi nebo oblast pro definování pojmenovaných umístění. 
 
-- **Včetně neznámých oblastí** – některé IP adresy, které nejsou namapované na konkrétní zemi. Tato možnost umožňuje zvolit, pokud se tyto IP adresy, měly by být součástí pojmenované umístění. Uplatnění zásad, pomocí pojmenovaných umístění na neznámé umístění, může být kontrola.
+- **Včetně neznámých oblastí** – některé IP adresy, které nejsou namapované na konkrétní zemi. Tato možnost umožňuje zvolit, pokud se tyto IP adresy, měly by být součástí pojmenované umístění. Toto nastavení použijte, když zásady pomocí pojmenovaných umístění by se měly používat pro neznámými umístěními.
 
 Počet pojmenovaná umístění, které můžete nakonfigurovat je omezen velikostí související objekt ve službě Azure AD. Můžete nakonfigurovat:
 
@@ -87,7 +87,7 @@ Na stránce nastavení služby Multi-Factor authentication service můžete iden
 
 Po kontrole tuto možnost, včetně pojmenovaných umístění **důvěryhodné IP adresy MFA** budou platit pro všechny zásady s tímto vybrali.
 
-Pro mobilní i desktopové aplikace, které mají dlouhodobě doby trvání relace, je pravidelně znovu zhodnotí podmíněný přístup. Výchozí hodnota je jednou za hodinu. Když uvnitř je deklarace identity podnikové sítě a jen pro vydání v době počáteční ověřování Azure AD nemůže mít seznam Důvěryhodné rozsahy IP adres. V takovém případě je obtížnější k určení, zda uživatel je stále v podnikové síti:
+Pro mobilní i desktopové aplikace, které mají dlouhodobě doby trvání relace, je pravidelně znovu zhodnotí podmíněný přístup. Výchozí hodnota je jednou za hodinu. Když uvnitř deklarace identity podnikové sítě pouze vydává v době počáteční ověřování, Azure AD nemůže mít seznam Důvěryhodné rozsahy IP adres. V takovém případě je obtížnější k určení, zda uživatel je stále v podnikové síti:
 
 1. Zkontrolujte, jestli je IP adresa uživatele v jednom z důvěryhodné rozsahy IP adres.
 
@@ -150,7 +150,7 @@ Při vytvoření nebo aktualizaci pojmenovaná umístění pro hromadné aktuali
 
 ### <a name="cloud-proxies-and-vpns"></a>Cloudová proxy servery a sítěmi VPN 
 
-Pokud používáte proxy server hostované v cloudu nebo řešení sítě VPN, IP adresu služby Azure AD používá při vyhodnocování zásad je IP adresa proxy serveru. Záhlaví X-Forwarded-For (XFF), která obsahuje uživatele, veřejné IP adresy se nepoužívá, protože není k dispozici žádné ověření, který pochází z důvěryhodného zdroje, takže by prezentovat metodu faking IP adresu. 
+Pokud používáte proxy server hostované v cloudu nebo řešení sítě VPN, IP adresu služby Azure AD používá při vyhodnocování zásad je IP adresa proxy serveru. Záhlaví X-Forwarded-For (XFF), které obsahuje veřejné IP adresy uživatele není použita, protože neexistuje žádné ověření, který pochází z důvěryhodného zdroje, takže by k dispozici metoda faking IP adresu. 
 
 Když cloudový proxy server je v místě, zásadu, která se používá k vyžadovat zařízení připojené k doméně je možné nebo uvnitř podnikové sítě deklarací ze služby AD FS.
 

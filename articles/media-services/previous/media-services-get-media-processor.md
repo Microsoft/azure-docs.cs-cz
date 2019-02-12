@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 64e353bbb83c7696960fc1d2e478478afbc94241
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0a8cb1178ec70d4e50f2a45834f9592c4708c5af
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249233"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998633"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Postupy: získání Instance procesoru médií
+# <a name="how-to-get-a-media-processor-instance"></a>Postup: Získání instance procesoru médií
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
@@ -40,7 +40,7 @@ V následujícím tématu najdete seznam procesory médií:
 
 ## <a name="get-media-processor"></a>Získat procesor médií
 
-Následující metoda ukazuje, jak získat instanci procesoru médií. Příklad kódu předpokládá použití úrovni modulu proměnnou s názvem **_kontext** odkazovat kontextu serveru, jak je popsáno v části [postupy: připojení k Media Services prostřednictvím kódu programu](media-services-use-aad-auth-to-access-ams-api.md).
+Následující metoda ukazuje, jak získat instanci procesoru médií. Příklad kódu předpokládá použití úrovni modulu proměnnou s názvem **_kontext** odkazovat kontextu serveru, jak je popsáno v části [jak: Připojení ke službě Media Services prostřednictvím kódu programu](media-services-use-aad-auth-to-access-ams-api.md).
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

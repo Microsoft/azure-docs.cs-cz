@@ -1,6 +1,6 @@
 ---
-title: Analýza textových dat ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Popisuje různé možnosti pro analýzy dat v Log Analytics záznamy, když data ingestují a když je načten v dotazu, porovnávání relativní výhody u každého.
+title: Parsovat text data v protokolech Azure Monitor | Dokumentace Microsoftu
+description: Popisuje různé možnosti pro analýzu dat protokolu v záznamech Azure Monitor, když data ingestují a když je načten v dotazu, porovnání relativní výhody pro každý.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214126"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002184"
 ---
-# <a name="parse-text-data-in-log-analytics"></a>Analýza textových dat v Log Analytics
-Některá data shromážděná službou Log Analytics bude obsahovat více kusů informace v jedné vlastnosti. Analýza těchto dat do více vlastností usnadňují použít v dotazech. Běžným příkladem jsou [vlastního protokolu](../../log-analytics/log-analytics-data-sources-custom-logs.md) položku celý protokol s více hodnotami, které shromažďuje do vlastnosti jediné. Vytvoření samostatné vlastnosti pro různé hodnoty, můžete hledat a agregace v každém.
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Parsovat text data v protokolech Azure Monitor
+Některé protokolu data shromážděná službou Azure Monitor bude obsahovat více kusů informace v jedné vlastnosti. Analýza těchto dat do více vlastností usnadňují použít v dotazech. Běžným příkladem jsou [vlastního protokolu](../../log-analytics/log-analytics-data-sources-custom-logs.md) položku celý protokol s více hodnotami, které shromažďuje do vlastnosti jediné. Vytvoření samostatné vlastnosti pro různé hodnoty, můžete hledat a agregace v každém.
 
-Tento článek popisuje různé možnosti pro analýzy dat v Log Analytics záznamy, když data ingestují a když je načten v dotazu, porovnávání relativní výhody u každého.
+Tento článek popisuje různé možnosti pro analýzu dat protokolu ve službě Azure Monitor, když data ingestují a když je načten v dotazu, porovnání relativní výhody pro každý.
 
 
 ## <a name="parsing-methods"></a>Analýza kódu metody
@@ -60,7 +60,7 @@ Nevýhody této metody patří:
 - Můžete vytvořit režie při spouštění velmi rozsáhlých záznam komplexní logiku nastaví (miliard záznamů).
 
 ## <a name="parse-data-as-its-collected"></a>Jak se shromažďují data analyzovat
-Zobrazit [v Log Analytics vytvořit vlastní pole](../../log-analytics/log-analytics-custom-fields.md) podrobné informace o analýze dat, jako jsou shromažďovány. Tím se vytvoří vlastní vlastnosti v tabulce, která mohou být využívána dotazy stejně jako jakoukoli jinou vlastnosti.
+Zobrazit [vytvářet vlastní pole ve službě Azure Monitor](../platform/custom-fields.md) podrobné informace o analýze dat, jako jsou shromažďovány. Tím se vytvoří vlastní vlastnosti v tabulce, která mohou být využívána dotazy stejně jako jakoukoli jinou vlastnosti.
 
 ## <a name="parse-data-in-query-using-patterns"></a>Analyzovat data v dotazu pomocí vzorů
 Pokud chcete analyzovat data lze identifikovat podle vzoru opakuje napříč záznamy, můžete použít různé operátory ve [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) extrahovat konkrétní data do jednoho nebo více nových vlastností.
@@ -106,7 +106,7 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-Umožňuje efektivní analýzy ve velkém měřítku, Log Analytics používá re2 verzi regulárních výrazů, které je podobné, ale nejsou identické pro některé z dalších variant regulární výraz. Odkazovat [syntaxe výrazu re2](https://aka.ms/kql_re2syntax) podrobnosti.
+Umožňuje efektivní analýzy ve velkém měřítku, Azure Monitor používá re2 verzi regulárních výrazů, které je podobné, ale nejsou identické pro některé z dalších variant regulární výraz. Odkazovat [syntaxe výrazu re2](https://aka.ms/kql_re2syntax) podrobnosti.
 
 
 ## <a name="parse-delimited-data-in-a-query"></a>Analyzovat data s oddělovači v dotazu

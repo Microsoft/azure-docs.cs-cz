@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885843"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001960"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -40,7 +40,9 @@ Tady jsou některé věci, které vám pomůžou s využitím diagnostických pr
 
 * Uložte je do [ **účtu úložiště** ](../../azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete určit pomocí uchování (ve dnech) **nastavení diagnostiky prostředků**.
 * [Stream je **Event Hubs** ](diagnostic-logs-stream-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
-* Analyzovat pomocí [Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md), ve kterém budou data zapsána okamžitě ke službě Log Analytics bez nutnosti nejprve zapíše data do úložiště.  
+* Analyzovat pomocí [Azure Monitor](../../azure-monitor/platform/collect-azure-metrics-logs.md), kde data zapsaná okamžitě do Azure Monitor bez nutnosti nejprve zapíše data do úložiště.  
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Můžete použít účet úložiště nebo oboru názvů Event Hubs, která není ve stejném předplatném jako ta, které vysílá protokoly. Uživatel, který konfiguruje nastavení, musí mít správný přístup RBAC k oběma předplatným.
 
@@ -56,7 +58,7 @@ Můžete použít účet úložiště nebo oboru názvů Event Hubs, která nen�
 
 Protokolů diagnostiky prostředků je konfigurovat pomocí nastavení diagnostiky prostředku. Diagnostické protokoly tenanta se konfigurují pomocí nastavení diagnostiky tenanta. **Nastavení diagnostiky** pro řízení služeb:
 
-* Diagnostické protokoly a metriky se odešle (účet úložiště, Event Hubs, a/nebo Log Analytics).
+* Diagnostické protokoly a metriky se odešle (účet úložiště, Event Hubs a Azure Monitor).
 * Kategorie protokolu, které se odesílají a určuje, zda metrika data jsou taktéž odeslána.
 * Jak dlouho se každá kategorie protokolu uchovávat v účtu úložiště
     - Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů mezi 1 a 2147483647.
@@ -235,5 +237,4 @@ Přidání nastavení diagnostiky zobrazí zobrazení nastavení diagnostiky, kd
 
 * [Stream protokolů diagnostiky prostředků k **Event Hubs**](diagnostic-logs-stream-event-hubs.md)
 * [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/)
-* [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-
+* [Analýza protokolů ze služby Azure storage pomocí Azure monitoru](collect-azure-metrics-logs.md)

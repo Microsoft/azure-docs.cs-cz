@@ -2,7 +2,7 @@
 title: Vývoj aplikací videopřehrávače
 description: Téma obsahuje odkazy na přehrávačů a moduly plug-in, které můžete použít pro vývoj vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Media Services.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: d7f55022dc526f44251814ac953787d6652e6f90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237039"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004838"
 ---
 # <a name="develop-video-player-applications"></a>Vývoj aplikací videopřehrávače
 ## <a name="overview"></a>Přehled
@@ -46,14 +46,14 @@ Můžete také použít některý z následujících sad SDK:
 
 * [SDK klienta Smooth Streaming](http://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [Technologie Smooth Streaming aplikace Windows Store](media-services-build-smooth-streaming-apps.md)
-* [Médií platforma: Architekturu přehrávače](http://playerframework.codeplex.com/) 
+* [Platforma Microsoft Media: Architekturu přehrávače](http://playerframework.codeplex.com/) 
 * [HTML5 Dokumentace k rozhraní Framework přehrávač](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [Microsoft Smooth Streaming pro OSMF modulu plug-in](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Licencování Microsoft® technologie Smooth Streaming portování klienta](https://aka.ms/sspk) 
 * [Vývoj aplikací videa XBOX](https://xbox.create.msdn.com/) 
 
 ## <a name="advertising"></a>Inzerce a reklama
-Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím platformy Windows Media: přehrávačů. Přehrávačů s podporou ad jsou k dispozici pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak implementovat aplikace přehrávače. Existují tři různé druhy reklamy, které lze vložit do médií:
+Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím mediální platformu Windows: Přehrávačů. Přehrávačů s podporou ad jsou k dispozici pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak implementovat aplikace přehrávače. Existují tři různé druhy reklamy, které lze vložit do médií:
 
 Lineární – úplné rámce reklamy, které pozastavit video hlavní
 
@@ -61,7 +61,7 @@ Nelineárních – překrytí reklamy, které jsou zobrazeny, protože přehráv
 
 Doprovodná – reklamy, které se zobrazují mimo přehrávači
 
-Služby Active Directory je možné použít v libovolném bodě hlavní video časové ose. Hráč musí zjistit, kdy se má přehrát ad a které reklamy přehrávání. To se provádí pomocí sady standardních souborů založený na formátu XML: Video Ad Service šablony (VAST), několik Ad seznamu testů (VMAP) ve digitální Video, šablona abstraktní pořadí úloh na média (STOŽÁRŮ) a digitální Video přehrávač Ad rozhraní definice (VPAID). ROZSÁHLÉ soubory určují jaké služby Active Directory k zobrazení. Soubory VMAP určují, kdy přehrát různých reklamy a obsahovat OBROVSKÉ XML. Dalším způsobem, jak pořadí reklamy, které také mohou obsahovat OBROVSKÉ XML jsou STOŽÁRŮ soubory. Soubory VPAID definují rozhraní mezi přehrávače videa a ad nebo serveru služby ad. Další informace najdete v tématu [vkládání reklam](https://msdn.microsoft.com/library/dn387398.aspx).
+Služby Active Directory je možné použít v libovolném bodě hlavní video časové ose. Hráč musí zjistit, kdy se má přehrát ad a které reklamy přehrávání. To se provádí pomocí sady standardních souborů založený na formátu XML: Video Ad šablona (VAST), digitální Video služby, více Ad stop (VMAP), Media abstraktní sekvencování šablony (STOŽÁRŮ) a digitální videopřehrávače Ad definice rozhraní (VPAID). ROZSÁHLÉ soubory určují jaké služby Active Directory k zobrazení. Soubory VMAP určují, kdy přehrát různých reklamy a obsahovat OBROVSKÉ XML. Dalším způsobem, jak pořadí reklamy, které také mohou obsahovat OBROVSKÉ XML jsou STOŽÁRŮ soubory. Soubory VPAID definují rozhraní mezi přehrávače videa a ad nebo serveru služby ad. Další informace najdete v tématu [vkládání reklam](https://msdn.microsoft.com/library/dn387398.aspx).
 
 Informace o skryté titulky a podpora služby Active Directory v živé streamování videa najdete v tématu [podporované titulky a standardy vložení Ad](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad).
 

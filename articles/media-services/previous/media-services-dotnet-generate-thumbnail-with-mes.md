@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 9f717f0ae70c503d3527d5df2e6556c120146f3b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 430e3f0db2f053a2d5a6ea2a3e2a2d1c4418b501
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249305"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995131"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET 
 
 Můžete generovat jednu nebo více miniatur z vaše vstupní video v pomocí kodéru Media Encoder Standard [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), nebo [BMP](https://en.wikipedia.org/wiki/BMP_file_format) formátů souboru obrázku. Můžete odeslat úlohy, které vytvářejí pouze obrázky, nebo můžete kombinovat generování miniatur pomocí kódování. Tento článek obsahuje několik ukázky XML a JSON miniatur předvolby pro takové scénáře. Na konci tohoto článku je [ukázkový kód](#code_sample) , který ukazuje, jak provádět úlohu kódování pomocí Media Services .NET SDK.
 
@@ -552,14 +552,14 @@ Platí následující aspekty:
 * JPG nebo Png/BmpImage elementy mají počáteční krok a být v rozsahu atributy řetězce – to může být interpretován jako:
   
   * Číslo snímku, pokud jsou nezáporná celá čísla, například "Start": "120",
-  * Vzhledem ke zdrojové doby trvání, pokud je vyjádřená s příponou %, například "Start": "15 %", nebo
-  * Časové razítko, pokud je vyjádřená jako hh: mm:... formát. Například "Start": "00: 01:00"
+  * Relativní vzhledem k době trvání zdroje, pokud je vyjádřená s příponou %, například "Start": "15 %", NEBO
+  * Časové razítko, pokud je vyjádřená jako hh: mm:... formát. Například "Start": "00:01:00"
     
     Můžete kombinovat a párovat zápisy, jako je prosím.
     
-    Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit prvního "zajímavý" rámce obsahu Poznámka: (krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
-  * Výchozí: Spustit: {nejlepší}
-* Výstupní formát musí být explicitně zadat pro každou formát obrázku: Jpg nebo Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
+    Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit "zajímavý" prvního rámce obsahu poznámky: (Krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
+  * Výchozí hodnoty: Spustit: {nejlepší}
+* Výstupní formát, musí se explicitně zadat pro každou formát obrázku: Jpg/Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
 
 ## <a name="next-steps"></a>Další postup
 

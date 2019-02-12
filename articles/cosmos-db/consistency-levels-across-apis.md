@@ -7,26 +7,26 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b620ca76cfea296e504afffd91852308a01575db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54806993"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001963"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
-Pět modelů konzistence nabízených službou Azure Cosmos DB nativně podporuje SQL API služby Azure Cosmos DB. Při použití služby Azure Cosmos DB, rozhraní SQL API je výchozí hodnota. 
+Pět modelů konzistence nabízených službou Azure Cosmos DB nativně podporuje rozhraní SQL API. Při použití služby Azure Cosmos DB, rozhraní SQL API je výchozí hodnota. 
 
-Azure Cosmos DB poskytuje nativní podporu také pro přenosový protokol kompatibilní rozhraní API pro oblíbené databáze. Zahrnout databáze MongoDB, Apache Cassandra, Gremlin a Azure Table storage. Tyto databáze nenabízí přesně definovaných modelů konzistence a záruky jištěná smlouva SLA pro úrovně konzistence. Obvykle poskytují pouze podmnožinu pět modelů konzistence nabízených službou Azure Cosmos DB. Pro rozhraní SQL API, Gremlin API a rozhraní API tabulky se používá výchozí úroveň konzistence nakonfigurovaný na účtu Azure Cosmos DB. 
+Azure Cosmos DB poskytuje nativní podporu také pro přenosový protokol kompatibilní rozhraní API pro oblíbené databáze. Zahrnout databáze MongoDB, Apache Cassandra, Gremlin a Azure Table storage. Tyto databáze nenabízí přesně definovaných modelů konzistence a záruky jištěná smlouva SLA pro úrovně konzistence. Obvykle poskytují pouze podmnožinu pět modelů konzistence nabízených službou Azure Cosmos DB. Pro rozhraní SQL API, Gremlin API a rozhraní API tabulky se používá výchozí úroveň konzistence nakonfigurovaný na účtu Azure Cosmos. 
 
-V následujících částech se dozvíte mapování mezi konzistence dat požadoval ovladač klienta OSS pro Apache Cassandra 4.x a MongoDB 3.4. Tento dokument taky zobrazuje odpovídající úrovně konzistence služby Azure Cosmos DB pro Apache Cassandra a MongoDB.
+V následujících částech se dozvíte mapování mezi konzistence dat požadoval ovladač klienta OSS pro Apache Cassandra, MongoDB a odpovídající úrovně konzistence ve službě Azure Cosmos DB.
 
 ## <a id="cassandra-mapping"></a>Mapování mezi úrovněmi konzistence Apache Cassandra a Azure Cosmos DB
 
-Tato tabulka uvádí mapování konzistence mezi Apache Cassandra a úrovně konzistence ve službě Azure Cosmos DB. Pro každý z Cassandra čtení a zápis úrovní konzistence odpovídající úroveň konzistence Cosmos DB nabízí silnější, například přísnější záruky.
+Následující tabulka popisuje různé kombinace konzistence, které můžete s použitím rozhraní Cassandra API a mapování úrovně konzistence ekvivalentní nativní služby Cosmos DB. Všechny kombinace Apache Cassandra zápisu a čtení režimy jsou nativně podporovány službou Cosmos DB. V každé kombinací modelu konzistence čtení a zápisu Apache Cassandra Cosmos DB bude poskytovat záruky konzistence stejné nebo větší než Apache Cassandra. Kromě toho služby Cosmos DB poskytuje záruky větší odolnost než Apache Cassandra i v nejslabší režimu zápisu.
 
-Následující tabulka ukazuje **zápisu konzistence mapování** mezi Azure Cosmos DB a Cassandra:
+Následující tabulka ukazuje **zápisu mapování konzistence** mezi Azure Cosmos DB a Cassandra:
 
 | Cassandra | Azure Cosmos DB | Záruka |
 | - | - | - |
@@ -42,7 +42,7 @@ Následující tabulka ukazuje **zápisu konzistence mapování** mezi Azure Cos
 | LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE    | Omezená neaktuálnost | <ul><li>Omezená Neaktuálnost.</li><li>Maximálně K verzí nebo t čas za bránou.</li><li>Přečtěte si nejnovější potvrzená hodnota v oblasti.</li></ul> |
 | ONE, LOCAL_ONE, ANY   | Konzistentní předpona | Konzistentní předpona v jednotlivých oblastech |
 
-Následující tabulka ukazuje **čtení konzistence mapování** mezi Azure Cosmos DB a Cassandra:
+Následující tabulka ukazuje **mapování konzistence čtení** mezi Azure Cosmos DB a Cassandra:
 
 | Cassandra | Azure Cosmos DB | Záruka |
 | - | - | - |

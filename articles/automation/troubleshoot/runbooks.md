@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit problémy pomocí runbooků Azure Automation
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1500fc5826b50e97e7fd51d18e672933275a9533
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cdcf7f466e65cffd36bdcc816a9808ecac2ae242
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468195"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991289"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -172,6 +172,32 @@ while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout
 
 $jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRecord | Select-Object -ExpandProperty Value
 ```
+
+### <a name="get-serializationsettings"></a>Scénář: Zobrazí se chyba ve vaší datové proudy úlohy o get_SerializationSettings – metoda
+
+#### <a name="issue"></a>Problém
+
+Zobrazí se v chyby ve vaší datové proudy úlohy pro sady runbook s následující zprávou:
+
+```
+Connect-AzureRMAccount : Method 'get_SerializationSettings' in type 
+'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 
+'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 
+does not have an implementation.
+At line:16 char:1
++ Connect-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Connect-AzureRmAccount], TypeLoadException
+    + FullyQualifiedErrorId : System.TypeLoadException,Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato chyba je způsobena pomocí rutin AzureRM a Az v sadě runbook. Vyvolá se při importu `Az` před importem `AzureRM`.
+
+#### <a name="resolution"></a>Řešení
+
+Rutiny az a AzureRM nelze importovat a použít ve stejné sadě runbook, další informace o podpoře Az ve službě Azure Automation najdete v článku [Az podpora modulu ve službě Azure Automation](../az-modules.md).
 
 ### <a name="task-was-cancelled"></a>Scénář: Sada runbook selže s chybou: Úloha byla zrušena
 

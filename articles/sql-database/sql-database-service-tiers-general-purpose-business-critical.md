@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3521f910ded2e24de9cfa7b1aa1d635843527ef5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2a9b84b20ab1480c9b0222980cb36c40e8017973
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878812"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989302"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Úrovně služby Azure SQL Database
 
@@ -30,7 +30,7 @@ Azure SQL Database je založené na architektuře databázový stroj SQL serveru
 Tento článek popisuje aspekty úložiště a zálohování pro úrovně služeb pro obecné účely a pro důležité obchodní informace v nákupní model založený na virtuálních jádrech.
 
 > [!NOTE]
-> Podrobnosti na úrovni služby Hyperškálovatelného v nákupní model založený na virtuálních jádrech najdete v tématu [úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md). Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-service-tiers.md).
+> Podrobnosti na úrovni služby Hyperškálovatelného v nákupní model založený na virtuálních jádrech najdete v tématu [úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md). Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-purchase-models.md).
 
 ## <a name="data-and-log-storage"></a>Úložiště dat a protokolů
 

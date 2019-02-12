@@ -1,6 +1,6 @@
 ---
 title: Řešení pro správu Office 365 v Azure | Dokumentace Microsoftu
-description: Tento článek poskytuje podrobné informace o konfiguraci a použití služeb Office 365 řešení v Azure.  Obsahuje podrobný popis služeb Office 365 záznamy vytvořené v Log Analytics.
+description: Tento článek poskytuje podrobné informace o konfiguraci a použití služeb Office 365 řešení v Azure.  Obsahuje podrobný popis služeb Office 365 záznamy vytvořené ve službě Azure Monitor.
 services: operations-management-suite
 documentationcenter: ''
 author: bwren
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216608"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999296"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
 ![Logo Office 365](media/solution-office-365/icon.png)
 
-Řešení pro správu Office 365 vám umožní monitorovat vaše prostředí Office 365 ve službě Log Analytics.
+Řešení pro správu Office 365 vám umožní monitorovat vaše prostředí Office 365 ve službě Azure Monitor.
 
 - Monitorování aktivity uživatelů na účty Office 365 a analýza vzorců používání a také identifikovat trendy chování. Například můžete extrahovat scénáře konkrétní použití, jako jsou soubory, které jsou sdílené mimo vaši organizaci nebo nejoblíbenější Sharepointové weby.
 - Monitorování aktivit správce ke sledování změn konfigurace a operace vysoká oprávnění.
 - Detekujte a prošetřete chování uživatele, který lze přizpůsobit potřebám vaší organizace.
 - Předvedení audit a dodržování předpisů. Můžete například monitorovat operací přístupu k souboru na důvěrné soubory, které vám pomohou s procesu audit a dodržování předpisů.
-- Provádět provozní řešení potíží s použitím [prohledávání protokolů](../log-query/log-query-overview.md) nad data aktivit Office 365 vaší organizace.
+- Provádět provozní řešení potíží s použitím [protokolu dotazy](../log-query/log-query-overview.md) nad data aktivit Office 365 vaší organizace.
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné provést následující před toto řešení je nainstalovaná a nakonfigurovaná.
@@ -43,7 +43,7 @@ Je nutné provést následující před toto řešení je nainstalovaná a nakon
 Toto řešení není možné nainstalovat všechny sady management Pack v [připojené skupiny pro správu](../platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Instalace a konfigurace
-Začněte přidáním [řešení Office 365 ke svému předplatnému](solutions.md#install-a-management-solution). Až ho přidáte, je nutné provést kroky konfigurace v této části pro získání přístupu k předplatnému Office 365.
+Začněte přidáním [řešení Office 365 ke svému předplatnému](solutions.md#install-a-monitoring-solution). Až ho přidáte, je nutné provést kroky konfigurace v této části pro získání přístupu k předplatnému Office 365.
 
 ### <a name="required-information"></a>Požadované informace
 Před zahájením tohoto postupu, shromážděte následující informace.
@@ -375,7 +375,7 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>Odinstalace
-Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat řešení pro správu](solutions.md#remove-a-management-solution). Tato data se shromažďují z Office 365 do Log Analytics ale nezastaví. Pomocí následujícího postupu zrušit odběr služeb Office 365 a shromažďování dat ukončit.
+Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat řešení pro správu](solutions.md#remove-a-monitoring-solution). To shromažďovaných dat z Office 365 do služby Azure Monitor ale nezastaví. Pomocí následujícího postupu zrušit odběr služeb Office 365 a shromažďování dat ukončit.
 
 1. Uložte následující skript jako *office365_unsubscribe.ps1*.
 
@@ -479,9 +479,12 @@ Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat ře
 Řešení Office 365 nenačítá data z libovolného [agentů Log Analytics](../platform/agent-data-sources.md).  Načte data přímo z Office 365.
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
-Může trvat několik hodin se zpočátku shromážděná data. Jakmile začne shromažďování, odešle Office 365 [oznámení webhooku](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobná data do Log Analytics pokaždé, když je vytvořen záznam. Tento záznam je k dispozici ve službě Log Analytics v rámci pár minut od jejich obdržení.
+Může trvat několik hodin se zpočátku shromážděná data. Jakmile začne shromažďování, odešle Office 365 [oznámení webhooku](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobná data do Azure monitoru pokaždé, když je vytvořen záznam. Tento záznam je k dispozici ve službě Azure Monitor během pár minut od jejich obdržení.
 
 ## <a name="using-the-solution"></a>Použití řešení
+
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 Když přidáte řešení pro Office 365 do pracovního prostoru Log Analytics **Office 365** se přidá dlaždice na řídicí panel. Na této dlaždici se zobrazuje počet a grafické vyjádření počtu počítačů ve vašem prostředí a jejich kompatibilita s aktualizacemi.<br><br>
 ![Dlaždice souhrnu Office 365](media/solution-office-365/tile.png)  
 
@@ -501,9 +504,9 @@ Klikněte na **Office 365** otevřete dlaždici **Office 365** řídicího panel
 
 
 
-## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
+## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
 
-Mají všechny záznamy vytvořené v pracovním prostoru Log Analytics řešení pro Office 365 **typ** z **OfficeActivity**.  **OfficeWorkload** vlastnost určuje, jaké služby Office 365 záznam označuje – Exchange, AzureActiveDirectory, SharePoint nebo OneDrive.  **Detailů** vlastnost určuje typ operace.  Vlastnosti pro každý typ operace se bude lišit a jsou uvedeny v následujících tabulkách.
+Mají všechny záznamy vytvořené v pracovním prostoru Log Analytics ve službě Azure Monitor řešení pro Office 365 **typ** z **OfficeActivity**.  **OfficeWorkload** vlastnost určuje, jaké služby Office 365 záznam označuje – Exchange, AzureActiveDirectory, SharePoint nebo OneDrive.  **Detailů** vlastnost určuje typ operace.  Vlastnosti pro každý typ operace se bude lišit a jsou uvedeny v následujících tabulkách.
 
 ### <a name="common-properties"></a>Společné vlastnosti
 Následující vlastnosti jsou společné pro všechny záznamy Office 365.
@@ -708,6 +711,6 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 
 ## <a name="next-steps"></a>Další postup
-* K zobrazení podrobných údajů o aktualizaci použijte Hledání v protokolu služby [Log Analytics](../log-query/log-query-overview.md).
+* Použití [protokolu dotazů ve službě Azure Monitor](../log-query/log-query-overview.md) k zobrazení podrobných údajů o aktualizaci.
 * [Vytvářejte vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazíte váš oblíbený vyhledávací dotazy Office 365.
 * [Vytvořit upozornění](../platform/alerts-overview.md) proaktivně upozornit důležité aktivit Office 365.  

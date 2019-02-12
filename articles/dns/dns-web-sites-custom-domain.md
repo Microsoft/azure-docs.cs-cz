@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/20/2018
 ms.author: victorh
-ms.openlocfilehash: 2abe6c11b2a6fe9a9146f5c5689597fe3e29fa82
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: HT
+ms.openlocfilehash: 638d6c5740f999af2f1dac7cbc51e0b6aeb38c0b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918727"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996351"
 ---
-# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
+# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření záznamů DNS v vlastní domény pro webovou aplikaci 
 
 Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete třeba vytvořit webovou aplikaci Azure a umožnit uživatelům přístup k ní prostřednictvím plně kvalifikovaného názvu domény (FQDN) www.contoso.com nebo contoso.com.
 
@@ -45,6 +45,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - [Vytvořit plán služby App Service](../app-service/app-service-web-get-started-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
 - Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
@@ -71,9 +73,9 @@ Na stránce **Vlastní domény** zkopírujte adresu IPv4 aplikace:
 ### <a name="create-the-a-record"></a>Vytvoření záznamu A
 
 ```powershell
-New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
+New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
  -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "<your web app IP address>")
+ -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
 ```
 
 ### <a name="create-the-txt-record"></a>Vytvoření záznamu TXT
@@ -81,9 +83,9 @@ New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Služba App Services používá tento záznam jenom při konfiguraci, když potřebuje ověřit, že vám vlastní doména opravdu patří. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
 ```powershell
-New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
+New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
  -Name `"@" -RecordType "txt" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -Value  "contoso.azurewebsites.net")
+ -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
 ## <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
@@ -95,9 +97,9 @@ Otevřete Azure PowerShell a vytvořte nový záznam CNAME. Tento příklad vytv
 ### <a name="create-the-record"></a>Vytvoření záznamu
 
 ```powershell
-New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
+New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
  -Name "www" -RecordType "CNAME" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -cname "contoso.azurewebsites.net")
+ -DnsRecords (New-AzDnsRecordConfig -cname "contoso.azurewebsites.net")
 ```
 
 Dalším příkladem je tato odpověď:
@@ -157,7 +159,7 @@ contoso.com text =
 Teď můžete do webové aplikace přidat vlastní názvy hostitele:
 
 ```powershell
-set-AzureRmWebApp `
+set-AzWebApp `
  -Name contoso `
  -ResourceGroupName MyAzureResourceGroup `
  -HostNames @("contoso.com","www.contoso.com","contoso.azurewebsites.net")
@@ -178,7 +180,7 @@ Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
 
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, můžete odstranit skupinu prostředků **myresourcegroup**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučte se vytvářet privátní zóny Azure DNS.
 

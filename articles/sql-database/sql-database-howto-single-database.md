@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat databázi SQL Azure – samostatný | Dokumentace Microsoftu
-description: Zjistěte, jak konfigurovat a spravovat samostatnou databázi Azure SQL Database –
+title: Jak nakonfigurovat databázi SQL Azure – jeden | Dokumentace Microsoftu
+description: Zjistěte, jak konfigurovat a spravovat Azure SQL Database – izolované databáze
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 613b4b700be580c2a0847881e64eedbeedee0c65
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: 195afabc0f512f1202904ab7ebf1471b34e2377f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510534"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989266"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Jak používat izolované databáze ve službě Azure SQL Database
 

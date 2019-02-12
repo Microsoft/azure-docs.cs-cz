@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 15e45d959d8aa5c377db0615fdf3ad2e5f762f43
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6f61f45d8484ddefb465a26f94b8ac448229a062
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246258"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000880"
 ---
-# <a name="h264-single-bitrate-16x9-sd-audio-51"></a>H264 s jednou přenosovou rychlostí 16 x 9 SD zvuku 5.1
+# <a name="h264-single-bitrate-16x9-sd-audio-51"></a>H264 Single Bitrate 16x9 SD Audio 5.1
 `Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Toto téma ukazuje, `H264 Single Bitrate 16x9 SD Audio 5.1` přednastavení ve formátu XML a JSON.  

@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: b4d760d8520f43b223665f17c85d3932761ebe17
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190715"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003104"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Generování miniatur sprite 
+# <a name="generate-a-thumbnail-sprite"></a>Generování miniatur sprite  
 
 Media Encoder Standard můžete použít ke generování miniatur sprite, což je soubor ve formátu JPEG, který obsahuje více miniatur malé rozlišení spojených dohromady do jedné image (velké) společně s VTT souboru. Tento soubor VTT Určuje časový rozsah v vstupního videa, která představuje jednotlivé miniatury, společně s velikostí a souřadnice této miniaturu v rámci velkých souborů ve formátu JPEG. Přehrávačů videa pomocí image Souborová služba a sprite VTT zobrazit "visual" seekbar prohlížeč zobrazovaly vizuální zpětnou vazbu, když scrubbingu zpět a vpřed podél časové osy videa.
 

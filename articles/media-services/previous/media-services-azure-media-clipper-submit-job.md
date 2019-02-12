@@ -6,17 +6,18 @@ keywords: Galerie, dílčí klip, kódování, médií
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 585cb88ca853954b23369c8e097583e7e8656355
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821443"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002135"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Odesílání úloh oříznutí z Azure Media Clipperem
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Odesílání úloh oříznutí z Azure Media Clipperem 
+
 Azure Media Clipperem vyžaduje **submitSubclipCallback** metody k implementaci pro zpracování odesílání úloh oříznutí. Tato funkce je pro implementaci metody POST protokolu HTTP Clipperem výstupu na webovou službu. Tato webová služba je, kde můžete odeslat kódovací úlohu. Výstup Clipperem je buď kodéru Media Encoder Standard kódování předvolbu pro vykreslený úlohy nebo datové části rozhraní REST API pro volání filtr dynamických manifestů. Tento model průchozí je nezbytné, protože přihlašovací údaje k účtu media services nejsou zabezpečené do prohlížeče klienta.
 
 Následující sekvence diagramu znázorňuje pracovní postupy mezi klientského prohlížeče, webové služby a služby Azure Media Services: ![Azure Media Clipperem sekvenční Diagram](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)

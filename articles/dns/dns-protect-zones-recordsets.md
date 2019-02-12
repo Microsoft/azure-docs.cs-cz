@@ -7,14 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 137d8e1c1477d5b9c88cecc39316d62a79a4cab8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873913"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997375"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chránit záznamy a zóny DNS
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Záznamy a zóny DNS jsou důležitým prostředkům. Odstraňuje se zóna DNS nebo jenom jeden záznam DNS může vést k výpadku celkové služby.  Proto je důležité, aby kritické záznamy a zóny DNS jsou chráněné proti neoprávněné nebo nechtěné změny.
 
@@ -38,7 +40,7 @@ Oprávnění může být také [udělit prostřednictvím Azure Powershellu](../
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
 Je také ekvivalentní příkaz [dostupná přes rozhraní příkazového řádku Azure](../role-based-access-control/role-assignments-cli.md):
@@ -62,7 +64,7 @@ Oprávnění může být také [udělit prostřednictvím Azure Powershellu](../
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
 Je také ekvivalentní příkaz [dostupná přes rozhraní příkazového řádku Azure](../role-based-access-control/role-assignments-cli.md):
@@ -84,7 +86,7 @@ Sada záznamů úrovně oprávnění RBAC může být také [udělit prostředni
 
 ```azurepowershell
 # Grant permissions to a specific record set
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 Je také ekvivalentní příkaz [dostupná přes rozhraní příkazového řádku Azure](../role-based-access-control/role-assignments-cli.md):
@@ -140,7 +142,7 @@ Vlastní definice rolí nejde definovat aktuálně prostřednictvím portálu Az
 
 ```azurepowershell
 # Create new role definition based on input file
-New-AzureRmRoleDefinition -InputFile <file path>
+New-AzRoleDefinition -InputFile <file path>
 ```
 
 Také možné vytvářet přes rozhraní příkazového řádku Azure:
@@ -158,7 +160,7 @@ Další informace o tom, jak vytvářet, spravovat a přiřazení vlastních rol
 
 Azure Resource Manager podporuje kromě RBAC, jiný typ řízení zabezpečení, a to možnost uzamčení prostředků. Kde RBAC pravidla umožňují řídit akce konkrétních uživatelů a skupin, zámky prostředků se použijí k prostředku a platí ve všech uživatelů a rolí. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
 
-Existují dva typy prostředků zámku: **CanNotDelete** a **jen pro čtení**. Ty lze použít na zónu DNS, nebo na jednotlivé sady záznamů.  Následující části popisují několik běžných scénářů a jak podporovat jejich použití zámků prostředků.
+Existují dva druhy zámek prostředku: **CanNotDelete** a **jen pro čtení**. Ty lze použít na zónu DNS, nebo na jednotlivé sady záznamů.  Následující části popisují několik běžných scénářů a jak podporovat jejich použití zámků prostředků.
 
 ### <a name="protecting-against-all-changes"></a>Ochrana proti všechny změny
 
@@ -172,7 +174,7 @@ Zóna úrovni prostředku, který zámky lze také vytvořit pomocí Azure Power
 
 ```azurepowershell
 # Lock a DNS zone
-New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
+New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
 Konfigurace ámků prostředků Azure se momentálně nepodporuje prostřednictvím rozhraní příkazového řádku Azure.
@@ -188,7 +190,7 @@ Uzamčení prostředků s úrovní sadu záznamů můžete nyní pouze být nako
 
 ```azurepowershell
 # Lock a DNS record set
-New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>Ochrana před odstraněním zóny
@@ -203,7 +205,7 @@ Následující příkaz Powershellu vytvoří CanNotDelete zámek proti záznamu
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 Dalším způsobem, jak zabránit náhodným odstraněním zóny, je použití vlastní roli, abyste zajistili operátor a účty služeb používané ke správě zón nemáte oprávnění odstranit zónu. Když budete potřebovat k odstranění zóny, můžete vynutit odstranění dvoustupňové, první udělení oprávnění zóny delete (v oboru zóny, abyste zabránili odstranění nesprávné zóny) a druhé odstranění zóny.

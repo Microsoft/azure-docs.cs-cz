@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 2b035243e577adbbefa866acbae6243a9e7e9a31
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6fe4f391b5337929efc3f6190a925fd1e967cf1c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285071"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999347"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Přizpůsobení modelu osoba s rozhraním API pro Video Indexer
 
@@ -57,7 +57,7 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |jméno|řetězec|Ano|Název pro model osoby|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
@@ -102,7 +102,7 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |id|řetězec|Ano|Id modelu osoby (vygeneruje, když se vytvoří model osoba)|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
@@ -139,7 +139,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
 ### <a name="request-body"></a>Text požadavku
@@ -194,7 +194,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |videoId|řetězec|Ano|ID videa, ve kterém se zobrazí plošku, kterou chcete aktualizovat. Tím se vytvoří při video je nahraný a indexovat.|
 |funkci faceId|integer|Ano|ID pro rozpoznávání tváře, která bude aktualizována. Můžete získat funkci faceId rejstřík videí|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|

@@ -11,19 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: d08deda0483516180b9923838104cfb6596e7495
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756644"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003291"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Servery služby Azure SQL Database a jejich správa
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Co je server Azure SQL Database
 
-Server služby SQL Database je logická konstrukce, která funguje jako centrální administrativní bod pro více samostatných nebo [ve fondu](sql-database-elastic-pool.md) databází, [přihlášení](sql-database-manage-logins.md), [pravidla brány firewall](sql-database-firewall-configure.md), [auditování pravidla](sql-database-auditing.md), [zásad detekce hrozeb](sql-database-threat-detection.md), a [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md) databáze SQL serveru může být v jiné oblasti než skupinou prostředků. Než budete moct vytvořit databázi Azure SQL, musí existovat server SQL Database. Server služby SQL Database spravuje všechny databáze se vytvoří ve stejné oblasti jako databázového SQL serveru.
+Server služby SQL Database je logická konstrukce, která funguje jako centrální administrativní bod pro více jedním nebo [ve fondu](sql-database-elastic-pool.md) databází, [přihlášení](sql-database-manage-logins.md), [pravidla brány firewall](sql-database-firewall-configure.md), [auditování pravidla](sql-database-auditing.md), [zásad detekce hrozeb](sql-database-threat-detection.md), a [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md) databáze SQL serveru může být v jiné oblasti než skupinou prostředků. Než budete moct vytvořit databázi Azure SQL, musí existovat server SQL Database. Server služby SQL Database spravuje všechny databáze se vytvoří ve stejné oblasti jako databázového SQL serveru.
 
 Server služby SQL Database se liší od instance SQL serveru, který je pravděpodobně znáte místního prostředí. Konkrétně služby SQL Database neposkytuje žádnou záruku ohledně umístění databází ve vztahu k serveru SQL Database, která spravuje a zpřístupňuje bez přístupu na úrovni instance nebo funkce. Naproti tomu instanci databáze ve spravované instanci jsou všechny společně umístěné-stejným způsobem, že máte zkušenosti s SQL serverem v místního prostředí.
 

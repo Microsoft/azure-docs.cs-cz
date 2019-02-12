@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765479"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997079"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Přidat Kubernetes na webu Marketplace služby Azure Stack
 
@@ -65,15 +65,15 @@ Vytvořte plán, nabídky a předplatné pro položky Kubernetes Marketplace. M�
 
 Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu identity management, je potřeba vytvořit instanční objekt pro uživatele nasazení clusteru Kubernetes.
 
-1. Vytváření a exportování certifikátu se použije k vytvoření instančního objektu služby. Následující fragment kódu níže ukazuje, jak vytvořit certifikát podepsaný svým držitelem. 
+1. Vytvořte a exportujte certifikát podepsaný svým držitelem použitý k vytvoření instančního objektu služby. 
 
     - Budete potřebovat následující údaje:
 
        | Hodnota | Popis |
        | ---   | ---         |
-       | Heslo | Heslo certifikátu. |
-       | Cesta k místní certifikátu | Název a cesta k souboru certifikátu. Příklad: `path\certfilename.pfx` |
-       | Název certifikátu | Název certifikátu. |
+       | Heslo | Zadejte nové heslo pro certifikát. |
+       | Cesta k místní certifikátu | Zadejte název a cesta k souboru certifikátu. Příklad: `c:\certfilename.pfx` |
+       | Název certifikátu | Zadejte název certifikátu. |
        | Umístění úložiště certifikátů |  Například `Cert:\LocalMachine\My`. |
 
     - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
@@ -82,8 +82,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
-        $certificateName = "<certificate name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certificateName = "CN=<certificate name>"
         $certStoreLocation="<certificate store location>"
         
         $params = @{
@@ -105,24 +104,33 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. Vytvoření instančního objektu pomocí certifikátu.
+2.  Poznamenejte si nové ID certifikátu, zobrazí v relaci Powershellu, `1C2ED76081405F14747DC3B5F76BB1D83227D824`. ID se použije při vytváření instančního objektu.
+
+    ```PowerShell  
+    VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
+    ```
+
+3. Vytvoření instančního objektu pomocí certifikátu.
 
     - Budete potřebovat následující údaje:
 
        | Hodnota | Popis                     |
        | ---   | ---                             |
        | ERCS IP | V ASDK, privilegovaných koncový bod je obvykle `AzS-ERCS01`. |
-       | Název aplikace | Jednoduchý název instančního objektu aplikace. |
-       | Umístění úložiště certifikátů | Cesta v počítači, kam jste uložili certifikát. Příklad: `Cert:\LocalMachine\My\<someuid>` |
+       | Název aplikace | Zadejte jednoduchý název instančního objektu aplikace služby. |
+       | Umístění úložiště certifikátů | Cesta v počítači, kam jste uložili certifikát. Je toto označeno umístění úložiště a ID certifikátu vygenerovaný v prvním kroku. Příklad: `Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
 
-    - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
+       Po zobrazení výzvy použijte následující pověření pro připojení ke koncovému bodu oprávnění. 
+        - Uživatelské jméno: Zadejte účet CloudAdmin ve formátu <Azure Stack domain>\cloudadmin. (Pro ASDK, uživatelské jméno je azurestack\cloudadmin.)
+        - Heslo: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
+
+    - Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
 
         ```PowerShell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
-        $certStoreLocation="<certificate store location>"
+        $certStoreLocation="<certificate location>"
         
         # Get certificate information
         $cert = Get-Item $certStoreLocation
@@ -189,7 +197,7 @@ Přidejte následující image Ubuntu Server na webu Marketplace:
 
 1. Vyberte **+ přidat z Azure**.
 
-1. Zadejte `UbuntuServer`.
+1. Zadejte `Ubuntu Server`.
 
 1. Vyberte nejnovější verzi serveru. Zkontrolujte na plnou verzi a ujistěte se, že máte nejnovější verzi:
     - **Publisher**: Canonical

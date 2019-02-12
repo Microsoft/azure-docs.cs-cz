@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bbe26b19f9467034a4612ac1b40124122bee7f0c
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: d2c2e87b3dade68dc311aa38743c11a60a69f68b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292199"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004539"
 ---
 # <a name="find-exact-moments-within-videos"></a>Vyhledání určitých momentů ve videích
 
@@ -26,7 +26,6 @@ Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určit�
     V následujícím příkladu jsme hledali všechna videa, které jsou vytvořené na webu Channel 9 se Scottem Hanselmanem.
 
     ![Search](./media/video-indexer-search/video-indexer-search01.png)
-    
 3. Hledejte souhrnný poznatky o videu.
 
     Můžete vyhledávat ve videu kliknutím **Přehrát** na video. Potom můžete hledat ve videu výběrem **hledání** kartu. Například jsme hledali všechna místa, kde se používá text "identity protection". 
@@ -34,8 +33,6 @@ Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určit�
     ![Search](./media/video-indexer-search/video-indexer-search02.png)
 
     Pokud kliknete na některý z výsledků, hráč přináší je na daném okamžiku videa. Ve vaší aplikaci můžete dosáhnout zobrazení player a přehledy a synchronizace. Další informace najdete v tématu [vložit Video Indexer widgetů do aplikace](video-indexer-embed-widgets.md). 
-
-    
 4. Vyhledejte podrobný přehled videa.
 
     Pokud chcete vytvořit vlastní rozpis podle video, které jste našli, stiskněte **upravit** tlačítko. Tato stránka zobrazuje úplný rozpis videa. Můžete vyhledávat v rozpis k zobrazení pouze řádky, které vás zajímají. Další informace najdete v tématu [zobrazení a úprava přehledů funkce Video Indexer](video-indexer-view-edit.md).

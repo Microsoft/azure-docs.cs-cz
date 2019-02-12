@@ -1,6 +1,6 @@
 ---
 title: Shromažďovat vlastní data JSON ve službě Azure Monitor | Dokumentace Microsoftu
-description: Vlastní zdroje dat JSON dají shromažďovat do Log Analytics pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON jako curl nebo jeden z jeho FluentD více než 300 moduly plug-in. Tento článek popisuje konfigurace požadované pro tuto kolekci data.
+description: Vlastní zdroje dat JSON se můžou shromažďovat do služby Azure Monitor pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON jako curl nebo jeden z jeho FluentD více než 300 moduly plug-in. Tento článek popisuje konfigurace požadované pro tuto kolekci data.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 36f914109d8d3879d23511cb37055d20db4d670c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8b03d6838e9d942da766e0c7aa4c2c2e161a6b14
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105215"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990117"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Shromažďovat vlastní zdroje dat JSON pomocí agenta Log Analytics pro Linux ve službě Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Vlastní zdroje dat JSON dají shromažďovat do [Log Analytics](data-collection.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON, jako [curl](https://curl.haxx.se/) nebo jeden z [FluentD na více než 300 moduly plug-in](http://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.
+Vlastní zdroje dat JSON dají shromažďovat do [Azure Monitor](data-collection.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat mohou být jednoduché skripty, které vrací JSON, jako [curl](https://curl.haxx.se/) nebo jeden z [FluentD na více než 300 moduly plug-in](http://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.
 
 
 > [!NOTE]
@@ -33,7 +33,7 @@ Vlastní zdroje dat JSON dají shromažďovat do [Log Analytics](data-collection
 
 ### <a name="configure-input-plugin"></a>Konfigurace vstupu modulu plug-in
 
-Chcete-li shromažďovat data JSON ve službě Log Analytics, přidejte `oms.api.` začátek FluentD značku ve vstupu modulu plug-in.
+Chcete-li shromažďovat data JSON ve službě Azure Monitor, přidejte `oms.api.` začátek FluentD značku ve vstupu modulu plug-in.
 
 Například tady je samostatného konfiguračního souboru `exec-json.conf` v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Tady se používá modul plug-in FluentD `exec` ke spuštění příkazu curl každých 30 sekund.  Výstup tohoto příkazu se shromažďují pomocí modulu plug-in výstup JSON.
 
@@ -87,9 +87,9 @@ Restartujte agenta Log Analytics pro služby service pro Linux pomocí následuj
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Výstup
-Data se shromažďují v Log Analytics s typem záznamu `<FLUENTD_TAG>_CL`.
+Data budou shromážděna ve službě Azure Monitor s typem záznamu `<FLUENTD_TAG>_CL`.
 
-Například vlastní značku `tag oms.api.tomcat` v Log Analytics s typem záznamu `tomcat_CL`.  Může načíst všechny záznamy z tohoto typu s následující dotaz protokolu.
+Například vlastní značku `tag oms.api.tomcat` ve službě Azure Monitor s typem záznamu `tomcat_CL`.  Může načíst všechny záznamy z tohoto typu s následující dotaz protokolu.
 
     Type=tomcat_CL
 
@@ -106,4 +106,4 @@ Vnořené data JSON zdroje jsou podporované, ale jsou indexovány založen na n
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [protokolu dotazy](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

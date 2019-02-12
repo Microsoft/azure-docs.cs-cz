@@ -1,57 +1,58 @@
 ---
-title: Zprávy a připojení v Azure SignalR
-description: Přehled klíčové pojmy v oblasti zpráv a připojení ve službě Azure SignalR.
+title: Zprávy a připojení ve službě Azure SignalR
+description: Přehled klíčových konceptů o zprávách a připojení ve službě Azure SignalR.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: c2348df7a1a55584807a03216e294486ddadfc52
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ce1542278303910837a69d3184c1de86a9237f8e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352593"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996232"
 ---
-# <a name="message-and-connection-in-azure-signalr-service"></a>Zpráva a připojení ve službě Azure SignalR
+# <a name="messages-and-connections-in-azure-signalr-service"></a>Zprávy a připojení ve službě Azure SignalR
 
-Službě Azure SignalR je model fakturace na základě počtu připojení a číslo zprávy. Jak jsou definovány a pro účely účtování počítat zprávy a připojení je popsán níže.
+Fakturační model pro služby Azure SignalR vychází z počtu připojení a číslo zprávy. Tento článek vysvětluje, jak jsou definovány a počítá fakturace zprávy a připojení.
 
-## <a name="message-formats-supported"></a>Podporované formáty zpráv
 
-Službě Azure SignalR podporuje stejné formáty, které podporuje funkce SignalR technologie ASP.NET Core: [JSON](https://www.json.org/) a [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)
+## <a name="message-formats"></a>Formáty zpráv 
+
+Službě Azure SignalR podporuje stejný formát jako funkce SignalR technologie ASP.NET Core: [JSON](https://www.json.org/) a [MessagePack](/aspnet/core/signalr/messagepackhubprotocol).
 
 ## <a name="message-size"></a>Velikost zpráv
 
 Službě Azure SignalR nemá žádné omezení velikosti zpráv.
 
-V praxi, velkých zpráv je rozdělený do menších zprávy více než 2 KB / a přenáší jako samostatné zprávy. Sady SDK se zpracovala zpráva rozdělení a propojením. Nejsou potřeba žádné úsilí pro vývojáře.
+Velké zprávy jsou rozděleny do menších zpráv, které jsou více než 2 KB a přenesených samostatně. Sady SDK se zpracovala zpráva rozdělení a propojením. Nejsou potřeba žádné úsilí pro vývojáře.
 
-Ale velkých zpráv má negativní dopad na výkon, zasílání zpráv. Použijte menší velikost zprávy, kdykoli je to možné a testu zvolte velikost optimální zprávy pro jednotlivé scénáře použití.
+Velké zprávy negativně ovlivnit výkon služby zasílání zpráv. Použijte menší zprávy, kdykoli je to možné a testování k určení velikosti optimální zprávy pro jednotlivé scénáře použití.
 
-## <a name="how-to-count-messages-for-billing-purpose"></a>Jak počet zpráv pro fakturační účely?
+## <a name="how-messages-are-counted-for-billing"></a>Jak se počítají zprávy pro fakturaci
 
-Jsme pouze počet odchozích zpráv ze služby SignalR a ignoruje zprávy ping mezi klienty a servery.
+Při fakturaci se počítají jenom odchozí zprávy ze služby Azure SignalR. Příkaz ping zpráv mezi klienty a servery jsou ignorovány.
 
-Zprávy je větší než 2 KB se počítá jako více zpráv 2 KB. Graf počtu zpráv na webu Azure portal se aktualizuje každých 100 zpráv za rozbočovač.
+Větší než 2 KB zprávy se počítají jako více zpráv 2 KB. Graf počtu zpráv na webu Azure Portal se aktualizuje každých 100 zpráv za rozbočovač.
 
-Například máte tři klienty a serverem jednu aplikaci. Jeden klient odešle jednu zprávu 4 KB nechat server vysílat pro všechny klienty. Počet zpráv je 8: Zpráv ze služby aplikační server, tři zprávy ze služby pro klienty a každá zpráva se počítá jako dvě zprávy 2 KB.
+Představte si například, že máte tři klienty a serverem jednu aplikaci. Jeden klient odešle zprávu 4 KB nechat server vysílat pro všechny klienty. Počet zpráv je 8: jednu zprávu ze služby aplikační server a tři zprávy ze služby klientům. Každá zpráva se počítá jako dvě zprávy 2 KB.
 
-Počet zpráv, které jsou uvedené na webu Azure portal je stále 0, dokud se nahromadí být více než 100.
+Počet zpráv, které jsou uvedené na webu Azure Portal, 0 zůstane, dokud se shromažďuje více než 100.
 
-## <a name="how-to-count-connections"></a>Jak počet připojení?
+## <a name="how-connections-are-counted"></a>Jak se počítají připojení
 
-Nejsou k dispozici připojení k serveru a připojení klientů. Ve výchozím nastavení má každý aplikační server pěti připojení na rozbočovači SignalR službou a každý klient má jedno připojení klienta pomocí služby SignalR.
+Nejsou k dispozici připojení k serveru a připojení klientů. Ve výchozím nastavení každý aplikační server má pět připojení za centra pomocí služby Azure SignalR a každý klient má jedno připojení klienta pomocí služby Azure SignalR.
 
 Počet připojení webu Azure Portal obsahuje serverová připojení a připojení klientů.
 
-Například můžete mít dva servery aplikace a definovat pět rozbočovače v kódu. Počet připojení serverů je 50: 2 servery aplikace * 5 hubs * 5 připojení/rozbočovač.
+Předpokládejme například, že máte dva servery aplikace a definování pěti hubs v kódu. Počet připojení serverů bude 50: 2 servery aplikace * 5 hubs * 5 připojení pro každé centrum.
 
-Funkce SignalR technologie ASP.NET se liší ve výpočtu připojení k serveru. Obsahuje jeden výchozí centra kromě definovaných zákazníkem rozbočovače. Každý server aplikace potřebuje 5 další připojení serveru ve výchozím nastavení. Počet připojení pro rozbočovač výchozí zajišťuje konzistentní s ostatními centry.
+Připojení k serveru funkce SignalR technologie ASP.NET vypočítá jiným způsobem. Obsahuje jeden výchozí centra kromě rozbočovačů, které definujete. Ve výchozím nastavení musí každý server aplikace pět další připojení serverů. Počet připojení pro rozbočovač výchozí zůstane konzistentní s s ostatními centry.
 
-## <a name="how-to-count-inbound-traffic--outbound-traffic"></a>Jak vypočítat příchozího provozu / odchozí provoz
+## <a name="how-inboundoutbound-traffic-is-counted"></a>Jak se počítá odchozího/příchozího provozu
 
-Příchozí / odchozí je z hlediska služby SignalR. Provoz se počítá v bajtech. Jako počet zpráv přenosu má také jeho vzorkovací frekvenci. Příchozí nebo odchozí grafu na webu Azure portal, aktualizuje každých 100 KB na rozbočovači.
+Rozdíl mezi příchozích a odchozích přenosů vychází z perspektivy služby Azure SignalR. Provoz se počítá v bajtech. Jako počet zpráv přenosu má také vzorkovací frekvenci. Příchozí/odchozí grafu na webu Azure Portal se aktualizuje každých 100 KB na rozbočovači.
 
 ## <a name="related-resources"></a>Související prostředky
 

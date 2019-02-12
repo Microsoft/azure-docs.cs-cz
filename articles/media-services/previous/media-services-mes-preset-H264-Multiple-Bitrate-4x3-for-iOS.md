@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: f3a98af11d551a94b79e2b326657b0bc1f4c803e
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ca88af6b62b984e0a61326cdebcb2d7411e49ed3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249949"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998463"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>Předvolby H264 Multiple Bitrate 4 x 3 pro iOS
 `Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
@@ -29,7 +29,7 @@ ms.locfileid: "50249949"
  Tato předvolba vytvoří sadu 8 soubory MP4 zarovnaný GOP od 8500 kb/s až 200 kb/s a stereo AAC zvuku. Podrobné informace o profilech s přenosovou rychlostí, vzorkování rychlost atd. to přednastavení, zkontrolujte XML nebo JSON, definovaná níže. Vysvětlení co každý prvek v tyto prostředky přednastavení a platné hodnoty pro každý prvek, najdete v článku [schéma Media Encoderu Standard](media-services-mes-schema.md) tématu.  
   
 > [!NOTE]
->  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576, 640 x 360. Neměli byste používat kombinaci poměry stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
+>  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat kombinaci poměry stran, jako například: 1280x720, 720x480, 640x360.  
   
  XML  
   

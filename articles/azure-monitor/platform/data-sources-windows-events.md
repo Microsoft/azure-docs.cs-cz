@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat a analyzovat protokoly událostí Windows ve službě Log Analytics | Dokumentace Microsoftu
-description: Popisuje postup konfigurace shromažďování událostí Windows protokolů v Log Analytics a podrobnosti o záznamy, které vytvářejí.
+title: Shromažďovat a analyzovat protokoly událostí Windows ve službě Azure Monitor | Dokumentace Microsoftu
+description: Popisuje postup konfigurace shromažďování protokolů událostí Windows službou Azure Monitor a podrobnosti záznamy, které vytvářejí.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: a60c5c41c3f7f0c26788aa9f986af076d9e82c2f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 1f55e03d9a925bf939d627f376d29edf27461e74
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102597"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001115"
 ---
-# <a name="windows-event-log-data-sources-in-log-analytics"></a>Zdroje dat protokolu událostí Windows ve službě Log Analytics
+# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí Windows ve službě Azure Monitor
 Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací se zapisují do protokolu událostí Windows.  Kromě zadání jakékoli vlastní protokoly vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly jako je například systém a aplikace.
 
 ![Události Windows](media/data-sources-windows-events/overview.png)     
@@ -28,17 +28,17 @@ Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje 
 ## <a name="configuring-windows-event-logs"></a>Protokoly událostí konfigurace Windows
 Konfigurovat protokoly událostí Windows z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources).
 
-Log Analytics shromažďuje jenom události z protokolů událostí Windows, které jsou určené v nastavení.  Protokol událostí přidáte zadáním názvu protokolu a kliknutím na **+**.  Pro všechny protokoly se shromažďují jen události s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní protokol, který chcete shromáždit.  Nelze zadat žádná další kritéria filtrování událostí.
+Azure Monitor shromažďuje jenom události z protokolů událostí Windows, které jsou určené v nastavení.  Protokol událostí přidáte zadáním názvu protokolu a kliknutím na **+**.  Pro všechny protokoly se shromažďují jen události s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní protokol, který chcete shromáždit.  Nelze zadat žádná další kritéria filtrování událostí.
 
-Jak budete zadávat název protokolu událostí, Log Analytics poskytuje návrhy běžnému názvu certifikátu protokolu událostí. Pokud na protokol, který chcete přidat, se nezobrazí v seznamu, můžete ho přidat stále tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete *vlastnosti* stránce protokolu a zkopírujte řetězec z *jméno a příjmení* pole.
+Jak budete zadávat název protokolu událostí, Azure Monitor nabízí návrhy běžnému názvu certifikátu protokolu událostí. Pokud na protokol, který chcete přidat, se nezobrazí v seznamu, můžete ho přidat stále tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete *vlastnosti* stránce protokolu a zkopírujte řetězec z *jméno a příjmení* pole.
 
 ![Konfigurace událostí Windows](media/data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Shromažďování dat
-Log Analytics shromažďuje každou událost, která odpovídá vybrané závažnosti z monitorovaných protokolu událostí při vytváření události.  Agenta zaznamenává každý protokol událostí, který shromažďuje z jeho umístění.  Pokud agenta přejde do režimu offline pro určitou dobu, potom shromáždí události z tam, kde poslední skončila, i v případě, že tyto události byly vytvořeny v době, kdy agent offline.  Je v provozu tyto události nebudou shromažďují, pokud se zabalí do protokolu událostí s nesebraný události přepsání agenta je offline.
+Azure Monitor provádí sběr každou událost, která odpovídá vybrané závažnosti z monitorovaných protokolu událostí při vytváření události.  Agenta zaznamenává každý protokol událostí, který shromažďuje z jeho umístění.  Pokud agenta přejde do režimu offline pro určitou dobu, potom shromáždí události z tam, kde poslední skončila, i v případě, že tyto události byly vytvořeny v době, kdy agent offline.  Je v provozu tyto události nebudou shromažďují, pokud se zabalí do protokolu událostí s nesebraný události přepsání agenta je offline.
 
 >[!NOTE]
->Log Analytics vytvořená serverem SQL ze zdroje událostí auditu neshromažďuje *MSSQLSERVER* s ID události 18453, který obsahuje klíčová slova - *Classic* nebo *auditu úspěch* a klíčové slovo *0xa0000000000000*.
+>Azure Monitor neshromažďuje vytvořená serverem SQL ze zdroje událostí auditu *MSSQLSERVER* s ID události 18453, který obsahuje klíčová slova - *Classic* nebo *auditu úspěch* a klíčové slovo *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Vlastnosti záznamů událostí Windows
@@ -52,7 +52,7 @@ Záznamy událostí Windows mají typ **události** a mít vlastnosti v následu
 | ID události |Počet události. |
 | eventLevel |Závažnost události v číselné podobě. |
 | EventLevelName |Závažnost události v textové podobě. |
-| Protokol událostí |Název shromážděné události z protokolu událostí. |
+| EventLog |Název shromážděné události z protokolu událostí. |
 | ParameterXml |Hodnoty parametru událostí ve formátu XML. |
 | ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manageru.  Pro ostatní agenty tato hodnota je AOI-<workspace ID> |
 | RenderedDescription |Popis události s hodnotami parametrů |
@@ -68,11 +68,11 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 |:---|:---|
 | Událost |Všechny události Windows. |
 | Událost &#124; kde EventLevelName == "Chyba" |Všechny události Windows závažnost chyby. |
-| Událost &#124; shrnout count() podle zdroje |Počet Windows události podle zdroje. |
-| Událost &#124; kde EventLevelName == "Chyba" &#124; shrnout count() podle zdroje |Počet Windows chybové události podle zdroje. |
+| Event &#124; summarize count() by Source |Počet Windows události podle zdroje. |
+| Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |Počet Windows chybové události podle zdroje. |
 
 
 ## <a name="next-steps"></a>Další postup
 * Konfigurace Log Analytics ke shromažďování dalších [zdroje dat](agent-data-sources.md) pro analýzu.
-* Další informace o [protokolu dotazy](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 * Konfigurace [shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Windows.

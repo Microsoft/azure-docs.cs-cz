@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4f92860ac128bdb6e4e2e059592745285779688d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098026"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001959"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -28,6 +28,7 @@ Azure Monitor maximalizuje dostupnost a výkon vašich aplikací, zajišťuje ko
 ## <a name="overview"></a>Přehled
 Následující obrázek poskytuje souhrnný přehled monitorování Azure. V centru diagramu se úložiště dat pro metriky a protokoly, které jsou dva základní druhy dat používá Azure Monitor. Na levé straně jsou [zdroje dat monitorování](platform/data-sources.md) , který tyto naplnit [úložišť dat](platform/data-collection.md). Na pravé straně jsou různé funkce, které Azure Monitor provádí s Tato shromážděná data, jako je například analýza, upozorňování a streamování do externích systémů.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Přehled služby Azure Monitor](media/overview/overview.png)
 
@@ -35,11 +36,11 @@ Následující obrázek poskytuje souhrnný přehled monitorování Azure. V cen
 ## <a name="monitoring-data-platform"></a>Monitorování datové platformy
 Všechna data shromážděná službou Azure Monitor zapadá do jednoho ze dvou základních typů, [metriky a protokoly](platform/data-collection.md). [Metriky](platform/data-collection.md#metrics) jsou číselné hodnoty, které popisují některé aspekty systému v určitém místě v čase. Jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře. [Protokoly](platform/data-collection.md#logs) obsahovat různé druhy dat uspořádaných do s různými sadami vlastností pro jednotlivé typy záznamů. Telemetrická data, jako je například událostmi a sledováním jsou uloženy jako protokoly kromě na data výkonu tak, aby se všechny zkombinovat pro analýzu.
 
-Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monitor přímo v jejich stránce Přehled na webu Azure Portal. Podíváme se na jakýkoli virtuální počítač například a zobrazí se vám několik grafů zobrazení metrik výkonu. Klikněte na libovolné grafy k otevírání těchto dat v [Průzkumník metrik](platform/metrics-charts.md) na webu Azure Portal, která umožňuje graf hodnoty několika metrik v čase.  Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace.
+Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monitor přímo v jejich stránce Přehled na webu Azure Portal. Podíváme se na jakýkoli virtuální počítač například a zobrazí se vám několik grafů zobrazení metrik výkonu. Klikněte na libovolné grafy k otevírání těchto dat v [Průzkumníka metrik](platform/metrics-charts.md) na webu Azure Portal, která umožňuje graf hodnoty několika metrik v čase.  Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace.
 
 ![Metriky](media/overview/metrics.png)
 
-Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](log-query/portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](platform/alerts-overview.md).
+Protokol data shromážděná službou Azure Monitor můžete analyzovat pomocí [dotazy](log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [protokolu analytics](log-query/portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [upozornění pravidla](platform/alerts-overview.md).
 
 Azure Monitor používá verzi [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) , který je vhodný pro jednoduchá protokolu dotazů, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](log-query/get-started-queries.md).  Pro uživatele, kteří již znají [SQL](log-query/sql-cheatsheet.md) a [Splunk](log-query/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
@@ -54,7 +55,7 @@ Azure Monitor může shromažďovat data z různých zdrojů. Můžete si předs
 - **Předplatné Azure, data monitorování**: Data o provozu a správy předplatného Azure, jakož i informace o stavu a provoz Azure samotný. 
 - **Data monitorování klienta Azure**: Data o provozu služeb Azure úrovni klienta, jako je Azure Active Directory.
 
-Jakmile vytvoříte předplatné Azure a začněte přidávat prostředky, jako jsou virtuální počítače a webové aplikace, spustí monitorování Azure, shromažďování dat.  [Protokoly aktivit](platform/activity-logs-overview.md) zaznamenat při vytvoření nebo úpravě prostředky. [Metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md) zjistíte, jaký je výkon prostředku a prostředky, které je spotřebovává. 
+Jakmile vytvoříte předplatné Azure a začněte přidávat prostředky, jako jsou virtuální počítače a webové aplikace, spustí monitorování Azure, shromažďování dat.  [Protokoly aktivit](platform/activity-logs-overview.md) zaznamenat při vytvoření nebo úpravě prostředky. [Metriky](platform/data-collection.md) zjistíte, jaký je výkon prostředku a prostředky, které je spotřebovává. 
 
 Roztáhnout svá data ukládáte do aktuální operace prostředky podle [povolení diagnostiky](platform/diagnostic-logs-overview.md) a [Přidání agenta](platform/agent-windows.md) k výpočetním prostředkům. To bude shromažďovat telemetrii pro interní operace prostředku a umožňují konfigurovat různé [zdroje dat](platform/agent-data-sources.md) shromažďovat protokoly a metriky z hostovaného operačního systému Windows a Linux. 
 

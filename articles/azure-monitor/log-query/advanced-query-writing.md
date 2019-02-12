@@ -1,6 +1,6 @@
 ---
-title: Pokročilé dotazy ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro používání portálu Analytics psát dotazy v Log Analytics.
+title: Pokročilé dotazy ve službě Azure Azure Monitor | Dokumentace Microsoftu
+description: Tento článek obsahuje kurz pro používání portálu Analytics psaní dotazů ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: b8441d72f85c2160cf756df37722fa6037441236
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4e5574fa5a615e43d94069a03716fa290b957342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191542"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993210"
 ---
-# <a name="writing-advanced-queries-in-log-analytics"></a>Zápis pokročilé dotazy v Log Analytics
+# <a name="writing-advanced-queries-in-azure-monitor"></a>Zápis upřesňujících dotazů ve službě Azure Monitor
 
 > [!NOTE]
-> By se měla Dokončit [začít používat portál Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
+> By se měla Dokončit [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -130,7 +130,7 @@ SecurityEvent
 ```
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro používání dotazovací jazyk Log Analytics:
+Zobrazit další lekce pro použití [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
 
 - [Operace s řetězci](string-operations.md)
 - [Datum a čas operace](datetime-operations.md)

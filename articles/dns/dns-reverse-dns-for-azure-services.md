@@ -12,14 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: cbd1a7a3a797cc20be92583bbb5ac163333729fc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a9a1b5599468df6bc85cc1d535b577c508dd0a9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969797"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995642"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzních záznamů DNS pro služby hostované v Azure
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Tento článek vysvětluje postup konfigurace reverzního vyhledávání DNS pro služby hostované v Azure.
 
@@ -62,22 +64,22 @@ Azure nyní podporují zpětné vyhledávání DNS jenom za prostředky PublicIp
 Chcete-li přidat do existující adresu PublicIpAddress reverzních záznamů DNS:
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
 Chcete-li přidat reverzních záznamů DNS pro existující adresu PublicIpAddress, která ještě nemá název DNS, musíte také zadat název DNS:
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings = New-Object -TypeName "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings"
 $pip.DnsSettings.DomainNameLabel = "contosoapp1"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 Chcete-li přidat do existující adresu PublicIpAddress reverzních záznamů DNS:
 
@@ -112,10 +114,10 @@ Vytvoření nové PublicIpAddress s vlastnost reverzní DNS už zadali:
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
+New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
@@ -134,10 +136,10 @@ Chcete-li zobrazit použije se konfigurovaná hodnota pro existující adresu Pu
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
 azure network public-ip show -n PublicIp -g MyResourceGroup
@@ -156,12 +158,12 @@ Reverzní DNS vlastnost odebrání existující adresu PublicIpAddress:
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = ""
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+#### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""

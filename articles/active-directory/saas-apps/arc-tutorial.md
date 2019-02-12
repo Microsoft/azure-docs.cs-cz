@@ -4,261 +4,241 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/07/2018
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 8c4922c817d9667b1a25846df53f9366e2018342
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e211b75e531b41cb5fe04f72d78855177cedd631
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187109"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Kurz: Integrace Azure Active Directory s oblouk publikování – jednotné přihlašování
 
 V tomto kurzu se dozvíte, jak integrovat oblouk publikování – jednotné přihlašování s Azure Active Directory (Azure AD).
-
 Integrace oblouk publikování – jednotné přihlašování s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k publikování oblouku – jednotné přihlašování.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k publikování oblouku – jednotné přihlašování (Single Sign-On) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k publikování oblouku – jednotné přihlašování.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k publikování oblouku – jednotné přihlašování (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s oblouk publikování – jednotné přihlašování, budete potřebovat následující položky:
 
-- Předplatné Azure AD
-- Publikování oblouku – jednotné přihlašování jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Publikování oblouku – jednotné přihlašování jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Publikování oblouku – přidání jednotného přihlašování z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Publikování oblouku – jednotného přihlašování podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Publikování oblouku – jednotného přihlašování podporuje **JIT** zřizování uživatelů
 
 ## <a name="adding-arc-publishing---sso-from-the-gallery"></a>Publikování oblouku – přidání jednotného přihlašování z Galerie
+
 Konfigurace integrace oblouk publikování – jednotné přihlašování do služby Azure AD, budete muset přidat oblouk publikování – jednotné přihlašování z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat oblouk publikování – jednotné přihlašování z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **oblouk publikování – jednotné přihlašování**vyberte **oblouk publikování – jednotné přihlašování** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Publikování oblouku – jednotné přihlašování v seznamu výsledků](./media/arc-tutorial/tutorial_arc_addfromgallery.png)
+4. Do vyhledávacího pole zadejte **oblouk publikování – jednotné přihlašování**vyberte **oblouk publikování – jednotné přihlašování** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+     ![Publikování oblouku – jednotné přihlašování v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s oblouk publikování – jednotné přihlašování založené na testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co protějšek uživatel oblouk Publishing – jednotné přihlašování je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské oblouk Publishing - jednotného přihlašování je potřeba navázat.
+V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s oblouk publikování – jednotné přihlašování založené na test uživateli **Britta Simon**.
+Pro jednotné přihlašování k práci, vztah odkazu mezi uživatele služby Azure AD a související uživatelské oblouk Publishing - jednotného přihlašování potřeba navázat.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s oblouk publikování – jednotné přihlašování, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření publikování oblouk – jednotného přihlašování testovací uživatele](#create-an-arc-publishing---sso-test-user)**  – Pokud chcete mít protějšek Britta Simon oblouk Publishing - jednotného přihlašování, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Konfigurace jednotného přihlašování Single Sign-On oblouk publikování –](#configure-arc-publishing---sso-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvoření oblouku publikování – jednotné přihlašování testovací uživatele](#create-arc-publishing---sso-test-user)**  – Pokud chcete mít protějšek Britta Simon oblouk Publishing - jednotného přihlašování, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich oblouk publikování - jednotného přihlašování aplikace.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s oblouk publikování – jednotné přihlašování, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s oblouk publikování – jednotné přihlašování, proveďte následující kroky:
 
-1. Na webu Azure Portal na **oblouk publikování – jednotné přihlašování** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **oblouk publikování – jednotné přihlašování** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/arc-tutorial/tutorial_arc_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **oblouk publikování - jednotného přihlašování k doméně a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Publikování oblouk - jednotného přihlašování k doméně a adresy URL jednotné přihlašování – informace](./media/arc-tutorial/tutorial_arc_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    1. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.okta.com/saml2/service-provider/<Unique ID>`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    1. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+    ![Publikování oblouk - jednotného přihlašování k doméně a adresy URL jednotné přihlašování – informace](common/idp-intiated.png)
 
-    ![Publikování oblouk - jednotného přihlašování k doméně a adresy URL jednotné přihlašování – informace](./media/arc-tutorial/tutorial_arc_url1.png)
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.okta.com/saml2/service-provider/<Unique ID>`
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [oblouk publikování - tým podpory jednotného přihlašování klienta](mailto:inf@washpost.com) k získání těchto hodnot. 
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
 
-1. Publikování oblouku – jednotného přihlašování aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
-    
-    ![Konfigurace jednotného přihlašování](./media/arc-tutorial/tutorial_arc_attribute.png)
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-1. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
-    
-    | Název atributu | Hodnota atributu |
+    ![Publikování oblouk - jednotného přihlašování k doméně a adresy URL jednotné přihlašování – informace](common/metadata-upload-additional-signon.png)
+
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [oblouk publikování - tým podpory jednotného přihlašování klienta](mailto:inf@washpost.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+
+6. Publikování oblouku – jednotného přihlašování aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+
+    ![image](common/edit-attribute.png)
+
+7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
+
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |    
     | Jméno | user.givenname |
     | Příjmení | user.surname |
     | e-mail | user.mail |
     | skupiny | user.assignedroles |
 
-    1. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
-     ![Konfigurace jednotného přihlašování](./media/arc-tutorial/tutorial_attribute_04.png)
+    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
-     ![Konfigurace jednotného přihlašování](./media/arc-tutorial/tutorial_attribute_05.png)
-    
-    1. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
-    
-    1. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    ![image](common/new-save-attribute.png)
 
-    1. Nechte **Namespace** prázdné.
-    
-    1. Klikněte na tlačítko **Ok**
+    ![image](common/new-attribute-details.png)
+
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+
+    c. Nechte **Namespace** prázdné.
+
+    d. Vyberte zdroj jako **atribut**.
+
+    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+
+    f. Klikněte na tlačítko **Ok**
+
+    g. Klikněte na **Uložit**.
 
     > [!NOTE]
     > Tady **skupiny** atribut je namapována na žádnou **user.assignedroles**. Jedná se o vlastní role vytvořené ve službě Azure AD k mapování názvů skupin zpět v aplikaci. Můžete najít ještě s něčím poradit [tady](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) o tom, jak vytvořit vlastní role ve službě Azure AD. 
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/arc-tutorial/tutorial_arc_certificate.png) 
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+9. Na **oblouk publikování – jednotné přihlašování nastavit** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/arc-tutorial/tutorial_general_400.png)
-    
-1. Na **oblouk publikování – Konfigurace jednotného přihlašování** klikněte na tlačítko **konfigurace oblouk publikování – jednotné přihlašování** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    ![Publikování oblouku – Konfigurace jednotného přihlašování](./media/arc-tutorial/tutorial_arc_configure.png) 
+    a. Přihlašovací adresa URL
 
-1. Ke konfiguraci jednotného přihlašování na **oblouk publikování – jednotné přihlašování** straně, je nutné odeslat na stažený **certifikát (Base64), URL odhlašování, SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [oblouk Publikování - tým podpory jednotného přihlašování](mailto:inf@washpost.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-arc-publishing---sso-single-sign-on"></a>Konfigurace publikování oblouku – jednotné přihlašování jednotného přihlašování
+
+Ke konfiguraci jednotného přihlašování na **oblouk publikování – jednotné přihlašování** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [oblouk publikování – jednotné přihlašování tým podpory](mailto:inf@washpost.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/arc-tutorial/create_aaduser_01.png)
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/arc-tutorial/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/arc-tutorial/create_aaduser_03.png)
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/arc-tutorial/create_aaduser_04.png)
-
-    1. V **název** zadejte **BrittaSimon**.
-
-    1. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    1. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-an-arc-publishing---sso-test-user"></a>Vytvoření oblouk publikování – jednotné přihlašování testovacího uživatele
-
-Cílem této části je vytvořte uživatele Britta Simon oblouk Publishing - jednotného přihlašování. Publikování oblouku – jednotného přihlašování podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k publikování oblouku – jednotné přihlašování, pokud ještě neexistuje.
-
->[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [oblouk publikování - tým podpory jednotného přihlašování](mailto:inf@washpost.com).
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k publikování oblouku – jednotné přihlašování.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **oblouk publikování – jednotné přihlašování**.
 
-**Přiřadit Britta Simon oblouk publikování – jednotné přihlašování, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **oblouk publikování – jednotné přihlašování**.
 
-    ![Přiřadit uživatele][201] 
+    ![Publikování oblouk - jednotného přihlašování k odkazu v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **oblouk publikování – jednotné přihlašování**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Publikování oblouk - jednotného přihlašování k odkazu v seznamu aplikací](./media/arc-tutorial/tutorial_arc_app.png)  
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Podokno Přidat přiřazení][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-arc-publishing---sso-test-user"></a>Vytvoření oblouku publikování – jednotné přihlašování testovacího uživatele
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+V této části se vytvoří uživateli Britta Simon oblouk Publishing - jednotného přihlašování. Publikování oblouk - jednotného přihlašování podporuje just-in-time zřizování uživatelů, která je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi oblouk publikování – jednotné přihlašování, vytvoří se nový po ověření.
+
+> [!Note]
+> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [oblouk publikování - tým podpory jednotného přihlašování](mailto:inf@washpost.com).
+
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí oblouk publikování – dlaždice jednotného přihlašování na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší oblouk publikování - jednotného přihlašování aplikace.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknutí oblouk publikování – dlaždice jednotného přihlašování na přístupovém panelu, můžete by měl být automaticky přihlášeni k oblouk publikování – jednotné přihlašování, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/arc-tutorial/tutorial_general_01.png
-[2]: ./media/arc-tutorial/tutorial_general_02.png
-[3]: ./media/arc-tutorial/tutorial_general_03.png
-[4]: ./media/arc-tutorial/tutorial_general_04.png
-
-[100]: ./media/arc-tutorial/tutorial_general_100.png
-
-[200]: ./media/arc-tutorial/tutorial_general_200.png
-[201]: ./media/arc-tutorial/tutorial_general_201.png
-[202]: ./media/arc-tutorial/tutorial_general_202.png
-[203]: ./media/arc-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

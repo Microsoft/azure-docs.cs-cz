@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488085"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997325"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -71,7 +71,7 @@ Všechny veřejné IP adresy vytvořené před zavedením skladových položek j
 Veřejné IP adresy standardních SKU jsou:
 
 - Vždy používejte metodu statického přidělování.
-- Máte měnitelné příchozí původ původu a odchozí tok časový limit nečinnosti 4 66 minut, výchozí hodnota je 4 minuty.
+- Máte měnitelné příchozí původ původu a odchozí tok časový limit nečinnosti 4-30 minut, výchozí hodnota je 4 minuty.
 - Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
 - Přiřazená síťová rozhraní, Standardní veřejné nástroje pro vyrovnávání zatížení, brány Application Gateway nebo bran VPN Gateway. Další informace o Load balanceru úrovně Standard najdete v tématu [Azure Load balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Zónově redundantní ve výchozím nastavení a volitelně oblastmi (je možné vytvořit zónově a zaručit v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

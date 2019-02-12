@@ -16,16 +16,16 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2c889368afe601bc7188f3b0989e7799c88131b4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b6738496a25c49a74d3156b5dfba1ba2a91f102c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081955"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002034"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý start: Blokovat přístup, když se zjistí ohrožení relace s podmíněným přístupem Azure Active Directory  
 
-Pokud chcete zachovat prostředí chráněný, můžete zablokovat podezřelé uživatelům podepisování insign aktivit. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzuje každé přihlášení a vypočítá pravděpodobnost, že pokus přihlášení nebyl prováděné legitimním vlastníkem uživatelského účtu. Pravděpodobnost (nízká, střední, vysoká) je uveden v podobě počítané hodnoty nazvané [úrovně rizika přihlášení](conditions.md#sign-in-risk). Tím, že nastavíte podmínku rizika přihlášení, můžete nakonfigurovat zásady podmíněného přístupu na úrovně riziko konkrétního přihlášení. 
+Pokud chcete zachovat prostředí chráněný, můžete zablokovat podezřelé uživatele z přihlášení. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzuje každé přihlášení a vypočítá pravděpodobnost, že pokus přihlášení nebyl prováděné legitimním vlastníkem uživatelského účtu. Pravděpodobnost (nízká, střední, vysoká) je uveden v podobě počítané hodnoty nazvané [úrovně rizika přihlášení](conditions.md#sign-in-risk). Tím, že nastavíte podmínku rizika přihlášení, můžete nakonfigurovat zásady podmíněného přístupu na úrovně riziko konkrétního přihlášení. 
 
 Tento rychlý start ukazuje, jak nakonfigurovat [zásady podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) , která blokuje u přihlášení při zjistil úroveň nakonfigurované rizika přihlášení. 
 

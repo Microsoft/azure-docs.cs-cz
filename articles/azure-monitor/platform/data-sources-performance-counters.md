@@ -1,6 +1,6 @@
 ---
-title: Shromažďujte a analyzujte čítače výkonu ve službě Log Analytics | Dokumentace Microsoftu
-description: Čítače výkonu jsou shromážděná službou Log Analytics k analýze výkonu agentů Windows a Linux.  Tento článek popisuje, jak konfigurovat shromažďování čítačů výkonu pro obě Windows a agenti systému Linux, podrobnosti o jejich jsou uložené v pracovním prostoru a analyzovat je na webu Azure Portal.
+title: Shromažďujte a analyzujte čítače výkonu ve službě Azure Monitor | Dokumentace Microsoftu
+description: Čítače výkonu jsou shromážděné službou Azure Monitor k analýze výkonu agentů Windows a Linux.  Tento článek popisuje, jak konfigurovat shromažďování čítačů výkonu pro obě Windows a agenti systému Linux, podrobnosti o jejich jsou uložené v pracovním prostoru a analyzovat je na webu Azure Portal.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018l
 ms.author: magoedte
-ms.openlocfilehash: 8359dda2521773145f9e3e870c3c21db1546004b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103702"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001915"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows a Linuxem zdroje dat výkonu do Log Analytics
-Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Log Analytics může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor
+Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.
 
 ![Čítače výkonu](media/data-sources-performance-counters/overview.png)
 
@@ -83,12 +83,12 @@ Parametry v tomto elementu jsou popsány v následující tabulce.
 | Parametry | Popis |
 |:--|:--|
 | objekt\_název | Název objektu pro kolekci. |
-| instance\_regulární výraz |  A *regulárního výrazu* definování které instance, které chcete shromažďovat. Hodnota: `.*` Určuje všechny instance. Shromažďovat metriky procesoru pro pouze \_celkový počet instancí, můžete zadat `_Total`. Chcete-li shromažďovat metriky procesů pro pouze crond nebo sshd instancí, můžete zadat: `(crond\|sshd)`. |
+| instance\_regex |  A *regulárního výrazu* definování které instance, které chcete shromažďovat. Hodnota: `.*` Určuje všechny instance. Shromažďovat metriky procesoru pro pouze \_celkový počet instancí, můžete zadat `_Total`. Chcete-li shromažďovat metriky procesů pro pouze crond nebo sshd instancí, můžete zadat: `(crond\|sshd)`. |
 | Čítač\_název\_regulární výraz | A *regulárního výrazu* definující, které čítačů (pro objekt), které pokud chcete shromažďovat. Chcete-li shromažďovat všechny čítače pro objekt, zadejte: `.*`. Chcete-li shromažďovat pouze čítače místa odkládacího souboru paměti objektu, například můžete zadat: `.+Swap.+` |
 | interval | Frekvence, s jakou se shromažďují čítače objektu. |
 
 
-V následující tabulce jsou uvedeny objekty a čítače, které můžete zadat v konfiguračním souboru.  K dispozici další čítače pro určité aplikace, jak je popsáno v [shromáždit čítače výkonu pro Linuxové aplikace ve službě Log Analytics](data-sources-linux-applications.md).
+V následující tabulce jsou uvedeny objekty a čítače, které můžete zadat v konfiguračním souboru.  K dispozici další čítače pro určité aplikace, jak je popsáno v [shromáždit čítače výkonu pro Linuxové aplikace ve službě Azure Monitor](data-sources-linux-applications.md).
 
 | Název objektu | Název počítadla |
 |:--|:--|
@@ -182,7 +182,7 @@ Toto je výchozí konfigurace pro metriky výkonu.
     </source>
 
 ## <a name="data-collection"></a>Shromažďování dat
-Log Analytics shromažďuje všechny čítače výkonu zadaný v jejich zadané vzorkovací interval na všechny agenty, kteří mají nainstalované čítač.  Data nejsou agregovány a nezpracovaných dat je k dispozici ve všech zobrazeních dotazu protokolu po dobu zadanou vaším předplatným.
+Azure Monitor provádí sběr všech čítačů výkonu zadaný v jejich zadané vzorkovací interval na všechny agenty, kteří mají nainstalované čítač.  Data nejsou agregovány a nezpracovaných dat je k dispozici ve všech zobrazeních dotazu protokolu po dobu zadanou vaším předplatným.
 
 ## <a name="performance-record-properties"></a>Vlastnosti výkonnostní záznamu
 Výkon záznamy mají typ **výkonu** a mít vlastnosti v následující tabulce.
@@ -191,7 +191,7 @@ Výkon záznamy mají typ **výkonu** a mít vlastnosti v následující tabulce
 |:--- |:--- |
 | Počítač |Počítač, který událost byla shromážděna z. |
 | Hodnota counterName |Název čítače výkonu |
-| Cesta_k_čítači |Úplná cesta k čítači ve formě \\ \\ \<počítače >\\objekt(instance)\\čítače. |
+| CounterPath |Úplná cesta k čítači ve formě \\ \\ \<počítače >\\objekt(instance)\\čítače. |
 | CounterValue |Číselná hodnota čítače. |
 | InstanceName |Název instance události.  Prázdný, pokud žádná instance. |
 | Název objektu |Název objektu výkonu |
@@ -214,7 +214,7 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 | Perf &#124; kde ObjectName == "Procesor pro" a hodnota CounterName == "% Processor Time" a InstanceName == "_Total" &#124; shrnout AVGCPU = avg(Average) podle počítače |Průměrné využití procesoru ve všech počítačích |
 | Perf &#124; tam, kde CounterName == "% Processor Time" &#124; summarize AggregatedValue = max(Max) podle počítače |Maximální využití CPU ve všech počítačích |
 | Perf &#124; kde ObjectName == "LogicalDisk" a hodnota CounterName == "Aktuální délka fronty disku" a počítač == "MyComputerName" &#124; summarize AggregatedValue = avg(Average) podle InstanceName |Průměrná napříč všemi instancemi daného počítače. aktuální délka fronty disku |
-| Perf &#124; tam, kde CounterName == "DiskTransfers za sekundu" &#124; summarize AggregatedValue = percentil (průměr, 95) podle počítače |95. percentil z přenosy disku/s pro všechny počítače |
+| Perf &#124; where CounterName == "DiskTransfers/sec" &#124; summarize AggregatedValue = percentile(Average, 95) by Computer |95. percentil z přenosy disku/s pro všechny počítače |
 | Perf &#124; tam, kde CounterName == "% Processor Time" a InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), počítač |Hodinové průměrné zatížení CPU ve všech počítačích |
 | Perf &#124; kde počítač == "Počítač" a hodnota CounterName startswith_cs "%" a InstanceName == "_Total" &#124; summarize AggregatedValue = podle bin (TimeGenerated, 1 hodina), hodnota CounterName. percentilu (CounterValue, 70) | Hodinové 70 percentilu každý % procenta čítače pro určitý počítač |
 | Perf &#124; tam, kde CounterName == "% Processor Time" a InstanceName == "_Total" a počítač == "Počítač" &#124; shrnout ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] percentil (CounterValue, 75) = ["max(CounterValue)"] = max(CounterValue) podle bin (TimeGenerated, 1 hodina), počítač |Hodinové průměrné, minimální, maximální a 75 percentilu využití procesoru pro určitý počítač |
