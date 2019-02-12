@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 89a54d99aa47af273e5955c2103ec696a985737e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8e9d41131228c2399277e59a6d0edd78efda307b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493741"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999109"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Nasazení webové služby Azure Machine Learning Studio
 Azure Machine Learning umožňuje vytvářet, testovat a nasazovat řešení prediktivní analýzy.
@@ -34,7 +34,7 @@ K natrénování modelu prediktivní analýzy, použijete Azure Machine Learning
 Postup vytváření a správa experimentů školení najdete více důkladně jinde. Další informace najdete v těchto článcích:
 
 * [Vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md)
-* [Vývoj prediktivního řešení pomocí služby Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+* [Vývoj prediktivního řešení pomocí služby Azure Machine Learning](tutorial-part1-credit-risk.md)
 * [Import cvičných dat do Azure Machine Learning Studio](import-data.md)
 * [Správa iterací experimentů v nástroji Azure Machine Learning Studio](manage-experiment-iterations.md)
 

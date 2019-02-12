@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468695"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004243"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
 Skupiny automatické převzetí služeb při selhání je funkce SQL Database, která vám umožní spravovat replikaci a převzetí služeb při selhání skupiny databází na serveru služby SQL Database nebo všechny databáze ve spravované instanci do jiné oblasti (aktuálně ve verzi public preview pro Managed Instance). Používá stejné základní technologii jako [aktivní geografickou replikaci](sql-database-active-geo-replication.md). Převzetí služeb při selhání můžete spustit ručně nebo ho můžete delegovat na službu SQL Database založené na uživatelem definované zásady. Druhou možnost můžete automaticky obnovit více související databáze v sekundární oblasti po závažnému selhání nebo jiné neplánované události, jehož výsledkem úplné nebo částečné ztrátě dostupnosti služby SQL Database v primární oblasti. Kromě toho můžete použít čitelné sekundární databáze k přesměrování zpracování úlohy dotazu jen pro čtení. Protože-automatické převzetí služeb při selhání skupiny zahrnují více databází, musí být nakonfigurované tyto databáze na primárním serveru. Primární a sekundární servery pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Automatické převzetí služeb při selhání skupiny podporu replikace všech databází ve skupině jenom jednu sekundární server v jiné oblasti.
 
 > [!NOTE]
-> Při práci se samostatnou službu nebo databáze ve fondu na server služby SQL Database a má více sekundární databáze v jedné nebo několika oblastech, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
+> Při práci s jeden, nebo součástí fondu databází na serveru služby SQL Database a má více sekundární databáze v jedné nebo několika oblastech, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
 
 Při použití automaticky – převzetí služeb při selhání skupiny zásadám automatické převzetí služeb při selhání, jakémkoli výpadku, který má vliv na jeden nebo několik databází v seskupení výsledků v automatické převzetí služeb při selhání. Kromě toho-automatické převzetí služeb při selhání skupiny poskytují čtení i zápis a koncové body naslouchacího zápisu jen pro čtení, které zůstávají beze změny během převzetí služeb při selhání. Ať už používáte aktivace ruční nebo automatické převzetí služeb při selhání, převzetí služeb při selhání přepne všechny sekundární databáze ve skupině na primární. Po dokončení převzetí služeb při selhání databáze se automaticky aktualizuje záznam DNS přesměrovat koncové body do nové oblasti. Konkrétní data RPO a RTO, naleznete v tématu [přehled kontinuity](sql-database-business-continuity.md).
 
@@ -331,7 +331,7 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server|
 | Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Odebere skupinu převzetí služeb při selhání|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>REST API: Spravovat skupiny převzetí služeb při selhání databáze SQL v nasazení samostatné služby a databáze ve fondu
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Spravovat skupiny převzetí služeb při selhání databáze SQL s databázemi ve fondu a jeden
 
 | Rozhraní API | Popis |
 | --- | --- |

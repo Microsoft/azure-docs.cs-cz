@@ -1,6 +1,6 @@
 ---
-title: Standardní vlastnosti v záznamech Azure Monitor Log Analytics | Dokumentace Microsoftu
-description: Popisuje vlastnosti, které jsou společné pro více typů dat ve službě Azure Monitor Log Analytics.
+title: Standardní vlastnosti ve službě Azure Monitor protokolování záznamů | Dokumentace Microsoftu
+description: Popisuje vlastnosti, které jsou společné pro více typů dat v protokolech Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381955"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997035"
 ---
-# <a name="standard-properties-in-log-analytics-records"></a>Standardní vlastnosti v záznamech Log Analytics
-Data v [Log Analytics](../log-query/log-query-overview.md) se ukládá jako sady záznamů, každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
+# <a name="standard-properties-in-azure-monitor-log-records"></a>Standardní vlastnosti ve službě Azure Monitor protokolování záznamů
+Data protokolu ve službě Azure Monitor je [uložené jako sady záznamů](../log-query/log-query-overview.md), každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
 
 Některé z těchto vlastností jsou stále probíhá proces jeho implementování, takže je mohou zobrazit v některé typy dat, ale ještě není v jiných.
 
@@ -39,7 +39,7 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Typ
+## <a name="type"></a>Type
 **Typ** vlastnost obsahuje název tabulky, ze kterého byla načtena záznam můžete také představit jako typ záznamu. Tato vlastnost je užitečná v dotazech, které kombinují záznamů z několika tabulek, jako jsou ty, které používají `search` operátor k rozlišení mezi záznamy různých typů. **$table** lze použít místo **typ** na některých místech.
 
 ### <a name="examples"></a>Příklady
@@ -151,6 +151,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [Log Analytics data se ukládají](../log-query/log-query-overview.md).
-- Získejte lekci na [zápis dotazů v Log Analytics](../../azure-monitor/log-query/get-started-queries.md).
-- Získejte lekci na [spojování tabulek v dotazy Log Analytics](../../azure-monitor/log-query/joins.md).
+- Další informace o [Azure Monitor data protokolu se ukládají](../log-query/log-query-overview.md).
+- Získejte lekci na [psaní dotazů protokolu](../../azure-monitor/log-query/get-started-queries.md).
+- Získejte lekci na [spojování tabulek do dotazů na protokoly](../../azure-monitor/log-query/joins.md).
