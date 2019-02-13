@@ -7,14 +7,14 @@ services: key-vault
 ms.service: key-vault
 author: prashanthyv
 ms.author: pryerram
-manager: mbaldwin
+manager: barbkess
 ms.date: 10/03/2018
-ms.openlocfilehash: 06054859fb4ffcbfc09704e62821c6184fc9e252
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9b1a4e23ed0da0637b44ac52dd4d1baeb22cd6ce
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993176"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118050"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 

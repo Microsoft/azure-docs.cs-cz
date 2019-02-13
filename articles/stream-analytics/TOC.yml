@@ -59,6 +59,8 @@ items:
     href: stream-analytics-stream-analytics-query-patterns.md
   - name: Parsování dat JSON a AVRO
     href: stream-analytics-parsing-json.md
+  - name: Důležité informace o práci s časem
+    href: stream-analytics-time-handling.md
   - name: Důležité informace o řazení událostí
     href: stream-analytics-out-of-order-and-late-events.md
   - name: Kontrolní bod a opětovného přehrání
@@ -431,9 +433,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Dokument white paper – Zpracování událostí v reálném čase
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: d2038b8a663db50f4b2341ae3b2c39b499bb00c2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 00a80228f20c172c5584ca18a9789ed458c864aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882341"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997970"
