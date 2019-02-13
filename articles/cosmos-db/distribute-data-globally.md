@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.openlocfilehash: 28c945223d225d7e91df1041bcbe02ee87b93c6a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 75940f9c3c8022c5445eb998b133a156dacde9b5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475053"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106864"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB – přehled
 
@@ -22,6 +22,8 @@ Azure Cosmos DB je globálně distribuovaná databázová služba, která zajiš
 Můžete nakonfigurovat vaše databáze bude globálně distribuovaná a k dispozici ve všech oblastech Azure. Pokud chcete snížit latenci, umístěte data blíž k kde jsou vaši uživatelé. Volba požadované oblasti závisí na globální dosah aplikace, a kde se nachází vaši uživatelé. Data v rámci svého účtu Azure Cosmos DB transparentně replikuje do všech oblastí, které jsou spojené s vaším účtem. Poskytuje jeden systémový obraz globálně distribuovanou databázi Azure Cosmos a kontejnerů, které vaše aplikace může číst a zapisovat do místně. 
 
 Pomocí služby Azure Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. Vaše aplikace nemusí pozastavená nebo znovu nasadit do přidat nebo odebrat oblasti. Pokračuje k zajištění vysoké dostupnosti neustále kvůli multihomingu možnosti, které služba poskytuje.
+
+![Topologie nasazení s vysokou dostupností](./media/distribute-data-globally/deployment-topology.png)
 
 ## <a name="key-benefits-of-global-distribution"></a>Klíčové výhody globální distribuce
 
@@ -50,6 +52,7 @@ Mnoho aplikací mít prospěch z vylepšení výkonu, které jsou součástí sc
 Přečtěte si další informace o globální distribuci v následujících článcích:
 
 * [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
+* [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md)
 * [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Přidat nebo odebrat oblasti ze svého účtu Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Vytvořit zásadu konflikt vlastní řešení pro účty rozhraní SQL API](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

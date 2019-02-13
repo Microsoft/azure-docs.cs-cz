@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.reviewr: japere
-ms.openlocfilehash: 299024bffc8f876527ca42c4143a0076d64ce727
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a488c30f5b9438a91d2eae429cf65689af992dcb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964981"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167078"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>Jak se zobrazují na přístupovém panelu aplikací
 

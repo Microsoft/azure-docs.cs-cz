@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247795"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211440"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa úložiště objektů Blob v Azure životního cyklu (Preview)
 
@@ -37,7 +37,7 @@ Zásady správy životního cyklu je k dispozici obě obecné účely v2 (GPv2) 
 Funkce správy životního cyklu je zdarma ve verzi preview. Zákazníkům se poplatky účtují náklady běžném provozu [výpis objektů blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) volání rozhraní API. Další informace o cenách najdete v tématu [ceny za objekty Blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="register-for-preview"></a>Zaregistrujte se ve verzi preview 
-K registraci ve verzi public preview, budete muset odeslat žádost o registraci této funkce do vašeho předplatného. Požadavky jsou obvykle schválit během dvou týdnů. Po schválení se zahrnout všechny stávající i nové účty GPv2 nebo Blob účty úložiště v těchto oblastech funkci: Západní USA 2, střed USA – Západ, USA – východ 2 a západní Evropa. Ve verzi Preview podporuje jenom objekty blob bloku. Stejně jako u většiny momentálně ve verzi Preview můžete tuto funkci neměli používat pro produkční úlohy dokud nedosáhne obecné dostupnosti.
+K registraci ve verzi public preview, budete muset odeslat žádost o registraci této funkce do vašeho předplatného. Požadavky jsou obvykle schválit během 72 hodin. Po schválení se zahrnout všechny stávající i nové účty GPv2 nebo Blob účty úložiště v těchto oblastech funkci: Západní USA 2, střed USA – Západ, USA – východ 2 a západní Evropa. Ve verzi Preview podporuje jenom objekty blob bloku. Stejně jako u většiny momentálně ve verzi Preview můžete tuto funkci neměli používat pro produkční úlohy dokud nedosáhne obecné dostupnosti.
 
 Odeslat žádost, spusťte následující příkazy prostředí PowerShell nebo rozhraní příkazového řádku.
 
@@ -136,7 +136,7 @@ Každé pravidlo v rámci zásad vyžaduje tři parametry:
 
 | Název parametru | Typ parametru | Poznámky |
 |----------------|----------------|-------|
-| Name           | Řetězec | Název pravidla může obsahovat libovolnou kombinaci alfanumerických znaků. Název pravidla je velká a malá písmena. Musí být jedinečný v rámci zásady. |
+| Název           | String | Název pravidla může obsahovat libovolnou kombinaci alfanumerických znaků. Název pravidla je velká a malá písmena. Musí být jedinečný v rámci zásady. |
 | type           | Hodnoty výčtu | Platná hodnota pro verzi preview je `Lifecycle`. |
 | Definice     | Objekt, který definuje pravidlo životního cyklu | Každá definice se skládá sada filtru a skupinu akcí. |
 

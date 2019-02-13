@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 05ac96b1b048d6d04b1988414312c2f8e5f41971
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 893113b5383cfc2904a053b49edee19cb39f443c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158141"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>Kurz: Integrace Azure Active Directory s InTime
 

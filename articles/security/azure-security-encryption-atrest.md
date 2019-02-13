@@ -4,7 +4,7 @@ description: Tento článek obsahuje přehled služby Microsoft Azure data šifr
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: c9e3a98b1073a2b198a341f31a320bba670b0596
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994398"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117897"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data šifrování neaktivních
 
@@ -262,7 +262,7 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | Disk (IaaS)                      | -                  | Ano, RSA 2048 bitů  | -                  |
 | SQL Server (IaaS)                | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Azure SQL (databáze/datový sklad) | Ano                | Ano, RSA 2048 bitů  | Ano                |
-| Azure SQL (databáze spravované Instance) | Ano                | Ve verzi Preview, RSA 2048 bitů  | Ano                |
+| Azure SQL (databáze spravované Instance) | Ano                | Preview, RSA 2048-bit  | Ano                |
 | Azure Storage (objekty BLOB bloku nebo stránky) | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Azure Storage (soubory)            | Ano                | Ano, RSA 2048 bitů  | -                  |
 | Azure Storage (tabulky, fronty)   | Ano                | -                  | Ano                |
@@ -271,7 +271,7 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | Backup                           | -                  | -                  | Ano                |
 | **Inteligentní funkce a analýzy**   |                    |                    |                    |
 | Azure Data Factory               | Ano                | -                  | -                  |
-| Azure Machine Learning           | -                  | Ve verzi Preview, RSA 2048 bitů | -                  |
+| Azure Machine Learning           | -                  | Preview, RSA 2048-bit | -                  |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | HDInsight (Azure Blob Storage)   | Ano                | -                  | -                  |
 | HDInsight (Data Lake Storage)    | Ano                | -                  | -                  |
@@ -279,7 +279,7 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048 bitů  | -                  |
 | Katalog dat Azure               | Ano                | -                  | -                  |
 | Power BI                         | Ano                | -                  | -                  |
-| **Služby IoT**                 |                    |                    |                    |
+| **IoT Services**                 |                    |                    |                    |
 | IoT Hub                          | -                  | -                  | Ano                |
 | Service Bus                      | Ano                | -                  | Ano                |
 | Event Hubs                       | Ano                | -                  | -                  |

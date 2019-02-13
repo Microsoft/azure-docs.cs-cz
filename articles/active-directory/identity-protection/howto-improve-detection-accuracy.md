@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: d2b477c31898884761f260e9520913c67c7c6f83
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1385442ace852c310ca6796da9294ca57c797690
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488913"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211032"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>Jak: Zlepšovat přesnost detekce 
 

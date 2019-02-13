@@ -4,7 +4,7 @@ description: Tento článek se zabývá integrity infrastruktury Azure.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 65fe541f61389a2e52033cdaedcfcec4944faf35
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 24d54fa7a8985a6af58cddfc969b8023485c73c2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171455"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104937"
 ---
 # <a name="azure-infrastructure-integrity"></a>Integrity infrastruktury Azure
 

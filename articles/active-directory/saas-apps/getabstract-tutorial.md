@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: cc5ed33f40d1500124aeed2d215d281ded47f5c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3725089c8b2e7dc71e652ddcbd20a757d9bbf726
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191657"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Kurz: Integrace Azure Active Directory s Getabstract
 

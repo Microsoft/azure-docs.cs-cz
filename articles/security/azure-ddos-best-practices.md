@@ -3,7 +3,7 @@ title: Azure DDoS Protection osvědčené postupy a referenční architektury | 
 description: Další informace o použití protokolování dat získat podrobný přehled o vaší aplikaci.
 services: security
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 4496a0fd3ec220d03c4cc279876234b503b0dbb6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9f837a5dbea15b159a226b12c034add1dcf69834
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720862"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117846"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Osvědčené postupy a referenční architektury
 
@@ -98,7 +98,7 @@ Vidíme často zákazníků s místními prostředky získávání napadených s
 
 Azure má dva nabídky služeb DDoS, které poskytují ochranu před síťovými útoky (vrstva 3 a 4): Před útoky DDoS Basic Protection a před útoky DDoS Standard Protection. 
 
-### <a name="ddos-protection-basic"></a>Před útoky DDoS Basic Protection
+### <a name="ddos-protection-basic"></a>DDoS Protection Basic
 
 Basic protection je integrovaná do Azure ve výchozím nastavení bez dalších poplatků. Škálování a kapacitu sítě globálně nasazených Azure poskytuje ochranu před běžnými útoky síťové vrstvě prostřednictvím monitorování a v reálném čase zmírnění neustále v provozu. DDoS Protection základní vyžaduje žádné změny v konfiguraci nebo aplikaci uživatele. DDoS Protection základní k ochraně všech služeb Azure, včetně služeb PaaS, jako je Azure DNS.
 
@@ -110,7 +110,7 @@ Například zásady ochrany před útoky DDoS Určuje, na jaký objem provozu by
 
 Služba Azure DDoS Protection na úrovni Basic je zaměřený na ochranu infrastruktury a ochranu platformy Azure. To omezuje provoz když překročí kurz, který je proto důležité, že by mohla ovlivnit více zákazníků ve víceklientském prostředí. Neposkytuje výstrahy nebo přizpůsobené zásady na zákazníka.
 
-### <a name="ddos-protection-standard"></a>Před útoky DDoS Standard Protection
+### <a name="ddos-protection-standard"></a>DDoS Protection Standard
 
 Standard protection poskytuje vylepšené funkce, které před útoky DDoS omezení rizik. Toto pravidlo je vyladěný automaticky k ochraně vašich konkrétní prostředků ve virtuální síti Azure. Ochrana se snadno povolit na všechny nové nebo existující virtuální sítě a nevyžaduje žádné změny aplikace nebo prostředku. Má několik výhod oproti základní služby, včetně protokolování, výstrahy a telemetrie. Následující oddíly popisují klíčové funkce služby Azure DDoS Protection Standard.
 

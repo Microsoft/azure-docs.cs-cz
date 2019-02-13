@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 371ff15121e3da0bec5be6159fea9c6764b0aeda
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f2dfaf281130115ff04ff84b413e224f54cfcf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703610"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>Kurz: Integrace Azure Active Directory s cloudem JDA
 
@@ -170,7 +171,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-a-jda-cloud-test-user"></a>Vytvoření zkušebního uživatele JDA cloudu
 
-V této části vytvořte uživatele Britta Simon JDA cloudu. Práce s [tým podpory JDA Cloud](https://support.jda.com/) přidejte uživatele JDA cloudové platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon JDA cloudu. Práce s [tým podpory JDA Cloud](https://support.jda.com/) přidejte uživatele JDA cloudové platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

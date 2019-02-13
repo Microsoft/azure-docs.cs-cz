@@ -3,7 +3,7 @@ title: Časté otázky – vyhrazené modulu hardwarového zabezpečení Azure |
 description: Nejčastější dotazy mezi probíraná témata různých na vyhrazené modulu hardwarového zabezpečení Azure
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: concepts
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: ec814bf641dea6f47b907e9f9e2646dfcf84ade1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5ea98f96fe10337e905270cf5da4847d825d6eb4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451744"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107799"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 

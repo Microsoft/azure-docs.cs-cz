@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: a101ce1c4ba7366957f04029350f99c01b94ff53
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c48bbffd6a6312588d071841000b9211266285e3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960781"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163032"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 

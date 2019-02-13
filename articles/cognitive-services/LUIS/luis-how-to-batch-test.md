@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: fddd54e7c4e88b85f6e6fa8f7319661db96e9524
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 973a82e97bc9770c30e791512b13e4c57a4c5bca
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877537"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116894"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testování pomocí sady projevy příklad služby batch
 
- Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. Sady dat použít pro testování služby batch by neměl obsahovat příklad projevy záměry nebo projevy přijatých z koncového bodu modulu runtime předpovědi. 
+ Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. Sady dat použít pro testování služby batch by neměl obsahovat příklad projevy záměry nebo projevy z koncového bodu modulu runtime předpovědi přijata. 
 
 <a name="batch-testing"></a>
 

@@ -1,5 +1,5 @@
 ---
-title: Koncové body služeb virtuální sítě a pravidla pro Azure SQL Database a SQL Data Warehouse | Dokumentace Microsoftu
+title: Virtuální síť koncových bodů a pravidel pro jednoho a ve fondu databází v Azure SQL | Dokumentace Microsoftu
 description: Označte jako koncový bod služby virtuální sítě podsítě. Klikněte koncový bod jako pravidlo virtuální sítě do seznamu řízení přístupu Azure SQL Database. SQL Database je pak podporují komunikaci ze všech virtuálních počítačů a ostatní uzly v podsíti.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: 6fdcf0b5baf28aee931307b28e1f161fddaa4d8e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453923"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118373"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL
+# <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncové body služeb virtuální sítě a pravidel pro databázové servery
 
-*Pravidla virtuální sítě* jsou jeden funkce zabezpečení brány firewall, která určuje, zda Azure [SQL Database](sql-database-technical-overview.md) nebo [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) server přijímá komunikaci, kterou jsou odesílány z konkrétní podsítí ve virtuálních sítích. Tento článek vysvětluje, proč funkce pravidlo virtuální sítě je někdy nejlepší možnost pro umožnění bezpečné komunikace s Azure SQL Database a SQL Data Warehouse.
+*Pravidla virtuální sítě* jsou jeden funkce zabezpečení brány firewall, která určuje, zda databázový server pro izolované databáze a elastického fondu ve službě Azure [SQL Database](sql-database-technical-overview.md) nebo databází v [dat SQL Sklad](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, kterou jsou odesílány z konkrétní podsítě ve virtuálních sítích. Tento článek vysvětluje, proč funkce pravidlo virtuální sítě je někdy nejlepší možnost pro umožnění bezpečné komunikace s Azure SQL Database a SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek provádí *není* platí pro **Azure SQL Database Managed Instance**.
+> Tento článek se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořeny na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek provádí *není* platí pro **spravovanou instanci** nasazení ve službě Azure SQL Database protože nemá koncový bod služby s ním spojená.
 
 K vytvoření pravidla virtuální sítě, nejprve musí být [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] pravidla pro odkazování.
 

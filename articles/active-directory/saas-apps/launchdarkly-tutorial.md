@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: d67afb6c8cba36e6f63cd9d25d753a29441a4834
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e2d59019d0e224691973baa3c45f46cddc5d878f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809237"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Kurz: Integrace Azure Active Directory pomocí LaunchDarkly
 

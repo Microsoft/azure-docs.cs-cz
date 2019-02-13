@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2019
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: fb33f6006a1456669facd8baf80161ab115f2689
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 77a806d328a6dbac0e57c9d99e06debbb25e88b8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995067"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108377"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor pojmenování a terminologie změny
 Významné byly provedeny změny do Azure monitoru nedávno s různými službami konsolidaci zjednodušit sledování pro zákazníky Azure. Tento článek popisuje poslední název a terminologie změnami dokumentace ke službě Azure Monitor.
@@ -26,18 +26,15 @@ Významné byly provedeny změny do Azure monitoru nedávno s různými službam
 Po sloučení různé služby Azure Monitor přesměrujeme na další krok úpravou terminologii používané v naší dokumentaci zájmu lepšího popsání služby Azure Monitor a jeho různé součásti. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Data jsou stále protokolů Azure Monitor uložené v pracovním prostoru Log Analytics je stále shromažďují a analyzována pomocí stejné služby Log Analytics, ale měníme termín _Log Analytics_ na mnoha místech na _protokoly Azure monitoru_ . Toto lépe odpovídají jeho role ve službě Azure Monitor a poskytuje lepší konzistence [metriky ve službě Azure Monitor](platform/data-collection.md).
+Data jsou stále protokolů Azure Monitor uložené v pracovním prostoru Log Analytics je stále shromažďují a analyzována pomocí stejné služby Log Analytics, ale měníme termín _Log Analytics_ na mnoha místech na _protokoly Azure monitoru_ . Tento termín lépe odpovídají jeho role ve službě Azure Monitor a poskytuje lepší konzistence [metriky ve službě Azure Monitor](platform/data-collection.md).
 
-Termín _protokolu analytics_ nyní především se vztahuje na stránce na webu Azure Portal použít k zápisu a spouštět dotazy a analyzovat data protokolů. Je ekvivalentní [Průzkumníka metrik](platform/metrics-charts.md) což je stránka na webu Azure Portal slouží k analýze data metriky.
+Termín _protokolu analytics_ nyní především se vztahuje na stránce na webu Azure Portal použít k zápisu a spouštět dotazy a analyzovat data protokolů. Je ekvivalentní [Průzkumníka metrik](platform/metrics-charts.md), což je stránka na webu Azure Portal slouží k analýze data metriky.
 
 ### <a name="log-analytics-workspaces"></a>Pracovní prostory Log Analytics
 [Pracovní prostory](platform/manage-access.md) , který obsahovat data protokolu ve službě Azure Monitor se stále označují jako pracovní prostory Log Analytics. **Log Analytics** stránky na webu Azure Portal se přejmenoval na **pracovních prostorů Log Analytics** a je tam, kde jste [vytvořit nové pracovní prostory](learn/quick-create-workspace.md) a nakonfigurovat datové zdroje. Analýza protokolů a dalšími daty monitorování v **Azure Monitor** a konfigurujte váš pracovní prostor v **pracovních prostorů Log Analytics**.
 
-### <a name="log-query-language"></a>Dotazovací jazyk log
-Azure Monitor používá Průzkumník dat dotazovací jazyk log dotazů. Před Průzkumník dat Azure, tento jazyk se nazývá Kusto nebo dotazovací jazyk Azure Monitor. Můžeme se teď na ni odkazuje se stejným názvem jako Průzkumník dat, aby byly posíleny, které používají stejný jazyk. Existují malé rozdíly s Azure Monitor charakter jazyka podle popisu v [Azure Monitor protokolu dotazu jazyka rozdíly](log-query/data-explorer-difference.md).
-
 ### <a name="management-solutions"></a>Řešení pro správu
-[Řešení pro správu](insights/solutions.md) byl přejmenován na _řešení monitorování_ lépe vystihuje jejich funkce.
+[Řešení pro správu](insights/solutions.md) byl přejmenován na _řešení monitorování_, lépe vystihuje jejich funkce.
 
 
 ## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>. Srpna 2018 - konsolidovaná sledování služeb do služby Azure Monitor

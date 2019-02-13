@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d3102a269d41fded112b0704c28ca2cf5df71a6
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101116"
+ms.locfileid: "56106949"
 ---
 # <a name="handling-review-feedback"></a>Zpracování zpětné vazby z revize
 
@@ -71,7 +71,7 @@ Pomocí následujícího postupu zkontrolovat problémy uvedené v žádosti o p
 4. Klikněte na každý uzel komentáře v levém stromu přejděte na komentář v kontextu okolním kódem.  Opravte zdrojový kód v projektu váš tým a opravte problém popsaný komentáře.
 
 > [!Note]
-> Nelze upravit vaší nabídky v rámci technických prostředků prostředí Azure DevOps tým kontroly.  Pro vydavatele to je jen pro čtení prostředí pro omezením zdrojový kód.  Však můžete nechat odpovědi na komentáře prospěch tým Microsoft kontroly.
+> Technické prostředky vaší nabídky v rámci prostředí Azure DevOps tým kontroly se nedá upravit.  Pro vydavatele to je jen pro čtení prostředí pro omezením zdrojový kód.  Však můžete nechat odpovědi na komentáře prospěch tým Microsoft kontroly.
 
    V následujícím příkladu má vydavatele revizi, opravit a odpověděl na prvním problémem.
 

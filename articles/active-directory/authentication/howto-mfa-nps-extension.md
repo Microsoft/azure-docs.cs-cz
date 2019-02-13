@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc18a523ff7c275b249704fb3928f2ebde6c81a9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 108b188b0bbb63a4c9faea936360cf2fa3edc806
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074885"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211610"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
@@ -247,7 +248,7 @@ Tato chyba mohla být způsobené jedním z několika důvodů. Tyto kroky použ
 1. Restartujte NPS server.
 2. Ověřte, že tento klientský certifikát je nainstalovaný podle očekávání.
 3. Ověřte, zda je certifikát přidružený vašeho tenanta v Azure AD.
-4. Ověřte, že https://login.microsoftonline.com/ přístupný ze serveru se spuštěným rozšíření.
+4. Ověřte, že ze serveru, na kterém se spouští rozšíření, je přístupný web https://login.microsoftonline.com/.
 
 -------------------------------------------------------------
 
@@ -259,7 +260,7 @@ Ověřte, že AD Connect je spuštěná a že uživatel je k dispozici ve Window
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Proč vidím HTTP chyby v protokolech, spojte se s Moje ověřování služeb při selhání?
 
-Ověřte, že https://adnotifications.windowsazure.com dostupný ze serveru se spuštěným rozšíření NPS.
+Ověřte, že ze serveru, na kterém se spouští rozšíření NPS, je přístupný web https://adnotifications.windowsazure.com.
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Správa protokolů TLS a SSL a šifrovacích sad
 

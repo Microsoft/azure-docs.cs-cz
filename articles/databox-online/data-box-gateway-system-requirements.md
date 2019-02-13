@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: be51e6c829c5f12d17c6302bb951039711f12075
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094185"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113222"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box brány požadavky na systém (Preview)
 
@@ -42,22 +42,11 @@ Základní systém hostitele pro pole brána dat je možné vyhradit následují
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Podporovaný operační systém pro klienty připojené k zařízení
 
-Tady je seznam podporovaných operačních systémů pro klienty nebo hostitele, které jsou připojeny k bráně Data Box.
-
-| **Operačního systému a platformy** | **Verze** |
-| --- | --- |
-| Windows Server |2012 R2 <br> 2016 <br> 2019 |
-| Windows |8, 10 |
-| SUSE Linux |Enterprise Server 12 (x86_64)|
-| Ubuntu |16.04.3 LTS|
-| CentOS | 7.0 |
+[!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-supported-client-os.md)]
 
 ## <a name="supported-protocols-for-clients-accessing-device"></a>Podporované protokoly klientům přístup k zařízení
 
-|**Protokol** |**Verze**   |**Poznámky**  |
-|---------|---------|---------|
-|SMB    | 2.X, 3.X      | Nepodporuje se SMB 1.|
-|Systém souborů NFS     | V3 a V4        |         |
+[!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Podporovaný virtualizační platformy pro zařízení
 
@@ -69,49 +58,22 @@ Tady je seznam podporovaných operačních systémů pro klienty nebo hostitele,
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
-Tady je seznam účtů úložiště podporuje pro bránu dat pole.
-
-| **Účet úložiště** | **Poznámky** |
-| --- | --- |
-| Classic | Standard |
-| Obecné použití  |Standardní; verze V1 i V2 podporují. Vrstvy hot a cool nejsou podporovány. |
+[!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
 
 ## <a name="supported-storage-types"></a>Typy podporovaných úložišť
 
-Tady je seznam typů úložiště podporuje pro bránu dat pole.
-
-| **Formát souboru** | **Poznámky** |
-| --- | --- |
-| Objekt blob bloku Azure | |
-| Objekt blob stránky Azure  | |
-| Soubory Azure | |
+[!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
 ## <a name="supported-browsers-for-local-web-ui"></a>Podporované prohlížeče pro místního webového uživatelského rozhraní
 
-Tady je seznam prohlížečů podporovaných pro místního webového uživatelského rozhraní pro virtuální zařízení.
+[!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-|Prohlížeč  |Verze  |Další požadavky a poznámky  |
-|---------|---------|---------|
-|Google Chrome   |Nejnovější verze         |         |
-|Microsoft Edge    | Nejnovější verze        |         |
-|Internet Explorer     | Nejnovější verze        |         |
-|FireFox    |Nejnovější verze         |         |
-
-
-## <a name="networking-requirements"></a>Požadavky na síť
+## <a name="networking-port-requirements"></a>Požadavky na síťové porty
 
 Následující tabulka uvádí porty, které je potřeba otevřít v bráně firewall povolit pro protokol SMB, cloud nebo přenos pro správu. V této tabulce *v* nebo *příchozí* odkazuje na směru, které mají přístup příchozí požadavky klienta na vaše zařízení. *Navýšení kapacity* nebo *odchozí* odkazuje na směru, ve kterém zařízení Data Box brány odesílá data externě, nad rámec nasazení: pro příklad, odchozí k Internetu.
 
-| Port č.| Snížení nebo navýšení kapacity | Rozsah portů| Požaduje se|   Poznámky                                                             |                                                                                     |
-|--------|---------|----------|--------------|----------------------|---------------|
-| TCP 80 (HTTP)|Výstup|WAN |Ne|Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br>Odchozí webový proxy server je konfigurovatelná uživatelem. |                          
-| TCP 443 (HTTPS)|Výstup|WAN|Ano|Odchozí port se používá pro přístup k datům v cloudu.<br>Odchozí webový proxy server je konfigurovatelná uživatelem.|   
-| UDP 53 (DNS)|Výstup|WAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS.<br>Doporučujeme používat místní server DNS. |
-| UDP 123 (NTP)|Výstup|WAN|V některých případech<br>Viz poznámky|Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP.  |
-| UDP 67 (DHCP)|Výstup|WAN|V některých případech<br>Viz poznámky|Tento port je požadován, pouze pokud používáte DHCP server.  |
-| TCP 80 (HTTP)|V|LAN|Ano|Toto je příchozí port pro místní uživatelské rozhraní na zařízení pro místní správu. <br>Přístup k místním uživatelského rozhraní pomocí protokolu HTTP bude automaticky přesměrovat na protokol HTTPS.  | 
-| TCP 443 (HTTPS)|V|LAN|Ano|Toto je příchozí port pro místní uživatelské rozhraní na zařízení pro místní správu. | 
+[!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
 ## <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
 
@@ -123,26 +85,11 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle pole 
 > - Zařízení (zdroj) IP adresy musí být vždy nastavená na všechna rozhraní sítě povolenou podporu cloudu.
 > - Cílové IP adresy musí být nastavená na [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 
-|     Vzor adresy URL                                                                                                                                                                                                                                                                                                                                                                                                                                       |     Komponenta nebo funkce                                                                             |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://*.databoxedge.azure.com/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Služba Azure Data Box brány<br>Azure Service Bus<br>Ověřovací služba    |
-|    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    Aktivace zařízení                                                                                    |
-|    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    Odvolání certifikátu                                                                               |
-|    https://*.core.windows.net/*   https://*.data.microsoft.com   http://*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Účty úložiště Azure a monitorování                                                                |
-|    http://windowsupdate.microsoft.com<br>http://*.windowsupdate.microsoft.com<br>https://*.windowsupdate.microsoft.com<br>http://*.update.microsoft.com<br>https://*.update.microsoft.com<br>http://*.windowsupdate.com<br>http://download.microsoft.com<br>http://*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*.ws.microsoft.com<br>https://*.ws.microsoft.com<br>http://*.mp.microsoft.com        |    Servery Microsoft Update                                                                             |
-|    http://*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
-|    https://*.partners.extranet.microsoft.com/*                                                                                                                                                                                                                                                                                                                                                                                                        |    Balíček pro podporu                                                                                      |
-|    http://*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    Telemetrické službě ve Windows, najdete v článku aktualizace pro uživatelské prostředí a telemetrická data diagnostiky      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                                                                                         |
-
-
+[!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
 ## <a name="internet-bandwidth"></a>Šířka pásma sítě Internet
 
-Následující požadavky platí pro minimální šířka pásma sítě Internet k dispozici pro zařízení Data Box brány.
-
-- Vaše služba Data Box Gateway má vyhrazenou šířku internetového pásma 20 Mb/s (nebo více), která je vždy dostupná. Tato šířka pásma by se neměla sdílet s žádnými jinými aplikacemi. 
-- Vaše brána dat pole má vyhrazenou šířku pásma 32 MB/s sítě Internet (nebo více) při použití omezení využití sítě.
+[!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
 ## <a name="next-step"></a>Další krok
 

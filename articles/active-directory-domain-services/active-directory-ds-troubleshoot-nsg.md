@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 503e52266c1c6be71e60a751c40ef0a54f0d9b12
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181890"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112492"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Řešení potíží s neplatnou konfiguraci sítě pro vaši spravovanou doménu
 Tento článek pomáhá odstraňovat potíže a řešit chyby související se sítí konfigurace, které za následek následující upozornění:
@@ -36,7 +36,7 @@ Neplatná konfigurace skupiny zabezpečení sítě jsou nejčastější příči
 2. Z tabulky zvolte skupinu zabezpečení sítě přidružená k podsíti, ve kterém je povolena vaší spravované domény.
 3. V části **nastavení** na levém panelu klikněte na tlačítko **příchozí pravidla zabezpečení**
 4. Zkontrolujte pravidla na místě a určit, která pravidla blokují přístup k [tyto porty](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)
-5. Upravte skupiny NSG k zajištění dodržování předpisů buď odstraňuje se pravidlo, přidání pravidla nebo zcela vytvořením nové skupiny zabezpečení sítě. Kroky pro [přidat pravidlo](#add-a-rule-to-a-network-security-group-using-the-azure-portal) nebo [vytvořit nové, který vyhovuje NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) jsou níže
+5. Upravte skupiny NSG k zajištění dodržování předpisů buď odstraňuje se pravidlo, přidání pravidla nebo zcela vytvořením nové skupiny zabezpečení sítě. Kroky pro [přidat pravidlo](#add-a-rule-to-a-network-security-group-using-the-azure-portal) nebo vytvořte novou, jsou kompatibilní s NSG níže
 
 ## <a name="sample-nsg"></a>Ukázková skupina zabezpečení sítě
 Následující tabulka znázorňuje ukázku NSG, která by zabezpečení vaší spravované domény zároveň umožní Microsoftu monitorovat, spravovat a aktualizovat informace.

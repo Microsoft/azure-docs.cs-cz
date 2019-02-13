@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/19/2019
 ms.author: glenga
-ms.openlocfilehash: b51bf448d49647bbe03529bfe8b184a2fbaf946a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ab502c25a632977065e55d2eeafd684203636b14
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005552"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109907"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -36,7 +36,7 @@ Tento článek obsahuje pokyny o tom, jak napsat kód pro [sady Azure WebJobs SD
 
 Tento článek předpokládá přečetl(a) a dokončených úloh v [Začínáme se sadou WebJobs SDK](webjobs-sdk-get-started.md).
 
-## <a name="webhobs-host"></a>WebHobs host
+## <a name="webjobs-host"></a>WebJobs hostitele
 
 Hostitel je kontejner modulu runtime pro funkce.  Naslouchá aktivačních událostí a volání funkce. Ve verzi 3.x, hostitel je implementace `IHost`a ve verzi 2.x použijete `JobHost` objektu. Vytvoření instance hostitele ve vašem kódu a psaní kódu můžete přizpůsobit její chování.
 

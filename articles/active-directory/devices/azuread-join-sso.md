@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: d224c3fe8c2d94fc0f86ed2478b0e760160761bf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c42a2240bd5b242634cbb255bf717f11610f063
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103407"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161587"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Zařízení připojená k fungování jednotného přihlašování k místním prostředkům v Azure AD
 

@@ -4,7 +4,7 @@ description: Další informace o různých možnostech šifrování v Azure
 services: security
 documentationcenter: na
 author: Barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: dc1ca62ce184ac290f289975ff609b8240351099
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 272cc843ab90eade06525f665d3cf2decf74a26f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035092"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114650"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování Azure
 
@@ -50,11 +50,11 @@ Poskytovatelé cloudových služeb pomocí šifrování na straně klienta, nebu
 
 Všechny tři modely šifrování na straně serveru nabízet správu různých klíčů vlastnostmi, které můžete použít podle vašich požadavků:
 
-- **Klíče spravované službou**: obsahuje kombinaci ovládacího prvku a usnadnění práce s nízkou režií.
+- **Klíče spravované službou**: Obsahuje kombinaci ovládacího prvku a usnadnění práce s nízkou režií.
 
-- **Klíče spravované zákazníkem**: dává kontrolu nad klíči, včetně podpory Bring Your Own klíče (BYOK), nebo můžete vygenerovat nové značky.
+- **Klíče spravované zákazníkem**: Umožňuje kontrolu nad klíči, včetně podpory Bring Your Own klíče (BYOK), nebo můžete vygenerovat nové značky.
 
-- **Klíče spravované zákazníkem služby zákazníka řídí hardware**: umožňuje spravovat klíče v úložišti proprietární mimo Microsoft ovládacího prvku. Tato vlastnost se nazývá hostitele Your Own Key (HYOK). Ale konfigurace je složitá a většina služeb Azure nepodporují tento model.
+- **Klíče spravované zákazníkem služby zákazníka řídí hardware**: Umožňuje spravovat klíče v úložišti proprietární mimo Microsoft ovládacího prvku. Tato vlastnost se nazývá hostitele Your Own Key (HYOK). Ale konfigurace je složitá a většina služeb Azure nepodporují tento model.
 
 ### <a name="azure-disk-encryption"></a>Azure disk encryption
 
@@ -78,7 +78,7 @@ Další informace a stáhnout Klientská knihovna pro úložiště Azure pro bal
 
 Pokud používáte šifrování na straně klienta se službou Key Vault, vaše data zašifrují pomocí jednorázové symetrického obsahu šifrovací klíč (CEK), který je generován klienta služby Azure Storage SDK. CEK se šifrují pomocí na klíč šifrování klíčů (KEK), což může být buď symetrický klíč, nebo asymetrický pár klíčů. Můžete spravovat místně nebo ukládat ve službě Key Vault. Šifrovaná data se pak nahrají do služby Azure Storage.
 
-Další informace o šifrování na straně klienta se službou Key Vault a začít pracovat s pokyny k používání najdete v tématu [kurz: šifrování a dešifrování objektů BLOB ve službě Azure Storage s použitím služby Key Vault](../storage/storage-encrypt-decrypt-blobs-key-vault.md).
+Další informace o šifrování na straně klienta se službou Key Vault a začít pracovat s pokyny k používání najdete v tématu [kurzu: Šifrování a dešifrování objektů BLOB ve službě Azure Storage s použitím služby Key Vault](../storage/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Provést šifrování na straně klienta předtím, než nahrání dat do služby Azure Storage a k dešifrování dat při stahování do klienta a konečně, můžete použít také klientskou knihovnu pro úložiště Azure pro Javu. Tato knihovna také podporuje integraci s [služby Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů účtu úložiště.
 
@@ -172,7 +172,7 @@ Další informace o připojení point-to-site VPN k virtuálním sítím Azure n
 
 [Konfigurace připojení typu point-to-site k virtuální síti pomocí ověřování certifikace: Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
-[Konfigurace připojení typu point-to-site k virtuální síti s použitím ověření certifikátu: PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+[Konfigurace připojení point-to-site k virtuální síti s použitím ověření certifikátu: PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="site-to-site-vpns"></a>VPN typu Site-to-site 
 

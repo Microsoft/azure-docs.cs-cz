@@ -4,7 +4,7 @@ description: Tento článek obsahuje obecný popis architektury Microsoft Azure 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: b2e8ef232e1b25c7d000f4683830ff2e188047fb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186472"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118135"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Součásti systému Azure informace a hranice
 Tento článek obsahuje obecný popis Azure architekturu a správu. Prostředí systému Azure se skládá z následující sítě:
@@ -54,9 +54,9 @@ Operační systém týmu poskytuje obrázků ve formuláři z virtuálních pevn
 
 Existují tři typy imagí operačních systémů spravovaných prostředků infrastruktury:
 
-- Hostitel: Přizpůsobené operační systém, na kterém běží na hostiteli virtuálních počítačů.
+- Hostitel: Vlastní operační systém, který běží na hostiteli virtuálních počítačů.
 - Nativní: Nativní operační systém, který běží na klientům (například Azure Storage). Tento operační systém nemá jakéhokoli hypervisoru.
-- Host: Hostovaný operační systém, na kterém běží na virtuálních počítačích hosta.
+- Host: Hostovaný operační systém, který běží na virtuálních počítačích hosta.
 
 Hostitele a nativní FC spravovat operační systémy jsou určeny k použití v cloudu a nejsou veřejně přístupné.
 
@@ -79,12 +79,12 @@ Týmy služeb jsou:
 - Aplikační platforma
 - Azure Active Directory
 - Azure Compute
-- Síť Azure
-- Cloudového inženýrství služba
-- ISSD: zabezpečení
+- Azure Net
+- Cloud Engineering Services
+- ISSD: Zabezpečení
 - Multi-factor Authentication
 - SQL Database
-- Úložiště
+- Storage
 
 ## <a name="types-of-users"></a>Typy uživatelů
 Zaměstnanci (nebo dodavatele) společnosti Microsoft jsou považovány za interní uživatele. Všichni ostatní uživatelé jsou považovány za externí uživatele. Všichni Azure interní uživatelé mají stav jejich zaměstnance zařazený do kategorie s úrovní citlivosti, který definuje přístup k zákaznickým datům (přístup nebo žádný přístup). Oprávnění uživatele pro Azure (povolení oprávnění po provedení ověřování) jsou popsány v následující tabulce:

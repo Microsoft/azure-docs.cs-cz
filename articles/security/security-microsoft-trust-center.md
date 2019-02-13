@@ -1,10 +1,10 @@
 ---
-title: Informace o zabezpečení Microsoft Trust Center a Azure | Microsoft Docs
-description: V centru Microsoft Trust poskytuje informace, že budete muset být jisti, že je zabezpečený platformy Azure, na kterém jste spustili vašim službám.
+title: Informace o zabezpečení Microsoft Trust Center a Azure | Dokumentace Microsoftu
+description: Microsoft Trust center poskytuje informace, které potřebujete být jistí, že je zabezpečení platformy Azure, na kterém jste spustili vašich služeb.
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 0b94f9a3-8648-4860-812c-be689b0b327b
 ms.service: security
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 183496dec7826843046af5f130f9c65f31253b0b
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 794c78e6e31c58563b68a58774db90af98a44d95
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25541566"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111029"
 ---
 # <a name="microsoft-trust-center"></a>Centrum zabezpečení Microsoftu
-Informace o zabezpečení Azure lokality na Azure.com obsahuje informace, budete potřebovat k plánování, návrh, nasazení, konfigurovat a spravovat řešení cloudové bezpečně. Ve službě Microsoft Trust center máte také informace, které musíte být jisti, že je zabezpečený platformy Azure, na kterém jste spustili vašim službám.
+Informace o zabezpečení Azure lokality na Azure.com nabízí informace budete potřebovat k plánování, návrhu, nasazení, konfigurovat a spravovat svoje Cloudová řešení bezpečně. Ve službě Microsoft Trust center máte také informace, které potřebujete být jistí, že je zabezpečení platformy Azure, na kterém jste spustili vašich služeb.
 
-Víme, že když svěřit aplikace a data do Azure, budete mít dotazy. Kde je? Kdo k němu přístup? Co je Microsoft probíhá chránit? Jak můžete ověřit, Microsoft je to, že se říká?
+Víme, že při svěřit aplikace a data do Azure, budete mít otázky. Kde je to? Kdo k němu přístup? Co dělá Microsoft je chránit? Jak můžete ověřit, že Microsoft dělá, co říká?
 
-A máme odpovědi. Vzhledem k tomu, že je vaše data, můžete rozhodnout, kdo má přístup a pracovat s námi spolupracovat a rozhodnout, kde se nachází. K zabezpečení dat, použijeme špičkových kryptografie a technologie zabezpečení stavu techniky. Naše dodržování předpisů je auditováno nezávisle a máme transparentní na mnoho úrovní – z jak budeme pracovat s právní požadavky pro vaše zákaznické údaje zabezpečení kódu.
+A máme odpovědi. Protože jsou to vaše data, můžete rozhodnout, kdo má přístup, a pracovat s nám se rozhodnout, kde se nachází. Chránit vaše data, použijeme bezpečnostní stav nejmodernější technologie a špičkové kryptografie. Dodržování předpisů v našem nezávisle na sobě Audituje a budeme mluvit transparentní na mnoha úrovních, z jak nakládáme s právní požadavky na vaše zákaznická data k zabezpečení našeho kódu.
 
-Tady je najít v Microsoft Trust Center:
+Je zde najdete na webu Microsoft Trust Center:
 
-* [Zabezpečení](https://aka.ms/tcsecurity) – Další informace jak jsou zabezpečené všech Microsoft cloudových služeb.
-* [Ochrana osobních údajů](https://aka.ms/tcprivacy) – pochopit, jak Microsoft zajišťuje ochranu osobních údajů vaše Data v cloudu Microsoftu.
-* [Dodržování předpisů](https://aka.ms/tccompliance) – zjistit, jak Microsoft pomáhá organizacím, které vyhovují požadavkům national, místní a průmyslové řídících shromažďování a používání dat fyzických osob.
-* [Průhlednost](https://aka.ms/tctransparency) – zobrazit, jak společnost Microsoft domnívá, kterou řídíte, aby vaše data v cloudu a jak budete vědět, co nejvíce o zpracování dat pomáhá společnosti Microsoft.
-* [Produkty a služby](https://aka.ms/tcproductsservices) – zobrazit všechny produkty Microsoft Cloud a služeb na jednom místě.
-* [Portál pro vztah důvěryhodnosti služby](https://aka.ms/tcservicetrportal) – získat kopie nezávislé auditu sestavy Microsoft cloudových služeb, hodnocení rizik zabezpečení osvědčené postupy a související materiály.
-* [Co je nového](https://aka.ms/tcwhatsnew) – zjistěte, co je nového v Microsoft cloudu důvěryhodnosti
-* [Prostředky](https://aka.ms/tcresources) – zjistěte, dokumenty white paper, videa a případové studie na důvěryhodné cloudu Microsoftu
+* [Zabezpečení](https://aka.ms/tcsecurity) – další způsob, jakým jsou zabezpečené všechny služby Microsoft Cloud.
+* [Ochrana osobních údajů](https://aka.ms/tcprivacy) – pochopit, jak Microsoft zajišťuje soukromí vašich dat v cloudu Microsoftu.
+* [Dodržování předpisů](https://aka.ms/tccompliance) – zjistit, jak Microsoft pomáhá organizacím, které jsou v souladu s národní, regionální a průmyslové požadavky, kterými se řídí shromažďování a používání dat jednotlivců.
+* [Průhlednost](https://aka.ms/tctransparency) – zobrazení, jak společnost Microsoft věří, že řízení dat v cloudu a jak Microsoft pomáhá vědět o zpracování dat co nejvíc.
+* [Produkty a služby](https://aka.ms/tcproductsservices) – zobrazit všechny produkty Microsoft Cloud a služeb na jednom místě
+* [Service Trust Portal](https://aka.ms/tcservicetrportal) – získání kopií nezávislého auditu sestav cloudovým službám Microsoftu, vyhodnocení rizik zabezpečení osvědčené postupy a souvisejících materiálů.
+* [Co je nového](https://aka.ms/tcwhatsnew) – zjistěte, co je nového v důvěřují Microsoft cloudu
+* [Prostředky](https://aka.ms/tcresources) – prozkoumat případové studie o cloudu společnosti Microsoft pro důvěryhodného, dokumenty white paper a videa
 
-[Microsoft Trust Center](https://www.microsoft.com/trustcenter) má, co je potřeba pochopit, co můžeme udělat pro zabezpečení cloudu Microsoftu.
+[Microsoft Trust Center](https://www.microsoft.com/trustcenter) má, co je potřeba pochopit, co děláme k zabezpečení cloudu Microsoftu.

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 353616141e37e8024695fad81a16c9c2f3b82625
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107340"
 documentType: LandingData
 title: Dokumentace ke spravovaným aplikacím Azure
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/25/2017
   ms.author: tomfitz
-  ms.openlocfilehash: 85f4d5d37dabfa5a8781a4f9ed0fb52d7c6e0297
-  ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/12/2018
-  ms.locfileid: "27779563"
 abstract:
   description: Spravované aplikace Azure umožňují nabízet vaše cloudová řešení interním i externím zákazníkům. Definujete infrastrukturu pro příslušné řešení a podmínky pro jeho průběžnou správu. Fakturace pro vaše řešení se zpracovává prostřednictvím fakturace Azure.
 sections:
@@ -42,14 +42,14 @@ sections:
     items:
     - html: <a href="/azure/managed-applications/publish-service-catalog-app">Publikování spravované aplikace pro interní uživatele</a>
     - html: <a href="/azure/managed-applications/publish-marketplace-app">Publikování spravované aplikace pro externí uživatele</a>
-- title: Odkaz
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: Příkazový řádek
-      html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
+      html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/az.resources">PowerShell</a></p>
     - title: Rozhraní REST API
       html: <p><a href="/rest/api/resources/">REST</a></p>
     - title: Uživatelské rozhraní

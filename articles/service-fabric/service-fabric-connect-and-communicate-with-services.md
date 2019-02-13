@@ -1,6 +1,6 @@
 ---
-title: Připojení a komunikovat se službami v Azure Service Fabric | Microsoft Docs
-description: Zjistěte, jak vyřešit, připojit a komunikovat se službami v Service Fabric.
+title: Připojení a komunikace se službami v Azure Service Fabric | Dokumentace Microsoftu
+description: Zjistěte, jak vyřešit, připojení a komunikace se službami v Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,99 +14,90 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f11d680330a43dd49b3c36c864f50b9dc869d172
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205582"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211848"
 ---
-# <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikovat se službami v Service Fabric
-V Service Fabric běží služba někde v clusteru Service Fabric, obvykle se distribuují napříč více virtuálními počítači. Ho může být z jednoho místa na jiný přesunout, pomocí vlastníka služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázaný na konkrétní počítač nebo na adresu.
+# <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikace se službami v Service Fabric
+V Service Fabric služba někde běží v clusteru Service Fabric, obvykle distribuují na několika virtuálních počítačů. To můžete přesunout z jednoho místa do jiného, vlastník služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázán na konkrétní počítač nebo adresu.
 
-Aplikace Service Fabric se obvykle skládá z mnoha různých služeb, kde každá služba provádí úlohu specializované. Tyto služby může komunikovat s jinými k dokončení funkce, jako je například vykreslování různé části webové aplikace. Existují také klientské aplikace, které se připojují k a komunikovat se službami. Tento dokument popisuje, jak nastavit komunikaci s a mezi vaší služby v Service Fabric.
+Aplikace Service Fabric se obvykle skládá z mnoha různých služeb, kde každá služba provádí specializované úlohy. Tyto služby mohou komunikovat mezi sebou a vytvoří kompletní funkce, jako je vykreslování různých součástí webové aplikace. Existují také klientské aplikace připojit k a komunikace se službami. Tento dokument popisuje, jak nastavit komunikaci s a mezi služby v Service Fabric.
 
-Toto video Microsoft Virtual Academy taky popisuje komunikace služby: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
-<img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-## <a name="bring-your-own-protocol"></a>Přineste si vlastní protokol
-Service Fabric pomáhá spravovat životní cyklus vašim službám, ale neprovede rozhodnutí o co dělat, vaše služby. To zahrnuje komunikaci. Při služby se otevře pomocí Service Fabric, která je vaše služba příležitost k nastavit koncový bod pro příchozí požadavky a pomocí ať protokolu nebo komunikace zásobníku chcete. Vaše služba bude naslouchat na normální **IP: port** adres pomocí žádné schéma adresování, jako je identifikátor URI. Více instancí služby nebo repliky může sdílet procesu hostitele, v takovém případě bude buď potřebovat používají jiné porty nebo použijte mechanismu sdílení portů, jako je ovladač http.sys jádra v systému Windows. V obou případech musí být jedinečně adresovat každé instance služby nebo repliky v hostitelském procesu.
+## <a name="bring-your-own-protocol"></a>Přenést váš vlastní protokol
+Service Fabric pomáhá se správou životního cyklu služeb, ale neprovede rozhodnutí o informace o tom, co vaše služby. To zahrnuje komunikaci. Při otevření služby Service Fabric, který je vaše služba možnost nastavit koncový bod pro příchozí požadavky a pomocí libovolné protokolu nebo komunikace zásobník chcete. Vaše služba bude naslouchat na normální **IP: port** adresy pomocí jakékoli schéma adresování, jako je identifikátor URI. Víc replik nebo instancí služby můžou sdílet hostitelský proces, v takovém případě bude buď potřebujete použít jiné porty nebo používání sdílení portů mechanismu, jako je ovladač http.sys jádra ve Windows. V obou případech musí být každá instance služby nebo repliky v hostitelském procesu jedinečně adresovat.
 
 ![Koncové body služby][1]
 
 ## <a name="service-discovery-and-resolution"></a>Zjišťování služby a řešení
-V systému distribuované služby může přesunout z jednoho počítače do jiného v čase. K tomu dochází z různých důvodů, včetně prostředků vyrovnávání upgrady, převzetí služeb při selhání nebo Škálováním na více systémů. To znamená, že adresy koncových bodů služby změnit, protože služba přesune do uzlů se různých IP adres a může otevřít v jiné porty, pokud služba používá dynamicky vybraný port.
+V distribuovaném systému služby může přesunete z jednoho počítače do druhého v čase. K tomu může dojít z různých důvodů, včetně Vyrovnávání zatížení, upgrady, převzetí služeb při selhání nebo horizontální navýšení kapacity prostředků. To znamená, že adresy koncových bodů služby změnit, protože služba přesune do uzlů pomocí různých IP adresách a může zobrazit na jiném portu, pokud služba používá dynamicky vybraný port.
 
 ![Distribuce služeb][7]
 
-Service Fabric nabízí zjišťování a řešení služby názvem služby DNS. Služby DNS udržuje tabulku, která mapuje pojmenovaných instancí služby na koncový bod adresy, které budou naslouchat na portu. Všechny instance s názvem služby v Service Fabric mít jedinečné názvy reprezentován jako identifikátory URI, například `"fabric:/MyApplication/MyService"`. Název služby se nemění během životního cyklu služby, je pouze adresy koncových bodů, které můžou změnit při přesunutí služby. Toto je obdobou weby, které mají konstantní adresy URL, ale kde může změnit IP adresu. A podobně jako DNS na webu, který přeloží adresy URL webu na IP adresy, Service Fabric má doménového registrátora, která mapuje názvy služby jejich adresa koncového bodu.
+Service Fabric poskytuje službu zjišťování a řešení se říká služba pojmenování. Služba pojmenování udržuje tabulku, která mapuje s názvem instance služby s adresy koncových bodů, které jsou naslouchat. Všechny instance s názvem služby v Service Fabric mají jedinečné názvy, které jsou reprezentovány jako identifikátory URI, například `"fabric:/MyApplication/MyService"`. Název služby se nezmění během životního cyklu službu, ale pouze adresy koncových bodů, které lze změnit, pokud přesunout služby. To je obdobou weby, které mají konstantní adresy URL, ale pokud IP adresa se může změnit. A podobně jako DNS na webu, který přeloží adresy URL webu na IP adresy, Service Fabric má doménového registrátora, která mapuje názvy služeb jeho adresu koncového bodu.
 
 ![Koncové body služby][2]
 
-Řešení a připojené ke službám zahrnuje následující kroky na opakování:
+Řešení a připojení ke službám zahrnuje následující kroky na opakování:
 
-* **Vyřešte**: získání koncového bodu, který publikovali služby ze služby DNS.
-* **Připojit**: připojit ke službě přes ať protokolu používá na tohoto koncového bodu.
-* **Opakujte**: Pokus o připojení, které mohou být neúspěšné pro libovolný počet z důvodů pro příklad, pokud služba přesunul od posledního adresa koncového bodu byl vyřešen. V takovém případě předchozím vyřešit a připojení potřeba kroky opakovat a tento cyklus se opakuje, dokud je připojení úspěšné.
+* **Vyřešit**: Získání koncového bodu, který publikoval služby ze služby pojmenování.
+* **Připojit**: Připojení ke službě přes jakýkoli protokol používá na tomto koncovém bodu.
+* **Zkuste**: Pokus o připojení může selhat z nejrůznějších důvodů, pro příklad: Pokud službu přesunula od posledního adresu koncového bodu byla vyřešena. V takovém případě předchozí řešení a kroky nutné opakovat připojení a tento cyklus se opakuje, dokud je připojení úspěšné.
 
 ## <a name="connecting-to-other-services"></a>Připojení k jiným službám
-Služby připojení k sobě navzájem v clusteru s podporou obecně můžete přímo přístup koncových bodů jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. Chcete-li je jednodušší připojit mezi službami, Service Fabric nabízí další služby, které používají služby DNS. Služba DNS a služby reverzní proxy server.
+Služby připojení k sobě navzájem uvnitř clusteru obecně přímo přístupné koncovým bodům, dalších služeb, protože uzly v clusteru jsou ve stejné místní síti. Aby se lze snáze připojit mezi službami, Service Fabric nabízí další služby, které používají službu pojmenování. Služba DNS a reverzní proxy server služby.
 
 
 ### <a name="dns-service"></a>Služba DNS
-Od mnoho služeb zejména kontejnerizované služeb, může mít název existující adresu URL, bude možné, chcete-li tyto standardní DNS pomocí protokolu (nikoli protokol služby DNS) je velmi praktické, zejména v scénáře "navýšení a posunutí" aplikací. Toto je přesně jaké služby DNS. Umožňuje mapování názvů DNS pro název služby a proto přeložit koncový bod IP adresy. 
+Od mnoho služeb zejména kontejnerizovaných služeb, může mít existující název adresy URL, nebudou moct vyřešíte pomocí standardní DNS protokolu (spíše než protokol pojmenování Service) je velmi praktické, zejména ve scénářích aplikací "metodou lift and shift". To je přesně čemu služby DNS. Umožňuje mapovat názvy DNS na název služby a proto přeložit IP adresy koncového bodu. 
 
-Jak je znázorněno v následujícím diagramu, služba DNS spuštěných v clusteru Service Fabric mapuje názvy služeb, které se pak vyřeší služby DNS vrátit adresy koncových bodů pro připojení k názvy DNS. V době vytvoření je zadaný název DNS pro službu. 
+Jak je znázorněno v následujícím diagramu, služba DNS, spuštěného v clusteru Service Fabric mapuje názvy DNS na názvy služeb, které se pak vyřeší pojmenování Service vrátit adresy koncových bodů pro připojení k. V době vytvoření je zadaný název DNS pro službu. 
 
 ![Koncové body služby][9]
 
-Pro další podrobnosti o tom, jak použít DNS služby najdete v tématu [služba DNS v Azure Service Fabric](service-fabric-dnsservice.md) článku.
+Pro další podrobnosti o tom, jak použít DNS služby viz [služba DNS v Azure Service Fabric](service-fabric-dnsservice.md) článku.
 
 ### <a name="reverse-proxy-service"></a>Reverzní proxy server služby
-Reverzní proxy server adresy služeb v clusteru, který zveřejňuje koncové body HTTP včetně HTTPS. Výrazně zjednodušuje volání jiných služeb a jejich metody tak, že konkrétní formát identifikátoru URI a zpracovává překlad reverzní proxy server, připojení, opakujte kroky potřebné k jedné službě komunikovat pomocí služby DNS. Jinými slovy skryje služby DNS od vás při volání metody jiných služeb tím, že to stejně jednoduché jako volání adresu URL.
+Reverzní proxy server adresy služeb v clusteru, který zveřejňuje koncové body HTTP, včetně protokolu HTTPS. Výrazně zjednodušuje tím, že konkrétní formát identifikátoru URI volání dalších služeb a jejich metod a zpracovává řešení reverzního proxy serveru, připojení, opakujte kroky potřebné k jedné službě komunikovat s jinou službu pojmenování. Jinými slovy skryje pojmenování Service od vás při volání jiné služby tak, že to stejně snadné jako volání adresy URL.
 
 ![Koncové body služby][10]
 
-Podrobnosti o tom, jak používat službu reverzního proxy serveru najdete v části [reverzní proxy server v Azure Service Fabric](service-fabric-reverseproxy.md) článku.
+Další podrobnosti o tom, jak použít reverzní proxy server služby najdete v tématu [reverzní proxy server v Azure Service Fabric](service-fabric-reverseproxy.md) článku.
 
-## <a name="connections-from-external-clients"></a>Připojení klientů, externí
-Služby připojení k sobě navzájem v clusteru s podporou obecně můžete přímo přístup koncových bodů jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. V některých prostředích však clusteru může být za nástroj pro vyrovnávání zatížení, který směruje externí příchozí provoz prostřednictvím omezenou sadu portů. V těchto případech služby můžete stále vzájemně komunikovat a vyřešit adresy pomocí služby DNS, ale dodatečné kroky musí být přijata tak, aby externí klienti pro připojení ke službám.
+## <a name="connections-from-external-clients"></a>Připojení z externí klienti
+Služby připojení k sobě navzájem uvnitř clusteru obecně přímo přístupné koncovým bodům, dalších služeb, protože uzly v clusteru jsou ve stejné místní síti. V některých prostředích ale clusteru může být za nástroj pro vyrovnávání zatížení, který směruje provoz externí příchozího přenosu dat prostřednictvím omezenou sadu portů. V těchto případech služby stále můžete komunikovat mezi sebou a přeložit adresy pomocí služby pojmenování, ale pár kroků navíc musí být přijata externí klienti pro připojení ke službám.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric v Azure
-Cluster Service Fabric v Azure je umístěn za pro vyrovnávání zatížení Azure. Nástroje pro vyrovnávání zatížení musí projít všechny externích přenosů do clusteru. Nástroje pro vyrovnávání zatížení bude automaticky přeposílal provoz na zadaný port pro náhodnou příchozí *uzlu* má stejný port otevřete. Nástroje pro vyrovnávání zatížení Azure zná pouze na otevřené porty *uzly*, neví o otevřené porty fyzická *služby*.
+Cluster Service Fabric v Azure je umístěn za služby Azure Load Balancer. Všechny externí přenosy pro cluster musí projít přes nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení bude automaticky předávat provoz příchozích na daném portu na náhodnou *uzel* , který má stejný port otevřít. Azure Load Balancer ví pouze o na otevřené porty *uzly*, neví o otevřené porty podle jednotlivých *služby*.
 
-![Azure topologie pro vyrovnávání zatížení a Service Fabric][3]
+![Azure Load balancer úrovně a Service Fabric topologie][3]
 
-Třeba, aby bylo možné přijímat externí přenosy na portu **80**, musí být nakonfigurované následujících akcí:
+Například, pokud chcete přijmout externí přenosy na portu **80**, musí být nakonfigurované následující věci:
 
-1. Zápis služba, která naslouchá na portu 80. Nakonfigurujte port 80 v ServiceManifest.xml služby a otevřete naslouchací proces ve službě, například vlastním hostováním webový server.
+1. Psát služby, která naslouchá na portu 80. Konfigurace portu 80 ve vaší službě ServiceManifest.xml a otevřete naslouchací proces ve službě, například v místním prostředí webového serveru.
 
-    ```xml
-    <Resources>
-        <Endpoints>
-            <Endpoint Name="WebEndpoint" Protocol="http" Port="80" />
-        </Endpoints>
-    </Resources>
+    ```xml    <Resources> <Endpoints> <Endpoint Name="WebEndpoint" Protocol="http" Port="80" /> </Endpoints> </Resources>
     ```
     ```csharp
-        class HttpCommunicationListener : ICommunicationListener
+        class HttpCommunicationListener : ICommunicationListener
         {
             ...
 
             public Task<string> OpenAsync(CancellationToken cancellationToken)
             {
-                EndpointResourceDescription endpoint =
+                EndpointResourceDescription endpoint =
                     serviceContext.CodePackageActivationContext.GetEndpoint("WebEndpoint");
 
-                string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
+                string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
 
-                this.httpListener = new HttpListener();
+                this.httpListener = new HttpListener();
                 this.httpListener.Prefixes.Add(uriPrefix);
                 this.httpListener.Start();
 
-                string publishUri = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
-                return Task.FromResult(publishUri);
+                string publishUri = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+                return Task.FromResult(publishUri);
             }
 
             ...
@@ -118,7 +109,7 @@ Třeba, aby bylo možné přijímat externí přenosy na portu **80**, musí bý
 
             protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
             {
-                return new[] { new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
+                return new[] { new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
             }
 
             ...
@@ -160,30 +151,30 @@ Třeba, aby bylo možné přijímat externí přenosy na portu **80**, musí bý
             ...
         }
     ```
-2. Vytvořte Service Fabric Cluster v Azure a zadejte port **80** jako vlastní koncový port pro typ uzlu, který bude hostitelem služby. Pokud máte více než jeden typ uzlu, můžete nastavit *omezení umístění* na službu, aby měli jistotu, že lze spustit pouze na typ uzlu, který má otevřený port vlastní koncový bod.
+2. Vytvoření clusteru Service Fabric v Azure a zadejte port **80** jako port vlastní koncový bod pro typ uzlu, který bude hostitelem služby. Pokud máte více než jeden typ uzlu, můžete nastavit *omezení umístění* služby tak, aby se spustí jenom u uzlů typu, který má otevřený port vlastní koncový bod.
 
-    ![Otevřete port typu uzlu][4]
-3. Po vytvoření clusteru nakonfigurujte nástroj pro vyrovnávání zatížení Azure ve skupině prostředků clusteru, aby přeposílal provoz na portu 80. Při vytváření clusteru prostřednictvím portálu Azure, to je nastavený automaticky pro každé vlastní koncový port, který byl nakonfigurovaný.
+    ![Otevření portu v typu uzlu][4]
+3. Po vytvoření clusteru nakonfigurujte nástroj pro vyrovnávání zatížení Azure ve skupině prostředků clusteru směrovat provoz na portu 80. Při vytváření clusteru pomocí webu Azure portal, nastavuje se to automaticky pro každý z portů vlastního koncového bodu, který byl nakonfigurován.
 
-    ![Přesměrovat provoz nástroji pro vyrovnávání zatížení Azure][5]
-4. Služba Vyrovnávání zatížení Azure používá sondu k určení, zda chcete odesílat provoz na konkrétním uzlu. Tato kontrola pravidelně kontroluje koncový bod na každý uzel k určení, zda reaguje uzlu. Pokud tato kontrola se nepodaří po nakonfigurovanou stanovený počet, obdrží odpověď, nástroje pro vyrovnávání zatížení zastaví odesílání provozu do daného uzlu. Při vytváření clusteru prostřednictvím portálu Azure, sondu se automaticky nastaví pro každý koncový bod vlastní port, který byl nakonfigurován.
+    ![Přesměrování provozu ve službě Azure Load Balancer][5]
+4. Azure Load Balancer použije sondu k určení, jestli se mají posílat provoz na konkrétní uzel. Tato sonda kontroluje pravidelně koncový bod na každém uzlu k určení, zda je uzel reagovat. Pokud test selže po nakonfigurovaný počet trvá příjem odpovědi, nástroje pro vyrovnávání zatížení zastaví odesílání provozu do tohoto uzlu. Při vytváření clusteru pomocí webu Azure portal, test se automaticky nastaví pro každý z portů vlastního koncového bodu, který byl nakonfigurován.
 
-    ![Přesměrovat provoz nástroji pro vyrovnávání zatížení Azure][8]
+    ![Přesměrování provozu ve službě Azure Load Balancer][8]
 
-Je důležité si pamatovat, že nástroj pro vyrovnávání zatížení Azure a kontroly pouze vědět o *uzly*, nikoli *služby* spuštěné v jednotlivých uzlech. Nástroje pro vyrovnávání zatížení Azure bude vždy odesílá data na uzly, které reagují na test, takže musí dát pozor na Ujistěte se, že služby jsou dostupné na uzlech, jež jsou schopné reagovat na tato kontrola.
+Je dobré si uvědomit, že Azure Load Balancer a kontroly vědí jenom o *uzly*, nikoli *služby* spuštění na uzlech. Azure Load Balancer vždy odešle provoz do uzlů, které reagují na test, abyste k zajištění, že služby jsou k dispozici na na uzly, které jsou schopné reagovat na testu musíte věnovat pozornost.
 
-## <a name="reliable-services-built-in-communication-api-options"></a>Spolehlivé služby: Možnosti integrované komunikace rozhraní API
-Spolehlivé služby framework se dodává s několik předdefinovaných komunikace možností. Rozhodnutí o tom, které jeden bude nejlépe fungovat pro vás závisí na výběr programovací model, rozhraní komunikace a programovací jazyk, který vašim službám, které jsou napsané v.
+## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: Možnosti integrované komunikace rozhraní API
+Reliable Services v rámci se dodává s několika možností předem sestavených komunikace. Rozhodnutí o tom, které jedna bude pro vás nejvhodnější, závisí na řadu programovací model, rozhraní komunikace a programovací jazyk, který vaše služby byly napsány v.
 
-* **Žádný konkrétní protokol:** Pokud nemáte konkrétní volbu komunikace framework, ale chcete něco si rychle a spustit, je možnost ideální pro vás [vzdálené komunikace služby](service-fabric-reliable-services-communication-remoting.md), což umožňuje silně typované vzdálené volání procedur pro Reliable Services a Reliable Actors. Toto je nejjednodušší a nejrychlejší způsob, jak začít s komunikace služby. Vzdálená komunikace služby provádí překlad adres služby, připojení, zkuste to znovu a zpracování chyb. Toto je k dispozici pro C# a aplikací v jazyce Java.
-* **HTTP**: pro jazykově nezávislého komunikaci protokolu HTTP poskytuje na standardní volbu s nástroji a servery HTTP, které jsou k dispozici v mnoha různých jazycích vše s podporou Service Fabric. Služby mohou používat jakékoli zásobník protokolu HTTP k dispozici, včetně [rozhraní ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) pro aplikací v C#. Klienti, které jsou napsané v C# můžete využít `ICommunicationClient` a `ServicePartitionClient` třídy, zatímco pro jazyk Java, použijte `CommunicationClient` a `FabricServicePartitionClient` třídy, [pro řešení služby, připojení prostřednictvím protokolu HTTP a opakování smyčky](service-fabric-reliable-services-communication.md).
-* **WCF**: Pokud máte existující kód, který používá WCF jako rozhraní vaší komunikace, pak můžete použít `WcfCommunicationListener` na straně serveru a `WcfCommunicationClient` a `ServicePartitionClient` třídy pro klienta. To ale je k dispozici pouze pro aplikace C# na clusterech systémem Windows. Další podrobnosti najdete v tématu Tento článek [provádění WCF komunikačního balíku](service-fabric-reliable-services-communication-wcf.md).
+* **Žádný konkrétní protokol:**  Pokud nemáte konkrétní možnost komunikace rozhraní .NET framework, ale chcete něco si rychle zprovoznit, pak je ideální možnost pro vás [vzdálené komunikace služeb](service-fabric-reliable-services-communication-remoting.md), které umožňuje vzdálené procedury silného typu volání pro Reliable Services a Reliable Actors. Toto je nejjednodušší a nejrychlejší způsob, jak začít s komunikací služby. Vzdálená komunikace služby zpracovává překlad adres služby, připojení, zkuste to znovu a zpracování chyb. Tato možnost je dostupná pro obě C# a aplikací v Javě.
+* **HTTP**: Protokol HTTP pro komunikaci bez ohledu na jazyk, poskytuje na standardní volbu nástroje a serverům HTTP, které jsou k dispozici v mnoha různých jazycích, všechna podporovaná službou Service Fabric. Služby můžete použít jakoukoli sadu protokolu HTTP k dispozici, včetně [rozhraní ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) pro C# aplikací. Klienti v C# můžete využít `ICommunicationClient` a `ServicePartitionClient` třídy, že pro Javu, použijte `CommunicationClient` a `FabricServicePartitionClient` třídy, [pro řešení služby, připojení prostřednictvím protokolu HTTP a zkuste to znovu smyčky](service-fabric-reliable-services-communication.md).
+* **WCF**: Pokud máte existující kód, který používá WCF jako vaše architektura komunikace, pak můžete použít `WcfCommunicationListener` na straně serveru a `WcfCommunicationClient` a `ServicePartitionClient` třídy pro klienta. To ale je k dispozici pouze pro C# clustery založené na aplikace ve Windows. Další podrobnosti najdete v článku [provádění WCF komunikačního balíku](service-fabric-reliable-services-communication-wcf.md).
 
-## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Vlastní protokoly a další komunikaci rozhraní
-Služby můžete použít libovolný protokol nebo framework pro komunikaci, jestli je vlastní binární protokol přes TCP sokety nebo streamování události prostřednictvím [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) nebo [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric nabízí komunikace rozhraní API, kterou můžete připojit vaše komunikačního balíku do, zatímco všechny pracovní vyhledat a připojit je abstrahované od vás. Najdete v článku [spolehlivá služba komunikační model](service-fabric-reliable-services-communication.md) další podrobnosti.
+## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Vlastní protokoly a další architektury komunikace
+Služby můžete použít libovolný protokol nebo architekturu pro komunikaci, ať už jde o vlastní binární protokol TCP sockety nebo streamovaných událostí pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) nebo [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric zajišťuje komunikaci rozhraní API, která je možné připojit vaším zásobníkem komunikace, zatímco veškerou práci vyhledat a připojit je abstrahovaný od vás. Najdete v článku [komunikace modelu Reliable Service](service-fabric-reliable-services-communication.md) další podrobnosti.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o konceptech a rozhraní API dostupná v [spolehlivé služby komunikační model](service-fabric-reliable-services-communication.md), pak rychle začít s [vzdálené komunikace služby](service-fabric-reliable-services-communication-remoting.md) nebo přejděte podrobné informace o psaní komunikace naslouchací proces pomocí [webového rozhraní API s OWIN hostování na vlastním](service-fabric-reliable-services-communication-webapi.md).
+Další informace o konceptech a k dispozici v rozhraní API [komunikace modelu Reliable Services](service-fabric-reliable-services-communication.md), pak rychle začít [vzdálené komunikace služeb](service-fabric-reliable-services-communication-remoting.md) nebo najdete podrobné informace o zápisu zprávy naslouchací proces pomocí [webového rozhraní API s OWIN hostování na vlastním serveru](service-fabric-reliable-services-communication-webapi.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

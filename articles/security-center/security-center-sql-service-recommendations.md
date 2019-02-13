@@ -4,7 +4,7 @@ description: Tato dokument řeší doporučení ve službě Azure Security Cente
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: f6267bd2d97dabd71c007bcb8112936093124f74
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d6121a0255b809deccb3c70d56585bab76935900
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267024"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110349"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrana služby Azure SQL a dat ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol.  Doporučení platí pro typy prostředků Azure: virtuální počítače (VM), sítě, SQL a datům a aplikacím.
@@ -53,7 +53,7 @@ Pokud chcete povolit auditování, vyberte **Zapnuto** pod možností **Auditov�
 
 |Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
 |----|----|----|----|
-|Účet úložiště|20|Vyžádání bezpečného přenosu do účtu úložiště|Zabezpečený přenos je možnost, která vynutí účtu úložiště tak, aby přijímal požadavky jenom ze zabezpečeného připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
+|Účet úložiště|20|Vyžadovat zabezpečené přenosy do účtu úložiště|Zabezpečený přenos je možnost, která vynutí účtu úložiště tak, aby přijímal požadavky jenom ze zabezpečeného připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
 |Redis|20|Povolit pouze zabezpečená připojení k mezipaměti Azure pro Redis|Povolte pouze připojení přes protokol SSL pro mezipaměť Azure Redis. Použití zabezpečeného připojení zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
 |SQL|15|Povolit transparentní šifrování dat v databázích SQL|Povolte transparentní šifrování dat, aby se dala chránit neaktivní uložená data a splnit požadavky na dodržování předpisů.|
 |SQL|15|Povolení auditování pro servery SQL|Povolte auditování pro servery Azure SQL. (Pouze služby azure SQL. Nezahrnuje běžící na virtuálních počítačích SQL.)|
@@ -61,11 +61,11 @@ Pokud chcete povolit auditování, vyberte **Zapnuto** pod možností **Auditov�
 |Data lake analytics|15|Povolit šifrování v klidovém stavu z Data Lake Analytics|Povolte transparentní šifrování dat k zabezpečení dat v klidovém stavu v vaše Data Lake Analytics. Šifrování v klidovém stavu je transparentní, což znamená, že Data Lake Analytics automaticky šifruje data před uložením a dešifruje před načtením. Neexistují žádné změny v v aplikací a služby, které pracují s Data Lake Analytics z důvodu šifrování. Šifrování v klidovém stavu minimalizuje se riziko úniku dat z fyzických odcizení a také pomáhá plnit požadavky na dodržování legislativních předpisů.|
 |Data lake store|15|Povolit šifrování v klidovém stavu pro Data Lake Store|Povolte transparentní šifrování dat k zabezpečení dat v klidovém stavu v vaše Data Lake Store. Šifrování v klidovém stavu je transparentní, což znamená, že se Data Lake Store automaticky šifruje data před uložením a dešifruje před načtením. Nemusíte nic měnit aplikace a služby, které pracují s Data Lake Store tak, aby vyhovovaly šifrování. Šifrování v klidovém stavu minimalizuje se riziko úniku dat z fyzických odcizení a také pomáhá plnit požadavky na dodržování legislativních předpisů.|
 |Data lake analytics|5|Povolit diagnostické protokoly v Data Lake Analytics|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Data lake store|5|Povolení protokolování diagnostiky v Azure Data Lake Store|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|SQL|30|Náprava ohrožení zabezpečení na vašich databází SQL|Posouzení ohrožení zabezpečení SQL vyhledá vaší databáze na ohrožení zabezpečení a zpřístupňuje všechny odchylky od osvědčených postupů, jako jsou chybné konfigurace, nadměrná oprávnění a nechráněné citlivá data. Řešení zjištěná ohrožení zabezpečení může výrazně zlepšit vaše zásadní roli zabezpečení databáze.|
-|SQL|20|Zřízení správce Azure AD pro SQL server|Zřízení správce Azure AD pro SQL server povolit ověřování Azure AD. Ověřování Azure AD umožňuje správu oprávnění zjednodušené a centralizované identity management uživatelů databáze a dalším službám společnosti Microsoft.|
-|Účet úložiště|15|Zakázat síť neomezený přístup k účtu úložiště|Audit neomezený přístup k síti v nastavení brány firewall na účtu úložiště. Místo toho nakonfigurujte pravidla sítě, abyste účtu úložiště můžou přistupovat jenom aplikace z povolených sítí. Povolit připojení z konkrétní Internetu nebo místní klienty, můžete udělit přístup k provoz z konkrétní služby Azure virtual networks a rozsahy adres veřejné internetové IP.|
-|Účet úložiště|1||Migrace účtů úložiště do nových prostředků v AzureRM|Použití nové verze 2 Azure Resource Manageru, pro vaše účty úložiště kvůli vylepšení zabezpečení: silnější access control (RBAC), lepší auditování, nasazení založené na Resource Manageru a zásad správného řízení, přístup ke spravovaným identitám přístup k trezoru klíčů pro tajné kódy, ověřování Azure AD na základě a podpora značek a skupiny prostředků pro snadnější správu zabezpečení.|
+|Data lake store|5|Povolit diagnostické protokoly v Azure Data Lake Store|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
+|SQL|30|Napravit ohrožení zabezpečení v databázích SQL|Posouzení ohrožení zabezpečení SQL vyhledá vaší databáze na ohrožení zabezpečení a zpřístupňuje všechny odchylky od osvědčených postupů, jako jsou chybné konfigurace, nadměrná oprávnění a nechráněné citlivá data. Řešení zjištěná ohrožení zabezpečení může výrazně zlepšit vaše zásadní roli zabezpečení databáze.|
+|SQL|20|Zřídit správce Azure AD pro server SQL|Zřízení správce Azure AD pro SQL server povolit ověřování Azure AD. Ověřování Azure AD umožňuje správu oprávnění zjednodušené a centralizované identity management uživatelů databáze a dalším službám společnosti Microsoft.|
+|Účet úložiště|15|Zakázat neomezený síťový přístup pro účet úložiště|Audit neomezený přístup k síti v nastavení brány firewall na účtu úložiště. Místo toho nakonfigurujte pravidla sítě, abyste účtu úložiště můžou přistupovat jenom aplikace z povolených sítí. Povolit připojení z konkrétní Internetu nebo místní klienty, můžete udělit přístup k provoz z konkrétní služby Azure virtual networks a rozsahy adres veřejné internetové IP.|
+|Účet úložiště|1||Migrovat účty úložiště na nové prostředky AzureRM|Použití nové verze 2 Azure Resource Manageru, pro vaše účty úložiště kvůli vylepšení zabezpečení: silnější access control (RBAC), lepší auditování, nasazení založené na Resource Manageru a zásad správného řízení, přístup ke spravovaným identitám přístup k trezoru klíčů pro tajné kódy, ověřování Azure AD na základě a podpora značek a skupiny prostředků pro snadnější správu zabezpečení.|
 
 
 

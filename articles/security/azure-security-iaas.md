@@ -4,7 +4,7 @@ description: " Migrace úloh do Azure IaaS přináší příležitosti pro opět
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 45fb1cbf57f54f040f9dfbc522c22a2e0884d6db
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540248"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116493"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -52,7 +52,7 @@ Pokud má vaše organizace více předplatných, můžete potřebovat způsob, j
 - [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Můžete spravovat virtuální počítače, ale virtuální sítě nebo úložiště účet ke kterému jsou připojené.
 - [Přispěvatel klasických virtuálních počítačů](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Můžete spravovat virtuální počítače vytvořené pomocí modelu nasazení classic, ale virtuální sítě nebo úložiště účet ke kterému jsou připojené virtuální počítače.
 - [Správce zabezpečení](../role-based-access-control/built-in-roles.md#security-admin): Ve službě Security Center jenom: Můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení.
-- [Uživatel služby DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user): Můžete zobrazit vše, co připojení, spuštění, restartování a vypínání virtuálních počítačů.
+- [DevTest Labs User](../role-based-access-control/built-in-roles.md#devtest-labs-user): Můžete zobrazit vše, co připojení, spuštění, restartování a vypínání virtuálních počítačů.
 
 Správci předplatného a coadmins můžete změnit toto nastavení, díky kterým jsou správci všech virtuálních počítačů v rámci předplatného. Ujistěte se, že důvěřujete všech správců předplatného a coadmins se přihlaste k některé z vašich počítačů.
 

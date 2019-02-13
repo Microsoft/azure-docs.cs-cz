@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: f5aa04da40c6681385f0debc3999b94a1f507f05
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bc83a2cde841e7d1e90cb46304c879fcc6cedb72
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978982"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105769"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení služby Key Vault pro virtuální počítače v Azure Resource Manageru
 
@@ -35,7 +35,7 @@ V zásobníku Azure Resource Manageru jsou tajné kódy a certifikáty nemodeluj
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>Nastavení služby Key Vault pomocí Powershellu
-Vytvoření služby key vault pomocí Powershellu najdete v tématu [Začínáme s Azure Key Vault](../../key-vault/key-vault-get-started.md#vault).
+Vytvoření služby key vault pomocí Powershellu najdete v tématu [sadu a získání tajného klíče ze služby Azure Key Vault pomocí Powershellu](../../key-vault/quick-create-powershell.md).
 
 Pro nové trezory klíčů můžete použít tuto rutinu Powershellu:
 

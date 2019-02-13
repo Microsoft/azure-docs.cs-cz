@@ -4,7 +4,7 @@ description: Tento článek popisuje, jak Microsoft spolupracuje zabezpečit na�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 9385c6ea8d2a04e9a8595a22e6e2ff7638394b41
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: dc9b4db37e811d8bac6df2d532fd3629d98c9650
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172968"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104759"
 ---
 # <a name="azure-infrastructure-security"></a>Zabezpečení infrastruktury Azure
 Microsoft Azure je spuštěná v datacentrech spravovaná a provozované společností Microsoft. Tato datová centra rozptýlené v souladu s klíče oborové standardy, jako jsou ISO/IEC 27001: 2013 a SP NIST 800-53, zabezpečení a spolehlivost. Tato datová centra jsou spravovaná, monitorovat a spravovat prostřednictvím Microsoft provozní personál. Provozní personál se po několika letech zkušeností doručování největších světových online služeb s 24 x 7 kontinuity podnikových procesů.

@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
-ms.openlocfilehash: c1ecca0bf8021fb1b97628a73eddbe7968a02548
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 54fa8d09d930069191fb48e0ab015d436496b725
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985152"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166398"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 

@@ -11,22 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 3063a3f3f199a591fa94c3a665ea9ecc5457e502
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6eaba728b794c0102ec4e28791b218efa28b51b5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247591"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160757"
 ---
 # <a name="create-mysql-databases"></a>Vytvoření databáze MySQL
+Uživatele služby Azure Stack, se vytvořilo nabídky, která zahrnuje databázová služba MySQL můžete vytvářet a spravovat databáze MySQL samoobslužného portálu user portal.
 
-Můžete vytvořit a spravovat databáze samoobslužného portálu user portal. Uživatele služby Azure Stack potřebuje předplatné se nabídka, která zahrnuje databázová služba MySQL.
-
-## <a name="test-your-deployment-by-creating-a-mysql-database"></a>Otestování nasazení tak, že vytvoříte databázi MySQL
+## <a name="create-a-mysql-database"></a>Vytvoření databáze MySQL
 
 1. Přihlaste se k portálu user portal pro Azure Stack.
 2. Vyberte **+ vytvořit prostředek** > **Data + úložiště** > **databázi MySQL** > **přidat**.

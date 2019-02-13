@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f417338205b17c8b949156a6d5a60ef609458fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 504436060a71847641635b12baa63c79c77251e6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088132"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112203"
 ---
 # <a name="management-in-azure"></a>Správa v Azure
 
@@ -24,7 +24,7 @@ Následující diagram ukazuje různé oblasti správy, které jsou nutné k úd
 
 ![Správa oborů](../monitoring/media/management-overview/management-capabilities.png)
 
-Žádná samostatná služba Azure nesplňuje kompletně požadavky konkrétní oblasti správy. Místo toho každá se provádí několik služeb společně. Některé služby, jako jsou Application Insights, poskytují cílené funkce monitorování pro webové aplikace. Jiné, jako je Log Analytics, ukládat data správy pro jiné služby. Tato funkce umožňuje analyzovat data různých typů shromážděná různými službami.
+Žádná samostatná služba Azure nesplňuje kompletně požadavky konkrétní oblasti správy. Místo toho každá se provádí několik služeb společně. Některé služby, jako jsou Application Insights, poskytují cílené funkce monitorování pro webové aplikace. Jiné, jako jsou protokoly Azure monitoru, ukládat data správy pro jiné služby. Tato funkce umožňuje analyzovat data různých typů shromážděná různými službami.
 
 Následující části stručně popisují různé oblasti správy a poskytují odkazy na podrobný obsah věnovaný hlavním službám Azure, které jsou určené k jejich řešení.
 

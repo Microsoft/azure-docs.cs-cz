@@ -4,7 +4,7 @@ description: Přečtěte si o cloudové výpočetní služby, které zahrnují �
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405969"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111284"
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
 
@@ -70,7 +70,7 @@ V tomto dokumentu bude titulní následující sítě podnikové funkce Azure:
 
 -   Hybridní připojení
 
--   Kontrolní mechanismy zabezpečení
+-   Ovládací prvky zabezpečení
 
 -   Ověřování sítě
 
@@ -88,11 +88,11 @@ Jsou virtuální sítě Azure jako virtuální sítě pomocí místních svoje v
 
 Propojení virtuálních sítí mezi sebou, povolení prostředkům připojeným k jedné virtuální sítě ve virtuálních sítích komunikovat mezi sebou. Propojení virtuálních sítí mezi sebou můžete použít jednu nebo obě z následujících možností:
 
-- **Vytvoření partnerského vztahu:** umožňuje prostředkům připojeným k jiné virtuální sítě Azure ve stejném umístění Azure ke komunikaci mezi sebou. Na šířku pásma a latence ve virtuální síti je stejný jako v případě, že prostředky, které byly připojené ke stejné virtuální síti. Další informace o partnerských vztazích najdete v článku [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Vytvoření partnerského vztahu:** Umožňuje prostředkům připojeným k jiné virtuální sítě Azure ve stejném umístění Azure ke komunikaci mezi sebou. Na šířku pásma a latence ve virtuální síti je stejný jako v případě, že prostředky, které byly připojené ke stejné virtuální síti. Další informace o partnerských vztazích najdete v článku [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
  ![Partnerské vztahy](media/azure-network-security/azure-network-security-fig-3.png)
 
-- **Připojení VNet-to-VNet:** umožňuje prostředkům připojeným k jiné virtuální síti Azure v rámci stejného nebo jiného umístění Azure. Na rozdíl od vytvoření partnerského vztahu, šířka pásma je omezená mezi virtuálními sítěmi, protože toku provozu prostřednictvím služby Azure VPN Gateway.
+- **Připojení VNet-to-VNet:** Umožňuje prostředkům připojeným k jiné virtuální síti Azure v rámci stejného nebo jiného umístění Azure. Na rozdíl od vytvoření partnerského vztahu, šířka pásma je omezená mezi virtuálními sítěmi, protože toku provozu prostřednictvím služby Azure VPN Gateway.
 
 ![Připojení VNet-to-VNet](media/azure-network-security/azure-network-security-fig-4.png)
 
@@ -151,9 +151,9 @@ Několik prostředků Azure můžete připojit k virtuální síti, jako jsou Vi
 
 Propojení virtuálních sítí mezi sebou, povolení prostředkům připojeným k jedné virtuální sítě ve virtuálních sítích komunikovat mezi sebou. Propojení virtuálních sítí mezi sebou můžete použít jednu nebo obě z následujících možností:
 
-- **Vytvoření partnerského vztahu:** umožňuje prostředkům připojeným k jiné virtuální sítě Azure ve stejném umístění Azure ke komunikaci mezi sebou. Na šířku pásma a latencí mezi virtuálními sítěmi je stejný jako v případě, že prostředky, které byly připojené k stejné VNet.To Další informace o vytvoření partnerského vztahu, přečtěte si [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Vytvoření partnerského vztahu:** Umožňuje prostředkům připojeným k jiné virtuální sítě Azure ve stejném umístění Azure ke komunikaci mezi sebou. Na šířku pásma a latencí mezi virtuálními sítěmi je stejný jako v případě, že prostředky, které byly připojené k stejné VNet.To Další informace o vytvoření partnerského vztahu, přečtěte si [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
-- **Připojení VNet-to-VNet:** umožňuje prostředkům připojeným k jiné virtuální síti Azure v rámci stejného nebo jiného umístění Azure. Na rozdíl od vytvoření partnerského vztahu, šířka pásma je omezená mezi virtuálními sítěmi, protože toku provozu prostřednictvím služby Azure VPN Gateway. Další informace o propojení virtuálních sítí pomocí připojení VNet-to-VNet. Další informace najdete v článku [konfigurace připojení typu VNet-to-VNet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) .
+- **Připojení VNet-to-VNet:** Umožňuje prostředkům připojeným k jiné virtuální síti Azure v rámci stejného nebo jiného umístění Azure. Na rozdíl od vytvoření partnerského vztahu, šířka pásma je omezená mezi virtuálními sítěmi, protože toku provozu prostřednictvím služby Azure VPN Gateway. Další informace o propojení virtuálních sítí pomocí připojení VNet-to-VNet. Další informace najdete v článku [konfigurace připojení typu VNet-to-VNet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) .
 
 **Místní připojení**
 
@@ -161,9 +161,9 @@ Virtuální sítě může být připojen k [místní](https://docs.microsoft.com
 
 Vaše místní sítě můžete připojit k virtuální síti pomocí jakékoli kombinace následujících možností:
 
-- **Virtuální privátní sítě Point-to-site (VPN):** navázat mezi jeden počítač připojený k síti a ve virtuální síti. Tento typ připojení je skvělý, pokud teprve začínáte s Azure, nebo pro vývojáře, protože nevyžaduje téměř nebo vůbec žádné změny vaší stávající sítě. Připojení používá protokol SSTP poskytnout šifrovanou komunikaci prostřednictvím Internetu mezi Počítačem a virtuální síť. Latence pro sítě VPN point-to-site nepředvídatelné, protože provoz prochází Internetem.
+- **Point-to-site virtuální privátní sítě (VPN):** Vytváří se mezi jeden počítač připojený k síti a ve virtuální síti. Tento typ připojení je skvělý, pokud teprve začínáte s Azure, nebo pro vývojáře, protože nevyžaduje téměř nebo vůbec žádné změny vaší stávající sítě. Připojení používá protokol SSTP poskytnout šifrovanou komunikaci prostřednictvím Internetu mezi Počítačem a virtuální síť. Latence pro sítě VPN point-to-site nepředvídatelné, protože provoz prochází Internetem.
 
-- **Síť Site-to-site VPN:** mezi zařízením VPN a službou Azure VPN Gateway. Tento typ připojení povoluje všem prostředkům v místním autorizaci pro přístup k virtuální síti. Připojení je protokolu IPsec/IKE VPN, poskytující šifrovanou komunikaci prostřednictvím Internetu mezi místním zařízením a bránou Azure VPN. Latence pro připojení site-to-site nepředvídatelné, protože provoz prochází Internetem.
+- **Síť Site-to-site VPN:** Vytváří se mezi zařízením VPN a službou Azure VPN Gateway. Tento typ připojení povoluje všem prostředkům v místním autorizaci pro přístup k virtuální síti. Připojení je protokolu IPsec/IKE VPN, poskytující šifrovanou komunikaci prostřednictvím Internetu mezi místním zařízením a bránou Azure VPN. Latence pro připojení site-to-site nepředvídatelné, protože provoz prochází Internetem.
 
 - **Azure ExpressRoute:** Vytváří se mezi vaší sítí a Azure prostřednictvím partnera ExpressRoute. Toto připojení je soukromé. Přenosy neprocházejí přes Internet. Latence pro připojení ExpressRoute je předvídatelné, protože provoz nebude procházení Internetu. Další informace o všech předchozích možností připojení, přečtěte si [diagramy topologie připojení](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -173,9 +173,9 @@ Instance rolí virtuálních počítačů a cloudových služeb [přenos v síti
 
 Síťový provoz mezi podsítěmi můžete filtrovat pomocí jedné nebo obou z následujících možností:
 
-- **Skupiny zabezpečení (NSG) sítě:** každá skupina zabezpečení sítě může obsahovat více příchozích a odchozích pravidel zabezpečení, které umožňují filtrovat provoz ve zdrojové a cílové IP adresy, portu a protokolu. Skupina zabezpečení sítě můžete použít ke každému síťovému rozhraní ve virtuálním počítači. Můžete také použít skupinu NSG k podsíti, síťové rozhraní nebo jiné prostředky Azure, které je připojený k. Další informace o skupinách Nsg najdete v článku [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- **Skupiny zabezpečení sítě (NSG):** Každá skupina zabezpečení sítě může obsahovat více příchozích a odchozích pravidel zabezpečení, které umožňují filtrovat provoz ve zdrojové a cílové IP adresy, portu a protokolu. Skupina zabezpečení sítě můžete použít ke každému síťovému rozhraní ve virtuálním počítači. Můžete také použít skupinu NSG k podsíti, síťové rozhraní nebo jiné prostředky Azure, které je připojený k. Další informace o skupinách Nsg najdete v článku [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
-- **Virtuální síťová zařízení:** síťové virtuální zařízení je virtuální počítač spuštěný software, který provádí síťovou funkci, jako je brána firewall. Zobrazení seznamu dostupných síťových virtuálních zařízení v Azure Marketplace. Síťová virtuální zařízení jsou také k dispozici, které poskytují optimalizace sítě WAN a jiných síťových přenosů. Síťová virtuální zařízení jsou obvykle používány s uživatelem nebo trasy protokolu BGP. Síťové virtuální zařízení můžete také použít k filtrování provozu mezi virtuálními sítěmi.
+- **Síťová virtuální zařízení:** Síťové virtuální zařízení je virtuální počítač spuštěný software, který provádí síťovou funkci, jako je brána firewall. Zobrazení seznamu dostupných síťových virtuálních zařízení v Azure Marketplace. Síťová virtuální zařízení jsou také k dispozici, které poskytují optimalizace sítě WAN a jiných síťových přenosů. Síťová virtuální zařízení jsou obvykle používány s uživatelem nebo trasy protokolu BGP. Síťové virtuální zařízení můžete také použít k filtrování provozu mezi virtuálními sítěmi.
 
 **Směrování**
 
@@ -183,11 +183,11 @@ Volitelně můžete přepsat výchozí Azure pro směrování konfiguraci vlastn
 
 Azure vytvoří směrovací tabulky, které umožňují prostředkům připojeným k žádné podsíti v libovolné virtuální síti komunikovat mezi sebou, ve výchozím nastavení. K přepsání výchozích tras, které Azure vytváří, můžete implementovat jednu nebo obě z následujících možností:
 
-- **Trasy definované uživatelem:** můžete vytvářet vlastní směrovací tabulky s trasami kde provoz se směruje do pro každou podsíť ovládacího prvku. Další informace o trasách definovaných uživatelem najdete v článku [trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+- **Trasy definované uživatelem:** Nemůžete vytvářet vlastní směrovací tabulky s trasami tento ovládací prvek, kde provoz se směruje do pro každou podsíť. Další informace o trasách definovaných uživatelem najdete v článku [trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 
-- **Trasy protokolu BGP:** -li propojit vaši virtuální síť k místní síti pomocí připojení k Azure VPN Gateway nebo ExpressRoute, můžete rozšířit trasy protokolu BGP pro vaše virtuální sítě.
+- **Trasy protokolu BGP:** Je-li propojit vaši virtuální síť k místní síti pomocí Azure VPN Gateway nebo ExpressRoute, můžete rozšířit trasy protokolu BGP pro vaše virtuální sítě.
 
-### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>Hybridní připojení k Internetu: připojení k místní síti
+### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>Hybridní připojení k Internetu: Připojení k místní síti
 Vaše místní sítě můžete připojit k virtuální síti pomocí jakékoli kombinace následujících možností:
 
 -   Připojení k internetu
@@ -282,13 +282,13 @@ To znamená, že se že můžete řídit přístup mezi jeden virtuální počí
 
 Skupina zabezpečení sítě obsahuje některá vestavěné pravidla, které byste měli vědět. Jsou to:
 
--   **Povolení veškerého provozu v rámci konkrétní virtuální sítě:** všechny virtuální počítače ve stejné virtuální sítě Azure může komunikovat mezi sebou.
+-   **Povolení veškerého provozu v rámci konkrétní virtuální sítě:** Všechny virtuální počítače ve stejné virtuální síti Azure můžete komunikovat mezi sebou.
 
 -   **Povolit příchozí Vyrovnávání zatížení Azure:** toto pravidlo povoluje provoz z jakékoli zdrojové adresy na jakoukoli adresu v cílovém pro Azure load balancer.
 
 -   **Odmítnout všechny příchozí:** toto pravidlo blokuje veškeré přenosy z Internetu, explicitně povolující sourcing.
 
--   **Povolení veškerého provozu odchozího k Internetu:** toto pravidlo umožňuje virtuálním počítačům, aby inicializoval připojení k Internetu. Pokud nechcete, aby se tato připojení inicializované, musíte vytvořit pravidlo na blokování tato připojení nebo vynutit vynucené tunelování.
+-   **Povolení veškerého provozu odchozího k Internetu:** Toto pravidlo umožňuje virtuálním počítačům, aby inicializoval připojení k Internetu. Pokud nechcete, aby se tato připojení inicializované, musíte vytvořit pravidlo na blokování tato připojení nebo vynutit vynucené tunelování.
 
 #### <a name="system-routes-and-user-defined-routes"></a>Systémové trasy a trasy definované uživatelem
 
@@ -320,11 +320,11 @@ V následující části jsou uvedené aktuální omezení směrovací tabulky a
 
 -   Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
 
- -  **Místní virtuální sítě trasy:** přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti
+ -  **Místní virtuální sítě trasy:** Přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti
 
- - **Pro místní trasy:** pro Azure VPN gateway
+ - **Pro místní trasy:** Ke službě Azure VPN gateway
 
- -  **Výchozí trasa:** přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
+ -  **Výchozí trasy:** Přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
 
 -   S vydáním trasy definované uživatelem můžete vytvořit směrovací tabulku, která chcete přidat výchozí trasa a přidružte směrovací tabulky pro vaši virtuální síť podsíť povolit vynucené tunelování na těchto podsítí.
 
@@ -645,9 +645,9 @@ Pro brány Application Gateway se podporují následující metriky:
 
 Tyto protokoly jsou podporovány pro [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log):
 
-- **NetworkSecurityGroupEvent:** obsahuje položky, pro které skupiny zabezpečení sítě pravidla se použijí pro virtuální počítače a instanci role na základě adresy MAC. Stav pro tato pravidla shromažďovaných každých 60 sekund.
+- **NetworkSecurityGroupEvent:** Obsahuje položky, pro které skupina NSG pravidla se použijí u virtuálních počítačů a instancí rolí na základě adresy MAC. Stav pro tato pravidla shromažďovaných každých 60 sekund.
 
-- **NetworkSecurityGroupRuleCounter:** obsahuje záznamy pro kolikrát jednotlivých skupinách NSG pravidlo se použije pro odepření nebo povolení provozu.
+- **NetworkSecurityGroupRuleCounter:** Obsahuje položky pro kolikrát se každé pravidlo NSG se použije pro odepření nebo povolení provozu.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o zabezpečení najdete některé z našich podrobných zabezpečení témata:

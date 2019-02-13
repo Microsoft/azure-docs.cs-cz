@@ -4,7 +4,7 @@ description: Tento článek obsahuje přehled služby Azure database funkce zabe
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584770"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116316"
 ---
 # <a name="azure-database-security-overview"></a>Přehled zabezpečení služby Azure database
 
@@ -100,7 +100,7 @@ SQL Database zajišťuje zabezpečení řídí přístup s použitím:
 - Ověřovací mechanismy, které vyžadují, aby uživatelé k prokázání své identity.
 - Autorizačních mechanismů, které omezují uživatelů ke konkrétním akcím a data.
 
-### <a name="database-access"></a>Přístup k databázi
+### <a name="database-access"></a>Přístup k databázi
 
 Ochrana dat začíná řízení přístupu k vašim datům. Datové centrum, který je hostitelem vašich dat spravuje fyzický přístup. Můžete nakonfigurovat bránu firewall pro správu zabezpečení na síťové vrstvě. Můžete také řídit přístup tak, že konfigurace přihlášení k ověřování a definování oprávnění pro role serveru a databáze.
 
@@ -114,8 +114,8 @@ Služba Azure SQL Database je dostupná jenom prostřednictvím portu TCP 1433. 
 
 Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. SQL Database podporuje dva typy ověřování:
 
--   **Ověřování serveru SQL Server**: účet podporou jediného přihlášení je vytvořen při vytvoření logické instance SQL, nazývá účet předplatitele služby SQL Database. Tento účet se připojí pomocí [ověřování serveru SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (uživatelské jméno a heslo). Tento účet je správcem v logické instanci na serveru a ve všech uživatelských databázích připojených k této instanci. Oprávnění účtu předplatitele není možné omezit. Existovat může jenom jeden z těchto účtů.
--   **Ověřování pomocí Azure Active Directory**: [ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) virtuálních sítí je mechanismus připojení k Azure SQL Database a Azure SQL Data Warehouse s využitím identit ve službě Azure AD. Můžete to centrálně spravovat identity uživatelů databáze.
+-   **Ověřování serveru SQL Server**: Při vytvoření logické instance služby SQL se vytvoří účet s podporou jediného přihlášení, takzvaný účet předplatitele služby SQL Database. Tento účet se připojí pomocí [ověřování serveru SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (uživatelské jméno a heslo). Tento účet je správcem v logické instanci na serveru a ve všech uživatelských databázích připojených k této instanci. Oprávnění účtu předplatitele není možné omezit. Existovat může jenom jeden z těchto účtů.
+-   **Ověřování pomocí Azure Active Directory**: [Ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) virtuálních sítí je mechanismus připojení k Azure SQL Database a Azure SQL Data Warehouse s využitím identit ve službě Azure AD. Můžete to centrálně spravovat identity uživatelů databáze.
 
 ![Ověřování Azure AD s využitím SQL Database](./media/azure-databse-security-overview/azure-database-fig2.png)
 
@@ -176,8 +176,8 @@ Auditování SQL Database můžete použít:
 
 Existují dvě metody auditování:
 
--   **Auditování objektů blob**: protokoly se zapisují do úložiště objektů Blob v Azure. Toto je novější auditování metody. Poskytuje vyšší výkon, podporuje auditování na úrovni objektů v vyšší členitost a cenově výhodnější.
--   **Auditování tabulek**: protokoly se zapisují do služby Azure Table storage.
+-   **Auditování objektů blob**: Protokoly se zapisují do úložiště objektů blob v Azure. Toto je novější auditování metody. Poskytuje vyšší výkon, podporuje auditování na úrovni objektů v vyšší členitost a cenově výhodnější.
+-   **Auditování tabulek**: Protokoly se zapisují do služby Azure Table storage.
 
 ### <a name="threat-detection"></a>Detekce hrozeb
 
@@ -214,7 +214,7 @@ SQL pokročilé Threat Protection (ATP) poskytuje sadu pokročilé funkce zabezp
 
 Security Center podporuje přístup na základě rolí.
 
-## <a name="sql-information-protection"></a>Služba SQL Information Protection
+## <a name="sql-information-protection"></a>SQL Information Protection
 
 [Služba SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) automaticky zjistí a klasifikuje potenciálně citlivá data, poskytuje popisování mechanismus pro trvalé označování citlivých dat pomocí klasifikace atributy a poskytuje podrobné řídicí panel zobrazuje klasifikace stav databáze.  
 

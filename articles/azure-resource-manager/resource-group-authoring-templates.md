@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: cdc48cf278fdd68bacf74c2d6d762c8d731949e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745585"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111550"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -217,7 +217,7 @@ V rámci šablony můžete vytvořit vaše vlastní funkce. Tyto funkce jsou k d
 Při definování funkce user, platí určitá omezení:
 
 * Funkce nemá přístup k proměnné.
-* Funkce nemá přístup k parametry šablony. To znamená [parametry funkce](resource-group-template-functions-deployment.md#parameters) je omezen na parametry funkce.
+* Funkci lze použít pouze parametry, které jsou definovány ve funkci. Při použití [parametry funkce](resource-group-template-functions-deployment.md#parameters) v rámci funkce definované uživatelem, jsou omezeny na parametry pro tuto funkci.
 * Funkci nelze volat jiné uživatelem definované funkce.
 * Funkci nelze použít [odkazu funkci](resource-group-template-functions-resource.md#reference).
 * Parametry pro tuto funkci nemůže mít výchozí hodnoty.
@@ -298,9 +298,23 @@ V části výstupů zadáte hodnoty, které se vracejí z nasazení. Například
 
 Další informace najdete v tématu [výstupy část šablon Azure Resource Manageru](resource-manager-templates-outputs.md).
 
-## <a name="comments"></a>Komentáře
+<a id="comments" />
 
-Máte několik možností pro přidání komentářů do šablony.
+## <a name="comments-and-metadata"></a>Poznámky a metadata
+
+Máte několik možností pro přidání poznámky a metadata do šablony.
+
+Můžete přidat `metadata` objekt skoro kdekoli ve vaší šabloně. Objekt ignoruje Resource Manageru, ale JSON editor možná by vás varovala, že vlastnost není platný. V objektu definujte vlastnosti, které potřebujete.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
 
 Pro **parametry**, přidejte `metadata` objektu `description` vlastnost.
 
@@ -342,18 +356,6 @@ Pro **prostředky**, přidejte `comments` element nebo objekt metadat. Následuj
     "properties": {}
   }
 ]
-```
-
-Můžete přidat `metadata` objekt skoro kdekoli ve vaší šabloně. Objekt ignoruje Resource Manageru, ale JSON editor možná by vás varovala, že vlastnost není platný. V objektu definujte vlastnosti, které potřebujete.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "metadata": {
-        "comments": "This template was developed for demonstration purposes.",
-        "author": "Example Name"
-    },
 ```
 
 Pro **výstupy**, přidejte objekt metadat výstupní hodnotu.

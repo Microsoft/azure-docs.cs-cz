@@ -8,19 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
-ms.openlocfilehash: 233325f0032dc31445bbaa9d9e522f401f43c093
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 9ec6760e790bc540554cf18a9f85f24048becbed
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488760"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114667"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení služby Key Vault klíč a tajný klíč pro šifrované virtuální počítače pomocí služby Azure Backup
 Tento článek pojednává o pomocí zálohování virtuálních počítačů Azure k provedení obnovení šifrovaných virtuálních počítačů Azure, pokud klíč a tajný klíč neexistují v trezoru klíčů. Tyto kroky je možné také pokud chcete udržovat samostatnou kopii klíč (šifrovací klíč klíče) a tajný klíč (šifrovací klíč nástroje BitLocker) pro obnovený virtuální počítač.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Zálohování šifrovaných virtuálních počítačů** – šifrované virtuální počítače Azure byly zálohovány pomocí služby Azure Backup. Přečtěte si článek [Správa zálohování a obnovení virtuálních počítačů Azure pomocí Powershellu](backup-azure-vms-automation.md) podrobnosti o tom, jak zálohovat šifrované virtuální počítače Azure.
-* **Konfigurace služby Azure Key Vault** – Ujistěte se, do které klíče a tajné klíče je nutné obnovit služby key vault už existuje. Přečtěte si článek [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md) podrobné informace o správě služby key vault.
+* **Zálohování šifrovaných virtuálních počítačů** – šifrované virtuální počítače Azure byly zálohovány pomocí služby Azure Backup. Najdete v článku [Správa zálohování a obnovení virtuálních počítačů Azure pomocí Powershellu](backup-azure-vms-automation.md) podrobnosti o tom, jak zálohovat šifrované virtuální počítače Azure.
+* **Konfigurace služby Azure Key Vault** – Ujistěte se, do které klíče a tajné klíče je nutné obnovit služby key vault už existuje. Najdete v článku [co je Azure Key Vault?](../key-vault/key-vault-overview.md) podrobné informace o správě služby key vault.
 * **Obnovení disku** – Ujistěte se, právě jste aktivovali úlohy obnovení pro obnovení disků pro šifrované virtuální počítač pomocí [kroky PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm). Je to proto, že tato úloha generuje soubor JSON ve vašem účtu úložiště, který obsahuje klíče a tajné kódy pro šifrovaný virtuální počítač pro obnovení.
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>Získejte klíč a tajný klíč z Azure Backup

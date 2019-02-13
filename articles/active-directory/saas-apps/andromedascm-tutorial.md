@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 6d280a7e0e10b00e4d8d8f631d0d5987f2fbecb4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1fd26129a6ab8fb6082f9465be71eadcafa292db
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157869"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Kurz: Integrace Azure Active Directory s Andromeda
 

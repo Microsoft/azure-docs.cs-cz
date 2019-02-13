@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: d4d4420e2d38b1418a08ad1ca51dd0f75f3fe7b9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001098"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106457"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Povolit protokolování diagnostiky v Azure Traffic Manageru
 
@@ -40,14 +40,14 @@ Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://
 
 2. **Povolte protokolování diagnostiky pro profil Traffic Manageru:**
 
-    Povolit protokolování diagnostiky pro profil Traffic Manageru pomocí ID, kterou jste získali v předchozím kroku s [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/set-azdiagnosticsetting?view=latest). Následující příkaz uloží podrobné protokoly pro profil Traffic Manageru na zadaný účet Azure Storage. 
+    Povolit protokolování diagnostiky pro profil Traffic Manageru pomocí ID, kterou jste získali v předchozím kroku s [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest). Následující příkaz uloží podrobné protokoly pro profil Traffic Manageru na zadaný účet Azure Storage. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Ověřte nastavení diagnostiky:**
 
-      Ověřte nastavení diagnostiky pro používání profilu Traffic Manageru [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/get-azdiagnosticsetting?view=latest). Následující příkaz zobrazí kategorie, které se protokolují pro prostředek.
+      Ověřte nastavení diagnostiky pro používání profilu Traffic Manageru [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest). Následující příkaz zobrazí kategorie, které se protokolují pro prostředek.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>

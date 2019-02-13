@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: f02a628a55969dfbb883f53f005733482499a42b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d445dddc49a6035ad47b605d2ffc3917d8cf31f5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506766"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210913"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co je Samoobslužná registrace do služby Azure Active Directory?
 

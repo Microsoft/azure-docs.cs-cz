@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241596"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106966"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway 
 
@@ -103,12 +103,13 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nelze nahrát data na účet, protože účet nebo sdílená složka jsou zakázané.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nelze se připojit ke kontejneru, protože oprávnění účtu jsou nesprávná nebo zastaralá. Zkontrolujte svůj přístup.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nelze přidat nová data, protože kontejner je plný. Nahlédněte do specifikací Azure a ověřte podporované velikosti kontejnerů podle typu. Soubor Azure například podporuje pouze maximální velikost 5 TB.                                     |
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    Došlo k neočekávané chybě. Jde o přechodnou chybu, která se vyřeší.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Došlo k neočekávané chybě. Chyba se může vyřešit sama, ale pokud přetrvá déle než 24 hodin, obraťte se na podporu Microsoftu.                                                                                                     |
     |    16000           |    RefreshException                                        |    Tento soubor nelze zpracovat.                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    Tento soubor nelze zpracovat, protože už v místním systému existuje.                                                                                                                                                         |
     |    16002           |    RefreshWorkNeededException                              |    Tento soubor nelze aktualizovat, protože ještě není zcela nahraný.                                                                                                                                                                          | 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [známých potížích v této verzi](data-box-gateway-release-notes.md).

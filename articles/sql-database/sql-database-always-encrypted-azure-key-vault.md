@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 670bdd43a4a581f349ca84c17ead67975fa0232e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755658"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110162"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -53,7 +53,7 @@ Chcete-li získat *ID aplikace* a *klíč*, postupujte podle kroků v [vytvořen
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Vytvoření trezoru klíčů pro ukládání klíčů
 Teď, když vaše klientské aplikace je nakonfigurovaná a máte ID vaší aplikace, je čas vytvořit trezor klíčů a nakonfigurujte jeho zásad přístupu tak, aby vám nebo vaší aplikace můžete přístup k tajným klíčům v trezoru (s funkcí Always Encrypted klíče). *Vytvořit*, *získat*, *seznamu*, *přihlašování*, *ověřte*, *wrapKey*, a *unwrapKey* oprávnění se vyžadují pro vytvoření nové hlavního klíče sloupce a pro nastavení šifrování v systému SQL Server Management Studio.
 
-Spuštěním následujícího skriptu můžete rychle vytvořit trezor klíčů. Podrobné vysvětlení těchto rutin a další informace o vytváření a konfiguraci služby key vault najdete v tématu [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md).
+Spuštěním následujícího skriptu můžete rychle vytvořit trezor klíčů. Podrobné vysvětlení těchto rutin a další informace o vytváření a konfiguraci služby key vault najdete v tématu [co je Azure Key Vault?](../key-vault/key-vault-overview.md).
 
 ```powershell
     $subscriptionName = '<your Azure subscription name>'

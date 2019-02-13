@@ -3,7 +3,7 @@ title: Importovat a exportovat data v mezipaměti Azure Redis | Dokumentace Micr
 description: Zjistěte, jak importovat a exportovat data do a z úložiště objektů blob pomocí premium Azure Cache pro instance Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 4a68ac38-87af-4075-adab-569d37d7cc9e
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
-ms.author: wesmc
-ms.openlocfilehash: 64452f291c712a7934d5617ba54405fff2d86529
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.author: yegu
+ms.openlocfilehash: 518e65f8e44fdaedc1a5dec536cdb37d5469b7e3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019386"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107494"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importovat a exportovat data v mezipaměti Azure Redis
 Import/Export je Azure Cache pro operace správy dat Redis, který umožňuje importovat data do mezipaměti Azure Redis a export dat z mezipaměti Azure Redis import a export pro snímek Redis databáze (RDB) z mezipaměti úrovně premium pro Azure Cache objektů BLOB v účtu služby Azure Storage. 

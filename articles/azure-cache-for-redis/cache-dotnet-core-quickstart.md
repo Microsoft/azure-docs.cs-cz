@@ -3,7 +3,7 @@ title: Rychlý Start se dozvíte postupy používání Azure mezipaměti Redis s
 description: V tomto rychlém startu dozvíte, jak získat přístup k mezipaměti Azure pro Redis v aplikacích .NET Core
 services: azure-cache-for-redis,app-service
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a253b1d34b134700778152b7ef0b0571190b2511
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 452c0d070b105a4aa58699703045b9d4c7befec5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554839"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105361"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý start: Použití mezipaměti Azure pro Redis s .NET Core aplikace
 

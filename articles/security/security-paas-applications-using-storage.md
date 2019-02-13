@@ -4,7 +4,7 @@ description: Další informace o zabezpečení služby Azure Storage osvědčen�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: TomShinder
-ms.openlocfilehash: ac01aaca8c147b1f474b59ac57424f5cdc5f8a8d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3ad97c7adb5901c1da1d174d12d5d6a91831cc74
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451863"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108921"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací pomocí služby Azure Storage PaaS
 V tomto článku se podíváme na kolekci osvědčené postupy zabezpečení služby Azure Storage pro zabezpečení platforma jako služba (PaaS) webových a mobilních aplikací. Tyto osvědčené postupy jsou odvozeny z našich zkušenostech s Azure a prostředí zákazníků, jako sami.
 
 Azure umožňuje nasadit a používat úložiště způsoby snadno dosáhnout místní. S Azure storage můžete oslovit přináší vysokou úroveň škálovatelnosti a dostupnosti s relativně málo úsilí. Nejenže Azure Storage je základem pro Windows a virtuální počítače Azure s Linuxem, může také podporovat velký distribuované aplikace.
 
-Služba Azure Storage poskytuje následující čtyři služby: Blob storage, Table storage, Queue storage a File storage. Další informace najdete v tématu [Úvod do Microsoft Azure Storage](../storage/storage-introduction.md).
+Služba Azure Storage poskytuje následující čtyři služby: Úložiště objektů BLOB, Table storage, Queue storage a File storage. Další informace najdete v tématu [Úvod do Microsoft Azure Storage](../storage/storage-introduction.md).
 
 [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md) je skvělým zdrojem pro podrobné informace o Azure Storage a zabezpečení. Tento článek o osvědčených postupech řeší na vysoké úrovni některé koncepty v Průvodci zabezpečením a odkazy na Průvodce zabezpečení, jakož i jiných zdrojů, další informace.
 

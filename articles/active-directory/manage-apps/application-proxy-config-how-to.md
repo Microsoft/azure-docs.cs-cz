@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 87f77f055cda12b604e78c57f05a976879a855e1
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 95f22f064043467bf52c23cab547a7e6c8ba2205
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962056"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172310"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Jak nakonfigurovat aplikaci Proxy aplikací
 

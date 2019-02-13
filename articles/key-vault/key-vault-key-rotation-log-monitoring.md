@@ -4,7 +4,7 @@ description: Použijte tento postup při seznamování s obměny klíčů a moni
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 10e60076fe527e6e773e966ccdae52a7fe99c4b2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997195"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106116"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení služby Azure Key Vault s obměny klíčů a auditování
 
@@ -38,7 +38,7 @@ Tento článek vás provede:
 - Ukazuje, jak monitorovat protokoly auditu služby key vault a vyvolají upozornění při neočekávané požadavky přicházejí.
 
 > [!NOTE]
-> V tomto kurzu není určena pro podrobně vysvětluje počátečním nastavení trezoru klíčů. Další informace naleznete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) Multiplatformní rozhraní příkazového řádku najdete v tématu [Správa služby Key Vault pomocí rozhraní příkazového řádku](key-vault-manage-with-cli2.md).
+> V tomto kurzu není určena pro podrobně vysvětluje počátečním nastavení trezoru klíčů. Tyto informace v tématu [co je Azure Key Vault?](key-vault-overview.md). Multiplatformní rozhraní příkazového řádku najdete v tématu [Správa služby Key Vault pomocí rozhraní příkazového řádku](key-vault-manage-with-cli2.md).
 >
 >
 

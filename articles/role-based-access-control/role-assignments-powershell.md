@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4c9bdbcfe07eeee39733b39c074001f5caaa98ba
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4e4a920c47dc7f75dc4b6714f101d6cbda715a3a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700668"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106167"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>Správa přístupu pomocí RBAC a prostředí Azure PowerShell
 
@@ -221,7 +221,7 @@ V RBAC se přístup uděluje vytvořením přiřazení role.
 
 Přiřazení role, je potřeba identifikovat objekt (uživatele, skupinu nebo aplikaci) a obor.
 
-Pokud si nejste jisti ID předplatného, můžete ho najít **předplatná** okna na webu Azure portal nebo můžete použít [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
+Pokud si nejste jisti ID předplatného, můžete ho najít **předplatná** okna na webu Azure portal nebo můžete použít [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
 Chcete-li získat ID objektu skupiny Azure AD, použijte [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup):
 

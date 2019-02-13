@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 55ab80dc0d914810ad430f59acc304620a7054d4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882977"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112542"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -97,7 +97,7 @@ Podle výše uvedených [architektury](#typical-architectures-for-a-multi-tier-d
 
 2. **Virtuální počítače v jednotlivých vrstvách nasazena do skupiny dostupnosti** – můžete nakonfigurovat tak, aby umístěte své virtuální počítače ve skupině dostupnosti do samostatných zón dostupnosti, pokud budete chtít povolit replikaci pro virtuální počítač, pomocí Azure Site Recovery. Po dokončení operace přesunutí, bude smlouva SLA pro dostupnost 99,9 %.
 
-      ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
+     ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
 
 
 ## <a name="next-steps"></a>Další postup

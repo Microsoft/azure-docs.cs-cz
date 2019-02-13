@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f336f6fdb5cde638fe62d1410a9f993492be21ed
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f91ccc93dcd2ac9b96379c4aa94d1f430faaf66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747556"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118288"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 
@@ -961,7 +961,7 @@ V tomto případě chceme nahrání virtuálního pevného disku, s nebo bez ope
 * Přihlaste se k předplatnému pomocí *az login*
 * Vyberte své předplatné s *set účet az--předplatného `<subscription name or id`>*
 * Nahrání virtuálního pevného disku s *az storage blob nahrávání* – viz [pomocí Azure CLI s Azure Storage][storage-azure-cli]
-* (Volitelné) Vytvoření spravovaného disku z virtuálního pevného disku s *az disk vytvořit* -naleznete v tématu https://docs.microsoft.com/cli/azure/disk#az_disk_create
+* (Volitelné) Vytvoření spravovaného disku z virtuálního pevného disku s *az disk vytvořit* -naleznete v tématu https://docs.microsoft.com/cli/azure/disk
 * Vytvořit nový virtuální počítač zadáním nahraný virtuální pevný disk nebo spravovaný Disk jako disk s operačním systémem *az vm vytvořit* a parametr *– připojení disku operačního systému*
 * Přidání datového disku k novému virtuálnímu počítači přes *az vm disk attach* a parametr *– nové*
 
@@ -990,7 +990,7 @@ K nahrání virtuálního pevného disku nebo existujícího virtuálního poč�
 * Přihlaste se k předplatnému pomocí *az login*
 * Vyberte své předplatné s *set účet az--předplatného `<subscription name or id`>*
 * Nahrání virtuálního pevného disku s *az storage blob nahrávání* – viz [pomocí Azure CLI s Azure Storage][storage-azure-cli]
-* (Volitelné) Vytvoření Image spravovaného disku z virtuálního pevného disku s *az image vytvořit* -naleznete v tématu https://docs.microsoft.com/cli/azure/image#az_image_create
+* (Volitelné) Vytvoření Image spravovaného disku z virtuálního pevného disku s *az image vytvořit* -naleznete v tématu https://docs.microsoft.com/cli/azure/image
 * Vytvořit nový virtuální počítač zadáním nahraných virtuálního pevného disku nebo Image spravovaného disku jako disku s operačním systémem s *az vm vytvořit* a parametr *– obrázek*
 
 **Šablona**

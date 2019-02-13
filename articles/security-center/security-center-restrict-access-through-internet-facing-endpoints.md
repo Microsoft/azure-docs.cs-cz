@@ -4,7 +4,7 @@ description: Tento dokument popisuje, jak implementovat doporučení služby Azu
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a1677e2c5518fec4412adb87cd058571bd435dd4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b736bb5549b7d236e746ba7b161cde79209e927b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338479"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110519"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Omezení přístupu prostřednictvím internetových koncových bodů v Azure Security Center
 Azure Security Center vám doporučí omezení přístupu prostřednictvím internetových koncových bodů, pokud žádné skupiny zabezpečení sítě (Nsg) obsahuje jeden nebo více příchozí pravidla, která umožňují přístup z "libovolné" zdrojové IP adresy. Otevírání přístup k "žádný" může umožnit útočníkům získat přístup k vašim prostředkům. Security Center vám doporučí, abyste upravili tato příchozích pravidel pro omezení přístupu k zdrojové IP adresy, které skutečně potřebují mít přístup.

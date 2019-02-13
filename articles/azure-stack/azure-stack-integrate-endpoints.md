@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977743"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117270"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
 
@@ -66,7 +66,7 @@ Interní infrastrukturu virtuálních IP adres nejsou uvedené, protože nejsou 
 Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde transparentní proxy server odchozí připojení k tradiční proxy server, musíte povolit následující porty a adresy URL pro odchozí komunikaci:
 
 > [!Note]  
-> Azure Stack nepodporuje použití Expressroute pro dosažení služby Azure, které jsou uvedeny v následující tabulce.
+> Azure Stack nepodporuje použití ExpressRoute pro dosažení služby Azure, které jsou uvedeny v následující tabulce.
 
 |Účel|Cílová adresa URL|Protocol (Protokol)|Porty|Zdrojová síť|
 |---------|---------|---------|---------|---------|
@@ -75,7 +75,7 @@ Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde t
 |Opravy a aktualizace|https://&#42;.azureedge.net|HTTPS|443|Veřejné virtuální IP adresy – velikost/27|
 |Registrace|https://management.azure.com|HTTPS|443|Veřejné virtuální IP adresy – velikost/27|
 |Využití|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Veřejné virtuální IP adresy – velikost/27|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Veřejné virtuální IP adresy – velikost/27<br>Infrastruktura veřejných sítě|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Veřejné virtuální IP adresy – velikost/27<br>Infrastruktura veřejných sítě|
 |NTP|(K dispozici pro nasazení serveru IP NTP)|UDP|123|Veřejné virtuální IP adresy – velikost/27|
 |DNS|(K dispozici pro nasazení IP adresy DNS serveru)|TCP<br>UDP|53|Veřejné virtuální IP adresy – velikost/27|
 |CRL|(Adresa URL v rámci distribučních bodů seznamu CRL na váš certifikát)|HTTP|80|Veřejné virtuální IP adresy – velikost/27|

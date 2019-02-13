@@ -13,18 +13,29 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 61bbc65c543801b0f783d01dfb803f47dbcf8a07
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d6e8d943d14cfddc260ba502e724543c6dc9cf4f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215295"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110332"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
 Azure App Service v Linuxu umožňuje vývojářům rychle sestavit, nasadit a škálovat své Tomcat v jazyce Java nebo Java Standard Edition (SE) zabalené webové aplikace na plně spravované služby založené na Linuxu. Nasazujte aplikace s moduly plug-in Maven z příkazového řádku nebo v editoru, jako je IntelliJ, Eclipse nebo Visual Studio Code.
 
 Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě pomocí ve službě App Service pro Linux. Pokud jste nikdy použili službu Azure App Service pro Linux, přečtěte si [Java quickstart](quickstart-java.md) první. Obecné dotazy ohledně používání služby App Service pro Linux, které nejsou specifické pro Java development v odpovědi [nejčastější dotazy týkající se App Service Linux](app-service-linux-faq.md).
+
+## <a name="deploying-your-app"></a>Nasazení vaší aplikace
+
+Modul plug-in Maven můžete použít k nasazení souborů .jar a .war. Podrobnosti najdete na [této dokumentace](https://docs.microsoft.com/en-us/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) Další informace o modulu plug-in Maven. 
+
+Pokud nepoužíváte Maven, metodě nasazení bude záviset na vašich typ archivu:
+
+- Chcete-li nasadit .war soubory na Tomcat, použijte `/api/wardeploy/` koncový bod účtovat souboru archivu. Další informace o tomto rozhraní API najdete v tématu [této dokumentace](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#deploy-war-file).
+- K nasazení souborů .jar v Java SE Image, použijte `/api/zipdeploy/` koncový bod webu kudu. Další informace o tomto rozhraní API najdete v tématu [této dokumentace](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#rest).
+
+Nenasazujte .war nebo .jar pomocí FTP. Nástroje serveru FTP slouží k nahrávání spouštěcí skripty, závislosti nebo jiné soubory modulu runtime. To není ideální volbou pro nasazování webových aplikací.
 
 ## <a name="logging-and-debugging-apps"></a>Protokolování a ladění aplikací
 

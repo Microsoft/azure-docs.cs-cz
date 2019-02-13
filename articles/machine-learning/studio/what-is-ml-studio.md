@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 6c45c7d70a1a091440d33ba76aa430c9a9252144
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b9a546cf4c822f63d9d07a1f23ec5f13285653af
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997987"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164121"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -157,7 +157,7 @@ Jakmile model natrénujete, vyhodnotíte ho na zbývajících testovacích datec
 * **Ukázka**: Část datové sady, by měla představovat celek. Vzorky lze vybírat náhodně nebo podle konkrétních příznaků či atributů datové sady.
 
 ## <a name="next-steps"></a>Další postup
-Se základy prediktivní analýzy a strojového učení se můžete seznámit v [podrobném kurzu](create-experiment.md) a [na základě ukázek](sample-experiments.md).
+Vás seznámí se základy prediktivní analýzy a strojové učení s využitím [podrobné quickstart](create-experiment.md) a [na základě ukázek](sample-experiments.md).
 
 
 <!-- Module References -->

@@ -1,6 +1,6 @@
 ---
-title: Azure skript prostředí PowerShell ukázkový – vytvoření definice spravované aplikace | Microsoft Docs
-description: Azure skript prostředí PowerShell ukázkový – vytvoření definice spravované aplikace
+title: Skript Azure Powershellu ukázkový – vytvoření definice spravované aplikace | Dokumentace Microsoftu
+description: Skript Azure Powershellu ukázkový – vytvoření definice spravované aplikace
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: ee721b7c68924f5e05fbdc4bc4b919837d4cc05b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: HT
+ms.openlocfilehash: 35f1b805323da03f1622e5c355d6ffa6d960b275
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2017
-ms.locfileid: "23940953"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106915"
 ---
-# <a name="create-a-managed-application-definition-with-powershell"></a>Vytvoření definice spravovaných aplikací pomocí prostředí PowerShell
+# <a name="create-a-managed-application-definition-with-powershell"></a>Vytvoření definice spravované aplikace pomocí Powershellu
 
 Tento skript publikuje definici spravované aplikace do katalogu služeb.
 
@@ -27,19 +27,21 @@ Tento skript publikuje definici spravované aplikace do katalogu služeb.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!code-powershell[main](../../../powershell_scripts/managed-applications/create-definition/create-definition.ps1 "Create definition")]
 
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkaz k vytvoření definice spravovaných aplikací. Každý příkaz v tabulce odkazy na dokumentaci specifické pro příkaz.
+Tento skript k vytvoření definice spravované aplikace používá následující příkaz. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nové AzureRmManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermmanagedapplicationdefinition) | Vytvořte definici spravované aplikace. Zadejte balíček, který obsahuje požadované soubory. |
+| [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](../overview.md).
-* Další informace o prostředí PowerShell najdete v tématu [dokumentace Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
+* Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).

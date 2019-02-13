@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ee1a2a75d6a003a6bc53c5216dd01d379193ea77
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994941"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113783"
 ---
 # <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(NEPOUŽÍVANÉ) Fondy agentů DC/OS pro službu Azure Container Service
 
@@ -23,11 +23,11 @@ ms.locfileid: "52994941"
 Clustery DC/OS v Azure Container Service obsahovat agentské uzly v dva fondy, fondu veřejného a privátního fondu. Aplikace je možné nasadit buď fondu by to ovlivnilo usnadnění mezi počítači služby container Service. Počítače můžete přístupný z Internetu (veřejných) nebo udržovat interní (privátní). Tento článek poskytuje stručný přehled důvod, proč k fondům veřejné a soukromé.
 
 
-* **Privátní agenti**: privátní agentské uzly projít-směrovatelné síti. Tato síť je dostupná jenom v zóně správce nebo přes hraniční směrovač veřejnou zónu. Ve výchozím nastavení DC/OS se spustí aplikace na privátní agentské uzly. 
+* **Privátní agenti**: Privátní agentské uzly projít-směrovatelné síti. Tato síť je dostupná jenom v zóně správce nebo přes hraniční směrovač veřejnou zónu. Ve výchozím nastavení DC/OS se spustí aplikace na privátní agentské uzly. 
 
-* **Veřejní agenti**: veřejné agentské uzly spuštění aplikace v DC/OS a služeb prostřednictvím veřejně přístupné síti. 
+* **Veřejní agenti**: Spuštění aplikace v DC/OS a služeb prostřednictvím veřejně přístupné síti veřejné agentské uzly. 
 
-Další informace o zabezpečení sítě DC/OS, najdete v článku [dokumentaci DC/OS](https://dcos.io/docs/1.8/administration/securing-your-cluster/).
+Další informace o zabezpečení sítě DC/OS, najdete v článku [dokumentaci DC/OS](https://docs.mesosphere.com/).
 
 ## <a name="deploy-agent-pools"></a>Fondy agentů nasazení
 

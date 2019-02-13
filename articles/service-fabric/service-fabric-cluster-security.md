@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240592"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109313"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 Cluster Azure Service Fabric je prostředek, který vlastníte. Je vaší odpovědností zajistit clusterům pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité při spouštění úloh v produkčním prostředí v clusteru. I když je možné vytvořit nezabezpečenému clusteru, pokud clusteru zpřístupní koncových bodů správy do veřejného Internetu, můžete k němu připojit anonymním uživatelům. Nezabezpečené clustery nejsou podporovány pro produkční úlohy. 
@@ -78,14 +78,14 @@ Azure v rámci clusterů pro zabezpečení mezi uzly doporučujeme použít zabe
 Samostatné clustery Windows serveru Pokud máte systém Windows Server 2012 R2 a Windows Active Directory, doporučujeme použít zabezpečení Windows s skupinových účtů spravované služby. S účty Windows, použijte zabezpečení Windows.
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Řízení přístupu můžete použít k omezení přístupu k určité operace clusteru pro různé skupiny uživatelů. To pomáhá lépe zabezpečit clusteru. Podporuje dva typy řízení přístupu pro klienty, kteří připojení ke clusteru: Správce role a role uživatele.
+Řízení přístupu můžete použít k omezení přístupu k určité operace clusteru pro různé skupiny uživatelů. To pomáhá lépe zabezpečit clusteru. Klienti připojující se ke clusteru podporují dva typy ovládacích prvků přístupu: Role správce a role uživatele.
 
 Uživatelé, kteří mají přiřazenou roli správce mít úplný přístup k funkcím správy, včetně číst a zapisovat možnosti. Uživatelé, kteří mají přiřazenou roli uživatele, ve výchozím nastavení, mít pouze oprávnění ke čtení funkce pro správu (například schopnosti příkazů jazyka). Také řešení aplikací a služeb.
 
 Nastavte správce a uživatele klienta role při vytváření clusteru. Přiřazení rolí tím, že poskytuje samostatné identity (třeba pomocí certifikátů nebo Azure AD) pro každý typ role. Další informace o výchozí nastavení řízení přístupu a jak změnit výchozí nastavení, najdete v části [řízení přístupu na základě rolí pro Service Fabric klienty](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certifikáty X.509 a Service Fabric
-Digitální certifikáty X.509 se běžně používají k ověřování klientů a serverů. Také se používá k šifrování a digitálnímu podepisování zpráv. Service Fabric pomocí certifikátů X.509 zabezpečení clusteru a poskytuje funkce pro zabezpečení aplikací. Další informace o digitálních certifikátů X.509 naleznete v tématu [práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). Použijete [služby Key Vault](../key-vault/key-vault-get-started.md) ke správě certifikátů pro clustery Service Fabric v Azure.
+Digitální certifikáty X.509 se běžně používají k ověřování klientů a serverů. Také se používá k šifrování a digitálnímu podepisování zpráv. Service Fabric pomocí certifikátů X.509 zabezpečení clusteru a poskytuje funkce pro zabezpečení aplikací. Další informace o digitálních certifikátů X.509 naleznete v tématu [práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). Použijete [služby Key Vault](../key-vault/key-vault-overview.md) ke správě certifikátů pro clustery Service Fabric v Azure.
 
 Některé důležité věci k uvážení:
 

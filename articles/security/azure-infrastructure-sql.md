@@ -4,7 +4,7 @@ description: Tento článek obsahuje obecný popis, jak Azure SQL Database chrá
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: cce1ff1102c42bd1627caeba7b2c86432b228607
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: cd2ad16f910f5d2b3b801c8d54e9df7660751462
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170850"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103944"
 ---
 # <a name="azure-sql-database-security-features"></a>Funkce zabezpečení Azure SQL Database    
 Azure SQL Database poskytuje relační databázovou službu v Azure. Pro ochranu dat zákazníků a poskytuje silné zabezpečení funkce, které zákazníci očekávat od služba relační databáze, databáze SQL má svou vlastní sadu možností zabezpečení. Tyto možnosti jsou postavené ovládací prvky, které jsou zděděny z Azure.
@@ -38,7 +38,7 @@ Brány firewall můžete omezit adresy, které zákazníkům umožňuje podrobno
 
 Zákazníky můžete dosáhnout konfigurace brány firewall pomocí portálu pro správu nebo programově pomocí rozhraní REST API Azure SQL Database Management. Brány firewall Azure SQL Database ve výchozím nastavení brání všech zákazníků TDS přístup do instance databáze Azure SQL. Zákazníkům musíte nakonfigurovat přístup pomocí seznamů řízení přístupu (ACL) tak, aby povolovala připojení k databázi SQL Azure ve zdrojové a cílové adresy internet, protokoly a čísla portů.
 
-### <a name="dosguard"></a>Dosguardu
+### <a name="dosguard"></a>DoSGuard
 Útoky na dostupnost služby (DoS) jsou sníženy brány služby SQL Database zvané Dosguardu. Dosguardu aktivně sleduje neúspěšných přihlášení z IP adres. Pokud v časovém období několik neúspěšných přihlášení z konkrétní adresy IP, IP adresa má zablokovaný přístup k žádné prostředky ve službě pro předem definované časové období.
 
 Kromě toho provádí brána Azure SQL Database:
@@ -61,9 +61,9 @@ Protože kontroler prostředků infrastruktury (FC) je centrálního orchestrát
 ### <a name="vlan-isolation"></a>Izolace sítě VLAN
 Produkční sítě Azure je logicky rozdělen na tři primární sítě VLAN:
 
-- Hlavní sítě VLAN: propojení uzlů nedůvěryhodné zákazníka.
-- Síť VLAN FC: Obsahuje důvěryhodné FCs a podpůrných systémů.
-- Zařízení sítě VLAN: obsahuje důvěryhodné sítě a jiných zařízeních infrastruktury.
+- Hlavní sítě VLAN: Propojení uzlů nedůvěryhodné zákazníka.
+- FC VLAN: Obsahuje důvěryhodné FCs a podpůrných systémů.
+- Zařízení sítě VLAN: Obsahuje důvěryhodné sítě a jiných zařízeních infrastruktury.
 
 ### <a name="packet-filtering"></a>Filtrování paketů
 IPFilter software brány firewall, které jsou implementovány v kořenovém operačním systému a hostovaného operačního systému uzlů vynutit omezení připojení a zabránit neoprávněné přenosy mezi virtuálními počítači.

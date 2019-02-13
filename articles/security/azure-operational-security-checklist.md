@@ -4,7 +4,7 @@ description: Tento článek obsahuje sadu kontrolní seznam pro provozní zabezp
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: aa68bb0cb2e404072ef359591ce9309f8c27b631
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7895093eeb97857764530b52486c99b451dfc303
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403981"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105905"
 ---
 # <a name="azure-operational-security-checklist"></a>Kontrolní seznam provozního zabezpečení Azure
 Nasazení aplikace v Azure je rychlá, snadná a nákladově efektivní. Před nasazením cloudové aplikace v produkčním prostředí, které jsou užitečné mít kontrolní seznam pro pomoc při hodnocení aplikace podle seznamu akcí důležité a doporučené provozní zabezpečení je třeba zvážit.

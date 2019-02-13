@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 7270d55ce186b36c15ce90a888233f05111d2fec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0148737c9c93b575c3ab11cf2b186bf97363e362
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203517"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Kurz: Integrace Azure Active Directory s Skilljar
 

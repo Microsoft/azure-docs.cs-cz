@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 70f6f8a7837b9e87b2720a866f14983356d23691
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0bc53edb00ea13fdfcab3cfc398e122e6ecd7632
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487672"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106320"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazení protokolů aktivit pro auditování akcí u prostředků
 
@@ -73,6 +73,8 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
     ![Zobrazit na řídicím panelu filtru](./media/resource-group-audit/show-dashboard.png)
 
 ## <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Pokud chcete načíst položky protokolu, spusťte **Get-AzLog** příkazu. Další parametry pro filtrování seznamu položek, které zadáte. Pokud nechcete zadat počáteční a koncový čas, jsou vráceny položky za posledních sedm dní.
 

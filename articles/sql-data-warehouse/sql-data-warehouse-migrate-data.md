@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 11d41f9839456020ab65f11661c21f1e679cd76f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 77e4500b20be844dfad31db284a9c77ad7ec6bb7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770648"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118118"
 ---
 # <a name="migrate-your-data"></a>Migrace dat
 Data můžete přesunout z různých zdrojů do služby SQL Data Warehouse pomocí různých nástrojů.  Kopírovat ADF, SSIS a bcp můžete použít k dosažení tohoto cíle. Ale jako objem data zvýšení byste uvažovat o rozdělení proces migrace dat do kroků. To nabízí příležitosti k optimalizaci každý krok, výkon i odolnost zajistit hladký průběh data migrace.
@@ -29,7 +29,7 @@ Pokud vaše data se spustí v ploché soubory, pak musíte nejdřív přeneste d
 
 PolyBase nabízí také možnost vysoce výkonné pro načítání dat. Nicméně to znamená pomocí dvou nástrojů místo jednoho. Pokud potřebujete nejlepšího výkonu dosáhnete pak pomocí PolyBase. Pokud chcete, aby zkušenost jediného nástroje (a data nejsou masivní) ADF je odpověď.
 
-Postupujte podle [v tomto kurzu]( /articles/data-factory/load-azure-sql-data-warehouse.md) se naučíte, jak načíst data do datového skladu pomocí ADF.
+Postupujte podle [v tomto kurzu](../data-factory/load-azure-sql-data-warehouse.md) se naučíte, jak načíst data do datového skladu pomocí ADF.
 
 ## <a name="integration-services"></a>Integrační služby
 Integration Services (SSIS) je výkonný a flexibilní extrakce, transformace a načítání (ETL) nástroj, který podporuje komplexní pracovní postupy, transformace dat a několik možností, jak načítá data. Pomocí služby SSIS jednoduše přenést data do Azure nebo v rámci širší migrace.

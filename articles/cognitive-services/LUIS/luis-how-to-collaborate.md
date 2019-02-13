@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 4ccf703ffde0d4a5a0961135e81259519b0a0e41
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878965"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167559"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Jak spravovat autorů a spolupracovníci 
 
@@ -44,14 +44,13 @@ Zatímco LUIS v současné době nepodporuje převod vlastnictví, můžete expo
 
 ## <a name="azure-active-directory-resources"></a>Prostředky služby Azure Active Directory
 
-Pokud používáte Azure Active Directory (Azure AD) ve vaší organizaci, LUIS potřebuje oprávnění přístupu k informacím o uživatelích, pokud chtějí používat službu LUIS. Prostředky, které vyžaduje služba LUIS jsou minimální. 
+Pokud používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) ve vaší organizaci, Language Understanding (LUIS) potřebuje oprávnění pro informace o přístupu vašich uživatelů, pokud chtějí používat službu LUIS. Prostředky, které vyžaduje služba LUIS jsou minimální. 
 
 Podrobný popis zobrazí při pokusu o přihlášení pomocí účtu, který má souhlas správce, nebo není vyžadují souhlas správce, jako je například souhlas správce:
 
-* Umožňuje přihlášení k aplikaci pomocí účtu organizace a umožňuje aplikaci číst váš profil. Také to umožňuje aplikaci číst základní informace o firmě.
-* Umožňuje aplikaci zobrazovat a aktualizovat data, i když se aplikace nejsou aktuálně používá.
+* Umožňuje přihlášení k aplikaci pomocí účtu organizace a umožňuje aplikaci číst váš profil. Také to umožňuje aplikaci číst základní informace o firmě. Díky tomu LUIS oprávnění ke čtení dat základního profilu, jako je například ID uživatele, e-mailu, název
+* Umožňuje aplikaci zobrazovat a aktualizovat data, i když se aplikace nejsou aktuálně používá. Oprávnění je potřeba aktualizovat přístupový token uživatele.
 
-První oprávnění uděluje LUIS oprávnění ke čtení dat základního profilu, jako je například ID uživatele, e-mailu, název. Druhé oprávnění je potřeba aktualizovat přístupový token uživatele.
 
 ## <a name="azure-active-directory-tenant-user"></a>Uživatel tenanta Azure Active Directory
 
@@ -59,11 +58,8 @@ LUIS používá standardní toku souhlasu Azure Active Directory (Azure AD).
 
 Správce klienta by měl spolupracovat přímo s uživatele, který potřebuje udělení přístupu k použití LUIS ve službě Azure AD. 
 
-Nejprve uživatel přihlásí do LUIS a vidí v místním dialogovém okně, které vyžadují schválení správce. Uživatel kontaktuje správce tenanta, než budete pokračovat. 
-
-Druhý správce klienta do LUIS přihlásí a zobrazí automaticky otevíraný dialog toku souhlasu. Toto je dialogové okno Správce musí udělit oprávnění pro uživatele. Jakmile správce přijímá oprávnění, uživatel je moci pokračovat s LUIS.
-
-Pokud správce klienta nebude Přihlaste se k LUIS, můžete přístup správce [souhlas](https://account.activedirectory.windowsazure.com/r#/applications) pro LUIS. 
+* Nejprve uživatel přihlásí do LUIS a vidí v místním dialogovém okně, které vyžadují schválení správce. Uživatel kontaktuje správce tenanta, než budete pokračovat. 
+* Druhý správce klienta do LUIS přihlásí a zobrazí automaticky otevíraný dialog toku souhlasu. Toto je dialogové okno Správce musí udělit oprávnění pro uživatele. Jakmile správce přijímá oprávnění, uživatel je moci pokračovat s LUIS. Pokud správce tenanta se přihlaste se k LUIS, můžete přístup správce [souhlas](https://account.activedirectory.windowsazure.com/r#/applications) LUIS, je znázorněno na následujícím snímku obrazovky. Všimněte si, seznam je filtrovaný pro položky, které obsahují název `LUIS`.
 
 ![Oprávnění Azure active directory web aplikace](./media/luis-how-to-collaborate/tenant-permissions.png)
 

@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: f18a8e439f97bedf8f11a6fc2df4a5a1dd9e4b4c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fdfc1b40c90b64fc8f37fd4cc1f782ec411ad9e7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103662"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177474"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Co je Enterprise State Roaming?
 

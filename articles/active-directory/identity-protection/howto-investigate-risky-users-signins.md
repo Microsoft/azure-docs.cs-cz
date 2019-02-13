@@ -16,12 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.reviewer: raluthra
-ms.openlocfilehash: f72819bacd7c65ced7ccff3665789d3b96c5e30f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 546d9f6771ea75c2601630850f4e9ef082fd5623
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478361"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210981"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Jak: Prozkoumávání rizikových uživatelů a přihlášení 
 

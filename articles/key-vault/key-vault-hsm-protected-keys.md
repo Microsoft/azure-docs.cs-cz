@@ -4,7 +4,7 @@ description: V tomto článku použijte při plánování, generovat a potom př
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 928ed383c08dd87cb003d1f729bc3fecce0c6935
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76943c89cd4c0a283dc36a2a0d28c907cef0ad28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999228"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114684"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
@@ -32,7 +32,7 @@ Tato funkce není dostupná pro Azure China.
 
 > [!NOTE]
 > Další informace o službě Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-whatis.md)  
-> Úvodním kurzu, který zahrnuje vytvoření trezoru klíčů pro klíče chráněné HSM, najdete v části [Začínáme s Azure Key Vault](key-vault-get-started.md).
+> Úvodním kurzu, který zahrnuje vytvoření trezoru klíčů pro klíče chráněné HSM, najdete v části [co je Azure Key Vault?](key-vault-overview.md).
 
 Další informace o generování a přenos klíče chráněného HSM přes Internet:
 
@@ -62,7 +62,7 @@ Najdete v následující tabulce najdete seznam požadavků pro funkce přineste
 | Předplatné Azure |K vytvoření služby Azure Key Vault, budete potřebovat předplatné Azure: [Zaregistrujte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) |
 | Úroveň služby Azure Key Vault Premium k podpoře klíčů chráněných pomocí HSM |Další informace o úrovních služeb a možnostech pro Azure Key Vault najdete v tématu [cenách služby Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) webu. |
 | Modulu HSM společnosti Thales, čipové karty a podpůrný software |Musíte mít přístup k modulu hardwarového zabezpečení Thales a základní provozní znalosti o modulech HSM Thales. Zobrazit [modulu hardwarového zabezpečení Thales](https://www.thales-esecurity.com/msrms/buy) seznam kompatibilních modelů nebo pokud chcete zakoupit modulu hardwarového zabezpečení, pokud nemáte jednu. |
-| Níže uvedený hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a Thales nShield software, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je nutné [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimální verzi 1.1.0** nainstalované.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Nicméně toto doporučení nevynucujeme prostřednictvím kódu programu.<br/><br/>V následujících pokynech pracovní stanice označuje jako odpojené pracovní stanici.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme použít druhou, samostatnou pracovní stanici, která pokud chcete stáhnout sadu nástrojů a odešlete klíč tenanta. Ale pro účely testování můžete použít stejný pracovní stanice jako první z nich.<br/><br/>V následujících pokynech druhá pracovní stanice označuje jako pracovní stanici připojené k Internetu.</p></blockquote><br/> |
+| Níže uvedený hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a Thales nShield software, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je nutné [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimální verzi 1.1.0** nainstalované.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Nicméně toto doporučení nevynucujeme prostřednictvím kódu programu.<br/><br/>V následujících pokynech pracovní stanice označuje jako odpojené pracovní stanici.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme použít druhou, samostatnou pracovní stanici, která pokud chcete stáhnout sadu nástrojů a odešlete klíč tenanta. Ale pro účely testování můžete použít stejný pracovní stanice jako první z nich.<br/><br/>V následujících pokynech druhá pracovní stanice označuje jako pracovní stanici připojené k Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Vygenerování a přenos klíče do služby Azure Key Vault HSM
 
@@ -503,4 +503,4 @@ Pokud bude odesílání úspěšné, zobrazí zobrazí vlastnosti klíče, kter�
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete tento klíč chráněný HSM do trezoru klíčů. Další informace najdete v tématu **Pokud chcete použít modul hardwarového zabezpečení (HSM)** tématu [Začínáme se službou Azure Key Vault](key-vault-get-started.md) kurzu.
+Teď můžete tento klíč chráněný HSM do trezoru klíčů. Další informace najdete v tématu **Pokud chcete použít modul hardwarového zabezpečení (HSM)** tématu [Začínáme se službou Azure Key Vault](key-vault-overview.md) kurzu.

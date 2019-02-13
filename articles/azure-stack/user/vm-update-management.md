@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 69a0bde58a365ff124bc41b6039c606cb38f71fe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768541"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168133"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM update a správu
 Následující funkce řešení Azure Automation můžete použít ke správě Windows a virtuální počítače s Linuxem, které jsou nasazeny pomocí služby Azure Stack:
@@ -100,4 +100,4 @@ Virtuální počítače Azure Stack mohou být součástí nyní naplánovaná n
 Pokud máte velký počet virtuálních počítačů Azure Stack, můžete použít [tuto šablonu Azure Resource Manageru](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) mnohem snazší nasadit řešení na virtuálních počítačích. Šablona nasadí rozšíření Microsoft Monitoring Agent do existujícího virtuálního počítače Azure Stack a přidá jej do existujícího pracovního prostoru Azure LogAnalytics.
  
 ## <a name="next-steps"></a>Další postup
-[Optimalizace výkonu SQL serveru](azure-stack-sql-server-vm-considerations.md)
+[Optimalizace výkonu virtuálního počítače s SQL serverem](azure-stack-sql-server-vm-considerations.md)

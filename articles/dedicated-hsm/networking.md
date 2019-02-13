@@ -3,7 +3,7 @@ title: Důležité informace o sítích – vyhrazené modulu hardwarového zabe
 description: Přehled sítě aspekty pro nasazení vyhrazené modulu hardwarového zabezpečení Azure
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 46a4cc5e48a9fe239a3c62bd72cf6a99e9bf76d8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d872c4eff3d55ddf5d98243055e831a7a223a8ef
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092875"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115449"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Sítě Azure vyhrazené HSM
 
@@ -39,7 +39,7 @@ Před zřizováním zařízení vyhrazené HSM, zákazníci budete muset vytvoř
 
 ### <a name="subnets"></a>Podsítě
 
-Podsítě virtuální sítě rozdělit do samostatné adresní prostory použitelné Azure prostředky, které umístíte do nich. Dedikovaných modulů hardwarového zabezpečení se nasazuje do podsítě ve virtuální síti. Každý vyhrazený modulu hardwarového zabezpečení zařízení, který je nasazený v podsíti zákazníka zobrazí privátní IP adresu z této podsítě. Podsítě, ve kterém je nasazen zařízení HSM musí být explicitně delegovat na službu: Microsoft.HardwareSecurityModules/dedicatedHSMs. Tím udělíte určitá oprávnění k modulu hardwarového zabezpečení služby pro nasazení do podsítě. Delegování vyhrazené moduly hardwarového zabezpečení má určitá omezení zásad v podsíti. Skupiny zabezpečení sítě (Nsg) a trasy definované uživatelem (udr) nejsou aktuálně podporované ve delegované podsítě. V důsledku toho Jakmile podsítě se deleguje na dedikovaných modulů hardwarového zabezpečení, ho jde použít jenom k nasazení prostředků modulu hardwarového zabezpečení. Nasazení z dalších prostředků zákazníků do podsítě se nezdaří.
+Podsítě virtuální sítě rozdělit do samostatné adresní prostory použitelné Azure prostředky, které umístíte do nich. Dedikovaných modulů hardwarového zabezpečení se nasazuje do podsítě ve virtuální síti. Každý vyhrazený modulu hardwarového zabezpečení zařízení, který je nasazený v podsíti zákazníka zobrazí privátní IP adresu z této podsítě. Podsítě, ve kterém je nasazen zařízení HSM je potřeba explicitně delegovat na službu: Microsoft.HardwareSecurityModules/dedicatedHSMs. Tím udělíte určitá oprávnění k modulu hardwarového zabezpečení služby pro nasazení do podsítě. Delegování vyhrazené moduly hardwarového zabezpečení má určitá omezení zásad v podsíti. Skupiny zabezpečení sítě (Nsg) a trasy definované uživatelem (udr) nejsou aktuálně podporované ve delegované podsítě. V důsledku toho Jakmile podsítě se deleguje na dedikovaných modulů hardwarového zabezpečení, ho jde použít jenom k nasazení prostředků modulu hardwarového zabezpečení. Nasazení z dalších prostředků zákazníků do podsítě se nezdaří.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute gateway

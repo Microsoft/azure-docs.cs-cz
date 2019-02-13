@@ -3,18 +3,18 @@ title: Vytvoření monitorové geografické zóny, pomocí Azure Maps | Dokument
 description: Instalační program monitorové geografické zóny s využitím map Azure.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/08/2019
+ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bddaad9bd85d85bd18e8084e2e7f0127b08a07ea
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a991fbde8ce1ae43f18be4f13ae7edc5f60044bf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007990"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108700"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Nastavení monitorové geografické zóny s využitím Azure Maps
 
@@ -25,7 +25,7 @@ Další informace o službě Event Grid najdete v tématu [Azure Event Grid](htt
 V tomto kurzu se dozvíte jak:
 
 > [!div class="checklist"]
-* Nahrát oblasti monitorové geografické zóny ve službě Azure Maps, mapu datové služby pomocí API nahrát Data mapy
+* Nahrajte oblasti monitorové geografické zóny ve službě Azure Maps, datové služby pomocí rozhraní API odeslat Data.
 *   Nastavení Event Grid pro zpracování událostí monitorové geografické zóny.
 *   Obslužné rutiny událostí instalace monitorové geografické zóny.
 *   Nastavte si upozornění v reakci na události monitorové geografické zóny pomocí Logic Apps.
@@ -40,7 +40,7 @@ K dokončení kroků v tomto kurzu, musíte nejprve zobrazíte [spravovat účet
 
 ## <a name="upload-geofences"></a>Nahrát monitorovaná geografická zóna
 
-Nahrát monitorové geografické zóny pro vytváření webu pomocí mapy nahrát rozhraní API služby Data, budeme používat aplikaci postman. Pro účely tohoto kurzu předpokládáme, že není celkový oblasti lokality konstrukce, které je obtížné parametr, který by neměl porušují konstrukce zařízení. Porušení tohoto ohrazení jsou vážné obranu a hlášení do nástroje Operations Manager. Optimalizované sadu další ohrazení je možné, které sledují vytváření různých oblastí v rámci oblasti celkové konstrukce podle plánu. Můžete předpokládáme, že má hlavní monitorové geografické zóny Podweb1, který má nastavit vypršení platnosti čas a po, který vyprší. Můžete vytvořit více vnořených monitorovaná geografická zóna podle vašich požadavků. Podweb1 může být například, pokud pracovní probíhat během 1 až 4 týdnu plán a podřízeného webu 2 je, kde se práce probíhá týdnu 5 až 7. Takové ohrazení může načíst jako jedné datové sady na začátku projektu a používají ke sledování pravidel na základě času a místa. Zobrazit [GeoJSON monitorové geografické zóny dat](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) Další informace o formátu dat monitorové geografické zóny. Zobrazí se [dat – dokumentace k rozhraní API nahrát](https://docs.microsoft.com/rest/api/maps/mapdata/uploadpreview) Další informace o nahrávání dat map ve službě Azure Maps.
+Pokud chcete nahrát monitorové geografické zóny pro vytváření webu pomocí rozhraní API nahrát Data, budeme používat aplikaci postman. Pro účely tohoto kurzu předpokládáme, že není celkový oblasti lokality konstrukce, které je obtížné parametr, který by neměl porušují konstrukce zařízení. Porušení tohoto ohrazení jsou vážné obranu a hlášení do nástroje Operations Manager. Optimalizované sadu další ohrazení je možné, které sledují vytváření různých oblastí v rámci oblasti celkové konstrukce podle plánu. Můžete předpokládáme, že má hlavní monitorové geografické zóny Podweb1, který má nastavit vypršení platnosti čas a po, který vyprší. Můžete vytvořit více vnořených monitorovaná geografická zóna podle vašich požadavků. Podweb1 může být například, pokud pracovní probíhat během 1 až 4 týdnu plán a podřízeného webu 2 je, kde se práce probíhá týdnu 5 až 7. Takové ohrazení může načíst jako jedné datové sady na začátku projektu a používají ke sledování pravidel na základě času a místa. Zobrazit [GeoJSON monitorové geografické zóny dat](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) Další informace o formátu dat monitorové geografické zóny. Zobrazí se [dat – dokumentace k rozhraní API nahrát](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) Další informace o nahrávání dat do služby Azure Maps.
 
 Otevřete aplikaci Postman a postupujte podle následujících kroků k nahrání konstrukce lokality monitorové geografické zóny pomocí Azure Maps Data mapy nahrát rozhraní API.
 
@@ -258,8 +258,7 @@ Následují pět požadavky HTTP GET API monitorování geografických zón s r�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak nastavit monitorové geografické zóny díky nahrávání ve službě Azure Maps, mapu datové služby pomocí API nahrát Data mapy. Také jste zjistili, jak pomocí služby Azure Maps události Grid přihlásit k odběru a zpracování událostí monitorové geografické zóny. 
+V tomto kurzu jste zjistili, jak nastavit monitorové geografické zóny díky nahrávání ve službě Azure Maps, datové služby pomocí rozhraní API odeslat Data. Také jste zjistili, jak pomocí služby Azure Maps události Grid přihlásit k odběru a zpracování událostí monitorové geografické zóny. 
 
-> [!div class="checklist"]
 * Zobrazit [zpracování typů obsahu v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type), se naučíte používat aplikace logiky k parsování formátu JSON vytvářet složitější logiku.
 * Další informace o obslužných rutin událostí ve službě Event Grid, naleznete v tématu [podporované obslužných rutin událostí ve službě Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers).

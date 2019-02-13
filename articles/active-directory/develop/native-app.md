@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: af3c75364346a1e2e91c0c6d942df5c47b16ffed
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4c15890a5693235e8f2554ba8d0fdefc161770f3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096649"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165004"
 ---
 # <a name="native-apps"></a>Nativní aplikace
 

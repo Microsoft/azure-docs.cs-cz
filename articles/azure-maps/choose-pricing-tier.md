@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 366637274a8006455f05702f47c02f505a615820
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 56f9226f1bee630895725eb0b3806e294e9a5b51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063229"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218138"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Zvolte cenovou úroveň ve službě Azure Maps vpravo
 
@@ -34,15 +34,14 @@ Cenové úrovně S0 a S1 zpracovávat různé množství dat propustnosti. Než 
 | Vykreslování                                  |        ✓           |     ✓    |
 | Provoz                                 |        ✓           |     ✓    |
 | Časová pásma                              |        ✓           |     ✓    |
-| * Trénováním plus hybridní snímky (preview)  |        ✓           |     ✓    |
-| * Trasy rozsahu (preview)                  |        ✓           |     ✓    |
-| * Umístění IP 2 (preview)                |        ✓           |     ✓    |
-| * Mnohoúhelníky z vyhledávání (preview)         |        ✓           |     ✓    |
-| * Batch geokódování (preview)              |        ✓           |     ✓    |
-| * Batch směrování (preview)                |        ✓           |     ✓    |
-| * Matice směrování (preview)               |        ✓           |     ✓    |
+| Obrázek a hybridní snímky    |            |     ✓    |
+| Rozsah trasy                    |                   |     ✓    |
+| Umístění IP 2 (preview)                |        ✓           |     ✓    |
+| Mnohoúhelníky z hledání          |                   |     ✓    |
+| Geografické kódování služby Batch (preview)              |                   |     ✓    |
+| Batch směrování (preview)                |                   |     ✓    |
+| Přehled směrování (preview)               |                   |     ✓    |
 
-\* Přístup k těmto funkcím z S0 cenová úroveň se přestanou používat po 4. února 2019.
 
 Tyto další datové body stojí za zvážení:
 * Jaký druh enterprise máte?

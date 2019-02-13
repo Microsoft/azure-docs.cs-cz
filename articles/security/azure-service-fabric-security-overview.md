@@ -4,7 +4,7 @@ description: Tento článek poskytuje přehled o zabezpečení Azure Service Fab
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 629b6fba9ced5fa2ccf22f473fe25c87d1cc4818
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436806"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116216"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Přehled zabezpečení služby Azure Service Fabric
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric řeší problematiku vývoje a správy cloudových aplikací. Vývojáři a správci můžou vyhnout komplexním problémům s infrastrukturou a soustředit na implementaci důležitějších a náročných úloh, které jsou škálovatelné a spolehlivé.
@@ -47,8 +47,8 @@ Konfigurace zabezpečení uzel klienta s použitím identity klienta. K navázá
 
 Service Fabric podporuje dva typy ovládacích prvků přístupu pro klienty, kteří jsou připojené ke clusteru Service Fabric:
 
--   **Správce**: úplný přístup k funkcím správy, včetně možnosti pro čtení a zápisu.
--   **Uživatel**: pouze přístup pro čtení k funkce pro správu (například schopnosti příkazů jazyka) a schopnost řešení aplikací a služeb.
+-   **Správce**: Úplný přístup k možnosti správy, včetně možnosti pro čtení a zápisu.
+-   **Uživatel**: Pouze pro čtení přístup k funkcím správy (například schopnosti příkazů jazyka) a možnost řešení aplikací a služeb.
 
 Pomocí řízení přístupu správce clusterů můžete omezit přístup k určitým typům operace clusteru. Díky tomu clusteru bezpečnější.
 
@@ -83,11 +83,11 @@ Z hlediska zabezpečení je hlavních cílů monitorování a diagnostiku:
 
 Pracovní postup monitorování a diagnostiky se skládá ze tří kroků:
 
-1.  **Generování události**: generování událostí zahrnuje událostí (protokoly, trasování, vlastní události) na úrovni infrastruktury) (cluster) i na úrovni aplikace/služby. Další informace o [událostí na úrovni infrastruktury](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) a [událostí na úrovni aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) pochopit, co je k dispozici a jak přidat další instrumentaci.
+1.  **Generování události**: Generování události obsahuje událostí (protokoly, trasování, vlastní události) na úrovni infrastruktury) (cluster) i na úrovni aplikace/služby. Další informace o [událostí na úrovni infrastruktury](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) a [událostí na úrovni aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) pochopit, co je k dispozici a jak přidat další instrumentaci.
 
-2.  **Agregace událostí**: vygenerovaných událostí potřeba shromažďovat a agregovat předtím, než je možné zobrazit. Většinou doporučujeme používat [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobně jako kolekce založené na agentovi protokolů) nebo [využitím EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (v procesu shromažďování protokolů).
+2.  **Agregace událostí**: Vygenerovaných událostí potřeba shromažďovat a agregovat předtím, než je možné zobrazit. Většinou doporučujeme používat [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobně jako kolekce založené na agentovi protokolů) nebo [využitím EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (v procesu shromažďování protokolů).
 
-3.  **Analýza**: události musí být vizualizovaný a v některých formátu umožňující analýzy a zobrazení k dispozici. Existuje několik platforem pro analýzy a vizualizace dat monitorování a diagnostiku. Doporučujeme [Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) vzhledem k tomu, že se integrují s Service Fabric.
+3.  **Analýza**: Události musí být vizualizovaný a v některých formátu umožňující analýzy a zobrazení k dispozici. Existuje několik platforem pro analýzy a vizualizace dat monitorování a diagnostiku. Doporučujeme [Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) vzhledem k tomu, že se integrují s Service Fabric.
 
 Můžete také použít [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) monitorování řadu prostředků Azure, na kterých je postavená clusteru Service Fabric.
 

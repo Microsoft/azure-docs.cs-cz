@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f7d4e586dcb90153fb4d037c9c9821cd3ea3182
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097057"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176709"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (XAML)
 
@@ -360,7 +361,7 @@ Také si zobrazili základní informace o tokenu opatřené `AcquireTokenAsync` 
 |**Název** |Celé jméno uživatele|Uživatel a příjmení název.|
 |**Uživatelské jméno** |<span>user@domain.com</span> |Uživatelské jméno, který identifikuje uživatele.|
 |**Platnost tokenu vyprší** |DateTime |Čas, kdy vyprší platnost tokenu. Knihovna MSAL je rozšířením datum vypršení platnosti obnovuje se token podle potřeby.|
-|**Přístupový Token** |Řetězec |Řetězec tokenu, který je odeslán protokolu HTTP požadavků, které vyžadují *autorizační hlavičky*.|
+|**Přístupový Token** |String |Řetězec tokenu, který je odeslán protokolu HTTP požadavků, které vyžadují *autorizační hlavičky*.|
 
 #### <a name="see-whats-in-the-access-token-optional"></a>Podívejte se, co je v přístupovém tokenu (volitelné)
 Volitelně můžete zkopírovat hodnotu v **přístupový Token** a vložte ji https://jwt.ms k dekódování ho a podívejte se, že seznam deklarací identity.

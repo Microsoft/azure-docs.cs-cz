@@ -4,7 +4,7 @@ description: Kurz ukazuje, jak nasadit vyhrazený modulu HSM do existující vir
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 3f165b5d372168ef3ce6fea75547513a0148ae5b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fd701c92ea2cf1447f0c3ea14db6a968ac8910e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086299"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115670"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – moduly hardwarového zabezpečení nasazení do existující virtuální sítě pomocí Powershellu
 
@@ -37,7 +37,7 @@ Tento kurz se zaměřuje na pár moduly hardwarového zabezpečení a vyžaduje 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal, proto veškerou interakci se službou bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu pomocí prostředí PowerShell ve službě Azure Cloud Shell. Pokud jste ještě do prostředí PowerShell, postupujte podle Začínáme pokynů tady: [Azure Powershellu – Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0).
+Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal, proto veškerou interakci se službou bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu pomocí prostředí PowerShell ve službě Azure Cloud Shell. Pokud jste ještě do prostředí PowerShell, postupujte podle Začínáme pokynů tady: [Azure PowerShell Get Started](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0).
 
 Předpoklady:
 
@@ -187,7 +187,7 @@ Tento příkaz by měl trvat přibližně 20 minut. "-Verbose" možnost použít
 
 ![Stav zřizování](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Po úspěšném dokončení zobrazené "provisioningState": "Úspěšné", může přihlásit k existující virtuální počítač a pomocí SSH k zajištění dostupnosti zařízení HSM.
+Po úspěšném dokončení zobrazené "provisioningState": "Úspěšné", můžete přihlásit do existujícího virtuálního počítače a pomocí SSH k zajištění dostupnosti zařízení HSM.
 
 ## <a name="verifying-the-deployment"></a>Ověření nasazení
 

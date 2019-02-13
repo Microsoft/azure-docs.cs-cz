@@ -1,6 +1,6 @@
 ---
 title: Vytvořit pravidlo brány firewall na úrovni serveru – Azure SQL Database | Dokumentace Microsoftu
-description: Vytvořit pravidlo brány firewall na úrovni serveru služby SQL Database pro databázi jeden, nebo součástí fondu
+description: Vytvořit pravidlo brány firewall na úrovni serveru služby SQL Database pro jednu databázi, databázi ve fondu
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,17 +11,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 2374707d3fdf4d389a7c96c18767d3c52a9efb2f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/11/2019
+ms.openlocfilehash: f708e5a3cd5bc0f11f8b0cfe79a791347c7a7a2b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757405"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108955"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-in-azure-sql-database-using-the-azure-portal"></a>Rychlý start: Vytvořit pravidlo brány firewall na úrovni serveru ve službě Azure SQL Database pomocí webu Azure portal
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Rychlý start: Vytvořit pravidlo brány firewall na úrovni serveru pro jeden a ve fondu databáze pomocí webu Azure portal
 
-Tento rychlý start vás provede postupem vytvoření pravidla brány firewall na úrovni serveru ve službě Azure SQL Database vám umožní připojit se k němu z místních prostředků pomocí webu Azure portal.
+Tento rychlý start vás provede vytvořením [pravidlo brány firewall na úrovni serveru](sql-database-firewall-configure.md) jednoho a ve fondu databází ve službě Azure SQL Database pomocí webu Azure portal umožňuje připojení k databázové servery, jeden databází a elastických fondů a na jejich databáze. Pravidlo brány firewall, je potřeba připojit z jiných prostředcích Azure i z místních prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 

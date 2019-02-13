@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d79e423dd617a498aee09cff6b774bbe90eeaa83
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701742"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118016"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics (Preview)
 
@@ -154,7 +154,7 @@ Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL D
 
 **Budou účtovat dodatečné náklady s využitím SQL referenčního datového vstupu v Azure Stream Analytics?**
 
-Neexistují žádné další [cena za jednotky streamování](https://azure.microsoft.com/pricing/details/stream-analytics/) v úloze Stream Analytics. Úlohy Stream Analytics ale musíte mít účet přidruženého úložiště Azure. Úlohy Stream Analytics dotazuje databázi SQL (během úlohy spuštění a interval aktualizace) a získejte referenční sady dat a úložiště, která snímku v účtu úložiště. Ukládání tyto snímky budou účtovat další poplatky, které jsou podrobně popsané v [stránce s cenami](https://azure.microsoft.compricing/details/storage/) pro účet úložiště Azure.
+Neexistují žádné další [cena za jednotky streamování](https://azure.microsoft.com/pricing/details/stream-analytics/) v úloze Stream Analytics. Úlohy Stream Analytics ale musíte mít účet přidruženého úložiště Azure. Úlohy Stream Analytics dotazuje databázi SQL (během úlohy spuštění a interval aktualizace) a získejte referenční sady dat a úložiště, která snímku v účtu úložiště. Ukládání tyto snímky budou účtovat další poplatky, které jsou podrobně popsané v [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/) pro účet úložiště Azure.
 
 **Jak zjistím, referenční data snímku se z databáze SQL dotazovat a používat v úloze Azure Stream Analytics?**
 

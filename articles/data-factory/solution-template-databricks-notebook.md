@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: bb9277a9e8f5e8bacb6b7aab7b9a5b411c86edbd
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3d7fd9b3e7ab8e5f193fd3b34a804b9ed0780d66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967252"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105684"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Transformace dat pomocí Databricks v Azure Data Factory
 
@@ -89,13 +89,13 @@ Pro zjednodušení Tato šablona nevytvoří šablony naplánovanou aktivační 
 
     1.  **Jímka** – pro kopírování dat do aplikace.
 
-        Vyberte úložiště vytvořený v [předpokladu 1](#prerequisite), v jímce propojenou službu.
+        Vyberte úložiště vytvořený v předpokladu 1, v jímky propojené služby.
 
         ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
 
     1.  **Databricks** – pro připojení ke clusteru Databricks
 
-        Vytvořte propojenou službu pomocí přístupového klíče vygenerované v Databricks [požadavků 2.c](#prerequisite). Pokud máte *interaktivní clusteru*, můžete vybrat, který. (V tomto příkladu *nového clusteru úloh* možnost.)
+        Vytvoření propojené služby Databricks pomocí přístupového klíče vygenerované v 2.c požadovaných součástí. Pokud máte *interaktivní clusteru*, můžete vybrat, který. (V tomto příkladu *nového clusteru úloh* možnost.)
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 

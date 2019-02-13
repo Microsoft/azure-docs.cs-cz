@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 6aae03369ca9f5266511acb94f7020bfe02f09ed
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e74519bf2eeb31a700c2fb02cbf3b94702449427
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961869"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218087"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Potíže s uložením přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory 
 

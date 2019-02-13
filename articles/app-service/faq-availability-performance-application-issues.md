@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c1718c5a2acfe49fba4974bcf7e580c45553113d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721559"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108734"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastějších dotazech týkajících se výkonu aplikace pro Web Apps v Azure
 
@@ -43,7 +43,7 @@ V některých scénářích vysoké využití paměti vaší aplikace skutečně
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Jak automatizovat webových aplikací služby App Service web apps pomocí Powershellu?
 
-Rutiny prostředí PowerShell můžete použít ke správě a údržbě aplikací služby App Service web apps. V našem blogovém příspěvku [automatizace webových aplikací hostovaných ve službě Azure App Service pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/), zjistíte, jak automatizovat běžné úlohy pomocí rutin Powershellu založené na Azure Resource Manageru. Blogový příspěvek obsahuje také vzorový kód pro různé úlohy správy webové aplikace. Popisy a syntaxe pro všechny rutiny webových aplikací služby App Service najdete v tématu [AzureRM.Websites](https://docs.microsoft.com/powershell/module/azurerm.websites/?view=azurermps-4.0.0).
+Rutiny prostředí PowerShell můžete použít ke správě a údržbě aplikací služby App Service web apps. V našem blogovém příspěvku [automatizace webových aplikací hostovaných ve službě Azure App Service pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/), zjistíte, jak automatizovat běžné úlohy pomocí rutin Powershellu založené na Azure Resource Manageru. Blogový příspěvek obsahuje také vzorový kód pro různé úlohy správy webové aplikace. Popisy a syntaxe pro všechny rutiny webových aplikací služby App Service najdete v tématu [Az.Websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Jak můžu zobrazit protokoly událostí svou webovou aplikaci?
 

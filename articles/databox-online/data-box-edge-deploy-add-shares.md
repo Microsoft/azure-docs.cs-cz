@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6c6553ace250aa9cbc06dfdfea77fc5e1637cd41
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6810818e48329d883961c840fa83857d84b98fd4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384815"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112865"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge-preview"></a>Kurz: Přenos dat pomocí Azure Data Box Edge (preview)
 
@@ -135,14 +135,14 @@ U svého klienta systému Linux, připojení k zařízení Data Box Edge proveď
 
 1. Po instalaci klienta systému souborů NFS, připojte sdílenou složku systému souborů NFS, který jste vytvořili v zařízení Data Box Edge pomocí následujícího příkazu:
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
     > Než připojíte sdílenou složku, ujistěte se, že budou vytvořeny již adresáře, které bude fungovat jako přípojné body na místním počítači. Tyto adresáře by neměly obsahovat jakékoli soubory nebo podsložky.
 
     Následující příklad ukazuje připojení ke sdílené složce na zařízení Data Box Edge přes systém souborů NFS. IP adresa zařízení je `10.10.10.60`. Sdílená složka `mylinuxshare2` je připojená k virtuálnímu počítači ubuntuVM. Přípojný bod sdílené složky je `/home/databoxubuntuhost/edge`.
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
 > [!NOTE] 
 > Pro verzi Preview platí následující upozornění:

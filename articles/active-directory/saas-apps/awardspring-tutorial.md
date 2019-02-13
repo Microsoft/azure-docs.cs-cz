@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: c681e9701a64e0ea2418dc70cf19100495b7c132
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a34e92cd7f8817481354646ad60e14557d66e0c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997264"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>Kurz: Integrace Azure Active Directory s AwardSpring
 

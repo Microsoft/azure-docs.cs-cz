@@ -12,21 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4481bcf7a794423f98f45e4a21a139dbe4c32b4f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691163"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210777"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Integrované systémy pro nasazení Azure odpojené plánování rozhodnutí pro službu Azure Stack
-Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), pak můžete dokončit vaše rozhodnutí o nasazení služby Azure Stack.
+Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), můžete dokončit váš rozhodnutí o nasazení služby Azure Stack.
 
-Můžete nasadit a používat služby Azure Stack bez připojení k Internetu. Odpojené nasazení jste ale omezeni na úložiště identity služby AD FS a model fakturace založená na kapacitě. Protože víceklientskou architekturu vyžaduje použití Azure AD, se u odpojeného nasazení nepodporuje víceklientskou architekturu. 
+Můžete nasadit a používat služby Azure Stack bez připojení k Internetu. Odpojené nasazení jste ale omezeni na úložiště identity služby AD FS a model fakturace založená na kapacitě. Protože víceklientskou architekturu vyžaduje použití Azure Active Directory (Azure AD), se u odpojeného nasazení nepodporuje víceklientskou architekturu. 
 
 Tuto možnost zvolte, pokud jste:
 - Máte zabezpečení nebo jiná omezení, které vyžadují, abyste nasazení Azure Stack v prostředí, které není připojené k Internetu.
@@ -34,9 +34,9 @@ Tuto možnost zvolte, pokud jste:
 - Chcete použít Azure Stack čistě jako řešení privátního cloudu, který je nasazen na firemním intranetu a nemají zájem o hybridní scénáře.
 
 > [!TIP]
-> V některých případech tohoto typu prostředí se také označuje jako "podmořské scénáře".
+> V některých případech tohoto typu prostředí se také označuje jako *podmořské scénář*.
 
-Odpojené nasazení neznamená výhradně, nemůžete později vaší instance služby Azure Stack do Azure připojit pro hybridní scénáře virtuálních počítačů tenanta. To znamená, že nemáte připojení k Azure během nasazení nebo nechcete používat jako úložiště identit Azure Active Directory.
+Odpojené nasazení neomezuje mohli později připojení vaší instance služby Azure Stack do Azure pro hybridní scénáře virtuálních počítačů tenanta. To znamená, že nemáte připojení k Azure během nasazení nebo nechcete používat jako úložiště identit Azure AD.
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Funkce, které jsou poškozeny nebo není k dispozici v odpojeném nasazení 
 Azure Stack je navržena pro spolupráci při připojení k Azure, takže je důležité si uvědomit, že jsou některé funkce a funkce, které jsou narušena nebo zcela není k dispozici v odpojeném režimu. 

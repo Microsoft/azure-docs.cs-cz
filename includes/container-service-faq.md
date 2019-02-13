@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53615201"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212981"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(NEPOUŽÍVANÉ) Container Service – nejčastější dotazy
 
@@ -85,7 +85,7 @@ Běžně používané adresy URL pro váš cluster najdete na webu Azure Portal,
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Jak můžu upgradovat orchestrátor po nasazení?
 
-Azure Container Service v současné době nenabízí nástroje pro upgrade verze orchestrátoru, který jste nasadili v clusteru. Pokud služba Container Service podporuje novější verzi, můžete nasadit nový cluster. Další možností je použít k místnímu upgradu clusteru nástroje specifické pro orchestrátor, pokud jsou k dispozici. Podívejte se například na [Upgrade DC/OS](https://dcos.io/docs/1.8/administration/upgrading/).
+Azure Container Service v současné době nenabízí nástroje pro upgrade verze orchestrátoru, který jste nasadili v clusteru. Pokud služba Container Service podporuje novější verzi, můžete nasadit nový cluster. Další možností je použít k místnímu upgradu clusteru nástroje specifické pro orchestrátor, pokud jsou k dispozici. Podívejte se například na [Upgrade DC/OS](http://docs.mesosphere.com/1.12/installing/production/upgrading).
  
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>Kde najdu připojovací řetězec SSH k mému clusteru?
 

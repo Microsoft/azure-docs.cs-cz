@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0b419343829e7e7bbbd31260b9cd0c8d93cd255d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847811"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210590"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
@@ -83,6 +83,9 @@ Stejně jako u jiných služeb v Azure Service Bus vynucuje sadu konkrétní kv�
 Zasílání zpráv služby Service Bus (fronty a témata nebo předplatná), aby aplikace odesílat zprávy o velikosti až 256 KB (úrovně standard) nebo 1 MB (úroveň premium). Pokud pracujete se zprávami o velikosti větší než 1 MB, použijte vzor kontrola deklarací identity je popsáno v [tento příspěvek na blogu](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Řešení potíží
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč mi nejde vytvořit obor názvů po odstranění z jiného předplatného? 
+Při odstranění oboru názvů z předplatného čeká na 4 hodiny, než se nutnosti znovu vytvářet adresářovou se stejným názvem v jiném předplatném. V opačném případě může zobrazit následující chybová zpráva: `Namespace already exists`. 
+
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované API služby Azure Service Bus a jejich doporučené akce?
 Seznam možných výjimkách služby Service Bus najdete v tématu [výjimky přehled][Exceptions overview].
 

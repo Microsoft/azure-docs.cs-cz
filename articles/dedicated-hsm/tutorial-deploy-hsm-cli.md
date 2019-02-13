@@ -4,7 +4,7 @@ description: Kurz ukazuje, jak nasadit vyhrazený modulu HSM do existující vir
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c8713c4d3f6bd7835fed8e668407ea9ee55cc712
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080312"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111828"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Kurz: Nasazení HSM do existující virtuální sítě pomocí rozhraní příkazového řádku
 
@@ -38,7 +38,7 @@ Tento kurz se zaměřuje na pár moduly hardwarového zabezpečení a vyžaduje 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal. Všechny interakce s služba bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu se pomocí rozhraní příkazového řádku (CLI) ve službě Azure Cloud Shell. Pokud jste ještě na rozhraní příkazového řádku Azure, postupujte podle Začínáme pokynů tady: [Azure CLI 2.0 – Začínáme](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal. Všechny interakce s služba bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu se pomocí rozhraní příkazového řádku (CLI) ve službě Azure Cloud Shell. Pokud jste ještě na rozhraní příkazového řádku Azure, postupujte podle Začínáme pokynů tady: [Azure CLI 2.0 Začínáme](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
 Předpoklady:
 

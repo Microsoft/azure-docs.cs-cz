@@ -17,12 +17,13 @@ ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2296ac3f079cfbafef7db4721816d7c2c7572538
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e0b1e784d4ca92f0da0e37d4afc1efcf09282cb4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884660"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162862"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 On-Behalf-Of
 

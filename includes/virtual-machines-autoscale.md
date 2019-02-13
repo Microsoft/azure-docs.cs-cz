@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 93103311e8a9f6f4998195e21cdbc7523b1d4fca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985394"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212983"
 ---
 Můžete snadno [automatické škálování](../articles/azure-monitor/platform/autoscale-best-practices.md) vaše [virtuální počítače (VM)](../articles/virtual-machines/windows/overview.md) při použití [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a [funkce automatického škálování Azure Monitorování](../articles/azure-monitor/platform/autoscale-overview.md). Vaše virtuální počítače musí být členy škálovací sadu automaticky škálovat. Tento článek obsahuje informace, které umožňuje lépe pochopit, jak škálování virtuálních počítačů vertikálně a horizontálně pomocí metody Automatické a ruční.
 
@@ -57,7 +57,7 @@ Je možné [nastavení aktivační události](../articles/azure-monitor/platform
 
 Můžete přidat nebo odebrat tak, že změna kapacity škálovací sady virtuálních počítačů. Na webu Azure Portal, můžete snížit nebo zvýšit počet virtuálních počítačů (zobrazené jako **počet instancí**) ve škálovací sadě posunutím panelu podmínku přepsání na obrazovce škálování doleva nebo doprava.
 
-Pomocí Azure Powershellu, musíte získat škálovací sadu objekt pomocí [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss). Pak můžete nastavit **sku.capacity** vlastnost počtu instancí virtuálních počítačů, které chcete, aby a aktualizaci škálovací sady s [aktualizace AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss). Pomocí rozhraní příkazového řádku Azure, můžete změnit kapacitu s **– nové kapacity** parametr [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) příkazu.
+Pomocí Azure Powershellu, musíte získat škálovací sadu objekt pomocí [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss). Pak můžete nastavit **sku.capacity** vlastnost počtu instancí virtuálních počítačů, které chcete, aby a aktualizaci škálovací sady s [aktualizace AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss). Pomocí rozhraní příkazového řádku Azure, můžete změnit kapacitu s **– nové kapacity** parametr [az vmss scale](/cli/azure/vmss?view=azure-cli-latest#az-vmss-scale) příkazu.
 
 ### <a name="vertical"></a>Svisle
 

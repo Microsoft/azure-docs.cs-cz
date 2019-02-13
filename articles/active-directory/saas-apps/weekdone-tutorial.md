@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 70133b2154afe22376d6443a12dfe18a70fd3775
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 69e8bd983cdd37b6cb55772d2ba888fcfe14d9c8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187568"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Kurz: Integrace Azure Active Directory s Weekdone
 

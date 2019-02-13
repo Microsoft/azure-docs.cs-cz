@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 74ded9ee650ac5f74586961f18d0e1e5d70693ce
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 88af97a37f88cd8b37c2a385af7f9e312a43b12f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008082"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pexip"></a>Kurz: Integrace Azure Active Directory s Pexip
 

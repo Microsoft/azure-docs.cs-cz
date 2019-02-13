@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 520e625ba9689ebf35e985fe95609c62102e2493
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8716d018756d1e6eadcd6ebeeaf4f67ad0bc4741
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312658"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Kurz: Integrace Azure Active Directory s řízením Workspot
 
@@ -142,7 +143,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 7. V jiné okno webového prohlížeče, přihlaste se k řízení Workspot jako správce zabezpečení.
 
-8. Na panelu nástrojů v horní části stránky klikněte na tlačítko **nastavení**, přejděte na **SAML**.
+8. Na panelu nástrojů v horní části stránky klikněte na tlačítko **nastavení**, přejděte na **SAML**.
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
@@ -150,7 +151,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
  
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a. V **Entity ID** textového pole vložte hodnotu **Azure Ad identifikátor** který jste zkopírovali z portálu Azure portal.   
+    a. V **Entity ID** textového pole vložte hodnotu **Azure Ad identifikátor** který jste zkopírovali z portálu Azure portal.   
 
     b.In **adresa URL služby Sign-on** textového pole vložte hodnotu **přihlašovací adresa URL** který jste zkopírovali z portálu Azure portal.
 
@@ -193,7 +194,7 @@ Přihlaste se k řízení Workspot Azure AD uživatelům umožnit, musí být po
 
 1. Přihlaste se k řízení Workspot jako správce zabezpečení.
 
-2. Na panelu nástrojů v horní části stránky klikněte na tlačítko **uživatelé**, přejděte na **přidat uživatele**.
+2. Na panelu nástrojů v horní části stránky klikněte na tlačítko **uživatelé**, přejděte na **přidat uživatele**.
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 

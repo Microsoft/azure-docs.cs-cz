@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 49b5978fd647a4667503676528120a36495021c6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08d6d0c31e1cff799e952c50bae3446e41477aba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730952"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104565"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hostování s vysokou hustotou ve službě Azure App Service pomocí škálování pro aplikaci
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ve výchozím nastavení, škálování aplikací služby App Service díky škálování [plán služby App Service](overview-hosting-plans.md) jsou spuštěné na. Při spuštění více aplikací v rámci stejného plánu služby App Service, každá instance s horizontálním navýšením kapacity spustí všechny aplikace v plánu.
 
 Můžete povolit *aplikaci škálování* v App Service plánování úroveň. Škáluje se aplikace nezávisle na plán služby App Service, který je hostitelem ho. Tímto způsobem, plán služby App Service je možné škálovat na 10 instancí, ale lze nastavit aplikaci používat pouze pět.
@@ -33,20 +36,20 @@ Můžete povolit *aplikaci škálování* v App Service plánování úroveň. �
 
 ## <a name="per-app-scaling-using-powershell"></a>Na aplikaci škálování s využitím Powershellu
 
-Vytvoření plánu s předáváním škálování za aplikací ```-PerSiteScaling $true``` parametr ```New-AzureRmAppServicePlan``` rutiny.
+Vytvoření plánu s předáváním škálování za aplikací ```-PerSiteScaling $true``` parametr ```New-AzAppServicePlan``` rutiny.
 
 ```powershell
-New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
+New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -Location $Location `
                             -Tier Premium -WorkerSize Small `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Povolit aplikaci škálování s existující plán služby App Service předáním `-PerSiteScaling $true` parametr ```Set-AzureRmAppServicePlan``` rutiny.
+Povolit aplikaci škálování s existující plán služby App Service předáním `-PerSiteScaling $true` parametr ```Set-AzAppServicePlan``` rutiny.
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
-Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
+Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
    -Name $AppServicePlan -PerSiteScaling $true
 ```
 
@@ -56,13 +59,13 @@ V následujícím příkladu je omezená na dvě instance bez ohledu na to, koli
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
-$newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
+$newapp = Get-AzWebApp -ResourceGroupName $ResourceGroup -Name $webapp
     
 # Modify the NumberOfWorkers setting to the desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
     
 # Post updated app back to azure
-Set-AzureRmWebApp $newapp
+Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]

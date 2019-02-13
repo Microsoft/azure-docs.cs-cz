@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/09/2019
+ms.date: 02/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a848e160406a458c5a6307919bfb866693babbef
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2a948a75ce3f6c21d7e92e3e1ccb1ef98dbe2ea0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002176"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114378"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spouštění balíčků služby SSIS pomocí aktivity spustit balíčků služby SSIS v Azure Data Factory
 Tento článek popisuje, jak spustit balíček služby SSIS pomocí aktivity spustit balíčků služby SSIS v kanálu Azure Data Factory (ADF). 
@@ -140,7 +140,7 @@ V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS.
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
-                       "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                       "packagePath": "FolderName/ProjectName/PackageName.dtsx"
                    },
                    "environmentPath": "FolderName/EnvironmentName",
                    "projectParameters": {
@@ -180,7 +180,7 @@ V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS.
                        }
                    },
                    "propertyOverrides": {
-                       "\\PackageName.dtsx\\MaxConcurrentExecutables": {
+                       "\\Package.MaxConcurrentExecutables": {
                            "value": 8,
                            "isSensitive": false
                        }

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: ce88c8c4850e5226ddda12ce5ee0e1d18b51ea5c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a63a10225f4dc55092c62e39b22cdf15d7f7ca5e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104078"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217509"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -189,4 +189,4 @@ Postupujte podle [Service Fabric blogu](https://blogs.msdn.microsoft.com/azurese
 
 ## <a name="next-steps"></a>Další postup
 
-- [Další informace o klíčových konceptech Service Fabric a osvědčené postupy](https://mva.microsoft.com/en-us/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965)
+Další informace o [základní koncepty Service Fabric](service-fabric-technical-overview.md) a [osvědčené postupy](service-fabric-best-practices-overview.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821571"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169968"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -253,11 +253,11 @@ Vynucené tunelování znamená konfigurace směrování definované uživatelem
 >
 > Pokud je velmi riskantní používat skupiny zabezpečení sítě nebo uživatelem definované trasy k řízení provozu, můžete ignorovat tento oddíl.
 
-Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, musíte povolit provoz z Azure stavu a Správa služby k dosažení HDInsight. Musíte také povolit provoz mezi virtuálními počítači v rámci podsítě. Pokud chcete zjistit IP adresy, které musí být povoleno, postupujte následovně:
+Pokud používáte skupiny zabezpečení sítě, musí umožňovat provoz ze služeb Azure stavu a správa na HDInsight clusterů na portu 443. Musíte také povolit provoz mezi virtuálními počítači v rámci podsítě. Pokud chcete zjistit IP adresy, které musí být povoleno, postupujte následovně:
 
 1. Vždy musí povolit provoz z následujících IP adres:
 
-    | IP adresa | Povolený port | Směr |
+    | Zdrojová IP adresa | Cílový port | Směr |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | Příchozí |
     | 23.99.5.239 | 443 | Příchozí |
@@ -269,7 +269,7 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     > [!IMPORTANT]  
     > Pokud není uveden oblast Azure, které používáte, pak použijte pouze čtyři IP adresy z kroku 1.
 
-    | Země | Oblast | Povolené IP adresy | Povolený port | Směr |
+    | Země | Oblast | Povolené zdrojové IP adresy | Povolený cílový port | Směr |
     | ---- | ---- | ---- | ---- | ----- |
     | Asie | Východní Asie | 23.102.235.122</br>52.175.38.134 | 443 | Příchozí |
     | &nbsp; | Jihovýchodní Asie | 13.76.245.160</br>13.76.136.249 | 443 | Příchozí |
@@ -306,15 +306,13 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
 
 Další informace najdete v tématu [řízení síťového provozu](#networktraffic) oddílu.
 
+Odchozí pravidla skupiny zabezpečení sítě povolte provoz z libovolného zdroje uvnitř virtuální sítě k dosažení vyšší adresy jako "Desitnation IP adresy".
+
+Pokud používáte routes(UDRs) definovaný uživatelem, by měl určit trasu a povolit odchozí přenosy z virtuální sítě na výše uvedené IP adresy s dalším směrováním nastavena na "Internet".
+    
 ## <a id="hdinsight-ports"></a> Požadované porty
 
-Pokud máte v úmyslu používat **brány firewall** k zabezpečení virtuální sítě a přístup ke clusteru na konkrétních portech, by měly umožňovat provoz na portech potřebných pro váš scénář. Ve výchozím nastavení nemusíte na seznam povolených těchto portů:
-
-* 53
-* 443
-* 1433
-* 11000-11999
-* 14000-14999
+Pokud máte v úmyslu používat **brány firewall** a přístup ke clusteru ze mimo na konkrétních portech, bude pravděpodobně nutné pro povolení provozu na tyto porty potřebné pro váš scénář. Ve výchozím nastavení je nutné žádné speciální na seznam povolených portů tak dlouho, dokud k dosažení clusteru na portu 443 je povolený provoz správy azure, je popsáno v předchozí části.
 
 Seznam portů pro určité služby, najdete v článku [portů používaných služeb Apache Hadoop v HDInsight](hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 

@@ -1,10 +1,10 @@
 ---
-title: Praktické příručka k návrhu bezpečné zdravotní péče řešení v Azure | Microsoft Docs
-description: " Tento článek pomáhá pochopit, jak zlepšit zabezpečení vašich zdravotní péče řešení pomocí služby Azure a funkce, které nakonfigurujete. "
+title: Praktické vodítko k návrhu zdravotní péče řešení zabezpečení v Azure | Dokumentace Microsoftu
+description: " Tento článek pomáhá pochopit, jak zlepšit zabezpečení pro vaše řešení pro zdravotní péči s využitím služeb Azure a funkce, které nakonfigurujete. "
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 7e5b082d-dc9c-4d4f-b3f1-75edcdafbd8f
 ms.service: security
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e91a55f3fc5923545b6855a31514afb4a62bc361
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 060c176b97966816d421ddbe0d8017ad8558710a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540971"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113837"
 ---
-# <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktické příručka k návrhu bezpečné zdravotní péče řešení v Azure
-Startupy stavu odvětví, systémových integrátorech (si), nezávislí dodavatelé softwaru (ISV) a zdravotnická zvažování přesunu do Azure hledáte pokyny, které pomáhá je začlenit ovládacích prvků zabezpečení ke splnění svých povinností dodržování předpisů.
+# <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktické vodítko k návrhu zdravotní péče řešení zabezpečení v Azure
+Stav oboru Start-upů, systémových integrátorech (si), nezávislí výrobci softwaru (ISV) a zdravotnické organizace, zvažujete Přesun do Azure hledáte pokyny, které jim pomůže začlenit kontrolní mechanismy zabezpečení pro splnění závazků dodržování předpisů.
 
-[Praktické Průvodce pro navrhování zabezpečení zdravotnictví řešení v Microsoft Azure](https://aka.ms/azureindustrysecurity) vám pomůže pochopit, jak zlepšit zabezpečení pro vaše řešení pomocí služby Azure a funkce, které můžete nakonfigurovat podle svých požadavků.
-Obsah je rozdělené do tří hlavních částech:
+[Praktický Průvodce navrhováním zabezpečených zdravotní péče řešení v Microsoft Azure](https://aka.ms/azureindustrysecurity) vám pomůže pochopit, jak zlepšit zabezpečení pro svá řešení s využitím služeb Azure a funkce, které můžete nakonfigurovat na základě vašich požadavků.
+Obsah je rozdělené do tří hlavních částí:
 
-1. Aspekty pokyny pro používání cloudové technologie, včetně řízení rizik sdílené odpovědnosti, vytvoření informačního zabezpečení správy systému, odvětví principy a místními předpisy a zřízení standardní pracovní postupy.
-2. Zásady zabezpečení klíčů, které jsou obě zarovnán standardní správu zabezpečení Standardní informace, jako je například ISO 27001 a standardní vývojové procesy, jako je například společnosti Microsoft životního cyklu SDL (Security Development).
-3. Použití klíče zásady, které je případy použití podle demonstraci zarovnání z hlediska architekt řešení, kde je zarovnán požadavky pro řešení správy informace zabezpečení Standardní.
+1. Důležité informace o pokyny k používání cloudových technologií včetně řízení rizik, sdílených odpovědností, zřízení systému správy zabezpečení informací, porozumění oboru a místním předpisům a zavedení standardních pracovních postupů.
+2. Klíče bezpečnostní principy, které jsou zarovnána standardní správu zabezpečení Standardní informace, jako jsou ISO 27001, a standardní vývojové procesy, jako je například společnosti Microsoft Security Development Lifecycle (SDL).
+3. Použití základních principů obsažených na případy použití prokazováním zarovnání z pohledu architekt řešení, ve kterém je zarovnán požadavky pro řešení správy bezpečnosti informací standard.
 
-Věříme, že zjistíte, [A praktické Průvodce pro navrhování řešení zabezpečení zdravotnictví](https://aka.ms/azureindustrysecurity) užitečné a pokud máte jakékoli dotazy nebo návrhy, dejte nám vědět, protože komentář níže.
+Věříme, že zjistíte [praktický Průvodce navrhováním zabezpečených řešení pro zdravotní péči A](https://aka.ms/azureindustrysecurity) užitečné a pokud máte jakékoli dotazy nebo návrhy, dejte nám vědět přenechte komentář dole.

@@ -3,7 +3,7 @@ title: Vytvoření webové aplikace ASP.NET s mezipamětí Azure pro Redis | Dok
 description: V tomto rychlém startu se dozvíte, jak vytvořit webovou aplikaci ASP.NET s mezipamětí Azure pro Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d80a10bea58fdcd5b20e24f9f8ba633f2714d55c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 430f4215aed87754fccbdb1168f929fb295b9420
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822574"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111267"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
 

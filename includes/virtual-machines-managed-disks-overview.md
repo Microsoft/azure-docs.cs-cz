@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 403f1cee04da17086a55adfbaed28388afd24d29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 26268c892b0e900c410cd669454b8b6f02ee8886
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211821"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56101861"
 ---
 # <a name="azure-managed-disks-overview"></a>Přehled služby Azure Managed Disks
 
@@ -71,19 +71,19 @@ Tady jsou k dispozici pro spravovaný disk úrovně premium velikosti disků, ve
 
 | **Premium SSD spravované <br>typ disku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16384 giB (16 TB) | 32 767 giB (TB) |
+| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32 767 giB (TB) |
 
 Tady je že k dispozici pro SSD na úrovni standard velikost disku spravovaný disk, velikosti označený hvězdičkou jsou aktuálně ve verzi preview:
 
-| **SSD na úrovni Standard Managed <br>typ disku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
-|------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Velikost disku        | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16384 giB (16 TB) | 32 767 giB (TB) |
+| **SSD na úrovni Standard Managed <br>typ disku** | **E4** | **E6** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Velikost disku        | 32 GiB | 64 GiB | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32 767 giB (TB) |
 
 Tady je že k dispozici pro standardní HDD velikosti disků spravovaných disků, velikosti označený hvězdičkou jsou aktuálně ve verzi preview:
 
-| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
+| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16384 giB (16 TB) | 32 767 giB (TB) |
+| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32 767 giB (TB) |
 
 **Počet transakcí**: Můžete se účtuje počet transakcí, které provedete na standardní spravovaný disk.
 

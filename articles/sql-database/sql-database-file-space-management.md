@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database souboru místo správy | Dokumentace Microsoftu
-description: Tato stránka popisuje, jak spravovat místo souborů s využitím Azure SQL Database a obsahuje ukázky kódu pro zjištění, pokud je třeba zmenšit databázi také, jak k provádění zmenšit databázi operace.
+title: Databáze Azure SQL Database ve fondu a jeden soubor správu adresního prostoru | Dokumentace Microsoftu
+description: Tato stránka popisuje, jak spravovat místo na soubor s databázemi ve fondu a jeden ve službě Azure SQL Database a obsahuje ukázky kódu pro zjištění, pokud je třeba zmenšit jeden nebo databázi ve fondu a jak k provádění zmenšit databázi operace.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,21 +11,24 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: cf73708682a8434ffabaff101d6d6928671af4b6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/11/2019
+ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003716"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110145"
 ---
-# <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Spravovat souboru místo jednoho a ve fondu databází ve službě Azure SQL Database
 
-Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
+Tento článek popisuje různé druhy prostor úložiště pro databáze ve fondu a jeden v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
+
+> [!NOTE]
+> Tento článek se nevztahuje možnost nasazení spravované instance Azure SQL Database.
 
 ## <a name="overview"></a>Přehled
 
-Ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tento stav může nastat v případě, že se zvýší množství využitého prostoru a data se následně odstraní. Důvodem je, protože přidělené místo souboru neuvolní automaticky, když se odstraní data.
+S databázemi ve fondu a jeden ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tento stav může nastat v případě, že se zvýší množství využitého prostoru a data se následně odstraní. Důvodem je, protože přidělené místo souboru neuvolní automaticky, když se odstraní data.
 
 V následujících scénářích může být potřeba monitorovat využití prostoru souborů a zmenšení datových souborů:
 
@@ -47,7 +50,7 @@ Ale následující rozhraní API také měření velikost místa vyhrazeného pr
 
 ### <a name="shrinking-data-files"></a>Probíhá zmenšování souborů dat
 
-Služba SQL DB automaticky nezmenší datové soubory uvolnění nevyužívaného místa přiděleného kvůli možnému dopadu na výkon databáze.  Zákazníci však může zmenšit datových souborů prostřednictvím samoobslužné v době podle vlastního uvážení pomocí následujících kroků popsaných v [Reclaim nevyužité přidělené místo na](#reclaim-unused-allocated-space). 
+Služba SQL Database automaticky nezmenší datové soubory uvolnění nevyužívaného místa přiděleného kvůli možnému dopadu na výkon databáze.  Zákazníci však může zmenšit datových souborů prostřednictvím samoobslužné v době podle vlastního uvážení pomocí následujících kroků popsaných v [reclaim nevyužité přidělené místo na](#reclaim-unused-allocated-space).
 
 > [!NOTE]
 > Na rozdíl od datových souborů služba SQL Database automaticky zmenší soubory protokolu od této operace nemá vliv na výkon databáze. 
@@ -68,9 +71,9 @@ Následující diagram znázorňuje vztah mezi různými typy prostor úložišt
 
 ![úložiště místo typů a vztahů](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-database-for-storage-space-information"></a>Dotaz na databázi pro informace o úložišti
+## <a name="query-a-single-database-for-storage-space-information"></a>Dotazování izolované databáze pro informace o úložišti
 
-Následující dotazy můžete použít k určení množství prostoru úložiště pro databázi.  
+Následující dotazy můžete použít k určení množství prostoru úložiště pro izolovanou databázi.  
 
 ### <a name="database-data-space-used"></a>Použít místo data v databázi
 
@@ -144,7 +147,7 @@ Upravte následující skript Powershellu, který vrátí tabulku se seznamem m�
 
 Výsledky dotazu k určení místa pro každou databázi ve fondu je možné přidat společně k určení celkové místo přidělené pro elastický fond. Přidělené místo elastický fond může být maximálně maximální velikosti elastického fondu.  
 
-Skript prostředí PowerShell vyžaduje modul Powershellu pro službu SQL Server – viz [modul prostředí PowerShell stáhněte](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module?view=sql-server-2017) k instalaci.
+Skript prostředí PowerShell vyžaduje modul Powershellu pro službu SQL Server – viz [modul prostředí PowerShell stáhněte](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) k instalaci.
 
 ```powershell
 # Resource group name
@@ -225,7 +228,7 @@ Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](https://d
 
 ### <a name="auto-shrink"></a>Auto-shrink
 
-Automatické zmenšení Alternativně je možné povolit pro databázi.  Zmenšení automaticky sníží složitost správy souborů a je menší dopad na výkon databází než SHRINKDATABASE nebo SHRINKFILE.  Zmenšení automaticky může být zvláště užitečné pro Správa elastických fondů pomocí velkého počtu databází.  Automatické zmenšení však může být v uvolní místo souborů než SHRINKDATABASE a SHRINKFILE méně účinné.
+Automatické zmenšení Alternativně je možné povolit pro databázi.  Zmenšení automaticky sníží složitost správy souborů a je menší dopad na výkon databází než `SHRINKDATABASE` nebo `SHRINKFILE`.  Zmenšení automaticky může být zvláště užitečné pro Správa elastických fondů pomocí velkého počtu databází.  Však může být zmenšení automaticky uvolní místo souborů než méně účinný `SHRINKDATABASE` a `SHRINKFILE`.
 Pokud chcete povolit automatické zmenšení, upravte název databáze v následujícím příkazu.
 
 

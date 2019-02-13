@@ -4,7 +4,7 @@ description: Průvodce vám pomůže vyvíjet líp zabezpečených aplikací v c
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2018
 ms.author: terrylan
-ms.openlocfilehash: 04e4085715993560fee5b73cf4ae546cb58e2e5e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 4c4c2cc3356a10eacbb5460fae27a0a8a66ddd35
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853213"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109091"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 ## <a name="abstract"></a>Abstraktní

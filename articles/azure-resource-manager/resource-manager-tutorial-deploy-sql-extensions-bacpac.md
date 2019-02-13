@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 877fb6807cb8a2aafe634b53630eaa30c6d7697a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 78b37c467e40a9386c7501f1abedbf0460900668
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495526"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118339"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru
 
@@ -136,6 +136,8 @@ Přidejte dva další prostředky do šablony.
     * **administratorLoginPassword**: Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Místo toho použijte následující skript PowerShellu pro nasazení:
 

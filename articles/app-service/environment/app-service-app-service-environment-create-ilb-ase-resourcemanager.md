@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156676"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107374"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
 
 > [!NOTE] 
 > Tento článek je o App Service Environment v1. Existuje novější verze služby App Service Environment, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](intro.md).
 >
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 Služby App Service Environment lze vytvořit pomocí interní adresy virtuální sítě namísto veřejných virtuálních IP adres.  Tato interní adresa je poskytovaný Azure komponenta s názvem interní nástroj pro vyrovnávání zatížení (ILB).  Lze vytvořit prostředí ILB ASE pomocí webu Azure portal.  Je také možné vytvářet pomocí automatizace prostřednictvím šablon Azure Resource Manageru.  Tento článek vás provede kroky a syntaxe, které jsou potřebné k vytvoření ILB ASE pomocí šablon Azure Resource Manageru.
@@ -43,7 +45,7 @@ Jsou k dispozici na Githubu příklad šablony Azure Resource Manageru a její p
 Většina parametrů v *azuredeploy.parameters.json* souboru jsou společné pro vytváření služeb ase s ILB, jak služby ase vázán na veřejných virtuálních IP adres.  Seznam níže volá výstupní parametry zejména nebo které jsou jedinečné, při vytváření prostředí ILB ASE:
 
 * *internalLoadBalancingMode*:  Ve většině případů sadě tuto hodnotu na 3, což znamená, že přenosy HTTP/HTTPS na portech 80/443 a ovládací prvek/datový kanál, který porty naslouchali službou FTP služby ase, bude vázán k ILB přidělenou adresu interní virtuální síti.  Pokud místo toho tato vlastnost nastavena na 2, pak pouze služba FTP související s porty (ovládací prvek a data kanály) bude vázán k adresu ILB, zatímco zůstane na veřejných virtuálních IP adres se přenosy HTTP/HTTPS.
-* *příponu DNS*:  Tento parametr definuje výchozí kořenové domény, který se přiřadí služby ASE.  Ve veřejné variantu služby Azure App Service, výchozí kořenové domény pro všechny webové aplikace je *azurewebsites.net*.  Ale protože ILB ASE je interní virtuální síti zákazníka, nemá smysl použít veřejné služby výchozí kořenovou doménu.  Místo toho službu ASE by měl mít výchozí kořenové domény, který dává smysl pro použití v rámci interní virtuální síti vaší společnosti.  Hypotetický společnosti Contoso Corporation může například použít výchozí kořenové domény *interní contoso.com* pro aplikace, které jsou určeny pouze byly přeložitelný a přístupná v rámci virtuální sítě společnosti Contoso. 
+* *dnsSuffix*:  Tento parametr definuje výchozí kořenové domény, který se přiřadí služby ASE.  Ve veřejné variantu služby Azure App Service, výchozí kořenové domény pro všechny webové aplikace je *azurewebsites.net*.  Ale protože ILB ASE je interní virtuální síti zákazníka, nemá smysl použít veřejné služby výchozí kořenovou doménu.  Místo toho službu ASE by měl mít výchozí kořenové domény, který dává smysl pro použití v rámci interní virtuální síti vaší společnosti.  Hypotetický společnosti Contoso Corporation může například použít výchozí kořenové domény *interní contoso.com* pro aplikace, které jsou určeny pouze byly přeložitelný a přístupná v rámci virtuální sítě společnosti Contoso. 
 * *ipSslAddressCount*:  Tento parametr je automaticky nastavena na výchozí hodnotu 0 v *azuredeploy.json* protože služeb ase s ILB mít pouze jednu adresu ILB.  Nejsou žádné explicitní adresy IP SSL pro službu ASE a proto fondu adres IP SSL pro službu ASE musí být nastavena na hodnotu nula, jinak dojde k chybě zřizování. 
 
 Jakmile *azuredeploy.parameters.json* souboru bylo vyplněno pro službu ASE, služba ASE s ILB mohou být vytvořeny pomocí následujícího fragmentu kódu Powershellu.  Změňte soubor cesty tak, aby odpovídaly, kde jsou umístěny soubory šablon Azure Resource Manageru na vašem počítači.  Nezapomeňte taky zadat vlastní hodnoty pro název nasazení Azure Resource Manageru a název skupiny prostředků.
@@ -51,7 +53,7 @@ Jakmile *azuredeploy.parameters.json* souboru bylo vyplněno pro službu ASE, sl
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Po Azure Resource Manageru šablony se odešle, že bude trvat několik hodin služba ASE s ILB, který se má vytvořit.  Po dokončení vytváření služba ASE s ILB se zobrazí v seznamu prostředí App Service pro předplatné, které aktivuje nasazení portálu uživatelského prostředí.
 
@@ -88,8 +90,8 @@ Parametry v *azuredeploy.parameters.json* souboru jsou uvedeny níže:
 * *appServiceEnvironmentName*:  Název služba ASE s ILB, která se právě nastavuje.
 * *existingAseLocation*:  Textový řetězec obsahující oblast Azure, ve kterém byla nasazena služba ASE s ILB.  Příklad:  "Střední část jihu USA".
 * *pfxBlobString*:  Based64 kódovaný řetězcová reprezentace souboru .pfx.  Pomocí fragmentu kódu je uvedeno výše, by řetězec obsažený v "exportedcert.pfx.b64" zkopírujte a vložte ji jako hodnotu *pfxBlobString* atribut.
-* *Heslo*:  Heslo používané k zabezpečení souboru .pfx.
-* *Miniatura certifikátu*:  Kryptografický otisk certifikátu  Pokud se načetlo tuto hodnotu z prostředí Powershell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu jako-je.  Při kopírování hodnoty z dialogového okna certifikátu Windows, ale nezapomeňte odstranit nadbytečné mezery.  *CertificateThumbprint* by měl vypadat nějak takto:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *password*:  Heslo používané k zabezpečení souboru .pfx.
+* *certificateThumbprint*:  Kryptografický otisk certifikátu  Pokud se načetlo tuto hodnotu z prostředí Powershell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu jako-je.  Při kopírování hodnoty z dialogového okna certifikátu Windows, ale nezapomeňte odstranit nadbytečné mezery.  *CertificateThumbprint* by měl vypadat nějak takto:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
 * *název certifikátu*:  Vlastní výběr identifikátor popisný řetězec použít na identitu certifikátu.  Název se používá jako součást jedinečný identifikátor pro Azure Resource Manageru *Microsoft.Web/certificates* entita, která představuje certifikát SSL.  Název **musí** končit následující příponu: \_yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá portálem jako indikátor, že certifikát se používá k zabezpečení služby ASE s ILB povolena.
 
 Příklad zkrácený *azuredeploy.parameters.json* je uveden níže:
@@ -124,7 +126,7 @@ Jakmile *azuredeploy.parameters.json* souboru bylo vyplněno, výchozího certif
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Po Azure Resource Manageru šablony se odešle, že bude trvat přibližně 40 minut za službu ASE front-endu na použití změny.  Například s výchozí velikost služby ASE pomocí dvou front endů, šablona bude trvat přibližně jednu hodinu a dvacet minut dokončení.  Je spuštěn v šabloně služby ASE nebude možné škálovat.  
 

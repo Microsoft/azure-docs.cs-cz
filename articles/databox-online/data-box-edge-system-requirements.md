@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 60c4b22fb34a66a0ff68db26030be0e0ea3c0066
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470237"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113766"
 ---
 # <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge požadavky na systém (preview)
 
@@ -47,13 +47,15 @@ Požadavky na systém pro okraji pole Data patří:
 
 [!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-## <a name="port-configuration-for-data-box-edge"></a>Konfigurace portů pro Data Box Edge
+## <a name="networking-port-requirements"></a>Požadavky na síťové porty
+
+### <a name="port-requirements-for-data-box-edge"></a>Požadavky na porty pro Data Box Edge
 
 Následující tabulka uvádí porty, které je potřeba otevřít v bráně firewall povolit pro protokol SMB, cloud nebo přenos pro správu. V této tabulce *v* nebo *příchozí* odkazuje na směru, které mají přístup příchozí požadavky klienta na vaše zařízení. *Navýšení kapacity* nebo *odchozí* odkazuje na směru, ve kterém zařízení Data Box Edge odesílá data externě, nad rámec nasazení, například odchozí k Internetu.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
-## <a name="port-configuration-for-iot-edge"></a>Konfigurace portů pro IoT Edge
+### <a name="port-requirements-for-iot-edge"></a>Požadavky na porty pro IoT Edge
 
 Azure IoT Edge umožňuje odchozí komunikaci z místní hraniční zařízení do cloudu Azure pomocí podporovaných protokolů služby IoT Hub. Příchozí komunikace je pouze požadovaná u konkrétních scénářů, kde je Azure IoT Hub potřeba doručit bez vyžádání zprávy na zařízení Azure IoT Edge (například v cloudu pro zasílání zpráv zařízení).
 
@@ -80,25 +82,14 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, založené 
 
 ### <a name="url-patterns-for-gateway-feature"></a>Vzory adres URL pro funkce brány
 
-|    Vzor adresy URL                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    Komponenta nebo funkce                                                                           |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Služba Azure Data Box Edge<br>Azure Service Bus<br>Ověřovací služba                           |
-|    http://\*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                                |    Aktivace zařízení                                                                                    |
-|    http://crl.microsoft.com/pki/\*<br>http://www.microsoft.com/pki/\*                                                                                                                                                                                                                                                                                                                                                                                                  |    Odvolání certifikátu                                                                               |
-|    https://\*.core.windows.net/\*<br>https://\*.data.microsoft.com<br>http://\*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Účty úložiště Azure a monitorování                                                                |
-|    http://windowsupdate.microsoft.com<br>http://\*.windowsupdate.microsoft.com<br>https://\*.windowsupdate.microsoft.com<br>http://\*.update.microsoft.com<br>https://\*.update.microsoft.com<br>http://\*.windowsupdate.com<br>http://download.microsoft.com<br>http://\*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://\*.ws.microsoft.com<br>https://\*.ws.microsoft.com<br>http://\*.mp.microsoft.com |    Servery Microsoft Update                                                                             |
-|    http://\*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                                          |    Akamai CDN                                                                                           |
-|    https://\*.partners.extranet.microsoft.com/\*                                                                                                                                                                                                                                                                                                                                                                                                                    |    Balíček pro podporu                                                                                      |
-|    http://\*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                                     |    Telemetrické službě ve Windows, najdete v článku aktualizace pro uživatelské prostředí a telemetrická data diagnostiky      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                                                                                         |
-
+[!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
 ### <a name="url-patterns-for-compute-feature"></a>Vzory adres URL pro výpočetní funkce
 
 | Vzor adresy URL                      | Komponenta nebo funkce                     |   |
 |----------------------------------|---------------------------------------------|---|
 | `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | Microsoft registru kontejneru (povinné)               |   |
-| https://\*.azurecr.io                     | Registry kontejnerů osobní a 3. stran (volitelné) |   |
+| https://\*.azurecr.io                     | Registry kontejnerů osobní a třetí strany (volitelné) |   |
 | https://\*.azure-devices.net              | Přístup k službě IoT Hub (povinné)                             |   |
 
 ## <a name="internet-bandwidth"></a>Šířka pásma sítě Internet
@@ -107,4 +98,4 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, založené 
 
 ## <a name="next-step"></a>Další krok
 
-* [Nasazení Azure Data Box hranici](data-box-Edge-deploy-prep.md)
+- [Nasazení Azure Data Box hranici](data-box-Edge-deploy-prep.md)

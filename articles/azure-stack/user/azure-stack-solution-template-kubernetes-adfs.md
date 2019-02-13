@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a197a366d70958859eed47a9d66606adf80344e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891268"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115398"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Nasazení do služby Azure Stack pomocí Active Directory Federated Services Kubernetes
 
@@ -43,13 +43,19 @@ Abyste mohli začít, ujistěte se, že máte správná oprávnění a že služ
 
     Cluster se nedá nasadit do služby Azure Stack **správce** předplatného. Je nutné použít **uživatele** předplatného. 
 
-1. Pokud jste Kubernetes Cluster v marketplace, obraťte se na správce služby Azure Stack.
+1. Je třeba službu Key Vault ve vašem předplatném Azure Stack.
+
+1. Budete potřebovat Kubernetes Cluster v marketplace. 
+
+Pokud vám chybí službu Key Vault a položky marketplace clusteru Kubernetes, obraťte se na správce služby Azure Stack.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení instančního objektu služby, při použití služby AD FS jako řešení identit. Služby, které poskytuje vaše aplikace přístup k prostředkům Azure Stack.
 
-1. Správce služby Azure Stack vám poskytne certifikátu a informace pro instanční objekt. Tyto informace by měl vypadat:
+1. Správce služby Azure Stack vám poskytne certifikátu a informace pro instanční objekt.
+
+    - Informací o instančním objektu služby by měl vypadat:
 
     ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -60,9 +66,11 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
+    - Váš certifikát bude soubor s příponou `.pfx`. V trezoru klíčů se uloží váš certifikát jako tajný kód.
+
 2. Přiřadíte nový instanční objekt služby roli Přispěvatel do vašeho předplatného. Pokyny najdete v tématu [přiřazení role](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
-3. Vytvoření trezoru klíčů se uloží váš certifikát pro nasazení.
+3. Vytvoření trezoru klíčů se uloží váš certifikát pro nasazení. Pomocí těchto skriptů Powershellu, a ne pomocí portálu.
 
     - Budete potřebovat následující údaje:
 
@@ -70,12 +78,12 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
         | ---   | ---         |
         | Koncový bod Azure Resource Manageru | Microsoft Azure Resource Manageru je systém správy, který vám umožňuje správcům nasadit, spravovat a monitorovat prostředky Azure. Azure Resource Manageru dokáže zpracovat tyto úkoly, jako se skupinou, nikoli samostatně, v rámci jedné operace.<br>Koncový bod v Azure Stack Development Kit (ASDK) je: `https://management.local.azurestack.external/`<br>Koncový bod v integrovaných systémech je: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | ID vašeho předplatného | [ID předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |
-        | Uživatelské jméno | Uživatelské jméno. |
+        | Uživatelské jméno | Použít jenom svoje uživatelské jméno spíše než váš název domény a uživatelské jméno, například `username` místo `azurestack\username`. |
         | Název skupiny prostředků  | Název nové skupiny prostředků nebo vyberte existující skupinu prostředků. Název prostředku musí být alfanumerické znaky a malá písmena. |
         | Název trezoru klíčů | Název trezoru.<br> Vzor regulárního výrazu: `^[a-zA-Z0-9-]{3,24}$` |
         | Umístění skupiny prostředků | Umístění skupiny prostředků. Toto je oblast, kterou jste vybrali pro instalaci sady Azure Stack. |
 
-    - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
+    - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními a [připojit ke službě Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
 
     ```PowerShell  
         $armEndpoint="<Azure Resource Manager Endpoint>"
@@ -103,7 +111,7 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
         Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
     ```
 
-4. Nahrajte certifikát do služby Key Vault.
+4. Nahrajte certifikát do služby key vault.
 
     - Budete potřebovat následující údaje:
 
@@ -111,12 +119,12 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
         | ---   | ---         |
         | Cesta k certifikátu | Plně kvalifikovaný název domény nebo cesta k certifikátu. |
         | Heslo certifikátu | Heslo certifikátu. |
-        | Název tajného kódu | Tajný kód vytvořený v předchozím kroku. |
-        | Název trezoru klíčů | Název trezoru klíčů, ale v předchozím kroku. |
+        | Název tajného kódu | Název tajného kódu slouží jako odkaz na certifikát uložený v trezoru. |
+        | Název trezoru klíčů | Název trezoru klíčů, které jsou vytvořené v předchozím kroku. |
         | Koncový bod Azure Resource Manageru | Koncový bod v Azure Stack Development Kit (ASDK) je: `https://management.local.azurestack.external/`<br>Koncový bod v integrovaných systémech je: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | ID vašeho předplatného | [ID předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |
 
-    - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
+    - Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními a [připojit ke službě Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Spusťte následující skript s parametry, aktualizovat, aby vaše hodnoty:
 
     ```PowerShell  
         
@@ -124,7 +132,7 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
     $tempPFXFilePath = "<certificate path>"
     $password = "<certificate password>"
     $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<keyvault name>"
+    $keyVaultName = "<key vault name>"
     $armEndpoint="<Azure Resource Manager Endpoint>"
     $subscriptionId="<Your Subscription ID>"
     # Login Azure Stack Environment
@@ -194,11 +202,11 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
 
 1. Zadejte **ID klienta instančního objektu** slouží od poskytovatele cloudu Kubernetes Azure. ID klienta označeny jako ID aplikace, když správce služby Azure Stack vytvořit instanční objekt služby.
 
-1. Zadejte **skupina prostředků trezoru klíčů**. 
+1. Zadejte **skupina prostředků trezoru klíčů** , který zdrojů služby key vault, která obsahuje váš certifikát.
 
-1. Zadejte **název služby Key Vault**.
+1. Zadejte **název služby Key Vault** název, který obsahuje váš certifikát jako tajný kód trezoru klíčů. 
 
-1. Zadejte **tajného kódu trezoru klíčů**.
+1. Zadejte **tajného kódu trezoru klíčů**. Název tajného kódu odkazuje váš certifikát.
 
 1. Zadejte **verze zprostředkovatele služby Kubernetes Azure cloudu**. Toto je verze zprostředkovatele služby Kubernetes Azure. Azure Stack uvolní vlastního sestavení Kubernetes pro každou verzi služby Azure Stack.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 70f53ed06daad8adf10ef5a88f0672f86d6a8b48
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5722db5be656641301299956172ee19249be7895
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004124"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106397"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](../platform/alerts-overview.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
@@ -99,14 +99,28 @@ Představte si třeba situaci, kde chcete výstrahu Pokud jakýkoli počítač p
 - **Dotaz:** Perf | kde ObjectName == "Procesor pro" a hodnota CounterName == "čas procesoru v %" | summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 5m), počítač<br>
 - **Časové období:** 30 minut<br>
 - **Četnosti upozornění:** pěti minut<br>
-- **Agregovaná hodnota:** Větší než 90<br>
+- **Alert Logic - podmínku a prahovou hodnotu:** Větší než 90<br>
+- **Pole skupiny (agregaci na):** Počítač
 - **Aktivovat upozornění na základě:** Celkový počet poruší větší než 2<br>
 
-Dotaz by vytvořit průměrnou hodnotu pro každý počítač v intervalech 5 minut.  Tento dotaz se spustí každých 5 minut, než se data shromážděná za předchozí 30 minut.  Ukázková data se zobrazí pod pro tři počítače.
+Dotaz by vytvořit průměrnou hodnotu pro každý počítač v intervalech 5 minut.  Tento dotaz se spustí každých 5 minut, než se data shromážděná za předchozí 30 minut. Protože je pole Skupina (agregaci v), zvolené úložiště se sloupcovou strukturou "Computer" - pro různé hodnoty "Computer" je rozdělit AggregatedValue a průměrné využití procesoru pro každý počítač, je určen pro bin dobu 5 minut.  (Řekněme) tři počítače, bude výsledkem vzorku dotazu pro níže.
+
+
+|TimeGenerated [UTC] |Počítač  |AggregatedValue  |
+|---------|---------|---------|
+|20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
+|20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
+|20xx-xx-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
+|...     |   ...      |    ...     |
+|20xx-xx-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
+|20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
+|20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
+
+Pokud výsledek dotazu vykreslit, se zobrazí jako.
 
 ![Ukázkové výsledky dotazu](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-V tomto příkladu by se vytvořily samostatné výstrahy pro srv02 a srv03 vzhledem k tomu, že dojde k porušení zabezpečení 90 % prahové hodnoty třikrát za časové období.  Pokud **aktivovat upozornění na základě:** byly změněny na **za sebou** výstraha by vytvořeny pouze pro srv03, od nichž nebyla dodržena prahová hodnota pro tři po sobě jdoucích vzorků.
+V tomto příkladu vidíme v přihrádkách 5 minut pro všechny tři počítače - průměrné využití procesoru jako vypočítanou pro 5 minut. Prahová hodnota 90 porušovány podle srv01 pouze jednou v 1:25 bin. Ve srovnání s srv02 překročí 90 prahovou hodnotu na 1:10, 1:15 a 1:25 přihrádky; zatímco srv03 překročí 90 prahovou hodnotu na 1:10, 1:15, 1:20 a 1:30. Protože je nakonfigurované upozornění tak aktivační událost vycházející celkový počet porušení jsou větší než dvě, vidíme, že srv02 a srv03 pouze splňují kritéria. Samostatné výstrahy proto by se vytvořily pro srv02 a srv03 vzhledem k tomu, u nichž nebyla dodržena 90 % prahové hodnoty dvakrát napříč více času přihrádky.  Pokud *aktivovat upozornění na základě:* parametr místo nakonfigurované pro *průběžné porušení* možnost, pak by se aktivuje výstrahu **pouze** pro srv03, protože to u nichž nebyla dodržena Prahová hodnota pro tři po sobě jdoucích přihrádkách z 1:10 1:20. A **není** pro srv02, protože u nichž nebyla dodržena prahová hodnota pro dva přihrádky po sobě jdoucích z 1:10 do 1:15.
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Hledání pravidel upozornění protokolů – stav a jeho spuštění
 

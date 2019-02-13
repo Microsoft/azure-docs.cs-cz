@@ -3,7 +3,7 @@ title: Zprostředkovatel stavu relací ASP.NET mezipaměti | Dokumentace Microso
 description: Zjistěte, jak díky ukládání stavu relací ASP.NET pro Redis pomocí Azure Cache
 services: azure-cache-for-redis
 documentationcenter: na
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: tysonn
 ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/01/2017
-ms.author: wesmc
-ms.openlocfilehash: a7f3e23cd74baa2e1fdef178be8c5b213a3905ef
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 09be5cc75d72a47071f7e3256fd3354a5041993e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105283"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117710"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Zprostředkovatel stavu relací ASP.NET pro mezipaměť Azure redis Cache
 Mezipaměť Azure pro Redis poskytuje zprostředkovatel stavu relací, které vám umožní ukládat vaše relace stavu v paměti s mezipamětí Azure Redis místo databáze systému SQL Server. Použití ukládání do mezipaměti zprostředkovatel stavu relací, nejprve nakonfigurovat mezipaměť a potom konfiguraci aplikace ASP.NET pro použití ukládání do mezipaměti Azure pro balíček NuGet stavu relace. Redis cache.

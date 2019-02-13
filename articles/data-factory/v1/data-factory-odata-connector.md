@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb2d3bc128a3508f85ac349242d9a33f2a88424e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 73cba950a159bd1f70fc231f0923e55332af0199
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022746"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108802"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Přesun dat z OData zdroji pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ ms.locfileid: "54022746"
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat ze zdroje OData. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
 
-Kopírovat data ze zdroje OData k jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Data factory aktuálně podporuje pouze přesouvá data z zdroje OData do jiných úložišť dat, ale ne pro přesun dat z jiných datových úložišť ke zdroji OData. 
+Kopírovat data ze zdroje OData k jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Data factory aktuálně podporuje pouze přesouvá data z zdroje OData do jiných úložišť dat, ale ne pro přesun dat z jiných datových úložišť ke zdroji OData.
 
 ## <a name="supported-versions-and-authentication-types"></a>Podporované verze a typy ověřování
 Tento konektor OData podporu protokolu OData verze 3.0 a 4.0 a můžete zkopírovat data z obou cloudových OData a místním zdrojům OData. K tomu potřeba nainstalovat bránu správy dat. Zobrazit [přesun dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) , kde najdete podrobnosti o Data Management Gateway.
@@ -46,15 +46,15 @@ Vytvoření kanálu s aktivitou kopírování, která přesunuje data ze zdroje 
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
-Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky: 
+Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
 1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory.
-2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. 
-3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
+2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování.
+3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat ze zdroje OData najdete v části [příklad JSON: Kopírování dat ze zdroje OData do objektů Blob v Azure](#json-example-copy-data-from-odata-source-to-azure-blob) části tohoto článku. 
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat ze zdroje OData najdete v části [příklad JSON: Kopírování dat ze zdroje OData do objektů Blob v Azure](#json-example-copy-data-from-odata-source-to-azure-blob) části tohoto článku.
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní zdroj OData:
 
@@ -69,7 +69,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **Authorize** tlačítko Průvodce kopírováním služby Data Factory nebo editoru a zadejte svoje přihlašovací údaje, pak hodnota této vlastnosti bude možné automaticky vygenerovat. |Ano (pouze v případě, že používáte ověřování OAuth) |
-| Název brány |Název brány, který služba Data Factory měla použít pro připojení ke službě OData s místními. Zadejte, pokud se kopírování dat ze zdroje v místním prostředí OData. |Ne |
+| gatewayName |Název brány, který služba Data Factory měla použít pro připojení ke službě OData s místními. Zadejte, pokud se kopírování dat ze zdroje v místním prostředí OData. |Ne |
 
 ### <a name="using-basic-authentication"></a>Použití základního ověřování
 ```json
@@ -78,7 +78,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
@@ -93,7 +93,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
         "typeProperties":
@@ -112,7 +112,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "<endpoint of on-premises OData source e.g. Dynamics CRM>",
             "authenticationType": "Windows",
@@ -159,7 +159,7 @@ Pokud je zdroj typu **RelationalSource** (která zahrnuje OData) v části typeP
 
 | Vlastnost | Popis | Příklad: | Požaduje se |
 | --- | --- | --- | --- |
-| query |Použijte vlastní dotaz číst data. |"? $select = název, popis a $top = 5" |Ne |
+| query |Použijte vlastní dotaz číst data. |"?$select=Name, Description&$top=5" |Ne |
 
 ## <a name="type-mapping-for-odata"></a>Mapování typu pro protokol OData
 Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku, aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typy s následující dvoukrokový přístup.
@@ -171,20 +171,20 @@ Při přesunu dat z protokolu OData, se používají následující mapování z
 
 | Typ dat OData | Typ formátu .NET |
 | --- | --- |
-| Edm.Binary |Byte] |
-| Edm.Boolean |BOOL |
-| Edm.Byte |Byte] |
+| Edm.Binary |Byte[] |
+| Edm.Boolean |Bool |
+| Edm.Byte |Byte[] |
 | Edm.DateTime |DateTime |
-| Edm.Decimal |Desítkově |
+| Edm.Decimal |Decimal |
 | Edm.Double |Double |
-| Edm.Single |Jednoduchá |
+| Edm.Single |Single |
 | Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
-| Edm.Int32 |Datový typ Int32 |
+| Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |Řetězec |
-| Edm.Time |Časový interval |
+| Edm.String |String |
+| Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
@@ -206,15 +206,15 @@ Ukázce kopíruje data z dotazování proti zdroji OData do objektu blob Azure k
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
-            }
         }
+    }
 }
 ```
 
@@ -222,13 +222,13 @@ Ukázce kopíruje data z dotazování proti zdroji OData do objektu blob Azure k
 
 ```json
 {
-        "name": "AzureStorageLinkedService",
+    "name": "AzureStorageLinkedService",
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
-        }
+    }
 }
 ```
 
@@ -244,7 +244,7 @@ Nastavení "externí": "PRAVDA" informuje služby Data Factory, že datová sada
         "type": "ODataResource",
         "typeProperties":
         {
-                "path": "Products"
+            "path": "Products"
         },
         "linkedServiceName": "ODataLinkedService",
         "structure": [],
@@ -256,7 +256,7 @@ Nastavení "externí": "PRAVDA" informuje služby Data Factory, že datová sada
         "policy": {
             "retryInterval": "00:01:00",
             "retryTimeout": "00:10:00",
-            "maximumRetry": 3                
+            "maximumRetry": 3
         }
     }
 }
@@ -324,7 +324,6 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 }
 ```
 
-
 **Aktivita kopírování v kanálu s OData zdroje a jímky objektu Blob:**
 
 Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **RelationalSource** a **jímky** je typ nastaven na **BlobSink**. Zadaná pro dotaz SQL **dotazu** vlastnost vybere nejnovější data (nejnovější) z zdroj OData.
@@ -376,7 +375,6 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 ```
 
 Určení **dotazu** definice v kanálu je volitelné. **URL** je, že služba Data Factory používá k načtení dat: Adresa URL zadaná v propojené službě (povinné) + cestě zadané v datové sadě (volitelné) + dotazu v kanálu (volitelné).
-
 
 ### <a name="type-mapping-for-odata"></a>Mapování typu pro protokol OData
 Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku, aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typy s přístupem následující krok 2:

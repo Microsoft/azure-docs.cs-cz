@@ -4,7 +4,7 @@ description: Zjistěte, jak používat funkce identity a přístupu v Azure Secu
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 01c8f864d25a35d42abcd624e31728f4fee0d80c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012067"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105548"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
@@ -118,7 +118,7 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 |Předplatné|20|Z předplatného odebrat zastaralé účty s oprávněními vlastníka|Odeberte zastaralé účty s oprávněními vlastníka z vašich předplatných.|
 |Předplatné|5|Odeberte zastaralé účty z předplatného|Odeberte zastaralé účty z vašich předplatných chcete povolit přístup pouze aktuálního uživatele. |
 |Předplatné|5|Určení více než jednoho vlastníka předplatného|Pokud chcete mít redundance přístupu správce určete více než jednoho vlastníka předplatného.|
-|Předplatné|5|Určit vlastníky až 3 v rámci předplatného|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
+|Předplatné|5|Určete v předplatném nanejvýš 3 vlastníky.|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
 |Trezor klíčů|5|Povolení diagnostických protokolů v Key Vault|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
 |Předplatné|15|Z předplatného odebrat externí účty s oprávněním pro čtení|Z předplatného odeberte externí účty s oprávněními pro čtení, aby nedocházelo k nemonitorovanému přístupu.|
 |Předplatné|1|Poskytnutí podrobností kontaktů zabezpečení|Zadejte kontaktní informace o zabezpečení pro každé z vašich předplatných. Kontaktní údaje je e-mailovou adresu a telefonní číslo. Informace, používá se vás kontaktovat, pokud náš tým zabezpečení zjistí ohrožení vašich prostředků|

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39a3164c27fa30250fe08e864db889eac844f646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c27be7da2aceea8581fd4a5baef96103faa0c1d4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172999"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107306"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Webové přihlášení s OpenID Connect
 OpenID Connect je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele k webovým aplikacím. Pomocí Azure Active Directory B2C (Azure AD B2C) implementaci OpenID Connect, externí pomocí registrace, přihlašování a prostředí pro další správu identit ve vašich webových aplikacích do služby Azure Active Directory (Azure AD). Tato příručka ukazuje, jak postupovat způsobem nezávislým na jazyku. Popisuje jak odesílat a přijímat zprávy HTTP bez použití našich knihoven open source.
@@ -27,7 +27,7 @@ Vzhledem k tomu, že rozšiřuje OAuth 2.0, také umožňuje aplikacím bezpečn
 Azure AD B2C rozšiřuje standardní protokol OpenID Connect lepší než jednoduché ověřování a autorizace. Zavádí [parametr toku uživatele](active-directory-b2c-reference-policies.md), což vám umožní přidat uživatelské prostředí – například pomocí OpenID Connect registrace, přihlašování a správy profilů – do vaší aplikace. Tady jsme ukazují, jak každá z těchto možností implementace ve vašich webových aplikacích pomocí OpenID Connect a uživatelské toky. Vám také ukážeme, jak získat přístupové tokeny pro přístup k webovým rozhraním API.
 
 Příklad HTTP požadavky v další části využívat naše ukázka adresář B2C, fabrikamb2c.onmicrosoft.com, jakož i naší ukázkovou aplikací https://aadb2cplayground.azurewebsites.neta toky uživatelů. Můžete zdarma vyzkoušet požadavky sami a použít tyto hodnoty, nebo je můžete nahradit vlastními.
-Zjistěte, jak [získat vlastní toky tenanta, aplikace a uživatele B2C](#use-your-own-b2c-directory).
+Zjistěte, jak [získat vlastní toky tenanta, aplikace a uživatele B2C](#use-your-own-b2c-tenant).
 
 ## <a name="send-authentication-requests"></a>Odesílat požadavky na ověřování
 Pokud vaše webová aplikace potřebuje ověřit uživatele a spustit tok uživatele, můžete nasměrovat uživatele `/authorize` koncového bodu. Toto je interaktivní spotřebovanou část toku, kdy uživatel provede akci, v závislosti na toku uživatele.

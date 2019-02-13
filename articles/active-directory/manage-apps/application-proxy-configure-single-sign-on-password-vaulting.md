@@ -13,12 +13,13 @@ ms.date: 11/12/2018
 ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: c2ff9e05591654d78cd0c2f204914c3ad992ebc6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2339ce23379ab51090d536ba071a42017f6941b5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961597"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174176"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Heslo vaulting pro jednotné přihlašování s Proxy aplikací
 

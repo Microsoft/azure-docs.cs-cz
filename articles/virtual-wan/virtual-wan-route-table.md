@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 45e5c43cf5eb8df1df5b26ffae50d2881bb086e4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190166"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115194"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Vytvoření směrovací tabulky virtuální rozbočovač řídit provoz do síťového virtuálního zařízení
 
@@ -36,7 +36,7 @@ Ověřte, že splňujete následující kritéria:
 
 1. Máte síťové virtuální zařízení (NVA) se softwarem třetích stran podle vašeho výběru, který je obvykle zřízený z Azure Marketplace (odkaz) ve virtuální síti.
 2. Máte privátní IP adresa přiřazená síťovému rozhraní síťového virtuálního zařízení. 
-3. Virtuální rozbočovač se nedá nasadit síťové virtuální zařízení. Musí být nasazeny v samostatné virtuální sítě. Pro účely tohoto článku virtuální sítě se označuje jako "Virtuální síť DMZ".
+3. Virtuální rozbočovač se nedá nasadit síťové virtuální zařízení. Musí být nasazeny v samostatné virtuální sítě. Pro účely tohoto článku síťové virtuální zařízení virtuální sítě se označuje jako "Virtuální síť DMZ".
 4. "Virtuální síť DMZ" může mít jeden nebo mnoho virtuálních sítí k němu připojená. V tomto článku tuto virtuální síť se nazývá nepřímé paprsku virtuální sítě. Tyto virtuální sítě se dá propojit k virtuální síti DMZ pomocí VNet peering.
 5. Ověřte, že máte 2 virtuální sítě už vytvořili. Ty se používají jako virtuální sítě paprsků. Pro účely tohoto článku se adresní prostory virtuální sítě paprsků 10.0.2.0/24 a 10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě pomocí Powershellu](../virtual-network/quick-create-powershell.md).
 6. Ujistěte se, že nejsou žádné brány virtuální sítě v žádné virtuální sítě.

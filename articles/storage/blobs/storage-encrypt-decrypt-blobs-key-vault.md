@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239403"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116095"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Kurz: Šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault
 ## <a name="introduction"></a>Úvod
@@ -43,7 +43,7 @@ Tady je stručný popis toho, jak funguje šifrování na straně klienta:
 4. Šifrovaná data se pak nahrají do služby Azure Storage.
 
 ## <a name="set-up-your-azure-key-vault"></a>Nastavení služby Azure Key Vault
-Chcete-li pokračovat s tímto kurzem, budete muset provést následující kroky, které jsou popsány v tomto kurzu [Začínáme s Azure Key Vault](../../key-vault/key-vault-get-started.md):
+Chcete-li pokračovat s tímto kurzem, budete muset provést následující kroky, které jsou popsány v tomto kurzu [co je Azure Key Vault?](../../key-vault/key-vault-overview.md):
 
 * Vytvoření trezoru klíčů
 * Přidání klíče nebo tajného klíče do trezoru klíčů.

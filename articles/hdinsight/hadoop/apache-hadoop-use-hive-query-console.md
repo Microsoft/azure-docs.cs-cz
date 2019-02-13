@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e638bd348b7a5272dd8bfbe25aa841f38a51b9a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e568a8b7cfb21483f447b8244056de292e21093f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409696"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169397"
 ---
 # <a name="run-apache-hive-queries-using-the-query-console"></a>Spouštění dotazů Apache Hive pomocí konzoly pro dotazy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -80,10 +80,7 @@ Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 * [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 * [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
-Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pro informace o ladění:
-
-* [Použití uživatelského rozhraní Apache Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
-* [Použití zobrazení Apache Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
+Pokud používáte pomocí Hive Tez, najdete v následujícím dokumentu pro informace o ladění: [Použití zobrazení Apache Ambari Tez na Linuxovým systémem HDInsight](../hdinsight-debug-ambari-tez-view.md).
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

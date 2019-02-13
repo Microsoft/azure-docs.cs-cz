@@ -1,5 +1,5 @@
 ---
-title: Prostředí PowerShell pro koncové body služeb virtuální sítě a pravidla v Azure SQL | Dokumentace Microsoftu
+title: Prostředí PowerShell pro virtuální síť koncových bodů a pravidel pro jednoho a ve fondu databází v Azure SQL | Dokumentace Microsoftu
 description: Poskytuje skripty prostředí PowerShell k vytváření a správě koncových bodů služby virtuální pro Azure SQL Database a SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: ae29fcfe39b5844ab948eb55ca314ae51dcae174
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/11/2019
+ms.openlocfilehash: b30240620e3a8d3dea1849e895ec021c96fc11c6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566173"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117608"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Vytvoření koncového bodu služby virtuální a pravidlo virtuální sítě pro SQL
 
-Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) podporu koncových bodů služby virtuální.
+*Pravidla virtuální sítě* jsou jeden funkce zabezpečení brány firewall, která určuje, zda databázový server pro izolované databáze a elastického fondu ve službě Azure [SQL Database](sql-database-technical-overview.md) nebo databází v [dat SQL Sklad](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, kterou jsou odesílány z konkrétní podsítě ve virtuálních sítích.
 
-> [!NOTE]
-> Tento článek se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořeny na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek provádí *není* platí pro **Azure SQL Database Managed Instance** nemají koncový bod služby přidružené k podsíti Managed Instance.
+> [!IMPORTANT]
+> Tento článek se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořeny na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek provádí *není* platí pro **spravovanou instanci** nasazení ve službě Azure SQL Database protože nemá koncový bod služby s ním spojená.
 
 Tento článek obsahuje a vysvětluje Powershellový skript, který provede následující akce:
 

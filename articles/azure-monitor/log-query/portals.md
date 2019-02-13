@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/22/2018
 ms.author: bwren
-ms.openlocfilehash: 9567f8a6b581d7c246ebaa8eb8d72ad201bf2641
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6e84344e1c0229d15891bd15a512880da6e20cfe
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990407"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110757"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Zobrazení a analýza dat protokolu ve službě Azure Monitor
 Log Analytics je primární prostředí pro práci s daty protokolů a vytváření dotazů ve službě Azure Monitor. Otevřete Log Analytics z **protokoly** v **Azure Monitor** nabídky. Můžete získat Úvod k tomuto portálu a zkontrolujte jeho funkce v [Začínáme se službou Log Analytics na portálu Azure portal](get-started-portal.md).
@@ -63,7 +63,7 @@ Váš prohlížeč vyžaduje přístup na následující adresy pro přístup k 
 
 
 ## <a name="log-search-classic"></a>Prohledávání protokolu (classic)
-Hledání v protokolu je starší verze prostředí na webu Azure Portal pro dotazování a analýze dat protokolů ve službě Azure Monitor. Bude se už brzy nebude podporováno, ale aktuálně je stále k dispozici. Otevřete prohledávání protokolů z **protokoly (Classic)** v nabídce Log Analytics.
+Hledání v protokolu je starší verze prostředí na webu Azure Portal pro dotazování a analýze dat protokolů ve službě Azure Monitor. Brzy skončí, ale aktuálně je stále k dispozici. Otevřete prohledávání protokolů z **protokoly (Classic)** v nabídce Log Analytics.
 
 
 

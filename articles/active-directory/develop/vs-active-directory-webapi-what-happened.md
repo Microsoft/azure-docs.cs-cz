@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 04732d6541fd6132360d4c235b35979c70772922
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054433"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161928"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem WebAPI (Visual Studio Azure Active Directory připojená služba)
 
@@ -33,7 +34,7 @@ Informace o práci s připojenou službu, najdete v části [Začínáme](vs-act
 
 Ovlivňuje odkazy na soubory *.NET projekt) a `packages.config` (odkazy na NuGet).
 
-| Typ | Referenční informace |
+| Type | Referenční informace |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -46,9 +47,9 @@ Ovlivňuje odkazy na soubory *.NET projekt) a `packages.config` (odkazy na NuGet
 
 Další odkazy, pokud jste vybrali **čtení dat adresáře** možnost:
 
-| Typ | Referenční informace |
+| Type | Referenční informace |
 | --- | --- |
-| .NET; NuGet | Objektu EntityFramework |
+| .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 jenom) |
 | .NET; NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
 | .NET; NuGet | Microsoft.Data.Edm |
@@ -60,7 +61,7 @@ Další odkazy, pokud jste vybrali **čtení dat adresáře** možnost:
 
 Odeberou se následující odkazy (technologii ASP.NET 4 pouze pro projekty, stejně jako v sadě Visual Studio 2015):
 
-| Typ | Referenční informace |
+| Type | Referenční informace |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -84,7 +85,7 @@ Odeberou se následující odkazy (technologii ASP.NET 4 pouze pro projekty, ste
     </appSettings>
     ```
 
-- Visual Studio 2017 pouze: také přidá následující položku v rámci `<appSettings>`"
+- Visual Studio 2017 pouze: Také přidá následující položku v rámci `<appSettings>`"
 
     ```xml
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />

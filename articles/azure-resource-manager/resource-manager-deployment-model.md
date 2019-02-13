@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e7d271ce37209a49e1c75d6114ed07b11558df44
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486805"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104988"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -48,6 +48,9 @@ V roce 2014 platforma Azure představila model Resource Manager, který přinesl
 Při přidání Resource Manageru došlo ke zpětnému přidání všech prostředků do výchozích skupin prostředků. Pokud teď vytvoříte prostředek pomocí nasazení Classic, prostředek se automaticky vytvoří ve výchozí skupině prostředků pro danou službu, i když jste tuto skupinu prostředků nespecifikovali při nasazení. Pouhé zařazení do skupiny prostředků ale neznamená, že došlo k převedení daného prostředku na model Resource Manager.
 
 ## <a name="understand-support-for-the-models"></a>Vysvětlení podpory modelů
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Je potřeba vzít v úvahu tři scénáře:
 
 1. Služba Cloud Services nepodporuje model nasazení Resource Manager.

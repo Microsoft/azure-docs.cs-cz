@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 91f069da5572394934da41039d7e9a5950089ea1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be4741f87e729435761b74b86655aa828ff873ae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185103"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Kurz: Integrace Azure Active Directory s Versal odkazů
 

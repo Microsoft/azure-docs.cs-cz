@@ -12,14 +12,16 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 5e9d2746c223c679d30c31b3bd6f1e5cbfafbe1d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 4d5c7f8a91bb63cdd80a6f70603e34f8130b92ef
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498093"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106677"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 Klíčovou výhodou Azure je konzistence. Investic do vývoje pro jedno umístění jsou opakovaně použitelné v jiném. Šablonu je vaše nasazení konzistentní a opakovatelné v prostředích, včetně globální Azure, Azure suverénních cloudech a Azure Stack. Znovupoužití šablony napříč cloudy, ale musíte vzít v úvahu závislosti specifické pro cloud, protože tato příručka vysvětluje.
 
@@ -61,14 +63,14 @@ Možnosti služby Azure Resource Manageru vždy představíme na global Azure ne
 
 1. Jakmile máte místní klon úložiště, připojte se do cílového počítače Azure Resource Manageru pomocí Powershellu.
 
-1. Importujte modul psm1 a spusťte rutinu Test-AzTemplateFunctions:
+1. Importujte modul psm1 a spusťte rutinu Test-AzureRmureRmTemplateFunctions:
 
   ```powershell
   # Import the module
   Import-module <path to local clone>\AzTemplateFunctions.psm1
 
-  # Execute the Test-AzTemplateFunctions cmdlet
-  Test-AzTemplateFunctions -path <path to local clone>
+  # Execute the Test-AzureRmTemplateFunctions cmdlet
+  Test-AzureRmTemplateFunctions -path <path to local clone>
   ```
 
 Skript nasadí více, minimalizaci šablon, každá obsahuje pouze jedinečné šablony funkce. Výstup skriptu sestavy podporované a není k dispozici šablona funkce.
@@ -211,7 +213,7 @@ K sestavení kompletních absolutní identifikátor URI artefaktu, je použití 
 }
 ```
 
-S tímto přístupem všechny artefakty nasazení, včetně konfigurace, skripty, mohou být uloženy ve stejném umístění se samotné šablony. Chcete-li změnit umístění všechny odkazy, stačí zadat jinou základní adresu URL pro _artifactsLocation parametry.
+S tímto přístupem všechny artefakty nasazení, včetně konfigurace, skripty, mohou být uloženy ve stejném umístění se samotné šablony. Chcete-li změnit umístění všechny odkazy, stačí zadat jinou základní adresu URL pro _artifactsLocation parametry_.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Zvážit lišící se místní funkce
 
@@ -232,7 +234,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 Také vám pomůže následující rutiny Powershellu najdete v dostupných poskytovatelů prostředků:
 
 ```azurepowershell-interactive
-Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
 ### <a name="verify-the-version-of-all-resource-types"></a>Ověřit verzi všechny typy prostředků
@@ -250,7 +252,7 @@ az provider list --query "[].{namespace:namespace, resourceType:resourceType[]}"
 Můžete také použít následující rutinu Powershellu:
 
 ```azurepowershell-interactive
-Get-AzResourceProvider | select-object ProviderNamespace -ExpandProperty ResourceTypes | ft ProviderNamespace, ResourceTypeName, ApiVersions
+Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty ResourceTypes | ft ProviderNamespace, ResourceTypeName, ApiVersions
 ```
 
 ### <a name="refer-to-resource-locations-with-a-parameter"></a>Odkazovat na umístění prostředků s parametrem
@@ -493,10 +495,10 @@ K načtení seznamu dostupných imagí virtuálních počítačů v umístění,
 az vm image list -all
 ```
 
-Můžete načíst stejného seznamu pomocí rutiny prostředí Azure PowerShell [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadejte umístění, které chcete, aby se `-Location` parametru. Příklad:
+Můžete načíst stejného seznamu pomocí rutiny prostředí Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadejte umístění, které chcete, aby se `-Location` parametru. Příklad:
 
 ```azurepowershell-interactive
-Get-AzVMImagePublisher -Location "West Europe" | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzureRMVMImage
+Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
 ```
 
 Tento příkaz trvá několik minut, než se vrátí všechny dostupné Image v oblasti západní Evropa globální cloud Azure.
@@ -529,7 +531,7 @@ az vm list-sizes --location "West Europe"
 Pro prostředí Azure PowerShell použijte:
 
 ```azurepowershell-interactive
-Get-AzVMSize -Location "West Europe"
+Get-AzureRmVMSize -Location "West Europe"
 ```
 
 Úplný seznam dostupných služeb, naleznete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?cdn=disable).
@@ -596,10 +598,10 @@ Chcete-li načíst seznam rozšíření virtuálních počítačů, které jsou 
 az vm extension image list --location myLocation
 ```
 
-Můžete taky spustit rutinu prostředí Azure PowerShell [Get-AzVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) rutiny a použít `-Location` k určení umístění image virtuálního počítače. Příklad:
+Můžete taky spustit rutinu prostředí Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) rutiny a použít `-Location` k určení umístění image virtuálního počítače. Příklad:
 
 ```azurepowershell-interactive
-Get-AzVmImagePublisher -Location myLocation | Get-AzVMExtensionImageType | Get-AzVMExtensionImage | Select Type, Version
+Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
 ```
 
 #### <a name="ensure-that-versions-are-available"></a>Ujistěte se, že jsou k dispozici verze
@@ -617,16 +619,16 @@ Vzhledem k tomu, že rozšíření virtuálních počítačů jsou prostředky R
 
 Verze rozhraní API prostředku rozšíření virtuálního počítače musí být k dispozici ve všech umístěních, který chcete cílit pomocí šablony. Závislost umístění funguje jako poskytovatel prostředků verze rozhraní API dostupnost popsáno dříve v části "Ověření verze všem typům prostředků".
 
-Chcete-li načíst seznam dostupných verzí rozhraní API pro rozšíření prostředku virtuálního počítače, použijte [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) rutinu s **Microsoft.Compute** poskytovatele prostředků, jak je znázorněno:
+Chcete-li načíst seznam dostupných verzí rozhraní API pro rozšíření prostředku virtuálního počítače, použijte [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) rutinu s **Microsoft.Compute** poskytovatele prostředků, jak je znázorněno:
 
 ```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
+Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
 ```
 
 Můžete také použít rozšíření virtuálních počítačů ve škálovacích sadách virtuálních počítačů. Platí stejné podmínky umístění. K vývoji šablony pro cloud konzistence, ujistěte se, že verze rozhraní API jsou k dispozici ve všech umístěních, které plánujete nasazení. K načtení verze rozhraní API prostředku rozšíření virtuálního počítače pro škálovací sady pomocí stejné rutiny jako před ale zadat virtuálního počítače škálovací sady typ prostředku, jak je znázorněno:
 
 ```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
+Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
 Každé konkrétní rozšíření je také systémovou správou verzí. Tato verze je zobrazena ve `typeHandlerVersion` vlastnost rozšíření virtuálního počítače. Ujistěte se, že verze určená v `typeHandlerVersion` element ze šablony virtuálního počítače rozšíření jsou k dispozici v umístění, kde ji plánujete nasadit šablonu. Například následující kód určuje verzi 1.7:
@@ -647,13 +649,13 @@ Každé konkrétní rozšíření je také systémovou správou verzí. Tato ver
         ...   
 ```
 
-Chcete-li načíst seznam dostupných verzí pro konkrétní rozšíření virtuálního počítače, použijte [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) rutiny. Následující příklad načte dostupných verzí pro rozšíření PowerShell DSC (Desired State Configuration) virtuálního počítače z **myLocation**:
+Chcete-li načíst seznam dostupných verzí pro konkrétní rozšíření virtuálního počítače, použijte [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) rutiny. Následující příklad načte dostupných verzí pro rozšíření PowerShell DSC (Desired State Configuration) virtuálního počítače z **myLocation**:
 
 ```azurepowershell-interactive
-Get-AzVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
+Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
 ```
 
-Chcete-li získat seznam vydavatelů, použijte [Get-AzVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) příkazu. Chcete-li požádat o typ, použijte [Get-AzVMExtensionImageType](/powershell/module/az.compute/get-azvmextensionimagetype) commend.
+Chcete-li získat seznam vydavatelů, použijte [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) příkazu. Chcete-li požádat o typ, použijte [Get-AzureRmVMExtensionImageType](/powershell/module/az.compute/get-azvmextensionimagetype) commend.
 
 ## <a name="tips-for-testing-and-automation"></a>Tipy pro automatizaci a testování
 

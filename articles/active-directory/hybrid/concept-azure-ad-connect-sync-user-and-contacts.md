@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fab27ba36e8d1fcf7931945d23e41244afcb4337
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7605a8cee265822f133b3f72ce5de90add5fc0d0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491769"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210539"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizace Azure AD Connect: Principy uživatelů, skupin a kontaktů
 Existuje několik různých důvodů, proč byste měli několik doménových struktur služby Active Directory a existuje několik topologií jiného nasazení. Běžné modely zahrnují při nasazování prostředků účtu a doménových struktur sync'ed GAL po fúze a akvizice. Ale i v případě, že existují čistě modely, hybridní modely jsou běžné také. Výchozí konfigurace ve službě Azure AD Connect sync nepřebírá žádné konkrétní modelu, ale v závislosti na tom, jak uživatel odpovídající byla vybrána v instalační příručce, může být dodržen jiné chování.

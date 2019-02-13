@@ -17,12 +17,13 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: df45ec1478314e0d60f2c66a42a48801f1ce0643
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093083"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170190"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 zařízení kódu
 
@@ -72,13 +73,13 @@ scope=user.read%20openid%20profile
 
 | Parametr | Formát | Popis |
 | ---              | --- | --- |
-|`device_code`     |Řetězec| Dlouhý řetězec používaného k ověřování relací mezi klientem a serverem ověřování.  Používá se pomocí klienta k žádosti o přístupový token od autorizačního serveru. |
-|`user_code`       |Řetězec| Krátký řetězec, který se zobrazí uživateli, používá k identifikaci relaci na sekundární zařízení.|
+|`device_code`     |String| Dlouhý řetězec používaného k ověřování relací mezi klientem a serverem ověřování.  Používá se pomocí klienta k žádosti o přístupový token od autorizačního serveru. |
+|`user_code`       |String| Krátký řetězec, který se zobrazí uživateli, používá k identifikaci relaci na sekundární zařízení.|
 |`verification_uri`|Identifikátor URI| Identifikátor URI by měl uživatel přejde na s `user_code` abyste se mohli přihlásit. |
 |`verification_uri_complete`|Identifikátor URI| Kombinace identifikátoru URI `user_code` a `verification_uri`, která se používá pro jiné textové přenos na uživatele (například přes Bluetooth na zařízení nebo kódu QR).  |
 |`expires_in`      |int| Počet sekund před `device_code` a `user_code` vypršení platnosti. |
 |`interval`        |int| Počet sekund, po které klient by měl čekat mezi požadavků dotazování. |
-| `message`        |Řetězec| Čitelný řetězec s pokyny pro uživatele.  To může být lokalizována zahrnutím **parametr dotazu** v požadavku ve formátu `?mkt=xx-XX`, plnění v příslušné jazykové jazykovou verzi kódu. |
+| `message`        |String| Čitelný řetězec s pokyny pro uživatele.  To může být lokalizována zahrnutím **parametr dotazu** v požadavku ve formátu `?mkt=xx-XX`, plnění v příslušné jazykové jazykovou verzi kódu. |
 
 ## <a name="authenticating-the-user"></a>Ověření uživatele
 
@@ -130,7 +131,7 @@ Vzhledem k tomu, že tok kódu zařízení je protokol pro dotazování, klient 
 
 | Parametr | Formát | Popis |
 | --------- | ------ | ----------- |
-|`token_type` | Řetězec| Vždy "nosiče. |
+|`token_type` | String| Vždy "nosiče. |
 |`scope` | Oddělené mezerou řetězce | Pokud byl vrácen přístupového tokenu, vypíšou se přístupový token je platný pro obory. |
 |`expires_in`| int | Počet sekund před zahrnuté přístupový token je platný pro. |
 |`access_token`| Neprůhledný řetězec | Vydaný pro [obory](v2-permissions-and-consent.md) , které bylo vyžádáno.  |

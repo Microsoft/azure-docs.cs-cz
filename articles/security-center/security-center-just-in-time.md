@@ -4,7 +4,7 @@ description: Tento dokument ukazuje, jak just-in-time přístup k virtuálním p
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5c42c0d5597e1e14bbb7814ad635abcd086db804
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94364a54a5a0994cc3de3a2fe014b556d438b2c2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339038"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114905"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 
@@ -86,7 +86,7 @@ Výběr virtuálních počítačů, které chcete povolit:
 3. Vyberte **povolit JIT na virtuálních počítačích**.
   1. V tomto okně se zobrazí výchozí porty, doporučuje se služba Azure Security Center:
      - 22 - SSH
-     - 3389 - PROTOKOL RDP
+     - 3389 - RDP
      - 5985 - WinRM 
      - 5986 - WinRM
   2. Můžete také nakonfigurovat vlastní porty. Chcete-li to provést, vyberte **přidat**. 
@@ -123,7 +123,7 @@ Chcete-li upravit existující zásadu just-in-time virtuálního počítače:
 1. V **nakonfigurováno** ve skupině **virtuálních počítačů**, vyberte virtuální počítač, do které chcete přidat portu pro tento virtuální počítač kliknutím na tři tečky v rámci řádku. 
 2. Vyberte **Upravit**.
 3. V části **konfigurace přístupu k virtuálnímu počítači podle potřeby**, můžete upravit stávající nastavení už chráněných portu nebo přidat nový port. Tento vlastní port. Další informace najdete v tématu [nakonfigurujete zásady přístupu just-in-time](#jit-config). 
-  ![přístup k virtuálnímu počítači JIT](./media/security-center-just-in-time/edit-policy.png)
+  ![jit vm access](./media/security-center-just-in-time/edit-policy.png)
 
 ## V okně virtuálního počítače Azure pomocí přístup JIT <a name="jit-vm"></a>
 

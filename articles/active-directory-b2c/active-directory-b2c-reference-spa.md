@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7342849af63ef2f153a89418fbf87f60bd4c4833
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183284"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104834"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Přihlášení jednostránkové aplikace pomocí implicitního toku OAuth 2.0
 
@@ -30,7 +30,7 @@ Pro podporu těchto aplikací Azure Active Directory B2C (Azure AD B2C) použív
 Azure AD B2C rozšiřuje standardní implicitního toku OAuth 2.0 k více než jednoduché ověřování a autorizace. Azure AD B2C zavádí [parametr zásad](active-directory-b2c-reference-policies.md). S parametrem zásad vám pomůže OAuth 2.0 přidání zásad do vaší aplikace, jako například registrace, přihlášení a Profilovat toky uživatelů pro správu. V tomto článku ukážeme, jak implementaci každého z těchto možností v jednostránkové aplikace pomocí implicitního toku a Azure AD. Abyste mohli začít, podívejte se na naše [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) a [rozhraní Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) ukázky.
 
 V žádosti o příklad HTTP v tomto článku používáme naše ukázka adresář Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Také používáme vlastní ukázkové aplikace a uživatele toky. Požadavky můžete také vyzkoušet sami s využitím těchto hodnot, nebo je můžete nahradit vlastními hodnotami.
-Zjistěte, jak [získat vlastní toky adresáře, aplikace a uživatele Azure AD B2C](#use-your-own-b2c-tenant).
+Zjistěte, jak [získat vlastní toky adresáře, aplikace a uživatele Azure AD B2C](#use-your-own-azure-ad-b2c-tenant).
 
 
 ## <a name="protocol-diagram"></a>Diagram protokolu

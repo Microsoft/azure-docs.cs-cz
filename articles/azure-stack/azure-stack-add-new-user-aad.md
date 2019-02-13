@@ -3,7 +3,7 @@ title: Přidat nový účet tenanta služby Azure Stack v Azure Active Directory
 description: Po nasazení Microsoft Azure Stack Development Kit, musíte vytvořit uživatelský účet alespoň jednoho tenanta, abyste mohli zkoumat portál pro klienty.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: patricka
 manager: femila
 editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
-ms.author: jeffgilb
+ms.date: 02/12/2019
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: c0f457955bd8df7fe07e2a96469fde0a751417bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c07288bbfbf70be62723f835192cf09d92166ab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240315"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163219"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Přidat nový účet tenanta služby Azure Stack v Azure Active Directory
 
@@ -56,14 +56,12 @@ Musíte mít předplatné Azure, pomocí webu Azure portal.
 7. Přihlaste se k portálu Microsoft Azure nový účet. Změna hesla po zobrazení výzvy.
 8. Přihlaste se k `https://portal.local.azurestack.external` nový účet, chcete-li zobrazit portál pro klienty.
 
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Vytvořit účet tenanta služby Azure Stack pomocí Powershellu
+## <a name="create-an-azure-stack-user-account-using-powershell"></a>Vytvoření účtu uživatele Azure stacku pomocí Powershellu
 
 Pokud nemáte předplatné Azure, nemůžete použít na webu Azure portal k přidání uživatelského účtu tenanta. V takovém případě místo toho můžete Azure Active Directory modulu pro Windows PowerShell.
 
 > [!NOTE]
 > Pokud používáte k nasazení Azure Stack Development Kit Account Microsoft (Live ID), nelze použít AAD PowerShell k vytvoření účtu tenanta. 
-> 
-> 
 
 1. Nainstalujte [Microsoft Online Services Pomocníka pro IT profesionály RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
 2. Nainstalujte [modulu Azure Active Directory pro Windows PowerShell (64bitová verze)](https://go.microsoft.com/fwlink/p/?linkid=236297) a otevřete ho.
@@ -85,3 +83,6 @@ Pokud nemáte předplatné Azure, nemůžete použít na webu Azure portal k př
 1. Přihlaste se k Microsoft Azure pomocí nového účtu. Změna hesla po zobrazení výzvy.
 2. Přihlaste se k `https://portal.local.azurestack.external` nový účet, chcete-li zobrazit portál pro klienty.
 
+## <a name="next-steps"></a>Další postup
+
+[Přidat uživatele Azure stacku ve službě AD FS](azure-stack-add-users-adfs.md)

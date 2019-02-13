@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19ed1c12768eed0265f65388984a5859b8f0630b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247750"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Kurz: Integrace Azure Active Directory s Můj tým Sub/horní horní ocenění body
 
@@ -161,7 +162,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-a-my-award-points-top-subtop-team-test-user"></a>Vytvoření zkušebního uživatele Můj tým Sub/horní horní ocenění body
 
-V této části vytvořte uživatele Britta Simon v Můj tým Sub/horní horní ocenění body. Práce s [tým podpory Můj tým Sub/horní horní ocenění body](mailto:myawardpoints@biworldwide.com) přidat uživatele na platformě Můj tým Sub/horní horní ocenění body. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon v Můj tým Sub/horní horní ocenění body. Práce s [tým podpory Můj tým Sub/horní horní ocenění body](mailto:myawardpoints@biworldwide.com) přidat uživatele na platformě Můj tým Sub/horní horní ocenění body. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

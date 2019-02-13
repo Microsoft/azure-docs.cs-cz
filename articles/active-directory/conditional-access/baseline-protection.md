@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e950a2abe4df3a25cba4dc231fdf14d71343f644
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 79cde42056d3943b8a3e15f46c57fdf6a0730de4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079779"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166160"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co je základní ochranu (preview)?  
 

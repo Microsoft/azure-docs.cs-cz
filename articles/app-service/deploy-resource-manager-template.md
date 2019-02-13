@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 1431ba658a6eb898553804f0c81b3babb23f4fe2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 780d2134aa00f828a614af6938978e24df3534cd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015198"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105107"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manageru
 
@@ -36,24 +36,24 @@ Následující obrázek ukazuje pak pořadí závislostí pro různé prostředk
 
 Nasazení prostředků v následujícím pořadí:
 
-**Vrstvy 1**
+**Tier 1**
 * Plán služby App Service.
 * Všechny ostatní související prostředky, jako jsou databáze nebo účty úložiště.
 
-**Úroveň 2**
+**Tier 2**
 * Webové aplikace – závisí na plán služby App Service.
 * Azure Application Insights instanci, která cílí na serverové farmě--závisí na plán služby App Service.
 
-**Úroveň 3**
+**Tier 3**
 * Správa – zdrojového kódu, závisí na webovou aplikaci.
 * Rozšíření webu MSDeploy – závisí na webovou aplikaci.
 * Instance Application Insights, který cílí na serverové farmě – závisí na webovou aplikaci.
 
-**Vrstva 4**
+**Tier 4**
 * Certifikát App Service – závisí na správy zdrojového kódu nebo MSDeploy, pokud je k dispozici. V opačném případě závisí na webovou aplikaci.
 * Nastavení konfigurace (připojovací řetězce, hodnoty web.config, nastavení aplikace) – závisí na správy zdrojového kódu nebo MSDeploy, pokud je k dispozici. V opačném případě závisí na webovou aplikaci.
 
-**Úroveň 5**
+**Tier 5**
 * Název vazby – hostování závisí na certifikátu, pokud jsou k dispozici. V opačném případě závisí na vyšší úrovni prostředků.
 * Rozšíření – lokality závisí na nastavení konfigurace, pokud jsou k dispozici. V opačném případě závisí na vyšší úrovni prostředků.
 
@@ -113,12 +113,14 @@ Musí být globálně jedinečný název pro vaši webovou aplikaci. Můžete po
 
 ## <a name="deploy-web-app-certificate-from-key-vault"></a>Nasaďte certifikát webové aplikace ze služby Key Vault
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Pokud obsahuje šablony [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) prostředek pro vytvoření vazby SSL a certifikát je uložen ve službě Key Vault, je nutné identity služby App Service můžete přístup k certifikátu.
 
 V globální Azure objektu služby App Service má ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Pokud chcete udělit přístup do služby Key Vault, instančního objektu služby App Service, použijte:
 
 ```azurepowershell-interactive
-Set-AzureRmKeyVaultAccessPolicy `
+Set-AzKeyVaultAccessPolicy `
   -VaultName KEY_VAULT_NAME `
   -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `
   -PermissionsToSecrets get `

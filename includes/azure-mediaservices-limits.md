@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 1e1316ef568cbc6409a8653022d9acff9837b59d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9cd5a63b5b1d7000605f90752be755356d40bb4a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279537"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56212993"
 ---
 >[!NOTE]
 >U prostředků, které nejsou pevné, je možné prostřednictvím lístku podpory požádat o zvýšení kvóty. **Nevytvářejte** další účty služby Azure Media Services ve snaze zajistit vyšší limity.
@@ -27,7 +27,7 @@ ms.locfileid: "52279537"
 | Živé kanály na jeden účet AMS |5|
 | Programy v zastaveném stavu na jeden kanál |50|
 | Programy ve spuštěném stavu na jeden kanál |3|
-| Koncové body streamování ve spuštěném stavu na jeden účet AMS|2|
+| Koncové body streamování (zastavení nebo spuštění) na účtu Azure Media Services|2|
 | Jednotky streamování na jeden koncový bod streamování |10 |
 | Účty úložiště | 1 000<sup>(5)</sup> (pevné) |
 | Zásady | 1 000 000<sup>(6)</sup> |

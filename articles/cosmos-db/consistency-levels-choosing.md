@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11eb849567079bfb1293c3c1e8ce97c43b66d493
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468865"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116840"
 ---
-# <a name="choose-the-right-consistency-level"></a>Vyberte úroveň konzistence vpravo 
+# <a name="choose-the-right-consistency-level"></a>Volba vhodné úrovně konzistence 
 
 Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence. Azure Cosmos DB umožňuje vývojářům volit pět jasně definované modely konzistence: silná, omezená neaktuálnost, relace, konzistentní Předpona a konečný výsledek. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Zadejte každou pět modelů konzistence [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA. Následující pokyny pro jednoduché můžete učinit správnou volbu v mnoha běžným scénářům.
 
@@ -33,6 +33,8 @@ Zvažte následující body, pokud vaše aplikace je sestavena pomocí rozhraní
 - Pokud budete potřebovat méně striktní konzistenci záruky než těch, které jsou poskytované konzistence typu relace, doporučuje se použít úroveň konzistentní předpona konzistence.
 
 - Pokud potřebujete nejvyšší možnou dostupnost a nejnižší latenci, použijte úroveň konzistence typu případné.
+
+- Pokud budete potřebovat ještě větší odolnost dat bez omezení výkonu, můžete vytvořit vlastní konzistence úroveň v aplikační vrstvě. Další informace najdete v tématu [postupy implementovat vlastní synchronizaci ve svých aplikacích](how-to-custom-synchronization.md).
 
 ## <a name="cassandra-mongodb-and-gremlin-api"></a>Cassandra, MongoDB a Gremlin API
 

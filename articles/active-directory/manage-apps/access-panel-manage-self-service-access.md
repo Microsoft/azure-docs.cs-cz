@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: cd5dd4a9f32887f0a0006bf396a3952abb204e2d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 82c7c7236b54ef44b0cc8602c0dce531c09f7d29
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962464"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169594"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Jak používat samoobslužný přístup k aplikacím
 

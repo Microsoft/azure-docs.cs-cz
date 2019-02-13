@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 34b7607ffe8e23b09782fee8394c00f23909af6b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bccaa7e1f2e0752ac1cde52a446cb942c80aa838
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078147"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166007"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Doprovodné materiály zabezpečení pro používání ověřování Azure Multi-Factor Authentication s účty služby Azure AD
 

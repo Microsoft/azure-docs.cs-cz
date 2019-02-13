@@ -320,9 +320,6 @@ items:
     - name: Použití Apache Mavenu k vytváření aplikací v Javě
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: Použití uživatelského rozhraní Apache TEZ k ladění úloh TEZ
-      href: ../hdinsight-debug-tez-ui.md
-      maintainContext: true
     - name: Přizpůsobení pomocí akce skriptu
       href: ../hdinsight-hadoop-customize-cluster.md
       maintainContext: true
@@ -369,9 +366,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 0a34515ec37f3af8da52011ac3a5674bde4f746f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1429c7c2fd7f325d760562d3a3f4b3daaf431852
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891366"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165770"

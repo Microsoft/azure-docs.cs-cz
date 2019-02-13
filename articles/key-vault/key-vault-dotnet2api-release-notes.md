@@ -3,7 +3,7 @@ title: Zpráva k vydání verze .NET 2.x API trezoru klíčů | Dokumentace Micr
 description: Vývojáři na platformě .NET bude pomocí tohoto rozhraní API do kódu pro Azure Key Vault
 services: key-vault
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 editor: bryanla
 ms.assetid: 1cccf21b-5be9-4a49-8145-483b695124ba
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
 ms.author: bryanla
-ms.openlocfilehash: 7bbe5a9dd7c085bc20092358ee9acabe9cf85542
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 486f31e79210aa67c8545d6bd56f6bedd9297e9c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296518"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105929"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – zpráva k vydání verze a Průvodce migrací
 Následující informace pomáhají, migrace do verze 2.0 této knihovny služby Azure Key Vault pro C# a .NET.  Aplikace napsané pro starší verze muset aktualizovat podporovat nejnovější verzi.  Tyto změny jsou potřeba pro úplnou podporu nové a vylepšené funkce, jako například **Key Vault certificates**.

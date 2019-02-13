@@ -3,7 +3,7 @@ title: Co je vyhrazené HSM? – Vyhrazené modulu hardwarového zabezpečení a
 description: Přehled vyhrazených modulu hardwarového zabezpečení Azure poskytuje možnosti úložiště klíčů v Azure, která splňují standard FIPS 140-2 Level 3 certifikační
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.service: key-vault
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 503c6d124d6a67c39d9a88100e5ad35dc787fb7b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 447518d2189a3b2723edc7c7db74ccc8435b71b7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975589"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110366"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Co je služba Rezervované HSM Azure?
 

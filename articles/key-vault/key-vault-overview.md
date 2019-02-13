@@ -3,7 +3,7 @@ title: Přehled služby Azure Key Vault – Azure Key Vault | Dokumentace Micros
 description: Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů.
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 34af20ee-3fa7-4f28-9d98-6168b1759764
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: c96899fc46cd9cf6377894de773785dac14f3345
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 474148289bb03088bbf92eeadc4049ce19625e3e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121562"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115942"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -82,5 +82,5 @@ Samotná služba Key Vault se může integrovat s účty úložiště, centry ud
 
 ## <a name="next-steps"></a>Další postup
 
-- [Rychlý start: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku](quick-create-cli.md)
+- [Rychlé zprovoznění: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku](quick-create-cli.md)
 - [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key Vault](tutorial-web-application-keyvault.md)

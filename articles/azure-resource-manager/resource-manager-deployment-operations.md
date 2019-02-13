@@ -13,14 +13,16 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 37f6ad26fd0ad4a1ac6c3fd6c6707b5b9aaef331
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770210"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111301"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Zobrazení operací nasazení pomocí Azure Resource Manageru
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Operace pro nasazení na webu Azure portal můžete zobrazit. Bude nejvíc zajímat to sledovat operace, i když jste dojde k chybě během nasazení, tento článek se zaměřuje na zobrazení operací, které selhaly. Portál poskytuje rozhraní, které vám umožní snadno najít chyby a zjistit potenciální opravy.
 
@@ -68,13 +70,13 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
   Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-1. Pokud chcete získat ID korelace, použijte:
+2. Pokud chcete získat ID korelace, použijte:
 
   ```powershell
   (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. Každé nasazení obsahuje více operací. Každá operace představuje krok v procesu nasazení. Pokud chcete zjistit, co se nepovedlo s nasazením, obvykle musíte zobrazíte podrobnosti o operací nasazení. Zobrazí se stav operací s **Get-AzResourceGroupDeploymentOperation**.
+3. Každé nasazení obsahuje více operací. Každá operace představuje krok v procesu nasazení. Pokud chcete zjistit, co se nepovedlo s nasazením, obvykle musíte zobrazíte podrobnosti o operací nasazení. Zobrazí se stav operací s **Get-AzResourceGroupDeploymentOperation**.
 
   ```powershell 
   Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -92,7 +94,7 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-1. Pokud chcete získat další podrobnosti o neúspěšných operacích, načíst vlastnosti pro operace s **neúspěšné** stavu.
+4. Pokud chcete získat další podrobnosti o neúspěšných operacích, načíst vlastnosti pro operace s **neúspěšné** stavu.
 
   ```powershell
   (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -115,7 +117,7 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
   ```
 
     Mějte na paměti, serviceRequestId a trackingId pro operaci. ServiceRequestId může být užitečné při práci s technickou podporu k řešení potíží s nasazení. Použijete v dalším kroku trackingId zaměřit na konkrétní operace.
-1. Chcete-li získat stavové zprávy konkrétní neúspěšnou operaci, použijte následující příkaz:
+5. Chcete-li získat stavové zprávy konkrétní neúspěšnou operaci, použijte následující příkaz:
 
   ```powershell
   ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -128,7 +130,7 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-1. Každé operaci nasazení v Azure zahrnuje obsah požadavku a odpovědi. Obsah požadavku je, co jste odeslali do Azure během nasazení (například vytvořit virtuální počítač, disk s operačním systémem a dalším prostředkům). Obsah odpovědi je, co Azure odesílá zpět z požadavku nasazení. Během nasazení, můžete použít **DeploymentDebugLogLevel** parametr k určení, že žádost nebo odpověď jsou zachovány v protokolu. 
+6. Každé operaci nasazení v Azure zahrnuje obsah požadavku a odpovědi. Obsah požadavku je, co jste odeslali do Azure během nasazení (například vytvořit virtuální počítač, disk s operačním systémem a dalším prostředkům). Obsah odpovědi je, co Azure odesílá zpět z požadavku nasazení. Během nasazení, můžete použít **DeploymentDebugLogLevel** parametr k určení, že žádost nebo odpověď jsou zachovány v protokolu. 
 
   Získání těchto informací z protokolu a uložte ho místně pomocí následujících příkazů Powershellu:
 
@@ -146,13 +148,13 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
   az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-1. Jedním z vrácených hodnot je **correlationId**. Tato hodnota se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporu k řešení potíží s nasazení.
+2. Jedním z vrácených hodnot je **correlationId**. Tato hodnota se používá ke sledování souvisejících událostí a může být užitečné při práci s technickou podporu k řešení potíží s nasazení.
 
   ```azurecli
   az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-1. Pokud chcete zobrazit operace pro nasazení, použijte:
+3. Pokud chcete zobrazit operace pro nasazení, použijte:
 
   ```azurecli
   az group deployment operation list -g ExampleGroup -n ExampleDeployment

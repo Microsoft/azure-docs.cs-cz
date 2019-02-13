@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: a1d12784fb3f88889cd9ba0d622d1bc5d84374a8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 175b90318a3f66c1a30ee3c4002d863582767b34
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165332"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Kurz: Integrace Azure Active Directory s FM:Systems
 

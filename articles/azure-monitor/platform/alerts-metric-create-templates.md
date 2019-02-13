@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 0c7e0e539ca884739f5bf633946a4704d29b132b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9f8d6488d12b5550c3390699b9c34380b51b60f9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448224"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112593"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
 Tento článek popisuje, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) konfigurace [novějších upozornění metrik](../../azure-monitor/platform/alerts-metric-near-real-time.md) ve službě Azure Monitor. Šablony Resource Manageru umožňují programově nastavit výstrahy konzistentní vzhledem k aplikacím a reprodukovatelné způsobem napříč prostředími. Jsou aktuálně k dispozici na novějších upozornění metrik [tuto sadu typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Šablony Resource Manageru pro upozornění na metriku zadat nebude fungovat pro typ prostředku: Microsoft.OperationalInsights/workspaces; Díky podpoře metriky z Log Analytics je ve verzi preview. Můžou uživatelé chtěli použít funkci ve verzi preview se šablonou resource kontaktovat [zpětnou vazbu upozornění Azure](mailto:azurealertsfeedback@microsoft.com)
+> Prostředek šablony pro vytváření upozornění metrik pro typ prostředku: Pracovní prostor Azure Log Analytics (tj.)) `Microsoft.OperationalInsights/workspaces`, vyžaduje další kroky. Podrobnosti najdete v článku [upozornění metriky pro protokoly – šablona Resource](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Základní kroky jsou následující:
 

@@ -3,7 +3,7 @@ title: Migrace aplikací Managed Cache Service k Redis – Azure | Dokumentace M
 description: Zjistěte, jak migrovat službu Managed Cache Service a mezipaměť In-Role aplikace k mezipaměti Azure pro Redis
 services: azure-cache-for-redis
 documentationcenter: na
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: tysonn
 ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/30/2017
-ms.author: wesmc
-ms.openlocfilehash: 27c8fce8c8eac936708dbac72ca60a1c0af286ea
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: a98b6b426ee1bf9784394ce4a83dca83179f7c28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106133"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110870"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrace ze služby Managed Cache Service do mezipaměti Azure pro Redis
 Migrace vaší aplikace, které používají službu Azure Managed Cache Service k mezipaměti Azure pro Redis můžete docílit, když s minimálními změnami pro vaši aplikaci, v závislosti na službu Managed Cache Service funkcí používaných v rámci ukládání do mezipaměti aplikace. Rozhraní API jsou přesně stejné jsou podobné a velkou část vaší existující kód, který používá službu Managed Cache Service pro přístup k mezipaměti lze opětovně použít s minimálními změnami. Tento článek ukazuje, jak provést nezbytné konfigurace a aplikace se změní na migrovat aplikace Managed Cache Service pro účely mezipaměti Azure Redis a ukazuje, jak některé funkce mezipaměti Azure Redis umožňuje implementovat funkci Služba Managed Cache Service mezipaměti.

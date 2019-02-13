@@ -4,7 +4,7 @@ description: " Detekce hrozeb a škodlivý díky integraci Microsoft Cloud App S
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2a747bdd8de41283b9cba1e40e2652aa826e9c60
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044446"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108003"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>UEBA pro uživatele a prostředky Azure 
 
@@ -62,7 +62,7 @@ Tyto výstrahy jsou ve výchozím nastavení povolené, ale lze je vypnout:
    ![Výstrahy detekce hrozeb](./media/security-center-ueba-mcas/security-center-mcas-optout.png)
 
 > [!NOTE]
-> Existuje sedm dní, během které všechny anomálií se generují výstrahy detekce období učení. Následně se každá relace porovnává aktivit, uživatelů, IP adresy, zařízení, dalšími parametry zjištěnými za poslední měsíc a skórem rizika těchto aktivit. Tyto detekce jsou součástí sady machine learningu modul detekce anomálií této profily prostředí a aktivačních událostí výstrahy s ohledem na standardních hodnot, které byly získány v aktivitě vaší organizace. Tyto detekce také využívají algoritmy strojového učení navržené tak, aby profil uživatele a protokolů na vzor snížil počet falešných poplachů.
+> Existuje sedm dní, během které všechny anomálií se generují výstrahy detekce období učení. Po tomto období se každá relace porovnává s aktivitou, dobou aktivity uživatelů, IP adresami, zařízeními a dalšími parametry zjištěnými za poslední měsíc a skórem rizika těchto aktivit. Tyto detekce jsou součástí sady machine learningu modul detekce anomálií této profily prostředí a aktivačních událostí výstrahy s ohledem na standardních hodnot, které byly získány v aktivitě vaší organizace. Tyto detekce také využívají algoritmy strojového učení navržené tak, aby profil uživatele a protokolů na vzor snížil počet falešných poplachů.
 >
   
 ## <a name="next-steps"></a>Další postup

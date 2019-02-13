@@ -11,12 +11,13 @@ ms.topic: concept
 ms.date: 01/16/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 6bd28ba3c7f94a3eb398d0819f1d8df42a765923
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c1d97e2542200703201b1c20738581a938ba209e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960000"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165990"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory
 

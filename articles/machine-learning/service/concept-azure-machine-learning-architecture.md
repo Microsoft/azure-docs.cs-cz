@@ -11,16 +11,16 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6f558fd97dc13044d1ea4da63ff5879e6599f9e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 1b2934ceb402dab5e9cf98e7e0a53b1b438c66a8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100693"
+ms.locfileid: "56111845"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
-Tento článek popisuje architekturu a koncepty pro službu Azure Machine Learning. Hlavní součástí služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu: 
+Tento článek popisuje architekturu a koncepty pro službu Azure Machine Learning. Hlavní součástí služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu:
 
 [![Architektura služby Azure Machine Learning a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
@@ -32,7 +32,7 @@ Pracovní postup probíhá obecně toto pořadí:
 1. **Dotazování experiment** pro metrikách zaznamenaných do protokolu běhů aktuálního i staršího. Pokud metriky neindikují požadovaného výsledku, smyčka zpátky ke kroku 1 a iterovat své skripty.
 1. Po uspokojivé spustit je najít, zaregistrujte model trvalého v **modelu registru**.
 1. Vyvíjejte hodnoticí skript.
-1. **Vytvoření image** a zaregistrujte ho **registru imagí**. 
+1. **Vytvoření image** a zaregistrujte ho **registru imagí**.
 1. **Nasazení bitové kopie** jako **webová služba** v Azure.
 
 
@@ -61,11 +61,17 @@ Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prost�
 * [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Tajné klíče úložiště, které jsou používány výpočetní cíle a dalších citlivých údajů, který je nezbytný v pracovním prostoru.
 
 > [!NOTE]
-> Kromě vytvoření nové verze, můžete také použít stávající služby Azure. 
+> Kromě vytvoření nové verze, můžete také použít stávající služby Azure.
 
 Taxonomie pracovního prostoru je znázorněn v následujícím diagramu:
 
 [![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+## <a name="experiment"></a>Experiment
+
+Experiment je seskupení mnoho spuštění ze zadaného skriptu. Vždy patří do pracovního prostoru. Když odešlete spustit, zadejte název experimentu. Informace pro spuštění jsou uloženy v rámci testu. Pokud odešlete spustit a zadejte název experimentu, který neexistuje, je automaticky vytvoří nový experiment s nově zadaným názvem.
+
+Příklad použití experiment, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
 
 ## <a name="model"></a>Model
 
@@ -79,7 +85,7 @@ Příklad trénování modelu najdete v tématu [rychlý start: Vytvořit pracov
 
 ### <a name="model-registry"></a>Model registru
 
-Model registru uchovává informace o všech modelů v pracovním prostoru služby Azure Machine Learning. 
+Model registru uchovává informace o všech modelů v pracovním prostoru služby Azure Machine Learning.
 
 Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registru se předpokládá, že se jedná o novou verzi. Verze je zvýšen a nový model je zaregistrovaný pod stejným názvem.
 
@@ -88,6 +94,83 @@ Při registraci modelu můžete zadat další metadata značky a pak použít zn
 Nelze odstranit modely, které se používají v obrázku.
 
 Příklad registrace modelu, naleznete v tématu [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).
+
+## <a name="run-configuration"></a>Konfigurace spuštění
+
+Konfigurace spuštění je sada instrukcí, který definuje, jak spustit skript v cílové výpočetní prostředí zadané. Konfigurace zahrnuje celou sadu definic chování, například, zda chcete použít existující prostředí Python nebo používat prostředí Conda, která je vytvořená z specifikace.
+
+Konfigurace spuštění můžete nastavit jako trvalý, do souboru do adresáře, který obsahuje cvičný skript, nebo může být vytvořen jako objekt v paměti a použít k odeslání spuštění.
+
+Příklad konfigurace spuštění, naleznete v tématu [výběr a použití cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md).
+
+## <a name="datastore"></a>Úložiště dat
+
+Úložiště dat je úložiště abstrakce přes účet úložiště Azure. Úložiště můžete použít kontejner objektů blob v Azure nebo sdílené složky Azure jako úložiště back-end. Každý pracovní prostor má výchozí úložiště, a můžete zaregistrovat další úložiště.
+
+Pomocí rozhraní Python API sady SDK nebo rozhraní příkazového řádku Azure Machine Learning k ukládání a načítání souborů z úložiště.
+
+## <a name="compute-target"></a>Cílové výpočetní prostředí
+
+Cílové výpočetní prostředí je výpočetní prostředek, který používáte ke spuštění trénovací skript nebo hostovat vaše nasazení služby. Cílových podporovaných výpočetních prostředí jsou:
+
+| Cílové výpočetní prostředí | Školení | Nasazení |
+| ---- |:----:|:----:|
+| Místního počítače | ✓ | &nbsp; |
+| Azure Machine Learning compute | ✓ | &nbsp; |
+| Virtuální počítač s Linuxem v Azure</br>(například virtuální počítač pro datové vědy) | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Apache Spark pro HDInsight | ✓ | &nbsp; |
+| Azure Container Instances | &nbsp; | ✓ |
+| Azure Kubernetes Service | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
+
+Cílových výpočetních prostředí jsou připojeny k pracovnímu prostoru. Výpočetní cíle než v místním počítači sdílejí uživatelé pracovního prostoru.
+
+### <a name="managed-and-unmanaged-compute-targets"></a>Cílových výpočetních prostředí spravované a nespravované
+
+* **Spravované**: Cíle, které jsou vytvořeny a spravované službou Azure Machine Learning COMPUTE. Tyto výpočetní cíle jsou optimalizované pro machine learning úlohy. Výpočetní prostředky Azure Machine Learning je jediná cílové výpočetní prostředí spravované od 4. prosince 2018. V budoucnu lze přidat další spravované výpočetní cíle.
+
+    Můžete vytvořit machine learningu výpočetní instance přímo prostřednictvím pracovního prostoru pomocí webu Azure portal, Azure Machine Learning SDK nebo rozhraní příkazového řádku Azure. Všechny ostatní cílových výpočetních prostředí musí být vytvořená mimo pracovní prostor a pak k němu připojená.
+
+* **Nespravované**: Cílových výpočetních prostředí, které jsou *není* spravované službou Azure Machine Learning. Potřebujete vytvořit mimo Azure Machine Learning a připojte je k vašemu pracovnímu prostoru před použitím. Cílových výpočetních prostředí nespravované může vyžadovat další kroky pro vás k údržbě nebo ke zlepšení výkonu pro úlohy s machine learning.
+
+Informace o výběru cílové výpočetní prostředí pro školení, naleznete v tématu [výběr a použití cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md).
+
+Informace o výběru cílové výpočetní prostředí pro nasazení, najdete v článku [nasazujte modely pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+
+## <a name="training-script"></a>Cvičný skript
+
+Pro trénování modelu, určíte adresář, který obsahuje skript školení a přidružené soubory. Můžete také zadat název experimentu, který se používá k ukládání informací, která se nashromáždí během cvičení. Při školení, celý adresář se zkopíruje do prostředí pro školení (cílové výpočetní prostředí) a spuštění skriptu, který je určen podle konfigurace spuštění. Snímek adresáře je také uložen v rámci testu v pracovním prostoru.
+
+Příklad najdete v tématu [vytvořit pracovní prostor s Pythonem](quickstart-get-started.md).
+
+## <a name="run"></a>Spusťte
+
+Spuštění je záznam, který obsahuje následující informace:
+
+* Metadata o spuštění (časové razítko, dobu trvání a tak dále)
+* Metriky, které jsou zapsané podle vašeho skriptu
+* Výstupní soubory, které jsou autocollected podle testu nebo explicitně nahrát sami
+* Snímek adresáře, který obsahuje vaše skripty před spuštění
+
+Spuštění na základě když odešlete skript pro trénování modelu. Spuštění může mít nula nebo více podřízených spuštění. Například běh nejvyšší úrovně může mít dvě podřízené spuštění, z nichž každá může mít svůj vlastní podřízený prvek spustit.
+
+Příklad zobrazení spuštění, které vytváří trénování modelu, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+
+## <a name="snapshot"></a>Snímek
+
+Když odešlete spuštění, Azure Machine Learning komprimuje adresáře, který obsahuje skript jako soubor zip a odesílá je do cílového výpočetního prostředí. Soubor zip se pak extrahuje a existuje spuštění skriptu. Azure Machine Learning také ukládá soubor zip jako snímek jako součást spuštění záznamu. Každý, kdo má přístup k pracovním prostoru můžete procházet záznam spuštění a stáhnout snímek.
+
+## <a name="activity"></a>Aktivita
+
+Aktivita představuje dlouhotrvající operace. Příklady aktivit jsou následující operace:
+
+* Vytvoření nebo odstranění cílové výpočetní prostředí
+* Spuštění skriptu na cílové výpočetní prostředí
+
+Aktivity může poskytnout oznámení prostřednictvím sady SDK nebo ve webovém uživatelském rozhraní, takže můžete snadno sledovat průběh těchto operací.
 
 ## <a name="image"></a>Image
 
@@ -110,7 +193,7 @@ Bitové kopie, které jsou vytvořeny z vašich modelů uchovává informace o r
 
 ## <a name="deployment"></a>Nasazení
 
-Nasazení je instance svou image do obou webovou službu, která je možné hostovat v cloudu nebo modul pro nasazení integrovaných zařízení služby IoT. 
+Nasazení je instance svou image do obou webovou službu, která je možné hostovat v cloudu nebo modul pro nasazení integrovaných zařízení služby IoT.
 
 ### <a name="web-service"></a>Webová služba
 
@@ -124,36 +207,11 @@ Příklad nasazení modelu jako webové služby najdete v tématu [nasadit model
 
 ### <a name="iot-module"></a>Modul IoT
 
-Nasazené modulu IoT je kontejner Dockeru obsahující váš model a přidruženého skriptovacího nebo aplikace a všechny další závislosti. Nasaďte tyto moduly s použitím Azure IoT Edge na hraničních zařízeních. 
+Nasazené modulu IoT je kontejner Dockeru obsahující váš model a přidruženého skriptovacího nebo aplikace a všechny další závislosti. Nasaďte tyto moduly s použitím Azure IoT Edge na hraničních zařízeních.
 
 Pokud jste povolili monitorování, Azure shromažďuje telemetrická data z modelu uvnitř modulu Azure IoT Edge. Telemetrická data jsou přístupná pouze pro vás a je uložené v instanci účtu úložiště.
 
 Azure IoT Edge zajišťuje, že je spuštěn modul a monitoruje zařízení, který je hostitelem.
-
-## <a name="datastore"></a>Úložiště dat
-
-Úložiště dat je úložiště abstrakce přes účet úložiště Azure. Úložiště můžete použít kontejner objektů blob v Azure nebo sdílené složky Azure jako úložiště back-end. Každý pracovní prostor má výchozí úložiště, a můžete zaregistrovat další úložiště. 
-
-Pomocí rozhraní Python API sady SDK nebo rozhraní příkazového řádku Azure Machine Learning k ukládání a načítání souborů z úložiště. 
-
-## <a name="run"></a>Spusťte
-
-Spuštění je záznam, který obsahuje následující informace:
-
-* Metadata o spuštění (časové razítko, dobu trvání a tak dále)
-* Metriky, které jsou zapsané podle vašeho skriptu
-* Výstupní soubory, které jsou autocollected podle testu nebo explicitně nahrát sami
-* Snímek adresáře, který obsahuje vaše skripty před spuštění
-
-Spuštění na základě když odešlete skript pro trénování modelu. Spuštění může mít nula nebo více podřízených spuštění. Například běh nejvyšší úrovně může mít dvě podřízené spuštění, z nichž každá může mít svůj vlastní podřízený prvek spustit.
-
-Příklad zobrazení spuštění, které vytváří trénování modelu, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
-
-## <a name="experiment"></a>Experiment
-
-Experiment je seskupení mnoho spuštění ze zadaného skriptu. Vždy patří do pracovního prostoru. Když odešlete spustit, zadejte název experimentu. Informace pro spuštění jsou uloženy v rámci testu. Pokud odešlete spustit a zadejte název experimentu, který neexistuje, je automaticky vytvoří nový experiment s nově zadaným názvem.
-
-Příklad použití experiment, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
 
 ## <a name="pipeline"></a>Kanál
 
@@ -161,67 +219,9 @@ Pomocí machine learning kanály, abyste mohli vytvářet a spravovat pracovní 
 
 Další informace o machine learning kanály pomocí této služby najdete v tématu [kanály a Azure Machine Learning](concept-ml-pipelines.md).
 
-## <a name="compute-target"></a>Cílové výpočetní prostředí
-
-Cílové výpočetní prostředí je výpočetní prostředek, který používáte ke spuštění trénovací skript nebo hostovat vaše nasazení služby. Cílových podporovaných výpočetních prostředí jsou: 
-
-| Cílové výpočetní prostředí | Školení | Nasazení |
-| ---- |:----:|:----:|
-| Místního počítače | ✓ | &nbsp; |
-| Azure Machine Learning compute | ✓ | &nbsp; |
-| Virtuální počítač s Linuxem v Azure</br>(například virtuální počítač pro datové vědy) | ✓ | &nbsp; |
-| Azure Databricks | ✓ | &nbsp; | &nbsp; |
-| Azure Data Lake Analytics | ✓ | &nbsp; |
-| Apache Spark pro HDInsight | ✓ | &nbsp; |
-| Azure Container Instances | &nbsp; | ✓ |
-| Azure Kubernetes Service | &nbsp; | ✓ |
-| Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
-
-Cílových výpočetních prostředí jsou připojeny k pracovnímu prostoru. Výpočetní cíle než v místním počítači sdílejí uživatelé pracovního prostoru.
-
-### <a name="managed-and-unmanaged-compute-targets"></a>Cílových výpočetních prostředí spravované a nespravované
-
-* **Spravované**: Cíle, které jsou vytvořeny a spravované službou Azure Machine Learning COMPUTE. Tyto výpočetní cíle jsou optimalizované pro machine learning úlohy. Výpočetní prostředky Azure Machine Learning je jediná cílové výpočetní prostředí spravované od 4. prosince 2018. V budoucnu lze přidat další spravované výpočetní cíle. 
-
-    Můžete vytvořit machine learningu výpočetní instance přímo prostřednictvím pracovního prostoru pomocí webu Azure portal, Azure Machine Learning SDK nebo rozhraní příkazového řádku Azure. Všechny ostatní cílových výpočetních prostředí musí být vytvořená mimo pracovní prostor a pak k němu připojená.
-
-* **Nespravované**: Cílových výpočetních prostředí, které jsou *není* spravované službou Azure Machine Learning. Potřebujete vytvořit mimo Azure Machine Learning a připojte je k vašemu pracovnímu prostoru před použitím. Cílových výpočetních prostředí nespravované může vyžadovat další kroky pro vás k údržbě nebo ke zlepšení výkonu pro úlohy s machine learning.
-
-Informace o výběru cílové výpočetní prostředí pro školení, naleznete v tématu [výběr a použití cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md).
-
-Informace o výběru cílové výpočetní prostředí pro nasazení, najdete v článku [nasazujte modely pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
-
-## <a name="run-configuration"></a>Konfigurace spuštění
-
-Konfigurace spuštění je sada instrukcí, který definuje, jak spustit skript v cílové výpočetní prostředí zadané. Konfigurace zahrnuje celou sadu definic chování, například, zda chcete použít existující prostředí Python nebo používat prostředí Conda, která je vytvořená z specifikace.
-
-Konfigurace spuštění můžete nastavit jako trvalý, do souboru do adresáře, který obsahuje cvičný skript, nebo může být vytvořen jako objekt v paměti a použít k odeslání spuštění.
-
-Příklad konfigurace spuštění, naleznete v tématu [výběr a použití cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md).
-
-## <a name="training-script"></a>Cvičný skript
-
-Pro trénování modelu, určíte adresář, který obsahuje skript školení a přidružené soubory. Můžete také zadat název experimentu, který se používá k ukládání informací, která se nashromáždí během cvičení. Při školení, celý adresář se zkopíruje do prostředí pro školení (cílové výpočetní prostředí) a spuštění skriptu, který je určen podle konfigurace spuštění. Snímek adresáře je také uložen v rámci testu v pracovním prostoru.
-
-Příklad najdete v tématu [vytvořit pracovní prostor s Pythonem](quickstart-get-started.md).
-
 ## <a name="logging"></a>Protokolování
 
-Při vývoji řešení protokolovat libovolné metriky pomocí sady Python SDK Azure Machine Learning ve svém skriptu Pythonu. Po spuštění dotaz metriky k určení, zda má spustit vytvořený model, který chcete nasadit. 
-
-## <a name="snapshot"></a>Snímek
-
-Když odešlete spuštění, Azure Machine Learning komprimuje adresáře, který obsahuje skript jako soubor zip a odesílá je do cílového výpočetního prostředí. Soubor zip se pak extrahuje a existuje spuštění skriptu. Azure Machine Learning také ukládá soubor zip jako snímek jako součást spuštění záznamu. Každý, kdo má přístup k pracovním prostoru můžete procházet záznam spuštění a stáhnout snímek.
-
-## <a name="activity"></a>Aktivita
-
-Aktivita představuje dlouhotrvající operace. Příklady aktivit jsou následující operace:
-
-* Vytvoření nebo odstranění cílové výpočetní prostředí
-* Spuštění skriptu na cílové výpočetní prostředí
-
-Aktivity může poskytnout oznámení prostřednictvím sady SDK nebo ve webovém uživatelském rozhraní, takže můžete snadno sledovat průběh těchto operací.
+Při vývoji řešení protokolovat libovolné metriky pomocí sady Python SDK Azure Machine Learning ve svém skriptu Pythonu. Po spuštění dotaz metriky k určení, zda má spustit vytvořený model, který chcete nasadit.
 
 ## <a name="next-steps"></a>Další postup
 

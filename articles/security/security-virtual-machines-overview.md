@@ -4,7 +4,7 @@ description: Tento článek obsahuje základní informace o základní funkce za
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969681"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109074"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
 
@@ -47,16 +47,16 @@ Microsoft Antimalware pro Azure je řešení jednoho agenta pro aplikace a prost
 
 Při nasazení a povolit Microsoft Antimalware pro Azure, jsou k dispozici následující základní funkce:
 
-* **Ochrana v reálném čase**: monitoruje aktivity ve službě Cloud Services a na virtuálních počítačích ke zjištění a blokování spuštění malwaru.
-* **Naplánované prohledávání**: provádí pravidelné cílové skenování pro detekci malwaru, včetně aktivně spuštěné programy.
-* **Malwarové nápravy**: automaticky převezme zjištěného malwaru, jako je například odstranění nebo umístění do karantény škodlivých souborů a čištění položky registru škodlivé akce.
-* **Aktualizace signatur**: automaticky nainstaluje nejnovější signatury ochrany (definice virů) k zajištění, že je v frekvenci předem určené aktuální ochranu.
-* **Aktualizace antimalwarového stroje**: automaticky aktualizuje Microsoft Antimalware pro Azure modul.
-* **Antimalwarová platforma aktualizace**: automaticky aktualizuje Microsoft Antimalware pro platformu Azure.
-* **Aktivní ochranu**: sestavy metadat telemetrických dat do Azure informace o zjištěných hrozeb a podezřelé prostředky k zajištění rychlé reakce. Umožňuje v reálném čase synchronní podpis doručování prostřednictvím sítě Microsoft Active Protection systému (MAPS).
-* **Ukázky reporting**: poskytuje a sestavám ukázky Microsoft Antimalware pro Azure service vám pomůže vylepšit službu a umožňují řešit potíže.
-* **Vyloučení**: umožňuje aplikaci a správců služeb ke konfiguraci určitých souborů a procesy a řídí Pokud chcete vyloučit z ochrany a kontrolu pro výkon a z jiných důvodů.
-* **Shromažďování událostí Antimalwarové**: zaznamenává stav antimalwarové služby podezřelé aktivity a nápravné akce prováděné v protokolu událostí operačního systému a shromažďuje ve vašem účtu úložiště Azure.
+* **Ochrana v reálném čase**: Monitoruje aktivity ve službě Cloud Services a na virtuálních počítačích ke zjištění a blokování spuštění malwaru.
+* **Naplánované prohledávání**: Provádí pravidelné cílové skenování pro detekci malwaru, včetně aktivně spuštěné programy.
+* **Malwarové nápravy**: Automaticky provede akce pro zjištěného malwaru, jako je například odstranění nebo umístění do karantény škodlivých souborů a čištění položky škodlivé registru.
+* **Aktualizace signatur**: Automaticky nainstaluje nejnovější signatury ochrany (definice virů) k zajištění, že je v frekvenci předem určené aktuální ochranu.
+* **Aktualizace antimalwarového stroje**: Automaticky aktualizuje Microsoft Antimalware pro Azure modul.
+* **Antimalwarová platforma aktualizace**: Automaticky aktualizuje Microsoft Antimalware pro platformu Azure.
+* **Aktivní ochranu**: Sestavy metadata v telemetrických dat do Azure informace o zjištěných hrozeb a podezřelé prostředky k zajištění rychlé reakce. Umožňuje v reálném čase synchronní podpis doručování prostřednictvím sítě Microsoft Active Protection systému (MAPS).
+* **Ukázky reporting**: Poskytuje a hlásí ukázky Microsoft Antimalware pro Azure service vám pomůže vylepšit službu a umožňují řešit potíže.
+* **Vyloučení**: Umožňuje aplikaci a správci služeb ke konfiguraci určitých souborů, procesů a jednotky vyloučit z ochrany a kontrolu pro výkon a z jiných důvodů.
+* **Shromažďování událostí Antimalwarové**: Zaznamenává stav antimalwarové služby podezřelé aktivity a nápravné akce prováděné v protokolu událostí operačního systému a shromažďuje ve vašem účtu úložiště Azure.
 
 Další informace o antimalwarový software k ochraně virtuálních počítačů:
 
@@ -90,8 +90,7 @@ Key Vault umožňuje ukládat klíče v modulech zabezpečení hardwaru (HSM) s 
 
 Další informace:
 
-* [Co je Azure Key Vault?](../key-vault/key-vault-whatis.md)
-* [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md)
+* [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)
 * [Blog o Azure Key Vault](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Šifrování disku virtuálního počítače
@@ -103,7 +102,7 @@ Toto řešení je integrovaná s Azure Key Vault a pomáhá řídit a spravovat 
 Další informace:
 
 * [Azure Disk Encryption pro virtuální počítače IaaS](../security/azure-security-disk-encryption-overview.md)
-* [Rychlý start: Šifrování IaaS virtuálního počítače s Windows pomocí Azure Powershellu](../security/quick-encrypt-vm-powershell.md)
+* [Rychlé zprovoznění: Šifrování virtuálního počítače s Windows IaaS s využitím Azure Powershellu](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>Záloha virtuálního počítače
 
@@ -121,9 +120,9 @@ Důležitou součástí strategie BCDR organizace je tím, jak udržovat firemn�
 Site Recovery:
 
 * **Tato strategie zjednodušuje**: Site Recovery umožňuje snadno zpracovat replikace, převzetí služeb při selhání a obnovení několika podnikových úloh a aplikací z jednoho místa. Site Recovery orchestruje replikace a převzetí služeb při selhání, ale nebude nezachycuje data aplikací nebo nemá žádné informace o něm.
-* **Poskytuje flexibilní replikace**: pomocí Site Recovery můžete replikovat úlohy běžící na virtuálních počítačích Hyper-V, virtuálních počítačů VMware a fyzické servery Windows nebo Linuxem.
+* **Poskytuje flexibilní replikace**: Pomocí Site Recovery můžete replikovat úlohy běžící na virtuálních počítačích Hyper-V, virtuálních počítačů VMware a fyzické servery Windows nebo Linuxem.
 * **Podporuje převzetí služeb při selhání a obnovení**: Site Recovery poskytuje testovací převzetí služeb při selhání pro podporu zotavení po havárii, aniž to ovlivní produkční prostředí. Pro očekávané výpadky je možné spouštět plánovaná převzetí služeb při selhání bez ztráty dat. V případě neočekávaných havárií pak mohou proběhnout neplánovaná převzetí služeb s minimálními ztrátami dat (podle četnosti replikací). Po převzetí služeb při selhání můžete navrátit služby zpět do primární lokality. Site Recovery poskytuje plány obnovení, které mohou obsahovat skripty a sešity automatizace Azure, což vám umožní přizpůsobit si přebírání služeb při selhání a obnovování vícevrstvých aplikací.
-* **Eliminuje sekundárních datových center**: můžete replikovat do sekundární místní lokality nebo do Azure. Použití Azure jako cíle pro zotavení po havárii se eliminují náklady a složitost spojené s udržováním sekundární lokality. Replikovaná data jsou uložena ve službě Azure Storage.
+* **Eliminuje sekundárních datových center**: Můžete replikovat do sekundární místní lokality nebo do Azure. Použití Azure jako cíle pro zotavení po havárii se eliminují náklady a složitost spojené s udržováním sekundární lokality. Replikovaná data jsou uložena ve službě Azure Storage.
 * **Se integruje s existujícími technologiemi BCDR**: Site Recovery spolupracuje s funkcemi BCDR jiných aplikací. Site Recovery můžete například použít k ochraně back end systému SQL Server u firemních úloh. To zahrnuje nativní podporu pro SQL Server AlwaysOn pro správu převzetí služeb při selhání skupiny dostupnosti.
 
 Další informace:

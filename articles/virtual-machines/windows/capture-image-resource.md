@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: a5e3fbc3369f19af8d93e23d669a4449ab3d414c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 48aa634ad28236564223c1a78a2e190cd2a0e668
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980580"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107460"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
@@ -87,7 +87,7 @@ Generalizace virtuálního počítače Windows, postupujte podle těchto kroků:
 Vytvoření bitové kopie přímo z virtuálního počítače se zajistí, že na obrázku obsahuje všechny disky přidružené k virtuálnímu počítači, včetně disk s operačním systémem a všechny datové disky. Tento příklad ukazuje postup vytvoření spravované image z virtuálního počítače, že používá spravované disky.
 
 
-Než začnete, ujistěte se, že máte nejnovější verzi modul AzureRM.Compute Powershellu, který musí být verze 5.7.0 nebo novější. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable AzureRM.Compute` v prostředí PowerShell. Pokud potřebujete upgrade, přečtěte si téma [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](/powershell/azure/azurerm/install-az-ps). Pokud používáte PowerShell místně, spusťte `Connect-AzAccount` vytvořit připojení k Azure.
+Než začnete, ujistěte se, že máte nejnovější verzi modul AzureRM.Compute Powershellu, který musí být verze 5.7.0 nebo novější. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable AzureRM.Compute` v prostředí PowerShell. Pokud potřebujete upgrade, přečtěte si téma [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, spusťte `Connect-AzAccount` vytvořit připojení k Azure.
 
 
 > [!NOTE]

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory pomocí adaptivního Insights | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s adaptivní Insights | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a adaptivní Insights.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e334795a63ff298ff8f0695340f35fdff1ad03e0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430285"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166517"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Kurz: Integrace Azure Active Directory pomocí adaptivního Insights
+# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Kurz: Integrace Azure Active Directory s adaptivní Insights
 
 V tomto kurzu se dozvíte, jak integrovat adaptivní Insights s Azure Active Directory (Azure AD).
 
@@ -220,7 +221,7 @@ Povolit uživatele Azure AD se přihlaste k adaptivní přehledy, musí být zř
 
    b. Vyberte **Role**.
 
-   c. Klikněte na tlačítko **odeslat**.
+   c. Klikněte na **Submit** (Odeslat).
 
 >[!NOTE]
 >Můžete použít jakékoli jiné adaptivní Insights uživatele účtu nástrojů pro vytváření nebo rozhraní API poskytovaných adaptivní Insights uživatelským účtům, zřídit AAD.

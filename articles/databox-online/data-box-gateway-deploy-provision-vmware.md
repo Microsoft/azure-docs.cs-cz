@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099154"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117744"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Kurz: Zřízení Azure Data Box brány ve službě VMware (Náhled)
 
@@ -66,7 +66,7 @@ Před nasazením virtuálního zařízení se ujistěte, že:
 
 Než začnete:
 
-- Projděte si požadavky na síť pro nasazení služby Data Box Gateway a nakonfigurujte podle těchto požadavků síť datacentra. Další informace najdete v tématu popisujícím [požadavky na síť pro službu Data Box Gateway](data-box-gateway-system-requirements.md#networking-requirements).
+- Projděte si požadavky na síť pro nasazení služby Data Box Gateway a nakonfigurujte podle těchto požadavků síť datacentra. Další informace najdete v tématu popisujícím [požadavky na síť pro službu Data Box Gateway](data-box-gateway-system-requirements.md#networking-port-requirements).
 - Ujistěte se, že je šířka internetového pásma minimálně 20 Mb/s, aby zařízení mohlo fungovat optimálně.
 
 ## <a name="check-the-host-system"></a>Kontrola hostitelského systému
@@ -77,7 +77,7 @@ K vytvoření virtuálního zařízení potřebujete:
  
   * Minimálně 4 jádra
   * Minimálně 8 GB paměti RAM 
-  * Jedno síťové rozhraní připojené k síti, která podporuje směrování provozu do internetu. 
+  * Jedno síťové rozhraní připojené k síti, která podporuje směrování provozu do internetu.
   * 250GB disk s operačním systémem
   * 2TB virtuální disk pro data
 * Klienta VMware vSphere ve vašem systému pro správu hostitele ESXi.
@@ -89,7 +89,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 1. Zkopírujte do svého systému image virtuálního zařízení. Tuto virtuální image (dva soubory) jste si stáhli přes Azure Portal. Poznamenejte si umístění, do kterého jste image zkopírovali, protože tuto image použijete v pozdější části tohoto postupu.
 
-2. Přihlaste se k serveru ESXi pomocí webovém klientovi vSphere. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
+2. Přihlaste se k serveru ESXi z prohlížeče na této adrese URL: `https://<IP address of the ESXi server>`. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -149,20 +149,24 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    Posuňte se dolů, dokud se nezobrazí **Nový pevný disk**, a rozbalte ho, aby se zobrazilo nastavení. Nastavte **Uzel virtuálního zařízení** na **Kontroler IDE 0**. Klikněte na **Další**.
+    Posuňte se dolů, dokud se nezobrazí **Nový pevný disk**, a rozbalte ho, aby se zobrazilo nastavení. Nastavte **Uzel virtuálního zařízení** na **Kontroler IDE 0**.
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-27. Na stránce **Připraveno k dokončení** zkontrolujte všechna nastavení přidružená k novému virtuálnímu počítači. Ověřte, že počet CPU je 4, paměť má velikost 8 192 MB, počet síťových rozhraní je 1 a Pevný disk 2 má kontroler IDE 0. Klikněte na **Dokončit**. 
+17. (Volitelné) *Tento krok proveďte jenom v případě, že běží VMware ESXi Server 6.7*. Na **nastavení** klikněte na **možností virtuálního počítače**. Přejděte na **možností spuštění > Firmware** a změňte ho na **systému BIOS**. Ve výchozím nastavení je hodnota nastavena na rozhraní EFI. Klikněte na **Další**.
+
+    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+
+18. Na stránce **Připraveno k dokončení** zkontrolujte všechna nastavení přidružená k novému virtuálnímu počítači. Ověřte, že počet CPU je 4, paměť má velikost 8 192 MB, počet síťových rozhraní je 1 a Pevný disk 2 má kontroler IDE 0. Klikněte na **Dokončit**.
    
     ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
     ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Váš virtuální počítač je teď zřízený. Zobrazí se o tom oznámení a nový virtuální počítač se přidá do seznamu virtuálních počítačů. 
+Váš virtuální počítač je teď zřízený. Zobrazí se o tom oznámení a nový virtuální počítač se přidá do seznamu virtuálních počítačů.
 
 ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Dalším krokem je počítač zapnout a získat jeho IP adresu.
+Dalším krokem je zapnout tento virtuální počítač a získejte IP adresu.
 
 > [!NOTE]
 > Doporučujeme, abyste na virtuální zařízení (zřízené výše) neinstalovali nástroje VMware. Instalace nástrojů VMware bude mít za následek nepodporovanou konfiguraci.

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ea7ac7e9c41dd11815da85d4a791eb8c93f7bec
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 939a6443fb0993592d9640c83b985ce761f0fa61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100376"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>Kurz: Integrace Azure Active Directory s AlertOps
 

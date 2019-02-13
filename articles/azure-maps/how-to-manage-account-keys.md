@@ -1,6 +1,6 @@
 ---
-title: Správa účtu Azure Maps a klíčů | Dokumentace Microsoftu
-description: Na webu Azure portal můžete použít ke správě vašeho účtu Azure Maps a správě přístupových klíčů.
+title: Správa účtu Azure Maps | Dokumentace Microsoftu
+description: Na webu Azure portal můžete použít ke správě vašeho účtu Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/12/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 81746279e935f9fa5b6ef00bc8d31e75f4d3bd20
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 488167b4893c314af99b354a2422204ebbf34c5e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103040"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113682"
 ---
-# <a name="manage-your-azure-maps-account-and-keys"></a>Správa účtu Azure Maps a klíčů
+# <a name="manage-your-azure-maps-account"></a>Správa účtu Azure Maps
 
-Můžete spravovat váš účet Azure Maps a klíče na webu Azure portal. Jakmile budete mít účtu a klíč, můžete implementovat rozhraní API na vašem webu nebo mobilní aplikace.
+Můžete spravovat váš účet Azure Maps pomocí webu Azure portal. Jakmile budete mít účet, můžete implementovat rozhraní API na vašem webu nebo mobilní aplikace.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -32,16 +32,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 4. Zadejte informace pro svůj nový účet.
 
 ![Zadejte informace o účtu na portálu](./media/how-to-manage-account-keys/new-account-portal.png)
-
-## <a name="manage-keys-on-the-account-page"></a>Spravovat klíče na stránce účtu
-
-Po vytvoření účtu získáte náhodně vygenerované dva klíče. Načtení dat mapy nebo vytvořte novou instanci mapy jazyka JavaScript, pomocí klíčů k ověřování na základě rozhraní API služby Azure Maps.
-
-Svoje klíče najdete na webu Azure Portal. Přejděte do svého účtu. Potom vyberte **klíče** z nabídky.
-
-![Správa klíčů účtu na portálu](./media/how-to-manage-account-keys/account-keys-portal.png)
-
-Na této stránce můžete zkopírovat vaše klíče nebo generovat nové značky.
 
 ## <a name="delete-an-account"></a>Odstranit účet
 

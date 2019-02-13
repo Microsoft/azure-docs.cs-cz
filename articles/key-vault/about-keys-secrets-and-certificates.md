@@ -4,7 +4,7 @@ description: Přehled Azure Key Vault REST rozhraní a pro vývojáře podrobnos
 services: key-vault
 documentationcenter: ''
 author: BryanLa
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 0dcfd1bd75fa54a1bbea93497a0cc872ad6d5184
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 49879d36937a0f0d7ccf1a82cf8b6ca09453894d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078367"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106962"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
@@ -41,7 +41,7 @@ Zápis JSON (JavaScript Object) a specifikace jazyka JavaScript objekt podepisov
 
 -   [Webového klíče JSON (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [Šifrování webové JSON (pomocí JWE.)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
--   [JSON Web algoritmy (DŽWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web podpis (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Typy dat
@@ -95,10 +95,10 @@ Kryptografické klíče ve službě Key Vault jsou reprezentovány ve formě obj
 
 Key Vault podporuje jenom klíče RSA a eliptické křivky. 
 
--   **ES**: "Text soft" klíč eliptické křivky.
--   **ES HSM**: "Pevné" klíč eliptické křivky.
+-   **EC**: "Text soft" klíč eliptické křivky.
+-   **EC-HSM**: "Pevné" klíč eliptické křivky.
 -   **RSA**: "Text soft" klíč RSA.
--   **RSA HSM**: "Pevné" klíč RSA.
+-   **RSA-HSM**: "Pevné" klíč RSA.
 
 Key Vault podporuje klíče RSA 2048, 3072 do 4096 velikostí. Key Vault podporuje eliptické křivky klíč typy p-256, p-384, p-521 a P-256_K (SECP256K1).
 
@@ -173,13 +173,13 @@ Další informace o objektech JWK, naleznete v tématu [JSON Web klíč (JWK)](h
 Kromě materiál klíče je možné zadat následující atributy. V požadavku JSON, atributy – klíčové slovo a složené závorky ' {""} ", jsou požadovány, i když nejsou žádné atributy určené.  
 
 - *povolené*: logická hodnota, nepovinné, výchozí hodnota je **true**. Určuje, zda je klávesa aktivní a použitelný pro kryptografické operace. *Povolené* atribut se používá ve spojení s *nbf* a *exp*. Při operaci dochází mezi *nbf* a *exp*, se budou jenom povoleny Pokud *povolené* je nastavena na **true**. Operace mimo *nbf* / *exp* okno automaticky jsou zakázané, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations).
-- *NBF*: Volitelné, výchozí IntDate, je teď. *Nbf* (ne před) atribut určuje dobu, před kterým musí klíč není používán pro kryptografické operace, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations). Zpracování *nbf* atribut vyžaduje, že aktuální datum a čas musí nastat po nebo rovno nikoli-před podle data a času *nbf* atribut. Key Vault může poskytnout pro některé malé volnost, obvykle více než několik minut, aby se zohlednily hodin zkreslit. Hodnotou musí být číslo obsahující hodnotu IntDate.  
-- *Exp*: Volitelné, IntDate, výchozí hodnota je "navždy". *Exp* atribut (čas vypršení platnosti) označuje čas vypršení platnosti nebo později, který klíč nesmí použít pro kryptografické operace, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations). Zpracování *exp* atribut vyžaduje, že aktuální datum a čas musí být před datum a čas vypršení platnosti uvedené v *exp* atribut. Key Vault může poskytnout pro některé malé volnost, obvykle více než několik minut, aby se zohlednily hodin zkreslit. Hodnotou musí být číslo obsahující hodnotu IntDate.  
+- *nbf*: Volitelné, výchozí IntDate, je teď. *Nbf* (ne před) atribut určuje dobu, před kterým musí klíč není používán pro kryptografické operace, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations). Zpracování *nbf* atribut vyžaduje, že aktuální datum a čas musí nastat po nebo rovno nikoli-před podle data a času *nbf* atribut. Key Vault může poskytnout pro některé malé volnost, obvykle více než několik minut, aby se zohlednily hodin zkreslit. Hodnotou musí být číslo obsahující hodnotu IntDate.  
+- *exp*: Volitelné, IntDate, výchozí hodnota je "navždy". *Exp* atribut (čas vypršení platnosti) označuje čas vypršení platnosti nebo později, který klíč nesmí použít pro kryptografické operace, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations). Zpracování *exp* atribut vyžaduje, že aktuální datum a čas musí být před datum a čas vypršení platnosti uvedené v *exp* atribut. Key Vault může poskytnout pro některé malé volnost, obvykle více než několik minut, aby se zohlednily hodin zkreslit. Hodnotou musí být číslo obsahující hodnotu IntDate.  
 
 Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, která zahrnuje klíčové atributy:  
 
 - *vytvoření*: IntDate volitelné. *Vytvořili* atribut označuje, kdy byla vytvořena tato verze klíče. Je hodnota null pro klíče vytvořené před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.  
-- *Aktualizovat*: IntDate volitelné. *Aktualizovat* atribut označuje, kdy došlo k aktualizaci této verze klíče. Je hodnota null pro klíče, které byly aktualizovány naposledy před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.  
+- *updated*: IntDate volitelné. *Aktualizovat* atribut označuje, kdy došlo k aktualizaci této verze klíče. Je hodnota null pro klíče, které byly aktualizovány naposledy před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.  
 
 Další informace o IntDate a jiné datové typy najdete v tématu [datové typy](#data-types)  
 
@@ -205,11 +205,11 @@ Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key 
 Tato oprávnění lze udělit, na za uživatele / service základem v položky řízení přístupu klíče v trezoru. Tato oprávnění úzce zrcadlí přípustné na klíče objektu operace:  
 
 - Oprávnění pro operace správy klíčů
-  - *Získat*: Přečtěte si části veřejný klíč a jeho atributy
+  - *get*: Přečtěte si části veřejný klíč a jeho atributy
   - *Seznam*: Seznam klíčů nebo verze klíč uložený ve službě key vault
-  - *Aktualizace*: Aktualizovat atributy pro klíč
+  - *update*: Aktualizovat atributy pro klíč
   - *Vytvoření*: Vytvářet nové klíče
-  - *Import*: Import klíče do trezoru klíčů
+  - *import*: Import klíče do trezoru klíčů
   - *Odstranit*: Odstranit objekt klíče
   - *Obnovit*: Obnovení odstraněné klíče
   - *Zálohování*: Zálohování klíče v trezoru klíčů
@@ -242,14 +242,14 @@ Key Vault podporuje také pole contentType tajnými kódy. Klienti mohou zadat t
 
 Kromě tajných dat lze zadat následující atributy:  
 
-- *Exp*: Je volitelný, výchozí IntDate, **navždy**. *Exp* atribut (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které tajná data by měla nelze načíst, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** účely jen informuje uživatele ze služby key vault, nelze použít konkrétní tajný klíč. Hodnotou musí být číslo obsahující hodnotu IntDate.   
-- *NBF*: Je volitelný, výchozí IntDate, **nyní**. *Nbf* (ne před) atribut určuje dobu, před kterým by MĚL nebyla načtena tajných dat, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** pouze účely. Hodnotou musí být číslo obsahující hodnotu IntDate. 
+- *exp*: Je volitelný, výchozí IntDate, **navždy**. *Exp* atribut (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které tajná data by měla nelze načíst, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** účely jen informuje uživatele ze služby key vault, nelze použít konkrétní tajný klíč. Hodnotou musí být číslo obsahující hodnotu IntDate.   
+- *nbf*: Je volitelný, výchozí IntDate, **nyní**. *Nbf* (ne před) atribut určuje dobu, před kterým by MĚL nebyla načtena tajných dat, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** pouze účely. Hodnotou musí být číslo obsahující hodnotu IntDate. 
 - *povolené*: logická hodnota, nepovinné, výchozí hodnota je **true**. Tento atribut určuje, zda lze načíst tajné údaje. Atribut enabled se používá ve spojení s *nbf* a *exp* dojde operaci mezi *nbf* a *exp*, bude pouze povolené, pokud je povoleno je nastavená na **true**. Operace mimo *nbf* a *exp* okno se automaticky zakázaná, s výjimkou v [konkrétní situace](#date-time-controlled-operations).  
 
 Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, která zahrnuje tajný atributy:  
 
 - *vytvoření*: IntDate volitelné. Vytvořený atribut označuje, kdy byla vytvořena tato verze tajného klíče. Je tato hodnota null pro tajné klíče vytvořené před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.  
-- *Aktualizovat*: IntDate volitelné. Aktualizovaný atribut označuje, kdy došlo k aktualizaci této verzi tajného klíče. Je tato hodnota null pro tajné kódy, které byly aktualizovány naposledy před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.
+- *updated*: IntDate volitelné. Aktualizovaný atribut označuje, kdy došlo k aktualizaci této verzi tajného klíče. Je tato hodnota null pro tajné kódy, které byly aktualizovány naposledy před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.
 
 #### <a name="date-time-controlled-operations"></a>Operace řízené datum a čas
 
@@ -264,9 +264,9 @@ Další informace o typech dat najdete v části [datové typy](#data-types).
 Tato oprávnění můžete použít, na základě na objekt v položky řízení přístupu tajné klíče v trezoru a úzce zrcadlení přípustné tajného kódu objektu operace:  
 
 - Oprávnění pro operace správy tajných kódů
-  - *Získat*: Čtení tajného klíče  
+  - *get*: Čtení tajného klíče  
   - *Seznam*: Seznam tajných kódů nebo verzí tajného klíče do služby Key Vault  
-  - *Nastavte*: Vytvoření tajného klíče  
+  - *set*: Vytvoření tajného klíče  
   - *Odstranit*: Odstranění tajného klíče  
   - *Obnovit*: Obnovení odstraněné tajného kódu
   - *Zálohování*: Zálohování tajný klíč v trezoru klíčů
@@ -327,9 +327,9 @@ Certifikát služby Key Vault má následující atributy:
 Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi:
 
 -   *vytvoření*: IntDate: Určuje, kdy byla vytvořena tato verze certifikátu.  
--   *Aktualizovat*: IntDate: Určuje, kdy došlo k aktualizaci této verze certifikátu.  
--   *Exp*: IntDate: obsahuje hodnotu Datum vypršení platnosti x509 certifikát.  
--   *NBF*: IntDate: obsahuje hodnotu Datum x509 certifikát.  
+-   *updated*: IntDate: Určuje, kdy došlo k aktualizaci této verze certifikátu.  
+-   *exp*: IntDate: obsahuje hodnotu Datum vypršení platnosti x509 certifikát.  
+-   *nbf*: IntDate: obsahuje hodnotu Datum x509 certifikát.  
 
 > [!Note] 
 > Pokud vyprší platnost certifikátu služby Key Vault, je adresovatelný klíč a tajný kód nefunkčnost.  
@@ -421,11 +421,11 @@ Pokud zásady certifikátu je nastavena na automatické obnovení, se odešle oz
  Na základě na objekt v položky řízení přístupu tajné klíče v trezoru klíčů a úzce zrcadlení přípustné tajného kódu objektu operace lze použít následující oprávnění:  
 
 - Oprávnění pro operace správy certifikátů
-  - *Získat*: Získání aktuální verze certifikátu nebo jakoukoli verzi nástroje certifikát 
+  - *get*: Získání aktuální verze certifikátu nebo jakoukoli verzi nástroje certifikát 
   - *Seznam*: Zobrazí aktuální certifikáty nebo verze certifikátu  
-  - *Aktualizace*: Aktualizace certifikátu
+  - *update*: Aktualizace certifikátu
   - *Vytvoření*: Vytvořit certifikát služby Key Vault
-  - *Import*: Naimportujte certifikát materiálu certifikátem Key Vaultu
+  - *import*: Naimportujte certifikát materiálu certifikátem Key Vaultu
   - *Odstranit*: Odstranit certifikát, jeho zásady a všechny jeho verze  
   - *Obnovit*: Obnovení odstraněné certifikátu
   - *Zálohování*: Zálohování certifikátu ve službě key vault
@@ -458,14 +458,14 @@ Další informace najdete v tématu [klíčů k účtu úložiště Azure Key Va
 Tato oprávnění lze použít při autorizaci uživatele nebo instančního objektu aplikace k provádění operací na spravovaný účet úložiště:  
 
 - Oprávnění pro spravovaný účet úložiště a definice SaS operace
-  - *Získat*: Získá informace o účtu úložiště 
+  - *get*: Získá informace o účtu úložiště 
   - *Seznam*: Seznam účtů úložiště spravované službou Key Vault
-  - *Aktualizace*: Aktualizace účtu úložiště
+  - *update*: Aktualizace účtu úložiště
   - *Odstranit*: Odstranění účtu úložiště  
   - *Obnovit*: Obnovení odstraněného účtu
   - *Zálohování*: Vytvoření účtu úložiště zálohy
   - *Obnovit*: Obnovení účtu úložiště zálohovaných do služby Key Vault
-  - *Nastavte*: Vytvořit nebo aktualizovat účet úložiště
+  - *set*: Vytvořit nebo aktualizovat účet úložiště
   - *regeneratekey*: Znovu vygenerovat zadanou hodnotou klíče účtu úložiště
   - *getsas*: Získejte informace o definici SAS účtu úložiště
   - *listsas*: Seznam definice SAS úložiště pro účet úložiště
@@ -481,4 +481,4 @@ Další informace najdete v tématu [operace účtů úložiště v referenci ro
 
 - [Ověřování, požadavky a odpovědi](authentication-requests-and-responses.md)
 - [Verze služby Key Vault](key-vault-versions.md)
-- [Příručka pro vývojáře trezor klíčů](/azure/key-vault/key-vault-developers-guide)
+- [Průvodce vývojáře pro službu Key Vault](/azure/key-vault/key-vault-developers-guide)

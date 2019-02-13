@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8525b1450ae8b7badfe1c569c2040ecf1ab78070
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314367"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109484"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Přineste si vlastní klíč pro Apache Kafka v Azure HDInsight (Preview)
 
@@ -39,7 +39,7 @@ Na webu Azure portal nebo rozhraní příkazového řádku Azure můžete bezpe�
 
    HDInsight podporuje jenom služby Azure Key Vault. Pokud máte trezor klíčů, můžete klíče importovat do Azure Key Vault. Mějte na paměti, že klíče musí mít "Obnovitelné odstranění" a "Proveďte není odstranění" povolena. Funkce "Obnovitelné odstranění" a "Proveďte nelze vymazat" jsou k dispozici prostřednictvím rozhraní REST, .NET / C#, prostředí PowerShell a rozhraní příkazového řádku Azure rozhraní.
 
-   Chcete-li vytvořit nový trezor klíčů, postupujte [Azure Key Vault](../../key-vault/key-vault-get-started.md) rychlý start. Další informace o importu stávajících klíčů [informace o klíčích, tajných kódů a certifikátů](../../key-vault/about-keys-secrets-and-certificates.md).
+   Chcete-li vytvořit nový trezor klíčů, postupujte [Azure Key Vault](../../key-vault/key-vault-overview.md) rychlý start. Další informace o importu stávajících klíčů [informace o klíčích, tajných kódů a certifikátů](../../key-vault/about-keys-secrets-and-certificates.md).
 
    Chcete-li vytvořit nový klíč, vyberte **vygenerovat/importovat** z **klíče** nabídky v části **nastavení**.
 
@@ -120,4 +120,4 @@ Na webu Azure portal nebo rozhraní příkazového řádku Azure můžete bezpe�
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o službě Azure Key Vault najdete v tématu [co je Azure Key Vault](../../key-vault/key-vault-whatis.md)?
-* Abyste mohli začít se službou Azure Key Vault, naleznete v tématu [Začínáme se službou Azure Key Vault](../../key-vault/key-vault-get-started.md).
+* Abyste mohli začít se službou Azure Key Vault, naleznete v tématu [Začínáme se službou Azure Key Vault](../../key-vault/key-vault-overview.md).
