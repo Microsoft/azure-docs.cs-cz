@@ -14,26 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 58db410fe5a6c2b081507eae2ccad3a258ec0864
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 226fea2df2b4a5d6dd428c1d28d8c09f47bca7de
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427586"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162284"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
 
 ## <a name="core-concepts"></a>Základní koncepty
 [Terminologie Service Fabric](service-fabric-technical-overview.md), [aplikační model](service-fabric-application-model.md), a [podporované programovací modely](service-fabric-choose-framework.md) poskytují další koncepty a popisy, ale zde jsou základní informace.
-
-<table><tr><th>Základní koncepty</th><th>Doby návrhu</th><th>Za běhu</th></tr>
-<tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
-<img src="./media/service-fabric-content-roadmap/CoreConceptsVid.png" WIDTH="240" HEIGHT="162"></a></td>
-<td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965"><img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td>
-<td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">
-<img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td></tr>
-</table>
 
 ### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Návrhu: typ aplikace, typ služby, balíček aplikace a manifest, balíček služby a manifest
 Typ aplikace je název/verze, která je přiřazena ke kolekci typů služeb. Toto je definováno v *ApplicationManifest.xml* soubor, který je vložený v adresáři balíčku aplikace. Balíček aplikace se pak zkopíruje do úložiště imagí clusteru Service Fabric. Pojmenované aplikace si můžete vytvořit z tohoto typu aplikace, které pak spustí v rámci clusteru. 
@@ -106,10 +98,6 @@ Podle jiných platforem, aplikace v Service Fabric obvykle prochází následuj�
 
 Životní cyklus celá aplikace je možné spravovat pomocí [rutin prostředí PowerShell](/powershell/module/ServiceFabric/), [příkazy rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní Java API](/java/api/overview/azure/servicefabric), a [ Rozhraní REST API](/rest/api/servicefabric/). Můžete také nastavit průběžné integrace a nasazování kanálů pomocí nástroje, jako [kanály Azure](service-fabric-set-up-continuous-integration.md) nebo [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
-Následující video Microsoft Virtual Academy popisuje, jak spravovat životní cyklus vaší aplikace: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
-<img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
-
 ## <a name="test-applications-and-services"></a>Testování aplikací a služeb
 K vytvoření skutečně cloudových služeb, je velmi důležité ověřit, že vaše aplikace a služby dokázal skutečná selhání. Fault Analysis Service je určená pro testování služeb, které jsou vytvořené v Service Fabric. S [Fault Analysis Service](service-fabric-testability-overview.md), můžete zahájit smysluplné chyb a spouštějte scénáře dokončení testování vašich aplikací. Tyto chyby a scénáře výkon a ověřit řadu stavy a přechody, která službu budou moct používat v průběhu svého životního cyklu, všechny řízené, bezpečné a konzistentním způsobem.
 
@@ -129,10 +117,6 @@ K vytvoření skutečně cloudových služeb, je velmi důležité ověřit, že
 [Cluster Service Fabric](service-fabric-deploy-anywhere.md) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby. Clustery je možné škálovat na tisíce počítačů. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel clusteru. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, například vlastnosti umístění. Každý počítač nebo virtuální počítač má automaticky spouštěná služba, `FabricHost.exe`, která se spustí při spuštění a spustí dvě spustitelné soubory: Fabric.exe a FabricGateway.exe. Tyto dvě spustitelné soubory tvoří uzlu. Pro testovací scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
 
 Clustery Service Fabric se dají vytvořit na virtuálních nebo fyzických počítačích s Windows serverem nebo Linuxem. Máte možnost k nasazení a spuštění aplikace Service Fabric v jakémkoli prostředí, kam máte sadu Windows Server nebo Linux počítačů, které jsou propojeny: místně, v Microsoft Azure nebo na jakýkoli jiný poskytovatel cloudu.
-
-Následující video Microsoft Virtual Academy popisuje clustery Service Fabric: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
-<img src="./media/service-fabric-content-roadmap/ClusterOverview.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="clusters-on-azure"></a>Clustery v Azure
 Clustery Service Fabric běžící v Azure poskytuje integraci se službou další funkce a služby Azure, takže operace a Správa clusteru jednodušší a spolehlivější. Cluster je prostředek Azure Resource Manageru, takže lze modelovat clustery podobně jako ostatní prostředky v Azure. Resource Manager také poskytuje snadnou správu všechny prostředky používané položkou clusteru jako jeden celek. Clustery v Azure jsou integrované s diagnostikou Azure a službou Log Analytics. Typy uzlů clusteru jsou [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/index), takže je součástí funkcí automatického škálování.
@@ -187,10 +171,6 @@ Service Fabric poskytuje několik způsobů [zobrazení sestav health](service-f
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) nebo jiné nástroje pro vizualizaci.
 * Dotazy na stav (prostřednictvím [PowerShell](/powershell/module/ServiceFabric/), [rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API FabricClient C#](/dotnet/api/system.fabric.fabricclient.healthclient) a [rozhraní API FabricClient Java](/java/api/system.fabric), nebo [REST Rozhraní API](/rest/api/servicefabric)).
 * Obecné dotazy to návratový seznam entit, které mají stav jako jedna z vlastností (prostřednictvím prostředí PowerShell, rozhraní příkazového řádku, rozhraní API nebo REST).
-
-Následující video Microsoft Virtual Academy popisuje model stavu Service Fabric a jak se používá: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-content-roadmap/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 [Monitorování a Diagnostika](service-fabric-diagnostics-overview.md) jsou důležité pro vývoj, testování a nasazení aplikací a služeb v jakémkoli prostředí. Service Fabric řešení fungují lépe, když plánování a implementace monitorování a diagnostiky, které pomáhají zajistit aplikace a služby fungují podle očekávání v místním vývojovém prostředí nebo v produkčním prostředí.

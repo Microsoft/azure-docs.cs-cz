@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Workteam | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Workteam | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Workteam.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d6ca6395e4f5e1aca361c56e21afc4e6bd1fc0c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132881"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185770"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Kurz: Integrace Azure Active Directory se službou Workteam
+# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Kurz: Integrace Azure Active Directory s Workteam
 
 V tomto kurzu se dozvíte, jak integrovat Workteam s Azure Active Directory (Azure AD).
 
@@ -145,7 +146,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     c. V **SAML Entity ID** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
 
-    d. V poznámkovém bloku, otevřete **certifikáty s kódováním base-64** , který jste stáhli z portálu Azure portal, zkopírujte jeho obsah a vložte jej do **podpisový certifikát SAML (Base64)** pole.
+    d. V poznámkovém bloku, otevřete **certifikáty s kódováním base-64** , který jste stáhli z portálu Azure portal, zkopírujte jeho obsah a vložte jej do **podpisový certifikát SAML (Base64)** pole.
 
     e. Klikněte na **OK**.
 

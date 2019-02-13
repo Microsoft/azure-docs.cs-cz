@@ -4,7 +4,7 @@ description: Tento článek obsahuje přehled provozního zabezpečení Azure.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238535"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116469"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled provozního zabezpečení Azure
 
@@ -139,15 +139,15 @@ Network Watcher usnadňuje monitorování a Diagnostika sítě Azure. Diagnostic
 
 Network Watcher je aktuálně má následující možnosti:
 
-- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): poskytuje přehled různých propojení a přidružení mezi síťové prostředky ve skupině prostředků.
-- [Proměnné zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): zaznamená data o paketů do a z virtuálního počítače. Rozšířené možnosti filtrování a jemně vyladěné ovládací prvky, jako je možnost nastavit omezení času a velikosti, poskytují všestrannost. Paketu data mohou být uložena v úložišti objektů blob nebo na místní disk ve formátu CAP.
-- [Ověření toku protokolu IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): zkontroluje, jestli je paket povolený nebo zakázaný založenou na parametrech paketů 5 řazené kolekce členů pro informace o toku (cílová IP adresa, Zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud skupinu zabezpečení zakazuje paket, budou vráceny pravidlo a skupiny, které paket zamítlo.
-- [Další směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Určuje další segment pro pakety směrovány v prostředcích infrastruktury sítě Azure, takže můžete diagnostikovat všechny správně nakonfigurovaný. trasy definované uživatelem.
-- [Zobrazení skupin zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): získá pravidla efektivní a použité zabezpečení, které se použijí na virtuálním počítači.
-- [Protokoly toků NSG pro skupiny zabezpečení sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): vám umožní zachytit protokoly týkající se provozu, který je povolený nebo zakázaný podle pravidla zabezpečení ve skupině. Tok je definován informace 5 řazené kolekce členů: zdrojové IP, cílová IP adresa, zdrojový port, cílový port a protokol.
-- [Brána virtuální sítě a řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): poskytuje možnost Poradce při potížích s brány virtuální sítě a připojení.
-- [Sítě limity předplatného](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): umožňuje zobrazit využití prostředků sítě proti omezení.
-- [Diagnostické protokoly](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): poskytuje k povolení nebo zakázání diagnostické protokoly pro síťové prostředky ve skupině prostředků.
+- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Poskytuje přehled různých propojení a přidružení mezi síťové prostředky ve skupině prostředků.
+- [Proměnné zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Zaznamená data o paketů do a z virtuálního počítače. Rozšířené možnosti filtrování a jemně vyladěné ovládací prvky, jako je možnost nastavit omezení času a velikosti, poskytují všestrannost. Paketu data mohou být uložena v úložišti objektů blob nebo na místní disk ve formátu CAP.
+- [Ověření toku protokolu IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Zkontroluje, jestli je paket povolený nebo zakázaný na základě 5 řazené kolekce členů paketů parametrů pro informace o toku (cílová IP adresa, Zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud skupinu zabezpečení zakazuje paket, budou vráceny pravidlo a skupiny, které paket zamítlo.
+- [Směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Určuje další segment směrování paketů směrovány v prostředcích infrastruktury sítě Azure, takže můžete diagnostikovat všechny nesprávně nakonfigurované trasy definované uživatelem.
+- [Zobrazení skupin zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Získá pravidla efektivní a použité zabezpečení, které se použijí na virtuálním počítači.
+- [Protokoly toků NSG pro skupiny zabezpečení sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Umožňují zachytit protokoly týkající se provozu, který je povolený nebo zakázaný podle pravidla zabezpečení ve skupině. Tok je definován informace 5 řazené kolekce členů: zdrojové IP, cílová IP adresa, zdrojový port, cílový port a protokol.
+- [Brána virtuální sítě a řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Nabízí také možnost řešit brány virtuální sítě a připojení.
+- [Sítě limity předplatného](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Umožňuje zobrazit využití prostředků sítě proti omezení.
+- [Diagnostické protokoly](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Poskytuje k povolení nebo zakázání diagnostické protokoly pro síťové prostředky ve skupině prostředků.
 
 Další informace najdete v tématu [konfigurace Network Watcheru](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
 

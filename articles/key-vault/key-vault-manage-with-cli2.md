@@ -4,7 +4,7 @@ description: V tomto článku použijte k automatizaci běžných úkolů ve slu
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 11ace1b5cce742579256d08ecfe9d9a7412d3d7c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822489"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115619"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa služby Key Vault pomocí rozhraní příkazového řádku Azure 
 
@@ -145,18 +145,18 @@ Pokud chcete Azure Key Vault vytvořila softwarově chráněný klíč pro vás,
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
-Pokud máte existující klíč v souboru .pem, nahrajte ho do služby Azure Key Vault. Můžete k ochraně klíče se software nebo modulu hardwarového zabezpečení. Použijte následující postup k importovali klíč ze souboru .pem a chránit je pomocí softwaru:
+Pokud máte existující klíč v souboru .pem, nahrajte ho do služby Azure Key Vault. Můžete k ochraně klíče se software nebo modulu hardwarového zabezpečení. Tento příklad importuje klíč ze souboru .pem a chránit pomocí softwaru pomocí hesla, které "hVFkk965BuUv":
 
 ```azurecli
-az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "Pa$$w0rd" --protection software
+az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
 Teď můžete odkazovat na klíč, který vytvoříte nebo nahrajete do služby Azure Key Vault pomocí jeho identifikátoru URI. Použití **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** vždy získáte aktuální verzi. Použití https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] získat tuto konkrétní verzi. Příklad: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
 
-Přidání tajného klíče do trezoru, což je hesla s názvem SQLPassword a hodnotou Pa$ $w0rd na trezory klíčů Azure. 
+Přidání tajného klíče do trezoru, což je hesla s názvem SQLPassword a hodnotou "hVFkk965BuUv" do Azure Key Vault. 
 
 ```azurecli
-az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "Pa$$w0rd"
+az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
 Na toto heslo odkazujete pomocí jeho identifikátoru URI. Použití **https://ContosoVault.vault.azure.net/secrets/SQLPassword** vždy získáte aktuální verzi a https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] získat tuto konkrétní verzi. Příklad: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
@@ -164,7 +164,7 @@ Na toto heslo odkazujete pomocí jeho identifikátoru URI. Použití **https://C
 Importujte certifikát do trezoru pomocí .pem nebo .pfx.
 
 ```azurecli
-az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "Pa$$w0rd"
+az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "hVFkk965BuUv"
 ```
 
 Podívejme se klíč, tajný klíč nebo certifikát, který jste vytvořili:
@@ -203,7 +203,7 @@ Podrobné pokyny k registraci aplikace v Azure Active Directory si můžete proj
 Pro registraci aplikace ve službě Azure Active Directory:
 
 ```azurecli
-az ad sp create-for-rbac -n "MyApp" --password "Pa$$w0rd" --skip-assignment
+az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 

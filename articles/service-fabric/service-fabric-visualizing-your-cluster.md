@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 8a2a1b70290f48b3189bfae2f67dd19c5ef4c9f2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b97f2d3a015ebfd5f9c8771d3fc3edc1c074c839
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093253"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203705"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
 
@@ -62,17 +62,6 @@ K připojení ke clusteru Service Fabric, potřebujete koncový bod správy clus
 Řízení přístupu klientů ke clusteru Service Fabric pomocí certifikátů nebo pomocí Azure Active Directory (AAD).
 
 Pokud se pokusíte připojit k zabezpečenému clusteru, pak v závislosti na konfiguraci clusteru budete se muset předložit certifikát klienta nebo přihlášení pomocí AAD.
-
-## <a name="video-tutorial"></a>Videokurz
-
-Naučte se používat Service Fabric Exploreru, podívejte se na následující video Microsoft Virtual Academy:
-
-> [!NOTE]
-> Toto video ukazuje, že Service Fabric Explorer hostovaný v clusteru Service Fabric, ne desktopová verze.
->
->
-
-[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>Principy rozložení Service Fabric Exploreru
 Service Fabric Explorer můžete procházet pomocí stromu na levé straně. V kořenovém adresáři stromu řídicí panel clusteru poskytuje přehled o clusteru včetně souhrnu stavu aplikací a uzlů.

@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: b7d0af5880291e0b8f49c3ef4301ae890a873e4c
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960152"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177525"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací
 

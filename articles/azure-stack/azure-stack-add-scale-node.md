@@ -12,23 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: d35d3bb32f9afabb0e2b02f0d93fc60e0121e9ce
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247642"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172395"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Přidat další škálovací jednotku uzly ve službě Azure Stack
 
-Operátoři Azure stacku zvýšit celkové kapacity existující škálovací jednotku tak, že přidáte další fyzického počítače. Fyzický počítač se také označuje jako uzel jednotek škálování. Každý nový uzel škálovací jednotky, které přidáte, musí být homogenní v typ procesoru, paměti a číslo disku a velikost na uzly, které jsou již přítomny v jednotce škálování.
-
-> [!NOTE]  
-Je nutné spustit Azure Stack 1807 nebo novější, chcete-li přidat další škálovací jednotku uzly.
+Operátoři Azure stacku zvýšit celkové kapacity existující škálovací jednotku tak, že přidáte další fyzického počítače. Fyzický počítač se také označuje jako uzel jednotek škálování. Každý nový uzel škálovací jednotky, které přidáte, musí být homogenní typ procesoru, paměti a číslo disku a velikost na uzly, které jsou již přítomny v jednotce škálování.
 
 Přidat uzel jednotek škálování, fungují ve službě Azure Stack a spuštění nástroje od výrobce hardwaru zařízení (OEM). Nástroje pro výrobce OEM běží na hostiteli životního cyklu hardwaru (HLH) zajistit, aby že nové fyzického počítače odpovídá stejnou úroveň firmware jako stávající uzly.
 

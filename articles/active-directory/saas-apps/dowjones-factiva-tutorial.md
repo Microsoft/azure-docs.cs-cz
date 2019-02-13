@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 8553b90c7798af5e7a1b7d685ecba673c9bdd038
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c3a46e5a3e28ad36e13885ebad16874530cb0142
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994019"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182625"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>Kurz: Integrace Azure Active Directory s Factiva Jones dolů
 

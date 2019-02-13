@@ -4,7 +4,7 @@ description: Tento článek poskytuje sadu osvědčených postupů pro zabezpeč
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391231"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114701"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric osvědčené postupy zabezpečení
 Nasazení aplikace v Azure je rychlá, snadná a nákladově efektivní. Před nasazením do produkčního prostředí cloudové aplikace, projděte si náš seznam důležité a doporučené osvědčené postupy pro implementaci zabezpečené clustery ve vaší aplikaci.
@@ -173,7 +173,7 @@ Existují dva základní kroky k nastavení služby key vault:
 
     Trezor klíčů musí být povolen pro nasazení. Poskytovateli prostředků compute můžete získat certifikáty z trezoru a nainstalujte si ji na instance virtuálních počítačů.
 
-Další informace o tom, jak nastavit trezor klíčů najdete v tématu [Začínáme s Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
+Další informace o tom, jak nastavit trezor klíčů najdete v tématu [co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
 
 ## <a name="assign-users-to-roles"></a>Přiřazení uživatelů k rolím
 Po vytvoření aplikace, které chcete cluster představují, přiřadit uživatele k rolím, které jsou podporovány pomocí Service Fabric: jen pro čtení a správce. Tyto role můžete přiřadit pomocí webu Azure portal.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f08f4cc74c37ccbbcab071b82f67f912e9fd9fd1
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b87fa166f82e4302b5430064d41c293731c60470
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065320"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107697"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Správa cenovou úroveň účtu Azure Maps
 
@@ -34,7 +34,7 @@ Po vytvoření účtu Azure Maps můžete upgradovat nebo downgradovat cenovou �
 ![Změnit cenovou úroveň.](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 
 > [!NOTE]
-> Není nutné generovat nové klíče předplatného, je-li upgradovat nebo downgradovat cenovou úroveň pro svůj účet Azure Maps.
+> Není nutné vygenerovat nové klíče předplatného nebo ID klienta (pro ověřování Azure AD), je-li upgradovat nebo downgradovat cenovou úroveň pro svůj účet Azure Maps.
 
 ## <a name="next-steps"></a>Další postup
 

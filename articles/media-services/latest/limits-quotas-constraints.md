@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 285f4f4aad18943399511cbcac711933f23f7cb2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9f5cf0e8be0529ce59edc9aa4cd33d470415c8a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004787"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190955"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení v Azure Media Services v3
 
@@ -37,7 +37,7 @@ Tento článek popisuje kvóty a omezení v Azure Media Services v3.
 | Účty Media Services v rámci jednoho předplatného | 25 (pevné) |
 | Live výstupy ve spuštěném stavu na Livestream |3|
 | Účty úložiště | 100<sup>(4)</sup> (fixní) |
-| Koncové body streamování ve spuštěném stavu na účtu Azure Media Services|2|
+| Koncové body streamování (zastavení nebo spuštění) na účtu Azure Media Services|2|
 | Zásady streamování | 100 <sup>(3)</sup> |
 | Transformuje na účtu Azure Media Services | 100 (fixní)|
 | Jedinečné lokátory streamování přidružené k prostředku najednou | 100<sup>(5)</sup> (fixní) |

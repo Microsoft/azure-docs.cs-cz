@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 40d2a501a74235d2931ece02b26fe85a6f464d8c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 49c314d2c71dd69e0eb72abdb630b75582aaab40
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002101"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-encompass"></a>Kurz: Integrace Azure Active Directory s Encompass
 

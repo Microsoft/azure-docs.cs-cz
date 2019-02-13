@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: a3488cb1d9a9574ba8ebf5ab59033e87804ef82f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 06d60b6d5ee5a00c24add39871e3611ea5cdfbff
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186651"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>Kurz: Integrace Azure Active Directory s RedVector
 

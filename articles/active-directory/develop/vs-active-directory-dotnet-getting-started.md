@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 437cb8b26cb33dfbb9c259e2842a59a765b78903
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6bbbef3f48eb55c863fdd286113297d79f9b9e02
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054642"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208499"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme se službou Azure Active Directory (projekty ASP.NET MVC)
 

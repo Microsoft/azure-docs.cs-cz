@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: b96ffcc7f131e54a0816875250cd10cd42c9af52
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961988"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174754"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Vzdálený přístup k místním aplikacím přes Azure Active Directory Application Proxy 
 

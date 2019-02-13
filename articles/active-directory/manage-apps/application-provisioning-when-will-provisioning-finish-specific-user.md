@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 2f6ebd6d9024c912e1af427ac5a5b62a817651ab
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7d2bb3b7385467d2606a2a4fa0afb43b9440ab79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964368"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163100"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Zjistit, kdy konkrétní uživatel bude mít přístup k aplikaci
 Používáte automatické zřizování uživatelů pomocí aplikace Azure AD automaticky zřizovat a aktualizace uživatelských účtů v aplikaci na základě věci, jako je [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) při pravidelném plánovaném časový interval, obvykle každých 10 minut.

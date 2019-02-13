@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 28c0ddbb735de041497b6705759d03c881b7e87e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 54aab6e9718b5a4a55cf2a3f9c472e9e02a53ea7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494353"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191074"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect a federace
 Konfigurace federace se službou Azure Active Directory (Azure AD) Connect umožňuje místní služby Active Directory Federation Services (AD FS) a Azure AD. S federací přihlášení můžete povolit uživatelům umožní přihlásit k Azure AD službám pomocí jejich místních hesel – a v podnikové síti, aniž byste museli znovu zadávat hesla. Pomocí možnosti federační službou AD FS, můžete nasadit nové instalace služby AD FS, nebo můžete zadat existující instalace ve farmě systému Windows Server 2012 R2.

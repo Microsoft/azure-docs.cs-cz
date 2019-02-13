@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 9bf1cbd093e5261da08ea2a09289036de8f54eb7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ed9a9a7118a79def9d61f17fa5ba22ebe6d4720a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189744"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Kurz: Integrace Azure Active Directory s Yardi hodnoceného
 

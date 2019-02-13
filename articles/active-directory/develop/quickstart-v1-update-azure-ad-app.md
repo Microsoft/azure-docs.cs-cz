@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 49aa4751ce5e9b5addfc1b1d131d5287cce77154
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098608"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191721"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Rychlý start: Aktualizace aplikace v Azure Active Directory
 

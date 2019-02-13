@@ -4,7 +4,7 @@ description: Tento článek obsahuje obecný popis Azure produkční sítě.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 710792c890c3e48fc54507f93eeaee529ca839f8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114024"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116928"
 ---
 # <a name="the-azure-production-network"></a>Produkční sítě Azure
 Uživatelé produkční sítě Azure zahrnují i externím zákazníkům, kteří přistupují k vlastní aplikace na platformě Azure a pracovníci podpory Azure, kteří spravují produkční sítě. Tento článek popisuje metody zabezpečení přístupu a ochrany mechanismy pro navázání připojení k Azure produkční sítě.
@@ -58,14 +58,14 @@ Azure implementuje brány firewall založená na hostiteli software do produkčn
 
 Dvě kategorie pravidel se naprogramovat tady:
 
-- **Počítač config nebo infrastrukturu pravidel**: ve výchozím nastavení je veškerá komunikace blokovaná. Existují výjimky, které umožňují virtuálnímu počítači odesílat a přijímat komunikaci Dynamic Host Configuration Protocol (DHCP) a informace o DNS a odesílat provoz do "veřejného" Internetu odchozí do jiných virtuálních počítačů v rámci clusteru FC a aktivace operačního systému serveru. Vzhledem k tomu, že se virtuální počítače povolený seznam odchozí cíle neobsahuje podsítě směrovačů Azure a dalších vlastností Microsoft a pravidla sloužit jako vrstev obrany pro ně.
-- **Role konfigurační soubor pravidel**: definuje vstupní seznamy řízení přístupu na základě modelu služby klientů. Například pokud klient má webového front-endu na portu 80 na určitém virtuálním počítači, se otevře port 80 pro všechny IP adresy. Pokud má role pracovního procesu, která běží virtuální počítač, role pracovního procesu je otevřít pouze k virtuálnímu počítači ve stejném tenantovi.
+- **Počítač config nebo infrastrukturu pravidel**: Ve výchozím nastavení je veškerá komunikace blokovaná. Existují výjimky, které umožňují virtuálnímu počítači odesílat a přijímat komunikaci Dynamic Host Configuration Protocol (DHCP) a informace o DNS a odesílat provoz do "veřejného" Internetu odchozí do jiných virtuálních počítačů v rámci clusteru FC a aktivace operačního systému serveru. Vzhledem k tomu, že se virtuální počítače povolený seznam odchozí cíle neobsahuje podsítě směrovačů Azure a dalších vlastností Microsoft a pravidla sloužit jako vrstev obrany pro ně.
+- **Role konfigurační soubor pravidel**: Definuje vstupní seznamy řízení přístupu na základě modelu služby klientů. Například pokud klient má webového front-endu na portu 80 na určitém virtuálním počítači, se otevře port 80 pro všechny IP adresy. Pokud má role pracovního procesu, která běží virtuální počítač, role pracovního procesu je otevřít pouze k virtuálnímu počítači ve stejném tenantovi.
 
-**Nativní hostitelské brány firewall**: Azure Service Fabric a Azure Storage běží v nativním operačním systému, který nemá žádné hypervisoru, a proto je brána Windows Firewall nakonfigurovaný s předchozí dvě sady pravidel.
+**Nativní hostitelské brány firewall**: Azure Service Fabric a Azure Storage běží v nativním operačním systému, který nemá žádné hypervisoru, a proto je brána Windows Firewall nakonfigurovaný předchozí dvě sady pravidel.
 
-**Hostitelské brány firewall**: hostitelské brány firewall chrání hostitelskému oddílu, který běží hypervisor. Pravidla jsou naprogramovaný tak, aby povolit pouze FC a aby komunikaci k hostitelskému oddílu na určitém portu. Další výjimkou je povolení odpovědi DHCP a odpovědí DNS. Azure používá konfigurační soubor počítače, který obsahuje šablonu pravidla brány firewall pro oddíl hostitele. Výjimka brány firewall hostitele také existuje, která umožňuje virtuálním počítačům komunikovat s komponentami, při přenosu server a server metadat prostřednictvím určité protokol a porty.
+**Brána firewall hostitele**: Hostitelské brány firewall chrání hostitelskému oddílu, který běží hypervisor. Pravidla jsou naprogramovaný tak, aby povolit pouze FC a aby komunikaci k hostitelskému oddílu na určitém portu. Další výjimkou je povolení odpovědi DHCP a odpovědí DNS. Azure používá konfigurační soubor počítače, který obsahuje šablonu pravidla brány firewall pro oddíl hostitele. Výjimka brány firewall hostitele také existuje, která umožňuje virtuálním počítačům komunikovat s komponentami, při přenosu server a server metadat prostřednictvím určité protokol a porty.
 
-**Brána firewall hosta**: brány Windows Firewall jako součást hostovaného operačního systému, která je konfigurovatelná zákazníky na virtuálních počítačích zákazníků a úložiště.
+**Brána firewall hosta**: Brány Windows Firewall jako součást hostovaného operačního systému, které je možné konfigurovat zákazníky na virtuálních počítačích zákazníků a úložiště.
 
 Další funkce zabezpečení, které jsou součástí možnosti Azure patří:
 

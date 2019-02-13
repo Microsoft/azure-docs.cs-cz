@@ -16,12 +16,13 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d3ded429e960679b6bb252bdcec67c5a1d833ac1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496002"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201699"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Určete požadavky na synchronizaci adresáře
 Synchronizace se točí kolem identity v cloudu na základě jejich identity v místním, že uživatel. Jestli použijí synchronizované účet pro ověřování nebo federovaného ověřování, uživatelé stále musíte nastavit identitu, která v cloudu.  Tato identita bude muset udržované a pravidelně aktualizuje.  Aktualizace mohou mít mnoho forem, od změn názvu pro změny hesla.  

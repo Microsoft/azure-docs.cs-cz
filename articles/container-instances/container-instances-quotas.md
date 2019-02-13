@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/17/2018
+ms.date: 02/08/2019
 ms.author: danlep
-ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 35e846aa5954e3714d301c9c75cf42b31961fdfe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075494"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160573"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kvóty a dostupnost oblastí pro Azure Container Instances
 
@@ -28,13 +28,13 @@ Služba Azure Container Instances je dostupná v následujících oblastech s uv
 
 | Umístění | Operační systém | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada – střed | Linux | 4 | 16 |
+| Kanada – střed, střed USA, východní USA 2 | Linux | 4 | 16 |
 | USA – východ, Severní Evropa, Západní Evropa, Západní USA, Západní USA 2 | Linux | 4 | 14 |
 | Japonsko – východ | Linux | 2 | 8 |
-| Austrálie – východ, USA – východ 2, Jihovýchodní Asie | Linux | 2 | 7 |
+| Austrálie – východ, Asie – jihovýchod | Linux | 2 | 7 |
 | Střed Indie, východní Asie, severní centrální USA, střed USA – Jih, Indie – jih | Linux | 2 | 3,5 |
 | USA – východ, Západní Evropa, Západní USA | Windows | 4 | 14 |
-| Austrálie – východ, Kanada – střed, střed Indie, východní Asie, východní USA 2, Japonsko – východ, USA (střed) – sever, Severní Evropa, střed USA – Jih, Indie – Jih, jihovýchodní Asie, USA – západ 2 | Windows | 2 | 3,5 |
+| Austrálie – východ, Kanada – střed, střed Indie, střed USA, východní Asie, východní USA 2, Japonsko – východ, USA (střed) – sever, Severní Evropa, střed USA – Jih, Indie – Jih, jihovýchodní Asie, USA – západ 2 | Windows | 2 | 3,5 |
 
 Pro instance kontejnerů vytvořené v mezích těchto omezení prostředků platí určitá omezení z hlediska dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Pokud chcete selhání nasazení zmírnit, zkuste nasazení instancí s nižšími nastaveními procesoru a paměti nebo zkuste nasazení později.
 

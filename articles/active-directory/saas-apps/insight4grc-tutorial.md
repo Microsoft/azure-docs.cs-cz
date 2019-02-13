@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Insight4GRC | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Insight4GRC | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Insight4GRC.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 256550dc6aaa832599747f6fe39c2ca77ed3f8d7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08913fc2e12026d70976ea8e2169c190378f4054
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441577"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193726"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Kurz: Integrace Azure Active Directory se službou Insight4GRC
+# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Kurz: Integrace Azure Active Directory s Insight4GRC
 
 V tomto kurzu se dozvíte, jak integrovat Insight4GRC s Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Insight4GRC, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Insight4GRC jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Konfigurace integrace Insight4GRC do služby Azure AD, budete muset přidat Insi
 
 **Chcete-li přidat Insight4GRC z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -167,7 +168,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon v Insight4GRC. Insight4GRC podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Insight4GRC, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Insight4GRC klienta](mailto:support.ss@rsmuk.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Insight4GRC klienta](mailto:support.ss@rsmuk.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -199,7 +200,7 @@ V této části je povolit Britta Simon k udělení přístupu k Insight4GRC pou
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

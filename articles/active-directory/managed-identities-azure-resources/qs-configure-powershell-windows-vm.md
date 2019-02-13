@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: priyamo
-ms.openlocfilehash: a92e543ea8a633d4d7dfd1b276fadc0224696153
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 57d1ff4b44ff352742ee91b61c0c774cfe7c3f9d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169973"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181350"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu
 
@@ -151,7 +152,7 @@ Odebrat spravovaných identit pro rozšíření virtuálního počítače Azure 
    Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
    ```
 
-## <a name="user-assigned-managed-identity"></a>Uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
 
 V této části se dozvíte, jak přidávat a odebírat spravované identity přiřazené uživateli z virtuálního počítače pomocí Azure Powershellu.
 

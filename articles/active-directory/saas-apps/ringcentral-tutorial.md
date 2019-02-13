@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou RingCentral | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s RingCentral | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RingCentral.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 35033e52fb54177428f8869ebcc462bd9465ad4c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48871473"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173296"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Kurz: Integrace Azure Active Directory se službou RingCentral
+# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Kurz: Integrace Azure Active Directory s RingCentral
 
 V tomto kurzu se dozvíte, jak integrovat RingCentral s Azure Active Directory (Azure AD).
 
@@ -231,7 +232,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-ringcentral-test-user"></a>Vytvoření zkušebního uživatele RingCentral
 
-V této části vytvoříte uživatele v RingCentral jako Britta Simon. Práce s [tým podpory RingCentral klienta](https://success.ringcentral.com/RCContactSupp) přidat uživatele na platformě RingCentral. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v RingCentral jako Britta Simon. Práce s [tým podpory RingCentral klienta](https://success.ringcentral.com/RCContactSupp) přidat uživatele na platformě RingCentral. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

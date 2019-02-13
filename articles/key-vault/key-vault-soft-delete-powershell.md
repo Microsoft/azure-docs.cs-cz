@@ -2,17 +2,17 @@
 title: Služba Azure Key Vault – jak používat obnovitelné odstranění s využitím Powershellu
 description: Příklady případu použití obnovitelného odstranění s využitím výstřižky kódu Powershellu
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: bryanla
-ms.openlocfilehash: 48c471e17fb28843bf61f1591faafc119eb8dec8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 70437403d3b78b7f8b9eef921c933a68793450da
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002322"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113579"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím Powershellu
 
@@ -236,5 +236,5 @@ Seznam objektů odstraněného trezoru klíčů. také ukazuje, kdy jsou naplán
 ## <a name="other-resources"></a>Další prostředky
 
 - Přehled funkce obnovitelného odstranění služby Key Vault najdete v tématu [přehled obnovitelného odstranění služby Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Obecný přehled o využití služby Azure Key Vault najdete v části [Začínáme s Azure Key Vault](key-vault-get-started.md).
+- Obecný přehled o využití služby Azure Key Vault najdete v části [co je Azure Key Vault?](key-vault-overview.md).
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
-ms.openlocfilehash: 01f2b3151abe510b0a56722b53cb3e0d29986110
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 23ce4e88a26ffa4970096cc3fb414b634a27d780
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999058"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Kurz: Integrace Azure Active Directory s DigiCert
 

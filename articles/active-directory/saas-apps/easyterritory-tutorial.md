@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: be4c75c26530060f535d389656c51d136470e628
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: caf0a10b04f8eb3d54d569dfe81d56e6ad628b2c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992225"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>Kurz: Integrace Azure Active Directory s EasyTerritory
 

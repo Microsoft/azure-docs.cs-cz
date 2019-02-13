@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 491664067c87de8f94d2395cb2ffbdeade2595b0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d5ed8da4ea527e350b1ff73d0bd188cdad2caf71
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979543"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189204"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Integrace datových center Azure Stack
 

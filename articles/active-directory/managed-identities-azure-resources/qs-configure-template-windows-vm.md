@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: priyamo
-ms.openlocfilehash: f3535135f0c3eb31321afc17350064e4fca071d2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6fdabc16e191fb265b15af4a6d4a57cb749adc9f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158991"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202549"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony
 
@@ -201,7 +202,7 @@ Následující příklad ukazuje, jak odebrat spravovanou identitu systém při�
 }
 ```
 
-## <a name="user-assigned-managed-identity"></a>Uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
 
 V této části přiřadíte spravovanou identitu uživatelsky přiřazené k virtuálnímu počítači Azure pomocí šablony Azure Resource Manageru.
 

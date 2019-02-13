@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: f86e33a429ce011edd7398cdb0a27a17dc466993
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 53730b6a479255f702c09ce2bc319ce819fa88da
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193892"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200611"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Kurz: Integrace Azure Active Directory s Mindflash
 

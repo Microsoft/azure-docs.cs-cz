@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0865227a05d5cb25a44114fc053f61b8f70ffb94
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100087"
+ms.locfileid: "56115704"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 
@@ -89,7 +89,7 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
          Zásadní změna: Zálohování se změní na režim šifrování založené na certifikátu. Podpora pro symetrické klíče je zastaralá.  
    * **Azs.Fabric.Admin modulu**  
          `Get-AzsInfrastructureVolume` se už nepoužívá. Pomocí nové rutiny `Get-AzsVolume`.  
-         `Get-AzsStorageSystem` se už nepoužívá.  Pomocí nové rutiny nové `Get-AzsStorageSubSystem`.  
+         `Get-AzsStorageSystem` se už nepoužívá.  Pomocí nové rutiny `Get-AzsStorageSubSystem`.  
          `Get-AzsStoragePool` se už nepoužívá. `StorageSubSystem` Objekt obsahuje vlastnost capacity.  
    * **Azs.Compute.Admin modulu**  
          Oprava chyby - `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Volání `ConvertTo-PlatformImageObject` pouze v cestě k úspěchu.  
@@ -134,7 +134,7 @@ Referenční informace pro aktualizovaný modulů najdete v tématu [referenčn�
 - Opravili jsme problém při nastavování hodnoty kvóty na Managed Disks v části [compute typy kvót](azure-stack-quota-types.md#compute-quota-types) na hodnotu 0, je ekvivalentní výchozí hodnotu 2 048 GB. Nyní je dodržena nulová hodnota kvóty.
 
 <!-- 2724873 - IS --> 
-- Opravili jsme problém při použití rutiny Powershellu **Start AzsScaleUnitNode** nebo **Stop-AzsScaleunitNode** ke správě jednotek škálování, ve kterých je první pokus o spuštění nebo zastavení jednotka škálování může selhat.
+- Opravili jsme problém při použití rutiny Powershellu **Start AzsScaleUnitNode** nebo **Stop-AzsScaleUnitNode** ke správě jednotek škálování, ve kterých je první pokus o spuštění nebo zastavení jednotka škálování může selhat.
 
 <!-- 2724961- IS ASDK --> 
 - Opravili jsme problém, ve které jste zaregistrovali **Microsoft.Insight** poskytovatele prostředků v nastavení předplatného a vytvoření virtuálního počítače s Windows pomocí hostovaného operačního systému diagnostických povolené, ale nebyly uvedeny grafu procento využití procesoru na stránce Přehled virtuálních počítačů data metrik. Data teď zobrazí správně.

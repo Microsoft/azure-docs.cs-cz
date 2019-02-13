@@ -4,7 +4,7 @@ description: Tento článek obsahuje odpovědi na otázky týkající se integra
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 928c7921ce184f5f17916c3b9e182ce3754b0115
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f1b809e52cc532d13be85776f73aba4465fa2140
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306263"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114922"
 ---
 # <a name="azure-log-integration-faq"></a>Integrace protokolů Azure – nejčastější dotazy
 

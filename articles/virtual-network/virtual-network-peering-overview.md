@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c91292bff22a76e4c15f031094809e20fdc43031
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169310"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175723"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -78,7 +78,7 @@ Můžete také zkusit [Poradce při potížích pro partnerský vztah virtuáln�
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
 Pokud jsou virtuální sítě v globálním partnerském vztahu, platí následující omezení:
-- Virtuální sítě můžou existovat v jakékoli oblasti veřejného cloudu Azure, ale ne v národních cloudech Azure.
+- Virtuální sítě může existovat v libovolné oblasti veřejného cloudu Azure a cloudových oblastech Azure China, ale ne v cloudu Azure Government.
 - Prostředky v jedné virtuální síti nemůžou komunikovat s front-endovou IP adresou interního nástroje pro vyrovnávání zatížení Azure ve virtuální síti v globálním partnerském vztahu. Nástroj pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve stejné oblasti.
 - Nemůžete používat vzdálené brány ani povolit průchod bránou. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, virtuální sítě v partnerském vztahu musí být ve stejné oblasti.
 

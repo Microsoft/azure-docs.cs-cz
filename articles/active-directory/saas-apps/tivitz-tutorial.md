@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 90ed29081774f1048deb1e545017d64169878ba5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fe1168eb9ea1ba886bb49b1ea2a24e66ff8ae94e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164737"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>Kurz: Integrace Azure Active Directory s TiViTz
 

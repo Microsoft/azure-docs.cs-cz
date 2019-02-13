@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: bc4e4c9137003dad9cfd96772b7ebe231cd6eace
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999029"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171719"
 ---
 # <a name="reliable-services-overview"></a>Přehled Reliable Services
 Azure Service Fabric zjednodušuje vytváření a správu bezstavových a stavových Reliable Services. Toto téma obsahuje:
@@ -45,12 +45,6 @@ Reliable Services poskytuje jednoduché, výkonné a nejvyšší úrovně progra
 * Jednoduchý model pro spouštění vlastního kódu, který vypadá jako programovací modely, které jste zvyklí. Váš kód je dobře definovaný vstupní bod a snadno spravovatelné životního cyklu.
 * Modulární komunikační model. Použít transport podle vašeho výběru, jako je například HTTP s [webového rozhraní API](service-fabric-reliable-services-communication-webapi.md), protokoly Websocket, vlastní protokoly TCP, nebo cokoli jiného. Reliable Services poskytují některé skvělé možnosti out-of-the-box můžete použít, nebo můžete zadat vlastní.
 * Programovací model Reliable Services pro stavové služby, umožňuje konzistentně a spolehlivě ukládat svůj stav přímo v službě s použitím [Reliable Collections](service-fabric-reliable-services-reliable-collections.md). Spolehlivé kolekce jsou jednoduché sady vysoce dostupných a spolehlivých tříd kolekcí, které budou znát všichni, kdo použil C# kolekce. Tradičně služby k tomu externími systémy pro správu spolehlivé stavu. S Reliable Collections se dají ukládat svůj stav vedle výpočetní stejnou vysokou dostupnost a spolehlivost, kterou jste si zvykli z externích úložišť s vysokou dostupností. Tento model také zlepšuje latenci, protože jsou společně umístěných výpočetních a stavu, ve kterém musí fungovat.
-
-Podívejte se na toto video Microsoft Virtual Academy přehledné informace o modelu Reliable services: <center>
-<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
-<img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
-</a>
-</center>
 
 ## <a name="what-makes-reliable-services-different"></a>Co vlastně rozdíl Reliable Services?
 Reliable Services v Service Fabric se liší od služby, který může mít napsali před. Service Fabric nabízí spolehlivosti, dostupnosti, konzistence a škálovatelnost.

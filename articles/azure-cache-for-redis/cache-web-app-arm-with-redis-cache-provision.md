@@ -3,7 +3,7 @@ title: Zřízení webové aplikace s využitím mezipaměti Azure redis Cache
 description: Pomocí šablony Azure Resource Manageru můžete nasadit webové aplikace s mezipamětí Azure Redis.
 services: app-service
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: wesmc
-ms.openlocfilehash: 90c26e73fd3b2f8592df70ed9d0bfb0e70ca5a89
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.author: yegu
+ms.openlocfilehash: 65279e8391108a009b29fc447b20897c446b8e95
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098574"
+ms.locfileid: "56112525"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Vytvořit webovou aplikaci a mezipaměti Azure Redis pomocí šablony
 

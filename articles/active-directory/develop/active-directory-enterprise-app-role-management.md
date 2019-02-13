@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: a354d5d0242bfdbb618eb325c8157a7bed3d3b64
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2b7604fbe306e606e56c9dd0a2b09b4641257dbc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263652"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203350"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Konfigurace deklarace role vystavených v tokenu SAML pro podnikové aplikace
 

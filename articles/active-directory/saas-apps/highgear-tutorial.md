@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 71e95e0c4197ba53eaf641259858d3229036ee0c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a8e91af71b4c3358d416fe5f6f7a62c9268944ac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808762"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Kurz: Integrace Azure Active Directory s HighGear
 

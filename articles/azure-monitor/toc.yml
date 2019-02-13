@@ -5,7 +5,7 @@ items:
   items:
   - name: Co je Azure Monitor?
     href: overview.md
-  - name: Změny brandingu
+  - name: Terminologické změny
     href: azure-monitor-rebrand.md
 - name: Šablony Rychlý start
   items:
@@ -64,6 +64,12 @@ items:
     href: azure-management.md
   - name: Průběžné sledování
     href: continuous-monitoring.md
+  - name: Analýza dat protokolů
+    items:
+    - name: Dotazy na protokoly
+      href: log-query/log-query-overview.md
+    - name: Portály dotazů na protokoly
+      href: log-query/portals.md
   - name: Data monitorování
     items:
     - name: Metriky a protokoly
@@ -106,18 +112,6 @@ items:
       href: insights/vminsights-overview.md
     - name: Řešení monitorování
       href: insights/solutions-inventory.md
-  - name: Analýza dat
-    items:
-    - name: Log Analytics
-      href: log-query/log-query-overview.md
-    - name: Portály dotazů na protokoly
-      href: log-query/portals.md
-    - name: Přechod na portál OMS
-      items:
-      - name: Přehled
-        href: platform/oms-portal-transition.md
-      - name: Časté dotazy
-        href: platform/oms-portal-faq.md
   - name: Reakce na incidenty
     items:
     - name: Výstrahy
@@ -138,6 +132,12 @@ items:
     href: visualizations.md
   - name: Integrace partnerů
     href: platform/partners.md
+  - name: Přechod na portál OMS
+    items:
+    - name: Přehled
+      href: platform/oms-portal-transition.md
+    - name: Časté dotazy
+      href: platform/oms-portal-faq.md
   - name: Nejčastější dotazy
     items:
     - name: Log Analytics
@@ -1023,9 +1023,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 96f79397b16212fe0897e0d03f57ffb7248118c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: b1d837248f84eb3050788924f4bb0e0077845abe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767117"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993567"

@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 44eea4ec4fd335cd0061807521f96f2887751f7a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: e6ba2a9c27567ccbd3b744a9bfdc0603758c7068
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457126"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56212986"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Příprava k ověřování požadavků Azure Resource Manageru
 Všechny operace, které můžete provádět s prostředky pomocí musí ověřit [Azure Resource Manageru] [ lnk-authenticate-arm] s Azure Active Directory (AD). Nejjednodušší způsob, jak nastavit tuto konfiguraci je pomocí Powershellu nebo rozhraní příkazového řádku Azure.

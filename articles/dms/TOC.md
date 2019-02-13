@@ -11,6 +11,7 @@
 ## [Migrace SQL Serveru do online Azure SQL DB](tutorial-sql-server-azure-sql-online.md)
 ## [Migrace SQL Serveru do offline Azure SQL DB MI](tutorial-sql-server-to-managed-instance.md)
 ## [Migrace SQL Serveru do online Azure SQL DB MI](tutorial-sql-server-managed-instance-online.md)
+## [Migrace SQL Serveru RDS do online Azure SQL DB nebo Azure SQL DB MI](tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md)
 ## [Migrace MySQL do online Azure DB for MySQL](tutorial-mysql-azure-mysql-online.md)
 ## [Migrace PostgreSQL do online Azure DB for PostgreSQL](tutorial-postgresql-azure-postgresql-online.md)
 ## [Offline migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB](tutorial-mongodb-cosmos-db.md)

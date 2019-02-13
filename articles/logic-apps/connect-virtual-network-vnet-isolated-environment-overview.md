@@ -8,20 +8,20 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 12/03/2018
-ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 02/12/2019
+ms.openlocfilehash: 204138e7b8b3846e2d50607b3c5ec0836abefe24
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061019"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162369"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network v Azure Logic Apps s využitím prostředí integrační služby (ISEs)
 
 > [!NOTE]
-> Tato funkce je v *ve verzi private preview*. Chcete-li požádat o přístup, [vytváření žádosti o připojení tady](https://aka.ms/iseprivatepreview).
+> Tato funkce je v *ve verzi private preview*. Získat privátní verzi preview, [vytváření žádosti o zde](https://aka.ms/iseprivatepreview).
 
-V některých případech logic apps a účty pro integraci potřebují přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a jiné systémy nebo služby, v [virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Chcete-li nastavit tento přístup můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) pro spouštění vašich logic apps a účty pro integraci. 
+V některých případech logic apps a účty pro integraci potřebují přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a jiné systémy nebo služby, v [virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Chcete-li nastavit tento přístup můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) pro spouštění vašich logic apps a účty pro integraci.
 
 ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
@@ -33,10 +33,10 @@ Tento přehled popisuje, jak ISE poskytuje aplikace logiky a účty pro integrac
 
 ## <a name="isolated-versus-global"></a>Izolovaná a globální
 
-Když vytvoříte integrované služby prostředí (ISE) v Azure, vyberte virtuální síť Azure, ve které chcete *vložit* vaše ISE. Azure nasadí privátní instanci služby Logic Apps do vaší virtuální sítě. Tato akce vytvoří izolovaného prostředí, ve kterém můžete vytvořit a spustit aplikace logiky na vyhrazených prostředcích. Když vytvoříte aplikaci logiky, vyberte toto prostředí jako umístění vaší aplikace, která poskytuje přímý přístup vašich logic app k prostředkům ve vaší virtuální síti. 
+Když vytvoříte integrované služby prostředí (ISE) v Azure, vyberte virtuální síť Azure, ve které chcete *vložit* vaše ISE. Azure nasadí privátní instanci služby Logic Apps do vaší virtuální sítě. Tato akce vytvoří izolovaného prostředí, ve kterém můžete vytvořit a spustit aplikace logiky na vyhrazených prostředcích. Když vytvoříte aplikaci logiky, vyberte toto prostředí jako umístění vaší aplikace, která poskytuje přímý přístup vašich logic app k prostředkům ve vaší virtuální síti.
 
 Aplikace logiky do ISE poskytují stejné uživatelské prostředí a podobné funkce jako globální služba Logic Apps. Nejen můžete použijete stejné integrované akce a konektory v globální službě Logic Apps, ale můžete také použít konkrétní ISE konektory. Tady je příklad, některé standardní konektory, které nabízí verze, na kterých běží v prostředí ISE:
- 
+
 * Azure Blob Storage, File Storage a Table Storage
 * Fronty Azure, Azure Service Bus, Azure Event Hubs a IBM MQ
 * FTP a SFTP-SSH
@@ -45,15 +45,15 @@ Aplikace logiky do ISE poskytují stejné uživatelské prostředí a podobné f
 
 Rozdíl mezi konektory ISE a jiných ISE je v umístění, kde spouštění triggerů a akcí:
 
-* V ISE, integrované triggery a akce, jako je HTTP vždy spustit v prostředí ISE stejné jako aplikace logiky. 
+* V ISE, integrované triggery a akce, jako je HTTP vždy spustit v prostředí ISE stejné jako aplikace logiky.
 
 * Pro konektory, které nabízejí dvě verze jednu verzi běží ISE, zatímco běží jiné verze v globální službě Logic Apps.  
 
-  Konektory, které mají **ISE** popisek vždy spustit v prostředí ISE stejné jako aplikace logiky. Konektory bez **ISE** popisek spustit v globální službě Logic Apps. 
+  Konektory, které mají **ISE** popisek vždy spustit v prostředí ISE stejné jako aplikace logiky. Konektory bez **ISE** popisek spustit v globální službě Logic Apps.
 
   ![Výběr konektorů ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
-* Konektory, které běží v prostředí ISE jsou dostupné v globální služba Logic Apps. 
+* Konektory, které běží v prostředí ISE jsou dostupné v globální služba Logic Apps.
 
 > [!IMPORTANT]
 > Logic apps, integrované akce a konektory, na kterých běží vaše ISE používá jiný cenový plán není založenou na skutečné spotřebě cenového plánu. Další informace najdete v tématu [ceny Logic Apps](../logic-apps/logic-apps-pricing.md).
@@ -62,13 +62,13 @@ Rozdíl mezi konektory ISE a jiných ISE je v umístění, kde spouštění trig
 
 ## <a name="permissions-for-virtual-network-access"></a>Oprávnění pro přístup k virtuální síti
 
-Při vytváření prostředí integrační služby (ISE), vyberte virtuální síť Azure tom, kde jste *vložit* vašeho prostředí. Vkládání nasadí privátní instanci služby Logic Apps do vaší virtuální sítě. Tato akce výsledků v izolovaném prostředí, ve kterém můžete vytvořit a spustit aplikace logiky na vyhrazených prostředcích. Při vytváření aplikací logiky vyberte váš ISE jako umístění pro vaše aplikace. Tyto aplikace logiky můžete přímo přistupovat k vaší virtuální sítě a připojení k prostředkům v dané síti. 
+Při vytváření prostředí integrační služby (ISE), vyberte virtuální síť Azure tom, kde jste *vložit* vašeho prostředí. Vkládání nasadí privátní instanci služby Logic Apps do vaší virtuální sítě. Tato akce výsledků v izolovaném prostředí, ve kterém můžete vytvořit a spustit aplikace logiky na vyhrazených prostředcích. Při vytváření aplikací logiky vyberte váš ISE jako umístění pro vaše aplikace. Tyto aplikace logiky můžete přímo přistupovat k vaší virtuální sítě a připojení k prostředkům v dané síti.
 
-Pro systémy, které jsou připojené k virtuální síti můžete vložit ISE do této virtuální sítě tak, aby aplikace logiky můžete tyto systémy přístup přímo pomocí některé z těchto položek: 
+Pro systémy, které jsou připojené k virtuální síti můžete vložit ISE do této virtuální sítě tak, aby aplikace logiky můžete tyto systémy přístup přímo pomocí některé z těchto položek:
 
 * ISE konektor pro daný systém, například SQL Server
 
-* Akce HTTP 
+* Akce HTTP
 
 * Vlastní konektor
 

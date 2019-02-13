@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 7183cae491287042c778c2e56be8a1451c8c71a2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: eccbd502e1fcd50524f7627abf0c7cb675672a98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247761"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182268"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Použití databází SQL v Microsoft Azure Stack
 
-Nabídka databází SQL jako služba pomocí adaptéru poskytovatele prostředků SQL serveru [Azure Stack](azure-stack-poc.md). Po instalaci poskytovatele prostředků a jeho připojení k jedné nebo několika instancím SQL Serveru můžete vy i vaši uživatelé vytvářet:
+Pomocí poskytovatele prostředků SQL serveru nabízí databáze SQL jako služba [Azure Stack](azure-stack-poc.md). Po instalaci poskytovatele prostředků a připojte ho k jedné nebo více instancí systému SQL Server, můžete vytvořit vy a vaši uživatelé:
 
 - Databáze pro aplikace nativní pro cloud.
 - Weby, které používají SQL.

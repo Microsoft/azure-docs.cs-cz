@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 0722cb2e583ae94b7c5dc8591e0c14ea1d359fe9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 214cd2ac20207e32d862086f82f6e3c775d88721
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183165"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Kurz: Integrace Azure Active Directory s Jostle
 

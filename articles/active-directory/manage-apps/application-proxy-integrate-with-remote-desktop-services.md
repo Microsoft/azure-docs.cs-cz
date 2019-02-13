@@ -15,12 +15,13 @@ ms.date: 06/27/2018
 ms.author: celested
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: dc9418f07344382a985da7c31eba26d6b8a9b2cb
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e433eded9ffccde0eccb3b807c8eb8e3219771f5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962532"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162098"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 

@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 436dbccfe8d5b732bc64b58ff79dc772ac8b2bce
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964181"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164613"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -87,7 +87,7 @@ Kromě správních rolí na úrovni serveru popsaných v předchozích částech
 Jednou z těchto správních rolí je role **dbmanager**. Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. K vytvoření databáze je nutné, aby uživatel byl uživatelem na základě přihlášení pro SQL Server v hlavní databázi nebo uživatelem databáze s omezením na základě uživatele Azure Active Directory.
 
 1. Pomocí účtu správce se připojte k hlavní databázi.
-2. Volitelný krok: Vytvořit účet ověřování SQL serveru, pomocí [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) příkazu. Ukázka příkazu:
+2. Vytvořit účet ověřování SQL serveru, pomocí [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) příkazu. Ukázka příkazu:
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dcf77a34179f6ab71e1b48e088d364393258e5a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9ea60b774e4f3f61ecf715873c83198c2dad331f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998327"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Kurz: Integrace Azure Active Directory s přiblížení
 

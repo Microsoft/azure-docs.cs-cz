@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Silverback | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Silverback | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Silverback.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e7cb3049f680f81026e09388066001413922600a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b5614c061586c39e44f04f3542285e55e07f14d9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123842"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172702"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Kurz: Integrace Azure Active Directory se službou Silverback
+# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Kurz: Integrace Azure Active Directory s Silverback
 
 V tomto kurzu se dozvíte, jak integrovat Silverback s Azure Active Directory (Azure AD).
 

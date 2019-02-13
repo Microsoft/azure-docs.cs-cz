@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2d55d5958568deef5ce350c9678e55e2e37a2ff8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8eea14703a7a4ed6fad56dc0bed981b84266e2db
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496393"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112610"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Chyba RequestDisallowedByPolicy zásadě prostředků Azure
 
@@ -44,6 +44,8 @@ Během nasazení, se může zobrazit **RequestDisallowedByPolicy** chybu, která
 K načtení podrobností o zásadu, která zablokuje vašeho nasazení, použijte následující jedné z metod:
 
 ### <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 V prostředí PowerShell, zadejte tento identifikátor zásad, jako `Id` parametr k načtení podrobností o zásadu, která zablokuje vašeho nasazení.
 

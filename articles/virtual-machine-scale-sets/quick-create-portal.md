@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 7644940418b7322e5ec4b02b793219b44ae3aa97
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ed17d7cd887df6d8bd749ba4426d1a791b58d457
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885145"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171226"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů na webu Azure Portal.
@@ -46,11 +46,12 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
     - **Heslo** musí mít alespoň 12 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v [požadavcích na uživatelské jméno a heslo](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
     - Pokud vyberete image disku s operačním systémem Linux, můžete místo toho zvolit **Veřejný klíč SSH**. Stačí zadat veřejný klíč, například *~/.ssh/id_rsa.pub*. K [vytvoření a použití klíčů SSH](../virtual-machines/linux/mac-create-ssh-keys.md) můžete použít Azure Cloud Shell na portálu.
 
-7. Zadejte **Název veřejné IP adresy**, například *myPublicIP*.
-8. Zadejte jedinečný **Popisek názvu domény**, například *myuniquedns*. Tento popisek DNS tvoří základ plně kvalifikovaného názvu domény nástroje pro vyrovnávání zatížení před škálovací sadou.
-9. Potvrďte možnosti škálovací sady výběrem možnosti **Vytvořit**.
+    ![Nastavení základní podrobnosti a vytvořte škálovací sadu virtuálních počítačů na webu Azure Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+1. Vyberte možnosti, jako například Vyrovnávání zatížení *nástroj pro vyrovnávání zatížení*v části **zvolit možnosti vyrovnávání zatížení**. Zadejte zbývající informace pro možnost Vyrovnávání zatížení. Například pro *nástroje pro vyrovnávání zatížení* vám stačí zadat **název veřejné IP adresy** a **Popisek názvu domény**.
+1. Zadejte podrobnosti virtuální sítě v části **konfigurace virtuálních sítí**. Například můžete vytvořit novou virtuální síť, *myVirtualNetwork*a nová podsíť *výchozí*.
+1. Potvrďte možnosti škálovací sady výběrem možnosti **Vytvořit**.
+    ![Podrobnosti a vytvořte škálovací sadu virtuálních počítačů sítě nastavit na webu Azure Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-networking-details.png)
 
-    ![Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set.png)
 
 
 ## <a name="connect-to-a-vm-in-the-scale-set"></a>Připojení k virtuálnímu počítači ve škálovací sadě

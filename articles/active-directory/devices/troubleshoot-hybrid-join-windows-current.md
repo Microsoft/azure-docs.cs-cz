@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: d918983b07fe04d221eea56f037e82d6c3349f51
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4ee5620bfcd421dcb108ce330be3a21cb8ba4a43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097006"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187164"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Zařízení s Windows 10 a Windows serveru 2016 připojená k řešení potíží s hybridní služby Azure Active Directory 
 

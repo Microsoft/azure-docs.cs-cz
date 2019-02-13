@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 88a657e30d3b30825a3fea21aa6e1162e8bc09b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8caeb6ad79f82ecb86da313cca901cb3a16b6d5c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411148"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004702"
 documentType: LandingData
 title: Dokumentace ke službě Azure Search
 metadata:

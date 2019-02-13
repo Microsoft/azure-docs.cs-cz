@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 52aef32eefe6f4f1f4272986a7de302dafd103aa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5c2e0dd6b6edf656586de96c34a9d9f3004c6796
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160606"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Kurz: Integrace Azure Active Directory s Communifire
 

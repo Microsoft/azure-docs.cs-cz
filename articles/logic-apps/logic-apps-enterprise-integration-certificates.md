@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 5ae69d365a183f7d2a219d853241e73c1e27212b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: fa2ae313ab18d6e474f1dd0953a3b0a0d094c7c3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058653"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111804"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpečení zpráv B2B s certifikáty
 
@@ -60,14 +60,14 @@ Použití *veřejný certifikát* ve službě logic apps, které mají funkce B2
 
 ## <a name="upload-a-private-certificate"></a>Odeslání privátního certifikátu
 
-Použití *privátního certifikátu* ve službě logic apps, které mají funkce B2B, musíte nejprve nahrát certifikát ke svému účtu integrace. Budete také muset mít privátní klíč, který je nejprve přidat do [Azure Key Vault](../key-vault/key-vault-get-started.md). 
+Použití *privátního certifikátu* ve službě logic apps, které mají funkce B2B, musíte nejprve nahrát certifikát ke svému účtu integrace. Budete také muset mít privátní klíč, který je nejprve přidat do [Azure Key Vault](../key-vault/key-vault-overview.md). 
 
 Po definování vlastností v [smlouvy](logic-apps-enterprise-integration-agreements.md) , že vytvoříte, certifikát je k dispozici a pomáhá vám zabezpečit zpráv B2B.
 
 > [!NOTE]
 > Pro privátní certifikáty, ujistěte se, že přidáte odpovídající veřejný certifikát, který se zobrazí [smlouvy AS2](logic-apps-enterprise-integration-as2.md) **odesílat a přijímat** nastavení pro podepisování a šifrování zpráv.
 
-1. [Přidejte svůj privátní klíč do služby Azure Key Vault](../key-vault/key-vault-get-started.md#add) a zadejte **název klíče**.
+1. [Přidejte svůj privátní klíč do služby Azure Key Vault](../key-vault/quick-create-cli.md#add-a-secret-to-key-vault) a zadejte **název klíče**.
    
 2. Povolte Azure Logic Apps k provádění operací ve službě Azure Key Vault. Udělení přístupu k instančnímu objektu služby Logic Apps, použít příkaz prostředí PowerShell [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy), například:
 
@@ -89,9 +89,9 @@ Po definování vlastností v [smlouvy](logic-apps-enterprise-integration-agreem
    | **Název** | <*název certifikátu*> | Název vašeho certifikátu, který je "privateCert" v tomto příkladu | 
    | **Typ certifikátu** | Private | Typ certifikátu. |
    | **Certifikát** | <*Název souboru certifikátu*> | Najděte a vyberte soubor certifikátu, který chcete odeslat, zvolte ikonu složky vedle **certifikát** pole. | 
-   | **Skupina prostředků** | <*integrace účtu resource-group*> | Účet integrace skupinu prostředků, která je "MyResourceGroup" v tomto příkladu | 
+   | **Skupina prostředků** | <*integration-account-resource-group*> | Účet integrace skupinu prostředků, která je "MyResourceGroup" v tomto příkladu | 
    | **Key Vault** | <*Název trezoru klíčů*> | Název vaší službou Azure key vault. |
-   | **Název klíče** | <*Název klíče*> | Název vašeho klíče |
+   | **Název klíče** | <*key-name*> | Název vašeho klíče |
    ||||
 
    ![Zvolte "Přidat", zadejte podrobnosti o certifikátu](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

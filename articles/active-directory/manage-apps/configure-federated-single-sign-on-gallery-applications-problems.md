@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
-ms.openlocfilehash: 5fd0d6a46de6f4799e995262bb81d780798d473e
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5295f2d341ce104ae51776af5c4477304b1dacb1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959983"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187232"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Potíže s konfigurací federované jednotné přihlašování pro aplikaci Galerie Azure AD
 

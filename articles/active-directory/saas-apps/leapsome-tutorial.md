@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Leapsome | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Leapsome | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Leapsome.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 898d7cf6cdded08cd09c4b1f1f845473af1650a3
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 37549cc76e1490b0758de8e296523b0e70c98dbf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823996"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191227"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Kurz: Integrace Azure Active Directory se službou Leapsome
+# <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Kurz: Integrace Azure Active Directory s Leapsome
 
 V tomto kurzu se dozvíte, jak integrovat Leapsome s Azure Active Directory (Azure AD).
 

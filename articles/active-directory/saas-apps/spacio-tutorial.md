@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 76507fab4050f3ff762713081d2e588dc04f3f1b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 335310074758198ca917157c2d7b64bc12ca3916
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157818"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Kurz: Integrace Azure Active Directory s Spacio
 

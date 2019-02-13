@@ -4,7 +4,7 @@ description: Popisuje pravidla při použití Microsoft Azure novou žádost o p
 services: ''
 documentationcenter: ''
 author: genlin
-manager: mbaldwin
+manager: ''
 editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 015d5bcdb7ab4e4e666471163bb027c74c9bb377
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 949d6b00b4e04921ea745dd4efa1b8a58c49f534
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418020"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108428"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Pokyny pro nahrávání souborů nástroj žádosti novou podporu Microsoft Azure
 Pokud jste [vytvořit žádost o podporu](https://portal.azure.com/#create/Microsoft.Support), nástroj pro nahrávání souborů můžete snadno odeslat diagnostické soubory nebo jiné soubory, které si myslíte, že jsou relevantní pro incident.  
@@ -40,29 +40,29 @@ Když použijete nástroj pro nahrávání souborů, postupujte podle následuj�
 ## <a name="table-of-the-allowed-file-name-extensions"></a>Tabulky povolené přípony názvů
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | .hwl        | .odx  | RAR     | .tdb       | xlam   |
-| .a          | .db   | ICS        | oft  | RDL     | .tdf       | .xlr    |
-| .abc        | . DMP  | INI        | old  | .rdlc    | .text      | .xls    |
-| ADM        | .do_  | .java       | One  | .re_     | .thmx      | .xlsb   |
-| .aspx       | DOC  | .jpg        | .OSD  | .reg     | .tif       | .xlsm   |
-| .ATF        | DOCM | .LDF        | . NAVÝŠENÍ KAPACITY  | .Remove  | .TRC       | XLSX   |
+| .7z         | .dat  | .hwl        | .odx  | RAR     | .tdb       | .xlam   |
+| .a          | .db   | ICS        | .oft  | .rdl     | .tdf       | .xlr    |
+| .abc        | .DMP  | .ini        | old  | .rdlc    | .text      | .xls    |
+| .adm        | .do_  | .java       | One  | .re_     | .thmx      | .xlsb   |
+| .aspx       | .doc  | .jpg        | .osd  | .reg     | .tif       | .xlsm   |
+| .ATF        | .docm | .LDF        | . NAVÝŠENÍ KAPACITY  | .remove  | .trc       | .xlsx   |
 | .b          | .docx | .letterhead | .p1   | .ren     | .TTD       | .xlt    |
 | .ba_        | .dotm | lnk        | .pcap | .rename  | .tx_       | .xltx   |
-| .bak        | .dotx | .LO_        | .pdb  | .RFT     | .txt       | .xml    |
-| .bat        | .dtsx | .log        | .pdf  | RPT     | .uccapilog | .xmla   |
-| BLG        | .EDS  | LPK        | .piz  | .RTE     | .uccplog   | XPS    |
+| .bak        | .dotx | .lo_        | .pdb  | .rft     | .txt       | .xml    |
+| .bat        | .dtsx | .log        | .pdf  | .rpt     | .uccapilog | .xmla   |
+| .blg        | .EDS  | .lpk        | .piz  | .rte     | .uccplog   | .xps    |
 | .CA_        | .EMF  | .manifest   | .pmls | RTF     | .udcx      | .xsd    |
-| .CAB        | EML  | .master     | ve formátu PNG  | .Run     | .vb_       | XSN    |
+| .CAB        | .eml  | .master     | .png  | .run     | .vb_       | XSN    |
 | Cap        | .emz  | .mdmp       | .potx | .saz     | .vbs_      | .xxx    |
-| .catx       | .err  | .MOF        | .ppt  | .sql     | .vcf       | .z_     |
-| .CFG        | ETL  | .mp3        | .pptm | .sqlplan | .vsd       | .z01    |
-| .Compressed | EVT  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
+| .catx       | .err  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
+| .CFG        | .etl  | .mp3        | .pptm | .sqlplan | .vsd       | .z01    |
+| .Compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
 | . Konfigurace     | .evtx | .ms_        | .prn  | .svclog  | .wks       | .zi     |
 | .cpk        | .EX   | .msg        | .psf  |   -       | .wma       | .zi_    |
 | .cpp        | .ex_  | .msi        | PST  |  -        | .wmv       | .zip    |
 | .cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
 | .CSV        | .FRD  | .msu        | -      |-          | .wps       | .zipp   |
-| .cvr        | GIF  | NFO        | -      |-          | .wpt       | .zipped |
+| .cvr        | GIF  | .nfo        | -      |-          | .wpt       | .zipped |
 | -            | .GUID | -            | -      | -         | .wsdl      | .zippy  |
 | -            | .gz   | -            | -      | -         | .wsp       | .zipx   |
 | -            | -      | -            | -      | -         | .wtl       | .zit    |

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: ed076c5f6d50136d4b5d639edb83caaae3409716
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ede20d0fc0afa1e957d5469a097cba91db14f546
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197581"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Kurz: Integrace Azure Active Directory s Oneteam
 

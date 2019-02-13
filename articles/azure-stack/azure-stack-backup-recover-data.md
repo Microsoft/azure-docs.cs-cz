@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 9dc023eedf0ddca4e760d9d066b019b75597fb69
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3fd91ef17415e2c6ebb735fdedb098f8aa319d8c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246479"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207411"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Obnovit ze ztráty dat
 
 *Platí pro: Integrované systémy Azure Stack.*
 
-Azure Stack spouští služby Azure ve vašem datovém centru. Azure Stack můžete spustit v prostředí malá jako čtyři uzly, které jsou nainstalované v jednom racku. Naproti tomu Azure běží ve více než 40 oblastech v několika datových centrech a více zón v jednotlivých oblastech. Prostředky uživatelů se týkají více servery, stojany, datových center a oblastí. Pomocí služby Azure Stack aktuálně pouze máte možnost nasadit celý cloud jeden stojan. Tato třída zveřejňuje cloudu k riziku katastrofickými událostmi v datovém centru nebo chyby způsobené chyb produktů. V případě náhlé havárie, instance služby Azure Stack přejde do režimu offline. Všechna data, je potenciálně Neopravitelná.
+Azure Stack spouští služby Azure ve vašem datovém centru a mohou běžet v prostředí malá jako čtyři uzly, které jsou nainstalované v jednom racku. Naproti tomu Azure běží ve více než 40 oblastech v několika datových centrech a více zón v jednotlivých oblastech. Prostředky uživatelů se týkají více servery, stojany, datových center a oblastí. Pomocí služby Azure Stack aktuálně pouze máte možnost nasadit celý cloud jeden stojan. Tato třída zveřejňuje cloudu k riziku katastrofickými událostmi v datovém centru nebo chyby způsobené chyb produktů. V případě náhlé havárie, instance služby Azure Stack přejde do režimu offline. Všechna data, je potenciálně Neopravitelná.
 
 V závislosti na hlavní příčinu ztráty dat budete muset službu jediné infrastruktury opravit nebo obnovit celou instanci služby Azure Stack. Dokonce i budete muset obnovit na jiný hardware ve stejném umístění nebo v jiném umístění.
 
