@@ -14,12 +14,13 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1a4f5db66e5bcfa8b77930165534b943ed725209
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d5f3c1883f156562cfab59cb102fb0cf18b03803
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964912"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186586"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Odebrání osobních údajů pro Azure Active Directory Application Proxy  
 

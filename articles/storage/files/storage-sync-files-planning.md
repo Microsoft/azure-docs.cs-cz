@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751408"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200492"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -167,10 +167,14 @@ Windows Server Failover Clustering je podporována službou Azure File Sync mož
 > Musí být agent Azure File Sync nainstalovaný na všech uzlech v clusteru převzetí služeb při selhání pro synchronizaci správně fungovat.
 
 ### <a name="data-deduplication"></a>Odstranění duplicitních dat
-U svazků, které nemají povolené vrstvení cloudu Azure File Sync podporuje Windows Server povoleným odstraněním duplicitních dat se na svazku. V současné době nepodporujeme vzájemná funkční spolupráce mezi Azure File Sync s povoleno vrstvení cloudu a odstraňování duplicit.
+**Verze agenta 5.0.2.0**   
+Odstranění duplicitních dat se nepodporuje u svazků s cloudem ovládání datových vrstev na Windows serveru 2016 a Windows Server 2019 zapnout. Povolení odstranění duplicitních dat na svazku s povoleno vrstvení cloudu umožňuje ukládat do mezipaměti další soubory lokálně bez zřizování úložiště.
+
+**Windows Server 2012 R2 nebo starší verzí agenta**  
+U svazků, které nemají povolené vrstvení cloudu Azure File Sync podporuje Windows Server povoleným odstraněním duplicitních dat se na svazku.
 
 ### <a name="distributed-file-system-dfs"></a>Systém souborů DFS (DFS)
-Azure File Sync podporuje zprostředkovatel komunikace s objekty s obory názvů DFS (DFS-N) a replikace DFS (DFS-R) počínaje [agenta Azure File Sync 1.2](https://go.microsoft.com/fwlink/?linkid=864522).
+Azure File Sync podporuje zprostředkovatel komunikace s objekty s obory názvů DFS (DFS-N) a replikace DFS (DFS-R).
 
 **DFS Namespaces (DFS-N)**: Na serverech systému souborů DFS-N se plně podporuje Azure File Sync. Můžete nainstalovat agenta Azure File Sync na jeden nebo více členů systému souborů DFS-N, synchronizaci dat mezi koncové body serveru a koncový bod cloudu. Další informace najdete v tématu [přehledu oborů názvů DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  

@@ -16,12 +16,13 @@ ms.date: 12/20/2018
 ms.author: negoe
 ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
-ms.openlocfilehash: 2130cc4d51965a087ccdbaeb922eda5059ee1c82
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a487c233e7bb71f05c6f2181d9c822ca508a583c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091576"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192944"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 

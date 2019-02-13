@@ -16,12 +16,13 @@ ms.topic: tutorial
 ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b3dd14aefc929e14ce22a701013c2be84a4ef01c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 505ed32d405b840d6a5b8d6cee144ab7cdbe592a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695637"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177406"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Kurz: Připojte se k nové zařízení s Windows 10 s využitím Azure AD během prvního spuštění
 

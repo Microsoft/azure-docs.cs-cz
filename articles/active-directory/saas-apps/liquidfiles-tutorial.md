@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 7ee4894a96bc6d923bcb86529acf36ef4e27e6c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 20a3144f2a8727420803034426106a29a7924727
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152141"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>Kurz: Integrace Azure Active Directory s LiquidFiles
 

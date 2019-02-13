@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Nuclino | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Nuclino | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Nuclino.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 1a5346b98de48b1a2f8928c3c2bf30730588e9c1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 655ac490e528680f779eeca54899a022ddf3b89a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145851"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189547"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Kurz: Integrace Azure Active Directory se službou Nuclino
+# <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Kurz: Integrace Azure Active Directory s Nuclino
 
 V tomto kurzu se dozvíte, jak integrovat Nuclino s Azure Active Directory (Azure AD).
 
@@ -229,7 +230,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon v Nuclino. Nuclino podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Nuclino, pokud ještě neexistuje.
 
 > [!Note]
-> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Nuclino](mailto:contact@nuclino.com).
+> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Nuclino](mailto:contact@nuclino.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

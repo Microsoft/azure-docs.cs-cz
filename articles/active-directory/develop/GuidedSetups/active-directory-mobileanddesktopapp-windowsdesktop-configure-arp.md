@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 47d62b5ea49205a5e639d620d78466e7e4a66bca
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dc9b5cbc4904c6b2238e56742381feb4d2811437
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581393"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195817"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>Informace o registraci vaší aplikace přidejte do své aplikace
 V tomto kroku budete muset přidat Id aplikace do projektu.

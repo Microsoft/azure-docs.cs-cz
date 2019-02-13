@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: fc114d59ae97813c0ce8f70a6ad58f0faf02a47c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8d80312acfa90690a0b0fe7b212a614945e1e5b1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157614"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Kurz: Integrace Azure Active Directory s TimeOffManager
 

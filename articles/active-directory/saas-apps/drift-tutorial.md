@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 38656dae62c72cbebf690a7185785ed842fc9491
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 116dc5acbfac6efd280b377602e932ed16b81ada
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005009"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171702"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-drift"></a>Kurz: Integrace Azure Active Directory s odchylek
 

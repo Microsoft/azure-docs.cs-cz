@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 032b39846d19e34f2eb87c1311feeb4bb890cb24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a14b0f2b01a0566a47cbcb02ee4315adcba9a90f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467454"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200798"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -29,7 +29,7 @@ Na webu Azure Portal můžete zobrazit stav registrovaný server, stav koncovéh
 
 ### <a name="storage-sync-service"></a>Služba synchronizace úložiště
 
-Chcete-li zobrazit registrovaném serveru a stav koncového bodu serveru, přejděte na službu synchronizace úložiště na webu Azure Portal. Stav serveru registrované jde zobrazit v okně registrované servery. Stav koncového bodu serveru jde zobrazit v okně skupiny synchronizace.
+Chcete-li zobrazit stav registrovaný server, stav koncového bodu serveru a metriky, přejděte na službu synchronizace úložiště na webu Azure Portal. Stav serveru registrované jde zobrazit v okně registrované servery. Stav koncového bodu serveru jde zobrazit v okně skupiny synchronizace.
 
 Registrovaný Server stavu
 - Pokud stav registrovaný server není Online, server úspěšně komunikaci se službou.
@@ -38,6 +38,23 @@ Registrovaný Server stavu
 Stav koncového bodu serveru
 - Synchronizace událostí, které jsou zaznamenány v protokolu událostí Telemetrie na serveru (ID 9102 a 9302) podle stavu koncového bodu serveru na portálu. Pokud relace synchronizace selže z důvodu přechodné chyby (například Chyba zrušeno), synchronizace může nadále zobrazovat v pořádku na portálu tak dlouho, dokud aktuální relace synchronizace je vidět pokrok (9302 ID událostí se používá k určení, pokud se používají soubory). Najdete v následující dokumentaci pro další informace: [Synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [synchronizovat průběh](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Pokud na portálu se zobrazí chyba synchronizace by se synchronizace není provedete průběh, zkontrolujte, [dokumentace k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) pokyny.
+
+Metriky
+- Zobrazit na portálu služby synchronizace úložiště jsou následující metriky:
+
+  | Název metriky | Popis | Portálu blade(s) | 
+  |-|-|-|
+  | Bajty synchronizované | Objem dat přenášených (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
+  | Odvolání vrstvení cloudu | Velikost dat připomenout | Registrované servery |
+  | Soubory se nesynchronizují | Počet souborů, které se nedaří synchronizovat | Koncový bod serveru |
+  | Synchronizovat soubory | Počet souborů přenesených (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
+  | Prezenční signál serveru | Počet prezenčních signálů přijatou ze serveru | Registrované servery |
+
+- Další informace najdete v tématu [Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) oddílu. 
+
+  > [!Note]  
+  > Grafy na portálu služby synchronizace úložiště mají časový rozsah 24 hodin. Chcete-li zobrazit různé časové rozsahy nebo dimenze, použití Azure monitoru.
+
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
@@ -52,7 +69,7 @@ Tyto metriky pro Azure File Sync jsou k dispozici ve službě Azure Monitor:
 | Bajty synchronizované | Množství přenesených dat (nahrávání a stahování).<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
 | Odvolání vrstvení cloudu | Velikost dat odvolána.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název serveru |
 | Soubory se nesynchronizují | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotka: Počet<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Synchronizovat soubory | Počet souborů nahrání a stažení.<br><br>Jednotka: Počet<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
+| Synchronizovat soubory | Počet souborů přenesených (nahrávání a stahování).<br><br>Jednotka: Počet<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
 | Prezenční signál serveru | Počet prezenčních signálů přijatou ze serveru.<br><br>Jednotka: Počet<br>Typ agregace: Maximum<br>Příslušné dimenze: Název serveru |
 | Výsledek relace synchronizace | Synchronizovat výsledek relace (1 = úspěšná synchronizace relace; 0 = selhání synchronizace relace)<br><br>Jednotka: Počet<br>Typ agregace: Maximum<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
 

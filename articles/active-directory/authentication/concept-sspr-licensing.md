@@ -10,16 +10,17 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f7e539b2f444109e902f4b85d0a879183217f262
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 13f8d04a5e59092ee5173e8c1a446385b71faac2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076243"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201580"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
 
-Azure Active Directory (Azure AD) je k dispozici ve čtyřech edicích: Free, Basic, Premium P1 a Premium P2. Existuje několik různých funkcí, které se samoobslužné resetování hesla, včetně změn, resetovat, odemkněte a zpětný zápis, které jsou k dispozici v různých edicích služby Azure AD. V tomto článku se pokusí vysvětlují rozdíly. Další informace o funkcích v každé edici Azure AD můžete najít na [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory (Azure AD) se dodává ve čtyřech edicích: Free, Basic, Premium P1 a Premium P2. Existuje několik různých funkcí, které se samoobslužné resetování hesla, včetně změn, resetovat, odemkněte a zpětný zápis, které jsou k dispozici v různých edicích služby Azure AD. V tomto článku se pokusí vysvětlují rozdíly. Další informace o funkcích v každé edici Azure AD můžete najít na [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="compare-editions-and-features"></a>Porovnání edicí a funkce
 

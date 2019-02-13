@@ -14,12 +14,13 @@ ms.workload: identity
 ms.date: 07/16/2018
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: a412627378d574e28cc1a41fa0e5f9059ab62761
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1223c96bffdf125da0c47fc932d46cfa84fa45c8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960696"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187776"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Integrace Azure Active Directory s aplikacemi získávání Příručka Začínáme
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou stínovat Pe | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s stínovat Pe | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a stínovat Pe.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e642cba3354f4f8589e44d975c0cecf5692c5b5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 02df0a5d13aeb90049383f61d743e8a11e93fc79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430934"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188524"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Kurz: Integrace Azure Active Directory se službou stínovat Pe
+# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Kurz: Integrace Azure Active Directory s stínovat Pe
 
 V tomto kurzu se dozvíte, jak integrovat stínovat Pe pomocí Azure Active Directory (Azure AD).
 
@@ -121,7 +122,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure AD
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -156,7 +157,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-gra-pe-test-user"></a>Vytvoření zkušebního uživatele stínovat Pe
 
-V této části vytvořte uživatele Britta Simon stínovat PE. Práce s [tým podpory stínovat Pe](https://www.toppantravel.com/inquiry/) přidat uživatele na platformě stínovat Pe. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon stínovat PE. Práce s [tým podpory stínovat Pe](https://www.toppantravel.com/inquiry/) přidat uživatele na platformě stínovat Pe. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

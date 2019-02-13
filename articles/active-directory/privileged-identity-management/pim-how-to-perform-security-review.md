@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f80eadf15148865f62e2d0f51e2e9d96ac4d147a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8c7b3905d05e62bd3f11ef4de7f966e6bf9340f0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190518"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178902"
 ---
 # <a name="perform-an-access-review-of-my-azure-ad-directory-roles-in-pim"></a>Provádění kontroly přístupu sady Moje role adresáře Azure AD v PIM
 Azure Active Directory (AD) Privileged Identity Management zjednodušuje, jak podniky spravovat privilegovaný přístup k prostředkům v Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.  

@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 11/01/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 64faed888352e641cb51200d81c038fe5caf7ef4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 890bef048fbb9bd8bb7d246e4f09dc4ec420a7a1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098540"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197313"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 

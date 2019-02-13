@@ -12,12 +12,13 @@ ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: af3078a2db7aecc8d82114f74f55d841cca9b69e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f3881026c1877059639b550f3d0342674b2f8b29
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099256"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187198"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
 Přidání nových uživatelů nebo odstranit existující uživatele z vašeho tenanta Azure Active Directory (Azure AD).

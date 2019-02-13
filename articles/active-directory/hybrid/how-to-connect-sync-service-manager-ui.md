@@ -16,12 +16,13 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72374a24104dc21f04d3dea97ff39a444ec63c2d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c3a03b2320caa7facc04f589993907ab9b3a7703
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490392"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189391"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod do služby Azure AD Connect uživatelského rozhraní Synchronization Service Manager
 

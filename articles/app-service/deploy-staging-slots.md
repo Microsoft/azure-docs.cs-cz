@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 2a5ff771064c860447427c9e3cc1345a03a69634
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893746"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181418"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -205,6 +205,11 @@ Při použití [Auto-Swap](#Auto-Swap), některé aplikace mohou vyžadovat akce
         </applicationInitialization>
     </system.webServer>
 
+Můžete také přizpůsobit chování zahřívání s jednou nebo více z následujících [nastavení aplikace](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md):
+
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: Cesta k odeslání příkazu ping trvala Příprava na váš web. Přidáte nastavení aplikace tak, že zadáte vlastní cestu, která začíná s lomítkem, jako hodnotu. Například, `/statuscheck`. Výchozí hodnota je `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Platný kódy odpovědí protokolu HTTP pro operace zahřívání. Přidáte nastavení aplikace s čárkou oddělený seznam kódů HTTP. Příklad: `200,202` . Pokud vrácený kód stavu není v seznamu, zastaví se zahřívání a přepnutí operace. Ve výchozím nastavení všechny kódy odpovědí jsou platné.
+
 ## <a name="monitor-swap"></a>Monitorování odkládacího souboru
 
 Pokud operace prohození trvá dlouhou dobu pro dokončení, můžete získat informace o operaci prohození [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
@@ -263,6 +268,8 @@ Přejděte na stránku prostředek vaší aplikace. Vyberte **nasazovací sloty 
 
 ## <a name="automate-with-powershell"></a>Automatizace pomocí PowerShellu
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Prostředí Azure PowerShell je modul, který obsahuje rutiny pro správu Azure pomocí Windows Powershellu, včetně podpory ke správě slotů nasazení v Azure App Service.
 
 Informace o instalaci a konfiguraci prostředí Azure PowerShell a na ověřování prostředí Azure PowerShell ve vašem předplatném Azure, najdete v části [instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).  
@@ -270,44 +277,44 @@ Informace o instalaci a konfiguraci prostředí Azure PowerShell a na ověřová
 - - -
 ### <a name="create-web-app"></a>Vytvoření webové aplikace
 ```PowerShell
-New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
+New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="create-slot"></a>Vytvořit slot
 ```PowerShell
-New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
+New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="initiate-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Zahájení prohození s náhledem (vícefázových swap) a použít konfigurace cílového slotu na zdrojový slot
 ```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="cancel-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Zrušit probíhající odkládacího souboru (prohození s revizí) a obnovení konfigurace zdrojový slot
 ```PowerShell
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="swap-deployment-slots"></a>Prohození slotů nasazení
 ```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ### <a name="monitor-swap-events-in-the-activity-log"></a>Monitorování odkládacího souboru události v protokolu aktivit
 ```PowerShell
-Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
+Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 - - -
 ### <a name="delete-slot"></a>Odstranit slot
-```PowerShell
-Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
+```powershell
+Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
 - - -

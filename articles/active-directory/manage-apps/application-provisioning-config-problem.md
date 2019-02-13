@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 90f53624a05b462f517c8e2b36034326348f9899
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 61739d381d5c668b5f1a9467b10398d173601b33
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959370"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178528"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Potíže s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 

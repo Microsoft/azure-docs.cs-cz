@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 4668ff23710121e5495395d71902b9ffa4c01238
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 90e01f39fa6b31095d76d0dfae2f700b4fa2ca3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220344"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182863"
 ---
 # <a name="storage-accounts"></a>Účty úložiště
 
@@ -29,7 +29,7 @@ Ke svému účtu Media Services musíte mít přidružený jeden **primární** 
 
 Doporučujeme používat účty GPv2, takže můžete využít vybrat mezi horkou a studenou úrovní úložiště. Další informace o účtech úložiště najdete v tématu [přehled účtu Azure Storage](../../storage/common/storage-account-overview.md). 
 
-Účet Media Services a všechny přidružené úložiště účty musí být ve stejném předplatném Azure. Doporučujeme použít účty úložiště ve stejném umístění jako účet Media Services.
+Účet Media Services a všechny přidružené úložiště účty musí být ve stejném předplatném Azure. Doporučujeme, aby používaly účty úložiště ve stejném umístění jako účet Media Services, aby se zabránilo další latenci a data náklady na odchozí přenosy
 
 ## <a name="assets-in-a-storage-account"></a>Prostředky v účtu úložiště
 

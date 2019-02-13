@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 01c6fd8cb0e4995bfd4409072d47d2743d1aed1f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4e55a50a1a4ae1db995a6054cf9dc13382236b8e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893302"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189476"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Kurz: Integrace Azure Active Directory pomocí správce hesel držitel & digitální trezoru
 

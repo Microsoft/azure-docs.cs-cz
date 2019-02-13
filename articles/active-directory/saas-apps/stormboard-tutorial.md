@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 35fc505ecece00e13a2a1cd48757cfb5b58b96d3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 95384a03effd023511e5fd31a47c807a562894d6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008150"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>Kurz: Integrace Azure Active Directory s Stormboard
 

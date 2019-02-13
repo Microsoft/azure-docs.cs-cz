@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a3f40624e51ef287d70bed547eba7ec9e0882b0e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c4d702a33742da5501be208154cbdd593fa0524
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669191"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199704"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Kurz: Integrace Azure Active Directory s konektorem Meta sítě
 
@@ -132,9 +133,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | ---------------| --------------- | -------- |
     | jméno | user.givenname | |
     | Příjmení | user.surname | |
-    | EmailAddress| User.Mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | emailaddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | jméno | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | telefon | User.telephoneNumber | |
+    | telefon | user.telephonenumber | |
 
     1. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -240,7 +241,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon v Meta sítě konektoru. Meta sítě konektor podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Meta sítě konektor, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Meta sítě konektor klienta](mailto:support@metanetworks.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Meta sítě konektor klienta](mailto:support@metanetworks.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

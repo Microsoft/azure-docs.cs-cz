@@ -16,12 +16,13 @@ ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 1c4ee3cb4ed8c710f1d1e7a429c9e1de40b1890b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491498"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193475"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definování strategie přijetí hybridní identity
 V této úloze definujete strategie přijetí hybridních identit pro hybridní řešení identit plnění obchodních požadavků, které byly zmíněny v:

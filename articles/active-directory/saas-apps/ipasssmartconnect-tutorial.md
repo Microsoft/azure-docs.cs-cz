@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou iPass SmartConnect | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s iPass SmartConnect | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iPass SmartConnect.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: ecfdd3fae1d394e3b57fcd325f44cad0d1a98534
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91a68a208496904fcc8bfe13a227c61bf313214f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444890"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198163"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Kurz: Integrace Azure Active Directory se službou iPass SmartConnect
+# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Kurz: Integrace Azure Active Directory s iPass SmartConnect
 
 V tomto kurzu se dozvíte, jak integrovat iPass SmartConnect s Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s iPass SmartConnect, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - IPass SmartConnect jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Konfigurace integrace iPass SmartConnect do služby Azure AD, budete muset přid
 
 **Chcete-li přidat iPass SmartConnect z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -184,7 +185,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-an-ipass-smartconnect-test-user"></a>Vytvoření iPass SmartConnect testovacího uživatele
 
-V této části vytvoříte uživatele v iPass SmartConnect jako Britta Simon. Práce s [tým podpory iPass SmartConnect](mailto:help@ipass.com) přidat uživatele nebo domény, který je nutný na seznamu povolených iPass SmartConnect platformy. Pokud je doména přidána týmem, bude získat uživatelé automaticky přiřazeni k platformě SmartConnect iPass. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v iPass SmartConnect jako Britta Simon. Práce s [tým podpory iPass SmartConnect](mailto:help@ipass.com) přidat uživatele nebo domény, který je nutný na seznamu povolených iPass SmartConnect platformy. Pokud je doména přidána týmem, bude získat uživatelé automaticky přiřazeni k platformě SmartConnect iPass. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -216,7 +217,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -254,7 +255,7 @@ e. Pokud se aktivace nepodaří spustit, klikněte na tlačítko aktivovat na st
 
 f. Klient bude aktivovat.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

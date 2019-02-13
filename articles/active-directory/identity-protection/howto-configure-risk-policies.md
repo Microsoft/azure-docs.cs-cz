@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: f2cf9d1ed2cb970cf6f477df07af62d594ea930c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c9f759eb815e8d0d03d4cdd7fe4ed603ff39d34f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890898"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197534"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Jak: Konfigurace zásady rizik ve službě Azure Active Directory identity protection (Aktualizovat)
 

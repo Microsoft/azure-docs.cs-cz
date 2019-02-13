@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: a9cb621598c198780916929681ab76b199e6ebb3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bb6f0645f1a12566f05b5f44688e4f86ab1b9725
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170738"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Kurz: Integrace Azure Active Directory s 10 000 ft plány
 

@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 6922571e4e816d04f6e116db582922cecc85542c
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: e610f946868940f9fde66932bedec1dc998f390b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765462"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203875"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Použití databází MySQL ve službě Microsoft Azure Stack
 
-Databáze MySQL jsou společné ve službě websites a podporují mnoho platforem webu. Například můžete vytvořit pomocí platformu webových aplikací jako služba (PaaS) doplněk weby s platformou WordPress.
+Databáze MySQL se běžně používají s weby a podporují mnoho platforem webu. Například můžete vytvořit pomocí doplňku zprostředkovatele (PaaS) prostředku služby App Services weby s platformou WordPress.
 
 Po nasazení poskytovatele prostředků, můžete:
 

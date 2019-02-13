@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c8fc9fa9f4467d6df051f22e5aca0dfe763463db
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5802e83e1c451de3097c3d4395b738c6dba13709
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998378"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Kurz: Integrace Azure Active Directory s Fieldglass
 

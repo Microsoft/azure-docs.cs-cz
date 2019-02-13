@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 3cd57c276ff5e5e5fed9db2f55ac2fc0e1443b3a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9f92a8b61e7bc722b955fda0bfb3f7b3c32e10b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821460"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Integrace Azure Active Directory s Citrix ShareFile
 

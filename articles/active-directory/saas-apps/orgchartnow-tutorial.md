@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 65f11b5a65adf86b4115b54b49b10c57ebf21a98
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9f044b6fcefc0c0345ea6c83212da31c7c03c11f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154112"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Kurz: Integrace Azure Active Directory se nyní organizačního diagramu
 
