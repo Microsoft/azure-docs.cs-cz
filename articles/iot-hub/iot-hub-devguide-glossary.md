@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320082"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817373"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -82,7 +82,7 @@ Použít připojovací řetězce v kódu vaší aplikace k zapouzdření informa
 Můžete vytvořit vlastní [koncové body](iot-hub-devguide-endpoints.md) ve službě IoT hub doručení zprávy odesílané [pravidlo směrování](#routing-rules). Vlastní koncové body připojení přímo do centra událostí, fronty Service Bus nebo téma služby Service Bus.
 
 ## <a name="custom-gateway"></a>Vlastní bránu
-Brána umožňuje propojení pro zařízení, která se nemůže připojit přímo na [služby IoT Hub](#iot-hub). Můžete použít [Azure IoT Edge](#azure-iot-edge) vytvářet vlastní brány, které implementují vlastní logiku ke zpracování zprávy, vlastní protokol převody a další zpracování na hraničních zařízeních.
+Brána umožňuje propojení pro zařízení, která se nemůže připojit přímo na [služby IoT Hub](#iot-hub). Azure IoT Edge můžete vytvářet vlastní brány, které implementují vlastní logiku ke zpracování zprávy, vlastní protokol převody a další zpracování na hraničních zařízeních.
 
 ## <a name="data-point-message"></a>Zpráva datového bodu
 Zpráva datový bod [typu zařízení cloud](#device-to-cloud) zprávu, která obsahuje [telemetrie](#telemetry) data, jako jsou rychlost větru nebo teploty.
@@ -224,7 +224,7 @@ Použijte zásady opakování pro zpracování [přechodné chyby](/azure/archit
 Nakonfigurujete [pravidla směrování](iot-hub-devguide-messages-read-custom.md) pro směrování zpráv typu zařízení cloud do služby IoT hub [integrovaný koncový bod](#built-in-endpoints) nebo [vlastní koncové body](#custom-endpoints) pro zpracování v back-endem řešení .
 
 ## <a name="sasl-plain"></a>PROSTÝ SASL
-PROSTÝ SASL je protokol, který [AMQP](#advanced-message-queue-protocol) protokol používá k přenosu tokeny zabezpečení.
+PROSTÝ SASL je protokol, který používá protokol AMQP k přenosu tokeny zabezpečení.
 
 ## <a name="service-rest-api"></a>Rozhraní API služby REST
 Můžete použít [rozhraní REST API služby](https://docs.microsoft.com/rest/api/iothub/service) z řešení back-endu ke správě svých zařízení. Rozhraní API umožňuje načíst a aktualizovat [dvojče zařízení](#device-twin) vyvolání vlastností [přímé metody](#direct-method)a plán [úlohy](#job). Obvykle, měli použít jeden z vyšší úrovni [služby sady SDK](#azure-iot-service-sdks) jak je znázorněno v kurzech služby IoT Hub.
@@ -251,7 +251,7 @@ V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), systémové 
 V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), klíčová slova jsou metadata zařízení uložené a načítají pomocí back-end řešení ve formě dokumentu JSON. Značky nejsou viditelné pro aplikace na zařízení.
 
 ## <a name="telemetry"></a>Telemetrická data
-Zařízení shromažďování telemetrických dat, jako je například rychlost větru nebo teploty a použijte [datového bodu zprávy](#data-point-messages) odesílání telemetrických dat do služby IoT hub.
+Zařízení shromažďování telemetrických dat, jako je například rychlost větru nebo teploty a použijte datový bod zprávy odesílání telemetrických dat do služby IoT hub.
 
 ## <a name="token-service"></a>Služba tokenů
 Token služby můžete implementovat mechanismus ověřování pro vaše zařízení. Pomocí služby IoT Hub [sdílené zásady přístupu](#shared-access-policy) s **DeviceConnect** oprávnění k vytvoření *rozsahem zařízení* tokeny. Tyto tokeny umožňují zařízení pro připojení ke službě IoT hub. Vlastní ověřovací mechanismus zařízení používá k ověření pomocí služby tokenů. Pokud úspěšně ověří zařízení, služba tokenů vydá token SAS pro zařízení používat pro přístup k službě IoT hub.
