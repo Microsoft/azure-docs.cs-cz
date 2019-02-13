@@ -15,12 +15,13 @@ ms.topic: reference
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e01e28e304c02c05e233f1c83bdc906779f39a1f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d1a40399ab0e27be5ba9dd01f2647bd5b8ccf10e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493524"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202501"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: Reference k funkcím
 Ve službě Azure AD Connect funkce se používají k práci s hodnotu atributu během synchronizace.  
@@ -988,7 +989,7 @@ PadLeft funkce vlevo-dotyková zařízení a řetězce na určenou délku pomoc�
 **Poznámky:**
 
 * Pokud délka řetězce je menší než délka, pak padCharacter opakovaně připojí do začátku (vlevo) řetězce dokud má délku rovna délce.
-* PadCharacter může být znak mezery, ale nemůže být hodnota null.
+* padCharacter může být znak mezery, ale nemůže být hodnota null.
 * Pokud délka řetězce je roven nebo větší než délka, řetězec je vrácen beze změny.
 * Pokud řetězec má délku větší než nebo rovna délce, vrátí se stejný řetězec jako řetězec.
 * Pokud délka řetězce je menší než délka, je vrácena nový řetězec má požadovanou délku obsahující řetězce, aby bylo vytvořeno padCharacter.

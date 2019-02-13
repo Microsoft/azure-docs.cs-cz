@@ -1,21 +1,21 @@
 ---
-title: Vytvoření vlastní definice zásady
+title: Vytvoření vlastní definice zásad
 description: Vytvoření vlastní definice zásady Azure Policy pro vynucení vlastních obchodních pravidel.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bb9ead3dc10c7f3b5e561196624c4798775d5c3d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962974"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112083"
 ---
-# <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásady
+# <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásad
 
 Vlastní definice zásady umožňuje zákazníkům definovat vlastní pravidla pro používání Azure. Často tato pravidla vynucují:
 
@@ -149,7 +149,7 @@ Tyto informace nám řekne, typ vlastnosti a také potvrdí **supportsHttpsTraff
 #### <a name="resource-reference-docs"></a>Prostředek referenční dokumenty
 
 K ověření **supportsHttpsTrafficOnly** je vlastnost opravit, zkontrolujte odkaz šablony Resource Manageru pro [prostředek účtu úložiště](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) na poskytovateli úložiště.
-Objekt vlastností má seznam platných parametrů. Výběr [StorageAccountPropertiesCreateParameters objekt](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters) odkazu zobrazuje tabulku přijatelné vlastností. **supportsHttpsTrafficOnly** je k dispozici a popis odpovídá co hledáme plnění obchodních požadavků.
+Objekt vlastností má seznam platných parametrů. Výběr [StorageAccountPropertiesCreateParameters objekt](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) odkazu zobrazuje tabulku přijatelné vlastností. **supportsHttpsTrafficOnly** je k dispozici a popis odpovídá co hledáme plnění obchodních požadavků.
 
 ### <a name="azure-resource-explorer"></a>Průzkumník prostředků Azure
 

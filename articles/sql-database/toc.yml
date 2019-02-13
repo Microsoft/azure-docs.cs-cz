@@ -1,5 +1,5 @@
 items:
-- name: Dokumentace k databázi SQL
+- name: Dokumentace ke službě SQL Database
   href: index.yml
 - name: Služba SQL Database
   items:
@@ -67,23 +67,23 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Návrh Azure SQL Database
+  - name: Návrh databáze ve službě SQL Database
     items:
     - name: Návrh databází s využitím SSMS
       href: sql-database-design-first-database.md
     - name: Návrh databází s využitím .NET
       href: sql-database-design-first-database-csharp.md
-  - name: Migrace do Azure SQL Database
+  - name: Migrace do služby SQL Database
     items:
     - name: Migrace do izolované databáze / databáze ve fondu s využitím DMS
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: Migrace do spravované instance s využitím DMS
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: Zabezpečení v Azure SQL Database
+  - name: Zabezpečení v SQL Database
     items:
-    - name: Zabezpečení jednoúčelové databáze
+    - name: Zabezpečení izolovaných databází a databází ve fondu
       href: sql-database-security-tutorial.md
-    - name: Zabezpečení spravovaných instancí pomocí přihlašování Azure AD
+    - name: Zabezpečení spravované instance
       href: sql-database-managed-instance-aad-security-tutorial.md
   - name: Implementace geograficky distribuované databáze
     href: sql-database-implement-geo-distributed-database.md
@@ -104,10 +104,10 @@ items:
   - name: Modely nákupu
     items:
     - name: Přehled
-      href: sql-database-service-tiers.md
+      href: sql-database-purchase-models.md
     - name: Model na základě virtuálních jader
       href: sql-database-service-tiers-vcore.md
-    - name: Model DTU
+    - name: Úrovně služeb DTU
       href: sql-database-service-tiers-dtu.md
     - name: Předplacení záložní kapacity
       href: sql-database-reserved-capacity.md
@@ -351,8 +351,8 @@ items:
     items:
     - name: Přehled
       href: sql-database-howto-single-database.md
-    - name: Migrace do služby SQL Database
-      href: sql-database-cloud-migrate.md
+    - name: Migrace do izolované databáze / databáze ve fondu
+      href: sql-database-single-database-migrate.md
     - name: Správa SQL Database po migraci
       href: sql-database-manage-after-migration.md
     - name: Konfigurace replikace
@@ -421,7 +421,7 @@ items:
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: Dotazování přes tabulky s různými schématy
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: Úlohy elastické databáze
+    - name: Elastické úlohy
       items:
       - name: Vytvoření a správa (PowerShell)
         href: elastic-jobs-powershell.md
@@ -461,9 +461,9 @@ items:
     items:
     - name: Kopírování databáze v rámci Azure
       href: sql-database-copy.md
-    - name: Import databáze z BACPAC
+    - name: Import databáze ze souboru BACPAC
       href: sql-database-import.md
-    - name: Export databáze do BACPAC
+    - name: Export databáze do souboru BACPAC
       href: sql-database-export.md
     - name: Synchronizace dat
       items:
@@ -605,9 +605,9 @@ items:
             href: saas-tenancy-cross-tenant-reporting.md
           - name: Analýzy tenantů
             items:
-            - name: S využitím SQL DB
+            - name: S využitím SQL Database
               href: saas-tenancy-tenant-analytics.md
-            - name: S využitím SQL DW
+            - name: S využitím služby SQL Data Warehouse
               href: saas-tenancy-tenant-analytics-adf.md
         - name: Zotavení po havárii s využitím geografického obnovení
           href: saas-dbpertenant-dr-geo-restore.md
@@ -714,9 +714,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9b11a1bd8cc68aabc8881636d5fcdfe5cbaec034
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: bf8a32ede6ce782bc0ff5ac58cd12ba70283289e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960543"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100036"

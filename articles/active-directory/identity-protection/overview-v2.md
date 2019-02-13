@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 9cb1c5ebf8809ca3f4f977b513ecaa7909b401c6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e60804e6bdf37607a08b6c530fd900e0f481a45b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452273"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204504"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizovat)?
 

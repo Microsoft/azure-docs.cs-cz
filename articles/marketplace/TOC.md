@@ -55,22 +55,55 @@
 ### [Stránka Historie auditu](./cloud-partner-portal/portal-tour/cpp-history-page.md)
 ### [Stránka Přehledy](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
+
 ## Správa portálu
 ### [Registrace účtu centra pro vývojáře](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [Privátní skladové položky](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [Doprovodné materiály pro SEO](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [Správa profilu vydavatele](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ### [Správa uživatelů](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+
+
+## Řízení podniku
+### [Doprovodné materiály pro SEO](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [Dodržování předpisů GDPR](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+### [Privátní skladové položky](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+<!--  Under development: 
+### Pricing considerations
+#### Simplified currency pricing
+#### Information on taxes and price
+#### Export-import pricing
+-->
+
+### Správa potenciálních zákazníků
+#### [Konfigurace potenciálních zákazníků](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+#### [Tabulka Azure](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+#### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+#### [Koncový bod HTTPS](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+#### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+#### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
+
+### Seller Insights
+#### [Začínáme](./cloud-partner-portal-orig/si-getting-started.md)
+#### [Co je nového](./cloud-partner-portal-orig/si-changes.md)
+#### [Webové analýzy](./cloud-partner-portal-orig/web-analytics.md)
+#### [Definice](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
+#### [Přehledy – nejčastější dotazy](./cloud-partner-portal-orig/si-faqs.md)
+
 
 ## [Nabídky Marketplace](./cloud-partner-portal/cpp-marketplace-offers.md)
-
 ### [Správa nabídek](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [Vytvoření nabídky](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
 #### [Publikování nabídky](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
 #### [Zobrazení stavu nabídky](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [Aktualizace nabídky](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [Odstranění nabídky](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
+
+### Testovací verze
+#### [Co je testovací verze?](./cloud-partner-portal-orig/what-is-test-drive.md)
+#### [Testovací verze Azure Resource Manageru](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
+#### [Hostovaná testovací verze](./cloud-partner-portal-orig/hosted-test-drive.md)
+#### [Testovací verze aplikace logiky](./cloud-partner-portal-orig/logic-app-test-drive.md)
+#### [Transformace příkladů pro testovací verzi](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
+#### [Marketing a osvědčené postupy](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
 ### [Nabídka aplikace Azure](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [Požadavky](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
@@ -82,6 +115,7 @@
 ##### [Karta Podpora](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
 #### [Vytvoření technických prostředků](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 #### [Publikování nabídky aplikací Azure](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+#### [Zpracování zpětné vazby](./cloud-partner-portal/azure-applications/cpp-handling-review-feedback.md)
 #### [Aktualizace stávající nabídky](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
 ### [Konzultační služby](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
@@ -195,29 +229,6 @@
 #### [Publikování nabídky virtuálních počítačů](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 #### [Aktualizace stávající nabídky](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-
-## Testovací verze
-### [Co je testovací verze?](./cloud-partner-portal-orig/what-is-test-drive.md)
-### [Testovací verze Azure Resource Manageru](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-### [Hostovaná testovací verze](./cloud-partner-portal-orig/hosted-test-drive.md)
-### [Testovací verze aplikace logiky](./cloud-partner-portal-orig/logic-app-test-drive.md)
-### [Transformace příkladů pro testovací verzi](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-### [Marketing a osvědčené postupy](./cloud-partner-portal-orig/marketing-and-best-practices.md)
-
-## Správa potenciálních zákazníků
-### [Konfigurace potenciálních zákazníků](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Tabulka Azure](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [Koncový bod HTTPS](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
-## Seller Insights
-### [Začínáme](./cloud-partner-portal-orig/si-getting-started.md)
-### [Co je nového](./cloud-partner-portal-orig/si-changes.md)
-### [Webové analýzy](./cloud-partner-portal-orig/web-analytics.md)
-### [Definice](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
-### [Přehledy – nejčastější dotazy](./cloud-partner-portal-orig/si-faqs.md)
 
 ## Referenční materiály k rozhraní API
 ### [Přehled](./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md)

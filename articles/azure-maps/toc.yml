@@ -31,6 +31,8 @@ items:
     href: azure-maps-event-grid-integration.md
   - name: Volva vhodné cenové úrovně
     href: choose-pricing-tier.md
+  - name: Ověřování s využitím Azure Maps
+    href: azure-maps-authentication.md
   - name: Pokrytí
     items:
     - name: Zajištění geokódování
@@ -49,8 +51,10 @@ items:
   items:
   - name: Správa účtů Maps
     items:
-    - name: Správa účtů a klíčů
+    - name: Správa účtů
       href: how-to-manage-account-keys.md
+    - name: Správa ověřování
+      href: how-to-manage-authentication.md
     - name: Správa cenové úrovně
       href: how-to-manage-pricing-tier.md
     - name: Zobrazení metrik využití
@@ -59,6 +63,8 @@ items:
     items:
     - name: Hledání adresy
       href: how-to-search-for-address.md
+    - name: Vykreslování vlastních dat na statické mapě
+      href: how-to-render-custom-data.md
   - name: Vytvoření javascriptových map
     items:
     - name: Použití mapového ovládacího prvku
@@ -99,6 +105,10 @@ items:
       href: map-events.md
     - name: Přístupné aplikace map
       href: map-accessibility.md
+  - name: Vytvoření map pro Android
+    items:
+    - name: Jak používat mapový ovládací prvek pro Android
+      href: how-to-use-android-map-control-library.md
 - name: Referenční informace
   items:
   - name: Rozšíření rozhraní API a parametrů
@@ -183,9 +193,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 0fb1d864dd18a781d0eeba4c8dea610e3ccb07f2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a657596cb266db20404d7f2ec1074834d181772
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999449"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111046"
