@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: db4670ab280a0f11f3007c49664e8e2149b1f54d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c6d47f22b4c7b29457de18593e38548aa818205a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963110"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205626"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Potíže při přidávání aplikace Galerie Azure AD
 

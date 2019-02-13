@@ -12,30 +12,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 023201d221ee5d7ec884c6a760407e8da8340d3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246429"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207112"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integrace brány firewall služby Azure Stack
-Doporučuje se použít zařízení brány firewall umožňující zabezpečení Azure stacku. I když se třeba distribuovanými útoky s cílem odepření služeb (DDOS), zjišťování neoprávněných vniknutí a kontroly obsahu vám může pomoci brány firewall, jsou zároveň může stát kritickým bodem propustnost pro služby Azure storage jako objekty BLOB, tabulky a fronty.
+Doporučuje se použít zařízení brány firewall umožňující zabezpečení Azure stacku. Brány firewall můžete chránit proti věci jako jsou útoky distribuované útok na dostupnost služby (DDOS), zjišťování neoprávněných vniknutí a kontrolu obsahu. Ale zároveň může stát kritickým bodem propustnost pro služby Azure storage jako objekty BLOB, tabulky a fronty.
 
-Založené na modelu identity Azure Active Directory (Azure AD) nebo Windows Server Active Directory Federation Services (AD FS), budete možná muset publikovat koncový bod služby AD FS. Pokud použijete nasazení v odpojeném režimu, je nutné publikovat koncový bod služby AD FS. Další informace najdete v tématu [datacenter integrace identit článku](azure-stack-integrate-identity.md).
+ Pokud použijete nasazení v odpojeném režimu, je nutné publikovat koncový bod služby AD FS. Další informace najdete v tématu [datacenter integrace identit článku](azure-stack-integrate-identity.md).
 
-Azure Resource Manageru (správce), portál správce a koncové body služby Key Vault (správce) nutně nevyžadují externí publikování. Například jako poskytovatel služeb, můžete omezit útoku a pouze spravovat služby Azure Stack od uvnitř vaší sítě a nikoli z Internetu.
+Azure Resource Manageru (správce), portál správce a koncové body služby Key Vault (správce) nutně nevyžadují externí publikování. Například jako poskytovatel služeb, můžete omezit pro možný útok prostřednictvím pouze správy služby Azure Stack od uvnitř vaší sítě a nikoli z Internetu.
 
-Pro organizace může být externí síť existující podnikové síti. V takové situaci je třeba publikovat tyto koncové body pro provoz služby Azure Stack od podnikové sítě.
+Pro organizace může být externí síť existující podnikové síti. V tomto scénáři je nutné publikovat koncové body pro provoz služby Azure Stack od podnikové sítě.
 
 ### <a name="network-address-translation"></a>Překlad síťových adres
-Překlad síťových adres (NAT) je doporučená metoda má povolit nasazení virtuálního počítače (DVM) pro přístup k externím prostředkům a Internetu během nasazování, jakož i virtuální počítače nouzovou obnovení konzoly (ERCS) nebo privilegovaného koncový bod (období) během registrace a řešení potíží.
+Překlad síťových adres (NAT) je doporučená metoda má povolit nasazení virtuálního počítače (DVM) pro přístup k externím prostředkům a Internetu během nasazení, a také virtuální počítače nouzovou obnovení konzoly (ERCS) nebo privilegovaného koncový bod (období) během registrace a řešení potíží.
 
-NAT může být také o alternativu k veřejné IP adresy v externí síti nebo veřejné virtuální IP adresy. Ale nedoporučujeme to provést, protože omezuje klienta uživatelské prostředí a zvyšuje složitost. 1:1 NAT, která stále vyžaduje jedna veřejná IP adresa a uživatel IP adresu ve fondu nebo mnoho by měl dvě možnosti: 1 NAT, která vyžaduje pravidlo NAT na uživatele, který obsahuje přidružení pro všechny porty virtuálních IP adres může uživatel použít.
+NAT může být také o alternativu k veřejné IP adresy v externí síti nebo veřejné virtuální IP adresy. Ale nedoporučujeme to provést, protože omezuje klienta uživatelské prostředí a zvyšuje složitost. Jednou z možností by jedna ku jedné NAT, která se stále vyžaduje jedna veřejná IP adresa a uživatel IP adresu ve fondu. Další možností je mnoho k jedné NAT, která vyžaduje pravidlo NAT, za uživatele virtuálních IP adres pro všechny porty, které může uživatel použít.
 
 Zde jsou některé nevýhody použití NAT pro veřejných virtuálních IP adres:
 - NAT přidá režie při správě pravidel brány firewall, protože uživatelé řídit své vlastní koncové body a jejich vlastní pravidla pro publikování v zásobníku softwarově definované sítě (SDN). Uživatelé musí kontaktovat operátory Azure stacku získat své virtuální IP adresy, publikovat a aktualizovat seznam portů.
@@ -48,7 +48,7 @@ Aktuálně se doporučuje zakázat dešifrování SSL na veškerý provoz služb
 ## <a name="edge-firewall-scenario"></a>Hraniční brána firewall scénář
 V nasazení edge služby Azure Stack nasazuje přímo za hraniční směrovač nebo bránu firewall. V těchto scénářích platí pro bránu firewall, aby se nad ohraničení (scénář 1), kde podporuje konfiguraci aktivní aktivní a aktivní pasivní brány firewall nebo funguje jako hraniční zařízení (scénář 2), kde se podporuje jenom aktivní aktivní brána firewall Konfigurace spoléhat na stejné náklady s více cesta ECMP () pomocí protokolu BGP nebo statické směrování pro převzetí služeb při selhání.
 
-Obvykle jsou veřejné IP adresy směrovatelné zadaný pro fond veřejných virtuálních IP adres z externí sítě v době nasazení. Ve scénáři edge se doporučuje použít veřejné IP adresy směrovatelné na jinou síť z bezpečnostních důvodů. Tento scénář umožňuje uživateli prostředí plně svým řízené cloudového prostředí jako veřejný cloud, jako je Azure.  
+Veřejné IP adresy směrovatelné jsou určeny pro fond veřejných virtuálních IP adres z externí sítě v době nasazení. Ve scénáři edge se doporučuje použít veřejné IP adresy směrovatelné na jinou síť z bezpečnostních důvodů. Tento scénář umožňuje uživateli prostředí plně svým řízené cloudového prostředí jako veřejný cloud, jako je Azure.  
 
 ![Příklad edge brány firewall pomocí Azure Stack](./media/azure-stack-firewall/firewallScenarios.png)
 

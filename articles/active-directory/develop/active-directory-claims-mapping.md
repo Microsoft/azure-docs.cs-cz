@@ -12,14 +12,15 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes
-ms.openlocfilehash: 18cd96c87f294f1dd8e62f41dd759558c2013aa0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aad699df2de8b745058784790e672f5b8c6e98e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241663"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209740"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postup: Přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
 
 > [!NOTE]
 > Tato funkce nahrazuje a nahrazuje [deklarací přizpůsobení](active-directory-saml-claims-customization.md) nabízeným prostřednictvím portálu. Ve stejné aplikaci pokud je přizpůsobení deklarací identity pomocí portálu kromě metodu grafu nebo Powershellu podrobně popsané v tomto dokumentu, tokeny vydané pro, že aplikace bude ignorovat konfigurace na portálu. Konfigurace provedené pomocí metody popsané v tomto dokumentu se neprojeví v portálu.
@@ -60,7 +61,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |acr|
 |objekt actor|
 |actortoken|
-|AIO|
+|aio|
 |altsecid|
 |AMR|
 |app_chain|
@@ -70,9 +71,9 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |appctxsender|
 |ID aplikace|
 |appidacr|
-|kontrolní výraz|
+|assertion|
 |at_hash|
-|AUD|
+|aud|
 |auth_data|
 |auth_time|
 |authorization_code|
@@ -80,7 +81,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |azpacr|
 |c_hash|
 |ca_enf|
-|Kopie|
+|cc|
 |cert_token_use|
 |client_id|
 |cloud_graph_host_name|
@@ -99,9 +100,9 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |e-mail|
 |endpoint|
 |enfpolids|
-|Exp|
+|exp|
 |expires_on|
-|Parametr grant_type|
+|grant_type|
 |graf|
 |group_sids|
 |skupiny|
@@ -117,12 +118,12 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier|
 |IAT|
 |identityprovider|
-|Zprostředkovatel identity|
+|idp|
 |in_corp|
 |instance|
 |IPADDR|
 |isbrowserhostedapp|
-|jednotky ISS – překročené|
+|iss|
 |jwk|
 |key_id|
 |key_type|
@@ -174,10 +175,10 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |tokenAutologonEnabled|
 |trustedfordelegation|
 |unique_name|
-|hlavní název uživatele|
+|upn|
 |user_setting_sync_url|
 |uživatelské jméno|
-|identifikátor uti|
+|uti|
 |verze|
 |verified_primary_email|
 |verified_secondary_email|
@@ -243,9 +244,9 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 
 **Řetězec:** IncludeBasicClaimSet
 
-**Datový typ:** logická hodnota (True nebo False)
+**Datový typ:** Logická hodnota (True nebo False)
 
-**Shrnutí:** tato vlastnost určuje, zda sada základní deklarace identity je součástí tokeny vliv těchto zásad. 
+**Shrnutí:** Tato vlastnost určuje, zda sady základní deklarací je součástí tokeny vliv těchto zásad. 
 
 - Pokud je nastavený na hodnotu True, všechny deklarace identity v sadě základní deklarace identity jsou zaznamenávány do tokenů tyto zásady ovlivní. 
 - Není-li nastaven na hodnotu False, deklarací identity v sadě základní deklarace identity v tokenech, pokud jsou jednotlivě přidají ve vlastnosti deklarace identity schématu stejné zásady.
@@ -257,31 +258,31 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 
 **Řetězec:** ClaimsSchema
 
-**Datový typ:** objektů blob JSON pomocí jedné nebo více položek schématu deklarace identity
+**Datový typ:** Objekt blob JSON pomocí jedné nebo více položek schématu deklarace identity
 
-**Shrnutí:** tato vlastnost definuje, které deklarace identity jsou k dispozici v tokenech, tyto zásady ovlivní, kromě do sady základní deklarace identity a základní sadu deklarací.
+**Shrnutí:** Tato vlastnost definuje, které deklarace identity jsou k dispozici v tokenech ovlivněné zásadami kromě sady základní deklarace identity a základní sada deklarací identity.
 Pro každou položku schématu deklarace identity definované v této vlastnosti se vyžaduje určité informace. Určit, odkud data pocházejí (**hodnotu** nebo **zdroj/ID pár**), a které deklarace identity dat je vygenerován jako (**typ deklarace identity**).
 
 ### <a name="claim-schema-entry-elements"></a>Prvky schématu vstupní deklarace identity
 
-**Hodnota:** prvku hodnoty definuje statickou hodnotu jako data, která mají být zaznamenávány do deklarace identity.
+**Hodnota:** Hodnota elementu definuje statickou hodnotu jako data, která mají být zaznamenávány do deklarace identity.
 
-**ID zdroje/pár:** zdrojový a ID prvky definovat, kde je zdrojem dat v deklaraci identity. 
+**Zdroj/ID pár:** Elementy zdroje a ID definovat, kde je zdrojem dat v deklaraci identity. 
 
 Nastavte prvek zdroje na jednu z následujících hodnot: 
 
-- "user": data v deklaraci identity je vlastnost v objektu User. 
-- "aplikace": data v deklaraci identity je vlastnost instančního objektu aplikace (klient). 
-- "prostředek": data v deklaraci identity se vlastnost v objektu služby prostředků.
-- "cílovou skupinu": data v deklaraci identity je vlastnost instanční objekt, který je cílová skupina tokenu (klienta nebo prostředků instanční objekt).
-- "společnost": data v deklaraci identity je vlastnost u objektu prostředku tenanta společnosti.
-- "transformace": data v deklaraci identity se z transformace deklarací identity (viz oddíl "Transformace deklarací identity" dále v tomto článku).
+- "user": Data v deklaraci identity se vlastnost v objektu User. 
+- "aplikace": Data v deklaraci identity se vlastnost v objektu služby aplikace (klient). 
+- "prostředek": Data v deklaraci identity je vlastnost na prostředek instanční objekt.
+- "skupina": Data v deklaraci identity se vlastnost na instanční objekt, který je cílová skupina tokenu (klienta nebo prostředků instanční objekt).
+- "společnost": Data v deklaraci identity je vlastnost u objektu prostředku tenanta společnosti.
+- "transformace": Data v deklaraci identity se z transformace deklarací identity (viz oddíl "Transformace deklarací identity" dále v tomto článku).
 
 Pokud je zdroj transformace **TransformationID** elementu musí být součástí této deklarace identity definice.
 
 ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarace identity. V následující tabulce jsou uvedeny hodnoty ID, které jsou platné pro každou hodnotu zdroje.
 
-#### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: Hodnoty platné ID jeden zdroj
+#### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: Platné hodnoty ID jeden zdroj
 
 |Zdroj|ID|Popis|
 |-----|-----|-----|
@@ -297,7 +298,7 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 |Uživatel|název_domény_DNS|Dns Domain Name|
 |Uživatel|onpremisesecurityidentifier|on-premises identifikátor zabezpečení|
 |Uživatel|Firma|Název organizace|
-|Uživatel|streetAddress|Ulice|
+|Uživatel|streetaddress|Ulice|
 |Uživatel|PSČ|Poštovní směrovací číslo|
 |Uživatel|preferredlanguange|Upřednostňovaný jazyk|
 |Uživatel|onpremisesuserprincipalname|místní hlavní název uživatele|
@@ -329,7 +330,7 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 |aplikace, prostředků, cílovou skupinu|tags|Značka objektu služby|
 |Společnost|tenantcountry|Zemi tenanta|
 
-**TransformationID:** TransformationID elementu musí být zadaná jenom v případě, že Source element nastavená na "transformace".
+**TransformationID:** TransformationID element musí být zadaná jenom v případě, že Source element nastavená na "transformace".
 
 - Tento element musí odpovídat ID elementu vstupu transformace v **ClaimsTransformation** vlastnost, která definuje způsob generování dat pro tuto deklaraci.
 
@@ -345,41 +346,41 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 
 **Řetězec:** ClaimsTransformation
 
-**Datový typ:** objektů blob JSON pomocí jedné nebo více položek transformace 
+**Datový typ:** Objekt blob JSON pomocí jedné nebo více položek transformace 
 
-**Shrnutí:** pomocí této vlastnosti lze použít běžné transformace na zdroj dat, se vygenerovat výstupní data pro deklarace identity určená ve schématu deklarací identity.
+**Shrnutí:** Pomocí této vlastnosti použít běžné transformace na zdroj dat, se vygenerovat výstupní data pro deklarace identity určená ve schématu deklarací identity.
 
-**ID:** odkazují na tuto položku transformace v položce schématu TransformationID deklarace identity pomocí ID elementu. Tato hodnota musí být jedinečný pro každou položku transformace v rámci této zásadě.
+**ID:** Pomocí ID elementu odkazují na tuto položku transformace v položce schématu TransformationID deklarací identity. Tato hodnota musí být jedinečný pro každou položku transformace v rámci této zásadě.
 
 **TransformationMethod:** TransformationMethod element identifikuje, které proběhlo generují data pro deklarace identity.
 
 Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstupů a výstupů pomocí **InputClaims**, **vstupní parametry** a **OutputClaims** elementy.
 
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: Metody transformace a očekávané vstupy a výstupy
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: Transformace metody a očekávané vstupy a výstupy
 
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojení vstupních řetězců s použitím oddělovače mezi. Příklad: řetězec1: "foo@bar.com", řetězec2: "izolovaném prostoru", oddělovač: "." výsledkem outputClaim: "foo@bar.com.sandbox"|
 |ExtractMailPrefix|mail|outputClaim|Extrahuje místní části e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne \@ přihlašování je k dispozici, pak původního vstupního řetězce je vrácen, jako je.|
 
-**InputClaims:** použít InputClaims element předat data z položky schématu deklarace identity transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
+**InputClaims:** Použijte InputClaims element předat data z položky schématu deklarace identity transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
 - **ClaimTypeReferenceId** je spojen s ID elementu vstupu schématu deklarace identity se najít odpovídající vstupní deklaraci identity. 
 - **TransformationClaimType** slouží k zadejte jedinečný název pro tento vstup. Tento název musí odpovídat jedné z očekávaných vstupy pro metodu transformace.
 
-**Vstupní parametry:** použít element vstupní parametry k předání konstantní hodnota transformace. Má dva atributy: **hodnotu** a **ID**.
+**Vstupní parametry:** Použijte element vstupní parametry k předání konstantní hodnota transformace. Má dva atributy: **Hodnota** a **ID**.
 
 - **Hodnota** je skutečná konstantní hodnota má být předán.
 - **ID** slouží k zadejte jedinečný název vstupu. Název musí odpovídat jedné z očekávaných vstupy pro metodu transformace.
 
-**OutputClaims:** použít OutputClaims element pro uložení dat vygenerovaných vašimi transformaci a spojit je položka schématu deklarace identity. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
+**OutputClaims:** Použijte OutputClaims element pro uložení dat vygenerovaných vašimi transformaci a spojit je položka schématu deklarace identity. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
 - **ClaimTypeReferenceId** je spojen s ID schématu vstupní deklarace identity, který se má najít odpovídající výstupní deklarací.
 - **TransformationClaimType** slouží k zadejte jedinečný název do výstupu. Název musí odpovídat jedné z očekávané výstupy pro metodu transformace.
 
 ### <a name="exceptions-and-restrictions"></a>Výjimky a omezení
 
-**ID názvu SAML a hlavní název uživatele:** atributy, z nichž zdrojové hodnoty NameID a hlavní název uživatele a transformace deklarací identity, které jsou povoleny, jsou omezeny. Zobrazit tabulky 5 a 6 zobrazíte povolené hodnoty.
+**ID názvu SAML a hlavní název uživatele:** Atributy, z nichž zdrojové hodnoty NameID a hlavní název uživatele a transformace deklarací identity, které jsou povoleny, jsou omezeny. Zobrazit tabulky 5 a 6 zobrazíte povolené hodnoty.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: Atributy povolen jako zdroj dat pro SAML NameID
 

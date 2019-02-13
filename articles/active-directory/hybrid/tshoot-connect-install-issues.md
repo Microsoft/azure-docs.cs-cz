@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 56fd4be85fabebcdde5ca271630e1c5b83c398b9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c1e11a9c913b93f09058a0bde8982354870e547d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773215"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188201"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Řešení potíží: Problémy instalace služby Azure AD Connect
 

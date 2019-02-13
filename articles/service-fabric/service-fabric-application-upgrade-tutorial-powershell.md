@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e11ac55afe41231fcbc3aabb3ef54b46108eb49c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515314"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185838"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade aplikace Service Fabric pomocí Powershellu
 > [!div class="op_single_selector"]
@@ -34,11 +34,9 @@ Nejčastěji používané a doporučený postup upgradu je monitorovaném upgrad
 
 Upgrade monitorovanou aplikaci je možné provádět pomocí spravované nebo nativní rozhraní API, Powershellu, rozhraní příkazového řádku Azure, Javu nebo REST. Pokyny k provedení upgradu pomocí sady Visual Studio najdete v tématu [upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).
 
-Pomocí Service Fabric monitorovat postupné upgrady správce aplikace lze nakonfigurovat hodnocení zásad stavu, který používá Service Fabric k určení, jestli je aplikace v pořádku. Kromě toho může správce nakonfigurovat akce, která má být provedeny, když selže hodnocení stavu (například způsobem automatického vrácení zpět.) Tato část vás provede monitorovaných upgrade pro jednu z ukázek sadu SDK, které používá PowerShell. Následující video Microsoft Virtual Academy vás také provede upgrade aplikací: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
-<img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
+Pomocí Service Fabric monitorovat postupné upgrady správce aplikace lze nakonfigurovat hodnocení zásad stavu, který používá Service Fabric k určení, jestli je aplikace v pořádku. Kromě toho může správce nakonfigurovat akce, která má být provedeny, když selže hodnocení stavu (například způsobem automatického vrácení zpět.) Tato část vás provede monitorovaných upgrade pro jednu z ukázek sadu SDK, které používá PowerShell. 
 
-## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Krok 1: Vytvoření a nasazení ukázky vizuálních objektů
+## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Krok 1: Sestavení a nasazení ukázky vizuálních objektů
 Vytvářejte a publikujte aplikaci kliknutím pravým tlačítkem na projekt aplikace **VisualObjectsApplication,** a vyberete **publikovat** příkazu.  Další informace najdete v tématu [kurz upgradu aplikace Service Fabric](service-fabric-application-upgrade-tutorial.md).  Alternativně můžete použít PowerShell k nasazení vaší aplikace.
 
 > [!NOTE]
@@ -76,7 +74,7 @@ Nyní *ApplicationManifest.xml* souboru (nalezené pod **VisualObjects** projekt
 
 Nyní, sestavte projekt výběrem jenom **ActorService** projektu a klikněte pravým tlačítkem myši a vyberete **sestavení** možnost v sadě Visual Studio. Pokud vyberete **sestavit vše znovu**, měli byste aktualizovat verze pro všechny projekty, protože kód by byly změněny. Dále můžeme kliknutím pravým tlačítkem na balíček aktualizovanou aplikaci ***VisualObjectsApplication***, výběrem nabídky Service Fabric a zvolením **balíčku**. Tato akce vytvoří balíček aplikace, které je možné nasadit.  Aktualizovaná aplikace je připravená k nasazení.
 
-## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3: Při rozhodování o stavu zásady a parametry upgradu
+## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3:  Při rozhodování o stavu zásady a parametry upgradu
 Seznamte se s [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) a [procesu upgradu](service-fabric-application-upgrade.md) získat dobrý přehled o různé parametry upgradu, vypršení časových limitů a kritéria stavu použít. V tomto návodu je kritéria hodnocení stavu služby nastavenou na výchozí hodnotu (a doporučené) hodnoty, které znamená, že by měly být všechny služby a instance *v pořádku* po upgradu.  
 
 Však Řekněme zvýšit *HealthCheckStableDuration* 180 sekund (tak, že služby jsou v pořádku po dobu 120 sekund před provedením upgradu na další aktualizační domény).  Také nastavíme *UpgradeDomainTimeout* bude 1 200 sekund a *UpgradeTimeout* bude 3000 sekund.
@@ -91,7 +89,7 @@ UpgradeDomainTimeoutSec = 1200
 
 UpgradeTimeout = 3000
 
-## <a name="step-4-prepare-application-for-upgrade"></a>Krok 4: Příprava aplikací pro upgrade
+## <a name="step-4-prepare-application-for-upgrade"></a>Krok 4: Připravit aplikaci na upgrade
 Aplikace je teď vytvořené a připraveno k upgradu. Pokud otevřete okno Powershellu jako správce a zadejte [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), ponechte vás informuje, že je aplikace typu 1.0.0.0 **VisualObjects** , která je nasazena.  
 
 Balíček aplikace se ukládají následující relativní cesta kde nekomprimovaný Service Fabric SDK - *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. V tomto adresáři, kde je uložen balíček aplikace, měli byste najít složku "Balíček". Zkontrolujte časové razítko k zajištění, že je na nejnovější verzi (budete muset cesty příslušným způsobem upravte také).

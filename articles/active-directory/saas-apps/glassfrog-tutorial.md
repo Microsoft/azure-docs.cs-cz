@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou GlassFrog | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s GlassFrog | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GlassFrog.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fdd1e8acf446ba3e409e2ff0bf9ca18f581c299
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d6bdc9f2214f8a23ffd1a126905faf00f2fc4264
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430759"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199626"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Kurz: Integrace Azure Active Directory se službou GlassFrog
+# <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Kurz: Integrace Azure Active Directory s GlassFrog
 
 V tomto kurzu se dozvíte, jak integrovat GlassFrog s Azure Active Directory (Azure AD).
 
@@ -149,7 +150,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-glassfrog-test-user"></a>Vytvoření zkušebního uživatele GlassFrog
 
-V této části vytvoříte uživatele v GlassFrog jako Britta Simon. Práce s [tým podpory GlassFrog](https://support.glassfrog.com/support/solutions/9000107654) přidat uživatele na platformě GlassFrog. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v GlassFrog jako Britta Simon. Práce s [tým podpory GlassFrog](https://support.glassfrog.com/support/solutions/9000107654) přidat uživatele na platformě GlassFrog. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

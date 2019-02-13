@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ef8c7ca13d59c29160ff33f82d50976d2eedf4a6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ad5a4981869f992ab6823a13afc2cad0e5252d08
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651692"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105429"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurace PHP ve službě Azure App Service
 
@@ -47,9 +47,11 @@ Verze PHP 7.0 a PHP 7.2 jsou také k dispozici, ale není ve výchozím nastaven
 
 ### <a name="azure-powershell-windows"></a>Prostředí Azure PowerShell (Windows)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. Otevřete prostředí Azure PowerShell a přihlašovací jméno ke svému účtu:
 
-        PS C:\> Connect-AzureRmAccount
+        PS C:\> Connect-AzAccount
 2. Nastavení verze PHP pro aplikaci.
 
         PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}

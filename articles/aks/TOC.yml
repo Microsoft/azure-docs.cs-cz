@@ -168,6 +168,8 @@ items:
       href: kubernetes-service-principal.md
     - name: Omezení přístupu ke konfiguračnímu souboru clusteru
       href: control-kubeconfig-access.md
+    - name: Zabezpečení přenosu podů s využitím síťových zásad (Preview)
+      href: use-network-policies.md
     - name: Aktualizace přihlašovacích údajů instančního objektu clusteru
       href: update-credentials.md
     - name: Ověřování pomocí ACR
@@ -316,9 +318,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: c657d805188d5c5760e65290437414ab98f83a05
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6f5b944ba1ce02d05478fa97b0376c0f42fa98e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768745"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206527"

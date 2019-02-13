@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 983bf77a157de539264a6437ffbebb291d310840
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d95f7eb971f7da229c7d66d586598697ab0a2d8b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181414"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209391"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlaste se pomocí dvoustupňového ověření nebo bezpečnostních údajů
 

@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: bcf5176728b520cae5d31750384f316efe244b7e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8897651c963b0036bc2ac3d8cdb06a52d6f52ba1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663617"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188031"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>Verze Preview:  Historie verze agenta Azure AD ochrana heslem
 

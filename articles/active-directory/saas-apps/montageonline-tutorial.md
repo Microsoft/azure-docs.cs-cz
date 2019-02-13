@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 52b89fd830d18c595e29549432514fd60bbc6df9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27a7a792c297d45f81efbda406761f3f4467be9d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158702"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Kurz: Integrace Azure Active Directory s Fotomontáž Online
 

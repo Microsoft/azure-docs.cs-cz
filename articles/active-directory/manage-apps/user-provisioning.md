@@ -14,12 +14,13 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 10a693c36c8863f856eac49f0c3da44e3a89fef5
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960492"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186348"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 

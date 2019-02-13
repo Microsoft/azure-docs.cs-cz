@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ed32cbabe5f80e131f467a87378eda8912b9a65e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ae428f18a2b927f42716a1c00b55790fe73d81a4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496250"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173398"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje, out-of-box konfigurační pravidla. Dokumentují pravidla a vliv těchto pravidel v konfiguraci. To vás také provede výchozí konfiguraci synchronizace Azure AD Connect. Cílem je, že čtečky rozumí fungováním konfigurační model s názvem deklarativní zřizování v reálný příklad. Tento článek předpokládá, že jste již nainstalovali a konfigurace synchronizace služby Azure AD Connect pomocí Průvodce instalací.

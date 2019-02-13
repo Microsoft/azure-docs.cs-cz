@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 600165c06fcc814fbb8df180d955235104153abd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c3c4c4bb924ed6faf1b194273a3cf8c17b16d741
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157512"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Kurz: Integrace Azure Active Directory s Kintone
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou ZephyrSSO | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s ZephyrSSO | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ZephyrSSO.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 47bbdc1c50f0d96f1f26d5595a9e54814fa85188
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3be3008367f5c405f65dfd37b4384726ab2456c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307880"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209519"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>Kurz: Integrace Azure Active Directory se službou ZephyrSSO
+# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>Kurz: Integrace Azure Active Directory s ZephyrSSO
 
 V tomto kurzu se dozvíte, jak integrovat ZephyrSSO s Azure Active Directory (Azure AD).
 
@@ -160,7 +161,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
   
 ### <a name="create-a-zephyrsso-test-user"></a>Vytvoření zkušebního uživatele ZephyrSSO
 
-V této části vytvoříte uživatele v ZephyrSSO jako Britta Simon. Práce s [tým podpory ZephyrSSO](https://support.getzephyr.com) přidat uživatele na platformě ZephyrSSO. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v ZephyrSSO jako Britta Simon. Práce s [tým podpory ZephyrSSO](https://support.getzephyr.com) přidat uživatele na platformě ZephyrSSO. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

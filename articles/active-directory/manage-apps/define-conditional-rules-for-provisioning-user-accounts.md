@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b4cdd9d9a1d5215b8e79d1412544be2b66fa02c
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ebc6c1e8a264c5570f3100885c4fca7d0d0d90d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961325"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208367"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlují, jak používat filtry oborů k definování pravidel založených na atributech, které určují, které uživatelé jsou přiřazeni k aplikaci.

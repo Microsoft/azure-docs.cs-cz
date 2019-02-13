@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6e333fdbeb275cddb237a16adf8e272eff98b4ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d4c2ea78643b0efbea30746d60d4c988e2108b5f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157886"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>Kurz: Integrace Azure Active Directory s Merchlogix
 

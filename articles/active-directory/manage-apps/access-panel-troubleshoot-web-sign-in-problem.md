@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.reviwer: japere,asteen
-ms.openlocfilehash: 60d80d6d611c9e24bb76d2437ee555151789a3fd
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f10a1f38b2c793bffb6061c6eefdccef7ac5c57b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961080"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204521"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Potížím při přihlašování k webu přístupového panelu
 

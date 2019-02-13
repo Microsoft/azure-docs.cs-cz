@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 01/18/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: a349b50ce0c4e7c47979a6dee5694411a1d807c2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 666b534c3ab07be2b1e2335015fc4723782a1249
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982246"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181571"
 ---
 # <a name="roles-you-cannot-manage-in-pim"></a>Role, které nelze spravovat v PIM
 

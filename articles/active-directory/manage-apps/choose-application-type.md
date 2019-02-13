@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: celested
-ms.openlocfilehash: ec84ea47d7d0d136b744a4f7328a6729d05b0faf
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8009f50643121f1def184485aa383fe3ce8033dd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961036"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184937"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Volba typu aplikace, při přidávání aplikace v Azure Active Directory
 Další informace o čtyři typy aplikací, které můžete přidat do služby Azure Active Directory (Azure AD). Při přidávání aplikace v Azure Active Directory, zobrazí se výzva k výběru jednoho typu čtyři aplikace. 

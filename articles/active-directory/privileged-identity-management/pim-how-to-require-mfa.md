@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c26050eb8844368554726d0e642b7b7384649763
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a641f5be28e4750ba8d3d4f8b56802034aab2c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195581"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187249"
 ---
 # <a name="multi-factor-authentication-mfa-and-pim"></a>Vícefaktorové ověřování (MFA) a PIM
 

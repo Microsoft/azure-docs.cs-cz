@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: d5748cad11e8e0e4bdfd1000b312ab44fc304059
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c6ae478a80c72834900b0e421ce02905e5657ef6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161049"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Kurz: Integrace Azure Active Directory s Form.com
 

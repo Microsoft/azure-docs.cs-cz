@@ -10,20 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: fe7825922d9333d058d9a33d5643850c368d3457
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 474355088a339741b8dd1917fb354d55df4990f6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511390"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189187"
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programově přeučit modely Azure Machine Learning Studio
 V tomto návodu se dozvíte, jak prostřednictvím kódu programu přeučování webové služby Azure Machine Learning Studio pomocí C# a provedení dávky služby Machine Learning service.
 
-Jakmile máte retrained modelu, následující postupy ukazují, jak aktualizace modelu v prediktivní webové služby:
-
-* Pokud jste nasadili webové služby Classic na portálu webových služeb Machine Learning, přečtěte si téma [Přeučování webové služby Classic](retrain-a-classic-web-service.md). 
-* Pokud jste nasadili novou webovou službu, přečtěte si téma [Přeučování nové webové služby pomocí rutin pro správu ve službě Machine Learning](retrain-new-web-service-using-powershell.md).
+Jakmile budete mít retrained model, najdete v článku [Přeučování nové webové služby pomocí rutin pro správu ve službě Machine Learning](retrain-new-web-service-using-powershell.md) se dozvíte, jak k aktualizaci modelu v prediktivní webové služby:
 
 Přehled procesu retraining, naleznete v tématu [Přeučování Model strojového učení](retrain-machine-learning-model.md).
 
@@ -165,9 +162,8 @@ Zkontrolujte výsledky a určit, zda se nově trénovaného modelu dostatečně 
 Kopírovat *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výstupní výsledky, použijeme je během procesu přeučení.
 
 ## <a name="next-steps"></a>Další postup
-Pokud jste nasadili službu prediktivními webovými kliknutím **nasazení webové služby [Classic]**, naleznete v tématu [Přeučování webové služby Classic](retrain-a-classic-web-service.md).
 
-Pokud jste nasadili službu prediktivními webovými kliknutím **nasazení [nové] webová služba**, naleznete v tématu [Přeučování nové webové služby pomocí rutin pro správu ve službě Machine Learning](retrain-new-web-service-using-powershell.md).
+ [Přeučování nové webové služby pomocí rutin pro správu ve službě Machine Learning](retrain-new-web-service-using-powershell.md).
 
 <!-- Retrain a New web service using the Machine Learning Management REST API -->
 

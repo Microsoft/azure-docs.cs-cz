@@ -16,12 +16,13 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6df19f8d20853b569a2bc357e6c1115976a7de2c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 716f48a5db437ef1dc865aca66fbac1c1d51aec3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097961"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207428"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory v2.0 a přístupové heslo vlastníka prostředku OAuth 2.0
 
@@ -81,7 +82,7 @@ Následuje příklad úspěšné odpovědi tokenu:
 
 | Parametr | Formát | Popis |
 | --------- | ------ | ----------- |
-| `token_type` | Řetězec | Vždy nastaven na hodnotu `Bearer`. |
+| `token_type` | String | Vždy nastaven na hodnotu `Bearer`. |
 | `scope` | Oddělené mezerou řetězce | Pokud byl vrácen přístupového tokenu, tento parametr obsahuje obory, které je přístupový token platný pro. |
 | `expires_in`| int | Počet sekund, po které je součástí přístupový token platný pro. |
 | `access_token`| Neprůhledný řetězec | Vydaný pro [obory](v2-permissions-and-consent.md) , které bylo vyžádáno. |

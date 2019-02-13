@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: celested
 ms.reviewer: baselden
-ms.openlocfilehash: 5aaef7b2d281254037a051b1e91bfface653a013
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92ce62d745bfb0299dc8f3eb401f5a66e38580f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961937"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182115"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zdroje pro migraci aplikací do Azure Active Directory
 

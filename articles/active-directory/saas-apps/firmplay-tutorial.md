@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: ea7688f36c30c078fef033e4b2189ead85694380
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e2eb3085c652be1b86b6343850c5cad3dcdc4c14
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192736"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Kurz: Integrace Azure Active Directory s FirmPlay - Advocacy zaměstnance pro nábor
 

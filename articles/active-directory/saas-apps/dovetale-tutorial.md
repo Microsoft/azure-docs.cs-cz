@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 44ac37522e486771ad3f09342d12aa6fa37dd16d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a9b5810dd7989ec31228877aa33987df2e6a7435
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991566"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dovetale"></a>Kurz: Integrace Azure Active Directory s Dovetale
 

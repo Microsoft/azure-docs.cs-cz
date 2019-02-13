@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: afb4e634b7e255ef8f2cfc84319029af7412372e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251873"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207530"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Důležité informace o integraci Datacenter pro integrované systémy Azure Stack
-Pokud vás zajímá systémech pro Azure Stack integrované, měli byste porozumět některé hlavní rozhodnutí při plánování nasazení a jak se systém zapadá do vašeho datového centra. Tento článek obsahuje základní přehled o tyto aspekty, které pomůžou při rozhodování důležitou infrastrukturu pro váš systém Azure Stack víc uzlů. Znalost těchto aspektů pomáhá při práci s OEM dodavatele hardwaru, jako jsou nasazení do vašeho datového centra Azure Stack.  
+Pokud vás zajímá systémech pro Azure Stack integrované, měli byste porozumět hlavní rozhodnutí při plánování nasazení a jak se systém zapadá do vašeho datového centra. Tento článek obsahuje základní přehled o tyto aspekty, které pomůžou při rozhodování důležitou infrastrukturu pro váš systém Azure Stack víc uzlů. Znalost těchto aspektů pomáhá při práci s OEM dodavatele hardwaru, jako jsou nasazení do vašeho datového centra Azure Stack.  
 
 > [!NOTE]
 > Více uzly systémy pro Azure Stack si můžete koupit jenom od dodavatelů povolený hardware. 
@@ -53,8 +53,6 @@ Vyšší úroveň přístupu je potřeba pro řešení potíží s problémy, kt
 
 ### <a name="choose-identity-provider"></a>Vyberte zprostředkovatele identity
 Musíte vzít v úvahu kterého zprostředkovatele identity, kterou chcete použít pro nasazení Azure Stack, Azure AD nebo AD FS. Po nasazení bez opětovného nasazení celé systému nelze přepnout zprostředkovatelé identity. Pokud nejste vlastníkem účtu služby Azure AD a používáte účet, které jste získali od poskytovatele cloudových služeb, a pokud se rozhodnete přepínání poskytovatele a jiné služby Azure AD pomocí účtu, v tomto okamžiku budete muset kontaktovat svého poskytovatele řešení k opětovnému nasazení řešení f nebo můžete na vaše náklady.
-
-
 
 Zvoleného poskytovatele identity nemá žádný vliv na klientské virtuální počítače, identitu systému a účty, které používají, zda se můžete připojit doméně služby Active Directory atd. Toto je samostatný.
 
@@ -88,7 +86,7 @@ Bude potřeba uvažovat o způsobu plánování oboru názvů služby Azure Stac
 
 Následující tabulka shrnuje tato rozhodnutí názvů domény.
 
-| Name | Popis | 
+| Název | Popis | 
 | -------- | ------------- | 
 |Název oblasti | Název vaší první oblasti Azure Stack. Tento název se používá jako součást plně kvalifikovaný název domény pro veřejnou virtuální IP adresy (VIP), které spravuje Azure Stack. Název oblasti obvykle by měl být identifikátor fyzické umístění, jako je například umístění datového centra.<br><br>Název oblasti musí obsahovat jenom písmena a číslice mezi 0 až 9. Žádné speciální znaky, například "-" nebo "#", atd. jsou povoleny.| 
 | Název externí domény | Název zóny systému DNS (Domain Name) pro koncové body s externích virtuálních IP adres. Používá se v plně kvalifikovaný název domény pro tyto veřejné virtuální IP adresy. | 
@@ -110,9 +108,9 @@ Další informace o jaké infrastruktury veřejných KLÍČŮ certifikáty jsou 
 
 
 ## <a name="time-synchronization"></a>Čas synchronizace
-Je nutné vybrat určitou dobu, kterou server s se používá k synchronizaci služby Azure Stack.  Symbolization čas je důležité pro Azure Stack a jeho infrastruktury role, protože se používá ke generování lístky protokolu Kerberos, které se používají k ověření interních služeb mezi sebou.
+Je nutné vybrat určitou dobu, kterou server s se používá k synchronizaci služby Azure Stack.  Synchronizaci času je důležité pro Azure Stack a jeho infrastruktury role, protože se používá ke generování lístky protokolu Kerberos, které se používají k ověření interních služeb mezi sebou.
 
-Je nutné zadat, že integrační balíček pro server synchronizace času, i když většina komponent v infrastruktuře lze přeložit adresu URL, některé může podporovat jenom IP adresy. Pokud jste se pomocí možnosti odpojené nasazení, je nutné zadat čas v podnikové síti, kterou Opravdu se dá kontaktovat server ze sítě infrastruktury v Azure stacku.
+Je nutné zadat, že integrační balíček pro server synchronizace času, i když většina komponent v infrastruktuře lze přeložit adresu URL, některé může podporovat jenom IP adresy. Pokud používáte možnost odpojené nasazení, musíte zadat, že čas v podnikové síti, kterou Opravdu se dá kontaktovat server ze sítě infrastruktury v Azure stacku.
 
 ## <a name="connect-azure-stack-to-azure"></a>Azure Stack připojení k Azure
 

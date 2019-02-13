@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 04/05/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 1c564867f100a1aefb1753bbfc53f82e386acb72
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b5629f67bbc84e14f0c27726fb79a22b3dd691c7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092693"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206351"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-android-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-android-setup.md)]

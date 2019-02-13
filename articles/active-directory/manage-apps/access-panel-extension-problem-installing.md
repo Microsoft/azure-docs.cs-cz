@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 950c675d49a840644935e5c7ae037760f14c1809
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 42b9668a68ed57273c6198dc2ecd34b9001811d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55958835"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209298"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření prohlížeče přístupového panelu
 

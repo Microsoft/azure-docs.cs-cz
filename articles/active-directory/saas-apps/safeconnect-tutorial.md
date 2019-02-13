@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou SafeConnect | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s SafeConnect | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SafeConnect.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: f011b9ef7229ba1e588e488be8b4fc5b098ee5ac
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cbb94c28d56b0492fe3488d7c9e2e1257a8b9388
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024924"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183798"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>Kurz: Integrace Azure Active Directory se službou SafeConnect
+# <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>Kurz: Integrace Azure Active Directory s SafeConnect
 
 V tomto kurzu se dozvíte, jak integrovat SafeConnect s Azure Active Directory (Azure AD).
 
@@ -59,7 +60,7 @@ Konfigurace integrace SafeConnect do služby Azure AD, budete muset přidat Safe
 
 **Chcete-li přidat SafeConnect z galerie, postupujte následovně:**
 
-1. V ** [webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -83,11 +84,11 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SafeConnect, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on) ** – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) ** – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele SafeConnect](#create-a-safeconnect-test-user) ** – Pokud chcete mít protějšek Britta Simon SafeConnect, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) ** – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on) ** – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele SafeConnect](#create-a-safeconnect-test-user)**  – Pokud chcete mít protějšek Britta Simon SafeConnect, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -153,7 +154,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-safeconnect-test-user"></a>Vytvoření zkušebního uživatele SafeConnect
 
-V této části vytvoříte uživatele v SafeConnect jako Britta Simon. Práce s [tým podpory SafeConnect](mailto:support@impulse.com) přidat uživatele na platformě SafeConnect. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v SafeConnect jako Britta Simon. Práce s [tým podpory SafeConnect](mailto:support@impulse.com) přidat uživatele na platformě SafeConnect. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -185,7 +186,7 @@ V této části je povolit Britta Simon k udělení přístupu k SafeConnect pou
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

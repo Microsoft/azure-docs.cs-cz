@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ddb21ea26098d8c45d335ca6765cf3654ce13e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 871fcd120ee1afa936723d63532c58b2cda34fb6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166590"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Kurz: Integrace Azure Active Directory s lidstvo
 

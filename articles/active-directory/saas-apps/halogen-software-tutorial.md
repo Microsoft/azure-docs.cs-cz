@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 108667cbaaf52c9c85dffff51c3f9d012f54122b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec1ef8db71a6a9765eac4ec6ac8cae1d731e296b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153541"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Kurz: Integrace Azure Active Directory s Halogen softwaru
 

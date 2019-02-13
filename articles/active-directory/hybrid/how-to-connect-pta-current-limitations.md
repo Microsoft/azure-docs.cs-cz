@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2a2acbe9e4de20c0ccf6101fbcc8cacf95f1251a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: de42312c580b6bd5b4a5148fd877d55aa00e8804
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493564"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204589"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Předávací ověřování služby Azure Active Directory: Aktuální omezení
 

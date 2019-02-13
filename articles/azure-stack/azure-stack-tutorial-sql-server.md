@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 11/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 983e8b279261d3ff8e5d24c8e3a6f61c5a787e5b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aba9014e74b8ba0cd1b528cf570d3651950c6d5f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240807"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207054"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>Kurz: zpřístupnění databáze SQL pro vaše uživatele Azure stacku
 
@@ -35,7 +35,7 @@ Jako správce cloudu Azure Stack, můžete vytvořit nabídek, které uživatel�
 
 ## <a name="deploy-the-sql-server-resource-provider"></a>Nasazení poskytovatele prostředků SQL serveru
 
-Proces nasazení je podrobně popsány v [použití SQL Database v Azure stacku článku](azure-stack-sql-resource-provider-deploy.md), která se skládá z následujících kroků:
+Proces nasazení je podrobně popsány v [použití databází SQL v Azure stacku článku](azure-stack-sql-resource-provider-deploy.md), která se skládá z následujících kroků:
 
 1. [Nasazení poskytovatele prostředků SQL](azure-stack-sql-resource-provider-deploy.md).
 2. [Ověření nasazení](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).

@@ -11,12 +11,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 0f11b8b91f1dad208e8d14e21a20c316fe46074c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9556c99e7e9655054ee5b834db36ba6e22e9e807
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191413"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182643"
 ---
 # <a name="set-up-security-info-to-use-text-messaging-preview"></a>Upravit informace o zabezpečení tak, aby pomocí textové zprávy (preview)
 

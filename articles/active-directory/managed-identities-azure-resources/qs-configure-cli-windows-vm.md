@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
-ms.openlocfilehash: 4c17128f07475b6aeaef9ae15a13bc4863d7e663
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4782afa71919a3545bd023f33f873969c86b6cc6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699886"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208346"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Azure CLI
 
@@ -113,7 +114,7 @@ K odebrání spravovanou identitu pro rozšíření virtuálního počítače pr
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
 ```
 
-## <a name="user-assigned-managed-identity"></a>Uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
 
 V této části se dozvíte, jak přidávat a odebírat uživatelsky přiřazené spravovanou identitu virtuálního počítače Azure pomocí Azure CLI.
 

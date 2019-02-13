@@ -9,14 +9,14 @@ ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: reference
-ms.date: 01/15/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 74afd08aaa2e512ae3bcae302f50585eb8024306
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8e5876c9141a3eb85593b12f45b0bde4c7984adf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864073"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175332"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade ze služby Bing webové rozhraní API pro vyhledávání v5 na v7
 
@@ -26,7 +26,7 @@ Tento průvodce upgradem identifikuje změny mezi verzí 5 a rozhraní API webov
 
 ### <a name="endpoints"></a>Koncové body
 
-- Číslo verze koncový bod se změní z v5 na v7. Například https:\/\/api.cognitive.microsoft.com/bing/**v7.0**  /hledání.
+- Číslo verze koncového bodu byl změněn z v5 na v7. Například https:\/\/api.cognitive.microsoft.com/bing/**v7.0**  /hledání.
 
 ### <a name="error-response-objects-and-error-codes"></a>Objekty odpovědi chyby a chybové kódy
 
