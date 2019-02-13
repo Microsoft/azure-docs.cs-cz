@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 694999048d2f1df92e6b8631953f124c4009d46c
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 53eb0c4ad5c0a21f46985062ef8202a87dc0d5e6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733956"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Integrace Azure Active Directory s nekonečnou Campus
 

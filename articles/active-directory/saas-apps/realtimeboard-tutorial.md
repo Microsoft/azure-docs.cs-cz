@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 998868a656512486103e8c8e23ae39026c3f0cfe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0cb658275ad65aaca0a4873c2a80b472b954e8db
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192770"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Kurz: Integrace Azure Active Directory s RealtimeBoard
 

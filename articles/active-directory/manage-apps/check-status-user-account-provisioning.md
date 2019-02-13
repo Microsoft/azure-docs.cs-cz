@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: a013c8d3c78801414ab83fd89a59caa316f1c28f
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55958698"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206986"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Vytváření sestav o zřizování automatické uživatelských účtů
 

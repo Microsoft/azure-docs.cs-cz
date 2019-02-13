@@ -4,7 +4,7 @@ description: Další informace o zabezpečení Azure, služeb a jak to funguje.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: fd1943bba4ca3d08b91375419fcfc2ca2ed12337
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 28630a1d1b2ce212fe1054496814a9084f8cfc98
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896022"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116299"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled

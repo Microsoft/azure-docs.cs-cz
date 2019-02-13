@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 981f4d78a351b6d2b61253407e5021dbeb285204
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 80118cc1d111ddc11f35f57a96b61a5b940460cc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819539"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190564"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Kurz: Integrace Azure Active Directory s ADP
 

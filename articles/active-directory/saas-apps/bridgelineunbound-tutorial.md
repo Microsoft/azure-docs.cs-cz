@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 46ecb20952dd13ed0d143c82b9ea8081ee28bca2
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 77e7c2ef0bc9736ca0a97ac4e1874e5636295ce6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099033"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Kurz: Integrace Azure Active Directory s Bridgeline nevázaného
 

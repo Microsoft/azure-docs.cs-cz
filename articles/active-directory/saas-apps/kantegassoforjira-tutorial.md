@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: bdd7f3c1ba5b65eb959bdeb95b1ec68cdf7f164f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e74fbdd2eb2d53d4ae7ed164a8bd097b6c02714a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180156"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Kantega pro JIRA
 

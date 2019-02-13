@@ -15,12 +15,13 @@ ms.date: 12/10/2018
 ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: ba3ffe6aacb003f4edf909db3c935436e24b4210
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c3f0d7907fa755483ef5a92b3376c18d54467cc7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964854"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191193"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolit vzdálený přístup k Sharepointu pomocí Azure AD Application Proxy
 

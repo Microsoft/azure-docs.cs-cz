@@ -16,12 +16,13 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: fa75666c63d666f1358c1d6bf2f4b18b9eb7a813
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d99c25d6203bd86987430bdccd08f770022dc28c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103322"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165209"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Rychlý start: Registrace aplikace s platformou identity Microsoft (Preview)
 

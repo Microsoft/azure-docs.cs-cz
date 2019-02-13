@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: d526a56f0d33ebaba664a455b9e541f0f2489a53
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b11c71f7f5a329a836d379a16afe66c08572ccde
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104482"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177984"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidat nebo aktualizovat informace o profilu uživatele pomocí služby Azure Active Directory
 Přidejte informace o profilu uživatele, včetně profilový obrázek, informace specifické pro úlohy a některá nastavení pomocí Azure Active Directory (Azure AD). Další informace o přidávání nových uživatelů najdete v tématu [postup přidání nebo odstranění uživatelů ve službě Azure Active Directory](add-users-azure-active-directory.md).

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f93f6d01019b38fc157732ee221a5f73a156e809
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 58767438e7a1faf7e1e783fc95a33a35ece3774a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810393"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Kurz: Integrace Azure Active Directory s NetSuite
 

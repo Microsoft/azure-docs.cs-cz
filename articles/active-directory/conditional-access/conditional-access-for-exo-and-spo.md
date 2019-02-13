@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 79d6efafba2411bea85ab8c959716ebc38817490
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8dad650ac1cc7ab8822925a4a9759b68ee0d0088
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080408"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185989"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>Jak: Nastavení Sharepointu Online a Exchange Online pro podmíněný přístup Azure Active Directory 
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 52d976761ad5962f09f40565cfa04ae78386d1ca
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f9858fc38698ae2c5bd272a3494bcf02bce2d8e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192380"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Kurz: Integrace Azure Active Directory s použitím OpsGenie
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: c0a1d2bf1d7a103ad473cadb1528bd9b9a4c90de
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fab8ec5a6ca94d2f30ec47da390885339adf8b43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488012"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192213"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -46,7 +46,7 @@ Na všechny prostředky k dispozici, díky kterým můžou dosah do Azure, autom
 ## <a name="proxy"></a>Proxy server
 Azure File Sync podporuje nastavení proxy serveru pro konkrétní aplikace a celý počítač.
 
-**Nastavení proxy serveru pro konkrétní aplikace** povolit konfiguraci proxy serveru speciálně pro provoz Azure File Sync. Nastavení serveru proxy konkrétní aplikace jsou podporované ve verzi agenta 4.0.1.0 nebo novější a je možné konfigurovat během instalace agenta nebo pomocí rutiny prostředí PowerShell Set-StorageSyncProxyConfiguration.
+**Nastavení proxy serveru pro konkrétní aplikace** povolit konfiguraci proxy serveru speciálně pro provoz Azure File Sync. Nastavení proxy serveru specifické pro aplikace jsou podporované ve verzi agenta 4.0.1.0 nebo novější a je možné konfigurovat během instalace agenta nebo pomocí rutiny prostředí PowerShell Set-StorageSyncProxyConfiguration.
 
 Příkazy prostředí PowerShell a zadejte nastavení proxy server pro konkrétní aplikaci:
 ```PowerShell
@@ -100,7 +100,7 @@ Následující tabulka popisuje požadovaných domén pro komunikace:
 | **Azure Active Directory** | https://graph.windows.net/ | Jako součást nasazení Azure File Sync se vytvoří instanční objekt služby ve službě Active Directory předplatného Azure. Pro, který se používá tuto adresu URL. Tento objekt se používá pro delegování minimální sadu práv ve službě Azure File Sync. Uživatel provádějící počáteční nastavení služby Azure File Sync musí být ověřený uživatel s oprávněními vlastníka předplatného. |
 | **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provede tento přesun dat efektivněji přímo s sdílené složky Azure v účtu úložiště. Server má klíč SAS, která povoluje jenom pro přístup ke sdílené složce cílového souboru. |
 | **Azure File Sync** | &ast;.one.microsoft.com | Po registraci počáteční server přijímá na serveru místní adresu URL instance služby Azure File Sync v dané oblasti. Server může komunikovat přímo a efektivně s instancí zpracování synchronizace. použijte adresu URL. |
-| **Microsoft PKI** | http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync a sdílené složky Azure. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
+| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp<br>http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync a sdílené složky Azure. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
 
 > [!Important]
 > Při povolení provozu na &ast;. one.microsoft.com, provoz do více než jen synchronizační služby je možné ze serveru. Nejsou k dispozici v části subdomény mnoho další služby Microsoftu.

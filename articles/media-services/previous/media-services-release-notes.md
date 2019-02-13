@@ -11,23 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3cf819ceb01e52b029e8654dddc355afd27a9b63
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 81139734d0eb7d15e78c465c06fc429de48480c3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982994"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182982"
 ---
-# <a name="azure-media-services-release-notes-legacy"></a>Azure Media Services poznámky (starší verze)
+# <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
 
 > [!NOTE]
-> Chceme slyšet od našich zákazníků, takže se můžeme zaměřit na opravu problémů, které se vás týkají. Pokud chcete nahlásit problém nebo položit dotazy, odešlete příspěvek ve [Fórum MSDN Azure Media Services].
-> 
-> 
+> Žádné nové funkce nebo funkce se neustále přidávají do Media Services v2. 
+
+Chceme slyšet od našich zákazníků, takže se můžeme zaměřit na opravu problémů, které se vás týkají. Pokud chcete nahlásit problém nebo položit dotazy, odešlete příspěvek ve [Fórum MSDN Azure Media Services]. 
 
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Aktuálně známé problémy
 ### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>Obecné problémy Media Services

@@ -6,17 +6,17 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 13525fffb7e6720fe81759876ffd0fe71559279c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252304"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182846"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integrace datových center Azure Stack – DNS
 Abyste mohli přístup ke koncovým bodům služby Azure Stack (**portál**, **adminportal**, **správu**, **adminmanagement**atd.)  z mimo Azure Stack budete muset integraci služeb Azure Stack DNS servery DNS, které jsou hostiteli zóny DNS, který chcete použít ve službě Azure Stack.
@@ -114,9 +114,9 @@ Použití ukázkové hodnoty, plně kvalifikovaných názvů domény DNS servery
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-Tyto informace se rovněž vytvoří na konci všechna nasazení Azure Stack v souboru s názvem `AzureStackStampDeploymentInfo.json`. Tento soubor je umístěn v `C:\CloudDeployment\logs` složky nasazení virtuálního počítače. Pokud si nejste jistí, jaké hodnoty byly použity pro vaše nasazení Azure Stack, můžete získat hodnoty z tohoto umístění.
+Tyto informace se rovněž vytvoří na konci všechna nasazení Azure Stack v souboru s názvem `AzureStackStampInformation.json`. Tento soubor je umístěn v `C:\CloudDeployment\logs` složky nasazení virtuálního počítače. Pokud si nejste jistí, jaké hodnoty byly použity pro vaše nasazení Azure Stack, můžete získat hodnoty z tohoto umístění.
 
-Pokud nasazení virtuálního počítače už není k dispozici nebo je nedostupný, můžete získat hodnoty tím, že připojení ke koncovému bodu privilegovaných `Get-AzureStackInfo` rutiny Powershellu. Další informace najdete v tématu [privilegovaných koncový bod](azure-stack-privileged-endpoint.md).
+Pokud nasazení virtuálního počítače už není k dispozici nebo je nedostupný, můžete získat hodnoty tím, že připojení ke koncovému bodu privilegovaných `Get-AzureStackStampInformation` rutiny Powershellu. Další informace najdete v tématu [privilegovaných koncový bod](azure-stack-privileged-endpoint.md).
 
 ## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Nastavení podmíněné předávání do služby Azure Stack
 

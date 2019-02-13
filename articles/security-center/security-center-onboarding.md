@@ -4,7 +4,7 @@ description: " Zjistěte, jak k připojení k Azure Security Center úrovně Sta
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2ea94e79fdcc331554f42e2396d954af7cb979d8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9d95503e4b17124d1d027a90a21869ef65831654
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850070"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114412"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete zkusit Standard zdarma. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -57,7 +57,7 @@ Chcete-li upgradovat předplatné nebo si pracovní prostor na úroveň Standard
    >
    >
 
-## <a name="onboard-non-azure-computers"></a>Připojení počítače mimo Azure
+## <a name="onboard-non-azure-computers"></a>Místní počítače mimo Azure
 Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Můžete přidat počítače umístěné mimo Azure z **Začínáme** okno nebo **Compute** okno. Projdeme obě metody.
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>Přidat počítače umístěné mimo Azure z **Začínáme**

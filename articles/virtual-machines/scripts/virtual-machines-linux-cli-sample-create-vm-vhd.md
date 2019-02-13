@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 18bfdaaf75230cf91ea8f786188b9de9f7a6a5be
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 331bf57c415922a6686ba733b5fbcee24699a152
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696725"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118254"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 
@@ -62,7 +62,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | Vytvoří v kontejneru objekt blob nahráním virtuálního pevného disku. |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm) | Používá se s parametrem `--query` ke kontrole, jestli už se název virtuálního počítače nepoužívá. | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítače. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az-vm-list-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
 
 ## <a name="next-steps"></a>Další postup
 

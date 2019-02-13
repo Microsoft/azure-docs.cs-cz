@@ -16,12 +16,13 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2f1b6cec49507c5106434bf42743aadd1b3230aa
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8254766568c54748ee3646dd627a102ffc86e743
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894968"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191346"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace Azure AD Connect pomocí existující databáze ADSync
 Azure AD Connect vyžaduje databázi SQL serveru ukládat data. Můžete buď použít výchozí nastavení, které SQL Server 2012 Express LocalDB nainstalované pomocí služby Azure AD Connect, nebo použijte vlastní plnou verzi SQL. Dříve při instalaci Azure AD Connect vytvoří nová databáze s názvem ADSync byla vždy. S Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect kliknutím na existující databáze ADSync.

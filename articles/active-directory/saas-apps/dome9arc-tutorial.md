@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: d10893989bd2ace8d30397123a4339a653024d35
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91ef20398bc3e15b1ee47c6e7c28795f4d9bc08c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003648"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Kurz: Integrace Azure Active Directory s Dome9 oblouk
 

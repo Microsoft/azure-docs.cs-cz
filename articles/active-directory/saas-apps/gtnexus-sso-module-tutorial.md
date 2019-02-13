@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 7f2c494e381e2f2be2433f628a87742290c26bde
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b3caea8db02950f6e73ad8ed1657ae4b688af6ca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809322"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Kurz: Integrace Azure Active Directory s GTNexus systém jednotného přihlašování
 

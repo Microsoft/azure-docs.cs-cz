@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 07385089e64977243929de15ab53f84520029495
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 13c7e4b42cc3de0910589af3091eab10500ecce5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54806877"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>Kurz: Integrace Azure Active Directory s Innoverse
 

@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 10/30/2018
 ms.author: celested
 ms.reviewer: arvinh
-ms.openlocfilehash: c95655f38d73bfb6875f5afb7776481aac474141
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a65c42ff2d03946c021497e350836623a408ce7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963518"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197517"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
 

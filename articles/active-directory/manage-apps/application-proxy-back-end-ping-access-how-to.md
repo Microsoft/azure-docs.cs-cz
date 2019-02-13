@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: ac1345afa34e35bb29ad49d2322bd15e8e4e69ec
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7a80d2fbf42cad333ba8779973be3a9710210646
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963637"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198265"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Jak nakonfigurovat aplikaci Proxy aplikací pro používání Pingaccessu
 

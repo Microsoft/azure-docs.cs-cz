@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: d9f4a616c1f182c3073c0febf2ba5c251655dc5e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ecc3ad9fcf1bb1aee9392f0dfcf40807b0edf508
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824333"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Kurz: Integrace Azure Active Directory s plátna
 

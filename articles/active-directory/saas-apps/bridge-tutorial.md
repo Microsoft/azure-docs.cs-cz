@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 0eb6b40bf710931056768b67c649d4bf7dbd760f
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 89aa2912b94580bd3814f6b28dc1f13b62130a20
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097998"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Kurz: Integrace Azure Active Directory s Bridge
 

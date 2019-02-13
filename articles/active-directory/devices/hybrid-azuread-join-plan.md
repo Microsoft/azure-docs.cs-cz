@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: be66f24ec6532b93c4554568b0a58d467a09c600
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8569b305e7f194812bfc3e12bd852334f221bd99
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746417"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207106"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 

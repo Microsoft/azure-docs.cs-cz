@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: db67e5b9624af082335df9e0d4980583581ee1e9
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 389f8852aa9cc39e099d79aa531a5bb83f72c068
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098336"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Kurz: Integrace Azure Active Directory s etouches
 

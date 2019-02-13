@@ -15,12 +15,13 @@ ms.date: 09/06/2018
 ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 171fd5cfd18aabaa705b3ddac042f0be590d427b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5fb57052cc550a659dcd8a514fbb71ad0f7d8df5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960135"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192400"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikací Azure Active Directory 
 

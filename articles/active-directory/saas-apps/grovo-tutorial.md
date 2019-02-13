@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 057775f7818d1a6dc521fe81b01748fa40085cc8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 535e4a9c0555636d4ed068a7983b31c2cb91e75f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174240"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Kurz: Integrace Azure Active Directory s Grovo
 

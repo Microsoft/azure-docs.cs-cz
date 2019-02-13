@@ -14,21 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87081398e844f1e2b085a7e12c2b7aafce330ec9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194283"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193760"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric představuje stav modelu, který poskytuje bohaté možnosti, flexibilní a rozšiřitelné stav vyhodnocení a vytváření sestav. Model umožňuje téměř v reálném čase, monitorování stavu clusteru a služeb spuštěných v ní. Můžete snadno získat informace o stavu a opravte potenciální problémy před jejich nepostupovala dále a způsobit, že masivní výpadků. V typické modelu služby Odeslat sestavy vycházející ze svých místních zobrazeních a, informace se shromažďují poskytnout celkový cluster úrovně zobrazení.
 
 Komponenty Service Fabric pomocí tohoto modelu bohaté stavu hlásit jejich aktuální stav. Můžete použít stejný mechanismus stav sestavy z vašich aplikací. Pokud Investujete do sestav stavu vysoce kvalitní, který zachytí vlastní podmínky můžete zjišťovat a mnohem snadněji řešení problémů pro spuštěné aplikaci.
-
-Následující video Microsoft Virtual Academy také popisuje model stavu Service Fabric a jak se používá: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 > [!NOTE]
 > Začali jsme stavu subsystému potřebu pro monitorované upgrady. Service Fabric nabízí monitorované upgrady aplikací a clusteru, které zajistí úplné dostupnost, bez výpadků a minimální bez zásahu uživatele. K dosažení těchto cílů, upgradu kontroluje stav na základě nakonfigurovaných zásad upgradu. Upgradu můžete pokračovat pouze v případě, že stav respektuje požadované prahové hodnoty. V opačném případě upgrade je buď automaticky vrátit zpět nebo pozastavena a poskytuje správcům možnost opravit problémy. Další informace o upgradech aplikací najdete v tématu [v tomto článku](service-fabric-application-upgrade.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096904"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203195"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Úvod do Service Fabric cluster resource Manageru
 Tradičně Správa informačních systémů nebo online služby určené vyhradíte konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byla navržena jako úrovně. By být "web" a "data" nebo "úložiště" vrstvu. Aplikace by měla mít zasílání zpráv úrovně, kde požadavky byly převedeny dovnitř a ven a také sadu počítačů vyhrazený pro ukládání do mezipaměti. Každou vrstvu nebo typu úlohy konkrétního počítače, které jsou vyhrazené pro to měl: databáze je teď několik počítačů dedicated, webové servery v pár. Je-li konkrétní typ zatížení počítače, ve kterém se k spuštění příliš horké, pak jste přidali další počítače pomocí této stejnou konfiguraci na dané úrovni. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvou obvykle nahradíte počítače s větší počítače. Snadné. Pokud na počítači se nezdařilo, část celkové aplikace nižší kapacitu spuštěné, dokud se počítač může obnovit. Stále poměrně snadné (Pokud není nutně zábavné).
@@ -43,10 +43,6 @@ Cluster Resource Manager je součásti systému, která zajišťuje orchestraci 
 1. Vynucení pravidel
 2. Optimalizace prostředí
 3. Pomoc s dalšími procesy
-
-Podívejte se, jak funguje Cluster Resource Manageru, podívejte se na následující video Microsoft Virtual Academy: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
-<img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="what-it-isnt"></a>Co ne
 V tradičních aplikací vrstvy N, je vždy [nástroje pro vyrovnávání zatížení](https://en.wikipedia.org/wiki/Load_balancing_(computing)). Obvykle to bylo nástroje pro vyrovnávání zatížení sítě (NLB) nebo aplikaci zatížení nástroje pro vyrovnávání (ALB) v závislosti na tom, kde byla ve sadu síťových protokolů. Některé nástroje pro vyrovnávání zatížení jsou založeny na hardwaru jako je F5 Big-IP nabídky, jiné jsou na základě softwaru jako je Microsoft na Vyrovnávání zatížení sítě. V jiných prostředích může se zobrazit něco jako HAProxy, serveru nginx, Istio nebo Envoy v této roli. V tyto architektury je práce pro vyrovnávání zatížení k zajištění, že Bezstavová zatížení přijímat (přibližně) stejné množství práce. Strategie pro vyrovnávání zatížení proměnlivá. Některé nástroje pro vyrovnávání bude posílat každé jiné volání na jiný server. Ostatní poskytuje Připnutí/dlouhodobost relace. Rozšířené nástroje pro vyrovnávání použít vlastní operaci načtení odhad nebo vytváření sestav pro směrování na základě jeho očekávané náklady a aktuální zatížení počítače volání.

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5eab595c12fda25768a3bf8a04650870e1c4f57e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153535"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Integrace Azure Active Directory s xMatters OnDemand.
 

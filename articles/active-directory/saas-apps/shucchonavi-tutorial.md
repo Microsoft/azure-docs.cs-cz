@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Shuccho Navi | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Shuccho Navi | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Shuccho Navi.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: f90af5b57fcb9ed7f02bba0a184dacb17570136b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1709abdf1d5e90cb253e67b29c0e48f6aa29a712
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312657"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209672"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Kurz: Integrace Azure Active Directory se službou Shuccho Navi
+# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Kurz: Integrace Azure Active Directory s Shuccho Navi
 
 V tomto kurzu se dozvíte, jak integrovat Shuccho Navi s Azure Active Directory (Azure AD).
 
@@ -149,7 +150,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-shuccho-navi-test-user"></a>Vytvoření zkušebního uživatele Shuccho Navi
 
-V této části vytvoříte uživatele v Shuccho Navi jako Britta Simon. Práce s [tým podpory Shuccho Navi](mailto:sys_ntabtm@nta.co.jp) přidat uživatele na platformě Shuccho Navi. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Shuccho Navi jako Britta Simon. Práce s [tým podpory Shuccho Navi](mailto:sys_ntabtm@nta.co.jp) přidat uživatele na platformě Shuccho Navi. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

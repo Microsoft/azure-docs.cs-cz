@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
-ms.openlocfilehash: 6dcc02d8d4c1f0629d69460be28a70c470704d75
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 443aef1a7396dc637b656a805b758a62bcfac41d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511373"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194287"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Vysvětlení, jak více tenantů Azure Active Directory komunikovat
 

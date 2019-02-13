@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: f1cec8de1407f4e67ccc48bd8bfad3e825fa5e33
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d35f8b440fe748f91c9e01003fe83a3a5343c8df
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960475"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203722"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Nakonfigurovat způsob, jakým koncoví uživatelé souhlas k aplikaci v Azure Active Directory
 Zjistěte, jak nakonfigurovat způsob, jakým uživatelé udělit souhlas s oprávnění aplikace. Činnost koncového uživatele můžete zjednodušit tím, že udělíte souhlas správce. Tento článek poskytuje různé způsoby, jak můžete nakonfigurovat souhlasu uživatele. Metody se vztahují na všechny koncové uživatele ve vašem tenantovi Azure Active Directory (Azure AD). 

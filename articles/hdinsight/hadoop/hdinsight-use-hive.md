@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0fa487e1ecd419780243b04a273110f3cf43761c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 03e15532d04a4c62796aad884c5e344688814672
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633959"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209230"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -204,11 +204,7 @@ Tyto příkazy provádět následující akce:
 
 [Apache Hive na dokumentech návrhu Tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobné informace o možnosti implementace a ladění konfigurace.
 
-Pro ladění úlohy proběhla za použití Tez, HDInsight poskytuje následující webovým uživatelským rozhraním, které umožňují zobrazit podrobnosti o úlohách Tez:
-
-* [Použití zobrazení Apache Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
-
-* [Použití uživatelského rozhraní Apache Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
+Pro ladění úlohy proběhla za použití Tez, HDInsight poskytuje následující webové uživatelské rozhraní, které vám umožní zobrazit podrobnosti o úlohách Tez: [Použití zobrazení Apache Ambari Tez na Linuxovým systémem HDInsight](../hdinsight-debug-ambari-tez-view.md).
 
 ### <a name="low-latency-analytical-processing-llap"></a>Analytické zpracování s nízkou latencí (LLAP)
 

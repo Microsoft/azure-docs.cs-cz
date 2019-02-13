@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 0081946ff62e42e1fb601b135c7102dd83e84fe3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7c09947e6d34c5314e8ed4bc2744f07b199278a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158906"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Kurz: Integrace Azure Active Directory s systém SD Elements
 

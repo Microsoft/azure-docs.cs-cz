@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: a4e04bc9071f4f677230d112a7baa708e9e8dc34
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 56884f2299df35c1565804a92fc404b6ed9e2f9a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243228"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185005"
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám pomohou rozhodnout, jak nejlépe integrovat do vaší stávající síťové prostředí Azure Stack. 

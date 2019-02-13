@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: add71c4288f8bda17a840e9c221a9b4430507701
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cd09bbdbb6bfd83769846d9b2c8638f36b85b607
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994043"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>Kurz: Integrace Azure Active Directory s připojováním Eli
 

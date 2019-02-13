@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 44f12c72716e98e2f28796359467685e0af579dd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238242"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206461"
 ---
 # <a name="connect-to-the-asdk"></a>Připojte se k ASDK
 
 Ke správě prostředků, musíte nejdřív připojit k Azure Stack Development Kit (ASDK). V tomto článku jsme popisují kroky, které můžete provést připojení k ASDK s použitím následujících možností připojení:
 
 * [Připojení ke vzdálené ploše (RDP)](#connect-with-rdp). Když se připojíte pomocí připojení ke vzdálené ploše, můžete rychle připojit jenom jednoho konkrétního uživatele development Kit.
-* [Virtuální privátní síť (VPN)](#connect-with-vpn). Když se připojíte pomocí sítě VPN, více uživatelů současně připojit z klientům mimo infrastruktura Azure stacku. Připojení k síti VPN vyžaduje některé nastavení.
+* [Virtuální privátní síť (VPN)](#connect-with-vpn). Při připojení pomocí sítě VPN můžete více uživatelů současně připojit k na portálech Azure Stack od klientů mimo infrastruktura Azure stacku. Připojení k síti VPN vyžaduje některé nastavení.
 
 <a name="connect-with-rdp"></a>
 ## <a name="connect-to-azure-stack-using-rdp"></a>Připojení ke službě Azure Stack pomocí protokolu RDP

@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 285fd4be7953c9965ea3f91580753e05bcb4d89d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2488cb085c3be68265a787bd062028598c9243b8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964385"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190020"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Činnost koncového uživatele pro aplikace v Azure Active Directory
 Azure Active Directory (Azure AD) poskytuje několik přizpůsobitelné způsobů, jak nasadit aplikace koncovým uživatelům ve vaší organizaci:

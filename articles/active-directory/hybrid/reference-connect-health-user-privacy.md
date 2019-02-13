@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: 48a71eb672b740c2df32ff0dfb9aa138d75c9de3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d0a7dc5152bb1ede5f7311e74815a6d58782d32a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495220"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199319"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Ochrana osobních údajů uživatelů a Azure AD Connect Health 
 

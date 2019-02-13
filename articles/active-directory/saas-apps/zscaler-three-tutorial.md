@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 272f4b6b3a54a006947b6a4ef6480a9168e047c0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169650"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Kurz: Integrace Azure Active Directory s tři Zscaler
 
@@ -123,7 +124,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Name  | Zdrojový atribut  |
+    | Název  | Zdrojový atribut  |
     | ---------| ------------ |
     | MemberOf     | user.assignedroles |
 

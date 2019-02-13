@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 282daba47d106cd46c351084b9c2deb55c768a62
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a45107d7a1223acb57f67cff85ea0fc700301d6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695283"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208431"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Slovník ochrany identit Azure Active Directory
 ### <a name="at-risk-user"></a>Riziko (uživatel)

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou základní dovednosti | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s základní dovednosti | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a základní dovednosti.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2018
 ms.author: jeedes
-ms.openlocfilehash: e11ba8ca9c4ad17b2ade909bb474ad2d1fcf4410
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8bc0353453cf5fe689eec398f6a7d73fb356b178
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205370"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190836"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Kurz: Integrace Azure Active Directory se službou základní dovednosti
+# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Kurz: Integrace Azure Active Directory s základní dovednosti
 
 V tomto kurzu se dozvíte, jak integrovat základní dovednosti s Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s základní dovednosti, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Základní dovednosti jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Konfigurace integrace základní dovednosti v Azure AD, musíte přidat základn
 
 **Chcete-li přidat základní dovednosti z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -210,7 +211,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -220,7 +221,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: a12ae074d82fda329c30b367e4ef76285d92e0a1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3d565d2215ac84d42b6682f4c4a52dd87278a70a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983470"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206833"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
 

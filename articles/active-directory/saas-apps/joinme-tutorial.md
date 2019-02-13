@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou join.me | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s join.me | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a join.me.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: dc393b8701bd72ea7f9de543de33116ea3cb5653
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f61520994bdeeab75b6d26731dee9af15b4ccda6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48871462"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209534"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>Kurz: Integrace Azure Active Directory se službou join.me
+# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>Kurz: Integrace Azure Active Directory s join.me
 
 V tomto kurzu se dozvíte, jak integrovat join.me s Azure Active Directory (Azure AD).
 
@@ -148,7 +149,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
   
 ### <a name="create-a-joinme-test-user"></a>Vytvoření zkušebního uživatele join.me
 
-V této části vytvoříte uživatele v join.me jako Britta Simon. Práce s [tým podpory join.me](https://help.join.me/s/?language) přidat uživatele na platformě join.me. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v join.me jako Britta Simon. Práce s [tým podpory join.me](https://help.join.me/s/?language) přidat uživatele na platformě join.me. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

@@ -15,12 +15,13 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0609d7e2da482fa7791dff34e4c6099f2ddbb0bd
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21e101dee878a48cce1005d51ad5e59166b0cfa1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965303"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193114"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikací
 

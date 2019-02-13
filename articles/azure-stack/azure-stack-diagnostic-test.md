@@ -10,22 +10,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 82a691c0e0b6280a168605d56ee628d81f10823f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: eca66bc2e737b0f9a9954cad21a446e82d753f84
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245646"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203807"
 ---
 # <a name="validate-azure-stack-system-state"></a>Ověření stavu systému Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Jako operátory Azure stacku je nezbytné, možnost zjistit stav systému na vyžádání. Nástroj pro ověřování služby Azure Stack (**testovací AzureStack**) je rutiny Powershellu, která umožňuje spustit sérii testů ve vašem systému k identifikaci selhání, pokud jsou k dispozici. Zobrazí obvykle se výzva ke spuštění tohoto nástroje [privilegovaných koncový bod (období)](azure-stack-privileged-endpoint.md) když požádáte zákaznické služby podpory Microsoftu (CSS) s problémem. Systémová stavu a aktuální informace o stavu šablon stylů CSS můžete shromažďovat a analyzovat podrobné protokoly, zaměřte se na oblasti, kde došlo k chyby a spolupracovat s vámi k vyřešení daného problému.
+Jako operátory Azure stacku je nezbytné, je schopna určit stav systému na vyžádání. Nástroj pro ověřování služby Azure Stack (**testovací AzureStack**) je rutiny Powershellu, která umožňuje spustit sérii testů ve vašem systému k identifikaci selhání, pokud jsou k dispozici. Zobrazí obvykle se výzva ke spuštění tohoto nástroje [privilegovaných koncový bod (období)](azure-stack-privileged-endpoint.md) když požádáte zákaznické služby podpory Microsoftu (CSS) s problémem. Systémová stavu a aktuální informace o stavu šablon stylů CSS můžete shromažďovat a analyzovat podrobné protokoly, zaměřte se na oblasti, kde došlo k chyby a spolupracovat s vámi k vyřešení daného problému.
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>Spuštění nástroje ověřování a přístup k výsledky
 
@@ -93,7 +93,6 @@ Tyto testy malý vliv pracovat na úrovni infrastruktury a poskytneme vám infor
 
 Kromě výše uvedených infrastrukturu testů máte také možnost spouštět testy scénář cloudu ke kontrole funkce pro součásti infrastruktury. Ke spuštění těchto testů, protože zahrnují nasazení prostředků se vyžadují přihlašovací údaje správce cloudu. 
     > [!NOTE]
-    >
     > Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
 Následující scénáře cloudu jsou testovány pomocí nástroje ověření:

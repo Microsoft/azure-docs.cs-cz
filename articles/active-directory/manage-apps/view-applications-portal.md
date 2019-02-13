@@ -15,12 +15,13 @@ ms.date: 07/25/2018
 ms.author: celested
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: 5783e382d0239cb8d256c3f8915769ebf1cf9122
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec039beecdcfa6dacd19e5910209c58f13543fce
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55958777"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199880"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Zobrazení aplikací tenanta Azure Active Directory
 

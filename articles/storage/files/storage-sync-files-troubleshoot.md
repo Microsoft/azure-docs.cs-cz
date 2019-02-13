@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752088"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194229"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -70,7 +70,7 @@ Reset-StorageSyncServer
 Tomuto problému dochází, když **rozšířeného zabezpečení aplikace Internet Explorer** zásady jsou povolené při registraci serveru. Další informace o tom, jak správně zakázat **rozšířeného zabezpečení aplikace Internet Explorer** zásady, najdete v článku [připravit systém Windows Server pro použití s Azure File Sync](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) a [jak nasadit Azure File Synchronizace](storage-sync-files-deployment-guide.md).
 
 ## <a name="sync-group-management"></a>Správa skupin synchronizace
-<a id="cloud-endpoint-using-share"></a>**Vytvoření koncového bodu cloudu selže s touto chybou: "Zadané sdílené složky Azure je již používán jinou CloudEndpoint"**  
+<a id="cloud-endpoint-using-share"></a>**Vytvoření koncového bodu cloudu selže s touto chybou: Zadanou sdílenou složku Azure již používá jiný koncový bod cloudu**  
 K tomuto problému dochází, pokud sdílená složka Azure se už používá jiný koncový bod cloudu. 
 
 Pokud se zobrazí tato zpráva a sdílené složky Azure aktuálně není používán koncového bodu cloudu, proveďte následující kroky zrušte Azure File Sync metadat na sdílené složky Azure:
@@ -145,7 +145,7 @@ Stav stavu koncového bodu serveru "Žádná aktivita" znamená, že koncový bo
 
 Koncový bod serveru nemůže protokolu aktivitu synchronizace z následujících důvodů:
 
-- Server má aktivní relace synchronizace stínové kopie svazku (SnapshotSync). Při aktivním pro koncový bod serveru relaci synchronizace VSS další koncové body serveru v jednom svazku nelze spustit relaci počáteční synchronizace až do dokončení stínové kopie svazku relace synchronizace.
+- Verze agenta 4.3.0.0 nebo je nainstalovaná starší a server má aktivní relace synchronizace stínové kopie svazku (SnapshotSync). Při aktivním pro koncový bod serveru relaci synchronizace VSS další koncové body serveru v jednom svazku nelze spustit relaci počáteční synchronizace až do dokončení stínové kopie svazku relace synchronizace. Chcete-li vyřešit tento problém, nainstalujte agenta verzi 5.0.2.0 nebo novější která podporuje několik koncových bodů serveru synchronizace na svazku, když se synchronizují služby VSS relace je aktivní.
 
     Aktuální aktivitu synchronizace na serveru, najdete v části [jak sledovat průběh aktuální relace synchronizace?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
@@ -538,7 +538,7 @@ K této chybě dochází, protože došlo ke změnám na sdílené složky Azure
 | **Text chyby** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Požadována náprava** | Ano |
 
-V případech, kdy existuje mnoho za chyby synchronizace souborů, může relace synchronizace začnou být neúspěšné. Řešení potíží s tímto stavem, naleznete v tématu [řešení potíží s za chyby synchronizace souborů či složek]().
+V případech, kdy existuje mnoho za chyby synchronizace souborů, může relace synchronizace začnou být neúspěšné. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
 > [!NOTE]
 > Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů.

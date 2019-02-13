@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: edc3bedaa005bb52ddbf46d9f70ddc16bf8790e2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d9237a2e4da682347245a3b74c916bbeea39166c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815063"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Kurz: Integrace Azure Active Directory s Learning Seat LMS
 

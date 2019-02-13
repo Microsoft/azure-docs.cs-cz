@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Vibe HCM | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Vibe HCM | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Vibe HCM.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 395f99c986e0a51e8dd2c440d258724e862f275c
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 79787045f0379e6b672350206740297000f298c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019730"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185566"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Kurz: Integrace Azure Active Directory se službou Vibe HCM
+# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Kurz: Integrace Azure Active Directory s Vibe HCM
 
 V tomto kurzu se dozvíte, jak integrovat Vibe HCM s Azure Active Directory (Azure AD).
 
@@ -160,7 +161,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-vibe-hcm-test-user"></a>Vytvoření zkušebního uživatele Vibe HCM
 
-V této části vytvoříte uživatele v Vibe HCM jako Britta Simon. Práce s [tým podpory Vibe HCM](mailto:support@vibehcm.com) přidat uživatele na platformě Vibe HCM. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Vibe HCM jako Britta Simon. Práce s [tým podpory Vibe HCM](mailto:support@vibehcm.com) přidat uživatele na platformě Vibe HCM. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

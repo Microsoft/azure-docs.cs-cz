@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Imagineer WebVision | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Imagineer WebVision | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Imagineer WebVision.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: d86004680bf13c9716b4ff4e7a41af73ea186f27
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 377da86003543fb53240de4d5fc672f71e1ed5f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047184"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202396"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Kurz: Integrace Azure Active Directory se službou Imagineer WebVision
+# <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Kurz: Integrace Azure Active Directory s Imagineer WebVision
 
 V tomto kurzu se dozvíte, jak integrovat Imagineer WebVision s Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Imagineer WebVision, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Imagineer WebVision jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Konfigurace integrace Imagineer WebVision do služby Azure AD, budete muset při
 
 **Chcete-li přidat Imagineer WebVision z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -158,7 +159,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-an-imagineer-webvision-test-user"></a>Vytvořit testovacího uživatele Imagineer WebVision
 
-V této části vytvoříte uživatele v Imagineer WebVision jako Britta Simon. Práce s [tým podpory Imagineer WebVision](mailto:support@itgny.com) přidat uživatele na platformě Imagineer WebVision. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
+V této části vytvoříte uživatele v Imagineer WebVision jako Britta Simon. Práce s [tým podpory Imagineer WebVision](mailto:support@itgny.com) přidat uživatele na platformě Imagineer WebVision. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -190,7 +191,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -200,7 +201,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

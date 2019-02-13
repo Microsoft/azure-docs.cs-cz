@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 2ae9a99a88ae2bd08af5b871a00a7514a80130ed
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e11dfdf7211f216df45e76cbf8496f3eccf3c8e5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815612"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Kurz: Integrace Azure Active Directory s Zoho
 

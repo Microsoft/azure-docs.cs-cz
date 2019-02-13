@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d96d74c8f951a8f401a31ca6daf1ac84a1325524
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 39b92743e6af064490fa6b9d11513d4eb076820f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999126"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Kurz: Integrace Azure Active Directory s eKincare
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 1e593d66e7f293a5e84200eff0980b1cdf6d55dd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d3b3702ca2daad002bde1b4e64bf9d43a03028d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203126"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Kurz: Integrace Azure Active Directory s Workrite
 

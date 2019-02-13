@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 11/15/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 24586e6e684b825054bf9ed0c14ac237fbc949ae
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 679e091098b9205432f1849b04855d6c121fa7d9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093373"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203824"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z desktopové aplikace Windows
 

@@ -1,129 +1,85 @@
 ---
 title: Upgrade clusteru Azure Kubernetes Service (AKS)
-description: Upgrade clusteru Azure Kubernetes Service (AKS)
+description: Zjistěte, jak upgradovat cluster Azure Kubernetes Service (AKS)
 services: container-service
-author: gabrtv
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/18/2018
-ms.author: gamonroy
-ms.custom: mvc
-ms.openlocfilehash: 4ff2b56afc4496b6344735b4e3c813b06cee17e3
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 02/12/2019
+ms.author: iainfou
+ms.openlocfilehash: 59d52db8c3f5f8968eae1a544abe1e5c6bbaacca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058047"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185976"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service (AKS) usnadňuje provádění běžných úloh správy, včetně upgradu clusterů Kubernetes.
+Jako součást životního cyklu clusteru AKS často musíte upgradovat na nejnovější verzi Kubernetes. Je důležité použít nejnovější vydané verzi Kubernetes zabezpečení nebo upgradu získáte nejnovější funkce. Tento článek ukazuje, jak upgrade stávajícího clusteru AKS.
 
-## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
+## <a name="before-you-begin"></a>Před zahájením
 
-Před upgradem clusteru pomocí příkazu `az aks get-upgrades` zkontrolujte, které vydané verze Kubernetes jsou pro upgrade k dispozici.
+Tento článek vyžaduje použití Azure CLI verze 2.0.56 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+
+## <a name="check-for-available-aks-cluster-upgrades"></a>Zkontrolujte dostupné upgrady clusteru AKS
+
+Chcete-li zkontrolovat, které vydané verze Kubernetes jsou k dispozici pro váš cluster, použijte [az aks get upgrady] [ az-aks-get-upgrades] příkazu. Následující příklad zkontroluje dostupné upgrady do clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
-az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Výstup:
+> [!NOTE]
+> Při upgradu clusteru AKS nelze přeskočit dílčí verze Kubernetes. Například upgraduje mezi *1.10.x* -> *1.11.x* nebo *1.11.x* -> *1.12.x* jsou povolené, ale *1.10.x* -> *1.12.x* není.
+>
+> Pokud chcete upgradovat, z *1.10.x* -> *1.12.x*, první upgrade z *1.10.x* -> *1.11.x*, poté proveďte upgrade z *1.11.x* -> *1.12.x*.
+
+Následující příklad výstupu ukazuje, že je možné cluster upgradovat na verzi *1.11.5* nebo *1.11.6*:
 
 ```console
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  -------------------
-default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
+-------  ---------------  ---------------  -----------------  --------------
+default  myResourceGroup  1.10.12          1.10.12            1.11.5, 1.11.6
 ```
 
-Máme na upgrade k dispozici tři verze: 1.9.1, 1.9.2 a otázku 1.9.6. Pomocí příkazu `az aks upgrade` můžeme upgradovat na nejnovější dostupnou verzi.  Během procesu upgradu AKS přidá nového uzlu do clusteru, pak pečlivě [kordon a výpusť] [ kubernetes-drain] jeden uzel v době, aby se minimalizovalo přerušení spuštěných aplikací.
+## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
-> [!NOTE]
-> Při upgradu clusteru AKS, nelze přeskočit dílčí verze Kubernetes. Například upgrady mezi 1.8.x -> 1.9.x nebo 1.9.x -> 1.10.x jsou povoleny, není však 1.10-1.8 >. Pokud chcete upgradovat, z 1.8 1.10 ->, je třeba nejprve upgradovat z 1.8 -> 1.9 a jiné proveďte další 1.10-upgrade z 1.9 >
+Seznam dostupných verzí pro váš cluster AKS, použijte [az aks upgrade] [ az-aks-upgrade] příkaz pro upgrade. Během procesu upgradu AKS přidá nového uzlu do clusteru, pak pečlivě [cordon a vyprazdňuje] [ kubernetes-drain] jeden uzel v době, aby se minimalizovalo přerušení spuštěných aplikací. Následující příklad upgraduje na verzi clusteru *1.11.6*:
 
 ```azurecli-interactive
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.6
 ```
 
-Výstup:
+Trvá několik minut upgradu clusteru, v závislosti na počtu uzlů, které máte.
 
-```json
-{
-  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.9.6",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
-    }
-  },
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters"
-}
-```
-
-Ověřte úspěšné provedení upgradu pomocí příkazu `az aks show`.
+Chcete-li ověřit, že upgrade proběhl úspěšně, použijte [az aks zobrazit] [ az-aks-show] příkaz:
 
 ```azurecli-interactive
-az aks show --name myAKSCluster --resource-group myResourceGroup --output table
+az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Výstup:
+Následující příklad výstupu ukazuje, že cluster se teď spustí *1.11.6*:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus     myResourceGroup  1.9.6                 Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
+myAKSCluster  eastus      myResourceGroup  1.11.6               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o nasazení a správě AKS najdete v kurzech AKS.
+Tento článek vám ukázali, jak upgrade stávajícího clusteru AKS. Další informace o nasazení a správě AKS clusterů najdete v tématu sérii kurzů.
 
 > [!div class="nextstepaction"]
-> [Kurz AKS][aks-tutorial-prepare-app]
+> [Kurzech AKS][aks-tutorial-prepare-app]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
+[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
+[az-aks-show]: /cli/azure/aks#az-aks-show

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 6466e40fca954d41a32424c55b8ee465fb7ad7ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec6d34ec82d5239af653e69532703a931f9cb12a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195696"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skytap"></a>Kurz: Integrace Azure Active Directory s Skytap
 

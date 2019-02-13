@@ -9,18 +9,18 @@ ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 945f89633060df7f57aa937be392149340acc21d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 26c38c34543683a3fc450d3a0ae932d8bd30dc98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55855998"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199489"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrování odpovědi, které jsou zahrnuty v odpovědi na vyhledávání  
 
-Při dotazování na webu Bingu vrátí veškerý obsah, který operátoru je relevantní pro hledání. Například pokud vyhledávacímu dotazu je "dinghies řízení +", odpověď může obsahovat následující odpovědi:
+Při dotazování na webu Bingu vrátí všechny nalezené hledání souvisejícího obsahu. Například pokud vyhledávacímu dotazu je "dinghies řízení +", odpověď může obsahovat následující odpovědi:
 
 ```json
 {
@@ -44,8 +44,16 @@ Při dotazování na webu Bingu vrátí veškerý obsah, který operátoru je re
     }
 }    
 ```
+Typy obsahu, obdržíte (pro příklad obrázků, videí a zpráv) lze filtrovat pomocí [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) parametr dotazu. Pokud Bingu najde souvisejícího obsahu pro zadané odpovědi, bude vrácen. Filtr odpovědí je čárkami oddělený seznam odpovědi. 
 
-Pokud vás zajímají konkrétní typy obsahu, jako jsou obrázky, videa a novinky, mohou vyžádat pouze tyto odpovědi pomocí [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) parametr dotazu. Pokud Bingu najde souvisejícího obsahu pro zadané odpovědi, Bing vrátí jej. Filtr odpovědí je čárkami oddělený seznam odpovědi. Následující znázorňuje způsob použití `responseFilter` k žádosti o obrázků, videí a zpráv dinghies řízení. Při kódování řetězce dotazu do %2 C změnit čárky.  
+Vyloučit určité typy obsahu, jako jsou obrázky, z odpovědi, můžete přidat `-` znak na začátku `responseFilter` hodnotu. Vyloučené typy můžete oddělit čárkou (`,`). Příklad:
+
+```
+&responseFilter=-images,-videos
+```
+
+
+Následující znázorňuje způsob použití `responseFilter` k žádosti o obrázků, videí a zpráv dinghies řízení. Při kódování řetězce dotazu do %2 C změnit čárky.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -57,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Následující příklad ukazuje odpověď na předchozí dotaz. Jak je vidět Bingu nepovedlo se najít relevantní video a novinky výsledky, tak odpověď neobsahuje.
+Následující příklad ukazuje odpověď na předchozí dotaz. Protože Bingu se nepovedlo najít relevantní video a výsledky zpráv, neobsahuje odpovědi je.
 
 ```json
 {
@@ -80,12 +88,6 @@ Následující příklad ukazuje odpověď na předchozí dotaz. Jak je vidět B
         }
     }
 }
-```
-
-Pokud chcete vyloučit určité typy obsahu, jako jsou obrázky, z odpovědi, můžete je vyloučit s pomlčkou (minus) předpona k hodnotě responseFilter. Samostatné Vyloučené typy čárkou:
-
-```
-&responseFilter=-images,-videos
 ```
 
 I když Bingu nevrátil výsledky videa a novinky v předchozí odpovědi, neznamená, videa a novinky obsah neexistuje. Jednoduše znamená, že na stránce nezahrnuli je. Ale pokud jste [stránky](./paging-webpages.md) prostřednictvím více výsledků, následujících stránkách by pravděpodobně zahrnutí. Navíc pokud zavoláte [API pro vyhledávání videí](../bing-video-search/search-the-web.md) a [rozhraní API pro vyhledávání zpráv](../bing-news-search/search-the-web.md) koncové body přímo, odpověď by pravděpodobně obsahoval výsledky.

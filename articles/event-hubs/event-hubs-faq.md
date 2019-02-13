@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bcbb249c6cb3c886b94f8ad68dd668cb8858ac77
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d1ed16465efb6c70b4426f22e8b9983112142c79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354571"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162641"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy k Event Hubs
 
@@ -183,7 +183,7 @@ Seznam všech kvótách služby Event Hubs najdete v tématu [kvóty](event-hubs
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč mi nejde vytvořit obor názvů po odstranění z jiného předplatného? 
-Při odstranění oboru názvů z předplatného čeká na 4 hodiny, než se nutnosti znovu vytvářet adresářovou se stejným názvem v jiném předplatném. 
+Při odstranění oboru názvů z předplatného čeká na 4 hodiny, než se nutnosti znovu vytvářet adresářovou se stejným názvem v jiném předplatném. V opačném případě může zobrazit následující chybová zpráva: `Namespace already exists`. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované služby Event Hubs a jejich doporučené akce?
 

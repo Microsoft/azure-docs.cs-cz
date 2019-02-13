@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: c018bec98fc9e1edc22a8535d06961d192f4c992
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a4a4b760652ce38e27e12e9eb73fbe7692eddbc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880410"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204368"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Verze Preview: Nasazení ochrany hesel Azure AD
 

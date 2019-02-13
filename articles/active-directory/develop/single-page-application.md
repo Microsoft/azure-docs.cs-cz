@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: f9f5f7dc4752e3cb568acd3ad907d115e4d24e85
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6704c00734d18b9918378db6e056696407421014
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102324"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207173"
 ---
 # <a name="single-page-applications"></a>Jednostránkové aplikace
 

@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 2db33a6a2f086d5dacaff04ae226841d32cdc99a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 316ebb7774a0420087bf9ed5c099a91d78a96fb0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513551"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181214"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Delegovat role správce aplikace v Azure Active Directory
 

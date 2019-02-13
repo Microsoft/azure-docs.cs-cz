@@ -2,17 +2,17 @@
 title: Služba Azure Key Vault – jak používat obnovitelné odstranění s využitím rozhraní příkazového řádku
 description: Příklady případu použití obnovitelného odstranění s využitím rozhraní příkazového řádku výstřižky kódu
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: bryanla
-ms.openlocfilehash: 242398eb0bb4d4ddd2764bd66c99a7f9603ea1b9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663940"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116719"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vault pomocí rozhraní příkazového řádku
 
@@ -226,5 +226,5 @@ Seznam objektů odstraněného trezoru klíčů. také ukazuje, kdy jsou naplán
 ## <a name="other-resources"></a>Další prostředky
 
 - Přehled funkce obnovitelného odstranění služby Key Vault najdete v tématu [přehled obnovitelného odstranění služby Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Obecný přehled o využití služby Azure Key Vault najdete v části [Začínáme s Azure Key Vault](key-vault-get-started.md).
+- Obecný přehled o využití služby Azure Key Vault najdete v části [co je Azure Key Vault?](key-vault-overview.md).
 

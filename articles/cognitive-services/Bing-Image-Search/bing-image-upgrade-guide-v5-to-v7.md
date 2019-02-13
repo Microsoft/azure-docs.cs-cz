@@ -9,16 +9,16 @@ ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4cd77dc6572ed100a7bef34829ed17579e3b5491
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b3675821cd5565df409fac209b6763845460df1c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876778"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163372"
 ---
-# <a name="bing-image-search-api-upgrade-guide"></a>Průvodce upgradem API pro vyhledávání obrázků Bingu
+# <a name="bing-image-search-api-v7-upgrade-guide"></a>Průvodce upgradem API Bingu pro vyhledávání obrázků v7
 
 Tento průvodce upgradem identifikuje změny mezi verzí 5 a verze 7 rozhraní API Bingu pro vyhledávání obrázků. Tento průvodce vám pomůže identifikovat části aplikace, které je potřeba aktualizovat na použití verze 7.
 

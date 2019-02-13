@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: e2ec1b7ad6d1489836937d30b89d0f0f681a9bfa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819582"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193386"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
 
 Služba Azure Container Registry podporuje sadu role služby Azure, které poskytují různé úrovně oprávnění do služby Azure container registry. Použití Azure [řízení přístupu na základě rolí](../role-based-access-control/index.yml) (RBAC) k přiřazení konkrétních oprávnění uživatelům nebo instanční, které potřebují komunikovat pomocí registru.
 
-| Role a oprávnění       | Přístup k Resource Manageru| Vytváření/odstraňování registru | [Nahrání image](#push-image) | [Stáhněte si image](#pull-image) | Změna zásad |   [Znak bitových kopií](#sign-images)  |
+| Role a oprávnění       | [Přístup k Resource Manageru](#access-resource-manager)| [Vytváření/odstraňování registru](#create-and-delete-registry) | [Nahrání image](#push-image) | [Stáhněte si image](#pull-image) | [Změna zásad](#change-policies) |   [Znak bitových kopií](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- |
 | Vlastník | X | X | X | X | X |  |  
 | Přispěvatel | X | X | X | X | X |  |  
@@ -45,19 +45,19 @@ Pro nástroje, jako je Visual Studio Code [rozšíření Docker](https://code.vi
 
 ## <a name="access-resource-manager"></a>Přístup k Resource Manageru
 
-Přístup ke službě Azure Resource Manageru se vyžaduje pro na webu Azure portal a [rozhraní příkazového řádku Azure](/cli/azure/). Například chcete získat seznam registrů pomocí `az acr list` příkaz, musíte toto oprávnění nastavena. 
+Přístup ke službě Azure Resource Manageru se vyžaduje pro správu Azure portal a registru s [rozhraní příkazového řádku Azure](/cli/azure/). Například chcete získat seznam registrů pomocí `az acr list` příkaz, musíte toto oprávnění nastavena. 
 
-## <a name="createdelete-registry"></a>Vytváření/odstraňování registru
+## <a name="create-and-delete-registry"></a>Vytvářet a odstraňovat registru
 
 Možnost vytvářet a odstraňovat registry kontejnerů Azure.
 
 ## <a name="push-image"></a>Nahrání image
 
-Schopnost `docker push` bitové kopie, nebo jiné podporované artefaktu, nahrajete do registru. Vyžaduje [ověřování](container-registry-authentication.md) s registrem pomocí oprávnění identity. 
+Schopnost `docker push` bitové kopie, nebo jiné doručit [podporované artefaktů](container-registry-image-formats.md) například helmu k registru. Vyžaduje [ověřování](container-registry-authentication.md) s registrem pomocí oprávnění identity. 
 
 ## <a name="pull-image"></a>Stáhněte si image
 
-Schopnost `docker pull` jiných-umístí do karantény image ani přijmout jejich změny podporované jiným artefaktem, z registru. Vyžaduje [ověřování](container-registry-authentication.md) s registrem pomocí oprávnění identity.
+Schopnost `docker pull` jiných-umístí do karantény image, nebo o přijetí změn jiného [podporované artefaktů](container-registry-image-formats.md) například helmu z registru. Vyžaduje [ověřování](container-registry-authentication.md) s registrem pomocí oprávnění identity.
 
 ## <a name="change-policies"></a>Změna zásad
 

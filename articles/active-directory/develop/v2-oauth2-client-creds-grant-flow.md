@@ -17,12 +17,13 @@ ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 49c5aef3e67d90590fdc1bffa195b94143bc38b8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 76b752df4557ac5b0b493f1fb40d1712d37c8e22
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883028"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207666"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: fe89b64fb5f188591ce123e8ed7ed410d3c5ab48
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6cd4f9e561a55c010273b48fb4232348baad3582
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170041"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Kurz: Integrace Azure Active Directory s XaitPorter
 

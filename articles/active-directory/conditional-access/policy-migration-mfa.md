@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 82d53b4eb81f6b7ca6f43d73a8968dbcbd158d43
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 204fec96a58bf1dca55bb0fde14ce6f85c46e05b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081156"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185753"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrovat klasické zásady, která vyžaduje ověření službou Multi-Factor Authentication na webu Azure Portal 
 

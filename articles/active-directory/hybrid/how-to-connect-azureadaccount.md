@@ -16,12 +16,13 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c542ba1c105d2fcdb74d5f8b1af1ecddade65a20
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f88318c87e29567b40b5eacf10f3b6f259adee8b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488727"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196346"
 ---
 # <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Synchronizace Azure AD Connect: Jak spravovat účet služby Azure AD
 Účet služby používaný nástrojem konektor služby Azure AD by měla být služba zdarma. Pokud potřebujete resetovat svoje přihlašovací údaje, toto téma je za vás. Například pokud globální správce má omylem resetovat heslo k účtu služby pomocí prostředí PowerShell.

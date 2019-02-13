@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 78752c7a3c47c8a61b179998533dbe9081c0a5ff
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 664a96569664460a25956c2688d999890c95801e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810308"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188218"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-folloze"></a>Kurz: Integrace Azure Active Directory s Folloze
 

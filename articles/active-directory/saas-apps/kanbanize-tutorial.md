@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Kanbanize | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Kanbanize | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kanbanize.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 746eaadcdb9a588087367c4c70237922cf0f14bf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059596"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199676"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Kurz: Integrace Azure Active Directory se službou Kanbanize
+# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Kurz: Integrace Azure Active Directory s Kanbanize
 
 V tomto kurzu se dozvíte, jak integrovat Kanbanize s Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Kanbanize, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Kanbanize jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Konfigurace integrace Kanbanize do služby Azure AD, budete muset přidat Kanban
 
 **Chcete-li přidat Kanbanize z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -168,7 +169,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!Note]
     > Tyto hodnoty můžete získat díky kombinaci obor názvů a název hodnoty příslušných atributů z části atributy uživatele na webu Azure portal.
 
-    g. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah (bez úvodní a koncové značky) a vložte jej do **certifikát X.509 Idp** pole.
+    g. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah (bez úvodní a koncové značky) a vložte jej do **certifikát X.509 Idp** pole.
 
     h. Zkontrolujte **povolit přihlášení pomocí jednotného přihlašování a Kanbanize**.
     
@@ -211,7 +212,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon v Kanbanize. Kanbanize podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Kanbanize, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Kanbanize klienta](mailto:support@ms.kanbanize.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Kanbanize klienta](mailto:support@ms.kanbanize.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -243,7 +244,7 @@ V této části je povolit Britta Simon k udělení přístupu k Kanbanize použ
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -253,7 +254,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

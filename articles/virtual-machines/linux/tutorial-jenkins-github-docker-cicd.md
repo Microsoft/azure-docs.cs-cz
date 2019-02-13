@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 82e80b9dd4d20709fc8598e0fed3323046c21cfa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751119"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189408"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytváření vývojové infrastruktury na virtuální počítač s Linuxem v Azure pomocí Jenkinse, Githubu a Dockeru
 
@@ -59,7 +59,7 @@ write_files:
         "hosts": ["fd://","tcp://127.0.0.1:2375"]
       }
 runcmd:
-  - apt install default-jre -y
+  - apt install openjdk-8-jre-headless -y
   - wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
   - sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   - apt-get update && apt-get install jenkins -y
@@ -109,6 +109,21 @@ Z bezpečnostních důvodů musíte zadat počáteční heslo správce, které j
 ssh azureuser@<publicIps>
 ```
 
+Ověřte Jenkins běží, pomocí `service` příkaz:
+
+```bash
+$ service jenkins status
+● jenkins.service - LSB: Start Jenkins at boot time
+   Loaded: loaded (/etc/init.d/jenkins; generated)
+   Active: active (exited) since Tue 2019-02-12 16:16:11 UTC; 55s ago
+     Docs: man:systemd-sysv-generator(8)
+    Tasks: 0 (limit: 4103)
+   CGroup: /system.slice/jenkins.service
+
+Feb 12 16:16:10 myVM systemd[1]: Starting LSB: Start Jenkins at boot time...
+...
+```
+
 Zobrazte soubor `initialAdminPassword` pro příslušnou instalaci Jenkinse a zkopírujte ho:
 
 ```bash
@@ -125,7 +140,7 @@ Pak otevřete webový prohlížeč a přejděte na adresu `http://<publicIps>:80
 - Vyberte **Save and Finish** (Uložit a dokončit).
 - Jakmile bude Jenkins připravený, vyberte **Start using Jenkins** (Začít používat Jenkinse).
   - Pokud se po začátku používání Jenkinse ve webovém prohlížeči zobrazí prázdná stránka, restartujte službu Jenkins. V relaci SSH zadejte `sudo service jenkins restart` a aktualizujte webový prohlížeč.
-- Přihlaste se k Jenkinsu s použitím uživatelského jména a hesla, které jste vytvořili.
+- V případě potřeby, přihlaste se k Jenkinsu pomocí uživatelského jména a hesla, které jste vytvořili.
 
 
 ## <a name="create-github-webhook"></a>Vytvoření webhooku GitHubu
@@ -133,11 +148,13 @@ Pokud chcete nakonfigurovat integraci s GitHubem, otevřete [ukázkovou aplikaci
 
 Ve forku, který jste vytvořili, vytvořte webhook:
 
-- Vyberte **Settings** (Nastavení) a pak vyberte **Integrations & services** (Integrace a služby) na levé straně.
-- Zvolte **Add service** (Přidat službu) a pak do pole filtru zadejte *Jenkins*.
-- Vyberte *Jenkins (GitHub plugin)* (Jenkins – modul plug-in GitHubu).
-- Do pole **Jenkins hook URL** (Adresa URL hooku Jenkinse) zadejte adresu `http://<publicIps>:8080/github-webhook/`. Nezapomeňte zadat i koncový znak /.
-- Vyberte **Add service** (Přidat službu).
+- Vyberte **nastavení**a pak vyberte **Webhooky** na levé straně.
+- Zvolte **přidat webhook**, zadejte *Jenkins* pole filtru.
+- Pro **datová část adresy URL**, zadejte `http://<publicIps>:8080/github-webhook/`. Nezapomeňte zadat i koncový znak /.
+- Pro **typ obsahu**vyberte *application/x--www-form-urlencoded*.
+- Pro **události, které chcete spustit tento webhook?** vyberte *právě nabízených oznámení události.*
+- Nastavte **aktivní** na zaškrtnuté.
+- Klikněte na tlačítko **přidat webhook**.
 
 ![Přidání webhooku GitHubu do vašeho rozvětveného úložiště](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -166,7 +183,7 @@ response.end("Hello World!");
 
 Potvrďte změny výběrem tlačítka **Commit changes** (Potvrdit změny).
 
-V Jenkinsovi se spustí nové sestavení v části **Build history** (Historie sestavení) v levém dolním rohu stránky úlohy. Zvolte odkaz na číslo sestavení a vyberte **Console output** (Výstup na konzole) na levé straně. Můžete zobrazit kroky, které Jenkins provádí při přebírání kódu z GitHubu a vytváření výstupu akce sestavení v podobě zprávy `Testing` na konzole. Po každém potvrzení v Githubu webhook kontaktuje Jenkinse a aktivuje tímto způsobem nové sestavení.
+V Jenkinsovi se spustí nové sestavení v části **Build history** (Historie sestavení) v levém dolním rohu stránky úlohy. Zvolte odkaz na číslo sestavení a vyberte **Console output** (Výstup na konzole) na levé straně. Můžete zobrazit kroky, které Jenkins provádí při přebírání kódu z GitHubu a vytváření výstupu akce sestavení v podobě zprávy `Test` na konzole. Po každém potvrzení v Githubu webhook kontaktuje Jenkinse a aktivuje tímto způsobem nové sestavení.
 
 
 ## <a name="define-docker-build-image"></a>Definování image sestavení Dockeru

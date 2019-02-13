@@ -17,12 +17,13 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a0eccd125674776d3932fb628b98d1a298818b9a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ed8a07a5578174bec758587fbdbc0710ffae9dc1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097720"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171753"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod v2.0)
 

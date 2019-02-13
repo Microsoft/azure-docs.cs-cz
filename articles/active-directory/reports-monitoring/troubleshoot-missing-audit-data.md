@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1ceb903d5586dbcc824e3ad9de56e609f162e888
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e3ab3b9513c0420a8b3612457df56501de8c5b55
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174478"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206734"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Řešení potíží: Chybějící data v protokolech aktivit Azure Active Directory 
 

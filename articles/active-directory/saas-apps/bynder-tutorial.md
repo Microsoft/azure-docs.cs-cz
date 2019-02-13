@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 3787c3ae9ba3afa9ed15ddb167fda03f0f3472ac
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 309ea532f4d99407dc7cf8690ebde688fe68e2b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181754"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bynder"></a>Kurz: Integrace Azure Active Directory s Bynder
 

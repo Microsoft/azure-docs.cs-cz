@@ -8,29 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 9/26/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9a8c927eacf9bb42cdac5541958ce7cb4bb47947
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3233357d9013c2a1f9d77178c217ca9310a34ac4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878897"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198197"
 ---
 # <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Vyhledávání na webu pomocí rozhraní API REST webové vyhledávání Bingu a Node.js
 
-V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu a dostanete odpověď JSON, a nezabere vám to ani 10 minut.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci Node.js odešle požadavek hledání do rozhraní API a zobrazí odpovědi. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
 * Klíč předplatného
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Vytvoření projektu a deklarace požadovaných modulů
 

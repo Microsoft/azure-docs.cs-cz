@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 413473b856d76f9ebeff9669eb1facc54d89b509
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 68f640f6962802c45ca369786c4e5d0d4f785fa6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382526"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105073"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravované identity pro App Service a Azure Functions
 
@@ -81,27 +81,29 @@ Následující postup vás provede procesem vytvoření webové aplikace a její
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Následující postup vás provede procesem vytvoření webové aplikace a její přiřazení identitu pomocí Azure Powershellu:
 
-1. V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Login-AzureRmAccount` vytvořte připojení k Azure.
+1. V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
 2. Vytvoření webové aplikace s využitím Azure Powershellu. Další příklady toho, jak pomocí služby App Service pomocí Azure Powershellu najdete v tématu [ukázky Powershellu pro App Service](../app-service/samples-powershell.md):
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzureRmResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name myResourceGroup -Location $location
     
     # Create an App Service plan in Free tier.
-    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
     
     # Create a web app.
-    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. Spustit `Set-AzureRmWebApp -AssignIdentity` příkaz pro vytvoření identity pro tuto aplikaci:
+3. Spustit `Set-AzWebApp -AssignIdentity` příkaz pro vytvoření identity pro tuto aplikaci:
 
     ```azurepowershell-interactive
-    Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
     ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru

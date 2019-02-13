@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 88a1405a55432b6f5932f2675260540a8aea46aa
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8a299c5cf59a3c5b7a994303c9d85783ecfbb424
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697613"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201886"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 1c4cc0517ad55cd3be862e974a0a707ef871d805
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e4c90b6f9fd8b968ceb0e241649ddbcf1c2e1cb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196374"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Kurz: Integrace Azure Active Directory s TrackVia
 
