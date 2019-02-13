@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou GetThere | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s GetThere | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GetThere.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: bcefa3966a6c854f02ce7b3a75306b3d1c888ecd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b132da4a763490fa6c7a73c80f8e2e3a11b42e9b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430740"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173126"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Kurz: Integrace Azure Active Directory se službou GetThere
+# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Kurz: Integrace Azure Active Directory s GetThere
 
 V tomto kurzu se dozvíte, jak integrovat GetThere s Azure Active Directory (Azure AD).
 
@@ -134,7 +135,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | Název |  Zdrojový atribut |  Obor názvů |
     | ---------------| --------------- | --------------- |
     | Název webu | "Zajistit dobu hodnotu podle vaší organizaci" | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
-    | Uživatelské jméno |  User.Mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
+    | Uživatelské jméno |  user.mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
     
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -197,7 +198,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-getthere-test-user"></a>Vytvoření zkušebního uživatele GetThere
 
-V této části vytvoříte uživatele v GetThere jako Britta Simon. Práce s [tým podpory GetThere klienta](mailto:dataintegration@sabre.com) přidat uživatele na platformě GetThere. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v GetThere jako Britta Simon. Práce s [tým podpory GetThere klienta](mailto:dataintegration@sabre.com) přidat uživatele na platformě GetThere. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

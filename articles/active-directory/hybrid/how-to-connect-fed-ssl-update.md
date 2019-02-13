@@ -15,12 +15,13 @@ ms.subservice: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 74f90a84bbf58edb719ccbdc9603aa3f1574681d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c83fe4655b3b3d4de04be74c0f3ced1ddac5ec2b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493301"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185549"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizace certifikátu SSL pro farmu služby Active Directory Federation Services (AD FS)
 
@@ -108,3 +109,4 @@ Po dokončení konfigurace služby Azure AD Connect se zobrazí zpráva, která 
 
 - [Azure AD Connect a federace](how-to-connect-fed-whatis.md)
 - [Active Directory Federation Services management a přizpůsobení službou Azure AD Connect](how-to-connect-fed-management.md)
+

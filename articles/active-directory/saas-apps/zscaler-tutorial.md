@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 4051d870cdecb4a7359458e009c49e416cd22974
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 74c1465169ccbd2e6a6901566d8eb4fafb7d5c09
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170123"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>Kurz: Integrace Azure Active Directory se Zscalerem
 

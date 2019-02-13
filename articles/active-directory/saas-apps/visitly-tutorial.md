@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 242706a11304be50636d3186ab128e6de0b233d6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a2daa4f287123a81b1727d173557c0221ffaba6f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812025"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-visitly"></a>Kurz: Integrace Azure Active Directory s Visitly
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: a277ef318db2a8f47e4c746beb3149f5c62ae30d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ffd97c84af7e0efbdabc79b02c4ebd5cbdae9df
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000826"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>Kurz: Integrace Azure Active Directory s dynamické signálu
 

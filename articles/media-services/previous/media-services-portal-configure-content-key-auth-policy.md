@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 1830ede26e056425b76e6cddb385c8dcdcc17dfc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7dd056042b841e54c18ee1a667c44cfa11d77a61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993618"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164596"
 ---
-# <a name="configure-a-content-key-authorization-policy-legacy"></a>Konfigurace zásad autorizace klíče obsahu (starší verze)
+# <a name="configure-a-content-key-authorization-policy"></a>Konfigurace zásad autorizace klíče obsahu
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled

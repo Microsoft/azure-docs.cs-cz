@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816267"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185312"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -229,7 +230,7 @@ Tato možnost představuje společný scénář pro obchodní aplikace.
 Pokud chcete, aby aplikace povolovala přihlášení pouze z účtů, které patří do konkrétní instance Azure AD (včetně *účtů hostů* dané instance), postupujte takto:
 
 1. V parametru `Tenant` v souboru *web.config* zadejte místo hodnoty `Common` název tenanta organizace, například *contoso.onmicrosoft.com*.
-1. Změňte argument `ValidateIssuer` v [*počáteční třídě OWIN*](#configure-the-authentication-pipeline) na `true`.
+1. Změňte argument `ValidateIssuer` v [*počáteční třídě OWIN*](#step-4-configure-the-authentication-pipeline) na `true`.
 
 Pokud chcete povolit přihlášení pouze uživatelů, kteří jsou uvedeni v seznamu konkrétních organizací, postupujte takto:
 

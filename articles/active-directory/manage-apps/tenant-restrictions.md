@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: celested
 ms.reviewer: richagi
-ms.openlocfilehash: 443307bf74de01dd75f38736f166ce9da3c90ea3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f2dc03b329ce8a4b42f44b958aee96654dafb098
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989233"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197738"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Omezení Tenanta můžete spravovat přístup k SaaS cloudové aplikace
 

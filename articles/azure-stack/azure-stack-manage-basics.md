@@ -12,24 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239668"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164018"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure Stack
-Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento návod poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.
+Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento článek poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.
 
 ## <a name="understand-the-builds"></a>Vysvětlení sestavení
 
 ### <a name="integrated-systems"></a>Integrované systémy
 
-Pokud používáte systémech pro Azure Stack integrované, aktualizované verze služby Azure Stack se distribuují prostřednictvím balíčků aktualizace. Můžete importovat tyto balíčky a použít je s použitím aktualizací dlaždice na portálu pro správce.
+Pokud používáte systémech pro Azure Stack integrované, aktualizované verze služby Azure Stack se distribuují prostřednictvím balíčků aktualizace. Můžete importovat tyto balíčky a použít je s použitím aktualizací dlaždice na portálu pro správce. Není možné aktualizovat ASDK instalace. 
  
 ### <a name="development-kit"></a>Vývojová sada
 

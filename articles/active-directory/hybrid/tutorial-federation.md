@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 35f158b97bdae897cd851463449f1f45e5e35867
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cc6d1d53fd292a936c833450fee3af91671eec86
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498178"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171159"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: Federace prostředí jedné doménové struktury služby AD do cloudu
 

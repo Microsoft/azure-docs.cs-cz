@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 4fec32ac2d613486ee65416ccdfac70575ea9543
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: e691913daabb832b2a3b51dac5d4a5b0e1f53871
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509571"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165067"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Přeučování model ve službě Azure Machine Learning Studio
 Jako součást procesu operacionalizace modelů strojového učení v Azure Machine Learning je váš model školení a uložen. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací. 
@@ -63,8 +63,6 @@ Pokud jste nasadili klasických webových služeb:
 * Vytvořit nový koncový bod na prediktivní webové služby
 * Získat adresu URL opravu a kódu
 * Použijte adresu URL OPRAVIT tak, aby odkazovala nový koncový bod v modelu retrained 
-
-Názorný postup předchozí kroky, najdete v části [Přeučování klasickou webovou službou](retrain-a-classic-web-service.md).
 
 Pokud narazíte na potíže přetrénování klasická webová služba, přečtěte si téma [řešení potíží s přeučováním služby Azure Machine Learning klasickou webovou](troubleshooting-retraining-models.md).
 

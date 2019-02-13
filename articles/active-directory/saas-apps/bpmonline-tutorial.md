@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 97b0530f3a260b4ad82c4287b4b37595ab1cf25d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 126aed0ebaf7f23a638579b9bb7e073065558ace
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187330"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Kurz: Integrace Azure Active Directory s Bpm'online
 

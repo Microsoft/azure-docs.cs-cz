@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 491bdf121729d690784324051ff701f3ed2d2b7a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a39ab2eb6d08f478ed68aed2bc753e5225185fe3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243177"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175383"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Integrované systémy pro nasazení v Azure připojené plánování rozhodnutí pro službu Azure Stack
-Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), pak můžete dokončit vaše rozhodnutí o nasazení služby Azure Stack.
+Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), můžete dokončit váš rozhodnutí o nasazení služby Azure Stack.
 
 Nasazení Azure Stack připojení k Azure znamená, že máte Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) pro úložiště identit. Můžete také vybrat z obou model fakturace: platit jako využití nebo na základě kapacity. Připojené nasazení je výchozí možnost, neboť umožňuje zákazníkům, kteří získali co nejvíce mimo Azure Stack, zejména pro hybridní cloudové scénáře, které se týkají Azure a Azure Stack. 
 

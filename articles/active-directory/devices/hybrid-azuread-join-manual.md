@@ -16,12 +16,13 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4c0a9ed77dfceb6ae4ce7affdeff852ba650e7eb
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 851a340c4c5624fe45d065e002b732517a657303
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093461"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174261"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridní služby Azure Active Directory připojené zařízení 
 

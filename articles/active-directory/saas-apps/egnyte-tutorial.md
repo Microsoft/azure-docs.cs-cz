@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 1275035b8170e83159f2684ef41dab14d3d7ac3f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b95c3dbbe08a152ed5d9265f04a5ec989e55275b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989198"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Kurz: Integrace Azure Active Directory s Egnyte
 

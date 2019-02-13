@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699121"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175451"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro připojení k síti a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -120,6 +120,34 @@ Firewall webových aplikací (WAF) poskytuje další vrstvu zabezpečení pomoc�
 
 Nástroje pro vyrovnávání nebo příchozího přenosu dat prostředků zatížení nadále spuštěna v clusteru AKS pro další upřesnění distribuce provozu. App Gateway můžete centrálně spravovat jako řadič příchozího přenosu dat s definicí prostředků. Abyste mohli začít, [vytvořit řadič služby Application Gateway příchozího přenosu dat][app-gateway-ingress].
 
+## <a name="control-traffic-flow-with-network-policies"></a>Kontrolujte přenosy zásadami sítě
+
+**Osvědčené postupy pro moduly** – povolí nebo zakážou provoz na podů pomocí zásady sítě. Ve výchozím nastavení jsou povoleny všechny přenosy mezi pody v rámci clusteru. Pro lepší zabezpečení definujte pravidla, která omezení pod komunikace.
+
+Zásady sítě je funkce, Kubernetes, která umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Použití zásad sítě poskytuje cloudově nativních způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít. Nepoužívejte skupiny zabezpečení sítě Azure k řízení provozu pod pod, použijte zásady sítě.
+
+Pokud chcete použít zásady sítě, musí být povolena funkce, při vytváření clusteru AKS. Nelze povolit zásady sítě v existujícím clusteru AKS. Plánujte dopředu a ujistěte se, že povolíte zásady sítě v clusterech a můžete je podle potřeby.
+
+Zásady sítě se vytvoří jako prostředek Kubernetes pomocí YAML manifestu. Zásady se použijí k definované podů a příchozí a odchozí pravidla definují, jak provoz může probíhat. Následující příklad nastavení uplatní zásady sítě podů s *aplikace: back-endu* popisek použitý k nim. Pravidla příchozího přenosu dat pak pouze umožní provoz z podů s *aplikace: front-endu* popisku:
+
+```yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+```
+
+Začínáme se zásadami, najdete v článku [zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)][use-network-policies].
+
 ## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>Bezpečné připojení k uzlům prostřednictvím hostitel typu bašta
 
 **Osvědčené postupy pro moduly** -nezveřejňují vzdáleného připojení k vaší uzlů AKS. Vytvoření hostitel typu bašta, nebo přejít do virtuální síť pro správu pole. Použijte hostitele bastionu bezpečně směrovat provoz do clusteru AKS na vzdálených úkolů správy.
@@ -155,5 +183,6 @@ Tento článek se zaměřuje na připojení k síti a zabezpečení. Další inf
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
+[use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md

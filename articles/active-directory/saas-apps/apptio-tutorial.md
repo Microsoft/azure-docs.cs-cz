@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: e600d9eb0cd100b1c2ab24b2545320a3e4cf1b39
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8303781e38ab2cb5284731f6ab038f038212810d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461028"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>Kurz: Integrace Azure Active Directory s Apptio
 

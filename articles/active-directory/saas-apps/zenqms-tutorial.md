@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou ZenQMS | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s ZenQMS | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ZenQMS.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 57a8c698133b2b5516a1f5d352f28148afe6f3d2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f9804dee56e9f099654359e7c336f706cedbd1f7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447402"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204861"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Kurz: Integrace Azure Active Directory se službou ZenQMS
+# <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Kurz: Integrace Azure Active Directory s ZenQMS
 
 V tomto kurzu se dozvíte, jak integrovat ZenQMS s Azure Active Directory (Azure AD).
 
@@ -172,7 +173,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-a-zenqms-test-user"></a>Vytvoření zkušebního uživatele ZenQMS
 
-V této části vytvoříte uživatele v ZenQMS jako Britta Simon. Práce s [tým podpory ZenQMS](mailto:help@zenqms.com) přidat uživatele na platformě ZenQMS. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v ZenQMS jako Britta Simon. Práce s [tým podpory ZenQMS](mailto:help@zenqms.com) přidat uživatele na platformě ZenQMS. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

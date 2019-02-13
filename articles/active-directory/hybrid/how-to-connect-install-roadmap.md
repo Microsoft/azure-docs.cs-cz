@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fe128e37103fc913b97f8ac8b9f0395ad74c4198
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1285a9262221dbd8e46d07e384697ddea853f9fc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496962"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163049"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
@@ -97,7 +98,7 @@ Model konfigurace v synchronizaci se označuje [deklarativní zřizování](conc
 |Téma |Odkaz|  
 | --- | --- |
 |Všechny články o synchronizaci služby Azure AD Connect | [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md)|
-|Technické koncepty | [Synchronizace Azure AD Connect: Technické koncepce](how-to-connect-sync-technical-concepts.md)|
+|Technické koncepty | [Synchronizace Azure AD Connect: Technické koncepty](how-to-connect-sync-technical-concepts.md)|
 |Principy výchozí konfigurace | [Synchronizace Azure AD Connect: Principy výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md)|
 |Principy uživatelů a kontaktů | [Synchronizace Azure AD Connect: Principy uživatelů a kontaktů](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |Deklarativní zřizování | [Synchronizace služby Azure AD Connect: Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|

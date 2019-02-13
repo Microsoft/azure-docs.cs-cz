@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: e12ca3f11053add2a4398f706a5e3b10e9e19610
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7df7469a6975fa5e84b43487b524ca888718d7d2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962549"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162318"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Jak nakonfigurovat jednotné přihlašování k aplikaci Proxy aplikací
 

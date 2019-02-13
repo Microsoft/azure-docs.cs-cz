@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e47bb293d53df658641a50a1399ead85667e3225
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692731"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117644"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Zobrazení protokolů aktivit pro RBAC změny
 
@@ -55,7 +55,7 @@ Další informace o protokolech aktivit najdete v tématu [zobrazení událostí
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-Chcete-li zobrazit protokoly aktivit pomocí Azure Powershellu, použijte [Get-AzLog](/powershell/module/az.insights/get-azlog) příkazu.
+Chcete-li zobrazit protokoly aktivit pomocí Azure Powershellu, použijte [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) příkazu.
 
 Tento příkaz vypíše všechny změny přiřazení role v rámci předplatného za posledních sedm dnů:
 

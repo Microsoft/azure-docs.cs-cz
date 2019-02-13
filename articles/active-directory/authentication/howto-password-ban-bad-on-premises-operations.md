@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: a77a6dd8b408fd8151cb12b7d0269b8890ef929b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1fda79f16560a5c96e1283f4d9d9f14dbe503d61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662410"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175238"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>Verze Preview: Azure AD ochranu heslem, provozní postupy
 

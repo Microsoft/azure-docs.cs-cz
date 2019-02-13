@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 0894b1ccf976cfa1a932b76f6ed06e1bd45ee1b7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ff88f25d4bf7fea09ea07673326e068840243b98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180904"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Kurz: Integrace Azure Active Directory s Wdesk
 
