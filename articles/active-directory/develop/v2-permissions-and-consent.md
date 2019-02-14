@@ -17,12 +17,13 @@ ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cfc1ba6250a2d246c2dcf9a0128097b64896732d
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94d0e469614204a7507ba666ac04e59774eebde7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098506"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204406"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v2.0
 
@@ -58,13 +59,13 @@ Tyto typy oprávnění OAuth 2.0, se nazývají *obory*. Se také často jednodu
 * Zápis do kalendáře uživatele s použitím `Calendars.ReadWrite`
 * Odesílat poštu jménem uživatele pomocí podle `Mail.Send`
 
-Aplikace požádá o nejčastěji, že tyto oprávnění tak, že zadáte obory v požadavcích na v2.0 zajistí autorizaci koncového bodu. Ale určitá oprávnění vysoká oprávnění lze udělit pouze prostřednictvím souhlasu správce a obecně požádal/udělit pomocí [koncový bod souhlas správce](v2-permissions-and-consent.md#admin-restricted-scopes). Pokud se chcete dozvědět víc, čtěte dál.
+Aplikace požádá o nejčastěji, že tyto oprávnění tak, že zadáte obory v požadavcích na v2.0 zajistí autorizaci koncového bodu. Ale určitá oprávnění vysoká oprávnění lze udělit pouze prostřednictvím souhlasu správce a obecně požádal/udělit pomocí [koncový bod souhlas správce](v2-permissions-and-consent.md#admin-restricted-permissions). Pokud se chcete dozvědět víc, čtěte dál.
 
 ## <a name="permission-types"></a>Typy oprávnění
 
 Platforma identit Microsoft podporuje dva typy oprávnění: **delegovaná oprávnění** a **oprávnění aplikace**.
 
-* **Delegovaná oprávnění** jsou používány aplikací, které mají přihlášeného uživatele k dispozici. U těchto aplikací uživatel nebo správce souhlasí s oprávněními, žádosti o aplikace a aplikace je delegovaná oprávnění tak, aby fungoval jako přihlášený uživatel při volání cílový prostředek. Některé delegovaná oprávnění lze vyjádřit souhlas uživatelé bez oprávnění správce, ale některá oprávnění vyšší úrovní oprávnění vyžadují [souhlas správce](v2-permissions-and-consent.md#admin-restricted-scopes). Informace o tom, které správce rolí můžou udělit souhlas s delegovaná oprávnění, najdete v článku [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+* **Delegovaná oprávnění** jsou používány aplikací, které mají přihlášeného uživatele k dispozici. U těchto aplikací uživatel nebo správce souhlasí s oprávněními, žádosti o aplikace a aplikace je delegovaná oprávnění tak, aby fungoval jako přihlášený uživatel při volání cílový prostředek. Některé delegovaná oprávnění lze vyjádřit souhlas uživatelé bez oprávnění správce, ale některá oprávnění vyšší úrovní oprávnění vyžadují [souhlas správce](v2-permissions-and-consent.md#admin-restricted-permissions). Informace o tom, které správce rolí můžou udělit souhlas s delegovaná oprávnění, najdete v článku [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
 * **Oprávnění aplikace** aplikací používají, na kterých běží bez přihlášeného uživatele k dispozici, například aplikace, na kterých běží jako služby na pozadí nebo procesy démon.  Oprávnění aplikace může být pouze [schválená správcem](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
