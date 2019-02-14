@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 38be6d0212f4676add76abacf9f18f0a73eb44be
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 78834f1f12d2c748cb885e437496f2acf11b69ee
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170415"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232754"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Vytvoření nové sestavy z datové sady v kolekcích pracovních prostorů Power BI
 
@@ -40,13 +40,13 @@ V tomto příkladu máme naše ID datové sady, který chcete vytvořit novou se
 
 **Instalace balíčku NuGet**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.Core
 ```
 
 **Kód jazyka C#**
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -65,15 +65,16 @@ Chcete-li vytvořit novou sestavu, musí být zadána konfigurace vytvořit. Ty 
 
 **Instalace balíčku NuGet**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
 **Kód jazyka JavaScript**
 
-```
+```html
 <div id="reportContainer"></div>
-  
+
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -85,6 +86,7 @@ var embedCreateConfiguration = {
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
+</script>
 ```
 
 Volání *powerbi.createReport()* díky prázdného plátna v režimu úprav se zobrazí v rámci *div* elementu.
@@ -95,7 +97,7 @@ Volání *powerbi.createReport()* díky prázdného plátna v režimu úprav se 
 
 Sestava není vytvořena až do okamžiku volání **uložit jako** operace. To lze provést v nabídce Soubor nebo z jazyka JavaScript.
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -116,9 +118,9 @@ Sestava není vytvořena až do okamžiku volání **uložit jako** operace. To 
 
 Aby bylo možné pracovat s novou sestavu, kterou je potřeba ji vložit do aplikace vloží u běžné sestavy stejným způsobem, což znamená, nový token musí být vydaný speciálně pro novou sestavu a poté zavolejte metodu vložení.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -130,13 +132,14 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Automatizace uložit a načíst nové sestavy pomocí "uložené" události
 
 Aby bylo možné automatizovat proces "uložení jako" a pak načítání novou sestavu, můžete využít službu "uložené" události. Tato událost se aktivuje při ukládání operace se dokončila a vrátí objekt Json obsahující nové ID sestavy, název sestavy, původní ID sestavy (pokud existuje) a pokud byla operace rezervaci nebo uložit.
 
-```
+```json
 {
   "reportObjectId": "5dac7a4a-4452-46b3-99f6-a25915e0fe54",
   "reportName": "newReport",
@@ -147,9 +150,9 @@ Aby bylo možné automatizovat proces "uložení jako" a pak načítání novou 
 
 K automatizaci procesu naslouchání "uložené" události, využít nové ID sestavy, vytvořit nový token a vložit novou sestavu s ním.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -192,6 +195,7 @@ var embedCreateConfiguration = {
    // report.off removes a given event handler if it exists.
    report.off("saved");
     });
+</script>
 ```
 
 ## <a name="see-also"></a>Další informace najdete v tématech

@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: Analýza textu s využitím Power BI'
+title: 'Kurz: Integrace Power BI s Text Analytics služby Cognitive Services'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí Analýzy textu extrahovat klíčové fráze z textu uloženého v Power BI.
 services: cognitive-services
-author: luiscabrer
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: luisca
-ms.openlocfilehash: 93c524f933251e94ded36dc3a6bd66d376e76a81
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 2439244edcc1b7026a2cc8a62a946188e279f15f
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884031"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245826"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI s Text Analytics služby Cognitive Services
 

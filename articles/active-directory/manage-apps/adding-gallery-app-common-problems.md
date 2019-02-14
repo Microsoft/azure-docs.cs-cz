@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6d47f22b4c7b29457de18593e38548aa818205a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205626"
+ms.locfileid: "56237865"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Potíže při přidávání aplikace Galerie Azure AD
 
@@ -28,13 +28,13 @@ Tento článek vám pomůže pochopit běžné tváří lidí problémy při př
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Po klepnutí na tlačítko "Přidat" a Moje aplikace trvalo dlouhou dobu zobrazovat
 
-Za určitých okolností může trvat 1 – 2 minutách (a někdy delší) pro aplikace se zobrazí po jeho přidání do vašeho adresáře. Normální očekávaný výkon tak není, zobrazí se přidání aplikace se po kliknutí na **oznámení** v pravém horním rohu ikonu (zvonek) [webu Azure portal](https://portal.azure.com/) a vyhledávání pro **probíhá** nebo **dokončeno** oznámení s názvem **vytvořit aplikaci.**
+Za určitých okolností může trvat 1 – 2 minutách (a někdy delší) pro aplikace se zobrazí po jeho přidání do vašeho adresáře. Normální očekávaný výkon tak není, zobrazí se přidání aplikace se po kliknutí na **oznámení** v pravém horním rohu ikonu (zvonek) [webu Azure portal](https://portal.azure.com/) a vyhledávání pro **probíhá** nebo **dokončeno** oznámení s názvem **přidává se aplikace.**
 
 Pokud vaše aplikace se nikdy nepřidávali nebo dojde k chybě při kliknutí **přidat** tlačítko, zobrazí se vám **oznámení** v **chyba** stavu. Pokud chcete podrobnosti o této chybě Další informace o nebo sdílet s pracovníkem technické podpory, zobrazí se další informace o chybě pomocí následujících kroků v [jak zobrazit podrobnosti o oznámení na portálu](#how-to-see-the-details-of-a-portal-notification) oddílu.
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Po klepnutí na tlačítko "Přidat" a nezobrazilo Moje aplikace
 
-V některých případech kvůli přechodným problémům, problémy se sítí nebo chybu, přidáte selhání aplikace. Poznáte to se stane, když kliknete **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal a můžete zobrazit ikonou červené (!) vedle vašeho **vytvořit aplikaci** oznámení. To znamená, že došlo k chybě při vytváření aplikace.
+V některých případech z důvodu přechodné problémy, problémy se sítí nebo chybu, přidání aplikace se nezdaří. Poznáte, to se stane, když kliknete **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal a můžete zobrazit ikonou červené (!) vedle vašeho **přidává se aplikace** oznámení. To znamená, že došlo k chybě při vytváření aplikace.
 
 Pokud narazíte na chybu při kliknutí **přidat** tlačítko, zobrazí se vám **oznámení** v **chyba** stavu. Pokud chcete podrobnosti o této chybě Další informace o nebo sdílet s pracovníkem technické podpory, zobrazí se další informace o chybě pomocí následujících kroků v [jak zobrazit podrobnosti o oznámení na portálu](#how-to-see-the-details-of-a-portal-notification) oddílu.
 
@@ -42,13 +42,13 @@ Pokud narazíte na chybu při kliknutí **přidat** tlačítko, zobrazí se vám
 
 Pokud potřebujete pomoc, další informace o aplikacích [seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) článku je dobrým začátkem.
 
-Kromě toho [knihovny dokumentů aplikace služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) vám pomůže dozvědět další informace o jednotné přihlašování s Azure AD a jak to funguje.
+Kromě toho [knihovny dokumentů aplikace služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) vám umožní získat další informace o jednotné přihlašování s Azure AD a jak to funguje.
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak zobrazit podrobnosti o oznámení na portálu
 
 Můžete zobrazit podrobnosti o oznámení portálu podle následujících kroků:
 
-1.  Klikněte na tlačítko **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure Portal
+1.  Vyberte **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure Portal
 
 2.  Vyberte všechna oznámení v **chyba** stavu (ty s červenou (!) vedle sebe).
 
@@ -61,7 +61,7 @@ Můžete zobrazit podrobnosti o oznámení portálu podle následujících krok�
 
 5.  Pokud stále potřebujete pomoc, můžete také sdílet tyto informace s pracovníkem technické podpory nebo produktovou skupinou účelem vyřešení vašeho problému.
 
-6.  Klikněte na tlačítko **kopírování** **ikonu** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu
+6.  Klikněte na tlačítko **kopírování** **ikonu** napravo od **Kopírovat chybu** textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak získat nápovědu odesláním oznámení podrobnosti pro pracovníka podpory
 

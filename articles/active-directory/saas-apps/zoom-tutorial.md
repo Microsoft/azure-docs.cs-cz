@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ea60b774e4f3f61ecf715873c83198c2dad331f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ca0e2c0ce12edba504745e2783844db5109ee01a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166905"
+ms.locfileid: "56237701"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Kurz: Integrace Azure Active Directory s přiblížení
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s přiblížení, proveďte n
     | role |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
 
     > [!NOTE]
-    > Po klepnutí na [tady](https://docs.microsoft.com/en-gb/azure/role-based-access-control/role-assignments-portal) vědět, jak nakonfigurovat Role ve službě Azure AD
+    > Po klepnutí na [tady](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) vědět, jak nakonfigurovat Role ve službě Azure AD
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 

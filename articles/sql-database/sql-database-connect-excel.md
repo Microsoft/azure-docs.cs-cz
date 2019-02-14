@@ -1,6 +1,6 @@
 ---
-title: Připojení Excelu k SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak připojit Microsoft Excel k databázi SQL Azure v cloudu. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
+title: Připojení Excelu k izolované databáze ve službě Azure SQL Database | Dokumentace Microsoftu
+description: Zjistěte, jak připojit Microsoft Excel k izolované databáze ve službě Azure SQL database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,21 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 552293b402c697073587e887522d2daa3e33cdb6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/12/2019
+ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754576"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237007"
 ---
-# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Připojení Excelu k databázi Azure SQL a vytvoření sestavy
+# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k izolované databáze ve službě Azure SQL database a vytvoření sestavy
 
-Připojení Excelu k SQL database v cloudu a importovat data a vytvářet tabulky a grafy na základě hodnot v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
+Připojení Excelu k izolované databáze ve službě Azure SQL Database a importovat data a vytvářet tabulky a grafy na základě hodnot v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
 
-Než začnete, budete potřebovat databázi SQL v Azure. Pokud žádnou nemáte, podívejte se na téma [Vytvoření první databáze SQL](sql-database-single-database-get-started.md), kde najdete informace o tom, jak si během několika málo minut zprovoznit databázi s ukázkovými daty. V tomto článku budete importovat vzorová data do aplikace Excel z tohoto článku, ale můžete podle podobných kroků s vlastními daty.
+Než začnete, budete potřebovat izolované databáze. Pokud ho nemáte, přečtěte si téma [vytvoření izolované databáze](sql-database-single-database-get-started.md) a [vytvoření brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md) zobrazíte izolované databáze s ukázkovými daty rychle zprovoznit za pár minut.
+
+V tomto článku budete importovat vzorová data do aplikace Excel z tohoto článku, ale můžete podle podobných kroků s vlastními daty.
 
 Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2016](https://products.office.com/).
 

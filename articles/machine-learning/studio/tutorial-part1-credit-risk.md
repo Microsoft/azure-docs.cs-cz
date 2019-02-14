@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 84b78dc65e4f2e859e5c8f1e92daa6dfbfd4cbcb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008170"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243718"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Kurz 1: Předpovědět úvěrové riziko - Azure Machine Learning Studio
 
@@ -47,7 +47,7 @@ Pokud jste nikdy **Azure Machine Learning Studio** dříve, můžete chtít spus
 
 
 > [!TIP] 
-> Můžete najít pracovní kopii experimentu, který používáte k vývoji tohoto kurzu [galerii Azure AI](https://gallery.cortanaintelligence.com). Přejděte na **[kurz – predikce úvěrového rizika](https://gallery.cortanaintelligence.com/Experiment/tutorial-Credit-risk-prediction-1)** a klikněte na tlačítko **Open in Studio** a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
+> Můžete najít pracovní kopii experimentu, který používáte k vývoji tohoto kurzu [galerii Azure AI](https://gallery.azure.ai). Přejděte na **[kurz – předpovědět úvěrové riziko](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** a klikněte na tlačítko **Open in Studio** a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
 > 
 
 

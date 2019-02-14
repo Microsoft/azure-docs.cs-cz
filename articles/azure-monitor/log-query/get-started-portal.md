@@ -2,23 +2,18 @@
 title: Začínáme se službou Azure Monitor log analytics | Dokumentace Microsoftu
 description: Tento článek obsahuje kurz pro psaní dotazů pomocí Log Analytics na portálu Azure portal.
 services: log-analytics
-documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: b9a5c78ff9d6c1e2c7194f5b92511e94dfafb058
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2adb23b63c3a8be56dc55293c7bb06534d9305c4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990492"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242103"
 ---
 # <a name="get-started-with-azure-monitor-log-analytics"></a>Začínáme se službou Azure Monitor log analytics
 

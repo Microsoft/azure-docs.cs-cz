@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: tutorial
 ms.service: event-hubs-messaging
 ms.custom: mvc
-ms.openlocfilehash: bd76d8a7f3f41a8aa6b2e614d37f361a98ac4efd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e47c2af353a7f365534ba4cf9ce574c16a0ea4ca
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53282756"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233135"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Kurz: Povolení integrace virtuální sítě a brány firewall na obor názvů Event Hubs
 
@@ -30,15 +30,15 @@ V tomto kurzu se dozvíte, jak:
 > * Jak nastavit bránu Firewall (filtrování protokolu IP) s váš obor názvů služby Event Hubs.
 
 >[!WARNING]
-> Implementace integrace virtuální sítě můžete zabránit komunikaci se Service Bus dalšími službami Azure.
+> Implementace integrace virtuální sítě můžete zabránit interakci s centry událostí dalšími službami Azure.
 >
-> První strany integrace nejsou podporovány při virtuální sítě jsou povolené a budou brzy dostupné.
+> První strany integrace nejsou podporovány, pokud jsou povolené virtuální sítě.
 > Běžné scénáře služby Azure, které nefungují s virtuálními sítěmi-
 > * Protokolování a Diagnostika Azure
 > * Azure Stream Analytics
 > * Integrace Event gridu
 > * Webové aplikace a funkce musí být ve virtuální síti.
-> * IoT Hub trasy
+> * IoT Hub Routes
 > * IoT Device Explorer
 
 
@@ -67,7 +67,7 @@ Použijte navigační nabídce a vyberte v levém podokně na portálu **"Brány
 
   První návštěvě této stránky **všechny sítě** přepínač musí být vybrán. Z toho vyplývá, že obor názvů Event Hubs umožňuje všechna příchozí připojení.
 
-## <a name="add-virtual-network-service-endpoint"></a>Přidat koncový bod služby virtuální sítě
+## <a name="add-virtual-network-service-endpoint"></a>Add Virtual Network Service Endpoint
 
 Pokud chcete omezit přístup, budete muset integraci koncového bodu služby virtuální sítě pro tento obor názvů služby Event Hubs.
 

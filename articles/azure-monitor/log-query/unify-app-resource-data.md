@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766008"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237667"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení několik prostředků Azure monitoru Application Insights 
 Tento článek popisuje, jak dotaz a zobrazit všechna data protokolů Application Insights aplikaci na jednom místě, i když se nachází v různých předplatných Azure, jako náhrada vyřazení Application Insights Connector. Počet prostředků prostředky Application Insights, které mohou obsahovat v jediném dotazu je omezena na 100.  
@@ -32,7 +32,7 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-Vytvoření funkce pomocí operátoru union se seznam aplikací a uložit dotaz jako funkce s aliasem *applicationsScoping*.  
+Vytvoření funkce pomocí operátoru union se seznam aplikací a pak uložte dotaz ve vašem pracovním prostoru jako funkce s aliasem *applicationsScoping*.  
 
 ```
 union withsource=SourceApp 
@@ -45,7 +45,7 @@ app('Contoso-app5').requests
 ```
 
 >[!NOTE]
->Uvedené aplikace kdykoli můžete upravit tak, že přejdete do Průzkumníka dotazů na protokoly portálu a úpravy funkce, nebo pomocí `SavedSearch` rutiny Powershellu. `withsource= SourceApp` Příkaz přidá sloupec do výsledků, který určuje aplikace, které odeslání protokolu. 
+>Uvedené aplikace kdykoli na portálu můžete upravit tak, že přejdete na Průzkumníka dotazů ve vašem pracovním prostoru a vyberete funkce pro úpravy a potom uložení nebo pomocí `SavedSearch` rutiny Powershellu. `withsource= SourceApp` Příkaz přidá sloupec do výsledků, který určuje aplikace, které odeslání protokolu. 
 >
 >Dotaz používá schéma Application Insights, i když dotaz je provést v pracovním prostoru, protože funkce applicationsScoping vrátí strukturu dat Application Insights. 
 >

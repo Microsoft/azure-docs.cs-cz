@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 450e6a180b104d8f384fd08cc7c4cafcd53b4453
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fa08e6da6b87de5878f099709563fb90e8669e77
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021335"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237599"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Opakovatelné kopírování ve službě Azure Data Factory
 
@@ -114,7 +114,7 @@ Tento sloupec se službou Azure Data Factory používá pro účely opakovatelno
 1. Definovat sloupec typu **binární soubor (32)** v cílové tabulce SQL. Měla by existovat bez omezení na tomto sloupci. V tomto příkladu pojmenujeme v tomto sloupci jako AdfSliceIdentifier.
 
 
-    Zdrojová tabulka:
+Zdrojová tabulka:
 
     ```sql
     CREATE TABLE [dbo].[Student](
@@ -123,7 +123,7 @@ Tento sloupec se službou Azure Data Factory používá pro účely opakovatelno
     )
     ```
 
-    Cílová tabulka: 
+Cílová tabulka: 
 
     ```sql
     CREATE TABLE [dbo].[Student](

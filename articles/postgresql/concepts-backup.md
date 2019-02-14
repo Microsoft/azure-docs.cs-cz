@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 49277fc260743d0179c40374241edeece0a0e1e2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814329"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236749"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Zálohování a obnovení ve službě Azure Database for PostgreSQL
 
@@ -50,7 +50,7 @@ K dispozici jsou dva typy obnovení:
 Odhadovaný čas obnovení závisí na několika faktorech včetně velikosti databáze, velikost protokolu transakcí, šířky pásma sítě a celkový počet obnovovaných databází ve stejné oblasti ve stejnou dobu. Čas obnovení je obvykle méně než 12 hodin.
 
 > [!IMPORTANT]
-> Odstranit servery **nelze** obnovit. Při odstranění serveru, odstraní se také všechny databáze, které patří k serveru a nelze ji obnovit. Pokud chcete chránit prostředky serveru, po nasazení, z náhodnému odstranění nebo neočekávaným změnám, správci můžou využívat [zámky pro správu](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources).
+> Odstranit servery **nelze** obnovit. Při odstranění serveru, odstraní se také všechny databáze, které patří k serveru a nelze ji obnovit. Pokud chcete chránit prostředky serveru, po nasazení, z náhodnému odstranění nebo neočekávaným změnám, správci můžou využívat [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 

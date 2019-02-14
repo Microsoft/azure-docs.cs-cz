@@ -3,19 +3,19 @@ title: Volání rozhraní Text Analytics API
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak zavolat REST API pro analýzu textu.
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 60aa51e4dac796e034b7b0506be0e205951226de
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 52c5cb640bfb861fb2da52ee711fe3955a169bcf
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870771"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244024"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 
@@ -30,9 +30,7 @@ Připomínáme, že pro analýzu textu je bezstavové, takže nejsou žádné da
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API analýzu textu**. 
-
-Musíte mít [koncový bod a přístupový klíč](text-analytics-how-to-access-key.md) , vygeneruje se pro vás při registraci pro služby Cognitive Services. 
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pomocí rozhraní API pro analýzu textu a [koncový bod a přístupový klíč](text-analytics-how-to-access-key.md) , vygeneruje se pro vás při registraci pro služby Cognitive Services. 
 
 <a name="json-schema"></a>
 

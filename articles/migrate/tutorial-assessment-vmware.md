@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 40a43fd8ea1f47b564d0c0ee2b5e67fd011f2ff9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895971"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235831"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **VMware**: Virtuální počítače, které plánujete migrovat musí spravovat přes vCenter Server verze 5.5, 6.0 nebo 6.5. Kromě toho potřebujete jednoho hostitele ESXi ve verzi 5.5 nebo novější k nasazení virtuálního počítače kolektoru.
+- **VMware**: Virtuální počítače, které plánujete migrovat musí spravovat přes vCenter Server verze 5.5, 6.0, 6.5 nebo 6.7. Kromě toho potřebujete jednoho hostitele ESXi ve verzi 5.5 nebo novější k nasazení virtuálního počítače kolektoru.
 - **účet vCenter serveru**: Potřebujete účet jen pro čtení pro přístup k systému vCenter Server. Azure Migrate ho použije ke zjištění místních virtuálních počítačů.
 - **Oprávnění**: V systému vCenter Server potřebujete oprávnění k vytvoření virtuálního počítače pomocí importu souboru v. Soubory OVA formátu.
 

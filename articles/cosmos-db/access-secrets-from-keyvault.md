@@ -1,20 +1,20 @@
 ---
 title: Použití služby Key Vault k ukládání a přístupové klíče služby Azure Cosmos DB
 description: Azure Key Vault umožňuje ukládat a přistupovat k připojovací řetězec Azure Cosmos DB, klíče a koncových bodů.
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: rafats
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 770e1e543a16bb54acc216aa550c44be26ab7a1a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858447"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242188"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečovací klíče Azure Cosmos pomocí služby Azure Key Vault 
 

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: overview
 ms.date: 02/06/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75bb742a111be980cf52b85353122a9acee37be3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ceeea8c143792e9a46b4b8a9892cad07770c5fbf
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879822"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236443"
 ---
 # <a name="what-is-the-emotion-api"></a>Co je rozhraní API pro rozpoznávání emocí?
 

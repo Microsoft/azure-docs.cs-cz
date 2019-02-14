@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: b5a460f3449785721ac360ba398bc47d1945b954
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 48bb9b24901cd07891f3d52bcd916f95bc2801f4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497688"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244214"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a vyhledání prostředků v galerii Azure AI
 
-**[Galerie Azure AI](http://gallery.cortanaintelligence.com)**  je komunitní web pro zjišťování a sdílení řešení vytvořené pomocí Azure AI.
+**[Galerie Azure AI](http://gallery.azure.ai)**  je komunitní web pro zjišťování a sdílení řešení vytvořené pomocí Azure AI.
 Galerie má širokou škálu prostředků, které můžete použít k vývoji vlastních řešení pro analýzu.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co lze najít v galerii?

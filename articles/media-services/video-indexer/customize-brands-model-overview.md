@@ -9,18 +9,18 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: b01de55003f620363ed27b95a2bd27bc39fdee3a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 48255614291086fe85666bec407ea62f7a365410
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991205"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237361"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Přizpůsobení modelu značky v Video Indexer
 
 Video Indexer podporuje značky zjišťování z pro zpracování řeči a vizuální textu během indexování a přeindexování z obrazový a zvukový obsah. Funkce detekce značka identifikuje zmínky produktů, služeb, a společnosti navrhl Bingu značky databáze. Například pokud Microsoft je uveden v videa nebo zvukový obsah nebo pokud se zobrazí ve visual textu ve videu, Video Indexer rozpozná jako značku v obsahu. Značky jsou jednoznačně rozlišit z jiné podmínky použití kontextu.
 
-Detekce značky je užitečné pro širokou škálu obchodních scénářů, jako je například obsah archivu a zjišťování, kontextové reklamy, analýza sociálních médií, maloobchodní soutěžit analýzy a mnoho dalších. Detekce značky video Indexer umožňuje zmínky značky index pro zpracování řeči a vizuální text, pomocí Bingu značky databáze a přizpůsobení vytvořením vlastního modelu značky pro každý účet služby Video Indexer. Funkce modelu vlastní značky vám umožní vybrat, zda Video Indexer bude zjišťovat značky z Bingu značky databáze, vyloučit určité značky nebudou zjištěny (v podstatě vytváření černého seznam značek) a zahrnují značek, které by měla být součástí vaší model, který nemusí být v databázi značky Bingu (v podstatě vytvoří prázdný seznam značek).
+Detekce značky je užitečné pro širokou škálu obchodních scénářů, jako je například obsah archivu a zjišťování, kontextové reklamy, analýza sociálních médií, maloobchodní soutěžit analýzy a mnoho dalších. Detekce značky video Indexer umožňuje zmínky značky index pro zpracování řeči a vizuální text, pomocí Bingu značky databáze a přizpůsobení vytvořením vlastního modelu značky pro každý účet služby Video Indexer. Funkce modelu vlastní značky vám umožní vybrat, zda Video Indexer bude zjišťovat značky z Bingu značky databáze, vyloučit určité značky nebudou zjištěny (v podstatě vytváření černého seznam značek) a zahrnují značek, které by měla být součástí vaší model, který nemusí být v databázi značky Bingu (v podstatě vytvoří prázdný seznam značek). Vlastní značky model, který vytvoříte budou k dispozici pouze v rámci účtu, ve které jste vytvořili modelu.
 
 ## <a name="out-of-the-box-detection-example"></a>Nedostatek detekce příklad pole
 

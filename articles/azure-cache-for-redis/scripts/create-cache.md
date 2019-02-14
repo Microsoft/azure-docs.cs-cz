@@ -1,26 +1,26 @@
 ---
 title: Azure CLI ukázkový skript – vytvoření Azure Cache pro Redis | Dokumentace Microsoftu
 description: Azure CLI ukázkový skript – vytvoření Azure Cache pro Redis
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 tags: azure-service-management
 ms.assetid: afd7f6e0-9297-4c98-a95e-597be939cef7
-ms.service: cache-redis
+ms.service: cache
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
-ms.author: wesmc
-ms.openlocfilehash: 0a103b2901e7296360601e8113e3a422aa763625
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: yegu
+ms.openlocfilehash: f4900242c9b6e5eecd5364d74bfcd8e2bc4efb2b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733208"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232007"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Vytvoření Azure Cache pro Redis
 

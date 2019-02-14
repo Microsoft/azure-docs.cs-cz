@@ -3,19 +3,19 @@ title: E & xterní komunity obsah pro API pro analýzu textu
 titleSuffix: Azure Cognitive Services
 description: Partnerské, blogy, videích na youtube, školení pro Microsoft Text Analytics API služeb Cognitive Services v Azure.
 services: cognitive-services
-author: HeidiSteen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.author: heidist
-ms.openlocfilehash: ec6deb934846e24887386dd696f1b0eaf32465aa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 751b8b72683d9c7e779191511cb2824d34997c32
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861847"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244311"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>E & xterní komunity obsah pro Text Analytics služby Cognitive Services
 

@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: a66f5ca9501d09f2ef89f421191f617c177e10eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886319"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246788"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachování souborů ve službě Azure Cloud Shell
 Cloud Shell využívá Azure File storage pro uchovávání souborů napříč relacemi. Při počátečním spuštění Cloud Shell zobrazí výzvu k přidružení nové nebo existující sdílenou složku uchovávání souborů napříč relacemi.
@@ -40,7 +40,7 @@ Pomocí pokročilé možnosti můžete přidružit existující prostředky. Př
 Po zobrazení výzvy se nastavení úložiště, vyberte **zobrazit pokročilé nastavení** zobrazíte další možnosti. Filtr možností mají údaj vyplněný úložiště pro místně redundantní úložiště (LRS), geograficky redundantní úložiště (GRS) a účty zónově redundantní úložiště (ZRS). 
 
 > [!NOTE]
-> GRS nebo ZRS účty úložiště se doporučují pro dodatečnou odolnost pro zálohování sdílené složce. Jaký typ redundance závisí na cíle a cena předvoleb. [Další informace o možnostech replikace pro účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy#choosing-a-replication-option).
+> GRS nebo ZRS účty úložiště se doporučují pro dodatečnou odolnost pro zálohování sdílené složce. Jaký typ redundance závisí na cíle a cena předvoleb. [Další informace o možnostech replikace pro účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
 
 ![Nastavení skupiny prostředků](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 

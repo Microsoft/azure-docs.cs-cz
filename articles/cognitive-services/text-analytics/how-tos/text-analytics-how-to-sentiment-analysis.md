@@ -1,22 +1,22 @@
 ---
-title: Analýza subjektivního hodnocení s postupy v REST API pro analýzu textu (Microsoft Cognitive Services v Azure) | Dokumentace Microsoftu
-description: Jak rozpoznávání mínění pomocí REST API pro analýzu textu ve službě Microsoft Cognitive Services v Azure v tomto kurzu návodu.
+title: Analýza mínění s využitím rozhraní Text Analytics z Azure Cognitive Services | Dokumentace Microsoftu
+description: Přečtěte si, jak zjistit mínění pomocí rozhraní REST API pro analýzu textu.
 services: cognitive-services
-author: HeidiSteen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: 4c5b55a5e11bddd6eac8155c2e49ccbd80d3164e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: add284a3a001d5bc2e756f9ad4a2a3b9550b212c
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856372"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242121"
 ---
-# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Příklad: Jak rozpoznávání mínění v rozhraní Text Analytics
+# <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Příklad: Jak rozpoznávání mínění pomocí analýzy textu
 
 [Rozhraní API pro analýzu mínění](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) vyhodnocuje textový vstup a vrací skóre mínění pro každý dokument v rozsahu 0 (negativní) až 1 (pozitivní).
 

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: tutorial
 ms.date: 05/23/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3339d22c0568352df503be90c6eb094a963978e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9e03e5d534fa741def2010a21120edc3d7169964
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877673"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237463"
 ---
 # <a name="tutorial-use-the-emotion-api-with-a-jupyter-notebook--python"></a>Kurz: Pomocí rozhraní API pro rozpoznávání Emocí Poznámkový blok Jupyter a Pythonu.
 

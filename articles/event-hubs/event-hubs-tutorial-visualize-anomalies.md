@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: add88a24da2e217d705065274f26382c1ffe8e17
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5f9af39616e45983a7ec592f33c3f2ffd34ea34f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091675"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233398"
 ---
-# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
+# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizovat data anomálie v reálném čase událostí odeslaných do služby Azure Event Hubs
 
 V případě služby Azure Event Hubs můžete pomocí Azure Stream Analytics kontrolovat příchozí data a vytahovat anomálie, které pak můžete vizualizovat v Power BI. Řekněme, že máte tisíce zařízení, která neustále odesílají data v reálném čase do centra událostí a tato data představují až miliony událostí za sekundu. Jak v takovém množství dat kontrolovat anomálie nebo chyby? Co když zařízení odesílají například transakce provedené platebními kartami a vy potřebujete zachytávat případy, kdy během 5 sekund dojde k několika transakcím ve více zemích? K tomu může dojít, když někdo krade platební karty a pak je používá k nákupu věcí po celém světě ve stejnou dobu. 
 
@@ -33,6 +33,8 @@ V tomto kurzu se naučíte:
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -112,7 +114,7 @@ K proměnným, které musí být globálně jedinečné, je zřetězená hodnota
 
 ```azurepowershell-interactive
 # Log in to Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 
 # Set the values for the location and resource group.
 $location = "West US"
@@ -120,7 +122,7 @@ $resourceGroup = "ContosoResourcesEH"
 
 # Create the resource group to be used  
 #   for all resources for this tutorial.
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # The Event Hubs namespace name must be globally unique, so add a random number to the end.
 $eventHubNamespace = "contosoEHNamespace$(Get-Random)"
@@ -131,12 +133,12 @@ $eventHubName = "contosoEHhub$(Get-Random)"
 Write-Host "Event hub Name is " $eventHubName
 
 # Create the Event Hubs namespace.
-New-AzureRmEventHubNamespace -ResourceGroupName $resourceGroup `
+New-AzEventHubNamespace -ResourceGroupName $resourceGroup `
      -NamespaceName $eventHubNamespace `
      -Location $location
 
 # Create the event hub.
-$yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
+$yourEventHub = New-AzEventHub -ResourceGroupName $resourceGroup `
     -NamespaceName $eventHubNamespace `
     -Name $eventHubName `
     -MessageRetentionInDays 3 `
@@ -144,7 +146,7 @@ $yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
 
 # Get the event hub key, and retrieve the connection string from that object.
 # You need this to run the app that sends test messages to the event hub.
-$eventHubKey = Get-AzureRmEventHubKey -ResourceGroupName $resourceGroup `
+$eventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup `
     -Namespace $eventHubNamespace `
     -AuthorizationRuleName RootManageSharedAccessKey
 
@@ -174,13 +176,13 @@ Teď můžete streamovat data do svého centra událostí. Pokud chcete tato dat
 
 2. Zadejte o úloze následující informace:
 
-   **Název úlohy:** Použijte **contosoEHjob**. Toto pole obsahuje název úlohy, který musí být globálně jedinečný.
+   **Název úlohy**: Použití **contosoEHjob**. Toto pole obsahuje název úlohy, který musí být globálně jedinečný.
 
-   **Předplatné:** Vyberte vaše předplatné.
+   **Předplatné**: Vyberte své předplatné.
 
-   **Skupina prostředků:** Použijte stejnou skupinu prostředků jako pro centrum událostí (**ContosoResourcesEH**).
+   **Skupina prostředků**: Použít stejnou skupinu prostředků používat vaše Centrum událostí (**ContosoResourcesEH**).
 
-   **Umístění:** Použijte stejné umístění, které používáte v instalačním skriptu (**USA – západ**).
+   **Umístění**: Použijte stejné umístění, které jsou používané ve skriptu instalace (**USA – západ**).
 
    ![Snímek obrazovky předvádějící vytvoření nové úlohy Azure Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -199,17 +201,17 @@ Vstupy pro úlohu Stream Analytics jsou transakce provedené platebními kartami
 
 2. V podokně **Vstupy** klikněte na **Přidat vstup streamu** a vyberte Event Hubs. Na obrazovce, která se zobrazí, vyplňte následující pole:
 
-   **Alias pro vstup:** Použijte **contosoinputs**. Toto pole obsahuje název vstupního datového proudu, který se používá při definování dotazu na data.
+   **Vstupní alias**: Použití **contosoinputs**. Toto pole obsahuje název vstupního datového proudu, který se používá při definování dotazu na data.
 
-   **Předplatné:** Vyberte vaše předplatné.
+   **Předplatné**: Vyberte své předplatné.
 
-   **Obor názvů služby Event Hubs:** Vyberte obor názvů vašeho centra událostí ($**eventHubNamespace**). 
+   **Obor názvů služby Event Hubs**: Zvolte svůj obor názvů centra událostí ($**eventHubNamespace**). 
 
-   **Název centra událostí:** Klikněte na **Použít existující** a vyberte vaše centrum událostí ($**eventHubName**).
+   **Název centra událostí**: Klikněte na tlačítko **použít existující** a vyberte Centrum událostí ($**eventHubName**).
 
-   **Název zásady služby Event Hubs:** Vyberte **RootManageSharedAccessKey**.
+   **Název zásady centra událostí**: Vyberte **RootManageSharedAccessKey**.
 
-   **Skupina příjemců služby Event Hubs:** Toto pole ponechte prázdné, aby se použila výchozí skupina příjemců.
+   **Skupina uživatelů centra událostí**: Ponechte toto pole prázdné, použije se výchozí skupinu příjemců.
 
    Pro zbývající pole můžete použít výchozí hodnoty.
 
@@ -223,11 +225,11 @@ Vstupy pro úlohu Stream Analytics jsou transakce provedené platebními kartami
 
 2. V podokně **Výstupy** klikněte na **Přidat** a potom vyberte **Power BI**. Na obrazovce, která se zobrazí, vyplňte následující pole:
 
-   **Alias pro výstup:** Použijte **contosooutputs**. Toto pole obsahuje jedinečný alias pro výstup. 
+   **Alias pro výstup**: Použití **contosooutputs**. Toto pole obsahuje jedinečný alias pro výstup. 
 
-   **Název datové sady:** Použijte **contosoehdataset**. Toto pole obsahuje název datové sady, kterou chcete v Power BI použít. 
+   **Název datové sady**: Použití **contosoehdataset**. Toto pole obsahuje název datové sady, kterou chcete v Power BI použít. 
 
-   **Název tabulky:** Použijte **contosoehtable**. Toto pole obsahuje název tabulky, kterou chcete v Power BI použít. 
+   **Název tabulky**: Použití **contosoehtable**. Toto pole obsahuje název tabulky, kterou chcete v Power BI použít. 
 
    Pro zbývající pole můžete použít výchozí hodnoty.
 
@@ -361,10 +363,10 @@ az group delete --name $resourceGroup
 
 ### <a name="clean-up-resources-using-powershell"></a>Vyčištění prostředků pomocí PowerShell
 
-K odebrání skupiny prostředků použijte příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Chcete-li odebrat skupinu prostředků, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup

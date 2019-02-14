@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: ef670c2dc701f888be3c7bb9a546c8a8a46f993a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 4cc115d068736f61f9edb4ec609ac592607e7fa0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458838"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246798"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "49458838"
 
 <sup>2</sup> To zahrnuje účty služby Storage úrovně Standard i Premium. Pokud potřebujete více než 200 účtů úložiště, vytvořte žádost prostřednictvím [podpory Azure](https://azure.microsoft.com/support/faq/). Tým Azure Storage se na váš obchodní případ podívá a může schválit až 250 účtů úložiště.
 
-<sup>3</sup> Můžete použít neomezený počet značek na předplatné. Počet značek na prostředek nebo skupinu prostředků je omezený na 15. Pokud je počet značek 10 000 nebo méně, Resource Manager vrací pouze [seznam jedinečných názvů a hodnot značek](/rest/api/resources/tags#Tags_List) v předplatném. Pokud však počet překročí 10 000, stále můžete najít prostředek podle značky.  
+<sup>3</sup> Můžete použít neomezený počet značek na předplatné. Počet značek na prostředek nebo skupinu prostředků je omezený na 15. Pokud je počet značek 10 000 nebo méně, Resource Manager vrací pouze [seznam jedinečných názvů a hodnot značek](/rest/api/resources/tags) v předplatném. Pokud však počet překročí 10 000, stále můžete najít prostředek podle značky.  
 
 <sup>4</sup> Tyto funkce se už nevyžadují se skupinami prostředků Azure a Azure Resource Managerem.
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: c20f455a0a325dadd3eeeb77dea7026de4834c56
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4522914f249413300ffa5bb1545d840711777bff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757639"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235906"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Přidání webového rozhraní API aplikace do svého tenanta Azure Active Directory B2C
 
@@ -38,20 +38,20 @@ Obory poskytují způsob řízení přístupu k chráněným prostředkům. Webo
 
 1. Vyberte **aplikací**a pak vyberte *webapi1*.
 2. Vyberte **publikované obory**.
-3. Pro **oboru**, zadejte `Hello.Read`a popis, zadejte `Read access to hello`.
-4. Pro **oboru**, zadejte `Hello.Write`a popis, zadejte `Write access to hello`.
+3. Pro **oboru**, zadejte `Read`a popis, zadejte `Read access to the application`.
+4. Pro **oboru**, zadejte `Write`a popis, zadejte `Write access to the application`.
 5. Klikněte na **Uložit**.
 
 Publikované obory je možné klientovi udělit oprávnění k aplikaci pro webové rozhraní API.
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
-Pokud chcete volat chráněné webové rozhraní API z aplikace, budete muset udělit oprávnění aplikace rozhraní API. V požadovaném kurzu vytvořili webovou aplikaci v Azure AD B2C s názvem *webapp1*. Volání webového rozhraní API pomocí této aplikace.
+Pokud chcete volat chráněné webové rozhraní API z aplikace, budete muset udělit oprávnění aplikace rozhraní API. Například v [kurzu: Registrace aplikace v Azure Active Directory B2C](tutorial-register-applications.md), webové aplikace se vytvoří v Azure AD B2C s názvem *webapp1*. Tuto aplikaci můžete použít k volání webového rozhraní API.
 
 1. Vyberte **aplikace**a pak vyberte webovou aplikaci.
 2. Vyberte **přístup přes rozhraní API**a pak vyberte **přidat**.
 3. V **vybrat rozhraní API** rozevíracím seznamu vyberte *webapi1*.
-4. V **vyberte obory** rozevírací seznam, vyberte **Hello.Read** a **Hello.Write** obory, které jste dříve definovali.
+4. V **vyberte obory** rozevírací seznam, vyberte **čtení** a **zápisu** obory, které jste dříve definovali.
 5. Klikněte na **OK**.
 
 Vaše aplikace je zaregistrovaná a může volat chráněné webové rozhraní API. Uživatel se ověřuje pomocí Azure AD B2C k používání aplikace. Aplikace obdrží udělení autorizace z Azure AD B2C pro přístup k chráněné webové rozhraní API.

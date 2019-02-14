@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 14c5a9a5d9e3bd71ca1fdaf3545af3e74b3973c2
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100618"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237413"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -208,7 +208,7 @@ Logické operátory lze vnořit. Následující příklad ukazuje **není** oper
 
 ### <a name="conditions"></a>Podmínky
 
-Podmínka vyhodnotí, zda **pole** splňuje určitá kritéria. Jsou podporované podmínky:
+Podmínka vyhodnocena jako, jestli **pole** nebo **hodnotu** přistupující objekt splňuje určitá kritéria. Jsou podporované podmínky:
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -252,7 +252,53 @@ Podporovány jsou následující pole:
   - Tato syntaxe závorky podporuje názvy značek, které mají tečku.
   - Kde **\<tagName\>** je název značky ověřit podmínku.
   - Příklad: `tags[Acct.CostCenter]` kde **Acct.CostCenter** je název značky.
+
 - Vlastnost aliasy – seznam najdete v tématu [aliasy](#aliases).
+
+### <a name="value"></a>Hodnota
+
+Podmínky lze vybrat také pomocí **hodnota**. **Hodnota** zkontroluje podmínky proti [parametry](#parameters), [podporované šablony funkce](#policy-functions), nebo literály.
+**Hodnota** je spárovaná s žádným nepodporuje [podmínku](#conditions).
+
+#### <a name="value-examples"></a>Příklady hodnot
+
+Používá tento příklad pravidla zásad **hodnotu** k porovnání výsledek `resourceGroup()` funkcí a vrácené **název** vlastnost **jako** podmínku `*netrg`. Pravidlo odepřít prostředek není `Microsoft.Network/*` **typ** v libovolné skupině prostředků, jejíž název končí v `*netrg`.
+
+```json
+{
+    "if": {
+        "allOf": [{
+                "value": "[resourceGroup().name]",
+                "like": "*netrg"
+            },
+            {
+                "field": "type",
+                "notLike": "Microsoft.Network/*"
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+Tento příklad pravidla zásad používá **hodnotu** ke kontrole, pokud výsledek více vnořené funkce **rovná** `true`. Pravidlo odepřít jakémukoli prostředku, který nemá alespoň tři klíčová slova.
+
+```json
+{
+    "mode": "indexed",
+    "policyRule": {
+        "if": {
+            "value": "[less(length(field('tags')), 3)]",
+            "equals": true
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+}
+```
 
 ### <a name="effect"></a>Efekt
 
@@ -295,12 +341,15 @@ Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a p
 
 ### <a name="policy-functions"></a>Funkce zásad
 
-Několik [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci pravidla zásad. Jsou aktuálně podporované funkce:
+S výjimkou následujících nasazení a funkce prostředků všechny [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci zásady:
 
-- [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
-- [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
-- [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
-- [předplatné](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+- copyIndex()
+- deployment()
+- seznam *
+- Providers()
+- reference()
+- resourceId()
+- variables()
 
 Kromě toho `field` funkce je k dispozici pro pravidla zásad. `field` se používá především s **AuditIfNotExists** a **DeployIfNotExists** na odkaz na pole v prostředku, které jsou právě vyhodnocována. Příklad použití si můžete prohlédnout ve [DeployIfNotExists příklad](effects.md#deployifnotexists-example).
 

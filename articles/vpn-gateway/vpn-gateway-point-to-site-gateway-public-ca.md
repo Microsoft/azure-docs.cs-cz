@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: a5634054746d7e60aff154165f651f7c815c39a3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ac1ae4125418a9c0b3e9587cd03a44e752ac8f82
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100818"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236953"
 ---
 # <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Přechod z podepsaného svým držitelem do veřejné certifikáty certifikační Autority pro P2S brány
 
@@ -23,7 +23,7 @@ Dříve certifikát podepsaný svým držitelem pro bránu je potřeba aktualizo
 Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát brány převedou, zobrazí se komunikace nebo informační zprávy na webu Azure Portal. Můžete zkontrolovat, pokud vaše brána je ovlivněno pomocí kroků v tomto článku.
 
 >[!IMPORTANT]
->Tento přechod je naplánováno Březnových aktualizací 12,2019 od 18:00 UTC. Pokud dáváte přednost jiný časový interval, můžete vytvořit lístek podpory. Požádat o jednu z následujících oken:
+>Tento přechod je naplánováno Březnových aktualizací 12,2019 od 18:00 UTC. Pokud dáváte přednost jiný časový interval, můžete vytvořit lístek podpory. Ujistěte se a dokončit váš požadavek předem nejméně 24 hodin.  Požádat o jednu z následujících oken:
 >
 >* 06:00 UTC na 25 února
 >* 18:00 UTC na 25 února
