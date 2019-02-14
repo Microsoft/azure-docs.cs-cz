@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 7a25686ffa80b831e5d459a8795595a00f869fda
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997588"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234788"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly ve službě Azure Monitor
 Vlastní protokoly zdroj dat ve službě Azure Monitor umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog. Po shromáždění, můžete analyzovat data do jednotlivých polí v dotazech nebo extrahovat data během shromažďování u jednotlivých polí.
@@ -43,7 +43,11 @@ Soubory protokolů, které se mají shromažďovat musí odpovídat následujíc
 >
 
 >[!NOTE]
-> Za pracovní prostor Log Analytics můžete vytvořit maximálně 500 vlastních protokolů. 
+> Pracovní prostor Log Analytics podporuje následující omezení:
+> 
+> * Je možné vytvořit pouze 500 vlastních protokolů.
+> * Tabulku pouze podporuje až 500 sloupce. 
+> * Maximální počet znaků pro název sloupce je 500. 
 >
 
 ## <a name="defining-a-custom-log"></a>Definování vlastního protokolu

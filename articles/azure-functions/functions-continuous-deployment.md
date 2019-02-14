@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8d99a52b500377e02af339588fe7155e26cf588c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548591"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233383"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 Služba Azure Functions umožňuje snadno nasadit aplikaci function app používáte průběžnou integraci služby App Service. Functions se integruje s BitBucket, Dropbox, GitHub a Azure DevOps. To umožňuje pracovní postupy s kde kód funkce aktualizace provedené pomocí jedné z těchto integrovaných služeb aktivační události nasazení do Azure. Pokud jste ještě do služby Azure Functions, začněte s [přehled Azure Functions](functions-overview.md).
@@ -29,7 +29,7 @@ Průběžné nasazování je skvělou možností pro projekty, u kterých se int
 * [Místní úložiště Git](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
-* [Služby Azure DevOps](https://www.visualstudio.com/team-services/)
+* [Azure DevOps](https://azure.microsoft.com/services/devops/)
 
 Nasazení se konfigurují na základě jednotlivých funkcích aplikace. Po povolení průběžného nasazování přístup ke kódu funkce na portálu je nastavena na *jen pro čtení*.
 
@@ -93,9 +93,9 @@ Pokud máte existující funkce, které jste vytvořili a udržuje na portálu, 
 > [!NOTE]
 > Po dokončení konfigurace průběžné integrace, je již nebude moci upravit zdrojových souborů na portálu Functions.
 
-- [Jak: Nakonfigurujte přihlašovací údaje pro nasazení](#credentials)
-- [Jak: Stahování souborů přes FTP](#downftp)
-- [Jak: Stáhnout soubory pomocí místního úložiště Git](#downgit)
+- [Postup: Nakonfigurujte přihlašovací údaje pro nasazení](#credentials)
+- [Postup: Stahování souborů přes FTP](#downftp)
+- [Postup: Stáhnout soubory pomocí místního úložiště Git](#downgit)
 
 <a name="credentials"></a>
 #### <a name="how-to-configure-deployment-credentials"></a>Postup: Nakonfigurujte přihlašovací údaje pro nasazení
