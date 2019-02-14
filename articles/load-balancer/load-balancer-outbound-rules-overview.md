@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439098"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243599"
 ---
 # <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
@@ -34,7 +34,7 @@ Odchozí pravidla umožňují řídit:
 - které virtuální počítače by měl přeložit na které veřejné IP adresy. 
 - Jak [odchozích portech SNAT](load-balancer-outbound-connections.md#snat) by měly být přiděleny.
 - protokoly, které k poskytování odchozí překlad.
-- jaké doby trvání pro odchozí připojení. časový limit nečinnosti.
+- jaké doby trvání pro časový limit nečinnosti odchozí připojení (4 – 120 minut).
 - Určuje, zda odesílat TCP Reset na časový limit nečinnosti (ve verzi Public Preview). 
 
 Odchozí pravidla rozšiřují [scénář 2](load-balancer-outbound-connections.md#lb) v podle [odchozí připojení](load-balancer-outbound-connections.md) článku a určování priorit scénář bude nadála – je.
@@ -90,7 +90,7 @@ Můžete se vrátit zpět k [automatické přidělování port SNAT podle veliko
 
 ### <a name="idletimeout"></a> Časový limit nečinnosti odchozího toku řízení
 
-Odchozí pravidla poskytují parametr konfigurace k řízení odchozího toku časový limit nečinnosti a přizpůsobit potřebám vaší aplikace.  Výchozí odchozí časový limit nečinnosti 4 minuty.  Parametr přijímá hodnotu od 4 do 66 konkrétní dobu v minutách pro časový limit nečinnosti pro tento konkrétní pravidlo pro porovnávání toky.
+Odchozí pravidla poskytují parametr konfigurace k řízení odchozího toku časový limit nečinnosti a přizpůsobit potřebám vaší aplikace.  Výchozí odchozí časový limit nečinnosti 4 minuty.  Parametr přijímá hodnotu od 4 do 120 konkrétní dobu v minutách pro časový limit nečinnosti pro tento konkrétní pravidlo pro porovnávání toky.
 
 K nastavení odchozí časový limit nečinnosti na 1 hodinu, použijte následující parametr:
 
@@ -205,7 +205,7 @@ Při použití interní Load balanceru úrovně Standard, odchozí NAT není k d
 ## <a name="limitations"></a>Omezení
 
 - Maximální počet použitelné dočasné porty na front-endové IP adresy je 51,200.
-- Rozsah konfigurovatelné odchozí časový limit nečinnosti je 66 do 4 minut (240 až 4000 sekund).
+- Rozsah konfigurovatelné odchozí časový limit nečinnosti se 4 až 120 minut (240 do 7200 sekund).
 - Nástroj pro vyrovnávání zatížení nepodporuje protokol ICMP pro odchozí NAT.
 - Portál nelze použít ke konfiguraci nebo zobrazení odchozí pravidla.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
 - Odchozí pravidla lze použít pouze pro primární síťovou kartu a primární konfigurace IP adresy.

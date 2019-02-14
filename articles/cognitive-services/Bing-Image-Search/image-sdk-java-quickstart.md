@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6f0f9202a02acf5e6f7d6fe3fba2b68e8b266090
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882178"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238126"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Rychlý start: Hledání obrázků sadou SDK vyhledávání obrázků Bingu pro Javu
 
@@ -45,7 +45,7 @@ Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí syst
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy a přidejte následující importy do implementace třídy:
+1. Vytvoření nového projektu v Javě v vaše oblíbené prostředím IDE nebo editorem a přidejte následující importy do implementace třídy:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -63,9 +63,10 @@ Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí syst
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Odeslání žádostí o vyhledávání do rozhraní API Bingu pro vyhledávání obrázků
+## <a name="send-a-search-request-to-the-api"></a>Odeslat žádost o vyhledávání do rozhraní API
 
 1. Pomocí `bingImages().search()` odešlete požadavek HTTP obsahující vyhledávací dotaz. Uložte odpověď jako `ImagesModel`.
+
    ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)
@@ -76,7 +77,7 @@ Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí syst
 ## <a name="parse-and-view-the-result"></a>Parsování a zobrazení výsledku
 
 Parsujte výsledky obrázků vrácené v odpovědi.
-Pokud odpověď obsahuje výsledky hledání, uloží se první výsledek a vytisknou se jeho podrobnosti, třeba adresa URL miniatury a původní adresa URL, společně s celkovým počtem nalezených obrázků.  
+Pokud odpověď obsahuje výsledky hledání, uloží první výsledek a vytiskne jeho podrobnosti, jako je například miniatury adresa URL, původní adresu URL, společně s celkový počtem vrátil bitové kopie.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {

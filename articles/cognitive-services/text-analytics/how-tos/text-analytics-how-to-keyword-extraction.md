@@ -1,22 +1,22 @@
 ---
-title: Extrakce klíčových frází postupy v REST API pro analýzu textu (Microsoft Cognitive Services v Azure) | Dokumentace Microsoftu
-description: Postup extrakce klíčových frází pomocí REST API pro analýzu textu ve službě Microsoft Cognitive Services v Azure v tomto kurzu návodu.
+title: Extrakce klíčových frází pomocí REST API pro analýzu textu | Dokumentace Microsoftu
+description: Postup extrakce klíčových frází pomocí rozhraní REST API ze služeb Azure Cognitive services Text Analytics.
 services: cognitive-services
-author: HeidiSteen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: d6e3223b4f7931f250e422f1f30edcb375407c8c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: bbf72847dd9d9a29bf1f2fa0574b83194d07a5c6
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865696"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245605"
 ---
-# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Příklad: Postup extrakce klíčových frází v rozhraní Text Analytics
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: Postup extrakce klíčových frází pomocí analýzy textu
 
 [Rozhraní API pro extrakci klíčových frází](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) vyhodnotí nestrukturovaný text a pro každý dokument JSON vrátí seznam klíčových frází. 
 
@@ -29,13 +29,13 @@ V současné době se extrakce klíčových frází podporuje v angličtině, n�
 
 ## <a name="preparation"></a>Příprava
 
-Extrakce klíčových frází funguje nejlépe u větších bloků textů. U analýzy mínění je tomu naopak – tato analýzy funguje nejlépe, pokud použijete menší bloky textu. Zvažte podle toho možnost restrukturalizace vstupů, abyste z obou operací získali co nejlepší výsledky.
+Extrakce klíčových frází funguje nejlépe, když je jí větší množství textu pro práci na. Toto je opačné z analýzy subjektivního hodnocení, které vrací lepší výsledky na menší množství textu. Zvažte podle toho možnost restrukturalizace vstupů, abyste z obou operací získali co nejlepší výsledky.
 
 Musíte mít dokumenty JSON v tomto formátu: ID, text, kód jazyka.
 
 Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete mít až 1 000 položek (ID). Kolekce se posílá v textu žádosti. Následující příklad ilustruje obsah, který byste mohli odeslat za účelem extrakce klíčových frází.
 
-```
+```json
     {
         "documents": [
             {
@@ -94,9 +94,9 @@ Všechny žádosti POST vrací odpověď ve formátu JSON s ID a zjištěnými v
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi.
 
-Dále uvádíme příklad výstupu extrakce klíčových frází:
+Zde je uveden příklad výstupu pro extrakci klíčových frází:
 
-```
+```json
     "documents": [
         {
             "keyPhrases": [

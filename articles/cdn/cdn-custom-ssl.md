@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f75b14ce2ca860ee894fe0a2ef501066b91f8e8a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9fb24cd6bcfae273c5430eee8d1fa8df58c6202
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755641"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236307"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -45,6 +45,8 @@ V tomto kurzu se naučíte:
 > - Zakázat protokol HTTPS pro vlastní doménu
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [rychlý start: Vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md).
 
@@ -103,11 +105,11 @@ K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se
 
 Zaregistrujte Azure CDN jako aplikaci v Azure Active Directory pomocí PowerShellu.
 
-1. V případě potřeby nainstalujte [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) v PowerShellu na místním počítači.
+1. V případě potřeby nainstalujte [prostředí Azure PowerShell](/powershell/azure/install-az-ps) na místním počítači.
 
 2. V PowerShellu spusťte následující příkaz:
 
-     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+     `New-AzADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
 
     ![Registrace Azure CDN v PowerShellu](./media/cdn-custom-ssl/cdn-register-powershell.png)
               

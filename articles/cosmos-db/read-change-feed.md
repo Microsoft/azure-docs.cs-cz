@@ -1,17 +1,17 @@
 ---
 title: Přístup k změnu informačního kanálu ve službě Azure Cosmos DB Azure Cosmos DB
 description: Tento článek popisuje různé možnosti, které jsou k dispozici ke čtení a přístup ke kanálu ve službě Azure Cosmos DB Azure Cosmos DB změn.
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: ef7fde987eff2235b59feab5481fe3dc71edd859
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.author: rimman
+ms.openlocfilehash: 459ed4b6f16d3cfe5bb792be7f063a1253a3006e
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039989"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242035"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Kanál změn čtení Azure Cosmos DB
 

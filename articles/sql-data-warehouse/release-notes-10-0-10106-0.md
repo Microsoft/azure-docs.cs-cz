@@ -1,52 +1,50 @@
 ---
-title: Azure SQL Data Warehouse poznámky k verzi z prosince 2018 | Dokumentace Microsoftu
+title: Zpráva k vydání verze služby Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Zpráva k vydání verze pro Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
-manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 12/12/2018
-ms.author: mausher
-ms.reviewer: twounder
-ms.openlocfilehash: 8e82e352ebea4634b1b99864245adcf606352657
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/09/2019
+author: mlee3gsd
+ms.author: anumjs
+ms.reviewer: jrasnick
+manager: craigg
+ms.openlocfilehash: 51932ebf7d5bdc6830098ce7136a3eee7255ffe1
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469328"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245503"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-version---100101060"></a>Co je nového ve verzi Azure SQL Data Warehouse – 10.0.10106.0?
-Azure SQL Data Warehouse (SQL data Warehouse) průběžně zlepšují. Tento článek popisuje nové funkce a změny, které byly zavedeny v SQL data Warehouse verze 10.0.10106.0.
+# <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
+Tento článek shrnuje nové funkce a vylepšení v posledních verzích [systému SQL Server na virtuálních počítačích Azure](sql-data-warehouse-overview-what-is.md). V článku jsou uvedeny také důležité aktualizace obsahu, které nejsou direclty související s vydáním, ale publikovaná ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
 
-## <a name="query-restartability---ctas-and-insertselect"></a>Dotaz Restartability - CTAS a vložit/vybrat
-Spuštění v Azure SQL data Warehouse může selhat v dotazech výjimečné situace (to znamená, přerušované problémy s připojením sítě, selhání uzlu). Už systémem příkazy, jako například [vytvořit TABLE AS SELECT (CTAS)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) a operace INSERT SELECT, jsou vystaveny další potenciální potíže. V této vydané verzi Azure SQL data Warehouse implementuje logika opakovaných pokusů pro CTAS a Vložit vyberte příkazy (navíc jsme dřív oznámili příkazy SELECT), umožňuje systém transparentně zpracovával tyto přechodné problémy a dotazy brání selhání. Počet opakovaných pokusů a seznam zpracování přechodných chyb jsou nakonfigurované systému.
+## <a name="sql-data-warehouse-version-100101060-january"></a>SQL Data Warehouse verze 10.0.10106.0 (leden)
 
-## <a name="return-order-by-optimization"></a>Vrátí pořadí podle optimalizace
-VYBERTE... Klauzule ORDER BY dotazů získat zvýšení výkonu v této verzi.  Dříve by dotazu spouštěcí modul pořadí výsledky na každém výpočetním uzlu a Streamovat je do ovládacího prvku uzlu, na kterém by pak sloučit výsledky. S toto vylepšení součástí všech výpočetních uzlů k odesílání jejich výsledky pro jeden výpočetní uzel, který pak sloučí je a vrátí seřazených výsledků pro uživatele prostřednictvím výpočetním uzlu.  To nabízí významné výkonnější, když obsahuje velký počet řádků sady výsledků dotazu.
+### <a name="service-improvements"></a>Vylepšení služby
 
-## <a name="data-movement-enhancements-for-partitionmove-and-broadcastmove"></a>Vylepšení přesunu dat pro PartitionMove a BroadcastMove
-V Azure SQL Data Warehouse Gen2 kroky pro přesun dat typu ShuffleMove využít rychlé data přesun techniky popsané v [zde na blog vylepšení výkonu](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/).  V této verzi datové typy přesun PartitionMove a BroadcastMove nyní také využívají stejné techniky rychlé data pohyb.  Uživatelské dotazy, které využívají tyto druhy kroky pro přesun dat se zobrazí zvýšení výkonu.  Abyste mohli využívat tyto zvýšení výkonu se vyžaduje žádné změny kódu.
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+| **Dotaz Restartability - CTAS a vložit/vybrat** | Ve výjimečných případech (to znamená, problémy s připojením sítě, selhání uzlů) může selhat provádění dotazu v Azure SQL data Warehouse. Už systémem příkazy, jako například [vytvořit TABLE AS SELECT (CTAS)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) a operace INSERT SELECT, jsou vystaveny další potenciální potíže. V této vydané verzi Azure SQL data Warehouse implementuje Logika opakování pro příkazy CTAS a Vložit vyberte kromě jsme dřív oznámili příkazy SELECT. Změny mohla služba transparentně zpracování přechodné problémy a dotazy zabránila selhání. Počet opakovaných pokusů a seznam zpracování přechodných chyb jsou nakonfigurované systému.|
+|**Vrátí pořadí podle optimalizace**|VYBERTE... Klauzule ORDER BY dotazů získat zvýšení výkonu v této verzi.   Teď součástí všech výpočetních uzlů odesílat že své výsledky do jediné výpočetního uzlu, sloučení, který Seřadí výsledky, které jsou následně vráceny uživateli prostřednictvím výpočetním uzlu.  Slučování přes jeden výpočetní uzel, výsledkem zvýšení výkonu, když obsahuje velký počet řádků sady výsledků dotazu. Dříve by dotazu spouštěcí modul pořadí výsledky na každém výpočetním uzlu a Streamovat je do ovládacího prvku uzlu, na kterém by pak sloučit výsledky.|
+|**Vylepšení přesunu dat pro PartitionMove a BroadcastMove**|V Azure SQL Data Warehouse Gen2, kroky pro přesun dat typu ShuffleMove, použijte rychlé data přesun techniky popsané v [blogu vylepšení výkonu](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/). V této verzi datové typy přesun PartitionMove a BroadcastMove nyní také využívají stejné techniky rychlé data pohyb. Uživatelské dotazy, které využívají tyto druhy kroky pro přesun dat se spustí s vyšším výkonem. Žádné změny kódu je potřebné k využití těchto vylepšení výkonu.|
+
+### <a name="documentation-improvements"></a>Dokumentace k vylepšení
+
+| Dokumentace k vylepšení | Podrobnosti |
+| --- | --- |
+|žádný | |
+| | |
 
 ## <a name="next-steps"></a>Další postup
-Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]. Pokud jste ještě do Azure, můžete zjistit [Glosář Azure] [ Azure glossary] užitečné při učení, nový terminologií. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+[vytvořit SQL Data Warehouse](./create-data-warehouse-portal.md)
 
-* [Úspěšné zákaznické implementace]
-* [Blogy]
-* [Žádosti o funkce]
-* [Videa]
-* [Blogy zákaznického poradního týmu]
-* [Fórum Stack Overflow]
-* [Twitter]
-
-
-[Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Úspěšné zákaznické implementace]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
-[Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
+## <a name="more-information"></a>Další informace
+- [Blog – Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+- [Blogy zákaznického poradního týmu](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
+- [Úspěšné zákaznické implementace](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+- [Fórum Stack Overflow](http://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Twitter](https://twitter.com/hashtag/SQLDW)
+- [Videa](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+- [Glosář Azure](../azure-glossary-cloud-terminology.md)

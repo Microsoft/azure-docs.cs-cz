@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39359bea7b6a04c86efa37b032d35dd2c2f0d651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211100"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244551"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -48,7 +48,7 @@ O různých komponentách na obrázku potřebujete vědět tohle:
 
 * Azure AD je zprostředkovatelem identity. Zprostředkovatel identity je zodpovědný za ověření identity uživatelů a aplikací existujících v adresáři organizace a při úspěšném ověření těchto uživatelů a aplikací vydává tokeny zabezpečení.
 * Aplikace, která chce ověřování provádět prostřednictvím Azure AD, musí být v Azure AD zaregistrovaná. Azure AD aplikaci zaregistruje a jednoznačně identifikuje v adresáři.
-* Vývojáři můžou využívat opensourcové knihovny ověřování Azure AD, které ověřování usnadňují tím, že podrobnosti protokolu zpracují za vás. Další informace najdete v [knihovnách ověřování Azure AD verze 2.0](reference-v2-libraries.md) a [knihovnách ověřování Azure AD verze 1.0](active-directory-authentication-libraries.md).
+* Vývojáři můžou využívat opensourcové knihovny ověřování Azure AD, které ověřování usnadňují tím, že podrobnosti protokolu zpracují za vás. Další informace najdete v tématu Azure AD [knihovny pro ověřování v2.0](reference-v2-libraries.md) a [knihovny ověřování v1.0](active-directory-authentication-libraries.md).
 * Po ověření uživatele musí aplikace ověřit uživatelův token zabezpečení, aby bylo celé ověření úspěšné. K dispozici jsou rychlé starty, kurzy a ukázky kódu v různých jazycích a architekturách, které ukazují, co musí aplikace dělat.
   * Pokud chcete rychle vytvořit aplikaci a přidat funkce, jako jsou získání tokenů, aktualizace tokenů, přihlášení uživatele, zobrazení některých informací o uživateli a další, projděte si v dokumentaci sekci **Rychlé starty**.
   * Pokud chcete získat podrobné postupy založené na scénářích pro hlavní ověřovací úkoly pro vývojáře, jako jsou získání přístupových tokenů a jejich používání ve volání rozhraní API Microsoft Graph a dalších rozhraní API, implementace přihlášení s Microsoftem v tradiční aplikaci založené na webovém prohlížeči pomocí OpenID Connect a další úkoly, projděte si v dokumentaci sekci **Kurzy**.

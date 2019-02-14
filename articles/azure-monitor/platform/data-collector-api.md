@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 918cfb36c3afb9fc5c9a3f2c25b7c14b04354db1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d2bf55129465a607fdc3bce3bd1735642c64e428
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002183"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237922"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslat data protokolu pro monitorování Azure pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odeslání dat protokolů do Azure monitoru z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na autorizaci pomocí Azure monitoru.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -173,6 +173,8 @@ Existují některá omezení kolem data vystavená pro rozhraní API pro shroma�
 * Maximálně 30 MB na příspěvek k rozhraní API kolekce dat monitorování Azure. Toto je omezení velikosti pro jeden příspěvek. Pokud se data z jedné příspěvku, který překračuje 30 MB, měli rozdělit data do menších bloků velikosti dat a odešlete je současně.
 * Maximální limit 32 KB pro hodnoty pole. Pokud hodnota pole je větší než 32 KB, data se zkrátí.
 * Doporučený maximální počet polí pro daný typ je 50. To je praktické omezení použitelnosti a perspektivy vyhledávací prostředí.  
+* Tabulky v pracovním prostoru Log Analytics podporuje jenom až 500 sloupce (označované jako pole v tomto článku). 
+* Maximální počet znaků pro název sloupce je 500.
 
 ## <a name="return-codes"></a>Návratové kódy
 Stavový kód HTTP 200 znamená, že žádost byla přijata ke zpracování. To znamená, že operace byla úspěšně dokončena.

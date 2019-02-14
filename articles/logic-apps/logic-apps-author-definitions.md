@@ -10,16 +10,16 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: d50f56fe0f4428186d18195f798633baefd6d125
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5c51fe4e3d8b432e80a2d437c299b33af557d936
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732919"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245809"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Vytvořit, upravit nebo rozšířit JSON pro logiku definic aplikací v Azure Logic Apps
 
-Při vytváření podnikových řešení pro integraci s automatizované pracovní postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definic aplikací logiky použít jednoduchý a deklarativní notace JSON (JavaScript Object) spolu s [ Schéma definici jazyka (splní) pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) jejich popis a ověřování. Tyto formáty snadněji logiky definic aplikací ke čtení a pochopení bez znalosti většinu kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logic apps, můžete zahrnout definic aplikací logiky jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) uvnitř [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment). Chcete-li vytvořit, spravovat a nasazovat aplikace logiky pak můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp), [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md), nebo [REST API služby Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
+Při vytváření podnikových řešení pro integraci s automatizované pracovní postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definic aplikací logiky použít jednoduchý a deklarativní notace JSON (JavaScript Object) spolu s [ Schéma definici jazyka (splní) pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) jejich popis a ověřování. Tyto formáty snadněji logiky definic aplikací ke čtení a pochopení bez znalosti většinu kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logic apps, můžete zahrnout definic aplikací logiky jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) uvnitř [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment). Chcete-li vytvořit, spravovat a nasazovat aplikace logiky pak můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md), nebo [REST API služby Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
 
 Pro práci s definic aplikací logiky ve formátu JSON, otevřete editor zobrazení kódu při práci na webu Azure Portal nebo v sadě Visual Studio nebo zkopírování definice do libovolného editoru, který chcete. Pokud se službou logic Apps teprve začínáte, přečtěte si [vytvoření vaší první aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

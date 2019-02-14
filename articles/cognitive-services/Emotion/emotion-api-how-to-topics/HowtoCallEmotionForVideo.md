@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 02/06/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 191e20ba608adfdfd1ea4e5479cf1d326640d378
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b7e49b5376782e0dfa0676c0e9637e64b8e44c9a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862781"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237717"
 ---
 # <a name="example-call-emotion-api-for-video"></a>Příklad: Volání rozhraní API pro rozpoznávání Emocí pro videa
 

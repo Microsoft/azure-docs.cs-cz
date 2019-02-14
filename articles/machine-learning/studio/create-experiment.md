@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 5daedcc931732e916a47ab857f489ebff0184101
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5b24b21c4511b535509421aaa35ba3498e9f6a8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204453"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246013"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Rychlý start: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio
 
@@ -49,7 +49,7 @@ Existuje několik ukázkových datových sad se sadou Studio, které můžete po
 Tato datová sada obsahuje záznamy řady různých automobilů, včetně informací o značce, modelu, technických specifikacích a ceně.
 
 > [!TIP]
-> Pracovní kopii následujícího experimentu najdete v [galerii Azure AI](https://gallery.cortanaintelligence.com). Přejděte k části **[První experiment z oblasti datové vědy – predikce ceny automobilu](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**, klikněte na **Open in Studio** (Otevřít v sadě Studio) a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
+> Pracovní kopii následujícího experimentu najdete v [galerii Azure AI](https://gallery.azure.ai). Přejděte k části **[První experiment z oblasti datové vědy – predikce ceny automobilu](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**, klikněte na **Open in Studio** (Otevřít v sadě Studio) a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
 
 Tuto datovou sadu dostanete do svého experimentu takto.
 

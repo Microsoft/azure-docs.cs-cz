@@ -15,18 +15,18 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 5e1505794097ac6d67997841cade46013686377f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53627755"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245401"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Výpočet fakturace celkové velikosti kontejneru objektů blob
 
 Tento skript vypočítá velikost kontejneru v úložišti objektů Blob v Azure pro účely odhad fakturačních nákladů. Skript sečte velikost objektů BLOB v kontejneru.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -84,7 +84,7 @@ Tyto výpočty ukazují, jak odhadnout objem úložiště spotřebované u jedno
 Tady je rozpis:
 
 * 124 bajty režie pro objekt blob, který obsahuje:
-    - Čas poslední změny
+    - Čas poslední úpravy
     - Velikost
     - Cache-Control
     - Typ obsahu

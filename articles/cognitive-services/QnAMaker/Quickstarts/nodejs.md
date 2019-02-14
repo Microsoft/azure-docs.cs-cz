@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 9f4bfc0f61aeda1a4bcfce67b1501f9d297e3bce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ba4af5d3b6612614dee54db7fdb1287ff7136321
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874601"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245758"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Jak používat rozhraní REST API nástroje QnA Maker s využitím Node.js 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft]
 - [Odstranění znalostní báze](#Delete)
 - [Získání klíčů aktuálního koncového bodu](#GetKeys)
 - [Opětovné vygenerování klíčů aktuálního koncového bodu](#PutKeys)
-- [Získání aktuální sady změn slov](#GetAlterations)
-- [Nahrazení aktuální sady změn slov](#PutAlterations)
+- [Získejte aktuální sadu změn slov velká a malá písmena.](#GetAlterations)
+- [Nahraďte aktuální sadu změn slov velká a malá písmena.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 

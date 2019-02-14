@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/20/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: b9484336add0719749e9f0af56bdd70fa3906ef5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: c1259584e91461865b0c7e7bbbd6aced1781827b
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38752655"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246234"
 ---
-Pokud chcete do skupiny prostředků přidat dvě značky, použijte příkaz [az group update](/cli/azure/group#az_group_update):
+Pokud chcete do skupiny prostředků přidat dvě značky, použijte příkaz [az group update](/cli/azure/group):
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.Environment=Test tags.Dept=IT

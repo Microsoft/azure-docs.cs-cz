@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 56f9226f1bee630895725eb0b3806e294e9a5b51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218138"
+ms.locfileid: "56234675"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Zvolte cenovou úroveň ve službě Azure Maps vpravo
 
@@ -30,17 +30,21 @@ Cenové úrovně S0 a S1 zpracovávat různé množství dat propustnosti. Než 
 | Schopnost                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | Search                                  |        ✓           |     ✓    |
-| Směrování                                 |        ✓           |     ✓    |
-| Vykreslování                                  |        ✓           |     ✓    |
-| Provoz                                 |        ✓           |     ✓    |
-| Časová pásma                              |        ✓           |     ✓    |
-| Obrázek a hybridní snímky    |            |     ✓    |
-| Rozsah trasy                    |                   |     ✓    |
-| Umístění IP 2 (preview)                |        ✓           |     ✓    |
-| Mnohoúhelníky z hledání          |                   |     ✓    |
 | Geografické kódování služby Batch (preview)              |                   |     ✓    |
+| Mnohoúhelníky z hledání          |                   |     ✓    |
+| Směrování                                 |        ✓           |     ✓    |
+| Rozsah trasy                    |                   |     ✓    |
 | Batch směrování (preview)                |                   |     ✓    |
 | Přehled směrování (preview)               |                   |     ✓    |
+| Vykreslování                                  |        ✓           |     ✓    |
+| Obrázek a hybridní snímky    |            |     ✓    |
+| Provoz                                 |        ✓           |     ✓    |
+| Časová pásma                              |        ✓           |     ✓    |
+| Informace o zeměpisné poloze (preview)                |        ✓           |     ✓    |
+| Dat (preview)               |                   |     ✓    |
+| Spatial (preview)               |                   |     ✓    |
+| Monitorování geografických zón (preview)               |                   |     ✓    |
+
 
 
 Tyto další datové body stojí za zvážení:

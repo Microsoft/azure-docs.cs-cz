@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 12af8cd2fb46bf61324ddfb8e9a396e53e308a6d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978608"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242887"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Machine learning s příklady algoritmů základy
 
@@ -23,7 +23,7 @@ Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine 
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Oblíbené algoritmy v nástroji Machine Learning Studio
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) přinášejí velké knihovny algoritmů pro prediktivní analýzy. Infografiku čtyři oblíbené rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - určuje a poskytuje odkazy na funkčních příkladů v [galerii Azure AI](https://gallery.cortanaintelligence.com/). Galerie obsahuje příklady experimentů a kurzy, které ukazují, jak tyto algoritmy lze použít v mnoha řešeních reálného světa.
+[Azure Machine Learning Studio](https://studio.azureml.net/) přinášejí velké knihovny algoritmů pro prediktivní analýzy. Infografiku čtyři oblíbené rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - určuje a poskytuje odkazy na funkčních příkladů v [galerii Azure AI](https://gallery.azure.ai/). Galerie obsahuje příklady experimentů a kurzy, které ukazují, jak tyto algoritmy lze použít v mnoha řešeních reálného světa.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si informační grafiky s příklady algoritmů
 

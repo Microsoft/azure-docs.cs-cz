@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 9/07/2018
+ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5a6cdc5912936b4b73fb45f37e30958b30dbcf0f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cca6fba401d8673cf97897c24a9d6de2329f19a4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876619"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232485"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a PHP
 
@@ -49,9 +49,9 @@ Tuto aplikaci spustíte následujícím postupem.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-a-http-request"></a>Sestavení a provedení požadavku HTTP
+## <a name="construct-and-perform-an-http-request"></a>Vytvoření a provedení požadavku HTTP
 
-1. Pomocí proměnných z posledního kroku připravte požadavek HTTP pro rozhraní API pro vyhledávání obrázků.
+1. Proměnné z poslední krok slouží k přípravě požadavek HTTP do rozhraní API pro vyhledávání obrázků.
 
     ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
@@ -59,7 +59,7 @@ Tuto aplikaci spustíte následujícím postupem.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. Proveďte tuto webovou žádost a získejte odpověď JSON.
+2. Odeslat webové žádosti a získejte odpověď JSON.
 
     ```php
     $context = stream_context_create($options);
@@ -81,7 +81,7 @@ Zpracujte a zobrazte vrácenou odpověď JSON.
         return array($headers, $result);
     ```
 
-## <a name="sample-json-response"></a>Ukázková odpověď JSON
+## <a name="example-json-response"></a>Příklad JSON odpovědi
 
 Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -125,7 +125,7 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -137,7 +137,8 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
 * [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

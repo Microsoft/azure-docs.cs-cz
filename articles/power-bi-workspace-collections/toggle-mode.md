@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 9a12940f08a11b66a0d09937d5ab8fab7304734f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 892ea129a57e77c59f37b305b96b42aa85dba32b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754332"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232703"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Přepínání mezi zobrazením a upravit režimu pro sestavy v kolekcích pracovních prostorů Power BI
 
@@ -30,7 +30,7 @@ Je potřeba vytvořit přístupový token, který vám dává možnost, jak zobr
 > [!NOTE]
 > Můžete upravit a uložit změny do stávající sestavy. Pokud chcete také funkci podporu **uložit jako**, budete muset zadat další oprávnění. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -46,9 +46,10 @@ Je třeba zadat oprávnění a viewMode, chcete-li zobrazit uložení tlačítko
 
 Například v jazyce JavaScript:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -74,6 +75,7 @@ Například v jazyce JavaScript:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 Tím je oznámeno vložení sestavy do režimu zobrazení na základě **viewMode** nastavena na **modely. ViewMode.View**.
@@ -82,7 +84,7 @@ Tím je oznámeno vložení sestavy do režimu zobrazení na základě **viewMod
 
 Chcete-li přepnout do režimu zobrazení, pokud jste v režimu úprav můžete použít následující jazyka JavaScript.
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -98,7 +100,7 @@ report.switchMode("view");
 
 Pokud jste v zobrazení režimu, můžete použít následující JavaScript přepnout do režimu úprav.
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 

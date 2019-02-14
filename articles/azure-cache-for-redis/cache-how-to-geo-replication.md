@@ -1,25 +1,25 @@
 ---
 title: Konfigurace geografické replikace pro Azure Cache pro Redis | Dokumentace Microsoftu
 description: Zjistěte, jak replikovat napříč zeměpisnými oblastmi Azure Cache pro instance Redis.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: yegu
-ms.openlocfilehash: d2f01c700875a33ca63a1c30d5aca4934d412d18
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e5e60e3370cc813685403cc979e6ef8dc043b7ac
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113664"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233264"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Konfigurace geografické replikace pro Azure Cache pro Redis
 

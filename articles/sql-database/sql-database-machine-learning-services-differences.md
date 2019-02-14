@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 01/31/2019
-ms.openlocfilehash: adc303e9b375aaa6f37e9e79ea5434675c75523d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824005"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237480"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Hlavní rozdíly mezi služby Machine Learning v Azure SQL Database a SQL Server
 
@@ -25,7 +25,7 @@ Funkce služby Machine Learning Services (s jazykem R) ve službě Azure SQL Dat
 
 ## <a name="language-support"></a>Podpora jazyků
 
-Podpora jazyků R a Python prostřednictvím má systém SQL Server [extensibility framework](https://docs.microsoft.com/en-us/sql/advanced-analytics/concepts/extensibility-framework). SQL Database nepodporuje oba jazyky. Hlavní rozdíly jsou:
+Podpora jazyků R a Python prostřednictvím má systém SQL Server [extensibility framework](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework). SQL Database nepodporuje oba jazyky. Hlavní rozdíly jsou:
 
 - R je jediný podporovaný jazyk ve službě SQL Database. Python se momentálně nepodporuje.
 - Verze jazyka R je 3.4.4.

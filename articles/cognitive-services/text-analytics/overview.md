@@ -3,25 +3,25 @@ title: Co je Analýza textu?
 titleSuffix: Azure Cognitive Services
 description: Analýza textu ve službě Azure Cognitive Services k analýze mínění, extrakci klíčových frází, rozpoznávání jazyka a spojování entit.
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 6e14d1b6d9bec4409ca2a1e57c7d2fb018ccce53
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869445"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242921"
 ---
 # <a name="what-is-text-analytics"></a>Co je Analýza textu?
 
 Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje čtyři hlavní funkce: analýzu mínění, extrakci klíčových frází, rozpoznávání jazyka a spojování entit.
 
-Rozhraní API je podporované prostředky kolekce algoritmů strojového učení a AI v cloudu v rámci služby [Microsoft Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) připravených k použití ve vašich vývojových projektech.
+Rozhraní API je součástí [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), kolekce machine learningu a algoritmů AI v cloudu pro vaše vývojové projekty.
 
 ## <a name="capabilities-in-text-analytics"></a>Možnosti služby Analýza textu
 

@@ -145,10 +145,6 @@ items:
     items:
     - name: Přehled
       href: retrain-machine-learning-model.md
-    - name: Programové přeučování
-      href: retrain-models-programmatically.md
-    - name: Přeučování s využitím PowerShellu
-      href: retrain-new-web-service-using-powershell.md
     - name: Přeučování existující webové služby
       href: retrain-existing-resource-manager-based-web-service.md
     - name: Řešení potíží
@@ -203,9 +199,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Vlastní neurální sítě (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: ac8621773366d7e6dff26f053172e2831fa2d2a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 982f2794d22f830c967607108b31fbfe0d0de359
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211474"
+ms.locfileid: "56238432"

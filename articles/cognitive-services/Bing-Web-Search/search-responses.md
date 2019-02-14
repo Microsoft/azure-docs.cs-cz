@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 8/13/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: db7ac84b5ce1f3ee2558bbc5ce14332aecd578c7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860639"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232888"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury a odpověď odezvy API vyhledávání na webu Bingu  
 
@@ -42,7 +42,7 @@ Vyhledávání na webu Bingu obvykle vrátí podmnožinu odpovědi. Například,
 
 ## <a name="webpages-answer"></a>Odpověď webové stránky
 
-[Webové stránky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpověď obsahuje seznam odkazů na webové stránky, které vyhledávání na webu Bingu určit byly relevantní pro dotaz. Každý [webové stránky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) v seznam obsahuje adresu URL zobrazované jméno, adresu url, na stránce, stručný popis obsahu a datum Bingu najít obsah.
+[Webové stránky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpověď obsahuje seznam odkazů na webové stránky, které vyhledávání na webu Bingu určit byly relevantní pro dotaz. Každý [webové stránky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) v seznamu budou zahrnovat: název stránky, adresa url, zobrazit adresu URL, stručný popis obsahu, data a času Bingu najít obsah.
 
 ```json
 {
@@ -91,7 +91,7 @@ The following shows an example of how you might display the webpage in a search 
 }, ...
 ```
 
-V závislosti na uživatelských zařízeních by obvykle zobrazit pouze podmnožinu miniatury s možností pro uživatele, chcete-li zobrazit zbývající bitové kopie.
+V závislosti na uživatelských zařízeních by obvykle zobrazit pouze podmnožinu miniatury, s možností pro uživatele, aby [stránkovat](paging-webpages.md) zbývající bitové kopie.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
@@ -314,7 +314,7 @@ Matematický výraz může obsahovat následující funkce:
 
 |Symbol|Popis|
 |------------|-----------------|
-|Sqrt|Druhá odmocnina|
+|Seřadit|Druhá odmocnina|
 |Sin[x], Cos[x], Tan[x]<br />Csc[x], Sec[x], Cot[x]|Trigonometrické funkce (s argumenty v radiánech)|
 |ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc[x], ArcSec[x], ArcCot[x]|Inverzní trigonometrické funkce (poskytující výsledky v radiánech)|
 |Exp[x], E^x|Exponenciální funkce|
@@ -428,6 +428,48 @@ Pokud Bingu určí, že uživatel může mít určený k vyhledání něco jiné
     }]
 }, ...
 ```
+
+Následuje ukázka použití návrhy pravopisu Bingu.
+
+![Příklad návrhy pravopisu Bingu](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
+
+## <a name="response-headers"></a>Hlavičky odpovědi
+
+Odpovědi z rozhraní API Bingu pro vyhledávání webu může obsahovat následující hlavičky:
+
+|||
+|-|-|
+|`X-MSEdge-ClientID`|Jedinečné ID, které Bing přiřazeno uživateli|
+|`BingAPIs-Market`|Na trhu, který byl použit ke splnění žádosti|
+|`BingAPIs-TraceId`|Záznam protokolu na serveru rozhraní API Bingu pro tuto žádost (podpora)|
+
+To je zvláště důležité pro zachování ID klienta a vrátit ho s dalšími požadavky. Když toto provedete, bude hledání využívat dřívější kontext v pořadí výsledky hledání a také poskytovat konzistentní uživatelské prostředí.
+
+Ale při volání rozhraní API webové vyhledávání Bingu z jazyka JavaScript, integrované bezpečnostní funkce v prohlížeči (CORS) může zabránit vám přístup k hodnoty z těchto záhlaví.
+
+K získání přístupu k záhlaví, můžete provést požadavek na rozhraní API webové vyhledávání Bingu prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+
+Je snadné k instalaci proxy CORS a povolit naše [ukázková aplikace](tutorial-bing-web-search-single-page-app.md) záhlaví volitelný klientský přístup. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Potom zadejte následující příkaz z příkazového řádku.
+
+    npm install -g cors-proxy-server
+
+V dalším kroku změňte koncový bod rozhraní API webové vyhledávání Bingu v souboru HTML, aby:
+
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+
+Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
+
+    cors-proxy-server
+
+Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
+
+## <a name="response-headers-in-production"></a>Hlavičky odpovědi v produkčním prostředí
+
+Přístup proxy CORS, je popsáno v předchozí odpověď je vhodný pro vývoj, testování a učení.
+
+V produkčním prostředí byste neměli hostit skript na straně serveru ve stejné doméně jako webovou stránku, která používá rozhraní API webové vyhledávání Bingu. Tento skript by měl provádět volání rozhraní API na vyžádání z webové stránky JavaScript a předávat všechny výsledky, včetně záhlaví, zpět do klienta. Protože tyto dva prostředky (stránku a skript) sdílení původ, CORS se nepoužívá a speciálními záhlavími jsou dostupné na JavaScript na webové stránce.
+
+Tento přístup taky chrání svůj klíč rozhraní API vystavení public, protože pouze pro skript na straně serveru potřebuje. Skript můžete použít jinou metodu, abyste měli jistotu, že je požadavek autorizován.
 
 Následuje ukázka použití návrhy pravopisu Bingu.
 

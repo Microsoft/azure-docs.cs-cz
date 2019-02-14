@@ -4,17 +4,19 @@ description: Ukazuje, jaké typy prostředků Azure podporují značky. Poskytuj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509904"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246047"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md).
+
+Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhněte si [značky support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv).
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | Typ prostředku | Podporuje značky |
@@ -1123,13 +1125,14 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | servery pro/communicationLinks | Ne | 
 | servers/databases | Ano (viz poznámka níže) | 
 | servers/encryptionProtector | Ne | 
+| servery pro/firewallRules | Ne | 
 | servery pro/klíče | Ne | 
 | servers/restorableDroppedDatabases | Ne | 
 | servery pro/serviceobjectives | Ne | 
 | servers/tdeCertificates | Ne | 
 
 > [!NOTE]
-> Hlavní databáze nepodporuje značky, ale ostatní databáze podporují značky.
+> Hlavní databáze nepodporuje značky, ale další databáze, včetně databází datového skladu, podporují značky.
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

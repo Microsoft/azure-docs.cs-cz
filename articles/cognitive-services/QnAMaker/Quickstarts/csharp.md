@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 630b8233caded0865271d625d12a8bcf193c2bde
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c7f0afb2776f11ac9406fced1209dfedd769a96f
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866249"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245588"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>Jak používat rozhraní REST API pomocí nástroje QnA MakerC# 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft]
 - [Odstranění znalostní báze](#Delete)
 - [Získání klíčů aktuálního koncového bodu](#GetKeys)
 - [Opětovné vygenerování klíčů aktuálního koncového bodu](#PutKeys)
-- [Získání aktuální sady změn slov](#GetAlterations)
-- [Nahrazení aktuální sady změn slov](#PutAlterations)
+- [Získejte aktuální sadu změn slov velká a malá písmena.](#GetAlterations)
+- [Nahraďte aktuální sadu změn slov velká a malá písmena.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 

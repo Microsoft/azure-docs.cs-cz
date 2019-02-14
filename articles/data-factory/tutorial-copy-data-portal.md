@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c7e6a4da9880677fbc4aad76b820ba596058bb6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025245"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233859"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště Azure Blob Storage do databáze SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -36,7 +36,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Monitorování spuštění aktivit a kanálu
 
 ## <a name="prerequisites"></a>Požadavky
-* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md), kde najdete postup jeho vytvoření.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud databázi SQL Database nemáte, přečtěte si téma [Vytvoření databáze SQL Database](../sql-database/sql-database-get-started-portal.md), kde najdete postup jejího vytvoření.
 
@@ -82,30 +82,30 @@ Teď si připravte úložiště Blob Storage a databázi SQL Database pro tento
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál. 
 
-1. Otevřete webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **Nový** > **Data + analýzy** > **Datová továrna**. 
+1. Otevřít **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
+2. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **služby Data Factory**. 
   
    ![Vytvoření nové datové továrny](./media/tutorial-copy-data-portal/new-azure-data-factory-menu.png)
-1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**. 
+3. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**. 
       
      ![Nová datová továrna](./media/tutorial-copy-data-portal/new-azure-data-factory.png)
  
    Název datové továrny Azure musí být *globálně jedinečný*. Pokud se u pole s názvem zobrazí následující chybová zpráva, tak název datové továrny změňte (třeba na vaše_jméno_ADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chybová zpráva](./media/tutorial-copy-data-portal/name-not-available-error.png)
-1. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
-1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
+4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
+5. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
     b. Vyberte **Vytvořit novou** a zadejte název skupiny prostředků. 
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md). 
-1. Jako **Verzi** vyberte **V2**.
-1. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používaná datovou továrnou můžou být v jiných oblastech.
-1. Zaškrtněte **Připnout na řídicí panel**. 
-1. Vyberte **Vytvořit**. 
-1. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
+6. Jako **Verzi** vyberte **V2**.
+7. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používaná datovou továrnou můžou být v jiných oblastech.
+8. Zaškrtněte **Připnout na řídicí panel**. 
+9. Vyberte **Vytvořit**. 
+10. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
 
     ![Dlaždice Nasazování datové továrny](media/tutorial-copy-data-portal/deploying-data-factory.png)
 1. Po dokončení procesu vytváření se zobrazí stránka **Datová továrna**, kterou vidíte na obrázku.
@@ -127,7 +127,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
    ![Vytvoření kanálu](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
 1. Na kartě kanálu **Obecné** zadejte **CopyPipeline** jako **Název** kanálu.
 
-1. Na panelu nástrojů **Aktivity** rozbalte kategorii **Tok dat** a přetáhněte aktivitu **Kopírování** z panelu nástrojů na plochu návrháře kanálu. Jako **Název** zadejte **CopyFromBlobToSql**.
+1. V **aktivity** nástroj rozbalte **přesunout andTransform** kategorii a přetáhněte **kopírování dat** aktivitu z panelu nástrojů na plochu návrháře kanálu. Jako **Název** zadejte **CopyFromBlobToSql**.
 
     ![Aktivita kopírování](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 

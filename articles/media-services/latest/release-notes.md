@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817618"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242800"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -34,6 +34,10 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 
 Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="february-2019"></a>. Února 2019
+
+Media Services v3 je teď upported v národních cloudech Azure. Ne všechny funkce jsou dostupné ve všech cloudech ještě. Podrobnosti najdete v tématu [Cloudy a oblasti, ve které Azure Media Services v3 existuje](azure-clouds-regions.md).
+
 ## <a name="january-2019"></a>2019. ledna
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Soubory kodéru Media Encoder Standard a MPI 
@@ -46,7 +50,7 @@ Nesmí změnit nebo odebrat soubor MPI či provést všechny závislosti ve své
 
 Aktualizace z verze GA z rozhraní API V3 zahrnují:
        
-* **PresentationTimeRange** již nejsou požadovány pro vlastnosti **AssetFilters** a **AccountFilters**. 
+* **PresentationTimeRange** již nejsou požadovány pro vlastnosti **Asset filtry** a **filtrů účtů**. 
 * Možnosti pro dotaz $top a $skip **úlohy** a **transformuje** byly odebrány a byla přidána $orderby. Při přidání nové funkce řazení bylo zjištěno, že možnosti $top a $skip došlo omylem byl zpřístupněn dříve i v případě, že nejsou implementované.
 * Rozšíření výčtu se znovu povolil. Tato funkce bylo povoleno ve verzi preview verze sady SDK a je teď ve verzi GA omylem zakázán.
 * Dvě předdefinované datové proudy zásady byly přejmenovány. **SecureStreaming** je nyní **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** je nyní **Predefined_MultiDrmStreaming**.
@@ -67,7 +71,7 @@ Modul CLI 2.0 je nyní k dispozici pro [všeobecné dostupnosti služby Azure Me
 - [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [streamování ams az-lokátoru](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – umožňuje spravovat rezervované jednotky médií
+- [AZ ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – umožňuje spravovat rezervovaných jednotek médií. Další informace najdete v tématu [rezervovaných jednotek médií škálování](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nové funkce a změny způsobující chyby
 
@@ -141,7 +145,7 @@ Jsou zavedené následující živé kódování aktualizace:
 - (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
 - Ingestování RTMPS zabezpečené.
 
-    Když vytvoříte Livestream, můžete teď získání 4 ingestovaných adres URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS. 
+    Když vytvoříte živá událost, můžete teď získání 4 ingestovaných adres URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS. 
 - Podpora překódování 24 hodin. 
 - Vylepšená podpora ad signalizace v RTMP prostřednictvím SCTE35.
 
@@ -149,7 +153,7 @@ Jsou zavedené následující živé kódování aktualizace:
 
 Zobrazí se následující služby Event Grid podporují vylepšení:
 
-- Integrace s Azure EventGrid pro jednodušší vývoj pomocí Logic Apps a Azure Functions. 
+- Integrace služby Azure Event Grid pro jednodušší vývoj pomocí Logic Apps a Azure Functions. 
 - Přihlásit k odběru událostí v kódování, živých kanálů a další.
 
 ### <a name="cmaf-support"></a>Podpora CMAF
@@ -174,14 +178,14 @@ Pokud jste vytvořili prostředky nebo filtry účtů 09/28 až 10/12 pomocí Me
 
 ## <a name="may-2018---preview"></a>Květen 2018 – Preview
 
-### <a name="net-sdk"></a>.Net SDK
+### <a name="net-sdk"></a>.NET SDK
 
 Následující funkce jsou k dispozici v rozhraní .net SDK:
 
 * **Transformuje** a **úlohy** k zakódování nebo analyzovat mediálního obsahu. Příklady najdete v tématu [Stream soubory](stream-files-tutorial-with-api.md) a [analyzovat](analyze-videos-tutorial-with-api.md).
-* **StreamingLocators** pro publikování a streamování obsahu do zařízení koncových uživatelů
-* **StreamingPolicies** a **ContentKeyPolicies** konfigurace doručení klíče a ochrana obsahu (DRM) při doručování obsahu.
-* **LiveEvents** a **LiveOutputs** konfigurace ingestování a archivaci obsah živého streamování.
+* **Lokátory streamování** pro publikování a streamování obsahu do zařízení koncových uživatelů
+* **Streamování zásady** a **zásady klíčů obsahu** konfigurace doručení klíče a ochrana obsahu (DRM) při doručování obsahu.
+* **Živé události** a **Live výstupy** konfigurace ingestování a archivaci obsah živého streamování.
 * **Prostředky** ukládat a publikovat mediálního obsahu ve službě Azure Storage. 
 * **Koncové body streamování** ke konfiguraci a škálování dynamické balení, šifrování a streamování živě i na vyžádání multimediálního obsahu.
 

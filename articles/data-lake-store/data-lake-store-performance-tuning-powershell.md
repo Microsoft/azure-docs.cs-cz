@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 318f2b550e19f4b7f56a7b8cc592d34644dca644
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123313"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235598"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Průvodce laděním výkonu pro použití Powershellu s Azure Data Lake Storage Gen1
 
 Tento článek obsahuje seznam vlastností, které můžete ladit pro zajištění lepšího výkonu při použití prostředí PowerShell pro práci s Azure Data Lake Storage Gen1:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="performance-related-properties"></a>Vlastnosti související s výkonem
 
@@ -33,13 +35,13 @@ Tento článek obsahuje seznam vlastností, které můžete ladit pro zajištěn
 
 Tento příkaz stáhne soubory z Data Lake Storage Gen1 uživatele místní disk pomocí 20 vláken na soubor a 100 souběžných souborů.
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>Jak zjistím hodnoty těchto vlastností?
 
 Další dotaz, může být je jak určit, jakou hodnotu poskytnout vlastnosti související s výkonem. Tady je několik rad, kterými se můžete řídit.
 
-* **Krok 1: Určení celkového počtu vláken** – Měli byste začít výpočtem celkového počtu vláken, která se mají použít. V rámci obecných pokynů byste měli použít 6 vláken na každé fyzické jádro.
+* **Krok 1: Určení celkového počtu vláken** – měli byste začít výpočtem celkového počtu vláken na použít. V rámci obecných pokynů byste měli použít 6 vláken na každé fyzické jádro.
 
         Total thread count = total physical cores * 6
 
@@ -50,7 +52,7 @@ Další dotaz, může být je jak určit, jakou hodnotu poskytnout vlastnosti so
         Total thread count = 16 cores * 6 = 96 threads
 
 
-* **Krok 2: Výpočet hodnoty PerFileThreadCount** – Hodnotu PerFileThreadCount vypočítáme na základě velikosti souborů. Pro soubory menší než 2,5 GB není nutné tento parametr měnit, protože výchozí hodnota 10 je dostačující. Pro soubory větší než 2,5 GB by měl používat 10 vláken jako základ pro prvních 2,5 GB a přidat 1 vlákno za každý další 256 MB nárůst velikosti souboru. Pokud kopírujete složku se soubory velmi rozdílných velikostí, zvažte jejich seskupení podle podobných velikostí. Velmi rozdílné velikosti souborů mohou způsobit, že výkon nebude optimální. Pokud není možné seskupit soubory podle podobných velikostí, měli byste hodnotu PerFileThreadCount nastavit podle největší velikosti souboru.
+* **Krok 2: Výpočet hodnoty PerFileThreadCount** -výpočtu PerFileThreadCount na základě velikosti souborů. Pro soubory menší než 2,5 GB není nutné tento parametr měnit, protože výchozí hodnota 10 je dostačující. Pro soubory větší než 2,5 GB by měl používat 10 vláken jako základ pro prvních 2,5 GB a přidat 1 vlákno za každý další 256 MB nárůst velikosti souboru. Pokud kopírujete složku se soubory velmi rozdílných velikostí, zvažte jejich seskupení podle podobných velikostí. Velmi rozdílné velikosti souborů mohou způsobit, že výkon nebude optimální. Pokud není možné seskupit soubory podle podobných velikostí, měli byste hodnotu PerFileThreadCount nastavit podle největší velikosti souboru.
 
         PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size
 
@@ -60,7 +62,7 @@ Další dotaz, může být je jak určit, jakou hodnotu poskytnout vlastnosti so
 
         PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads
 
-* **Krok 3: Výpočet ConcurrentFilecount** – pomocí celkového počtu vláken a hodnoty PerFileThreadCount k výpočtu ConcurrentFileCount podle do následující rovnice:
+* **Krok 3: Vypočítat ConcurrentFilecount** – pomocí celkového počtu vláken a hodnoty PerFileThreadCount k výpočtu ConcurrentFileCount podle do následující rovnice:
 
         Total thread count = PerFileThreadCount * ConcurrentFileCount
 
@@ -84,13 +86,13 @@ Tato nastavení můžete dále ladit zvýšením nebo snížením hodnoty **PerF
 
 ### <a name="limitation"></a>Omezení
 
-* **Počet souborů je menší než hodnota ConcurrentFileCount**: Pokud je počet souborů, které nahráváte, menší než hodnota **ConcurrentFileCount**, kterou jste vypočítali, měli byste snížit hodnotu **ConcurrentFileCount** tak, aby se rovnala počtu souborů. Zbývající vlákna můžete použít ke zvýšení hodnoty **PerFileThreadCount**.
+* **Počet souborů, které je menší než hodnota ConcurrentFileCount**: Pokud je menší než počet souborů, které nahráváte **ConcurrentFileCount** , že jste vypočítali, měli byste snížit **ConcurrentFileCount** musí rovnat počtu souborů. Zbývající vlákna můžete použít ke zvýšení hodnoty **PerFileThreadCount**.
 
-* **Příliš mnoho vláken**: Pokud příliš zvýšíte počet vláken a nezvětšíte velikost clusteru, riskujete tím snížení výkonu. Může docházet ke kolizím při přepínání kontextu na procesoru.
+* **Příliš mnoho vláken**: Pokud zvýšíte počet vláken příliš mnoho bez nezvětšíte velikost clusteru, riskujete tím snížení výkonu. Může docházet ke kolizím při přepínání kontextu na procesoru.
 
-* **Nedostatečná souběžnost**: Pokud souběžnost není dostatečná, může to být způsobeno malou velikostí clusteru. Můžete zvýšit počet uzlů v clusteru, která poskytuje větší souběžnost.
+* **Nedostatečná souběžnost**: Pokud souběžnost není dostatečná, může být příliš malá vašeho clusteru. Můžete zvýšit počet uzlů v clusteru, která poskytuje větší souběžnost.
 
-* **Chyby omezování**: Pokud je souběžnost příliš vysoká, může docházet k chybám omezování. Pokud dochází k chybám omezování, měli byste buď snížit souběžnost, nebo nás kontaktovat.
+* **Chybám omezování**: Vám může docházet k chybám omezování, pokud je souběžnost příliš vysoká. Pokud dochází k chybám omezování, měli byste buď snížit souběžnost, nebo nás kontaktovat.
 
 ## <a name="next-steps"></a>Další postup
 * [Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 

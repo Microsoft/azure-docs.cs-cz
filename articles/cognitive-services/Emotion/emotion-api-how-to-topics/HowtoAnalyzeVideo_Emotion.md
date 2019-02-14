@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 01/25/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7373fa92834fb2abdfc027901c0f2f8542c306be
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f8039fef2456722a12f895b48ec86b63d355dd4b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878472"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234828"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Příklad: Analyzování videí v reálném čase
 

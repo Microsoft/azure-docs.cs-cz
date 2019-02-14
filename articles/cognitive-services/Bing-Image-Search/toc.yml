@@ -11,7 +11,7 @@ items:
   expanded: true
 - name: Šablony Rychlý start
   items:
-  - name: Odeslání vyhledávacích dotazů s využitím REST API
+  - name: REST API
     items:
     - name: Pomocí C#
       href: quickstarts/csharp.md
@@ -25,7 +25,7 @@ items:
       href: quickstarts/python.md
     - name: Pomocí Ruby
       href: quickstarts/ruby.md
-  - name: Hledání obrázků pomocí sady SDK
+  - name: Sada SDK
     items:
     - name: Pomocí C#
       href: image-search-sdk-quickstart.md
@@ -116,9 +116,9 @@ items:
     href: language-support.md
   - name: Analýzy pro rozhraní API Bingu pro vyhledávání obrázků
     href: bing-image-stats.md
-ms.openlocfilehash: 0dce6494fb86f32e86e280d7e9faf701d532cf32
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: d75e08e7430b3474fc5e3a354d3c4a559899957a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509701"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237209"

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: e691913daabb832b2a3b51dac5d4a5b0e1f53871
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165067"
+ms.locfileid: "56236256"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Přeučování model ve službě Azure Machine Learning Studio
 Jako součást procesu operacionalizace modelů strojového učení v Azure Machine Learning je váš model školení a uložen. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací. 
@@ -53,8 +53,6 @@ Přeučování webové služby:
 * Nasazení retraining webové služby
 * Pomocí kódu služba Batch Execution přeučování modelu
 
-Názorný postup předchozí kroky, najdete v části [modelů Machine Learning Přeučování](retrain-models-programmatically.md).
-
 > [!NOTE] 
 > K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md). 
 
@@ -74,8 +72,6 @@ Pokud je nasazení nové webové služby:
 * Aktualizovat odkaz na `ilearner` objektů blob JSON
 * Import kódu JSON do definice webové služby
 * Aktualizovat webovou službu pomocí definice nové webové služby
-
-Názorný postup předchozí kroky, najdete v části [Přeučování nové webové služby pomocí rutin prostředí PowerShell pro Machine Learning Management](retrain-new-web-service-using-powershell.md).
 
 Proces pro nastavení přeškolení pro klasickou webovou službou zahrnuje následující kroky:
 

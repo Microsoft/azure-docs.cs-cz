@@ -1,25 +1,25 @@
 ---
 title: Co je Azure mezipaměti Redis? | Dokumenty Microsoft
 description: Zjistěte, co je Azure mezipaměti Redis a jak se běžně používá.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2a73a6a8c8b82b569a5131f15222d9491ccc231e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5b2b3a3ec0e9aec603a69211a7493afc31e83283
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110961"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236545"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Co je Azure mezipaměti Redis
 

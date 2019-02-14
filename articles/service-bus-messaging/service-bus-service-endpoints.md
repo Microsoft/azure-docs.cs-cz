@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: 8a5832433d1d8c81c22c828ec4659c10951f680a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103628"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234063"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Koncové body služeb virtuální sítě pomocí Azure Service Bus
 
@@ -29,7 +29,7 @@ Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány
 >[!WARNING]
 > Implementace integrace virtuální sítě můžete zabránit komunikaci se Service Bus dalšími službami Azure.
 >
-> Důvěryhodné Microsoft services nejsou podporovány, pokud virtuální sítě jsou implementovány a budou brzy dostupné.
+> Důvěryhodné Microsoft services nejsou podporovány, pokud jsou implementovány virtuální sítě.
 >
 > Běžné scénáře služby Azure, které nefungují s virtuálními sítěmi (Všimněte si, že je seznam **není** vyčerpávající)-
 > - Azure Monitor

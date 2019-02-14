@@ -1,25 +1,25 @@
 ---
 title: Jak spravovat Azure mezipaměti Redis | Dokumentace Microsoftu
 description: Zjistěte, jak provádět úkoly správy, jako je restartování a naplánovat aktualizace pro Azure Cache pro Redis
-services: azure-cache-for-redis
+services: cache
 documentationcenter: na
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: tysonn
 ms.assetid: 8c915ae6-5322-4046-9938-8f7832403000
 ms.service: cache
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 92a28beeae14b253c84c56e497be242d9c60de17
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b75a2faa2030fc343cbabb17eb37b63c9ea34f70
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112066"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232377"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Správa mezipaměti Azure pro Redis
 Toto téma popisuje, jak provádět úlohy správy, například [restartování](#reboot) a [plánování aktualizace](#schedule-updates) pro mezipaměť Azure pro instance Redis.

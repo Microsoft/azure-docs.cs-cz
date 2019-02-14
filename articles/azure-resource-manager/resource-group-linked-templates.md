@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 69dd9374f32dbea7ab6f11beec0204ac26e299bc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 92e5fb782eed3344a55178d6ba74dfd6d7b8cafd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104444"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235900"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure.
 
@@ -31,7 +31,9 @@ Při použití propojených šablon, vytvoříte hlavní šablonu, která přij�
 
 Podívejte se kurz [kurz: vytvoření propojenými šablonami Azure Resource Manageru](./resource-manager-tutorial-create-linked-templates.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!NOTE]
+> Propojené a vnořené šablony, můžete použít pouze [přírůstkové](deployment-modes.md) režimu nasazení.
+>
 
 ## <a name="link-or-nest-a-template"></a>Odkaz nebo vnořené šablony
 
@@ -52,8 +54,6 @@ Chcete-li propojit s jinou šablonu, přidejte **nasazení** prostředků do hla
 ```
 
 Vlastnosti, které zadáte pro zdroj nasazení se liší podle toho, jestli jste odkazování na externí šablony nebo vnoření vložená šablona v šabloně hlavní.
-
-Pro obě propojené a vnořené šablony, můžete použít pouze [přírůstkové](deployment-modes.md) režimu nasazení.
 
 ### <a name="nested-template"></a>Vnořené šablony
 

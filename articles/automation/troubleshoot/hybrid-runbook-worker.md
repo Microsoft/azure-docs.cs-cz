@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0ec099e0f210fc267a0a34f76136a517e0ae6ccc
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e3726037e16acdf1d6d624dbf8c2088a57b0bde6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744513"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234537"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -187,6 +187,26 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 
 Start-Service -Name HealthService
 ```
+
+### <a name="already-registered"></a>Scénář: Nejde přidat Hybrid Runbook Worker
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o přidání funkce Hybrid Runbook Worker pomocí se zobrazí následující zpráva `Add-HybridRunbookWorker` rutiny.
+
+```
+Machine is already registered to a different account
+```
+
+#### <a name="cause"></a>Příčina
+
+To může být způsobeno Pokud tento počítač je už zaregistrovaný s jiným účtem služby Automation, nebo pokud se pokusíte znovu přidat funkce Hybrid Runbook Worker po odebrání z počítače.
+
+#### <a name="resolution"></a>Řešení
+
+Chcete-li tento problém vyřešit, odstraňte následující klíč registru a zkuste to `Add-HybridRunbookWorker` rutinu znovu:
+
+`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
 ## <a name="next-steps"></a>Další postup
 

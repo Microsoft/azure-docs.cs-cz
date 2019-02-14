@@ -1,19 +1,19 @@
 ---
 title: Jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB?
 description: Zjistěte, jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB.
-author: rafats
-ms.author: rafats
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.reviewer: sngun
-ms.openlocfilehash: 329f50341649c353fae21d92e8d5f25b1e45a632
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: bc9835876e8b87213ddbae65e43222467e751ea3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043579"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56241627"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
 

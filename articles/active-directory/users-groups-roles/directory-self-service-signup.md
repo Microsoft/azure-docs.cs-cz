@@ -1,5 +1,5 @@
 ---
-title: Přidání uživatelů samoobslužných služeb nebo zkušební registrace – Azure Active Directory | Dokumentace Microsoftu
+title: Samoobslužná registrace pro ověřený e-mailem uživatelských účtů – Azure Active Directory | Dokumentace Microsoftu
 description: Použijte samoobslužnou registraci do tenanta služby Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: ''
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 02/12/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d445dddc49a6035ad47b605d2ffc3917d8cf31f5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7818d184cd74da43ceac008331b4436979152557
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210913"
+ms.locfileid: "56233169"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co je Samoobslužná registrace do služby Azure Active Directory?
 

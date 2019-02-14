@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/24/2018
+ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a948a40e638b5f6e042c62ab58c2b7b65a49cd4e
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 32032f729283cb3f2a786412b563fdee88ba4c8a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741976"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238563"
 ---
-Místně redundantní úložiště (LRS) zajišťuje alespoň 99,999999999 % (11 nines) odolnosti objektů v průběhu daného roku. LRS poskytuje tento objekt odolnosti replikuje vaše data na jednotce škálování úložiště. Datové centrum, nachází v oblasti, ve kterém jste vytvořili účet úložiště hostuje jednotce škálování úložiště. Žádost o zápis do účtu úložiště LRS skončí úspěšně, až data se zapisují do všech replik. Každá replika se nachází v samostatných doménách selhání a aktualizačních doménách v jednotce škálování úložiště.
+Místně redundantní úložiště (LRS) zajišťuje alespoň 99,999999999 % (11 nines) odolnosti objektů v průběhu daného roku. LRS poskytuje tento objekt odolnosti replikuje vaše data na jednotce škálování úložiště. Datové centrum, nachází v oblasti, ve kterém jste vytvořili účet úložiště hostuje jednotce škálování úložiště. Žádost o zápis do účtu úložiště LRS skončí úspěšně, až data se zapisují do všech replik. Každá replika se nachází v samostatných doménách selhání a upgradovacích doménách v jednotce škálování úložiště.
 
 Jednotky škálování úložiště je kolekce stojany uzlů úložiště. Doména selhání (FD) je skupinu uzlů, které představují fyzické jednotky selhání. Doména selhání můžete představit jako uzly patřící do stejného fyzického stojanu. Upgradovací doména (UD) je skupina uzlů, které budou upgradovány společně během procesu upgradu služby (nasazení). Repliky jsou rozděleny mezi aktualizačními doménami a doménami selhání v rámci jedné jednotky škálování úložiště. Tato architektura se zajistí, že vaše data jsou k dispozici, pokud selhání hardwaru ovlivní jednu stojanu nebo pokud uzly se upgraduje během upgradu služby.
 

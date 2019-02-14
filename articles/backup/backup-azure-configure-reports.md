@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: e93c51365adfc867082e180d8e4db804d02003ca
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 945d8690ccb61916455ba4137f59c67c9a3d9f76
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297720"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237684"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek popisuje postup konfigurace sestav Azure Backup pomocí trezoru služby Recovery Services. Také ukazuje, jak získat přístup k sestavám pomocí Power BI. Po dokončení těchto kroků můžete přejít přímo do Power BI k zobrazení, přizpůsobení a vytváření sestav.
 
 > [!IMPORTANT]
-> Od 1. listopadu 2018 někteří zákazníci mohou podívejte se na problémy při načítání dat v aplikaci Azure Backup v Power BI, jak říkáte "jsme našli nějaké znaky navíc na konci vstupu JSON. Výjimku vyvolalo rozhraní IDataReader.“
+> Od 1. listopadu 2018 můžou někteří zákazníci pozorovat problémy při načítání dat z aplikace Azure Backup v Power BI, při kterých se zobrazí tato zpráva: „Na konci vstupu JSON jsme našli nějaké znaky navíc. Výjimku vyvolalo rozhraní IDataReader.“
 Příčinou je změna formátu dat načítaných do účtu úložiště.
 Stáhněte si prosím nejnovější aplikace (verze 1.8) k tomuto problému vyhnout.
 >
@@ -38,6 +38,7 @@ Stáhněte si prosím nejnovější aplikace (verze 1.8) k tomuto problému vyhn
 
 ## <a name="configure-storage-account-for-reports"></a>Nakonfigurujte účet úložiště pro sestavy
 Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro trezor služby Recovery Services pomocí webu Azure portal. Jedná se o jednorázovou konfiguraci. Po dokončení konfigurace účtu úložiště, můžete přejít přímo do Power BI a zobrazit balíček obsahu a pomocí sestav.
+
 1. Pokud už máte trezor služby Recovery Services, otevřít, přejděte k dalšímu kroku. Pokud nemáte trezor služby Recovery Services, otevřete na webu Azure Portal, vyberte **všechny služby**.
 
    * V seznamu prostředků zadejte **služby Recovery Services**.
@@ -54,7 +55,7 @@ Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro trezor 
 3. Na **Backup Reports** okno, vyberte **nastavení diagnostiky** odkaz. Tento odkaz otevře **nastavení diagnostiky** uživatelského rozhraní, který se používá k zápisu dat do účtu úložiště zákazníka.
 
       ![Povolení diagnostiky krok 3](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
-4. Vyberte **zapnout diagnostiku** otevřete uživatelské rozhraní pomocí konfigurace účtu úložiště. 
+4. Vyberte **zapnout diagnostiku** otevřete uživatelské rozhraní pomocí konfigurace účtu úložiště.
 
       ![Zapnout diagnostiku kroku 4](./media/backup-azure-configure-reports/enable-diagnostics.png)
 5. V **název** zadejte název nastavení. Vyberte **archivovat do účtu úložiště** zaškrtněte políčko, aby vytváření sestav dat můžete spustit přenášejí do účtu úložiště.
@@ -73,11 +74,11 @@ Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro trezor 
       ![Zobrazení nastavení diagnostiky kroku 9](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> Po dokončení konfigurace sestav pomocí ukládání účtu úložiště *počkejte po dobu 24 hodin* pro počáteční datová oznámení na dokončení. Aplikace Azure Backup v Power BI importujte pouze po uplynutí této doby. Další informace najdete v tématu [oddílu Nejčastější dotazy](#frequently-asked-questions). 
+> Po dokončení konfigurace sestav pomocí ukládání účtu úložiště *počkejte po dobu 24 hodin* pro počáteční datová oznámení na dokončení. Aplikace Azure Backup v Power BI importujte pouze po uplynutí této doby. Další informace najdete v tématu [oddílu Nejčastější dotazy](#frequently-asked-questions).
 >
 >
 
-## <a name="view-reports-in-power-bi"></a>Zobrazení sestav v Power BI 
+## <a name="view-reports-in-power-bi"></a>Zobrazení sestav v Power BI
 Když nakonfigurujete účet úložiště pro sestavy pomocí trezoru služby Recovery Services, trvá přibližně 24 hodin pro generování sestav dat spustit tok v. Po 24 hodinách nastavení účtu úložiště použijte následující postup zobrazení sestav v Power BI.
 Pokud chcete přizpůsobit a sdílet sestavy, vytvořte pracovní prostor a proveďte následující kroky
 
@@ -90,20 +91,20 @@ Pokud chcete přizpůsobit a sdílet sestavy, vytvořte pracovní prostor a prov
 4. Zadejte název účtu úložiště, který jste nakonfigurovali v předchozím kroku 5 a vyberte **Další**.
 
     ![Zadejte název účtu úložiště.](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Pomocí metody ověřování "Klíče", zadejte klíč účtu úložiště pro tento účet úložiště. K [zobrazení a zkopírování přístupových klíčů k úložišti](../storage/common/storage-account-manage.md#access-keys), přejděte na svůj účet úložiště na webu Azure Portal. 
+5. Pomocí metody ověřování "Klíče", zadejte klíč účtu úložiště pro tento účet úložiště. K [zobrazení a zkopírování přístupových klíčů k úložišti](../storage/common/storage-account-manage.md#access-keys), přejděte na svůj účet úložiště na webu Azure Portal.
 
      ![Zadejte účet úložiště](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
-     
+
 6. Vyberte **přihlášení**. Po přihlášení úspěšné, zobrazí se oznámení o importu dat.
 
     ![Import balíčku obsahu](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
-    
+
     Po dokončení importu se zobrazí **úspěch** oznámení. Pokud je velký objem dat v účtu úložiště, může trvat o něco déle, než k importu balíčku obsahu.
-    
+
     ![Importovat balíček obsahu úspěch](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
-    
+
 7. Jakmile úspěšně, naimportuje data **Azure Backup** balíček obsahu je zobrazená v **aplikace** v navigačním podokně. V části **řídicí panely**, **sestavy**, a **datových sad**, v seznamu se teď zobrazí Azure Backup.
-     
+
 8. V části **řídicí panely**vyberte **Azure Backup**, zobrazí sadu připnuté klíče sestavy.
 
       ![Řídicí panel služby Azure Backup](./media/backup-azure-configure-reports/azure-backup-dashboard.png) <br/>
@@ -117,38 +118,32 @@ Pokud chcete přizpůsobit a sdílet sestavy, vytvořte pracovní prostor a prov
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Jak můžu ověřit, pokud vytváření sestav dat bylo zahájeno přenášejí do účtu úložiště?**
-    
-   Přejděte na účet úložiště, které jste nakonfigurovali a vyberte kontejnery. Pokud kontejner má záznam pro přehledy. protokoly azurebackupreport, znamená to, data pro vytváření sestav byla spuštěna tok.
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Jak můžu ověřit, pokud vytváření sestav dat bylo zahájeno přenášejí do účtu úložiště?
+Přejděte na účet úložiště, které jste nakonfigurovali a vyberte kontejnery. Pokud kontejner má záznam pro přehledy. protokoly azurebackupreport, znamená to, data pro vytváření sestav byla spuštěna tok.
 
-**Co je frekvence datová oznámení k účtu úložiště a balíčku obsahu Azure Backup v Power BI?**
+### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Co je frekvence datová oznámení k účtu úložiště a balíčku obsahu Azure Backup v Power BI?
+  Pro uživatele 0 dne trvá přibližně 24 hodin k zápisu dat do účtu úložiště. Po ukončení tohoto počátečního nabízená data se aktualizují s frekvencí je znázorněno na následujícím obrázku.
 
-   Pro uživatele 0 dne trvá přibližně 24 hodin k zápisu dat do účtu úložiště. Po ukončení tohoto počátečního nabízená data se aktualizují s frekvencí je znázorněno na následujícím obrázku. 
-      
-* Data související s **úlohy**, **výstrahy**, **zálohování položek**, **trezory**, **chráněné servery**a  **Zásady** se vloží do účtu úložiště zákazníka, jako je, a když se zaznamená.
-      
-* Data související s **úložiště** se vloží do účtu úložiště zákazníka každých 24 hodin.
-   
-   ![Azure Backup Reports data nabízená frekvence](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+  * Data související s **úlohy**, **výstrahy**, **zálohování položek**, **trezory**, **chráněné servery**a  **Zásady** se vloží do účtu úložiště zákazníka, jako je, a když se zaznamená.
 
-* Má Power BI [plánovanou aktualizaci jednou denně](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Můžete provést ruční aktualizaci dat v Power BI pro balíček obsahu.
+  * Data související s **úložiště** se vloží do účtu úložiště zákazníka každých 24 hodin.
 
-**Jak dlouho může uchovávat sestavy?**
+       ![Azure Backup Reports data nabízená frekvence](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
 
-   Když konfigurujete účet úložiště, můžete vybrat takovou dobu uchování dat sestavy v účtu úložiště. Postupujte podle kroku 6 v předchozí části "Konfigurace účtu úložiště pro sestavy". Můžete také [analyzovat sestav v aplikaci Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) a uloží pro delší doba uchovávání dat, na základě vašich potřeb.
+  * Má Power BI [plánovanou aktualizaci jednou denně](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Můžete provést ruční aktualizaci dat v Power BI pro balíček obsahu.
 
-**Se zobrazí všechna data v sestavách, po nakonfigurovat účet úložiště?**
+### <a name="how-long-can-i-retain-reports"></a>Jak dlouho může uchovávat sestavy?
+Když konfigurujete účet úložiště, můžete vybrat takovou dobu uchování dat sestavy v účtu úložiště. Postupujte podle kroku 6 v [konfigurace účtu úložiště pro sestavy](backup-azure-configure-reports.md#configure-storage-account-for-reports) oddílu. Můžete také [analyzovat sestav v aplikaci Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) a uloží pro delší doba uchovávání dat, na základě vašich potřeb.
 
-   Všechna data vygeneruje, když nakonfigurujete účet úložiště se vloží do účtu úložiště a je k dispozici v sestavách. Pro vytváření sestav, se nepřenášejí probíhající úlohy. Po dokončení úlohy nebo se nezdaří, jsou odeslána do sestavy.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Se zobrazí všechna data v sestavách, po nakonfigurovat účet úložiště?
+ Všechna data vygeneruje, když nakonfigurujete účet úložiště se vloží do účtu úložiště a je k dispozici v sestavách. Pro vytváření sestav, se nepřenášejí probíhající úlohy. Po dokončení úlohy nebo se nezdaří, jsou odeslána do sestavy.
 
-**Pokud už jsem nakonfiguroval účet úložiště, chcete-li zobrazit sestavy, můžu změnit konfiguraci na jiný účet úložiště?**
+### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Pokud už jsem nakonfiguroval účet úložiště, chcete-li zobrazit sestavy, můžu změnit konfiguraci na jiný účet úložiště?
+Ano, můžete změnit konfiguraci tak, aby odkazoval na jiný účet úložiště. Při připojení k balíčku obsahu Azure Backup, použijte nově nakonfigurovaný účet úložiště. Po dokončení konfigurace jiný účet úložiště je nová data se přenášejí také v tomto účtu úložiště. Starší data (před změnou konfigurace) zůstává ve starší účtu úložiště.
 
-   Ano, můžete změnit konfiguraci tak, aby odkazoval na jiný účet úložiště. Při připojení k balíčku obsahu Azure Backup, použijte nově nakonfigurovaný účet úložiště. Po dokončení konfigurace jiný účet úložiště je nová data se přenášejí také v tomto účtu úložiště. Starší data (před změnou konfigurace) zůstává ve starší účtu úložiště.
+### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Můžete zobrazit sestavy úložišť a předplatná?
+Ano, můžete konfigurovat stejného účtu úložiště v rámci různých úložišť zobrazit trezor různé sestavy. Kromě toho můžete nakonfigurovat stejného účtu úložiště pro trezory napříč předplatnými. Tento účet úložiště můžete použít při připojení k balíčku obsahu Azure Backup v Power BI k zobrazení sestavy. Vybraný účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
 
-**Můžete zobrazit sestavy úložišť a předplatná?**
-
-   Ano, můžete konfigurovat stejného účtu úložiště v rámci různých úložišť zobrazit trezor různé sestavy. Kromě toho můžete nakonfigurovat stejného účtu úložiště pro trezory napříč předplatnými. Tento účet úložiště můžete použít při připojení k balíčku obsahu Azure Backup v Power BI k zobrazení sestavy. Vybraný účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
-   
 ## <a name="troubleshooting-errors"></a>Řešení chyb
 | Podrobnosti o chybě | Řešení |
 | --- | --- |
@@ -161,4 +156,3 @@ Po konfiguraci účtu úložiště a importovat balíček obsahu Azure Backup, j
 * [Použití Azure Backup, vytváření sestav datového modelu](backup-azure-reports-data-model.md)
 * [Filtr sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
 * [Vytvoření sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-

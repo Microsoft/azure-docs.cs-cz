@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: ba7ac806a74cd0b378c39eb3873e7d64435bcf4f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f3ca140fd8606f60a07b71db32cf2d3987ed7860
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105650"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233595"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
 
 Při nasazování prostředků, určíte, že je nasazení přírůstkové aktualizace nebo kompletní aktualizace.  Hlavní rozdíl mezi těchto dvou režimech je způsob, jakým zpracovává existujících prostředků ve skupině prostředků, které nejsou v šabloně Resource Manageru. Výchozí režim je přírůstkový.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Režim dokončení nasazení podporují pouze šablon na kořenové úrovni. Pro [propojené nebo vnořené šablony](resource-group-linked-templates.md), je nutné použít přírůstkový režim. 
 
 ## <a name="incremental-and-complete-deployments"></a>Přírůstkové a úplné nasazení
 
@@ -63,8 +63,6 @@ Při nasazení v **kompletní** režimu C prostředků se odstraní. Skupina pro
 
 ## <a name="set-deployment-mode"></a>Nastavit režim nasazení
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Chcete-li nastavit režim nasazení při nasazení pomocí Powershellu, použijte `Mode` parametru.
 
 ```azurepowershell-interactive
@@ -86,7 +84,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Při použití [propojené nebo vnořené šablony](resource-group-linked-templates.md), je nutné nastavit `mode` vlastnost `Incremental`. Režim dokončení nasazení podporují pouze šablon na kořenové úrovni.
+Následující příklad ukazuje šablonu propojené nastavený režim přírůstkové nasazení:
 
 ```json
 "resources": [

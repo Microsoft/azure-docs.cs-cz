@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: e0e0c0654905245502fa4cf6647ee3a93d2e4833
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4ee36aaaeeda02025da6b01f4dd6c84afd72970f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002177"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233349"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
 
@@ -60,7 +60,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 |Kategorie   |Název   |
 |---|---|
 |Nástroje pro Linux            |Bash<br> zsh<br> sh<br> tmux<br> Ponořte se<br>               |
-|Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [klasické rozhraní příkazového řádku Azure](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [klasické rozhraní příkazového řádku Azure](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Textových editorů           |kód (Cloud Shell editor)<br> VIM<br> nano<br> emacs    |
 |Správy zdrojového kódu         |git                    |
 |Nástroje sestavení            |Ujistěte se<br> Maven<br> npm<br> pip         |

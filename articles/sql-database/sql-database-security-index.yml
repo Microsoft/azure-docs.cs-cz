@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d29bbe5260f1f1dafcd6d01ba5c425c9e637ce41
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3d82735a5fcfaaa16efec1578136531fd3a2dd91
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109822"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236856"
 documentType: LandingData
 title: Azure SQL Database – rozšířené zabezpečení
 metadata:
@@ -12,6 +12,7 @@ metadata:
   title: Azure SQL Database – rozšířené zabezpečení
   meta.description: Learn about the Advanced security capabilities of Azure SQL Database.
   services: sql-database
+  ms.subservice: security
   author: jovanpop-msft
   manager: craigg
   requires-business-manager-approval: false

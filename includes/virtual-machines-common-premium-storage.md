@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2e8b2753a441b0d7f27745fdf622b26dcee7784a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571983"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246801"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 
@@ -51,7 +51,7 @@ Tady jsou některé z funkcí úložiště Premium Storage:
 
 * **Disky storage úrovně Premium**
 
-    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby osm velikostí disku GA: P4 (32 GB), P6 (64 GiB) P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1 024 GB), P40 (2 048 GB), P50 (4 095 GB). Stejně jako tři velikosti disků ve verzi preview: P60 8192 GiB (8 TB) P70 16,348 GiB (16 TB), 32 767 GiB P80 (32 TB). Velikosti disků P4 P6, P15, P60, P70 a P80 jsou aktuálně podporuje jenom pro službu Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
+    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby osm velikostí disku všeobecné dostupnosti:  P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), P15 (256 GiB), P20 (512 GiB), P30 (1,024 GiB), P40 (2,048 GiB), P50 (4,095 GiB). A také třech velikostech disků ve verzi preview: P60 8192 GiB (8 TB) P70 16,348 GiB (16 TB) P80 32 767 GiB (32 TB). Velikosti disků P4 P6, P15, P60, P70 a P80 jsou aktuálně podporuje jenom pro službu Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
 
 * **Objekty BLOB stránky úrovně Premium**
 
@@ -67,7 +67,7 @@ Tady jsou některé z funkcí úložiště Premium Storage:
     - [Azure CLI pro úložiště Azure](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (pro nasazení Azure Resource Manager) nebo jedna z klientských knihoven Azure Storage resource provider
 
-    Další informace o omezeních účtu úložiště úrovně premium, najdete v článku [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#premium-storage-scalability-and-performance-targets).
+    Další informace o omezeních účtu úložiště úrovně premium, najdete v článku škálovatelnost a výkonnostní cíle Storage úrovně Premium.
 
 * **Místně redundantní úložiště úrovně Premium**
 
@@ -101,7 +101,7 @@ Tady jsou některé z funkcí podporovaných v premium storage virtuálních po�
     >
     > 
 
-* **mezipaměť**
+* **Mezipaměť**
 
     Virtuální počítače (VM), které podporují službu Premium Storage mají jedinečné funkce ukládání do mezipaměti pro vyšší propustnost a snížená latence. Jejich ukládání do mezipaměti funkce překračuje základní výkon disku úrovně premium storage. Ne všechny virtuální počítače podporu ukládání do mezipaměti, takže zkontrolujte ji prosím specifikace virtuálních počítačů pro velikosti virtuálních počítačů vás zajímají další informace.  Virtuální počítače, které podporují ukládání do mezipaměti se označit to jejich specifikace s měřením "Maximální propustnost v mezipaměti a dočasného úložiště".  V jakém jsou také uvedeny přímo pod názvem virtuálního počítače.
     
@@ -149,18 +149,18 @@ Další informace najdete v tématu [škálovatelnost a výkonnostní cíle Azur
 Pokud používáte účty služby premium storage pro nespravované disky a vaše aplikace překračuje cíle škálovatelnosti z jednoho účtu úložiště, může být vhodné k migraci na spravované disky. Pokud už nechcete migrovat do managed disks, sestavení aplikace pro použití více účtů úložiště. Potom data rozdělte mezi tyto účty úložiště. Například pokud chcete připojení disků 51 TB napříč několika virtuálními počítači, rozloženy je dva účty úložiště. 35 TB je limit pro účet úložiště jedné úrovně premium. Ujistěte se, že účet úložiště úrovně premium jeden nikdy zajišťované disky větší než 35 TB.
 
 ### <a name="premium-storage-disk-limits"></a>Limity disk Storage úrovně Premium
-Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí osm typů GA disky storage úrovně premium: P4 (spravované jen disky), P6 (spravované jen disky), P10, P15 (spravované jen disky), P20, P30, P40 nebo P50. Stejně jako tři velikosti disků ve verzi preview: P60 P70 a P80. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
+Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí osm typů GA disky premium storage: P4 (spravované disky pouze) a P6 (spravované jen disky), P10, P15 (pouze spravované disky), P20, P30, P40 nebo P50. A také třech velikostech disků ve verzi preview: P60 P70 a P80. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
 
 Velikosti označený hvězdičkou jsou aktuálně ve verzi preview.
 
 | Typ disky Premium  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60 *            | P70 *               | P80 *               |
 |---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
-| Velikost disku           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 giB (1 TB) | 2048 giB (2 TB)| 4095 GiB (4 TiB)| 8192 giB (8 TB)| 16384 giB (16 TB)| 32 767 giB (32 TB)|
-| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
+| Velikost disku           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 GiB (2 TiB)| 4095 GiB (4 TiB)| 8192 GiB (8 TiB)| 16,384 GiB (16 TiB)| 32 767 giB (32 TB)|
+| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
 | Propustnost / disk | 25 MB za sekundu | 50 MB za sekundu | 100 MB za sekundu | 125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 480 MB za sekundu | 750 MB za sekundu | 750 MB za sekundu |
 
 > [!NOTE]
-> Zkontrolujte, zda je k dispozici na na jednotce diskové přenosy virtuálního počítače dostatečnou šířku pásma, jak je popsáno v [virtuálních počítačů služby Premium Storage podporuje](#premium-storage-supported-vms). V opačném případě propustnost disku a vstupně-výstupních operací je omezen na nižší hodnoty. Maximální propustnost a vstupně-výstupních operací jsou založeny na omezení virtuálního počítače, ne na disku omezení jsou popsané v předchozí tabulce.  
+> Zkontrolujte, zda je k dispozici na na jednotce diskové přenosy virtuálního počítače dostatečnou šířku pásma, jak je popsáno v [virtuálních počítačů služby Premium Storage podporuje](). V opačném případě propustnost disku a vstupně-výstupních operací je omezen na nižší hodnoty. Maximální propustnost a vstupně-výstupních operací jsou založeny na omezení virtuálního počítače, ne na disku omezení jsou popsané v předchozí tabulce.  
 > Azure je navržená tak, platforma Premium Storage bude masivně paralelní. Návrh aplikace jako vícevláknového vám pomůže zajistit vysoký výkon cíl nabízíme na větší velikosti disku.
 
 Zde jsou některé důležité kroky vědět o škálovatelnost a výkonnostní cíle služby Premium Storage:
@@ -294,7 +294,7 @@ Pokud používáte Storage úrovně Premium, platí následující aspekty faktu
 
 * **Velikost disku a objektů blob úložiště úrovně Premium**
 
-    Fakturace pro disk storage úrovně premium nebo objekt blob závisí na zřízená velikost disku nebo objektu blob. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost disku úložiště úrovně premium. Podrobnosti najdete v tabulce v [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#premium-storage-scalability-and-performance-targets). Každý disk mapuje na velikosti zřízeného disku podporované a účtuje se odpovídajícím způsobem. Za všechny zajišťovaným diskem se fakturuje po hodinách pomocí cenu za měsíc pro nabídku služby Premium Storage. Například pokud zřízení disku P10 a odstraní ji po 20 hodin, fakturuje se vám pro nabídky P10 nebo jeho poměrnou část 20 hodin. To je bez ohledu na množství skutečné dat zapsaných na disk nebo IOPS a propustnost použít.
+    Fakturace pro disk storage úrovně premium nebo objekt blob závisí na zřízená velikost disku nebo objektu blob. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost disku úložiště úrovně premium. Podrobnosti najdete v tabulce v [škálovatelnost a výkonnostní cíle Storage úrovně Premium](). Každý disk mapuje na velikosti zřízeného disku podporované a účtuje se odpovídajícím způsobem. Za všechny zajišťovaným diskem se fakturuje po hodinách pomocí cenu za měsíc pro nabídku služby Premium Storage. Například pokud zřízení disku P10 a odstraní ji po 20 hodin, fakturuje se vám pro nabídky P10 nebo jeho poměrnou část 20 hodin. To je bez ohledu na množství skutečné dat zapsaných na disk nebo IOPS a propustnost použít.
 
 * **Nespravované disky Premium snímky**
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6100a77d3c0bd1ac5e012651f1e7d359c4c67443
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84bed7031307316545cc8e468196c6b12cde7bb7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954449"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237057"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Vytvoření clusterů HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště pomocí prostředí PowerShell
 
@@ -39,12 +39,14 @@ Konfigurace HDInsight pro práci s Data Lake Storage Gen1 pomocí prostředí Po
 
 ## <a name="prerequisites"></a>Požadavky
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Než začnete tento kurz, ujistěte se, že splňujete následující požadavky:
 
-* **Předplatné Azure**: přejděte na [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Prostředí Azure PowerShell 1.0 nebo vyšší**: viz [instalace a konfigurace Powershellu](/powershell/azure/overview).
+* **Předplatné Azure**: Přejděte na [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* **Prostředí Azure PowerShell 1.0 nebo vyšší**: Zobrazit [instalace a konfigurace Powershellu](/powershell/azure/overview).
 * **Windows Software Development Kit (SDK)**: Chcete-li nainstalovat sadu Windows SDK, přejděte na [soubory ke stažení a nástroje pro Windows 10](https://dev.windows.com/downloads). Sada SDK se používá k vytvoření certifikátu zabezpečení.
-* **Instanční objekt Azure Active Directory**: Tento kurz popisuje, jak vytvořit instanční objekt služby ve službě Azure Active Directory (Azure AD). K vytvoření instančního objektu, ale musí být správce Azure AD. Pokud jste správce, můžete tuto požadovanou součást přeskočit a pokračovat v tomto kurzu.
+* **Instanční objekt Azure Active Directory**: Tento kurz popisuje, jak vytvořit instanční objekt v Azure Active Directory (Azure AD). K vytvoření instančního objektu, ale musí být správce Azure AD. Pokud jste správce, můžete tuto požadovanou součást přeskočit a pokračovat v tomto kurzu.
 
     >[!NOTE]
     >Služby můžete vytvořit instanční objekt, pouze v případě, že jste správce Azure AD. Správce Azure AD musíte vytvořit instanční objekt před vytvořením clusteru služby HDInsight s Data Lake Storage Gen1. Instanční objekt musí být vytvořeny pomocí certifikátu, jak je popsáno v [vytvoření instančního objektu s certifikátem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
@@ -57,25 +59,25 @@ Vytvoření účtu Data Lake Storage Gen1, postupujte takto:
 1. Z plochy otevřete okno Powershellu a pak zadejte níže zobrazené fragmenty kódu. Po zobrazení výzvy k přihlášení, přihlaste se jako správci předplatného nebo vlastníci. 
 
         # Sign in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Pokud se registrace poskytovatele prostředků Data Lake Storage Gen1 a zobrazí se chyba podobná `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, vaše předplatné nemusí být uvedeny v seznamu povolených pro Data Lake Storage Gen1. Aby vaše předplatné Azure pro Data Lake Storage Gen1, postupujte podle pokynů v [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](data-lake-store-get-started-portal.md).
+    > Pokud se registrace poskytovatele prostředků Data Lake Storage Gen1 a zobrazí se chyba podobná `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, vaše předplatné nemusí být uvedeny v seznamu povolených pro Data Lake Storage Gen1. Aby vaše předplatné Azure pro Data Lake Storage Gen1, postupujte podle pokynů v [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](data-lake-store-get-started-portal.md).
     >
 
 2. Účet Data Lake Storage Gen1 je přidružené ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků.
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     Měli byste vidět výstup podobný tomuto:
 
@@ -88,7 +90,7 @@ Vytvoření účtu Data Lake Storage Gen1, postupujte takto:
 3. Vytvoření účtu Data Lake Storage Gen1. Název účtu, který zadáte, musí obsahovat jenom malá písmena a číslice.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     Zobrazený výstup by měl vypadat asi takto:
 
@@ -110,7 +112,7 @@ Vytvoření účtu Data Lake Storage Gen1, postupujte takto:
 4. Pomocí Data Lake Storage Gen1 jako výchozím úložištěm, musíte určit kořenovou cestu, ke které se zkopírují soubory specifických pro cluster při vytváření clusteru. Chcete-li vytvořit kořenovou cestu, která je **/clustery/hdiadlcluster** v tomto fragmentu kódu pomocí následující rutiny:
 
         $myrootdir = "/"
-        New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
+        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Nastavení ověřování pro přístup na základě rolí k Data Lake Storage Gen1
@@ -152,7 +154,7 @@ V této části se vytvořit instanční objekt pro aplikaci Azure AD, přiřadi
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -163,14 +165,14 @@ V této části se vytvořit instanční objekt pro aplikaci Azure AD, přiřadi
         $applicationId = $application.ApplicationId
 2. Vytvoření instančního objektu pomocí ID aplikace.
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. Udělení přístupu instančního objektu služby na kořenovém adresáři Data Lake Storage Gen1 a všechny složky v kořenové cestě, která jste zadali dříve. Pomocí následujících rutin:
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-the-default-storage"></a>Vytvoření clusteru HDInsight s Linuxem s Data Lake Storage Gen1 jako výchozí úložiště
 
@@ -178,7 +180,7 @@ V této části vytvoříte cluster HDInsight Hadoop Linux s Data Lake Storage G
 
 1. Načtení ID tenanta předplatného a uložte ho pro pozdější použití.
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 
 2. Vytvoření clusteru HDInsight pomocí následující rutiny:
 
@@ -192,7 +194,7 @@ V této části vytvoříte cluster HDInsight Hadoop Linux s Data Lake Storage G
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster `
+        New-AzHDInsightCluster `
                -ClusterType Hadoop `
                -OSType Linux `
                -ClusterSizeInNodes $clusterNodes `
@@ -253,7 +255,7 @@ Můžete také použít `hdfs dfs -put` příkazu některé soubory nahrát do D
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Pomocí Data Lake Storage Gen1 s využitím clusterů Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Azure portal: vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure portal: Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

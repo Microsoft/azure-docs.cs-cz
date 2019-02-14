@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2ad525ee0e10064d4d606dc1f899ef813fe92ab5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273490"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232599"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Koncové body služeb virtuální sítě pomocí Azure Event Hubs
 
@@ -29,13 +29,13 @@ Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány
 >[!WARNING]
 > Implementace integrace virtuální sítě můžete zabránit interakci s centry událostí dalšími službami Azure.
 >
-> Důvěryhodné Microsoft services nejsou podporovány, pokud virtuální sítě jsou implementovány a budou brzy dostupné.
+> Důvěryhodné Microsoft services nejsou podporovány, pokud jsou implementovány virtuální sítě.
 >
 > Běžné scénáře služby Azure, které nefungují s virtuálními sítěmi (Všimněte si, že je seznam **není** vyčerpávající)-
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
-> - Směruje Azure IoT Hub
+> - Azure IoT Hub Routes
 > - Azure IoT Device Explorer
 > - Průzkumník dat Azure
 >

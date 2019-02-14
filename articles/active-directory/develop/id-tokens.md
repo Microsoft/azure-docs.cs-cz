@@ -17,24 +17,24 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de9db7abe17fc41907582ec32d3e916d0536e543
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92472d276b3f03e5a3855587de4ca8a045bfec2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175085"
+ms.locfileid: "56234420"
 ---
 # <a name="id-tokens"></a>Tokeny ID
 
-`id_tokens` se odesílají do klientské aplikace jako součást [OpenID Connect](v1-protocols-openid-connect-code.md) toku. Může být odeslána po straně nebo místo přístupový token a klient používá k ověření uživatele. 
+`id_tokens` se odesílají do klientské aplikace jako součást [OpenID Connect](v1-protocols-openid-connect-code.md) toku. Může být odeslána po straně nebo místo přístupový token a klient používá k ověření uživatele.
 
 ## <a name="using-the-idtoken"></a>Použití požadavku id_token
 
-Tokeny typu ID by měla sloužit k ověření, že je uživatel který jejich tvrzení a další užitečné informace o nich – se nesmí používat pro povolení místo [přístupový token](access-tokens.md). Deklarace identity, které poskytuje lze použít pro uživatelské prostředí do své aplikace, vytvoření databáze a díky přístupu do klientské aplikace. 
+Tokeny typu ID by měla sloužit k ověření, že je uživatel který jejich tvrzení a další užitečné informace o nich – se nesmí používat pro povolení místo [přístupový token](access-tokens.md). Deklarace identity, které poskytuje lze použít pro uživatelské prostředí do své aplikace, vytvoření databáze a díky přístupu do klientské aplikace.
 
 ## <a name="claims-in-an-idtoken"></a>Deklarace identity ve za token ID.
 
-`id_tokens` pro Microsoft identity jsou [tokeny Jwt](https://tools.ietf.org/html/rfc7519), což znamená sestávají z část záhlaví datové části a podpisu. Hlavičky a datové části můžete použít k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli požadoval vašeho klienta. Pokud není uvedeno jinak všechny deklarace identity, které jsou tady uvedené zobrazovat v tokenech v1.0 a v2.0.
+`id_tokens` pro Microsoft identity jsou [tokeny Jwt](https://tools.ietf.org/html/rfc7519), což znamená sestávají z část záhlaví datové části a podpisu. Záhlaví a podpis slouží k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli požadoval vašeho klienta. Pokud není uvedeno jinak všechny deklarace identity, které jsou tady uvedené zobrazovat v tokenech v1.0 a v2.0.
 
 ### <a name="v10"></a>v1.0
 

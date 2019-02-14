@@ -3,21 +3,21 @@ title: Spravovat ověřování ve službě Azure Maps | Dokumentace Microsoftu
 description: Na webu Azure portal můžete použít ke správě ověřování ve službě Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/09/2018
+ms.date: 02/14/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: db0450ab8b765ec158201c6db149a7de7d135b98
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 68c3c8ac39f5803e01ee1038ec85ddb96ac80b30
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143752"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242681"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Spravovat ověřování ve službě Azure Maps
 
-Po vytvoření účtu Azure Maps se vytvoří tři identifikátory GUID k podpoře Azure Active Directory (Azure AD) nebo ověřování pomocí sdíleného klíče.
+Po vytvoření účtu Azure Maps ID klienta a klíče jsou vytvořeny pro podporu služby Azure Active Directory (Azure AD) nebo ověřování pomocí sdíleného klíče.
 
 Zjistíte tak, že přejdete do vašich ověřovacích údajů **ověřování** stránky **nastavení** na webu Azure Portal. Přejděte do svého účtu. Potom vyberte **ověřování** z nabídky.
 
@@ -35,7 +35,7 @@ Zobrazte si podrobnosti o ověřování, přejděte **ověřování** v nabídce
 
 Po vytvoření účtu Azure mapa vyžádáním propojení mezi vaším tenantem Azure AD a prostředků Azure Maps Azure. 
 
-1. Přejděte do okna AAD a vytvořit registrace aplikace s názvem a přihlašovací adresa URL jako domovská stránka webové aplikace a rozhraní API, jako "https://localhost/". Pokud už máte registrovaná aplikace, pokračujte ke kroku 2.
+1. Přejděte do okna Azure AD a vytvořit registrace aplikace s názvem a přihlašovací adresa URL jako domovská stránka webové aplikace a rozhraní API, jako "https://localhost/". Pokud už máte registrovaná aplikace, pokračujte ke kroku 2.
 
     ![Registrace aplikace](./media/how-to-manage-authentication/app-registration.png)
 
@@ -51,11 +51,11 @@ Po vytvoření účtu Azure mapa vyžádáním propojení mezi vaším tenantem 
 
 4. Postupujte podle kroku nebo b, v závislosti na provádění ověřování.
 
-    1. Pokud aplikace hodlá pomocí naší sady SDK služby Azure Maps webové ověřování pomocí tokenu uživatele, musíte povolit `oauthEnableImplicitFlow` tak, že nastavíte na hodnotu true v manifestu části na stránce podrobností registrace vaší aplikace. 
+    1. Pokud se hodláte aplikace pomocí naší sady SDK služby Azure Maps webové ověřování pomocí tokenu uživatele, je nutné povolit `oauthEnableImplicitFlow` tak, že nastavíte na hodnotu true v manifestu části na stránce podrobností registrace vaší aplikace.
     
        ![Manifest aplikace](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Pokud vaše aplikace používá server/aplikace ověřování Přejít **klíče** okně registrace aplikací a buď vytvořit heslo nebo nahrát certifikát veřejného klíče pro registraci aplikace. Pokud vytvoříte heslo, jakmile **Uložit**, zkopírujte pro pozdější, heslo a bezpečně uložte, se pomocí získat tokeny ze služby AAD. 
+    2. Pokud vaše aplikace používá server/aplikace ověřování Přejít **klíče** okno v rámci registrace aplikace a buď vytvořit heslo nebo nahrát certifikát veřejného klíče pro registraci aplikace. Pokud vytvoříte heslo, jakmile **Uložit**, zkopírujte pro pozdější, heslo a bezpečně uložte, to bude používat k získání tokenů z Azure AD.
 
        ![Klíče aplikace](./media/how-to-manage-authentication/app-keys.png)
 
@@ -94,8 +94,7 @@ Jakmile vaše aplikace je zaregistrované a související s Azure Maps, můžete
 
 * Pokud aplikace je hodláte používat ověřování pomocí tokenu uživatele s naší Azure Maps Web SDK (Web), budete muset nakonfigurovat stránku html s ID klienta Azure Maps a ID aplikace Azure AD
 
-
-* U aplikací s použitím ověřování serveru/aplikace požádat o token z koncového bodu Azure AD přihlášení https://login.microsoftonline.com s ID klienta Azure Maps, ID aplikace Azure AD a Azure AD App registrace heslo nebo certifikát.
+* U aplikací s použitím ověřování serveru/aplikace požádat o token z koncového bodu Azure AD přihlášení `https://login.microsoftonline.com` s ID prostředku služby Azure AD `https://atlas.microsoft.com/`, ID klienta Azure Maps, ID aplikace Azure AD a Azure AD App registrace heslo nebo certifikát.
 
 Další informace o vyžádání přístupových tokenů z Azure AD pro uživatele a instančních objektů najdete v tématu [scénáře ověřování pro službu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 

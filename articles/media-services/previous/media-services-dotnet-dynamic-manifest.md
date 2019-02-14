@@ -14,14 +14,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 2ee2e85188c4294060ef3effdc2d443f604aff61
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5988ad92c9395332163182cb6995781d08bd5957
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003325"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236902"
 ---
-# <a name="creating-filters-with-media-services-net-sdk-legacy"></a>Vytváření filtrů pomocí sady Media Services .NET SDK (starší verze)
+# <a name="creating-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí Media Services .NET SDK 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)

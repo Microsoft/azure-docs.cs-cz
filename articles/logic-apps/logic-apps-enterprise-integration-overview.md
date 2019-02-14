@@ -10,14 +10,14 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: d37d5cb2b89b82bd9741dee0946b3a77d456b22a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405748"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243106"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Přehled: B2B podnikové integrace scénáře v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Přehled: Scénáře integrace enterprise B2B v Azure Logic Apps sadou Enterprise Integration Pack
 
 Pro pracovní postupy business-to-business (B2B) a bezproblémové komunikaci s Azure Logic Apps můžete aktivovat scénáře integrace enterprise od Microsoftu založené na cloudu řešení Enterprise Integration Pack. Organizace si mohou vyměňovat zprávy elektronicky, i když používají různé protokoly a formátů. Této sady transformuje do formátu, který organizace systémy dokážou interpretovat a zpracovat různé formáty. Organizace si mohou vyměňovat zprávy prostřednictvím standardních protokolů, jako jsou třeba [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Můžete také zabezpečení zpráv pomocí šifrování a digitálním podpisům.
 
@@ -33,7 +33,7 @@ Enterprise Integration Pack architektonicky, je založená na "integračních ú
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Jak začít s podnikovou integrací?
 
-Můžete vytvářet a spravovat aplikace B2B sadou Enterprise Integration Pack prostřednictvím návrhář aplikace logiky v **webu Azure portal**. Můžete také spravovat aplikace logiky pomocí [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "Logic apps Powershellu").
+Můžete vytvářet a spravovat aplikace B2B sadou Enterprise Integration Pack prostřednictvím návrhář aplikace logiky v **webu Azure portal**. Můžete také spravovat aplikace logiky pomocí [Powershellu](https://docs.microsoft.com/powershell/module/az.logicapp).
 
 Tady jsou hlavní kroky, které je třeba provést před vytvořením aplikace na webu Azure Portal:
 

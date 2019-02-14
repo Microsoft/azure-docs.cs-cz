@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: fa2ae313ab18d6e474f1dd0953a3b0a0d094c7c3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111804"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244925"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpečení zpráv B2B s certifikáty
 
@@ -30,6 +30,8 @@ Tyto certifikáty můžete použít v aplikacích pro integraci vaší organizac
 * [Veřejné certifikáty](https://en.wikipedia.org/wiki/Public_key_certificate), které je nutné zakoupit z veřejného Internetu [certifikační autority (CA)](https://en.wikipedia.org/wiki/Certificate_authority) ale které nevyžadují žádné klíče. 
 
 * Privátní certifikáty nebo [ *certifikáty podepsané svým držitelem*](https://en.wikipedia.org/wiki/Self-signed_certificate), které vytvoříte a vydat sami, ale také vyžadovat privátních klíčů. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upload-a-public-certificate"></a>Odeslat veřejný certifikát
 
@@ -60,18 +62,18 @@ Použití *veřejný certifikát* ve službě logic apps, které mají funkce B2
 
 ## <a name="upload-a-private-certificate"></a>Odeslání privátního certifikátu
 
-Použití *privátního certifikátu* ve službě logic apps, které mají funkce B2B, musíte nejprve nahrát certifikát ke svému účtu integrace. Budete také muset mít privátní klíč, který je nejprve přidat do [Azure Key Vault](../key-vault/key-vault-overview.md). 
+Použití *privátního certifikátu* ve službě logic apps, které mají funkce B2B, musíte nejprve nahrát certifikát ke svému účtu integrace. Budete také muset mít privátní klíč, který je nejprve přidat do [Azure Key Vault](../key-vault/key-vault-get-started.md). 
 
 Po definování vlastností v [smlouvy](logic-apps-enterprise-integration-agreements.md) , že vytvoříte, certifikát je k dispozici a pomáhá vám zabezpečit zpráv B2B.
 
 > [!NOTE]
 > Pro privátní certifikáty, ujistěte se, že přidáte odpovídající veřejný certifikát, který se zobrazí [smlouvy AS2](logic-apps-enterprise-integration-as2.md) **odesílat a přijímat** nastavení pro podepisování a šifrování zpráv.
 
-1. [Přidejte svůj privátní klíč do služby Azure Key Vault](../key-vault/quick-create-cli.md#add-a-secret-to-key-vault) a zadejte **název klíče**.
+1. [Přidejte svůj privátní klíč do služby Azure Key Vault](../key-vault/certificate-scenarios.md#import-a-certificate) a zadejte **název klíče**.
    
-2. Povolte Azure Logic Apps k provádění operací ve službě Azure Key Vault. Udělení přístupu k instančnímu objektu služby Logic Apps, použít příkaz prostředí PowerShell [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy), například:
+2. Povolte Azure Logic Apps k provádění operací ve službě Azure Key Vault. Udělení přístupu k instančnímu objektu služby Logic Apps, použít příkaz prostředí PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), například:
 
-   `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+   `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
 3. Přihlaste se k webu [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure zvolte **všechny prostředky**. Do vyhledávacího pole zadejte název svého účtu integrace a potom vyberte požadovaný účet pro integraci.

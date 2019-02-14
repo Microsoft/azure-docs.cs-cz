@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: tutorial
 ms.date: 01/23/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7921aac33abc6df121f734778fca7f9dddb19be7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 953111a65aecc05ce03bd58212494e1f251e5f16
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862543"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234029"
 ---
 # <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>Kurz: Rozpoznávání emocí na tváří v obrázku.
 

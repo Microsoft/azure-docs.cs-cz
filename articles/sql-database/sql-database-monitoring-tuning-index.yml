@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: af5246c452478dddaaa33b9575fc5a065121a343
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 51bec37f6b052d51d6cc8f5a8667789bec9e6881
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001030"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235961"
 documentType: LandingData
 title: 'Azure SQL Database: Sledování a ladění'
 metadata:
@@ -12,6 +12,7 @@ metadata:
   title: Azure SQL Database – monitorování a optimalizace
   meta.description: Learn how to monitor and tune your Azure SQL database.
   services: sql-database
+  ms.subservice: performance
   author: jovanpop-msft
   manager: craigg
   ms.service: sql-database

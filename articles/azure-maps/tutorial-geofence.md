@@ -3,18 +3,18 @@ title: Vytvoření monitorové geografické zóny, pomocí Azure Maps | Dokument
 description: Instalační program monitorové geografické zóny s využitím map Azure.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 02/14/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a991fbde8ce1ae43f18be4f13ae7edc5f60044bf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 55dc0fa31398bcc04d9793c8cffc9258dc29e4c7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108700"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244449"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Nastavení monitorové geografické zóny s využitím Azure Maps
 
@@ -40,9 +40,9 @@ K dokončení kroků v tomto kurzu, musíte nejprve zobrazíte [spravovat účet
 
 ## <a name="upload-geofences"></a>Nahrát monitorovaná geografická zóna
 
-Pokud chcete nahrát monitorové geografické zóny pro vytváření webu pomocí rozhraní API nahrát Data, budeme používat aplikaci postman. Pro účely tohoto kurzu předpokládáme, že není celkový oblasti lokality konstrukce, které je obtížné parametr, který by neměl porušují konstrukce zařízení. Porušení tohoto ohrazení jsou vážné obranu a hlášení do nástroje Operations Manager. Optimalizované sadu další ohrazení je možné, které sledují vytváření různých oblastí v rámci oblasti celkové konstrukce podle plánu. Můžete předpokládáme, že má hlavní monitorové geografické zóny Podweb1, který má nastavit vypršení platnosti čas a po, který vyprší. Můžete vytvořit více vnořených monitorovaná geografická zóna podle vašich požadavků. Podweb1 může být například, pokud pracovní probíhat během 1 až 4 týdnu plán a podřízeného webu 2 je, kde se práce probíhá týdnu 5 až 7. Takové ohrazení může načíst jako jedné datové sady na začátku projektu a používají ke sledování pravidel na základě času a místa. Zobrazit [GeoJSON monitorové geografické zóny dat](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) Další informace o formátu dat monitorové geografické zóny. Zobrazí se [dat – dokumentace k rozhraní API nahrát](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) Další informace o nahrávání dat do služby Azure Maps.
+Pokud chcete nahrát monitorové geografické zóny pro vytváření webu pomocí rozhraní API nahrát Data, budeme používat aplikaci postman. Pro účely tohoto kurzu předpokládáme, že není celkový oblasti lokality konstrukce, které je obtížné parametr, který by neměl porušují konstrukce zařízení. Porušení tohoto ohrazení jsou vážné obranu a hlášení do nástroje Operations Manager. Optimalizované sadu další ohrazení je možné, které sledují vytváření různých oblastí v rámci oblasti celkové konstrukce podle plánu. Můžete předpokládáme, že má hlavní monitorové geografické zóny Podweb1, který má nastavit vypršení platnosti čas a vyprší po uplynutí této doby. Můžete vytvořit více vnořených monitorovaná geografická zóna podle vašich požadavků. Podweb1 může být například, pokud pracovní probíhat během 1 až 4 týdnu plán a podřízeného webu 2 je, kde se práce probíhá týdnu 5 až 7. Takové ohrazení může načíst jako jedné datové sady na začátku projektu a používají ke sledování pravidel na základě času a místa. Další informace o formátu dat monitorové geografické zóny najdete v tématu [GeoJSON monitorové geografické zóny dat](https://docs.microsoft.com/azure/azure-maps/geofence-geojson). Další informace o nahrávání dat do služby Azure Maps, naleznete v tématu [dokumentace k rozhraní API nahrát Data](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) .
 
-Otevřete aplikaci Postman a postupujte podle následujících kroků k nahrání konstrukce lokality monitorové geografické zóny pomocí Azure Maps Data mapy nahrát rozhraní API.
+Otevřete aplikaci Postman a postupujte podle následujících kroků k nahrání konstrukce lokality monitorové geografické zóny pomocí Azure Maps API nahrát Data.
 
 1. Otevřete aplikaci Postman a klikněte na tlačítko Nový | Vytvořit novou a vyberte žádost o. Zadejte název žádosti o nahrání monitorové geografické zóny dat, vyberte kolekce nebo složce a uložit ho. tím, klikněte na tlačítko Uložit.
 
@@ -195,7 +195,7 @@ Podle následujících pokynů k vytvoření odběru událostí pro události za
 
 ## <a name="use-geofence-api"></a>Použití rozhraní API monitorové geografické zóny
 
-Rozhraní API monitorové geografické zóny můžete použít ke kontrole, jestli **zařízení** (zařízení je součástí stavu) je uvnitř nebo vně monitorové geografické zóny. Pro lepší pochopení monitorové geografické zóny získání rozhraní API. Zadáme dotaz na různých místech, kde se přesunul určité zařízení v čase. Následující obrázek znázorňuje pěti lokalitách konkrétní konstrukci zařízení s jedinečným **id zařízení** , jak v chronologickém pořadí. Každá z těchto pět umístění se používá k vyhodnocení monitorové geografické zóny vstupní a výstupní změna stavu proti plot. Pokud dojde ke změně stavu, službu monitorové geografické zóny aktivuje událost, která se odesílá do aplikace logiky pomocí služby Event Grid. V důsledku operace správce se zobrazí odpovídající enter nebo ukončete oznámení prostřednictvím e-mailu.
+Rozhraní API monitorové geografické zóny můžete použít ke kontrole, jestli **zařízení** (zařízení je součástí stavu) je uvnitř nebo vně monitorové geografické zóny. Pokud chcete lépe porozumět monitorové geografické zóny získání rozhraní API. Zadáme dotaz na různých místech, kde se přesunul určité zařízení v čase. Následující obrázek znázorňuje pěti lokalitách konkrétní konstrukci zařízení s jedinečným **id zařízení** , jak v chronologickém pořadí. Každá z těchto pět umístění se používá k vyhodnocení monitorové geografické zóny vstupní a výstupní změna stavu proti plot. Pokud dojde ke změně stavu, službu monitorové geografické zóny aktivuje událost, která se odesílá do aplikace logiky pomocí služby Event Grid. V důsledku operace správce se zobrazí odpovídající enter nebo ukončete oznámení prostřednictvím e-mailu.
 
 > [!Note]
 > Výše uvedené scénáře a chování je založena na stejném **id zařízení** tak, aby odráží pět různých umístění jako na následujícím obrázku.

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 1f13c5220eee19b6cf8b56e4b55922acc1b2c6b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b8bcdc57996e04b613a2196cb505c3f59edb953
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865025"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237276"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
@@ -59,6 +59,15 @@ Přidejte různými variantami jako příklad projevy k příslušnému záměru
 
 Cortana, které předem sestavených aplikací byla vyřazena jako zastaralá v 2017. Již nejsou podporovány.
 
+### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak se převést vlastnictví aplikace LUIS?
+Aplikace LUIS přenést do jiného předplatného Azure, aplikace LUIS exportujte a importujte ho pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která je volá. Nová aplikace může vrátit mírně odlišné LUIS skóre z původní aplikace.
+
+## <a name="luis-collaborating"></a>Služba LUIS spolupráce
+
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Jak můžu poskytnout spolupracovníci přístup k LUIS s Azure Active Directory (Azure AD) nebo řízení přístupu na základě Role (RBAC)?
+
+Zobrazit [prostředky služby Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-resources) a [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) se naučíte udělit přístup spolupracovníky. 
+
 ## <a name="luis-endpoint"></a>Koncový bod služby LUIS
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Můj dotaz koncový bod vrátil neočekávané výsledky. Co bych měl/a dělat?
@@ -67,7 +76,7 @@ Neočekávaný dotaz predikované výsledky jsou založeny na stav publikovanéh
 
 Oprava modelu začíná [aktivně učit](luis-how-to-review-endoint-utt.md).
 
-Můžete odebrat Nedeterministický školení aktualizací [aplikace verze nastavení rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aby bylo možné používat všechny trénovací data. 
+Můžete odebrat Nedeterministický školení aktualizací [aplikace verze nastavení rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aby bylo možné používat všechny trénovací data.
 
 Zkontrolujte [osvědčené postupy](luis-concept-best-practices.md) další tipy. 
 
@@ -152,10 +161,23 @@ Každá aplikace LUIS má klíč pro vytváření/starter v seznamu koncových b
 
 Pokud vaše aplikace existovala předtím, než služba LUIS je všeobecně dostupná (GA), jsou automaticky přiřadit klíče koncového bodu služby LUIS ve vašem předplatném. To se pro usnadnění migrace všeobecné dostupnosti. Jsou nějaké nové klíče koncového bodu služby LUIS na webu Azure Portal _není_ automaticky přiřazená k LUIS.
 
-## <a name="app-management"></a>Správa aplikací
+## <a name="key-management"></a>Správa klíčů
 
-### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak se převést vlastnictví aplikace LUIS?
-Aplikace LUIS přenést do jiného předplatného Azure, aplikace LUIS exportujte a importujte ho pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která je volá. Nová aplikace může vrátit mírně odlišné LUIS skóre z původní aplikace.
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Jak poznám, že klíč, co budu potřebovat, kde můžu získat, a co ho můžu použít? 
+
+Naleznete v tématu [vytváření obsahu a dotaz předpovědi klíče koncového bodu v LUIS](luis-concept-keys.md) Další informace o rozdílech mezi [vytváření klíč](luis-how-to-account-settings.md) a [klíče koncového bodu předpovědi](luis-how-to-azure-subscription.md). 
+
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Zobrazila se chyba o překročení kvóty. Jak ho mám opravit? 
+
+Zobrazit, [k vyřešení chyby limit kvóty, pokud klíč překročí využití cenové úrovně](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) Další informace.
+
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Potřebuji další koncový bod dotazy zpracovávají. Jak to mohu provést? 
+
+Zobrazit, [k vyřešení chyby limit kvóty, pokud klíč překročí využití cenové úrovně](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) Další informace.
+
+
+
+## <a name="app-management"></a>Správa aplikací
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Jak se stáhnout protokol projevy uživatele?
 Ve výchozím nastavení zaznamená aplikace LUIS projevy od uživatelů. Pokud chcete stáhnout protokol projevy, které uživatelům odeslat do vaší aplikace LUIS, přejděte na **Moje aplikace**a vyberte aplikaci. V kontextové nástrojů vyberte **exportovat protokoly koncového bodu**. Protokol je formátován jako soubor hodnot oddělených čárkami (CSV).

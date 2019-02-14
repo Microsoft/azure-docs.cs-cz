@@ -15,12 +15,12 @@ ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427c8b35f66b9b17d3da917b632d41cba5ddc99f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4a8311e359b5afa84020227de309e8b153a7ccda
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171515"
+ms.locfileid: "56238058"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Použití portálu k vytvoření aplikace Azure AD a instanční objekt, který má přístup k prostředkům
 
@@ -137,7 +137,7 @@ Musíte mít dostatečná oprávnění k registraci aplikace v tenantu Azure AD 
 
    ![Zobrazit registrace aplikace](./media/howto-create-service-principal-portal/view-app-registrations.png)
 
-Pokud je nastavení registrace aplikací nastaveno **ne**, pouze [globální správci](../users-groups-roles/directory-assign-admin-roles.md) můžou registrovat aplikace. Pokud je váš účet přiřazenou roli uživatele, ale registrace nastavení aplikace, které je omezená na uživatele správce, požádejte svého správce, aby buď přiřaďte roli globálního správce nebo povolit uživatelům registrovat aplikace.
+Pokud je nastavení registrace aplikací nastaveno **ne**, pouze uživatelé s rolí správce může registrovat tyto typy aplikací. Zobrazit [dostupných rolí](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a [oprávnění role](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) Další informace o rolích správce a zvláštní oprávnění ve službě Azure AD, kterým jsou přiřazena k jednotlivým rolím. Pokud je váš účet přiřazenou roli uživatele, ale registrace nastavení aplikace, které je omezená na uživatele správce, požádejte svého správce, aby buď můžete přiřadit do jedné z rolí správce, které můžete vytvářet a spravovat všechny aspekty registrací aplikací nebo uživatelům umožnit Registrace aplikací.
 
 ### <a name="check-azure-subscription-permissions"></a>Zkontrolujte oprávnění předplatného Azure
 

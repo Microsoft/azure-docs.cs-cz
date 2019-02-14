@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/08/2019
+ms.date: 02/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e192449858d6cbd2d054fa7c70276739cfe1143
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 427f3f498ac04c68ef0b335b50c60db46b46d042
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189475"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243850"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -140,17 +140,19 @@ Režim DirectQuery* využívá relační databáze back-endu pro ukládání a s
 
 \* Dostupnost funkcí závisí na úrovni.
 
-## <a name="supported-datasources"></a>Podporované zdroje dat
+## <a name="supported-data-sources"></a>Podporované zdroje dat
 
 Tabulkové modely ve službě Azure Analysis Services podporují celou řadu zdrojů dat, od jednoduchých textových souborů po velké objemy dat ve službě Azure Data Lake Store. Další informace najdete v tématu [Podporované zdroje dat ve službě Azure Analysis Services](analysis-services-datasource.md).
 
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 
-Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Na úrovni serveru: Brána firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. A na úrovni datového modelu zajišťují bezpečnost vašich dat a to, že je vidí pouze uživatelé, pro které jsou určena, role uživatele, zabezpečení na úrovni řádků a zabezpečení na úrovni objektů.
+Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Služby Azure Analysis Services poskytuje **základní** na úrovni distribuované útoky na dostupnost služeb (DDoS) automaticky povolené v rámci platformy Azure. Další informace najdete v tématu [Azure DDoS Protection standardní přehled](../virtual-network/ddos-protection-overview.md). 
+
+Na úrovni serveru služby Analysis Services poskytuje brány firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. Na úrovni modelu dat, rolí uživatelů, zajištění zabezpečení na úrovni řádků a na úrovni objektů vašich dat je bezpečné a získá vidět pouze uživatelé, kteří jsou určeny pro pozorování.
 
 ### <a name="firewall"></a>Brána firewall
 
-Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
+Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není povolená ochrana brány firewall pro nové servery. Je doporučeno je povolená ochrana brány firewall a pravidla jsou nakonfigurované v rámci serveru zřizovacího skriptu nebo prostřednictvím portálu ihned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
 ### <a name="authentication"></a>Authentication
 
@@ -251,7 +253,7 @@ Služba Analysis Services má velmi aktivní komunitu uživatelů. Připojte se 
 > [Registrace bezplatné zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md)   
+> [Rychlé zprovoznění: Vytvoření serveru – portál](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)  
+> [Rychlé zprovoznění: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)  

@@ -1,25 +1,25 @@
 ---
 title: Úvod do mezipaměti Azure Redis na úrovni Premium | Dokumentace Microsoftu
 description: Zjistěte, jak vytvářet a spravovat Redis trvalost, Redis, clustering a podpora virtuální sítě pro svou úroveň Premium mezipaměti Azure pro instance Redis
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 35ecb5156a8b81fa9e10123f7700cf91af91aa0a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115840"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237736"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Úvod do mezipaměti Azure Redis na úrovni Premium
 Mezipaměť Azure pro Redis je distribuovaná spravovaná mezipaměť, která pomáhá díky mimořádně rychlému přístupu k datům vytvářet vysoce škálovatelné a rychle reagující aplikace. 

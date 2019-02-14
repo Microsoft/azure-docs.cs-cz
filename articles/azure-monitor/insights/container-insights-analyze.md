@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159651"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233996"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery 
 Díky Azure monitoru pro kontejnery můžete použít grafy výkonu a stavu ke sledování těchto úloh své clustery Azure Kubernetes Service (AKS) za dvou hledisek, přímo z clusteru AKS nebo všechny AKS clusterů v rámci předplatného Azure Monitorování. Zobrazení služby Azure Container Instances (ACI) je také možné, při sledování konkrétní clusteru AKS.
@@ -275,5 +275,5 @@ Výstup protokoly kontejneru, který se předávají do Log Analytics jsou STDOU
 | **Vyberte možnosti spojnicový graf zobrazení**:<br> Výkonu<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "cpuUsageNanoCores" &#124; shrnout AvgCPUUsageNanoCores = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Procesoru kontejneru | 
 | **Vyberte možnosti spojnicový graf zobrazení**:<br> Výkonu<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "memoryRssBytes" &#124; shrnout AvgUsedRssMemoryBytes = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Paměti kontejneru |
 
-## <a name="alerting"></a>Zobrazení výstrah
-Azure Monitor pro kontejnery nezahrnuje předdefinovanou sadu výstrah, které můžete zkopírovat a upravit podle vašich podpůrné procesy a postupy. Do té doby, podívejte se na [vytvoření upozornění protokolu službou Azure Monitor](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json) a zjistěte, jak vytvořit vlastní sadu výstrah.  
+## <a name="next-steps"></a>Další postup
+Azure Monitor pro kontejnery nezahrnuje předdefinovanou sadu upozornění, která zkopírovat a upravit podle vašich podpůrné procesy a postupy. Zkontrolujte [vytvoření výstrahy související s výkonem pomocí Azure monitoru pro kontejnery](container-insights-alerts.md) se naučíte vytvořit doporučené výstrahy pro vysoké využití procesoru a paměti.  

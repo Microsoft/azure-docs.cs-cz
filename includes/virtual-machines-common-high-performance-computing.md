@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a1a6b31c1500c51dbbc32683d9e0e911b60dcae4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440467"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246790"
 ---
 Organizace mají rozsáhlých výpočetních potřeb. Tyto úlohy Big Compute zahrnují technického návrhu a analýzy, výpočty finančních rizik, vykreslování obrázků, komplexního modelování, simulace typu Monte Carlo a další. 
 
@@ -25,12 +25,12 @@ Použití cloudu Azure pro efektivní spuštění úlohy náročné na výpočet
     * Nastavte cluster prostředí ve službě Azure virtual machines nebo [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). 
     * Zvedněte a shift místní cluster nebo nasadí nový cluster v Azure další zvýšení kapacity. 
     * Použití šablon Azure Resource Manageru k nasazení řešení [Správci úloh](#workload-managers), infrastruktury, a [aplikací](#hpc-applications). 
-    * Zvolte [velikosti prostředí HPC a virtuálního počítače s GPU](#hpc-and-gpu-sizes) , které zahrnují specializovaný hardware a připojení k síti pro úlohy MPI nebo GPU. 
+    * Zvolte [velikosti prostředí HPC a virtuálního počítače s GPU](#hpc-and-gpu-vm-sizes) , které zahrnují specializovaný hardware a připojení k síti pro úlohy MPI nebo GPU. 
     * Přidat [vysoce výkonné úložiště](#hpc-storage) pro můžu intenzivních vstupně-výstupních operací.
 * **Hybridní řešení**
     * Rozšířit vaše místní řešení pro přesměrování zpracování úloh ve špičce ("rozšíření") do infrastruktury Azure
-    * Cloudové výpočetní prostředky na vyžádání pomocí stávajících [Správce úloh](#workload-manager).
-    * Využijte výhod [velikosti prostředí HPC a virtuálního počítače s GPU](#hpc-and-gpu-sizes) pro úlohy MPI nebo GPU.
+    * Cloudové výpočetní prostředky na vyžádání pomocí stávajících [Správce úloh](#workload-managers).
+    * Využijte výhod [velikosti prostředí HPC a virtuálního počítače s GPU](#hpc-and-gpu-vm-sizes) pro úlohy MPI nebo GPU.
 * **Velký výpočetní řešení jako služba**
     * Vývoj vlastních řešení Big Compute a pracovní postupy pomocí [Azure CycleCloud](#azure-cyclecloud), [Azure Batch](#azure-batch)a související [služeb Azure](#related-azure-services).
     * Spouštění Azure umožnil inženýrství a simulace řešení od dodavatelů včetně [Altair](http://www.altair.com/), [měřítko](https://www.rescale.com/azure/), a [Cycle Computing](https://cyclecomputing.com/) (nyní [spojit s Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).

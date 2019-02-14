@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: cd382c0daff79b487f4ecae01ad852f6e57f3a25
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734245"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232210"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
 
@@ -72,7 +72,7 @@ Pokud chcete odstranit pravidlo filtru IP, vyberte v tabulce a klikněte na jedn
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Načítají a aktualizují filtrů IP adres pomocí Azure CLI
 
-Filtry IP adres služby IoT Hub můžete načíst a aktualizovat prostřednictvím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest). 
+Filtry IP adres služby IoT Hub můžete načíst a aktualizovat prostřednictvím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). 
 
 Pokud chcete načíst aktuální filtry IP služby IoT Hub, spusťte:
 
@@ -121,7 +121,7 @@ Všimněte si, že `<ipFilterIndexToRemove>` musí odpovídat pořadí filtrů I
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Načítají a aktualizují filtrů IP adres pomocí Azure Powershellu
 
-Filtry IP adres služby IoT Hub můžete načíst a nastavit prostřednictvím [prostředí Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.2.0). 
+Filtry IP adres služby IoT Hub můžete načíst a nastavit prostřednictvím [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0). 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -145,7 +145,7 @@ $iothubResource | Set-AzureRmResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>Aktualizovat pravidla filtru IP pomocí rozhraní REST
 
-Může také načíst a úprava filtru IP služby IoT Hub pomocí koncového bodu REST poskytovatel prostředků Azure. Zobrazit `properties.ipFilterRules` v [metodu createorupdate](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate).
+Může také načíst a úprava filtru IP služby IoT Hub pomocí koncového bodu REST poskytovatel prostředků Azure. Zobrazit `properties.ipFilterRules` v [metodu createorupdate](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
 
 
 ## <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidla filtru IP

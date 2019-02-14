@@ -4,12 +4,12 @@ ms.service: azure-powershell
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sewhee
-ms.openlocfilehash: 5f224ab3b0040bcba6b99d8db744e9dbde4a63c9
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b93722147959881dfbffbb47b7a3e4b140044525
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571993"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246793"
 ---
 ## <a name="setting-up-powershell-for-resource-manager-templates"></a>Nastavení prostředí PowerShell pro šablony Resource Manageru
 Před použitím Azure Powershellu s Resource Managerem, musíte mít práva prostředí Windows PowerShell a verze prostředí Azure PowerShell.
@@ -63,5 +63,5 @@ Spuštěním těchto příkazů na příkazovém řádku prostředí Azure Power
     $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
     Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
-Další informace o účtů a předplatných Azure, najdete v části [postupy: připojení k vašemu předplatnému](/powershell/azureps-cmdlets-docs#step-3-connect).
+Další informace o účtů a předplatných Azure, najdete v části [jak: Připojení k vašemu předplatnému](/powershell/azureps-cmdlets-docs).
 

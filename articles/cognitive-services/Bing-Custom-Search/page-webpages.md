@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 625b85190c3b5fe338d804974ecd9c0c1a9d7a0d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 891d0f88158b7d315b5908a7e1c0f73215b4b09e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868612"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235237"
 ---
 # <a name="paging-webpages"></a>Webové stránky stránkování 
 

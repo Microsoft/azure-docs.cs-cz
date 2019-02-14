@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 76943c89cd4c0a283dc36a2a0d28c907cef0ad28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cc7d9a8e0d2689be4a8beb5d42c43b9e18157472
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114684"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238109"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
@@ -246,7 +246,6 @@ Zkopírujte balíček sady nástrojů funkce BYOK z USB Flash disku nebo jiného
 
 Tento třetí krok proveďte následující postupy na odpojené pracovní stanici. K dokončení tohoto kroku vašeho HSM musí být v režimu inicializace. 
 
-
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1: Změnit režim HSM na "I"
 
 Pokud používáte Thales nShield Edge, chcete-li změnit režim: 1. Pomocí tlačítka Režim zvýrazněte požadovaný režim. 2. Během několika sekund stiskněte a podržte tlačítko Vymazat pár sekund. Pokud se změní režim nový režim Indikátor blikat zastaví a zůstane po. Indikátor stavu může flash nepravidelně na několik sekund a pak bliká pravidelně, když zařízení je připravené. V opačném případě lit zařízení zůstává v aktuálním režimu s odpovídající Indikátor režimu.
@@ -256,13 +255,13 @@ Pokud používáte Thales nShield Edge, chcete-li změnit režim: 1. Pomocí tla
 Spusťte příkazový řádek a spusťte nový svět program společnosti Thales.
 
    ```cmd
-    new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
+    new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
 Tento program vytvoří **architektury Security World** soubor v adresáři % NFAST_KMDATA%\local\world, který odpovídá složce C:\ProgramData\nCipher\Key Management aplikací\Místní. Pro kvorum můžete použít různé hodnoty, ale v našem příkladu zobrazí výzva, zadejte pro každé z nich tři prázdné karty a kódy PIN. Jakékoli dvě karty potom poskytnout úplný přístup do architektury security world. Tyto karty tvoří **Administrator Card Set** pro nové architektury security world.
 
 > [!NOTE]
-> Pokud vašeho HSM podporuje novější DLf3072s256mRijndael sady šifer, můžete nahradit--sadu šifer = DLf1024s160mRijndael s--sadu šifer = DLf3072s256mRijndael
+> Pokud vašeho HSM nepodporuje novější DLf3072s256mRijndael sady šifer, můžete nahradit--sadu šifer = DLf3072s256mRijndael s--sadu šifer = DLf1024s160mRijndael
 
 Potom udělejte následující:
 

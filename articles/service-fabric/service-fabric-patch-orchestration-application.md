@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732307"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234744"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -133,7 +133,7 @@ Pokud chcete povolit službu správce opravy:
 
 3. Aktualizace manifestu clusteru se tyto změny pomocí manifestu clusteru aktualizované [vytvořit nový cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) nebo [upgradovat konfiguraci clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). Když cluster běží s manifestem clusteru aktualizované, nyní je vidět službu opravy správce systému spuštěné v clusteru, která se nazývá `fabric:/System/RepairManagerService`v části systémové služby v Service Fabric explorer části.
 
-### <a name="disable-automatic-windows-update-on-all-nodes"></a>Zakázat automatické aktualizace Windows na všech uzlech
+### <a name="configure-windows-updates-for-all-nodes"></a>Konfigurace aktualizací Windows pro všechny uzly
 
 Automatické aktualizace Windows může vést ke ztrátě dostupnosti protože více uzlech clusteru můžete restartovat ve stejnou dobu. Oprava Orchestrace aplikace, ve výchozím nastavení, bude zakázat automatické aktualizace Windows na všech uzlech clusteru. Pokud nastavení spravuje správce nebo zásad skupiny, doporučujeme však explicitně nastavení zásad Windows Update "Oznámit před stažení".
 

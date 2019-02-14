@@ -1,25 +1,25 @@
 ---
 title: Mezipaměť Azure Azure CLI pro ukázky Redis | Dokumentace Microsoftu
 description: Ukázky Azure CLI pro službu mezipaměti Azure Redis.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 8d2de145-50c0-4f76-bf8f-fdf679f03698
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: yegu
-ms.openlocfilehash: fcf5d6db7b7d41fff9144a480e4247b1e9628667
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: eea74e8f1291901fea3c77b70ba3c636f40bd132
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112899"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56231785"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Ukázky v Azure CLI pro mezipaměť Azure redis Cache
 

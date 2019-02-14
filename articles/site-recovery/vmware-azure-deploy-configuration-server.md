@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 4a8ab770eef1c8d95ea2fb6340480089ded0218b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863138"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235882"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -130,38 +130,42 @@ Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-1. Můžete použít virtuální počítač, ve kterém je nainstalován konfigurační server pro různé účely?
+1. Jak dlouhé je, že platnost Licence na konfiguračním serveru, které jsou nasazené prostřednictvím OVF k dispozici? Co se stane, když není můžu aktivovat licenci?
+
+    Licence, které jsou poskytovány s šablonou OVA je zkušební licenci, která je platná po dobu 180 dnů. Před vypršením platnosti budete muset aktivovat licenci. Jinak to mít za následek časté vypnutí konfiguračního serveru a hinderance replikace aktivitám, čímž vznikne.
+
+2. Můžete použít virtuální počítač, ve kterém je nainstalován konfigurační server pro různé účely?
 
     **Ne**, doporučujeme použít virtuální počítač pro jediným účelem konfiguračního serveru. Ujistěte se, postupujte podle požadavků uvedených v [požadavky](#prerequisites) pro efektivní správu zotavení po havárii.
-2. Můžete přepnout v úložišti už zaregistrovaný na konfiguračním serveru pomocí nově vytvořeného trezoru?
+3. Můžete přepnout v úložišti už zaregistrovaný na konfiguračním serveru pomocí nově vytvořeného trezoru?
 
     **Ne**, jakmile se trezor zaregistrován u konfiguračního serveru, nejde změnit.
-3. Můžete použít stejný konfigurační server pro ochranu fyzických a virtuálních počítačů?
+4. Můžete použít stejný konfigurační server pro ochranu fyzických a virtuálních počítačů?
 
     **Ano**, lze použít stejný konfigurační server pro replikaci fyzických a virtuálních počítačů. Nicméně by bylo možné provést fyzický počítač zpět jenom pro virtuální počítač VMware.
-4. Jaký je účel konfigurační server a kde se používá?
+5. Jaký je účel konfigurační server a kde se používá?
 
     Odkazovat na [replikaci z VMware do Azure replikace architektura](vmware-azure-architecture.md) získat další informace o konfiguračním serveru a jeho funkcí poskytujete.
-5. Kde najdete nejnovější verzi konfiguračního serveru?
+6. Kde najdete nejnovější verzi konfiguračního serveru?
 
     Kroky pro upgrade konfiguračního serveru pomocí portálu, najdete v části [upgradujte konfigurační server](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Podrobné pokyny o tom, jak upgradovat všechny součásti Site Recovery, najdete v tématu [tady](https://aka.ms/asr_how_to_upgrade).
-6. Kde lze stáhnout přístupové heslo pro konfigurační server?
+7. Kde lze stáhnout přístupové heslo pro konfigurační server?
 
     Odkazovat na [v tomto článku](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) stáhnout přístupové heslo.
-7. Můžete změnit heslo?
+8. Můžete změnit heslo?
 
     **Ne**, jste **důrazně doporučuje kvůli změně přístupového hesla** konfiguračního serveru. Změna přístupové heslo přestane fungovat replikaci chráněných počítačů a vede k kritickém stavu.
-8. Kde lze stáhnout registrační klíče trezoru?
+9. Kde lze stáhnout registrační klíče trezoru?
 
     V **trezor služby Recovery Services**, **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**. Na serverech, vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
-9. Můžete naklonovat stávající konfigurační Server a použít ho pro orchestraci replikace?
+10. Můžete naklonovat stávající konfigurační Server a použít ho pro orchestraci replikace?
 
     **Ne**, použití klonovaný součásti serveru Configuration není podporováno.
 
-10. Můžete změnit IP adresa konfiguračního serveru?
+11. Můžete změnit IP adresa konfiguračního serveru?
 
     **Ne**, se důrazně doporučuje ne změnit IP adresu konfiguračního serveru. Zkontrolujte všechny IP adresy přiřazené ke konfiguračnímu serveru jsou statické IP adresy a ne IP adresy DHCP.
-11. Můžete nastavit konfigurační server v Azure?
+12. Můžete nastavit konfigurační server v Azure?
 
     Doporučujeme nastavit konfigurační server v místním prostředí s přímým přístupem řádku přístup pomocí Vcenter a minimalizovat latenci přenosu dat. Můžete provádět plánované zálohování konfiguračního serveru pro [účely navrácení služeb po obnovení](vmware-azure-manage-configuration-server.md#failback-requirements).
 

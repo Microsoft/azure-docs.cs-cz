@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 56884f2299df35c1565804a92fc404b6ed9e2f9a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185005"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243481"
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám pomohou rozhodnout, jak nejlépe integrovat do vaší stávající síťové prostředí Azure Stack. 
@@ -67,9 +67,6 @@ Tato /24 (254 hostiteli IP adresy) síť patří do oblasti Azure Stack (Nerozba
 
 ### <a name="azure-stack-infrastructure-network"></a>Síť infrastruktury Azure stacku
 To/24 sítě je vyhrazený pro interní komponenty služby Azure Stack, mohli komunikovat a vyměňovat data mezi sebou. Tato podsíť vyžaduje směrovatelné IP adresy, ale se ukládají privátní do řešení pomocí seznamů řízení přístupu (ACL). Neočekává se bude směrovat nad rámec ohraničení přepínače s výjimkou ekvivalentní velikost/27 malé rozsah sítě využít některé z těchto služeb v případě, které vyžadují přístup k externím prostředkům a/nebo Internetu. 
-
-### <a name="public-infrastructure-network"></a>Infrastruktura veřejných sítě
-To/27. síť je malé rozsah z podsítě infrastruktury Azure stacku, již bylo zmíněno dříve, nevyžaduje veřejné IP adresy, ale vyžaduje přístup k Internetu prostřednictvím překladu adres nebo transparentní proxy server. Tato síť bude přidělena pro nouzovou obnovení konzoly systému (ERCS), virtuální počítač ERCS vyžaduje přístup k Internetu během registrace do Azure a během zálohování infrastruktury. Virtuální počítač ERCS musí být směrovatelné na vaši síť pro správu pro účely odstraňování potíží.
 
 ### <a name="public-vip-network"></a>Síť veřejných virtuálních IP adres
 Síť veřejných virtuálních IP adres se přiřadí k síťovému adaptéru ve službě Azure Stack. Nejedná se o logickou síť, na přepínač. Nástroj SLB pomocí fond adres a přiřadí/32 sítě pro úlohy klientů. Ve směrovací tabulce přepínače jsou tyto 32 IP adresy inzerované jako k dispozici směrování přes BGP. Tato síť obsahuje externí přístupné nebo veřejné IP adresy. Infrastruktura Azure stacku si vyhrazuje prvních 31 adresy z této veřejné sítě VIP, zatímco zbytek používají klientské virtuální počítače. Velikost sítě v této podsíti můžete být v rozsahu v rozmezí od /26 (64 hostitelů) na maximálně /22 (1022 hostitelů), doporučujeme, abyste při plánování/24 je síť.

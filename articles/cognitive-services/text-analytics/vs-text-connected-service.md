@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Analýza textu s využitímC#'
+title: 'Kurz: Připojení ke službě Text Analytics pomocí připojené služby v sadě Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Připojte se ke službě analýzy textu z webové aplikace ASP.NET Core.
+description: Zjistěte, jak se připojit k rozhraní Text Analytics z webové aplikace ASP.NET Core.
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: ghogen
-ms.openlocfilehash: bcd0d68119d141f02f77d4d8828d55b1d984be0e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: a37ea5fdad941e1559e470ccb22303a8e3c7ca3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869802"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243888"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě Text Analytics Cognitive pomocí připojené služby v sadě Visual Studio
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě Text Analytics pomocí připojené služby v sadě Visual Studio
 
 Pomocí služby analýzy textu se dá extrahovat velké množství dat, které je možné využít ke kategorizaci a zpracování vizuálních dat a také k usnadnění správy služeb díky moderování obrázků s podporou počítače.
 

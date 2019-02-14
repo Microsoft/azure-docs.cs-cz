@@ -12,44 +12,46 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 7ea1de4719d171605a49727d6924cb4b617b04bc
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 754f2845911307cdd698bff4aa3e891f5c1bcdbd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097858"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234777"
 ---
-# <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Rychlý start: Import souboru BACPAC do nové databáze SQL Azure
+# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Rychlý start: Import souboru BACPAC do databáze ve službě Azure SQL Database
 
-Můžete migrovat databáze SQL serveru do Azure SQL database pomocí [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file (soubor zip s `.bacpac` rozšíření, která obsahuje metadata a data databáze). Můžete import souboru BACPAC z úložiště objektů Blob v Azure (jenom standardní úložiště) nebo z místního úložiště do místního umístění. Maximalizovat rychlost importu, můžete zadat na vyšší úroveň služby a vypočítat velikost (například P6). Můžete pak vertikálně snížit kapacitu po úspěšném importu. Úroveň kompatibility databáze importované je založená na úrovni kompatibility databáze zdroje.
+Můžete importovat do databáze SQL serveru do databáze Azure SQL Database pomocí [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) souboru. Můžete importovat data z `BACPAC` souborů uložených ve službě Azure Blob storage (jenom standardní úložiště) nebo z místního úložiště do místního umístění. Pokud chcete maximalizovat rychlost import tím, že poskytuje rychlejší a další prostředky, škálování databáze na vyšší úroveň služby a výpočetní velikost během procesu importu. Můžete pak vertikálně snížit kapacitu po úspěšném importu. 
 
+> [!NOTE]
+> Úroveň kompatibility databáze importované je založená na úrovni kompatibility databáze zdroje.
 > [!IMPORTANT]
 > Po importu vaší databáze, můžete k provozu databáze na její aktuální úroveň kompatibility (úroveň 100 pro databázi AdventureWorks2008R2) nebo vyšší úrovni. Další informace o důsledcích a možnostech provozu databáze na konkrétní úrovni kompatibility najdete v tématu [Úroveň kompatibility ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). V tématu věnovaném příkazu [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) najdete také informace o dalších nastaveních na úrovni databáze souvisejících s úrovněmi kompatibility.
 
 ## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>Importovat ze souboru BACPAC na webu Azure Portal
 
-Tato část ukazuje, jak v [webu Azure portal](https://portal.azure.com), chcete-li vytvořit Azure SQL database ze souboru BACPAC ukládají ve službě Azure Blob storage. Na portálu *pouze* podporuje import souboru BACPAC z úložiště objektů Blob v Azure.
+Tato část ukazuje, jak v [webu Azure portal](https://portal.azure.com), chcete-li vytvořit databázi Azure SQL z `BACPAC` souborů uložených ve službě Azure Blob storage. Na portálu *pouze* podporuje import souboru BACPAC z úložiště objektů Blob v Azure.
 
 > [!NOTE]
-> [Azure SQL Database Managed Instance](sql-database-managed-instance.md) podporuje import ze souboru BACPAC s použitím jiné metody v tomto článku, ale aktuálně nepodporuje migraci na webu Azure Portal.
+> [Spravovaná instance](sql-database-managed-instance.md) aktuálně nepodporuje migrace databáze do instance databáze z `BACPAC` souborů pomocí webu Azure portal.
 
-K importu databáze na webu Azure Portal, otevřete stránku pro server SQL Database, která bude hostovat import a na panelu nástrojů vyberte **importovat databázi**.  
+Pokud chcete importovat do izolované databáze pomocí webu Azure portal, otevřete stránku pro databázový server pro izolované databáze a pak na panelu nástrojů vyberte **importovat databázi**.  
 
    ![import databáze](./media/sql-database-import/import.png)
 
-Vyberte účet úložiště, kontejner a souboru BACPAC, který chcete importovat. Zadejte novou velikost databáze (obvykle stejné jako původní) a cíl zadejte přihlašovací údaje SQL serveru. Seznam možných hodnot pro novou databázi Azure SQL najdete v tématu [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+Vyberte úložiště účet, kontejner, a `BACPAC` souborů, které chcete importovat. Zadejte novou velikost databáze (obvykle stejné jako původní) a cíl zadejte přihlašovací údaje SQL serveru. Seznam možných hodnot pro novou databázi Azure SQL najdete v tématu [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
 
 ### <a name="monitor-imports-progress"></a>Sledujte průběh importu
 
-Chcete-li sledovat postup importu, otevřete stránku serveru importovanou databázi a v části **nastavení**vyberte **historie importu a exportu**. V případě úspěchu se import **dokončeno** stav.
+Chcete-li sledovat postup importu, otevřete stránku serveru vaší databáze a v části **nastavení**vyberte **historie importu a exportu**. V případě úspěchu se import **dokončeno** stav.
 
-Pokud chcete ověřit, je databáze na serveru, vyberte **databází SQL** a ověřte nové databáze **Online**.
+Pokud chcete ověřit, databázi je v provozu na databázovém serveru, vyberte **databází SQL** a ověřte nové databáze **Online**.
 
 ## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>Importovat ze souboru BACPAC s použitím nástroje SqlPackage
 
-Import databáze SQL pomocí [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) nástroj příkazového řádku, naleznete v tématu [importovat parametry a vlastnosti](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage má nejnovější [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [SQL Server Data Tools pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Můžete si také stáhnout nejnovější [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) z webu Microsoft download center.
+Import pomocí databáze systému SQL Server [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) nástroj příkazového řádku, naleznete v tématu [importovat parametry a vlastnosti](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage má nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Můžete si také stáhnout nejnovější [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) z webu Microsoft download center.
 
-Škálovatelnost a výkon doporučujeme použitím nástroje SqlPackage ve většině produkčních prostředí. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Škálovatelnost a výkon doporučujeme použitím nástroje SqlPackage ve většině produkčních prostředí než pomocí webu Azure portal. Pro blog zákaznického poradního týmu SQL serveru o migraci pomocí `BACPAC` soubory, naleznete v tématu [migraci z SQL serveru do Azure SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
 Následující příkaz SqlPackage importuje **AdventureWorks2008R2** databáze z místního úložiště na serveru Azure SQL Database s názvem **mynewserver20170403**. Vytvoří novou databázi s názvem **myMigratedDatabase** s **Premium** úroveň služby a **P6** cíle služby. Změňte tyto hodnoty v závislosti na vašem prostředí.
 
@@ -58,7 +60,7 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
 ```
 
 > [!IMPORTANT]
-> Server služby SQL Database naslouchá na portu 1433. Pro připojení k serveru služby SQL Database za podniková brána firewall, brána firewall musí mít tento port otevřít.
+> Pro připojení k serveru služby SQL Database Správa izolované databáze za podniková brána firewall, musí mít bránu firewall port 1433 otevřít. Chcete-li připojit k managed instance, musíte mít [připojení point-to-site](/sql-database-managed-instance-configure-p2s.md) nebo připojení k expressroute.
 >
 
 Tento příklad ukazuje, jak importovat databázi s použitím nástroje SqlPackage pomocí univerzálního ověřování Active Directory.

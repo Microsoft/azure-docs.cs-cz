@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f2c7111373ac880d27298deb4fc919d797713f3e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53995670"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56246782"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpečení Internetu věcí (IoT)
 
@@ -100,7 +100,7 @@ Zóny jsou široké až po segmentu řešení; každou zónu často má vlastní
 
 Každá zóna je oddělené hranicí vztahu důvěryhodnosti, které je uvedené jako tečkovaná čára red v následujícím diagramu. Představuje přechod z data a informace z jednoho zdroje do druhého. Během tohoto přechodu je data nebo informace může být v souladu s falšování, manipulace, popírání odpovědnosti, zpřístupnění informací, dostupnost služby a zvýšení úrovně oprávnění (krok).
 
-![Zóny zabezpečení IoT](media/iot-security-architecture/iot-security-architecture-fig1.png) 
+![IoT Security Zones](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
 Součásti použité v rámci každé hranice také podléhají STRIDE povolení úplné 360 hrozeb modelování tohoto řešení. V následujících částech se pracovalo na všech komponent a konkrétní bezpečnostní otázky a řešení, která mají být vloženy do místa.
 
@@ -225,9 +225,9 @@ Hrozby kolem komunikační trasa mezi zařízeními, zařízení a bran v terén
 | **Komponenta** | **Před internetovými útoky** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
 | Zařízení IoT Hub |TID. |(D) (PSK/RSA) k šifrování přenosů TLS |Odposlouchávání nebo překáží komunikaci mezi zařízením a brány |Zabezpečení na úrovni protokolu. Vlastní protokoly je nutné zjistit, jak je chránit. Ve většině případů komunikace probíhá ze zařízení do služby IoT Hub (zařízení zahájí připojení). |
-| Zařízení |TID. |(D) Protokol TLS (PSK/RSA) k šifrování přenosů. |Čtení dat během přenosu mezi zařízeními. Manipulace s daty. Přetížení zařízení pomocí nového připojení |Zabezpečení na úrovni protokolu (protokol MQTT nebo AMQP a HTTP/CoAP. Vlastní protokoly je nutné zjistit, jak je chránit. Omezení rizik pro hrozby DoS je navázání partnerského vztahu mezi zařízení prostřednictvím cloudu nebo pole brány a potom kliknul pouze act jako klienti směrem k síti. Partnerský vztah může vést k přímé připojení mezi rovnocennými počítači po s byla zprostředkovaných bránou |
+| Zařízení na zařízení |TID. |(D) Protokol TLS (PSK/RSA) k šifrování přenosů. |Čtení dat během přenosu mezi zařízeními. Manipulace s daty. Přetížení zařízení pomocí nového připojení |Zabezpečení na úrovni protokolu (protokol MQTT nebo AMQP a HTTP/CoAP. Vlastní protokoly je nutné zjistit, jak je chránit. Omezení rizik pro hrozby DoS je navázání partnerského vztahu mezi zařízení prostřednictvím cloudu nebo pole brány a potom kliknul pouze act jako klienti směrem k síti. Partnerský vztah může vést k přímé připojení mezi rovnocennými počítači po s byla zprostředkovaných bránou |
 | Externí Entity zařízení |TID. |Silné párování externí entita, která má zařízení |Připojení k zařízení odposlouchávání. Komunikace zasahovala do zařízení |Bezpečně párování externí entita, která má zařízení NFC/Bluetooth LE. Řízení panelu provozní zařízení (fyzické) |
-| Cloudová brána pole brány |TID. |Protokol TLS (PSK/RSA) k šifrování přenosů. |Odposlouchávání nebo překáží komunikaci mezi zařízením a brány |Zabezpečení na úrovni protokolu (protokol MQTT nebo AMQP a HTTP/CoAP). Vlastní protokoly je nutné zjistit, jak je chránit. |
+| Field Gateway Cloud Gateway |TID. |Protokol TLS (PSK/RSA) k šifrování přenosů. |Odposlouchávání nebo překáží komunikaci mezi zařízením a brány |Zabezpečení na úrovni protokolu (protokol MQTT nebo AMQP a HTTP/CoAP). Vlastní protokoly je nutné zjistit, jak je chránit. |
 | Cloudová brána zařízení |TID. |Protokol TLS (PSK/RSA) k šifrování přenosů. |Odposlouchávání nebo překáží komunikaci mezi zařízením a brány |Zabezpečení na úrovni protokolu (protokol MQTT nebo AMQP a HTTP/CoAP). Vlastní protokoly je nutné zjistit, jak je chránit. |
 
 Tady je několik příkladů hrozby v této kategorii:

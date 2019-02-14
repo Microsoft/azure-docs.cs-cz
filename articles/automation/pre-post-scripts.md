@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428235"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236001"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -26,7 +26,7 @@ Sady runbook má být použit jako před nebo po skriptu že runbook bude potře
 
 ## <a name="using-a-prepost-script"></a>Pomocí předzálohovacího nebo pozálohovacího skriptu
 
-Chcete-li používat skript a před nebo po nasazení aktualizace, jednoduše začněte tím, že vytvoření nasazení aktualizace. Vyberte **předzálohovacích skriptů a skripty Post (Preview)**. Tím se otevře **vyberte předzálohovacích skriptů a pozálohovacích skriptů** stránky.  
+Použít po předem a po skript v nasazení aktualizací, začněte tím, že vytvoření nasazení aktualizace. Vyberte **předzálohovacích skriptů a skripty Post (Preview)**. Tato akce otevře **vyberte předzálohovacích skriptů a pozálohovacích skriptů** stránky.  
 
 ![Vyberte skriptů](./media/pre-post-scripts/select-scripts.png)
 
@@ -42,17 +42,19 @@ Opakujte tento postup u **UpdateManagement TurnOffVms** skriptu. Ale při volbě
 
 Dokončení konfigurace nasazení aktualizace.
 
-Po dokončení aktualizace nasazení můžete přejít na **nasazení aktualizací** zobrazíte výsledky. Jak vidíte stav předsnímkových a posnímkových skriptů jsou zadané.
+Po dokončení aktualizace nasazení můžete přejít na **nasazení aktualizací** zobrazíte výsledky. Jak vidíte, jsou k dispozici stav předsnímkových a posnímkových skriptů.
 
 ![Aktualizovat výsledky](./media/pre-post-scripts/update-results.png)
 
-Po kliknutí do nasazení aktualizací, kterým jsou k dispozici další podrobnosti, aby skripty před a po. Odkaz na zdroj skriptu v době běhu je k dispozici.
+Kliknutím na spustit nasazení aktualizací, zadáte do skriptů před a po další podrobnosti. Odkaz na zdroj skriptu v době běhu je k dispozici.
 
 ![Výsledky spustit nasazení](./media/pre-post-scripts/deployment-run.png)
 
 ## <a name="passing-parameters"></a>Předávání parametrů
 
-Když konfigurujete před a po skripty, které můžete předat parametry stejně, jako je plánování runbooku. Parametry jsou definované v době vytvoření nasazení aktualizace. Kromě standardní sada runbook parametry je k dispozici další parametr. Tento parametr je **SoftwareUpdateConfigurationRunContext**. Tento parametr je řetězec formátu JSON, a pokud definujete ve skriptu před nebo po parametru, je automaticky předána v nasazení aktualizací. Parametr obsahuje informace o nasazení aktualizace, která je podmnožinou vrácených podle informací [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) v následující tabulce se dozvíte, vlastnosti, které jsou k dispozici v proměnné:
+Při konfiguraci před a po skripty, můžete předat parametry stejně jako plánování runbooku. Parametry jsou definované v době vytvoření nasazení aktualizace. Skripty před a po vyžadují parametry budou typu `String`. Pokud potřebujete odlišný typ objektu, lze jej přetypovat na jinou pomocí typu `[System.Convert]` nebo ji zpracovat pomocí vlastní logiky.
+
+Kromě standardní sada runbook parametry je k dispozici další parametr. Tento parametr je **SoftwareUpdateConfigurationRunContext**. Tento parametr je řetězec formátu JSON, a pokud definujete ve skriptu před nebo po parametru, je automaticky předána v nasazení aktualizací. Parametr obsahuje informace o nasazení aktualizace, která je podmnožinou vrácených podle informací [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) v následující tabulce se dozvíte, vlastnosti, které jsou k dispozici v proměnné:
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext properties
 
@@ -70,7 +72,7 @@ Když konfigurujete před a po skripty, které můžete předat parametry stejn�
 |azureVirtualMachines     | Seznam ID prostředků: pro virtuální počítače Azure v nasazení aktualizací        |
 |nonAzureComputerNames|Seznam počítačů mimo Azure plně kvalifikovaných názvů domén v nasazení aktualizací|
 
-Následuje příklad předané do řetězce JSON **SoftwareUpdateConfigurationRunContext** parametr:
+V následujícím příkladu je řetězec formátu JSON, který byl poskytnut **SoftwareUpdateConfigurationRunContext** parametr:
 
 ```json
 "SoftwareUpdateConfigurationRunContext":{
@@ -119,7 +121,7 @@ Nebo můžete vyhledat je podle názvu skriptu jak je znázorněno v následují
 > [!IMPORTANT]
 > Jakmile dokončíte import sady runbook, je nutné **publikovat** ještě dříve, než je možné. Provedete to, který najít sady runbook ve vašem účtu Automation vyberte **upravit**a klikněte na tlačítko **publikovat**.
 
-Ukázky jsou založeny na základní šablony, která je definována v následujícím příkladu. Tato šablona slouží k vytvoření vlastní sady runbook pomocí skriptů před a po. Nezbytnou logiku pro ověřování s Azure, stejně jako zpracování `SoftwareUpdateConfigurationRunContext` parametru jsou zahrnuty.
+Ukázky jsou založeny na základní šablony, která je definována v následujícím příkladu. Tato šablona slouží k vytvoření vlastní sady runbook pomocí skriptů před a po. Nezbytnou logiku pro ověřování pomocí Azure a zpracování `SoftwareUpdateConfigurationRunContext` parametru jsou zahrnuty.
 
 ```powershell
 <# 
@@ -174,14 +176,14 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-non-azure-machines"></a>Interakce s počítače mimo Azure
 
-Úlohy před a po spuštění v rámci Azure a nebudou mít přístup pro počítače mimo Azure. Aby bylo možné pracovat s počítače mimo Azure musíte mít následující:
+Úlohy před a po spuštění v rámci Azure a nebudete mít přístup pro počítače mimo Azure. K interakci s počítači mimo Azure, musíte mít následující položky:
 
 * Účet Spustit jako
 * Funkce hybrid Runbook Worker nainstalován na počítači
 * Sady runbook, kterou chcete spustit místně
 * Nadřízený runbook
 
-K interakci s počítače mimo Azure, je nadřazená sada runbook spustil v rámci Azure. Tato sada runbook volá podřízeného runbooku se [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) rutiny. Je nutné zadat `-RunOn` parametr a zadejte název funkce Hybrid Runbook Worker pro spuštění skriptu.
+K interakci s počítači mimo Azure, nadřazená sada runbook běží v rámci Azure. Tato sada runbook volá podřízeného runbooku se [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) rutiny. Je nutné zadat `-RunOn` parametr a zadejte název funkce Hybrid Runbook Worker pro spuštění skriptu.
 
 ```powershell
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 88cb9f18002f15ea926fe5ded3a5ac9af7a99cbe
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 80bf9247bbb07fa61b7153e321b1991b82a9d616
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716157"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246795"
 ---
 <!-- N.B. no header, language-agnostic -->
 
@@ -28,4 +28,4 @@ Microsoft Cognitive Services [sadou SDK pro řeč](~/articles/cognitive-services
 Viz následující fragmenty kódu pro rozpoznání záměru scénáře, které používají sadou SDK pro řeč. Nahraďte hodnotami v ukázce si vlastní klíč předplatného služby LUIS (klíče koncového bodu), [oblasti vašeho předplatného](~/articles/cognitive-services/speech-service/regions.md#intent-recognition)a **AppId** záměru modelu.
 
 > [!NOTE]
-> Na rozdíl od jiných služeb podporovaných službou sadou SDK pro řeč rozpoznání záměru vyžaduje konkrétní předplatné key (klíč koncového bodu služby LUIS). Informace o technologii rozpoznávání záměru, najdete v článku [LUIS webu](https://www.luis.ai). Informace o tom, jak získat **klíče koncového bodu**, naleznete v tématu [vytvořit klíče koncového bodu služby LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription#create-luis-endpoint-key).
+> Na rozdíl od jiných služeb podporovaných službou sadou SDK pro řeč rozpoznání záměru vyžaduje konkrétní předplatné key (klíč koncového bodu služby LUIS). Informace o technologii rozpoznávání záměru, najdete v článku [LUIS webu](https://www.luis.ai). Informace o tom, jak získat **klíče koncového bodu**, naleznete v tématu [vytvořit klíče koncového bodu služby LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription).

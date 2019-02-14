@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 43d16c291391a3ffd94f404755e644dac0daf3a9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492823"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244294"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Použití Powershellu k vytvoření Studio modely a koncových bodů webové služby z jednoho experimentu
 
@@ -35,7 +35,7 @@ Naštěstí to můžete provést pomocí [přetrénování rozhraní API Azure M
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Nastavit výukového experimentu
-Použijte tento příklad [výukového experimentu](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) , který je [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Otevřete tento experiment v vaše [Azure Machine Learning Studio](https://studio.azureml.net) pracovního prostoru.
+Použijte tento příklad [výukového experimentu](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) , který je [Cortana Intelligence Gallery](http://gallery.azure.ai). Otevřete tento experiment v vaše [Azure Machine Learning Studio](https://studio.azureml.net) pracovního prostoru.
 
 > [!NOTE]
 > Pokud chcete postupovat podle tohoto příkladu, můžete použít standardní pracovní prostor, spíše než bezplatný pracovní prostor. Vytvořte jeden koncový bod pro každého zákazníka - celkem 10 koncových bodů – a standardní pracovní prostor, který vyžaduje, protože bezplatný pracovní prostor je omezená na 3 koncových bodů. Pokud máte jenom bezplatný pracovní prostor, stačí změňte skripty umožňující pouze obsah za umístění.
@@ -63,7 +63,7 @@ Nyní je třeba nasadit hodnoticí webové služby.
 Chcete-li to provést, klikněte na tlačítko **nastavení webové služby** dole na plátně a vyberte **prediktivní webová služba**. Tím se vytvoří bodování experimentu.
 Je potřeba provést několik drobné úpravy, aby to fungovalo jako webovou službu. Odebrat popisek sloupce "cnt" ze vstupních dat a omezují výstup pouze id instance a odpovídající předpovězené hodnoty.
 
-Sami si práci uložit, můžete otevřít [prediktivní experiment](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) v galerii, která je už připraven.
+Sami si práci uložit, můžete otevřít [prediktivní experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) v galerii, která je už připraven.
 
 Nasadit webovou službu, spustit prediktivní experiment a klikněte **nasazení webové služby** tlačítko dole na plátně. Název hodnoticí webové služby "Kol pronájem vyhodnocování".
 

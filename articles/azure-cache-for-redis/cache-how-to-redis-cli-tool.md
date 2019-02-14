@@ -1,24 +1,24 @@
 ---
 title: Jak používat rozhraní příkazového řádku redis s mezipamětí Azure pro Redis | Dokumentace Microsoftu
 description: Další informace o použití rozhraní příkazového řádku redis s mezipamětí Azure pro Redis.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: yegu
-ms.openlocfilehash: 5f6d50de9f15b6ed08b09506d5a8f93f19919a4d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 318d02f5da816ae8fe2fe199b9c87b3748d5d1fc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107579"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237565"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak používat nástroj příkazového řádku Redis s mezipamětí Azure pro Redis
 

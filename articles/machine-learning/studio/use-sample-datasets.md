@@ -10,17 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: de809ef1455e4c8c4c2284c2139e962f1829770b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 55cf124baf7614813620602212856cc586b721df
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510166"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244330"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets
 
-Když vytvoříte nový pracovní prostor ve službě Azure Machine Learning, několik ukázkových datových sad a experimenty jsou zahrnuté ve výchozím nastavení. Mnohé z těchto ukázkových datových sad jsou používány ukázkových modelů v [galerii Azure AI](http://gallery.cortanaintelligence.com/). Ostatní jsou zahrnuty jako příklady různých typů dat se obvykle používá ve službě machine learning.
+Když vytvoříte nový pracovní prostor ve službě Azure Machine Learning, několik ukázkových datových sad a experimenty jsou zahrnuté ve výchozím nastavení. Mnohé z těchto ukázkových datových sad jsou používány ukázkových modelů v [galerii Azure AI](http://gallery.azure.ai/). Ostatní jsou zahrnuty jako příklady různých typů dat se obvykle používá ve službě machine learning.
 
 Některé tyto datové sady jsou dostupné ve službě Azure Blob storage. Pro tyto datové sady následující tabulka obsahuje přímý odkaz. Tyto datové sady můžete použít ve své experimenty s použitím [Import dat] [ import-data] modulu.
 

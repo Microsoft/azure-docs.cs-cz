@@ -1,26 +1,26 @@
 ---
 title: Rychlý start pro další informace o použití mezipaměti Azure pro Redis s Javou | Dokumentace Microsoftu
 description: V tomto rychlém startu vytvoříte novou aplikaci Java, která používá mezipaměť Azure Redis
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 339d626d3e0d9e7c1742fdd3509e92f41347ff43
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106575"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237762"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Rychlý start: Použití mezipaměti Azure pro Redis s Javou
 
