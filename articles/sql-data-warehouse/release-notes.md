@@ -2,28 +2,27 @@
 title: Zpráva k vydání verze služby Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Zpráva k vydání verze pro Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
-manager: craigg
+author: mlee3gsd
+ms.author: anumjs
+ms.reviewer: jrasnick
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/11/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 7a131429d8f70255e47efaac0c4b5fa99a6df7d6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/09/2019
+ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460807"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244670"
 ---
-# <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
+# <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Poznámky k verzi Azure SQL Data Warehouse a aktualizace dokumentace
 
 Azure SQL Data Warehouse (datový Sklad SQL) je cloudové podnikového datového skladu, který využívá masivně paralelní zpracování (MPP) k rychlému spouštění složitých dotazů nad petabajty dat. Využijte službu SQL Data Warehouse jako klíčovou součást řešení pro velké objemy dat. Importujte do služby SQL Data Warehouse velké objemy dat pomocí dotazů PolyBase T-SQL a následně využijte sílu architektury MPP ke spouštění vysoce výkonných analýz. Postupným integrováním a analyzováním se datový sklad stane pro vaši firmu jediným spolehlivým zdrojem pravdivých informací.
 
 Kliknutím na odkazy níže a zjistěte další informace o nové funkce a vylepšení, které můžete očekávat v nejnovější verzi služby Azure SQL Data Warehouse. Můžete očekávat pro příjem těchto aktualizací služby během vašeho plánu údržby identifikovaní.
 
-- [SQL data Warehouse verze 10.0.10106.0](./release-notes-10-0-10106-0.md)
+- [SQL Data Warehouse verze 10.0.10106.0 (leden)](./release-notes-10-0-10106-0.md)
 - [Prosince 2018](./release-notes-december-2018.md)
 - [. Října 2018](./release-notes-october-2018.md)
 - [. Září 2018](./release-notes-september-2018.md)

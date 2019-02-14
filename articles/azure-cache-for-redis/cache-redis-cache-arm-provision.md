@@ -4,22 +4,22 @@ description: Nasadit mezipaměti Azure Redis pomocí šablony Azure Resource Man
 services: app-service
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
 ms.workload: web
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 7cdf0263824e59e17a77289d335e3b6a5f208969
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e223cb060857d45d9f25e2ee1dfca7e159225d8b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110658"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237106"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Vytvoření Azure Cache pro Redis pomocí šablony
 

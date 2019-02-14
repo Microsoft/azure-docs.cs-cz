@@ -10,13 +10,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 11/28/2018
-ms.openlocfilehash: b3fe6e0249143b27cb763401a8d328922ed1fe99
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 02/12/2019
+ms.openlocfilehash: af2e711cef6e97935c2e4dc90557ef4f127d1caa
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173917"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237430"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Rychlý start: Použití PHP k dotazování databáze SQL Azure
 
@@ -26,19 +26,39 @@ Tento článek ukazuje, jak používat [PHP](http://php.net/manual/en/intro-what
 
 K dokončení této ukázce, ujistěte se, že jsou splněné následující požadavky:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Databázi SQL Azure. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+
+  || Izolovaná databáze | Spravovaná instance |
+  |:--- |:--- |:---|
+  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  |||[Připojení z na místě](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Obnovení nebo importovat společnosti Adventure Works z [BACPAC](sql-database-import.md) souboru z [githubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
+
+  > [!IMPORTANT]
+  > Skripty v tomto článku se zapisují do použít databázi společnosti Adventure Works. S managed instance musíte importovat databázi společnosti Adventure Works do instance databáze nebo upravovat skripty v tomto článku pro používání databáze Wide World Importers.
 
 - Související s PHP nainstalován software pro váš operační systém:
 
-    - **MacOS**, nainstalujte PHP, ovladač ODBC, potom nainstalujte ovladač PHP pro SQL Server. Zobrazit [kroku 1, 2 a 3](/sql/connect/php/installation-tutorial-linux-mac).
+  - **MacOS**, nainstalujte PHP, ovladač ODBC, potom nainstalujte ovladač PHP pro SQL Server. Zobrazit [kroku 1, 2 a 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - **Linux**, nainstalujte PHP, ovladač ODBC, potom nainstalujte ovladač PHP pro SQL Server. Zobrazit [kroku 1, 2 a 3](/sql/connect/php/installation-tutorial-linux-mac).
+  - **Linux**, nainstalujte PHP, ovladač ODBC, potom nainstalujte ovladač PHP pro SQL Server. Zobrazit [kroku 1, 2 a 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - **Windows**, nainstalujte PHP pro službu IIS Express a Chocolatey a potom nainstalujte ovladač ODBC a Nástroj SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
+  - **Windows**, nainstalujte PHP pro službu IIS Express a Chocolatey a potom nainstalujte ovladač ODBC a Nástroj SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
-## <a name="get-database-connection"></a>Získání připojení k databázi
+## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Získejte informace o připojení potřebné pro připojení k databázi Azure SQL. Nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+2. Přejděte **databází SQL** nebo **spravované instance SQL** stránky.
+
+3. Na **přehled** stránce si prohlédněte plně kvalifikovaný název vedle **název serveru** pro izolované databáze nebo serveru plně kvalifikovaný název vedle **hostitele** pro spravované instance. Zkopírujte název serveru nebo název hostitele, je ukazatel myši a vyberte **kopírování** ikonu.
 
 ## <a name="add-code-to-query-database"></a>Přidejte kód pro dotaz na databázi
 
