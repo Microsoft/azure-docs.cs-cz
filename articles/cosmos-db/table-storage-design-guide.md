@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 433f99d72feb7dc697050049817478a8c8b679e6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820959"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302059"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 
@@ -721,6 +721,9 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 
 ### <a name="log-tail-pattern"></a>Vzor log tail
 Načíst *n* naposledy přidaný do oddílu s použitím entity **RowKey** hodnotu, která seřadí reverzní datum a čas objednávky.  
+
+> [!NOTE]
+> Výsledky dotazu vrácená rozhraním API tabulky Azure v Azure Cosmso DB nejsou seřazené podle klíče oddílu a klíče řádku. Proto tento model je vhodný pro Azure Table Storage a ne Azure Cosmos DB. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly v rozhraní Table API ve službě Azure Cosmos DB a Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontext a problém
 Běžné požadavky, je moct načíst nedávno vytvořené entity, třeba posledních deset výdaje odeslal zaměstnanec deklarací identity. Dotazy podpory **$top** dotazové operace do vrátí první *n* entity ze sady: neexistuje žádná odpovídající dotaz operace vrátit poslední n entity v sadě.  

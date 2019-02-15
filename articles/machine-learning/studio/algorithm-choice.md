@@ -10,16 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 222891df5b54a8f2c3464fc3bddf9f6b32c28d36
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6442facf680c934d976e7fa8008f2f3c3551045f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244789"
+ms.locfileid: "56268075"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak zvolit algoritmy pro Azure Machine Learning Studio
 
 Odpověď na otázku "Co algoritmu strojového učení, mám použít?" je vždy "Záleží." To závisí na velikosti, kvality a povaze data. To závisí na co chcete udělat s odpovědí. To závisí na jak matematické algoritmus byl přeložen do pokyny, jak na počítači, který používáte. A závisí na tom, kolik času je k dispozici. Dokonce i nejzkušenějších odborníci přes data nelze zjistit, který algoritmus provede nejlepší před pokusem o nich.
+
+Machine Learning Studio poskytuje nejmodernější algoritmy, například škálovatelné vylepšené rozhodovací stromy, systémy bayesovského rozhodování, hluboké neuronové sítě a rozhodovací džungle vyvinuté v Microsoft Research. Dostupné jsou i škálovatelné open-sourcové balíčky pro strojové učení, třeba Vowpal Wabbit. Machine Learning Studio podporuje algoritmy strojového učení pro binární klasifikaci a klasifikaci s více třídami, regresi a clustering. Zobrazit úplný seznam [modulů služby Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index).
+Některé informace o jednotlivých algoritmů a optimalizace výkonu parametry pro optimalizaci algoritmu pro vaše použití jsou uvedeny v dokumentaci.  
+
 
 ## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Tahák algoritmus Machine Learning
 

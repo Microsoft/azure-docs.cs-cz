@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: fbfee92343bfecfbe8395f95775ae1f107b99299
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2885ce740fab58e675c529dfab8d0dadeed2904c
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037272"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301617"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Přehled funkcí pro Durable Functions (Azure Functions) a typy funkce
 

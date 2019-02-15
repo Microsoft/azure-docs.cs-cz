@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 50f6f114a4d90f48218f751e1649e8694e664491
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 02/13/2019
+ms.openlocfilehash: 748a9f4d7c2ec47a2ed9470789a4443bffdc0eba
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295742"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301736"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Správa postupné upgrady cloudových aplikací s využitím SQL Database aktivní geografické replikace
 
@@ -47,7 +47,7 @@ Po dokončení kroků přípravy, aplikace je připravena pro skutečném upgrad
 
 1. Primární databázi nastavte do režimu jen pro čtení (3). Tento režim se zaručí, že produkční slot webové aplikace (V1) zůstane jen pro čtení během upgradu zamezuje tak odchylkami dat mezi instancemi databáze V1 a V2.  
 2. Odpojte sekundární databázi pomocí plánované ukončení režimu (4). Vytvoří kopii plně synchronizovaná nezávislé primární databáze. Tato databáze se upgraduje.
-3. Vypnout primární databáze do režimu pro čtení i zápis a spusťte skript pro upgrade (5).
+3. Zapnout sekundární databáze do režimu pro čtení i zápis a spuštění skriptu aktualizace (5).
 
 ![Konfigurace geografické replikace databáze SQL. Cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option1-2.png)
 

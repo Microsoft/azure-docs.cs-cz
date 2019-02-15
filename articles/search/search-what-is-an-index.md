@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 77f4b597ad4b87db7e720dd57191c6b192a4c93b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fd5f58a03ffd054e79f1ff4ea6d61c33c06b6e7c
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000945"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268545"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Vytvoření základní indexu ve službě Azure Search
 
@@ -23,6 +23,12 @@ Ve službě Azure Search *index* je trvalé úložiště *dokumenty* a jiných o
 Při přidání nebo nahrání indexu Azure Search vytvoří fyzické struktury na základě schématu, které zadáte. Například pokud pole v indexu je označena jako prohledávatelné, vytvoří se pro toto pole obrácenou indexu. Později při přidání nebo odeslat dokumenty nebo odesíláte vyhledávací dotazy do služby Azure Search, jsou odesílání požadavků do konkrétního indexu ve vyhledávací službě. Načítají se pole s hodnotami dokumentu se nazývá *indexování* nebo přijímat data.
 
 Na portálu, můžete vytvořit index [rozhraní REST API](search-create-index-rest-api.md), nebo [sady .NET SDK](search-create-index-dotnet.md).
+
+## <a name="recommended-workflow"></a>Doporučený pracovní postup
+
+Protože fyzické struktury jsou vytvořeny během indexování, budete muset [vyřaďte a znovu vytvořit indexy](search-howto-reindex.md) vždy, když provedete podstatných změn v existující definice pole. To znamená, že během vývoje, měli byste počítat s častými znovu sestavovat. Můžete zvážit, práci s použitím podmnožiny data tak, aby znovu sestaví go rychleji. 
+
+Doporučujeme také kódu namísto portálu indexování. Pokud se spoléháte na portálu pro definici indexu, budete muset vyplnit definice indexu na každý znovu sestavit. Jako alternativu pomocí některého nástroje, například [Postman a rozhraní REST API](search-fiddler.md) jsou užitečné pro testování konceptu testování vývojové projekty jsou nadále v počátečních fázích. Můžete provádět přírůstkové změny definici indexu do textu žádosti odesílá požadavek do služby pro opětovné vytvoření indexu pomocí aktualizovaného schématu.
 
 ## <a name="components-of-an-index"></a>Součásti indexu
 
@@ -133,8 +139,20 @@ Podrobnější informace o [datových typech podporovaných službou Azure Searc
 
 Podrobnější informace o [atributech indexu služby Azure Search najdete tady](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
+## <a name="storage-implications-of-index-attributes"></a>Úložiště důsledcích atributy indexu
+
+Atributy, které jste vybrali mít vliv na úložiště. Na následujícím snímku obrazovky je ilustraci indexu úložiště vzory vyplývající z různých kombinací atributů. Index je založen na [ukázkové vestavěné realestate](search-get-started-portal.md) zdroj dat, který může indexování a dotazování na portálu.
+
+Filtrování a řazení operace dotazu na přesné shody, dokumenty se ukládají Internet. Prohledávatelná pole Povolit fulltextové a přibližné vyhledávání. Obráceným indexy jsou vytvořené pro prohledávatelná pole a vyplní tokenizovaná podmínky. Označení pole jako retrievable nemá žádný zjevný dopad na velikost indexu.
+
+![Index velikost na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "indexu velikost na základě výběru atributu")
+
+Implementace úložiště se považuje za podrobnosti implementace služby Azure Search a může změnit bez předchozího upozornění. Není zaručeno, že se v budoucnu zachová aktuální chování.
+
 ## <a name="suggesters"></a>Moduly pro návrhy
-Modulu pro návrhy je část schéma definující, která pole v indexu se používá pro podporu automatického dokončování nebo našeptávání dotazů při hledání. Obvykle částečné řetězce se odesílají do návrhy (Azure Search Service REST API), zatímco uživatel je zadání vyhledávacího dotazu a rozhraní API vrátí sadu navrhovaných sousloví. Modul pro návrhy, které definujete v indexu určuje pole, která se používají k vytvoření s automatickým dokončováním hledaným výrazům. Další informace najdete v tématu [přidat moduly pro návrhy](index-add-suggesters.md) podrobnosti o konfiguraci.
+Modulu pro návrhy je část schéma definující, která pole v indexu se používá pro podporu automatického dokončování nebo našeptávání dotazů při hledání. Obvykle částečné řetězce se odesílají do návrhy (Azure Search Service REST API), zatímco uživatel je zadání vyhledávacího dotazu a rozhraní API vrátí sadu navrhovaných sousloví. 
+
+Modul pro návrhy, které definujete v indexu určuje pole, která se používají k vytvoření s automatickým dokončováním hledaným výrazům. Další informace najdete v tématu [přidat moduly pro návrhy](index-add-suggesters.md) podrobnosti o konfiguraci.
 
 ## <a name="scoring-profiles"></a>Profily skórování
 

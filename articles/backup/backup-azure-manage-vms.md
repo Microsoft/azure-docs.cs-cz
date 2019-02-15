@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: d0fac3a075923b000c453480edbf18599f5fed3d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 118e32994ed6471c52726e826ecfd42620bd3a91
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994862"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269582"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Správa záloh virtuálních počítačů Azure
 
@@ -216,4 +216,6 @@ Chcete-li odstranit zálohovaná data na virtuálním počítači s *zálohován
     Oznámení vám umožňuje vědět, že záložní data byla odstraněna.
 
 ## <a name="next-steps"></a>Další postup
-Informace o opětovné vytvoření virtuálního počítače z bodu obnovení, projděte si [obnovení virtuálních počítačů Azure](backup-azure-arm-restore-vms.md). Pokud potřebujete informace o ochraně virtuálních počítačů, přečtěte si [stručně a přehledně: Zálohování virtuálních počítačů do trezoru služby Recovery Services](backup-azure-vms-first-look-arm.md). Informace o sledování událostí, naleznete v tématu [monitorování výstrah pro zálohy virtuálních počítačů Azure](backup-azure-monitor-vms.md).
+* Informace o opětovné vytvoření virtuálního počítače z bodu obnovení, projděte si [obnovení virtuálních počítačů Azure](backup-azure-arm-restore-vms.md).
+* Pokud potřebujete informace o ochraně virtuálních počítačů, přečtěte si [stručně a přehledně: Zálohování virtuálních počítačů do trezoru služby Recovery Services](backup-azure-vms-first-look-arm.md).
+* Informace o sledování událostí, naleznete v tématu [monitorování výstrah pro zálohy virtuálních počítačů Azure](backup-azure-monitor-vms.md).

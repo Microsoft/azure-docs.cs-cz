@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1724454ff67f6cfe3646b59e8302a3dd099081
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 79abead77705d13df909703a234bf72ee121a5be
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217441"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301175"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
@@ -59,11 +59,11 @@ Pokud používáte PIN k dokončení procesu ověřování, můžete nastavit ap
 ## <a name="who-decides-if-you-use-this-feature"></a>Který rozhodne, pokud pomocí této funkce?
 V závislosti na typu účtu vaší organizace rozhodnout, že je nutné použít dvojúrovňové ověřování, nebo je možné rozhodnout sami.
 
-- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (třeba alain@contoso.com), je to pro vaši organizaci, zda je nutné použít dvojúrovňové ověřování, spolu s konkrétní ověřovací metody. Další informace o přidávání svůj pracovní nebo školní účet do aplikace Microsoft Authenticator, naleznete v tématu [přidat pracovní nebo školní účty](microsoft-authenticator-app-add-work-account.md).
+- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (třeba alain@contoso.com), je to pro vaši organizaci, zda je nutné použít dvojúrovňové ověřování, spolu s konkrétní ověřovací metody. Další informace o přidávání svůj pracovní nebo školní účet do aplikace Microsoft Authenticator, naleznete v tématu [přidat pracovní nebo školní účty](user-help-auth-app-add-work-school-account.md).
 
-- **Osobní účet Microsoft.** Můžete také nastavit dvoufaktorového ověřování pro osobní účty Microsoft (třeba alain@outlook.com). Další informace o přidání vašeho osobního účtu Microsoft naleznete v tématu 
+- **Osobní účet Microsoft.** Můžete také nastavit dvoufaktorového ověřování pro osobní účty Microsoft (třeba alain@outlook.com). Další informace o přidání vašeho osobního účtu Microsoft, naleznete v tématu [přidat osobním účtům](user-help-auth-app-add-personal-ms-account.md).
 
-- **Účet od jiných výrobců.** Můžete také nastavit dvoufaktorového ověřování pro vaše účty od jiných výrobců (například alain@gmail.com). Vaše účty jiných společností než Microsoft nemusí použít výraz, dvojúrovňové ověřování, ale by měla být schopna najít funkce v rámci **zabezpečení** nebo **přihlášení** nastavení. Aplikace Microsoft Authenticator funguje s všechny účty, které podporují TOTP standardy.
+- **Účet od jiných výrobců.** Můžete také nastavit dvoufaktorového ověřování pro vaše účty od jiných výrobců (například alain@gmail.com). Vaše účty jiných společností než Microsoft nemusí použít výraz, dvojúrovňové ověřování, ale by měla být schopna najít funkce v rámci **zabezpečení** nebo **přihlášení** nastavení. Aplikace Microsoft Authenticator funguje s všechny účty, které podporují TOTP standardy. Další informace o přidávání vašich účtů jiných společností než Microsoft najdete v tématu [přidat své účty jiných společností než Microsoft](user-help-auth-app-add-non-ms-account.md).
 
 ## <a name="in-this-section"></a>V tomto oddílu
 
@@ -71,7 +71,8 @@ V závislosti na typu účtu vaší organizace rozhodnout, že je nutné použí
 |------|------------|
 |[Stažení a instalace aplikace](user-help-auth-app-download-install.md)|Popisuje, kde a jak získat a nainstalovat aplikaci Microsoft Authenticator pro zařízení s Androidem a iOS.|
 |[Přidat pracovní nebo školní účty](user-help-auth-app-add-work-school-account.md)|Popisuje, jak přidat různé pracovní nebo školní a osobní účty do aplikace Microsoft Authenticator.|
-|[Přidat osobním účtům](user-help-auth-app-add-personal-ms-account.md)|Popisuje, jak přidat do aplikace Microsoft Authenticator osobních společnosti Microsoft a účty jiných společností než Microsoft.|
+|[Přidat osobním účtům](user-help-auth-app-add-personal-ms-account.md)|Popisuje postup přidání osobní účty Microsoft pro aplikaci Microsoft Authenticator.|
+|[Přidat své účty jiných společností než Microsoft](user-help-auth-app-add-non-ms-account.md)|Popisuje, jak přidat své účty jiných společností než Microsoft k aplikaci Microsoft Authenticator.|
 |[Ručně přidejte vaše účty](user-help-auth-app-add-account-manual.md)|Pokud nemůžete poskytnutý kód QR naskenovat a popisuje, jak ručně přidat do aplikace Microsoft Authenticator, vaše účty.|
 |[Přihlášení pomocí aplikace](user-help-auth-app-sign-in.md)|Popisuje, jak se přihlásit k různým účtům, pomocí aplikace Microsoft Authenticator.|
 |[Zálohování a obnovení přihlašovacích údajů k účtu](user-help-auth-app-backup-recovery.md)| Poskytuje informace o tom, jak zálohovat a obnovit přihlašovací údaje k účtu pomocí aplikace Microsoft Authenticator.|

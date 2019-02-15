@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3daa1c7b3594de227c43d7e722ee9c6cae0902f8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f7d7b7f470f43d8a7a1cd94b4b1ce79503f0dfca
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301607"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301022"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentace webových aplikací za běhu pomocí monitorování stavu Application Insights
 
@@ -27,7 +27,7 @@ Monitorování stavu slouží k instrumentaci aplikace .NET hostované ve služb
 
 - Pokud vaše aplikace se nasazuje do Azure app Service, postupujte podle [tyto pokyny](azure-web-apps.md).
 - Pokud vaše aplikace je nasazená ve Virtuálním počítači Azure, můžete přepnout na monitorování pomocí Application Insights z ovládacího panelu Azure.
-- (Existují i samostatné články o instrumentaci [živých webových aplikací J2EE](java-live.md) a [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
+- (Existují také samostatné články o instrumentaci [živých webových aplikací Java EE](java-live.md) a [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
 
 
 ![Snímek obrazovky s App Insights přehled grafy obsahující informace o neúspěšných požadavků, doba odezvy serveru a požadavky na server](./media/monitor-performance-live-website-now/overview-graphs.png)

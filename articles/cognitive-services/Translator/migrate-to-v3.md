@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 98d2d3a54ff2f0c4ef326f8aae26e5ba8845d603
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882332"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301872"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
@@ -41,19 +41,19 @@ Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne 
 
 | V2 Metoda API   | V3 Kompatibilitu s rozhraními API |
 |:----------- |:-------------|
-| Translate     | [Translate](reference/v3-0-translate.md)          |
-| TranslateArray      | [Translate](reference/v3-0-translate.md)        |
-| GetLanguageNames      | [Jazyky](reference/v3-0-languages.md)         |
-| GetLanguagesForTranslate     | [Jazyky](reference/v3-0-languages.md)       |
-| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Zjištění](reference/v3-0-detect.md)         |
-| DetectArray     | [Zjištění](reference/v3-0-detect.md)         |
-| AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
-| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
-| GetTranslations      | Funkce se už nepodporuje.         |
-| GetTranslationsArray      | Funkce se už nepodporuje.         |
+| `Translate`     | [Translate](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
+| `GetLanguageNames`      | [Jazyky](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Jazyky](reference/v3-0-languages.md)       |
+| `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `Detect`     | [Zjištění](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Zjištění](reference/v3-0-detect.md)         |
+| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
+| `GetTranslations`      | Funkce se už nepodporuje.         |
+| `GetTranslationsArray`      | Funkce se už nepodporuje.         |
 
 ## <a name="move-to-json-format"></a>Přesunout do formátu JSON
 
@@ -75,12 +75,12 @@ Microsoft Translator V3 se účtuje podle stejným způsobem, který se stanoví
 
 | Metoda v3   | Znaky počítá fakturace |
 |:----------- |:-------------|
-| Languages     | Odeslané žádné znaky, none nepočítají, žádné poplatky.          |
-| Translate     | Počet je založen na tom, kolik znaků se odešlou pro překlad a kolik jazycích jsou znaky přeloženy do. odeslání 50 znaků a 5 jazyky požadovaný bude 50 × 5.           |
-| Transliterace     | Počet odeslaných k transkripci znaků, které se počítají.         |
-| Dictionary lookup & example     | Se počítají počet znaků, odešle ke slovníku lookup a examples.         |
-| BreakSentence     | Bez poplatků.       |
-| Detect     | Bez poplatků.      |
+| `Languages`     | Odeslané žádné znaky, none nepočítají, žádné poplatky.          |
+| `Translate`     | Počet je založen na tom, kolik znaků se odešlou pro překlad a kolik jazycích jsou znaky přeloženy do. odeslání 50 znaků a 5 jazyky požadovaný bude 50 × 5.           |
+| `Transliterate`     | Počet odeslaných k transkripci znaků, které se počítají.         |
+| `Dictionary lookup & example`     | Se počítají počet znaků, odešle ke slovníku lookup a examples.         |
+| `BreakSentence`     | Bez poplatků.       |
+| `Detect`     | Bez poplatků.      |
 
 ## <a name="v3-end-points"></a>V3 koncové body
 
@@ -88,22 +88,21 @@ Globální
 
 * api.cognitive.microsofttranslator.com
 
-
 ## <a name="v3-api-text-translations-methods"></a>Metody překlady text v3 API
 
-[Jazyky](reference/v3-0-languages.md)
+[`Languages`](reference/v3-0-languages.md)
 
-[Translate](reference/v3-0-translate.md)
+[`Translate`](reference/v3-0-translate.md)
 
-[Transkripce](reference/v3-0-transliterate.md)
+[`Transliterate`](reference/v3-0-transliterate.md)
 
-[BreakSentence](reference/v3-0-break-sentence.md)
+[`BreakSentence`](reference/v3-0-break-sentence.md)
 
-[Zjištění](reference/v3-0-detect.md)
+[`Detect`](reference/v3-0-detect.md)
 
-[Slovník/vyhledávání](reference/v3-0-dictionary-lookup.md)
+[`Dictionary/lookup`](reference/v3-0-dictionary-lookup.md)
 
-[Slovník/příklad](reference/v3-0-dictionary-examples.md)
+[`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
 ## <a name="compatibility-and-customization"></a>Kompatibilita a přizpůsobení
 
@@ -132,7 +131,6 @@ Pokud používáte api.cognitive.microsofttranslator.com koncový bod používá
 * Pokud používáte api.microsofttranslator.com koncový bod používáte verze 2 rozhraní Translator Text API.
 
 Žádná verze Translator API vytvoří záznam překlady. Překlady jsou nikdy sdílet s kýmkoli. Další informace o [bez trasování Translator](http://www.aka.ms/NoTrace) webové stránky.
-
 
 ## <a name="links"></a>Odkazy
 

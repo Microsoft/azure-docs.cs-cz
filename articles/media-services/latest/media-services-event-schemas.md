@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/11/2019
+ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9748d61b1aa336c5300dd414d53388f48a41368
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8ad0efffc89a3c11f412d94b922401c23e84a3e5
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243981"
+ms.locfileid: "56268783"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémata událostí služby Media Services
 
@@ -42,7 +42,7 @@ Pro všechny události se můžete zaregistrovat prostřednictvím přihlášen�
 | Microsoft.Media.JobCanceled| Získáte událost v případě, že úloha přejde do zrušeném stavu. Toto je koncový stav, který obsahuje výstupy úlohy.|
 | Microsoft.Media.JobErrored| Získáte událost v případě, že úloha přejde do chybového stavu. Toto je koncový stav, který obsahuje výstupy úlohy.|
 
-[Příklady schématu](#event-schema-examples) postupujte podle.
+Zobrazit [příklady schématu](#event-schema-examples) , které následují.
 
 ### <a name="monitoring-job-output-state-changes"></a>Výstup úlohy monitorování změny stavu
 
@@ -56,7 +56,15 @@ Pro všechny události se můžete zaregistrovat prostřednictvím přihlášen�
 | Microsoft.Media.JobOutputCanceled| Získáte událost při zrušení úlohy, výstup přechází do stavu.|
 | Microsoft.Media.JobOutputErrored| Získáte událost, když přejde do chybového stavu výstupu úlohy.|
 
-[Příklady schématu](#event-schema-examples) postupujte podle.
+Zobrazit [příklady schématu](#event-schema-examples) , které následují.
+
+### <a name="monitoring-job-output-progress"></a>Výstupu průběhu monitorování úlohy
+
+| Typ události | Popis |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputProgress| Tato událost zobrazuje průběh, od 0 % do 100 % zpracování úlohy. Pro odeslání události, pokud byla 5 % nebo větší zvýšení hodnoty průběh nebo to je více než 30 sekund od poslední události (prezenční signál) pokusů o službu. Hodnota průběhu není zaručeno, že začínal 0 %, nebo k dosažení 100 %, ani je zaručeno postupem doby zvyšuje tempu. Tato událost není vhodné používat k určení, že bylo dokončeno zpracování – místo toho byste měli použít události změny stavu.|
+
+Zobrazit [příklady schématu](#event-schema-examples) , které následují.
 
 ## <a name="live-event-types"></a>Typy živou událost
 
@@ -72,7 +80,7 @@ Stream úroveň události jsou vyvolány na datový proud nebo připojení. Kaž
 | Microsoft.Media.LiveEventEncoderConnected | Kodér naváže připojení se živá událost. |
 | Microsoft.Media.LiveEventEncoderDisconnected | Kodér odpojí. |
 
-[Příklady schématu](#event-schema-examples) postupujte podle.
+Zobrazit [příklady schématu](#event-schema-examples) , které následují.
 
 ### <a name="track-level-events"></a>Sledování události
 
@@ -87,7 +95,7 @@ Sledování události jsou vyvolány jednu stopu. Sledování událostí typy js
 | Microsoft.Media.LiveEventIngestHeartbeat | Publikuje každých 20 sekund pro každé stopu, když běží živá událost. Poskytuje ingestování shrnutí stavu. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Server mediálních datových detekuje diskontinuitu v příchozí směr. |
 
-[Příklady schématu](#event-schema-examples) postupujte podle.
+Zobrazit [příklady schématu](#event-schema-examples) , které následují.
 
 ## <a name="event-schema-examples"></a>Příklady schématu událostí
 
@@ -245,6 +253,29 @@ Pro každou změnu stavu JobOutput příkladu schématu vypadá nějak takto:
       "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+### <a name="joboutputprogress"></a>JobOutputProgress
+
+Příklad schématu vypadá nějak takto:
+
+ ```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
+  "eventType": "Microsoft.Media.JobOutputProgress",
+  "eventTime": "2018-12-10T18:20:12.1514867",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "data": {
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    },
+    "label": "VideoAnalyzerPreset_0",
+    "progress": 86
   },
   "dataVersion": "1.0",
   "metadataVersion": "1"

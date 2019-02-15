@@ -7,24 +7,16 @@ ms.author: brjohnst
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/20/2018
+ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: e453e05a692e862179dcd78298b215a2384cba2c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 8dddc85d8826c2980405fd67ddc1aaab9ea12c62
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092800"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301073"
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>Dotazování indexu Azure Search pomocí REST API
-> [!div class="op_single_selector"]
->
-> * [Přehled](search-query-overview.md)
-> * [Azure Portal](search-explorer.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST](search-query-rest-api.md)
->
->
 
 Tento článek vám ukáže postup dotazování indexu pomocí [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/).
 

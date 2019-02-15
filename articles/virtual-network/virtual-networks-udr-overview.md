@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: f5c8880535d5b4b89ec3f13caa20051ae1709925
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 86e4720f001f05534bc9af703f0f98d7ca5d95e4
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812782"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268834"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -121,7 +121,7 @@ Místní síťová brána si může vyměňovat trasy s bránou virtuální sít
 
 Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí ve virtuální síti se přidá samostatná trasa pro každou inzerovanou předponu. Trasa se přidá s uvedeným zdrojem a typem dalšího segmentu směrování *Brána virtuální sítě*. 
 
-Šíření tras BGP je možné v podsíti zakázat pomocí vlastnosti ve směrovací tabulce. Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí se zakázaným šířením BGP se trasy nepřidají. Možnosti připojení u připojení VPN zajišťují [vlastní trasy](#custom-routes) s typem dalšího segmentu směrování *Brána virtuální sítě*. Podrobnosti najdete v tématu popisujícím, [jak zakázat šíření tras BGP](manage-route-table.md#create-a-route-table).
+ER a šíření tras VPN Gateway je možné zakázat pomocí vlastnosti ve směrovací tabulky podsítě. Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí se zakázaným šířením BGP se trasy nepřidají. Možnosti připojení u připojení VPN zajišťují [vlastní trasy](#custom-routes) s typem dalšího segmentu směrování *Brána virtuální sítě*. Podrobnosti najdete v tématu popisujícím, [jak zakázat šíření tras BGP](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak Azure vybírá trasu
 

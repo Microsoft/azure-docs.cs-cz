@@ -1,6 +1,6 @@
 ---
-title: Model spotřeby v rámci služby Azure Maps | Microsoft Docs
-description: Další informace o model spotřeby v rámci služby Azure Maps
+title: Využití modelu ve službě Azure Maps | Dokumentace Microsoftu
+description: Další informace o spotřebě modelu ve službě Azure Maps
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: cf20c7dbfbf7cd3f09579b03b835148c1c295137
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f75f656312c11a4668ca9ef9fe7b2a61a7d13e8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600625"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301135"
 ---
 # <a name="consumption-model"></a>Model spotřeby
 
-Online směrování poskytuje podrobný popis Model spotřeby vehicle konkrétní sadu parametrů.
-V závislosti na hodnotě **vehicleEngineType** jsou podporovány dva hlavní modely spotřeby: _Combustion_ a _Electric_. Zadání parametrů, které patří do různých modelů ve stejném požadavku, je chyba.
-Model spotřeby nelze použít s **travelMode** hodnoty _jízdních kol_ a _chodců_.
+Online směrování poskytuje podrobný popis modelu využití vozidla konkrétní sadu parametrů.
+V závislosti na hodnotě z **vehicleEngineType**, jsou podporovány dvě hlavní spotřební modely: _Spalovací_ a _Electric_. Zadání parametrů, které patří do různých modelů ve stejném požadavku, je chyba.
+Využití modelu nelze použít s **travelMode** hodnoty _jízdních kol_ a _chodce_.
 
-## <a name="parameter-constraints-for-consumption-model"></a>Parametr omezení pro model spotřeby
+## <a name="parameter-constraints-for-consumption-model"></a>Omezení parametru pro model spotřeby
 
-V obou modelech spotřeba explicitně určit některé parametry vyžaduje zadání jiná také. Tyto závislosti jsou:
+V obou modelech spotřeby explicitní určení některé parametry vyžaduje zadání některých i další uživatele. Tyto závislosti jsou:
 
-* Všechny parametry vyžadují **constantSpeedConsumption** být zadaný uživatel. Jedná se o chybu, chcete-li určit žádné jiné spotřeba modelu parametr, s výjimkou produktů **vehicleWeight**, pokud **constantSpeedConsumption*** není zadán.
-* **accelerationEfficiency** a **decelerationEfficiency** je vždy třeba zadat jako párový údaj (tj. oba, nebo žádný).
-* Pokud **accelerationEfficiency** a **decelerationEfficiency** nejsou zadány produktu jejich hodnoty nesmí být větší než 1 (aby se zabránilo perpetual pohybu).
-* **uphillEfficiency** a **downhillEfficiency** je vždy třeba zadat jako párový údaj (tj. oba, nebo žádný).
-* Pokud **uphillEfficiency** a **downhillEfficiency** nejsou zadány produktu jejich hodnoty nesmí být větší než 1 (aby se zabránilo perpetual pohybu).
-* Pokud \* **efektivitu** parametry jsou zadané uživatelem, **vehicleWeight** musí být také zadána. Když **vehicleEngineType** je _spalovací_, **fuelEnergyDensityInMJoulesPerLiter** je třeba zadat také.
-* **maxChargeInkWh** a **currentChargeInkWh** je vždy třeba zadat jako párový údaj (tj. oba, nebo žádný).
+* Vyžadovat všechny parametry **constantSpeedConsumption** do zadaného uživatelem. Jedná se o chybu, chcete-li určit všechny ostatní využití modelu parametry, s výjimkou z **vehicleWeight**, pokud **constantSpeedConsumption** není zadán.
+* **accelerationEfficiency** a **decelerationEfficiency** vždy třeba zadat jako párový údaj (tj oba, nebo žádný).
+* Pokud **accelerationEfficiency** a **decelerationEfficiency** zadávají produktu jejich hodnoty nesmí být větší než 1 (aby se zabránilo perpetual pohybu).
+* **uphillEfficiency** a **downhillEfficiency** vždy třeba zadat jako párový údaj (tj oba, nebo žádný).
+* Pokud **uphillEfficiency** a **downhillEfficiency** zadávají produktu jejich hodnoty nesmí být větší než 1 (aby se zabránilo perpetual pohybu).
+* Pokud \* __efektivitu__ parametry jsou zadané uživatelem, **vehicleWeight** musí být také zadána. Když **vehicleEngineType** je _spalovací_, **fuelEnergyDensityInMJoulesPerLiter** musí být zadán také.
+* **maxChargeInkWh** a **currentChargeInkWh** vždy třeba zadat jako párový údaj (tj oba, nebo žádný).
 
 > [!NOTE]
-> Pokud jenom **constantSpeedConsumption** je zadán, jsou žádné další aspekty spotřeba jako sklon a vehicle akcelerace vzít v úvahu pro výpočty spotřeby.
+> Pokud pouze **constantSpeedConsumption** není zadán, jsou žádné další aspekty spotřeby svazích a akceleraci vozidla vzít v úvahu pro výpočty spotřeby.
 
-## <a name="combustion-consumption-model"></a>Model spotřeby spalovací
+## <a name="combustion-consumption-model"></a>Model spotřeby spalování
 
 Model spotřeby combustion se používá, když je **vehicleEngineType** nastaveno na _combustion_.
-Seznam parametrů, které patří k tomuto modelu jsou níže. Informace naleznete v sekci parametrů pro podrobný popis.
+Seznam parametrů, které patří do tohoto modelu jsou uvedené níže. Přečtěte si část parametry pro podrobný popis.
 
 * constantSpeedConsumptionInLitersPerHundredkm
 * VehicleWeight
@@ -51,10 +51,10 @@ Seznam parametrů, které patří k tomuto modelu jsou níže. Informace nalezne
 * uphillEfficiency
 * downhillEfficiency
 
-## <a name="electric-consumption-model"></a>Model elektrické energie
+## <a name="electric-consumption-model"></a>Model spotřeby elektrické
 
-Elektrické energie Model se používá při **vehicleEngineType** je nastaven na _electric_.
-Seznam parametrů, které patří k tomuto modelu jsou níže. Informace naleznete v sekci parametrů pro podrobný popis.
+Slouží k elektrické spotřební Model při **vehicleEngineType** je nastavena na _electric_.
+Seznam parametrů, které patří do tohoto modelu jsou uvedené níže. Přečtěte si část parametry pro podrobný popis.
 
 * constantSpeedConsumptionInkWhPerHundredkm
 * VehicleWeight
@@ -66,7 +66,7 @@ Seznam parametrů, které patří k tomuto modelu jsou níže. Informace nalezne
 * uphillEfficiency
 * downhillEfficiency
 
-## <a name="sensible-values-of-consumption-parameters"></a>Smysluplné hodnoty parametrů spotřeba
+## <a name="sensible-values-of-consumption-parameters"></a>Rozumné hodnoty parametrů využití
 
-Konkrétní sadu parametrů spotřebě může být odmítnutá, i když ho může splnění explicitní požadavkům uvedeným výše. Ho se stane, když hodnota specifického parametru nebo kombinace hodnot několika parametrů, které se považuje za vést k nepřiměřený uskutečněných hodnoty spotřeby. Pokud k tomu dojde, s největší pravděpodobností znamená chybu vstupu jako správné je pozor na to pojmout všechny rozumný hodnoty parametrů spotřeby. V případě, že konkrétní sadu parametrů spotřeba byl odmítnut, v doprovodné chybové zprávě bude obsahovat textové vysvětlení z důvodů.
-Podrobný popis parametry mají příklady rozumný hodnot pro oba modely.
+Může být odmítnutá konkrétní sadu parametrů spotřeby, i když ho může splnit všechny explicitní výše uvedené požadavky na. To se stane, když se bude považovat za hodnotu určitý parametr nebo kombinace hodnot několik parametrů, povede k odpor řádově hodnoty spotřeby. Pokud k tomu dojde, pravděpodobně označuje chybu vstupu jako správné je pozor pojmout všechny hodnoty rozumné využití parametrů. V případě, že konkrétní sadu parametrů spotřeby byl odmítnut, doprovodné chybové zprávě bude obsahovat textové vysvětlení z důvodů.
+Podrobný popis parametrů obsahují příklady rozumné hodnoty pro oba modely.

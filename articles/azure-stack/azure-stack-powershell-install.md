@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 72c4bfc4151e8120f8641c743c0da3896bd71fe1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 89e75afd3b9001f7a0b8a027744ef71c8bb69690
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995026"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299560"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalace Powershellu pro Azure Stack
 
@@ -97,7 +97,7 @@ Instalace má tři kroky:
 
 Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na pracovní stanici vývoje:
 
-- Azure Stack 1901 nebo novější.
+- Azure Stack 1901 nebo novější:
 
     ```PowerShell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
@@ -108,7 +108,7 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
     > [!Note]  
     > Verze modulu Azure Stack 1.7.0 je zásadní změnu. Migrace ze služby Azure Stack 1.6.0 najdete [Průvodce migrací](https://aka.ms/azspshmigration170).
 
-- Azure Stack 1811 nebo starší.
+- Azure Stack 1811:
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
@@ -120,7 +120,7 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
 
-- Azure Stack 1809 nebo starší.
+- Azure Stack 1810 nebo starším systémem:
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet

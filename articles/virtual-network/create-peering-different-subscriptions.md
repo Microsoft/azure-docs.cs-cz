@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 3b929c3f85bab4319fe2fef1b5c0575f0d1d972a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 11ef6f2f09aacc175f095f7118ddb26ec77b2446
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511672"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268358"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí - Resource Manageru, různá předplatná
 
@@ -280,7 +280,7 @@ Pokud jsou virtuální sítě v různých předplatných, a že předplatná jso
     }
     ```
 
-3. Připojte se k Azure jako UserA a nasazení pomocí šablony [portál](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-a-template-from-your-local-machine), nebo [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Zadejte název souboru, který jste uložili v kroku 2 k ukázkovému textu json.
+3. Připojte se k Azure jako UserA a nasazení pomocí šablony [portál](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-templates-stored-locally), nebo [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Zadejte název souboru, který jste uložili v kroku 2 k ukázkovému textu json.
 4. Zkopírujte json příklad z kroku 2 do souboru ve vašem počítači a proveďte změny řádků, které začínají řetězcem:
     - **Název**: Změna *myVnetA/myVnetAToMyVnetB* k *myVnetB/myVnetBToMyVnetA*.
     - **id**: Nahraďte `<subscription ID>` s ID předplatného a změnit jeho UserB *myVnetB* k *myVnetA*.

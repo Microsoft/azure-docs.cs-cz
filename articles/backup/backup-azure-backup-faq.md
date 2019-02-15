@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: b31bdacbaf1ab81223d2a99472233cd5024edced
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c52a10aa806962ee54fe6058f236ea9bd86414b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300727"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268341"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -31,7 +31,7 @@ Můžete zaregistrovat až 1 000 virtuálních počítačích Azure s jeden trez
 Data serveru, který chcete obnovit společně používejte stejné heslo, při nastavení zálohování. Pokud chcete izolovat obnovení na konkrétní server nebo servery, použijte přístupové heslo pro tento server nebo pouze servery. Například servery lidských zdrojů mohou používat jedno šifrovací heslo, účetní servery jiné a servery úložiště ještě jiné.
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Můžete mezi předplatnými přesunout Moje trezoru?
-Ne. Trezor se vytvoří na úrovni předplatného a nejde ji přiřadit do jiného předplatného.
+Ano. Chcete-li přesunout trezor služby Recovery Services najdete na tomto [článku](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>U jiného trezoru, přesun záložních dat?
 Ne. Data záloh uložená v trezoru nejde přesunout do jiného trezoru.
@@ -148,7 +148,6 @@ Ne. Všechna data přenášená do trezoru před zrušením úlohy zálohování
 Když ve virtuálním počítači Azure zrušíte úlohu zálohování, budou dosud přenesená data ignorována. Při následujícím přírůstkovém zálohování se přenesou data, která se změnila od poslední úspěšně dokončené úlohy zálohování.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Proč je velikost dat, přenesena do trezoru služby Recovery Services menší než data vybraná pro zálohování?
-
  Zálohovat data z Azure Backup Agent aplikace DPM, a komprimovaná a šifrovaná před přenášením Azure Backup serveru. Komprese a šifrování se použije, data v trezoru je 30 – 40 % menší.
 
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Můžete odstranit jednotlivé soubory z bodu obnovení v trezoru?
@@ -156,8 +155,8 @@ Ne, Azure Backup nepodporuje odstranění nebo vyprazdňování jednotlivých po
 
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Pokud zruším úlohu zálohování po jeho spuštění, je odstranění přenášených dat?
-
 Ne. Všechna data, která bylo převedeno do trezoru před úloha zálohování byla zrušena zůstanou v trezoru.
+
 - Azure Backup používá mechanismus kontrolních bodů k příležitostnému přidávání kontrolních bodů do zálohovaných dat během zálohování.
 - Díky kontrolním bodům v zálohovaných datech je možné při dalším procesu zálohování ověřit integritu souborů.
 - Následující zálohování proběhne jako přírůstkové vzhledem k naposledy zálohovaným datům. Přírůstkové zálohování přenáší jen nová nebo změněná data, což znamená lepší využití přenosové kapacity.
@@ -177,7 +176,7 @@ Ne. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tato Im
 
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point-br"></a>Pokud zálohu, zůstane po dlouhou dobu, trvá obnovení staršího datového bodu déle? <br/>
-Ne – obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý bod obnovení se chová jako úplný bod.
+Ne. Čas obnovení nejstaršího nebo nejnovější bod je stejný. Každý bod obnovení se chová jako úplný bod.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Jestliže se každý bod obnovení chová jako úplný bod, ovlivní to celkové fakturovatelné úložiště zálohování?
 Typické produkty s dlouhodobými body uchování ukládají zálohovaná data jako úplné body. 
@@ -203,7 +202,7 @@ Ne. Obnovení je zdarma a se vám neúčtují poplatky za výchozí přenos.
 Když se použije nová zásada, plán a uchovávání nové zásady následuje.
 
 - Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu.
-- - Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a následně se odstraní.
+- Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a následně se odstraní.
 
 ## <a name="encryption"></a>Šifrování
 

@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: e1eced2d00737a950ed441bd83614d9d6d0b9230
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731270"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267746"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s služby SignalR
 
@@ -79,7 +79,7 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
 
 1. Přidejte odkaz na balíček `Microsoft.Azure.SignalR` spuštěním následujícího příkazu:
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
+        dotnet add package Microsoft.Azure.SignalR
 
 2. Spuštěním následujícího příkazu obnovte balíčky pro váš projekt.
 
@@ -92,7 +92,7 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
     Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
     Nástroj Secret Manager se použije pouze k testování webové aplikace, zatímco je hostovaná v místním prostředí. V některém dalším kurzu nasadíte webovou chatovací aplikaci do Azure. Po nasazení webové aplikace do Azure použijete místo nástroje Secret Manager k uložení připojovacího řetězce nastavení aplikace.

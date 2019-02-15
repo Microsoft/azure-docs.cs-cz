@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3d79f106554bf4a80df835ac880fbb7a72c8bfe
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077450"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268392"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -70,7 +70,7 @@ A.  Pokud chcete získat Azure Data Box, přihlaste se na webu Azure Portal a ob
 ### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>Otázka: Nemůžu na webu Azure Portal vytvořit objednávku na Data Box. Čím to může být?
 A. Pokud vám nejde vystavit objednávka zařízení Data Box, může to být typem předplatného nebo přístupem. 
 
-Zkontrolujte si předplatné. Data Box je dostupný jenom zákazníkům se smlouvou Enterprise (EA), poskytovatelům Cloud Solution Provider (CSP), nebo pokud jste využili nabídku předplatného s průběžnými platbami. Pokud máte jiný typ předplatného, kontaktujte podporu Microsoftu a předplatné upgradujte.
+Zkontrolujte si předplatné. Data Box dostupná jenom pro smlouvy Enterprise (EA) a cloudové nabídky předplatného řešení provider (CSP). Pokud máte jiný typ předplatného, kontaktujte podporu Microsoftu a předplatné upgradujte.
 
 Pokud máte podporovaný typ předplatného, zkontrolujte svou úroveň přístupu k předplatnému. K vytvoření objednávky musíte být přispěvatel nebo vlastník předplatného.
 

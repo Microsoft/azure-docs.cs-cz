@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cecf7f7fb79b6d7ebeed051b018a1e18375d68b2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6eb08af9cdd19bc83d44d29874f6ac58b41ed8c8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045760"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302030"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts"></a>Odolné funkce vzory a technické koncepty
 
-*Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartuje za vás. Tento článek poskytuje podrobnější informace o chování rozšíření Durable Functions pro Azure Functions a běžné vzory implementace.
+*Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. Tento článek poskytuje podrobnější informace o chování rozšíření Durable Functions pro Azure Functions a běžné vzory implementace.
 
 > [!NOTE]
 > Odolná služba Functions je pokročilá rozšíření pro Azure Functions, která není vhodná pro všechny aplikace. Zbývající část tohoto článku se předpokládá, že máte silné znalost [Azure Functions](../functions-overview.md) koncepty a problémů účastní vývoje aplikací bez serveru.
@@ -135,7 +135,7 @@ Větveného úkony distribuované na více instancí funkce `F2`, a práce je sl
 
 Automatické vytváření kontrolních bodů, ke které dochází na `await` nebo `yield` volat `Task.WhenAll` nebo `context.df.Task.all` zajišťuje jakékoli selhání nebo restartování polovině nevyžaduje restartování žádné již dokončených úloh.
 
-### <a name="async-http"></a>Vzor #3: Asynchronní rozhraní API HTTP
+### <a name="async-http"></a>Vzor #3: Async HTTP APIs
 
 Třetí vzor se točí kolem problém koordinace stavu dlouhotrvající operace s externími klienty. Běžný způsob, jak tento model implementovat spočívá v použití dlouhotrvající akce aktivuje volání protokolu HTTP a potom přesměrování klienta na stav koncového bodu, který může dotazovat další po dokončení operace.
 

@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 02/14/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4026f710def26b50da87ebb8fdafcafc74d84758
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dca184e5b94d69845bfa6e2d83753f53554cadeb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185821"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266743"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – zabezpečení – přehled
 
-Přehled zabezpečení poskytuje přehled o stavu zabezpečení vaší organizace. Pomáhá identifikovat potenciální útoky a pochopit účinnost zásad.
+[Přehled zabezpečení](https://aka.ms/IdentityProtectionRefresh) získáte přehled o stavu zabezpečení vaší organizace. Pomáhá identifikovat potenciální útoky a pochopit účinnost zásad.
 
 Přehled zabezpečení je široce rozdělený do dvou částí:
 

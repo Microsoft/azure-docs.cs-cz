@@ -16,12 +16,12 @@ ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 8f53bbd65053fe9ac2bf49478944dc99dac3acfd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 67022b1d00c8982d7b6e6eff77ffb648bfc557ec
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247846"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301277"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Hostované operační systémy podporované ve službě Azure Stack
 
@@ -53,7 +53,7 @@ Edice Datacenter jsou dostupné na webu Marketplace pro stahování. Zákazníci
 Linuxové distribuce, které jsou uvedené jako dostupné na webu Marketplace zahrnují nezbytné Windows Azure Linux Agent (WALA). Používání vlastní image do služby Azure Stack, postupujte podle pokynů v [přidat Linuxové Image do služby Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]
-> Vlastní Image by měly být sestaveny pomocí nejnovější veřejné verze WALA. Verze starší než 2.2.18 nemusí fungovat správně v Azure stacku.
+> Vlastní Image by měly být sestaveny pomocí nejnovější veřejné verze WALA nebo s verzí 2.2.20. Verze starší než 2.2.20 a mezi 2.2.20 a 2.2.35 (výhradní) nebude fungovat správně v Azure stacku. 
 >
 > [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
 

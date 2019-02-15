@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0bc53edb00ea13fdfcab3cfc398e122e6ecd7632
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106320"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268290"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazení protokolů aktivit pro auditování akcí u prostředků
 
@@ -34,9 +34,6 @@ Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) provádě
 Protokoly aktivit se uchovávají po dobu 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, jako počáteční datum není více než 90 dnů v minulosti.
 
 Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhraní příkazového řádku Azure Insights REST API, nebo [knihovna .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="the-azure-portal"></a>Azure Portal
 

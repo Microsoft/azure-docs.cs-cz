@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: faeba611dfc55307f8f855ee45a1a8d37603f2f5
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0c7f248023a97bdad09c2c51e9e9a28073def086
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117380"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300121"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
-Application Insights monitoruje webové aplikace spuštěné. Vás informuje o selhání a problémy s výkonem a pomáhá analyzovat, jak zákazníci využívají vaše aplikace. Funguje pro aplikace běžící na spoustě platforem (ASP.NET, J2EE, Node.js,...) a je hostovaná v cloudu nebo místně. 
+Application Insights monitoruje webové aplikace spuštěné. Vás informuje o selhání a problémy s výkonem a pomáhá analyzovat, jak zákazníci využívají vaše aplikace. Funguje pro aplikace běžící na spoustě platforem (ASP.NET, Java EE, Node.js,...) a je hostovaná v cloudu nebo místně. 
 
 ![Aspekty složitost doručování webových aplikací](./media/devops/010.png)
 

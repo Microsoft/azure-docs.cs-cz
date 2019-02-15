@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ad6ea26535190d2fc5798e1223c2196d3d5a5d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1fde586563c142690078a693970a9a24bd5cacb4
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211134"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Kurz: Integrace Azure Active Directory se SAP Netweaverem
 
@@ -175,7 +175,14 @@ Ke konfiguraci Azure AD jednotného přihlašování se SAP Netweaverem, proveď
 
     ![SAP NetWeaver domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<your company instance of SAP NetWeaver>`
+    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<your company instance of SAP NetWeaver>`
+
+    > [!NOTE]
+    > Jsme viděli někteří zákazníci ohlášení chyby nesprávné adresy URL odpovědi nakonfigurované na jejich instanci. Pokud se zobrazí tato chyba, můžete použít následující skript prostředí PowerShell jako alternativní přibližně nastavení správné adresy URL odpovědi pro vaši instanci.:
+    ```
+    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
+    ``` 
+    > ID objektu ServicePrincipal je nejprve je nutné nastavit sami nebo můžete předat, který také zde.
 
 12. Aplikace SAP NetWeaver očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
 
@@ -374,4 +381,3 @@ V této části vytvoříte uživatele v SAP NetWeaver jako Britta Simon. Fungov
 - [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -6,21 +6,21 @@ author: HeidiSteen
 manager: cgronlun
 ms.service: search
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 55de72b2a82dea3dfe763d786966565beb229042
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1d9dffe9d311674aeb043fcc4c35110775f420af
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745087"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300801"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Postup opětovné sestavení indexu Azure Search
 
 Tento článek vysvětluje, jak opětovné sestavení indexu Azure Search, podmínek, za kterých jsou potřeba znovu sestaví a doporučení pro jejich zmírnění dopadu znovu sestaví na požadavků na probíhající dotazy.
 
-A *znovu sestavit* odkazuje na odstranění a opětovné vytvoření fyzické datové struktury přidružený index, včetně všech na základě pole obrácenou indexů. Ve službě Azure Search nelze vyřadit a znovu vytvořte konkrétních polí. Opětovné sestavení indexu, musí se odstranit všechna pole úložiště, znovu vytvořit na základě schématu indexu existující nebo upravená a pak provést jeho plnění znovu s daty vloženo do indexu nebo získaných z externích zdrojů. Běžně se během vývoje provést nové sestavení indexů, ale možná budete také muset znovu sestavit index na provozní úrovni tak, aby vyhovovaly změny struktury, jako je například přidávání komplexních typů.
+A *znovu sestavit* odkazuje na odstranění a opětovné vytvoření fyzické datové struktury přidružený index, včetně všech na základě pole obrácenou indexů. Ve službě Azure Search nelze vyřadit a znovu vytvořit jednotlivá pole. Opětovné sestavení indexu, musí se odstranit všechna pole úložiště, znovu vytvořit na základě schématu indexu existující nebo upravená a pak provést jeho plnění znovu s daty vloženo do indexu nebo získaných z externích zdrojů. Běžně se během vývoje provést nové sestavení indexů, ale možná budete také muset znovu sestavit index na provozní úrovni tak, aby vyhovovaly změny struktury, jako je například přidávání komplexních typů nebo přidávat pole na moduly pro návrhy.
 
 Rozdíl od znovu sestaví, které převést do režimu offline, index *aktualizace dat* běží jako úlohu na pozadí. Můžete přidat, odebrat a nahraďte dokumenty s minimálním dopadem na dotaz úlohy, i když dotazy obvykle trvá déle. Další informace o aktualizaci indexování obsahu, najdete v části [přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
@@ -28,7 +28,9 @@ Rozdíl od znovu sestaví, které převést do režimu offline, index *aktualiza
 
 | Podmínka | Popis |
 |-----------|-------------|
-| Změna definice pole | Úprava názvu, datový typ nebo konkrétní [atributy indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, kategorizovatelné) vyžaduje úplné opětovné sestavení. |
+| Změna definice pole | Úprava pole název, datový typ nebo konkrétní [atributy indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, kategorizovatelné) vyžaduje úplné opětovné sestavení. |
+| Analyzátor přidání do pole | [Analyzátory](search-analyzers.md) jsou definovány v indexu a poté přiřazeny k polím. Analyzátor do indexu můžete přidat kdykoli, ale analyzátor lze přiřadit pouze při vytváření pole. To platí pro obě **analyzátor** a **indexAnalyzer** vlastnosti. **SearchAnalyzer** vlastnost je výjimku.
+| Přidání pole modulu pro návrhy | Pokud pole již existuje a chcete, a přidejte ji tak [moduly pro návrhy](index-add-suggesters.md) vytvořit, je nutné znovu sestavit index. |
 | Odstranění pole | Fyzicky vyjměte všechna trasování pole, budete muset znovu sestavte index. Když okamžité opětovné sestavení se neshoduje s postupy, Většina vývojářů upravovat kód aplikace můžete zakázat přístup do pole "odstraněné". Fyzicky definici pole a obsah zůstane v indexu až do další sestavení pomocí schématu, která vynechává pole dotyčný. |
 | Přepnutí úrovně | Pokud budete potřebovat větší kapacitu, není žádný místní upgrade. Vytvoření nové služby na nový bod kapacity a musí být sestaveny indexy od nuly v nové službě. |
 
@@ -36,10 +38,10 @@ Další změny můžete provést bez dopadu na existující fyzické struktury. 
 
 + Přidání nového pole
 + Nastavte **Retrievable** atribut existujícího pole
-+ Nastavit analyzátor pro existující pole
++ Nastavte **searchAnalyzer** na existující pole
++ Přidat, aktualizovat nebo odstranit v indexu konstruktu uvedeném analyzátoru
 + Přidat, aktualizovat nebo odstranit bodovací profily
 + Přidání, aktualizace nebo odstranění nastavení CORS
-+ Přidání, aktualizace nebo odstranění moduly pro návrhy
 + Přidání, aktualizace nebo odstranění synonymMaps
 
 Při přidání nového pole disponují existující indexovaných dokumentů pro nové pole hodnotu null. Při aktualizaci dat nahradit hodnoty z externího zdroje dat hodnoty Null přidal Azure Search.
@@ -76,7 +78,7 @@ Oprávnění ke čtení a zápis na úrovni služby jsou požadovány pro aktual
 
 5. [Načtení indexu s dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) z externího zdroje. Můžete také pomocí tohoto rozhraní API, pokud aktualizujete existující, beze změny schématu indexu s aktualizovaných dokumentů.
 
-Při vytváření indexu fyzické úložiště je alokováno pro každé pole v schéma indexu s obráceným index vytvořený pro každé prohledávatelná pole. Pole jsou, který neprohledávatelné může použít filtry, nebo výrazy, ale není mají obrácený indexy a nejsou fulltextově prohledávatelné. Na znovuvytvoření indexu jsou tyto indexy obrácenou odstranili a znovu vytvořili na základě schématu indexu je zadat.
+Při vytváření indexu fyzické úložiště je alokováno pro každé pole v schéma indexu s obráceným index vytvořený pro každé prohledávatelná pole. Pole, která nejsou prohledávatelná lze použít v filtry nebo výrazy, ale mají obrácený není indexy a jsou není fulltextově nebo přibližné prohledávatelné. Na znovuvytvoření indexu jsou tyto indexy obrácenou odstranili a znovu vytvořili na základě schématu indexu je zadat.
 
 Při načtení indexu obrácenou index každé pole naplněný všechna slova jedinečné, tokenizovaná z každého dokumentu pomocí mapy dokumentu odpovídající ID. Například názvy při indexování hotels datové sady, pravděpodobně obrácenou index vytvořený pro pole města podmínky pro Seattle, Portland a tak dále. Dokumenty, které zahrnují pole Město Seattle nebo Portland by měla ID dokumentu uvedené spolu s termín. Na žádném [přidávat, aktualizovat a odstraňovat](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) operace, podmínky a seznam ID dokumentu se aktualizují odpovídajícím způsobem.
 

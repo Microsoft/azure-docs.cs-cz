@@ -1,6 +1,6 @@
 ---
 title: Webová služba protokolování - nástroji Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Informace o povolení protokolování pro webové služby Machine Learning. Protokolování poskytuje další informace k řešení potíží se rozhraní API.
+description: Informace o povolení protokolování pro webové služby Machine Learning Studio. Protokolování poskytuje další informace k řešení potíží se rozhraní API.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -15,21 +15,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 80a5ec64a2afd2367acaedd6e44ffe1a21e9c622
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 53eedd4d00b212879389d29541c4ca55ea1bfde6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474377"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270079"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Povolení protokolování pro webové služby Azure Machine Learning Studio
-Tento dokument obsahuje informace o možnosti protokolování webových služeb Machine Learning. Protokolování poskytuje další informace, jenom číslo chyby a zprávy, které vám můžou pomoct vyřešit vaše volání rozhraní API pro Machine Learning.  
+Tento dokument obsahuje informace o možnosti protokolování webových služeb Machine Learning Studio. Protokolování poskytuje další informace, jenom číslo chyby a zprávy, které vám můžou pomoct vyřešit vaše volání rozhraní API pro Machine Learning Studio.  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Jak povolit protokolování pro webové služby
 
-Povolení protokolování z [Azure Machine Learning Web Services](https://services.azureml.net) portálu. 
+Povolení protokolování z [webových služeb Azure Machine Learning Studio](https://services.azureml.net) portálu. 
 
-1. Přihlaste se k portálu Azure Machine Learning Web Services na adrese [ https://services.azureml.net ](https://services.azureml.net). Pro webové služby Classic, můžete také získáte k portálu kliknutím **nové webové služby prostředí** na stránce Machine Learning Web Services v nástroji Machine Learning Studio.
+1. Přihlaste se k portálu webových služeb Azure Machine Learning Studio na [ https://services.azureml.net ](https://services.azureml.net). Pro webové služby Classic, můžete také získáte k portálu kliknutím **nové webové služby prostředí** na stránce webové služby Machine Learning Studio v nástroji Machine Learning Studio.
 
    ![Nový odkaz webové služby prostředí](./media/web-services-logging/new-web-services-experience-link.png)
 

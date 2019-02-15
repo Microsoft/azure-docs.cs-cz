@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 7952086ee8598d2700d6bb5e617eb8de506a5160
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cda183878467dbcd30f0e89d88da55c20b6b130f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812697"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268630"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -285,7 +285,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**queueName**|**queueName**|Název fronty k monitorování.  Nastaví jenom v případě, že monitorování frontu, ne pro téma.
 |**topicName**|**topicName**|Název tématu, které chcete monitorovat. Nastaví jenom v případě, že monitorování tématu, ne pro frontu.|
 |**subscriptionName**|**subscriptionName**|Název odběru, který chcete monitorovat. Nastaví jenom v případě, že monitorování tématu, ne pro frontu.|
-|**připojení**|**připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>K získání připojovacího řetězce, postupujte podle kroků v [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený. |
+|**připojení**|**připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>K získání připojovacího řetězce, postupujte podle kroků v [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-management-credentials). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený. |
 |**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verzi 2.x, tato vlastnost není k dispozici vzhledem k tomu, že nejnovější verze sady SDK úložiště nepodporuje spravovat operace.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -571,7 +571,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Jméno** | neuvedeno | Název proměnné, která představuje fronty nebo tématu v kódu funkce. Nastavte na "$return" tak, aby odkazovaly návratovou hodnotu funkce. | 
 |**queueName**|**queueName**|Název fronty.  Nastaví jenom v případě, že odesílá zprávy do fronty, ne pro téma.
 |**topicName**|**topicName**|Název tématu, které chcete monitorovat. Nastaví jenom v případě, že odesílání zpráv tématu, ne pro frontu.|
-|**připojení**|**připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>K získání připojovacího řetězce, postupujte podle kroků v [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený.|
+|**připojení**|**připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>K získání připojovacího řetězce, postupujte podle kroků v [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-management-credentials). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený.|
 |**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verzi 2.x, tato vlastnost není k dispozici vzhledem k tomu, že nejnovější verze sady SDK úložiště nepodporuje spravovat operace.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

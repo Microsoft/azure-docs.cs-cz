@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 68bc3302874849a69249a50dcecd46024ad939ef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 007c63c163b6e972bd59189569c92c99d2718cbe
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448325"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301481"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -131,6 +131,9 @@ A. Sada nástrojů dostupná s datovým diskem pole obsahuje tři nástroje:
 Sada nástrojů je k dispozici pro Windows i Linux. Si můžete stáhnout na sadu nástrojů:
  - [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin) 
  - [Stáhnout sadu nástrojů Data Box Disk pro Linux](https://aka.ms/databoxdisktoolslinux)
+ 
+ ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Otázka: Můžete použít Data Box Disk k přenosu dat do služby soubory Azure a pak používat data pomocí služby Azure File Sync? 
+ A. Data Box Disk nepodporuje soubory Azure. Metadata také nezachovají, pokud se data souborů používá později pomocí služby Azure File Sync.
 
 
 ## <a name="verify-and-upload"></a>Ověření a nahrání

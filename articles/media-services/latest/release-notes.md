@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 71e88c06dcfe935f712af473c7f496d9165107a7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242800"
+ms.locfileid: "56267542"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -37,6 +37,8 @@ Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Me
 ## <a name="february-2019"></a>. Února 2019
 
 Media Services v3 je teď upported v národních cloudech Azure. Ne všechny funkce jsou dostupné ve všech cloudech ještě. Podrobnosti najdete v tématu [Cloudy a oblasti, ve které Azure Media Services v3 existuje](azure-clouds-regions.md).
+
+[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) událostí byl přidán do služby Azure Event Grid schémata pro Media Services.
 
 ## <a name="january-2019"></a>2019. ledna
 

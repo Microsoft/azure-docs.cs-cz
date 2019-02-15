@@ -1,6 +1,6 @@
 ---
-title: Příklady dotazů protokolu Azure monitorování Azure Monitor | Dokumentace Microsoftu
-description: Příklady dotazů protokolu ve službě Azure Monitor, pomocí Průzkumníka dat dotazovací jazyk.
+title: Příklady dotazů protokolu Azure Monitor | Dokumentace Microsoftu
+description: Příklady dotazů protokolu ve službě Azure Monitor pomocí dotazovacího jazyka Kusto.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c161a2fd8d1be670435d2b1a749749cea7d82bcf
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993193"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268437"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů protokolu Azure Monitor
-Tento článek obsahuje příklady různých [dotazy](log-query-overview.md) pomocí [Průzkumník dat dotazovací jazyk](https://docs.microsoft.com/azure/kusto/query/) načíst různé typy dat protokolu z Azure monitoru. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  
+Tento článek obsahuje příklady různých [dotazy](log-query-overview.md) pomocí [Kusto dotazovací jazyk](/azure/kusto/query/) načíst různé typy dat protokolu z Azure monitoru. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  
 
 Najdete v článku [referenční informace k jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) podrobnosti o jiná klíčová slova použít v těchto ukázek. Projděte si [lekce týkající se vytváření dotazů](get-started-queries.md) Pokud začínáte do Azure monitoru.
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 32c47233946dacf4e80a9ff3ba25388e1231d7c9
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469494"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301056"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Storage Exploreru
 
@@ -28,7 +28,7 @@ Chyby certifikátů jsou způsobeny jednu ze dvou následujících situací:
 1. Aplikace je propojena prostřednictvím "transparentní proxy server", což znamená, že server (například serveru vaší společnosti) zachycuje přenosy HTTP, dešifruje je a pak je šifruje pomocí certifikátu podepsaného svým držitelem.
 2. Spustíte aplikaci, která je do zpráv protokolu HTTPS, které jste dostali vkládá certifikát SSL podepsaný svým držitelem. Příkladem aplikací, které vložení certifikátů obsahuje antivirový program a síťové přenosy kontroly software.
 
-Když Průzkumníka služby Storage uvidí podepsán svým nebo nedůvěryhodný certifikát, můžete už nebude vědět, zda byla změněna přijatou zprávu protokolu HTTPS. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete dát pokyn Průzkumníka služby Storage důvěřovat provedením následujících kroků:
+Pokud Průzkumník služby Storage se zobrazí certifikát podepsaný svým držitelem nebo nedůvěryhodné, můžete už vědět, zda byla změněna přijatou zprávu protokolu HTTPS. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete dát pokyn Průzkumníka služby Storage důvěřovat provedením následujících kroků:
 
 1. Získat s kódováním Base-64 X.509 (.cer) kopii certifikátu
 2. Klikněte na tlačítko **upravit** > **certifikáty SSL** > **importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor .cer
@@ -53,6 +53,18 @@ Pokud si nejste jisti odkud certifikátu, můžete zkusit těchto pokynů vyhled
 Pokud nemůžete najít žádné certifikáty podepsané svým držitelem podle předchozích kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu o další pomoc. Alternativně můžete spustit z příkazového řádku pomocí Průzkumníka služby Storage `--ignore-certificate-errors` příznak. Při spuštění s tímto příznakem, Průzkumníka služby Storage se bude ignorovat chyby certifikátů.
 
 ## <a name="sign-in-issues"></a>Problémy s přihlašováním
+
+### <a name="blank-sign-in-dialog"></a>Prázdný znak v dialogovém okně
+Prázdný znak v dialogových oknech jsou často způsobeny služby AD FS s dotazem, Průzkumníka služby Storage provádět přesměrování, který nepodporuje elektronovým. Chcete-li vyřešit tento problém může pokusit použít tok kódu zařízení pro přihlášení do. To provedete podle následujících kroků:
+1. "Přejít na experimentální" -> "Pomocí přihlášení zařízení kód".
+2. Otevřete dialogové okno připojit, (buď prostřednictvím moduly ikonu na levé straně svislá čára, nebo "Přidat účet" na panel účtu).
+3. Vyberte prostředí, jaké chcete přihlásit k.
+4. Klikněte na tlačítko "Přihlásit" tlačítku.
+5. Postupujte podle pokynů na další panel.
+
+Pokud se potíže s přihlášením účet chcete použít, protože váš výchozí prohlížeč se už přihlásili do jiného účtu, že můžete:
+1. Ručně zkopírujte odkaz a kód do privátní relace prohlížeče.
+2. Ručně zkopírujte odkaz a kód do jiného prohlížeče.
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Opětovné ověření smyčky nebo změnit hlavní název uživatele
 Pokud jste se ve smyčce opětovné ověření, nebo se změnily (UPN) jednoho z vašich účtů, zkuste následující:
@@ -90,7 +102,7 @@ Pokud nefunguje žádný z těchto metod [otevřete problém na Githubu](https:/
 Pokud se vám nedaří načíst vaše předplatná po úspěšném přihlášení, zkuste následující metody pro řešení potíží:
 
 * Ověřte, že váš účet má přístup k předplatným, které očekáváte. Můžete ověřit, že máte přístup při přihlášení k portálu pro prostředí Azure, které se pokoušíte použít.
-* Ujistěte se, že jste přihlášení pod správnou Azure prostředí (Azure, Azure China, Azure Germany, Azure US Government nebo vlastní prostředí).
+* Ujistěte se, že jste přihlášení pod správnou Azure prostředí (Azure, Azure China 21Vianet, Azure Germany, Azure US Government nebo vlastní prostředí).
 * Pokud jste za proxy serverem, ujistěte se, že jste správně nakonfigurovali proxy Průzkumníka služby Storage.
 * Zkuste odebrat a znovu přidat účet.
 * Pokud je odkaz "Další informace", podívejte se a naleznete v tématu co chybové zprávy jsou hlášena pro klienty, které se nedaří. Pokud si nejste jisti co dělat s chybou zprávy najdete v tématu a potom bez obav [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
@@ -116,7 +128,7 @@ Nejprve se ujistěte, že jsou správně následující informace, které jste z
 * Adresa URL proxy serveru a číslo portu
 * Uživatelské jméno a heslo v případě potřeby proxy serverem
 
-Všimněte si, že Průzkumníka služby Storage nepodporuje soubor PAC ke konfiguraci nastavení proxy serveru.
+Všimněte si, že Průzkumníka služby Storage nepodporuje soubory automatické konfigurace proxy serveru pro konfiguraci nastavení proxy serveru.
 
 ### <a name="common-solutions"></a>Běžná řešení
 

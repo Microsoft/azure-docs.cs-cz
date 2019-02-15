@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261498"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268868"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -40,7 +40,7 @@ Chcete-li monitorování výstrah nebo zobrazení dat správy o trezoru služby 
 
     ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. V seznamu trezorů, klikněte na trezor otevřete jeho **přehled** řídicího panelu. 
+4. V seznamu trezorů, klikněte na trezor otevřete jeho **přehled** řídicího panelu.
 
     ![řídicí panel Recovery services vault](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -75,7 +75,7 @@ Pro přístup k nabídce výstrahy zálohování v nabídce trezoru služby Reco
 
 ![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-Sestava výstrahy zálohování obsahuje výstrahy pro trezor. 
+Sestava výstrahy zálohování obsahuje výstrahy pro trezor.
 
 ![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
@@ -124,7 +124,7 @@ Ve výchozím nastavení jsou všechny informace, s výjimkou **čas posledního
 
 ### <a name="change-the-filter-in-alerts-report"></a>Změňte filtr na sestavu výstrah
 
-Použití **filtr** změnit závažnost, stav, čas zahájení a ukončení pro výstrahy. 
+Použití **filtr** změnit závažnost, stav, čas zahájení a ukončení pro výstrahy.
 
 > [!NOTE]
 > Úpravy výstrah zálohování filtr nezmění kritický nebo upozornění upozornění v trezoru řídicího panelu s přehledem.
@@ -184,7 +184,7 @@ Chcete-li zobrazit další podrobnosti o úlohách, klikněte na tlačítko **pr
 
 **Úlohy zálohování** nabídce se zobrazí informace o položky typu, operace, stav, čas spuštění a doba trvání.  
 
-V nabídce úlohy zálohování v hlavní nabídce trezoru, klikněte na tlačítko **úlohy zálohování**. 
+V nabídce úlohy zálohování v hlavní nabídce trezoru, klikněte na tlačítko **úlohy zálohování**.
 
 ![Zálohované položky z nastavení](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -263,17 +263,14 @@ Export úloh informace do tabulky, klikněte na tlačítko **exportovat úlohy**
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Q1. Jak dlouho trvá stav úlohy agenta Azure backup tak, aby odrážely na portálu?**
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá stav úlohy agenta Azure backup tak, aby odrážely na portálu?
+Na webu Azure portal může trvat až 15 minut tak, aby odrážel stav úlohy agenta Azure backup.
 
-Odpověď 1. Na webu Azure portal může trvat až 15 minut tak, aby odrážel stav úlohy agenta Azure backup.
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Pokud se úloha zálohování nezdaří, jak dlouho trvá vydat výstrahu?
+V rámci 20 minut selhání zálohování Azure je vydána výstraha.
 
-**2. ČTVRTLETÍ. Pokud se úloha zálohování nezdaří, jak dlouho trvá vydat výstrahu?**
-
-Odpověď 2. V rámci 20 minut selhání zálohování Azure je vydána výstraha.
-
-**Q3. Je případ, kdy e-mail neodešle, pokud jsou oznámení nakonfigurovaná?**
-
-Odpověď 3. Ano. V následujících situacích nedocházelo k jejich odesílání.
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Je případ, kdy e-mail neodešle, pokud jsou oznámení nakonfigurovaná?
+Ano. V následujících situacích nedocházelo k jejich odesílání.
 
 * Pokud jsou oznámení nakonfigurovaná každou hodinu a výstraha se vyvolá a vyřeší během hodiny.
 * Když se zruší úlohu

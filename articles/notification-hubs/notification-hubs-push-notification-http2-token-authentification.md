@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 012/13/2019
 ms.author: jowargo
-ms.openlocfilehash: d0d181afd9bb8f1d387ce8e33f50a78dae3a11ec
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6fc44e432b9614eb6270b6ef4862cc0240df8206
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961427"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266930"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) pro služby APN
 
@@ -68,7 +68,7 @@ Identifikátor aplikace je k dispozici prostřednictvím stránky podrobnosti o 
 
 ### <a name="authentication-token"></a>Ověřovací token
 
-Ověřovací token si můžete stáhnout po vygenerování tokenu pro vaši aplikaci. Podrobnosti o tom, jak generovat tento token [dokumentace Applu pro vývojáře](http://help.apple.com/xcode/mac/current/#/dev11b059073?sub=dev1eb5dfe65).
+Ověřovací token si můžete stáhnout po vygenerování tokenu pro vaši aplikaci. Podrobnosti o tom, jak generovat tento token [dokumentace Applu pro vývojáře](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
 ## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Konfigurace vašeho centra oznámení, která používá ověřování založené na tokenech
 

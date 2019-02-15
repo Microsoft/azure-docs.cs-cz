@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3f7579324e1218cc2e2c3594889db776da6e529
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c1258ab619b165553c55481ad67d663be65ac832
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143728"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269599"
 ---
 # <a name="how-to-use-azure-maps-android-sdk"></a>Jak používat Azure Maps Android SDK
 
@@ -45,7 +45,7 @@ Zobrazit [dokumentace k sadě Android Studio](https://developer.android.com/stud
 
 ## <a name="set-up-a-virtual-device"></a>Nastavit virtuální zařízení
 
-Android Studio umožňuje nastavit virtuální zařízení s Androidem ve vašem počítači. Pomáhá při vývoji, testování vaší aplikace. Nastavení virtuálního zařízení klepněte na ikonu Android Virtual Device (AVD) Manager nahoře napravo od obrazovky projektu. Klikněte **vytvořit virtuální zařízení** tlačítko. Můžete také získat vedoucímu přes nástroje > Android > AVD Manager na panelu nástrojů. Z **telefony** vyberte **Nexus 5 X** a klikněte na tlačítko **Další**.
+Android Studio umožňuje nastavit virtuální zařízení s Androidem ve vašem počítači. Pomáhá při vývoji, testování vaší aplikace. Nastavit virtuální zařízení klikněte na ikonu Android Virtual Device (AVD) Manager v horním pravém rohu obrazovky projektu. Klikněte **vytvořit virtuální zařízení** tlačítko. Můžete také získat pro správce prostřednictvím **nástroje > Android > AVD Manager** na panelu nástrojů. Z **telefony** vyberte **Nexus 5 X** a klikněte na tlačítko **Další**.
 
 Další informace o nastavení AVD v [dokumentace k sadě Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -55,7 +55,7 @@ Další informace o nastavení AVD v [dokumentace k sadě Android Studio](https:
 
 Než budete pokračovat následujícími směrem k sestavení aplikace, postupujte podle pokynů k instalaci sady Android SDK pro Azure Maps. 
 
-1. Přidejte následující text do **allprojects**, blok úložišť ve vaší **build.gradle** souboru.
+1. Přidejte následující text do **všechny projekty**, blok úložišť ve vaší **build.gradle** souboru.
 
     ```
     maven {
@@ -79,7 +79,7 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. Nastavení oprávnění přidáním následujícího kódu do vaší AndroidManifest.xml
+3. Nastavení oprávnění přidáním následujícího kódu do vaší **AndroidManifest.xml**
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -90,7 +90,7 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
     </manifest>
     ```
 
-4. Upravit **res > rozložení > activity_main.xml**, aby mělo vypadat jako XML níže:
+4. Upravit **res > rozložení > activity_main.xml**, takže to vypadá, že kód XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -187,7 +187,7 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
 
 ## <a name="import-classes"></a>Import tříd
 
-Po dokončení výše uvedených kroků, bude pravděpodobně získat upozornění z Android Studio na část textu v kódu. Ke zvládnutí této budete muset importovat některé třídy, které odkazuje `MainActivity.java`.
+Po dokončení výše uvedených kroků, bude pravděpodobně získat upozornění z Android Studio na část textu v kódu. Chcete-li vyřešit tato upozornění, importovat třídy, na kterou se odkazuje v `MainActivity.java`.
 
 Tyto třídy mohl automaticky importovat stisknutím kombinace kláves `Alt` + `Enter`(`Option` + `Return` na počítači Mac). 
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2fdede1308ac2c4c036d835a7be28b0e5ee180d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207071"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268426"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce ve Správci úloh v Azure Active Directory
 
@@ -202,8 +202,8 @@ Odstranit všechna existující hesla aplikací vygenerovaná vybranými uživat
 Zakázání MFA | Globální správce | 
 Povolení MFA | Globální správce | 
 Správa nastavení služby MFA | Globální správce | 
-Vyžadovat, aby vybraní uživatelé znovu zadali způsoby kontaktování | Globální správce | 
-Obnovit vícefaktorové ověřování u všech zapamatovaných zařízení  | Globální správce | 
+Vyžadovat, aby vybraní uživatelé znovu zadali způsoby kontaktování | Správce ověření | 
+Obnovit vícefaktorové ověřování u všech zapamatovaných zařízení  | Správce ověření | 
 
 ## <a name="mfa-server"></a>Server MFA
 

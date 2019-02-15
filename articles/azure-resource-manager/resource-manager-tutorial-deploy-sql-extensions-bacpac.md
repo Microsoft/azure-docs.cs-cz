@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53a2f20254d2f206d014e6643c6fd883828a63db
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c0aa88704f699334cacf12ec24284e61fca7d2bc
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238330"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267593"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru
 
@@ -34,8 +34,6 @@ Tento kurz se zabývá následujícími úkony:
 > * Ověření nasazení
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -154,6 +152,9 @@ New-AzResourceGroupDeployment `
     -adminPassword $adminPassword `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> Existuje soubor vstupně-výstupní operace problém s využitím Azure Powershellu ve službě Cloud shell.  Chybová zpráva *"* nelze načíst dynamické parametry pro rutinu. Nelze nalézt cestu 'Azure:/azuredeploy.json', protože nemá exist.* dočasným řešením je nechcete zahrnout **- TemplateFile** přepínače v `New-AzResourceGroupDeploy` příkazu. Příkaz vás vyzve k zadání názvu souboru.
 
 Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 

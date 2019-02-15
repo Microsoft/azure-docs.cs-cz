@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 94c7b5c81785c3d6fba31396f5812a1308817e33
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115704"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301107"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 
@@ -199,7 +199,9 @@ Referenční informace pro aktualizovaný modulů najdete v tématu [referenčn�
            "autoUpgradeMinorVersion": "true"
    ```
 
-- Není k dispozici nové posouzení pro přesné plánování kapacity služby Azure Stack. Nastavili jsme omezení celkového počtu virtuálních počítačů, které je možné nasadit v rámci Azure Stack, ujistěte se, že všechny naše interní služby splnění škálování, kdy zákazníci spouštět. Limit je 60 virtuálních počítačů na hostitele, s délkou maximálně 700 pro celý razítko (Pokud je dosaženo 60 za limit hostitele). Další informace najdete v tématu [novou verzi sady capacity planner](http://aka.ms/azstackcapacityplanner).
+- Není k dispozici nové posouzení pro přesné plánování kapacity služby Azure Stack. S aktualizací 1901 nyní platí omezení celkového počtu virtuálních počítačů, které je možné vytvořit.  Toto omezení je určen jako dočasné, aby se zabránilo nestabilitě řešení. Zdroj problému stabilitu na větší počet virtuálních počítačů je určeno, ale konkrétní časové osy pro nápravu nebyl dosud určit. S aktualizací update 1901, že už serveru maximální 60 virtuálních počítačů s limitem celkové řešení 700 jeden.  Například virtuálnímu počítači Azure Stack limit 8 serveru by 480 (8 * 60).  Pro server 12 až 16 řešení Azure Stack limit by 700. Toto omezení se vytvořil, dodržujte při tom všechny výpočetní kapacity aspekty například rezervy odolnost proti chybám a procesoru virtuálních a fyzických poměr, který operátor chtěli zachovat na razítko. Další informace najdete v tématu novou verzi sady capacity planner.  
+V případě, že se dosáhlo limitu škálování virtuálních počítačů, by výsledkem vrátila následující kódy chyb: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded. 
+ 
 
 - Verze rozhraní API výpočtu zvýšil na 2017-12-01.
 

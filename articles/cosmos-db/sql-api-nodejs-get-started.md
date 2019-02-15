@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 9c0255382e2cfe09683931408d25ffb3f60419d1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508891"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270347"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Sestavení aplikace konzoly Node.js pomocí sady JavaScript SDK ke správě dat SQL API služby Azure Cosmos DB
 
@@ -72,7 +72,10 @@ Než začnete psát kód pro vytvoření aplikace, můžete vytvořit rozhraní 
      * ```touch app.js```
      * ```touch config.js```
 
-4. Nainstalujte přes npm modul @azure/cosmos. Použijte následující příkaz:
+4. Vytváření a inicializace `package.json` souboru. Použijte následující příkaz:
+   * ```npm init -y```
+
+5. Nainstalujte přes npm modul @azure/cosmos. Použijte následující příkaz:
    * ```npm install @azure/cosmos --save```
 
 ## <a id="Config"></a>Nastavení konfigurací aplikace
@@ -190,13 +193,12 @@ Teď, když vaše aplikace existuje, musíte zajistit, aby že komunikoval s Azu
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
    ```
 
 1. Zkopírujte a vložte kód, který použije dříve uložené ```config.endpoint``` a ```config.primaryKey``` k vytvoření nové instance CosmosClient.
 
    ```javascript
-   const url = require('url');
+   const config = require('./config');
 
    // ADD THIS PART TO YOUR CODE
    const endpoint = config.endpoint;
@@ -280,7 +282,6 @@ Teď, když máte kód pro inicializaci klienta Azure Cosmos DB, se budeme věno
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -382,7 +383,6 @@ Kontejner můžete vytvořit buď pomocí `createIfNotExists` nebo vytvoření f
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -695,7 +695,6 @@ Jako celek by váš kód měl vypadat přibližně takto:
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
 const config = require('./config');
-const url = require('url');
 
 const endpoint = config.endpoint;
 const masterKey = config.primaryKey;
@@ -889,9 +888,9 @@ Pokud chcete spustit načítání Začínáme řešení, které obsahuje vešker
 * [Účet služby Azure Cosmos DB][create-account]. 
 * Řešení [Getting Started](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started), které je k dispozici na GitHubu. 
 
-Nainstalujte přes npm modul **@azure/cosmos**. Použijte následující příkaz: 
+Instalace závislostí projektu přes npm. Použijte následující příkaz: 
 
-* ```npm install @azure/cosmos --save``` 
+* ```npm install``` 
 
 Vedle ```config.js``` souboru, jak je popsáno v aktualizujte hodnoty config.endpoint a config.primaryKey [krok 3: Nastavení konfigurací aplikace](#Config).  
 

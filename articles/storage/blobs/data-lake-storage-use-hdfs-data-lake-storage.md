@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874174"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269736"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
@@ -26,17 +26,37 @@ Služba HDInsight poskytuje přístup do systému souborů DFS, který je místn
 >[!IMPORTANT]
 >Účtování clusteru HDInsight spustí po vytvoření clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá. Zjistěte, jak odstranit cluster, najdete v našich [článek na téma](../../hdinsight/hdinsight-delete-cluster.md). Data uložená v účtu úložiště pomocí služby Data Lake Storage Gen2 povolené však přetrvává i po odstranění clusteru služby HDInsight.
 
+### <a name="create-a-file-system"></a>Vytvořit systém souborů
+
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+
+* Nahradit `<file-system-name>` zástupným názvem, který chcete udělit systému souborů.
+
+* Nahradit `<storage-account-name>` zástupný symbol s názvem účtu úložiště.
+
 ### <a name="get-a-list-of-files-or-directories"></a>Získat seznam souborů či adresářů
 
-    hdfs dfs -ls <args>
+    hdfs dfs -ls <path>
+
+Nahradit `<path>` zástupný symbol s identifikátorem URI systému souborů nebo složku systému souborů.
+
+Příklad: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
 
-    hdfs dfs -mkdir [-p] <paths>
+    hdfs dfs -mkdir [-p] <path>
 
-### <a name="delete-a-file-or-a-directory"></a>Odstranit soubor nebo adresář
+Nahradit `<path>` zástupný symbol systému názvu kořenového souboru nebo složky v rámci systému souborů.
 
-    hdfs dfs -rm [-skipTrash] URI [URI ...]
+Příklad: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+
+### <a name="delete-a-file-or-directory"></a>Odstranit soubor nebo adresář
+
+    hdfs dfs -rm <path>
+
+Nahradit `<path>` zástupný symbol s identifikátorem URI souboru nebo složky, který chcete odstranit.
+
+Příklad: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ### <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Použití HDFS rozhraní příkazového řádku s clusterem HDInsight Hadoop v Linuxu
 
@@ -52,11 +72,15 @@ hdfs dfs -mkdir /samplefolder
 ```
 Připojovací řetězec najdete tady "SSH + clusteru přihlášení" okna clusteru HDInsight na webu Azure portal. Přihlašovací údaje SSH byly zadány v době vytváření clusteru.
 
-Další informace o rozhraní příkazového řádku HDFS najdete v článku [oficiální dokumentaci](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) a [HDFS oprávnění průvodce](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html). Další informace týkající se seznamů ACL ve službě Databricks, najdete v článku [tajné kódy rozhraní příkazového řádku](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli). 
+Další informace o rozhraní příkazového řádku HDFS najdete v článku [oficiální dokumentaci](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) a [HDFS oprávnění průvodce](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html). Další informace týkající se seznamů ACL ve službě Databricks, najdete v článku [tajné kódy rozhraní příkazového řádku](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli).
 
 ## <a name="hdfs-cli-with-azure-databricks"></a>HDFS CLI s Azure Databricks
 
 Databricks poskytuje snadno použitelné rozhraní příkazového řádku postavené na rozhraní REST API Databricks. Open source projektu hostována službou [Githubu](https://github.com/databricks/databricks-cli). Níže jsou uvedeny často používané příkazy.
+
+### <a name="create-a-file-system"></a>Vytvořit systém souborů
+
+Sem zadejte pokyny.
 
 ### <a name="get-a-list-of-files-or-directories"></a>Získat seznam souborů či adresářů
 

@@ -11,17 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: b3ad10c62d393e2508d3ea04f0e49d3ffbf184cd
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d1c7340038731ebde10a7ffcb0ef2adcde18e901
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886361"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267491"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
-Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje na nejrůznějších platformách, včetně .NET, Node.js a J2EE, pro aplikace hostované v místním, hybridním nebo jakémkoli veřejném cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
+Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje na nejrůznějších platformách, včetně .NET, Node.js a platformě Java EE určený pro aplikace hostované v místním, hybridním nebo jakémkoli veřejném cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
 
 [Prohlédněte si úvod animace](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
@@ -46,7 +46,7 @@ Služba Application Insights je zaměřená na vývojový tým. Pomáhá pochopi
 
 * **Frekvence požadavků, doby odezvy a míra selhání** – Zjistěte, které stránky jsou nejoblíbenější a v kterou denní dobu a kde jsou vaši uživatelé. Zjistíte, která stránka si vede nejlépe. Pokud se při zvýšení počtu požadavků zvýší i doba odezvy a míra selhání, máte pravděpodobně potíže s prostředky. 
 * **Míra závislosti, doby odezvy a míra selhání** – Zjistěte, jestli vás nezpomalují externí služby.
-* **Výjimky** – Analyzuje souhrnné statistiky nebo vyberte konkrétní instance a přejděte k podrobným informacím o trasování zásobníku a souvisejících požadavcích. Hlásí se výjimky serveru i prohlížeče.
+* **Výjimky** – analýza souhrnné statistiky nebo vyberte konkrétní instance a přejít k podrobnostem trasování zásobníku a souvisejících požadavcích. Hlásí se výjimky serveru i prohlížeče.
 * **Zobrazení a načítání stránek** – Tyto informace hlásí prohlížeče uživatelů.
 * **Volání AJAX** z webových stránek – frekvence, doby odezvy a míry selhání.
 * **Počty uživatelů a relací**.
@@ -107,13 +107,13 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
 * **Během spuštění: Instrumentujte vaši webové aplikace na serveru.** Vyhněte se jakýmkoli aktualizacím kódu. K serveru budete potřebovat přístup správce.
   * [**IIS místně nebo ve virtuálním počítači**](../../azure-monitor/app/monitor-performance-live-website-now.md)
   * [**Virtuální počítač nebo webová aplikace Azure**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**J2EE**](../../azure-monitor/app/java-live.md)
+  * [**Java EE**](../../azure-monitor/app/java-live.md)
 * **Během vývoje: Přidejte Application Insights do vašeho kódu.** Umožňuje napsat vlastní telemetrii a instrumentovat back-endové a desktopové aplikace.
   * [Visual Studio](../../azure-monitor/app/asp-net.md) 2013 s aktualizací Update 2 nebo novější.
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Jiné platformy](../../azure-monitor/app/platforms.md)
-* **[Instrumentace webových stránek](../../azure-monitor/app/javascript.md)** pro zobrazení stránek, AJAX a další telemetrii na straně klienta.
+* **[Instrumentace webových stránek](../../azure-monitor/app/javascript.md)**  pro zobrazení stránek, AJAX a další telemetrie na straně klienta.
 * **[Analýza využití mobilních aplikací](../../azure-monitor/learn/mobile-center-quickstart.md)** díky integraci s Visual Studio App Center.
 * **[Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)** – Příkazem ping z našich serverů pravidelně testujte váš web.
 
@@ -122,7 +122,7 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
 Začínáme při spuštění:
 
 * [Server IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Server J2EE](../../azure-monitor/app/java-live.md)
+* [Server Java EE](../../azure-monitor/app/java-live.md)
 
 Začínáme při vývoji:
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: d6065420b9081333fc257501ace868f64220ca63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dafafa8ff5d721034b3b10bdeb1a2fc09cd32835
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005246"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267576"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk dotazu protokolu Azure Monitor
 
-Tento článek je určený jako pomoc uživatelům, kteří znají Splunk další dotazovací jazyk Průzkumník dat psaní dotazů protokolu ve službě Azure Monitor. Přímé porovnání mezi dvěma pochopit klíčové rozdíly a podobnosti probíhají, kde můžete využít své stávající znalosti.
+Tento článek je určený jako pomoc uživatelům, kteří znají Splunk učit jazyk dotaz Kusto psaní dotazů protokolu ve službě Azure Monitor. Přímé porovnání mezi dvěma pochopit klíčové rozdíly a podobnosti probíhají, kde můžete využít své stávající znalosti.
 
 ## <a name="structure-and-concepts"></a>Struktura a koncepty
 

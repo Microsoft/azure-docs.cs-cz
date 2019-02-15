@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c59ef72f6e836b9cdf6899d917701555fc5e1988
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989241"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268763"
 ---
 # <a name="azure-monitor-log-queries"></a>Dotazů na protokoly Azure monitoru
-Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a dotazů na protokoly Azure monitoru používá verzi stejné dotazovací jazyk. [Dokumentace k jazyku dotazu Průzkumník dat Azure](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro psaní dotazů na protokoly Azure monitoru. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a rozdíly mezi Azure Monitor implementace jazyka.
+Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a použít verzi jazyka stejný dotaz Kusto dotazů na protokoly Azure monitoru. [Dokumentace k jazyku dotazu Průzkumník dat Azure](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro psaní dotazů na protokoly Azure monitoru. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a rozdíly mezi Azure Monitor implementace jazyka.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,8 +36,8 @@ Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a dota
 
 ## <a name="reference"></a>Referenční informace
 
-- [Referenční informace k jazyku dotazování](/azure/kusto/query) je kompletní jazykovou referenci pro Průzkumníka dat dotazovací jazyk.
-- [Monitorování protokolu dotazu jazyka rozdíly ve službě Azure](data-explorer-difference.md) popisuje rozdíly mezi verzemi nástroje Průzkumník dat dotazovací jazyk.
+- [Referenční informace k jazyku dotazování](/azure/kusto/query) je kompletní jazykovou referenci pro Kusto dotazovací jazyk.
+- [Monitorování protokolu dotazu jazyka rozdíly ve službě Azure](data-explorer-difference.md) popisuje rozdíly mezi verzemi Kusto dotazovací jazyk.
 - [Standardní vlastnosti ve službě Azure Monitor protokolování záznamů](../../azure-monitor/platform/log-standard-properties.md) popisuje vlastnosti, které jsou standardní pro všechna data protokolů Azure Monitor.
 - [Provádění dotazů protokolů napříč prostředky ve službě Azure Monitor](../../azure-monitor/log-query/cross-workspace-query.md) popisuje postup při psaní dotazů na protokoly, které používají data z více aplikací služby Application Insights a pracovní prostory Log Analytics.
 
@@ -65,4 +65,4 @@ Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a dota
  
 ## <a name="next-steps"></a>Další postup
 
-- Přístup ke kompletní [referenční dokumentaci pro dotazovací jazyk Průzkumník dat](/azure/kusto/query/).
+- Přístup ke kompletní [referenční dokumentace pro jazyk dotaz Kusto](/azure/kusto/query/).

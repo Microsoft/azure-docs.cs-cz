@@ -12,12 +12,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 4/16/2018
 ms.author: victorh
-ms.openlocfilehash: 15a86410e8ca853c2ca2431cb9a62de628972703
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320097"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302027"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Nabízí seznam skupin pravidel CRS firewallu webových aplikací a pravidla
 
@@ -27,6 +27,11 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 
 ## <a name="owasp30"></a> OWASP_3.0
 
+### <a name="General"></a> <p x-ms-format-detection="none">Obecné</p>
+
+|RuleId|Popis|
+|---|---|
+|200004|Je to možné vícedílné zprávy standardu bezkonkurenční hranice.|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">ŽÁDOST O 911 ZPŮSOB VYNUCENÍ</p>
 
@@ -61,7 +66,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |913017|Pravidlo 913017|
 |913018|Pravidlo 913018|
 
-### <a name="crs920"></a> <p x-ms-format-detection="none">ŽÁDOST O 920 PROTOKOL VYNUCENÍ</p>
+### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |RuleId|Popis|
 |---|---|
@@ -115,7 +120,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |920274|Neplatný znak v záhlaví požadavku (mimo velmi přísná set)|
 |920460|Pravidlo 920460|
 
-### <a name="crs921"></a> <p x-ms-format-detection="none">ŽÁDOST O 921 PROTOKOL ÚTOKU</p>
+### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
 |RuleId|Popis|
 |---|---|
@@ -138,7 +143,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |921017|Pravidlo 921017|
 |921018|Pravidlo 921018|
 
-### <a name="crs930"></a> <p x-ms-format-detection="none">ŽÁDOST-930 – APLIKACE ÚTOKU LFI</p>
+### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |RuleId|Popis|
 |---|---|
@@ -155,7 +160,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |930017|Pravidlo 930017|
 |930018|Pravidlo 930018|
 
-### <a name="crs931"></a> <p x-ms-format-detection="none">ŽÁDOST-931 – APLIKACE ÚTOKU RFI</p>
+### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
 |RuleId|Popis|
 |---|---|
@@ -172,7 +177,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |931017|Pravidlo 931017|
 |931018|Pravidlo 931018|
 
-### <a name="crs932"></a> <p x-ms-format-detection="none">ŽÁDOST-932 – APLIKACE ÚTOKU RCE</p>
+### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
 |RuleId|Popis|
 |---|---|
@@ -191,7 +196,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |932017|Pravidlo 932017|
 |932018|Pravidlo 932018|
 
-### <a name="crs933"></a> <p x-ms-format-detection="none">ŽÁDOST-933 – APLIKACE ÚTOKU – PHP</p>
+### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
 |RuleId|Popis|
 |---|---|
@@ -215,7 +220,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |933017|Pravidlo 933017|
 |933018|Pravidlo 933018|
 
-### <a name="crs941"></a> <p x-ms-format-detection="none">ŽÁDOST-941 – APLIKACE ÚTOKU XSS</p>
+### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |RuleId|Popis|
 |---|---|
@@ -239,6 +244,8 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |941290|Filtruje - IE XSS zjistil útoku.|
 |941300|Filtruje - IE XSS zjistil útoku.|
 |941310|US ASCII poškozený kódování XSS filtru – zjištěna útoku.|
+|941330|Filtruje - IE XSS zjistil útoku.|
+|941340|Filtruje - IE XSS zjistil útoku.|
 |941350|Kódování UTF-7 kódování aplikace Internet Explorer XSS - zjistil útoku.|
 |941013|Pravidlo 941013|
 |941014|Pravidlo 941014|
@@ -248,25 +255,36 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 |941017|Pravidlo 941017|
 |941018|Pravidlo 941018|
 
-### <a name="crs942"></a> <p x-ms-format-detection="none">ŽÁDOST-942 – APLIKACE ÚTOKU SQLI</p>
+### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |RuleId|Popis|
 |---|---|
 |942011|Pravidlo 942011|
 |942012|Pravidlo 942012|
 |942100|SQL zjistila útoku prostřednictvím injektáže prostřednictvím libinjection|
+|942110|Útok prostřednictvím injektáže SQL: Běžné vkládání testování zjištěné|
+|942130|Útok prostřednictvím injektáže SQL: Zjištěna Tautology SQL.|
 |942140|Útok prostřednictvím injektáže SQL = běžné názvy DB zjistil|
 |942160|Zjistí skrytá sqli testy pomocí sleep() nebo benchmark().|
 |942170|Detekuje pokusy o srovnávací test a přejít do režimu spánku útok prostřednictvím injektáže SQL, včetně podmíněného dotazů|
+|942190|Zjistí MSSQL provádění kódu a pokusy o shromažďování informací|
+|942200|Zjistí MySQL komentář – / místo obfuskovaný injektáže a prvními ukončení|
 |942230|Zjistí podmíněného pokusu o Injektáž SQL|
+|942260|Zjistí, že základní ověřovací přihlášení SQL pokusí 2/3|
 |942270|Hledáte základní sql injection. Běžné útoku řetězec pro mysql oracle a dalších.|
 |942290|Vyhledá pokusu o Injektáž SQL základní MongoDB|
+|942300|Zjistí MySQL komentáře, podmínky a injektáže ch (a) jazyka r|
 |942320|Zjistí, MySQL a PostgreSQL uložené procedury/funkce injektáže|
+|942330|Zjistí classic probings prostřednictvím injektáže SQL 1/2|
+|942340|Zjistí, že základní ověřovací přihlášení SQL pokusí 3/3|
 |942350|Zjistí vkládání MySQL UDF a manipulaci s další data nebo strukturu pokusí|
+|942360|Zjistí zřetězených základní útok prostřednictvím injektáže SQL a pokusů o zadání SQLLFI|
+|942370|Zjistí classic probings prostřednictvím injektáže SQL 2/2|
 |942013|Pravidlo 942013|
 |942014|Pravidlo 942014|
 |942150|Útok prostřednictvím injektáže SQL|
 |942410|Útok prostřednictvím injektáže SQL|
+|942430|S omezením pomocí specifikátoru detekce anomálií znak SQL (args): (12) překročil počet speciálních znaků|
 |942440|Zjištěna pořadí Komentář SQL.|
 |942450|SQL šestnáctkové kódování identifikovat|
 |942015|Pravidlo 942015|
@@ -550,6 +568,6 @@ V následujících tabulkách jsou skupiny pravidel a pravidla, která jsou k di
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak zakázat pravidla firewallu webových aplikací návštěvou: [pravidla firewallu webových aplikací přizpůsobení](application-gateway-customize-waf-rules-portal.md)
+Zjistěte, jak zakázat pravidla firewallu webových aplikací si: [Přizpůsobit pravidla firewallu webových aplikací](application-gateway-customize-waf-rules-portal.md)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png

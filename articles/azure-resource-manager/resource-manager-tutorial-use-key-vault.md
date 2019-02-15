@@ -14,16 +14,14 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 979867e7630c21b0bd724967dbc79c5f8155ca5e
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7371808db8d40948f501b051692172fd6a84e2ac
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237174"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270211"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablony Resource Manageru
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Zjistěte, jak načíst tajné kódy ze služby Azure Key Vault a tajné klíče předat jako parametry při nasazení podle modelu Resource Manager. Hodnota se nikdy vystavena, protože pouze odkazujete na jeho ID služby key vault. Další informace najdete v tématu [Použití služby Azure Key Vault k předávání hodnot zabezpečených parametrů během nasazení](./resource-manager-keyvault-parameter.md).
 
@@ -192,6 +190,9 @@ New-AzResourceGroupDeployment `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
+
+> [!NOTE]
+> Existuje soubor vstupně-výstupní operace problém s využitím Azure Powershellu ve službě Cloud shell.  Chybová zpráva *nelze načíst dynamické parametry pro rutinu. Nelze nalézt cestu 'Azure:/azuredeploy.json', protože neexistuje.*  Dočasným řešením je nechcete zahrnout **- TemplateFile** a **TemplateParameterFile** přepne v `New-AzResourceGroupDeploy` příkazu. Příkaz vás vyzve k zadání názvu souboru.
 
 Při nasazení šablony použijte stejnou skupinu prostředků jako služba key vault. Usnadníte si tím vyčištění prostředků. Místo dvou skupin prostředků vám bude stačit odstranit pouze jednu.
 

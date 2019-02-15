@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 1d1bb3c99c82683dde9247da86e80d800fe06631
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 933d37f576d0b8507d2311a3e31e34182a0a2e69
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992975"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269831"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>výraz Workspace() v dotazu protokolu Azure Monitor
 
@@ -73,4 +73,4 @@ union
 
 - Najdete v článku [aplikace výraz](app-expression.md) odkázat na aplikaci Application Insights.
 - Přečtěte si, jak [dat monitorování Azure](log-query-overview.md) uložená.
-- Přístup ke kompletní dokumentaci k [Průzkumník dat dotazovací jazyk](/azure/kusto/query/).
+- Přístup ke kompletní dokumentaci k [Kusto dotazovací jazyk](/azure/kusto/query/).

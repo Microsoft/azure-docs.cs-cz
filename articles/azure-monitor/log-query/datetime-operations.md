@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 2465fdcc3bf7128d4813fa5f682ffda8f504f2b6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8350524e51d8ced45586d085fe1b49274aa6db9d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999245"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269973"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Práce s hodnotami data a času v dotazů na protokoly Azure monitoru
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak pracovat s daty datum a čas v dotazů na protokoly
 
 
 ## <a name="date-time-basics"></a>Datum čas základy
-Průzkumník dat dotazovací jazyk má dva hlavní datové typy související s daty a časy: datetime a timespan. Všechna data jsou vyjádřeny ve standardu UTC. I když jsou podporované více formátů data a času, formát ISO8601 je upřednostňována. 
+Dotazovací jazyk Kusto má dva hlavní datové typy související s daty a časy: datetime a timespan. Všechna data jsou vyjádřeny ve standardu UTC. I když jsou podporované více formátů data a času, formát ISO8601 je upřednostňována. 
 
 Časových rozpětí jsou vyjádřeny jako desítkové číslo, za nímž následuje časovou jednotku:
 
@@ -45,7 +45,7 @@ Průzkumník dat dotazovací jazyk má dva hlavní datové typy související s 
 |úrovni mikrosekund | úrovni mikrosekund  |
 |značky        | nanosekund   |
 
-Data a času mohou vytvořit řetězec pomocí přetypování `todatetime` operátor. Například zkontrolujte prezenční signály virtuálního počítače odesílají v konkrétní časový rámec, můžete nastavit využívání [mezi operátor](/azure/kusto/query/betweenoperator) což je vhodné zadat časový rozsah...
+Data a času mohou vytvořit řetězec pomocí přetypování `todatetime` operátor. Například zkontrolujte prezenční signály virtuálního počítače odesílají v konkrétním časovém rámci, použijte `between` operátor zadat časový rozsah.
 
 ```Kusto
 Heartbeat
@@ -82,7 +82,7 @@ Heartbeat
 ```
 
 ## <a name="converting-time-units"></a>Převádění časových jednotek
-Může být užitečné express datum a čas nebo časový interval v časovou jednotku než výchozí hodnotu. Například předpokládejme, že už kontrolujete chybové události z posledních 30 minut a potřebují počítaný sloupec, který ukazuje, jak dávno k události došlo:
+Můžete chtít express datum a čas nebo časový interval v jiné než výchozí časovou jednotku. Například pokud revize chybové události z posledních 30 minut a potřebujete počítaný sloupec zobrazuje dobu k události došlo:
 
 ```Kusto
 Event
@@ -91,7 +91,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-Zobrazí se _timeAgo_ sloupec obsahuje hodnoty jako například: "00:09:31.5118992", což znamená, že jsou formátovány jako hh:mm:ss.fffffff. Pokud chcete naformátovat tyto hodnoty _numver_ minut od doby spuštění, jednoduše dělit tuto hodnotu "1 minuta":
+`timeAgo` Sloupec obsahuje hodnoty jako například: "00:09:31.5118992", což znamená, že jste ve formátu jako hh:mm:ss.fffffff. Pokud chcete naformátovat tyto hodnoty `numver` minut od počáteční čas dělení tuto hodnotu "1 minuta":
 
 ```Kusto
 Event
@@ -103,7 +103,7 @@ Event
 
 
 ## <a name="aggregations-and-bucketing-by-time-intervals"></a>Agregace a kontejnery pomocí časových intervalů
-Jiné velmi běžný scénář je potřeba získat statistiku za určité časové období v konkrétní časový interval. V takovém případě `bin` operátor může sloužit jako součást klauzule summarize.
+Další z typických možností je potřeba získat statistiku za určité časové období v konkrétní časový interval. V tomto scénáři `bin` operátor může sloužit jako součást klauzule summarize.
 
 Použijte tento dotaz se získat počet událostí, ke kterým došlo během poslední půlhodiny každých 5 minut:
 
@@ -113,7 +113,7 @@ Event
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-Tímto se vytvoří v následující tabulce:  
+Tento dotaz vytvoří v následující tabulce:  
 |TimeGenerated(UTC)|events_count|
 |--|--|
 |2018-08-01T09:30:00.000|54|
@@ -131,7 +131,7 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-Vytvoří se následující výsledky:
+Tento dotaz vytvoří se následující výsledky:
 
 |časové razítko|count_|
 |--|--|
@@ -139,11 +139,11 @@ Vytvoří se následující výsledky:
 |2018-07-29T00:00:00.000|12,315|
 |2018-07-30T00:00:00.000|16,847|
 |2018-07-31T00:00:00.000|12,616|
-|2018-08-01T00:00:00.000|5,416  |
+|2018-08-01T00:00:00.000|5,416|
 
 
 ## <a name="time-zones"></a>Časová pásma
-Protože všechny hodnoty data a času jsou vyjádřeny ve standardu UTC, často je užitečné pro převod do místní časové pásmo. Tento výpočet například použijte k převodu času UTC na PST časy:
+Protože všechny hodnoty data a času jsou vyjádřeny ve standardu UTC, často je užitečné k převedení těchto hodnot do místní časové pásmo. Tento výpočet například použijte k převodu času UTC na PST časy:
 
 ```Kusto
 Event
@@ -158,10 +158,10 @@ Event
 | Kruhové hodnota, která má velikost přihrádky | [Koš](/azure/kusto/query/binfunction) |
 | Určité datum a čas | [před](/azure/kusto/query/agofunction) [nyní](/azure/kusto/query/nowfunction)   |
 | Získat část hodnoty | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| Získat datum vzhledem k hodnotě  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
+| Získá hodnotu relativního data  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další lekce pro použití [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
+Zobrazit další lekce pro použití [Kusto dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
 
 - [Operace s řetězci](string-operations.md)
 - [Agregační funkce](aggregations.md)

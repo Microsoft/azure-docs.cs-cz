@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57c4f0595fdea3d266a56d125d6d86cba8b4f651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195528"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269106"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Koncepty návrhu
 Účelem tohoto dokumentu je popisují oblasti, které musí být si mysleli, že během návrhu implementace služby Azure AD Connect. Tento dokument je podrobný pohled na určité oblasti a tyto koncepty stručně jsou popsány v i další dokumenty.
@@ -171,7 +171,7 @@ Pokud spravujete služby AD FS mimo Azure AD Connect nebo třetích stran federa
 ![Konfigurace federace třetích stran](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Přidání nového adresáře do stávajícího nasazení
-Předpokládejme, že jste nasadili Azure AD Connect s povolenou funkcí ConsistencyGuid, a teď chcete přidat jiný adresář pro nasazení. Při pokusu o přidání adresáře průvodce Azure AD Connect zkontroluje stav atribut ms-DS-ConsistencyGuid v adresáři. Jestliže je atribut nastaven na jeden nebo více objektů v adresáři, dojde k závěru průvodce, atribut se používá jinými aplikacemi a vrátí chybu, jak je znázorněno v následujícím diagramu. Pokud jste si jisti, že atribut nepoužívá existující aplikace, budete muset kontaktovat podporu pro informace o tom, jak potlačit chyby.
+Předpokládejme, že jste nasadili Azure AD Connect s povolenou funkcí ConsistencyGuid, a teď chcete přidat jiný adresář pro nasazení. Při pokusu o přidání adresáře průvodce Azure AD Connect zkontroluje stav atribut ms-DS-ConsistencyGuid v adresáři. Jestliže je atribut nastaven na jeden nebo více objektů v adresáři, dojde k závěru průvodce, atribut se používá jinými aplikacemi a vrátí chybu, jak je znázorněno v následujícím diagramu. Pokud jste si jisti, že atribut nepoužívá existující aplikace, můžete potlačit chyby restartováním Průvodce, Azure AD Connect **/SkipLdapSearchcontact** zadat, jak je popsáno výše nebo budete muset kontaktovat Podpora pro další informace.
 
 ![Přidání nového adresáře do stávajícího nasazení](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

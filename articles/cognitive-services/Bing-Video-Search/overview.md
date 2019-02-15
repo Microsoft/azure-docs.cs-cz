@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: a7fbd9eb70c50f3bbd154726bdaa807c2bc41818
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863954"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267168"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Co je rozhraní API Bingu pro vyhledávání videí?
 
@@ -29,7 +29,7 @@ Video API Bingu pro vyhledávání umožňuje snadno přidat video možnosti vyh
 | [Filtrování a omezit výsledky videa.](concepts/get-videos.md#filtering-videos)                      | Filtrování videí vrátil tak, že upravíte parametry dotazu.                                                                                                       |
 | [Ořezávání, změna velikosti a zobrazování miniatur](resize-and-crop-thumbnails.md)                                                | Upravit a zobrazit náhledy pro videa, která vrácený API Bingu pro vyhledávání videí.                                                                                      |
 | [Získat populární videa](trending-videos.md) | Hledání populárních videí z celého světa.                                                                                                          |
-| [Získejte nové poznatky z videí](video-insights.md) | Přizpůsobte si vyhledávání obrázků z celého světa, které jsou právě v kurzu.                                                                                                          |
+| [Získejte nové poznatky z videí](video-insights.md) | Upravte vyhledávání populárních videí z celého světa.                                                                                                          |
 
 ## <a name="workflow"></a>Pracovní postup
 

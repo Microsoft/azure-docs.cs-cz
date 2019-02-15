@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 2f401290a4a9150d27685c06c2d4cd9dc2f06f0d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bbae6d4b727f3e3dc51bd57e8badbc6e87814a51
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730284"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267882"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Import cvičných dat do nástroje Azure Machine Learning Studio z různých zdrojů dat
 
@@ -77,6 +77,29 @@ Libovolného modulu, který přijímají se formáty než tabulka dat bez upozor
 
 V případě potřeby můžete převést formát tabulky dat zpět do CSV, TSV, ARFF nebo SVMLight formátu a používat ostatní moduly převodu.
 Podívejte se **převody formátů dat** části palety modulů pro moduly, které provádějí tyto funkce.
+
+## <a name="data-capacities"></a>Datové kapacity.
+
+Moduly v nástroji Machine Learning Studio podporují datové sady, které obsahují až 10 GB hustých číselných dat pro běžné případy použití. Pokud modul přijímá víc než jeden vstup, celková velikost všech vstupních velikostí je 10 GB. Větší datové sady můžete vzorkovat pomocí dotazů Hive nebo Azure SQL Database, nebo můžete použít učení dle počtů předzpracování předtím, než importujete data.  
+
+Během normalizace funkcí je možné následující typy dat rozšířit do větších datových sad. Tyto typy jsou omezené na méně než 10 GB:
+
+* Řídké
+* Kategorické
+* Řetězce
+* Binární data
+
+Následující moduly jsou omezené na datové sady menší než 10 GB:
+
+* Doporučené moduly
+* Modul SMOTE (Synthetic Minority Oversampling Technique)
+* Skriptovací moduly: R, Python, SQL
+* Moduly, kde velikost výstupních dat může být větší než velikost vstupních dat, třeba Join nebo Feature Hashing
+* Pro velmi velký počet iterací Cross-validation, Tune Model Hyperparameters, Ordinal Regression a One-vs-All Multiclass
+
+U datových sad, které jsou větší než několik GB nahrajte data do služby Azure Storage nebo Azure SQL Database nebo pomocí Azure HDInsight, nikoli nahrávat přímo z místního souboru.
+
+Může najít informace o dat obrázků [Import obrázků](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) odkazu na modul.
 
 ## <a name="import-from-a-local-file"></a>Import z místního souboru
 

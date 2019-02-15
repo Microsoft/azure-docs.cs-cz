@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 511937fde859f47af2b7bc273daaab88bb8809c3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094525"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300257"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -41,7 +41,7 @@ Služba Application Insights ukládá a analyzuje telemetrii. Pokud chcete zobra
 
 Můžete mít dat exportovaných ze služby Application Insights, například do databáze nebo na externí nástroje. Každý nástroj poskytnete speciální klíč, který můžete získat ze služby. Klíč můžete v případě potřeby odvolat. 
 
-Sady SDK služby Application Insights jsou k dispozici pro celou řadu typů aplikací: webové služby, které jsou hostované na vašich vlastních serverech J2EE a ASP.NET, nebo v Azure; webových klientů – to znamená, že kód spuštěný ve webové stránce. desktopové aplikace a služby; aplikace pro zařízení jako Windows Phone, iOS a Android. Všechny odesílají telemetrii ve stejné službě.
+Sady SDK služby Application Insights jsou k dispozici pro celou řadu typů aplikací: webové služby, které jsou hostované na vašich vlastních serverech platformě Java EE určený nebo v technologii ASP.NET, nebo v Azure; webových klientů – to znamená, že kód spuštěný ve webové stránce. desktopové aplikace a služby; aplikace pro zařízení jako Windows Phone, iOS a Android. Všechny odesílají telemetrii ve stejné službě.
 
 ## <a name="what-data-does-it-collect"></a>Jaká data se shromažďuje nástroj?
 ### <a name="how-is-the-data-is-collected"></a>Jak se data se shromažďují?
@@ -51,7 +51,7 @@ Existují tři zdroje dat:
   
   * Jednotlivých sadách SDK má několik [moduly](../../azure-monitor/app/configuration-with-applicationinsights-config.md), které používají různé technologie shromažďovat různé typy telemetrie.
   * Pokud instalace sady SDK do vývoje můžete použít své rozhraní API k odesílání vlastních telemetrických dat, kromě standardní moduly. Tato vlastní telemetrie může obsahovat všechna data, která chcete odeslat.
-* V některých webových serverů existují také agenty, které běží souběžně s ní a odesílání telemetrických dat o využití procesoru, paměti a sítě obsazení. Například virtuální počítače Azure, hostitelů Docker, a [J2EE servery](../../azure-monitor/app/java-agent.md) může mít tyto agenty.
+* V některých webových serverů existují také agenty, které běží souběžně s ní a odesílání telemetrických dat o využití procesoru, paměti a sítě obsazení. Například virtuální počítače Azure, hostitelů Docker, a [serverů na platformě Java EE určený](../../azure-monitor/app/java-agent.md) může mít tyto agenty.
 * [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) jsou procesy řízených microsoftem, který v pravidelných intervalech odesílat žádosti do své webové aplikace. Výsledky se odesílají do služby Application Insights.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Jaké druhy dat se shromažďují?

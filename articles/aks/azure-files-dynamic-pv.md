@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2cf9a98a2f27c9088266a976118acdb56f8a65d7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968979"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300818"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamicky vytvořit a použít trvalý svazek se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -26,32 +26,20 @@ Tento článek předpokládá, že máte existující cluster AKS. Pokud potřeb
 
 Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-class"></a>Vytvořte třídu úložiště
 
-Při vytváření dynamicky do sdílené složky Azure Files jako svazek Kubernetes, libovolný účet úložiště je možné, dokud se AKS **uzel** skupinu prostředků. Tato skupina je se *MC_* předponu, která vytvořil zřizování prostředků pro AKS clusteru. Získání názvu skupiny prostředků s [az aks zobrazit] [ az-aks-show] příkazu.
+Třída úložiště se používá k definování, jak se vytvoří sdílené složky Azure. Účet úložiště se automaticky vytvoří v *_MC* skupiny prostředků pro použití s třídou úložiště pro uložení sdílené složky Azure. Zvolit z následujících [redundance služby Azure storage] [ storage-skus] pro *skuName*:
 
-```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-Použití [vytvořit účet úložiště az] [ az-storage-account-create] příkaz k vytvoření účtu úložiště.
-
-Aktualizace `--resource-group` s názvem skupiny prostředků získané v předchozím kroku, a `--name` název podle vašeho výběru. Zadejte svůj vlastní jedinečný název účtu úložiště:
-
-```azurecli
-az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --sku Standard_LRS
-```
+* *Standard_LRS* – standardní místně redundantní úložiště (LRS)
+* *Standard_GRS* – standardní geograficky redundantní úložiště (GRS)
+* *Standard_RAGRS* – standardní geograficky redundantní úložiště jen pro čtení (RA-GRS)
 
 > [!NOTE]
 > Azure Files aktuálně pouze práce s úložiště úrovně Standard. Pokud používáte službu Premium storage, nepodaří svazek zřídit.
 
-## <a name="create-a-storage-class"></a>Vytvořte třídu úložiště
+Další informace o Kubernetes třídy úložiště pro soubory Azure najdete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes].
 
-Třída úložiště se používá k definování, jak se vytvoří sdílené složky Azure. Účet úložiště se dá nastavit ve třídě. Pokud není zadaný účet úložiště, *skuName* a *umístění* musí být zadána, a shody se vyhodnocují všechny účty úložiště ve skupině prostředků přidružené. Další informace o Kubernetes třídy úložiště pro soubory Azure najdete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes].
-
-Vytvořte soubor s názvem `azure-file-sc.yaml` a kopie v následujícím příkladu manifestu. Aktualizace *storageAccount* hodnotu názvem svého účtu služby storage vytvořené v předchozím kroku. Další informace o *mountOptions*, najdete v článku [možnosti připojení] [ mount-options] oddílu.
+Vytvořte soubor s názvem `azure-file-sc.yaml` a kopie v následujícím příkladu manifestu. Další informace o *mountOptions*, najdete v článku [možnosti připojení] [ mount-options] oddílu.
 
 ```yaml
 kind: StorageClass
@@ -66,7 +54,6 @@ mountOptions:
   - gid=1000
 parameters:
   skuName: Standard_LRS
-  storageAccount: mystorageaccount
 ```
 
 Vytvoření třídy úložiště se [použití kubectl] [ kubectl-apply] příkaz:
@@ -295,3 +282,4 @@ Další informace o trvalé svazky Kubernetes pomocí služby soubory Azure.
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[storage-skus]: ../storage/common/storage-redundancy.md

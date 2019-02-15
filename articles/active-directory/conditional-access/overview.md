@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41771db4ff674b2f0df941286358d3154034ea1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e6f1174351f0907ce2bef21324c7ba81c81498b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194355"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266709"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co je podmíněný přístup v Azure Active Directory?
 
@@ -109,11 +109,7 @@ K využívání podmíněného přístupu se vyžaduje licence Azure AD Premium.
 
 ## <a name="next-steps"></a>Další postup
 
-- Tady najdete další informace:
-    - Podmínky: viz [Podmínky v rámci podmíněného přístupu služby Azure Active Directory](conditions.md).
+Zjistěte, jak implementovat podmíněný přístup ve vašem prostředí, najdete v článku [plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).
 
-    - Řízení přístupu: viz [Řízení přístupu v rámci podmíněného přístupu služby Azure Active Directory](controls.md).
 
-- Pokud se chcete seznámit s konfigurací zásad podmíněného přístupu, přečtěte si téma [Vyžadování MFA pro specifické aplikace pomocí podmíněného přístupu služby Azure Active Directory](app-based-mfa.md).
 
-- Pokud chcete podrobný plán nasazení s doporučenými zásadami, přečtěte si o [plánu nasazení podmíněného přístupu](https://aka.ms/conditionalaccessdeploymentplan).

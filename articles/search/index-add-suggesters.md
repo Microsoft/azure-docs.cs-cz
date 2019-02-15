@@ -1,7 +1,7 @@
 ---
 title: Přidat moduly pro návrhy do indexu Azure Search
 description: Povolí pole pro akce našeptávání dotazů, kde navrhované dotazy se skládají z text z pole v indexu Azure Search.
-ms.date: 01/31/2019
+ms.date: 02/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 35025d69865aa6890e1cd921e31ac6c26c015789
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008409"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269922"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>Přidat moduly pro návrhy do indexu Azure Search
 
@@ -34,9 +34,12 @@ I když **modulu pro návrhy** má několik vlastností, je primárně kolekce p
 
 Může mít pouze jeden **modulu pro návrhy** prostředků pro každý index (konkrétně jeden **modulu pro návrhy** v **moduly pro návrhy** kolekce).
 
-Můžete vytvořit **modulu pro návrhy** kdykoli, ale dopad na indexu se liší v závislosti na pole. Nová pole přidat do modulu pro návrhy v rámci stejné aktualizace jsou nejmenší dopad, v tom, že žádné znovuvytvoření indexu je povinný. Přidání existujících polí, ale změní definici pole, proto je nutné úplné opětovné sestavení indexu.
+## <a name="creating-a-suggester"></a>Vytváření modulu pro návrhy 
 
-## <a name="usage"></a>Využití  
+Můžete vytvořit **modulu pro návrhy** kdykoli, ale dopad na indexu se liší v závislosti na pole. 
+
++ Nová pole přidat do modulu pro návrhy v rámci stejné aktualizace jsou nejmenší dopad, v tom, že žádné znovuvytvoření indexu je povinný.
++ Existující pole přidána do modulu pro návrhy, ale mění definici pole, proto je nutné úplné opětovné sestavení indexu.
 
  **Moduly pro návrhy** fungují lépe, když se používá pro návrh konkrétní dokumenty namísto podmínky dojde ke ztrátě nebo fráze. Nejlepší kandidát pole jsou názvy, názvy a jiné relativně krátké fráze, identifikují položky. Méně účinné jsou opakované pole, jako je například kategorie a značky, nebo velmi dlouhý pole, jako je pole Popis a v komentářích.  
 

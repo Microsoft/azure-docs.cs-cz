@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9b3e35e8372e5488fd97da3f035c29940cb1f293
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002274"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269191"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -149,7 +149,7 @@ Azure Monitor může shromažďovat data protokolu z různých zdrojů v rámci 
 - Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) nebo [rozhraní REST API](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Zobrazení dat protokolu
-Všechna data protokolu ve službě Azure Monitor jsou načítány s použitím [dotaz protokolu](../log-query/log-query-overview.md) napsané pomocí [Průzkumník dat dotazovací jazyk](../log-query/get-started-queries.md), která umožňuje rychle načítat, konsolidovat a analýzy shromážděných dat. Použití [Log Analytics](../log-query/portals.md) k psaní a testování dotazů na webu Azure Portal. Můžete interaktivně pracovat s výsledky nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst protokoly pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Všechna data protokolu ve službě Azure Monitor jsou načítány s použitím [dotaz protokolu](../log-query/log-query-overview.md) napsané pomocí [Kusto dotazovací jazyk](../log-query/get-started-queries.md), která umožňuje rychle načítat, konsolidovat a analýzy shromážděných dat. Použití [Log Analytics](../log-query/portals.md) k psaní a testování dotazů na webu Azure Portal. Můžete interaktivně pracovat s výsledky nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst protokoly pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 > [!IMPORTANT]
 > Data ze služby Application Insights se ukládají v samostatném oddílu než jiná data protokolu ve službě Azure Monitor. Tento atribut podporuje stejné funkce jako jiná data protokolu, ale je nutné použít [konzoly Application Insights](../app/analytics.md) nebo [API pro Application Insights](https://dev.applicationinsights.io/) pro přístup k těmto datům. Můžete použít [napříč prostředky dotazu](../log-query/cross-workspace-query.md) k analýze dat aplikací společně s další data protokolu.

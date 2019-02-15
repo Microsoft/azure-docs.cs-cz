@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2019
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 509c9cbe3a4c2f930c9fdfda186d78118dbe4b80
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 8b3d097d2ec3639a829d3c3bb5056b353eef0763
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237837"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300172"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -152,6 +152,7 @@ Každý prvek má vlastnosti, které můžete nastavit. Následující příklad
     ],
     "outputs": {
         "<outputName>" : {
+            "condition": "<boolean-value-whether-to-output-value>",
             "type" : "<type-of-output-value>",
             "value": "<output-value-expression>"
         }

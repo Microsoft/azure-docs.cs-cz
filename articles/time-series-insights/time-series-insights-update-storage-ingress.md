@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0326e6f05f44b5f2c4416a1c1db09bc5816a297
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558307"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301668"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datové úložiště a příchozího přenosu dat v Azure čas Series Insights ve verzi Preview
 
@@ -189,7 +189,7 @@ Podporované typy souborů patří:
 
 ### <a name="scale"></a>Měřítko
 
-Čas Series Insights ve verzi Preview podporuje měřítku počáteční příchozí přenos dat až 6 megabity za sekundu (MB/s) pro každé prostředí. Probíhá škálování rozšířenou podporu. Plánujeme aktualizovat tak, aby odrážely těchto vylepšení naší dokumentaci.
+Čas Series Insights ve verzi Preview podporuje škálování počáteční příchozího přenosu dat z až 6 Mega bajtů za sekundu (MB/s) pro každé prostředí. Probíhá škálování rozšířenou podporu. Plánujeme aktualizovat tak, aby odrážely těchto vylepšení naši dokumentaci
 
 ## <a name="next-steps"></a>Další postup
 

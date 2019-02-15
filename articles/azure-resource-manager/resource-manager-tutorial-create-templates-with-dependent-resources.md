@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dc9d72afd14547a091acf64cea2c8f0bad75914
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c5bf56482534a55d24d8ca043e36c39cec99b1f0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234403"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267525"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru s závislé prostředky
 
@@ -34,8 +34,6 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -156,6 +154,9 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile azuredeploy.json
     ```
+
+    > [!NOTE]
+    > Existuje soubor vstupně-výstupní operace problém s využitím Azure Powershellu ve službě Cloud shell.  Chybová zpráva *nelze načíst dynamické parametry pro rutinu. Nelze nalézt cestu 'Azure:/azuredeploy.json', protože neexistuje.*  Dočasným řešením je nechcete zahrnout **- TemplateFile** přepínače v `New-AzResourceGroupDeploy` příkazu. Příkaz vás vyzve k zadání názvu souboru.
 
 8. Spuštěním následujícího příkazu PowerShellu zobrazíte nově vytvořený virtuální počítač:
 

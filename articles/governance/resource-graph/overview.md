@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813275"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267950"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph
 
@@ -38,7 +38,7 @@ S Azure Resource Graph můžete získat přístup k těmto vlastnostem, které p
 
 Teď, když už chápete lépe, co je Azure Resource Graph, pusťme se do vytváření dotazů.
 
-Je důležité pochopit, že dotazovací jazyk Azure Resource Graph je založený na [dotazovacím jazyce Azure Data Explorer](../../data-explorer/data-explorer-overview.md).
+Je důležité pochopit, že je na základě grafu prostředků Azure dotazovací jazyk [Kusto dotazovací jazyk](../../data-explorer/data-explorer-overview.md) používá Průzkumník dat Azure.
 
 Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použít s Azure Resource Graph, viz [ jazyk dotazu pro graf zdrojů ](./concepts/query-language.md). Chcete-li procházet zdroje, podívejte se na [ prozkoumat zdroje ](./concepts/explore-resources.md).
 

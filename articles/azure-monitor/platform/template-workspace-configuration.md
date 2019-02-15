@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: e948842a49e87df156eb59a7e25634772550d933
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 98a81d39f698e4ea9b2db0be1dfd2a22424941ba
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235491"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300563"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Správa služby Log Analytics pomocí šablon Azure Resource Manageru
 Můžete použít [šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory Log Analytics. Mezi příklady úloh, které můžete provádět pomocí šablony patří:
@@ -56,7 +56,7 @@ Následující parametry nastavení výchozí hodnoty:
 
 > [!NOTE]
 >Pokud vytváříte nebo konfigurace pracovního prostoru Log Analytics v rámci předplatného, který je zapojen do nové platný od dubna 2018 cenový model, platné pouze v Log Analytics cenová úroveň je **PerGB2018**.  
->Pokud máte některá předplatná v (pre dubna 2018 cenovém modelu) [https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], můžete zadat **samostatné** cenová úroveň a to bude úspěšné pro obě předplatného v cenovém modelu před dubnem 2018 a pro nové ceny předplatných. Pro pracovní prostory v předplatných, které přijaly nový model proicing cenová úroveň bude nastavena na **PerGB2018**. 
+>Pokud máte některá předplatná [cenový model pre dubna 2018](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model), můžete zadat **samostatné** cenová úroveň a to bude úspěšné pro obě předplatného v cenovém modelu pre dubna 2018 a předplatná na novém ceny. Pro pracovní prostory v předplatných, které přijaly nový model proicing cenová úroveň bude nastavena na **PerGB2018**. 
 
 ### <a name="create-and-deploy-template"></a>Vytvoření a nasazení šablony
 

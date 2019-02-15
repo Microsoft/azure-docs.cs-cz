@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005042"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300871"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
 
@@ -22,14 +22,14 @@ Dotaz ve službě Azure Search je úplná specifikace operaci round-trip. Parame
 
 Dotaz je bohaté konstrukce, která určuje pole, která jsou v oboru, jak hledat, která pole se vraťte k řazení nebo filtrování a tak dále. Tento parametr zadán, spustí se dotaz všechna prohledatelná pole jako operace hledání textu v plném znění, vrací výsledek nemůže dostat skóre, nastavte v pořadí.
 
-### <a name="apis-and-tools-for-testing"></a>Rozhraní API a nástroje pro testování
+## <a name="apis-and-tools-for-testing"></a>Rozhraní API a nástroje pro testování
 
 V následující tabulce jsou uvedeny rozhraní API a detekce založené na nástroj pro zadávání dotazů.
 
 | Metodologie | Popis |
 |-------------|-------------|
 | [Průzkumník služby Search (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro výběr index a verze api-version. Výsledky jsou vráceny jako dokumenty JSON. <br/>[Další informace](search-get-started-portal.md#query-index) | 
-| [Postman nebo jiný nástroj pro testování protokolu HTTP](search-fiddler.md) | Vysvětluje, jak nastavit hlavičku požadavku HTTP a text pro odesílání dotazů do služby Azure Search.  |
+| [Postman nebo Fiddler](search-fiddler.md) | Testovací nástroje Web jsou skvělou volbou pro formulování volání REST. Rozhraní REST API podporuje všechny možné operace ve službě Azure Search. V tomto článku se naučíte se nastavit hlavičku požadavku HTTP a text pro odesílání požadavků do služby Azure Search.  |
 | [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který můžete použít k dotazování indexu Azure Search.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Hledání dokumentů (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | V indexu pomocí parametrů dotazu další vstupní metody POST nebo GET.  |
 
@@ -76,7 +76,7 @@ Atributy indexu na pole nastavit povolené operace -, zda je pole *prohledávate
 Výše uvedeném snímku obrazovky je částečný seznam atributů indexu pro ukázku nemovitostí. Celý index schéma můžete zobrazit na portálu. Další informace o atributech indexu najdete v tématu [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Některé funkce dotazu je povoleno celý index spíše než na základě na pole. Mezi tyto možnosti patří: [mapy synonym](https://docs.microsoft.com/rest/api/searchservice/synonym-map-operations), [vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), [konstruktory modulu pro návrhy (pro automatické dokončování a pro automatické návrhy)](https://docs.microsoft.com/rest/api/searchservice/suggesters), [vyhodnocování logiku pro řazení výsledků](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
+> Některé funkce dotazu je povoleno celý index spíše než na základě na pole. Mezi tyto možnosti patří: [mapy synonym](search-synonyms.md), [vlastní analyzátory](index-add-custom-analyzers.md), [konstruktory modulu pro návrhy (pro automatické dokončování a pro automatické návrhy)](index-add-suggesters.md), [vyhodnocování logiku pro řazení výsledků](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Elementy dotazu požadavku
 
@@ -94,9 +94,9 @@ Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů 
 
 ## <a name="choose-a-parser-simple--full"></a>Vyberte analyzátor: jednoduché | úplné
 
-Azure Search je umístěna nad Apache Lucene a vám dává na výběr mezi dvěma analyzátory dotazu pro zpracování dotazů typické a specializované. Požadavky pomocí jednoduchý analyzátor jsou formulovat pomocí [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search), vybrané jako výchozí pro rychlost a efektivitu v dotazech textu volného tvaru. Tato syntaxe podporuje mnoho běžných operátorů hledání včetně AND, OR, NOT, fráze, přípony a priority.
+Azure Search je umístěna nad Apache Lucene a vám dává na výběr mezi dvěma analyzátory dotazu pro zpracování dotazů typické a specializované. Požadavky pomocí jednoduchý analyzátor jsou formulovat pomocí [jednoduchá syntaxe dotazů](query-simple-syntax.md), vybrané jako výchozí pro rychlost a efektivitu v dotazech textu volného tvaru. Tato syntaxe podporuje mnoho běžných operátorů hledání včetně AND, OR, NOT, fráze, přípony a priority.
 
-[Úplná syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_syntax), povolené při přidání `queryType=full` na žádost, poskytuje široce přijatých a expresivní jazyk dotazů vyvinutý jako součást [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Úplná syntaxe rozšiřuje možnosti jednoduché syntaxi. Jakýkoli dotaz, který napíšete pro jednoduchá syntaxe běží pod úplné analyzátor Lucene. 
+[Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), povolené při přidání `queryType=full` na žádost, poskytuje široce přijatých a expresivní jazyk dotazů vyvinutý jako součást [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Úplná syntaxe rozšiřuje možnosti jednoduché syntaxi. Jakýkoli dotaz, který napíšete pro jednoduchá syntaxe běží pod úplné analyzátor Lucene. 
 
 Tento bod ilustrovali následující příklady: stejný dotaz, ale s nastavením jiné queryType přinést různé výsledky. V první dotaz `^3` je považován za součást hledaný termín.
 
@@ -118,16 +118,16 @@ Služba Azure Search podporuje širokou škálu typů dotazů.
 
 | Typ dotazu | Využití | Další informace a příklady |
 |------------|--------|-------------------------------|
-| Hledání v textu volného tvaru | Parametr hledání a buď analyzátoru| Fulltextové vyhledávání vyhledá jeden nebo více výrazů ve všech *prohledávatelné* polích v indexu a funguje tak, jak by zvyklí u vyhledávacích webů, jako je Google nebo Bing. V příkladu v úvodu se fulltextové vyhledávání.<br/><br/>Fulltextové vyhledávání projde Analýza textu s využitím standardní analyzátor Lucene (ve výchozím nastavení) na malé všechny podmínky, odebrat nevýznamová slova jako "the". Můžete přepsat výchozí s [jiné než anglické jazykové analyzátory](https://docs.microsoft.com/rest/api/searchservice/language-support#analyzer-list) nebo [specializované analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) , které mění analýzu textu. Příkladem je [– klíčové slovo](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) jeden token, který považuje veškerý obsah pole. To je užitečné pro data, jako jsou PSČ, ID a některé názvy produktů. | 
-| Filtrované vyhledávání | [Výraz filtru OData](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) a buď analyzátoru | Filtrování vyhodnotí logický výraz napříč všemi *filterable* polí v indexu. Na rozdíl od vyhledávání odpovídá filtru dotazu přesný obsah pole, včetně rozlišování na pole řetězců. Další rozdíl je, že filtrovací dotazy jsou vyjádřeny syntaxe OData. <br/>[Příklad výrazu filtru](search-query-simple-examples.md#example-3-filter-queries) |
+| Hledání v textu volného tvaru | Parametr hledání a buď analyzátoru| Fulltextové vyhledávání vyhledá jeden nebo více výrazů ve všech *prohledávatelné* polích v indexu a funguje tak, jak by zvyklí u vyhledávacích webů, jako je Google nebo Bing. V příkladu v úvodu se fulltextové vyhledávání.<br/><br/>Fulltextové vyhledávání projde Analýza textu s využitím standardní analyzátor Lucene (ve výchozím nastavení) na malé všechny podmínky, odebrat nevýznamová slova jako "the". Můžete přepsat výchozí s [jiné než anglické jazykové analyzátory](index-add-language-analyzers.md#language-analyzer-list) nebo [specializované nezávislá na jazykové analyzátory](index-add-custom-analyzers.md#AnalyzerTable) , které mění analýzu textu. Příkladem je [– klíčové slovo](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) jeden token, který považuje veškerý obsah pole. To je užitečné pro data, jako jsou PSČ, ID a některé názvy produktů. | 
+| Filtrované vyhledávání | [Výraz filtru OData](query-odata-filter-orderby-syntax.md) a buď analyzátoru | Filtrování vyhodnotí logický výraz napříč všemi *filterable* polí v indexu. Na rozdíl od vyhledávání odpovídá filtru dotazu přesný obsah pole, včetně rozlišování na pole řetězců. Další rozdíl je, že filtrovací dotazy jsou vyjádřeny syntaxe OData. <br/>[Příklad výrazu filtru](search-query-simple-examples.md#example-3-filter-queries) |
 | Geografické vyhledávání | [Typu Edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) na pole, výraz filtru a buď analyzátoru | Souřadnice, které jsou uloženy v poli s Edm.GeographyPoint se používá pro "najít poblíž" nebo mapovou hledat ovládací prvky. <br/>[Příklad geografické vyhledávání](search-query-simple-examples.md#example-5-geo-search)|
 | Oblast hledání | výraz filtru a jednoduchý analyzátor | Ve službě Azure Search se vytvářejí dotazy na rozsah, pomocí parametru filtru. <br/>[Příklad filtr rozsahu](search-query-simple-examples.md#example-4-range-filters) | 
-| [Uvnitř pole filtrování](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fields) | Parametr hledání a úplné analyzátoru | Sestavte výraz složeného dotazu cílí na jedno pole. <br/>[Příklad uvnitř pole filtrování](search-query-lucene-examples.md#example-2-intra-field-filtering) |
-| [vyhledávání přibližných shod](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fuzzy) | Parametr hledání a úplné analyzátoru | Odpovídá na podmínky mají podobné konstrukce nebo pravopis. <br/>[Příklad vyhledávání přibližných shod](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [vyhledávání blízkých výrazů](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_proximity) | Parametr hledání a úplné analyzátoru | Najde podmínky, které jsou blízko sebe v dokumentu. <br/>[Příklad vyhledávání blízkých výrazů](search-query-lucene-examples.md#example-4-proximity-search) |
-| [zvýšení skóre termínu](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_termboost) | Parametr hledání a úplné analyzátoru | Určuje pořadí vyšší dokumentu obsahuje Posílený termín relativně k ostatním, které ji nemají. <br/>[Příklad zvýšení skóre termínu](search-query-lucene-examples.md#example-5-term-boosting) |
-| [hledání regulárního výrazu](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_regex) | Parametr hledání a úplné analyzátoru | Na základě obsahu regulárního výrazu shody. <br/>[Příklad regulárního výrazu](search-query-lucene-examples.md#example-6-regex) |
-|  [zástupný znak nebo předpona vyhledávání](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_wildcard) | Parametr hledání a úplné analyzátoru | Shody na základě předpony a tilda (`~`) nebo jeden znak (`?`). <br/>[Příklad prohledávání zástupných znaků](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Uvnitř pole filtrování](query-lucene-syntax.md#bkmk_fields) | Parametr hledání a úplné analyzátoru | Sestavte výraz složeného dotazu cílí na jedno pole. <br/>[Příklad uvnitř pole filtrování](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [vyhledávání přibližných shod](query-lucene-syntax.md#bkmk_fuzzy) | Parametr hledání a úplné analyzátoru | Odpovídá na podmínky mají podobné konstrukce nebo pravopis. <br/>[Příklad vyhledávání přibližných shod](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [vyhledávání blízkých výrazů](query-lucene-syntax.md#bkmk_proximity) | Parametr hledání a úplné analyzátoru | Najde podmínky, které jsou blízko sebe v dokumentu. <br/>[Příklad vyhledávání blízkých výrazů](search-query-lucene-examples.md#example-4-proximity-search) |
+| [zvýšení skóre termínu](query-lucene-syntax.md#bkmk_termboost) | Parametr hledání a úplné analyzátoru | Určuje pořadí vyšší dokumentu obsahuje Posílený termín relativně k ostatním, které ji nemají. <br/>[Příklad zvýšení skóre termínu](search-query-lucene-examples.md#example-5-term-boosting) |
+| [hledání regulárního výrazu](query-lucene-syntax.md#bkmk_regex) | Parametr hledání a úplné analyzátoru | Na základě obsahu regulárního výrazu shody. <br/>[Příklad regulárního výrazu](search-query-lucene-examples.md#example-6-regex) |
+|  [zástupný znak nebo předpona vyhledávání](query-lucene-syntax.md#bkmk_wildcard) | Parametr hledání a úplné analyzátoru | Shody na základě předpony a tilda (`~`) nebo jeden znak (`?`). <br/>[Příklad prohledávání zástupných znaků](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Správa výsledků hledání 
 
@@ -156,7 +156,7 @@ Další informace o stránkování výsledků vyhledávání naleznete v článk
 ### <a name="ordering-results"></a>Řazení výsledků
 Když přijímáte výsledky vyhledávacího dotazu, můžete požadovat, aby služba Azure Search vracela výsledky seřazené podle hodnot v určitém poli. Ve výchozím nastavení služba Azure Search řadí výsledky podle skóre vyhledávání každého dokumentu, které je odvozeno z [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Pokud chcete Azure Search vracela výsledky seřazené podle hodnoty místo skóre vyhledávání, můžete použít **`orderby`** parametr hledání. Můžete zadat hodnotu **`orderby`** parametr zahrnout názvy polí a volání [  **`geo.distance()` funkce** ](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) pro geoprostorové hodnoty. Každý výraz může být následován `asc` k označení, že výsledky jsou požadovány ve vzestupném pořadí, a **`desc`** k označení, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
+Pokud chcete Azure Search vracela výsledky seřazené podle hodnoty místo skóre vyhledávání, můžete použít **`orderby`** parametr hledání. Můžete zadat hodnotu **`orderby`** parametr zahrnout názvy polí a volání [  **`geo.distance()` funkce** ](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může být následován `asc` k označení, že výsledky jsou požadovány ve vzestupném pořadí, a **`desc`** k označení, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
 
 
 ### <a name="hit-highlighting"></a>Zvýrazňování položek

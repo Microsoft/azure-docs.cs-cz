@@ -10,25 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 02/14/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c2684c7373d9ee4536b248650c7012c261166b81
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 37d84206246e60ed16244d6172a5e22ca18524c9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235389"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270245"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlý start: Vytváření šablon Azure Resource Manageru pomocí Visual Studio Code
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Zjistěte, jak pomocí Visual Studio Code a rozšíření Nástroje Azure Resource Manageru vytvářet a upravovat šablony Azure Resource Manageru. Šablony Resource Manageru můžete v nástroji Visual Studio Code vytvářet i bez tohoto rozšíření, poskytuje však možnosti automatického dokončování, které vývoj šablon zjednodušují. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,6 +50,7 @@ K dokončení tohoto článku potřebujete:
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. Výběrem **Open** (Otevřít) soubor otevřete.
 4. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte jako **azuredeploy.json** na místní počítač.
 
@@ -94,6 +91,9 @@ Pokud chcete vyzkoušet, jak upravit šablonu pomocí Visual Studio Code, přide
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
 Šablony můžete nasadit mnoha způsoby.  V tomto rychlém startu použijete Azure Cloud Shell. Cloud shell je webová aplikace, která nevyžaduje žádnou konfiguraci. Podporuje rozhraní příkazového řádku Azure a Azure Powershellu.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 1. Přihlaste se do služby [Azure Cloud Shell](https://shell.azure.com).
 
@@ -148,7 +148,10 @@ Pokud chcete vyzkoušet, jak upravit šablonu pomocí Visual Studio Code, přide
     
     ---
 
-    Pokud jste soubor uložili s jiným názvem než **azuredeploy.json**, aktualizujte název souboru šablony.
+    > [!NOTE]
+    > Existuje soubor vstupně-výstupní operace problém s využitím Azure Powershellu ve službě Cloud shell.  Chybová zpráva *nelze načíst dynamické parametry pro rutinu. Nelze nalézt cestu 'Azure:/azuredeploy.json', protože neexistuje.*  Dočasným řešením je nechcete zahrnout **- TemplateFile** přepínače v `New-AzResourceGroupDeploy` příkazu. Příkaz vás vyzve k zadání názvu souboru.
+
+    Pokud jste soubor uložili s jiným názvem než **azuredeploy.json**, aktualizujte název souboru šablony. 
 
     Následující snímek obrazovky ukazuje ukázkové nasazení:
 

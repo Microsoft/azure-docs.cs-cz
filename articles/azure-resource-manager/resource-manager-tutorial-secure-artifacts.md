@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8be7a3d862e7b496a4e3b3077e4c53018bf97bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: cd692442791f57e1560a97f09253ccd1a8264fb3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233315"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269089"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: Zabezpečené artefaktů v nasazení šablon Azure Resource Manageru
 
@@ -36,8 +36,6 @@ Tento kurz se zabývá následujícími úkony:
 > * Ověření nasazení
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -218,6 +216,9 @@ New-AzResourceGroupDeployment `
     -bacpacFileName $bacpacFileName `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> Existuje soubor vstupně-výstupní operace problém s využitím Azure Powershellu ve službě Cloud shell.  Chybová zpráva *nelze načíst dynamické parametry pro rutinu. Nelze nalézt cestu 'Azure:/azuredeploy.json', protože neexistuje.*  Dočasným řešením je nechcete zahrnout **- TemplateFile** přepínače v `New-AzResourceGroupDeploy` příkazu. Příkaz vás vyzve k zadání názvu souboru.
 
 Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 Hodnoty _artifactsLocation, _artifactsLocationSasToken a bacpacFileName naleznete v části [vygenerování tokenu SAS](#generate-a-sas-token).

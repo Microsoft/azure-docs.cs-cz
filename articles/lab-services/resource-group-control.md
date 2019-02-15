@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: spelluru
-ms.openlocfilehash: ddda9ef2b9bb716f7cdd33aa8fe9233f6c7d8e82
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2903228a3257abe9c454c6e0720a1e228b905290
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55748996"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300036"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače testovacího prostředí ve službě Azure DevTest Labs
 Jako vlastník testovacího prostředí můžete konfigurovat virtuální počítače testovacího prostředí vytvořit v konkrétní skupině prostředků. Pomocí této funkce tak, aby vám nedostanou prostředků omezení skupiny v rámci předplatného Azure. Tato funkce také umožňuje konsolidovat prostředky testovacího prostředí v rámci jedné skupiny prostředků. Taky usnadňují sledování těchto prostředků a použití [zásady](../governance/policy/overview.md) pro správu na úrovni skupiny prostředků.
@@ -32,7 +32,7 @@ Nyní pojďme si projít možnosti máte jako vlastník testovacího prostředí
 - Můžete zadat **novou skupinu prostředků** název pro všechny virtuální počítače.
 - Můžete pokračovat se stávající chování, to znamená, skupina prostředků se vytvoří pro každý virtuální počítač v testovacím prostředí.
  
-Toto nastavení platí pro nové virtuální počítače vytvořené v testovacím prostředí. Starší virtuální počítače ve vaší laboratoři, které byly vytvořeny ve své vlastní skupiny prostředků i nadále nijak ovlivněn. Však můžete migrovat tyto virtuální počítače z jejich skupin pro jednotlivé prostředky do společného skupiny prostředků tak, aby všechny virtuální počítače testovacího prostředí v jedné skupině prostředků běžné. Další informace najdete v tématu [přesunutí prostředků do nové skupiny prostředků](../azure-resource-manager/resource-group-move-resources.md). Prostředí vytvořená ve vaší laboratoři dál zůstanou ve své vlastní skupiny prostředků.
+Toto nastavení platí pro nové virtuální počítače vytvořené v testovacím prostředí. Starší virtuální počítače ve vaší laboratoři, které byly vytvořeny ve své vlastní skupiny prostředků i nadále nijak ovlivněn. Prostředí vytvořená ve vaší laboratoři dál zůstanou ve své vlastní skupiny prostředků.
 
 ### <a name="how-to-use-this-api"></a>Jak používat toto rozhraní API:
 - Použijte verzi rozhraní API **2018_10_15_preview** při používání tohoto rozhraní API. 

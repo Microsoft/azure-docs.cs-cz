@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2019
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92e5dd5190a76bd09e33ea4c40a5b5cc2d66bc7b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691027"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301124"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Část Outputs následujícím v šablonách Azure Resource Manageru
 
-V části výstupů zadáte hodnoty, které se vracejí z nasazení. Například může vrátit identifikátor URI pro přístup k nasazených prostředků.
+V části výstupů zadáte hodnoty, které se vracejí z nasazení. Například může vrátit identifikátor URI pro přístup k nasazených prostředků. Použít nepovinný `condition` vlastnosti k určení, zda je vrácena hodnota výstupu.
 
 ## <a name="define-and-use-output-values"></a>Definice a používání výstupní hodnoty
 
@@ -31,6 +31,18 @@ Následující příklad ukazuje, jak vrátit ID prostředku pro veřejnou IP ad
 ```json
 "outputs": {
   "resourceID": {
+    "type": "string",
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
+  }
+}
+```
+
+Následující příklad ukazuje, jak podmíněně vrátit ID prostředku pro veřejnou IP adresu na základě, jestli je nový, jeden byla nasazena:
+
+```json
+"outputs": {
+  "resourceID": {
+    "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]",
     "type": "string",
     "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
   }
@@ -70,6 +82,7 @@ Následující příklad ukazuje strukturu definici výstupu:
 ```json
 "outputs": {
     "<outputName>" : {
+        "condition": "<boolean-value-whether-to-output-value>",
         "type" : "<type-of-output-value>",
         "value": "<output-value-expression>"
     }
@@ -79,6 +92,7 @@ Následující příklad ukazuje strukturu definici výstupu:
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
 | outputName |Ano |Název výstupní hodnoty. Musí být platný identifikátor jazyka JavaScript. |
+| condition |Ne | Logická hodnota označující, zda tento výstupní hodnota je vrácena. Když `true`, hodnota je součástí výstupu pro nasazení. Když `false`, výstupní hodnota je vynecháno pro toto nasazení. Pokud není zadán, výchozí hodnota je `true`. |
 | type |Ano |Typ výstupní hodnoty. Výstupní hodnoty podporují stejné typy jako vstupní parametry šablony. |
 | hodnota |Ano |Výraz jazyka šablony, která je vyhodnocena a vrátila jako výstupní hodnota. |
 

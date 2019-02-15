@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1d576b24e96d6c4c88d6fbef86cb1c6cf7f7c61a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691553"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268123"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
 Azure Resource Manager je nasazení a Správa služby pro Azure. Poskytuje konzistentní vrstvu správy, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky ve vašem předplatném Azure. Auditování a označování funkce můžete použít jeho řízení přístupu k zabezpečení a uspořádání prostředků po nasazení.
 
-Když je provést akce na portálu, Powershellu, rozhraní příkazového řádku Azure, rozhraní REST API nebo klientské sady SDK, rozhraní API Azure Resource Manageru zpracovává vaši žádost. Protože všechny požadavky jsou zpracovány prostřednictvím stejného rozhraní API, uvidíte konzistentní výsledky a funkce v různých nástrojích.
+Když je provést akce na portálu, Powershellu, rozhraní příkazového řádku Azure, rozhraní REST API nebo klientské sady SDK, rozhraní API Azure Resource Manageru zpracovává vaši žádost. Protože všechny požadavky jsou zpracovány prostřednictvím stejného rozhraní API, uvidíte konzistentní výsledky a funkce v různých nástrojích. Všechny možnosti, které jsou k dispozici na portálu jsou dostupné prostřednictvím prostředí PowerShell, rozhraní příkazového řádku Azure, rozhraní REST API a klientské sady SDK. Funkce původně vydané prostřednictvím rozhraní API budou na portálu k dispozici do 180 dnů od počátečního vydání.
 
 Následující obrázek znázorňuje způsob, jakým tyto nástroje interagují se rozhraní API Azure Resource Manageru. Rozhraní API předává požadavky do služby Resource Manageru, která je ověřuje a autorizuje. Resource Manager následně směruje požadavky na příslušnou službu.
 

@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: bdd512972f1a684a3b76ae0323bbadd87bf0d659
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238313"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269633"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií ve službě Azure Stream Analytics
 
-Azure Stream Analytics nabízí integrovanou strojového učení na základě anomálií zjišťování, které lze použít k monitorování dvě nejčastěji se vyskytující anomálií: dočasné a trvalé. S **AnomalyDetection_SpikeAndDip** a **AnomalyDetection_ChangePoint** funkce, můžete provádět detekci anomálií přímo ve vaší úlohy Stream Analytics.
+K dispozici v cloudu a Azure IoT Edge, Azure Stream Analytics nabízí integrovanou strojového učení na základě anomálií zjišťování, které lze použít k monitorování dvě nejčastěji se vyskytující anomálií: dočasné a trvalé. S **AnomalyDetection_SpikeAndDip** a **AnomalyDetection_ChangePoint** funkce, můžete provádět detekci anomálií přímo ve vaší úlohy Stream Analytics.
 
 Modely strojového učení předpokládají rovnoměrně vzorky časové řady. Pokud časové řady není jednotné, vložíte na krok agregace se aktivační událost pro přeskakující okno před voláním detekce anomálií.
 
@@ -36,13 +36,14 @@ Mezery v časové řady může být výsledkem modelu není příjem událostí 
 
 ## <a name="spike-and-dip"></a>(Špičky) a vyhrazené IP adresy
 
-Dočasné anomálie v datovém proudu událostí řady času jsou označované jako špičky a poklesy. Provozní špičky a vyhrazené IP adresy je možné monitorovat pomocí operátoru využívajících Machine Learning **AnomalyDetection_SpikeAndDip**.
+Dočasné anomálie v datovém proudu událostí řady času jsou označované jako špičky a poklesy. Provozní špičky a vyhrazené IP adresy je možné monitorovat pomocí operátoru využívajících Machine Learning [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+).
 
 ![Příklad anomálií ve špičce a vyhrazené IP adresy](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
 Ve stejném posuvné okno Pokud je menší než první, druhý zásobníku počítaný skóre pro menší zásobníku není pravděpodobně důležité dostatek ve srovnání s skóre pro první zásobníku v rámci hladina zadaný. Můžete zkusit snížení nastavení úrovně modelu důvěru k zachytávání těchto anomálie. Ale pokud začnete získat příliš mnoho výstrah, můžete použít vyšší interval spolehlivosti.
 
-Následující příklad dotazu předpokládá jednotné vstupní výše 1 událostí za sekundu 2 minuty posuvné okno s historii událostí na 120. Poslední příkaz SELECT extrahuje a vypíše skóre a anomálií stavu hladina spolehlivosti 95 %.
+Následující příklad dotazu předpokládá jednotné vstupní sazba jednu událost za každou sekundu do posuvného okna 2 s historii událostí na 120. Poslední příkaz SELECT extrahuje a vypíše skóre a anomálií stavu hladina spolehlivosti 95 %.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -67,9 +68,9 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Změnit bod
 
-Trvalé anomálie v datovém proudu událostí řady času jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou změny na úrovni a trendy. Ve službě Stream Analytics tyto anomálie se zjišťují pomocí služby Machine Learning na základě **AnomalyDetection_ChangePoint** operátor.
+Trvalé anomálie v datovém proudu událostí řady času jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou změny na úrovni a trendy. Ve službě Stream Analytics tyto anomálie se zjišťují pomocí služby Machine Learning na základě [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operátor.
 
-Trvalé změny mnohem delší než špičky a poklesy trvat a může znamenat katastrofické události. Trvalé změny nejsou obvykle snadno viditelná pouhým okem, ale s můžete zjistit **AnomalyDetection_ChangePoint** operátor.
+Trvalé změny mnohem delší než špičky a poklesy trvat a může znamenat katastrofické události. Trvalé změny se obvykle nezobrazí pouhým okem, ale s můžete zjistit **AnomalyDetection_ChangePoint** operátor.
 
 Na následujícím obrázku je příklad Změna úrovně:
 
@@ -79,7 +80,7 @@ Na následujícím obrázku je příklad změny trendů:
 
 ![Příklad trendu změn anomálií](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-Následující příklad dotazu předpokládá jednotné vstupní výše 1 událostí za sekundu ve 20 minutách posuvné okno s velikostí Historie událostí 1200. Poslední příkaz SELECT extrahuje a vypíše skóre a anomálií stavu úroveň spolehlivosti 80 %.
+Následující příklad dotazu předpokládá jednotné vstupní sazba jednu událost za každou sekundu v posuvné okno po 20 minutách se velikost historie událostí 1200. Poslední příkaz SELECT extrahuje a vypíše skóre a anomálií stavu úroveň spolehlivosti 80 %.
 
 ```SQL
 WITH AnomalyDetectionStep AS

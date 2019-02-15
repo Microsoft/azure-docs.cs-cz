@@ -6,17 +6,66 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ef2a782a19dd319de346f14d6189759d0a26686c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666755"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269993"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení
+
+## <a name="deployment-failure"></a>Scénář: Řešení pro spouštění/zastavování virtuálních počítačů nepodaří správně nasadit.
+
+### <a name="issue"></a>Problém
+
+Při nasazování [operací spustit/zastavit virtuální počítače mimo hodin řešení](../automation-solution-vm-management.md), zobrazí se jedna z následujících chyb:
+
+```
+Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
+```
+
+```
+Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]”.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.OperationsManagement'.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.Insights'.
+```
+
+```
+The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
+```
+
+### <a name="cause"></a>Příčina
+
+Nasazení může selhat z jednoho z následujících důvodů:
+
+1. Už existuje účet Automation se stejným názvem ve vybraných oblastech.
+2. Zásady je na místě, který zakazuje nasazení řešení pro spouštění/zastavování virtuálních počítačů.
+3. `Microsoft.OperationsManagement`, `Microsoft.Insights`, Nebo `Microsoft.Automation` typy prostředků nejsou registrovány.
+4. Váš pracovní prostor Log Analytics má zámek na něj.
+
+### <a name="resolution"></a>Řešení
+
+Přečtěte si informace následující možná řešení problému nebo místa pro hledání:
+
+1. Účty Automation musí být jedinečný v rámci oblasti Azure, i když jsou v různých skupinách prostředků. Kontrola existujících účtů Automation v cílové oblasti.
+2. Existující zásady zabrání prostředek, který se vyžaduje pro spuštění/zastavení virtuálních počítačů řešení k nasazení. Přejděte na přiřazení zásad na webu Azure Portal a zkontrolujte, jestli máte přiřazení zásady, který zakazuje nasazení tohoto prostředku. Další informace o tom najdete v tématu [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
+3. Pokud chcete nasadit řešení spuštění/zastavení virtuálního počítače, vaše předplatné potřebuje k registraci pro následující obory názvů prostředků Azure:
+    * `Microsoft.OperationsManagement`
+    * `Microsoft.Insights`
+    * `Microsoft.Automation`
+
+   Zobrazit, [vyřešit chyby registrace poskytovatele prostředků](../../azure-resource-manager/resource-manager-register-provider-errors.md) Další informace o chybách při registraci poskytovatelů.
+4. Pokud máte zámek na váš pracovní prostor Log Analytics, přejděte do pracovního prostoru na webu Azure Portal a odeberte žádné zámky prostředku.
 
 ## <a name="all-vms-fail-to-startstop"></a>Scénář: Všechny virtuální počítače se nepodaří spustit/zastavit
 

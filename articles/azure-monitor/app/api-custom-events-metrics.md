@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2b26261fdbae07bf3eea793efe6ff0755ca3f577
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1383c59ca88400868f83d30d04d9b0e5f5401282
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895988"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268953"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -400,7 +400,7 @@ Doporučený způsob odesílání telemetrických dat požadavek je však kde ž
 
 ## <a name="operation-context"></a>Kontext operace
 
-Můžete porovnat položky telemetrie společně přidruží je kontext operace. Standardní modulu Sledování žádostí o to dělá pro výjimky a dalších událostí, které se odesílají během zpracování požadavku HTTP. V [hledání](../../azure-monitor/app/diagnostic-search.md) a [Analytics](analytics.md), můžete snadno vyhledat všechny události přidružené k požadavku pomocí jeho operace s ID.
+Můžete porovnat položky telemetrie společně přidruží je kontext operace. Standardní modulu Sledování žádostí o to dělá pro výjimky a dalších událostí, které se odesílají během zpracování požadavku HTTP. V [hledání](../../azure-monitor/app/diagnostic-search.md) a [Analytics](analytics.md), můžete snadno vyhledat všechny události přidružené k požadavku pomocí jeho ID operace.
 
 Zobrazit [korelace Telemetrie v Application Insights](../../azure-monitor/app/correlation.md) podrobné informace o korelace.
 
@@ -508,7 +508,7 @@ catch (ex)
 Sady SDK pro mnoho výjimek catch automaticky, proto není vždy nutné explicitně volat TrackException.
 
 * ASP.NET: [Napsání kódu pro zachycení výjimky](../../azure-monitor/app/asp-net-exceptions.md).
-* J2EE: [Výjimky jsou zachyceny automaticky](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
+* Java EE: [Výjimky jsou zachyceny automaticky](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
 * JavaScript: Výjimky jsou zachyceny automaticky. Pokud chcete zakázat automatické shromažďování, přidá řádek do kódu, který vložíte do své webové stránky:
 
 ```javascript
@@ -732,7 +732,7 @@ Thread.sleep(5000);
 telemetry.flush();
 ```
 
-Všimněte si, že je asynchronní pro funkci [kanálu serveru telemetrie](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
+Je asynchronní pro funkci [kanálu serveru telemetrie](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
 
 Metoda vyprázdnění() v ideálním případě byste měli použít ve vypnutí aktivity aplikace.
 
@@ -1141,7 +1141,7 @@ Pokud nastavíte některou z těchto hodnot sami, zvažte odebrání relevantní
 
 * **Komponenta**: Aplikace a její verzi.
 * **Zařízení**: Data o zařízení, ve kterém je aplikace spuštěna. (Ve službě web apps, to je na serveru nebo klientského zařízení, které se odesílá telemetrická data ze.)
-* **InstrumentationKey**: Prostředek Application Insights v Azure, kde se zobrazují telemetrická data. To obvykle vyzvednutí ze souboru ApplicationInsights.config.
+* **InstrumentationKey**: Prostředek Application Insights v Azure, ve kterém se zobrazí telemetrická data. To obvykle vyzvednutí ze souboru ApplicationInsights.config.
 * **Umístění**: Geografické umístění zařízení.
 * **Operace**: Ve službě web apps, aktuální žádosti HTTP. V další typy aplikací můžete nastavit toto seskupování událostí společně.
   * **ID**: Vygenerovanou hodnotu, která koreluje jednotlivé události, když si prohlédnout všechny události v diagnostickém vyhledávání, abyste našli související položky.

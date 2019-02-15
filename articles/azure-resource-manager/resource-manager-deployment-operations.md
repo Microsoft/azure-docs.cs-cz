@@ -13,16 +13,14 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9bb6491565f685e8ca3d7a6271747a5df3629e81
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111301"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269072"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Zobrazení operací nasazení pomocí Azure Resource Manageru
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Operace pro nasazení na webu Azure portal můžete zobrazit. Bude nejvíc zajímat to sledovat operace, i když jste dojde k chybě během nasazení, tento článek se zaměřuje na zobrazení operací, které selhaly. Portál poskytuje rozhraní, které vám umožní snadno najít chyby a zjistit potenciální opravy.
 

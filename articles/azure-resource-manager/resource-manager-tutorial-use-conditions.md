@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 04b3ebac6406f4a6e5ec07f1806b48e3b2062470
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 90431ea7649b38da6cbbd242b00c21278d8e8967
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235423"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268885"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Podmínky použití v šablonách Azure Resource Manageru
 
@@ -35,8 +35,6 @@ Tento kurz se zabývá následujícími úkony:
 > * Vyčištění prostředků
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -154,6 +152,9 @@ New-AzResourceGroupDeployment `
     -newOrExisting $newOrExisting `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> Existuje soubor vstupně-výstupní operace problém s využitím Azure Powershellu ve službě Cloud shell.  Chybová zpráva *nelze načíst dynamické parametry pro rutinu. Nelze nalézt cestu 'Azure:/azuredeploy.json', protože neexistuje.*  Dočasným řešením je nechcete zahrnout **- TemplateFile** přepínače v `New-AzResourceGroupDeploy` příkazu. Příkaz vás vyzve k zadání názvu souboru.
 
 > [!NOTE]
 > Pokud má parametr **newOrExisting** hodnotu **new**, ale účet úložiště se zadaným názvem již existuje, nasazení selže.

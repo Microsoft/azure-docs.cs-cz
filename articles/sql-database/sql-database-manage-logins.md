@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b12fdcec32aca65b0c66f6a3fb14595453d36fdb
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164613"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301753"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -84,9 +84,9 @@ Kromě správních rolí na úrovni serveru popsaných v předchozích částech
 
 ### <a name="database-creators"></a>Autoři databází
 
-Jednou z těchto správních rolí je role **dbmanager**. Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. K vytvoření databáze je nutné, aby uživatel byl uživatelem na základě přihlášení pro SQL Server v hlavní databázi nebo uživatelem databáze s omezením na základě uživatele Azure Active Directory.
+Jednou z těchto správních rolí je role **dbmanager**. Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. Chcete-li vytvořit databázi, uživatel musí být uživatele na základě přihlášení serveru SQL Server v `master` databáze nebo uživatele databáze s omezením podle uživatele služby Azure Active Directory.
 
-1. Pomocí účtu správce se připojte k hlavní databázi.
+1. Pomocí účtu správce připojení k `master` databáze.
 2. Vytvořit účet ověřování SQL serveru, pomocí [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) příkazu. Ukázka příkazu:
 
    ```sql
@@ -98,7 +98,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
 
    Za účelem zvýšení výkonu se přihlášení (u hlavních účtů na úrovni serveru) dočasně ukládají do mezipaměti na úrovni databáze. Pokud chcete aktualizovat mezipaměť pro ověřování, podívejte se na informace v tématu [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
-3. V hlavní databázi vytvořte uživatele pomocí příkazu [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx). Tímto uživatelem může být uživatel databáze s omezením s ověřováním služby Azure Active Directory (pokud jste nakonfigurovali prostředí s ověřováním pomocí služby Azure AD) nebo uživatel databáze s omezením s ověřováním SQL Serveru nebo uživatel s ověřováním SQL Serveru založeným na přihlášení s ověřováním SQL Serveru (vytvořený v předchozím kroku). Ukázky příkazů:
+3. V `master` databáze, vytvořte uživatele pomocí [vytvořit uživatele](https://msdn.microsoft.com/library/ms173463.aspx) příkazu. Tímto uživatelem může být uživatel databáze s omezením s ověřováním služby Azure Active Directory (pokud jste nakonfigurovali prostředí s ověřováním pomocí služby Azure AD) nebo uživatel databáze s omezením s ověřováním SQL Serveru nebo uživatel s ověřováním SQL Serveru založeným na přihlášení s ověřováním SQL Serveru (vytvořený v předchozím kroku). Ukázky příkazů:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -106,7 +106,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Do databázové role **dbmanager** přidejte nového uživatele pomocí příkazu [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx). Ukázky příkazů:
+4. Přidat nového uživatele **dbmanager** databázové role v `master` pomocí [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) příkazu. Ukázky příkazů:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
@@ -118,7 +118,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
 
 5. V případě potřeby nakonfigurujte pravidlo brány firewall, aby se nový uživatel mohl připojit. (Na nového uživatele se může vztahovat už existující pravidlo brány firewall.)
 
-Nový uživatel se teď může připojit k hlavní databázi a může vytvářet nové databáze. Účet použitý k vytvoření databáze se stává vlastníkem databáze.
+Teď se uživatel může připojit k `master` databázi a může vytvářet nové databáze. Účet použitý k vytvoření databáze se stává vlastníkem databáze.
 
 ### <a name="login-managers"></a>Správci přihlášení
 
@@ -141,11 +141,19 @@ Na začátku může uživatele vytvořit jenom jeden ze správců nebo vlastník
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Pokud chcete dalším uživatelům umožnit úplnou kontrolu databáze, přidejte je do pevné databázové role **db_owner** pomocí příkazu `ALTER ROLE`.
+K dalším uživatelům umožnit úplnou kontrolu databáze, přidejte je do aplikace **db_owner** pevné databázové role.
+
+Azure SQL Database používá `ALTER ROLE` příkazu.
 
 ```sql
-ALTER ROLE db_owner ADD MEMBER Mary; 
+ALTER ROLE db_owner ADD MEMBER Mary;
 ```
+
+Azure SQL Data Warehouse používá [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+```sql
+EXEC sp_addrolemember 'db_owner', 'Mary';
+```
+
 
 > [!NOTE]
 > Jedním z běžných důvodů a vytvořte uživatele databáze na základě přihlášení serveru SQL Database je pro uživatele, kteří potřebují přístup k více databázím. Protože obsažena uživatele databáze s jednotlivými entitami, každé databázi udržuje vlastní uživatelské a vlastní heslo. To může způsobit režijní náklady a uživatel musí mějte na paměti, každý heslo pro každou databázi, může být untenable, pokud by bylo nutné změnit více hesel pro velký počet databází. Ale při použití SQL serveru přihlášení a vysokou dostupnost (aktivní geografickou replikaci a převzetí služeb při selhání skupiny), přihlašovací údaje SQL serveru musí nastavit ručně na každém serveru. V opačném případě uživatele databáze se už namapovat na přihlášení serveru poté, co dojde k převzetí služeb při a nebudou mít přístup k databázi příspěvek převzetí služeb při selhání. Další informace o konfiguraci přihlášení pro geografickou replikaci, najdete v tématu [konfigurovat a spravovat zabezpečení služby Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání](sql-database-geo-replication-security-config.md).

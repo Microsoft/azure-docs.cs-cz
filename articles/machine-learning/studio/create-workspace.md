@@ -1,5 +1,5 @@
 ---
-title: Vytvoření pracovního prostoru
+title: Vytvoření pracovního prostoru Machine Learning Studio
 titleSuffix: Azure Machine Learning Studio
 description: Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning Studio. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 services: machine-learning
@@ -10,24 +10,23 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 16c67c217c8ef33a360fd479a45317d6c42af494
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486313"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270087"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Vytváření a sdílení pracovního prostoru služby Azure Machine Learning Studio
 
 Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning Studio. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 
+## <a name="create-a-studio-workspace"></a>Vytvořit pracovní prostor Studio
 
-
-### <a name="to-create-a-workspace"></a>Vytvořit pracovní prostor
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
     > [!NOTE]
-    > Přihlaste se a vytvořit pracovní prostor, musíte být správcem předplatného Azure. 
+    > Přihlaste se a vytvořit pracovní prostor Studio, musíte být správcem předplatného Azure. 
     >
     > 
 
@@ -40,9 +39,13 @@ Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní pr
     - *Název pracovního prostoru* může být až 260 znaků, není koncovou mezerou. Název nemůže obsahovat tyto znaky: `< > * % & : \ ? + /`
     - *Plán web service* vyberete (nebo vytvoření), spolu s přidruženou *cenovou úroveň* vybrat, se používá při nasazení webové služby z tohoto pracovního prostoru.
 
-    ![Vytvořit nový pracovní prostor](./media/create-workspace/create-new-workspace.png)
+    ![Vytvořit nový pracovní prostor Studio](./media/create-workspace/create-new-workspace.png)
 
 5. Klikněte na možnost **Vytvořit**.
+
+> [!NOTE]
+> Machine Learning Studio využívá na účet úložiště Azure, které poskytnete k ukládání pracovních dat při provádění pracovního postupu. Po vytvoření pracovního prostoru, pokud účet úložiště je odstraněný nebo přístupové klíče se změní, pracovní prostor přestane fungovat a všechny experimenty v něm selžou.
+Pokud omylem odstraníte účet úložiště, znovu vytvořte účet úložiště se stejným názvem ve stejné oblasti jako odstraněný účet úložiště a znovu synchronizujte přístupový klíč. Pokud jste změnili přístupové klíče účtu úložiště, znovu je v pracovním prostoru synchronizujte přes portál Azure.
 
 Po nasazení se pracovní prostor, lze jej otevřít v nástroji Machine Learning Studio.
 
@@ -56,12 +59,12 @@ Po nasazení se pracovní prostor, lze jej otevřít v nástroji Machine Learnin
 
     ![Otevřít experimentů](./media/create-workspace/my-experiments.png)
 
-Informace o správě pracovního prostoru najdete v tématu [Správa pracovního prostoru Azure Machine Learning](manage-workspace.md).
-Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si téma [Průvodce odstraňováním potíží: Vytvoření a připojení k pracovnímu prostoru Machine Learning](troubleshooting-creating-ml-workspace.md).
+Informace o správě váš pracovní prostor Studio najdete v tématu [Správa pracovního prostoru Azure Machine Learning Studio](manage-workspace.md).
+Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si téma [Průvodce odstraňováním potíží: Vytvoření a připojení k pracovnímu prostoru Machine Learning Studio](troubleshooting-creating-ml-workspace.md).
 
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>Sdílení pracovního prostoru služby Azure Machine Learning
-Jednou Machine Learning při vytváření pracovního prostoru, můžete uživatele pozvat do pracovního prostoru pro sdílení přístupu do vašeho pracovního prostoru a všechny jeho experimentů, datových sad, poznámkových bloků, atd. Můžete přidat uživatele v jednom ze dvou rolí:
+## <a name="share-an-azure-machine-learning-studio-workspace"></a>Sdílení pracovního prostoru služby Azure Machine Learning Studio
+Jednou Machine Learning Studio při vytváření pracovního prostoru, můžete uživatele pozvat do pracovního prostoru pro sdílení přístupu do vašeho pracovního prostoru a všechny jeho experimentů, datových sad, poznámkových bloků, atd. Můžete přidat uživatele v jednom ze dvou rolí:
 
 * **Uživatel** -uživatel pracovní prostor může vytvoření, otevření, úprava a odstranění experimenty, datové sady atd., v pracovním prostoru.
 * **Vlastník** – může pozvat vlastník a odebírání uživatelů v pracovním prostoru, kromě uživatele, můžete provést.
@@ -71,7 +74,7 @@ Jednou Machine Learning při vytváření pracovního prostoru, můžete uživat
 > 
 > 
 
-### <a name="to-share-a-workspace"></a>Ke sdílení pracovního prostoru
+### <a name="to-share-a-studio-workspace"></a>Chcete-li sdílet pracovní prostor Studio
 
 1. Přihlaste se k sadě Machine Learning Studio [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 

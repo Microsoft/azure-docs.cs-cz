@@ -1,5 +1,5 @@
 ---
-title: Správa po migraci – Azure SQL Database | Dokumentace Microsoftu
+title: Správa databází ve fondu a jeden po migraci – Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o správě databáze po migraci do Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,28 +11,31 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 02/13/2019
+ms.openlocfilehash: 8c0c4ac6ce09ce92851b532b226dadfd8b9f7e18
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099730"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270432"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nové DBA v cloudu – správu vašich databází ve fondu a jeden ve službě Azure SQL Database
 
-Přechod z tradiční svým spravované svým řízeném prostředí PaaS prostředí se může zdát poněkud náročný na první. Jako vývojář aplikací nebo DBA byste znát základní funkce platformy, které by vám pomůže ochránit vaše aplikace, které jsou k dispozici, výkonné, zabezpečené a odolná proti selháním - vždy. V tomto článku, zaměřuje na to přesně. Tento článek stručně slouží k uspořádání prostředků a poskytuje pokyny, jak nejlépe používat klíčové funkce služby SQL Database spravovat a udržovat vaše aplikace běžící efektivně a dosažení optimálních výsledků v cloudu. Typické cílovou skupinu pro účely tohoto článku bude těch, kdo:
+Přechod z tradiční svým spravované svým řízeném prostředí PaaS prostředí se může zdát poněkud náročný na první. Jako vývojář aplikací nebo DBA byste znát základní funkce platformy, které by vám pomůže ochránit vaše aplikace, které jsou k dispozici, výkonné, zabezpečené a odolná proti selháním - vždy. V tomto článku, zaměřuje na to přesně. Tento článek stručně slouží k uspořádání prostředků a poskytuje pokyny, jak nejlépe používat klíčové funkce služby SQL Database s databázemi ve fondu a jeden spravovat a udržovat vaše aplikace běžící efektivně a dosažení optimálních výsledků v cloudu. Typické cílovou skupinu pro účely tohoto článku bude těch, kdo:
 
-- Hodnocení migraci svých aplikací do služby Azure SQL DB – modernizaci vašich aplikací.
+- Hodnocení migraci svých aplikací do Azure SQL Database – modernizaci vašich aplikací.
 - Jsou průběžně migrujeme svoje aplikace – probíhající scénář migrace.
 - Nedávno dokončené migrace do Azure SQL DB – nové DBA v cloudu.
 
-Tento článek popisuje některé ze základních vlastností služby Azure SQL DB jako platformu, která můžete snadno využít. Jsou následující:
+Tento článek popisuje některé ze základních vlastností služby Azure SQL Database jako platformu, která můžete snadno využít při práci s izolované databáze a databáze ve fondu v elastických fondech. Jsou následující:
 
 - Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR)
 - Zabezpečení a dodržování předpisů
 - Inteligentní databázi sledování a údržbu
 - Přesuny dat
+
+> [!NOTE]
+> Tento článek se týká následujících možností nasazení ve službě Azure SQL Database: jedna databáze a elastické fondy. Nevztahuje se na spravované instanci možnost nasazení ve službě SQL Database.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR)
 

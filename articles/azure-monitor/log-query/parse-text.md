@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002184"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268188"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Parsovat text data v protokolech Azure Monitor
 Některé protokolu data shromážděná službou Azure Monitor bude obsahovat více kusů informace v jedné vlastnosti. Analýza těchto dat do více vlastností usnadňují použít v dotazech. Běžným příkladem jsou [vlastního protokolu](../../log-analytics/log-analytics-data-sources-custom-logs.md) položku celý protokol s více hodnotami, které shromažďuje do vlastnosti jediné. Vytvoření samostatné vlastnosti pro různé hodnoty, můžete hledat a agregace v každém.
@@ -63,7 +63,7 @@ Nevýhody této metody patří:
 Zobrazit [vytvářet vlastní pole ve službě Azure Monitor](../platform/custom-fields.md) podrobné informace o analýze dat, jako jsou shromažďovány. Tím se vytvoří vlastní vlastnosti v tabulce, která mohou být využívána dotazy stejně jako jakoukoli jinou vlastnosti.
 
 ## <a name="parse-data-in-query-using-patterns"></a>Analyzovat data v dotazu pomocí vzorů
-Pokud chcete analyzovat data lze identifikovat podle vzoru opakuje napříč záznamy, můžete použít různé operátory ve [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) extrahovat konkrétní data do jednoho nebo více nových vlastností.
+Pokud chcete analyzovat data lze identifikovat podle vzoru opakuje napříč záznamy, můžete použít různé operátory ve [Kusto dotazovací jazyk](/azure/kusto/query/) extrahovat konkrétní data do jednoho nebo více nových vlastností.
 
 ### <a name="simple-text-patterns"></a>Jednoduchý text vzorce
 
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>Analyzovat předdefinované struktury v dotazu
-Pokud data naformátovaná ve struktuře známé, je možné použít jednu z funkcí v [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) k analýze předdefinované struktury:
+Pokud data naformátovaná ve struktuře známé, je možné použít jednu z funkcí v [Kusto dotazovací jazyk](/azure/kusto/query/) k analýze předdefinované struktury:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 52a441d5d8f3f44b35253e02786a033da5439597
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994874"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269852"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Začínáme s dotazy protokolů Azure Monitor
 
@@ -43,7 +43,7 @@ V tomto kurzu se dozvíte, jak napsat Azure LMonitor protokolu dotazy. To se doz
 Dotazy můžete spustit buď pomocí názvu tabulky nebo *hledání* příkazu. Měli byste začít s názvem tabulky, protože definuje vymazat obor pro dotaz a zvyšuje výkon dotazů a relevance výsledků.
 
 > [!NOTE]
-> Jazyk dotazu Průzkumník dat používaný službou Azure Monitor je velká a malá písmena. Klíčová slova jazyka jsou obvykle napsány malé. Při použití názvy tabulek nebo sloupců v dotazu, ujistěte se, že chcete mít správnou velikost, jak je znázorněno v podokně schématu.
+> Jazyk dotaz Kusto používaný službou Azure Monitor je velká a malá písmena. Klíčová slova jazyka jsou obvykle napsány malé. Při použití názvy tabulek nebo sloupců v dotazu, ujistěte se, že chcete mít správnou velikost, jak je znázorněno v podokně schématu.
 
 ### <a name="table-based-queries"></a>Dotazy založené na tabulku
 Azure Monitor uspořádá data protokolu v tabulkách, každá skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku zajímá a potom se podívejte na části dat:

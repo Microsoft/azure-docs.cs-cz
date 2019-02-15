@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 5e2152397a4a965e6d62f8fafc2a59bf318b4a5e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 37eb8ca3c25268dd7923087439a8fbf0fd1f168b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005416"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269905"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v dotazů na protokoly Azure monitoru
 
@@ -181,7 +181,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit další lekce pro použití [Průzkumník dat dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
+Zobrazit další lekce pro použití [Kusto dotazovací jazyk](/azure/kusto/query/) službou Azure Monitor můžete vytvářet protokoly dat:
 
 - [Operace s řetězci](string-operations.md)
 - [Datum a čas operace](datetime-operations.md)

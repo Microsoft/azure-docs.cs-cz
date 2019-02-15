@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359353"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270262"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -43,7 +43,11 @@ Tato chyba může být způsobeno z následujících důvodů:
 #### <a name="resolution"></a>Řešení
 
 1. Navštíví, [plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) Další informace o tom, které adresy a porty je potřeba povolit správu aktualizací pro práci.
-2. Pokud pomocí nejprve image něm Klonovaná image nástroj sysprep a instalace agenta MMA po jejich výskytu.
+2. Při použití něm Klonovaná image:
+   1. V pracovním prostoru Log Analytics, odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
+   2. Spusťte `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`.
+   3. Spustit `Restart-Service HealthService` restartovat `HealthService`. Tím bude znovu vytvořit klíč a vygenerujte nový identifikátor UUID.
+   4. Pokud to nepomůže, nástroj sysprep na obrázku první a instalace agenta MMA po jejich výskytu.
 
 ### <a name="multi-tenant"></a>Scénář: Obdržíte chybu propojenému předplatnému při vytváření nasazení aktualizací pro počítače v jiném tenantovi Azure.
 

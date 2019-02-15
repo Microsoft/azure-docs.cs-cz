@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9517ccac4006edec473e25c5e6524ce62d4e1259
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31e380379b5237f6b1a72b3427eb857f64d55c2e
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210098"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269055"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -157,7 +157,11 @@ Odstraněné nebo zakázané uživatelé, kteří nepovedlo přihlásit dříve 
 
 **ODPOVĚĎ:** Uživatel může připojit k nebo zaregistrovat zařízení v Azure AD pomocí služby Multi-Factor Authentication. Samotné zařízení se pak stane důvěryhodným druhý faktor pro tohoto uživatele. Pokaždé, když se stejný uživatel přihlásí k zařízení a přistupuje k aplikaci, službě Azure AD jako druhý faktor považuje za zařízení. Umožňuje daného uživatele a bezproblémově přistupovat k aplikacím bez dalších výzev k ověření službou Multi-Factor Authentication. 
 
-Toto chování nelze použít s žádným uživatelem, který se přihlásí na toto zařízení. Proto všechny ostatní, kteří přistupují k zařízení získat výzvu ověřování službou Multi-Factor Authentication. Pak bude moct aplikace, které vyžadují ověřování službou Multi-Factor Authentication.
+Toto chování:
+
+- Se vztahuje na služby Azure AD připojí a Azure AD registrované zařízení – ale ne pro hybridní služby Azure AD zařízení připojená k.
+
+- Nelze použít s žádným uživatelem, který se přihlásí na toto zařízení. Proto všechny ostatní, kteří přistupují k zařízení získat výzvu ověřování službou Multi-Factor Authentication. Pak bude moct aplikace, které vyžadují ověřování službou Multi-Factor Authentication.
 
 ---
 

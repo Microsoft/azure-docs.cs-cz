@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 52b42e964e7abe207064aff49f7f8f27f8476ef4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 52653252df3efd3e12fa974ed82cd2557eee93d0
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092838"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301243"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS alias Přehled záznamů
 
@@ -52,11 +52,11 @@ Záznamů aliasů zbavte se složité přidružené k této situaci. Mohou pomoc
 
 ### <a name="update-dns-zones-automatically-when-application-ips-change"></a>Aktualizovat DNS zóny automaticky při změně IP adresy aplikace
 
-Tento scénář je podobný předchozímu. Možná se přesune aplikace nebo základní virtuální počítač se restartuje. Záznam aliasu pak se automaticky aktualizuje při změně IP adresu pro základní veřejný IP prostředek. Aby se zabránilo potenciální rizika zabezpečení, přesměrování uživatelů na jinou aplikaci, která obsahuje starou IP adresu.
+Tento scénář je podobný předchozímu. Možná se přesune aplikace nebo základní virtuální počítač se restartuje. Záznam aliasu pak se automaticky aktualizuje při změně IP adresu pro základní veřejný IP prostředek. Tím se vyhnete potenciální bezpečnostní rizika směruje uživatele do jiné aplikace, která obsahuje starou IP adresu.
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Hostování aplikací s vyrovnáváním zatížení ve vrcholu zóny
 
-Protokol DNS brání přiřazení čehokoli jiného, než záznam A nebo AAAA ve vrcholu zóny. Příkladem je contoso.com. Toto omezení představuje problém pro počet vlastníků aplikace, kteří mají aplikace s vyrovnáváním zatížení za Traffic Manager. Není možné tak, aby odkazoval na profil Traffic Manageru z vrcholu zóny. Počet vlastníků aplikace v důsledku toho musíte použít alternativní řešení. Přesměrování na aplikační vrstvě musí přesměrovat adresu z vrcholu zóny na jinou doménu. Je například přesměrování z contoso.com na www.contoso.com. Toto uspořádání představuje jediný bod selhání pro funkci přesměrování.
+Protokol DNS brání přiřazení čehokoli jiného, než záznam A nebo AAAA ve vrcholu zóny. Příklad: contoso.com. Toto omezení představuje problém pro počet vlastníků aplikace, kteří mají aplikace s vyrovnáváním zatížení za Traffic Manager. Není možné tak, aby odkazoval na profil Traffic Manageru z vrcholu zóny. Počet vlastníků aplikace v důsledku toho musíte použít alternativní řešení. Přesměrování na aplikační vrstvě musí přesměrovat adresu z vrcholu zóny na jinou doménu. Je například přesměrování z contoso.com na www.contoso.com. Toto uspořádání představuje jediný bod selhání pro funkci přesměrování.
 
 Pomocí záznamů aliasů tento problém již neexistuje. Počet vlastníků aplikace teď může odkazovat jejich záznamu vrcholu zóny na profil Traffic Manageru, který má externí koncové body. Počet vlastníků aplikace může odkazovat na stejný profil Traffic Manageru, který se používá u všech ostatních domén v rámci jejich zóny DNS. Například contoso.com a www.contoso.com může odkazovat na stejný profil Traffic Manageru. To platí za předpokladu, profil služby Traffic Manager má jenom externí nakonfigurované koncové body.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5a16edcb702db21b357c437b920e870a65fb155a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237413"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270160"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -341,7 +341,7 @@ Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a p
 
 ### <a name="policy-functions"></a>Funkce zásad
 
-S výjimkou následujících nasazení a funkce prostředků všechny [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci zásady:
+Všechny [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci zásad pravidla, s výjimkou následujících funkcí:
 
 - copyIndex()
 - deployment()

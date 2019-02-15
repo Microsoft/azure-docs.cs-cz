@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: 40f7f15c85d5676fefe8daff0aa6a6fb5d95cf53
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117064"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266989"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
 
@@ -75,8 +75,6 @@ Předtím, než se pustíte do psaní kódu, zaregistrujte webovou aplikaci s Az
 Vzhledem k tomu, že vaše aplikace nemá přístup k jiné předplatné, musíte ho nakonfigurovat jako aplikaci s více tenanty. Chcete-li projít ověřením, zadejte domény přidružené k Azure Active Directory. Pokud chcete zobrazit domény přidružené k Azure Active Directory, přihlaste se k portálu.
 
 Následující příklad ukazuje, jak zaregistrovat aplikaci pomocí Azure Powershellu. Musíte mít nejnovější verze Azure Powershellu pro tento příkaz fungovat (srpen 2016).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3bbf2d1d5fab7dec06eda851cfaad0c84365cc88
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 779ae6030c7d36c60dbd0ad00daaf1423a21eb04
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110791"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269038"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření víc instancí prostředků pomocí šablon Resource Manageru
 
@@ -32,8 +32,6 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -122,6 +120,8 @@ Další informace o vytvoření více instancí najdete v tématu [Nasazení ví
 
 Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) v rychlém startu pro Visual Studio Code.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Chcete-li vypsat všechny tři účty úložiště, vynechejte --název parametru:
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -132,8 +132,6 @@ az storage account list --resource-group $resourceGroupName
 ```
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

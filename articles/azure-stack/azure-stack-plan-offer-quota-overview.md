@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2018
+ms.date: 02/13/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 10/12/2018
-ms.openlocfilehash: 76a26cf46ea95dca31be37f60aa3af32b1a22232
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: fba5c66f3006de6b65b2db27187449201d40250e
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978302"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269701"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Přehled plánů, nabídek, kvót a předplatných
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-[Azure Stack](azure-stack-poc.md) umožňuje poskytovat celou řadu služeb, jako jsou virtuální počítače, databáze systému SQL Server, SharePoint, Exchange a dokonce i [položky Azure Marketplace](azure-stack-marketplace-azure-items.md). Jako operátory Azure stacku konfigurace a poskytování těchto služeb ve službě Azure Stack pomocí plánů, nabídek a kvót.
+[Azure Stack](azure-stack-poc.md) vám umožní poskytovat celou řadu služeb, jako jsou virtuální počítače, databáze systému SQL Server, SharePoint, Exchange a dokonce i [položky Azure Marketplace](azure-stack-marketplace-azure-items.md). Jako operátory Azure stacku konfigurace a poskytování těchto služeb ve službě Azure Stack pomocí plánů, nabídek a kvót.
 
 Nabídky obsahovat jeden nebo více plánů a každý plán obsahuje jednu nebo víc služeb. Vytváření plánů a jejich sloučením do různých nabídek, můžete spravovat:
 
@@ -76,7 +76,7 @@ Pokud jste [vytvořte nabídku](azure-stack-create-offer.md), musí obsahovat as
 
 ## <a name="subscriptions"></a>Předplatná
 
-Předplatné je, jak uživatelé přistupovat k vaší nabídky. Pokud jste operátory Azure stacku pro poskytovatele služeb, uživatelé (tenantů) koupit služby prostřednictvím přihlášení odběru na vaše nabídky. Pokud jste operátory Azure stacku v organizaci, uživatelé (zaměstnanci) může přihlásit k službám, které nabízejí bez nutnosti platit.
+Předplatné je, jak uživatelé přistupovat k vaší nabídky. Pokud operátory Azure stacku pro poskytovatele služeb, uživatelé (tenantů) koupit služby prostřednictvím přihlášení odběru na vaše nabídky. Pokud jste operátory Azure stacku v organizaci, uživatelé (zaměstnanci) může přihlásit k službám, které nabízejí bez nutnosti platit.
 
 Každá kombinace uživatele, jejichž nabídka je jedinečný předplatné. Uživatel může mít předplatné více nabídek, ale každé předplatné se vztahuje pouze na jednu nabídku. Plánů, nabídek a kvót pouze použít na jedinečných předplatné – nemohou být sdíleny mezi předplatnými. Každý prostředek, který uživatel vytvoří je přidružená k jednomu předplatnému.
 

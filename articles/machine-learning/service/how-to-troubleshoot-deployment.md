@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 83ee548befdc7ef0a4e7ed2d4b4e61b42a217f12
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247064"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267135"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Řešení potíží s nasazením služby AKS a ACI Azure Machine Learning
 
@@ -196,12 +196,15 @@ $ docker run -p 8000:5001 <image_id>
 Často v `init()` funkce v hodnoticí skript `Model.get_model_path()` je funkce volaná k vyhledání modelu soubor nebo složku modelu souborů v kontejneru. To je často příčiny selhání, pokud model soubor nebo složku nelze nalézt. Nejjednodušší způsob, jak ladění této chyby je spustit níže uvedeného kódu Pythonu v prostředí kontejneru:
 
 ```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
 from azureml.core.model import Model
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
 To by vytiskne místní cestu (vzhledem k `/var/azureml-app`) v kontejneru, kde se očekává hodnoticí skript k vyhledání souboru modelu nebo složky. Potom můžete ověřit, pokud soubor nebo složka jsou skutečně kde se očekává se.
 
+Nastavení úrovně protokolování ladění může poskytnout příčina dodatečné informace k přihlášení, které mohou být užitečné při identifikaci selhání.
 
 ## <a name="function-fails-runinputdata"></a>Selže funkce: run(input_data)
 Pokud úspěšně nasazení služby, ale jeho dojde k chybě při odesílání dat na bodovací koncový bod, můžete přidat chyby zachytávání příkaz v vaše `run(input_data)` fungovat tak, že místo toho vrátí podrobnou chybovou zprávu. Příklad:

@@ -9,48 +9,34 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
-ms.date: 10/04/2016
-ms.openlocfilehash: fc3a92aaf13f13682cfc56333618436ffe3d65ef
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/12/2019
+ms.openlocfilehash: a6945ac7bfb750916e229ae04376f895f2b3d506
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493367"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267264"
 ---
 # <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Vytváření koncových bodů pro nasazené webové služby Azure Machine Learning Studio
+
 > [!NOTE]
->  Toto téma popisuje postupy aplikovatelné **Classic** Machine Learning webové služby.
-> 
-> 
+> Toto téma popisuje postupy aplikovatelné **Classic** Machine Learning webové služby.
 
-Při vytváření webové služby, které prodáváte blíž k vašim zákazníkům musíte poskytovat trénované modely pro jednotlivé zákazníky, které jsou stále spojeny do experimentu, ze kterého byla vytvořena webová služba. Kromě toho všechny aktualizace do experimentu bude použito selektivní do koncového bodu bez přepsání přizpůsobení.
-
-K tomu Azure Machine Learning Studio můžete vytvořit několik koncových bodů pro nasazenou webovou službu. Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované. Každý koncový bod je jedinečnou adresu URL a autorizačního klíče, které můžete distribuovat zákazníkům.
-
-
+Po nasazení webové služby je pro tuto službu vytvořen koncový bod. Výchozí koncový bod je možné volat pomocí klíče rozhraní API. Můžete přidat další koncové body s vlastními klíči z portálu webových služeb.
+Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované. Každý koncový bod je jedinečnou adresu URL pomocí autorizačního klíče, které můžete distribuovat zákazníkům.
 
 ## <a name="adding-endpoints-to-a-web-service"></a>Přidání koncových bodů webové služby
-Existují dva způsoby, jak přidat koncový bod webové služby.
 
-* Prostřednictvím kódu programu
-* Na portálu Azure Machine Learning Web Services
-
-Po vytvoření koncového bodu můžete využívat přes synchronního rozhraní API, rozhraní API pro dávkové a listy aplikace excel. Kromě přidání koncových bodů prostřednictvím tohoto uživatelského rozhraní, můžete také použít rozhraní API pro správu koncový bod programově přidat koncové body.
+Přidání koncového bodu webové služby pomocí portálu Azure Machine Learning Web Services. Po vytvoření koncového bodu můžete využívat přes synchronního rozhraní API, rozhraní API pro dávkové a listy aplikace excel.
 
 > [!NOTE]
 > Pokud jste přidali další koncové body webové služby, nelze odstranit výchozí koncový bod.
-> 
-> 
 
-## <a name="adding-an-endpoint-programmatically"></a>Přidání koncového bodu prostřednictvím kódu programu
-Můžete přidat koncový bod webové služby prostřednictvím kódu programu pomocí [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) ukázkový kód.
-
-## <a name="adding-an-endpoint-using-the-azure-machine-learning-web-services-portal"></a>Přidání koncového bodu pomocí portálu Azure Machine Learning Web Services
 1. V nástroji Machine Learning Studio v levém navigačním sloupci klikněte na webové služby.
 2. V dolní části řídicího panelu webové služby, klikněte na tlačítko **spravovat koncové body**. Na portálu Azure Machine Learning Web Services se otevře na stránce koncové body pro webové služby.
 3. Klikněte na možnost **Nové**.
 4. Zadejte název a popis pro nový koncový bod. Názvy koncových bodů musí být 24 znaků nebo méně délku a musí být tvořen malá písmena a číslice. Vyberte úroveň protokolování a povolení ukázková data. Další informace o protokolování naleznete v tématu [povolení protokolování pro Machine Learning Web services](web-services-logging.md).
 
 ## <a name="next-steps"></a>Další postup
-[Jak využívat Azure Machine Learning webové služby](consume-web-services.md).
 
+[Jak využívat Azure Machine Learning webové služby](consume-web-services.md).

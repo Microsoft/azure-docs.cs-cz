@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 0073427028d20ab969b8d0135b1c831d7fdf8c73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b821c5cfa0dd9ea605d0d0a73e0b98a64a7502b7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191961"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268647"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Spuštění a zastavení Azure Stack Development Kit (ASDK)
 Není doporučeno jednoduše Restartujte hostitelský počítač ASDK. Místo toho by měla podle postupů v tomto článku správně vypne a restartuje ASDK služby. 
@@ -29,7 +29,7 @@ Není doporučeno jednoduše Restartujte hostitelský počítač ASDK. Místo to
 ## <a name="stop-azure-stack"></a>Zastavení služby Azure Stack 
 Vypnout správně ASDK hostitelského počítače a služby Azure stacku, použijte následující příkazy Powershellu:
 
-1. Přihlaste se jako AzureStack\CloudAdmin na hostitelském počítači ASDK.
+1. Přihlaste se jako AzureStack\AzureStackAdmin na hostitelském počítači ASDK.
 2. Otevřete PowerShell jako správce (ne prostředí PowerShell ISE).
 3. Spusťte následující příkazy k vytvoření relace privileged koncový bod (období): 
 
@@ -49,7 +49,7 @@ ASDK služby by měl spustit automaticky při spuštění v hostitelském počí
 Bez ohledu na to, jak byl ASDK vypnutý používejte následující postup ověření, že všechny služby Azure Stack spuštěn a plně funkční po hostitelský počítač je zapnutý: 
 
 1. Zapnutí ASDK hostitelský počítač. 
-2. Přihlaste se jako AzureStack\CloudAdmin na hostitelském počítači ASDK.
+2. Přihlaste se jako AzureStack\AzureStackAdmin na hostitelském počítači ASDK.
 3. Otevřete PowerShell jako správce (ne prostředí PowerShell ISE).
 4. Spusťte následující příkazy k vytvoření relace privileged koncový bod (období):
 
@@ -68,7 +68,7 @@ Další informace o doporučených postupů řádně vypnout a restartovat služ
 ## <a name="troubleshoot-startup-and-shutdown"></a>Řešení potíží s spuštění a vypnutí 
 Pokud během dvou hodin po zapnutí ASDK hostitelský počítač není úspěšně spustit služby Azure Stack, proveďte tyto kroky:
 
-1. Přihlaste se jako AzureStack\CloudAdmin na hostitelském počítači ASDK.
+1. Přihlaste se jako AzureStack\AzureStackAdmin na hostitelském počítači ASDK.
 2. Otevřete PowerShell jako správce (ne prostředí PowerShell ISE).
 3. Spusťte následující příkazy k vytvoření relace privileged koncový bod (období):
 

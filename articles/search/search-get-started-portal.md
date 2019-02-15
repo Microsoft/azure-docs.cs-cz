@@ -1,21 +1,21 @@
 ---
 title: Rychlý úvodní kurz indexování a dotazování pomocí webu Azure portal – Azure Search
-description: V tomto kurzu rychlý start pomocí webu Azure portal a integrované ukázková data k vytvoření indexu ve službě Azure Search. Prozkoumejte fulltextové vyhledávání, filtry, omezující vlastnosti, vyhledávání přibližných shod, geografické vyhledávání a další funkce.
+description: Zjistěte, jak sestavit a dotazování prvního indexu služby Azure Search pomocí předdefinovaných ukázkových dat a Průvodce importem dat na webu Azure Portal.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 53be1180f074c075ed2ca2d544b9b164a3a1bdd6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991306"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270330"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Rychlý start: Integrované nástroje portálu použijte pro import Azure Search, indexování a dotazy
 
@@ -94,15 +94,17 @@ Pole mají datové typy a atributy. Zaškrtávací políčka v horní části js
 
 Požadavky na úložiště v důsledku výběru neliší. Pokud nastavíte například **Retrievable** atribut podle více polí, požadavky na nepřejdou do úložiště.
 
-Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifikátory jako základ pro klíčové pole. Řetězce mají atributy Retrievable a Searchable (zobrazitelné a prohledávatelné). Celá čísla mají atributy Retrievable, Filterable, Sortable a Facetable (zobrazitelné, filtrovatelné, seřaditelné a kategorizovatelné).
+Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifikátory jako základ pro klíčové pole. *Řetězce* jsou atributy retrievable a searchable **Retrievable** a **Searchable**. *Celá čísla* jsou atributy retrievable a searchable **Retrievable**, **Filterable**, **Sortable**, a **Facetable**.
 
-1. Přijměte všechny výchozí hodnoty.
+1. Přijměte výchozí hodnoty. 
 
-  ![Vytvořený index realestate](media/search-get-started-portal/realestateindex2.png)
+   Pokud znovu spustíte Průvodce pomocí existujícího zdroje dat realestate podruhé, index nebudou nakonfigurována s výchozí atributy. Budete muset ručně vybrat atributy u budoucích importů.
+
+   ![Vytvořený index realestate](media/search-get-started-portal/realestateindex2.png)
 
 2. Přejít na další stránku.
 
-  ![Další stránka vytvořit indexer](media/search-get-started-portal/next-button-create-indexer.png)
+   ![Další stránka vytvořit indexer](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>Krok 4: Konfigurace indexeru
 

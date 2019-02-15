@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9918dd55181eb82257f23f8974159ed5e762fedd
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016490"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268072"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformovat data spuštěním skriptů U-SQL v Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-usql-activity.md)
 > * [Aktuální verze](transform-data-using-data-lake-analytics.md)
 
@@ -38,8 +38,8 @@ Následující tabulka obsahuje popis obecných vlastností použitých v defini
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | Vlastnost type by měla být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
 | **accountName**          | Název účtu Azure Data Lake Analytics.  | Ano                                      |
-| **dataLakeAnalyticsUri** | Identifikátor URI, Azure Data Lake Analytics.           | Ne                                       |
-| **ID předplatného**       | ID předplatného Azure                    | Ne                                       |
+| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI.           | Ne                                       |
+| **subscriptionId**       | ID předplatného Azure                    | Ne                                       |
 | **resourceGroupName**    | Název skupiny prostředků Azure                | Ne                                       |
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
@@ -123,15 +123,15 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | description         | Text popisující, jakým způsobem aktivita naloží.  | Ne       |
 | type                | Aktivita Data Lake Analytics U-SQL je typ aktivity **DataLakeAnalyticsU SQL**. | Ano      |
 | linkedServiceName   | Propojená služba Azure Data Lake Analytics. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.  |Ano       |
-| ScriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru je velká a malá písmena. | Ano      |
+| scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru je velká a malá písmena. | Ano      |
 | scriptLinkedService | Propojené služby, která odkazuje **Azure Data Lake Store** nebo **služby Azure Storage** , který obsahuje skript do služby data factory | Ano      |
-| z degreeOfParallelism | Maximální počet uzlů najednou použitý ke spuštění úlohy. | Ne       |
+| degreeOfParallelism | Maximální počet uzlů najednou použitý ke spuštění úlohy. | Ne       |
 | priorita            | Určuje, které z uložených ve frontě úloh by měl být vybrané ke spuštění první. Čím nižší je číslo, tím vyšší je priorita. | Ne       |
 | parameters          | Parametry se mají předat do skriptu U-SQL.    | Ne       |
 | runtimeVersion      | Verze modulu runtime U-SQL stroje používat. | Ne       |
-| Vlastnost CompilationMode     | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot: **Sémantické:** Pouze provádění sémantického kontroly a kontrol správnosti nezbytné **úplné:** Provést úplná kompilace, jako je kontrola syntaxe, optimalizace, generování kódu, atd., **SingleBox:** Proveďte úplná kompilace s TargetType nastavení SingleBox. Pokud nezadáte hodnotu pro tuto vlastnost, server určuje režim kompilace optimální. | Ne |
+| compilationMode     | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot: **Sémantické:** Pouze provádění sémantického kontroly a kontrol správnosti nezbytné **úplné:** Provést úplná kompilace, jako je kontrola syntaxe, optimalizace, generování kódu, atd., **SingleBox:** Proveďte úplná kompilace s TargetType nastavení SingleBox. Pokud nezadáte hodnotu pro tuto vlastnost, server určuje režim kompilace optimální. | Ne |
 
-Data Factory odešle viz [definice skriptu SearchLogProcessing.txt](#sample-u-sql-script) pro definici skriptu. 
+Zobrazit [SearchLogProcessing.txt](#sample-u-sql-script) pro definici skriptu. 
 
 ## <a name="sample-u-sql-script"></a>Ukázkový skript U-SQL
 

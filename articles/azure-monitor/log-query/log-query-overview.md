@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 9aff955a2ae0f40785036c2fee22804785e6526a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c428372868e3d3fac58bc851de8c59ad01d1d8f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002265"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269956"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analyzuje data protokolů ve službě Azure Monitor
 
-Protokol data shromážděná službou Azure Monitor se ukládají v pracovním prostoru Log Analytics, která je založena na [Průzkumník dat Azure](/azure/data-explorer). Shromažďuje telemetrická data z různých zdrojů a používá [dotazovací jazyk v Průzkumníku dat](/azure/kusto/query) načíst a analyzovat data.
+Protokol data shromážděná službou Azure Monitor se ukládají v pracovním prostoru Log Analytics, která je založena na [Průzkumník dat Azure](/azure/data-explorer). Shromažďuje telemetrická data z různých zdrojů a používá [Kusto dotazovací jazyk](/azure/kusto/query) používáno Průzkumníkem Data načíst a analyzovat data.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a name="log-queries"></a>Protokol dotazů
+## <a name="log-queries"></a>Dotazy na protokoly
 
 Vyžadujete protokol dotaz pro načtení všechna data protokolů ze služby Azure Monitor.  Ať už se [analýza dat na portálu](portals.md), [konfigurace pravidla upozornění](../platform/alerts-metric.md) upozornit určitou podmínku, nebo při načítání dat pomocí [rozhraní API služby Azure Monitor protokoly](https://dev.loganalytics.io/) , se pomocí dotazu určit data, která chcete.  Tento článek popisuje použití dotazů na protokoly ve službě Azure Monitor a poskytuje koncepty, které je třeba porozumět před vytvořením jedné.
 
@@ -47,7 +47,7 @@ Různé způsoby, že budete používat protokol dotazů ve službě Azure Monit
 ![Prohledávání protokolů](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>Napsat dotaz
-Azure Monitor používá [verze dotazovacího jazyka Průzkumník dat](get-started-queries.md) načíst a analyzovat data protokolů v mnoha různými způsoby.  Budete obvykle začínat základní dotazy a potom pokroku používat pokročilejší funkce rostoucí vašim požadavkům.
+Azure Monitor používá [verzi jazyka dotaz Kusto](get-started-queries.md) načíst a analyzovat data protokolů v mnoha různými způsoby.  Budete obvykle začínat základní dotazy a potom pokroku používat pokročilejší funkce rostoucí vašim požadavkům.
 
 Základní struktura dotazu je zdrojová tabulka, za nímž následuje řadu operátory, které jsou oddělené znakem přesměrování `|`.  Můžete zřetězit dohromady víc operátorů Upřesnit tak data a provádět pokročilé funkce.
 

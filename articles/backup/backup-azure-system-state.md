@@ -9,17 +9,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: a28e3fb18f2c0b65557034e388d08918c622b8f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14de0f632584ff5fb1a6b4395298e9cecfe455e6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255860"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268719"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Zálohování stavu systému Windows v nasazení podle modelu Resource Manager
 Tento článek vysvětluje, jak zálohování stavu systému Windows Server do Azure. Tento kurz vás má provést základy.
 
-Chcete-li se dozvědět více o Azure Backup, přečtěte si tento [přehled](backup-introduction-to-azure-backup.md).
+Chcete-li se dozvědět více o Azure Backup, přečtěte si tento [přehled](backup-overview.md).
 
 Pokud předplatné Azure nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/), který vám umožní přístup ke službám Azure.
 
@@ -131,7 +131,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte pro zálohování stavu syst�
 
     ![dokončené stahování přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 > [!NOTE]
-> Přihlašovací údaje trezoru musí být uložen pouze do umístění, je lokální vzhledem k systému Windows Server, na které máte v úmyslu používat agenta. 
+> Přihlašovací údaje trezoru musí být uložen pouze do umístění, je lokální vzhledem k systému Windows Server, na které máte v úmyslu používat agenta.
 >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
@@ -163,7 +163,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte pro zálohování stavu syst�
 
 Agent je nyní nainstalovaný a váš počítač je registrovaný k trezoru. Jste připraveni nakonfigurovat a naplánovat zálohování.
 
-## <a name="back-up-windows-server-system-state"></a>Zálohování stavu systému Windows Server 
+## <a name="back-up-windows-server-system-state"></a>Zálohování stavu systému Windows Server
 Prvotní záloha zahrnuje dvě úlohy:
 
 * Naplánování zálohování
@@ -194,7 +194,7 @@ K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery
 
 6. Klikněte na **Další**.
 
-7. Vyberte požadovanou četnost zálohování a zásadu uchovávání informací pro své zálohy stavu systému na následujících stránkách. 
+7. Vyberte požadovanou četnost zálohování a zásadu uchovávání informací pro své zálohy stavu systému na následujících stránkách.
 
 8. Na stránce Potvrzení zkontrolujte informace a poté klikněte na **Dokončit**.
 

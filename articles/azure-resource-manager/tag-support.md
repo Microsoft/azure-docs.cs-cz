@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246047"
+ms.locfileid: "56270381"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md).
@@ -1132,7 +1132,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | servers/tdeCertificates | Ne | 
 
 > [!NOTE]
-> Hlavní databáze nepodporuje značky, ale další databáze, včetně databází datového skladu, podporují značky.
+> Hlavní databáze nepodporuje značky, ale další databáze, včetně databází Azure SQL Data Warehouse, podporují značky. Databáze Azure SQL Data Warehouse, musí být v aktivní (není pozastavená) stavu.
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

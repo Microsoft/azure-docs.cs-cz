@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700974"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301787"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci hostování pro oficiální úlohy Spojené království
 
@@ -29,10 +29,10 @@ Tento podrobný plán zkontroloval podle Spojené království národní Kyberne
 
 Tato architektura využívá Azure [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) součásti poskytovat prostředí, které umožňuje zákazníkům řešit náklady a složitost nákupu softwarových licencí, podpůrné aplikační infrastruktury správy a middlewaru nebo nástrojů pro vývoj a další prostředky. Zákazníci spravovat aplikace a služby, které vytvářejí, zaměřuje se na dodávání přidané hodnoty, zatímco je Microsoft Azure spravuje další prostředky Azure jako jsou virtuální počítače, úložiště a sítě, uvedení více [dělení odpovědnosti](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) pro správu infrastruktury do platformy Azure. [Služba Azure App Services](https://azure.microsoft.com/services/app-service/) nabízí automatické škálování, vysokou dostupnost, podporuje Windows a Linux a umožňuje automatizované nasazení z Githubu, službě Azure DevOps nebo v libovolném adresáři Gitu jako výchozí služby. Pomocí App Services, umožňuje vývojářům soustředit se na dodávání přidané hodnoty bez režie na správu infrastruktury. Je možné k vytvoření nové webové aplikace Java, PHP, Node.js, Python, HTML nebo C# úplně nové, nebo také k migraci existujícího cloudu nebo na místní webové aplikace do služby Azure App Services (i když je důkladné kvůli opatrnost a testování pro potvrzení, výkon se vyžaduje).
 
-Tento podrobný plán se zaměřuje na zřizování bezpečný základ [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) webové rozhraní pro uživatele public a také back office. Scénáře návrhu podrobného plánu bere v úvahu, že používání Azure hostované webové služby, kde veřejné uživatelů může bezpečně posílat, zobrazit a spravovat citlivých dat; také, že operátor back office nebo státní správy můžete bezpečně zpracovávat citlivá data, která má veřejný uživatel odeslal. Případy použití pro tento scénář může obsahovat:
+Tento podrobný plán se zaměřuje na zřizování bezpečný základ [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) webové rozhraní pro veřejné a taky administrativní uživatelé. Scénáře návrhu podrobného plánu bere v úvahu, že používání Azure hostované webové služby, kde veřejné uživatelů může bezpečně posílat, zobrazit a spravovat citlivých dat; také, že operátor back office nebo státní správy můžete bezpečně zpracovávat citlivá data, která má veřejný uživatel odeslal. Případy použití pro tento scénář může obsahovat:
 
 - Uživatel odesílá vrácení daně, operátorem government zpracování příspěvkem;
-- Uživatel žádající o službu prostřednictvím webovou aplikaci s uživatelem back office ověřování a poskytování služeb; nebo
+- Uživatel žádající o službu pomocí webové aplikace, jako administrativní uživatel ověřování a poskytování služby nebo
 - Hledání uživatele a zobrazení veřejné domény pomáhají informace týkající se služby státní správy.
 
 Pomocí [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) šablony a skripty rozhraní příkazového řádku Azure, podrobný plán nasadí prostředí, které odpovídá na Spojené království národní Kybernetických zabezpečení centrum (NCSC) 14 [principů zabezpečení cloudu](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) a centru pro zabezpečení Internetu (CIS) [kontrolních mechanismů pro zabezpečení důležitých](https://www.cisecurity.org/critical-controls.cfm). NCSC doporučuje používat jejich principů zabezpečení cloudu zákazníky k vyhodnocení vlastností zabezpečení služby a pro lepší porozumění tomu dělení odpovědnost mezi zákazníkem a dodavateli. Microsoft poskytuje informace pro každý z těchto zásad k lepšímu pochopení dělení zodpovědnosti. Tato architektura a odpovídající šablon Azure Resource Manageru podporují Microsoft – dokument White Paper, [14 ovládací prvky cloudové zabezpečení pro Spojené království cloudu pomocí Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). Tato architektura zkontroloval NCSC a v souladu s Spojené království NCSC 14 principů zabezpečení cloudu, což umožní organizací ve veřejném sektoru pro jejich schopnosti plnit povinnosti dodržování předpisů pomocí cloudové služby na globálně a ve Spojeném království rychlého Cloud Microsoft Azure. Tato šablona nasadí infrastrukturu pro pracovní vytížení. Kód aplikace a podpůrných obchodní vrstvy a datové vrstvy softwaru musí být nainstalované a nakonfigurované zákazníky. Podrobné pokyny jsou k dispozici [tady](https://aka.ms/ukofficial-paaswa-repo/).
@@ -43,7 +43,7 @@ Chcete-li nasadit Tento podrobný plán, je potřeba předplatné Azure. Pokud n
 
 ## <a name="architecture-and-components"></a>Architektura a komponenty
 
-Tento podrobný plán poskytuje řešení v prostředí cloudu Azure, které podporuje UK-OFFICIAL úlohy hostování webové aplikace. Tato architektura přináší zabezpečeném prostředí, které využívá platformu Azure jako schopnosti služeb. V rámci prostředí dvě webové aplikace služby App Service jsou nasazené (jeden pro veřejnost) a jednu pro back office, s vrstvou aplikaci API k poskytování služeb obchodních pro webového front-endu. Azure SQL Database se nasadí jako spravované relační datové úložiště pro aplikaci. Připojení těchto komponent z mimo platformu a mezi všechny tyto součásti se šifrují pomocí protokolu TLS 1.2, aby data v přenosu ochrany osobních údajů, s přístupem k ověření službou Azure Active Directory.
+Tento podrobný plán poskytuje řešení v prostředí cloudu Azure, které podporuje UK-OFFICIAL úlohy hostování webové aplikace. Tato architektura přináší zabezpečeném prostředí, které využívá platformu Azure jako schopnosti služeb. V rámci prostředí dvě webové aplikace služby App Service jsou nasazené (jeden pro veřejnost) a jednu pro administrativní uživatele s vrstvou aplikaci API k poskytování služeb obchodních pro webového front-endu. Azure SQL Database se nasadí jako spravované relační datové úložiště pro aplikaci. Připojení těchto komponent z mimo platformu a mezi všechny tyto součásti se šifrují pomocí protokolu TLS 1.2, aby data v přenosu ochrany osobních údajů, s přístupem k ověření službou Azure Active Directory.
 
 ![PaaS hostování aplikace webu pro Spojené království oficiální úlohy diagram referenční architektury](images/ukofficial-paaswa-architecture.png?raw=true "PaaS hostování aplikace webu pro Spojené království oficiální úlohy diagram referenční architektury")
 
@@ -182,7 +182,7 @@ Podrobné informace o zabezpečení služby Azure Storage najdete v [Průvodci z
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Používá k monitorování živé webové aplikace jej bude automaticky zjišťuje anomálie ve výkonu, analýza výkonu, diagnostikovat problémy a pochopit, jak uživatelé pracují s aplikací. Application Insights se dá nasadit na platformách, včetně .NET, Node.js a J2EE, hostovaný místně nebo v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů.
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Používá k monitorování živé webové aplikace jej bude automaticky zjišťuje anomálie ve výkonu, analýza výkonu, diagnostikovat problémy a pochopit, jak uživatelé pracují s aplikací. Application Insights se dá nasadit na platformách, včetně .NET, Node.js a Java EE hostovaný místně nebo v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů.
 
 #### <a name="application-insights-in-this-blueprint"></a>Application Insights v tomto podrobném plánu
 
@@ -232,7 +232,7 @@ Tři přístupy k dispozici pro nasazení; Jednoduchý "express" [2 rozhraní p�
 1.  Klonovat nebo stáhnout [to](https://aka.ms/ukofficial-paaswa-repo) úložišti GitHub na váš místní pracovní stanici.
 2.  Kontrola [metoda 1: Azure CLI 2 (verze Express)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) a zadané příkazy.
 3.  Kontrola [metoda 1a: Azure CLI 2 (konfigurace nasazení přes argumenty skriptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) a zadané příkazy
-4.  Kontrola [metoda 2: Proces nasazení Azure Portal](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) a spouštět uvedené příkazy
+4.  Kontrola [metoda 2: Proces nasazení webu Azure portal](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) a spouštět uvedené příkazy
 
 ## <a name="guidance-and-recommendations"></a>Pokyny a doporučení
 
@@ -242,7 +242,7 @@ Tři přístupy k dispozici pro nasazení; Jednoduchý "express" [2 rozhraní p�
 
 ### <a name="azure-b2c"></a>Azure B2C
 
-[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) mohou být implementovány jako ovládací prvek umožňuje uživatelům registrovat, vytvoříte identitu a povolení autorizace a řízení pro veřejné webové aplikace přístupu.
+[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) mohou být implementovány jako ovládací prvek, který umožnil uživatelům registrovat, vytvoříte identitu, a povolit autorizace a řízení přístupu pro veřejné webové aplikace.
 
 ## <a name="disclaimer"></a>Právní omezení
 

@@ -1,7 +1,7 @@
 ---
 title: Přidat vlastní analyzátory – Azure Search
 description: Upravte tokenizátory textu a znaku filtry použít v dotazech fulltextového vyhledávání Azure Search.
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,22 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 150510ec09744b1350a93bde4e2a4dcb141867c0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 957c8033efc386d8e8cb13cbed921c597af4f11b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008283"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302076"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Vlastní analyzátory přidat do indexu Azure Search
 
-A *vlastní analyzátor* je kombinace tokenizátor a volitelné filtry, které se používá pro přizpůsobení zpracování v modulu vyhledávání textu zadaného uživatelem. Například můžete vytvořit vlastní analyzátor s *char filtr* před textovými vstupy jsou tokenizovaného odeberte značka jazyka HTML.
+A *vlastní analyzátor* je konkrétní typ [analyzátor textu](search-analyzers.md) , který se skládá z kombinace uživatelem definované existující tokenizátor a volitelné filtry. Díky kombinaci tokenizátory a filtry novými způsoby, můžete přizpůsobit text zpracování k dosažení konkrétních výsledků na vyhledávacím webu. Například můžete vytvořit vlastní analyzátor s *char filtr* před textovými vstupy jsou tokenizovaného odeberte značka jazyka HTML.
+
+ Můžete definovat více vlastní analyzátory postup obměny kombinací filtry, ale každé pole lze použít pouze jeden analyzátor pro indexování analýzy a jeden pro hledání analýzy. Pro ilustraci vypadá analyzátor zákazníka, naleznete v tématu [vlastní analyzátor příklad](search-analyzers.md#Example1).
 
 ## <a name="overview"></a>Přehled
 
- Role [fulltextového vyhledávacího modulu](search-lucene-query-architecture.md), jednoduše řečeno, je pro zpracování a ukládání dokumentů způsobem, který umožňuje efektivní dotazování a načítání. Na vysoké úrovni to všechno se vrátí k extrahování důležité slova z dokumentů, umístit je do indexu a pak pomocí indexu najít dokumenty, které odpovídají slova daný dotaz. Proces extrahování slova z dokumentů a vyhledávací dotazy se nazývá provést lexikální analýzu. Součásti, které provést lexikální analýzu, se nazývají analyzátory.
+ Role [fulltextového vyhledávacího modulu](search-lucene-query-architecture.md), jednoduše řečeno, je pro zpracování a ukládání dokumentů způsobem, který umožňuje efektivní dotazování a načítání. Na vysoké úrovni to všechno se vrátí k extrahování důležité slova z dokumentů, umístit je do indexu a pak pomocí indexu najít dokumenty, které odpovídají slova daný dotaz. Proces extrahování slova z dokumentů a vyhledávací dotazy se nazývá *provést lexikální analýzu*. Součásti, které provést lexikální analýzu se nazývají *analyzátory*.
 
- Ve službě Azure Search, můžete na základě sady předdefinovaných jazykové analyzátory nezávislá v [analyzátory](#AnalyzerTable) uvedené v tabulce a jazyk konkrétní analyzátory [jazykové analyzátory &#40;službu REST API&#41;](index-add-language-analyzers.md). Máte také možnost definovat vlastní vlastní analyzátory.  
+ Ve službě Azure Search, můžete na základě sady předdefinovaných nezávislá na jazykové analyzátory ve službě [analyzátory](#AnalyzerTable) tabulky nebo konkrétní jazykové analyzátory uvedené v [jazykové analyzátory &#40;službu REST API&#41;](index-add-language-analyzers.md). Máte také možnost definovat vlastní vlastní analyzátory.  
 
  Vlastní analyzátor umožňuje vám tak převzít kontrolu nad tímto procesem převodu textu na tokeny indexovanou a prohledávatelné. To je konfigurace uživatelem definované skládající se z jednoho předdefinované tokenizátor, jeden nebo více tokenů filtrů a jeden nebo více filtrů char. Tokenizátor zodpovídá za rozbíjející text do tokenů a token filtry k úpravě tokeny, protože ho vygeneroval tokenizátor. Char filtry se použijí pro Příprava vstupního textu, než je zpracován programovacím modelem tokenizátor. Například filtr char můžete nahradit některé znaky a symboly.
 
@@ -50,22 +52,13 @@ A *vlastní analyzátor* je kombinace tokenizátor a volitelné filtry, které s
 
 -   Skládání ASCII. Přidání standardní ASCII skládání filtr k normalizaci diakritiku jako cos nebo ê v hledané výrazy.  
 
- Můžete definovat více vlastní analyzátory postup obměny kombinací filtry, ale každé pole lze použít pouze jeden analyzátor pro indexování analýzy a jeden pro hledání analýzy.  
-
- Tato stránka obsahuje seznam podporovaných analyzátory, tokenizátory, token filtry a filtry char. Můžete také najít popis změny v definici indexu s příklad použití. Další informace o technologii využít v Azure Search implementaci, najdete v části [balíček souhrnné analýzy (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html). Příklady analyzátor konfigurace najdete v tématu [analyzátory ve službě Azure Search > Příklady](https://docs.microsoft.com/azure/search/search-analyzers#examples).
-
-
-## <a name="default-analyzer"></a>Výchozí analyzátor  
-
-Ve výchozím nastavení, jsou analyzovány prohledávatelná pole ve službě Azure Search [Apache Lucene standardní analyzer (standardní lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) která rozdělí text na prvky, které následují ["Segmentace Unicode Text"](https://unicode.org/reports/tr29/) pravidla. Kromě toho standardní analyzátor převede všechny znaky do svého formuláře malými písmeny. Indexovaných dokumentů a hledané termíny procházet analýzy při indexování a zpracování dotazů.  
-
- Používá se automaticky na každý prohledávatelném poli explicitně ho nepřepíšete s jiný analyzátor v rámci definice pole. Alternativní analyzátory můžou být vlastního analyzátoru nebo různých předdefinovaných analyzátor ze seznamu dostupných [analyzátory](#AnalyzerTable) níže.
+ Tato stránka obsahuje seznam podporovaných analyzátory, tokenizátory, token filtry a filtry char. Můžete také najít popis změny v definici indexu s příklad použití. Další informace o technologii využít v Azure Search implementaci, najdete v části [balíček souhrnné analýzy (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html). Příklady analyzátor konfigurace najdete v tématu [analyzátory ve službě Azure Search přidat](search-analyzers.md#examples).
 
 ## <a name="validation-rules"></a>Ověřovací pravidla  
  Názvy analyzátorů, tokenizátory, token filtry a filtry znak musí být jedinečné a nesmí být stejný jako některý z předdefinovaných analyzátory, tokenizátory, token filtry nebo char filtry. Zobrazit [odkaz na vlastnost](#PropertyReference) pro názvy již používán.
 
-## <a name="create-a-custom-analyzer"></a>Vytvoření vlastního analyzátoru
- Můžete definovat vlastní analyzátory v okamžiku vytvoření indexu. Syntaxe pro určení vlastního analyzátoru je popsané v této části. Vám může se také seznámit se syntaxí kontrolou ukázková definice v [analyzátory ve službě Azure Search](https://docs.microsoft.com/azure/search/search-analyzers#examples).  
+## <a name="create-custom-analyzers"></a>Vytvořit vlastní analyzátory
+ Můžete definovat vlastní analyzátory v okamžiku vytvoření indexu. Syntaxe pro určení vlastního analyzátoru je popsané v této části. Vám může se také seznámit se syntaxí kontrolou ukázková definice v [analyzátory ve službě Azure Search přidat](search-analyzers.md#examples).  
 
  Definice rozhraní analyzer obsahuje název, typ, jeden nebo více filtrů char, maximálně jeden tokenizátor a jeden nebo více tokenů filtrů pro zpracování Tokenizace po. Char křížového jsou aplikována před Tokenizace. Token filtry a char filtry se použijí zleva doprava.
 
@@ -148,12 +141,13 @@ Analyzátor definic je součástí větší index. Zobrazit [vytvořit Index roz
 Definice pro filtry char, tokenizátory a token filtry jsou přidány do indexu pouze v případě, že nastavíte vlastní možnosti. Chcete-li použít existující filtr nebo tokenizátor jako-se, zadejte jeho název v definici analyzátor.
 
 <a name="Testing custom analyzers"></a>
-## <a name="test-a-custom-analyzer"></a>Testování vlastního analyzátoru
+
+## <a name="test-custom-analyzers"></a>Testování vlastní analyzátory
 
 Můžete použít **Analyzéru testu operace** v [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) zobrazíte jak analyzátor rozdělí zadaný text do tokenů.
 
 **Požadavek**
-~~~~
+```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
     api-key: [admin key]
@@ -162,9 +156,9 @@ Můžete použít **Analyzéru testu operace** v [rozhraní REST API](https://do
      "analyzer":"my_analyzer",
      "text": "Vis-à-vis means Opposite"
   }
-~~~~
+```
 **Odpověď**
-~~~~
+```
   {
     "tokens": [
       {
@@ -193,21 +187,21 @@ Můžete použít **Analyzéru testu operace** v [rozhraní REST API](https://do
       }
     ]
   }
- ~~~~
+```
 
- ## <a name="update-a-custom-analyzer"></a>Aktualizovat vlastní analyzátor
+ ## <a name="update-custom-analyzers"></a>Aktualizovat vlastní analyzátory
 
 Po definování analyzátor, tokenizátor, token filtru nebo char filtru nelze změnit. Nové značky mohou být přidány do existujícího indexu pouze v případě, `allowIndexDowntime` příznak je nastaven na true v žádosti o aktualizaci indexu:
 
-~~~~
+```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
-~~~~
+```
 
 Tato operace přebírá pro alespoň několik sekund, způsobí selhání žádostí indexování a dotazování indexu v režimu offline. Výkon a zápis dostupnost indexu může být narušena několik minut po index je aktualizované nebo delší dobu velmi velký indexů, ale tyto efekty jsou dočasné a nakonec na své vlastní řešení.
 
  <a name="ReferenceIndexAttributes"></a>
 
-## <a name="index-attribute-reference"></a>Odkaz na atribut indexu
+## <a name="analyzer-reference"></a>Odkaz analyzátoru
 
 V tabulce dole najdete seznam vlastností konfigurace analyzátory, tokenizátory, token filtry a char oddílu filtrů definici indexu. Struktura analyzátoru, tokenizátor nebo filtru v indexu se skládá z těchto atributů. Informace o přiřazení hodnoty, najdete v článku [odkaz na vlastnost](#PropertyReference).
 
@@ -390,5 +384,5 @@ V následující tabulce jsou propojeny token filtry, které jsou implementován
 
 ## <a name="see-also"></a>Další informace najdete v tématech  
  [Rozhraní REST služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/)   
- [Analyzátory ve službě Azure Search > Příklady](https://docs.microsoft.com/azure/search/search-analyzers#examples)    
+ [Analyzátory ve službě Azure Search > Příklady](search-analyzers.md#examples)    
  [Vytvořit Index &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

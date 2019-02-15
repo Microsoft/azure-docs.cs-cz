@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: 837effaa2b699d51a420609415396a11a0d9892c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 818aa63ced56d7cf382536f10bb6150199ab74e9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113205"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268936"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-powershell"></a>Nasazení privátní šablony Resource Manageru s tokenem SAS a Azure Powershellu
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Pokud vaše šablona se nachází v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdíleného přístupového podpisu (SAS). Toto téma vysvětluje, jak pomocí Azure Powershellu pomocí šablon Resource Manageru během nasazení zadat SAS token. 
 

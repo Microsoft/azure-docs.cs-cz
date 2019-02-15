@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 565e33748d3a39c61c75313188980c51d5bea5b9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6c4a7239110e0d3e712c97007ecc858f104811cc
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203892"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301685"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 Tento dokument vás provede procesem instalace a konfigurace agentů služby Azure AD Connect Health. Agenty si můžete stáhnout [tady](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
@@ -36,7 +36,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 | Odchozí připojení ke koncovým bodům služby Azure | Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud je odchozí připojení blokováno pomocí bran firewall, nezapomeňte do seznamu povolených výjimek přidat následující koncové body: Přečtěte si téma [Odchozí připojení pro koncové body](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints). |
 |Odchozí připojení na základě IP adres | Informace o filtrování podle IP adres v branách firewall najdete v článku [Rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).|
 | Kontrola protokolu SSL je pro odchozí připojení filtrovaná nebo zakázaná | Krok registrace agenta nebo operace nahrávání dat můžou selhat, pokud je na síťové vrstvě povolená kontrola nebo ukončování protokolu SSL pro odchozí připojení. Další informace o [způsobu nastavení kontroly protokolu SSL](https://technet.microsoft.com/library/ee796230.aspx) |
-| Porty brány firewall na serveru se spuštěným agentem |Agent vyžaduje, aby následující porty brány firewall byly otevřené. Je to proto, aby agent mohl komunikovat s koncovými body služby Azure AD Health.<br /><br /><li>Port 443 protokolu TCP</li><li>Port 5671 protokolu TCP</li> <br />Další informace o [povolení portů brány firewall](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
+| Porty brány firewall na serveru se spuštěným agentem |Agent vyžaduje, aby následující porty brány firewall byly otevřené. Je to proto, aby agent mohl komunikovat s koncovými body služby Azure AD Health.<br /><br /><li>Port 443 protokolu TCP</li><li>Port 5671 protokolu TCP</li> <br />Všimněte si, že port 5671 se už nevyžaduje pro nejnovější verzi agenta. Upgradujte na nejnovější verzi, vyžaduje se jenom port 443. Další informace o [povolení portů brány firewall](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 | Pokud je povoleno rozšířené zabezpečení Internet Exploreru, povolte následující weby |Pokud je povoleno rozšířené zabezpečení Internet Exploreru, musí být na serveru, na který budete agenta instalovat, povoleny následující weby.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Federační server vaší organizace, který je pro službu Azure Active Directory důvěryhodný. Příklad: https:\//sts.contoso.com</li> Další informace o [způsobu konfigurace aplikace IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
 | Ujistěte se, že je nainstalovaný PowerShell v4.0 nebo novější | <li>Windows Server 2008 R2 se dodává s PowerShellem v2.0, který pro agenta není dostačující. Aktualizujte PowerShell, jak je popsáno níže v části [Instalace agenta na servery se systémem Windows Server 2008 R2](#agent-installation-on-windows-server-2008-r2-servers).</li><li>Windows Server 2012 se dodává s PowerShellem v3.0, který pro agenta není dostačující.  [Aktualizujte](https://www.microsoft.com/download/details.aspx?id=40855) Windows Management Framework.</li><li>Windows Server 2012 R2 a novější se dodávají s dostatečně aktuální verzí PowerShellu.</li>|
 |Zákaz FIPS|Agenti Azure AD Connect Health nepodporují FIPS.|

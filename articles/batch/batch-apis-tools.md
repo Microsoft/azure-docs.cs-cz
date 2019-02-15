@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0236947e578d12ff24e5993d253ec5597c53272a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2a9c0cf36459a2d23b8af8f69937ab9ded7f9c04
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819820"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301498"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Přehled rozhraní API a nástrojů služby Batch
 
@@ -69,7 +69,8 @@ Tady je několik dalších nástrojů, které můžou být užitečné při sest
 
 * [Azure portal][portal]: Můžete vytvářet, monitorovat a odstraňovat fondy, úlohy a úlohy na webu Azure Portal. Zatímco spouštíte úlohy, můžete zobrazit informace o stavu těchto a dalších prostředků, a dokonce i stahovat soubory z výpočetních uzlů ve fondech. Například při řešení potíží si můžete stáhnout soubor `stderr.txt` neúspěšné úlohy. Můžete si také stáhnout soubory vzdálené plochy (RDP), které lze použít k přihlášení do výpočetních uzlů.
 * [Azure Batch Explorer][batch_labs]: (Dříve se označovaly jako BatchLabs) Průzkumníka služby batch je zdarma, bohatými funkcemi, samostatný klientský nástroj umožňující vytvářet, ladit a monitorovat aplikace Azure Batch. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows.
-* [Microsoft Azure Storage Exploreru][storage_explorer]: Ačkoliv se nejedná vyloženě o nástroj služby Azure Batch Storage Explorer je dalším užitečným nástrojem při vývoji a ladění řešení Batch.
+* [Služba Azure Batch loděnice](https://github.com/Azure/batch-shipyard): Batch loděnice je nástroj, který pomůže zřízení, spouštění a sledování založených na kontejnerech dávkové zpracování úloh a úloh HPC v Azure Batch.
+* [Průzkumník služby Azure Storage][storage_explorer]: Ačkoliv se nejedná vyloženě o nástroj služby Azure Batch Storage Explorer je dalším užitečným nástrojem při vývoji a ladění řešení Batch.
 
 ## <a name="additional-resources"></a>Další materiály
 
@@ -81,7 +82,6 @@ Tady je několik dalších nástrojů, které můžou být užitečné při sest
 * Přečtěte si téma [Přehled funkcí Batch pro vývojáře](batch-api-basics.md), kde jsou základní informace pro každého, kdo se připravuje použít Batch. Článek obsahuje podrobné informace o prostředcích služby Batch, jako jsou fondy, uzly a úlohy, a mnoha funkcích rozhraní API, které můžete použít při vytváření aplikace Batch.
 * V kapitole [Začínáme s knihovnou Azure Batch pro .NET](tutorial-parallel-dotnet.md) zjistíte, jak použít C# a knihovnu Batch .NET ke spuštění jednoduché úlohy s použitím běžného pracovního postupu služby Batch. K dispozici jsou také verze tohoto kurzu pro [Python](tutorial-parallel-python.md) a [Node.js](batch-nodejs-get-started.md).
 * Stáhněte si [ukázky kódu na GitHubu][github_samples] a podívejte se, jak můžou jazyk C# i Python komunikovat přes rozhraní se službou Batch při plánování a zpracování ukázkových úloh.
-
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: /java/api/overview/azure/batch

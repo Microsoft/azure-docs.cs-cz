@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 282b07a384ac6db5bfbc144ca06440f3a8f01a6a
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713264"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301192"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit odolná služba functions jako WebJobs
 
@@ -208,7 +208,7 @@ Tato část obsahuje základní informace o tom, jak spustit [ukázkový projekt
 
 1. Nasaďte jako Webjobu.
 
-## <a name="webjobs-sdk-3x"></a>Sada WebJobs SDK 3.x
+## <a name="webjobs-sdk-3x"></a>WebJobs SDK 3.x
 
 Hlavní změny zavedené 3.x je použití .NET Core namísto rozhraní .NET Framework. Vytvoření projektu 3.x pokynů jsou stejné, s následujícími výjimkami:
 

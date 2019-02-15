@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ff2fbf8ddfdd191c72cfdb36a9462076f8dec5b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657293"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301566"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchronní schémata zasílání zpráv a vysoká dostupnost
 
@@ -62,77 +62,10 @@ Ostatní součásti v rámci Azure čas od času může mít problémy se služb
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>Service Bus selhání jednoho subsystému
 S libovolnou aplikací okolností způsobit vnitřní komponenta služby Service Bus nekonzistenci. Když to zjistí služby Service Bus, shromažďuje data z aplikace, které vám pomůže při diagnostice, co se stalo. Jakmile jsou data shromážděna, se aplikace restartuje se vrátit do konzistentního stavu. Tento proces probíhá poměrně rychle a výsledky v entitě uvedené nebudou k dispozici pro až za několik minut, ale typické dolů časy jsou mnohem kratší.
 
-V těchto případech klientské aplikace generuje [System.TimeoutException] [ System.TimeoutException] nebo [MessagingException] [ MessagingException] výjimky. Service Bus obsahuje ke zmírnění tohoto problému v podobě automatické klienta logika opakovaných pokusů. Po vyčerpání doba opakování a zpráva se doručí, můžete prozkoumat pomocí dalších funkcí, jako [spárované obory názvů][paired namespaces]. Spárované obory názvů mají další upozornění, které jsou popsané v tomto článku.
-
-### <a name="failure-of-service-bus-within-an-azure-datacenter"></a>Selhání služby Service Bus v rámci datového centra Azure
-Nejpravděpodobnější příčiny selhání v datacentru Azure je neúspěšné nasazení upgradu služby Service Bus nebo závislý systém. Jako platformu vyvstává, se snížila pravděpodobnost, že tento typ selhání. Datacenter selhání může dojít také z důvodů, které zahrnují následující:
-
-* Elektrické výpadek (napájení a generování power zmizí).
-* Připojení (internet zalomení mezi klienty a Azure).
-
-V obou případech havárie přírodních a lidmi vybudovaných způsobila problém. Chcete-li tento problém obejít a ujistěte se, že stále můžete odesílat zprávy, můžete použít [spárované obory názvů] [ paired namespaces] zpráv k odeslání na jiné místo, zatímco primární umístění se provádí v pořádku znovu povolit. Další informace najdete v tématu [osvědčené postupy pro aplikace využívající službu Service Bus výpadků a havárií izolační][Best practices for insulating applications against Service Bus outages and disasters].
-
-## <a name="paired-namespaces"></a>Spárované obory názvů
-[Spárované obory názvů] [ paired namespaces] funkce podporuje scénáře, ve kterém entita služby Service Bus nebo nasazení v rámci datového centra k dispozici. Když k této události dochází zřídka, distribuované systémy stále musí být připravena ke zpracování nejhorší scénáře. Obvykle této události dojde, protože nějaký element, na kterém závisí služby Service Bus dochází k problému s krátkodobé. Zachování dostupnosti aplikace během výpadku, Service Bus uživatelé můžou dva samostatné obory názvů, pokud možno ve používat samostatná datová centra, k hostování svých entit pro zasílání zpráv. Zbývající část této části používá následující terminologií:
-
-* Primární obor názvů: Obor názvů, které vaše aplikace pracuje, pro odesílání a operace příjmu.
-* Sekundární obor názvů: Obor názvů, který slouží jako záložní pro primární obor názvů. Aplikace logiky nekomunikuje s Tento obor názvů.
-* Interval převzetí služeb při selhání: Množství času tak, aby přijímal běžné chyby a teprve aplikace se přepne z primárního oboru názvů sekundární obor názvů.
-
-Spárované obory názvů podporují *odeslat dostupnosti*. Posílejte zachovává dostupnost schopnost posílání zpráv. Můžete odeslat dostupnosti vaší aplikace musí splňovat následující požadavky:
-
-1. Zprávy jsou přijímány pouze z primárního oboru názvů.
-2. Zprávy odeslané do dané fronty nebo tématu může obdržet mimo pořadí.
-3. Mimo pořadí může být doručování zpráv v rámci relace. Toto je konec od normální funkce relací. To znamená, že vaše aplikace používá relace logicky seskupovat zprávy.
-4. Stav relace je zachováno pouze u primárního oboru názvů.
-5. Primární fronta může do režimu online a začněte přijímat zprávy před sekundární fronty poskytuje všechny zprávy do primární fronty.
-
-Následující části popisují rozhraní API, jak jsou implementované rozhraní API a ukázkový kód ukazuje, že používá funkci. Všimněte si, že jsou fakturační důsledky spojené s touto funkcí.
-
-### <a name="the-messagingfactorypairnamespaceasync-api"></a>MessagingFactory.PairNamespaceAsync rozhraní API
-Spárované obory názvů funkce zahrnuje [PairNamespaceAsync] [ PairNamespaceAsync] metodu [Microsoft.ServiceBus.Messaging.MessagingFactory] [ Microsoft.ServiceBus.Messaging.MessagingFactory] třídy:
-
-```csharp
-public Task PairNamespaceAsync(PairedNamespaceOptions options);
-```
-
-Po dokončení úlohy párování oboru názvů je také dokončena a připravena k provedení akce pro všechny [MessageReceiver][MessageReceiver], [QueueClient] [ QueueClient] , nebo [TopicClient] [ TopicClient] vytvořené pomocí [MessagingFactory] [ MessagingFactory] instance. [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions] [ Microsoft.ServiceBus.Messaging.PairedNamespaceOptions] je základní třídou pro různé druhy párování, která jsou k dispozici [MessagingFactory] [ MessagingFactory] objektu. V současné době pouze odvozená třída je jeden s názvem [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions], který implementuje požadavky na dostupnost odeslat. [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] obsahuje sadu konstruktory, které se vzájemně využívají. Prohlížení konstruktor s parametry, které nejvíce, můžete pochopit chování další konstruktory.
-
-```csharp
-public SendAvailabilityPairedNamespaceOptions(
-    NamespaceManager secondaryNamespaceManager,
-    MessagingFactory messagingFactory,
-    int backlogQueueCount,
-    TimeSpan failoverInterval,
-    bool enableSyphon)
-```
-
-Tyto parametry mají následující význam:
-
-* *secondaryNamespaceManager*: Inicializovali [NamespaceManager] [ NamespaceManager] instance pro sekundární obor názvů, který [PairNamespaceAsync] [ PairNamespaceAsync] metodu můžete použít k nastavení až sekundární obor názvů. Obor názvů správce se používá získat seznam front v oboru názvů a ujistěte se, že existují požadované nevyřízených položek fronty. Tyto fronty neexistují, jsou vytvořeny. [NamespaceManager] [ NamespaceManager] vyžaduje schopnost vytvořit token se **spravovat** deklarací identity.
-* *messagingFactory*: [MessagingFactory] [ MessagingFactory] instance pro sekundární obor názvů. [MessagingFactory] [ MessagingFactory] objektu se používá k odesílání a, pokud [EnableSyphon] [ EnableSyphon] je nastavena na **true**, příjem zpráv z fronty nevyřízených položek.
-* *backlogQueueCount*: Počet nevyřízených položek fronty vytvořit. Tato hodnota musí být aspoň 1. Při odesílání zpráv do nevyřízených položek, jeden z těchto front náhodně zvolí. Pokud nastavíte hodnotu na 1, pak pouze jedna fronta někdy slouží. Když k tomu dojde, do jednoho protokolu nevyřízených položek fronty generuje chyby klienta není možné jiné nevyřízených položek fronty a odeslání vaší zprávy se pravděpodobně nezdaří. Doporučujeme tuto hodnotu nastavíte na některé větší hodnotu a výchozí hodnota 10. Toto můžete změnit na hodnotu vyšší nebo nižší v závislosti na tom, kolik dat vaše aplikace odešle za den. Každá fronta nevyřízených položek může obsahovat až 5 GB zprávy.
-* *failoverInterval*: Množství času, během kterého bude přijímat selhání u primárního oboru názvů před přepnutím jakékoli jedné entity na sekundární obor názvů. Na základě entity entity dojde k převzetí služeb při selhání. Entity v jednoho oboru názvů často žijí v různých uzlech v rámci služby Service Bus. Selhání v jedné entitě neznamená selhání v jiném. Nastavte tuto hodnotu na [System.TimeSpan.Zero] [ System.TimeSpan.Zero] převzetí služeb při selhání do sekundární lokality okamžitě po první, nepřechodných selhání. Minimalizovaly chyby aktivující časovače převzetí služeb při selhání jsou všechny [MessagingException] [ MessagingException] ve kterém [IsTransient] [ IsTransient] vlastnost má hodnotu false, nebo [ System.TimeoutException][System.TimeoutException]. Ostatní výjimky, jako například [UnauthorizedAccessException] [ UnauthorizedAccessException] nezpůsobí převzetí služeb při selhání, protože indikuje, že klient není nakonfigurován správně. A [ServerBusyException] [ ServerBusyException] nemá příčina převzetí služeb při selhání protože správné vzor je 10 sekund počkat zprávu odešlete znovu.
-* *enableSyphon*: Označuje, že tato konkrétní párování by měl také syphon zprávy ze sekundární obor názvů zpět do primárního oboru názvů. Obecně platí, nastavte tuto hodnotu na aplikace, které odesílání zpráv **false**; aplikace, které přijímají zprávy by měla tuto hodnotu nastavit na **true**. Důvodem je, že často, jsou méně příjemci zprávy než odesílatelé zpráv. V závislosti na počtu příjemců můžete mít jednu aplikaci instanci zpracování Trativod povinností. Použití mnoha příjemci má vliv na fakturaci pro každou frontu nevyřízených položek.
-
-Chcete-li použít kód, vytvořit primární [MessagingFactory] [ MessagingFactory] instance, sekundární [MessagingFactory] [ MessagingFactory] instance, sekundární [ NamespaceManager] [ NamespaceManager] instance a [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] instance. Volání může být stejně snadné jako následující:
-
-```csharp
-SendAvailabilityPairedNamespaceOptions sendAvailabilityOptions = new SendAvailabilityPairedNamespaceOptions(secondaryNamespaceManager, secondary);
-primary.PairNamespaceAsync(sendAvailabilityOptions).Wait();
-```
-
-Pokud úkol vrácený [PairNamespaceAsync] [ PairNamespaceAsync] metoda dokončí, všechno je nastavené a připravené k použití. Předtím, než je úloha vrácena, můžete pravděpodobně nebyly dokončeny všechny práce na pozadí potřebné pro párování pracovat přímo. V důsledku toho by neměl start, zasílání zpráv, dokud se vrátí úkol. Pokud došlo k všechny chyby, jako jsou chybné přihlašovací údaje nebo nepodařilo vytvořit nevyřízené položky fronty, tyto výjimky budou vyvolány po dokončení úkolu. Jakmile vrátí úkol, ověřte, že fronty byly nalezeny nebo vytvořených zkoušení produktu [BacklogQueueCount] [ BacklogQueueCount] vlastnost na vaše [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] instance. Pro předchozí kód, který operaci se zobrazí takto:
-
-```csharp
-if (sendAvailabilityOptions.BacklogQueueCount < 1)
-{
-    // Handle case where no queues were created.
-}
-```
+V těchto případech klientské aplikace generuje [System.TimeoutException] [ System.TimeoutException] nebo [MessagingException] [ MessagingException] výjimky. Service Bus obsahuje ke zmírnění tohoto problému v podobě automatické klienta logika opakovaných pokusů. Po vyčerpání doba opakování a zpráva se doručí, můžete prozkoumat pomocí dalších uvedených v článku na [zvládání výpadků a havárií][handling outages and disasters].
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy asynchronního zasílání zpráv ve službě Service Bus, přečtěte si další podrobnosti o [spárované obory názvů][paired namespaces].
+Teď, když jste se naučili základy asynchronního zasílání zpráv ve službě Service Bus, přečtěte si další podrobnosti o [zvládání výpadků a havárií][handling outages and disasters].
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
@@ -152,4 +85,4 @@ Teď, když jste se naučili základy asynchronního zasílání zpráv ve služ
 [IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
 [BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
-[paired namespaces]: service-bus-paired-namespaces.md
+[handling outages and disasters]: service-bus-outages-disasters.md

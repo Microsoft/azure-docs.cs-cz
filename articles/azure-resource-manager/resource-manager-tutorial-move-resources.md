@@ -13,16 +13,14 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99d4f3b6cf42ee21c34809b5604c4603da784e7b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cf1894a218af35459e0d0dc432c5813169856cca
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107816"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267696"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>Kurz: Přesunutí prostředků Azure do jiné skupiny prostředků nebo předplatného
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Další informace o přesunutí prostředků Azure z jedné skupiny prostředků do jiné skupiny prostředků. Prostředky Azure z jednoho předplatného Azure můžete také přesunout do jiného předplatného Azure. V tomto kurzu pomocí šablony resource Manageru k nasazení dvě skupiny prostředků a jeden účet úložiště. Potom přesuňte účet úložiště z jedné skupiny prostředků do jiné.
 
@@ -37,8 +35,6 @@ Tento kurz se zabývá následujícími úkony:
 > * Vyčištění prostředků.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-resources"></a>Příprava prostředků
 
@@ -98,6 +94,8 @@ Ověření operace přesunu umožňuje testovat váš scénář přesunu bez sku
 ## <a name="move-the-resource"></a>Přesunout prostředek
 
 Účet úložiště se nachází uvnitř zdrojovou skupinu prostředků (rg1), spusťte následující příkaz Powershellu skript přesuňte do prostředku cílová skupina prostředků (rg2). Ujistěte se, že pro použití stejného názvu projektu jako jste použili při nasazení prostředků.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"
