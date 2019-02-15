@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f45fad91c94b35de512c0c995ef4e3a6311a25ad
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 684e6a798c690c65f70c2f6224ac8f11256ce6eb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767414"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270126"
 documentType: LandingData
 title: Dokumentace ke službě Azure Maps
 metadata:
@@ -16,7 +16,7 @@ metadata:
   ms.service: azure-maps
   services: azure-maps
   ms.topic: landing-page
-  ms.date: 02/04/2019
+  ms.date: 02/14/2019
   ms.author: philmea
 abstract:
   description: Služba Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s nejnovějšími dostupnými mapovými daty k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps je sada rozhraní REST API kompatibilní s Azure One API pro mapy, hledání, směrování, provoz, časová pásma, geografické polohy, geofencing, data map a prostorové operace doplněná o sady SDK pro web and Android. Zajišťuje snadný, flexibilní a přenositelný vývoj napříč několika platformami.
@@ -35,13 +35,15 @@ sections:
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Vytvoření geoprostorové webové aplikace pro hledání bodů zájmu a tras do umístění s využitím Azure Maps
+    text: Vytvoření geoprostorové webové aplikace pro hledání bodů zájmu, hledání tras do umístění a sledování zařízení vytvořením monitorované geografické zóny s využitím Azure Maps
   - type: list
     style: ordered
     items:
     - html: <a href="/azure/azure-maps/tutorial-search-location">Hledání bodů zájmu</a>
     - html: <a href="/azure/azure-maps/tutorial-route-location">Trasa k bodu zájmu</a>
     - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Trasy podle způsobu cesty</a>
+    - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Vytvoření lokátoru úložiště</a>
+    - html: <a href="/azure/azure-maps/tutorial-geofence">Nastavení monitorované geografické zóny</a>
 - title: Referenční informace
   items:
   - type: list
@@ -51,4 +53,4 @@ sections:
     - title: JavaScript
       html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Mapový ovládací prvek</a></p>
     - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/render">Služba Render</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Služba Route</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Služba Search</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Služba Timezone</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Služba Traffic</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">Správa účtů služby Maps</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/data">Datová služba</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Služba geografické polohy</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Služba Render</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Služba Route</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Služba Search</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Služba Spatial</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Služba Timezone</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Služba Traffic</a></p>

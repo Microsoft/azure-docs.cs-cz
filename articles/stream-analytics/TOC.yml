@@ -135,7 +135,7 @@ items:
       href: stream-analytics-dotnet-management-sdk.md
     - name: Použití Azure Powershell
       href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: Pomocí rozhraní API
+    - name: Použití rozhraní API pro hraniční úlohy
       href: stream-analytics-cicd-api.md
   - name: Nástroje sady Visual Studio
     items:
@@ -216,14 +216,16 @@ items:
       items:
       - name: Přehled analytických funkcí
         href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+      - name: AnomalyDetection_SpikeAndDip
+        href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+      - name: AnomalyDetection_ChangePoint
+        href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
       - name: ISFIRST
         href: /stream-analytics-query/isfirst-azure-stream-analytics
       - name: LAG
         href: /stream-analytics-query/lag-azure-stream-analytics
       - name: LAST
         href: /stream-analytics-query/last-azure-stream-analytics
-      - name: AnomalyDetection
-        href: /stream-analytics-query/anomaly-detection-azure-stream-analytics
     - name: Funkce pro práci s poli
       items:
       - name: Přehled funkcí pro práci s poli
@@ -433,9 +435,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Dokument white paper – Zpracování událostí v reálném čase
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 00a80228f20c172c5584ca18a9789ed458c864aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ee7eb6f1a92e5e3af603dab2e38eff5debaf3e9f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997970"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300716"

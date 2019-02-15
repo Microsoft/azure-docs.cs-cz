@@ -25,6 +25,8 @@ items:
     href: quickstart-create-data-factory-rest-api.md
   - name: Vytvoření datové továrny – šablona Resource Manageru
     href: quickstart-create-data-factory-resource-manager-template.md
+  - name: Vytvoření toku dat
+    href: data-flow-create.md
   expanded: true
 - name: Kurzy
   items:
@@ -408,6 +410,42 @@ items:
       href: control-flow-wait-activity.md
     - name: Aktivita webu
       href: control-flow-web-activity.md
+  - name: Transformace toku dat
+    items:
+    - name: Agregace
+      href: data-flow-aggregate.md
+    - name: Podmíněné rozdělení
+      href: data-flow-conditional-split.md
+    - name: Odvozený sloupec
+      href: data-flow-derived-column.md
+    - name: Existuje
+      href: data-flow-exists.md
+    - name: Filtr
+      href: data-flow-filter.md
+    - name: Spojit
+      href: data-flow-join.md
+    - name: Vyhledávání
+      href: data-flow-lookup.md
+    - name: Nová větev
+      href: data-flow-new-branch.md
+    - name: Převést na sloupce
+      href: data-flow-pivot.md
+    - name: Vyberte
+      href: data-flow-select.md
+    - name: Jímka
+      href: data-flow-sink.md
+    - name: Seřadit
+      href: data-flow-sort.md
+    - name: Zdroj
+      href: data-flow-source.md
+    - name: Náhradní klíč
+      href: data-flow-surrogate-key.md
+    - name: Sjednocení
+      href: data-flow-union.md
+    - name: Převést na řádky
+      href: data-flow-unpivot.md
+    - name: Okno
+      href: data-flow-window.md
   - name: Parametrizace
     items:
     - name: Parametrizace propojených služeb
@@ -528,9 +566,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Možnosti podpory
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 535abc50cd27693da90aaaddcfdf8950d6abc59d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ee5cd120a8f1ecb8a1f685c1fa2332a9d9c5dd1
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174414"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270415"
