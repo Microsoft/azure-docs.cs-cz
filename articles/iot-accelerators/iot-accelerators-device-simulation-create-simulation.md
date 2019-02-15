@@ -11,7 +11,7 @@ ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 268efa35f63ac8b9e0c6ea3f22a71242a2984726
 ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/01/2018
 ms.locfileid: "50756749"
