@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f0c9c06e953df16199acda5f821fdac35b86f07f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bbd73035993d3a981744eb5377fe0bf2c9d55b63
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477552"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268851"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
@@ -31,7 +31,7 @@ Virtuální počítač pro datové vědy pro Linux je image virtuálního počí
   * [Caffe2](https://github.com/caffe2/caffe2): Multiplatformní verzi Caffe
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Hloubkové učení softwarových nástrojů Microsoft Research
   * [H2O](https://www.h2o.ai/): Platformy pro velká data open source a grafické uživatelské rozhraní
-  * [Keras](https://keras.io/): Základní neuronové sítě rozhraní API v jazyce Python pro Theano a TensorFlow
+  * [Keras](https://keras.io/): Základní neuronové sítě rozhraní API v jazyce Python pro TensorFlow, Microsoft Cognitive Toolkit a Theano
   * [MXNet](http://mxnet.io/): Knihovna flexibilní a efektivní obsáhlý learning s mnoha jazykové vazby
   * [NVIDIA ČÍSLIC](https://developer.nvidia.com/digits): Grafické systému, který zjednodušuje běžných úloh hloubkového učení
   * [PyTorch](http://pytorch.org/): Základní knihovna Python s podporou pro dynamické sítě
@@ -177,7 +177,7 @@ Jsou k dispozici v JupyterHub některé příklad poznámkových bloků.
 H2O je rychlé, v paměti a distribuované machine learning a prediktivní analytická platforma. Balíček Python je nainstalována v kořenových a py35 Anaconda prostředí. Balíček R je také nainstalována. Chcete-li spustit H2O z příkazového řádku, spusťte `java -jar /dsvm/tools/h2o/current/h2o.jar`; existují různé [možnosti příkazového řádku](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , který chcete konfigurovat. Je přístupný webového uživatelského rozhraní tok tak, že přejdete do http://localhost:54321 začít. Ukázkové poznámkové bloky jsou dostupné v JupyterHub.
 
 #### <a name="keras"></a>Keras
-Keras je vysoké úrovně neuronové sítě rozhraní API v jazyce Python, který je schopen spuštění v horní části TensorFlow nebo Theano. Je k dispozici v kořenové certifikáty a py35 prostředí Pythonu. 
+Keras je vysoké úrovně neuronové sítě rozhraní API v jazyce Python, který je schopen spuštění v horní části TensorFlow, Microsoft Cognitive Toolkit nebo Theano. Je k dispozici v kořenové certifikáty a py35 prostředí Pythonu. 
 
 #### <a name="mxnet"></a>MXNet
 MXNet je navržené pro efektivity a pružnosti rozhraní hloubkového učení. Má vazby R a Python na datové VĚDY. Ukázkové poznámkové bloky jsou součástí JupyterHub a ukázkový kód je k dispozici v /dsvm/samples/mxnet.

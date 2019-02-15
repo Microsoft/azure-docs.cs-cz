@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 51376661530d5de67e0efeacbcfd0d3a56078511
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 492beba1040cef3d5a910cc9db3fe16b41c33cd6
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117948"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301583"
 ---
 # <a name="azure-logging-and-auditing"></a>Protokolování a auditování Azure
 
@@ -246,7 +246,7 @@ Kromě výše uvedených protokolování možností Network Watcher aktuálně m
 
 Application Insights je určena k pomáhala průběžně vylepšovat výkon a použitelnost.
 
-Funguje pro aplikace na nejrůznějších platformách, včetně .NET, Node.js a J2EE, ať už jsou hostované místně nebo v cloudu. Integruje se s vaším procesem DevOps a obsahuje spojovací body pomocí různých vývojových nástrojů.
+Funguje pro aplikace na nejrůznějších platformách, včetně .NET, Node.js a Java EE, jestli jste na hostovaný místně nebo v cloudu. Integruje se s vaším procesem DevOps a obsahuje spojovací body pomocí různých vývojových nástrojů.
 
 ![Application Insights diagram](./media/azure-log-audit/azure-log-audit-fig6.png)
 

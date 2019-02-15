@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 68f640f6962802c45ca369786c4e5d0d4f785fa6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3f064769728d5d081c4a110e6c981c4b36aad384
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105073"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300580"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravované identity pro App Service a Azure Functions
 
@@ -280,8 +280,8 @@ Další informace o Microsoft.Azure.Services.appauthentication přistupovat a zp
 
 Aplikace s využitím spravované identity má dvě proměnné prostředí definované:
 
-- MSI_ENDPOINT
-- MSI_SECRET
+- MSI_ENDPOINT – adresa URL místní služby tokenů.
+- MSI_SECRET - hlaviček použité pro zmírnění útoků proti padělání (SSRF) žádosti na straně serveru. Hodnota je otočit o platformě.
 
 **MSI_ENDPOINT** místní adresu URL, ze kterého můžete aplikaci požádat o tokeny. Získá token pro určitý prostředek, ujistěte se, požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
@@ -289,7 +289,7 @@ Aplikace s využitím spravované identity má dvě proměnné prostředí defin
 > |-----|-----|-----|
 > |prostředek|Dotaz|AAD identifikátor URI prostředku, pro která by měla být získána token. To může být jedna z [služby Azure, že podpora Azure AD ověřování](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) nebo jakékoli jiné identifikátor URI prostředku.|
 > |verze API-version|Dotaz|Verze rozhraní API tokenů, který se má použít. "2017-09-01" je momentálně podporována pouze verze.|
-> |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET.|
+> |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET. Tato hlavička se používá pro zmírnění útoků proti padělání (SSRF) žádosti na straně serveru.|
 > |ID klienta|Dotaz|(Volitelné) ID uživatelsky přiřazené identity použít. Pokud tento parametr vynechán, systém přiřadil identita se používá.|
 
 Úspěšná odpověď 200 OK obsahuje text JSON s následujícími vlastnostmi:

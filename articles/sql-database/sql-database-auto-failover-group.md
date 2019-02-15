@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004243"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301923"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
@@ -60,14 +60,18 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   Server služby SQL Database nebo spravované Instance, který je hostitelem sekundární databází ve skupině převzetí služeb při selhání. Sekundární nemůže být ve stejné oblasti jako primární.
 
-- **Přidávání databází do skupiny převzetí služeb při selhání na serveru služby SQL Database**
+- **Přidání do skupiny převzetí služeb při selhání izolované databáze**
 
-  Můžete umístit několik izolovaných databází nebo databází v elastickém fondu přitom na stejný server SQL Database do stejné skupiny převzetí služeb při selhání. Pokud chcete přidat jednu databázi do skupiny převzetí služeb při selhání, automaticky vytvoří sekundární databáze pomocí stejné velikosti edition a výpočetní výkon. Pokud je primární databáze v elastickém fondu, se automaticky vytvoří sekundární v elastickém fondu se stejným názvem. Pokud chcete přidat databáze, která už má sekundární databáze v sekundární server, geografická replikace je zděděno ve skupině. Pokud chcete přidat databáze, která už má sekundární databáze na serveru, který není součástí skupiny převzetí služeb při selhání, se vytvoří nový sekundární v sekundárním serveru.
+  Několik izolovaných databází na stejném serveru SQL Database můžete umístit do stejné skupiny převzetí služeb při selhání. Pokud chcete přidat jednu databázi do skupiny převzetí služeb při selhání, automaticky vytvoří sekundární databáze pomocí stejné velikosti edition a výpočetní prostředky na sekundárním serveru.  Tento server jste zadali, při vytvoření skupiny převzetí služeb při selhání. Pokud chcete přidat databáze, která už má sekundární databáze v sekundární server, tento odkaz geografické replikace zdědí skupině. Pokud chcete přidat databáze, která už má sekundární databáze na serveru, který není součástí skupiny převzetí služeb při selhání, se vytvoří nový sekundární v sekundárním serveru.
   
 > [!IMPORTANT]
   > Ve spravované instanci jsou replikovány všem uživatelským databázím. Nelze vybrat podmnožinu uživatelských databází pro replikaci ve skupině převzetí služeb při selhání.
 
-- **Naslouchací proces pro čtení i zápis skupiny převzetí služeb při selhání**
+- **Přidávání databází do elastického fondu pro skupinu převzetí služeb při selhání**
+
+  Všechny nebo několik databází v elastickém fondu přitom můžete umístit do stejné skupiny převzetí služeb při selhání. Pokud je primární databáze v elastickém fondu, se automaticky vytvoří sekundární v elastickém fondu se stejným názvem (sekundární fond). Ujistěte se, že sekundární server obsahuje elastický fond se stejným názvem přesné a dostatek kapacity k hostování sekundární databází, které se vytvoří ve skupině převzetí služeb při selhání. Pokud chcete přidat databáze ve fondu, který už má sekundární databáze ve fondu sekundárního, tento odkaz geografické replikace zdědí skupině. Při přidání databázi, která už má sekundární databáze na serveru, který není součástí skupiny převzetí služeb při selhání v sekundární fondu se vytvoří nový sekundární.
+  
+  - **Naslouchací proces pro čtení i zápis skupiny převzetí služeb při selhání**
 
   Záznam DNS CNAME, který tvar, který odkazuje na aktuální primární adresy URL. Umožňuje aplikacím SQL pro čtení a zápis se transparentně znovu připojit k primární databáze, pokud se primární změní po převzetí služeb při selhání.
 
