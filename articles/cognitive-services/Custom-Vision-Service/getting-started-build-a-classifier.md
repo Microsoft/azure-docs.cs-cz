@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 6b39d01266cdde0316d1a660429d5ccab546dac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd6f533bcd32a307facc781c3b2207a337fc8a34
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873627"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309161"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
@@ -95,6 +95,11 @@ V této části se nahrát a ručně označit Image ke trénování třídění.
     ![Indikátor průběhu vám ukáže všechny úlohy dokončeny.](./media/getting-started-build-a-classifier/add-images04.png)
 
 K nahrání jinou sadu bitových kopií, vraťte se na začátku této části a opakujte kroky. V určitém okamžiku v projektu, budete muset přidat _záporné ukázky_ pro usnadnění přesnější klasifikátoru. Záporná ukázky jsou ty, které neodpovídají žádné další značky. Při nahrávání tyto Image použít speciální **negativní** popisek k nim.
+
+> [!NOTE]
+> Custom Vision Service podporuje zpracování některých automatické negativní obrázku. Například pokud zodpovídají za tvorbu hroznového vs. banánů třídění a odešlou obrázek bot pro predikci, třídění by měla stanovení skóre této bitové kopie jako blízko 0 % hroznového a banánů.
+
+> Na druhé straně v případech, kdy negativní bitové kopie jsou jen varianta Image použité v školení, je pravděpodobné, že model bude klasifikovat negativní bitové kopie jako třída s popiskem obarvené skvělé. Například pokud máte oranžová vs. grapefruity třídění a kanálu v obraze clementine, ho může skóre clementine jako oranžová protože mnoho funkcí clementine se podobají těm oranges. Pokud negativní obrázky jsou této povaha, doporučujeme, abyste vytvořili nejmíň jeden další značky (například **jiných**) a označovat pomocí popisků negativní obrázky s touto značkou při školení, které umožňují lepší rozlišovat mezi tyto třídy modelu .
 
 ## <a name="train-the-classifier"></a>Trénování klasifikátoru
 

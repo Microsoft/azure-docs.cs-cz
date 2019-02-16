@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3e7284932199a97fa5256e1deea09fadeb01f29b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7b3fe280ced4bfe397bcf168e529600417c62e57
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869496"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311409"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní REST API a Python v počítačové zpracování obrazu
 
@@ -405,10 +405,6 @@ _ = plt.axis("off")
   }
 }
 ```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už soubor nepotřebujete, odstraňte ho.
 
 ## <a name="next-steps"></a>Další postup
 

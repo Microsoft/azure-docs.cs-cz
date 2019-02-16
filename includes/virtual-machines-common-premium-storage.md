@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9f0dbc549600ef2b931ee99a36c60cae57cc7a67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246801"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331218"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 
@@ -98,8 +98,6 @@ Tady jsou některé z funkcí podporovaných v premium storage virtuálních po�
 
     > [!NOTE]
     > Pokud prokládanou datových disků premium storage s použitím [prostory úložiště](https://technet.microsoft.com/library/hh831739.aspx), nastavit prostory úložiště s 1 sloupec pro každý disk, který používáte. Celkový výkon prokládané svazku, v opačném případě může být nižší, než se očekávalo kvůli nerovnoměrné distribuci provozu discích. Ve výchozím nastavení, ve Správci serveru můžete nastavení sloupců pro až 8 disky. Pokud máte víc než 8 disky pomocí prostředí PowerShell vytvořit svazek. Ručně zadejte počet sloupců. V opačném případě uživatelského rozhraní správce serveru dál používat 8 sloupců, i když máte více disků. Například pokud máte 32 disků v jedné prokládané sady, zadejte 32 sloupce. Chcete-li určit počet sloupců, které používá virtuální disk, [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx) rutiny Powershellu, použijte *NumberOfColumns* parametru. Další informace najdete v tématu [prostory úložiště – přehled](https://technet.microsoft.com/library/hh831739.aspx) a [nejčastějších dotazech týkajících se prostory úložiště](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
-    >
-    > 
 
 * **Mezipaměť**
 

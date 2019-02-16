@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad8b00ad7ef212299b67826fd8d6b411c3fb7633
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 05d48c67876b02c1909243eaa86a57fd4ab8d5c1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868170"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312833"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>Rychlý start: Generování miniatur pomocí rozhraní REST API a C&#35; v počítačové zpracování obrazu
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c-in-computer-vision"></a>Rychlý start: Generování miniatur pomocí rozhraní REST API a C# v počítačové zpracování obrazu
 
 V tomto rychlém startu vygenerujete pomocí rozhraní REST API počítačového zpracování obrazu miniaturu obrázku. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
 
@@ -194,7 +194,7 @@ namespace CSHttpClientSample
 
 Ukázková aplikace zobrazí úspěšnou odpověď v okně konzoly, podobně jako v následujícím příkladu:
 
-```text
+```console
 Response:
 
 StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:

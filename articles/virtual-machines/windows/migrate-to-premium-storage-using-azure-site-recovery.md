@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 6db263dcfc3195c9b2ab3afe7587845a4632fd1b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7c422d560341e51fad582439117533b7d9cd4c8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456523"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327659"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
 
-[Azure Premium Storage](premium-storage.md) poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače (VM), na kterých běží I intenzivních vstupně-výstupních operací. Tento průvodce vám pomůže migrovat disky virtuálních počítačů z účtu standard storage do účtu služby premium storage s použitím [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
+[Azure premium SSD](disks-types.md) poskytovat podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače (VM), na kterých běží I intenzivních vstupně-výstupních operací. Tento průvodce vám pomůže migrovat disky virtuálních počítačů z účtu standard storage do účtu služby premium storage s použitím [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
 Site Recovery je služba Azure, která přispívá ke strategii pro provozní kontinuitu a zotavení po havárii tím, že orchestruje replikaci místních fyzických serverů a virtuálních počítačů do cloudu (Azure) nebo do sekundárního datacentra. Když ve vaší primární lokalitě dojde k výpadku, převezme služby při selhání sekundárního umístění, aby aplikace a úlohy zůstaly dostupné. Nedodržíte zpět do primárního umístění, když se vrátí do normálního provozu. 
 
@@ -222,7 +222,6 @@ Viz také následující prostředky pro další informace o Azure Storage a Azu
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

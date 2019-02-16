@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 94482666d0db3157b0c18c0b47f9937457172521
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 18258bf8ac9d241fd8a01957d903b1db882c2d36
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115993"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326870"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizovat typ úložiště spravovaného disku
 
-Služba Azure Managed Disks nabízí tři možnosti Typ úložiště: [Premium SSD](../windows/premium-storage.md), [SSD na úrovni Standard](../windows/disks-standard-ssd.md), a [standardní HDD](../windows/standard-storage.md). Můžete přepínat mezi typy úložišť s minimálními výpadky, podle potřeb výkonu spravovaného disku. Přepínání mezi typy úložiště se nepodporuje pro nespravovaný disk; však můžete snadno [převést nespravovaného disku na spravovaný disk](convert-unmanaged-to-managed-disks.md).
+Azure managed disks nabízí čtyři úložiště typu volby: Jednotky Ultra SSD (Solid-State Drive), Premium SSD, SSD na úrovni Standard a standardních pevných disků (HDD). Můžete přepínat mezi typy úložišť s minimálními výpadky, podle potřeb výkonu spravovaného disku. Přepínání mezi typy úložiště se nepodporuje pro nespravovaný disk; však můžete snadno [převést nespravovaného disku na spravovaný disk](convert-unmanaged-to-managed-disks.md).
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -35,6 +35,7 @@ Služba Azure Managed Disks nabízí tři možnosti Typ úložiště: [Premium S
 * Pokud používáte nespravovaný disk, nejprve [ho převést na spravovaný disk](convert-unmanaged-to-managed-disks.md) aby bylo možné přepínat mezi typy úložišť. 
 * Příklady v tomto článku vyžadují modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Spustit [připojit AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) vytvořit připojení k Azure.
 
+* Příklady v tomto článku vyžadují modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Spustit [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) vytvořit připojení k Azure.
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>Převést všechny spravované disky virtuálního počítače z úrovně standard na premium
 

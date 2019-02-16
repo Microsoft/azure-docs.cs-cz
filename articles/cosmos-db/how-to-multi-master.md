@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: effe6fa942ce0cabace08e72dba90baf8646680e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56119270"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312136"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-in-azure-cosmos-db"></a>Jak nakonfigurovat více hlavních databází ve svých aplikacích ve službě Azure Cosmos DB
+# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Jak nakonfigurovat více hlavních databází ve svých aplikacích, které používají službu Azure Cosmos DB
 
-Pokud chcete používat funkce několika hlavními databázemi ve svých aplikacích, které potřebujete k povolení více oblastí zápisu ve vaší aplikaci a nakonfigurujte schopnosti multihomingu nastavením aktuální oblasti pro aplikace nasazené v.
+Pokud chcete používat funkce několika hlavními databázemi ve svých aplikacích, které potřebujete k povolení zápisů ve více oblastech a konfigurace multihomingu funkce. Multihoming je nakonfigurovaný tak, že nastavíte oblast, ve kterém je aplikace nasazená.
 
 ## <a id="netv2"></a>Sady .NET SDK v2
 
-Povolit více hlavních databází ve vaší sadě aplikací `UseMultipleWriteLocations` na hodnotu true a nakonfigurovat `SetCurrentLocation` do oblasti, ve kterém se nasazuje aplikace a služby Cosmos DB se replikuje.
+Povolit více hlavních databází ve vaší sadě aplikací `UseMultipleWriteLocations` na hodnotu true a nakonfigurovat `SetCurrentLocation` do oblasti, ve kterém se nasazuje aplikace a služby Azure Cosmos DB se replikuje.
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy

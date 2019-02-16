@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976898"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328708"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Rychlý start: Ruční instalace jedné instance SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -195,7 +195,7 @@ Na základě [požadavky na úložiště pro SAP HANA TDI](https://www.sap.com/d
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-V konfiguraci navrhované disku objemu dat HANA a svazek s protokolem umísťují na stejnou sadu disky Azure premium storage, které jsou rozložené s LVM nebo MDADM. Není nutné definovat všechny úrovně redundance diskového pole RAID, protože Azure Premium Storage udržuje tři imagí disků pro zajištění redundance. Pokud chcete mít jistotu, že nakonfigurujete dostatečně velké úložiště, najdete [požadavky na úložiště pro SAP HANA TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) a [Průvodce instalací serveru SAP HANA a aktualizací](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Zvažte také jiný virtuální pevný disk (VHD) propustnost objem disky různých Azure premium storage, jak je uvedeno v [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](https://docs.microsoft.com/azure/storage/storage-premium-storage). 
+V konfiguraci navrhované disku objemu dat HANA a svazek s protokolem umísťují na stejnou sadu disky Azure premium storage, které jsou rozložené s LVM nebo MDADM. Není nutné definovat všechny úrovně redundance diskového pole RAID, protože Azure Premium Storage udržuje tři imagí disků pro zajištění redundance. Pokud chcete mít jistotu, že nakonfigurujete dostatečně velké úložiště, najdete [požadavky na úložiště pro SAP HANA TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) a [Průvodce instalací serveru SAP HANA a aktualizací](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Zvažte také jiný virtuální pevný disk (VHD) propustnost objem disky různých Azure premium storage, jak je uvedeno v [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](../../windows/disks-types.md). 
 
 Můžete přidat další disky storage úrovně premium pro virtuální počítače HANA DBMS pro ukládání záloh databáze nebo transakčního protokolu.
 
@@ -206,9 +206,7 @@ Další informace o dva hlavní nástroje použít ke konfiguraci prokládání 
 
 Další informace o připojování disků k virtuálním počítačům Azure s Linuxem jako hostovaný operační systém, najdete v části [přidání disku do virtuálního počítače s Linuxem](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azure Premium Storage umožňuje definovat režimy používání mezipaměti disku. Prokládané sady /hana/data a /hana/log by mělo být zakázáno ukládání do mezipaměti disku. Pro jiné svazky (disky), je třeba nastavit režim ukládání do mezipaměti na **jen pro čtení**.
-
-Další informace najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../windows/premium-storage.md).
+Azure premium SSD umožňuje definovat režimy používání mezipaměti disku. Prokládané sady /hana/data a /hana/log by mělo být zakázáno ukládání do mezipaměti disku. Pro jiné svazky (disky), je třeba nastavit režim ukládání do mezipaměti na **jen pro čtení**.
 
 Pokud chcete najít ukázkové šablony JSON pro vytvoření virtuálních počítačů, přejděte na [šablony pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates).
 Šablona virtuálního počítače. jednoduchý sles je základní šablony. Oddíl úložiště s diskem dalších 100 GB dat zahrnuje. Tuto šablonu můžete použít jako základ. Šablony můžete přizpůsobit na konkrétní konfiguraci.

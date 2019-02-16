@@ -4,23 +4,23 @@ description: Přiřazení analyzátorům prohledávatelná textová pole v index
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 02/15/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 5c3894b1f19a6baa65323391526ea5492d79f8a7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: a3f782cdd34f2a45c58e6a98d013f949767589cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301328"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328006"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analyzátory pro zpracování ve službě Azure Search textu
 
-*Analyzátor* je součástí [fulltextový vyhledávací modul](search-lucene-query-architecture.md) zodpovědná za zpracování textu v řetězci dotazu a indexovaných dokumentů. Existují analyzátory jazyka a manipulaci s analyzátory text. Analyzátory jazyka nejběžnější a mají výchozí analyzátor jazyka přiřazená každé pole řetězce v indexu Azure Search.
+*Analyzátor* je součástí [fulltextový vyhledávací modul](search-lucene-query-architecture.md) zodpovědná za zpracování textu v řetězci dotazu a indexovaných dokumentů. Různé analyzátory práci s textem různými způsoby v závislosti na scénáři. Analyzátory jazyka zpracovávat text pomocí jazyková pravidla za účelem zlepšení kvality hledání při dalších analyzátorů provádět další základní úkoly, jako je například převod znaků na malá písmena. 
 
-Následující transformace jazyka jsou typické během analýzy textu:
+Analyzátory jazyka jsou nejčastěji používané a je výchozí analyzátor jazyka přiřazená každé prohledávatelná pole v indexu Azure Search. Následující transformace jazyka jsou typické během analýzy textu:
 
 + Bez nezbytné slova (stopword) a interpunkční znaménka se odeberou.
 + Fráze a slovech jsou rozdělené do součásti.
@@ -46,7 +46,7 @@ Následující seznam popisuje, jaké analyzátory jsou k dispozici ve službě 
 | Předdefinované analyzátory | Nabízí jak finální produkt je určen pro použití jako-je. <br/>Existují dva typy: specializované a jazyk. Co je kvůli tomu je "předdefinovaný" můžete odkazovat pomocí názvu, bez konfigurace nebo přizpůsobení. <br/><br/>[Specializované (jazykově nezávislé) analyzátory](index-add-custom-analyzers.md#AnalyzerTable) se používají při textovými vstupy vyžadují speciální zpracování a minimální zpracování. Zahrnout předdefinované non jazykové analyzátory **Asciifolding**, **– klíčové slovo**, **vzor**, **jednoduché**, **Zastavit**, **Prázdné znaky**.<br/><br/>[Analyzátory jazyka](index-add-language-analyzers.md) se používají, když budete potřebovat bohatou jazykovou podporu pro jednotlivé jazyky. Služba Azure Search podporuje 35 Lucene jazykové analyzátory a 50 analyzátory zpracování přirozeného jazyka Microsoft. |
 |[Vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Odkazuje na uživatelem definované konfigurace z kombinace stávající elementy skládající se z jednoho tokenizátor (povinné) a volitelné filtry (char nebo token).|
 
-Několik předdefinovaných analyzátory, jako například **vzor** nebo **Zastavit**, podporují omezená sada možností konfigurace. Chcete-li nastavit tyto možnosti, efektivně vytvoříte vlastní analyzátor, skládající se z předdefinovaných analzer a jeden alternativní možnosti uvedené v [předdefinovaný odkaz analyzátoru](index-add-custom-analyzers.md#AnalyzerTable). Jak pro vlastní konfigurace, zadejte nové konfigurace s názvem, jako třeba *myPatternAnalyzer* ho odlišuje od analyzátor Lucene vzor.
+Několik předdefinovaných analyzátory, jako například **vzor** nebo **Zastavit**, podporují omezená sada možností konfigurace. Pokud chcete nastavit tyto možnosti, efektivně vytvoříte vlastní analyzátor, skládající se z předdefinovaných analyzer a jeden alternativní možnosti uvedené v [předdefinovaný odkaz analyzátoru](index-add-custom-analyzers.md#AnalyzerTable). Jak pro vlastní konfigurace, zadejte nové konfigurace s názvem, jako třeba *myPatternAnalyzer* ho odlišuje od analyzátor Lucene vzor.
 
 ## <a name="how-to-specify-analyzers"></a>Určení analyzátory
 
@@ -54,24 +54,26 @@ Několik předdefinovaných analyzátory, jako například **vzor** nebo **Zasta
 
 2. Na [pole definice](https://docs.microsoft.com/rest/api/searchservice/create-index) v indexu, nastavte pole **analyzátor** vlastnost na název cílového analyzer (například `"analyzer" = "keyword"`. Platné hodnoty jsou název předdefinovaného analyzátoru, analyzátor jazyka nebo vlastní analyzátor také definováno ve schématu indexu. Naplánujte přiřazování analyzátor ve fázi definici indexu před vytvořením indexu ve službě.
 
-3. Volitelně můžete místo jednoho **analyzátor** vlastnost můžete nastavit různé analyzátory pro indexování a dotazování pomocí **indexAnalyzer** a **searchAnalyzer** pole Parametry. 
+3. Volitelně můžete místo jednoho **analyzátor** vlastnost můžete nastavit různé analyzátory pro indexování a dotazování pomocí **indexAnalyzer** a **searchAnalyzer** pole Parametry. Můžete využít různé analyzátory pro přípravu dat a načítání jednu z těchto aktivit podle potřeby konkrétní transformace nevyžaduje druhé.
 
-3. Analyzátor přidání definice pole pro s sebou nese náklady operace zápisu na index. Pokud chcete přidat **analyzátor** do existujícího indexu, mějte na paměti následující kroky:
+Přiřazení **analyzátor** nebo **indexAnalyzer** na pole, které již byly fyzicky vytvořil není povolený. Pokud některý z to není jasné, přečtěte si následující tabulce najdete výčet z nich akce vyžadují opětovné sestavení a proč.
  
  | Scénář | Dopad | Kroky |
  |----------|--------|-------|
- | Přidání nového pole | Minimální | Pokud pole ještě neexistuje ve schématu, neexistuje žádné pole revize provést, protože pole ještě nemá fyzickou přítomnost v indexu. Použití [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) přidání nového pole do stávajícího indexu.|
- | Analyzátor přidání do existujícího indexovaného pole. | [Opětovné sestavení](search-howto-reindex.md) | Obráceným index pro toto pole musí se znovu vytvořit zdola nahoru a musí být přeindexovány obsah těchto polí. <br/> <br/>Pro indexy aktivně vyvíjí [odstranit](https://docs.microsoft.com/rest/api/searchservice/delete-index) a [vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) index ke sbírání nová definice pole. <br/> <br/>Pro indexy v produkčním prostředí můžete odložit sestavení tak, že vytvoříte nové pole zadejte definici upravená a začít používat místo starý. Použití [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) začlenit nové pole a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) k naplnění itbet. Později, v rámci index plánované údržby můžete vyčistit index odebrat zastaralé pole. |
+ | Přidání nového pole | Minimální | Pokud pole ještě neexistuje ve schématu, neexistuje žádné pole revize provést, protože pole ještě nemá fyzickou přítomnost v indexu. Můžete použít [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) přidání nového pole do stávajícího indexu, a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ho naplnit.|
+ | Přidat **analyzátor** nebo **indexAnalyzer** na stávající indexovaného pole. | [Opětovné sestavení](search-howto-reindex.md) | Obráceným index pro toto pole musí znovu vytvořit od počátku a musí být přeindexovány obsah těchto polí. <br/> <br/>Pro indexy aktivně vyvíjí [odstranit](https://docs.microsoft.com/rest/api/searchservice/delete-index) a [vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) index ke sbírání nová definice pole. <br/> <br/>Pro indexy v produkčním prostředí můžete odložit opětovné sestavení tak, že vytvoříte nové pole zadejte definici upravená a začít používat místo starý. Použití [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) začlenit nové pole a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ho naplnit. Později, v rámci index plánované údržby můžete vyčistit index odebrat zastaralé pole. |
 
 ## <a name="when-to-add-analyzers"></a>Přidání analyzátory
 
-Můžete definovat více vlastní analyzátory postup obměny kombinací filtry, ale každé pole lze použít pouze jeden analyzátor pro indexování analýzy a jeden pro hledání analýzy.  
+Nejvhodnější čas k přidání a přiřazení analyzátory je při aktivním vývoji při vyřadit a znovu vytvořit indexy je rutina.
 
-Při aktivním vývoji byste měli nakonfigurovat analyzátory, při definici indexu je stále v toku. Analyzátor zadané v poli je nedílnou součástí definice pole, takže můžete přidat pouze ji při vytvoření pole. Pokud chcete přidat analyzátory pro existující pole, budete muset [vyřaďte a znovu sestavte](search-howto-reindex.md) index.
+Definice indexu ztuhne, můžete přidat nové konstruktory analýzy do indexu, ale je potřeba předat **allowIndexDowntime** příznak, který [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) Pokud budete chtít vyhnout se této chybě:
 
-Výjimkou je searchAnalyzer variant. Existují tři způsoby, jak určit analyzátory: **analyzátor**, **indexAnalyzer**, **searchAnalyzer**. První z nich, **analyzátor**, je použít k indexování a dotazování požadavků. Další dvě umožňují řídit, které Analyzátory se používají pro každý typ požadavku.
+*Index aktualizace není povolená, protože by to způsobilo výpadek. Pokud chcete přidat nové analyzátory, tokenizátory, token filtry nebo znak filtry do existujícího indexu, nastavte parametr dotazu 'allowIndexDowntime' na 'true' v žádosti o aktualizaci indexu. Všimněte si, že tato operace zařadí indexu v režimu offline pro alespoň několik sekund, způsobuje vaše indexování a k selhání požadavků na dotazy. Výkon a zápis dostupnost indexu může být narušena několik minut, po aktualizaci indexu nebo delší dobu velmi velký indexy.*
 
-Obě **analyzátor** a **indexAnalyzer** mají být stanoven na definici počáteční pole. **SearchAnalyzer** atribut lze přidat do pole, které již existuje, bez dalších nákladů na požadavek na opětovné sestavení.
+To samé platí při přiřazování analyzátor pro pole. Analyzátor je nedílnou součástí definice pole, takže můžete přidat pouze ji při vytvoření pole. Pokud chcete přidat analyzátory pro existující pole, budete muset [vyřaďte a znovu sestavte](search-howto-reindex.md) indexu, nebo přidat nové pole pomocí analyzátoru chcete.
+
+Jak je uvedeno, je výjimka **searchAnalyzer** variant. Ze tří způsobů, jak určit analyzátory (**analyzátor**, **indexAnalyzer**, **searchAnalyzer**), pouze **searchAnalyzer** atribut můžete změnit na existující pole.
 
 ## <a name="recommendations-for-working-with-analyzers"></a>Doporučení pro práci s analyzátory
 

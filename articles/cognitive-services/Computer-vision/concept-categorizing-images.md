@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1967ba60088cae2b946cfcfe1467c2de5aebccdf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879947"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308855"
 ---
-# <a name="image-categorization-with-computer-vision"></a>Kategorizace obrázků s pro počítačové zpracování obrazu
+# <a name="categorize-images"></a>Kategorizace obrázků
 
-Kromě označování a popisy pro počítačové zpracování obrazu vrací taxonomie podle kategorie definované v předchozích verzích. Tyto kategorie jsou taxonomicky uspořádané jako dědičné hierarchie nadřízených a podřízených prvků. Všechny kategorie jsou v angličtině. Bylo možné samostatně nebo s naší novou označování modely.
+Kromě značek a popis pro počítačové zpracování obrazu vrací na základě taxonomie kategorií v obrázku. Na rozdíl od značky kategorie jsou uspořádány do hierarchie dědičného nadřazené a podřízené a jsou méně z nich (na rozdíl od tisíce značky 86). Všechny názvy kategorií jsou v angličtině. Kategorizace to provést, samostatně nebo společně s modelem novější značky.
 
 ## <a name="the-86-category-concept"></a>Systém 86 kategorií
 
-Na základě seznamu konceptů 86 vidět v následujícím diagramu, bitovou kopii lze označit od široké do konkrétní. Celou taxonomii v textovém formátu najdete v článku o [taxonomických kategoriích](category-taxonomy.md).
+Počítačové zpracování obrazu můžete zařadit do kategorií bitovou kopii široce nebo konkrétně, pomocí seznamu 86 categroies v následujícím diagramu. Celou taxonomii v textovém formátu najdete v článku o [taxonomických kategoriích](category-taxonomy.md).
 
 ![seskupené seznam všech kategorií taxonomie kategorií](./Images/analyze_categories-v2.png)
 

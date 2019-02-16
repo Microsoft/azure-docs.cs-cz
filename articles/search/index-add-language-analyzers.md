@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bb7fbdeea9c19b8a6fabe06687261296110b4064
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301798"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328285"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Přidat do indexu Azure Search analyzátory jazyka
 
@@ -51,9 +51,9 @@ Výchozí Analyzátor je standardní Lucene, což funguje dobře pro angličtinu
 
 ## <a name="configuring-analyzers"></a>Konfigurace analyzátory
 
-Jazykové Analyzátory se používají jako-je. Pro každé pole v definici indexu můžete nastavit **analyzátor** vlastnost na název analyzátor, který určuje, který jazyk a dodavatele. Stejné Analyzátor se použijí při indexování a vyhledávání pro toto pole. Například můžete mít samostatnými poli pro angličtinu, francouzštinu a španělština hotelu popisy, které existovat vedle sebe ve stejném indexu.  
+Jazykové Analyzátory se používají jako-je. Pro každé pole v definici indexu můžete nastavit **analyzátor** vlastnost na název analyzátor, který určuje jazyk a lingvistiky zásobníku (společnosti Microsoft nebo Lucene). Stejné Analyzátor se použijí při indexování a vyhledávání pro toto pole. Například můžete mít samostatnými poli pro angličtinu, francouzštinu a španělština hotelu popisy, které existovat vedle sebe ve stejném indexu. Alternativně namísto z **analyzátor**, můžete použít **indexAnalyzer** a **searchAnalyzer** mít různé analýzy pravidla při indexování čas a čas dotazování. 
 
-Použití **searchFields** parametr určíte, které pole specifické pro jazyk a hledejte proti v dotazech dotazu. Příklady dotazů, které obsahují vlastnost analyzátoru hledání dokumentů, můžete zkontrolovat. 
+Použití **searchFields** parametr určíte, které pole specifické pro jazyk a hledejte proti v dotazech dotazu. Příklady dotazů, které obsahují vlastnost analyzer můžete zkontrolovat [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
 Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Další informace o analýze ve službě Azure Search najdete v tématu [analyzátory ve službě Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
 

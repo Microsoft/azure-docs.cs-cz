@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 6821c2000efa4a03f803871d9b33272175f1265c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113239"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327761"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manageru
 
@@ -290,7 +290,7 @@ Několik prvků profil se používá při definování prostředku virtuálního
 
 ## <a name="disks-and-images"></a>Disky a Image
    
-V Azure, může představovat soubory virtuálního pevného disku [disků nebo imagí](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Operační systém v souboru virtuálního pevného disku se specializuje na konkrétní virtuální počítač, to se označuje jako disk. Operační systém v souboru virtuálního pevného disku je zobecněný se použije k vytvoření mnoha virtuálních počítačů, ho se označuje jako obrázek.   
+V Azure, může představovat soubory virtuálního pevného disku [disků nebo imagí](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Operační systém v souboru virtuálního pevného disku se specializuje na konkrétní virtuální počítač, to se označuje jako disk. Operační systém v souboru virtuálního pevného disku je zobecněný se použije k vytvoření mnoha virtuálních počítačů, ho se označuje jako obrázek.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Vytvoření nové virtuální počítače a nové disky, které z image platformy
 

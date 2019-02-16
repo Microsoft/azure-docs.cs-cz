@@ -9,11 +9,11 @@ ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
 ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193345"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331161"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Nákladově efektivní úložiště úrovně Standard a spravované a nespravované disky virtuálních počítačů Azure
 
@@ -115,7 +115,7 @@ Pokud používáte Storage úrovně Standard, platí následující aspekty fakt
 
 Velikosti označený hvězdičkou jsou aktuálně ve verzi preview.
 
-| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
+| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB) | 16,385 giB (16 TB) | 32 767 giB (32 TB) |
 

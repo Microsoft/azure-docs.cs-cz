@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/27/2018
+ms.date: 02/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 76281113c0d1e7b3943e137accf7aa93c2863fe6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 13d741d97e90b4aca40614d09f67538c479f67e3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435375"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312255"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
 
@@ -52,30 +52,9 @@ Než začnete s tímto kurzem:
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte sadu [Service Fabric SDK a modul PowerShellu](service-fabric-get-started.md).
 * Nainstalujte [modul Azure PowerShellu verze 4.1 nebo vyšší](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+* Projděte si klíčové koncepty [Azure clusterů](service-fabric-azure-clusters-overview.md)
 
-Provedením následujících postupů se vytvoří cluster Service Fabric s pěti uzly. Pokud chcete vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure, použijte [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/).
-
-## <a name="key-concepts"></a>Klíčové koncepty
-
-[Cluster Service Fabric](service-fabric-deploy-anywhere.md) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby. Clustery je možné škálovat na tisíce počítačů. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, například vlastnosti umístění.
-
-Typ uzlu definuje velikost, počet a vlastnosti pro sadu virtuálních počítačů v clusteru. Každý definovaný typ uzlu je nastavený jako [škálovací sada virtuálních počítačů](/azure/virtual-machine-scale-sets/), tedy výpočetní prostředek Azure, který se používá k nasazení a správě kolekce virtuálních počítačů jako sady. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. Typy uzlů se používají k definování rolí pro sadu uzlů clusteru, například „front-end“ nebo „back-end“.  Cluster může mít více než jeden typ uzlu, ale v případě produkčních clusterů musí existovat alespoň pět virtuálních počítačů primárního typu (nebo minimálně tři virtuální počítače v případě testovacích clusterů).  V uzlech primárního typu jsou umístěny [systémové služby Service Fabric](service-fabric-technical-overview.md#system-services).
-
-Cluster je zabezpečený pomocí certifikátu clusteru. Certifikát clusteru je certifikát X.509, který se používá k zabezpečení komunikace mezi uzly a k ověřování koncových bodů správy clusteru v klientovi pro správu.  Certifikát clusteru také poskytuje zabezpečení SSL pro rozhraní API pro správu prostřednictvím protokolu HTTPS a pro Service Fabric Explorer používaný prostřednictvím protokolu HTTPS. Pro testovací clustery jsou užitečné certifikáty podepsané svým držitelem.  Pro produkční clustery používejte certifikát clusteru od certifikační autority (CA).
-
-Certifikát clusteru musí:
-
-* obsahovat privátní klíč,
-* být vytvořen pro výměnu klíčů, tedy musí umožňovat export do souboru Personal Information Exchange (.pfx),
-* mít název subjektu odpovídající doméně, kterou používáte pro přístup ke clusteru Service Fabric. Tato shoda se vyžaduje kvůli zajištění zabezpečení SSL pro koncové body správy prostřednictvím protokolu HTTPS a pro Service Fabric Explorer clusteru. Není možné získat certifikát SSL od certifikační autority (CA) pro doménu .cloudapp.azure.com. Pro svůj cluster musíte získat název vlastní domény. Pokud požádáte o certifikát od certifikační autority, musí název subjektu certifikátu odpovídat názvu vlastní domény, který používáte pro svůj cluster.
-
-Ke správě certifikátů pro clustery Service Fabric v Azure se používá služba Azure Key Vault.  Když je cluster nasazený v Azure, poskytovatel prostředků Azure, který je zodpovědný za vytváření clusterů Service Fabric, si vyžádá certifikáty ze služby Key Vault a nainstaluje je do virtuálních počítačů v clusteru.
-
-Tento kurz ukazuje cluster s pěti uzly jednoho typu. V případě každého nasazení produkčního clusteru je však důležitým krokem [plánování kapacity](service-fabric-cluster-capacity.md). Zde je uvedeno několik bodů, které je vhodné vzít v úvahu v rámci procesu.
-
-* Počet uzlů a typy uzlů, které váš cluster potřebuje
-* Vlastnosti každého typu uzlu (například velikost, zda je primární, připojení k internetu a počet virtuálních počítačů)
-* Spolehlivost a odolnost clusteru
+Následující postupy vytvářejí sedm uzly clusteru Service Fabric. Pokud chcete vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure, použijte [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="download-and-explore-the-template"></a>Stažení a prozkoumání šablony
 
@@ -84,14 +63,14 @@ Stáhněte si následující soubory šablon Resource Manageru:
 * [azuredeploy.json][template]
 * [azuredeploy.parameters.json][parameters]
 
-Tato šablona nasadí do virtuální sítě a skupiny zabezpečení sítě zabezpečený cluster pěti virtuálních počítačů a jeden typ uzlu.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates).  Šablona [azuredeploy.json][template] nasadí řadu prostředků včetně následujících.
+Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tři typy uzlů do virtuální sítě a skupinu zabezpečení sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates).  Šablona [azuredeploy.json][template] nasadí řadu prostředků včetně následujících.
 
 ### <a name="service-fabric-cluster"></a>Cluster Service Fabric
 
 V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Windows s těmito charakteristikami:
 
-* jeden typ uzlu
-* pět uzlů primárního typu (možnost konfigurace v parametrech šablony)
+* tři typy uzlů
+* pět uzlů primárního typu (možnost konfigurace v parametrech šablony), jeden uzel v jiných typech dvěma uzly
 * Operační systém: Windows Server 2016 Datacenter s kontejnery (možnost konfigurace v parametrech šablony)
 * zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony)
 * [reverzní proxy server](service-fabric-reverseproxy.md) je povolen
@@ -133,6 +112,35 @@ V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená násled
 
 Pokud jsou potřebné další porty aplikací, je potřeba upravit prostředky **Microsoft.Network/loadBalancers** a **Microsoft.Network/networkSecurityGroups**, aby byl povolený příchozí provoz.
 
+### <a name="windows-defender"></a>Windows Defender
+Ve výchozím nastavení [antivirové ochrany v programu Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) je nainstalovaná a funkční v systému Windows Server 2016. Uživatelské rozhraní je nainstalované ve výchozím nastavení na některých jednotkách SKU, ale není potřeba.  Pro každý uzel typu/škálovací sady virtuálních počítačů deklarované v šabloně [Azure VM Antimalwarové rozšíření](/azure/virtual-machines/extensions/iaas-antimalware-windows) se používá k vyloučení adresáře Service Fabric a procesy:
+
+```json
+{
+"name": "[concat('VMIaaSAntimalware','_vmNodeType0Name')]",
+"properties": {
+        "publisher": "Microsoft.Azure.Security",
+        "type": "IaaSAntimalware",
+        "typeHandlerVersion": "1.5",
+        "settings": {
+        "AntimalwareEnabled": "true",
+        "Exclusions": {
+                "Paths": "D:\\SvcFab;D:\\SvcFab\\Log;C:\\Program Files\\Microsoft Service Fabric",
+                "Processes": "Fabric.exe;FabricHost.exe;FabricInstallerService.exe;FabricSetup.exe;FabricDeployer.exe;ImageBuilder.exe;FabricGateway.exe;FabricDCA.exe;FabricFAS.exe;FabricUOS.exe;FabricRM.exe;FileStoreService.exe"
+        },
+        "RealtimeProtectionEnabled": "true",
+        "ScheduledScanSettings": {
+                "isEnabled": "true",
+                "scanType": "Quick",
+                "day": "7",
+                "time": "120"
+        }
+        },
+        "protectedSettings": null
+}
+}
+```
+
 ## <a name="set-template-parameters"></a>Nastavení parametrů šablony
 
 Soubor s parametry [azuredeploy.parameters.json][parameters] deklaruje mnoho hodnot používaných pro nasazení clusteru a přidružených prostředků. Některé parametry, které možná budete muset upravit pro své nasazení:
@@ -152,6 +160,8 @@ Soubor s parametry [azuredeploy.parameters.json][parameters] deklaruje mnoho hod
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Nasazení virtuální sítě a clusteru
 
 Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona Resource Manageru [azuredeploy.json][template] vytvoří virtuální síť a také podsíť a skupinu zabezpečení sítě pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu.  Pro produkční clustery používejte certifikát clusteru od certifikační autority (CA). K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
+
+Šablona v tomto článku se nasadí cluster, který používá kryptografický otisk certifikátu pro identifikaci certifikátu clusteru.  Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje správy certifikátů. Přepínání nasazeném clusteru pomocí kryptografické otisky certifikátů k běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu.  Zjistěte, jak aktualizovat cluster používat běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [clusteru změnit na společný název správy certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Vytvoření clusteru s použitím existujícího certifikátu
 
@@ -264,5 +274,5 @@ Dále přejděte k následujícímu kurzu a naučte se svůj cluster škálovat.
 > [!div class="nextstepaction"]
 > [Škálování clusteru](service-fabric-tutorial-scale-cluster.md)
 
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Windows-1-NodeTypes-Secure-NSG/azuredeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Windows-1-NodeTypes-Secure-NSG/azuredeploy.parameters.json
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

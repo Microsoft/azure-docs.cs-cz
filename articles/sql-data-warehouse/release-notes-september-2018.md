@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 00d29ac1938a1abb63fca50afe3d66253a1e29bf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bd6531bc950e006f15924bb9a0d6428f9e69d544
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460722"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330830"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Září 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v září 2018.
@@ -24,6 +24,9 @@ Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje
 V dubnu 2018 [Microsoft oznámil](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2, která nabízí 5 × výkon, 5 x rozsah výpočetních prostředků, 4 x souběžnosti s neomezeným úložištěm. Jak je uvedeno v [datového skladu v cloudu srovnávací test](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) ve společnosti Gigaom, SQL Data Warehouse Gen2 **lepší výkon než Amazon Redshift 42 %**.
 
 Gen2 je teď obecně k dispozici na nižší vstupní bod z DWU500c díky tomu můžete řídit menší velikosti datového skladu nebo vývojové/testovací prostředí se všemi nejnovější vylepšení služby. Nový vstupní bod uchovává všechny funkce Gen2 včetně [adaptivní ukládání do mezipaměti](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/), [osvětlení rychle přesouvání dat](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)a jeho podpora [skladu dat v reálném čase](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/).
+
+## <a name="sql-vulnerability-assessment"></a>Posouzení ohrožení zabezpečení SQL
+[Posouzení ohrožení zabezpečení SQL (VA)](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/25/sql-vulnerability-assessment-now-supports-azure-sql-data-warehouse-and-azure-sql-database-managed-instance/) je snadno použitelné služba, která neustále monitoruje váš datový sklad. To vám pomůže zajistit vysokou úroveň zabezpečení za všech okolností a splňuje zásady vaší organizace. Poskytuje komplexního zabezpečení sestav společně s možností reakce nápravné kroky pro každý problém nalezeno. Tato sestava umožňuje snadno aktivně spravovat vaše zásadní roli zabezpečení databáze a zaměřit vaši pozornost na nejvyšší dopadu akce, i když nejste zabezpečení odborné. U dynamických prostředích, kde jsou změny časté a obtížné sledovat posouzení ohrožení zabezpečení je neocenitelný při řízení zjišťování nastavení, které můžete ponechat váš datový sklad zranitelný vůči útokům.
 
 ## <a name="improved-availability-with-query-restartability"></a>Lepší dostupnost s restartability dotazu
 Při provádění dotazu, může dojít, libovolný počet problémů, které může způsobit selhání dotazu. K výpadku sítě, selhání hardwaru nebo jiných odpojení může způsobit narušení. SQL Data Warehouse teď podporuje restartability dotazu pro krok nebo příkaz úrovni dotazů SELECT. 

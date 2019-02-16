@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d24dcc6f12347c66abc033f4c8b25c3b49870a44
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d5dd916f7e4434640db6dae6f8c5a73d1ff2d3e0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895767"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327955"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači s Linuxem pomocí portálu 
 Tento článek ukazuje, jak připojit nové i stávající disků pro virtuální počítač s Linuxem na webu Azure portal. Můžete také [připojení datového disku k virtuálnímu počítači s Windows na webu Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -29,8 +29,7 @@ Tento článek ukazuje, jak připojit nové i stávající disků pro virtuáln�
 Než budete disky připojit k virtuálnímu počítači, přečtěte si tyto typy:
 
 * Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Pokud chcete používat Premium storage, budete potřebovat virtuální počítač řady DS nebo GS-series. Pomocí těchto virtuálních počítačů můžete použít disky Standard i Premium. Premium storage je dostupné v určitých oblastech. Podrobnosti najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory .vhd uložené v Azure. Podrobnosti najdete v tématu [informace o discích a virtuálních pevných disků pro virtuální počítače](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory .vhd uložené v Azure. Podrobnosti najdete v tématu naše [Úvod do managed disks](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Po připojení disku, je nutné [připojení virtuálního počítače s Linuxem připojit nový disk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701916"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310053"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby Správce zařízení StorSimple pro zařízení StorSimple 8000 series
 
@@ -32,7 +32,7 @@ Tento kurz popisuje kroky potřebné k vytváření, odstraňování, migrace sl
 > [!NOTE]
 > -  Na webu Azure portal podporuje zařízení s verzí Update 5.0 nebo novější. Pokud zařízení není aktuální, nainstalujte aktualizaci 5 okamžitě. Další informace najdete v části [instalace aktualizace 5](storsimple-8000-install-update-5.md). 
 > - Pokud používáte cloudové zařízení StorSimple (8010/8020), cloudové zařízení nelze aktualizovat. Vytvořte nový cloud appliance s aktualizací Update 5.0 a převzetí služeb při selhání do nové cloudové zařízení, vytvořené pomocí nejnovější verze softwaru. 
-> - Všechna zařízení s verzí Update 4.0 nebo starší, budou mít [funkčnost správy omezená](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
+> - Všechna zařízení s verzí Update 4.0 nebo starší, budou mít omezenou správu funkce. 
 
 ## <a name="create-a-service"></a>Vytvoření služby
 Pokud chcete vytvořit službu StorSimple Device Manager, musíte mít:
@@ -127,7 +127,7 @@ Změna šifrovacího klíče dat služby je proces, krok 3:
 2. Použití Windows Powershellu pro StorSimple, zahajte změnu klíče šifrování dat služby.
 3. Pokud máte více než jednoho zařízení StorSimple, aktualizujte šifrovací klíč dat služby na jiných zařízeních.
 
-### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>Krok 1: Skript pomocí Windows Powershellu k ověření zařízení, které chcete změnit šifrovací klíč dat služby
+### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>Krok 1: Pomocí skriptu prostředí Windows PowerShell můžete autorizovat zařízení, které chcete změnit šifrovací klíč dat služby
 Správce zařízení obvykle bude požadovat, že autorizace služby Správce zařízení, které chcete změnit šifrovací klíče dat služby. Správce služeb bude potom budete autorizovat zařízení a změníte klíč.
 
 Tento krok se provádí pomocí skriptu založené na Azure Resource Manageru. Správce služeb můžete vybrat zařízení, které jsou způsobilé k autorizaci. Zařízení je pak ověřena ke spuštění procesu změny klíče šifrování dat služby. 
@@ -143,7 +143,7 @@ Předtím, než může být oprávnění k inicializaci klíče změny šifrová
 * Zařízení nejde autorizovat, zatímco probíhá výměna šifrovacího klíče dat služby.
 * Zařízení může autorizovat, když některé zařízení registrovaná ve službě máte převracet šifrování, zatímco jiné ne. 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Krok 2: Použití Windows Powershellu pro StorSimple k zahájení změny klíče šifrování dat služby
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Krok 2: Změnit pomocí Windows Powershellu pro StorSimple k zahájení šifrovací klíč dat služby
 Tento krok se provádí v prostředí Windows PowerShell pro StorSimple rozhraní na autorizované zařízení StorSimple.
 
 > [!NOTE]
@@ -176,7 +176,7 @@ Proveďte následující kroky a aktualizujete šifrování dat služby ve vaše
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Chcete-li aktualizovat šifrovací klíč dat služby na fyzických zařízeních
 1. Připojení ke konzole pomocí prostředí Windows PowerShell pro StorSimple. Výběrem možnosti 1 přihlaste s úplným přístupem.
 2. Na příkazovém řádku zadejte:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Poskytují šifrovací klíč dat služby, který jste získali v [krok 2: použití Windows Powershellu pro StorSimple k zahájení změny klíče šifrování dat služby](#to-initiate-the-service-data-encryption-key-change).
+3. Poskytují šifrovací klíč dat služby, který jste získali v [krok 2: Spusťte službu data šifrování klíče pomocí prostředí Windows PowerShell pro StorSimple](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Chcete-li aktualizovat šifrovací klíč dat služby na všechna 8010/8020 cloud Appliance
 1. Stažení a instalace [aktualizace CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) skript prostředí PowerShell. 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7b308f3298af436b6537234cff571759551a2d4e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7504d23cbaf8a497e6ea86b5a383413474c0d034
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221591"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329963"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 
@@ -177,7 +177,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 **Název virtuálního počítače**: Název virtuálního počítače nebo IP adresu, která se používá v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VMDK) připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
 
-**VM Compatibility**: Hodnoty jsou **Ano** a **Ano**\*. **Yes**\* je pro situace, kdy je virtuální počítač vhodný pro službu [Azure Premium Storage](https://aka.ms/premium-storage-workload). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Příklad:
+**VM Compatibility**: Hodnoty jsou **Ano** a **Ano**\*. **Ano** \* je pro situace, kdy je virtuální počítač vhodný pro [SSD disků premium](../virtual-machines/windows/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Příklad:
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.

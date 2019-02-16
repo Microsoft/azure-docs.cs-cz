@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cb868da60d56728e5d0c450ab362d6f381b90ea
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756559"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327778"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
 
@@ -249,7 +249,7 @@ ms.locfileid: "55756559"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -357,7 +357,7 @@ K určení správného množství místa pro tempfiles, můžete zkontrolovat ve
 ### <a name="storage-configuration"></a>Konfigurace úložiště
 Je podporován pouze jednou instancí Oracle pomocí systému souborů NTFS ve formátu disky. Všechny soubory databáze musí být uložen v systému souborů NTFS na Managed Disks (doporučeno) nebo na virtuálních pevných disků. Tyto disky jsou připojené k virtuálnímu počítači Azure, jsou založeny na [úložiště objektů blob stránky Azure](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) nebo [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
 
-Důrazně doporučujeme používat [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Také důrazně doporučujeme používat [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) pro vaše nasazení databáze Oracle.
+Důrazně doporučujeme používat [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Také důrazně doporučujeme používat [SSD disků premium](../../windows/disks-types.md) pro vaše nasazení databáze Oracle.
 
 Soubory Oracle Database nepodporuje síťové jednotky nebo vzdálených sdílených složkách, jako jsou služby Azure file. Další informace naleznete v tématu:
 
@@ -444,11 +444,11 @@ V takovém případě doporučujeme instalaci/vyhledání domovské Oracle, fáz
 
 ### <a name="storage-configuration"></a>Konfigurace úložiště
 
-Systémy souborů ext4, xfs nebo Oracle ASM se podporují pro soubory databáze Oracle v Azure. Všechny soubory databáze musí být uložen na těmto systémům souborů na základě virtuálních pevných disků nebo Managed Disks. Tyto disky jsou připojené k virtuálnímu počítači Azure, jsou založeny na [úložiště objektů blob stránky Azure](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) nebo [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Systémy souborů ext4, xfs nebo Oracle ASM se podporují pro soubory databáze Oracle v Azure. Všechny soubory databáze musí být uložen na těmto systémům souborů na základě virtuálních pevných disků nebo Managed Disks. Tyto disky jsou připojené k virtuálnímu počítači Azure, jsou založeny na [úložiště objektů blob stránky Azure](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) nebo [Azure Managed Disks](../../windows/managed-disks-overview.md).
 
-Pro Oracle Linux UEK jádrech minimálně UEK verze 4 je potřeba k podpoře [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms).
+Pro Oracle Linux UEK jádrech minimálně UEK verze 4 je potřeba k podpoře [Azure premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching).
 
-Důrazně doporučujeme používat [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Také důrazně doporučujeme používat [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) pro vaše nasazení databáze Oracle.
+Důrazně doporučujeme používat [Azure managed disks](../../windows/managed-disks-overview.md). Také doporučuje použití [Azure premium SSD](../../windows/disks-types.md) pro vaše nasazení databáze Oracle.
 
 Soubory Oracle Database nepodporuje síťové jednotky nebo vzdálených sdílených složkách, jako jsou služby Azure file. Další informace naleznete v následujících tématech: 
 

@@ -16,25 +16,25 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 791322c71b4d1b49e1367fb0f179e7b0513a1e94
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6788568510a0aa10a859236aebc3f3edb2de7527
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975649"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329602"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu
 
 Tento článek ukazuje, jak nové i stávající disky připojit k virtuálnímu počítači Windows pomocí prostředí PowerShell. 
 
 Poprvé přečtěte si tyto typy:
+
 * Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Pokud chcete používat Premium storage, bude nutné typu virtuálního počítače podporující Premium Storage jako řady DS nebo GS-series virtuálních počítačů. Další informace najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Pokud chcete použít disky premium SSD, bude nutné [povolené úložiště virtuálních počítačů typu premium](sizes-memory.md), jako je řady DS nebo GS-series virtuálních počítačů.
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Přidat prázdný datový disk k virtuálnímu počítači
 
@@ -61,11 +61,12 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Použití spravovaných disků v zóně dostupnosti
 Chcete-li vytvořit disk v zóně dostupnosti, použijte [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) s `-Zone` parametr. Následující příklad vytvoří disk v zóně *1*.
 
+Chcete-li vytvořit disk v zóně dostupnosti, použijte [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) s `-Zone` parametru. Následující příklad vytvoří disk v zóně *1*.
 
 ```powershell
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
-$location = 'East US 2' 
+$location = 'East US 2'
 $storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
@@ -78,10 +79,9 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-
 ### <a name="initialize-the-disk"></a>Inicializujte disk
 
-Po přidání prázdný disk bude potřeba inicializovat. Chcete-li inicializovat disk, můžete přihlásit k virtuálnímu počítači a použijte program Správa disků. Pokud jste povolili [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) a certifikát na virtuálním počítači při jeho vytváření, můžete použít vzdálený PowerShell inicializovat disk. Můžete také použít rozšíření vlastních skriptů: 
+Po přidání prázdný disk bude potřeba inicializovat. Chcete-li inicializovat disk, můžete přihlásit k virtuálnímu počítači a použijte program Správa disků. Pokud jste povolili [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) a certifikát na virtuálním počítači při jeho vytváření, můžete použít vzdálený PowerShell inicializovat disk. Můžete také použít rozšíření vlastních skriptů:
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -89,7 +89,7 @@ Po přidání prázdný disk bude potřeba inicializovat. Chcete-li inicializova
     $fileName = "script-file-name"
     Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
-        
+
 Soubor skriptu může obsahovat kód pro inicializaci disky, například:
 
 ```azurepowershell-interactive
@@ -109,10 +109,9 @@ Soubor skriptu může obsahovat kód pro inicializaci disky, například:
     }
 ```
 
-
 ## <a name="attach-an-existing-data-disk-to-a-vm"></a>Připojit stávající datový disk k virtuálnímu počítači
 
-Existujícího spravovaného disku k virtuálnímu počítači můžete připojit jako datový disk. 
+Existujícího spravovaného disku k virtuálnímu počítači můžete připojit jako datový disk.
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"

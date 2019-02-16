@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: d4c0bbdfb1afcef33727ba4b5b432c5de79168d4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495216"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327506"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -52,7 +52,7 @@ V následující tabulce jsou uvedeny některé rozdíly mezi místní implement
 > | **Plánovaná údržba** |Opravy a upgrady|[Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (opravy a upgrady spravuje Azure) |
 > | **Prostředek** |Vyhrazený  |Sdílet s ostatními klienty|
 > | **Oblasti** |Datová centra |[Párování oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
-> | **Úložiště** |Síť SAN nebo fyzických disků |[Spravované v Azure storage](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Storage** |Síť SAN nebo fyzických disků |[Spravované v Azure storage](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Škálování** |Vertikální škálování |Horizontální škálování|
 
 
@@ -131,7 +131,7 @@ Následující diagram znázorňuje vztah mezi propustnost a vstupně-výstupní
 ![Snímek obrazovky s propustností](./media/oracle-design/throughput.png)
 
 Propustnost sítě celkový počet je odhad na základě následujících informací:
-- SQL * Net provozu
+- SQL*Net traffic
 - MB/s x počet serverů (jako je Oracle Data Guard výstupní proud)
 - Dalších faktorů, jako je například aplikace replikace
 
@@ -146,19 +146,17 @@ Podle potřeby šířky pásma sítě, jsou různé typy brány můžete vybíra
 
 ### <a name="disk-types-and-configurations"></a>Typy disků a konfigurace
 
-- *Výchozí disky s operačním systémem*: těchto typů disků nevidí nabízejí trvalých dat a ukládání do mezipaměti. Jsou optimalizované pro přístup k operační systém při spuštění a nejsou určeny pro buď transakční nebo datového skladu (analytické) úlohy.
+- *Výchozí disky s operačním systémem*: Tyto typy disků poskytují trvalá data a ukládání do mezipaměti. Jsou optimalizované pro přístup k operační systém při spuštění a nejsou určeny pro buď transakční nebo datového skladu (analytické) úlohy.
 
-- *Nespravované disky*: pomocí těchto typů disků nevidí spravovat účty úložiště, které ukládají soubory virtuálního pevného disku (VHD), které odpovídají disky virtuálních počítačů. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště Azure.
+- *Nespravované disky*: Pomocí těchto typů disků nevidí spravovat účty úložiště, které ukládají soubory virtuálního pevného disku (VHD), které odpovídají disky virtuálních počítačů. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště Azure.
 
-- *Spravované disky*: spravuje účty úložiště, které používáte pro disky virtuálních počítačů Azure. Zadejte typ disku (premium nebo standard) a velikost disku, které potřebujete. Azure vytvoří a spravuje disk za vás.
+- *Spravované disky*: Azure slouží ke správě účtů úložiště, které používáte pro disky virtuálních počítačů. Zadejte typ disku (premium nebo standard) a velikost disku, které potřebujete. Azure vytvoří a spravuje disk za vás.
 
-- *Disky storage úrovně Premium*: těchto typů disků nevidí se nejlíp hodí pro úlohy v produkčním prostředí. Storage úrovně Premium podporuje disky virtuálních počítačů, které lze připojit na konkrétní virtuální počítače velikost series, jako je například řady DS, DSv2, GS a F virtuálních počítačů. Disk úrovně premium se dodává s jinou velikostí, a můžete si vybrat mezi disky od 32 GB do 4 096 GB. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači.
+- *Disky storage úrovně Premium*: Tyto typy disků se nejlíp hodí pro úlohy v produkčním prostředí. Storage úrovně Premium podporuje disky virtuálních počítačů, které lze připojit na konkrétní virtuální počítače velikost series, jako je například řady DS, DSv2, GS a F virtuálních počítačů. Disk úrovně premium se dodává s jinou velikostí, a můžete si vybrat mezi disky od 32 GB do 4 096 GB. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači.
 
 Při vytváření nového spravovaného disku z portálu, můžete použít **typ účtu** pro typ disku, kterou chcete použít. Mějte na paměti, že ne všechny dostupné disky jsou uvedeny v rozevírací nabídce. Po zvolení konkrétní velikosti virtuálního počítače, v nabídce se zobrazuje pouze storage úrovně premium dostupné skladové položky, které jsou založeny na danou velikost virtuálního počítače.
 
 ![Snímek obrazovky stránky spravovaného disku](./media/oracle-design/premium_disk01.png)
-
-Další informace najdete v tématu [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](https://docs.microsoft.com/azure/storage/storage-premium-storage).
 
 Po dokončení konfigurace úložiště na virtuálním počítači, můžete chtít načíst testování disky před vytvořením databáze. Znalost, rychlost vstupně-výstupní operace z hlediska latence a propustnosti vám může pomoct zjistit, jestli virtuální počítače podporují očekávané propustnosti s cíli latence.
 
@@ -190,17 +188,15 @@ Jakmile budete mít jasnou představu o vstupně-výstupní požadavky, můžete
 
 Existují tři možnosti pro použití mezipaměti u hostitele:
 
-- *Jen pro čtení*: všechny požadavky jsou uložené v mezipaměti pro budoucí čtení. Všechny zápisy jsou trvalé přímo do Azure Blob storage.
+- *Jen pro čtení*: Všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechny zápisy jsou trvalé přímo do Azure Blob storage.
 
-- *Čtení a zápis*: Toto je "čtení napřed" algoritmu. Čtení a zápisu jsou uložené v mezipaměti pro budoucí čtení. Zápisy non přímého zápisu jsou trvalé nejprve do místní mezipaměti. Pro SQL Server zůstávají zápisy do služby Azure Storage, protože používá přímého zápisu. Také poskytuje nejnižší latenci disku pro malé úlohy.
+- *Read-write*: Toto je "čtení napřed" algoritmu. Čtení a zápisu jsou uložené v mezipaměti pro budoucí čtení. Zápisy non přímého zápisu jsou trvalé nejprve do místní mezipaměti. Pro SQL Server zůstávají zápisy do služby Azure Storage, protože používá přímého zápisu. Také poskytuje nejnižší latenci disku pro malé úlohy.
 
-- *Žádný* (zakázáno): pomocí této možnosti můžete obejít mezipaměť. Všechna data je převedena na disk a ukládají do Azure Storage. Tato metoda nabízí nejvyšší sazba vstupně-výstupních operací pro úlohy náročné na vstupně-výstupních operací. Také je potřeba vzít v úvahu "transakční náklady".
+- *Žádný* (zakázáno): Když použijete tuto možnost, můžete obejít mezipaměť. Všechna data je převedena na disk a ukládají do Azure Storage. Tato metoda nabízí nejvyšší sazba vstupně-výstupních operací pro úlohy náročné na vstupně-výstupních operací. Také je potřeba vzít v úvahu "transakční náklady".
 
 **Recommendations** (Doporučení)
 
 Pro maximalizaci propustnosti, doporučujeme začít s **žádný** pro použití mezipaměti u hostitele. Pro Premium Storage, mějte "překážky" je nutné zakázat, když připojíte pomocí systému souborů **jen pro čtení** nebo **žádný** možnosti. Aktualizujte soubor /etc/fstab s UUID disky.
-
-Další informace najdete v tématu [Storage úrovně Premium pro virtuální počítače s Linuxem](https://docs.microsoft.com/azure/storage/storage-premium-storage#premium-storage-for-linux-vms).
 
 ![Snímek obrazovky stránky spravovaného disku](./media/oracle-design/premium_disk02.png)
 
@@ -217,12 +213,12 @@ Dalším krokem po nastavení a nakonfigurovat prostředí Azure je zabezpečen�
 
 - *Zásady skupiny zabezpečení sítě*: Skupina zabezpečení sítě může definovat podsítě a síťový adaptér Je jednodušší pro řízení přístupu na úrovni podsítě, jak pro zabezpečení a vynucené směrování pro takové věci, jako jsou brány firewall aplikací.
 
-- *Jumpbox*: lépe zabezpečit přístup, Správce by neměl připojit přímo k aplikační služby nebo databáze. Jumpbox slouží jako média mezi správce počítače a prostředky Azure.
+- *Jumpbox*: Pro lepší zabezpečení přístupu by neměl správci připojit přímo ke službě aplikace nebo databáze. Jumpbox slouží jako média mezi správce počítače a prostředky Azure.
 ![Snímek obrazovky stránky Jumpbox topologie](./media/oracle-design/jumpbox.png)
 
     Počítač správce by měl nabídnout IP omezený přístup k jumpboxu pouze. Jumpbox má přístup k aplikaci a databázi.
 
-- *Privátní síť* (podsítě): doporučujeme, aby aplikace služby a databáze v oddělených podsítích v tak lepší kontrolu můžete nastavit pomocí zásad skupiny zabezpečení sítě.
+- *Privátní síť* (podsítě): Doporučujeme, aby aplikace služby a databáze v oddělených podsítích v tak lepší kontrolu můžete nastavit pomocí zásad skupiny zabezpečení sítě.
 
 
 ## <a name="additional-reading"></a>Další čtení

@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686258"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308719"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -29,12 +29,12 @@ Většina základních výjimek a zpracování chyb, můžete použít *zásady 
 
 Toto jsou typy zásad opakování: 
 
-| Typ | Popis | 
+| Type | Popis | 
 |------|-------------| 
-| [**Výchozí**](#default-retry) | Tato zásada odešle až čtyři opakované pokusy probíhaly v [ *exponenciálně rostoucím* ](#exponential-retry) intervalech, které můžete škálovat 7.5 sekund, ale jsou omezené mezi 5 a nejvýše 45 sekund. | 
-| [**Exponenciální interval**](#exponential-retry)  | Tyto zásady vyčká náhodném intervalu vybrali geometrickou řadou rostoucí rozsah než pošle další požadavek. | 
-| [**Pevný interval**](#fixed-retry)  | Tato zásada počká zadaný interval, než pošle další požadavek. | 
-| [**None**](#no-retry)  | Není odešlete požadavek znovu. | 
+| **Výchozí** | Tato zásada odešle až čtyři opakované pokusy probíhaly v *exponenciálně rostoucím* intervalech, které můžete škálovat 7.5 sekund, ale jsou omezené mezi 5 a nejvýše 45 sekund. | 
+| **Exponenciální interval**  | Tyto zásady vyčká náhodném intervalu vybrali geometrickou řadou rostoucí rozsah než pošle další požadavek. | 
+| **Pevný interval**  | Tato zásada počká zadaný interval, než pošle další požadavek. | 
+| **Žádné**  | Není odešlete požadavek znovu. | 
 ||| 
 
 Informace o omezeních zásady opakování, naleznete v tématu [Logic Apps omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -69,21 +69,21 @@ Nebo můžete ručně zadat zásady opakovaných pokusů v `inputs` část pro a
 }
 ```
 
-*Vyžaduje*
+*Požadováno*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Type | Popis |
 |-------|------|-------------|
-| <*Typ zásad opakování*> | Řetězec | Typ zásad opakování, který chcete použít: `default`, `none`, `fixed`, nebo `exponential` | 
-| <*interval opakování*> | Řetězec | Interval opakování, ve kterém musí používat hodnotu [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval `PT5S` a maximální interval je `PT1D`. Při použití zásady s exponenciálním intervalem můžete určit různé minimální a maximální hodnoty. | 
-| <*opakované pokusy*> | Integer | Počet opakovaných pokusů, které musí být mezi 1 a 90 | 
+| <*retry-policy-type*> | String | Typ zásad opakování, který chcete použít: `default`, `none`, `fixed`, nebo `exponential` | 
+| <*retry-interval*> | String | Interval opakování, ve kterém musí používat hodnotu [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval `PT5S` a maximální interval je `PT1D`. Při použití zásady s exponenciálním intervalem můžete určit různé minimální a maximální hodnoty. | 
+| <*retry-attempts*> | Integer | Počet opakovaných pokusů, které musí být mezi 1 a 90 | 
 ||||
 
 *Volitelné*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Type | Popis |
 |-------|------|-------------|
-| <*minimální interval*> | Řetězec | Pro zásady s exponenciálním intervalem, nejmenší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*maximální interval*> | Řetězec | Pro zásady s exponenciálním intervalem, největší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimální interval*> | String | Pro zásady s exponenciálním intervalem, nejmenší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*maximum-interval*> | String | Pro zásady s exponenciálním intervalem, největší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Tady je další informace o typech jiné zásady.

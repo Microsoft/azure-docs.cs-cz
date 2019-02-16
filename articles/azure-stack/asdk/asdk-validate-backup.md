@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 02ecb3cdec9ddb07bf48dfe77d1ed5fbf07975e0
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 02/15/2019
+ms.openlocfilehash: 6fdec992b19a5615a35955a46fd90102890cde16
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965320"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329349"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Použít ASDK k ověření zálohování Azure stacku
 Po nasazení služby Azure Stack a zřizování uživatelů prostředky, jako jsou nabídky, plány, kvót a předplatných, měli byste [povolit zálohování infrastruktury Azure stacku](../azure-stack-backup-enable-backup-console.md). Plánování a spouštění pravidelných infrastruktura zálohování se zajistí, že infrastruktura správy nedojde ke ztrátě dat při katastrofických hardwaru nebo Chyba služby.
@@ -52,11 +52,11 @@ Před zahájením nasazení cloudu pro obnovení ASDK, ujistěte se, že máte n
 
 |Požadavek|Popis|
 |-----|-----|
-|Cesta ke sdílené složce záloh.|Cesty souboru UNC sdílené složky z poslední zálohy Azure Stack, který se použije k obnovení informací infrastruktury Azure stacku. Tato místní sdílená složka se vytvoří během procesu nasazení cloudu pro obnovení.|
-|Zálohování šifrovacího klíče.|Šifrovací klíč použitý k plánování infrastruktury zálohování pro spuštění pomocí portálu pro správu služby Azure Stack.|
-|ID zálohy k obnovení.|ID zálohy ve formuláři alfanumerické "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", který identifikuje zálohy obnovit během obnovení cloudu.|
-|IP adresa serveru čas.|Platný čas adresu IP serveru, jako je například 132.163.97.2, je vyžadován pro nasazení Azure Stack.|
-|Externí certifikát heslo.|Heslo pro externí certifikát používaný službou Azure Stack. Zálohování certifikační Autority obsahuje externí certifikáty, které je nutné obnovit s toto heslo.|
+|Cesta ke sdílené složce záloh|Cesty souboru UNC sdílené složky z poslední zálohy Azure Stack, který se použije k obnovení informací infrastruktury Azure stacku. Tato místní sdílená složka se vytvoří během procesu nasazení cloudu pro obnovení.|
+|Zálohování šifrovacího klíče|Volitelné. Vyžadováno pouze pokud jste provedli upgrade na verzi služby Azure Stack 1901 nebo novější z předchozí verze služby Azure Stack s povoleným zálohováním.|
+|ID zálohy k obnovení|ID zálohy ve formuláři alfanumerické "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", který identifikuje zálohy obnovit během obnovení cloudu.|
+|IP adresa serveru čas|Platný čas adresu IP serveru, jako je například 132.163.97.2, je vyžadován pro nasazení Azure Stack.|
+|Externí certifikát heslo|Heslo pro certifikát podepsaný svým držitelem privátní klíč (.pfx), který se použil k zabezpečení zálohování.|
 |     |     | 
 
 ## <a name="prepare-the-host-computer"></a>Příprava hostitelském počítači 
@@ -133,11 +133,12 @@ $certPass = Read-Host -AsSecureString
 ## <a name="restore-infrastructure-data-from-backup"></a>Infrastruktura data obnovit ze zálohy
 Po úspěšné cloudového nasazení pro obnovení, které potřebujete k dokončení obnovení pomocí **obnovení AzureStack** rutiny. 
 
-Po přihlášení jako operátory Azure stacku [instalaci Azure Stack Powershellu](asdk-post-deploy.md#install-azure-stack-powershell) a potom nahraďte ID zálohování `Name` parametru, spusťte následující příkaz:
+Po přihlášení jako operátory Azure stacku [instalaci Azure Stack Powershellu](asdk-post-deploy.md#install-azure-stack-powershell) a spusťte následující příkazy a zadat certifikát a heslo, které se použije při obnovování ze zálohy:
 
 ```powershell
 Restore-AzsBackup -Name "<BackupID>"
 ```
+
 Počkejte 60 minut po volání tuto rutinu spustit ověřovací data záloh do cloudu ASDK obnovení.
 
 ## <a name="next-steps"></a>Další postup

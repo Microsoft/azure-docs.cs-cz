@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 434971e707cdca62c76ede9f295e7af20aa4cc3f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387042"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313530"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu pro monitorování metrik a protokolů
 
@@ -276,7 +276,7 @@ Hodnota scheduledTransferPeriod | Frekvence, ve kterém jsou agregovaná metrika
 
 Ukázky z metrik uvedených v části čítače výkonu shromažďovaných každých 15 sekund nebo v ukázce ohodnotit explicitně definované čítače. Pokud se zobrazí několik hodnota scheduledTransferPeriod frekvence (jako v příkladu), každá agregace je vypočítán nezávisle na sobě.
 
-#### <a name="performancecounters"></a>Čítače výkonu
+#### <a name="performancecounters"></a>performanceCounters
 
 ```json
 "performanceCounters": {
@@ -316,7 +316,7 @@ type | Identifikuje skutečné zprostředkovatele metriky.
 Třída | Spolu s informací, že čítač"identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
 counter | Spolu s "třída" identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
 counterSpecifier | Identifikuje konkrétní metriky v rámci oboru názvů Azure metriky.
-condition | (volitelné) Vybere konkrétní instanci objektu, ke kterému metriku použije nebo vybere agregaci za všechny instance daného objektu. Další informace najdete v tématu [ `builtin` definice metrik](#metrics-supported-by-builtin).
+condition | (volitelné) Vybere konkrétní instanci objektu, ke kterému metriku použije nebo vybere agregaci za všechny instance daného objektu. Další informace najdete v tématu `builtin` definice metrik.
 sampleRate | JE 8601 interval, který nastaví četnost, kdy se shromažďují nezpracovaná ukázek pro tuto metriku. Pokud není nastavený, intervalem sběru hodnot nastavená hodnota [sampleRateInSeconds](#ladcfg). Nejkratší podporované vzorkovací frekvence je 15 sekund (PT15S).
 jednotka | By měla být jedna z těchto řetězců: "Count", "Bajtů", "Seconds", "Procenta", "CountPerSecond", "BytesPerSecond", "Milisekund". Definuje jednotku pro metriku. Spotřebitelé dat shromážděných očekávat, že hodnoty shromážděná data tak, aby odpovídala této jednotky. LAD ignoruje toto pole.
 displayName | Popisek (v jazyce určeném v nastavení národního prostředí přidružené) připojené k těmto datům v Azure metriky. LAD ignoruje toto pole.

@@ -8,24 +8,24 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/24/2017
 ms.author: kasinh
-ms.openlocfilehash: 830bf8603a495d1f2708f73cf090695f1b7a7c48
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f90650cc058697e4bf9e4a0710ada213fe3d9a1f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493928"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310827"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
 Řešení potíží s chybami, které zaznamenáte při používání Azure Backup serveru pomocí informací v následujících tabulkách.
 
-## <a name="invalid-vault-credentials-provided"></a>Neplatné přihlašovací údaje úložiště k dispozici 
+## <a name="invalid-vault-credentials-provided"></a>Neplatné přihlašovací údaje úložiště k dispozici
 
 Chcete-li tento problém vyřešit, postupujte podle [tyto kroky pro řešení potíží](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues).
 
-## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operace agenta se nezdařila kvůli chybě komunikace s službu DPM agent coordinator na serveru 
+## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operace agenta se nezdařila kvůli chybě komunikace s službu DPM agent coordinator na serveru
 
-Chcete-li tento problém vyřešit, postupujte podle [tyto kroky pro řešení potíží](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues). 
+Chcete-li tento problém vyřešit, postupujte podle [tyto kroky pro řešení potíží](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues).
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Instalační program nemohl aktualizovat metadata registru
 
@@ -34,7 +34,7 @@ Chcete-li tento problém vyřešit, postupujte podle [tyto kroky pro řešení p
 
 
 
-## <a name="installation-issues"></a>Problémy s instalací
+## <a name="installation-issues"></a>Potíže s instalací
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 |-----------|---------------|------------|
@@ -56,7 +56,7 @@ Chcete-li tento problém vyřešit, postupujte podle [tyto kroky pro řešení p
 | Konfigurace skupin ochrany | Aplikace DPM se nepodařil výčet součásti aplikace v chráněném počítači (název chráněného počítače). | Vyberte **aktualizovat** na obrazovce konfigurace skupiny ochrany uživatelského rozhraní na příslušné úrovni datasource/součásti. |
 | Konfigurace skupin ochrany | Ochranu nelze nakonfigurovat. | Pokud je chráněný server SQL server, ověřte, že oprávnění role správce byla poskytnutá těmto osobám systémový účet (NTAuthority\System) v chráněném počítači jak je popsáno v [v tomto článku](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx).
 | Konfigurace skupin ochrany | Není dostatek volného místa ve fondu úložiště pro tuto skupinu ochrany. | Disky, které jsou přidané do fondu úložiště [oddílu by neměla obsahovat](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Odstraňte všechny existující svazky na discích. Poté je přidejte do fondu úložiště.|
-| Změna zásad |Zásady zálohování se nepodařilo upravit. Chyba: Aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Zkuste prosím tuto operaci po uplynutí nějakou dobu. Pokud se problém nevyřeší, obraťte se na podporu Microsoftu. |**Příčina:**<br/>K této chybě dochází v části tří podmínek: Pokud jsou povolené nastavení zabezpečení, při pokusu zmenšit rozsah uchování nižší než minimální hodnoty dříve, a když jste v nepodporované verzi. (Nepodporovaná verze jsou u funkcí pod verzi Microsoft Azure Backup serveru 2.0.9052 a Azure Backup serveru update 1.) <br/>**Doporučená akce:**<br/> Chcete-li pokračovat s aktualizací související se zásadami, nastavte dobu uchování nad minimální období zadaná doba uchovávání. (Minimální doba uchování je sedm dní pro denní, čtyři týdny pro týdenní, tři týdny, než každý měsíc nebo jeden rok pro roční.) <br><br>Volitelně jiného upřednostňováno, že přístup je k aktualizaci agenta zálohování a Azure Backup Server využít všech aktualizací zabezpečení. |
+| Změna zásad |Zásady zálohování se nepodařilo upravit. Chyba: Aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Zkuste prosím tuto operaci po uplynutí nějakou dobu. Pokud se problém nevyřeší, obraťte se na podporu Microsoftu. | **Příčina:**<br/>K této chybě dochází v části tří podmínek: Pokud jsou povolené nastavení zabezpečení, při pokusu zmenšit rozsah uchování nižší než minimální hodnoty dříve, a když jste v nepodporované verzi. (Nepodporovaná verze jsou u funkcí pod verzi Microsoft Azure Backup serveru 2.0.9052 a Azure Backup serveru update 1.) <br/>**Doporučená akce:**<br/> Chcete-li pokračovat s aktualizací související se zásadami, nastavte dobu uchování nad minimální období zadaná doba uchovávání. (Minimální doba uchování je sedm dní pro denní, čtyři týdny pro týdenní, tři týdny, než každý měsíc nebo jeden rok pro roční.) <br><br>Volitelně jiného upřednostňováno, že přístup je k aktualizaci agenta zálohování a Azure Backup Server využít všech aktualizací zabezpečení. |
 
 ## <a name="backup"></a>Backup
 | Operace | Podrobnosti o chybě | Alternativní řešení |
@@ -71,6 +71,11 @@ Chcete-li tento problém vyřešit, postupujte podle [tyto kroky pro řešení p
 | Backup | Možné znovunastavení ochrany virtuálních počítačů VMware na nový Server Microsoft Azure Backup není uveden jako dostupné pro přidání. | Vlastnosti VMware jsou nasměrovaného na staré, vyřazené instance Microsoft Azure Backup serveru. Řešení tohoto problému:<br><ol><li>V systému VCenter (SC-VMM ekvivalent), přejděte na **Souhrn** kartu a potom do **vlastní atributy**.</li>  <li>Odstraňte název staré Microsoft Azure Backup serveru z **DPMServer** hodnotu.</li>  <li>Vraťte se do Microsoft Azure Backup serveru novou verzi a upravovat stránky  Po výběru **aktualizovat** tlačítko se zobrazí zaškrtávací políčko podle potřeby, přidejte do ochrany virtuálního počítače.</li></ol> |
 | Backup | Chyba při přístupu k soubory nebo sdílené složky | Zkuste upravit nastavení pro antivirovou ochranu jak je navrženo v článku na webu TechNet [spuštění antivirového softwaru na serveru DPM](https://technet.microsoft.com/library/hh757911.aspx).|
 | Backup | Selhání úlohy vytvoření bodu obnovení online pro virtuální počítač VMware. Aplikace DPM narazila na chybu ve VMware při pokusu získat informace o sledování změn ve. Kód chyby - FileFaultFault (ID 33621) |  <ol><li> Resetování CTK ve VMware příslušných virtuálních počítačích.</li> <li>Zkontrolujte, že nezávislé disku není místo ve VMware.</li> <li>Zastavte ochranu pro ovlivněné virtuální počítače a znovu nastavit ochranu s **aktualizovat** tlačítko. </li><li>Spuštění kopie pro ovlivněné virtuální počítače.</li></ol>|
+
+## <a name="restore"></a>Obnovení
+| Operace | Podrobnosti o chybě | Alternativní řešení |
+| --- | --- | --- |
+| Obnovení | **Kód chyby:**: Chyba CBPServerRegisteredVaultDontMatchWithCurrent/trezoru přihlašovací údaje: 100110 <br/> <br/>**Chybová zpráva**: Zadané přihlašovací údaje trezoru se liší od trezor, který server je zaregistrovaný. | **Příčina:** K tomuto problému dochází, když se pokoušíte obnovit soubory z původního serveru pomocí možnosti externí DPM pro obnovení na alternativní server, a pokud nejsou přidruženy stejný server, který se obnovuje a původní server z zálohovaná data byla Trezor služby Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li vyřešit tento problém zajistit jak původní a alternativní server byly zaregistrovány do stejného trezoru.|
 
 
 ## <a name="change-passphrase"></a>Změnit heslo

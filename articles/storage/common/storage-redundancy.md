@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506783"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330779"
 ---
 # <a name="azure-storage-redundancy"></a>Azure redundance úložiště
 
@@ -48,7 +48,7 @@ Informace o cenách pro jednotlivé možnosti redundance, naleznete v tématu [c
 Informace o službě Azure Storage záruky dostupnosti a odolnosti najdete v článku [SLA pro Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Premium Storage podporuje jen místně redundantní úložiště (LRS). Informace o službě Premium Storage najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
+> Premium Storage podporuje jen místně redundantní úložiště (LRS).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
 Můžeme vám umožňují změnit strategie replikace účtu úložiště pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden mnoho [ Klientské knihovny Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.

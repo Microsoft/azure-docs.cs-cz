@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0fe4bef436576bec90d1d770d262c2c22d280a3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694580"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310546"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurace vlastního názvu domény pro váš účet úložiště Azure
 
@@ -56,7 +56,7 @@ Druhá metoda používá také záznamy CNAME. Výpadky, ale nejprve využívá 
 
 Mapování vlastní domény do koncového bodu objektu blob může způsobit na krátkou dobu výpadku během registrace domény v [webu Azure portal](https://portal.azure.com). Pokud domény aktuálně podporuje aplikace s smlouvu o úrovni služeb (SLA), která nevyžaduje žádný výpadek, použijte Azure *asverify* subdoménu jako krok zprostředkující registrace. Tento krok zajistí, že uživatelé během mapování DNS přístup vaší domény.
 
-Se věnuje metodě zprostředkující [registrace vlastní domény s použitím *asverify* subdoménu](#register-a-custom-domain-using-the-asverify-subdomain).
+Zprostředkující metoda se věnujeme v registrace vlastní domény s použitím *asverify* subdomény.
 
 ## <a name="register-a-custom-domain"></a>Registrace vlastní domény
 Registrace domény pomocí postupu v této části, je-li použít následující příkazy:
@@ -65,7 +65,7 @@ Registrace domény pomocí postupu v této části, je-li použít následujíc�
 
 Azure DNS můžete použít ke konfiguraci vlastního názvu DNS pro úložiště objektů Blob v Azure. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage).
 
-Pokud vaši vlastní doménu aktuálně podporuje aplikace, která nemůže mít žádné výpadky, použijte postup v [zaregistrovat se pomocí vlastní domény *asverify* subdomény](#register-a-custom-domain-using-the-asverify-subdomain).
+Pokud vaši vlastní doménu aktuálně podporuje aplikace, která nemůže mít žádné výpadky, pomocí postupu v registru pro vlastní doménu *asverify* subdomény.
 
 Konfigurace vlastního názvu domény, vytvořte nový záznam CNAME v DNS. Určuje záznam CNAME, alias pro název domény. V našem příkladu mapuje adresu vaši vlastní doménu na koncový bod vašeho účtu úložiště Blob storage.
 

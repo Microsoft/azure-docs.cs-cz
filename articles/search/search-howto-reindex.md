@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1d9dffe9d311674aeb043fcc4c35110775f420af
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 907ab5cd3272a3d3f64dcfd7c9628a609f4db2f4
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300801"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327642"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Postup opětovné sestavení indexu Azure Search
 
@@ -29,22 +29,23 @@ Rozdíl od znovu sestaví, které převést do režimu offline, index *aktualiza
 | Podmínka | Popis |
 |-----------|-------------|
 | Změna definice pole | Úprava pole název, datový typ nebo konkrétní [atributy indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, kategorizovatelné) vyžaduje úplné opětovné sestavení. |
-| Analyzátor přidání do pole | [Analyzátory](search-analyzers.md) jsou definovány v indexu a poté přiřazeny k polím. Analyzátor do indexu můžete přidat kdykoli, ale analyzátor lze přiřadit pouze při vytváření pole. To platí pro obě **analyzátor** a **indexAnalyzer** vlastnosti. **SearchAnalyzer** vlastnost je výjimku.
+| Analyzátor přidání do pole | [Analyzátory](search-analyzers.md) jsou definovány v indexu a poté přiřazeny k polím. Nový analyzátor do indexu můžete přidat kdykoli, ale můžete jenom *přiřadit* analyzátor při vytváření pole. To platí pro obě **analyzátor** a **indexAnalyzer** vlastnosti. **SearchAnalyzer** vlastnost je výjimku. |
+| Aktualizace nebo odstranění analyzátor konstrukce | Nejde odstranit ani změnit existující komponenty analýzy (Analyzátor, tokenizátor, token filtru nebo char filtr), není-li znovu sestavit celý index. |
 | Přidání pole modulu pro návrhy | Pokud pole již existuje a chcete, a přidejte ji tak [moduly pro návrhy](index-add-suggesters.md) vytvořit, je nutné znovu sestavit index. |
-| Odstranění pole | Fyzicky vyjměte všechna trasování pole, budete muset znovu sestavte index. Když okamžité opětovné sestavení se neshoduje s postupy, Většina vývojářů upravovat kód aplikace můžete zakázat přístup do pole "odstraněné". Fyzicky definici pole a obsah zůstane v indexu až do další sestavení pomocí schématu, která vynechává pole dotyčný. |
+| Odstranění pole | Fyzicky vyjměte všechna trasování pole, budete muset znovu sestavte index. Při okamžité opětovné sestavení není praktické, můžete upravit kód aplikace můžete zakázat přístup do pole "odstraněné". Fyzicky definici pole a obsah zůstane v indexu až do další sestavení pomocí schématu, která vynechává pole dotyčný. |
 | Přepnutí úrovně | Pokud budete potřebovat větší kapacitu, není žádný místní upgrade. Vytvoření nové služby na nový bod kapacity a musí být sestaveny indexy od nuly v nové službě. |
 
-Další změny můžete provést bez dopadu na existující fyzické struktury. Konkrétně, proveďte následující změny *není* označení opětovné sestavení indexu:
+Další změny můžete provést bez dopadu na existující fyzické struktury. Konkrétně, proveďte následující změny *není* vyžadují opětovné sestavení indexu:
 
 + Přidání nového pole
-+ Nastavte **Retrievable** atribut existujícího pole
++ Nastavte **retrievable** atribut existujícího pole
 + Nastavte **searchAnalyzer** na existující pole
-+ Přidat, aktualizovat nebo odstranit v indexu konstruktu uvedeném analyzátoru
++ Přidat novou konstrukci analyzátor v indexu
 + Přidat, aktualizovat nebo odstranit bodovací profily
 + Přidání, aktualizace nebo odstranění nastavení CORS
 + Přidání, aktualizace nebo odstranění synonymMaps
 
-Při přidání nového pole disponují existující indexovaných dokumentů pro nové pole hodnotu null. Při aktualizaci dat nahradit hodnoty z externího zdroje dat hodnoty Null přidal Azure Search.
+Při přidání nového pole disponují existující indexovaných dokumentů pro nové pole hodnotu null. Při aktualizaci dat nahradit hodnoty z externího zdroje dat hodnoty Null přidal Azure Search. Další informace o aktualizaci indexování obsahu, najdete v části [přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
 ## <a name="partial-or-incremental-indexing"></a>Částečné nebo přírůstkové indexování
 

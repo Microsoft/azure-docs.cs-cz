@@ -8,23 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 81e846c6ffc0361b7154c962dbc047b9e5ae55e7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1056b8be113d56342aea8f83d5325737f7ecb93b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872981"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308447"
 ---
 # <a name="face-detection-with-computer-vision"></a>Rozpoznávání tváře se pro počítačové zpracování obrazu
 
-Počítačové zpracování obrazu detekuje lidské tváře v obrázku a generuje věk, pohlaví a rámeček pro každé zjištěné rozpoznávání tváře. Počítačové zpracování obrazu poskytuje podmnožinu funkcí, které najdete ve službě [Rozpoznávání tváře](/azure/cognitive-services/face/), kterou můžete využít k podrobnější analýze, například identifikaci tváří a rozpoznávání pózy.  
+Počítačové zpracování obrazu můžete detekovat lidské tváře v obrázku a generovat věk, pohlaví a rámeček pro každé zjištěné rozpoznávání tváře. 
+
+> [!NOTE]
+> Tato funkce také nabízí Azure [pro rozpoznávání tváře](/azure/cognitive-services/face/) služby. Zobrazit tuto alternativu pro podrobnější analýzu, včetně identifikace tváře pro rozpoznávání tváře a představovat zjišťování. 
 
 ## <a name="face-detection-examples"></a>Příklady rozpoznávání tváře
 
-První příklad ukazuje odpověď JSON vrátil pro počítačové zpracování obrazu pro image obsahující jeden lidské tváře.
+Následující příklad ukazuje odpověď JSON vrátil pro počítačové zpracování obrazu pro image obsahující jeden lidské tváře.
 
 ![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png)
 
@@ -51,7 +54,7 @@ První příklad ukazuje odpověď JSON vrátil pro počítačové zpracování 
 }
 ```
 
-Druhý příklad ukazuje odpověď JSON pro image obsahující několik lidských tváří.
+Následující příklad ukazuje odpověď JSON pro image obsahující několik lidských tváří.
 
 ![Pro zpracování obrazu analyzovat rodinných fotografií pro rozpoznávání tváře](./Images/family_photo_face.png)
 
@@ -110,4 +113,4 @@ Druhý příklad ukazuje odpověď JSON pro image obsahující několik lidskýc
 
 ## <a name="next-steps"></a>Další postup
 
-Seznamte se s koncepty [zjišťování obsahu specifického pro doménu](concept-detecting-domain-content.md).
+Zobrazit [analyzovat Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) referenční dokumentaci se dozvíte další informace o tom, jak používat funkce rozpoznávání tváře.

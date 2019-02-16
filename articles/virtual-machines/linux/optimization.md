@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: e983ae549664abf46de256e987e09191a2a44c0f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728516"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327362"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytvoření virtuálního počítače s Linuxem (VM) je snadné provést z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit jste ho nastavili optimalizace jeho výkonu na platformě Microsoft Azure. Toto téma používá virtuální počítač s Ubuntu Server, ale můžete také vytvořit virtuální počítač Linux pomocí [svých vlastních imagí jako šablony](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -34,7 +34,7 @@ Toto téma předpokládá, že již máte funkční předplatného Azure ([regis
 Po vytvoření virtuálního počítače s Linuxem v Azure má dva disky, které s ním spojená. **/ dev/sda** je disk s operačním systémem **/dev/sdb** je dočasný disk.  Nepoužívejte hlavní disk s operačním systémem (**/dev/sda**) pro všechno, co s výjimkou operačního systému, protože je optimalizovaný pro rychlé spuštění virtuálního počítače a neposkytuje dostatečný výkon pro vaše úlohy. Chcete se připojit jeden nebo víc disků k virtuálnímu počítači k získání trvalého a optimalizované úložiště pro vaše data. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Přidání disků pro velikost a výkonnostní cíle
-Na základě velikosti virtuálního počítače můžete připojit až 16 další disky na A-Series, 32 disky v D-Series a strojové 64 disků na G-Series – každá až do velikosti 1 TB. Podle potřeby za prostor a požadavky na vstupně-výstupních operací, přidejte další disky. Každý disk má cíl výkonnosti 500 iops pro úložiště úrovně Standard a maximálně 5000 IOps na disku pro Premium Storage.  Další informace o discích Premium Storage najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../windows/premium-storage.md)
+Na základě velikosti virtuálního počítače můžete připojit až 16 další disky na A-Series, 32 disky v D-Series a strojové 64 disků na G-Series – každá až do velikosti 1 TB. Podle potřeby za prostor a požadavky na vstupně-výstupních operací, přidejte další disky. Každý disk má cíl výkonnosti 500 iops pro úložiště úrovně Standard a maximálně 5000 IOps na disku pro Premium Storage.
 
 K dosažení nejvyšší počet IOps na disky Premium Storage, kde jejich nastavení mezipaměti nebyly nastaveny na hodnotu **jen pro čtení** nebo **žádný**, je nutné zakázat **bariéry** při připojení systém souborů v systému Linux. Protože jsou zápisy na disky Premium Storage zajišťuje trvalé pro tato nastavení mezipaměti nepotřebujete překážek.
 
@@ -131,9 +131,8 @@ Pokud vaše úlohy vyžadují další vstupně-výstupních operací, než můž
 ## <a name="next-steps"></a>Další kroky
 Mějte na paměti, jak se všechny diskuse optimalizace, je potřeba provést testy před a po každé změně měřit dopad, který má tato změna.  Optimalizace je proces krok za krokem, který má odlišné výsledky v různých počítačích ve vašem prostředí.  Co funguje u jedné konfigurace, nemusí fungovat pro ostatní uživatele.
 
-Několik užitečných odkazů pro další zdroje informací: 
+Několik užitečných odkazů pro další zdroje informací:
 
-* [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](premium-storage.md)
 * [Uživatelská příručka k Azure Linux Agent](../extensions/agent-linux.md)
 * [Optimalizace výkonu MySQL na virtuálních počítačích Azure s Linuxem](classic/optimize-mysql.md)
 * [Konfigurace softwarového pole RAID v Linuxu](configure-raid.md)

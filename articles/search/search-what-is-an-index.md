@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: fd5f58a03ffd054e79f1ff4ea6d61c33c06b6e7c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9cd43172fc57443cc89f238e1d4ffaae45301936
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268545"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330558"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Vytvoření základní indexu ve službě Azure Search
 
@@ -110,7 +110,10 @@ Schéma index Azure Search se skládá z následujících elementů.
 }
 ```
 
-## <a name="fields-collection-and-attribution"></a>Kolekce polí a přidělení
+<a name="fields-collection"></a>
+
+## <a name="fields-collection-and-field-attributes"></a>Atributy pole kolekce a pole
+
 Při definování schématu musíte zadat název, typ a atributy každého pole v indexu. Typ pole klasifikuje data, která jsou v tomto poli uložená. Atributy se nastavují u jednotlivých polí a určují, jak se příslušné pole použije. Následující tabulky poskytují výčet typů a atributů, které můžete zadat.
 
 ### <a name="data-types"></a>Typy dat
@@ -139,7 +142,7 @@ Podrobnější informace o [datových typech podporovaných službou Azure Searc
 
 Podrobnější informace o [atributech indexu služby Azure Search najdete tady](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
-## <a name="storage-implications-of-index-attributes"></a>Úložiště důsledcích atributy indexu
+## <a name="storage-implications"></a>Důsledky úložiště
 
 Atributy, které jste vybrali mít vliv na úložiště. Na následujícím snímku obrazovky je ilustraci indexu úložiště vzory vyplývající z různých kombinací atributů. Index je založen na [ukázkové vestavěné realestate](search-get-started-portal.md) zdroj dat, který může indexování a dotazování na portálu.
 
@@ -147,7 +150,9 @@ Filtrování a řazení operace dotazu na přesné shody, dokumenty se ukládaj�
 
 ![Index velikost na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "indexu velikost na základě výběru atributu")
 
-Implementace úložiště se považuje za podrobnosti implementace služby Azure Search a může změnit bez předchozího upozornění. Není zaručeno, že se v budoucnu zachová aktuální chování.
+Některé z těchto kombinace jsou umělé, užitečné pro osvětlení bod, ale nebude mít za následek přijatelné indexu. V praxi by nikdy přidejte každý jednoho pole modulu pro návrhy nebo vytvořit index, který je prohledávatelné, ale ne retrievable.
+
+Architektura úložiště se považuje za podrobnosti implementace služby Azure Search a může změnit bez předchozího upozornění. Není zaručeno, že se v budoucnu zachová aktuální chování.
 
 ## <a name="suggesters"></a>Moduly pro návrhy
 Modulu pro návrhy je část schéma definující, která pole v indexu se používá pro podporu automatického dokončování nebo našeptávání dotazů při hledání. Obvykle částečné řetězce se odesílají do návrhy (Azure Search Service REST API), zatímco uživatel je zadání vyhledávacího dotazu a rozhraní API vrátí sadu navrhovaných sousloví. 

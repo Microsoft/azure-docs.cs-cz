@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 6d827e1142fa17b29633c98c062fd204f7a49e36
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729724"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329247"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stáhněte si VHD s Linuxem z Azure
 
-V tomto článku se dozvíte, jak stáhnout [Linux virtuálního pevného disku (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) souborů z Azure pomocí Azure CLI a webu Azure portal. 
+V tomto článku se dozvíte, jak stáhnout soubor virtuálního pevného disku (VHD) Linuxem z Azure pomocí Azure CLI a webu Azure portal. 
 
 Pokud jste tak již neučinili, nainstalujte [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
@@ -72,7 +72,7 @@ Stáhněte soubor virtuálního pevného disku, budete muset vygenerovat [sdíle
 2.  Vyberte disk s operačním systémem virtuálního počítače a potom klikněte na tlačítko **exportovat**.
 3.  Klikněte na tlačítko **generování adresy URL**.
 
-    ![Generování adresy URL](./media/download-vhd/export-generate.png)
+    ![Vygenerovat URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Stažení virtuálního pevného disku
 

@@ -2,14 +2,14 @@
 author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 031b9497cceee3cdf178b15d37676ad274930248
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: d5d1d744b064bc015bf2a4d708f4b227e6d68e5c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284404"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56323362"
 ---
 ## <a name="get-the-training-and-prediction-keys"></a>Získání tréninkového klíče a klíče předpovědi
 

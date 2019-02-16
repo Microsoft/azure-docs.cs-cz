@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6a4d20073275e3d858cecb73c2e95c97ea53a647
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979101"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311966"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnery Dockeru pro rozpoznávání tváře
 
@@ -29,11 +29,11 @@ Nastavení kontejneru jsou [hierarchické](#hierarchical-settings) a lze ji nast
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
+> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _pro rozpoznávání tváře_ prostředek určený pro [ `Billing` ](#billing-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _pro rozpoznávání tváře_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
 
 Toto nastavení najdete v následujícím místě:
 

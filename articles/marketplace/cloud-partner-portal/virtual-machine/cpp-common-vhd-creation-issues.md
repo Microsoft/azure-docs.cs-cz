@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
-ms.openlocfilehash: 535a947f7a4b9c750d585ce854a14be80c4a135c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 381f88c4641417bceca0f988d4b1a187aedaa642
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639634"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327302"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Běžné problémy při vytváření virtuálního pevného disku (FAQ)
 
@@ -27,7 +27,7 @@ Následující nejčastější dotazy (FAQ) titulní běžné problémy při do�
 
 ## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>Jak vytvořit virtuální počítač z portálu Azure pomocí virtuálního pevného disku, který se nahraje do služby storage úrovně premium?
 
-Azure Marketplace v současné době nepodporuje vytvoření nabídky virtuálních počítačů z imagí umístěných na spravovaného úložiště nebo ze služby Azure Premium Storage.  Další informace o těchto možnostech úložiště najdete v tématu [Přehled služby Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) a [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).
+Azure Marketplace v současné době nepodporuje vytvoření nabídky virtuálních počítačů z imagí umístěných na spravovaného úložiště nebo ze služby Azure Premium Storage.  Další informace o těchto možnostech úložiště najdete v tématu [Přehled služby Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 
 ## <a name="can-you-use-generation-2-vms-for-offers"></a>Můžete použít pro nabídky virtuální počítače generace 2?
@@ -73,7 +73,7 @@ Ano, pokud je hostovaná v Azure.  Azure přiřadí jedinečný identifikátor s
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Ve virtuálním počítači jak se spravují pomocí rozšíření vlastních skriptů v úloze po spuštění?
 
-Následující článek podrobně popisuje, jak použít rozšíření vlastních skriptů pomocí modulu Azure PowerShell, šablon Azure Resource Manageru a podrobnosti o řešení potíží v systémech Windows: [vlastní skript rozšíření pro Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+Následující článek podrobně popisuje, jak použít rozšíření vlastních skriptů pomocí modulu Azure PowerShell, šablon Azure Resource Manageru a podrobnosti o řešení potíží v systémech Windows: [Rozšíření vlastních skriptů pro Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Jsou 32bitových aplikací nebo služeb se podporuje na webu Azure Marketplace?
@@ -83,7 +83,7 @@ V obecně to možné není.  Podporované operační systémy a standardní slu�
 Další informace najdete v následujících článcích:
 - [Spuštění 32bitové aplikace](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
 - [Podpora pro 32bitové operační systémy ve službě Azure virtual machines](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
-- [Podpora serverového softwaru Microsoftu pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
+- [Podpora serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 
 ## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Pokaždé, když se snažím vytvořit image ze své virtuální pevné disky, zobrazí chyba `.VHD is already registered with image repository as the resource` v prostředí PowerShell. Nebyl vytvořen žádný obrázek před ani nebyla v Azure najít žádné image s tímto názvem. Jak vyřešit tento problém?

@@ -8,47 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 85a8bcaeecc998a2020a657e6944a18c82a0159e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c29ea46513624215421845b99bd8306b73a5a9ac
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860163"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309008"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Generování miniatur pomocí rozhraní REST API a Python v počítačové zpracování obrazu
 
-V tomto rychlém startu vygenerujete pomocí rozhraní REST API počítačového zpracování obrazu miniaturu obrázku. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
-
-Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
-
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+V tomto rychlém startu vygeneruje miniaturu z image pomocí rozhraní REST API pro počítačové zpracování obrazu. S [získat miniaturu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metodu, můžete určit požadovanou výšku a šířku a pro počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
-
-## <a name="prerequisites"></a>Požadavky
-
-- Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
 - Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Editor kódu, jako [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pokud chcete vytvořit a spustit ukázku, postupujte takto:
-
-1. Zkopírujte do textového editoru následující kód.
-1. Proveďte v kódu na příslušných místech následující změny:
-    1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
-    1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
-    1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, pro který chcete vygenerovat miniaturu.
-1. Uložte kód jako soubor s příponou `.py`. Například, `get-thumbnail.py`.
-1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-thumbnail.py`.
+Vytvoření a spuštění ukázky, zkopírujte následující kód do editoru kódu. 
 
 ```python
 import requests
@@ -92,13 +75,27 @@ plt.axis("off")
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 ```
 
+Potom postupujte takto:
+1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
+1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, pro který chcete vygenerovat miniaturu.
+1. Uložte kód jako soubor s příponou `.py`. Například, `get-thumbnail.py`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-thumbnail.py`.
+
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí jako binární data, která představují data miniatury obrázku. Pokud je požadavek úspěšný, vygeneruje se z binárních dat v odpovědi miniatura a ukázka ji zobrazí. Pokud požadavek selže, odpověď se zobrazí v okně příkazového řádku. Odpověď požadavku, který selhal, bude obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo.
+Úspěšná odpověď se vrátí jako binární data, která představuje data bitové kopie pro miniaturu. Ukázka by se zobrazit tuto bitovou kopii. Pokud požadavek selže, odpověď se zobrazí v okně příkazového řádku a může obsahovat kód chyby.
+
+## <a name="run-in-jupyter-optional"></a>Spuštění v Jupyter (volitelné)
+
+V tomto rychlém startu můžete případně spustit krok za krokem způsobem pomocí poznámkového bloku Jupyter na [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
+
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Dále si můžete přečíst podrobnější informace o funkci generování miniatur.
 
 > [!div class="nextstepaction"]
-> [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)
+> [Generování miniatur](../concept-generating-thumbnails.md)

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6cdc7ef8ee991719153f6daed01fbb76f945a7a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e233de6f0909477e5033d2a0104f9165e86a9077
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194933"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Kurz: Integrace Azure Active Directory s síti na pracovišti ve službě Facebook.
 
@@ -143,31 +143,38 @@ Ke konfiguraci Azure AD jednotné přihlašování s síti na pracovišti ve slu
 
 1. V jiné okno webového prohlížeče, přihlaste se k pracovišti lokalitou Facebooku společnosti jako správce.
   
-   > [!NOTE]
-   > Jako součást procesu ověřování SAML můžou využívat pracoviště řetězce dotazu ve velikosti až 2.5 kB k předání parametrů do služby Azure AD.
+    > [!NOTE]
+    > Jako součást procesu ověřování SAML můžou využívat pracoviště řetězce dotazu ve velikosti až 2.5 kB k předání parametrů do služby Azure AD.
 
-2. V **panelem správce pro**, přejděte **zabezpečení** kartě pak **ověřování**.
+2. V **panelem správce pro**, přejděte **zabezpečení** kartu.
 
-3. V části **ověřování SAML**vyberte **jednotného přihlašování pouze** z rozevíracího seznamu.
+    ![Panelem správce pro](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-4. Vstupní hodnoty zkopírovány z **pracoviště podle konfigurace sítě Facebook** tématu na webu Azure portal do odpovídajícího pole:
+3. V části **ověřování** kartu, vyberte možnost **jednotné přihlašování (SSO)** a proveďte následující kroky:
 
-    * V **adresu URL SAML** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
-    * V **textového pole URL vystavitele SAML**, vložte hodnotu **Azure Ad identifikátor**, který jste zkopírovali z portálu Azure portal.
-    * V **SAML odhlášení přesměrovat** (volitelné), vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
-    * Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **certifikát SAML** textového pole.
+    ![Kartu ověřování](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-5. Budete muset zadat adresu URL cílové skupiny, adresa URL příjemce, a podle adresy URL služby ACS (Assertion Consumer Service) **základní konfiguraci SAML** oddílu.
+    a. V **adresu URL SAML** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-6. Přejděte do dolní části a klikněte na tlačítko **Test jednotného přihlašování** tlačítko. Zobrazí se tato výsledky v automaticky otevíraném okně zobrazovaných s přihlašovací stránku Azure AD. Zadejte svoje přihlašovací údaje v jako za normálních okolností k ověření.
+    b. V **identifikátor URI vystavitele SAML textbox**, vložte hodnotu **Azure Ad identifikátor**, který jste zkopírovali z portálu Azure portal.
+
+    c. V **SAML odhlášení přesměrovat** (volitelné), vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+
+    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **certifikát SAML** textového pole.
+
+    e. Kopírovat **adresa URL cílové skupiny** pro vaši instanci a vložte ji **identifikátor (Entity ID)** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+
+    f. Kopírovat **příjemce URL** pro vaši instanci a vložte ji **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+
+    g. Přejděte do dolní části a klikněte na tlačítko **Test jednotného přihlašování** tlačítko. Zobrazí se tato výsledky v automaticky otevíraném okně zobrazovaných s přihlašovací stránku Azure AD. Zadejte svoje přihlašovací údaje v jako za normálních okolností k ověření.
 
     **Řešení potíží:** Zajistěte, aby e-mailovou adresu, se vrací zpět z Azure AD je stejný jako pracovní účet, ke kterému jste přihlášeni s.
 
-7. Jakmile testu bylo úspěšně dokončeno, přejděte do dolní části stránky a klikněte na tlačítko **Uložit** tlačítko.
+    h. Jakmile testu bylo úspěšně dokončeno, přejděte do dolní části stránky a klikněte na tlačítko **Uložit** tlačítko.
 
-8. Všichni uživatelé používající pracovní plocha nyní se zobrazí přihlašovací stránku Azure AD pro ověřování.
+    i. Všichni uživatelé používající pracovní plocha nyní se zobrazí přihlašovací stránku Azure AD pro ověřování.
 
-9. **Odhlášení přesměrovat SAML (volitelné)** -
+4. **Odhlášení přesměrovat SAML (volitelné)** -
 
     Můžete volitelně nakonfigurovat SAML odhlašovací adresa Url, který můžete použít tak, aby odkazoval na stránku služby Azure AD odhlášení. Když toto nastavení povolené a nakonfigurované, uživatel již přesměruje k odhlašovací stránce síti na pracovišti. Místo toho uživatel bude přesměrován na adresu url, která byla přidána do nastavení přesměrování odhlašování SAML.
 

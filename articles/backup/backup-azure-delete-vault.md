@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d15e3773a9b6e3dceb0799d206070730675c211d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492279"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310962"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
@@ -31,7 +31,7 @@ Pokud už máte otevřete trezor služby Recovery Services, pokračujte v druhé
 
    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-   Zobrazí se seznam trezorů služby Recovery Services. 
+   Zobrazí se seznam trezorů služby Recovery Services.
 
    ![Vyberte trezor ze seznamu](./media/backup-azure-delete-vault/choose-vault-to-delete-.png)
 
@@ -50,7 +50,7 @@ Pokud už máte otevřete trezor služby Recovery Services, pokračujte v druhé
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Odstranění trezoru služby Recovery Services vynutí
 
-Použití Powershellu k odstranění trezoru služby Recovery Services vynutí. Platnost prostředky trezoru služby Recovery Services a všechny přidružené zálohy dat, je trvale odstraněn. 
+Použití Powershellu k odstranění trezoru služby Recovery Services vynutí. Platnost prostředky trezoru služby Recovery Services a všechny přidružené zálohy dat, je trvale odstraněn.
 
 > [!Warning]
 > Při použití Powershellu k odstranění trezoru služby Recovery Services, se ujistěte, zda chcete trvale odstranit všechna data záloh v trezoru.
@@ -95,7 +95,7 @@ Pokud chcete odstranit trezor služby Recovery Services:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
-   
+
 1. Přihlaste se k předplatnému na webu Azure Portal a ověřte, že se odstraní.
 
 
@@ -106,7 +106,6 @@ Ručně odebrat závislosti trezoru, odstranit konfiguraci mezi všechny položk
 * Zálohování Azure Storage (soubory Azure)
 * SQL Server v záloh virtuálních počítačů Azure
 * Zálohování virtuálních počítačů Azure
-* Agent zálohování Microsoft Azure Recovery Services
 
 Použití **infrastruktura zálohování** nabídky (viz obrázek) pro:
 
@@ -125,7 +124,7 @@ Použití **infrastruktura zálohování** nabídky (viz obrázek) pro:
 
 1. Pro všechny položky v seznamu, klikněte pravým tlačítkem na položku a v místní nabídce vyberte **Zastavit zálohování**.
 
-    ![Vyberte typ zálohy](./media/backup-azure-delete-vault/stop-backup-item.png) 
+    ![Vyberte typ zálohy](./media/backup-azure-delete-vault/stop-backup-item.png)
 
     Otevře se nabídka Zastavit zálohování.
 
@@ -154,9 +153,9 @@ Použití **infrastruktura zálohování** nabídky (viz obrázek) pro:
 
 ## <a name="removing-azure-backup-server-or-dpm"></a>Odebrání mobilního zařízení nebo Azure Backup serveru aplikace DPM
 
-1. V nabídce řídicího panelu trezoru, přejděte dolů do části Správa a klikněte na **infrastruktura zálohování**. 
+1. V nabídce řídicího panelu trezoru, přejděte dolů do části Správa a klikněte na **infrastruktura zálohování**.
 
-1. V podnabídce, klikněte na tlačítko **servery pro správu zálohování** zobrazíte server Azure Backup Server a System Center DPM. můžete zastavit a odstranit Azure souborové servery, servery SQL ve virtuálním počítači Azure a Azure virtual machines. 
+1. V podnabídce, klikněte na tlačítko **servery pro správu zálohování** zobrazíte server Azure Backup Server a System Center DPM. můžete zastavit a odstranit Azure souborové servery, servery SQL ve virtuálním počítači Azure a Azure virtual machines.
 
     ![Vyberte svůj trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 

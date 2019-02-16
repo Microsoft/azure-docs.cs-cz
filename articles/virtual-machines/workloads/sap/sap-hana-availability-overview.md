@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7049a4b5159687ab928cda7ddc6b1a35959529ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1db56ad31991b85ffad415818c7c67f0ee30808d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972103"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328074"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Vysoká dostupnost SAP HANA pro virtuální počítače Azure
 
@@ -47,7 +47,7 @@ Je také vhodné se seznámit s tyto články o SAP HANA:
 - [Vysoká dostupnost pro SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/6d252db7cdd044d19ad85b46e6c294a4.html)
 - [Nejčastější dotazy: Vysoká dostupnost pro SAP HANA](https://archive.sap.com/documents/docs/DOC-66702)
 - [Provést systémové replikace SAP HANA](https://archive.sap.com/documents/docs/DOC-47702)
-- [SAP HANA 2.0 aktualizace Service PACKU 01 co vaší nové: vysoká dostupnost](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/)
+- [SAP HANA 2.0 aktualizace Service PACKU 01 co vaší nové: Vysoká dostupnost](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/)
 - [Doporučení pro síť pro systémové replikace SAP HANA](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html)
 - [Replikace systému SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
 - [SAP HANA služba automatické restartování](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
@@ -61,7 +61,7 @@ Azure má různé dostupnosti smlouvy SLA pro různé součásti, jako jsou sít
 
 [Smlouva SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) popisuje dva různé smlouvy SLA pro dva různé konfigurace:
 
-- Jeden virtuální počítač, který používá [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dostupnost 99,9 %.
+- Jeden virtuální počítač, který používá [Azure premium SSD](../../windows/disks-types.md) pro disk s operačním systémem a všechny datové disky. Tato možnost poskytuje měsíční dostupnost 99,9 %.
 - Více (alespoň dva) virtuální počítače, které jsou uspořádány do [dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Tato možnost poskytuje měsíční dostupnost 99,95 %.
 
 Váš požadavek na dostupnost proti smlouvy o úrovni služeb, které komponenty Azure můžete zadat míru. Zvolte váš scénáře pro SAP HANA po dosažení požadované úrovně dostupnosti.

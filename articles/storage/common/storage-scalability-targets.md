@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: f8227495d7ca2e1d43b74066d359d0d59e456263
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2f00b01bb07aafca847897f0c31d24d4add7cdbf
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451202"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328873"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>Azure škálovatelnost a výkonnostní cíle Storage pro účty úložiště úrovně standard
 
-Tento článek obsahuje podrobnosti o škálovatelnost a výkonnostní cíle pro účty úložiště Azure úrovně standard. Škálovatelnost a výkonnostní cíle, které jsou tady uvedené špičkové cíle, ale jsou dosažitelný. Ve všech případech, frekvence požadavků a šířku pásma dosaženou úložiště účtu závisí na velikosti objekty uložené, vzory přístupu k optimalizováno a typu úlohy, která vaše aplikace provádí. 
+Tento článek obsahuje podrobnosti o škálovatelnost a výkonnostní cíle pro účty úložiště Azure. Škálovatelnost a výkonnostní cíle, které jsou tady uvedené špičkové cíle, ale jsou dosažitelný. Ve všech případech, frekvence požadavků a šířku pásma dosaženou úložiště účtu závisí na velikosti objekty uložené, vzory přístupu k optimalizováno a typu úlohy, která vaše aplikace provádí. 
 
 Nezapomeňte otestovat vaší služby k určení, zda jeho výkon a vyhovuje vašim požadavkům. Pokud je to možné vyhnout nečekaným špičkám míru přenosu dat a ujistěte se, že provoz je dobře distribuovaná napříč oddíly.
 
@@ -26,7 +26,10 @@ Když aplikace dosáhne limitu co dokáže zpracovat oddíl pro vaši úlohu, za
 ## <a name="standard-storage-account-scale-limits"></a>Limity škálování účtu úložiště úrovně Standard
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-## <a name="storage-resource-provider-scale-limits"></a>Limity škálování poskytovatele prostředků úložiště 
+## <a name="premium-storage-account-scale-limits"></a>Limity škálování účtu úložiště úrovně Premium
+[!INCLUDE [azure-premium-limits](../../../includes/azure-storage-limits-premium.md)]
+
+## <a name="storage-resource-provider-scale-limits"></a>Limity škálování poskytovatele prostředků úložiště
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

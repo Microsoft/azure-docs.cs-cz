@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358146"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327540"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Instalace klienta Chefu na webu Azure Portal
 Na webu Azure Portal můžete přidat rozšíření Chef klienta přímo do počítače s Linuxem nebo Windows. Tento článek vás provede procesem vytvoření nového virtuálního počítače Linux.
@@ -53,7 +53,7 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
 1. Na **Základy** kartu, zadejte následující hodnoty a pak vyberte **OK**.
 
     - **Název** – zadejte název pro nový virtuální počítač.
-    - **Typ disku virtuálního počítače** -zadat buď **SSD** nebo **HDD** pro typ úložného disku. Další informace o typech disků virtuálního počítače v Azure najdete v článku [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](/azure/virtual-machines/windows/premium-storage).
+    - **Typ disku virtuálního počítače** -zadat buď **SSD** nebo **HDD** pro typ úložného disku. Další informace o typech disků virtuálního počítače v Azure najdete v článku [vyberte typ disku](../virtual-machines/windows/disks-types.md).
     - **Uživatelské jméno** – zadejte uživatelské jméno, které je udělen oprávnění správce na virtuálním počítači.
     - **Typ ověřování** – vyberte **heslo**. Můžete také vybrat **veřejný klíč SSH**a zadat hodnotu veřejného klíče SSH. Pro účely této ukázky (a na snímcích obrazovky) **heslo** zaškrtnuto.
     - **Heslo** a **potvrzení hesla** – zadejte heslo pro tohoto uživatele.

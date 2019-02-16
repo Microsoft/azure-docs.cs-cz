@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f91ccc93dcd2ac9b96379c4aa94d1f430faaf66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ac55d14f864698506610301ae46bd4b6573d4f92
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118288"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330660"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 
@@ -248,7 +248,7 @@ ms.locfileid: "56118288"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -870,7 +870,7 @@ Požadavky při přípravě vlastní disku virtuálního počítače Azure jsou:
 
 * Původně virtuálního pevného disku obsahující operační systém může mít maximální velikost 127GB jsou pouze. Toto omezení je teď odstranili na konci března 2015. Virtuální pevný disk obsahující operační systém nyní může být velikost až 1TB, jako jakékoli jiné služby Azure Storage i hostované virtuální pevný disk.
 * Musí být v pevném formátu virtuálního pevného disku. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx zatím nepodporují v Azure. Dynamických virtuálních pevných disků budou převedeny na statické virtuální pevné disky, když nahrajete virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
-* Virtuálních pevných disků, které jsou připojené k virtuálnímu počítači a by měla být připojená znovu v Azure pro virtuální počítač nemusí být v také pevném formátu virtuálního pevného disku. Čtení [(Linux) v tomto článku](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) a [v tomto článku (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) pro omezení velikosti datových disků. Dynamických virtuálních pevných disků budou převedeny na statické virtuální pevné disky, když nahrajete virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
+* Virtuálních pevných disků, které jsou připojené k virtuálnímu počítači a by měla být připojená znovu v Azure pro virtuální počítač nemusí být v také pevném formátu virtuálního pevného disku. Přečtěte si [(Linux) v tomto článku](../../linux/managed-disks-overview.md) a [v tomto článku (Windows)](../../windows/managed-disks-overview.md)) pro omezení velikosti datových disků. Dynamických virtuálních pevných disků budou převedeny na statické virtuální pevné disky, když nahrajete virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
 * Přidejte další místní účet s oprávněními správce, které se dají použít tak, že podpory společnosti Microsoft nebo které je možné přiřadit jako kontext pro služby a aplikace, které poběží, dokud je nasazen virtuální počítač a vhodnější uživatelů je možné použít.
 * Přidáte další místní účty, protože ty mohou být potřebné pro scénáře nasazení.
 
@@ -897,7 +897,7 @@ Požadavky při přípravě vlastní Image virtuálního počítače Azure jsou:
 
 * Původně virtuálního pevného disku obsahující operační systém může mít maximální velikost 127GB jsou pouze. Toto omezení je teď odstranili na konci března 2015. Virtuální pevný disk obsahující operační systém nyní může být velikost až 1TB, jako jakékoli jiné služby Azure Storage i hostované virtuální pevný disk.
 * Musí být v pevném formátu virtuálního pevného disku. Dynamické virtuální pevné disky nebo virtuální pevné disky ve formátu VHDx zatím nepodporují v Azure. Dynamických virtuálních pevných disků budou převedeny na statické virtuální pevné disky, když nahrajete virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
-* Virtuálních pevných disků, které jsou připojené k virtuálnímu počítači a by měla být připojená znovu v Azure pro virtuální počítač nemusí být v také pevném formátu virtuálního pevného disku. Přečtěte si prosím [(Linux) v tomto článku](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) a [v tomto článku (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) pro omezení velikosti datových disků. Dynamických virtuálních pevných disků budou převedeny na statické virtuální pevné disky, když nahrajete virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
+* Virtuálních pevných disků, které jsou připojené k virtuálnímu počítači a by měla být připojená znovu v Azure pro virtuální počítač nemusí být v také pevném formátu virtuálního pevného disku. Přečtěte si prosím [(Linux) v tomto článku](../../windows/managed-disks-overview.md) a [v tomto článku (Windows)](../../linux/managed-disks-overview.md) pro omezení velikosti datových disků. Dynamických virtuálních pevných disků budou převedeny na statické virtuální pevné disky, když nahrajete virtuální pevný disk pomocí rutiny prostředí PowerShell nebo rozhraní příkazového řádku
 * Přidáte další místní účty, protože ty mohou být potřebné pro scénáře nasazení.
 * Pokud image obsahuje k instalaci aplikace SAP NetWeaver a přejmenovat název hostitele z původní název Přejme během nasazení Azure je pravděpodobné, že doporučuje se kopírovat nejnovější verze DVD pro správce zřizování softwaru SAP do šablony. To vám umožní snadno použít funkci přejmenování SAP poskytuje můžete přizpůsobit změněné název hostitele nebo změnit identifikátor SID systému SAP v rámci do nasazené bitové kopie virtuálního počítače, co nejdříve spustit novou kopii.
 

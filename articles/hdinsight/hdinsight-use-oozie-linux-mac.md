@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 11c5d44d44bf66bc7f50dac13c1c7cf0ae7acfff
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: aca64ce3d965d03ecc6fe6da0f372f355a48bed5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994381"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311864"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
@@ -301,7 +301,7 @@ Definici úlohy popisuje, kde se mají hledat workflow.xml. Také popisuje, kde 
     ```
 
     > [!NOTE]  
-    > Pokud HDInsight cluster používá Azure Storage jako výchozím úložištěm, `<value>` obsah elementu začínat `wasb://`. Pokud je použita úložiště Azure Data Lake, začíná `adl://`.
+    > Pokud HDInsight cluster používá Azure Storage jako výchozím úložištěm, `<value>` obsah elementu začínat `wasb://`. Pokud místo toho používá Azure Data Lake Storage Gen1 začíná `adl://`.
 
     Uložit obsah `<value>` element, protože se používá v dalších krocích.
 
@@ -683,9 +683,9 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Příčina**: Adresy objektů Blob v Azure storage, které se používá v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa úložiště objektů Blob `wasb://containername@storageaccountname.blob.core.windows.net`.
+**Příčina:** Adresy objektů Blob v Azure storage, které se používá v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa úložiště objektů Blob `wasb://containername@storageaccountname.blob.core.windows.net`.
 
-**Rozlišení**: Změna adresy úložiště objektů Blob, které používá úlohy.
+**Řešení:** Změna adresy úložiště objektů Blob, které používá úlohy.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Není povoleno zosobnit Oozie &lt;uživatele >
 
@@ -693,9 +693,9 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
-**Příčina**: Aktuální nastavení oprávnění neumožňují Oozie zosobnit zadaný uživatelský účet.
+**Příčina:** Aktuální nastavení oprávnění neumožňují Oozie zosobnit zadaný uživatelský účet.
 
-**Rozlišení**: Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
+**Řešení:** Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
 
     sudo adduser USERNAME users
 
@@ -708,9 +708,9 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**Příčina**: Sqoop není schopen načíst ovladač databáze vyžadované pro přístup k databázi.
+**Příčina:** Sqoop není schopen načíst ovladač databáze vyžadované pro přístup k databázi.
 
-**Rozlišení**: Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
+**Řešení:** Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
 
 Například pro úlohy v tomto dokumentu použijete následující kroky:
 

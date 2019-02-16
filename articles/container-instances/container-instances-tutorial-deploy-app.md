@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191086"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326735"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Kurz: Nasazení aplikace typu kontejner do služby Azure Container Instances
 
@@ -36,26 +36,20 @@ V této části budete používat Azure CLI k nasazení image sestavené v [prvn
 
 ### <a name="get-registry-credentials"></a>Získání přihlašovacích údajů registru
 
-Když nasazujete image hostovanou v privátním registru kontejneru, jako je ten, který jste vytvořili v [druhé části kurzu](container-instances-tutorial-prepare-acr.md), musíte zadat přihlašovací údaje daného registru.
+Když nasazujete image hostovanou v privátním registru kontejneru jako je ten vytvoří v [druhé části kurzu](container-instances-tutorial-prepare-acr.md), musíte zadat přihlašovací údaje pro přístup k registru. Jak je znázorněno v [ověřování pomocí Azure Container Registry z Azure Container Instances](../container-registry/container-registry-auth-aci.md), osvědčeným postupem pro řadu scénářů je vytvořit a nakonfigurovat instanční objekt Azure Active Directory s *o přijetí změn*oprávnění k vašemu registru. Najdete v tomto článku ukázkové skripty pro vytvořit instanční objekt s potřebnými oprávněními. Poznamenejte si ID instančního objektu a heslo instančního objektu. Tyto přihlašovací údaje se používají, když nasadíte kontejner.
 
-Nejprve získejte úplný název přihlašovacího serveru registru kontejneru (nahraďte zástupný text `<acrName>` názvem svého registru):
+Potřebujete úplný název přihlašovacího serveru registru kontejneru (Nahraďte `<acrName>` s názvem vašeho registru):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-Potom získejte heslo registru kontejneru:
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
 ### <a name="deploy-container"></a>Nasazení kontejneru
 
-Nyní nasaďte kontejner pomocí příkazu [az container create][az-container-create]. Nahraďte `<acrLoginServer>` a `<acrPassword>` hodnotami, které jste získali z předchozích dvou příkazů. Nahraďte `<acrName>` s názvem vašeho registru kontejneru a `<aciDnsLabel>` s požadovaným názvem DNS.
+Nyní nasaďte kontejner pomocí příkazu [az container create][az-container-create]. Nahraďte `<acrLoginServer>` s hodnotou, které jste získali z předchozího příkazu. Nahraďte `<service-principal-ID>` a `<service-principal-password>` s ID instančního objektu a heslo, které jste vytvořili pro přístup k registru. Nahraďte `<aciDnsLabel>` s požadovaným názvem DNS.
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label <aciDnsLabel> --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
 Během několika sekund by se měla zobrazit první odezva z Azure. Hodnota `--dns-name-label` musí být jedinečná v rámci oblasti Azure, ve které vytváříte instanci kontejneru. Pokud se po spuštění příkazu zobrazí chybová zpráva týkající se **popisku názvu DNS**, upravte hodnotu v předchozím příkazu.

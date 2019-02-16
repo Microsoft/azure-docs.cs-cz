@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 78c07fedc89980edf54c1b317d5d93a5de6a070f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: ade5a39273aa807f6c69f76342a0f715c7a96309
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301413"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327152"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -236,7 +236,7 @@ spec:
   ingress:
   - from:
     - namespaceSelector: {}
-    - podSelector:
+      podSelector:
         matchLabels:
           app: webapp
           role: frontend
@@ -357,7 +357,7 @@ spec:
     - namespaceSelector:
         matchLabels:
           purpose: development
-    - podSelector:
+      podSelector:
         matchLabels:
           app: webapp
           role: frontend

@@ -3,8 +3,8 @@ title: Migrace z AWS a dalších platforem na Managed Disks v Azure | Dokumentac
 description: Vytvoření virtuálních počítačů v Azure pomocí virtuální pevné disky nahrávány z ostatních cloudů, jako je AWS nebo jiných virtualizačních platforem a začněte využívat Azure Managed Disks.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2017
-ms.author: cynthn
+ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83e69cd488ab7e8b69895a25716350c8025c6c48
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 05e687ab31b6c19193076033e1350952549d26e0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074899"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330745"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
@@ -46,11 +46,8 @@ Můžete nahrát zobecněný a specializovaných virtuálních pevných disků.
 
 ## <a name="overview-of-managed-disks"></a>Přehled služby Managed Disks
 
-Azure Managed Disks zjednodušuje správu virtuálních počítačů tím, že si nemusíte spravovat účty úložiště. Managed Disks také výhody z vyšší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované od sebe, aby jediný bod selhání. Automaticky umístí disky různých virtuálních počítačů ve skupině dostupnosti v různých Uložišť jednotek škálování (razítka) který omezuje dopad selhání škálovací jednotky jednoho úložiště se situace způsobena vlivem hardwaru a softwaru selhání. Podle svých potřeb, můžete vybrat ze dvou typů úložišť: 
- 
-- [Managed Disks úrovně Premium](premium-storage.md) jsou úložná média, která nabízí vysoký výkon, podporu disků s nízkou latencí pro virtuální počítače spuštěné můžu intenzivních vstupně-výstupních operací založená na Solid stav jednotky SSD (Solid-State Drive). Pomocí migrace na Premium Managed Disks můžete využít výhod rychlost a výkon těchto disků.  
-
-- [Standard Managed Disks](standard-storage.md) používat jednotku pevného disku (HDD) na základě úložných médií a jsou nejvhodnější pro vývoj/testování a jiné úlohy s řídkým přístupem úlohy, které jsou méně citlivé na variabilitu výkonu.  
+Azure Managed Disks zjednodušuje správu virtuálních počítačů tím, že si nemusíte spravovat účty úložiště. Managed Disks také výhody z vyšší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované od sebe, aby jediný bod selhání. Automaticky umístí disky různých virtuálních počítačů ve skupině dostupnosti v různých Uložišť jednotek škálování (razítka) který omezuje dopad selhání škálovací jednotky jednoho úložiště se situace způsobena vlivem hardwaru a softwaru selhání.
+Podle svých potřeb, můžete vybrat z čtyři typy úložišť. Další informace o typech disků k dispozici, najdete v našem článku [vyberte typ disku](disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Plánování migrace do služby Managed Disks
 

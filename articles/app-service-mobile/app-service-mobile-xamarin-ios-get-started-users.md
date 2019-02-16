@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: 31e02cd931b3c9ab2cc55a540841969488c0c5f7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 132909931291daf3aefddd5e1a44273050d98e06
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997528"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326166"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Přidání ověřování do aplikace Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -35,7 +35,7 @@ Musíte nejdřív dokončit tento kurz [vytvoření aplikace Xamarin.iOS]. Pokud
 
 Zabezpečené ověřování, musíte definovat nové schéma adresy URL pro vaši aplikaci. To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování. V tomto kurzu používáme schéma adresy URL _appname_ v průběhu. Můžete ale použít jakékoli schéma adresy URL, kterou zvolíte. Musí být jedinečné pro vaši mobilní aplikaci. Pokud chcete povolit přesměrování na straně serveru:
 
-1. Na [webu Azure Portal] vyberte službu App Service.
+1. V [webu Azure portal](https://portal.azure.com/), vyberte službu App Service.
 
 2. Klikněte na tlačítko **ověřování / autorizace** nabídky.
 
@@ -48,9 +48,9 @@ Zabezpečené ověřování, musíte definovat nové schéma adresy URL pro vaš
 ## <a name="restrict-permissions-to-authenticated-users"></a>Omezit oprávnění k ověření uživatelé
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-&nbsp;&nbsp;4. V sadě Visual Studio nebo Xamarin Studio spusťte klientský projekt na zařízení nebo emulátoru. Ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). Selhání se protokoluje do konzoly ladicího programu. Proto v sadě Visual Studio, měli byste vidět chyby v okně výstup.
+* V sadě Visual Studio nebo Xamarin Studio spusťte klientský projekt na zařízení nebo emulátoru. Ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). Selhání se protokoluje do konzoly ladicího programu. Proto v sadě Visual Studio, měli byste vidět chyby v okně výstup.
 
-&nbsp;&nbsp;Dojde k selhání této neoprávněným vzhledem k tomu, že aplikace pokusí o přístup k back-endu mobilní aplikace jako neověřené uživatele. *TodoItem* tabulka nyní vyžaduje ověřování.
+    Dojde k selhání této neoprávněným vzhledem k tomu, že aplikace pokusí o přístup k back-endu mobilní aplikace jako neověřené uživatele. *TodoItem* tabulka nyní vyžaduje ověřování.
 
 Dále budete aktualizovat klientskou aplikaci na požadavky na prostředky z back-endu mobilní aplikace s ověřeného uživatele.
 
@@ -58,67 +58,82 @@ Dále budete aktualizovat klientskou aplikaci na požadavky na prostředky z bac
 V této části upravíte aplikaci, která zobrazí obrazovka pro přihlášení, než se zobrazí data. Při spuštění aplikace, se nebudou připojovat k vaší službě App Service a nebudou zobrazovat žádná data. Po prvním uživatel provede gesta aktualizace se zobrazí přihlašovací obrazovka; Po úspěšném přihlášení se zobrazí seznam položek todo.
 
 1. V klientském projektu otevřete soubor **QSTodoService.cs** a přidejte následující příkaz using a `MobileServiceUser` pomocí přístupového objektu QSTodoService třídy:
- 
-        using UIKit;
-       
-        // Logged in user
-        private MobileServiceUser user;
-        public MobileServiceUser User { get { return user; } }
+
+    ```csharp
+    using UIKit;
+
+    // Logged in user
+    private MobileServiceUser user;
+    public MobileServiceUser User { get { return user; } }
+    ```
+
 2. Přidejte novou metodu s názvem **ověřit** k **QSTodoService** s následující definice:
 
-        public async Task Authenticate(UIViewController view)
+    ```csharp
+    public async Task Authenticate(UIViewController view)
+    {
+        try
         {
-            try
-            {
-                AppDelegate.ResumeWithURL = url => url.Scheme == "zumoe2etestapp" && client.ResumeWithURL(url);
-                user = await client.LoginAsync(view, MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine (@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
-            }
+            AppDelegate.ResumeWithURL = url => url.Scheme == "{url_scheme_of_your_app}" && client.ResumeWithURL(url);
+            user = await client.LoginAsync(view, MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
         }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine (@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
+        }
+    }
+    ```
 
-    >[AZURE.NOTE] Pokud používáte zprostředkovatelů identity než Facebook, změňte hodnotu předanou **LoginAsync** výše na jednu z následujících akcí: _MicrosoftAccount_, _Twitter_,  _Google_, nebo _WindowsAzureActiveDirectory_.
+    > [!NOTE]
+    > Pokud používáte zprostředkovatelů identity než Facebook, změňte hodnotu předanou **LoginAsync** výše na jednu z následujících akcí: _MicrosoftAccount_, _Twitter_, _Google_, nebo _WindowsAzureActiveDirectory_.
 
 3. Otevřít **QSTodoListViewController.cs**. Upravit definici metody **ViewDidLoad** odebrání volání **RefreshAsync()** poblíž konce:
-   
-        public override async void ViewDidLoad ()
-        {
-            base.ViewDidLoad ();
-   
-            todoService = QSTodoService.DefaultService;
-            await todoService.InitializeStoreAsync();
-   
-            RefreshControl.ValueChanged += async (sender, e) => {
-                await RefreshAsync();
-            }
-   
-            // Comment out the call to RefreshAsync
-            // await RefreshAsync();
+
+    ```csharp
+    public override async void ViewDidLoad ()
+    {
+        base.ViewDidLoad ();
+
+        todoService = QSTodoService.DefaultService;
+        await todoService.InitializeStoreAsync();
+
+        RefreshControl.ValueChanged += async (sender, e) => {
+            await RefreshAsync();
         }
+
+        // Comment out the call to RefreshAsync
+        // await RefreshAsync();
+    }
+    ```
+
 4. Upravte metodu **RefreshAsync** k ověření, pokud **uživatele** vlastnost má hodnotu null. V horní části definice metody přidejte následující kód:
-   
-        // start of RefreshAsync method
+
+    ```csharp
+    // start of RefreshAsync method
+    if (todoService.User == null) {
+        await QSTodoService.DefaultService.Authenticate(this);
         if (todoService.User == null) {
-            await QSTodoService.DefaultService.Authenticate(this);
-            if (todoService.User == null) {
-                Console.WriteLine("couldn't login!!");
-                return;
-            }
+            Console.WriteLine("couldn't login!!");
+            return;
         }
-        // rest of RefreshAsync method
+    }
+    // rest of RefreshAsync method
+    ```
+
 5. Otevřít **AppDelegate.cs**, přidejte následující metodu:
 
-        public static Func<NSUrl, bool> ResumeWithURL;
+    ```csharp
+    public static Func<NSUrl, bool> ResumeWithURL;
 
-        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
-        {
-            return ResumeWithURL != null && ResumeWithURL(url);
-        }
+    public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+    {
+        return ResumeWithURL != null && ResumeWithURL(url);
+    }
+    ```
+
 6. Otevřít **Info.plist** souboru, přejděte na **typy adres URL** v **Upřesnit** oddílu. Teď nakonfigurovat **identifikátor** a **schémata URL** typ adresy URL a klikněte na tlačítko **přidat typ adresy URL**. **Schémata adres URL** by měl být stejný jako vaše {url_scheme_of_your_app}.
 7. V sadě Visual Studio, připojený k hostiteli Mac nebo Visual Studio pro Mac spusťte klientský projekt cílí na zařízení nebo emulátoru. Ověřte, že aplikace nezobrazí žádná data.
-   
+
     Proveďte gesto aktualizace to potažením dolů seznam položek, které způsobí, že přihlašovací obrazovka se zobrazí. Po úspěšném zadání platné přihlašovací údaje, aplikace se zobrazí seznam položek todo a dat můžete provádět aktualizace.
 
 <!-- URLs. -->

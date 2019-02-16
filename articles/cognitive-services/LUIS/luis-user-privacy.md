@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 62d6dce4ccb5d4badbcf9b02cbbcda576ee63212
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: add526d8c09d2aa557ddd645e9016cb9c3b225a3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869241"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328193"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportovat a odstraňovat vaše zákaznická data v Language Understanding (LUIS) ve službě Cognitive Services
 
@@ -30,7 +30,7 @@ Zákazník obsah je uložen zašifrovaný ve službě Microsoft Azure storage m�
 - Uživatelský účet obsah shromážděné při registraci
 - Trénovací data potřebné k sestavení modelů (tj. záměr & entity)
 - Dotazy uživatele zaznamenána v době běhu k vylepšení modely uživatelů
-  - Uživatele můžete vypnout protokolování dotazu přidáním `&log=false` požadavku, podrobností [zde](luis-resources-faq.md#how-can-i-disable-the-logging-of-utterances)
+  - Uživatele můžete vypnout protokolování dotazu přidáním `&log=false` požadavku, podrobností [zde](troubleshooting.md#how-can-i-disable-the-logging-of-utterances)
 
 ## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
 LUIS uživatelé mají plnou kontrolu nad obsah uživatelů, buď prostřednictvím webového portálu služby LUIS nebo programových rozhraní API LUIS odstraňovat. Pomoc s oběma odkazy v následující tabulce:

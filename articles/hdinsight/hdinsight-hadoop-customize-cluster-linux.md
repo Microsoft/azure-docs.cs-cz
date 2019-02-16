@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea83d061f7160db04c847be66e79da60da78634d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d325cfd679c2a8b878ae9a7b483431aba32b2a5a
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662903"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313275"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu
 
@@ -55,7 +55,7 @@ Akce skriptu je Bash skript, který používá na uzlech v clusteru HDInsight. V
 
     * Účet úložiště Azure Data Lake, který je přístupný pro HDInsight cluster. Informace o používání služby Azure Data Lake Storage s HDInsight naleznete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-        Formát identifikátoru URI pro skripty uložené ve službě Data Lake Storage je `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+        Formát identifikátoru URI pro skripty uložené v Data Lake Storage Gen1 je `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
 
         > [!NOTE]  
         > Instanční objekt služby, kterou používá HDInsight pro přístup k Data Lake Storage musí mít oprávnění ke čtení pro skript.

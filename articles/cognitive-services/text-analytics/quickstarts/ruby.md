@@ -3,19 +3,19 @@ title: 'Rychlý start: Použití Ruby k volání rozhraní Text Analytics API'
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a vzorové kódy, které vám usnadní začátky práce s rozhraním API pro analýzu textu ve službách Microsoft Cognitive Services v Azure.
 services: cognitive-services
-author: noellelacharite
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: nolachar
-ms.openlocfilehash: 6255052430acff142e3e2c7e686e1516741b6ebc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/15/2019
+ms.author: aahi
+ms.openlocfilehash: db8fa1d16081c841a6d5c5c0bfdfa2bb099f6221
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863372"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326626"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Ruby k volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>

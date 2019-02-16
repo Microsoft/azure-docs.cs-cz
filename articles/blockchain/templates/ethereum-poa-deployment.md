@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260376"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313564"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
 
@@ -148,7 +148,7 @@ K provedení jakékoliv transakce až DApp zásad správného řízení, je pot�
 Po instalaci MetaMask, přejděte na zásady správného řízení DApp v prohlížeči.  Adresu URL můžete najít v nasazení potvrzovací e-mail nebo prostřednictvím webu Azure portal ve výstupu nasazení.  Pokud nemáte peněženky v prohlížeči nainstalována nebude moct provádět žádné akce; však stále budete moct číst správce stavu.  
 
 #### <a name="becoming-an-admin"></a>Stát správcem
-Pokud jste první člen, který je nasazený v síti, pak se automaticky stane správcem a parita uzly budou uvedené jako validátory.  Pokud jsou připojení k síti, musíte získat hlasovali správce (větší než 50 %) většinou existující sady správce.  Pokud jste vybrali možnost stát správcem uzly budou stále synchronizovat a ověřit blockchain; nebudou však účastnit v procesu vytváření bloku. Pokud chcete zahájit proces hlasování se stát správcem, klikněte na tlačítko __Nominate__ a zadejte adresu Ethereem a alias.
+Pokud jste první člen, který je nasazený v síti, pak se automaticky stane správcem a parita uzly budou uvedené jako validátory.  Pokud jsou připojení k síti, je potřeba získat hlasovali správcem, většinou (větší než 50 %) stávající sady správce.  Pokud jste vybrali možnost stát správcem uzly budou stále synchronizovat a ověřit blockchain; nebudou však účastnit v procesu vytváření bloku. Pokud chcete zahájit proces hlasování se stát správcem, klikněte na tlačítko __Nominate__ a zadejte adresu Ethereem a alias.
 
 ![Jmenovat](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
@@ -258,9 +258,9 @@ Všimněte si, že virtuální počítač a vrstva úložiště bude mít vliv n
 
   SKU virtuálního počítače|Úroveň úložiště|Cena|Propustnost|Latence
   ---|---|---|---|---
-  F1|SSD úrovně Standard|Nízká|Nízká|Vysoká
+  F1|SSD úrovně Standard|nízká|nízká|Vysoká
   D2_v3|SSD úrovně Standard|středně silné|středně silné|středně silné
-  F16s|Premium SSD|Vysoká|Vysoká|Nízká
+  F16s|Premium SSD|Vysoká|Vysoká|nízká
 
 Ukázkové nasazení se zobrazí pod: ![velikost a výkon sítě](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -359,7 +359,7 @@ Pomocí nasazení založené na veřejné IP adresy je bezproblémové tento prv
 
     -  Zvolte požadovaný počet uzlů validátoru jako v ostatních členů v síti k zajištění uspokojivé reprezentace
 
-    -  Použít stejnou Etherea adresu, která byla součástí [předchozí krok](#step-1-add-the-new-admin)
+    -  Použít stejnou adresu Etherea, který byl uveden v předchozím kroku
 
     -  Předejte zadaných *adresy Url dat Consortium* na *ethereum během nastavení* kartu
 

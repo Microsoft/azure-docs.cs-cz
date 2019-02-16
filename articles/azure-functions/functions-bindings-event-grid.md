@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: cf972075aeeb780f44972e5b9134261fef33817f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3d0c72f0178cddd668c0ac029c803ff339a1f6f4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118305"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311609"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -314,7 +314,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 }
 ```
 
-Kompletní příklad naleznete v tématu [příklad jazyka C#](#c-example).
+Kompletní příklad naleznete v tématu C# příklad.
 
 ## <a name="configuration"></a>Konfigurace
 

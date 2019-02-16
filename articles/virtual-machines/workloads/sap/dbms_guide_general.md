@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 54511ac4dfdc05ec1880695b1ae2360f0b5e8162
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246870"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328363"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -79,7 +79,7 @@ Jsou různé články týkající se úloh SAP v Azure všeobecně dostupné. Do
 
 Následující poznámky SAP jsou související s řešením SAP v Azure týkající se oblasti zahrnuté v tomto dokumentu:
 
-| Poznámka: číslo | Titul |
+| Poznámka: číslo | Název |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: Požadavky pro podporu |
@@ -106,12 +106,12 @@ I když diskuze o IaaS, obecně Windows, Linux a DBMS instalace a konfigurace js
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktury úložiště virtuálního počítače pro nasazení relační databázový systém
-Pokud chcete postupovat podle této kapitole, je potřeba pochopit, co se zobrazí v [to] [ deployment-guide-3] kapitoly [Průvodce nasazením][deployment-guide]. Poznatky o různých řadu virtuálních počítačů a jejich rozdíly a rozdíly v Azure na úrovni Standard a [Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) by měl porozuměl jsem jim a známé před čtením této kapitole.
+Pokud chcete postupovat podle této kapitole, je potřeba pochopit, co se zobrazí v [to] [ deployment-guide-3] kapitoly [Průvodce nasazením][deployment-guide]. Poznatky o různých řadu virtuálních počítačů a jejich rozdílů a rozdíly úložiště úrovně standard a premium storage by měl porozuměl jsem jim a známé před čtením této kapitole. Pro
 
 Z hlediska úložiště Azure pro virtuální počítače Azure měli byste se seznámit s články:
 
-- [O diskové úložiště pro virtuální počítače Azure s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds)
-- [O diskové úložiště pro virtuální počítače Azure s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds)
+- [Úvod do spravované disky pro virtuální počítače Azure s Windows](../../windows/managed-disks-overview.md)
+- [Úvod do spravované disky pro virtuální počítače Azure s Linuxem](../../linux/managed-disks-overview.md)
 
 V základní konfiguraci doporučujeme obvykle strukturu nasazení, kde jsou oddělené od databázové soubory operačního systému, DBMS a konečný výsledek SAP binární soubory. Proto doporučujeme, abyste ve službě Azure Virtual Machines na základní virtuální pevný disk (nebo disk) nainstalované s operačním systémem, spustitelné soubory systému správy databáze a SAP spustitelné soubory se systémy SAP. Soubory protokolu a data DBMS jsou uložené ve službě Azure Storage (Standard nebo Premium Storage) v samostatných disků a připojit k původní bitové kopie operačního systému Azure virtuální počítač jako logické disky. Zejména v nasazení Linuxu může být jiný doporučení popsané. Zejména SAP HANA.
 
@@ -134,10 +134,8 @@ Azure vynucuje kvóty vstupně-výstupních operací na datový disk. Tyto kvót
 > [!NOTE]
 > Aby bylo možné využívat Azure je jedinečné [jednotné SLA k virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) všechny disky připojené musí být typu Azure Premium Storage, včetně základní virtuální pevný disk.
 
-
 > [!NOTE]
 > Není možné hostitele hlavní databáze (soubory protokolu a data) databází SAP na hardwaru úložiště, který se nachází v datových centrech společně umístěné třetích stran sousední k datovým centrům Azure. Pro úlohy SAP pouze se úložiště, který je reprezentován jako nativní Azure služba nepodporuje pro soubory protokolů dat a transakcí databází SAP.
-> 
 
 Umístění databázových souborů a soubory protokolů a znovu a typu úložiště Azure, musí být definován podle požadavků na vstupně-výstupních operací, latenci a propustnost. Pokud chcete mít dostatek vstupně-výstupních operací, mohlo by být vynuceno využívat více disků nebo použít větší disk Storage úrovně Premium. V případě používání více disků, postavíte softwaru zapisují prokládaně na discích, které obsahují datové soubory nebo soubory protokolů a znovu. V takových případech jsou kumulativní pro výslednou sadu stripe IOPS a propustnost disku smlouvy SLA základní disky Premium Storage nebo maximální dosažitelný disků vstupně-výstupních operací z Azure Storage úrovně Standard.
 
@@ -210,7 +208,7 @@ Azure Premium Storage existují tyto možnosti ukládání do mezipaměti:
 
 * Žádný
 * Čtení
-* Čtení/zápisu
+* Pro čtení i zápis
 * Žádné a akcelerátor zápisu (pouze pro virtuální počítače Azure řady M-Series)
 * Čtení a akcelerátor zápisu (pouze pro virtuální počítače Azure řady M-Series)
 

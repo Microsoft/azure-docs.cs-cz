@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50f2c174f21243a70c830c1c30127e0629c81972
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110247"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310720"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Ve službě Azure Security Center monitorování Integrity souborů
 Zjistěte, jak nakonfigurovat monitorování Integrity souborů (FIM) ve službě Azure Security Center pomocí tohoto názorného postupu.
@@ -88,7 +88,7 @@ Pokud chcete povolit FIM na pracovní prostor:
 4. Vyberte **použít monitorování integrity souborů** umožňující FIM.
 
 > [!NOTE]
-> Nastavení můžete změnit kdykoli. Zobrazit [úpravy monitorované entity](security-center-file-integrity-monitoring.md#edit-monitored-items) a zjistěte více.
+> Nastavení můžete změnit kdykoli. Podívejte se že úpravy monitorované entity a zjistěte více.
 >
 >
 

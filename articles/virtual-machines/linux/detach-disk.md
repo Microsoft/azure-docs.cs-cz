@@ -16,21 +16,19 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: df50f1ad4fc12926016b3e22669be474f4aa995f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b6fda5d16b3f694cb1d0a1a9407cda5c2a73fcbc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461372"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330626"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Linuxem
 
 Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete ho jednoduše odpojit. Odebrání disku z virtuálního počítače, ale neodebere se z úložiště. V tomto článku Pracujeme s distribucí Ubuntu LTS 16.04. Pokud používáte jiný distribuční, pokyny k odpojení disku může lišit.
 
 > [!WARNING]
-> Pokud odpojíte disk není automaticky odstraněn. Pokud odběru jste přihlášeni do Premium storage, budou dál účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití služby Premium Storage](../windows/premium-storage.md#pricing-and-billing). 
-> 
-> 
+> Pokud odpojíte disk není automaticky odstraněn. Pokud odběru jste přihlášeni do Premium storage, budou dál účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití služby Premium Storage](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 Pokud znovu chcete použít stávající data na disku, můžete ho znovu připojit ke stejnému nebo jinému virtuálnímu počítači.  
 

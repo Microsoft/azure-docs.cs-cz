@@ -2,16 +2,17 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 11/08/2018
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4ab9da996226b3f26fd30db1cd012c80253a85a5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333746"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56306834"
 ---
-Následující požadavky platí pro minimální šířky pásma Internetu pro vaše zařízení.
+Zařízení jsou navržené tak i nadále fungovat při připojení k Internetu je pomalé nebo dojde k přerušení. Za normálních provozních podmínek doporučujeme použít: 
 
-- Vaše zařízení má internetovou šířku pásma vyhrazenou 20 MB/s (nebo více) vždy k dispozici. Tuto šířku pásma by neměly sdílet s jinými aplikacemi.
-- Vaše zařízení má internetovou šířku pásma vyhrazenou 64-MB/s (nebo více) při použití omezení využití sítě.
+- Stáhnout minimálně 10 MB/s šířky pásma zajišťující, že zařízení zůstane aktualizované.
+- Minimálně 20 MB/s vyhrazenou nahrávání a stahování šířky pásma pro přenos souborů.
+

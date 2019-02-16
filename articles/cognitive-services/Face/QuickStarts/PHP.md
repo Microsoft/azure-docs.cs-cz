@@ -8,47 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/30/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: c75745452ee819dbda75f7420c93a5629cef4e08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 93e3d9fa67cfb941abf97476e03f44a4b16e94e7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860386"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313156"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a PHP
 
-V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře rozpoznávat lidské tváře na obrázku.
+V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tváře Azure pomocí PHP detekovat lidské tváře v obrázku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče bezplatného zkušebního předplatného můžete získat v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
+- Editor kódu, jako [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="face---detect-request"></a>Žádost Face - Detect
+## <a name="initialize-the-html-file"></a>Inicializovat souboru HTML
 
-Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
+Vytvořte nový soubor HTML *detectFaces.html*a přidejte následující kód.
 
-* Face ID: Jedinečné ID v několika situacích API pro rozpoznávání tváře.
-* Rámeček pro rozpoznávání tváře: Vlevo, horní, šířku a výšku označující umístění tvář na obrázku.
-* Zajímavá: Pole odkazující na důležité pozice tváří součásti památek 27 bodu pro rozpoznávání tváře.
-* Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
+```html
+<html>
+    <head>
+        <title>Face Detect Sample</title>
+    </head>
+    <body></body>
+</html>
+```
 
-Pokud chcete spustit ukázku, postupujte takto:
+## <a name="write-the-php-script"></a>Napsat skript pro PHP
 
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete `imageUrl` nastavit na obrázek, který chcete analyzovat.
-1. Uložte soubor s příponou `.php`.
-1. Soubor otevřete v okně prohlížeče s podporou PHP.
+Přidejte následující kód `body` element dokumentu. Tím se nastaví základní uživatelské rozhraní s poli Adresa URL, **analyzujte tváře** tlačítko, odpověď podokno a zobrazit podokno obrázku.
 
 ```php
-<html>
-<head>
-    <title>Face Detect Sample</title>
-</head>
-<body>
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
@@ -102,13 +97,13 @@ catch (HttpException $ex)
     echo "<pre>" . $ex . "</pre>";
 }
 ?>
-</body>
-</html>
 ```
 
-## <a name="face---detect-response"></a>Odpověď Face - Detect
+Budete muset aktualizovat `subscriptionKey` pole s hodnotou váš klíč předplatného a může být nutné změnit `uriBase` řetězec tak, aby obsahoval oblasti správný identifikátor (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všech oblastí Koncové body). `returnFaceAttributes` Pole určuje, které pro rozpoznávání tváře atributy k načtení; možná budete chtít změnit tento řetězec v závislosti na zamýšlený účel použití.
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+## <a name="run-the-script"></a>Spuštění skriptu
+
+Otevřete soubor v PHP-webovým prohlížečem. Měli byste získat řetězec formátu JSON pro rozpoznávání tváře dat, podobně jako následující.
 
 ```json
 [

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a8251881b114d7b102481476d3e77923b34d34c7
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 99647770df9a8ca194559863a1d7212faf1c83a1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982382"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328210"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -358,5 +358,5 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, insta
 ## <a name="next-steps"></a>Další postup
 
 * Kontrola [konfigurace kontejnery](luis-container-configuration.md) nastavení konfigurace
-* Odkazovat na [– nejčastější dotazy (FAQ)](luis-resources-faq.md) k vyřešení problémů týkajících se služby LUIS funkce.
+* Odkazovat na [Poradce při potížích s](troubleshooting.md) k vyřešení problémů týkajících se služby LUIS funkce.
 * Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)

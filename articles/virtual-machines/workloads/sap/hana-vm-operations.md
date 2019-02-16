@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c85d405502890253bcdb80c652ed53f58546de9c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 32c326ff7bef98f9d8f4f20664889109d291a6ea
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747046"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328839"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
@@ -68,10 +68,10 @@ Nasazení virtuálních počítačů v Azure s použitím:
 Také můžete nasadit kompletní instalované platformy SAP HANA ve službě Azure VM prostřednictvím [SAP Cloudovou platformu](https://cal.sap.com/). Proces instalace je popsána v [nasadit řešení SAP S/4HANA nebo BW/4HANA v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) nebo s automatizací vydané [tady](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
 
 ### <a name="choose-azure-storage-type"></a>Zvolte typ služby Azure Storage
-Azure nabízí dva typy úložiště, které jsou vhodné pro virtuální počítače Azure, které se spouštějí SAP HANA:
+Azure nabízí dva typy úložiště, které jsou vhodné pro virtuální počítače Azure, které se spouštějí SAP HANA: Standardní pevné disky (HDD) a jednotky SSD premium (SSD). Další informace o těchto typů disků nevidí, najdete v našem článku [vyberte typ disku](../../windows/disks-types.md)
 
-- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Standardní pevné disky (HDD)
+- Premium jednotkami SSD (Solid-State Drive)
 
 Azure nabízí dvě metody nasazení pro virtuální pevné disky na Azure na úrovni Standard a Premium Storage. Pokud celková scénář umožňuje, využít výhod [Azure spravovaný disk](https://azure.microsoft.com/services/managed-disks/) nasazení.
 
@@ -408,7 +408,7 @@ Podle DT 2.0 nejlepších praktik propustnost vstupně-výstupních operací dis
 
 Je potřeba připojit k virtuálnímu počítači 2.0 DT více disků v Azure a vytvořit software raid (prokládáním) na úrovni operačního systému k dosažení maximálního limitu propustnost disků jednotlivých virtuálních počítačů. Jeden disk Azure nemůže poskytnout propustnost pro dosažení maximálního limitu virtuálních počítačů v této souvislosti. Azure Premium storage je povinné pro spuštění DT 2.0. 
 
-- Najdete podrobnosti o typech disků k dispozici Azure [zde](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Najdete podrobnosti o typech disků k dispozici Azure [zde](../../windows/disks-types.md)
 - Najdete podrobnosti o vytváření softwaru diskového pole raid prostřednictvím mdadm [zde](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
 - Podrobnosti o konfiguraci LVM vytvořit prokládané svazku pro maximální propustnosti můžete najít [zde](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
 

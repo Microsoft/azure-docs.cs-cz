@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880042"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313356"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Upgrade trezoru služby Backup na trezor služby Recovery Services
 
@@ -37,9 +37,9 @@ Najdete odkazy na rutiny Powershellu pro [modelu nasazení Resource Manager](bac
 
 Před provedením upgradu trezorů služby Backup na trezory služby Recovery, zkontrolujte následující problémy.
 
-- **Minimální verze agenta**: upgrade trezoru, ujistěte se, že agent Microsoft Azure Recovery Services (MARS) je minimálně verze 2.0.9083.0. Pokud agenta MARS je starší než 2.0.9083.0, aktualizujte před zahájením procesu upgradu agenta.
-- **Model fakturace založený na instancích**: trezory služby Recovery Service podporují jenom model fakturace založený na instancích. Pokud máte úložiště záloh, která používá starší model fakturace založený na úložiště, převeďte model fakturace během upgradu.
-- **Žádné konfigurace zálohování probíhající operace**: během upgradu, je omezen přístup k rovině správy. Dokončete všechny akce rovina správy a poté spusťte upgrade.
+- **Minimální verze agenta**: Upgrade trezoru, ujistěte se, že agent Microsoft Azure Recovery Services (MARS) je minimálně verze 2.0.9083.0. Pokud agenta MARS je starší než 2.0.9083.0, aktualizujte před zahájením procesu upgradu agenta.
+- **Model fakturace založený na instancích**: Trezory služby Recovery Service podporují jenom model fakturace založený na instancích. Pokud máte úložiště záloh, která používá starší model fakturace založený na úložiště, převeďte model fakturace během upgradu.
+- **Žádné konfigurace zálohování probíhající operace**: Během upgradu je omezený přístup k rovině správy. Dokončete všechny akce rovina správy a poté spusťte upgrade.
 
 ## <a name="using-powershell-scripts-to-upgrade-your-vaults"></a>Pomocí skriptů prostředí PowerShell k upgradu svých trezorů
 
@@ -53,7 +53,7 @@ Můžete použít skripty prostředí PowerShell na trezory služby Backup upgra
 
 Pomocí následujícího skriptu k upgradu svých trezorů. Následující ukázkový skript obsahuje vysvětlení parametrů.
 
-RecoveryServicesVaultUpgrade 1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **– umístění** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName** `<rgname>`
+RecoveryServicesVaultUpgrade-1.0.2.ps1 **-SubscriptionID** `<subscriptionID>` **-VaultName** `<vaultname>` **-Location** `<location>` **-ResourceType** `BackupVault` **-TargetResourceGroupName** `<rgname>`
 
 **SubscriptionID** – identifikační číslo předplatné trezoru, který se upgraduje.<br/>
 **VaultName** – název trezoru služby Backup, která se upgraduje.<br/>
@@ -82,7 +82,7 @@ Po zadání přihlašovacích údajů Azure, Azure ověří, že vaše prostřed
 
 - **Minimální verze agenta** – trezory služby Backup upgradovat na trezory služby Recovery Services vyžaduje agenta MARS na minimální verzi 2.0.9083.0. Pokud máte položky zaregistrované do trezoru služby Backup pomocí agenta starší než 2.0.9083.0 kontrolu požadovaných součástí se nezdaří. Pokud selže kontrola splnění předpokladů, aktualizujte agenta a zkuste upgrade trezoru znovu. Můžete si stáhnout nejnovější verzi agenta z [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 - **Konfigurace úlohy probíhající**: Pokud někdo je konfigurace úlohy pro nastavení k upgradu trezoru služby Backup nebo zápis položky, selže kontrola splnění předpokladů. Dokončete konfiguraci, nebo ukončení registrace položky a potom zahájit upgrade trezoru.
-- **Model fakturace založený na úložiště**: trezory služby Recovery Services podporují model fakturace založený na instancích. Pokud spustíte upgrade trezoru v trezoru služby Backup, která využívá model fakturace založený na úložiště, budete vyzváni k upgradu váš model fakturace spolu s trezoru. V opačném případě můžete aktualizovat váš model fakturace první, a poté spusťte upgrade trezoru.
+- **Model fakturace založený na úložiště**: Trezory služby Recovery Services podporují model fakturace založený na instancích. Pokud spustíte upgrade trezoru v trezoru služby Backup, která využívá model fakturace založený na úložiště, budete vyzváni k upgradu váš model fakturace spolu s trezoru. V opačném případě můžete aktualizovat váš model fakturace první, a poté spusťte upgrade trezoru.
 - Identifikujte skupinu prostředků pro trezor služby Recovery Services. Abyste mohli využívat funkce nasazení Resource Manageru, je nutné umístit trezor služby Recovery Services ve skupině prostředků. Pokud si nejste jisti, kterou skupinu prostředků chcete použít, zadejte název a procesu upgradu pro vás vytvoří skupinu prostředků. Proces upgradu také přidruží k trezoru novou skupinu prostředků.
 
 Po dokončení procesu upgradu kontroluje požadavky procesu vás vyzve k spusťte upgrade trezoru. Jakmile potvrdíte, proces upgradu obvykle trvá přibližně 15 až 20 minut, v závislosti na velikosti vašeho trezoru. Pokud máte velké úložiště, upgrade může trvat až 90 minut.
@@ -98,13 +98,13 @@ Druhá obrazovka ukazuje Nápověda odkazy vám pomůžou začít s pomocí trez
 ![odkazy nápovědy v okně s rychlým startem](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>Kroky po upgradu
-Trezor služby Recovery Services umožňuje zadat informace o časovém pásmu zásady zálohování. Po úspěšném upgradu trezoru přejděte na zásady zálohování z nabídky Nastavení trezoru a aktualizujte informace o časovém pásmu pro každé ze zásad, které jsou nakonfigurované v trezoru. Tato obrazovka ukazuje již časovému plánu zálohování na místní časové pásmo použita při vytváření zásad. 
+Trezor služby Recovery Services umožňuje zadat informace o časovém pásmu zásady zálohování. Po úspěšném upgradu trezoru přejděte na zásady zálohování z nabídky Nastavení trezoru a aktualizujte informace o časovém pásmu pro každé ze zásad, které jsou nakonfigurované v trezoru. Tato obrazovka ukazuje již časovému plánu zálohování na místní časové pásmo použita při vytváření zásad.
 
-## <a name="enhanced-security"></a>Rozšířené zabezpečení
+## <a name="enhanced-security"></a>Vylepšené zabezpečení
 
-Při upgradu trezoru služby Backup na trezor služby Recovery Services, jsou nastavení zabezpečení pro tento trezor automaticky zapnuté. Při nastavení zabezpečení se na určité operace, jako je například odstranění zálohy, nebo změna přístupového hesla vyžadovat [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN kód. Další informace o rozšířené zabezpečení, najdete v článku [funkcí zabezpečení, ochraně hybridní zálohy](backup-azure-security-feature.md). 
+Při upgradu trezoru služby Backup na trezor služby Recovery Services, jsou nastavení zabezpečení pro tento trezor automaticky zapnuté. Při nastavení zabezpečení se na určité operace, jako je například odstranění zálohy, nebo změna přístupového hesla vyžadovat [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN kód. Další informace o rozšířené zabezpečení, najdete v článku [funkcí zabezpečení, ochraně hybridní zálohy](backup-azure-security-feature.md).
 
-Pokud je zapnuté rozšířené zabezpečení, data se uchovávají až do 14 dnů po informace o bodu obnovení se odstranil z trezoru. Zákazníkům se účtuje úložiště pro tato data zabezpečení. Uchovávání dat zabezpečení platí pro body obnovení pro agenta Azure Backup, Azure Backup Server a System Center Data Protection Manager. 
+Pokud je zapnuté rozšířené zabezpečení, data se uchovávají až do 14 dnů po informace o bodu obnovení se odstranil z trezoru. Zákazníkům se účtuje úložiště pro tato data zabezpečení. Uchovávání dat zabezpečení platí pro body obnovení pro agenta Azure Backup, Azure Backup Server a System Center Data Protection Manager.
 
 ## <a name="gather-data-on-your-vault"></a>Shromažďování dat pro váš trezoru
 
@@ -112,38 +112,38 @@ Jakmile upgradujete na trezor služby Recovery Services, konfigurace sestav Azur
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Funkce upgradu plán ovlivní Můj probíhající zálohování?**</br>
+### <a name="does-the-upgrade-plan-affect-my-ongoing-backups"></a>Funkce upgradu plán ovlivní Můj probíhající zálohování?
 Ne. Probíhající zálohování pokračovat bez přerušení, během a po provedení upgradu.
 
-**Pokud nechystám upgrade brzy, co se stane Moje trezorů?**</br>
+### <a name="if-i-dont-plan-on-upgrading-soon-what-happens-to-my-vaults"></a>Pokud nechystám upgrade brzy, co se stane Moje trezorů?
 Protože všechny nové funkce platí jenom pro trezory služby Recovery Services, doporučujeme vám upgradovat vaše trezory. Od 1. září 2017 Microsoft začne automaticky upgrade trezory služby backup na trezory služby Recovery Services. Po listopadu 30,2017, že se už nevytvářejí trezory služby Backup pomocí Powershellu. Váš trezor je možné automaticky upgradovat kdykoli mezi. Společnost Microsoft doporučuje že co nejdříve upgrade trezoru.
 
-**Co dělá to upgradu znamená pro stávající nástroje?**</br>
-Aktualizace nástrojů na model nasazení Resource Manager. V modelu nasazení Resource Manageru pomocí služby Recovery Services, které byly vytvořeny trezory. Plánování pro model nasazení Resource Manageru a účtování pro rozdíl ve svých trezorů, je důležité. 
+### <a name="what-does-this-upgrade-mean-for-my-existing-tooling"></a>Co dělá to upgradu znamená pro stávající nástroje?
+Aktualizace nástrojů na model nasazení Resource Manager. V modelu nasazení Resource Manageru pomocí služby Recovery Services, které byly vytvořeny trezory. Plánování pro model nasazení Resource Manageru a účtování pro rozdíl ve svých trezorů, je důležité.
 
-**Během upgradu je velká Doba výpadku?**</br>
+### <a name="during-the-upgrade-is-there-much-downtime"></a>Během upgradu je velká Doba výpadku?
 To závisí na počtu prostředků, které se upgraduje. Pro menší nasazení (několik desítek chráněné instance) zabere celý upgrade menší než 20 minut. U větších nasazení mělo by to trvat maximálně jednu hodinu.
 
-**Je možné vrátit zpět po upgradu?**</br>
+### <a name="can-i-roll-back-after-upgrading"></a>Je možné vrátit zpět po upgradu?
 Ne. Po úspěšném upgradu prostředků se nepodporuje vrácení zpět.
 
-**Můžete ověřit prostředky, které chcete zobrazit, pokud jsou schopné upgrade nebo předplatné?**</br>
+### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>Můžete ověřit prostředky, které chcete zobrazit, pokud jsou schopné upgrade nebo předplatné?
 Ano. Prvním krokem při upgradu ověří, zda jsou prostředky schopné upgrade. V případě selhání ověření požadovaných součástí, příjem zpráv pro všemi důvody, proč nelze dokončit upgrade.
 
-**Můžete upgradovat Moje trezoru služby Backup na základě CSP?**</br>
+### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>Můžete upgradovat Moje trezoru služby Backup na základě CSP?
 Ne. V současné době nelze upgradovat na základě CSP trezory služby backup. Doplníme podporu pro upgrade trezory služby Backup na základě CSP v další vydané verze.
 
-**Můžete zobrazit Moje classic po upgradu trezoru?**</br>
+### <a name="can-i-view-my-classic-vault-post-upgrade"></a>Můžete zobrazit Moje classic po upgradu trezoru?
 Ne. Nelze zobrazit ani spravovat klasické trezoru po upgradu. Pouze budete moct používat nový portál Azure portal pro všechny akce správy v trezoru.
 
-**Tento upgrade se nezdařil, ale počítač, který se nachází agent vyžaduje aktualizaci se už neexistuje. Co dělat v takovém případě?**</br>
+### <a name="my-upgrade-failed-but-the-machine-that-held-the-agent-requiring-updating-doesnt-exist-anymore-what-do-i-do-in-such-a-case"></a>Tento upgrade se nezdařil, ale počítač, který se nachází agent vyžaduje aktualizaci se už neexistuje. Co dělat v takovém případě?
 Pokud je potřeba použít úložiště, zálohy pro dlouhodobé uchovávání a potom tento počítač nebude možné upgrade trezoru. V budoucích verzích přidáme podporu pro upgrade taková úložiště.
 Pokud k ukládání záloh z tohoto počítače už nepotřebujete, pak prosím zrušte registraci tento počítač z trezoru a zkuste upgrade zopakovat.
 
-**Proč se nezobrazují informace úlohy pro moje prostředky po upgradu?**</br>
+### <a name="why-cant-i-see-the-jobs-information-for-my-resources-after-upgrade"></a>Proč se nezobrazují informace úlohy pro moje prostředky po upgradu?
 Monitorování záloh (agenta MARS a IaaS) je nová funkce, které získáte při upgradu trezoru služby Backup na trezor služby Recovery Services. Informacím o monitorování trvá až 12 hodin pro synchronizaci se službou.
 
-**Jak můžu nahlásit problém?**</br>
+### <a name="how-do-i-report-an-issue"></a>Jak se dá nahlásit problém?
 Pokud se nezdaří libovolnou část upgrade trezoru Poznámka že OperationID uvedený v chybě. Microsoft Support bude fungovat proaktivně k vyřešení daného problému. Můžete se obrátili na podporu nebo pošlete nám e-mail na rsvaultupgrade@service.microsoft.com svým ID předplatného, název trezoru a ID operace. Pokusíme se problém vyřešit co nejrychleji. Pokud explicitně jste nedostali pokyny k tomu společnost Microsoft není zkuste operaci zopakovat.
 
 

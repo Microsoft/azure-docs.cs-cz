@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4f8929182995445ff0b327bc22a9cdf75ec5641b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262573"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312987"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](https://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -26,7 +26,7 @@ Export dat Application Insights do Power BI třemi způsoby:
 
 * [**Export analytických dotazů**](#export-analytics-queries). Toto je upřednostňovaná metoda. Zapisovat všechny dotazu má a exportovat je do Power BI. Tento dotaz můžete umístit na řídicím panelu, spolu s ostatními daty.
 * [**Průběžný export a Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Tato metoda je užitečná, pokud chcete ukládat data na dlouhou dobu. Pokud nemáte požadavek na uchování Rozšířená data, použijte metodu dotazu analytics exportu. Průběžný export a Stream Analytics zahrnuje další práce pro nastavení a režijní náklady na další úložiště.
-* [**Power BI adaptér**](#power-pi-adapter). Předdefinovaná sada grafy, ale můžete přidat vlastní dotazy z jiných zdrojů.
+* **Power BI adaptér**. Předdefinovaná sada grafy, ale můžete přidat vlastní dotazy z jiných zdrojů.
 
 > [!NOTE]
 > Adaptér pro Power BI je nyní **zastaralé**. Předdefinované grafy pro toto řešení se vyplní statické nelze upravovat dotazy. Nemáte možnost upravit tyto dotazy a v závislosti na určitých vlastností objektu data je možné pro připojení k Power BI a být úspěšné, ale je vyplněný žádná data. To je způsobeno kritéria vyloučení, které jsou nastavené v rámci pevně zakódované dotazu. Když toto řešení může i nadále fungovat pro některé zákazníky, vzhledem k absenci flexibilitu adaptéru doporučené řešení je použít [ **exportovat dotaz Analytics** ](#export-analytics-queries) funkce.

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb3c2a9cfc1bccf4656be83c6babbe9c7ec139fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: f0e96b87e46872bebe7563e08f0eb7a33b11015f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745346"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329844"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business jeden na Azure Virtual Machines
 Tento dokument obsahuje pokyny pro nasazení SAP Business One ve službě Azure Virtual Machines. V dokumentaci k není náhradou za dokumentaci k instalaci podnikání, jeden pro SAP. Základní pokyny pro plánování a nasazení pro infrastrukturu Azure a spustit jednu obchodní aplikace v by měly pokrývat v dokumentaci.
@@ -119,7 +119,7 @@ Tyto dokumenty by vám při rozhodování o výběru typů úložiště a konfig
 
 V zásadě byste měli:
 
-- Použití [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) přes [Azure Storage úrovně Standard](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
+- Používání disků Premium SSD přes standardní pevné disky. Další informace o typech disků k dispozici, najdete v našem článku [vyberte typ disku](../../windows/disks-types.md)
 - Použití Azure Managed disks za nespravované disky
 - Ujistěte se, že máte dostatečnou propustnost vstupně-výstupních operací a vstupně-výstupních operací nakonfigurovanou vaše konfigurace disků
 - Abyste měli náklady na konfiguraci efektivní úložiště kombinovat/hana nebo data a /hana/log svazku
@@ -138,7 +138,6 @@ Jsou odhady přibližnou velikosti pro stranu DBMS pro SQL Server:
 | až 150 | 32 | 128 GB | D32s_v3, E32s_v3 |
 
 Nastavení velikosti uvedené výše by měl získat představu tam, kde začít. Může být, že budete potřebovat méně nebo více prostředků, v takovém případě je snadné přizpůsobení v azure. Změna mezi typy virtuálních počítačů je možné s restartování virtuálního počítače.
-
 
 #### <a name="sap-hana-as-dbms"></a>SAP HANA jako DBMS
 Použití SAP HANA DBMS následujících částech vám by měly dodržovat důležité informace o dokumentu [SAP HANA v Azure Provozní příručka](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).

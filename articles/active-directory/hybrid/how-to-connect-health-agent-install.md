@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c4a7239110e0d3e712c97007ecc858f104811cc
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 53f1e8edc4286c2afbdf3b6909499a2e3fccfa5d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301685"
+ms.locfileid: "56313258"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 Tento dokument vás provede procesem instalace a konfigurace agentů služby Azure AD Connect Health. Agenty si můžete stáhnout [tady](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
@@ -42,7 +42,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 |Zákaz FIPS|Agenti Azure AD Connect Health nepodporují FIPS.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Odchozí připojení ke koncovým bodům služby Azure
- Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud je odchozí připojení blokováno pomocí bran firewall, nezapomeňte do seznamu povolených výjimek přidat následující koncové body: Další informace o [kontrole odchozího připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
+ Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud odchozího připojení je blokováno pomocí bran firewall, ujistěte se, že ve výchozím nastavení nejsou blokované následující adresy URL. Nezakazujte monitorování zabezpečení nebo kontrola z těchto adres URL, ale mohly, stejně jako ostatní internetový provoz. Umožňují komunikaci s koncovými body služby Azure AD Connect Health. Další informace o [kontrole odchozího připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
 
 | Doménové prostředí | Požadované koncové body služby Azure |
 | --- | --- |

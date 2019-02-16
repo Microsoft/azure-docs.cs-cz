@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816726"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311524"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z databáze DB2 pomocí aktivity kopírování objekt pro vytváření dat Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -116,7 +116,7 @@ V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vy
 
 Ukázka obsahuje následující entity služby Data Factory:
 
-- DB2 propojené služby typu [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties)
+- DB2 propojené služby typu [OnPremisesDb2](data-factory-onprem-db2-connector.md)
 - Služby Azure Blob storage, propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 - Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties)
 - Výstup [datovou sadu](data-factory-create-datasets.md) typu [Azureblobu](data-factory-azure-blob-connector.md#dataset-properties)

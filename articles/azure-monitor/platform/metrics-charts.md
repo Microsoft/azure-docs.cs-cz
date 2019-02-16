@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991323"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310929"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
 
@@ -100,20 +100,6 @@ Můžete rozdělit metriku dimenze k vizualizaci různých segmentů metriky por
    > [!NOTE]
    > Skrýt segmenty, které jsou relevantní pro váš scénář a usnadňují grafy pomocí filtrování a rozdělení na stejné dimenzi.
 
-### <a name="new-alert-rule"></a>Nové pravidlo upozornění
-
-Můžete také použít kritéria, která jste nastavili vizualizovat metriky, jako základ pro logiku metriky na základě pravidel upozornění. 
-
-Vyberete-li **oznámení nové pravidlo**
-
-![Tlačítko Nová pravidla upozornění zvýrazněný červenou barvou](./media/metrics-charts/015.png)
-
-Budete přesměrováni do podokna vytváření pravidla upozornění se základní metriky dimenzemi z grafu předem vyplněné, aby bylo snazší generovat vlastní pravidla upozornění.
-
-![Vytvořit pravidlo upozornění](./media/metrics-charts/016.png)
-
-Podívejte se na to [článku](alerts-metric.md) Další informace o nastavení upozornění na metriku.
-
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Zámek hranice osa y grafu
 
 Uzamčení rozsah osy y je důležitá, pokud graf znázorňuje menší kolísání vyšší hodnoty. 
@@ -138,6 +124,20 @@ Pokud chcete připnout nakonfigurované graf na řídicí panel:
 Po dokončení konfigurace diagramu, klikněte na **grafu akce** nabídky v pravém horním rohu grafu top a klikněte na **připnout na řídicí panel**.
 
 ![metriky image](./media/metrics-charts/00013.png)
+
+## <a name="create-alert-rules"></a>Vytváření pravidel upozornění
+
+Můžete použít kritéria, která jste nastavili vizualizovat metriky, jako základ pro metriky na základě pravidel upozornění. Nové pravidlo výstrah bude obsahovat váš cílový prostředek, metriky, rozdělení a filtr dimenzí z grafu. Budete moct změnit nastavení později v podokně vytvoření pravidla upozornění.
+
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Chcete-li vytvořit nové pravidlo upozornění, klikněte na tlačítko **pravidlo nové upozornění.**
+
+![Tlačítko Nová pravidla upozornění zvýrazněný červenou barvou](./media/metrics-charts/015.png)
+
+Budete přesměrováni do podokna vytváření pravidla upozornění se základní metriky dimenzemi z grafu předem vyplněné, aby bylo snazší generovat vlastní pravidla upozornění.
+
+![Vytvořit pravidlo upozornění](./media/metrics-charts/016.png)
+
+Podívejte se na to [článku](alerts-metric.md) Další informace o nastavení upozornění na metriku.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

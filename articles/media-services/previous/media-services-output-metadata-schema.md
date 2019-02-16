@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997571"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312578"
 ---
 # <a name="output-metadata"></a>Výstupní Metadata
 ## <a name="overview"></a>Přehled
@@ -29,7 +29,7 @@ Služba Media Services nekontroluje preventivně vstupní prostředky ke generov
 
 Pokud chcete zkontrolovat soubor metadat, můžete vytvořit **SAS** Lokátor a stahování souborů do místního počítače.  
 
-Tento článek popisuje elementů a typů schématu XML, na kterém metada výstup (&lt;source_file_name&gt;_manifest.xml) je založena. Informace o souboru, který obsahuje metadata o vstupní asset najdete v tématu [vstupní Metadata](media-services-input-metadata-schema.md).  
+Tento článek popisuje elementů a typů schématu XML, na kterém metada výstup (&lt;source_file_name&gt;_manifest.xml) je založena. Informace o souboru, který obsahuje metadata o vstupní asset najdete v tématu vstupní Metadata.  
 
 Můžete najít kód úplné schéma a ukázkový kód XML na konci tohoto článku.  
 
@@ -39,10 +39,10 @@ Kolekce položek AssetFile pro úlohy kódování.
 ### <a name="child-elements"></a>Podřízené prvky
 | Název | Popis |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |[AssetFile element](media-services-output-metadata-schema.md) , která je součástí kolekce AssetFiles. |
+| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFile element, který je součástí kolekce AssetFiles. |
 
 ## <a name="AssetFile "></a> AssetFile – element
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |
@@ -54,24 +54,24 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 ### <a name="child-elements"></a>Podřízené prvky
 | Název | Popis |
 | --- | --- |
-| **Zdroje** |Kolekce vstupu/zdrojových multimediálních souborů, který byl zpracován cílem vytvořit tento AssetFile. Další informace najdete v tématu [Source element](media-services-output-metadata-schema.md). |
-| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více videa sleduje prokládané do formátu odpovídajícího kontejneru. Další informace najdete v tématu [VideoTracks element](media-services-output-metadata-schema.md). |
-| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více zvukové stopy prokládané do formátu odpovídajícího kontejneru. Jedná se o kolekci tyto zvukové stopy. Další informace najdete v tématu [AudioTracks element](media-services-output-metadata-schema.md). |
+| **Zdroje** |Kolekce vstupu/zdrojových multimediálních souborů, který byl zpracován cílem vytvořit tento AssetFile. Další informace najdete v tématu Source element. |
+| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více videa sleduje prokládané do formátu odpovídajícího kontejneru. Další informace najdete v tématu VideoTracks elementu. |
+| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více zvukové stopy prokládané do formátu odpovídajícího kontejneru. Jedná se o kolekci tyto zvukové stopy. Další informace najdete v tématu AudioTracks elementu. |
 
 ## <a name="Sources "></a> Zdrojový element
 Kolekce vstupu/zdrojových multimediálních souborů, který byl zpracován cílem vytvořit tento AssetFile.  
 
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Název | Popis |
 | --- | --- |
-| **Zdroj**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Vstup/zdrojového souboru, které používá při generování tohoto prostředku. Další informace najdete v tématu [Source element](media-services-output-metadata-schema.md). |
+| **Zdroj**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Vstup/zdrojového souboru, které používá při generování tohoto prostředku. Další informace najdete v tématu Source element. |
 
 ## <a name="Source "></a> Zdrojový element
 Vstup/zdrojového souboru, které používá při generování tohoto prostředku.  
 
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |
@@ -81,17 +81,17 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 ## <a name="VideoTracks "></a> VideoTracks – element
 Každý fyzický AssetFile může obsahovat v něm nula nebo více videa sleduje prokládané do formátu odpovídajícího kontejneru. **VideoTracks** element představuje kolekci videa stopy.  
 
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Název | Popis |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |V nadřazené AssetFile sledovat konkrétní videa. Další informace najdete v tématu [VideoTrack element](media-services-output-metadata-schema.md#VideoTrack). |
+| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |V nadřazené AssetFile sledovat konkrétní videa. Další informace najdete v tématu VideoTrack elementu. |
 
 ## <a name="VideoTrack"></a> VideoTrack – element
 V nadřazené AssetFile sledovat konkrétní videa.  
 
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |
@@ -113,17 +113,17 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 ## <a name="AudioTracks "></a> AudioTracks – element
 Každý fyzický AssetFile může obsahovat v něm nula nebo více zvukové stopy prokládané do formátu odpovídajícího kontejneru. **AudioTracks** element představuje kolekci tyto zvukové stopy.  
 
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Název | Popis |
 | --- | --- |
-| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Konkrétní zvukové stopy v nadřazeném prvku AssetFile. Další informace najdete v tématu [AudioTrack element](media-services-output-metadata-schema.md). |
+| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Konkrétní zvukové stopy v nadřazeném prvku AssetFile. Další informace najdete v tématu AudioTrack elementu. |
 
 ## <a name="AudioTrack "></a> AudioTrack – element
 Konkrétní zvukové stopy v nadřazeném prvku AssetFile.  
 
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |
@@ -139,12 +139,12 @@ Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metad
 ### <a name="child-elements"></a>Podřízené prvky
 | Název | Popis |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parametry výsledek měření rytmu. Další informace najdete v tématu [LoudnessMeteringResultParameters element](media-services-output-metadata-schema.md). |
+| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parametry výsledek měření rytmu. Další informace najdete v tématu LoudnessMeteringResultParameters elementu. |
 
 ## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters – element
 Parametry výsledek měření rytmu.  
 
-Příklad XML můžete nalézt [ukázkový kód XML](media-services-output-metadata-schema.md#xml).  
+Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |

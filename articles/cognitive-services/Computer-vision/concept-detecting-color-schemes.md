@@ -8,23 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0793f572e043248af409e65cca4fd854f1371900
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880870"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313071"
 ---
 # <a name="detect-color-schemes-in-images"></a>Zjištění barevná schémata v obrázcích
 
-Počítačové zpracování obrazu extrahuje barvy z obrázku. Barvy se analyzují pak ve třech různých kontextech: popředí dominantní barva, barvu pozadí dominantní a dominantní barvy pro bitovou kopii jako celek. Jsou seskupené do 12 dominantních doplňkových barev. Jsou to tyto doplňkové barvy: černá, modrá, hnědá, šedá, zelená, oranžová, růžová, fialová, červená, šedozelená, bílá a žlutá. Počítačové zpracování obrazu analyzuje extrahovat z obrázků se vraťte barvu motivu, který představuje nejvíce živý barvu na obrázku se divákům prostřednictvím kombinace dominantní barvy a sytost barev. Podle toho, jaké barvy jsou na obrázku, může být vrácena jednoduše černá a bílá nebo hexadecimální kódy doplňkových barev. Počítačové zpracování obrazu také vrátí logickou hodnotu, která určuje, jestli obrázek je černá a bílá.
+Počítačové zpracování obrazu analyzuje barvy obrázku poskytuje tři různé atributy: barvu popředí dominantní barva pozadí dominantní a sadu dominantní barvy pro bitovou kopii jako celek. Vrátí barvy patří do sady: černou, modrá, hnědá, šedá, zelená, orange, růžová, nachová, red, šedozelená, prázdné a žlutou barvou. 
+
+Počítačové zpracování obrazu extrahuje také barvu motivu, který představuje největší živý barvu na obrázku, založené na kombinaci dominantní barvy a sytosti. Barva motivu se vrátí jako šestnáctkový kód barvy HTML. 
+
+Počítačové zpracování obrazu také vrátí hodnotu typu boolean označující, jestli obrázek je černobílý.
 
 ## <a name="color-scheme-detection-examples"></a>Barevné schéma detekce příklady
 
-Následující příklad ukazuje odpověď JSON pro počítačové zpracování obrazu vrácený při zjišťování na barevném schématu na obrázku. V tomto případě na obrázku není černá a bílá bitové kopie, ale jsou černá dominantní barvy popředí a pozadí a dominantní barvy pro bitovou kopii jako celek je černobílý.
+Následující příklad ukazuje odpověď JSON pro počítačové zpracování obrazu vrácený při zjišťování na barevném schématu na obrázku. V tomto případě na obrázku není černobílý bitové kopie, ale jsou černá dominantní popředí a pozadí a dominantní barvy pro bitovou kopii jako celek je černobílý.
 
 ![Na horách](./Images/mountain_vista.png)
 
@@ -48,7 +52,7 @@ Následující příklad ukazuje odpověď JSON pro počítačové zpracování 
 
 ### <a name="dominant-color-examples"></a>Dominantní barva příklady
 
-Následující tabulka popisuje dominantní popředí, pozadí a barvy image pro každý obrázek příkladu vrácená rozhraním pro počítačové zpracování obrazu.
+V následující tabulce jsou uvedeny vrácené popředí, pozadí a barvy image pro každý Ukázkový obrázek.
 
 | Image | Dominantní barvy |
 |-------|-----------------|
@@ -57,7 +61,7 @@ Následující tabulka popisuje dominantní popředí, pozadí a barvy image pro
 
 ### <a name="accent-color-examples"></a>Příklady Barva motivu
 
- Následující tabulka popisuje barvu zvýraznění jako hodnotu šestnáctková barva HTML pro každou obrázku vrácená rozhraním pro počítačové zpracování obrazu.
+ Vrácené barva jako šestnáctkovou hodnotu barvy HTML, pro každý obrázek příkladu v následující tabulce.
 
 | Image | Doplňková barva |
 |-------|--------------|
@@ -67,7 +71,7 @@ Následující tabulka popisuje dominantní popředí, pozadí a barvy image pro
 
 ### <a name="black--white-detection-examples"></a>Černá a bílá detekce příklady
 
-Následující tabulka uvádí, zda je každý obrázek příkladu černé & bílé vrácená rozhraním pro počítačové zpracování obrazu.
+Následující tabulka uvádí černobílé vyhodnocení počítačové zpracování obrazu v ukázkové obrázky.
 
 | Image | Černá a bílá? |
 |-------|----------------|

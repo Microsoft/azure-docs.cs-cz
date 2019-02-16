@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 5f3d884720bce5777a358a27dc477eabd5263d0c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4c58d053412b8f90b6423454fcda814e8cf6da75
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245180"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329009"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -177,8 +177,8 @@ Tato tabulka je automaticky shrnutý podporu pro disk operačního systému virt
 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Maximální velikost disku operačního systému | 2048 GB | [Další informace](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) o discích virtuálních počítačů.
-Dočasný disk | Nepodporuje se | Dočasný disk je vždy z replikace vyloučit.<br/><br/> Neukládají žádná trvalá data na dočasném disku. [Další informace](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
+Maximální velikost disku operačního systému | 2048 GB | [Další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
+Dočasný disk | Nepodporuje se | Dočasný disk je vždy z replikace vyloučit.<br/><br/> Neukládají žádná trvalá data na dočasném disku. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
 Maximální velikost datového disku | 4095 GB |
 Maximální číslo datového disku | Až 64, v souladu s podporou pro určité velikosti virtuálních počítačů Azure | [Další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
 Četnost změn dat disku | Maximálně 10 MB/s na disku pro premium storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud Průměrná frekvence změny dat na disku je trvale vyšší než maximální délka, nebude dohnat replikace.<br/><br/>  Pokud se překročí maximální nedojde replikace můžete zachytit, ale může se zobrazit body obnovení mírně zpožděné.
@@ -194,7 +194,7 @@ Prostory úložiště | Podporováno |
 Azure Disk Encryption (ADE) pro operační systém Windows | Povoleno pro virtuální počítače [šifrování pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) jsou podporovány |
 Azure Disk Encryption (ADE) pro operační systém Linux | Nepodporuje se |
 Přidání nebo odebrání horké disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk na virtuálním počítači, musíte zakázat replikaci a povolte replikaci pro virtuální počítač znovu.
-Vyloučení disku | Nepodporuje se|   Dočasný disk je ve výchozím nastavení vyloučen.
+Vyloučení disku | [podporováno prostřednictvím prostředí powershell](https://review.docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell?branch=pr-en-us-66458#replicate-azure-virtual-machine) |  Dočasný disk je ve výchozím nastavení vyloučen.
 Prostory úložiště s přímým přístupem  | Podporované pro body obnovení konzistentní vzhledem k chybě. Body obnovení konzistentní vzhledem k aplikaci nejsou podporovány. |
 Souborový Server se Škálováním  | Podporované pro body obnovení konzistentní vzhledem k chybě. Body obnovení konzistentní vzhledem k aplikaci nejsou podporovány. |
 LRS | Podporováno |

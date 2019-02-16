@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 42b0b7a1ca2767a7051a6c57ef2aeac8cf2bb64c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 10dc7a2c7e4de44979ec72b1d292c69866e1faae
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477399"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326404"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Převést Azure spravované disky úložiště úroveň ze standard na premium a naopak
 
-Managed Disks nabízí tři možnosti úložiště: [Premium SSD](../windows/premium-storage.md), SSD na úrovni Standard, a [standardní HDD](../windows/standard-storage.md). Umožňuje snadno přepínat mezi možnostmi s minimálními výpadky na základě vašich potřeb výkonu. To není podporováno pro nespravované disky. Ale můžete snadno [převod na managed disks](convert-unmanaged-to-managed-disks.md) snadno přepínat mezi typy disků.
+Spravované disky nabízí čtyři [typ disku](disks-types.md) možnosti: Ultra jednotky SSD (Solid-State Drive), Premium SSD, SSD standardy a standardních pevných discích (HDD). Umožňuje snadno přepínat mezi možnostmi s minimálními výpadky na základě vašich potřeb výkonu. To není podporováno pro nespravované disky. Ale můžete snadno [převod na managed disks](convert-unmanaged-to-managed-disks.md) snadno přepínat mezi typy disků.
 
 V tomto článku se dozvíte, jak převést spravované disky standard na premium a naopak pomocí příkazového řádku Azure. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Před zahájením
 
 * Převod vyžaduje restartování virtuálního počítače, proto naplánujte migraci disků úložiště během už existujícího časového období údržby. 
-* Pokud používáte nespravované disky, nejprve [převod na managed disks](convert-unmanaged-to-managed-disks.md) přepínat mezi možnosti úložiště pomocí tohoto článku. 
+* Pokud používáte nespravované disky, nejprve [převod na managed disks](convert-unmanaged-to-managed-disks.md) přepínat mezi možnosti úložiště pomocí tohoto článku.
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>Převést všechny spravované disky virtuálního počítače ze standard na premium a naopak

@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 37bb0dcc2b9848d3fd3d49c78b52adbcd2dcc046
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f4c9e256c3b3f2f5df8ef49f26c927250f376421
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106390"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327047"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -74,7 +74,7 @@ Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virt
 Vaše předplatné má nastavené výchozí [kvóty](../../azure-subscription-service-limits.md), které mohou ovlivnit nasazení velkého počtu virtuálních počítačů pro váš projekt. Aktuální limit jednoho předplatného je 20 virtuálních počítačů na oblast. Limity můžete navýšit tak, že [vyplníte lístek podpory s žádostí o navýšení](../../azure-supportability/resource-manager-core-quotas-request.md).
 
 ### <a name="operating-system-disks-and-images"></a>Disky a image operačních systémů
-Virtuální počítače používají [virtuální pevné disky (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), na které ukládají svůj operační systém (OS) a data. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
+Virtuální počítače používají [virtuální pevné disky (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), na které ukládají svůj operační systém (OS) a data. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
 
 Azure poskytuje mnoho [imagí na webu Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/) s různými verzemi a typy operačních systémů Windows Server, které můžete použít. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední). Podporují se jen 64bitové operační systémy. Podrobnosti o podporovaných hostovaných operačních systémech, rolích a funkcích najdete v tématu věnovaném [podpoře serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 

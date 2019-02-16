@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9c1f8507cfa1f21214428e852e6ffed4d7703254
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: e1a52aff0890e32ae739285c0380258939f29597
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564319"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312867"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změnit z kryptografický otisk certifikátu clusteru na běžný název
 Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje clusteru certifikáty vyměnit nebo správy. Více certifikátů, ale mají stejný běžný název nebo předmětu.  Přepínání nasazeném clusteru pomocí kryptografické otisky certifikátů k běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu. Tento článek popisuje postup aktualizace spuštěný cluster Service Fabric běžný název certifikátu použít místo kryptografického otisku certifikátu.
@@ -96,7 +96,7 @@ Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 ```
 
 >[!NOTE]
-> Vypočítá tajemství nastavit škálování virtuálního počítače nepodporují stejné id prostředku pro dva samostatné tajné kódy, jako každý tajný kód je označené verzí prostředků jedinečné. 
+> Škálovací sada s tajnými kódy nepodporují stejné ID prostředku pro dva samostatné tajné kódy, jako každý tajný kód je označené verzí, jedinečný prostředek. 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>Stažení a aktualizace šablony z portálu
 Certifikát je nainstalovaný na základní škálovací sadu, ale je také potřeba aktualizovat cluster Service Fabric používat tento certifikát a jeho běžný název.  Stáhněte šablonu pro vaše nasazení clusteru.  Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do skupiny prostředků, který je hostitelem clusteru.  V **nastavení**vyberte **nasazení**.  Vyberte poslední nasazení a klikněte na tlačítko **zobrazit šablonu**.

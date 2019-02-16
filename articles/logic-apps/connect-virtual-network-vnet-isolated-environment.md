@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 8d7fc6d8f581c3ad0e0f3266ea615acadcb7bc25
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/15/2019
+ms.openlocfilehash: d67bc99a63242dd56d65d6bdac0448c7742a6b9d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176199"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311898"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
 
@@ -67,9 +67,10 @@ K řízení příchozího a odchozího provozu mezi podsítěmi virtuální sít
 | Komunikace s Azure Logic Apps <br>Sdělení Azure Logic Apps | Příchozí <br>Odchozí | * <br>80 & 443 | INTERNET <br>VIRTUAL_NETWORK |
 | Azure Active Directory | Odchozí | * <br>80 & 443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
 | Závislosti Azure Storage | Odchozí | * <br>80 & 443 | VIRTUAL_NETWORK <br>Storage |
+| Historie spouštění vaší aplikace logiky | Příchozí | * <br>443 | INTERNET <br>VIRTUAL_NETWORK |
 | Správa připojení | Odchozí | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
 | Publikování diagnostické protokoly a metriky | Odchozí | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
-| Návrhář pro Logic Apps – dynamické vlastnosti <br>Historie spouštění vaší aplikace logiky <br>Nasazení konektoru <br>Aktivační událost požadavku koncového bodu | Příchozí | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
+| Návrhář pro Logic Apps – dynamické vlastnosti <br>Nasazení konektoru <br>Aktivační událost požadavku koncového bodu | Příchozí | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
 | Závislost aplikace Service Management | Příchozí | * <br>454 & 455 | AppServiceManagement <br>VIRTUAL_NETWORK |
 | API Management – koncový bod správy | Příchozí | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
 | Závislost z protokolu do zásady centra událostí a agenta monitorování | Odchozí | * <br>5672 | VIRTUAL_NETWORK <br>Centrum událostí |

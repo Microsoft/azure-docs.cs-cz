@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3f3b20ac21c0a871d3baad50098700b7cf3b3b9c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55e8f536419f102f8f0fe69773ed486407c50cfb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235390"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328856"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumníka služby Microsoft Azure Storage
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Ve službě Azure DevTest Labs soubory virtuálního pevného disku slouží k vytváření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Tento článek ukazuje, jak používat [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD [další kroky části](#next-steps) uvádí některé články, které ukazují, jak vytvořit vlastní image z virtuálního pevného disku uloženého souboru. Další informace o discích a virtuálních pevných disků v Azure najdete v tématu [informace o discích a virtuálních pevných disků pro virtuální počítače](../virtual-machines/linux/about-disks-and-vhds.md)
+Ve službě Azure DevTest Labs soubory virtuálního pevného disku slouží k vytváření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Tento článek ukazuje, jak používat [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD [další kroky části](#next-steps) uvádí některé články, které ukazují, jak vytvořit vlastní image z virtuálního pevného disku uloženého souboru. Další informace o discích a virtuálních pevných disků v Azure najdete v tématu [Úvod do managed disks](../virtual-machines/linux/managed-disks-overview.md)
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 

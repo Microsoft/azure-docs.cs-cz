@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 5719d5c49d3061acd167f51f74aac109dc22ec49
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e38612e0d4e0707525b313c79143018c74c4c77b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961393"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326506"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Vytvoření disku úložiště virtuálního počítače ve službě Azure Stack
 
@@ -32,9 +32,9 @@ Tento článek popisuje postup vytvoření disku úložiště virtuálního poč
 
 Počínaje verzí. 1808, podporuje Azure Stack použít spravované disky a nespravované disky na virtuální počítače, jako operační systém (OS) a datového disku. Dříve než ve verzi. 1808 jsou podporovány pouze nespravované disky. 
 
-**[Spravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)**  zjednodušit správu disků virtuálních počítačů Azure IaaS tím, že spravují účty úložiště přidružené k diskům virtuálních počítačů. Budete muset určit velikost disku je nutné, a Azure Stack vytváří a spravuje disk za vás.
+**[Spravované disky](../../virtual-machines/windows/managed-disks-overview.md)**  zjednodušit správu disků virtuálních počítačů Azure IaaS tím, že spravují účty úložiště přidružené k diskům virtuálních počítačů. Budete muset určit velikost disku je nutné, a Azure Stack vytváří a spravuje disk za vás.
 
-**[Nespravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**, vyžaduje vytvořené [účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) k uložení disku. Disky, které vytvoříte, se označují jako disky virtuálních počítačů a ukládají v kontejnery v účtu úložiště.
+Nespravované disky, vyžadují, abyste vytvořili účet úložiště pro ukládání disků. Disky, které vytvoříte, se označují jako disky virtuálních počítačů a ukládají v kontejnery v účtu úložiště.
 
 ### <a name="best-practice-guidelines"></a>Pravidla osvědčených postupů
 
@@ -97,7 +97,7 @@ Každý nespravovaný disk, který přidáte měly být umístěny v samostatný
 
     -  Vyberte **typ zdroje**.
 
-       Vytvoření disku ze snímku jiného disku, objektů blob v účtu úložiště, nebo vytvořte prázdný disk.
+       Vytvořte disk ze snímku jiného disku nebo objektu blob v účtu úložiště nebo vytvořte prázdný disk.
 
         **snímek**  
         Vyberte snímek, který, pokud je k dispozici. Snímek musí být v dostupných v předplatném a umístění Virtuálního počítače.

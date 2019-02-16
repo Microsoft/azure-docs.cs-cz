@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8e974852c0394eb7fd9e3e13eb8cde42a23977a6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 40145ee0e284f90dc1cf231db01d02219a58eeda
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862084"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313139"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>Rychlý start: Analýza místní image pomocí rozhraní REST API a C&#35; v počítačové zpracování obrazu
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>Rychlý start: Analýza místní image pomocí rozhraní REST API a C# v počítačové zpracování obrazu
 
-V tomto rychlém startu analyzujete obrázek uložený místně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu se analyzovat místně uložený obrázek extrahovat vizuální funkce pomocí rozhraní REST API pro počítačové zpracování obrazu. S [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metodu, můžete extrahovat informace vizuální funkce na základě obsahu obrázku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
@@ -253,7 +253,7 @@ Pokud už řešení sady Visual Studio nepotřebujete, odstraňte je. Uděláte 
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte základní aplikaci Windows, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte základní aplikaci Windows, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů.
 
 > [!div class="nextstepaction"]
-> [Kurz – rozhraní API pro počítačové zpracování obrazu s C&#35;](../Tutorials/CSharpTutorial.md)
+> [Computer Vision API na C# kurz](../Tutorials/CSharpTutorial.md)

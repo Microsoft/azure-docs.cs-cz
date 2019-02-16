@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 160d42725abdb91af4f83696c2bceae38bbab67d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd9429ade750810138335c522d68df5cd595f320
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869326"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310979"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní REST API a C&#35; v počítačové zpracování obrazu
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní REST API a C# v počítačové zpracování obrazu
 
-V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metod [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) (Rozpoznat text) a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) (Získat výsledky operace rozpoznávání textu) můžete detekovat rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
+V tomto rychlém startu se extrahovat rukou psaný text z image pomocí rozhraní REST API pro počítačové zpracování obrazu. S [rozpoznat Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) a [získat rozpoznat výsledek operace Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metody, můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do datového proudu Strojově čitelný znaků.
 
 > [!IMPORTANT]
 > Metoda [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) běží na rozdíl od metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Metoda Recognize Text místo toho vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Content`. Voláním tohoto identifikátoru URI, který zastupuje metodu [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201), pak lze zkontrolovat stav i získat výsledky volání metody Recognize Text.
@@ -425,7 +425,7 @@ Pokud už řešení sady Visual Studio nepotřebujete, odstraňte je. Uděláte 
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte základní aplikaci Windows, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte základní aplikace Windows, který se používá pro počítačové zpracování obrazu k provedení optické rozpoznávání znaků (OCR). Vytváření miniatur výtisky oříznout smart; a zjistit, kategorií, značky a popisují funkce visual, včetně tváří, v obraze.
 
 > [!div class="nextstepaction"]
-> [Kurz – rozhraní API pro počítačové zpracování obrazu s C&#35;](../Tutorials/CSharpTutorial.md)
+> [Computer Vision API na C# kurz](../Tutorials/CSharpTutorial.md)

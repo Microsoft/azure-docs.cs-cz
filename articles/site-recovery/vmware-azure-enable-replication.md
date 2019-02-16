@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822778"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329943"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -88,7 +88,7 @@ V dalším kroku ověřit vlastnosti zdrojového počítače. Mějte na paměti,
 2. V části **Vlastnosti** můžete zobrazit informace o replikaci a převzetí služeb při selhání pro virtuální počítač.
 3. V **výpočty a síť** > **výpočetní vlastnosti**, můžete změnit propoerties více virtuálních počítačů:
 * Azure VM name - upravit název, který má v případě potřeby v souladu s požadavky na Azure
-* Cílovou velikost virtuálního počítače nebo typ – výchozí velikost virtuálního počítače je vybrán založené na zdroji velikost virtuálního počítače. Můžete vybrat jinou velikost virtuálního počítače podle potřeb kdykoli před převzetí služeb při selhání. Všimněte si, že velikost zdrojového disku také podle velikosti disku virtuálního počítače a může být pouze změní po převzetí služeb při selhání. Další informace najdete na [standardní](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) a [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) velikosti a IOPS na disku.
+* Cílovou velikost virtuálního počítače nebo typ – výchozí velikost virtuálního počítače je vybrán založené na zdroji velikost virtuálního počítače. Můžete vybrat jinou velikost virtuálního počítače podle potřeb kdykoli před převzetí služeb při selhání. Všimněte si, že velikost zdrojového disku také podle velikosti disku virtuálního počítače a může být pouze změní po převzetí služeb při selhání. Další informace o velikosti disku a vstupně-výstupních operací v našich [cíle škálovatelnosti pro disky](../virtual-machines/windows/disk-scalability-targets.md) článku.
 
     ![Výpočetní prostředky a vlastnosti sítě](./media/vmware-azure-enable-replication/vmproperties.png)
 

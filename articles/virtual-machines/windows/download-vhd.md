@@ -1,6 +1,6 @@
 ---
-title: Stáhněte si Windows virtuálního pevného disku z Azure | Microsoft Docs
-description: Stáhněte si Windows virtuální pevný disk pomocí portálu Azure.
+title: Stažení virtuálního pevného disku Windows v Azure | Dokumentace Microsoftu
+description: Stáhněte si Windows virtuálního pevného disku pomocí webu Azure portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,67 +15,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: f62c1b815180e39468a39b8bc2a220a6bfb9ea5a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726291"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329366"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Stáhněte si Windows virtuálního pevného disku z Azure
 
-V tomto článku se dozvíte, jak stáhnout [Windows virtuální pevný disk (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) soubor z Azure pomocí portálu Azure. 
+V tomto článku se dozvíte, jak stáhnout soubor virtuálního pevného disku (VHD) pro Windows z Azure pomocí webu Azure portal.
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Virtuální pevný disk nelze stáhnout ze služby Azure, pokud je připojen k spuštění virtuálního počítače. Budete muset zastavit virtuální počítač ke stažení virtuální pevný disk. Pokud chcete použít jako virtuální pevný disk [image](tutorial-custom-images.md) k vytvoření dalších virtuálních počítačů s nové disky, použijete [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) zobecní operační systém obsažený v souboru a potom zastavte virtuální počítač. Pokud chcete použít virtuální pevný disk jako disk pro novou instanci třídy na existující virtuální počítač nebo datový disk, stačí k zastavení a zrušit přidělení virtuálního počítače.
+Virtuální pevný disk nejde stáhnout z Azure, pokud je připojen k spuštěného virtuálního počítače. Budete muset zastavit virtuální počítač ke stažení virtuálního pevného disku. Pokud chcete použít jako virtuální pevný disk [image](tutorial-custom-images.md) ostatním virtuálním počítačům s nové disky, které vytvoříte pomocí [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) zobecní operační systém obsažený v souboru a poté zastavte virtuální počítač. Použití virtuálního pevného disku jako disku pro nové instance existujícího virtuálního počítače nebo datový disk, potřebujete jenom zastavit a zrušit přidělení virtuálního počítače.
 
-Chcete-li použít virtuální pevný disk jako bitovou kopii k vytvoření dalších virtuálních počítačů, proveďte tyto kroky:
+Chcete-li použít virtuální pevný disk jako image k vytvoření dalších virtuálních počítačů, postupujte takto:
 
 1.  Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com/).
-2.  [Připojte se k Virtuálnímu](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-3.  Ve virtuálním počítači otevřete okno příkazového řádku jako správce.
-4.  Změňte adresář na *%windir%\system32\sysprep* a spusťte sysprep.exe.
-5.  V dialogovém okně Nástroj pro přípravu systému vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je vybrána.
-6.  V možnosti vypnutí, vyberte **vypnutí**a potom klikněte na **OK**. 
+2.  [Připojte se k virtuálnímu počítači](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+3.  Na virtuálním počítači otevřete okno příkazového řádku jako správce.
+4.  Změňte adresář na *%windir%\system32\sysprep* a spustit sysprep.exe.
+5.  V dialogovém okně nástroje pro přípravu systému vyberte **zadejte systému Out-of-Box zapnutí**a ujistěte se, že **generalizace** zaškrtnuto.
+6.  V možnosti vypnutí vyberte **vypnutí**a potom klikněte na tlačítko **OK**. 
 
-Pokud chcete použít virtuální pevný disk jako disk pro novou instanci třídy na existující virtuální počítač nebo datový disk, proveďte tyto kroky:
+Použití virtuálního pevného disku jako disku pro nové instance existujícího virtuálního počítače nebo datový disk, proveďte tyto kroky:
 
-1.  V nabídce centra v portálu Azure, klikněte na tlačítko **virtuální počítače**.
+1.  V nabídce centra na webu Azure Portal, klikněte na tlačítko **virtuálních počítačů**.
 2.  Vyberte virtuální počítač ze seznamu.
 3.  V okně pro virtuální počítač, klikněte na **Zastavit**.
 
-    ![Zastavit virtuální počítač](./media/download-vhd/export-stop.png)
+    ![Zastavení virtuálního počítače](./media/download-vhd/export-stop.png)
 
-## <a name="generate-sas-url"></a>Generování adresy URL SAS
+## <a name="generate-sas-url"></a>Vygenerovat adresu SAS URL
 
-Ke stažení souboru virtuálního pevného disku, je nutné generovat [sdílený přístupový podpis (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) adresy URL. Generování adresy URL čas vypršení platnosti je přiřazena k adrese URL.
+Stáhněte soubor virtuálního pevného disku, budete muset vygenerovat [sdílený přístupový podpis (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) adresy URL. Při generování adresy URL, čas vypršení platnosti je přiřazena k adrese URL.
 
 1.  V nabídce v okně pro virtuální počítač, klikněte na tlačítko **disky**.
-2.  Vyberte disk operačního systému pro virtuální počítač a pak klikněte na tlačítko **exportovat**.
-3.  Nastavte hodnotu doby vypršení platnosti adresy URL do *36000*.
+2.  Vyberte disk s operačním systémem virtuálního počítače a potom klikněte na tlačítko **exportovat**.
+3.  Nastavit čas vypršení platnosti adresy URL, aby *36000*.
 4.  Klikněte na tlačítko **generování adresy URL**.
 
-    ![Generování adresy URL](./media/download-vhd/export-generate.png)
+    ![Vygenerovat URL](./media/download-vhd/export-generate.png)
 
 > [!NOTE]
-> Čas vypršení platnosti je vyšší než výchozí zajistit dostatek času na stažení velkého souboru virtuálního pevného disku pro operační systém Windows Server. Můžete očekávat, že soubor virtuálního pevného disku, který obsahuje operační systém Windows Server do trvat několik hodin v závislosti na připojení stáhnout. Pokud stahujete virtuální pevný disk pro datový disk, je výchozí doba dostatečná. 
+> Čas vypršení platnosti se zvýšil z výchozí poskytnout dostatek času na stažení velkých souborů virtuálního pevného disku pro operační systém Windows Server. Můžete očekávat virtuálního pevného disku obsahující operační systém Windows Server do trvat několik hodin, stáhněte si v závislosti na připojení. Pokud stahujete virtuální pevný disk pro datový disk, výchozí doba je dostačující. 
 > 
 > 
 
-## <a name="download-vhd"></a>Stáhnout virtuálního pevného disku
+## <a name="download-vhd"></a>Stažení virtuálního pevného disku
 
-1.  V části Adresa URL, která byla vygenerována klikněte na tlačítko Stáhnout soubor VHD.
+1.  V části Adresa URL, která byla vygenerována klikněte na stáhnout soubor VHD.
 
-    ![Stáhnout virtuálního pevného disku](./media/download-vhd/export-download.png)
+    ![Stažení virtuálního pevného disku](./media/download-vhd/export-download.png)
 
-2.  Je třeba kliknout na **Uložit** v prohlížeči zahájíte stahování. Výchozí název souboru virtuálního pevného disku je *abcd*.
+2.  Budete muset kliknout na **Uložit** v prohlížeči a spusťte soubor ke stažení. Výchozí název pro soubor virtuálního pevného disku je *abcd*.
 
-    ![Kliknutím na Uložit v prohlížeči](./media/download-vhd/export-save.png)
+    ![Klikněte na Uložit v prohlížeči](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [nahrát soubor virtuálního pevného disku do Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-- [Vytvoření spravované disky z nespravovaných disků v účtu úložiště](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- [Správa Azure disky pomocí prostředí PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Zjistěte, jak [nahrání souboru VHD do Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+- [Vytvoření spravovaných disků z nespravovaných disků v účtu úložiště](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Správa disků v Azure pomocí Powershellu](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

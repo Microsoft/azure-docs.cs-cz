@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: f7536b5d0815351d2e6cb67705060d2e1046c970
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857868"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328329"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Dotaz kontejneru Azure Cosmos
 
@@ -31,6 +31,8 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 ## <a name="cross-partition-query"></a>Dotazování napříč oddíly
 
 Následující dotaz neobsahuje filtr klíče oddílu (`DeviceId`) a distribuuje se do všech oddílů, ve kterém je spuštěn proti index oddílu. Chcete-li spustit dotaz napříč oddíly, nastavte `EnableCrossPartitionQuery` na hodnotu true (nebo `x-ms-documentdb-query-enablecrosspartition`  v rozhraní REST API).
+
+Vlastnost EnablecrossPartitionQuery přijímá hodnotu typu boolean. Pokud je nastavena na hodnotu true, a pokud váš dotaz nemá klíč oddílu, Azure Cosmos DB distribuce dotazu napříč oddíly. Ventilátor navýšení kapacity se provádí pomocí jednotlivých dotazů do všech oddílů. Přečíst výsledky quey, by měly klientské aplikace využívat výsledků FeedResponse a vyhledejte vlastnost ContinuationToken. Číst všechny výsledky, zachovejte iterace na data, dokud token ContinuationToken má hodnotu null. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

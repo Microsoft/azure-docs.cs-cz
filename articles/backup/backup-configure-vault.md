@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 006d47d397bab0869ae8a75d6c17d239e71608c3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382751"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310571"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Zálohování klienta nebo Windows Serveru do Azure s využitím modelu nasazení Resource Manager
 Tento článek vysvětluje, jak zálohovat Windows Server (nebo klienta Windows) souborů a složek do Azure pomocí Azure Backup pomocí modelu nasazení Resource Manager.
@@ -72,7 +72,7 @@ Při prvním vytvoření trezoru Služeb zotavení určíte, jak má být úlož
 
     ![Výběr nového trezoru ze seznamu trezorů služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    Po výběru trezoru, trezor služby Recovery Services okno zúží a **přehled** blade (*obsahující název trezoru v horní části*) podrobnosti trezoru otevřete okno.
+    Po výběru trezoru, trezor služby Recovery Services okno zúží a **přehled** blade (*obsahující název trezoru v horní části*) a otevřete okno Podrobnosti o trezoru.
 
     ![Zobrazení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 

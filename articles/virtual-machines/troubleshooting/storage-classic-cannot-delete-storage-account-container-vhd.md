@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 72493c6bba556314c3652be5251463d1d1e005bd
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383441"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330609"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování prostředku klasického úložiště.
 Tento článek obsahuje pokyny k odstraňování problémů při jedné z následujících chyb při odstraňování účtu úložiště Azure classic, kontejneru nebo souboru objektu blob stránky *.vhd. 
@@ -21,10 +21,10 @@ Tento článek obsahuje pokyny k odstraňování problémů při jedné z násle
 
 Tento článek se týká pouze problémy s klasické prostředky úložiště. Když uživatel odstraní klasický virtuální počítač pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku a potom disky nejsou automaticky odstraněny. Uživatel získá možnost odstranění prostředku "Disk". V případě, že není vybraná možnost, nebudou moct prostředku "Disk" odstranění účtu úložiště, kontejner a skutečné *.vhd stránkovacího souboru objektu blob.
 
-Další informace o službě Azure disks najdete [tady](../../virtual-machines/windows/about-disks-and-vhds.md). Azure zabraňuje odstranění disku, který je připojen k virtuálnímu počítači zabránit v poškození. Zabrání také odstranění kontejnerů a účty úložiště, které mají objekt blob stránky, který je připojen k virtuálnímu počítači. 
+Další informace o službě Azure disks najdete [tady](../../virtual-machines/windows/managed-disks-overview.md). Azure zabraňuje odstranění disku, který je připojen k virtuálnímu počítači zabránit v poškození. Zabrání také odstranění kontejnerů a účty úložiště, které mají objekt blob stránky, který je připojen k virtuálnímu počítači. 
 
 ## <a name="what-is-a-disk"></a>Co je "Disk"?
-Prostředek "Disk" se používá k připojení *.vhd stránkovacího souboru objektu blob k virtuálnímu počítači jako disku s operačním systémem nebo datový disk. Zapůjčení přidržte *.vhd soubor disk s operačním systémem nebo datový prostředek disku, až do odstranění, bude pokračovat. Prostředek úložiště v cestě je uvedeno výše image nelze odstranit, pokud prostředek "Disk" odkazuje na ni.
+Prostředek "Disk" se používá k připojení *.vhd stránkovacího souboru objektu blob k virtuálnímu počítači jako disku s operačním systémem nebo datový disk. Zapůjčení přidržte *.vhd soubor disk s operačním systémem nebo datový prostředek disku, až do odstranění, bude pokračovat. Prostředek úložiště v cestě podle obrázku níže nelze odstranit, pokud prostředek "Disk" odkazuje na ni.
 
 ![Otevřít snímek obrazovky portálu s podoknem "Vlastnosti" disk (klasický)](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
 

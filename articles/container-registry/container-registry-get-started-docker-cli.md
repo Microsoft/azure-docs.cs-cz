@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982841"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330864"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
 
@@ -116,10 +116,10 @@ Pokud image serveru Nginx už nepotřebujete, můžete ho místně pomocí odstr
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Odebrání Image ze služby Azure container registry, můžete použít příkaz rozhraní příkazového řádku Azure [az acr úložiště odstranit](/cli/azure/acr/repository#az-acr-repository-delete). Například následující příkaz odstraní manifest odkazuje značku, všechna data přidružená vrstvy a všechny ostatní značky odkazující na manifest.
+Odebrání Image ze služby Azure container registry, můžete použít příkaz rozhraní příkazového řádku Azure [az acr úložiště odstranit](/cli/azure/acr/repository#az-acr-repository-delete). Například následující příkaz odstraní manifest odkazuje `samples/nginx:latest` značku, všechna data jedinečný vrstvy a všechny ostatní značky odkazující na manifest.
 
 ```azurecli
-az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
+az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
 ## <a name="next-steps"></a>Další postup

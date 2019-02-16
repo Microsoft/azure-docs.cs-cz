@@ -4,17 +4,17 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c9c52c5cda258908ac8463dd06044e244c75ee2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735897"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327923"
 ---
 Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete jej jednoduše odpojit. Při odpojení disku od virtuálního počítače nedojde k odebrání disku z úložiště. Pokud znovu chcete použít existující data na disku, můžete jej znovu připojit ke stejnému nebo jinému virtuálnímu počítači.  
 
 > [!NOTE]
-> Virtuální počítač v Azure používá různé typy disků – disk operačního systému, místní dočasný disk a volitelné datové disky. Podrobnosti najdete v tématu [Disky a virtuální pevné disky (VHD) pro virtuální počítače](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Disk operačního systému nelze odpojit bez odstranění virtuálního počítače.
+> Virtuální počítač v Azure používá různé typy disků – disk operačního systému, místní dočasný disk a volitelné datové disky. Podrobnosti najdete v tématu [Disky a virtuální pevné disky (VHD) pro virtuální počítače](../articles/virtual-machines/linux/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Disk operačního systému nelze odpojit bez odstranění virtuálního počítače.
 
 ## <a name="find-the-disk"></a>Vyhledání disku
 Než budete moci odpojit disk od virtuálního počítače, musíte zjistit číslo logické jednotky (LUN), což je identifikátor disku, který se má odpojit. Provedete to podle těchto kroků:

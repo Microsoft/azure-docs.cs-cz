@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: 884f6a81796341e274027095691585212d5a3749
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830295"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328023"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Sítě konsorcia Hyperledger Fabric
 
@@ -113,7 +113,7 @@ V **konfigurace infrastruktury**, odpovídající konfigurací výkonu a velikos
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
 **Typ škálování**|Typ nasazení jeden virtuální počítač s několika kontejnery nebo více virtuálních počítačů v modelu horizontální navýšení kapacity.|Jeden virtuální počítač nebo víc virtuálních počítačů |
-**Typ disku virtuálního počítače**|Typ úložiště, zálohování, každý z nasazených uzlů. <br/> Další informace o službě storage najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) a [Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|SSD úrovně Standard <br/> Premium SSD |
+**Typ disku virtuálního počítače**|Typ úložiště, zálohování, každý z nasazených uzlů. <br/> Další informace o typech disků k dispozici, najdete v tématu [vyberte typ disku](../../virtual-machines/windows/disks-types.md).|SSD úrovně Standard <br/> Premium SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Nasazení více virtuálních počítačů (Další nastavení)
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e533f3db8a9d40ee062e65d96fa9bf33a366e3a8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5a995fd93fa8d538cd1a686ecc12fa69c718758c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206340"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313496"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Protokoly aktivit Azure AD ve službě Azure Monitor (Preview)
 
@@ -106,37 +106,37 @@ V této části najdete odpovědi na nejčastější dotazy a popis známých pr
 
 **A**: Protokoly auditu a protokolů aktivit přihlašování jsou k dispozici pro směrování přes tuto funkci, i když události auditu související s B2C nejsou aktuálně součástí. Informace o tom, jaké typy protokolů a jaké protokoly podle funkcí se momentálně podporují, najdete v článcích o [schématu protokolů auditu](reference-azure-monitor-audit-log-schema.md) a [schématu protokolů přihlašování](reference-azure-monitor-sign-ins-log-schema.md). 
 
----
+-----
 
 **Otázka: Jak krátce po akci se odpovídající protokoly zobrazí v Centru událostí?**
 
 **A**: Protokoly se měla zobrazit v Centru událostí během přibližně 2 až 5 minut po provedení akce. Další informace o službě Event Hubs najdete v tématu [Co je Azure Event Hubs?](../../event-hubs/event-hubs-about.md).
 
----
+-----
 
 **Otázka: Jak krátce po akci bude odpovídající protokoly objeví ve svém účtu úložiště?**
 
 **A**: Pro účty Azure storage latence je kdekoli z 5 na 15 minut po provedení akce.
 
----
+-----
 
 **Otázka: Co se stane, pokud správce změní doba uchování nastavení diagnostiky?**
 
 **A**: Nové zásady uchovávání informací se použijí k po provedení změny shromažďovaných protokolů. Shromážděné protokoly předtím, než se změna zásady bude tato akce vliv.
 
----
+-----
 
 **Otázka: Jaké budou náklady na uložení Moje data?**
 
 **A**: Náklady na úložiště závisí na velikosti protokolů a dobu uchování, kterou zvolíte. Seznam odhadovaných nákladů na tenanty, které závisí na objemu generovaných protokolů, najdete v části [Velikost úložiště pro protokoly aktivit](#storage-size-for-activity-logs).
 
----
+-----
 
 **Otázka: Kolik vás to bude stát Streamovat data do centra událostí?**
 
 **A**: Náklady na streamování závisí na počtu zpráv, který jste dostali za minutu. Tento článek popisuje způsob výpočtu nákladů a uvádí odhady nákladů na základě počtu zpráv. 
 
----
+-----
 
 **Otázka: Jak můžu integrovat Azure AD protokoly aktivit se systémem SIEM?**
 
@@ -146,31 +146,31 @@ V této části najdete odpovědi na nejčastější dotazy a popis známých pr
 
 - Pomocí rozhraní [Graph API pro vytváření sestav](concept-reporting-api.md) můžete získat přístup k datům a pomocí vlastních skriptů je odesílat do systému SIEM.
 
----
+-----
 
 **Otázka: Jaké nástroje SIEM se aktuálně podporují?** 
 
 **A**: V současné době podporuje monitorování Azure [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar, a [Sumo logiky](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Další informace o fungování konektorů najdete v tématu [Streamování dat monitorování Azure do centra událostí, aby je mohl používat externí nástroj](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
----
+-----
 
 **Otázka: Jak můžu integrovat Azure AD protokolů aktivit se Moje Splunk instance?**
 
 **A**: Nejprve je potřeba [trasy Azure AD protokolů aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md), postupujte podle pokynů k [integrovat protokoly aktivit Splunk](tutorial-integrate-activity-logs-with-splunk.md).
 
----
+-----
 
 **Otázka: Jak můžu integrovat Azure AD protokolů aktivit se Sumo logiky?** 
 
 **A**: Nejprve je potřeba [trasy Azure AD protokolů aktivit do centra událostí](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), postupujte podle pokynů k [nainstalovat aplikaci Azure AD a zobrazit řídicí panely v SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
 
----
+-----
 
 **Otázka: Mám přístup k datům z centra událostí bez použití externího nástroje SIEM?** 
 
 **A**: Ano. Pro přístup k protokolům z vlastní aplikace můžete použít [rozhraní API služby Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md). 
 
----
+-----
 
 
 ## <a name="next-steps"></a>Další postup

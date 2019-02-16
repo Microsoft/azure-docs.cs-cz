@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 62a0e763913ea1ca27edf88d7560c9400043bf27
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7bf7034d30a8aac187fb2eeae6569f2f495e4439
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251363"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327238"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informace o službě VPN gateway pro Azure Stack
 
@@ -74,11 +74,11 @@ Diagramy a popisy v následujících částech můžete výběrem topologie při
 
 ### <a name="site-to-site"></a>Site-to-Site
 
-A *site-to-site* (S2S) připojení brány VPN je připojení přes tunel VPN IPsec/IKE (IKEv1 nebo IKEv2). Tento typ připojení vyžaduje zařízení VPN, které se nacházejí na místních a je přiřazena veřejná IP adresa. Toto zařízení nesmí být umístěné za službou NAT. Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace.
+A *site-to-site* (S2S) připojení brány VPN je připojení přes tunel VPN IPsec/IKE (IKEv2). Tento typ připojení vyžaduje zařízení VPN, které se nacházejí na místních a je přiřazena veřejná IP adresa. Toto zařízení nesmí být umístěné za službou NAT. Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace.
 
 ![Příklad konfigurace připojení Site-to-site VPN](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a>Multi-Site
+### <a name="multi-site"></a>Pro více lokalit
 
 A *Multi-Site* připojení je variací připojení site-to-site. Z brány virtuální sítě vytvoříte několik připojení VPN, obvykle pro připojení k několika místním lokalitám. Při práci s více připojeními, musíte použít (označované jako dynamická brána při práci s klasickými virtuálními sítěmi) typ sítě VPN založené na směrování. Vzhledem k tomu, že virtuální síť může mít jenom jednu bránu virtuální sítě, všechna připojení prostřednictvím brány sdílejí dostupnou šířku pásma.
 

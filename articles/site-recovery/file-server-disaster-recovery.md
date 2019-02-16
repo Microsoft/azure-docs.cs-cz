@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 64008a91033b1fdd9cb318e76db2b1958f2337e9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508364"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309315"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrana souborového serveru pomocí Azure Site Recovery 
 
@@ -58,7 +58,7 @@ Následující diagram vám pomůže určit, jakou strategii použít pro vaše 
 |---------|---------|---------|
 |Prostředí souborového serveru s replikací systému souborů DFS nebo bez|   [Replikace pomocí Site Recovery](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery nepodporuje clustery sdílených disků ani úložiště připojené k síti (NAS). Pokud se ve vašem prostředí používají tyto konfigurace, využijte podle potřeby některý z ostatních přístupů. <br> Site Recovery nepodporuje protokol SMB 3.0. Replikovaný virtuální počítač začlení změny pouze tehdy, když se provedené změny souborů aktualizují v původním umístění souborů.
 |Prostředí souborového serveru s replikací systému souborů DFS     |  [Rozšíření replikace systému souborů DFS na virtuální počítač Azure IaaS](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      Replikace systému souborů DFS dobře funguje v prostředích s extrémně omezenou šířkou pásma. Tento přístup vyžaduje virtuální počítač Azure, který je neustále spuštěný. Při plánování budete muset vzít v úvahu náklady na tento virtuální počítač.         |
-|Virtuální počítač Azure IaaS     |     [Synchronizace souborů](#use-azure-file-sync-service-to-replicate-your-files)   |     Pokud ve scénáři zotavení po havárii využíváte Synchronizaci souborů, během převzetí služeb při selhání musíte ručně zajistit, aby byly sdílené složky transparentním způsobem přístupné pro klientský počítač. Synchronizace souborů vyžaduje, aby na klientském počítači byl otevřený port 445.     |
+|Virtuální počítač Azure IaaS     |     File Sync    |     Pokud ve scénáři zotavení po havárii využíváte Synchronizaci souborů, během převzetí služeb při selhání musíte ručně zajistit, aby byly sdílené složky transparentním způsobem přístupné pro klientský počítač. Synchronizace souborů vyžaduje, aby na klientském počítači byl otevřený port 445.     |
 
 
 ### <a name="site-recovery-support"></a>Podpora Site Recovery

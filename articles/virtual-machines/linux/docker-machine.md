@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f4be58d702b5d97722a3f9f1ee2df6b519ba4fab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: da0e393dc2ae0d93ecc49745a42ffac4669ed74b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731746"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326302"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Použití Docker Machine k vytvoření hostitelů v Azure
 Tento článek podrobně popisuje, jak používat [Docker Machine](https://docs.docker.com/machine/) k vytvoření hostitelů v Azure. `docker-machine` Příkaz vytvoří virtuální počítač (VM) s Linuxem v Azure, pak nainstaluje Dockeru. Potom můžete spravovat hostitele Docker v Azure s využitím stejných nástrojů místní a pracovních postupů. Použití docker machine v systému Windows 10, je nutné použít bash v systému Linux.
@@ -137,4 +137,4 @@ Pokud chcete zobrazit kontejneru v akci, otevřete webový prohlížeč a zadejt
 ![Spuštěný kontejner ngnix](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>Další postup
-Můžete také vytvořit hostitele s [rozšíření Docker VM](dockerextension.md). Příklady použití Docker Compose, naleznete v tématu [Začínáme s prostředím Docker a Compose v Azure](docker-compose-quickstart.md).
+Příklady použití Docker Compose, naleznete v tématu [Začínáme s prostředím Docker a Compose v Azure](docker-compose-quickstart.md).

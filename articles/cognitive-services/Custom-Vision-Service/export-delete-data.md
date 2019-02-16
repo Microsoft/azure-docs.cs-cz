@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: pafarley
-ms.openlocfilehash: 7f27170a5e97d7860bcb059f16273b38757de747
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 01273ca241769c5e3bb7b7222355d32b29fd51b9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867031"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308498"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Export nebo odstranění údajů uživatele ve službě Custom Vision
 
-Content Moderator shromažďuje data uživatele pro provoz služby, ale zákazníci mají plnou kontrolu nad zobrazení, exportu a odstranění jejich dat pomocí služby Custom Vision Service [školení API](https://go.microsoft.com/fwlink/?linkid=865446).
+Shromažďuje data uživatele pro provoz služby Custom Vision, ale zákazníci mají plnou kontrolu nad zobrazení, exportu a odstranění jejich dat pomocí služby Custom Vision Service [školení API](https://go.microsoft.com/fwlink/?linkid=865446).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 

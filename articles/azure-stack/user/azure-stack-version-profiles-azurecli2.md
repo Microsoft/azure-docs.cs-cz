@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: b27dd1b9aec89f259649b313d3ba7f944ea647f1
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6d82410e07e725b13385f6ff2b57218c1146a80a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765710"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329282"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
@@ -114,7 +114,12 @@ Před vytvořením virtuálních počítačů pomocí rozhraní příkazového �
 
 Následující kroky použijte pro připojení ke službě Azure Stack:
 
-1. Zaregistrovat vaším prostředím Azure Stack spuštěním `az cloud register` příkazu.
+1. Zaregistrovat vaším prostředím Azure Stack spuštěním `az cloud register` příkazu. V některých případech se směruje přímé odchozí připojení k Internetu prostřednictvím serveru proxy nebo brány firewall, která vynucuje SSL zachycení. V těchto případech `az cloud register` příkaz může selhat s chybou jako je například "Nepodařilo se získat koncových bodů z cloudu." Chcete-li tuto chybu vyřešit, můžete nastavit následující proměnné prostředí:
+
+   ```shell
+   set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
+   set ADAL_PYTHON_SSL_NO_VERIFY=1
+   ```
    
     a. K registraci *pro správu cloudu* prostředí, použijte:
 

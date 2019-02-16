@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 1482497f3767e7533d1d56e6eb63e55cdb5c9ebb
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 66df926eaaf771fdde4d2eb59772b9d38a87edf0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104639"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313224"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovení zálohy v Azure Service Fabric
 
@@ -156,7 +156,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/1
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Můžete sledovat průběh obnovení s [TrackRestoreProgress](service-fabric-backup-restore-service-trigger-restore.md#tracking-restore-progress).
+Můžete sledovat průběh obnovení s TrackRestoreProgress.
 
 ### <a name="data-restore-for-data-corruptiondata-loss"></a>Data obnovení pro _poškození dat_/_ztráty dat_
 
@@ -196,7 +196,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Obnovení můžete sledovat pomocí [TrackRestoreProgress](service-fabric-backup-restore-service-trigger-restore.md#tracking-restore-progress).
+Obnovení můžete sledovat pomocí TrackRestoreProgress.
 
 ## <a name="track-restore-progress"></a>Sledovat průběh obnovení
 

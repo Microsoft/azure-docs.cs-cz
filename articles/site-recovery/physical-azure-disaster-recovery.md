@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 9c5f998470d3bf2a66d7de43bd54d5da4db57608
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221748"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329213"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -78,9 +78,6 @@ Nastavení [účtu služby Azure storage](../storage/common/storage-quickstart-c
 
 - Site Recovery replikuje místní počítače do služby Azure storage. Virtuální počítače Azure se vytvoří z úložiště, když dojde k převzetí služeb při selhání.
 - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
-- Účet úložiště může být standardní nebo [premium](../virtual-machines/windows/premium-storage.md).
-- Pokud nastavíte účet premium, bude potřebovat další účet standard dat protokolu.
-
 
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Příprava účtu pro instalaci služby Mobility

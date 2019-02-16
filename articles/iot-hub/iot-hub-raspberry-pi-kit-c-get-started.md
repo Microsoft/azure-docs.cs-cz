@@ -1,21 +1,19 @@
 ---
-title: Raspberry Pi do cloudu (C) – připojte Raspberry Pi pro službu Azure IoT Hub | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit a Raspberry Pi připojit ke službě Azure IoT Hub pro Raspberry Pi k odesílání dat do cloudové platformy Azure v tomto kurzu.
+title: Připojte Raspberry Pi pro službu Azure IoT Hub pomocí jazyka C | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit a připojit ke službě Azure IoT Hub pro Raspberry Pi k odesílání dat do cloudové platformy Azure Raspberry Pi
 author: rangv
-manager: ''
-keywords: Azure iot raspberry pi, raspberry pi iot hub, raspberry pi odesílání dat do cloudu, raspberry pi s cloudem
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: c8b254656dcd94fd846336e9c9de3ca823691904
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053496"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327237"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Raspberry Pi
 
@@ -121,10 +119,10 @@ Senzor kód PIN použijte následující propojení:
 
 | Spustit (senzor & Indikátor)     | End (panel)            | Barva kabel   |
 | -----------------------  | ---------------------- | ------------: |
-| Indikátor VDD (Pin 5G)         | GPIO 4 (Pin 7)         | Bílé kabel   |
+| LED VDD (Pin 5G)         | GPIO 4 (Pin 7)         | Bílé kabel   |
 | Indikátor zem (Pin 6G)         | ZEM (Pin 6)            | Černého kabelu pak   |
 | VDD (Pin 18F)            | 3,3 opravná (Pin 17)      | Bílé kabel   |
-| ZEM (Pin 20F)            | ZEM (Pin 20)           | Černého kabelu pak   |
+| GND (Pin 20F)            | ZEM (Pin 20)           | Černého kabelu pak   |
 | SCK (Pin 21F)            | SPI0 SCLK (Pin 23)     | Oranžové kabel  |
 | SDO (Pin 22F)            | SPI0 MISO (Pin 21)     | Žlutý kabel  |
 | SDI (Pin 23F)            | SPI0 MOSI (Pin 19)     | Zelená kabel   |

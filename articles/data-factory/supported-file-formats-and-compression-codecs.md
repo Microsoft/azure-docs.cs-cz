@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 433718c19e0df5fac87273f2b46f8ae090ed7510
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e1a928711a596c159ac920f11c123b73b72d3aa2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888562"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313411"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
-*Toto téma platí pro následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), a [SFTP](connector-sftp.md).*
+*Tento článek se týká následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)a [ SFTP](connector-sftp.md).*
 
 Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. Pokud chcete **analyzovat a generovat soubory s konkrétním formátu**, Azure Data Factory podporuje následující typy formátů souboru:
 
@@ -427,6 +427,13 @@ Pro kopírování běží na místní prostředí IR prostřednictvím souboru P
 
 - **Použití prostředí JRE**: Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Najdete ho z [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Chcete-li použít OpenJDK**: ta se podporuje od verze 3.13 IR. Balíček jvm.dll se všechny ostatní požadované sestavení OpenJDK do místní prostředí IR počítačů a nastavte systém proměnnou prostředí JAVA_HOME odpovídajícím způsobem.
+
+>[!TIP]
+>Při kopírování dat do a z Parquet naformátovat pomocí modul Integration Runtime a přístupů o tom, že chyba "došlo k chybě při spouštění Javy, zpráva: **místo v haldě java.lang.OutOfMemoryError:Java**", můžete přidat proměnné prostředí `_JAVA_OPTIONS` na počítači, který je hostitelem místní prostředí IR upravit minimální/maximální velikost haldy pro JVM pro tyto kopie, pak znovu spusťte kanál. 
+
+![Nastavení velikosti haldy JVM na místní prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+
+Příklad: nastavená proměnná `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` Určuje počáteční paměť přidělení fondu pro Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální velikost paměti přidělení fondu. To znamená, že se bude spuštěn JVM `Xms` množství paměti a budete moct použít maximálně `Xmx` množství paměti. Ve výchozím nastavení ADF pomocí min 64MB a maximální počet 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapování pro soubory Parquet typu dat.
 

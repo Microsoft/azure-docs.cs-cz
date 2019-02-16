@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: sogup
-ms.openlocfilehash: 55fbc997f6aaf4cf99bfb8492a2e4ac608c72af8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fe0b47bbf1ebb9cba328bfc444172249135270c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494897"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310270"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Nejčastější dotazy – Azure Backup
 
@@ -81,7 +81,7 @@ Pokud chcete, můžete použít možnost obnovení disku:
   * Přidat nastavení konfigurace, které nebyly existuje v době zálohování
   * Ovládací prvek zásady vytváření názvů pro prostředky, které jsou vytvořeny.
   * Přidáte virtuální počítač do skupiny dostupnosti.
-  * Přidejte další nastavení, které musí být nakonfigurovaný pomocí Powershellu nebo šablony.  w
+  * Přidejte další nastavení, které musí být nakonfigurovaný pomocí Powershellu nebo šablony.
 
 ### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>Můžu provést obnovení zálohování nespravovaných disků virtuálních počítačů po upgradu na spravované disky?
 Ano, můžete použít zálohy pořízené před disky se migrovaly z nespravovaných do spravovaných.

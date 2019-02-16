@@ -1,21 +1,19 @@
 ---
 title: 'Kurz: Provádění operací ETL pomocí Azure Databricks'
 description: Zjistěte, jak extrahovat data z Data Lake Storage Gen2 do Azure Databricks, transformaci dat a pak načíst data do Azure SQL Data Warehouse.
-services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
 ms.date: 01/24/2019
-ms.openlocfilehash: 57de2d9c63a4185997ac86056b9e3189ad66e478
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b48ac9cf8eff001e62f54e41b5f76a9d006bc5ba
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893125"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328924"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 

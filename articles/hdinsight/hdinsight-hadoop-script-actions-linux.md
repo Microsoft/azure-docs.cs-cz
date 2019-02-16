@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: b0eae86a4927f716c974086411e1098f2e9a190d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 9711e9bf94619b8cd003972d74f3bca4c45894bf
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498025"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312076"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 
@@ -142,7 +142,7 @@ Pro většinu operací není potřeba zadat v systému souborů. Například ná
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Data Lake Storage nebo `wasb:///example/jars` pro službu Azure Storage.
+V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Data Lake Storage Gen1 nebo `wasb:///example/jars` pro službu Azure Storage.
 
 ### <a name="bPS7"></a>Zápis informací o do STDOUT a STDERR
 

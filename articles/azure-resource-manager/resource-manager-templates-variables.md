@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 50feca90d375d6afd3b04afe019ad9f9025f19dc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712742"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308566"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Části proměnných šablon Azure Resource Manageru
 V sekci proměnných vytvořit hodnoty, které lze použít v celé vaší šablony. Není nutné definovat proměnné, ale často zjednodušení šablony snížením složité výrazy.
@@ -58,9 +58,7 @@ Předchozí příklad ukázal jedním ze způsobů k definování proměnné. M�
             {
                 "name": "<name-of-array-property>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },
@@ -68,9 +66,7 @@ Předchozí příklad ukázal jedním ze způsobů k definování proměnné. M�
         {
             "name": "<variable-array-name>",
             "count": <number-of-iterations>,
-            "input": {
-                <properties-to-repeat>
-            }
+            "input": <object-or-value-to-repeat>
         }
     ]
 }
@@ -117,38 +113,45 @@ Aktuální nastavení s načíst:
 
 ## <a name="use-copy-element-in-variable-definition"></a>Použití elementu copy v definici proměnné
 
-Můžete použít **kopírování** syntaxe pro vytvoření proměnné pomocí pole z několika prvků. Zadejte počet pro počet prvků. Každý prvek obsahuje vlastnosti v rámci **vstupní** objektu. Můžete kopírovat buď v rámci proměnné nebo vytvořte proměnnou. Při definování proměnné a použití **kopírování** v rámci této proměnné můžete vytvořit objekt, který má vlastnost typu pole. Při použití **kopírování** na nejvyšší úrovni a definovat jeden nebo více proměnných v rámci něj vytvořit jeden nebo více polí. Oba přístupy jsou uvedeny v následujícím příkladu:
+Chcete-li vytvořit více instancí proměnné, použijte `copy` vlastnost v sekci proměnných. Vytvoří pole prvků zkonstruovat z hodnoty v `input` vlastnost. Můžete použít `copy` vlastnosti v rámci proměnné nebo na nejvyšší úrovni sekci proměnných. Při použití `copyIndex` uvnitř proměnné iterace, je nutné zadat název iterace.
+
+Následující příklad ukazuje, jak používat kopii:
 
 ```json
 "variables": {
-    "disk-array-on-object": {
-        "copy": [
-            {
-                "name": "disks",
-                "count": 3,
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('disks')]"
-                }
-            }
-        ]
-    },
+  "disk-array-on-object": {
     "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
+      {
+        "name": "disks",
+        "count": 3,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks')]"
         }
+      }
     ]
+  },
+  "copy": [
+    {
+      "name": "disks-top-level-array",
+      "count": 3,
+      "input": {
+        "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+        "diskSizeGB": "1",
+        "diskIndex": "[copyIndex('disks-top-level-array')]"
+      }
+    },
+    {
+      "name": "top-level-string-array",
+      "count": 5,
+      "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+    }
+  ]
 },
 ```
 
-Proměnná **disku pole v objektu** obsahuje následující objekt se pole s názvem **disky**:
+Po vyhodnocení výrazu kopie proměnné **disku pole v objektu** obsahuje následující objekt se pole s názvem **disky**:
 
 ```json
 {
@@ -194,34 +197,19 @@ Proměnná **disky nejvyšší úroveň pole** obsahuje následující pole:
 ]
 ```
 
-Můžete také zadat více než jeden objekt při vytváření proměnné pomocí kopírování. Následující příklad definuje dvě pole jako proměnné. Jeden s názvem **disky nejvyšší úroveň pole** a má pět prvků. Druhá s názvem **různých pole** a má tři prvky.
+Proměnná **top-úrovně--pole řetězců** obsahuje následující pole:
 
 ```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
-},
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
-Tento přístup funguje dobře, když se budete muset provést hodnoty parametrů a ujistěte se, že jsou ve správném formátu pro hodnoty v šabloně. Následující příklad formátuje hodnoty parametrů pro použití v definice pravidla zabezpečení:
+Pomocí kopírování funguje dobře, když je potřeba přijmout hodnoty parametrů a jejich namapování na hodnoty prostředků. Následující příklad formátuje hodnoty parametrů pro použití v definice pravidla zabezpečení:
 
 ```json
 {

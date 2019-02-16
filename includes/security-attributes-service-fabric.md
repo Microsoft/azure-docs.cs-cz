@@ -4,12 +4,12 @@ ms.service: service-fabric
 ms.topic: include
 ms.date: 01/31/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a20311a0285bf8fda5498241a60b85093039ad19
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 179d87a0c1af587148f1b5ffa2cad8085ef0886f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513481"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56306878"
 ---
 ## <a name="preventative"></a>Preventivní
 

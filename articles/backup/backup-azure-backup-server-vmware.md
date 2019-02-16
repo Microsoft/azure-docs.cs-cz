@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: ee7ebb151653b611c652c072b8cb4c07754d9b68
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5e5a6f32eeac674a6527d333b981bbdac20a9958
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269698"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309757"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup serveru
 
@@ -39,7 +39,7 @@ Ve výchozím nastavení Azure Backup serveru komunikuje se servery VMware prost
 
 ### <a name="before-you-start"></a>Než začnete
 
-- Pokud už nechcete používat HTTPS můžete [zakázat výchozí nastavení](backup-azure-backup-server-vmware.md#disable-secure-communication-protocol).
+- Pokud už nechcete používat HTTPS můžete [zakázat výchozí nastavení](backup-azure-backup-server-vmware.md).
 - Obvykle připojíte z prohlížeče na počítači Azure Backup serveru k serveru vCenter/ESXi pomocí webovém klientovi vSphere. Při prvním uděláte připojení není zabezpečený a zobrazí následující.
 - Je důležité pochopit, jak Azure Backup Server zpracovává zálohy.
     - Jako první krok serveru Azure Backup zálohuje data do úložiště na místním disku. Azure Backup Server používá fond úložiště, sada disků a svazků, na kterých Azure Backup Server ukládá disku body obnovení pro chráněná data. Fond úložiště může být přímo připojeným úložištěm (DAS), Fibre channel SAN nebo iSCSI úložné zařízení nebo SAN. Je důležité zajistit, že máte dostatečné úložiště pro místní back up dat virtuálního počítače VMware.
@@ -141,7 +141,7 @@ Azure Backup Server potřebuje účet uživatele s oprávněními pro přístup 
     ![Oprávnění hierarchie nadřazený-podřízený](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>Oprávnění role
-**6.5/6.0.** | **5.5**
+**6.5/6.0** | **5.5**
 --- | ---
 Datastore.AllocateSpace | Datastore.AllocateSpace
 Global.ManageCustomFields | Global.ManageCustomFields
@@ -245,7 +245,7 @@ Přidání serveru vCenter do Azure Backup serveru.
 
      ![Průvodce přidáním provozního serveru](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
-3. V **vybrat počítače****název nebo IP adresa serveru**, zadejte plně kvalifikovaný název domény nebo IP adresa serveru VMware.   Pokud všechny servery ESXi spravuje stejný počítač vCenter, zadejte název serveru vCenter. V opačném případě přidání hostitele ESXi.
+3. V **vybrat počítače****název nebo IP adresa serveru**, zadejte plně kvalifikovaný název domény nebo IP adresa serveru VMware. Pokud všechny servery ESXi spravuje stejný počítač vCenter, zadejte název serveru vCenter. V opačném případě přidání hostitele ESXi.
 
     ![Zadejte VMware server](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 

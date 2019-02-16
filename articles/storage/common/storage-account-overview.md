@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 880ae672409704ddcd5597ae758f8c786c3c0720
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244483"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327846"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -78,7 +78,7 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 Účty úložiště pro obecné účely lze nakonfigurovat pro některý z následujících úrovní výkonu:
 
 * Úroveň výkonu standard pro ukládání objektů BLOB, soubory, tabulky, fronty a disky virtuálních počítačů Azure.
-* Úroveň výkonu premium pro ukládání jenom disky virtuálních počítačů Azure. Zobrazit [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md) podrobné vysvětlení úložiště Premium Storage.
+* Úroveň výkonu premium pro ukládání pouze disky nespravovaného virtuálního počítače.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Úrovně přístupu pro data objektů blob bloku
 

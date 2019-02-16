@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: aschhab
-ms.openlocfilehash: f0c3aac95b1d19dc3f217cc146532254d8740ca0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853285"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312885"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak Java Message Service (JMS) rozhraní API pomocí služby Service Bus a protokolu AMQP 1.0
 Rozšířené řízení front zpráv protokolu (AMQP) 1.0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který vám pomůže vytvářet aplikace napříč platformami, robustní zasílání zpráv.
@@ -44,7 +44,8 @@ Následující čtyři soubory JAR z archivní úrovně distribuce Apache Qpid J
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms-client-[version].jar
 
-> ! [POZNÁMKA] JMS JAR názvy a verze se možná změnily Podrobnosti najdete v tématu [Qpid JMS - protokolu AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
+> [!NOTE]
+> JMS JAR názvy a verze se možná změnily Podrobnosti najdete v tématu [Qpid JMS - protokolu AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
 ## <a name="coding-java-applications"></a>Kódování aplikací v Javě
 ### <a name="java-naming-and-directory-interface-jndi"></a>Pojmenování Javy a rozhraní adresáře (JNDI)

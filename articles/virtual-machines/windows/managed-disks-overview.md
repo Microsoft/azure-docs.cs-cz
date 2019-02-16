@@ -1,20 +1,29 @@
 ---
-title: Azure Premium a Standard Managed Disks přehled pro virtuální počítače s Windows | Dokumentace Microsoftu
-description: Přehled služby Azure Managed Disks, která zpracovává všechny účty úložišť za vás při používání virtuální počítače Azure s Windows
+title: Azure Disk Storage spravovaných přehled disků pro virtuální počítače s Windows | Dokumentace Microsoftu
+description: Přehled služby Azure spravované disky, které stará o účty úložiště za vás při používání virtuální počítače Azure s Windows
 services: virtual-machines-windows,storage
 author: roygara
 ms.service: virtual-machines-windows
 ms.workload: storage
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 02/11/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3c012db008755115d2f68572b1c29657ab0ac5d9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 85b2dcb73024ce786b78436b7070ad2e9a96e1d4
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459634"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328466"
 ---
+# <a name="introduction-to-azure-managed-disks"></a>Úvod do služby Azure managed disks
+
+Spravované v Azure disk je virtuální pevný disk (VHD). Můžete si ho představit jako fyzický disk v na místním serveru ale, virtualizované. Spravované disky Azure jsou uložené jako objekty BLOB stránky, které jsou objekt náhodných vstupně-výstupní operace úložiště v Azure. Označujeme jako "spravované", protože je abstrakcí objekty BLOB stránky a kontejnery objektů blob a účty služby Azure storage spravovaného disku. Se spravovanými disky vše, co musíte udělat je zřízení disku a zbytek se postará Azure.
+
+Když vyberete do Azure můžete používat spravované disky s vašimi úlohami, Azure vytvoří a spravuje disk za vás. Dostupné typy disků jsou Ultra Solid stav jednotky SSD (Solid-State Drive) (Preview), Premium SSD, SSD na úrovni Standard a standardních pevných disků (HDD). Další informace o jednotlivých typech jednotlivých disků najdete v tématu [vyberte typ disku pro virtuální počítače IaaS](disks-types.md).
+
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
+
+> [!div class="nextstepaction"]
+> [Vyberte typ disku pro virtuální počítače IaaS](disks-types.md)

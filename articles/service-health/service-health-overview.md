@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: b771e36344ff26c9a817a0314e0f223b6e809a17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871691"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328261"
 ---
 # <a name="service-health"></a>Service Health
 Service Health vám poskytne přizpůsobitelný řídicí panel, který sleduje stav služby Azure v oblastech, kde je používáte. V tomto řídicím panelu můžete sledovat aktivní události, jako jsou problémy s probíhající služby, nadcházející plánované údržbě nebo poradci pro stav relevantní. Když nenechávali události, získejte vystavili v historii stavu po dobu 90 dnů. A konečně mohou pomocí řídicího panelu stavu služby k vytváření a správě výstrah stavu služby, které proaktivně upozorňují na problémy se službou ovlivňují.
@@ -24,6 +24,9 @@ Service Health sleduje tři typy událostí stavu, které může mít vliv na va
 1. **Služba problémy** – problémy ve službách Azure, které teď se vás týkají. 
 2. **Plánovaná údržba** -nadcházející údržby, které můžou ovlivnit dostupnost vašich služeb v budoucnu.  
 3. **Poradci pro stav** – změny ve službách Azure, které vyžadují vaši pozornost. Mezi příklady patří, když jsou zastaralé funkce Azure, nebo pokud překročí kvótu využití.
+
+> [!NOTE]
+> Pokud chcete zobrazit události služby Service Health, uživatelé musí mít role čtenáře na příslušný odběr.
 
 ## <a name="get-started-with-service-health"></a>Začínáme se službou Service Health
 Spustit řídicí panel stavu služby, vyberte dlaždici Service Health na řídicí panel portálu. Pokud jste předtím odebrali dlaždice nebo používáte vlastní řídicí panel, vyhledejte službu Health service v "Další služby" (dolní levé straně na řídicí panel).

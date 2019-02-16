@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f785e9e540af01b74678cf75159775cd2888e09e
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 34aac9a589516ace080906095ef3c14b34469bbd
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959574"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311184"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Omezení pro Azure Data Box brány (Preview)
 
@@ -36,7 +36,7 @@ Následující tabulka popisuje omezení pro zařízení Data Box brány.
 |---|---|
 |Ne. souborů na zařízení |100 milionů <br> Limit je přibližně 25 milionů souborů pro každé 2 TB místa na disku s maximální limit na 100 milionů |
 |Ne. sdílených složek na zařízení |24 |
-|Ne. sdílených složek na kontejner |1 |
+|Ne. sdílených složek za kontejner úložiště Azure |1 |
 |Maximální velikost souboru zapsána do sdílené složky|Maximální velikost souboru je 2 TB virtuální zařízení, 500 GB. <br> Maximální velikost souboru se zvyšuje s velikost datového disku v předchozím poměr, dokud nedosáhne maximálně 5 TB. |
 
 ## <a name="azure-storage-limits"></a>Omezení služby Azure storage

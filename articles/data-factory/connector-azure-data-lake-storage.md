@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do nebo z Azure Data Lake Storage Gen2 Preview pomocí objektu pro vytváření dat (Preview) | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data do a z Azure Data Lake Storage Gen2 Preview pomocí Azure Data Factory.
+title: Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí služby Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data do a z Azure Data Lake Storage Gen2 pomocí Azure Data Factory.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 5e8bc85a309a8c6755f1efae1ca702720cf01477
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7a01b4baa9dafba4f0193c7a73dc1ae44214f501
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662294"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311576"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 Preview pomocí Azure Data Factory (Preview)
+# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
-Azure Data Lake Storage Gen2 ve verzi Preview je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, integrované do [úložiště objektů Blob v Azure](../storage/blobs/storage-blobs-introduction.md). Umožňuje uživateli rozhraní s vašimi daty použitím obou paradigmat souboru systému a objektu úložiště.
+Azure Data Lake Storage Gen2 je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, integrované do [úložiště objektů Blob v Azure](../storage/blobs/storage-blobs-introduction.md). Umožňuje uživateli rozhraní s vašimi daty použitím obou paradigmat souboru systému a objektu úložiště.
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro kopírování dat do a z Data Lake Storage Gen2. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 

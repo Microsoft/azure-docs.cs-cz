@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b6aaf7f7eaeb6d011fc29457a1b58584d6af8ec9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5adb2a3c2a443e6c77c315935e0729cf8728e8cd
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984558"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308787"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurace kontejnery Dockeru rozpoznání textu
 
@@ -29,11 +29,11 @@ Nastavení kontejneru jsou [hierarchické](#hierarchical-settings) a lze ji nast
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](computer-vision-how-to-install-containers.md#billing).
+> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](computer-vision-how-to-install-containers.md).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _pro počítačové zpracování obrazu_ prostředek určený pro [ `Billing` ](#billing-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _pro počítačové zpracování obrazu_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
 
 Toto nastavení najdete v následujícím místě:
 

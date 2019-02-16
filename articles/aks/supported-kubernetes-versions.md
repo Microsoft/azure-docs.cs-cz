@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 02/15/2018
 ms.author: saudas
-ms.openlocfilehash: 3e8342a719bf9ae7174195f88b97972d7f13193c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 37a9712749a1575f81086d28ad461a665bef36d9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465781"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313445"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -27,11 +27,11 @@ AKS podporuje čtyři dílčí verze Kubernetes:
 - Aktuální podverzi, která je všeobecně dostupné nadřazeného (n)
 - Tři předchozí dílčí verze. Každá podporovaná dílčí verze také podporuje dvě stabilní opravy.
 
-Například, pokud představuje AKS *1.11.x* v současné době také poskytuje podporu pro *1.10.a* + *1.10.b*, *1.9.c*  +  *1.9d*, *1.8.e* + *1.8F* (kde lettered aktualizací jsou dvě poslední stabilní sestavení).
+Například, pokud představuje AKS *1.12.x* v současné době také poskytuje podporu pro *1.11.a* + *1.11.b*, *1.10.c*  +  *1.10d*, *1.9.e* + *1.9f* (kde lettered aktualizací jsou dvě poslední stabilní sestavení).
 
-Při uvedení nové dílčí verze se přestane podporovat nejstarší dílčí verze a její opravná vydání. 15 dnů před vydáním nové podverze a nadcházející verzi vyřazení, oznámení se provádí prostřednictvím [Azure aktualizačních kanálech][azure-update-channel]. V příkladu výše where *1.11.x* je všeobecně dostupné, jsou vyřazené verze *1.7.g* + *1.7.h*.
+Při uvedení nové dílčí verze se přestane podporovat nejstarší dílčí verze a její opravná vydání. 15 dnů před vydáním nové podverze a nadcházející verzi vyřazení, oznámení se provádí prostřednictvím [Azure aktualizačních kanálech][azure-update-channel]. V příkladu výše where *1.12.x* je všeobecně dostupné, jsou vyřazené verze *1.8.g* + *1.8.h*.
 
-Když nasadíte cluster AKS na portálu nebo pomocí Azure CLI, cluster se vždycky nastaví na dílčí verzi n-1 a nejnovější opravu. Například, pokud podporuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, je výchozí verze nových clusterů *1.10.b*.
+Když nasadíte cluster AKS na portálu nebo pomocí Azure CLI, cluster se vždycky nastaví na dílčí verzi n-1 a nejnovější opravu. Například, pokud podporuje AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1.10d*, *1.9.e* + *1.9f*, je výchozí verze nových clusterů *1.10.b*.
 
 ## <a name="list-currently-supported-versions"></a>Seznam aktuálně podporované verze
 
@@ -41,20 +41,19 @@ Chcete-li zjistit, jaké verze jsou aktuálně dostupné pro vaše předplatné 
 az aks get-versions --location eastus --output table
 ```
 
-Výstup je podobný následujícím příkladu, který ukazuje, že Kubernetes verze *1.12.4* je k dispozici nejnovější verze:
+Výstup je podobný následujícím příkladu, který ukazuje, že Kubernetes verze *1.12.5* je k dispozici nejnovější verze:
 
 ```
 KubernetesVersion    Upgrades
 -------------------  -----------------------
-1.12.4               None available
-1.11.6               1.12.4
-1.11.5               1.11.6, 1.12.4
-1.10.12              1.11.5, 1.11.6
-1.10.9               1.10.12, 1.11.5, 1.11.6
+1.12.5               None available
+1.12.4               1.12.5
+1.11.7               1.12.4, 1.12.5
+1.11.6               1.11.7, 1.12.4, 1.12.5
+1.10.12              1.11.6, 1.11.7
+1.10.9               1.10.12, 1.11.6, 1.11.7
 1.9.11               1.10.9, 1.10.12
 1.9.10               1.9.11, 1.10.9, 1.10.12
-1.8.15               1.9.10, 1.9.11
-1.8.14               1.8.15, 1.9.10, 1.9.11
 ```
 
 ## <a name="faq"></a>Nejčastější dotazy
@@ -63,8 +62,8 @@ KubernetesVersion    Upgrades
 
 Pokud používáte *n-4* verze, které jsou mimo cíle na úrovni služby. Pokud váš upgrade z verze n-4 n-3 úspěšné, pak jste zpátky v cíle na úrovni služby. Příklad:
 
-- Pokud jsou podporované verze AKS *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*,  *1.8.e* + *1.8F* a jsou na *1.7.g* nebo *1.7.h*, jsou mimo cíle na úrovni služby.
-- Pokud se upgrade z *1.7.g* nebo *1.7.h* k *1.8.e* nebo *1.8.f* proběhne úspěšně, jste zpátky v cíle na úrovni služby.
+- Pokud jsou podporované verze AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +  *1.10d*, a *1.9.e* + *1.9f* a jsou na *1.8.g* nebo *1.8.h*, jsou mimo cíle na úrovni služby.
+- Pokud se upgrade z *1.8.g* nebo *1.8.h* k *1.9.e* nebo *1.9.f* proběhne úspěšně, jste zpátky v cíle na úrovni služby.
 
 Upgrady na verzi starší než *n-4* nejsou podporovány. V takovém případě doporučujeme zákazníkům vytvoření nových clusterů AKS a znovu nasadit své úlohy.
 

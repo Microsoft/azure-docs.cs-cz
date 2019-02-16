@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 25b29f6e6f8a4aa99d8ac83ca2cf27d8a5810bfc
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4d5c7c592bae32586922531781803db6622e6515
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267967"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310734"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -159,6 +159,28 @@ Pokud chcete zobrazit diagnostická data, v pracovním prostoru Log Analytics, o
 ![Možnosti protokolu hledání na webu Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
 V editoru dotazů, rozbalte **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zahrnuje události stroj a služby. Všimněte si, že dotaz je vytvořen v chodu. EventClass\_s pole obsahuje událost xEvent s názvy, které může vypadat povědomě, pokud jste použili xEvents pro místní protokolování. Klikněte na tlačítko **EventClass\_s** nebo jeden z názvů událostí a Log Analytics bude pokračovat sestavování dotazu. Nezapomeňte uložit své dotazy pro pozdější použití.
+
+### <a name="example-query"></a>Příklad dotazu
+Tento dotaz vypočítá a vrátí procesoru pro každý dotaz ukončení nebo obnovení koncové události po dobu modelové databáze a serveru:
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+window
+| where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
+| where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
+| extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
+| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
+| join kind=leftouter (
+window
+    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
+    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
+    ) on RootActivityId_g
+| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
+
+```
+
 
 Existují stovky dotazy, které můžete použít. Další informace o dotazech najdete v tématu [Začínáme s Azure Monitor protokolu dotazy](../azure-monitor/log-query/get-started-queries.md).
 

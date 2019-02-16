@@ -16,24 +16,21 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 750bb275ef936b3911503cd4c0f50674d3dff2d1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bd91607260d47d37bc3ce94ec63f700082416b6d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981141"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329895"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Windows
 
 Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete ho jednoduše odpojit. Odebrání disku z virtuálního počítače, ale neodebere se z úložiště.
 
 > [!WARNING]
-> Pokud odpojíte disk není automaticky odstraněn. Pokud odběru jste přihlášeni do Premium storage, budou dál účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití služby Premium Storage](premium-storage.md#pricing-and-billing).
->
->
+> Pokud odpojíte disk není automaticky odstraněn. Pokud odběru jste přihlášeni do Premium storage, budou dál účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití služby Premium Storage](disks-types.md#billing).
 
 Pokud znovu chcete použít stávající data na disku, můžete ho znovu připojit ke stejnému nebo jinému virtuálnímu počítači.
-
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -51,11 +48,10 @@ Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 
 Disk zůstává v úložišti, ale už není připojen k virtuálnímu počítači.
 
-
 ## <a name="detach-a-data-disk-using-the-portal"></a>Odpojení datového disku pomocí portálu
 
 1. V nabídce vlevo vyberte **virtuálních počítačů**.
-2. Vyberte virtuální počítač, který má datový disk, který chcete odpojit a klikněte na tlačítko **Zastavit** k uvolnění virtuálního počítače.
+2. Vyberte virtuální počítač, který má datový disk, který chcete odpojit a klikněte na tlačítko **Zastavit** pro zrušení přidělení virtuálního počítače.
 3. V podokně virtuální počítač vyberte **disky**.
 4. V horní části **disky** vyberte **upravit**.
 5. V **disky** podokno na pravé straně datový disk, který chcete odpojit, klikněte na tlačítko ![obrázek tlačítka odpojení](./media/detach-disk/detach.png) odpojit tlačítko.
@@ -65,5 +61,5 @@ Disk zůstává v úložišti, ale už není připojen k virtuálnímu počíta�
 Disk zůstává v úložišti, ale už není připojen k virtuálnímu počítači.
 
 ## <a name="next-steps"></a>Další postup
-Pokud chcete znovu použít datový disk, jste právě [připojit k jinému virtuálnímu počítači](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
+Pokud chcete znovu použít datový disk, jste právě [připojit k jinému virtuálnímu počítači](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

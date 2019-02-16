@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 6a731750da4edfb4a71c00156c5ff527dee30941
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5597f3c017ccf2dbb58b7b6b046720c8f49803c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823354"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312279"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesuňte virtuální počítače Azure do zóny dostupnosti
 Zóny dostupnosti v Azure chrání vaše aplikace a data před selháními datových center. Každé zóny dostupnosti se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům. Zóna dostupnosti se podporuje ve vybraných oblastech, jak je uvedeno [tady](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). 
@@ -95,7 +95,7 @@ Níže uvedený postup se dozvíte, jak pomocí Azure Site Recovery k replikaci 
 2. Vyberte hodnoty jeví pro cíl subscriptiom, cílové skupiny prostředků virtuálního počítače a virtuální sítě.
 3. V **dostupnosti** zvolte dostupností zónu, do kterého chcete přesunout virtuální počítač. 
 > [!NOTE]
-> Pokud nevidíte možnost pro skupinu dostupnosti nebo dostupností zóny, prosím, která snore [požadavky](#prepare-the-source-vms) splnění a [přípravy](#prepare-the-source-vms) zdroje jsou kompletní virtuální počítače.
+> Pokud nevidíte možnost pro skupinu dostupnosti nebo zóny dostupností, zajistěte, aby [požadavky](#prepare-the-source-vms) splnění a [přípravy](#prepare-the-source-vms) zdroje jsou kompletní virtuální počítače.
 
    ![enable-rep-2.PNG](media/azure-vms-to-zones/enable-rep-2.PNG)
 

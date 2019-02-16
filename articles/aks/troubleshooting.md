@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468831"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327551"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -34,7 +34,11 @@ Maximální nastavení podů jeden uzel je 110 ve výchozím nastavení, pokud n
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize chybě dochází při nasazování clusteru AKS pomocí rozšířeného sítě. Co bych měl/a dělat?
 
-V Azure Virtual Network možnost vlastní sítě během vytváření AKS rozhraní sítě kontejneru Azure (CNI) se používá pro správu IP adres (IPAM). Počet uzlů v clusteru AKS může být kdekoli v rozmezí 1 a 100. Podle předchozí části, velikost podsítě musí být větší než součinu počtu používaných uzlů a maximální podů na jeden uzel. Vztah může být vyjádřena tímto způsobem: velikost podsítě > počet uzlů v clusteru * maximální podů na jeden uzel.
+Pokud se používá Azure CNI (rozšířeného sítě), AKS preallocates IP adresy podle "max podů" podle počtu uzlů nakonfigurované. Počet uzlů v clusteru AKS může být kdekoli v rozmezí 1 a 110. Na základě nakonfigurovaných maximální počet podů podle počtu uzlů, velikost podsítě musí být větší než "součinu počtu používaných uzlů a maximální počet podů na uzel". Následující základní rovnice popisuje toto:
+
+Velikost podsítě > počet uzlů v clusteru (s přihlédnutím budoucí požadavky na škálování) * max podů na jeden uzel.
+
+Další informace najdete v tématu [naplánujte IP adresování pro váš cluster](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Moje pod se zasekla v automatickém režimu CrashLoopBackOff. Co bych měl/a dělat?
 

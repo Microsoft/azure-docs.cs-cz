@@ -207,6 +207,8 @@ items:
       href: azure-stack-rotate-secrets.md
     - name: Aktualizace antivirových
       href: azure-stack-security-av.md
+    - name: Shromažďování protokolů a zpracování dat.
+      href: azure-stack-data-collection.md
   - name: Naplnění webu Marketplace
     items:
     - name: Přehled webu Marketplace
@@ -395,9 +397,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: eaed1b2c9a2e3ebad5b87873cfe646b4f40e2c79
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: abf319c83efc03ab7f55a42baede60322f2831ba
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961801"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308702"

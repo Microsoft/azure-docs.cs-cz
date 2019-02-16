@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b8cbeacda98aec639724f30fe3a7e94346f05ba4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435391"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308750"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -128,11 +128,10 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
 - Na hlavním virtuálním počítači a virtuálních počítačích uzlů v clusteru Kubernetes jsou pověření instančního objektu uložená v souboru `/etc/kubernetes/azure.json`.
 - Pokud použijete příkaz [az aks create][az-aks-create] k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/aksServicePrincipal.json` na počítači, který jste ke spuštění příkazu použili.
 - Při odstraňování clusteru AKS vytvořeného příkazem [az aks create][az-aks-create] se instanční objekt, který se vytvořil automaticky, neodstraní.
-    - Pokud chcete tento instanční objekt odstranit, nejdřív získejte jeho ID pomocí příkazu [az ad app list][az-ad-app-list]. Následující příkaz se dotazuje na cluster nazvaný *myAKSCluster* a potom odstraní ID aplikace pomocí příkazu [az ad app delete][az-ad-app-delete]. Tyto názvy nahraďte vlastními hodnotami:
+    - Chcete-li odstranit objekt služby, dotaz pro váš cluster *servicePrincipalProfile.clientId* a odstraňte s [az ad app delete][az-ad-app-delete]. Následující zdroje skupiny a cluster názvy nahraďte vlastními hodnotami:
 
         ```azurecli
-        az ad app list --query "[?displayName=='myAKSCluster'].{Name:displayName,Id:appId}" --output table
-        az ad app delete --id <appId>
+        az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
 ## <a name="next-steps"></a>Další postup

@@ -11,16 +11,16 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/14/2018
+ms.date: 02/14/2019
 ms.author: twhitney, mikhegn
-ms.openlocfilehash: b38946f813185a4821520b8591b7fd72a5f0cce0
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 9801db8a38a8c21aea26b42f4fe01bd4a43988c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300060"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311218"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Postupy: ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2017
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Postup: Ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2017
 
 S Visual Studio 2017 Update 7 (15.7) můžete ladit aplikace .NET v kontejnerech jako služeb Service Fabric. Tento článek ukazuje, jak nakonfigurovat prostředí a ladění aplikace .NET v kontejneru spuštěná v místním clusteru Service Fabric.
 
@@ -37,10 +37,10 @@ S Visual Studio 2017 Update 7 (15.7) můžete ladit aplikace .NET v kontejnerech
 1. Aby bylo možné podporovat překlad názvů DNS mezi kontejnery, budete muset nastavit místního vývojového clusteru použijete název počítače. Tyto kroky jsou také nezbytné, pokud chcete adresu služby přes reverzní proxy server.
     1. Otevřete PowerShell jako správce
     2. Přejděte do instalační složky sady SDK Cluster, obvykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
-    3. Spusťte skript `DevClusterSetup.ps1` s parametrem `-UseMachineName`
+    3. Spusťte skript `DevClusterSetup.ps1`
 
        ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
+         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
        ```
 
     > [!NOTE]
@@ -81,4 +81,4 @@ Tady je seznam známých omezení ladění kontejnerů v Service Fabric a jejich
     Visual Studio podporuje konzoly a typy projektů ASP.NET pro .NET a .NET Core.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o možnostech služby Service Fabric a kontejnery, postupujte podle tohoto odkazu: [přehled kontejnerů Service Fabric](service-fabric-containers-overview.md).
+Další informace o možnostech služby Service Fabric a kontejnery, přejděte prosím na tento odkaz: [Přehled platformy Service Fabric kontejnery](service-fabric-containers-overview.md).

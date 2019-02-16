@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910262"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309113"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro ML služeb v Azure HDInsight
 
@@ -119,9 +119,9 @@ Po pojmenujte instančního objektu a vytvoří se pro něj heslo, klikněte na 
 
 Je také možné přidat přístup ke clusteru na jeden nebo více účtů Data Lake Storage po vytvoření clusteru. Otevřete Azure portal položka pro Data Lake Storage a přejděte na **Průzkumník dat > přístup > Přidat**. 
 
-### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>Jak získat přístup k Data Lake Storage od služby ML v HDInsight
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Jak získat přístup k Data Lake Storage Gen1 od služby ML v HDInsight
 
-Jakmile jste dali přístup k Data Lake Storage, můžete použít úložiště v clusteru služby ML na HDInsight způsob, jakým byste to udělali účet sekundární úložiště Azure. Jediným rozdílem je, že předpona **wasb: / /** změny **adl: / /** následujícím způsobem:
+Jakmile jste dali přístup k Data Lake Storage Gen1, můžete použít úložiště v clusteru služby ML v HDInsight způsob, jakým byste to udělali účet sekundární úložiště Azure. Jediným rozdílem je, že předpona **wasb: / /** změny **adl: / /** následujícím způsobem:
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -143,7 +143,7 @@ Jakmile jste dali přístup k Data Lake Storage, můžete použít úložiště 
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-Nakonfigurovat RevoShare adresář účtu Data Lake Storage a přidejte ukázkový soubor .csv z předchozího příkladu se používají následující příkazy:
+Ke konfiguraci účtu Data Lake Storage Gen1 adresářem RevoShare a přidejte ukázkový soubor .csv z předchozího příkladu se používají následující příkazy:
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: c6d1d7e7a6b96b049e313507e9862fde7dba332e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888800"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326972"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 
@@ -499,7 +499,7 @@ Mnoho aspektů nasazení má brát při rozhodování o velikosti pro virtuáln�
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Přidání datového disku k virtuálnímu počítači
 
-Virtuální počítače můžou mít jednu nebo více [datové disky](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , která jsou uložena jako virtuální pevné disky.
+Virtuální počítače můžou mít jednu nebo více [datové disky](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , která jsou uložena jako virtuální pevné disky.
 
 1. Chcete-li přidat datový disk k virtuálnímu počítači, přidejte tuto funkci po proměnné soubor .py: 
 

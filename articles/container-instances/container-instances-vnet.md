@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077467"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313479"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -35,6 +35,7 @@ Při nasazení skupin kontejneru k virtuální síti platí určitá omezení.
 
 * Nasazení skupin kontejnerů k podsíti, podsíť nemůže obsahovat další typy prostředků. Odeberte všechny existující prostředky z existující podsítě před nasazením skupiny kontejnerů na ni, nebo vytvořte novou podsíť.
 * Skupin kontejnerů nasazený do virtuální sítě nepodporuje aktuálně veřejné IP adresy nebo popisky názvů DNS.
+* Nelze použít [se identita spravované](container-instances-managed-identity.md) ve skupině kontejnerů nasazený do virtuální sítě.
 * Z důvodu dalších síťových prostředků zahrnutých nasazení skupiny kontejnerů k virtuální síti je obvykle o něco pomalejší než nasazení kontejneru standardní instance.
 
 ## <a name="preview-limitations"></a>Omezení verze Preview

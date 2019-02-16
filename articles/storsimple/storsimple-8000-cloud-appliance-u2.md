@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 70a109b9aee46e6b6b65a9a5c139abdf1aa9bab9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387680"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330592"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
 
@@ -45,7 +45,7 @@ Tento kurz se vztahuje na všechna řešení StorSimple Cloud Appliance s aktual
 | **Maximální kapacita** |30 TB |64 TB |
 | **Virtuální počítač Azure** |Standard_A3 (4 jádra, 7 GB paměti)| Standard_DS3 (4 jádra, 14 GB paměti)|
 | **Dostupnost v oblastech** |Všechny oblasti Azure |Oblasti Azure, které podporují službu Premium Storage a virtuální počítače Azure DS3<br></br>Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**. |
-| **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak [vytvořit účet služby Standard Storage](../storage/common/storage-create-storage-account.md) |Pro místní disky používá Azure Premium Storage.<sup>2</sup> <br></br>Zjistěte, jak [vytvořit účet služby Premium Storage](../virtual-machines/windows/premium-storage.md) |
+| **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak [vytvořit účet služby Standard Storage](../storage/common/storage-create-storage-account.md) |Pro místní disky používá Azure Premium Storage.<sup>2</sup> <br></br> |
 | **Pokyny týkající se úloh** |Načítání souborů ze zálohy na úrovni položek |Scénáře vývoje a testování v cloudu <br></br>Úlohy s vyšším výkonem a nízkou latencí<br></br>Sekundární zařízení pro zotavení po havárii |
 
 <sup>1</sup>*Dříve označované jako 1100*.
@@ -94,7 +94,7 @@ Než zřídíte cloudové zařízení, je třeba provést následující přípr
 Před vytvořením cloudového zařízení aktualizujte službu Správce zařízení StorSimple následujícím způsobem:
 
 * Přidejte [záznamy řízení přístupu](storsimple-8000-manage-acrs.md) pro virtuální počítače, které budou představovat hostitelské servery pro cloudové zařízení.
-* Nastavte používání [účtu úložiště](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) ve stejné oblasti jako cloudové zařízení. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. U cloudového zařízení můžete použít účet služby Standard Storage nebo Premium Storage. Další informace o tom, jak vytvořit [účet služby Standard Storage](../storage/common/storage-create-storage-account.md) nebo [účet služby Premium Storage](../virtual-machines/windows/premium-storage.md)
+* Nastavte používání [účtu úložiště](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) ve stejné oblasti jako cloudové zařízení. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. U cloudového zařízení můžete použít účet služby Standard Storage nebo Premium Storage. Další informace o tom, jak vytvořit [účet úložiště úrovně Standard](../storage/common/storage-create-storage-account.md).
 * Pro vytvoření cloudového zařízení použijte jiný účet úložiště, než jaký se používá pro vaše data. Použití stejného účtu úložiště může vést k nižšímu výkonu.
 
 Před zahájením se ujistěte, že máte k dispozici následující informace:
@@ -124,7 +124,7 @@ Provedením následujících kroků nakonfigurujte a zaregistrujte řešení Sto
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3 (nepovinný): Úprava konfiguračních nastavení zařízení
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Krok 3: (Volitelné) Upravit nastavení konfigurace zařízení
 
 Následující část popisuje nastavení konfigurace zařízení potřebná pro řešení StorSimple Cloud Appliance, pokud chcete použít protokol CHAP nebo StorSimple Snapshot Manager nebo změnit heslo správce zařízení.
 
@@ -274,6 +274,6 @@ Pokud během vytváření cloudového zařízení není k dispozici připojení 
 5. Pokud se příkaz `nslookup` nezdaří, pak problém s připojením k internetu brání cloudovému zařízení v registraci ve službě Správce zařízení StorSimple.
 6. Proveďte požadované změny virtuální sítě a ujistěte se, že cloudové zařízení může přistupovat k webům Azure, jako je například _windows.net_.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zjistěte, jak [použít službu Správce zařízení StorSimple pro správu cloudového zařízení](storsimple-8000-manager-service-administration.md).
 * Naučte se [obnovit svazek StorSimple ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).

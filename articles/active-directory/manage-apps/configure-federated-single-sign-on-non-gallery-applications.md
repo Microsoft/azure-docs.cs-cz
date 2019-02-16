@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99fa8cbc211469185f2503718c84bc1b12db44c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56c992b1cc0e8f1d9743ff8226ab48852afc1168
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178209"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313122"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Jak nakonfigurovat federované jednotné přihlašování pro aplikaci mimo Galerii
 
@@ -29,13 +29,13 @@ Konfigurace jednotného přihlašování pro aplikaci mimo galerii *bez psaní k
 ## <a name="overview-of-steps-required"></a>Přehled kroků potřebných
 Tady je přehled kroky potřebnými ke konfiguraci federované jednotné přihlašování pomocí SAML 2.0 pro aplikaci mimo Galerii (například vlastní).
 
--   [Nakonfigurujte hodnoty metadat aplikace ve službě Azure AD (přihlašování adresu URL, identifikátoru, adresa URL odpovědi)](#_Configuring_single_sign-on)
+-   Nakonfigurujte hodnoty metadat aplikace ve službě Azure AD (přihlašování adresu URL, identifikátoru, adresa URL odpovědi)
 
 -   [Vyberte identifikátor uživatele a přidat atributy uživatele k odeslání do aplikace](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Načíst metadata služby Azure AD a certifikátů](#download-the-azure-ad-metadata-or-certificate)
 
--   [Nakonfigurujte hodnoty metadat služby Azure AD v aplikaci (přihlašování adresu URL, Vystavitel, odhlašovací adresa URL a certifikát)](#_Configuring_single_sign-on)
+-   Nakonfigurujte hodnoty metadat služby Azure AD v aplikaci (přihlašování adresu URL, Vystavitel, odhlašovací adresa URL a certifikát)
 
 -   Přiřazení uživatelů k aplikaci
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: dafa9f09b6aed1f61facf3737c7e03c81b2a0e7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238245"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313088"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podpora služby Virtual Network pro mezipaměť Azure Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Když Azure pro instanci Redis Cache má nakonfigurovanou virtuální síť, není veřejně adresovatelný a je přístupný pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro Azure Cache úrovně premium pro instanci Redis.
@@ -85,7 +85,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy o ukládání
 
 * Jaké jsou některé běžné chybné konfigurace problémy s mezipamětí Azure Redis a virtuální sítě?
 * [Jak ověřit, že mezipaměť funguje ve virtuální síti?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
-* [Při pokusu o připojení pro mezipaměť Azure redis Cache ve virtuální síti, proč se zobrazuje chyba oznamující, že vzdálený certifikát není platná?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
+* Při pokusu o připojení pro mezipaměť Azure redis Cache ve virtuální síti, proč se zobrazuje chyba oznamující, že vzdálený certifikát není platná?
 * [Můžete použít virtuální sítě s mezipamětí standard nebo basic?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Proč vytvoření Azure Cache pro Redis selže v některých podsítě, ale ne pro jiné?
 * [Jaké jsou požadavky na místo adres podsítě?](#what-are-the-subnet-address-space-requirements)

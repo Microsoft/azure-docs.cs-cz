@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak službu Azure Cosmos DB poskytuje vyso
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b5e99b421e66f087a1793f5301736e192ef75c08
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109754"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311235"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 
@@ -64,19 +64,7 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 
 - I v případě, že je váš účet Cosmos s vysokou dostupností, aplikace nemusí správně navržená k dispozici. K otestování začátku do konce vysoká dostupnost pro aplikace, pravidelně vyvolat [ruční převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover), jako součást vašeho testování aplikace nebo zotavení po havárii (DR) cvičení.
 
-
-Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako plánovaná doba obnovení (RTO). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako cíl bodu obnovení (RPO).
-
-V následující tabulce jsou uvedeny RPO a RTO pro nejběžnější scénáře.
-
-|Číslo z oblasti |Konfigurace |Úrovně konzistence|Cíl bodu obnovení (RPO) |RTO |
-|---------|---------|---------|-------|-------|
-|1    | *    |*   | < 240 minut | < 1 týden |
-|>1     | Jedinou předlohou replikace | Relace, konzistentní předpona, konečný výsledek | < 15 minut | < 15 minut |
-|>1     | Jedinou předlohou replikace | Omezená neaktuálnost | K & T | < 15 minut |
-|>1     | Multimasterovou replikací | Relace, konzistentní předpona, konečný výsledek | < 15 minut | 0 |
-|>1     | Multimasterovou replikací | Omezená neaktuálnost | K & T | 0 |
-|>1     | * | Silné | 0 | < 15 minut |
+- V prostředí s globálně distribuovanou databázi je přímý vztah mezi konzistence odolnosti úroveň a dat za přítomnosti výpadku celé oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako plánovaná doba obnovení (RTO). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako cíl bodu obnovení (RPO). RPO a RTO pro službu Azure Cosmos DB najdete v tématu [konzistence úrovně a data odolnosti](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>Další postup
 

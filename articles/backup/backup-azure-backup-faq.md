@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 0c52a10aa806962ee54fe6058f236ea9bd86414b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: e780a78bb2cc341ef6b2f682cd51fedad3f08494
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268341"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310844"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -25,7 +25,6 @@ Ano. Můžete vytvořit až 500 trezorů služby Recovery Services, každou podp
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru?
 Můžete zaregistrovat až 1 000 virtuálních počítačích Azure s jeden trezor. Pokud používáte Microsoft Azure Backup Agent, můžete zaregistrovat až 50 agenti MAB jeden trezor. A můžete zaregistrovat 50 MAB servery pro/DPM serverů do trezoru.
-
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Pokud má Moje organizace jeden trezor, jak můžete I data z různých serverů v trezoru během obnovování dat izolovat?
 Data serveru, který chcete obnovit společně používejte stejné heslo, při nastavení zálohování. Pokud chcete izolovat obnovení na konkrétní server nebo servery, použijte přístupové heslo pro tento server nebo pouze servery. Například servery lidských zdrojů mohou používat jedno šifrovací heslo, účetní servery jiné a servery úložiště ještě jiné.
@@ -76,10 +75,8 @@ Ne. Na server DPM nebo Azure Backup lze zaregistrovat pouze pro jeden trezor.
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Mohu použít server Azure Backup k vytvoření zálohy úplného obnovení (BMR) pro fyzický server? <br/>
 Ano.
 
-
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžete použít aplikace DPM k zálohování aplikace ve službě Azure Stack?
 Ne. Azure Backup můžete použít k ochraně služby Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikace ve službě Azure Stack.
-
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Pokud je nainstalován agent Azure Backup chránit soubory a složky, je možné nainstalovat System Center DPM k zálohování místních úloh do Azure?
 Ano. Ale doporučujeme nejprve nastavení aplikace DPM a potom nainstalovat agenta Azure Backup.  Instalují se součásti v tomto pořadí zajistí, že Azure Backup agent bude fungovat s DPM. Instalace agenta před instalací aplikace DPM se nedoporučuje nebo nepodporuje.
@@ -138,14 +135,8 @@ SharePoint | Součet databází obsahu a konfigurace v rámci zálohované farmy
 Výměna |Součet všech databází systému Exchange v zálohování serveru Exchange server.
 BMR/stav systému |Každá jednotlivá kopie BMR nebo stav systému zálohovaného počítače.
 
-
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Existuje nějaké omezení množství dat zálohovaných pomocí trezoru služby Recovery Services?
 Neexistuje žádné omezení na množství dat, která můžete zálohovat pomocí trezoru služby Recovery Services.
-
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Pokud zruším úlohu zálohování poté, co již byla spuštěná, dojde k odstranění přenášených dat?
-Ne. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru. Azure Backup používá mechanismus kontrolních bodů k příležitostnému přidávání kontrolních bodů do zálohovaných dat během zálohování. Díky kontrolním bodům v zálohovaných datech je možné při dalším procesu zálohování ověřit integritu souborů. Následující zálohování proběhne jako přírůstkové vzhledem k naposledy zálohovaným datům. Přírůstkové zálohování přenáší jen nová nebo změněná data, což znamená lepší využití přenosové kapacity.
-
-Když ve virtuálním počítači Azure zrušíte úlohu zálohování, budou dosud přenesená data ignorována. Při následujícím přírůstkovém zálohování se přenesou data, která se změnila od poslední úspěšně dokončené úlohy zálohování.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Proč je velikost dat, přenesena do trezoru služby Recovery Services menší než data vybraná pro zálohování?
  Zálohovat data z Azure Backup Agent aplikace DPM, a komprimovaná a šifrovaná před přenášením Azure Backup serveru. Komprese a šifrování se použije, data v trezoru je 30 – 40 % menší.
@@ -153,13 +144,14 @@ Když ve virtuálním počítači Azure zrušíte úlohu zálohování, budou do
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Můžete odstranit jednotlivé soubory z bodu obnovení v trezoru?
 Ne, Azure Backup nepodporuje odstranění nebo vyprazdňování jednotlivých položek z uložené zálohy.
 
-
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Pokud zruším úlohu zálohování po jeho spuštění, je odstranění přenášených dat?
 Ne. Všechna data, která bylo převedeno do trezoru před úloha zálohování byla zrušena zůstanou v trezoru.
 
 - Azure Backup používá mechanismus kontrolních bodů k příležitostnému přidávání kontrolních bodů do zálohovaných dat během zálohování.
 - Díky kontrolním bodům v zálohovaných datech je možné při dalším procesu zálohování ověřit integritu souborů.
 - Následující zálohování proběhne jako přírůstkové vzhledem k naposledy zálohovaným datům. Přírůstkové zálohování přenáší jen nová nebo změněná data, což znamená lepší využití přenosové kapacity.
+
+Když ve virtuálním počítači Azure zrušíte úlohu zálohování, budou dosud přenesená data ignorována. Při následujícím přírůstkovém zálohování se přenesou data, která se změnila od poslední úspěšně dokončené úlohy zálohování.
 
 ## <a name="retention-and-recovery"></a>Uchovávání a obnovení
 
@@ -207,7 +199,7 @@ Když se použije nová zásada, plán a uchovávání nové zásady následuje.
 ## <a name="encryption"></a>Šifrování
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Jsou data odesílaná do Azure šifrovaná?
-Ano. Data se šifrují na místním počítači pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS. Data se přenášejí v cloudu je chráněn odkazu HTTPS pouze mezi služby úložiště a obnovení. Protokol iSCSI zabezpečuje data přenášená mezi počítači pro obnovení služby a uživatele. Zabezpečené tunelové propojení se používá k ochraně kanál iSCSI.
+Ano. Data se šifrují na místním počítači pomocí AES256. Data se odesílají prostřednictvím zabezpečeného spojení HTTPS. Data přenášená do cloudu je chráněn odkazu HTTPS pouze mezi služby úložiště a obnovení. Protokol iSCSI zabezpečuje data přenášená mezi počítači pro obnovení služby a uživatele. Zabezpečené tunelové propojení se používá k ochraně kanál iSCSI.
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Jsou šifrovaná i zálohovaná data v Azure?
 Ano. Data v Azure je zašifrovaná at-rest.

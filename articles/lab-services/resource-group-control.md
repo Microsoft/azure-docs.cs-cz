@@ -10,21 +10,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 2903228a3257abe9c454c6e0720a1e228b905290
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 94e5f5b29e93409df2373cf6c56e8185dc5373a2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300036"
+ms.locfileid: "56312970"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače testovacího prostředí ve službě Azure DevTest Labs
-Jako vlastník testovacího prostředí můžete konfigurovat virtuální počítače testovacího prostředí vytvořit v konkrétní skupině prostředků. Pomocí této funkce tak, aby vám nedostanou prostředků omezení skupiny v rámci předplatného Azure. Tato funkce také umožňuje konsolidovat prostředky testovacího prostředí v rámci jedné skupiny prostředků. Taky usnadňují sledování těchto prostředků a použití [zásady](../governance/policy/overview.md) pro správu na úrovni skupiny prostředků.
+Jako vlastník testovacího prostředí můžete konfigurovat virtuální počítače testovacího prostředí vytvořit v konkrétní skupině prostředků. Tato funkce vám pomůže v následujících scénářích: 
+
+- Můžete mít méně skupiny prostředků vytvořené testovací prostředí v rámci vašeho předplatného.
+- Mít laboratoří pracovat v rámci dlouhodobého nakonfigurovat skupiny prostředků
+- Obejít omezení a jejich schvalování, vyžadovaný pro vytvoření skupiny prostředků v rámci vašeho předplatného Azure.
+- Konsolidovat všechny prostředky testovacího prostředí v rámci jedné skupiny prostředků pro zjednodušení sledování těchto prostředků a použití [zásady](../governance/policy/overview.md) pro správu na úrovni skupiny prostředků.
 
 Pomocí této funkce můžete použít skript, který zadat nový nebo existující skupinu prostředků v rámci vašeho předplatného Azure pro všechny vaše testovací prostředí virtuálních počítačů. DevTest Labs v současné době podporuje tuto funkci prostřednictvím rozhraní API. 
 
-## <a name="api-to-configure-a-resource-group-for-labs-vms"></a>Rozhraní API konfigurace skupiny prostředků pro laboratorní cvičení virtuálních počítačů
+## <a name="api-to-configure-a-resource-group-for-lab-virtual-machines"></a>Rozhraní API konfigurace skupiny prostředků pro virtuální počítače testovacího prostředí
 Nyní pojďme si projít možnosti máte jako vlastník testovacího prostředí při použití tohoto rozhraní API: 
 
 - Můžete použít **skupiny prostředků testovacího prostředí** pro všechny virtuální počítače.
@@ -86,7 +91,7 @@ Pokud použijete šablony Azure Resource Manageru k vytvoření testovacího pro
                 "labStorageType": "Premium",
                 "premiumDataDisks": "Disabled",
                 "provisioningState": "Succeeded",
-                "uniqueIdentifier": "6e6f668f-992b-435c-bac3-d328b745cd25"
+                "uniqueIdentifier": "000000000f-0000-0000-0000-00000000000000"
             },
             "dependsOn": []
         },

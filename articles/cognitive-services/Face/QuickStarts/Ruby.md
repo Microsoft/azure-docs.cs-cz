@@ -8,40 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/30/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: b7dbbc328f61b47cb89af2974ad3c428d868d465
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857120"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312391"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a Ruby
 
-V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře rozpoznávat lidské tváře na obrázku.
+V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tváře Azure pomocí Ruby detekovat lidské tváře v obrázku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče bezplatného zkušebního předplatného můžete získat v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
+- Editor kódu, jako [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="face---detect-request"></a>Žádost Face - Detect
+## <a name="write-the-script"></a>Psaní skriptu
 
-Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
-
-* Face ID: Jedinečné ID v několika situacích API pro rozpoznávání tváře.
-* Rámeček pro rozpoznávání tváře: Vlevo, horní, šířku a výšku označující umístění tvář na obrázku.
-* Zajímavá: Pole odkazující na důležité pozice tváří součásti památek 27 bodu pro rozpoznávání tváře.
-* Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
-
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uri` na umístění, kde jste klíče předplatného získali.
-1. Volitelně můžete `imageUri` nastavit na obrázek, který chcete analyzovat.
-1. Uložte soubor s příponou `.rb`.
-1. Otevřete příkazový řádek Ruby a soubor spusťte, například: `ruby myfile.rb`.
+Vytvořte nový soubor, _faceDetection.rb_a přidejte následující kód. Pro danou image URL volá rozhraní API pro rozpoznávání tváře.
 
 ```ruby
 require 'net/http'
@@ -75,9 +62,19 @@ end
 puts response.body
 ```
 
-## <a name="face---detect-response"></a>Odpověď Face - Detect
+Budete muset aktualizovat `request['Ocp-Apim-Subscription-Key']` hodnotu s váš klíč předplatného a může být nutné změnit `uri` řetězec tak, aby obsahoval oblasti správný identifikátor (naleznete v tématu [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblast) . 
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Možná budete také chtít změnit `imageUri` pole tak, aby odkazoval na vlastní vstupního obrázku. Můžete také chtít chang `returnFaceAttributes` pole, která určuje, které pro rozpoznávání tváře atributy pro načtení.
+
+## <a name="run-the-script"></a>Spuštění skriptu
+
+Spusťte skript Ruby pomocí následujícího příkazu:
+
+```shell
+ruby faceDetection.rb
+```
+
+Měli byste vidět řetězec JSON zjištěných pro rozpoznávání tváře dat tisk do konzoly. Následuje příklad úspěšné odpovědi JSON.
 
 ```json
 [
@@ -260,7 +257,7 @@ puts response.body
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte rozhraní API pro rozpoznávání lidských tváří na obrázku, ohraničte obličeje obdélníky a vraťte atributy, jako je věk a pohlaví.
+V tomto rychlém startu jste napsali skript Ruby, který volá rozhraní API pro rozpoznávání tváře Azure rozpoznávání tváří v obrázku a vrátíte se jejich atributy. Dále prozkoumejte referenční dokumentaci rozhraní API pro rozpoznávání tváře na další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

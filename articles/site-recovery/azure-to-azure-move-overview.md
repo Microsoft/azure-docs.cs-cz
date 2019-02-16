@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112542"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309858"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -51,7 +51,7 @@ Přesun virtuálních počítačů zahrnuje následující kroky:
 > Azure Site Recovery aktuálně podporuje přesun virtuálních počítačů z v oblasti do druhé a nepodporuje přesun v rámci oblasti. 
 
 > [!NOTE]
-> Podrobné informace o tomto postupu jsou uvedeny v dokumentaci pro každý scénář, jak je uvedeno tady
+> Podrobné informace o tomto postupu jsou uvedeny v dokumentaci pro každý scénář, jak je uvedeno [zde](#next-steps)
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>Typických architekturách vícevrstvých nasazení
 Níže uvedený oddíl přijmout procházení prostřednictvím nejběžnější zákazníkům nasazení architektury pro vícevrstvou aplikaci v Azure. V příkladu, které jsme se rozhodli zde je tři vrstvenou aplikaci s veřejnou IP adresu. Jednotlivé úrovně – Web, aplikace a databáze mají 2 VMs & připojeni pomocí služby Vyrovnávání zatížení do dalších vrstev. Databázová vrstva je replikace SQL Always ON mezi virtuálními počítači pro vysokou dostupnost (HA).

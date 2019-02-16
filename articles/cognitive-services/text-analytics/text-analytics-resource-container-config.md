@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 53ebb8ce51527adbd67310b19dccd6c7cbabf37f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5ed1e393c78f0f8d74ad6ae8096fb8b3e384e6e0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977512"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308821"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnery dockeru pro analýzu textu
 
@@ -27,11 +27,11 @@ Rozhraní text Analytics poskytuje každý kontejner se společnou architekturu 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
+> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _rozhraní Text Analytics_ prostředek určený pro [ `Billing` ](#billing-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _rozhraní Text Analytics_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
 
 Toto nastavení najdete v následujícím místě:
 

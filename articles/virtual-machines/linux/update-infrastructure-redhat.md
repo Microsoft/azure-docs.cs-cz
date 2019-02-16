@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 4505dcf5d9407a609bcf97c56835ff186607127d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c5e67e581d3fc370710528609bf94b1110416c33
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563726"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311371"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umožňuje poskytovateli cloudu, jako je Azure, které zrcadlí obsahu úložiště hostované v systému Red Hat, vytvořte vlastní úložiště s týkající se Azure obsahu a ji dejte k dispozici pro virtuální počítače koncového uživatele.
@@ -103,10 +103,10 @@ Nasazení nových serverů Azure RHUI se používají [Azure Traffic Manager](ht
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Aktualizovat certifikát s prošlou platností klienta RHUI na virtuálním počítači
 
-Pokud používáte starší image virtuálního počítače RHEL, například RHEL 7.4 (obrázku URN: `RedHat:RHEL:7.4:7.4.2018010506`), dojde k problémům s připojením k RHUI kvůli klientský certifikát SSL vypršela. Chyba se zobrazí může vypadat jako _"partner SSL odmítl vašeho certifikátu, protože platnost"_. Chcete-li tento problém vyřešit, aktualizujte prosím balíček klienta RHUI na virtuálním počítači pomocí následujícího příkazu:
+Pokud používáte starší image virtuálního počítače RHEL, například RHEL 7.4 (obrázku URN: `RedHat:RHEL:7.4:7.4.2018010506`), dojde k problémům s připojením k RHUI kvůli klientský certifikát SSL vypršela. Chyba se zobrazí může vypadat jako _"partner SSL odmítl vašeho certifikátu, protože platnost"_ nebo _"Chyba: Nelze načíst metadata úložiště (repomd.xml) pro úložiště:... Ověřte cestu a zkuste to znovu"_. Chcete-li tento problém vyřešit, aktualizujte prosím balíček klienta RHUI na virtuálním počítači pomocí následujícího příkazu:
 
 ```bash
-sudo yum update -y --disablerepo='*' --enablerepo='*-microsoft-*'
+sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
 Alternativně systémem `sudo yum update` také aktualizovat balíček certifikátů klienta (v závislosti na vaší verzi RHEL), bez ohledu na "vypršela platnost certifikátu SSL" chyby, zobrazí se pro jiné úložiště. Pokud tato aktualizace je úspěšné, do jiných úložišť RHUI normální spojení mělo obnovit, tak bude moct spustit `sudo yum update` úspěšně.

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 16cfe4c1db8fe9ba4c80f6451611237e3ee12c55
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: ad52d2b1df458d04a1ca9bd52a99bab38ddabef1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617878"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308577"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certifikát serveru back-end není povolený pro službu application gateway pomocí interního nástroje Load Balancer pomocí služby App Service Environment
 
-Tento článek ho. následující problém: certifikát není na seznamu povolených při vytvoření služby application gateway s využitím interní zatížení nástroje pro vyrovnávání (ILB) společně s App Service Environment (ASE) na back-endu při použití – kompletního protokolu SSL v Azure.
+Tento článek ho. následující problémy: Certifikát není na seznamu povolených, při vytváření služby application gateway s využitím interní zatížení nástroje pro vyrovnávání (ILB) společně s App Service Environment (ASE) na back-endu při použití – kompletního protokolu SSL v Azure.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -31,21 +31,21 @@ Když vytvoříte aplikační brány pomocí ILB ASE v back-endu, back-end serve
 
 **Konfigurace aplikační brány:**
 
-- **Naslouchací proces:** Multi-Site
+- **Naslouchací proces:** Pro více lokalit
 - **Port:** 443
-- **Název hostitele:** test.appgwtestase.com
+- **Hostname:** test.appgwtestase.com
 - **Certifikát SSL:** CN=test.appgwtestase.com
-- **Back-Endového fondu:** IP adresu nebo plně kvalifikovaný název domény
+- **Back-Endového fondu:** IP adresa nebo plně kvalifikovaný název domény
 - **IP adresa:**: 10.1.5.11
 - **Nastavení protokolu HTTP:** HTTPS
 - **Port:**: 443
-- **Vlastní test paměti:** název hostitele – test.appgwtestase.com
+- **Vlastní test paměti:** Název hostitele – test.appgwtestase.com
 - **Certifikát pro ověřování:** .cer test.appgwtestase.com
-- **Stav back-endu:** není v pořádku – certifikát back-end serveru není na seznamu povolených pomocí služby Application Gateway.
+- **Stav back-endu:** Není v pořádku – certifikát back-end serveru není na seznamu povolených pomocí služby Application Gateway.
 
 **Konfigurace ASE:**
 
-- **IP ADRESA ILB:** 10.1.5.11
+- **ILB IP:** 10.1.5.11
 - **Název domény:** appgwtestase.com
 - **App Service:** test.appgwtestase.com
 - **Vytvoření vazby SSL:** SNI SSL – CN=test.appgwtestase.com
@@ -56,20 +56,20 @@ Při přístupu k application gateway zobrazí následující chybová zpráva, 
 
 ## <a name="solution"></a>Řešení
 
-Když nepoužíváte název hostitele pro přístup k webu HTTPS, vrátí back endového serveru nakonfigurovaný certifikát na výchozím webu. Pro službu ASE výchozí certifikát pochází z certifikátu ILB. Pokud neexistují žádné nakonfigurované certifikáty pro ILB, certifikát pochází z certifikát aplikace služby ASE.
+Když nepoužíváte název hostitele pro přístup k webu HTTPS, back endového serveru vrátí nakonfigurovaným certifikátem na výchozím webu, v případě, že SNI je zakázaná. Pro službu ASE výchozí certifikát pochází z certifikátu ILB. Pokud neexistují žádné nakonfigurované certifikáty pro ILB, certifikát pochází z certifikát aplikace služby ASE.
 
-Při použití plně kvalifikovaný název domény (FQDN) pro přístup k ILB back endového serveru vrátí správný certifikát, který se odeslal v nastavení protokolu HTTP. V takovém případě zvažte následující možnosti:
+Při použití plně kvalifikovaný název domény (FQDN) pro přístup k ILB back endového serveru vrátí správný certifikát, který se odeslal v nastavení protokolu HTTP. Pokud tedy tomu tak není, zvažte následující možnosti:
 
 - Použijte plně kvalifikovaný název domény v back endovém fondu služby application gateway tak, aby odkazoval na IP adresu ILB. Tato možnost funguje jenom v případě budete mít privátní zóny DNS nebo vlastní DNS nakonfigurovaný. V opačném případě je nutné vytvořit záznam "A" pro veřejná služba DNS.
 
-- Použití se nahraný certifikát na ILB nebo výchozí certifikát v nastavení protokolu HTTP. Application gateway získá certifikát, když přistupuje ILB IP pro test paměti.
+- Použití se nahraný certifikát na ILB nebo výchozí certifikát (ILB) v nastavení protokolu HTTP. Application gateway získá certifikát, když přistupuje ILB IP pro test paměti.
 
-- Použijte certifikát se zástupným znakem na ILB a back endového serveru.
+- Použijte certifikát se zástupným znakem na ILB a back endového serveru tak, aby pro všechny weby, certifikát je běžné. Toto řešení je ale možné jenom v případě subdomény a ne v případě, že všechny weby vyžadují různé názvy hostitelů.
 
-- Zrušte **použití pro službu App service** možnost pro službu application gateway.
+- Zrušte **použití pro službu App service** možnost pro službu application gateway v případě, že používáte IP adresu ILB.
 
-Aby se snížila režie, můžete nahrát certifikát ILB v nastavení protokolu HTTP, aby cesta testu paměti fungovat. (Tento krok je jen pro přidávání na seznam povolených. To se nepoužije pro komunikaci protokolem SSL.) Můžete načíst certifikát ILB použitím ILB s jeho IP adresu protokolu HTTPS a SSL Export certifikátu v Base-64 kódování, formátu CER a nahrává se certifikát na příslušné nastavení HTTP.
+Aby se snížila režie, můžete nahrát certifikát ILB v nastavení protokolu HTTP, aby cesta testu paměti fungovat. (Tento krok je jen pro přidávání na seznam povolených. To se nepoužije pro komunikaci protokolem SSL.) Můžete načíst certifikát ILB použitím ILB s jeho IP adresa v prohlížeči na adrese HTTPS a export certifikátu protokolu SSL v Base-64 kódování formátu CER a nahrává se certifikát na příslušné nastavení HTTP.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

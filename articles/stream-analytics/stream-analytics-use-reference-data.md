@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f065a7c428f191e37449145e946b26c3133ede05
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699988"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329809"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics
 Referenční data (označované také jako vyhledávací tabulky) je konečná datová sada, které jsou statické nebo s pomalou změnou ze své podstaty, používá k vyhledávání a korelaci s datovým proudem. Například ve scénáři IoT může ukládají metadata o senzorů (které se nemění často) v referenčních dat a připojte ho s datovými proudy IoT reálném čase. Azure Stream Analytics načítá referenčních dat v paměti, zpracování streamů s nízkou latencí. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. 
@@ -74,7 +74,7 @@ Azure Stream Analytics automaticky kontroluje pro objekty BLOB aktualizace refer
 
 ## <a name="azure-sql-database-preview"></a>Azure SQL Database (Preview)
 
-Azure SQL Database referenční data jsou načítána pro svou úlohu Stream Analytics a je uložena jako snímek v paměti pro zpracování. Snímek referenčních dat je také ukládat do kontejneru v účtu úložiště, který určíte v nastavení konfigurace. Kontejner je automaticky vytvořený při spuštění úlohy a automaticky se odstraní při zastavení úlohy.
+Azure SQL Database referenční data jsou načítána pro svou úlohu Stream Analytics a je uložena jako snímek v paměti pro zpracování. Snímek referenčních dat je také ukládat do kontejneru v účtu úložiště, který určíte v nastavení konfigurace. Kontejner je automaticky vytvořený při spuštění úlohy. Pokud úloha je zastavená nebo přejde do stavu selhání, odstraní se kontejnery automaticky vytvořený při restartování úlohy.  
 
 Pokud referenční data jsou pomalu se měnící datové sady, potřebujete pravidelně aktualizovat snímek, který se používá v úloze. Stream Analytics umožňuje nastavit obnovovací frekvence, při konfiguraci vstupní připojení k Azure SQL Database. Modul runtime Stream Analytics bude v intervalu určeném obnovovací frekvence dotazování Azure SQL Database. Nejrychlejší obnovovací frekvence podporována je jednou za minutu. Pro každé aktualizaci Stream Analytics uchovává nový snímek v účtu úložiště k dispozici.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 61cad318dbbe55ef5ecf1b8167b6594ab6e57553
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247533"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327404"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
@@ -89,7 +89,7 @@ Tato architektura spouští aplikace, úložiště a data úrovní, na virtuáln
 
 ### <a name="storage-considerations"></a>Aspekty úložišť
 
-Podobně jako Oracle RAC je DB2 pureScale vysoce výkonné bloku vstupně-výstupních operací, horizontální navýšení kapacity databáze. Doporučujeme použít největší [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) možnost, která vyhovuje vašim potřebám. Menší možnosti úložiště může být vhodný pro vývojová a testovací prostředí, zatímco produkční prostředí často potřebujete víc kapacity úložiště. Architektura příklad používá [P30](https://azure.microsoft.com/pricing/details/managed-disks/) z důvodu jeho poměru vstupně-výstupních operací na velikosti a ceny. Bez ohledu na velikost použijte Premium Storage pro zajištění nejlepšího výkonu.
+Podobně jako Oracle RAC je DB2 pureScale vysoce výkonné bloku vstupně-výstupních operací, horizontální navýšení kapacity databáze. Doporučujeme použít největší [Azure premium SSD](disks-types.md) možnost, která vyhovuje vašim potřebám. Menší možnosti úložiště může být vhodný pro vývojová a testovací prostředí, zatímco produkční prostředí často potřebujete víc kapacity úložiště. Architektura příklad používá [P30](https://azure.microsoft.com/pricing/details/managed-disks/) z důvodu jeho poměru vstupně-výstupních operací na velikosti a ceny. Bez ohledu na velikost použijte Premium Storage pro zajištění nejlepšího výkonu.
 
 Používá sdílený DB2 pureScale – všechno, co architektura, ve kterém všechna data jsou přístupná ze všech uzlů clusteru. Storage úrovně Premium musí být sdíleny napříč instance, zda na vyžádání nebo na vyhrazených instancích.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8b3d097d2ec3639a829d3c3bb5056b353eef0763
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 34f34545e4511c4f8bc4af95f906f2871480bd47
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300172"
+ms.locfileid: "56310150"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -79,9 +79,7 @@ Každý prvek má vlastnosti, které můžete nastavit. Následující příklad
                 {
                     "name": "<name-of-array-property>",
                     "count": <number-of-iterations>,
-                    "input": {
-                        <properties-to-repeat>
-                    }
+                    "input": <object-or-value-to-repeat>
                 }
             ]
         },
@@ -89,9 +87,7 @@ Každý prvek má vlastnosti, které můžete nastavit. Následující příklad
             {
                 "name": "<variable-array-name>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },

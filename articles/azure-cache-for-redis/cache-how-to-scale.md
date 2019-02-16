@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235568"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313428"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Postup škálování Azure mezipaměti Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti je možné škálovat velikost a cenovou úroveň mezipaměti, pokud se změní požadavky aplikace. Tento článek popisuje, jak se dá škálovat mezipaměť pomocí webu Azure portal a nástrojů, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
@@ -115,7 +115,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy o mezipaměti
 * [Přijdu o data z mezipaměť během změny měřítka?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Je Moje vlastní databáze nastavení ovlivněných během změny měřítka?](#is-my-custom-databases-setting-affected-during-scaling)
 * [Mezipaměť bude k dispozici během změny měřítka?](#will-my-cache-be-available-during-scaling)
-* [S geografickou replikací nakonfigurovaná, proč mi nejde škálovat mezipaměť, nebo změňte horizontálních oddílů v clusteru?](#scaling-limitations-with-geo-relication)
+* S geografickou replikací nakonfigurovaná, proč mi nejde škálovat mezipaměť, nebo změňte horizontálních oddílů v clusteru?
 * [Operace, které nejsou podporovány](#operations-that-are-not-supported)
 * [Jak dlouho škálování trvá?](#how-long-does-scaling-take)
 * [Jak poznám, že při škálování je kompletní?](#how-can-i-tell-when-scaling-is-complete)

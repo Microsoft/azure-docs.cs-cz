@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: d7be248e49baf4e7fd10d6b37df1473e92ccfce7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 0ed317abc9d4b7d8d1c6f8b878ffe69f7a0bdbf6
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651720"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310236"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikaci pro Apache HBase a vrstvou Apache Phoenix v HDInsight
 
@@ -75,7 +75,7 @@ Zadejte export úplnou cestu k výchozí úložiště nebo některou z možnost�
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-Ve službě Azure Data Lake Storage je syntaxe:
+V Azure Data Lake Storage Gen1 syntaxe je:
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 

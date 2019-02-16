@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/072019
-ms.openlocfilehash: 1040c2018e7e18ed2d2bb401dd0052c6851fa544
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 02/15/2019
+ms.openlocfilehash: b0bd5c0ba8641bd287951168485be715a0b46224
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270466"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328669"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity pro elastické fondy pomocí omezení založený na virtuálních jádrech nákupní model prostředků
 
@@ -59,7 +59,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Obecné účely vrstvy služby: Výpočetní platforma běžící generace 4 (část 2)
 
@@ -85,7 +85,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Obecné účely vrstvy služby: Výpočetní platforma běžící generace 5 (část 1)
 
@@ -111,7 +111,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Obecné účely vrstvy služby: Výpočetní platforma běžící generace 5 (část 2)
 
@@ -136,7 +136,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Obchodní vrstvy služby: Velikosti úložiště a výpočty velikostí
 
@@ -164,7 +164,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Obchodní vrstvy služby: Výpočetní platforma běžící generace 4 (část 2)
 
@@ -190,7 +190,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Obchodní vrstvy služby: Výpočetní platforma běžící generace 5 (část 1)
 
@@ -216,7 +216,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Obchodní vrstvy služby: Výpočetní platforma běžící generace 5 (část 2)
 
@@ -242,7 +242,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
-\* Maximální počet aktuálních pracovních procesů (požadavků) jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md)
+\* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 Pokud se všechny virtuální jádra pro elastický fond je zaneprázdněný, každá databáze ve fondu obdrží stejné množství výpočetních prostředků pro zpracování dotazů. Služba SQL Database poskytuje spravedlivé sdílení prostředků mezi databázemi tím, že zajišťuje rovnoměrné rozdělení výpočetního času. Spravedlivé sdílení prostředků elastického fondu je kromě libovolným množstvím prostředků jinak zaručena pro každou databázi, pokud je minimální počet virtuálních jader na databázi nastaven na nenulovou hodnotu.
 

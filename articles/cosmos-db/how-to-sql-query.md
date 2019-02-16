@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ca2b032497298bab5bedbf8ddc73987fa08c7df
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822404"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313547"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -1369,13 +1369,13 @@ Matematické funkce provádí výpočet, založené na vstupní hodnoty, které 
 | Horní MEZ (num_expr) | Vrátí nejmenší hodnotu celé číslo větší než nebo rovna zadané číselný výraz. |
 | Dolní MEZ (num_expr) | Vrátí největší celé číslo menší nebo rovna zadané číselný výraz. |
 | EXP (num_expr) | Vrátí exponent zadaný číselný výraz. |
-| [LOG (num_expr [,base])](#bk_log) | Vrátí přirozený logaritmus zadaného číselný výraz nebo pomocí zadaném základu logaritmu |
+| PROTOKOL (num_expr, base) | Vrátí přirozený logaritmus zadaného číselný výraz nebo pomocí zadaném základu logaritmu |
 | LOG10 (num_expr) | Vrátí hodnotu logaritmu základu 10 zadaný číselný výraz. |
 | ROUND (num_expr) | Vrátí číselnou hodnotu, zaokrouhlený na nejbližší celočíselnou hodnotu. |
 | TRUNC (num_expr) | Vrátí číselnou hodnotu, zkrácen na nejbližší celočíselnou hodnotu. |
 | SQRT (num_expr) | Vrátí druhou odmocninu určeného číselného výrazu. |
 | HRANATÉ (num_expr) | Vrátí druhou mocninu zadaný číselný výraz. |
-| [NAPÁJENÍ (num_expr, num_expr)](#bk_power) | Vrátí sílu zadaný číselný výraz na zadanou hodnotu. |
+| NAPÁJENÍ (num_expr, num_expr) | Vrátí sílu zadaný číselný výraz na zadanou hodnotu. |
 | SIGN (num_expr) | Vrátí hodnotu znaménko (-1, 0, 1) zadaný číselný výraz. |
 | ACOS (num_expr) | Vrací úhel v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus kosinus. |
 | ASIN (num_expr) | Vrací úhel v radiánech, jehož sinus je zadaný číselný výraz. Arkus sinus je také voláním této funkce. |

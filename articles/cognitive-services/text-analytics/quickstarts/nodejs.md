@@ -3,19 +3,19 @@ title: 'Rychlý start: Použití Node.js k volání rozhraní Text Analytics API
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a vzorové kódy, které vám usnadní začátky práce s rozhraním API pro analýzu textu ve službách Microsoft Cognitive Services v Azure.
 services: cognitive-services
-author: noellelacharite
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: nolachar
-ms.openlocfilehash: d9b15b89e67156ab442fa15544a661da5c0d6598
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/15/2019
+ms.author: aahi
+ms.openlocfilehash: e11e4a59e447a8befcfaedb7ddedbb9aabdfaa28
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883844"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330694"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Node.js k volání Text Analytics služby Cognitive Services  
 <a name="HOLTop"></a>

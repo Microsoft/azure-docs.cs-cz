@@ -3,7 +3,7 @@ title: Azure AD v2.0 UPW Začínáme | Dokumentace Microsoftu
 description: Jak aplikace univerzální platformy Windows (UPW) může volat rozhraní API, které vyžaduje přístupové tokeny pomocí koncového bodu Azure Active Directory v2.0
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7d4e586dcb90153fb4d037c9c9821cd3ea3182
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5a0be784cdee0fd98a81c182f33dea987481aac3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176709"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329128"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (XAML)
 

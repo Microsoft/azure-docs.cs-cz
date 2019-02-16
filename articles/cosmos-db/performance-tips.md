@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: f05935f73f385b076741d2e856af8316a74e9d2f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 68378342769618c2b0e1096fbf5a2d28d0cb4b0e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042491"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309890"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -30,7 +30,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
 1. **Zásady připojení: Použití režimu přímé připojení**
 
-    Jak se klient připojí ke službě Azure Cosmos DB má důležité vliv na výkon, hlavně z hlediska pozorované latence na straně klienta. K dispozici dva klíče konfigurační nastavení pro konfiguraci klienta zásady připojení – připojení *režimu* a [připojení *protokol*](#connection-protocol).  Jsou k dispozici dva režimy:
+    Jak se klient připojí ke službě Azure Cosmos DB má důležité vliv na výkon, hlavně z hlediska pozorované latence na straně klienta. K dispozici dva klíče konfigurační nastavení pro konfiguraci klienta zásady připojení – připojení *režimu* a připojení *protokol*.  Jsou k dispozici dva režimy:
 
    * Režim brány (výchozí)
       
@@ -47,7 +47,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
     |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
     |---------|---------|---------|---------|
-    |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo (10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
     |Přímé    |    HTTPS     |  .NET a Java SDK    |    SQL(443)   |
     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
 

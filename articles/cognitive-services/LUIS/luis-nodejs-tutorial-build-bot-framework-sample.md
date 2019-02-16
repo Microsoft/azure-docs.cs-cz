@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 92cd927b2cac9c30a5552d632468763de91c54db
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 62a3169257001f64e3103cc079e544449ac59663
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861659"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328380"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -44,7 +44,7 @@ Robot jsou reaguje na záměry od HomeAutomation domény, které jsou v aplikaci
 
     ![Vyberte web app bot zahájíte proces vytváření prostředků](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
-3. V **Bot Service** okno, zadejte požadované informace a vyberte **vytvořit**. Tím se vytvoří a nasadí bot service a LUIS aplikace do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením svého robota. 
+3. V **Bot Service** okno, zadejte požadované informace a vyberte **vytvořit**. Tím se vytvoří a nasadí bot service a LUIS aplikace do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením svého robota. 
     * Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Vyberte předplatné, [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plán služby App service, a [umístění](https://azure.microsoft.com/regions/).
     * Pro **Bot šablony**vyberte:

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: cb6f033c784832efab23c747057b1c0ef1b317fa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 911d6b5b6445d612654a7259d354cf1c7943c69d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730267"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330031"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Vytváření a správa zásad pro vynucování dodržování předpisů
 
@@ -354,7 +354,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
    ![Definice iniciativ](../media/create-and-manage/initiative-definition-2.png)
 
-1. Pokud se přidávají do iniciativy definice zásady obsahuje parametry, jsou uvedené v části název zásady v **zásady a parametry** oblasti. _Hodnotu_ je možné nastavit na možnost Nastavit hodnotu (pevně zakódovaná pro všechna přiřazení této iniciativy) nebo Použít parametr iniciativy (nastaví se při každém přiřazení iniciativy). Pokud je zaškrtnuto políčko "Hodnotu" útokem drown dolů napravo od _hodnoty_ umožňuje zadáním nebo výběrem hodnoty. Pokud vyberete možnost Použít parametr iniciativy, zobrazí se část **Parametry iniciativy**, kde můžete definovat parametr, který se nastaví během přiřazení iniciativy. Povolené hodnoty pro tento parametr iniciativy můžou dále omezit možnosti nastavení během přiřazení iniciativy.
+1. Pokud se přidávají do iniciativy definice zásady obsahuje parametry, jsou uvedené v části název zásady v **zásady a parametry** oblasti. _Hodnotu_ je možné nastavit na možnost Nastavit hodnotu (pevně zakódovaná pro všechna přiřazení této iniciativy) nebo Použít parametr iniciativy (nastaví se při každém přiřazení iniciativy). Pokud je zaškrtnuto políčko "Hodnotu" rozevírací seznam napravo od _hodnoty_ umožňuje zadáním nebo výběrem hodnoty. Pokud vyberete možnost Použít parametr iniciativy, zobrazí se část **Parametry iniciativy**, kde můžete definovat parametr, který se nastaví během přiřazení iniciativy. Povolené hodnoty pro tento parametr iniciativy můžou dále omezit možnosti nastavení během přiřazení iniciativy.
 
    ![Parametry definice iniciativy](../media/create-and-manage/initiative-definition-3.png)
 

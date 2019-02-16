@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: ff3063193fa2a8f71f441aa64c8835fd7528ff4e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6a60afc45894518f92115976876ddd50efa1e410
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882620"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310181"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Kurz: Vytvoření aplikace WPF pro zobrazení dat pro rozpoznávání tváře v obrázku
 
@@ -49,7 +49,7 @@ Postupujte podle těchto kroků a vytvořte nový projekt aplikace WPF.
 1. V sadě Visual Studio otevřete dialogové okno Nový projekt. Rozbalte **nainstalováno**, pak **Visual C#** a pak vyberte **aplikace WPF (.NET Framework)**.
 1. Pojmenujte tuto aplikaci **FaceTutorial** a klikněte na **OK**.
 1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**; poté najít a nainstalovat balíček následující:
-    - Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="add-the-initial-code"></a>Přidání počátečního kódu
 

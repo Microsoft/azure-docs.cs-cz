@@ -8,38 +8,38 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 212506667a56befb4e3926dec7a9e3eb9772ebed
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4b5d2de2e9ccd44517e083a435e127bd5678f002
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55735950"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331169"
 ---
-# <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Ultra (preview) spravované disky SSD pro úlohy virtuálních počítačů Azure
+# <a name="ultra-disks-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Ultra disky (preview) spravovaných disků pro úlohy virtuálních počítačů Azure
 
-Ultra SSD Azure (preview) poskytuje vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Tato nová nabídka poskytuje horní řádek výkon ve stejné úrovně dostupnosti jako naše stávající nabídky disky. Další výhody Ultra SSD patří schopnost dynamicky měnit výkonu disku spolu s vašimi úlohami, aniž byste museli restartovat své virtuální počítače. Ultra SSD, je vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy.
+Ultra disků v Azure (preview) poskytuje vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Tato nová nabídka poskytuje horní řádek výkon ve stejné úrovně dostupnosti jako naše stávající nabídky disky. Další výhody ultra disků patří schopnost dynamicky měnit výkonu disku spolu s vašimi úlohami, aniž byste museli restartovat své virtuální počítače. Ultra disky jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy.
 
-## <a name="ultra-ssd-features"></a>Funkce Ultra SSD
+## <a name="ultra-disk-features"></a>Funkce Ultra disků
 
-**Spravované disky**: Ultra SSD disků jsou dostupné jenom jako Managed Disks. Ultra vlastnosti jednotek SSD se nedá nasadit jako nespravovaný Disk nebo objekt Blob stránky. Při vytváření spravovaného disku, zadáváte sku disku jako UltraSSD_LRS typ a určení velikosti disku, vstupně-výstupních operací, a propustnost, které potřebujete a Azure vytvoří a spravuje disk za vás.  
+**Spravované disky**: Ultra disky jsou dostupné jenom jako spravované disky. Ultra disky nejde nasadit jako nespravovaný disk nebo objekt blob stránky. Při vytváření spravovaného disku, zadáváte sku disku jako UltraSSD_LRS typ a určení velikosti disku, vstupně-výstupních operací, a propustnost, které potřebujete a Azure vytvoří a spravuje disk za vás.  
 
-**Virtual Machines**: Ultra jednotky SSD jsou navrženy pro práci s všechny Premium SSD povolené skladové položky virtuálních počítačů Azure; ale protože je momentálně ve verzi preview, virtuální počítače velikosti jako ES/DS v3.
+**Virtual Machines**: Ultra disky jsou navrženy pro práci s všechny Premium SSD povolené skladové položky virtuálních počítačů Azure; ale protože je momentálně ve verzi preview, virtuální počítače velikosti jako ES/DS v3.
 
-**Konfigurace dynamické výkonu**: Ultra SSD umožní dynamicky měnit výkon (IOPS a propustnost) disku spolu s vaší potřebám provádění úloh bez nutnosti restartování virtuálních počítačů.
+**Konfigurace dynamické výkonu**: Ultra disky umožňují dynamicky měnit výkon (IOPS a propustnost) disku spolu s vaší potřebám provádění úloh bez nutnosti restartování virtuálních počítačů.
 
 ## <a name="scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti
 
-Když si zřídíte Ultra SSD, budete mít možnost konfigurovat nezávisle kapacitu a výkon disku. Ultra vlastnosti jednotek SSD v několik pevných velikostech pocházet 4 GB až 64 TiB a funkcí modelu konfigurace flexibilní výkonu, který umožňuje nezávisle na sobě konfigurovat IOPS a propustnost. Ultra vlastnosti jednotek SSD se dá využít pouze jako datové disky. Doporučujeme použít disky Premium SSD jako disky s operačním systémem.
+Když si zřídíte ultra disky, budete mít možnost konfigurovat nezávisle kapacitu a výkon disku. Ultra disky v několik pevných velikostech pocházet 4 GB až 64 TiB a funkcí modelu konfigurace flexibilní výkonu, který umožňuje nezávisle na sobě konfigurovat IOPS a propustnost. Ultra disky se dá využít pouze jako datové disky. Doporučujeme použít disky Premium SSD jako disky s operačním systémem.
 
-Jsou některé klíčové funkce Ultra SSD:
+Některé klíčové funkce ultra disků jsou:
 
-- Kapacita disku: Ultra SSD nabízí celou řadu různých disky o velikosti od 4 GB až 64 TiB.
-- Vstupně-výstupních operací disku: Ultra SSD podporu vstupně-výstupních operací omezení 300 IOPS/GiB maximálně 160 kB IOPS na disk. K dosažení vstupně-výstupních operací, kterou jste zřídili, ujistěte se, že jsou vybrané vstupně-výstupních operací disku menší než počet IOPS virtuálních počítačů. Minimální vstupně-výstupních operací disku je 100 vstupně-výstupních operací.
-- Propustnost disku: S Ultra disků SSD, propustnost limit jednoho disku je 256 KiB/s pro každý zřízené IOPS, až do maximálního počtu 2000 MB/s disku (kde MB/s = 10 ^ 6 bajtů za sekundu). Propustnost disku minimální je 1 MiB.
+- Kapacita disku: Ultra disky nabízí celou řadu různých disky o velikosti od 4 GB až 64 TiB.
+- Vstupně-výstupních operací disku: Ultra disky podporují vstupně-výstupních operací omezení 300 IOPS/GiB maximálně 160 kB IOPS na disk. K dosažení vstupně-výstupních operací, kterou jste zřídili, ujistěte se, že jsou vybrané vstupně-výstupních operací disku menší než počet IOPS virtuálních počítačů. Minimální vstupně-výstupních operací disku je 100 vstupně-výstupních operací.
+- Propustnost disku: Ultra disky limit propustnosti z jednoho disku je 256 KiB/s pro každý zřízené IOPS, až do maximálního počtu 2000 MB/s disku (kde MB/s = 10 ^ 6 bajtů za sekundu). Propustnost disku minimální je 1 MiB.
 
 Následující tabulka shrnuje různé podporované konfigurace pro různé velikosti disků:  
 
-### <a name="ultra-ssd-managed-disk-offerings"></a>Nabídky služby Ultra SSD Managed Disks
+### <a name="ultra-disks-managed-disk-offerings"></a>Ultra disky spravovaného disku nabídky
 
 |Velikost disku (GiB)  |Limity vstupně-výstupních operací  |Limit propustnosti (MB/s)  |
 |---------|---------|---------|
@@ -55,22 +55,22 @@ Následující tabulka shrnuje různé podporované konfigurace pro různé veli
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Při použití Ultra disků SSD, uplatní se následující fakturační aspekty:
+Při používání ultra disků, se použijí následující fakturační aspekty:
 
 - Spravovaná velikost disku
 - Spravovaný Disk zřízené IOPS
 - Zřízená propustnost spravovaného disku
-- Ultra poplatku za rezervaci SSD virtuálního počítače
+- Poplatek za rezervaci Ultra disku virtuálního počítače
 
 ### <a name="managed-disk-size"></a>Spravovaná velikost disku
 
-Spravované disky se účtují o velikostech virtuálních počítačů, které můžete vybrat při zřizování nového virtuálního počítače Azure. Azure mapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabídku velikosti disku. Podrobnosti o velikosti disků nabízejí najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Každý disk mapuje na podporovaná zřízená velikost disku a bude odpovídajícím způsobem se účtuje po hodinách. Například pokud zřízený 200 GB Ultra Disk SSD na úrovni a odstraní po 20 hodin se namapuje do nabídky velikost disků 256 GB a vám budeme účtovat 256 GB po dobu 20 hodin. Toto účtování byl založen na využití výpočetních hodinách bez ohledu na objem dat ve skutečnosti zapsaných na disk.
+Spravované disky se účtují o velikostech virtuálních počítačů, které můžete vybrat při zřizování nového virtuálního počítače Azure. Azure mapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabídku velikosti disku. Podrobnosti o velikosti disků nabízejí najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Každý disk mapuje na podporovaná zřízená velikost disku a bude odpovídajícím způsobem se účtuje po hodinách. Například pokud zřízené ultra disk 200 GB a odstraní po 20 hodin se namapuje do nabídky velikost disků 256 GB a vám budeme účtovat 256 GB po dobu 20 hodin. Toto účtování byl založen na využití výpočetních hodinách bez ohledu na objem dat ve skutečnosti zapsaných na disk.
 
-### <a name="managed-disk-provisioned-iops"></a>Spravovaný Disk zřízené IOPS
+### <a name="managed-disk-provisioned-iops"></a>Spravovaný disk zřízené IOPS
 
 Počet požadavků, které vaše aplikace posílá se vstupně-výstupních operací za sekundu na disky. Vstupně výstupní operace může být sekvenčního čtení nebo zápisu nebo náhodného čtení nebo zápisu. Podle velikosti disku nebo počet disků připojených k virtuálnímu počítači, je průměrný počet vstupně-výstupních operací se účtují po hodinách. Podrobnosti o disku, který nabízí vstupně-výstupních operací najdete v tabulce škálovatelnost a cíle výkonnosti výše v části.
 
-### <a name="managed-disk-provisioned-throughput"></a>Zřízená propustnost spravovaného disku
+### <a name="managed-disk-provisioned-throughput"></a>Spravovat zřízenou propustnost disku
 
 Propustnost je množství dat, které vaše aplikace odesílá do disky v zadaných intervalech, měřený v bajtech za sekundu. Pokud aplikace provádí velké vstupně výstupní operace, vyžaduje vysokou propustnost.  
 
@@ -78,20 +78,20 @@ Existuje vztah mezi propustnost a vstupně-výstupních operací, jak je znázor
 
 Proto je důležité určit optimální hodnoty vstupně-výstupních operací a propustnosti, které vaše aplikace vyžaduje. Při pokusu o optimalizaci jedné druhé také získá vliv. Doporučujeme, abyste od propustnost odpovídající velikost 16 KiB vstupně-výstupní operace a nastavení v případě potřeby větší propustnost.
 
-Podrobnosti o propustnost disku podporované na Ultra SSD najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Jako je velikost disku a vstupně-výstupních operací zřízená propustnost se fakturuje po hodinách účtujeme za MB/s, zřízené.
+Podrobnosti o propustnost disku podporované na ultra disky najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Jako je velikost disku a vstupně-výstupních operací zřízená propustnost se fakturuje po hodinách účtujeme za MB/s, zřízené.
 
-### <a name="ultra-ssd-vm-reservation-fee"></a>Ultra poplatku za rezervaci SSD virtuálního počítače
+### <a name="ultra-disk-vm-reservation-fee"></a>Poplatek za rezervaci Ultra disku virtuálního počítače
 
-Představujeme schopností ve virtuálním počítači, který označuje, že váš virtuální počítač je kompatibilní Ultra SSD. Ultra SSD kompatibilní Virtuálním počítači přidělí vyhrazenou kapacitu šířky pásma mezi výpočetní instance virtuálního počítače a blok jednotka škálování úložiště optimalizovat výkon a snižuje latenci. Na virtuální počítač výsledky pod kontrolou rezervace, která je uložena pouze tehdy, pokud jste povolili možnost Ultra SSD ve virtuálním počítači bez připojení k němu Ultra SSD disk přidáte tuto funkci. Když Ultra SSD disk je připojen k virtuálnímu počítači kompatibilní Ultra SSD, tento poplatek se neuplatní. Tento poplatek se za vCPU zřízení na virtuálním počítači.
+Představujeme schopností ve virtuálním počítači, který označuje, že váš virtuální počítač je ultra disku kompatibilní. Disk s ultra kompatibilní virtuální počítače přidělí vyhrazenou kapacitu šířky pásma mezi výpočetní instance virtuálního počítače a blok jednotka škálování úložiště optimalizovat výkon a snižuje latenci. Přidání této funkce na výsledky do virtuálního počítače rezervace poplatek, která je uložena pouze tehdy, pokud jste povolili možnost ultra disk ve virtuálním počítači bez připojení k němu ultra disku. Když ultra disk je připojený k ultra kompatibilní virtuální počítač, tento poplatek se neuplatní. Tento poplatek se za vCPU zřízení na virtuálním počítači.
 
-Odkazovat [stránce s cenami Azure Disks](https://azure.microsoft.com/pricing/details/managed-disks/) nové Ultra disky SSD cenové podrobnosti, které jsou k dispozici ve verzi limited preview.
+Odkazovat [stránce s cenami Azure Disks](https://azure.microsoft.com/pricing/details/managed-disks/) pro nové ultra disky cena podrobnosti k dispozici ve verzi limited preview.
 
-### <a name="ultra-ssd-preview-scope-and-limitations"></a>Rozsah Ultra SSD ve verzi Preview a omezení
+### <a name="ultra-disk-preview-scope-and-limitations"></a>Rozsah Ultra disku ve verzi preview a omezení
 
-Ve verzi preview, Ultra SSD disky:
+Ve verzi preview, ultra disky:
 
 - Bude zpočátku podporována v oblastech východní USA 2 v jedné zóně dostupnosti  
-- Jde použít jenom se zónami dostupnosti (skupiny dostupnosti a nasazení jeden virtuální počítač mimo zóny budou nemá schopnost připojení Ultra disku SSD)
+- Jde použít jenom se zónami dostupnosti (skupiny dostupnosti a nasazení jeden virtuální počítač mimo zóny budou nemá schopnost připojení ultra disku)
 - Jsou podporovány pouze na virtuálních počítačích ES/DS v3
 - Jsou k dispozici pouze jako datové disky a pouze velikost fyzického sektoru 4k podpoře  
 - Je možné vytvořit pouze jako prázdné disky  

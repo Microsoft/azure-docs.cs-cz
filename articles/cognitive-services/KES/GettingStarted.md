@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: c9c336b9aed06095849f33060ff6969e8b7bfcaf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881702"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309637"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
@@ -228,7 +228,7 @@ Když `kes.exe` spustíte mimo Azure, je index omezený na 10 000 objektů. Př
 
 Abyste nástroji `kes.exe` umožnili přístup k účtu Azure, [stáhněte si soubor Azure Publish Settings](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) z portálu Azure Portal. Pokud se zobrazí výzva, přihlaste se k požadovanému účtu Azure. Soubor uložte jako *AzurePublishSettings.xml* do pracovního adresáře, ze kterého spouštíte `kes.exe`.
 
-Existují dva způsoby, jak sestavit a hostovat velké indexy. První metodou je připravit schéma a datové soubory ve virtuálním počítači s Windows v Azure. Potom se spuštěním příkazu [`kes.exe build_index`](#building-index) sestaví index místně na virtuálním počítači, bez jakýchkoli omezení velikosti. Výsledný index se může při rychlém vytváření prototypů hostovat místně na virtuálním počítači pomocí příkazu [`kes.exe host_service`](#hosting-service), zase bez jakýchkoli omezení. Podrobný postup najdete v [kurzu virtuálního počítače Azure](../../../articles/virtual-machines/windows/quick-create-portal.md).
+Existují dva způsoby, jak sestavit a hostovat velké indexy. První metodou je připravit schéma a datové soubory ve virtuálním počítači s Windows v Azure. Potom spusťte `kes.exe build_index` sestavit index místně na virtuálním počítači bez jakýchkoli omezení velikosti. Výsledný index je možné hostovat místně na virtuálním počítači s použitím `kes.exe host_service` umožňující rychlé vytváření prototypů, znovu bez jakýchkoli omezení. Podrobný postup najdete v [kurzu virtuálního počítače Azure](../../../articles/virtual-machines/windows/quick-create-portal.md).
 
 Druhou metodou je provést vzdálené sestavení v Azure pomocí příkazu [`kes.exe build_index`](CommandLine.md#build_index-command) s parametrem `--remote`. Ten určuje velikost virtuálního počítače Azure. Když je zadaný parametr `--remote`, příkaz vytvoří dočasný virtuální počítač Azure této velikosti. Pak na virtuálním počítači sestaví index, nahraje index do cílového úložiště objektů blob a při dokončení odstraní virtuální počítač. U vašeho předplatného Azure budou účtovány náklady na virtuální počítač během sestavování indexu.
 

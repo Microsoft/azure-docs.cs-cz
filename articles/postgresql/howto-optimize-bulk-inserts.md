@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: fba109e04369c05f98e863b7dd0fa3d51f40d0ad
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810234"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310287"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optimalizujte operace hromadného vložení a používat přechodné data ve službě Azure Database pro PostgreSQL server 
 Tento článek popisuje, jak můžete optimalizovat operace hromadného vložení a přechodné data ve službě Azure Database použít pro PostgreSQL server.
@@ -25,9 +25,9 @@ Vkládání do prostředku neprotokolovaného tabulky této PostgreSQL vloží b
 
 K vytvoření neprotokolovaného tabulky pomocí následujících možností:
 - Vytvořit novou tabulku neprotokolovaného pomocí syntaxe `CREATE UNLOGGED TABLE <tableName>`.
-- Převést existující přihlášení tabulky na tabulku neprotokolovaného pomocí syntaxe `ALTER <tableName> SET UNLOGGED`.  
+- Převést existující přihlášení tabulky na tabulku neprotokolovaného pomocí syntaxe `ALTER TABLE <tableName> SET UNLOGGED`.  
 
-Chcete-li se vrátit do, použijte syntaxi `ALTER <tableName> SET LOGGED`.
+Chcete-li se vrátit do, použijte syntaxi `ALTER TABLE <tableName> SET LOGGED`.
 
 ## <a name="unlogged-table-tradeoff"></a>Kompromis neprotokolovaného tabulky
 Neprotokolovaného tabulky nejsou bezpečné při selhání. Neprotokolovaného tabulky automaticky zkrácen po zhroucení nebo v souladu vypnuly. Obsah neprotokolovaného tabulky také se nereplikují do pohotovostního servery. Všechny indexy vytvořené na neprotokolovaného tabulky jsou také automaticky neprotokolovaného. Po vložení operace dokončí, převeďte tabulku protokolování tak, aby byla odolná insert.

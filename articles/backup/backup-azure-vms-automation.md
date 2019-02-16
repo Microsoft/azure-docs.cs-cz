@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa53a7e598b42e93e86eb059c36ff89f38bb7093
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b9c3dadb328bb49f3cb1897bb64390ed75620b3d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300587"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311881"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Použití Powershellu k zálohování a obnovení virtuálních počítačů
 
@@ -79,7 +79,7 @@ Tyto úlohy je možné automatizovat pomocí prostředí PowerShell:
 
 * [Vytvoření trezoru služby Recovery Services](backup-azure-vms-automation.md#create-a-recovery-services-vault)
 * [Zálohování virtuálních počítačů Azure](backup-azure-vms-automation.md#back-up-azure-vms)
-* [Aktivace úlohy zálohování](backup-azure-vms-automation.md#trigger-a-backup-job)
+* [Aktivace úlohy zálohování](backup-azure-vms-automation.md#trigger-a-backup)
 * [Monitorování úlohy zálohování](backup-azure-vms-automation.md#monitoring-a-backup-job)
 * [Obnovení virtuálního počítače Azure](backup-azure-vms-automation.md#restore-an-azure-vm)
 

@@ -16,12 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: manayar
-ms.openlocfilehash: 23c04f85c994a8b300ffec23b4660d3d431ef69b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: 5cd9593bba1e97f52bfa37467920959b1ef0f698
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740415"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329601"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co jsou škálovací sady virtuálních počítačů?
 Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat s ohledem na požadavky nebo definovaný plán. Škálovací sady zajišťují vysokou dostupnost aplikací a umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů. S využitím škálovacích sad virtuálních počítačů můžete sestavovat rozsáhlé služby pro oblasti, jako jsou výpočty, velké objemy dat a úlohy kontejneru.
@@ -47,7 +47,7 @@ Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle dis
 
 - **Práce ve velkém měřítku**
     - Škálovací sady podporují až 1 000 instancí virtuálních počítačů. Pokud vytváříte a nahráváte vlastní image virtuálních počítačů, platí omezení na 300 instancí virtuálních počítačů.
-    - K zajištění nejlepšího výkonu pro produkční úlohy použijte službu [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) nebo [Premium Storage](../virtual-machines/windows/premium-storage.md).
+    - Pro zajištění nejlepšího výkonu pro úlohy v produkčním prostředí, použijte [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Rozdíly mezi virtuálními počítači a škálovacími sadami
@@ -63,7 +63,7 @@ Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle dis
 Za použití škálovacích sad se neúčtují žádné další poplatky. Platíte pouze za základní výpočetní prostředky, jako jsou instance virtuálních počítačů, nástroj pro vyrovnávání zatížení nebo spravované diskové úložiště. Za funkce správy a automatizace, jako jsou automatické škálování a redundance, se neúčtují žádné další poplatky nad rámec použití virtuálních počítačů.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Začněte vytvořením své první škálovací sady virtuálních počítačů na webu Azure Portal.
 
 > [!div class="nextstepaction"]

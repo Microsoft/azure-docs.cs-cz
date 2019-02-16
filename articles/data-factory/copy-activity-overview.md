@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: e7d08ec0d25e7666acb510c4bae5533975b21039
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296539"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311126"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 06e0509f05352a023651d7121aa89e18e375ef32
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: feebafdb87ec9f7b913d3c29340d378b20caa3ab
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428321"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308804"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Azure Resource Manageru 
 > [!div class="op_single_selector"]
@@ -295,4 +295,4 @@ Syntaxi JSON a vlastnosti, které chcete použít šablonu najdete v tématu [re
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
-[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template
+[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md

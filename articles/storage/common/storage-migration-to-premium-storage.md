@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 36889fc6cb8dbec77136dc8cea08416e51837243
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bb88bf7ddaa93336c812b1ddc9794dad8daa64b7
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564829"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330575"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
 
@@ -32,7 +32,7 @@ Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou late
 Můžete migrovat virtuální počítače z jiných platforem na Azure Premium Storage, nebo migrovat stávající virtuální počítače Azure ze služby Storage úrovně Standard na Premium Storage. Tento průvodce popisuje kroky pro oba dva scénáře. Postupujte podle kroků uvedených v příslušné části v závislosti na vašem scénáři.
 
 > [!NOTE]
-> Přehled funkcí a cenách služby Storage úrovně Premium ve službě Premium Storage najdete: [Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md). Doporučujeme migrovat všechny disku virtuálního počítače vyžadující vysokou vstupně-výstupních operací na Azure Premium Storage pro zajištění nejlepšího výkonu pro vaši aplikaci. Pokud na disku nevyžaduje vysoké IOPS, můžete omezit náklady udržováním ve standardním úložišti, který ukládá data na disku virtuálního počítače na jednotky pevných disků (HDD) namísto jednotky SSD.
+> Najdete přehled funkcí a ceny premium SSD: [Vyberte typ disku pro virtuální počítače IaaS](../../virtual-machines/windows/disks-types.md#premium-ssd). Doporučujeme migrovat všechny disku virtuálního počítače vyžadující vysokou vstupně-výstupních operací na Azure Premium Storage pro zajištění nejlepšího výkonu pro vaši aplikaci. Pokud na disku nevyžaduje vysoké IOPS, můžete omezit náklady udržováním ve standardním úložišti, který ukládá data na disku virtuálního počítače na jednotky pevných disků (HDD) namísto jednotky SSD.
 >
 
 Dokončení procesu migrace v celém rozsahu může vyžadovat další akce před a po provedení kroků v tomto průvodci k dispozici. Mezi příklady patří konfigurace virtuálních sítí nebo koncovými body a provádění změn kódu v rámci vlastní aplikace může být nutné výpadkům ve vaší aplikaci. Tyto akce jsou jedinečné pro jednotlivé aplikace a byste měli provést spolu s kroky popsané v této příručce k úplné přechodu na Premium Storage jako bezproblémové co nejvíc.
@@ -69,7 +69,7 @@ V závislosti na velikosti pracovní zátěže určí, jestli další datové di
 |:--- |:--- |
 | Kapacita disku: 35TB<br />Kapacita snímku: 10 TB |Až na 50 gigabity za sekundu pro příchozí a odchozí |
 
-Další informace o specifikacích Premium Storage, podívejte se na [škálovatelnost a výkonnostní cíle při použití služby Premium Storage](../../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets).
+Další informace o specifikacích Premium Storage, podívejte se na [škálovatelnost a výkonnostní cíle Azure Storage](storage-scalability-targets.md#premium-storage-account-scale-limits).
 
 #### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti na disku
 Ve výchozím nastavení, disk zásady ukládání do mezipaměti je *jen pro čtení* pro všechny úrovně Premium datové disky, a *čtení a zápis* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro zajištění optimálního výkonu pro vaše aplikace IOs. Náročné na zápis nebo jen pro zápis datové disky (jako jsou například soubory protokolu serveru SQL Server) Zakázání používání mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace. Nastavení mezipaměti pro existující datové disky můžete aktualizovat pomocí [webu Azure Portal](https://portal.azure.com) nebo *- HostCaching* parametr *Set-AzureDataDisk* rutiny.
@@ -748,7 +748,7 @@ Aktuální konfigurace virtuálního počítače lze přizpůsobit speciálně p
 2. Přihlaste se k virtuálnímu počítači a kopírování dat z aktuálního svazku na nový disk, který se mapuje na tomto svazku. To lze proveďte pro všechny aktuální svazky, které je potřeba namapovat na nový disk.
 3. V dalším kroku změnit nastavení aplikace pro přepnutí na jiné disky a odpojení starých svazků.
 
-Ladění aplikací pro zajištění lepšího výkonu disku, najdete [optimalizace výkonu aplikace](../../virtual-machines/windows/premium-storage-performance.md#optimizing-application-performance).
+Ladění aplikací pro lepší výkon disků, naleznete v části Optimalizace výkonu aplikace z našich [návrh pro vysoký výkon](../../virtual-machines/windows/premium-storage-performance.md) článku.
 
 ### <a name="application-migrations"></a>Migrace aplikací
 Databáze a další komplexní aplikace může vyžadovat speciální kroky, podle definice poskytovatele aplikací pro migraci. Najdete dokumentaci k příslušné aplikace. Například Obvykle je možné migrovat databází pomocí zálohování a obnovení.
@@ -765,7 +765,7 @@ Viz také následující prostředky pro další informace o Azure Storage a Azu
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md)
+* [Vyberte typ disku pro virtuální počítače IaaS](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

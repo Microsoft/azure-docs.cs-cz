@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359931"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328548"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure
 
@@ -180,7 +180,7 @@ Tyto požadavky můžete pokračovat s vytvářením clusteru převzetí služeb
    | SQL Server | 1433 | Normální port pro výchozí instance systému SQL Server. Pokud jste použili image z galerie, se automaticky otevře tento port.
    | Sonda stavu | 59999 | Některé otevřete TCP port. V pozdějším kroku, nakonfigurujte nástroj pro vyrovnávání zatížení [sondu stavu](#probe) a cluster používat tento port.  
 
-1. Přidání úložiště k virtuálnímu počítači. Podrobné informace najdete v tématu [přidat úložiště](../premium-storage.md).
+1. Přidání úložiště k virtuálnímu počítači. Podrobné informace najdete v tématu [přidat úložiště](../disks-types.md).
 
    Oba virtuální počítače, potřebujete alespoň dva datové disky.
 
@@ -188,7 +188,7 @@ Tyto požadavky můžete pokračovat s vytvářením clusteru převzetí služeb
       >[!NOTE]
       >Pokud připojíte disky formátované systémem souborů NTFS, lze povolit pouze S2D s není žádná kontrola nároku disku.  
 
-   Připojení minimálně dva Storage úrovně Premium (SSD disků) do všech virtuálních počítačů. Doporučujeme aspoň P30 (1 TB) disky.
+   Připojení minimálně dva SSD disků premium ke všem virtuálním počítačům. Doporučujeme aspoň P30 (1 TB) disky.
 
    Ukládání do mezipaměti hostitele sady **jen pro čtení**.
 

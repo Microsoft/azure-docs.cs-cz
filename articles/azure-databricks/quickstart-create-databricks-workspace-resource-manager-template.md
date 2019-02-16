@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
-ms.openlocfilehash: 88538aa9528059458f6e73485f4839693caa943b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 179bb4586ce7d6b306decfcf4d312d541dc9232e
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054484"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330473"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí šablony Azure Resource Manageru
 
@@ -51,7 +51,7 @@ V této části pomocí šablony Azure Resource Manageru vytvoříte pracovní p
 
 4. Vytvoření pracovního prostoru trvá několik minut. Během vytváření pracovního prostoru se na pravé straně portálu zobrazí dlaždice **Odesílání nasazení pro Azure Databricks**. Možná se budete muset posunout do pravé části řídicího panelu, aby se dlaždice zobrazila. V horní části obrazovky se také zobrazí indikátor průběhu. Průběh můžete sledovat v obou oblastech.
 
-   ![Dlaždice nasazení Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
+   ![Dlaždice nasazení Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
@@ -59,11 +59,11 @@ V této části pomocí šablony Azure Resource Manageru vytvoříte pracovní p
 
 2. Budete přesměrováni na portál Azure Databricks. Na portálu klikněte na **Cluster**.
 
-   ![Databricks v Azure](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks v Azure")
+   ![Databricks v Azure](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Databricks v Azure")
 
 3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
 
-   ![Vytvoření clusteru Databricks Spark v Azure](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
+   ![Vytvoření clusteru Databricks Spark v Azure](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
 
    Přijměte všechny výchozí hodnoty kromě následujících:
 
@@ -87,11 +87,11 @@ Provedením následujících úloh vytvořte ve službě Databricks poznámkový
 
 1. V levém podokně klikněte na **Workspace** (Pracovní prostor). V rozevíracím seznamu **Workspace** (Pracovní prostor), klikněte na **Create** (Vytvořit) a potom klikněte na **Notebook** (Poznámkový blok).
 
-   ![Vytvoření poznámkového bloku v Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Vytvoření poznámkového bloku v Databricks")
+   ![Vytvoření poznámkového bloku v Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Vytvoření poznámkového bloku v Databricks")
 
 2. V dialogovém okně **Create Notebook** (Vytvořit poznámkový blok) zadejte název, vyberte jazyk **Scala** a vyberte cluster Spark, který jste předtím vytvořili.
 
-   ![Vytvoření poznámkového bloku v Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Vytvoření poznámkového bloku v Databricks")
+   ![Vytvoření poznámkového bloku v Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Vytvoření poznámkového bloku v Databricks")
 
    Klikněte na možnost **Vytvořit**.
 
@@ -145,17 +145,17 @@ Provedením následujících úloh vytvořte ve službě Databricks poznámkový
 
 6. Zobrazí se tabulkový výstup jako na následujícím snímku obrazovky (zobrazí se jenom některé sloupce):
 
-   ![Ukázková data JSON](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Ukázková data JSON")
+   ![Ukázková data JSON](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "Ukázková data JSON")
 
    Vedle dalších podrobných informací ukázková data zachycují pohlaví posluchačů určité rozhlasové (název sloupce **pohlaví**) a zda je jejich předplatného bezplatné i placené (název sloupce **úroveň**).
 
 7. Teď vytvoříte vizuální reprezentaci těchto dat, která bude znázorňovat, kolik uživatelů obou pohlaví má bezplatné účty a kolik je platících předplatitelů. Ve spodní části tabulkového výstupu klikněte na ikonu **Bar chart** (Pruhový graf) ikonu a potom na **Plot Options** (Možnosti grafu).
 
-   ![Vytvoření pruhového grafu](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Vytvoření pruhového grafu")
+   ![Vytvoření pruhového grafu](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "Vytvoření pruhového grafu")
 
 8. V části **Customize Plot** (Přizpůsobit graf) přetáhněte hodnoty, jak ukazuje snímek obrazovky.
 
-   ![Přizpůsobení pruhového grafu](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Přizpůsobení pruhového grafu")
+   ![Přizpůsobení pruhového grafu](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "Přizpůsobení pruhového grafu")
 
    * V poli **Keys** (Klíče) nastavte hodnotu **gender** (Pohlaví).
    * V poli **Seskupení sérií** nastavte hodnotu **level** (Úroveň).
@@ -166,13 +166,13 @@ Provedením následujících úloh vytvořte ve službě Databricks poznámkový
 
 9. Výstup bude obsahovat vizuální reprezentaci znázorněnou na následujícím snímku obrazovky:
 
-   ![Přizpůsobení pruhového grafu](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "Přizpůsobení pruhového grafu")
+   ![Přizpůsobení pruhového grafu](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "Přizpůsobení pruhového grafu")
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Po dokončení tohoto článku můžete cluster ukončit. Pokud to chcete udělat, v levém podokně v pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery). U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
 
-![Zastavení clusteru Databricks](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
+![Zastavení clusteru Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
 Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
 

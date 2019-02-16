@@ -16,21 +16,17 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4aefc8c033383125a803eb0c8a38e2f3de119540
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e9c3e10f9b48bfe2efa5396c9e64d3d87be3d826
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467906"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330643"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrace virtuálních počítačů Azure na Managed Disks v Azure
 
 Azure Managed Disks zjednodušuje správu úložiště tím, že si nemusíte samostatně spravovat účty úložiště.  Můžete také migrovat vaše stávající virtuální počítače Azure do služby Managed Disks, abyste využili výhod vyšší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, že disky různých virtuálních počítačů ve skupině dostupnosti je dostatečně od sebe navzájem oddělené, aby jediný bod selhání. Automaticky umístí disky různých virtuálních počítačů ve skupině dostupnosti v různých Uložišť jednotek škálování (razítka) který omezuje dopad selhání škálovací jednotky jednoho úložiště se situace způsobena vlivem hardwaru a softwaru selhání.
-Podle svých potřeb, můžete vybrat ze dvou typů úložišť:
-
-- [Managed Disks úrovně Premium](premium-storage.md) jsou úložná média, která nabízí vysoký výkon, podporu disků s nízkou latencí pro virtuální počítače spuštěné můžu intenzivních vstupně-výstupních operací založená na plné stav jednotky SSD (Solid-State Drive). Pomocí migrace na Premium Managed Disks můžete využít výhod rychlost a výkon těchto disků.
-
-- [Standard Managed Disks](standard-storage.md) používat jednotku pevného disku (HDD) na základě úložných médií a jsou nejvhodnější pro vývoj/testování a jiné úlohy s řídkým přístupem úlohy, které jsou méně citlivé na variabilitu výkonu.
+Podle svých potřeb, můžete vybrat z čtyři typy úložišť. Další informace o typech disků k dispozici, najdete v našem článku [vyberte typ disku](disks-types.md)
 
 Můžete migrovat do Managed Disks v následujících scénářích:
 

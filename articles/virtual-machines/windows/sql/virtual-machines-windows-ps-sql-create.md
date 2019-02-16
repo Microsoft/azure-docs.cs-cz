@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c37347928e75986fa8aee0d3d0a4db2667312f56
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3feb691f1f708452b6560dbe92b77ed0417ffb82
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984371"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329400"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak zřídit virtuální počítače SQL serveru pomocí Azure Powershellu
 
@@ -57,7 +57,7 @@ $ResourceGroupName = "sqlvm2"
 ### <a name="storage-properties"></a>Vlastnosti úložiště
 Zadejte účet úložiště a typ úložiště pro virtuální počítač.
 
-Upravte a pak spusťte následující rutinu inicializace těchto proměnných. Doporučujeme používat [Premium Storage](../premium-storage.md) pro produkční úlohy.
+Upravte a pak spusťte následující rutinu inicializace těchto proměnných. Doporučujeme používat [SSD disků premium](../disks-types.md#premium-ssd) pro produkční úlohy.
 
 ```PowerShell
 $StorageName = $ResourceGroupName + "storage"

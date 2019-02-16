@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: e1edf0ed0c9efcb9f0c81718621706550bf3c4d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c343dfa3c0eac4aeabaa9244c6675b235fc95552
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011999"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311712"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasadit více než jednu instanci zdroje nebo vlastnosti v šablonách Azure Resource Manageru
 
@@ -33,26 +33,26 @@ Prostředek pro vytvoření několikrát má následující formát:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "apiVersion": "2016-01-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": 3
-            }
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "apiVersion": "2016-01-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": 3
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -85,22 +85,22 @@ Operace kopírování je užitečné při práci s poli, protože můžete itero
 ```json
 "parameters": { 
   "org": { 
-     "type": "array", 
-     "defaultValue": [ 
-         "contoso", 
-         "fabrikam", 
-         "coho" 
-      ] 
+    "type": "array", 
+    "defaultValue": [ 
+      "contoso", 
+      "fabrikam", 
+      "coho" 
+    ] 
   }
 }, 
 "resources": [ 
   { 
-      "name": "[concat('storage', parameters('org')[copyIndex()])]", 
-      "copy": { 
-         "name": "storagecopy", 
-         "count": "[length(parameters('org'))]" 
-      }, 
-      ...
+    "name": "[concat('storage', parameters('org')[copyIndex()])]", 
+    "copy": { 
+      "name": "storagecopy", 
+      "count": "[length(parameters('org'))]" 
+    }, 
+    ...
   } 
 ]
 ```
@@ -119,30 +119,30 @@ Například účty úložiště, dva sériově nasazení najednou, použijte:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "apiVersion": "2016-01-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": 4,
-                "mode": "serial",
-                "batchSize": 2
-            }
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "apiVersion": "2016-01-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": 4,
+        "mode": "serial",
+        "batchSize": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
-``` 
+```
 
 Vlastnost mode přijímá také **paralelní**, což je výchozí hodnota.
 
@@ -164,13 +164,13 @@ Následující příklad ukazuje, jak použít `copy` dataDisks vlastnost na vir
   "properties": {
     "storageProfile": {
       "copy": [{
-          "name": "dataDisks",
-          "count": 3,
-          "input": {
-              "lun": "[copyIndex('dataDisks')]",
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          }
+        "name": "dataDisks",
+        "count": 3,
+        "input": {
+          "lun": "[copyIndex('dataDisks')]",
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        }
       }],
       ...
 ```
@@ -187,22 +187,22 @@ Resource Manager rozšiřuje `copy` pole během nasazení. Název pole bude náz
   "properties": {
     "storageProfile": {
       "dataDisks": [
-          {
-              "lun": 0,
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          },
-          {
-              "lun": 1,
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          },
-          {
-              "lun": 2,
-              "createOption": "Empty",
-              "diskSizeGB": "1023"
-          }
-      }],
+        {
+          "lun": 0,
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        },
+        {
+          "lun": 1,
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        },
+        {
+          "lun": 2,
+          "createOption": "Empty",
+          "diskSizeGB": "1023"
+        }
+      ],
       ...
 ```
 
@@ -210,27 +210,27 @@ V elementu copy je pole, takže můžete zadat více než jednu vlastnost pro pr
 
 ```json
 {
-    "name": "string",
-    "type": "Microsoft.Network/loadBalancers",
-    "apiVersion": "2017-10-01",
-    "properties": {
-        "copy": [
-          {
-              "name": "loadBalancingRules",
-              "count": "[length(parameters('loadBalancingRules'))]",
-              "input": {
-                ...
-              }
-          },
-          {
-              "name": "probes",
-              "count": "[length(parameters('loadBalancingRules'))]",
-              "input": {
-                ...
-              }
-          }
-        ]
-    }
+  "name": "string",
+  "type": "Microsoft.Network/loadBalancers",
+  "apiVersion": "2017-10-01",
+  "properties": {
+    "copy": [
+      {
+        "name": "loadBalancingRules",
+        "count": "[length(parameters('loadBalancingRules'))]",
+        "input": {
+          ...
+        }
+      },
+      {
+        "name": "probes",
+        "count": "[length(parameters('loadBalancingRules'))]",
+        "input": {
+          ...
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -238,39 +238,41 @@ Zdroj a vlastnost iterace můžete použít společně. Odkaz na vlastnost itera
 
 ```json
 {
-    "type": "Microsoft.Network/virtualNetworks",
-    "name": "[concat(parameters('vnetname'), copyIndex())]",
-    "apiVersion": "2018-04-01",
-    "copy":{
-        "count": 2,
-        "name": "vnetloop"
+  "type": "Microsoft.Network/virtualNetworks",
+  "name": "[concat(parameters('vnetname'), copyIndex())]",
+  "apiVersion": "2018-04-01",
+  "copy":{
+    "count": 2,
+    "name": "vnetloop"
+  },
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "addressSpace": {
+      "addressPrefixes": [
+        "[parameters('addressPrefix')]"
+      ]
     },
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "addressSpace": {
-            "addressPrefixes": [
-                "[parameters('addressPrefix')]"
-            ]
-        },
-        "copy": [
-            {
-                "name": "subnets",
-                "count": 2,
-                "input": {
-                    "name": "[concat('subnet-', copyIndex('subnets'))]",
-                    "properties": {
-                        "addressPrefix": "[variables('subnetAddressPrefix')[copyIndex('subnets')]]"
-                    }
-                }
-            }
-        ]
-    }
+    "copy": [
+      {
+        "name": "subnets",
+        "count": 2,
+        "input": {
+          "name": "[concat('subnet-', copyIndex('subnets'))]",
+          "properties": {
+            "addressPrefix": "[variables('subnetAddressPrefix')[copyIndex('subnets')]]"
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
 ## <a name="variable-iteration"></a>Proměnné iterace
 
-Chcete-li vytvořit více instancí proměnné, použijte `copy` element v sekci proměnných. Můžete vytvořit více instancí objektů s související hodnoty a pak přiřadit tyto hodnoty instance prostředku. Kopírování můžete vytvořit objekt s vlastnost typu pole nebo pole. Oba přístupy jsou uvedeny v následujícím příkladu:
+Chcete-li vytvořit více instancí proměnné, použijte `copy` vlastnost v sekci proměnných. Vytvoří pole prvků zkonstruovat z hodnoty v `input` vlastnost. Můžete použít `copy` vlastnosti v rámci proměnné nebo na nejvyšší úrovni sekci proměnných. Při použití `copyIndex` uvnitř proměnné iterace, je nutné zadat název iterace.
+
+Následující příklad ukazuje několik způsobů vytvoření proměnné pole s prvky dynamicky vytvořený. Ukazuje, jak používat kopii uvnitř proměnné k vytvoření polí objektů a řetězce. Také ukazuje, jak používat kopii na nejvyšší úrovni k vytvoření polí objektů, řetězce a celá čísla.
 
 ```json
 {
@@ -288,18 +290,33 @@ Chcete-li vytvořit více instancí proměnné, použijte `copy` element v sekci
             "diskSizeGB": "1",
             "diskIndex": "[copyIndex('disks')]"
           }
+        },
+        {
+          "name": "diskNames",
+          "count": 5,
+          "input": "[concat('myDataDisk', copyIndex('diskNames', 1))]"
         }
       ]
     },
     "copy": [
       {
-        "name": "disks-top-level-array",
+        "name": "top-level-object-array",
         "count": 5,
         "input": {
-          "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+          "name": "[concat('myDataDisk', copyIndex('top-level-object-array', 1))]",
           "diskSizeGB": "1",
-          "diskIndex": "[copyIndex('disks-top-level-array')]"
+          "diskIndex": "[copyIndex('top-level-object-array')]"
         }
+      },
+      {
+        "name": "top-level-string-array",
+        "count": 5,
+        "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+      },
+      {
+        "name": "top-level-integer-array",
+        "count": 5,
+        "input": "[copyIndex('top-level-integer-array')]"
       }
     ]
   },
@@ -313,68 +330,56 @@ Chcete-li vytvořit více instancí proměnné, použijte `copy` element v sekci
       "value": "[variables('disk-array-on-object').disks]",
       "type" : "array"
     },
-    "exampleArray": {
-      "value": "[variables('disks-top-level-array')]",
+    "exampleObjectArray": {
+      "value": "[variables('top-level-object-array')]",
+      "type" : "array"
+    },
+    "exampleStringArray": {
+      "value": "[variables('top-level-string-array')]",
+      "type" : "array"
+    },
+    "exampleIntegerArray": {
+      "value": "[variables('top-level-integer-array')]",
       "type" : "array"
     }
   }
 }
 ```
 
-Kterýkoliv přístup v elementu copy se pole umožňující vám zadat více než jednu proměnnou. Přidání objektu pro každou proměnnou vytvořit.
-
-```json
-"copy": [
-  {
-    "name": "first-variable",
-    "count": 5,
-    "input": {
-      "demoProperty": "[concat('myProperty', copyIndex('first-variable'))]",
-    }
-  },
-  {
-    "name": "second-variable",
-    "count": 3,
-    "input": {
-      "demoProperty": "[concat('myProperty', copyIndex('second-variable'))]",
-    }
-  },
-]
-```
-
 ## <a name="depend-on-resources-in-a-loop"></a>Závisí na prostředky ve smyčce
+
 Určíte, že je prostředek nasazený pomocí po jiný prostředek `dependsOn` elementu. K nasazení na prostředek, který závisí na kolekci prostředků ve smyčce, zadejte název kopií smyčky v elementu dependsOn. Následující příklad ukazuje, jak nasadit 3 účty úložiště před nasazením virtuálního počítače. Kompletní definici virtuálního počítače se nezobrazí. Všimněte si, že v elementu copy má název nastavený `storagecopy` a elementu dependsOn pro virtuální počítače je také nastavena na `storagecopy`.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "resources": [
-        {
-            "apiVersion": "2016-01-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": 3
-            }
-        },
-        {
-            "apiVersion": "2015-06-15", 
-            "type": "Microsoft.Compute/virtualMachines", 
-            "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
-            "dependsOn": ["storagecopy"],
-            ...
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "resources": [
+    {
+      "apiVersion": "2016-01-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": 3
+      }
+    },
+    {
+      "apiVersion": "2015-06-15", 
+      "type": "Microsoft.Compute/virtualMachines", 
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+      "dependsOn": ["storagecopy"],
+      ...
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -388,19 +393,19 @@ Předpokládejme například, že obvykle definujete datovou sadu jako podříze
 ```json
 "resources": [
 {
-    "type": "Microsoft.DataFactory/datafactories",
-    "name": "exampleDataFactory",
-    ...
-    "resources": [
+  "type": "Microsoft.DataFactory/datafactories",
+  "name": "exampleDataFactory",
+  ...
+  "resources": [
     {
-        "type": "datasets",
-        "name": "exampleDataSet",
-        "dependsOn": [
-            "exampleDataFactory"
-        ],
-        ...
+      "type": "datasets",
+      "name": "exampleDataSet",
+      "dependsOn": [
+        "exampleDataFactory"
+      ],
+      ...
     }
-}]
+  ]
 ```
 
 Pokud chcete vytvořit více než jedné datové sady, přesuňte ho mimo datovou továrnou. Datová sada musí být na stejné úrovni jako objekt pro vytváření dat, ale je stále podřízený prostředek služby data factory. Zachováte vztah mezi datovou sadu a data factory prostřednictvím typ a název vlastnosti. Vzhledem k tomu, že již nelze odvodit z jeho pozice v šabloně, je nutné zadat plně kvalifikovaný typ ve formátu: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
@@ -412,21 +417,21 @@ Následující příklad ukazuje implementaci:
 ```json
 "resources": [
 {
-    "type": "Microsoft.DataFactory/datafactories",
-    "name": "exampleDataFactory",
-    ...
+  "type": "Microsoft.DataFactory/datafactories",
+  "name": "exampleDataFactory",
+  ...
 },
 {
-    "type": "Microsoft.DataFactory/datafactories/datasets",
-    "name": "[concat('exampleDataFactory', '/', 'exampleDataSet', copyIndex())]",
-    "dependsOn": [
-        "exampleDataFactory"
-    ],
-    "copy": { 
-        "name": "datasetcopy", 
-        "count": "3" 
-    } 
-    ...
+  "type": "Microsoft.DataFactory/datafactories/datasets",
+  "name": "[concat('exampleDataFactory', '/', 'exampleDataSet', copyIndex())]",
+  "dependsOn": [
+    "exampleDataFactory"
+  ],
+  "copy": {
+    "name": "datasetcopy",
+    "count": "3"
+  },
+  ...
 }]
 ```
 

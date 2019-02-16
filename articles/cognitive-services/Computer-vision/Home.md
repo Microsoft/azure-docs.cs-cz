@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/22/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4322b118268ee88235190f5672585d17ea365495
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ae421ac3f87a16fc6fd2e5f3e89c13fcae50dbf8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872639"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311626"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
-Služba Azure pro počítačové zpracování obrazu poskytuje vývojářům přístup ke složitým algoritmům tohoto zpracování obrázků a vracející informace. Když chcete analyzovat obrázek, můžete ho nahrát nebo zadat jeho adresu URL. Algoritmy pro zpracování obrázků můžete analyzovat obsah několika různými způsoby v závislosti na vizuální funkce, které vás zajímají. Pro počítačové zpracování obrazu můžete například zjistit, zda bitová kopie obsahuje obsah pro dospělé nebo pikantní nebo ho můžete vyhledat všechny lidské tváře v obrázku.
+Služba Azure pro počítačové zpracování obrazu poskytuje vývojářům přístup ke složitým algoritmům, zpracování obrázků, jež vrací informace. Když chcete analyzovat obrázek, můžete ho nahrát nebo zadat jeho adresu URL. Algoritmy pro zpracování obrázků můžete analyzovat obsah několika různými způsoby v závislosti na vizuální funkce, které vás zajímají. Pro počítačové zpracování obrazu můžete například zjistit, zda bitová kopie obsahuje obsah pro dospělé nebo pikantní nebo ho můžete vyhledat všechny lidské tváře v obrázku.
 
 Počítačové zpracování obrazu ve vaší aplikaci můžete použít buď pomocí nativní sadou SDK nebo přímo vyvoláním rozhraní REST API. Tato stránka široce popisuje, co můžete dělat s pro počítačové zpracování obrazu.
 
