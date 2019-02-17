@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 36902edd7b2df472960d19b8ef9a4ebd4cdfe695
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 937ac1d892cdea849d7e5a89c8e69c6b069f2efd
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906676"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333891"
 ---
 Tento článek obsahuje informace o velikostech virtuálních počítačů předchozí generace. Tyto velikosti je stále možné, ale nejsou k dispozici novější generace.
 
@@ -22,11 +22,11 @@ Tento článek obsahuje informace o velikostech virtuálních počítačů před
 
 ACU: 160
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1 |1 |3,5 |7 |4 |4 000 / 32 (43) |3 200 / 32 |2 / 500 |
 | Standard_DS2 |2 |7 |14 |8 |8 000 / 64 (86) |6 400 / 64 |2 / 1 000 |
@@ -39,18 +39,18 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 
 ACU: 160 <sup>1</sup>
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11 |2 |14 |28 |8 |8 000 / 64 (72) |6 400 / 64 |2 / 1 000 |
 | Standard_DS12 |4 |28 |56 |16 |16 000 / 128 (144) |12 800 / 128 |4 / 2 000 |
 | Standard_DS13 |8 |56 |112 |32 |32 000 / 256 (288) |25 600 / 256 |8 / 4 000 |
 | Standard_DS14 |16 |112 |224 |64 |64 000 / 512 (576) |51 200 / 512 |8 / 8000 |
 
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) s DS-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) s DS-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).
 
 
 
@@ -58,13 +58,13 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 
 ACU: 160
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
-| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3,5         | 50             | 3000 / 46 / 23                                           | 4 / 4×500                         | 2 / 500                 |
+| Standard_D1  | 1         | 3,5         | 50             | 3000 / 46 / 23                                           | 4 / 4×500                         | 2 / 500                 |
 | Standard_D2  | 2         | 7           | 100            | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 000                     |
 | Standard_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 2 000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 4 000                     |
@@ -75,11 +75,11 @@ Premium Storage ukládání do mezipaměti: Není podporováno
 
 ACU: 160
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
-| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 000                     |
 | Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 2 000                     |
@@ -92,9 +92,9 @@ Premium Storage ukládání do mezipaměti: Není podporováno
 
 ACU: 225
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
 Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní výkon*. Hardware pro hostování těchto velikostí je navržený a optimalizovaný pro úlohy náročné na výpočty a síťový provoz, včetně clusterovaného vysokovýkonného výpočetního prostředí (HPC), například pro modelování a simulace. Řady A8-A11-series používají Intel Xeon E5-2670 @ 2,6 GHz a H-series používá Intel Xeon E5-2667 v3 @ 3,2 GHz.  Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -111,11 +111,11 @@ Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní
 
 ## <a name="a-series"></a>A-Series
 
-ACU: 50–100
+ACU: 50-100
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (HDD): GiB | Max. datových disků | Maximální propustnost datového disku: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s)  |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -143,9 +143,9 @@ V klasickém modelu nasazení se některé názvy virtuálních počítačů s p
 
 ## <a name="basic-a"></a>Basic A
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
 Velikosti úrovně Basic jsou primárně určeny pro úlohy související s vývojem a další aplikace, pro které se nevyžaduje vyrovnávání zatížení, automatické škálování nebo používání virtuálních počítačů s vysokými nároky na paměť.
 

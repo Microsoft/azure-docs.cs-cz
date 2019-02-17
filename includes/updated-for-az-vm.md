@@ -2,19 +2,16 @@
 author: cynthn
 ms.author: cynthn
 manager: jeconnoc
-ms.date: 02/04/2018
+ms.date: 02/15/2018
 ms.topic: include
-ms.openlocfilehash: 052bd610fd061504b8a4695fbb26df7ca062fbe8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 731cb69bd719800fcf9bd0e611d538d602f48fc2
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984949"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333947"
 ---
 > [!NOTE]
 >
-> Tento článek byl aktualizován na použití nové [modul Azure PowerShell Az](/powershell/azure/new-azureps-module-az). AzureRM budou i nadále získávat aktualizace kritické opravu, ale nové funkce budou v modulu Az.
-> * Modul Az je již k dispozici ve službě Cloud Shell s kompatibilitou AzureRM povolena.
-> * Postup instalace modulu Az místně, v tématu [instalace Azure Powershellu](/powershell/azure/install-az-ps).
-> * Pokud nainstalujete modul Az místně, můžete povolit kompatibilitu AzureRM spuštěním `Enable-AzureRmAlias`.
+> Použití nového modulu Azure PowerShell Az byla aktualizována v tomto článku. Další informace o novém modulu Az a kompatibility AzureRM najdete v tématu [představení nového modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az). Pokyny k instalaci, naleznete v tématu [instalace Azure Powershellu](/powershell/azure/install-az-ps).
 

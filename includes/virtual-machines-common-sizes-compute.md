@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8cc24ad5c15cf456f0a66a34d549a43e55d02706
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 5a4495dd675b662273715b5c13a5594adc87fceb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585660"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333872"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,21 +31,21 @@ Virtuální počítače řady F-series jsou skvělou volbou pro úlohy, které p
 
 ## <a name="fsv2-series-sup1sup"></a>Řada Fsv2 <sup>1</sup>
 
-ACU: 195-210
+ACU: 195 - 210
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost             | virtuálních procesorů | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost             | virtuálních procesorů | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 / 31 (32)           | 3200 / 47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 / 63 (64)           | 6400 / 95                | 2 / 1,750               |
-| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16000 / 127 (128)        | 12800 / 190              | 4 / 3 500               |
-| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 / 255 (256)        | 25600 / 380              | 4 / 7000               |
-| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 / 512 (512)        | 51200 / 750              | 8 / 14 000              |
-| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 / 1024 (1024)     | což odpovídá 80 000 v / 1100             | 8 / 28,000              |
-| Standard_F72s_v2<sup>2, 3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | což odpovídá 80 000 v / 1100             | 8 / 30,000              |
+| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16000 / 127 (128)        | 12800 / 190              | 4 / 3,500               |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 / 255 (256)        | 25600 / 380              | 4 / 7,000               |
+| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 / 512 (512)        | 51200 / 750              | 8 / 14,000              |
+| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 / 1024 (1024)     | 80000 / 1100             | 8 / 28,000              |
+| Standard_F72s_v2<sup>2, 3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | 80000 / 1100             | 8 / 30,000              |
 
 
 <sup>1</sup> funkcí technologie Intel® Hyper-Threading Fsv2-series Virtuálních počítačů
@@ -56,13 +56,13 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 
 ## <a name="fs-series-sup1sup"></a>Řada FS-series <sup>1</sup>
 
-ACU: 210–250
+ACU: 210 - 250
 
-Storage úrovně Premium: podporováno
+Premium Storage:  Podporováno
 
-Ukládání do mezipaměti služby Premium Storage: podporováno
+Premium Storage ukládání do mezipaměti:  Podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost v mezipaměti a dočasného úložiště: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MBps | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4 000 / 32 (12) |3 200 / 48 |2 / 750 |
 | Standard_F2s |2 |4 |8 |8 |8 000 / 64 (24) |6 400 / 96 |2 / 1 500 |
@@ -72,20 +72,20 @@ Ukládání do mezipaměti služby Premium Storage: podporováno
 
 MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
 
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se Fs-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
+<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se Fs-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).
 
 
 <br>
 
 ## <a name="f-series"></a>F-series
 
-ACU: 210–250
+ACU: 210 - 250
 
-Storage úrovně Premium: Není podporováno.
+Premium Storage:  Nepodporuje se
 
-Premium Storage ukládání do mezipaměti: Není podporováno
+Premium Storage ukládání do mezipaměti:  Nepodporuje se
 
-| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4×500                         | 2 / 750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 500                     |

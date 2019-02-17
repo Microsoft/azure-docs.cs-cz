@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 02/13/2019
 ms.author: danlep
-ms.openlocfilehash: 44bdaec78e1fad574f29a5945b07041b588aaff8
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dd5c8878ce71b49b3a25f5d14a00bfe4f49ee769
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571961"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333979"
 ---
 | Prostředek | Výchozí omezení |
 | --- | :--- |
@@ -17,17 +17,15 @@ ms.locfileid: "51571961"
 | Počet kontejnerů na skupinu kontejnerů | 60 |
 | Počet svazků na skupinu kontejnerů | 20 |
 | Počet portů na IP adresu | 5 |
+| Velikost protokolu instance kontejneru - instancí | 4 MB |
+| Velikost protokolu instance kontejneru - zastavená instance | 16 KB nebo 1000 řádků |
 | Vytvoření kontejneru za hodinu |300<sup>1</sup> |
 | Vytvoření kontejneru za 5 minut | 100<sup>1</sup> |
 | Odstranění kontejneru za hodinu | 300<sup>1</sup> |
 | Odstranění kontejneru za 5 minut | 100<sup>1</sup> |
-| Více kontejnerů na skupinu kontejnerů | Jenom Linux<sup>2</sup> |
-| Svazky Azure Files | Jenom Linux<sup>2</sup> |
-| Svazky GitRepo | Jenom Linux<sup>2</sup> |
-| Tajné svazky | Jenom Linux<sup>2</sup> |
+
 
 <sup>1</sup> Pokud si chcete vyžádat zvýšení limitu, vytvořte [žádost o podporu Azure][azure-support].<br />
-<sup>2</sup> Podpora Windows pro tuto funkci je naplánovaná.
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

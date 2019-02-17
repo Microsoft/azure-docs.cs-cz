@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: 231dcee1a9b330b2f8721283c39c71002a75fcac
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49476302"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56334018"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Oblasti a dostupnost pro virtuální počítače v Azure
 Azure funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. Je důležité pochopit, jak a kde se virtuální počítače (VM) v Azure provozují, a také vědět, jaké máte možnosti pro zajištění maximálního výkonu, dostupnosti a redundance. Tento článek poskytuje přehled funkcí redundance a dostupnosti Azure.
@@ -92,7 +92,7 @@ Ceny se liší v závislosti na zvolené dostupnosti a typu úložiště.
 Informace o cenách pro různé typy úložišť a možnosti dostupnosti najdete v tématu [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
-Skupina dostupnosti je logické seskupení virtuálních počítačů v rámci datového centra, které umožňují Azure pochopit, jak je sestavená vaše aplikace zajistit redundanci a dostupnost. Doporučujeme, že jsou vytvořeny dva nebo více virtuálních počítačů ve skupině dostupnosti pro vysoce dostupné aplikace a, aby splňoval [99,95 % Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Se neúčtují žádné poplatky pro skupinu dostupnosti samotné, platíte jenom za všechny instance virtuálních počítačů, které vytvoříte. Pokud [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) využívá jeden virtuální počítač, Azure SLA se vztahuje na neplánovanou údržbu. 
+Skupina dostupnosti je logické seskupení virtuálních počítačů v rámci datového centra, které umožňují Azure pochopit, jak je sestavená vaše aplikace zajistit redundanci a dostupnost. Doporučujeme, že jsou vytvořeny dva nebo více virtuálních počítačů ve skupině dostupnosti pro vysoce dostupné aplikace a, aby splňoval [99,95 % Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Se neúčtují žádné poplatky pro skupinu dostupnosti samotné, platíte jenom za všechny instance virtuálních počítačů, které vytvoříte. Když je jeden virtuální počítač pomocí [Azure premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd), smlouva Azure SLA se vztahuje na neplánovanou údržbu.
 
 Skupina dostupnosti se skládá ze dvou dalších seskupení, které chrání před selháním hardwaru a povolit aktualizace bezpečně použít – doména selhání (FD) a aktualizační doména (ud). O správě dostupnosti [virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/manage-availability.md) nebo [Windows](../articles/virtual-machines/windows/manage-availability.md) si můžete přečíst víc.
 

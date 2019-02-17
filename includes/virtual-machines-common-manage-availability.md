@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 42b6dde708e2a1dbda225fd95e3db964267ae48a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084051"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333778"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které můžou vést k virtuálnímu počítači v Azure se to týká: Neplánovaná údržba hardwaru, neočekávaný výpadek a plánovaná údržba.
@@ -41,7 +41,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Tato konfigurace v rámci datacentra zajišťuje, že během buď plánované i neplánované údržby, alespoň jeden virtuální počítač je k dispozici a splňuje 99,95 % Azure SLA. Další informace najdete v tématu [SLA pro virtuální počítače](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Nenechávejte ve skupině dostupnosti samostatné instance virtuálních počítačů. Na virtuální počítače v takové konfiguraci se nevztahuje garance SLA a během plánovaných událostí údržby čelí výpadkům, kromě případu, kdy samostatný virtuální počítač využívá službu [Premium Storage](../articles/virtual-machines/windows/premium-storage.md). Na samostatné virtuální počítače, které využívají službu Premium Storage, se Azure SLA vztahuje.
+> Nenechávejte ve skupině dostupnosti samostatné instance virtuálních počítačů. Virtuální počítače v této konfiguraci není získání způsobilosti pro smlouvu SLA se zárukou a čelí výpadkům během plánovaných událostí údržby, s výjimkou případů, kdy jeden virtuální počítač používá [Azure premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd). U jednotlivých virtuálních počítačů pomocí SSD disků úrovně premium Azure SLA vztahuje.
 
 Základní platforma Azure každému virtuálnímu počítači ve skupině dostupnosti přiřadí **aktualizační doménu** a **doménu selhání**. Dané skupině dostupnosti se ve výchozím nastavení přiřadí pět aktualizačních domén (u nasazení podle modelu Resource Manager je pak možné počet aktualizačních domén navýšit až na 20), které uživatel nemůže konfigurovat a které představují skupiny virtuálních počítačů a základního fyzického hardwaru, které lze restartovat současně. Pokud je v rámci jedné skupiny dostupnosti nakonfigurováno více než 5 virtuálních počítačů, šestý virtuální počítač se umístí do stejné aktualizační domény jako první virtuální počítač, sedmý se umístí do stejné aktualizační domény jako druhý atd. Restartování aktualizačních domén během plánované údržby nemusí probíhat sekvenčně, ale vždycky se restartuje jenom jedna aktualizační doména. Restartovaná aktualizační doména má 30 minut na zotavení, než se zahájí údržba na jiné aktualizační doméně.
 
@@ -60,7 +60,7 @@ Pokud aktuálně používáte virtuální počítače s nespravovanými disky, d
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
-Pokud se chystáte používat virtuální počítače s [nespravovanými disky](../articles/virtual-machines/windows/about-disks-and-vhds.md#types-of-disks), postupujte podle níže uvedených osvědčených postupů pro účty služby Storage, ve kterých se virtuální pevné disky (VHD) virtuálních počítačů ukládají jako [objekty blob stránky](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
+Pokud máte v plánu používat virtuální počítače s nespravovanými disky, postupujte podle níže uvedených osvědčených postupů pro účty úložiště, kde jsou uloženy virtuální pevné disky (VHD) virtuálních počítačů jako [objekty BLOB stránky](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 
 1. **Uchovávejte všechny disky (s operačním systémem i s daty) přidružené k virtuálnímu počítači ve stejném účtu úložiště.**
 2. Než začnete přidávat další virtuální pevné disky do účtu úložiště, **zkontrolujte [omezení](../articles/storage/common/storage-scalability-targets.md) počtu nespravovaných disků v účtu služby Storage**.
