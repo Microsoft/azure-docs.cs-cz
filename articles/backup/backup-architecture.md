@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4f26c805c42f027409127232fcfef9840939e8d9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812555"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329179"
 ---
 # <a name="azure-backup-architecture"></a>Architektura služby Azure Backup
 
@@ -175,8 +175,8 @@ Zálohování disků s odstraněním duplicit | | | ![Částečně][yellow]<br/>
 
 Další informace:
 
-- Další informace o diskové úložiště pro [Windows](../virtual-machines/windows/about-disks-and-vhds.md) a [Linux](../virtual-machines/linux/about-disks-and-vhds.md) virtuálních počítačů.
-- Další informace o [standardní](../virtual-machines/windows/standard-storage.md) a [premium](../virtual-machines/windows/premium-storage.md) úložiště.
+- Další informace o diskové úložiště pro [Windows](../virtual-machines/windows/managed-disks-overview.md) a [Linux](../virtual-machines/linux/managed-disks-overview.md) virtuálních počítačů.
+- Další informace o dostupných [typy disků](../virtual-machines/windows/disks-types.md) například standard a premium.
 
 
 ### <a name="backing-up-and-restoring-azure-vms-with-premium-storage"></a>Zálohování a obnovení virtuálních počítačů Azure díky službě premium storage 
@@ -184,9 +184,9 @@ Další informace:
 Můžete zálohovat virtuální počítače Azure pomocí služby premium storage s Azure Backup:
 
 - Při zálohování virtuálních počítačů se službou premium storage, vytvoří služba Backup dočasné pracovní umístění s názvem "AzureBackup-", v účtu úložiště. Velikost pracovního umístění odpovídá velikosti snímku bodu obnovení.
-- Ujistěte se, zda má účet premium storage dostatek volného místa pro toto dočasné pracovní umístění. [Další informace](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets). Neupravujte pracovní umístění.
+- Ujistěte se, zda má účet premium storage dostatek volného místa pro toto dočasné pracovní umístění. [Další informace](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits). Neupravujte pracovní umístění.
 - Po dokončení úlohy zálohování je pracovní umístění odstraněno.
-- Cena úložiště použitého pro pracovní umístění je konzistentní s [ceny za službu storage úrovně premium](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+- Cena úložiště použitého pro pracovní umístění je konzistentní s [ceny za službu storage úrovně premium](../virtual-machines/windows/disks-types.md#billing).
 
 Při obnovení virtuálních počítačů Azure pomocí služby premium storage můžete obnovit na premium nebo standard storage. Obvykle by obnovit na úroveň premium, ale může být cenově výhodnější standardu Pokud potřebujete jenom podmnožinu souborů z virtuálního počítače.
 

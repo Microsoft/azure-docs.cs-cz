@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055227"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326921"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 series: řešení hybridního cloudového úložiště
 ## <a name="overview"></a>Přehled
@@ -92,7 +92,7 @@ Cloudové zařízení má následující funkce:
 * Můžete vytvářet neomezený počet cloud Appliance v cloudu a zapnout a vypnout podle potřeby.
 * Může pomoct simulace v místním prostředí v zotavení po havárii, vývoj a testovací scénáře a pomáhají s načítání na úrovni položek ze záloh.
 
-Řešení StorSimple Cloud Appliance je k dispozici ve dvou modelů: zařízení 8010 (dříve označované jako 1100 model) a zařízení 8020. Zařízení 8010 má maximální kapacitu s 30 TB. Zařízení 8020, který využívá Azure premium storage, má maximální kapacitu o velikosti 64 TB. (V místních vrstvách služby Azure premium storage ukládá data na disky SSD že standard storage ukládá data na HDD.) Všimněte si, že musí mít účet úložiště Azure premium storage úrovně premium. Další informace o službě premium storage najdete v části [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../virtual-machines/windows/premium-storage.md).
+Řešení StorSimple Cloud Appliance je k dispozici ve dvou modelů: zařízení 8010 (dříve označované jako 1100 model) a zařízení 8020. Zařízení 8010 má maximální kapacitu s 30 TB. Zařízení 8020, který využívá Azure premium storage, má maximální kapacitu o velikosti 64 TB. (V místních vrstvách služby Azure premium storage ukládá data na disky SSD že standard storage ukládá data na HDD.) Všimněte si, že musí mít účet úložiště Azure premium storage úrovně premium.
 
 Další informace o řešení StorSimple Cloud Appliance, přejděte na [nasadit a spravovat řešení StorSimple Cloud Appliance v Azure](storsimple-8000-cloud-appliance-u2.md).
 
@@ -153,7 +153,7 @@ Další informace najdete v části [StorSimple Adapter pro SharePoint](storsimp
 Kromě vyhrazené zařízení StorSimple, virtuální zařízení a další součásti Microsoft Azure StorSimple používá následující technologie softwarově poskytují rychlý přístup k datům a snížit spotřebu úložiště:
 
 * [Automatické vrstvení](#automatic-storage-tiering) 
-* [Dynamické zajišťování](#thin-provisioning) 
+* [dynamické zajišťování](#thin-provisioning) 
 * [Deduplikace a komprese](#deduplication-and-compression) 
 
 ### <a name="automatic-storage-tiering"></a>Automatické vrstvení
@@ -186,7 +186,7 @@ StorSimple deduplicates zákaznická data napříč všechny snímky a primárn�
 Data se odstraní pouze z cloudu, když neexistují žádné odkazy na tato data. Například, pokud jsme pořídit snímek v cloudu všechna data, která je v zařízení StorSimple a potom odstraňte některá primární data, uvidíme _primární datové_ vyřadit okamžitě. _Cloudová data_ zahrnuje Vrstvená data a zálohy, zůstává stejný. Je to proto, že je stále odkazuje Cloudová data snímku. Po cloudu snímek odstraní (a další, na který odkazuje na stejná data snímku), drops využití cloudu. Předtím, než jsme odebrat data v cloudu, zkontrolujeme, že žádné snímky stále odkazují na tato data. Tento proces se nazývá _uvolňování_ a na zařízení běží na pozadí služby. Odstranění dat cloud není okamžitě, protože služba uvolňování paměti kolekce kontroluje žádné odkazy na tato data před odstranění. Rychlost uvolňování závisí na celkovém počtu snímků a celkové množství dat. Cloudová data je obvykle vyčištěn za méně než jeden týden.
 
 
-### <a name="thin-provisioning"></a>Dynamické zajišťování
+### <a name="thin-provisioning"></a>dynamické zajišťování
 Dynamické zajišťování je technologie virtualizace, ve kterém se zobrazí dostupné úložiště překročí fyzické prostředky. Místo předem rezervace dostatečné úložiště StorSimple používá dynamické zajišťování přidělit jenom dostatek místa, aby splňovala aktuální požadavky. K elastické povaze cloudu úložiště usnadňuje tento přístup, protože StorSimple můžete zvýšit nebo snížit cloudové úložiště s cílem splnit měnící požadavky.
 
 > [!NOTE]
@@ -273,7 +273,7 @@ Před nasazením řešení Microsoft Azure StorSimple, doporučujeme, abyste si 
 | šifrovací klíč cloudového úložiště |Heslo nebo klíč, vaše zařízení StorSimple používá k přístupu k zašifrovaným datům ve vašem zařízení odesílají do cloudu. |
 | aktualizace pro clustery |Správa aktualizací softwaru na serverech v clusteru převzetí služeb při selhání tak, aby se aktualizace minimální nebo žádný vliv na dostupnost služeb. |
 | DataPath |Kolekce funkční jednotky, které provádějí operace propojených dat zpracování. |
-| Deaktivace |Trvalé akce, která přestane fungovat připojení mezi zařízením StorSimple a související cloudové služby. Cloudové snímky zařízení zůstat po dokončení tohoto procesu a můžete klonovat nebo je použitý pro zotavení po havárii. |
+| deaktivovat |Trvalé akce, která přestane fungovat připojení mezi zařízením StorSimple a související cloudové služby. Cloudové snímky zařízení zůstat po dokončení tohoto procesu a můžete klonovat nebo je použitý pro zotavení po havárii. |
 | zrcadlení disků |Replikace pro logické diskové svazky na samostatné pevné disky v reálném čase k zajištění trvalé dostupnosti. |
 | zrcadlení dynamického disku |Replikace pro logické diskové svazky na dynamických discích. |
 | dynamické disky |Formát disku svazku, který používá Správce logických disků (LDM) k ukládání a správě dat mezi několik fyzických disků. Dynamické disky můžete zvětšit poskytnout další volné místo. |

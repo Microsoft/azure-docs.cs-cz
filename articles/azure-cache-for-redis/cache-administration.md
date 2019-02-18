@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: b75a2faa2030fc343cbabb17eb37b63c9ea34f70
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d36f2851f9c4f30725c8f8057d61970b6560009e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232377"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313207"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Správa mezipaměti Azure pro Redis
 Toto téma popisuje, jak provádět úlohy správy, například [restartování](#reboot) a [plánování aktualizace](#schedule-updates) pro mezipaměť Azure pro instance Redis.
@@ -94,7 +94,7 @@ Restart je k dispozici pro všechny cenové úrovně.
 
 Zadejte časové období údržby, zkontrolujte požadované dnů a zadat počáteční hodina časového období údržby pro každý den a klikněte na tlačítko **OK**. Všimněte si, že časového období údržby se ve standardu UTC. 
 
-Výchozí a minimální období údržby pro aktualizace je pět hodin. Tato hodnota není konfigurovatelné z webu Azure portal, můžete ji ale konfigurovat pomocí prostředí PowerShell `MaintenanceWindow` parametr [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) rutiny. Další informace najdete v tématu [můžete spravovat plánované aktualizace pomocí prostředí PowerShell, CLI nebo jiné nástroje pro správu?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+Výchozí a minimální období údržby pro aktualizace je pět hodin. Tato hodnota není konfigurovatelné z webu Azure portal, můžete ji ale konfigurovat pomocí prostředí PowerShell `MaintenanceWindow` parametr [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) rutiny. Další informace najdete v tématu můžete spravovat plánované aktualizace pomocí prostředí PowerShell, CLI nebo jiné nástroje pro správu?
 
 
 ## <a name="schedule-updates-faq"></a>Naplánovat aktualizace – nejčastější dotazy

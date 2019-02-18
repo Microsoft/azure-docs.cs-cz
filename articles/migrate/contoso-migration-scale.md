@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bd1761ecf16bbfb0d3fdc354ab1b9fa1f42f9c17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104229"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328573"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – škálování migrace do Azure
 
@@ -229,9 +229,9 @@ Existují čtyři strategie široké migrace, které můžete zvážit Contoso.
 
 **Strategie** | **Podrobnosti** | **Použití**
 --- | --- | ---
-**Opětovným hostováním**  | Často označuje jako migrace "metodou lift and shift", to je možnost bez kódu pro migraci stávajících aplikací do Azure rychle.<br/><br/> Aplikace se migrují jako-je výhody cloudu bez rizik nebo nákladů spojených se změny kódu. | Contoso můžete opětovným hostováním méně strategické aplikace, vyžadování bez jediné změny kódu.
+**Rehost**  | Často označuje jako migrace "metodou lift and shift", to je možnost bez kódu pro migraci stávajících aplikací do Azure rychle.<br/><br/> Aplikace se migrují jako-je výhody cloudu bez rizik nebo nákladů spojených se změny kódu. | Contoso můžete opětovným hostováním méně strategické aplikace, vyžadování bez jediné změny kódu.
 **Refaktoring** |  Označuje se také jako "opakovanému balení", tato strategie vyžaduje minimální aplikaci kód nebo je nutné změny konfigurace pro připojení aplikace k Azure PaaS a lépe využívat možnosti cloudu. | Společnost Contoso může Refaktorovat strategické aplikace chcete zachovat stejné základní funkce, ale jejich spuštění na platformě Azure jako je například Azure App Services přesunout.<br/><br/> To vyžaduje změny minimální kód.<br/><br/> Na druhé straně Contoso muset udržovat platforma virtuálního počítače, protože to nebude spravovaný microsoftem.
-**Změna architektury** | Tato strategie upraví nebo rozšiřuje základní optimalizace architektury aplikace pro škálování a možnosti cloudu kódu aplikace.<br/><br/> Je Správa modernizuje aplikace do odolné, vysoce škálovatelné a umožňují nezávislé nasazení architektury.<br/><br/> Služby Azure můžete urychlit proces, škálovat aplikace s jistotou a spravovat aplikace s lehkostí a elegancí.
+**Rearchitect** | Tato strategie upraví nebo rozšiřuje základní optimalizace architektury aplikace pro škálování a možnosti cloudu kódu aplikace.<br/><br/> Je Správa modernizuje aplikace do odolné, vysoce škálovatelné a umožňují nezávislé nasazení architektury.<br/><br/> Služby Azure můžete urychlit proces, škálovat aplikace s jistotou a spravovat aplikace s lehkostí a elegancí.
 **Opětovné sestavení** | Tato strategie znovu sestaví aplikaci úplně od začátku pomocí nativních cloudových technologií.<br/><br/> Platforma jako služba (PaaS) Azure poskytuje úplné prostředí vývoje a nasazení v cloudu. Eliminuje nějaké náklady a složitost softwarových licencí a tím eliminuje potřeba základní infrastruktury aplikace, middleware a další prostředky. | Contoso můžete přepsat kritické aplikace od základů, využívat výhod cloudových technologií, například v počítači bez serveru, nebo mikroslužeb.<br/><br/> Contoso budou spravovat aplikace a služby, které se vyvíjí a Azure spravuje všechno ostatní.
 
 
@@ -292,11 +292,10 @@ Contoso potřebuje zjistit, jak nasadit tyto komponenty založené na důležit�
 **Konfigurační server** | Podle společnosti Contoso odhad replikace 100 = 200 virtuálních počítačů najednou a [požadavky na nastavení velikosti konfiguračního serveru](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server), Contoso odhadnout je musí počítač s konfigurací serveru následujícím způsobem:<br/><br/> Procesor: 16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader)<br/><br/> Paměť: 32 GB<br/><br/> Disk mezipaměti: 1 TB<br/><br/> Frekvence změny dat: 1 TB na 2 TB.<br/><br/> Kromě požadavků na změny velikosti Contoso muset Ujistěte se, že je konfigurační server optimálně umístěné ve stejné síti a segment sítě LAN jsou virtuální počítače, které se budou migrovat.
 **Procesový server** | Contoso se nasadit samostatný vyhrazené procesní server s možností replikace 100 až 200 virtuálních počítačů:<br/><br/> Procesor: 16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader)<br/><br/> Paměť: 32 GB<br/><br/> Disk mezipaměti: 1 TB<br/><br/> Frekvence změny dat: 1 TB na 2 TB.<br/><br/> Procesový server bude obtížné pracovní a jako takové se musí nacházet na hostiteli ESXi, který dokáže zpracovat vstup/výstup disku, síťový provoz a procesoru vyžadované pro replikaci. Contoso zohlední vyhrazeného hostitele pro tento účel. 
 **Sítě** | Contoso má zkontrolovat aktuální infrastrukturu sítě VPN site-to-site a rozhodla implementovat Azure ExpressRoute. Implementace je důležité, protože bude nižší latenci a zvýšení šířky pásma pro primární oblast východní USA 2 platformě Azure společnosti Contoso.<br/><br/> **Monitorování**: Contoso potřeba pečlivě monitorovat data přenášejí z procesového serveru. Pokud data přetížení šířky pásma sítě bude předpokládat, že Contoso [omezení šířky pásma proces serveru](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
-**Úložiště Azure** | Pro migraci musí identifikovat Contoso správný typ a počet cílových účtů služby Azure storage.  Site Recovery replikuje data virtuálního počítače do služby Azure storage.<br/><br/> Site Recovery můžete replikovat do účtů úložiště (SSD) úrovně standard nebo premium.<br/><br/> Při rozhodování o úložišti, musíte zkontrolovat Contoso [omezení úložiště](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)a zvážit očekávaný růst a zvyšováním využití v čase. Vzhledem k rychlost a priority migrace, Contoso se rozhodl používat účty úložiště úrovně premium.<br/><br/> Uživatelé budou vytvářet a opakovaně používat více účtů úložiště během procesu migrace.
-Contoso se rozhodli použít spravované disky pro všechny virtuální počítače, které jsou nasazeny do Azure.  Vstupně-výstupních operací, vyžaduje se určí, jestli se disky být Standard (HDD) nebo Premium (SSD).<br/>.<br/>
+**Úložiště Azure** | Pro migraci musí identifikovat Contoso správný typ a počet cílových účtů služby Azure storage.  Site Recovery replikuje data virtuálního počítače do služby Azure storage.<br/><br/> Site Recovery můžete replikovat do účtů úložiště (SSD) úrovně standard nebo premium.<br/><br/> Při rozhodování o úložišti, musíte zkontrolovat Contoso [omezení úložiště](../virtual-machines/windows/disks-types.md)a zvážit očekávaný růst a zvyšováním využití v čase. Vzhledem k rychlost a priority migrace, Contoso se rozhodl používat premium SSD<br/><br/>
+Contoso se rozhodli použít spravované disky pro všechny virtuální počítače, které jsou nasazeny do Azure.  Vstupně-výstupních operací, vyžaduje se určí, jestli se disky být standardní HDD, SSD na úrovni Standard nebo Premium (SSD).<br/><br/>
 
-
-#### <a name="data-migration-service"></a>Data Migration Service 
+#### <a name="data-migration-service"></a>Data Migration Service
 
 Azure Database Migration Service (DMS), je plně spravovaná služba, která umožňuje bezproblémovou migraci z několika databázových zdrojů na platformu dat Azure s minimálními prostoji.
 
