@@ -97,20 +97,13 @@ items:
   - name: Údržba a aktualizace
     href: maintenance-and-updates.md
   - name: Diskové úložiště
-    href: about-disks-and-vhds.md
     items:
-    - name: Managed Disks
+    - name: Úvod ke spravovaným diskům
       href: managed-disks-overview.md
-    - name: Disky SSD úrovně Premium
-      href: premium-storage.md
-    - name: Disky SSD na úrovni Standard
-      href: disks-standard-ssd.md
-    - name: Disky Ultra SSD
-      href: disks-ultra-ssd.md
-    - name: Výkon Premium Storage
+    - name: Výběr typu disku pro virtuální počítače IaaS
+      href: disks-types.md
+    - name: Návrh pro vysoký výkon
       href: premium-storage-performance.md
-    - name: Storage úrovně Standard
-      href: standard-storage.md
     - name: Cíle škálovatelnosti pro disky
       href: disk-scalability-targets.md
     - name: Zálohování a zotavení po havárii pro disky
@@ -334,6 +327,8 @@ items:
         href: attach-disk-ps.md
       - name: portál Azure
         href: attach-managed-disk-portal.md
+    - name: Srovnávací test disku
+      href: disks-benchmarks.md
     - name: Odpojení disku
       href: detach-disk.md
     - name: Změna velikosti disku
@@ -354,7 +349,7 @@ items:
       href: using-managed-disks-template-deployments.md
     - name: Povolení akcelerátoru zápisu
       href: how-to-enable-write-accelerator.md
-    - name: S využitím disku Ultra SSD
+    - name: Povolení disků Ultra
       href: disks-enable-ultra-ssd.md
     - name: Migrace na spravované disky
       href: migrate-to-managed-disks.md
@@ -466,9 +461,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 770b828330bc0ad10b0aa78277f0872368cf201c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a94dc323129041ffaaadc65204fdc35327b88b33
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299863"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328822"

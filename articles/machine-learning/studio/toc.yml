@@ -109,7 +109,7 @@ items:
   - name: Modely nasazení
     items:
     - name: Nasazení webové služby
-      displayName: publish
+      displayName: publish, multiple regions
       href: publish-a-machine-learning-web-service.md
     - name: Jak to funguje
       href: model-progression-experiment-to-web-service.md
@@ -118,9 +118,6 @@ items:
     - name: Použití externích dat
       displayName: import, export
       href: web-services-that-use-import-export-modules.md
-    - name: Nasazení v několika oblastech
-      displayName: multiple regions
-      href: how-to-deploy-to-multiple-regions.md
     - name: Použití parametrů webové služby
       href: web-service-parameters.md
     - name: Povolit protokolování
@@ -133,17 +130,14 @@ items:
       displayName: endpoint, endpoints
       href: manage-web-service-endpoints-using-api-management.md
     - name: Vytváření koncových bodů
+      displayName: scale, scaling
       href: create-endpoint.md
-    - name: Škálování
-      href: scaling-webservice.md
   - name: Přeučování modelů
     items:
-    - name: Přehled
+    - name: Opětovné natrénování a nasazení nové webové služby
       href: retrain-machine-learning-model.md
-    - name: Přeučování existující webové služby
-      href: retrain-existing-resource-manager-based-web-service.md
-    - name: Řešení potíží
-      href: troubleshooting-retraining-models.md
+    - name: Opětovné natrénování a nasazení klasické webové služby
+      href: retrain-classic-web-service.md
   - name: Použití modelů
     items:
     - name: Přehled
@@ -194,9 +188,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Vlastní neurální sítě (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: c9bbcd35f74e113c33ef0a8b449d806734501324
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c6d072a6e032fb4059b422d0778eb78b01d3706e
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266863"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327676"

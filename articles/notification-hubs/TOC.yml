@@ -5,6 +5,12 @@ items:
   items:
   - name: Informace o Notification Hubs
     href: notification-hubs-push-notification-overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření centra oznámení – Azure Portal
+    href: create-notification-hub-portal.md
+  - name: Konfigurace centra oznámení – Azure Portal
+    href: configure-notification-hub-portal-pns-settings.md
 - name: Kurzy
   items:
   - name: 1. Nabízená oznámení pro všechna registrovaná zařízení
@@ -138,9 +144,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Možnosti podpory
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 55dc84493eca49cce1abe9184daec2687d3e5d56
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 9035ed7f81639770b1c962e4cf254e18fd3b46bd
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301515"
+ms.locfileid: "56310996"

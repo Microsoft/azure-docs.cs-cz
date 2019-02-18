@@ -98,12 +98,12 @@ items:
       href: quickstarts-sdk/csharp-thumb-sdk.md
     - name: Extrakce textu
       href: quickstarts-sdk/csharp-hand-text-sdk.md
+  - name: Používání sady Python SDK
+    href: quickstarts-sdk/python-sdk.md
 - name: Kurzy
   items:
   - name: Získání metadat pro obrázky Azure
     href: Tutorials/storage-lab-tutorial.md
-  - name: Vytváření aplikací pro zpracování obrázků
-    href: Tutorials/CSharpTutorial.md
 - name: Koncepty
   items:
   - name: Označování obrázků značkami
@@ -183,7 +183,11 @@ items:
 - name: Zdroje a prostředky
   items:
   - name: Ukázky
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+    items:
+    - name: Aplikace pro zpracování obrázků
+      href: Tutorials/CSharpTutorial.md
+    - name: Další ukázky Počítačového zpracování obrazu
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: Nejčastější dotazy
     href: FAQ.md
   - name: Ceny a omezení
@@ -198,9 +202,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 700b14c16f1016a403fdf15972cc52021135c64a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 30b8a6937bafc469c4135a899af56277b4f3a9eb
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562347"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310708"

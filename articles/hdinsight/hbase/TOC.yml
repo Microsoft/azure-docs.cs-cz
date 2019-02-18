@@ -28,7 +28,10 @@ items:
     - name: S využitím Azure Storage
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: S využitím Azure Data Lake Storage
+    - name: S využitím služby Azure Data Lake Storage Gen2
+      href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
+      maintainContext: true
+    - name: S využitím služby Azure Data Lake Storage Gen1
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: Vývoj
@@ -283,8 +286,6 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
-  - name: .NET (Avro)
-    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
@@ -366,9 +367,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 1429c7c2fd7f325d760562d3a3f4b3daaf431852
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a501f1ea05306c00acab04cbdba51b51903305a6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165770"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326081"
