@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c6763580a6693020c497c500342ff3ae4dc840d4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001919"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339224"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -126,7 +126,15 @@ Při použití __služby Azure Storage__, použijte jednu z následujících sch
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Použít při komunikaci s účtem služby storage jiné než výchozí. Například pokud máte ještě účet úložiště nebo při přístupu k datům uloženým v účtu úložiště veřejně přístupná.
 
-Při použití __Data Lake Storage__, použijte jednu z následujících schémata identifikátoru URI:
+Při použití __Azure Data Lake Storage Gen2__, použijte jednu z následujících schémata identifikátoru URI:
+
+* `abfs:///`: Výchozí úložiště s přístupem pomocí nešifrovaná komunikace.
+
+* `abfss:///`: Výchozí úložiště s přístupem pomocí šifrovanou komunikaci.  Schéma abfss je podporováno pouze v HDInsight verze 3.6 a vyšší.
+
+* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Použít při komunikaci s účtem služby storage jiné než výchozí. Například pokud máte ještě účet úložiště nebo při přístupu k datům uloženým v účtu úložiště veřejně přístupná.
+
+Při použití __Azure Data Lake Storage Gen1__, použijte jednu z následujících schémata identifikátoru URI:
 
 * `adl:///`: Přístup k výchozí Data Lake Storage pro cluster.
 
@@ -177,7 +185,7 @@ Existují různé způsoby, jak získat přístup k datům z mimo HDInsight clus
 Pokud používáte __služby Azure Storage__, naleznete v tématu Možnosti, můžete přistupovat k datům prostřednictvím následujících odkazů:
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Příkazy rozhraní příkazového řádku pro práci s Azure. Po instalaci, použijte `az storage` příkaz nápovědu k používání úložiště, nebo `az storage blob` pro konkrétní objekt blob příkazy.
-* [blobxfer.PY](https://github.com/Azure/blobxfer): Skript pythonu pro práci s objekty BLOB ve službě Azure Storage.
+* [blobxfer.py](https://github.com/Azure/blobxfer): Skript pythonu pro práci s objekty BLOB ve službě Azure Storage.
 * Různých sadách SDK:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)

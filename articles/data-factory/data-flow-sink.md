@@ -7,20 +7,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 795b8072bbd9b248f982d061d699f490b1b63b17
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 381dc2f9f6d3a074af00ba047472719c086f5811
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271747"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408404"
 ---
-# <a name="azure-data-factory-mapping-data-flow-sink-transformation"></a>Azure Data Factory mapování transformace jímky toku dat
+# <a name="mapping-data-flow-sink-transformation"></a>Mapování datového toku jímky transformace
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 ![Jímka možnosti](media/data-flow/windows1.png "jímky 1")
 
-Po dokončení vaší transformace toku dat můžete jímky Transformovaná data do cílové datové sadě. V transformaci jímky můžete definici datové sady, kterou chcete použít pro určení výstupní data.
+Po dokončení vaší transformace toku dat můžete jímky Transformovaná data do cílové datové sadě. V transformaci jímky můžete definici datové sady, kterou chcete použít pro určení výstupní data. Můžete mít libovolný počet jímky transformace jako váš tok dat vyžaduje.
 
 Běžnou praxí pro změnu příchozích dat a aby se zohlednily odchylek schématu je do složky bez definované schéma v výstupní datovou sadu jímky výstupní data. Můžete také započítat i všechny změny ve sloupcích ve zdrojích tak, že vyberete "Povolit schématu odchylek" ve zdroji i automaticky mapovat všechna pole v jímce.
 
@@ -35,24 +35,7 @@ Pro Data Lake nebo Azure Storage Blob jímky typy bude výstup Transformovaná d
 
 ![Jímka možnosti](media/data-flow/opt001.png "jímky možnosti")
 
-## <a name="blob-storage-folder"></a>Složka úložiště objektů BLOB
-Při zpracování transformaci dat do objektů Blob Store, vyberte objekt blob *složky* jako vaše cesta k cílové složce, nejedná se o soubor. Tok dat ADF vygenerovat výstupní soubory v této složce.
-
-![Cesta ke složce](media/data-flow/folderpath.png "cesta ke složce")
-
-## <a name="optional-azure-sql-data-warehouse-sink"></a>Volitelné Azure SQL Data Warehouse jímky
-
-Vydáváme předčasné beta datové sady jímky rozpoznáno ADW pro datový tok. To vám umožní dostat Transformovaná data přímo do Azure SQL data Warehouse v rámci toku dat bez nutnosti přidávání aktivitu kopírování v kanálu.
-
-Začněte vytvořením datové sadě služby rozpoznáno ADW, stejně jako u jakékoli jiné ADF kanálu s propojenou službu, která obsahuje vaše přihlašovací údaje rozpoznáno ADW a vyberte, kterou chcete připojit k databázi. V názvu tabulky vyberte existující tabulky nebo zadejte název tabulky, který má tok dat automaticky vytvořit za vás z příchozí polí.
-
-![Jímka možnosti](media/data-flow/adw3.png "jímky 3")
-
-Zpět na tranformation jímky (rozpoznáno ADW je momentálně podporovaný jenom jako jímka) budete vybírat datovou sadu rozpoznáno ADW, který jste vytvořili, tak i účet úložiště, které chcete použít pro přípravu dat pro Polybase načíst do rozpoznáno ADW. Pole cesty je ve formátu: "containername/foldername".
-
-![Jímka možnosti](media/data-flow/adw1.png "jímky 4")
-
-### <a name="save-policy"></a>Uložit zásadu
+### <a name="output-settings"></a>Nastavení výstupu
 
 Přepsání vymazat data z tabulky, pokud existuje, znovu ji vytvořte a nahrajte data. Připojte se nové řádky vložit. Pokud tabulky z tabulky název datové sady v cíli rozpoznáno ADW neexistuje vůbec, toku dat zobrazí vytvořit tabulku a načíst data.
 
@@ -60,8 +43,46 @@ Pokud zrušíte zaškrtnutí políčka "Automatické mapy", můžete ho namapova
 
 ![Jímka rozpoznáno ADW možnosti](media/data-flow/adw2.png "rozpoznáno adw jímky")
 
-### <a name="max-concurrent-connections"></a>Maximální počet souběžných připojení
+#### <a name="field-mapping"></a>Mapování polí
 
-Při zápisu dat připojení k Azure database, můžete nastavit maximální počet souběžných připojení v transformaci jímky.
+Na kartě mapování vaší jímky transformace můžete mapování sloupců příchozí (levá strana) na cílovém umístění (pravá strana). Když jímky toků dat k souborům, ADF vždy psát nové soubory do složky. Při připojování k datové sadě databáze, můžete buď vygenerovat novou tabulku s toto schéma (nastavená na "přepsat" uložení zásad) nebo nové řádky vložit do existující tabulky a mapování polí do existující schéma.
 
-![Možnosti připojení](media/data-flow/maxcon.png "připojení")
+Vícenásobný výběr v tabulce mapování můžete propojit více sloupců s jedním kliknutím, zrušit odkaz více sloupců nebo mapovat více řádků na stejný název sloupce.
+
+![Mapování polí](media/data-flow/multi1.png "více možností")
+
+Pokud chcete obnovit mapování sloupců, stiskněte tlačítko "Přemapování" Chcete-li obnovit mapování.
+
+![Připojení](media/data-flow/maxcon.png "připojení")
+
+### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>Aktualizace do jímky transformaci pro verzi GA ADF V2
+
+![Jímka možnosti](media/data-flow/sink1.png "jímky jeden")
+
+![Jímka možnosti](media/data-flow/sink2.png "jímky")
+
+* Povolit odchylek schématu a ověření schématu možnosti jsou teď dostupné v jímky. To vám umožní dát pokyn ADF plně přijmout flexibilní schéma definice (schéma odchylek) nebo nezdaří jímka v případě změny schématu (schéma ověření).
+
+* Vymažte složce. ADF bude obsah složky jímky zkrátit před zápisem cílové soubory v této cílové složky.
+
+* Možnosti názvu souboru
+
+   * Výchozí: Spark umožňuje soubory název založeném na výchozím nastavení součástí
+   * Vzor: Zadejte název výstupních souborů
+   * Na oddíl: Zadejte název souboru na oddíl
+   * Jako data ve sloupci: Nastavte na hodnotu sloupce výstupního souboru
+
+> [!NOTE]
+> Operace se soubory se spustí, jenom Pokud spouštíte aktivitu spuštění toku dat, není v režimu tok dat ladění
+
+Typ jímky SQL můžete nastavit:
+
+* Truncate table
+* Vytvořte tabulku (provádí přetažení a vytváření)
+* Velikost dávky pro načítání velkých objemů dat Zadejte číslo do kbelíku zápisy do bloků.
+
+![Mapování polí](media/data-flow/sql001.png "možnosti SQL")
+
+## <a name="next-steps"></a>Další postup
+
+Teď, když jste vytvořili tok dat, přidejte [aktivitu spuštění toku dat do kanálu](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview).

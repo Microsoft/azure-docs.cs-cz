@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 80d84fcede0d293b083ea75f24e9b0bd3125b265
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959664"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56344025"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -69,7 +69,7 @@ Informace o vytváření a konfiguraci prostředí najdete v návodu k vytvořen
 Prostředí IR v místním prostředí nabízí tyto funkce:
 
 - Spouštění aktivity kopírování mezi úložišti dat v cloudu a úložištěm dat v privátní síti.
-- Odesílání následujících aktivit transformace proti výpočetních prostředků na místní nebo Azure Virtual Network: Aktivitu Hivu HDInsight (BYOC), aktivita Pig s HDInsight (BYOC), aktivita MapReduce s HDInsight (BYOC), aktivita HDInsight Spark (BYOC), HDInsight streamované aktivitě (BYOC), aktivita provedení dávky služby Machine Learning, Machine Learning aktualizace prostředku aktivity, aktivita uložené procedury, aktivita Data Lake Analytics U-SQL, vlastní aktivita .net, aktivita vyhledávání a aktivita načtení metadat.
+- Odesílání následujících aktivit transformace proti výpočetních prostředků na místní nebo Azure Virtual Network: Aktivitu Hivu HDInsight (BYOC přineste si vlastní Cluster), aktivita Pig s HDInsight (BYOC), aktivita MapReduce s HDInsight (BYOC), aktivita HDInsight Spark (BYOC), HDInsight streamované aktivitě (BYOC), aktivita provedení dávky služby Machine Learning, Machine Learning Aktualizace aktivity prostředků, aktivita uložené procedury, aktivita Data Lake Analytics U-SQL, vlastní aktivita .net, aktivita vyhledávání a aktivita načtení metadat.
 
 > [!NOTE] 
 > Prostředí Integration Runtime v místním prostředí umožňuje podporu úložišť dat, která vyžadují vlastní ovladač, jako je SAP Hana, MySQL atd.  Další informace najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).

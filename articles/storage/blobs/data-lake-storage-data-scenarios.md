@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 2e39aaae7b873174db032c5e1dda516c9a998d31
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 66d7a2ce5833729d601ae896f0903a17a40fc8a3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301906"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339485"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Pro potřeby velkého objemu dat pomocí Azure Data Lake Storage Gen2
 
@@ -73,7 +73,7 @@ Tato tabulka ukazuje, jak udělit přístup pro každý nástroj nebo služba Az
 |Apache DistCp | Přiřazení role uživatel přiřazenou spravované identity | [Vytvoření clusteru služby HDInsight s Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2) |
 |Azure Data Factory| Přiřazení role na identitu uživatele přiřazeny – spravované<br>**nebo**<br> Přiřadit roli instančnímu objektu služby<br>**nebo**<br> Použít klíče účtu úložiště | [Vlastnosti propojené služby](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Přiřazení role uživatel přiřazenou spravované identity | [Vytvoření clusteru služby HDInsight s Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2)|
-|Azure Databricks| Přiřadit roli instančnímu objektu služby | [Vytvoření instančního objektu služby](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-service-principal)|
+|Azure Databricks| Přiřadit roli instančnímu objektu služby | [Postup: Použití portálu k vytvoření aplikace Azure AD a instanční objekt, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Pokud chcete udělit přístup pro konkrétní soubor a složky, najdete v těchto článcích.
 

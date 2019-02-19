@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9711e9bf94619b8cd003972d74f3bca4c45894bf
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6702bfabd27b56ce473fe8eb14aadc9dc6e8e7c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312076"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338865"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 
@@ -142,7 +142,7 @@ Pro většinu operací není potřeba zadat v systému souborů. Například ná
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Data Lake Storage Gen1 nebo `wasb:///example/jars` pro službu Azure Storage.
+V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Azure Data Lake Storage Gen1 `abfs:///example/jars` pro Data Lake Storage Gen2 nebo `wasb:///example/jars` pro službu Azure Storage.
 
 ### <a name="bPS7"></a>Zápis informací o do STDOUT a STDERR
 

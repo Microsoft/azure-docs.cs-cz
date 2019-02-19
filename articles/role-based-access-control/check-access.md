@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – zobrazit role přiřazené uživateli pomocí webu Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit oprávnění řízení přístupu na základě role přiřazené uživateli, skupině, instanční objekt nebo spravovanou identitu pomocí webu Azure portal.
+title: Rychlý start – zobrazení přístupu uživatel má k prostředkům Azure | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit přístup uživatele nebo jiné objekt zabezpečení má k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) a webu Azure portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b755dd6223c21084cafea82a1c8857f9f54b03b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638651"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337941"
 ---
-# <a name="quickstart-view-roles-assigned-to-a-user-using-the-azure-portal"></a>Rychlý start: Zobrazit role přiřazené uživateli pomocí webu Azure portal
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Rychlý start: Zobrazit přístup, který má uživatel k prostředkům Azure
 
-Můžete použít **řízení přístupu (IAM)** okna [řízení přístupu na základě role (RBAC)](overview.md) zobrazit přiřazení rolí pro více uživatelů, skupiny a instanční objekty a spravované identity, ale někdy Stačí, když chcete rychle zobrazit přiřazení rolí pro jednoho uživatele, skupiny, instanční objekt nebo spravovaná identita. Nejjednodušší způsob je použít **zkontrolovat přístup** funkce na webu Azure Portal.
+Můžete použít **řízení přístupu (IAM)** okna [řízení přístupu na základě role (RBAC)](overview.md) zobrazíte přístup uživatele nebo jiného objektu zabezpečení má k prostředkům Azure. Nicméně v některých případech stačí rychle zobrazit přístup pro jednoho uživatele nebo jiného objektu zabezpečení. Nejjednodušší způsob je použít **zkontrolovat přístup** funkce na webu Azure Portal.
 
-## <a name="view-role-assignments"></a>Zobrazení přiřazení rolí
+## <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
 
-Následujícím postupem zobrazíte přiřazení rolí pro jednoho uživatele, skupiny, instanční objekt nebo spravovaná identita v oboru předplatného.
+ Způsob zobrazení přístup pro uživatele je výpis svá přiřazení rolí. Následujícím postupem zobrazíte přiřazení rolí pro jednoho uživatele, skupiny, instanční objekt nebo spravovaná identita v oboru předplatného.
 
 1. Na webu Azure Portal, klikněte na tlačítko **všechny služby** a potom **předplatná**.
 
@@ -54,4 +54,4 @@ Následujícím postupem zobrazíte přiřazení rolí pro jednoho uživatele, s
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz: Udělení přístupu pro uživatele pomocí RBAC a webu Azure portal](quickstart-assign-role-user-portal.md)
+> [Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a webu Azure portal](quickstart-assign-role-user-portal.md)

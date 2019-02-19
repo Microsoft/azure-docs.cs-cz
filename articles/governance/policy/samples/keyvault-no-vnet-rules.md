@@ -1,6 +1,6 @@
 ---
-title: Ukázkový – Key Vault auditu trezory Recovery Services pro koncové body žádné virtuální sítě
-description: Tato ukázková zásada Audituje trezory služby Key Vault ke zjišťování instancí, které mají žádné koncové body služby virtuální sítě.
+title: Ukázkový – trezory klíčů auditu pro koncové body žádné virtuální sítě
+description: Tato ukázková definice zásady auditují trezory služby Key Vault ke zjišťování instancí, které mají žádné koncové body služby virtuální sítě.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: c9a5359303c1feecfbc905099a1bed2fc10fa52d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6b53c94787cfcabae1072f9879f14e0d890e967c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245792"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341517"
 ---
-# <a name="key-vault-vaults-with-no-virtual-network-endpoints"></a>Trezory služby Key Vault s koncovými body žádné virtuální sítě
+# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Ukázkový – trezory služby Key Vault s koncovými body žádné virtuální sítě
 
 Tato zásada Audituje pro trezory služby Key Vault, které mají žádné koncové body virtuální sítě. Slouží k vynucení požadavků na zabezpečení. Další informace najdete v tématu [koncové body služeb virtuální sítě ve službě Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
 

@@ -4,204 +4,221 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/08/2017
+ms.topic: tutorial
+ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d389a9675f7d4de56a03026c0d392b9988f6b0da
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aa1771366efba82fc00886581dac77295e68f9f7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201669"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Kurz: Integrace Azure Active Directory s centrální Desktop
 
 V tomto kurzu se dozvíte, jak integrovat centrální plochy s Azure Active Directory (Azure AD).
-
 Integrace s Azure AD střed Desktop poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k ploše centrální.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení pro centrální Desktop pomocí svých účtů služby Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k ploše centrální.
+* Uživatelům se automaticky přihlášeni k centrální Desktop (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s centrální Desktop, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Předplatné centrální Desktopu jednotné přihlašování na povoleno
-
-> [!NOTE]
-> Nedoporučujeme používat produkčním prostředí pro testování kroky v tomto kurzu.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
-
-- Nepoužívejte vaše produkční prostředí, pokud to není nutné.
-- Pokud ještě nemáte zkušební prostředí Azure AD, [získat bezplatnou zkušební verzi měsíčního](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Centrální klasické pracovní plochy jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář, který je popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání centrální plochy z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-## <a name="add-central-desktop-from-the-gallery"></a>Přidání centrální plochy z Galerie
+* Centrální Desktop podporuje **SP** jednotné přihlašování zahájené pomocí
+
+## <a name="adding-central-desktop-from-the-gallery"></a>Přidání centrální plochy z Galerie
+
 Ke konfiguraci integrace centrální Desktopu do služby Azure AD, budete muset přidat centrální plochy z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat centrální plochy z galerie, proveďte následující kroky:**
+**Chcete-li přidat centrální plochy z galerie, postupujte následovně:**
 
-1. V [webu Azure portal](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte na **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat nové aplikace, **novou aplikaci** tlačítko nahoře v dialogovém okně.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **centrální Desktopu**. Vyberte **centrální Desktop** z panel výsledků a pak vyberte **přidat** tlačítko pro přidání aplikace.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Centrální Desktop v seznamu výsledků](./media/central-desktop-tutorial/tutorial_centraldesktop_addfromgallery.png)
+4. Do vyhledávacího pole zadejte **centrální Desktop**vyberte **centrální Desktop** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+     ![Centrální Desktop v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování s centrální Desktopu podle testovacího uživatele nazývá "Britta Simon."
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, kdo tento uživatel protějšky v centrální Desktopu je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele služby Azure AD a související uživatelské centrální plochy.
-
-V centrální ploše zadejte **uživatelské jméno** stejnou hodnotu jako **uživatelské jméno** ve službě Azure AD. Nyní jste vytvořili propojení mezi dva uživatele.
+V této části, konfigurace a testování Azure AD jednotné přihlašování s centrální Desktopu podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské centrální plochy.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí centrální plochy, které potřebujete k dokončení následujících stavebních bloků:
 
-1. [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on) aby uživatelé mohli tuto funkci používat.
-1. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-1. [Vytvoření zkušebního uživatele centrální Desktopu](#create-a-central-desktop-test-user) mít protějšek Britta Simon v centrální Desktopu, který je propojený s Azure AD reprezentace uživatele.
-1. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
-1. [Otestovat jednotné přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Nakonfigurujte centrální Desktopu Single Sign-On](#configure-central-desktop-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele centrální Desktop](#create-central-desktop-test-user)**  – Pokud chcete mít protějšek Britta Simon v centrální Desktopu, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Centrální Desktop.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s centrální Desktop, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s centrální Desktop, proveďte následující kroky:
 
-1. Na webu Azure Portal na **centrální Desktop** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **centrální Desktop** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Pro povolení jednotného přihlašování, v **jednotného přihlašování** v dialogu **režimu** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/central-desktop-tutorial/tutorial_centraldesktop_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. V **centrální Desktopu domény a adresy URL** části, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Centrální klasické pracovní plochy domény a adresy URL jednotného přihlašování – informace](./media/central-desktop-tutorial/tutorial_centraldesktop_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **přihlašovací adresa URL** pole, zadejte adresu URL s následujícím vzorem: `https://<companyname>.centraldesktop.com`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **identifikátor** pole, zadejte adresu URL s následujícím vzorem:
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+
+    ![Centrální Desktopu domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
+
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.centraldesktop.com`
+
+    b. V **identifikátor** pole, zadejte adresu URL, pomocí následujícího vzorce:
     | |
     |--|
     | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
     | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
+    | |
 
-    c. V **adresy URL odpovědi** pole, zadejte adresu URL s následujícím vzorem: `https://<companyname>.centraldesktop.com/saml2-assertion.php`    
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizovat s identifikátorem skutečné odpovědi adresy URL a přihlašovací adresa URL. Obraťte se [tým podpory centrální plochy klienta](https://imeetcentral.com/contact-us) k získání těchto hodnot. 
+    c. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.centraldesktop.com/saml2-assertion.php`
 
-1. V **podpisový certifikát SAML** vyberte **certifikát**. Uložte soubor certifikátu v počítači.
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory centrální klient pro stolní počítače](https://imeetcentral.com/contact-us) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-    ![Odkaz ke stažení certifikátu](./media/central-desktop-tutorial/tutorial_centraldesktop_certificate.png) 
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-1. Vyberte tlačítko **Uložit**.
+    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-    ![Konfigurace jednotné přihlašování tlačítko Uložit](./media/central-desktop-tutorial/tutorial_general_400.png)
-    
-1. V **centrální konfigurace plochy** vyberte **nakonfigurovat centrální Desktop** otevřít **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka** oddílu.
+6. Na **nastavit centrální Desktopu** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Konfigurace centrálních klasické pracovní plochy](./media/central-desktop-tutorial/tutorial_centraldesktop_configure.png) 
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-central-desktop-single-sign-on"></a>Konfigurace centrálního klasické pracovní plochy jednotného přihlašování
 
 1. Přihlaste se k vaší **centrální Desktop** tenanta.
 
-1. Přejděte na **nastavení**. Vyberte **Upřesnit**a pak vyberte **Single Sign On**.
+2. Přejděte na **nastavení**. Vyberte **Upřesnit**a pak vyberte **Single Sign On**.
 
     ![Instalační program – rozšířená](./media/central-desktop-tutorial/ic769563.png "instalační program – rozšířené")
 
-1. Na **nastavení jednotného přihlašování** stránce, proveďte následující kroky:
+3. Na **nastavení jednotného přihlašování** stránce, proveďte následující kroky:
 
     ![Jednotné přihlašování – nastavení](./media/central-desktop-tutorial/ic769564.png "nastavení jednotného přihlašování")
-    
+
     a. Vyberte **povolit SAML v2 jednotného přihlašování**.
-    
-    b. V **adresu URL jednotného přihlašování** pole, vložte **SAML Entity ID** hodnotu, kterou jste zkopírovali z portálu Azure portal.
-    
-    c. V **přihlašovací adresu URL pro jednotné přihlašování** pole, vložte **SAML jednotné přihlašování – adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure portal.
-    
-    d. V **jednotného přihlašování k odhlašovací adresa URL** pole, vložte **odhlašování URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-1. V **metodu ověření podpisu zpráva** části, proveďte následující kroky:
+    b. V **adresu URL jednotného přihlašování** pole, vložte **Azure Ad identifikátor** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    ![Zpráva metodu ověření podpisu](./media/central-desktop-tutorial/ic769565.png "metodu ověření podpisu zpráva") . Vyberte **Certifikát**.
+    c. V **přihlašovací adresu URL pro jednotné přihlašování** pole, vložte **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+
+    d. V **jednotného přihlašování k odhlašovací adresa URL** pole, vložte **odhlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+
+4. V **metodu ověření podpisu zpráva** části, proveďte následující kroky:
+
+    ![Zpráva metodu ověření podpisu](./media/central-desktop-tutorial/ic769565.png "metodu ověření podpisu zprávy")
     
+    a. Vyberte **Certifikát**.
+
     b. V **certifikát jednotného přihlašování** seznamu vyberte **RSH SHA256**.
-    
-    c. Otevřete stažený certifikát v poznámkovém bloku. Potom zkopírujte obsah certifikát a vložte ho do **certifikát jednotného přihlašování** pole.
-        
-    d. Vyberte **zobrazení odkazu na vaší přihlašovací stránce SAMLv2**.
-    
-    e. Vyberte **aktualizace**.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com) při nastavení aplikace. Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu a potom přejdete na vložené dokumentace ke službě prostřednictvím **konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace na [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
+    c. Otevřete stažený certifikát v poznámkovém bloku. Potom zkopírujte obsah certifikát a vložte ho do **certifikát jednotného přihlašování** pole.
+
+    d. Vyberte **zobrazení odkazu na vaší přihlašovací stránce SAMLv2**.
+
+    e. Vyberte **aktualizace**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně, vyberte **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/central-desktop-tutorial/create_aaduser_01.png)
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**. Potom vyberte **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/central-desktop-tutorial/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Chcete-li otevřít **uživatele** dialogovém okně vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/central-desktop-tutorial/create_aaduser_03.png)
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
+    d. Klikněte na možnost **Vytvořit**.
 
-    ![Dialogové okno uživatele](./media/central-desktop-tutorial/create_aaduser_04.png)
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-    a. V **název** zadejte **BrittaSimon**.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k centrální Desktop.
 
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **centrální Desktopu**.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    d. Vyberte **Vytvořit**.
- 
-### <a name="create-a-central-desktop-test-user"></a>Vytvoření zkušebního uživatele centrální Desktop
+2. V seznamu aplikací vyberte **centrální Desktopu**.
+
+    ![Centrální Desktopu odkaz v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-central-desktop-test-user"></a>Vytvořit centrální Desktopu testovacího uživatele
 
 Pro uživatele Azure AD bude moct přihlásit musí být poskytnuty v aplikace centrální klasické pracovní plochy. Tato část popisuje, jak vytvořit uživatelské účty služby Azure AD v centrální Desktopu.
 
@@ -212,78 +229,31 @@ Pro uživatele Azure AD bude moct přihlásit musí být poskytnuty v aplikace c
 
 1. Přihlaste se k vašemu tenantovi centrální Desktop.
 
-1. Přejděte na **lidé** > **vnitřní členy**.
-
-1. Vyberte **přidat interní členy**.
+2. Vyberte **lidé** a pak vyberte **přidat interní členy**.
 
     ![Lidé](./media/central-desktop-tutorial/ic781051.png "osoby")
-    
-1. V **e-mailovou adresu nové členy** zadejte účet služby Azure AD, které chcete zřídit a pak vyberte **Další**.
+
+3. V **e-mailovou adresu nové členy** zadejte účet služby Azure AD, které chcete zřídit a pak vyberte **Další**.
 
     ![E-mailové adresy nových členů](./media/central-desktop-tutorial/ic781052.png "e-mailové adresy nové členy")
 
-1. Vyberte **přidejte interní členy**.
+4. Vyberte **přidejte interní členy**.
 
     ![Přidat vnitřní člena](./media/central-desktop-tutorial/ic781053.png "interní přidat člena")
-   
-   >[!NOTE]
-   >Uživatelé, které přidáte dostanou e-mail, který obsahuje odkaz potvrzení pro aktivaci svých účtů.
-   
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+  
+   > [!NOTE]
+   > Uživatelé, které přidáte dostanou e-mail, který obsahuje odkaz potvrzení pro aktivaci svých účtů.
 
-V této části povolit uživatele Britta Simon používat jednotné přihlašování Azure tak, že jim udělíte přístup k ploše centrální.
-
-![Přiřazení role uživatele][200] 
-
-**Přiřadit Britta Simon centrální plochu, proveďte následující kroky:**
-
-1. Na webu Azure Portal otevřete zobrazení aplikace. Přejděte do zobrazení adresáře a potom přejděte ke **podnikové aplikace**.
-
-1. Vyberte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201] 
-
-1. V seznamu aplikací vyberte **centrální Desktopu**.
-
-    ![Centrální Desktopu odkaz v seznamu aplikací](./media/central-desktop-tutorial/tutorial_centraldesktop_app.png)  
-
-1. V nabídce na levé straně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"][202]
-
-1. Vyberte **přidat** tlačítko. Potom vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
-
-    ![Podokno Přidat přiřazení][203]
-
-1. V **uživatelů a skupin** dialogu **Britta Simon** v **uživatelé** seznamu.
-
-1. V **uživatelů a skupin** dialogové okno, klikněte na tlačítko **vyberte** tlačítko.
-
-1. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
-    
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když vyberete dlaždici centrální plochy na přístupovém panelu, můžete automaticky získat přihlášení k vaší aplikace centrální klasické pracovní plochy.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici centrální plochy na přístupovém panelu, vám by měl být automaticky přihlášeni centrální desktopu, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/central-desktop-tutorial/tutorial_general_01.png
-[2]: ./media/central-desktop-tutorial/tutorial_general_02.png
-[3]: ./media/central-desktop-tutorial/tutorial_general_03.png
-[4]: ./media/central-desktop-tutorial/tutorial_general_04.png
-
-[100]: ./media/central-desktop-tutorial/tutorial_general_100.png
-
-[200]: ./media/central-desktop-tutorial/tutorial_general_200.png
-[201]: ./media/central-desktop-tutorial/tutorial_general_201.png
-[202]: ./media/central-desktop-tutorial/tutorial_general_202.png
-[203]: ./media/central-desktop-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

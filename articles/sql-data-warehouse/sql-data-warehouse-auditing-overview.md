@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ef791bdfafbbd49cacad1a75c7171b9a030df2a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456217"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342300"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -74,10 +74,13 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
     ![Navigační podokno][8]
 
     > [!IMPORTANT]
-    > Protokoly auditování na úrovni serveru se zapisují do **doplňovací objekty BLOB** ve službě Azure Blob storage v rámci předplatného Azure.
+    > Protokoly auditu se zapisují do **doplňovací objekty BLOB** ve službě Azure Blob storage v rámci předplatného Azure.
     >
-    > * **Storage úrovně Premium** je aktuálně **nepodporuje** podle doplňovacích objektů BLOB.
-    > * **Úložiště ve virtuální síti** je aktuálně **nepodporuje**.
+    > - Podporují se všechny typy úložišť (v1, v2, objektů blob).
+    > - Podporují se všechny konfigurace replikace úložiště.
+    > - **Storage úrovně Premium** je aktuálně **nepodporuje**.
+    > - **Úložiště ve virtuální síti** je aktuálně **nepodporuje**.
+    > - **Úložiště za bránou Firewall** je aktuálně **není podporován**
 
 8. Klikněte na **Uložit**.
 

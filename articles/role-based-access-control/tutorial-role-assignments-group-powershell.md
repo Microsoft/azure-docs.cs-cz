@@ -1,6 +1,6 @@
 ---
-title: Kurz – Udělení přístupu pro skupinu pomocí RBAC a Azure PowerShellu | Microsoft Docs
-description: Použijte řízení přístupu na základě role (RBAC) k udělení přístupu skupině k zobrazení všeho v předplatném a správě všeho ve skupině prostředků pomocí Azure PowerShellu.
+title: Kurz – udělte skupině přístup k prostředkům Azure pomocí RBAC a Azure Powershellu | Dokumentace Microsoftu
+description: Zjistěte, jak udělit skupině přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) a Azure Powershellu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: ad6884067a756412efe27ce275387ff5ceb1b298
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7f080682baf42c5852e167a20bfbad7f00fe8bd3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105667"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343685"
 ---
-# <a name="tutorial-grant-access-for-a-group-using-rbac-and-azure-powershell"></a>Kurz: Udělit přístup pro skupiny pomocí RBAC a Azure Powershellu
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Kurz: Udělte skupině přístup k prostředkům Azure pomocí RBAC a Azure Powershellu
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob správy přístupu k prostředkům v Azure. V tomto kurzu pomocí Azure PowerShellu udělíte skupině přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům Azure. V tomto kurzu pomocí Azure PowerShellu udělíte skupině přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
 
 V tomto kurzu se naučíte:
 
@@ -70,7 +70,7 @@ Pro přiřazení role potřebujete uživatele, skupinu nebo instanční objekt. 
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Pokud nemáte oprávnění k vytváření skupin, můžete zkusit [kurzu: Udělit přístup pro uživatele pomocí RBAC a prostředí Azure PowerShell](tutorial-role-assignments-user-powershell.md) místo.
+Pokud nemáte oprávnění k vytváření skupin, můžete zkusit [kurzu: Udělení přístupu uživatelů k prostředkům Azure pomocí Azure Powershellu a RBAC](tutorial-role-assignments-user-powershell.md) místo.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -294,4 +294,4 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, odstraňte skupinu
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Správa přístupu pomocí RBAC a PowerShellu](role-assignments-powershell.md)
+> [Správa přístupu k prostředkům Azure pomocí RBAC a Azure Powershellu](role-assignments-powershell.md)

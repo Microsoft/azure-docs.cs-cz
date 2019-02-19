@@ -1,6 +1,6 @@
 ---
 title: Ukázkové – schválené použití virtuální sítě pro síťová rozhraní virtuálního počítače
-description: Tato ukázková zásada vyžaduje, aby síťová rozhraní používala schválenou virtuální síť.
+description: Tato definice zásady ukázka vyžaduje, aby používal síťová rozhraní schválené virtuální sítě.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 812ba3e5b8be19230f0a51820b28b279ede4a064
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 107074f6c173b33ce485aaaecf61ec50fb0d428b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243157"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341127"
 ---
-# <a name="use-approved-vnet-for-vm-network-interfaces"></a>Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
+# <a name="sample---use-approved-vnet-for-vm-network-interfaces"></a>Ukázkové – schválené použití virtuální sítě pro síťová rozhraní virtuálního počítače
 
 Tato zásada vyžaduje, aby síťová rozhraní používala schválenou virtuální síť. Zadáte ID schválené virtuální sítě.
 

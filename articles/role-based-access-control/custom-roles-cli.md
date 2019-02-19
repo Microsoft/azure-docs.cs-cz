@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastní role pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit vlastní role řízení přístupu na základě rolí (RBAC) pomocí Azure CLI. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
+title: Vytvořit vlastní role prostředků Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet vlastní role pomocí řízení přístupu na základě rolí (RBAC) pro prostředky Azure pomocí Azure CLI. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3b5d18a3e0bf846137dfdf68b8e5dd9e2db58792
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: b768f6e240c354369246a6d978ed3e8dd2f58f92
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437252"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338134"
 ---
-# <a name="create-custom-roles-using-azure-cli"></a>Vytvoření vlastní role pomocí Azure CLI
+# <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí Azure CLI
 
-Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí Azure CLI.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí Azure CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -162,6 +162,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Vytvoření vlastní role pomocí Azure CLI](tutorial-custom-role-cli.md)
-- [Vlastní role v Azure](custom-roles.md)
+- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md)
+- [Vlastní role pro prostředky Azure](custom-roles.md)
 - [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md)

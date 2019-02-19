@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: ef293b39d0e82cdd26e0c41af5d63d0459064017
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820789"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339512"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuální sítě
 
@@ -113,7 +113,7 @@ Azure využívá [řízení přístupu podle rolí](../role-based-access-control
 
 Služba Azure Policy umožňuje vytváříte, přiřazujete a spravujete definice zásad. Definice zásad u vašich prostředků vynucují různá pravidla, takže prostředky zůstanou splňovat standardy organizace a smlouvy o úrovni služeb. Azure Policy provádí hodnocení vašich prostředků, skenování pro prostředky, které nejsou kompatibilní s definicemi zásad, které máte. Můžete například definovat a použije zásadu, která umožňuje vytvářet virtuální sítě v jenom konkrétní skupině prostředků nebo oblasti. Další zásady můžete vyžadovat, že má každý podsíť skupinu zabezpečení sítě přidruženou k němu. Zásady se následně vyhodnocují při vytváření a aktualizaci prostředků.
 
-Zásady se použijí u následující hierarchie: Předplatné, skupina pro správu a skupiny prostředků. Další informace o [Azure policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo nasadit virtuální sítí [šablonu zásad](policy-samples.md) ukázky.
+Zásady se použijí u následující hierarchie: Předplatné, skupina pro správu a skupiny prostředků. Další informace o [Azure policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo nasadit virtuální sítí [šablonu zásad](policy-samples.md) ukázky.
 
 ## <a name="next-steps"></a>Další postup
 

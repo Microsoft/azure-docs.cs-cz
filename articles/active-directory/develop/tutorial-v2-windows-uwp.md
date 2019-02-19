@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 02/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0be784cdee0fd98a81c182f33dea987481aac3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6e130da9bf12d25cc5c77c825512717bdf2ba5a1
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329128"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408812"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (XAML)
 
@@ -74,14 +74,11 @@ Tento průvodce vytvoří aplikaci, která se zobrazí tlačítko tohoto dotazy 
 2. Zkopírujte a vložte následující příkaz v **Konzola správce balíčků** okno:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
+    Install-Package Microsoft.Identity.Client
     ```
 
 > [!NOTE]
-> Tento příkaz nainstaluje [knihovna Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). Knihovna MSAL získá, ukládá do mezipaměti a aktualizuje tokeny uživatele, které přístup k rozhraním API chráněné službou Azure Active Directory v2.0.
-
-> [!NOTE]
-> V tomto kurzu tak není, ale použijte nejnovější verzi MSAL.NET, ale pracujeme na jeho aktualizace.
+> Tento příkaz nainstaluje [knihovna Microsoft Authentication Library](https://aka.ms/msal-net). Knihovna MSAL získá, ukládá do mezipaměti a aktualizuje tokeny uživatele, které přístup k rozhraním API chráněné službou Azure Active Directory v2.0.
 
 ## <a name="initialize-msal"></a>Inicializovat MSAL
 Tento krok vám pomůže vytvořit třídu pro zpracování interakci s MSAL, jako je zpracování tokenů.
@@ -159,7 +156,8 @@ Tato část ukazuje použití MSAL k získání tokenu pro rozhraní Microsoft G
     
             try
             {
-                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, App.PublicClientApp.Users.FirstOrDefault());
+                var accounts = await App.PublicClientApp.GetAccountsAsync();
+                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault());
             }
             catch (MsalUiRequiredException ex)
             {
@@ -203,15 +201,15 @@ Volání `AcquireTokenAsync` metodu vede okno, které vyzve uživatele k přihl�
 
 Nakonec `AcquireTokenSilentAsync` metoda selže. Důvody pro selhání může být, že uživatelé mají odhlášení nebo změnit své heslo na jiném zařízení. Knihovna MSAL zjistí, že problém lze vyřešit tak, že vyžaduje interaktivní akci, vyvolá-li `MsalUiRequiredException` výjimky. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
-* To lze uskutečnit volání proti `AcquireTokenAsync` okamžitě. Toto volání za následek výzvy k přihlášení. Za normálních okolností se tento model používá v online aplikace tam, kde není žádný k dispozici offline obsah pro uživatele. Následující ukázka vygeneroval tento instalační program s asistencí. Zobrazí se v akci první čas spuštění ukázky. 
-    * Vzhledem k tomu, že žádný uživatel použil aplikace, `PublicClientApp.Users.FirstOrDefault()` obsahuje hodnotu null a `MsalUiRequiredException` je vyvolána výjimka.
-    * Kód v ukázce pak zpracovává výjimku při volání `AcquireTokenAsync`. Toto volání za následek výzvy k přihlášení.
+* To lze uskutečnit volání proti `AcquireTokenAsync` okamžitě. Toto volání za následek výzvy k přihlášení. Za normálních okolností se tento model používá v online aplikace tam, kde není žádný k dispozici offline obsah pro uživatele. Následující ukázka vygeneroval tento instalační program s asistencí. Zobrazí se v akci první čas spuštění ukázky.
+  * Vzhledem k tomu, že žádný uživatel použil aplikace, `accounts.FirstOrDefault()` obsahuje hodnotu null a `MsalUiRequiredException` je vyvolána výjimka.
+  * Kód v ukázce pak zpracovává výjimku při volání `AcquireTokenAsync`. Toto volání za následek výzvy k přihlášení.
 
 * Nebo místo toho prezentuje vizuální označení pro uživatele, že interaktivní přihlášení je povinné. Potom může vybrat správný čas pro přihlášení. Nebo můžete opakovat aplikace `AcquireTokenSilentAsync` později. Tento model se často používá při uživatelé mohou používat další funkce aplikace bez výpadků. Příkladem je při offline obsah je k dispozici v aplikaci. V takovém případě může uživatel rozhodne ji k přihlášení k přístup k chráněnému prostředku nebo aktualizujte zastaralé informace. Nebo jiná aplikace se můžete rozhodnout používat opakovat `AcquireTokenSilentAsync` po síti obnovení poté, co byla dočasně nedostupný.
 
 ## <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Volání rozhraní Microsoft Graph API s využitím, které jste získali token
 
-* Přidejte následující novou metodu pro **MainPage.xaml.cs**. Tato metoda se používá, aby `GET` požadavek s využitím rozhraní Graph API s využitím hlavičku [Authorize]:
+* Přidejte následující novou metodu pro **MainPage.xaml.cs**. Tato metoda se používá, aby `GET` požadavek s využitím rozhraní Graph API s využitím `Authorization` záhlaví:
 
     ```csharp
     /// <summary>
@@ -255,11 +253,12 @@ V této ukázkové aplikaci `GetHttpContentWithToken` aby protokolu HTTP se pou�
     /// </summary>
     private void SignOutButton_Click(object sender, RoutedEventArgs e)
     {
-        if (App.PublicClientApp.Users.Any())
+        var accounts = await App.PublicClientApp.GetAccountsAsync();
+        if (accounts.Any())
         {
             try
             {
-                App.PublicClientApp.Remove(App.PublicClientApp.Users.FirstOrDefault());
+                App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault());
                 this.ResultText.Text = "User has signed-out";
                 this.CallGraphButton.Visibility = Visibility.Visible;
                 this.SignOutButton.Visibility = Visibility.Collapsed;
@@ -333,7 +332,7 @@ Povolit integrované ověřování Windows, když se použije s parametrem feder
     ```
 
 > [!IMPORTANT]
-> Integrované ověřování Windows není nakonfigurována ve výchozím nastavení pro tuto ukázku. Aplikace, které vyžadují *podnikové ověřování* nebo *sdílené uživatelské certifikáty* možnosti vyžadovat vyšší úroveň ověření ve Windows Store. Také ne všechny vývojáři chtějí provádět vyšší úroveň ověřování. Toto nastavení povolte pouze v případě, že potřebujete integrované ověřování Windows ve federované domény Azure Active Directory.
+> [Integrované ověřování Windows](https://aka.ms/msal-net-iwa) není nakonfigurovaná ve výchozím nastavení pro tuto ukázku. Aplikace, které vyžadují *podnikové ověřování* nebo *sdílené uživatelské certifikáty* možnosti vyžadovat vyšší úroveň ověření ve Windows Store. Také ne všechny vývojáři chtějí provádět vyšší úroveň ověřování. Toto nastavení povolte pouze v případě, že potřebujete integrované ověřování Windows ve federované domény Azure Active Directory.
 
 ## <a name="test-your-code"></a>Testování kódu
 

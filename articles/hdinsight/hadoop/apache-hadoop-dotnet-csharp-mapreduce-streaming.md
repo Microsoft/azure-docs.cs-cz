@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 130ca849b39336637f53b32043874b5d037a8f0d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435306"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342919"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# s MapReduce datových proudů na Apache Hadoop v HDInsight
 
@@ -175,7 +175,13 @@ Po vytvoření aplikace, sestavte ho vytvořit `/bin/Debug/reducer.exe` soubor v
 
 2. Pomocí jedné z následujících příkazů spusťte úlohu MapReduce:
 
-    * Pokud používáte __Data Lake Storage__ jako výchozí úložiště:
+    * Pokud používáte __Data Lake Storage Gen2__ jako výchozí úložiště:
+
+        ```bash
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+        ```
+
+    * Pokud používáte __Data Lake Storage Gen1__ jako výchozí úložiště:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -190,7 +196,7 @@ Po vytvoření aplikace, sestavte ho vytvořit `/bin/Debug/reducer.exe` soubor v
     Následující seznam popisuje, co dělá každý parametr:
 
     * `hadoop-streaming.jar`: Soubor jar, který obsahuje funkce datových proudů MapReduce.
-    * `-files`: Přidá `mapper.exe` a `reducer.exe` soubory do této úlohy. `adl:///` Nebo `wasb:///` před každého souboru je cesta ke kořenové výchozí úložiště pro cluster.
+    * `-files`: Přidá `mapper.exe` a `reducer.exe` soubory do této úlohy. `abfs:///`,`adl:///` Nebo `wasb:///` před každého souboru je cesta ke kořenové výchozí úložiště pro cluster.
     * `-mapper`: Určuje soubor, který implementuje Mapovač.
     * `-reducer`: Určuje soubor, který implementuje redukční funkci.
     * `-input`: Vstupní data.

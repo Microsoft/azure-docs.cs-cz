@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru a databáze Azure Data Exploreru'
+title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze'
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster a databázi Azure Data Exploreru a ingestovat (načíst) data.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214813"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408829"
 ---
-# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru a databáze Azure Data Exploreru
+# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pokud chcete použít Azure Data Explorer, musíte nejdříve vytvořit *cluster* a v něm vytvořit jednu nebo více *databází*. Do databáze potom *ingestujete* (načtete) data, abyste se na ně mohli dotazovat spouštěním dotazů. V tomto rychlém startu vytvoříte cluster a databázi. V dalších článcích vám ukážeme, jak ingestovat data.
 
@@ -77,8 +77,8 @@ Teď jste připraveni na druhý krok procesu: vytvoření databáze.
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Název databáze | *TestDatabase* | Název databáze musí být v rámci clusteru jedinečný.
-    | Doba uchovávání | *3650* | Období, v rámci kterého je zaručeno, že budou data k dispozici pro dotazy. Časový rozsah se začíná měřit od okamžiku, kdy jsou data ingestována.
-    | Doba uložení v mezipaměti | *31* | Časový rozsah, po který chcete ponechat často dotazovaná data k dispozici v úložišti SSD nebo paměti RAM místo v dlouhodobém úložišti.
+    | Doba uchovávání | *3650* | Časové období (ve dnech) u kterého je zaručeno, že je udržuje k dispozici pro dotazy. Časový rozsah se začíná měřit od okamžiku, kdy jsou data ingestována.
+    | Doba uložení v mezipaměti | *31* | Časový interval (ve dnech), pro které chcete ponechat často dotazovat data k dispozici v úložiště SSD nebo paměti RAM, nikoli v dlouhodobé úložiště.
     | | | |
 
 1. Výběrem možnosti **Uložit** vytvořte databázi. Vytvoření obvykle trvá méně než minutu. Po dokončení procesu budete zpět na kartě **Přehled** clusteru.
@@ -127,9 +127,9 @@ Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, 
 
 1. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit (*test-resource-group*), a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru](ingest-data-event-hub.md)
+> [Rychlé zprovoznění: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
 
 

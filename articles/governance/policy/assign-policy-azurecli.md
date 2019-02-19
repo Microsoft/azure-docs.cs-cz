@@ -1,5 +1,5 @@
 ---
-title: Vytvoření zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
+title: Vytvoření zásady pro nekompatibilní prostředky pomocí Azure CLI
 description: Pomocí Azure CLI k vytvoření přiřazení Azure Policy pro identifikaci prostředků, které nedodržují předpisy.
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3b4f71e420c0d80594193f27739fd120881247d4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1f80171e8987f92688d564713e29fbfe2e103335
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856226"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342180"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
 
@@ -73,7 +73,7 @@ Další informace o ID přiřazení zásad najdete v tématu [Get-AzPolicyAssign
 
 Pak spuštěním následujícího příkazu získejte a zapište do souboru JSON ID prostředků, které nedodržují předpisy:
 
-```
+```console
 armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 

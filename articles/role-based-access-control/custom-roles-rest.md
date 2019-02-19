@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastní role pomocí rozhraní REST API – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit vlastní role řízení přístupu na základě role (RBAC) pomocí rozhraní REST API. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
+title: Vytvoření vlastních rolí pro prostředky Azure pomocí rozhraní REST API – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet vlastní role pomocí řízení přístupu na základě rolí (RBAC) pro prostředky Azure pomocí rozhraní REST API. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8a1bbe8217e2d4a9846f56124e248e19cbe70b19
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: cfcb7ef2a4fc02932f9d03c277b105c4b1e0ff3a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436058"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338763"
 ---
-# <a name="create-custom-roles-using-the-rest-api"></a>Vytvoření vlastní role pomocí rozhraní REST API
+# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí rozhraní REST API
 
-Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí rozhraní REST API.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí rozhraní REST API.
 
 ## <a name="list-roles"></a>Výpis rolí
 
@@ -38,7 +38,7 @@ Chcete-li vypsat všechny role nebo získat informace o jedné role pomocí náz
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam rolí.
 
-    | Rozsah | Typ |
+    | Rozsah | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -67,7 +67,7 @@ Pokud chcete získat informace o jedné role pomocí názvu zobrazení, najdete 
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam rolí.
 
-    | Rozsah | Typ |
+    | Rozsah | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -115,7 +115,7 @@ Chcete-li vytvořit vlastní roli, použijte [definice rolí – vytvořit nebo 
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s prvním `assignableScopes` vlastní role.
 
-    | Rozsah | Typ |
+    | Rozsah | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -179,7 +179,7 @@ Chcete-li aktualizovat vlastní roli, použijte [definice rolí – vytvořit ne
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s prvním `assignableScopes` vlastní role.
 
-    | Rozsah | Typ |
+    | Rozsah | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -262,7 +262,7 @@ Pokud chcete odstranit vlastní roli, použijte [odstranit definice rolí –](/
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, který chcete odstranit vlastní roli.
 
-    | Rozsah | Typ |
+    | Rozsah | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
@@ -272,6 +272,6 @@ Pokud chcete odstranit vlastní roli, použijte [odstranit definice rolí –](/
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vlastní role v Azure](custom-roles.md)
-- [Správa přístupu pomocí RBAC a rozhraní REST API](role-assignments-rest.md)
+- [Vlastní role pro prostředky Azure](custom-roles.md)
+- [Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní REST API](role-assignments-rest.md)
 - [Reference k rozhraní Azure REST API](/rest/api/azure/)

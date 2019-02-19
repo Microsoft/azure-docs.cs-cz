@@ -1,6 +1,6 @@
 ---
-title: Kurz – Vytvoření vlastní role pomocí Azure CLI | Microsoft Docs
-description: Začněte vytvářet vlastní roli pomocí Azure CLI.
+title: Kurz – vytvoření vlastní role pro prostředky Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Začínáme s vytvářením vlastní role pro prostředky Azure pomocí Azure CLI.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: d2b34fa12836416f68d57f0147dd0364a1501c13
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9cd736272fce71f08006d32a169b88d092a48231
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698011"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340208"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-cli"></a>Kurz: Vytvoření vlastní role pomocí Azure CLI
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
 
-Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Tato vlastní role umožní uživateli zobrazit vše v předplatném a také otevírat lístky podpory.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Tato vlastní role umožní uživateli zobrazit vše v předplatném a také otevírat lístky podpory.
 
 V tomto kurzu se naučíte:
 
@@ -269,4 +269,4 @@ Pokud chcete aktualizovat vlastní roli, aktualizujte soubor JSON a pak aktualiz
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních rolí pomocí CLI](custom-roles-cli.md)
+> [Vytvoření vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md)

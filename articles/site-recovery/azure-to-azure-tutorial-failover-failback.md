@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1866a5d86d3ee47371a5eb6e14c2976798d2b4da
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ab920094561b9143945793ddd4ea3da877a7ae90
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787838"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340531"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Převzetí služby při selhání a navrácení služby po obnovení pro virtuální počítače Azure mezi oblastmi Azure
 
@@ -70,6 +70,16 @@ Po převzetí služeb při selhání virtuálního počítače pro něj musíte 
 3. Zkontrolujte informace o **skupině prostředků, síti, úložišti a skupinách dostupnosti**. Všechny prostředky označené jako (nové) se vytvoří v rámci operace znovunastavení ochrany.
 4. Kliknutím na **OK** aktivujte úlohu znovunastavení ochrany. Tato úloha přidá do cílové lokality nejnovější data. Pak replikuje rozdíly do primární oblasti. Virtuální počítač je teď v chráněném stavu.
 
+> [!NOTE]
+> Zobrazit ["jak" část](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection) další podrobnosti o pracovní postup opětovného nastavování ochrany a co se stane během opětovného nastavování ochrany.
+
+
 ## <a name="fail-back-to-the-primary-region"></a>Navrácení služeb po obnovení do primární oblasti
 
-Po znovunastavení ochrany virtuálních počítačů můžete podle potřeby provést navrácení služeb po obnovení do primární oblasti. To uděláte tak, že nastavíte převzetí služeb při selhání ze sekundární do primární oblasti, jak popisuje tento článek.
+Po znovunastavení ochrany virtuálních počítačů, můžete navrátit služby zpět do primární oblasti pro potřeby. Provedete to tak, nastavení převzetí služeb při selhání ze sekundární oblasti do primární oblasti, jak je popsáno v tomto článku.
+
+![Kliknutí pravým tlačítkem a znovunastavení ochrany](./media/azure-to-azure-tutorial-failover-failback/failback.png)
+
+Pokud vidíte na předchozím snímku obrazovky "ContosoWin2016" virtuálního počítače při selhání z USA (střed) – Východ USA a se nezdařilo obnovení z USA – Východ USA (střed).
+
+Převzetí služeb při vypnutí virtuálního počítače v sekundární oblasti, to znamená, oblasti pro zotavení po havárii a vytvoří a spustí virtuální počítač v primární oblasti. Prosím **Poznámka** , zotavení po Havárii virtuálních počítačů zůstanou ve stavu přidělení, jak je znázorněno výše. Toto chování je záměrné, protože Azure Site Recovery ukládá informace virtuálního počítače, které mohou být užitečné při převzetí služeb při selhání pro primární do sekundární oblasti později. Se vám neúčtují poplatky pro uvolnění virtuální počítače, abyste je měli uchovávat.

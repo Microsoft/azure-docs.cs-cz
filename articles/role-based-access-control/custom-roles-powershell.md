@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastní role pomocí Azure Powershellu | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit vlastní role řízení přístupu na základě rolí (RBAC) pomocí Azure Powershellu. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
+title: Vytvoření vlastních rolí pro prostředky Azure pomocí Azure Powershellu | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet vlastní role pomocí řízení přístupu na základě rolí (RBAC) pro prostředky Azure pomocí Azure Powershellu. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 26e5b33504ff543e8442108e4368ce3b04f25df4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92c061a7f854b46ab5aee07aa5e648ace8f9ae52
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696743"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343838"
 ---
-# <a name="create-custom-roles-using-azure-powershell"></a>Vytvoření vlastní role pomocí Azure Powershellu
+# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí Azure Powershellu
 
-Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí Azure Powershellu.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí Azure Powershellu.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Vytvoření vlastní role pomocí Azure Powershellu](tutorial-custom-role-powershell.md)
-- [Vlastní role v Azure](custom-roles.md)
+- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure Powershellu](tutorial-custom-role-powershell.md)
+- [Vlastní role pro prostředky Azure](custom-roles.md)
 - [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md)

@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – použít značku a její výchozí hodnotu
-description: Tato ukázková zásada připojí název a hodnotu zadané značky v případě, že se žádná značka neposkytne.
+description: Tato definice zásady ukázka připojí zadaný název značky a hodnoty, pokud, který není k dispozici značky.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef044d5ccba706ebc0c7102414cb1e2b42b537cb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 989d09b3e4b576fa21156ec71485c54422c643b7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242154"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338220"
 ---
-# <a name="apply-tag-and-its-default-value"></a>Zavedení značky a její výchozí hodnoty
+# <a name="sample---apply-tag-and-its-default-value"></a>Ukázkový – použít značku a její výchozí hodnotu
 
 Tyto zásady připojí název a hodnotu zadané značky v případě, že se žádná značka neposkytne. Zadáte název a hodnotu značky, které se mají použít.
 

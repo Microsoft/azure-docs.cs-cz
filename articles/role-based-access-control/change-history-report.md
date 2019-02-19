@@ -1,6 +1,6 @@
 ---
-title: Zobrazení protokolů aktivit pro RBAC změny v Azure | Dokumentace Microsoftu
-description: Zobrazit protokoly aktivit pro řízení přístupu na základě role (RBAC) změny za posledních 90 dnů.
+title: Zobrazení protokolů aktivit pro RBAC se změní na prostředky Azure | Dokumentace Microsoftu
+description: Zobrazit protokoly aktivit pro řízení přístupu na základě role (RBAC) změny k prostředkům Azure za posledních 90 dnů.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117644"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338802"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>Zobrazení protokolů aktivit pro RBAC změny
+# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Zobrazení protokolů aktivit se změny prostředků Azure RBAC
 
-Někdy potřebujete informace o změnách přístupu na základě role (RBAC) ovládacího prvku, například pro auditování a odstraňování potíží. Kdykoli někdo provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny budou protokolovat [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md). Můžete zobrazit protokoly aktivit zobrazíte všechny RBAC změny za posledních 90 dnů.
+Někdy potřebujete informace o změnách řízení přístupu na základě rolí k prostředkům Azure, například pro auditování a odstraňování potíží. Kdykoli někdo provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny budou protokolovat [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md). Můžete zobrazit protokoly aktivit zobrazíte všechny RBAC změny za posledních 90 dnů.
 
 ## <a name="operations-that-are-logged"></a>Operace, které se protokolují
 

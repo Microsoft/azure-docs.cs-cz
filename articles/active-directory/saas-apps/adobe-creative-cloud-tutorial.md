@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb593e198e4dff8f30bddfe26071523ea7a893d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a160c604050f567f3fc0f77ca20a22349f07fd9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179225"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341160"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Kurz: Integrace Azure Active Directory s Adobe Creative Cloud
 
@@ -45,7 +45,7 @@ Konfigurace integrace Azure AD s Adobe Creative Cloud, potřebujete následujíc
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Adobe Creative Cloud podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Adobe Creative Cloud podporuje **SP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Přidání Adobe Creative Cloud z Galerie
 
@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat integraci Adobe Creative Cloud do služby Azure AD, 
 
 4. Do vyhledávacího pole zadejte **Adobe Creative Cloud**vyberte **Adobe Creative Cloud** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Adobe Creative Cloud v seznamu výsledků](common/search-new-app.png)
+    ![Adobe Creative Cloud v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -101,29 +101,23 @@ Ke konfiguraci Azure AD jednotné přihlašování s Adobe Creative Cloud, prove
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat v **IDP** intiated režimu proveďte následující kroky:
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    ![Adobe Creative Cloud domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Adobe Creative Cloud domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.okta.com/saml2/service-provider/<token>`
+    a. V **přihlašovací adresa URL** textové pole, zadejte hodnotu jako: `https://adobe.com`.
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company name>.okta.com/auth/saml20/accauthlinktest`
+    b. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s identifikátorem skutečná adresa URL odpovědi. Kontakt [tým podpory Adobe Creative Cloud klienta](https://www.adobe.com/au/creativecloud/business/teams/plans.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota identifikátoru není skutečný. Aktualizujte tuto hodnotu skutečné identifikátor. Kontakt [tým podpory Adobe Creative Cloud klienta](https://www.adobe.com/au/creativecloud/business/teams/plans.html) tuto výhodu získáte. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
-
-    V **přihlašovací adresa URL** textové pole, zadejte hodnotu jako: `https://adobe.com`.
-
-    ![Adobe Creative Cloud domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
-
-6. Adobe Creative Cloud aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+5. Adobe Creative Cloud aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
 
     ![image](common/edit-attribute.png)
 
-7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
- 
+6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+
     | Název | Zdrojový atribut|
     |----- | --------- |
     | FirstName | user.givenname |
@@ -151,11 +145,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s Adobe Creative Cloud, prove
     > [!NOTE]
     > Uživatelé musí mít platnou licenci Office 365 ExO e-mailu pro hodnoty, který se má naplnit odpověď SAML deklarace identity.
 
-8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-9. Na **nastavení Adobe Creative Cloud** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+8. Na **nastavení Adobe Creative Cloud** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 

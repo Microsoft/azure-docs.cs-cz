@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5049a5a829ce8e94b62409c9d3b1439e8431fb1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 3274d753d33c759efa06b899a5511daf53aa9ec9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101115"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338644"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure classic
 
-Microsoft doporučuje při správě přístupu k prostředkům pomocí řízení přístupu na základě role (RBAC). Pokud stále používáte model nasazení classic, budete však muset použít roli správce klasickém modelu předplatného: Správce služeb a spolupracujících správců. Další informace najdete v tématu [Azure Resource Manageru a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft doporučuje při správě přístupu k prostředkům Azure pomocí řízení přístupu na základě role (RBAC). Pokud stále používáte model nasazení classic, budete však muset použít roli správce klasickém modelu předplatného: Správce služeb a spolupracujících správců. Další informace najdete v tématu [Azure Resource Manageru a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Tento článek popisuje postup přidání nebo změna role spolupracujícího správce a Správce služby a jak zobrazit správce účtu.
 
@@ -155,4 +155,4 @@ Následujícím postupem zobrazíte správce účtu.
 ## <a name="next-steps"></a>Další postup
 
 * [Vysvětlení různých rolí v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Správa přístupu pomocí RBAC a portálu Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 209a5a9c213a48920452230b1d684fdf0738e87d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6d2ae1d1846506424aa14cca0f597c8888eb903d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496903"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341024"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamčení prostředků, aby se zabránilo neočekávaným změnám 
 
@@ -220,6 +220,6 @@ V požadavku obsahovat objekt JSON, který určuje vlastnosti pro zámek.
 ## <a name="next-steps"></a>Další postup
 * Další informace o logické uspořádání vašich prostředků najdete v tématu [použití značek k uspořádání prostředků](resource-group-using-tags.md)
 * Chcete-li změnit kterou skupinu prostředků, prostředek se nachází v [přesunutí prostředků do nové skupiny prostředků](resource-group-move-resources.md)
-* Můžete použít omezení a pravidla týkající se předplatného pomocí vlastních zásad. Další informace najdete v tématu [Co je Azure Policy?](../azure-policy/azure-policy-introduction.md).
+* Můžete použít omezení a pravidla týkající se předplatného pomocí vlastních zásad. Další informace najdete v tématu [Co je Azure Policy?](../governance/policy/overview.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

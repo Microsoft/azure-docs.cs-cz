@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: aff57e58ffd247bcc697908f2f25cbf17ff9b91a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244126"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338457"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – prostředky
 Tento článek se zabývá zarovnání a správu prostředků pro DevTest Labs ve vaší organizaci. 
@@ -56,7 +56,7 @@ Jak spravovat zásady vytváření názvů Moje prostředí DevTest Labs?
 ### <a name="answer"></a>Odpověď
 Můžete rozšířit stávající konvence pojmenování enterprise na provoz Azure a zajištění konzistentní napříč prostředí DevTest Labs.
 
-Při nasazování DevTest Labs, doporučujeme, abyste měli určité výchozí zásady. Tyto zásady centrální skriptů a šablon JSON vynucovat konzistenci nasazujete. Pojmenování zásady je možné implementovat pomocí Azure zásady na úrovni předplatného. Ukázky JSON pro Azure Policy najdete v tématu [ukázek Azure Policy](../azure-policy/json-samples.md).
+Při nasazování DevTest Labs, doporučujeme, abyste měli určité výchozí zásady. Tyto zásady centrální skriptů a šablon JSON vynucovat konzistenci nasazujete. Pojmenování zásady je možné implementovat pomocí Azure zásady na úrovni předplatného. Ukázky JSON pro Azure Policy najdete v tématu [ukázek Azure Policy](../governance/policy/samples/index.md).
 
 ## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Počet uživatelů podle testovacího prostředí a cvičení na organizaci
 

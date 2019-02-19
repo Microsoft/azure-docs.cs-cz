@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu pomocí RBAC a rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat přístup pro uživatele, skupiny nebo aplikace, pomocí rozhraní příkazového řádku Azure a řízení přístupu na základě rolí (RBAC). To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
+title: Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Další informace o správě přístupu k prostředkům Azure pro uživatele, skupiny nebo aplikace pomocí rozhraní příkazového řádku Azure a řízení přístupu na základě rolí (RBAC). To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6d1e64c7630f3fd35124e6671476174ddfc16bb6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437095"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341707"
 ---
-# <a name="manage-access-using-rbac-and-azure-cli"></a>Správa přístupu pomocí RBAC a rozhraní příkazového řádku Azure
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní příkazového řádku Azure
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob správy přístupu k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a rozhraní příkazového řádku Azure.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a rozhraní příkazového řádku Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -311,5 +311,5 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Vytvoření vlastní role pomocí Azure CLI](tutorial-custom-role-cli.md)
-- [Pomocí Azure CLI ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
+- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md)
+- [Pomocí Azure CLI ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/cli-azure-resource-manager.md)

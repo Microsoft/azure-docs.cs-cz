@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – Povolit jenom určité platformy image virtuálního počítače
-description: Tato ukázková zásada vyžaduje, aby virtuální počítače používaly konkrétní verzi UbuntuServeru.
+description: Tato definice zásady ukázka vyžaduje, aby používal virtuální počítače na konkrétní verzi nástroje UbuntuServer.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f585995cd948c16f576cae8c67bf37ab07a5575f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a2268dfe0ee696c675c069c9770f66c7ba0b1fa9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241525"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342741"
 ---
-# <a name="only-allow-a-certain-vm-platform-image"></a>Povolení jenom určité image platformy virtuálního počítače
+# <a name="sample---only-allow-a-certain-vm-platform-image"></a>Ukázkový – Povolit jenom určité platformy image virtuálního počítače
 
 Vyžaduje, aby virtuální počítače používaly konkrétní verzi UbuntuServeru.
 

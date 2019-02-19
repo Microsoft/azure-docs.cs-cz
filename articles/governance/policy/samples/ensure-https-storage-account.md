@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – ověřte přenosy HTTPS pouze pro účet úložiště
-description: Tato ukázková zásada vyžaduje, aby účty úložiště používaly provoz HTTPS.
+description: Tato definice zásady ukázka vyžaduje účty úložiště použít provoz HTTPS.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: fb708b016bb2372af71b564c502185623b1717eb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9900b56c6e0bfe928bd01cffb2a0b785d582a5d4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241638"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337641"
 ---
-# <a name="ensure-https-traffic-only-for-storage-account"></a>Zajištění výhradně provozu HTTPS pro účet úložiště
+# <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Ukázkový – ověřte přenosy HTTPS pouze pro účet úložiště
 
 Tato zásada vyžaduje, aby účty úložiště používaly provoz HTTPS.
 

@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – povolená SKU brány aplikací
-description: Tato ukázková zásada vyžaduje, aby aplikační brány používaly schválené skladové položky.
+description: Tato definice zásady ukázka vyžaduje, aby používal služby application Gateway schválené SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: db38c51a936b475b26b607cf873b25e46b894e25
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8bc1d9fc7622b4fad68b26836ce1ff3b96e02885
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242086"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343421"
 ---
-# <a name="allowed-application-gateway-skus"></a>Povolené skladové položky aplikační brány
+# <a name="sample---allowed-application-gateway-skus"></a>Ukázkový – povolená SKU brány aplikací
 
 Tato zásada vyžaduje, aby aplikační brány používaly schválené skladové položky. Zadejte pole schválených skladových položek.
 

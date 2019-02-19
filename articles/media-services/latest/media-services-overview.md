@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 1911b851e4e219ec4c6d2d4872b75e9c18706feb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893319"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337557"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -62,7 +62,7 @@ Názvy prostředků služby Media Services nemůže obsahovat znaky <, >, %, &, 
 
 Další informace o zadávání názvů Azure Resource Manageru najdete v tématu: [Požadavky na pojmenování](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a [zásady vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
-## <a name="media-services-v3-api-design-principles"></a>Principy návrhu rozhraní API služby Media Services v3
+## <a name="v3-api-design-principles"></a>Principy návrhu rozhraní API v3
 
 Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. Rozhraní API v3 nevrací tajné kódy nebo přihlašovací údaje v rámci operací **Get** nebo **List**. Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Abyste získali tajné kódy nebo přihlašovací údaje, je třeba volat metodu samostatné akce. Samostatné akce umožňují nastavit různá oprávnění zabezpečení RBAC v případě, že některá rozhraní API načítají nebo zobrazují tajné kódy a jiná rozhraní API ne. Informace o správě přístupu pomocí RBAC najdete v tématu popisujícím [použití RBAC pro správu přístupu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
 
@@ -76,25 +76,20 @@ Zobrazit [získání obsahu klíče zásad – .NET](get-content-key-policy-dotn
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3?
 
-Jako vývojář, můžete použít Media Services [rozhraní REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) nebo klientských knihoven, které umožňují pracovat s rozhraním REST API snadno vytvářet, spravovat a udržovat vlastní multimediální pracovní postupy. Media Services v3 podle rozhraní API [specifikace OpenAPI](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media) (dříve označované jako Swagger).
+Informace o tom, jak začít s vývojem pomocí rozhraní API služby Media Services v3 pomocí variuos nástroje a sady SDK najdete v tématu [začít s vývojem](developers-guide.md).
 
-[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj Windows zákazníkům, kteří chtějí informace o Media Services k dispozici. AMSE je jazyce Winforms /C# aplikaci, která nahrání, stažení, kódování, streamování videa na Vyžádání a živého obsahu pomocí služby Media Services. Nástroj AMSE je pro klienty, kteří chtějí testování Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet s využitím Media Services.
+## <a name="v3-content-map"></a>Mapa obsahu v3
 
-AMSE je Opensourcový projekt, je podporované komunitou (jsou hlášeny problémy https://github.com/Azure/Azure-Media-Services-Explorer/issues). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v článku [kódu k pravidlům chování](https://opensource.microsoft.com/codeofconduct/faq/) nebo se obraťte na opencode@microsoft.com s případnými dotazy nebo připomínky.
- 
-Azure Media Services podporuje následujících klientských knihoven: 
+Služba Media Services v3 obsah je uspořádaný podle následující strukturu (odráží rovněž v obsahu):
 
-|Referenční informace k rozhraní API|Sady SDK nebo nástroje|Příklady|
-|---|---|---|---|
-|[Referenční informace k REST](https://aka.ms/ams-v3-rest-ref)|[REST SDK](https://aka.ms/ams-v3-rest-sdk)|[Příklady REST Postman](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[Rozhraní REST API založené na Azure Resource Manageru](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
-|[Referenční informace k Azure CLI](https://aka.ms/ams-v3-cli-ref)|[Azure CLI](https://aka.ms/ams-v3-cli)|[Příklady rozhraní příkazového řádku Azure](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
-|[Referenční informace k .NET](https://aka.ms/ams-v3-dotnet-ref)|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Příklady v .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
-||[.NET Core SDK](https://aka.ms/ams-v3-dotnet-sdk) (zvolte kartu **.NET CLI**)|[Příklady v .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
-|[Referenční informace k Javě](https://aka.ms/ams-v3-java-ref)|[Java SDK](https://aka.ms/ams-v3-java-sdk)||
-|[Referenční informace k Node.js](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Ukázky Node.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
-|[Referenční informace k Pythonu](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
-|[Referenční informace k jazyku Go](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
-|Ruby|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
+|Oddíly| Popis|
+|---|---|
+| Přehled | Popisuje funkce služby Media Services a co můžete dělat ve službě.|
+| Šablony Rychlý start | Zobrazit základní 1 den pokyny pro rychlé vyzkoušení služby Media Services ji noví zákazníci.|
+| Kurzy | Zobrazte založené na scénářích postupy pro některé nejčastější úkoly Media Services.|
+| Ukázky | Obsahuje odkazy na ukázky kódu. |
+| Koncepty | Obsahují podrobné vysvětlení funkcí služby Media Services v3 a diagramy. Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.<br/><br/>* Cloudu nahrávání a úložiště<br/>* Kódování<br/>* Media analytics<br/>* Balení, poskytování ochrany<br/>* Živé streamování<br/>* Nepřetržité monitorování<br/>* Player klientů<br/><br/>a další. |
+| Návody | Předvedeme vám k dokončení úkolu.|
 
 ## <a name="next-steps"></a>Další postup
 

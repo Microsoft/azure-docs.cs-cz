@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu pomocí RBAC a webu Azure Portal | Microsoft Docs
-description: Zjistěte, jak můžete spravovat přístup pro uživatele, skupiny, instančních objektů a spravované identity, řízení přístupu na základě role (RBAC) a webu Azure portal. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
+title: Správa přístupu k Azure resoruces pomocí RBAC a webu Azure portal | Dokumentace Microsoftu
+description: Další informace o správě přístupu k prostředkům Azure pro uživatele, skupiny, instančních objektů a spravované identity, řízení přístupu na základě role (RBAC) a webu Azure portal. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 1e3057108ef179af2f4692c061091fbdf59f0af2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412304"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342333"
 ---
-# <a name="manage-access-using-rbac-and-the-azure-portal"></a>Správa přístupu pomocí RBAC a webu Azure Portal
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob správy přístupu k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny, instančních objektů a spravovaných identit pomocí RBAC a webu Azure portal.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny, instančních objektů a spravovaných identit pomocí RBAC a webu Azure portal.
 
 ## <a name="open-access-control-iam"></a>Otevřete řízení přístupu (IAM)
 
@@ -41,7 +41,7 @@ ms.locfileid: "54412304"
 
 ## <a name="view-roles-and-permissions"></a>Zobrazit role a oprávnění
 
-Definice role je kolekce oprávnění, kterou používáte pro přiřazení rolí. Azure má víc než 70 [předdefinované role](built-in-roles.md). Postupujte podle těchto kroků pro zobrazení, rolí a oprávnění, které lze provést u správy a rovina dat.
+Definice role je kolekce oprávnění, kterou používáte pro přiřazení rolí. Azure má víc než 70 [předdefinované role pro prostředky Azure](built-in-roles.md). Postupujte podle těchto kroků pro zobrazení, rolí a oprávnění, které lze provést u správy a rovina dat.
 
 1. Otevřít **řízení přístupu (IAM)** v oboru, jako je například skupiny pro správu, předplatné, skupinu prostředků nebo prostředek, ve které chcete zobrazit role a oprávnění.
 
@@ -165,7 +165,7 @@ V RBAC se přístup odebírá odebrání přiřazení role. Postupujte podle tě
 
 ## <a name="next-steps"></a>Další postup
 
-* [Kurz: Udělení přístupu pro uživatele pomocí RBAC a webu Azure portal](quickstart-assign-role-user-portal.md)
-* [Kurz: Udělení přístupu pro uživatele pomocí RBAC a prostředí Azure PowerShell](tutorial-role-assignments-user-powershell.md)
-* [Řešení potíží s RBAC v Azure](troubleshooting.md)
-* [Uspořádání prostředků se skupinami pro správu Azure](../azure-resource-manager/management-groups-overview.md)
+* [Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a webu Azure portal](quickstart-assign-role-user-portal.md)
+* [Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a Azure Powershellu](tutorial-role-assignments-user-powershell.md)
+* [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)
+* [Uspořádání prostředků se skupinami pro správu Azure](../governance/management-groups/index.md)

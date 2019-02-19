@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – iniciativa zásad fakturačních značek
-description: Tato ukázková sada zásad vyžaduje zadání hodnot značek pro nákladové středisko a název produktu.
+description: Tato ukázková sada definic zásad vyžaduje zadání hodnot značek pro nákladové středisko a název produktu.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4592ac63561a59bfc0e4351cc5ad83f138955370
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b659d6f681b980b956992f0d488995fd1a55de93
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242851"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337592"
 ---
-# <a name="billing-tags-policy-initiative"></a>Iniciativa zásad fakturačních značek
+# <a name="sample---billing-tags-policy-initiative"></a>Ukázkový – iniciativa zásad fakturačních značek
 
 Tato sada zásad vyžaduje zadání hodnot značek pro nákladové středisko a název produktu. S využitím předdefinovaných zásad používá a vynucuje požadované značky. Pro značky zadáte požadované hodnoty.
 

@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 1/14/2019
-ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 2/18/2019
+ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354616"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340174"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Příjem dat Azure Průzkumník dat
 
@@ -39,15 +39,21 @@ Průzkumník dat Azure služba správy dat, která zodpovídá za příjem dat, 
 
 Průzkumník služby Azure Data podporuje několik metod pro ingestování, každý s vlastní cílové scénáře, výhody a nevýhody. Průzkumník dat Azure nabízí kanály a konektorů k běžným službám, programové ingestování pomocí sady SDK a přímý přístup k modulu pro účely zkoumání.
 
-### <a name="ingestion-using-pipelines"></a>Ingestování pomocí kanálů
+### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>Ingestování pomocí kanálů, konektory a moduly plug-in
 
-Průzkumník dat Azure aktuálně podporuje kanálu centra událostí, které je možné spravovat pomocí Průvodce správou na webu Azure Portal. Další informace najdete v tématu [rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md).
+Průzkumník dat Azure aktuálně podporuje:
 
-### <a name="ingestion-using-connectors-and-plugins"></a>Ingestování pomocí konektorů a moduly plug-in
+* Event Grid kanál, který je možné spravovat pomocí Průvodce správou na webu Azure Portal. Další informace najdete v tématu [Ingestování objektů BLOB Azure do Průzkumníku dat Azure](ingest-data-event-grid.md).
 
-* Průzkumník služby Azure Data podporuje modul plug-in. Další informace najdete v tématu [modul plug-in pro Logstash výstup pro Průzkumníka služby Azure Data](https://github.com/Azure/logstash-output-kusto/blob/master/README.md).
+* Kanál centra událostí, který je možné spravovat pomocí Průvodce správou na webu Azure Portal. Další informace najdete v tématu [Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md).
 
-* Průzkumník služby Azure Data podporuje konektor systému Kafka. Další informace najdete v tématu [rychlý start: Ingestování dat z Kafka do Průzkumníku dat Azure](ingest-data-kafka.md)
+* Modul plug-in pro Logstash, naleznete v tématu [Ingestovat data z Logstash do Průzkumníku dat Azure](ingest-data-logstash.md).
+
+* Konektor Kafka, naleznete v tématu [Ingestovat data z platformy Kafka do Průzkumníku dat Azure](ingest-data-kafka.md).
+
+### <a name="ingestion-using-integration-services"></a>Ingestování pomocí integračních služeb
+
+* Azure Data Factory (ADF), služba pro integraci plně spravovaná data pro analytické úlohy v Azure ke zkopírování dat do a z Průzkumníku dat Azure. Další informace najdete v tématu [kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
 
 ### <a name="programmatic-ingestion"></a>Ingestování prostřednictvím kódu programu
 
@@ -131,21 +137,27 @@ Za účelem ingestování datových všechny metody jiné než ingestování z d
 Mapování schématu pomáhá vytvořit vazbu pole zdroje dat na sloupce cílové tabulky.
 
 * [Mapování sdíleného svazku clusteru](/azure/kusto/management/mappings?branch=master#csv-mapping) (volitelné) funguje s všechny formáty podle pořadí. Je možné provádět, pomocí parametru příkazu ingestování nebo [předem vytvořit v tabulce](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) a odkazované z parametru příkazu ingestování.
-* [Mapování JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (povinné) a [Avro mapování](/azure/kusto/management/mappings?branch=master#avro-mapping) (povinné) je možné provádět pomocí ingestování parametr příkazu nebo [předem vytvořit v tabulce](/azure/kusto/management/tables#create-ingestion-mapping) a odkazované z příkazu ingestu parametr.
+* [Mapování JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (povinné) a [Avro mapování](/azure/kusto/management/mappings?branch=master#avro-mapping) (povinné) je možné provádět pomocí parametr příkazu ingestování. Je také možné [předem vytvořit v tabulce](/azure/kusto/management/tables#create-ingestion-mapping) a odkazované z parametru příkazu ingestování.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
+> [Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat z Kafka do Průzkumníku dat Azure](ingest-data-kafka.md)
+> [Příjem dat s využitím odběr služby Event Grid do Průzkumníku dat Azure](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
+> [Ingestování dat z Kafka do Průzkumníku dat Azure](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat](node-ingest-data.md)
+> [Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)
+> [Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Ingestování dat z Logstash do Průzkumníku dat Azure](ingest-data-logstash.md)

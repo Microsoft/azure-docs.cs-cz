@@ -10,17 +10,17 @@ keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 02/13/2019
+ms.custom: ''
+ms.date: 02/15/2019
 ms.author: juliako
-ms.openlocfilehash: 6de90e6be322d5bac008adc44a4b81dfa18eba0a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c0b1f3fb854f4ca553d24ed601749cf91c2b5f28
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331116"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339800"
 ---
-# <a name="quickstart-stream-video-files---cli"></a>Rychlý start: Stream video soubory – rozhraní příkazového řádku
+# <a name="quickstart-stream-video-files---cli"></a>Rychlý start: Streamování videosouborů – CLI
 
 Toto rychlé zprovoznění předvádí, jak je jednoduché kódovat a začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
@@ -33,7 +33,9 @@ Na konci rychlého startu budete schopni streamovat video.
 
 ## <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
-Pokud chcete začít používat Media Services, budete muset vytvořit účet Media Services. V době vytvoření účtu Azure Media Services vytvoříte i přidružený účet úložiště.
+Pokud chcete začít, šifrování, kódování, analýza, Správa a streamování médií obsahu v Azure, budete muset vytvořit účet Media Services. Účet Media Services musí být přidružený jeden nebo více účtů úložiště.
+
+Účet Media Services a všechny přidružené úložiště účty musí být ve stejném předplatném Azure. Důrazně doporučujeme používat účty úložiště ve stejném umístění jako účet Media Services, aby se zabránilo další latenci a data náklady na odchozí přenosy.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

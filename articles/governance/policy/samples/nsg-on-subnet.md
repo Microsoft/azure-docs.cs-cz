@@ -1,6 +1,6 @@
 ---
 title: Ukázka - NSG x v každé podsíti
-description: Tato ukázková zásada vyžaduje, aby se ve všech virtuálních podsítích používala konkrétní skupina zabezpečení sítě.
+description: Tato definice zásady ukázka vyžaduje, že se všechny virtuální podsítě se používá konkrétní síťové skupiny zabezpečení.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: bf02e0df860b677ed1766e083834f894251f6b63
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1183a403c81dd71f123406991755157a4a4a1d26
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242834"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338542"
 ---
-# <a name="nsg-x-on-every-subnet"></a>NSG x ve všech podsítích
+# <a name="sample---network-security-group-x-on-every-subnet"></a>Ukázkový – skupina zabezpečení sítě x v každé podsíti
 
 Tato zásada vyžaduje, aby se ve všech virtuálních podsítích používala konkrétní skupina zabezpečení sítě. Zadejte ID skupiny zabezpečení sítě, která se má použít.
 

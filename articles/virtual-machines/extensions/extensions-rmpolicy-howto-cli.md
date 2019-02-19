@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770580"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341950"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>K omezení instalace rozšíření na virtuální počítače s Linuxem pomocí služby Azure Policy
 
@@ -28,7 +28,7 @@ Tento kurz používá rozhraní příkazového řádku ve službě Azure Cloud S
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 
-Pokud chcete omezit, jaká rozšíření je možné nainstalovat, je potřeba mít [pravidlo](/azure/azure-policy/policy-definition#policy-rule) k poskytování logiky pro identifikaci rozšíření.
+Pokud chcete omezit, jaká rozšíření je možné nainstalovat, je potřeba mít [pravidlo](../../governance/policy/concepts/definition-structure.md#policy-rule) k poskytování logiky pro identifikaci rozšíření.
 
 Tento příklad ukazuje, jak zakázat instalaci rozšíření publikovaná "Microsoft.OSTCExtensions" tak, že vytvoříte soubor pravidel ve službě Azure Cloud Shell, ale při práci v rozhraní příkazového řádku místně, můžete také vytvořit místního souboru a cesty (~/clouddrive) nahraďte cestou k místní soubor na svůj počítač.
 
@@ -69,7 +69,7 @@ Jakmile budete hotovi, klikněte **Esc** klíče a pak zadejte **: QW** uložte 
 
 ## <a name="create-a-parameters-file"></a>Vytvoření souboru parametrů
 
-Budete také potřebovat [parametry](/azure/azure-policy/policy-definition#parameters) soubor, který vytvoří strukturu, můžete použít k předání v seznamu rozšíření blokování. 
+Budete také potřebovat [parametry](../../governance/policy/concepts/definition-structure.md#parameters) soubor, který vytvoří strukturu, můžete použít k předání v seznamu rozšíření blokování. 
 
 Tento příklad ukazuje, jak vytvořit soubor parametrů pro virtuální počítače s Linuxem ve službě Cloud Shell, ale při práci v rozhraní příkazového řádku místně, můžete také vytvořit místního souboru a cestu (~/clouddrive) nahraďte cestou do místního souboru na vašem počítači.
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v tématu [Azure Policy](../../azure-policy/azure-policy-introduction.md).
+
+Další informace najdete v tématu [Azure Policy](../../governance/policy/overview.md).

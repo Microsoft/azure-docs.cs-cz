@@ -8,13 +8,13 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: aca64ce3d965d03ecc6fe6da0f372f355a48bed5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 02/15/2019
+ms.openlocfilehash: b77f87ef922d2f759fd8d72505effa3d8e96c403
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311864"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339425"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
@@ -301,7 +301,7 @@ Definici úlohy popisuje, kde se mají hledat workflow.xml. Také popisuje, kde 
     ```
 
     > [!NOTE]  
-    > Pokud HDInsight cluster používá Azure Storage jako výchozím úložištěm, `<value>` obsah elementu začínat `wasb://`. Pokud místo toho používá Azure Data Lake Storage Gen1 začíná `adl://`.
+    > Pokud HDInsight cluster používá Azure Storage jako výchozím úložištěm, `<value>` obsah elementu začínat `wasb://`. Pokud místo toho používá Azure Data Lake Storage Gen1 začíná `adl://`. Pokud použijete Azure Data Lake Storage Gen2 začíná `abfs://`.
 
     Uložit obsah `<value>` element, protože se používá v dalších krocích.
 

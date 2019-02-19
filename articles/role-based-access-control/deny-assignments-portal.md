@@ -1,6 +1,6 @@
 ---
-title: Zobrazení zamítnout přiřazení pomocí webu Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit uživatele, skupiny, instančních objektů a spravovaných identit, které mají odepřený přístup k určitým akcím v určitém rozsahu pomocí webu Azure portal.
+title: Zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit uživatele, skupiny, instančních objektů a spravovaných identit, které mají odepřený přístup ke konkrétním prostředku akce v určitém rozsahu pomocí webu Azure portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5870ddbbb8be0ebbeae7656485521a327b86d5b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642806"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343234"
 ---
-# <a name="view-deny-assignments-using-the-azure-portal"></a>Zobrazení zamítnout přiřazení pomocí webu Azure portal
+# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal
 
-[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět konkrétní akce i v případě přiřazení role uděluje přístup. I v případě, že nemůžete vytvořit vlastní zamítnout přiřazení, potřebujete mít možnost zobrazit zamítnout přiřazení, protože mohou ovlivnit celkový oprávnění. K získání informací o přiřazení zamítnutí potřebujete oprávnění `Microsoft.Authorization/denyAssignments/read`, které je obsaženo ve většině [předdefinovaných rolí](built-in-roles.md).
+[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. I v případě, že nemůžete vytvořit vlastní zamítnout přiřazení, potřebujete mít možnost zobrazit zamítnout přiřazení, protože mohou ovlivnit celkový oprávnění. Pokud chcete získat informace o přiřazení odepřít, musíte mít `Microsoft.Authorization/denyAssignments/read` oprávnění, která je obsažena ve většině [předdefinované role pro prostředky Azure](built-in-roles.md).
 
 Tento článek popisuje, jak pomocí webu Azure portal zobrazit zamítnout přiřazení.
 
 > [!NOTE]
 > V tuto chvíli zamítnout přiřazení jsou jen pro čtení a lze nastavit pouze v Azure.
 
-## <a name="view-deny-assignments"></a>Zobrazení zamítnout přiřazení
+## <a name="view-deny-assignments"></a>Zobrazit přiřazení zamítnutí
 
 Podle těchto kroků zobrazit zamítnout přiřazení v oboru předplatného nebo správu skupiny.
 
@@ -105,5 +105,5 @@ Následujícím postupem zobrazíte další podrobnosti o přiřazení odepřít
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vysvětlení zamítnout přiřazení](deny-assignments.md)
-* [Seznam zamítnout přiřazení pomocí RBAC a rozhraní REST API](deny-assignments-rest.md)
+* [Vysvětlení zamítnout přiřazení pro prostředky Azure](deny-assignments.md)
+* [Seznam zamítnout přiřazení pro prostředky Azure pomocí rozhraní REST API](deny-assignments-rest.md)

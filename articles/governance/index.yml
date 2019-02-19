@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d99fcc9a8bb69926da7538edc06ae2b7533c86be
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 985f620caaa329b48b00d6ce586e7dcefbf5869d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507422"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341229"
 documentType: LandingData
 title: Správa Azure – zásady správného řízení
 metadata:
@@ -39,21 +39,25 @@ sections:
     - href: ./management-groups/overview
       html: <p>Přečtěte si víc o seskupení a uspořádání vašich předplatných v logické hierarchii, která podporuje strukturované nasazení dalších služeb správného řízení.<br /></p>
       image:
+        alt: Skupiny pro správu
         src: ./media/management-groups-illustration.svg
       title: Skupiny pro správu
     - href: ./resource-graph/
       html: <p>Výkonný nástroj pro příkazový řádek (podporuje Azure CLI a Azure PowerShell) vám umožní rychlé dotazy na složité podrobnosti jednotlivých prostředků Azure. Budete mít možnost najít a zveřejnit informace, které dřív pro zjištění příslušných prostředků ve velkém měřítku vyžadovaly složité a iterativní skripty.</p>
       image:
+        alt: Resource Graph
         src: ./media/resource-graph-illustration.svg
-      title: Graf prostředků
+      title: Resource Graph
     - href: ./policy/
       html: <p>Definujte a použijte standardy pro prostředky ve vašem prostředí. Zabraňte vytvoření nežádoucích prostředků, vylepšete nové prostředky o další elementy a auditujte a opravujte prostředky, které už ve vašem prostředí máte.</p>
       image:
+        alt: Zásada
         src: ./media/policy-illustration.svg
       title: Zásada
     - href: ./blueprints/
       html: <p>Vytvořte si nativní balíček <i>artefaktů</i> Azure (skupiny prostředků, zásady, přiřazení rolí, šablony Resource Manageru atd.), který se dá dynamicky nasazovat do předplatných a vytvářet tak konzistentní opakovatelná prostředí.</p>
       image:
+        alt: Blueprint
         src: ./media/blueprints-illustration.svg
       title: Blueprint
 - title: Implementace

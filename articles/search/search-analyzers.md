@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: a3f782cdd34f2a45c58e6a98d013f949767589cb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328006"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343268"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analyzátory pro zpracování ve službě Azure Search textu
 
@@ -69,7 +69,7 @@ Nejvhodnější čas k přidání a přiřazení analyzátory je při aktivním 
 
 Definice indexu ztuhne, můžete přidat nové konstruktory analýzy do indexu, ale je potřeba předat **allowIndexDowntime** příznak, který [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) Pokud budete chtít vyhnout se této chybě:
 
-*Index aktualizace není povolená, protože by to způsobilo výpadek. Pokud chcete přidat nové analyzátory, tokenizátory, token filtry nebo znak filtry do existujícího indexu, nastavte parametr dotazu 'allowIndexDowntime' na 'true' v žádosti o aktualizaci indexu. Všimněte si, že tato operace zařadí indexu v režimu offline pro alespoň několik sekund, způsobuje vaše indexování a k selhání požadavků na dotazy. Výkon a zápis dostupnost indexu může být narušena několik minut, po aktualizaci indexu nebo delší dobu velmi velký indexy.*
+*"Index aktualizace není povolená, protože by to způsobilo výpadek. Pokud chcete přidat nové analyzátory, tokenizátory, token filtry nebo znak filtry do existujícího indexu, nastavte parametr dotazu 'allowIndexDowntime' na 'true' v žádosti o aktualizaci indexu. Všimněte si, že tato operace zařadí indexu v režimu offline pro alespoň několik sekund, způsobuje vaše indexování a k selhání požadavků na dotazy. Výkon a zápis dostupnost indexu může být narušena několik minut, po aktualizaci indexu, nebo delší dobu velmi velký indexy."*
 
 To samé platí při přiřazování analyzátor pro pole. Analyzátor je nedílnou součástí definice pole, takže můžete přidat pouze ji při vytvoření pole. Pokud chcete přidat analyzátory pro existující pole, budete muset [vyřaďte a znovu sestavte](search-howto-reindex.md) indexu, nebo přidat nové pole pomocí analyzátoru chcete.
 

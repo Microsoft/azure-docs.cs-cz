@@ -1,6 +1,6 @@
 ---
-title: Pochopení definic rolí v Azure RBAC | Dokumentace Microsoftu
-description: Další informace o definice rolí v řízení přístupu na základě role (RBAC) pro správu prostředků v Azure velice přesně kontrolovat přístup.
+title: Pochopení definic rolí v RBAC pro prostředky Azure | Dokumentace Microsoftu
+description: Další informace o definicích roli řízení přístupu na základě rolí (RBAC) pro správu prostředků Azure velice přesně kontrolovat přístup.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991357"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342775"
 ---
-# <a name="understand-role-definitions"></a>Vysvětlení definic rolí
+# <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
 
-Pokud se snažíte porozumět fungování role, nebo pokud vytváříte vlastní [vlastní roli](custom-roles.md), je užitečné k pochopení, jak jsou definované role. Tento článek popisuje podrobnosti o definicích rolí a obsahuje některé příklady.
+Pokud se snažíte porozumět fungování role, nebo pokud vytváříte vlastní [vlastní role pro prostředky Azure](custom-roles.md), je užitečné k pochopení, jak jsou definované role. Tento článek popisuje podrobnosti o definicích rolí a obsahuje některé příklady.
 
 ## <a name="role-definition-structure"></a>Struktura definic rolí
 
@@ -151,6 +151,8 @@ Vzhledem k tomu, že Alice obsahuje zástupný znak (`*`) akci v oboru předplat
 
 Oprávnění Boba jsou omezeny na jenom `Actions` a `DataActions` zadané v poli [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role. Na základě role, Bob provádět správu a operace s daty. Například Bob čtení, zápis a odstranění kontejnerů ze zadaný účet úložiště a si můžete také čtení, zápisu a odstranění objektů BLOB.
 
+Další informace o správě a zabezpečení roviny dat pro úložiště najdete v tématu [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md).
+
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>Jaké nástroje podporují pomocí RBAC pro operace s daty?
 
 Zobrazení a práce s operace s daty, musí mít správné verze prvků nástrojů nebo sad SDK:
@@ -225,10 +227,10 @@ Předdefinované role mají `AssignableScopes` nastavena na kořenového oboru (
 | Role je k dispozici pro přiřazení pouze ve skupině síťových prostředků | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | Role je k dispozici pro přiřazení ve všech oborech | `"/"` |
 
-Informace o `AssignableScopes` vlastních rolí, najdete v části [vlastní role](custom-roles.md).
+Informace o `AssignableScopes` vlastních rolí, najdete v části [vlastní role pro prostředky Azure](custom-roles.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Předdefinované role](built-in-roles.md)
-* [Vlastní role](custom-roles.md)
+* [Předdefinované role pro prostředky Azure](built-in-roles.md)
+* [Vlastní role pro prostředky Azure](custom-roles.md)
 * [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md)

@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s RBAC v Azure | Dokumentace Microsoftu
-description: Řešení potíží s řízením přístupu Azure na základě rolí (RBAC).
+title: Řešení potíží s RBAC pro prostředky Azure | Dokumentace Microsoftu
+description: Řešení potíží s řízením přístupu na základě rolí (RBAC) pro prostředky Azure.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411233"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342469"
 ---
-# <a name="troubleshoot-rbac-in-azure"></a>Řešení potíží s RBAC v Azure
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
-V tomto článku, abyste věděli, co očekávat při používání role na webu Azure portal a můžete řešení problémů s přístupem k odpovědi na běžné dotazy o řízení přístupu na základě rolí (RBAC).
+V tomto článku, abyste věděli, co očekávat při používání role na webu Azure portal a můžete řešení problémů s přístupem k odpovědi na běžné dotazy o řízení přístupu na základě rolí (RBAC) pro prostředky Azure.
 
 ## <a name="problems-with-rbac-role-assignments"></a>Potíže s přiřazováním rolí RBAC
 
@@ -105,7 +105,7 @@ Tyto položky vyžadují **zápisu** přístup k **virtuálního počítače**:
 Vyžadují **zápisu** přístup k oběma **virtuálního počítače**a **skupiny prostředků** (spolu s názvem domény), zda je v:  
 
 * Skupina dostupnosti  
-* Vyrovnáváním zatížení  
+* Skupina s vyrovnáváním zatížení  
 * Pravidla upozornění  
 
 Pokud nemůžete použít žádnou z těchto dlaždic, požádejte správce přístup přispěvatele do skupiny prostředků.
@@ -119,6 +119,6 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 Můžete kliknout na tlačítko čtečky **funkce platformy** kartu a potom klikněte na tlačítko **všechna nastavení** zobrazení některých nastavení související se aplikace function app (podobně jako webová aplikace), ale nemohou upravovat některé z těchto nastavení.
 
 ## <a name="next-steps"></a>Další postup
-* [Správa přístupu pomocí RBAC a portálu Azure Portal](role-assignments-portal.md)
-* [Zobrazení protokolů aktivit pro RBAC změny](change-history-report.md)
+* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal](role-assignments-portal.md)
+* [Zobrazení protokolů aktivit se změny prostředků Azure RBAC](change-history-report.md)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980869"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341653"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Instalace rozšíření na virtuálních počítačích s Windows pomocí zásad Azure
 
@@ -30,7 +30,7 @@ Tento kurz používá prostředí Azure PowerShell ve službě Cloud Shell, kter
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 
-Pokud chcete omezit, jaká rozšíření je možné nainstalovat, je potřeba mít [pravidlo](/azure/azure-policy/policy-definition#policy-rule) k poskytování logiky pro identifikaci rozšíření.
+Pokud chcete omezit, jaká rozšíření je možné nainstalovat, je potřeba mít [pravidlo](../../governance/policy/concepts/definition-structure.md#policy-rule) k poskytování logiky pro identifikaci rozšíření.
 
 Tento příklad ukazuje, jak zakázat rozšíření publikovaná "Microsoft.Compute" tak, že vytvoříte soubor pravidel ve službě Azure Cloud Shell, ale pokud pracujete v prostředí PowerShell místně, můžete také vytvořit místního souboru a nahradíte část cesty ($home/clouddrive) cestu ke místní soubor na svůj počítač.
 
@@ -70,7 +70,7 @@ Jakmile budete hotovi, klikněte **Ctrl + O** a potom **Enter** k uložení soub
 
 ## <a name="create-a-parameters-file"></a>Vytvoření souboru parametrů
 
-Budete také potřebovat [parametry](/azure/azure-policy/policy-definition#parameters) soubor, který vytvoří strukturu, můžete použít k předání v seznamu rozšíření blokování. 
+Budete také potřebovat [parametry](../../governance/policy/concepts/definition-structure.md#parameters) soubor, který vytvoří strukturu, můžete použít k předání v seznamu rozšíření blokování. 
 
 Tento příklad ukazuje, jak vytvořit soubor parametrů pro virtuální počítače ve službě Cloud Shell, ale pokud pracujete v prostředí PowerShell místně, můžete také vytvořit místního souboru a nahradíte část cesty ($home/clouddrive) s cestou k místnímu souboru na vašem počítači.
 
@@ -166,4 +166,4 @@ Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v tématu [Azure Policy](../../azure-policy/azure-policy-introduction.md).
+Další informace najdete v tématu [Azure Policy](../../governance/policy/overview.md).

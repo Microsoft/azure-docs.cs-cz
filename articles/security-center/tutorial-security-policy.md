@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90c508fb5ad3caf961747f2ac10bae42dd1f4c35
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114956"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343506"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
-Tento článek vysvětluje, jak jsou nakonfigurované zásady zabezpečení a jak zobrazit ve službě Security Center. Azure Security Center automaticky přiřadí jeho [integrované bezpečnostní zásady](security-center-policy-definitions.md) na každé předplatné, které zprovoznění. Můžete nakonfigurovat v [Azure Policy](../azure-policy/azure-policy-introduction.md), který také umožňuje nastavit zásady napříč skupinami pro správu a napříč několika předplatnými.
+Tento článek vysvětluje, jak jsou nakonfigurované zásady zabezpečení a jak zobrazit ve službě Security Center. Azure Security Center automaticky přiřadí jeho [integrované bezpečnostní zásady](security-center-policy-definitions.md) na každé předplatné, které zprovoznění. Můžete nakonfigurovat v [Azure Policy](../governance/policy/overview.md), který také umožňuje nastavit zásady napříč skupinami pro správu a napříč několika předplatnými.
 
-Pokyny o tom, jak nastavit zásady pomocí Powershellu najdete v tématu [rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí modulu Azure RM Powershellu](../azure-policy/assign-policy-definition-ps.md).
+Pokyny o tom, jak nastavit zásady pomocí Powershellu najdete v tématu [rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí modulu Azure PowerShell](../governance/policy/assign-policy-powershell.md).
 
 >[!NOTE]
 > Security Center začít své integraci s Azure Policy. Stávající zákazníci budou automaticky migrovat na nové integrované podnět ve službě Azure Policy, namísto předchozí zásady zabezpečení ve službě Security Center. Tato změna nebude mít vliv na prostředky nebo prostředí s výjimkou přítomnost nové aktivity ve službě Azure Policy.
 
 ## <a name="what-are-security-policies"></a>Co jsou zásady zabezpečení?
-Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. Ve službě Azure Policy můžete definovat zásady pro vaše předplatná Azure a je typu úlohy nebo citlivosti dat. přizpůsobit. Aplikace, které používají regulovaná data, jako jsou identifikovatelné osobní údaje, například může vyžadovat vyšší úroveň zabezpečení než jiné úlohy. Nastavit zásady napříč předplatnými nebo skupin pro správu, je nastavit [Azure Policy](../azure-policy/azure-policy-introduction.md).
+Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. Ve službě Azure Policy můžete definovat zásady pro vaše předplatná Azure a je typu úlohy nebo citlivosti dat. přizpůsobit. Aplikace, které používají regulovaná data, jako jsou identifikovatelné osobní údaje, například může vyžadovat vyšší úroveň zabezpečení než jiné úlohy. Nastavit zásady napříč předplatnými nebo skupin pro správu, je nastavit [Azure Policy](../governance/policy/overview.md).
 
 Zásady zabezpečení vliv na doporučení zabezpečení, získáte v Azure Security Center. Můžete monitorovat dodržování zásad v nich můžete najít potenciální nedostatky zabezpečení a zmírnit hrozby. Další informace o tom, jak určit, která možnost je pro vás vhodná, najdete v seznamu [integrované bezpečnostní zásady](security-center-policy-definitions.md).
 
@@ -52,7 +52,7 @@ Security Center automaticky vytváří výchozí zásady zabezpečení pro každ
 - Přiřazení zásad napříč skupinami pro správu a předplatnými, které můžou reprezentovat celou organizaci nebo obchodní jednotku v rámci organizace
 - Monitorování dodržování zásad
 
-Další informace o službě Azure Policy najdete v tématu [Vytvoření a správa zásad pro vynucování dodržování předpisů](../azure-policy/create-manage-policy.md).
+Další informace o službě Azure Policy najdete v tématu [Vytvoření a správa zásad pro vynucování dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
 
 Zásada Azure se skládá z následujících součástí:
 
@@ -236,4 +236,4 @@ V tomto článku jste zjistili, jak upravit zásady zabezpečení ve službě Az
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Získejte odpovědi na nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
 
-Další informace o Azure Policy najdete v tématu [Co je Azure Policy](../azure-policy/azure-policy-introduction.md).
+Další informace o Azure Policy najdete v tématu [Co je Azure Policy](../governance/policy/overview.md).

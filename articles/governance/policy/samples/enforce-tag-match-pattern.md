@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – vynucování vzor pro shodu značky
-description: Tato ukázková zásada vyžaduje, aby prostředky splňovaly vzor match pro hodnoty značek.
+description: Tuto ukázkovou definici zásad vyžaduje, aby splňovaly prostředky vzor pro shodu pro hodnotu značky.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f3e4246141a9d9de1a7d6451422e1e55a4c3545f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9510bb147a8eb9687e074191e8fcc404c847dc0a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244415"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342656"
 ---
-# <a name="enforce-tag-match-pattern-for-tag-values"></a>Vynucení vzoru match pro hodnoty značek
+# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Ukázkový – vynucování vzor pro shodu značky pro hodnoty značek
 
 Vyžaduje, aby hodnota značky splňovala vzor match. Zadejte v pravidle zásad povolený vzor.
 

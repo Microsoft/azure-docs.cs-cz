@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – vynucování like vzorek
-description: Tato ukázková zásada vyžaduje, aby prostředky při vytváření názvů splňovaly vzor like.
+description: Tuto ukázkovou definici zásad vyžaduje, aby splňovaly prostředky like vzor pro pojmenování.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7bc7624cdcc6676d3f622f30e9549a2e444c1d6f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6ff890773a045220b7e2f343d86434fe9109ef1a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243026"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338474"
 ---
-# <a name="enforce-like-pattern-for-naming-conventions"></a>Vynucení vzoru like při vytváření názvů
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Ukázkový – vynucování jako vzor pro pojmenování
 
 Vyžaduje, aby názvy prostředků splňovaly vzor like. Zadejte povolený vzor like jako parametr.
 

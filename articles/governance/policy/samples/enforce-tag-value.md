@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – vynutit značku a její hodnotu
-description: Tato ukázková zásada vyžaduje určený název a hodnotu značky.
+description: Tato definice zásady ukázka vyžaduje název značky a hodnoty, každá nastavit jako parametr.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 952f932d850806553b6e7e2f9efad2643a2ecdf3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0524c0e9e67cd477b8aa8ba8005cf8ebcce3f1da
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242630"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337836"
 ---
-# <a name="enforce-tag-and-its-value"></a>Vynucovat použití značky a její hodnoty
+# <a name="sample---enforce-tag-and-its-value"></a>Ukázkový – vynutit značku a její hodnotu
 
 Tato zásada vyžaduje určený název a hodnotu značky. Zadáte název a hodnotu značky, které se mají vynutit.
 

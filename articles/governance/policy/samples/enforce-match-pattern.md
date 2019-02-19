@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – vynucování vzor pro shodu
-description: Tato ukázková zásada vyžaduje, aby prostředky při vytváření názvů splňovaly vzor match.
+description: Tuto ukázkovou definici zásad vyžaduje, aby splňovaly prostředky vzor pro shodu pro zásady vytváření názvů.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4a001316afb489c7147153b5a2de076a5a425c93
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8fdbd6bc319a85c240eddcc5513c8e900329870b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241805"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341381"
 ---
-# <a name="enforce-match-pattern-for-naming-conventions"></a>Vynucení vzoru match při vytváření názvů
+# <a name="sample---enforce-match-pattern-for-naming-conventions"></a>Ukázkový – vynucování vzor pro shodu pro zásady vytváření názvů
 
 Vyžaduje, aby názvy prostředků splňovaly vzor like. Zadejte povolený vzor match jako parametr.
 

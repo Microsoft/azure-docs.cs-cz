@@ -1,6 +1,6 @@
 ---
 title: Vysvětlení dotazovací jazyk
-description: Popisuje, jak funguje dotazovací jazyk pro Azure Resource Graph.
+description: Popisuje, jak funguje dotaz Kusto jazykem grafem prostředků Azure.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 62f61bfea3896fd3828253f5ec16cc38fe3ca007
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cc792d27890b5d994b62784eaa511df990f9b5ec
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316656"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339970"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy Azure Graph prostředků dotazovací jazyk
 
@@ -27,14 +27,14 @@ Nejlepší způsob, jak Seznamte se s jazykem dotazů grafem prostředků je za�
 Tady je seznam podporovaných tabulkové operátorů v grafu prostředků:
 
 - [count](/azure/kusto/query/countoperator)
-- [DISTINCT](/azure/kusto/query/distinctoperator)
+- [distinct](/azure/kusto/query/distinctoperator)
 - [Rozšíření](/azure/kusto/query/extendoperator)
 - [Limit](/azure/kusto/query/limitoperator)
 - [Řadit podle](/azure/kusto/query/orderoperator)
-- [Projekt](/azure/kusto/query/projectoperator)
-- [tokeny pro projekt](/azure/kusto/query/projectawayoperator)
+- [project](/azure/kusto/query/projectoperator)
+- [project-away](/azure/kusto/query/projectawayoperator)
 - [Ukázka](/azure/kusto/query/sampleoperator)
-- [distinct – ukázka](/azure/kusto/query/sampledistinctoperator)
+- [sample-distinct](/azure/kusto/query/sampledistinctoperator)
 - [Seřadit podle:](/azure/kusto/query/sortoperator)
 - [shrnutí](/azure/kusto/query/summarizeoperator)
 - [Take](/azure/kusto/query/takeoperator)
@@ -51,8 +51,8 @@ Tady je seznam podporovaných funkcí v grafu prostředků:
 - [buildschema()](/azure/kusto/query/buildschema-aggfunction)
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
-- [ToString()](/azure/kusto/query/tostringfunction)
-- [ZIP()](/azure/kusto/query/zipfunction)
+- [tostring()](/azure/kusto/query/tostringfunction)
+- [zip()](/azure/kusto/query/zipfunction)
 
 ## <a name="next-steps"></a>Další postup
 

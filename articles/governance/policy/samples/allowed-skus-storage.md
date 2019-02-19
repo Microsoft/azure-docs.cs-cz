@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – povolené skladové položky pro účty úložiště a virtuální počítače
-description: Tato ukázková zásada vyžaduje, aby účty úložiště a virtuální počítače používaly schválené skladové položky.
+description: Tuto ukázkovou definici zásad vyžaduje, že účty úložiště a virtuální počítače používat schválené SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4e194e70c13fe70702e700fcaafa7cdf981e0147
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: cb6ccf87cc14424801a06cc2e9749e2fc2f6ee4a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242069"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339902"
 ---
-# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>Povolené skladové položky účtů úložišť a virtuálních počítačů
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Ukázkový – povolené skladové položky pro účty úložiště a virtuální počítače
 
 Tato zásada vyžaduje, aby účty úložišť a virtuální počítače používaly schválené skladové položky. K ověření schválených skladových položek slouží integrované zásady. Pole schválených skladových položek virtuálních počítačů a pole schválených skladových položek účtů úložišť zadáváte vy.
 

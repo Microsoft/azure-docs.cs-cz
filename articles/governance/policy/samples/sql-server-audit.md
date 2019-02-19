@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – nastavení auditování serveru SQL Server Audit
-description: Tato ukázková zásada provede audit nastavení auditování serveru SQL.
+description: Tato definice zásady ukázka audity nastavení auditování serveru SQL s auditIfNotExists.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 761cef1421f8a0dca84f4142c6ae9ae1b45f33c7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1e0731de5ce2a12fee6b203f245e42aa4bc67d6e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242018"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338168"
 ---
-# <a name="audit-sql-server-audit-settings"></a>Auditování nastavení auditování serveru SQL
+# <a name="sample---audit-sql-server-audit-settings"></a>Ukázkový – Audit nastavení systému SQL server audit
 
 Tyto integrované zásady auditují server SQL podle toho, jestli jsou povolená nastavení auditování.
 

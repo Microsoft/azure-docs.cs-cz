@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652757"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342452"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Hromadné načtení dat do Apache Phoenixu s využitím psql
 
@@ -115,7 +115,7 @@ Pro vyšší propustnost načítání distribuované přes clusteru, použijte n
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. Používání nástroje MapReduce s ADLS, vyhledejte ADLS kořenový adresář, který je `hbase.rootdir` hodnota v `hbase-site.xml`. V následujícím příkazu je kořenový adresář ADLS `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. V tomto příkazu zadejte ADLS vstupní a výstupní složky jako parametry:
+8. Použití MapReduce se službou Azure Data Lake Storage, vyhledejte kořenovém adresáři Data Lake Storage, který je `hbase.rootdir` hodnota v `hbase-site.xml`. V následujícím příkazu je kořenový adresář Data Lake Storage `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. V tomto příkazu zadejte vstupní Data Lake Storage a výstupní složky jako parametry:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -127,7 +127,7 @@ Pro vyšší propustnost načítání distribuované přes clusteru, použijte n
 
 ## <a name="recommendations"></a>Doporučení
 
-* Použijte stejné střední úložiště pro vstupní a výstupní složky, WASB nebo ADLS. Přenos dat z WASB do ADLS, můžete použít `distcp` příkaz:
+* Použijte stejné střední úložiště pro vstupní a výstupní složky, Azure Storage (WASB) nebo Azure Data Lake Storage (ADL). Přenos dat do Data Lake Storage ze služby Azure Storage, můžete použít `distcp` příkaz:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder
@@ -144,4 +144,4 @@ Pro vyšší propustnost načítání distribuované přes clusteru, použijte n
 * [Hromadné načítání dat s Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
 * [Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [Solené tabulky](https://phoenix.apache.org/salted.html)
-* [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html)
+* [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html)

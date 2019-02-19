@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 79dbaf98f953a9cb72a7fa7cf9facc2b17fad504
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 02/18/2019
+ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410056"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408795"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Rychlý start: Konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance
 
@@ -97,7 +97,8 @@ Nejjednodušší způsob, jak vytvořit virtuální počítač klienta se všech
 4. Vyberte **nákupní** k nasazení virtuálních počítačů Azure ve vaší síti.
 5. Vyberte **oznámení** ikonu k zobrazení stavu nasazení.
 
-Nechcete pokračovat, dokud se vytvoří virtuální počítač Azure. 
+> [!IMPORTANT]
+> Nepokračujte, dokud přibližně 15 minut po vytvoření virtuálního počítače pro spouštěná po vytvoření skriptů k instalaci systému SQL Server Management Studio.
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 

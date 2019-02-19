@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 02/04/2019
 ms.author: juliako
-ms.openlocfilehash: b05c174bf96e78efd66f2c673e46ab43700c09f9
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744159"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340344"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -45,11 +45,11 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 
 * Pro souborové úlohy zpracování můžete adresu URL protokolu HTTP (S) jako vstup.<br/>Není potřeba mít obsah už uložená v Azure, ani je potřeba pro vytvoření prostředků.
 * Zavádí koncepci [transformuje](transforms-jobs-concept.md) pro zpracování úlohy založené na souborech. Transformace je možné vytvářet opakovaně použitelné konfigurace k vytváření šablon Azure Resource Manageru a izolovat zpracování nastavení mezi více odběratelům nebo tenantů.
-* Prostředek může mít více [lokátory streamování](streaming-locators-concept.md) nichž každá má jiné nastavení dynamické balení a dynamického šifrování.
+* Prostředek může mít více [lokátory streamování](streaming-locators-concept.md) spolu různé [dynamické balení](dynamic-packaging-overview.md) nastavení a dynamické šifrování.
 * [Ochrana obsahu](content-key-policy-concept.md) podporuje více klíčových funkcí.
 * Můžete Streamovat živé události, které jsou dlouhé až 24 hodin, pokud informační kanál pomocí služby Media Services pro překódování příspěvek s jednou přenosovou rychlostí do výstupního datového proudu, který má více přenosových rychlostí.
 * Nová s nízkou latencí živé streamování podpory na živé události. Další informace najdete v tématu [latence](live-event-latency.md).
-* Živé události ve verzi Preview podporuje dynamické balení a dynamického šifrování. To umožňuje ochranu obsahu pro balení ve verzi Preview a DASH nebo HLS.
+* Živé události ve verzi Preview podporuje [dynamické balení](dynamic-packaging-overview.md) a dynamické šifrování. To umožňuje ochranu obsahu pro balení ve verzi Preview a DASH nebo HLS.
 * Živé výstup je snazší než Program entit v rozhraní API v2. 
 * (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
 * Ingestování RTMPS zabezpečené.<br/>Při vytváření živá událost se zobrazí 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   

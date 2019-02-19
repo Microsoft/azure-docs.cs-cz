@@ -1,6 +1,6 @@
 ---
-title: Vlastní role v Azure | Dokumentace Microsoftu
-description: Zjistěte, jak definovat vlastní role se řízení přístupu Azure na základě rolí (RBAC) pro správu prostředků v Azure velice přesně kontrolovat přístup.
+title: Vlastní role pro prostředky Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit vlastní role pomocí řízení přístupu na základě rolí (RBAC) pro správu prostředků Azure velice přesně kontrolovat přístup.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697125"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339324"
 ---
-# <a name="custom-roles-in-azure"></a>Vlastní role v Azure
+# <a name="custom-roles-for-azure-resources"></a>Vlastní role pro prostředky Azure
 
-Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny nebo instanční objekty na předplatné, skupinu prostředků a prostředků obory. Vlastní role jsou uloženy v adresáři služby Azure Active Directory (Azure AD) a je možné sdílet napříč předplatnými. Každý adresář můžete mít až 2000 vlastní role. Můžete vytvořit vlastní role pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny nebo instanční objekty na předplatné, skupinu prostředků a prostředků obory. Vlastní role jsou uloženy v adresáři služby Azure Active Directory (Azure AD) a je možné sdílet napříč předplatnými. Každý adresář můžete mít až 2000 vlastní role. Můžete vytvořit vlastní role pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API.
 
 ## <a name="custom-role-example"></a>Příklad vlastní roli
 
@@ -107,7 +107,7 @@ Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je
 | Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinition/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
 
 ## <a name="next-steps"></a>Další postup
-- [Vytváření vlastních rolí pomocí Azure PowerShellu](custom-roles-powershell.md)
-- [Vytváření vlastních rolí pomocí CLI](custom-roles-cli.md)
-- [Vysvětlení definice rolí](role-definitions.md)
-- [Řešení potíží s RBAC v Azure](troubleshooting.md)
+- [Vytvoření vlastních rolí pro prostředky Azure pomocí Azure Powershellu](custom-roles-powershell.md)
+- [Vytvoření vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md)
+- [Pochopení definic rolí pro prostředky Azure](role-definitions.md)
+- [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)

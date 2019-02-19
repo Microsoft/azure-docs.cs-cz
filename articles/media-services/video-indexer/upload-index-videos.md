@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/15/2019
 ms.author: juliako
-ms.openlocfilehash: b399e18aa3cdd83d0c6907999f6446fd566259a1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa64d24d74a71981e3273fbdf5fa96b386a34685
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998582"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342435"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -31,7 +31,7 @@ Jakmile je Nahraná videa, Video Indexer, volitelně kóduje video (popsané v �
 ## <a name="uploading-considerations"></a>Aspekty nahrávání videí na server
     
 - Při nahrávání videa na server podle zadané adresy URL (upřednostňovaná možnost) musí být koncový bod zabezpečený pomocí protokolu TLS 1.2 (nebo vyššího).
-- Velikost pro odeslání pomocí možnosti adresa URL je omezený na 10GB
+- Velikost pro odeslání pomocí možnosti adresa URL je omezený na 25GB
 - Velikost pro odeslání s možností bajtové pole je omezená na 2GB 
 - Pole bajtů možnost vyprší po 30 min
 - Adresa URL zadaná v parametru `videoURL` musí být zakódovaná.

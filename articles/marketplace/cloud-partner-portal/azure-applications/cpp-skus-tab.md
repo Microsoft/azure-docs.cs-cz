@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7f73e71677a700ba8047246addb2d27799c5a616
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a963db0b0b1a20c110f90bacdae092846f7bdd8b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890888"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342537"
 ---
 # <a name="azure-application-skus-tab"></a>Karta skladové jednotky Azure aplikace
 
@@ -139,7 +139,7 @@ Přidáte Azure Active Directory identifikátor uživatele, skupinu nebo aplikac
 
 #### <a name="policy-settings"></a>Nastavení zásad
 
-Přidání zásad, které aplikace spravované v souladu s. Další informace o vytváření zásad prostředků Azure, přečtěte si téma [co je Azure Policy?](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) 
+Přidání zásad, které aplikace spravované v souladu s. Další informace o vytváření zásad prostředků Azure, přečtěte si téma [co je Azure Policy?](../../../governance/policy/overview.md)
 
 
    ![Nastavení autorizace a zásad pro spravované aplikace](./media/azureapp-sku-details-managedapp-auth-policy.png)

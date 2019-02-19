@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu pro externí uživatele pomocí RBAC v Azure | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat přístup pro uživatele mimo organizaci, která používá řízení přístupu na základě role (RBAC) v Azure.
+title: Správa přístupu k prostředkům Azure pro externí uživatele pomocí RBAC | Dokumentace Microsoftu
+description: Další informace o správě přístupu k prostředkům Azure pro uživatele mimo organizaci, která používá řízení přístupu na základě role (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284519"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343856"
 ---
-# <a name="manage-access-for-external-users-using-rbac"></a>Správa přístupu pro externí uživatele pomocí RBAC
+# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Správa přístupu k prostředkům Azure pro externí uživatele pomocí RBAC
 
 Řízení přístupu na základě role (RBAC) umožňuje lepší zabezpečení správy pro velké organizace a pro SMB práce s externími spolupracovníky, dodavatelům nebo freelancers, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně celý všechny obory, týkající se účtování nebo infrastruktury. RBAC umožňuje flexibilitu vlastnící jedno předplatné Azure, které spravuje správce účtu (role Správce služby na úrovni předplatného) a pro práci v rámci stejného předplatného, ale nemají žádné oprávnění pro správu pro něj pozvali více uživatelů .
 
 > [!NOTE]
-> Předplatná Office 365 nebo licence Azure Active Directory (například: přístup ke službě Azure Active Directory) zajištěného z center nejde použít pro pomocí RBAC správce Office 365.
+> Předplatná Office 365 nebo licence Azure Active Directory (například: Přístup k Azure Active Directory) z kanceláře zřízení správce Office 365 center nejde použít pro pomocí RBAC.
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Přiřadíte role RBAC v oboru předplatného
 
@@ -55,7 +55,7 @@ Po výběru předplatného, musíte kliknout na uživatele s rolí správce **ř
 
 ![Přidání nového uživatele v IAM funkce řízení přístupu na webu Azure portal](./media/role-assignments-external-users/2.png)
 
-Dalším krokem je vybrat roli, kterou chcete přiřadit a uživatel, kterému se přiřadí RBAC role. V **Role** rozevírací nabídka správce uživateli se zobrazí pouze předdefinované role RBAC, které jsou dostupné v Azure. Podrobnější vysvětlení jednotlivých rolí a jejich přiřaditelnými obory, najdete v článku [předdefinované role](built-in-roles.md).
+Dalším krokem je vybrat roli, kterou chcete přiřadit a uživatel, kterému se přiřadí RBAC role. V **Role** rozevírací nabídka správce uživateli se zobrazí pouze předdefinované role RBAC, které jsou dostupné v Azure. Podrobnější vysvětlení jednotlivých rolí a jejich přiřaditelnými obory, najdete v článku [předdefinované role pro prostředky Azure](built-in-roles.md).
 
 Uživatele s rolí správce je pak potřeba přidat e-mailovou adresu externího uživatele. Chování je očekávané pro externí uživatele není uveden v existujícího tenanta. Po externí uživatel byl pozván, že se nebude zobrazovat v rámci **předplatná > řízení přístupu (IAM)** s aktuálním uživateli, které momentálně nejsou přiřazené roli RBAC v oboru předplatného.
 

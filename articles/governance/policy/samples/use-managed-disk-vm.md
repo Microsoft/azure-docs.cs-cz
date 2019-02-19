@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – vytvoření virtuálního počítače pomocí spravovaného disku
-description: Tato ukázková zásada vyžaduje, aby virtuální počítače používaly spravované disky.
+description: Tuto ukázkovou definici zásad vyžaduje, aby virtuální počítače používat spravované disky.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 1684d8b6c8398214b1927dfb27ff220696650294
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a8093e2db4567bf815c1e5f6f4d0f7a16420532d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242715"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343455"
 ---
-# <a name="create-vm-using-managed-disk"></a>Vytvoření virtuálního počítače, který používá spravovaný disk
+# <a name="sample---create-vm-using-managed-disk"></a>Ukázkový – vytvoření virtuálního počítače pomocí spravovaného disku
 
 Vyžaduje, aby virtuální počítače používaly spravované disky.
 

@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – povolené skladové položky SQL DB
-description: Tato ukázková zásada vyžaduje, aby databáze SQL používaly schválené skladové položky.
+description: Tato definice zásady ukázka vyžaduje SQL Database až po použití schválené SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: fc9d068bab17c2780d81c5626620228fd8fc6469
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5506821dd7c3061594b9e4365980677f8322139e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242647"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341262"
 ---
-# <a name="allowed-sql-db-skus"></a>Povolené skladové položky pro databáze SQL
+# <a name="sample---allowed-sql-db-skus"></a>Ukázkový – povolené skladové položky SQL DB
 
 Tato zásada vyžaduje, aby databáze SQL používaly schválenou skladovou položku. Zadáte pole ID povolených skladových položek nebo pole názvů povolených skladových položek.
 

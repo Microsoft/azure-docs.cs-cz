@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – není povoleno rozšíření virtuálních počítačů
-description: Tato ukázková zásada zakáže použití zadaných rozšíření.
+description: Tato ukázková definice zásady zakazuje použití zadané rozšíření na virtuálních počítačích.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 3c92acb72603812797b77a378cdd747147b942eb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c600b6d91260b892f9d2c09a21b14fe1b3f38886
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245333"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341434"
 ---
-# <a name="not-allowed-vm-extensions"></a>Nepovolená rozšíření virtuálního počítače
+# <a name="sample---not-allowed-vm-extensions"></a>Ukázkový – není povoleno rozšíření virtuálních počítačů
 
 Zakáže použití zadaných rozšíření. Zadáte pole obsahující typy zakázaných rozšíření.
 

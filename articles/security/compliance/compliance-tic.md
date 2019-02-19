@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751918"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341708"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Pokyny k důvěryhodné připojení k Internetu
 
@@ -198,7 +198,7 @@ Azure poskytuje nástroje pro nativní pro cloud pomáhá zajistit, abyste měli
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Služba Azure Policy](https://azure.microsoft.com/services/azure-policy/) je služba Azure, který vaše organizace poskytuje lepší možnosti auditování a vynucování dodržování předpisů iniciativy. Azure Policy je aktuálně k dispozici ve verzi public preview služby Azure, které jsou komerčně dostupný. Služba Azure Policy ještě není k dispozici ve službě Azure Government. Zákazníkům naplánovat a otestovat jejich pravidla zásad Azure teď pro zajištění budoucí kompatibility PIŠKVORKY. 
+[Služba Azure Policy](../../governance/policy/overview.md) je služba Azure, který vaše organizace poskytuje lepší možnosti auditování a vynucování dodržování předpisů iniciativy. Zákazníkům naplánovat a otestovat jejich pravidla zásad Azure teď pro zajištění budoucí kompatibility PIŠKVORKY.
 
 Služba Azure Policy je cílená na úrovni předplatného. Tato služba poskytuje centralizovanou rozhraní, kde můžete provádět úlohy dodržování předpisů, včetně:
 - Správa iniciativy
@@ -213,13 +213,13 @@ Následující ukázkové zásady je možné pro scénáře PIŠKVORKY dodržov�
 
 |Zásada  |Ukázkový scénář  |Šablona  |
 |---------|---------|---------|
-|Vynuťte tabulky trasy definované uživatelem. | Ujistěte se, že výchozí trasu na všechny virtuální sítě odkazuje na bránou virtuální sítě schválené pro směrování na místní.    | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table). |
-|Auditovat, jestli Network Watcher není povolená pro oblast.  | Ujistěte se sledovací proces sítě je povolena pro všechny oblasti.  | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled). |
-|Skupina zabezpečení sítě x v každé podsíti.  | Ujistěte se, že skupina zabezpečení sítě (nebo sadu schválených skupin zabezpečení sítě) s blokovány přenosy z Internetu používá do všech podsítí v každé virtuální síti. | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet). |
-|Skupina zabezpečení sítě x na každý síťový adaptér | Ujistěte se, že skupina zabezpečení sítě s přenosy z Internetu blokované platí pro všechny síťové adaptéry u všech virtuálních počítačů. | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic). |
-|Použití schválené virtuální sítě pro síťová rozhraní virtuálního počítače.  | Ujistěte se, že jsou všechny síťové adaptéry na schválené virtuální sítě. | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics). |
-|Povolená umístění. | Ujistěte se, že všechny prostředky se nasadí do oblastí s kompatibilní virtuální sítě a konfigurace Network Watcheru.  | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs). |
-|Nepovolené typy prostředků, jako například **veřejných IP adresách protokolu**. | Zakázat nasazení typy prostředků, které nemají plán dodržování předpisů. Pomocí těchto zásad můžete zakázat nasazení prostředky veřejné IP adresy. Pravidla skupiny zabezpečení sítě můžete využít efektivně blokovat příchozí internetovou komunikaci, brání použití veřejných IP adres dále snižuje útoku.   | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type).  |
+|Vynuťte tabulky trasy definované uživatelem. | Ujistěte se, že výchozí trasu na všechny virtuální sítě odkazuje na bránou virtuální sítě schválené pro směrování na místní.    | Začínáme s tímto [šablony](../../governance/policy/samples/no-user-defined-route-table.md). |
+|Auditovat, jestli Network Watcher není povolená pro oblast.  | Ujistěte se sledovací proces sítě je povolena pro všechny oblasti.  | Začínáme s tímto [šablony](../../governance/policy/samples/network-watcher-not-enabled.md). |
+|Skupina zabezpečení sítě x v každé podsíti.  | Ujistěte se, že skupina zabezpečení sítě (nebo sadu schválených skupin zabezpečení sítě) s blokovány přenosy z Internetu používá do všech podsítí v každé virtuální síti. | Začínáme s tímto [šablony](../../governance/policy/samples/nsg-on-subnet.md). |
+|Skupina zabezpečení sítě x na každý síťový adaptér | Ujistěte se, že skupina zabezpečení sítě s přenosy z Internetu blokované platí pro všechny síťové adaptéry u všech virtuálních počítačů. | Začínáme s tímto [šablony](../../governance/policy/samples/nsg-on-nic.md). |
+|Použití schválené virtuální sítě pro síťová rozhraní virtuálního počítače.  | Ujistěte se, že jsou všechny síťové adaptéry na schválené virtuální sítě. | Začínáme s tímto [šablony](../../governance/policy/samples/use-approved-vnet-vm-nics.md). |
+|Povolená umístění. | Ujistěte se, že všechny prostředky se nasadí do oblastí s kompatibilní virtuální sítě a konfigurace Network Watcheru.  | Začínáme s tímto [šablony](../../governance/policy/samples/allowed-locations.md). |
+|Nepovolené typy prostředků, jako například **veřejných IP adresách protokolu**. | Zakázat nasazení typy prostředků, které nemají plán dodržování předpisů. Pomocí těchto zásad můžete zakázat nasazení prostředky veřejné IP adresy. Pravidla skupiny zabezpečení sítě můžete využít efektivně blokovat příchozí internetovou komunikaci, brání použití veřejných IP adres dále snižuje útoku.   | Začínáme s tímto [šablony](../../governance/policy/samples/not-allowed-resource-types.md).  |
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher analýzy provozu
 

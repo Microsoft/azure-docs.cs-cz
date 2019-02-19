@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 907ab5cd3272a3d3f64dcfd7c9628a609f4db2f4
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2595912732389c8a415d1854a84a7b9c182e4dc7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327642"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341636"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Postup opětovné sestavení indexu Azure Search
 
@@ -28,19 +28,19 @@ Rozdíl od znovu sestaví, které převést do režimu offline, index *aktualiza
 
 | Podmínka | Popis |
 |-----------|-------------|
-| Změna definice pole | Úprava pole název, datový typ nebo konkrétní [atributy indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, kategorizovatelné) vyžaduje úplné opětovné sestavení. |
-| Analyzátor přidání do pole | [Analyzátory](search-analyzers.md) jsou definovány v indexu a poté přiřazeny k polím. Nový analyzátor do indexu můžete přidat kdykoli, ale můžete jenom *přiřadit* analyzátor při vytváření pole. To platí pro obě **analyzátor** a **indexAnalyzer** vlastnosti. **SearchAnalyzer** vlastnost je výjimku. |
-| Aktualizace nebo odstranění analyzátor konstrukce | Nejde odstranit ani změnit existující komponenty analýzy (Analyzátor, tokenizátor, token filtru nebo char filtr), není-li znovu sestavit celý index. |
-| Přidání pole modulu pro návrhy | Pokud pole již existuje a chcete, a přidejte ji tak [moduly pro návrhy](index-add-suggesters.md) vytvořit, je nutné znovu sestavit index. |
-| Odstranění pole | Fyzicky vyjměte všechna trasování pole, budete muset znovu sestavte index. Při okamžité opětovné sestavení není praktické, můžete upravit kód aplikace můžete zakázat přístup do pole "odstraněné". Fyzicky definici pole a obsah zůstane v indexu až do další sestavení pomocí schématu, která vynechává pole dotyčný. |
-| Přepnutí úrovně | Pokud budete potřebovat větší kapacitu, není žádný místní upgrade. Vytvoření nové služby na nový bod kapacity a musí být sestaveny indexy od nuly v nové službě. |
+| Změnit definici pole | Úprava pole název, datový typ nebo konkrétní [atributy indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, kategorizovatelné) vyžaduje úplné opětovné sestavení. |
+| Přiřadit analyzátor pro pole | [Analyzátory](search-analyzers.md) jsou definovány v indexu a poté přiřazeny k polím. Nová definice analyzer můžete přidat do indexu kdykoli, ale můžete jenom *přiřadit* analyzátor při vytváření pole. To platí pro obě **analyzátor** a **indexAnalyzer** vlastnosti. **SearchAnalyzer** vlastnost je výjimka (tuto vlastnost můžete přiřadit k existující pole). |
+| Aktualizovat nebo odstranit definici rozhraní analyzátoru v indexu | Nejde odstranit ani změnit existující konfiguraci analyzer (Analyzátor, tokenizátor, token filtru nebo char filtr) v indexu, pokud je znovu sestavit celý index. |
+| Přidat pole modulu pro návrhy | Pokud pole již existuje a chcete, a přidejte ji tak [moduly pro návrhy](index-add-suggesters.md) vytvořit, je nutné znovu sestavit index. |
+| Odstranit pole | Fyzicky vyjměte všechna trasování pole, budete muset znovu sestavte index. Při okamžité opětovné sestavení není praktické, můžete upravit kód aplikace můžete zakázat přístup do pole "odstraněné". Fyzicky definici pole a obsah zůstanou v indexu až do další sestavení, pokud použijete schéma, které pole vynechá dotyčný. |
+| Přepínače vrstvy | Pokud budete potřebovat větší kapacitu, není žádný místní upgrade. Vytvoření nové služby na nový bod kapacity a musí být sestaveny indexy od nuly v nové službě. |
 
 Další změny můžete provést bez dopadu na existující fyzické struktury. Konkrétně, proveďte následující změny *není* vyžadují opětovné sestavení indexu:
 
 + Přidání nového pole
 + Nastavte **retrievable** atribut existujícího pole
 + Nastavte **searchAnalyzer** na existující pole
-+ Přidat novou konstrukci analyzátor v indexu
++ Přidejte novou definici analyzátor v indexu
 + Přidat, aktualizovat nebo odstranit bodovací profily
 + Přidání, aktualizace nebo odstranění nastavení CORS
 + Přidání, aktualizace nebo odstranění synonymMaps
@@ -65,23 +65,30 @@ Další informace o indexerech najdete v tématu [přehled indexerů](search-ind
 
 Plán na časté, úplné znovu sestaví při aktivním vývoji, když index schémata jsou ve stavu toku. Pro aplikace již v produkčním prostředí doporučujeme vytvořit nový index, na kterém běží souběžně existujícího indexu výpadky dotazu.
 
-Pokud budete mít přísné požadavky smlouvy SLA, můžete zvážit nové služby speciálně pro tuto práci s vývojem pro zřizování a indexování, ke kterým dochází v úplnou izolaci od indexu produkčního prostředí. Samostatná služba běží na svůj vlastní hardware, což eliminuje možnost kolize prostředků. Jakmile je dokončen vývoj, buď ponecháte nový index na místě, přesměrování dotazy do nového koncového bodu a index nebo byste spustili Dokončený kód publikovat revidované indexu na původní služby Azure Search. Aktuálně neexistuje žádný mechanismus pro přesun do jiné služby připravené k použití indexu.
+Oprávnění ke čtení a zápis na úrovni služby jsou požadovány pro aktualizace indexu. 
 
-Oprávnění ke čtení a zápis na úrovni služby jsou požadovány pro aktualizace indexu. Prostřednictvím kódu programu, můžete volat [aktualizace indexu REST API](https://docs.microsoft.com/rest/api/searchservice/update-index) nebo rozhraní .NET API pro úplné opětovné sestavení. Žádost je stejný jako [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index), ale má jiný kontext.
+Nelze znovu sestavit index na portálu. Prostřednictvím kódu programu, můžete volat [aktualizace indexu REST API](https://docs.microsoft.com/rest/api/searchservice/update-index) nebo [odpovídající rozhraní API .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexesoperations.createorupdatewithhttpmessagesasync?view=azure-dotnet) pro úplné opětovné sestavení. Požadavek na aktualizace indexu je stejný jako [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index), ale má jiný kontext.
 
-1. Pokud jsou opětovné použití názvu indexu [vyřaďte existujícího indexu](https://docs.microsoft.com/rest/api/searchservice/delete-index). Okamžitě se zahodí všechny dotazy, které cílí na daném indexu. Odstraňuje se index je nevratná operace, zničení fyzické úložiště kolekce polí a jiných objektů. Ujistěte se, že můžete vymazat o důsledcích odstranění indexu, než jste ji přemístili. 
+Následující pracovní postup tendenční směrem k rozhraní REST API, ale platí také pro sadu .NET SDK.
 
-2. Definice polí změněné nebo upravené poskytněte schématu indexu. Schéma požadavky jsou zdokumentované v [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+1. Při opětovné použití názvu indexu [vyřaďte existujícího indexu](https://docs.microsoft.com/rest/api/searchservice/delete-index). 
 
-3. Poskytují [klíč správce](https://docs.microsoft.com/azure/search/search-security-api-keys) v požadavku.
+   Okamžitě se zahodí všechny dotazy, které cílí na daném indexu. Odstraňuje se index je nevratná operace, zničení fyzické úložiště kolekce polí a jiných objektů. Ujistěte se, že můžete vymazat o důsledcích odstranění indexu, než jste ji přemístili. 
 
-4. Odeslání [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) příkaz k opětovnému sestavení fyzické výrazu indexu Azure Search. Text požadavku obsahuje schéma indexu, jakož i konstrukce, pro vyhodnocování profilů, analyzátory, moduly pro návrhy a možnosti CORS.
+2. Formulování [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) požadavek s vašeho koncového bodu služby klíč API-key a [klíč správce](https://docs.microsoft.com/azure/search/search-security-api-keys). Klíč správce je vyžadováno pro operace zápisu.
 
-5. [Načtení indexu s dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) z externího zdroje. Můžete také pomocí tohoto rozhraní API, pokud aktualizujete existující, beze změny schématu indexu s aktualizovaných dokumentů.
+3. V textu požadavku poskytnout definice polí změny nebo změny schématu indexu. Text požadavku obsahuje schéma indexu, jakož i konstrukce, pro vyhodnocování profilů, analyzátory, moduly pro návrhy a možnosti CORS. Schéma požadavky jsou zdokumentované v [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+
+4. Odeslání [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) požadavek k opětovnému sestavení fyzické výrazu indexu Azure Search. 
+
+5. [Načtení indexu s dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) z externího zdroje.
 
 Při vytváření indexu fyzické úložiště je alokováno pro každé pole v schéma indexu s obráceným index vytvořený pro každé prohledávatelná pole. Pole, která nejsou prohledávatelná lze použít v filtry nebo výrazy, ale mají obrácený není indexy a jsou není fulltextově nebo přibližné prohledávatelné. Na znovuvytvoření indexu jsou tyto indexy obrácenou odstranili a znovu vytvořili na základě schématu indexu je zadat.
 
 Při načtení indexu obrácenou index každé pole naplněný všechna slova jedinečné, tokenizovaná z každého dokumentu pomocí mapy dokumentu odpovídající ID. Například názvy při indexování hotels datové sady, pravděpodobně obrácenou index vytvořený pro pole města podmínky pro Seattle, Portland a tak dále. Dokumenty, které zahrnují pole Město Seattle nebo Portland by měla ID dokumentu uvedené spolu s termín. Na žádném [přidávat, aktualizovat a odstraňovat](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) operace, podmínky a seznam ID dokumentu se aktualizují odpovídajícím způsobem.
+
+> [!NOTE]
+> Pokud budete mít přísné požadavky smlouvy SLA, můžete zvážit nové služby speciálně pro tuto práci s vývojem pro zřizování a indexování, ke kterým dochází v úplnou izolaci od indexu produkčního prostředí. Samostatná služba běží na svůj vlastní hardware, což eliminuje možnost kolize prostředků. Jakmile je dokončen vývoj, buď ponecháte nový index na místě, přesměrování dotazy do nového koncového bodu a index nebo byste spustili Dokončený kód publikovat revidované indexu na původní služby Azure Search. Aktuálně neexistuje žádný mechanismus pro přesun do jiné služby připravené k použití indexu.
 
 ## <a name="view-updates"></a>Zobrazit aktualizace
 

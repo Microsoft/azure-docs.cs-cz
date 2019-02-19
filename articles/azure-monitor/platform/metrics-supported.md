@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: be2274b5d7a0e39733440379ce9678ab012d7d27
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8ee900554371644f374e4aeed51f1eeb0c18569e
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473822"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408863"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -82,7 +82,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |UnauthorizedRequests|Neautorizované požadavky brány|Počet|Celkem|Počet Neautorizované požadavky brány|Umístění, název hostitele|
 |FailedRequests|Požadavky na brány po nezdařeném nasazení|Počet|Celkem|Počet selhání v požadavky brány|Umístění, název hostitele|
 |OtherRequests|Ostatní požadavky brány|Počet|Celkem|Počet ostatní požadavky brány|Umístění, název hostitele|
-|Doba trvání|Celková doba trvání požadavků na bránu|Milisekundy|Průměr|Celková doba trvání z požadavky brány v milisekundách|Umístění, název hostitele|
+|Doba trvání|Celková doba trvání požadavků na bránu|Milisekund|Průměr|Celková doba trvání z požadavky brány v milisekundách|Umístění, název hostitele|
 |Kapacita|Kapacita|Procento|Průměr|Metriky využití pro službu ApiManagement|Umístění|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
@@ -592,15 +592,15 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |d2c.telemetry.egress.invalid|Směrování: telemetrické zprávy nekompatibilní|Počet|Celkem|Počet pokusů směrování služby IoT Hub se nepodařilo doručit z důvodu nekompatibility s koncovým bodem. Tato hodnota nezahrnuje opakovaných pokusů.|Žádné dimenze|
 |d2c.telemetry.egress.fallback|Směrování: zprávy doručeny pro použití náhradní lokality|Počet|Celkem|Počet pokusů, které směrování služby IoT Hub doručení zprávy na koncový bod přidružený k použití náhradní lokality trasy.|Žádné dimenze|
 |d2c.endpoints.egress.eventHubs|Směrování: zprávy doručeny do centra událostí|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do koncových bodů centra událostí.|Žádné dimenze|
-|d2c.endpoints.latency.eventHubs|Směrování: zpráva latence pro Centrum událostí|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat zprávu do koncového bodu centra událostí.|Žádné dimenze|
+|d2c.endpoints.latency.eventHubs|Směrování: zpráva latence pro Centrum událostí|Milisekund|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat zprávu do koncového bodu centra událostí.|Žádné dimenze|
 |d2c.endpoints.egress.serviceBusQueues|Směrování: doručení zpráv do fronty služby Service Bus|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do fronty služby Service Bus koncových bodů.|Žádné dimenze|
-|d2c.endpoints.latency.serviceBusQueues|Směrování: zpráva latence pro frontu služby Service Bus|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do fronty koncového bodu služby Service Bus.|Žádné dimenze|
+|d2c.endpoints.latency.serviceBusQueues|Směrování: zpráva latence pro frontu služby Service Bus|Milisekund|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do fronty koncového bodu služby Service Bus.|Žádné dimenze|
 |d2c.endpoints.egress.serviceBusTopics|Směrování: doručení zprávy do tématu služby Service Bus|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zprávy do tématu služby Service Bus koncových bodů.|Žádné dimenze|
-|d2c.endpoints.latency.serviceBusTopics|Směrování: zpráva latence pro téma služby Service Bus|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do tématu koncovým bodem Service Bus.|Žádné dimenze|
+|d2c.endpoints.latency.serviceBusTopics|Směrování: zpráva latence pro téma služby Service Bus|Milisekund|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do tématu koncovým bodem Service Bus.|Žádné dimenze|
 |d2c.endpoints.egress.builtIn.events|Směrování: zprávy doručovat zprávy a události|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zprávy na integrovaný koncový bod (zprávy/events).|Žádné dimenze|
-|d2c.endpoints.latency.builtIn.events|Směrování: zpráva latence pro zprávy a události|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do integrovaného koncového bodu (zprávy/events).|Žádné dimenze|
+|d2c.endpoints.latency.builtIn.events|Směrování: zpráva latence pro zprávy a události|Milisekund|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy do integrovaného koncového bodu (zprávy/events).|Žádné dimenze|
 |d2c.endpoints.egress.storage|Směrování: doručení zprávy do služby storage|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do koncových bodů úložiště.|Žádné dimenze|
-|d2c.endpoints.latency.storage|Směrování: zpráva latence pro úložiště|Milisekundy|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy na koncový bod úložiště.|Žádné dimenze|
+|d2c.endpoints.latency.storage|Směrování: zpráva latence pro úložiště|Milisekund|Průměr|Průměrná latence (milisekundy) mezi zprávy příchozího přenosu dat do služby IoT Hub a příchozího přenosu dat telemetrické zprávy na koncový bod úložiště.|Žádné dimenze|
 |d2c.endpoints.egress.storage.bytes|Směrování: data doručí do úložiště|B|Celkem|Objem dat (v bajtech) směrování služby IoT Hub doručí do koncových bodů úložiště.|Žádné dimenze|
 |d2c.endpoints.egress.storage.blobs|Směrování: objekty BLOB doručit do úložiště|Počet|Celkem|Počet pokusů, které směrování služby IoT Hub doručí do koncových bodů úložiště objektů BLOB.|Žádné dimenze|
 |d2c.twin.read.success|Čtení dvojčat úspěšné ze zařízení|Počet|Celkem|Počet všech úspěšných čtení dvojčat zařízení iniciované.|Žádné dimenze|
@@ -652,14 +652,52 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
-|---|---|---|---|---|---|
-|MetadataRequests|Požadavky na metadata|Počet|Počet|Počet žádostí o metadata. Cosmos DB udržuje kolekci metadat systému pro každý účet, který umožňuje vytvoření výčtu kolekce, databázím atd., a jejich konfigurací, které jsou zdarma.|Název databáze, StatusCode CollectionName, oblasti,|
-|MongoRequestCharge|Zátěž žádostí mongo|Počet|Celkem|Spotřebované jednotky žádostí mongo|Název databáze, CollectionName, oblast, CommandName, kód chyby|
-|MongoRequests|Požadavky mongo|Počet|Počet|Počet zpracovaných požadavků Mongo|Název databáze, CollectionName, oblast, CommandName, kód chyby|
-|TotalRequestUnits|Celkový požadavek jednotky|Počet|Celkem|Požadavku že spotřebované jednotky|Název databáze, StatusCode CollectionName, oblasti,|
-|TotalRequests|Požadavky celkem|Počet|Počet|Počet zpracovaných požadavků|Název databáze, StatusCode CollectionName, oblasti,|
+### <a name="request-metrics"></a>Metrika žádosti
 
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Starší verze metriky mapování | Využití |
+|---|---|---|---|---|---| ---| ---| ---|
+| TotalRequests |   Požadavky celkem| Počet   | Počet | Počet zpracovaných požadavků|  Název databáze, StatusCode CollectionName, oblasti,|   Vše |   TotalRequests Http 2xx, 3xx Http, kód Http 400, Http 401, se interní chyba serveru, služba není dostupná, omezuje požadavky, průměrných požadavků za sekundu |    Používá ke sledování požadavků za stavový kód, shromažďování minutovými intervaly. Pokud chcete získat průměrných požadavků za sekundu, použití agregace počet za minutu a dělit 60. |
+| MetadataRequests |    Požadavky na metadata   |Počet| Počet   | Počet žádostí o metadata. Azure Cosmos DB udržuje kolekci metadat systému pro každý účet, který umožňuje vytvoření výčtu kolekce, databázím atd., a jejich konfigurací, které jsou zdarma.    | Název databáze, StatusCode CollectionName, oblasti,| Vše|  |Používá k monitorování omezení z důvodu požadavků na metadata.|
+| MongoRequests |   Požadavky mongo| Počet | Počet|  Počet zpracovaných požadavků Mongo   | Název databáze, CollectionName, oblast, CommandName, kód chyby| Vše |Frekvence požadavků dotaz mongo, Mongo aktualizace frekvence, Mongo odstranit frekvence požadavků, Mongo vložit frekvence požadavků, Mongo počet požadavek frekvence žádostí|   Slouží k monitorování Mongo žádost o chyby, zadejte použití jeden příkaz. |
+
+
+### <a name="request-unit-metrics"></a>Metriky jednotek žádosti
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Starší verze metriky mapování | Využití |
+|---|---|---|---|---|---| ---| ---| ---|
+| MongoRequestCharge|   Zátěž žádostí mongo |  Počet   |Celkem  |Spotřebované jednotky žádostí mongo|  Název databáze, CollectionName, oblast, CommandName, kód chyby|   Vše |Zátěž žádostí dotaz mongo, Mongo aktualizace poplatek, Mongo odstranit zátěž žádostí, Mongo vložit zátěž žádostí, Mongo počet požadavek poplatek za žádost| Používá k monitorování prostředků Mongo ru za jednu minutu.|
+| TotalRequestUnits |Celkový požadavek jednotky|   Počet|  Celkem|  Požadavku že spotřebované jednotky| Název databáze, StatusCode CollectionName, oblasti,    |Vše|   TotalRequestUnits|  Používá k monitorování využití celkový počet RU na minutovými intervaly. Chcete-li získat průměrnou RU spotřebovaných za sekundu, pomocí celkový agregace na chvíli a dělit 60.|
+| ProvisionedThroughput |Zřízená propustnost|    Počet|  Maximum |Zřízená propustnost v kolekci členitosti|  DatabaseName CollectionName|   5 MIN| |   Používá k monitorování zřízené propustnosti na kolekci.|
+
+### <a name="storage-metrics"></a>Metriky úložiště
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Starší verze metriky mapování | Využití |
+|---|---|---|---|---|---| ---| ---| ---|
+| AvailableStorage| Dostupné úložiště   |B| Celkem|  Celkový úložiště k dispozici hlášené v intervalech 5 minut na oblast|   DatabaseName CollectionName, oblast|   5 MIN| Dostupné úložiště|   Slouží k monitorování úložiště k dispozici minimální členitost kapacity (platí pouze pro kolekce dlouhodobého úložiště) by měl být 5 minut.| 
+| DataUsage |Využití dat |B| Celkem   |Celkové množství dat využití hlášené v intervalech 5 minut na oblast|    DatabaseName CollectionName, oblast|   5 MIN  |Velikost dat  | Slouží k monitorování využití celkové množství dat v kolekci a oblasti, minimální členitost by měl být 5 minut.|
+| IndexUsage|   Použití indexu|    B|  Celkem   |Celkové využití Index hlášené v intervalech 5 minut na oblast|    DatabaseName CollectionName, oblast|   5 MIN| Velikost indexu| Slouží k monitorování využití celkové množství dat v kolekci a oblasti, minimální členitost by měl být 5 minut. |
+| DocumentQuota|    Kvóta dokumentu| B|  Celkem|  Kvóta celkový úložiště Ohlášeno za 5 minut členitosti v jedné oblasti. Dají se použít pro f| DatabaseName CollectionName, oblast|   5 MIN  |Kapacita úložiště|  Slouží k monitorování celkovou kvótu v kolekci a oblasti, minimální členitost by měl být 5 minut.|
+| DocumentCount|    Počet dokumentů| Počet   |Celkem  |Počet Totaldocument uvedený v intervalech 5 minut na oblast|  DatabaseName CollectionName, oblast|   5 MIN  |Počet dokumentů|Slouží k monitorování počet dokumentů v kolekci a oblasti, minimální členitost by měl být 5 minut.|
+
+### <a name="latency-metrics"></a>Metriky latence
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Využití |
+|---|---|---|---|---|---| ---| ---| ---|
+| ReplicationLatency    | Latence replikace|  Milisekundy|   Minimum, Maximum, průměr | Latencí P99 replikace mezi zdrojovou a cílovou oblastí pro účet povolenou geografickou| SourceRegion TargetRegion| Vše | Používá k monitorování P99 latence replikace mezi jakékoli dvě oblasti geograficky replikovaného účtu. |
+
+### <a name="availability-metrics"></a>Metriky dostupnosti
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Starší verze metriky mapování | Využití |
+|---|---|---|---|---|---| ---| ---| ---|
+| ServiceAvailability   | Dostupnost služby| Procento |Minimum a Maximum|   Dostupnost účtu požadavky na jednu hodinu členitosti|  |   1H  | Dostupnost služby  | Toto je procento celkové předaný požadavků. Žádost se považuje za bylo možné provést kvůli chybě systému, pokud se 410, stavový kód 500 nebo 503 slouží k monitorování dostupnosti účet na hodinu členitosti. |
+
+### <a name="cassandra-api-metrics"></a>Metriky rozhraní Cassandra API
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Využití |
+|---|---|---|---|---|---| ---| ---| ---|
+| CassandraRequests | Požadavky Cassandra |  Počet|  Počet|  Počet zpracovaných požadavků Apache Cassandra API|  DatabaseName, CollectionName, kód chyby, oblast, typem operace OperationType, typ prostředku|   Vše| Používá ke sledování požadavků Cassandra v minutovými intervaly. Pokud chcete získat průměrných požadavků za sekundu, použití agregace počet za minutu a dělit 60.|
+| CassandraRequestCharges|  Poplatky za žádost Cassandra| Počet|   Sum, Min, Max, Avg| Požadované jednotky spotřebované žádostmi o rozhraní Cassandra API|   DatabaseName, CollectionName, Region, OperationType, ResourceType|  Vše| Používá k monitorování jednotek ru za minutu používá účet Cassandra API.|
+| CassandraConnectionClosures   | Uzávěry připojení Cassandra |Počet| Počet   |Počet Cassandra ukončená připojení|    ClosureReason oblasti|  Vše | Používá k monitorování připojení mezi klienty a rozhraní Azure Cosmos DB Cassandra API.|
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
@@ -676,7 +714,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MatchedEventCount|Odpovídající události|Počet|Celkem|Celkový počet událostí, které odpovídají tento odběr události|Žádné dimenze|
 |DeliveryAttemptFailCount|Doručení události nezdařilo|Počet|Celkem|Celkový počet událostí doručení pro tento odběr události se nezdařilo.|Chyba ErrorType.|
 |DeliverySuccessCount|Doručené události|Počet|Celkem|Celkový počet událostí doručení pro tento odběr události|Žádné dimenze|
-|DestinationProcessingDurationInMs|Doba trvání zpracování cíl|Milisekundy|Průměr|Doba trvání zpracování cíl v milisekundách|Žádné dimenze|
+|DestinationProcessingDurationInMs|Doba trvání zpracování cíl|Milisekund|Průměr|Doba trvání zpracování cíl v milisekundách|Žádné dimenze|
 |DroppedEventCount|Vyřazené události|Počet|Celkem|Celkový počet vynechaných událostí vzorů pro tento odběr události|Žádné dimenze|
 |DeadLetteredCount|Dead Lettered události|Počet|Celkem|Celkový počet událostí dead lettered vzorů pro tento odběr události|DeadLetterReason|
 
@@ -806,7 +844,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ServiceApiHit|Celkem přístupů k rozhraní API služby|Počet|Počet|Celkový počet přístupů k rozhraní API služby|ActivityType, ActivityName|
-|ServiceApiLatency|Celková latence rozhraní API služby|Milisekundy|Průměr|Celková latence požadavků na rozhraní API služby|ActivityType, ActivityName, StatusCode|
+|ServiceApiLatency|Celková latence rozhraní API služby|Milisekund|Průměr|Celková latence požadavků na rozhraní API služby|ActivityType, ActivityName, StatusCode|
 |ServiceApiResult|Celkem výsledků rozhraní API služby|Počet|Počet|Celkový počet výsledků rozhraní API služby|ActivityType, ActivityName, StatusCode|
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
@@ -814,7 +852,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ClusterDataCapacityFactor|Využití mezipaměti|Procento|Průměr|Úroveň využití v rámci clusteru|Žádné dimenze|
-|QueryDuration|Doba trvání dotazu|Milisekundy|Průměr|Dotazy doba trvání v sekundách|QueryStatus|
+|QueryDuration|Doba trvání dotazu|Milisekund|Průměr|Dotazy doba trvání v sekundách|QueryStatus|
 |IngestionsLoadFactor|Ingestování využití|Procento|Průměr|Poměr používané ingestování sloty v clusteru|Žádné dimenze|
 |IsEngineAnsweringQuery|Zachování|Počet|Průměr|Kontrola správnosti označuje, že cluster odpoví na dotazy|Žádné dimenze|
 |IngestCommandOriginalSizeInMb|Ingestování svazek (v MB)|Počet|Celkem|Celkový objem přijatých dat do clusteru (v MB)|Žádné dimenze|
@@ -1191,7 +1229,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|QueryDuration|Doba trvání dotazu|Milisekundy|Průměr|Doba trvání dotazu jazyka DAX v posledního intervalu|Žádné dimenze|
+|QueryDuration|Doba trvání dotazu|Milisekund|Průměr|Doba trvání dotazu jazyka DAX v posledního intervalu|Žádné dimenze|
 |QueryPoolJobQueueLength|Vlákna: Délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|Žádné dimenze|
 |qpu_high_utilization_metric|Vysoké využití QPU|Počet|Celkem|Vysoké využití QPU za poslední minutu, 1 pro využití vysoké QPU, jinak 0|Žádné dimenze|
 |memory_metric|Memory (Paměť)|B|Průměr|Paměť. Rozsah 0 – 3 GB pro A1, 0 – 5 GB pro A2, A3 0 až 10 GB, 0-25 GB pro A4, 0 – 50 GB pro A5 a 0 – 100 GB pro A6|Žádné dimenze|

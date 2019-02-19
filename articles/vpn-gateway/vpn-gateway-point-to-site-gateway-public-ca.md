@@ -5,20 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: ac1ae4125418a9c0b3e9587cd03a44e752ac8f82
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b89ba054040229d9925b9dbbc64d27eed171613e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236953"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339868"
 ---
 # <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Přechod z podepsaného svým držitelem do veřejné certifikáty certifikační Autority pro P2S brány
 
-Azure VPN Gateway už vydává certifikáty podepsané svým držitelem pro brány pro připojení P2S. Vystavené certifikáty jsou podepsané nyní podle veřejnou certifikační autoritu (CA). Nicméně starší brány může stále používat certifikáty podepsané svým držitelem. Tyto certifikáty podepsané svým držitelem se mu blížíte jejich data vypršení platnosti a musí být převeden do veřejné certifikáty certifikační Autority.
+Azure VPN Gateway už vydává certifikáty podepsané svým držitelem úrovně Azure pro své brány pro připojení P2S. Vystavené certifikáty jsou podepsané nyní podle veřejnou certifikační autoritu (CA). Nicméně některé starší brány může stále používat certifikáty podepsané svým držitelem. Tyto certifikáty podepsané svým držitelem se mu blížíte jejich data vypršení platnosti a musí být převeden do veřejné certifikáty certifikační Autority.
 
-Dříve certifikát podepsaný svým držitelem pro bránu je potřeba aktualizovat každý 18 měsíců. Konfiguračních souborů klienta VPN pak musel být generovány a znovu nasadit na všechny klienty P2S. Přechod na veřejné certifikáty certifikační Autority se vyloučí toto omezení. Kromě přechodu pro certifikáty poskytuje tato změna také vylepšení platformy, lepší metriky a vylepšení stability.
+Certifikáty v tomto kontextu jsou další úrovně Azure certifikát. Nejsou řetězy certifikátů, které používáte při vytváření vlastní kořenovými certifikáty podepsanými svým držitelem a klientských certifikátů pro ověřování. Tyto certifikáty zůstanou beze změny a dnů do vypršení platnosti dat je k tomu vygeneroval.
+
+Certifikát podepsaný svým držitelem pro bránu (vydané na pozadí Azure) dříve, potřeba aktualizovat každý 18 měsíců. Konfiguračních souborů klienta VPN pak musel být generovány a znovu nasadit na všechny klienty P2S. Přechod na veřejné certifikáty certifikační Autority se vyloučí toto omezení. Kromě přechodu pro certifikáty poskytuje tato změna také vylepšení platformy, lepší metriky a vylepšení stability.
 
 Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát brány převedou, zobrazí se komunikace nebo informační zprávy na webu Azure Portal. Můžete zkontrolovat, pokud vaše brána je ovlivněno pomocí kroků v tomto článku.
 

@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca8d75b4a8c0e7586b25cbfd53cd9eaa134d0ad3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7dfce660340654e98883ae6e696644175c005459
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299577"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343081"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny pro nasazení některých funkcí Azure Active Directory (Azure AD)? Následující plány nasazení popisují obchodní hodnotu, důležité informace o plánování, návrh a provozní postupy potřebné k úspěšnému zavedení několika běžnějších funkcí Azure AD. 
@@ -29,7 +29,7 @@ Velmi bychom uvítali váš názor na tyto dokumenty. Vyplňte tento krátký [d
 |Scénář |Popis |
 |-|-|
 |[Multi-Factor Authentication](https://aka.ms/MFADPDownload)|Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Použitím metod ověřování schválených správcem pomáhá Azure MFA chránit přístup k datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.|
-|Podmíněný přístup [ke stažení plán](https://aka.ms/CADPDownload) nebo [online plán](https://aka.ms/caonlineplan)|S využitím podmíněného přístupu můžete implementovat automatizované rozhodování ohledně řízení přístupu a na základě podmínek určit, kdo bude mít přístup k vašim cloudovým aplikacím.|
+|Podmíněný přístup [ke stažení plán](https://aka.ms/CADPDownload) nebo [online plán](https://aka.ms/deploymentplans/ca)|S využitím podmíněného přístupu můžete implementovat automatizované rozhodování ohledně řízení přístupu a na základě podmínek určit, kdo bude mít přístup k vašim cloudovým aplikacím.|
 |[Samoobslužné resetování hesla](https://aka.ms/SSPRDPDownload)|Samoobslužné resetování hesla pomáhá uživatelům tím, že si kdykoli a kdekoli můžou v případě potřeby resetovat heslo bez zásahu správce.|
 |[Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)|Azure AD Privileged Identity Management (PIM) pomáhá spravovat privilegované role správců ve službě Azure AD se prostředky Azure a dalších Microsoft Online Services. PIM poskytuje řešení, jako jsou just-in-time, pracovní postupy schválení žádostí a plně integrované přístup kontroly, abyste mohli identifikovat odkrýt a zabránit škodlivých aktivit privilegovaných rolí v reálném čase.|
 |[Jednotné přihlašování](https://aka.ms/SSODPDownload)|Jednotné přihlašování pomáhá získat přístup ke všem aplikacím a prostředkům, které potřebujete ke své obchodní činnosti, prostřednictvím jediného přihlášení s použitím jednoho uživatelského účtu. Po přihlášení můžete přecházet například mezi Microsoft Office, SalesForce a Boxem, aniž by se po vás vyžadovalo další ověření (například zadáním hesla).|

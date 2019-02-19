@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu pomocí RBAC a Azure Resource Manageru šablon | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) a šablon Azure Resource Manageru.
+title: Správa přístupu k prostředkům Azure pomocí šablon Azure Resource Manageru a RBAC | Dokumentace Microsoftu
+description: Další informace o správě přístupu k prostředkům Azure pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) a šablon Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696893"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337199"
 ---
-# <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>Správa přístupu pomocí RBAC a Azure Resource Manageru šablony
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Správa přístupu k prostředkům Azure pomocí šablon Azure Resource Manageru a RBAC
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob správy přístupu k prostředkům v Azure. Kromě použití Azure Powershellu nebo rozhraní příkazového řádku Azure, můžete spravovat přístup k prostředkům Azure pomocí RBAC a [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Šablony můžou být užitečné, pokud budete potřebovat k nasazení prostředků konzistentně a opakovaně. Tento článek popisuje, jak můžete spravovat přístupu pomocí RBAC a šablony.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům Azure. Kromě použití Azure Powershellu nebo rozhraní příkazového řádku Azure, můžete spravovat přístup k prostředkům Azure pomocí RBAC a [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Šablony můžou být užitečné, pokud budete potřebovat k nasazení prostředků konzistentně a opakovaně. Tento článek popisuje, jak můžete spravovat přístupu pomocí RBAC a šablony.
 
 ## <a name="example-template-to-create-a-role-assignment"></a>Příklad šablony k vytvoření přiřazení role
 
@@ -251,6 +251,6 @@ Pokud chcete nasadit předchozí šablonu pomocí Azure CLI, postupujte takto.
     
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření a nasazení první šablony Azure Resource Manageru](../azure-resource-manager/resource-manager-create-first-template.md)
+- [Rychlé zprovoznění: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)

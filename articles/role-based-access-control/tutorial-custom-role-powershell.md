@@ -1,6 +1,6 @@
 ---
-title: Kurz – Vytvoření vlastní role pomocí Azure PowerShellu | Microsoft Docs
-description: Začněte vytvářet vlastní roli pomocí Azure PowerShellu.
+title: Kurz – vytvoření vlastní role pro prostředky Azure pomocí Azure Powershellu | Dokumentace Microsoftu
+description: Začínáme s vytvářením vlastní role pro prostředky Azure pomocí Azure Powershellu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9dddef43e1ac5f3bcedcc08b313eea300436ea61
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 23ee8aef4ab9b7ea54dae0587e2caaafbf08e5b2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106423"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339154"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pomocí Azure Powershellu
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure Powershellu
 
-Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. V tomto kurzu pomocí Azure PowerShellu vytvoříte vlastní roli Čtenář lístků podpory. Tato vlastní role umožní uživateli zobrazit vše v předplatném a také otevírat lístky podpory.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure PowerShellu vytvoříte vlastní roli Čtenář lístků podpory. Tato vlastní role umožní uživateli zobrazit vše v předplatném a také otevírat lístky podpory.
 
 V tomto kurzu se naučíte:
 
@@ -277,4 +277,4 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních rolí pomocí PowerShellu](custom-roles-powershell.md)
+> [Vytvoření vlastních rolí pro prostředky Azure pomocí Azure Powershellu](custom-roles-powershell.md)

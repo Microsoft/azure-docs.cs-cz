@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 71ddf1d70953b721911a7315ab6875dd41a9a4db
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894169"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338593"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Kurz: Stream živé pomocí Media Services v3 pomocí .NET
 
@@ -126,7 +126,7 @@ Live výstupů spuštění při vytvoření a přestanou při odstranění. Při
 #### <a name="create-a-streaming-locator"></a>Vytvořit lokátor streamování
 
 > [!NOTE]
-> Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
+> Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Chcete spustit streamování vašeho obsahu a využít výhod [dynamické balení](dynamic-packaging-overview.md) a dynamického šifrování, musí koncový bod streamování, ze kterého chcete Streamovat obsah musí být ve **systémem** stavu. 
 
 Když publikujete Live výstupního prostředku pomocí Lokátor streamování, živá událost (až do délky okna DVR) bude dál zobrazit až do vypršení platnosti lokátoru streamování nebo odstranění, podle toho, co nastane dřív.
 

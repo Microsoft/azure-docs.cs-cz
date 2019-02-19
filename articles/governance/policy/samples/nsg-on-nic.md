@@ -1,6 +1,6 @@
 ---
 title: Ukázka - NSG x na každém síťovém rozhraní
-description: Tato ukázková zásada vyžaduje, aby se ve všech virtuálních síťových rozhraních používala konkrétní skupina zabezpečení sítě.
+description: Tato definice zásady ukázka vyžaduje konkrétní síťové skupiny zabezpečení je součástí každé virtuální síťové rozhraní.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 37701a2240f5b017efdbd051972952c9f0449d69
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d297d296f8b33122ce2b8079c5ee6c79705bcc55
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245962"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342554"
 ---
-# <a name="nsg-x-on-every-nic"></a>NSG x ve všech síťových rozhraních
+# <a name="sample---network-security-group-x-on-every-nic"></a>Ukázkový – skupina zabezpečení sítě X na každém síťovém rozhraní
 
 Tato zásada vyžaduje, aby se ve všech virtuálních síťových rozhraních používala konkrétní skupina zabezpečení sítě. Zadejte ID skupiny zabezpečení sítě, která se má použít.
 

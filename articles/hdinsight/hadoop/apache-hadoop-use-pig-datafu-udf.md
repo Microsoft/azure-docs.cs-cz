@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982ed4533c34cd4a6613d289ef4712001977538f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d67c3e452da05c626721d4c3144e612e6f9e0af4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436207"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338440"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>Použití Apache DataFu Pig s Pig Apache v HDInsight
 
@@ -90,7 +90,9 @@ Kroky v této části předpokládají, že máte zkušenosti s používáním P
 >
 > * Pokud váš cluster používá službu Azure Storage, použijte `wasb://` cestu. Například, `register wasb:///example/jars/datafu-pig-1.4.0.jar`.
 >
-> * Pokud váš cluster používá Azure Data Lake Store, použijte `adl://` cestu. Například, `register adl://home/example/jars/datafu-pig-1.4.0.jar`.
+> * Pokud váš cluster používá Azure Data Lake Store Gen2, použijte `abfs://` cestu. Například, `register abfs://home/example/jars/datafu-pig-1.4.0.jar`.
+>
+> * Pokud váš cluster používá Azure Data Lake Store Gen1, použijte `adl://` cestu. Například, `register adl://home/example/jars/datafu-pig-1.4.0.jar`.
 
 Často definovat jako alias pro DataFu funkce. Následující příklad definuje alias `SHA`:
 

@@ -7,22 +7,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ccf4273489d739bb9b0d802b79944efefcd02ff4
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 36ca5e07adf79de77ac4ab4149ff8e96a1dece8d
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331160"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408744"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapování datového toku datových sad
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Datové sady jsou definující tvar dat, které pracujete ve vašem kanálu služby Data Factory konstrukce. V toku dat řádků a sloupců dat na úrovni vyžaduje definici mnohem více jemně odstupňovaná než vyžaduje datové sady v rámci kanálu řízení toku.
+Datové sady jsou definující tvar dat, které pracujete ve vašem kanálu služby Data Factory konstrukce. V toku dat řádků a sloupců dat na úrovni vyžaduje definici jemně odstupňovaná datové sady. Stejná hloubka pochopení dat nevyžadují žádné datové sady použité v kanálů toků řízení.
 
-Pomocí datové sady ve službě Flow zdroje dat a transformace jímky pro definování schématu základní data. Pokud schéma ve vašich datech nemáte, můžete nastavit odchylek schématu na pro zdroje a jímky. Pomocí schématu definice z datové sady budete mít souvisejících datových typů, formáty dat, umístění souboru a informace o připojení z přidružené propojené služby.
+Datové sady ve službě Flow zdroje dat a transformace jímky se používají k definování schématu základní data. Pokud schéma ve vašich datech nemáte, můžete nastavit odchylek schématu na pro zdroje a jímky. Pomocí schématu definice z datové sady budete mít souvisejících datových typů, formáty dat, umístění souboru a informace o připojení z přidružené propojené služby.
 
-Aktuálně v toku dat, najdete čtyři datové sady:
+## <a name="dataset-types"></a>Typů datových sad
+
+Aktuálně v toku dat, najdete čtyři typy datové sady:
 
 * Azure SQL DB
 * Datový sklad Azure SQL
@@ -33,9 +35,11 @@ Datové sady toku dat oddělte zdroji *typ* z propojené služby typu připojen�
 
 ![Možnosti transformace zdroje](media/data-flow/dataset1.png "zdroje")
 
+## <a name="data-flow-compatible-datasets"></a>Kompatibilní datové sady s toku dat
+
 Při vytváření nové datové sady, je zaškrtávací políčko s popiskem "Datový tok kompatibilní" v pravém horním rohu panelu. Kliknutím na toto tlačítko bude filtrovat pouze datové sady, které lze použít s toky dat. 
 
-Importovat schémata
+## <a name="import-schemas"></a>Importovat schémata
 
-Při importu schématu datové sady se předávají Data, zobrazí se na tlačítko Importovat schéma. Kliknutím na toto tlačítko zobrazíte dvě možnosti: Import ze zdroje nebo importovat z místního souboru. Ve většině případů budete importovat schéma přímo ze zdroje. Pokud máte existující soubor schématu, může odkazovat na místní soubor a Data Factory bude definovat schéma na základě tohoto souboru schématu.
+Při importu schématu datové sady se předávají Data, zobrazí se na tlačítko Importovat schéma. Kliknutím na toto tlačítko zobrazíte dvě možnosti: Import ze zdroje nebo importovat z místního souboru. Ve většině případů budete importovat schéma přímo ze zdroje. Nicméně pokud máte existující soubor schématu (soubory Parquet nebo CSV se záhlavími), může odkazovat na místní soubor a Data Factory se budou definovat schéma na základě tohoto souboru schématu.
 

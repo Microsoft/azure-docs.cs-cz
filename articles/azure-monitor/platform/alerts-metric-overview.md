@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005511"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342979"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
-Upozornění metrik ve službě Azure Monitor pracovat nad vícedimenzionálních metrik. Tyto metriky můžou být metriky platformy [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [oblíbených protokolů ze služby Azure Monitor převést na metriky](../../azure-monitor/platform/alerts-metric-logs.md), standardních metrik Application Insights. Upozornění metrik hodnocení v pravidelných intervalech a zkontrolujte, zda podmínky na jeden nebo více metrika časových řad jsou true a vás upozorní, pokud se splní hodnocení. Upozornění na metriky jsou stavová, to znamená, že pouze odeslat oznámení při změně stavu.
+Upozornění metrik ve službě Azure Monitor pracovat nad vícedimenzionálních metrik. Tyto metriky můžou být [platformy metriky](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [oblíbených protokolů ze služby Azure Monitor převést na metriky](../../azure-monitor/platform/alerts-metric-logs.md) a metrik Application Insights. Upozornění metrik hodnocení v pravidelných intervalech a zkontrolujte, zda podmínky na jeden nebo více metrika časových řad jsou true a vás upozorní, pokud se splní hodnocení. Upozornění na metriky jsou stavová, to znamená, že pouze odeslat oznámení při změně stavu.
 
 ## <a name="how-do-metric-alerts-work"></a>Jak fungují upozornění na metriku
 
@@ -65,8 +65,6 @@ Dejme tomu, že využití na "myVM" pokračuje v následné kontroly je nad prah
 Zopakovat později, pokud využití na "myVM" se vrátí zpět na normální tedy neklesne pod prahovou hodnotou. Pravidlo výstrahy monitoruje podmínku pro ještě dvakrát, odeslat oznámení o vyřešené. Pravidlo upozornění odešle zprávu s přeložit/deaktivaci pro tři po sobě jdoucí tečky ke snížení šumu v případě netřepotá podmínek není splněna se vyskytl výstražný stav.
 
 Jak vyřešit oznámení se posílá navýšení kapacity pomocí webhooků a e-mailu, stav výstrahy instance (označované jako stav monitorování) na webu Azure portal je také nastavena na vyřešený.
-
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorování ve velkém měřítku pomocí upozornění na metriky ve službě Azure Monitor
 
 ### <a name="using-dimensions"></a>Pomocí dimenzí
 
@@ -123,9 +121,9 @@ Toto pravidlo monitoruje Pokud průměrné využití procesoru po dobu poslední
 
 Zvýšení období zpět vzhled a počet porušení zásad můžete také povolit filtrování výstrah pouze upozornění na vaší definice významné odchylky. [Další informace o dynamické prahové hodnoty pokročilé možnosti](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-### <a name="monitoring-multiple-resources-using-metric-alerts"></a>Monitorování více zdrojů pomocí upozornění na metriku
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorování ve velkém měřítku pomocí upozornění na metriky ve službě Azure Monitor
 
-Jak jste viděli v předchozí části, je možné mít jediné pravidlo metriky výstrahy, které monitoruje každá kombinace jednotlivých dimenzí (např.) metriky časové řady). Ale dříve jste byli stále omezena na provádění po jednom jeden prostředek. Azure Monitor podporuje také monitorování více prostředků s jedním pravidlem upozornění metriky. Tato funkce je aktuálně ve verzi preview a jenom na podporovaných virtuálních počítačích. Navíc jeden upozornění na metriku můžete monitorovat prostředky v jedné oblasti Azure.
+Zatím jste mohli vidět, jak jeden upozornění na metriku může sloužit k monitorování jeden nebo více metriky týkající se časové řady na jeden prostředek Azure. V mnoha případech můžete stejné pravidlo upozornění u mnoha prostředky. Azure Monitor podporuje také monitorování více prostředků s jedním pravidlem upozornění metriky. Tato funkce je momentálně podporována pouze na virtuálních počítačích. Navíc jeden upozornění na metriku můžete monitorovat prostředky v jedné oblasti Azure.
 
 Můžete určit rozsah monitorování podle jednoho upozornění na metriku v jednom ze tří způsobů:
 
@@ -133,7 +131,7 @@ Můžete určit rozsah monitorování podle jednoho upozornění na metriku v je
 - všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupin prostředků v rámci předplatného
 - všechny virtuální počítače (v jedné oblasti Azure) v jednom předplatném
 
-Vytváření pravidla upozornění na metriky, které monitorují několik prostředků není aktuálně podporováno prostřednictvím webu Azure portal. Můžete vytvořit tato pravidla pomocí [šablon Azure Resource Manageru](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Zobrazí se jednotlivá oznámení pro každý virtuální počítač.
+Vytvoření pravidla upozornění na metriky, které monitorují několik prostředků je třeba [vytváření dalších upozornění metriky](alerts-metric.md) , který monitoruje na jediný prostředek. Jediný rozdíl je, že vyberete všechny prostředky, které chcete monitorovat. Můžete také vytvořit tato pravidla pomocí [šablon Azure Resource Manageru](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Zobrazí se jednotlivá oznámení pro každý virtuální počítač.
 
 ## <a name="typical-latency"></a>Typické latence
 
@@ -149,7 +147,7 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | Ano |
 | Microsoft.Batch/batchAccounts| Ano|
-|Microsoft.Cache/redis| Ano
+|Microsoft.Cache/redis| Ano |
 |Microsoft.ClassicCompute/virtualMachines | Ne |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Ne|
 |Microsoft.CognitiveServices/accounts | Ne |
@@ -160,7 +158,7 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 |Microsoft.DBforMySQL/servers| Ano|
 |Microsoft.DBforPostgreSQL/servers| Ano|
 |Microsoft.Devices/IotHubs | Ne|
-|Microsoft.DocumentDB/databaseAccounts| Ne|
+|Microsoft.DocumentDB/databaseAccounts| Ano|
 |Microsoft.EventHub/namespaces | Ano|
 |Microsoft.Logic/workflows | Ano|
 |Microsoft.Network/loadBalancers |Ano|
@@ -168,16 +166,16 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 |Microsoft.Network/applicationGateways| Ano|
 |Microsoft.Network/expressRouteCircuits| Ano|
 |Microsoft.Network/trafficManagerProfiles | Ano|
-|Microsoft.Search/searchServices | Ne|
-|Microsoft.ServiceBus/namespaces| Ne|
+|Microsoft.Search/searchServices | Ano|
+|Microsoft.ServiceBus/namespaces| Ano |
 |Microsoft.Storage/storageAccounts | Ano|
 |Microsoft.StreamAnalytics/streamingjobs| Ano|
 |Microsoft.TimeSeriesInsights/environments | Ano|
 |Microsoft Web/serverfarms | Ano |
 |Microsoft Weby (s výjimkou funkce) | Ano|
 |Microsoft Web/hostingEnvironments/multiRolePools | Ne|
-|Microsoft Web/hostingEnvironments/workerPools| Ne
-|Microsoft.SQL/Servers | Ne|
+|Microsoft Web/hostingEnvironments/workerPools| Ne |
+|Microsoft.SQL/Servers | Ne |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -3,17 +3,17 @@ title: Řešení potíží s agentem Azure Backup
 description: Řešení potíží instalace a registrace agenta Azure Backup
 services: backup
 author: saurabhsensharma
-manager: shreeshd
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: 65eb6ef088c9baae67d65607ede771f3c9d11a41
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9180604b18224adace040c9eee5181b4cd4d8b92
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114137"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339001"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -24,8 +24,13 @@ Tady je postup pro řešení chyb můžete setkat během konfigurace, registraci
 | ---     | ---     | ---    |
 | **Chyba** </br> *Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá mít nejnovější přihlašovací údaje přidružené ke službě obnovení. (ID: 34513)* | <ul><li> Přihlašovací údaje trezoru jsou neplatné (to znamená, že byly staženy víc než 48 hodin, než čas registrace).<li>MARS Agent se nemůže stahovat soubory do svého adresáře Windows Temp. <li>Přihlašovací údaje trezoru jsou v umístění v síti. <li>Protokol TLS 1.0 je zakázaný.<li> Nakonfigurovaný proxy server blokuje připojení. <br> |  <ul><li>Stáhněte si nové přihlašovací údaje trezoru. (**Poznámka**: Pokud více souborů přihlašovacích údajů trezoru se stáhnou předtím, jenom nejnovější stažený soubor je platný do 48 hodin.) <li>Spuštění **IE** > **nastavení** > **Možnosti Internetu** > **zabezpečení**  >  **Internet**. V dalším kroku vyberte **vlastní úroveň**a posuňte, dokud se nezobrazí stahování části souboru. Potom vyberte **povolit**.<li>Budete také muset tyto weby přidat do aplikace IE [Důvěryhodné servery](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins#network-and-connectivity-requirements).<li>Změňte nastavení pro použití proxy serveru. Zadejte proxy server podrobnosti. <li> Datum a čas dodržovat váš počítač.<li>Pokud obdržíte chybu s informacemi o tom, že stahování souborů nejsou povoleny, je pravděpodobné, že existuje velký počet souborů v adresáři C:/Windows/Temp.<li>Přejděte na C:/Windows/Temp a zkontrolujte, zda jsou více než 60 000 nebo než 65 000 vývojáři soubory s příponou TMP. Pokud existuje, odstraňte tyto soubory.<li>Ujistěte se, že máte nainstalované rozhraní .NET framework 4.6.2. <li>Pokud jste zakázali protokol TLS 1.0 z důvodu dodržování PCI, podívejte se na to [stránka o řešení problémů](https://support.microsoft.com/help/4022913). <li>Pokud máte antivirový software nainstalovaný na serveru, vylučte z antivirová kontrola následující soubory: <ul><li>CBengine.exe<li>CSC.exe, který má vztah k rozhraní .NET Framework. Existuje CSC.exe pro každou verzi rozhraní .NET, který je nainstalován na serveru. Vylučte soubory CSC.exe, které jsou vázané na všechny verze rozhraní .NET Framework na příslušném serveru. <li>Dočasné umístění složky nebo mezipaměť. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<br><li>Složky bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
+## <a name="unable-to-download-vault-credential-file"></a>Nepovedlo se stáhnout soubor s přihlašovacími údaji trezoru
 
-## <a name="the-mars-agent-was-unable-to-connect-to-azure-backup"></a>MARS Agent se nemohl připojit ke službě Azure Backup
+| Podrobnosti o chybě | Doporučené akce |
+| ---     | ---    |
+|Nepovedlo se stáhnout soubor s přihlašovacími údaji trezoru. (ID: 403) | <ul><li> Zkusit stáhnout přihlašovací údaje trezoru pomocí jiný prohlížeč nebo provádět následujících kroků: <ul><li> Spusťte Internet Exploreru, stiskněte klávesu F12. </li><li> Přejděte na **sítě** kartu k vymazání mezipaměti aplikace Internet Explorer a soubory cookie </li> <li> Aktualizujte stránku<br>(NEBO)</li></ul> <li> Zkontrolujte, jestli předplatné je zakázané nebo vypršela platnost<br>(NEBO)</li> <li> Zaškrtněte, pokud jakékoli pravidlo brány firewall blokuje stahování souborů přihlašovacích údajů trezoru <br>(NEBO)</li> <li> Ujistěte se, že nebyly vyčerpali limit pro trezor (50 počítačů pro každý trezor)<br>(NEBO)</li>  <li> Zajištění uživatel má požadované oprávnění Azure Backup pro stažení přihlašovacích údajů trezoru a server zaregistrujete pomocí úložiště, přečtěte si [článku](backup-rbac-rs-vault.md)</li></ul> | 
+
+## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Agent Microsoft Azure Recovery Services se nemohl připojit ke službě Microsoft Azure Backup
 
 | Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |
@@ -54,6 +59,8 @@ Tady je postup pro řešení chyb můžete setkat během konfigurace, registraci
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Zálohování nelze spustit podle plánu
 Pokud naplánovaných záloh není aktivují automaticky, zatímco ruční zálohy budou fungovat bez problémů, zkuste následující akce:
 
+- Přejděte na **ovládací panely** > **nástroje pro správu** > **Plánovač úloh**. Rozbalte **Microsoft**a vyberte **Online zálohování**. Dvakrát klikněte na panel **Microsoft OnlineBackup**a přejděte na **triggery** kartu. Ujistěte se, že je stav nastaven **povoleno**. Pokud tomu tak není, vyberte **upravit**a vyberte **povoleno** zaškrtávací políčko. Na **Obecné** kartu, přejděte na **možnosti zabezpečení**. Ujistěte se, že uživatelský účet vybrané ke spuštění úkolu je buď **systému** nebo **skupiny Local Administrators** na serveru.
+
 - Podívejte se, jestli je na serveru nainstalovaný PowerShell 3.0 nebo novější. Pokud chcete zkontrolovat verzi prostředí PowerShell, spusťte následující příkaz a ověřte, zda *hlavní* číslo verze je roven nebo větší než 3.
 
   `$PSVersionTable.PSVersion`
@@ -67,9 +74,6 @@ Pokud naplánovaných záloh není aktivují automaticky, zatímco ruční zálo
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
-
-- Přejděte na **ovládací panely** > **nástroje pro správu** > **Plánovač úloh**. Rozbalte **Microsoft**a vyberte **Online zálohování**. Dvakrát klikněte na panel **Microsoft OnlineBackup**a přejděte na **triggery** kartu. Ujistěte se, že je stav nastaven **povoleno**. Pokud tomu tak není, vyberte **upravit**a vyberte **povoleno** zaškrtávací políčko. Na **Obecné** kartu, přejděte na **možnosti zabezpečení**. Ujistěte se, že uživatelský účet vybrané ke spuštění úkolu je buď **systému** nebo **skupiny Local Administrators** na serveru.
-
 
 > [!TIP]
 > Aby bylo zajištěno, že změny jsou konzistentní, restartujte server po provedení výše uvedených kroků.
@@ -99,7 +103,7 @@ Azure Backup nemusí úspěšně připojit svazek pro obnovení, dokonce i po n�
 
 8.  Restartujte službu iniciátoru iSCSI společnosti Microsoft. Chcete-li to provést, klikněte pravým tlačítkem na službu, vyberte **Zastavit**znovu kliknete pravým tlačítkem a vyberte **Start**.
 
-9.  Opakujte obnovení pomocí **rychlé obnovení**.
+9.  Opakujte obnovení pomocí [ **rychlé obnovení**](backup-instant-restore-capability.md).
 
 Pokud obnovení pořád selže, restartujte server nebo klienta. Pokud nechcete, aby k restartování nebo obnovení selže i i po restartování serveru, zkuste obnovení v jiném počítači. Postupujte podle kroků v [v tomto článku](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 

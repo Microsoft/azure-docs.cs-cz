@@ -12,44 +12,52 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/15/2018
+ms.date: 02/15/2019
 ms.author: aljo
-ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 15561969e27512c4882eccc10f75aa932bcf23df
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903498"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338984"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavení Azure Active Directory pro ověřování klientů
 
-Pro clustery spuštěné v Azure Azure Active Directory (Azure AD) se doporučuje pro zabezpečení přístupu ke koncovým bodům správy.  Tento článek popisuje, jak se nastavení Azure AD k ověřování klientů pro cluster Service Fabric, které je třeba provést před [vytváření clusteru](service-fabric-cluster-creation-via-arm.md).  Azure AD umožňuje organizacím (označuje se jako tenantů) ke správě přístupu uživatelů k aplikacím. Aplikace se dělí na ty, které mají webové přihlašovacího uživatelského rozhraní a ty, které mají nativní klientské prostředí. V tomto článku předpokládáme, že jste již vytvořili tenanta. Pokud ne, začněte tím, že čtení [získání tenanta služby Azure Active Directory][active-directory-howto-tenant].
+Pro clustery spuštěné v Azure Azure Active Directory (Azure AD) se doporučuje pro zabezpečení přístupu ke koncovým bodům správy.  Tento článek popisuje, jak se nastavení Azure AD k ověřování klientů pro cluster Service Fabric, které je třeba provést před [vytváření clusteru](service-fabric-cluster-creation-via-arm.md).  Azure AD umožňuje organizacím (označuje se jako tenantů) ke správě přístupu uživatelů k aplikacím. Aplikace se dělí na ty, které mají webové přihlašovacího uživatelského rozhraní a ty, které mají nativní klientské prostředí. 
 
-## <a name="create-azure-ad-applications"></a>Vytvoření aplikace Azure AD
 Cluster Service Fabric nabízí několik vstupních bodů do jeho funkce správy, včetně webová [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] a [sady Visual Studio] [ service-fabric-manage-application-in-visual-studio]. Proto vytvoříte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace.  Po vytvoření aplikace můžete přiřadit uživatele jen pro čtení a role správce.
-
-Pro zjednodušení některé kroky při konfiguraci Azure AD s clusterem Service Fabric, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
 
 > [!NOTE]
 > Před vytvořením clusteru, musíte dokončit následující kroky. Vzhledem k tomu, že skripty očekávají názvů clusterů a koncových bodů, hodnoty plánování byste měli využít a ne hodnoty, že jste již vytvořili.
 
+## <a name="prerequisites"></a>Požadavky
+V tomto článku předpokládáme, že jste již vytvořili tenanta. Pokud ne, začněte tím, že čtení [získání tenanta služby Azure Active Directory][active-directory-howto-tenant].
+
+Pro zjednodušení některé kroky při konfiguraci Azure AD s clusterem Service Fabric, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
+
 1. [Stáhněte si skripty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) k vašemu počítači.
 2. Klikněte pravým tlačítkem na soubor zip, vyberte **vlastnosti**, vyberte **Odblokovat** zaškrtněte políčko a potom klikněte na tlačítko **použít**.
 3. Rozbalte soubor zip.
-4. Spustit `SetupApplications.ps1`a zadejte ID Tenanta, název clusteru a WebApplicationReplyUrl jako parametry. Příklad:
+
+## <a name="create-azure-ad-applications-and-asssign-users-to-roles"></a>Vytvoření aplikace Azure AD a asssign uživatelů k rolím
+Vytvořit dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace. Po vytvoření aplikace pro reprezentaci clusteru přiřadit uživatelům, aby [role podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
+
+Spustit `SetupApplications.ps1`a zadat tenanta jako parametry ID, název clusteru a adresy URL odpovědi webové aplikace.  Také zadejte uživatelská jména a hesla pro uživatele.  Příklad:
 
 ```PowerShell
-.\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+$Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin
 ```
 
 > [!NOTE]
-> Pro národní cloudy (Azure Government, Azure China, Azure Germany), by měly také určit `-Location` parametru.
+> Pro národní cloudy (například Azure Government, Azure China, Azure Germany), by měly také určit `-Location` parametru.
 
-Vaše ID Tenanta zjistíte spuštěním příkazu Powershellu `Get-AzureSubscription`. Spuštění tohoto příkazu se zobrazí ID Tenanta pro každé předplatné.
+Můžete najít vaše *TenantId* spuštěním příkazu Powershellu `Get-AzureSubscription`. Spuštění tohoto příkazu se zobrazí ID Tenanta pro každé předplatné.
 
-Název clusteru je používat jako předpona aplikací v Azure AD, které jsou vytvořeny skriptem. Nemusí přesně odpovídat skutečný název clusteru. Je určena pouze k usnadňují mapovat do clusteru Service Fabric, který se právě používají s artefakty Azure AD.
+*Název clusteru* používat jako předpona aplikací v Azure AD, které jsou vytvořeny skriptem. Nemusí přesně odpovídat skutečný název clusteru. Je určena pouze k usnadňují mapovat do clusteru Service Fabric, který se právě používají s artefakty Azure AD.
 
-WebApplicationReplyUrl je výchozí koncový bod, který Azure AD vrací uživatelům po jejich dokončení přihlašování. Nastavte jako koncový bod Service Fabric Exploreru pro váš cluster, který ve výchozím nastavení je tento koncový bod:
+*WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrací uživatelům po jejich dokončení přihlašování. Nastavte jako koncový bod Service Fabric Exploreru pro váš cluster, který ve výchozím nastavení je tento koncový bod:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -58,7 +66,7 @@ Zobrazí se výzva k přihlášení k účtu, který má oprávnění správce p
    * *Název clusteru*\_clusteru
    * *Název clusteru*\_klienta
 
-Skript vypíše soubor JSON potřebný pomocí šablony Azure Resource Manageru při vytvoření clusteru v další části, takže je vhodné ponechat otevřené okno Powershellu.
+Skript vypíše soubor JSON potřebný pomocí šablony Azure Resource Manageru při vám [vytvořit cluster](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access), takže je vhodné ponechat otevřené okno Powershellu.
 
 ```json
 "azureActiveDirectory": {
@@ -67,31 +75,6 @@ Skript vypíše soubor JSON potřebný pomocí šablony Azure Resource Manageru 
   "clientApplication":"<guid>"
 },
 ```
-
-<a name="assign-roles"></a>
-
-## <a name="assign-users-to-roles"></a>Přiřazení uživatelů k rolím
-Po vytvoření aplikace, které chcete cluster představují přiřazení uživatele k rolím nepodporuje Service Fabric: jen pro čtení a správce. Pomocí můžete přiřadit role [webu Azure portal][azure-portal].
-
-1. Na webu Azure Portal vyberte v pravém horním rohu vašeho tenanta.
-
-    ![Vyberte tlačítko tenanta][select-tenant-button]
-2. Vyberte **Azure Active Directory** na levé kartě a poté vyberte možnost "podnikové aplikace".
-3. Vyberte "Všechny aplikace" a pak vyhledejte a vyberte webovou aplikaci, která má název například `myTestCluster_Cluster`.
-4. Klikněte na tlačítko **uživatelů a skupin** kartu.
-
-    ![Kartu uživatelé a skupiny][users-and-groups-tab]
-5. Klikněte na tlačítko **přidat uživatele** tlačítko Nová stránka, vyberte uživatele a roli chcete přiřadit a potom klikněte na tlačítko **vyberte** tlačítko v dolní části stránky.
-
-    ![Přiřadit uživatele na stránku rolí][assign-users-to-roles-page]
-6. Klikněte na tlačítko **přiřadit** tlačítko v dolní části stránky.
-
-    ![Přidat přiřazení potvrzení][assign-users-to-roles-confirm]
-
-> [!NOTE]
-> Další informace o rolích v Service Fabric najdete v tématu [řízení přístupu na základě rolí pro Service Fabric klienty](service-fabric-cluster-security-roles.md).
->
->
 
 ## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Poradce při potížích v nastavení Azure Active Directory
 Nastavení Azure AD a jeho použití může být náročné, takže tady je několik tipů, na co můžete dělat k ladění těchto potíží.
@@ -159,10 +142,6 @@ Po nastavení aplikace Azure Active Directory a nastavení role pro uživatele, 
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
 
 <!-- Images -->
-[select-tenant-button]: ./media/service-fabric-cluster-creation-setup-aad/select-tenant-button.png
-[users-and-groups-tab]: ./media/service-fabric-cluster-creation-setup-aad/users-and-groups-tab.png
-[assign-users-to-roles-page]: ./media/service-fabric-cluster-creation-setup-aad/assign-users-to-roles-page.png
-[assign-users-to-roles-confirm]: ./media/service-fabric-cluster-creation-setup-aad/assign-users-to-roles-confirm.png
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-setup-aad/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-setup-aad/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-setup-aad/web-application-reply-url.png

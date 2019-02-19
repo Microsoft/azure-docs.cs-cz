@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 02/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 55558f1483a576e7ac3b9ce027588eceabd5db70
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311707"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342418"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search
 
@@ -26,10 +26,10 @@ Architektura zabezpečení služby Azure Search zahrnuje fyzického zabezpečen�
 
 Služba Azure Search má certifikaci pro následující normy jako [jsme oznámili v červnu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
-+ [ISO 27001: 2013](https://www.iso.org/isoiec-27001-information-security.html) 
++ [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [Dodržování požadavků SOC 2 typ 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) pro celou sestavu, přejděte na [Azure – a Azure Government SOC 2 typ II sestavy](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [GxP (21 CFR oddíl 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
 + [PCI DSS úrovně 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Austrálie IRAP neutajované DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
@@ -42,7 +42,7 @@ Standardy dodržování předpisů se vztahuje na funkce obecně dostupná. Při
 
 | Vrstva zabezpečení | Popis |
 |----------------|-------------|
-| Šifrování během přenosu <br>(PROTOKOL HTTPS A SSL/TLS) | Služba Azure Search naslouchá na portu HTTPS 443. Napříč platformami jsou šifrované připojení ke službám Azure. <br/><br/>Všechny interakce klienta služby Azure Search jsou schopné SSL/TLS 1.2.  Nezapomeňte použít TLSv1.2 pro připojení SSL na vaši službu.|
+| Šifrování během přenosu <br>(HTTPS/SSL/TLS) | Služba Azure Search naslouchá na portu HTTPS 443. Napříč platformami jsou šifrované připojení ke službám Azure. <br/><br/>Všechny interakce klienta služby Azure Search jsou schopné SSL/TLS 1.2.  Nezapomeňte použít TLSv1.2 pro připojení SSL na vaši službu.|
 | Šifrování v klidovém stavu | V procesu indexování bez jakéhokoli dopadu na měřitelné indexování čas dokončení nebo velikost indexu je plně internalized šifrování. Automaticky se objeví na veškeré indexování, včetně na přírůstkové aktualizace, které nejsou šifrovány plně indexu (vytvořené před lednem 2018).<br><br>Interně, je šifrování na základě [šifrování služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
 
 Šifrování je interní do služby Azure Search, s certifikáty a šifrovacích klíčů interně spravuje Microsoft a použít univerzálně. Nelze vypnout nebo zapnout šifrování, spravovat nebo nahradit vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo prostřednictvím kódu programu. 
@@ -60,14 +60,16 @@ Všechny služby Azure podporují řízení přístupu na základě rolí (RBAC)
 
 ## <a name="service-access-and-authentication"></a>Služba přístupu a ověřování
 
-Zatímco Azure Search dědí záruky zabezpečení platformy Azure, poskytuje také vlastní ověřování na základě klíče. Klíč rozhraní api se řetězec skládá náhodně generované čísel a písmen. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platný klíč je považovaný za důkaz žádost pochází z důvěryhodné entity. Dva typy klíče používané pro přístup k vaší vyhledávací služby:
+Zatímco Azure Search dědí záruky zabezpečení platformy Azure, poskytuje také vlastní ověřování na základě klíče. Klíč rozhraní api se řetězec skládá náhodně generované čísel a písmen. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platný klíč je považovaný za důkaz žádost pochází z důvěryhodné entity. 
 
-* Správce (platí pro všechny operace čtení a zápis na službu)
-* Dotaz (platné pro operace určené jen pro čtení, jako jsou dotazy na index)
+Existují dvě úrovně přístupu k vaší vyhledávací službě umožněné dva typy klíčů:
 
-Klíče správce se vytvoří, když je služba zřízená. Existují dva klíče správce, určený jako *primární* a *sekundární* Novoroční přímo, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže můžete jeden ho znovu vygenerovat aniž by ztratily přístup k službě. Můžete obnovit buď klíč správce, ale nemůžete přidat do počtu klíčů celkový správce. Je maximálně dva klíče správce službě search.
+* Přístup správce (platí pro všechny operace čtení a zápis na službu)
+* (Platí jen pro čtení operací, jako jsou dotazy na index) přístup k dotazům
 
-Klíče jsou vytvořeny podle potřeby a jsou navržené pro klientské aplikace, které volají přímo vyhledávání. Můžete vytvořit až 50 klíče dotazu. V kódu aplikace zadejte adresa URL pro hledání a dotazu api-key, pokud chcete povolit přístup jen pro čtení ke službě. Kód aplikace také určuje index používaný vaší aplikací. Koncový bod, klíč rozhraní api pro přístup jen pro čtení a cílový index společně definují obor a přístup k úrovni připojení z klientské aplikace.
+*Klíče správce* vytvářejí, když je služba zřízená. Existují dva klíče správce, určený jako *primární* a *sekundární* Novoroční přímo, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže můžete jeden ho znovu vygenerovat aniž by ztratily přístup k službě. Můžete obnovit buď klíč správce, ale nemůžete přidat do počtu klíčů celkový správce. Je maximálně dva klíče správce službě search.
+
+*Klíče dotazů* vytvářejí podle potřeby a jsou navržené pro klientské aplikace, které volají přímo vyhledávání. Můžete vytvořit až 50 klíče dotazu. V kódu aplikace zadejte adresa URL pro hledání a dotazu api-key, pokud chcete povolit přístup jen pro čtení ke službě. Kód aplikace také určuje index používaný vaší aplikací. Koncový bod, klíč rozhraní api pro přístup jen pro čtení a cílový index společně definují obor a přístup k úrovni připojení z klientské aplikace.
 
 U každého požadavku, ve kterém každý požadavek se skládá z povinných klíč, operace a objekt se vyžaduje ověřování. Když zřetězen dohromady, dvou úrovních oprávnění (úplné nebo jen pro čtení) a kontextu (například operace dotazu na index) jsou dostačující pro zajištění zabezpečení opensourcová operací služby. Další informace o klíčích najdete v tématu [vytvořit a spravovat klíče api Key](search-security-api-keys.md).
 
@@ -93,7 +95,9 @@ Informace o strukturování žádost ve službě Azure Search najdete v tématu 
 
 ## <a name="user-access-to-index-content"></a>Přístup uživatelů k indexování obsahu
 
-Uživatelský přístup k obsahu indexu se implementuje pomocí filtrů zabezpečení na vašich dotazů, které vracejí dokumenty přidružená k identitě daného zabezpečení. Řízení přístupu založené na identitě se místo předdefinované role a přiřazení rolí, implementuje jako filtr, že výsledky dokumentů a obsah na základě identit hledání ořízne. Následující tabulka popisuje dva přístupy pro výsledky hledání oříznutí neoprávněné obsahu.
+Ve výchozím nastavení přístup uživatelů k indexu je určeno přístupový klíč v dotazu žádosti. Většina vývojářů vytvořte a přiřaďte [ *klíče dotazů* ](search-security-api-keys.md) pro požadavky na vyhledávání na straně klienta. Klíč dotazu uděluje přístup pro čtení k celému obsahu v indexu.
+
+Pokud potřebujete podrobné, na uživatelský ovládací prvek obsahu, můžete vytvořit filtry zabezpečení na své dotazy vracející dokumenty přidružené k dané zabezpečení identity. Místo předdefinované role a přiřazení rolí, řízení přístupu založené na identitě je implementovaný jako *filtr* , že výsledky dokumentů a obsah hledání ořízne na základě identit. Následující tabulka popisuje dva přístupy pro výsledky hledání oříznutí neoprávněné obsahu.
 
 | Přístup | Popis |
 |----------|-------------|

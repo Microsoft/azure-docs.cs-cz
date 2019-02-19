@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – Audit Pokud rozšíření neexistuje.
-description: Tato ukázková zásada provede audit, pokud není s virtuálním počítačem nasazené rozšíření.
+description: Tato ukázková definice zásady auditují Pokud rozšíření není nasazený s virtuálním počítačem.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7e5f396bb4acfdef0d49d38019b6c4d19661d9ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0c0f41c01d33add81508d828259ddcdd48d0cbc8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244177"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340871"
 ---
-# <a name="audit-if-extension-does-not-exist"></a>Auditování, když neexistuje rozšíření
+# <a name="sample---audit-if-extension-does-not-exist"></a>Ukázkový – Audit Pokud rozšíření neexistuje.
 
 Tato zásada udělá audit, pokud není s virtuálním počítačem nasazené rozšíření. Zadáte vydavatele a typ rozšíření, u kterého chcete zkontrolovat, jestli je nasazené.
 

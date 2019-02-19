@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 9dabf3fd37c591525625969ac0af1873477b84d6
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: fe195ba485e6653cee4a45f4a33067bf536334ad
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311410"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338610"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Pomocí Data Lake Storage Gen1 s využitím clusterů Azure HDInsight
 
@@ -56,11 +56,7 @@ Pomocí Data Lake Storage Gen1 jako dalšího účtu úložiště nemá vliv na 
 
 ## <a name="use-data-lake-storage-gen1-as-default-storage"></a>Použít jako výchozího úložiště Data Lake Storage Gen1
 
-Při nasazení HDInsight s Data Lake Storage Gen1 jako výchozím úložištěm, soubory související s clusterem ukládají v následujícím umístění:
-
-    adl://mydatalakestore/<cluster_root_path>/
-
-kde `<cluster_root_path>` je název složky, kterou vytvoříte ve službě Data Lake Storage. Tak, že zadáte kořenovou cestu pro každý cluster, můžete použít stejný účet Data Lake Storage pro více než jeden cluster. Takže máte nastavení, kde:
+Při nasazení HDInsight s Data Lake Storage Gen1 jako výchozím úložištěm, soubory související s clusterem se ukládají v `adl://mydatalakestore/<cluster_root_path>/`, kde `<cluster_root_path>` je název složky, kterou vytvoříte ve službě Data Lake Storage. Tak, že zadáte kořenovou cestu pro každý cluster, můžete použít stejný účet Data Lake Storage pro více než jeden cluster. Takže máte nastavení, kde:
 
 * Cluster1 může používat cestu `adl://mydatalakestore/cluster1storage`.
 * Cluster2 může používat cestu `adl://mydatalakestore/cluster2storage`.

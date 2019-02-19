@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: bdba294e1ee776d90b93f715e930ec26765abb7f
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744394"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343030"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupiny prostředků a prostředků na úrovni předplatného
 
 Obvykle nasazení prostředků Azure do skupiny prostředků ve vašem předplatném Azure. Ale můžete také vytvářet skupiny prostředků Azure a vytvářet prostředky Azure na úrovni předplatného. K nasazení šablon na úrovni předplatného, použijte rozhraní příkazového řádku Azure a Azure Powershellu. Na webu Azure portal nepodporuje nasazení na úrovni předplatného.
 
-Chcete-li vytvořit skupinu prostředků v šabloně Azure Resource Manageru, definujte [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions) prostředků s názvem a umístění pro skupinu prostředků. Můžete vytvořit skupinu prostředků a nasazování prostředků do této skupiny prostředků ve stejné šabloně. Prostředky, které můžete nasadit na úrovni předplatného patří: [Zásady](../azure-policy/azure-policy-introduction.md), a [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
+Chcete-li vytvořit skupinu prostředků v šabloně Azure Resource Manageru, definujte [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions) prostředků s názvem a umístění pro skupinu prostředků. Můžete vytvořit skupinu prostředků a nasazování prostředků do této skupiny prostředků ve stejné šabloně. Prostředky, které můžete nasadit na úrovni předplatného patří: [Zásady](../governance/policy/overview.md), a [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -307,7 +307,7 @@ New-AzDeployment `
 
 ### <a name="define-and-assign-policy"></a>Definování a přiřazení zásad
 
-Je možné [definovat](../azure-policy/policy-definition.md) a přiřazení zásad ve stejné šabloně.
+Je možné [definovat](../governance/policy/concepts/definition-structure.md) a přiřazení zásad ve stejné šabloně.
 
 ```json
 {

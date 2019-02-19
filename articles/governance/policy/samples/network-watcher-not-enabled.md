@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – Audit, pokud je Network Watcher není povoleno pro oblast
-description: Tato ukázková zásada provede audit, pokud pro zadanou oblast není povolená služba Network Watcher.
+description: Tato definice zásady ukázka Audituje sledovací proces sítě není povolená pro zadanou oblast
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 66aca50f0697a648bda60c1dacb439fd6399a764
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 418efd2652098ed04f1d150cfe25b011cdd15eeb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245690"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342622"
 ---
-# <a name="audit-if-network-watcher-is-not-enabled-for-region"></a>Provedení auditu, pokud oblast nemá povolenou službu Network Watcher
+# <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Ukázkový – Audit, pokud je Network Watcher není povoleno pro oblast
 
 Tato zásada provede audit, pokud pro zadanou oblast není povolena služba Network Watcher. Zadejte název oblasti, pro kterou se zkontroluje, jestli je povolena služba Network Watcher.
 

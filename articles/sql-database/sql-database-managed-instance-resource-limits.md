@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c2cc1b5829f3bb530c01e2bfc3538006bb8663cb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962124"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339307"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -40,7 +40,7 @@ Azure SQL Database Managed Instance je možné nasadit na generování dvě hard
 | Compute | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
 | Memory (Paměť) | 7 GB na vCore | 5.1 GB na vCore |
 | Paměti OLTP v paměti | 3 GB na vCore | 2.6 GB na vCore |
-| Maximální velikost úložiště (Obecné) |  8 TB | 1 TB |
+| Maximální velikost úložiště (Obecné) |  8 TB | 8 TB |
 | Maximální velikost úložiště (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb

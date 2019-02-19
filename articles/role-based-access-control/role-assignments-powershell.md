@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu pomocí RBAC a prostředí Azure PowerShell | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat přístup pro uživatele, skupiny nebo aplikace, pomocí řízení přístupu na základě role (RBAC) a prostředí Azure PowerShell. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
+title: Správa přístupu k prostředkům Azure pomocí RBAC a Azure Powershellu | Dokumentace Microsoftu
+description: Zjistěte, jak spravovat přístup k Azure resoruces pro uživatele, skupiny nebo aplikace pomocí řízení přístupu na základě role (RBAC) a prostředí Azure PowerShell. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e4a920c47dc7f75dc4b6714f101d6cbda715a3a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84fd4262d3b64b369d6307a6a875e8a459324aaa
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106167"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343770"
 ---
-# <a name="manage-access-using-rbac-and-azure-powershell"></a>Správa přístupu pomocí RBAC a prostředí Azure PowerShell
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Správa přístupu k prostředkům Azure pomocí RBAC a Azure Powershellu
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob správy přístupu k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny nebo aplikace pomocí RBAC a prostředí Azure PowerShell.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny nebo aplikace pomocí RBAC a prostředí Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -326,6 +326,6 @@ PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionNam
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Udělit přístup pro skupiny pomocí RBAC a Azure Powershellu](tutorial-role-assignments-group-powershell.md)
-- [Kurz: Vytvoření vlastní role pomocí Azure Powershellu](tutorial-custom-role-powershell.md)
+- [Kurz: Udělte skupině přístup k prostředkům Azure pomocí RBAC a Azure Powershellu](tutorial-role-assignments-group-powershell.md)
+- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure Powershellu](tutorial-custom-role-powershell.md)
 - [Správa prostředků pomocí Azure Powershellu](../azure-resource-manager/powershell-azure-resource-manager.md)

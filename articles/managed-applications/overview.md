@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800940"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341945"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -73,11 +73,11 @@ Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravova
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Na spravovanou aplikaci můžete použít zásady [Azure Policy](../azure-policy/azure-policy-introduction.md). Zásady se používají k zajištění souladu nasazených instancí vaší spravované aplikace s požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud aplikace pracuje s daty z Office 365, použijte zásadu, abyste měli jistotu, že je šifrování dat zapnuté.
+Na spravovanou aplikaci můžete použít zásady [Azure Policy](../governance/policy/overview.md). Zásady se používají k zajištění souladu nasazených instancí vaší spravované aplikace s požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud aplikace pracuje s daty z Office 365, použijte zásadu, abyste měli jistotu, že je šifrování dat zapnuté.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste se dozvěděli o výhodách používání spravovaných aplikací. Přejděte na další článek, který se zabývá vytvořením definice spravované aplikace.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Publikování definice aplikace spravované Azure](publish-managed-app-definition-quickstart.md)
+> [Rychlé zprovoznění: Publikování Azure definice spravované aplikace](publish-managed-app-definition-quickstart.md)

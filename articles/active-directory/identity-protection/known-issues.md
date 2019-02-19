@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd894b214366302af4651b5944e250086be14beb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183832"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339019"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Nejčastější dotazy a známé problémy s (Aktualizovat) v Azure Active Directory identity protection
 
@@ -33,6 +33,8 @@ ms.locfileid: "56183832"
 
 
 **Zavřít uživatelského rizika** v ochrana Identity (Aktualizovat) nastaví objekt actor v historii rizika uživatele ve službě Identity Protection (Aktualizovat) na **\<jména správce s hypertextovým odkazem přejdete na okno uživatele\>**.
+
+Existuje problém aktuální známé příčinou latence v toku propuštění rizika uživatele. Pokud máte "zásady rizik uživatelů", přestane tato zásada použití dismissed uživatelům v rámci minut po kliknutí na "Zavřít uživatelského rizika". Nicméně jsou známy zpoždění pomocí uživatelského rozhraní "stavu riziko" dismissed uživatelů. Jako alternativní řešení aktualizujte stránku, na úrovni prohlížeče zobrazíte nejnovější uživatele "Stav rizika".
 
 
 ## <a name="risky-users-report"></a>Sestava o rizikových uživatelích

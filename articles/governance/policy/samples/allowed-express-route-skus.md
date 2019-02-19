@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – povolené skladové položky ExpressRoute
-description: Tato ukázková zásada vyžaduje, aby okruhy Express Route používaly schválené skladové položky.
+description: Tato definice zásady ukázka vyžaduje, které používají ExpressRoute schválené SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/29/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2e1ab0696cc89502715ae176ee58f73449095c79
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 818bb1c0aeac49daf2564c67bf095837b00853e5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242811"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337624"
 ---
-# <a name="allowed-expressroute-skus"></a>Povolené skladové položky pro ExpressRoute
+# <a name="sample---allowed-expressroute-skus"></a>Ukázkový – povolené skladové položky ExpressRoute
 
 Tato zásada vyžaduje, aby okruhy Express Route používaly schválené skladové položky. Zadejte pole povolených skladových položek.
 

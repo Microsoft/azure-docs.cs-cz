@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – nastavení detekce úrovně hrozeb server Audit
-description: Tato ukázková zásada provede audit zásad výstrah zabezpečení databáze SQL v případě, že tyto zásady nejsou nastavené na zadaný stav.
+description: Tato definice zásady ukázka Audituje upozornění zásad zabezpečení SQL serveru, jestli tyto zásady nejsou nastaveny do zadaného stavu.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9e0ea3b65a4c442358c357e9603d607d8464c21b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ba694618bf86ef8e97241c955a40790960be2f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242171"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341364"
 ---
-# <a name="audit-server-level-threat-detection-setting"></a>Kontrola nastavení detekce hrozeb na úrovni serveru
+# <a name="sample---audit-server-level-threat-detection-setting"></a>Ukázkový – nastavení detekce úrovně hrozeb server Audit
 
-Tato zásada zkontroluje zásady výstrah zabezpečení databáze SQL, pokud tyto zásady nejsou nastavené na zadaný stav. Zadejte hodnotu, která určí, jestli je detekce hrozeb povolená nebo ne.
+Tato zásada Audituje upozornění zásad zabezpečení SQL serveru, pokud tyto zásady nejsou nastaveny do zadaného stavu. Zadejte hodnotu, která určí, jestli je detekce hrozeb povolená nebo ne.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

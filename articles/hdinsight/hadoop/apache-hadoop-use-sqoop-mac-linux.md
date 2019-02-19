@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: cf4895220c19e029952d5bf76aa9baa41250f692
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 02/15/2019
+ms.openlocfilehash: 2f16ba3fde73705d431ba97d65059b178020bb62
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309340"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340293"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop v HDInsight a databází SQL
 
@@ -105,7 +105,7 @@ GO
     Pole v datech jsou oddělené tabulátorem a řádky jsou ukončeny znak nového řádku.
 
     > [!IMPORTANT]  
-    > `wasb:///` Cesta pracuje s clustery, které používají jako výchozí úložiště clusteru služby Azure Storage. Pro clustery, které používají Azure Data Lake Storage Gen1, použijte `adl:///` místo.
+    > `wasb:///` Cesta pracuje s clustery, které používají jako výchozí úložiště clusteru služby Azure Storage. Pro clustery, které používají Azure Data Lake Storage Gen2, použijte `abfs:///` místo. Pro clustery, které používají Azure Data Lake Storage Gen1, použijte `adl:///` místo.
 
 2. Po dokončení importu použijte následující příkaz, který seznam dat v novém adresáři:
 

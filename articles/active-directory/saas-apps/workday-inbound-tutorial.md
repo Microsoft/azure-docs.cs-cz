@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5ac06200766f37c64252599ec8a4dddb6846ea7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175400"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340106"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro automatické zřizování uživatelů
 
@@ -261,7 +261,7 @@ V tomto kroku vytvoříte skupinu zabezpečení systému integrace neomezeným n
     * **Aktivace:** Všechny členy skupiny zabezpečení přístupné všechny instance data zabezpečená pomocí skupiny zabezpečení.
     * **Omezené:** Všechny členy skupiny zabezpečení měli kontextové podmnožinu dat instancí (řádků), ke kterým přístup do skupiny zabezpečení.
   * Poraďte se vašeho partnera integraci Workday a vybrat typ skupiny zabezpečení pro integraci.
-  * Jakmile budete znát typ skupiny, vyberte **skupiny zabezpečení systému integrace (neomezená)** nebo **skupiny zabezpečení systému integrace (neomezená)** z **typ klienty zabezpečení Skupiny** rozevíracího seznamu.
+  * Jakmile budete znát typ skupiny, vyberte **skupiny zabezpečení systému integrace (neomezená)** nebo **skupiny zabezpečení systému integrace (Constrained)** z **typ z klienty skupiny zabezpečení**  rozevíracího seznamu.
 
     ![CreateSecurity Group](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity Group")
 

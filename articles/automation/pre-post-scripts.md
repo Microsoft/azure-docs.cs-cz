@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3010f4ec86b25c51fae2ce8f64238ec8815adca8
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236001"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408676"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -52,7 +52,19 @@ Kliknutím na spustit nasazení aktualizací, zadáte do skriptů před a po dal
 
 ## <a name="passing-parameters"></a>Předávání parametrů
 
-Při konfiguraci před a po skripty, můžete předat parametry stejně jako plánování runbooku. Parametry jsou definované v době vytvoření nasazení aktualizace. Skripty před a po vyžadují parametry budou typu `String`. Pokud potřebujete odlišný typ objektu, lze jej přetypovat na jinou pomocí typu `[System.Convert]` nebo ji zpracovat pomocí vlastní logiky.
+Při konfiguraci před a po skripty, můžete předat parametry stejně jako plánování runbooku. Parametry jsou definované v době vytvoření nasazení aktualizace. Skripty před a po podporuje následující typy:
+
+* [znak]
+* [bajtů]
+* [int]
+* [dlouhé]
+* [desítkové]
+* [jednotné]
+* [double]
+* [DateTime]
+* [string]
+
+Pokud potřebujete odlišný typ objektu, lze jej přetypovat na jiný typ pomocí vlastní logiky v sadě runbook.
 
 Kromě standardní sada runbook parametry je k dispozici další parametr. Tento parametr je **SoftwareUpdateConfigurationRunContext**. Tento parametr je řetězec formátu JSON, a pokud definujete ve skriptu před nebo po parametru, je automaticky předána v nasazení aktualizací. Parametr obsahuje informace o nasazení aktualizace, která je podmnožinou vrácených podle informací [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) v následující tabulce se dozvíte, vlastnosti, které jsou k dispozici v proměnné:
 

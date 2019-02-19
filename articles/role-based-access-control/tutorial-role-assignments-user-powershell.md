@@ -1,6 +1,6 @@
 ---
-title: Kurz – Udělení přístupu pro uživatele pomocí RBAC a Azure PowerShellu | Microsoft Docs
-description: Použijte řízení přístupu na základě role (RBAC) k udělení přístupu uživateli k zobrazení všeho v předplatném a správě všeho ve skupině prostředků pomocí Azure PowerShellu.
+title: Kurz – udělte uživateli přístup k prostředkům Azure pomocí RBAC a Azure Powershellu | Dokumentace Microsoftu
+description: Zjistěte, jak udělit přístup uživatelů k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) a Azure Powershellu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7f5e67edd2a5300ae1898e2620ee8ace80ac6d92
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109023"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343472"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Kurz: Udělení přístupu pro uživatele pomocí RBAC a prostředí Azure PowerShell
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a Azure Powershellu
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob správy přístupu k prostředkům v Azure. V tomto kurzu pomocí Azure PowerShellu udělíte uživateli přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům Azure. V tomto kurzu pomocí Azure PowerShellu udělíte uživateli přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
 
 V tomto kurzu se naučíte:
 
@@ -279,4 +279,4 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, odstraňte skupinu
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Správa přístupu pomocí RBAC a PowerShellu](role-assignments-powershell.md)
+> [Správa přístupu k prostředkům Azure pomocí RBAC a Azure Powershellu](role-assignments-powershell.md)

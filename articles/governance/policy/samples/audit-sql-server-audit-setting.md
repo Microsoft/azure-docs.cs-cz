@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – auditování na úrovni serveru SQL Server Audit nastavení
-description: Tato ukázková zásada provede audit nastavení auditování SQL Serveru v případě, že tato nastavení nevyhovují zadaným kritériím.
+description: Tato definice zásady ukázka Audituje nastavení systému SQL server audit, jestli tato nastavení se neshodují s zadané nastavení.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f23fd349a5e7c1016cc18f79cff408aefaa3fd35
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 90f91e46db9d25571bc34256ab1db737445ce3e6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244160"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337471"
 ---
-# <a name="audit-sql-server-level-audit-setting"></a>Audit nastavení auditování na úrovni SQL Serveru
+# <a name="sample---audit-sql-server-level-audit-setting"></a>Ukázkový – auditování na úrovni serveru SQL Server Audit nastavení
 
 Tato zásada provede audit nastavení auditování SQL Serveru v případě, že tato nastavení nevyhovují zadaným kritériím. Zadejte hodnotu, která určí, jestli má být nastavení auditování povoleno nebo ne.
 

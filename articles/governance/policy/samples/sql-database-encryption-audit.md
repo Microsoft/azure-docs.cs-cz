@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – Audit transparentní šifrování dat pro službu SQL Database
-description: Tato ukázková zásada provede audit, jestli databáze SQL nemá povolené transparentní šifrování dat.
+description: Tato definice zásady ukázka Audituje SQL database nemá transparentní šifrování dat povolené.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 98d86d721f028a32d65ab4d336cc5579a0845607
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a35c7045f132b23dbe23978118d0c1cf865f9bab
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244687"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342593"
 ---
-# <a name="audit-sql-database-encryption"></a>Auditování šifrování databáze SQL
+# <a name="sample---audit-sql-database-encryption"></a>Ukázkový – auditovat šifrování databáze SQL
 
 Tyto integrované zásady JSON auditují, jestli databáze SQL nemá povolené transparentní šifrování dat.
 
