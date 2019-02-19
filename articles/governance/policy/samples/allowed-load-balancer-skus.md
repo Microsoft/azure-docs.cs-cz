@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – nástroj pro vyrovnávání zatížení povolené skladové položky
-description: Tato ukázková zásada vyžaduje, aby nástroje pro vyrovnávání zatížení používaly schválené skladové položky.
+description: Tato definice zásady ukázka vyžaduje, aby používal nástroje pro vyrovnávání zatížení schválené SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 6adebea6a6cce1844e413e460a06fd1a7eeb3a2a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b65761d0c325f46a54fc64d39c20f9d1e10ec412
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241950"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341875"
 ---
-# <a name="allowed-load-balancer-skus"></a>Povolené skladové položky nástroje pro vyrovnávání zatížení
+# <a name="sample---allowed-load-balancer-skus"></a>Ukázkový – nástroj pro vyrovnávání zatížení povolené skladové položky
 
 Tato zásada vyžaduje, aby nástroje pro vyrovnávání zatížení používaly schválené skladové položky. Zadejte pole povolených skladových položek.
 

@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 42b62c819fd3d26c6ea944f968e0d5956a7f055e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 654c23474ebc96a6873f82f51f969da5c7d2d20c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987454"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343251"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Použití zásad k virtuálním počítačům s Windows pomocí Azure Resource Manageru
 Pomocí zásad můžete vynutit organizace různých konvencí a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při podílení se na úspěch organizace. V tomto článku popisujeme, jak můžete zásady Azure Resource Manageru pro definování požadované chování pro virtuální počítače vaší organizace.
 
-Úvod do zásad najdete v tématu [co je Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+Úvod do zásad najdete v tématu [co je Azure Policy?](../../governance/policy/overview.md).
 
 ## <a name="permitted-virtual-machines"></a>Povolené virtuální počítače
 K zajištění, že jsou kompatibilní s aplikací virtuálních počítačů ve vaší organizaci, můžete omezit povolené operačních systémů. V následujícím příkladu zásady Povolit pouze Windows Server 2012 R2 Datacenter Virtual Machines vytvořit:
@@ -251,6 +251,6 @@ Pokud máte licenci v místním, můžete uložit licenční poplatek za na virt
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Po definování pravidla zásad (jak je znázorněno v předchozím příkladu), budete muset vytvořit definici zásady a přiřadit obor. Rozsah může být předplatné, skupinu prostředků nebo prostředek. Přiřazení zásad, najdete v článku [použijte Azure portal a přiřazení a Správa zásad prostředků](../../azure-policy/assign-policy-definition.md), [použití Powershellu k přiřazení zásady](../../azure-policy/assign-policy-definition-ps.md), nebo [pomocí Azure CLI pro přiřazení zásad](../../azure-policy/assign-policy-definition-cli.md).
-* Úvod do zásad prostředků najdete v tématu [co je Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+* Po definování pravidla zásad (jak je znázorněno v předchozím příkladu), budete muset vytvořit definici zásady a přiřadit obor. Rozsah může být předplatné, skupinu prostředků nebo prostředek. Přiřazení zásad, najdete v článku [použijte Azure portal a přiřazení a Správa zásad prostředků](../../governance/policy/assign-policy-portal.md), [použití Powershellu k přiřazení zásady](../../governance/policy/assign-policy-powershell.md), nebo [pomocí Azure CLI pro přiřazení zásad](../../governance/policy/assign-policy-azurecli.md).
+* Úvod do zásad prostředků najdete v tématu [co je Azure Policy?](../../governance/policy/overview.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

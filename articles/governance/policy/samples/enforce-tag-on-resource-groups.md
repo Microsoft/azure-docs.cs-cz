@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – vynutit značku a její hodnotu o skupinách prostředků
-description: Tato ukázková zásada vyžaduje značku a hodnotu u skupiny prostředků.
+description: Tato definice zásady ukázka vyžaduje značky a hodnoty pro skupinu prostředků.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8fd9ba2e6e5eae43476102c8928c67d6015ec2eb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73990de30525dff4e3a0981ebca96368f56845fe
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245656"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339069"
 ---
-# <a name="enforce-tag-and-its-value-on-resource-groups"></a>Vynucení značky a její hodnoty ve skupinách prostředků
+# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Ukázkový – vynutit značku a její hodnotu o skupinách prostředků
 
 Tato zásada vyžaduje značku a hodnotu u skupiny prostředků. Zadejte požadovaný název a hodnotu značky.
 

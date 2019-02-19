@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44712f364b434d123abe17b043f7c2309871bd12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198945"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339545"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -78,7 +78,7 @@ Tato sada zásad příklad udělí vybraných uživatelů v **AppUsers**, přís
 **Nastavení zásad podmíněného přístupu na omezení rizik:**
 
 * Zásady 1: Blokovat přístup k lidem, kteří nejsou cílové skupiny
-  * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit AppAccess CoreAdmins a EmergencyAccess
+  * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit AppUsers CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Zahrnout všechny aplikace
   * Podmínky: (Žádný)
   * Udělit řízení: Zablokovat

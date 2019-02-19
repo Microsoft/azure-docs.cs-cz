@@ -1,6 +1,6 @@
 ---
 title: Ukázkový – povolené skladové položky účtu úložiště
-description: Tato ukázková zásada vyžaduje, aby účty úložiště používaly schválené skladové položky.
+description: Tuto ukázkovou definici zásad vyžaduje, aby používaly účty úložiště schválené SKU.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 72af4c7fbc2f4822e15d33202b108ef45b5043ce
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5d033255f45736440a6f860b9adacbd64f5446ff
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241576"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341313"
 ---
-# <a name="allowed-storage-account-skus"></a>Povolené skladové položky účtu úložiště
+# <a name="sample---allowed-storage-account-skus"></a>Ukázkový – povolené skladové položky účtu úložiště
 
 Tato zásada vyžaduje, aby účty úložiště používaly schválené skladové položky. Zadejte pole schválených skladových položek.
 

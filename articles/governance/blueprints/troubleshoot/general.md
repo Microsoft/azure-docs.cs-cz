@@ -1,6 +1,6 @@
 ---
 title: Odstraňování běžných chyb
-description: Informace o řešení problémů vytvářet a přiřazovat podrobné plány.
+description: Informace o řešení potíží s vytvářením, přiřazováním a odebrání podrobné plány.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 04c038eb11cc40cec3552feff183bea55b22bb57
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: cebbc8b61a806663e7cb58e0bf7fbdd589f46cca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261923"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343302"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení potíží s chybami pomocí Azure podrobné plány
 

@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 02/18/2019
 ms.author: bwren
-ms.openlocfilehash: 77a806d328a6dbac0e57c9d99e06debbb25e88b8
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 874c0eca97ba7fea7543e41c75e642108141047f
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108377"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408489"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor pojmenování a terminologie změny
 Významné byly provedeny změny do Azure monitoru nedávno s různými službami konsolidaci zjednodušit sledování pro zákazníky Azure. Tento článek popisuje poslední název a terminologie změnami dokumentace ke službě Azure Monitor.
@@ -31,7 +31,7 @@ Data jsou stále protokolů Azure Monitor uložené v pracovním prostoru Log An
 Termín _protokolu analytics_ nyní především se vztahuje na stránce na webu Azure Portal použít k zápisu a spouštět dotazy a analyzovat data protokolů. Je ekvivalentní [Průzkumníka metrik](platform/metrics-charts.md), což je stránka na webu Azure Portal slouží k analýze data metriky.
 
 ### <a name="log-analytics-workspaces"></a>Pracovní prostory Log Analytics
-[Pracovní prostory](platform/manage-access.md) , který obsahovat data protokolu ve službě Azure Monitor se stále označují jako pracovní prostory Log Analytics. **Log Analytics** stránky na webu Azure Portal se přejmenoval na **pracovních prostorů Log Analytics** a je tam, kde jste [vytvořit nové pracovní prostory](learn/quick-create-workspace.md) a nakonfigurovat datové zdroje. Analýza protokolů a dalšími daty monitorování v **Azure Monitor** a konfigurujte váš pracovní prostor v **pracovních prostorů Log Analytics**.
+[Pracovní prostory](platform/manage-access.md) , který obsahovat data protokolu ve službě Azure Monitor se stále označují jako pracovní prostory Log Analytics. **Log Analytics** nabídky na webu Azure Portal se přejmenoval na **pracovních prostorů Log Analytics** a je tam, kde jste [vytvořit nové pracovní prostory](learn/quick-create-workspace.md) a nakonfigurovat datové zdroje. Analýza protokolů a dalšími daty monitorování v **Azure Monitor** a konfigurujte váš pracovní prostor v **pracovních prostorů Log Analytics**.
 
 ### <a name="management-solutions"></a>Řešení pro správu
 [Řešení pro správu](insights/solutions.md) byl přejmenován na _řešení monitorování_, lépe vystihuje jejich funkce.

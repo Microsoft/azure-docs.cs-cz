@@ -1,6 +1,6 @@
 ---
-title: Jak změnit, odstranit nebo Správa skupin pro správu v Azure
-description: Zjistěte, jak spravovat a aktualizovat vaše hierarchie skupin správy.
+title: Jak změnit, odstranit nebo Správa skupin pro správu v Azure – Azure zásad správného řízení
+description: Zjistěte, jak zobrazit, udržovat, aktualizovat a odstraňovat vaše hierarchie skupin správy.
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582407"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342574"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -39,11 +39,11 @@ Název skupiny pro správu můžete změnit pomocí portálu, Powershellu nebo r
 
 1. Vyberte **přejmenovat skupinu** možnosti v horní části stránky.
 
-   ![Přejmenovat skupinu](./media/detail_action_small.png)
+   ![Možnost Přejmenovat skupinu](./media/detail_action_small.png)
 
 1. Po otevření nabídky, zadejte nový název, který chcete zobrazit.
 
-   ![Přejmenovat skupinu](./media/rename_context.png)
+   ![Podokno přejmenovat skupinu](./media/rename_context.png)
 
 1. Vyberte **Uložit**.
 
@@ -87,11 +87,11 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 
    - Pokud ikona je zakázaná, váš výběr myš najede myší na ikonu se dozvíte z důvodu.
 
-   ![Odstranit skupinu](./media/delete.png)
+   ![Skupina možností odstranit](./media/delete.png)
 
 1. Je okno, které se otevře, potvrzení, že chcete odstranit skupinu pro správu.
 
-   ![Odstranit skupinu](./media/delete_confirm.png)
+   ![Odstranit skupinu potvrzovacím okně](./media/delete_confirm.png)
 
 1. Vyberte **Ano**.
 
@@ -195,13 +195,13 @@ A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte *
 
 1. Vyberte tři tečky na konci řádku pro předplatné v seznamu, který chcete přesunout.
 
-   ![Přesunout](./media/move_small.png)
+   ![Možnost přesunutí](./media/move_small.png)
 
 1. Vyberte **přesunout**.
 
 1. V nabídce, která se otevře, vyberte **nadřazená skupina pro správu**.
 
-   ![Přesunout](./media/move_small_context.png)
+   ![Přesunout podokno](./media/move_small_context.png)
 
 1. Vyberte **Uložit**.
 
@@ -272,19 +272,19 @@ Přesunout skupinu pro správu pomocí Azure CLI pomocí příkazu update.
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
-## <a name="audit-management-groups-using-activity-logs"></a>Skupiny pro správu auditu pomocí protokolů aktivit
+## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
 
-Chcete-li sledovat skupin pro správu přes toto rozhraní API, použijte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs). Aktuálně není možné pomocí Powershellu, rozhraní příkazového řádku nebo portálu Azure portal ke sledování aktivit správy skupin.
+Pokud chcete přes toto rozhraní API sledovat skupiny pro správu, použijte [rozhraní API protokolů aktivit tenanta](/rest/api/monitor/tenantactivitylogs). Ke sledování aktivit skupin pro správu aktuálně není možné použít PowerShell, rozhraní příkazového řádku ani Azure Portal.
 
-1. Jako správce tenanta Azure AD tenanta [zvýšení úrovně přístupu](../../role-based-access-control/elevate-access-global-admin.md) pak auditování uživateli přes obor přiřadit role Čtenář `/providers/microsoft.insights/eventtypes/management`.
-1. Jako uživatel, auditování, zavolejte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs) zobrazíte aktivity skupiny správy. Budete chtít filtrovat podle poskytovatele prostředků **Microsoft.Management** za všechny aktivity skupiny správy.  Příklad:
+1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`.
+1. Jako uživatel provádějící audit zavoláním [rozhraní API protokolů aktivit tenanta](/rest/api/monitor/tenantactivitylogs) zobrazte aktivity skupiny pro správu. Doporučujeme vyfiltrovat poskytovatele prostředků **Microsoft.Management**, aby se zobrazily všechny aktivity skupiny pro správu.  Příklad:
 
 ```xml
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
 ```
 
 > [!NOTE]
-> Jednoduše volat toto rozhraní API z příkazového řádku, zkuste [ARMClient](https://github.com/projectkudu/ARMClient).
+> Pokud chcete toto rozhraní API pohodlně volat z příkazového řádku, vyzkoušejte [ARMClient](https://github.com/projectkudu/ARMClient).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -292,6 +292,6 @@ Další informace o řešeních pro správu najdete v následujících tématech
 
 - [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Zkontrolujte skupiny pro správu v modulu Azure PowerShell prostředky](https://aka.ms/mgPSdocs)
-- [Zkontrolujte skupiny pro správu v rozhraní REST API](https://aka.ms/mgAPIdocs)
-- [Zkontrolujte skupiny pro správu v Azure CLI](https://aka.ms/mgclidoc)
+- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](https://aka.ms/mgPSdocs)
+- [Kontrola skupin pro správu v rozhraní REST API](https://aka.ms/mgAPIdocs)
+- [Kontrola skupin pro správu v Azure CLI](https://aka.ms/mgclidoc)

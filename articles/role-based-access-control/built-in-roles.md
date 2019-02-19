@@ -15,20 +15,22 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c49e521e9bf7e04eeda47c6b27c0b63cca653006
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699257"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340839"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
-[Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
 
-Předdefinované role jsou vždy vyvíjejí. Chcete-li získat nejnovější definice rolí, použijte [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo [az role definition list](/cli/azure/role/definition#az-role-definition-list).
+[Řízení přístupu na základě role (RBAC)](overview.md) má několik předdefinovaných rolí pro prostředky Azure, které můžete přiřadit uživatelům, skupinám, instančních objektů a spravovaných identit. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům Azure. Pokud předdefinované role není splnili specifické požadavky vaší organizace, můžete vytvořit vlastní [vlastních rolí pro prostředky Azure](custom-roles.md).
+
+Tento článek uvádí předdefinované role pro prostředky Azure, které jsou vždy se vyvíjejí. Pokud chcete získat nejnovější role, použít [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo [az role definition list](/cli/azure/role/definition#az-role-definition-list). Pokud chcete pro role Správce služby Azure Active Directory, přečtěte si téma [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="built-in-role-descriptions"></a>Popisy předdefinovaná role
-Následující tabulka obsahuje stručný popis předdefinované role. Klikněte na název role, které chcete zobrazit seznam `Actions`, `NotActions`, `DataActions`, a `NotDataActions` pro každou roli.
+
+Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných rolí. Klikněte na název role, které chcete zobrazit seznam `Actions`, `NotActions`, `DataActions`, a `NotDataActions` pro každou roli. Informace o významu těchto akcí a jak se vztahují na roviny správy a data, najdete v části [pochopení definic rolí pro prostředky Azure](role-definitions.md).
 
 
 | Předdefinovaná role | Popis |
@@ -139,6 +141,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Akce** |  |
 > | * | Vytváření a správě prostředků všech typů. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="contributor"></a>Přispěvatel
 > [!div class="mx-tableFixed"]
@@ -154,6 +162,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/elevateAccess/Action | Udělí volajícímu přístup Správce uživatelských přístupů v oboru tenanta. |
 > | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu. |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Odstraní všechny artefakty podrobného plánu. |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="reader"></a>Čtenář
 > [!div class="mx-tableFixed"]
@@ -163,6 +175,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Akce** |  |
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="acrimagesigner"></a>AcrImageSigner
 > [!div class="mx-tableFixed"]
@@ -172,6 +190,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Akce** |  |
 > | Microsoft.ContainerRegistry/registries/sign/write | Vyžádanou metadata obsahu vztahu důvěryhodnosti pro službu container registry. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="acrpull"></a>AcrPull
 > [!div class="mx-tableFixed"]
@@ -181,6 +205,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
 > | **Akce** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | O přijetí změn nebo získat Image z registru kontejneru. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="acrpush"></a>AcrPush
 > [!div class="mx-tableFixed"]
@@ -191,6 +221,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | O přijetí změn nebo získat Image z registru kontejneru. |
 > | Microsoft.ContainerRegistry/registries/push/write | Vložit nebo zapíšete Image do registru kontejneru. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -200,6 +236,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Akce** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | O přijetí změn nebo získat v karanténě imagí z registru kontejneru |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -210,6 +252,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | O přijetí změn nebo získat v karanténě imagí z registru kontejneru |
 > | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Zápis nebo upravit stav karantény v karanténě imagí |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="api-management-service-contributor"></a>Přispěvatel služby API Management
 > [!div class="mx-tableFixed"]
@@ -225,6 +273,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="api-management-service-operator-role"></a>Role Operátor služby API Management
 > [!div class="mx-tableFixed"]
@@ -250,6 +304,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Získá seznam klíčů uživatelů |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="api-management-service-reader-role"></a>Role Čtenář služby API Management
 > [!div class="mx-tableFixed"]
@@ -268,6 +326,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Získá seznam klíčů uživatelů |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="application-insights-component-contributor"></a>Přispěvatel součástí Application Insights
 > [!div class="mx-tableFixed"]
@@ -284,6 +346,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 > [!div class="mx-tableFixed"]
@@ -298,6 +366,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="automation-job-operator"></a>Operátor úloh Automation
 > [!div class="mx-tableFixed"]
@@ -319,6 +393,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="automation-operator"></a>Operátor služby Automation
 > [!div class="mx-tableFixed"]
@@ -348,6 +428,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Automation/automationAccounts/jobs/output/read | Získá výstup úlohy |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="automation-runbook-operator"></a>Operátor runbooků Automation
 > [!div class="mx-tableFixed"]
@@ -362,6 +448,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Role správce clusteru služby Azure Kubernetes Service
 > [!div class="mx-tableFixed"]
@@ -371,6 +463,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Akce** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Vypsat přihlašovací údaje správce spravovaného clusteru |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="azure-kubernetes-service-cluster-user-role"></a>Role uživatele clusteru služby Azure Kubernetes Service
 > [!div class="mx-tableFixed"]
@@ -380,6 +478,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Akce** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Vypsat přihlašovací údaje uživatele spravovaného clusteru |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="azure-stack-registration-owner"></a>Vlastník registrace Azure Stack
 > [!div class="mx-tableFixed"]
@@ -391,6 +495,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.AzureStack/registrations/products/listDetails/action | Načte podrobnosti o produkt poskytovaný Azure Stack Marketplace rozšířené |
 > | Microsoft.AzureStack/registrations/products/read | Získá vlastnosti o produkt poskytovaný Azure Stack Marketplace |
 > | Microsoft.AzureStack/registrations/read | Získá vlastnosti registrace Azure Stack |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="backup-contributor"></a>Přispěvatel zálohování
 > [!div class="mx-tableFixed"]
@@ -442,6 +552,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Získá stav operace pro danou operaci |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Seznam všech záloh záměry ochrany |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="backup-operator"></a>Operátor zálohování
 > [!div class="mx-tableFixed"]
@@ -508,6 +624,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Získá stav operace pro danou operaci |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Seznam všech záloh záměry ochrany |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="backup-reader"></a>Čtenář záloh
 > [!div class="mx-tableFixed"]
@@ -555,6 +677,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Získá stav operace pro danou operaci |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Seznam všech záloh záměry ochrany |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="billing-reader"></a>Čtenář fakturace
 > [!div class="mx-tableFixed"]
@@ -570,6 +698,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
 > | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="biztalk-contributor"></a>Přispěvatel BizTalk
 > [!div class="mx-tableFixed"]
@@ -585,6 +719,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cdn-endpoint-contributor"></a>Přispěvatel koncového bodu CDN
 > [!div class="mx-tableFixed"]
@@ -601,6 +741,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cdn-endpoint-reader"></a>Čtenář koncového bodu CDN
 > [!div class="mx-tableFixed"]
@@ -617,6 +763,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cdn-profile-contributor"></a>Přispěvatel profilu CDN
 > [!div class="mx-tableFixed"]
@@ -633,6 +785,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cdn-profile-reader"></a>Čtenář profilu CDN
 > [!div class="mx-tableFixed"]
@@ -649,6 +807,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="classic-network-contributor"></a>Přispěvatel klasických sítí
 > [!div class="mx-tableFixed"]
@@ -664,6 +828,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="classic-storage-account-contributor"></a>Přispěvatel klasických účtů úložiště
 > [!div class="mx-tableFixed"]
@@ -679,6 +849,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="classic-storage-account-key-operator-service-role"></a>Role služby Operátor klíčů klasických účtů úložiště
 > [!div class="mx-tableFixed"]
@@ -689,6 +865,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Umožňuje vypsat seznam přístupových klíčů pro účty úložiště. |
 > | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Umožňuje znovu vytvořit existující přístupové klíče pro účet úložiště. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="classic-virtual-machine-contributor"></a>Přispěvatel klasických virtuálních počítačů
 > [!div class="mx-tableFixed"]
@@ -714,6 +896,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cognitive-services-contributor"></a>Přispěvatel Cognitive Services
 > [!div class="mx-tableFixed"]
@@ -739,6 +927,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cognitive-services-user"></a>Uživatel Cognitive Services
 > [!div class="mx-tableFixed"]
@@ -760,6 +954,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/read | Získá výpis předplatných. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cosmos-db-account-reader-role"></a>Role čtenáře účtu Cosmos DB
 > [!div class="mx-tableFixed"]
@@ -775,6 +975,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Insights/Metrics/read | Čtení metrik |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 > [!div class="mx-tableFixed"]
@@ -785,6 +991,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.DocumentDB/databaseAccounts/backup/action | Odeslat žádost o konfiguraci zálohování |
 > | Microsoft.DocumentDB/databaseAccounts/restore/action | Odeslat žádost o obnovení |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cost-management-contributor"></a>Přispěvatel Cost Management
 > [!div class="mx-tableFixed"]
@@ -799,6 +1011,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/read | Získá výpis předplatných. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="cost-management-reader"></a>Čtenář Cost Management
 > [!div class="mx-tableFixed"]
@@ -813,6 +1031,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/read | Získá výpis předplatných. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="data-box-contributor"></a>Přispěvatel Data Box
 > [!div class="mx-tableFixed"]
@@ -827,6 +1051,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.Databox/* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="data-box-reader"></a>Čtenář Data Box
 > [!div class="mx-tableFixed"]
@@ -842,6 +1072,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Databox/locations/availableSkus/action | Tato metoda vrací seznam dostupných skladových položek. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="data-factory-contributor"></a>Přispěvatel Data Factory
 > [!div class="mx-tableFixed"]
@@ -858,6 +1094,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="data-lake-analytics-developer"></a>Vývojář Data Lake Analytics
 > [!div class="mx-tableFixed"]
@@ -889,6 +1131,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.DataLakeAnalytics/accounts/firewallRules/Delete | Odstraňte pravidlo brány firewall. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | Vytvořit nebo aktualizujete zásady pro výpočetní prostředky. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | Odstranění zásad pro výpočetní prostředky. |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="data-purger"></a>Nástroj pro vyprázdnění dat
 > [!div class="mx-tableFixed"]
@@ -901,6 +1147,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Insights/components/purge/action | Vyprázdní data z Application Insights. |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Odstranit zadaná data z pracovního prostoru |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="devtest-labs-user"></a>Uživatel služby DevTest Labs
 > [!div class="mx-tableFixed"]
@@ -941,6 +1193,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Storage/storageAccounts/listKeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | **notActions** |  |
 > | Microsoft.Compute/virtualMachines/vmSizes/read | Umožňuje zobrazit seznam dostupných velikostí, na které je možné virtuální počítač aktualizovat. |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="dns-zone-contributor"></a>Přispěvatel zóny DNS
 > [!div class="mx-tableFixed"]
@@ -956,6 +1212,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="documentdb-account-contributor"></a>Přispěvatel účtů DocumentDB
 > [!div class="mx-tableFixed"]
@@ -971,6 +1233,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="eventgrid-eventsubscription-contributor"></a>Přispěvatel EventSubscription EventGrid
 > [!div class="mx-tableFixed"]
@@ -988,6 +1256,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="eventgrid-eventsubscription-reader"></a>Čtečka EventSubscription EventGrid
 > [!div class="mx-tableFixed"]
@@ -1002,6 +1276,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.EventGrid/locations/eventSubscriptions/read | Seznam předplatných místní události |
 > | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Seznam odběrů událostí regionální topictype |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="hdinsight-domain-services-contributor"></a>Přispěvatel Doménových služeb HDInsight
 > [!div class="mx-tableFixed"]
@@ -1013,6 +1293,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.AAD/*/read |  |
 > | Microsoft.AAD/domainServices/*/read |  |
 > | Microsoft.AAD/domainServices/oucontainer/* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="intelligent-systems-account-contributor"></a>Přispěvatel účtů Inteligentních systémů
 > [!div class="mx-tableFixed"]
@@ -1028,6 +1314,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="key-vault-contributor"></a>Přispěvatel Key Vaultu
 > [!div class="mx-tableFixed"]
@@ -1045,6 +1337,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **notActions** |  |
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | Trvale odstraní trezor klíčů, který se nejdříve odstranil obnovitelně. |
 > | Microsoft.KeyVault/hsmPools/* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="lab-creator"></a>Autor testovacího prostředí
 > [!div class="mx-tableFixed"]
@@ -1060,6 +1356,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Získejte informace o místní dostupnosti pro každou kategorii velikost konfigurují v rámci účtu testovacího prostředí |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="log-analytics-contributor"></a>Přispěvatel Log Analytics
 > [!div class="mx-tableFixed"]
@@ -1081,6 +1383,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="log-analytics-reader"></a>Čtenář Log Analytics
 > [!div class="mx-tableFixed"]
@@ -1095,6 +1403,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="logic-app-contributor"></a>Přispěvatel aplikace logiky
 > [!div class="mx-tableFixed"]
@@ -1123,6 +1435,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Získá vlastnosti na plán služby App Service |
 > | Microsoft.Web/sites/functions/listSecrets/action | Seznam tajných kódů webové aplikace funkcí. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="logic-app-operator"></a>Operátor aplikace logiky
 > [!div class="mx-tableFixed"]
@@ -1147,6 +1465,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Web/connections/*/read | Číst připojení. |
 > | Microsoft.Web/customApis/*/read | Přečtěte si vlastní rozhraní API. |
 > | Microsoft.Web/serverFarms/read | Získá vlastnosti na plán služby App Service |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="managed-application-operator-role"></a>Role operátora spravované aplikace
 > [!div class="mx-tableFixed"]
@@ -1157,6 +1481,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Solutions/applications/read | Načte seznam aplikací. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="managed-applications-reader"></a>Čtenář Managed Applications
 > [!div class="mx-tableFixed"]
@@ -1168,6 +1498,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Solutions/jitRequests/* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="managed-identity-contributor"></a>Přispěvatel spravovaných identit
 > [!div class="mx-tableFixed"]
@@ -1184,6 +1520,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="managed-identity-operator"></a>Operátor spravovaných identit
 > [!div class="mx-tableFixed"]
@@ -1199,6 +1541,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="management-group-contributor"></a>Přispěvatel skupiny pro správu
 > [!div class="mx-tableFixed"]
@@ -1212,6 +1560,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Management/managementGroups/subscriptions/delete | Přidruží zrušit předplatné ze skupiny pro správu. |
 > | Microsoft.Management/managementGroups/subscriptions/write | Přiřadí existující předplatné skupině pro správu. |
 > | Microsoft.Management/managementGroups/write | Vytvořit nebo aktualizovat skupinu pro správu. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="management-group-reader"></a>Čtenář skupiny pro správu
 > [!div class="mx-tableFixed"]
@@ -1221,6 +1575,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | ac63b705-f282-497d-ac71-919bf39d939d |
 > | **Akce** |  |
 > | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="monitoring-contributor"></a>Přispěvatel monitorování
 > [!div class="mx-tableFixed"]
@@ -1253,6 +1613,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Vydavatel metrik monitorování
 > [!div class="mx-tableFixed"]
@@ -1264,8 +1630,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Insights/Register/Action | Zaregistruje poskytovatele platformy Microsoft Insights. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Insights/Metrics/Write | Zapíše metriky. |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="monitoring-reader"></a>Čtenář monitorování
 > [!div class="mx-tableFixed"]
@@ -1277,6 +1647,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Spouští vyhledávací dotaz |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="network-contributor"></a>Přispěvatel sítě
 > [!div class="mx-tableFixed"]
@@ -1292,6 +1668,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="new-relic-apm-account-contributor"></a>Přispěvatel účtů New Relic APM
 > [!div class="mx-tableFixed"]
@@ -1307,6 +1689,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | NewRelic.APM/accounts/* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="reader-and-data-access"></a>Čtenář a přístup k datům
 > [!div class="mx-tableFixed"]
@@ -1317,6 +1705,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="redis-cache-contributor"></a>Přispěvatel služby Redis Cache
 > [!div class="mx-tableFixed"]
@@ -1332,6 +1726,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="resource-policy-contributor-preview"></a>Přispěvatel zásad prostředků (Preview)
 > [!div class="mx-tableFixed"]
@@ -1346,6 +1746,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/policysetdefinitions/* | Vytváření a správě sady zásad |
 > | Microsoft.PolicyInsights/* |  |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="scheduler-job-collections-contributor"></a>Přispěvatel kolekcí úloh Scheduleru
 > [!div class="mx-tableFixed"]
@@ -1361,6 +1767,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Scheduler/jobcollections/* | Vytvoření a Správa kolekce úloh |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="search-service-contributor"></a>Přispěvatel služby Search
 > [!div class="mx-tableFixed"]
@@ -1376,6 +1788,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Search/searchServices/* | Vytvoření a Správa služby search |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="security-admin"></a>Správce zabezpečení
 > [!div class="mx-tableFixed"]
@@ -1405,6 +1823,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Security/securityContacts/write | Aktualizace kontaktů zabezpečení |
 > | Microsoft.Security/InformationProtectionPolicies/write | Aktualizace zásad ochrany informací pro prostředek |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="security-manager-legacy"></a>Správce zabezpečení (starší verze)
 > [!div class="mx-tableFixed"]
@@ -1423,6 +1847,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Security/* | Vytvoření a Správa zabezpečení komponenty a zásady |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="security-reader"></a>Čtecí zařízení pro zabezpečení
 > [!div class="mx-tableFixed"]
@@ -1439,6 +1869,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Security/*/read | Čtení bezpečnostních komponent a zásad |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="site-recovery-contributor"></a>Přispěvatel Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1474,6 +1910,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="site-recovery-operator"></a>Operátor Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1539,6 +1981,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="site-recovery-reader"></a>Čtenář Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1578,6 +2026,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.RecoveryServices/Vaults/usages/read | Vrátí podrobnosti využití trezoru Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Operaci Token trezoru můžete použít k získání tokenu trezoru pro trezor úrovně back-endové operace. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="sql-db-contributor"></a>Přispěvatel databází SQL
 > [!div class="mx-tableFixed"]
@@ -1614,6 +2068,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="sql-security-manager"></a>Správce zabezpečení SQL
 > [!div class="mx-tableFixed"]
@@ -1655,6 +2113,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Vytvoření a Správa výstrah zásad zabezpečení SQL serveru |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="sql-server-contributor"></a>Přispěvatel SQL Serveru
 > [!div class="mx-tableFixed"]
@@ -1694,6 +2158,10 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Upravit upozornění zásad zabezpečení SQL serveru |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="storage-account-contributor"></a>Přispěvatel účtů úložiště
 > [!div class="mx-tableFixed"]
@@ -1711,6 +2179,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Storage/storageAccounts/* | Vytvoření a Správa účtů úložiště |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="storage-account-key-operator-service-role"></a>Role služby Operátor klíčů účtů úložiště
 > [!div class="mx-tableFixed"]
@@ -1721,6 +2195,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | Obnoví přístupové klíče pro zadaný účet úložiště. |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="storage-blob-data-contributor-preview"></a>Přispěvatel dat objektu blob služby Storage (Preview)
 > [!div class="mx-tableFixed"]
@@ -1732,10 +2212,14 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Vrátí výsledek odstraňování kontejneru. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Vrátí seznam kontejnerů. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | Vrátí výsledek vložení objektů blob v kontejneru |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Vrátí výsledek odstraňování objektu blob. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Vrátí objekt blob nebo seznam objektů blob. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Vrátí výsledek zápisu objektu blob. |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="storage-blob-data-owner-preview"></a>Vlastník dat objektu blob služby Storage (Preview)
 > [!div class="mx-tableFixed"]
@@ -1745,8 +2229,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* |  |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="storage-blob-data-reader-preview"></a>Čtenář dat objektu blob služby Storage (Preview)
 > [!div class="mx-tableFixed"]
@@ -1756,8 +2244,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Vrátí seznam kontejnerů. |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Vrátí objekt blob nebo seznam objektů blob. |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="storage-queue-data-contributor-preview"></a>Přispěvatel dat fronty služby Storage (Preview)
 > [!div class="mx-tableFixed"]
@@ -1769,10 +2261,14 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Vrátí výsledek odstranění fronty. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Vrátí frontu nebo seznam front. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/write | Vrátí výsledek zápisu fronty. |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Vrátí výsledek odstranění zprávy. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Vrátí zprávu. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Vrátí výsledek zápisu zprávy. |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="storage-queue-data-reader-preview"></a>Čtenář dat fronty služby Storage (Preview)
 > [!div class="mx-tableFixed"]
@@ -1782,8 +2278,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Vrátí frontu nebo seznam front. |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Vrátí zprávu. |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="support-request-contributor"></a>Přispěvatel žádostí o podporu
 > [!div class="mx-tableFixed"]
@@ -1795,6 +2295,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/*/read | Autorizace pro čtení |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="traffic-manager-contributor"></a>Přispěvatel Traffic Manageru
 > [!div class="mx-tableFixed"]
@@ -1810,6 +2316,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="user-access-administrator"></a>Správce přístupu uživatelů
 > [!div class="mx-tableFixed"]
@@ -1821,6 +2333,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Authorization/* | Správa autorizací |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="virtual-machine-administrator-login"></a>Přihlášení správce virtuálního počítače
 > [!div class="mx-tableFixed"]
@@ -1834,9 +2352,13 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Network/loadBalancers/read | Získá definice nástroje pro vyrovnávání zatížení |
 > | Microsoft.Network/networkInterfaces/read | Získá definici rozhraní sítě.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Přihlášení k virtuálnímu počítači jako běžný uživatel |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Přihlášení k virtuálnímu počítači s oprávněními správce ve Windows nebo kořenovými oprávněními na Linuxu |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="virtual-machine-contributor"></a>Přispěvatel virtuálních počítačů
 > [!div class="mx-tableFixed"]
@@ -1883,6 +2405,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Storage/storageAccounts/listKeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="virtual-machine-user-login"></a>Přihlášení uživatele virtuálního počítače
 > [!div class="mx-tableFixed"]
@@ -1896,8 +2424,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Network/loadBalancers/read | Získá definice nástroje pro vyrovnávání zatížení |
 > | Microsoft.Network/networkInterfaces/read | Získá definici rozhraní sítě.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Přihlášení k virtuálnímu počítači jako běžný uživatel |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="web-plan-contributor"></a>Přispěvatel webových plánů
 > [!div class="mx-tableFixed"]
@@ -1913,6 +2445,12 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.Web/serverFarms/* | Vytvoření a správa serverové farmy |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="website-contributor"></a>Přispěvatel webů
 > [!div class="mx-tableFixed"]
@@ -1933,9 +2471,15 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Získá vlastnosti na plán služby App Service |
 > | Microsoft.Web/sites/* | Vytvářet a spravovat weby (vytvoření webu také vyžaduje oprávnění k zápisu pro přidružený plán služby App Service) |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vlastní role](custom-roles.md)
-- [Spravovat přiřazení rolí pomocí webu Azure portal](role-assignments-portal.md)
+- [Vlastní role pro prostředky Azure](custom-roles.md)
+- [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal](role-assignments-portal.md)
 - [Oprávnění ve službě Azure Security Center](../security-center/security-center-permissions.md)
