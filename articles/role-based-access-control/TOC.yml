@@ -1,5 +1,5 @@
 items:
-- name: Dokumentace k řízení přístupu na základě role
+- name: Dokumentace k RBAC pro prostředky Azure
   href: index.yml
 - name: Přehled
   items:
@@ -9,7 +9,7 @@ items:
     href: rbac-and-directory-admin-roles.md
 - name: Šablony Rychlý start
   items:
-  - name: Zobrazení rolí uživatele
+  - name: Zobrazení přístupu pro uživatele
     href: check-access.md
 - name: Kurzy
   items:
@@ -29,7 +29,7 @@ items:
     href: role-definitions.md
   - name: Vysvětlení zamítnutých přiřazení
     href: deny-assignments.md
-  - name: Privileged Identity Management (PIM) pro RBAC
+  - name: PIM pro prostředky Azure
     href: pim-azure-resource.md
   - name: Podmíněný přístup pro správu Azure
     href: conditional-access-azure-management.md
@@ -96,9 +96,9 @@ items:
   items:
   - name: Získávání dovedností pomocí Microsoft Learn
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: 46ff0e024e2c7dc466120054b4a8e69fa47c14cd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 20500ad90e710b2c0e4359832a24a352c14ea0b2
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099203"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408761"

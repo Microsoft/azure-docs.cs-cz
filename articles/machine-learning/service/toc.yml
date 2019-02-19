@@ -59,7 +59,11 @@ items:
 - name: Návody
   items:
   - name: Správa pracovních prostorů
-    href: how-to-manage-workspace.md
+    items:
+    - name: Použití portálu pro pracovní prostory
+      href: how-to-manage-workspace.md
+    - name: Použití šablony Resource Manageru
+      href: how-to-create-workspace-template.md
   - name: Nastavení vývojového prostředí 
     items:
     - name: Konfigurace vývojových prostředí
@@ -119,8 +123,6 @@ items:
       href: how-to-deploy-fpga-web-service.md
     - name: Řešení potíží
       href: how-to-troubleshoot-deployment.md
-    - name: Zabezpečení webových služeb pomocí SSL
-      href: how-to-secure-web-service.md
   - name: Využívání webových služeb
     items:
     - name: Využívání v reálném čase
@@ -136,25 +138,27 @@ items:
       href: how-to-enable-data-collection.md
     - name: Monitorování pomocí Application Insights
       href: how-to-enable-app-insights.md
+  - name: Zabezpečení
+    items:
+    - name: Použití virtuálních sítí
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: Zabezpečení webových služeb pomocí SSL
+      href: how-to-secure-web-service.md
   - name: Vytvoření prvního kanálu
     href: how-to-create-your-first-pipeline.md
+  - name: Povolit protokolování
+    displayName: logging
+    href: how-to-enable-logging.md
   - name: Správa kvót prostředků
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: Zabezpečení s využitím virtuálních sítí
-    displayName: vnet
-    href: how-to-enable-virtual-network.md
   - name: Použití CLI služby Machine Learning
     displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
   - name: Export a odstranění dat
     displayName: gdpr
     href: how-to-export-delete-data.md
-  - name: Použití šablony Resource Manageru
-    href: how-to-create-workspace-template.md
-  - name: Povolit protokolování
-    displayName: logging
-    href: how-to-enable-logging.md
 - name: Referenční informace
   items:
   - name: Sada Machine Learning SDK
@@ -166,8 +170,6 @@ items:
   - name: Sada SDK pro monitorování
     displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.machinelearningservices/allversions
 - name: Zdroje a prostředky
   items:
   - name: Plány Azure do budoucna
@@ -183,9 +185,9 @@ items:
     href: support-for-aml-services.md
   - name: Porovnání našich produktů ML
     href: overview-more-machine-learning.md
-ms.openlocfilehash: eb803b44bbe72b80f4414a4de66bce519591dea7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 041a4b0f3ebecdaedb041ceb25f426a6e1825292
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268817"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338089"

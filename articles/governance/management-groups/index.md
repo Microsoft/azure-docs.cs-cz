@@ -1,6 +1,6 @@
 ---
-title: Uspořádání vašich prostředků s využitím skupin pro správu Azure
-description: Další informace o skupinách pro správu a způsobu jejich využití
+title: Uspořádání vašich prostředků s využitím skupin pro správu Azure – zásady správného řízení Azure
+description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 author: rthorn17
 manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -11,12 +11,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 9d606a46bd08ce3e999806bed2357968e5ffd914
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584600"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339283"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -118,7 +118,7 @@ Pokud chcete přes toto rozhraní API sledovat skupiny pro správu, použijte [r
 1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`.
 1. Jako uživatel provádějící audit zavoláním [rozhraní API protokolů aktivit tenanta](/rest/api/monitor/tenantactivitylogs) zobrazte aktivity skupiny pro správu. Doporučujeme vyfiltrovat poskytovatele prostředků **Microsoft.Management**, aby se zobrazily všechny aktivity skupiny pro správu.  Příklad:
 
-```
+```http
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
 ```
 
