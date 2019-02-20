@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd24d4ad026af7d8bce70902376c3a31d659a203
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882994"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427867"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Předat token přístupu pomocí vlastních zásad do vaší aplikace v Azure Active Directory B2C
 
@@ -24,11 +24,11 @@ ms.locfileid: "55882994"
 
 A [vlastní zásady](active-directory-b2c-get-started-custom.md) v Azure Active Directory (Azure AD) B2C poskytuje uživatelům vaší aplikace příležitost k registraci nebo přihlášení pomocí zprostředkovatele identity. Pokud k tomu dojde, obdrží Azure AD B2C [přístupový token](active-directory-b2c-reference-tokens.md) od zprostředkovatele identity. Azure AD B2C používá tento token k načtení informací o uživateli. Můžete přidat že typ deklarace identity a výstupní deklaraci identity pro vaše vlastní zásada vypadat předat token prostřednictvím aplikace, které zaregistrujete v Azure AD B2C. 
 
-Azure AD B2C momentálně podporuje pouze předávání přístupový token [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) zprostředkovatelů identity, mezi které patří službě Facebook a [Google](active-directory-b2c-custom-setup-goog-idp.md). Pro všechny ostatní poskytovatele identity se vrátí prázdná deklarace identity.
+Azure AD B2C podporuje předávání přístupový token [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) a [OpenID Connect](active-directory-b2c-reference-oidc.md) zprostředkovatelé identity. Pro všechny ostatní poskytovatele identity se vrátí prázdná deklarace identity.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vlastní zásady je nakonfigurovaný pomocí zprostředkovatele identity OAuth 2.0.
+- Vlastní zásady je nakonfigurovaný pomocí zprostředkovatele identity OAuth 2.0 nebo OpenID Connect.
 
 ## <a name="add-the-claim-elements"></a>Přidání prvků deklarace identity 
 

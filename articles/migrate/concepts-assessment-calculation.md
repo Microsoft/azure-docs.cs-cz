@@ -4,14 +4,14 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 62683aaf7dda048b5828e9494ba8cafe6c8b8f9f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849169"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417935"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -59,7 +59,7 @@ Windows Server 2012 a všechny aktualizace Service packu | Azure poskytuje plnou
 Windows Server 2008 R2 s všechny aktualizace Service packu | Azure poskytuje plnou podporu.| Připraveno pro Azure
 Windows Server 2008 (32bitová verze a 64bitová verze) | Azure poskytuje plnou podporu. | Připraveno pro Azure
 Windows Server 2003, 2003 R2 | Tyto operační systémy prošly jejich koncové datum podpory a potřebu [smlouvy podporují vlastní (CSA)](https://aka.ms/WSosstatement) pro podporu v Azure. | Podmíněně připraveno pro Azure, zvažte možnost upgradovat operační systém před migrací do Azure.
-98, 95, Windows 2000 NT, 3.1, zástupného kódu MS-DOS | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.
+Windows 2000, 98, 95, NT, 3.1, MS-DOS | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.
 Klient Windows 7, 8 a 10 | Azure poskytuje podporu s [pouze předplatné sady Visual Studio.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Připraveno pro Azure s podmínkou
 Windows 10 Pro plochu | Azure poskytuje podporu s [práv hostování více klientů.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Připraveno pro Azure s podmínkou
 Windows Vista, XP Professional | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.
@@ -89,12 +89,12 @@ Pro určení velikosti na základě výkonu začíná Azure Migrate disky připo
     - Pokud existují oprávněné více disků, vybere tu s nejnižšími náklady.
     - Pokud data výkonu u disků do nedostupný, všechny disky se mapují na standardní disky v Azure.
 
-- **Síť**: Azure Migrate se pokusí vyhledat Virtuálním počítači Azure, který podporuje počet síťových adaptérů připojený k místnímu počítači a výkonu, požadují tyto síťové adaptéry.
+- **Síť**: Azure Migrate se pokusí najít virtuální počítač Azure, který podporuje počet síťových adaptérů připojený k místnímu počítači a výkonu, požadují tyto síťové adaptéry.
     - Chcete-li získat efektivní síťový výkon místního virtuálního počítače, Azure Migrate agreguje data odeslaných za sekundu (MB/s) z počítače (sítě navýšení kapacity), ve všech síťových adaptérech a faktor komfortu se vztahuje. Toto číslo slouží k vyhledání Virtuálním počítači Azure, který podporuje požadovaný výkon sítě.
     - Spolu s výkon sítě úvahu se berou také pokud virtuální počítač Azure může podporovat požadovaný počet síťových adaptérů.
     - Pokud je k dispozici žádná data o výkonu sítě, pouze počet síťových adaptérů se považuje za určení velikosti virtuálního počítače.
 
-- **COMPUTE**: poté, co se počítá požadavky na úložiště a síť, Azure Migrate bere v úvahu požadavky na procesor a paměť najít vhodnou velikost virtuálního počítače v Azure.
+- **COMPUTE**: Poté, co se počítá požadavky na úložiště a síť, Azure Migrate bere v úvahu požadavky na procesor a paměť najít vhodnou velikost virtuálního počítače v Azure.
     - Azure Migrate zjistí využívaných jader a paměti a použije faktor komfortu, chcete-li získat efektivní jader a paměti. Na základě čísla, pokusí se najít vhodné velikosti virtuálního počítače v Azure.
     - Pokud se nenajde žádné vhodné velikosti, tento počítač je označen jako nevhodný pro Azure.
     - Pokud se nenajde vhodné velikosti, Azure Migrate použije výpočty úložiště a sítě. Poté použije umístění a nastavení cenové úrovně, pro poslední doporučená velikost virtuálního počítače.
@@ -131,8 +131,8 @@ K určení velikosti na základě výkonu potřebuje Azure Migrate data o využi
 
 Po dokončení doporučení velikosti Azure Migrate vypočítá náklady na výpočetní výkon a úložiště po migraci.
 
-- **Výpočetní náklady**: použití doporučená velikost virtuálního počítače Azure, Azure Migrate používá rozhraní API pro fakturaci vypočítat měsíční náklady pro virtuální počítač. Výpočet má operační systém, program software assurance, rezervované instance, virtuálního počítače doby provozu, umístění a nastavení měny v úvahu. Agreguje ve všech počítačích, k výpočtu celkové měsíční náklady na výpočetní náklady.
-- **Náklady na úložiště**: úložišti měsíční náklady na počítači se vypočítá agregováním měsíční náklady pro všechny disky připojené k počítači. Azure Migrate vypočítá celkové měsíční náklady na úložiště na základě agregace náklady na úložiště všech počítačů. V současné době nepřijímá výpočet nabídky zadaný v nastavení posouzení v úvahu.
+- **Výpočetní náklady**: Pomocí doporučená velikost virtuálního počítače Azure, Azure Migrate k výpočtu měsíční náklady pro virtuální počítač používá rozhraní API pro fakturaci. Výpočet má operační systém, program software assurance, rezervované instance, virtuálního počítače doby provozu, umístění a nastavení měny v úvahu. Agreguje ve všech počítačích, k výpočtu celkové měsíční náklady na výpočetní náklady.
+- **Náklady na úložiště**: Měsíční náklady na úložiště pro počítač se vypočítá agregováním měsíční náklady pro všechny disky připojené k počítači. Azure Migrate vypočítá celkové měsíční náklady na úložiště na základě agregace náklady na úložiště všech počítačů. V současné době nepřijímá výpočet nabídky zadaný v nastavení posouzení v úvahu.
 
 Náklady jsou zobrazeny v místní měně, zadaný v nastavení posouzení.
 

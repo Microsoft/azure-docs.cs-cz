@@ -4,7 +4,7 @@ description: Tento dokument popisuje příčinu výstrahy "data služby Health s
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: maheshu
+manager: SamuelD
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -14,34 +14,41 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35586de180b1193e9886677ce4112eaa051395ae
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0ad829b976d8b712ee8027c89fb618c6c07de1bc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196752"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429006"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Data služby Health service není aktuální výstrahy
 
 ## <a name="overview"></a>Přehled
-<li>Azure AD Connect Health vyvolá data novou výstrahu, jestliže neobdrží všechny datové body ze serveru pro dvě hodiny. Název upozornění je **data služby Health service není aktuální**. </li>
-<li>**Upozornění** výstraha o stavu je vyvoláno, pokud Connect Health přijme prvky částečná data ze serveru odesílají dvě hodiny. Stav upozornění neaktivuje e-mailová oznámení pro správce tenanta. </li>
-<li>**Chyba** stav upozornění je vyvoláno, pokud Connect Health přijme všechny datové prvky odeslaných ze serveru pro dvě hodiny. Chyba stavu aktivuje upozornění e-mailová oznámení správce tenanta. </li>
+Agenty na místní počítače, které Azure AD Connect Health monitoruje pravidelně odesílá data do služby Azure AD Connect Health. Pokud služba nepřijímá data z agenta, bude zastaralé informace uvedené na portálu. Abyste měli na očích problém, se vyvolat službu **data služby Health service není aktuální** upozornění. Tím se vygeneruje, když služba neobdržel data v posledních dvou hodin.  
 
->[!IMPORTANT] 
-> Toto oznámení následuje Connect Health [zásady uchovávání dat](reference-connect-health-user-privacy.md#data-retention-policy)
+* **Upozornění** výstraha o stavu je vyvoláno, pokud Connect Health přijme prvky částečná data ze serveru odesílají dvě hodiny. Stav upozornění neaktivuje e-mailová oznámení pro správce tenanta.
+* **Chyba** stav upozornění je vyvoláno, pokud Connect Health přijme všechny datové prvky odeslaných ze serveru pro dvě hodiny. Chyba stavu aktivuje upozornění e-mailová oznámení správce tenanta.
+
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží 
+
+> [!IMPORTANT] 
+> Toto oznámení následuje Connect Health [zásady uchovávání dat](reference-connect-health-user-privacy.md#data-retention-policy)
+
+* Ujistěte se, že na počítači běží služby agenti Azure AD Connect Health. Connect Health pro AD FS by měl mít například tři služby.  
+  ![Ověření Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
+
 * Ujistěte se, že se přenášejí prostřednictvím a vyhovět [části věnované požadavkům](how-to-connect-health-agent-install.md#requirements).
 * Použití [nástroj pro testování připojení](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) ke zjišťování problémů s připojením.
-* Pokud máte proxy server HTTP, postupujte prosím podle [kroky konfigurace zde](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
+* Pokud máte proxy server HTTP, postupujte podle těchto [kroky konfigurace](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
+Okno podrobností výstrahy uvádí chybějící data elementy ze serveru. V následující tabulce vám pomohou eliminovat další potíže. 
 ### <a name="connect-health-for-sync"></a>Connect Health pro synchronizaci
 
 | Datových prvků | Postup při řešení potíží |
 | --- | --- | 
-| PerfCounter | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
-| AadSyncService SynchronizationRules, <br /> AadSyncService-Connectors, <br /> AadSyncService GlobalConfigurations, <br /> AadSyncService-RunProfileResults, <br /> AadSyncService ServiceConfigurations, <br /> AadSyncService-ServiceStatus | -Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653) <br /> - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
+| PerfCounter | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
+| AadSyncService SynchronizationRules, <br /> AadSyncService-Connectors, <br /> AadSyncService GlobalConfigurations, <br /> AadSyncService-RunProfileResults, <br /> AadSyncService ServiceConfigurations, <br /> AadSyncService-ServiceStatus | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
 
 ### <a name="connect-health-for-adfs"></a>Connect Health pro AD FS
 
@@ -49,14 +56,14 @@ Další kroky k ověření pro službu AD FS a pracovní postup v [nápovědy k 
 
 | Datových prvků | Postup při řešení potíží |
 | --- | --- | 
-| PerfCounter, TestResult | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
+| PerfCounter, TestResult | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 |  Adfs-UsageMetrics | Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653) | 
 
 ### <a name="connect-health-for-adds"></a>Connect Health pro AD DS
 
 | Datových prvků | Postup při řešení potíží |
 | --- | --- | 
-| PerfCounter, Adds-TopologyInfo-Json, Common-TestData-Json | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) <br />  -Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653)  |
+| PerfCounter, Adds-TopologyInfo-Json, Common-TestData-Json | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 
 
 ## <a name="next-steps"></a>Další postup

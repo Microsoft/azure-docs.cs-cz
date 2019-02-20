@@ -1,5 +1,5 @@
 ---
-title: Azure Application Gateway pomocí vyrovnávání zatížení interní - prostředí PowerShell | Microsoft Docs
+title: Azure Application Gateway pomocí interního nástroje Load Balancer – PowerShell | Dokumentace Microsoftu
 description: Tahle stránka poskytuje pokyny pro vytvoření, konfiguraci, spuštění a odstranění služby Azure application gateway s interním nástrojem pro vyrovnávání zatížení (ILB) pro nástroj Azure Resource Manager
 documentationcenter: na
 services: application-gateway
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2018
 ms.author: victorh
-ms.openlocfilehash: b9bdc3f4a0f7eb20b1c0cbc33fb257577da08c26
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 92d0e079f9fafbb6c000c6b1746f37a16add4cf7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598483"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417343"
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Vytvoření služby application gateway s nástrojem pro vyrovnávání interní zatížení (ILB)
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Vytvoření služby application gateway se interní nástroj pro vyrovnávání zatížení (ILB)
 
 Služba Azure Application Gateway se dá nakonfigurovat pomocí virtuální IP adresy s přístupem k Internetu, nebo pomocí interního koncového bodu, který není vystavený v Internetu, známého také jako koncový bod interního nástroje pro vyrovnávání zatížení (ILB). Konfigurace brány pomocí ILB je užitečná pro interní-obchodní aplikace, které nejsou vystaveny v Internetu. To se hodí i pro služby a vrstvy v rámci vícevrstvé aplikace, které se nacházejí v rámci hranice zabezpečení nevystavené k Internetu, ale stále vyžadují distribuci zatížení modelu kruhového dotazování, dlouhodobost relace nebo ukončení SSL (Secure Sockets Layer).
 
 Tenhle článek vás provede kroky konfigurace aplikační brány s ILB.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell pomocí instalační služby webové platformy. Nejnovější verzi můžete stáhnout a nainstalovat v části **Windows PowerShell** na stránce [Položky ke stažení](https://azure.microsoft.com/downloads/).
 2. Vytvořte virtuální síť a podsíť služby Application Gateway. Ujistěte se, že žádné virtuální počítače nebo cloudová nasazení nepoužívají podsíť. Aplikační brána musí být sama o sobě v podsíti virtuální sítě.
@@ -35,11 +35,11 @@ Tenhle článek vás provede kroky konfigurace aplikační brány s ILB.
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Co je potřeba k vytvoření služby Application Gateway?
 
-* **Fond back-end serverů:** seznam IP adres back-end serverů. Uvedené IP adresy by měly buď patřit do virtuální sítě, ale v jiné podsíti pro aplikační bránu, nebo by se mělo jednat o veřejné IP nebo virtuální IP adresy.
-* **Nastavení fondu back-end serverů:** každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
-* **Front-end port:** Toto je veřejný port, který se otevírá ve službě Application Gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
-* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, s rozlišením malých a velkých písmen) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL).
-* **Pravidlo:** Pravidlo váže naslouchací proces a fond back-end serverů a definuje, ke kterému fondu back-end serverů se má provoz směrovat při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
+* **Fond back-end serverů:** Seznam IP adres back-end serverů. Uvedené IP adresy by měly buď patřit do virtuální sítě, ale v jiné podsíti pro aplikační bránu, nebo by se mělo jednat o veřejné IP nebo virtuální IP adresy.
+* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
+* **Front-endový port:** Toto je veřejný port, který se otevírá ve službě application gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
+* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, ty jsou malá a velká písmena) a název certifikátu SSL (Pokud se konfiguruje přesměrování zpracování SSL).
+* **Pravidlo:** Pravidlo váže naslouchací proces a fond back-end serverů a definuje, kterému fondu back endového serveru provoz směrovat při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
@@ -103,7 +103,7 @@ Následující příklad ukazuje, jak vytvořit virtuální síť pomocí Resour
 $subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
-Tento krok rozsah adres 10.0.0.0/24 přiřadí proměnné podsítě, který se má použít k vytvoření virtuální sítě.
+Tento krok rozsah adres 10.0.0.0/24 přiřadí proměnné podsítě se použije k vytvoření virtuální sítě.
 
 ### <a name="step-2"></a>Krok 2
 
@@ -111,7 +111,7 @@ Tento krok rozsah adres 10.0.0.0/24 přiřadí proměnné podsítě, který se m
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
-Tento krok vytvoří virtuální síť s názvem "appgwvnet" v prostředku skupiny "appgw-rg" pro oblast západní USA pomocí předpony 10.0.0.0/16 s podsítí 10.0.0.0/24.
+Tento krok vytvoří virtuální síť s názvem "appgwvnet" ve skupině prostředků "appgw-rg" pro oblast západní USA pomocí předpony 10.0.0.0/16 s podsítí 10.0.0.0/24.
 
 ### <a name="step-3"></a>Krok 3
 
@@ -137,7 +137,7 @@ Tento krok vytvoří konfigurace IP aplikační brány s názvem "gatewayIP01". 
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-Tento krok se konfiguruje fond back-end IP adresy s názvem "pool01" s IP adresami "10.1.1.8, 10.1.1.9, 10.1.1.10". Jsou to IP adresy, které přijímají síťový provoz, který přichází z koncového bodu front-end IP adresy. Předchozí IP adresy nahradíte vlastními aplikačními koncovými body IP adresy.
+Tento krok nakonfiguruje fond back-end IP adres s názvem "pool01" s IP adresami "10.1.1.8, 10.1.1.9, 10.1.1.10". Jsou to IP adresy, které přijímají síťový provoz, který přichází z koncového bodu front-end IP adresy. Předchozí IP adresy nahradíte vlastními aplikačními koncovými body IP adresy.
 
 ### <a name="step-3"></a>Krok 3
 
@@ -145,7 +145,7 @@ Tento krok se konfiguruje fond back-end IP adresy s názvem "pool01" s IP adresa
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Tento krok nakonfiguruje aplikaci brány nastavení "poolsetting01" pro zatížení vyrovnáváním síťového provozu ve fondu back-end.
+Tento krok nakonfiguruje aplikaci nastavení brány "poolsetting01" pro zatížení s vyrovnáváním síťového provozu do back endového fondu.
 
 ### <a name="step-4"></a>Krok 4
 
@@ -153,7 +153,7 @@ Tento krok nakonfiguruje aplikaci brány nastavení "poolsetting01" pro zatíže
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
-Tento krok nakonfiguruje port front-end IP adresy s názvem "frontendport01" pro ILB.
+Tento krok se nakonfiguruje port front-end IP adresy s názvem "frontendport01" pro ILB.
 
 ### <a name="step-5"></a>Krok 5
 
@@ -161,7 +161,7 @@ Tento krok nakonfiguruje port front-end IP adresy s názvem "frontendport01" pro
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
-Tento krok vytvoří konfiguraci front-end IP adresy, nazvanou "fipconfig01" a přidruží ji s privátní IP Adresou z aktuální podsítě virtuální sítě.
+Tento krok vytvoří konfigurace front-end IP adresy, nazvanou "fipconfig01" a přidruží ji k privátní IP Adresou z aktuální podsítě virtuální sítě.
 
 ### <a name="step-6"></a>Krok 6
 
@@ -185,24 +185,24 @@ Tento krok vytvoří pravidlo směrování pro vyrovnávání zatížení názve
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
-Tento krok se nakonfiguruje velikost instance aplikační brány.
+Tento krok nakonfiguruje velikost instance aplikační brány.
 
 > [!NOTE]
-> Výchozí hodnota *InstanceCount* je 2, přičemž maximální hodnota je 10. Výchozí hodnota *GatewaySize* je Medium (Střední). Můžete vybrat mezi Standard_Small, Standard_Medium a Standard_Large.
+> Hodnota výchozí kapacity je 2. Název skladové položky můžete mezi hodnotami Standard_Small, Standard_Medium a standard_large (standardní_velká).
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Vytvořte aplikační bránu pomocí New-AzureApplicationGateway
 
-Vytvoří aplikační brána se všemi položkami konfigurace z předchozích kroků. V tomto příkladu má služba Application Gateway název „appgwtest“.
+Vytvoří službu application gateway se všemi položkami konfigurace z předchozích kroků. V tomto příkladu má služba Application Gateway název „appgwtest“.
 
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-Tento krok vytvoří aplikační brána se všemi položkami konfigurace z předchozích kroků. V příkladu se aplikační brána nazývá „appgwtest“.
+Tento krok vytvoří službu application gateway se všemi položkami konfigurace z předchozích kroků. V příkladu se aplikační brána nazývá „appgwtest“.
 
 ## <a name="delete-an-application-gateway"></a>Odstranění služby Application Gateway
 
-Pokud chcete odstranit aplikační bránu, musíte udělat následující kroky v pořadí:
+Pokud chcete odstranit aplikační bránu, musíte provést následující kroky v pořadí:
 
 1. Pomocí rutiny `Stop-AzureRmApplicationGateway` zastavte bránu.
 2. Pomocí rutiny `Remove-AzureRmApplicationGateway` bránu odeberte.
@@ -218,7 +218,7 @@ $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw
 
 ### <a name="step-2"></a>Krok 2
 
-Pomocí rutiny `Stop-AzureRmApplicationGateway` zastavte službu Application Gateway. Tento příklad ukazuje `Stop-AzureRmApplicationGateway` rutiny na prvním řádku, následovanou výstupem.
+Pomocí rutiny `Stop-AzureRmApplicationGateway` zastavte službu Application Gateway. Tento příklad ukazuje, `Stop-AzureRmApplicationGateway` rutiny na prvním řádku, následovanou výstupem.
 
 ```powershell
 Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  

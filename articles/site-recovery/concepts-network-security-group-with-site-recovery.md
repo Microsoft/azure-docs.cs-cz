@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 4885be7547d404505b50c563036f260166cbc2cc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6b980ae7539642e67609be802b2e31b287d09f72
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833818"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415260"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Skupiny zabezpečení sítě pomocí Azure Site Recovery
 
@@ -45,7 +45,7 @@ Ne vždy musíte mít přehled o použití skupin zabezpečení sítě na síťo
 
 Azure Site Recovery nabízí zotavení po havárii a migraci do Azure pro místní [virtuálních počítačů Hyper-V](hyper-v-azure-architecture.md), [virtuálních počítačů VMware](vmware-azure-architecture.md), a [fyzických serverů](physical-azure-architecture.md). Data replikace pro všechny místní do scénáře služby Azure, se odesílají a ukládají v účtu služby Azure Storage. Během replikace neplatíte žádné poplatky za virtuální počítače. Při spuštění převzetí služeb při selhání do Azure Site Recovery automaticky vytvoří virtuální počítače Azure IaaS.
 
-Po vytvoření virtuálních počítačů po převzetí služeb při selhání do Azure skupin zabezpečení sítě je možné omezit síťový provoz do virtuální sítě a virtuální počítače. Site Recovery nevytváří skupiny zabezpečení sítě jako součást operace převzetí služeb při selhání. Doporučujeme vytvořit požadované NGSs Azure před inicializací převzetí služeb při selhání. Potom můžete spojit skupiny Nsg k převzetí služeb při selhání virtuálních počítačů automaticky během převzetí služeb při selhání, skripty pro automatizaci pomocí Site Recovery pomocí výkonných [plány obnovení](site-recovery-create-recovery-plans.md).
+Po vytvoření virtuálních počítačů po převzetí služeb při selhání do Azure skupin zabezpečení sítě je možné omezit síťový provoz do virtuální sítě a virtuální počítače. Site Recovery nevytváří skupiny zabezpečení sítě jako součást operace převzetí služeb při selhání. Doporučujeme vytvořit požadované skupiny zabezpečení sítě Azure před inicializací převzetí služeb při selhání. Potom můžete spojit skupiny Nsg k převzetí služeb při selhání virtuálních počítačů automaticky během převzetí služeb při selhání, skripty pro automatizaci pomocí Site Recovery pomocí výkonných [plány obnovení](site-recovery-create-recovery-plans.md).
 
 Například, pokud je podobný konfigurace post-převzetí služeb při selhání virtuálního počítače [ukázkový scénář](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) podrobné výše:
 -   Můžete vytvořit **virtuální síti Contoso** a **Contoso podsítě** jako součást plánování v cílové oblasti Azure zotavení po Havárii.
@@ -61,7 +61,7 @@ Azure Site Recovery nabízí zotavení po havárii [virtuálních počítačů A
 
 Pro replikaci virtuálních počítačů Azure, ujistěte se, že pravidla NSG na zdrojovou oblast Azure umožňují [odchozí připojení](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) pro přenosy replikace. Můžete také otestovat a ověřit tato požadovaná pravidla v něm [Ukázková konfigurace NSG](azure-to-azure-about-networking.md#example-nsg-configuration).
 
-Site Recovery nepodporuje ani replikovat skupin zabezpečení sítě jako součást operace převzetí služeb při selhání. Doporučujeme vytvořit požadované NGSs na cílovou oblastí Azure před inicializací převzetí služeb při selhání. Potom můžete spojit skupiny Nsg k převzetí služeb při selhání virtuálních počítačů automaticky během převzetí služeb při selhání, skripty pro automatizaci pomocí Site Recovery pomocí výkonných [plány obnovení](site-recovery-create-recovery-plans.md).
+Site Recovery nepodporuje ani replikovat skupin zabezpečení sítě jako součást operace převzetí služeb při selhání. Doporučujeme vytvořit požadované skupiny zabezpečení sítě na cílovou oblastí Azure před inicializací převzetí služeb při selhání. Potom můžete spojit skupiny Nsg k převzetí služeb při selhání virtuálních počítačů automaticky během převzetí služeb při selhání, skripty pro automatizaci pomocí Site Recovery pomocí výkonných [plány obnovení](site-recovery-create-recovery-plans.md).
 
 Vzhledem k tomu, [ukázkový scénář](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) popsané výše:
 -   Site Recovery můžete vytvořit repliky **virtuální síti Contoso** a **Contoso podsítě** na cílovou oblastí Azure po povolení replikace pro virtuální počítač.

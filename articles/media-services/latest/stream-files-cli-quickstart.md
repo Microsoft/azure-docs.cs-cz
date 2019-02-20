@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 02/15/2019
 ms.author: juliako
-ms.openlocfilehash: c0b1f3fb854f4ca553d24ed601749cf91c2b5f28
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: be1f65b291613997466d9c82782256dc28a5590f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339800"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417393"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>Rychlý start: Streamování videosouborů – CLI
 
@@ -181,12 +181,15 @@ Získejte odpovědi podobně jako tato:
 
 V Media Services v3 při odesílání úloh zpracování videa, budete muset zjistit, kde najít vstupního videa Media Services. Jednu z možností je zadat adresu URL HTTPS jako úloha vstup (jak je znázorněno v tomto příkladu). 
 
+Při spuštění `az ams job start`, můžete nastavit popisek na výstupu úlohy. Popisek můžete později použít k identifikaci tohoto prostředku výstupu je pro. 
+
+- Pokud přiřadíte hodnotu popisku, nastavte "– výstupní assety k" assetname = label "
+- Pokud není hodnota přiřadit popisek, nastavte "– výstupní assety k" assetname = ".
+  Všimněte si, že přidáte "=" k `output-assets`. 
+
 ```azurecli
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
 ```
-
-> [!TIP]
-> Všimněte si, že budete muset přidat "=" k názvu výstupní assety i v případě, že vlastnost popisek nemají nastavený na úloze výstupy.
 
 Získejte odpovědi podobně jako tato:
 
@@ -318,7 +321,7 @@ Kopírovat `hostName` hodnotu. V tomto případě: `amsaccount-usw22.streaming.m
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
-## <a name="play-back-with-azure-media-player"></a>Přehrávání pomocí Azure Media Playeru
+## <a name="test-playback-with-azure-media-player"></a>Přehrávání testů pomocí Azure Media Player
 
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 
@@ -327,6 +330,8 @@ Tento článek používá k otestování streamu přehrávač Azure Media Player
 
 1. Otevřete webový prohlížeč a přejděte na adresu [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. V **adresy URL:** pole, vložte adresu URL, kterou jste vytvořili v předchozí části. 
+
+  Můžete vložit adresu URL do HLS, Dash, nebo technologie Smooth formátu a Azure Media Player se přepne na příslušný protokol streamování pro přehrávání na vašem zařízení automaticky.
 3. Stiskněte **Update Player** (Aktualizovat přehrávač).
 
 Azure Media Player můžete použít pro účely testování, nesmí se ale používat v produkčním prostředí. 
@@ -340,6 +345,11 @@ Spusťte následující příkaz rozhraní příkazového řádku:
 ```azurecli
 az group delete --name amsResourceGroup
 ```
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+Zobrazit [úlohy kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+
 
 ## <a name="next-steps"></a>Další postup
 

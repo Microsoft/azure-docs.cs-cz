@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 66d7a2ce5833729d601ae896f0903a17a40fc8a3
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 09514e37d1d40c489eda483980237d26e4a08730
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339485"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417918"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Pro potřeby velkého objemu dat pomocí Azure Data Lake Storage Gen2
 
@@ -81,7 +81,7 @@ Pokud chcete udělit přístup pro konkrétní soubor a složky, najdete v těch
 
 * [Seznamy řízení přístupu na soubory a adresáře](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
 
-Další informace o nastavení dalších aspektů zabezpečení najdete v tématu [Průvodci zabezpečením Azure Data Lake Storage Gen2](https://review.docs.microsoft.com/en-us/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Další informace o nastavení dalších aspektů zabezpečení najdete v tématu [Průvodci zabezpečením Azure Data Lake Storage Gen2](https://review.docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="ingest-the-data"></a>Zpracování příjmu dat
 

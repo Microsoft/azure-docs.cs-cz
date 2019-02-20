@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: f724bba5acdda20d31d067b850634178a0650cf7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859740"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429464"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověření požadavků ve službě Azure Cognitive Services
 
@@ -58,7 +58,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-Toto video ukazuje použití klíče služeb Cognitive Services. 
+Toto video ukazuje použití klíče služeb Cognitive Services.
 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Ověření s klíčem víc služeb předplatného
 
@@ -127,16 +127,15 @@ Tokeny ověřování jsou součástí žádost jako `Authorization` záhlaví. P
 
 ### <a name="sample-requests"></a>Požadavky na ukázky
 
-Pomocí této adresy URL pro výměnu klíč předplatného jednoúčelovou pro ověřovací token: `https://api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Pomocí této adresy URL k výměně klíče předplatného pro ověřovací token: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 ```cURL
 curl -v -X POST \
-"https://api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
 -H "Content-type: application/x-www-form-urlencoded" \
+-H "Content-length: 0" \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
-
-Při použití klíče předplatného víc služeb, musíte použít oblast určitého koncového bodu pro výměnu tokenů. Pomocí této adresy URL pro výměnu klíč víc služeb předplatného pro ověřovací token: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 Tyto víc služeb regiony podporují průběhu výměny tokenů:
 
@@ -147,13 +146,6 @@ Tyto víc služeb regiony podporují průběhu výměny tokenů:
 | `japaneast` | `northeurope` | `southcentralus` |
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
-
-```cURL
-curl -v -X POST \
-"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
--H "Content-type: application/x-www-form-urlencoded" \
--H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
-```
 
 Po získání ověřovacího tokenu, je potřeba předat v každé žádosti o jako `Authorization` záhlaví. Toto je ukázka volání rozhraní Translator Text API:
 

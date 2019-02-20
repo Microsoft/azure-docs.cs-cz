@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/18/2019
+ms.date: 2/19/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: dce158e600d3bf5dbcc552aff82959208d7b47f8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0319445f946a53ace5718dce1ad593d0a8225ecc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249057"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428512"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image virtuálního počítače ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Ve službě Azure Stack můžete zpřístupnit imagí virtuálních počítačů pro vaše uživatele. Tyto Image lze odkazovat pomocí šablon Azure Resource Manageru nebo můžete je přidat do uživatelského rozhraní služby Azure Marketplace jako položky Marketplace. Můžete použít buď image formulář globální Azure Marketplace nebo přidávat svoji vlastní image. Můžete přidat virtuálního počítače pomocí portálu nebo prostředí Windows PowerShell.
+Ve službě Azure Stack můžete zpřístupnit imagí virtuálních počítačů pro vaše uživatele. Tyto Image je možné pomocí šablon Azure Resource Manageru. Také je můžete přidat jako položky Marketplace do uživatelského rozhraní služby Azure Marketplace. Použijte formulář image globální Azure Marketplace nebo vlastní image. Image můžete přidat pomocí portálu nebo prostředí Windows PowerShell.
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Přidání image virtuálního počítače pomocí portálu
 

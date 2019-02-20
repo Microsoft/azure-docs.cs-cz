@@ -4,14 +4,14 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746308"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416186"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -117,6 +117,10 @@ Zavedli jsme průběžné profilace údaje o výkonu (což je ve verzi preview).
 Data shromažďovaná společností zařízení kolektoru je uložen v umístění Azure, který zadáte při vytváření projektu migrace. Data je bezpečně uložen v rámci předplatného Microsoft a se odstraní při odstranění projektu Azure Migrate.
 
 Pro vizualizaci závislostí Pokud nenainstalujete agenty na virtuální počítače, data shromážděná agenty závislostí uložená v USA v pracovním prostoru Log Analytics vytvořené v rámci předplatného uživatele. Tato data jsou odstraněna při odstranění pracovního prostoru Log Analytics v rámci vašeho předplatného. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
+
+### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>Co je objem dat, která nahraje službou Azure Migrate v případě průběžné profilace?
+
+Objem dat, která se posílají do Azure Migrate bude lišit v závislosti na několik parametrů. Pokud chcete dát orientační číslo, bude projekt s deset počítačů (každý s jedním diskem a jednu síťovou kartu), posílat přibližně 50 MB za den. Toto je přibližná hodnota a změní na základě počtu datových bodů pro síťové adaptéry a disků (data odeslaná bude nelineárních, pokud se zvyšuje počet počítačů, síťové adaptéry nebo disky). 
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Má tato data šifrovat v klidovém stavu a v průběhu přenosu?
 

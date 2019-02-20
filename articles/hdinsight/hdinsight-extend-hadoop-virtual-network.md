@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dbb94e0dbcb1dccf8ecbc60bca47b2cc3533297c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169968"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429736"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -220,8 +220,6 @@ Síťový provoz v Azure Virtual Network se dá řídit pomocí následujících
 * **Síťová virtuální zařízení** replikovat funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v tématu [síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
 Je spravovaná služba HDInsight vyžaduje neomezený přístup ke stavu HDinsight a správu služeb pro příchozí a odchozí provoz z virtuální sítě. Při použití skupin zabezpečení sítě a trasy definované uživatelem, musíte zajistit, že tyto služby můžete stále komunikovat s clusterem HDInsight.
-
-HDInsight poskytuje služby na několika portech. Při použití brány firewall virtuální zařízení, musí umožňovat provoz na portech používaných pro tyto služby. Další informace najdete v části [požadované porty].
 
 ### <a id="hdinsight-ip"></a> HDInsight se skupinami zabezpečení sítě a trasy definované uživatelem
 

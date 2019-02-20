@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cbe13c9167ebccdd55d54ddd99ba11c6d58b01e8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9c684e9d1bf6cec12024cedfb5360d10e400e139
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429929"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416000"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Úpravy textových runbooků ve službě Azure Automation
 
@@ -22,7 +22,7 @@ Textový editor ve službě Azure Automation je možné upravit [Powershellové 
 
 Textový editor obsahuje funkci pro vložení kódu pro rutiny, prostředky a podřízené runbooky do runbooku. Nemusíte psát kód sami, můžete vybrat ze seznamu dostupných prostředků a mít odpovídající kód vloží do runbooku.
 
-Každá sada runbook ve službě Azure Automation má dvě verze: koncept a publikovaný. Můžete upravovat verzi konceptu sady runbook a pak ho publikujete, aby se Dal spustit. Publikovaná verze nelze upravit. Zobrazit [publikování runbooku](automation-creating-importing-runbook.md#publishing-a-runbook) Další informace.
+Každá sada runbook ve službě Azure Automation má dvě verze: koncept a publikovaný. Můžete upravovat verzi konceptu sady runbook a pak ho publikujete, aby se Dal spustit. Publikovaná verze nelze upravit. Další informace najdete v tématu [publikování runbooku](manage-runbooks.md#publish-a-runbook).
 
 Pro práci s [grafické Runbooky](automation-runbook-types.md#graphical-runbooks), naleznete v tématu [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md).
 
@@ -33,7 +33,7 @@ Pomocí následujícího postupu otevřete sadu runbook pro úpravy v textový e
 1. Na webu Azure Portal vyberte svůj účet automation.
 2. V části **AUTOMATIZACE PROCESŮ**vyberte **sady Runbook** otevřete seznam runbooků.
 3. Vyberte sadu runbook, kterou chcete upravit a potom klikněte na tlačítko **upravit** tlačítko.
-4. Udělejte požadované úpravy.
+4. Upravte sadu runbook.
 5. Klikněte na tlačítko **Uložit** když se dokončí úpravy.
 6. Klikněte na tlačítko **publikovat** potřebujete nejnovější verzi konceptu sady runbook, který má být publikován.
 
@@ -59,12 +59,12 @@ Pomocí následujícího postupu otevřete sadu runbook pro úpravy v textový e
 1. Na plátně textový editor umístěte kurzor, kam chcete umístit kód podřízeného runbooku.
 2. Rozbalte **prostředky** uzel v ovládacím prvku knihovna.
 3. Rozbalte uzel pro typ prostředku, který chcete.
-4. Klikněte pravým tlačítkem myši klikněte na prostředek pro vložení a vyberte **přidat na plátno**. Pro [proměnných assetů](automation-variables.md), vyberte buď **"Získat proměnnou" na plátno přidejte** nebo **"Nastavit proměnnou" na plátno přidejte** v závislosti na tom, jestli chcete získat nebo nastavit proměnnou.
+4. Klikněte pravým tlačítkem na prostředek pro vložení a vyberte **přidat na plátno**. Pro [proměnných assetů](automation-variables.md), vyberte buď **"Získat proměnnou" na plátno přidejte** nebo **"Nastavit proměnnou" na plátno přidejte** v závislosti na tom, jestli chcete získat nebo nastavit proměnnou.
 5. Kód pro prostředek je vložen do sady runbook.
 
 ## <a name="to-edit-an-azure-automation-runbook-using-windows-powershell"></a>Úprava runbooku Azure Automation pomocí prostředí Windows PowerShell
 
-Postup úpravy sady runbook pomocí prostředí Windows PowerShell, použijte editor podle vaší volby a uložte ho do souboru s příponou .ps1. Můžete použít [Export-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Export-AzureRmAutomationRunbook) rutina pro načtení obsahu runbooku a potom [Import-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/import-azurermautomationrunbook) rutiny nahradit existující koncept runbooku se změnit jednu.
+Postup úpravy sady runbook pomocí prostředí Windows PowerShell, pomocí editoru podle vašeho výběru a uložit ho. tím `.ps1` souboru. Můžete použít [Export-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Export-AzureRmAutomationRunbook) rutina pro načtení obsahu runbooku a potom [Import-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/import-azurermautomationrunbook) rutiny nahradit existující koncept runbooku se změnit jednu.
 
 ### <a name="to-retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>K načtení obsahu runbooku pomocí prostředí Windows PowerShell
 
@@ -81,7 +81,7 @@ Export-AzureRmAutomationRunbook -Name $runbookName -AutomationAccountName $autom
 
 ### <a name="to-change-the-contents-of-a-runbook-using-windows-powershell"></a>Chcete-li změnit obsah sady Runbook pomocí prostředí Windows PowerShell
 
-Následující vzorové příkazy ukazují, jak nahradit existující obsah runbooku obsahem souboru skriptu. Všimněte si, že se stejným způsobem jako v ukázkové [import runbooku ze souboru skriptu prostředí Windows PowerShell](automation-creating-importing-runbook.md).
+Následující vzorové příkazy ukazují, jak nahradit existující obsah runbooku obsahem souboru skriptu. Toto je stejným způsobem jako v ukázkové [import runbooku ze souboru skriptu prostředí Windows PowerShell](manage-runbooks.md#import-a-runbook).
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"
@@ -95,7 +95,7 @@ Publish-AzureRmAutomationRunbook -Name $runbookName -AutomationAccountName $auto
 
 ## <a name="related-articles"></a>Související články
 
-* [Vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)
+* [Správa runbooků ve službě Azure Automation](manage-runbooks.md)
 * [O pracovním postupu Powershellu](automation-powershell-workflow.md)
 * [Grafické vytváření obsahu v Azure Automation.](automation-graphical-authoring-intro.md)
 * [Certifikáty](automation-certificates.md)

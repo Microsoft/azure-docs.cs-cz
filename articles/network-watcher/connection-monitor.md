@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093036"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429243"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači pomocí webu Azure portal
 
 Úspěšná komunikace mezi virtuálním počítačem a koncovým bodem, jako je například jiný virtuální počítač, může být pro organizaci velmi důležitá. Někdy se zavádějí změny konfigurace, po kterých může dojít k narušení komunikace. V tomto kurzu se naučíte:
 
@@ -35,7 +35,7 @@ ms.locfileid: "50093036"
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -73,11 +73,11 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 
 |Krok|Nastavení|Hodnota|
 |---|---|---|
-| 1 | Vyberte **Ubuntu Server 17.10 VM**. |                                                                         |
-| 3 | Název                              | myVm2                                                                   |
-| 3 | Typ ověřování               | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
-| 3 | Skupina prostředků                    | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
-| 6 | Rozšíření                        | **Network Agent for Linux**                                             |
+| 1 | Vyberte verzi **Ubuntu Server** |                                                                         |
+| 3 | Název                                  | myVm2                                                                   |
+| 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
+| 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
+| 6 | Rozšíření                            | **Network Agent for Linux**                                             |
 
 Nasazení virtuálního počítače trvá několik minut. Než budete pokračovat ve zbývajících krocích, počkejte, až virtuální počítač dokončí nasazování.
 
@@ -160,7 +160,7 @@ Azure ve výchozím nastavení umožňuje komunikaci mezi virtuálními počíta
 
     Ve sloupci se stavem pro síťové rozhraní **myvm2529** se zobrazuje červený vykřičník.
 
-6. Pokud chcete zjistit, proč se tento stav změnil, vyberte na předchozím obrázku položku 10.0.0.5. Monitorování připojení vám oznámí příčinu chyby komunikace: *Provoz se zablokoval kvůli následujícímu pravidlu skupiny zabezpečení sítě: UserRule_DenySshInbound*.
+6. Pokud chcete zjistit, proč se tento stav změnil, vyberte na předchozím obrázku položku 10.0.0.5. Monitorování připojení vás informuje, že je důvod selhání komunikace: *Provoz zablokovaný kvůli následující pravidlo skupiny zabezpečení sítě: UserRule_DenySshInbound*.
 
     Pokud jste nevěděli, že někdo implementoval pravidlo zabezpečení, které jste vytvořili v kroku 4, zjistili byste z monitorování připojení, že příčinou problému s komunikací je toto pravidlo. Komunikaci mezi virtuálními počítači můžete potom obnovit tak, že dané pravidlo změníte, přepíšete nebo odeberete.
 
@@ -172,7 +172,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili monitorovat připojení mezi dvěma virtuálními počítači. Zjistili jste, že pravidlo skupiny zabezpečení sítě zabránilo komunikaci s virtuálním počítačem. Pokud chcete získat informace o všech různých odpovědích, které monitorování připojení může vrátit, podívejte se na [typy odpovědí](network-watcher-connectivity-overview.md#response). Můžete monitorovat také připojení mezi virtuálním počítačem, plně kvalifikovaným názvem domény, identifikátorem URI nebo IP adresou.
 

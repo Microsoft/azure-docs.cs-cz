@@ -1,5 +1,5 @@
 ---
-title: Tok autorizačního kódu v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Tok autorizačního kódu – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Naučte se vytvářet webové aplikace pomocí Azure AD B2C a OpenID Connect ověřovací protokol.
 services: active-directory-b2c
 author: davidmu1
@@ -7,17 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f1f372cd8fc5ea1e64fbe195fd15790cd0535347
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4ee67f07965036a71151d7b6a5092b9a76d94999
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164023"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428682"
 ---
-# <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Tok kódu při autorizaci OAuth 2.0
+# <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Tok autorizačního kódu OAuth 2.0 v Azure Active Directory B2C
+
 Udělení autorizačního kódu OAuth 2.0 můžete použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí Azure Active Directory B2C (Azure AD B2C) provádění OAuth 2.0, můžete přidat registrace, přihlašování a identity management. Další úkoly do vašich mobilních a desktopových aplikací. Tento článek je nezávislým na jazyku. V následujícím článku zjistíte, jak posílat a přijímat zprávy HTTP bez použití jakékoli knihovny open-source.
 
 Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749). Můžete ho použít pro ověřování a autorizace ve většině [typy aplikací](active-directory-b2c-apps.md), včetně webových aplikací a nativně nainstalovaných aplikací. Tok autorizačního kódu OAuth 2.0 můžete použít k zabezpečenému získat přístupové tokeny a obnovovacích tokenů pro vaše aplikace, které je možné použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md).  Obnovovací token umožňuje klientovi získat přístup k nové (a aktualizace) tokeny po vypršení platnosti přístupového tokenu, obvykle po jedné hodině.
@@ -27,7 +28,7 @@ Tento článek se týká **veřejní klienti** tok autorizačního kódu OAuth 2
 > [!NOTE]
 > Chcete-li přidat správy identit do webové aplikace pomocí Azure AD B2C, použijte [OpenID Connect](active-directory-b2c-reference-oidc.md) místo OAuth 2.0.
 
-Azure AD B2C rozšiřuje standard, kterou toky OAuth 2.0 lepší než jednoduché ověřování a autorizace. Zavádí [parametr toku uživatele](active-directory-b2c-reference-policies.md). Toky uživatelů, můžete pomocí OAuth 2.0 přidáte uživatelské prostředí pro vaši aplikaci, jako například registrace, přihlašování a správy profilů. V tomto článku ukážeme, jak používat toky OAuth 2.0 a uživatel k implementaci každého z těchto možností v nativních aplikací. Můžeme také ukazují, jak získat přístupové tokeny pro přístup k webovým rozhraním API.
+Azure AD B2C rozšiřuje standard, kterou toky OAuth 2.0 lepší než jednoduché ověřování a autorizace. Zavádí [parametr toku uživatele](active-directory-b2c-reference-policies.md). Toky uživatelů, můžete pomocí OAuth 2.0 přidáte uživatelské prostředí pro vaši aplikaci, jako například registrace, přihlašování a správy profilů. Zprostředkovatele identity, které používají protokol OAuth 2.0 patří [Amazon](active-directory-b2c-setup-amzn-app.md), [Azure Active Directory](active-directory-b2c-setup-oidc-azure-active-directory.md), [Facebook](active-directory-b2c-setup-fb-app.md), [Githubu](active-directory-b2c-setup-github-app.md), [ Google](active-directory-b2c-setup-goog-app.md), a [LinkedIn](active-directory-b2c-setup-li-app.md).
 
 V žádosti o příklad HTTP v tomto článku používáme naše ukázka adresář Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Použijeme také toky naší ukázkové aplikace a uživatele. Požadavky můžete také vyzkoušet sami s využitím těchto hodnot, nebo je můžete nahradit vlastními hodnotami.
 Zjistěte, jak [získat vlastní toky adresáře, aplikace a uživatele Azure AD B2C](#use-your-own-azure-ad-b2c-directory).

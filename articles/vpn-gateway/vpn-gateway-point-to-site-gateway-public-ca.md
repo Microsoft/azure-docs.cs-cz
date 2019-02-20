@@ -5,20 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: b89ba054040229d9925b9dbbc64d27eed171613e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: e5a75826730219adc643d7c6ca300a38c8640006
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339868"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428359"
 ---
-# <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Přechod z podepsaného svým držitelem do veřejné certifikáty certifikační Autority pro P2S brány
+# <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Přechod na certifikát veřejné brány CA pro P2S
 
 Azure VPN Gateway už vydává certifikáty podepsané svým držitelem úrovně Azure pro své brány pro připojení P2S. Vystavené certifikáty jsou podepsané nyní podle veřejnou certifikační autoritu (CA). Nicméně některé starší brány může stále používat certifikáty podepsané svým držitelem. Tyto certifikáty podepsané svým držitelem se mu blížíte jejich data vypršení platnosti a musí být převeden do veřejné certifikáty certifikační Autority.
 
 Certifikáty v tomto kontextu jsou další úrovně Azure certifikát. Nejsou řetězy certifikátů, které používáte při vytváření vlastní kořenovými certifikáty podepsanými svým držitelem a klientských certifikátů pro ověřování. Tyto certifikáty zůstanou beze změny a dnů do vypršení platnosti dat je k tomu vygeneroval.
+
+>[!NOTE]
+> Certifikáty podepsané svým držitelem použit pro ověření klienta P2S neovlivní tato změna certifikátu úrovně Azure. Můžete pokračovat k vystavování a použití certifikátů podepsaných svým držitelem jako za normálních okolností.
+>
 
 Certifikát podepsaný svým držitelem pro bránu (vydané na pozadí Azure) dříve, potřeba aktualizovat každý 18 měsíců. Konfiguračních souborů klienta VPN pak musel být generovány a znovu nasadit na všechny klienty P2S. Přechod na veřejné certifikáty certifikační Autority se vyloučí toto omezení. Kromě přechodu pro certifikáty poskytuje tato změna také vylepšení platformy, lepší metriky a vylepšení stability.
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 022017015808d72f661f6764e8fa10fdc49e9f61
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 29b7893bbe813ece7cece9d1591dd574158f4482
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843317"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56409677"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -39,11 +39,11 @@ Jak vytvořit aplikaci, postupujte takto:
 
 ## <a name="add-msal-to-your-project"></a>Do projektu přidejte MSAL
 
-1. V sadě Visual Studio, vyberte **nástroje** > **Správce balíčků NuGet**> **Konzola správce balíčků**.
+1. V sadě Visual Studio vyberte **Nástroje**  >  **Správce balíčků NuGet** >  **Konzola správce balíčků**.
 2. V okně konzoly Správce balíčků vložte následující příkaz prostředí Azure PowerShell:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client
     ```
 
     > [!NOTE] 

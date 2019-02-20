@@ -4,15 +4,15 @@ description: Obsahuje informace o upgradech pro zařízení Azure Migrate Collec
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/19/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: 88077ac965b2abb69be145f29cbadca2ff1128d6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f29556c8f2a5aa727ce80632eaccf5e1ed6d7c1a
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836640"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415540"
 ---
 # <a name="collector-update-release-history"></a>Historie verzí aktualizace kolekce
 
@@ -24,7 +24,7 @@ Azure Migrate Collector je zjednodušené zařízení, která se používá ke z
 
 Ještě je k dispozici žádný upgrade pro průběžné zjišťování zařízení.
 
-## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>Jednorázové zjišťování (teď zastaralé): předchozí verze upgradu
+## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>Jednorázové zjišťování (teď zastaralé): Předchozí upgrade verze
 
 > [!NOTE]
 > Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure.
@@ -71,7 +71,7 @@ Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA znov
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    Příklad: **C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)**
+    Příklad: **C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)**
 3. Soubor zip zkopírujte do kolekcí zařízení virtuálního počítače.
 4. Klikněte pravým tlačítkem na soubor zip > **Extrahovat vše**.
 5. Klikněte pravým tlačítkem na **Setup.ps1** > **spustit s prostředím PowerShell**a postupujte podle pokynů k instalaci.

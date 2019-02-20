@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 3b56097f8805b4c6d95256ae1753daf5ded266fb
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8c575c6d34543cbd8f692c64b43cf738b4c22617
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888392"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415625"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží
 
@@ -302,12 +302,118 @@ Kategorie přímých metod sleduje zasílat jednotlivým příjemcům interakce 
             "category": "DirectMethods",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\", \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
             "location": "Resource location"
         }
     ]
 }
 ```
+
+#### <a name="distributed-tracing-preview"></a>Distribuované trasování (Preview)
+
+Kategorie distribuované trasování sleduje ID korelace pro zprávy, které zajišťují trasování hlavičku kontextu. Tyto protokoly povolit plně, musí aktualizovat kód na straně klienta podle [analýza a Diagnostika IoT aplikace začátku do konce pomocí distribuované trasování služby IoT Hub (preview)](iot-hub-distributed-tracing.md).
+
+Všimněte si, že `correlationId` a odpovídají [W3C trasování kontextu](https://github.com/w3c/trace-context) návrh, kde obsahuje `trace-id` a také `span-id`. 
+
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C protokoly (typu zařízení cloud)
+
+Při doručení zprávy obsahující vlastnosti platný trasování ve službě IoT Hub, IoT Hub zaznamenává tento protokol. 
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubD2C",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Receive message success",
+            "durationMs": "",
+            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+Tady `durationMs` se vypočte jako nemusí být služby IoT Hub hodiny synchronizované s hodinami zařízení, a proto může být zavádějící výpočet doby trvání. Doporučujeme zápis pomocí logiky časová razítka v `properties` oddílu zachycení špičky v latence typu zařízení cloud.
+
+| Vlastnost | Typ | Popis |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **messageSize** | Integer | Velikost zprávy typu zařízení cloud v bajtech |
+| **deviceId** | Řetězec alfanumerických znaků ASCII 7 bitů | Identita zařízení |
+| **callerLocalTimeUtc** | Časové razítko UTC | Čas vytvoření zprávy podle zařízení místní hodiny |
+| **calleeLocalTimeUtc** | Časové razítko UTC | Čas doručení zprávy ve službě IoT Hub gateway podle hodin na straně služby IoT Hub |
+
+##### <a name="iot-hub-ingress-logs"></a>Protokoly příchozího přenosu dat centra IoT
+
+IoT Hub zaznamenává tento protokol, pokud zpráva obsahující vlastnosti platný trasování zapíše do interní nebo integrované centra událostí.
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubIngress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Ingress message success",
+            "durationMs": "10",
+            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+V `properties` část, tento protokol obsahuje další informace o zprávě příchozího přenosu dat
+
+| Vlastnost | Typ | Popis |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **isRoutingEnabled** | String | True nebo false, označuje, zda je povoleno směrování zpráv ve službě IoT Hub |
+| **parentSpanId** | String | [Rozsah id](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, která by v tomto případě D2C trasování zpráv |
+
+##### <a name="iot-hub-egress-logs"></a>Protokoly služby IoT Hub odchozího přenosu dat
+
+IoT Hub záznamy to při protokolování [směrování](iot-hub-devguide-messages-d2c.md) je povolená a zapíše se do [koncový bod](iot-hub-devguide-endpoints.md). Pokud není povoleno směrování, IoT Hub nezaznamenává tento protokol.
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubEgress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-98ac3578922acd26-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Egress message success",
+            "durationMs": "10",
+            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+V `properties` část, tento protokol obsahuje další informace o zprávě příchozího přenosu dat
+
+| Vlastnost | Typ | Popis |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **endpointName** | String | Název směrování koncového bodu |
+| **endpointType** | String | Typ směrování koncového bodu |
+| **parentSpanId** | String | [Rozsah id](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, kterou v tomto případě by trasování zpráv služby IoT Hub příchozího přenosu dat |
+
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Čtení protokolů z Azure Event Hubs
 

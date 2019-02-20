@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508330"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417969"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
@@ -30,6 +30,8 @@ Připojení klasické virtuální sítě k virtuální síti správce prostředk
 Pokud ještě nemáte bránu virtuální sítě a nechcete, aby si ji vytvořit, můžete místo toho zvážit připojení vašich virtuálních sítí pomocí VNet Peering. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="before"></a>Než začnete
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Tento postup předpokládá, že jste již vytvořili obou virtuálních sítích. Pokud používáte v tomto článku jako cvičení a nemáte virtuální sítě, existují odkazy v kroky k jejich vytváření.
 * Ověřte, zda rozsahy adres pro virtuální sítě není překrývat mezi sebou, nebo se překrývají s žádným z rozsahů pro další připojení, které brány může být připojen k.
@@ -226,19 +228,19 @@ V následujícím postupu nakonfigurujte připojení z klasické virtuální sí
 Otevřete konzolu Powershellu se zvýšenými oprávněními a připojte se k účtu Azure. Po přihlášení se stáhnou nastavení svého účtu tak, aby byly k dispozici pro prostředí Azure PowerShell. Následující rutina vás vyzve k zadání přihlašovacích údajů pro váš účet Azure pro model nasazení Resource Manager:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Načtěte seznam předplatných Azure.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Pokud máte více než jedno předplatné, zadejte předplatné, pro kterou chcete použít.
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
 Přihlaste se dále používat klasické rutiny prostředí PowerShell (Správa služeb). Použijte následující příkaz pro přidání účtu Azure pro model nasazení classic:

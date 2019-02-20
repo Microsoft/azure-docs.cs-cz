@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657412"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430280"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků v procesu Hybrid Runbook Worker
 
 Není žádný rozdíl ve struktuře sady runbook, která spustí ve službě Azure Automation a sady runbook, která spustí v procesu Hybrid Runbook Worker. Sady Runbook, které můžete používat s jednotlivými pravděpodobně výrazně lišit. Tento rozdíl je, protože runbooky, které se zaměřují funkce Hybrid Runbook Worker obvykle správu prostředků v místním počítači, samotný nebo s prostředky v místním prostředí, kde je nasazen. Runbooky ve službě Azure Automation obvykle správu prostředků v cloudu Azure.
 
-Při vytváření sady runbook spouštět v procesu Hybrid Runbook Worker, upravíte a testovat sady runbook na počítači, který je hostitelem Hybrid worker. Hostitelský počítač má všechny moduly Powershellu a přístup k síti, které potřebujete ke správě a přístup k místním prostředkům. Jakmile sady runbook je testována na počítač hybridního pracovního procesu, ho můžete nahrát do prostředí Azure Automation, kde je k dispozici ke spuštění v procesu Hybrid worker. Je důležité vědět, který úlohy, ve kterých běží pod účtem místního systému pro Windows nebo zvláštní uživatelský účet **nxautomation** v Linuxu. Toto chování můžete zavést drobné rozdíly při autorizaci sad runbook pro Hybrid Runbook Worker. Tyto změny byste měli zkontrolovat při psaní vašich sadách runbook.
+Při vytváření sady runbook spouštět v procesu Hybrid Runbook Worker, upravíte a testovat sady runbook na počítači, který je hostitelem Hybrid worker. Hostitelský počítač má všechny moduly Powershellu a přístup k síti, které potřebujete ke správě a přístup k místním prostředkům. Jakmile sady runbook je testována na počítač hybridního pracovního procesu, ho můžete nahrát do prostředí Azure Automation, kde je k dispozici ke spuštění v procesu Hybrid worker. Je důležité vědět, který úlohy, ve kterých běží pod účtem místního systému pro Windows nebo zvláštní uživatelský účet `nxautomation` v Linuxu. Toto chování můžete zavést drobné rozdíly při autorizaci sad runbook pro Hybrid Runbook Worker. Tyto změny byste měli zkontrolovat při psaní vašich sadách runbook.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Spuštění runbooku v procesu Hybrid Runbook Worker
 
@@ -44,7 +44,7 @@ Runbooky, které běží v procesu Hybrid Runbook Worker nelze použít stejnou 
 
 ### <a name="runbook-authentication"></a>Ověřování Runbooků
 
-Ve výchozím nastavení, runbooky spuštěné v kontextu účtu místního systému pro Windows a zvláštní uživatelský účet **nxautomation** pro Linux v místním počítači, tedy musí zadat své vlastní ověřování k prostředkům, které přistupují k .
+Ve výchozím nastavení, runbooky spuštěné v kontextu účtu místního systému pro Windows a zvláštní uživatelský účet `nxautomation` pro Linux v místním počítači, tedy musí zadat své vlastní ověřování k prostředkům, které přistupují.
 
 Můžete použít [přihlašovacích údajů](automation-credentials.md) a [certifikát](automation-certificates.md) prostředky ve vašem runbooku pomocí rutiny, které umožňují zadat přihlašovací údaje, abyste je mohli ověřit vůči různým prostředkům. Následující příklad ukazuje část sady runbook, který restartuje počítač. Načte přihlašovací údaje z asset přihlašovacích údajů a název počítače z variabilní prostředek a potom pomocí rutiny Restart-Computer použije tyto hodnoty.
 
@@ -59,7 +59,7 @@ Můžete také použít [InlineScript](automation-powershell-workflow.md#inlines
 
 ### <a name="runas-account"></a>Účet Spustit jako
 
-Ve výchozím nastavení používá funkce Hybrid Runbook Worker místní systém pro Windows a zvláštní uživatelský účet **nxautomation** pro Linux ke spuštění sady runbook. Namísto toho, aby runbooky, které poskytují vlastní ověřování k místním prostředkům, můžete zadat **RunAs** účet pro skupinu hybridních pracovních procesů. Můžete zadat [asset přihlašovacích údajů](automation-credentials.md) , který má přístup k místním prostředkům, a všechny runbooky spuštěné pod tyto přihlašovací údaje při spuštění v procesu Hybrid Runbook Worker ve skupině.
+Ve výchozím nastavení používá funkce Hybrid Runbook Worker místní systém pro Windows a zvláštní uživatelský účet `nxautomation` pro Linux ke spuštění sady runbook. Namísto toho, aby runbooky, které poskytují vlastní ověřování k místním prostředkům, můžete zadat **RunAs** účet pro skupinu hybridních pracovních procesů. Můžete zadat [asset přihlašovacích údajů](automation-credentials.md) , který má přístup k místním prostředkům, a všechny runbooky spuštěné pod tyto přihlašovací údaje při spuštění v procesu Hybrid Runbook Worker ve skupině.
 
 Uživatelské jméno pro přihlašovací údaje, které musí být v jednom z následujících formátů:
 
@@ -247,7 +247,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Když sada runbook obsahuje podpis, musíte importovat do účtu Automation a publikovat s blok signatury. Informace o importování sad runbook najdete v tématu [import runbooku ze souboru do Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+Když sada runbook obsahuje podpis, musíte importovat do účtu Automation a publikovat s blok signatury. Informace o importování sad runbook najdete v tématu [import runbooku ze souboru do Azure Automation](manage-runbooks.md#import-a-runbook).
 
 ### <a name="linux-hybrid-runbook-worker"></a>Hybrid Runbook Worker Linuxu
 
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG vás provede kroky k vytvoření klíčů. Bude potřeba zadat název, e-mailovou adresu, čas vypršení platnosti, heslo a vyčkat, než dostatek entropie na počítači pro klíč, který chcete vygenerovat.
 
-Protože adresáři GPG byla vygenerována s příkazem sudo, musíte změnit její vlastník nxautomation. 
+Protože adresáři GPG byla vygenerována s příkazem sudo, budete muset změnit jejího vlastníka, aby `nxautomation`. 
 
 Spusťte následující příkaz, chcete-li změnit vlastníka.
 
@@ -289,7 +289,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Ověřte, že ověření podpisu je na
 
-Pokud na počítači se zakázalo ověřování podpisu, bude nutné ho zapnout. Spuštěním následujícího příkazu povolte ověření podpisu. Nahrazení `<LogAnalyticsworkspaceId>` s ID pracovního prostoru
+Pokud na počítači se zakázalo ověřování podpisu, bude nutné ho zapnout. Spuštěním následujícího příkazu povolte ověření podpisu. Nahrazení `<LogAnalyticsworkspaceId>` s vaším ID pracovního prostoru.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
@@ -300,7 +300,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 Po ověření podpisu je nakonfigurovaný, můžete k podepisování sady runbook následující příkaz:
 
 ```bash
-gpg –clear-sign <runbook name>
+gpg –-clear-sign <runbook name>
 ```
 
 Podepsané sady runbook bude mít název `<runbook name>.asc`.

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 2/8/2019
 ms.author: moderakh
-ms.openlocfilehash: 88fcfec903dac9d939d658e5d06a51ab8ff1aba9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979169"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416271"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -45,13 +45,12 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
-* Obecná dostupnost s přímým přístupem
+* Přímý režim připojení je nyní obecně Available(GA). Ukázku, která používá přímý režim připojení najdete v tématu [azure-cosmos DB java](https://github.com/Azure/azure-cosmosdb-java) úložiště GitHub.
 * Přidání podpory pro QueryMetrics.
-* Rozhraní API přijímá java.util.Collection, pro kterou pořadí je důležité potvrďte java.util.List změnit.
-  Nyní ConnectionPolicy#getPreferredLocations() JsonSerialization a PartitionKey(.) přijímají seznam.
+* Rozhraní API přijímá java.util.Collection, pro kterou pořadí je důležité potvrďte java.util.List změnit. Nyní ConnectionPolicy#getPreferredLocations() JsonSerialization a PartitionKey(.) přijímají seznam.
 
 ### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
-* Přidání podpory pro Direct.
+* Přidání podpory pro přímý režim připojení.
 * Rozhraní API přijímá java.util.Collection, pro kterou pořadí je důležité potvrďte java.util.List změnit.
   Nyní ConnectionPolicy#getPreferredLocations() JsonSerialization a PartitionKey(.) přijímají seznam.
 * Je opravená chyba relace pro dotazování dokumentů v režimu brány.

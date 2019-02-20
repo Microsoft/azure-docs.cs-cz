@@ -12,26 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/28/2018
+ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 55a1d16ce1617ecf7bc28c7c62de8557ceeea311
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: af3738849382317eeddf8bce3d2f87e38e0fb583
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412907"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427784"
 ---
 # <a name="set-up-a-capacity-pool"></a>Nastavení fondu kapacity
+
 Nastavení fondu kapacity umožňuje vytvářet v něm svazky.  
 
 ## <a name="before-you-begin"></a>Před zahájením 
+
 Musíte už mít vytvořený účet NetApp.   
 
 [Vytvoření účtu NetApp](azure-netapp-files-create-netapp-account.md)
 
 ## <a name="steps"></a>Kroky 
 
-1. Přejděte do okna pro správu pro váš účet NetApp a pak v navigačním podokně vyberte **Fondy kapacity**.
+1. Přejděte do okna pro správu pro váš účet NetApp a pak v navigačním podokně klikněte na **kapacity fondů**.  
+    
+    ![Přejít na kapacitu fondu](../media/azure-netapp-files/azure-netapp-files-navigate-to-capacity-pool.png)
 
 2. Kliknutím na **+ Přidat fondy** vytvořte nový fond kapacity.   
     Zobrazí se okno Nový fond kapacity.
@@ -43,18 +47,18 @@ Musíte už mít vytvořený účet NetApp.
 
   * **Úroveň služeb**   
     Toto pole ukazuje cílový výkon fondu kapacity.  
-    V současné době je k dispozici jenom úroveň služeb Premium. 
+    Zadejte úroveň služby pro kapacitu fondu: [**Premium** ](azure-netapp-files-service-levels.md#Premium) nebo [ **standardní**](azure-netapp-files-service-levels.md#Standard).
 
-  *  **Velikost**     
-      Zadejte velikost fondu kapacity, kterou kupujete.        
-      Minimální velikost fondu kapacity je 4 TiB. Můžete vytvořit fond s velikostí, která je násobkem 4 TiB.   
+  * **Velikost**     
+    Zadejte velikost fondu kapacity, kterou kupujete.        
+    Minimální velikost fondu kapacity je 4 TiB. Můžete vytvořit fond s velikostí, která je násobkem 4 TiB.   
       
-      ![Nový fond kapacity](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+    ![Nový fond kapacity](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. Klikněte na **OK**.
 
 ## <a name="next-steps"></a>Další postup 
 
-[Delegát podsítě do služby soubory Azure NetApp](azure-netapp-files-delegate-subnet.md)
-
-
+- [Úrovně služeb pro soubory Azure NetApp](azure-netapp-files-service-levels.md)
+- Najdete v článku [souborů NetApp Azure stránce s cenami](https://azure.microsoft.com/pricing/details/storage/netapp/) za cenu úrovní různých služeb
+- [Delegát podsítě do služby soubory Azure NetApp](azure-netapp-files-delegate-subnet.md)

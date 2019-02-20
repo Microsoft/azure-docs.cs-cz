@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 32c47233946dacf4e80a9ff3ba25388e1231d7c9
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301056"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415506"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Storage Exploreru
 
@@ -61,6 +61,8 @@ Prázdný znak v dialogových oknech jsou často způsobeny služby AD FS s dota
 3. Vyberte prostředí, jaké chcete přihlásit k.
 4. Klikněte na tlačítko "Přihlásit" tlačítku.
 5. Postupujte podle pokynů na další panel.
+
+Poznámka: Tato funkce je aktuálně k dispozici pouze v 1.7.0 ve verzi Preview.
 
 Pokud se potíže s přihlášením účet chcete použít, protože váš výchozí prohlížeč se už přihlásili do jiného účtu, že můžete:
 1. Ručně zkopírujte odkaz a kód do privátní relace prohlížeče.

@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e53d77c4faea5b9461395a0098261866bdf6252f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156898"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430420"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse s využitím webu Azure portal
 
@@ -51,7 +51,7 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění
    
      ![Monitorování](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL DATA WAREHOUSE POUZE**: Klikněte na tlačítko **využití DWU** grafu. Vyberte **zobrazit upozornění classic**
+   - **SQL DW ONLY**: Klikněte na tlačítko **využití DWU** grafu. Vyberte **zobrazit upozornění classic**
 
 3. Vyberte **přidat upozornění metriky (klasické)** tlačítko a přejít k vyplnění polí.
    
@@ -106,7 +106,6 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 ||||||               
 | SQL Data Warehouse | cpu_percent | Procento CPU | Průměr | 10 minut |
 | SQL Data Warehouse | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
-| SQL Data Warehouse | úložiště | Celkovou velikost databáze | Maximum | 10 minut |
 | SQL Data Warehouse | connection_successful | Úspěšná připojení | Celkem | 10 minut |
 | SQL Data Warehouse | connection_failed | Chyba připojení | Celkem | 10 minut |
 | SQL Data Warehouse | blocked_by_firewall | Blokovaná bránou Firewall | Celkem | 10 minut |

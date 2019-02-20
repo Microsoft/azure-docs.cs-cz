@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660909"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415727"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -95,6 +95,10 @@ Ujistěte se, že všechny [požadované porty](https://docs.microsoft.com/previ
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>Vytvoření clusteru HDInsight s ESP
 
 Po nastavení v předchozích krocích správně, dalším krokem je vytvoření clusteru HDInsight s ESP povolena. Při vytváření clusteru služby HDInsight můžete povolit balíčkem Enterprise Security Package **vlastní** kartu. Pokud chcete použít šablonu Azure Resource Manageru pro nasazení, použijte portál jednou a stáhněte předem vyplněných šablon pro budoucí využití bude poslední stránka "Přehled".
+
+> [!NOTE]  
+> Prvních šest znaků ESP názvy clusterů musí být jedinečný ve vašem prostředí. Například pokud máte více clusterů ESP v různých virtuálních sítích, měli byste zvolit pojmenování convension, která zajistí, že prvních šest znaků pro názvy clusteru musí být jedinečné.
+
 
 ![Ověření zabezpečení domény balíčku Azure HDInsight Enterprise](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 

@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/29/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487230"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429260"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -181,6 +181,8 @@ Následující tabulka uvádí omezení sledované položky na počítač pro ř
 |Služby|250||
 |Démon|250||
 
+Průměrné využití dat Log Analytics pro počítače s pomocí řešení Change Tracking a Inventory je přibližně 40MB za měsíc. Tato hodnota je pouze přibližný a může se změnit podle vašeho prostředí. Doporučuje se, že monitorovat vaše prostředí a přesně na používání, které máte.
+
 ### <a name="windows-service-tracking"></a>Sledování služby Windows
 
 Frekvence shromažďování výchozí služby Windows je 30 minut. Pokud chcete nakonfigurovat četnost, přejděte na **řešení Change Tracking**. V části **upravit nastavení** na **služby Windows** kartu, je ovládací prvek posuvník, který vám umožní změnit četnost shromažďování dat služby Windows z tak rychle jako za 10 sekund k až 30 minut. Přesuňte posuvník, kterou chcete četnost a se automaticky uloží.
@@ -257,7 +259,7 @@ Kliknutím na změnit nebo událostí zobrazí podrobné informace o této změn
 
 ![Obrázek řešení change tracking podrobnosti](./media/automation-change-tracking/change-tracking-details.png)
 
-## <a name="search-logs"></a>Hledání protokolů
+## <a name="search-logs"></a>Hledat protokoly
 
 Kromě podrobností, které jsou k dispozici na portálu můžete udělat protokoly hledání. S **řešení Change Tracking** otevřít, klikněte na stránce **Log Analytics**, tím se otevře **prohledávání protokolů** stránky.
 

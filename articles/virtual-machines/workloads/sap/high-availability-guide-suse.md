@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 472041aaef0817aae278fed6ef632aadda3466a3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f65a6a0f9564eafda36b8a8f4988e064e39a3bb1
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119029"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430603"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -44,6 +44,7 @@ ms.locfileid: "54119029"
 
 [suse-ha-guide]:https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
+[suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -76,6 +77,7 @@ Přečtěte si následující poznámky SAP a Paper nejprve
 * [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide]
 * [SUSE SAP HA příručky s osvědčenými postupy] [ suse-ha-guide] vodítka obsahovat všechny požadované informace k nastavení Netweaver HA a SAP HANA System Replication místní. Pomocí těchto návodů jako obecné směrného plánu. Poskytují mnohem podrobnější informace.
+* [Zpráva k vydání verze s aktualizací SP3 SUSE vysokou dostupnost rozšíření 12][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Přehled
 
@@ -94,15 +96,15 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
 * Port testu
   * Port 620**&lt;nr&gt;**
 * Pravidla Vyrovnávání zatížení
-  * 32**&lt;nr&gt;**  TCP
-  * 36**&lt;nr&gt;**  TCP
-  * 39**&lt;nr&gt;**  TCP
-  * 81**&lt;nr&gt;**  TCP
+  * 32**&lt;nr&gt;** TCP
+  * 36**&lt;nr&gt;** TCP
+  * 39**&lt;nr&gt;** TCP
+  * 81**&lt;nr&gt;** TCP
   * 5**&lt;nr&gt;** 13 TCP
   * 5**&lt;nr&gt;** 14 TCP
   * 5**&lt;nr&gt;** 16 TCP
 
-### <a name="ers"></a>LAJÍCÍCH
+### <a name="ers"></a>ERS
 
 * Konfiguraci front-endu
   * IP adresa 10.0.0.8
@@ -111,7 +113,7 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
 * Port testu
   * Port 621**&lt;nr&gt;**
 * Pravidla Vyrovnávání zatížení
-  * 33**&lt;nr&gt;**  TCP
+  * 33**&lt;nr&gt;** TCP
   * 5**&lt;nr&gt;** 13 TCP
   * 5**&lt;nr&gt;** 14 TCP
   * 5**&lt;nr&gt;** 16 TCP
@@ -386,7 +388,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    #      vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-0</b>
    </code></pre>
 
-1. **[1]**  Instalace SAP NetWeaver ASCS  
+1. **[1]** Install SAP NetWeaver ASCS  
 
    Instalace SAP NetWeaver ASCS jako uživatel root na prvním uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>nw1 ascs</b>, <b>10.0.0.7</b> a instance číslo, které jste použili pro test paměti nástroje pro vyrovnávání zatížení, například <b>00</b>.
 
@@ -445,7 +447,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    #      vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-1</b>
    </code></pre>
 
-1. **[2]**  Instalace SAP NetWeaver Lajících
+1. **[2]** Install SAP NetWeaver ERS
 
    Instalace SAP NetWeaver Lajících jako uživatel root na druhém uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP konfigurace front-endu nástroje pro vyrovnávání zatížení pro Lajících, například <b>nw1 aers</b>, <b>10.0.0.8</b> a instance číslo, které jste použili pro test paměti nástroje pro vyrovnávání zatížení, například <b>02</b>.
 
@@ -819,7 +821,7 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-1. HAFailoverToNode testu
+1. Test HAFailoverToNode
 
    Stav prostředku před spuštěním testu:
 

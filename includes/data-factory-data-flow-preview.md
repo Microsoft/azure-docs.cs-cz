@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 02/11/2019
 ms.author: kromerm
-ms.openlocfilehash: af74917ebfbea5f65f2e889fbf92c4cb88a35adf
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a47b4ad88bdf8648ac2275ad63a5be418f976bb0
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56277860"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56409661"
 ---
 > [!NOTE] 
-> Mapování toku dat je nová funkce služby Azure Data Factory. Je aktuálně ve verzi public preview a není v souladu s předpisy zákazníků Azure SLA.
+> Mapování toku dat je nová funkce služby Azure Data Factory. Aktuálně je v omezené veřejné verzi preview a není v souladu s předpisy zákazníků Azure SLA.

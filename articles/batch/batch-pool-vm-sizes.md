@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185984"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417138"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Výběr velikosti virtuálního počítače pro výpočetní uzly ve fondu služby Azure Batch
 
@@ -44,14 +44,16 @@ Fondy služby batch v konfiguraci virtuálního počítače podporují všechny 
 | B-Series | Vše |
 | Řada DC | Vše |
 | Extrémní optimalizované z hlediska paměti | Vše |
-| Řada HB<sup>1</sup> | Vše |
-| Hybridní připojení řady<sup>1</sup> | Vše |
+| Řada HB<sup>1,2</sup> | Vše |
+| Hybridní připojení řady<sup>1,2</sup> | Vše |
 | Řada Lsv2 | Vše |
-| NDv2-series<sup>1</sup> | Vše |
-| NVv2-Series | Vše |
+| NDv2-series<sup>1,2</sup> | Vše |
+| NVv2-series<sup>1</sup> | Vše |
 | SAP HANA | Vše |
 
-<sup>1</sup> mohou být využívána účtů Batch v režimu předplatného uživatele, musí mít základní kvótu nastavenou režimu předplatného uživatele účtu Batch. Zobrazit [konfigurace pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) Další informace.
+
+<sup>1</sup> plánujeme přidat podporu.  
+<sup>2</sup> mohou být využívána účtů Batch v režimu předplatného uživatele, musí mít základní kvótu nastavenou režimu předplatného uživatele účtu Batch. Zobrazit [konfigurace pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) Další informace.
 
 Tyto velikosti virtuálních počítačů jsou podporovány pouze pro uzly s nízkou prioritou:
 

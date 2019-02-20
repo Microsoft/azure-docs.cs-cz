@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3c6485406c67bf84b9e0fdfb9f4683abe5062d6c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444046"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418105"
 ---
 Po vytvoření certifikátu podepsaného svým držitelem exportujte souboru veřejného klíče .cer kořenového certifikátu (ne privátní klíč). Později tento soubor odešlete do Azure. Následující kroky vám pomůžou exportovat soubor .cer pro váš certifikát podepsaný svým držitelem:
 
-1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte kořenový certifikát podepsaný svým držitelem, obvykle v Certificates - Current User\Personal\Certificates, a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud nemůžete najít certifikát v části Current User\Personal\Certificates je možné otevřít Správce certifikátů certifikátů místního počítače (název bude "Certifikáty – místní počítač" jako rozdíl od "Certifikáty – aktuální uživatel"). Chcete-li otevřít Správce certifikátů v aktuálním oboru uživatele ji spustit z stejné prostředí PowerShell, které certifikáty byly vytvořeny tak, že zadáte ```certmgr```.
+1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte kořenový certifikát podepsaný svým držitelem, obvykle v Certificates - Current User\Personal\Certificates, a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud nemůžete najít certifikát v části Current User\Personal\Certificates, pravděpodobně jste omylem otevřeli "Certifikáty – místního počítače", spíše než "Certifikáty – aktuální uživatel"). Pokud chcete otevřít Správce certifikátů v aktuálním oboru uživatele pomocí Powershellu, zadáte *certmgr* v okně konzoly.
 
    ![Export](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. V průvodci klikněte na **Další**.

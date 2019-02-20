@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d4d370e6b76fcfc502366642842bfeb923a13991
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 188f70d17531a3a7da12444ce5f1c97385ea33bc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38732670"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418037"
 ---
 Před zahájením této konfigurace, musíte se přihlásit ke svému účtu Azure. Rutina vás vyzve k zadání přihlašovací údaje ke svému účtu Azure. Po přihlášení se stáhne nastavení účtu, takže jsou k dispozici pro prostředí Azure PowerShell. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../articles/powershell-azure-resource-manager.md).
 
 Pro přihlášení, otevřete konzolu Powershellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Pokud máte více předplatných Azure, zkontrolujte předplatná pro daný účet.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Určete předplatné, které chcete použít.
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
  ```

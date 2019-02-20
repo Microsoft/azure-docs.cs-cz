@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 20f50e286e30e32f066fe3d214bfc4c1a155776e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083916"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428773"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí webu Azure portal
 
@@ -53,19 +53,20 @@ Existuje pět kroků pro vytvoření nasazení. V následujících částech se 
 ### <a name="step-1-name-and-label"></a>Krok 1: Název a popisek
 
 1. Zadejte jedinečný název, který je malá písmena až 128 vašeho nasazení. Vyhněte se mezery a následující neplatné znaky: `& ^ [ ] { } \ | " < > /`.
-1. Přidejte popisky pro sledování vašich nasazení. Popisky jsou **název**, **hodnotu** dvojice, které popisují vaše nasazení. Například `HostPlatform, Linux` nebo `Version, 3.0.1`.
+1. Popisky můžete přidat jako páry klíč hodnota pro sledování vašich nasazení. Například **HostPlatform** a **Linux**, nebo **verze** a **3.0.1**.
 1. Vyberte **Další** přejděte ke kroku 2. 
 
-### <a name="step-2-add-modules-optional"></a>Krok 2: Přidání modulů (volitelné)
+### <a name="step-2-add-modules-optional"></a>Krok 2: Přidat moduly (volitelné)
 
-Existují dva typy modulů, které přidáte do nasazení. První je modul na základě služby Azure, jako je účet úložiště nebo Stream Analytics. Druhá je modul na základě vlastního kódu. Můžete přidat více modulů jednoho z těchto typů nasazení. 
+Existují dva typy modulů, které přidáte do nasazení. První je modul založené na službě Azure, jako je účet úložiště nebo Stream Analytics. Druhým je modulu pomocí vlastního kódu. Můžete přidat více modulů jednoho z těchto typů nasazení. 
 
 Pokud vytvoříte nasazení bez modulů, odebere všechny moduly, které aktuální ze zařízení. 
 
 >[!NOTE]
->Azure Machine Learning a Azure Functions nasazení automatizovaných služeb Azure zatím nepodporují. Pomocí nasazení vlastního modulu ručně přidat do vašeho nasazení těchto služeb. 
+>Služba Azure Functions nasazení automatizovaných služeb Azure zatím nepodporuje. Pomocí nasazení vlastního modulu pro ruční přidání služby do vašeho nasazení. 
 
 Přidat modul z Azure Stream Analytics, postupujte podle těchto kroků:
+
 1. V **moduly nasazení** části stránky klikněte na tlačítko **přidat**.
 1. Vyberte **modulu Azure Stream Analytics**.
 1. Zvolte vaši **předplatné** z rozevírací nabídky.
@@ -73,7 +74,8 @@ Přidat modul z Azure Stream Analytics, postupujte podle těchto kroků:
 1. Vyberte **Uložit** přidáte modul pro nasazení. 
 
 Chcete-li přidat vlastní kód jako modul, nebo chcete-li ručně přidat modul služby Azure, postupujte takto:
-1. V **nastavení registru** části stránky, zadejte názvy a přihlašovací údaje pro všechny privátní container registry, které obsahují bitové kopie modulu pro toto nasazení. Edge Agent Chyba 500 oznámí, pokud nemůže najít přihlašovací údaje registru kontejner pro image dockeru.
+
+1. V **nastavení registru kontejnerů** části stránky, zadejte názvy a přihlašovací údaje pro všechny privátní container registry, které obsahují bitové kopie modulu pro toto nasazení. Edge Agent Chyba 500 oznámí, pokud nemůže najít přihlašovací údaje registru kontejneru pro image Dockeru.
 1. V **moduly nasazení** části stránky klikněte na tlačítko **přidat**.
 1. Vyberte **modul IoT Edge**.
 1. Zadejte modul **název**.
@@ -87,20 +89,34 @@ Chcete-li přidat vlastní kód jako modul, nebo chcete-li ručně přidat modul
 1. Pomocí rozevírací nabídky vyberte **požadovaného stavu** pro modul. Zvolte jednu z následujících možností:
    * **Spuštění** – Toto je výchozí možnost. V modulu začne okamžitě po nasazení spustí.
    * **Zastavit** – po nasazení, modul bude zůstat nečinné, dokud se volá při začít tím, že vy nebo jiný modul.
-1. Vyberte **povolit** Pokud chcete přidat všechny značky nebo požadované vlastnosti dvojčete modulu. 
+1. Vyberte **požadované vlastnosti dvojčete modulu sady** Pokud chcete přidat značky nebo další vlastnosti do dvojčete modulu.
 1. Zadejte **proměnné prostředí** pro tento modul. Proměnné prostředí obsahují informace dodatek k usnadnění procesu konfigurace modulu.
 1. Vyberte **Uložit** přidáte modul pro nasazení. 
 
 Jakmile budete mít všechny moduly pro nasazení nakonfigurované, vyberte **Další** přejděte ke kroku 3.
 
-### <a name="step-3-specify-routes-optional"></a>Krok 3: Určení tras (volitelné)
+### <a name="step-3-specify-routes-optional"></a>Krok 3: Zadejte trasy (volitelné)
 
 Trasy definovat, jak moduly navzájem komunikují v rámci nasazení. Ve výchozím nastavení průvodce umožňuje volat trasu **trasy** a definovaná jako **FROM /\* do $upstream**, což znamená, že všechny zprávy výstupu tak všechny moduly, které se odesílají do služby IoT hub.  
 
 Přidat nebo aktualizovat trasy s informacemi z [trasy deklarovat](module-composition.md#declare-routes)a pak vyberte **Další** pokračujte k části revize.
 
+### <a name="step-4-specify-metrics-optional"></a>Krok 4: Zadejte metriky (volitelné)
 
-### <a name="step-4-target-devices"></a>Krok 4: Cílová zařízení
+Metriky poskytují souhrnný počet různé stavy, které zařízení může nahlásit v důsledku použití obsah konfigurace.
+
+1. Zadejte název pro **název metriky**.
+
+1. Zadejte dotaz na **metrika kritéria**. Dotaz je založen na dvojče zařízení IoT Edge hub [ohlášené vlastnosti](module-edgeagent-edgehub.md#edgehub-reported-properties). Metrika představuje počet řádků vrácených dotazem.
+
+Příklad:
+
+```sql
+SELECT deviceId FROM devices
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
+
+### <a name="step-5-target-devices"></a>Krok 5: Cílová zařízení
 
 Můžete cílit na konkrétní zařízení, které by měl obdrží toto nasazení vlastnost značek z vašich zařízení. 
 
@@ -110,9 +126,32 @@ Protože více nasazení mohou být zaměřeny na stejném zařízení, je třeb
 1. Zadejte **cílová podmínka** k určení zařízení, která budou cílem s tímto nasazením. Podmínka je založen na značky dvojčat zařízení nebo ohlášené vlastnosti dvojčete zařízení a by měl odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`. 
 1. Vyberte **Další** přejít k poslednímu kroku.
 
-### <a name="step-5-review-template"></a>Krok 5: Zkontrolujte šablony
+### <a name="step-6-review-deployment"></a>Krok 6: Zkontrolovat nasazení
 
 Zkontrolujte informace o nasazení a pak vyberte **odeslat**.
+
+## <a name="deploy-modules-from-azure-marketplace"></a>Nasadit moduly z Azure Marketplace
+
+Azure Marketplace je online tržiště aplikací a služeb, kde mohou procházet širokou škálu podnikových aplikací a řešení, které jsou certifikované a optimalizované pro spouštění v Azure, včetně [moduly IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Azure Marketplace lze rovněž přistupovat prostřednictvím webu Azure portal v části **vytvořit prostředek**.
+
+Modul IoT Edge můžete nainstalovat z webu Azure Marketplace nebo na webu Azure portal:
+
+1. Vyhledejte modul a zahájíte proces nasazení.
+
+   * Azure portal: Vyhledejte modul a vyberte **vytvořit**.
+
+   * Azure Marketplace:
+
+     1. Vyhledejte modul a vyberte **získat**.
+     1. Potvrdit poskytovatele podmínky použití a ochrana osobních údajů zásady tak, že vyberete **pokračovat**.
+
+1. Vyberte předplatné a IoT Hub, ke kterému je připojený cílové zařízení.
+
+1. Zvolte **nasazení ve velkém měřítku**.
+
+1. Zvolte, jestli se má přidat modul do nové nasazení nebo klonovat existující nasazení; Pokud se klonování, vyberte ze seznamu existující nasazení.
+
+1. Vyberte **vytvořit** a pokračujte v procesu vytváření nasazení ve velkém měřítku. Budete moct zadat stejné informace, stejně jako u libovolného nasazení.
 
 ## <a name="monitor-a-deployment"></a>Monitorování nasazení
 
@@ -130,15 +169,17 @@ Chcete-li zobrazit podrobnosti o nasazení a monitorování zařízení, na kter
    * **Priorita** -priority číslo přidružené k nasazení.
    * **Systémové metriky** - **cílové** určuje počet dvojčat zařízení ve službě IoT Hub, která splňují cílovou podmínku a **použito** určuje počet zařízení, která mají použili obsahu nasazení do jejich dvojčaty modulů ve službě IoT Hub. 
    * **Metriky zařízení** – počet hraničních zařízení v nasazení generování sestav úspěchu nebo chyby z modulu runtime IoT Edge klienta.
+   * **Vlastní metriky** – počet hraničních zařízení v nasazení generování sestav dat pro všechny metriky, které jste definovali pro nasazení.
    * **Čas vytvoření** – časové razítko od vytvoření nasazení. Tímto časovým razítkem se používá pro přerušení vazby, pokud mají dvě nasazení stejnou prioritu. 
-2. Vyberte nasazení, které chcete monitorovat.  
-3. Zkontrolujte podrobnosti o nasazení. Chcete-li zkontrolovat podrobnosti nasazení můžete použít karty.
+1. Vyberte nasazení, které chcete monitorovat.  
+1. Zkontrolujte podrobnosti o nasazení. Chcete-li zkontrolovat podrobnosti nasazení můžete použít karty.
 
 ## <a name="modify-a-deployment"></a>Upravit nasazení
 
 Při úpravě nasazení změny se okamžitě replikují do všechna cílová zařízení. 
 
 Pokud aktualizujete cílovou podmínku, dojde k následující aktualizace:
+
 * Pokud nesplnilo původní cílovou podmínku zařízení, ale splňuje novou cílovou podmínku a toto nasazení je nejvyšší prioritou pro dané zařízení, se použije toto nasazení do zařízení. 
 * Pokud zařízení aktuálně s tímto nasazením již splňuje cílovou podmínku, dojde k odinstalování tohoto nasazení a provede na další nejvyšší prioritu nasazení. 
 * Pokud se zařízení aktuálně s tímto nasazením již splňuje cílovou podmínku a nesplňuje cílová podmínka všechna nasazení, pak nedošlo k žádné změně na zařízení. Zařízení pokračuje její aktuální moduly v jejich aktuální stav, ale jako součást tohoto nasazení už nespravuje. Jakmile splňuje cílovou podmínku jakékoli jiné nasazení, dojde k odinstalování tohoto nasazení a provede na novou. 
@@ -153,9 +194,10 @@ Pokud chcete upravit nasazení, postupujte následovně:
 
 1. Vyberte nasazení, které chcete upravit. 
 1. Proveďte aktualizace na následující pole: 
-   * Cílová podmínka 
-   * Popisky 
-   * Priorita 
+   * Cílová podmínka
+   * Metriky – můžete upravit nebo odstranit metriky, které jste definovali, nebo přidat nové.
+   * Popisky
+   * Priorita
 1. Vyberte **Uložit**.
 1. Postupujte podle kroků v [monitorování nasazení](#monitor-a-deployment) sledovat změny zavádět. 
 

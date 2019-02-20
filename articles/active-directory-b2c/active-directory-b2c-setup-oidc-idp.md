@@ -1,5 +1,5 @@
 ---
-title: Nastavení registrace a přihlášení s OpenID Connect pomocí služby Azure Active Directory B2C | Dokumentace Microsoftu
+title: Nastavení registrace a přihlášení s OpenID Connect – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Nastavení registrace a přihlášení s OpenID Connect pomocí služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c609ac5ebb6c0516472f00a5625a26459f49d131
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: de0c866889f15f096bea26915f58cd4e268dfed3
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171690"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428751"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s OpenID Connect pomocí služby Azure Active Directory B2C
 
@@ -23,8 +23,7 @@ ms.locfileid: "55171690"
 > Tato funkce je ve verzi Public Preview. Nepoužívejte tuto funkci v produkčním prostředí.
 
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele. Většina poskytovatelů identit, které používají tento protokol vyžadoval, jako například [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní poskytovatele OpenID Connect identity do vašich toků uživatelů.
-
+[OpenID Connect](active-directory-b2c-reference-oidc.md) je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele. Většina poskytovatelů identit, které používají tento protokol vyžadoval, jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní poskytovatele OpenID Connect identity do vašich toků uživatelů.
 
 ## <a name="add-the-identity-provider"></a>Přidat zprostředkovatele identity
 

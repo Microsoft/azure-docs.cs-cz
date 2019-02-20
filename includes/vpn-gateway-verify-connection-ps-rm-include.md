@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 267234cb9ecea1dc097f13739bf98ee11206ad06
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444036"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418020"
 ---
-Můžete ověřit, zda bylo připojení úspěšně vytvořeno, spuštěním rutiny Get-AzureRmVirtualNetworkGatewayConnection s přepínačem -Debug nebo bez něj. 
+Můžete ověřit, že vaše připojení bylo úspěšné, že pomocí rutiny "Get-AzVirtualNetworkGatewayConnection", s nebo bez něj "-Debug". 
 
 1. Použijte následující příklad rutiny a nakonfigurujte hodnoty tak, aby odpovídaly vašemu prostředí. Po zobrazení výzvy vyberte možnost „A“, abyste spustili „vše“. V příkladu odkazuje -Name na název připojení, které chcete testovat.
 
    ```azurepowershell-interactive
-   Get-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
+   Get-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
 2. Po dokončení zpracování rutiny si prohlédněte hodnoty. Ve výše uvedeném příkladu se zobrazí stav připojení Připojeno a vy vidíte příchozí a odchozí bajty.
    

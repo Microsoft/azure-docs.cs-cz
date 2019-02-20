@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: c161a2fd8d1be670435d2b1a749749cea7d82bcf
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268437"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416645"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů protokolu Azure Monitor
 Tento článek obsahuje příklady různých [dotazy](log-query-overview.md) pomocí [Kusto dotazovací jazyk](/azure/kusto/query/) načíst různé typy dat protokolu z Azure monitoru. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>Hledat události související s unmarshaling
-Hledat tabulky **události** a **SecurityEvents** pro záznamů tento údaj _unmashaling_.
+Hledat tabulky **události** a **SecurityEvents** pro záznamů tento údaj _unmarshaling_.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"

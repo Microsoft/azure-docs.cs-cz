@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: 05432097ee80a01458a1f2e95c48123bf7f05d57
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 43cb73784806358bccb9758be2923d3df5e9badd
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309569"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414877"
 ---
 # <a name="how-to-implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Jak implementovat vlastní synchronizaci pro optimalizaci pro vyšší dostupnost a výkon
 
-Azure Cosmos DB nabízí pět jasně definovaných úrovní konzistence můžete zvolit z vyvážit kompromis mezi konzistencí, výkonu a dostupnosti. Silná konzistence zajišťuje synchronní replikace dat a odolnosti uchovávaných v každé oblasti, kde je k dispozici účet Azure Cosmos. Tato konfigurace ale poskytuje nejvyšší úroveň odolnosti je za cenu výkonu a dostupnosti. Pokud aplikace chce, aby se ovládací prvek nebo zmírnit delší trvanlivost dat podle potřeby aplikace bez narušení dostupnosti, můžete použít vlastní synchronizace v aplikační vrstvě k dosažení požadované úrovně odolnosti.
+Azure Cosmos DB nabízí pět jasně definovaných úrovní konzistence můžete zvolit z vyvážit kompromis mezi konzistencí, výkonu a dostupnosti. Silná konzistence zajišťuje data synchronně replikuje a trvale uchovávaných v každé oblasti, kde je k dispozici účet Azure Cosmos. Tato konfigurace poskytuje nejvyšší úroveň odolnosti, dodává za cenu výkonu a dostupnosti. Pokud aplikace chce, aby se ovládací prvek nebo zmírnit delší trvanlivost dat podle potřeby aplikace bez narušení dostupnosti, můžete použít vlastní synchronizace v aplikační vrstvě k dosažení požadované úrovně odolnosti.
 
 Následující diagram znázorňuje vizuálně vlastní synchronizační model.
 

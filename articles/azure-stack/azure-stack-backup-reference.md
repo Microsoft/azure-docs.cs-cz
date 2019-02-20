@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: ac52e3b824efdbd5277982a7f1939e8aa0deeeb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201784"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416713"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odkaz na službu Backup infrastruktury
 
@@ -108,6 +108,23 @@ Infrastruktura zálohování řadič bude zálohovat data na vyžádání. Dopor
 > [!Note]  
 > Žádné příchozí porty musí být otevřen.
 
+### <a name="encryption-requirements"></a>Požadavky na šifrování
+
+Od 1901 se zálohovací služby infrastruktury budete používat certifikát s veřejným klíčem (. CER) k šifrování zálohovaných dat a certifikát s privátním klíčem (. PFX) k dešifrování záloh dat během obnovení cloudu.   
+ - Certifikát se používá pro přenos klíče a se používá k navázání zabezpečené ověřené komunikaci. Z tohoto důvodu může být certifikát certifikát podepsaný svým držitelem. Azure Stack není potřeba ověřte kořenové nebo vztah důvěryhodnosti pro tento certifikát, aby nebylo třeba externí přístup k Internetu.
+ 
+Certifikát podepsaný svým držitelem je k dispozici ve dvou částech, jednu s veřejným klíčem a jednu s privátním klíčem:
+ - Šifrování zálohovaných dat: Certifikát s veřejným klíčem (exportovat do. Soubor CER) se používá k šifrování zálohovaných dat
+ - Dešifrovat data záloh: Certifikát s privátním klíčem (exportovat do. Soubor PFX) slouží k dekódování dat záloh
+
+Certifikát s veřejným klíčem (. Interní tajných kódů otočení nespravuje CER). Obměna certifikátu, budete muset vytvořit nový certifikát podepsaný svým držitelem a aktualizovat nastavení zálohování pomocí nového souboru (. CER).  
+ - Všechny existující zálohy zůstanou zašifrována pomocí předchozí veřejného klíče. Nové zálohování použije nový veřejný klíč. 
+ 
+Certifikát používaný při obnovení cloudu s privátním klíčem (. PFX) není z bezpečnostních důvodů trvalý ve službě Azure Stack. Tento soubor bude potřeba explicitně zadat při obnovení cloudu.  
+
+**Zpětně režim kompatibility** od 1901 se šifrovací klíč podpory je zastaralá a bude v budoucí verzi odebrána. Pokud jste aktualizovali z 1811 pomocí služby backup už povolená pomocí šifrovacího klíče, Azure Stack bude nadále používat šifrovací klíč. Režim kompatibility zpětně bude podporována po dobu aspoň 3 verze. Po uplynutí této doby se bude vyžadovat certifikát. 
+ * Aktualizace z šifrovací klíč k certifikátu je jednosměrná operace.  
+ * Všechny existující zálohy zůstanou šifrovaná pomocí šifrovacího klíče. Certifikát používají nových záloh. 
 
 ## <a name="infrastructure-backup-limits"></a>Omezení infrastruktury zálohování
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3010f4ec86b25c51fae2ce8f64238ec8815adca8
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408676"
+ms.locfileid: "56416781"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -22,7 +22,7 @@ Skripty před a po umožňují spustit Powershellové runbooky ve vašem účtu 
 
 ## <a name="runbook-requirements"></a>Požadavky na sady Runbook
 
-Sady runbook má být použit jako před nebo po skriptu že runbook bude potřebovat lze importovat do účtu automation a publikovaná. Další informace o tomto procesu najdete v tématu [publikování runbooku](automation-creating-importing-runbook.md#publishing-a-runbook).
+Sady runbook má být použit jako před nebo po skriptu že runbook bude potřebovat lze importovat do účtu automation a publikovaná. Další informace o tomto procesu najdete v tématu [publikování runbooku](manage-runbooks.md#publish-a-runbook).
 
 ## <a name="using-a-prepost-script"></a>Pomocí předzálohovacího nebo pozálohovacího skriptu
 

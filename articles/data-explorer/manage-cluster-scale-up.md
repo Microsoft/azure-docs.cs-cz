@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 9d265ec7f0ce2030874f38b99b07343f1d4a3f4d
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: bc3f97c798f5e040908e8103c00d3f015f8c824d
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408642"
+ms.locfileid: "56415330"
 ---
 # <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>Správa clusteru vertikálně navýšit kapacitu tak, aby vyhovovaly měnících se požadavků
 
@@ -30,10 +30,7 @@ Nastavování velikosti clusteru správně je důležité pro výkon Průzkumní
 1. Chcete-li změnit skladovou jednotku, vyberte skladovou Položku a stiskněte klávesu **vyberte** tlačítko.
 
 > [!NOTE]
-> Vertikální navýšení proces může trvat několik minut. Během této doby se pozastaví vašeho clusteru.
->
-> Škálování může poškodit svůj výkon clusteru.
->
+> Vertikální navýšení proces může trvat několik minut a během této doby se vám váš cluster. Všimněte si, že škálování může poškodit svůj výkon clusteru.
 
 Nyní jste provedli operaci vertikální navýšení nebo snížení pro váš cluster Průzkumník dat Azure. Můžete také provést [horizontální navýšení kapacity clusteru](manage-cluster-scale-out.md), označovaný také jako automatické škálování, škálování dynamicky na základě metrik, který zadáte.
 

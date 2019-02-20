@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243412"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428903"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Osvědčené postupy pro vytváření aplikace language understanding pomocí služeb Cognitive Services
 Proces tvorby aplikace používejte k sestavení aplikace LUIS. 
@@ -77,23 +77,32 @@ Další informace najdete tady:
 * Koncept: [Vytváření cyklus aplikace LUIS](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Přidat frázi seznamy a vzory ve vyšším počtu iterací
-[Frázi seznamy](luis-concept-feature.md) umožňují definovat slovníky slov související s doménou aplikace. Počáteční hodnota vaše frázi seznam s pár slov a následné použití funkce navrhnout tak LUIS ví o více slov v konkrétní slovník do vaší aplikace. Nepřidávejte všechna slova pro slovník od seznamu frázi není přesná shoda. 
+
+Osvědčeným postupem je předtím, než je testovaná aplikace se nedá použít tyto postupy. Měli byste porozumět chování aplikace, než přidáte frázi seznamy a vzory. Jakmile pochopíte chování aplikace bez těchto přidejte všechny tyto funkce, která je použita k vaší aplikaci. Není potřeba přidejte tyto funkce s každým [iterace](luis-concept-app-iteration.md) nebo změnit funkce s jednotlivými verzemi. 
+
+Není nezpůsobily žádné potíže, jejich přidání na začátku návrhu modelu, ale je snazší zjistit, jak jednotlivé funkce po modelu je testovat pomocí projevy změní výsledky. 
+
+Osvědčeným postupem je otestovat prostřednictvím [koncový bod](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) tak, aby se zobrazí její Další výhodou [aktivně učit](luis-concept-review-endpoint-utterances.md). [Interaktivní testovací podokno](luis-interactive-test.md) je také platné testovací metody. 
+ 
+
+### <a name="phrase-lists"></a>Seznamy frází
+
+[Frázi seznamy](luis-concept-feature.md) umožňují definovat slovníky slov související s doménou aplikace. Počáteční hodnota vaše frázi seznam s pár slov a následné použití funkce navrhnout tak LUIS ví o více slov v konkrétní slovník do vaší aplikace. Seznam frází zlepšuje záměru zjišťování a klasifikace entity zvýšení skóre signál přidružený slova nebo fráze, které jsou důležité pro vaši aplikaci. 
+
+Nepřidávejte všechna slova pro slovník od seznamu frázi není přesná shoda. 
+
+Další informace najdete tady:
+* Koncept: [Seznam frázi je součástí aplikace LUIS](luis-concept-feature.md)
+* Postupy: [Použijte frázi v seznamech boost signál seznam slov](luis-how-to-add-features.md)
+
+### <a name="patterns"></a>Vzory
 
 Projevy uživatelů z koncového bodu, velmi podobné k sobě navzájem, může odhalit vzory voleb aplikace word a umístění. [Vzor](luis-concept-patterns.md) funkce přebírá tato volba slov a umístění spolu s regulárních výrazů ke zlepšení vaší přesnost předpovědi. Ve vzoru regulárního výrazu umožňuje slova a interpunkční znaménka, které máte v úmyslu ignorovat při stále odpovídající vzoru. 
 
 Použití vzoru [volitelné syntaxe](luis-concept-patterns.md) pro interpunkční znaménka, může být ignorována interpunkce. Použití [explicitní seznam](luis-concept-patterns.md#explicit-lists) jako kompenzaci za pattern.any problémů. 
 
-Předtím, než je vaše aplikace obdržela koncový bod žádosti nevztahují tyto postupy. Měli byste porozumět chování aplikace, než přidáte frázi seznamy a vzory. Jakmile pochopíte chování aplikace bez těchto přidejte všechny tyto funkce, která je použita k vaší aplikaci. 
-
-Není nezpůsobily žádné potíže, jejich přidání na začátku návrhu modelu, ale je snazší zjistit, jak jednotlivé funkce změní výsledky, pokud chcete přidat po pomocí aplikace skutečný provoz. 
-
-Není potřeba přidejte tyto funkce při každé iteraci nebo změnit funkce s jednotlivými verzemi. 
-
 Další informace najdete tady:
-* Koncept: [Vytváření cyklus aplikace LUIS](luis-concept-app-iteration.md)
-* Koncept: [Seznam frázi je součástí aplikace LUIS](luis-concept-feature.md)
 * Koncept: [Vzory zvyšte přesnost předpovědi](luis-concept-patterns.md)
-* Postupy: [Použijte frázi v seznamech boost signál seznam slov](luis-how-to-add-features.md)
 * Postupy: [Jak přidat vzorce, a zvyšte přesnost předpovědi](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>Vaše projevy vyrovnávat všechny příkazy

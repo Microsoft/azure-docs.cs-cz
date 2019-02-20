@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634740"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429192"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -43,6 +43,7 @@ ms.locfileid: "45634740"
 
 [sles-hae-guides]:https://www.suse.com/documentation/sle-ha-12/
 [sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
+[suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -76,6 +77,7 @@ Přečtěte si následující poznámky SAP a Paper nejprve
 * [SUSE Linux Enterprise vysokou dostupnost rozšíření 12 SP3 osvědčené postupy vodítka][sles-hae-guides]
   * Úložiště s vysokou dostupností systému souborů NFS se DRBD a Pacemaker
 * [SUSE Linux Enterprise Server pro SAP aplikace 12 SP3 osvědčené postupy vodítka][sles-for-sap-bp]
+* [Zpráva k vydání verze s aktualizací SP3 SUSE vysokou dostupnost rozšíření 12][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Přehled
 
@@ -94,8 +96,8 @@ Server systému souborů NFS používá vyhrazené virtuální název hostitele 
   * Port 61000 NW1
   * Port 61001 NW2
 * Pravidla Vyrovnávání zatížení
-  * 2049 TCP pro NW1
-  * UDP 2049 pro NW1
+  * 2049 TCP for NW1
+  * 2049 UDP for NW1
   * 2049 TCP pro NW2
   * UDP 2049 pro NW2
 
@@ -163,7 +165,7 @@ Nejprve musíte vytvořit virtuální počítače pro tento cluster systému sou
       1. Port 61001 NW2
          * Zopakujte výše uvedené kroky a vytvořte sondu stavu pro NW2
    1. Pravidla Vyrovnávání zatížení
-      1. 2049 TCP pro NW1
+      1. 2049 TCP for NW1
          1. Otevřete nástroj pro vyrovnávání zatížení, pravidel Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
          1. Zadejte název nového pravidla služby load balancer (například **nw1-lb-2049**)
          1. Vyberte IP adresu front-endu, back-endového fondu a sondu stavu, které jste vytvořili dříve (například **nw1 front-endu**)
@@ -171,7 +173,7 @@ Nejprve musíte vytvořit virtuální počítače pro tento cluster systému sou
          1. Zvyšte časový limit nečinnosti až 30 minut.
          1. **Ujistěte se, že chcete povolit plovoucí IP adresy**
          1. Klikněte na tlačítko OK
-      1. UDP 2049 pro NW1
+      1. 2049 UDP for NW1
          * Opakujte předchozí kroky pro port 2049 a UDP pro NW1
       1. 2049 TCP pro NW2
          * Opakujte předchozí kroky pro 2049 portu a protokolu TCP pro NW2

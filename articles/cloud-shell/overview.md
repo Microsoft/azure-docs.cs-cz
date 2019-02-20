@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4195016bb029d2cf8f5042a853fa591609bd486e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447203"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428529"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.
@@ -53,7 +53,7 @@ Cloud Shell se spravuje přes Microsoft proto jde o s oblíbenými nástroji př
 Projděte si kompletní [seznam nástrojů, které jsou nainstalované ve službě Cloud Shell.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Integrovaný editor Cloud Shell
-Cloud Shell nabízí integrované grafické text editor založený na editoru Monaco open source. Jednoduše vytvořte a upravte konfigurační soubory spuštěním `code .` umožňuje snadné nasazení prostřednictvím příkazového řádku Azure CLI 2.0 nebo Azure Powershellu.
+Cloud Shell nabízí integrované grafické text editor založený na editoru Monaco open source. Jednoduše vytvořte a upravte konfigurační soubory spuštěním `code .` umožňuje snadné nasazení pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
 
 [Další informace o službě Cloud Shell editor](using-cloud-shell-editor.md).
 
@@ -68,7 +68,7 @@ Cloud Shell je flexibilní nástroj, který je možné z:
 * [Dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure)
 * [Dokumentace k Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview)
 * [Mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
-* [Rozšíření Azure Account kódu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
+* [Rozšíření sady Visual Studio účtu Azure v kódu](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Připojte své úložiště Microsoft Azure Files
 Cloudové prostředí počítače jsou dočasné a vyžadují nové nebo existující soubory Azure sdílenou složku a připojit jako `clouddrive` pro uchovávání souborů.

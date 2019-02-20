@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 074f090d295ef5eafad48e57f68dad019bf7eab9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 23618b545814e89a7343d2db4664405855051c1b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470031"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415438"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
 Můžete škálování na méně instancí a škálování Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Můžete také nakonfigurovat emailová a webhooková oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty pomocí šablony Resource Manageru v sadě škálování virtuálního počítače.
@@ -48,9 +48,9 @@ V tomto názorném postupu používáme [Azure Resource Exploreru](https://resou
 4. Tady je hypotetický škálování scénář, který jsme použili pro tento návod.
 
     * **Zatížení na základě** – chci horizontální navýšení kapacity nebo v podle zatížení ve své aplikaci hostované na můj set.* škálování
-    * **Velikost fronty zprávy** – použití fronty Service Bus pro příchozí zprávy pro mojí aplikaci. Můžu používat počet zpráv do fronty a % procesoru a nakonfigurovat výchozí profil aktivovat akci škálování, pokud buď počet zpráv nebo procesoru narazí threshold.*
-    * **Čas týden a den** – chci, aby týdenní opakované "čas" na základě profilu nazývá 'Hodiny ráno den v týdnu'. Na základě historických dat o vím, že je lepší mít určitý počet instancí virtuálních počítačů pro zpracování zátěže vaší aplikace během této time.*
-    * **Speciální datum** – po přidání profilu produktu spuštění den. Můžu Plánujte dopředu a připravte konkrétní data, aplikace je připravená pro zpracování zátěže z důvodu marketingové oznámení a máme nového produktu v aplikaci.*
+    * **Velikost fronty zprávy** – použití fronty Service Bus pro příchozí zprávy pro mojí aplikaci. Můžu používat počet zpráv do fronty a % procesoru a nakonfigurovat výchozí profil aktivovat akci škálování, pokud narazí na některý z počet zpráv nebo procesor prahovou hodnotu.\*
+    * **Čas týden a den** – chci, aby týdenní opakované "čas" na základě profilu nazývá 'Hodiny ráno den v týdnu'. Na základě historických dat o vědět, že je lepší mít určitý počet instancí virtuálních počítačů pro zpracování zátěže vaší aplikace během této doby.\*
+    * **Speciální datum** – po přidání profilu produktu spuštění den. Můžu Plánujte dopředu a připravte konkrétní data, aplikace je připravená pro zpracování zátěže z důvodu marketingové oznámení a máme nového produktu v aplikaci.\*
     * *Poslední dva profily může mít také další metriky na základě pravidel výkonu v nich. V tomto případě jsem se rozhodla nechcete mít jeden a místo toho přináší setrvávání u výchozí metriku výkonu na základě pravidel. Pravidla jsou volitelné pro profily opakované a na základě data.*
 
     Stanovení priorit modul automatického škálování profilů a pravidla i zaznamenány [osvědčené postupy automatického škálování](autoscale-best-practices.md) článku.
@@ -62,7 +62,7 @@ V tomto názorném postupu používáme [Azure Resource Exploreru](https://resou
 
 6. Klikněte na Upravit. **Nahraďte** 'profily' element v zadaném nastavení automatického škálování s následující konfigurací:
 
-    ![Profily](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![profiles](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

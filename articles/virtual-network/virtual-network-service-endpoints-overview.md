@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 51374876f84f40e055f4149a5b28dffe208c452f
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 70d931a8038a9b673f3303831903287acb43a567
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327829"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418003"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -41,7 +41,7 @@ Tato funkce je dostupná pro následující služby a oblasti Azure:
 
 **Ve verzi Public Preview**
 
-- **[Azure Database pro MariaDB](https://docs.microsoft.com/en-us/azure/mariadb/concepts-data-access-security-vnet)**: Ve verzi Preview k dispozici ve všech oblastech Azure, kde je k dispozici – Azure Database pro MariaDB.
+- **[Azure Database pro MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**: Ve verzi Preview k dispozici ve všech oblastech Azure, kde je k dispozici – Azure Database pro MariaDB.
 
 Nejaktuálnější oznámení najdete na stránce [Aktualizace služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 

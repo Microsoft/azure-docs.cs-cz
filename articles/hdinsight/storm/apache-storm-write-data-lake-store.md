@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 301de81fc9b8bdb8b295700de33065d988379334
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819157"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428790"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do Apache Hadoop HDFS z Apache Storm v HDInsight
 
@@ -50,15 +50,18 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
 HdfsBolt používá schéma souboru, které poskytují návod k zápisu do rozhraní HDFS. S HDInsight použijte jednu z následujících schémat:
 
 * `wasb://`: Použít s účtem Azure Storage.
-* `adl://`: Použít s Azure Data Lake Storage.
+* `abfs://`: Používá se Azure Data Lake Storage Gen2.
+* `adl://`: Použít s Azure Data Lake Storage Gen1.
 
 Následující tabulka obsahuje příklady použití souboru schématu pro různé scénáře:
 
 | Schéma | Poznámky |
 | ----- | ----- |
 | `wasb:///` | Výchozí účet úložiště je kontejner objektů blob v účtu služby Azure Storage |
-| `adl:///` | Výchozí účet úložiště je adresář ve službě Azure Data Lake Storage. Při vytváření clusteru zadejte adresář, v Data Lake Storage, která je kořenem clusteru HDFS. Například `/clusters/myclustername/` adresáře. |
+| `abfs:///` | Výchozí účet úložiště je adresář v účtu služby Azure Data Lake Storage Gen2 |
+| `adl:///` | Výchozí účet úložiště je adresář v Azure Data Lake Storage Gen1. Při vytváření clusteru zadejte adresář, v Data Lake Storage, která je kořenem clusteru HDFS. Například `/clusters/myclustername/` adresáře. |
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Účet úložiště Azure (Další) jiné než výchozí, přidružené ke clusteru. |
+| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | Účet úložiště Azure (Další) jiné než výchozí, přidružené ke clusteru. |
 | `adl://STORENAME/` | Kořenový adresář Data Lake Storage používané clusterem. Toto schéma umožňuje přístup k datům, která se nachází mimo adresář, který obsahuje systém souborů clusteru. |
 
 Další informace najdete v tématu [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odkaz na webu Apache.org.
@@ -180,7 +183,7 @@ Informace o použití tohoto skriptu s vaším clusterem, najdete v článku [HD
         hdfs.url: wasb:///
 
     > [!IMPORTANT]  
-    > Tento příklad předpokládá, že váš cluster používá účet Azure Storage jako výchozí úložiště. Pokud váš cluster používá Azure Data Lake Storage, použijte `hdfs.url: adl:///` místo.
+    > Tento příklad předpokládá, že váš cluster používá účet Azure Storage jako výchozí úložiště. Pokud váš cluster používá Azure Data Lake Storage Gen2, použijte `hdfs.url: abfs:///` místo. Pokud váš cluster používá Azure Data Lake Storage Gen1, použijte `hdfs.url: adl:///` místo.
     
     Chcete-li uložit soubor, použijte __Ctrl + X__, pak __Y__a nakonec __Enter__. Hodnoty v tomto souboru nastavit adresu URL úložiště Data Lake a název adresáře, který data se zapisují do.
 

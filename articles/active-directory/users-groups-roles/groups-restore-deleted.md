@@ -3,24 +3,24 @@ title: Obnovení odstraněné skupiny Office 365 v Azure AD | Microsoft Docs
 description: Jak v Azure Active Directory obnovit odstraněnou skupinu, zobrazit obnovitelné skupiny a trvale odstranit skupinu
 services: active-directory
 documentationcenter: ''
-author: eross-msft
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: fundamentals
+ms.subservice: users-groups-roles
 ms.topic: quickstart
 ms.date: 08/28/2017
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01d521ac384ef0264e62e3af2e106099f369231c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d2e756676ee1abde88f75a1629640239f3162ea
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206153"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430637"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Obnovení odstraněné skupiny Office 365 v Azure Active Directory
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 1b0e99998aaf29c366cce1926f930174686cfee6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585947"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414894"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Použití vlastních koncových bodů a směrování zpráv pro zprávy typu zařízení cloud
 
@@ -34,7 +34,7 @@ Jedna zpráva může odpovídat podmínku pro více směrování dotazů, ve kte
 
 Služby IoT hub má výchozí [integrovaný koncový bod](iot-hub-devguide-messages-read-builtin.md). Můžete vytvořit vlastní koncové body pro směrování zpráv propojením dalších služeb v rámci vašeho předplatného k rozbočovači. IoT Hub aktuálně podporuje kontejnery služby Azure Storage, služby Event Hubs, fronty Service Bus a témat Service Bus jako vlastní koncové body.
 
-Při použití směrování a vlastní koncové body zprávy pouze doručovaly do integrovaného koncového bodu pokud neodpovídají žádné dotazu. Doručení zprávy integrovaný koncový bod stejně jako vlastní koncový bod, přidejte trasu, která odesílá zprávy **události** koncového bodu.
+Při použití směrování a vlastní koncové body zprávy pouze doručovaly do integrovaného koncového bodu pokud neodpovídají žádné dotazu. Doručení zprávy integrovaný koncový bod stejně jako vlastní koncový bod, přidejte trasu, která odesílá zprávy do vestavěné **události** koncového bodu.
 
 > [!NOTE]
 > * Zápis dat do služby Azure Storage kontejnery jako objekty BLOB podporuje pouze službu IoT Hub.

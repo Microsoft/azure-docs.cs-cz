@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109313"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428633"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 Cluster Azure Service Fabric je prostředek, který vlastníte. Je vaší odpovědností zajistit clusterům pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité při spouštění úloh v produkčním prostředí v clusteru. I když je možné vytvořit nezabezpečenému clusteru, pokud clusteru zpřístupní koncových bodů správy do veřejného Internetu, můžete k němu připojit anonymním uživatelům. Nezabezpečené clustery nejsou podporovány pro produkční úlohy. 
@@ -73,7 +73,12 @@ Cluster Service Fabric nabízí několik vstupních bodů do jeho funkce správy
 U clusterů běžící v Azure můžete také svázat přístupu ke koncovým bodům správy pomocí služby Azure Active Directory (Azure AD). Další informace o vytvoření požadovaných artefaktů Azure AD a jak do nich přidat při vytváření clusteru, najdete v části [nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Doporučení zabezpečení
-Azure v rámci clusterů pro zabezpečení mezi uzly doporučujeme použít zabezpečení Azure AD k ověřování klientů a certifikáty.
+Pro clustery Service Fabric nasazené ve veřejné síti hostované v Azure se doporučení pro vzájemné ověřování uzel klienta:
+*   Použití Azure Active Directory pro identity klienta
+*   Certifikát pro server identity a šifrování SSL komunikaci pomocí protokolu http
+
+Pro clustery Service Fabric nasazené ve veřejné síti hostované v Azure je použít certifikát clusteru pro ověření uzly doporučení pro zabezpečení mezi uzly. 
+
 
 Samostatné clustery Windows serveru Pokud máte systém Windows Server 2012 R2 a Windows Active Directory, doporučujeme použít zabezpečení Windows s skupinových účtů spravované služby. S účty Windows, použijte zabezpečení Windows.
 

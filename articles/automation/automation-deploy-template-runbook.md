@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: d13f21da88ae3fb9dfa67b11285e0c3e984d5e5b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ef97d4e2fd0951e30a725e8f2f9603a73c61f1ca
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421807"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416110"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
 
@@ -23,11 +23,11 @@ Můžete napsat [Powershellového runbooku Azure Automation](automation-first-ru
 
 Tímto způsobem můžete automatizovat nasazení prostředků Azure. Abyste mohli své šablony Resource Manageru v centrální a zabezpečené umístění, jako je Azure Storage.
 
-V tomto tématu vytvoříme Powershellového runbooku, který používá šablonu Resource Manageru uložených v [služby Azure Storage](../storage/common/storage-introduction.md) nasadit nový účet úložiště Azure.
+V tomto článku jsme vytvořte Powershellový runbook, který používá šablonu Resource Manageru uložených v [služby Azure Storage](../storage/common/storage-introduction.md) nasadit nový účet úložiště Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K dokončení tohoto kurzu potřebujete následující položky:
 
 * Předplatné Azure. Pokud jeden ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
 * [Účet Automation](automation-sec-configure-azure-runas-account.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure.  Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
@@ -36,7 +36,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 
-V tomto příkladu jsme pomocí šablony Resource Manageru, která nasadí nový účet úložiště Azure.
+V tomto příkladu používáme šablony Resource Manageru, která nasadí nový účet úložiště Azure.
 
 V textovém editoru zkopírujte následující text:
 
@@ -176,7 +176,7 @@ Uložte soubor místně jako `DeployTemplate.ps1`.
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Import a publikování sady runbook do účtu Azure Automation
 
 Nyní jsme pomocí prostředí PowerShell a importujte runbook do účtu Azure Automation a potom publikovat sadu runbook.
-Informace o tom, jak importovat a publikovat sadu runbook na portálu Azure portal najdete v tématu [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md).
+Informace o tom, jak importovat a publikovat sadu runbook na portálu Azure portal najdete v tématu [správu sad runbook ve službě Azure Automation](manage-runbooks.md).
 
 Chcete-li importovat `DeployTemplate.ps1` do vašeho účtu Automation jako runbook Powershellu, spusťte následující příkazy Powershellu:
 

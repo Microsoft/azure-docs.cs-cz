@@ -4,17 +4,17 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/11/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5a16edcb702db21b357c437b920e870a65fb155a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9dc6407a222adb06f4139d9973c168911e0faca8
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270160"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429668"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -80,7 +80,7 @@ Všechny ukázky zásady Azure jsou v [ukázky zásad](../samples/index.md).
 
 Doporučujeme vám, že jste nastavili **režimu** k `all` ve většině případů. Všechny definice zásad, které jsou vytvořené pomocí portálu `all` režimu. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure, můžete zadat **režimu** parametr ručně. Pokud neobsahuje definici zásady **režimu** hodnota, použije se výchozí `all` v prostředí Azure PowerShell a o `null` v Azure CLI. A `null` režim je stejný jako při použití `indexed` pro podporu zpětné kompatibility.
 
-`indexed` by měla sloužit při vytváření zásad, které vynucují značky nebo umístění. Přestože se nevyžaduje, brání prostředky, které nepodporují značky a umístěním objeví jako nedodržující předpisy ve výsledcích dodržování předpisů. Výjimkou je **skupiny prostředků**. Zásady, které vynucují místa nebo značky na skupinu prostředků, nastavte **režimu** k `all` a konkrétně cíl `Microsoft.Resources/subscriptions/resourceGroup` typu. Příklad najdete v tématu [vynutit značky skupiny prostředků](../samples/enforce-tag-rg.md).
+`indexed` by měla sloužit při vytváření zásad, které vynucují značky nebo umístění. Přestože se nevyžaduje, brání prostředky, které nepodporují značky a umístěním objeví jako nedodržující předpisy ve výsledcích dodržování předpisů. Výjimkou je **skupiny prostředků**. Zásady, které vynucují místa nebo značky na skupinu prostředků, nastavte **režimu** k `all` a konkrétně cíl `Microsoft.Resources/subscriptions/resourceGroups` typu. Příklad najdete v tématu [vynutit značky skupiny prostředků](../samples/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Parametry
 
@@ -245,15 +245,41 @@ Podporovány jsou následující pole:
 - `identity.type`
   - Vrátí typ [se identita spravované](../../../active-directory/managed-identities-azure-resources/overview.md) u daného prostředku povolena.
 - `tags`
-- `tags.<tagName>`
+- `tags['<tagName>']`
+  - Tato syntaxe závorky podporuje názvy značek, které mají interpunkční znaménka, například spojovník, tečku nebo mezeru.
   - Kde **\<tagName\>** je název značky ověřit podmínku.
-  - Příklad: `tags.CostCenter` kde **nákladové středisko** je název značky.
-- `tags[<tagName>]`
-  - Tato syntaxe závorky podporuje názvy značek, které mají tečku.
-  - Kde **\<tagName\>** je název značky ověřit podmínku.
-  - Příklad: `tags[Acct.CostCenter]` kde **Acct.CostCenter** je název značky.
-
+  - Příklady: `tags['Acct.CostCenter']` kde **Acct.CostCenter** je název značky.
+- `tags['''<tagName>''']`
+  - Tato syntaxe závorky podporuje názvy značek, které mají apostrofy, podle uvozovací znaky s uvozovky.
+  - Kde **"\<tagName\>"** je název značky ověřit podmínku.
+  - Příklad: `tags['''My.Apostrophe.Tag''']` kde **"\<tagName\>"** je název značky.
 - Vlastnost aliasy – seznam najdete v tématu [aliasy](#aliases).
+
+> [!NOTE]
+> `tags.<tagName>`, `tags[tagName]`, a `tags[tag.with.dots]` stále přijatelné způsoby deklarace pole Klíčová slova.
+> Upřednostňované výrazy jsou však výše.
+
+#### <a name="use-tags-with-parameters"></a>Použití značek s parametry
+
+Hodnota parametru může být předán pole značky. Předá parametr do pole tag zvyšuje flexibilitu definice zásady při přiřazování zásady.
+
+V následujícím příkladu `concat` slouží k vytváření vyhledávacího pole značky značku s názvem hodnoty **tagName** parametru. Pokud dané klíčové slovo neexistuje, **připojit** účinek se používá k přidání značky pomocí hodnoty stejnou značku s názvem nastavení ve skupině prostředků. nadřazený auditované prostředků s použitím `resourcegroup()` vyhledávací funkce.
+
+```json
+{
+    "if": {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "value": "[resourcegroup().tags[parameters('tagName')]]"
+        }]
+    }
+}
+```
 
 ### <a name="value"></a>Hodnota
 
@@ -353,7 +379,7 @@ Všechny [funkce šablon Resource Manageru](../../../azure-resource-manager/reso
 
 Kromě toho `field` funkce je k dispozici pro pravidla zásad. `field` se používá především s **AuditIfNotExists** a **DeployIfNotExists** na odkaz na pole v prostředku, které jsou právě vyhodnocována. Příklad použití si můžete prohlédnout ve [DeployIfNotExists příklad](effects.md#deployifnotexists-example).
 
-#### <a name="policy-function-examples"></a>Příklady zásad – funkce
+#### <a name="policy-function-example"></a>Příklad zásad – funkce
 
 Používá tento příklad pravidla zásad `resourceGroup` prostředků funkce získáte **název** vlastnost, společně s `concat` pole a objektu funkce pro sestavení `like` podmínku, která vynucuje název prostředku pomocí názvu skupiny prostředků.
 
@@ -367,24 +393,6 @@ Používá tento příklad pravidla zásad `resourceGroup` prostředků funkce z
     },
     "then": {
         "effect": "deny"
-    }
-}
-```
-
-Používá tento příklad pravidla zásad `resourceGroup` prostředků funkce získáte **značky** hodnota vlastnosti pole **nákladové středisko** označit skupiny prostředků a připojte ho k **nákladové středisko**  značku na nový prostředek.
-
-```json
-{
-    "if": {
-        "field": "tags.CostCenter",
-        "exists": "false"
-    },
-    "then": {
-        "effect": "append",
-        "details": [{
-            "field": "tags.CostCenter",
-            "value": "[resourceGroup().tags.CostCenter]"
-        }]
     }
 }
 ```

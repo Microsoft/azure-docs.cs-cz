@@ -13,14 +13,14 @@ ms.subservice: users-groups-roles
 ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.custom: ''
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b194b8aeb6df54814069a3acd2e2f0f3ad1a13
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef3a0143b2fd536332cdae8ea0bb50cc0a93e6e9
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180670"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430419"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezeních a známých problémech použití skupin pro správu licencování v Azure Active Directory
 

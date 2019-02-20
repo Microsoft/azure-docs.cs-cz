@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 37cf44e2c9d28b1aac8f2ab80ba29d126fb8651f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f52c9731b0289563037cbf065f3e22d652b40e74
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422964"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417427"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky ve službě Azure Automation
 
@@ -28,7 +28,7 @@ Když vyvoláte přiřazený runbook, spustí se ve stejné úloze jako nadříz
 
 Při publikování runbooku musí všechny podřízené runbooky, které volá již publikována. Je to proto, že Azure Automation vytvoří přidružení se všemi podřízenými runbooky při kompilaci sady runbook. Pokud nejsou, nadřízený runbook správně publikuje se zobrazí, ale vygeneruje výjimku, když je spuštěno. Pokud k tomu dojde, můžete znovu publikovat nadřízený runbook správně odkazovat podřízené runbooky. Nemusíte znovu publikovat nadřízený runbook, pokud některý z podřízených runbooků se změní, protože přidružení už byl vytvořen.
 
-Parametry podřízeného runbooku s přiřazeným voláním můžou být libovolného datového typu včetně složitých objektů. Neexistuje žádná [serializace JSON](automation-starting-a-runbook.md#runbook-parameters) je při spuštění runbooku pomocí portálu Azure portal nebo pomocí rutiny Start-AzureRmAutomationRunbook.
+Parametry podřízeného runbooku s přiřazeným voláním můžou být libovolného datového typu včetně složitých objektů. Neexistuje žádná [serializace JSON](start-runbooks.md#runbook-parameters) je při spuštění runbooku pomocí portálu Azure portal nebo pomocí rutiny Start-AzureRmAutomationRunbook.
 
 ### <a name="runbook-types"></a>Typy runbooků
 
@@ -65,7 +65,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > Pokud jsou vyvolání podřízeného runbooku se `Start-AzureRmAutomationRunbook` rutinu s `-Wait` přepínače a výsledky podřízeného runbooku je objekt, pravděpodobně dojde k chybám. Pokud chcete chybu obejít, přečtěte si téma [podřízené sady runbook s výstupem objekt](troubleshoot/runbooks.md#child-runbook-object) se naučíte implementovat logiku pro dotazování na výsledky a použít [Get AzureRmAutomationJobOutputRecord](/powershell/module/azurerm.automation/get-azurermautomationjoboutputrecord)
 
-Můžete použít [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) ke spuštění sady runbook, jak je popsáno v [spuštění runbooku pomocí prostředí Windows PowerShell](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell). Existují dva způsoby použití pro tuto rutinu.  V jednom režimu rutina vrátí úlohu s id při vytvoření podřízené úlohy pro podřízený runbook.  V jiných režimu, které povolíte tak, že zadáte **– počkejte** parametr, rutina čeká na podřízené úlohy dokončí a vrátí její výstup z podřízeného runbooku.
+Můžete použít [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) ke spuštění sady runbook, jak je popsáno v [spuštění runbooku pomocí prostředí Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell). Existují dva způsoby použití pro tuto rutinu.  V jednom režimu rutina vrátí úlohu s id při vytvoření podřízené úlohy pro podřízený runbook.  V jiných režimu, které povolíte tak, že zadáte **– počkejte** parametr, rutina čeká na podřízené úlohy dokončí a vrátí její výstup z podřízeného runbooku.
 
 Úloha z podřízeného runbooku spuštěná pomocí rutiny běží v samostatné úloze nezávisle na nadřízeném runbooku. Toto chování má za následek víc úloh než při spuštění přiřazený runbook a provede jejich obtížnější sledování. Nadřazené můžete spustit více než jeden podřízený runbook asynchronně bez čekání na dokončení. Pro stejný druh paralelního provádění volání přiřazených runbooků muselo, by bylo potřeba použít nadřazená sada runbook [paralelní klíčové slovo](automation-powershell-workflow.md#parallel-processing).
 
@@ -73,7 +73,7 @@ Výstup podřízené runbooky se nevrátíte do nadřízeného runbooku spolehli
 
 Pokud nechcete, aby nadřízený runbook zablokuje na čekání, můžete začít podřízeného runbooku pomocí `Start-AzureRmAutomationRunbook` rutiny bez `-Wait` přepnout. Pak je třeba použít `Get-AzureRmAutomationJob` čekání na dokončení úlohy a `Get-AzureRmAutomationJobOutput` a `Get-AzureRmAutomationJobOutputRecord` k načtení výsledků.
 
-Parametry pro podřízený runbook spuštěný pomocí rutiny se poskytují jako zatřiďovací tabulka, jak je popsáno v [parametry Runbooku](automation-starting-a-runbook.md#runbook-parameters). Je možné jenom jednoduché datové typy. Pokud má runbook parametr komplexního datového typu, pak ho musí být volaný jako přiřazený.
+Parametry pro podřízený runbook spuštěný pomocí rutiny se poskytují jako zatřiďovací tabulka, jak je popsáno v [parametry Runbooku](start-runbooks.md#runbook-parameters). Je možné jenom jednoduché datové typy. Pokud má runbook parametr komplexního datového typu, pak ho musí být volaný jako přiřazený.
 
 Kontext předplatného mohou být ztraceny při spouštění runbooků v podobě samostatné úlohy. Aby podřízené sady runbook pro spouštění rutin Azure RM pro konkrétní předplatné Azure podřízené sady runbook musí ověřovat pro toto předplatné nezávisle na nadřazený runbook.
 
@@ -120,6 +120,6 @@ Následující tabulka shrnuje rozdíly mezi dvěma způsoby volání runbooku z
 
 ## <a name="next-steps"></a>Další postup
 
-* [Spuštění runbooku ve službě Azure Automation](automation-starting-a-runbook.md)
+* [Spuštění runbooku ve službě Azure Automation](start-runbooks.md)
 * [Sada Runbook výstup a zprávy ve službě Azure Automation](automation-runbook-output-and-messages.md)
 

@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 646d5a1aec7387d8f7ee632f5e46f988e1bc012c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fd0f8241c07f603089b896dcfc9ece29f1e33d1c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882212"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428200"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předat token přístupu přes tok uživatele do vaší aplikace v Azure Active Directory B2C
 
@@ -24,12 +24,12 @@ ms.locfileid: "55882212"
 
 A [tok uživatele](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C poskytuje uživatelům vaší aplikace příležitost k registraci nebo přihlášení pomocí zprostředkovatele identity. Při spuštění cesty, obdrží Azure AD B2C [přístupový token](active-directory-b2c-reference-tokens.md) od zprostředkovatele identity. Azure AD B2C používá tento token k načtení informací o uživateli. Povolte deklaraci v toku uživatele a předat token prostřednictvím aplikace, které zaregistrujete v Azure AD B2C.
 
-Azure AD B2C momentálně podporuje pouze předávání přístupový token [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) zprostředkovatelů identity, mezi které patří [Facebook](active-directory-b2c-setup-fb-app.md) a [Google](active-directory-b2c-setup-goog-app.md). Pro všechny ostatní poskytovatele identity se vrátí prázdná deklarace identity.
+Azure AD B2C podporuje předávání přístupový token [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) a [OpenID Connect](active-directory-b2c-reference-oidc.md) zprostředkovatelé identity. Pro všechny ostatní poskytovatele identity se vrátí prázdná deklarace identity.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Aplikace musí používat [tok uživatele v2](user-flow-versions.md).
-- Váš tok uživatele je nakonfigurovaný pomocí zprostředkovatele identity OAuth 2.0.
+- Váš tok uživatele je nakonfigurovaný pomocí zprostředkovatele identity OAuth 2.0 nebo OpenID Connect.
 
 ## <a name="enable-the-claim"></a>Povolit deklarace identity
 

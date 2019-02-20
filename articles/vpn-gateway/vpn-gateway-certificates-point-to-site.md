@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e574759ff8af172841db9fc94ee860a19dd14200
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850954"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415361"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro Point-to-Site pomocí Powershellu
 
@@ -47,7 +47,7 @@ V příkladech pomocí rutiny New-SelfSignedCertificate vygenerování klientsk�
 
 ### <a name="example-1"></a>Příklad 1
 
-Tento příklad používá proměnnou deklarovanou '$cert' z předchozí části. Pokud uzavřeno konzole PowerShell po vytvoření certifikátu podepsaného svým držitelem nebo vytváření dalších klientských certifikátů v nové relaci konzoly prostředí PowerShell, postupujte podle kroků v [příklad 2](#ex2).
+V tomto příkladu použijte, pokud nebyly uzavřeny konzolu Powershellu po vytvoření certifikátu podepsaného svým držitelem. Tento příklad pokračuje v předchozí části a používá proměnnou deklarovanou "$cert". Pokud uzavřeno konzole PowerShell po vytvoření certifikátu podepsaného svým držitelem nebo vytváření dalších klientských certifikátů v nové relaci konzoly prostředí PowerShell, postupujte podle kroků v [příklad 2](#ex2).
 
 Upravit a spustit příklad pro vytvoření klientského certifikátu. Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem "P2SChildCert".  Pokud chcete certifikát podřízené jiný název, hodnotu CN změníte. Neměňte TextExtension při spuštění v tomto příkladu. Klientský certifikát, který vygenerujete je automaticky nainstalován v "Certificates - Current User\Personal\Certificates" ve vašem počítači.
 

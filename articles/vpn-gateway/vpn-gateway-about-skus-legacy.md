@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: efce8379ecafe6e8e044b654a3c5b392ca8e9cea
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506358"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417308"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU (starší verze SKU) brány virtuální sítě
 
@@ -40,6 +40,8 @@ Tento článek obsahuje informace o starší (staré) brány virtuální sítě 
 
 ## <a name="resize"></a>Změňte velikost brány
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Změnit velikost skladové položky brány v rámci stejné skladová položka rodina brána. Například pokud máte standardní SKU, můžete změnit velikost na HighPerformance SKU. Nelze však změnit velikost vaší brány VPN mezi staré SKU a řad SKU na nové. Například nelze přejít z standardní skladová jednotka VpnGw2 SKU nebo základní SKU na VpnGw1.
 
 Změna velikosti brány pro model nasazení classic, použijte následující příkaz:
@@ -51,8 +53,8 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 Změna velikosti brány pro model nasazení Resource Manageru pomocí Powershellu, použijte následující příkaz:
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+$gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 Můžete taky změnit velikost brány na webu Azure Portal.
 

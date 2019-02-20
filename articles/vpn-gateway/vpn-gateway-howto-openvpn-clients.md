@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: cd84948b5895a628fc94cc2946156d9fa2284369
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 73f8b1323f6cd22ef215fba4ec45714f099032f6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508670"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415829"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway (Preview)
 
@@ -24,12 +24,14 @@ Tento článek vám pomůže nakonfigurovat OpenVPN klientů.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Podrobnosti najdete v tématu [OpenVPN konfigurace pro službu Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
 
 ## <a name="windows"></a>Klienti Windows
 
 1. Stažení a instalace klienta OpenVPN z oficiální [OpenVPN webu](https://openvpn.net/index.php/open-source/downloads.html).
-2. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace Point-to-site na webu Azure Portal, nebo 'New-AzureRmVpnClientConfiguration"v prostředí PowerShell.
+2. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace Point-to-site na webu Azure Portal, nebo 'New-AzVpnClientConfiguration"v prostředí PowerShell.
 3. Rozbalte profil. Dále otevřete *vpnconfig.ovpn* konfigurační soubor ze složky OpenVPN pomocí poznámkového bloku.
 4. [Export](vpn-gateway-certificates-point-to-site.md#clientexport) P2S klientský certifikát můžete vytvořit a nahrát do vaší konfigurace P2S k bráně.
 5. Extrahování privátním klíčem a kryptografického otisku base64 z *.pfx*. To lze provést několika způsoby. Pomocí OpenSSL na vašem počítači je jedním ze způsobů. *Profileinfo.txt* soubor obsahuje privátní klíč a kryptografický otisk certifikační Autority a certifikát klienta. Nezapomeňte použít kryptografický otisk klientského certifikátu.
@@ -64,7 +66,7 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 ## <a name="mac"></a>Klienti se systémem Mac
 
 1. Stáhnout a nainstalovat OpenVPN klienta, jako například [TunnelBlik](https://tunnelblick.net/downloads.html). 
-2. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace point-to-site na webu Azure Portal nebo pomocí "New-AzureRmVpnClientConfiguration" v prostředí PowerShell.
+2. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace point-to-site na webu Azure Portal nebo pomocí "New-AzVpnClientConfiguration" v prostředí PowerShell.
 3. Rozbalte profil. Otevřete konfigurační soubor vpnconfig.ovpn ze složky OpenVPN v poznámkovém bloku.
 4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. Zobrazit [Export veřejného klíče](vpn-gateway-certificates-point-to-site.md#cer) informace o exportování certifikátu se získat kódované veřejný klíč.
 5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Zobrazit [exportovat soukromý klíč](https://openvpn.net/community-resources/how-to/#pki) informace o tom, jak extrahovat privátní klíč.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312608"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430263"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postupy zpracování a extrahování informací z obrázků ve scénářích kognitivního vyhledávání
 
@@ -34,7 +34,7 @@ Normalizace image se nedá vypnout. Dovednosti, které iterují v imagí očeká
 
 | Parametr konfigurace | Popis |
 |--------------------|-------------|
-| imageAction   | Nastavte na "none", pokud žádná akce by měla být provedeny, když došlo k vložené obrázky nebo soubory obrázků. <br/>Nastavte na "generateNormalizedImages" generovat pole normalizované imagí jako součást analýzy dokumentu. Tyto Image se zveřejní v *normalized_images* pole. <br/>Výchozí hodnota je "none". Tato konfigurace je pouze relevantní do objektu blob zdroje dat, když "dataToExtract" je nastavena na "contentAndMetadata." |
+| imageAction   | Nastavte na "none", pokud žádná akce by měla být provedeny, když došlo k vložené obrázky nebo soubory obrázků. <br/>Nastavte na "generateNormalizedImages" generovat pole normalizované imagí jako součást analýzy dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage" generovat pole normalizované imagí pro dokumenty PDF ve zdroji dat, kde jednotlivé stránky je vykresleno do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů – soubor PDF.<br/>U možnosti, které není "none", budou přístupné imagí v *normalized_images* pole. <br/>Výchozí hodnota je "none". Tato konfigurace je pouze relevantní do objektu blob zdroje dat, když "dataToExtract" je nastavena na "contentAndMetadata." |
 |  normalizedImageMaxWidth | Maximální šířku (v pixelech) normalizované obrázky generované. Výchozí hodnota je 2000.|
 |  normalizedImageMaxHeight | Maximální výšku (v pixelech) normalizované obrázky generované. Výchozí hodnota je 2000.|
 
@@ -62,7 +62,7 @@ Zadejte imageAction ve vašich [definice indexeru](https://docs.microsoft.com/re
 }
 ```
 
-Když *imageAction* je nastavena na "generateNormalizedImages" nové *normalized_images* bude pole obsahovat celou řadu imagí. Každé image je komplexní typ, který má následující členy:
+Když *imageAction* nastaven na hodnotu jiných "none", nové *normalized_images* bude pole obsahovat celou řadu imagí. Každé image je komplexní typ, který má následující členy:
 
 | Člen bitové kopie       | Popis                             |
 |--------------------|-----------------------------------------|

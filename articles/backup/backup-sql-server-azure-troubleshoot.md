@@ -1,26 +1,19 @@
 ---
-title: Azure Backup Průvodce odstraňováním potíží pro virtuální počítače s SQL serverem | Dokumentace Microsoftu
-description: Informace o odstraňování potíží pro zálohování virtuálních počítačů s SQL serverem na Azure.
+title: Řešení potíží s zálohy databáze SQL serveru pomocí služby Azure Backup | Dokumentace Microsoftu
+description: Informace o odstraňování potíží pro zálohování databází systému SQL Server běžící na virtuálních počítačích Azure s Azure Backup.
 services: backup
-documentationcenter: ''
-author: rayne-wiselman
-manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
+author: anuragm
+manager: shivamg
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 02/19/2019
 ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296117"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428615"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
@@ -28,11 +21,11 @@ Tento článek obsahuje informace o odstraňování potíží pro ochranu virtu�
 
 ## <a name="public-preview-limitations"></a>Omezení veřejné verze Preview
 
-Chcete-li zobrazit omezení veřejné verze Preview, najdete v článku, [zálohovat databázi systému SQL Server v Azure](backup-azure-sql-database.md#public-preview-limitations).
+Chcete-li zobrazit omezení veřejné verze Preview, najdete v článku, [zálohovat databázi systému SQL Server v Azure](backup-azure-sql-database.md#preview-limitations).
 
 ## <a name="sql-server-permissions"></a>Oprávnění SQL Serveru
 
-Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači, **AzureBackupWindowsWorkload** rozšíření musí být nainstalované na tomto virtuálním počítači. Pokud se zobrazí chyba, **UserErrorSQLNoSysadminMembership**, to znamená, že vaše Instance SQL nemá požadovaná oprávnění pro zálohování. Chcete-li tuto chybu opravit, postupujte podle kroků v [nastavit oprávnění pro virtuální počítače s SQL mimo marketplace](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms).
+Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači, **AzureBackupWindowsWorkload** rozšíření musí být nainstalované na tomto virtuálním počítači. Pokud se zobrazí chyba, **UserErrorSQLNoSysadminMembership**, to znamená, že vaše Instance SQL nemá požadovaná oprávnění pro zálohování. Chcete-li tuto chybu opravit, postupujte podle kroků v [nastavit oprávnění pro virtuální počítače s SQL mimo marketplace](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ## <a name="troubleshooting-errors"></a>Řešení potíží s chybami
 
@@ -56,13 +49,13 @@ V následujících tabulkách jsou uspořádané podle čísla chyby.
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 | Tato databáze SQL nepodporuje požadovaný typ zálohy. | Nastane, pokud je model obnovení databáze neumožňuje požadovaný typ zálohy. K chybě může dojít v následujících situacích: <br/><ul><li>Databázi pomocí jednoduchý model obnovení není povolena zálohy protokolu.</li><li>Rozdílové zálohy a zálohy protokolů nejsou povolené pro hlavní databázi.</li></ul>Další podrobnosti najdete [modelů obnovení SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) dokumentaci. | Pokud se nezdaří zálohování protokolu databáze v jednoduchém modelu obnovení, zkuste použijte jeden z těchto možností:<ul><li>Pokud se databáze nachází v režimu jednoduchého obnovení, zakažte zálohy protokolu.</li><li>Použití [dokumentace ke službě SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) změnit model obnovení databáze na úplný nebo hromadně protokolovaný. </li><li> Pokud nechcete změnit model obnovení, a vy musíte standardní zásady zálohování více databází, které nelze změnit, chybu ignorujte. Úplné a rozdílové zálohy budou fungovat podle plánu. Zálohy protokolů se přeskočí, který se očekává v tomto případě.</li></ul>Pokud je hlavní databázi a nakonfigurovali jste protokolu nebo rozdílové zálohy, použijte některý z následujících kroků:<ul><li>Použití portálu, chcete-li změnit plán zálohování zásad pro hlavní databázi k úplné.</li><li>Pokud máte standardní zásady zálohování více databází, které nelze změnit, chybu ignorujte. Úplné zálohování bude fungovat podle plánu. Protokolu nebo rozdílové zálohy se neprovede, který se očekává v tomto případě.</li></ul> |
-| Operace zrušena, protože konfliktní operace již byla spuštěna ve stejné databázi. | Zobrazit [blogu o zálohování a obnovení omezení](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , které běží souběžně.| [Pomocí SQL Server Management Studio (SSMS) můžete monitorovat úlohy zálohování.](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) Jakmile konfliktní operace selže, restartujte operaci.|
+| Operace zrušena, protože konfliktní operace již byla spuštěna ve stejné databázi. | Zobrazit [blogu o zálohování a obnovení omezení](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , které běží souběžně.| [Pomocí SQL Server Management Studio (SSMS) můžete monitorovat úlohy zálohování.](manage-monitor-sql-database-backup.md) Jakmile konfliktní operace selže, restartujte operaci.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Databáze SQL neexistuje. | Databáze byla odstraněna nebo přejmenována. | <ul><li>Zaškrtněte, pokud byla databáze omylem odstraněna nebo přejmenována.</li><li>Pokud byla databáze vymazána omylem, chcete-li pokračovat v zálohování, obnovení databáze do původního umístění.</li><li>Pokud jste odstranili databázi a potřebují budoucí zálohy v trezoru služby Recovery Services, neklikejte [zastavení zálohování s "Delete/zachovat data"](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms).</li>|
+| Databáze SQL neexistuje. | Databáze byla odstraněna nebo přejmenována. | Zaškrtněte, pokud byla databáze omylem odstraněna nebo přejmenována.<br/><br/> Pokud byla databáze vymazána omylem, chcete-li pokračovat v zálohování, obnovení databáze do původního umístění.<br/><br/> Pokud jste odstranili databázi a potřebují budoucí zálohy v trezoru služby Recovery Services, neklikejte [zastavení zálohování s "Delete/zachovat data"](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 

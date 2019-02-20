@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: a9ba02478b17b29343236a91fe637357c1414717
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ebc0f93055a014888d01fa9bffc7702b99380234
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015318"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417461"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -152,7 +152,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
     ![Nová propojená služba jímky](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 
-    b. Z galerie vyberte **Azure Blob Storage** a pak vyberte **Next** (Další).
+    b. Vyberte **Azure SQL Database** z galerie a pak vyberte **Další**.
 
     ![Výběr Azure SQL DB](./media/tutorial-copy-data-tool/select-azure-sql-db.png)
 

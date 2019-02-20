@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3bf3dd325af48f99e109f651628883d8f946fdc8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 24b08bb843b4f1a0eb9f2471cb17b81f2c8ac4d0
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512478"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417529"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace služby VPN Gateway
 
@@ -20,13 +20,15 @@ Brána VPN je typem brány virtuální sítě, která odesílá šifrovaný sí�
 
 Připojení brány VPN se spoléhá na konfiguraci více zdrojů, z nichž každý obsahuje konfigurovatelné nastavení. Části v tomto článku popisují prostředky a nastavení, které se týkají brány sítě VPN pro virtuální sítě vytvořené v modelu nasazení Resource Manageru. Můžete najít popisy a diagramy topologie pro každé připojení řešení [informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md) článku.
 
->[!NOTE]
-> Hodnoty v tomto článku platí brány VPN (brány virtuální sítě, které používají parametr-GatewayType Vpn). Tento článek nepopisuje všechny typy brány a zónově redundantní brány.
->
->* Hodnoty, které platí pro parametr-GatewayType "ExpressRoute", naleznete v tématu [brány virtuální sítě pro ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
->* Zónově redundantní brány najdete v části [o zónově redundantní brány](about-zone-redundant-vnet-gateways.md).
->* Virtuální sítě WAN, naleznete v tématu [o virtuální sítě WAN](../virtual-wan/virtual-wan-about.md). 
->
+Hodnoty v tomto článku platí brány VPN (brány virtuální sítě, které používají parametr-GatewayType Vpn). Tento článek nepopisuje všechny typy brány a zónově redundantní brány.
+
+* Hodnoty, které platí pro parametr-GatewayType "ExpressRoute", naleznete v tématu [brány virtuální sítě pro ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
+
+* Zónově redundantní brány najdete v části [o zónově redundantní brány](about-zone-redundant-vnet-gateways.md).
+
+* Virtuální sítě WAN, naleznete v tématu [o virtuální sítě WAN](../virtual-wan/virtual-wan-about.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="gwtype"></a>Typy bran
 
@@ -42,7 +44,7 @@ Vyžaduje bránu sítě VPN `-GatewayType` *Vpn*.
 Příklad:
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
 ```
@@ -62,7 +64,7 @@ Je-li vytvořit bránu virtuální sítě Resource Manageru pomocí webu Azure p
 Následující příklad Powershellu Určuje, `-GatewaySku` jako VpnGw1. Při použití Powershellu k vytvoření brány, je třeba nejprve vytvořit konfiguraci IP adresy a poté na něj odkazovat pomocí proměnné. V tomto příkladu je proměnná konfigurace $gwipconfig.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -101,7 +103,7 @@ V modelu nasazení Resource Manager Každá konfigurace vyžaduje typ připojen�
 V následujícím příkladu Powershellu vytvoříme připojení S2S, které vyžaduje typ připojení *IPsec*.
 
 ```powershell
-New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
+New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
@@ -119,7 +121,7 @@ Po vytvoření brány virtuální sítě, nelze změnit typ sítě VPN. Budete m
 Následující příklad Powershellu Určuje, `-VpnType` jako *RouteBased*. Při vytváření brány se musíte ujistit, že parametr -VpnType odpovídá vaší konfiguraci.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -141,21 +143,21 @@ Při vytváření podsítě brány zadáte počet IP adres, které podsíť obsa
 Následující příklad Powershellu pro Resource Manager ukazuje podsíť brány s názvem GatewaySubnet. Uvidíte, že zápis CIDR Určuje velikost/27, která zajistíte dostatek IP adres u většiny konfigurací, které momentálně existují.
 
 ```powershell
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="lng"></a>Místní síťové brány
 
-Při vytváření konfiguraci brány VPN brány místní sítě často představuje místní umístění. V modelu nasazení Classic se brána místní sítě označovala jako „místní lokalita“. 
+ Brána místní sítě se liší od brány virtuální sítě. Při vytváření konfiguraci brány VPN brány místní sítě obvykle představuje místní umístění. V modelu nasazení Classic se brána místní sítě označovala jako „místní lokalita“.
 
 Pojmenujte bránu místní sítě, veřejnou IP adresu místního zařízení VPN a zadáte předpony adres, které se nacházejí na místní umístění. Azure zjistí pro síťový provoz předpony cílových adres consults konfiguraci, kterou jste zadali pro bránu místní sítě a směruje pakety odpovídajícím způsobem. Zadáte také brány místní sítě pro konfigurace VNet-to-VNet pomocí připojení brány VPN.
 
 Následující příklad Powershellu vytvoří novou bránu místní sítě:
 
 ```powershell
-New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
+New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
@@ -167,7 +169,7 @@ Další zdroje technických informací a požadavky na konkrétní syntaxe při 
 
 | **Classic** | **Resource Manager** |
 | --- | --- |
-| [PowerShell](/powershell/module/azurerm.network/#networking) |[PowerShell](/powershell/module/azurerm.network#vpn) |
+| [PowerShell](/powershell/module/azurerm.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | Nepodporuje se | [Azure CLI](/cli/azure/network/vnet-gateway)|
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4a4b760652ce38e27e12e9eb73fbe7692eddbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8d39b614c373c63cf1405c5db0f64581c481d1f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204368"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417193"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Verze Preview: Nasazení ochrany hesel Azure AD
 
@@ -53,15 +53,18 @@ Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows
     |`https://login.microsoftonline.com`|Požadavky na ověření|
     |`https://enterpriseregistration.windows.net`|Funkce Azure AD ochrana heslem|
 
+* Chcete-li povolit odchozí přenosy protokolu TLS 1.2 HTTP nastavené všechny počítače, který je hostitelem služby Proxy ochrana hesel Azure AD.
 * Účet globálního správce pro registraci služby Proxy ochrana hesel Azure AD a doménové struktury s Azure AD.
 * Účet s oprávněním správce domény služby Active Directory v kořenové doméně doménové struktury pro registraci doménové struktury Windows Server Active Directory s Azure AD.
 * Libovolné doméně Active Directory, který je spuštěn řadič domény služby softwaru agenta musíte použít DFSR k replikování adresáře sysvol.
 
 ## <a name="single-forest-deployment"></a>Nasazení jedné doménové struktury
 
-Následující diagram znázorňuje, jak základní součásti ochrany hesel služby Azure AD společně v prostředí místní služby Active Directory.  
+Následující diagram znázorňuje, jak základní součásti ochrany hesel služby Azure AD společně v prostředí místní služby Active Directory.
 
 ![Jak fungují společně součásti ochrany hesel služby Azure AD](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+
+Před nasazením je vhodné zkontrolovat, jak software funguje; Podrobnosti najdete na [koncepční přehled služby Azure AD ochrana heslem](concept-password-ban-bad-on-premises.md).
 
 ### <a name="download-the-software"></a>Stáhnout software
 

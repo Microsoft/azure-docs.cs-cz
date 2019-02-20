@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6493da0cfc86560fac8e69f4329804c628942806
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: bb9b90ca239ff03f44b76a7ee5754eb7872caa31
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328705"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415897"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server ve službě Azure Virtual Machines
 
@@ -88,11 +88,9 @@ Jednotky dočasného úložiště označených jako **D**: jednotka, není trval
 
 Pro řady D-series, řada Dv2-series a virtuální počítače řady G-series je dočasné jednotky na tyto virtuální počítače založené na jednotkách SSD. Pokud vaše úloha značně používá databáze tempdb (například dočasné objekty nebo komplexním spojením), uložení databáze TempDB na **D** jednotky může mít za následek větší propustnost v databázi TempDB a nižší latenci na databáze TempDB. Příklad scénáře naleznete v databázi TempDB diskuze v následujícím příspěvku blogu: [Pokyny pro konfiguraci úložiště pro SQL Server na virtuálním počítači Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm).
 
-<<<<<<< HEAD pro virtuální počítače podporující premium SSD disky (řady DS-series, DSv2-series a GS-series), doporučujeme uložit databázi TempDB na disk, který podporuje premium SSD s čtení povoleno ukládání do mezipaměti. Existuje jedna výjimka tohoto doporučení; Pokud vaše využití databáze TempDB je náročné na zápis, můžete dosáhnout vyššího výkonu uložení databáze TempDB na místním **D** jednotky, což je také SSD podle těchto velikosti počítačů.
-=== Pro virtuální počítače, které podporují službu Premium Storage (řady DS-series, DSv2-series a GS-series) doporučujeme uložit databázi TempDB na disk, který podporuje službu Premium Storage s čtení povoleno ukládání do mezipaměti. 
+Pro virtuální počítače, které podporují premium SSD disky (řady DS-series, DSv2-series a GS-series) doporučujeme uložit databázi TempDB na disk, který podporuje premium SSD s čtení povoleno ukládání do mezipaměti.
 
-Existuje jedna výjimka tohoto doporučení: _pokud využití databáze TempDB je náročné na zápis, můžete dosáhnout vyššího výkonu uložení databáze TempDB na místním **D** jednotky, což je také SSD podle těchto velikosti počítačů._ 
->>>>>>> 4326ed494fad7ef7be29e2f4ba3301ec496acf76
+Existuje jedna výjimka tohoto doporučení: _pokud využití databáze TempDB je náročné na zápis, můžete dosáhnout vyššího výkonu uložení databáze TempDB na místním **D** jednotky, což je také SSD podle těchto velikosti počítačů._
 
 ### <a name="data-disks"></a>Datové disky
 

@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9eebd695cbbc1e29ea7d2647b5955bcc2e3cfe4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a86ce8c061450fd66b31a81ec00e51f98a39646
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175910"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415642"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -82,8 +82,8 @@ Použijte následující kontrolní seznam k řešení problémů bezproblémov�
 - Ujistěte se, že uživatelský účet je z doménové struktury služby Active Directory, kde byl bezproblémové jednotné přihlašování nastavit.
 - Ujistěte se, že je zařízení připojené k podnikové síti.
 - Ujistěte se, že čas zařízení synchronizované s časem v Active Directory a řadiče domény a že jsou do pěti minut od sebe navzájem.
-- Ujistěte se, `AZUREADSSOACCT` účet počítače je k dispozici a povoleno v každé doménové struktuře AD, který chcete bezproblémového jednotného přihlašování povolená. Pokud účet počítače se odstranil nebo chybí, můžete použít [rutin prostředí PowerShell](#manual-reset-of-the-feature) je vytvořit znovu.
-- Seznam existujících lístků protokolu Kerberos na zařízení s použitím `klist` z příkazového řádku. Ujistěte se, že lístky vydané pro `AZUREADSSOACCT` účet počítače jsou k dispozici. Lístky protokolu Kerberos uživatele jsou obvykle platné po dobu 10 hodin. Můžete mít různá nastavení ve službě Active Directory.
+- Ujistěte se, `AZUREADSSOACC` účet počítače je k dispozici a povoleno v každé doménové struktuře AD, který chcete bezproblémového jednotného přihlašování povolená. Pokud účet počítače se odstranil nebo chybí, můžete použít [rutin prostředí PowerShell](#manual-reset-of-the-feature) je vytvořit znovu.
+- Seznam existujících lístků protokolu Kerberos na zařízení s použitím `klist` z příkazového řádku. Ujistěte se, že lístky vydané pro `AZUREADSSOACC` účet počítače jsou k dispozici. Lístky protokolu Kerberos uživatele jsou obvykle platné po dobu 10 hodin. Můžete mít různá nastavení ve službě Active Directory.
 - Je-li zakázána a znovu povolit bezproblémového jednotného přihlašování ve svém tenantovi, nebudou uživatelé získají jednotné přihlašování do své mezipaměti lístky protokolu Kerberos vypršela.
 - Vymazání existujících lístků protokolu Kerberos ze zařízení s použitím `klist purge` příkazu a zkuste to znovu.
 - Chcete-li zjistit, zda jsou problémy související s jazyka JavaScript, zkontrolovat protokoly konzoly prohlížeče (v části **vývojářské nástroje**).
@@ -123,7 +123,7 @@ Pokud se vám nepomohly řešení potíží, můžete ručně obnovit funkci ve 
     >[!NOTE]
     >Používáme zadané v uživatele hlavní názvy (UPN) uživatelské jméno správce domény (johndoe@contoso.com) formát nebo kvalifikovaný účtu sam formát názvu domény (contoso\janmacek nebo contoso.com\johndoe), se najít odpovídající doménovou strukturu AD. Pokud používáte účtu sam kvalifikovaný název domény, používáme doména uživatelské jméno pro [vyhledejte řadič domény ze správce domény s DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použít hlavní název uživatele jsme [přeložit na účtu sam kvalifikovaný název domény](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) před vyhledání vhodné řadiče domény.
 
-2. Volání `Disable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz odebere `AZUREADSSOACCT` účet počítače z místního kontroleru domény pro tento konkrétní doménovou strukturu služby Active Directory.
+2. Volání `Disable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz odebere `AZUREADSSOACC` účet počítače z místního kontroleru domény pro tento konkrétní doménovou strukturu služby Active Directory.
 3. Zopakujte předchozí kroky pro každou doménovou strukturu služby Active Directory, kde jste tuto funkci nastavili.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Krok 4: Povolte bezproblémové jednotné přihlašování pro každou doménovou strukturu služby Active Directory
