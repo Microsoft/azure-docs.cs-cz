@@ -34,20 +34,30 @@ items:
     href: backup-rm-template-samples.md
 - name: Koncepty
   items:
-  - name: Architektura zálohování
-    href: backup-architecture.md
-  - name: Matice podpory zálohování
-    href: backup-support-matrix.md
+  - name: Matice podpory
+    items:
+    - name: Matice podpory pro Azure Backup
+      href: backup-support-matrix.md
+    - name: Matice podpory pro zálohování virtuálních počítačů Azure
+      href: backup-support-matrix-iaas.md
+    - name: Matice podpory pro DPM / Azure Backup Server (MABS)
+      href: backup-support-matrix-mabs-dpm.md
+    - name: Matice podpory pro agenty MARS
+      href: backup-support-matrix-mars-agent.md
   - name: Nejčastější dotazy
     items:
     - name: Nejčastější dotazy k trezorům služby Recovery Services
       href: backup-azure-backup-faq.md
     - name: Nejčastější dotazy k zálohování virtuálních počítačů Azure
       href: backup-azure-vm-backup-faq.md
-    - name: Nejčastější dotazy k zálohování souborů a složek pomocí agenta Azure Backup
+    - name: Nejčastější dotazy k agentům MARS
       href: backup-azure-file-folder-backup-faq.md
-    - name: Nejčastější dotazy k automatickému upgradu úložiště záloh
-      href: backup-upgrade-backup-vault.md
+    - name: Nejčastější dotazy k zálohování Azure Files
+      href: backup-azure-files-faq.md
+    - name: Nejčastější dotazy k zálohování databází SQL Serveru na virtuálních počítačích Azure
+      href: faq-backup-sql-server.md
+  - name: Architektura zálohování
+    href: backup-architecture.md
   - name: Řízení přístupu na základě rolí
     href: backup-rbac-rs-vault.md
   - name: Zabezpečení pro hybridní zálohy
@@ -104,45 +114,39 @@ items:
     items:
     - name: Zálohování sdílených složek Azure
       href: backup-azure-files.md
-    - name: Zálohování sdílených složek Azure – nejčastější dotazy
-      href: backup-azure-files-faq.md
-  - name: Virtuální počítače Azure
+  - name: Zálohování virtuálních počítačů Azure
     items:
-    - name: Příprava virtuálního počítače
+    - name: Informace o zálohování virtuálních počítačů Azure
+      href: backup-azure-vms-introduction.md
+    - name: Zálohování a obnovení virtuálních počítačů Azure s využitím okamžitého obnovení služby Azure Backup
+      href: backup-instant-restore-capability.md
+    - name: Zálohování virtuálních počítačů Azure
       items:
-      - name: Příprava virtuálních počítačů nasazovaných Resource Managerem
-        href: backup-azure-arm-vms-prepare.md
-      - name: Aplikačně konzistentní zálohování virtuálních počítačů s Linuxem
-        href: backup-azure-linux-app-consistent.md
-    - name: Plánování prostředí
-      items:
-      - name: Plánování infrastruktury zálohování virtuálních počítačů
-        href: backup-azure-vms-introduction.md
-    - name: Zálohování virtuálních počítačů
-      items:
-      - name: Zálohování virtuálních počítačů do trezoru služby Recovery Services
-        href: backup-azure-vms-first-look-arm.md
-      - name: Zálohování šifrovaných virtuálních počítačů
-        href: backup-azure-vms-encryption.md
-      - name: Povolení zálohování virtuálních počítačů během vytváření virtuálních počítačů
+      - name: Povolení zálohování při vytvoření virtuálního počítače Azure
         href: backup-during-vm-creation.md
-    - name: Správa a monitorování virtuálních počítačů
+      - name: Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
+        href: backup-azure-vms-first-look-arm.md
+      - name: Nastavení trezoru a povolení zálohování pro virtuální počítače Azure
+        href: backup-azure-arm-vms-prepare.md
+      - name: Zálohování šifrovaných virtuálních počítačů Azure
+        href: backup-azure-vms-encryption.md
+      - name: Konfigurace zálohování konzistentního vzhledem k aplikacím pro virtuální počítače Azure s Linuxem
+        href: backup-azure-linux-app-consistent.md
+    - name: Správa a sledování záloh virtuálních počítačů Azure
       items:
-      - name: Správa záloh virtuálních počítačů Azure na webu Azure Portal
+      - name: Správa záloh virtuálních počítačů Azure
         href: backup-azure-manage-vms.md
       - name: Monitorování výstrah pro zálohy virtuálních počítačů Azure
         href: backup-azure-monitor-vms.md
-    - name: Obnovení dat z virtuálních počítačů
+    - name: Obnovení virtuálních počítačů Azure
       items:
+      - name: Obnovení virtuálních počítačů Azure na portálu
+        href: backup-azure-arm-restore-vms.md
       - name: Obnovení souborů ze záloh virtuálních počítačů Azure
         href: backup-azure-restore-files-from-vm.md
-      - name: Obnovení virtuálních počítačů na webu Azure Portal
-        href: backup-azure-arm-restore-vms.md
-      - name: Funkce okamžité obnovy
-        href: backup-instant-restore-capability.md
       - name: Obnovení šifrovaných virtuálních počítačů
         href: backup-azure-vms-encryption.md
-      - name: Obnovení klíče a tajného kódu Key Vault pro šifrované virtuální počítače
+      - name: Obnovení klíče a tajného kódu pro šifrované virtuální počítače
         href: backup-azure-restore-key-secret.md
   - name: Konfigurace sestav Azure Backup
     items:
@@ -188,10 +192,14 @@ items:
       href: backup-azure-arm-userestapi-restoreazurevms.md
     - name: Správa úloh Azure Backup
       href: backup-azure-arm-userestapi-managejobs.md
-  - name: SQL na virtuálních počítačích Azure
+  - name: Zálohování databází SQL Serveru na virtuálních počítačích Azure
     items:
-    - name: Zálohování databáze SQL v Azure
+    - name: Zálohování databází SQL Serveru na virtuálních počítačích Azure
       href: backup-azure-sql-database.md
+    - name: Obnovení zálohovaných databází SQL Serveru
+      href: restore-sql-database-azure-vm.md
+    - name: Správa zálohovaných databází SQL Serveru
+      href: manage-monitor-sql-database-backup.md
   - name: Windows Server
     items:
     - name: Zálohování souborů a složek Windows Serveru
@@ -262,9 +270,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: ce83f8b6b1a0c7ccd9f00672f9aaf9bb33152fa8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 77f6bf8c4dd12c31f7461b273322b4ce41e3c58d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997230"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428291"

@@ -81,28 +81,49 @@ items:
     - name: Správa řízení přístupu na základě rolí
       displayName: RBAC
       href: automation-role-based-access-control.md
-  - name: Vytváření runbooků
+  - name: Runbooky
     items:
+    - name: Správa runbooků
+      href: manage-runbooks.md
     - name: Typy runbooků
       displayName: graphical, python, powershell, powershell workflow
       href: automation-runbook-types.md
-    - name: Vytváření a import runbooků
-      href: automation-creating-importing-runbook.md
-    - name: Vytvoření grafického runbooku
-      href: automation-first-runbook-graphical.md
-    - name: Vytvoření runbooku v PowerShellu
-      href: automation-first-runbook-textual-powershell.md
-    - name: Vytvoření runbooku pracovního postupu v PowerShellu
-      href: automation-first-runbook-textual.md
-    - name: Vytvoření runbooku v Pythonu
-      href: automation-first-runbook-textual-python2.md
-    - name: Úpravy textových runbooků
-      displayName: powershell
-      href: automation-edit-textual-runbook.md
-    - name: Úpravy grafických runbooků
-      href: automation-graphical-authoring-intro.md
-    - name: Testování runbooku
-      href: automation-testing-runbook.md
+    - name: Vytváření runbooků
+      items:
+      - name: Grafický runbook
+        href: automation-first-runbook-graphical.md
+      - name: Powershellový runbook
+        href: automation-first-runbook-textual-powershell.md
+      - name: Runbook pracovního postupu PowerShellu
+        href: automation-first-runbook-textual.md
+      - name: Runbook Pythonu
+        href: automation-first-runbook-textual-python2.md
+      - name: Vytvoření runbooků s využitím sady Graphical runbook SDK
+        href: graphical-runbook-sdk.md
+    - name: Úprava runbooků
+      items:
+      - name: Úpravy textových runbooků
+        displayName: powershell
+        href: automation-edit-textual-runbook.md
+      - name: Úpravy grafických runbooků
+        href: automation-graphical-authoring-intro.md
+    - name: Spuštění runbooku
+      href: start-runbooks.md
+    - name: Spuštění runbooku z webhooku
+      href: automation-webhooks.md
+    - name: Vstupní parametry runbooku
+      displayName: input,json
+      href: runbook-input-parameters.md
+    - name: Zpracování chyb v grafických runbookách
+      href: automation-runbook-graphical-error-handling.md
+    - name: Sledování úlohy runbooku
+      displayName: fair share, activity log
+      href: automation-runbook-execution.md
+    - name: Správa dat Azure Automation
+      displayName: backup
+      href: automation-managing-data.md
+    - name: Správa balíčků Python 2
+      href: python-packages.md
     - name: Informace o pracovním postupu PowerShellu
       href: automation-powershell-workflow.md
     - name: Podřízené runbooky
@@ -116,28 +137,6 @@ items:
     - name: Integrace správy zdrojového kódu – stará verze
       href: automation-source-control-integration-legacy.md
       displayname: github
-    - name: Vytvoření runbooků s využitím sady Graphical runbook SDK
-      href: graphical-runbook-sdk.md
-  - name: Automatizace
-    items:
-    - name: Spuštění runbooku
-      href: automation-starting-a-runbook.md
-    - name: Spuštění runbooku z webhooku
-      href: automation-webhooks.md
-    - name: Vstupní parametry runbooku
-      href: automation-runbook-input-parameters.md
-    - name: Zpracování chyb v grafických runbookách
-      href: automation-runbook-graphical-error-handling.md
-    - name: Sledování úlohy runbooku
-      displayName: fair share, activity log
-      href: automation-runbook-execution.md
-    - name: Správa dat Azure Automation
-      displayName: backup
-      href: automation-managing-data.md
-    - name: Předání objektu JSON do runbooku Azure Automation
-      href: automation-pass-json-string.md
-    - name: Správa balíčků Python 2
-      href: python-packages.md
   - name: Hybrid Runbook Worker
     items:
     - name: Přehled funkce Hybrid Runbook Worker
@@ -205,12 +204,6 @@ items:
       href: automation-create-alert-triggered-runbook.md
     - name: Vytvoření virtuálního počítače webové služby Amazon
       href: automation-scenario-aws-deployment.md
-    - name: Integrace správy zdrojového kódu pomocí GitHub Enterprise
-      displayName: CI, runbooks
-      href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: Integrace správy zdrojového kódu pomocí Azure DevOps
-      displayName: VSTS, CI, runbooks
-      href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
       href: automation-deploy-template-runbook.md
     - name: Integrace služby Azure Automation se službou Event Grid a Microsoft Teams
@@ -292,9 +285,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: a5886c5af9db6945fe33efd8198b5527f580d297
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e35c51bb1d82f2c5eda708ab8bce71c2bf5b69b7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004567"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417019"
