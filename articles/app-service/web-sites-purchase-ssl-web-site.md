@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820780"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446745"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
-V tomto kurzu se dozvíte, jak zabezpečit webovou aplikaci tak, že vytvoříte (nákup) služby App Service certificate v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) a jeho vazbu na aplikaci služby App Service.
+V tomto kurzu se dozvíte, jak zabezpečit vaše [aplikace služby App Service](https://docs.microsoft.com/azure/app-service/) nebo [aplikace function app](https://docs.microsoft.com/azure/azure-functions/) tak, že vytvoříte (nákup) služby App Service certificate v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) a pak vytvořte mu vazbu k Aplikace služby App Service.
 
 > [!TIP]
 > Certifikáty služby App Service můžete použít pro Azure nebo Azure Services a není omezena pouze na App Services. Uděláte to tak, musíte vytvořit místní kopii PFX certifikátu služby App Service můžete jej můžete použít všude, kde chcete. Další informace najdete v tématu [vytváření místní kopie PFX App Service Certificate](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak zabezpečit webovou aplikaci tak, že vytvoříte
 Chcete postupovat podle příručky s postupy:
 
 - [Vytvořit aplikaci App Service](/azure/app-service/)
-- [Mapování názvu domény do webové aplikace](app-service-web-tutorial-custom-domain.md) nebo [koupě a konfigurace v Azure](manage-custom-dns-buy-domain.md)
+- [Mapování názvu domény do vaší aplikace](app-service-web-tutorial-custom-domain.md) nebo [koupě a konfigurace v Azure](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 

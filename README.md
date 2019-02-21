@@ -1,5 +1,7 @@
 # <a name="microsoft-azure-documentation"></a>Dokumentace k Microsoft Azure
 
+> V období mezi 5. a 9. březnem 2019 dojde k migraci úložiště MicrosoftDocs/azure-docs z aktuálního markdownového modulu na markdownový modul [Markdig](https://github.com/lunet-io/markdig). Během tohoto období vypneme možnost pozastavit slučování veřejných žádostí o přijetí změn, aby bylo možné tuto migraci dokončit.
+
 Vítá vás opensourcová [dokumentace](https://docs.microsoft.com/azure) pro [Microsoft Azure](https://azure.microsoft.com). Přečtěte si prosím tento soubor README a seznamte se s tím, jak můžete přispívat do dokumentace k Microsoft Azure.
 
 ## <a name="getting-started"></a>Začínáme

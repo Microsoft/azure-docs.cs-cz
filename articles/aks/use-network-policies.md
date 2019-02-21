@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: ddc0f0f8cfd6c7d540d2a1de2f5ecb35cdfd234f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417597"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447170"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -27,21 +27,7 @@ Tento článek popisuje, jak používat zásady sítě k řízení toku přenos�
 
 Musí mít Azure CLI verze 2.0.56 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
-## <a name="overview-of-network-policy"></a>Přehled služby Síťové zásady
-
-Ve výchozím nastavení můžete všechny podů v clusteru AKS odesílat a přijímat provoz bez omezení. Pro zlepšení zabezpečení, můžete definovat pravidla, která řídí tok provozu. Například back-endové aplikace jsou často dostupná jenom v případě do požadované front-endové služby nebo databáze součásti jsou pouze přístupné aplikačních vrstev, které k nim připojit.
-
-Zásady sítě jsou prostředky Kubernetesu, které vám umožňují řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Zásady sítě, definovaná podle manifestů YAML a může být součástí širší manifestu, který vytvoří také nasazení nebo služby.
-
-Zobrazit zásady sítě v akci, Pojďme vytvořit a potom rozbalte na zásadu, která definuje toku provozu následujícím způsobem:
-
-* Odepřete veškerý provoz směrem k pod.
-* Povolení provozu na základě popisků pod.
-* Povolení provozu na základě v oboru názvů.
-
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolit zásady sítě
-
-Zásady sítě jde Povolit jenom při vytvoření clusteru. Nelze povolit zásady sítě v existujícím clusteru AKS. Pokud chcete vytvořit AKS pomocí zásady sítě, nejprve povolte příznak funkce v rámci předplatného. K registraci *EnableNetworkPolicy* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit AKS pomocí zásady sítě, nejprve povolte příznak funkce v rámci předplatného. K registraci *EnableNetworkPolicy* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
@@ -59,7 +45,25 @@ Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskyto
 az provider register --namespace Microsoft.ContainerService
 ```
 
-Zásady sítě pomocí AKS cluster, je nutné použít [modul plug-in Azure CNI] [ azure-cni] a definovat vlastní virtuální sítě a podsítě. Podrobné informace o tom, jak naplánovat rozsahy požadované podsítě, naleznete v tématu [konfiguraci rozšířeného sítě][use-advanced-networking]. Následující ukázkový skript:
+## <a name="overview-of-network-policy"></a>Přehled služby Síťové zásady
+
+Ve výchozím nastavení můžete všechny podů v clusteru AKS odesílat a přijímat provoz bez omezení. Pro zlepšení zabezpečení, můžete definovat pravidla, která řídí tok provozu. Například back-endové aplikace jsou často dostupná jenom v případě do požadované front-endové služby nebo databáze součásti jsou pouze přístupné aplikačních vrstev, které k nim připojit.
+
+Zásady sítě jsou prostředky Kubernetesu, které vám umožňují řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Zásady sítě, definovaná podle manifestů YAML a může být součástí širší manifestu, který vytvoří také nasazení nebo služby.
+
+Zobrazit zásady sítě v akci, Pojďme vytvořit a potom rozbalte na zásadu, která definuje toku provozu následujícím způsobem:
+
+* Odepřete veškerý provoz směrem k pod.
+* Povolení provozu na základě popisků pod.
+* Povolení provozu na základě v oboru názvů.
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolit zásady sítě
+
+Zásady sítě jde Povolit jenom při vytvoření clusteru. Nelze povolit zásady sítě v existujícím clusteru AKS. 
+
+Zásady sítě pomocí AKS cluster, je nutné použít [modul plug-in Azure CNI] [ azure-cni] a definovat vlastní virtuální sítě a podsítě. Podrobné informace o tom, jak naplánovat rozsahy požadované podsítě, naleznete v tématu [konfiguraci rozšířeného sítě][use-advanced-networking].
+
+Následující ukázkový skript:
 
 * Vytvoří virtuální síť a podsíť.
 * Vytvoří instanční objekt pro použití Azure Active Directory (AD) s clusterem AKS.
@@ -86,7 +90,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-read SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."

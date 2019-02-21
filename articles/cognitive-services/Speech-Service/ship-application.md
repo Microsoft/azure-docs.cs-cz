@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2e35afe996ec80411d2e0e339fd4d49adecd1239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857936"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445113"
 ---
 # <a name="ship-an-application"></a>Dodávejte aplikace
 
@@ -47,19 +47,19 @@ Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresá�
 
 ## <a name="linux"></a>Linux
 
+Sadou SDK pro řeč aktuálně podporuje Ubuntu 16.04 a 18.04 distribucí.
 Pro nativní aplikaci, je třeba dodávat knihovně sadou SDK pro řeč `libMicrosoft.CognitiveServices.Speech.core.so`.
 Ujistěte se, zda že jste vybrali verzi (x86, x64), která odpovídá vaší aplikace. V závislosti na verzi systému Linux můžete také potřebovat zahrnout tyto závislosti:
 
 * Sdílené knihovny knihovna GNU C (včetně knihovny POSIX vlákna programování `libpthreads`)
 * Knihovny OpenSSL (`libssl.so.1.0.0`)
-* Knihovna cURL (`libcurl.so.4`)
 * Sdílená knihovna pro aplikace ALSA (`libasound.so.2`)
 
-Na Ubuntu 16.04 nebo 18.04 například knihovny GNU C musí již být nainstalováno ve výchozím nastavení. Poslední tři lze nainstalovat pomocí těchto příkazů:
+V Ubuntu by měl knihovny GNU C již nainstalován ve výchozím nastavení. Poslední tři lze nainstalovat pomocí těchto příkazů:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2 wget
 ```
 
 ## <a name="next-steps"></a>Další postup

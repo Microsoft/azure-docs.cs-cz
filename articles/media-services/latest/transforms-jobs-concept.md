@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: fd93b84c251a0b2346550c79bcb8796161cb9116
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d621afd682e6040179777f4cd6d991ff31acb5a3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417867"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445487"
 ---
 # <a name="transforms-and-jobs"></a>Transformace a úlohy
  
@@ -61,6 +61,13 @@ Zobrazit [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberro
 
 Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
 
+## <a name="configure-media-reserved-units"></a>Konfigurovat rezervované jednotky médií
+
+Pro analýzu zvuku a videa analytických úloh, které jsou aktivovány Media Services v3 nebo Video Indexer důrazně doporučujeme pro účet zřídit s 10 rezervované jednotky médií S3 (použité položky). Pokud potřebujete více než 10 použité položky S3, otevřete lístek podpory pomocí [webu Azure portal](https://portal.azure.com/).
+
+Podrobnosti najdete v tématu [škálování zpracování médií pomocí rozhraní příkazového řádku](media-reserved-units-cli-how-to.md).
+
 ## <a name="next-steps"></a>Další postup
 
-[Nahrávání, kódování a streamování videosouborů](stream-files-tutorial-with-api.md)
+- [Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
+- [Kurz: Analýza videa pomocí Media Services v3 pomocí .NET](analyze-videos-tutorial-with-api.md)

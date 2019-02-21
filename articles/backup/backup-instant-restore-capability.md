@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: cc4f559efecec3f024ce995dcf8f8757eb9cb4fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489682"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452810"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
@@ -23,10 +23,11 @@ ms.locfileid: "55489682"
 Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 
 * Možnost používat snímkům pořízeným jako součást, která je k dispozici pro obnovení bez čekání na přenos dat do trezoru na dokončení úlohy zálohování. Snižuje dobu čekání pro snímky ke zkopírování do trezoru před aktivace operace obnovení.
-* Zkracuje dobu zálohování a obnovení tak, že zachová snímků spolu s disky po dobu sedmi dní.
+* Zkracuje dobu zálohování a obnovení tak, že zachová snímky místně, ve výchozím nastavení dva dny. Tento trezor výchozí je možné konfigurovat na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
 * Podporuje disk o velikosti až 4 TB.
 * Podporuje disky SSD na úrovni Standard.
-* Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
+*   Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů
+
 
 
 ## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
@@ -47,6 +48,12 @@ Snímky se uchovávají po dobu sedmi dní. Tato funkce umožňuje operace obnov
 * Snímky se ukládají společně s disky, a zvýšit tak vytvoření bodu obnovení a to ke zrychlení operací obnovení. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům pořízeným během tohoto období.
 * Přírůstkové snímky se ukládají jako objekty BLOB stránky. Všichni uživatelé používali nespravované disky se vám účtuje snímky uloženým v jejich účtu místní úložiště. Protože kolekce bodů obnovení, který se používá záloh virtuálních počítačů spravovaných pomocí snímky objektů blob na základní úrovni úložiště, za spravované disky se zobrazí náklady odpovídající do objektu blob ceny snímků a jsou přírůstkové.
 * Pro účty služby premium storage snímkům pořízeným pro okamžité obnovení počet bodů vůči limit 10 TB přidělené místo.
+* Získáte možnost konfigurace uchovávání snímku na základě potřeb obnovení. V závislosti na požadavku můžete nastavit uchování snímků pro minimálně jeden den v okně zásady zálohování, jak je popsáno níže. To vám umožňují snížení nákladů pro uchovávání dat snímku, pokud nechcete provádět obnovení často.
+
+
+>[!NOTE]
+>Pomocí této rychlé obnovení upgradu, doba uchovávání snímek u všech zákazníků (**nové i stávající zahrnuté obě**) se nastaví na výchozí hodnotu dvou dnů. Však můžete nastavit dobu trvání podle vašich požadavků na libovolnou hodnotu mezi 1 až 5 dnů uvolní.
+
 
 ## <a name="cost-impact"></a>Cenově dopad
 
@@ -56,17 +63,25 @@ Přírůstkovými snímky se ukládají v účtu úložiště Virtuálního poč
 ## <a name="upgrading-to-instant-restore"></a>Upgrade na rychlé obnovení
 
 Pokud použijete Azure portal, zobrazí se oznámení na řídicím panelu trezoru. Toto oznámení se týká podporu velkých disků a zvýšení rychlosti zálohování a obnovení.
+Otevření obrazovky pro upgrade na rychlé obnovení, klikněte na banner.
 
 ![Úloha zálohování v modelu nasazení Resource Manager zásobník záloh virtuálních počítačů – podpora oznámení](./media/backup-azure-vms/instant-rp-banner.png)
 
-Otevření obrazovky pro upgrade na rychlé obnovení, klikněte na banner.
+Klikněte na **upgradovat** jak je znázorněno v následujícím snímku obrazovky:
 
 ![Úloha zálohování v zásobníku zálohování virtuálních počítačů modelu nasazení Resource Manager – upgrade](./media/backup-azure-vms/instant-rp.png)
 
-Případně můžete přejít na **vlastnosti** stránce trezoru, chcete-li získat **upgradovat** v části **zásobník záloh virtuálních počítačů**.
+Alternativně můžete přejít na **vlastnosti** stránce trezoru, chcete-li získat **upgradovat** v části **zásobník záloh virtuálních počítačů**.
 
 ![Úloha zálohování v zásobníku zálohování virtuálních počítačů – stránka Vlastnosti](./media/backup-azure-vms/instant-restore-capability-properties.png)
 
+
+## <a name="configure-snapshot-retention-using-azure-portal"></a>Konfigurace uchovávání snímek pomocí webu Azure portal
+Tato možnost je teď dostupná v západní USA – střed, Indie – jih a Austrálie – východ.
+
+Upgradovaný uživatelů na webu Azure Portal uvidíte pole přidá **zásady zálohování virtuálních počítačů** okně v části **rychlé obnovení** části. Doba uchování snímků z můžete změnit **zásady zálohování virtuálního počítače** okno pro všechny virtuální počítače přidružené k určité zásady zálohování.
+
+![Funkce Rychlé obnovení](./media/backup-azure-vms/instant-restore-capability.png)
 
 ## <a name="upgrade-to-instant-restore-using-powershell"></a>Upgrade provést rychlé obnovení pomocí prostředí PowerShell
 
@@ -145,13 +160,13 @@ Každý den nový snímek je převzata, a pak jednotlivým pět přírůstkovýc
 Snímkům pořízeným jako součást funkce Rychlé obnovení jsou přírůstkových snímků.
 
 ### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Výpočet zvýšení přibližné náklady z důvodu funkce Rychlé obnovení
-To závisí na četnosti změn virtuálního počítače. Stabilního stavu, můžete předpokládat, zvýšení nákladů je = snímku dobu uchování * denní četnost změn na virtuálním počítači * náklady na úložiště za GB.
+To závisí na četnosti změn virtuálního počítače. Do stabilního stavu můžete předpokládat, zvýšení nákladů je = snímku uchování období denní četnosti změn za náklady na úložiště virtuálního počítače za GB.
 
 ### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Pokud je typ obnovení pro bod obnovení "Snímek a trezor" a provádět operace obnovení, který typ obnovení, který se použije?
 Pokud "snímek a trezor" je typ obnovení, obnovení bude automaticky provedeno z místní snímek, který se bude porovnávat mnohem rychlejší obnovení provést z trezoru.
 
 ### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Co se stane, když vyberu doba uchování bodu obnovení (vrstva 2) menší než doba uchování snímků (1jádrové)?
-Nový model neumožňuje odstranění bodu obnovení (úroveň 2) Pokud se odstraní snímek (1jádrové). Momentálně podporujeme sedmidenní dobu uchování pro odstranění snímku (1jádrové), takže bodu obnovení (úroveň 2) není podporována uchovávají po dobu kratší než sedm dnů. Doporučujeme, abyste plánování období uchování obnovení bodu (úroveň 2) větší než sedm dnů.
+Nový model neumožňuje odstranění bodu obnovení (úroveň 2) Pokud se odstraní snímek (1jádrové). Doporučujeme, abyste plánování doba uchování (úroveň 2) bodu obnovení delší než doba uchování snímků.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Proč je můj snímku existující i potom, co sada uchování období v zásady zálohování?
-Pokud bod obnovení obsahuje snímky a, který je k dispozici nejnovější RP se uchovávají až do doby, které není další dostupnou úspěšnou zálohu. To je podle navrženého GC zásad ještě dnes, který zmocňuje nejméně jeden nejnovější předávající strana často být vždy k dispozici, v případě, že všechny zálohy, dále na selhat z důvodu chyby ve virtuálním počítači. V běžných scénářích RPs vyčistily ve 48 hodin po vypršení jejich platnosti.
+Pokud bod obnovení obsahuje snímky a, který je k dispozici nejnovější RP se uchovávají až do doby, které není další dostupnou úspěšnou zálohu. To je podle navrženého GC zásad ještě dnes, který zmocňuje nejméně jeden nejnovější předávající strana často být vždy k dispozici, v případě, že všechny zálohy, dále na selhat z důvodu chyby ve virtuálním počítači. V běžných scénářích RPs vyčistily ve maximálně 24 hodin po vypršení jejich platnosti.

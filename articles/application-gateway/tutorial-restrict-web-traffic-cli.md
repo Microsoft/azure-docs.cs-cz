@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: db95ec05d7c2a61a75c0051b65d9c9c9943b732c
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3ce40c2e0726094113253258d3b3f0bf6d876f6f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753652"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452631"
 ---
 # <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>Kurz: Povolení firewallu webových aplikací pomocí Azure CLI
 
@@ -140,7 +140,7 @@ az vmss extension set \
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvořit účet úložiště a nakonfigurovat diagnostiku
 
-V tomto kurzu používá aplikační brána k ukládání dat účet úložiště, aby bylo možné je rozpoznat a také z preventivních důvodů. K záznamu dat můžete také použít Log Analytics nebo Centrum událostí. 
+V tomto kurzu používá aplikační brána k ukládání dat účet úložiště, aby bylo možné je rozpoznat a také z preventivních důvodů. Protokoly Azure monitoru nebo centra událostí můžete použít také k zaznamenání dat. 
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 

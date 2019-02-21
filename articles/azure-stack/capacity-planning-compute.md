@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: ca0a6569dda89586c629cc46909862de4f27cf04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160907"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446320"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Plánování kapacity výpočetních s Azure Stack
 [Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack](./user/azure-stack-vm-sizes.md) jsou podmnožinou, které jsou podporovány v Azure. Azure má omezení prostředků podél mnoho vektorů, aby overconsumption prostředků (server místní a úrovni služeb). Bez uložení některá omezení na prostředky spotřebované klienty, sníží tenanta prostředí při jiných tenantů overconsume prostředky. Pro sítě odchozího přenosu dat z virtuálního počítače existují omezení šířky pásma na místě ve službě Azure Stack, odpovídající omezení Azure. Pro prostředky úložiště limity vstupně-výstupních operací úložiště je implementovaná v Azure stacku, aby se zabránilo základní overconsumption prostředků tenantů pro přístup k úložišti.  
@@ -43,7 +43,7 @@ Pokud dojde k selhání serveru, restartuje virtuální počítače hostované n
 
 Následující výpočet výsledkem celkovou a dostupnou paměť, která lze použít pro umístění virtuálního počítače tenanta. Tato kapacita paměti je podkladové jednotky škálování Azure Stack.
 
-  Paměť k dispozici pro umístění virtuálního počítače = režijní náklady na celkové paměti serveru – odolnost proti chybám rezervy – Azure Stack infrastruktury <sup>1</sup>
+  Paměť k dispozici pro umístění virtuálního počítače = celková paměť serveru – odolnost proti chybám rezervy – paměti používané spuštěných virtuálních počítačů – zatížení infrastruktury Azure Stack <sup>1</sup>
 
   Odolnost proti chybám rezervy = H + R * (N-1) + V * (N-2)
 

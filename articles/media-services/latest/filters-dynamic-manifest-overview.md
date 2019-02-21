@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: 72466906e77c5a62e1dfc5cf8af2869e967c69c0
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3a496aa5dc08ac59fb51f8bf3010bd1edf1e605d
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339920"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447935"
 ---
-# <a name="dynamic-manifests"></a>Dynamických manifestů
+# <a name="dynamic-manifests"></a>Dynamické manifesty
 
 Media Services nabízí **dynamických manifestů** na základě předdefinovaných filtrů. Jakmile definujete filtry (naleznete v tématu [definovat filtry](filters-concept.md)), klienty je použít ke streamování konkrétní verze nebo dílčích klipů vašeho videa. V adrese URL streamování, zadejte filtry. Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: Apple HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming. 
 
@@ -28,8 +28,7 @@ V následující tabulce jsou uvedeny příklady adresy URL s filtry:
 
 |Protocol (Protokol)|Příklad:|
 |---|---|
-|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
+|HLS|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Technologie Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 

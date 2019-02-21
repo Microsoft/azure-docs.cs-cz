@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: cd6f533bcd32a307facc781c3b2207a337fc8a34
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309161"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445453"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
@@ -23,26 +23,28 @@ Pro účely služby Custom Vision Service klasifikace obrázků, musíte nejprve
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Platný [účtu Microsoft](https://account.microsoft.com/account) nebo účet Azure Active Directory (AAD) ("pracovní nebo školní účet").
-
-    > [!IMPORTANT] 
-    > Přihlášení pro uživatele AAD z [národních Cloudech Microsoftu](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) v tuto chvíli nepodporuje.
+- Platné předplatné Azure. [Vytvoření účtu](https://azure.microsoft.com/free/) zdarma.
 - Sadu imagí, které má klasifikátor trénovat. Níže najdete tipy k výběru Image.
-- Volitelně můžete: Předplatné Azure spojené s vaším účtem Microsoft nebo účtu AAD. Pokud nemáte předplatné Azure, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete. Bez předplatného Azure, bude pouze budete moci vytvořit dva __omezenou zkušební verzi__ projekty.
+
+
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření vlastní vizi prostředků na webu Azure Portal
+Pokud chcete používat službu Custom Vision Service, budete muset vytvořit vlastní zpracování obrazu trénování a Predikcí prostředky v v [webu Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Tím se vytvoří trénování a Predikcí prostředků. 
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Ve webovém prohlížeči přejděte [Custom Vision webové stránky](https://customvision.ai) a vyberte __přihlášení__.
+Ve webovém prohlížeči přejděte [Custom Vision webové stránky](https://customvision.ai) a vyberte __přihlášení__. Přihlaste se pomocí stejného účtu, který jste použili pro přihlášení na webu Azure Portal.
 
 ![Obrázek přihlašovací stránky](./media/browser-home.png)
 
-Pokud máte účet Azure, zobrazí se výzva k vytvoření Custom Vision Service trénování a Predikcí prostředky v [webu Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) během vytváření projektu.
 
 1. Chcete-li vytvořit svůj první projekt, vyberte **nový projekt**. **Vytvořit nový projekt** se zobrazí dialogové okno.
 
     ![Dialogovém okně Nový projekt obsahuje pole pro název, popis a domén.](./media/getting-started-build-a-classifier/new-project.png)
 
-1. Zadejte název a popis pro projekt. Vyberte skupinu prostředků. Pokud je váš účet přihlášeného přidružené k účtu Azure, se zobrazí rozevírací seznam skupina prostředků, všechny vaše skupiny prostředků Azure, která obsahují vlastní prostředek služby pro zpracování obrazu. V obou případech můžete také vybrat __omezenou zkušební verzi__ z tohoto rozevíracího seznamu.
+1. Zadejte název a popis pro projekt. Vyberte skupinu prostředků. Pokud je váš účet přihlášeného přidružené k účtu Azure, se zobrazí rozevírací seznam skupina prostředků, všechny vaše skupiny prostředků Azure, která obsahují vlastní prostředek služby pro zpracování obrazu. 
+
+> [!NOTE]
+> Pokud je k dispozici žádná skupina prostředků, zkontrolujte, že jste přihlášení [customvision.ai](https://customvision.ai) pod stejným účtem, jako jste použili k přihlášení do [webu Azure Portal](https://portal.azure.com/). Také Zkontrolujte prosím, že vyberete stejné "Directory" portálu Custom Vision jako adresář na webu Azure Portal, kde se nachází vaše vize vlastní prostředky. V obou lokalitách můžete vybrat adresáře v rozevírací nabídce účtu v pravém horním rohu obrazovky. 
 
 1. Vyberte __klasifikace__ pod __typy projektů__. Potom v části __typy klasifikace__, zvolte buď **Multilabel** nebo **Multiclass**, v závislosti na vašemu případu použití. Multilabel klasifikace se použije libovolný počet značek pro bitovou kopii (nula nebo více), zatímco klasifikace víc tříd seřadí bitové kopie do jedné kategorie (každý obrázek, které uvedete budou seřazeny do nejpravděpodobnější značky). Bude možné později změnit typ klasifikace, pokud chcete.
 

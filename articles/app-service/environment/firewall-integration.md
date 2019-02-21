@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389231"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453847"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Používat jenom služby App Service Environment
 
@@ -75,18 +75,18 @@ Toto použití služby Application Gateway je jenom jedním z příkladů, jak n
 
 ## <a name="logging"></a>Protokolování 
 
-Brány Azure můžete odeslat protokoly do služby Azure Storage, Centrum událostí a Log Analytics. K integraci vaší aplikace pomocí jakéhokoli podporovaného cíle, přejděte na portál Brána Firewall služby Azure > diagnostické protokoly a povolení protokolování pro váš požadovaný cíl. Pokud integrujete se službou Log Analytics, můžete zobrazit protokolování pro veškerý provoz odeslaný na Brána Firewall služby Azure. Chcete-li sledovat provoz, který je mu odepřen, otevřete portál Log Analytics > protokoly a zadejte dotaz podobný tomuto: 
+Odeslat protokoly brány Azure do služby Azure Storage, se v Centru událostí nebo protokoly Azure monitoru. K integraci vaší aplikace pomocí jakéhokoli podporovaného cíle, přejděte na portál Brána Firewall služby Azure > diagnostické protokoly a povolení protokolování pro váš požadovaný cíl. Pokud integrujete se službou Azure Monitor protokoly, uvidíte protokolování pro veškerý provoz odeslaný na Brána Firewall služby Azure. Sledovat provoz, který je mu odepřen, otevře portál pracovního prostoru Log Analytics > protokoly a zadejte dotaz podobný tomuto: 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Integrování vaše Brána Firewall služby Azure Log Analytics je velmi užitečné, když nejdřív Začínáme aplikací pracovat, když si jich nejste vědomi všechny závislosti aplikací. Další informace o službě Log Analytics z [Log Analytics analyzovat data ve službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+Integrace s protokoly Azure monitoru vaše Brána Firewall služby Azure je velmi užitečné, když nejprve Začínáme aplikací pracovat, když si jich nejste vědomi všech závislostí aplikací. Další informace o Azure Monitor protokoly z [analyzovat data protokolů ve službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
  
 ## <a name="dependencies"></a>Závislosti
 
 Tyto informace je jenom nutné, pokud chcete nakonfigurovat zařízení brány firewall než Brána Firewall služby Azure. 
 
 - Koncový bod služby podporující služby by měly být nakonfigurované koncové body služby.
-- IP adresa závislosti se pro přenosy mimo HTTP/S
+- IP adresa závislosti se pro přenosy mimo HTTP/S (provoz TCP a UDP)
 - Koncové body HTTP/HTTPS plně kvalifikovaný název domény je možné použít ve vašem zařízení brány firewall.
 - Koncové body HTTP/HTTPS zástupných znaků jsou závislosti, které se můžou lišit podle vaší služby ASE na základě počtu kvalifikátory. 
 - Závislosti Linux jsou pouze žádný problém, pokud provádíte nasazení Linuxové aplikace do vaší služby ASE. Pokud se nasazení Linuxové aplikace do vaší služby ASE, pak tyto adresy není potřeba přidat do brány firewall. 

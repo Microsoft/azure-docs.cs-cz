@@ -1,6 +1,6 @@
 ---
-title: Nastavení informací o zabezpečení pro použití e-mailu – Azure Active Directory | Dokumentace Microsoftu
-description: Nastavte si svoje bezpečnostní údaje k ověření vaší identity pomocí svého pracovního nebo školního e-mailovou adresu.
+title: Nastavení informací zabezpečení (preview) pro použití e-mailová adresa – Azure Active Directory | Dokumentace Microsoftu
+description: Jak nastavit své bezpečnostní údaje ověřit svoji identitu pomocí e-mailovou adresu.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,49 +9,72 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c18124286d78520e8b89a61c5d12760c9ad784c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7c6bf2c8ea6a2526f8548a785706e5ed3a7460ff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197211"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455207"
 ---
-# <a name="set-up-security-info-to-use-email-preview"></a>Nastavení informací o zabezpečení pro použití e-mailu (preview)
+# <a name="set-up-security-info-preview-to-use-your-email-address"></a>Nastavení informací zabezpečení (preview) pro použití e-mailovou adresu
+Můžete následujícím postupem přidáte, že vaše heslo resetováno metoda. Po nastavení tím prvním, můžete se vrátit k **bezpečnostní údaje** stránku chcete přidat, aktualizovat nebo odstranit informace o zabezpečení.
+
+Po nastavení vaše heslo resetováno metodu, musíte také nastavit vaše metoda dvojúrovňového ověřování pomocí [ověřovací aplikaci](security-info-setup-auth-app.md), [zasílání textových zpráv](security-info-setup-text-msg.md), nebo [telefonního hovoru](security-info-setup-phone-number.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-Nastavení bezpečnostních údajů vyžaduje, abyste pro přihlášení ke svému pracovnímu nebo školnímu účtu a pak dokončete proces registrace. Pokud jste dosud nenastavili své bezpečnostní údaje, budete vyzváni k tomu teď.
-
-## <a name="set-up-email"></a>Nastavení e-mailu
-
-V závislosti na nastavení vaší organizace zobrazí se výzva k přidání e-mailovou adresu ke svým bezpečnostním údajům, při přihlášení. V opačném případě zahájíte nastavení e-mailu bezpečnostních údajů, postupujte podle kroků v [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
+## <a name="set-up-your-email-address-from-the-security-info-page"></a>Nastavení e-mailovou adresu, na stránce informace o zabezpečení
+V závislosti na nastavení vaší organizace je možné použít e-mailovou adresu jako jeden z vašich metodách informace o zabezpečení.
 
 >[!Note]
->Doporučujeme používat e-mailový účet, který nevyžaduje, aby síťové heslo pro přístup k.<br>Pokud nevidíte možnost e-mailu, je možné, že vaše organizace nepovoluje použití e-mailu k ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+>Doporučujeme používat e-mailovou adresu, která nevyžaduje, aby síťové heslo pro přístup k. Pokud nevidíte možnost e-mailu, je možné, že vaše organizace nepovoluje použití e-mailu k ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
 
-### <a name="to-use-your-email-address"></a>Použití e-mailovou adresu
+### <a name="to-set-up-your-email-address"></a>Nastavení e-mailovou adresu
 
-1. Vyberte **e-mailu** možnost a potom zadejte e-mailovou adresu do pole. Tato e-mailová adresa nemůže být pracovní nebo školní e-mailu.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a potom přejděte k vaší https://myprofile.microsoft.com/ stránky.
 
-     ![Stránka informace o zabezpečení, se pole pro zadání e-mailu](media/security-info/security-info-keep-secure-setup-email.png)
+    ![Můj profil stránky zobrazující zvýrazněný odkazy informace o zabezpečení](media/security-info/securityinfo-myprofile.png)
 
-2. Kontrolovat e-mailu od společnosti Microsoft pro vaši organizaci, zadejte zahrnuté ověřovací kód, který do **Ověřte svůj e-mail** a potom vyberte **provádí**.
+2. Vyberte **bezpečnostní údaje** v levém navigačním podokně nebo z odkazu v **bezpečnostní údaje** blokovat a pak vyberte **přidejte metodu** z **bezpečnostní údaje**  stránky.
 
-     ![Stránka informace o zabezpečení, se pole pro zadání e-mailu ověřovací kód](media/security-info/security-info-verify-email.png)
+    ![Stránka informace o zabezpečení s zvýrazněnou možností přidat – metoda](media/security-info/securityinfo-myprofile-addmethod.png)
 
-    >[!Note]
-    >Pokud nevidíte e-mailu od Microsoftu jménem svojí organizace, ujistěte se, že jste správně zadali e-mailovou adresu a pak zkontrolujte složky s nevyžádanou nebo nevyžádané pošty.
+3. Na **přidejte metodu** stránce **e-mailu** z rozevíracího seznamu a pak vyberte **přidat**.
 
-3. V **bezpečnost vašeho účtu** stránce **provádí**.
+    ![Přidat metodu pole pomocí e-mailu vybraný](media/security-info/securityinfo-myprofile-addemail.png)
 
-    Vaše bezpečnostní údaje se aktualizuje a použít k ověření vaší identity při resetování hesla pomocí e-mailovou adresu.
+4. Na **e-mailu** zadejte e-mailovou adresu (například alain@gmail.com) a pak vyberte **Další**.
 
-## <a name="additional-security-info-options"></a>Další informace o možnosti zabezpečení
+    ![Přidat telefonní číslo a zvolte možnost telefonní hovory](media/security-info/securityinfo-myprofile-emailaddress.png)
 
-Máte možnosti pro jak kontakty vaší organizace k ověření své identity na základě toho, co jste se snažíte udělat. Mezi možnosti patří:
+    >[!Important]
+    >Tato e-mailová adresa nemůže být pracovní nebo školní e-mailu.
+
+5. Zadejte kód poslaný na zadaný e-mailovou adresu a pak vyberte **Další**.
+
+    ![Přidat telefonní číslo a zvolte text zprávy](media/security-info/securityinfo-myprofile-emailcode.png)
+
+    Vaše bezpečnostní údaje se aktualizuje a e-mailovou adresu můžete použít k ověření vaší identity při použití resetování hesla.
+
+## <a name="delete-your-email-address-from-your-security-info-methods"></a>Odstranit e-mailovou adresu z vaší metody informace o zabezpečení
+Pokud nechcete použít e-mailovou adresu jako metodu informace o zabezpečení, můžete ho odebrat **bezpečnostní údaje** stránky.
+
+>[!Important]
+>Pokud omylem odstraníte e-mailovou adresu, neexistuje žádný způsob, jak ji vrátit. Budete muset znovu, přidejte metodu podle kroků v [nastavení e-mailovou adresu](#set-up-your-email-address-from-the-security-info-page) části tohoto článku.
+
+### <a name="to-delete-your-email-address"></a>Chcete-li odstranit e-mailovou adresu
+
+1. Na **bezpečnostní údaje** stránky, vyberte **odstranit** odkaz **e-mailu** možnost.
+
+    ![Odkaz na metodu phone odstranit z bezpečnostní údaje](media/security-info/securityinfo-myprofile-emaildelete.png)
+
+2. Vyberte **Ano** ze seznamu potvrzení odstranění **e-mailu** účtu. Po e-mailový účet se odstraní, odebere se ze svých bezpečnostních údajů a dané zařízení zmizí z **bezpečnostní údaje** stránky.
+
+## <a name="additional-security-info-methods"></a>Další bezpečnostní údaje metody
+Máte další možnosti pro jak kontakty vaší organizace k ověření své identity na základě toho, co jste se snažíte udělat. Mezi možnosti patří:
 
 - **Ověřovací aplikaci.** Stáhnout a použít ověřovací aplikaci získat oznámení o schválení nebo kódu náhodně generované schválení pro dvoustupňové ověření nebo heslo resetovat. Podrobné pokyny o tom, jak nastavit a začít používat aplikaci Microsoft Authenticator, naleznete v tématu [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md).
 
@@ -65,8 +88,6 @@ Máte možnosti pro jak kontakty vaší organizace k ověření své identity na
     >Pokud chybí některé z těchto možností, je pravděpodobně, protože vaše organizace nepovoluje tyto metody. Pokud je to tento případ, budete muset zvolit metodu k dispozici nebo požádejte správce o další pomoc.
 
 ## <a name="next-steps"></a>Další postup
-
-- Pokud je potřeba aktualizovat svoje bezpečnostní údaje, postupujte podle pokynů [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md) článku.
 
 - Resetování hesla, pokud jste ztratíte nebo zapomenete, z [portál pro resetování hesel](https://passwordreset.microsoftonline.com/) nebo postupujte podle kroků v [obnovit heslo pracovního nebo školního](user-help-reset-password.md) článku.
 

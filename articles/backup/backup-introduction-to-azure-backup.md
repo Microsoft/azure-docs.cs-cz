@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 72a5946aa5b27d1c4d4bb2beaebde67d3e7a0f32
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328159"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447357"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Přehled funkcí ve službě Azure Backup
 Azure Backup je služba Azure, kterou můžete využívat k zálohování (ochraně) a obnovování vašich dat v Microsoft Cloudu. Azure Backup nahrazuje současná řešení místního nebo odlehlého zálohování spolehlivým, bezpečným a cenově konkurenceschopným cloudovým řešením. Azure Backup nabízí několik komponent, které můžete stáhnout a nasadit na vhodném počítači, na serveru, nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty služby Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém úložišti) je možné použít k zálohování dat do trezoru služby Recovery Services v Azure. Informace o tom, kterou komponentu použít pro ochranu konkrétních data, aplikací nebo úloh, najdete v [tabulce komponent Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (dále v tomto článku).
@@ -33,7 +33,7 @@ Tradiční řešení zálohování se vyvinula tak, že cloud považují za konc
 
 * Místně redundantní úložiště (LRS) replikuje vaše data třikrát (vytváří tři kopie dat) v jednotce škálování úložiště v datacentru. Všechny kopie dat existují ve stejné oblasti. Místně redundantní úložiště nabízí cenově úsporný způsob ochrany dat před selháním místního hardwaru.
 
-* Geograficky redundantní úložiště (GRS) je výchozí a doporučená možnost replikace. GRS replikuje vaše data do sekundární oblasti (vzdálené stovky kilometrů od primárního umístění zdrojových dat). Geograficky redundantní úložiště je nákladnější než místně redundantní úložiště, ale nabízí vyšší úroveň odolnosti dat i v případě regionálního výpadku.
+* Geograficky redundantní úložiště (GRS) je výchozí a doporučená možnost replikace. GRS replikuje vaše data do sekundární oblasti, která je [spárovaných oblastech Azure](../best-practices-availability-paired-regions.md) (vzdálené stovky mil od primárního umístění zdrojových dat). Geograficky redundantní úložiště je nákladnější než místně redundantní úložiště, ale nabízí vyšší úroveň odolnosti dat i v případě regionálního výpadku.
 
 **Neomezené přenosy dat** – Azure Backup neomezuje množství příchozích ani odchozích dat, která přenesete. V rámci Azure Backup se přenesená data neúčtují. Pokud ale použijete službu importu/exportu v Azure k importu velkého množství dat, účtují se náklady související s příchozími daty. Další informace o těchto nákladech najdete v části [Pracovní postup zálohování offline v Azure Backup](backup-azure-backup-import-export.md). Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
 
@@ -44,7 +44,7 @@ Tradiční řešení zálohování se vyvinula tak, že cloud považují za konc
 **Dlouhodobé uchovávání** – Trezory služby Recovery Services můžete použít ke krátkodobému i dlouhodobému uchovávání dat. Azure neomezuje dobu, po kterou data můžou zůstat v trezoru služby Recovery Services. Data můžete v trezoru ponechat, jak dlouho chcete. Služba Azure Backup má omezení 9999 bodů obnovení na chráněnou instanci. Přečtěte si oddíl [Zálohování a uchovávání](backup-introduction-to-azure-backup.md#backup-and-retention) v tomto článku, kde najdete vysvětlení, jak může toto omezení ovlivnit vaše potřeby zálohování.
 
 ## <a name="which-azure-backup-components-should-i-use"></a>Které komponenty Azure Backup mám použít?
-V následující tabulce najdete informace o tom, co můžete chránit pomocí jednotlivých komponent Azure Backup. 
+V následující tabulce najdete informace o tom, co můžete chránit pomocí jednotlivých komponent Azure Backup.
 
 | Komponenta | Výhody | Omezení | Co se chrání? | Kde jsou zálohy uložené? |
 | --- | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ V následující tabulce najdete informace o tom, co můžete chránit pomocí j
 | Zálohování virtuálních počítačů Azure IaaS |<p>**Ano**</p><p>Součást prostředků infrastruktury Azure</p><p>Specializované pro [zálohování virtuálních počítačů Azure IaaS (infrastruktura jako služba)](backup-azure-vms-introduction.md).</p> |<p>**Ne**</p> <p>Pro zálohování virtuálních počítačů ve svém datovém centru použijte aplikaci System Center DPM.</p> |<p>Trezor služby Recovery Services</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>Které aplikace a úlohy lze zálohovat?
-Následující tabulka obsahuje matici dat a úloh, které se dají chránit s použitím Azure Backup. Sloupec řešení Azure Backup obsahuje odkazy na dokumentaci k nasazení pro příslušné řešení. 
+Následující tabulka obsahuje matici dat a úloh, které se dají chránit s použitím Azure Backup. Sloupec řešení Azure Backup obsahuje odkazy na dokumentaci k nasazení pro příslušné řešení.
 
 | Data nebo úloha | Zdrojové prostředí | Řešení Azure Backup |
 | --- | --- | --- |
@@ -81,10 +81,10 @@ Následující tabulka obsahuje matici dat a úloh, které se dají chránit s p
 Následující tabulka uvádí komponenty Azure Backup nepodporuje pro Linux.  
 
 **Komponenta** | **Linuxu (schváleného Azure)**
---- | --- 
-Agent Azure Backup (MARS) | Žádný (založené na Windows agent jenom) 
+--- | ---
+Agent Azure Backup (MARS) | Žádný (založené na Windows agent jenom)
 System Center DPM | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálního počítače pro virtuální počítače hosta s Linuxem v Hyper-V a VMwaru</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure
-Server Azure Backup | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálních počítačů Hyper-V a virtuálních počítačů VMWare s Linuxem hosta</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure 
+Server Azure Backup | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálních počítačů Hyper-V a virtuálních počítačů VMWare s Linuxem hosta</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure
 Zálohování virtuálních počítačů Azure IaaS | Konzistentní zálohování pomocí [rozhraní předzálohovacími a pozálohovacími skripty](backup-azure-linux-app-consistent.md)<br/><br/> [Obnovení na úrovni souboru](backup-azure-restore-files-from-vm.md)<br/><br/> [Vytvoření virtuálního počítače z obnoveného disku](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Vytvoření virtuálního počítače z bodu obnovení](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Použití virtuálních počítačů služby premium storage s Azure Backup

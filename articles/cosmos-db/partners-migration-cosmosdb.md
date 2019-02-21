@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 25d2b9fac65525c56912e5daa7e5bcb4aa2cd5f4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 255182fe5e6c5576077dc97831628e4a13dfc026
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035997"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453515"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a aplikace partnery vývoj
 
@@ -38,7 +38,7 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 |![Coeo][7]     |   Inovace aplikací (existující aplikace) <br/> Vývoj aplikace |    Spojené království     |  [Web](http://www.coeo.com/)       |
 | ![Cognizant][15] | Migrace NoSQL |USA, Kanadě, Spojeném království, Dánsko, Nizozemsko, Švýcarsko, Austrálie, Japonsko | [Web](https://www.cognizant.com/)|
 |![Infosys][8]     |  Migrace NoSQL       |    Globální     |  [Web](http://www.infosys.com/)       |
-| ![Lagash][16] | Migrace NoSQL <br/> Vývoj aplikace | Argentina, Chile, Kolumbie, Mexiko| [Web](https://lagash.com/)|
+| ![Lagash][16] | Migrace NoSQL <br/> Vývoj aplikace | Argentina, Chile, Kolumbie, Mexiko| [Web](https://www.lagash.com/)|
 | ![Lambda3 Informatikou][17] | Migrace NoSQL <br/> Vývoj aplikace | Brazílie| [Web](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     Vývoj aplikací (nové aplikace)    |    USA     |  [Web](http://www.nealanalytics.com/)       |
 |![Celkové softwaru Pragmatic funguje][10]    |   Migrace NoSQL      |   USA      |  [Web](http://www.pragmaticworks.com/)       |

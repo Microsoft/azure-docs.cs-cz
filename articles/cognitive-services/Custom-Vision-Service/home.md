@@ -3,40 +3,40 @@ title: Co je Azure Custom Vision?
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí služby Custom Vision vytvářet vlastní klasifikátory obrázků v cloudu Azure.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 01/10/2019
-ms.author: anroth
-ms.openlocfilehash: cc60166b4105cf38d3c1f73bdb558af7a9a7c831
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 6cbc6e351147ed5b4c31463b5cf319417f34da34
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857477"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456771"
 ---
 # <a name="what-is-azure-custom-vision"></a>Co je Azure Custom Vision?
 
-Rozhraní API služby Azure Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vlastní klasifikátory obrázků. Klasifikátor obrázků je služba AI, která v závislosti na určitých vlastnostech uspořádává obrázky do tříd (značek). Na rozdíl od služby [Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) umožňuje služba Custom Vision vytváření vlastních klasifikací.
+Azure Custom Vision je služby cognitive Services vám umožňuje vytvořit, nasadit a zlepšit vlastních klasifikátorů obrázků. Obrázku třídění je služba AI, která se použije popisky (které představují _třídy_) na Image, podle jejich vizuální vlastnosti. Na rozdíl od [pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) service, vlastní zpracování obrazu umožňuje určit popisky použít.
 
 ## <a name="what-it-does"></a>Co dělá
 
-Služba Custom Vision s využitím algoritmu strojového učení klasifikuje obrázky. Jako vývojáři musíte odeslat skupiny obrázků, které obsahují nebo kterým chybí příslušné klasifikace. Při odesílání zadáte správné značky obrázků. Algoritmus se pak podle těchto dat natrénuje a vypočítá vlastní přesnost tím, že se otestuje se stejnými daty. Jakmile se model natrénuje, můžete ho otestovat, přetrénovat a nakonec použít ke klasifikaci nových obrázků v souladu s požadavky vaší aplikace. Samotný model můžete také exportovat pro offline použití.
+Custom Vision service pomocí algoritmu strojového učení použije popisky na obrázky. Vás jako na vývojáři, musíte odeslat skupiny imagí, které běží na procesorech a nemají dotyčný charakteristiky. Označování imagí sami v okamžiku odeslání. Pak algoritmus trénovat na tato data a vypočítává samotného testování na těchto imagí stejné vlastní přesnost. Jakmile se trénuje algoritmus, testování a přeučování nakonec použijete ke klasifikaci nových imagí podle potřeb vaší aplikace. Samotný model můžete také exportovat pro offline použití.
 
-### <a name="classification-and-object-detection"></a>Klasifikace a detekce objektů
+## <a name="classification-and-object-detection"></a>Klasifikace a detekce objektů
 
-Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace obrázků** přiřadí ke každému obrázku distribuci klasifikací. Multiclass (jedna značka za image) i klasifikaci multilabel (libovolný počet značek na image) jsou podporované modely. **Objekt detekce** je podobný multilabel klasifikace, ale také vrátí souřadnice na obrázku kde lze nalézt použité popisky.
+Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace obrázků** jeden nebo více štítků platí pro bitovou kopii. **Objekt detekce** je podobné, ale také vrátí souřadnice na obrázku kde lze nalézt použité názvy.
 
-### <a name="optimization"></a>Optimalizace
+## <a name="optimization"></a>Optimalizace
 
-Obecně platí, že metody, které služba Custom Vision využívá, jsou odolné proti rozdílům, a proto vám k zahájení vytváření prototypů stačí malé množství dat. Obvykle je dobré začít s 50 obrázky pro každou značku. To však znamená, že služba není ideální pro rozpoznávání drobných rozdílů na obrázcích (například menší praskliny nebo promáčknutí ve scénářích kontroly kvality).
+Custom Vision service je optimalizovaná na rychle rozpoznat hlavní rozdíly mezi bitové kopie. To umožňuje začít vytváření prototypů s menším objemem dat modelu. 50 obrázků na popisek jsou obecně o dobrý začátek. To však znamená, že služba není ideální pro rozpoznávání drobných rozdílů na obrázcích (například menší praskliny nebo promáčknutí ve scénářích kontroly kvality).
 
-Kromě toho máte na výběr několik variant algoritmu služby Custom Vision optimalizovaných pro určité objekty &mdash; například památky nebo maloobchodní zboží. Další informace najdete v příručce věnované [sestavení klasifikátoru](getting-started-build-a-classifier.md).
+Kromě toho můžete vybrat z několika typy prvků Custom Vision algoritmus, které jsou optimalizovány pro Image některé materiály, které subjektu&mdash;například zajímavá nebo maloobchodního prodeje položek. Další informace najdete v příručce věnované [sestavení klasifikátoru](getting-started-build-a-classifier.md).
 
 ## <a name="what-it-includes"></a>Co zahrnuje
-Služba Custom Vision je dostupná jako sada nativních sad SDK i prostřednictvím webového rozhraní na [domovské stránce služby Custom Vision](https://customvision.ai/). Obě rozhraní umožňují vytvářet, testovat a trénovat modely.
+Služba Custom Vision je dostupná jako sada nativních sad SDK i prostřednictvím webového rozhraní na [domovské stránce služby Custom Vision](https://customvision.ai/). Můžete vytvořit, otestovat a trénování modelu až buď rozhraní nebo použít společně.
 
 ![Domovská stránka služby Custom Vision v okně prohlížeče Chrome](media/browser-home.png)
 
@@ -46,4 +46,4 @@ Jako se všemi služeb Cognitive Services, vývojáře, kteří používají Cus
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete začít používat službu Custom Vision na webu, postupujte podle příručky věnované [sestavení klasifikátoru](getting-started-build-a-classifier.md), nebo absolvujte [kurz klasifikace obrázků](csharp-tutorial.md), kde se dozvíte, jak scénář implementovat v kódu.
+Postupujte podle [sestavení klasifikátoru](getting-started-build-a-classifier.md) průvodce a začněte využívat na webu Custom Vision nebo dokončení [kurz klasifikace obrázků](csharp-tutorial.md) základní scénář implementovat v kódu.

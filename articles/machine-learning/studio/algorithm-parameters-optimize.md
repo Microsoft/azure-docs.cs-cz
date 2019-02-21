@@ -10,20 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0f324dec9349b44252a85b2f9334a1b6d847faae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 870345148b55bc6026202fbd433d8575e421faba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247132"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456006"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning Studio
 
-Toto téma popisuje, jak zvolit správný hyperparameter nastavení pro algoritmus ve službě Azure Machine Learning. Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces hledání optimální sadu parametrů se označuje jako *modelu výběru*.
+Toto téma popisuje, jak zvolit správný hyperparameter nastavení pro algoritmus v Azure Machine Learning Studio. Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces hledání optimální sadu parametrů se označuje jako *modelu výběru*.
 
 
 
-Existují různé způsoby, jak modelu výběru. Ve službě machine learning, křížového ověření je jedním z nejpoužívanějších metody pro výběr modelu a je mechanismus výběru výchozí model v Azure Machine Learning. Protože Azure Machine Learning podporuje R a Python, můžete vždy implementovat vlastní mechanismus výběru modelu pomocí R nebo Python.
+Existují různé způsoby, jak modelu výběru. Ve službě machine learning, křížového ověření je jedním z nejpoužívanějších metody pro výběr modelu a je mechanismus výběru výchozí model v Azure Machine Learning Studio. Protože Azure Machine Learning Studio podporuje R a Python, můžete vždy implementovat vlastní mechanismus výběru modelu pomocí R nebo Python.
 
 Probíhá hledání sady nejlepší čtyři kroky:
 
@@ -32,7 +32,7 @@ Probíhá hledání sady nejlepší čtyři kroky:
 3. **Definování metriky**: Rozhodněte, jaké metriky pro určení nejlepší sadu parametrů, jako jsou správnost, střední kořenové spolehlivosti chyba, přesnosti, odvolání nebo f skóre.
 4. **Školení, vyhodnocení a porovnat**: Pro každou jedinečnou kombinaci hodnot parametrů je křížového ověřování prováděné a na základě chybové metriky, které definujete. Po vyhodnocení a porovnání můžete zvolit ty modelu.
 
-Ukazuje, jak jde tohoto dosáhnout v Azure Machine Learning je znázorněný na následujícím obrázku.
+Ukazuje, jak jde tohoto dosáhnout v Azure Machine Learning Studio je znázorněný na následujícím obrázku.
 
 ![Najít nejlepší sadu parametrů](./media/algorithm-parameters-optimize/fig1.png)
 

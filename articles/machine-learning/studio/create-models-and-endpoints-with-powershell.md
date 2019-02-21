@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244294"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455054"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Použití Powershellu k vytvoření Studio modely a koncových bodů webové služby z jednoho experimentu
 
@@ -25,9 +25,9 @@ Tady je běžný problém machine learning: Chcete vytvořit mnoho modelů, kter
 
 Může trénování modelu jednou pomocí sloučené verze všech sad dat ve všech umístěních. Ale každý umístění má jedinečné prostředí. Lepším řešením proto by se k natrénování modelu regrese samostatně pomocí datovou sadu pro každé umístění. Tímto způsobem každý trénovaného modelu může vzít v úvahu velikosti jiném úložišti, svazek, zeměpisné oblasti, naplnění, kolo přívětivá provoz prostředí a další.
 
-Který může být nejlepším řešením, ale nechcete, aby k vytváření experimentů 1 000 školení ve službě Azure Machine Learning s každou z nich představující jedinečné umístění. Kromě toho tak velmi náročný úkol, je zřejmě neefektivní od každého testu bude mít stejné komponenty s výjimkou trénovací datové sady.
+Který může být nejlepším řešením, ale nechcete, aby k vytváření experimentů 1 000 školení v Azure Machine Learning Studio s každou z nich představující jedinečné umístění. Kromě toho tak velmi náročný úkol, je zřejmě neefektivní od každého testu bude mít stejné komponenty s výjimkou trénovací datové sady.
 
-Naštěstí to můžete provést pomocí [přetrénování rozhraní API Azure Machine Learning](retrain-models-programmatically.md) a automatizace úloh s [Azure Machine Learning PowerShell](powershell-module.md).
+Naštěstí to můžete provést pomocí [přetrénování rozhraní API Azure Machine Learning Studio](retrain-models-programmatically.md) a automatizace úloh s [Azure Machine Learning Studio PowerShell](powershell-module.md).
 
 > [!NOTE]
 > Chcete-li ukázku rychleji, snižte počet umístění z 1 000 na 10. Ale stejné zásady a postupy platí i pro 1 000 umístění. Nicméně pokud chcete k trénování z datových sad, 1 000 můžete chtít při paralelním spuštění následujících skriptů prostředí PowerShell. Postup, který je nad rámec tohoto článku, ale najdete příklady prostředí PowerShell ukryta v síti Internet.  

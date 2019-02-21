@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 0d11f42ab8194b9d451f9d21e88db001e189e974
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429447"
+ms.locfileid: "56446847"
 ---
-# <a name="back-up-sql-server-databases-on-azure-vms"></a>Zálohování databází systému SQL Server na virtuálních počítačích Azure 
+# <a name="back-up-sql-server-databases-on-azure-vms"></a>Zálohování databází SQL Serveru na virtuálních počítačích Azure 
 
 Databáze systému SQL Server jsou důležité úlohy, které vyžadují plánovaného bodu s nízkou obnovení (RPO) a dlouhodobé uchovávání. Zálohování databází systému SQL Server běžící na virtuálních počítačích Azure pomocí [Azure Backup](backup-overview.md). 
 
@@ -58,7 +58,7 @@ Najdete [oddílu Nejčastější dotazy](https://docs.microsoft.com/azure/backup
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Podporované nasazení** | Jsou podporované virtuální počítače Azure Marketplace SQL a virtuálních počítačů mimo Marketplace (manuallly systému SQL Server nainstalovaný).
+**Podporované nasazení** | Virtuální počítače Azure Marketplace SQL a mimo Marketplace (ručně nainstalovat SQL Server) se podporují virtuální počítače.
 **Podporované zeměpisných oblastech** | Austrálie – jihovýchod (ASE); Brazílie – Jih (BRS); Kanada – střed (CNC); Kanada – východ (CE); Střed USA (CUS); Východní Asie (EA); Východní Austrálie (AE); USA – východ (EUS); USA – východ 2 (EUS2); Indie – střed (INC); Indie – Jih (INS); Japonsko – východ (JPE); Japonsko – západ (JPW); Korea – střed (KRC); Korea – Jih (KRS); Střed USA – sever (NCUS); Severní Evropa (NE); Střed USA – Jih (SCUS); Jihovýchodní Asie (SEA); Velká Británie – Jih (UKS); Velká Británie – západ (UKW); Střed USA – západ (WCUS); Západní Evropa (WE); USA – západ (WUS); Západní USA 2 (WUS 2)
 **Podporované operační systémy** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux se momentálně nepodporuje.
 **Podporované verze systému SQL Server** | SQL Server 2017; SQL Server 2016, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
@@ -147,8 +147,8 @@ Zjistěte databáze spuštěné na virtuálním počítači.
     - Azure Backup zaregistrujete pomocí úložiště pro úlohy zálohování virtuálního počítače. Všechny databáze na registrované virtuálních počítačů můžete zálohovat jenom k tomuto trezoru.
     - Azure Backup nainstaluje **AzureBackupWindowsWorkload** rozšíření ve virtuálním počítači. V SQL database se neinstaluje žádný agent.
     - Vytvoří účet služby Azure Backup **NT Service\AzureWLBackupPluginSvc** na virtuálním počítači.
-        - Všechny operace zálohování a obnovení pomocí účtu služby.
-        - **NT Service\AzureWLBackupPluginSvc** potřebuje oprávnění správce systému SQL. Všechny virtuální počítače SQL serveru, vytvořené v Azure MArkplace jsou dostupné **SqlIaaSExtension** nainstalované. **AzureBackupWindowsWorkload** používá rozšíření **SQLIaaSExtension** automaticky získat požadované oprávnění.
+      - Všechny operace zálohování a obnovení pomocí účtu služby.
+      - **NT Service\AzureWLBackupPluginSvc** potřebuje oprávnění správce systému SQL. Všechny virtuální počítače SQL serveru, vytvořené na webu Azure Marketplace jsou dostupné **SqlIaaSExtension** nainstalované. **AzureBackupWindowsWorkload** používá rozšíření **SQLIaaSExtension** automaticky získat požadované oprávnění.
     - Pokud jste nevytvořili virtuální počítač z marketplace, pak virtuální počítač nemá **SqlIaaSExtension** nainstalované, a operace zjišťování se nezdaří s chybovou zprávou **UserErrorSQLNoSysAdminMembership**. Postupujte podle pokynů v [#fix-sql--oprávnění sysadmin] Pokud chcete tento problém vyřešit.
 
         ![Vyberte virtuální počítač a databáze](./media/backup-azure-sql-database/registration-errors.png)
@@ -160,7 +160,7 @@ Zjistěte databáze spuštěné na virtuálním počítači.
 K optimalizaci zálohování zatížení, Azure Backup Nastaví maximální počet databází ve jediná úloha zálohování na 50.
 
 - K ochraně více než 50 databází, nakonfigurujte více záloh.
-- Alternatily můžete povolit automatickou ochranu. Automatická ochrana chrání existujících databází najednou a automaticky chrání nové databáze do instance skupiny dostupnosti.
+- Alternativně můžete povolit automatickou ochranu. Automatická ochrana chrání existujících databází najednou a automaticky chrání nové databáze do instance skupiny dostupnosti.
 
 
 Konfigurace zálohování následujícím způsobem:
@@ -278,7 +278,7 @@ Vytvoření zásady zálohování:
 
 Povolte automatickou ochranu automaticky zálohovat všechny existující databáze a databáze, které se přidají v budoucnu samostatná instance SQL serveru nebo SQL Server vždy na skupinu dostupnosti. 
 
-- Když zapnete automatickou ochranu a vyberte zásadu, pexisting chráněné databáze bude nadále používat předchozí zásady.
+- Když zapnete automatickou ochranu a vyberte zásadu, existující chráněných databází bude nadále používat předchozí zásady.
 - Neexistuje žádné omezení počtu databází, které můžete vybrat pro automatickou ochranu najednou.
 
 Povolte automatickou ochranu následujícím způsobem:

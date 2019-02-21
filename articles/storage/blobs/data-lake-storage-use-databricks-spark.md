@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891653"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452594"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Data Lake Storage Gen2 pro přístup k datům Azure Databricks pomocí Spark
 
@@ -38,6 +38,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Nainstalujte AzCopy v10. Zobrazit [přenos dat pomocí AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
+*  Vytvoření instančního objektu. Zobrazit [jak: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+   Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
+
+   :heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, ujistěte se, že k přiřazení **Přispěvatel dat objektu Blob úložiště** roli instančnímu objektu služby.
+
+   > [!IMPORTANT]
+   > Ujistěte se, že přiřazení role v rámci účtu úložiště Data Lake Storage Gen2. Roli můžete přiřadit do nadřazené skupiny prostředků nebo předplatného, ale se zobrazí chyby související s oprávněními, dokud tato přiřazení rolí se rozšíří do účtu úložiště.
+
+   :heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
+
 ### <a name="download-the-flight-data"></a>Stažení letových údajů
 
 Tento kurz používá zapisovači letových údajů z kanceláře Transportation statistiky a ukazuje, jak k provádění operací ETL. Tato data k dokončení tohoto kurzu musíte stáhnout.
@@ -49,24 +60,6 @@ Tento kurz používá zapisovači letových údajů z kanceláře Transportation
 3. Vyberte **Stáhnout** tlačítko a uložte výsledky do počítače. 
 
 4. Rozbalte obsah souboru ZIP a poznamenejte si název souboru a cestu k souboru. Tyto informace v pozdějším kroku budete potřebovat.
-
-## <a name="get-your-storage-account-name"></a>Získejte název svého účtu úložiště
-
-Budete potřebovat název účtu úložiště. Chcete-li získat, přihlaste se [webu Azure portal](https://portal.azure.com/), zvolte **všechny služby** a filtrováním podle termín *úložiště*. Vyberte **účty úložiště** a vyhledejte svůj účet úložiště.
-
-Vložte název do textového souboru. Brzy je budete potřebovat.
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
-
-Vytvoření instančního objektu služby podle pokynů v tomto tématu: [Postup: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Existuje několik věcí, které budete muset udělat při provádění kroků v tomto článku.
-
-:heavy_check_mark: Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, nezapomeňte přiřadit aplikaci do **Role Přispěvatel úložiště objektů Blob**.
-
-:heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
 
 ## <a name="create-an-azure-databricks-service"></a>Vytvoření služby Azure Databricks
 
@@ -145,9 +138,16 @@ V této části vytvoříte systém souborů a složky v účtu úložiště.
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu nahraďte hodnotami, které jste shromáždili, když jste dokončili kroky v konfiguraci účtu úložiště sady aside a [Vytvoření instančního objektu](#service-principal) částech tohoto článku. Nahradit `file-system-name` zástupný symbol libovolný název, který chcete udělit systému souborů.
 
-19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku. 
+18. V tomto bloku kódu, nahraďte `application-id`, `authentication-id`, `tenant-id`, a `storage-account-name` zástupné hodnoty hodnotami, které jste shromáždili během dokončování požadavky v tomto kurzu v tomto bloku kódu. Nahraďte `file-system-name` hodnotu zástupného symbolu pomocí cokoli, co název chcete umožnit systému souborů.
+
+   * `application-id`, A `authentication-id` pocházejí z aplikace, které jste zaregistrovali pomocí služby active directory při vytváření instančního objektu.
+
+   * `tenant-id` Je ze svého předplatného.
+
+   * `storage-account-name` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+
+19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
     Tento poznámkový blok nechte otevřené, protože příkazy se do ní přidat později.
 

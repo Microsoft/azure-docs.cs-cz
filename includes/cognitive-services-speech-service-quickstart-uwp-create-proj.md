@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: 79fbe2db1ec9758d1e15ba7d89363429415918c7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c8ef95f6a01b64b722544d9397d928387a69d7c7
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729471"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56458447"
 ---
 1. Spusťte Visual Studio 2017.
 
@@ -49,7 +49,7 @@ ms.locfileid: "53729471"
 1. V konzole Správce balíčků se zobrazí následující řádek výstupu.
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.2.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.3.0' to helloworld
    ```
 
 1. Protože aplikace používá mikrofon pro hlasový vstup, přidejte do projektu schopnost **Mikrofon**. V Průzkumníku řešení dvakrát klikněte na **Package.appxmanifest** a upravte manifest aplikace. Přepněte na kartu **Schopnosti**, zaškrtněte políčko u schopnosti **Mikrofon** a uložte provedené změny.

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: c9c5ad0af39b698175c4bc7cb7f720452546ec10
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 14e631edb21c43ccde04a536760c2793ead40e90
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997062"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454683"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio
 Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli kód.
@@ -29,13 +29,13 @@ Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli 
 
 2. Kliknutím ji vyberte webovou službu – "Titanic pozůstalým prediktivní (ukázka doplňku Excel) [skóre]" v tomto příkladu.
    
-    ![Vyberte webovou službu][01]
+    ![Vyberte webovou službu](./media/excel-add-in-for-web-services/image1.png)
 3. Tím přejdete **Predict** oddílu.  Tento sešit už obsahuje ukázková data, ale pro prázdný sešit můžete vybrat buňku v aplikaci Excel a klikněte na tlačítko **použít vzorová data**.
 4. Vyberte data, která se záhlavími a klikněte na ikonu rozsah vstupní data.  Ujistěte se, že je zaškrtnuté políčko "má data obsahují záhlaví".
 5. V části **výstup**, zadejte počet buněk, ve kterém má výstup, například "H1" tady se.
 6. Klikněte na tlačítko **předpovědět**. Pokud zaškrtnete políčko "auto-predict" jakákoli změna ve vybrané oblasti (úlohy uvedené jako vstup) spustí požadavek a aktualizace buněk výstup bez nutnosti až stisknete tlačítko predict.
    
-    ![Předpověď oddílu][02]
+    ![Předpověď oddílu](./media/excel-add-in-for-web-services/image1.png)
 
 Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [Tutorial 3: Nasazení modelu úvěrové riziko](tutorial-part3-credit-risk-deploy.md).
 
@@ -45,10 +45,10 @@ Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci 
 
 1. V nástroji Machine Learning Studio, klikněte na tlačítko **webových služeb** části v levém podokně a pak vyberte webovou službu.
    
-    ![Vyberte Studio webové služby][04]
+    ![Vyberte Studio webové služby](./media/excel-add-in-for-web-services/image4.png)
 2. Zkopírujte klíč rozhraní API pro webovou službu.
    
-    ![Klíč rozhraní API sady Studio][05]
+    ![Klíč rozhraní API sady Studio](./media/excel-add-in-for-web-services/image5.png)
 3. Na **řídicí panel** karta pro webovou službu, klikněte na tlačítko **žádostí a odpovědí** odkaz.
 4. Hledat **Request URI** oddílu.  Zkopírujte a uložte adresu URL.
 
@@ -70,23 +70,16 @@ Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci 
 3. Hledat **informace o základní spotřeby** oddílu. Zkopírujte a uložte **primární klíč** a **Request-Response** adresy URL.
 4. V aplikaci Excel přejděte na **webových služeb** části (Pokud jste v **Predict** klikněte na šipku zpět a přejděte na seznam webové služby).
    
-    ![Přejít na vybranou webovou službu][03]
+    ![Přejít na vybranou webovou službu](./media/excel-add-in-for-web-services/image3.png)
 5. Klikněte na tlačítko **přidat webovou službu**.
 6. Vložte adresu URL do aplikace Excel, přidejte do textového pole s popiskem **URL**.
 7. Vložení rozhraní API a primární klíč do textového pole s popiskem **klíč rozhraní API**.
 8. Klikněte na tlačítko **Add** (Přidat).
    
-    ![Adresa URL a klíč rozhraní API pro klasické webové služby.][06]
+    ![Adresa URL a klíč rozhraní API pro klasické webové služby.](./media/excel-add-in-for-web-services/image6.png)
 9. Webová služba, postupujte podle předchozích pokynů, "Postup použijte existující webové služby."
 
 ## <a name="sharing-your-workbook"></a>Sdílení vašeho sešitu
 Pokud váš sešit uložit, rozhraní API a primární klíč pro webové služby, které jste přidali také uloží. To znamená, že sešit by měly sdílet jenom uživatele, kterému můžete důvěřovat.
 
 Jakékoli otázky v části komentáře nebo na našem [fórum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
-
-[01]: ./media/excel-add-in-for-web-services/image1.png
-[02]: ./media/excel-add-in-for-web-services/image2.png
-[03]: ./media/excel-add-in-for-web-services/image3.png
-[04]: ./media/excel-add-in-for-web-services/image4.png
-[05]: ./media/excel-add-in-for-web-services/image5.png
-[06]: ./media/excel-add-in-for-web-services/image6.png

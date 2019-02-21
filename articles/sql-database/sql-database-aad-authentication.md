@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 0bb7c047f6bd03a45aa6c5c6d07b8022ee59bec9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/20/2019
+ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217165"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453133"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Pomocí ověřování Azure Active Directory pro ověřování pomocí SQL
 
@@ -101,16 +101,16 @@ Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database, mi ne
 
 ### <a name="manage-instances"></a>Správa instancí
 
-- Azure AD přihlášení a uživatelů jsou podporovány jako funkci ve verzi preview pro [spravovaných instancí](sql-database-managed-instance.md).
-- Nastavení Azure AD přihlášení mapované na skupiny Azure AD, vlastník databáze není podporován [spravovaných instancí](sql-database-managed-instance.md).
+- Azure AD objekty serveru (přihlášení) a uživatelé jsou podporovány jako funkci ve verzi preview pro [spravovaných instancí](sql-database-managed-instance.md).
+- Nastavení serveru služby Azure AD (přihlášení) – objekty zabezpečení mapované na skupiny Azure AD, vlastník databáze není podporován [spravovaných instancí](sql-database-managed-instance.md).
     - Rozšíření tohoto je, že při přidání skupiny jako součást `dbcreator` role serveru, uživatelé z této skupiny mohou připojit k Managed Instance a vytvářet nové databáze, ale nebudou mít přístup k databázi. Je to proto, že nový vlastník databáze je SA a ne uživatele Azure AD. Tento problém není manifestu, pokud individuální uživatel je přidán do `dbcreator` role serveru.
-- Agent SQL Server management a úlohy provádění se podporuje pro přihlášení Azure AD.
-- Databáze zálohování a obnovení operací může provést přihlášení Azure AD.
-- Auditování všechny příkazy související s Azure AD přihlášení a události ověřování se nepodporuje.
-- Je podporován vyhrazené připojení správce pro přihlášení Azure AD, které jsou členy role serveru sysadmin.
+- Spuštění úlohy a správu agenta systému SQL je podporována pro objekty zabezpečení serveru Azure AD (přihlášení).
+- Databáze zálohování a obnovení operací mohou být provedeny objekty zabezpečení serveru Azure AD (přihlášení).
+- Auditování všechny příkazy související s Azure AD objekty serveru (přihlášení) a události ověřování se nepodporuje.
+- Je podporován vyhrazené připojení správce pro objekty serveru Azure AD (přihlášení), které jsou členy role serveru sysadmin.
     - Podporováno prostřednictvím Nástroj SQLCMD a SQL Server Management Studio.
-- Přihlašovací aktivační události jsou podporovány pro události přihlášení pocházející z přihlášení Azure AD.
-- Služba Service Broker a DB e-mailu může být také nastaven pomocí přihlášení Azure AD.
+- Přihlašovací aktivační události jsou podporovány pro události přihlášení pocházející z Azure AD objekty serveru (přihlášení).
+- Služba Service Broker a DB e-mailu může být také nastaven pomocí serveru instančního objektu Azure AD (přihlášení).
 
 
 ## <a name="connecting-using-azure-ad-identities"></a>Připojení pomocí identit Azure AD
@@ -121,7 +121,7 @@ Ověřování pomocí Azure Active Directory podporuje následující způsoby p
 - Pomocí hlavního názvu služby Azure AD a heslo
 - Pomocí ověřování tokenu aplikací
 
-Jsou podporovány následující metody ověření pro přihlášení Azure AD (**ve verzi public preview**):
+Následující metody ověřování jsou podporovány pro objekty zabezpečení serveru Azure AD (přihlášení) (**ve verzi public preview**):
 
 - Azure Active Directory – heslo
 - Azure Active Directory – integrované
@@ -133,7 +133,7 @@ Jsou podporovány následující metody ověření pro přihlášení Azure AD (
 
 - Pokud chcete zlepšit možnosti správy, doporučujeme zřídit vyhrazené Azure AD jako správce.   
 - Server Azure SQL Database nebo Azure SQL Data Warehouse kdykoli lze nastavit jen jednoho správce Azure AD (uživatel nebo skupina).
-  - Přidání přihlášení Azure AD pro Managed instance (**ve verzi public preview**) umožňuje možnost vytvoření několika přihlášení Azure AD, které mohou být přidány do `sysadmin` role.
+  - Přidání objektů serveru Azure AD (přihlášení) pro spravované instance (**ve verzi public preview**) umožňuje možnost vytvoření několika Azure AD server objekty zabezpečení (přihlašovací údaje), které mohou být přidány do `sysadmin` role.
 - Pouze správce Azure AD pro SQL Server můžete nejprve připojit k serveru Azure SQL Database, mi nebo Azure SQL Data Warehouse pomocí účtu služby Azure Active Directory. Správce služby Active Directory můžete nakonfigurovat další služby Azure AD databázi uživatelů.   
 - Doporučujeme nastavit časový limit připojení na 30 sekund.   
 - SQL Server 2016 Management Studio a SQL Server Data Tools pro Visual Studio 2015 (verze 14.0.60311.1April 2016 nebo novější) podporují ověřování pomocí Azure Active Directory. (Podporuje ověřování azure AD **.NET Framework Data Provider pro SqlServer**; minimální verze rozhraní .NET Framework 4.6). Proto nejnovější verze těchto nástrojů a aplikací datové vrstvy (DAC a. BACPAC) můžete použít ověřování Azure AD.   
@@ -147,12 +147,12 @@ Jsou podporovány následující metody ověření pro přihlášení Azure AD (
 ## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak vytvořit a naplnit Azure AD a Azure AD nakonfigurovat pomocí Azure SQL Database nebo Azure SQL Data Warehouse, najdete v článku [konfigurovat a spravovat ověřování Azure Active Directory s SQL Database, mi nebo SQL Data Warehouse ](sql-database-aad-authentication-configure.md).
-- Kurz použití přihlášení Azure AD se Managed instance, najdete v tématu [přihlášení Azure AD pomocí spravovaných instancí](sql-database-managed-instance-aad-security-tutorial.md)
+- Kurz použití Azure AD objekty serveru (přihlášení) se Managed instance, najdete v tématu [objekty serveru Azure AD (přihlášení) se Managed instance](sql-database-managed-instance-aad-security-tutorial.md)
 - Přehled řízení a přístupu pro SQL Database najdete v tématu věnovaném [řízení a přístupu k SQL Database](sql-database-control-access.md).
 - Přehled přihlášení, uživatelů a databázových rolí ve službě SQL Database najdete v tématu věnovaném [přihlášením, uživatelům a databázovým rolím](sql-database-manage-logins.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).
 - Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](https://msdn.microsoft.com/library/ms189121.aspx).
-- Syntaxe týkající se vytvoření přihlášení Azure AD pro Managed instance, naleznete v tématu [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+- Syntaxe týkající se vytvoření objektů serveru (přihlášení) pro spravované instance Azure AD, najdete v části [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 - Další informace o pravidlech brány firewall pro SQL Database najdete v tématu [Pravidla brány firewall služby SQL Database](sql-database-firewall-configure.md).
 
 <!--Image references-->

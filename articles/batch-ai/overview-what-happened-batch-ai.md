@@ -7,12 +7,12 @@ ms.service: batch-ai
 ms.topic: overview
 ms.date: 2/14/2019
 ms.author: garye
-ms.openlocfilehash: 44c0eec97f63897173ecde170ec4ed926db8bcaa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 87dcf18a2517561e3166726f8f1f1a70c2ec7713
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342809"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447799"
 ---
 # <a name="whats-happening-to-azure-batch-ai"></a>Co se děje s Azure Batch AI?
 
@@ -121,7 +121,7 @@ Služba Azure Machine Learning také přináší nové funkce, jako automatické
 
 ## <a name="how-do-i-migrate"></a>Jak provést migraci?
 
-Než budete postupovat podle kroků v této příručce, které pomáhají příkazů mapování mezi těmito dvěma službami, doporučujeme, že můžete věnovat nějaký čas získávání znáte službu Azure Machine Learning prostřednictvím jeho dokumentaci] (.. / machine-learning/service/overview-what-is-azure-ml.md) včetně [výukového programu v jazyce Python](../machine-learning/service/tutorial-train-models-with-aml.md).
+Před provedením kroků v této příručce, které pomáhají příkazů mapování mezi těmito dvěma službami, doporučujeme vám, že můžete věnovat nějaký čas získávání znáte službu Azure Machine Learning prostřednictvím jeho [dokumentaci](../machine-learning/service/overview-what-is-azure-ml.md) včetně [výukového programu v jazyce Python](../machine-learning/service/tutorial-train-models-with-aml.md).
 
 Vyhnete se tak přerušením pro vaše aplikace a využívat nejnovější funkce, proveďte následující kroky před 31. března 2019:
 
@@ -134,7 +134,7 @@ Vyhnete se tak přerušením pro vaše aplikace a využívat nejnovější funkc
 1. Aktualizujte skripty, aby pomocí Azure Machine Learning Compute.
 
 
-### <a name="sdk"></a>Sada SDK
+### <a name="sdk-migration"></a>Migrace sady SDK
 
 Aktuální sady SDK podporují ve službě Azure Machine Learning service je prostřednictvím několika sadách SDK pro Python. Hlavní sada SDK se aktualizuje přibližně každé dva týdny a je možné nainstalovat z PyPi pomocí následujícího příkazu:
 
@@ -147,10 +147,10 @@ Nastavení prostředí a nainstalujte sadu SDK používat [pokyny rychlý start]
 Po otevření poznámkového bloku jupyter s jádra odkazující na prostředí conda relevantní, tady je způsob mapování příkazů v obou službách:
 
 
-### <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+#### <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 Koncept inicializace pracovního prostoru configuration.json v BatchAI mapuje podobně pomocí souboru konfigurace v Azure ML.
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 sys.path.append('../../..')
@@ -163,7 +163,7 @@ utils.config.create_resource_group(cfg)
 _ = client.workspaces.create(cfg.resource_group, cfg.workspace, cfg.location).result()
 ```
 
-Služba Azure Machine Learning:
+**Služba Azure Machine Learning**, vyzkoušejte:
 
 ```python
 from azureml.core.workspace import Workspace
@@ -175,9 +175,10 @@ print('Workspace name: ' + ws.name,
       'Resource group: ' + ws.resource_group, sep = '\n')
 ```
 
-Kromě toho můžete také vytvořit pracovní prostor přímo tak, že určíte, že parametry konfigurace, jako je z azureml.core importovat pracovní prostor
+Kromě toho můžete také vytvořit pracovní prostor přímo tak, že zadáte parametry konfigurace, jako jsou
 
 ```python
+from azureml.core import Workspace
 # Create the workspace using the specified parameters
 ws = Workspace.create(name = workspace_name,
                       subscription_id = subscription_id,
@@ -191,13 +192,13 @@ ws.get_details()
 ws.write_config()
 ```
 
-Tady je podrobnější dokumentaci k třídě AML prostoru pomocí příslušné funkce.
+Další informace o třídě AML pracovního prostoru v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py).
 
 
 #### <a name="create-a-compute-cluster"></a>Vytvořte výpočetní cluster
-Azure Machine Learning podporuje více cílových výpočetních prostředí, z nichž některé jsou spravovány službou a ostatní, které lze připojit k vašemu pracovnímu prostoru (např.) HDInsight cluster nebo vzdáleném virtuálním počítači, další informace najdete tady). Vytváření BatchAI koncept výpočetní cluster mapuje se na vytváření AmlCompute clusteru v Azure ML. Vytvoření Amlcompute trvá v konfiguraci výpočtů, který je podobný jak předávat parametry v BatchAI. Je jedna věc, kterou si uvědomit, že automatické škálování na ve výchozím nastavení je ve vašem clusteru AmlCompute vzhledem k tomu je vypnuto ve výchozím nastavení v BatchAI.
+Azure Machine Learning podporuje více cílových výpočetních prostředí, z nichž některé jsou spravovány službou a ostatní, které lze připojit k vašemu pracovnímu prostoru (např.) HDInsight cluster nebo vzdáleném virtuálním počítači. Další informace o různých [cílových výpočetních prostředí](../machine-learning/service/how-to-set-up-training-targets.md). Vytváření BatchAI koncept výpočetní cluster mapuje se na vytváření AmlCompute clusteru v Azure ML. Vytvoření Amlcompute trvá v konfiguraci výpočtů, který je podobný jak předávat parametry v BatchAI. Je jedna věc, kterou si uvědomit, že automatické škálování na ve výchozím nastavení je ve vašem clusteru AmlCompute vzhledem k tomu je vypnuto ve výchozím nastavení v BatchAI.
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 nodes_count = 2
@@ -217,7 +218,7 @@ parameters = models.ClusterCreateParameters(
 _ = client.clusters.create(cfg.resource_group, cfg.workspace, cluster_name, parameters).result()
 ```
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -244,20 +245,20 @@ except ComputeTargetException:
 gpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Tady je podrobnější dokumentaci k třídě AmlCompute pomocí příslušné funkce. Všimněte si, že v konfiguraci vyšší pouze vm_size a max_nodes jsou povinné a zbývající vlastnosti, jako jsou virtuální sítě jsou určeny pro pokročilou konfiguraci.
+Další informace o třídě AMLCompute v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py). Mějte na paměti, že v konfiguraci vyšší pouze vm_size a max_nodes jsou povinné a jsou určené pro pokročilé nastavení clusteru s podporou pouze zbývající vlastnosti, jako jsou virtuální sítě.
 
 
-### <a name="monitoring-status-of-your-cluster"></a>Sledování stavu clusteru
-Toto je jednodušší v Azure ML jak je uvedeno níže.
+#### <a name="monitoring-status-of-your-cluster"></a>Sledování stavu clusteru
+Toto je jednodušší v Azure ML jak vidíte níže.
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 cluster = client.clusters.get(cfg.resource_group, cfg.workspace, cluster_name)
 utils.cluster.print_cluster_status(cluster)
 ```
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 gpu_cluster.get_status().serialize()
@@ -266,7 +267,7 @@ gpu_cluster.get_status().serialize()
 #### <a name="getting-reference-to-a-storage-account"></a>Získání odkazu na účet úložiště
 Koncept úložiště dat jako objektů blob, získá zjednodušená v Azure ML pomocí objektu úložiště. Ve výchozím nastavení pracovního prostoru Azure ML vytvoří účet úložiště, ale vlastní úložiště lze také připojit jako součást vytváření pracovního prostoru. 
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 azure_blob_container_name = 'batchaisample'
@@ -274,20 +275,20 @@ blob_service = BlockBlobService(cfg.storage_account_name, cfg.storage_account_ke
 blob_service.create_container(azure_blob_container_name, fail_on_exist=False)
 ```
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 ```
 
-Další informace o registraci dalších účtů úložiště, nebo získání odkazu na jiného registrovaného úložiště najdete tady.
+Další informace o registraci dalších účtů úložiště, nebo získání odkazu na jiného registrovaného úložiště dat v [dokumentace ke službě Azure ML](../machine-learning/service/how-to-access-data.md#create-a-datastore).
 
 
 #### <a name="downloading-and-uploading-data"></a>Stahování a nahrávání dat 
 Pomocí těchto služeb můžete nahrát data do účtu úložiště snadno pomocí odkazu na úložiště dat výše. BatchAI jsme také nasadit cvičný skript jako součást Sdílení souborů, i když se zobrazí, jak můžete zadat jako součást konfigurace úlohy v případě Azure ML.
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 mnist_dataset_directory = 'mnist_dataset'
@@ -303,7 +304,7 @@ blob_service.create_blob_from_path(azure_blob_container_name,
 ```
 
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 import os
@@ -320,14 +321,14 @@ path_on_datastore = ' mnist_dataset/mnist.npz' ds_data = ds.path(path_on_datasto
 #### <a name="create-an-experiment"></a>Vytvoření experimentu
 Jak je uvedeno výše má Azure ML koncept podobný BatchAI experimentu. Každý experimentu potom může mít jednotlivé testy, podobně jako jak máme úlohy BatchAI. Služba Azure ML umožňuje mít hierarchii pod každým nadřazeným spustit pro spuštění jednotlivých podřízených.
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 experiment_name = 'tensorflow_experiment'
 experiment = client.experiments.create(cfg.resource_group, cfg.workspace, experiment_name).result()
 ```
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 from azureml.core import Experiment
@@ -338,9 +339,9 @@ experiment = Experiment(ws, name=experiment_name)
 
 
 #### <a name="submit-a-job"></a>Odeslání úlohy
-Jakmile vytvoříte experiment, máte několik různých způsobů odeslání spuštění. V tomto příkladu jsme se pokoušíte vytvořit pomocí TensorFlow modelu obsáhlého learningu a pomocí Azure ML Estimator udělat. Odhadu je jednoduše funkce obálky na základní konfigurace spuštění, usnadňuje odeslat spuštění, který je aktuálně podporovaná Pytorch a TensorFlow jenom pro. Prostřednictvím koncept úložišť, zobrazí se také jak snadno se stane pro zadání cesty připojení 
+Jakmile vytvoříte experiment, máte několik různých způsobů odeslání spuštění. V tomto příkladu jsme se pokoušíte vytvořit pomocí TensorFlow modelu obsáhlého learningu a pomocí Azure ML Estimator udělat. [Estimator](../machine-learning/service/how-to-train-ml-models.md) je jednoduše funkce obálky na základní konfigurace spuštění, usnadňuje odeslat spuštění, který je aktuálně podporovaná Pytorch a TensorFlow jenom pro. Prostřednictvím koncept úložišť, zobrazí se také jak snadno se stane pro zadání cesty připojení 
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 azure_file_share = 'afs'
@@ -408,9 +409,9 @@ job = client.jobs.create(cfg.resource_group, cfg.workspace, experiment_name, job
 print('Created Job {0} in Experiment {1}'.format(job.name, experiment.name))
 ```
 
-Úplné informace pro tento fragment kódu školení (včetně mnist_replica.py soubor, který jsme měli nahráli do sdílené složky výše) najdete v BatchAI ukázka Poznámkový blok úložiště github se tady.
+Úplné informace pro tento fragment kódu školení (včetně mnist_replica.py soubor, který jsme měli nahráli do sdílené složky výše) najdete v [úložišti na githubu ukázky Poznámkový blok BatchAI](https://github.com/Azure/BatchAI/tree/2238607d5a028a0c5e037168aefca7d7bb165d5c/recipes/TensorFlow/TensorFlow-GPU-Distributed).
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -433,7 +434,7 @@ estimator = TensorFlow(source_directory=project_folder,
                        use_gpu=True)
 ```
 
-Úplné informace pro tento fragment kódu školení (včetně souboru tf_mnist_replica.py) najdete v Azure ML ukázka Poznámkový blok úložiště github se tady. Úložiště dat, samotného je možné připojit buď v jednotlivých uzlech, nebo trénovacích dat si můžete stáhnout na samotný uzel. Tady jsou další podrobnosti o odkazování na úložiště dat do vašeho odhadu. 
+Úplné informace pro tento fragment kódu školení (včetně souboru tf_mnist_replica.py) najdete v [úložišti na githubu ukázky poznámkového bloku Azure ML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server). Úložiště dat, samotného je možné připojit buď v jednotlivých uzlech, nebo trénovacích dat si můžete stáhnout na samotný uzel. Další informace o odkazování na úložiště dat ve vaší odhaduje se [dokumentace ke službě Azure ML](../machine-learning/service/how-to-access-data.md#access-datastores-for-training). 
 
 Odesílání spustit v Azure ML je pomocí funkce Odeslat.
 
@@ -442,12 +443,12 @@ run = experiment.submit(estimator)
 print(run)
 ```
 
-Neexistuje jiný způsob určení parametrů spuštění, pomocí spouštění config – užitečné zejména pro definování vlastní školení prostředí. Další podrobnosti najdete v tomto příkladu poznámkového bloku v tomto poli. 
+Neexistuje jiný způsob určení parametrů spuštění, pomocí spouštění config – užitečné zejména pro definování vlastní školení prostředí. Další podrobnosti najdete v tomto [ukázkový AmlCompute Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-amlcompute/train-on-amlcompute.ipynb). 
 
 #### <a name="monitor-your-run"></a>Monitorování spuštění
 Jakmile odešlete spustit, můžete buď počkejte na její dokončení nebo monitorování v Azure ML pomocí úhledné Jupyter pomůcky, které můžete vyvolat přímo v kódu. Také si můžete vyžádat kontextu jakékoli předchozí spuštění ve smyčce prostřednictvím různých experimenty v pracovním prostoru a jednotlivých běží v rámci každého pokusu.
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 
 ```python
 utils.job.wait_for_job_completion(client, cfg.resource_group, cfg.workspace, 
@@ -460,7 +461,7 @@ for f in list(files):
 ```
 
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 run.wait_for_completion(show_output=True)
@@ -473,15 +474,15 @@ Zde je snímek jak by widgetu načíst v poznámkovém bloku pro vyhledávání 
 
 
 
-#### <a name="delete-a-cluster"></a>Odstranění clusteru
+#### <a name="editing-a-cluster"></a>Úprava clusteru
 Odstranění clusteru je jednoduché. Kromě toho Azure ML umožňuje aktualizovat cluster z v rámci poznámkového bloku, v případě, že chcete škálovat tak, aby vyšší počet uzlů, či navyšte čas nečinnosti wait dříve, než škálování clusteru. Jsme Nepovolovat, můžete změnit velikost virtuálního počítače samotného clusteru, protože vyžaduje nové nasazení efektivně v back-endu.
 
-Pro služby Batch AI máte to Hotovo tímto způsobem:
+Pro **služby Batch AI**, nebyla tímto způsobem:
 ```python
 _ = client.clusters.delete(cfg.resource_group, cfg.workspace, cluster_name)
 ```
 
-Pro službu Azure Machine Learning vyzkoušejte:
+Pro **služby Azure Machine Learning**, vyzkoušejte:
 
 ```python
 gpu_cluster.delete()
@@ -491,13 +492,13 @@ gpu_cluster.update(min_nodes=2, max_nodes=4, idle_seconds_before_scaledown=600)
 
 ## <a name="support"></a>Podpora
 
-BatchAI plánované vyřadit z provozu 31. března a už blokuje nová předplatná v registraci na službu, pokud není na seznamu povolených vyvoláním výjimky prostřednictvím podpory.  Azure Batch AI školení ve verzi Preview, kontaktujte AzureBatchAITrainingPreview@service.microsoft.com jakékoli dotazy nebo pokud máte nějakou zpětnou vazbu, jak migrovat do služby Azure Machine Learning.
+BatchAI plánované vyřadit z provozu 31. března a už blokuje nová předplatná v registraci na službu, pokud není na seznamu povolených vyvoláním výjimky prostřednictvím podpory.  Kontaktujte nás na adrese [Azure Batch AI školení ve verzi Preview](mailto:AzureBatchAITrainingPreview@service.microsoft.com) jakékoli dotazy nebo pokud máte nějakou zpětnou vazbu, jak migrovat do služby Azure Machine Learning.
 
-Služba Azure Machine Learning je obecně dostupné služby. To znamená, že jde o potvrzené smlouva SLA a různých plánech podporuje lze vybírat.
+Služba Azure Machine Learning je obecně dostupné služby. To znamená, že obsahuje potvrzené smlouva SLA a můžete vybírat z různých plánech podpory.
 
 Ceny za použití infrastruktury Azure BatchAI služby nebo pomocí služby Azure Machine Learning by neměl lišit v závislosti na, účtujeme jenom cena za spotřebované výpočetní prostředky v obou případech. Další informace najdete v tématu [cenové kalkulačky](https://azure.microsoft.com/pricing/details/machine-learning-service/).
 
-Dostupnost podle oblastí mezi těmito dvěma službami najdete tady: https://azure.microsoft.com/global-infrastructure/services/?products=batch-ai, služby machine learning a oblasti = all.
+Zobrazit na dostupnost podle oblastí mezi těmito dvěma službami [webu Azure portal](https://azure.microsoft.com/global-infrastructure/services/?products=batch-ai,machine-learning-service&regions=all).
 
 
 ## <a name="next-steps"></a>Další postup

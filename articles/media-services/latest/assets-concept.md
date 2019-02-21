@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 72229a723247d6f0d68341771b073d0626ab2edb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745992"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447306"
 ---
 # <a name="assets"></a>Prostředky
 
@@ -48,8 +48,7 @@ Jedním z běžných pracovních Media Services je nahrávání, kódování a s
 4. Pomocí rozhraní API služby Media Services v3 můžete vytvářet transformace a úlohy ke zpracování "vstupní" Asset. Další informace najdete v tématu [transformuje a úlohy](transform-concept.md).
 5. Stream obsahu z "výstupní" asset.
 
-> [!TIP]
-> Úplný příklad .NET, který ukazuje, jak: vytvořit Asset, získání zapisovatelné adresy URL SAS prostředku kontejneru v úložišti, nahrajte soubor do kontejneru v úložišti pomocí adresy URL SAS, naleznete v tématu [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md).
+Úplný příklad .NET, který ukazuje, jak: vytvořit Asset, získání zapisovatelné adresy URL SAS prostředku kontejneru v úložišti, nahrajte soubor do kontejneru v úložišti pomocí adresy URL SAS, naleznete v tématu [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md).
 
 ### <a name="create-a-new-asset"></a>Vytvoření nového prostředku
 

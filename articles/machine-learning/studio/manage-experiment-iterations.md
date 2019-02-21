@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 503a93064b81e0db35c0477a11f2ee525680c854
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e41a669e3dcd14952077cbd21e7387184546de80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488424"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454277"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Správa iterací experimentů v nástroji Azure Machine Learning Studio
 Vývojem modelu prediktivní analýzy je iterativní proces - úpravou různých funkcí a parametrů experimentu sloučit výsledky až se ujistíte, že máte natrénován efektivní model. Klíč k tomuto procesu se ke sledování různých iterací experimentu parametry a konfigurací.
@@ -48,7 +48,7 @@ Předpokládejme například, vytvoření experimentu s [lineární regrese] [ l
 
 Vyberete-li **zobrazit HISTORII spuštění**, zobrazí se seznam všech těchto spuštění:
 
-![Příklad historie spuštění][runhistory]
+![Příklad historie spuštění](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
 Kliknutím na některý z těchto spuštění zobrazíte snímek experiment v době, kdy jste spustili. Konfigurace, hodnoty parametrů, komentáře a výsledky jsou všechny zachovány získáte úplný záznam, ve kterých běží experimentu.
 
@@ -73,10 +73,6 @@ Předpokládejme například, že máte experimentu je znázorněno v předchoz�
 5. Klikněte na tlačítko **spustit**.
 
 Můžete teď můžete pokračovat upravit a spustit tuto verzi experimentu, vytváření nových historii spuštění k zaznamenání práce.
-
-<!-- Images -->
-[runhistory]:./media/manage-experiment-iterations/viewrunhistory.jpg
-
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

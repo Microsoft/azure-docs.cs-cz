@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 8b95c311cd91ab6db84fb6640be5b6c1a6c0a9a5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 3501284be2430941863bbae90f044df8ba5e7a2a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443113"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454800"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -40,8 +40,8 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
-+ Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
++ Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -124,7 +124,7 @@ Konfigurace diagnostických protokolů:
 
     ![Diagnostické protokoly](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. Klikněte na **Zapnout diagnostiku**. Diagnostické protokoly můžete společně s metrikami archivovat v účtu úložiště, streamovat je do centra událostí nebo je odesílat do Log Analytics. 
+3. Klikněte na **Zapnout diagnostiku**. Archivace diagnostických protokolů společně s metrikami na účet úložiště, Streamovat do centra událostí nebo odeslat protokoly Azure monitoru. 
 
 API Management v současné době poskytuje diagnostické protokoly (dávkované po hodinách) o jednotlivých požadavcích rozhraní API, kde má každá položka následující schéma:
 
@@ -183,7 +183,7 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 | callerIpAddress | řetězec | IP adresa bezprostředního volajícího brány (může být prostředníkem). |
 | correlationId | řetězec | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
 | location | řetězec | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
-| httpStatusCodeCategory | řetězec | Kategorie stavového kódu odpovědi HTTP: Úspěch (301 nebo nižší, 304 nebo 307), Neautorizováno (401, 403, 429), Chyba (400, 500 až 600), Jiné. |
+| httpStatusCodeCategory | řetězec | Kategorie stavového kódu odpovědi http: Úspěšné (301 nebo nižší 304 nebo 307), Neautorizováno (401, 403, 429), chybné (400, 500 až 600), jiné |
 | resourceId | řetězec | ID prostředku služby API Management /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<skupina_prostředků>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> |
 | properties | objekt | Vlastnosti aktuálního požadavku. |
 | method | řetězec | Metoda HTTP příchozího požadavku. |

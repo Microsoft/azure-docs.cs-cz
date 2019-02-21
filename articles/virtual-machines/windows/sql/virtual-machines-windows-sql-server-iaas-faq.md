@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767334"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456652"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -88,6 +88,9 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
    Ano. Můžete snadno přesouvat přesunout mezi těmito dvěma licenční modely, pokud jste původně spustili pomocí image galerie s průběžnými platbami. Ale nebudete moci přepnout vaše licence na průběžné platby, pokud původně spustili pomocí BYOL image. Další informace najdete v tématu [jak chcete-li změnit licenční model virtuálního počítače s SQL serverem](virtual-machines-windows-sql-ahb.md).
 
+   > [!Note]
+   > V současné době je k dispozici jenom pro zákazníky veřejného cloudu Azure.
+
 1. **Použít Image BYOL nebo RP virtuálního počítače SQL k vytvoření nového virtuálního počítače SQL?**
 
    Přineste si – používání vlastní licence (BYOL) image jsou dostupné jenom pro zákazníky se smlouvou EA. Další zákazníky programu Software Assurance používali poskytovatele prostředků virtuálního počítače s SQL k vytvoření virtuálního počítače SQL s [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/licensing-faq/). 
@@ -142,7 +145,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Jak upgradovat na novou verzi nebo edici SQL serveru na Virtuálním počítači Azure?**
 
-   V současné době neexistuje žádný místní upgrade SQL serveru běžícího na Virtuálním počítači Azure. Vytvořit nový virtuální počítač Azure s požadovanou verzí/edicí systému SQL Server, a potom migrovat databáze do nového serveru pomocí standardní [technik migrace dat](virtual-machines-windows-migrate-sql.md).
+   Aktuálně není dostupný místní upgrade pro SQL Server spuštěný ve virtuálním počítači Azure. Vytvořit nový virtuální počítač Azure s požadovanou verzí/edicí systému SQL Server, a potom migrovat databáze do nového serveru pomocí standardní [technik migrace dat](virtual-machines-windows-migrate-sql.md).
 
 1. **Jak se aktualizace a aktualizace service Pack používají na virtuální počítač s SQL serverem?**
 

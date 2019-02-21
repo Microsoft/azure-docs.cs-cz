@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: c12c87524ac1b8d0be5b691d599510f8e4573317
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 7f0485221f0f29d08275f9508ba79e32c3f8924a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267321"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455434"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Průvodce odstraňováním potíží: Vytvoření a připojení k pracovnímu prostoru Azure Machine Learning Studio
 Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
@@ -39,31 +39,24 @@ Služba Machine Learning potřebuje účet úložiště k ukládání dat. Můž
 
 Jakmile se vytvoří nový pracovní prostor Machine Learning Studio, můžete přihlásit ke službě Machine Learning Studio pomocí účtu Microsoft, který jste použili k vytvoření pracovního prostoru. Pokud narazíte na chybovou zprávu, "Pracovní prostor nebyl nalezen" (podobně jako na následujícím snímku obrazovky), použijte následující kroky a odstranit soubory cookie v prohlížeči.
 
-![Pracovní prostor nebyl nalezen][screen3]
+![Pracovní prostor nebyl nalezen](media/troubleshooting-creating-ml-workspace/screen3.png)
 
 **Chcete-li odstranit soubory cookie v prohlížeči**
 
 1. Pokud používáte Internet Explorer, klikněte na tlačítko **nástroje** tlačítko v pravém horním rohu a vyberte **Možnosti Internetu**.  
 
-   ![Možnosti Internetu][screen4]
+   ![Možnosti Internetu](media/troubleshooting-creating-ml-workspace/screen4.png)
 
 2. V části **Obecné** klikněte na tlačítko **odstranit...**
 
-   ![Karta Obecné][screen5]
+   ![Karta Obecné](media/troubleshooting-creating-ml-workspace/screen5.png)
 
 3. V **odstranit historii procházení** dialogové okno pole, ujistěte se, že **soubory cookie a data webu** je vybraná a klikněte na tlačítko **odstranit**.
 
-   ![Odstranění souborů cookie][screen6]
+   ![Odstranění souborů cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
 
-Po odstranění souborů cookie, restartujte prohlížeč a přejděte [Microsoft Azure Machine Learning](https://studio.azureml.net) stránky. Po zobrazení výzvy k zadání uživatelského jména a hesla, zadejte stejný účet Microsoft, který jste použili k vytvoření pracovního prostoru.
+Po odstranění souborů cookie, restartujte prohlížeč a přejděte [Microsoft Azure Machine Learning Studio](https://studio.azureml.net) stránky. Po zobrazení výzvy k zadání uživatelského jména a hesla, zadejte stejný účet Microsoft, který jste použili k vytvoření pracovního prostoru.
 
 ## <a name="comments"></a>Komentáře
 
 Naším cílem je, aby co nejvíc jako bezproblémové prostředí Machine Learning. Zveřejněte ji prosím všechny komentáře a problémy ve [fórum pro Azure Machine Learning](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) nám můžete poskytovat lepší.
-
-[screen1]:media/troubleshooting-creating-ml-workspace/screen1.png
-[screen2]:media/troubleshooting-creating-ml-workspace/screen2.png
-[screen3]:media/troubleshooting-creating-ml-workspace/screen3.png
-[screen4]:media/troubleshooting-creating-ml-workspace/screen4.png
-[screen5]:media/troubleshooting-creating-ml-workspace/screen5.png
-[screen6]:media/troubleshooting-creating-ml-workspace/screen6.png

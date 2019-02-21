@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 78daf4534334d56c962d97e7a9aac8a7910db34c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242887"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453592"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Machine learning s příklady algoritmů základy
 
@@ -33,7 +33,7 @@ Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine 
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Další pomoc s algoritmy pro začátečníky a zkušené uživatele
 
-* Podrobnější diskuzi o různé typy algoritmů strojového učení, jak se používají a jak zvolit ten správný pro vaše řešení, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
+* Podrobnější diskuzi o různé typy algoritmů strojového učení, jak se používají a jak zvolit ten správný pro vaše řešení, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 * Seznam podle kategorie všechny dostupných algoritmů strojového učení v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] Machine Learning Studio algoritmus a pomůže modulu.
 * Úplný abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] Studio algoritmu strojového učení a pomůže modulu.
 * Přehled o galerii Azure AI a mnoho vytvářené komunitou prostředky k dispozici, najdete v části [sdílené složky a vyhledejte prostředky v galerii Azure AI](gallery-how-to-use-contribute-publish.md).

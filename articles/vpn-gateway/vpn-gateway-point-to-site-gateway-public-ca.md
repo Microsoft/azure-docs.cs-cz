@@ -1,45 +1,49 @@
 ---
-title: Přechod z podepsaného svým držitelem na veřejné certifikáty certifikační Autority pro P2S brány | Azure VPN Gateway | Dokumentace Microsoftu
+title: Přechod na veřejné certifikáty certifikační Autority pro P2S brány | Azure VPN Gateway | Dokumentace Microsoftu
 description: Tento článek pomáhá úspěšně přejít do nové veřejné certifikáty certifikační Autority pro P2S brány.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 02/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: e5a75826730219adc643d7c6ca300a38c8640006
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 8d5dca65734640dc9e756f9130e6b362178781f2
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428359"
+ms.locfileid: "56453508"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Přechod na certifikát veřejné brány CA pro P2S
 
 Azure VPN Gateway už vydává certifikáty podepsané svým držitelem úrovně Azure pro své brány pro připojení P2S. Vystavené certifikáty jsou podepsané nyní podle veřejnou certifikační autoritu (CA). Nicméně některé starší brány může stále používat certifikáty podepsané svým držitelem. Tyto certifikáty podepsané svým držitelem se mu blížíte jejich data vypršení platnosti a musí být převeden do veřejné certifikáty certifikační Autority.
 
-Certifikáty v tomto kontextu jsou další úrovně Azure certifikát. Nejsou řetězy certifikátů, které používáte při vytváření vlastní kořenovými certifikáty podepsanými svým držitelem a klientských certifikátů pro ověřování. Tyto certifikáty zůstanou beze změny a dnů do vypršení platnosti dat je k tomu vygeneroval.
-
 >[!NOTE]
 > Certifikáty podepsané svým držitelem použit pro ověření klienta P2S neovlivní tato změna certifikátu úrovně Azure. Můžete pokračovat k vystavování a použití certifikátů podepsaných svým držitelem jako za normálních okolností.
 >
+
+Certifikáty v tomto kontextu jsou další úrovně Azure certifikát. Nejsou řetězy certifikátů, které používáte při vytváření vlastní kořenovými certifikáty podepsanými svým držitelem a klientských certifikátů pro ověřování. Tyto certifikáty zůstanou beze změny a dnů do vypršení platnosti dat je k tomu vygeneroval.
 
 Certifikát podepsaný svým držitelem pro bránu (vydané na pozadí Azure) dříve, potřeba aktualizovat každý 18 měsíců. Konfiguračních souborů klienta VPN pak musel být generovány a znovu nasadit na všechny klienty P2S. Přechod na veřejné certifikáty certifikační Autority se vyloučí toto omezení. Kromě přechodu pro certifikáty poskytuje tato změna také vylepšení platformy, lepší metriky a vylepšení stability.
 
 Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát brány převedou, zobrazí se komunikace nebo informační zprávy na webu Azure Portal. Můžete zkontrolovat, pokud vaše brána je ovlivněno pomocí kroků v tomto článku.
 
->[!IMPORTANT]
->Tento přechod je naplánováno Březnových aktualizací 12,2019 od 18:00 UTC. Pokud dáváte přednost jiný časový interval, můžete vytvořit lístek podpory. Ujistěte se a dokončit váš požadavek předem nejméně 24 hodin.  Požádat o jednu z následujících oken:
+> [!IMPORTANT]
+> Tento přechod je naplánováno 12 března. května 2019 od 18:00 UTC. Pokud dáváte přednost jiný časový interval, můžete vytvořit lístek podpory. Ujistěte se a dokončit váš požadavek předem nejméně 24 hodin.  Požádat o jednu z následujících oken:
 >
->* 06:00 UTC na 25 února
->* 18:00 UTC na 25 února
->* 06:00 UTC na 1 března
->* 18:00 UTC na 1 března
+> * 06:00 UTC na 25. února
+> * 18:00 UTC na 25. února
+> * 06:00 UTC 1. března
+> * 18:00 UTC 1. března
 >
->**Všechny zbývající brány přejde na 12 března. května 2019 od 18:00 UTC**.
+> **Všechny zbývající brány přejde na 12 března. května 2019 od 18:00 UTC**.
 >
+> Proces přechodu gateway bude trvat až 2 hodiny. Zákazníci obdrží e-mailu při jejich brány dokončí proces přechodu.
+> 
 
 ## <a name="1-verify-your-certificate"></a>1. Ověřte váš certifikát
+
+### <a name="resource-manager"></a>Resource Manager
 
 1. Zaškrtněte, pokud chcete zobrazit, pokud jsou ovlivněny této aktualizace. Stáhněte si pomocí postupu v aktuální konfiguraci klienta VPN [v tomto článku](point-to-site-vpn-client-configuration-azure-cert.md).
 
@@ -49,6 +53,11 @@ Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát br�
   * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
   * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
 4. Pokud *ServerCertRotCn* a *ServerCertIssuerCn* jsou "DigiCert globální kořenové certifikační Autority", nejsou touto aktualizací ovlivněny a není nutné postupujte podle kroků v tomto článku. Pokud ale zobrazí se něco jiného, certifikát brány je v rámci aktualizace a se převedou.
+
+### <a name="classic"></a>Classic
+
+1. Na klientském počítači, přejděte na cestu %appdata%/Microsoft/Network/Connections/Cm/<gatewayID>. Ve složce ID brány můžete zobrazit certifikát.
+2. Na kartě Obecné pro certifikát ověřte, že vystavující autorita "DigiCert globální kořenové certifikační Autority". Pokud máte nic jiného než vystavující autorita, váš certifikát brány je v rámci aktualizace a se převedou.
 
 ## <a name="2-check-certificate-transition-schedule"></a>2. Ověření plánu přechodu certifikátu
 

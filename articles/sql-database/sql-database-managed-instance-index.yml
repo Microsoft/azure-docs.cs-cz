@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c9d8b875d7e5a831af52eae8abc642632cb5f635
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 287e4d63ca60200340a88dd45d6b8912a62b74cd
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238381"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454684"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -75,7 +75,7 @@ sections:
     style: unordered
     items:
     - html: <a href="sql-database-managed-instance#business-critical-service-tier">Úroveň služeb kritické obchodní</a> je teď v <a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">obecné dostupnosti (GA)</a>.
-    - html: (Preview) Vytvoření <a href="https://aka.ms/managed-instance-aadlogins">na úrovni Instance služby Azure AD přihlášení</a> pomocí <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit z EXTERNÍHO zprostředkovatele přihlášení</a> .
+    - html: (Preview) Vytvoření <a href="https://aka.ms/managed-instance-aadlogins">na úrovni Instance serveru služby Azure AD (přihlášení) – objekty zabezpečení</a> pomocí <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit z EXTERNÍHO zprostředkovatele přihlášení</a> .
     - html: (Preview) Vytváření instancí s <a href="https://aka.ms/managed-instance-collation">kolace na úrovni serveru podle vašeho výběru</a>.
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až 35 dnů</a> pro obnovení k určitému bodu v čase. Všimněte si, že dlouhodobého uchovávání záloh (až 10 let) stále nebude povolená, abyste mohli používat <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Copy-only zálohy</a> jako alternativu.
     - html: (Preview) Použití <a href="https://aka.ms/managed-instance-failover-groups">skupiny převzetí služeb při selhání geograficky distribuované</a> Ujistěte se, že vaše data budou k dispozici i v případě regionálního a zachová kopii instance v jiné oblasti.

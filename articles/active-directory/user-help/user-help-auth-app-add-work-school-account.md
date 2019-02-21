@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775e6968282c94abec64fb410f2cc720ba0913e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ad6dda9e41f1ea87439ffc315f020d4e3566e0c6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168429"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453541"
 ---
 # <a name="add-your-work-or-school-account"></a>Přidejte svůj pracovní nebo školní účet
 Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastavit svůj pracovní nebo školní účet k používání aplikace Microsoft Authenticator jako jednu z metod ověřování.
@@ -27,7 +27,7 @@ Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastav
 
 ## <a name="add-your-work-or-school-account"></a>Přidejte svůj pracovní nebo školní účet
 
-1. Ve vašem počítači, přejděte [dalšího ověření zabezpečení](https://aka.ms/mfasetup) stránky.
+1. V počítači, přejděte [dalšího ověření zabezpečení](https://aka.ms/mfasetup) stránky.
 
     >[!Note]
     >Pokud se nezobrazí **dalšího ověření zabezpečení** stránky, je možné, že správce má zapnuté informace (preview) prostředí zabezpečení. Pokud je to tento případ, postupujte podle pokynů v [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md) oddílu. Pokud to není tento případ, musíte požádat o pomoc HelpDesk vaší organizace. Další informace o bezpečnostní údaje, najdete v části [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
@@ -40,7 +40,7 @@ Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastav
 
 3. Otevřete aplikaci Microsoft Authenticator, vyberte **přidat účet** z **přizpůsobení a řízení** ikonu v pravém horním rohu a pak vyberte **pracovní nebo školní účet**.
 
-4. Naskenování kódu QR pomocí fotoaparátu v zařízení **konfigurace mobilní aplikace** obrazovky ve vašem počítači a klikněte na tlačítko **provádí**.
+4. Naskenování kódu QR pomocí fotoaparátu v zařízení **konfigurace mobilní aplikace** obrazovky v počítači a klikněte na tlačítko **provádí**.
 
     >[!Note]
     >Pokud fotoaparátu nemůže zachytit kód QR, můžete ručně přidat informace o vašem účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Další informace a jak na to, najdete v části [ručně přidat svůj účet](user-help-auth-app-add-account-manual.md).

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998097"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456516"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ Hlavní clusteru zahrnuje následující součásti core Kubernetes:
 
 Poskytuje předlohu jednoho tenanta clusteru AKS pomocí vyhrazeného serveru rozhraní API, Plánovač atd. Definování počtu a velikosti uzlů a platformy Azure nakonfiguruje zabezpečenou komunikaci mezi hlavní clusteru a uzlů. Interakce s hlavní větví clusteru dojde k přes rozhraní API Kubernetes, jako například `kubectl` nebo řídicí panel Kubernetes.
 
-Tento hlavní spravovaný cluster znamená, že není potřeba konfigurovat součásti, jako jsou s vysokou dostupností *etcd* úložiště, ale také znamená, že hlavní clusteru nelze přímý přístup. Upgrade na Kubernetes jsou orchestrované prostřednictvím rozhraní příkazového řádku Azure nebo webu Azure portal, který provede upgrade hlavní clusteru a pak uzly. Řešení potíží s informace o možných problémech, můžete zkontrolovat hlavní protokoly clusteru pomocí Azure Log Analytics.
+Tento hlavní spravovaný cluster znamená, že není potřeba konfigurovat součásti, jako jsou s vysokou dostupností *etcd* úložiště, ale také znamená, že hlavní clusteru nelze přímý přístup. Upgrade na Kubernetes jsou orchestrované prostřednictvím rozhraní příkazového řádku Azure nebo webu Azure portal, který provede upgrade hlavní clusteru a pak uzly. Řešení potíží s informace o možných problémech, můžete zkontrolovat hlavní protokoly clusteru přes protokoly Azure monitoru.
 
 Pokud je potřeba nakonfigurovat hlavní clusteru specifickým způsobem nebo potřebujete přímý přístup k nim, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine].
 
@@ -70,13 +70,13 @@ Velikost virtuálního počítače Azure pro uzly definuje počet procesorů, ko
 
 Ve službě AKS image virtuálního počítače pro uzly ve vašem clusteru momentálně založené na Ubuntu Linuxu. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti.
 
-Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a poskytnout informace o možnostech konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Dockeru, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
+Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a možnosti konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Dockeru, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
 Není nutné spravovat základní součásti Kubernetes na každém uzlu, jako *kubelet*, *kube proxy*, a *kube-dns*, ale některé z dostupných spotřebují výpočetní prostředky. Pokud chcete zachovat uzel výkon a funkčnost, jsou vyhrazené následujících výpočetních prostředků na každém uzlu:
 
-- **Procesor** – 60ms
+- **Procesor** – 60 ms
 - **Paměť** – 20 % až 4 GB
 
 Tyto rezervace znamená, že množství dostupné procesoru a paměti pro vaše aplikace může zobrazit menší než samotný uzel obsahuje. Pokud existují omezení zdrojů vzhledem k počtu aplikací, které spouštíte, tyto rezervace zkontrolujte využití procesoru a paměť zůstane k dispozici pro součásti jádra Kubernetes. Rezervace prostředků se nedá změnit.
@@ -103,7 +103,7 @@ Při škálování nebo upgrade clusteru AKS, akce se provádí na výchozí fon
 
 Používá Kubernetes *podů* ke spuštění instance vaší aplikace. Pod představuje jednu instanci vaší aplikace. Podů obvykle mají mapování 1:1 s kontejnerem, i když existuje pokročilé scénáře kde pod může obsahovat několik kontejnerů. Tyto pody více kontejnerů jsou naplánovány společně na stejném uzlu a povolit kontejnery sdílet související prostředky.
 
-Při vytváření podu můžete definovat *omezení prostředků* požádat o určitý objem prostředků procesoru nebo paměti. Plánovač Kubernetes pokusí se naplánovat podů pro spuštění na uzel s prostředky pro splnění požadavku. Můžete také zadat omezení maximální prostředků, které brání v dané pod ve využívání příliš mnoho výpočetních prostředků z podkladové uzlu. Osvědčeným postupem je zahrnují omezení prostředků pro všechny podů umožňující plánovači Kubernetes pochopit, jaké prostředky jsou potřebné a povolené.
+Při vytváření podu můžete definovat *omezení prostředků* požádat o určitý objem prostředků procesoru nebo paměti. Plánovač Kubernetes pokusí se naplánovat podů pro spuštění na uzel s prostředky pro splnění požadavku. Můžete také zadat omezení maximální prostředků, které brání v dané pod ve využívání příliš mnoho výpočetních prostředků z podkladové uzlu. Osvědčeným postupem je zahrnují omezení prostředků pro všechny podů umožňující plánovači Kubernetes porozumět, které prostředky jsou potřebné a povolené.
 
 Další informace najdete v tématu [podů Kubernetes] [ kubernetes-pods] a [Kubernetes pod životního cyklu][kubernetes-pod-lifecycle].
 
@@ -203,7 +203,7 @@ Při vytváření clusteru AKS následující obory názvů jsou k dispozici:
 
 - *výchozí* -tento obor názvů je, kde podů a nasazení se vytvoří ve výchozím nastavení při žádný nezadá. V menších prostředí můžete nasazovat aplikace přímo do výchozí obor názvů bez vytvoření další logické separace. Pokud pracujete s rozhraní Kubernetes API jako s `kubectl get pods`, výchozí obor názvů je používán, když není zadaný žádný.
 - *kube-system* -tento obor názvů je, kde základními prostředky existují, jako jsou síťové funkce, jako jsou DNS a proxy serveru nebo řídicí panel Kubernetes. Obvykle není nasazení vlastních aplikací do tohoto oboru názvů.
-- *kube-public* – tento obor názvů se obvykle nepoužívá, ale můžete použít pro prostředky být viditelné v rámci celého clusteru a je zobrazit všichni uživatelé.
+- *kube-public* – tento obor názvů se obvykle nepoužívá, ale můžete použít pro prostředky být viditelné v rámci celého clusteru a lze je zobrazit kterýkoli uživatel.
 
 Další informace najdete v tématu [obory názvů Kubernetes][kubernetes-namespaces].
 

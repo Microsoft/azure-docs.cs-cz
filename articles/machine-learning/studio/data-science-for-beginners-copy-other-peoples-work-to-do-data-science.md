@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 821ee126350d18102ec92de04436a76050734dc4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241440"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456822"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopírování práce jiných lidí pro vědecké zkoumání dat
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Datová věda pro začátečníky řady
@@ -52,7 +52,7 @@ Jeden z tajemství datové vědy je stále ostatním uživatelům práci za vás
 
 Microsoft má cloudové služby zvané [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) , že si klidně můžete vyzkoušet zdarma. To vám poskytne pracovní prostor tam, kde můžete experimentovat s algoritmů různých strojového učení, a pokud máte řešení dobře fungoval, můžete ji spustit jako webovou službu.
 
-Součástí této služby je něco volá se,  **[galerii Azure AI](https://gallery.azure.ai/)**. Obsahuje prostředky, včetně kolekce experimenty Azure Machine Learning nebo modely, které lidé mít vytvořené a které přispívají k použití jiným uživatelům. Tyto experimenty jsou skvělý způsob, jak využít myšlenek a těžkou práci ostatních začít pracovat na své vlastní řešení. Všichni uživatelé jsou Vítá vás procházet přes něj.
+Součástí této služby je něco volá se,  **[galerii Azure AI](https://gallery.azure.ai/)**. Obsahuje prostředky, včetně kolekce experimenty Azure Machine Learning Studio, nebo modely, které lidé mít vytvořené a které přispívají k použití jiným uživatelům. Tyto experimenty jsou skvělý způsob, jak využít myšlenek a těžkou práci ostatních začít pracovat na své vlastní řešení. Všichni uživatelé jsou Vítá vás procházet přes něj.
 
 ![Galerie Azure AI](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -88,8 +88,8 @@ Existují jiné experimenty v [galerii Azure AI](https://gallery.azure.ai) , kte
 
 [Galerie Azure AI](https://gallery.azure.ai) je místo, kde můžete najít pracovní experimenty, které můžete použít jako výchozí bod pro svoje vlastní řešení.
 
-Nezapomeňte se podívat na další videa v "Datové vědě pro začátečníky" ze služby Microsoft Azure Machine Learning.
+Nezapomeňte se podívat na další videa v "Datové vědě pro začátečníky" z Microsoft Azure Machine Learning Studio.
 
 ## <a name="next-steps"></a>Další postup
-* [Zkuste prvního experimentu datové vědy s Azure Machine Learning](create-experiment.md)
+* [Zkuste prvního experimentu datové vědy s Azure Machine Learning Studio](create-experiment.md)
 * [Úvod do strojového učení v Microsoft Azure](what-is-machine-learning.md)

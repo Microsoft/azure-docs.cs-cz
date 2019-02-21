@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4a05b99cf0e40e63c01aee27bd745dd165dc23b8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998075"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452691"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Způsob využívání webové služby Azure Machine Learning Studio
 
-Po nasazení Azure Machine Learning prediktivní model jako webovou službu můžete použít rozhraní REST API k odeslání dat a získání předpovědi. Můžete odeslat data v reálném čase nebo v dávkovém režimu.
+Po nasazení Azure Machine Learning Studio prediktivní model jako webovou službu, můžete použít rozhraní REST API k odeslání dat a získání předpovědi. Můžete odeslat data v reálném čase nebo v dávkovém režimu.
 
 Můžete najít další informace o tom, jak vytvořit a nasadit služby Machine Learning Web pomocí Machine Learning Studio tady:
 
@@ -32,14 +32,14 @@ Můžete najít další informace o tom, jak vytvořit a nasadit služby Machine
 ## <a name="overview"></a>Přehled
 Se službou Azure Machine Learning Web externí aplikace komunikuje s hodnoticí modelem Machine Learning pracovních postupů v reálném čase. Volání služby Web Microsoft Machine Learning vrací do externí aplikace predikované výsledky. Volání služby Machine Learning Web, předáním klíče rozhraní API, který je vytvořen při nasazování predikcí. Služba Web Microsoft Machine Learning je založená na REST, možnost Oblíbené architektuře programátorských projektů na webu.
 
-Azure Machine Learning zahrnuje dva typy služeb:
+Azure Machine Learning Studio nabízí dva typy služeb:
 
 * Služba Request-Response (RRS) – má nízkou latenci, vysoce škálovatelná služba, která poskytuje rozhraní pro bezstavové modely vytvořené a nasazené z nástroje Machine Learning Studio.
 * Služba batch Execution (BES) – asynchronní služba pro vyhodnocování dávek datových záznamů.
 
 Další informace o službě Machine Learning Web services najdete v tématu [nasazení služby Machine Learning Web](publish-a-machine-learning-web-service.md).
 
-## <a name="get-an-azure-machine-learning-authorization-key"></a>Získání autorizačního klíče Azure Machine Learning
+## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>Získání autorizačního klíče Azure Machine Learning Studio
 Při nasazení experimentu, vygenerují se klíče rozhraní API pro webovou službu. Načtení klíčů v několika umístěních.
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Z portálu Microsoft Azure Machine Learning Web Services
@@ -103,7 +103,7 @@ Připojení ke službě Machine Learning Web, **Microsoft.AspNet.WebApi.Client**
 **Ke spuštění ukázky kódu**
 
 1. Publikování "Ukázkový 1: Stáhněte si datové sady z UCI: Třída dataset adult 2"experiment, součástí kolekce ukázky Machine learningu.
-2. Přiřaďte apiKey klíčem z webové služby. Zobrazit **získání autorizačního klíče Azure Machine Learning** výše.
+2. Přiřaďte apiKey klíčem z webové služby. Zobrazit **získání autorizačního klíče Azure Machine Learning Studio** výše.
 3. Přiřaďte identifikátorem URI služby s identifikátorem URI žádosti.
 
 **Tady je úplný požadavek bude vypadat.**
@@ -199,7 +199,7 @@ Pro připojení ke službě Machine Learning Web, použijte **urllib2** knihovny
 **Ke spuštění ukázky kódu**
 
 1. Nasazení "Ukázkový 1: Stáhněte si datové sady z UCI: Třída dataset adult 2"experiment, součástí kolekce ukázky Machine learningu.
-2. Přiřaďte apiKey klíčem z webové služby. Zobrazit **získání autorizačního klíče Azure Machine Learning** v začátku části tohoto článku.
+2. Přiřaďte apiKey klíčem z webové služby. Zobrazit **získání autorizačního klíče Azure Machine Learning Studio** v začátku části tohoto článku.
 3. Přiřaďte identifikátorem URI služby s identifikátorem URI žádosti.
 
 **Tady je úplný požadavek bude vypadat.**

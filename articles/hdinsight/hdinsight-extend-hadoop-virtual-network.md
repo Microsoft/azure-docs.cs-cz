@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dbb94e0dbcb1dccf8ecbc60bca47b2cc3533297c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429736"
+ms.locfileid: "56447411"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -303,8 +303,6 @@ Pokud používáte skupiny zabezpečení sítě, musí umožňovat provoz ze slu
 3. Musíte také povolit přístup z __168.63.129.16__. Tato adresa je rekurzivní překladače Azure. Další informace najdete v tématu [překlad názvů pro virtuální počítače a Role instancí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 Další informace najdete v tématu [řízení síťového provozu](#networktraffic) oddílu.
-
-Odchozí pravidla skupiny zabezpečení sítě povolte provoz z libovolného zdroje uvnitř virtuální sítě k dosažení vyšší adresy jako "Desitnation IP adresy".
 
 Pokud používáte routes(UDRs) definovaný uživatelem, by měl určit trasu a povolit odchozí přenosy z virtuální sítě na výše uvedené IP adresy s dalším směrováním nastavena na "Internet".
     

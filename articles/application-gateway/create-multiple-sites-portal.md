@@ -1,25 +1,22 @@
 ---
-title: Vytvoření služby application gateway, který je hostitelem více webů – portál Azure portal | Dokumentace Microsoftu
+title: Vytvoření služby application gateway, který je hostitelem více webů – portál Azure portal
 description: Informace o vytvoření služby application gateway, který je hostitelem více webů pomocí webu Azure portal.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/28/2017
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993316"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454286"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Vytvoření a konfigurace aplikační brány pro hostování více webů pomocí webu Azure portal
 
-Můžete použít na webu Azure portal [konfigurace hostování několika webů s](multiple-site-overview.md) při vytváření [služba application gateway](overview.md). V tomto kurzu definujte fondy adres back-end pomocí služby virtual machines. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
+Můžete použít na webu Azure portal [konfigurace hostování několika webů s](multiple-site-overview.md) při vytváření [služba application gateway](overview.md). V tomto článku definujte fondy adres back-end pomocí služby virtual machines. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. Tento článek předpokládá, že jste vlastníkem více domén a používá příklady *www.contoso.com* a *www.fabrikam.com*.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -35,9 +32,9 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k portálu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com)
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
@@ -141,6 +138,8 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se použijí 
 3. Klikněte na **OK**.
 4. Vytvoření druhého naslouchací proces, pomocí názvu *fabrikamListener* a používání názvů domén vaší druhé. V tomto příkladu *www.fabrikam.com* se používá.
 
+![naslouchací procesy mult-site](media/create-multiple-sites-portal/be-listeners.png)
+
 ## <a name="create-routing-rules"></a>Vytvořit pravidla směrování
 
 Pravidla se zpracovávají v pořadí, v kterém jsou uvedena, a provoz se směruje pomocí prvního odpovídajícího pravidla bez ohledu na specifickou podobu. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
@@ -180,12 +179,4 @@ Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak:
-
-> [!div class="checklist"]
-> * Vytvoření služby Application Gateway
-> * Vytvoření virtuálního počítače pro back-end serverů
-> * Vytvoření back-endové fondy s back-end serverů
-> * Vytvořit back-endové naslouchací procesy
-> * Vytvořit pravidla směrování
-> * Vytvořit záznam CNAME v doméně
+[Konfigurace služby App Service pomocí služby Application Gateway](create-web-app.md)

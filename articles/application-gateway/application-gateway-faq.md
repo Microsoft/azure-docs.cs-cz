@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 81a84e1ff4a9ed974a69762ce35075780e8d1f96
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 040aeda10410cc164c3f68b6615ebfb12d45541e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991527"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453482"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -346,7 +346,7 @@ Můžete použít rutinu Powershellu `Get-AzureRmApplicationGatewayBackendHealth
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Co jsou zásady uchovávání informací na protokoly diagnostiky?
 
-Diagnostické protokoly toku do účtu úložiště zákazníkům a zákazníci můžou nastavit zásady uchovávání informací podle jejich priority. Diagnostické protokoly můžete odeslat také do Log Analytics nebo centra událostí. Zobrazit [diagnostiku brány aplikace](application-gateway-diagnostics.md) další podrobnosti.
+Diagnostické protokoly toku do účtu úložiště zákazníkům a zákazníci můžou nastavit zásady uchovávání informací podle jejich priority. Diagnostické protokoly můžete také odešlou do Event Hub nebo Azure Monitor protokoly. Zobrazit [diagnostiku brány aplikace](application-gateway-diagnostics.md) další podrobnosti.
 
 ### <a name="how-do-i-get-audit-logs-for-application-gateway"></a>Jak získám protokoly auditu pro službu Application Gateway?
 
@@ -358,7 +358,7 @@ Ano, služba Application Gateway podporuje výstrahy. Konfigurují se upozorněn
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Jak analyzovat statistiku provozu pro službu Application Gateway?
 
-Můžete zobrazit a analyzovat protokoly přístupu přes několik mechanismy, jako je Azure Log Analytics, Excel, Power BI atd.
+Můžete zobrazit a analyzovat protokoly přístupu přes několik mechanismů, jako jsou protokoly Azure monitoru, Excel, Power BI atd.
 
 Také jsme publikovali šablony Resource Manageru, který nainstaluje a spustí Oblíbené [GoAccess](https://goaccess.io/) protokolu analyzátoru protokolů Application Gateway přístup. GoAccess poskytuje cenné statistiku provozu HTTP jako je například jedinečných návštěvníků, vyžádané soubory, hostitele, operační systémy, prohlížeče, stavové kódy HTTP a další. Další podrobnosti najdete [souboru Readme do složky šablony Resource Manageru v Githubu](https://aka.ms/appgwgoaccessreadme).
 

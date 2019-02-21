@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e8e50aa49595addeab3369f74b618c31b7cf1625
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242664"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454374"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Vytvoření modelů analýzy subjektivního hodnocení v nástroji Azure Machine Learning Studio
 
-Azure Machine Learning můžete sestavovat a zprovozňovat modely analýzy textu. Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo mínění.
+Azure Machine Learning Studio můžete sestavovat a zprovozňovat modely analýzy textu. Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo mínění.
 
 V experimentu analýzy textu které by obvykle:
 
@@ -66,7 +66,7 @@ Jako alternativní způsob použití funkcí extrahovat N-gramy můžete použí
 ## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Klasifikační nebo regresní model trénovat na základě modelu
 Nyní text transformaci na číselné sloupce. Datovou sadu stále obsahuje řetězec sloupce z předchozích fází, takže použijeme výběr sloupců v datové sadě je z nich vyloučit.
 
-Potom použijeme [Two-Class logistické regrese](https://msdn.microsoft.com/library/azure/dn905994.aspx) předpovědět Naším cílem: vysoká nebo Nízká revize skóre. V tuto chvíli problém text analytics transformaci do regulární klasifikace problému. Můžete použít nástroje, které jsou k dispozici ve službě Azure Machine Learning se model vylepšit. Například můžete experimentovat s jinou třídění a zjistěte, jak přesné výsledky poskytují, nebo použít hyperparameter ladění, aby se zlepšila přesnost.
+Potom použijeme [Two-Class logistické regrese](https://msdn.microsoft.com/library/azure/dn905994.aspx) předpovědět Naším cílem: vysoká nebo Nízká revize skóre. V tuto chvíli problém text analytics transformaci do regulární klasifikace problému. Nástroje dostupné v Azure Machine Learning Studio můžete použít se model vylepšit. Například můžete experimentovat s jinou třídění a zjistěte, jak přesné výsledky poskytují, nebo použít hyperparameter ladění, aby se zlepšila přesnost.
 
 ![Trénování a skóre](./media/text-analytics-module-tutorial/scoring-text.png)
 

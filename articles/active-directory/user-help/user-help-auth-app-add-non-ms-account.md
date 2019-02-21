@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714a78c436b7071717e2df12c2a65999920f8c63
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192128"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453643"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Přidat své účty jiných společností než Microsoft
 Přidáte vaše účty jiných společností než Microsoft, jako pro Google, Facebook nebo Githubu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
@@ -39,7 +39,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnutí dvojúrovňového ověřování
 
-1. Na vašem počítači, přejděte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcomevyberte **Začínáme**a poté ověřit vaši identitu.
+1. V počítači, přejděte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcomevyberte **Začínáme**a poté ověřit vaši identitu.
 
 2. Postupujte podle kroků na stránku k zapnutí dvoustupňového ověřování pro váš osobní účet Google.
 
@@ -62,7 +62,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
     Za účelem zvýšení zabezpečení ověřovací kód, který změní každých 30 sekund brání pomocí kódu více než jednou.
 
-6. Vyberte **Další** na **nastavit ověřovací** stránky ve vašem počítači, zadejte šestičíselný ověřovací kód v aplikaci k dispozici pro váš účet Google a vyberte **ověřte**.
+6. Vyberte **Další** na **nastavit ověřovací** stránce v počítači, zadejte šestičíselný ověřovací kód v aplikaci k dispozici pro váš účet Google a vyberte **ověřte**.
 
 7. Váš účet je ověřený, a můžete vybrat **provádí** zavřete **nastavit ověřovací** stránky.
 
@@ -74,7 +74,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnutí dvojúrovňového ověřování
 
-1. Ve vašem počítači, otevřete Facebook, vyberte rozevírací nabídky v pravém horním rohu a potom přejděte ke **nastavení** > **zabezpečení a přihlášení**.
+1. V počítači, otevřete Facebook, vyberte rozevírací nabídky v pravém horním rohu a potom přejděte ke **nastavení** > **zabezpečení a přihlášení**.
 
     **Zabezpečení a přihlášení** se zobrazí stránka.
 
@@ -86,7 +86,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 ### <a name="add-your-facebook-account-to-the-app"></a>Přidání vašeho účtu na Facebooku do aplikace
 
-1. Přejděte na stránku Facebooku ve vašem počítači, **přidat zálohy** části a klikněte na tlačítko **nastavení** z **ověřování aplikace** oblasti.
+1. Přejděte na stránku Facebooku v počítači, **přidat zálohy** části a klikněte na tlačítko **nastavení** z **ověřování aplikace** oblasti.
 
     Už daný kód QR, který vám umožní automaticky postupu přidružte svůj účet v aplikaci Microsoft Authenticator. Nezavírejte toto okno.
 
@@ -113,7 +113,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnutí dvojúrovňového ověřování
 
-1. Na vašem počítači, otevřete GitHub, vyberte image v pravém horním rohu a pak vyberte **nastavení**.
+1. V počítači, otevřete GitHub, vyberte image v pravém horním rohu a pak vyberte **nastavení**.
 
     **Dvojúrovňového ověřování** zobrazí se stránka.
 
@@ -121,7 +121,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 ### <a name="add-your-github-account-to-the-app"></a>Přidání účtu GitHub do aplikace
 
-1. Na **dvojúrovňového ověřování** stránky ve vašem počítači, vyberte **aplikace s využitím**.
+1. Na **dvojúrovňového ověřování** stránky v počítači, vyberte **aplikace s využitím**.
 
 2. Uložit kódy pro obnovení, takže se můžete vrátit ke svému účtu pokud ztratíte přístup a pak vyberte **Další**. 
 
@@ -137,7 +137,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 5. Zadejte **název účtu** (například GitHub) a zadejte **tajný klíč** z kroku 4 a pak vyberte **Dokončit**.
 
-4. Na **dvojúrovňového authenticator** stránky ve vašem počítači, zadejte šestičíselný ověřovací kód v aplikaci k dispozici pro váš účet GitHub a pak vyberte **povolit**.
+4. Na **dvojúrovňového authenticator** stránce v počítači, zadejte šestičíselný ověřovací kód v aplikaci k dispozici pro váš účet GitHub a pak vyberte **povolit**.
 
     **Účty** stránky aplikace ukazuje název účtu a ověřovací šestimístný kód. Za účelem zvýšení zabezpečení ověřovací kód, který změní každých 30 sekund brání pomocí kódu více než jednou.
 
@@ -149,7 +149,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnutí dvojúrovňového ověřování
 
-1. Ve vašem počítači, otevřete Amazon, vyberte **účet a seznamy** rozevírací nabídky a pak vyberte **účtu**.
+1. V počítači, otevřete Amazon, vyberte **účet a seznamy** rozevírací nabídky a pak vyberte **účtu**.
 
 2. Vyberte **při & Hlašovací zabezpečení**, přihlaste se ke svému účtu Amazon a pak vyberte **upravit** v **Upřesnit nastavení zabezpečení** oblasti.
 
@@ -176,9 +176,9 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 7. Dokončení procesu registrace, včetně přidání metody ověření zálohy například textovou zprávu a pak vyberte **poslat kód**.
 
-8. Na **přidejte metodu ověření zálohy** stránky ve vašem počítači, zadejte šestičíselný ověřovací kód, který poskytuje metodu ověření zálohy účtu Amazon a pak vyberte **ověřit kód a pokračovat**.
+8. Na **přidejte metodu ověření zálohy** stránky ve vašem počítači, zadejte šestičíselný ověřovací kód, který poskytuje metodu ověření zálohy pro váš účet Amazon a pak vyberte **ověřit kód a pokračovat**.
 
-9. Na Almost stránky, rozhodněte, jestli se má provádět počítače důvěryhodné zařízení a pak vyberte **rozumím. Zapnutí dvoustupňového ověřování**.
+9. Na Almost stránky, rozhodněte, jestli se počítač důvěryhodné zařízení, a potom vyberte **rozumím. Zapnutí dvoustupňového ověřování**.
 
     **Upřesnit nastavení zabezpečení** se zobrazí stránka zobrazující podrobnosti o vašem aktualizované dvojúrovňového ověřování.
 

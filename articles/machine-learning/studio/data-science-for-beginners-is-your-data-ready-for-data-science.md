@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: f57f6bf93fce2526bdc478558551616ba1fa3c4c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 4f474fd6ac2fa6a4f44aacf0eacb85a92fdf1de9
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496019"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456465"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Datová věda pro začátečníky řady
@@ -100,7 +100,7 @@ Při přidávání více dat, obrázek bude srozumitelnější a je možné prov
 
 Data, která jsou relevantní, připojené, přesné a dostatečně, zobrazí všechny složky potřebovali udělat některé vysoce kvalitní datové vědy.
 
-Nezapomeňte se podívat na čtyři videa v *datová věda pro začátečníky* ze služby Microsoft Azure Machine Learning.
+Nezapomeňte se podívat na čtyři videa v *datová věda pro začátečníky* z Microsoft Azure Machine Learning Studio.
 
 ## <a name="next-steps"></a>Další postup
 * [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)

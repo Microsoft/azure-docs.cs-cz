@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243718"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453609"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Kurz 1: Předpovědět úvěrové riziko - Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ V tomto kurzu provedete rozšířené pohled na proces vývoje řešení predikt
 
 Předpokládejme, že potřebujete předpovědět úvěrové riziko u jednotlivých zákazníků na základě údajů, které uvedli v žádosti o úvěr.  
 
-Posouzení úvěrového rizika je komplexní problém, ale v tomto kurzu se tak si ho Zjednodušte trochu. Budete ho používat jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí služby Microsoft Azure Machine Learning. Budete používat Azure Machine Learning Studio a webovou službou Machine Learning pro toto řešení.  
+Posouzení úvěrového rizika je komplexní problém, ale v tomto kurzu se tak si ho Zjednodušte trochu. Budete ho používat jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio. Budete používat Azure Machine Learning Studio a webovou službou Machine Learning pro toto řešení.  
 
 V tomto kurzu třemi částmi začnete s veřejně dostupnými daty úvěrového rizika.  Vyvíjejte a natrénujeme prediktivní model.  Nakonec tento model nasadíme jako webovou službu.
 
@@ -55,7 +55,7 @@ Pokud jste nikdy **Azure Machine Learning Studio** dříve, můžete chtít spus
 
 Pokud chcete používat Machine Learning Studio, musíte mít pracovní prostor Microsoft Azure Machine Learning Studio. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.  
 
-Chcete-li vytvořit pracovní prostor, přečtěte si téma [vytváření a sdílení pracovního prostoru služby Azure Machine Learning](create-workspace.md).
+Chcete-li vytvořit pracovní prostor, přečtěte si téma [vytváření a sdílení pracovního prostoru služby Azure Machine Learning Studio](create-workspace.md).
 
 Po vytvoření pracovního prostoru, otevřete Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jeden pracovní prostor, můžete vybrat pracovní prostor v panelu nástrojů v pravém horním rohu okna.
 

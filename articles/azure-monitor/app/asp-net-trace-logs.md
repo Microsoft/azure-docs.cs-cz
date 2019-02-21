@@ -10,17 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/03/2017
+ms.date: 02/19/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5c809153b3b86a5460bd2c235d9f6226fb50a024
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f89eca6fb8893210f4c65adc42598ab0e0b531f4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118791"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454302"
 ---
-# <a name="explore-net-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET ve službě Application Insights
-Pokud chcete použít NLog, log4Net nebo System.Diagnostics.Trace pro diagnostické trasování v aplikaci ASP.NET, může mít vaše protokoly odeslané do [Azure Application Insights][start], kde můžete prozkoumat a hledat je. Protokoly se sloučí s další telemetrická data přicházející z vaší aplikace tak, aby identifikovat trasování přidružené k obsluze jednotlivých požadavků uživatele a korelovat je s dalšími události a sestavy výjimek.
+# <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Prozkoumejte základní.NET/.NET protokoly trasování v Application Insights
+
+Pokud používáte ILogger, NLog, log4Net nebo System.Diagnostics.Trace pro diagnostické trasování v ASP.NET/ASP.NET základní aplikaci, můžete mít protokolů odesílat [Azure Application Insights][start], kde jste můžete prozkoumat a prohledávat. Protokoly se sloučí s další telemetrická data přicházející z vaší aplikace tak, aby identifikovat trasování přidružené k obsluze jednotlivých požadavků uživatele a korelovat je s dalšími události a sestavy výjimek.
 
 > [!NOTE]
 > Je potřeba zachycení modulu protokolu? Je užitečné adaptér protokolovacích nástrojů 3rd třetích stran, ale pokud ještě nepoužíváte NLog, log4Net nebo System.Diagnostics.Trace, vezměte v úvahu pouze volání [Application Insights použitím metod TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) přímo.
@@ -30,23 +31,18 @@ Pokud chcete použít NLog, log4Net nebo System.Diagnostics.Trace pro diagnostic
 ## <a name="install-logging-on-your-app"></a>Nainstalujte protokolování v aplikaci
 Instalaci zvolený protokolovacího rozhraní ve vašem projektu. Výsledkem by měl být záznam v souboru app.config nebo web.config.
 
-Pokud používáte System.Diagnostics.Trace, budete muset přidat záznam do souboru web.config:
-
 ```XML
-
     <configuration>
-     <system.diagnostics>
-       <trace autoflush="false" indentsize="4">
-         <listeners>
-           <add name="myListener"
-             type="System.Diagnostics.TextWriterTraceListener"
-             initializeData="TextWriterOutput.log" />
-           <remove name="Default" />
-         </listeners>
-       </trace>
-     </system.diagnostics>
+      <system.diagnostics>
+    <trace autoflush="true" indentsize="0">
+      <listeners>
+        <add name="myAppInsightsListener" type="Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener, Microsoft.ApplicationInsights.TraceListener" />
+      </listeners>
+    </trace>
+  </system.diagnostics>
    </configuration>
 ```
+
 ## <a name="configure-application-insights-to-collect-logs"></a>Nakonfigurovat Application Insights na shromažďování protokolů
 **[Přidejte Application Insights do projektu](../../azure-monitor/app/asp-net.md)**  Pokud jste tak ještě neučinili. Zobrazí se vám možnost zahrnout kolektoru protokolů.
 
@@ -60,15 +56,28 @@ Tuto metodu použijte, pokud typ projektu nepodporuje Instalační služby Appli
 1. Pokud máte v plánu používat log4Net nebo NLog, nainstalujte ji do vašeho projektu.
 2. V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a zvolte **spravovat balíčky NuGet**.
 3. Vyhledání Application Insights
-4. Vyberte příslušný balíček – jeden z:
+4. Vyberte jednu z následujících balíčků:
 
-   * Microsoft.ApplicationInsights.TraceListener (pro zachycení volání System.Diagnostics.Trace)
-   * Microsoft.ApplicationInsights.EventSourceListener (k zachycení událostí EventSource)
-   * Microsoft.ApplicationInsights.EtwCollector (k zachycení událostí trasování událostí pro Windows)
-   * Microsoft.ApplicationInsights.NLogTarget
-   * Microsoft.ApplicationInsights.Log4NetAppender
+   - Pro ILogger: [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - Pro NLog: [Microsoft.ApplicationInsights.NLogTarget](http://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - Pro Log4Net: [Microsoft.ApplicationInsights.Log4NetAppender](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - Pro System.Diagnostics: [Microsoft.ApplicationInsights.TraceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - [Microsoft.ApplicationInsights.DiagnosticSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
-Balíček NuGet nainstaluje potřebná sestavení a taky změní web.config nebo app.config.
+Balíček NuGet nainstaluje potřebná sestavení a případně změní web.config nebo app.config.
+
+## <a name="ilogger"></a>ILogger
+
+Příklady použití objektu ILogger Application Insights implementace pomocí konzolové aplikace a ASP.NET Core najdete v tomto [článku](ilogger.md).
 
 ## <a name="insert-diagnostic-log-calls"></a>Vložit diagnostický protokol volání
 Pokud používáte System.Diagnostics.Trace, typické volání by byl:
@@ -185,7 +194,7 @@ Použití [adaptéry protokolu Java](../../azure-monitor/app/java-trace-logs.md)
 ### <a name="emptykey"></a>Dojde k chybě "Instrumentační klíč nemůže být prázdný"
 Vypadá to, jste nainstalovali balíček Nuget adaptér protokolování bez instalace služby Application Insights.
 
-V Průzkumníku řešení klikněte pravým tlačítkem na `ApplicationInsights.config` a zvolte **aktualizace Application Insights**. Zobrazí se dialogové okno, které vás zve k přihlášení k Azure a vytvořte prostředek Application Insights, nebo znovu použijte existující. Která by ho opravit.
+V Průzkumníku řešení klikněte pravým tlačítkem na `ApplicationInsights.config` a zvolte **aktualizace Application Insights**. Zobrazí se dialogové okno, které vás zve k přihlášení k Azure a vytvořte prostředek Application Insights nebo znovu použít nějaký existující. Která by ho opravit.
 
 ### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>Zobrazí trasování v diagnostickém vyhledávání, ale ne jiných událostí
 Někdy může trvat nějakou dobu všechny události a žádosti o získání prostřednictvím kanálu.

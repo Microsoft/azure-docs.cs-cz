@@ -1,5 +1,5 @@
 ---
-title: Vnitřní chyba nastane, pokud vytvoříte připojení RDP k Azure Virtual Machines | Dokumentace Microsoftu
+title: Vnitřní chyba nastane, pokud vytvořit připojení RDP k Azure Virtual Machines | Dokumentace Microsoftu
 description: Informace o řešení potíží s RDP s interními chybami v Microsoft Azure. | Dokumentace Microsoftu
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dd75d5a3186bbb6ba82e2deb83a7e8429e32a3f2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134518"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445777"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu
 
 Tento článek popisuje chybu, která může dojít při pokusu o připojení k virtuálnímu počítači (VM) v Microsoft Azure.
 > [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -55,7 +55,7 @@ Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [op
 Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) části.
 
-#### <a name="step-1-check-the-rdp-port"></a>Krok: Kontrola 1 RDP port
+#### <a name="step-1-check-the-rdp-port"></a>Krok: Zkontrolujte, 1 RDP port
 
 1. V instanci prostředí PowerShell, použijte [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) ke kontrole, jestli port 8080 je použít v jiných aplikacích:
@@ -65,31 +65,39 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
     1. Zastavte službu pro aplikaci, která používá službu 3389:
 
-        Stop-Service - Name <ServiceName>
+            Stop-Service -Name <ServiceName> -Force
 
     2. Spuštění Terminálové služby:
 
-        Start-Service - Name inicializace
+            Start-Service -Name Termservice
 
 2. Pokud aplikace nelze zastavit, nebo pokud tato metoda na vás nemusí vztahovat, změňte port pro protokol RDP:
 
     1. Změna portu:
 
-        Set-ItemProperty-cesta "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Tcp Server\WinStations\RDP"-název číslo_portu – hodnota <Hexportnumber>
+            Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
 
-        Stop-Service - Name inicializace Start-Service-Name inicializace
+            Stop-Service -Name Termservice -Force
+            
+            Start-Service -Name Termservice 
 
     2. Nastavení brány firewall pro nový port:
 
-        Set-NetFirewallRule-"Name Vzdálená plocha-přesměrovač-v-TCP" - LocalPort < nový PORT (decimální) >
+            Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
 
     3. [Aktualizovat skupinu zabezpečení sítě pro nový port](../../virtual-network/security-overview.md) v Azure portal RDP port.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správná oprávnění u certifikátu podepsaného svým držitelem protokolu RDP
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správná oprávnění pro certifikát podepsaný svým držitelem protokolu RDP
 
 1.  V instanci prostředí PowerShell spusťte následující příkazy jeden po druhém prodloužit platnost certifikátu podepsaného svým držitelem protokol RDP:
 
-        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint
+        Import-Module PKI 
+    
+        Set-Location Cert:\LocalMachine 
+        
+        $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) 
+        
+        Remove-Item -Path $RdpCertThumbprint
 
         Stop-Service -Name "SessionEnv"
 
@@ -112,7 +120,9 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
         md c:\temp
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt 
+        
+        takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
@@ -120,11 +130,13 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt Restart-Service TermService -Force
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt 
+        
+        Restart-Service TermService -Force
 
 4. Restartujte virtuální počítač a opakujte spuštění připojení vzdálené plochy k virtuálnímu počítači. Pokud chyba přetrvává, přejděte k dalšímu kroku.
 
-Krok 3: Povolení všechny podporované verze TLS
+Krok 3: Povolit všechny podporované verze TLS
 
 Klienta protokolu RDP používá jako výchozí protokol TLS 1.0. To však můžete změnit na protokoly TLS 1.1, který se stal novým standardem. Pokud je zakázané protokolu TLS 1.1 na virtuálním počítači, připojení se nezdaří.
 1.  V instanci CMD povolte protokol TLS:
@@ -161,7 +173,7 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
     V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
 
-    ```powershell
+    ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
     REM Enable Serial Console
@@ -191,6 +203,7 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
         Md F:\temp
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt
+        
         takeown /f "F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"

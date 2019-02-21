@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: dd65988146d3738d8540ddf4e54ed57813e10c16
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a00548bd5eb88c95ea83d492524e2ae10f274bba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243531"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453983"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
 ## <a name="overview"></a>Přehled
-Tento článek představuje referenční implementaci projektu pro analýzu přechodu se zákazník je vytvořená pomocí Azure Machine Learning. V tomto článku se podíváme na přidružených modelech obecné pro holistické řešení problému přechodu firemních zákazníků změn. Můžeme také měřit přesnost modelů, které jsou vytvořeny pomocí Machine Learning a posoudit pokynů pro další vývoj.  
+Tento článek představuje referenční implementaci projektu pro analýzu přechodu se zákazník je vytvořená pomocí Azure Machine Learning Studio. V tomto článku se podíváme na přidružených modelech obecné pro holistické řešení problému přechodu firemních zákazníků změn. Můžeme také měřit přesnost modelů, které jsou vytvořeny pomocí Machine Learning a posoudit pokynů pro další vývoj.  
 
 ### <a name="acknowledgements"></a>Potvrzení
-Tento experiment se vývoji a testování Serge Berger, odborník přes Data objektu zabezpečení v Microsoftu a Roger Barga, dříve produktový manažer pro Microsoft Azure Machine Learning. Děkujeme za jejich má tým dokumentace Azure potvrzuje své znalosti a díky pro tento dokument white paper pro sdílení obsahu.
+Tento experiment se vývoji a testování Serge Berger, odborník přes Data objektu zabezpečení v Microsoftu a Roger Barga, dříve produktový manažer pro Microsoft Azure Machine Learning Studio. Děkujeme za jejich má tým dokumentace Azure potvrzuje své znalosti a díky pro tento dokument white paper pro sdílení obsahu.
 
 > [!NOTE]
 > Data pro tento experiment není veřejně k dispozici. Příklad toho, jak sestavit model strojového učení pro analýzu provozu naleznete v tématu: [Maloobchodní změny šablony modelu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) v [galerii Azure AI](http://gallery.azure.ai/)
@@ -54,11 +54,11 @@ Běžné řešení problémů procesu k vyřešení výpovědi zákazníků je z
 2. Model zásah můžete vzít v úvahu, jak úroveň zásah by mohly ovlivnit pravděpodobnost výpovědi a množství zákazníků hodnotu doby života (CLV).
 3. Tato analýza různě kvalitativní analýze, který je eskalován jej proaktivní marketingovou kampaň, která cílí na segmenty zákazníků k zajištění optimální nabídky.  
 
-![][1]
+![Diagram znázorňující, jak modely proti chybám a rozhodnutí rizika poskytuje užitečné přehledy](./media/azure-ml-customer-churn-scenario/churn-1.png)
 
 Tento přístup vpřed vypadající je nejlepší způsob, jak zpracovávat změny, ale obsahuje složitost: máme pro vývoj vícemodelová archetype a trasování závislosti mezi modely. Interakce mezi modely lze zapouzdřit, jak je znázorněno v následujícím diagramu:  
 
-![][2]
+![Změny v diagramu interakce modelu](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
 *Obrázek 4: Sjednocené archetype více modelů*  
 
@@ -71,24 +71,24 @@ Doplněk zajímavé zde je analýzy velkých objemů dat. Dnešní telekomunikac
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>Implementace archetype modelování v nástroji Machine Learning Studio
-Daný problém právě popsaný, co je nejlepší způsob, jak implementovat integrované modelování a vyhodnocování přístup? V této části si předvedeme, jak jsme provádí to s využitím Azure Machine Learning Studio.  
+Daný problém popsaný, co je nejlepší způsob, jak implementovat integrované modelování a vyhodnocování přístup? V této části si předvedeme, jak jsme provádí to s využitím Azure Machine Learning Studio.  
 
 Více modelů přístup je nezbytnost při navrhování globální archetype pro změny. I bodování (prediktivní) část přístup by měl být více modelů.  
 
 Následující diagram znázorňuje prototyp, že jsme vytvořili, která používá čtyři bodování algoritmy Machine Learning Studio k předvídání změny. Důvod pro více modelů přístup je jenom pro účely vytvoření třídění skupiny stromů zvýšit přesnost, ale také pro ochranu před útoky over-pass-the přizpůsobování a zlepšení výběr Doporučené funkce.  
 
-![][3]
+![Snímek obrazovky znázorňující komplexní pracovní prostor Studio s mnoha propojených modulů](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
 *Obrázek 5: Prototyp četností modelování přístup*  
 
 Následující části obsahují další podrobnosti o prototypu vyhodnocování model, který jsme implementovali pomocí Machine Learning Studio.  
 
 ### <a name="data-selection-and-preparation"></a>Výběr dat a příprava
-Data se používají k vytváření modelů a zákazníci skóre byl získán z svislé řešení CRM, s daty obfuskovaný na ochranu soukromí zákazníků. Data obsahují informace o předplatných 8 000 v USA a kombinuje tři zdroje: zřizování data (metadata odběru), data o aktivitě (použití systému) a data podpory zákazníků. Data neobsahuje jakoukoli firmu související informace o zákaznících; nezahrnuje například metadata nebo kredit skóre věrnostních programů.  
+Data se používají k vytváření modelů a zákazníci skóre byl získán z svislé řešení CRM, s daty obfuskovaný na ochranu soukromí zákazníků. Data obsahují informace o předplatných 8 000 v USA a kombinuje tři zdroje: zřizování data (metadata odběru), data o aktivitě (použití systému) a data podpory zákazníků. Data neobsahuje žádné obchodní informace o zákaznících; nezahrnuje například metadata nebo kredit skóre věrnostních programů.  
 
-Pro zjednodušení ETL a procesy pro čištění dat jsou mimo rozsah protože předpokládáme, že už má přípravu dat neprovedlo jinde.   
+Pro zjednodušení ETL a procesy pro čištění dat jsou mimo rozsah protože předpokládáme, že už má přípravu dat neprovedlo jinde.
 
-Výběr funkce pro modelování je založená na významu předběžné vyhodnocení sady prediktory, součástí procesu, který používá modul náhodné doménové struktury. Pro implementaci v nástroji Machine Learning Studio můžeme vypočítat průměr, medián a rozsahů reprezentativní funkcí. Například jsme přidali agregace kvalitativní dat, jako je například minimální a maximální hodnoty pro aktivity uživatelů.    
+Výběr funkce pro modelování je založená na významu předběžné vyhodnocení sady prediktory, součástí procesu, který používá modul náhodné doménové struktury. Pro implementaci v nástroji Machine Learning Studio můžeme vypočítat průměr, medián a rozsahů reprezentativní funkcí. Například jsme přidali agregace kvalitativní dat, jako je například minimální a maximální hodnoty pro aktivity uživatelů.
 
 Také zachyceného dočasné informace pro posledních šest měsíců. Analyzovali jsme data po dobu jednoho roku a nastavení jsme, že i v případě, že došlo k statisticky významná trendy, vliv na četnosti změn je výrazně oslabená po šesti měsících.  
 
@@ -96,11 +96,11 @@ Nejdůležitější bod je, že celý proces, včetně ETL, výběr funkce pro m
 
 Následující obrázky znázorňují data, která byla použita.  
 
-![][4]
+![Snímek obrazovky zobrazující ukázku datům používaným prostřednictvím nezpracované hodnoty](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
 *Obrázek 6: Výňatek ze zdroje dat (obfuskovaný)*  
 
-![][5]
+![Snímek obrazovky zobrazující statistické funkce extrahovaná ze zdroje dat](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
 *Obrázek 7: Funkce extrahovaná ze zdroje dat*
  
@@ -122,7 +122,7 @@ Následující čtyři algoritmů strojového učení jsme použili k vytvořen�
 
 Následující diagram znázorňuje části návrhové plochy experiment, který určuje pořadí, ve kterém byly vytvořeny modely:  
 
-![][6]  
+![Snímek obrazovky malá část studio experiment plátna](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
 *Obrázek 8: Vytváření modelů ve službě Machine Learning Studio*  
 
@@ -135,18 +135,18 @@ Můžeme také odeslat bodování datovou sadu, která srovnatelné model sestav
 V této části Představujeme naše poznatky o přesnost modelů, které jsou založené na hodnocení datové sadě.  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>Přesnost a přesnost bodování
-Obecně platí provádění ve službě Azure Machine Learning je za SAS v přesnost přibližně 10 – 15 % (oblasti pod křivkou nebo AUC).  
+Obecně platí implementace v Azure Machine Learning Studio je za SAS v přesnost přibližně 10 – 15 % (oblasti pod křivkou nebo AUC).  
 
 Nejdůležitější metriky v četnosti změn je ale frekvence chybnou: to znamená z hlavních churners jako předpokládané pomocí třídění, který z nich ve skutečnosti nebyla **není** změny a nepřijal zvláštní zacházení? Následující diagram porovnává tohoto kurzu chybnou pro všechny modely:  
 
-![][7]
+![Oblasti pod křivkou porovnání výkonu 4 algoritmy](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
 *Obrázek 9: Passau prototypu oblasti pod křivkou*
 
 ### <a name="using-auc-to-compare-results"></a>Použití AUC k porovnání výsledků
 Oblasti v rámci křivky (AUC) je metrika, který představuje globální měřítko *separability* mezi distribucí skóre, které se pro plnění kladné a záporné. Se podobá tradiční grafu příjemce operátor charakteristiku (roc s více TŘÍDAMI), ale jeden důležitý rozdíl je, že AUC metrika není nutné zvolit prahovou hodnotu. Místo toho shrnuje výsledky přes **všechny** možností. Naproti tomu tradiční roc s více TŘÍDAMI graf zobrazuje míru pozitivních výsledků svislá osa a míru falešně pozitivních výsledků na vodorovné ose a prahovou hodnotu klasifikace se liší.   
 
-AUC obvykle se používá jako měřítko vhodné pro různé algoritmy (nebo jiné systémy) vzhledem k tomu, že umožňuje modelů, který se má porovnat pomocí hodnoty jejich AUC. Toto je oblíbený přístup v oborech jako jsou meteorologické a biosciences. Proto AUC představuje oblíbený nástroj pro vyhodnocení výkonu třídění.  
+AUC je použít jako měřítko vhodné pro různé algoritmy (nebo jiné systémy), protože umožňuje modelů, který se má porovnat pomocí hodnoty jejich AUC. Toto je oblíbený přístup v oborech jako jsou meteorologické a biosciences. Proto AUC představuje oblíbený nástroj pro vyhodnocení výkonu třídění.  
 
 ### <a name="comparing-misclassification-rates"></a>Porovnání chybnou sazby
 Porovnáním chybnou sazby na této datové sadě s použitím dat CRM přibližně 8 000 předplatných.  
@@ -160,14 +160,14 @@ Ze stejného důvodu je důležitější než přesnost přesnost, protože nás
 
 Z Wikipedia následující diagram znázorňuje vztah živá, snadno pochopitelné obrázku:  
 
-![][8]
+![Dva cíle. Ukazuje jeden cíl přístupů značky volně seskupené ale téměř terče označený "nedostatek přesnost: dobré pravdivost, nízký přesnosti. Jiný cíl úzce seskupené ale daleko od terče označena "nedostatek přesnost: špatná pravdivost, dobré přesnosti"](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
 *Obrázek 10: Kompromis mezi přesnost*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Přesnost výsledků pro model posíleného rozhodovacího stromu
 Následující graf zobrazí nezpracované výsledky vyhodnocování pomocí prototypu Machine Learning pro model Posílený rozhodovací strom, což je nejpřesnější mezi čtyři modely:  
 
-![][9]
+![Fragment kódu tabulka zobrazující přesnost, zaokrouhlení, odvolání, skóre F, AUC, průměrná ztráta protokolu a ztráta protokolu školení pro čtyři algoritmy](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
 *Obrázek 11: Vlastnosti model posíleného rozhodovacího stromu*
 
@@ -200,13 +200,13 @@ Tato důležité zjišťování je často přehlédnuta ve firmě, což obecně 
 
 Ale promise samoobslužné analýzy pomocí Machine Learning Studio, že je čtyři kategorie informací, divize nebo oddělení, se stupněm cenné zdroje pro machine learning o četnosti změn.  
 
-Další zajímavé funkce, které jsou už ve službě Azure Machine Learning je možnost přidávat vlastní modul do úložiště předdefinované modulů, které jsou k dispozici. Tato funkce, které vytvoří v podstatě možnost vybrat knihovny a vytvořit šablony pro vertikální trhy. Jde důležitý rozdíl placenými služby Azure Machine Learning na místo na trhu.  
+Další zajímavé funkce v Azure Machine Learning Studio je možnost přidávat vlastní modul do úložiště předdefinované modulů, které jsou k dispozici. Tato funkce, které vytvoří v podstatě možnost vybrat knihovny a vytvořit šablony pro vertikální trhy. Jde důležitý rozdíl placenými nástroje Azure Machine Learning Studio na místo na trhu.  
 
 Věříme, že chcete pokračovat v tomto tématu v budoucnu, zejména související s analýzy velkých objemů dat.
   
 
 ## <a name="conclusion"></a>Závěr
-Tento dokument popisuje rozumné přístup k řešení běžných problémů výpovědi zákazníků pomocí obecného rozhraní. Můžeme považovat za prototyp pro vyhodnocení modelů a implementovaný s využitím Azure Machine Learning. Nakonec jsme posuzuje přesnost a výkon prototypu řešení s ohledem na srovnatelné algoritmy v SAS.  
+Tento dokument popisuje rozumné přístup k řešení běžných problémů výpovědi zákazníků pomocí obecného rozhraní. Můžeme považovat za prototyp pro vyhodnocení modelů a implementovaný s využitím Azure Machine Learning Studio. Nakonec jsme posuzuje přesnost a výkon prototypu řešení s ohledem na srovnatelné algoritmy v SAS.  
 
  
 
@@ -223,17 +223,6 @@ Tento dokument popisuje rozumné přístup k řešení běžných problémů vý
  
 
 ## <a name="appendix"></a>Příloha
-![][10]
+![Snímek prezentace na změny v prototypu](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
 *Obrázek 12: Snímek prezentace na změny v prototypu*
-
-[1]: ./media/azure-ml-customer-churn-scenario/churn-1.png
-[2]: ./media/azure-ml-customer-churn-scenario/churn-2.png
-[3]: ./media/azure-ml-customer-churn-scenario/churn-3.png
-[4]: ./media/azure-ml-customer-churn-scenario/churn-4.png
-[5]: ./media/azure-ml-customer-churn-scenario/churn-5.png
-[6]: ./media/azure-ml-customer-churn-scenario/churn-6.png
-[7]: ./media/azure-ml-customer-churn-scenario/churn-7.png
-[8]: ./media/azure-ml-customer-churn-scenario/churn-8.png
-[9]: ./media/azure-ml-customer-churn-scenario/churn-9.png
-[10]: ./media/azure-ml-customer-churn-scenario/churn-10.png

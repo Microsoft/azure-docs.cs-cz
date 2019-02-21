@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/20/2019
+ms.openlocfilehash: 32e6e8ff4c37554a0c3fa50e243b241eed2953cf
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176340"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445997"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Plánování kapacity úložiště s Azure Stack
 Azure Stack úložiště plánování kapacity informace jako pomoc při plánování řešení se úložiště udržet pod naleznete v následujících částech.
@@ -38,7 +38,9 @@ Operátory můžete si vybrat mezi všechny flash nebo hybridní úložiště ko
 
 ![Plánování kapacity služby Azure storage](media/azure-stack-capacity-planning/storage.png)
 
-Ve všech flash konfigurace mezipaměti je NVMe řadu SATA SSD nebo NVMe kapacity. V hybridní konfiguraci mezipaměti je volby NVMe a SATA SSD, zatímco je kapacita HDD.
+V konfiguraci všech flash může být konfigurace buď dvouvrstvé nebo Jednoúrovňová konfigurací.  Pokud je konfigurace Jednoúrovňová, budou všechna kapacitou zařízení stejného typu (např. NVMe nebo SATA SSD nebo SAS SSD) a mezipaměti zařízení nepoužívají. Ve všech dvouvrstvé je NVMe flash konfigurace, Typická konfigurace jako mezipaměť zařízení a potom buď SATA nebo SAS SSD jako úložných zařízení.
+
+V hybridním nasazení dvouvrstvé konfigurace mezipaměti je volby NVMe, SATA nebo SAS SSD a kapacita HDD. 
 
 Stručný přehled prostorů úložiště s přímým a konfiguraci úložiště služby Azure Stack je následujícím způsobem:
 - Jeden fondu prostorů úložiště na jednotce škálování (všechna zařízení úložiště jsou nakonfigurované v rámci jeden fond)

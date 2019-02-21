@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53ecff7df849d19ff7fe1d4c1c8dbd472326b06e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3eb68c4394afeb4719d92fb56d3ae9028d8566c9
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424451"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456108"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: Průběžné nasazování pomocí Chocolatey a automatizace stavu konfigurace virtuálních počítačů
 
@@ -136,9 +136,8 @@ Configuration ISVBoxConfig
             Name         = 'Web-Server-TCP-In'
             DisplayName  = 'Web Server (TCP-In)'
             Description  = 'IIS allow incoming web site traffic.'
-            DisplayGroup = 'IIS Incoming Traffic'
-            State        = 'Enabled'
-            Access       = 'Allow'
+            Enabled       = 'True'
+            Action       = 'Allow'
             Protocol     = 'TCP'
             LocalPort    = '80'
             Ensure       = 'Present'

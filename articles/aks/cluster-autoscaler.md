@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f8804a157c21f3c90c667646689eec0968bc9027
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754637"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452997"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru, které splňují požadavky aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,9 @@ V tomto článku se dozvíte, jak povolit a spravovat automatického škálován
 
 Tento článek vyžaduje použití Azure CLI verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-AKS clustery, které podporují automatického škálování clusteru musí používat škálovací sady virtuálních počítačů a verzí Kubernetes *1.12.4* nebo novější. Tato podpora škálovací sada je ve verzi preview. Pokud chcete vyjádřit výslovný souhlas a vytvářet clustery, které používají škálovací sady, nainstalujte *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az] [ az-extension-add] příkaz, jak je znázorněno v následujícím příkladu:
+### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření aks ve verzi preview rozhraní příkazového řádku
+
+AKS clustery, které podporují automatického škálování clusteru musí používat škálovací sady virtuálních počítačů a verzí Kubernetes *1.12.4* nebo novější. Tato podpora škálovací sada je ve verzi preview. Vyjádřit výslovný souhlas a vytvářet clustery, které používají škálovací sady, nejdřív nainstalovat *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az] [ az-extension-add] , jak je znázorněno v následujícím příkazu Příklad:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -35,6 +37,26 @@ az extension add --name aks-preview
 
 > [!NOTE]
 > Při instalaci *aks ve verzi preview* rozšíření, každý cluster AKS, vytvoříte používá model nasazení škálovací sady ve verzi preview. Chcete-li odhlásit se a vytvářet pravidelné a plně podporované clustery, odeberte pomocí rozšíření `az extension remove --name aks-preview`.
+
+### <a name="register-scale-set-feature-provider"></a>Registrace poskytovatele funkce škálovací sady
+
+Vytvoření AKS, který používá škálovací sady, musíte také povolit příznak funkce v rámci předplatného. K registraci *VMSSPreview* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az feature register --name VMSSPreview --namespace Microsoft.ContainerService
+```
+
+Trvá několik minut, než se stav zobrazíte *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az] [ az-feature-list] příkaz:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
+```
+
+Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register] [ az-provider-register] příkaz:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
 
 ## <a name="about-the-cluster-autoscaler"></a>O automatického škálování clusteru
 
@@ -149,6 +171,9 @@ Tento článek vám ukázali, jak automaticky škálovat počet uzlů AKS. Můž
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

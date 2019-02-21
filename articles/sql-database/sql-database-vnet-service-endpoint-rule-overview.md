@@ -3,7 +3,7 @@ title: Virtuální síť koncových bodů a pravidel pro jednoho a ve fondu data
 description: Označte jako koncový bod služby virtuální sítě podsítě. Klikněte koncový bod jako pravidlo virtuální sítě do seznamu řízení přístupu Azure SQL Database. SQL Database je pak podporují komunikaci ze všech virtuálních počítačů a ostatní uzly v podsíti.
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 6fdcf0b5baf28aee931307b28e1f161fddaa4d8e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 02/20/2019
+ms.openlocfilehash: 6ded590ac5a9c30655d8ed19c370ce476d1c9631
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118373"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456278"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncové body služeb virtuální sítě a pravidel pro databázové servery
 

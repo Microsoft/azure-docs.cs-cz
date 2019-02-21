@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b29e4f6e6e877a3d03ded9edd9e282e0960e177
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414625"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455530"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Verze Preview: Azure AD ochrana heslem v místním – nejčastější dotazy
 
@@ -43,7 +43,7 @@ Ne – místní ochrana hesel Azure AD je podporován pouze ve veřejném cloudu
 
 **Otázka: Jak můžu použít výhody ochrany hesel služby Azure AD na určitou podskupinu uživatelů v místním?**
 
-Nepodporuje se. Jakmile nasazená a aktivovaná, ochrana hesel Azure AD není rozlišení – všichni uživatelé obdrží stejné výhody.
+Nepodporuje se. Jakmile nasazená a aktivovaná, nebude rozlišení ochrana hesel Azure AD – všichni uživatelé obdrží stejné výhody.
 
 **Otázka: Je podporováno nainstalovat ochranu hesel služby Azure AD souběžně s jinými produkty pomocí filtru hesla?**
 
@@ -69,7 +69,7 @@ Další informace najdete v následujících článcích:
 
 **Otázka: Ve sdílené složce sysvol domény kolik místa na disku vyžaduje funkci?**
 
-Využití místa na přesné nelze zadat přesně, protože závisí na faktorech, jako je počet a délku zakázaných hesel tokeny v seznamu zakázaných hesel globální společnosti Microsoft a na tenanta vlastní zakázané seznam hesel a režijní náklady na šifrování. Obsah těchto seznamů je pravděpodobně růst v budoucnu. To na paměti, přiměřené aktuální pravidlem je, že tato funkce bude nutné aspoň pět (5) MB místa u sdílené složky sysvol domény.
+Využití přesné místo se liší, protože závisí na faktorech, jako je počet a délku zakázané tokeny v seznamu globální zakázané Microsoft a vlastní seznam na tenanta a režijní náklady na šifrování. Obsah těchto seznamů je pravděpodobně růst v budoucnu. To na paměti je předpokládat, že tato funkce bude nutné aspoň pět (5) MB místa u sdílené složky sysvol domény.
 
 **Otázka: Proč je třeba restartovat počítač pro instalaci nebo upgrade softwaru agenta řadiče domény?**
 
@@ -77,33 +77,33 @@ Tento požadavek je způsobeno jádra Windows chování.
 
 **Otázka: Existuje nějaký způsob, jak nakonfigurovat agenta do řadiče domény použít konkrétní proxy server?**
 
-Ne. Mějte na paměti, protože je Bezstavová proxy server, není důležité který konkrétní proxy server se používá.
+Ne. Protože je Bezstavová proxy server, není důležité který konkrétní proxy server se používá.
 
-**Otázka: Je možné nasadit Proxy ochrana hesel Azure AD service-souběžně na počítači s ostatními službami, jako je například Azure AD Connect?**
+**Otázka: Je možné nasadit službu Proxy ochrana hesel Azure AD vedle dalších služeb, jako je například Azure AD Connect?**
 
 Ano. Služba Proxy ochrana hesel Azure AD a Azure AD Connect by nikdy konfliktu navzájem přímo.
 
 **Otázka: Zajímat o výkonu, klikněte na Moje řadičů domény z nasazení této funkce?**
 
-Služba agenta ochrany DC hesel služby Azure AD slouží k byly co nejúčinnější a by neměl výrazně ovlivnit výkon řadiče domény v existující nasazení služby Active Directory, která je již dostatečně zdroje.
+Služba agenta ochrany DC hesel služby Azure AD by neměl výrazně ovlivnit výkon řadiče domény v existující nasazení služby Active Directory v pořádku.
 
-To je užitečné si uvědomit, že pro většinu nasazení hesla služby Active Directory jsou jejich změn malou část celkové zatížení na všech řadičích domény v dané. Jako příklad imagine domény služby Active Directory s 10000 uživatelské účty a MaxPasswordAge zásady nastavené na 30 dnů. V průměru tuto doménu uvidí 10000 30 = ~ 333 jejich změn každý den, což je menší počet operací pro ještě jeden řadič domény. Vkládání příkladu potenciální nejhorším scénářem případu, Předpokládejme, že tyto ~ 333 změny hesla na jednoho řadiče domény se provádí za jednu hodinu (například v tomto scénáři může dojít při velký počet zaměstnanců všechny přijdou do práce v pondělí ráno); i v tomto případě budete stále se díváme na ~333/60 minuty = šest změny hesla za minutu, která znovu není významné zatížení.
+Pro většinu nasazení hesla služby Active Directory změnu operace jsou malou část celkové zatížení na žádném řadiči dané domény. Jako příklad imagine domény služby Active Directory s 10000 uživatelské účty a MaxPasswordAge zásady nastavené na 30 dnů. V průměru tuto doménu uvidí 10000 30 = ~ 333 jejich změn každý den, což je menší počet operací pro ještě jeden řadič domény. Vezměte v úvahu potenciální nejhorší scénář: Předpokládejme, že tyto ~ 333 změny hesla na jednoho řadiče domény se provádí za jednu hodinu. Tento scénář může například dojít při mnoho pracovníků všechny přijdou do práce v pondělí ráno. Dokonce i v tomto případě stále bychom ~333/60 minut = šest změny hesla za minutu, která znovu není významné zatížení.
 
-To ale nutné dodat Pokud aktuální řadiče domény už běží na úrovních výkonu limited (například maxed navýšení kapacity s ohledem na využití procesoru, místo na disku, vstupně-výstupních operací disku atd.), bylo by vhodné nasazení dalších řadičů domény a/nebo rozbalte disku místo, před nasazením ochrany hesel služby Azure AD. Viz také otázku sysvol využití místa na disku výše uvedených výše.
+Nicméně pokud vaše aktuální řadiče domény už běží na úrovních výkonu limited (například maxed navýšení kapacity s ohledem na využití procesoru, místo na disku, disk vstupně-výstupních operací, atd.), se doporučuje přidejte další řadiče domény nebo rozšíření volného místa na disku před nasazení této funkce. Viz také otázku sysvol využití místa na disku výše uvedených výše.
 
 **Otázka: Chcete otestovat ochranu hesel služby Azure AD na několika řadičů domény ve své doméně. Je možné vynutit změny hesel uživatelů používat tyto konkrétní řadiče domény?**
 
-Ne. Když uživatel změní heslo, řadič domény, který se používá zvolila Windows klientský operační systém na základě faktorů, jako je například přiřazení lokality a podsítě služby Active Directory, konfigurace specifických pro prostředí sítě atd. Ochrana hesel Azure AD nemá vliv na nebo řídit těmito faktory a proto nemůžete ovlivnit který řadič domény je vybraná změnit heslo daného uživatele.
+Ne. Ovládací prvky Windows klientský operační systém, který řadič domény se používá, když uživatel změní své heslo. Řadič domény je vybrána na základě faktorů, jako je například přiřazení lokality a podsítě služby Active Directory, konfigurace specifických pro prostředí sítě atd. Azure AD hesla ochrany neřídí tyto faktory a nemůžete ovlivnit, který řadič domény je se rozhodli změnit heslo uživatele.
 
-To ale nutné dodat bude přístup, který se dodává blízko budete jen simulovat tento cíl nasazení hesel služby Azure AD ochrany na všech řadičích domény v dané lokalitě služby Active Directory. Tento přístup přináší rozumně všudypřítomná pokrytí pro Windows klienti přiřazení k lokalitě, a proto také pro uživatele, které jsou protokolování do těchto klientů a měnit heslo.
+Jedním ze způsobů částečně dosažení tohoto cíle může být nasazení ochrany hesel služby Azure AD na všechny řadiče domény v dané lokalitě služby Active Directory. Tento přístup přináší přiměřené pokrytí pro klienty Windows, které jsou přiřazeny k této lokalitě, a proto také pro uživatele, které jsou protokolování do těchto klientů a měnit heslo.
 
 **Otázka: Pokud mám nainstalovat službu agenta ochrany DC hesel služby Azure AD na jenom primární řadič domény (PDC), budou všechny ostatní řadiče domény v doméně také chráněné?**
 
-Ne. Při změně uživatelského hesla na řadič domény dané bez-primárního řadiče domény, textové heslo nikdy neodesílá do primárního řadiče domény (Tato myšlenka je běžné chybné vnímání). Místo toho po přijetí nové heslo na daný řadič domény se používá toto heslo k vytvoření různých ověřování protokolu konkrétní hodnoty hash hesla řadiče domény a pak opakuje tyto hodnoty hash v adresáři. Ty aktualizovat hodnoty hash se pak replikují do primárního řadiče domény – ale ochrana hesel Azure AD není součástí tohoto procesu. V některých případech může být uživatelská hesla změněn přímo na primární řadič domény, znovu v závislosti na různých faktorech, například síťové topologie a návrh lokality služby Active Directory. (Viz předchozí otázce.)
+Ne. Při změně uživatelského hesla na řadič domény dané bez-primárního řadiče domény, textové heslo nikdy neodesílá do primárního řadiče domény (Tato myšlenka je běžné chybné vnímání). Po přijetí nové heslo na řadiči domény se daný řadiče domény používá toto heslo pro vytvoření různých ověřování protokolu konkrétní hodnoty hash hesla a poté opakuje tyto hodnoty hash v adresáři. Heslo nešifrovaný text není trvalý. Aktualizované hodnoty hash se pak replikují do primární řadič domény. V některých případech může být uživatelská hesla změněn přímo na primární řadič domény, znovu v závislosti na různých faktorech, například síťové topologie a návrh lokality služby Active Directory. (Viz předchozí otázce.)
 
-Slouží ke shrnutí: nasazení služby Azure AD hesla ochrany řadič domény agenta na primární řadič domény se vyžaduje k dosažení 100 % pokrytí funkce zabezpečení, ale který sám o sobě neposkytuje výhody zabezpečení ochrany hesel služby Azure AD pro všechny řadiče domény v doméně.
+Stručně řečeno nasazení službu agenta ochrany DC hesel služby Azure AD na primární řadič domény se vyžaduje k dosažení 100 % pokrytí funkce zabezpečení napříč doménou. Nasazení funkce na primární řadič domény pouze neposkytuje výhody zabezpečení ochrany hesel služby Azure AD pro všechny řadiče domény v doméně.
 
-**Otázka: Je k dispozici sady System Center Operations Manager (SCOM) management pack pro ochranu hesel služby Azure AD?**
+**Otázka: Je k dispozici sady System Center Operations Manager management pack pro ochranu hesel služby Azure AD?**
 
 Ne.
 
@@ -114,6 +114,10 @@ Na následujících odkazech nejsou součástí základní dokumentace ke služb
 [E-mailu Průvodce ochrany Phishing – část 15: Implementace služby ochrany hesel služby Microsoft Azure AD (v místním příliš!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
 [Azure AD ochrana heslem a inteligentním uzamčením jsou nyní ve verzi Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+
+## <a name="microsoft-premierunified-support-training-available"></a>Školení podpory Premier\Unified Microsoftu k dispozici
+
+Pokud vás zajímají další informace o ochraně hesel služby Azure AD a jeho nasazení ve vašem prostředí, můžete využít výhod proaktivní služby Microsoftu k dispozici pro zákazníky se smlouvu o podpoře Premier nebo Unified. Služba se nazývá Azure Active Directory: Ochrana heslem. Další informace vám poskytne Technical Account Manager.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f5b24b21c4511b535509421aaa35ba3498e9f6a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246013"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453167"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Rychlý start: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio
 
@@ -57,15 +57,15 @@ Tuto datovou sadu dostanete do svého experimentu takto.
 
 1. Experimentu se přiřadí výchozí název, který se zobrazí v horní části plátna. Vyberte tento text a přejmenujte jej na něco smysluplného, například **Predikce ceny automobilu**. Název nemusí být jedinečný.
 
-    ![Přejmenování experimentu][rename-experiment]
+    ![Přejmenování experimentu](./media/create-experiment/rename-experiment.png)
 
 1. Nalevo od plátna experimentu je paleta datových sad a modulů. Do pole Hledat v horní části palety zadejte **automobile**. Vyhledá se datová sada **Automobile price data (Raw)**. Přetáhněte tuto datovou sadu na plátno experimentu.
 
-    ![Vyhledejte datovou sadu automobilů a přetáhněte ji na plátno experimentu.][type-automobile]
+    ![Vyhledejte datovou sadu automobilů a přetáhněte ji na plátno experimentu.](./media/create-experiment/type-automobile.png)
 
 Chcete-li zobrazit, co tato data vypadají, klikněte na výstupní port v dolní části datovou sadu automobilů a vyberte položku **vizualizovat**.
 
-![Klikněte na výstupní port a vyberte vizualizovat.][select-visualize]
+![Klikněte na výstupní port a vyberte vizualizovat.](./media/create-experiment/select-visualize.png)
 
 > [!TIP]
 > Vstupní a výstupní porty datových sad a modulů jsou reprezentované malými kroužky – vstupní porty v horní části, výstupní porty v dolní části.
@@ -74,7 +74,7 @@ V libovolném okamžiku můžete kliknout na výstupní port datové sady nebo m
 
 V této datové sadě každý řádek představuje automobilu a proměnné přidružené k automobilům se zobrazují jako sloupce. Předpovíme cenu ve sloupci úplně vpravo (sloupec 26 s názvem "price") pomocí proměnných pro konkrétní automobil.
 
-![Zobrazte data automobilů v okně vizualizace dat.][visualize-auto-data]
+![Zobrazte data automobilů v okně vizualizace dat.](./media/create-experiment/visualize-auto-data.png)
 
 Kliknutím na **x** v pravém horním rohu zavřete okno vizualizace.
 
@@ -89,9 +89,9 @@ Nejdříve přidáme modul, který odebere **normalized-losses** sloupec úplně
 
 1. Typ **vyberte sloupce, které** do vyhledávacího pole v horní části palety modulů najít [výběr sloupců v datové sadě] [ select-columns] modulu. Potom přetáhněte na plátno experimentu. Tento modul umožňuje vybrat, které sloupce dat chceme zahrnout do modelu, nebo je z modelu naopak vyloučit.
 
-1. Připojte výstupní port datové sady **Automobile price data (Raw)** ke vstupnímu portu modulu [Výběr sloupců v datové sadě][select-columns].
+1. Připojte výstupní port modulu **Automobile price data (Raw)** datové sady ke vstupnímu portu výběr sloupců v datové sadě.
 
-    ![Přidejte modul "Výběr sloupců v datové sadě" na plátno experimentu a propojte jej][type-select-columns]
+    ![Přidejte modul "Výběr sloupců v datové sadě" na plátno experimentu a propojte jej](./media/create-experiment/type-select-columns.png)
 
 1. Klikněte na modul [Výběr sloupců v datové sadě][select-columns] a v podokně **Vlastnosti** klikněte na **Spustit selektor sloupců**.
 
@@ -100,26 +100,26 @@ Nejdříve přidáme modul, který odebere **normalized-losses** sloupec úplně
     - V rozevíracích seznamech vyberte **Vyloučit** a **názvy sloupců** a klikněte do textového pole. Zobrazí se seznam sloupců. Vyberte sloupec **normalized-losses**, který se tak přidá do textového pole.
     - Kliknutím na tlačítko zaškrtnutí (OK) zavřete selektor sloupců (vpravo dole).
 
-    ![Spusťte selektor sloupců a vylučte sloupec normalized-losses."][launch-column-selector]
+    ![Spusťte selektor sloupců a vylučte sloupec normalized-losses."](./media/create-experiment/launch-column-selector.png)
 
     Podokno vlastností modulu **Výběr sloupců v datové sadě** teď indikuje, že modul bude procházet všechny sloupce datové sady kromě **normalized-losses**.
 
-    ![V podokně vlastností ukazuje, že sloupec normalized-losses."je vyloučený][showing-excluded-column]
+    ![V podokně vlastností ukazuje, že sloupec normalized-losses."je vyloučený](./media/create-experiment/showing-excluded-column.png)
 
     > [!TIP] 
     > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V tomto případě klikněte dvakrát na modul [Výběr sloupců v datové sadě][select-columns] a zadejte komentář Vyloučit normalized-losses.
 
-    ![Klikněte dvakrát na modul a přidejte komentář.][add-comment]
+    ![Klikněte dvakrát na modul a přidejte komentář.](./media/create-experiment/add-comment.png)
 
 1. Přetáhněte modul [Vyčištění chybějících dat][clean-missing-data] na plátno experimentu a propojte jej s modulem [Výběr sloupců v datové sadě][select-columns]. V podokně **Vlastnosti** vyberte v části **Režim čištění** možnost **Odstranit celý řádek**. Tyto možnosti s přímým přístupem [vyčištění chybějících dat] [ clean-missing-data] k vyčištění dat odstraněním řádků, které mají chybí některé hodnoty. Klikněte dvakrát na modul a zadejte komentář Odstranění řádků s chybějícími hodnotami.
 
-    ![Nastavení režimu čisticí "Odebrat celý řádek" pro modul "Vyčištění chybějících dat"][set-remove-entire-row]
+    ![Nastavení režimu čisticí "Odebrat celý řádek" pro modul "Vyčištění chybějících dat"](./media/create-experiment/set-remove-entire-row.png)
 
 1. Spusťte experiment kliknutím na **SPUSTIT** v dolní části stránky.
 
     Až se spuštění experimentu dokončí, u všech modulů se zobrazí zelená značka zaškrtnutí, která označuje, že jejich činnost úspěšně skončila. Všimněte si také stavu **Konec běhu** v pravém horním rohu.
 
-    ![Po spuštění by experiment měl vypadat asi takhle nějak.][early-experiment-run]
+    ![Po spuštění by experiment měl vypadat asi takhle nějak.](./media/create-experiment/early-experiment-run.png)
 
 > [!TIP]
 > Proč jsme experiment teď spustili? Spuštěním experimentu jsme zajistili, aby definice sloupců pro naše data prošly z původní datové sady přes modul [Výběr sloupců v datové sadě][select-columns] a přes modul [Vyčištění chybějících dat][clean-missing-data]. To znamená, že všechny moduly, které připojíme k modulu [Vyčištění chybějících dat][clean-missing-data], budou také mít tytéž informace.
@@ -140,7 +140,7 @@ Vytvořme model, který používá podmnožinu příznaků naší datové sady. 
 
 1. Na plátno experimentu přetáhněte další modul [Výběr sloupců v datové sadě][select-columns]. Propojte levý výstupní port modulu [Vyčištění chybějících dat][clean-missing-data] se vstupem modulu [Výběr sloupců v datové sadě][select-columns].
 
-    ![Připojte modul "Výběr sloupců v datové sadě" k "Vyčištění chybějících dat"][connect-clean-to-select]
+    ![Připojte modul "Výběr sloupců v datové sadě" k "Vyčištění chybějících dat"](./media/create-experiment/connect-clean-to-select.png)
 
 1. Poklikejte na modul a zadejte Výběr příznaků pro predikci.
 
@@ -152,7 +152,7 @@ Vytvořme model, který používá podmnožinu příznaků naší datové sady. 
 
 1. Klikněte na tlačítko zaškrtnutí (OK).
 
-    ![Vyberte sloupce (příznaky), které chcete zahrnout do predikce.][select-columns-to-include]
+    ![Vyberte sloupce (příznaky), které chcete zahrnout do predikce.](./media/create-experiment/select-columns-to-include.png)
 
 Tento modul vytváří je filtrovaná datová sada obsahující jenom ty příznaky, které chceme předat algoritmu učení, který použijeme v dalším kroku. Později se můžete vrátit a zkusit jiný výběr příznaků.
 
@@ -174,7 +174,7 @@ Naše data můžeme použít jak pro trénování modelu, tak pro jeho otestová
 
 1. Klikněte na modul [Rozdělení dat][split]. Modul se vybere. Vyhledejte **Podíl řádků v první výstupní sadě dat** (v podokně **Vlastnosti** napravo od plátna) a nastavte ho na 0,75. Takto použijeme 75 procent dat pro trénování modelu a 25 procent si ponecháme na testování.
 
-    ![Nastavte podíl modulu "Rozdělení dat" na 0,75.][set-split-data-percentage]
+    ![Nastavte podíl modulu "Rozdělení dat" na 0,75.](./media/create-experiment/set-split-data-percentage.png)
 
     > [!TIP]
     > Změnou parametru **Náhodná počáteční hodnota** je možné pro trénování a testování vytvořit různé náhodné vzorky. Tento parametr řídí nastavování počáteční hodnoty pseudonáhodného generátoru čísel.
@@ -185,19 +185,19 @@ Naše data můžeme použít jak pro trénování modelu, tak pro jeho otestová
 
 1. Najděte modul [Trénování modelu][train-model] a přetáhněte ho na plátno experimentu. Propojte výstup modulu [Lineární regrese][linear-regression] s levým vstupem modulu [Trénování modelu][train-model] a potom propojte výstup trénovacích dat (levý port) modulu [Rozdělení dat][split] s pravým vstupem modulu [Trénování modelu][train-model].
 
-    ![Propojte modul "Train Model" k modulům "Lineární regrese" a "Rozdělení dat."][connect-train-model]
+    ![Propojte modul "Train Model" k modulům "Lineární regrese" a "Rozdělení dat."](./media/create-experiment/connect-train-model.png)
 
 1. Klikněte na modul [Trénování modelu][train-model], v podokně **Vlastnosti** klikněte na **Spustit selektor sloupců** a vyberte sloupec **price**. **Cena** je hodnota, kterou náš model bude předpovídat.
 
     V selektoru sloupců vyberete sloupec **price** – přesunete ho ze seznamu **Dostupné sloupce** do seznamu **Vybrané sloupce**.
 
-    ![Vyberte sloupec price. pro modul "Train Model"][select-price-column]
+    ![Vyberte sloupec price. pro modul "Train Model"](./media/create-experiment/select-price-column.png)
 
 1. Spusťte experiment.
 
 Výsledkem je natrénovaný model, který je možné použít ke stanovení skóre pro nová data automobilů a k následné predikci cen.
 
-![Po spuštění experimentu by teď měl vypadat asi takhle nějak.][second-experiment-run]
+![Po spuštění experimentu by teď měl vypadat asi takhle nějak.](./media/create-experiment/second-experiment-run.png)
 
 ## <a name="predict-new-automobile-prices"></a>Předpověď cen nových automobilů
 
@@ -205,21 +205,21 @@ Nyní když jsme natrénovali model pomocí 75 procent dat, můžeme model použ
 
 1. Najděte modul [Určení skóre modelu][score-model] a přetáhněte ho na plátno experimentu. Propojte výstup modulu [Trénování modelu][train-model] s levým vstupním portem modulu [Určení skóre modelu][score-model]. Propojte výstup testovacích dat (pravý port) modulu [Rozdělení dat][split] s pravým vstupním portem modulu [Určení skóre modelu][score-model].
 
-    ![Propojte modul "Určení skóre modelu" k modulům "Train Model" a "Rozdělení dat."][connect-score-model]
+    ![Propojte modul "Určení skóre modelu" k modulům "Train Model" a "Rozdělení dat."](./media/create-experiment/connect-score-model.png)
 
 1. Spusťte experiment a zobrazte výstup [Score Model] [ score-model] kliknutím na výstupní port modulu [určení skóre modelu] [ score-model] a vyberte  **Vizualizujte**. Na výstupu se zobrazí predikované hodnoty ceny a známé hodnoty v testovacích datech.  
 
-    ![Výstup modulu "Určení skóre modelu"][score-model-output]
+    ![Výstup modulu "Určení skóre modelu"](./media/create-experiment/score-model-output.png)
 
 1. Nakonec otestujeme kvalitu výsledků. Najděte modul [Vyhodnocení modelu][evaluate-model], přetáhněte ho na plátno experimentu a propojte výstup modulu [Určení skóre modelu][score-model] s levým vstupem modulu [Vyhodnocení modelu][evaluate-model]. Konečný experiment by měl vypadat přibližně takto:
 
-    ![Konečný experiment][complete-linear-regression-experiment]
+    ![Konečný experiment](./media/create-experiment/complete-linear-regression-experiment.png)
 
 1. Spusťte experiment.
 
 Zobrazte výstup modulu [Vyhodnocení modelu][evaluate-model] tak, že kliknete na výstupní port a vyberete **Vizualizovat**.
 
-![Výsledky vyhodnocení pro experiment][evaluation-results]
+![Výsledky vyhodnocení pro experiment](./media/create-experiment/evaluation-results.png)
 
 Pro náš model se zobrazí následující statistiky:
 
@@ -241,35 +241,6 @@ V tomto rychlém startu jste vytvořili jednoduchý experiment pomocí ukázkov�
 
 > [!div class="nextstepaction"]
 > [Kurz: Vývoj prediktivního řešení v sadě Studio](tutorial-part1-credit-risk.md)
-
-<!-- Images -->
-[sign-in-to-studio]: ./media/create-experiment/sign-in-to-studio.png
-[rename-experiment]: ./media/create-experiment/rename-experiment.png
-[visualize-auto-data]:./media/create-experiment/visualize-auto-data.png
-[select-visualize]: ./media/create-experiment/select-visualize.png
-[showing-excluded-column]:./media/create-experiment/showing-excluded-column.png
-[set-remove-entire-row]:./media/create-experiment/set-remove-entire-row.png
-[early-experiment-run]:./media/create-experiment/early-experiment-run.png
-[select-columns-to-include]:./media/create-experiment/select-columns-to-include.png
-[second-experiment-run]:./media/create-experiment/second-experiment-run.png
-[connect-score-model]:./media/create-experiment/connect-score-model.png
-[evaluation-results]:./media/create-experiment/evaluation-results.png
-[complete-linear-regression-experiment]:./media/create-experiment/complete-linear-regression-experiment.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[type-automobile]:./media/create-experiment/type-automobile.png
-[type-select-columns]:./media/create-experiment/type-select-columns.png
-[launch-column-selector]:./media/create-experiment/launch-column-selector.png
-[add-comment]:./media/create-experiment/add-comment.png
-[connect-clean-to-select]:./media/create-experiment/connect-clean-to-select.png
-
-[set-split-data-percentage]:./media/create-experiment/set-split-data-percentage.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[connect-train-model]:./media/create-experiment/connect-train-model.png
-[select-price-column]:./media/create-experiment/select-price-column.png
-
-[score-model-output]:./media/create-experiment/score-model-output.png
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

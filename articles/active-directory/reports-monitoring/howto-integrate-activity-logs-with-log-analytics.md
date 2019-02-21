@@ -1,6 +1,6 @@
 ---
-title: Stream protokolů služby Azure Active Directory do služby Log Analytics pomocí Azure monitoru (preview) | Dokumentace Microsoftu
-description: Zjistěte, jak integrace protokolů Azure Active Directory pomocí služby Log Analytics pomocí Azure monitoru (preview)
+title: Stream protokolů služby Azure Active Directory do Azure monitoru protokolů (preview) | Dokumentace Microsoftu
+description: Zjistěte, jak integrace protokolů Azure Active Directory s Azure Monitor protokoly (preview)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,30 +17,30 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51db96523a96015822f4507731bad2a398521530
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2e9c1b2513f769b065883dc98b649a68d565ccc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165837"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456482"
 ---
-# <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Integrace protokolů Azure AD pomocí služby Log Analytics pomocí Azure monitoru (preview)
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Integrace protokolů Azure AD s protokoly Azure monitoru (preview)
 
-Log Analytics vám umožní k dotazování dat. Chcete-li najít konkrétní události, analýze trendů a provádět korelaci v různých zdrojích dat. Díky integraci služby Azure AD protokoly aktivit ve službě Log Analytics, můžete teď provádět úkoly, jako je:
+Protokoly služby Azure Monitor vám umožní k dotazování dat. Chcete-li najít konkrétní události, analýze trendů a provádět korelaci v různých zdrojích dat. Díky integraci služby Azure AD protokoly aktivit Azure Monitor protokoly, teď můžete provádět úkoly, jako je:
 
  * Porovnání služby Azure AD přihlášení protokolů proti protokolů zabezpečení, publikování pomocí služby Azure Security Center
 
  * Řešení potíží s problémových míst výkonu na přihlašovací stránku vaší aplikace pomocí korelace dat o výkonu aplikace ze služby Azure Application Insights.  
 
-Toto video z relace Ignite ukazuje výhody použití Log Analytics pro Azure AD protokoly v praktické uživatelských scénářů.
+Toto video z relace Ignite ukazuje výhody použití protokoly Azure monitoru pro protokoly služby Azure AD v praktické uživatelských scénářů.
 
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
-V tomto článku se dozvíte, jak integrovat protokoly služby Azure Active Directory (Azure AD) pomocí Log Analytics pomocí Azure monitoru.
+V tomto článku se dozvíte, jak integrovat protokoly služby Azure Active Directory (Azure AD) pomocí Azure monitoru.
 
 ## <a name="supported-reports"></a>Podporované sestavy
 
-Ke službě Log Analytics můžete směrovat protokoly aktivit auditu a protokolů aktivit přihlašování pro další analýzy. 
+Můžete směrovat protokoly aktivit auditu a protokolů aktivit přihlašování na protokoly Azure monitoru pro další analýzy. 
 
 * **Protokoly auditu**: [Sestava aktivit protokolů auditu](concept-audit-logs.md) dává vám přístup k historii každé úlohy, které se provádí ve vašem tenantovi.
 * **Protokoly přihlášení**: S [sestavy aktivit přihlašování](concept-sign-ins.md), můžete určit, kdo provedl úlohy, které jsou hlášeny v protokolech auditování.
@@ -58,13 +58,13 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
 * Pracovní prostor Log Analytics ve vašem předplatném Azure. Zjistěte, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
-## <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
+## <a name="send-logs-to-azure-monitor-logs"></a>Odeslání protokolů s protokoly Azure monitoru
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory** > **nastavení diagnostiky** -> **přidejte nastavení diagnostiky**. Můžete také vybrat **Export nastavení** z **protokoly auditu** nebo **přihlášení** stránky na stránku konfigurace nastavení diagnostiky.  
     
-3. V **nastavení diagnostiky** nabídku, vyberte **odesílat do Log Analytics** zaškrtněte políčko a potom vyberte **konfigurovat**.
+3. V **nastavení diagnostiky** nabídku, vyberte **odesílání do pracovního prostoru Log Analytics** zaškrtněte políčko a potom vyberte **konfigurovat**.
 
 4. Vyberte pracovní prostor Log Analytics, které chcete odeslat protokoly a nebo vytvořte nový pracovní prostor v poli zobrazeném dialogu.  
 
@@ -80,5 +80,5 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Analýza Azure AD aktivit protokolů v Log Analytics](howto-analyze-activity-logs-log-analytics.md)
-* [Nainstalovat a používat zobrazení Log Analytics pro Azure Active Directory](howto-install-use-log-analytics-views.md)
+* [Analýza služby Azure AD protokolů aktivit se protokoly Azure monitoru](howto-analyze-activity-logs-log-analytics.md)
+* [Nainstalovat a používat zobrazení log analytics pro Azure Active Directory](howto-install-use-log-analytics-views.md)

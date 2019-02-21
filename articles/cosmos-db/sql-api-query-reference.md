@@ -4,16 +4,16 @@ description: Tento článek popisuje syntaxi jazyka dotazů SQL v Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 457f64b9ae9101628df5347c921bfa057a7cb754
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: de50c18fa8e2bebcb584fcd5763f0428637df484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991425"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455785"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Referenční příručka jazyka SQL pro službu Azure Cosmos DB 
 

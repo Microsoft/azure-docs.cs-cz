@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 0ffa917aa6bcfb642cd672d0a51a70b13f041635
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1bf9889f601795c1ba70abdd17f6e8c9a01785f1
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267559"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453864"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Správa webové služby pomocí portálu webových služeb Azure Machine Learning Studio
 Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
@@ -39,7 +39,7 @@ Pokud uživatel nemá správná oprávnění pro přístup k prostředkům na po
 
 *Nasazení webové služby se nezdařilo. Tento účet nemá dostatečný přístup k předplatnému Azure, který obsahuje tento pracovní prostor. Pokud chcete nasadit webovou službu do Azure, stejný účet musí být pozvaní do pracovního prostoru a být poskytnut přístup k předplatnému Azure, který obsahuje tento pracovní prostor.*
 
-Další informace o vytváření pracovního prostoru najdete v tématu [vytváření a sdílení pracovního prostoru služby Azure Machine Learning](create-workspace.md).
+Další informace o vytváření pracovního prostoru najdete v tématu [vytváření a sdílení pracovního prostoru služby Azure Machine Learning Studio](create-workspace.md).
 
 Další informace o nastavení přístupových oprávnění najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -108,7 +108,7 @@ Klikněte na možnost plánu, chcete-li zobrazit jeho řídicí panel. Řídicí
 
 ## <a name="manage-classic-web-services"></a>Spravovat klasické webové služby
 > [!NOTE]
-> Postupy v této části jsou relevantní pro správu klasických webových služeb prostřednictvím portálu Azure Machine Learning Web Services. Informace o správě klasické webové služby Machine Learning Studio a na webu Azure portal najdete v tématu [Správa pracovního prostoru Azure Machine Learning](manage-workspace.md).
+> Postupy v této části jsou relevantní pro správu klasických webových služeb prostřednictvím portálu Azure Machine Learning Web Services. Informace o správě klasické webové služby Machine Learning Studio a na webu Azure portal najdete v tématu [Správa pracovního prostoru Azure Machine Learning Studio](manage-workspace.md).
 > 
 > 
 

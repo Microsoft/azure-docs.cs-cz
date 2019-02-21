@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 59a04ca5a546fff1043e1e157491b218f693d0f0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: efa43d7faf9d048ff963a74d8c69618ee535654c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333829"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443426"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Zálohování a zotavení po havárii pro disky Azure IaaS
 
@@ -170,7 +170,7 @@ Pokud potřebujete opravit nebo znovu vytvořit virtuální počítač, můžete
 
 Další informace najdete v pokynech k [obnovení virtuálních počítačů pomocí webu Azure portal](../articles/backup/backup-azure-arm-restore-vms.md). Tento dokument popisuje také konkrétní pokyny k obnovení zálohovaných virtuálních počítačů na spárovaném datovém centru pomocí geograficky redundantního úložiště záloh, pokud nedojde k havárii v primárním datacentru. V takovém případě Azure Backup používá výpočetní služby ze sekundární oblasti vytvořit obnovený virtuální počítač.
 
-Můžete použít také prostředí PowerShell pro [obnovení virtuálního počítače](../articles/backup/backup-azure-arm-restore-vms.md#restore-a-vm-during-an-azure-datacenter-disaster) nebo [vytváření nového virtuálního počítače z obnovit disky](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+Můžete použít také prostředí PowerShell pro [vytváření nového virtuálního počítače z obnovit disky](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
 ## <a name="alternative-solution-consistent-snapshots"></a>Alternativní řešení: Snímky konzistentní vzhledem k aplikacím
 

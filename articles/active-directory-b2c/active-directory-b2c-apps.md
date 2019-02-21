@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ea179ff7e4b525e86003faadfb92e090476bd81
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172642"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446371"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
@@ -91,10 +91,10 @@ Webové rozhraní API pak může pomocí tokenu ověřit identitu volajícího a
 Webové rozhraní API může přijímat tokeny z řady typů klientů, včetně webových aplikací, desktop a mobilní aplikace, jednostránkové aplikace, démonů na straně serveru a dalších webových rozhraní API. Tady je příklad celého toku u webové aplikace, která volá webové rozhraní API:
 
 1. Webová aplikace spouští zásady a uživatel dokončí činnost koncového uživatele.
-2. Azure AD B2C vrátí `access_token` a autorizační kód v prohlížeči.
-3. V prohlížeči příspěvcích `access_token` a autorizační kód identifikátor URI přesměrování.
-4. Webový server ověřuje, `access token` a nastaví soubor cookie relace.
-5. `access_token` Je součástí autorizační kód, ID klienta aplikace služby Azure AD B2C a přihlašovací údaje.
+2. Azure AD B2C vrátí (OpenID Connect) `id_token` a autorizační kód v prohlížeči.
+3. V prohlížeči příspěvcích `id_token` a autorizační kód identifikátor URI přesměrování.
+4. Webový server ověřuje, `id_token` a nastaví soubor cookie relace.
+5. Webový server žádá Azure AD B2C pro `access_token` poskytnutím autorizační kód, ID klienta aplikace a přihlašovací údaje pro klienta.
 6. `access_token` a `refresh_token` jsou odesílány zpět do webového serveru.
 7. Webové rozhraní API je volána s `access_token` v hlavičce autorizace.
 8. Webové rozhraní API ověří daný token.

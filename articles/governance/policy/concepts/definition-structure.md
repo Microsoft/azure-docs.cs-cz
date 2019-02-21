@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dc6407a222adb06f4139d9973c168911e0faca8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429668"
+ms.locfileid: "56447782"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -215,7 +215,9 @@ Podmínka vyhodnocena jako, jestli **pole** nebo **hodnotu** přistupující obj
 - `"like": "value"`
 - `"notLike": "value"`
 - `"match": "value"`
+- `"matchInsensitively": "value"`
 - `"notMatch": "value"`
+- `"notMatchInsensitively": "value"`
 - `"contains": "value"`
 - `"notContains": "value"`
 - `"in": ["value1","value2"]`
@@ -227,7 +229,8 @@ Podmínka vyhodnocena jako, jestli **pole** nebo **hodnotu** přistupující obj
 Při použití **jako** a **notLike** podmínky, zadat zástupný znak `*` v hodnotě.
 Hodnota by neměla mít více než jeden zástupný znak `*`.
 
-Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` tak, aby odpovídaly číslici, `?` pro písmeno, `.` tak, aby odpovídaly všechny znaky a jakýkoli jiný znak tak, aby odpovídaly skutečné znaku. Příklady najdete v tématu [povolit několik vzory názvů](../samples/allow-multiple-name-patterns.md).
+Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` tak, aby odpovídaly číslici, `?` pro písmeno, `.` tak, aby odpovídaly všechny znaky a jakýkoli jiný znak tak, aby odpovídaly skutečné znaku.
+**odpovídá** a **notMatch** jsou malá a velká písmena. Malá a velká písmena alternativy jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**. Příklady najdete v tématu [povolit několik vzory názvů](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Fields (Pole)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: eb344d6da15a8faf8f05720ae9b1fd49bd42db2f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808192"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447323"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -96,18 +96,24 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 
 + Západní střed USA
 + Středojižní USA
++ Středoseverní USA
 + USA – východ
 + Východní USA 2
 + Západní USA
 + Západní USA 2
++ USA – střed
 + Kanada – střed
 + Západní Evropa
-+ Velká Británie – jih
 + Severní Evropa
++ Velká Británie – jih
++ Francie – střed
 + Brazílie – jih
 + Východní Asie
 + Jihovýchodní Asie
 + Střed Indie
++ Japonsko – západ
++ Japonsko – východ
++ Korea – střed
 + Austrálie – východ
 
 **Krok 2: Praktické zkušenosti na hlavní server pracovního postupu**

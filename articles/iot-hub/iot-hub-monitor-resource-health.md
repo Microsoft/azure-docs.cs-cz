@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 8c575c6d34543cbd8f692c64b43cf738b4c22617
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 86e690e5ff437d924b9c548c2d75afb1866b14aa
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415625"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446779"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží
 
@@ -340,7 +340,7 @@ Při doručení zprávy obsahující vlastnosti platný trasování ve službě 
 }
 ```
 
-Tady `durationMs` se vypočte jako nemusí být služby IoT Hub hodiny synchronizované s hodinami zařízení, a proto může být zavádějící výpočet doby trvání. Doporučujeme zápis pomocí logiky časová razítka v `properties` oddílu zachycení špičky v latence typu zařízení cloud.
+Tady `durationMs` se vypočte jako nemusí být služby IoT Hub hodiny synchronizované s hodinami zařízení, a proto může být zavádějící výpočet doby trvání. Doporučujeme, abyste logiky pomocí časová razítka v `properties` oddílu zachycení špičky v latence typu zařízení cloud.
 
 | Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: c50c1a111f037b74176b5ca2cf8af518b2d3ffa0
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429379"
+ms.locfileid: "56447210"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Dotazy na výstrahy protokolu ve službě Azure Monitor
 [Upozornění pravidla založená na protokoly Azure monitoru](alerts-unified-log.md) v pravidelných intervalech spouští, proto měli byste zajistit, že se zapisují pro minimalizaci režie a latenci. Tento článek obsahuje doporučení pro psaní efektivní dotazy na výstrahy protokolu a proces pro převod existujících dotazů. 
@@ -31,16 +31,11 @@ Dotazy, které začínají `search` nebo `union` umožňují prohledávat např�
 
 ```Kusto
 search "Memory"
-
 search * | where == "Memory"
-
 search ObjectName: "Memory"
-
 search ObjectName == "Memory"
-
 union * | where ObjectName == "Memory"
 ```
- 
 
 I když `search` a `union` jsou užitečné při zkoumání dat, podmínek vyhledávání celého datového modelu, jsou míň efektivní než pomocí tabulky, protože musí zkontrolovat z více tabulek. Protože jsou v pravidelných intervalech spouští dotazy v pravidel upozornění, to může způsobit nadměrnému zatížení přidání latence výstrahy. Z důvodu režie měli vždy začít dotazy pro pravidla upozornění protokolů v Azure s tabulkou a určete obor jasné, což zvyšuje výkon dotazů a relevance výsledků.
 

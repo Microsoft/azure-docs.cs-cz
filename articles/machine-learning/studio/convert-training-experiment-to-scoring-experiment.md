@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001693"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455105"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Příprava vašeho modelu pro nasazení v Azure Machine Learning Studio
 
@@ -50,11 +50,11 @@ Po spuštění experimentu (klikněte na tlačítko **spustit** v dolní části
 
 Například následující experiment trénovat dvěma třídami Posílený rozhodovací strom model s použitím ukázkových dat sčítání:
 
-![Výukového experimentu][figure1]
+![Výukového experimentu](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
 Moduly v tento experiment provádět v podstatě čtyři různé funkce:
 
-![Modul funkce][figure2]
+![Modul funkce](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
 Pokud převedete tento výukový experiment prediktivní experiment, některé z těchto modulů již nejsou potřebné nebo teď slouží k jinému účelu:
 
@@ -70,7 +70,7 @@ Pokud převedete tento výukový experiment prediktivní experiment, některé z
 
 Zde je, jak náš příklad vypadá po kliknutí na tlačítko **nastavení webové služby**:
 
-![Převést prediktivní experiment][figure3]
+![Převést prediktivní experiment](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
 Práci prováděnou **nastavení webové služby** může být dostatečné k přípravě experiment nasadit jako webovou službu. Však můžete chtít provést další úkony konkrétní do experimentu.
 
@@ -79,7 +79,7 @@ V výukového experimentu používá sadu trénovacích dat a pak jste nějaké 
 
 Například ve výchozím nastavení **nastavení webové služby** umístí **webové služby vstup** modulu v horní části váš tok dat, jak je znázorněno na obrázku výše. Ale můžete ručně umístit **webové služby vstup** za zpracování dat modulů:
 
-![Přesunutí vstup webové služby][figure4]
+![Přesunutí vstup webové služby](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
 Vstupní data poskytovaná prostřednictvím webové služby předá nyní přímo do modulu určení skóre modelu bez jakékoli předběžného zpracování.
 
@@ -88,14 +88,14 @@ Ale pokud chcete vrátit něco jiné, pak můžete přidat další moduly před 
 
 Například vrátí pouze výsledky vyhodnocení a ne celý vektor vstupních dat, přidejte [výběr sloupců v datové sadě] [ select-columns] modulu, který chcete vyloučit všechny sloupce kromě bodování výsledky. Přesuňte **webové služby výstup** modulu k výstupu [výběr sloupců v datové sadě] [ select-columns] modulu. Experiment vypadá takto:
 
-![Přesunutí výstup webové služby][figure5]
+![Přesunutí výstup webové služby](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
 ### <a name="add-or-remove-additional-data-processing-modules"></a>Přidat nebo odebrat moduly další zpracování dat
 Pokud existují další moduly do experimentu, o kterém víte, že nebude potřeba během vyhodnocování, ty lze odebrat. Například protože jsme přešli **webové služby vstup** modulu do bodu po moduly zpracování dat, můžeme odebrat [vyčištění chybějících dat] [ clean-missing-data] modulu z Prediktivní experiment.
 
 Naše prediktivní experiment teď vypadá takto:
 
-![Odebrání dalších modulů][figure6]
+![Odebrání dalších modulů](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>Přidání volitelných parametrů webové služby
@@ -116,16 +116,6 @@ Teď, když prediktivní experiment dostatečně připravený, můžete ho nasad
 Další informace o procesu kompletní nasazení najdete v tématu [nasazení webové služby Azure Machine Learning][deploy]
 
 [deploy]: publish-a-machine-learning-web-service.md
-
-
-<!-- Images -->
-[figure1]:./media/convert-training-experiment-to-scoring-experiment/figure1.png
-[figure2]:./media/convert-training-experiment-to-scoring-experiment/figure2.png
-[figure3]:./media/convert-training-experiment-to-scoring-experiment/figure3.png
-[figure4]:./media/convert-training-experiment-to-scoring-experiment/figure4.png
-[figure5]:./media/convert-training-experiment-to-scoring-experiment/figure5.png
-[figure6]:./media/convert-training-experiment-to-scoring-experiment/figure6.png
-
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

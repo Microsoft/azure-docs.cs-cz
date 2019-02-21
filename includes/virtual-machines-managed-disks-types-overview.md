@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7f5583bfd6089362aef51285643f5fc920005242
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 8a067474fb172d4ff7a7fdf7eb6d24536bd2d017
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331164"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443437"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
 
@@ -21,9 +21,9 @@ Spravované disky Azure nyní nabízí čtyři typy disků, tři, z nichž jsou 
 
 ## <a name="disk-comparison"></a>Porovnání disků
 
-Následující tabulka obsahuje porovnání ultra disků (preview), premium solid-stát jednotky SSD (Solid-State Drive), SSD na úrovni standard, a standardních pevných disků (HDD) pro spravované disky, které vám pomohou rozhodnout, co se má použít.
+Následující tabulka obsahuje porovnání ultra solid-stát disky (SSD) (preview), premium SSD, SSD na úrovni standard a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou při rozhodování, co se má použít.
 
-|   | Ultra disky (preview)   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
+|   | Ultra SSD (preview)   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
 |Scénář   |Úlohy náročné na vstupně-výstupních operací, jako jsou SAP HANA, databáze na nejvyšší úrovni (třeba SQL, Oracle) a dalších transakcí náročná na výkon úloh.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používaná podnikové aplikace a pro vývoj/testování   |Zálohování méně náročné úlohy s řídkým přístupem   |
@@ -31,19 +31,19 @@ Následující tabulka obsahuje porovnání ultra disků (preview), premium soli
 |Maximální propustnost   |2 000 MiB/s (Preview)   |250 (GA) MiB/s, 750 MiB/s (Preview)   |60 MiB/s (GA), 500 MiB/s (Preview)   |60 Mib/s (GA), 500 MiB/s (Preview)   |
 |Maximální počet vstupně-výstupních operací za sekundu   |160,000 (preview)   |7500 (GA), 20 000 (Preview)   |500 (GA), 2 000 (Preview)   |500 (GA), 2 000 (Preview)   |
 
-## <a name="ultra-disks-preview"></a>Ultra disky (preview)
+## <a name="ultra-ssd-preview"></a>Ultra SSD (preview)
 
-Ultra disků v Azure (preview) poskytovat vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Některé další výhody ultra disků patří schopnost dynamicky měnit výkon disku spolu s úlohami, aniž byste museli restartovat své virtuální počítače. Ultra disky jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy. Ultra disky jde použít jenom jako datové disky. Doporučujeme použít disky premium SSD jako disky s operačním systémem.
+Ultra SSD Azure (preview) poskytovat vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Některé další výhody ultra SSD patří schopnost dynamicky měnit výkon disku spolu s úlohami, aniž byste museli restartovat své virtuální počítače. Ultra SSD jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy. Ultra SSD jde použít jenom jako datové disky. Doporučujeme použít disky premium SSD jako disky s operačním systémem.
 
 ### <a name="performance"></a>Výkon
 
-Když si zřídíte ultra disku, můžete nezávisle na sobě konfigurovat kapacitu a výkon disku. Ultra disky se dělí na několik pevných velikostech od 4 GB až 64 TiB a funkcí modelu konfigurace flexibilní výkonu, který umožňuje nezávisle na sobě konfigurovat IOPS a propustnost.
+Když si zřídíte ultra disku, můžete nezávisle na sobě konfigurovat kapacitu a výkon disku. Ultra SSD se dělí na několik pevných velikostech od 4 GB až 64 TiB a funkcí modelu konfigurace flexibilní výkonu, který umožňuje nezávisle na sobě konfigurovat IOPS a propustnost.
 
-Některé klíčové funkce Ultra disků jsou:
+Jsou některé klíčové funkce Ultra SSD:
 
-- Kapacita disku: Ultra disky kapacity od 4 GiB až 64 TB.
-- Vstupně-výstupních operací disku: Ultra disky podporují vstupně-výstupních operací omezení 300 IOPS/GiB maximálně 160 kB IOPS na disk. K dosažení vstupně-výstupních operací, kterou jste zřídili, ujistěte se, že jsou vybrané vstupně-výstupních operací disku menší než počet IOPS virtuálních počítačů. Minimální vstupně-výstupních operací disku jsou 100 vstupně-výstupních operací.
-- Propustnost disku: Ultra disky limit propustnosti z jednoho disku je 256 KiB/s pro každý zřízené IOPS, až do maximálního počtu 2000 MB/s disku (kde MB/s = 10 ^ 6 bajtů za sekundu). Propustnost disku minimální je 1 MiB.
+- Kapacita disku: Ultra rozsahy kapacity SSD z 4 GiB až 64 TB.
+- Vstupně-výstupních operací disku: Ultra SSD podporu vstupně-výstupních operací omezení 300 IOPS/GiB maximálně 160 kB IOPS na disk. K dosažení vstupně-výstupních operací, kterou jste zřídili, ujistěte se, že jsou vybrané vstupně-výstupních operací disku menší než počet IOPS virtuálních počítačů. Minimální vstupně-výstupních operací disku jsou 100 vstupně-výstupních operací.
+- Propustnost disku: S ultra SSD, propustnost limit jednoho disku je 256 KiB/s pro každý zřízené IOPS, až do maximálního počtu 2000 MB/s disku (kde MB/s = 10 ^ 6 bajtů za sekundu). Propustnost disku minimální je 1 MiB.
 
 ### <a name="disk-size"></a>Velikost disku
 
@@ -61,7 +61,7 @@ Některé klíčové funkce Ultra disků jsou:
 
 ### <a name="preview-scope-and-limitations"></a>Rozsah ve verzi Preview a omezení
 
-Ve verzi preview, ultra disky:
+Ve verzi preview, ultra SSD:
 
 - Jsou podporovány v oblasti východní USA 2 v jediné zóny dostupnosti  
 - Jde použít jenom se zónami dostupnosti (skupiny dostupnosti a jednoho nasazení virtuálních počítačů mimo zóny budou nemá schopnost připojení ultra disku)
@@ -81,7 +81,7 @@ Azure premium SSD poskytovat podporu vysoce výkonných a s nízkou latencí dis
 
 Velikosti s hvězdičkou jsou aktuálně ve verzi preview.
 
-| Velikosti úrovně Premium SSD  | P4               | P6               | P10             | P15 | P20              | S30              | P40              | P50              | P60 *              | P70 *              | P80 *              |
+| Velikosti úrovně Premium SSD  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | P60 *              | P70 *              | P80 *              |
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Velikost disku v GB           | 32             | 64             | 128            | 256  | 512            | 1,024    | 2,048     | 4,095    | 8 192     | 16,384     | 32,767     |
 | Vstupně-výstupní operace za sekundu / disk       | Až 120 | Až 240              | Až 500              | Až 1100 | Až 2,300              | Až 5 000              | Až 7500             | Až 7500              | Až 12 500              | Až pro 15 000              | Až 20 000              |

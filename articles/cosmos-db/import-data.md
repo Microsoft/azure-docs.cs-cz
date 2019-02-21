@@ -4,14 +4,14 @@ description: Zjistěte, jak pomocí open source nástrojů pro migraci dat Azure
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 02/19/2019
 ms.author: dech
-ms.openlocfilehash: 82c34f3dcc606ccf7103b557518cd7a54a153183
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 972602bb6c5fc80433c2479516f8d0a5d885e4dd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034116"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446932"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrace dat do služby Azure Cosmos DB pomocí nástroje pro migraci dat
 
@@ -58,10 +58,10 @@ Přestože nástroj pro import obsahuje grafické uživatelské rozhraní (dtui.
 
 ## <a id="Install"></a>Instalace
 
-Zdrojový kód nástroje pro migraci je k dispozici na GitHubu v [tomto úložišti](https://github.com/azure/azure-documentdb-datamigrationtool). Řešení si můžete stáhnout a místně zkompilovat nebo si můžete [stáhnout předkompilovaný binární soubor](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip) a pak spustit:
+Zdrojový kód nástroje pro migraci je k dispozici na GitHubu v [tomto úložišti](https://github.com/azure/azure-documentdb-datamigrationtool). Řešení si můžete stáhnout a místně zkompilovat nebo si můžete [stáhnout předkompilovaný binární soubor](https://cosmosdbtools.blob.core.windows.net/datamigrationtool/2019.02.19-1.8.2/dt-1.8.2.zip) a pak spustit:
 
 * **Dtui.exe**: Verze nástroje grafického rozhraní
-* **DT.exe**: Verze nástroje příkazového řádku
+* **Dt.exe**: Verze nástroje příkazového řádku
 
 ## <a name="select-data-source"></a>Výběr zdroje dat
 
@@ -195,7 +195,7 @@ Podobně jako u zdroje SQL můžete použít vlastnost oddělovače vnořování
 
 Všimněte si aliasů, jako jsou DomainInfo.Domain_Name a RedirectInfo.Redirecting. Díky zadání oddělovače vnořování („.“) nástroj pro import během importu vytvoří vnořené dokumenty DomainInfo a RedirectInfo. Tady je příklad výsledného dokumentu ve službě Azure Cosmos DB:
 
-*{"DomainInfo": {"Název_domény": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV"}, "Federální agentura": "Pro správu konference USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Název_domény": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV"}, "Federální agentura": "Pro správu konference USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 Nástroj pro import se pokusí odvodit informace o typu hodnoty bez uvozovek v souborech CSV (hodnoty v uvozovkách jsou vždy považovány za řetězce).  Typy se identifikují v následujícím pořadí: číslo, datetime, logická hodnota.  
 
@@ -387,8 +387,8 @@ Kromě toho máte při importování datových typů (například z SQL Serveru 
  ![Snímek obrazovky s možnostmi importu data a času do služby Azure Cosmos DB](./media/import-data/datetimeoptions.png)
 
 * Řetězec: Zachovat jako hodnotu řetězce
-* Unixový: Zachovat jako číselnou hodnotu epocha
-* Obojí: Zachování řetězce a epocha číselné hodnoty. Vytvoří se tato možnost vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epocha": 1382390245}
+* Epoch: Zachovat jako číselnou hodnotu epocha
+* Obojí: Zachování řetězce a epocha číselné hodnoty. Vytvoří se tato možnost vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epocha": 1382390245 }
 
 Nástroj pro hromadný import ze služby Azure Cosmos DB nabízí následující další pokročilé možnosti:
 
@@ -442,8 +442,8 @@ Během importu je k dispozici několik pokročilých možností. Za prvé, při 
  ![Snímek obrazovky s možnostmi importu data a času do služby Azure Cosmos DB](./media/import-data/datetimeoptions.png)
 
 * Řetězec: Zachovat jako hodnotu řetězce
-* Unixový: Zachovat jako číselnou hodnotu epocha
-* Obojí: Zachování řetězce a epocha číselné hodnoty. Vytvoří se tato možnost vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epocha": 1382390245}
+* Epoch: Zachovat jako číselnou hodnotu epocha
+* Obojí: Zachování řetězce a epocha číselné hodnoty. Vytvoří se tato možnost vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epocha": 1382390245 }
 
 Nástroj pro sekvenční import záznamů Azure Cosmos DB nabízí následující další pokročilé možnosti:
 

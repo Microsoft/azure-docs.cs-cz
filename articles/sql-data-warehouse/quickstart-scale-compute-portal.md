@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kevin
-ms.reviewer: igorstan
-ms.openlocfilehash: 31ec1537a0075f486130a3bcf1017d35b47e499d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.reviewer: jrasnick
+ms.openlocfilehash: 2e3bb00cee679671ed382ee46690fc4dff8bddfb
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463646"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453881"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý start: Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse na webu Azure Portal
 
@@ -29,11 +29,14 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Můžete škálovat datový sklad, který už máte, nebo pomocí postupu v článku [Rychlý start: Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořit datový sklad s názvem **mySampleDataWarehouse**.  Tento rychlý start škáluje **mySampleDataWarehouse**.
+Můžete škálovat datový sklad, který už máte, nebo můžete použít [rychlý start: vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořit datový sklad s názvem **mySampleDataWarehouse**.  Tento rychlý start škáluje **mySampleDataWarehouse**.
+
+>[!Note]
+>Musí být online škálovat datový sklad. 
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
-Ve službě SQL Data Warehouse můžete upravit počet jednotek datového skladu a zvýšit nebo snížit tak množství výpočetních prostředků. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
+SQL Data Warehouse výpočetní prostředky můžete škálovat zvýšením nebo snížením jednotky datového skladu. [Vytvoření a připojení – portál] quickstart(create-data-warehouse-portal.md) vytvořili **mySampleDataWarehouse** a inicializuje se 400 Dwu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
 Změna jednotek datového skladu:
 
@@ -54,7 +57,7 @@ Změna jednotek datového skladu:
 
 
 ## <a name="next-steps"></a>Další postup
-Nyní už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
+Nyní jste zjistili, škálovat výpočetní prostředky pro váš datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 
 > [!div class="nextstepaction"]
 >[Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)

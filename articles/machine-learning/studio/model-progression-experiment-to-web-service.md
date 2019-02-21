@@ -1,7 +1,7 @@
 ---
 title: Jak model strojového učení stane webové služby
 titleSuffix: Azure Machine Learning Studio
-description: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning z vývojového zprovozněné webové službě.
+description: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning Studio z vývojového zprovozněné webové službě.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 31005077c9c149f9aff055432d9577a63bac8e1c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 776f33e3e550ad9a711a90732c6c4526e647aa89
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992270"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456788"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu ke zprovozněné službě webové
 Azure Machine Learning Studio poskytuje interaktivní plátno, která umožňuje vyvíjet, spouštět, testovat a iterovat ***experimentovat*** představující model prediktivní analýzy. Existují nejrůznější moduly, které můžete:
@@ -46,7 +46,7 @@ Tady jsou v jednotlivých fázích, které následuje Typická řešení a nasa�
 *Obrázek 1 – fáze model typické prediktivní analýzy*
 
 ### <a name="the-training-experiment"></a>Výukového experimentu
-***Výukového experimentu*** je počáteční fáze vývoje webovou službu v nástroji Machine Learning Studio. Účelem výukového experimentu je vám místo pro vývoj, testování, iterovat a nakonec trénování model strojového učení. Můžete dokonce tréninku více modelů současně lze najít nejlepší řešení, ale po dokončení můžete experimentovat vyberete jeden školení model a eliminovat rest z experimentu. Příklad vývoje experiment prediktivní analýzy, najdete v části [vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](tutorial-part1-credit-risk.md).
+***Výukového experimentu*** je počáteční fáze vývoje webovou službu v nástroji Machine Learning Studio. Účelem výukového experimentu je vám místo pro vývoj, testování, iterovat a nakonec trénování model strojového učení. Můžete dokonce tréninku více modelů současně lze najít nejlepší řešení, ale po dokončení můžete experimentovat vyberete jeden školení model a eliminovat rest z experimentu. Příklad vývoje experiment prediktivní analýzy, najdete v části [vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v nástroji Azure Machine Learning Studio](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Prediktivní experiment
 Jakmile budete mít trénovaný model v experimentu školení, klikněte na tlačítko **nastavení webové služby** a vyberte **prediktivní webová služba** v nástroji Machine Learning Studio zahájit proces převodu trénování Experimentováním ***prediktivní experiment***. Účelem prediktivní experiment je trénovaný model použít ke stanovení skóre pro nová data s cílem nakonec stávají zprovozněný jako Azure webové služby.

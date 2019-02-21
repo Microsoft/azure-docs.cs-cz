@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d4dc7e6fc1545e1de1e3b50887585c4156b4c0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1923a34c5c49f16b32ed5b5d0913a65ce0b1ea21
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208774"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453364"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Konvergované registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication (public preview)
 
@@ -78,7 +78,7 @@ Protokoly auditu pro toto nové prostředí existovat v rámci kategorie metod o
 
 **Metoda MFA výchozí je nastavena na telefonní hovor, když se uživatel zaregistruje telefonu pomocí textové zprávy**
 
-   * Někteří uživatelé si všimnout, že jejich metoda MFA výchozí je nastavena na telefonní hovor, až se jejich telefonní číslo registraci pomocí textové zprávy. Uživatelé tento problém můžete vyřešit tak, že změníte jejich výchozí metoda podle pokynů v článku [spravovat svoje bezpečnostní údaje (preview)](../user-help/security-info-manage-settings.md#change-your-info).
+   * Někteří uživatelé si všimnout, že jejich metoda MFA výchozí je nastavena na telefonní hovor, až se jejich telefonní číslo registraci pomocí textové zprávy. Uživatelé tento problém můžete vyřešit tak, že změníte jejich výchozí metoda podle pokynů v článcích odkazovat [přehled o změnu bezpečnostních údajů (ve verzi preview)](../user-help/security-info-add-update-methods-overview.md).
 
 **Uživatel nemá přístup k nové prostředí registrace po jejich výchozí metoda nezakáže správce**
 

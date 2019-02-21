@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 73df93345cf73939f33afedfd655cef847d895dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bd9e9d64849c90d23146b814d2d48a8400d069f0
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863563"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447952"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z pro zpracování řeči Bingu ve službě řeči
 
@@ -65,7 +65,7 @@ Pokud aplikace v vývojové nebo produkční prostředí, které používají Sp
 
 Speech Service [rozhraní REST API](rest-apis.md) , musí být kompatibilní s rozhraními API pro zpracování řeči Bingu. Pokud aktuálně používáte rozhraní REST API pro zpracování řeči Bingu, budete potřebovat pouze změna koncového bodu REST a přepnout na Speech Service klíč předplatného.
 
-Protokoly Websocket služby řeči, budou také kompatibilní s těmi, která používá pro zpracování řeči Bingu. Doporučujeme, abyste pro vývoj nových projektů, použijte sadu SDK služby pro zpracování řeči raději objekty Websocket. Je vhodné k migraci existujícího kódu i v sadě SDK. Nicméně jako pomocí rozhraní REST API existující kód, který se používá pro zpracování řeči Bingu přes WebSockets vyžaduje pouze změny v koncový bod a aktualizovaný klíč.
+Protokoly Websocket služby řeči, budou také kompatibilní s těmi, která používá pro zpracování řeči Bingu. Doporučujeme, abyste pro vývoj nových projektů, použijte sadou SDK pro řeč místo objekty Websocket. Je vhodné k migraci existujícího kódu i v sadě SDK. Nicméně jako pomocí rozhraní REST API existující kód, který se používá pro zpracování řeči Bingu přes WebSockets vyžaduje pouze změny v koncový bod a aktualizovaný klíč.
 
 Pokud používáte klientskou knihovnu pro zpracování řeči Bingu pro konkrétní programovací jazyk, migrace do [sadou SDK pro řeč](speech-sdk.md) vyžaduje změny aplikace, protože rozhraní API se liší. Sadou SDK pro řeč mohli kódu jednodušší, při také poskytuje přístup k novým funkcím.
 

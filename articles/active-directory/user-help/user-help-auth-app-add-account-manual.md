@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0d46fc8a152c4426832669ce22d4aa78ac640e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173938"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454646"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ručně přidat účet do aplikace
 Pokud fotoaparátu nemůže zachytit kód QR, můžete ručně přidat informace o vašem účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Tento postup funguje pro pracovní nebo školní účty a účty jiných společností než Microsoft.
@@ -29,7 +29,7 @@ Kódy pro své účty k dispozici nejsou velká a malá písmena a nevyžadují 
 
 ## <a name="add-your-work-or-school-account"></a>Přidejte svůj pracovní nebo školní účet
 
-1. Ve vašem počítači, mějte na paměti **kód** a **Url** informace o **konfigurace mobilní aplikace** stránky. Ponechte tuto stránku otevřenou, abyste si mohli zobrazit kód a adresu URL.
+1. V počítači, mějte na paměti **kód** a **Url** informace o **konfigurace mobilní aplikace** stránky. Ponechte tuto stránku otevřenou, abyste si mohli zobrazit kód a adresu URL.
     
     ![Obrazovka, která obsahuje kód QR](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
@@ -47,7 +47,7 @@ Kódy pro své účty k dispozici nejsou velká a malá písmena a nevyžadují 
 
 ## <a name="add-your-google-account"></a>Přidání účtu Google
 
-1. Ve vašem počítači, vybrat **nelze kontroly IT** z **nastavit ověřovací** stránky s kódem QR.
+1. V počítači, vybrat **nelze kontroly IT** z **nastavit ověřovací** stránky s kódem QR.
 
     **Nelze naskenovat čárový kód** se zobrazí stránka s tajný kód. Ponechte tuto stránku otevřenou, abyste si mohli zobrazit tajný kód.
 
@@ -55,7 +55,7 @@ Kódy pro své účty k dispozici nejsou velká a malá písmena a nevyžadují 
 
 3. Zadejte **název účtu** (například Google) a zadejte **tajný klíč** z kroku 1 a pak vyberte **Dokončit**.
 
-4. Na **nastavit ověřovací** stránky ve vašem počítači, zadejte šestičíselný ověřovací kód v aplikaci k dispozici pro váš účet Google a vyberte **ověřte**.
+4. Na **nastavit ověřovací** stránce v počítači, zadejte šestičíselný ověřovací kód v aplikaci k dispozici pro váš účet Google a vyberte **ověřte**.
 
     **Účty** obrazovka aplikace ukazuje název účtu a ověřovací šestimístný kód. Za účelem zvýšení zabezpečení ověřovací kód, který změní každých 30 sekund brání pomocí kódu více než jednou.
 
@@ -80,7 +80,7 @@ Kódy pro své účty k dispozici nejsou velká a malá písmena a nevyžadují 
 ## <a name="add-your-amazon-account"></a>Přidání účtu Amazon
 Zapnutí dvojúrovňového ověřování a následným přidáním účtu do aplikace můžete přidat účtu Amazon.
 
-1. Ve vašem počítači, vybrat **nelze naskenovat čárový kód** z **zvolte, jak budete dostávat kódy** stránky s kódem QR.
+1. V počítači, vybrat **nelze naskenovat čárový kód** z **zvolte, jak budete dostávat kódy** stránky s kódem QR.
 
     **Nelze naskenovat čárový kód** tajný kód se zobrazí zpráva. Tato zpráva nechte otevřené, abyste si mohli zobrazit tajný kód.
 
@@ -90,9 +90,9 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 
 4. Dokončení procesu registrace, včetně přidání metody ověření zálohy například textovou zprávu a pak vyberte **poslat kód**.
 
-5. Na **přidejte metodu ověření zálohy** stránky ve vašem počítači, zadejte šestičíselný ověřovací kód, který poskytuje metodu ověření zálohy účtu Amazon a pak vyberte **ověřit kód a pokračovat**.
+5. Na **přidejte metodu ověření zálohy** stránky ve vašem počítači, zadejte šestičíselný ověřovací kód, který poskytuje metodu ověření zálohy pro váš účet Amazon a pak vyberte **ověřit kód a pokračovat**.
 
-6. Na Almost stránky, rozhodněte, jestli se má provádět počítače důvěryhodné zařízení a pak vyberte **rozumím. Zapnutí dvoustupňového ověřování**.
+6. Na Almost stránky, rozhodněte, jestli se počítač důvěryhodné zařízení, a potom vyberte **rozumím. Zapnutí dvoustupňového ověřování**.
 
     **Upřesnit nastavení zabezpečení** se zobrazí stránka zobrazující podrobnosti o vašem aktualizované dvojúrovňového ověřování.
 

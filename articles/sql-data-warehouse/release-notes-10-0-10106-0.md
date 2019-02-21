@@ -10,12 +10,12 @@ author: mlee3gsd
 ms.author: anumjs
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 0b1c4c728c23d8bdfe439b3a3db69b06065dad8a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 2de7c335e56117f2a99db5150575ed94616467e9
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266947"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455581"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md). V článku jsou uvedeny také důležité aktualizace obsahu, které jsou přímo související s vydáním ale publikovat ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
@@ -28,6 +28,7 @@ Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure 
 | --- | --- |
 |**Vrátí pořadí podle optimalizace**|VYBERTE... Klauzule ORDER BY dotazů získat zvýšení výkonu v této verzi.   Teď součástí všech výpočetních uzlů odesílat že své výsledky do jediné výpočetního uzlu, sloučení, který Seřadí výsledky, které jsou následně vráceny uživateli prostřednictvím výpočetním uzlu.  Slučování přes jeden výpočetní uzel, výsledkem zvýšení výkonu, když obsahuje velký počet řádků sady výsledků dotazu. Dříve by dotazu spouštěcí modul pořadí výsledky na každém výpočetním uzlu a Streamovat je do ovládacího prvku uzlu, na kterém by pak sloučit výsledky.|
 |**Vylepšení přesunu dat pro PartitionMove a BroadcastMove**|V Azure SQL Data Warehouse Gen2, kroky pro přesun dat typu ShuffleMove, použijte rychlé data přesun techniky popsané v [blogu vylepšení výkonu](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/). V této verzi datové typy přesun PartitionMove a BroadcastMove nyní také využívají stejné techniky rychlé data pohyb. Uživatelské dotazy, které využívají tyto druhy kroky pro přesun dat se spustí s vyšším výkonem. Žádné změny kódu je potřebné k využití těchto vylepšení výkonu.|
+|**Důležité chyby**|Nesprávná verze Azure SQL Data Warehouse – "vyberte@VERSION" může vrátit nesprávné verze 10.0.9999.0. 10.0.10106.0 je správná verze na aktuální vydání. Tato chyba byla nahlášena a je pod kontrolu.
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení
 

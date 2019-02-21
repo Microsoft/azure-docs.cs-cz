@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/14/2019
+ms.date: 02/19/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 13d741d97e90b4aca40614d09f67538c479f67e3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 590e1e5853ccf4a525477f194c78f1fd8ce679ed
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312255"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453065"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
 
@@ -33,6 +33,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě v Azure pomocí PowerShellu
 > * Vytvoření trezoru klíčů a nahrání certifikátu
+> * Nastavení ověřování Azure Active Directory
 > * Vytvoření zabezpečeného clusteru Service Fabric v Azure PowerShellu
 > * Zabezpečení clusteru pomocí certifikátu X.509
 > * Připojení ke clusteru pomocí prostředí PowerShell
@@ -155,6 +156,116 @@ Soubor s parametry [azuredeploy.parameters.json][parameters] deklaruje mnoho hod
 |certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346.</p>|
 |sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
+## <a name="set-up-azure-active-directory-client-authentication"></a>Nastavení ověřování klienta služby Azure Active Directory
+Pro clustery Service Fabric nasazené ve veřejné síti hostované v Azure se doporučení pro vzájemné ověřování uzel klienta:
+* Použití Azure Active Directory pro identity klienta
+* Certifikát pro server identity a šifrování SSL komunikaci pomocí protokolu http
+
+Nastavení služby Azure AD pro ověřování klientů pro cluster Service Fabric je třeba provést před [vytváření clusteru](#createvaultandcert).  Azure AD umožňuje organizacím (označuje se jako tenantů) ke správě přístupu uživatelů k aplikacím. 
+
+Cluster Service Fabric nabízí několik vstupních bodů do jeho funkce správy, včetně webová [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) a [sady Visual Studio](service-fabric-manage-application-in-visual-studio.md). Proto vytvoříte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace.  Po vytvoření aplikace můžete přiřadit uživatele jen pro čtení a role správce.
+
+> [!NOTE]
+> Před vytvořením clusteru, musíte dokončit následující kroky. Vzhledem k tomu, že skripty očekávají názvů clusterů a koncových bodů, hodnoty plánování byste měli využít a ne hodnoty, že jste již vytvořili.
+
+V tomto článku předpokládáme, že jste již vytvořili tenanta. Pokud ne, začněte tím, že čtení [získání tenanta služby Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md).
+
+Pro zjednodušení některé kroky při konfiguraci Azure AD s clusterem Service Fabric, vytvořili jsme sadu skriptů prostředí Windows PowerShell. [Stáhněte si skripty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) k vašemu počítači.
+
+### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytvoření aplikace Azure AD a přiřazení uživatelů k rolím
+Vytvořit dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace. Po vytvoření aplikace pro reprezentaci clusteru přiřadit uživatelům, aby [role podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
+
+Spustit `SetupApplications.ps1`a zadat tenanta jako parametry ID, název clusteru a adresy URL odpovědi webové aplikace.  Také zadejte uživatelská jména a hesla pro uživatele.  Příklad:
+
+```PowerShell
+$Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin
+```
+
+> [!NOTE]
+> Pro národní cloudy (například Azure Government, Azure China, Azure Germany), by měly také určit `-Location` parametru.
+
+Můžete najít vaše *TenantId*, nebo ID adresáře v [webu Azure portal](https://portal.azure.com). Vyberte **Azure Active Directory -> vlastnosti** a zkopírujte **ID adresáře** hodnotu.
+
+*Název clusteru* používat jako předpona aplikací v Azure AD, které jsou vytvořeny skriptem. Nemusí přesně odpovídat skutečný název clusteru. Je určena pouze k usnadňují mapovat do clusteru Service Fabric, který se právě používají s artefakty Azure AD.
+
+*WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrací uživatelům po jejich dokončení přihlašování. Nastavte jako koncový bod Service Fabric Exploreru pro váš cluster, který ve výchozím nastavení je tento koncový bod:
+
+https://&lt;cluster_domain&gt;:19080/Explorer
+
+Zobrazí se výzva k přihlášení k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení, skript vytvoří webové a nativní aplikace pro reprezentaci vašeho clusteru Service Fabric. Když se podíváte na aplikace vašeho tenanta v [webu Azure portal](https://portal.azure.com), měli byste vidět dvě nové položky:
+
+   * *Název clusteru*\_clusteru
+   * *Název clusteru*\_klienta
+
+Skript vypíše soubor JSON potřebný pomocí šablony Azure Resource Manageru při vytváření clusteru, takže je vhodné ponechat otevřené okno Powershellu.
+
+```json
+"azureActiveDirectory": {
+  "tenantId":"<guid>",
+  "clusterApplication":"<guid>",
+  "clientApplication":"<guid>"
+},
+```
+
+### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidat konfiguraci Azure AD, které používají Azure AD pro klientský přístup
+V [azuredeploy.json][template], nakonfigurujte v Azure AD **Microsoft.ServiceFabric/clusters** části.  Přidat parametry pro tenanta, ID aplikace ID clusteru a ID klienta aplikace.  
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    ...
+
+    "aadTenantId": {
+      "type": "string",
+      "defaultValue": "0e3d2646-78b3-4711-b8be-74a381d9890c"
+    },
+    "aadClusterApplicationId": {
+      "type": "string",
+      "defaultValue": "cb147d34-b0b9-4e77-81d6-420fef0c4180"
+    },
+    "aadClientApplicationId": {
+      "type": "string",
+      "defaultValue": "7a8f3b37-cc40-45cc-9b8f-57b8919ea461"
+    }
+  },
+
+...
+
+{
+  "apiVersion": "2018-02-01",
+  "type": "Microsoft.ServiceFabric/clusters",
+  "name": "[parameters('clusterName')]",
+  ...
+  "properties": {
+    ...
+    "azureActiveDirectory": {
+      "tenantId": "[parameters('aadTenantId')]",
+      "clusterApplication": "[parameters('aadClusterApplicationId')]",
+      "clientApplication": "[parameters('aadClientApplicationId')]"
+    },
+    ...
+  }
+}
+```
+
+Přidání hodnoty parametrů v [azuredeploy.parameters.json] [ parameters] soubor parametrů.  Příklad:
+
+```json
+"aadTenantId": {
+"value": "0e3d2646-78b3-4711-b8be-74a381d9890c"
+},
+"aadClusterApplicationId": {
+"value": "cb147d34-b0b9-4e77-81d6-420fef0c4180"
+},
+"aadClientApplicationId": {
+"value": "7a8f3b37-cc40-45cc-9b8f-57b8919ea461"
+}
+```
+
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Nasazení virtuální sítě a clusteru
@@ -240,6 +351,15 @@ Nyní jste připraveni připojit se ke svému zabezpečenému clusteru.
 
 Modul PowerShellu pro **Service Fabric** poskytuje řadu rutin pro správu clusterů Service Fabric, aplikací a služeb.  Pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) se připojte k zabezpečenému clusteru. Podrobnosti o kryptografickém otisku certifikátu SHA1 a koncovém bodu připojení se nacházejí ve výstupu z předchozího kroku.
 
+Pokud jste dříve nastavili ověření klienta AAD, spusťte následující příkaz: 
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
+        -KeepAliveIntervalInSec 10 `
+        -AzureActiveDirectory `
+        -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10
+```
+
+Pokud jste nenastavili ověření klienta AAD, spusťte následující příkaz:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -265,6 +385,7 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě v Azure pomocí PowerShellu
 > * Vytvoření trezoru klíčů a nahrání certifikátu
+> * Nastavení ověřování Azure Active Directory
 > * Vytvoření zabezpečeného clusteru Service Fabric v Azure pomocí PowerShellu
 > * Zabezpečení clusteru pomocí certifikátu X.509
 > * Připojení ke clusteru pomocí prostředí PowerShell

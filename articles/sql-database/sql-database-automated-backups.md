@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7afc1170ba2503c8a8c97be9a19459c92e331449
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997115"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453575"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -85,6 +85,11 @@ Databáze ve fondu a jeden nabídne možnost konfigurace dlouhodobého uchováv�
 Podobně jako PITR, zálohy zleva doprava jsou geograficky redundantní a chráněný [replikace Azure Storage mezi zónami](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
 Další informace najdete v tématu [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
+
+## <a name="storage-costs"></a>Cena za uložení
+Ve výchozím nastavení se do úložiště objektů blob RA-GRS úrovně Standard zkopíruje 7 dní automatizovaných záloh vašich databází. Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Velikost transakčních protokolů závisí na četnosti změn databáze. Minimální objem úložiště, který se rovná 100 % velikosti databáze, se poskytuje bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc.
+
+Další informace o cenách úložiště, najdete v článku [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) stránky. 
 
 ## <a name="are-backups-encrypted"></a>Jsou šifrované zálohování
 

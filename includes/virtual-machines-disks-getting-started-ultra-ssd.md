@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0369a7792f0d9c97aa3d943708dfcc07228effa2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 972a538fab8a2aa84f6a12df48422abb40baac82
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330928"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443284"
 ---
-# <a name="enabling-azure-ultra-disks"></a>Povolení ultra disků v Azure
+# <a name="enabling-azure-ultra-ssd"></a>Povolení Azure ultra SSD
 
-Disky Azure ultra poskytovat vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Tato nová nabídka poskytuje horní řádek výkon ve stejné úrovně dostupnosti jako naše stávající nabídky disky. Další výhody ultra disků patří schopnost dynamicky měnit výkonu disku spolu s vašimi úlohami, aniž byste museli restartovat své virtuální počítače. Ultra disky jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy.
+Azure ultra SSD poskytovat vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Tato nová nabídka poskytuje horní řádek výkon ve stejné úrovně dostupnosti jako naše stávající nabídky disky. Další výhody ultra SSD patří schopnost dynamicky měnit výkonu disku spolu s vašimi úlohami, aniž byste museli restartovat své virtuální počítače. Ultra SSD jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy.
 
-V současné době ultra disky jsou ve verzi preview a je nutné [zaregistrovat](https://aka.ms/UltraSSDPreviewSignUp) ve verzi preview, aby bylo možné přistupovat k nim.
+V současné době ve verzi preview jsou ultra SSD, a vy musíte [zaregistrovat](https://aka.ms/UltraSSDPreviewSignUp) ve verzi preview, aby bylo možné přistupovat k nim.
 
 Po schválení se spuštěním jednoho z následujících příkazů můžete určit, které zóna v oblasti východní USA 2, ultra disku pro nasazení:
 
@@ -35,12 +35,12 @@ Odpověď bude podobná formuláři níže, kde X je pásmo má být použito pr
 
 Pokud příkaz neodpověděl, znamená to registrace pro funkci je buď stále čekající na vyřízení nebo není schváleno ještě.
 
-Teď, když znáte zóně, ve které chcete nasadit, postupujte podle kroků nasazení v tomto článku se získat první nasazená s ultra disky virtuálních počítačů.
+Teď, když znáte zóně, ve které chcete nasadit, postupujte podle kroků nasazení v tomto článku se získat první virtuální počítače nasazené pomocí ultra SSD.
 
-## <a name="deploying-an-ultra-disk"></a>Nasazení ultra disku
+## <a name="deploying-an-ultra-ssd"></a>Nasazení ultra SSD
 
 Nejprve určete velikost virtuálního počítače k nasazení. V rámci této verze Preview jsou podporovány pouze řady DsV3 a EsV3 virtuálního počítače. Naleznete v druhé tabulce v tomto [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) další podrobné informace o těchto velikostí virtuálních počítačů.
-Také odkaz na ukázku [vytvoření virtuálního počítače s více disky ultra](https://aka.ms/UltraSSDTemplate), který ukazuje, jak vytvořit virtuální počítač s více disky ultra.
+Také odkaz na ukázku [vytvoření Virtuálního počítače s více ultra SSD](https://aka.ms/UltraSSDTemplate), který ukazuje, jak vytvořit virtuální počítač s více ultra SSD.
 
 Dále jsou změny šablony Resource Manageru nových/upravených: **apiVersion** pro `Microsoft.Compute/virtualMachines` a `Microsoft.Compute/Disks` musí být nastavena jako `2018-06-01` (nebo novější).
 
@@ -77,11 +77,11 @@ Přidat další možnosti ve vlastnostech virtuálního počítače k označení
 
 Po zřízení virtuálního počítače můžete oddílu a formátování datových disků a nakonfigurovat je pro vaše úlohy.
 
-## <a name="additional-ultra-disk-scenarios"></a>Další ultra disk scénáře
+## <a name="additional-ultra-ssd-scenarios"></a>Další scénáře ultra SSD
 
-- Během vytváření virtuálních počítačů, ultra disky je možné implicitně vytvořit také. Ale tyto disky se zobrazí výchozí hodnotu (500) IOPS a propustnost (8 MiB/s).
-- Další ultra disky můžete připojit k kompatibilních virtuálních počítačů.
-- Ultra disky podporují nastavení vlastnosti výkonu disku (IOPS a propustnost) za běhu bez odpojení disku od virtuálního počítače. Jakmile se operace změny velikosti disku výkonu se vystavil na disku, může trvat až hodinu, tato změna se skutečně projeví.
+- Během vytváření virtuálních počítačů ultra SSD lze implicitně vytvořit také. Ale tyto disky se zobrazí výchozí hodnotu (500) IOPS a propustnost (8 MiB/s).
+- Další ultra SSD lze připojit k kompatibilních virtuálních počítačů.
+- Ultra SSD podporují nastavení vlastnosti výkonu disku (IOPS a propustnost) za běhu bez odpojení disku od virtuálního počítače. Jakmile se operace změny velikosti disku výkonu se vystavil na disku, může trvat až hodinu, tato změna se skutečně projeví.
 - Stále se rozšiřující kapacity disku vyžaduje virtuální počítač, aby se zrušit jejich přidělení.
 
 ## <a name="next-steps"></a>Další postup

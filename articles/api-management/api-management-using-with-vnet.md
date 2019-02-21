@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cc4893837feeec6116750a7e37e7621af11ab0a4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011675"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453915"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -85,9 +85,9 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 ## <a name="enable-vnet-powershell"> </a>Povolit připojení virtuální sítě pomocí rutin prostředí PowerShell
 Můžete také povolit připojení k virtuální síti pomocí rutin prostředí PowerShell
 
-* **Vytvoření služby API Management v síti VNET**: použijte rutinu [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) k vytvoření služby Azure API Management v síti VNET.
+* **Vytvoření služby API Management v síti VNET**: Použijte rutinu [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) k vytvoření služby Azure API Management v síti VNET.
 
-* **Nasazení služby API Management existující v síti VNET**: použijte rutinu [aktualizace AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) přesunout existující služby Azure API Management ve virtuální síti.
+* **Nasazení služby API Management existující v síti VNET**: Použijte rutinu [aktualizace AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) přesunout existující služby Azure API Management ve virtuální síti.
 
 ## <a name="connect-vnet"> </a>Připojit k webové službě hostované v rámci virtuální sítě
 Poté, co vaše služba API Management je připojený k virtuální síti, přístup ke službám back-endu v rámci něj se nijak neliší od přístupu k veřejné služby. Stačí zadat místní IP adresa nebo název hostitele (Pokud je nakonfigurovaný DNS server pro virtuální síť) do vaší webové služby **adresu URL webové služby** pole při vytváření nového rozhraní API nebo úpravou existující.
@@ -97,12 +97,12 @@ Poté, co vaše služba API Management je připojený k virtuální síti, pří
 ## <a name="network-configuration-issues"> </a>Běžné problémy s konfigurací sítě
 Tady je seznam častých problémech, které mohou nastat při nasazení služby API Management do virtuální sítě.
 
-* **Vlastní nastavení serveru DNS**: Správa rozhraní API služby závisí na několik služeb Azure. API Management je hostovaná ve virtuální síti pomocí vlastního serveru DNS, musí překládat názvy hostitelů těchto služeb Azure. Postupujte prosím podle [to](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) doprovodné materiály k vlastním nastavením DNS. Viz následující tabulka portů a další požadavky na síť pro odkaz.
+* **Vlastní nastavení serveru DNS**: Služba API Management závisí na několik služeb Azure. API Management je hostovaná ve virtuální síti pomocí vlastního serveru DNS, musí překládat názvy hostitelů těchto služeb Azure. Postupujte prosím podle [to](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) doprovodné materiály k vlastním nastavením DNS. Viz následující tabulka portů a další požadavky na síť pro odkaz.
 
 > [!IMPORTANT]
 > Pokud máte v plánu používat vlastní servery DNS pro virtuální síť, měli byste nastavit **před** nasazení služby API Management do něj. Jinak budete muset aktualizovat službu API Management pokaždé, když změníte spuštěním servery DNS [použít operace konfigurace sítě](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
-* **Porty vyžadované pro službu API Management**: příchozí a odchozí provoz do podsítě, ve kterém je nasazená API Management se dá řídit pomocí [skupinu zabezpečení sítě][Network Security Group]. Pokud některý z těchto portů jsou k dispozici, API Management nebude fungovat správně a může být nepřístupný. Jeden nebo více z těchto portů blokované je dalším běžný problémem chybnou konfiguraci při použití služby API Management pomocí virtuální sítě.
+* **Porty vyžadované pro službu API Management**: Příchozí a odchozí provoz do podsítě, ve kterém je nasazená API Management se dá řídit pomocí [skupinu zabezpečení sítě][Network Security Group]. Pokud některý z těchto portů jsou k dispozici, API Management nebude fungovat správně a může být nepřístupný. Jeden nebo více z těchto portů blokované je dalším běžný problémem chybnou konfiguraci při použití služby API Management pomocí virtuální sítě.
 
 Když jsou instance služby API Management je hostované ve virtuální síti, se používají porty v následující tabulce.
 
@@ -110,11 +110,11 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | Příchozí            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikace klienta do API managementu                      | Externí             |
 | * / 3443                     | Příchozí            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Koncový bod správy pro Azure portal a Powershellu         | Externí a interní  |
-| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / úložiště             | **Závislost na Azure Storage**                             | Externí a interní  |
+| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / Storage             | **Závislost na Azure Storage**                             | Externí a interní  |
 | * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Azure Active Directory (v případě potřeby)                   | Externí a interní  |
 | * / 1433                     | Odchozí           | TCP                | VIRTUAL_NETWORK / SQL                 | **Přístup ke koncovým bodům Azure SQL**                           | Externí a interní  |
-| * / 5672                     | Odchozí           | TCP                | VIRTUAL_NETWORK / centra událostí            | Závislost pro protokol do zásady centra událostí a agenta monitorování | Externí a interní  |
-| * / 445                      | Odchozí           | TCP                | VIRTUAL_NETWORK / úložiště             | Závislost na sdílenou složku Azure pro GIT                      | Externí a interní  |
+| * / 5672                     | Odchozí           | TCP                | VIRTUAL_NETWORK / EventHub            | Závislost pro protokol do zásady centra událostí a agenta monitorování | Externí a interní  |
+| * / 445                      | Odchozí           | TCP                | VIRTUAL_NETWORK / Storage             | Závislost na sdílenou složku Azure pro GIT                      | Externí a interní  |
 | * / 1886                     | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Potřebné k publikování stav Resource Health          | Externí a interní  |
 | * / 443                     | Odchozí           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Publikování diagnostické protokoly a metriky                        | Externí a interní  |
 | * / 25                       | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
@@ -126,44 +126,49 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 >[!IMPORTANT]
 > Porty, pro kterou *účel* je **tučné** jsou požadovány pro službu API Management na úspěšné nasazení. Ostatní porty blokuje ale způsobí snížení v možnost použití a sledování spuštěnou službu.
 
-* **Funkce SSL**: vytvoření řetězce certifikátu protokolu SSL a ověření API Management služba potřebuje odchozího síťového připojení a ocsp.msocsp.com, mscrl.microsoft.com crl.microsoft.com. Tato závislost není vyžadováno, pokud jakýkoliv certifikát, který nahrajete do služby API Management obsahuje úplný řetěz do kořenové certifikační Autority.
++ **Funkce SSL**: Povolit sestavení řetězu certifikátů SSL a ověření API Management musí služba ocsp.msocsp.com, mscrl.microsoft.com a crl.microsoft.com odchozího síťového připojení. Tato závislost není vyžadováno, pokud jakýkoliv certifikát, který nahrajete do služby API Management obsahuje úplný řetěz do kořenové certifikační Autority.
 
-* **Přístup DNS**: odchozí přístup na port 53, je nutné pro komunikaci se servery DNS. Pokud vlastní server DNS existuje na druhém konci bránu VPN, DNS server musí být dostupný z podsítě hostování API Management.
++ **DNS Access**: Odchozí přístup na port 53, je nutné pro komunikaci se servery DNS. Pokud vlastní server DNS existuje na druhém konci bránu VPN, DNS server musí být dostupný z podsítě hostování API Management.
 
-* **Metriky a monitorování stavu**: odchozího síťového připojení k Azure monitorování koncových bodů, které vyřešit podle následujících domén: 
++ **Metriky a monitorování stavu**: Odchozího síťového připojení k Azure monitorování koncových bodů, které vyřešit podle následujících domén: 
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejné Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3 black.prod3.metrics.nsatc.net</li><li>prod3 red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
-    | Azure (Čína)       | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure (Čína)       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
-* **Nastavením předávání SMTP**: odchozího síťového připojení pro předávání SMTP, který řeší v rámci hostitele `ies.global.microsoft.com`.
++ **Nastavením předávání SMTP**: Odchozího síťového připojení pro předávání SMTP, který řeší v rámci hostitele `ies.global.microsoft.com`.
 
-* **Portál Azure Diagnostics**: Povolit tok diagnostické protokoly z webu Azure portal, při použití rozšíření pro správu rozhraní API z uvnitř virtuální sítě, odchozí přístup k `dc.services.visualstudio.com` na portu 443 je povinný. To pomáhá s řešením problémů, na které může setkat při použití rozšíření.
++ **Portál pro vývojáře testu CAPTCHA**: Odchozího síťového připojení pro test CAPTCHA. portál pro vývojáře, která řeší v rámci hostitele `client.hip.live.com`.
 
-* **Expresní instalace trasy**: běžnou konfigurací zákazníků je definovat vlastní výchozí trasa (0.0.0.0/0), která vynutí odchozí internetový provoz místo toho tok místní. Tento tok provozu vždy přeruší připojení k službě Azure API Management, protože odchozí provoz je blokované v místním nebo NAT by nerozpoznatelný sadu adresy, které přestane fungovat v různých koncových bodů Azure. Toto řešení je definování (nejméně) trasy definované uživatelem ([trasy definované uživatelem][UDRs]) na podsíť, která obsahuje Azure API Management. Trasu UDR definuje konkrétní podsítě tras, které bude použito místo výchozí trasu.
-  Pokud je to možné doporučuje se použijte následující konfiguraci:
- * Konfigurace ExpressRoute inzeruje 0.0.0.0/0 a ve výchozím nastavení vynucené tunelů všechny odchozí provoz do místní.
- * Uživatelem definovaná TRASA použitá na podsíť obsahující Azure API Management definuje 0.0.0.0/0 s dalším segmentem směrování typu Internet.
- Celkové požadavky z těchto kroků je, že úrovni podsítě uživatelem definovaná TRASA má přednost před ExpressRoute vynucené tunelování, čímž zajišťuje odchozí internetový přístup ze služby Azure API Management.
++ **Portál Azure Diagnostics**: Povolení toku diagnostické protokoly z webu Azure portal, při použití rozšíření pro správu rozhraní API z uvnitř virtuální sítě, odchozí přístup k `dc.services.visualstudio.com` na portu 443 je povinný. To pomáhá s řešením problémů, na které může setkat při použití rozšíření.
 
-* **Směrování prostřednictvím síťových virtuálních zařízení**: konfigurace, které používají trasu UDR s výchozí trasa (0.0.0.0/0) směrovat přenosy z Internetu směřující z podsítě pro správu rozhraní API přes síťové virtuální zařízení běží v Azure budou blokovat. Správa provoz přicházející z Internetu do instance služby API Management, který je nasazený v podsíti virtuální sítě. Tato konfigurace není podporovaná.
++ **Expresní instalace trasy**: Běžnou konfigurací zákazníků je definovat vlastní výchozí trasa (0.0.0.0/0), která vynutí odchozí internetový provoz místo toho tok místní. Tento tok provozu vždy přeruší připojení k službě Azure API Management, protože odchozí provoz je blokované v místním nebo NAT by nerozpoznatelný sadu adresy, které přestane fungovat v různých koncových bodů Azure. Toto řešení je definování (nejméně) trasy definované uživatelem ([trasy definované uživatelem][UDRs]) na podsíť, která obsahuje Azure API Management. Trasu UDR definuje konkrétní podsítě tras, které bude použito místo výchozí trasu.
+
+    Pokud je to možné doporučuje se použijte následující konfiguraci:
+
+     * Konfigurace ExpressRoute inzeruje 0.0.0.0/0 a ve výchozím nastavení vynucené tunelů všechny odchozí provoz do místní.
+     * Uživatelem definovaná TRASA použitá na podsíť obsahující Azure API Management definuje 0.0.0.0/0 s dalším segmentem směrování typu Internet.
+
+    Celkové požadavky z těchto kroků je, že úrovni podsítě uživatelem definovaná TRASA má přednost před ExpressRoute vynucené tunelování, čímž zajišťuje odchozí internetový přístup ze služby Azure API Management.
+
++ **Směrování prostřednictvím síťových virtuálních zařízení**: Konfigurace, které používají trasu UDR s výchozí trasa (0.0.0.0/0) ke směrování Internetu určené přenosy ze služby API Management podsítě přes síťové virtuální zařízení běží v Azure bude blokovat správu provoz přicházející z Internetu ve službě API Management instance nasazených v podsíti virtuální sítě. Tato konfigurace není podporovaná.
 
 >[!WARNING]
 >Azure API Management není podporované v konfiguracích ExpressRoute, který **nesprávně inzerování tras z cesty veřejného partnerského vztahu do cestou soukromého partnerského vztahu mezi**. Konfigurace ExpressRoute, které mají veřejné partnerské vztahy nakonfigurované, bude přijímají inzerci tras od Microsoftu pro velkou sadu rozsahů adres IP adres Microsoft Azure. Pokud tyto rozsahy adres nesprávně křížová inzerce na cestou soukromého partnerského vztahu, konečný výsledek je, že všechny odchozí síťové pakety z podsítě instance Azure API Management jsou správně vynucuje tunelové propojení pro zákazníka v místní síti infrastruktura. Tento tok sítí dělí Azure API Management. Řešení tohoto problému je ukončit křížovou inzerci tras z cesty veřejného partnerského vztahu pro cestou soukromého partnerského vztahu.
 
 
 ## <a name="troubleshooting"> </a>Řešení potíží
-* **Počáteční nastavení**: při počátečním nasazení služby API Management do podsítě selže, se doporučuje pro virtuální počítač nasadit nejdřív do stejné podsítě. Další vzdálené plochy k virtuálnímu počítači a ověřit, že je spojení s jednou z každého prostředku pod ve vašem předplatném azure
+* **Počáteční nastavení**: Po počátečním nasazení služby API Management do podsítě není úspěšné, se doporučuje pro virtuální počítač nasadit nejdřív do stejné podsítě. Další vzdálené plochy k virtuálnímu počítači a ověřit, že je spojení s jednou z každého prostředku pod ve vašem předplatném azure
     * Azure Storage blob
     * Azure SQL Database
-    * Tabulka úložišť v Azure
+    * Azure Storage Table
 
  > [!IMPORTANT]
  > Po ověření připojení nezapomeňte odebrat všechny prostředky nasazené v podsíti, před nasazením API Management do podsítě.
 
-* **Přírůstkové aktualizace**: při provádění změn k síti, najdete [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), chcete-li ověřit, že služba API Management ještě ztratili přístup k důležitým prostředkům, které závisí na. Stav připojení by měl být aktualizováno každých 15 minut.
+* **Přírůstkové aktualizace**: Při provádění změn k síti, najdete [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), chcete-li ověřit, že služba API Management ještě ztratili přístup k důležitým prostředkům, které závisí na. Stav připojení by měl být aktualizováno každých 15 minut.
 
 * **Navigačních odkazů prostředku**: Při nasazování do podsítě virtuální sítě Resource Manageru styl, API Management rezervuje podsítě, tak, že vytvoříte prostředek navigačního odkazu. Pokud podsíť již obsahuje prostředek od jiného výrobce, nasazení bude **selhání**. Podobně když změníte umístění služby API Management k jiné podsíti nebo ho odstranit, odebíráme této navigační odkaz prostředku.
 
@@ -191,7 +196,7 @@ Výpočet vyšší než minimální velikost podsítě, ve kterém se dá nasadi
 * [Propojení virtuální sítě do back-endu pomocí Vpn Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [Propojení virtuální sítě z různých modelů nasazení](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Jak používat nástroje pro inspekci API pro trasovacího volání ve službě Azure API Management](api-management-howto-api-inspector.md)
-* [Nejčastější dotazy k virtuální síti](../virtual-network/virtual-networks-faq.md)
+* [Virtual Network Faq](../virtual-network/virtual-networks-faq.md)
 * [Značky služeb](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png

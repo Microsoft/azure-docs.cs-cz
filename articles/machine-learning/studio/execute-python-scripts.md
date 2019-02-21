@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: a040991ca4b3a08dec90f4fc6944b006ebea2135
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5f132dce2a0a868de8607581935325d48e1520a1
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487842"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456754"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 
-Toto téma popisuje principy návrhu základní aktuální podporu pro skripty Python ve službě Azure Machine Learning. Hlavní funkce k dispozici jsou také uvedeny, včetně:
+Toto téma popisuje principy návrhu základní aktuální podporu pro skripty Python v Azure Machine Learning Studio. Hlavní funkce k dispozici jsou také uvedeny, včetně:
 
 - Spustit scénáře základní informace o využití
 - skóre experiment ve webové službě
@@ -61,11 +61,11 @@ Obrázek 1. **Execute Python Script** modulu.
 [Execute Python Script] [ execute-python-script] modulu ve službě Azure ML Studio přijímá až tři vstupů a vytvoří až dva výstupy (probíranou v následující sekci), stejně jako jeho analogové R [spustit R Skript] [ execute-r-script] modulu. Ke spuštění kódu Pythonu se zadá do pole parametru jako speciálně s názvem vstupního bodu funkce volaná `azureml_main`. Tady jsou klíčové MSDL používaný k implementaci tohoto modulu:
 
 1. *Musí být idiomatickou pro Python uživatele.* Většina uživatelů Python faktor svůj kód jako funkce uvnitř modulů. Proto uvedením spoustu spustitelné příkazy nejvyšší úrovně modulu je poměrně vzácný. V důsledku toho pole skript také využívá speciálně pojmenované funkce Pythonu na rozdíl od sekvenci příkazů. Objekty zveřejněné ve funkci, jako jsou typy standardní knihovny Pythonu [Pandas](http://pandas.pydata.org/) datových rámců a [NumPy](http://www.numpy.org/) pole.
-2. *Musí mít vysokou věrností mezi místním a cloudovým spuštění.* Je back-endu ke spuštění kódu Pythonu na základě [Anaconda](https://store.continuum.io/cshop/anaconda/), často se využívá napříč platformami vědecké distribuci jazyka Python. Obsahuje blízko 200 nejběžnější balíčky Pythonu. Odborníci přes data proto můžete ladit a kvalifikovat svůj kód na místní prostředí Azure Machine Learning kompatibilní Anaconda. Použít existující vývojové prostředí, například [IPython](http://ipython.org/) Poznámkový blok nebo [Python Tools for Visual Studio](https://aka.ms/ptvs), spustíte ho v rámci experimentu Azure ML. `azureml_main` Vstupním bodem je vanilla funkce jazyka Python a proto *** dají se vytvářet bez kódu pro Azure ML konkrétní nebo nainstalovaná sada SDK.
-3. *Musí být bez problémů sestavitelný s ostatními moduly Azure Machine Learning.* [Execute Python Script] [ execute-python-script] modul přijímá jako vstup a výstup, standardní datové sady Azure Machine Learning. Základní architektury transparentně a efektivně přemosťuje moduly runtime Azure ML a Python. Python je tak možné ve spojení s existující pracovní postupy Azure ML, včetně těch, které volají do R a SQLite. Výsledek, odborník přes data mohou vytvářet pracovní postupy, které:
+2. *Musí mít vysokou věrností mezi místním a cloudovým spuštění.* Je back-endu ke spuštění kódu Pythonu na základě [Anaconda](https://store.continuum.io/cshop/anaconda/), často se využívá napříč platformami vědecké distribuci jazyka Python. Obsahuje blízko 200 nejběžnější balíčky Pythonu. Odborníci přes data proto můžete ladit a kvalifikovat svůj kód na místní prostředí Azure Machine Learning Studio kompatibilní Anaconda. Použít existující vývojové prostředí, například [IPython](http://ipython.org/) Poznámkový blok nebo [Python Tools for Visual Studio](https://aka.ms/ptvs), spustíte ho v rámci experimentu Azure ML. `azureml_main` Vstupním bodem je vanilla funkce jazyka Python a proto *** dají se vytvářet bez kódu pro Azure ML konkrétní nebo nainstalovaná sada SDK.
+3. *Musí být bez problémů sestavitelný s ostatními moduly Azure Machine Learning Studio.* [Execute Python Script] [ execute-python-script] modul přijímá jako vstup a výstup, standardní datové sady Azure Machine Learning Studio. Základní architektury transparentně a efektivně přemosťuje moduly runtime Azure ML a Python. Python je tak možné ve spojení s existující pracovní postupy Azure ML, včetně těch, které volají do R a SQLite. Výsledek, odborník přes data mohou vytvářet pracovní postupy, které:
    * pro data předběžného zpracování a čištění pomocí Pythonu a Pandas
    * informační kanál dat k transformaci SQL, spojování více datových sad funkcí formuláře
-   * trénování modelů pomocí algoritmů ve službě Azure Machine Learning 
+   * trénování modelů pomocí algoritmů Azure Machine Learning Studio 
    * vyhodnocení a následného zpracování výsledků v R.
 
 
@@ -149,7 +149,7 @@ Obrázek 7. Uživatelem definovaná funkce používá uvnitř [Execute Python Sc
 
 ## <a name="working-with-visualizations"></a>Práce s vizualizacemi
 
-Může být vrácen grafy vytvořené pomocí MatplotLib, který lze vizualizovat v prohlížeči [Execute Python Script][execute-python-script]. Ale vykreslení přesměrování automaticky do bitové kopie jsou při použití jazyka R. Proto uživatel musí explicitně uložit žádné grafy pro soubory PNG Pokud má být vrácena zpět do Azure Machine Learning. 
+Může být vrácen grafy vytvořené pomocí MatplotLib, který lze vizualizovat v prohlížeči [Execute Python Script][execute-python-script]. Ale vykreslení přesměrování automaticky do bitové kopie jsou při použití jazyka R. Proto uživatel musí explicitně uložit žádné grafy pro soubory PNG Pokud má být vrácena zpět do Azure Machine Learning Studio. 
 
 Ke generování bitových kopií z MatplotLib, musíte dokončit postup:
 
@@ -172,12 +172,12 @@ Obrázek 9 ukazuje, že prostřednictvím druhý výstupní port, který experim
 
 Obrázek 9. Vizualizace se grafy generované z kódu Pythonu.
 
-Je možné vrátit více obrázky uložením do různých obrázků, modul runtime Azure Machine Learning vybere všechny bitové kopie a zřetězí za účelem vizualizace.
+Je možné vrátit více obrázky uložením do různých obrázků, modul runtime Azure Machine Learning Studio vybere všechny bitové kopie a zřetězí za účelem vizualizace.
 
 
 ## <a name="advanced-examples"></a>Pokročilé příklady
 
-Anaconda prostředí nainstalovaná ve službě Azure Machine Learning obsahuje běžné balíčky, jako je například NumPy, SciPy a Učte se Scikits. Tyto balíčky můžete efektivně použít pro různé úlohy zpracování dat v machine learning kanálu. Například následující experiment a skript ilustrují použití skupiny stromů studentů v Scikits další vypočítat skóre význam funkce pro datovou sadu. Skóre je možné provést výběr pod dohledem funkcí než jsou předány do jiného modelu ML.
+Anaconda prostředí nainstalován v Azure Machine Learning Studio obsahuje běžné balíčky, jako je například NumPy, SciPy a Učte se Scikits. Tyto balíčky můžete efektivně použít pro různé úlohy zpracování dat v machine learning kanálu. Například následující experiment a skript ilustrují použití skupiny stromů studentů v Scikits další vypočítat skóre význam funkce pro datovou sadu. Skóre je možné provést výběr pod dohledem funkcí než jsou předány do jiného modelu ML.
 
 Tady je funkce Python slouží k výpočtu skóre význam a pořadí funkcí podle skóre:
 
@@ -185,7 +185,7 @@ Tady je funkce Python slouží k výpočtu skóre význam a pořadí funkcí pod
 
 Obrázek 10. Funkce pořadí funkcí podle skóre.
  
-Následujícího experimentu pak vypočítá a vrátí skóre význam funkcí v datové sadě "Pima území v Indickém diabetem" ve službě Azure Machine Learning:
+Následujícího experimentu pak vypočítá a vrátí skóre význam funkcí v datové sadě "Pima území v Indickém diabetem" v nástroji Azure Machine Learning Studio:
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
@@ -197,11 +197,11 @@ Obrázek 11. Experimentujte pořadí funkcí v datové sadě Pima území v Indi
 
 1. *Pro spuštění v izolovaném prostoru.* Modulu runtime Pythonu je aktuálně v izolovaném prostoru a proto neumožňuje přístup k síti nebo do místního systému souborů trvalé způsobem. Všechny soubory, které jsou uloženy v místním počítači jsou izolované a odstranit po dokončení modulu. Kód Pythonu, nemá přístup k většině adresáře na počítači, na kterém poběží, s výjimkou v aktuálním adresáři a jeho podadresářích.
 2. *Nedostatek sofistikované vývojářské a podporu ladění.* Modul Pythonu v současné době nepodporuje funkce integrovaného vývojového prostředí, jako je například technologie intellisense a ladění. Také pokud modul selže v době běhu, úplné trasování zásobníku Python je k dispozici. Ale je třeba zobrazit ve výstupu protokolu pro modul. Doporučujeme nyní vývoj a ladění skriptů v Pythonu v prostředí, jako je například IPython a poté ji naimportujte kód do modulu.
-3. *Single – datový rámec výstupu.* Vstupní bod Python je povolená jenom k vrácení jednoho datového rámce jako výstup. Není aktuálně možné vrátit zpět do modulu runtime Azure Machine Learning libovolného Python objekty, jako jsou trénované modely přímo. Stejně jako [spustit skript jazyka R][execute-r-script], který má stejné omezení, je možné v mnoha případech pickle objekty do bajtového pole a vrátí, který v rámci datového rámce.
+3. *Single – datový rámec výstupu.* Vstupní bod Python je povolená jenom k vrácení jednoho datového rámce jako výstup. Není aktuálně možné vrátit zpět do modulu runtime Azure Machine Learning Studio libovolného Python objekty, jako jsou trénované modely přímo. Stejně jako [spustit skript jazyka R][execute-r-script], který má stejné omezení, je možné v mnoha případech pickle objekty do bajtového pole a vrátí, který v rámci datového rámce.
 4. *Nemožnost k přizpůsobení instalace Pythonu*. V současné době je jediný způsob, jak přidat vlastní moduly Pythonu prostřednictvím mechanismu souboru zip je popsáno výše. Když je vhodná pro malé moduly, je náročné pro velké moduly (zvlášť ty s nativních knihoven DLL) nebo velký počet modulů. 
 
 ## <a name="conclusions"></a>Závěry
-[Execute Python Script] [ execute-python-script] modul umožňuje odborník přes data začlenit existujícího kódu Pythonu do pracovních postupů hostované v cloudu strojové učení ve službě Azure Machine Learning a získat bez problémů zprovoznění je v rámci webové služby. Modul skriptu Pythonu přirozeně spolupracuje s ostatními moduly ve službě Azure Machine Learning. Modul lze použít pro celou řadu úloh od zkoumání dat předběžného zpracování a extrahování funkcí a potom k vyhodnocení a následné zpracování výsledků. Modul runtime back-end použít pro spuštění je založená na Anacondu, distribuci jazyka Python dobře otestovaný a široce používaným. Tento back-end usnadňuje můžete připojit stávající kód prostředky do cloudu.
+[Execute Python Script] [ execute-python-script] modul umožňuje odborník přes data začlenit existujícího kódu Pythonu do pracovních postupů hostované v cloudu machine learningu v Azure Machine Learning Studio a získat bez problémů zprovoznění je v rámci webové služby. Modul skriptu Pythonu přirozeně spolupracuje s ostatními moduly v nástroji Azure Machine Learning Studio. Modul lze použít pro celou řadu úloh od zkoumání dat předběžného zpracování a extrahování funkcí a potom k vyhodnocení a následné zpracování výsledků. Modul runtime back-end použít pro spuštění je založená na Anacondu, distribuci jazyka Python dobře otestovaný a široce používaným. Tento back-end usnadňuje můžete připojit stávající kód prostředky do cloudu.
 
 Očekáváme, že poskytuje další funkce pro [Execute Python Script] [ execute-python-script] modulu, například funkce k trénování a zprovozňovat modely v Pythonu a lepší podporu pro vývoj a ladění kódu v nástroji Azure Machine Learning Studio.
 

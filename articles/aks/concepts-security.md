@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 2c6569d92913a3cff9ee51529dd381386ed2a792
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818987"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456499"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Tento článek představuje základní koncepty, které zabezpečení aplikací 
 - [Zabezpečení uzlu](#node-security)
 - [Upgrade clusteru](#cluster-upgrades)
 - [Zabezpečení sítě](#network-security)
-- Tajné klíče Kubernetes
+- [Tajné klíče Kubernetes](#kubernetes-secrets)
 
 ## <a name="master-security"></a>Hlavní zabezpečení
 
@@ -36,9 +36,9 @@ Ve výchozím nastavení na serveru Kubernetes API používá veřejnou IP adres
 
 Uzly AKS jsou virtuální počítače s Azure, které můžete spravovat a udržovat. V uzlech je spuštěný optimalizované distribuce systému Ubuntu Linux pomocí Dockeru kontejner modulu runtime. Při vytváření nebo škálování AKS cluster je nejnovější aktualizace zabezpečení operačního systému a konfigurace se automaticky nasadí uzly.
 
-Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly přes noc. Pokud aktualizace zabezpečení operačního systému, vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly, nebo běžným přístupem je použití [Kured][kured], open source restartování démona pro Kubernetes. Kured běží jako [DaemonSet] [aks daemonset] a sleduje každý uzel na přítomnost souboru označující, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
+Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly přes noc. Pokud aktualizace zabezpečení operačního systému, vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly, nebo běžným přístupem je použití [Kured][kured], open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet] [ aks-daemonsets] a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
 
-Uzly jsou nasazené do privátní virtuální síť podsíť s žádné veřejné IP adresy přiřazené. Pro účely řešení potíží a správu SSH ve výchozím nastavení zapnutá. Tento přístup přes SSH je dostupný pouze pomocí interní IP adresa. Pro další omezení přístupu rozsah IP pro uzly AKS. je možné pravidla skupiny zabezpečení sítě Azure. Odstraňuje se pravidlo výchozí skupiny zabezpečení sítě SSH a zakázat službu SSH na uzlech brání v provádění úloh údržby na platformě Azure.
+Uzly jsou nasazené do privátní virtuální síť podsíť s žádné veřejné IP adresy přiřazené. Pro účely řešení potíží a správu SSH ve výchozím nastavení zapnutá. Tento přístup přes SSH je dostupný pouze pomocí interní IP adresa.
 
 K poskytování úložiště, uzly pomocí Azure Managed Disks. Pro většinu velikostí virtuálních počítačů uzel jsou založená na jednotkách SSD výkonné disky úrovně Premium. Data uložená na spravovaných discích se automaticky šifrují při nečinnosti v rámci platformy Azure. Ke zlepšení redundance, jsou zároveň se bezpečně tyto disky replikovat v rámci datového centra Azure.
 
@@ -46,7 +46,7 @@ Prostředí Kubernetes v AKS nebo jinde, aktuálně nejsou zcela bezpečný pro 
 
 ## <a name="cluster-upgrades"></a>Upgrade clusteru
 
-Zabezpečení a dodržování předpisů, nebo pokud chcete používat nejnovější funkce Azure poskytuje nástroje k orchestraci upgrade clusteru AKS a komponent. Tento upgrade Orchestrace zahrnuje obě Kubernetes hlavní server a agent součásti. Zobrazit seznam dostupných verzí Kubernetes pro váš cluster AKS. Chcete-li zahájit proces upgradu, zadáte některou z těchto dostupných verzí. Azure pak bezpečně cordons pozastavuje jednotlivých uzlů AKS a provádí upgrade.
+Zabezpečení a dodržování předpisů, nebo pokud chcete používat nejnovější funkce Azure poskytuje nástroje k orchestraci upgrade clusteru AKS a komponent. Tento upgrade Orchestrace zahrnuje obě Kubernetes hlavní server a agent součásti. Můžete zobrazit [seznam dostupných verzí Kubernetes](supported-kubernetes-versions.md) pro váš cluster AKS. Chcete-li zahájit proces upgradu, zadáte některou z těchto dostupných verzí. Azure pak bezpečně cordons pozastavuje jednotlivých uzlů AKS a provádí upgrade.
 
 ### <a name="cordon-and-drain"></a>Cordon a vyprazdňování
 
@@ -57,7 +57,7 @@ Během procesu upgradu jsou uzly AKS jednotlivě kapacity z clusteru tak nových
 - Podů jsou naplánovány ke spuštění na nich znovu.
 - Další uzel v clusteru je uzavřené a Vyprázdněné pomocí stejného procesu, dokud všechny uzly jsou úspěšně upgradoval.
 
-Další informace najdete v tématu [upgradu a AKS clusteru][aks-upgrade-cluster].
+Další informace najdete v tématu [Upgrade clusteru AKS][aks-upgrade-cluster].
 
 ## <a name="network-security"></a>Zabezpečení sítě
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 8358eceedbb9214e4adb73f055bcf0db7fecec76
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430382"
+ms.locfileid: "56447738"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Sledování vašich rozhraní API pomocí Azure API Management, Event Hubs a Moesif
 [Služby API Management](api-management-key-concepts.md) poskytuje mnoho funkcí pro zvýšení zpracování požadavků HTTP odeslané do vašeho rozhraní API protokolu HTTP. Je však přechodné existenci požadavky a odpovědi. Požadavku a prochází přes službu API Management k rozhraní API back-endu. Vaše rozhraní API zpracuje požadavek a odpověď prochází zpět do rozhraní API příjemců. Služba API Management zajišťuje několik důležitých statistik o rozhraní API pro zobrazení v řídicím panelu portálu Azure, ale dalších fázích můžete využít, že podrobnosti jsou pryč.
@@ -293,7 +293,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` Využívá výhod platformy [ C# knihovny rozhraní API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje zápis HTTP dat událostí do své služby. Pokud chcete odesílat HTTP data do rozhraní API kolekce Moesif, budete potřebovat účet a identifikátor aplikace. Můžete získat získání Id aplikace Moesif vytvořením účtu služby na [Moesif na webu](https://www.moesif.com) a pak přejděte na _nabídce vpravo nahoře_ -> _nastavení aplikací_.
+`MoesifHttpMessageProcessor` Využívá výhod platformy [ C# knihovny rozhraní API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje zápis HTTP dat událostí do své služby. Pokud chcete odesílat HTTP data do rozhraní API kolekce Moesif, budete potřebovat účet a identifikátor aplikace. Získání Id aplikace Moesif vytvořením účtu služby na [Moesif na webu](https://www.moesif.com) a pak přejděte _nabídce vpravo nahoře_ -> _nastavení aplikací_.
 
 ## <a name="complete-sample"></a>Úplnou ukázku
 [Zdrojový kód](https://github.com/dgilling/ApimEventProcessor) a jsou testy pro ukázku na Githubu. Budete potřebovat [služby API Management](get-started-create-service-instance.md), [připojeného centra událostí](api-management-howto-log-event-hubs.md)a [účtu úložiště](../storage/common/storage-create-storage-account.md) ke spuštění ukázky sami.   

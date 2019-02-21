@@ -10,21 +10,21 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d4e267915338e8043138be0ca1a4922ac84d8eab
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822370"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456261"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Rychlý úvodní kurz pro programovací jazyk pro Azure Machine Learning Studio R
 
 <!-- Stephen F Elston, Ph.D. -->
 
 ## <a name="introduction"></a>Úvod
-Tento rychlý úvodní kurz vám pomůže rychle spustit pomocí programovací jazyk R rozšíření Azure Machine Learning. V tomto kurzu R programovací vytvářet, testovat a spouštět kód R v Azure Machine Learning. Při práci prostřednictvím kurz, vytvoří kompletní řešení Prognózování s použitím jazyka R ve službě Azure Machine Learning.  
+Tento rychlý úvodní kurz vám pomůže rychle spustit pomocí programovací jazyk R rozšíření Azure Machine Learning Studio. V tomto kurzu R programování pro vytvoření, testování a spouštění kódu R studia. Při práci prostřednictvím kurzu vytvoříte pomocí jazyka R v sadě Studio kompletní řešení Prognózování.  
 
-Microsoft Azure Machine Learning obsahuje mnoho modulů výkonném počítači pro manipulaci s učení a data. Výkonné jazyka R je popsán jako lingua franca obchodu analýzy. Využívá elastic manipulaci analytics a data ve službě Azure Machine Learning je možné rozšířit pomocí jazyka R. Tato kombinace poskytuje škálovatelnost a snadné nasazení služby Azure Machine Learning s flexibility a hloubkové analýzy R.
+Microsoft Azure Machine Learning Studio obsahuje mnoho modulů výkonném počítači pro manipulaci s učení a data. Výkonné jazyka R je popsán jako lingua franca obchodu analýzy. Využívá elastic manipulaci analytics a data v sadě Studio je možné rozšířit pomocí jazyka R. Tato kombinace poskytuje škálovatelnost a snadné nasazení sady Studio flexibilitu a hloubkové analýzy R.
 
 
 
@@ -38,23 +38,23 @@ V této úvodní příručky jsme bude práce s produkci mléka Kalifornie a dat
 Data použitá v tomto článku, spolu s skriptů R, může být [stáhnout v této fázi](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv). Tato data byla původně syntetizovat z informací z University of Wisconsin na https://dairymarkets.com.
 
 ### <a name="organization"></a>Organizace
-Jak se dozvíte, jak vytvářet, testovat a spustit kód analytics a data manipulaci s R v prostředí Azure Machine Learning, jsme se průběhu několik kroků.  
+Jak se dozvíte, jak vytvářet, testovat a spustit kód analytics a data manipulaci s R v prostředí Azure Machine Learning Studio jsme se projděte několik kroků.  
 
 * Nejprve se podíváme na základní informace o používání jazyka R v prostředí Azure Machine Learning Studio.
-* Potom jsme průběh pojednávající o různých aspektů vstupně-výstupních operací pro data, kód R a grafiky v prostředí Azure Machine Learning.
+* Potom jsme průběh pojednávající o různých aspektů vstupně-výstupních operací pro data, kód R a grafiky v prostředí Azure Machine Learning Studio.
 * Potom jsme se vytvořit první část našeho řešení Prognózování tak, že vytvoříte kód pro transformaci a čištění dat.
 * Pomocí našich dat připravené budeme provádět analýzu korelace mezi několika proměnných v naší datové sadě.
 * Nakonec vytvoříme předpovědi modelu sezónní časové řady pro produkci mléka.
 
 ## <a id="mlstudio"></a>Pracovat s jazykem R v nástroji Machine Learning Studio
-Tato část vás provede základy interakci s programovací jazyk R v prostředí Machine Learning Studio. Jazyk R poskytuje výkonný nástroj pro vytvoření přizpůsobené analytics a modulů pro manipulaci s dat v rámci prostředí Azure Machine Learning.
+Tato část vás provede základy interakci s programovací jazyk R v prostředí Machine Learning Studio. Jazyk R poskytuje výkonný nástroj pro vytvoření přizpůsobené analytics a modulů pro manipulaci s dat v rámci prostředí Azure Machine Learning Studio.
 
 Použiji RStudio pro vývoj, testování a ladění kódu R v malém měřítku. Tento kód je pak vyjmutí a vložení do [spustit skript jazyka R] [ execute-r-script] modulů v Machine Learning Studio připraven ke spuštění.  
 
 ### <a name="the-execute-r-script-module"></a>Modul spustit skript jazyka R
 V nástroji Machine Learning Studio, jsou skripty jazyka R poběží [spustit skript jazyka R] [ execute-r-script] modulu. Příkladem [spustit skript jazyka R] [ execute-r-script] modulu v nástroji Machine Learning Studio je znázorněno na obrázku 1.
 
- ![Programovací jazyk R: Spustit skript jazyka R modulu vybraná v nástroji Machine Learning Studio][1]
+ ![Programovací jazyk R: Spustit skript jazyka R modulu vybraná v nástroji Machine Learning Studio](./media/r-quickstart/fig1.png)
 
 *Obrázek 1. Zobrazuje vybraný modul spustit skript jazyka R prostředí Machine Learning Studio.*
 
@@ -66,20 +66,20 @@ Odkazující na obrázku 1, Pojďme se podívat na některé z klíčových čá
 
 Jsme se, samozřejmě, mluvit o [spustit skript jazyka R] [ execute-r-script] podrobněji ve zbývající části tohoto dokumentu.
 
-Při práci s komplexní funkce R je můžu jenom doporučit úpravy, testování a ladění v RStudio. Stejně jako u jakékoli vývoje softwaru postupně rozšiřovat kódu a testování na malé jednoduchý testovací případy. Pak vyjímejte a vkládejte vaše funkce do okna skriptu R [spustit skript jazyka R] [ execute-r-script] modulu. Tento přístup umožňuje využít RStudio integrovaného vývojového prostředí (IDE) a výkon služby Azure Machine Learning.  
+Při práci s komplexní funkce R je můžu jenom doporučit úpravy, testování a ladění v RStudio. Stejně jako u jakékoli vývoje softwaru postupně rozšiřovat kódu a testování na malé jednoduchý testovací případy. Pak vyjímejte a vkládejte vaše funkce do okna skriptu R [spustit skript jazyka R] [ execute-r-script] modulu. Tento přístup umožňuje využít RStudio integrovaného vývojového prostředí (IDE) a sílu Azure Machine Learning Studio.  
 
 #### <a name="execute-r-code"></a>Spouštění kódu R
 Veškerý kód R ve [spustit skript jazyka R] [ execute-r-script] modulu se spustí při spuštění experimentu kliknutím na **spustit** tlačítko. Po dokončení spuštění se zobrazí zaškrtávací políčko na [spustit skript jazyka R] [ execute-r-script] ikonu.
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>Obranné psaní kódu jazyka R pro službu Azure Machine Learning
-Pokud vyvíjíte kód R pro, například webovou službu pomocí Azure Machine Learning, měli byste jednoznačně naplánovat, jak váš kód se bude zabývat neočekávaný datový vstup a výjimek. Pokud chcete zachovat přehlednost, můžu nezahrnuli většinu cestě kontrolu nebo zpracování výjimek v většina příkladů kódu zobrazí. Ale jak můžeme pokračovat můžu vám poskytne několik příkladů funkcí pomocí funkce pro zpracování výjimek R.  
+Pokud vyvíjíte kód R pro, například webovou službu pomocí Azure Machine Learning Studio, měli byste jednoznačně naplánovat, jak váš kód se bude zabývat neočekávaný datový vstup a výjimek. Pokud chcete zachovat přehlednost, můžu nezahrnuli většinu cestě kontrolu nebo zpracování výjimek v většina příkladů kódu zobrazí. Ale jak můžeme pokračovat můžu vám poskytne několik příkladů funkcí pomocí funkce pro zpracování výjimek R.  
 
 Pokud potřebujete podrobnější zacházení s zpracování výjimek jazyka R, doporučuji čtení příslušných částech kniha od Wickham uvedené v [příloha B – další čtení](#appendixb).
 
 #### <a name="debug-and-test-r-in-machine-learning-studio"></a>Ladění a testování R v nástroji Machine Learning Studio
 Zdůrazňujeme, doporučuji, testování a ladění kódu R v malém měřítku v RStudio. Existují však případy, kdy je potřeba sledovat problémy kódu R v [spustit skript jazyka R] [ execute-r-script] samotný. Kromě toho je vhodné zkontrolovat výsledky v nástroji Machine Learning Studio.
 
-Především v souboru výstup.log se nachází výstup z provádění kódu jazyka R a na platformě Azure Machine Learning. Další informace se zobrazí ve error.log.  
+Především v souboru výstup.log se nachází výstup z provádění kódu jazyka R a na platformě Azure Machine Learning Studio. Další informace se zobrazí ve error.log.  
 
 Pokud dojde k chybě v nástroji Machine Learning Studio při spuštění kódu jazyka R, by mělo být prvním kurzu akce podívejte se na error.log. Tento soubor může obsahovat užitečné chybové zprávy, které vám pomůžou pochopit a opravit chyby. Chcete-li zobrazit error.log, klikněte na **naleznete v protokolu chyb** na **podokno vlastností** pro [spustit skript jazyka R] [ execute-r-script] obsahující chybu.
 
@@ -90,7 +90,7 @@ Například mám spuštěných následující kód R nedefinované proměnné y,
 
 Tento kód se nepodaří spustit, což vede k chybě. Kliknutím na **naleznete v protokolu chyb** na **podokno vlastností** vytvoří zobrazení je znázorněno na obrázku 2.
 
-  ![Chybová zpráva je překryvné][2]
+  ![Chybová zpráva je překryvné](./media/r-quickstart/fig2.png)
 
 *Obrázek 2. Chybová zpráva automaticky.*
 
@@ -109,12 +109,12 @@ Tato chybová zpráva obsahuje žádná překvapení a jednoznačně identifikuj
 Chcete-li zkontrolovat hodnoty libovolný objekt v jazyce R, můžete vytisknout tyto hodnoty do souboru výstup.log souboru. Pravidla pro zkoumání hodnoty objektu jsou v podstatě stejné jako interaktivní relace jazyka R. Například pokud zadáte název proměnné na řádek, hodnota objektu budou zobrazeny souboru výstup.log souboru.  
 
 #### <a name="packages-in-machine-learning-studio"></a>Balíčky v nástroji Machine Learning Studio
-Azure Machine Learning obsahuje víc než 350 předinstalované balíčky jazyka R. Můžete použít následující kód [spustit skript jazyka R] [ execute-r-script] modulu, který chcete načíst seznam předinstalované balíčky.
+Obsahuje víc než 350 předinstalované balíčky jazyka R Studio. Můžete použít následující kód [spustit skript jazyka R] [ execute-r-script] modulu, který chcete načíst seznam předinstalované balíčky.
 
     data.set <- data.frame(installed.packages())
     maml.mapOutputPort("data.set")
 
-Pokud nevíte, poslední řádek tohoto kódu v okamžiku, přečtěte si o. Ve zbývající části tohoto dokumentu se hojně probereme využití R v prostředí Azure Machine Learning.
+Pokud nevíte, poslední řádek tohoto kódu v okamžiku, přečtěte si o. Ve zbývající části tohoto dokumentu se hojně probereme využití R v prostředí sady Studio.
 
 ### <a name="introduction-to-rstudio"></a>Úvod k Rstudiu
 RStudio je často používaný integrované vývojové prostředí pro jazyk R. Použiji RStudio pro úpravy, testování a ladění některý kód R použít v této úvodní příručky. Jakmile se kód R otestovaný a připravený, můžete jednoduše vyjmout a vložit do nástroje Machine Learning Studio z editoru RStudio [spustit skript jazyka R] [ execute-r-script] modulu.  
@@ -157,14 +157,14 @@ Když teď máme některá data ve službě Machine Learning Studio, potřebujem
 
 V tomto okamžiku experiment by měl vypadat přibližně jako obrázek 3.
 
-![Analýza mléka certifikační Autority experimentovat s datovou sadu a modul spustit skript jazyka R][3]
+![Analýza mléka certifikační Autority experimentovat s datovou sadu a modul spustit skript jazyka R](./media/r-quickstart/fig3.png)
 
 *Obrázek 3. Analýza mléka certifikační Autority můžete experimentovat s datovou sadu a spustit skript jazyka R modulu.*
 
 #### <a name="check-on-the-data"></a>Podívejte se na data
 Pojďme Podíváme se na data, která jsme načetli do našich experimentu. V testu, klikněte na výstup **datovou sadu cadairydata.csv** a vyberte **vizualizovat**. Měli byste vidět něco jako obrázek 4.  
 
-![Souhrn cadairydata.csv datové sady][4]
+![Souhrn cadairydata.csv datové sady](./media/r-quickstart/fig4.png)
 
 *Obrázek 4. Souhrn cadairydata.csv datové sady.*
 
@@ -200,7 +200,7 @@ Zadejte skript sady umožňuje předat obsah souboru zip do [spustit skript jazy
     load("src/yourData.rdata") # Reads a zipped R data file
 
 > [!NOTE]
-> Azure Machine Learning zpracovává soubory v souboru zip, jako by šlo v src / directory, takže budete muset před názvy souborů s tímto názvem adresáře. Například, pokud soubor zip obsahuje soubory `yourfile.R` a `yourData.rdata` v kořenovém adresáři souboru zip, chcete řešit jako `src/yourfile.R` a `src/yourData.rdata` při použití `source` a `load`.
+> Azure Machine Learning Studio považuje soubory v souboru zip, jako by šlo v src / directory, takže budete muset před názvy souborů s tímto názvem adresáře. Například, pokud soubor zip obsahuje soubory `yourfile.R` a `yourData.rdata` v kořenovém adresáři souboru zip, chcete řešit jako `src/yourfile.R` a `src/yourData.rdata` při použití `source` a `load`.
 > 
 > 
 
@@ -227,7 +227,7 @@ Jsme již probírali načítání datových sad v [načtení datové sady](#load
 
 Po dokončení těchto kroků [spustit skript jazyka R] [ execute-r-script] modulu spustí skript jazyka R v souboru zip při spuštění experimentu. V tomto okamžiku experiment by měl vypadat přibližně jako obrázek 5.
 
-![Experimentování s využitím ZIP skript jazyka R][6]
+![Experimentování s využitím ZIP skript jazyka R](./media/r-quickstart/fig6.png)
 
 *Obrázek 5. Experimentování s využitím ZIP skript jazyka R.*
 
@@ -289,7 +289,7 @@ Obsah datového rámce R můžete výstup jako obdélníkový tabulku přes port
 
 Po spuštění testu, klikněte na výstupní port Dataset1 výsledek a pak klikněte na **vizualizovat**. Měli byste vidět něco jako obrázek 6.
 
-![Vizualizace výstupu mléka Kalifornie dat][7]
+![Vizualizace výstupu mléka Kalifornie dat](./media/r-quickstart/fig7.png)
 
 *Obrázek 6. Vizualizace výstupu Kalifornie mléka data.*
 
@@ -300,13 +300,13 @@ Výstup zařízení [spustit skript jazyka R] [ execute-r-script] modul obsahuje
 
 Chcete-li zobrazit výstup R zařízení, klikněte na tlačítko na portu a potom na **vizualizovat**. Vidíme standardní výstup a chyby ze skriptu R na obrázku 7.
 
-![Standardní výstup a chyby z portu zařízení jazyka r.][8]
+![Standardní výstup a chyby z portu zařízení jazyka r.](./media/r-quickstart/fig8.png)
 
 *Obrázek 7. Standardní výstup a chyby z portu R zařízení.*
 
 Posun dolů jsme zobrazit výstup grafiky z našich skript jazyka R na obrázku 8.  
 
-![Grafického výstupu z portu zařízení jazyka r.][9]
+![Grafického výstupu z portu zařízení jazyka r.](./media/r-quickstart/fig9.png)
 
 *Obrázek 8. Výstup z portu R zařízení grafiky.*  
 
@@ -689,7 +689,7 @@ Podívejme se na určité proměnné v této datové sadě. Matice diagnostické
 
 Tento kód spustit a zobrazit, co se stane. Vykreslení vytvořený v zařízení jazyka r. port by měl vypadat jako obrázek 16.
 
-![Diagnostického matice vybrané proměnné][17]
+![Diagnostického matice vybrané proměnné](./media/r-quickstart/fig17.png)
 
 *Obrázek 16. Matice diagnostického vybraných proměnných.*
 
@@ -753,7 +753,7 @@ Jednou `ts.detrend()` je definována jsme použít na proměnné zájem o náš 
 
 Poslední řádek kódu vytvoří pairwise diagnostického. Po spuštění kódu jazyka R se zobrazují výsledky diagnostického v obrázek 17.
 
-![Pairwise diagnostického zrušit trendu a standardizovaným časové řady][18]
+![Pairwise diagnostického zrušit trendu a standardizovaným časové řady](./media/r-quickstart/fig18.png)
 
 *Obrázek 17. Pairwise diagnostického zrušit trendu a standardizovaným časové řady.*
 
@@ -856,7 +856,7 @@ Následující kód extrahuje hodnoty prodleva ze seznamu PVJS objekty, které p
 
 
     ## WARNING!
-    ## The following line works only in Azure Machine Learning
+    ## The following line works only in Azure Machine Learning Studio
     ## When running in RStudio, this code will result in an error
     #maml.mapOutputPort('outframe')
 
@@ -870,7 +870,7 @@ Všimněte si, že názvy řádků ve sloupci datového rámce. Způsobem tak za
 
 Spuštění kódu vytvoří výstup znázorňuje obrázek 19 když mám **vizualizovat** výstupu na port datové sady výsledků. Názvy řádků jsou v prvním sloupci tak, jak má.
 
-![Výsledky výstupu z analýzy korelace][20]
+![Výsledky výstupu z analýzy korelace](./media/r-quickstart/fig20.png)
 
 *Obrázek 19. Výsledky výstupu z analýzy korelace.*
 
@@ -884,7 +884,7 @@ Kompletní kód R pro tento oddíl je v souboru zip, který jste předtím stáh
 ### <a name="creating-the-dataframe-for-analysis"></a>Vytvoření datového rámce pro analýzu
 Začněte přidáním **nové** [spustit skript jazyka R] [ execute-r-script] modulu do experimentu. Připojení **datovou sadu výsledků** výstup existující [spustit skript jazyka R] [ execute-r-script] modulu **Dataset1** vstupní nového modulu. Výsledek by měl vypadat podobně jako obrázek 20.
 
-![Experiment s modulem nové spustit skript jazyka R přidán][21]
+![Experiment s modulem nové spustit skript jazyka R přidán](./media/r-quickstart/fig21.png)
 
 *Obrázek 20. Experiment s modulem nové spustit skript jazyka R přidán.*
 
@@ -954,7 +954,7 @@ Spuštění kódu vytváří řadu času z výstupu zařízení jazyka r. znázo
 ### <a name="a-trend-model"></a>Vývoj modelu
 Máte vytvořený objekt řady čas a podívejte se na data měla, Začněme vytvořit model trend Kalifornie mléka produkční data. Můžeme to udělat pomocí řady regrese čas. Je však zřejmé z diagram, který budeme potřebovat vyšší než sklon a zachytit přesně modelování zjištěnou trend v trénovací data.
 
-Zadaný malém měřítku data, můžu se sestavení modelu pro vývoj v RStudio a pak vyjímejte a vkládejte výsledný model do Azure Machine Learning. RStudio nabízí interaktivní prostředí pro interaktivní analýzu tohoto typu.
+Zadaný malém měřítku data, můžu se sestavení modelu pro vývoj v RStudio a pak vyjímejte a vkládejte výsledný model do Azure Machine Learning Studio. RStudio nabízí interaktivní prostředí pro interaktivní analýzu tohoto typu.
 
 Jako první pokus bude proveden pokus polynomické regrese s mocniny až 3. Je skutečných nebezpečí over-pass-the přizpůsobení těchto typů modelů. Proto se nedoporučuje nejvyšších podmínky. `I()` Funkce potlačuje výklad obsah (interpretuje obsah "je") a umožňuje psát doslova interpretovaný funkce v rovnici regrese.
 
@@ -1014,7 +1014,7 @@ Tím se vytvoří následující.
 
 To vypadá lépe. Podmínky jsou významné. Však hodnotu 2e-16 je výchozí hodnota a nesmí být přijata příliš vážně.  
 
-Jako test správností vytvoříme vykreslení řad čas Kalifornie dat produkci mléka s trend křivky zobrazí. Jsem přidali následující kód ve službě Azure Machine Learning [spustit skript jazyka R] [ execute-r-script] modelu (ne RStudio) k vytvoření modelu a ujistěte se, vykreslení. Výsledek se zobrazí obrázek 23.
+Jako test správností vytvoříme vykreslení řad čas Kalifornie dat produkci mléka s trend křivky zobrazí. Jsem přidali následující kód v Azure Machine Learning Studio [spustit skript jazyka R] [ execute-r-script] modelu (ne RStudio) k vytvoření modelu a ujistěte se, vykreslení. Výsledek se zobrazí obrázek 23.
 
     milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1071,14 +1071,14 @@ Tím se vytvoří následující.
 
 Vidíme, že model už má některý výraz zachycení a má 12 faktory důležité měsíc. To je přesně to co jsme chtěli byste vidět.
 
-Vytvoříme jiného diagramu čas řady Kalifornie dat produkci mléka zobrazíte, jak dobře funguje sezónním vzoru. Jsem přidali následující kód ve službě Azure Machine Learning [spustit skript jazyka R] [ execute-r-script] vytvořit model a zadáte vykreslení.
+Vytvoříme jiného diagramu čas řady Kalifornie dat produkci mléka zobrazíte, jak dobře funguje sezónním vzoru. Jsem přidali následující kód v Azure Machine Learning Studio [spustit skript jazyka R] [ execute-r-script] vytvořit model a zadáte vykreslení.
 
     milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
     plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
     lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 
-Spuštěním tohoto kódu ve službě Azure Machine Learning vytvoří diagram znázorňuje obrázek 24.
+Tento kód spuštěný v Azure Machine Learning Studio vytváří diagram znázorňuje obrázek 24.
 
 ![Produkci mléka Kalifornie s modelem včetně sezónní efekty](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1198,7 +1198,7 @@ Vybavený funkci měření chybu RMS, Pojďme sestavení a výstupní datový r�
 
 Spuštěním tohoto kódu vytvoří výstup znázorňuje obrázek 27 na výstupní port datové sady výsledků.
 
-![Porovnání chyb služby RMS pro modely][26]
+![Porovnání chyb služby RMS pro modely](./media/r-quickstart/fig26.png)
 
 *Obrázek 27. Porovnání chyb služby RMS pro modely.*
 
@@ -1246,31 +1246,6 @@ Některé skvělé internetové prostředky:
 * Rychlý kurz jazyka R podle Kelly černé z Clarkson University http://www.cyclismo.org/tutorial/R/
 * Více než 60 R prostředky uvedené v http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 
-<!--Image references-->
-[1]: ./media/r-quickstart/fig1.png
-[2]: ./media/r-quickstart/fig2.png
-[3]: ./media/r-quickstart/fig3.png
-[4]: ./media/r-quickstart/fig4.png
-[5]: ./media/r-quickstart/fig5.png
-[6]: ./media/r-quickstart/fig6.png
-[7]: ./media/r-quickstart/fig7.png
-[8]: ./media/r-quickstart/fig8.png
-[9]: ./media/r-quickstart/fig9.png
-[10]: ./media/r-quickstart/fig10.png
-[11]: ./media/r-quickstart/fig11.png
-[12]: ./media/r-quickstart/fig12.png
-[13]: ./media/r-quickstart/fig13.png
-[14]: ./media/r-quickstart/fig14.png
-[15]: ./media/r-quickstart/fig15.png
-[16]: ./media/r-quickstart/fig16.png
-[17]: ./media/r-quickstart/fig17.png
-[18]: ./media/r-quickstart/fig18.png
-[19]: ./media/r-quickstart/fig19.png
-[20]: ./media/r-quickstart/fig20.png
-[21]: ./media/r-quickstart/fig21.png
-[22]: ./media/r-quickstart/fig22.png
-
-[26]: ./media/r-quickstart/fig26.png
 
 <!--links-->
 [appendixa]: #appendixa

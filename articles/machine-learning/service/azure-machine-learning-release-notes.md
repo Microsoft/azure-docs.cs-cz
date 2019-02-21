@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100172"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446762"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -29,7 +29,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Azure Machine Learning sady SDK pro Python v1.0.15
 
 + **Nové funkce**
-  + Azure Machine Learning kanály přidali AzureBatchStep ([Poznámkový blok](https://aka.ms/pl-azbatch)), HyperDriveStep ([Poznámkový blok](https://aka.ms/pl-hyperdrive)) a podle času plánování fuctionality ([Poznámkový blok](https://aka.ms/pl-schedule)).
+  + Azure Machine Learning kanály přidali AzureBatchStep ([Poznámkový blok](https://aka.ms/pl-azbatch)), HyperDriveStep ([Poznámkový blok](https://aka.ms/pl-hyperdrive)) a podle času, funkci plánování ([Poznámkový blok](https://aka.ms/pl-schedule)).
   +  Aktualizovat DataTranferStep pro práci s Azure SQL Server a Azure database for PostgreSQL ([Poznámkový blok](https://aka.ms/pl-data-trans)).
 
 + **Změny**

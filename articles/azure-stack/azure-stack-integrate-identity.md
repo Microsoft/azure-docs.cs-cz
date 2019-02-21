@@ -10,12 +10,12 @@ ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
-ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a71362f4d6a69f2eaed36dd549437bb5857d555f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765786"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456992"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -73,7 +73,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 Pro nasazení služby Active Directory s více lokalitami nakonfigurujte nejbližší lokalitu služby Active Directory k nasazení Azure Stack. Konfigurace se vyhnete, že ve službě Azure Stack Graph vyřešit dotazy, které používají Server globálního katalogu od vzdáleného webu.
 
-Přidání služby Azure Stack [síť veřejných virtuálních IP adres](azure-stack-network.md#public-vip-network) podsítě k webu Azure AD co nejblíže ke službě Azure Stack. Například pokud Active Directory obsahuje dvě lokality Seattle a Redmond, s využitím Azure stacku nasadit v lokalitě Seattle, by přidat podsíť sítě Azure stacku veřejnou virtuální IP adresy k webu Azure AD pro Seattle.
+Přidání služby Azure Stack [síť veřejných virtuálních IP adres](azure-stack-network.md#public-vip-network) podsíť, která se lokalitu služby Active Directory co nejblíže ke službě Azure Stack. Například pokud Active Directory obsahuje dvě lokality Seattle a Redmond, s využitím Azure stacku nasadit v lokalitě Seattle, by přidat podsíť sítě Azure stacku veřejnou virtuální IP adresy k lokalitě služby Active Directory pro Seattle.
 
 Další informace o serverů služby Active Directory najdete v části [navrhování topologie lokalit](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 

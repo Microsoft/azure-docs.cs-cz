@@ -14,12 +14,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 6866c6d208468e53b04ede1b5e596f0ea625c49d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f7d82b8cb609b390275617509946d640720f2dda
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248465"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456941"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack
 
@@ -57,28 +57,6 @@ Vysvětlení profilů rozhraní API a verze vydávání verzí pro službu Azure
 | Předplatná | 2016-10-01 |
 
 Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní API najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid) profilu.
-
-## <a name="overview-of-2018-03-01-hybrid"></a>Přehled 2018-03-01hybridní
-
-| Poskytovatel prostředků | verze API-version |
-|------------------------------------------------|------------------------------|
-| Microsoft.Compute | 2016-03-30 |
-| Microsoft.Network | 2015-06-15 |
-| Microsoft.Storage (rovina dat) | 2015-04-05  |
-| Microsoft.Storage (rovina řízení) | 2016-01-01   |
-| Microsoft.Websites | 2016-01-01 |
-| Microsoft.KeyVault | 2016-10-01<br>(Ne změnit) |
-| Microsoft.Resources<br>(Azure Resource Manageru samotné) | 2016-02-01 |
-| Microsoft.Authorization<Br>(zásady operací) | 2015-11-01 |
-| Microsoft.Insights | 2015-11-01 |
-| Microsoft.Keyvault | 2016-10-01 |
-| Zásada | 2015-10-01-preview |
-| Zdroje a prostředky | 2016-02-01 |
-| Resources_Links | 2016-09-01 |
-| Resources_Locks | 2016-09-01 |
-| Předplatná | 2016-06-1 |
-
-Seznam verzí každý typ prostředku pro zprostředkovatele v profilu rozhraní API najdete v další části.
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
 

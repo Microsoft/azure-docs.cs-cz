@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e0f3c7e6af22210ba04565b86b8098851b26d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186892"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456023"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se k účtům pomocí aplikace Microsoft Authenticator
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
@@ -62,7 +62,7 @@ Po zapnutí přihlášení telefonem, můžete se přihlásit pomocí aplikace M
 
     Po zadání vašeho uživatelského jména **schválit přihlášení** obrazovky zobrazující dvoumístné číslo a s výzvou k přihlášení do aplikace Microsoft Authenticator. Pokud už nechcete používat toto přihlášení v metodě, můžete vybrat **použít raději heslo**a přihlaste se pomocí hesla.
 
-    ![Schválit přihlášení pole na počítači](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
+    ![Schválit přihlášení pole v počítači](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
 2. Otevřete oznámení nebo aplikace Microsoft Authenticator na vašem zařízení a potom klepněte na číslo, který odpovídá na číslo uvedené ve vašem počítači **schválit přihlášení** obrazovky.
 
@@ -113,7 +113,7 @@ Kroky potřebné k přihlášení k vaší pracovní nebo školní nebo osobní 
 |**Co když mám ztratíte telefon nebo nemají se se mnou? Jak mám přístup ke svému účtu?**| Vždy můžete zvolit použití hesla místo toho odkaz na přihlašovací stránku přejít zpět na používání hesla. Ale pokud používáte dvoustupňové ověřování bude stále potřeba použít druhou metodu k ověření svojí identity.<br><br>**Důležité upozornění**<br>Důrazně doporučujeme, abyste měli jistotu, že máte více než jeden, aktuální, metodu ověřování, které jsou spojené s vaším účtem.<br><br>Můžete spravovat metody ověřování pro osobní účty z vaší [nastavení zabezpečení](https://account.live.com/proofs/manage) stránky. Pro pracovní nebo školní účty, můžete přejít na vaše organizace [dalšího ověření zabezpečení](https://aka.ms/MFASetup) stránky nebo **bezpečnost vašeho účtu** stránky, pokud správce zapnul bezpečnostní údaje. Další informace o bezpečnostní údaje, najdete v části [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).<br><br>Pokud nemůžete spravovat metody ověřování, obraťte se na správce.|
 |**Jak přestat používat tuto funkci a přejít zpět k použití hesla?**|Pro osobní účty, vyberte **místo toho použít heslo** propojení během svého přihlašování. Nejnovější podle vašeho výběru se uloží a nabízí ve výchozím nastavení při příštím přihlášení. Pokud někdy budete chtít vrátit k používání přihlášení telefonem, vyberte **použít raději aplikaci** propojení během svého přihlašování.<br><br>Pro pracovní nebo školní účty, je potřeba na další bezpečnostní ověření stránku (jako jsou například https://aka.ms/MFASetup) a odebrání aplikace Microsoft Authenticator.|
 |**Proč nelze použít více než jeden pracovní nebo školní účet pro přihlášení telefonem?**| Telefon musí být zaregistrovaný do jednoho pracovního nebo školního účtu. Pokud chcete zapnout přihlašování telefonem pro různé pracovní nebo školní účet, musíte nejprve zrušit registraci se starým zařízením prostřednictvím **nastavení** stránky.|
-|**Se lze přihlásit do počítače pomocí telefonu?**| Pro počítače doporučujeme přihlásit pomocí Windows Hello ve Windows 10. Windows Hello vám umožní používat rozpoznávání tváře, otisk prstu nebo PIN kód pro přihlášení.|
+|**Se lze přihlásit do mého počítače pomocí telefonu?**| Pro počítače doporučujeme přihlásit pomocí Windows Hello ve Windows 10. Windows Hello vám umožní používat rozpoznávání tváře, otisk prstu nebo PIN kód pro přihlášení.|
 
 ## <a name="next-steps"></a>Další postup
 - Pokud máte další obecné dotazy o aplikaci, najdete v článku [nejčastější dotazy k aplikaci Microsoft Authenticator](user-help-auth-app-faq.md)

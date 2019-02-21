@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 71990244db859a61885968a502d9849a36d81dce
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425157"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454255"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -133,7 +133,7 @@ Firewall webových aplikací (WAF) služby Application Gateway lze nakonfigurova
 
 ### <a name="application-gateway-waf-reports"></a>Monitorování WAF
 
-Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu vašeho firewallu webových aplikací a aplikací, které chrání, je zajišťována protokolováním a integrací se službami Azure Monitor, Azure Security Center a Log Analytics.
+Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu vašeho webového brány firewall aplikací a aplikací, které chrání, je zajišťována protokolováním a integrací se službou Azure Monitor, Azure Security Center a protokoly Azure monitoru.
 
 ![Diagnostika](./media/waf-overview/diagnostics.png)
 
@@ -149,7 +149,7 @@ Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](.
 
 #### <a name="logging"></a>Protokolování
 
-Firewall webových aplikací (WAF) služby Application Gateway poskytuje podrobné generování sestav o každém útoky, který detekuje. Protokolování je integrované v protokolech diagnostiky Azure a výstrahy se zaznamenávají ve formátu JSON. Tyto protokoly je možné integrovat se službou [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md).
+Firewall webových aplikací (WAF) služby Application Gateway poskytuje podrobné generování sestav o každém útoky, který detekuje. Protokolování je integrované v protokolech diagnostiky Azure a výstrahy se zaznamenávají ve formátu JSON. Tyto protokoly je možné integrovat se službou [protokoly Azure monitoru](../azure-monitor/insights/azure-networking-analytics.md).
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 

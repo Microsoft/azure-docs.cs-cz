@@ -1,5 +1,5 @@
 ---
-title: Přeučování a nasadit klasickou webovou službou
+title: Opětovné natrénování a nasazení klasické webové služby
 titleSuffix: Azure Machine Learning Studio
 description: Zjistěte, jak model přetrénujete a aktualizovat klasické webové služby, která používá nově trénovaný model v Azure Machine Learning Studio.
 services: machine-learning
@@ -10,12 +10,12 @@ author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: e8fd3511eb7b718374bfbc608a35fb84740ed03c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331167"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456550"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Přeučování a nasazení webové služby classic Studio
 
@@ -60,7 +60,7 @@ Chcete-li získat správnou adresu URL oprava prostřednictvím kódu programu, 
 1. Spustit [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) ukázkový kód.
 1. Z výstupu AddEndpoint najít *HelpLocation* hodnotu a zkopírujte adresu URL.
 
-   ![HelpLocation ve výstupu příkazu addEndpoint vzorku.][image2]
+   ![HelpLocation ve výstupu příkazu addEndpoint vzorku.](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
 1. Vložte adresu URL do prohlížeče přejděte na stránku, která obsahuje odkazy na nápovědu pro webovou službu.
 1. Klikněte na tlačítko **aktualizace prostředku** odkaz k otevření stránky s nápovědou opravy.
 
@@ -81,7 +81,7 @@ Postupujte podle těchto kroků můžete získat správnou opravu URL prostředn
 
 Stránky s nápovědou PATCH obsahuje adresu URL OPRAVIT, je nutné použít a poskytuje ukázkový kód, který slouží k jeho volání.
 
-![Adresa URL Patch.][image5]
+![Adresa URL Patch.](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>Aktualizace koncového bodu
 
@@ -149,6 +149,3 @@ Další informace o tom, jak spravovat webové služby nebo udržovat přehled o
 
 * [Prozkoumejte portálu webových služeb](manage-new-webservice.md)
 * [Správa iterací experimentu](manage-experiment-iterations.md)
-
-[image2]: ./media/troubleshooting-retraining-a-model/addEndpoint-output.png
-[image5]: ./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png

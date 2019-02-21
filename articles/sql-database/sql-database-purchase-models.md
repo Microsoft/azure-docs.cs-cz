@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 80e8f0a627ea33881e21d45c8be0e8d1600e4e48
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0e7f941f9845ed7531f3adf03fbca9fbeb2787d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008430"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456686"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 
@@ -50,9 +50,11 @@ Náklady na výpočetní odráží celkové výpočetní kapacitu, pro kterého 
 
 ## <a name="storage-costs"></a>Cena za uložení
 
-Různé typy úložiště se účtují různě. Pro ukládání dat bude vám účtována zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je spojen s automatickým zálohám vaší instance a dynamicky přidělit. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. Za úložiště zálohování do 100 % celkového zajišťovaného úložiště serveru se neplatí žádné dodatečné poplatky. Využití úložiště zálohování je účtovat GB za měsíc. Když například máte databázové úložiště velikosti 100 GB, získáte 100 GB úložiště zálohování zdarma. Ale pokud je záloha mít objem 110 GB, zaplatíte za dalších 10 GB.
+Různé typy úložiště se účtují různě. Pro ukládání dat bude vám účtována zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je spojen s automatickým zálohám vaší instance a dynamicky přidělit. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. 
 
-Pro úložiště záloh u jediné databáze bude se vám účtovat na základě průběžné pro úložiště, která byla přidělena k zálohování databáze minus velikosti databáze. Pro úložiště záloh elastického fondu bude se vám účtovat na základě průběžné pro úložiště, která byla přidělena k zálohování databáze všech databází ve fondu minus maximální velikost dat elastického fondu. Libovolný nárůst velikosti databáze nebo elastického fondu nebo zvýšení rychlost transakcí vyžaduje další úložiště a zvyšuje se tím vaše faktura za úložiště zálohování.  Pokud zvýšíte maximální velikost dat, je toto nové množství odečte od velikost úložiště pro zálohování se fakturuje.
+Ve výchozím nastavení se do úložiště objektů blob RA-GRS úrovně Standard zkopíruje 7 dní automatizovaných záloh vašich databází. Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Velikost transakčních protokolů závisí na četnosti změn databáze. Minimální objem úložiště, který se rovná 100 % velikosti databáze, se poskytuje bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc.
+
+Další informace o cenách úložiště, najdete v článku [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) stránky. 
 
 ## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 

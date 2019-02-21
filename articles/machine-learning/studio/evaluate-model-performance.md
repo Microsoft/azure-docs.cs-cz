@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b663177a07446b888bc7bf9e919bf180458d36bc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e5c85451ca48aab8f980b89de41ebf40f1f97ff3
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487004"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453949"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Jak vyhodnotit výkon modelu ve službě Azure Machine Learning Studio
 
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak vyhodnotit výkon modelu v nástroji Azure Machine L
 
 Vyhodnocení výkonu modelu je jednou z fází jader v vědecké zpracování dat. Označuje s jak velkým bodování (předpovědí) datové sady se podle trénovaného modelu. 
 
-Služba Azure Machine Learning podporuje vyhodnocení modelu projdeme dvě z jeho hlavní strojového učení moduly: [Vyhodnocení modelu] [ evaluate-model] a [Cross-Validate modelu][cross-validate-model]. Tyto moduly vám umožňují zobrazit, jak provádí modelu z hlediska počtu metriky, které se běžně používají v machine learning a statistické údaje.
+Azure Machine Learning Studio podporuje vyhodnocení modelu projdeme dvě z jeho hlavní strojového učení moduly: [Vyhodnocení modelu] [ evaluate-model] a [Cross-Validate modelu][cross-validate-model]. Tyto moduly vám umožňují zobrazit, jak provádí modelu z hlediska počtu metriky, které se běžně používají v machine learning a statistické údaje.
 
 ## <a name="evaluation-vs-cross-validation"></a>Vyhodnocení vs. Křížové ověření
 Vyhodnocení a křížového ověření jsou standardní způsoby, jak měřit výkon modelu. Oba generovat metrik, které můžete kontrolovat nebo porovnání u dalších modelů.
@@ -83,7 +83,7 @@ Po spuštění experimentu si můžete prohlédnout výsledky vyhodnocení po kl
 Obrázek 4. Cross-Validation výsledky regresní Model.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Vyhodnocení binární klasifikační Model
-Ve scénáři binární klasifikace Cílová proměnná obsahuje pouze dva možné výsledky, třeba: {0, 1} nebo {false, true}, {záporný, kladné}. Předpokládejme, máte datovou sadu pro dospělé zaměstnanci s některými demografických a zaměstnání proměnné a zobrazí se výzva k předpovědi úroveň příjmů, binární proměnnou s hodnotami {"< = 50 tis.", "> 50 tis."}. Jinými slovy záporná třída reprezentuje zaměstnanci, kteří žádají menší než nebo rovna 50 tisíc za rok a kladné třída reprezentuje všechny ostatní zaměstnanci. Jako ve scénáři regrese jsme by trénování modelu, stanovení skóre nějaká data a vyhodnoťte výsledky. Hlavní rozdíl je volba metriky, které vypočítá Azure Machine Learning a výstupy. Pro ilustraci úroveň predikce scénář příjmu, budeme používat [dospělé](http://archive.ics.uci.edu/ml/datasets/Adult) datovou sadu, která vytvoření experimentu Azure Machine Learning a vyhodnotit výkon modelu logistické regrese dvěma třídami, běžně používané binární soubor třídění.
+Ve scénáři binární klasifikace Cílová proměnná obsahuje pouze dva možné výsledky, třeba: {0, 1} nebo {false, true}, {záporný, kladné}. Předpokládejme, máte datovou sadu pro dospělé zaměstnanci s některými demografických a zaměstnání proměnné a zobrazí se výzva k předpovědi úroveň příjmů, binární proměnnou s hodnotami {"< = 50 tis.", "> 50 tis."}. Jinými slovy záporná třída reprezentuje zaměstnanci, kteří žádají menší než nebo rovna 50 tisíc za rok a kladné třída reprezentuje všechny ostatní zaměstnanci. Jako ve scénáři regrese jsme by trénování modelu, stanovení skóre nějaká data a vyhodnoťte výsledky. Hlavní rozdíl je volba metriky, které vypočítá Azure Machine Learning Studio a výstupy. Pro ilustraci úroveň predikce scénář příjmu, budeme používat [dospělé](http://archive.ics.uci.edu/ml/datasets/Adult) datovou sadu, která Studio experiment vytvořit a vyhodnotit výkon modelu logistické regrese dvěma třídami, běžně používané binární třídění.
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Přidejte následující moduly do pracovního prostoru Azure Machine Learning Studio:
@@ -103,9 +103,9 @@ Obrázek 5. Vyhodnocení binární klasifikační Model.
 ### <a name="inspecting-the-evaluation-results"></a>Kontrola výsledků vyhodnocení
 Po spuštění testu, můžete kliknout na výstupní port modulu [Evaluate Model] [ evaluate-model] modul a vyberte *vizualizovat* zobrazíte výsledky vyhodnocení (obrázek 7). Jsou k dispozici pro binární klasifikační modely hodnocení metriky: *Přesnost*, *přesnost*, *odvolat*, *F1 skóre*, a *AUC*. Kromě toho modul výstupy chybovou matici zobrazující počet pravdivě pozitivní, falešně negativní, počet falešně pozitivních výsledků a negativní hodnotu true, stejně jako *roc s více TŘÍDAMI*, *přesnost/spojené s vracením*, a  *Zvedněte* křivky.
 
-Přesnost je jednoduše podíl správně klasifikované instancí. Je to obvykle první metriku, kterou se podíváte na při vyhodnocování třídění. Nicméně, pokud je testovací data nevyvážené uvozovky (kde většina instancí patří do jedné ze tříd), nebo vás zajímá více výkonu na jednu z tříd, přesnost nezachytí skutečně efektivitu třídění. Ve scénáři úrovně klasifikace příjmů se předpokládá, že testujete na nějaká data, kde 99 % instancí představují uživatelů, kteří získají menší než nebo rovna 50 tisíc za rok. Je možné dosáhnout 0.99 přesnost predikce třídy "< = 50 tis." pro všechny instance. Třídění v tomto případě se zobrazí až po být provádění výborně celkové, ale ve skutečnosti selže některý vysokými příjmy jednotlivce (1 %) správně klasifikovat.
+Přesnost je jednoduše podíl správně klasifikované instancí. Je to obvykle první metriku, kterou se podíváte na při vyhodnocování třídění. Nicméně, pokud je testovací data nevyvážené uvozovky (kde většina instancí patří do jedné ze tříd), nebo vás zajímá více výkonu na jednu z tříd, přesnost nezachytí skutečně efektivitu třídění. Ve scénáři úrovně klasifikace příjmů se předpokládá, že testujete na nějaká data, kde 99 % instancí představují uživatelů, kteří získají menší než nebo rovna 50 tisíc za rok. Je možné dosáhnout 0.99 přesnost predikce třídy "< = 50 tis." pro všechny instance. Třídění v tomto případě se zobrazí až po být provádění výborně celkové, ale ve skutečnosti selže ke klasifikaci některých vysokými příjmy jednotlivce (1 %) správně.
 
-Z tohoto důvodu je užitečné vypočítat další metriky, které zachycení více specifické aspekty hodnocení. Před přechodem k podrobnostem tyto metriky, je důležité pochopit, chybová matice vyhodnocení binární klasifikace. Popisky třídy v sadě školení může trvat pouze 2 možných hodnot, které se obvykle označují jako kladné nebo záporné. Kladné a záporné instancí, které klasifikátor předpovídá správně se nazývají (TP) pravdivě pozitivní a negativní hodnotu true (TN). Nesprávně klasifikované instance podobně, jsou označovány jako falešně pozitivních výsledků (FP) a falešně negativní (FN). Chybová matice je jednoduše tabulka znázorňující počet instancí, které spadají pod každým z následujících 4 kategorií. Azure Machine Learning automaticky rozhodne, která dvou tříd v datové sadě je pozitivní třídy. Pokud třída popisky jsou logické hodnoty nebo celá čísla, jsou přiřazeny instance s popiskem "true" nebo "1" pozitivní třídy. Pokud popisky jsou řetězce, jako v případě datová sada příjem popisky jsou seřazená podle abecedy a být záporné třídu druhou úroveň při pozitivní třídy je vybrána první úroveň.
+Z tohoto důvodu je užitečné vypočítat další metriky, které zachycení více specifické aspekty hodnocení. Před přechodem k podrobnostem tyto metriky, je důležité pochopit, chybová matice vyhodnocení binární klasifikace. Popisky třídy v sadě školení může trvat pouze 2 možných hodnot, které se obvykle označují jako kladné nebo záporné. Kladné a záporné instancí, které klasifikátor předpovídá správně se nazývají (TP) pravdivě pozitivní a negativní hodnotu true (TN). Nesprávně klasifikované instance podobně, jsou označovány jako falešně pozitivních výsledků (FP) a falešně negativní (FN). Chybová matice je jednoduše tabulka znázorňující počet instancí, které spadají pod každým z následujících 4 kategorií. Azure Machine Learning Studio automaticky rozhodne, která dvou tříd v datové sadě je pozitivní třídy. Pokud třída popisky jsou logické hodnoty nebo celá čísla, jsou přiřazeny instance s popiskem "true" nebo "1" pozitivní třídy. Pokud popisky jsou řetězce, jako v případě datová sada příjem popisky jsou seřazená podle abecedy a být záporné třídu druhou úroveň při pozitivní třídy je vybrána první úroveň.
 
 ![Binární klasifikace chybová matice](./media/evaluate-model-performance/6a.png)
 

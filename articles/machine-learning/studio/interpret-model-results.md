@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997001"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456074"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretace výsledků modelu v nástroji Azure Machine Learning Studio
 Toto téma vysvětluje, jak vizualizovat a interpretace výsledků predikce v Azure Machine Learning Studio. Po Trénink modelu a provádí predictions nad rámec jeho ("skóre modelu"), musíte pochopit a interpretace výsledků předpovědí.
 
 
 
-Existují čtyři hlavní typy modelů v Azure Machine Learning strojového učení:
+Existují čtyři hlavní typy modelů v Azure Machine Learning Studio strojového učení:
 
 * Klasifikace
 * Clustering
@@ -35,11 +35,11 @@ Moduly používané k předpovědi na základě těchto modelů a mají:
 * [Přiřadit ke clusterům] [ assign-to-clusters] modul pro vytváření clusterů
 * [Skóre Matchbox doporučené] [ score-matchbox-recommender] systémů doporučení
 
-Tento dokument popisuje, jak interpretovat výsledky předpovědí pro každý z těchto modulů. Přehled těchto modulů najdete v tématu [jak vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning](algorithm-parameters-optimize.md).
+Tento dokument popisuje, jak interpretovat výsledky předpovědí pro každý z těchto modulů. Přehled těchto modulů najdete v tématu [jak vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning Studio](algorithm-parameters-optimize.md).
 
-Toto téma řeší interpretace predikcí, ale ne zkušební modelu. Další informace o tom, jak vyhodnotit váš model, najdete v části [jak vyhodnotit výkon modelu ve službě Azure Machine Learning](evaluate-model-performance.md).
+Toto téma řeší interpretace predikcí, ale ne zkušební modelu. Další informace o tom, jak vyhodnotit váš model, najdete v části [jak vyhodnotit výkon modelu ve službě Azure Machine Learning Studio](evaluate-model-performance.md).
 
-Pokud teprve začínáte Azure Machine Learning a potřebujete pomoc při vytvoření jednoduchého experimentu Začínáme, přečtěte si téma [vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md) v Azure Machine Learning Studio.
+Pokud Azure Machine Learning Studio začínáte a potřebujete pomoc při vytvoření jednoduchého experimentu Začínáme, přečtěte si téma [vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md) v Azure Machine Learning Studio.
 
 ## <a name="classification"></a>Klasifikace
 Existují dva podkategorie klasifikace problémy:
@@ -47,12 +47,12 @@ Existují dva podkategorie klasifikace problémy:
 * Problémy s pouze dvěma třídami (dvěma třídami nebo binární klasifikace)
 * Problémy s více než dvě třídy (roc klasifikace)
 
-Azure Machine Learning má různé moduly pro každý z těchto typů klasifikace řešení, ale jsou podobné metody pro interpretaci jejich výsledky předpovědí.
+Azure Machine Learning Studio nabízí různé moduly pro každý z těchto typů klasifikace řešení, ale jsou podobné metody pro interpretaci jejich výsledky předpovědí.
 
 ### <a name="two-class-classification"></a>Klasifikace dvěma třídami
 **Příklad experimentu**
 
-Příklad dvěma třídami klasifikace problému je klasifikace iris květin. Úloha je klasifikace iris květin na základě jejich funkcí. Datové sady Iris k dispozici ve službě Azure Machine Learning je podmnožinou Oblíbené [datovou sadu Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance jen dva květinové druhů (třídy 0 a 1). Existují čtyři funkce pro každou datovou (sepal length, sepal width, petal length a petal width).
+Příklad dvěma třídami klasifikace problému je klasifikace iris květin. Úloha je klasifikace iris květin na základě jejich funkcí. Datové sady Iris k dispozici v nástroji Azure Machine Learning Studio je podmnožinou Oblíbené [datovou sadu Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance jen dva květinové druhů (třídy 0 a 1). Existují čtyři funkce pro každou datovou (sepal length, sepal width, petal length a petal width).
 
 ![Snímek obrazovky iris experimentu](./media/interpret-model-results/1.png)
 
@@ -226,7 +226,7 @@ Pro systémy doporučení, můžete problém restaurace doporučení slouží ja
 * Zákaznická data funkce
 * Data funkce restaurace
 
-Můžeme se několika způsoby [trénování Matchbox doporučené] [ train-matchbox-recommender] modulu ve službě Azure Machine Learning:
+Můžeme se několika způsoby [trénování Matchbox doporučené] [ train-matchbox-recommender] modulu v nástroji Azure Machine Learning Studio:
 
 * Předpověď hodnocení pro daného uživatele a položky
 * Doporučte daného uživatele
@@ -237,7 +237,7 @@ Můžete také, co chcete udělat tak, že výběr ze čtyř možností v **dopo
 
 ![Matchbox doporučení](./media/interpret-model-results/19_1.png)
 
-Typické experiment Azure Machine Learning pro systém doporučení vypadá jako obrázek 20. Informace o tom, jak používat tyto doporučené moduly systému najdete v tématu [trénování matchbox doporučené] [ train-matchbox-recommender] a [skóre matchbox doporučené] [ score-matchbox-recommender].
+Typické experiment Azure Machine Learning Studio systému doporučení vypadá jako obrázek 20. Informace o tom, jak používat tyto doporučené moduly systému najdete v tématu [trénování matchbox doporučené] [ train-matchbox-recommender] a [skóre matchbox doporučené] [ score-matchbox-recommender].
 
 ![Doporučení system experimentu](./media/interpret-model-results/20.png)
 

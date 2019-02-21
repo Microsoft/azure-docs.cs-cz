@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 3571eb2471f9b3f06eb509937fd11866b4e0caa8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9b741f8562ae2e81d297357afd3b0e0e3976a248
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430805"
+ms.locfileid: "56445436"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází serveru SQL Server na virtuálních počítačích Azure 
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak obnovit databáze systému SQL Server. Pokud jste n
 Azure Backup můžete obnovit databáze systému SQL Server běžící na virtuálních počítačích Azure následujícím způsobem:
 
 - Obnovení na konkrétní datum nebo čas (sekundy), pomocí zálohování transakčního protokolu. Azure Backup automaticky určuje odpovídající úplné rozdílové zálohy a řetězec zálohy protokolu, které jsou nutné k obnovení na základě vybraného času.
-- Obnovit konkrétního úplnou nebo rozdílovou zálohu k obnovení pro konkrétní bod obnovení, spíše než určený čas.
+- Obnovte konkrétní úplnou nebo rozdílovou zálohu k obnovení pro konkrétní bod obnovení, spíše než určený čas.
 
 
 ### <a name="prerequisites"></a>Požadavky

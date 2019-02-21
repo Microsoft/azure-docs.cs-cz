@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba77f79ad4625319a9b6e3eae46bf8470f43607
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203773"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455037"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Přidejte osobní účty Microsoft
 Přidáte osobním účtům Microsoft, například Outlook.com a Xbox LIVE do aplikace Microsoft Authenticator pro proces standardní dvojúrovňového ověřování a metoda pro přihlašování k passwordless phone.
@@ -37,7 +37,7 @@ Váš osobní účet Microsoft můžete přidat podle prvního zapnutí dvojúro
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnutí dvojúrovňového ověřování
 
-1. Na vašem počítači, přejděte na vaše [Základy zabezpečení](https://account.microsoft.com/security) stránky a přihlaste se pomocí osobního účtu Microsoft. Například, alain@outlook.com.
+1. Na svém počítači přejděte k vaší [Základy zabezpečení](https://account.microsoft.com/security) stránky a přihlaste se pomocí osobního účtu Microsoft. Například, alain@outlook.com.
 
 2. V dolní části **Základy zabezpečení** zvolte **další možnosti zabezpečení** odkaz.
 

@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299874"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447816"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (Dwu) a výpočetní jednotky datového skladu (cDWUs)
 Doporučení pro výběr ideální počet jednotek datového skladu (Dwu, cDWUs) optimalizovat ceny a výkonu a jak změnit počet jednotek. 
@@ -37,7 +37,9 @@ Zvýšení jednotek Dwu:
 - Zvyšuje maximální počet souběžných dotazů a slotů souběžnosti.
 
 ## <a name="service-level-objective"></a>Cíl na úrovni služby
-Cíl na úrovni služby (SLO) je škálovatelnost, která určuje úroveň náklady a výkon datového skladu. Úrovně služeb pro Gen2 se měří v výpočetní jednotky datového skladu (cDWU), třeba DW2000c. Úrovně služeb Gen1 se měří v jednotkách Dwu, třeba DW2000. 
+Cíl na úrovni služby (SLO) je škálovatelnost, která určuje úroveň náklady a výkon datového skladu. Úrovně služeb pro Gen2 se měří v výpočetní jednotky datového skladu (cDWU), třeba DW2000c. Úrovně služeb Gen1 se měří v jednotkách Dwu, třeba DW2000.
+  > [!NOTE]
+  > Azure SQL Data Warehouse Gen2 nedávno přidali možnosti větší možnost škálování pro podporu v rozsahu od 100 cDWU výpočetní úrovně. Existující datové sklady ve Gen1, které vyžadují nižší výpočetní úrovně nově můžete upgradovat na Gen2 v oblastech, které jsou aktuálně k dispozici pro žádné další poplatky.  Pokud vaše oblast ještě není podporovaná, je stále upgradovat na podporovanou oblast. Další informace najdete v části [upgradovat na Gen2](upgrade-to-latest-generation.md).
 
 Nastavení SERVICE_OBJECTIVE v T-SQL určuje úroveň služby a úroveň výkonu pro datový sklad.
 

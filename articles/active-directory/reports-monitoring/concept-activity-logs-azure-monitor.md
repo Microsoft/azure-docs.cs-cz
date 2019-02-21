@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a995fd93fa8d538cd1a686ecc12fa69c718758c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cb136391610035911af3614f88f5ea823f86922d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313496"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456317"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Protokoly aktivit Azure AD ve službě Azure Monitor (Preview)
 
@@ -31,13 +31,13 @@ Protokoly aktivit Azure Active Directory (Azure AD) můžete nyní provést smě
 * Protokoly aktivit archiv služby Azure AD pro účet úložiště Azure pro data uchovávat po delší dobu.
 * Protokoly aktivit Stream služby Azure AD do služby Azure event hub Analytics pomocí oblíbených nástrojů informace o zabezpečení a správu událostí (SIEM), jako je například Splunk a QRadar.
 * Integrace Azure AD protokolů aktivit se svoje vlastní řešení vlastního protokolu pomocí streamování do centra událostí.
-* Odeslat Azure AD protokolů aktivit do Log Analytics umožňují přehledné vizualizace, monitorování a upozorňování pro připojené data.
+* Protokoly aktivit odeslat Azure AD umožňují přehledné vizualizace, monitorování a upozorňování na připojených dat protokoly Azure monitoru.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Podporované sestavy
 
-Můžete směrování Azure AD auditovat protokoly a protokoly přihlášení k účtu úložiště Azure, Centrum událostí, Log Analytics nebo vlastní řešení s použitím této funkce. 
+Můžete směrování Azure AD auditovat protokoly a protokoly přihlášení k účtu úložiště Azure, Centrum událostí, protokoly Azure monitoru nebo vlastní řešení s použitím této funkce. 
 
 * **Protokoly auditu**: [Sestava aktivit protokolů auditu](concept-audit-logs.md) dává vám přístup k historii každé úlohy, které se provádí ve vašem tenantovi.
 * **Protokoly přihlášení**: S [sestavy aktivit přihlašování](concept-sign-ins.md), můžete určit, kdo provedl úlohy, které jsou hlášeny v protokolech auditování.
@@ -60,7 +60,7 @@ Podle toho, kam chcete směrovat data protokolů auditu, potřebujete některou 
 
 * Účet úložiště Azure, pro který máte oprávnění *ListKeys*. Doporučujeme použít obecný účet úložiště, ne účet úložiště objektů blob. Informace o cenách úložiště najdete v [cenové kalkulačce služby Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage). 
 * Obor názvů služby Azure Event Hubs pro integraci s řešeními třetích stran.
-* Odeslat protokoly do Log Analytics pracovnímu prostoru Azure Log Analytics.
+* K odeslání protokolů s protokoly Azure monitoru pracovnímu prostoru Azure Log Analytics.
 
 ## <a name="cost-considerations"></a>Důležité informace o nákladech
 
@@ -94,9 +94,9 @@ Následující tabulka obsahuje odhad měsíčních nákladů na základní cent
 | Auditování | 1 000 | 0.1 | 52 | 104 kB | 1 | 8 640 | 10,80 USD |
 | Přihlášení | 1 000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
-### <a name="log-analytics-cost-considerations"></a>Log Analytics úspory nákladů
+### <a name="azure-monitor-logs-cost-considerations"></a>Aspekty náklady na protokoly Azure monitoru
 
-Náklady související se správou pracovní prostor Log Analytics najdete v tématu [spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Náklady související se správou protokoly Azure monitoru najdete v tématu [spravovat náklady pomocí řízení objemu dat a uchovávání protokolů Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -177,4 +177,4 @@ V této části najdete odpovědi na nejčastější dotazy a popis známých pr
 
 * [Archivace protokolů aktivit do účtu úložiště](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Směrování protokolů aktivit do centra událostí](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [Integrovat protokoly aktivit s využitím Log Analytics](howto-integrate-activity-logs-with-log-analytics.md)
+* [Integrovat protokoly aktivit Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

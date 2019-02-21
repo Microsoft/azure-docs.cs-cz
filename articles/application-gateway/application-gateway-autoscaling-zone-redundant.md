@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743646"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446507"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
@@ -45,7 +45,7 @@ Ve verzi preview se neúčtuje. Bude vám Účtovaná prostředků než aplikač
 |Problém|Podrobnosti|
 |--|--|
 |Certifikát pro ověřování|Nepodporuje se.<br>Další informace najdete v tématu [přehled koncového šifrování protokolu SSL pomocí Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Kombinování Standard_v2 a standardní Application Gateway ve stejné podsíti|Nepodporuje se.<br>Kromě toho pokud je povolené automatické škálování, jednu podsíť může mít pouze jednu bránu aplikace.|
+|Kombinování Standard_v2 a standardní Application Gateway ve stejné podsíti|Nepodporuje se|
 |Uživatelem definovanou trasou (UDR) na podsítě Application Gateway.|Nepodporuje se|
 |Skupina NSG pro rozsah portu pro příchozí spojení| -65200 až 65535. pro Standard_v2 SKU<br>-65503 až 65534 pro standardní SKU.<br>Další informace najdete v tématu [nejčastější dotazy k](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Protokoly výkonu v diagnostice Azure|Nepodporuje se.<br>Metriky Azure je třeba použít.|

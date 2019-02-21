@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: c331c3617f421c913abbc3554aa5ba17e86cb978
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: c38c457bbf428d7252cf57168685201a2ca227ba
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429172"
+ms.locfileid: "56446796"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -48,7 +48,7 @@ Při zálohování virtuálních počítačů Azure pomocí Azure Backup, virtu�
 
 **Šifrování** | **Podrobnosti** | **Podpora**
 --- | --- | ---
-**ADE** | Šifruje ADE šifruje operačního systému a datové disky pro virtuální počítače Azure.<br/><br/> ADE se integruje s Bitlockerem šifrovacích klíčů (klíče BEK), ochrany ve službě key vault jako tajné kódy, nebo s Azure Key Vault key šifrovacích klíčů (KEK). | Azure Backup podporuje zálohování spravovaných a nespravovaných Azure virtuální počítače jsou šifrované pomocí klíče BEK pouze nebo pomocí klíče BEK spolu s KEK.<br/><br/> Oba klíče BEK a zálohovat a šifrovaná.<br/><br/> Protože KEK a klíče BEK jsou zálohovány, v případě potřeby uživatelé s oprávněními obnovit klíče a tajné kódy zpět do služby key vault a obnovit šifrovaný virtuální počítač.<br/><br/> Šifrované klíče a tajné klíče nelze číst neoprávnění uživatelé, nebo v Azure.
+**ADE** | ADE šifruje operačního systému a datové disky pro virtuální počítače Azure.<br/><br/> ADE se integruje s Bitlockerem šifrovacích klíčů (klíče BEK), ochrany ve službě key vault jako tajné kódy, nebo s Azure Key Vault key šifrovacích klíčů (KEK). | Azure Backup podporuje zálohování spravovaných a nespravovaných Azure virtuální počítače jsou šifrované pomocí klíče BEK pouze nebo pomocí klíče BEK spolu s KEK.<br/><br/> Oba klíče BEK a zálohovat a šifrovaná.<br/><br/> Protože KEK a klíče BEK jsou zálohovány, v případě potřeby uživatelé s oprávněními obnovit klíče a tajné kódy zpět do služby key vault a obnovit šifrovaný virtuální počítač.<br/><br/> Šifrované klíče a tajné klíče nelze číst neoprávnění uživatelé, nebo v Azure.
 **SSE** | SSE Azure storage poskytuje šifrování v klidovém stavu tím, že automaticky šifruje data před uložením a dešifruje před načítání. | Azure Backup používá SSE pro šifrování neaktivních dat virtuálních počítačů Azure.
 
 - Zálohování virtuálních počítačů, které jsou šifrované pomocí Bitlockeru šifrovací klíč (klíče BEK) pouze a klíče BEK spolu s Key(KEK) šifrovací klíč je podporováno pro spravované a nespravované virtuální počítače Azure.

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/20/2019
+ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964147"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454737"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -47,7 +47,7 @@ Managed instance kombinuje nejlepší funkce, které jsou k dispozici v Azure SQ
 | --- | --- |
 |Žádný hardware, nákup a správu <br>Není potřeba Správa režie pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatické použití dílčích oprav a verze upgradu <br>Integrace s dalšími službami PaaS dat |99,99 % smlouva SLA o provozuschopnosti  <br>Součástí [vysoké dostupnosti](sql-database-high-availability.md) <br>Data chráněná [automatické zálohování](sql-database-automated-backups.md) <br>Období zákazník možnost konfigurace uchovávání záloh <br>Uživatelem iniciované [zálohy](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Bod v čase obnovení databáze](sql-database-recovery-using-backups.md#point-in-time-restore) funkce |
 |**Zabezpečení a dodržování předpisů** | **Správa**|
-|Izolované prostředí ([integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), jednoho tenanta služby, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), jednotné přihlašování – podpora <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD přihlášení</a> (**ve verzi public preview**) <br>Dodržuje standardy pro dodržování předpisů stejně jako Azure SQL database <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manageru pro automatizaci služby zřizování a škálování <br>Azure portal funkci pro ruční službu zřizování a škálování <br>Data Migration Service
+|Izolované prostředí ([integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), jednoho tenanta služby, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), jednotné přihlašování – podpora <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD objekty serveru (přihlášení)</a> (**ve verzi public preview**) <br>Dodržuje standardy pro dodržování předpisů stejně jako Azure SQL database <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manageru pro automatizaci služby zřizování a škálování <br>Azure portal funkci pro ruční službu zřizování a škálování <br>Data Migration Service
 
 V následující tabulce jsou uvedeny klíčové funkce spravované instance:
 
@@ -150,9 +150,9 @@ Azure Database Migration Service (DMS) nebo nativní obnovení se podporuje migr
 
 ## <a name="azure-active-directory-integration"></a>Integrace Azure Active Directory
 
-Možnost nasazení spravované instance podporuje tradiční přihlášeních SQL server Database engine a přihlašování integrované s Azure Active Directory (AAD). Přihlašovací údaje AAD (**ve verzi public preview**) jsou Azure cloudovou verzi služby místní přihlašovací jména databáze, které používáte ve vašem místním prostředí. Přihlašovací údaje AAD umožňuje určit uživatele a skupiny ze služby Azure Active Directory tenantů jako true rozsahem instance objektů, schopný provádět všechny operace na úrovni instance, včetně mezidatabázové dotazy v rámci stejné spravované instance.
+Možnost nasazení spravované instance podporuje tradiční přihlášeních SQL server Database engine a přihlašování integrované s Azure Active Directory (AAD). Azure AD objekty serveru (přihlášení) (**ve verzi public preview**) jsou Azure cloudovou verzi služby místní přihlašovací jména databáze, které používáte ve vašem místním prostředí. Azure AD objekty serveru (přihlášení) vám umožní zadat uživatele a skupiny ze služby Azure Active Directory tenantů jako true rozsahem instance objektů, schopný provádět všechny operace na úrovni instance, včetně mezidatabázové dotazy v rámci stejného spravované instance.
 
-Novou syntaxi se používá k vytvoření přihlášení AAD (**ve verzi public preview**), **z EXTERNÍHO poskytovatele**. Další informace o syntaxi najdete v tématu <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>a zkontrolujte [zřízení správce Azure Active Directory pro spravovanou instanci](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) článku.
+Novou syntaxi se používá k vytvoření služby Azure AD objekty serveru (přihlášení) (**ve verzi public preview**), **z EXTERNÍHO poskytovatele**. Další informace o syntaxi najdete v tématu <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>a zkontrolujte [zřízení správce Azure Active Directory pro spravovanou instanci](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) článku.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 

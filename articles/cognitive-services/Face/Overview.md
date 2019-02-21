@@ -2,33 +2,36 @@
 title: Co je rozhraní API pro rozpoznávání tváře?
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí služby Rozpoznávání tváře rozpoznávat a analyzovat tváře na obrázcích.
-author: SteveMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 10/29/2018
-ms.author: sbowles
-ms.openlocfilehash: 655234bfec650ef027e325ff8df23fe91eecfd43
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861048"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455972"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
 
 Rozhraní API Azure pro rozpoznávání tváře je služba Cognitive Services, která poskytuje algoritmy pro detekci, rozpoznávání a analýzu lidských tváří na obrázcích. Schopnost zpracovávat informace o lidských tvářích je důležitá v řadě různých scénářů softwaru, jako jsou zabezpečení, přirozené uživatelské rozhraní, analýza a správa obsahu obrázků, mobilní aplikace a robotika.
 
-Rozhraní API pro rozpoznávání tváře poskytuje několik různých funkcí, které jsou popsané v následujících částech. Pokračujte ve čtení a získejte o nich další informace, abyste mohli určit, jestli vyhovují vašim potřebám.
+Rozhraní API pro rozpoznávání tváře poskytuje několik různých funkcí, které jsou popsané v následujících částech. Přečtěte si další informace o jednotlivých.
 
 ## <a name="face-detection"></a>Rozpoznávání tváře
 
-Rozhraní API pro rozpoznávání tváře dokáže rozpoznat lidské tváře na obrázku a vrátit souřadnice obdélníků jejich výskytu. Volitelně může detekce obličeje extrahovat řadu atributů souvisejících s obličejem, jako je póza, pohlaví, věk, pozice hlavy, vousy nebo brýle.
+Rozhraní API pro rozpoznávání tváře dokáže rozpoznat lidské tváře na obrázku a vrátit souřadnice obdélníků jejich výskytu. Rozpoznávání tváře můžete volitelně extrahovat řadu souvisejících s face atributům, jako je pozice, hlavní pozice, pohlaví, věk, emoce, vousy a brýlí.
 
 ![Obrázek ženy a muže s vykreslenými obdélníky kolem jejich tváří a zobrazeným věkem a pohlavím](./Images/Face.detection.jpg)
 
-Funkce detekce obličeje je k dispozici také prostřednictvím [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale pokud chcete s daty o tvářích provádět další operace, měli byste použít rozhraní API pro rozpoznávání tváře (tuto službu). Další informace o detekci obličeje najdete v tématu věnovaném [rozhraní API pro rozpoznávání](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+> [!NOTE] 
+> Funkce detekce obličeje je k dispozici také prostřednictvím [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale pokud chcete s daty o tvářích provádět další operace, měli byste použít rozhraní API pro rozpoznávání tváře (tuto službu). 
+
+Další informace o detekci obličeje najdete v tématu věnovaném [rozhraní API pro rozpoznávání](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 ## <a name="face-verification"></a>Ověření tváře
 

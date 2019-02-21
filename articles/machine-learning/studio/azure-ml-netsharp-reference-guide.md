@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: be6c04fe31aaa8d4b9081942b054575ff548cf5a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2051a14532f00f24be0c8cb0ca03a7b2b4078a45
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300366"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457009"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
@@ -56,7 +56,7 @@ Kromě toho Net # podporuje následující čtyři typy sad rozšířeného při
 
 ## <a name="supported-customizations"></a>Podporovaná vlastní nastavení
 
-Architektura modely neuronových sítí, které vytvoříte ve službě Azure Machine Learning je možné výrazně přizpůsobit pomocí Net #. Můžete:
+Architektura modely neuronových sítí, které vytvoříte v Azure Machine Learning Studio je možné výrazně přizpůsobit pomocí Net #. Můžete:
 
 + Vytvoření skrytými vrstvami a řídí počet uzlů v každé vrstvě.
 + Zadejte, jak mají být připojené k sobě navzájem vrstvy.

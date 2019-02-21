@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/08/2019
+ms.date: 02/20/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ae421ac3f87a16fc6fd2e5f3e89c13fcae50dbf8
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311626"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453048"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -45,17 +45,17 @@ Můžete analýze obrázků můžete rozpoznat a poskytují přehled o jejich vi
 
 ## <a name="extract-text-from-images"></a>Rozbalte text z obrázků
 
-Pomocí Počítačového zpracování obrazu můžete z obrázku [extrahovat text s využitím technologie OCR](concept-extracting-text-ocr.md) do strojově čitelného proudu znaků. V případě potřeby technologie OCR opraví otočení rozpoznaného textu ve stupních okolo vodorovné osy obrázku a poskytne souřadnice jednotlivých slov. Technologie OCR podporuje 25 jazyků a automaticky rozpoznává jazyk extrahovaného textu.
+Můžete použít pro počítačové zpracování obrazu k [extrahovat text pomocí optické rozpoznávání znaků (OCR)](concept-extracting-text-ocr.md) z bitové kopie do datového proudu Strojově čitelný znaků. V případě potřeby OCR opravuje otočení rozpoznaný text a poskytuje souřadnice rámec jednotlivých slov. OCR podporuje 25 jazycích a jazyk textové rozpoznaných se detekuje automaticky.
 
-Na obrázku můžete také [rozpoznávat tištěný a rukou psaný text](concept-recognizing-text.md). Počítačové zpracování obrazu dokáže rozpoznat a extrahovat tištěný i rukou psaný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou například účtenky, plakáty, vizitky, dopisy a tabule. Rozpoznávání tištěného a rukou psaného textu je ve verzi Preview a jediným podporovaným jazykem je angličtina.  
+Můžete také [rozpoznat tištěné a rukou psaný text](concept-recognizing-text.md) v obraze. Počítačové zpracování obrazu dokáže rozpoznat a extrahovat tištěný i rukou psaný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou například účtenky, plakáty, vizitky, dopisy a tabule. V současné době rozpoznávání tištěné a rukou psaný text je ve verzi preview a jediný podporovaný jazyk je angličtina. 
 
 ## <a name="moderate-content-in-images"></a>Moderování obsahu v obrázcích
 
-Pomocí Počítačového zpracování obrazu můžete na obrázku [detekovat nevhodný obsah a obsah pro dospělé](concept-detecting-adult-content.md) díky tomu, že hodnotí, s jakou pravděpodobností daný obrázek obsahuje nevhodný obsah nebo obsah pro dospělé a pro obojí generuje skóre spolehlivosti. Filtr detekce nevhodného obsahu a obsahu pro dospělé je možné podle potřeby nastavit na posuvné stupnici.
+Můžete použít pro počítačové zpracování obrazu k [detekci obsahu pro dospělé nebo pikantního obsahu](concept-detecting-adult-content.md) v image a vrátit skóre spolehlivosti pro obojí. Filtr detekce nevhodného obsahu a obsahu pro dospělé je možné podle potřeby nastavit na posuvné stupnici.
 
 ## <a name="use-containers"></a>Použití kontejnerů
 
-[Kontejnery pro počítačové zpracování obrazu](computer-vision-how-to-install-containers.md) rozpoznat místně, tisk a rukou psaný text nainstalováním standardizované kontejner Dockeru blíž ke svým datům.
+[Kontejnery pro počítačové zpracování obrazu](computer-vision-how-to-install-containers.md) rozpoznat tištěné a rukou psaný text místně nainstalováním standardizované kontejner Dockeru blíž ke svým datům.
 
 ## <a name="image-requirements"></a>Požadavky image
 

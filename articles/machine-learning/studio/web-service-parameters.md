@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 337e7a848b6aa141ecf4f96cd4f8f391be35a619
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b216242b5c1c093c5f508adce04ef7b4bec4d1e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475529"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453184"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning Studio
 Webové služby Azure Machine Learning je vytvořen a publikujte experiment, který obsahuje moduly s konfigurovatelné parametry. V některých případech můžete změnit chování modulu, zatímco je webová služba spuštěna. *Webová služba parametry* umožňují provést tuto úlohu. 
@@ -57,7 +57,7 @@ Jako příklad předpokládejme, že máme experimentu s [exportovat Data] [ wri
 
 3. Klikněte na ikonu napravo **cestu k začátku s parametrem kontejneru objektů blob**. Vypadá takto:
    
-   ![Ikona webové parametr služby][icon]
+   ![Ikona webové parametr služby](./media/web-service-parameters/icon.png)
    
    Vyberte "Nastavit jako parametr webové služby".
    
@@ -65,7 +65,7 @@ Jako příklad předpokládejme, že máme experimentu s [exportovat Data] [ wri
 4. Přejmenovat parametr webové služby, klikněte na název, zadejte "Cestu k objektu Blob" a stiskněte klávesu **Enter** klíč. 
 5. Zadejte výchozí hodnotu pro parametr webové služby, klikněte na ikonu napravo od názvu, vyberte "Zadat výchozí hodnotu", zadejte hodnotu (například "container1/output1.csv") a stiskněte klávesu **Enter** klíč.
    
-   ![Parametr webové služby][parameter]
+   ![Parametr webové služby](./media/web-service-parameters/parameter.png)
 6. Klikněte na **Run** (Spustit). 
 7. Klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** nasadit webovou službu.
 
@@ -78,11 +78,6 @@ Uživatelské web service můžete nyní zadat nové místo pro [exportovat Data
 Podrobnější příklad naleznete v tématu [parametrů webové služby](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) položku [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
 Další informace o přístupu k webové službě Machine Learning najdete v tématu [jak využívat Azure Machine Learning webové služby](consume-web-services.md).
-
-<!-- Images -->
-[icon]: ./media/web-service-parameters/icon.png
-[parameter]: ./media/web-service-parameters/parameter.png
-
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0f522897f3d3b3261045f1c14387af53ebf4ad9d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e782afb971f95a654119d9817edeef02642bee9e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429583"
+ms.locfileid: "56447561"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure na trezor služby Recovery Services
 
@@ -108,7 +108,7 @@ Pokud nemáte účet proxy systému, nastavte jeden následujícím způsobem:
 1. Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
 
 2. Spustit **PsExec.exe -i -s cmd.exe** spustit příkazový řádek pod účtem system.
-3. Spusťte prohlížeč v kontextu systému. Příklad: **ProgramFiles%\Internet Explorer\iexplore.exe** pro aplikaci Internet Explorer.  
+3. Spusťte prohlížeč v kontextu systému. Příklad: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** pro aplikaci Internet Explorer.  
 4. Definujte nastavení proxy serveru.
     - Na počítačích s Linuxem:
         - Přidejte tento řádek, který **/etc/prostředí** souboru:
@@ -117,7 +117,7 @@ Pokud nemáte účet proxy systému, nastavte jeden následujícím způsobem:
             - **HttpProxy.Host=proxy IP adresa**
             - **HttpProxy.Port=proxy port**
     - U počítačů s Windows, v nastavení prohlížeče určí, že má být použit proxy server. Pokud aktuálně používáte proxy server na uživatelský účet, můžete použít tento skript použijte nastavení na úrovni účtu system.
-        ```
+        ```powershell
        $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
        Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
        Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
@@ -145,7 +145,7 @@ Na skupiny zabezpečení sítě **NSF uzamčení**, povolit provoz z jakéhokoli
 - Následující skript prostředí PowerShell poskytuje příklad pro povolení provozu.
 - Místo povolení odchozích všechny veřejné internetové adresy, můžete určit rozsah IP adres (-DestinationPortRange), nebo použijte značku storage.region služby.   
 
-    ```
+    ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
     Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
     ```
@@ -237,7 +237,7 @@ Zjištění virtuálních počítačů v předplatném a konfiguraci zálohován
 
 Po povolení zálohování:
 
-- Prvotní zálohování zálohování spustí podle vašeho plánu zálohování.
+- Prvotní zálohování spustí podle vašeho plánu zálohování.
 - Služba Backup nainstaluje rozšíření zálohování, jestli je virtuální počítač spuštěný.
     - Spuštěný virtuální počítač poskytuje největší šanci získání bodu obnovení, který je konzistentní v rámci aplikace.
     -  Ale i v případě, že je vypnutý a rozšíření nejde nainstalovat je zálohování virtuálního počítače. To se označuje jako *offline virtuálního počítače*. V takovém případě bude bod obnovení *konzistentní pro případ chyby*.

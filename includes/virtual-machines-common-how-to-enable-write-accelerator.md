@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 6/8/2018
+ms.date: 02/20/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 733d2896ef15d2e78073268e263a144ea25846ec
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98231ab55ce66f06d591dc9c933e4790460625c8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985397"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56458436"
 ---
 # <a name="enable-write-accelerator"></a>Povolení akcelerátoru zápisu
 
@@ -42,17 +42,17 @@ Při použití akcelerátorem zápisu pro Azure disk nebo virtuální pevný dis
 
 - Premium diskové mezipaměti musí být nastavena na hodnotu 'None' nebo "Jen pro čtení". Všechny jiné režimy ukládání do mezipaměti nejsou podporovány.
 - Snímek nejsou aktuálně podporovány pro disky s povoleným akcelerátorem zápisu. Při zálohování služba Azure Backup automaticky vyloučí s povoleným akcelerátorem zápisu disky připojené k virtuálnímu počítači.
-- Menší velikost vstupně-výstupních operací (< = 32 KiB) trvá akcelerované cestu. V úloze situacích, kde data prochází hromadné načtení nebo pokud vyrovnávacích pamětí protokolu transakce různých DBMS jsou vyplněny ve větší míře před získávání trvale uložena do úložiště, je pravděpodobné, vstupně-výstupních operací zapsána do disku nejde akcelerované cestu.
+- Menší velikost vstupně-výstupních operací (< = 512 KiB) trvá akcelerované cestu. V úloze situacích, kde data prochází hromadné načtení nebo pokud vyrovnávacích pamětí protokolu transakce různých DBMS jsou vyplněny ve větší míře před získávání trvale uložena do úložiště, je pravděpodobné, vstupně-výstupních operací zapsána do disku nejde akcelerované cestu.
 
 Existují omezení Azure Premium Storage VHD na virtuální počítač, který může podporovat akcelerátorem zápisu. Aktuální omezení platí pro:
 
 | SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Počet disků akcelerátorem zápisu | Zápis disku akcelerátoru IOPS na virtuální počítač |
 | --- | --- | --- |
-| M128ms, 128s | 16 | 8000 |
-| M64s M64ms M64ls, | 8 | 4000 |
-| M32ms M32s M32ls M32ts, | 4 | 2000 |
-| M16ms, M16s | 2 | 1000 |
-| M8ms M8s | 1 | 500 |
+| M128ms, 128s | 16 | 20000 |
+| M64s M64ms M64ls, | 8 | 10000 |
+| M32ms M32s M32ls M32ts, | 4 | 5000 |
+| M16ms, M16s | 2 | 2500 |
+| M8ms M8s | 1 | 1250 |
 
 Jsou na limity IOPS na virtuální počítač a *není* na disk. Všechny disky akcelerátorem zápisu sdílet stejný limit vstupně-výstupních operací na virtuální počítač.
 

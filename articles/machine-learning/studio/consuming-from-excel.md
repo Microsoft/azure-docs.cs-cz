@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989419"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453116"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Využívání webové služby Azure Machine Learning Studio z Excelu
 
@@ -34,7 +34,7 @@ Jakmile budete mít webovou službu, klikněte na **webových služeb** části 
 
 1. Na **řídicí panel** kartě je řádek pro webovou službu **žádostí a odpovědí** služby. Pokud tato služba má jeden výstup, měli byste vidět **stáhněte si Excelový sešit** odkaz v daném řádku.
    
-    ![][1]
+    ![](./media/consuming-from-excel/excellink.png)
 2. Klikněte na **stáhněte si Excelový sešit**.
 
 **Nové webové služby**
@@ -47,13 +47,13 @@ Jakmile budete mít webovou službu, klikněte na **webových služeb** části 
 1. Otevřete sešit.
 2. Zobrazí se upozornění zabezpečení. Klikněte na **povolit úpravy** tlačítko.
    
-    ![][2]
+    ![](./media/consuming-from-excel/enableeditting.png)
 3. Zobrazí se upozornění zabezpečení. Klikněte na **povolit obsah** možnost spouštět makra tabulky.
    
-    ![][3]
+    ![](./media/consuming-from-excel/enablecontent.png)
 4. Jakmile jsou povolená makra, je vygenerována tabulku. Sloupce v modré jsou vyžaduje jako vstup do webové služby RRS nebo **parametry**. Všimněte si výstup služby RRS **PŘEDPOVĚDĚT hodnoty** zeleně. Když jsou vyplněny všechny sloupce daného řádku, sešit automaticky volá rozhraní API pro vyhodnocení a zobrazí skóre výsledky.
    
-    ![][4]
+    ![](./media/consuming-from-excel/sampletable.png)
 5. Ke stanovení skóre pro více než jeden řádek, jsou vytvářeny výplně druhý řádek s daty a předpovězeným hodnotám. I vložením několika řádků najednou.
 
 Vám pomůže některou z funkcí aplikace Excel (grafů, doplňkem power map, podmíněné formátování, atd.) s předpovězeným hodnotám pomáhají vizualizovat data.    
@@ -66,8 +66,3 @@ Volání rozhraní RRS se provádí v těchto dvou případů:
 
 1. První řádek má obsah ve všech jeho **parametry**
 2. Pokaždé, když některý **parametry** změny v řádku, které měly všechny jeho **parametry** zadali.
-
-[1]: ./media/consuming-from-excel/excellink.png
-[2]: ./media/consuming-from-excel/enableeditting.png
-[3]: ./media/consuming-from-excel/enablecontent.png
-[4]: ./media/consuming-from-excel/sampletable.png

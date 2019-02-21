@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 83a8a7f927e78f3524128338d874334ebf0b3df1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 77cd485b7ca7f9965a8baf9026b68060067d6ebe
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883997"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453932"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning tahák pro Azure Machine Learning Studio
 
-**Azure Machine Learning algoritmus Ošidit list** pomáhá vybrat správné algoritmu pro model prediktivní analýzy.
+**Aktualizace Azure Machine Learning Studio algoritmus Ošidit list** pomáhá vybrat správné algoritmu pro model prediktivní analýzy.
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) má velké knihovny algoritmů z ***regrese***, ***klasifikace***, ***clustering***, a  ***detekce anomálií*** rodiny. Každý se zaměřuje na řešení jiného typu problému machine learning.
 
@@ -27,14 +27,12 @@ ms.locfileid: "55883997"
 
 **Stáhněte si tahák tady: [Ve službě Machine Learning Tahák k algoritmům (11 × 17 palců)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![Strojové učení tahák k algoritmům: Zjistěte, jak zvolit algoritmus Machine Learning.][cheat-sheet]
-
-[cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
+![Strojové učení tahák k algoritmům: Zjistěte, jak zvolit algoritmus Machine Learning.](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png)
 
 Stáhnout a vytisknout Machine Learning Studio algoritmus Ošidit listu ve velikosti tabloid zachovat po ruce a získat pomoc s výběrem algoritmus.
 
 > [!NOTE]
-> Pomoc při používání tento tahák pro výběr správné algoritmus plus hlubší diskuzi o různých typech algoritmů strojového učení a jak se používají, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
+> Pomoc při používání tento tahák pro výběr správné algoritmus plus hlubší diskuzi o různých typech algoritmů strojového učení a jak se používají, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Poznámky a definice terminologie pro algoritmus Machine Learning Studio tahák
 
@@ -44,7 +42,7 @@ Stáhnout a vytisknout Machine Learning Studio algoritmus Ošidit listu ve velik
 
 * Existují tři hlavní kategorie služby machine learning: **pod dohledem learning**, **supervize**, a **zpětnovazebnému učení**.
 
-  * V **pod dohledem learning**, každý datový bod je označené nebo související s kategorií nebo hodnoty, které vás zajímají.  Příklad popisku kategorií se přiřazení bitovou kopii jako "cat" nebo "pes.  Příklad popisku hodnoty je prodejní cena přidružené používané automobilu. Cílem učení je cílem studovat mnoho označených příklady takových a pak bude schopen provést předpovědi budoucích datových bodů. Například identifikující novou fotografie s správné zvířat nebo přiřazení k jiné automobilů přesné prodejní ceny. Toto je Oblíbené a vhodné typ služby machine learning. Všechny moduly v Azure Machine Learning jsou pod dohledem učení se supervizí s výjimkou [Clustering K-Means][k-means-clustering].
+  * V **pod dohledem learning**, každý datový bod je označené nebo související s kategorií nebo hodnoty, které vás zajímají.  Příklad popisku kategorií se přiřazení bitovou kopii jako "cat" nebo "pes.  Příklad popisku hodnoty je prodejní cena přidružené používané automobilu. Cílem učení je cílem studovat mnoho označených příklady takových a pak bude schopen provést předpovědi budoucích datových bodů. Například identifikující novou fotografie s správné zvířat nebo přiřazení k jiné automobilů přesné prodejní ceny. Toto je Oblíbené a vhodné typ služby machine learning. Všechny moduly v Azure Machine Learning Studio jsou pod dohledem učení se supervizí s výjimkou [Clustering K-Means][k-means-clustering].
 
   * V **supervize**, datové body mají se k nim má přiřazené žádné popisky. Místo toho je cílem algoritmus učení bez dohledu uspořádání dat nějakým způsobem nebo k popisu struktury. To může znamenat seskupení do clusterů, stejně jako K-means nebo vyhledání různé způsoby prohlížení komplexních datových, aby se zobrazovala jednodušší.
 

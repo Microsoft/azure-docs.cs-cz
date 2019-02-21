@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/12/2019
+ms.date: 02/20/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5abc13a39db3f1061e3df76857645d8075feade5
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1a15600889a3c5a3c0ca587c78499f32be0ab8ed
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245748"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456703"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Azure IoT Edge
 
@@ -31,7 +31,7 @@ Pro moduly napsanými v C#, Node.js nebo Java, existují dva způsoby ladění m
 
 Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) první a pak přidejte následující rozšíření:
 
-- [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+- [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Rozšíření docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Visual Studio rozšíření specifické pro jazyk, kterou vyvíjíte v:
   - C#, včetně Azure Functions: [Rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
@@ -262,6 +262,7 @@ Při ladění moduly, tímto způsobem, jsou spuštěné moduly na modul runtime
       import ptvsd
       ptvsd.enable_attach(('0.0.0.0',  5678))
       ```
+
    - Přidejte následující jediný řádek kódu do zpětného volání, kterou chcete ladit:
 
       ```python
@@ -350,6 +351,12 @@ Vám může přeskočit, pokud moduly jsou spuštěny na stejném počítači ja
 
 > [!NOTE]
 > Předchozí příklad ukazuje, jak ladit moduly IoT Edge v kontejnerech. Přidá do vašeho modulu kontejneru vystavené porty `createOptions` nastavení. Po dokončení ladění modulů, doporučujeme že odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
+
+## <a name="build-and-debug-a-module-remotely"></a>Sestavení a vzdálené ladění modulu
+
+Nedávné změny v Dockeru i Moby moduly pro podporu připojení SSH a nové nastavení v nástrojích Azure IoT, umožňující vkládání nastavení prostředí do palety příkazů Visual Studio Code a Azure IoT Edge terminály teď můžete vytvářet a ladit modulů na vzdálených zařízeních.
+
+Najdete v tomto [blogu pro vývojáře IoT](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) Další informace a podrobné pokyny.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -3,27 +3,27 @@ title: Získání připojovacího řetězce - Azure Event Hubs | Dokumentace Mic
 description: Tento článek obsahuje pokyny, jak získat připojovací řetězec, který můžou klienti použít k připojení k Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: ee4bd5d2acf1a029486f83ee721b9e1f72347958
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/19/2019
+ms.author: spelluru
+ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238143"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445096"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Získání připojovacího řetězce služby Event Hubs
 
-Pokud chcete používat Event Hubs, je potřeba vytvořit obor názvů služby Event Hubs. Obor názvů je kontejner oboru, který může zastřešovat i více Event Hubs / témat Kafka. Tento obor názvů poskytuje jedinečnou [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Po vytvoření oboru názvů můžete získat připojovací řetězec potřebný ke komunikaci se službou Event Hubs.
+Pokud chcete používat Event Hubs, je potřeba vytvořit obor názvů služby Event Hubs. Obor názvů je kontejner oboru pro více služby event hubs nebo témat Kafka. Tento obor názvů poskytuje jedinečnou [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Po vytvoření oboru názvů můžete získat připojovací řetězec potřebný ke komunikaci se službou Event Hubs.
 
 Připojovací řetězec pro službu Azure Event Hubs má následující komponenty vložit v ní,
 
-* Plně kvalifikovaný název domény = plně kvalifikovaný název domény EventHubs oboru názvů, který jste vytvořili (to bude zahrnovat název oboru názvů EventHubs, za nímž následuje servicebus.windows.net)
+* Plně kvalifikovaný název domény = plně kvalifikovaný název domény EventHubs oboru názvů, který jste vytvořili (zahrnuje název oboru názvů EventHubs, za nímž následuje servicebus.windows.net)
 * SharedAccessKeyName = název, který jste zvolili pro vaši aplikaci klíče SAS
 * SharedAccessKey = vygenerovanou hodnotu klíče.
 
@@ -37,30 +37,29 @@ Příklad připojovacího řetězce vypadat `Endpoint=sb://dummynamespace.servic
 Tento článek vás provede vás provedou různými způsoby se dá získat připojovací řetězec.
 
 ## <a name="get-connection-string-from-the-portal"></a>Získání připojovacího řetězce z portálu
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+2. Vyberte **všechny služby** v navigační nabídce vlevo. 
+3. Vyberte **Event Hubs** v **Analytics** oddílu. 
+4. V seznamu event hubs vyberte Centrum událostí.
+6. Na **Event Hubs Namespace** stránce **sdílené zásady přístupu** v nabídce vlevo.
 
-Jakmile máte obor názvů Event Hubs, oddílu přehled portálu vám může poskytnout připojovací řetězec jak je znázorněno níže:
+    ![Sdílené zásady přístupu položky nabídky](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+7. Vyberte **sdílené zásady přístupu** v seznamu zásad. Výchozí jednu s názvem: **RootManageSharedAccessPolicy**. Můžete přidat zásadu s příslušnými oprávněními (čtení, zápisu) a použít tuto zásadu. 
 
-![Připojovací řetězec centra událostí](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+    ![Event Hubs sdílené zásady přístupu](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
+8. Vyberte **kopírování** vedle **připojovací řetězec – primární klíč** pole. 
 
-Po kliknutí na odkaz řetězec připojení v oddílu přehled se otevře karta Zásady SAS, jak je znázorněno na následujícím obrázku:
-
-![Zásady SAS služby Event Hubs](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-
-Můžete přidat nové zásady SAS a získání připojovacího řetězce nebo použít výchozí zásada, která je už pro vás vytvořili. Po otevření zásady připojovací řetězec se získá jak je znázorněno následující obrázek:
-
-![Získání připojovacího řetězce služby Event Hubs](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
+    ![Event Hubs – získání připojovacího řetězce](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Získávání připojovacího řetězce pomocí Azure Powershellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Get-AzEventHubNamespaceKey můžete použít k získání připojovacího řetězce pro název konkrétní pravidlo, jak je znázorněno níže:
+Můžete použít [Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) k získání připojovacího řetězce pro název konkrétní pravidlo, jak je znázorněno níže:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
-
-Odkazovat na [modulu Powershellu pro Azure Event Hubs](https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey) další podrobnosti.
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Získávání připojovacího řetězce pomocí Azure CLI
 Chcete-li získat připojovací řetězec pro obor názvů můžete použít následující:
@@ -69,7 +68,7 @@ Chcete-li získat připojovací řetězec pro obor názvů můžete použít ná
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-Odkazovat na [Azure CLI pro službu Event Hubs](https://docs.microsoft.com/cli/azure/eventhubs) Další informace.
+Další informace o příkazech rozhraní příkazového řádku Azure pro službu Event Hubs najdete v tématu [Azure CLI pro službu Event Hubs](/cli/azure/eventhubs).
 
 ## <a name="next-steps"></a>Další postup
 

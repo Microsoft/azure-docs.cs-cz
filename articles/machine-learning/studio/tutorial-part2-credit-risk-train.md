@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8ffcfc86823d46e65e116eed86ef35fcba2a99bf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008010"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453474"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>Kurz 2: Trénování modelů úvěrové riziko - Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ V tomto kurzu provedete rozšířené pohled na proces vývoje řešení predikt
 
 Předpokládejme, že potřebujete předpovědět úvěrové riziko u jednotlivých zákazníků na základě údajů, které uvedli v žádosti o úvěr.  
 
-Posouzení úvěrového rizika je komplexní problém, ale v tomto kurzu se tak si ho Zjednodušte trochu. Budete ho používat jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí služby Microsoft Azure Machine Learning. Budete používat Azure Machine Learning Studio a webovou službou Machine Learning pro toto řešení.  
+Posouzení úvěrového rizika je komplexní problém, ale v tomto kurzu se tak si ho Zjednodušte trochu. Budete ho používat jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio. Budete používat Azure Machine Learning Studio a webovou službou Machine Learning pro toto řešení.  
 
 V tomto kurzu třemi částmi začnete s veřejně dostupnými daty úvěrového rizika.  Vyvíjejte a natrénujeme prediktivní model.  Nakonec tento model nasadíme jako webovou službu.
 
@@ -191,9 +191,9 @@ Napravo od grafu, klikněte na tlačítko **skóre datovou sadu** nebo **skóre 
 Prozkoumáním těchto hodnot můžete rozhodnout, které model je nejblíže získáte výsledky, které hledáte. Můžete přejít zpět a iterace experimentu změnou hodnoty parametrů v různých modelech. 
 
 Vědy a grafiky interpretace tyto výsledky a optimalizace výkonu modelu je mimo rámec tohoto návodu. Potřebujete další pomoc může přečíst následující články:
-- [Jak vyhodnotit výkon modelu ve službě Azure Machine Learning](evaluate-model-performance.md)
-- [Vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning](algorithm-parameters-optimize.md)
-- [Interpretace výsledků modelu ve službě Azure Machine Learning](interpret-model-results.md)
+- [Jak vyhodnotit výkon modelu ve službě Azure Machine Learning Studio](evaluate-model-performance.md)
+- [Vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning Studio](algorithm-parameters-optimize.md)
+- [Interpretace výsledků modelu v nástroji Azure Machine Learning Studio](interpret-model-results.md)
 
 > [!TIP]
 > Pokaždé, když spuštění experimentu záznam danou iteraci, zůstane v historii spuštění. Můžete zobrazit tyto iterace a snadnému návratu na kteroukoli z nich, kliknutím na **zobrazit HISTORII spuštění** dole na plátně. Můžete také kliknout na **předchozího spuštění** v **vlastnosti** se vraťte na iteraci bezprostředně před tím máte otevřený.

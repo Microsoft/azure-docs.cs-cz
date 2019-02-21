@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e56cc5a893c5a88a5b64466d6feceb20ccd8cdc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167843"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445538"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace platformy Zendesk pro automatické zřizování uživatelů
 
@@ -118,7 +118,8 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
     *   V **domény** pole, naplnění subdoménu tenanta Zendesku.
     Příklad: Pro účet s adresou URL tenanta https://my-tenant.zendesk.com, bude vaše subdoménu **Moje tenanta**.
 
-6. **Tajný klíč tokenu** Zendesku. váš účet se nachází v **správce > rozhraní API > Nastavení**. 
+6. **Tajný klíč tokenu** Zendesku. váš účet se nachází v **správce > rozhraní API > Nastavení**.
+   Ujistěte se, že **přístup pomocí tokenu** je nastavena na **povoleno**.
 
     ![Zřizování platformy Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png) ![zřizování Zendesku.](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 

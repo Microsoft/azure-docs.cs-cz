@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: c3a737bdd9978e6cb02e3e8b7a34407eb1dd8fb6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fd301967800f67d95c12f1689981b2dfd8eb2d80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380958"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452759"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Tento článek představuje základní koncepty, které poskytují úložiště 
 
 ## <a name="volumes"></a>Svazky
 
-Aplikace je často potřeba mít možnost ukládat a načítat data. Jednotlivé podů Kubernetes obvykle zpracovává jako dočasné, uvolnitelné prostředky, různé přístupy jsou k dispozici pro použití aplikací a zachovat data podle potřeby. A *svazku* představuje způsob, jak uložení, načtení a uložení dat mezi pody a v životním cyklu aplikace.
+Aplikace je často potřeba mít možnost ukládat a načítat data. Jednotlivé podů Kubernetes obvykle zpracovává jako dočasné, uvolnitelné prostředky, jsou různé přístupy k dispozici pro aplikace pro použití a uložení dat podle potřeby. A *svazku* představuje způsob, jak uložení, načtení a uložení dat mezi pody a v životním cyklu aplikace.
 
 Tradiční svazky k ukládání a načítání dat jsou vytvořeny jako prostředky Kubernetesu se opírá o Azure Storage. Můžete ručně vytvořit tyto datové svazky pro přiřazení podů přímo nebo mají vytvořit automaticky Kubernetes. Tyto datové svazky můžete použít Azure Disks nebo soubory Azure:
 
@@ -44,7 +44,7 @@ V systému Kubernetes můžete svazky představují víc než jenom tradiční d
 
 ## <a name="persistent-volumes"></a>Trvalé svazky
 
-Svazky jsou definovány a vytvořen jako součást životního cyklu pod existovat pouze dokud je neodstraníte pod. Podů často očekávat, že jejich úložiště zůstat, pokud pod během údržby, zejména v StatefulSets přeplánování na jiného hostitele. A *trvalý svazek* (PV) je úložiště prostředek vytvořen a spravován společností, která mohou existovat nad rámec životnost jednotlivých pod rozhraní Kubernetes API.
+Svazky, které jsou definovány a vytvořili jako součást životního cyklu pod existovat pouze dokud je neodstraníte pod. Podů často očekávat, že jejich úložiště zůstat, pokud pod během údržby, zejména v StatefulSets přeplánování na jiného hostitele. A *trvalý svazek* (PV) je úložiště prostředek vytvořen a spravován společností, která mohou existovat nad rámec životnost jednotlivých pod rozhraní Kubernetes API.
 
 Azure disky nebo soubory se používají k zajištění PersistentVolume. Jak je uvedeno v předchozí části na svazcích, je potřeba souběžný přístup k data nebo úroveň výkonu často určena výběr disků nebo soubory.
 

@@ -13,20 +13,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: d3bdcc267c55434a71c915f7d4e575d47522986b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6cc965f8e775e02e9dec9f610516739a9a2c1936
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110570"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448003"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
 Pokud chcete spravovat přístup k prostředkům Azure, potřebujete mít odpovídající roli správce. Azure má autorizaci systém volá řízení přístupu na základě role (RBAC) s několik předdefinovaných rolí, které můžete vybrat z. Můžete přiřadit tyto role v různých oborech, jako je například skupiny pro správu, předplatné nebo skupinu prostředků.
 
-Microsoft doporučuje při správě přístupu k prostředkům pomocí RBAC. Pokud stále používáte model nasazení classic, budete však muset použít klasický správce předplatného. Další informace najdete v tématu [Azure Resource Manageru a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md) a [správci předplatného Azure classic](../role-based-access-control/classic-administrators.md).
+Microsoft doporučuje při správě přístupu k prostředkům pomocí RBAC. Nicméně pokud stále používáte Klasický model nasazení a správu klasických prostředků pomocí [modulu prostředí PowerShell služby správy Azure](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure), budete muset použít klasického správce. 
+
+> [!TIP]
+> Pokud používáte pouze na webu Azure portal ke správě klasických prostředků, nebudete muset použít klasického správce.
+
+Další informace najdete v tématu [Azure Resource Manageru a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md) a [správci předplatného Azure classic](../role-based-access-control/classic-administrators.md).
 
 Tento článek popisuje, jak přidat nebo změnit roli správce u uživatele pomocí RBAC v oboru předplatného.
 

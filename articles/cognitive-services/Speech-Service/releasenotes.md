@@ -8,17 +8,70 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: a5b8cd7da465bc2dc58c2b89852903669c18bf4b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871791"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446830"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: 2019 Únorová verze
+
+**Nové funkce**
+
+* Sadou SDK pro řeč podporuje výběr vstupní mikrofonu prostřednictvím AudioConfig třídy. Díky tomu datový proud zvukových dat ve službě řeči z jiné než výchozí mikrofonu. Další podrobnosti najdete v dokumentaci popisující [vstupní zvuková zařízení výběr](how-to-select-audio-input-devices.md). To ještě není k dispozici z jazyka JavaScript.
+* Sadou SDK pro řeč teď podporuje Unity v beta verzi. Poskytněte prosím zpětnou vazbu prostřednictvím v části problém [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples). Tato verze podporuje Unity na Windows x86 a x64 (desktop nebo aplikací univerzální platformy Windows) a Android (ARM32/64, x86). Další informace najdete v našich [rychlý start Unity](quickstart-csharp-unity.md).
+
+**Ukázky**
+
+Následující nový obsah je k dispozici v našich [ukázkové úložiště](https://aka.ms/csspeech/samples):
+
+* Další ukázky pro AudioConfig.FromMicrophoneInput.
+* Další ukázky Pythonu pro rozpoznání záměru a převodu.
+* Další ukázky pro IOS pomocí objekt připojení.
+* Další ukázky v Javě pro překlad textů pomocí zvukového výstupu.
+* Nové ukázky pro použití [rozhraní REST API služby Batch určené k transkripci](batch-transcription.md).
+
+**Vylepšení / změny**
+
+* Python
+  * Vylepšené parametr ověření a chybové zprávy v SpeechConfig.
+  * Přidání podpory pro objekt připojení.
+  * Podpora Pythonu 32-bit (x86) na Windows.
+  * Z beta verze je sadou SDK pro řeč pro Python.
+* iOS
+  * Sada SDK je teď integrovaný proti sady iOS SDK verze 12.1.
+  * Sada SDK nyní podporuje iOS verze 9.2 a vyšší.
+  * Zlepšení referenční dokumentaci a opravte několik názvů vlastností.
+* JavaScript
+  * Přidání podpory pro objekt připojení.
+  * Přidání souborů definic typů pro připojené jazyka JavaScript
+  * Počáteční podpora a implementaci pro pomocné parametry frázi.
+  * Vrátí kolekci properties službou JSON pro rozpoznávání
+* Knihovny DLL Windows teď obsahují verzi prostředku.
+
+**Opravy chyb**
+
+* Prázdný proxy uživatelské jméno a heslo pro proxy server nebyly zpracovány správně. V této vydané verzi pokud ji nastavíte proxy uživatelské jméno a heslo pro proxy server na prázdný řetězec, se nebude odeslat při připojování k proxy serveru.
+* ID relace je vytvořena pomocí sady SDK nebyly vždy skutečně náhodného pro některé jazyky&nbsp;/ prostředí. Přidat inicializační generátor náhodných čísel pro tento problém vyřešit.
+* Zlepšení zpracování autorizační token. Pokud chcete použít autorizační token, zadejte v SpeechConfig a nechte prázdné, pokud klíč předplatného. Vytvořte nástroj pro rozpoznávání jako obvykle.
+* V některých případech připojení nebylo správně uvolnění objektu. Tato chyba byla opravena.
+* Ukázková JavaScript byl nastaven na podporují zvukového výstupu pro překlad syntézu také v Safari.
+
+## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
+
+Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly provedeny následující opravy:
+
+* Konec datového proudu na turn.end, ne na speech.end vyvolat.
+* Oprava chyby v zvuku čerpadla, že nebyla plánovat nebude dále odeslat, pokud aktuální odeslání se nezdařilo.
+* Oprava průběžné rozpoznávání s ověřovací token.
+* Oprava chyby pro různé rozlišovač nebo koncové body.
+* Dokumentace k vylepšení.
 
 ## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0: Verze prosince 2018
 

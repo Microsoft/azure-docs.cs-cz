@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488346"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453289"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrace analytics z Excelu do Azure Machine Learning Studio
 
@@ -102,11 +102,11 @@ Naším řešením bylo zprovoznění náš model strojového učení regrese vy
 
 *Řídicího panelu webové služby* část obsahuje ke stažení Excelový sešit. Sešit obsahuje předem formátovaný webové rozhraní API a schémat informace o služby vložené. Po kliknutí na *stáhněte si Excelový sešit*, sešit se otevře, a můžete ji uložit do místního počítače. 
 
-![][1]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 S otevřete sešit zkopírujte předdefinované parametry do modré části, jak je znázorněno níže. Po zadání parametrů, Excel, volá do webové služby Machine Learning a predikované skóre popisků se zobrazí v části zelené Předpovězeným hodnotám. Sešit nadále vytvářet předpovědi pro parametry podle trénovaný model pro všechny položky řádku zadaný v poli parametrů. Další informace o tom, jak tuto funkci používat, naleznete v tématu [využívání webové služby Azure Machine Learning z Excelu](consuming-from-excel.md). 
 
-![][2]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimalizace a další pokusy
 Teď, když jsme měli směrný plán s náš model aplikace Excel, jsme přesunuli dopředu optimalizovat náš Model strojového učení lineární regrese. Jsme použili modulu [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zlepšení našich výběru počáteční data prvky a to nám povedlo dosáhnout zlepšení výkonu 4.6 % znamená absolutní chyba. Pro všechny budoucí projekty budeme používat tuto funkci, která se dá ušetřit nám týdny v iterace v rámci datové atributy k nalezení správné sady funkcí pro modelování. 
