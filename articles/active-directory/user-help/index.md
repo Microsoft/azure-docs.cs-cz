@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: Uživatelská nápověda pro ověřování, aplikace a správu zařízení – Azure Active Directory | Microsoft Docs
-description: Uživatelská nápověda je určená uživatelům, kteří potřebují pomoc s nastavením a použitím bezpečnostních údajů, dvoustupňového ověření, samoobslužného resetování hesla, správou zařízení, aplikací Microsoft Authenticator a portálem Moje aplikace.
+title: 'Uživatelská nápověda pro ověřování, aplikace a správu zařízení – Azure Active Directory | Microsoft Docs'
+description: 'Uživatelská nápověda je určená uživatelům, kteří potřebují pomoc s nastavením a použitím bezpečnostních údajů, dvoustupňového ověření, samoobslužného resetování hesla, správou zařízení, aplikací Microsoft Authenticator a portálem Moje aplikace.'
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,13 +11,8 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af4cf345efe2180249f9c9491e9f66f75ac4514
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188711"
 ---
+
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Uživatelská nápověda pro ověřování, aplikace a správu zařízení
 
 Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bezpečnostních údajů, dvoustupňovým ověřením, získáním informací o postupu při resetování hesla, nastavením a připojením zařízení Azure Active Directory a nastavením a použitím aplikace Microsoft Authenticator a portálu Moje aplikace.
@@ -29,6 +24,62 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
 
 
 <ul class="panelContent cardsF">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nápověda k aplikaci Microsoft Authenticator</h3>
+                        <p>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Přehled</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-download-install">Stažení a instalace aplikace</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-add-account-overview">Přidání vašich účtů</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-sign-in">Přihlášení pomocí aplikace</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-backup-recovery">Zálohování a obnovení přihlašovacích údajů k účtu</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>    
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nápověda k portálu Můj profil (Preview)</h3>
+                        <p>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-overview">Přehled</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-security-info-overview">Správa bezpečnostních údajů</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-recent-activity-page">Zobrazení nedávné přihlašovací aktivity</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">Správa organizací</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">Správa připojených zařízení</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Zobrazení informací souvisejících s ochranou osobních údajů</a><br/>                       
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nápověda k bezpečnostním údajům (Preview)</h3>
+                        <p>
+                        <a href="/azure/active-directory/user-help/user-help-security-info-overview">Přehled</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-signin">Nastavení z výzvy na přihlašovací stránce</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-auth-app">Nastavení ověřovací aplikace</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-text-msg">Nastavení zasílání textových zpráv</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-phone-number">Nastavení telefonních hovorů</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-sign-in">Jak se přihlásit</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
     <li>
         <div class="cardSize">
             <div class="cardPadding">
@@ -61,37 +112,16 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                 </div>
             </div>
         </div>
-    </li>
-<li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Nápověda k bezpečnostním údajům (Preview)</h3>
-                        <p>
-                        <a href="/azure/active-directory/user-help/security-info-setup-auth-app">Nastavení ověřovací aplikace</a><br/>
-                        <a href="/azure/active-directory/user-help/security-info-setup-text-msg">Nastavení zasílání textových zpráv</a><br/>
-                        <a href="/azure/active-directory/user-help/security-info-setup-phone-number">Nastavení telefonních hovorů</a><br/>
-                        <a href="/azure/active-directory/user-help/security-info-manage-settings">Správa bezpečnostních údajů</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-sign-in">Jak se přihlásit</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
+    </li>      
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Nápověda k aplikaci Microsoft Authenticator</h3>
+                        <h3>Nápověda ke správě zařízení</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Přehled</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-download-install">Stažení a instalace aplikace</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-add-account-overview">Přidání vašich účtů</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-sign-in">Přihlášení pomocí aplikace</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-backup-recovery">Zálohování a obnovení přihlašovacích údajů k účtu</a>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Připojení pracovního zařízení</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Registrace vašeho osobního zařízení pro práci</a>
                         </p>
                     </div>
                 </div>
@@ -112,20 +142,5 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                 </div>
             </div>
         </div>
-    </li>
-<li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Nápověda ke správě zařízení</h3>
-                        <p>
-                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Připojení pracovního zařízení</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Registrace vašeho osobního zařízení pro práci</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
+    </li>    
 </ul>

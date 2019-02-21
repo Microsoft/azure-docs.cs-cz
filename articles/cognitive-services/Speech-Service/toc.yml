@@ -23,6 +23,9 @@ items:
       - name: C# (UPW)
         displayName: recognize speech, speech recognition, speech to text, stt, C#, universal windows platform
         href: quickstart-csharp-uwp.md
+      - name: C# (Unity)
+        displayName: recognize speech, speech recognition, speech to text, stt, C#, unity 3d, windows, android, universal windows platform, uwp
+        href: quickstart-csharp-unity.md
       - name: C++ (Windows)
         displayName: recognize speech, speech recognition, speech to text, stt
         href: quickstart-cpp-windows.md
@@ -132,6 +135,9 @@ items:
     href: prepare-transcription.md
   - name: Použití vlastních zvukových streamů
     href: how-to-use-audio-input-streams.md
+  - name: Vyberte vstupní zvukové zařízení.
+    displayName: audio, microphone, input, device
+    href: how-to-select-audio-input-devices.md
   - name: Migrace
     items:
     - name: Z rozhraní API pro zpracování řeči Bingu
@@ -199,7 +205,7 @@ items:
     - name: Licence
       href: https://aka.ms/csspeech/license201809
     - name: Oznámení třetích stran
-      href: https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html
+      href: https://csspeechstorage.blob.core.windows.net/drop/1.3.0/ThirdPartyNotices.html
   - name: Speech Devices SDK
     displayName: roobo, speech devices sdk
     href: speech-devices-sdk.md
@@ -226,9 +232,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: Ochrana osobních údajů a soubory cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: ef61c01dcfd37d384dd098dc739840d52b9d1e5d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6e47177b8fe413f7e74265653e7ee2f8bcb2e9df
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021182"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445724"

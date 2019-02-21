@@ -1,24 +1,19 @@
 ---
 layout: LandingPage
 title: Dokumentace ke správě nákladů a fakturaci Azure | Microsoft Docs
-description: Zjistěte, jak můžete porozumět fakturaci Azure, spravovat a monitorovat využití a náklady a spravovat vaše účty a předplatná.
+description: 'Zjistěte, jak můžete porozumět fakturaci Azure, spravovat a monitorovat využití a náklady a spravovat vaše účty a předplatná.'
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: ''
+ms.assetid: null
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 05/24/2018
-ms.author: cwatson
-ms.openlocfilehash: ed792b03a79d2dcbb77142a51ae2641c8d0bd3ad
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583319"
+ms.date: 02/19/2019
+ms.author: banders
 ---
+
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentace ke správě nákladů a fakturaci Azure
 
 Seznamte se s principy fakturace Azure a naučte se monitorovat využití a náklady a spravovat vaše účty a předplatná.
@@ -50,9 +45,9 @@ Seznamte se s principy fakturace Azure a naučte se monitorovat využití a nák
                         <p>
                         <a href="/azure/billing/billing-getting-started">Jak zabránit neočekávaným nákladům</a><br/>
                         <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Použití značek prostředků</a><br/>
-                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Začínáme s analýzou nákladů – jenom EA</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Vytváření a správa rozpočtů – jenom EA</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Optimalizace doporučení – jenom EA</a>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Začínáme s analýzou nákladů</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Vytváření a správa rozpočtů</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Optimalizace doporučení</a>
                         </p>
                     </div>
                 </div>
@@ -184,5 +179,5 @@ Seznamte se s principy fakturace Azure a naučte se monitorovat využití a nák
             </div>
         </div>
     </li>
-    
+
 </ul>

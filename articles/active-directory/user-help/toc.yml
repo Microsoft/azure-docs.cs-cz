@@ -23,26 +23,6 @@ items:
     href: active-directory-passwords-reset-register.md
   - name: Resetování hesla
     href: user-help-reset-password.md
-- name: Nápověda k bezpečnostním údajům (Preview)
-  items:
-  - name: Přehled
-    href: user-help-security-info-overview.md
-  - name: Nastavení ověřovací aplikace
-    href: security-info-setup-auth-app.md
-  - name: Nastavení zasílání textových zpráv
-    href: security-info-setup-text-msg.md
-  - name: Nastavení telefonních hovorů
-    href: security-info-setup-phone-number.md
-  - name: Nastavení e-mailu
-    href: security-info-setup-email.md
-  - name: Nastavení bezpečnostních otázek
-    href: security-info-setup-questions.md
-  - name: Správa hesel aplikací
-    href: security-info-app-passwords.md
-  - name: Správa bezpečnostních údajů
-    href: security-info-manage-settings.md
-  - name: Jak se přihlásit
-    href: user-help-sign-in.md?toc=./toc.json
 - name: Nápověda k aplikaci Microsoft Authenticator
   items:
   - name: Přehled
@@ -60,21 +40,49 @@ items:
       href: user-help-auth-app-add-non-ms-account.md
     - name: Ruční přidání účtu
       href: user-help-auth-app-add-account-manual.md
-    expanded: true
   - name: Přihlášení pomocí aplikace Microsoft Authenticator
     href: user-help-auth-app-sign-in.md
   - name: Zálohování a obnovení vašich účtů
     href: user-help-auth-app-backup-recovery.md
   - name: Nejčastější dotazy
     href: user-help-auth-app-faq.md
-- name: Nápověda k portálu Moje aplikace
+- name: Nápověda k portálu Můj profil (Preview)
   items:
   - name: Přehled
-    href: user-help-my-apps-overview.md
-  - name: Co je portál Moje aplikace?
-    href: active-directory-saas-access-panel-introduction.md
-  - name: Řešení potíží
-    href: active-directory-saas-access-panel-user-help.md
+    href: myprofile-portal-overview.md
+  - name: Správa bezpečnostních údajů
+    href: user-help-security-info-overview.md
+  - name: Zobrazení přihlašovací aktivity
+    href: myprofile-portal-recent-activity-page.md
+  - name: Správa organizací
+    href: myprofile-portal-organizations-page.md
+  - name: Správa připojených zařízení
+    href: myprofile-portal-devices-page.md
+  - name: Zobrazení informací souvisejících s ochranou osobních údajů
+    href: myprofile-portal-privacy-page.md
+- name: Nápověda k bezpečnostním údajům (Preview)
+  items:
+  - name: Přehled
+    href: user-help-security-info-overview.md
+  - name: Přidání bezpečnostních údajů během přihlašování
+    href: security-info-setup-signin.md
+  - name: Přehled metod přidání nebo aktualizace bezpečnostních údajů
+    href: security-info-add-update-methods-overview.md
+    items:
+    - name: Nastavení ověřovací aplikace
+      href: security-info-setup-auth-app.md
+    - name: Nastavení zasílání textových zpráv
+      href: security-info-setup-text-msg.md
+    - name: Nastavení telefonních hovorů
+      href: security-info-setup-phone-number.md
+    - name: Nastavení e-mailu
+      href: security-info-setup-email.md
+    - name: Nastavení bezpečnostních otázek
+      href: security-info-setup-questions.md
+  - name: Správa hesel aplikací
+    href: security-info-app-passwords.md
+  - name: Jak se přihlásit
+    href: user-help-sign-in.md?toc=./toc.json
 - name: Nápověda ke správě zařízení
   items:
   - name: Přehled
@@ -85,9 +93,17 @@ items:
     href: user-help-register-device-on-network.md
   - name: Řešení potíží se zprávami Nelze se tam dostat
     href: user-help-device-remediation.md
-ms.openlocfilehash: 604b2c204f893bf0abaaec86f85e2159c17a8656
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+- name: Nápověda k portálu Moje aplikace
+  items:
+  - name: Přehled
+    href: user-help-my-apps-overview.md
+  - name: Co je portál Moje aplikace?
+    href: active-directory-saas-access-panel-introduction.md
+  - name: Řešení potíží
+    href: active-directory-saas-access-panel-user-help.md
+ms.openlocfilehash: b7d8c297559736c9f22b118d50423f980302018d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816046"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452570"

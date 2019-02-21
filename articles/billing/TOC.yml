@@ -5,7 +5,7 @@ items:
   items:
   - name: Vysvětlení informací na faktuře
     href: billing-understand-your-bill.md
-  - name: Vysvětlení informací na faktuře – jenom EA
+  - name: Vysvětlení informací na faktuře za EA
     href: billing-understand-your-bill-ea.md
   - name: Získání faktury a dat o využití
     href: billing-download-azure-invoice-daily-usage-date.md
@@ -24,11 +24,11 @@ items:
     href: billing-ea-pricing.md
   - name: Použití značek prostředků
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
-  - name: Začínáme s analýzou nákladů – jenom EA
+  - name: Začínáme s analýzou nákladů
     href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
-  - name: Vytváření a správa rozpočtů – jenom EA
+  - name: Vytváření a správa rozpočtů
     href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
-  - name: Optimalizace doporučení – jenom EA
+  - name: Optimalizace doporučení
     href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
   - name: Výpočet cen
     href: https://azure.microsoft.com/pricing/calculator/
@@ -190,9 +190,9 @@ items:
     items:
     - name: Rozhraní REST API služby Enterprise Reporting
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: f5c025a8425a8b0b07a2b1bb2be69e2ec8e769ca
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 156f9f2ebb293855d541c779c7a2e3ba83cffc07
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257310"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447697"

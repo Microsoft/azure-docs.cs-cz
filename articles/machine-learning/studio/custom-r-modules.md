@@ -1,7 +1,7 @@
 ---
 title: Definování vlastních modulů R
 titleSuffix: Azure Machine Learning Studio
-description: Toto téma popisuje, jak vytvořit a nasadit vlastní modul R ve službě Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování.
+description: Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v nástroji Azure Machine Learning Studio. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0da5456845b940ef88ac40ffed1f53e84fe54080
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 43691988e3f4f253c642702ad19272a5267c14cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488301"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457026"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definování vlastních modulů R pro Azure Machine Learning Studio
 
@@ -24,9 +24,9 @@ Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v nástroji Azure 
 
 
 ## <a name="what-is-a-custom-r-module"></a>Co je vlastní modul R?
-A **vlastního modulu** je modul definovaný uživatelem, který může odeslat do pracovního prostoru a spustit v rámci experimentu Azure Machine Learning. A **vlastní modul R** je vlastní modul, který se spustí uživatelem definovanou funkci jazyka R. **R** je programovací jazyk pro statistické výpočty a grafiku, které je běžně používaný v vědeckými pracovníky a odborníky přes data pro implementaci algoritmy. V současné době R je jediným podporovaným v vlastních modulů, ale podpora pro další jazyky je plánovaná pro budoucí verze jazykem.
+A **vlastního modulu** je modul definovaný uživatelem, který lze odeslat do pracovního prostoru a spustit v rámci experimentu Azure Machine Learning Studio. A **vlastní modul R** je vlastní modul, který se spustí uživatelem definovanou funkci jazyka R. **R** je programovací jazyk pro statistické výpočty a grafiku, které je běžně používaný v vědeckými pracovníky a odborníky přes data pro implementaci algoritmy. V současné době R je jediným podporovaným v vlastních modulů, ale podpora pro další jazyky je plánovaná pro budoucí verze jazykem.
 
-Vlastní moduly mají **stavu hodnoty první kategorie** ve službě Azure Machine Learning v tom smyslu, že můžete použít stejně jako ostatní moduly. Je možné provést s ostatními moduly, zahrnuté v publikovaných experimentů nebo ve vizualizacích. Budete mít kontrolu nad algoritmus implementovaný pomocí modulu, vstupní a výstupní porty, který se má použít, modelování parametry a další různé chování za běhu. Experiment, který obsahuje vlastní moduly můžete taky publikovat v galerii Azure AI pro snadné sdílení.
+Vlastní moduly mají **stavu hodnoty první kategorie** v nástroji Azure Machine Learning Studio v tom smyslu, že můžete použít stejně jako ostatní moduly. Je možné provést s ostatními moduly, zahrnuté v publikovaných experimentů nebo ve vizualizacích. Budete mít kontrolu nad algoritmus implementovaný pomocí modulu, vstupní a výstupní porty, který se má použít, modelování parametry a další různé chování za běhu. Experiment, který obsahuje vlastní moduly můžete taky publikovat v galerii Azure AI pro snadné sdílení.
 
 ## <a name="files-in-a-custom-r-module"></a>Soubory ve vlastní modul R
 Vlastní modul R je definována v souboru ZIP, který obsahuje minimálně dva soubory:
@@ -55,7 +55,7 @@ Podívejte se na příklad z **vlastní přidat řádky** modul, který upravuje
     } 
 
 ### <a name="the-xml-definition-file"></a>Definiční soubor XML
-To vystavit `CustomAddRows` funkce jako modul služby Azure Machine Learning, definičního souboru XML musí být vytvořený zadat jak **vlastní přidat řádky** modul by měl vypadat a fungovat. 
+To vystavit `CustomAddRows` funkce jako modul služby Azure Machine Learning Studio, definičního souboru XML musí být vytvořený zadat jak **vlastní přidat řádky** modul by měl vypadat a fungovat. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -105,7 +105,7 @@ K registraci je ve vašem pracovním prostoru Machine Learning, přejděte do pr
 
 ## <a name="elements-in-the-xml-definition-file"></a>Elementy v souboru definice XML
 ### <a name="module-elements"></a>Elementy modulu
-**Modulu** element slouží k definování vlastní modul v souboru XML. Více modulů lze definovat v jednom souboru XML pomocí více **modulu** elementy. V pracovním prostoru každý modul musí mít jedinečný název. Registrovat vlastní modul se stejným názvem jako stávající vlastní modul a nahradí existující modul s novým. Vlastní moduly lze však registrována se stejným názvem jako existující modul Azure Machine Learning. Pokud ano, jsou uvedeny v **vlastní** kategorie palety modulů.
+**Modulu** element slouží k definování vlastní modul v souboru XML. Více modulů lze definovat v jednom souboru XML pomocí více **modulu** elementy. V pracovním prostoru každý modul musí mít jedinečný název. Registrovat vlastní modul se stejným názvem jako stávající vlastní modul a nahradí existující modul s novým. Vlastní moduly lze však registrována se stejným názvem jako existující modul Azure Machine Learning Studio. Pokud ano, jsou uvedeny v **vlastní** kategorie palety modulů.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -330,7 +330,7 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
   * **výchozí** -hodnota pro výchozí vlastnost musí odpovídat s hodnotou id z jednoho z **položky** elementy.
 
 ### <a name="auxiliary-files"></a>Pomocné soubory
-Každý soubor, který je umístěn v souboru ZIP vlastní modul bude k dispozici pro použití při spuštění. Všechny adresáře struktury k dispozici jsou zachovány. To znamená, že tento soubor sourcing works stejné místně a v Azure Machine Learning spuštění. 
+Každý soubor, který je umístěn v souboru ZIP vlastní modul bude k dispozici pro použití při spuštění. Všechny adresáře struktury k dispozici jsou zachovány. To znamená tento soubor sourcing works stejné místně a v nástroji Azure Machine Learning Studio spuštění. 
 
 > [!NOTE]
 > Všimněte si, že všechny soubory jsou extrahovány do adresáře "src", musí mít všechny cesty "src /" předponu.
