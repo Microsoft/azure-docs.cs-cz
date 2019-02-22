@@ -90,7 +90,7 @@ V této části Vytvoření služby Azure Databricks s využitím webu Azure por
 
     * Pro účely tohoto článku vytvořte cluster pomocí **5.1** modulu runtime.
 
-    * Ujistěte se, že jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko. Pokud se nepoužívá clusteru, cluster ukončit poskytnou doba trvání (v minutách).
+    * Ujistěte se, že jste vybrali **po provedení \_\_ počet minut nečinnosti** zaškrtávací políčko. Pokud se nepoužívá clusteru, cluster ukončit poskytnou doba trvání (v minutách).
 
     * Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -335,7 +335,7 @@ Po dokončení tohoto kurzu můžete cluster ukončit. V pracovním prostoru Azu
 
 ![Zastavení clusteru Databricks](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud cluster není ukončit ručně, se automaticky zastaví, pokud jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl neaktivní po zadanou dobu.
+Pokud cluster není ukončit ručně, se automaticky zastaví, pokud jste vybrali **po provedení \_\_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl neaktivní po zadanou dobu.
 
 ## <a name="next-steps"></a>Další postup
 
