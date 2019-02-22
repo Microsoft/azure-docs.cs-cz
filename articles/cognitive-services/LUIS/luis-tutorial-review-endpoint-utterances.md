@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 88ac9f07fb8791ca3d64123663b0380a56220cdd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: af3dcf3c72ef0d186f70c7935c712b81c4229a2f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865945"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593790"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Oprava jisti predikcí kontrolou projevy koncového bodu
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
@@ -50,11 +50,13 @@ Použijte k tomu následující postup:
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json) a uložte si ho.
 
-2. Naimportujte soubor JSON do nové aplikace.
+1. Naimportujte soubor JSON do nové aplikace.
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
-    Pokud tento kurz používáte jako novou naimportovanou aplikaci, musíte ji také natrénovat, publikovat a potom přidat promluvy do koncového bodu pomocí [skriptu](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
+1. Trénování a publikování nové aplikace.
+
+1. Přidejte následující projevy pomocí koncového bodu. Můžete buď to provedete [skript](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -64,11 +66,11 @@ Použijte k tomu následující postup:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. V levém navigačním panelu vyberte **Review endpoint utterances** (Kontrola promluv koncového bodu). Seznam je filtrovaný pro záměr **ApplyForJob**. 
+1. V levém navigačním panelu vyberte **Review endpoint utterances** (Kontrola promluv koncového bodu). Seznam je filtrovaný pro záměr **ApplyForJob**. 
 
     [ ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
-3. Přepněte zobrazení entit (**Entities view**), aby se zobrazily označené entity. 
+1. Přepněte zobrazení entit (**Entities view**), aby se zobrazily označené entity. 
     
     [ ![Snímek obrazovky kontroly promluv koncového bodu se zvýrazněným přepínačem zobrazení entit](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
@@ -78,29 +80,29 @@ Použijte k tomu následující postup:
 
     Tato promluva není ve správném záměru a má skóre menší než 50 %. Záměr **ApplyForJob** má 21 promluv, zatímco záměr **GetJobInformation** má sedm promluv. Současně se správným zařazením promluv koncového bodu by se do záměru **GetJobInformation** měly přidat další promluvy. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
 
-4. Pro promluvu `I'm looking for a job with Natual Language Processing` vyberte správný záměr **GetJobInformation** ve sloupci **Aligned intent** (Nastavený záměr). 
+1. Pro promluvu `I'm looking for a job with Natual Language Processing` vyberte správný záměr **GetJobInformation** ve sloupci **Aligned intent** (Nastavený záměr). 
 
     [ ![Snímek obrazovky kontroly promluv koncového bodu se zařazováním promluv k záměrům](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
 
-5. Entitou pro `Natural Language Processing` ve stejné promluvě je keyPhrase. Místo toho by to měla být entita **Job**. Vyberte `Natural Language Processing` a potom ze seznamu vyberte entitu **Job**.
+1. Entitou pro `Natural Language Processing` ve stejné promluvě je keyPhrase. Místo toho by to měla být entita **Job**. Vyberte `Natural Language Processing` a potom ze seznamu vyberte entitu **Job**.
 
     [ ![Snímek obrazovky kontroly promluv koncového bodu s označováním entit v promluvě](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
 
-6. Na stejném řádku vyberte značku zaškrtnutí v kroužku ve sloupci **Add to aligned intent** (Přidat do nastaveného záměru). 
+1. Na stejném řádku vyberte značku zaškrtnutí v kroužku ve sloupci **Add to aligned intent** (Přidat do nastaveného záměru). 
 
     [ ![Snímek finalizace zařazování promluv v záměru](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
 
     Tato akce přesune promluvu ze seznamu **Review endpoint utterances** (Kontrola promluv koncového bodu) do záměru **GetJobInformation**. Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
 
-7. Zkontrolujte zbývající promluvy v tomto záměru, označte je a opravte nastavený záměr (**Aligned intent**), pokud je nesprávný.
+1. Zkontrolujte zbývající promluvy v tomto záměru, označte je a opravte nastavený záměr (**Aligned intent**), pokud je nesprávný.
 
-8. Jakmile jsou všechny promluvy správné, vyberte zaškrtávací políčko na každém řádku a potom výběrem **Add selected** (Přidat vybrané) nastavte jejich správné zařazení. 
+1. Jakmile jsou všechny promluvy správné, vyberte zaškrtávací políčko na každém řádku a potom výběrem **Add selected** (Přidat vybrané) nastavte jejich správné zařazení. 
 
     [ ![Snímek obrazovky finalizace zbývajících promluv v nastaveném záměru](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-9. Seznam už by toto promluvy neměl obsahovat. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam nebude prázdný. 
+1. Seznam už by toto promluvy neměl obsahovat. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam nebude prázdný. 
 
-10. Vyberte další záměr v seznamu filtru a potom pokračujte v opravách promluv a označování entit. Nezapomeňte, že posledním krokem každého záměru je buď vybrat **Add to aligned intent** (Přidat do nastaveného záměru) na řádku promluvy, nebo zaškrtnout políčko vedle každého záměru a vybrat **Add selected** (Přidat vybrané) nad tabulkou.
+1. Vyberte další záměr v seznamu filtru a potom pokračujte v opravách promluv a označování entit. Nezapomeňte, že posledním krokem každého záměru je buď vybrat **Add to aligned intent** (Přidat do nastaveného záměru) na řádku promluvy, nebo zaškrtnout políčko vedle každého záměru a vybrat **Add selected** (Přidat vybrané) nad tabulkou.
 
     Pokračujte tak dlouho, dokud v seznamu filtru nebudou žádné záměry a entity. Tato aplikace je velmi malá. Celý proces kontroly trvá jenom několik minut. 
 

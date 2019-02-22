@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 877393de20788b0aa1c76084b121a82f12715cd3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1d8d78ceb9cdb5e5dd205306eac00c8ca89e8d4a
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118067"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587935"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
@@ -68,7 +68,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </body>
     ```
 
-5. Inicializace mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Použít vlastní klíč účtu Azure Maps nebo přihlašovací údaje Azure Active Directory (AAD) k ověřování pomocí mapování [možnosti ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.authenticationoptions). Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md). **Jazyk** Určuje jazyk, který chcete použít pro popisky mapy a ovládací prvky. Další informace o podporovaných jazyků najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
+5. Inicializace mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Použít vlastní klíč účtu Azure Maps nebo přihlašovací údaje Azure Active Directory (AAD) k ověřování pomocí mapování [možnosti ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md). **Jazyk** Určuje jazyk, který chcete použít pro popisky mapy a ovládací prvky. Další informace o podporovaných jazyků najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
 
     ```html
     <script type='text/javascript'>

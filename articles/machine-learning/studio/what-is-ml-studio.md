@@ -2,7 +2,6 @@
 title: Co je
 titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio je nástroj přetažení myší rychle vytvářet modely z připravené k použití knihovny algoritmů a modulů.
-keywords: azure machine learning,azure ml,ml studio
 services: machine-learning
 documentationcenter: ''
 author: garyericson
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 4f69de744be3a9926e1c5d3e674966e24c3020dc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: e454420c014460fbf44c01cb9f620d0f3273c602
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455649"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586014"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -78,7 +77,7 @@ Experiment můžete vytvořit zcela od začátku, ale také můžete využít ex
 
 Příklad vytvoření jednoduchého experimentu najdete v tématu [Vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md).
 
-Obsáhlejší návod, jak vytvořit řešení prediktivní analýzy, najdete v tématu o [vývoji prediktivního řešení s Azure Machine Learningem](tutorial-part1-credit-risk.md).
+Kompletní postup vytváření řešení prediktivní analýzy, najdete v části [vývoj prediktivního řešení pomocí Azure Machine Learning Studio](tutorial-part1-credit-risk.md).
 
 ### <a name="datasets"></a>Datové sady
 Datová sada obsahuje data, která byla nahrána do nástroje Machine Learning Studio, aby je bylo možné použít v procesu modelování. Součástí nástroje Machine Learning Studio je několik ukázkových datových sad, se kterými můžete experimentovat. Dle potřeby můžete nahrávat další datové sady. Zde jsou některé příklady dodávaných datových sad:
@@ -103,7 +102,7 @@ Během vytváření experimentu je možné si vybírat ze seznamu modulů, kter�
 
 Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat jeho vnitřní algoritmy. Když na plátnu vyberete modul, parametry modulu se zobrazí v podokně **Vlastnosti** napravo od plátna. Úpravou parametrů v tomto podokně můžete model optimalizovat.
 
-S procházením rozsáhlé knihovny dostupných algoritmů strojového učení vám pomůže téma [Jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
+Nějaké Nápověda procházení rozsáhlé knihovny dostupných algoritmů strojového učení, naleznete v tématu [jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Nasazení webové služby prediktivní analýzy
 Jakmile je váš model prediktivní analýzy připraven, můžete jej přímo v nástroji Machine Learning Studio nasadit jako webovou službu. Další podrobnosti k tomuto procesu najdete v tématu [Nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
@@ -131,7 +130,7 @@ Pojmy z oblasti strojového učení nemusí být na první pohled úplně jasné
 Model strojového učení je abstrakcí otázky, na kterou hledáte odpověď, nebo výsledku, který chcete předpovědět. Modely se trénují a vyhodnocují na základě existujících dat.
 
 #### <a name="training-data"></a>Data pro trénink
-Při tréninku modelů používáte známou datovou sadu a podle charakteru dat model upravujete tak, abyste co nejvíce zpřesnili jeho výstupy. V Azure Machine Learning se model sestavuje z algoritmického modulu, který zpracovává trénovací data a funkční moduly, například modul pro stanovení skóre.
+Při tréninku modelů používáte známou datovou sadu a podle charakteru dat model upravujete tak, abyste co nejvíce zpřesnili jeho výstupy. V Azure Machine Learning Studio se model sestavuje z algoritmického modulu, který zpracovává trénovací data a funkčních modulů, jako je například modul pro stanovení skóre.
 
 Pokud v rámci učení se supervizí trénujete model pro odhalování podvodů, používáte sadu transakcí, které jsou označeny jako podvodné nebo platné. Datovou sadu náhodně rozdělíte a pak jednu část použijete k natrénování modelu a další část k otestování nebo vyhodnocení modelu.
 
@@ -143,7 +142,7 @@ Jakmile model natrénujete, vyhodnotíte ho na zbývajících testovacích datec
 * **detekce anomálií**: Model, který označuje neobvyklé události či hodnoty a pomáhá objevovat problémy. Detektor podvodů s platebními kartami například vyhledává nezvyklé nákupy.
 * **data zařazená do kategorií**: Data, která jsou uspořádána do kategorií a která lze rozdělit do skupin. Kategorizovaná datová sada pro automobily by například mohla specifikovat rok výroby, značku, model a cenu.
 * **Klasifikace**: Model pro uspořádání datových bodů do kategorií podle datové sady, pro které kategorii seskupení již znám.
-* **konstrukce funkcí**: Proces extrahování nebo výběru příznaků či související s datovou sadou s cílem zvýšit její a vylepšit výsledky. Například využitelnost dat o leteckých tarifech lze vylepšit určením dnů v týdnu a svátků. Viz [Výběr a konstruování příznaků v Azure Machine Learning](../team-data-science-process/create-features.md).
+* **konstrukce funkcí**: Proces extrahování nebo výběru příznaků či související s datovou sadou s cílem zvýšit její a vylepšit výsledky. Například využitelnost dat o leteckých tarifech lze vylepšit určením dnů v týdnu a svátků. Zobrazit [výběr a konstruování příznaků v Azure Machine Learning Studio](../team-data-science-process/create-features.md).
 * **modul**: Funkční součást modelu Machine Learning Studio, například modul pro zadávání dat, který umožňuje zadávat a upravovat malé datové sady. Určitým typem modulu v nástroji Machine Learning Studio je i algoritmus.
 * **model**: Učení modelu je produkt experiment sestává z trénovacích dat, algoritmického modulu a funkčních modulů, jako je modul určení skóre modelu strojového učení.
 * **Číselná data**: Data, která mají význam jako měření (spojitá data) nebo počty (diskrétní neboli nespojitá data). Označují se také jako *kvantitativní data*.

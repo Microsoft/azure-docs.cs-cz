@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 7359be235135098779478eebc8a8927e34904ac1
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 8f1bf9b9070f2db2376de9cb0a0602eaea98b47e
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197789"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592923"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Nástroj pro vyrovnávání zatížení virtuálních počítačů ve všech zónách dostupnosti pomocí Azure CLI
 
@@ -49,7 +49,7 @@ az group create \
 ```
 
 ## <a name="create-a-zone-redundant-public-ip-standard"></a>Vytvoření zónově redundantní veřejné IP Standard
-Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Zónově redundantních front-endu obsluhují všechny zóny dostupnosti v oblasti současně. Vytvoření zóny redundantní veřejnou IP adresu s [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Když vytvoříte standardní veřejnou IP adresu, je zónově redundantní ve výchozím nastavení.
+Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Zónově redundantních front-endu obsluhují všechny zóny dostupnosti v oblasti současně. Vytvoření zóny redundantní veřejnou IP adresu s [az network public-ip vytvořit](/cli/azure/network/public-ip#az-network-public-ip-create). Když vytvoříte standardní veřejnou IP adresu, je zónově redundantní ve výchozím nastavení.
 
 Následující příklad vytvoří zónu redundantní veřejnou IP adresu s názvem *myPublicIP* v *myResourceGroupLoadBalancer* skupinu prostředků.
 

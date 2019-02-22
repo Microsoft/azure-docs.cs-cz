@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/19/2019
+ms.openlocfilehash: 884c87501a54a582177cba99596fe6f0b4cccf36
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247812"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593331"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Zpráva k vydání verze pro ověření jako služba
 
@@ -28,14 +28,13 @@ ms.locfileid: "55247812"
 Tento článek obsahuje poznámky k verzi pro Azure Stack ověření jako služba.
 
 ## <a name="version-405"></a>Verze 4.0.5
+
 2019 ledna 17
 
--  Test identifikace disku aktualizovat, aby adresa nekonzistence fondu úložiště. Verze: 5.1.14.0  -> 5.1.15.0
--  Azure Stack měsíční aktualizace ověření aktualizovat na adresu schválený software a obsah ověření nekonzistence. Verze: 5.1.14.0  -> 5.1.15.0
--  Ověření balíčku výrobce OEM rozšíření aktualizovat, aby provést nezbytné kontroly *před* krok aktualizace služby Azure Stack. Verze: 5.1.14.0  -> 5.1.15.0
--  Interní opravy chyb
-
-
+- Test identifikace disku aktualizovat, aby adresa nekonzistence fondu úložiště. Verze: 5.1.14.0 -> 5.1.15.0
+- Azure Stack měsíční aktualizace ověření aktualizovat na adresu schválený software a obsah ověření nekonzistence. Verze: 5.1.14.0 -> 5.1.17.0
+- Aktualizováno za účelem provést nezbytné kontroly před krokem aktualizace služby Azure Stack ověřování balíčků rozšíření výrobce OEM. Verze: 5.1.14.0 -> 5.1.16.0
+- Interní opravy chyb
 
 ## <a name="version-402"></a>Verze 4.0.2
 
@@ -77,7 +76,7 @@ Pokud používáte Azure Stack měsíční aktualizace ověření pracovního po
 
 - Aktualizuje VaaS požadavky a virtuálního pevného disku
 
-    `Install-VaaSPrerequisites` nyní vyžadují přihlašovací údaje správce cloudových řešení problémů při ověřování řešení. V dokumentaci na [stáhnout a nainstalovat agenta](azure-stack-vaas-local-agent.md#download-and-install-the-agent) má aktualizované a přinášejí následující:
+    `Install-VaaSPrerequisites` nyní vyžadují přihlašovací údaje správce cloudových řešení problémů při ověřování balíčku. V dokumentaci na [stáhnout a nainstalovat agenta](azure-stack-vaas-local-agent.md#download-and-install-the-agent) má aktualizované a přinášejí následující:
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -104,7 +103,7 @@ Pokud používáte Azure Stack měsíční aktualizace ověření pracovního po
 
   - Podepisování oznámení balíčku
 
-    Při odeslání balíčku výrobce OEM přizpůsobení jako součást pracovního postupu řešení ověřování se ověří formát balíčku k zajištění, že splňuje specifikaci publikovaná. Pokud balíček není v souladu, se nezdaří spuštění. E-mailová oznámení se pošle e-mailovou adresu registrované kontaktování Azure Active Directory pro příslušného tenanta.
+    Při odeslání balíčku výrobce OEM přizpůsobení jako součást pracovního postupu ověřování balíčku se ověří formát balíčku k zajištění, že splňuje specifikaci publikovaná. Pokud balíček není v souladu, se nezdaří spuštění. E-mailová oznámení se pošle e-mailovou adresu registrované kontaktování Azure Active Directory pro příslušného tenanta.
 
   - Kategorie interaktivní testu
 

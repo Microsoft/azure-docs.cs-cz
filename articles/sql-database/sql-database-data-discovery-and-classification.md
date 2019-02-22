@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3c5f087ed44c252737e7f45fde12a4b509637499
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7f38ef5076472954672cb721874891539802e7f1
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892877"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593263"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL Database zjišťování a klasifikace dat
 
@@ -144,7 +144,7 @@ Můžete také použít rozhraní REST API můžete programově spravovat klasif
 - [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -odstraní označení citlivosti daného sloupce
 - [Získat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -získá označení citlivosti daného sloupce
 - [Aktuální databáze podle seznamu](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) -získá aktuální označení citlivosti na danou databázi
-- [Seznam doporučuje pomocí databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -získá aktuální označení citlivosti na danou databázi
+- [Seznam doporučuje pomocí databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -získá popisky doporučené citlivosti na danou databázi
 
 ## <a id="subheading-5"></a>Další kroky
 

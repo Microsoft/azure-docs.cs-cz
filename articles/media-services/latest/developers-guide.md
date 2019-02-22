@@ -13,19 +13,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/16/2019
+ms.date: 02/20/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 2f0191bd181a8e10fa59f6d1d53da348e6440aba
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 6724a66f9a2b80f94f986db19d67b27884797e6f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56405550"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592362"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Začněte vyvíjet s využitím rozhraní API služby Media Services v3 pomocí sady SDK a nástroje
 
-Jako vývojář, můžete použít Media Services [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk) nebo klientských knihoven, které umožňují pracovat s rozhraním REST API snadno vytvářet, spravovat a udržovat vlastní multimediální pracovní postupy. Rozhraní API služby Media Services v3 je založená na specifikaci OpenAPI (dříve označované jako Swagger).
+Jako vývojář, můžete použít Media Services [rozhraní REST API](https://aka.ms/ams-v3-rest-ref) nebo klientských knihoven, které umožňují pracovat s rozhraním REST API snadno vytvářet, spravovat a udržovat vlastní multimediální pracovní postupy. [Media Services v3](https://aka.ms/ams-v3-rest-sdk) rozhraní API je založena na specifikaci OpenAPI (dříve označované jako Swagger).
 
 Toto téma obsahuje odkazy na sady SDK, nástroje, dokumentaci. Poskytuje také některé užitečné informace pro jiné vývojáře env.
 
@@ -36,7 +36,7 @@ Jak začít s vývojem ve službě Media Services, budete potřebovat:
 - Aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md)
 
-## <a name="start-developing"></a>Začít vyvíjet
+## <a name="start-developing"></a>Zahájení vývoje
 
 Azure Media Services podporuje následující sady SDK a nástroje 
 

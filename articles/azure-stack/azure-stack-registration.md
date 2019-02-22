@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 62fde78cce05e62489931868da3d21c8b2e16928
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: ebf8066139df93aefe1cfa21f2dc80ab57ca84bb
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430331"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652446"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -53,11 +53,13 @@ Před zaregistrováním služby Azure Stack s Azure, musíte mít:
 
 - Uživatelské jméno a heslo pro účet, který je vlastníkem předplatného.
 
-- Uživatelský účet musí mít přístup k předplatnému Azure a máte oprávnění k vytváření aplikací identity a instanční objekty v adresáři spojený s tímto předplatným. Doporučujeme registraci Azure Stack v Azure pomocí správy nejnižších možných oprávnění [vytvořit účet služby pro registraci](azure-stack-registration-role.md) místo použití přihlašovací údaje globálního správce.
+- Uživatelský účet musí mít přístup k předplatnému Azure a máte oprávnění k vytváření aplikací identity a instanční objekty v adresáři spojený s tímto předplatným. Doporučujeme registraci Azure Stack v Azure pomocí správy s minimálními oprávněními. Další informace o tom, jak vytvořit definice vlastních rolí, která omezuje přístup k vašemu předplatnému pro registraci najdete v tématu [umožňuje vytvořit roli registrace pro Azure Stack](azure-stack-registration-role.md).
 
 - Zaregistrovat poskytovatele prostředků služby Azure Stack (viz následující část zaregistrovat poskytovatele prostředků Azure Stack podrobnosti).
 
 Po registraci není potřeba oprávnění globálního správce Azure Active Directory. Některé operace však může vyžadovat přihlašovací údaje globálního správce. Například skript instalační program zprostředkovatele prostředků nebo nová funkce vyžaduje oprávnění bylo uděleno. Můžete dočasně obnovit oprávnění globálního správce účtu, nebo použít samostatné globální správce účtu, který je vlastníkem *výchozí předplatné poskytovatele*.
+
+Uživatel, který registruje Azure Stack je vlastníkem instanční objekt v Azure Active Directory. Registrace Azure Stack můžete upravit jenom uživatel, který zaregistroval Azure Stack. Pokud uživatel bez oprávnění správce, který není vlastníkem objektu registrace služby pokusí zaregistrovat nebo znovu zaregistrovat Azure Stack, můžou setkat 403 odpovědi. 403 odpovědi vyplývá, že uživatel nemá dostatečná oprávnění k dokončení operace.
 
 Pokud nemáte předplatné Azure, které splňuje tyto požadavky, můžete si [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.
 
@@ -479,6 +481,13 @@ Get-AzsRegistrationToken vygeneruje registrační token ze vstupních parametrů
 | UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí je potřeba vypnout generování sestav o využívání. Povolené hodnoty tohoto parametru jsou: Hodnota TRUE, False. |
 | AgreementNumber | String |  |
 
+## <a name="registration-failures"></a>Selhání registrace
+
+Při pokusu o registraci ze služby Azure Stack může zobrazit jedna z u chyb dole:
+1. Nelze načíst informace o hardwaru povinné pro $hostName. Zkontrolujte fyzického hostitele a připojení potom znovu spusťte registraci.
+2. Nelze se připojit k $hostName k získání informací o hardwaru – zkontrolujte fyzického hostitele a připojení potom znovu spusťte registraci.
+
+Příčina: Toto je obvykle vzhledem k tomu, pokuste se získat podrobnosti o hardwaru, jako je například UUID a procesoru a systému Bios od hostitelů, aby se zkusil jsme nebyli schopni se připojit k fyzickým hostitelem lokalizovat.
 
 ## <a name="next-steps"></a>Další postup
 

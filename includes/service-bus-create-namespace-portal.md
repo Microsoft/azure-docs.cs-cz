@@ -5,16 +5,17 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b38f66670ba29022713ae39824a190fcffb688c7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d976a1c5e9366069b82cff718593ce72d7ad8a08
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238674"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588938"
 ---
+## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
 Pokud chcete začít používat entity zasílání zpráv služby Service Bus v Azure, musíte nejprve vytvořit obor názvů s jedinečným názvem v rámci Azure. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
 
 Vytvoření oboru názvů:
@@ -27,7 +28,7 @@ Vytvoření oboru názvů:
     1. Zadejte **název pro obor názvů**. Systém okamžitě kontroluje, jestli je název dostupný.
     2. Vyberte cenovou úroveň (Basic, Standard nebo Premium) pro obor názvů. Pokud chcete použít [témata a odběry](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), zvolit úroveň Standard nebo Premium. Témata/předplatná se v cenové úrovni Basic nepodporují.
     3. Pokud jste vybrali **Premium** cenovou úroveň, postupujte podle těchto kroků: 
-        1. Zadejte počet **jednotky zasílání zpráv**. Úroveň premium zajišťuje izolaci prostředků na úrovni procesoru a paměti, takže každá úloha běží izolovaně. Kontejner prostředků se nazývá jednotka zasílání zpráv. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Můžete vybrat 1, 2 nebo 4 jednotky zasílání zpráv pro každý obor názvů Service Bus úrovně Premium. Další informace najdete v tématu [služby zasílání zpráv Service Bus úrovně Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        1. Zadejte počet **jednotky zasílání zpráv**. Úroveň premium zajišťuje izolaci prostředků na úrovni procesoru a paměti, takže každá úloha běží izolovaně. Kontejner prostředků se nazývá jednotka zasílání zpráv. Obor názvů úrovně premium má alespoň jedna jednotka zasílání zpráv. Můžete vybrat 1, 2 nebo 4 jednotky zasílání zpráv pro každý obor názvů Service Bus úrovně Premium. Další informace najdete v tématu [služby zasílání zpráv Service Bus úrovně Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md).
         2. Určete, jestli chcete vytvořit obor názvů **zónově redundantní**. Redundanci zón poskytuje vylepšenou dostupnost šířením replik napříč zónami dostupnosti v rámci jedné oblasti bez dalších poplatků. Další informace najdete v tématu [zón dostupnosti v Azure](../articles/availability-zones/az-overview.md).
     4. Pro **předplatné**, zvolte předplatné Azure, ve kterém chcete vytvořit obor názvů.
     5. Pro **skupiny prostředků**, zvolte existující skupinu prostředků, ve které bude obor názvů live, nebo vytvořte novou.      
@@ -45,7 +46,7 @@ Vytvoření oboru názvů:
 
     ![Domovská stránka oboru názvů služby service bus](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
 
-### <a name="get-the-management-credentials"></a>Získání přihlašovacích údajů pro správu
+## <a name="get-the-connection-string"></a>Získání připojovacího řetězce 
 Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravidlo sdíleného přístupového podpisu (SAS) s přidruženým párem primárního a sekundárního klíče, které udělují úplnou kontrolu nad všemi aspekty tohoto oboru názvů. Zobrazit [ověřování a autorizace Service Bus](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) informace o tom, jak vytvořit pravidla s větším omezeného práva pro pravidelné odesílateli a příjemci. Pokud chcete zkopírovat primární a sekundární klíče pro váš obor názvů, postupujte takto: 
 
 1. Klikněte na **Všechny prostředky** a pak klikněte na název nově vytvořeného oboru názvů.

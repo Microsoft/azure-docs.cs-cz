@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 02/13/2019
 ms.author: patricka
 ms.reviewer: rtiberiu
-ms.lastreviewed: 01/10/2019
-ms.openlocfilehash: 80caa470675a78a9c2e3d4c055333719f54fe64a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: 4858e33023ff0f94bb9fb879b01846184df2491e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247880"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652140"
 ---
 # <a name="create-a-registration-role-for-azure-stack"></a>Umožňuje vytvořit roli registrace pro Azure Stack
 
@@ -33,7 +33,7 @@ Pro scénáře, kde nechcete v rámci předplatného Azure udělit oprávnění 
 
 Při registraci služby Azure Stack, vyžaduje registraci účtu následující oprávnění služby Azure Active Directory a oprávnění pro předplatné Azure:
 
-* **Oprávnění k registraci aplikace ve vašem tenantovi Azure Active Directory:** Správci mají oprávnění k registraci aplikace. Oprávnění pro uživatele je globální nastavení pro všechny uživatele v tenantovi. Zobrazení nebo změna nastavení viz [vytvořit aplikace a instančního objektu, který má přístup k prostředkům Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+* **Oprávnění k registraci aplikace ve vašem tenantovi Azure Active Directory:** Správci mají oprávnění k registraci aplikace. Oprávnění pro uživatele je globální nastavení pro všechny uživatele v tenantovi. Chcete-li zobrazit nebo změnit nastavení, najdete v článku [vytvořit aplikace a instančního objektu, který má přístup k prostředkům Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
     *Uživatele můžou registrovat aplikace* nastavení musí být nastavené na **Ano** můžete povolit účet uživatele k registraci Azure Stack. Pokud je nastavení registrace aplikací nastaveno **ne**, nelze použít uživatelský účet a musí používat účet globálního správce registrace Azure Stack.
 

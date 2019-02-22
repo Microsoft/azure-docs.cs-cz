@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/14/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c1a9b526f08f330d62c30dd1d676e95460aee6c2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: eb4b87a008b9e43de7e7a5f7895449303f1e44a6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712343"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593977"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Použití rozhraní REST API služby Azure Blockchain Workbench
 
@@ -210,8 +210,8 @@ Content-type: application/json
 
 Jakmile se uživatel rozhodne podrobné informace o kontrakt, blockchain klienta můžete zobrazit pak k dispozici uživatelské akce zadaný stav smlouvy. V tomto příkladu uživatel hledá všechny dostupné akce pro nový chytrý kontrakt, který vytvořil:
 
-* Modify: Umožňuje uživateli upravit popis a cenu majetku.
-* Ukončit: Umožňuje uživateli ukončení smlouvy assetu.
+* Upravte: Umožňuje uživateli změnit popis a cenou majetku.
+* Ukončete: Umožňuje uživateli ukončení smlouvy assetu.
 
 Použití rozhraní [Contract Action GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
 
@@ -277,7 +277,7 @@ Content-type: application/json
 
 Uživatel se potom může rozhodnout, že provede akci pro zadanou instanci chytrého kontraktu. V takovém případě vezměte v úvahu scénář, ve kterém uživatel chtěli upravit popis a cena prostředku, abyste tuto akci:
 
-* Popis: „Moje vylepšené auto“
+* Popis: "Automobil aktualizované"
 * Cena: 54321
 
 Použití rozhraní [Contract Action POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):

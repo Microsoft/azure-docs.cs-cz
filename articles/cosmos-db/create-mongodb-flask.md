@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 81ffd384602218aa3b08441ae9f6fe2262e7e542
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 24c47acd028aa767d1f02dd7c4119692eeac479a
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041420"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587017"
 ---
-# <a name="build-a-flask-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Sestavení aplikace Flask pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
+# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý start: Sestavení aplikace v Pythonu pomocí služby Azure Cosmos DB API pro MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

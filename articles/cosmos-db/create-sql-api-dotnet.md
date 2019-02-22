@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/10/2018
-ms.openlocfilehash: 6f90485b17361089de9770bb630db38cf91abe12
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 530cd5adf942f32aaf883f668e3564ba5c12bbe2
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040910"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588020"
 ---
-# <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rychlý start: Vytvoření webové aplikace .NET s Azure Cosmos DB pomocí rozhraní SQL API a webu Azure portal
+# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření webové aplikace .NET pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)

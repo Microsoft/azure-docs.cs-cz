@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: e23173b006fcc83f0e4b30b59a65e772b68a612d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b444dadb47f406cdf8d6d532bbc15f6f40e692e7
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062005"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592906"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytvořit prostředky služby Service Bus pomocí šablon Azure Resource Manageru
 
@@ -181,7 +181,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>Nastavit skupinu prostředků
 
-Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s ** New-AzureRmResourceGroup ** příkazu. Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
+Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s **New-AzureRmResourceGroup** příkazu. Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"

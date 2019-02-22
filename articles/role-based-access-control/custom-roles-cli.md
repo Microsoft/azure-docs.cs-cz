@@ -11,26 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b768f6e240c354369246a6d978ed3e8dd2f58f92
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338134"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56584892"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí Azure CLI
 
 Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí Azure CLI.
+
+Podrobný kurz o tom, jak vytvořit vlastní roli, najdete v tématu [kurzu: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete vytvořit vlastní role, budete potřebovat:
 
 - Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
-- Místně nainstalované [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
@@ -61,6 +63,78 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 ...
 ```
 
+## <a name="list-a-custom-role-definition"></a>Seznam definice vlastních rolí
+
+Chcete-li vypsat definice vlastních rolí, použijte [az role definition list](/cli/azure/role/definition#az-role-definition-list). Toto je stejný příkaz, který používáte pro předdefinovanou roli.
+
+```azurecli
+az role definition list --name <role_name>
+```
+
+Následující příklad zobrazí *virtuálního počítače operátor* definice role:
+
+```azurecli
+az role definition list --name "Virtual Machine Operator"
+```
+
+```Output
+[
+  {
+    "assignableScopes": [
+      "/subscriptions/11111111-1111-1111-1111-111111111111"
+    ],
+    "description": "Can monitor and restart virtual machines.",
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
+    "name": "00000000-0000-0000-0000-000000000000",
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/*/read",
+          "Microsoft.Network/*/read",
+          "Microsoft.Compute/*/read",
+          "Microsoft.Compute/virtualMachines/start/action",
+          "Microsoft.Compute/virtualMachines/restart/action",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.ResourceHealth/availabilityStatuses/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Insights/alertRules/*",
+          "Microsoft.Insights/diagnosticSettings/*",
+          "Microsoft.Support/*"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Virtual Machine Operator",
+    "roleType": "CustomRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
+Následující příklad vypíše pouze akce *virtuálního počítače operátor* role:
+
+```azurecli
+az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
+```
+
+```Output
+[
+  "Microsoft.Storage/*/read",
+  "Microsoft.Network/*/read",
+  "Microsoft.Compute/*/read",
+  "Microsoft.Compute/virtualMachines/start/action",
+  "Microsoft.Compute/virtualMachines/restart/action",
+  "Microsoft.Authorization/*/read",
+  "Microsoft.ResourceHealth/availabilityStatuses/read",
+  "Microsoft.Resources/subscriptions/resourceGroups/read",
+  "Microsoft.Insights/alertRules/*",
+  "Microsoft.Insights/diagnosticSettings/*",
+  "Microsoft.Support/*"
+]
+```
+
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
 Chcete-li vytvořit vlastní roli, použijte [az role definition vytvořit](/cli/azure/role/definition#az-role-definition-create). Definice role může být popis JSON nebo cesta k souboru, který obsahuje popis JSON.
@@ -85,6 +159,7 @@ vmoperator.json
     "Microsoft.Compute/virtualMachines/start/action",
     "Microsoft.Compute/virtualMachines/restart/action",
     "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Insights/alertRules/*",
     "Microsoft.Support/*"
@@ -127,6 +202,7 @@ vmoperator.json
     "Microsoft.Compute/virtualMachines/start/action",
     "Microsoft.Compute/virtualMachines/restart/action",
     "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Insights/alertRules/*",
     "Microsoft.Insights/diagnosticSettings/*",

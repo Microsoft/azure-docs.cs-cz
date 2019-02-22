@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 1127b93389fa58a61fd7a690e95b86814986345c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 078d9548b4fd7e2a73fc4b71cd4774986ccceaee
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162338"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56653593"
 ---
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -26,3 +26,5 @@ Až budete připraveni začít s dalším kurzem, můžete simulovaná zařízen
 Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard):
 
 ![Odstranění řešení](media/iot-accelerators-tutorial-cleanup/deletesolution.png)
+
+![Odstranění řešení](media/iot-accelerators-tutorial-cleanup/deletesolution-provision.png)

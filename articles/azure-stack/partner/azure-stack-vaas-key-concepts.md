@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 01/07/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1f5c47dd3453c0c8f02f1b0a87e5f2fff123f8be
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dd2d8c0e277bca844160fc0017d350d5aa183679
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242803"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593161"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Ověření jako klíčové koncepty služby
 
@@ -46,7 +46,7 @@ Pracovní postupy jsou rozděleny podle typu scénář testování. Při testov�
 ![Dlaždice VaaS pracovního postupu](media/tile_all-workflows.png)
 
 > [!NOTE]
-> **Ověření řešení** pracovního postupu v současné době podporuje dva scénáře: [Ověření OEM balíčky](azure-stack-vaas-validate-oem-package.md) a [ověření aktualizace softwaru od Microsoftu](azure-stack-vaas-validate-microsoft-updates.md).
+> **Ověřování balíčku** pracovního postupu v současné době podporuje dva scénáře: [Ověření OEM balíčky](azure-stack-vaas-validate-oem-package.md) a [ověření aktualizace softwaru od Microsoftu](azure-stack-vaas-validate-microsoft-updates.md).
 
 Další informace o typech pracovních postupů, najdete v části [co je ověření jako služba pro službu Azure Stack?](azure-stack-vaas-overview.md).
 
@@ -56,8 +56,8 @@ Další informace o typech pracovních postupů, najdete v části [co je ověř
 2. K vytvoření nového pracovního postupu, vyberte na **Start** na kteroukoli dlaždici. Informace specifické pro každý pracovní postup najdete v následujících článcích:
     - Průchod testu: [Rychlé zprovoznění: Použít ověření jako portál služby k naplánování prvního testu](azure-stack-vaas-schedule-test-pass.md)
     - Ověření řešení: [Ověření nové řešení Azure Stack](azure-stack-vaas-validate-solution-new.md)
-    - Ověření řešení: [Ověření aktualizace softwaru od Microsoftu](azure-stack-vaas-validate-microsoft-updates.md)
-    - Ověření řešení: [Ověření balíčky výrobce OEM](azure-stack-vaas-validate-oem-package.md)
+    - Ověření balíčku (měsíčních aktualizacích): [Ověření aktualizace softwaru od Microsoftu](azure-stack-vaas-validate-microsoft-updates.md)
+    - Ověření balíčku (podepsání balíčku): [Ověření balíčky výrobce OEM](azure-stack-vaas-validate-oem-package.md)
 
 3. Ke správě nebo monitorování stávajícím pracovním postupu, vyberte na **spravovat** na dlaždici pracovního postupu. Vyberte název pracovního postupu a jeho používání **upravit** tlačítko Zobrazit vlastnosti nebo změňte společné parametry testu.
 

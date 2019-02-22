@@ -12,11 +12,11 @@ ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316290"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593960"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipy pro řešení potíží pro kognitivního vyhledávání
 
@@ -94,7 +94,7 @@ Analýza obrázku je výpočetně náročné i jednoduché v případech, tak p�
 
 Maximální doba spuštění se liší podle úrovně: několik minut na Free vrstvy, 24 hodin indexování fakturovatelné vrstev. Pokud se zpracování nepodaří dokončit během 24 hodin pro zpracování na vyžádání, přepněte na plán, který chcete nechat pokračovat zpracování tam, kde skončila. 
 
-Pro plánované indexery indexování obnoví podle plánu na poslední známé dobré dokumentu. Pomocí opakovaně indexeru můžete fungují jeho prostřednictvím nevyřízených položek image několik hodin nebo dnů, dokud se zpracovávají všechny bitové kopie zrušení zpracování. Další informace o plánu syntaxe, naleznete v tématu [krok 3: Vytvoření indexeru](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Pro plánované indexery indexování obnoví podle plánu na poslední známé dobré dokumentu. Pomocí opakovaně indexeru můžete fungují jeho prostřednictvím nevyřízených položek image několik hodin nebo dnů, dokud se zpracovávají všechny bitové kopie zrušení zpracování. Další informace o plánu syntaxe, naleznete v tématu [krok 3: Create-an-indexer](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
 
 Založené na portálu indexování (jak je popsáno v tomto rychlém startu), výběr indexer "Spustit jednou" možnost omezení zpracování na 1 hodinu (`"maxRunTime": "PT1H"`). Můžete chtít rozšířit okno zpracování na něco delší dobu.
 
@@ -104,7 +104,7 @@ Pro [paralelní indexování](search-howto-large-index.md), uložit svá data do
 Další informace najdete v tématu [indexování velkých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-+ [Rychlý start: Vytvoření kanálu kognitivního vyhledávání v portálu](cognitive-search-quickstart-blob.md)
++ [Rychlé zprovoznění: Vytvoření kanálu kognitivního vyhledávání v portálu](cognitive-search-quickstart-blob.md)
 + [Kurz: Přečtěte si kognitivního vyhledávání rozhraní REST API](cognitive-search-tutorial-blob.md)
 + [Zadání přihlašovacích údajů zdroje dat](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [Indexování velkých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)

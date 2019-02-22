@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/30/2019
+ms.date: 02/15/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855b9db645721c63abae34422ae6461cea3daab2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5622c179b6eb767f4c608e8c36c2ba154aac0906
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189816"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594691"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postup: Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -47,6 +47,9 @@ ms.locfileid: "56189816"
 - Pro heslem jednotného přihlašování Ujistěte se prosím, že vaše aplikace podporuje ověřování formuláře tak, aby ukládání hesel do trezoru můžete udělat plnit jednotné přihlašování podle očekávání.
 
 - Pro automatické zřizování uživatelů požadavky aplikace by měly být uvedeny v galerii se jednotné přihlašování povolenou funkci pomocí SAML 2.0 a WS-Fed. Můžete požádat pro jednotné přihlašování a zřizování společně na portálu, pokud je ještě nejsou uvedená uživatelů.
+
+>[!NOTE]
+>Jsme fungují s vysokým počtem SCIM požadavky na konektor, proto jsme zastavili tak nové požadavky na náš portál. Počkejte prosím, žádostí až do dalšího upozornění. Jsme omluvu. pro toto zpoždění a případné potíže, které to může způsobit.
 
 ## <a name="submit-the-request-in-the-portal"></a>Odeslání požadavku na portálu
 
@@ -108,6 +111,16 @@ Aktualizujte nebo odeberte existující aplikace v galerii aplikací Azure AD, m
     * Pokud chcete odebrat existující aplikaci z Galerie Azure AD, vyberte **odebrat existující aplikace výpis**.
     * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
+## <a name="listing-requests-by-customers"></a>Výpis požadavky zákazníků
+
+Zákazníci mohou odeslat žádost o uvedení aplikace kliknutím **aplikace požaduje zákazníci** -> **novou žádost o odeslání**.
+
+![Dlaždici zákazníka požadované aplikace](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Níže je, že tok zákazníka požadovaná aplikace –
+
+![Odběratel požadoval toku aplikace](./media/howto-app-gallery-listing/customer-request.png)
+
 ## <a name="timelines"></a>Časové osy
 
 Časová osa pro proces uvedení protokol SAML 2.0 nebo WS-Fed aplikace v galerii je 7 až 10 pracovních dní.
@@ -117,10 +130,6 @@ Aktualizujte nebo odeberte existující aplikace v galerii aplikací Azure AD, m
 Časová osa pro proces uvedení aplikace v galerii OpenID Connect se 2 až 5 pracovních dní.
 
    ![Časová osa uvedení aplikace saml do Galerie](./media/howto-app-gallery-listing/timeline2.png)
-
-Časová osa pro proces uvedení aplikace v galerii se podpora zřizování uživatelů se 40-45 pracovních dnů.
-
-   ![Časová osa uvedení aplikace saml do Galerie](./media/howto-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>Eskalaci
 

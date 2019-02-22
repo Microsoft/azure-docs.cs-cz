@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4d5b98ab001bcb30091590880954c7075701e53b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 06b7fb678bc79203589cfa75e8afb457d6ed344f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607349"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594317"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Zobrazení databáze v aplikaci Azure Blockchain Workbench
 
-Azure Blockchain Workbench dodává data z distribuované účetní knihy do *mimo řetězec* databáze SQL DB. To umožňuje pomocí SQL a stávající nástroje, jako například [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), pracovat s daty blockchain.
+Azure Blockchain Workbench dodává data z distribuované účetní knihy do *mimo řetězec* databáze SQL DB. Databáze mimo řetězec umožňuje pomocí SQL a stávající nástroje, jako například [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), pracovat s daty blockchain.
 
 Azure Blockchain Workbench poskytuje sadu zobrazení databáze, které poskytují přístup k datům, která bude užitečná při provádění dotazů. Tato zobrazení jsou silně Nenormalizovaná snadno a rychle začít s vytvářením sestavy, analýzy, v opačném případě využívají data blockchain se stávajícími nástroji a bez nutnosti obnova databáze zaměstnanců.
 
@@ -33,7 +33,7 @@ Tato část obsahuje přehled o zobrazení databáze a dat, která obsahují.
 
 Toto zobrazení obsahuje podrobné informace o **aplikace** , které byly nahrány do Azure Blockchain Workbench.
 
-| Název                             | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
+| Název                             | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                    | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                  | nvarchar(50)  | Ne          | Název aplikace |
@@ -42,7 +42,7 @@ Toto zobrazení obsahuje podrobné informace o **aplikace** , které byly nahrá
 | ApplicationEnabled               | Bit           | Ne          | Určuje, zda aplikace je aktuálně povoleno.<br /> **Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
 | UploadedDtTm                     | datetime2(7)  | Ne          | Datum a čas, který byl nahrán kontrakt |
 | UploadedByUserId                 | int           | Ne          | ID uživatele, který nahráli aplikace |
-| UploadedByUserExternalId         | nvarchar(255) | Ne          | Externí identifikátor pro uživatele, který nahráli aplikace. Ve výchozím nastavení to je ID uživatele z Azure Active Directory pro konsorcia.                                                                                                |
+| UploadedByUserExternalId         | nvarchar(255) | Ne          | Externí identifikátor pro uživatele, který nahráli aplikace. Ve výchozím nastavení je toto ID uživatele z Azure Active Directory pro konsorcia.                                                                                                |
 | UploadedByUserProvisioningStatus | int           | Ne          | Určuje aktuální stav zřizování proces pro uživatele. Možné hodnoty: <br />0 – uživatel vytvořil rozhraní API<br />1 – klíč spojena s uživatelem v databázi<br />2 – uživatel je plně zřízený.                         |
 | UploadedByUserFirstName          | nvarchar(50)  | Ano         | Křestní jméno uživatele, který nahraje kontraktu |
 | UploadedByUserLastName           | nvarchar(50)  | Ano         | Příjmení uživatele, který nahraje kontraktu |
@@ -54,7 +54,7 @@ Toto zobrazení obsahuje podrobné informace o rolích, které byly definovány 
 
 V *Asset přenosu* aplikace, například role, jako *kupujících* a *prodejce* role může být definovaná.
 
-| Název                   | Typ             | Může mít hodnotu Null | Popis                                       |
+| Název                   | Type             | Může mít hodnotu Null | Popis                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | ApplicationId          | int              | Ne          | Jedinečný identifikátor pro aplikaci           |
 | ApplicationName        | nvarchar(50)     | Ne          | Název aplikace                       |
@@ -62,7 +62,7 @@ V *Asset přenosu* aplikace, například role, jako *kupujících* a *prodejce* 
 | ApplicationDisplayName | nvarchar(255)    | Ne          | Název, který se má zobrazit v uživatelském rozhraní      |
 | RoleId                 | int              | Ne          | Jedinečný identifikátor pro roli v aplikaci |
 | RoleName               | nvarchar50)      | Ne          | Název role                              |
-| RoleDescription        | Description(255) | Ano         | Popis role                         |
+| RoleDescription        | description(255) | Ano         | Popis role                         |
 
 ## <a name="vwapplicationroleuser"></a>vwApplicationRoleUser
 
@@ -70,7 +70,7 @@ Toto zobrazení obsahuje podrobné informace o rolích, které byly definovány 
 
 V *Asset přenos* aplikace, například *Jan Macek* může být přiřazena *kupujících* role.
 
-| Název                       | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
+| Název                       | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId              | int           | Ne          | Jedinečný identifikátor pro aplikaci                                                                                                                                                                                               |
 | ApplicationName            | nvarchar(50)  | Ne          | Název aplikace                                                                                                                                                                                                           |
@@ -80,7 +80,7 @@ V *Asset přenos* aplikace, například *Jan Macek* může být přiřazena *kup
 | ApplicationRoleName        | nvarchar50)   | Ne          | Název role                                                                                                                                                                                                                  |
 | ApplicationRoleDescription | nvarchar(255) | Ano         | Popis role                                                                                                                                                                                                             |
 | UserId                     | int           | Ne          | ID uživatele přidružené k roli |
-| UserExternalId             | nvarchar(255) | Ne          | Externí identifikátor pro uživatele, který je přidružený k roli. Ve výchozím nastavení to je ID uživatele z Azure Active Directory pro konsorcia.                                                                     |
+| UserExternalId             | nvarchar(255) | Ne          | Externí identifikátor pro uživatele, který je přidružený k roli. Ve výchozím nastavení je toto ID uživatele z Azure Active Directory pro konsorcia.                                                                     |
 | UserProvisioningStatus     | int           | Ne          | Určuje aktuální stav zřizování proces pro uživatele. Možné hodnoty: <br />0 – uživatel vytvořil rozhraní API<br />1 – klíč spojena s uživatelem v databázi<br />2 – uživatel je plně zřízený. |
 | UserFirstName              | nvarchar(50)  | Ano         | Křestní jméno uživatele, který je přidružený k roli |
 | UserLastName               | nvarchar(255) | Ano         | Příjmení uživatele, který je přidružený k roli |
@@ -93,16 +93,16 @@ Toto zobrazení obsahuje podrobné informace o připojení definované v aplikac
 -   Podrobnosti přidružené knihy
 -   Informace o přidružené uživateli
 
-| Název                     | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
+| Název                     | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID připojení             | int           | Ne          | Jedinečný identifikátor pro připojení v aplikaci Azure Blockchain Workbench |
+| ConnectionId             | int           | Ne          | Jedinečný identifikátor pro připojení v aplikaci Azure Blockchain Workbench |
 | ConnectionEndpointUrl    | nvarchar(50)  | Ne          | Adresa url koncového bodu připojení |
 | ConnectionFundingAccount | nvarchar(255) | Ano         | Financování účet přidružený k připojení, pokud je k dispozici |
 | LedgerId                 | int           | Ne          | Jedinečný identifikátor pro účetní kniha |
 | LedgerName               | nvarchar(50)  | Ne          | Název knihy |
 | LedgerDisplayName        | nvarchar(255) | Ne          | Název knihy, které chcete zobrazit v uživatelském rozhraní |
 | UserId                   | int           | Ne          | ID uživatele přidružené k připojení |
-| UserExternalId           | nvarchar(255) | Ne          | Externí identifikátor pro uživatele, který je přidružený k připojení. Ve výchozím nastavení to je ID uživatele z Azure Active Directory pro konsorcia. |
+| UserExternalId           | nvarchar(255) | Ne          | Externí identifikátor pro uživatele, který je přidružený k připojení. Ve výchozím nastavení je toto ID uživatele z Azure Active Directory pro konsorcia. |
 | UserProvisioningStatus   | int           | Ne          |Určuje aktuální stav zřizování proces pro uživatele. Možné hodnoty: <br />0 – uživatel vytvořil rozhraní API<br />1 – klíč spojena s uživatelem v databázi<br />2 – uživatel je plně zřízený. |
 | UserFirstName            | nvarchar(50)  | Ano         | Křestní jméno uživatele, který je přidružený k připojení |
 | UserLastName             | nvarchar(255) | Ano         | Příjmení uživatele, který je přidružený k připojení |
@@ -118,9 +118,9 @@ Toto zobrazení obsahuje podrobné informace o nasazených smluv. Pro každou sm
 -   Podrobnosti o uživateli, který inicioval akci
 -   Podrobnosti týkající se blokování blockchain a transakce
 
-| Název                                     | Typ           | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
+| Název                                     | Type           | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID připojení                             | int            | Ne          | Jedinečný identifikátor pro připojení v aplikaci Azure Blockchain Workbench.                                                                                                                                                                                         |
+| ConnectionId                             | int            | Ne          | Jedinečný identifikátor pro připojení v aplikaci Azure Blockchain Workbench.                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar(50)   | Ne          | Adresa url koncového bodu připojení |
 | ConnectionFundingAccount                 | nvarchar(255)  | Ano         | Financování účet přidružený k připojení, pokud je k dispozici |
 | LedgerId                                 | int            | Ne          | Jedinečný identifikátor pro účetní kniha |
@@ -128,7 +128,7 @@ Toto zobrazení obsahuje podrobné informace o nasazených smluv. Pro každou sm
 | LedgerDisplayName                        | nvarchar(255)  | Ne          | Název knihy, které chcete zobrazit v uživatelském rozhraní |
 | ApplicationId                            | int            | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                          | nvarchar (50)  | Ne          | Název aplikace |
-| ApplicationDisplayName                   | nvarchar (255). | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
+| ApplicationDisplayName                   | nvarchar (255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
 | ApplicationEnabled                       | Bit            | Ne          | Určuje, zda je aplikace povolena.<br /> **Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi.  |
 | WorkflowId                               | int            | Ne          | Jedinečný identifikátor pro pracovní postup spojený s kontraktem |
 | WorkflowName                             | nvarchar(50)   | Ne          | Název pracovního postupu spojené s kontraktem |
@@ -139,9 +139,9 @@ Toto zobrazení obsahuje podrobné informace o nasazených smluv. Pro každou sm
 | ContractUploadedDtTm                     | int            | Ne          | Datum a čas, kdy byl odeslán kód kontraktu |
 | ContractId                               | int            | Ne          | Jedinečný identifikátor pro kontrakt |
 | ContractProvisioningStatus               | int            | Ne          | Určuje aktuální stav procesu zřízení pro kontrakt. Možné hodnoty: <br />0 – smlouvy se vytvořila pomocí rozhraní API v databázi<br />1 – kontrakt byl odeslán na účetní knize<br />2 – Smlouvy se úspěšně nasadil do hlavní knihy<br />3 nebo 4 – smlouvy se dají nasadit pro hlavní knihy<br />5 – Smlouvy se úspěšně nasadilo do hlavní knihy <br /><br />Od verze 1.5, jsou podporovány hodnoty 0 až 5. Pro zpětnou kompatibilitu v aktuální verzi, zobrazení **vwContractV0** je k dispozici, že podporuje pouze hodnoty 0 až 2. |
-| ContractLedgerIdentifier                 | nvarchar (255). |             | E-mailovou adresu uživatele, který je nasazený kontraktu |
-| ContractDeployedByUserId                 | int            | Ne          | Externí identifikátor pro uživatele, který je nasazený kontrakt. Ve výchozím nastavení toto je identifikátor guid představující ID Azure Active Directory pro uživatele.                                                                                                          |
-| ContractDeployedByUserExternalId         | nvarchar(255)  | Ne          | Externí identifikátor pro uživatele, který je nasazený kontrakt. Ve výchozím nastavení toto je identifikátor guid představující ID Azure Active Directory pro uživatele.                                                                                                         |
+| ContractLedgerIdentifier                 | nvarchar (255) |             | E-mailovou adresu uživatele, který je nasazený kontraktu |
+| ContractDeployedByUserId                 | int            | Ne          | Externí identifikátor pro uživatele, který je nasazený kontrakt. Ve výchozím nastavení toto ID je identifikátor guid představující ID Azure Active Directory pro uživatele.                                                                                                          |
+| ContractDeployedByUserExternalId         | nvarchar(255)  | Ne          | Externí identifikátor pro uživatele, který je nasazený kontrakt. Ve výchozím nastavení toto ID je identifikátor guid představující ID Azure Active Directory pro uživatele.                                                                                                         |
 | ContractDeployedByUserProvisioningStatus | int            | Ne          | Určuje aktuální stav procesu zřízení pro uživatele. Možné hodnoty: <br />0 – uživatel vytvořil rozhraní API<br />1 – klíč spojena s uživatelem v databázi <br />2 – uživatel je plně zřízený.                     |
 | ContractDeployedByUserFirstName          | nvarchar(50)   | Ano         | Křestní jméno uživatele, který je nasazený kontraktu |
 | ContractDeployedByUserLastName           | nvarchar(255)  | Ano         | Příjmení uživatele, který je nasazený kontraktu |
@@ -159,7 +159,7 @@ Toto zobrazení představuje většinu informací o související s akcí proved
 -   Podrobnosti o uživateli, který inicioval akci
 -   Podrobnosti týkající se blokování blockchain a transakce
 
-| Název                                     | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                                                    |
+| Název                                     | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                            | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                          | nvarchar(50)  | Ne          | Název aplikace |
@@ -176,7 +176,7 @@ Toto zobrazení představuje většinu informací o související s akcí proved
 | ContractDeployedByUserId                 | int           | Ne          | Jedinečný identifikátor uživatele, kterého je nasazený kontraktu |
 | ContractDeployedByUserFirstName          | nvarchar(50)  | Ano         | Křestní jméno uživatele, který je nasazený kontraktu |
 | ContractDeployedByUserLastName           | nvarchar(255) | Ano         | Příjmení uživatele, který je nasazený kontraktu |
-| ContractDeployedByUserExternalId         | nvarchar(255) | Ne          | Externí identifikátor uživatele, který je nasazený kontrakt. Ve výchozím nastavení to je identifikátor guid, který představuje identity v Azure Active Directory consortium.                                                                                                                                                |
+| ContractDeployedByUserExternalId         | nvarchar(255) | Ne          | Externí identifikátor uživatele, který je nasazený kontrakt. Ve výchozím nastavení je toto ID identifikátoru guid, který představuje identity v Azure Active Directory consortium.                                                                                                                                                |
 | ContractDeployedByUserEmailAddress       | nvarchar(255) | Ano         | E-mailovou adresu uživatele, který je nasazený kontraktu |
 | WorkflowFunctionId                       | int           | Ne          | Jedinečný identifikátor pro funkce workflowu |
 | WorkflowFunctionName                     | nvarchar(50)  | Ne          | Název funkce |
@@ -188,7 +188,7 @@ Toto zobrazení představuje většinu informací o související s akcí proved
 | ContractActionExecutedByUserId           | int           | Ne          | Jedinečný identifikátor uživatele, který spouští akce kontraktu |
 | ContractActionExecutedByUserFirstName    | int           | Ano         | Křestní jméno uživatele, který provedl akci kontraktu |
 | ContractActionExecutedByUserLastName     | nvarchar(50)  | Ano         | Příjmení uživatele, který provedl akci kontraktu |
-| ContractActionExecutedByUserExternalId   | nvarchar(255) | Ano         | Externí identifikátor uživatele, který provedl akci kontraktu. Ve výchozím nastavení to je identifikátor guid, který představuje identity v Azure Active Directory consortium. |
+| ContractActionExecutedByUserExternalId   | nvarchar(255) | Ano         | Externí identifikátor uživatele, který provedl akci kontraktu. Ve výchozím nastavení je toto ID identifikátoru guid, který představuje identity v Azure Active Directory consortium. |
 | ContractActionExecutedByUserEmailAddress | nvarchar(255) | Ano         | E-mailovou adresu uživatele, který provedl akci kontraktu |
 | WorkflowFunctionParameterId              | int           | Ne          | Jedinečný identifikátor pro parametr funkce |
 | WorkflowFunctionParameterName            | nvarchar(50)  | Ne          | Název parametru funkce |
@@ -199,11 +199,11 @@ Toto zobrazení představuje většinu informací o související s akcí proved
 | BlockHash                                | nvarchar(255) | Ano         | Hodnota hash bloku |
 | BlockNumber                              | int           | Ano         | Počet blok na hlavní knihy |
 | BlockTimestamp                           | DATETIME(2,7) | Ano         | Časové razítko bloku |
-| Identifikátor TransactionId                            | int           | Ne          | Jedinečný identifikátor pro transakce |
+| TransactionId                            | int           | Ne          | Jedinečný identifikátor pro transakce |
 | TransactionFrom                          | nvarchar(255) | Ano         | Strana, která pochází transakce |
 | TransactionTo                            | nvarchar(255) | Ano         | Strana, která byla provedena s transakce |
 | TransactionHash                          | nvarchar(255) | Ano         | Hodnota hash transakce |
-| TransactionIsWorkbenchTransaction        | Bit           | Ano         | Bit, který určuje, zda transakce je transakce Azure Blockchain Workbench |
+| TransactionIsWorkbenchTransaction        | Bit           | Ano         | Bit, který určuje, zda transakce je transakce v rámci Azure Blockchain Workbench |
 | TransactionProvisioningStatus            | int           | Ano         | Určuje aktuální stav procesu zřízení pro transakce. Možné hodnoty: <br />0 – transakce byla vytvořena pomocí rozhraní API v databázi<br />1 – transakce byl odeslán na účetní knize<br />2 – transakce byla úspěšně nasazena do hlavní knihy                 |
 | TransactionValue                         | Decimal(32,2) | Ano         | Částka transakce |
 
@@ -218,7 +218,7 @@ Toto zobrazení představuje většinu informací o související vlastnosti sou
 -   Konkrétní instance hodnoty vlastností
 -   Podrobnosti o stavu vlastnost kontraktu
 
-| Název                               | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                        |
+| Název                               | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                    | nvarchar(50)  | Ne          | Název aplikace |
@@ -235,7 +235,7 @@ Toto zobrazení představuje většinu informací o související vlastnosti sou
 | ContractDeployedByUserId           | int           | Ne          | Jedinečný identifikátor uživatele, kterého je nasazený kontraktu |
 | ContractDeployedByUserFirstName    | nvarchar(50)  | Ano         | Křestní jméno uživatele, který je nasazený kontraktu |
 | ContractDeployedByUserLastName     | nvarchar(255) | Ano         | Příjmení uživatele, který je nasazený kontraktu |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Ne          | Externí identifikátor uživatele, který je nasazený kontrakt. Ve výchozím nastavení to je identifikátor guid, který představuje svoji identitu v consortium Azure Active Directory |
+| ContractDeployedByUserExternalId   | nvarchar(255) | Ne          | Externí identifikátor uživatele, který je nasazený kontrakt. Ve výchozím nastavení je toto ID identifikátoru guid, který představuje svoji identitu v consortium Azure Active Directory |
 | ContractDeployedByUserEmailAddress | nvarchar(255) | Ano         | E-mailovou adresu uživatele, který je nasazený kontraktu |
 | WorkflowPropertyId                 | int           |             | Jedinečný identifikátor vlastnosti pracovního postupu |
 | WorkflowPropertyDataTypeId         | int           | Ne          | ID datového typu vlastnosti |
@@ -244,9 +244,9 @@ Toto zobrazení představuje většinu informací o související vlastnosti sou
 | WorkflowPropertyDisplayName        | nvarchar(255) | Ne          | Zobrazovaný název vlastnosti pracovního postupu |
 | WorkflowPropertyDescription        | nvarchar(255) | Ano         | Popis vlastnosti |
 | ContractPropertyValue              | nvarchar(255) | Ne          | Hodnota vlastnosti kontraktu |
-| StateName                          | nvarchar(50)  | Ano         | Pokud tato vlastnost obsahuje informace o stavu kontraktu, toto je zobrazovaný název pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
-| StateDisplayName                   | nvarchar(255) | Ne          | Pokud tato vlastnost obsahuje informace o stavu, toto je zobrazovaný název pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
-| StateValue                         | nvarchar(255) | Ano         | Pokud tato vlastnost obsahuje informace o stavu, jedná se o hodnotu stavu. Pokud není související se stavem, hodnota bude mít hodnotu null. |
+| StateName                          | nvarchar(50)  | Ano         | Pokud tato vlastnost obsahuje informace o stavu smlouvy, je zobrazovaný název pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
+| StateDisplayName                   | nvarchar(255) | Ne          | Pokud tato vlastnost obsahuje informace o stavu, je zobrazovaný název pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
+| StateValue                         | nvarchar(255) | Ano         | Pokud tato vlastnost obsahuje informace o stavu, je hodnota stavu. Pokud není související se stavem, hodnota bude mít hodnotu null. |
 
 ## <a name="vwcontractstate"></a>vwContractState
 
@@ -258,7 +258,7 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 -   Definice vlastnosti přidružené inteligentní kontraktu
 -   Podrobnosti o stavu vlastnost kontraktu
 
-| Název                               | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                        |
+| Název                               | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                    | nvarchar(50)  | Ne          | Název aplikace |
@@ -271,10 +271,10 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 | ContractLedgerImplementationId     | nvarchar(255) | Ano         | Jedinečný identifikátor přidružený k nasazené verzi inteligentní smlouvy pro konkrétní distribuované účetní knihy. Například Etherea. |
 | ContractId                         | int           | Ne          | Jedinečný identifikátor pro kontrakt |
 | ContractProvisioningStatus         | int           | Ne          |Určuje aktuální stav procesu zřízení pro kontrakt. Možné hodnoty: <br />0 – smlouvy se vytvořila pomocí rozhraní API v databázi<br />1 – kontrakt byl odeslán na účetní knize<br />2 – Smlouvy se úspěšně nasadil do hlavní knihy<br />3 nebo 4 – smlouvy se dají nasadit pro hlavní knihy<br />5 – Smlouvy se úspěšně nasadilo do hlavní knihy <br /><br />Od verze 1.5, jsou podporovány hodnoty 0 až 5. Pro zpětnou kompatibilitu v aktuální verzi, zobrazení **vwContractStateV0** je k dispozici, že podporuje pouze hodnoty 0 až 2. |
-| ID připojení                       | int           | Ne          | Jedinečný identifikátor instance pracovního postupu blockchain nasazuje do |
+| ConnectionId                       | int           | Ne          | Jedinečný identifikátor instance pracovního postupu blockchain nasazuje do |
 | ContractCodeId                     | int           | Ne          | Jedinečný identifikátor pro implementaci kódu kontraktu |
 | ContractDeployedByUserId           | int           | Ne          | Jedinečný identifikátor uživatele, kterého je nasazený kontraktu |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Ne          | Externí identifikátor uživatele, který je nasazený kontrakt. Ve výchozím nastavení to je identifikátor guid, který představuje identity v Azure Active Directory consortium. |
+| ContractDeployedByUserExternalId   | nvarchar(255) | Ne          | Externí identifikátor uživatele, který je nasazený kontrakt. Ve výchozím nastavení je toto ID identifikátoru guid, který představuje identity v Azure Active Directory consortium. |
 | ContractDeployedByUserFirstName    | nvarchar(50)  | Ano         | Křestní jméno uživatele, který je nasazený kontraktu |
 | ContractDeployedByUserLastName     | nvarchar(255) | Ano         | Příjmení uživatele, který je nasazený kontraktu |
 | ContractDeployedByUserEmailAddress | nvarchar(255) | Ano         | E-mailovou adresu uživatele, který je nasazený kontraktu |
@@ -285,18 +285,18 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 | WorkflowPropertyDisplayName        | nvarchar(255) | Ne          | Zobrazovaný název vlastnosti, která se zobrazí v uživatelském rozhraní |
 | WorkflowPropertyDescription        | nvarchar(255) | Ano         | Popis vlastnosti |
 | ContractPropertyValue              | nvarchar(255) | Ne          | Hodnota vlastnosti uložené v kontraktu |
-| StateName                          | nvarchar(50)  | Ano         | Pokud tato vlastnost obsahuje informace o stavu, toto je zobrazovaný název pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
-| StateDisplayName                   | nvarchar(255) | Ne          | Pokud tato vlastnost obsahuje informace o stavu, toto je zobrazovaný název pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
-| StateValue                         | nvarchar(255) | Ano         | Pokud tato vlastnost obsahuje informace o stavu, jedná se o hodnotu stavu. Pokud není související se stavem, hodnota bude mít hodnotu null. |
+| StateName                          | nvarchar(50)  | Ano         | Pokud tato vlastnost obsahuje informace o stavu, je zobrazované jméno pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
+| StateDisplayName                   | nvarchar(255) | Ne          | Pokud tato vlastnost obsahuje informace o stavu, je zobrazovaný název pro stav. Pokud není související se stavem, hodnota bude mít hodnotu null. |
+| StateValue                         | nvarchar(255) | Ano         | Pokud tato vlastnost obsahuje informace o stavu, je hodnota stavu. Pokud není související se stavem, hodnota bude mít hodnotu null. |
 
 ## <a name="vwuser"></a>vwUser
 
 Toto zobrazení obsahuje podrobné informace na consortium členů, které je zajištěno jeho použití pro Azure Blockchain Workbench. Ve výchozím nastavení se vyplní data prostřednictvím počátečního zřízení uživatele.
 
-| Název               | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                               |
+| Název               | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | Ne          | Jedinečný identifikátor uživatele |
-| externalID         | nvarchar(255) | Ne          | Externí identifikátor pro uživatele. Ve výchozím nastavení toto je identifikátor guid představující ID Azure Active Directory pro uživatele. |
+| externalID         | nvarchar(255) | Ne          | Externí identifikátor pro uživatele. Ve výchozím nastavení toto ID je identifikátor guid představující ID Azure Active Directory pro uživatele. |
 | ProvisioningStatus | int           | Ne          |Určuje aktuální stav zřizování proces pro uživatele. Možné hodnoty: <br />0 – uživatel vytvořil rozhraní API<br />1 – klíč spojena s uživatelem v databázi<br />2 – uživatel je plně zřízený. |
 | FirstName          | nvarchar(50)  | Ano         | Křestní jméno uživatele |
 | LastName           | nvarchar(50)  | Ano         | Příjmení uživatele |
@@ -310,7 +310,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 -   Definice pracovního postupu přidružená
 -   Související informace o stavu spuštění pracovního postupu
 
-| Název                              | Typ          | Může mít hodnotu Null | Popis                                                                                                                                |
+| Název                              | Type          | Může mít hodnotu Null | Popis                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                     | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                   | nvarchar(50)  | Ne          | Název aplikace |
@@ -326,7 +326,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 | WorkflowStartStateDisplayName     | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní pro stav |
 | WorkflowStartStateDescription     | nvarchar(255) | Ano         | Popis stavu pracovního postupu |
 | WorkflowStartStateStyle           | nvarchar(50)  | Ano         | Tato hodnota určuje procento dokončení, že pracovní postup je v tomto stavu |
-| WorkflowStartStateValue           | int           | Ne          | Toto je hodnota stavu |
+| WorkflowStartStateValue           | int           | Ne          | Hodnota stavu |
 | WorkflowStartStatePercentComplete | int           | Ne          | Textový popis, který poskytuje nápovědu pro klienty o tom, jak vykreslit tento stav v uživatelském rozhraní. Podporované stavy jsou *úspěch* a *selhání* |
 
 ## <a name="vwworkflowfunction"></a>vwWorkflowFunction
@@ -337,7 +337,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 -   Definice pracovního postupu přidružená
 -   Podrobnosti o funkci pracovního postupu
 
-| Název                                 | Typ          | Může mít hodnotu Null | Popis                                                                          |
+| Název                                 | Type          | Může mít hodnotu Null | Popis                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationId                        | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                      | nvarchar(50)  | Ne          | Název aplikace |
@@ -351,7 +351,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 | WorkflowFunctionName                 | nvarchar(50)  | Ano         | Název funkce |
 | WorkflowFunctionDisplayName          | nvarchar(255) | Ne          | Název funkce, který se má zobrazit v uživatelském rozhraní |
 | WorkflowFunctionDescription          | nvarchar(255) | Ano         | Popis funkce workflowu |
-| WorkflowFunctionIsConstructor        | Bit           | Ne          | Určuje, pokud je pracovní postup funkce konstruktoru pro pracovní postup |
+| WorkflowFunctionIsConstructor        | Bit           | Ne          | Určuje, zda funkce pracovního postupu je konstruktor pro pracovní postup |
 | WorkflowFunctionParameterId          | int           | Ne          | Jedinečný identifikátor pro parametr funkce |
 | WorkflowFunctionParameterName        | nvarchar(50)  | Ne          | Název parametru funkce |
 | WorkflowFunctionParameterDisplayName | nvarchar(255) | Ne          | Název parametru funkce, který se má zobrazit v uživatelském rozhraní |
@@ -366,7 +366,7 @@ Toto zobrazení představuje vlastností definovaných pro pracovní postup. Pro
 -   Definice pracovního postupu přidružená
 -   Podrobnosti vlastnosti pracovního postupu
 
-| Název                         | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
+| Název                         | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName              | nvarchar(50)  | Ne          | Název aplikace |
@@ -393,7 +393,7 @@ Toto zobrazení znázorňuje vlastnosti související s pracovním postupem. Pro
 -   Definice pracovního postupu přidružená
 -   Informace o stavu pracovního postupu
 
-| Název                         | Typ          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
+| Název                         | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName              | nvarchar(50)  | Ne          | Název aplikace |
@@ -408,5 +408,5 @@ Toto zobrazení znázorňuje vlastnosti související s pracovním postupem. Pro
 | WorkflowStateDisplayName     | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní pro stav |
 | WorkflowStateDescription     | nvarchar(255) | Ano         | Popis stavu pracovního postupu |
 | WorkflowStatePercentComplete | int           | Ne          | Tato hodnota určuje procento dokončení, že pracovní postup je v tomto stavu |
-| WorkflowStateValue           | nvarchar(50)  | Ne          | Toto je hodnota stavu |
+| WorkflowStateValue           | nvarchar(50)  | Ne          | Hodnota stavu |
 | WorkflowStateStyle           | nvarchar(50)  | Ne          | Textový popis, který poskytuje nápovědu pro klienty o tom, jak vykreslit tento stav v uživatelském rozhraní. Podporované stavy jsou *úspěch* a *selhání* |

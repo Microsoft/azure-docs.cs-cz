@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/15/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 415cdecc33b7360d482d37a3cb9d4f1bce528ab1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cc2d19bec91998116143058d2bc4313fd192db38
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251788"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592969"
 ---
 # <a name="create-an-oem-package"></a>Vytvoření balíčku výrobce OEM
 
@@ -30,11 +30,10 @@ Balíček rozšíření Azure Stack OEM je mechanismus, podle které OEM konkré
 
 ## <a name="creating-the-package"></a>Vytvoření balíčku
 
-Po vytvoření a ověření, OEM balíček rozšíření je možné v VaaS.  Než budete pokračovat, ujistěte se, že jste dokončili postup [vytvoření balíčku pro výrobce OEM](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). Balíček se pak odešle společnosti Microsoft spolu s výsledky testu VaaS pro podepisování se v procesu ověřování řešení. Následující kroky podrobně popisují, jak začlenit do souboru zip jeden, které využívají VaaS generované soubory.
+Po vytvoření a ověření, OEM balíček rozšíření je možné v VaaS.  Než budete pokračovat, ujistěte se, že jste dokončili postup [vytvoření balíčku pro výrobce OEM](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). Balíček se pak odešle společnosti Microsoft spolu s výsledky testu VaaS pro podepisování se v procesu ověřování balíčku. Následující kroky podrobně popisují, jak začlenit do souboru zip jeden, které využívají VaaS generované soubory.
 
 1. Identifikujte následující obsah pro balíček:
-    - Spustitelný soubor s názvem `<Publisher>-<Model>-<Version>.exe`
-    - Jeden nebo více souborů binárních souborů s názvem `<Publisher><Model>-<Version>-#.bin`, kde # je sekvenční číslo od 1. Počet binárních souborů, které je závislá na celkovou velikost obsahu balíčku.
+    - Soubor zip, který obsahuje obsah balíčku
     - Soubor manifestu s názvem `oemMetadata.xml`, který by měl být stejný obsah jako soubor metadata.xml v kořenovém adresáři balíčku obsahu.
 
 2. Vyberte soubory obsahu a vytvořit soubor zip z obsahu:
@@ -51,7 +50,7 @@ K ověření struktury souboru zip, zkontrolujte ho a zkontrolujte, že neexistu
 
 ![Správně komprimovaný balíček obsahu](media/vaas-create-oem-package-3.png)
 
-Soubor zip teď můžete být odeslán do VaaS a podepsán společností Microsoft v procesu ověřování řešení.
+Soubor zip teď můžete být odeslán do VaaS a podepsán společností Microsoft v pracovním postupu ověřování balíčku.
 
 ## <a name="next-steps"></a>Další postup
 

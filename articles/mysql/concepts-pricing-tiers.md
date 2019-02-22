@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: ff5890dcaf642d51c53b054e986689290be773ca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d84e3f834bd598bbd2cf84dfc46f6cd5507f6d8b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699240"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587119"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -42,6 +42,9 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 
 > [!IMPORTANT]
 > Od 12. prosince 2018, nebudou moct zřizovat výpočetní generace 4 servery v oblasti Brazílie – Jih, Kanada – střed, Kanada – východ, Asie – východ, USA – východ 2, střed Indie, Indie – Západ, Japonsko – Západ, střed USA – sever, USA – západ nové zákazníky. Výpočetní generace 4 servery budou migrovány na výpočetní generaci 5 od 1. února 2019 v těchto oblastech předtím vytvořili.
+>
+> [!IMPORTANT]
+> Od 15. února 2019 noví zákazníci nebude možné zřizovat výpočetní generace 4 servery v oblasti střed USA, USA – východ, Japonsko – východ, Severní Evropa, střed USA – Jih, jihovýchodní Asie, západní Evropa. Výpočetní generace 4 servery budou migrovány na výpočetní generaci 5 od 1. dubna 2019 v těchto oblastech předtím vytvořili.
 
 | **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|

@@ -10,12 +10,12 @@ ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: c3e7d27fa0e62c1dcc92e7eac7ddb56a1de5ba49
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fc1bdd5c6ad4829e22af9922c6749e60f842abaf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857804"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594028"
 ---
 # <a name="tutorial-build-an-entity-linking-app-with-c"></a>Kurz: Vytvoření Entity propojení aplikace sC#
 
@@ -55,7 +55,7 @@ Nástroj Entity Linking je teď nainstalován jako součást vaší aplikace. M�
  ![Zahrnutá knihovna NuGet v projektu](./Images/NugetLibraryInProject.png)
  
 ### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Krok 4: Přidat blok vstupní a výstupní text do vaší aplikace XAML</a>
-V **Průzkumníku řešení** přejděte na MainPage.xaml a potom na soubor poklikejte. Tím ho otevřete v novém okně. Abyste si práci usnadnili, můžete poklikat na tlačítko **XAML** na kartě **Návrhář**. Skryjete tak **vizuálního návrháře** a vyhradíte celý prostor pro zobrazení kódu.
+Přejděte do **MainPage.xaml** v **Průzkumníka řešení**, pak poklikejte na soubor, který se otevře v novém okně. Abyste si práci usnadnili, můžete poklikat na tlačítko **XAML** na kartě **Návrhář**. Skryjete tak **vizuálního návrháře** a vyhradíte celý prostor pro zobrazení kódu.
 
  ![Zahrnutá knihovna NuGet v projektu](./Images/UWPMainPage.png)
  

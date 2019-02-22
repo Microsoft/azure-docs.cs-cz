@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7fb382c6c57972484eff80c0d7355319a1f9178a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7b5b82e80ab4998f7cd106f469bf7ac8e271285d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893547"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588360"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
 
@@ -202,7 +202,7 @@ Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhled�
         endPoint.geometry.coordinates[0];
     ```
 
-3. Abyste získali trasu, přidejte do skriptu následující blok kódu. Dotazuje se směrovací služby Azure Maps prostřednictvím metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) a potom analyzuje odpověď do formátu GeoJSON pomocí [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest). Potom přidá čáru trasy v odpovědi ke zdroji dat, který ji automaticky vykreslí na mapě.
+3. Abyste získali trasu, přidejte do skriptu následující blok kódu. Dotazuje se směrovací služby Azure Maps prostřednictvím metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) a potom analyzuje odpověď do formátu GeoJSON pomocí [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest). Potom přidá čáru trasy v odpovědi ke zdroji dat, který ji automaticky vykreslí na mapě.
 
     ```JavaScript
     //Execute the car route query then add the route to the map once a response is received.

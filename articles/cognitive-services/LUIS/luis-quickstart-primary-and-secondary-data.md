@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 78c9eaaf1dad0ae596bad13ac40a9df2dc4d2f3c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867235"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594725"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahovat názvy s jednoduchou entitu a seznam fráze
 
@@ -233,7 +233,9 @@ Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-s
 
     [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi rozbalovací](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Pokud chcete do seznamu frází přidat další slova, prohlédněte si část **Related Values** (Související hodnoty) a přidejte všechna slova, která jsou relevantní. 
+    Pokud chcete přidat do seznamu frázi více slov, vyberte **Recommand** zkontrolujte nové **souvisejících hodnot** a přidejte všechny, které jsou relevantní. 
+
+    Ujistěte se, aby **tyto hodnoty jsou zaměnitelné** kontrolovat, protože tyto hodnoty by měly být zacházeno jako s synonyma pro úlohy. Další informace o zaměnitelné a noninterchangeable [frázi seznamu koncepty](luis-concept-feature.md#how-to-use-phrase-lists).
 
 1. Výběrem tlačítka **Save** (Uložit) seznam frází aktivujte.
 

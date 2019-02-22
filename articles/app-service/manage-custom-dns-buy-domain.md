@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d47c560515a13efa8346974e828f14f9a15f0e4a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c2bee4d35fe857d5ad3bf26dc1145b8721c85df4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730922"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594232"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
 
@@ -126,7 +126,7 @@ Potom vyberte požadované možnosti pro vaši doménu. V následující tabulce
 Klikněte na tlačítko **právní podmínky** přečtěte si podmínky a náklady a pak klikněte na **koupit**.
 
 > [!NOTE]
-> Domény služby App Service použít Azure DNS k hostování domény. Kromě registrace poplatek domény se platí poplatky za používání pro Azure DNS. Informace najdete v tématu [ceny služby Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+> Domény služby App Service použít k hostování domén GoDaddy pro registraci domény a Azure DNS. Kromě registrace poplatek domény se platí poplatky za používání pro Azure DNS. Informace najdete v tématu [ceny služby Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
@@ -219,7 +219,7 @@ Chcete-li ručně obnovit vaši doménu, vyberte **obnovení domény**. Nicmén�
 
 <a name="custom"></a>
 
-## <a name="manage-custom-dns-records"></a>Správa vlastních záznamů DNS
+## <a name="manage-custom-dns-records"></a>Manage custom DNS records
 
 V Azure, záznamy DNS pro domény služby App Service se spravují pomocí [Azure DNS](https://azure.microsoft.com/services/dns/). Můžete přidat, odebrat a aktualizovat záznamy DNS, stejně jako pro externě zakoupené doménu.
 
@@ -251,7 +251,7 @@ Na webu Azure Portal, v levé nabídce vyberte **všechny služby** > **domén s
 
 Vyberte domény, ke které chcete zrušit nebo odstranit. 
 
-### <a name="delete-hostname-bindings"></a>Odstranění vazby názvu hostitele
+### <a name="delete-hostname-bindings"></a>Odstranit vazby názvů hostitelů
 
 V nabídce vlevo doménu, vyberte **vazby názvu hostitele**. Tady jsou uvedené vazby názvu hostitele ze všech služeb Azure.
 
