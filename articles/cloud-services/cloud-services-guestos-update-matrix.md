@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2019
+ms.date: 2/20/2019
 ms.author: raiye
-ms.openlocfilehash: 76009115f855a840c81e79d0c864187c8410aa23
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 063834af9b56e9959883c00bb58c70f0d333c455
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751510"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588564"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -77,6 +77,15 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.7.2
 > [!NOTE]
 > Windows Azure SDK pro .NET – si můžete stáhnout 3.0 [tady][Windows Azure SDK].
 >
+>Postup instalace:
+>1. Odinstalujte všechny starší verze MicrosoftAzureAuthoringTools*.msi
+>2. Nainstalujte [Azure SDK pro .NET – 3.0][Windows Azure SDK]
+>3. Restartujte počítač
+>4. Vytvořte nový projekt cloudové služby a přidejte jedné Role pracovního procesu
+>5. Změňte řada operačního systému na 6 a vytvořit balíček
+>6. Nasadit balíček do Azure pomocí webu Azure portal nebo Visual Studio
+>
+
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
@@ -92,6 +101,7 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.6.2
 > [!NOTE]
 > Hesla protokolu RDP pro řadu OS 5 musí být minimálně 10 znaků.
 >
+
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |

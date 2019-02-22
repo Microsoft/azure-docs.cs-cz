@@ -11,17 +11,72 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2019
+ms.date: 2/20/2019
 ms.author: raiye
-ms.openlocfilehash: 4c1b1b376493c77ae0f197d800ee0d00434b19c6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b39a365e077f8c51b322f0849b373b500cb2d905
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752105"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594283"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
+
+## <a name="february-2019-guest-os"></a>. Února 2019 hostovaného operačního systému
+
+>[!NOTE]
+>Únor hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému. února. Tento seznam se může změnit.
+
+| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 19-02 | [4486474] | Internet Explorer | 2.83, 3.70, 4.63 | 12. února 2019 |
+| Rel 19-02 | [4487038] | Animace Flash | 3.70, 4.63, 5.28, 6.4 | 12. února 2019 |
+| Rel 19-02 | [4486564] | Zabezpečení Windows | 2.83 | 12. února 2019 |
+| Rel 19-02 | [4483483] | Rozhraní .NET 3.5.1 zabezpečení | 2.83 | 12. února 2019 |
+| Rel 19-02 | [4483474] | .NET 4.5.2 zabezpečení | 2.83 | 12. února 2019 |
+| Rel 19-02 | [4486993] | Zabezpečení Windows | 3.70 | 12. února 2019 |
+| Rel 19-02 | [4483481] | Rozhraní .NET 3.5 zabezpečení | 3.70 | 12. února 2019 |
+| Rel 19-02 | [4483473] | .NET 4.5.2 zabezpečení | 3.70 | 12. února 2019 |
+| Rel 19-02 | [4487028] | Zabezpečení Windows | 4.63 | 12. února 2019 |
+| Rel 19-02 | [4483484] | Rozhraní .NET 3.5 zabezpečení | 4.63 | 12. února 2019 |
+| Rel 19-02 | [4483472] | .NET 4.5.2 zabezpečení | 4.63 | 12. února 2019 |
+| Rel 19-02 | [4487026] | Zabezpečení Windows | 5.28 | 12. února 2019 |
+| Rel 19-02 | [4487044] | Zabezpečení Windows | 6.4 | 12. února 2019 |
+| Rel 19-02 | [4483452] | Rozhraní .NET 3.5, 4.7.2 zabezpečení | 6.4 | 12. února 2019 |
+| neuvedeno | [4480970] | Souhrn ledna Non-zabezpečení | 2.83 | 8. ledna 2019 |
+| neuvedeno | [4483483] | Souhrn ledna Non-zabezpečení rozhraní .NET 3.5.1  | 2.83 | 8. ledna 2019 |
+| neuvedeno | [4480059] | Souhrn ledna zabezpečením .NET 4.5.2  | 2.83 | 8. ledna 2019 |
+| neuvedeno | [4480975] | Souhrn ledna Non-zabezpečení | 3.70 | 8. ledna 2019 |
+| neuvedeno | [4480061] | Souhrn ledna Non-zabezpečení rozhraní .NET 3.5 | 3.70 | 8. ledna 2019 |
+| neuvedeno | [4480058] | Souhrn ledna zabezpečením .NET 4.5.2 | 3.70 | 8. ledna 2019 |
+| neuvedeno | [4480963] | Souhrn ledna Non-zabezpečení | 4.63 | 8. ledna 2019 |
+| neuvedeno | [4480064] | Souhrn ledna Non-zabezpečení rozhraní .NET 3.5 | 4.63 | 8. ledna 2019 |
+| neuvedeno | [4480057] | Souhrn ledna zabezpečením .NET 4.5.2 | 4.63 | 8. ledna 2019 |
+
+[4486474]: http://support.microsoft.com/kb/4486474
+[4487038]: http://support.microsoft.com/kb/4487038
+[4486564]: http://support.microsoft.com/kb/4486564
+[4483483]: http://support.microsoft.com/kb/4483483
+[4483474]: http://support.microsoft.com/kb/4483474
+[4486993]: http://support.microsoft.com/kb/4486993
+[4483481]: http://support.microsoft.com/kb/4483481
+[4483473]: http://support.microsoft.com/kb/4483473
+[4487028]: http://support.microsoft.com/kb/4487028
+[4483484]: http://support.microsoft.com/kb/4483484
+[4483472]: http://support.microsoft.com/kb/4483472
+[4487026]: http://support.microsoft.com/kb/4487026
+[4487044]: http://support.microsoft.com/kb/4487044
+[4483452]: http://support.microsoft.com/kb/4483452
+[4480970]: http://support.microsoft.com/kb/4480970
+[4483483]: http://support.microsoft.com/kb/4483483
+[4480059]: http://support.microsoft.com/kb/4480059
+[4480975]: http://support.microsoft.com/kb/4480975
+[4480061]: http://support.microsoft.com/kb/4480061
+[4480058]: http://support.microsoft.com/kb/4480058
+[4480963]: http://support.microsoft.com/kb/4480963
+[4480064]: http://support.microsoft.com/kb/4480064
+[4480057]: http://support.microsoft.com/kb/4480057
 
 ## <a name="january-2019-guest-os"></a>2019 ledna hostovaného operačního systému
 

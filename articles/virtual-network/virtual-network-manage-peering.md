@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: fcd1d8c4dd1f9684db85514a80fea7022f52b0fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: MT
+ms.openlocfilehash: 0cc85425742fbf3ee4825e13349d2b8b2c9ca6c4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817083"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649318"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -28,11 +28,13 @@ Informace o vytvoření, změna nebo odstranění partnerského vztahu virtuáln
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnerské vztahy.
-- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzureRmAccount` pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnery, vytvořte připojení k Azure.
+- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzAccount` pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnery, vytvořte připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnery, vytvořte připojení k Azure.
 
 Účet přihlásit nebo připojit k Azure, musíte být přiřazeni k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
@@ -55,23 +57,22 @@ Před vytvořením partnerského vztahu, seznamte se s požadavky a omezení a [
     - **Povolit přístup k virtuální síti:** Vyberte **povoleno** (výchozí), pokud chcete povolit komunikaci mezi dvěma virtuálními sítěmi. Povolení komunikace mezi virtuálními sítěmi umožní prostředkům připojeným k obou virtuálních sítích komunikovat mezi sebou stejnou šířku pásma a čekací doba jakoby byly připojené ke stejné virtuální síti. Veškerá komunikace mezi prostředky ve dvou virtuálních sítích je v Azure privátní síti. **VirtualNetwork** značka služby pro skupiny zabezpečení sítě zahrnuje virtuální síť a partnerské virtuální síti. Další informace o značkách služby skupiny zabezpečení sítě najdete v tématu [přehled skupin zabezpečení sítě](security-overview.md#service-tags). Vyberte **zakázané** Pokud nechcete, aby provoz směrovat do partnerské virtuální síti. Můžete vybrat **zakázané** Pokud jste partnerský vztah virtuální sítě s jinou virtuální sítí, ale někdy chcete zakázat toku provozu mezi dvěma virtuálními sítěmi. Může se stát, že povolení/zákazu je pohodlnější než odstraníte a znovu vytvoříte partnerské vztahy. Pokud je toto nastavení zakázáno, tok nebude provoz mezi partnerskými virtuálními sítěmi.
     - **Povolit přesměrovaný přenos:** Zaškrtnutím tohoto políčka Povolit provoz *předané* podle síťové virtuální zařízení ve virtuální síti (která neměli pocházejí z virtuální sítě) do služby flow k této virtuální síti přes partnerské vztahy. Představte si třeba tři virtuální sítě s názvem Spoke1 Spoke2 a rozbočovače. Partnerský vztah mezi virtuální síť každého paprsku a centrální virtuální síti existuje, ale neexistují partnerských vztahů mezi virtuálními sítěmi paprsků. Síťové virtuální zařízení je nasazena v centrální virtuální síti a trasy definované uživatelem se použijí pro virtuální síť každého paprsku, která směrovat provoz mezi podsítěmi přes síťové virtuální zařízení. Pokud je toto políčko není zaškrtnuto pro partnerský vztah mezi virtuální síť každého paprsku a centrální virtuální síti, přenos není tok mezi virtuálními sítěmi paprsků protože centra je přesměrování provozu mezi virtuálními sítěmi. Když povolíte tuto funkci umožňuje přesměrované přenosy přes partnerský vztah, nevytvoří všechny trasy definované uživatelem nebo síťových virtuálních zařízení. Uživatelem definované trasy a síťových virtuálních zařízení se vytvářejí zvlášť. Další informace o [trasy definované uživatelem](virtual-networks-udr-overview.md#user-defined). Nemusíte kontrolovat toto nastavení, pokud přenosy mezi virtuálními sítěmi pomocí služby Azure VPN Gateway předávaly.
     - **Povolit průchod bránou:** Toto políčko zaškrtněte, pokud máte bránu virtuální sítě připojené k této virtuální síti a chcete povolit provoz z partnerské virtuální síti, které jsou předávány přes bránu. Tato virtuální síť může být například připojené k místní síti přes bránu virtuální sítě. Může jí být služby ExpressRoute nebo VPN gateway. Zaškrtnutím tohoto políčka umožní provoz z partnerské virtuální síti tok přes bránu připojit tuto virtuální síť k místní síti. Pokud zaškrtnete toto políčko, navázaným partnerským vztahem virtuální síť nemůže mít nakonfigurovanou bránu. Partnerské virtuální síti musí mít **používat vzdálené brány** zaškrtnutí políčka při nastavování partnerského připojení z druhé virtuální sítě do této virtuální sítě. Necháte-li toto není zaškrtnuto políčko (výchozí), provoz z partnerské virtuální síti stále toky do této virtuální síti, ale nelze procházet skrz bránu virtuální sítě připojené k této virtuální síti. Pokud partnerský vztah mezi virtuální sítí (Resource Manager) a virtuální síť (classic), musí být brána virtuální sítě (Resource Manager). Tuto možnost nelze povolit, pokud máte partnerské vztahy virtuálních sítí v různých oblastech.
-    
-        Kromě předávají provoz směřující do místní sítě, můžete bránu VPN směrovat síťový provoz mezi virtuálními sítěmi, které jsou v partnerském vztahu s virtuální sítí, brána se nachází v, aniž by bylo potřeba vytvořit partnerský vztah mezi sebou virtuální sítě. Přes bránu VPN směrovat provoz je užitečná, pokud chcete používat bránu sítě VPN v rozbočovači (podívejte se na střed a paprsek příklad popsaných **povolit přesměrovaný přenos**) směrovat provoz mezi virtuálními sítěmi paprsků, které nejsou virtuální sítě partnerský vztah mezi sebou. Další informace o povolení použití brány pro průchod najdete v tématu [konfigurovat bránu VPN k přenosu v partnerského vztahu virtuálních sítí](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento scénář vyžaduje implementace trasy definované uživatelem, které jako typ dalšího segmentu směrování zadat bránu virtuální sítě. Další informace o [trasy definované uživatelem](virtual-networks-udr-overview.md#user-defined). Bránu sítě VPN lze zadat pouze jako typ dalšího segmentu směrování v uživatelsky definované trase, bránu ExpressRoute nelze zadat jako typ dalšího segmentu směrování v uživatelsky definované trase. Tuto možnost nelze povolit, pokud máte partnerské vztahy virtuálních sítí v různých oblastech.
 
-    - **Používat vzdálené brány:** Zaškrtněte toto políčko, aby přijímaly provoz z této virtuální sítě probíhá přes bránu virtuální sítě připojené k virtuální síti, se partnerský vztah. Například virtuální síť, kterou jste partnerský vztah má bránu VPN připojený, která umožňuje komunikaci s místní sítí.  Zaškrtnutím tohoto políčka umožní provoz z této virtuální sítě k toku prostřednictvím brány VPN, které jsou připojené k partnerské virtuální síti. Pokud zaškrtnete toto políčko, musí mít bránu virtuální sítě připojené k němu partnerské virtuální síti a musí mít **povolit průchod bránou** zaškrtnutí políčka. Pokud necháte toto není zaškrtnuto políčko (výchozí), provoz z partnerské virtuální síti může stále probíhat k této virtuální síti, ale nemůže flow přes bránu virtuální sítě připojen na tento virtuální sítě. 
+       Kromě předávají provoz směřující do místní sítě, můžete bránu VPN směrovat síťový provoz mezi virtuálními sítěmi, které jsou v partnerském vztahu s virtuální sítí, brána se nachází v, aniž by bylo potřeba vytvořit partnerský vztah mezi sebou virtuální sítě. Přes bránu VPN směrovat provoz je užitečná, pokud chcete používat bránu sítě VPN v rozbočovači (podívejte se na střed a paprsek příklad popsaných **povolit přesměrovaný přenos**) směrovat provoz mezi virtuálními sítěmi paprsků, které nejsou virtuální sítě partnerský vztah mezi sebou. Další informace o povolení použití brány pro průchod najdete v tématu [konfigurovat bránu VPN k přenosu v partnerského vztahu virtuálních sítí](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento scénář vyžaduje implementace trasy definované uživatelem, které jako typ dalšího segmentu směrování zadat bránu virtuální sítě. Další informace o [trasy definované uživatelem](virtual-networks-udr-overview.md#user-defined). Bránu sítě VPN lze zadat pouze jako typ dalšího segmentu směrování v uživatelsky definované trase, bránu ExpressRoute nelze zadat jako typ dalšího segmentu směrování v uživatelsky definované trase. Tuto možnost nelze povolit, pokud máte partnerské vztahy virtuálních sítí v různých oblastech.
+
+    - **Používat vzdálené brány:** Zaškrtněte toto políčko, aby přijímaly provoz z této virtuální sítě probíhá přes bránu virtuální sítě připojené k virtuální síti, se partnerský vztah. Například virtuální síť, kterou jste partnerský vztah má bránu VPN připojený, která umožňuje komunikaci s místní sítí.  Zaškrtnutím tohoto políčka umožní provoz z této virtuální sítě k toku prostřednictvím brány VPN, které jsou připojené k partnerské virtuální síti. Pokud zaškrtnete toto políčko, musí mít bránu virtuální sítě připojené k němu partnerské virtuální síti a musí mít **povolit průchod bránou** zaškrtnutí políčka. Pokud necháte toto není zaškrtnuto políčko (výchozí), provoz z partnerské virtuální síti může stále probíhat k této virtuální síti, ale nemůže flow přes bránu virtuální sítě připojen na tento virtuální sítě.
     Pouze jeden partnerský vztah pro tuto virtuální síť může mít toto nastavení povolené.
 
         Pokud už máte nakonfigurovanou ve vaší virtuální síti bránu, nemůže používat vzdálené brány. Tuto možnost nelze povolit, pokud máte partnerské vztahy virtuálních sítí v různých oblastech. Další informace o použití brány pro přenosu, naleznete v tématu [konfigurovat bránu VPN k přenosu v partnerského vztahu virtuálních sítí](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 7. Vyberte **OK** se přidat partnerský vztah virtuální sítě, které jste vybrali.
 
-Podrobné pokyny k implementaci partnerský vztah mezi virtuálními sítěmi v různých předplatných a modelech nasazení najdete v tématu [další kroky](#next-steps). 
-
+Podrobné pokyny k implementaci partnerský vztah mezi virtuálními sítěmi v různých předplatných a modelech nasazení najdete v tématu [další kroky](#next-steps).
 
 ### <a name="commands"></a>Příkazy
 
-- **Azure CLI**: [vytvořit partnerský vztah virtuální sítě az sítě](/cli/azure/network/vnet/peering)
-- **PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
+- **Azure CLI**: [vytvořit partnerský vztah virtuální sítě az sítě](/cli/azure/network/vnet/peering#create)
+- **PowerShell**: [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Zobrazit nebo změnit nastavení partnerského vztahu
 
@@ -82,19 +83,19 @@ Před změnou, partnerský vztah, seznamte se s požadavky a omezení a [potřeb
 3. Seznam virtuálních sítí vyberte virtuální síť, kterou chcete změnit nastavení partnerského vztahu pro.
 4. V části **nastavení**vyberte **partnerské vztahy**.
 5. Vyberte partnerské vztahy, které chcete zobrazit nebo změnit nastavení pro.
-6. Změňte odpovídající nastavení. Přečtěte si o možnostech pro každé nastavení v [kroku 6](#add-peering) vytvořit partnerský vztah. 
+6. Změňte odpovídající nastavení. Přečtěte si o možnostech pro každé nastavení v [kroku 6](#add-peering) vytvořit partnerský vztah.
 7. Vyberte **Uložit**.
 
 **Příkazy**
 
-- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering) Chcete-li změnit nastavení partnerského vztahu. |
-- **PowerShell**: [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) načíst zobrazení nastavení partnerského vztahu a [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Chcete-li změnit nastavení.
+- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) Chcete-li změnit nastavení partnerského vztahu. |
+- **PowerShell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) načíst zobrazení nastavení partnerského vztahu a [Set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) Chcete-li změnit nastavení.
 
 ## <a name="delete-a-peering"></a>Odstranit partnerský vztah
 
 Před odstraňuje se partnerský vztah, ujistěte, že má váš účet [potřebná oprávnění](#permissions).
 
-Při odstranění partnerského vztahu, provoz z virtuální sítě už vede do partnerské virtuální síti. Po vytvoření partnerského vztahu virtuální sítě nasazené prostřednictvím Resource Manageru, každá virtuální síť má partnerský vztah k jiné virtuální síti. I když odstraňuje se partnerský vztah z jedné virtuální sítě zakáže komunikaci mezi virtuálními sítěmi, ale neodstraníte partnerského připojení z druhé virtuální sítě. Stav partnerského vztahu pro partnerský vztah, který existuje ve virtuální síti je **odpojeno**. Nelze znovu vytvořit partnerský vztah dokud je znovu vytvořit partnerský vztah v první virtuální sítě a stav partnerského vztahu pro obě virtuální sítě změny *připojeno*. 
+Při odstranění partnerského vztahu, provoz z virtuální sítě už vede do partnerské virtuální síti. Po vytvoření partnerského vztahu virtuální sítě nasazené prostřednictvím Resource Manageru, každá virtuální síť má partnerský vztah k jiné virtuální síti. I když odstraňuje se partnerský vztah z jedné virtuální sítě zakáže komunikaci mezi virtuálními sítěmi, ale neodstraníte partnerského připojení z druhé virtuální sítě. Stav partnerského vztahu pro partnerský vztah, který existuje ve virtuální síti je **odpojeno**. Nelze znovu vytvořit partnerský vztah dokud je znovu vytvořit partnerský vztah v první virtuální sítě a stav partnerského vztahu pro obě virtuální sítě změny *připojeno*.
 
 Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, ale ne vždy místo odstraňuje se partnerský vztah, můžete nastavit **povolit přístup k virtuální síti** nastavení **zakázané** místo toho. Další informace, jak číst kroku 6 postupu [vytvoření partnerského vztahu](#create-a-peering) části tohoto článku. Může se stát zakázání a povolení přístupu k síti je jednodušší než odstranili a znovu vytvořili partnerské vztahy.
 
@@ -108,11 +109,11 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 **Příkazy**
 
 - **Azure CLI**: [az sítě vnet partnerského vztahu delete](/cli/azure/network/vnet/peering)
-- **PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
+- **PowerShell**: [Remove-AzVirtualNetworkPeering](/powershell/module/az.network/remove-azvirtualnetworkpeering)
 
-## <a name="requirements-and-constraints"></a>Požadavky a omezení 
+## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
-- <a name="cross-region"></a>Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech. Vytvoření partnerského vztahu virtuálních sítí v různých oblastech se také označuje jako *globální partnerský vztah*. 
+- <a name="cross-region"></a>Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech. Vytvoření partnerského vztahu virtuálních sítí v různých oblastech se také označuje jako *globální partnerský vztah*.
 - Při vytváření globální partnerský vztah, partnerských virtuálních sítích mohou existovat v libovolné oblasti veřejného cloudu Azure nebo cloudových oblastech Čína, ale není v Government cloudovým oblastem. Je možné jen partnerské virtuální sítě ve stejné oblasti v oblasti cloudu Azure Government.
 - Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v globálním partnerském vztahu virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve virtuální síti ve stejné oblasti. Pokud partnerských virtuálních sítích se ale ve stejné oblasti, můžete prostředky v obou virtuálních sítích komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v obou virtuálních sítích v partnerském vztahu.
 - Nelze používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, musí být partnerských virtuálních sítích ve stejné oblasti.
@@ -121,12 +122,12 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 - Nelze přidat rozsahy adres do nebo odstranit rozsahy adres z adresního prostoru virtuální sítě, jakmile se virtuální síť má partnerský vztah s jinou virtuální sítí. Chcete-li přidat nebo odebrat rozsahy adres, odstranit partnerský vztah, přidat nebo odebrat rozsahy adres, pak znovu vytvořte partnerský vztah. Přidat rozsahy adres k nebo odebrat rozsahy adres virtuální sítě, najdete v článku [Správa virtuálních sítí](manage-virtual-network.md).
 - Můžete vytvořit partnerský vztah dvou virtuálních sítí, které jsou nasazené prostřednictvím Resource Manageru nebo virtuální sítě nasazené prostřednictvím Resource Manageru pomocí virtuální sítě nasazené pomocí modelu nasazení classic. Nejde vytvořit partnerský vztah dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení classic. Pokud nejste obeznámeni s modely nasazení Azure, přečtěte si [vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
 - Pokud navazujete partnerský vztah mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím Resource Manageru, v partnerském vztahu musí být nakonfigurován partnerský vztah pro každou virtuální síť. Se zobrazí jedna z následujících typů pro stav partnerského vztahu: 
-    - *Zahájeno:* Když vytvoříte partnerské připojení k druhé virtuální sítě z první virtuální sítě, stav partnerského vztahu je *iniciováno*. 
-    - *Připojeno:* Když vytvoříte partnerské připojení z druhé virtuální sítě k první virtuální sítě, stav partnerského vztahu je *připojeno*. Pokud zobrazíte stav partnerského vztahu pro první virtuální sítě, zobrazí se její stav se změnil z *iniciováno* k *připojeno*. Partnerský vztah není úspěšně navázán, dokud stav partnerského vztahu pro obě partnerské vztahy virtuálních sítí je *připojeno*.
+  - *Zahájeno:* Když vytvoříte partnerské připojení k druhé virtuální sítě z první virtuální sítě, stav partnerského vztahu je *iniciováno*. 
+  - *Připojeno:* Když vytvoříte partnerské připojení z druhé virtuální sítě k první virtuální sítě, stav partnerského vztahu je *připojeno*. Pokud zobrazíte stav partnerského vztahu pro první virtuální sítě, zobrazí se její stav se změnil z *iniciováno* k *připojeno*. Partnerský vztah není úspěšně navázán, dokud stav partnerského vztahu pro obě partnerské vztahy virtuálních sítí je *připojeno*.
 - Při vytváření partnerského vztahu virtuální sítě vytvořené pomocí Resource Manageru s virtuální sítí vytvořenou prostřednictvím modelu nasazení classic, je pouze nakonfigurovat partnerský vztah virtuální sítě, která je nasazena prostřednictvím Resource Manageru. Nejde nakonfigurovat partnerský vztah virtuální sítě (classic), nebo mezi dvě virtuální sítě nasazené pomocí modelu nasazení classic. Když vytvoříte partnerské připojení z virtuální sítě (Resource Manager) k virtuální síti (Classic), stav partnerského vztahu je *aktualizace*, pak se brzy změní na *připojeno*.
 - Mezi dvěma virtuálními sítěmi se naváže partnerský vztah. Partnerské vztahy jsou nepřenosné. Pokud vytvoříte partnerské vztahy mezi:
-    - VirtualNetwork1 & VirtualNetwork2
-    - VirtualNetwork2 & VirtualNetwork3
+  - VirtualNetwork1 & VirtualNetwork2
+  - VirtualNetwork2 & VirtualNetwork3
 
   Neexistuje žádné partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3 prostřednictvím VirtualNetwork2. Pokud chcete vytvořit partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3, budete muset vytvořit partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3.
 - Nelze přeložit názvy v partnerských virtuálních sítích pomocí výchozí rozlišování názvů Azure. K překladu názvů v dalším virtuálním sítím, je nutné použít [Azure DNS pro privátní domény](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo vlastního serveru DNS. Další informace o nastavení serveru DNS, najdete v článku [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
@@ -144,25 +145,25 @@ Tyto účty, které můžete použít pro práci se partnerský vztah virtuáln�
 
 Pokud váš účet nemá přiřazenou k jednomu z předchozích rolí, musíte být přiřazeni k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , který je přiřazen nezbytné akce z následující tabulky:
 
-| Akce | Název |
-|---|---|
-| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Potřebný k vytvoření partnerského vztahu virtuální sítě A virtuální sítí b virtuální síti A musí být virtuální síť (Resource Manager)                            |
-| Microsoft.Network/virtualNetworks/peer/action                   | Potřebný k vytvoření partnerského vztahu virtuální síť B (Resource Manager) k virtuální síti A                                                                                |
-| Microsoft.ClassicNetwork/virtualNetworks/peer                   | Potřebný k vytvoření partnerského vztahu virtuální síť B (classic) k virtuální síti A                                                                                    |
+| Akce                                                          | Název |
+|---                                                              |---   |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Potřebný k vytvoření partnerského vztahu virtuální sítě A virtuální sítí b virtuální síti A musí být virtuální síť (Resource Manager)          |
+| Microsoft.Network/virtualNetworks/peer/action                   | Potřebný k vytvoření partnerského vztahu virtuální síť B (Resource Manager) k virtuální síti A                                                       |
+| Microsoft.ClassicNetwork/virtualNetworks/peer                   | Potřebný k vytvoření partnerského vztahu virtuální síť B (classic) k virtuální síti A                                                                |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | Přečtěte si partnerského vztahu virtuálních sítí   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Odstranění partnerského vztahu virtuálních sítí |
 
 ## <a name="next-steps"></a>Další postup
 
-* Partnerský vztah virtuálních sítí se vytváří mezi virtuálními sítěmi vytvořenými prostřednictvím stejného modelu nebo různých modelů nasazení, které existují ve stejném předplatném nebo různých předplatných. Dokončete kurz pro jeden z následujících scénářů:
+- Partnerský vztah virtuálních sítí se vytváří mezi virtuálními sítěmi vytvořenými prostřednictvím stejného modelu nebo různých modelů nasazení, které existují ve stejném předplatném nebo různých předplatných. Dokončete kurz pro jeden z následujících scénářů:
 
-    |Model nasazení Azure             | Předplatné  |
-    |---------                          |---------|
-    |Obě Resource Manager              |[Stejné](tutorial-connect-virtual-networks-portal.md)|
-    |                                   |[Různé](create-peering-different-subscriptions.md)|
-    |Jedna Resource Manager, druhá Classic  |[Stejné](create-peering-different-deployment-models.md)|
-    |                                   |[Různé](create-peering-different-deployment-models-subscriptions.md)|
+  |Model nasazení Azure             | Předplatné  |
+  |---------                          |---------|
+  |Obě Resource Manager              |[Stejné](tutorial-connect-virtual-networks-portal.md)|
+  |                                   |[Různé](create-peering-different-subscriptions.md)|
+  |Jedna Resource Manager, druhá Classic  |[Stejné](create-peering-different-deployment-models.md)|
+  |                                   |[Různé](create-peering-different-deployment-models-subscriptions.md)|
 
-* Zjistěte, jak vytvořit [rozbočovač a uvedenou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* Vytvoření partnerského vztahu virtuálních sítí pomocí [PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablon Resource Manageru](template-samples.md)
-* Vytvoření a použití [Azure policy](policy-samples.md) pro virtuální sítě
+- Zjistěte, jak vytvořit [rozbočovač a uvedenou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Vytvoření partnerského vztahu virtuálních sítí pomocí [PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablon Resource Manageru](template-samples.md)
+- Vytvoření a použití [Azure policy](policy-samples.md) pro virtuální sítě
