@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/19/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: e6ab51d568c950ca7fd503150557df288d84174f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d6813c11b5b9ed4aef666f5eb3dc75d8c9de770
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867728"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593418"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení uživatelů záměr projevů
 
@@ -50,21 +50,14 @@ Utterance v záměru pravděpodobně záměru předpovědi relevanci vybrané z�
 
 V horním navigačním panelu vyberte **Train**. Predikce nesrovnalosti je nyní pryč.
 
+> [!Note]
+> Při červená čára slovo nebo frázi v utterance příklad [entity předpovědi chyb](luis-how-to-add-example-utterances.md#entity-status-predictions) došlo k chybě. Je třeba ho opravit. 
+
 ## <a name="add-a-custom-entity"></a>Přidání vlastní entity
 
 Jakmile utterance se přidá k záměru, můžete vybrat text z v rámci utterance k vytvoření vlastní entity. Vlastní entity je způsob, jak text značky pro extrakci, spolu s správné záměr. 
 
-1. Vybrat slovo, `Seattle`, v utterance. Hranaté závorky jsou vykreslovány vedle kolem textu a zobrazí se rozevírací nabídka. 
-
-    ![Stránce s podrobnostmi o snímek obrazovky záměrů, vytvoření vlastní entity](./media/luis-how-to-add-intents/create-custom-entity.png) 
-
-    Tento příklad vybere jednoslovné označit jako entity. Můžete označit jeden funguje a frází jako entity.
-
-1. Začátek textového pole nabídky, zadejte `Location`a pak vyberte **vytvořit novou entitu**. 
-
-    ![Stránce s podrobnostmi o snímek obrazovky záměrů, vytváří se vlastní entitu s názvem](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
-
-1. V **jaký typ entity chcete vytvořit?** automaticky otevírané okno pro vytvoření entity, ověřit, zda **název entity** je _umístění_a **typ entity**  je _jednoduché_. Vyberte **Done** (Hotovo).
+Zobrazit [přidání entity do utterance](luis-how-to-add-example-utterances.md) Další informace.
 
 ## <a name="entity-prediction-discrepancy-errors"></a>Entita předpovědi nesrovnalosti chyby 
 
@@ -80,7 +73,7 @@ Informace najdete v tématu [předem připravených entit](luis-how-to-add-entit
 
 ## <a name="using-the-contextual-toolbar"></a>Použití kontextových panelu nástrojů
 
-Při výběru nejmíň jeden příklad projevy v seznamu, zaškrtněte políčka nalevo od utterance, panelu nástrojů nad seznamem utterance umožňuje provádět následující akce:
+Když vyberete nejmíň jeden příklad projevy v seznamu zaškrtněte políčka nalevo od utterance, panelu nástrojů nad seznamem utterance umožňuje provádět následující akce:
 
 * Záměr přiřazení: utterance(s) přesunout na jiný záměr
 * Odstranit utterance(s)

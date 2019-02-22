@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: aschhab
-ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1cdd0a3bd7e0d647e2f67d4c92b5a2167d5d21ad
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849953"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585215"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak používat témata a odběry Service Bus pomocí Javy
 
@@ -46,46 +46,9 @@ Rozdíl od front služby Service Bus, ve kterých každou zprávu zpracuje jeden
 
 Témata a odběry Service Bus umožňují škálovat pro zpracování velkého počtu zpráv ve velkém počtu uživatelů a aplikací.
 
-## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Obor názvů Service Bus pro zasílání zpráv poskytuje jedinečný kontejner oboru (odkazuje se na něj [plně kvalifikovaným názvem domény](https://wikipedia.org/wiki/Fully_qualified_domain_name)), ve kterém můžete vytvořit jednu nebo více front, témat a odběrů. V následujícím příkladu vytvoříme obor názvů Service Bus pro zasílání zpráv v nové nebo existující [skupině prostředků](/azure/azure-resource-manager/resource-group-portal):
-
-1. V levém navigačním podokně portálu klikněte na **+ Vytvořit prostředek**, potom klikněte na **Podniková integrace** a pak na **Service Bus**.
-2. V dialogovém okně **Vytvořit obor názvů** zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
-3. Po kontrole, že je název oborů názvů k dispozici, zvolte cenovou úroveň (Standard nebo Premium).
-4. V poli **Předplatné** zvolte předplatné Azure, ve které chcete vytvořit obor názvů.
-5. V **skupiny prostředků** pole, vyberte existující skupinu prostředků, ve kterém se nachází oboru názvů nebo vytvořte novou.      
-6. V poli **Umístění**, vyberte zemi nebo oblast, ve které by měl být oboru názvů hostován.
-7. Klikněte na možnost **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
-
-  ![Obor názvů](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>Získání přihlašovacích údajů pro správu
-
-Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravidlo sdíleného přístupového podpisu (SAS) s přidruženým párem primárního a sekundárního klíče, které udělují úplnou kontrolu nad všemi aspekty tohoto oboru názvů. Pokud chcete zkopírovat počáteční pravidlo, postupujte následovně:
-
-1. Klikněte na **Všechny prostředky** a pak klikněte na název nově vytvořeného oboru názvů.
-2. V okně oboru názvů klikněte na **Zásady sdíleného přístupu**.
-3. Na obrazovce **Zásady sdíleného přístupu** klikněte na **RootManageSharedAccessKey**.
-4. V **zásad: RootManageSharedAccessKey** okna, klikněte na tlačítko **kopírování** vedle **primární připojovací řetězec**, zkopírujte připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
-
-    ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
-5. Opakujte předchozí krok, zkopírujte si hodnotu pro **primární klíč** a vložte ji do dočasného umístění pro pozdější použití.
-
-## <a name="create-a-topic"></a>Vytvoření tématu 
-Pokud chcete vytvořit téma Service Bus, zadejte obor názvů, do kterého má téma spadat. Následující příklad ukazuje, jak vytvořit téma na portálu:
-
-1. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Všechny služby**).
-2. Klikněte na obor názvů, ve kterém chcete téma vytvořit.
-3. V okně oboru názvů klikněte na **Témata** a pak v okně **Témata** klikněte na **+ Témata**.
-4. Zadejte **BasicTopic** tématu **název**a nechte ostatní hodnoty na jejich výchozích hodnotách.
-5. V dolní části okna klikněte na **Vytvořit**.
-
-
-## <a name="create-subscriptions-for-the-topic"></a>Vytvořit odběry tématu
-1. Vyberte **tématu** jste vytvořili.
-2. Klikněte na **+ odběr**, zadejte název předplatného **Subscription1**a nechte ostatní hodnoty na jejich výchozích hodnotách.
-3. Opakujte předchozí krok dvakrát více, vytváří se předplatné s názvem **Subscription2** a **Subscription3**.
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus

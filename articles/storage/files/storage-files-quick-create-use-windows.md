@@ -1,41 +1,45 @@
 ---
-title: Rychlý start, vytvořit a používat sdílené složky Azure pro Windows | Dokumentace Microsoftu
-description: V tomto rychlém startu můžete vytvořit a používat sdílené složky Azure pro Windows.
+title: Rychlý start Azure – vytvoření a použití sdílené složky služby soubory Azure na virtuálních počítačích s Windows | Dokumentace Microsoftu
+description: V tomto rychlém startu nastavení sdílené složky služby soubory Azure na webu Azure Portal a připojte ho k virtuálnímu počítači Windows. Připojit ke sdílené složce souborů, uložit soubor do sdílené složky souborů. Potom můžete pořídit snímek sdílené složky souborů, upravte soubor ve sdílené složce souborů a obnovit předchozí snímek sdílené složky souborů.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
-ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 141a8c9d63d3f0fd615ec0648b15c669f28f7118
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.author: rogarana
+ms.subservice: files
+ms.openlocfilehash: 12dea044dab2aafad1d7597214d159011b5ab536
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663991"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652463"
 ---
-# <a name="quickstart-create-and-use-an-azure-file-share-for-windows"></a>Rychlý start: Vytvoření a použití sdílené složky Azure pro Windows
-Tento článek ukazuje základní kroky pro vytvoření a použití sdílené složky Azure. V tomto rychlém startu důraz je o rychle nastavení sdílené složky Azure, takže můžete vyzkoušet, jak služba funguje. Pokud potřebujete podrobnější pokyny pro vytváření a používání Azure sdílených položek ve vašem prostředí, najdete v článku [sdílenými složkami Azure pomocí služby Windows](storage-how-to-use-files-windows.md).
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rychlý start: Vytvoření a správa sdílenou složku služby soubory Azure s virtuálními počítači Windows
+
+Tento článek ukazuje základní kroky pro vytvoření a použití soubory Azure sdílet. V tomto rychlém startu důraz je o rychle nastavení sdílené složky služby soubory Azure tak můžete jak služba funguje. Pokud potřebujete podrobnější pokyny pro vytváření a používání Azure sdílených položek ve vašem prostředí, najdete v článku [sdílenými složkami Azure pomocí služby Windows](storage-how-to-use-files-windows.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
-Před vytvořením sdílené složky Azure budete muset nastavit následující položky pro tento rychlý start:
+
+V tomto rychlém startu můžete nastavit následující položky:
 
 - Účet úložiště Azure a sdílené složky Azure
 - Virtuální počítač Windows Server 2016 Datacenter
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Než začnete pracovat se sdílenými složkami Azure, budete muset vytvořit účet úložiště Azure. Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
+Než začnete pracovat se sdílenými složkami Azure, budete muset vytvořit účet úložiště Azure. Účet úložiště pro obecné účely verze 2 poskytuje přístup ke všem službám Azure Storage: objekty BLOB, soubory, fronty a tabulky. Rychlém startu se vytvoří účet úložiště pro obecné účely verze 2, ale jsou podobné kroky k vytvoření libovolného typu účtu úložiště. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ### <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
+
 Dále vytvoříte sdílenou složku.
 
 1. Po dokončení nasazení účtu úložiště Azure vyberte **přejít k prostředku**.
@@ -58,6 +62,7 @@ Dále vytvoříte sdílenou složku.
 Zatím jste vytvořili účet úložiště Azure a sdílenou složku s jedním souborem v něm v Azure. Dále vytvoříte virtuální počítač Azure s Windows Server 2016 Datacenter znázornit na místním serveru v rámci tohoto rychlého startu.
 
 ### <a name="deploy-a-vm"></a>Nasazení virtuálního počítače
+
 1. Teď rozbalte nabídku na levé straně portálu a v levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 1. Ve vyhledávacím poli nad seznamem prostředků **Azure Marketplace** vyhledejte a vyberte **Windows Server 2016 Datacenter** a pak zvolte **Vytvořit**.
 1. V **Základy** ve skupině **podrobnosti o projektu**, vyberte skupinu prostředků, kterou jste vytvořili pro tento rychlý start.
@@ -112,6 +117,7 @@ Právě jste vytvořili nový virtuální počítač a připojili jste datový d
       ![Cesta UNC z podokna Připojit služby Soubory Azure](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
 
 ## <a name="create-a-share-snapshot"></a>Vytvořit snímek sdílené složky
+
 Teď, když jste změnili na jednotce, můžete vytvořit snímek.
 
 1. Na portálu přejděte do sdílené složky a vyberte **vytvořit snímek**.
@@ -132,7 +138,7 @@ Teď, když jste změnili na jednotce, můžete vytvořit snímek.
 
 ## <a name="restore-from-a-snapshot"></a>Obnovení ze snímku
 
-1. Z portálu, vyberte *qsTestFile* > vyberte **obnovení** tlačítko.
+1. V okně snímku sdílené složky souboru, klikněte pravým tlačítkem myši *qsTestFile*a vyberte **obnovení** tlačítko.
 1. Vyberte **přepsat původní soubor**.
 
    ![Stahování a obnovení tlačítka](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
@@ -147,6 +153,7 @@ Teď, když jste změnili na jednotce, můžete vytvořit snímek.
    ![Tlačítko Odstranit](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Použití snímku sdílené složky ve Windows
+
 Stejně jako místní snímky VSS, se zobrazí snímky z připojené sdílené složky Azure pomocí karty předchozí verze.
 
 1. V Průzkumníku souborů vyhledejte připojené sdílené složky.

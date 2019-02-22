@@ -10,12 +10,12 @@ author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 73ab816c7043c7fb0f572677c6ceeb722653dec1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456550"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650766"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Přeučování a nasazení webové služby classic Studio
 
@@ -60,7 +60,7 @@ Chcete-li získat správnou adresu URL oprava prostřednictvím kódu programu, 
 1. Spustit [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) ukázkový kód.
 1. Z výstupu AddEndpoint najít *HelpLocation* hodnotu a zkopírujte adresu URL.
 
-   ![HelpLocation ve výstupu příkazu addEndpoint vzorku.](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
+   ![HelpLocation ve výstupu příkazu addEndpoint vzorku.](./media/retrain-classic/addEndpoint-output.png)
 1. Vložte adresu URL do prohlížeče přejděte na stránku, která obsahuje odkazy na nápovědu pro webovou službu.
 1. Klikněte na tlačítko **aktualizace prostředku** odkaz k otevření stránky s nápovědou opravy.
 
@@ -81,7 +81,7 @@ Postupujte podle těchto kroků můžete získat správnou opravu URL prostředn
 
 Stránky s nápovědou PATCH obsahuje adresu URL OPRAVIT, je nutné použít a poskytuje ukázkový kód, který slouží k jeho volání.
 
-![Adresa URL Patch.](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
+![Adresa URL Patch.](./media/retrain-classic/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>Aktualizace koncového bodu
 

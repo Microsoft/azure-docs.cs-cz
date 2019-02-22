@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 527562a1013691ae76b108031be35aa3f0d6ed54
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608353"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649267"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Zkuste cloudové řešení vzdáleného monitorování
 
@@ -45,7 +45,7 @@ Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení vzdál
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. Pro účely tohoto rychlého startu používáme **USA – východ**.
 Můžete zvolit **Visual Studio Enterprise**, ale musí být [globální správci nebo uživateli](iot-accelerators-permissions.md) Uděláte to tak.
 
-Nasazování zahájíte kliknutím na **Vytvořit řešení**. Dokončení tohoto procesu trvá minimálně pět minut:
+Chcete-li zahájit nasazení, klikněte na tlačítko **vytvořit**. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení vzdáleného monitorování](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení v
 
 ![Výběr nového řešení](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení vzdáleného monitorování. Zvolte **Řídicí panel řešení** a zobrazte akcelerátor řešení vzdáleného monitorování:
+Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení vzdáleného monitorování. Zvolte **přejít na akcelerátor řešení** zobrazíte akcelerátor řešení vzdálené monitorování:
 
 ![Panel řešení](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -134,6 +134,9 @@ Pokud se budete chtít přesunout ke kurzům, ponechte akcelerátor řešení vz
 Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
 
 ![Odstranění řešení](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+
+
+![Odstranění řešení](media/quickstart-remote-monitoring-deploy/deletesolution-provision.png)
 
 ## <a name="next-steps"></a>Další kroky
 

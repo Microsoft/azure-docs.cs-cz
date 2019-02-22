@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: 9d00819143d9a8fc38bfc09844d55f088e732b46
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1b5f05f3cddea986230327165399b0fe530e361b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453022"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588071"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
@@ -124,6 +124,9 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
     > Tento blok kódu přímo má přístup k Data Lake Gen2 koncový bod pomocí OAuth, ale existují jiné způsoby připojení k vašemu účtu Data Lake Storage Gen2 pracovního prostoru Databricks. Můžete třeba připojit systém souborů pomocí OAuth nebo přímý přístup pomocí sdíleného klíče. <br>Mezi příklady těchto přístupů najdete v tématu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
 
 5. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili při vytváření instančního objektu v tomto bloku kódu. Nastavte `file-system-name` hodnotu zástupného symbolu cokoli, co můžete pojmenovat chcete umožnit systému souborů.
+
+    > [!NOTE]
+    > V produkčním prostředí, zvažte uložení ověřovací klíč ve službě Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto ověřovací klíč. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.
 
 6. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: dea623684454d4b14a370251df10599eb03bbb34
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 14d1b5b7113e8a4bd71aa89a246fa375adb03a14
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856916"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593994"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrahovat kontextově souvisejících dat ze utterance
 
@@ -91,7 +91,7 @@ Pokud je k dispozici pouze jeden podřízený prvek (počátek nebo cíl) hierar
 
 1. V promluvě `move John W. Smith leaving Seattle headed to Dallas` vyberte slovo `Seattle`. Zobrazí se rozevírací nabídka s textovým polem v horní části. Zadejte do textového pole název entity `Location` a pak v rozevírací nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
 
-    [![Snímek obrazovky vytváření nové entity na stránce záměru](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "snímek obrazovky vytváření nové entity na stránce záměru")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
+    [![Snímek obrazovky vytváření nové entity na stránce záměru](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png "snímek obrazovky vytváření nové entity na stránce záměru")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png#lightbox)
 
 1. V automaticky otevíraném okně vyberte typ entity **Hierarchical** (Hierarchická) s podřízenými entitami `Origin` a `Destination`. Vyberte **Done** (Hotovo).
 
@@ -99,7 +99,7 @@ Pokud je k dispozici pouze jeden podřízený prvek (počátek nebo cíl) hierar
 
 1. Popisek pro `Seattle` je označený jako `Location`, protože služba LUIS neví, jestli je toto slovo počátkem, cílem, nebo ani jedním. Vyberte `Seattle`a pak vyberte **umístění**, postupujte podle v nabídce vpravo a vyberte `Origin`.
 
-    [![Snímek obrazovky entity označování zobrazení dialogu změnit umístění podřízené entity](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "snímek entity označování zobrazení dialogu změnit umístění podřízené entity")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
+    [![Snímek obrazovky entity označování zobrazení dialogu změnit umístění podřízené entity](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png "snímek entity označování zobrazení dialogu změnit umístění podřízené entity")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png#lightbox)
 
 1. Popisek v jiných umístěních v všechny projevy. Když jsou označeny všechna místa, začít projevy, aby vypadala jako vzor. 
 

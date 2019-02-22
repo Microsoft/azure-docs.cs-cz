@@ -15,12 +15,12 @@ ms.date: 01/23/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: aca051dd20ceaeb608baa144a81e0584043a1c52
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6f2a2eb9902e8567b5fa27ed93dd8be2fe3a01b3
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002039"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587068"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů ve službě Azure Stack
 
@@ -60,7 +60,7 @@ Další informace o službě Azure Stack a profily rozhraní API najdete v téma
 
 ### <a name="powershell"></a>PowerShell
 
-Pomocí rutiny New-AzureRmResource přidání tenanta. [Připojení ke službě Azure Stack](/azure-stack-powershell-configure-admin.md)a pak řádku se zvýšenými oprávněními použijte následující rutinu:
+Pomocí rutiny New-AzureRmResource přidání tenanta. [Připojení ke službě Azure Stack](azure-stack-powershell-configure-admin.md)a pak řádku se zvýšenými oprávněními použijte následující rutinu:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -91,7 +91,7 @@ Získání seznamu všech tenantů, které byly přidány na registraci.
 
 ### <a name="powershell"></a>PowerShell
 
-Použijte rutinu Get-AzureRmResource vypsat všechny registrované tenanty. [Připojení ke službě Azure Stack](/azure-stack-powershell-configure-admin.md)a pak řádku se zvýšenými oprávněními použijte následující rutinu:
+Použijte rutinu Get-AzureRmResource vypsat všechny registrované tenanty. [Připojení ke službě Azure Stack](azure-stack-powershell-configure-admin.md)a pak řádku se zvýšenými oprávněními použijte následující rutinu:
 
 ```powershell
   Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -142,7 +142,7 @@ Odstraněním tenanta, který byl přidán do registrace. Pokud tohoto tenanta p
 
 ### <a name="powershell"></a>PowerShell
 
-Pomocí rutiny Remove-AzureRmResource k odebrání klienta. [Připojení ke službě Azure Stack](/azure-stack-powershell-configure-admin.md)a pak řádku se zvýšenými oprávněními použijte následující rutinu:
+Pomocí rutiny Remove-AzureRmResource k odebrání klienta. [Připojení ke službě Azure Stack](azure-stack-powershell-configure-admin.md)a pak řádku se zvýšenými oprávněními použijte následující rutinu:
 
 ```powershell
   Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01

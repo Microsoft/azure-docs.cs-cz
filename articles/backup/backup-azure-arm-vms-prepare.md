@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: e782afb971f95a654119d9817edeef02642bee9e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: effb00a4ebde857e06e34e5f83ca01fc5d74017b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447561"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594181"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure na trezor služby Recovery Services
 
@@ -63,7 +63,7 @@ Rozšíření zálohování spuštěná na virtuálním počítači musí mít o
 - Žádné explicitní odchozí síťový přístup je požadovaná pro virtuální počítač Azure komunikovat se službou Azure Backup.
 - Ale některé starší virtuálních počítačů může mít potíže s a nezdaří s chybou **ExtensionSnapshotFailedNoNetwork** při pokusu o připojení. V takovém případě použijte jednu z následujících možností tak, aby rozšíření zálohování můžete komunikovat na Azure veřejné IP adresy pro provoz zálohování.
 
-   **Možnost** | **Akce** ** | **Výhody** | **Nevýhody**
+   **Možnost** | **Akce** | **Výhody** | **Nevýhody**
    --- | --- | --- | ---
    **Nastavení pravidla skupiny zabezpečení sítě** | Povolit [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/>  Můžete přidat pravidlo povolující přístup s použitím služby Azure Backup [značka služby](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), namísto samostatně povolení a správa každý rozsah adres. [Další informace](../virtual-network/security-overview.md#service-tags) informace o značkách služby. | Žádné další náklady. Jednoduchá správa pomocí značky služeb
    **Nasazení proxy serveru** | Nasazení proxy server HTTP pro směrování provozu. | Poskytuje přístup k celé Azure, a ne jenom úložiště. Podrobnou kontrolu nad adresy URL úložiště je povolený.<br/><br/> Přístup k jedné bodu Internetu pro virtuální počítače.<br/><br/> Další náklady pro proxy server.<br/><br/> 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 11c8bf0b40920f6828ac8603c3c7ea7c954f08e7
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822438"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651001"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvořit, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -25,11 +25,13 @@ Pravidla zabezpečení ve skupinách zabezpečení sítě umožňují filtrovat 
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
-- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
 Musí mít účet přihlásit nebo připojit k Azure s přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
@@ -49,7 +51,7 @@ Platí omezení na tom, kolik síťové skupiny zabezpečení, které můžete v
 **Příkazy**
 
 - Azure CLI: [vytvořit az network nsg](/cli/azure/network/nsg#az-network-nsg-create)
-- PowerShell: [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
+- PowerShell: [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)
 
 ### <a name="view-all-network-security-groups"></a>Zobrazení všech skupin zabezpečení sítě
 
@@ -58,7 +60,7 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 **Příkazy**
 
 - Azure CLI: [az network nsg seznamu](/cli/azure/network/nsg#az-network-nsg-list)
-- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+- PowerShell: [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)
 
 ### <a name="view-details-of-a-network-security-group"></a>Zobrazení podrobností o skupinu zabezpečení sítě
 
@@ -74,7 +76,7 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 **Příkazy**
 
 - Azure CLI: [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show)
-- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+- PowerShell: [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)
 
 ### <a name="change-a-network-security-group"></a>Změnit skupinu zabezpečení sítě
 
@@ -84,7 +86,7 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 **Příkazy**
 
 - Azure CLI: [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update)
-- PowerShell: [Set-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/set-azurermnetworksecuritygroup)
+- PowerShell: [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)
 
 ### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Přidružení nebo zrušit přidružení skupiny zabezpečení sítě na nebo z podsíti nebo síťovému rozhraní
 
@@ -101,7 +103,7 @@ Pokud je skupina zabezpečení sítě přidružené k podsítím nebo síťová 
 **Příkazy**
 
 - Azure CLI: [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete)
-- PowerShell: [Remove-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/remove-azurermnetworksecuritygroup) 
+- PowerShell: [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup)
 
 ## <a name="work-with-security-rules"></a>Práce s pravidly zabezpečení
 
@@ -131,7 +133,7 @@ Platí omezení na tom, kolik pravidel na skupiny zabezpečení sítě můžete 
 **Příkazy**
 
 - Azure CLI: [az network nsg pravidlo vytváření](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
-- PowerShell: [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+- PowerShell: [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)
 
 ### <a name="view-all-security-rules"></a>Zobrazit všechna pravidla zabezpečení
 
@@ -146,7 +148,7 @@ Seznam obsahuje všechna pravidla, které jste vytvořili a skupinu zabezpečen�
 **Příkazy**
 
 - Azure CLI: [az network nsg pravidlo seznamu](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
-- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+- PowerShell: [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig)
 
 ### <a name="view-details-of-a-security-rule"></a>Zobrazení podrobností pravidla zabezpečení
 
@@ -158,7 +160,7 @@ Seznam obsahuje všechna pravidla, které jste vytvořili a skupinu zabezpečen�
 **Příkazy**
 
 - Azure CLI: [az network nsg pravidlo show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show)
-- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+- PowerShell: [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig)
 
 ### <a name="change-a-security-rule"></a>Změna pravidla zabezpečení
 
@@ -168,7 +170,7 @@ Seznam obsahuje všechna pravidla, které jste vytvořili a skupinu zabezpečen�
 **Příkazy**
 
 - Azure CLI: [az network nsg pravidlo aktualizace](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
-- PowerShell: [Set-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
+- PowerShell: [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig)
 
 ### <a name="delete-a-security-rule"></a>Odstranit pravidlo zabezpečení
 
@@ -178,13 +180,13 @@ Seznam obsahuje všechna pravidla, které jste vytvořili a skupinu zabezpečen�
 **Příkazy**
 
 - Azure CLI: [az network nsg pravidlo odstranění](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
-- PowerShell: [Remove-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
+- PowerShell: [Remove-AzNetworkSecurityRuleConfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig)
 
 ## <a name="work-with-application-security-groups"></a>Práce se skupinami zabezpečení aplikací
 
 Skupinu zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. Další informace najdete v tématu [skupiny zabezpečení aplikací](security-overview.md#application-security-groups). Všechna síťová rozhraní skupinu zabezpečení aplikace musí existovat ve stejné virtuální síti. Zjistěte, jak přidat síťové rozhraní do skupiny zabezpečení aplikací, najdete v článku [přidat síťové rozhraní do skupiny zabezpečení aplikací](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups).
 
-### <a name="create-an-application-security-group"></a>Vytvoření skupiny zabezpečení aplikací
+### <a name="create-an-application-security-group"></a>Vytvořit skupinu zabezpečení aplikace
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
 2. Do pole **Hledat na Marketplace** zadejte *Skupina zabezpečení aplikace*. Jakmile se ve výsledcích hledání zobrazí **Skupina zabezpečení aplikace**, vyberte ji. V části **Všechno** vyberte **Skupina zabezpečení aplikace** a pak vyberte **Vytvořit**.
@@ -200,7 +202,7 @@ Skupinu zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 **Příkazy**
 
 - Azure CLI: [vytvořit asg az sítě](/cli/azure/network/asg#az-network-asg-create)
-- PowerShell: [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
+- PowerShell: [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup)
 
 ### <a name="view-all-application-security-groups"></a>Zobrazení všech skupin zabezpečení aplikací
 
@@ -210,7 +212,7 @@ Skupinu zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 **Příkazy**
 
 - Azure CLI: [az sítě asg seznamu](/cli/azure/network/asg#az-network-asg-list)
-- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+- PowerShell: [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup)
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>Zobrazit podrobnosti o skupině zabezpečení konkrétní aplikaci
 
@@ -221,7 +223,7 @@ Skupinu zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 **Příkazy**
 
 - Azure CLI: [az sítě asg show](/cli/azure/network/asg#az-network-asg-show)
-- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+- PowerShell: [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup)
 
 ### <a name="change-an-application-security-group"></a>Změnit skupinu zabezpečení aplikace
 
@@ -244,7 +246,7 @@ Nelze odstranit skupinu zabezpečení aplikace, pokud má všech síťových roz
 **Příkazy**
 
 - Azure CLI: [odstranit asg az sítě](/cli/azure/network/asg#az-network-asg-delete)
-- PowerShell: [Remove-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup)
+- PowerShell: [Remove-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup)
 
 ## <a name="permissions"></a>Oprávnění
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 3043067f326f782c51be38382070ae0db0e90f4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: afe8081032e0358e8e0653e9a2b6aad30ad496a9
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314155"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651222"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services pro počítačové zpracování obrazu SDK pro Python
 
@@ -281,17 +281,16 @@ except HTTPFailure as e:
 
 Při práci s [ComputerVisionAPI] [ ref_computervisionclient] klienta, může dojít přechodné chyby způsobené [omezení přenosové rychlosti] [ computervision_request_units] vynucena Služba, nebo jiné přechodné problémy, jako jsou výpadky sítě. Informace o manipulaci s těmito typy chyb, naleznete v tématu [modelu opakování] [ azure_pattern_retry] v příručce vzory návrhu v cloudu a související [vzoru Circuit Breaker] [azure_pattern_circuit_breaker].
 
-## <a name="next-steps"></a>Další postup
-
 ### <a name="more-sample-code"></a>Další ukázkový kód
 
 Několik vzorových počítače pro zpracování obrazu Python SDK jsou k dispozici v úložišti GitHub v sadě SDK. Tyto ukázky zadejte ukázkový kód pro další scénáře běžně došlo při práci s pro počítačové zpracování obrazu:
 
 * [recognize_text][recognize-text]
 
-### <a name="additional-documentation"></a>Další dokumentace
+## <a name="next-steps"></a>Další postup
 
-Více si rozsáhlou dokumentaci k službě pro počítačové zpracování obrazu, najdete v článku [dokumentace k Azure pro počítačové zpracování obrazu] [ computervision_docs] na webu docs.microsoft.com.
+> [!div class="nextstepaction"]
+> [Nastavení obsahu klíčových slov do bitové kopie](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

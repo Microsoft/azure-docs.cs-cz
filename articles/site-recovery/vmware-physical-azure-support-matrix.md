@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: raynew
-ms.openlocfilehash: 8115065afcbd81da1527e09c07ca89ce89100d7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c932df528c63853cb52f54954afe202867743dd7
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236987"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594011"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -245,7 +245,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 --- | --- | --- | --- | ---
 Konfigurační server | Koordinuje komunikaci mezi servery VMware v místním prostředím a Azure <br/><br/> Nainstalovat na místní servery VMware | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-deploy-configuration-server.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Procesový server|Obvykle se instaluje na konfigurační server. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do služby Azure Storage. Jak vaše nasazení poroste, můžete přidat další, samostatné procesní servery pro zpracování větší objemy přenosů replikace.| Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-set-up-process-server-scale.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-Služba mobility | Koordinuje replikaci mezi servery pro/fyzické servery VMware v místním a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzické servery, které chcete replikovat | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-install-mobility-service.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-physical-mobility-service-overview.md#update-the-mobility-service).
+Služba mobility | Koordinuje replikaci mezi servery pro/fyzické servery VMware v místním a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzické servery, které chcete replikovat | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-install-mobility-service.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-physical-mobility-service-overview.md##update-mobility-service-from-azure-portal).
 
 Další informace o nejnovější funkce a opravy, klikněte na tlačítko [tady](https://aka.ms/ASR_latest_release_notes).
 

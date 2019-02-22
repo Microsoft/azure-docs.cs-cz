@@ -4,48 +4,38 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a8979edf94c0dd0271293feb28c18530faeba09c
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084000"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56659967"
 ---
-Klíč transakce (maximální počet povolených za 10 sekund za transakcí úložiště na oblast<sup>1</sup>):
+## <a name="key-transactions-max-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klíč transakce (maximální počet povolených za 10 sekund za transakcí úložiště na oblast<sup>1</sup>):
 
-|Typ klíče|Klíč HSM<br>Vytvoření klíče|Klíč HSM<br>Veškeré ostatní transakce|Softwarový klíč<br>Vytvoření klíče|Softwarový klíč<br>Veškeré ostatní transakce|
+|Typ klíče|Klíč HSM<br>Vytvoření klíče|Klíč HSM<br>Veškeré ostatní transakce|Software-key<br>Vytvoření klíče|Software-key<br>Veškeré ostatní transakce|
 |:---|---:|---:|---:|---:|
-|RSA 2048 bitů|5|1000|10|2000|
+|RSA 2048-bit|5|1000|10|2000|
 |RSA 3072-bit|5|250|10|500|
 |RSA 4096-bit|5|125|10|250|
 |ECC P-256|5|1000|10|2000|
-|P-384 ECC|5|1000|10|2000|
+|ECC P-384|5|1000|10|2000|
 |ECC P-521|5|1000|10|2000|
 |ECC SECP256K1|5|1000|10|2000|
-|
 
 > [!NOTE]
-> Výše uvedené mezní hodnoty jsou váha a vynucení je na jejich součet. 125 RSA-HSM - 4 tisíc operací a 0 RSA-HSM - 2 kb / s, nebo 124 RSA-HSM - 4 kB a 16 RSA-HSM - 2k můžete provést. Následně ve stejném intervalu 10 sekundách žádné jiné operace způsobí výjimku AKV klienta.
+> V předchozí tabulce vidíme, že pro RSA 2048 bitů softwaru keys povolujeme 2000 GET transakcí za 10 sekund a, že pro RSA 2048 bitů, klíčů HSM povolujeme GET 1000 transakcí za 10 sekund.
+>
+> Všimněte si, že jsou váha prahových hodnotách omezování a vynucení je na jejich součet. Například v předchozí tabulce vidíme, že při provádění operací GET na klíče RSA HSM je 8krát dražší, aby se používaly klíče 4096 bitů ve srovnání s 2 048 bitů (od 1 000/125 = 8). Proto v daném intervalu 10 sekund, klientem AKV udělat přesně jeden z následujících před zjištění `429` omezování stavový kód HTTP:
+> - 2000 RSA 2048 bitů softwarový klíč GET transakce **nebo**
+> - 1000 transakcí HSM klíče RSA 2048 bitů GET, **nebo**
+> - 125 HSM klíče šifrování RSA 4096 bitů GET transakce **nebo**
+> - 124 HSM klíče šifrování RSA 4096 bitů GET transakce a 8 získat klíč HSM RSA 2048 bitů.
 
-> [!NOTE]
-> Když se podíváte v následující tabulce, uvidíte, že pro podporovaný software klíče povolujeme, že 2000 transakce za 10 sekund a za HSM 2048bitových klíčů umožňujeme 1000 transakcí za 10 sekund. Poměr podporovaný software transakce 3072 klíče 2048 klíče je 500/2000 nebo 0.4. To znamená, pokud zákazníka nemá 500 3072 klíče transakce za 10 sekund, aby dosáhnout maximálního limitu a nemůže provádět žádné další klíčové operace. 
-   
-|Typ klíče  | Softwarový klíč |Klíč HSM  |
-|---------|---------|---------|
-|RSA 2048 bitů     |    2000     |   1000    |
-|RSA 3072-bit     |     500    |    250     |
-|RSA 4096-bit     |    125     |    250     |
-|ECC P-256     |    2000     |  1000     |
-|P-384 ECC     |    2000     |  1000     |
-|ECC P-521     |    2000     |  1000     |
-|ECC SECP256K1     |    2000     |  1000     |
-
-
-Tajné kódy, spravovaných klíčů účtu úložiště a transakce úložiště:
+## <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Tajné kódy, spravovaných klíčů účtu úložiště a transakce úložiště:
 | Typ transakce | Maximální počet povolených za 10 sekund za transakcí úložiště na oblast<sup>1</sup> |
 | --- | --- |
 | Všechny transakce |2000 |
-|
 
 Zobrazit [pokyny k omezování služby Azure Key Vault](../articles/key-vault/key-vault-ovw-throttling.md) informace o tom, jak řešit omezování, když překročíte tyto limity.
 

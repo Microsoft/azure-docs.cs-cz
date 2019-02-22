@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: 26e469076e16f57300cf3e385620a723ddf51a4c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1b57fefad726f8fb21f23fa9eef9e71643a3f51b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510719"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588394"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Správa životního cyklu aplikací v nástroji Azure Machine Learning Studio
 Azure Machine Learning Studio je nástroj pro vývoj experimenty machine learning, které se mají zprovoznit v cloudové platformy Azure. Je třeba Visual Studio IDE a škálovatelné cloudové služby sloučena do jedné platformy. Standardní postupy Application Lifecycle Management (ALM) ze správy verzí můžete začlenit různých prostředků a na automatické spuštění a nasazení do Azure Machine Learning Studio. Tento článek popisuje některé z možností a přístupů.
@@ -42,7 +42,7 @@ Snímky historie spuštění zachovat neměnné verzi experiment v nástroji Azu
 Soubor JSON je textovou reprezentaci řetězce grafem experimentu, který může obsahovat odkaz na prostředky v pracovním prostoru jako datová sada nebo trénovaného modelu. Serializovaná verze prostředku neobsahuje. Při pokusu o import dokumentu JSON zpět do pracovního prostoru, musí již existovat odkazované prostředky s identifikátory, které jsou odkazovány v experimentu na stejný prostředek. Jinak nelze přistupovat k importované experimentu.
 
 ## <a name="versioning-trained-model"></a>Správa verzí trénovaného modelu
-Trénovaného modelu ve službě Azure Machine Learning je serializován do formátu, známé jako soubor s příponou iLearner (`.iLearner`) a je uložena v účtu úložiště objektů Blob v Azure, který je přidružený k pracovnímu prostoru. Jeden způsob, jak získat kopii soubor iLearner, který je prostřednictvím rozhraní retraining API. [Tento článek](retrain-models-programmatically.md) vysvětluje, jak funguje rozhraní retraining API. Postup vysoké úrovně:
+Trained model v Azure Machine Learning Studio je serializován do formátu, známé jako soubor s příponou iLearner (`.iLearner`) a je uložena v účtu úložiště objektů Blob v Azure, který je přidružený k pracovnímu prostoru. Jeden způsob, jak získat kopii soubor iLearner, který je prostřednictvím rozhraní retraining API. [Tento článek](retrain-models-programmatically.md) vysvětluje, jak funguje rozhraní retraining API. Postup vysoké úrovně:
 
 1. Nastavení vašeho výukového experimentu.
 2. Přidáte pro modul trénování modelu nebo modul, který vytváří trénovaného modelu, jako je ladění Hyperparameter modelu nebo vytvořit Model R výstupní port webové služby.
@@ -57,7 +57,7 @@ Jakmile budete mít soubor iLearner, který obsahuje trénovaného modelu, můž
 Soubor uložený iLearner, který lze vyhodnocování prostřednictvím nasazené webové služby.
 
 ## <a name="versioning-web-service"></a>Webová služba správy verzí
-Nasadíte dva typy webových služeb z experimentu Azure Machine Learning. Klasické webové služby je úzce párována experiment, stejně jako pracovní prostor. Nové webové služby pomocí rozhraní Azure Resource Manageru a je už párována s původní experiment nebo v pracovním prostoru.
+Nasadíte dva druhy webové služby Azure Machine Learning Studio experimentovat. Klasické webové služby je úzce párována experiment, stejně jako pracovní prostor. Nové webové služby pomocí rozhraní Azure Resource Manageru a je už párována s původní experiment nebo v pracovním prostoru.
 
 ### <a name="classic-web-service"></a>Klasické webové služby
 Verze klasickou webovou službou můžete využít konstrukce koncový bod webové služby. Zde je typický tok:
@@ -79,7 +79,7 @@ Pokud vytvoříte novou službu založené na Azure Resource Manageru, konstrukc
 Až budete mít exportovaný soubor WSD a verze řídit, můžete taky nasadit WSD jako nové webové služby v plánu jiné webové služby v jiné oblasti Azure. Ujistěte se, že zadáte konfiguraci účtu úložiště správné, jakož i nové ID webové služby plánu. O opravu v různých iLearner soubory, můžete upravit soubor WSD a aktualizovat odkaz na umístění trénovaného modelu a nasadit ho jako nové webové služby.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatizace nasazení a spuštění experimentu
-Abyste mohli automatizovat proces nasazení aplikace a zpracování je důležitou součástí ALM. Ve službě Azure Machine Learning, lze provést pomocí [modulu PowerShell](https://aka.ms/amlps). Tady je příklad začátku do konce kroky, které jsou relevantní pro standardní ALM automatizovat proces spuštění a nasazení pomocí [modulu Powershellu pro Azure Machine Learning Studio](https://aka.ms/amlps). Každý krok je propojen s jeden nebo více rutin Powershellu, které můžete použít k provedení tohoto kroku.
+Abyste mohli automatizovat proces nasazení aplikace a zpracování je důležitou součástí ALM. V Azure Machine Learning Studio, lze provést pomocí [modulu PowerShell](https://aka.ms/amlps). Tady je příklad začátku do konce kroky, které jsou relevantní pro standardní ALM automatizovat proces spuštění a nasazení pomocí [modulu Powershellu pro Azure Machine Learning Studio](https://aka.ms/amlps). Každý krok je propojen s jeden nebo více rutin Powershellu, které můžete použít k provedení tohoto kroku.
 
 1. [Nahrát datovou sadu](https://github.com/hning86/azuremlps#upload-amldataset).
 2. Zkopírujte výukového experimentu do pracovního prostoru z [pracovní prostor](https://github.com/hning86/azuremlps#copy-amlexperiment) nebo z [Galerie](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), nebo [importovat](https://github.com/hning86/azuremlps#import-amlexperimentgraph) [exportovat](https://github.com/hning86/azuremlps#export-amlexperimentgraph) experiment z místního disk.

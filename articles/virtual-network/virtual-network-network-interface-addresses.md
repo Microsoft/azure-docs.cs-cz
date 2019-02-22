@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 4fae4486e6cf47892ba2133885ec864969f66001
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 716c229fbd906798d39bf4ef54ba1f47cd5bd980
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663600"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651035"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro rozhraní sítě Azure
 
@@ -30,11 +30,13 @@ Pokud potřebujete vytvořit, změnit, nebo odstranit síťové rozhraní, pře�
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
-- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
 Účet přihlásit nebo připojit k Azure, musíte být přiřazeni k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [sítě rozhraní oprávnění](virtual-network-network-interface.md#permissions).
@@ -49,20 +51,20 @@ Můžete přidat tolik [privátní](#private) a [veřejné](#public) [IPv4](#ipv
 4. V části **konfigurací protokolu IP**vyberte **+ přidat**.
 5. Zadejte následující a potom vyberte **OK**:
 
-    |Nastavení|Povinné?|Podrobnosti|
-    |---|---|---|
-    |Název|Ano|Musí být jedinečný pro síťové rozhraní|
-    |Type|Ano|Protože přidáváte do stávající síťové rozhraní konfigurace protokolu IP a musí mít každé síťové rozhraní [primární](#primary) je vaší jedinou možností konfigurace protokolu IP, **sekundární**.|
-    |Metoda přiřazení privátní IP adresy|Ano|[**Dynamické**](#dynamic): Azure přiřadí další dostupnou adresou v rozsahu adres podsítě, že se síťové rozhraní se nasadí. [**Statické**](#static): Přiřadíte nepoužívaná adresa pro rozsah adres podsítě, že se síťové rozhraní se nasadí.|
-    |Veřejná IP adresa|Ne|**Zakázáno:** Žádný prostředek veřejné IP adresy je aktuálně přidružená ke konfiguraci IP adresy. **Povoleno:** Vyberte existující adresu veřejnou IP adresu IPv4, nebo vytvořte novou. Zjistěte, jak vytvořit veřejnou IP adresu, přečtěte si [veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address) článku.|
+   |Nastavení|Povinné?|Podrobnosti|
+   |---|---|---|
+   |Název|Ano|Musí být jedinečný pro síťové rozhraní|
+   |Type|Ano|Protože přidáváte do stávající síťové rozhraní konfigurace protokolu IP a musí mít každé síťové rozhraní [primární](#primary) je vaší jedinou možností konfigurace protokolu IP, **sekundární**.|
+   |Metoda přiřazení privátní IP adresy|Ano|[**Dynamické**](#dynamic): Azure přiřadí další dostupnou adresou v rozsahu adres podsítě, že se síťové rozhraní se nasadí. [**Statické**](#static): Přiřadíte nepoužívaná adresa pro rozsah adres podsítě, že se síťové rozhraní se nasadí.|
+   |Veřejná IP adresa|Ne|**Zakázáno:** Žádný prostředek veřejné IP adresy je aktuálně přidružená ke konfiguraci IP adresy. **Povoleno:** Vyberte existující adresu veřejnou IP adresu IPv4, nebo vytvořte novou. Zjistěte, jak vytvořit veřejnou IP adresu, přečtěte si [veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address) článku.|
 6. Ručně přidat sekundární privátní IP adresy v operačním systému virtuálního počítače pomocí pokynů [přiřadit několik IP adres pro virtuální počítač operační systémy](virtual-network-multiple-ip-addresses-portal.md#os-config) článku. Zobrazit [privátní](#private) IP adres obsahuje důležité informace před ručním přidání IP adres do operačního systému virtuálního počítače. Nepřidávejte žádné veřejné IP adresy do operačního systému virtuálního počítače.
 
 **Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
+|Rozhraní příkazového řádku|[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create)|
+|PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Změnit nastavení IP adresy
 
@@ -82,8 +84,8 @@ Můžete třeba změnit metodu přiřazování adresy IPv4 změnit statickou IPv
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
+|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Odebrání IP adres
 
@@ -98,8 +100,8 @@ Můžete odebrat [privátní](#private) a [veřejné](#public) IP adresy k síť
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
+|Rozhraní příkazového řádku|[az network nic ip-config delete](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_delete)|
+|PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfigurace protokolu IP
 
@@ -118,10 +120,10 @@ Kromě primární konfiguraci protokolu IP síťového rozhraní může mít nul
 
 - Musí mít privátní adresa IPv4 nebo IPv6 přiřazené k němu. Pokud je adresa protokolu IPv6, síťové rozhraní může mít pouze jednu sekundární konfigurace IP adresy. Pokud je adresa protokolu IPv4, může mít síťové rozhraní více sekundární konfigurace IP přiřazené. Další informace o kolik privátních a veřejných IPv4 adres je přiřadit k síťovému rozhraní, najdete v článku [omezeních Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku.
 - Může také mít veřejnou IPv4 adresu přiřazenou Pokud je privátní IP adresu IPv4. Pokud privátní IP adresu protokolu IPv6, nejde přiřadit veřejnou adresu IPv4 nebo IPv6 ke konfiguraci IP adresy. Přiřazení více IP adres síťového rozhraní je užitečné v situacích, jako:
-    - Hostovat několik webů nebo služeb s různými IP adresami a certifikáty SSL na jednom serveru.
-    - Virtuální počítač, který slouží jako síťové virtuální zařízení, třeba brány firewall nebo službu Vyrovnávání zatížení.
-    - Možnost a přidejte některý z privátních adres IPv4 pro některý z síťová rozhraní back endového fondu nástroje pro vyrovnávání zatížení Azure. V minulosti jenom primární IPv4 adresu primárního síťového rozhraní může být přidán do fondu back-end. Další informace o tom, jak vyrovnávat zatížení více konfigurací protokolu IPv4, najdete v článku [více konfigurací protokolu IP pro vyrovnávání zatížení](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. 
-    - Vyrovnávání zatížení jedna adresa IPv6 přiřazené k síťovému rozhraní. Další informace o tom, jak pro privátní IPv6 adresou Vyrovnávání zatížení, najdete v článku [adresy IPv6 Vyrovnávání zatížení](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku.
+  - Hostovat několik webů nebo služeb s různými IP adresami a certifikáty SSL na jednom serveru.
+  - Virtuální počítač, který slouží jako síťové virtuální zařízení, třeba brány firewall nebo službu Vyrovnávání zatížení.
+  - Možnost a přidejte některý z privátních adres IPv4 pro některý z síťová rozhraní back endového fondu nástroje pro vyrovnávání zatížení Azure. V minulosti jenom primární IPv4 adresu primárního síťového rozhraní může být přidán do fondu back-end. Další informace o tom, jak vyrovnávat zatížení více konfigurací protokolu IPv4, najdete v článku [více konfigurací protokolu IP pro vyrovnávání zatížení](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. 
+  - Vyrovnávání zatížení jedna adresa IPv6 přiřazené k síťovému rozhraní. Další informace o tom, jak pro privátní IPv6 adresou Vyrovnávání zatížení, najdete v článku [adresy IPv6 Vyrovnávání zatížení](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku.
 
 ## <a name="address-types"></a>Typy adres
 

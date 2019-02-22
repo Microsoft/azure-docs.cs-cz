@@ -8,15 +8,15 @@ manager: pchoudh
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f144262f43396ac5d4f37939d35fca2645acc4bd
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245129"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650168"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
@@ -72,9 +72,9 @@ Pokud máte znalostní báze v různých oblastech, každé oblasti používá v
 
 
 ## <a name="no-match-found"></a>Nebyla nalezena žádná odpovídající
-Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0 nebo "None" a výchozí odpověď je "Dobrá nebyla nalezena žádná odpovídající v KB". Můžete přepsat toto výchozí odpověď v kódu bot nebo aplikaci volání koncového bodu. Alternativně přepsání odpovědi můžete také nastavit v Azure a tím se změní na výchozí hodnoty pro všechny znalostních bází nasazených v konkrétní služba QnA Maker.
+Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0 nebo "None" a výchozí odpověď je "Dobrá nebyla nalezena žádná odpovídající v KB". Toto můžete přepsat [výchozí odpověď](#change-default-answer) v kódu bot nebo aplikaci volání koncového bodu. Alternativně přepsání odpovědi můžete také nastavit v Azure a tím se změní na výchozí hodnoty pro všechny znalostních bází nasazených v konkrétní služba QnA Maker.
 
-### <a name="change-default-answer"></a>Změnit výchozí odpověď
+## <a name="change-default-answer"></a>Změnit výchozí odpověď
 
 1. Přejděte [webu Azure portal](https://portal.azure.com) a přejděte do skupiny prostředků, který představuje službu QnA Maker, kterou jste vytvořili.
 
@@ -94,5 +94,4 @@ Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Podporované zdroje dat](./data-sources-supported.md)
-## <a name="see-also"></a>Další informace najdete v tématech 
-[Přehled služby QnA Maker](../Overview/overview.md)
+

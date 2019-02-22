@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: df0e3e0b8d5ce8b0e35ac7a30df94b3c6a1c2f8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329730"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648741"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Řešení potíží s Azure Blockchain Workbench
 
@@ -24,7 +24,7 @@ Skript prostředí PowerShell je k dispozici pro vám pomůže s developer ladě
 * Blockchain sítě, jako je například ethereum během
 * Mikroslužby Blockchain Workbench
 * Application Insights
-* (Log Analytics) pro monitorování Azure
+* Azure Monitoring (monitorování Azure protokoly)
 
 Informace můžete určit další kroky a určení původní příčiny problémů.
 
@@ -52,9 +52,9 @@ Skript je možné zadat následující parametry:
 | ResourceGroupName | Název skupiny prostředků Azure, ve kterém byla nasazena Blockchain Workbench. | Ano |
 | OutputDirectory | Cesta k vytvoření výstupu. Soubor ZIP. Pokud není zadán, výchozí hodnota je do aktuálního adresáře. | Ne |
 | LookbackHours | Počet hodin pro použití při stahování telemetrická data. Výchozí hodnota je 24 hodin. Maximální hodnota je 90 hodin | Ne |
-| OmsSubscriptionId | ID předplatného, ve kterém je nasazená Log Analytics. Tento parametr předejte pouze Log Analytics pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
-| OmsResourceGroup |Skupina prostředků, ve kterém je nasazená Log Analytics. Tento parametr předejte pouze Log Analytics pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
-| OmsWorkspaceName | Název pracovního prostoru Log Analytics. Tento parametr předejte pouze v případě Log Analytics pro síť blockchain nasazuje mimo Blockchain Workbench skupiny prostředků | Ne |
+| OmsSubscriptionId | ID předplatného, ve kterém protokoly Azure monitoru se nasadí. Tento parametr předejte pouze protokoly Azure monitoru pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
+| OmsResourceGroup |Nasazení skupiny prostředků, ve kterém protokoly Azure monitoru. Tento parametr předejte pouze protokoly Azure monitoru pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
+| OmsWorkspaceName | Název pracovního prostoru Log Analytics. Tento parametr předejte pouze pokud se protokoly Azure monitoru pro síť blockchain nasazuje mimo skupinu prostředků Blockchain Workbench | Ne |
 
 ## <a name="what-is-collected"></a>Co je shromažďováno?
 

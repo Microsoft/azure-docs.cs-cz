@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5717074d53e267018b7697aeed21ea00d246592e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a817e3681f6b94b1b9ad7d5a2d2a1369935ee064
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252213"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651756"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
 Skupiny akcí je kolekce předvolby oznamování určené vlastník předplatného Azure. Upozornění Azure Monitor a stavy služeb použití skupin akcí uživatelům oznámit, že výstraha byla aktivována. Různé výstrahy použít stejnou skupinu akcí nebo skupiny různých akcí v závislosti na požadavcích uživatele. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
 
-Když akce konfigurován pro osoby pro oznámení e-mailem nebo SMS osoby se zobrazí potvrzení, která udává, že / Jana se přidal do skupiny akcí.
+Nakonfigurujete akci, kterou chcete upozornit osoby, e-mail nebo SMS, že dostanou oznamující, že byly přidány do skupiny akcí potvrzení.
 
 V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí na webu Azure Portal.
 
 Každá akce se skládá z následujících vlastností:
 
 * **Název**: Jedinečný identifikátor v rámci skupiny akcí.  
-* **Typ akce**: Akce k provedení. Mezi příklady patří odesílání hlasový hovor, SMS, e-mailů; nebo aktivace různé automatizované akce. Zobrazit typy dále v tomto článku. 
+* **Typ akce**: Provést akci. Mezi příklady patří odesílání hlasový hovor, SMS, e-mailů; nebo aktivace různé automatizované akce. Zobrazit typy dále v tomto článku. 
 * **Podrobnosti o**: Související podrobnosti, které se liší podle *typ akce*. 
 
 Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru skupiny akcí](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Vytvoření skupiny akcí s využitím webu Azure portal ##
-1. V [portál](https://portal.azure.com)vyberte **monitorování**. **Monitorování** okno konsoliduje všechny vaše monitorování nastavení a data v jednom zobrazení.
+1. V [portál](https://portal.azure.com)vyberte **monitorování**. **Monitorování** podokně konsoliduje všechny vaše monitorování nastavení a data v jednom zobrazení.
 
     !["Monitor" service](./media/action-groups/home-monitor.png)
 1. Vyberte **výstrahy** vyberte **spravovat skupiny akcí**.
@@ -49,7 +49,7 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
 
 1. Vyberte **skupiny prostředků** v skupinu akcí se uloží.
 
-1. Definujte seznam akcí tím, že poskytuje všechny akce:
+1. Definujte seznam akcí. Zadejte následující úkony:
 
     a. **Název**: Zadejte jedinečný identifikátor pro tuto akci.
 
@@ -60,51 +60,53 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
 1. Vyberte **OK** k vytvoření skupiny akcí.
 
 ## <a name="manage-your-action-groups"></a>Spravovat skupiny akcí ##
-Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitorování** okno. Vyberte skupinu akcí, které chcete spravovat:
+Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitorování** podokně. Vyberte skupinu akcí, které chcete spravovat:
 
 * Přidání, úprava nebo odebrání akce.
 * Odstraňte skupinu akcí.
 
 ## <a name="action-specific-information"></a>Informace o konkrétní akci
-**Aplikace Azure nabízené** -může obsahovat až 10 aplikací Azure akce skupiny akcí. V tuto chvíli podporuje pouze akce Azure aplikace ServiceHealth výstrahy. Další upozornění vždy se bude ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+> [!NOTE]
+> Zobrazit [limity předplatného služby pro monitorování](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) pro číselné limity na každé z níže uvedených položek.  
+
+**Aplikace Azure nabízené** – může mít omezený počet akcí Azure aplikace do skupiny akcí. V současné době podporuje pouze akce aplikace Azure ServiceHealth výstrahy. Další upozornění vždy se bude ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 **E-mailu** – E-maily se budou odesílat z těchto e-mailových adres. Ujistěte se, že filtrování e-mailu je správně nakonfigurována
    - azure-noreply@microsoft.com
    - azureemail-noreply@microsoft.com
    - alerts-noreply@mail.windowsazure.com
 
-Můžete mít až 1 000 e-mailových akcí do skupiny akcí. Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku
+Může mít omezený počet e-mailových akcí do skupiny akcí. Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku
 
-**ITSM** – můžete mít až 10 akce ITSM jedná o smluvní jednání akce skupiny ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../../azure-monitor/platform/itsmc-overview.md).
+**ITSM** – do skupiny akcí může mít omezený počet omezený počet akce ITSM. Akce ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
-**Aplikace logiky** – může mít až 10 akce aplikace logiky do skupiny akcí
+**Aplikace logiky** – může mít omezený počet akce aplikace logiky do skupiny akcí.
 
-**Funkce App** – funkční klávesy pro aplikace Function App nakonfigurovaný jako akce jsou číst prostřednictvím rozhraní API funkce, které aktuálně vyžaduje v2 aplikace function App ke konfiguraci nastavení "AzureWebJobsSecretStorageType" k "files" aplikace, najdete v článku [ Změní na správu klíčů ve V2 funkce]( https://aka.ms/funcsecrets) Další informace.
+**Funkce App** -funkci klávesy pro aplikace Function App nakonfigurovaný jako akce jsou číst prostřednictvím rozhraní API funkce, které aktuálně vyžaduje v2 aplikace function App ke konfiguraci nastavení "AzureWebJobsSecretStorageType" aplikace "files". Další informace najdete v tématu [změní na správu klíčů ve V2 funkce]( https://aka.ms/funcsecrets).
 
-**Sada Runbook** -může obsahovat až 10 akce sada Runbook akce skupiny najdete [limity předplatného Azure](../../azure-subscription-service-limits.md) omezení datových částí sady Runbook pro
+**Sada Runbook** -omezený počet akce sada Runbook může mít v skupiny akcí. Odkazovat [limity předplatného Azure](../../azure-subscription-service-limits.md) pro omezení datových částí sady Runbook.
 
-**SMS** – může mít až 10 SMS akce v skupiny akcí v [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) najdete v článku [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md) článku
+**SMS** – může mít omezený počet SMS akce v skupiny akcí. Viz také [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) a [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md) další důležité informace. 
 
-**Hlasové** -může obsahovat až 10 hlasové akce skupiny akcí</dd>
-Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku</dd>
+**Hlasové** – může mít omezený počet akcí hlasu ve skupině akcí. Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku.
 
-**Webhook** – můžete mít až 10 akce Webhooku v skupiny akcí.
-Zkuste logic - časový limit pro odpověď je 10 sekund. Volání webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. Prvním opakováním se stane po 10 sekundách. Druhý opakování se stane po 100 sekund. Po dvou selháních nebude koncový bod volána po dobu 30 minut všechny skupiny akcí.
+**Webhook** – může mít omezený počet akce Webhooku v skupiny akcí. Webhooky jsou spuštěna znovu s použitím následujících pravidel. Volání webhooku je opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. První opakování se provede po 10 sekundách. Druhý opakování se stane po 100 sekund. Žádné skupiny akcí po dvou selháních, zavolá koncový bod po dobu 30 minut. 
 
 Zdrojové rozsahy IP adres
-    - 13.72.19.232
-    - 13.106.57.181
-    - 13.106.54.3
-    - 13.106.54.19
-    - 13.106.38.142
-    - 13.106.38.148
-    - 13.106.57.196
-    - 52.244.68.117
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 52.244.68.117
 
-Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfiguraci [upozornění na stav služby](./../../azure-monitor/platform/service-notifications.md) monitoruje informační upozornění týkající se služby skupiny akcí.
+Získat informace o změnách na tyto IP adresy, doporučujeme nakonfigurovat [služby upozornění stavu, která monitoruje Informační oznámení týkající se služby skupiny akcí.
 
 
 ## <a name="next-steps"></a>Další postup ##
+
 * Další informace o [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Získat [pochopení schéma webhooku v upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Další informace o [konektor ITSM](../../azure-monitor/platform/itsmc-overview.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e52d5f3b30490227541e99e067c096a7df6dd911
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6706da978195cff65a3454e6b2d71dfea3b414c4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566184"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651409"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: Nejčastější dotazy 
 Níže jsou dotazy a odpovědi, které můžou mít při použití služby Azure Import/Export pro přenos dat do služby Azure storage. Otázky a odpovědi jsou uspořádané do těchto kategorií:
@@ -87,8 +87,18 @@ Jednotky do datacentra Azure s použitím všechny známé dopravce jako FedEx, 
 - Číslo účtu FedEx v USA a EU, nebo
 - Číslo účtu DHL v oblasti Asie a Austrálie.
 
+> [!NOTE]
+> Tato datová centra v Indii vyžadovat deklarace písmeno hlavičkového (doručování challan) se vraťte na jednotky. Uspořádat průchodu požadovanou položku, musíte také rezervuje vyskladnění se váš vybraný operátor a sdílet podrobnosti datového centra.
+
 ### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Existují nějaká omezení s přesouvání jednotka mezinárodním měřítku?
 Mějte prosím na paměti, že fyzických médií, která se možná muset různé mezinárodní hranice země. Jste zodpovědní za zajištění, že vaše fyzická média a data jsou importovat nebo exportovat v souladu s platnými zákony. Před předáním fyzických médií, obraťte se na vaši poradci pro ověření, že vaše média a data můžete ze zákona odeslaná do identifikovaného datového centra. To vám pomůže zajistit dosáhne Microsoft včas.
+
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Existují nějaké speciální požadavky na doručování Moje disků do datacentra?
+
+Požadavky závisí na konkrétní datové centrum Azure omezení.
+- Existuje několik serverů třídy C (například Frankfurt), které vyžadují datového centra Microsoftu příchozí identifikační číslo má být zapsán na balení z bezpečnostních důvodů. Ještě před vydáním aplikace jednotek nebo disků do datacentra, obraťte se na Azure DataBox operací (adbops@microsoft.com) Chcete-li získat tento počet. Bez tohoto čísla budou odmítnuty balíček.
+- Tato datová centra v Indii vyžadují osobní údaje ovladač, jako je karta státní správy nebo ne. testování (například POSOUVÁNÍ, AADHAR, bude používat) název, kontaktů a auta štítku číslo zobrazíte pass položka brány. Aby se vyhnuli prodlevám doručování, informuje o těchto požadavcích váš poskytovatel služeb.
+
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Při vytváření projektu, je dodací adresu umístění, které se liší od umístění účtu úložiště. Co bych měl/a dělat?
 

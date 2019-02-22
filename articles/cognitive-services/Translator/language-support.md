@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: d0ab683ac59c17cbae1e0947cd2acd785b0365d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c0e024281782ede67aa3092d7af05a54113b0d68
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884968"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587527"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -268,7 +268,7 @@ Můžete načíst seznam podporovaných jazyků pro rozhraní Translator Text AP
 
 ## <a name="customization"></a>Přizpůsobení
 
-Tyto jazyky jsou dostupné k použití vlastního nastavení [vlastní Translator](http://aka.ms/CustomTranslator).
+Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vlastní Translator](http://aka.ms/CustomTranslator).
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|

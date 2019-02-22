@@ -11,18 +11,18 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/12/2018
+ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 9cd736272fce71f08006d32a169b88d092a48231
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de1805d91f48b5718ecf293c2b8672ba40fb81a9
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340208"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588156"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Tato vlastní role umožní uživateli zobrazit vše v předplatném a také otevírat lístky podpory.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role umožňuje uživateli zobrazit všechno, co v rovině správy tohoto předplatného a také otvírání lístků podpory.
 
 V tomto kurzu se naučíte:
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pro absolvování tohoto kurzu potřebujete:
 
 - Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
-- Místně nainstalované [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
 
 ## <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
 
@@ -61,7 +61,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Otevřete soubor ReaderSupportRole.json v editoru a přidejte do něj následující JSON.
 
-    Informace o různých vlastnostech najdete v tématu [Vlastní role](custom-roles.md).
+    Informace o různých vlastností najdete v tématu [vlastní role pro prostředky Azure](custom-roles.md).
 
     ```json
     {

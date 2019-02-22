@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 460edc7f092764cce3584c81371db4801fbd69bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240008"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593230"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Kurz: Nastavit prostředky pro ověření jako služba
 
@@ -92,7 +92,7 @@ Jako správce Azure AD poskytují aplikace VaaS Azure AD potřebná oprávnění
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
-Během provádění testů výstupy VaaS diagnostických protokolů pro účet služby Azure Storage. Kromě protokolů testu účtu úložiště také slouží k nahrávání výrobce OEM balíčky rozšíření pro pracovní postup ověření řešení.
+Během provádění testů výstupy VaaS diagnostických protokolů pro účet služby Azure Storage. Kromě protokolů testu účtu úložiště také slouží k nahrávání výrobce OEM balíčky rozšíření pro pracovní postup ověření balíčku.
 
 Účet služby Azure Storage hostována ve veřejném cloudu Azure, ne na prostředí Azure Stack.
 

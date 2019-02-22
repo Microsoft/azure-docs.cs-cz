@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: f0b2e1afdc42d8aaa0ab8d3af76f51fb6ded24e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857762"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650441"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Životní cyklus znalostní báze Knowledge base v nástroje QnA Maker
 Nástroj QnA Maker se učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů. 
@@ -27,9 +27,15 @@ Nástroj QnA Maker se učí nejlepší v iterativní cyklus změny modelu, pří
 Koncový bod znalostní báze knowledge base (KB) nástroje QnA Maker poskytuje nejlepší shody odpověď na dotaz uživatele na základě obsahu KB. Vytvoření znalostní báze se o jednorázovou akci pro nastavení úložiště obsahu otázky, odpovědi a přidružená metadata. Procházení existující obsah, například stránky – nejčastější dotazy, produktových příruček nebo strukturovaných Q A páry je možné vytvořit znalostní báze. Zjistěte, jak [vytvoření znalostní báze](../How-To/create-knowledge-base.md).
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Testování a aktualizují znalostní báze
-Znalostní báze připravený k testování, jakmile se vyplní s obsahem, buď pomocí redakčních úprav nebo Automatická extrakce. Testování lze provést prostřednictvím **Test** panelu zadáním běžné dotazy na uživatele a ověření, že odpovědi vracené odpovídají očekávání a s dostatečnou skóre spolehlivosti. Můžete přidat alternativní otázky k nápravě skóre, které se s nízkou spolehlivostí. Můžete také přidat nové odpovědi, když dotaz vrátí "nebyla nalezena odpovídající položka v KB" výchozí odpověď. Tato těsné smyčce test aktualizace pokračuje, dokud budete spokojeni s výsledky. Zjistěte, jak [testování znalostní báze](../How-To/test-knowledge-base.md).
 
-Pro velké znalostní báze testování lze automatizovat pomocí generateAnswer rozhraní API. 
+Znalostní báze připravený k testování, jakmile se vyplní s obsahem, buď pomocí redakčních úprav nebo Automatická extrakce. Interaktivní testování lze provést na portálu QnA Maker prostřednictvím **Test** panelu zadáním běžné dotazy na uživatele a ověření, že odpovědi vrátila správnou odpověď a dostatečné skóre spolehlivosti. 
+
+* **Chcete-li vyřešit skóre, které se s nízkou spolehlivostí**: Přidat alternativní otázky. 
+* **Když dotaz nesprávně vrátí [výchozí odpověď](confidence-score.md#change-default-answer)**: Přidat nové odpovědi na otázku správná. 
+
+Tato těsné smyčce test aktualizace pokračuje, dokud budete spokojeni s výsledky. Zjistěte, jak [testování znalostní báze](../How-To/test-knowledge-base.md).
+
+Pro velké znalostní báze, použijte automatické testování pomocí [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) a `isTest=true` parametr řetězce dotazu, které dotazy `test` místo znalostní báze publikované znalostní báze knowledge base. 
 
 ## <a name="publish-the-knowledge-base"></a>Publikování znalostní báze
 Po dokončení testování ve znalostní bázi, můžete ji publikovat. Publikovat na nejnovější verzi otestované znalostní báze k vyhrazené Azure Search indexovat představující nabízených oznámení **publikované** znalostní báze knowledge base. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.

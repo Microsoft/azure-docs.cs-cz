@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 92441e55d0a423e1e716d15166791c85fcf5d8ec
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 70159b975fd38c918f0b21a384b76666957f058b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434219"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593144"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
@@ -413,7 +413,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
         | Název | Typ | Hodnota | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
-        | TableName | Řetězec | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
+        | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Aktivita Uložená procedura – parametry](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
 14. **Připojte aktivitu kopírování k aktivitě uložené procedury**. Přetáhněte **zelené** tlačítko připojené k aktivitě Kopírování do aktivity Uložená procedura. 
@@ -463,11 +463,11 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
     
-## <a name="next-steps"></a>Další kroky
-Pokud se chcete dozvědět víc o transformaci dat pomocí clusteru Spark v Azure, přejděte k následujícímu kurzu:
+## <a name="next-steps"></a>Další postup
+Přejděte k následujícímu kurzu se dozvíte o kopírování nové a změněné soubory pouze podle jejich LastModifiedDate:
 
 > [!div class="nextstepaction"]
->[Transformace dat pomocí clusteru Spark v cloudu](tutorial-transform-data-spark-portal.md)
+>[Kopírování nových souborů ve lastmodifieddate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

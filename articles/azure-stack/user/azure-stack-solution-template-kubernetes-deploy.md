@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/20/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c96fdbfb56fe5274de941c0f9ab1a12cbcc241b6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9ce21a6b01dc4f4a99e5c70faf1e004bf7918dad
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658415"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594113"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Nasazení Kubernetes pro Azure Stack
 
@@ -39,7 +39,7 @@ Můžete použít Kubernetes:
 
 - Vývoj široce škálovatelné upgradovatelných, aplikací, které je možné nasadit v řádu sekund. 
 - Zjednodušit návrh aplikace a zvýšit jeho spolehlivost různými aplikacemi Helm. [Příkaz Helm](https://github.com/kubernetes/helm) je balení open source nástroj, který vám pomůže nainstalovat a spravovat životní cyklus aplikací Kubernetes.
-- Snadno monitorovat a diagnostikovat stav vašich aplikací díky škálování a upgradu funkce.
+- Snadno monitorovat a diagnostikovat stav vašich aplikací.
 
 Můžete pouze účtovat výpočetní využití vyžadované uzly podpora clusteru. Další informace najdete v tématu [využití a fakturace ve službě Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
@@ -53,7 +53,7 @@ Pokyny k instalaci clusteru při použití služby Azure AD najdete v tématu [n
 - **Služby Active Directory Federated Services (AD FS)**  
 Pokyny k instalaci clusteru při použití služby AD FS najdete v tématu [nasazení Kubernetes pomocí Active Directory Federated Services (AD FS) služby Azure Stack](azure-stack-solution-template-kubernetes-adfs.md).
 
-## <a name="connect-to-your-cluster"></a>Připojení k vašemu clusteru
+## <a name="connect-to-your-cluster"></a>Připojit ke clusteru
 
 Nyní jste připraveni připojit ke clusteru. Hlavní najdete ve vaší skupině prostředků clusteru a názvem `k8s-master-<sequence-of-numbers>`. Pro připojení k hlavnímu serveru pomocí klienta SSH. Na hlavním serveru, můžete použít **kubectl**, klienta příkazového řádku Kubernetes pro správu clusteru. Pokyny najdete v tématu [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview).
 

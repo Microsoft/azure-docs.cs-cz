@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ac4366a2e90ea239c650e611b7c4e8dddf5d5106
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243636"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649658"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Vytvoření a publikování položky Marketplace
 
@@ -129,28 +129,28 @@ ms.locfileid: "55243636"
 
 ### <a name="identity-information"></a>Informace o identitě
 
-| Name | Požaduje se | Type | Omezení | Popis |
+| Název | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| Name |X |Řetězec |[A-Za-z0-9]+ | |
-| Vydavatel |X |Řetězec |[A-Za-z0-9]+ | |
-| Verze |X |Řetězec |[SemVer v2](https://semver.org/) | |
+| Název |X |String |[A-Za-z0-9]+ | |
+| Vydavatel |X |String |[A-Za-z0-9]+ | |
+| Verze |X |String |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
 
-| Name | Požaduje se | Type | Omezení | Popis |
+| Název | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| Zobrazovaný název |X |Řetězec |Doporučení 80 znaků. |Na portálu se nemusí zobrazit název vaší položky řádně Pokud je delší než 80 znaků. |
-| PublisherDisplayName |X |Řetězec |Doporučení 30 znaků |Na portálu nemusí řádně zobrazit název vydavatele, pokud je delší než 30 znaků. |
-| PublisherLegalName |X |Řetězec |Maximálně 256 znaků. | |
-| Souhrn |X |Řetězec |60 až 100 znaků | |
-| LongSummary |X |Řetězec |140 až 256 znaků |Není zatím k dispozici ve službě Azure Stack. |
+| Zobrazovaný název |X |String |Doporučení 80 znaků. |Na portálu se nemusí zobrazit název vaší položky řádně Pokud je delší než 80 znaků. |
+| PublisherDisplayName |X |String |Doporučení 30 znaků |Na portálu nemusí řádně zobrazit název vydavatele, pokud je delší než 30 znaků. |
+| PublisherLegalName |X |String |Maximálně 256 znaků. | |
+| Souhrn |X |String |60 až 100 znaků | |
+| LongSummary |X |String |140 až 256 znaků |Není zatím k dispozici ve službě Azure Stack. |
 | Popis |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 až 5 000 znaků | |
 
 ### <a name="images"></a>Image
 
 Na webu Marketplace používá následující ikony:
 
-| Name | Šířka | Výška | Poznámky |
+| Název | Šířka | Výška | Poznámky |
 | --- | --- | --- | --- |
 | Široký |255 px |115 px |Vždycky se vyžaduje |
 | Dlouhodobé používání |115 px |115 px |Vždycky se vyžaduje |
@@ -166,19 +166,19 @@ Každá položka Marketplace by měl být s klíčovým slovem kategorii, která
 
 Každá položka Marketplace může obsahovat různé odkazy na další obsah. Odkazy jsou zadané jako seznam názvy a identifikátory URI:
 
-| Name | Požaduje se | Type | Omezení | Popis |
+| Název | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| Zobrazovaný název |X |Řetězec |Maximálně 64 znaků. | |
+| Zobrazovaný název |X |String |Maximálně 64 znaků. | |
 | URI |X |Identifikátor URI | | |
 
 ### <a name="additional-properties"></a>Další vlastnosti
 
 Kromě předchozích metadat můžete Marketplace autoři uvádějí data dvojice vlastní klíč/hodnota v následujícím tvaru:
 
-| Name | Požaduje se | Type | Omezení | Popis |
+| Název | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| Zobrazovaný název |X |Řetězec |Maximálně 25 znaků | |
-| Value |X |Řetězec |Maximálně 30 znaků | |
+| Zobrazovaný název |X |String |Maximálně 25 znaků | |
+| Hodnota |X |String |Maximálně 30 znaků | |
 
 ### <a name="html-sanitization"></a>Sanitizace HTML
 
@@ -192,8 +192,8 @@ Ikon a textu pro položky Marketplace, jak je vidět na portálu Azure Stack se.
 
 ### <a name="create-blade"></a>Okno Vytvořit
 
-![Okno Vytvořit](media/azure-stack-marketplace-item-ui-reference/image1.png)
+![Okno Vytvořit](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>Okno s podrobnostmi o položky Marketplace
 
-![Okno s podrobnostmi o položky Marketplace](media/azure-stack-marketplace-item-ui-reference/image3.png)
+![Okno s podrobnostmi o položky Marketplace](media/azure-stack-create-and-publish-marketplace-item/image3.png)

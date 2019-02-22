@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: adbfb0e42bc7057313c7652402fce2b2ede47735
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455530"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592498"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Verze Preview: Azure AD ochrana heslem v místním – nejčastější dotazy
 
@@ -44,6 +44,14 @@ Ne – místní ochrana hesel Azure AD je podporován pouze ve veřejném cloudu
 **Otázka: Jak můžu použít výhody ochrany hesel služby Azure AD na určitou podskupinu uživatelů v místním?**
 
 Nepodporuje se. Jakmile nasazená a aktivovaná, nebude rozlišení ochrana hesel Azure AD – všichni uživatelé obdrží stejné výhody.
+
+**Otázka: Jaký je rozdíl mezi změnu hesla a nastavení hesla (nebo reset)?**
+
+Změna hesla se, když uživatel vybere nové heslo po prokázání, že budou mít znalosti o staré heslo. Například to je, co se stane, když uživatel přihlásí do Windows a pak bude muset zvolit nové heslo.
+
+Nastavení hesla (říká se jim resetování hesla) je, když správce nahrazuje heslo pro účet s novým heslem, například pomocí nástroje správy Active Directory Users and Computers. Tato operace vyžaduje vysokou úroveň oprávnění (obvykle správce domény) a osoba provádějící operaci obvykle nemá žádné znalosti o staré heslo. Scénáře technické podpory to často udělat, například když pomáhám uživatel, který se zapomněl svoje heslo. Zobrazí se také, že události, kdy je úplně nový uživatelský účet se vytváří první přihlášení pomocí hesla nastavené heslo.
+
+Zásady ověření hesla se chová stejně bez ohledu na to, jestli se provádí změny hesla nebo set. Služba agenta ochrany DC hesel služby Azure AD protokolovat různé události do poznáte, zda změna hesla nebo bylo provedeno operaci set.  Zobrazit [ochrana hesel Azure AD, monitorování a protokolování](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **Otázka: Je podporováno nainstalovat ochranu hesel služby Azure AD souběžně s jinými produkty pomocí filtru hesla?**
 

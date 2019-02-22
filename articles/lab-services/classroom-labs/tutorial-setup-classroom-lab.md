@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998514"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649579"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -69,10 +69,8 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
     ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Na **konfigurovat šablony** stránce, proveďte následující kroky: Tyto kroky jsou **volitelné** pro tento kurz.
-    1. Vyberte **Start** (Spustit) a spusťte virtuální počítač šablony.
     2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. 
-    3. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
-    4. **Zastavte** virtuální počítač.  
+    3. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software.     
     5. Zadejte **popis** šablony.
 9. Na stránce šablony vyberte **Next** (Další). 
 10. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 

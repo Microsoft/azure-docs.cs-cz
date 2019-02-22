@@ -5,7 +5,7 @@ services: virtual-machines-windows
 author: bobbytreed
 manager: carmonm
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: d55f6097e3e1eed508580676edcf008b0739034c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e62bc0fff054f0392cd4f437565b5f4dae9cbfb7
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230971"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594419"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration rozšíření pomocí šablon Azure Resource Manageru
 
@@ -36,33 +36,46 @@ Další informace najdete v tématu [VirtualMachineExtension třídy](/dotnet/ap
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-    "apiVersion": "2018-04-01",
-    "location": "[resourceGroup().location]",
-    "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
-    ],
-    "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.76",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-            "configurationArguments": {
-                "RegistrationUrl" : "registrationUrl",
-                "NodeConfigurationName" : "nodeConfigurationName"
-            }
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "name": "Microsoft.Powershell.DSC",
+  "apiVersion": "2018-06-30",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.Powershell",
+    "type": "DSC",
+    "typeHandlerVersion": "2.77",
+    "autoUpgradeMinorVersion": true,
+    "protectedSettings": {
+      "Items": {
+        "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-06-30').Keys[0].value]"
+      }
+    },
+    "settings": {
+      "Properties": [
+        {
+          "Name": "RegistrationKey",
+          "Value": {
+            "UserName": "PLACEHOLDER_DONOTUSE",
+            "Password": "PrivateSettingsRef:registrationKeyPrivate"
+          },
+          "TypeName": "System.Management.Automation.PSCredential"
         },
-        "protectedSettings": {
-            "configurationArguments": {
-                "RegistrationKey": {
-                    "userName": "NOT_USED",
-                    "Password": "registrationKey"
-                }
-            }
+        {
+          "Name": "RegistrationUrl",
+          "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+          "TypeName": "System.String"
+        },
+        {
+          "Name": "NodeConfigurationName",
+          "Value": "[parameters('nodeConfigurationName')]",
+          "TypeName": "System.String"
         }
+      ]
     }
+  }
 }
 ```
 
@@ -77,37 +90,44 @@ Další informace najdete v tématu [VirtualMachineScaleSetExtension třídy](/d
 ```json
 "extensionProfile": {
     "extensions": [
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-            "apiVersion": "2018-04-01",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.Powershell",
-                "type": "DSC",
-                "typeHandlerVersion": "2.76",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "configurationArguments": {
-                        "RegistrationUrl" : "registrationUrl",
-                        "NodeConfigurationName" : "nodeConfigurationName"
-                    }
-                },
-                "protectedSettings": {
-                    "configurationArguments": {
-                        "RegistrationKey": {
-                            "userName": "NOT_USED",
-                            "Password": "registrationKey"
-                        }
-                    }
-                }
+      {
+        "name": "Microsoft.Powershell.DSC",
+        "properties": {
+          "publisher": "Microsoft.Powershell",
+          "type": "DSC",
+          "typeHandlerVersion": "2.77",
+          "autoUpgradeMinorVersion": true,
+          "protectedSettings": {
+            "Items": {
+              "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-06-30').Keys[0].value]"
             }
+          },
+          "settings": {
+            "Properties": [
+              {
+                "Name": "RegistrationKey",
+                "Value": {
+                  "UserName": "PLACEHOLDER_DONOTUSE",
+                  "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                },
+                "TypeName": "System.Management.Automation.PSCredential"
+              },
+              {
+                "Name": "RegistrationUrl",
+                "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+                "TypeName": "System.String"
+              },
+              {
+                "Name": "NodeConfigurationName",
+                "Value": "[parameters('nodeConfigurationName')]",
+                "TypeName": "System.String"
+              }
+            ]
+          }
         }
+      }
     ]
-}
+  }
 ```
 
 ## <a name="detailed-settings-information"></a>Informace o podrobné nastavení
@@ -158,12 +178,12 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript n
 
 ## <a name="details"></a>Podrobnosti
 
-| Název vlastnosti | Typ | Popis |
+| Název vlastnosti | Type | Popis |
 | --- | --- | --- |
 | settings.wmfVersion |řetězec |Určuje verzi Windows Management Frameworku (WMF), který musí být nainstalován na váš virtuální počítač. Nastavení této vlastnosti na **nejnovější** nainstaluje nejnovější verzi WMF. V současné době pouze možné hodnoty této vlastnosti jsou **4.0**, **5.0**, **5.1**, a **nejnovější**. Tyto možné hodnoty jsou v souladu s aktualizací. Výchozí hodnota je **nejnovější**. |
-| Settings.Configuration.URL |řetězec |Určuje adresu URL umístění, ze kterého chcete stáhnout soubor ZIP konfigurace DSC. Pokud zadaná adresa URL se vyžaduje SAS token pro přístup, nastavte **protectedSettings.configurationUrlSasToken** k hodnotě váš token SAS. Tato vlastnost je vyžadována, pokud **settings.configuration.script** nebo **settings.configuration.function** jsou definovány. -Li zadána žádná hodnota pro tyto vlastnosti, rozšíření volá výchozí konfigurační skript nastavení metadat umístění Configuration Manageru (LCM) a musí být zadán argument. |
-| Settings.Configuration.Script |řetězec |Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce souboru .zip, který se stáhne z adresy URL pro určené **settings.configuration.url** vlastnost. Tato vlastnost je vyžadována, pokud **settings.configuration.url** nebo **settings.configuration.script** jsou definovány. -Li zadána žádná hodnota pro tyto vlastnosti, rozšíření volá výchozí konfigurační skript nastavení LCM metadat a by měl být zadán argument. |
-| Settings.Configuration.Function |řetězec |Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu, který **settings.configuration.script** definuje. Tato vlastnost je vyžadována, pokud **settings.configuration.url** nebo **settings.configuration.function** jsou definovány. -Li zadána žádná hodnota pro tyto vlastnosti, rozšíření volá výchozí konfigurační skript nastavení LCM metadat a by měl být zadán argument. |
+| settings.configuration.url |řetězec |Určuje adresu URL umístění, ze kterého chcete stáhnout soubor ZIP konfigurace DSC. Pokud zadaná adresa URL se vyžaduje SAS token pro přístup, nastavte **protectedSettings.configurationUrlSasToken** k hodnotě váš token SAS. Tato vlastnost je vyžadována, pokud **settings.configuration.script** nebo **settings.configuration.function** jsou definovány. -Li zadána žádná hodnota pro tyto vlastnosti, rozšíření volá výchozí konfigurační skript nastavení metadat umístění Configuration Manageru (LCM) a musí být zadán argument. |
+| settings.configuration.script |řetězec |Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce souboru .zip, který se stáhne z adresy URL pro určené **settings.configuration.url** vlastnost. Tato vlastnost je vyžadována, pokud **settings.configuration.url** nebo **settings.configuration.script** jsou definovány. -Li zadána žádná hodnota pro tyto vlastnosti, rozšíření volá výchozí konfigurační skript nastavení LCM metadat a by měl být zadán argument. |
+| settings.configuration.function |řetězec |Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu, který **settings.configuration.script** definuje. Tato vlastnost je vyžadována, pokud **settings.configuration.url** nebo **settings.configuration.function** jsou definovány. -Li zadána žádná hodnota pro tyto vlastnosti, rozšíření volá výchozí konfigurační skript nastavení LCM metadat a by měl být zadán argument. |
 | settings.configurationArguments |Kolekce |Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost není zašifrován. |
 | settings.configurationData.url |řetězec |Určuje adresu URL z nichž lze stáhnout soubor konfiguračních dat (.psd1) použít jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL se vyžaduje SAS token pro přístup, nastavte **protectedSettings.configurationDataUrlSasToken** k hodnotě váš token SAS. |
 | settings.privacy.dataCollection |řetězec |Povolí nebo zakáže shromažďování telemetrie. Pouze možné hodnoty této vlastnosti jsou **povolit**, **zakázat**, **''**, nebo **$null**. Opuštění tato vlastnost prázdná nebo null umožňuje telemetrická data. Výchozí hodnota je **''**. Další informace najdete v tématu [shromažďování dat rozšíření DSC Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
@@ -177,14 +197,14 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript n
 Další informace o těchto hodnot najdete v tématu [správce místní konfigurace základního nastavení](/powershell/dsc/metaconfig#basic-settings).
 Skript pro konfiguraci výchozí rozšíření DSC můžete nakonfigurovat pouze LCM vlastnosti, které jsou uvedeny v následující tabulce.
 
-| Název vlastnosti | Typ | Popis |
+| Název vlastnosti | Type | Popis |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Požadovaná vlastnost. Určuje klíč, který se používá pro uzel k registraci ve službě Azure Automation jako heslo objekt pověření prostředí PowerShell. Tuto hodnotu můžete automaticky zjistit pomocí **klíče listkey** metoda proti účtu Automation.  Zobrazit [příklad](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments.RegistrationUrl |řetězec |Požadovaná vlastnost. Určuje adresu URL koncového bodu služby Automation, kde se pokusí zaregistrovat uzlu. Tuto hodnotu můžete automaticky zjistit pomocí **odkaz** metoda proti účtu Automation. |
 | settings.configurationArguments.NodeConfigurationName |řetězec |Požadovaná vlastnost. Určuje konfiguraci uzlu v účtu Automation přiřadit k uzlu. |
 | settings.configurationArguments.ConfigurationMode |řetězec |Určuje režim pro LCM. Platné možnosti jsou **ApplyOnly**, **ApplyandMonitor**, a **ApplyandAutoCorrect**.  Výchozí hodnota je **ApplyandMonitor**. |
-| settings.configurationArguments.RefreshFrequencyMins | UInt32 | Určuje, jak často se pokusí LCM obraťte se na účtu Automation pro aktualizace.  Výchozí hodnota je **30**.  Minimální hodnota je **15**. |
-| settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Určuje, jak často LCM ověří aktuální konfiguraci. Výchozí hodnota je **15**. Minimální hodnota je **15**. |
+| settings.configurationArguments.RefreshFrequencyMins | uint32 | Určuje, jak často se pokusí LCM obraťte se na účtu Automation pro aktualizace.  Výchozí hodnota je **30**.  Minimální hodnota je **15**. |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Určuje, jak často LCM ověří aktuální konfiguraci. Výchozí hodnota je **15**. Minimální hodnota je **15**. |
 | settings.configurationArguments.RebootNodeIfNeeded | Boolean | Určuje, zda uzel možné automaticky restartovat žádost o operaci DSC. Výchozí hodnota je **false**. |
 | settings.configurationArguments.ActionAfterReboot | řetězec | Určuje, co se stane po restartování, při použití konfigurace. Platné možnosti jsou **ContinueConfiguration** a **StopConfiguration**. Výchozí hodnota je **ContinueConfiguration**. |
 | settings.configurationArguments.AllowModuleOverwrite | Boolean | Určuje, zda LCM přepíše existující moduly na uzlu. Výchozí hodnota je **false**. |
@@ -311,15 +331,15 @@ Zde je, jak přizpůsobuje předešlým formátem do aktuálního formátu:
 | Aktuální název vlastnosti | Ekvivalentní předchozí schématu |
 | --- | --- |
 | settings.wmfVersion |nastavení. WMFVersion |
-| Settings.Configuration.URL |settings.ModulesUrl |
-| Settings.Configuration.Script |První část nastavení. ConfigurationFunction (před \\ \\) |
-| Settings.Configuration.Function |Druhá část nastavení. ConfigurationFunction (po \\ \\) |
-| Settings.Configuration.Module.Name | nastavení. ModuleSource |
-| Settings.Configuration.Module.Version | nastavení. Verze modulu |
-| settings.configurationArguments |nastavení. Vlastnosti |
+| settings.configuration.url |settings.ModulesUrl |
+| settings.configuration.script |První část nastavení. ConfigurationFunction (před \\ \\) |
+| settings.configuration.function |Druhá část nastavení. ConfigurationFunction (po \\ \\) |
+| settings.configuration.module.name | settings.ModuleSource |
+| settings.configuration.module.version | settings.ModuleVersion |
+| settings.configurationArguments |settings.Properties |
 | settings.configurationData.url |protectedSettings.DataBlobUri (bez tokenu SAS) |
-| settings.privacy.dataCollection |nastavení. Privacy.dataCollection |
-| settings.advancedOptions.downloadMappings |nastavení. AdvancedOptions.DownloadMappings |
+| settings.privacy.dataCollection |settings.Privacy.dataCollection |
+| settings.advancedOptions.downloadMappings |settings.AdvancedOptions.DownloadMappings |
 | protectedSettings.configurationArguments |protectedSettings.Properties |
 | protectedSettings.configurationUrlSasToken |settings.SasToken |
 | protectedSettings.configurationDataUrlSasToken |Token SAS z protectedSettings.DataBlobUri |
@@ -344,7 +364,7 @@ Další informace najdete v tabulce v [podrobnosti](#details).
 
 "Je ConfigurationData.url"{0}". Toto není platná adresa URL"" je DataBlobUri "{0}". Toto není platná adresa URL"" je Configuration.url "{0}". Toto není platná adresa URL."
 
-**Problém**: k dispozici A adresa URL není platná.
+**Problém**: Zadaná adresa URL není platná.
 
 **Řešení**: Zkontrolujte zadaná URL.
 Ujistěte se, že všechny adresy URL překládat na platné umístění, že rozšíření se dostanete na vzdáleném počítači.
@@ -355,7 +375,7 @@ Ujistěte se, že všechny adresy URL překládat na platné umístění, že ro
 
 **Problém**: *RegistrationKey* v protectedSettings.configurationArguments nelze zadat hodnotu jako jakýkoli typ jiný než objekt PSCredential.
 
-**Řešení**: změnit vaše zadání protectedSettings.configurationArguments pro RegistrationKey na typ PSCredential v následujícím formátu:
+**Řešení**: Změňte vaše zadání protectedSettings.configurationArguments pro RegistrationKey na typ PSCredential v následujícím formátu:
 
 ```json
 "configurationArguments": {
@@ -381,7 +401,7 @@ Postupujte podle formátu k dispozici v předchozích příkladech. Podívejte s
 
 **Problém**: *ConfigurationArguments* v nastavení veřejné a *ConfigurationArguments* v nastavení chráněné mají vlastnosti se stejným názvem.
 
-**Řešení**: odeberte jeden z duplicitních vlastností.
+**Řešení**: Odeberte jeden z duplicitních vlastností.
 
 ### <a name="missing-properties"></a>Chybí vlastnosti
 
@@ -397,7 +417,7 @@ Postupujte podle formátu k dispozici v předchozích příkladech. Podívejte s
 
 "protectedSettings.ConfigurationDataUrlSasToken vyžaduje, že je zadán tento settings.configurationData.url"
 
-**Problém**: definované vlastnosti potřebuje další vlastnost, která se nenašel.
+**Problém**: Definovaný vlastností musí jiné vlastnosti, které chybí.
 
 **Řešení**:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: 3ba7e8129d577faa87544f8feded51a14559eb51
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7f056ab79bbd2d2b66e40546a6df7677ffe75a21
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435528"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649454"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvořte virtuální počítač Windows s Akcelerovanými síťovými službami
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak vytvořit virtuální počítač Windows (VM) s A
 
 ![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-Bez akcelerované síťové služby, musí procházet veškerý síťový provoz do a z virtuálního počítače hostitele a virtuálního přepínače. Virtuální přepínač poskytuje všechny vynucení zásad, jako jsou skupiny zabezpečení sítě, seznamy řízení přístupu, izolace a jiné síťové virtualizované služby pro síťový provoz. Další informace o virtuální přepínače, [virtualizace sítě Hyper-V a virtuálního přepínače](https://technet.microsoft.com/library/jj945275.aspx) článku.
+Bez akcelerované síťové služby, musí procházet veškerý síťový provoz do a z virtuálního počítače hostitele a virtuálního přepínače. Virtuální přepínač poskytuje všechny vynucení zásad, jako jsou skupiny zabezpečení sítě, seznamy řízení přístupu, izolace a jiné síťové virtualizované služby pro síťový provoz. Další informace o virtuální přepínače najdete v tématu [virtualizace sítě Hyper-V a virtuálního přepínače](https://technet.microsoft.com/library/jj945275.aspx).
 
 S akcelerovanými síťovými službami, síťový provoz dorazí na síťové rozhraní Virtuálního počítače (NIC) a pak se předávají do virtuálního počítače. Všechny zásady sítě, které se vztahuje virtuální přepínač se teď se sníženou zátěží a použít v hardwaru. Použití zásad v hardwaru umožňuje síťovou kartu pro provoz sítě přímo k virtuálnímu počítači, vynechání hostitele a virtuálního přepínače, při zachování všech zásad, který se použije na hostiteli.
 
@@ -41,9 +41,9 @@ Výhody akcelerované síťové služby se vztahují jenom na virtuální počí
 ## <a name="limitations-and-constraints"></a>Omezení a omezení
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
-Připravených v galerii Azure jsou podporovány následující distribuce: 
+Připravených v galerii Azure jsou podporovány následující distribuce:
 * **Windows Server 2016 Datacenter** 
-* **Windows Server 2012 R2 Datacenter** 
+* **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
 Akcelerované síťové služby se podporuje na nejvíce obecné účely a velikostí optimalizovaných pro výpočetní instance s 2 nebo více virtuálních procesorů.  Tyto podporované řady jsou: D/DSv2 a F/Fs
@@ -67,28 +67,30 @@ Přestože tento článek popisuje kroky k vytvoření virtuálního počítače
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Nainstalujte [prostředí Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) verze 5.1.1 nebo novější. Aktuálně nainstalovanou verzi zjistíte spuštěním `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, nainstalujte nejnovější verzi modulu AzureRM z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureRM). V relaci Powershellu připojte se k účtu Azure pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Nainstalujte [prostředí Azure PowerShell](/powershell/azure/install-az-ps) verze 1.0.0 nebo novějším. Aktuálně nainstalovanou verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, nainstalujte nejnovější verzi modulu Az z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az). V relaci Powershellu připojte se k účtu Azure pomocí [připojit AzAccount](/powershell/module/az.profile/connect-azaccount).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *myNic*, a *myVM*.
 
-Vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *centralus* umístění:
+Vytvořte skupinu prostředků s [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *centralus* umístění:
 
 ```powershell
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "centralus"
+New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
 ```
 
-Nejprve vytvořte konfiguraci podsítě pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/AzureRM.Network/New-AzureRmVirtualNetworkSubnetConfig). Následující příklad vytvoří podsíť s názvem *mySubnet*:
+Nejprve vytvořte konfiguraci podsítě pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig). Následující příklad vytvoří podsíť s názvem *mySubnet*:
 
 ```powershell
-$subnet = New-AzureRmVirtualNetworkSubnetConfig `
+$subnet = New-AzVirtualNetworkSubnetConfig `
     -Name "mySubnet" `
     -AddressPrefix "192.168.1.0/24"
 ```
 
-Vytvoření virtuální sítě s [New-AzureRmVirtualNetwork](/powershell/module/AzureRM.Network/New-AzureRmVirtualNetwork), se *mySubnet* podsítě.
+Vytvoření virtuální sítě s [New-AzVirtualNetwork](/powershell/module/az.Network/New-azVirtualNetwork), se *mySubnet* podsítě.
 
 ```powershell
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
+$vnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
     -Location "centralus" `
     -Name "myVnet" `
     -AddressPrefix "192.168.0.0/16" `
@@ -97,10 +99,10 @@ $vnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Nejprve vytvořte pravidlo skupiny zabezpečení sítě s [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/AzureRM.Network/New-AzureRmNetworkSecurityRuleConfig).
+Nejprve vytvořte pravidlo skupiny zabezpečení sítě s [New-AzNetworkSecurityRuleConfig](/powershell/module/az.Network/New-azNetworkSecurityRuleConfig).
 
 ```powershell
-$rdp = New-AzureRmNetworkSecurityRuleConfig `
+$rdp = New-AzNetworkSecurityRuleConfig `
     -Name 'Allow-RDP-All' `
     -Description 'Allow RDP' `
     -Access Allow `
@@ -113,20 +115,20 @@ $rdp = New-AzureRmNetworkSecurityRuleConfig `
     -DestinationPortRange 3389
 ```
 
-Vytvořit skupinu zabezpečení sítě s [New-AzureRmNetworkSecurityGroup](/powershell/module/AzureRM.Network/New-AzureRmNetworkSecurityGroup) a přiřaďte *povolit RDP všech* pravidlo zabezpečení, které ho. Kromě *povolit RDP všech* pravidlo skupiny zabezpečení sítě obsahuje několik výchozích pravidel. Zakáže jeden výchozí pravidlo přístupu pro všechna příchozí připojení z Internetu, což je důvod, proč *povolit RDP všech* pravidlo je přiřazen ke skupině zabezpečení sítě tak, aby můžete vzdáleně připojit k virtuálnímu počítači po jeho vytvoření.
+Vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityGroup](/powershell/module/az.Network/New-azNetworkSecurityGroup) a přiřadit *povolit RDP všech* pravidlo zabezpečení, které ho. Kromě *povolit RDP všech* pravidlo skupiny zabezpečení sítě obsahuje několik výchozích pravidel. Zakáže jeden výchozí pravidlo přístupu pro všechna příchozí připojení z Internetu, což je důvod, proč *povolit RDP všech* pravidlo je přiřazen ke skupině zabezpečení sítě tak, aby můžete vzdáleně připojit k virtuálnímu počítači po jeho vytvoření.
 
 ```powershell
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
     -ResourceGroupName myResourceGroup `
     -Location centralus `
     -Name "myNsg" `
     -SecurityRules $rdp
 ```
 
-Přidružení skupiny zabezpečení sítě k *mySubnet* podsíť s [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/AzureRM.Network/Set-AzureRmVirtualNetworkSubnetConfig). Pravidlo skupiny zabezpečení sítě platí pro všechny prostředky nasazené v podsíti.
+Přidružení skupiny zabezpečení sítě k *mySubnet* podsíť s [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/Set-azVirtualNetworkSubnetConfig). Pravidlo skupiny zabezpečení sítě platí pro všechny prostředky nasazené v podsíti.
 
 ```powershell
-Set-AzureRmVirtualNetworkSubnetConfig `
+Set-AzVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
     -Name 'mySubnet' `
     -AddressPrefix "192.168.1.0/24" `
@@ -134,20 +136,20 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 ```
 
 ## <a name="create-a-network-interface-with-accelerated-networking"></a>Vytvořte síťové rozhraní s akcelerovanými síťovými službami
-Vytvořte veřejnou IP adresu pomocí rutiny [New-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/New-AzureRmPublicIpAddress). Veřejná IP adresa není povinné, když se nechystáte pro přístup k virtuálnímu počítači z Internetu, ale k dokončení kroků v tomto článku, je povinný.
+Vytvoření veřejné IP adresy s [New-AzPublicIpAddress](/powershell/module/az.Network/New-azPublicIpAddress). Veřejná IP adresa není povinné, když se nechystáte pro přístup k virtuálnímu počítači z Internetu, ale k dokončení kroků v tomto článku, je povinný.
 
 ```powershell
-$publicIp = New-AzureRmPublicIpAddress `
+$publicIp = New-AzPublicIpAddress `
     -ResourceGroupName myResourceGroup `
     -Name 'myPublicIp' `
     -location centralus `
     -AllocationMethod Dynamic
 ```
 
-Vytvořte síťové rozhraní s [New-AzureRmNetworkInterface](/powershell/module/AzureRM.Network/New-AzureRmNetworkInterface) s akcelerovanými síťovými povolené službami a přiřazovat veřejné IP adresy k síťovému rozhraní. Následující příklad vytvoří síťové rozhraní s názvem *myNic* v *mySubnet* podsíti *myVnet* virtuální sítě a přiřadí *myPublicIp*  k němu veřejnou IP adresu:
+Vytvořte síťové rozhraní s [New-AzNetworkInterface](/powershell/module/az.Network/New-azNetworkInterface) s akcelerovanými síťovými povolené službami a přiřazovat veřejné IP adresy k síťovému rozhraní. Následující příklad vytvoří síťové rozhraní s názvem *myNic* v *mySubnet* podsíti *myVnet* virtuální sítě a přiřadí *myPublicIp*  k němu veřejnou IP adresu:
 
 ```powershell
-$nic = New-AzureRmNetworkInterface `
+$nic = New-AzNetworkInterface `
     -ResourceGroupName "myResourceGroup" `
     -Name "myNic" `
     -Location "centralus" `
@@ -164,40 +166,40 @@ Nastavte svoje přihlašovací údaje virtuálního počítače na `$cred` prom�
 $cred = Get-Credential
 ```
 
-Nejprve definujte váš virtuální počítač s [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). Následující příklad definuje virtuální počítač s názvem *myVM* s velikostí virtuálních počítačů, která podporuje akcelerované síťové (*Standard_DS4_v2*):
+Nejprve definujte váš virtuální počítač s [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). Následující příklad definuje virtuální počítač s názvem *myVM* s velikostí virtuálních počítačů, která podporuje akcelerované síťové (*Standard_DS4_v2*):
 
 ```powershell
-$vmConfig = New-AzureRmVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
+$vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
 ```
 
 Seznam všech velikostí virtuálních počítačů a vlastnosti najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Vytvoření rest konfiguraci virtuálního počítače s [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) a [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage). Následující příklad vytvoří virtuální počítač s Windows serverem 2016:
+Vytvoření rest konfiguraci virtuálního počítače s [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) a [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). Následující příklad vytvoří virtuální počítač s Windows serverem 2016:
 
 ```powershell
-$vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig `
+$vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
     -Windows `
     -ComputerName "myVM" `
     -Credential $cred `
     -ProvisionVMAgent `
     -EnableAutoUpdate
-$vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig `
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig `
     -PublisherName "MicrosoftWindowsServer" `
     -Offer "WindowsServer" `
     -Skus "2016-Datacenter" `
     -Version "latest"
 ```
 
-Připojit síťové rozhraní, kterou jste vytvořili pomocí [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
+Připojit síťové rozhraní, kterou jste vytvořili pomocí [přidat AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface):
 
 ```powershell
-$vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+$vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
 
-Nakonec vytvořte virtuální počítač s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
+Nakonec vytvořte virtuální počítač s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm):
 
 ```powershell
-New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus"
+New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus"
 ```
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>Potvrďte, že instalaci ovladače v operačním systému
@@ -224,7 +226,7 @@ Pokud jste vytvořili virtuální počítač bez Akcelerovanými síťovými slu
 Nejprve zastavit/zrušit přidělení virtuálního počítače nebo v případě dostupnosti, všechny virtuální počítače v sadě:
 
 ```azurepowershell
-Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
+Stop-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -233,18 +235,18 @@ Důležité, prosím Poznámka: Pokud se váš virtuální počítač jednotliv�
 Po zastavení povolte akcelerované síťové na síťovém rozhraní virtuálního počítače:
 
 ```azurepowershell
-$nic = Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+$nic = Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic"
 
 $nic.EnableAcceleratedNetworking = $true
 
-$nic | Set-AzureRmNetworkInterface
+$nic | Set-AzNetworkInterface
 ```
 
-Restartování vašeho virtuálního počítače nebo, pokud do skupiny dostupnosti, všechny virtuální počítače v sadě a potvrďte, že je povoleno Akcelerovanými síťovými službami: 
+Restartování vašeho virtuálního počítače nebo, pokud ve skupině dostupnosti, všechny virtuální počítače v sadě a potvrďte, že je povoleno Akcelerovanými síťovými službami:
 
 ```azurepowershell
-Start-AzureRmVM -ResourceGroup "myResourceGroup" `
+Start-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -252,29 +254,29 @@ Start-AzureRmVM -ResourceGroup "myResourceGroup" `
 VMSS se mírně liší, ale řídí stejného pracovního postupu.  Nejdřív zastavte virtuální počítače:
 
 ```azurepowershell
-Stop-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+Stop-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet"
 ```
 
 Jakmile se virtuální počítače se zastaví, umožňuje aktualizujte vlastnost Akcelerovanými síťovými službami v části síťové rozhraní:
 
 ```azurepowershell
-$vmss = Get-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+$vmss = Get-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet"
 
 $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].EnableAcceleratedNetworking = $true
 
-Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+Update-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet" `
     -VirtualMachineScaleSet $vmss
 ```
 
-Poznámka: VMSS prosím má upgrady virtuálního počítače, které aktualizace pomocí tří různých nastavení automatické, Hromadná a ruční.  V těchto pokynech je zásada nastavená na hodnotu automaticky tak, aby VMSS vyzvedne, až bude změny okamžitě po restartování.  Nastavit ho na hodnotu automaticky, aby změny okamžitě, vyberou se: 
+Poznámka: VMSS prosím má upgrady virtuálního počítače, které aktualizace pomocí tří různých nastavení automatické, Hromadná a ruční.  V těchto pokynech je zásada nastavená na hodnotu automaticky tak, aby VMSS vyzvedne, až bude změny okamžitě po restartování.  Nastavit ho na hodnotu automaticky, aby změny okamžitě, vyberou se:
 
 ```azurepowershell
 $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
 
-Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+Update-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet" `
     -VirtualMachineScaleSet $vmss
 ```
@@ -282,7 +284,7 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
 A konečně restartujte VMSS:
 
 ```azurepowershell
-Start-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+Start-AzVmss -ResourceGroupName "myResourceGroup" `
     -VMScaleSetName "myScaleSet"
 ```
 
@@ -292,11 +294,8 @@ Jednou můžete znovu, počkejte upgrady dokončete ale po dokončení se zobraz
 
 Virtuální počítače s Akcelerovanými síťovými službami povoleno pouze niž lze nastavit virtuální počítače, které podporují Akcelerovanými síťovými službami.  
 
-Nelze změnit velikost virtuálního počítače s Akcelerovanými síťovými službami povolené k instanci virtuálního počítače, který nepodporuje Akcelerovanými síťovými službami pomocí operace změny velikosti.  Místo toho chcete změnit velikost jeden z těchto virtuálních počítačů: 
+Nelze změnit velikost virtuálního počítače s Akcelerovanými síťovými službami povolené k instanci virtuálního počítače, který nepodporuje Akcelerovanými síťovými službami pomocí operace změny velikosti.  Místo toho chcete změnit velikost jeden z těchto virtuálních počítačů:
 
 * Zastavení nebo zrušení přidělení virtuálního počítače nebo pokud v sadě dostupnosti/VMSS, zastavit/uvolnit všechny virtuální počítače v sadě/škálovací sady.
 * Akcelerované síťové služby, musí se zakázat na síťovém rozhraní virtuálního počítače nebo při použití ve dostupnost sady nebo škálovací sada, všechny virtuální počítače v sadě/škálovací sady.
-* Jakmile Akcelerovanými síťovými službami je zakázaná, sady nebo škálovací sada virtuálních počítačů a dostupnost lze přesunout do novou velikost, která nepodporuje Akcelerovanými síťovými službami a restartovat.  
-
-
-
+* Jakmile Akcelerovanými síťovými službami je zakázaná, sady nebo škálovací sada virtuálních počítačů a dostupnost lze přesunout do novou velikost, která nepodporuje Akcelerovanými síťovými službami a restartovat.

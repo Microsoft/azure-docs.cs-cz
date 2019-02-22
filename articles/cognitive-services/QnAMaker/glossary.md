@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: c280f6ef99678b77edcb251ead685be88265f825
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb3b262f3bde0599cb6dea009d0fbbeafb1c529a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871009"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649437"
 ---
 # <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>Glosář pro nástroj QnA Maker znalostní báze a služby
 
@@ -42,4 +42,4 @@ Dotaz, který uživatel je dotazu, koncovým uživatelům nebo tester znalostní
 Odpověď je načíst ze znalostní báze podle je nejlepší shodou pro daný uživatelský dotaz odpověď.
 
 ## <a name="confidence-score"></a>Skóre spolehlivosti
-Skóre spolehlivosti odpovědi je číselná hodnota mezi 0 a 100, 100 se přesný dotaz v případě shody mezi uživatele dotazu a dotaz ve znalostní báze, který obsluhuje odpovědi je odpověď správná, odpovídající dotazu daného uživatele. Odpovědi jsou obvykle seřazené podle skóre spolehlivosti a s větší jistoty slouží jako výchozí odpověď.
+Skóre spolehlivosti odpovědi je číselná hodnota mezi 0 a 100, 100 se přesný dotaz v případě shody mezi uživatele dotazu a dotaz ve znalostní báze, který obsluhuje odpovědi je odpověď správná, odpovídající dotazu daného uživatele. Odpovědi jsou obvykle seřazené podle skóre spolehlivosti a s větší jistoty slouží jako [výchozí odpověď](concepts/confidence-score.md#change-default-answer).

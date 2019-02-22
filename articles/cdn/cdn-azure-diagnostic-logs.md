@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6ce10cd9947acbb74807a5288fc1753e794e69c7
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236274"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652293"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -35,7 +35,7 @@ Protokoly diagnostiky Azure umožňuje exportovat metriky základní informace o
 
 - Exportujte data do úložiště objektů blob, export do souboru CSV a generovat grafy v aplikaci Excel.
 - Export dat do služby Event Hubs a je možné korelovat s daty z jiných služeb Azure.
-- Exportovat data do Log Analytics a zobrazení dat v vlastní pracovní prostor Log Analytics
+- Export dat do Azure monitoru protokolů a zobrazení dat ve vašem vlastním pracovním prostoru Log Analytics
 
 Následující diagram ukazuje typické CDN core analytics přehled data.
 
@@ -85,15 +85,15 @@ Pokud chcete použít účet úložiště k ukládání protokolů, postupujte t
 
 5. Po provedení nastavení diagnostický protokol vyberte **Uložit**.
 
-### <a name="logging-with-log-analytics"></a>Protokolování pomocí služby Log Analytics
+### <a name="logging-with-azure-monitor"></a>Protokolování pomocí služby Azure Monitor
 
-Použití Log Analytics k ukládání protokolů, postupujte podle těchto kroků:
+Použití Azure monitoru k ukládání protokolů, postupujte podle těchto kroků:
 
 1. Z **diagnostické protokoly** stránce **odesílat do Log Analytics**. 
 
     ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Vyberte **konfigurovat** chcete nakonfigurovat protokolování pro Log Analytics. 
+2. Vyberte **konfigurovat** chcete nakonfigurovat protokolování pro monitorování Azure. 
 
    **Pracovních prostorů Log Analytics** se zobrazí stránka.
 
@@ -133,7 +133,7 @@ Použití Log Analytics k ukládání protokolů, postupujte podle těchto krok�
 
     ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    Váš pracovní prostor Log Analytics je teď připravený k protokolování dat o. Aby bylo možné využívat data, je nutné použít [Log Analytics řešení](#consuming-diagnostics-logs-from-a-log-analytics-workspace), uvedených dále v tomto článku.
+    Váš pracovní prostor Log Analytics je teď připravený k protokolování dat o. Aby bylo možné využívat data, je nutné použít [protokoly Azure monitoru řešení](#consuming-diagnostics-logs-from-a-log-analytics-workspace), uvedených dále v tomto článku.
 
 Další informace o protokolu data zpoždění, naleznete v tématu [protokolovat data zpoždění](#log-data-delays).
 
@@ -211,9 +211,9 @@ Zde je, jak můžete pomocí nástroje:
 5.  Výsledný soubor CSV zobrazuje analytics data v hierarchii jednoduché bez stromové struktury.
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Využívání diagnostické protokoly z pracovního prostoru Log Analytics
-Log Analytics je služba Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
+Azure Monitor je služba Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
 
-Chcete-li používat službu Log Analytics, je třeba [povolit protokolování](#enable-logging-with-azure-storage) do pracovního prostoru Azure Log Analytics, která je popsána výše v tomto článku.
+Pokud chcete používat Azure Monitor, je nutné [povolit protokolování](#enable-logging-with-azure-storage) do pracovního prostoru Azure Log Analytics, která je popsána výše v tomto článku.
 
 ### <a name="using-the-log-analytics-workspace"></a>Používání pracovního prostoru Log Analytics
 
@@ -227,9 +227,9 @@ Data můžete zobrazit v různých způsobů, jak pomocí řešení pro správu.
 
 Řešení pro správu můžete nainstalovat z webu Azure marketplace výběrem **získat** odkaz na konci každé řešení.
 
-### <a name="add-a-log-analytics-cdn-management-solution"></a>Přidání řešení Log Analytics pro správu CDN
+### <a name="add-a-azure-monitor-cdn-management-solution"></a>Přidejte řešení pro správu CDN Azure Monitor
 
-Postupujte podle těchto kroků přidejte řešení pro správu Log Analytics:
+Postupujte podle těchto kroků přidejte řešení pro správu monitorování Azure:
 
 1.   Přihlaste se k webu Azure portal pomocí svého předplatného Azure a přejděte na řídicí panel.
     ![Řídicí panel Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -443,7 +443,7 @@ Příklad vlastnosti:
 
 * [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýza přes doplňkový portál Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Rozhraní REST API Azure Log Analytics](https://docs.microsoft.com/rest/api/loganalytics)
 
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 764b5ebb73340d377250d39e20b17ed0daf18bbe
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7cf0788bdd013eb6a42ee5aa3f5c054a557cbc77
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447680"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651834"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí pomocí Azure Lab Services
 Účet testovacího prostředí v Azure Lab Services slouží jako centrální účet, ve kterém se spravují testovací prostředí vaší organizace. V účtu testovacího prostředí můžete udělit oprávnění vytvářet testovací prostředí dalším uživatelům a nastavit zásady, které budou platit pro všechna testovací prostředí pod účtem testovacího prostředí. V tomto kurzu zjistíte, jak vytvořit účet testovacího prostředí jako správce testovacího prostředí. 
@@ -66,7 +66,7 @@ Pokud chcete v účtu testovacího prostředí nastavit testovací prostředí v
 
 Přidejte vyučující do role **Autor testovacího prostředí**, abyste jim poskytli oprávnění k vytvoření testovacích prostředí pro jejich třídy:
 
-1. Na **účet testovacího prostředí** stránce **řízení přístupu (IAM)** a klikněte na tlačítko **+ přidat přiřazení role** na panelu nástrojů. 
+1. Na **účet testovacího prostředí** stránce **řízení přístupu (IAM)** vyberte **+ přidat** na panelu nástrojů a pak vyberte **+ přidat přiřazení role** na panel nástrojů. 
 
     ![Řízení přístupu -> tlačítko Přidat přiřazení Role](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
 1. Na **přidat přiřazení role** stránce **Autor testovacího prostředí** pro **Role**, vyberte uživatele, kterou chcete přidat do role Tvůrce prostředí a vyberte **Uložit**. 

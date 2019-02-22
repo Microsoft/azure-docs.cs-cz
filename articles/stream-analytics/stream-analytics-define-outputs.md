@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8ae55028bbc44a9383be6723f9bc6d39787cca45
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 01aa3d45d3b168c67603861a0a947026d4f2e08c
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767299"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650882"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data.
@@ -56,7 +56,7 @@ Azure Data Lake Store výstup ze Stream Analytics není aktuálně dostupná v o
 | Formát | Platí jenom pro serializaci JSON. Řádcích: Určuje takový formát výstupu tak, že každý objekt JSON oddělené novým řádkem. Pole určuje, že je výstup naformátovaný jako pole objektů JSON. Toto pole se zavře, když je úloha pozastavena nebo Stream Analytics je přesunout další časový interval. Obecně je vhodnější použít řádku oddělené JSON, protože nevyžaduje žádným zvláštním způsobem, zatímco výstupní soubor je stále se zapisují do.|
 
 ### <a name="renew-data-lake-store-authorization"></a>Obnovit autorizaci Data Lake Store
-Je nutné donutit účtu Data Lake Store, pokud od úlohy byl vytvořen nebo poslední ověřený změnila jeho heslo. Pokud nemáte donutit, vaše úloha nevytvoří výstup a zobrazí chybu s informacemi potřebu opakované v protokoly operací. V současné době neexistuje omezení kde ověřovací token je potřeba ručně aktualizovat každých 90 dní pro všechny úlohy s výstupem Data Lake Store.
+Je nutné donutit účtu Data Lake Store, pokud od úlohy byl vytvořen nebo poslední ověřený změnila jeho heslo. Pokud nemáte donutit, vaše úloha nevytvoří výstup a zobrazí chybu s informacemi potřebu opakované v protokoly operací. V současné době neexistuje omezení kde ověřovací token je potřeba ručně aktualizovat každých 90 dní pro všechny úlohy s výstupem Data Lake Store. Můžete však překonání tohoto omezení podle [ověřování pomocí spravované identity (preview)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls).
 
 Chcete obnovit autorizaci, **Zastavit** úlohy > přejděte na výstup do Data Lake Store > klikněte na tlačítko **obnovit autorizaci** propojit a po krátkou dobu a stránky objeví označující **přesměrování autorizace...**. Na stránce automaticky zavře a v případě úspěchu, označuje **autorizaci úspěšně obnovil**. Pak budete muset kliknout na **Uložit** v dolní části stránky a můžete pokračovat restartováním úlohy z **posledním zastavení** k zamezení ztrátě.
 

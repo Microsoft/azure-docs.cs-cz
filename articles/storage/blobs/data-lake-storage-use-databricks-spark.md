@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14e8d54b7b9cf579bb5dcbce595e2591c158b841
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452594"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585421"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Data Lake Storage Gen2 pro přístup k datům Azure Databricks pomocí Spark
 
@@ -146,6 +146,9 @@ V této části vytvoříte systém souborů a složky v účtu úložiště.
    * `tenant-id` Je ze svého předplatného.
 
    * `storage-account-name` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+
+    > [!NOTE]
+    > V produkčním prostředí, zvažte uložení ověřovací klíč ve službě Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto ověřovací klíč. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.
 
 19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 89984335d40d7f58d39e77736c06a9ff137d7a51
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3825181d14605752e2407d9ffceb01d22c1bb710
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811253"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649335"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -26,7 +26,7 @@ V závislosti na tom, jak používat Azure k hostování IaaS, PaaS a hybridní 
 Pokud prostředky nasazené ve virtuálních sítích musí překládat názvy domén na interní IP adresy, používat jeden ze dvou způsobů:
 
 * [Překlad názvů poskytovaných Azure](#azure-provided-name-resolution)
-* [Překlad názvů, který používá vlastní server DNS](#name-resolution-that-uses-your-own-dns-server) (která může být předávání dotazů na servery DNS, které poskytuje Azure) 
+* [Překlad názvů, který používá vlastní server DNS](#name-resolution-that-uses-your-own-dns-server) (která může být předávání dotazů na servery DNS, které poskytuje Azure)
 
 Typ překladu adres, které používáte závisí na tom, jak vaše prostředky musejí komunikovat mezi sebou. Následující tabulka popisuje scénáře a řešení rozlišení odpovídající název:
 
@@ -52,8 +52,8 @@ Spolu s rozlišení veřejné názvy DNS Azure poskytuje interní překlad adres
 
 > [!NOTE]
 > Při použití cloudové služby webové a pracovní role, lze rovněž použít interní IP adresy instance role pomocí REST API služby Azure Service Management. Další informace najdete v tématu [Reference k REST API správy služby](https://msdn.microsoft.com/library/azure/ee460799.aspx). Adresa je založen na číslo název a název instance role. 
-> 
-> 
+>
+>
 
 ### <a name="features"></a>Funkce
 
@@ -104,8 +104,8 @@ Existuje mnoho různých DNS ukládání do mezipaměti balíčků dostupné (ja
 
 > [!NOTE]
 > Balíček dnsmasq je pouze jeden z mnoha mezipamětí DNS k dispozici pro Linux. Před použitím, zkontrolujte jejich vhodnost pro vaše konkrétní potřeby a zkontrolujte, zda je nainstalována žádná mezipaměť.
-> 
-> 
+>
+>
     
 ### <a name="client-side-retries"></a>Opakované pokusy na straně klienta
 
@@ -126,10 +126,10 @@ Soubor resolv.conf se obvykle generuje automaticky a by neměla být upravována
   1. Přidat *možnosti* řádek a **/etc/resolvconf/resolv.conf.d/tail**.
   2. Spustit `resolvconf -u` aktualizovat.
 * **SUSE** (používá netconf):
-  1. Přidat *timeout:1 pokusy: 5* k **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametr **/etc/sysconfig/network/config**. 
+  1. Přidat *timeout:1 pokusy: 5* k **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametr **/etc/sysconfig/network/config**.
   2. Spustit `netconfig update` aktualizovat.
 * **OpenLogic** (používá NetworkManager):
-  1. Přidat *echo "možnosti timeout:1 pokusy: 5"* k **/etc/NetworkManager/dispatcher.d/11-dhclient**. 
+  1. Přidat *echo "možnosti timeout:1 pokusy: 5"* k **/etc/NetworkManager/dispatcher.d/11-dhclient**.
   2. Aktualizace pomocí `service network restart`.
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Překlad názvů, který používá vlastní server DNS
@@ -145,9 +145,9 @@ Servery DNS v rámci virtuální sítě může předat dotazy DNS na rekurzivní
 Předávání DNS také umožňuje překlad názvů DNS mezi virtuálními sítěmi a povoluje vašich místních počítačů k překladu názvů hostitelů poskytuje Azure. Aby bylo možné přeložit název hostitele Virtuálního počítače, server DNS virtuálního počítače se musí nacházet ve stejné virtuální síti a nakonfigurovat tak, aby dotazy na názvy dopředné hostitele do Azure. Protože se liší v obou virtuálních sítích příponu DNS, můžete použít pravidla pro podmíněné předávání aby odesílalo dotazy DNS na správnou virtuální síť pro překlad. Následující obrázek ukazuje dvě virtuální sítě a místní sítí způsobem překlad názvů DNS mezi virtuálními sítěmi s použitím této metody. Předávání DNS příklad je k dispozici v [Galerie šablon rychlý start Azure](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) a [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder).
 
 > [!NOTE]
-> Role instance může provádět překlad názvů virtuálních počítačů ve stejné virtuální síti. Dělá to pomocí plně kvalifikovaný název, který se skládá z názvu hostitele Virtuálního počítače a **internal.cloudapp.net** příponu DNS. V takovém případě překladu je však pouze úspěšné, pokud má název virtuálního počítače, které jsou definovány v instanci role [schéma rolí (soubor .cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx). 
->    <Role name="<role-name>" vmName="<vm-name>">
-> 
+> Role instance může provádět překlad názvů virtuálních počítačů ve stejné virtuální síti. Dělá to pomocí plně kvalifikovaný název, který se skládá z názvu hostitele Virtuálního počítače a **internal.cloudapp.net** příponu DNS. V takovém případě překladu je však pouze úspěšné, pokud má název virtuálního počítače, které jsou definovány v instanci role [schéma rolí (soubor .cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
+> <Role name="<role-name>" vmName="<vm-name>">
+>
 > Instance rolí, které je potřeba provést překlad názvů virtuálních počítačů v jiné virtuální síti (plně kvalifikovaný název domény s použitím **internal.cloudapp.net** přípona) muset učinit pomocí metody popsané v této části (vlastní servery DNS předávání mezi dvě virtuální sítě).
 >
 
@@ -157,7 +157,7 @@ Pokud používáte překlad názvů poskytuje Azure, Azure Dynamic Host Configur
 
 V případě potřeby můžete určit interní přípony DNS pomocí Powershellu nebo rozhraní API:
 
-* Pro virtuální sítě v modelech nasazení Azure Resource Manageru je k dispozici prostřednictvím příponu [síťové rozhraní REST API](/rest/api/virtualnetwork/networkinterfaces), [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) rutiny Powershellu a [az network nic show](/cli/azure/network/nic#az-network-nic-show) rozhraní příkazového řádku Azure.
+* Pro virtuální sítě v modelech nasazení Azure Resource Manageru je k dispozici prostřednictvím příponu [síťové rozhraní REST API](/rest/api/virtualnetwork/networkinterfaces/get), [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) rutiny prostředí PowerShell a [ AZ network nic show](/cli/azure/network/nic#az-network-nic-show) rozhraní příkazového řádku Azure.
 * V modelech nasazení classic, je k dispozici prostřednictvím příponu [získání rozhraní API nasazení](https://msdn.microsoft.com/library/azure/ee460804.aspx) volání nebo [Get-AzureVM – ladění](/powershell/module/servicemanagement/azure/get-azurevm) rutiny.
 
 Pokud předávání dotazů do Azure není vyhovovala vašim potřebám, byste měli poskytnout řešení DNS. Musí vaše řešení DNS:
@@ -179,34 +179,35 @@ Předpokládejme, že je potřeba provést překlad z webové aplikace vytvořen
 
     ![Snímek obrazovky překladu adres virtuální sítě](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
-Pokud potřebujete provádět překlad adres z webové aplikace vytvořené pomocí služby App Service, propojené s virtuální sítí k virtuálním počítačům v jiné virtuální sítě, budete muset použít vlastní servery DNS v obou virtuálních sítích, následujícím způsobem: 
+Pokud potřebujete provádět překlad adres z webové aplikace vytvořené pomocí služby App Service, propojené s virtuální sítí k virtuálním počítačům v jiné virtuální sítě, budete muset použít vlastní servery DNS v obou virtuálních sítích, následujícím způsobem:
+
 * Nastavení serveru DNS v cílové virtuální sítě, na virtuálním počítači, který můžete také předat dotazy rekurzivní překladač v Azure (virtuální IP adresy 168.63.129.16). Předávání DNS příklad je k dispozici v [Galerie šablon rychlý start Azure](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) a [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder). 
 * Nastavení DNS pro předávání do zdrojové virtuální sítě na virtuálním počítači. Nakonfigurujte tento server DNS pro předávání k předávání dotazů na server DNS v cílovou virtuální sítí.
 * Konfigurace zdrojového serveru DNS v nastavení zdrojové virtuální sítě.
 * Povolení integrace služby virtual network pro vaši aplikaci propojit s zdrojová virtuální síť, postupujte podle pokynů v [integrujte svou aplikaci s virtuální sítí](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* Na webu Azure Portal, který je hostitelem webové aplikace, vyberte pro plán služby App Service **synchronizovat síť** pod **sítě**, **integrace Virtual Network**. 
+* Na webu Azure Portal, který je hostitelem webové aplikace, vyberte pro plán služby App Service **synchronizovat síť** pod **sítě**, **integrace Virtual Network**.
 
 ## <a name="specify-dns-servers"></a>Určit servery DNS
 Pokud používáte vlastní servery DNS, Azure poskytuje možnost zadat víc serverů DNS na virtuální síť. Můžete také zadat víc serverů DNS na síťové rozhraní (pro Azure Resource Manageru), nebo za cloudové služby (v případě modelu nasazení classic). Servery DNS zadaný pro síťové rozhraní nebo cloudovou službu získejte prioritu přes servery DNS zadaný pro virtuální síť.
 
 > [!NOTE]
-> Vlastnosti připojení k síti, jako je například server DNS IP adresy, se nesmí upravovat přímo v rámci virtuální počítače s Windows. Důvodem je, že může získat vymaže během služby opravy, pokud je virtuální síťový adaptér získá nahradí. 
-> 
-> 
+> Vlastnosti připojení k síti, jako je například server DNS IP adresy, se nesmí upravovat přímo v rámci virtuální počítače s Windows. Důvodem je, že může získat vymaže během služby opravy, pokud je virtuální síťový adaptér získá nahradí.
+>
+>
 
 Pokud používáte model nasazení Azure Resource Manageru, můžete určit servery DNS pro virtuální síť a síťové rozhraní. Podrobnosti najdete v tématu [Správa virtuální sítě](manage-virtual-network.md) a [Správa síťového rozhraní](virtual-network-network-interface.md).
 
 > [!NOTE]
 > Pokud se rozhodnete pro vlastního serveru DNS pro vaši virtuální síť, musíte zadat alespoň jednu IP adresu serveru DNS; virtuální sítě v opačném případě bude ignorovat konfiguraci a místo toho použijte DNS poskytnutých platformou Azure.
-> 
-> 
+>
+>
 
 Pokud používáte model nasazení classic, můžete zadat servery DNS pro virtuální síť na webu Azure Portal nebo [soubor s konfigurací sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro cloudové služby, můžete určit servery DNS prostřednictvím [konfigurační soubor služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell, [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
 > Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je už nasazená, budete muset restartovat každý ovlivněné virtuální počítač se změny projevily.
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Další postup
 

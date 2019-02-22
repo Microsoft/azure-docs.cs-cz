@@ -17,14 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: e70a17271dee9f78f13c06ca2fd24dc39b20c6a4
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 501bfddd64d3353abc9212d63c76fb582e81a580
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425199"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649506"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Omezení síťového přístupu k prostředkům PaaS s koncovými body služby virtuální sítě pomocí Powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Koncové body služby virtuální sítě umožňují omezení síťového přístupu k prostředkům některých služeb Azure na podsíť virtuální sítě. Můžete také odebrat internetový přístup k prostředkům. Koncové body služeb poskytují přímé připojení z vaší virtuální sítě k podporovaným službám Azure a umožňují pro přístup ke službám Azure použít privátní adresní prostor virtuální sítě. Provoz směřující do prostředků Azure prostřednictvím koncových bodů služby zůstává vždy v páteřní síti Microsoft Azure. V tomto článku získáte informace o těchto tématech:
 
@@ -39,67 +41,67 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup*: 
+Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků s [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup*: 
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Vytvořte virtuální síť pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork* s předponou adresy *10.0.0.0/16*.
+Vytvoření virtuální sítě s [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork* s předponou adresy *10.0.0.0/16*.
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Vytvořte konfiguraci podsítě pomocí rutiny [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Následující příklad vytvoří konfiguraci podsítě pro podsíť s názvem *veřejné*:
+Vytvořte konfiguraci podsítě pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Následující příklad vytvoří konfiguraci podsítě pro podsíť s názvem *veřejné*:
 
 ```azurepowershell-interactive
-$subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
   -Name Public `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork
 ```
 
-Vytvořte podsíť ve virtuální síti pomocí zápisu konfiguraci podsítě do virtuální sítě s [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork):
+Vytvořte podsíť ve virtuální síti pomocí zápisu konfiguraci podsítě do virtuální sítě s [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork):
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="enable-a-service-endpoint"></a>Povolení koncového bodu služby 
+## <a name="enable-a-service-endpoint"></a>Povolení koncového bodu služby
 
-Můžete povolit koncové body služby pouze pro služby, které podporují koncových bodů služby. Zobrazit povolený koncový bod služby k dispozici v umístění Azure s [Get-AzureRmVirtualNetworkAvailableEndpointService](/powershell/module/azurerm.network/get-azurermvirtualnetworkavailableendpointservice). Následující příklad vrátí seznam hodnot povolený koncový bod služby služeb dostupných v *eastus* oblasti. Seznam služeb, vrátí se zvětší časem dalších služeb Azure jsou povolený koncový bod služby.
+Můžete povolit koncové body služby pouze pro služby, které podporují koncových bodů služby. Zobrazit povolený koncový bod služby k dispozici v umístění Azure s [Get-AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice). Následující příklad vrátí seznam hodnot povolený koncový bod služby služeb dostupných v *eastus* oblasti. Seznam služeb, vrátí se zvětší časem dalších služeb Azure jsou povolený koncový bod služby.
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkAvailableEndpointService -Location eastus | Select Name
-``` 
+Get-AzVirtualNetworkAvailableEndpointService -Location eastus | Select Name
+```
 
 Vytvoření další podsítě ve virtuální síti. V tomto příkladu podsíť s názvem *privátní* se vytvoří s koncovým bodem služby pro *Microsoft.Storage*: 
 
 ```azurepowershell-interactive
-$subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
   -Name Private `
   -AddressPrefix 10.0.1.0/24 `
   -VirtualNetwork $virtualNetwork `
   -ServiceEndpoint Microsoft.Storage
 
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Omezení síťového přístupu pro podsíť
 
-Vytvoření pravidla skupiny zabezpečení pomocí zabezpečení sítě [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). Následující pravidlo umožňuje odchozí přístup k veřejné IP adresy přiřazené příslušné službě Azure Storage: 
+Vytvoření pravidla skupiny zabezpečení pomocí zabezpečení sítě [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující pravidlo umožňuje odchozí přístup k veřejné IP adresy přiřazené příslušné službě Azure Storage: 
 
 ```azurepowershell-interactive
-$rule1 = New-AzureRmNetworkSecurityRuleConfig `
+$rule1 = New-AzNetworkSecurityRuleConfig `
   -Name Allow-Storage-All `
   -Access Allow `
   -DestinationAddressPrefix Storage `
@@ -114,7 +116,7 @@ $rule1 = New-AzureRmNetworkSecurityRuleConfig `
 Následující pravidlo odepřít přístup na všechny veřejné IP adresy. Toto pravidlo, z důvodu vyšší prioritu, který umožňuje přístup k veřejné IP adresy služby Azure Storage přepíše předchozí pravidlo.
 
 ```azurepowershell-interactive
-$rule2 = New-AzureRmNetworkSecurityRuleConfig `
+$rule2 = New-AzNetworkSecurityRuleConfig `
   -Name Deny-Internet-All `
   -Access Deny `
   -DestinationAddressPrefix Internet `
@@ -129,7 +131,7 @@ $rule2 = New-AzureRmNetworkSecurityRuleConfig `
 Následující pravidlo povoluje provoz protokolu RDP (Remote Desktop) příchozí provoz do podsítě z libovolného místa. Připojení ke vzdálené ploše mohou podsítě, abyste mohli ověřit síťový přístup k prostředku v pozdějším kroku.
 
 ```azurepowershell-interactive
-$rule3 = New-AzureRmNetworkSecurityRuleConfig `
+$rule3 = New-AzNetworkSecurityRuleConfig `
   -Name Allow-RDP-All `
   -Access Allow `
   -DestinationAddressPrefix VirtualNetwork `
@@ -141,27 +143,27 @@ $rule3 = New-AzureRmNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Vytvořte skupinu zabezpečení sítě pomocí rutiny [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNsgPrivate*.
+Vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNsgPrivate*.
 
 ```azurepowershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myNsgPrivate `
   -SecurityRules $rule1,$rule2,$rule3
 ```
 
-Přidružení skupiny zabezpečení sítě k *privátní* podsíť s [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) a pak tuto konfiguraci podsítě zapište do virtuální sítě. V následujícím příkladu *myNsgPrivate* skupiny zabezpečení sítě *privátní* podsítě:
+Přidružení skupiny zabezpečení sítě k *privátní* podsíť s [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) a pak tuto konfiguraci podsítě zapište do virtuální sítě. V následujícím příkladu *myNsgPrivate* skupiny zabezpečení sítě *privátní* podsítě:
 
 ```azurepowershell-interactive
-Set-AzureRmVirtualNetworkSubnetConfig `
+Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $VirtualNetwork `
   -Name Private `
   -AddressPrefix 10.0.1.0/24 `
   -ServiceEndpoint Microsoft.Storage `
   -NetworkSecurityGroup $nsg
 
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="restrict-network-access-to-a-resource"></a>Omezení síťového přístupu k prostředku
@@ -170,12 +172,12 @@ Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným 
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Vytvoření účtu služby Azure storage s [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount). Nahraďte `<replace-with-your-unique-storage-account-name>` s názvem, který je jedinečný ve všech umístěních Azure, mezi 3 až 24 znaků a používat pouze číslice a malá písmena.
+Vytvoření účtu služby Azure storage s [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Nahraďte `<replace-with-your-unique-storage-account-name>` s názvem, který je jedinečný ve všech umístěních Azure, mezi 3 až 24 znaků a používat pouze číslice a malá písmena.
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
 
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
   -Location EastUS `
   -Name $storageAcctName `
   -ResourceGroupName myResourceGroup `
@@ -183,10 +185,10 @@ New-AzureRmStorageAccount `
   -Kind StorageV2
 ```
 
-Po vytvoření účtu úložiště načíst klíč účtu úložiště do proměnné s [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey):
+Po vytvoření účtu úložiště načíst klíč účtu úložiště do proměnné s [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey):
 
 ```azurepowershell-interactive
-$storageAcctKey = (Get-AzureRmStorageAccountKey `
+$storageAcctKey = (Get-AzStorageAccountKey `
   -ResourceGroupName myResourceGroup `
   -AccountName $storageAcctName).Value[0]
 ```
@@ -195,22 +197,22 @@ Klíč slouží k vytvoření sdílené složky v pozdějším kroku. Zadejte `$
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Vytvoření sdílené složky v účtu úložiště
 
-Vytvořte kontext účtu úložiště a klíč [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext). Kontext obsahuje klíč účtu úložiště název a účet:
+Vytvořte kontext účtu úložiště a klíč [New-AzStorageContext](/powershell/module/azure.storage/new-AzStoragecontext). Kontext obsahuje klíč účtu úložiště název a účet:
 
 ```azurepowershell-interactive
-$storageContext = New-AzureStorageContext $storageAcctName $storageAcctKey
+$storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 ```
 
-Vytvoření sdílené složky s [New-AzureStorageShare](/powershell/module/azure.storage/new-azurestorageshare):
+Vytvoření sdílené složky s [New-AzStorageShare](/powershell/module/azure.storage/new-AzStorageshare):
 
-$share = New-AzureStorageShare my-file-share -Context $storageContext
+$share = New-AzStorageShare my-file-share -Context $storageContext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>Zakázat všechny přístup k účtu úložiště
 
-Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti. Omezení přístupu k vybrané sítě, změňte výchozí akci na *Odepřít* s [aktualizace AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset). Jakmile byl odepřen přístup k síti, účet úložiště není přístupná z libovolné sítě.
+Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti. Omezení přístupu k vybrané sítě, změňte výchozí akci na *Odepřít* s [aktualizace AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset). Jakmile byl odepřen přístup k síti, účet úložiště není přístupná z libovolné sítě.
 
 ```azurepowershell-interactive
-Update-AzureRmStorageAccountNetworkRuleSet  `
+Update-AzStorageAccountNetworkRuleSet  `
   -ResourceGroupName "myresourcegroup" `
   -Name $storageAcctName `
   -DefaultAction Deny
@@ -218,20 +220,20 @@ Update-AzureRmStorageAccountNetworkRuleSet  `
 
 ### <a name="enable-network-access-from-a-subnet"></a>Povolení síťového přístupu z podsítě
 
-Načtení vytvořené virtuální síti s [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) a pak načíst objekt privátní podsítě do proměnné s [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig):
+Načtení vytvořené virtuální síti s [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) a pak načíst objekt privátní podsítě do proměnné s [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
-$privateSubnet = Get-AzureRmVirtualNetwork `
+$privateSubnet = Get-AzVirtualNetwork `
   -ResourceGroupName "myResourceGroup" `
   -Name "myVirtualNetwork" `
-  | Get-AzureRmVirtualNetworkSubnetConfig `
+  | Get-AzVirtualNetworkSubnetConfig `
   -Name "Private"
 ```
 
-Povolení síťového přístupu k účtu úložiště u *privátní* podsíť s [přidat AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig).
+Povolení síťového přístupu k účtu úložiště u *privátní* podsíť s [přidat AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig).
 
 ```azurepowershell-interactive
-Add-AzureRmStorageAccountNetworkRule `
+Add-AzStorageAccountNetworkRule `
   -ResourceGroupName "myresourcegroup" `
   -Name $storageAcctName `
   -VirtualNetworkResourceId $privateSubnet.Id
@@ -243,10 +245,10 @@ Pokud chcete otestovat síťový přístup k účtu úložiště, nasaďte do ka
 
 ### <a name="create-the-first-virtual-machine"></a>Vytvoření prvního virtuálního počítače
 
-Vytvoření virtuálního počítače v *veřejné* podsíť s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Při spuštění následujícího příkazu se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač. Pomocí možnosti `-AsJob` se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku.
+Vytvoření virtuálního počítače v *veřejné* podsíť s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm). Při spuštění následujícího příkazu se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač. Pomocí možnosti `-AsJob` se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Location "East US" `
     -VirtualNetworkName "myVirtualNetwork" `
@@ -260,7 +262,7 @@ Se nevrátí výstup podobný následující příklad výstupu:
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command                  
 --     ----            -------------   -----         -----------     --------             -------                  
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmVM     
+1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM     
 ```
 
 ### <a name="create-the-second-virtual-machine"></a>Vytvoření druhého virtuálního počítače
@@ -268,7 +270,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 Vytvoření virtuálního počítače v *privátní* podsítě:
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Location "East US" `
     -VirtualNetworkName "myVirtualNetwork" `
@@ -276,20 +278,20 @@ New-AzureRmVm `
     -Name "myVmPrivate"
 ```
 
-Trvá několik minut, než Azure k vytvoření virtuálního počítače. Nepokračujte k dalšímu kroku dokud Azure nedokončí vytváření virtuálního počítače a vrátí výstup do prostředí PowerShell. 
+Trvá několik minut, než Azure k vytvoření virtuálního počítače. Nepokračujte k dalšímu kroku dokud Azure nedokončí vytváření virtuálního počítače a vrátí výstup do prostředí PowerShell.
 
 ## <a name="confirm-access-to-storage-account"></a>Ověření přístupu k účtu úložiště
 
-Pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získejte veřejnou IP adresu virtuálního počítače. Následující příklad vrátí veřejnou IP adresu *myVmPrivate* virtuálního počítače:
+Použití [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) vrátí veřejnou IP adresu virtuálního počítače. Následující příklad vrátí veřejnou IP adresu *myVmPrivate* virtuálního počítače:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmPrivate `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
 ```
 
-V následujícím příkazu nahraďte `<publicIpAddress>` veřejnou IP adresou vrácenou předchozím příkazem a pak ho zadejte: 
+V následujícím příkazu nahraďte `<publicIpAddress>` veřejnou IP adresou vrácenou předchozím příkazem a pak ho zadejte:
 
 ```powershell
 mstsc /v:<publicIpAddress>
@@ -304,6 +306,7 @@ $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
+
 PowerShell vrátí podobný výstup jako v následujícím příkladu:
 
 ```powershell
@@ -329,7 +332,7 @@ Ukončete relaci vzdálené plochy k virtuálnímu počítači *myVmPrivate*.
 Získejte veřejnou IP adresu *myVmPublic* virtuálního počítače:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmPublic `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -356,19 +359,19 @@ Ukončete relaci vzdálené plochy k virtuálnímu počítači *myVmPublic*.
 Z počítače pokus o zobrazení sdílených složek v účtu úložiště pomocí následujícího příkazu:
 
 ```powershell-interactive
-Get-AzureStorageFile `
+Get-AzStorageFile `
   -ShareName my-file-share `
   -Context $storageContext
 ```
 
-Přístup byl odepřen, a zobrazí se *Get-AzureStorageFile: Vzdálený server vrátil chybu: Zakázáno (403). Kód stavu HTTP: 403 - Chyba protokolu HTTP zpráva: Tento požadavek není autorizovaný k provedení této operace* chybu, protože počítač není v *privátní* podsíť *MyVirtualNetwork* virtuální sítě.
+Přístup byl odepřen, a zobrazí se *Get-AzStorageFile: Vzdálený server vrátil chybu: 403 Zakázáno. Kód stavu HTTP: 403 - Chyba protokolu HTTP zpráva: Tento požadavek není autorizovaný k provedení této operace* chybu, protože počítač není v *privátní* podsíť *MyVirtualNetwork* virtuální sítě.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup):
+Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje:
 
 ```azurepowershell-interactive 
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Další postup

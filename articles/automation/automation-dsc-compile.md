@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423404"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594266"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu služby Azure Automation
 
@@ -284,6 +284,14 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 > [!NOTE]
 > Po dokončení sestavení zobrazí chybová zpráva: **Modul "Microsoft.PowerShell.Management" nebyl importován, protože modul snap-in 'Microsoft.PowerShell.Management' již byl importován.** Toto upozornění můžete ignorovat.
+
+## <a name="partial-configuration"></a>Částečné konfigurace
+
+Konfigurace stavu Azure Automation podporuje použití [částečné konfigurace](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+V tomto scénáři DSC je nakonfigurované pro správu konfigurací s více nezávisle na sobě, a každou konfiguraci retreieved ze služby Azure Automation.
+Pouze jedné konfigurace, ale je možné přiřadit k uzlu na účet služby automation.
+To znamená, že pokud používáte dvě konfigurace pro uzel budete potřebovat dva účty služby automation.
+Další informace o tom, jak mohou týmy pracují společně společně spravovat servery pomocí konfigurace jako kódu naleznete v tématu [Principy DSC role v kanálu CI/CD](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Import konfigurace uzlu
 

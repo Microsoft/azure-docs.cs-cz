@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 98b2c0bc27336e9ee5fe9aaf6332d9854e9af4de
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694053"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650287"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -221,7 +221,7 @@ Ano. Rozhraní REST API můžete použít pro virtuální sítě v [Azure Resour
 ### <a name="is-there-tooling-support-for-vnets"></a>Je k dispozici podpora nástrojů pro virtuální sítě?
 Ano. Další informace o používání:
 - Na webu Azure portal k nasazení virtuálních sítí prostřednictvím [Azure Resource Manageru](manage-virtual-network.md#create-a-virtual-network) a [classic](virtual-networks-create-vnet-classic-pportal.md) modely nasazení.
-- Prostředí PowerShell ke správě virtuálních sítích nasazených prostřednictvím [Resource Manageru](/powershell/module/azurerm.network) a [classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modely nasazení.
+- Prostředí PowerShell ke správě virtuálních sítích nasazených prostřednictvím [Resource Manageru](/powershell/module/az.network) a [classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modely nasazení.
 - Rozhraní příkazového řádku Azure (CLI) k nasazení a správě virtuálních sítích nasazených prostřednictvím [Resource Manageru](/cli/azure/network/vnet) a [classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modely nasazení.  
 
 ## <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí

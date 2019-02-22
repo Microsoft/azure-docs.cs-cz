@@ -10,25 +10,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 01/17/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6287b4f07c99dd45628ed4b9eb1412200cf7cd43
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99a1b218919380dcdb0c1dba4540d9f8219d2df3
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244602"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593637"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>Automatizace ověření služby Azure Stack pomocí Powershellu
 
 Ověření jako služba (VaaS) poskytuje možnost automatizovat spouštění testů pomocí **LaunchVaaSTests.ps1** skriptu.
 
-Pro následující pracovní postup můžete použít PowerShell:
-
-- Průchod testu
+> [!NOTE]
+> Automation je dostupná jenom pro pracovní postup průchodu testu. Ověření balíčku a ověření řešení pracovní postupy se podporují jenom prostřednictvím portálu VaaS.
 
 V tomto kurzu se dozvíte, jak vytvořit skript, který:
 

@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 869f6d2391632c77e01e4383c1457f88b9171c8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448070"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651188"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace zařízení připojených k řešení monitorování
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="add-a-simulated-device"></a>Přidání simulovaného zařízení
 
-V řešení přejděte na stránku **Zařízení** a pak klikněte na **+ Nové zařízení**:
+Přejděte **Device Explorer** stránku v řešení a potom klikněte na tlačítko **+ nové zařízení**:
 
 [![Zřízení simulovaného zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Na panelu **Nové zařízení** zvolte **Simulované**, počet zařízení, kter
 
 ## <a name="test-the-simulated-device"></a>Test simulovaného zařízení
 
-Pokud chcete otestovat, že simulované zařízení motoru odesílá telemetrická data a hlásí hodnoty vlastností, vyberte ho v seznamu zařízení na stránce **Zařízení**. Na panelu **Podrobnosti o zařízení** se zobrazí aktuální informace o motoru:
+K otestování simulované modul zařízení odesílá telemetrii a vytváření sestav hodnoty vlastností, vyberte ho v seznamu zařízení na **Device Explorer** stránky. Na panelu **Podrobnosti o zařízení** se zobrazí aktuální informace o motoru:
 
 [![Zobrazení nového simulovaného zařízení motoru](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ Pokud chcete zobrazit podrobnou diagnostiku posuňte se na panelu **Podrobnosti 
 
 ## <a name="reconfigure-a-device"></a>Změna konfigurace zařízení
 
-Pokud chcete otestovat možnost aktualizace vlastností konfigurace zařízení, vyberte zařízení v seznamu zařízení na stránce **Zařízení**. Pak klikněte na tlačítko **úlohy**a klikněte na tlačítko **vlastnosti**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
+Pokud chcete otestovat, můžete aktualizovat vlastnosti konfigurace modul, vyberte ho v seznamu zařízení na **Device Explorer** stránky. Pak klikněte na tlačítko **úlohy**a klikněte na tlačítko **vlastnosti**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
 
 [![Změna konfigurace zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Pokud si jako operátor chcete usnadnit uspořádání a správu zařízení, m�
 * Tým pro chytrá vozidla spravuje nákladní vozy a prototypy zařízení.
 * Tým pro chytré budovy spravuje chladiče, výtahy a motory.
 
-Pokud chcete zobrazit všechna vaše zařízení, přejděte na stránku **Zařízení** a zvolte filtr **Všechna zařízení**:
+Pokud chcete zobrazit všechna svá zařízení, přejděte na **Device Explorer** stránky a zvolte **všechna zařízení** filtru:
 
 [![Zobrazení všech zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ Na panelu **Úlohy** vyberte **Značka**, nastavte název úlohy na **AddSmartBu
 
 ### <a name="create-filters"></a>Vytváření filtrů
 
-Hodnoty značek teď můžete využít k vytváření filtrů. Na stránce **Zařízení** klikněte na **Spravovat skupiny zařízení**:
+Hodnoty značek teď můžete využít k vytváření filtrů. Na **Device Explorer** klikněte na **Správa skupin zařízení**:
 
 [![Správa skupin zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 

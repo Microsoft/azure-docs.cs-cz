@@ -15,32 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: jdial
-ms.openlocfilehash: f5ddc4a85148cee3e8c8b4d2bf1955f233ebdbc1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 929378f0eea66d7f2ad7846e50bab7ab4014c010
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426518"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652862"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí Powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Vytvoření virtuálního počítače se statickou veřejnou IP adresu. Veřejná IP adresa umožňuje komunikaci k virtuálnímu počítači z Internetu. Přiřadíte statickou veřejnou IP adresu, nikoli s dynamickou adresou, k zajištění, že adresa nikdy nemění. Další informace o [statické veřejné IP adresy](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit přiřazené do stávajícího virtuálního počítače z dynamické na statickou veřejnou IP adresu pro práci s privátními IP adresami, najdete v článku [přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md). Mají veřejné IP adresy [nominální poplatek](https://azure.microsoft.com/pricing/details/ip-addresses)a je [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) počtu veřejné IP adresy, které můžete použít jedno předplatné.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete provést následující kroky. Použití místního počítače, ujistěte se, máte [nainstalovaný Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu pole libovolný příkaz, který následuje. Cloud Shell se přihlásíte do Azure.
+Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete provést následující kroky. Použití místního počítače, ujistěte se, máte [nainstalovaný Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu pole libovolný příkaz, který následuje. Cloud Shell se přihlásíte do Azure.
 
-1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazového řádku a přihlášení do Azure s využitím `Connect-AzureRmAccount`.
-2. Vytvořte skupinu prostředků pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků v oblasti Azure USA – východ:
+1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazového řádku a přihlášení do Azure s využitím `Connect-AzAccount`.
+2. Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkazu. Následující příklad vytvoří skupinu prostředků v oblasti Azure USA – východ:
 
    ```azurepowershell-interactive
-   New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+   New-AzResourceGroup -Name myResourceGroup -Location EastUS
    ```
 
-3. Vytvoření virtuálního počítače s [New-AzureRmVM](/powershell/module/AzureRM.Compute/New-AzureRmVM) příkazu. `-AllocationMethod "Static"` Možnost statickou veřejnou IP adresu přiřadí k virtuálnímu počítači. Následující příklad vytvoří virtuální počítač s Windows serverem s statické, základní SKU veřejné IP adresy s názvem *myPublicIpAddress*. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které má být použit jako přihlašovací údaje pro virtuální počítač:
+3. Vytvoření virtuálního počítače s [rutiny New-AzVM](/powershell/module/az.Compute/New-azVM) příkazu. `-AllocationMethod "Static"` Možnost statickou veřejnou IP adresu přiřadí k virtuálnímu počítači. Následující příklad vytvoří virtuální počítač s Windows serverem s statické, základní SKU veřejné IP adresy s názvem *myPublicIpAddress*. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které má být použit jako přihlašovací údaje pro virtuální počítač:
 
    ```azurepowershell-interactive
-   New-AzureRmVm `
+   New-AzVm `
      -ResourceGroupName "myResourceGroup" `
      -Name "myVM" `
      -Location "East US" `
@@ -50,10 +52,10 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
 
    Pokud je veřejná IP adresa musí být standardní SKU, budete muset [vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address), [vytvořte síťové rozhraní](virtual-network-network-interface.md#create-a-network-interface), [přiřadit veřejné IP adresy k síťovému rozhraní](virtual-network-network-interface-addresses.md#add-ip-addresses)a potom [vytvořit virtuální počítač se síťovým rozhraním](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)v samostatné kroky. Další informace o [veřejné IP adresy skladové položky](virtual-network-ip-addresses-overview-arm.md#sku). Pokud virtuální počítač se přidají do fondu back-end veřejný Azure Load Balancer, skladovou Položku virtuálního počítače veřejné IP adresy musí odpovídat SKU nástroje pro vyrovnávání zatížení veřejnou IP adresu. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
 
-4. Zobrazit přiřazenou veřejnou IP adresu a potvrďte, že byl vytvořen jako statickou adresu [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress):
+4. Zobrazit přiřazenou veřejnou IP adresu a potvrďte, že byl vytvořen jako statickou adresu [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 
    ```azurepowershell-interactive
-   Get-AzureRmPublicIpAddress `
+   Get-AzPublicIpAddress `
      -ResourceGroupName "myResourceGroup" `
      -Name "myPublicIpAddress" `
      | Select "IpAddress", "PublicIpAllocationMethod" `
@@ -67,10 +69,10 @@ Neprovádějte žádné změny nastavení IP adresy v rámci operačního systé
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup):
+Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Další postup

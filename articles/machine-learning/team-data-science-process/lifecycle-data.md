@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c4acb3b779821193949c69d440edaafec5e3d803
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d65704f7037eb4152b4f91d4cbe68ceaad2cea48
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474050"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650220"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Získání dat a principy fázi vědecké zpracování týmových dat
 
@@ -66,7 +66,7 @@ V této fázi se při vývoji architektury řešení z datového kanálu. Při v
 ## <a name="artifacts"></a>Artefakty
 Tady jsou výstupy v této fázi:
 
-   * [Sestava kvality dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/DataSummaryReport.md): Tato sestava obsahuje shrnutí dat, vztahy mezi všechny atributy a cíl, proměnné pořadí a další. [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) nástroje, které jsou k dispozici jako součást TDSP můžete rychle vygenerovat tuto sestavu na všechny tabulkové datové sady, jako je například soubor CSV nebo relační tabulky. 
+   * [Sestava kvality dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Tato sestava obsahuje shrnutí dat, vztahy mezi všechny atributy a cíl, proměnné pořadí a další. [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) nástroje, které jsou k dispozici jako součást TDSP můžete rychle vygenerovat tuto sestavu na všechny tabulkové datové sady, jako je například soubor CSV nebo relační tabulky. 
    * **Architektura řešení**: Architekturu řešení může být diagram a popis datového kanálu, který používáte ke spouštění hodnocení nebo vytváření předpovědí na nová data po vytvoření modelu. Obsahuje také kanál tak, aby přeučování váš model založený na nová data. Store v dokumentu [projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) adresáře, když použijete šablonu struktury TDSP adresáře.
    * **Kontrolní bod rozhodnutí**: Před zahájením vytváření plně funkcí a vytváření modelů, prezentovaný projektu určuje, jestli je očekávána hodnota dostatečná k pokračování usilovat o normalizaci ho. Například může být připraveni pokračovat, musíte shromáždit více dat, nebo opustit projektu, protože data neexistuje odpověď na otázku.
 

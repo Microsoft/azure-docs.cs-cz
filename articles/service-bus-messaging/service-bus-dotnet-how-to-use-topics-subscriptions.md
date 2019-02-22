@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 28b15e950aa4ebbfcb1b04bfd495b3accf13528e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846672"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586898"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
 
@@ -41,40 +41,11 @@ Tento kurz se zabývá následujícími kroky:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
-
-> [!NOTE] 
-> Obor názvů služby Service Bus a entity zasílání zpráv můžete vytvořit také pomocí [PowerShellu](/powershell/azure/get-started-azureps). Další informace najdete v tématu [Správa prostředků služby Service Bus pomocí PowerShellu](service-bus-manage-with-ps.md).
-
-Pokud už máte vytvořený obor názvů pro zasílání zpráv služby Service Bus, přejděte k části [Vytvoření tématu pomocí webu Azure Portal](#2-create-a-topic-using-the-azure-portal).
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Vytvoření tématu pomocí webu Azure Portal
+[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
 
-1. Přihlaste se na web [Azure Portal][azure-portal].
-2. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Všechny služby**) nebo klikněte na **Všechny prostředky**. Klikněte na obor názvů, ve kterém chcete vytvořit téma. 
-3. Otevře se okno přehledu oboru názvů. Klikněte na **Témata**:
-   
-    ![Vytvoření tématu][createtopic1]
-4. Klikněte na **+ Téma**.
-   
-    ![Výběr témat][createtopic2]
-5. Zadejte název tématu. U ostatních možností ponechte jejich výchozí hodnoty.
-   
-    ![Vyberte Nový][createtopic3]
-6. V dolní části dialogového okna klikněte na **Vytvořit**.
-
-## <a name="3-create-a-subscription-to-the-topic"></a>3. Vytvoření odběru tématu
-
-1. V podokně prostředků na portálu klikněte na obor názvů, který jste vytvořili v kroku 1, klikněte na **Témata** a pak klikněte na název tématu, které jste vytvořili v kroku 2.
-2. V horní části podokna přehledu kliknutím na **+ Odběr** přidejte odběr tohoto tématu.
-
-    ![Vytvoření odběru][createtopic4]
-
-3. Zadejte název odběru. U ostatních možností ponechte jejich výchozí hodnoty.
-
-## <a name="4-send-messages-to-the-topic"></a>4. Odesílání zpráv do tématu
+## <a name="send-messages-to-the-topic"></a>Odesílání zpráv do tématu
 
 Abychom mohli do tématu odesílat zprávy, napíšeme v sadě Visual Studio konzolovou aplikaci v jazyce C#.
 
@@ -231,7 +202,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
    
       ![Velikost zpráv][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5. Příjem zpráv z odběru
+## <a name="receive-messages-from-the-subscription"></a>Příjem zpráv z odběru
 
 Pokud chcete přijímat zprávy, které jste právě odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte balíček NuGet **Microsoft.Azure.ServiceBus**, podobně jako předtím u aplikace odesílatele.
 

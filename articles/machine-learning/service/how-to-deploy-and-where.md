@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7d5bfba10fe68c4d29a66fe39a386aec975b978f
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878608"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651528"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -29,10 +29,11 @@ Můžete nasadit modely do následující cílových výpočetních prostředí:
 
 | Cílové výpočetní prostředí | Typ nasazení | Popis |
 | ----- | ----- | ----- |
-| [Azure Container Instances (ACI)](#aci) | Webová služba | Rychlé nasazení. Je vhodný pro vývoj a testování. |
-| [Azure Kubernetes Service (AKS)](#aks) | Webová služba | Vhodné pro nasazení v produkčním prostředí vysoce škálovatelné. Nabízí automatické škálování a krátké doby odezvy. |
-| [Azure IoT Edge](#iotedge) | Modul IoT | Nasaďte modely na zařízeních IoT. Odvozování se stane v zařízení. |
-| [Pole programmable gate array (FPGA)](#fpga) | Webová služba | Mimořádně nízkou latenci pro odvozování v reálném čase. |
+| [Azure Kubernetes Service (AKS)](#aks) | Odvození v reálném čase | Vhodné pro nasazení v produkčním prostředí vysoce škálovatelné. Nabízí automatické škálování a krátké doby odezvy. |
+| [Azure ML Compute](#amlcompute) | Odvození služby batch | Spusťte dávky předpovědi na výpočetní prostředí. Podporuje virtuální počítače s normální i nízkou prioritou. |
+| [Azure Container Instances (ACI)](#aci) | Testování | Je vhodný pro vývoj a testování. **Není vhodný pro úlohy v produkčním prostředí.** |
+| [Azure IoT Edge](#iotedge) | (Preview) Modul IoT | Nasaďte modely na zařízeních IoT. Odvozování se stane v zařízení. |
+| [Pole programmable gate array (FPGA)](#fpga) | (Preview) Webová služba | Mimořádně nízkou latenci pro odvozování v reálném čase. |
 
 Proces nasazení modelu se podobá všech cílových výpočetních prostředí:
 
@@ -225,7 +226,7 @@ Při přechodu na krok nasazení se mírně liší v závislosti na cílové vý
 >
 > V příkladech v tomto dokumentu pomocí `deploy_from_image`.
 
-### <a id="aci"></a> Nasazení do služby Azure Container Instances
+### <a id="aci"></a> Nasazení do služby Azure Container Instances (DEVTEST)
 
 Použití Azure Container Instances pro nasazení modelů jako webové služby, pokud jeden nebo více z následujících podmínek je splněných:
 
@@ -246,7 +247,7 @@ Pokud chcete nasadit do služby Azure Container Instances, postupujte následovn
 
 Další informace najdete v tématu v referenční dokumentaci [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) třídy.
 
-### <a id="aks"></a> Nasazení do služby Azure Kubernetes
+### <a id="aks"></a> Nasazení do služby Azure Kubernetes Service (produkce)
 
 Nasazení modelu jako produkční vysoce škálovatelnou webovou službu, použijte Azure Kubernetes Service (AKS). Můžete použít existující cluster AKS, nebo vytvořte novou pomocí sady SDK Azure Machine Learning, rozhraní příkazového řádku nebo na webu Azure portal.
 
@@ -332,6 +333,13 @@ print(service.state)
 **Časový odhad**: Přibližně 3 minuty.
 
 Další informace najdete v tématu v referenční dokumentaci [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) třídy.
+
+### <a id="fpga"></a> Odvození pomocí Azure ML Compute
+
+Azure ML cílových výpočetních prostředí se vytváří a spravují pomocí služby Azure Machine Learning. Se můžete využít k předpovědi batch z Azure ML kanály.
+
+Návod k odvození služby batch pomocí Azure ML Compute, najdete v článku [způsob spouštění Predikcí služby Batch](how-to-run-batch-predictions.md) dokumentu.
+
 
 ### <a id="fpga"></a> Nasazení do pole programmable gate Array (FPGA)
 

@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: b8347a8c34cf5a0585e9bb6c247102207a70015a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 11cf66d9335315048fd505b3cd9e4c73b244e95a
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225614"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586269"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 
@@ -125,7 +125,7 @@ Pokud chcete podrobnější sestavu migrace o projekty, školení a dokumenty, m
 ## <a name="implementation-notes"></a>Poznámky k implementaci
 * Migrace projektu z centra na vlastní Translator nebude mít žádný vliv na vaše Centrum školení nebo projekty. Jsme neodstraňujte projekty nebo dokumenty z centra během migrace a jsme není zrušení modely.
 * Jsou povolené jenom po migraci na projekt. Pokud je nutné opakovat migraci na projekt, kontaktujte nás prosím.
-* V současné době vlastní Translator podporuje 36 jazyků převod z a do angličtiny a usilovně pracujeme na přidání dalších jazyků. Centrum nevyžaduje základní modely a proto podporuje několik jazyků tisíců. Dvojici nepodporovaný jazyk, můžete migrovat, ale My pouze provést migraci dokumenty a projektu definice. Společnost Microsoft nebude moci natrénovat nový model. Kromě toho tyto dokumenty a projektů se zobrazí jako neaktivní indikaci, že nelze použít v tuto chvíli. Pokud je přidána podpora pro tyto projekty a/nebo dokumenty, budou aktivní a trainable.
+* Vlastní Translator podporuje dvojice jazyků NMT do a z angličtiny. [Zobrazit úplný seznam podporovaných langauges](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Centrum nevyžaduje základní modely a proto podporuje několik jazyků tisíců. Dvojici nepodporovaný jazyk, můžete migrovat, ale My pouze provést migraci dokumenty a projektu definice. Společnost Microsoft nebude moci natrénovat nový model. Kromě toho tyto dokumenty a projektů se zobrazí jako neaktivní indikaci, že nelze použít v tuto chvíli. Pokud je přidána podpora pro tyto projekty a/nebo dokumenty, budou aktivní a trainable.
 * Vlastní Translator v současné době nepodporuje jeden jazyk trénovací data. Podobně jako páry nepodporovaný jazyk můžete migrovat jeden jazyk dokumenty, ale zobrazí jako neaktivní, dokud jeden jazyk data se podporuje.
 * Vlastní Translator vyžaduje 10 tisíc paralelní věty k trénování. Na menší sadu dat může trénování Microsoft Hub. Školicí migrována, který nesplňuje tento požadavek, nebude Trénink.
 

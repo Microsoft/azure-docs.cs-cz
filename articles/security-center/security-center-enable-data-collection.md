@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: a11a72bf2121bb36203002b69f06c74ca3e8a2d0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cdbce2073213906dbb82b0684f8ef4e3528f6cf4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107851"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652692"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
-Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
+Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Log Analytics, která z počítače načítá různé konfigurace týkající se zabezpečení a protokolů událostí a zkopíruje data na váš pracovní prostor pro analýzu. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agenta Log Analytics také zkopíruje soubory se stavem systému do pracovního prostoru.
 
 Shromažďování dat je potřeba poskytnout přehled o chybějících aktualizací, nesprávně nakonfigurované nastavení zabezpečení operačního systému, povolení ochrany koncového bodu a detekce hrozeb a stavu. 
 
-Tento článek obsahuje pokyny o tom, jak nainstalovat agenta Microsoft Monitoring Agent a nastavte pracovnímu prostoru Log Analytics, ve kterých se mají ukládat shromážděná data. Operace je potřeba povolit shromažďování dat. 
+Tento článek obsahuje pokyny o tom, jak nainstalovat agenta Log Analytics a nastavte pracovnímu prostoru Log Analytics, ve kterých se mají ukládat shromážděná data. Operace je potřeba povolit shromažďování dat. 
 
 > [!NOTE]
 > - Shromažďování dat je potřeba jenom za výpočetní prostředky (virtuální počítače a počítače mimo Azure). Můžete využívat výhody Azure Security Center i v případě, že nemusíte zřizovat agentů; ale bude mít omezenou zabezpečení a možnosti uvedené výše se nepodporují.  
@@ -34,19 +34,19 @@ Tento článek obsahuje pokyny o tom, jak nainstalovat agenta Microsoft Monitori
 > - Shromažďování dat pro škálovací sadu virtuálních počítačů se momentálně nepodporuje.
 
 
-## Povolit automatické zřizování agenta Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
+## Povolit automatické zřizování agenta Log Analytics <a name="auto-provision-mma"></a>
 
-Ke shromažďování dat z počítačů, měli byste mít agenta Microsoft Monitoring Agent nainstalována.  Instalace agenta může být automaticky (doporučeno) nebo si můžou nainstalovat agenta ručně.  
+Ke shromažďování dat z počítačů byste měli mít nainstalovaného agenta Log Analytics.  Instalace agenta může být automaticky (doporučeno) nebo si můžou nainstalovat agenta ručně.  
 
 >[!NOTE]
 > Automatické zřizování je ve výchozím nastavení vypnuté. Pokud chcete nastavit Security Center mohla nainstalovat ve výchozím nastavení automatického zřizování, nastavte ji na **na**.
 >
 
-Při zapnuté automatické zřizování, Security Center zřídí agenta Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure a nových, které jsou vytvořeny. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Zjistěte, jak nainstalovat rozšíření Microsoft Monitoring Agent](#manualagent).
+Při zapnuté automatické zřizování, Security Center zřídí agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a nových, které jsou vytvořeny. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Zjistěte, jak nainstalovat rozšíření agenta Log Analytics](#manualagent).
 
 
 
-Povolení automatického zřizování agenta Microsoft Monitoring Agent:
+Pokud chcete povolit automatické zřizování agenta Log Analytics:
 1. V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
 2. Klikněte na tlačítko **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
 
@@ -60,7 +60,7 @@ Povolení automatického zřizování agenta Microsoft Monitoring Agent:
 
 >[!NOTE]
 > - Pokyny o tom, jak zřídit existující instalace najdete v tématu [automatické zřizování v případech dříve existující instalace agenta](#preexisting).
-> - Pokyny k ruční zřizování najdete v tématu [nainstalovat rozšíření Microsoft Monitoring Agent ručně](#manualagent).
+> - Pokyny k ruční zřizování najdete v tématu [ručně nainstalovat rozšíření agenta Log Analytics](#manualagent).
 > - Vypnutí automatického zřizování, v tématu [vypnout automatické zřizování](#offprovisioning).
 > - Pokyny, jak připojit Centrum zabezpečení pomocí Powershellu, v tématu [automatizace registrace služby Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).
 >
@@ -147,7 +147,7 @@ Když vyberete pracovní prostor, ve kterých se mají ukládat data, jsou k dis
 
 
 ## <a name="data-collection-tier"></a>Úrovně shromažďování dat
-Výběr úrovně shromažďování dat ve službě Azure Security Center mají vliv jenom úložiště událostí zabezpečení ve vašem pracovním prostoru Log Analytics. Microsoft Monitoring Agent bude stále shromažďujte a analyzujte události zabezpečení potřebné pro detekce hrozeb Azure Security Center, bez ohledu na to, jaké úroveň události zabezpečení můžete zvolit uložení pracovního prostoru Log Analytics (pokud existuje). Výběr k uložení událostí zabezpečení ve vašem pracovním prostoru vám umožní šetření, vyhledávání a auditování tyto události ve vašem pracovním prostoru. 
+Výběr úrovně shromažďování dat ve službě Azure Security Center mají vliv jenom úložiště událostí zabezpečení ve vašem pracovním prostoru Log Analytics. Agenta Log Analytics bude i nadále shromažďovat a analyzovat události zabezpečení potřebné pro detekce hrozeb Azure Security Center, bez ohledu na to, jaké úroveň události zabezpečení můžete zvolit uložení pracovního prostoru Log Analytics (pokud existuje). Výběr k uložení událostí zabezpečení ve vašem pracovním prostoru vám umožní šetření, vyhledávání a auditování tyto události ve vašem pracovním prostoru. 
 > [!NOTE]
 > Ukládání dat v Log Analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
 >
@@ -202,8 +202,8 @@ Chcete-li zvolit filtrování zásad:
 
 Tyto případy použití určit, jak automatické zřizování lze použít v případech, kdy je již agent nebo rozšíření nainstalované. 
 
-- Microsoft Monitoring Agent je nainstalovaný na počítači, ale ne jako rozšíření<br>
-Pokud agenta Microsoft Monitoring Agent je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center není možné nainstalovat agenta Microsoft Monitoring Agent. Můžete zapnout automatické zřizování a vyberte pracovní prostor příslušné uživatelské v Security Center automaticky konfiguraci zřizování. Pokud se rozhodnete stejného pracovního prostoru, který virtuální počítač je již připojen k existujícího agenta zabalena rozšíření Microsoft Monitoring Agent. 
+- Agenta log Analytics je nainstalován na počítači, ale ne jako rozšíření<br>
+Pokud agenta Log Analytics je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center není možné nainstalovat agenta Log Analytics. Můžete zapnout automatické zřizování a vyberte pracovní prostor příslušné uživatelské v Security Center automaticky konfiguraci zřizování. Pokud se rozhodnete, že stejný pracovní prostor, který virtuální počítač je již připojen k existujícího agenta se zalomí pomocí rozšíření agenta Log Analytics. 
 
 > [!NOTE]
 > Pokud je nainstalovaná SCOM agenta verze 2012, **nejsou** zapnutí automatického zřizování na. 
@@ -212,8 +212,8 @@ Další informace najdete v tématu [co se stane, když OMS nebo SCOM přímý a
 
 -   Existující rozšíření virtuálního počítače je k dispozici<br>
     - Security center podporuje stávající instalace rozšíření, nedojde k přepsání existujících připojení. Security Center uchovává data z virtuálních počítačů v pracovním prostoru už připojený a poskytuje ochranu podle řešení povolená v pracovním prostoru pro zabezpečení.   
-    - Pokud chcete zobrazit, který pracovní prostor existující rozšíření odesílá data pro spuštění testu na [ověření připojení pomocí služby Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternativně můžete otevřít Log analytics, vyberte pracovní prostor, vyberte virtuální počítač a podívejte se na připojení agenta Microsoft Monitoring Agent. 
-    - Pokud máte prostředí kde Microsoft Monitoring Agent je nainstalovaný na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, projděte si seznam [operačních systémů podporovaných službou Azure Security Center](security-center-os-coverage.md) do Ujistěte se, že bude podporovaný operační systém a zobrazit [existující Log Analytics zákazníkům](security-center-faq.md#existingloganalyticscust) Další informace.
+    - Pokud chcete zobrazit, který pracovní prostor existující rozšíření odesílá data pro spuštění testu na [ověření připojení pomocí služby Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternativně můžete otevřít Log analytics, vyberte pracovní prostor, vyberte virtuální počítač a podívejte se na připojení agenta Log Analytics. 
+    - Pokud máte prostředí kde agenta Log Analytics je nainstalovaná na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, projděte si seznam [operačních systémů podporovaných službou Azure Security Center](security-center-os-coverage.md) zajistit váš operační systém se podporuje a najdete v článku [existující Log Analytics zákazníkům](security-center-faq.md#existingloganalyticscust) Další informace.
  
 ### Vypnout automatické zřizování <a name="offprovisioning"></a>
 Můžete vypnout automatické zřizování z prostředků v každém okamžiku vypnutím toto nastavení v zásadách zabezpečení. 

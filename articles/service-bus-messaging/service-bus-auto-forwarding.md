@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8b51a4b8690d2184223bf33c7e863287de431d62
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853149"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593382"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Řetězení entit služby Service Bus s autoforwarding
 
-Service Bus *autoforwarding* funkce vám umožní řetězit k fronty nebo odběru do jiné fronty nebo tématu, který je součástí stejný obor názvů. Pokud je povolená autoforwarding, Service Bus automaticky odebere zprávy, které jsou umístěny v první fronty nebo odběru (zdroj) a umístí je do druhé fronty nebo tématu (cíl). Je stále možné přímo odeslat zprávu do cílové entity. Kromě toho není možné zřetězit dílčí, jako jsou fronty nedoručených zpráv, do jiné fronty nebo tématu.
+Service Bus *autoforwarding* funkce vám umožní řetězit k fronty nebo odběru do jiné fronty nebo tématu, který je součástí stejný obor názvů. Pokud je povolená autoforwarding, Service Bus automaticky odebere zprávy, které jsou umístěny v první fronty nebo odběru (zdroj) a umístí je do druhé fronty nebo tématu (cíl). Je stále možné přímo odeslat zprávu do cílové entity.
 
 ## <a name="using-autoforwarding"></a>Pomocí autoforwarding
 

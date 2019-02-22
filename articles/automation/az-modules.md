@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e9240949c589717303fe00205c5374b5e3a6a791
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008255"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585058"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Podpora modulu az ve službě Azure Automation
 
@@ -31,7 +31,7 @@ Import `Az` modulu ve vašem účtu Automation neimportuje automaticky modulu v 
 * Když se jiný modul v závislosti na modulu naimportují do relace prostředí PowerShell
 
 > [!IMPORTANT]
-> Je důležité zajistit, aby této sady runbook v účtu Automation buď importovat pouze `Az` nebo `AzureRM` moduly do relace Powershellu používaných sad runbook a ne obojí. Pokud `Az` importována před `AzureRM` v sadě runbook, runbook dokončí, ale [chyba odkazuje na metodu get_SerializationSettings](/troubleshoot/runbooks.md#get-serializationsettings) se zobrazí v datové proudy úlohy a rutin nemusí být správně spustit. Pokud importujete `AzureRM` a potom `Az` runbooku, i nadále dokončení, ale zobrazí se chyba v datové proudy úlohy s informacemi o tom, které obě `Az` a `AzureRM` nelze importovat ve stejné relaci nebo použít ve stejném runbooku.
+> Je důležité zajistit, aby této sady runbook v účtu Automation buď importovat pouze `Az` nebo `AzureRM` moduly do relace Powershellu používaných sad runbook a ne obojí. Pokud `Az` importována před `AzureRM` v sadě runbook, runbook dokončí, ale [chyba odkazuje na metodu get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) se zobrazí v datové proudy úlohy a rutin nemusí být správně spustit. Pokud importujete `AzureRM` a potom `Az` runbooku, i nadále dokončení, ale zobrazí se chyba v datové proudy úlohy s informacemi o tom, které obě `Az` a `AzureRM` nelze importovat ve stejné relaci nebo použít ve stejném runbooku.
 
 ## <a name="migrating-to-az-modules"></a>Migrace na moduly Az
 

@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/19/2019
 ms.author: ramamill
-ms.openlocfilehash: 6319ef908b5b040bf61285451448c08bb3960fe2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d8b009d47a7fd0057c71ff3fc120a4443fc262d7
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215006"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593654"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informace o službě Mobility pro virtuální počítače VMware a fyzické servery
 
@@ -50,7 +50,7 @@ Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
 Pokud chcete replikovat počítače aktivní antivirový software spuštěný, ujistěte se, vyloučit složky instalace služby Mobility z operace antivirový program (*C:\ProgramData\ASR\agent*). Tím se zajistí, že replikace pracuje podle očekávání.
 
-## <a name="update-the-mobility-service"></a>Aktualizace služby Mobility
+## <a name="update-mobility-service-from-azure-portal"></a>Aktualizace služby mobility z webu Azure portal
 
 1. Před zahájením zkontrolujte, že konfigurační server, horizontální navýšení kapacity procesových serverů a všechny hlavní cílové servery, které jsou součástí vašeho nasazení jsou aktualizované před aktualizací služby Mobility na chráněné počítače.
 2. Na portálu otevřete trezor > **replikované položky**.
@@ -63,6 +63,14 @@ Pokud chcete replikovat počítače aktivní antivirový software spuštěný, u
      ![Replikované položky seznamu virtuálních počítačů](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. Úloha aktualizace služby Mobility se spustí pro všechny vybrané počítače.
+
+## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Aktualizace služby Mobility pomocí skriptu prostředí powershell na Windows serveru
+
+Pomocí následujícího skriptu pro upgrade služby mobility na serveru pomocí rutiny power shell
+
+```azurepowershell
+Update-AzureRmRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+```
 
 ## <a name="update-the-account-used-for-push-installation-of-the-mobility-service"></a>Aktualizovat účet použitý pro nabízenou instalaci služby Mobility
 

@@ -16,20 +16,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2bdd3cd05f78503962461abfcc85320c25350e69
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980597"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593127"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do obslužné rutiny rozšíření Azure Desired State Configuration
 
 Agent virtuálního počítače Azure a související rozšíření jsou součástí infrastrukturní služby Microsoft Azure. Rozšíření virtuálních počítačů jsou softwarové komponenty, které rozšiřují funkce virtuálního počítače a zjednodušit různé operace správy virtuálního počítače.
 
-Primární případ použití pro rozšíření Azure Desired State Configuration (DSC), je spustit virtuální počítač, který [služby Azure Automation DSC](../../automation/automation-dsc-overview.md). Spuštění virtuálního počítače obsahuje [výhody](/powershell/dsc/metaconfig#pull-service) , které zahrnují průběžnou správu konfigurace virtuálního počítače a integrace s dalšími provozní nástroji, jako je monitorování Azure.
+Primární případ použití pro rozšíření Azure Desired State Configuration (DSC), je spustit virtuální počítač, který [služby Azure Automation stavu Configuration (DSC)](../../automation/automation-dsc-overview.md).
+Tato služba poskytuje [výhody](/powershell/dsc/metaconfig#pull-service) , které zahrnují průběžnou správu konfigurace virtuálního počítače a integrace s dalšími provozní nástroji, jako je monitorování Azure.
+Pomocí rozšíření Virtuálního počítače zaregistrovat do služby poskytuje flexibilní řešení, která ještě funguje napříč předplatnými Azure.
 
-Můžete použít rozšíření DSC nezávisle na službě Automation DSC. To však zahrnuje jednotného akcí, ke které dojde během nasazení. Žádné probíhající vytváření sestav nebo Správa konfigurace je k dispozici, jinak než místně ve virtuálním počítači.
+Můžete použít rozšíření DSC nezávisle na službě Automation DSC.
+Ale to budou pouze nabízená oznámení konfigurace k virtuálnímu počítači.
+Žádné probíhající vytváření sestav je k dispozici, jinak než místně ve virtuálním počítači.
 
 Tento článek obsahuje informace o oba scénáře: použití rozšíření DSC pro připojení služby Automation a pomocí rozšíření DSC jako nástroj pro přiřazení konfigurací k virtuálním počítačům s využitím sady Azure SDK.
 
@@ -120,6 +124,34 @@ $storageName = 'demostorage'
 Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+```
+
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
+
+Azure CLI slouží k nasazení rozšíření DSC do existujícího virtuálního počítače.
+
+Pro virtuální počítač s Windows:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name Microsoft.Powershell.DSC \
+  --publisher Microsoft.Powershell \
+  --version 2.77 --protected-settings '{}' \
+  --settings '{}'
+```
+
+Pro virtuální mchine s Linuxem:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name DSCForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 2.7 --protected-settings '{}' \
+  --settings '{}'
 ```
 
 ## <a name="azure-portal-functionality"></a>Funkce Azure portal

@@ -1,5 +1,5 @@
 ---
-title: Složený entity"
+title: Kurz složený entity
 titleSuffix: Azure Cognitive Services
 description: Přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2da007d0e97f55432282fbc52c38ef3f50a2e5f4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883300"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593569"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -85,18 +85,19 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 1. Vyberte **TransferEmployeeToDepartment** ze seznamu záměry.
 
-1. V první utterance vyberte entitu personName `John Jackson`a pak vyberte **Start obtékání složený entity** v seznamu místní nabídky pro následující utterance:
+1. V utterance `place John Jackson in engineering`, vyberte entitu personName `John Jackson`a pak vyberte **zabalit do složeného entity** v seznamu místní nabídky pro následující utterance. 
 
-    `place John Jackson in engineering`
+    ![Snímek obrazovky s výběrem složeného zalamování řádků v rozevíracím seznamu dialogového okna](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. Vyberte poslední entita okamžitě `engineering` v utterance. Panel zelené vykreslením v rámci vybrané slova označující složený entity. V rozbalovací nabídce, zadejte název složený `TransferEmployeeInfo` vyberte ENTER. 
 
-1. V **jaký typ entity chcete vytvořit?**, všechna pole, vyžaduje se v seznamu: `personName` a `Department`. Vyberte **Done** (Hotovo). 
+    ![Snímek obrazovky zadání složený název v rozevíracím seznamu dialogového okna](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-    Všimněte si, že předem připravených entit personName, byl přidán do složeného entity. Pokud jste mohli předem připravených entit zobrazí mezi počáteční a koncové tokeny složený entity, složený entity musí obsahovat předem připravených entit. Pokud předem připravených entit nejsou zahrnuty, složený entity není správně předpovědět, ale je každý jednotlivý prvek.
+1. V **jaký typ entity chcete vytvořit?**, všechna pole, vyžaduje se v seznamu: `personName` a `Department`. Vyberte **Done** (Hotovo). Všimněte si, že předem připravených entit personName, byl přidán do složeného entity. Pokud jste mohli předem připravených entit zobrazí mezi počáteční a koncové tokeny složený entity, složený entity musí obsahovat předem připravených entit. Pokud předem připravených entit nejsou zahrnuty, složený entity není správně předpovědět, ale je každý jednotlivý prvek.
+
+    ![Snímek obrazovky zadání složený název v rozevíracím seznamu dialogového okna](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>Projevy příklad popisku s složený entity
-
 
 1. V každé utterance příklad vyberte entitu úplně vlevo, by měla být v složeného. Potom vyberte **zabalit do složeného entity**.
 

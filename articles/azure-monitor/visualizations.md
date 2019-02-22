@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 1daae81f0f642275e1ded20eb29f1e3145463db8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 73d4bfc3aaeb86568e3f7a3555a664a8815e3280
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990168"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586167"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
 Tento článek obsahuje přehled dostupných metod, která bude vizualizovat data protokolů a metrik uložené ve službě Azure Monitor.
@@ -34,7 +34,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 ### <a name="advantages"></a>Výhody
 - Těsnou integraci s Azure. Vizualizace můžete připnout na řídicí panely z více stránek Azure včetně Průzkumníka metrik, log analytics a Application Insights.
 - Podporuje metrik a protokolů.
-- Kombinovat data z víc zdrojů, včetně výstup z [Průzkumníka metrik](platform/metrics-charts.md), [protokolu dotazy](log-query/log-query-overview.md), a [mapuje](app/app-map.md) a [dostupnosti]() v Application Insights.
+- Kombinovat data z víc zdrojů, včetně výstup z [Průzkumníka metrik](platform/metrics-charts.md), [protokolu dotazy](log-query/log-query-overview.md), a [mapuje](app/app-map.md) a dostupnost ve službě Application Insights.
 - Možnost pro osobní nebo sdílené řídicí panely. Díky integraci s Azure [ověřování na základě role (RBAC)](../role-based-access-control/overview.md).
 - Automatická aktualizace. Aktualizace metrik závisí na časový rozsah s minimálně pět minut. Aktualizovat protokoly na jednu minutu.
 - Podle řídicí panely metriky s časovým razítkem a vlastní parametry.

@@ -14,21 +14,16 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/12/2019
 ms.author: aschhab
-ms.openlocfilehash: 632ef45d4db5de03369e0abb8b16590911bdffdb
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7543fb6aed2e63a998dae2b0a855a70197a282ac
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233298"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587204"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
 
-Obor názvů je kontejner oboru pro všechny součásti zasílání zpráv. Součástí jednoho oboru názvů může být několik front a témat, přičemž obory názvů často slouží jako kontejnery aplikací. Obor názvů služby Service Bus je možné vytvořit dvěma způsoby:
-
-1. Portál Azure Portal (tento článek)
-2. [Šablony Resource Manageru][create-namespace-using-arm]
-
-## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
+Obor názvů je kontejner oboru pro všechny součásti zasílání zpráv. Součástí jednoho oboru názvů může být několik front a témat, přičemž obory názvů často slouží jako kontejnery aplikací. Tento článek obsahuje pokyny pro vytvoření oboru názvů na webu Azure Portal. 
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 

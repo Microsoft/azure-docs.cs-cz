@@ -5,34 +5,21 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/29/2018
+ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ed298fc8f13685c4872c4c54ba1e447debea79f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 17f27ac36ed5c0f348495b5364ef37e3f1632243
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702628"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588686"
 ---
-Ujistěte se, že jste již vytvořili obor názvů Service Bus, jak je znázorněno [tady][namespace-how-to].
+## <a name="create-a-queue-in-the-azure-portal"></a>Vytvořit frontu na webu Azure Portal
+4. Na **služby Service Bus Namespace** stránce **fronty** v levé navigační nabídce.
+5. Na **fronty** stránce **+ fronta** na panelu nástrojů.
+5. Zadejte **název** pro fronty a nechte druhé hodnoty jejich výchozích hodnotách.
+6. Teď vyberte **vytvořit**.
+ 
+    ![Front -> + Enter-fronty > vytvořit-název >](./media/service-bus-create-queue-portal/create-queue3.png)
 
-1. Přihlaste se na web [Azure Portal][azure-portal].
-2. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Všechny služby**).
-3. Klikněte na obor názvů, ve kterém chcete vytvořit frontu. V tomto případě se jedná o **sbnstest1**.
-   
-    ![Vytvoření fronty][createqueue1]
-4. V okně oboru názvů klikněte na **Fronty** a pak v okně **Fronty** klikněte na **+ Fronta**.
-   
-    ![Vyberte Fronty][createqueue2]
-5. Zadejte **Název** fronty a nechte ostatní hodnoty na jejich výchozích hodnotách.
-   
-    ![Vyberte Nový][createqueue3]
-6. V dolní části okna klikněte na **Vytvořit**.
-
-[createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
-[createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
-[createqueue3]: ./media/service-bus-create-queue-portal/create-queue3.png
-
-[namespace-how-to]: ../articles/service-bus-messaging/service-bus-create-namespace-portal.md
-[azure-portal]: https://portal.azure.com

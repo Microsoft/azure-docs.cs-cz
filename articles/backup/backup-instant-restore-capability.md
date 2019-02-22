@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 566faaef4e91237bd0a0f915ea39f4bd389120d8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452810"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593076"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
@@ -37,11 +37,11 @@ V současné době úloha zálohování se skládá ze dvou fází:
 1.  Pořízení snímku virtuálního počítače.
 2.  Snímek virtuálního počítače přenosu do trezoru služby Azure Recovery Services.
 
-Vytvoření bodu obnovení se považuje za pouze po dokončení fáze 1 a 2. Jako součást tohoto upgradu je bod obnovení vytvořen, jakmile dokončení snímku a tohoto bodu obnovení snímku typu je možné provést obnovení pomocí stejný tok obnovení. Tento bod obnovení na portálu Azure portal můžete identifikovat pomocí "snímku" jako typ bodu obnovení a po snímku se přenesou do trezoru, typ bodu obnovení se změní na "snímek a trezor."
+Vytvoření bodu obnovení se považuje za pouze po dokončení fáze 1 a 2. Jako součást tohoto upgradu je bod obnovení vytvořen, jakmile dokončení snímku a tohoto bodu obnovení snímku typu je možné provést obnovení pomocí stejný tok obnovení. Tento bod obnovení na portálu Azure portal můžete identifikovat pomocí "snímku" jako typ bodu obnovení a po snímku se přenesou do trezoru, typ bodu obnovení se změní na "snímek a trezor".
 
 ![Úloha zálohování ve virtuálním počítači zásobník záloh modelu nasazení Resource Manager – úložiště a trezoru](./media/backup-azure-vms/instant-rp-flow.png)
 
-Snímky se uchovávají po dobu sedmi dní. Tato funkce umožňuje operace obnovení z těchto snímků existuje řezem dolů časů obnovení. Snižuje čas, který se vyžaduje k transformaci a kopírování dat z trezoru zpět do uživatelského účtu úložiště pro scénáře nespravovaný disk a pro uživatele spravovaného disku, se vytvoří spravované disky mimo zálohovaná data.
+Ve výchozím nastavení snímky zůstanou zachovány dva dny. Tato funkce umožňuje operace obnovení z těchto snímků existuje řezem dolů časů obnovení. Snižuje čas, který se vyžaduje k transformaci a kopírování dat z trezoru zpět do uživatelského účtu úložiště pro scénáře nespravovaný disk a pro uživatele spravovaného disku a vytvoří spravovaných disků z dat služby Recovery Services.
 
 ## <a name="feature-considerations"></a>Důležité informace o funkci
 

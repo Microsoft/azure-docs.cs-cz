@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/4/2019
-ms.author: rkarlin
-ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 2/17/2019
+ms.author: monhaber
+ms.openlocfilehash: 7931caa985bc5dea98ca36bd15e0e634855ab2c5
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343506"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650627"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -99,6 +99,20 @@ Můžete upravit výchozí zásady zabezpečení pro každé z vašich předplat
 Pokyny o tom, jak upravit zásady zabezpečení ve službě Azure Policy najdete v tématu a [vytvoření a Správa zásad pro vynucování dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
 
 Můžete upravit zásady zabezpečení pomocí portálu Azure Policy, prostřednictvím rozhraní REST API nebo pomocí Windows Powershellu. Následující příklad uvádí pokyny k úpravám pomocí rozhraní REST API.
+
+
+## <a name="disable-security-policies"></a>Vypnutí zásad zabezpečení
+Pokud výchozí zásady zabezpečení je generování doporučení, které nejsou relevantní pro vaše prostředí, můžete zastavit jeho zakázáním definice zásad, která odesílá doporučení. To se provádí prostřednictvím portálu Azure Policy (a ne k portálu Security Center), jak je popsáno zde.
+Další informace o doporučeních najdete v tématu [Správa doporučení zabezpečení](security-center-recommendations.md). 
+1. Přejděte ke službě Azure Policy a klikněte na tlačítko **přiřazení**.
+2. V **výchozí ASC** řádku, klikněte na tři tečky a klikněte na tlačítko **Zobrazit definice**. **Definice iniciativy** otevře se stránka.
+   ![Zobrazit definici](./media/tutorial-security-policy/view-definition.png)
+3. Klikněte na tlačítko **upravit podnětu**. **Upravit definici iniciativy** otevře se stránka.
+   ![Upravit iniciativu](./media/tutorial-security-policy/edit-initiative.png)
+4. V **zásady a parametry** části hledání zásad, který vyvolá doporučení, který chcete zakázat a z rozevíracího seznamu vyberte **zakázané**.
+   ![Zakázat zásadu](./media/tutorial-security-policy/disable-policy.png)
+1. Klikněte na tlačítko **Uložit** (nachází se v dolní části stránky).
+
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>Konfigurace zásad zabezpečení pomocí rozhraní REST API
 

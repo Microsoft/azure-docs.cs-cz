@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: aschhab
-ms.openlocfilehash: a8d9ea841aee21531ccb0379fbbc9b10ccf25303
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6ad3b758e0b2a0659308827f387b6e0ee667064e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727309"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586032"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak používat témata a odběry Service Bus pomocí PHP
 
@@ -28,6 +28,8 @@ ms.locfileid: "55727309"
 V tomto článku se dozvíte, jak používat témata a odběry Service Bus. Ukázky jsou napsané v PHP a použití [sady Azure SDK pro jazyk PHP](../php-download-sdk.md). Mezi popsané scénáře patří **vytváření témat a odběrů**, **vytváření filtrů odběrů**, **odesílání zpráv do tématu**, **přijetí zprávy z odběru**, a **odstranění témat a odběrů**.
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-php-application"></a>Vytvoření aplikace PHP
 Jediným požadavkem pro vytvoření aplikace v jazyce PHP, který přistupuje k službě objektů Blob v Azure má odkazovat na třídy v [sady Azure SDK pro jazyk PHP](../php-download-sdk.md) z vašeho kódu. Nástroje pro vývoj můžete použít k vytvoření aplikace nebo Poznámkový blok.

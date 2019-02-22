@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d2ae1d1846506424aa14cca0f597c8888eb903d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341024"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649165"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamčení prostředků, aby se zabránilo neočekávaným změnám 
 
@@ -36,7 +36,7 @@ Při použití zámku v nadřazeném oboru dědí všechny prostředky v daném 
 
 Na rozdíl od řízení přístupu podle role pomocí zámky pro správu platí omezení na všech uživatelů a rolí. Další informace o nastavení oprávnění uživatelů a rolí, najdete v článku [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md).
 
-Zámky Resource Manageru platí pouze pro operace, ke kterým dochází v rovině správy, který se skládá z operací odesílat `https://management.azure.com`. Zámky neomezují jak prostředky provádět vlastní funkce. Změn prostředků jsou omezené, ale operace prostředků nejsou omezené. Například brání zámek ReadOnly u SQL Database můžete odstranit nebo upravit databázi, ale nezabrání jste od vytvoření, aktualizaci a odstraňování dat v databázi. Data transakce se nepovoluje, protože tyto operace se neodesílají na `https://management.azure.com`.
+Zámky Resource Manageru platí pouze pro operace, ke kterým dochází v rovině správy, který se skládá z operací odesílat `https://management.azure.com`. Zámky Neomezovat, jak prostředky provádět vlastní funkce. Změn prostředků jsou omezené, ale nejsou operace prostředků s omezeným přístupem. Například brání zámek ReadOnly u SQL Database můžete odstranit nebo upravit databázi, ale to není by vám bránily v vytvoření, aktualizaci a odstraňování dat v databázi. Data transakce se nepovoluje, protože tyto operace se neodesílají na `https://management.azure.com`.
 
 Použití **jen pro čtení** může vést k neočekávaným výsledkům, protože některé operace, které se zdají být načten operace ve skutečnosti vyžadují další akce. Například, že umístíte **jen pro čtení** výpis klíčů všem uživatelům zabrání zámek účtu úložiště. Seznam, který klíče operace probíhá prostřednictvím funkce požadavek POST, protože vrácený klíče jsou k dispozici pro operace zápisu. Další příklad umístění **jen pro čtení** zámek na prostředek služby App Service brání Průzkumníka serveru Visual Studia v zobrazení souborů pro prostředek, protože danou interakci vyžaduje oprávnění k zápisu.
 
@@ -47,6 +47,19 @@ Pokud chcete vytvořit nebo odstranit zámky pro správu, musí mít přístup k
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Šablona
+
+Při použití šablony Resource Manageru k nasazení zámek, použijte jiné hodnoty pro název a typ v závislosti na rozsahu zámku.
+
+Při použití zámkem, který **prostředků**, použijte následující formáty:
+
+* Název – `{resourceName}/Microsoft.Authorization/{lockName}`
+* Typ – `{resourceProviderNamespace}/{resourceType}/providers/locks`
+
+Při použití zámkem, který **skupiny prostředků** nebo **předplatné**, použijte následující formáty:
+
+* Název – `{lockName}`
+* Typ – `Microsoft.Authorization/locks`
+
 Následující příklad ukazuje šablonu, která vytvoří plán služby app service, webu a zámek na webové stránce. Typ prostředku zámku je prostředků typu prostředku, který chcete zamknout a **/providers/ zámky**. Název zámku se vytváří zřetězením názvu prostředku s **/Microsoft.Authorization/** a název zámku.
 
 ```json
@@ -104,19 +117,7 @@ Následující příklad ukazuje šablonu, která vytvoří plán služby app se
 }
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name sitegroup -Location southcentralus
-New-AzResourceGroupDeployment -ResourceGroupName sitegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json -hostingPlanName plan0103
-```
-
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli
-az group create --name sitegroup --location southcentralus
-az group deployment create --resource-group sitegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json --parameters hostingPlanName=plan0103
-```
+Příklad nastavení zámku na skupinu prostředků, najdete v části [vytvořte skupinu prostředků a uzamkne ji](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
 Zámek je nasazené prostředky v prostředí Azure PowerShell s použitím [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) příkazu.
@@ -206,7 +207,7 @@ Pokud chcete vytvořit zámek, spusťte:
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-Rozsah může být předplatné, skupinu prostředků nebo prostředek. Název zámku je, cokoli, co chcete volat zámek. Pro verzi api-version, použijte **2015-01-01**.
+Rozsah může být předplatné, skupinu prostředků nebo prostředek. Název zámku je, cokoli, co chcete volat zámek. Pro verzi api-version, použijte **2016-09-01**.
 
 V požadavku obsahovat objekt JSON, který určuje vlastnosti pro zámek.
 
@@ -219,7 +220,6 @@ V požadavku obsahovat objekt JSON, který určuje vlastnosti pro zámek.
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o logické uspořádání vašich prostředků najdete v tématu [použití značek k uspořádání prostředků](resource-group-using-tags.md)
-* Chcete-li změnit kterou skupinu prostředků, prostředek se nachází v [přesunutí prostředků do nové skupiny prostředků](resource-group-move-resources.md)
 * Můžete použít omezení a pravidla týkající se předplatného pomocí vlastních zásad. Další informace najdete v tématu [Co je Azure Policy?](../governance/policy/overview.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

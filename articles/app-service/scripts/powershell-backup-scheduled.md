@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1fe21e8c7a4f4b73648eb5cf0cd3ee5e96dff760
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 262706868fe286f2134e71f53330ebd2eeb66488
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107590"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587833"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Vytvoření naplánovaného zálohování webové aplikace pomocí Powershellu
 
@@ -50,8 +50,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Vytvoří účet úložiště. |
-| [New-AzStorageContainer](/powershell/module/azure.storage/new-AzStoragecontainer) | Vytvoří kontejner úložiště Azure. |
-| [New-AzStorageContainerSASToken](/powershell/module/azure.storage/new-AzStoragecontainersastoken) | Vygeneruje token SAS pro kontejner úložiště Azure. |
+| [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Vytvoří kontejner úložiště Azure. |
+| [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-AzStoragecontainersastoken) | Vygeneruje token SAS pro kontejner úložiště Azure. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
 | [Edit-AzWebAppBackupConfiguration](/powershell/module/az.websites/edit-azwebappbackupconfiguration) | Upraví konfiguraci zálohování webové aplikace. |

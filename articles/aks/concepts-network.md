@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7de97097e9678410537895c3bafc48d67809331e
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176233"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594164"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -102,7 +102,7 @@ Další běžnou funkcí příchozího přenosu dat se ukončení protokolu SSL/
 
 ## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
-Skupina zabezpečení sítě pro virtuální počítače, filtruje provoz, jako je například uzlů AKS. Při vytváření služby, jako je nástroji pro vyrovnávání zatížení, Platforma Azure automaticky nakonfiguruje všechny pravidla skupiny zabezpečení sítě, které jsou potřeba. Nekonfigurujte ručně pravidla skupiny zabezpečení sítě pro filtrování provozu pro podů v clusteru AKS. Definovat všechny požadované porty a předávání jako součást vaší služby Kubernetes manifestů a nechat na platformě Azure, vytvořit nebo aktualizovat pomocí příslušných pravidel. Můžete také použít zásady sítě, jak je popsáno v další části, automaticky použít pravidla filtrování přenosů pro pody.
+Skupina zabezpečení sítě pro virtuální počítače, filtruje provoz, jako je například uzlů AKS. Při vytváření služby, jako je nástroji pro vyrovnávání zatížení, Platforma Azure automaticky nakonfiguruje všechny pravidla skupiny zabezpečení sítě, které jsou potřeba. Nekonfigurujte ručně pravidla skupiny zabezpečení sítě pro filtrování provozu pro podů v clusteru AKS. Definovat všechny požadované porty a předávání jako součást vaší služby Kubernetes manifestů a nechat na platformě Azure, vytvořit nebo aktualizovat pomocí příslušných pravidel. Také můžete zásady sítě, jak je popsáno v další části se automaticky vyrovnat podů pravidla filtrování provozu.
 
 Výchozí skupina zabezpečení sítě, které existují pravidla pro provoz jako je SSH. Tyto výchozí pravidla se pro správu clusteru a řešení potíží s přístupem. Odstranění těchto pravidel výchozí může způsobit problémy se správou AKS a přeruší cíl na úrovni služby (SLO).
 

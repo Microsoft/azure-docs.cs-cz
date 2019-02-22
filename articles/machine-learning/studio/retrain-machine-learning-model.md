@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9a43a382c1f45f0bf0fb7e93322fcbeef58cb99d
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330507"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651171"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučování a nasadit model strojového učení
 
@@ -42,7 +42,7 @@ Pomocí následujících kroků nasaďte retraining webové služby:
 
     Po spuštění experimentu, výsledné pracovní postup by měl být podobně jako na následujícím obrázku:
 
-    ![Výsledný pracovního postupu](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![Výsledný pracovního postupu](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
     Nyní nasadíte výukového experimentu jako retraining webovou službu, jejichž výstupem jsou trénovaného modelu a výsledky vyhodnocení modelu.
 
@@ -68,7 +68,7 @@ Přidejte balíček NuGet Microsoft.AspNet.WebApi.Client, jak je uvedeno v komen
 
 Následující snímek obrazovky ukazuje **využívání** stránky na portálu Azure Machine Learning Web Services.
 
-![Využívání stránky](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
+![Využívání stránky](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
 ### <a name="update-the-apikey-declaration"></a>Aktualizovat deklarace apikey
 
@@ -114,7 +114,7 @@ Pokud zadáte umístění výstupu v datové žádost o rozšíření souboru, k
 
 Tady je příklad retraining výstupu:
 
-![Přeškolení výstupu](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Přeškolení výstupu](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>Vyhodnoťte retraining výsledky
 

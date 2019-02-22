@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: fb3358775881f102ecea62fbd20a1e4d85dda308
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c04b9b04a14e5cba205db5e0fa86094ef098bc7b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001630"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585869"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizovat inventáře pomocí webu Azure portal a témata nebo předplatná
 
@@ -45,49 +45,11 @@ Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
 Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přijímat kopie všech zpráv. Témata jsou co do protokolu a sémantiky plně kompatibilní s frontami služby Service Bus. Témata služby Service Bus podporují širokou škálu pravidel pro výběr s podmínkami filtrů, včetně volitelných akcí, kterými se nastavují nebo upravují vlastnosti zprávy. Při každé shodě s pravidlem se vytvoří zpráva. Další informace o pravidlech, filtrech a akcích získáte pomocí tohoto [odkazu](topic-filters.md).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Nejprve přejděte na web [Azure Portal][Azure portal] a přihlaste se pomocí svého předplatného Azure. Prvním krokem je vytvoření oboru názvů služby Service Bus typu **zasílání zpráv**.
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
 
-Obor názvů Service Bus pro zasílání zpráv poskytuje jedinečný kontejner oboru (odkazuje se na něj [plně kvalifikovaným názvem domény][]), ve kterém můžete vytvořit jednu nebo více front, témat a odběrů. V následujícím příkladu vytvoříme obor názvů Service Bus pro zasílání zpráv v nové nebo existující [skupině prostředků](/azure/azure-resource-manager/resource-group-portal):
-
-1. V levém navigačním podokně portálu klikněte na **+ Vytvořit prostředek**, potom klikněte na **Podniková integrace** a pak na **Service Bus**.
-2. V dialogovém okně **Vytvořit obor názvů** zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
-3. Po kontrole, že je název oborů názvů k dispozici, zvolte cenovou úroveň (Standard nebo Premium).
-4. V poli **Předplatné** zvolte předplatné Azure, ve které chcete vytvořit obor názvů.
-5. V poli **Skupina prostředků** zvolte existující skupinu prostředků, ve které bude obor názvů fungovat, nebo vytvořte novou.      
-6. V poli **Umístění**, vyberte zemi nebo oblast, ve které by měl být oboru názvů hostován.
-7. Klikněte na možnost **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
-
-  ![Obor názvů](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>Získání přihlašovacích údajů pro správu
-
-Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravidlo sdíleného přístupového podpisu (SAS) s přidruženým párem primárního a sekundárního klíče, které udělují úplnou kontrolu nad všemi aspekty tohoto oboru názvů. Pokud chcete zkopírovat počáteční pravidlo, postupujte následovně:
-
-1. Klikněte na **Všechny prostředky** a pak klikněte na název nově vytvořeného oboru názvů.
-2. V okně oboru názvů klikněte na **Zásady sdíleného přístupu**.
-3. Na obrazovce **Zásady sdíleného přístupu** klikněte na **RootManageSharedAccessKey**.
-4. V **zásad: RootManageSharedAccessKey** okna, klikněte na tlačítko **kopírování** vedle **primární připojovací řetězec**, zkopírujte připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
-
-    ![connection-string][connection-string]
-5. Opakujte předchozí krok, zkopírujte si hodnotu pro **primární klíč** a vložte ji do dočasného umístění pro pozdější použití.
-
-## <a name="create-a-topic-and-subscriptions"></a>Vytvoření tématu a odběrů
-
-Pokud chcete vytvořit téma Service Bus, zadejte obor názvů, do kterého má téma spadat. Následující příklad ukazuje, jak vytvořit téma na portálu:
-
-1. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Všechny služby**).
-2. Klikněte na obor názvů, ve kterém chcete téma vytvořit.
-3. V okně oboru názvů klikněte na **Témata** a pak v okně **Témata** klikněte na **+ Témata**.
-4. Zadejte **Název** tématu a ostatní hodnoty ponechte ve výchozím nastavení.
-5. V dolní části okna klikněte na **Vytvořit**.
-6. Název tématu si poznamenejte.
-7. Vyberte téma, které jste právě vytvořili.
-8. Klikněte na **+ Odběr**, zadejte název odběru **O1**a všechny ostatní hodnoty ponechte ve výchozím nastavení.
-9. Předchozí krok ještě dvakrát zopakujte a vytvořte odběry s názvem **O2** a **O3**.
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Vytvoření pravidel filtrů u odběrů
 
@@ -451,7 +413,7 @@ Přejděte k dalšímu kurzu, kde se dozvíte více o možnostech publikování 
 > [Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů](service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[plně kvalifikovaným názvem domény]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png

@@ -3,7 +3,7 @@ title: Azure Security Center – nejčastější dotazy (FAQ) | Dokumentace Micr
 description: Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2018
-ms.author: rkarlin
-ms.openlocfilehash: 61dac6bea6878630c05339778c717f7818c1c662
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 02/19/2019
+ms.author: monhaber
+ms.openlocfilehash: 6696935cf23fa7286f23ae9b7d0e8a278e31403d
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106643"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652658"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -274,6 +274,9 @@ Azure Security Center automaticky shromažďuje, analyzuje a fuses data protokol
 * Pokročilý malware zjištěný pomocí zasílání zpráv o chybách Windows
 * Útoky hrubou silou na virtuální počítače
 * Výstrahy zabezpečení z integrovaných partnerských řešení zabezpečení, jako je Anti-Malware nebo brány firewall webových aplikací
+
+### <a name="why-did-secure-scores-values-change"></a>Proč změnu hodnoty skóre zabezpečení?
+Od února 2019 Security Center upravit skóre několik doporučení, aby bylo možné lépe vyhovovaly jejich závažnosti. V důsledku této úpravy mohou existovat změnami celkové zabezpečení hodnoty skóre.  Další informace o zabezpečení skóre, naleznete v tématu [zabezpečení výpočtu skóre](security-center-secure-score.md).
 
 ### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaký je rozdíl mezi hrozeb zjištěných a oznamovaných na podle Microsoft Security Response Center a Azure Security Center?
 Microsoft Security Response Center (MSRC) provádí monitorování zabezpečení vyberte síť Azure a infrastrukturou a přijímá threat intelligence a zneužití stížností od třetích stran. Při MSRC zjistí, že zákaznická data přistupovala nezákonně nebo neoprávněně strany nebo, že využití Azure pro zákazníka není v souladu s podmínkami přijatelné použití, upozorní správce incidentu zabezpečení zákazníka. Oznámení se obvykle dochází, pošlete e-mail na kontakty zabezpečení zadané v Azure Security Center nebo vlastník předplatného Azure, pokud není zadán kontaktu zabezpečení.

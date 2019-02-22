@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3fcc8f0c2c0ed897b1c5296eea694cd56144498b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876058"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585844"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
@@ -42,7 +42,8 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
-Starší verze centra Microsoft Translator umožňuje překládat statistické strojového překladu. [Další informace](https://www.microsoft.com/en-us/translator/hub.aspx)
+> [!NOTE]
+> Starší verze centra Microsoft Translator se vyřadí z provozu 30. dubna 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Vlastní Translator oproti centra
 

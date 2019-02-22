@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: eb7354f8e099f28f4a3476b16c11f5f2d8feda00
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: d16d13d1f57c1ef189db3db781705cd70cd71e8d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412483"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586184"
 ---
 # <a name="introduction-to-azure-netapp-files"></a>Seznámení se službou Azure NetApp Files
 Azure NetApp Files je vysoce výkonná měřená služba úložiště souborů na podnikové úrovni. Služba Azure NetApp Files podporuje libovolný typ úloh a je ve výchozím nastavení vysoce dostupná. Prostřednictvím této služby můžete vybrat garantované úrovně výkonu a služeb a nastavit snímky. 
@@ -27,13 +27,9 @@ Azure NetApp Files je vysoce výkonná měřená služba úložiště souborů n
 Dokumentace ke službě Azure NetApp Files obsahuje pokyny týkající se vytváření a správy svazků s využitím služby Azure NetApp Files. 
 
 > [!IMPORTANT] 
-> Všechny úkoly popsané v této dokumentaci vyžadují, abyste se účastnili programu verze Public Preview a měli povolený přístup k poskytovateli prostředků Azure Microsoft.NetApp. Žádost o připojení k programu ve verzi Public Preview, najdete v článku [registrace pro Azure NetApp Files](azure-netapp-files-register.md). 
+> Všechny úkoly popsané v této dokumentaci vyžadují, abyste se účastnili programu verze Public Preview a měli povolený přístup k poskytovateli prostředků Azure Microsoft.NetApp. Pokud chcete požádat o zařazení do programu Public Preview, přečtěte si téma věnované [registraci pro Azure NetApp Files](azure-netapp-files-register.md). 
 
 **Začínáme** 
-1. [Registrace pro soubory Azure NetApp](azure-netapp-files-register.md)
-1. [Vytvoření účtu NetApp](azure-netapp-files-create-netapp-account.md)
-1. [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
-1. [Vytvoření svazku pro Azure NetApp Files](azure-netapp-files-create-volumes.md)
-1. [Konfigurace zásad exportu pro svazek (volitelné)](azure-netapp-files-configure-export-policy.md)
 
-
+* [Vysvětlení hierarchii úložiště souborů Azure NetApp](azure-netapp-files-understand-storage-hierarchy.md) 
+* [Rychlé zprovoznění: Nastavení souborů NetApp Azure a vytvoření svazku](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

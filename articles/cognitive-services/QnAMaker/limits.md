@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 6f36000eb5a17e58d1450a064897dd9caef89bad
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 424aa7038fecba7a11c1ccaa07053cf2e1606835
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859347"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651122"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Omezení nástroje QnA Maker znalostní báze knowledge base a hranice
 Úplný seznam omezení napříč QnA Maker.
@@ -71,6 +71,6 @@ Představují limity pro každou akci aktualizace; To znamená, že kliknete na 
 
 Zjistěte, kdy a jak změnit úrovně služeb:
 
-* [Nástroj QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): když je potřeba mít další otázky a odpovědi ve znalostní bázi, nad aktuální úrovní, upgradovat vaše služba QnA Maker cenovou úroveň.
-* [Hledání](how-to/upgrade-qnamaker-service.md#upgrade-app-service) – když znalostní báze potřebuje více požadavků z aplikace pro klienta, upgrade vaše cenová úroveň služby app service.
-* [Služby App service](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Pokud chcete mít mnoho znalostních bází, upgradovat cenovou úroveň služby Azure Search.
+* [Nástroj QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Při musíte mít další zdrojové soubory nebo větší dokumenty ve znalostní bázi, nad aktuální úrovní, upgradu služby QnA Maker cenovou úroveň.
+* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Když znalostní báze potřebuje více požadavků z aplikace pro klienta, upgrade vaše cenová úroveň služby app service.
+* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Když budete chtít mít mnoho znalostních bází, upgradujte cenovou úroveň služby Azure Search.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: deca97b0749ceab9f2dfaf3c3940ac6b02b9c104
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0de886e69f595d30332bdda2a71ae24891fdac00
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822183"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649488"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -27,11 +27,13 @@ Pokud potřebujete přidat, změnit, nebo odebrání IP adres pro síťové rozh
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
-- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
 Účet přihlásit nebo připojit k Azure, musíte být přiřazeni k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
@@ -68,8 +70,8 @@ Na portálu neposkytuje možnost pro síťové rozhraní přiřadit do skupin za
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
+|Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
+|PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Zobrazení nastavení síťového rozhraní
 
@@ -78,14 +80,16 @@ Můžete zobrazit a změnit většinu nastavení síťového rozhraní po jeho v
 1. Do pole, které obsahuje text *vyhledat prostředky* v horní části stránky na webu Azure portal, zadejte *síťová rozhraní*. Když **síťová rozhraní** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte síťové rozhraní, které chcete zobrazit nebo změnit nastavení pro ze seznamu.
 3. Následující položky jsou uvedeny pro síťové rozhraní, které jste vybrali:
-    - **Přehled:** Poskytuje informace o síťové rozhraní, jako je například IP adresy přiřazené, virtuální sítě a podsítě, přiřazené k síťovému rozhraní, a z virtuálního počítače, které je síťové rozhraní připojené k (Pokud je připojený k jednomu). Následující obrázek znázorňuje přehled nastavení pro síťové rozhraní s názvem **mywebserver256**: ![Přehled rozhraní sítě](./media/virtual-network-network-interface/nic-overview.png) síťové rozhraní můžete přesunout do jiné skupiny prostředků nebo předplatného tak, že vyberete (**změnit**) vedle položky **skupiny prostředků** nebo  **Název předplatného**. Pokud přesunete síťové rozhraní, je nutné přesunout všechny prostředky vztahující se k síťovému rozhraní s ním. Pokud je síťové rozhraní připojené k virtuálnímu počítači, například musíte také přesunout virtuální počítač a další prostředky týkající se virtuálních počítačů. Pokud chcete přesunout síťové rozhraní, naleznete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal). Tento článek uvádí předpoklady a postup přesunutí prostředků pomocí webu Azure portal, PowerShell a rozhraní příkazového řádku Azure.
-    - **Konfigurace protokolu IP:** Zde jsou uvedeny veřejných a privátních IPv4 a IPv6 adresy přiřazené konfigurace protokolu IP. Pokud ke konfiguraci IP není přiřazena adresa protokolu IPv6, se nezobrazí adresu. Další informace o konfiguracích IP a jak přidávat a odebírat z něj IP adresy najdete v tématu [konfigurace IP adresy pro rozhraní sítě Azure](virtual-network-network-interface-addresses.md). V této části jsou také nakonfigurované předávání IP a podsíti přiřazení. Další informace o těchto nastaveních najdete v tématu [povolení nebo zakázání předávání IP](#enable-or-disable-ip-forwarding) a [změnit přiřazení podsítě](#change-subnet-assignment).
-    - **Servery DNS:** Můžete určit, který server DNS, servery Azure DHCP přiřadí síťového rozhraní. Síťové rozhraní můžete dědí nastavení z virtuální sítě, přiřazené k síťovému rozhraní, nebo vlastní nastavení, která přepíše nastavení pro virtuální síť, který je přiřazen k. Pokud chcete upravit obsah zobrazený, naleznete v tématu [servery DNS změnu](#change-dns-servers).
-    - **Skupina zabezpečení sítě (NSG):** Zobrazí, které je skupina zabezpečení sítě přidružené k síťovému rozhraní (pokud existuje). Skupina zabezpečení sítě obsahuje pravidla pro příchozí a odchozí k filtrování provozu sítě pro síťové rozhraní. Pokud je skupina zabezpečení sítě přidružené k síťovému rozhraní, zobrazí se název přidružené skupiny zabezpečení sítě. Pokud chcete upravit obsah zobrazený, naleznete v tématu [přidružení nebo zrušit přidružení skupiny zabezpečení sítě](#associate-or-dissociate-a-network-security-group).
-    - **Vlastnosti:** Zobrazuje nastavení klíče o síťové rozhraní, včetně jeho adresa MAC (prázdné, pokud není síťové rozhraní připojené k virtuálnímu počítači) a předplatné existuje ve službě.
-    - **Platná pravidla zabezpečení:**  Pravidla zabezpečení jsou uvedeny, pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači a je skupina zabezpečení sítě přidružené k síťovému rozhraní a podsíť, ve které je přiřazen k. Další informace o co se zobrazí, naleznete v tématu [zobrazit platná pravidla zabezpečení](#view-effective-security-rules). Další informace o skupinách Nsg najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
-    - **Efektivní trasy:** Pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači jsou uvedeny trasy. Trasy se kombinace Azure výchozí trasy, všechny trasy definované uživatelem a všechny trasy protokolu BGP, které mohou existovat pro podsíť, ve které je přiřazeno síťové rozhraní. Další informace o co se zobrazí, naleznete v tématu [zobrazení efektivních tras](#view-effective-routes). Další informace o Azure výchozí trasy a trasy definované uživatelem, najdete v článku [Přehled směrování](virtual-networks-udr-overview.md).
-    - **Obecná nastavení Azure Resource Manageru:**  Další informace o běžných nastavení Azure Resource Manageru najdete v tématu [protokolu aktivit](../azure-monitor/platform/activity-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [uzamkne](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [ Automatizační skript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+   - **Přehled:** Poskytuje informace o síťové rozhraní, jako je například IP adresy přiřazené, virtuální sítě a podsítě, přiřazené k síťovému rozhraní, a z virtuálního počítače, které je síťové rozhraní připojené k (Pokud je připojený k jednomu). Následující obrázek znázorňuje přehled nastavení pro síťové rozhraní s názvem **mywebserver256**: ![Přehled rozhraní sítě](./media/virtual-network-network-interface/nic-overview.png)
+
+     Síťové rozhraní můžete přesunout do jiné skupiny prostředků nebo předplatného tak, že vyberete (**změnit**) vedle položky **skupiny prostředků** nebo **název předplatného**. Pokud přesunete síťové rozhraní, je nutné přesunout všechny prostředky vztahující se k síťovému rozhraní s ním. Pokud je síťové rozhraní připojené k virtuálnímu počítači, například musíte také přesunout virtuální počítač a další prostředky týkající se virtuálních počítačů. Pokud chcete přesunout síťové rozhraní, naleznete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal). Tento článek uvádí předpoklady a postup přesunutí prostředků pomocí webu Azure portal, PowerShell a rozhraní příkazového řádku Azure.
+   - **Konfigurace protokolu IP:** Zde jsou uvedeny veřejných a privátních IPv4 a IPv6 adresy přiřazené konfigurace protokolu IP. Pokud ke konfiguraci IP není přiřazena adresa protokolu IPv6, se nezobrazí adresu. Další informace o konfiguracích IP a jak přidávat a odebírat z něj IP adresy najdete v tématu [konfigurace IP adresy pro rozhraní sítě Azure](virtual-network-network-interface-addresses.md). V této části jsou také nakonfigurované předávání IP a podsíti přiřazení. Další informace o těchto nastaveních najdete v tématu [povolení nebo zakázání předávání IP](#enable-or-disable-ip-forwarding) a [změnit přiřazení podsítě](#change-subnet-assignment).
+   - **Servery DNS:** Můžete určit, který server DNS, servery Azure DHCP přiřadí síťového rozhraní. Síťové rozhraní můžete dědí nastavení z virtuální sítě, přiřazené k síťovému rozhraní, nebo vlastní nastavení, která přepíše nastavení pro virtuální síť, který je přiřazen k. Pokud chcete upravit obsah zobrazený, naleznete v tématu [servery DNS změnu](#change-dns-servers).
+   - **Skupina zabezpečení sítě (NSG):** Zobrazí, které je skupina zabezpečení sítě přidružené k síťovému rozhraní (pokud existuje). Skupina zabezpečení sítě obsahuje pravidla pro příchozí a odchozí k filtrování provozu sítě pro síťové rozhraní. Pokud je skupina zabezpečení sítě přidružené k síťovému rozhraní, zobrazí se název přidružené skupiny zabezpečení sítě. Pokud chcete upravit obsah zobrazený, naleznete v tématu [přidružení nebo zrušit přidružení skupiny zabezpečení sítě](#associate-or-dissociate-a-network-security-group).
+   - **Vlastnosti:** Zobrazuje nastavení klíče o síťové rozhraní, včetně jeho adresa MAC (prázdné, pokud není síťové rozhraní připojené k virtuálnímu počítači) a předplatné existuje ve službě.
+   - **Platná pravidla zabezpečení:**  Pravidla zabezpečení jsou uvedeny, pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači a je skupina zabezpečení sítě přidružené k síťovému rozhraní a podsíť, ve které je přiřazen k. Další informace o co se zobrazí, naleznete v tématu [zobrazit platná pravidla zabezpečení](#view-effective-security-rules). Další informace o skupinách Nsg najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
+   - **Efektivní trasy:** Pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači jsou uvedeny trasy. Trasy se kombinace Azure výchozí trasy, všechny trasy definované uživatelem a všechny trasy protokolu BGP, které mohou existovat pro podsíť, ve které je přiřazeno síťové rozhraní. Další informace o co se zobrazí, naleznete v tématu [zobrazení efektivních tras](#view-effective-routes). Další informace o Azure výchozí trasy a trasy definované uživatelem, najdete v článku [Přehled směrování](virtual-networks-udr-overview.md).
+   - **Obecná nastavení Azure Resource Manageru:**  Další informace o běžných nastavení Azure Resource Manageru najdete v tématu [protokolu aktivit](../azure-monitor/platform/activity-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [uzamkne](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [ Automatizační skript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Příkazy**
 
@@ -93,8 +97,8 @@ Pokud k síťovému rozhraní není přiřazena adresa protokolu IPv6, na výstu
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic seznamu](/cli/azure/network/nic) zobrazíte síťová rozhraní v rámci předplatného; [az network nic show](/cli/azure/network/nic) Chcete-li zobrazit nastavení pro síťové rozhraní|
-|PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) zobrazíte síťová rozhraní v předplatném nebo zobrazit nastavení pro síťové rozhraní|
+|Rozhraní příkazového řádku|[AZ network nic seznamu](/cli/azure/network/nic#az_network_nic_list) zobrazíte síťová rozhraní v rámci předplatného; [az network nic show](/cli/azure/network/nic#az_network_nic_show) Chcete-li zobrazit nastavení pro síťové rozhraní|
+|PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) zobrazíte síťová rozhraní v předplatném nebo zobrazit nastavení pro síťové rozhraní|
 
 ## <a name="change-dns-servers"></a>Změnit servery DNS
 
@@ -104,8 +108,8 @@ DNS server je přiřazené serverem Azure DHCP k síťovému rozhraní v operač
 2. Vyberte síťové rozhraní, které chcete změnit server DNS pro ze seznamu.
 3. Vyberte **servery DNS** pod **nastavení**.
 4. Vyberte buď:
-    - **Zdědit z virtuální sítě**: Tato možnost zdědí nastavení serveru DNS definované pro virtuální síť přiřazené k síťovému rozhraní. Na všech úrovních virtuální sítě je definován vlastní server DNS nebo serveru DNS poskytnutých platformou Azure. Server DNS poskytnutých platformou Azure lze přeložit názvy hostitelů pro prostředky, které jsou přiřazeny ke stejné virtuální síti. Plně kvalifikovaný název domény musí být používá k překladu pro prostředky přiřazené k jiné virtuální sítě.
-    - **Vlastní**: Můžete nakonfigurovat vlastní server DNS k překladu názvů mezi několika virtuálními sítěmi. Zadejte IP adresu serveru, který chcete použít jako DNS server. Adresa serveru DNS, kterou zadáte je přiřazena pouze k tomuto síťovému rozhraní a přepíše jakékoli nastavení DNS pro virtuální síť přiřazené k síťovému rozhraní.
+   - **Zdědit z virtuální sítě**: Tato možnost zdědí nastavení serveru DNS definované pro virtuální síť přiřazené k síťovému rozhraní. Na všech úrovních virtuální sítě je definován vlastní server DNS nebo serveru DNS poskytnutých platformou Azure. Server DNS poskytnutých platformou Azure lze přeložit názvy hostitelů pro prostředky, které jsou přiřazeny ke stejné virtuální síti. Plně kvalifikovaný název domény musí být používá k překladu pro prostředky přiřazené k jiné virtuální sítě.
+   - **Vlastní**: Můžete nakonfigurovat vlastní server DNS k překladu názvů mezi několika virtuálními sítěmi. Zadejte IP adresu serveru, který chcete použít jako DNS server. Adresa serveru DNS, kterou zadáte je přiřazena pouze k tomuto síťovému rozhraní a přepíše jakékoli nastavení DNS pro virtuální síť přiřazené k síťovému rozhraní.
 5. Vyberte **Uložit**.
 
 **Příkazy**
@@ -113,7 +117,7 @@ DNS server je přiřazené serverem Azure DHCP k síťovému rozhraní v operač
 |Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Povolení nebo zakázání předávání IP
 
@@ -134,7 +138,7 @@ Nastavení musí být povolena pro každé síťové rozhraní, který je připo
 |Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Změnit přidružení podsítě
 
@@ -143,9 +147,9 @@ Můžete změnit podsíť, ale ne virtuální síti, přiřazené k síťovému 
 1. Do pole, které obsahuje text *vyhledat prostředky* v horní části stránky na webu Azure portal, zadejte *síťová rozhraní*. Když **síťová rozhraní** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte, kterou chcete změnit přiřazení podsíť pro síťové rozhraní.
 3. Vyberte **konfigurací protokolu IP** pod **nastavení**. Pokud všechny privátní IP adresy pro všechny konfigurace protokolu IP uveden **(statické)** vedle sebe, je nutné změnit způsob přiřazení IP adresy na dynamické provedením následujících kroků. Všechny privátní IP adresy musí přiřazované pomocí metody dynamického přidělování změnit přiřazení podsíť pro síťové rozhraní. Pokud adresy se přiřazují s dynamickou metodu, pokračujte krokem 5. Pokud žádné adresy protokolu IPv4 jsou přiřazované pomocí metody statického přidělování, změňte metodu přiřazení na dynamické následujících kroků:
-    - Vyberte konfigurace IP adresy, kterou chcete změnit způsob přiřazování adresy protokolu IPv4 pro ze seznamu konfigurací protokolu IP.
-    - Vyberte **dynamické** pro privátní IP adresu **přiřazení** metody. Nejde přiřadit adresu protokolu IPv6 s metodou statického přidělování.
-    - Vyberte **Uložit**.
+   - Vyberte konfigurace IP adresy, kterou chcete změnit způsob přiřazování adresy protokolu IPv4 pro ze seznamu konfigurací protokolu IP.
+   - Vyberte **dynamické** pro privátní IP adresu **přiřazení** metody. Nejde přiřadit adresu protokolu IPv6 s metodou statického přidělování.
+   - Vyberte **Uložit**.
 4. Vyberte podsíť, které chcete přesunout síťové rozhraní z **podsítě** rozevíracího seznamu.
 5. Vyberte **Uložit**. Nové dynamické adresy jsou přiřazené, z rozsahu adres podsítě pro nové podsítě. Po přiřazení síťového rozhraní na novou podsíť, můžete přiřadit statickou IPv4 adresu z rozsahu adres nové podsítě, pokud se rozhodnete. Další informace o přidání, změna a odebírání adres IP pro síťové rozhraní, naleznete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md).
 
@@ -153,8 +157,8 @@ Můžete změnit podsíť, ale ne virtuální síti, přiřazené k síťovému 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
+|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Přidat nebo odebrat ze skupiny zabezpečení aplikací
 
@@ -168,7 +172,7 @@ Pouze můžete přidat síťové rozhraní nebo odebrat ze skupiny zabezpečení
 |Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>Přidružení nebo zrušit přidružení skupiny zabezpečení sítě
 
@@ -182,7 +186,7 @@ Pouze můžete přidat síťové rozhraní nebo odebrat ze skupiny zabezpečení
 **Příkazy**
 
 - Azure CLI: [az network nic update](/cli/azure/network/nic#az-network-nic-update)
-- PowerShell: [Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)
+- PowerShell: [Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>Odstranit síťové rozhraní
 
@@ -200,7 +204,7 @@ Při odstranění síťového rozhraní se vydávají jakékoli MAC nebo IP adre
 |Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic delete](/cli/azure/network/nic)|
-|PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
+|PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Vyřešte problémy s připojením
 
@@ -221,7 +225,7 @@ Ověření toku protokolu IP, že funkce služby Azure Network Watcher také vá
 **Příkazy**
 
 - Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
-- PowerShell: [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
+- PowerShell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ### <a name="view-effective-routes"></a>Zobrazení efektivních tras
 
@@ -238,7 +242,7 @@ Funkce dalšího segmentu směrování služby Azure Network Watcher můžete ta
 **Příkazy**
 
 - Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
-- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
+- PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="permissions"></a>Oprávnění
 

@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 014353bafa31b1c4e924cba8335dbd30a48c2d11
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454255"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651426"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -130,6 +130,16 @@ Firewall webových aplikací (WAF) služby Application Gateway lze nakonfigurova
 
 * **Režim detekce** – když je nakonfigurován ke spuštění v režimu detekce, waf služby Application Gateway monitoruje a protokoluje všechny výstrahy na hrozby do souboru protokolu. Diagnostika protokolování pro službu Application Gateway by měla být v části **Diagnostika** zapnutá. Bude také třeba zajistit, aby byl vybrán a zapnut protokol WAF. když je firewall webových aplikací spuštěný v režimu detekce, neblokuje příchozí požadavky.
 * **Režim prevence** – Když je nakonfigurován ke spuštění v režimu prevence, služba Application Gateway aktivně blokuje vniknutí a útoky detekované pomocí svých pravidel. Útočník obdrží výjimku 403 – Neoprávněný přístup a připojení se ukončí. Režim prevence takové útoky nadále protokoluje do protokolů WAF.
+
+### <a name="anomaly-scoring-mode"></a>Režim vyhodnocování anomálií 
+ 
+OWASP má dva režimy pro rozhodování o tom, zda blokuje provoz, nebo ne. Je tradiční režimu a režimu vyhodnocování anomálií. V tradičním režimu se považuje za jakékoli pravidlo odpovídající provoz nezávisle na, jestli mají jiná pravidla příliš odpovídající. Přestože lze snáze pochopit, chybějící informace o tom, kolik pravidel se odesílané konkrétní žádost je jedním z omezení tento režim. Proto režimu anomálií vyhodnocování byl zaveden, stala výchozí s OWASP 3.x. 
+
+V režimu vyhodnocení anomálií skutečnost, že některé z pravidel popsaných v předchozí části odpovídá na provoz neznamená okamžitě, provoz se bude blokovat, za předpokladu, že brána firewall je v režimu ochrany před únikem informací. Pravidla mají určité závažnosti (kritické, chyba, upozornění a oznámení) a v závislosti na tom, že závažnost se zvyšují číselnou hodnotu pro daný požadavek volat hodnocení anomálie. Například jeden odpovídající pravidlo upozornění přispějí hodnotu 3, ale jeden odpovídající pravidlo pro kritické přispějí hodnotu 5. 
+
+Je prahová hodnota pro hodnocení anomálie, pod kterým se provoz se ignoroval, že prahová hodnota je nastavena na 5. To znamená, jeden odpovídající kritické pravidlo stačí, aby Azure WAF blokuje žádosti v režimu ochrany před únikem informací (protože kritické pravidlo zvyšuje hodnocení anomálie v 5, podle výše). Ale jedna vyhovující pravidlo s úrovní varování bude pouze zvýšení anomálii skóre číslem 3. Protože 3 je stále nižší než prahová hodnota 5, žádný provoz se zablokuje, i v případě, WAF je v režimu ochrany před únikem informací. 
+
+Všimněte si, že zprávy protokolu zapíše, když přenosem WAF pravidla shody bude obsahovat pole action_s jako "Uzavřeno", ale neznamená nutně, že provoz skutečně byl zablokován. Hodnocení anomálie 5 nebo vyšší je potřeba ve skutečnosti blokování provozu.  
 
 ### <a name="application-gateway-waf-reports"></a>Monitorování WAF
 

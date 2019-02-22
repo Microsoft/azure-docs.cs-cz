@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 7612e9d6444b61210da5d642530d99423220c0a4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 753c5312987cc541456b2f7415bb7dc9d4770d05
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076836"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593348"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics 
 Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kafka a zpracovat je s Azure Stream Analytics. Provede vás provede následujícími kroky: 
@@ -133,7 +133,7 @@ Dotaz v úloze Stream Analytics data prochází bez provádění jakékoli anal�
 
 ### <a name="configure-job-input"></a>Konfigurace vstupu úlohy
 
-1. Ve zprávě oznámení vyberte ** Přejít k prostředku ** Pokud chcete zobrazit **úlohy Stream Analytics** stránky. 
+1. Ve zprávě oznámení vyberte **přejít k prostředku** zobrazíte **úlohy Stream Analytics** stránky. 
 2. Vyberte **vstupy** v **TOPOLOGIE úlohy** části v nabídce vlevo.
 3. Vyberte **přidat vstup streamu**a pak vyberte **centra událostí**. 
 

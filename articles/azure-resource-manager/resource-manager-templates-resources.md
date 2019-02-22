@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 01aacf8815ce4150eb1c243d4337f52c4e0b03e9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: eb819d19dd7c1eb9cf0b95549adda91a102304a5
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697034"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593892"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Oddíl prostředků šablon Azure Resource Manageru
 
@@ -85,7 +85,7 @@ Můžete definovat prostředky s následující strukturou:
 |:--- |:--- |:--- |
 | condition | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. |
 | apiVersion |Ano |Verze rozhraní REST API pro použití při vytváření prostředku. |
-| type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). |
+| type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). Další informace najdete v tématu [poskytovatelé a typy prostředků Azure](resource-manager-supported-services.md). |
 | jméno |Ano |Název prostředku Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. |
 | location |Různé |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
 | tags |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |

@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 1d047e3dfe37929a02c141af675062abb9718786
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: aa534ca4fb29237de6377c7225a11f4758f39c55
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448139"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588377"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Kurz: Automatizovat zpracování e-mailů a jejich přílohy pomocí Azure Logic Apps
 
@@ -100,7 +100,7 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
 
       ![Hotový kontejner úložiště](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   K vytvoření kontejneru úložiště můžete použít taky prostředí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create). 
+   K vytvoření kontejneru úložiště můžete použít taky prostředí [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create). 
 
 Dalším krokem je propojení Průzkumníka služby Storage s vaším účtem.
 

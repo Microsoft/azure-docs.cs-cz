@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/01/2019
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fd723304e2219c457e982cbe54529d00afe526f4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 02a6cbabaeb7d9c6f764eec5dd86226e37aa6c2b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896005"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593518"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integrace zasílání zpráv Azure Blockchain Workbench
 
@@ -375,7 +375,7 @@ Témata služby Service Bus je možné informovat uživatele o události, ke kte
 
 ## <a name="notification-message-reference"></a>Odkaz na zprávu oznámení
 
-V závislosti na tom **OperationName**, zprávy s oznámením některou z následujících typů zpráv.
+V závislosti na tom **messageName**, zprávy s oznámením některou z následujících typů zpráv.
 
 ### <a name="block-message"></a>Zpráva o blokování.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5f6a0ce0c9d863b5ab4922e7228a873ed5398600
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: af72eb0214f46c1e001f9e93934d38cb934503e4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033277"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592481"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -28,7 +28,7 @@ ms.locfileid: "54033277"
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Šablona](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -43,10 +43,10 @@ Ukázková šablona, která je k dispozici ve veřejném úložišti, používá
 Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShell, použijte následující postup.
 
 1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
-2. Spusťte rutinu **New-AzureRmResourceGroupDeployment**, která pomocí šablony vytvoří skupinu prostředků.
+2. Spustit **New-AzResourceGroupDeployment** rutina pro vytvoření skupiny prostředků pomocí šablony.
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
+    New-AzResourceGroupDeployment -Name TestRG -Location uswest `
         -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
         -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```

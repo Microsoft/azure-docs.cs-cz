@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b498283ee117935438c55e5162e92acdb0f5ebfe
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249676"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649896"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Windows Server v Azure stacku nejčastější dotazy k Marketplace
 
@@ -38,7 +38,7 @@ Dále pokud všechny Virtual Machine Scale Sets odkazovat na konkrétní verzi, 
 
 Společnost Microsoft nabízí dvě verze Image Windows serveru z Tržiště Azure Stack:
 
-- **Platit používáte**: Tyto Image spustit plné ceny měřiče Windows. 
+- **Platit používáte**: Tyto Image spustit plné ceny měřiče Windows.
    Kdo by měl používat: Zákazníci s Enterprise Agreement (EA), kteří používají *model fakturace spotřeby*; Poskytovatelé CSP, kteří nechtějí použít licencování SPLA.
 - **Používání vlastní licence (BYOL)**: Tyto Image spustit základní měřiče.
    Kdo by měl používat: Zákazníci EA s licencí k Windows serveru; Poskytovatelé CSP, kteří používají licence SPLA.
@@ -74,23 +74,23 @@ K aktivaci virtuálního počítače s Windows serverem ve službě Azure Stack,
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>Jak můžu ověřit, že můj virtuální počítač se aktivuje?
 
-Z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz: 
+Z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz:
 
 ```shell
 slmgr /dlv
-``` 
+```
 
 Pokud je správně aktivovaný, uvidíte to jasně určili a zobrazí název hostitele v `slmgr` výstup. Není závislý na vodoznaky na displeji nemusí být aktuální, nebo se zobrazují v různých virtuálních počítačů za vás.
 
 ### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>Můj virtuální počítač není nastaven pro použití automatická aktivace virtuálního počítače, jak můžete ho mám opravit?
 
-Z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz: 
+Z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz:
 
 ```shell
-slmgr /ipk <AVMA key> 
+slmgr /ipk <AVMA key>
 ```
 
-Přečtěte si článek [automatická aktivace virtuálního počítače](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) pro klíče, které slouží pro vaši image.
+Zobrazit [automatická aktivace virtuálního počítače](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) článku pro klíče, které slouží pro vaši image.
 
 ### <a name="i-create-my-own-windows-server-images-how-can-i-make-sure-they-use-avma"></a>Můžu vytvořit vlastní Image Windows serveru, jak můžete ověřit, zda že používají automatická aktivace virtuálního počítače?
 

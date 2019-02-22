@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d97e2542200703201b1c20738581a938ba209e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dfcd7f10952a883552cd30d6cacf03095492dd38
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165990"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649743"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory
 
@@ -43,19 +43,17 @@ Nastavení souborů cookie pomocí webu Azure portal:
 5. V části **další nastavení**, nastavte nastavení souborů cookie na **Ano** nebo **ne**.
 6. Klikněte na tlačítko **Uložit** změny. 
 
-<!---
+## <a name="view-current-cookie-settings---powershell"></a>Zobrazit aktuální nastavení souborů cookie – PowerShell
 
-## View current cookie settings - PowerShell
-
-To see the current cookie settings for the application, use this PowerShell command:  
+Pokud chcete zobrazit aktuální nastavení souborů cookie pro aplikace, použijte tento příkaz Powershellu:  
 
 ```PowerShell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
 ```
 
-## Set cookie settings - PowerShell
+## <a name="set-cookie-settings---powershell"></a>Nastavení souborů cookie – PowerShell
 
-In the following PowerShell commands, ```<ObjectId>``` is the ObjectId of the application. 
+V následující příkazy Powershellu ```<ObjectId>``` je ID objektu aplikace. 
 
 **Http-Only Cookie** 
 
@@ -71,11 +69,9 @@ Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabl
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $false 
 ```
 
-**Persistent Cookies**
+**Trvalé soubory cookie**
 
 ```PowerShell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $false 
 ```
-
--->

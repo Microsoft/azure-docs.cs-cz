@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca7a1913e94242af46e777be308ef92fc5a5abb3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a63155e65460f9e2193c121bb49849940104eff1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427062"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649220"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled Azure Automation stavu konfigurace
 
@@ -41,9 +41,41 @@ Na webu Azure Portal nebo prostředí PowerShell můžete spravovat všechny va�
 
 Uzly, které se spravují pomocí Azure Automation State Configuration odesílání podrobná data sestav stavu na server integrované o přijetí změn. Konfigurace stavu Azure Automation k odesílání dat do pracovního prostoru Log Analytics můžete nakonfigurovat. Zjistěte, jak odesílat data o stavu konfigurace stavu do pracovního prostoru Log Analytics, najdete v článku [vpřed Azure Automation stav konfigurace generování sestav dat do služby Log Analytics](automation-dsc-diagnostics.md).
 
-## <a name="network-planning"></a>Konfigurace sítě
+## <a name="prerequisites"></a>Požadavky
 
-Je vyžadována pro stav konfigurace (DSC) ke komunikaci s automatizací následující port a adresy URL:
+Při použití Azure Automation stavu Configuration (DSC), zvažte následující požadavky.
+
+### <a name="operating-system-requirements"></a>Požadavky na operační systém
+
+Pro uzly s Windows se podporují následující verze:
+
+- Windows Server 2019
+- Windows Server 2016
+- Windows Server 2012R2
+- Windows Server 2012
+- Windows Server 2008 R2 SP1
+- Windows 10
+- Windows 8.1
+- Windows 7
+
+Pro uzly s Linuxem jsou podporovány následující distribuce a verze:
+
+Rozšíření DSC Linuxu podporuje Linuxové distribuce [v Azure se schválenou sadou](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) s výjimkou:
+
+Distribuce | Verze
+-|-
+Debian  | Všechny verze
+Ubuntu  | 18.04
+
+### <a name="dsc-requirements"></a>Požadavky na DSC
+
+Pro všechny uzly Windows běží v Azure [WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) je možné nainstalovat během registrace.  Pro uzly, které běží Windows Server 2012 a Windows 7 [bude povolená služba WinRM](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+
+Pro všechny uzly s Linuxem v Azure [PowerShell DSC pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) je možné nainstalovat během registrace.
+
+### <a name="network-planning"></a>Konfigurovat privátní sítě
+
+Pokud uzly jsou umístěny v privátní síti, jsou požadovány pro stav konfigurace (DSC) ke komunikaci s automatizací následující portu a adresách URL:
 
 * Port: Vyžádáním jenom TCP 443 pro odchozí přístup k Internetu.
 * Global URL: *.azure-automation.net
@@ -85,7 +117,7 @@ Raději se díváte, než čtete? Podíváme se na následující video z květn
 > [!NOTE]
 > Koncepty a životního cyklu, které jsou popsané v tomto videu jsou sice správné, konfigurace služby Azure Automation stavu provedení určité mnohem od tohoto videa. Je teď obecně dostupná, má mnohem rozsáhlejší uživatelské rozhraní na webu Azure Portal a podporuje řadu dalších funkcí.
 
-[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
+<iframe src="https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="next-steps"></a>Další postup
 

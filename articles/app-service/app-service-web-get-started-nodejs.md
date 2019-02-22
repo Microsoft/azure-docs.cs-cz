@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8d7bd808540ac697bde073201e88f49ace8b527a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 917243ccaf4ef3759e02bb92cad6f9ef04514e4a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308668"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650508"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
 
@@ -112,11 +112,11 @@ Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujíc
 
 ### <a name="set-nodejs-runtime"></a>Nastavení modulu runtime Node.js
 
-Nastavte modul runtime Node na 8.11.1. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes).
+Nastavte 10.14.1 uzel modulu runtime. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes).
 
 ```azurecli-interactive
 # Bash and Powershell
-az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
+az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
 ```
 
 Přejděte do vaší nově vytvořené webové aplikace. Nahraďte `<app_name>` s jedinečným názvem aplikace.
@@ -149,13 +149,13 @@ Vzorový kód Node.js je spuštěný ve webové aplikaci služby Azure App Servi
 
 V textovém editoru otevřete soubor `index.js`, který je součástí aplikace Node.js, a proveďte malou změnu textu u volání `response.end`:
 
-```nodejs
+```javascript
 response.end("Hello Azure!");
 ```
 
 V místním okně terminálu přejděte do kořenového adresáře vaší aplikace a vytvořte nový soubor ZIP pro váš aktualizovaný projekt.
 
-```
+```azurecli-interactive
 # Bash
 zip -r myUpdatedAppFiles.zip .
 

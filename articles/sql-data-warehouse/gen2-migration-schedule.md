@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: a3ec74d0b22bfafb4353eca400b389b07a58ba39
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8dbe282b919c988d5cb997a66914d81ce1981f88
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246343"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592413"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 Microsoft pomáhá snížit základní náklady na provozování schopná zpracovat vyhovovat i vašim náročným dotazy přidáním nižší výpočetní úrovně pro Azure SQL Data Warehouse do datového skladu přečíst celé oznámení o [nižší výpočetní vrstva podpory pro Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nová nabídka je již k dispozici v oblastech, které jste si poznamenali v následující tabulce. Pro oblasti jsou podporované je možné upgradovat na Gen2 stávajících datových skladů Gen1 prostřednictvím:
@@ -29,8 +29,6 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 
 | **Oblast** | **K dispozici nižší Gen2** | **Zahájit automatické upgrady** |
 |:--- |:--- |:--- |
-| Austrálie – střed 1 |1. března 2019 |15. června 2019 |
-| Austrálie – střed 2 |1. března 2019 |15. června 2019 |
 | Austrálie – východ |K dispozici. |1. května 2019 |
 | Austrálie – jihovýchod |1. března 2019 |15. června 2019 |
 | Brazílie – jih |\* |\* |

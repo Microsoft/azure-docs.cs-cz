@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 802408f6ccd0a1cc0ed4f4d87d54a11760cd70fe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cc42a0289316116b843696c984f9fc3c2114eb6c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473438"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592889"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro službu Azure SQL Data Warehouse
 Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse. Další informace a použít tyto možnosti pro váš plán úloh správy najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
@@ -78,7 +78,7 @@ Zajistit, že každý dotaz nemá dostatek prostředků k úspěšnému proveden
 
 Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [statický prostředek třídy](resource-classes-for-workload-management.md).  
 
-| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané staticrc10 | Sloty používané staticrc20 | Sloty používané staticrc30 | Sloty používané staticrc40 | Sloty používané staticrc50 | Sloty používané staticrc60 | Sloty používané staticrc70 | Sloty používané staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -133,7 +133,7 @@ Statických tříd prostředků
 
 Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [statický prostředek třídy](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Sloty souběžnosti maximální |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Úroveň služby | Maximální počet souběžných dotazů | Sloty souběžnosti maximální | Sloty používané staticrc10 | Sloty používané staticrc20 | Sloty používané staticrc30 | Sloty používané staticrc40 | Sloty používané staticrc50 | Sloty používané staticrc60 | Sloty používané staticrc70 | Sloty používané staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
 | DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
@@ -156,7 +156,7 @@ Dynamický prostředek třídy
 
 Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [dynamickou třídu prostředků](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | smallrc | mediumrc | largerc | xlargerc |
+| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
 | DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |

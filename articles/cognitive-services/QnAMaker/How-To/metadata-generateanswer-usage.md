@@ -8,20 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 02/21/2019
 ms.author: tulasim88
-ms.openlocfilehash: 1294b714c217178d53ed69cc886cd89f23620274
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9cb16842e0bc80a1fcbd066bea44c5b9701bb6d5
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859483"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651205"
 ---
-# <a name="using-metadata-and-the-generateanswer-api"></a>Pomocí metadat a rozhraní API GenerateAnswer
+# <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědí znalostní báze s rozhraním GenerateAnswer API a metadat
+
+Předpokládaná odpověď na otázku uživatele, použijte rozhraní API GenerateAnswer. Při publikování znalostní báze těchto informací pomocí tohoto rozhraní API se zobrazí na stránce publikování. Můžete také konfigurovat rozhraní API filtrování odpovědi na základě metadat značek a testování ve znalostní bázi z koncového bodu pomocí parametru řetězce dotazu testu.
 
 Nástroj QnA Maker umožňuje přidat metadata ve formě dvojice klíče a hodnoty do sad otázek a odpovědí. Tyto informace slouží k filtrování výsledků na dotazy uživatelů a k ukládání dalších informací, lze použít v následných konverzace. Další informace najdete v tématu [znalostní báze](../Concepts/knowledge-base.md).
 
-## <a name="qna-entity"></a>Nástroj QnA Entity
+<a name="qna-entity"></a>
+
+## <a name="storing-questions-and-answers-with-a-qna-entity"></a>Ukládání otázky a odpovědi s entitou QnA
 
 Nejprve je důležité pochopit, jak QnA Maker ukládá data otázek a odpovědí. Následující obrázek znázorňuje QnA entity:
 
@@ -29,95 +33,124 @@ Nejprve je důležité pochopit, jak QnA Maker ukládá data otázek a odpověd�
 
 Každá entita QnA má jedinečný a trvalý ID. ID je možné provést aktualizace na konkrétní entitu QnA.
 
-## <a name="generateanswer-api"></a>GenerateAnswer rozhraní API
+<a name="generateanswer-api"></a>
+
+## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Získání odpovědí předpovědi s rozhraním API GenerateAnswer
 
 Použití rozhraní API GenerateAnswer v váš Bot nebo aplikaci k dotazování znalostní báze se dotaz uživatele získat nejlepší shodu ze sady otázek a odpovědí.
 
-### <a name="generateanswer-endpoint"></a>Koncový bod GenerateAnswer
+<a name="generateanswer-endpoint"></a>
+
+## <a name="publish-to-get-generateanswer-endpoint"></a>Publikování na získání GenerateAnswer koncového bodu 
 
 Po publikování znalostní báze, buď z [portál QnA Maker](https://www.qnamaker.ai), nebo pomocí [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff), můžete získat podrobné GenerateAnswer koncového bodu.
 
 Získat podrobnosti o vašich koncových bodů:
 1. Přihlaste se k [ https://www.qnamaker.ai ](https://www.qnamaker.ai).
-2. V **Moje znalostních bází**, klikněte na **zobrazit kód** pro znalostní báze.
-![Moje znalostních bází](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
-3. Získáte podrobnosti o vašich GenerateAnswer koncového bodu.
+1. V **Moje znalostních bází**, klikněte na **zobrazit kód** pro znalostní báze.
+    ![Moje znalostních bází](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+1. Získáte podrobnosti o vašich GenerateAnswer koncového bodu.
 
-![Podrobnosti o koncovém bodu](../media/qnamaker-how-to-metadata-usage/view-code.png)
+    ![Podrobnosti o koncovém bodu](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
 Můžete také získat podrobnosti o vašem koncového bodu z **nastavení** kartu znalostní báze.
 
-### <a name="generateanswer-request"></a>GenerateAnswer žádosti
+<a name="generateanswer-request"></a>
+
+## <a name="generateanswer-request-configuration"></a>Konfigurační požadavek GenerateAnswer
 
 Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který ukazuje, jak volat GenerateAnswer, najdete v článku [rychlých startů](../quickstarts/csharp.md).
 
-- **Adresa URL požadavku**: koncový bod Tvůrce https://{QnA} /knowledgebases/ {ID znalostní báze} / generateAnswer
+**Adresa URL požadavku** má následující formát: 
 
-- **Parametry žádosti**: 
-    - **ID znalostní báze** (řetězec): Identifikátor GUID pro znalostní báze.
-    - **Koncový bod rozhraní QnAMaker** (řetězec): Název hostitele koncového bodu nasazené ve vašem předplatném Azure.
-- **Hlavičky žádosti**
-    - **Content-Type** (řetězec): Typ média textu odeslaného do rozhraní API.
-    - **Autorizace** (řetězec): Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
-- **Text žádosti**
-    - **dotaz** (řetězec): Otázku uživatele Chcete-li být dotázán proti znalostní báze.
-    - **horní** (volitelné, celé číslo): Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.
-    - **ID uživatele** (volitelný, řetězec): Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.
-    - **strictFilters** (volitelný, řetězec): Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat. Další informace najdete níže.
-    ```json
+```
+https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
+```
+
+|Vlastnost požadavku HTTP|Název|Type|Účel|
+|--|--|--|--|
+|Parametr trasa adresy URL|ID znalostní báze|řetězec|Identifikátor GUID pro znalostní báze.|
+|Parametr trasa adresy URL|Hostitel koncového bodu QnA maker|řetězec|Název hostitele koncového bodu nasazené ve vašem předplatném Azure. Toto je k dispozici na stránce nastavení po publikování znalostní báze. |
+|Hlavička|Typ obsahu|řetězec|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
+|Hlavička|Autorizace|řetězec|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Tělo POST|JSON – objekt|JSON|Dotaz s nastavením|
+|Parametr řetězce dotazu (volitelné)|`isTest`|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
+
+Text JSON má několik nastavení:
+
+|Vlastnost text JSON|Požaduje se|Type|Účel|
+|--|--|--|--|
+|`question`|povinné|řetězec|Uživatel dotaz k odeslání do znalostní báze.|
+|`top`|nepovinné|integer|Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.|
+|`userId`|nepovinné|řetězec|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
+|`strictFilters`|nepovinné|řetězec|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat.|
+
+Příklad text JSON vypadá takto:
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "strictFilters": [
     {
-        "question": "qna maker and luis",
-        "top": 6,
-        "strictFilters": [
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+<a name="generateanswer-response"></a>
+
+## <a name="generateanswer-response-properties"></a>Vlastnosti GenerateAnswer odpovědi
+
+Úspěšná odpověď vrací stav 200 a odpověď ve formátu JSON. 
+
+|Vlastnost odpovědi (seřazené podle skóre)|Účel|
+|--|--|
+|skóre|Hodnocení 0 až 100.|
+|ID|Jedinečné ID přiřazené k odpovědi.|
+|Dotazy|Dotazy poskytnutých uživatelem.|
+|Odpověď|Odpověď na dotaz.|
+|source|Název zdroje, ze kterého byla odpověď extrahovat nebo uložit znalostní báze knowledge base.|
+|zprostředkovatele identity|Metadata přidružená k odpovědi.|
+|metadata.name|Název metadat. (maximální délka řetězce: 100, povinné)|
+|metadata.Value: Hodnota metadat. (maximální délka řetězce: 100, povinné)|
+
+
+```json
+{
+    "answers": [
         {
-            "name": "category",
-            "value": "api"
-        }],
-        "userId": "sd53lsY="
-    }
-    ```
+            "score": 28.54820341616869,
+            "Id": 20,
+            "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
+            "source": "Custom Editorial",
+            "questions": [
+                "How can I integrate LUIS with QnA Maker?"
+            ],
+            "metadata": [
+                {
+                    "name": "category",
+                    "value": "api"
+                }
+            ]
+        }
+    ]
+}
+```
 
-### <a name="generateanswer-response"></a>GenerateAnswer odpovědi
+<a name="metadata-example"></a>
 
-- **Odpověď 200** – úspěšné volání vrátí výsledek na otázku. Odpověď obsahuje následující pole:
-    - **odpovědi** – seznam odpovědi na dotaz uživatele, seřazené v sestupném pořadí podle pořadí skóre.
-        - **skóre**: Hodnocení 0 až 100.
-        - **dotazy**: Dotazy poskytnutých uživatelem.
-        - **answer**: Odpověď na dotaz.
-        - **Zdroj**: Název zdroje, ze kterého byla odpověď extrahovat nebo uložit znalostní báze knowledge base.
-        - **metadata**: Metadata přidružená k odpovědi.
-            - Jméno: Název metadat. (maximální délka řetězce: 100, povinné)
-            - Hodnota: Hodnota metadat. (maximální délka řetězce: 100, povinné)
-        - **ID**: Jedinečné ID přiřazené k odpovědi.
-    ```json
-    {
-        "answers": [
-            {
-                "score": 28.54820341616869,
-                "Id": 20,
-                "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
-                "source": "Custom Editorial",
-                "questions": [
-                    "How can I integrate LUIS with QnA Maker?"
-                ],
-                "metadata": [
-                    {
-                        "name": "category",
-                        "value": "api"
-                    }
-                ]
-            }
-        ]
-    }
-    ```
+## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>Používání metadat vám umožní filtrovat odpovědi ve vlastní metadatové značky
 
-## <a name="metadata-example"></a>Příklad metadat
-
-Vezměte v úvahu následující nejčastější dotazy týkající se data. Kliknutím na ikonu metadata přidáte metadata do znalostní báze.
+Přidání metadat umožňuje filtrovat podle značky těchto metadat odpovědi. Vezměte v úvahu následující nejčastější dotazy týkající se data. Kliknutím na ikonu metadata přidáte metadata do znalostní báze.
 
 ![Přidání metadat](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
-### <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtrování výsledků s strictFilters pro značky metadat
+<a name="filter-results-with-strictfilters-for-metadata-tags"></a>
+
+## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtrování výsledků s strictFilters pro značky metadat
 
 Zvažte otázku uživatele "Když se tento hotelu zavřít?" kde je implicitní záměr pro restaurace "Paradise."
 
@@ -135,8 +168,11 @@ Protože výsledky se vyžaduje jenom pro restaurace "Paradise", můžete nastav
 }
 ```
 
-### <a name="keep-context"></a>Udržovat kontextu
-Odpověď GenerateAnswer obsahuje odpovídající informace metadat sady odpovídající otázek a odpovědí, následujícím způsobem.
+<name="keep-context"></a>
+
+## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Použití výsledky otázky a odpovědi k zajištění kontextu konverzace
+
+Odpověď GenerateAnswer obsahuje odpovídající informace metadat sady odpovídající otázek a odpovědí. Tyto informace můžete použít v klientské aplikaci k ukládání kontextu předchozí konverzace pro použití v pozdější konverzace. 
 
 ```json
 {
@@ -163,8 +199,6 @@ Odpověď GenerateAnswer obsahuje odpovídající informace metadat sady odpoví
     ]
 }
 ```
-
-Tyto informace slouží k zaznamenání kontextu předchozí konverzace pro použití v pozdější konverzace. 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6d2b6ce2804fce35af9c184c4a7c72c0b332f6fb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 7975516e80576a9d79b35da816d049f47ebc7d3a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701720"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650185"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -126,7 +126,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Nyní přiřadit instanční objekt služby pro váš cluster AKS *Přispěvatel* oprávnění k používání virtuální sítě [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu. Zadejte vlastní */ <appId/>* jak znázorňuje výstup z předchozího příkazu k vytvoření instančního objektu služby:
+Nyní přiřadit instanční objekt služby pro váš cluster AKS *Přispěvatel* oprávnění k používání virtuální sítě [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu. Zadejte vlastní  *\<appId >* jak znázorňuje výstup z předchozího příkazu k vytvoření instančního objektu služby:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -134,7 +134,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Vytvoření clusteru AKS ve virtuální síti
 
-Právě jste vytvořili virtuální síť a podsíť a vytvořit a přiřadit oprávnění pro objekt služby k použití těchto síťových prostředků. Teď vytvořte AKS cluster ve vaší virtuální sítě a podsítě pomocí [az aks vytvořit] [ az-aks-create] příkazu. Definovat vlastní instanční objekt služby */ <appId/>* a */ <password/>*, jak znázorňuje výstup z předchozího příkazu k vytvoření instančního objektu služby.
+Právě jste vytvořili virtuální síť a podsíť a vytvořit a přiřadit oprávnění pro objekt služby k použití těchto síťových prostředků. Teď vytvořte AKS cluster ve vaší virtuální sítě a podsítě pomocí [az aks vytvořit] [ az-aks-create] příkazu. Definovat vlastní instanční objekt služby  *\<appId >* a  *\<heslo >*, jak znázorňuje výstup z předchozího příkazu k vytvoření instančního objektu služby.
 
 Tyto rozsahy IP adres jsou také definovány jako součást clusteru vytvořit proces:
 

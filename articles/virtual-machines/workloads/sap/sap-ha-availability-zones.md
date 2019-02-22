@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d98a5ab13c2aecd3b3cef590526031f5bdee594
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a8e20d617da12aea857308f4020fbd0cfe711430
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268307"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651307"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úlohy SAP se zónami dostupnosti Azure
 [Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jedna z funkcí vysoké dostupnosti, které poskytuje Azure. Použití zón dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je k dispozici v některých [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). V budoucnu bude k dispozici v dalších oblastech.
@@ -123,7 +123,7 @@ Pokud nemůžete najít přijatelné rozdílů mezi latence sítě v jedné zón
 
 Základní rozložení architektura vypadá takto:
 
-![Aktivní/pasivní zónu nasazení](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![Aktivní/pasivní zónu nasazení](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
 Pro tuto konfiguraci, platí následující aspekty:
 

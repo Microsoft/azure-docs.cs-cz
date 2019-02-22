@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d48a1a1c9e220690649bbf60e9909a38d575c156
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559072"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651954"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod ve službě Azure Kubernetes Service (AKS)
 
@@ -70,7 +70,7 @@ Operátor clusteru rozhodnout, jaká nastavení kontextu zabezpečení je nutné
 
 Pokud chcete omezit riziko vystavení v kódu aplikace přihlašovacích údajů, se vyhněte použití fixed nebo sdílené přihlašovací údaje. Přihlašovacím údajům nebo klíčům by neměla být obsažená přímo v kódu. Pokud tyto přihlašovací údaje jsou odhaleny, aplikace potřebuje aktualizovat a znovu nasadit. Lepším řešením je poskytnout podů vlastní identity a způsob, jak sami ověření, nebo automaticky načíst přihlašovací údaje z digitální trezoru.
 
-AKS zahrnuje dva způsoby, jak automaticky ověřovat podů nebo žádost o přihlašovací údaje a klíče z trezoru digitální:
+Následující [přidružené AKS open source projektů] [ aks-associated-projects] umožňují automaticky ověřovat podů nebo žádost o přihlašovací údaje a klíče z trezoru digitální:
 
 * Spravované identity pro prostředky Azure, a
 * Azure Key Vault FlexVol ovladače
@@ -83,7 +83,7 @@ Spravovaná identita pro prostředky Azure umožňuje pod samotné ověření po
 
 S využitím spravované identity kódu aplikace nemusí zahrnovat přihlašovací údaje pro přístup ke službě, jako je Azure Storage. Jak každý pod ověřuje pomocí vlastní identity, tak můžete auditovat a kontrolovat přístup. Pokud vaše aplikace připojuje s ostatními službami Azure, pomocí spravované identity pro opakované použití omezení přihlašovacích údajů a riziko ohrožení.
 
-Další informace o identitách pod najdete v tématu [konfigurace clusteru AKS používat pod spravované identity] [ aad-pod-identity] a [přiřadit a používat pod spravované identity ve vašem kódu] [ aad-pod-identity].
+Další informace o identitách pod najdete v tématu [konfigurace clusteru AKS používat pod spravovat identity a s vašimi aplikacemi][aad-pod-identity]
 
 ### <a name="use-azure-key-vault-with-flexvol"></a>Použití Azure Key Vault s FlexVol
 
@@ -107,6 +107,7 @@ Tento článek se zaměřuje na tom, jak zabezpečit vaše pody. K provedení n�
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
+[aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
 
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md

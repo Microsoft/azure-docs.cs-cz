@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 98ca3478c3a8963c3bf57143354340d6ed14900e
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455123"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594334"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -257,8 +257,6 @@ Nelze změnit následující možnosti:
 - `SINGLE_USER`
 - `WITNESS`
 
-Upravit název není podporován.
-
 Další informace najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>Agent SQL Server
@@ -437,7 +435,7 @@ Různé instance služby Service broker se nepodporuje:
 
 ### <a name="stored-procedures-functions-triggers"></a>Uložené procedury, funkce, aktivační události
 
-- `NATIVE_COMPILATION` není aktuálně podporováno.
+- `NATIVE_COMPILATION` v úrovni General Purpose nepodporuje.
 - Následující [uložené procedury sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) možnosti nejsou podporovány:
   - `allow polybase export`
   - `allow updates`
@@ -448,7 +446,6 @@ Různé instance služby Service broker se nepodporuje:
 - `xp_cmdshell` není podporováno. Zobrazit [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` nejsou podporované. zahrnuje `sp_addextendedproc`  a `sp_dropextendedproc`. Zobrazit [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - `sp_attach_db`, `sp_attach_single_file_db`, a `sp_detach_db` nejsou podporovány. Zobrazit [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
-- `sp_renamedb` není podporováno. Zobrazit [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
 ## <a name="Changes"></a> Změny chování
 

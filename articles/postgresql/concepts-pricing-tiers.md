@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0df36f4c939ed9bd7bb6a134a356b37d699abc1d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695023"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586339"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL cenové úrovně
 
@@ -43,6 +43,9 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 
 > [!IMPORTANT]
 > Od 12. prosince 2018, nebudou moct zřizovat výpočetní generace 4 servery v oblasti Brazílie – Jih, Kanada – střed, Kanada – východ, Asie – východ, USA – východ 2, střed Indie, Indie – Západ, Japonsko – Západ, střed USA – sever, USA – západ nové zákazníky. Výpočetní generace 4 servery budou migrovány na výpočetní generaci 5 od 1. února 2019 v těchto oblastech předtím vytvořili.
+>
+> [!IMPORTANT]
+> Od 19. února 2019 noví zákazníci nebude možné zřizovat výpočetní generace 4 servery v oblasti střed USA, USA – východ, Japonsko – východ, Severní Evropa, střed USA – Jih, jihovýchodní Asie, západní Evropa. Výpočetní generace 4 servery budou migrovány na výpočetní generaci 5 od 1. dubna 2019 v těchto oblastech předtím vytvořili.
 
 | **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|

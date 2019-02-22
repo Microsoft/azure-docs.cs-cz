@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470446"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652556"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Cloud ovládání datových vrstev je volitelná funkce služby Azure File Sync, ve kterém často používaných souborů jsou uložené v mezipaměti místně na serveru při další souborů proběhne do služby soubory Azure na základě nastavení zásad. Pokud se vrstvený soubor, filtr systému souborů Azure File Sync (StorageSync.sys) nahradí soubor místně ukazatel nebo spojovacím bodem. Bod rozboru představuje adresu URL k souboru ve službě soubory Azure. Vrstvený soubor má atribut "offline" a FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atributu nastavit v systému souborů NTFS tak, aby aplikace třetích stran můžou bezpečně identifikovat vrstvené soubory.
@@ -21,9 +21,12 @@ Cloud ovládání datových vrstev je volitelná funkce služby Azure File Sync,
 Když uživatel otevře vrstvených sdílených, Azure File Sync bezproblémově vrátí data souboru z soubory Azure bez uživatele nepotřebuje vědět, že je soubor uložený ve skutečnosti v Azure. 
  
  > [!Important]  
-    > Důležité: Cloud ovládání datových vrstev se nepodporuje pro koncové body serveru u svazků systému Windows a pouze soubory, které jsou větší než 64 KiB velikosti může být rozvrstvena do služby soubory Azure.
+ > Cloud ovládání datových vrstev se nepodporuje pro koncové body serveru u svazků systému Windows a pouze soubory, které jsou větší než 64 KiB velikosti může být rozvrstvena do služby soubory Azure.
     
 Azure File Sync nepodporuje ani soubory menší než 64 KiB by ovládání datových vrstev a vrací tyto soubory malé nároky na výkon převažují nad úspory místa na disku.
+
+ > [!Important]  
+ > Odvolat soubory, které mají byl vrstvený, šířky pásma sítě by mělo být alespoň 1 MB/s. Pokud šířka pásma sítě je menší než 1 MB/s, soubory může selhat s chybou vypršení časového limitu stránkám znovu vyvolat.
 
 ## <a name="cloud-tiering-faq"></a>Nejčastější dotazy týkající se vrstvení cloudu
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ebb1a3fba95ed5794b3737d75c4ec182163a32fb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4c54383df74d9cfd7941dc52d26856bc8da51457
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984422"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594708"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů Windows
 
@@ -65,7 +65,7 @@ Nastavení zásad zabezpečení pro celé předplatné:
 
 1. Na řídicím panelu Security Center vyberte **Zásady zabezpečení** a pak vyberte své předplatné.
 2. V okně **Zásady zabezpečení** vyberte **Zásady zabezpečení**. 
-3. V okně Zásady zabezpečení – Zásady zabezpečení zapněte nebo vypněte položky zásad, které chcete pro předplatné použít.
+3. Na **zásady zabezpečení – zásady zabezpečení** okna, zapněte nebo vypněte položky zásad, které má být použita k předplatnému.
 4. Jakmile budete hotovi s výběrem nastavení, vyberte **Uložit** v horní části stránky. 
 
 

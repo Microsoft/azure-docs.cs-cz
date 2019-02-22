@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5ca8efd43244825eef412cf3c05c8df20094112
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8535a77c9f44a4dafca34ef24414f90741a9133e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109535"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652726"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Správa doporučení zabezpečení v Azure Security Center
 Tento dokument vás provede postupy použijte doporučení ve službě Azure Security Center k ochraně vašich prostředků Azure.
@@ -53,21 +53,25 @@ Pokud chcete zobrazit podrobnosti o jednotlivých doporučení, vyberte **doporu
 
 Můžete filtrovat doporučení. Chcete-li filtrovat doporučení, vyberte **filtr** na **doporučení** okno. **Filtr** se otevře okno a vybrat závažnost a stavu hodnoty, které chcete zobrazit.
 
-Doporučení jsou zobrazena ve formátu tabulky, kde každý řádek představuje jedno konkrétní doporučení. Jsou sloupce této tabulky:
 
-* **POPIS**: Vysvětluje, doporučení a co je potřeba provést k vyřešení ho.
+* **DOPORUČENÍ**: Doporučení.
+* **ZABEZPEČENÍ SKÓRE DOPAD**:
 * **PROSTŘEDEK**: Seznam prostředků, u kterých bude použito toto doporučení.
-* **STAV**: Popisuje aktuální stav doporučení:
-  * **Otevřít**: Doporučení dosud nebylo řešeno.
-  * **V průběhu**: Doporučení se aktuálně zavádí prostředky a nevyžaduje žádné akce se.
-  * **Vyřešené**: Doporučení již byla dokončena (v tomto případě řádku je zobrazena šedě).
-* **ZÁVAŽNOST**: Popisuje závažnost tohoto konkrétního doporučení:
-  * **Vysoká**: Ohrožení zabezpečení existuje u významného prostředku (například aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
-  * **Střední**: Existuje ohrožení zabezpečení a nekritické nebo další kroky jsou požadovány k jeho odstranění nebo k dokončení procesu.
-  * **Nízká**: Existuje ohrožení zabezpečení, které mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení, s nízkou doporučení nejsou k dispozici, ale můžete filtrovat podle doporučení s nízkou, pokud chcete zobrazit.)
+* **STAVOVÉ ŘÁDKY**:  Popisuje závažnost tohoto konkrétního doporučení:
+   * **Vysoká (červená)**: Ohrožení zabezpečení existuje u významného prostředku (například aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
+   * **Střední (oranžová)**: Existuje ohrožení zabezpečení a nekritické nebo další kroky jsou požadovány k jeho odstranění nebo k dokončení procesu.
+   * **Nízká (modrá)**: Existuje ohrožení zabezpečení, které mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení, s nízkou doporučení nejsou k dispozici, ale můžete filtrovat podle doporučení s nízkou, pokud chcete zobrazit.) 
+   * **V pořádku (zelený)**:
+   * **Není k dispozici (šedá)**:
+ <!-- * **DESCRIPTION**: Explains the recommendation and what needs to be done to address it.
+**STATE**: Describes the current state of the recommendation:
+   * **Open**: The recommendation hasn't been addressed yet.
+    * **In Progress**: The recommendation is currently being applied to the resources, and no action is required by you.
+   * **Resolved**: The recommendation has already been completed (in this case, the line is grayed out).
+    -->
 
 V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné doporučení a každý z nich, co dělá když je použijete.
-
+<!-- There is no table below -->
 > [!NOTE]
 > Chcete se dozvědět [klasické modely nasazení a modely nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
 >

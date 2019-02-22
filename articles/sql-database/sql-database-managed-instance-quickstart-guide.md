@@ -11,31 +11,32 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 3940c2f239a4354cfb44a499f7375f4ba34f8aa8
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/18/2019
+ms.openlocfilehash: 857af7a10f6efb87133ba086dcb6897074c7f8ec
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892023"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586417"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database managed instance
 
-[Spravovanou instanci](sql-database-managed-instance-index.yml) možnost nasazení vytvořit databázi s téměř 100 % kompatibilitu s nejnovější systému SQL Server (Enterprise Edition) na místní databázový stroj, poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, která řeší běžné problémy zabezpečení a [obchodního modelu](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky v místním systému SQL Server. V této části se dozvíte, jak rychle nakonfigurovat a vytvoření managed instance a migrace databází.
+[Spravovanou instanci](sql-database-managed-instance-index.yml) možnost nasazení vytvoří databázi s téměř 100 % kompatibilitu s nejnovější systému SQL Server (Enterprise Edition) na místní databázový stroj, poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, která řeší běžné problémy zabezpečení a [obchodního modelu](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky v místním systému SQL Server. V tomto článku se dozvíte, jak rychle nakonfigurovat a vytvoření managed instance a migrace databází.
 
 ## <a name="quickstart-overview"></a>Rychlý start – přehled
 
 Tyto rychlé starty vám umožní rychle vytvořit managed instance, konfigurace virtuálního počítače nebo přejděte na připojení VPN typu site pro klientskou aplikaci a obnovit databázi k nové spravované instance pomocí `.bak` souboru:
 
-- [Vytvoření managed instance pomocí webu Azure portal](sql-database-managed-instance-get-started.md). Na webu Azure Portal nakonfigurujte potřebné parametry (uživatelského jména a hesla, počet jader, maximální velikosti úložiště) a automaticky vytvořit prostředí Azure sítě bez nutnosti znát podrobnosti o síti a požadavky na infrastrukturu. Můžete dejte pozor, abyste měli [typ předplatného](sql-database-managed-instance-resource-limits.md#supported-subscription-types) , který je povolen pro vytvoření spravované instance. Pokud máte vlastní sítě, který chcete použít, nebo chcete přizpůsobit sítě, naleznete v části Konfigurace síťového prostředí pro spravovanou instanci.
+- [Vytvoření managed instance pomocí webu Azure portal](sql-database-managed-instance-get-started.md). Na webu Azure Portal nakonfigurujte potřebné parametry (uživatelského jména a hesla, počet jader a množství maximální velikosti úložiště) a automaticky vytvořit prostředí Azure sítě bez nutnosti znát podrobnosti o síti a požadavky na infrastrukturu. Můžete dejte pozor, abyste měli [typ předplatného](sql-database-managed-instance-resource-limits.md#supported-subscription-types) , který je aktuálně povoleno vytvoření managed instance. Pokud máte vlastní sítě, kterou chcete použít, nebo chcete přizpůsobit sítě naleznete v tématu [konfigurace existující virtuální sítě pro spravovanou instanci Azure SQL Database](sql-database-managed-instance-configure-vnet-subnet.md) nebo [vytvoření virtuální sítě pro službu Azure SQL Database spravovaná instance](sql-database-managed-instance-create-vnet-subnet.md).
 - Spravovaná instance je vytvořena ve vlastní virtuální síť, bez veřejného koncového bodu. Pro přístup z aplikace klienta je vytvoření virtuálního počítače ve stejné virtuální síti (jiné podsíti) nebo vytvořit připojení VPN typu point-to-site k virtuální síti z klientského počítače pomocí jedné z těchto rychlých startech.
+
   - Vytvoření [virtuálního počítače Azure ve spravované instanci VNet](sql-database-managed-instance-configure-vm.md) připojením klienta aplikace, včetně SQL Server Management Studio.
   - Nastavit [připojení VPN typu point-to-site k vaší spravované instance](sql-database-managed-instance-configure-p2s.md) z klientského počítače, na kterých máte SQL Server Management Studio a další aplikace připojení klienta. Toto je druhý operand dvě možnosti pro připojení k vaší spravované instanci a k jeho virtuální síti.
 
   > [!NOTE]
   > Můžete také použít expressroute nebo připojení site-to-site z místní sítě, ale tyto přístupy jsou mimo rozsah v těchto rychlých startech.
 
-Po vytvoření managed instance a konfigurovat přístup, můžete začít migrovat databáze umístěna na místní SQL Server nebo virtuální počítače Azure. Migrace selže, pokud máte některé nepodporované funkce ve zdrojové databázi, kterou chcete migrovat. Pokud chcete zabránit selhání a zkontrolovat kompatibilitu, můžete nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , která analyzuje vaše databáze na SQL serveru a najde některý problém, který může způsobit zablokování migraci do spravované instance, jako je například existence [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) nebo víc souborů protokolů. Pokud tyto problémy vyřešit, vaše databáze jsou připravené k migraci do spravované instance. [Databáze služby experimentování ve službě pomocníka](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) je další užitečná nástroj, který může zaznamenávat vaše úlohy na serveru SQL Server a opětovného přehrání ho ve službě managed instance, můžete určit chystají možné problémy s výkonem, pokud provádíte migraci do spravované instance.
+Po vytvoření managed instance a konfigurovat přístup, můžete začít migrovat databáze z místního SQL serveru nebo virtuálních počítačích Azure. Migrace selže, pokud máte některé nepodporované funkce ve zdrojové databázi, kterou chcete migrovat. Pokud chcete zabránit selhání a zkontrolovat kompatibilitu, můžete nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , která analyzuje vaše databáze na SQL serveru a najde některý problém, který může způsobit zablokování migraci do spravované instance, jako je například existence [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) nebo víc souborů protokolů. Pokud tyto problémy vyřešit, vaše databáze jsou připravené k migraci do spravované instance. [Databáze služby experimentování ve službě pomocníka](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) je další užitečná nástroj, který může zaznamenávat vaše úlohy na serveru SQL Server a opětovného přehrání ho ve službě managed instance, můžete určit chystají možné problémy s výkonem, pokud provádíte migraci do spravované instance.
 
 Jakmile jste si jisti, že můžete migrovat databáze do spravované instance, nativní možnosti obnovení systému SQL Server můžete obnovit databázi do managed instance z `.bak` souboru. Rychlý start, naleznete v tématu [obnovit ze zálohy do spravované instance](sql-database-managed-instance-get-started-restore.md). V tomto rychlém startu, můžete obnovit ze `.bak` souboru uloženého v Azure Blob storage pomocí `RESTORE` příkazu jazyka Transact-SQL. 
 
@@ -67,5 +68,5 @@ Pokud již máte virtuální síť a podsíť kde byste chtěli nasadit spravova
 ## <a name="next-steps"></a>Další postup
 
 - Najít [podrobný seznam podporovaných funkcí ve spravované instanci zde](sql-database-features.md) a [podrobnosti a známé problémy většinou neřeší](sql-database-managed-instance-transact-sql-information.md).
-- Další informace o [technické vlastnosti Managed Instance](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits). 
+- Další informace o [technické vlastnosti spravovanou instanci](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits). 
 - Jak najít pokročilejší-pro uživatele [použití ve službě Azure SQL Database managed instance](sql-database-howto-managed-instance.md). 

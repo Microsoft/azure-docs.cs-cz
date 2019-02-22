@@ -8,39 +8,39 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e499a0f7bec47e672c599c729a15cc3e3d04a28a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 38ba8ccad63120d33ce06faf39439bb58706e78d
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471609"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56659947"
 ---
 ## <a name="create-a-storage-account-for-event-processor-host"></a>Vytvoření účtu úložiště pro agenta Event Processor Host
 Event Processor Host je inteligentní agent, který zjednodušuje přijímání událostí ze služby Event Hubs tím, že spravuje trvalé kontrolní body a paralelní příjmy. K vytváření kontrolních bodů vyžaduje Event Processor Host účet úložiště. Následující příklad ukazuje, jak vytvořit účet úložiště a získat jeho klíče pro přístup:
 
-1. V Azure portal a vyberte **vytvořit prostředek** v levém horním rohu obrazovky.
+1. Na webu Azure Portal v levém horním rohu obrazovky vyberte **Vytvořit prostředek**.
 
 2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
    
-    ![Zvolit účet úložiště](./media/event-hubs-create-storage/create-storage1.png)
+    ![Výběr účtu úložiště](./media/event-hubs-create-storage/create-storage1.png)
 
-3. Na **vytvořit účet úložiště** stránce, proveďte následující kroky: 
+3. Na stránce **Vytvořit účet úložiště** proveďte následující kroky: 
 
     1. Zadejte název účtu úložiště. 
-    2. Zvolte předplatné Azure, které obsahuje centra událostí.
-    3. Vyberte skupinu prostředků, který má centra událostí.
-    4. Vyberte umístění, do kterého se má prostředek vytvořit. 
-    5. Pak klikněte na tlačítko **revize + vytvořit**.
+    2. Zvolte předplatné Azure obsahující centrum událostí.
+    3. Vyberte skupinu prostředků obsahující centrum událostí.
+    4. Vyberte umístění, ve kterém se má prostředek vytvořit. 
+    5. Pak klikněte na **Zkontrolovat a vytvořit**.
    
-    ![Vytvořit účet úložiště – stránka](./media/event-hubs-create-storage/create-storage2.png)
+    ![Stránka Vytvořit účet úložiště](./media/event-hubs-create-storage/create-storage2.png)
 
-4. Na **zkontrolujte + vytvořit** stránky, zkontrolujte hodnoty a vyberte **vytvořit**. 
+4. Na stránce **Zkontrolovat a vytvořit** zkontrolujte hodnoty a vyberte **Vytvořit**. 
 
-    ![Zkontrolujte nastavení účtu úložiště a vytvořit](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. Po zobrazení **nasazení proběhla úspěšně** zprávu, vyberte **je teď k prostředku** v horní části stránky. Na stránce účtu úložiště můžete také spustit tak, že váš účet úložiště vyberete ze seznamu prostředků.  
+    ![Kontrola nastavení účtu úložiště a jeho vytvoření](./media/event-hubs-create-storage/review-create-storage-account.png)
+5. Jakmile se zobrazí **nasazení proběhla úspěšně** zprávu, vyberte **přejít k prostředku** v horní části stránky. Na stránce účtu úložiště můžete také spustit tak, že váš účet úložiště vyberete ze seznamu prostředků.  
 
-    ![Vyberte účet úložiště z nasazení](./media/event-hubs-create-storage/select-storage-deployment.png) 
-7. V **Essentials** okně **objekty BLOB**. 
+    ![Výběr účtu úložiště z nasazení](./media/event-hubs-create-storage/select-storage-deployment.png) 
+7. V okně **Základy** vyberte **Objekty blob**. 
 
     ![Vyberte službu, objekty BLOB](./media/event-hubs-create-storage/select-blobs-service.png)
 1. Vyberte **+ kontejner** v horní části stránky, zadejte **název** pro kontejner a vyberte **OK**. 

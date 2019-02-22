@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 26b083069380d7bf107cd3be54cb2e4786789e11
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407703"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593859"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
 
@@ -33,11 +33,11 @@ Rozšíření PowerShell DSC pro Windows je publikována a podporované společn
 
 Rozšíření DSC podporuje následující operační systém
 
-Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1, klient Windows 7/8.1
+Windows Server. 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1, klient Windows 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření DSC pro Windows vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
+Rozšíření DSC pro Windows vyžaduje, aby cílového virtuálního počítače moci komunikovat s Azure a umístění konfiguračního balíčku (souboru .zip), pokud je uložen v umístění mimo Azure. 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -47,12 +47,12 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-10-01",
   "location": "<location>",
   "properties": {
     "publisher": "Microsoft.Powershell",
     "type": "DSC",
-    "typeHandlerVersion": "2.73",
+    "typeHandlerVersion": "2.77",
     "autoUpgradeMinorVersion": true,
     "settings": {
         "wmfVersion": "latest",
@@ -100,23 +100,23 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2018-10-01 | date |
 | vydavatele | Microsoft.Powershell.DSC | řetězec |
 | type | DSC | řetězec |
-| typeHandlerVersion | 2,73 | int |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Nastavení hodnoty vlastností
 
 | Název | Typ dat | Popis
 | ---- | ---- | ---- |
 | settings.wmfVersion | řetězec | Určuje verzi Windows Management Framework, který musí být nainstalován na váš virtuální počítač. Nastavení této vlastnosti 'nejnovější' nainstaluje nejaktuálnější verzi WMF. Pouze aktuální možné hodnoty této vlastnosti jsou "4.0", '5.0' a 'nejnovější'. Tyto možné hodnoty jsou v souladu s aktualizací. Výchozí hodnota je 'nejnovější'. |
-| Settings.Configuration.URL | řetězec | Určuje adresu URL umístění, ze kterého chcete stáhnout konfigurační soubor zip DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationUrlSasToken hodnotu váš token SAS. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.script a/nebo settings.configuration.function.
-| Settings.Configuration.Script | řetězec | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce stažený z adresy URL určený vlastností configuration.url souboru zip. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.script.
-| Settings.Configuration.Function | řetězec | Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu určené configuration.script. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.function.
+| settings.configuration.url | řetězec | Určuje adresu URL umístění, ze kterého chcete stáhnout konfigurační soubor zip DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationUrlSasToken hodnotu váš token SAS. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.script a/nebo settings.configuration.function.
+| settings.configuration.script | řetězec | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce stažený z adresy URL určený vlastností configuration.url souboru zip. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.script.
+| settings.configuration.function | řetězec | Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu určené configuration.script. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.function.
 | settings.configurationArguments | Kolekce | Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost se šifrovat nebude.
 | settings.configurationData.url | řetězec | Určuje adresu URL z nichž lze stáhnout soubor konfiguračních dat (.pds1) použít jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationDataUrlSasToken hodnotu váš token SAS.
 | settings.privacy.dataEnabled | řetězec | Povolí nebo zakáže shromažďování telemetrie. Pouze možné hodnoty této vlastnosti jsou "Zapnout", "Zakázat", ", nebo $null. Opuštění tato vlastnost prázdná nebo mít hodnotu null bude povolit telemetrii
-| settings.advancedOptions.forcePullAndApply | BOOL | Povolí rozšíření DSC k aktualizaci a o přijetí změn při aktualizaci režimu vydává konfigurace DSC.
+| settings.advancedOptions.forcePullAndApply | Bool | Povolí rozšíření DSC k aktualizaci a o přijetí změn při aktualizaci režimu vydává konfigurace DSC.
 | settings.advancedOptions.downloadMappings | Kolekce | Definuje alternativní umístění pro stažení závislosti, jako jsou WMF a .NET
 
 ### <a name="protected-settings-property-values"></a>Chráněné hodnoty nastavení vlastností
@@ -130,26 +130,9 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazování jedné nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení. Ukázka šablony Resource Manageru, který obsahuje agenta Log Analytics rozšíření virtuálního počítače můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
-
-JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění konfigurace JSON má vliv na hodnotu názvu prostředku a typů. 
-
-Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače. Při vkládání rozšíření JSON v kořenovém adresáři šablony, název prostředku obsahuje odkaz na nadřazený virtuální počítač a typ odráží vnořené konfigurace.  
-
-
-## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
-
-Rozhraní příkazového řádku Azure je možné nasadit agenta Log Analytics rozšíření virtuálního počítače do existujícího virtuálního počítače. Nahraďte klíč Log Analytics a Log Analytics ID soubory z pracovního prostoru Log Analytics. 
-
-```azurecli
-az vm extension set \
-  --resource-group myResourceGroup \
-  --vm-name myVM \
-  --name Microsoft.Powershell.DSC \
-  --publisher Microsoft.Powershell \
-  --version 2.73 --protected-settings '{}' \
-  --settings '{}'
-```
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru.
+Šablony jsou ideální při nasazování jedné nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení.
+Ukázka šablony Resource Manageru, která zahrnuje rozšíření DSC pro Windows můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 

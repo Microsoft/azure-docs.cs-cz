@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 10dc7a2c7e4de44979ec72b1d292c69866e1faae
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6b78027191d72c10b20c9d09a92c82be4a9e3e05
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326404"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650797"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Převést Azure spravované disky úložiště úroveň ze standard na premium a naopak
 
@@ -134,17 +134,20 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 az vm start --ids $vmId 
 ```
 
-## <a name="convert-using-the-azure-portal"></a>Převod pomocí webu Azure portal
+## <a name="convert-managed-disks-between-standard-and-premium-in-azure-portal"></a>Převést na spravované disky mezi úrovněmi standard a premium na webu Azure portal
 
-Můžete také převést nespravovaných disků na managed disks, webu Azure portal.
+Můžete převést spravované disky mezi úrovněmi standard a premium na webu Azure Portal.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
+2. Vyberte virtuální počítač ze seznamu **virtuálních počítačů** na portálu.
+3. Pokud není virtuální počítač zastavený, klikněte na tlačítko **Zastavit** horní části okna Přehled virtuálních počítačů a vyčkat, než virtuální počítač zastavit.
 3. V okně pro virtuální počítač, vyberte **disky** z nabídky.
-4. V horní části **disky** okně vyberte **migrace na spravované disky**.
-5. Pokud se váš virtuální počítač je ve skupině dostupnosti, bude se upozornění na **migrace na spravované disky** okno, které je potřeba převést první skupinu dostupnosti. Upozornění by měl mít odkaz kliknete na převést skupinu dostupnosti. Jakmile se převést skupinu dostupnosti nebo pokud váš virtuální počítač není ve skupině dostupnosti, klikněte na **migrace** zahájíte proces migrace disků na managed disks. 
+4. Vyberte disk, který má být převeden.
+5. Vyberte **konfigurace** z nabídky.
+6. Změnit **typ účtu** z **standardní HDD** k **Premium SSD**a naopak.
+7. Klikněte na tlačítko **Uložit** a zavřít okno disku.
 
-Virtuální počítač se zastaví a restartuje po dokončení migrace.
+Aktualizovat typ disku je účinné okamžité. Váš virtuální počítač můžete restartovat po převodu.
 
 ## <a name="next-steps"></a>Další postup
 

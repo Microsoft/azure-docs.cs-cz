@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 8b494e3f289d7b3a850a77f7f388cee542c088ed
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fecab4dc3a0674b0b64638676f4538af145b52ac
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821860"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652641"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika potíží s filtrováním na provoz sítě virtuálního počítače
 
@@ -77,13 +77,15 @@ I když platná pravidla zabezpečení se zobrazit pomocí virtuálního počít
 
 ## <a name="diagnose-using-powershell"></a>Diagnostikovat pomocí Powershellu
 
-Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné *AzureRM* modul prostředí PowerShell, verze 6.0.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzureRmAccount` přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions)].
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Získání platná pravidla zabezpečení pro síťové rozhraní s [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup). Následující příklad získá platná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic*, která je ve skupině prostředků s názvem *myResourceGroup*:
+Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné modul Azure PowerShell verze 1.0.0 nebo novějším. Spustit `Get-Module -ListAvailable Az` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzAccount` přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions)].
+
+Získání platná pravidla zabezpečení pro síťové rozhraní s [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup). Následující příklad získá platná pravidla zabezpečení pro síťové rozhraní s názvem *myVMVMNic*, která je ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveNetworkSecurityGroup `
-  -NetworkInterfaceName myVMVMNic interface `
+Get-AzEffectiveNetworkSecurityGroup `
+  -NetworkInterfaceName myVMVMNic `
   -ResourceGroupName myResourceGroup
 ```
 
@@ -95,7 +97,7 @@ Pokud stále máte problém připojením, přečtěte si téma [další diagnost
 Pokud neznáte název síťového rozhraní, ale znáte název je síťové rozhraní připojené k virtuálnímu počítači, tyto příkazy vrátí ID všechna síťová rozhraní připojená k virtuálnímu počítači:
 
 ```azurepowershell-interactive
-$VM = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
+$VM = Get-AzVM -Name myVM -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```
 

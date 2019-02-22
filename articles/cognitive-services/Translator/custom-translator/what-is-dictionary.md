@@ -9,18 +9,18 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bc297fd4cdda8cdb3dc618b73e91d2f4e31e8b6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 87ea4edd9bb548701d6bcf63dd542ed6e35d9f7f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212405"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585540"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 
 Slovník je zarovnaný páru dokumentů, která určuje seznam fráze nebo věty a jejich odpovídající překlady. Použití slovníku v trénování, pokud chcete Microsoft Translatoru vždy přeložit všechny instance zdroje fráze nebo větu pomocí překladu, který jste zadali ve slovníku. Slovníky jsou někdy označovány jako glosáře pro nebo pojem základních tříd. Slovník můžete představit jako hrubou silou "Kopírovat a nahradit" pro všemi podmínkami v seznamu.
 
-Slovníky fungovat pouze pro projekty v párech jazyka, které mají plně podporovaný systém Neurální strojový překlad (sítí NMT) společnosti Microsoft za nimi stojí. Zobrazit http://www.aka.ms/translatorlanguages úplný seznam jazyků.
+Slovníky fungovat pouze pro projekty v párech jazyka, které mají plně podporovaný systém Neurální strojový překlad (sítí NMT) společnosti Microsoft za nimi stojí. [Zobrazit úplný seznam jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>Fráze slovníku 
 Při cvičení modelu zahrnete fráze slovníku, je přeložen libovolné slovo nebo frázi, které jsou uvedeny v způsob, jakým jste zadali. Zbývající věty je přeložen jako obvykle. Fráze slovníku můžete použít k určení frázích, které nemá být přeložen tím, že poskytuje stejnou nepřeloženém frázi v souboru zdroj a cíl ve slovníku.

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: f613995dbdd787d0a031cb2c24d67c682b2d7cec
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: cb7ccc665cdf9867232580fd8b687b344e43116d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446364"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587272"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény 
 
@@ -42,7 +42,7 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Nastavení vlastního názvu domény pomocí webu Azure portal
 
 1. Přejděte k vaší instanci APIM v [webu Azure portal](https://portal.azure.com/).
-2. Vyberte **vlastní domény a SSL**.
+1. Vyberte **vlastní domény a SSL**.
     
     Existuje několik koncových bodů, ke kterým přiřadíte vlastního názvu domény. V současné době jsou k dispozici následující koncové body: 
     + **Proxy** (výchozí hodnota je: `<apim-service-name>.azure-api.net`), 
@@ -52,12 +52,16 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 
     >[!NOTE]
     > Můžete aktualizovat všechny koncové body nebo některé z nich. Běžně, zákazníci provést aktualizaci **Proxy** (Tato adresa URL slouží k volání rozhraní API prostřednictvím API Management) a **portál** (portál pro vývojáře adresy URL). **Správa** a **SCM** koncové body se používají interně zákazníci služby APIM a proto jsou méně často přiřazeny vlastního názvu domény.
-3. Vyberte koncový bod, který chcete aktualizovat. 
-4. V okně na pravé straně, klikněte na tlačítko **vlastní**.
 
-    + V **vlastní název domény**, zadejte název, který chcete použít. Například, `api.contoso.com`. <br/>Názvy domény se zástupnými znaky (například *. uživatel@doména.com) jsou také podporovány.
-    + V **certifikát**, zadejte platný. Soubor PFX, který chcete nahrát. 
-    + Má-li certifikát heslo, zadejte ho **heslo** pole.
+1. Vyberte koncový bod, který chcete aktualizovat. 
+1. V okně na pravé straně, klikněte na tlačítko **vlastní**.
+
+    + V **vlastní název domény**, zadejte název, který chcete použít. Například, `api.contoso.com`. Názvy domény se zástupnými znaky (například *. uživatel@doména.com) jsou také podporovány.
+    + V **certifikát**, vyberte certifikát ze služby Key Vault. Můžete také nahrát platný. PFX souboru a zadejte jeho **heslo**v případě, že certifikát je chráněný heslem.
+
+    > [!TIP]
+    > Pokud používáte Azure Key Vault ke správě certifikát SSL pro vlastní doménu, ujistěte se, že certifikát je vložen do služby Key Vault [jako *certifikát*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli *tajný klíč*. Pokud tento certifikát je nastavena na autorotate, API Management na nejnovější verzi automaticky převezmou.
+
 1. Kliknutím na tlačítko použít.
 
     >[!NOTE]

@@ -1,6 +1,6 @@
 ---
 title: Projekty skupiny prostředků Azure v sadě Visual Studio | Dokumentace Microsoftu
-description: Pomocí sady Visual Studio můžete vytvořit projekt skupiny prostředků Azure a nasadit tyto prostředky do Azure.
+description: Vytvoření projektu skupiny prostředků Azure a nasadit prostředky do Azure pomocí sady Visual Studio.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,22 +11,20 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0b00bff2b32ac9dd16d4d38ee35be006c0247bb8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 246ee5f8360869c1b0f901ee54d56e017ac8aeb7
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493421"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649675"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
 Pomocí sady Visual Studio můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení. V tomto článku nasadíte webovou aplikaci a SQL Database.  
 
 Tento článek popisuje, jak používat [Visual Studio 2017 s nainstalovanými sadami funkcí pro vývoj v Azure a sadami funkcí ASP.NET](/dotnet/azure/dotnet-tools). Pokud používáte Visual Studio 2015 Update 2 a Microsoft Azure SDK pro .NET 2.9, nebo Visual Studio 2013 a Azure SDK 2.9, prostředí je z velké části stejné.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-azure-resource-group-project"></a>Vytvoření projektu skupiny prostředků Azure
 
@@ -101,7 +99,7 @@ Parametr **storageType** je předdefinovaný a obsahuje povolené typy a také v
 }
 ```
 
-Visual Studio také poskytuje technologii IntelliSense, která vám pomůže pochopit, které vlastnosti jsou při úpravě šablony dostupné. Pokud chcete třeba upravit vlastnosti pro plán služby App Service, přejděte k prostředku **HostingPlan** a přidejte hodnotu **properties**. Všimněte si, že IntelliSense zobrazuj dostupné hodnoty a poskytuje k nim také popis.
+Visual Studio také poskytuje technologii intellisense, abychom vám pomohou pochopit, vlastnosti, které jsou k dispozici při úpravách v šabloně. Pokud chcete třeba upravit vlastnosti pro plán služby App Service, přejděte k prostředku **HostingPlan** a přidejte hodnotu **properties**. Všimněte si, že IntelliSense zobrazuj dostupné hodnoty a poskytuje k nim také popis.
 
 ![zobrazení technologie IntelliSense](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
@@ -148,7 +146,9 @@ Teď můžete svůj projekt nasadit. Když nasadíte projekt skupiny prostředk�
 5. Stisknutím tlačítka **Nasadit** nasadíte projekt do Azure. Otevře se powershellová konzola mimo instanci sady Visual Studio. Po zobrazení výzvy zadejte v powershellové konzole heslo správce SQL Serveru. **Konzola PowerShellu může být skrytá za jinými položkami nebo minimalizovaná na hlavním panelu.** Najděte ji, vyberte ji a zadejte heslo.
    
    > [!NOTE]
-   > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Rutiny Azure PowerShell jsou zapotřebí k úspěšnému nasazení skupin prostředků. Pokud k tomu budete vyzváni, nainstalujte je. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps).
+   > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Pokud k tomu budete vyzváni, nainstalujte je. Je třeba moduly Azure Powershellu k úspěšnému nasazení skupin prostředků. Skript Powershellu v projektu nefunguje s novými [modul Azure PowerShell Az](/powershell/azure/new-azureps-module-az). 
+   >
+   > Další informace najdete v tématu [nainstalovat a nakonfigurovat moduly Azure Powershellu](/powershell/azure/azurerm/install-azurerm-ps).
    > 
    > 
 6. Nasazení může zabrat několik minut. V oknech **Výstup** se zobrazí stav nasazení. Po dokončení nasazení vám poslední zpráva oznámí úspěšné nasazení. Bude vypadat zhruba následovně:

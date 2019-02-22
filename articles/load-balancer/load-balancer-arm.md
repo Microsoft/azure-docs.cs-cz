@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 596ac871067886ee3124c0f21beb35cb3b8fe1ae
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235033"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593807"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Podpora Azure Resource Manageru pomocí nástroje pro vyrovnávání zatížení Azure
 
@@ -30,9 +30,9 @@ S Resource Managerem se Azure Load Balancer obsahuje následující podřízené
 
 * Konfiguraci front-end IP adresy – nástroj pro vyrovnávání zatížení může zahrnovat jeden nebo více front-endové IP adresy, jinak známé jako virtuální IP adresy (VIP). Tyto IP adresy slouží jako vstup pro přenos.
 * Back endový fond adres – Toto jsou IP adresy, které jsou spojené s virtuální počítač síťových adaptérů (NIC) ke kterému se distribuuje zatížení.
-* Pravidla Vyrovnávání zatížení – vlastnost pravidla mapuje danou front-endová IP a kombinace portu na sadu back-end IP adresy a portu. Nástroj pro vyrovnávání zatížení může mít několik pravidel vyrovnávání zatížení. Každé pravidlo je kombinace IP front-endu a port a back-end IP a port přidružený k virtuálním počítačům.
+* Pravidla Vyrovnávání zatížení – vlastnost pravidla mapuje danou front-endová IP a kombinace portu na sadu back endové IP adresy a portu. Nástroj pro vyrovnávání zatížení může mít několik pravidel vyrovnávání zatížení. Každé pravidlo je kombinace IP front-endová IP a port a back-end a port přidružený k virtuálním počítačům.
 * Sondy – testy umožňují udržovat přehled o stavu instance virtuálních počítačů. Pokud selže test stavu instance virtuálního počítače je automaticky vyřazen ze smyčky.
-* Pravidla příchozího překladu adres – pravidla NAT definující příchozí provoz prostřednictvím protokolu IP front-endu a distribuovat do back-end IP.
+* Pravidla příchozího překladu adres – NAT pravidla definující příchozí provoz prostřednictvím protokolu IP front-endu a distribuovat do back endovou IP adresu.
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
@@ -58,7 +58,7 @@ Příklady šablon:
 
 Začínáme s Azure Resource Manageru rutiny, nástroje příkazového řádku a rozhraní REST API
 
-* [Rutiny Azure sítě](https://docs.microsoft.com/powershell/module/azurerm.network#networking) slouží k vytvoření nástroje pro vyrovnávání zatížení.
+* [Rutiny Azure sítě](https://docs.microsoft.com/powershell/module/az.network#networking) slouží k vytvoření nástroje pro vyrovnávání zatížení.
 * [Jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-ilb-arm-ps.md)
 * [Použití Azure CLI s Azure Resource Management](../xplat-cli-azure-resource-manager.md)
 * [Rozhraní REST API nástroje pro vyrovnávání zatížení](https://msdn.microsoft.com/library/azure/mt163651.aspx)

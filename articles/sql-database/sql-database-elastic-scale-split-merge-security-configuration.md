@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563214"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593314"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 
@@ -121,24 +121,29 @@ Výchozí konfigurace zakazuje veškerý přístup ke koncovému bodu HTTP. Toto
 Výchozí konfigurace umožňuje veškerý přístup ke koncovému bodu HTTPS. Toto nastavení může být dále s omezeným přístupem.
 
 ### <a name="changing-the-configuration"></a>Změna konfigurace
-Skupina pravidla pro řízení přístupu, které se vztahují a koncový bod se konfigurují v **<EndpointAcls>** tématu **konfigurační soubor služby**.
+Skupina pravidla pro řízení přístupu, které se vztahují a koncový bod se konfigurují v  **\<EndpointAcls >** tématu **konfigurační soubor služby**.
 
-    <EndpointAcls>
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
-    </EndpointAcls>
+```xml
+<EndpointAcls>
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
+</EndpointAcls>
+```
 
-Jsou nakonfigurovaná pravidla ve skupině pro řízení přístupu v <AccessControl name=""> oddílu služby konfiguračního souboru. 
+Jsou nakonfigurovaná pravidla ve skupině pro řízení přístupu v \<AccessControl name = "" > oddílu služby konfiguračního souboru. 
 
 Tento formát je vysvětlený v dokumentaci k seznamy řízení přístupu k síti.
 Například pokud chcete povolit jen IP adresy v rozsahu 100.100.0.0 k 100.100.255.255 přístup ke koncovému bodu HTTPS, pravidel bude vypadat takto:
 
-    <AccessControl name="Retricted">
-      <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
-      <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
-    </AccessControl>
-    <EndpointAcls>
+```xml
+<AccessControl name="Retricted">
+    <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
+    <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
+</AccessControl>
+<EndpointAcls>
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
+</EndpointAcls>
+```
 
 ## <a name="denial-of-service-prevention"></a>Odmítnutí služby ochrany před únikem informací
 Existují dva různé mechanismy, které jsou podporované pro odhalování a prevenci útoků s cílem odepření služeb:
@@ -154,22 +159,29 @@ Tyto jsou založené na funkcích, které jsou popsána v dynamické zabezpečen
 ## <a name="restricting-number-of-concurrent-accesses"></a>Omezíte počet souběžných přístupů
 Nastavení, které toto chování nakonfigurovat, musí být:
 
-    <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
-    <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
+<Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```
 
 Změňte DynamicIpRestrictionDenyByConcurrentRequests na true, pokud chcete povolit tuto ochranu.
 
 ## <a name="restricting-rate-of-access"></a>Omezení frekvence přístupu
 Nastavení, které toto chování nakonfigurovat, musí být:
 
-    <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
-    <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
-    <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
+<Setting name="DynamicIpRestrictionMaxRequests" value="100" />
+<Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```
 
 ## <a name="configuring-the-response-to-a-denied-request"></a>Konfigurace odpověď na žádost o odepření
 Následující nastavení konfiguruje odpověď na žádost o odepření:
 
-    <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```xml
+<Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```
+
 Naleznete v dokumentaci pro ostatní podporované hodnoty pro dynamické zabezpečení protokolu IP ve službě IIS.
 
 ## <a name="operations-for-configuring-service-certificates"></a>Operace konfigurace certifikátů služby
@@ -232,12 +244,16 @@ Je podporován pouze na základě certifikátů ověření klienta a jeho zakáz
 
 Změna těchto nastavení na hodnotu false v konfiguračním souboru služby, chcete-li vypnout funkci:
 
-    <Setting name="SetupWebAppForClientCertificates" value="false" />
-    <Setting name="SetupWebserverForClientCertificates" value="false" />
+```xml
+<Setting name="SetupWebAppForClientCertificates" value="false" />
+<Setting name="SetupWebserverForClientCertificates" value="false" />
+```
 
 V nastavení certifikátu certifikační Autority, zkopírujte se stejným kryptografickým otiskem jako certifikát SSL:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="create-a-self-signed-certification-authority"></a>Vytvoření podepsaný certifikační autoritou
 Proveďte následující kroky k vytvoření certifikátu podepsaného svým držitelem tak, aby fungoval jako certifikační autorita:
@@ -280,11 +296,15 @@ Nahrávání certifikátu s existujícím nebo vygenerovat. Soubor CER pomocí v
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>Certifikát certifikační Autority aktualizace v konfiguračním souboru služby
 Kryptografický otisk certifikátu nahrát do cloudové služby aktualizujte hodnoty kryptografického otisku následující nastavení v konfiguračním souboru služby:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 Aktualizujte hodnotu toto nastavení se stejným kryptografickým otiskem:
 
-    <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```xml
+<Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```
 
 ## <a name="issue-client-certificates"></a>Vystavování certifikátů klienta
 Jednotlivých oprávnění pro přístup ke službě musí mít klientský certifikát vydaný pro svoje výhradní použití a zvolit silné heslo k ochraně jeho privátní klíč. 
@@ -338,17 +358,23 @@ Jednotlivé uživatele, pro kterého se klientský certifikát vystavil musí n�
 * V dialogovém okně certifikátů, které se otevře vyberte kartu Podrobnosti
 * Ujistěte se, že zobrazit se zobrazuje všechny
 * Vyberte pole s názvem kryptografický otisk do seznamu
-* Zkopírujte hodnotu kryptografického otisku ** odstranění neviditelné znaky znakové sady Unicode před první číslice ** odstranit jenom mezery.
+* Zkopírujte hodnotu kryptografického otisku
+  * Odstranit neviditelné znaky znakové sady Unicode před první číslice
+  * Odstranit všechny mezery
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>Konfigurace klientů povolené v konfiguračním souboru služby
 Aktualizujte hodnotu následující nastavení v konfiguračním souboru služby s čárkou oddělený seznam kryptografických otisků klientských certifikátů, povolí se přístup ke službě:
 
-    <Setting name="AllowedClientCertificateThumbprints" value="" />
+```xml
+<Setting name="AllowedClientCertificateThumbprints" value="" />
+```
 
 ## <a name="configure-client-certificate-revocation-check"></a>Konfigurace kontroly odvolání certifikátu klienta
 Ve výchozím nastavení nekontroluje s certifikační autoritou pro stav odvolání certifikátů klienta. Chcete-li kontrol, pokud certifikační autorita, která vydala certifikáty klienta podporuje tyto kontroly, změňte s některou z hodnot fronty definovaných ve výčtu X509RevocationMode následující nastavení:
 
-    <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```xml
+<Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```
 
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Vytvořte soubor PFX pro certifikáty podepsané svým držitelem šifrování
 Šifrovací certifikát spusťte tento příkaz:
@@ -381,7 +407,9 @@ Nahrávání certifikátu s existujícím nebo vygenerovat. Soubor PFX pomocí p
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>Aktualizovat certifikát pro šifrování v konfiguračním souboru služby
 Aktualizujte hodnotu kryptografického otisku z následujících nastavení v konfiguračním souboru služby s kryptografickým otiskem certifikátu nahrát do cloudové služby:
 
-    <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="common-certificate-operations"></a>Běžné operace s certifikáty
 * Konfigurace certifikátu SSL
@@ -452,7 +480,9 @@ Na webu [Azure Portal](https://portal.azure.com/)
 ## <a name="other-security-considerations"></a>Další informace o zabezpečení
 Nastavení protokolu SSL, které jsou popsané v tomto dokumentu šifrování komunikace mezi službou a klienty při použití koncového bodu HTTPS. To je důležité, protože přihlašovací údaje pro přístup k databázi a případně také další citlivé informace, které jsou obsaženy v komunikaci. Upozorňujeme však, že služba ukládá vnitřní stav, včetně přihlašovacích údajů, v jeho vnitřní tabulky ve službě Microsoft Azure SQL database, který jste zadali pro metadata úložiště v rámci vašeho předplatného Microsoft Azure. Databáze byla definována jako součást následující nastavení v konfiguračním souboru služby (. Soubor .CSCFG): 
 
-    <Setting name="ElasticScaleMetadata" value="Server=…" />
+```xml
+<Setting name="ElasticScaleMetadata" value="Server=…" />
+```
 
 Přihlašovací údaje uložené v této databázi se zašifrují. Ale jako osvědčený postup, zajistěte webových a pracovních rolí vaše nasazení služby se udržovat a bezpečné jako služby, obě mají přístup k databázi metadat a certifikát, který slouží k šifrování a dešifrování uložené přihlašovací údaje. 
 

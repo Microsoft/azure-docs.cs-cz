@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 2/8/2019
+ms.date: 2/20/2019
 ms.author: moderakh
-ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a090f40bcbc0dab1f685c02308243aff8fbac9fd
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416271"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588462"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -43,6 +43,11 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 | **Minimální podporovaný modul runtime**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+* Některé chyby opravené v přímém režimu.
+* Zdokonalené funkce protokolování v přímém režimu.
+* Vylepšení připojení správy.
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 * Přímý režim připojení je nyní obecně Available(GA). Ukázku, která používá přímý režim připojení najdete v tématu [azure-cosmos DB java](https://github.com/Azure/azure-cosmosdb-java) úložiště GitHub.
@@ -135,6 +140,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.4.1](#2.4.1) |20. února 2019|--- |
 | [2.4.0](#2.4.0) |8. února 2019|--- |
 | [2.4.0-beta-1](#2.4.0-beta-1) |4. února 2019|--- |
 | [2.3.1](#2.3.1) |15. ledna 2019|--- |

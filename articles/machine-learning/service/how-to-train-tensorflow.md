@@ -1,7 +1,7 @@
 ---
-title: Trénování modelů s TensorFlow
+title: Trénování modelů s TensorFlow & Keras
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak spustit jeden uzel nebo pro distribuované trénování TensorFlow modelů s TensorFlow odhad
+description: Zjistěte, jak spustit jeden uzel nebo pro distribuované trénování TensorFlow a Keras modelů s TensorFlow a Keras odhady
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 02/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c76a94695114888ca8946106528fe179ff81c811
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b1ee41c6d543ac4f52b537ebc8054f2986c4217c
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244721"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649575"
 ---
-# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>Trénování TensorFlow modelů pomocí služby Azure Machine Learning
+# <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trénování TensorFlow a Keras modelů pomocí služby Azure Machine Learning
 
 Pro výuku hluboké neuronové sítě (DNN) s využitím TensorFlow, Azure Machine Learning nabízí vlastní `TensorFlow` třídu `Estimator`. Azure SDK `TensorFlow` estimator (nechcete conflated s [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) třídy) vám umožní snadno odesílat úlohy trénování TensorFlow pro spuštění jedním uzlem a distribuované na výpočetní prostředky Azure.
 
@@ -39,7 +39,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
                     script_params=script_params,
                     compute_target=compute_target,
                     entry_script='train.py',
-                    conda_packages=['scikit-learn'],
+                    conda_packages=['scikit-learn'], # in case you need scikit-learn in train.py
                     use_gpu=True)
 ```
 
@@ -60,6 +60,21 @@ Pak odešlete úlohu TensorFlow:
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="keras-support"></a>Podpora Keras
+[Keras](https://keras.io/) je Oblíbené vysoké úrovně DNN rozhraní Python API, která podporuje TensorFlow, CNTK nebo Theano jako back-EndY. Pokud používáte TensorFlow jako back-end, snadno můžete TensFlow estimator k natrénování modelu Keras. Tady je příklad TensorFlow odhaduje se přidá do něj Keras:
+
+```Python
+from azureml.train.dnn import TensorFlow
+
+keras_est = TensorFlow(source_directory='./my-keras-proj',
+                       script_params=script_params,
+                       compute_target=compute_target,
+                       entry_script='keras_train.py',
+                       conda_packages=['keras'], # just add keras through conda
+                       use_gpu=True)
+```
+Výše uvedené konstruktor estimator TensorFlow instruuje služby Azure Machine Learning k instalaci Keras prostřednictvím Conda do prostředí pro spuštění. A `keras_train.py` pak můžete importovat rozhraní Keras API k natrénování modelu Keras. Úplný příklad, prozkoumejte [tento poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb).
 
 ## <a name="distributed-training"></a>Distribuované trénování
 Odhad TensorFlow také umožňuje trénování modelů ve velkém měřítku napříč clustery CPU a GPU virtuálních počítačů Azure. Můžete snadno spouštět distribuované trénování tensorflowu se několik volání rozhraní API, zatímco bude Azure Machine Learning spravovat na pozadí, infrastruktury a potřeby provádět tyto úlohy Orchestrace.
@@ -92,11 +107,11 @@ Parametr | Popis | Výchozí
 --|--|--
 `node_count` | Počet uzlů pro trénovací úlohu. | `1`
 `process_count_per_node` | Počet procesů (nebo "pracovníky") pro spuštění na každý uzel.|`1`
-`distributed_backend` | Back-endu pro spouštění distribuovaných školení, která nabízí odhadu prostřednictvím MPI. Pokud chcete provést paralelní nebo distribuované trénování (třeba `node_count`> 1 nebo `process_count_per_node`> 1 nebo obě) MPI (a Horovod), nastavte `distributed_backend='mpi'`. Implementace MPI používá technologii Azure Machine Learning je [otevřít MPI](https://www.open-mpi.org/). | `None`
+`distributed_backend` | Back-endu pro spouštění distribuovaných školení, která nabízí odhadu prostřednictvím MPI. Pokud chcete provést paralelní nebo distribuované trénování (například `node_count`> 1 nebo `process_count_per_node`> 1 nebo obě) MPI (a Horovod), nastavte `distributed_backend='mpi'`. Implementace MPI používá technologii Azure Machine Learning je [otevřít MPI](https://www.open-mpi.org/). | `None`
 
 Výše uvedený příklad spustí distribuované trénování s dva pracovní procesy, jeden pracovní proces na jeden uzel.
 
-Horovod a jeho závislosti se nainstaluje za vás, takže ho můžete jednoduše importovat v cvičný skript `train.py` následujícím způsobem:
+Horovod a jeho závislosti se nainstaluje za vás, tak importujte ji do vašeho skriptu školení `train.py` následujícím způsobem:
 
 ```Python
 import tensorflow as tf
@@ -173,8 +188,7 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>Příklady
 
-Poznámkové bloky v distribuované obsáhlého learningu naleznete v tématu:
-* [How-to-use-azureml/Training-with-Deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
+Prozkoumejte různé [poznámkových bloků v distribuované obsáhlého learningu na Githubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

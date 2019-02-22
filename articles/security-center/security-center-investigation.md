@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7763807fdb5fcff7e93d54bf5a851cd4443427d3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8b2e42759ba2bffef28e1bf74e07bc149027ab7a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107187"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651755"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Vyšetřování incidentů a výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.
@@ -29,8 +29,10 @@ Funkce šetření ve službě Security Center umožňuje třídit, porozumět ro
 
 Cílem je zjednodušit proces šetření propojením všech entit ([výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), uživatelů, počítačů a incidentů) souvisejících s incidentem, který vyšetřujete.  Služba Security Center to dokáže díky korelaci relevantních dat se všemi souvisejícími entitami a zveřejnění této korelace v podobě interaktivního grafu, který pomáhá procházet objekty a vizualizovat relevantní informace.
 
+
 > [!NOTE]
-> [Vlastní upozornění](security-center-custom-alert.md) nepodporuje funkci šetření Security Center.
+    > * [Vlastní upozornění](security-center-custom-alert.md) nepodporuje funkci šetření Security Center.
+    > * Šetření je podporována pouze pro výstrahy na základě dat shromážděných ze serverů Windows.
 >
 >
 

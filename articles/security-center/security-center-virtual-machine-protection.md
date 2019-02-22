@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: 8dcaa9b98292e66d81daf3d115159b0c0c1124af
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0b548acc92ab1efedab963e9bd3318e8525ffee4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106715"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649556"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
@@ -159,6 +159,24 @@ Existují tři typy ikon v tomto seznamu:
  -  Vyberte ze seznamu popis posouzení, seznam prostředků není v pořádku a v pořádku a seznam nezkontrolované prostředky předané posouzení. Je na kartě pro prostředky není v pořádku, ale tento seznam je prázdný, vždy od předaný posouzení.
 
     ![Náprava služby App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+
+## <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
+Security Center automaticky zjišťuje, zda máte sad škálování a doporučí vám jeho instalaci agenta Microsoft Monitoring Agent v těchto škálovacích sadách. 
+
+Chcete-li nainstalovat agenta Microsoft Monitoring Agent: 
+
+1. Vyberte toto doporučení **nainstalovat agenta monitorování na škálovací sadu virtuálních počítačů**. Můžete získat seznam nemonitorované škálovací sady.
+2. Vyberte není v pořádku, škálovací sady. Postupujte podle pokynů k instalaci agenta monitorování pomocí existujícího mají údaj vyplněný pracovního prostoru nebo vytvořte novou. Ujistěte se, že nastavení pracovního prostoru [cenovou úroveň](security-center-pricing.md) Pokud není nastavená.
+
+ ![Nainstalujte MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+Pokud chcete nastavit nové škálovací sady můžete automaticky nainstalovat agenta Microsoft Monitoring Agent:
+1. Přejděte ke službě Azure Policy a klikněte na tlačítko **definice**.
+2. Hledat zásady **agenta nasazení Log Analytics pro škálovací sady virtuálních počítačů Windows** a klikněte na něj.
+3. Klikněte na **Přiřadit**.
+4. Nastavte **oboru** a **pracovní prostor Log Analytics** a klikněte na tlačítko **přiřadit**.
+
+Pokud chcete nastavit všechny stávající škálovací sady, chcete-li nainstalovat agenta Microsoft Monitoring Agent, ve službě Azure Policy, přejděte na **nápravy** a použít stávající zásady k existující škálovací sady.
 
 
 ## <a name="compute-and-app-recommendations"></a>Doporučení pro výpočetní prostředky a aplikace

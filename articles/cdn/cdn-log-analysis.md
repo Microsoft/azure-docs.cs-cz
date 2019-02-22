@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: magattus
-ms.openlocfilehash: 45b3698dd77bda815218b43405d64819c3e4789f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ef713c954d6eab05259547a277db12a1e9036bcf
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091262"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650542"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Analýza vzorů využití Azure CDN
 
@@ -27,7 +27,7 @@ Po povolení CDN pro aplikaci monitorovat využití CDN, zkontrolovat stav vaš�
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Základní analýza prostřednictvím diagnostické protokoly Azure
 
-Základní analýza je k dispozici pro koncové body CDN pro všechny cenové úrovně. Protokoly diagnostiky Azure umožňují základní analýzy nelze exportovat do služby Azure storage, služby event hubs a Azure Log Analytics. Azure Log Analytics nabízí řešení pomocí grafů, které se dají konfigurovat uživatele a přizpůsobitelné. Další informace o diagnostické protokoly Azure najdete v tématu [diagnostické protokoly Azure](cdn-azure-diagnostic-logs.md).
+Základní analýza je k dispozici pro koncové body CDN pro všechny cenové úrovně. Základní analýza, export do služby Azure storage, služby event hubs umožňují protokoly diagnostiky Azure nebo protokoly Azure monitoru. Protokoly služby Azure Monitor nabízí řešení pomocí grafů, které se dají konfigurovat uživatele a přizpůsobitelné. Další informace o diagnostické protokoly Azure najdete v tématu [diagnostické protokoly Azure](cdn-azure-diagnostic-logs.md).
 
 ## <a name="verizon-core-reports"></a>Verizon základní sestavy
 

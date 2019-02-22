@@ -17,14 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a8a92645a0a0c4b35d06dc6397219e5ff25e25e9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 49a6c91587905a8f7086b46b275a5078197939eb
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429500"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649947"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Propojení virtuálních sítí se partnerský vztah virtuální sítě pomocí Powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztahu virtuálních sítí. Po vytvoření partnerského vztahu virtuálních sítí budou moct prostředky v obou virtuálních sítích komunikovat mezi sebou se stejnou latencí a šířkou pásma, jako kdyby byly ve stejné virtuální síti. V tomto článku získáte informace o těchto tématech:
 
@@ -37,91 +39,91 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-virtual-networks"></a>Vytvoření virtuálních sítí
 
-Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků s [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Vytvořte virtuální síť pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork1* s předponou adresy *10.0.0.0/16*.
+Vytvoření virtuální sítě s [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVirtualNetwork1* s předponou adresy *10.0.0.0/16*.
 
 ```azurepowershell-interactive
-$virtualNetwork1 = New-AzureRmVirtualNetwork `
+$virtualNetwork1 = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork1 `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Vytvořte konfiguraci podsítě pomocí rutiny [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Následující příklad vytvoří konfiguraci podsítě s předponou adresy 10.0.0.0/24:
+Vytvořte konfiguraci podsítě pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Následující příklad vytvoří konfiguraci podsítě s předponou adresy 10.0.0.0/24:
 
 ```azurepowershell-interactive
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name Subnet1 `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork1
 ```
 
-Tuto konfiguraci podsítě zapište do virtuální sítě pomocí [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork), která vytvoří podsíť:
+Tuto konfiguraci podsítě zapište do virtuální sítě pomocí [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork), která vytvoří podsíť:
 
 ```azurepowershell-interactive
-$virtualNetwork1 | Set-AzureRmVirtualNetwork
+$virtualNetwork1 | Set-AzVirtualNetwork
 ```
 
 Vytvoření virtuální sítě pomocí předpony adres 10.1.0.0/16 a jednu podsíť:
 
 ```azurepowershell-interactive
 # Create the virtual network.
-$virtualNetwork2 = New-AzureRmVirtualNetwork `
+$virtualNetwork2 = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork2 `
   -AddressPrefix 10.1.0.0/16
 
 # Create the subnet configuration.
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name Subnet1 `
   -AddressPrefix 10.1.0.0/24 `
   -VirtualNetwork $virtualNetwork2
 
 # Write the subnet configuration to the virtual network.
-$virtualNetwork2 | Set-AzureRmVirtualNetwork
+$virtualNetwork2 | Set-AzVirtualNetwork
 ```
 
 ## <a name="peer-virtual-networks"></a>Vytvoření partnerského vztahu virtuálních sítí
 
-Vytvoření partnerského vztahu s [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering). Následující příklad partnerské uzly *myVirtualNetwork1* k *myVirtualNetwork2*.
+Vytvoření partnerského vztahu s [přidat AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering). Následující příklad partnerské uzly *myVirtualNetwork1* k *myVirtualNetwork2*.
 
 ```azurepowershell-interactive
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name myVirtualNetwork1-myVirtualNetwork2 `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 ```
 
-Ve výstupu vráceného po spuštění předchozího příkazu, uvidíte, že **PeeringState** je *iniciováno*. Vytvoření partnerského vztahu zůstává ve *iniciováno* stavu, dokud vytvoříte partnerské připojení z *myVirtualNetwork2* k *myVirtualNetwork1*. Vytvoření partnerského vztahu z *myVirtualNetwork2* k *myVirtualNetwork1*. 
+Ve výstupu vráceného po spuštění předchozího příkazu, uvidíte, že **PeeringState** je *iniciováno*. Vytvoření partnerského vztahu zůstává ve *iniciováno* stavu, dokud vytvoříte partnerské připojení z *myVirtualNetwork2* k *myVirtualNetwork1*. Vytvoření partnerského vztahu z *myVirtualNetwork2* k *myVirtualNetwork1*.
 
 ```azurepowershell-interactive
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name myVirtualNetwork2-myVirtualNetwork1 `
   -VirtualNetwork $virtualNetwork2 `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-Ve výstupu vráceného po spuštění předchozího příkazu, uvidíte, že **PeeringState** je *připojeno*. Azure také změnilo stav partnerského vztahu *myVirtualNetwork1-myVirtualNetwork2* partnerského vztahu pro *připojeno*. Ujistěte se, že stav partnerského vztahu pro *myVirtualNetwork1-myVirtualNetwork2* partnerský vztah změněn na *připojeno* s [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering).
+Ve výstupu vráceného po spuštění předchozího příkazu, uvidíte, že **PeeringState** je *připojeno*. Azure také změnilo stav partnerského vztahu *myVirtualNetwork1-myVirtualNetwork2* partnerského vztahu pro *připojeno*. Ujistěte se, že stav partnerského vztahu pro *myVirtualNetwork1-myVirtualNetwork2* partnerský vztah změněn na *připojeno* s [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering).
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkPeering `
+Get-AzVirtualNetworkPeering `
   -ResourceGroupName myResourceGroup `
   -VirtualNetworkName myVirtualNetwork1 `
   | Select PeeringState
 ```
 
-Prostředky v jedné virtuální síti nemůžou komunikovat s prostředky v jiné virtuální síti, dokud **PeeringState** pro partnerské vztahy v obou virtuálních sítích je *připojeno*. 
+Prostředky v jedné virtuální síti nemůžou komunikovat s prostředky v jiné virtuální síti, dokud **PeeringState** pro partnerské vztahy v obou virtuálních sítích je *připojeno*.
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
@@ -129,10 +131,10 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-Vytvořte virtuální počítač pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* v *myVirtualNetwork1* virtuální sítě. `-AsJob` Možnost se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které chcete k přihlášení k virtuálnímu počítači s.
+Vytvoření virtuálního počítače s [nové AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVm1* v *myVirtualNetwork1* virtuální sítě. `-AsJob` Možnost se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které chcete k přihlášení k virtuálnímu počítači s.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork1" `
@@ -145,7 +147,7 @@ New-AzureRmVm `
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork2" `
@@ -158,10 +160,10 @@ Vytvoření virtuálního počítače trvá několik minut. Pozdější kroky ne
 
 ## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
-Na veřejnou IP adresu Virtuálního počítače můžete připojit z Internetu. Pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získejte veřejnou IP adresu virtuálního počítače. Následující příklad vrátí veřejnou IP adresu virtuálního počítače *myVm1*:
+Na veřejnou IP adresu Virtuálního počítače můžete připojit z Internetu. Použití [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) vrátí veřejnou IP adresu virtuálního počítače. Následující příklad vrátí veřejnou IP adresu virtuálního počítače *myVm1*:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVm1 `
   -ResourceGroupName myResourceGroup | Select IpAddress
 ```
@@ -198,10 +200,10 @@ Obdržíte čtyři odpovědi. Odpojte se z relací RDP k oběma virtuálním po�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, použijte [Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
+Pokud už je nepotřebujete, použijte [odebrat AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Další postup

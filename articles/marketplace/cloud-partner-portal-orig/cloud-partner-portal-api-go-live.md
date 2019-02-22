@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7d643f0c7885e64636a107d22ce332b1ba9371c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809202"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594674"
 ---
 <a name="go-live"></a>Přechod na živý přenos
 =======
@@ -33,13 +33,13 @@ Toto rozhraní API zahájí proces pro nabízení aplikace do produkčního pros
 
 |  **Název**      |   **Popis**                                                           | **Datový typ** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | Identifikátor vydavatel nabídky. Pokud chcete načíst, například `contoso`       |  Řetězec       |
-| offerId        | Nabízejí identifikátor nabídky k načtení                                   |  Řetězec       |
+| publisherId    | Identifikátor vydavatel nabídky. Pokud chcete načíst, například `contoso`       |  String       |
+| offerId        | Nabízejí identifikátor nabídky k načtení                                   |  String       |
 | verze API-version    | Nejnovější verzi rozhraní API                                                   |  Datum         |
 |  |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**       |     **Hodnota**       |
@@ -67,7 +67,7 @@ Toto rozhraní API zahájí proces pro nabízení aplikace do produkčního pros
 
 ### <a name="response-status-codes"></a>Stavové kódy odezvy
 
-| **kód** |  ** Popis **                                                                        |
+| **Kód** |  **Popis**                                                                        |
 | -------- |  ----------------                                                                        |
 |  202     | `Accepted` -Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, kam chcete sledovat stav operace. |
 |  400     | `Bad/Malformed request` -Další informace o chybě najdete v textu odpovědi. |

@@ -10,17 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: a6aab8fda2459804b38afc113be58db7c31b54c5
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301872"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586847"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
 > [!NOTE]
 > V2 se přestala nabízet 30. dubna 2018 a bude ukončena 30. dubna 2019.
+
+> Centrum Microsoft Translator se vyřadí z provozu 30. dubna 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).  
 
 Tým Microsoft Translatoru vydala rozhraní Translator Text API verze 3 (V3). Tato verze obsahuje nové funkce, nepoužívané metody a nový formát pro odesílání a přijímání dat ze služby Microsoft Translator. Tento dokument obsahuje informace pro změnu aplikace, aby používaly V3. 
 
@@ -49,8 +51,8 @@ Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne 
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Zjištění](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Zjištění](reference/v3-0-detect.md)         |
-| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `AddTranslation`     | Funkce se už nepodporuje.       |
+| `AddTranslationArray`    | Funkce se už nepodporuje.          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | `GetTranslations`      | Funkce se už nepodporuje.         |
 | `GetTranslationsArray`      | Funkce se už nepodporuje.         |
@@ -105,6 +107,10 @@ Globální
 [`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
 ## <a name="compatibility-and-customization"></a>Kompatibilita a přizpůsobení
+
+> [!NOTE] 
+
+> Centrum Microsoft Translator se vyřadí z provozu 30. dubna 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).   
 
 Ve výchozím nastavení používá Microsoft Translator V3 Neurální strojový překlad. V důsledku toho jej nelze použít v centru Microsoft Translator. Překladač rozbočovače podporuje pouze starší verze statistické strojového překladu. Přizpůsobení pro Neurální překladové je nyní dostupné s použitím překladač vlastní. [Další informace o přizpůsobení Neurální strojový překlad](custom-translator/overview.md)
 

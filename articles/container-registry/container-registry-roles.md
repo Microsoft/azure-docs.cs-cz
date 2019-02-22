@@ -5,27 +5,27 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 02/20/2019
 ms.author: danlep
-ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0148894bb013dc9f8cce595f14919f87d6292df8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193386"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593620"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
 
 Služba Azure Container Registry podporuje sadu role služby Azure, které poskytují různé úrovně oprávnění do služby Azure container registry. Použití Azure [řízení přístupu na základě rolí](../role-based-access-control/index.yml) (RBAC) k přiřazení konkrétních oprávnění uživatelům nebo instanční, které potřebují komunikovat pomocí registru.
 
-| Role a oprávnění       | [Přístup k Resource Manageru](#access-resource-manager)| [Vytváření/odstraňování registru](#create-and-delete-registry) | [Nahrání image](#push-image) | [Stáhněte si image](#pull-image) | [Změna zásad](#change-policies) |   [Znak bitových kopií](#sign-images)  |
-| ---------| --------- | --------- | --------- | --------- | --------- | --------- |
-| Vlastník | X | X | X | X | X |  |  
-| Přispěvatel | X | X | X | X | X |  |  
-| Čtenář | X |  |  | X |  |  | 
-| AcrPush |  |  | X | X |  |  |  
-| AcrPull |  |  |  | X |  |  |  
-| AcrImageSigner |  |  |  |  |  | X |
+| Role a oprávnění       | [Přístup k Resource Manageru](#access-resource-manager) | [Vytváření/odstraňování registru](#create-and-delete-registry) | [Nahrání image](#push-image) | [Stáhněte si image](#pull-image) | [Odstranit data bitové kopie](#delete-image-data) | [Změna zásad](#change-policies) |   [Znak bitových kopií](#sign-images)  |
+| ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| Vlastník | X | X | X | X | X | X |  |  
+| Přispěvatel | X | X | X |  X | X | X |  |  
+| Čtenář | X |  |  | X |  |  |  |
+| AcrPush |  |  | X | X | X |  |  |  
+| AcrPull |  |  |  | X |  |  |  |  
+| AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>Rozlišení uživatelů a služeb
 
@@ -58,6 +58,10 @@ Schopnost `docker push` bitové kopie, nebo jiné doručit [podporované artefak
 ## <a name="pull-image"></a>Stáhněte si image
 
 Schopnost `docker pull` jiných-umístí do karantény image, nebo o přijetí změn jiného [podporované artefaktů](container-registry-image-formats.md) například helmu z registru. Vyžaduje [ověřování](container-registry-authentication.md) s registrem pomocí oprávnění identity.
+
+## <a name="delete-image-data"></a>Odstranit data bitové kopie
+
+Schopnost [odstranit Image kontejneru nebo úložišť](container-registry-delete.md).
 
 ## <a name="change-policies"></a>Změna zásad
 

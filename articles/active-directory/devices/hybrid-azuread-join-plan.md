@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4d2e3ad4015df74ea3adb98eae4d98e30f2948ce
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234098"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649182"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
@@ -92,7 +92,7 @@ Jako první krok plánování zkontrolujte vaše prostředí a určit, jestli je
 
 Hybridní Azure AD join nelze použít, pokud vaše prostředí se skládá z jedné doménové struktury, kterou synchronizovat data identit do více než jednoho tenanta Azure AD.
 
-Pokud se spoléháte na nástroj System Preparation (Sysprep), ujistěte se, že vytvoříte Image z instalace systému Windows, který nebyl nakonfigurován pro připojení k hybridní službě Azure AD.
+Pokud se spoléháte na nástroj System Preparation (Sysprep), ujistěte se, že Image vytvořené z instalace systému Windows 10 1803 nebo nebyly dříve nakonfigurovány pro připojení k hybridní službě Azure AD.
 
 Pokud se spoléháte na snímek virtuálního počítače (VM) můžete vytvořit další virtuální počítače, ujistěte se, že použití snímku virtuálního počítače, který není nakonfigurovaná pro připojení k hybridní službě Azure AD.
 
@@ -116,6 +116,7 @@ Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v 
  - Všechny stávající stav registrováno v Azure AD by být automaticky odstraněna po zařízení je připojená k hybridní Azure AD. 
  - Vám může zakázat zařízení připojené k vaší doméně Azure AD registrované přidáním tohoto klíče registru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
 
+Kompatibilní se standardem FIPS čipy TPM nejsou podporovány pro připojení k hybridní službě Azure AD. Pokud vaše zařízení kompatibilní se standardem FIPS čipy TPM, je nutné zakázat před pokračováním v připojení k hybridní službě Azure AD.
 
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Přečtěte si, jak řídit připojení k hybridní službě Azure AD. zařízení
 

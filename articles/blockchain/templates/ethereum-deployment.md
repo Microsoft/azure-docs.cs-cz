@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6530e86f59124e324953e4ca082c247ebec3bc91
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098334"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650916"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Šablona řešení ethereum během testování pracovní consortium
 
@@ -43,9 +43,9 @@ Počet uzlů dolování na člen consortium závisí na celkovou velikost požad
 
 Transakce uzly jsou s vyrovnáváním zatížení ve skupině dostupnosti udržet vysokou dostupnost. Šablony podporují až pět uzlů transakce zřízené s využitím škálovací sady virtuálních počítačů.
 
-### <a name="log-analytics-details"></a>Podrobnosti o log analytics
+### <a name="azure-monitor-logs-details"></a>Podrobnosti o protokoly Azure monitoru
 
-Každé nasazení také vytvoří novou instanci Log analytics nebo se může připojit k existující instanci. Log analytics umožňuje monitorování různých metrik výkonu každého virtuálního počítače, který vytvoří síť nasazená.
+Každé nasazení také vytvoří novou instanci protokoly Azure monitoru nebo se může připojit k existující instanci. Protokoly služby Azure Monitor umožňuje monitorování různých metrik výkonu každého virtuálního počítače, který vytvoří síť nasazená.
 
 ## <a name="deployment-architecture"></a>Architektura nasazení
 
@@ -96,7 +96,7 @@ Operations Management Suite (OMS) můžete nakonfigurovat prostředek OMS pro va
 
 Název parametru|Popis| Povolené hodnoty|Výchozí hodnoty
 ---|---|---|---
-Připojení k existující OMS|Vytvořit novou instanci Log Analytics nebo připojit k existující instanci|Vytvořit nové připojení k existující|Vytvořit nové umístění Log Analytics|Oblast, kam se nasadí nové Log Analytics (viditelné pokud *vytvořit nový* zaškrtnuto)
+Připojení k existující OMS|Vytvořit novou instanci protokoly Azure monitoru nebo připojit k existující instanci|Vytvořit nové připojení k existující|Vytvořit nové umístění protokoly Azure monitoru|Oblast, kam se nasadí nové protokoly Azure monitoru (viditelné pokud *vytvořit nový* zaškrtnuto)
 Stávající Id pracovního prostoru OMS|ID pracovního prostoru existující instance (viditelné pokud *připojte se k existující* je vybraná) úroveň služby OMS|Zvolte cenovou úroveň pro nové instance. Další informace najdete na https://azure.microsoft.com/pricing/details/log-analytics/ (viditelné pokud *připojte se k existující* zaškrtnuto)|Bezplatné samostatné za uzel|Free
 Existujícímu primárnímu klíči OMS|Primární klíč pro připojení k existující instanci OMS (viditelné pokud *připojte se k existující* zaškrtnuto)
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e2115ad1a88c819e0ee1da34d9d332a0b013b96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb2329a2a67e2e54084d2289cb8cb1a18663b329
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174346"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593671"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoly v2.0 - tok autorizačního kódu OAuth 2.0
 
@@ -319,6 +319,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `error_codes` |Seznam kódy chyb specifické pro službu tokenů zabezpečení, které vám můžou pomoct při diagnostiky. |
 | `timestamp` | Čas, kdy došlo k chybě. |
 | `trace_id` | Jedinečný identifikátor pro požadavek, který vám pomůže v diagnostice. |
-| c`orrelation_id` | Jedinečný identifikátor pro požadavek, který vám pomůže v diagnostice mezi komponentami. |
+| `correlation_id` | Jedinečný identifikátor pro požadavek, který vám pomůže v diagnostice mezi komponentami. |
 
 Popis kódy chyb a akci doporučenou klientskou, naleznete v tématu [kódy chyb pro koncový bod tokenu chyby](#error-codes-for-token-endpoint-errors).

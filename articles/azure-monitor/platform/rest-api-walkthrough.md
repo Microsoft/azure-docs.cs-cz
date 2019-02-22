@@ -8,21 +8,23 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 91b4d96caf59a8be67381aa6b420a3f759220025
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 707c04c22e54220f3020b5897c364318b427267b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472955"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586589"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
-Tento článek popisuje, jak provádět ověřování, takže váš kód může použít [Reference k REST API Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
+
+Tento článek popisuje, jak provádět ověřování, takže váš kód může použít [Reference k REST API Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 Rozhraní API služby Azure Monitor umožňuje programově načíst definice metrik dostupné výchozí, členitosti a hodnoty metrik. Data můžete uložit do samostatného úložiště dat. jako je například Azure SQL Database a Azure Cosmos DB, Azure Data Lake. Odtud můžete provést další analýzy podle potřeby.
 
 Kromě práce s různými metriky datové body, monitorování rozhraní API také umožňuje seznamu pravidel upozornění, zobrazení protokolů aktivit a spoustu dalších věcí. Úplný seznam dostupných operací, najdete v článku [Reference k REST API Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Požadavky na ověřování Azure Monitor
+
 Prvním krokem je ověřit žádost.
 
 Všechny úkoly pro rozhraní API služby Azure Monitor použít model ověřování Azure Resource Manageru. Proto všechny požadavky musí být ověřené na Azure Active Directory (Azure AD). Jedním z přístupů k ověřování klientskou aplikaci je k vytvoření instančního objektu služby Azure AD a získat token ověřování (JWT). Následující ukázkový skript ukazuje vytvoření služby Azure AD instančního objektu pomocí Powershellu. Podrobnější návod, jak, naleznete v dokumentaci na [pomocí prostředí Azure PowerShell k vytvoření instančního objektu pro přístup k prostředkům](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Je také možné [vytvoření instančního objektu pomocí webu Azure portal](../../active-directory/develop/howto-create-service-principal-portal.md).
@@ -66,9 +68,9 @@ $tenantId = $subscription.TenantId
 $authUrl = "https://login.microsoftonline.com/${tenantId}"
 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
-$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $secureStringPassword)
+$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $pwd)
 
-$result = $AuthContext.AcquireToken("https://management.core.windows.net/", $cred)
+$result = $AuthContext.AcquireTokenAsync("https://management.core.windows.net/", $cred).GetAwaiter().GetResult()
 
 # Build an array of HTTP header values
 $authHeader = @{
@@ -82,6 +84,11 @@ Po ověření, dotazy pak jde provést proti REST API služby Azure Monitor. Exi
 
 1. Seznam definice metriky pro prostředek
 2. Načíst hodnoty metrik
+
+> [!NOTE]
+> Další informace o ověřování pomocí rozhraní REST API služby Azure, najdete [Reference k rozhraní Azure REST API](https://docs.microsoft.com/rest/api/azure/).
+>
+>
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>Načíst definice metrik (multidimenzionální rozhraní API)
 
@@ -103,6 +110,7 @@ Invoke-RestMethod -Uri $request `
                   -Verbose
 
 ```
+
 > [!NOTE]
 > Načíst definice metrik použití vícedimenzionálních metrik Azure monitoru rozhraní REST API, použijte "2018-01-01" jako verze rozhraní API.
 >
@@ -220,6 +228,7 @@ Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu: 
 ```
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Načtení hodnot dimenzí (multidimenzionální rozhraní API)
+
 Jakmile je k dispozici definice metriky jsou známé, mohou být některé metriky, které mají dimenze. Dimenze má před dotazování pro metriku, možná budete chtít zjistit rozsah hodnot. Na základě těchto hodnot dimenzí, které potom můžete filtrovat nebo segment metriky založené na hodnotách dimenze při dotazování na metriky.  Použití [rozhraní REST API služby Azure Monitor Metrics](https://docs.microsoft.com/rest/api/monitor/metrics) toho dosáhnout.
 
 Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požadavky na filtrování. Pokud nejsou zadány žádné filtry, vrátí se výchozí metriku. Použití tohoto rozhraní API umožňuje pouze jednu dimenzi mít filtr zástupných znaků.
@@ -244,6 +253,7 @@ Invoke-RestMethod -Uri $request `
     -OutFile ".\contosostorage-dimension-values.json" `
     -Verbose
 ```
+
 Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 
 ```JSON
@@ -282,7 +292,7 @@ Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
           ]
         },
         ...
-      ]    
+      ]
     }
   ],
   "namespace": "Microsoft.Storage/storageAccounts",
@@ -291,6 +301,7 @@ Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 ```
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>Načíst hodnoty metrik (multidimenzionální rozhraní API)
+
 Jakmile je k dispozici definice metrik a dimenze možné hodnoty jsou známé, je pak možné načíst související hodnoty metrik.  Použití [rozhraní REST API služby Azure Monitor Metrics](https://docs.microsoft.com/rest/api/monitor/metrics) toho dosáhnout.
 
 Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požadavky na filtrování. Pokud nejsou zadány žádné filtry dimenzí, je vrácena zahrnutého agregovaná metrika. Pokud dotaz metriky vrátí více časové řady, můžete použít parametry dotazu "Hlavní" a "OrderBy" vrátit omezené uspořádaný seznam časové řady.
@@ -315,6 +326,7 @@ Invoke-RestMethod -Uri $request `
     -OutFile ".\contosostorage-metric-values.json" `
     -Verbose
 ```
+
 Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 
 ```JSON
@@ -375,6 +387,7 @@ Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 ```
 
 ## <a name="retrieve-metric-definitions"></a>Načíst definice metrik
+
 Použití [definice metrik Azure monitoru rozhraní REST API](https://msdn.microsoft.com/library/mt743621.aspx) pro přístup k seznamu metriky, které jsou k dispozici pro službu.
 
 **Metoda**: GET
@@ -392,12 +405,14 @@ Invoke-RestMethod -Uri $request `
                   -OutFile ".\contosotweets-metricdef-results.json" `
                   -Verbose
 ```
+
 > [!NOTE]
 > Načíst definice metrik pomocí REST API služby Azure Monitor, použijte "2016-03-01" jako verze rozhraní API.
 >
 >
 
 Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
+
 ```JSON
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
@@ -440,6 +455,7 @@ Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 Další informace najdete v tématu [seznamu definice metriky pro prostředek v rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/mt743621.aspx) dokumentaci.
 
 ## <a name="retrieve-metric-values"></a>Načíst hodnoty metrik
+
 Jakmile je k dispozici definice metriky jsou známé, je pak možné načíst související hodnoty metrik. Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požadavky na filtrování (například načíst metriky datových bodů "CpuTime" a "Požadavky"). Pokud nejsou zadány žádné filtry, vrátí se výchozí metriku.
 
 > [!NOTE]
@@ -510,6 +526,7 @@ Invoke-RestMethod -Uri $request `
     -OutFile ".\contosotweets-metrics-multiple-results.json" `
     -Verbose
 ```
+
 Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 
 ```JSON
@@ -562,6 +579,7 @@ Výsledný text JSON odpovědi bude podobně jako v následujícím příkladu:
 ```
 
 ### <a name="use-armclient"></a>Použití ARMClient
+
 Další možností je použít [ARMClient](https://github.com/projectkudu/armclient) na svém počítači s Windows. ARMClient automaticky zpracovává ověřování Azure AD (a výsledný token JWT). Následující kroky popisují použití ARMClient pro načítání dat metriky:
 
 1. Nainstalujte [Chocolatey](https://chocolatey.org/) a [ARMClient](https://github.com/projectkudu/armclient).
@@ -570,12 +588,13 @@ Další možností je použít [ARMClient](https://github.com/projectkudu/armcli
 4. Typ *armclient GET [your_resource_id]/providers/microsoft.insights/metrics?api-version=2016-09-01*
 
 Aby bylo možné načíst definice metrik pro konkrétní aplikaci logiky, vydejte následující příkaz:
+
 ```
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
-
 ## <a name="retrieve-the-resource-id"></a>Načtení ID prostředku
+
 Pomocí rozhraní REST API můžete opravdu pomáhá pochopit dostupné definice metrik, členitosti a souvisejících hodnot. Informace jsou užitečné při použití [knihovny správy Azure](https://msdn.microsoft.com/library/azure/mt417623.aspx).
 
 Identifikátor prostředku použít předchozí kód, je úplná cesta k požadované prostředků Azure. Například pokud chcete zadat dotaz na webovou aplikaci Azure, bude ID prostředku:
@@ -595,16 +614,19 @@ Následující seznam obsahuje několik příkladů z formátů ID prostředků 
 Existuje alternativní přístupy k načítání ID prostředku, včetně použití Azure Resource Exploreru, zobrazení požadovaných prostředků na webu Azure Portal a pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 
 ### <a name="azure-resource-explorer"></a>Průzkumník prostředků Azure
+
 Najít ID prostředku pro požadovaný prostředek, je jedním z přístupů užitečné použít [Azure Resource Exploreru](https://resources.azure.com) nástroj. Přejděte na požadovaný prostředek a podívejte se na ID je vidět, stejně jako v následujícím snímku obrazovky:
 
 ![ALT "Průzkumník prostředků Azure"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
 ### <a name="azure-portal"></a>portál Azure
+
 ID prostředku lze také získat z webu Azure portal. Uděláte to tak, přejděte na požadovaný prostředek a zvolte možnost Vlastnosti. ID prostředku se zobrazí v části vlastnosti, jak je znázorněno na následujícím snímku obrazovky:
 
 ![ALT "ID prostředku zobrazí v okně Vlastnosti na webu Azure Portal"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
+
 ID prostředku se dá načíst pomocí rutin Powershellu pro Azure i. Třeba získat ID prostředku pro aplikaci logiky Azure, spusťte rutinu Get-AzureLogicApp, jako v následujícím příkladu:
 
 ```PowerShell
@@ -612,6 +634,7 @@ Get-AzureRmLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosot
 ```
 
 Výsledek by měl vypadat přibližně jako v následujícím příkladu:
+
 ```
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
@@ -630,8 +653,8 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-
 ### <a name="azure-cli"></a>Azure CLI
+
 Načíst ID prostředku pro účet služby Azure Storage pomocí Azure CLI, spusťte příkaz "az storage account show", jak je znázorněno v následujícím příkladu:
 
 ```
@@ -639,6 +662,7 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
 Výsledek by měl vypadat přibližně jako v následujícím příkladu:
+
 ```JSON
 {
   "accessTier": null,
@@ -681,6 +705,7 @@ Výsledek by měl vypadat přibližně jako v následujícím příkladu:
 >
 
 ## <a name="retrieve-activity-log-data"></a>Načíst data protokolu aktivit
+
 Kromě definice metrik a souvisejících hodnot je také možné načíst další zajímavé informace související s prostředky Azure pomocí REST API služby Azure Monitor. Jako příklad, je možné dotazu [protokolu aktivit](https://msdn.microsoft.com/library/azure/dn931934.aspx) data. Následující příklad ukazuje použití REST API služby Azure Monitor k dotazu data protokolu aktivit v určité datum rozsahu pro předplatné Azure:
 
 ```PowerShell
@@ -694,8 +719,8 @@ Invoke-RestMethod -Uri $request `
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 * Zkontrolujte [Přehled monitorování](../../azure-monitor/overview.md).
 * Zobrazení [podporované metriky ve službě Azure Monitor](metrics-supported.md).
 * Zkontrolujte [Microsoft Azure, monitorování, Reference k rozhraní REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 * Zkontrolujte [knihovny správy Azure](https://msdn.microsoft.com/library/azure/mt417623.aspx).
-

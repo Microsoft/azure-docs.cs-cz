@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0d1d4358789cce4d393143e8a243ee9a3e06bf36
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101647"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652395"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
-Při registraci Azure existuje několik věcí, které vám pomůžou získat lepší představu o vaše útrata. [Cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) může poskytnout odhad nákladů, před vytvořením prostředku Azure. [Webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vám poskytne aktuální rozpis nákladů a prostředků pro vaše předplatné. Pokud chcete seskupovat a pochopit i celkové náklady pro různé projekty nebo týmy, podívejte se na [označování prostředků](../azure-resource-manager/resource-group-using-tags.md). Pokud vaše organizace má vytváření sestav systém, který chcete použít, podívejte se [rozhraní API pro fakturaci](billing-usage-rate-card-overview.md).
+Při registraci Azure existuje několik věcí, které vám pomůžou získat lepší představu o vaší útraty. [Cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) může poskytnout odhad nákladů, před vytvořením prostředku Azure. [Webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vám poskytne aktuální rozpis nákladů a prostředků pro vaše předplatné. Pokud chcete seskupovat a pochopit i celkové náklady pro různé projekty nebo týmy, podívejte se na [označování prostředků](../azure-resource-manager/resource-group-using-tags.md). Pokud vaše organizace má vytváření sestav systém, který chcete použít, podívejte se [rozhraní API pro fakturaci](billing-usage-rate-card-overview.md).
 
 - Pokud vaše předplatné se smlouvou Enterprise (EA), verze public preview pro zobrazení nákladů na webu Azure Portal je k dispozici. Pokud je vaše předplatné přes Cloud Solution Provider (CSP) nebo Azure Sponsorship, pak některé z následujících funkcí na vás nemusí vztahovat. Zobrazit [další zdroje informací pro EA, CSP a nabídky Sponsorship](#other-offers) pro další informace.
 

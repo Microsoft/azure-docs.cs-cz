@@ -3,7 +3,7 @@ title: Připojení ke službě Azure Security Center úrovně Standard pro zvý�
 description: " Zjistěte, jak k připojení k Azure Security Center úrovně Standard pro rozšířené zabezpečení. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9d95503e4b17124d1d027a90a21869ef65831654
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 19/02/2019
+ms.author: monhaber
+ms.openlocfilehash: ab99116cabc14c70698a962c803adb87394e1796
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114412"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651100"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete zkusit Standard zdarma. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -33,7 +33,7 @@ Security Center úrovně Standard zahrnuje:
 ## <a name="detecting-unprotected-resources"></a>Zjišťování nechráněných prostředcích     
 Security Center automaticky rozpozná veškerá předplatná a pracovní prostory Azure, které ještě nepřešly na úroveň Security Center Standard. To zahrnuje předplatná Azure využívající úroveň Security Center Free volné a pracovní prostory, které nemají povolené řešení zabezpečení.
 
-Celý předplatného Azure můžete upgradovat na úroveň Standard, která dědí všechny prostředky v rámci předplatného, nebo můžete definovat jedinečná zásada Upgrade skupiny s konkrétní prostředek pouze. Pokud nastavení zásad skupiny prostředků jsou jedinečné, Security Center nebude po upgradu předplatné na úroveň Standard přepsat cenové zásady. Použití standardní úroveň na předplatné se vztahuje pouze na počítače v rámci předplatného, které generují sestavy do pracovních prostorů vytvořených službou Security Center. Použití standardní úroveň do pracovního prostoru se vztahuje na všechny prostředky vytváření sestav do pracovního prostoru.
+Celý předplatného Azure můžete upgradovat na úroveň Standard, která dědí všechny prostředky v rámci předplatného, nebo můžete definovat jedinečná zásada Upgrade skupiny s konkrétní prostředek pouze. Pokud nastavení zásad skupiny prostředků jsou jedinečné, Security Center nebude po upgradu předplatné na úroveň Standard přepsat cenové zásady. Použití standardní úroveň na předplatné se vztahuje na všechny podporované prostředky v předplatném. Použití standardní úroveň s pracovním prostorem se vztahuje na všechny prostředky vytváření sestav do pracovního prostoru.
 
 > [!NOTE]
 > Můžete chtít spravovat náklady a omezit objem dat shromážděných pro řešení podle omezení na konkrétní sadu agentů. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) vám umožní použít obor s řešení a cílit na podmnožině počítačů v pracovním prostoru.  Pokud používáte cílení na řešení, Security Center obsahuje pracovní prostor tak, že nemusí řešení.
@@ -53,7 +53,7 @@ Chcete-li upgradovat předplatné nebo si pracovní prostor na úroveň Standard
 
 
    > [!NOTE]
-   > Funkce bezplatné služby Security Center se použijí pro virtuální počítače Azure pouze. Bezplatné možnosti nejsou použity pro vaše počítače umístěné mimo Azure. Pokud vyberete Standard, funkce edice Standard platí pro všechny virtuální počítače Azure a mimo Azure počítačích odesílajících sestavy do pracovního prostoru. Doporučujeme použít standardní pro pokročilé zabezpečení pro Azure a prostředků mimo Azure.
+   > Funkce bezplatné služby Security Center se použijí pouze na virtuálních počítačích Azure a VMSS. Bezplatné možnosti nejsou použity pro vaše počítače umístěné mimo Azure. Pokud vyberete Standard, funkce edice Standard platí pro všechny virtuální počítače Azure, škálovací sady virtuálních počítačů a mimo Azure počítačích odesílajících sestavy do pracovního prostoru. Doporučujeme použít standardní pro pokročilé zabezpečení pro Azure a prostředků mimo Azure.
    >
    >
 

@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: aschhab
-ms.openlocfilehash: a5d0f457d06bd4e4e655d8f3ebc712f4d6ee7523
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c2a6acc1ce48a8671af20df6daa89498a81fdb4c
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849902"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587153"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Postup použití služby Service Bus témata a odběry s využitím Node.js
 
@@ -36,6 +36,8 @@ Tato příručka popisuje, jak používat témata služby Service Bus a odběrů
 Další informace o tématech a odběrech najdete v tématu [další kroky](#next-steps) oddílu.
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 Vytvoření prázdné aplikace v Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na web Azure], [cloudové služby pro Node.js] [ Node.js Cloud Service] pomocí Windows Prostředí PowerShell, nebo webu pomocí Webmatrixu.

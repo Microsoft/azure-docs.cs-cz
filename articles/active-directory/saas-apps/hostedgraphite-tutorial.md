@@ -4,266 +4,230 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: a1ac4d7f-d079-4f3c-b6da-0f520d427ceb
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/22/2017
+ms.topic: tutorial
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0ae55fdc43704670f1d74e52b55db91a20cceb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 82b2eeb4ceee9839af13ecea589f6354eee77fa2
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179242"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587782"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Kurz: Integrace Azure Active Directory s hostované grafitová
 
 V tomto kurzu se dozvíte, jak integrovat grafitová hostované službou Azure Active Directory (Azure AD).
-
 Hostované grafitová integrace s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k hostované grafitová
-- Uživatele, aby automaticky získat přihlášení k hostované grafitová (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup k hostované grafitová.
+* Uživatelům se automaticky přihlášeni k hostované grafitová (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s hostované grafitová, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Hostovaný grafitová jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Hostované grafitová jednotné přihlašování povoleno předplatné
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání hostované grafitová z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Hostované grafitová podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Hostované grafitová podporuje **JIT** zřizování uživatelů
 
 ## <a name="adding-hosted-graphite-from-the-gallery"></a>Přidání hostované grafitová z Galerie
+
 Pokud chcete nakonfigurovat integraci hostované grafitová do služby Azure AD, budete muset přidat hostované grafitová z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Přidání hostované grafitová z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **hostované grafitová**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_search.png)
+4. Do vyhledávacího pole zadejte **hostované grafitová**vyberte **hostované grafitová** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **hostované grafitová**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+     ![Hostované grafitová v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí grafitová hostované na základě testovací uživatele nazývá "Britta Simon".
-
-Azure AD pro jednotné přihlašování pro práci, potřebuje vědět, co uživatel protějšek v hostovaných grafitová je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v hostovaných grafitová potřeba navázat.
-
-V hostované grafitová přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí grafitová hostované na základě testovací uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v hostovaných grafitová.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s hostované grafitová, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření testovacího uživatele hostované grafitová](#creating-a-hosted-graphite-test-user)**  – Pokud chcete mít protějšek Britta Simon v hostovaných grafitová, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace hostované grafitová Single Sign-On](#configure-hosted-graphite-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvoření hostovaného grafitová testovacího uživatele](#create-hosted-graphite-test-user)**  – Pokud chcete mít protějšek Britta Simon v hostovaných grafitová, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci hostované grafitová.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s hostované grafitová, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s hostované grafitová, proveďte následující kroky:
 
-1. Na webu Azure Portal na **hostované grafitová** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **hostované grafitová** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **hostované grafitová domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **zahájené pomocí IDP režimu**, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.hostedgraphite.com/metadata/<user id>`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.hostedgraphite.com/complete/saml/<user id>`
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-1. Na **hostované grafitová domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **SP iniciované režimu**, proveďte následující kroky:
-   
-    ![Konfigurace jednotného přihlašování](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_10.png)
-  
-    a. Klikněte na **zobrazit pokročilé nastavení URL** možnost
+    ![Hostované grafitová domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
-    b. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.hostedgraphite.com/login/saml/<user id>/`   
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.hostedgraphite.com/metadata/<user id>`
 
-    > [!NOTE] 
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.hostedgraphite.com/complete/saml/<user id>`
+
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+
+    ![Hostované grafitová domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://www.hostedgraphite.com/login/saml/<user id>/`
+
+    > [!NOTE]
     > Mějte prosím na paměti, že se nejedná skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. K získání těchto hodnot, můžete přejít na přístup -> Nastavení SAML na straně aplikace nebo kontaktujte [tým podpory hostovaných grafitová](mailto:help@hostedgraphite.com).
-    >
- 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Konfigurace jednotného přihlašování](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_certificate.png) 
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-    ![Konfigurace jednotného přihlašování](./media/hostedgraphite-tutorial/tutorial_general_400.png)
+7. Na **nastavit hostované grafitová** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-1. Na **hostované konfigurace grafitová** klikněte na **konfigurace hostované grafitová** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    ![Konfigurace jednotného přihlašování](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_configure.png) 
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-hosted-graphite-single-sign-on"></a>Konfigurace prostředí grafitová jednotného přihlašování
 
 1. Přihlašování k vašemu tenantovi hostované grafitová jako správce.
 
-1. Přejděte **stránku nastavení SAML** na bočním panelu (**přístup -> Nastavení SAML**).
-   
+2. Přejděte **stránku nastavení SAML** na bočním panelu (**přístup -> Nastavení SAML**).
+
     ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
-1. Potvrďte tyto adresy URL neodpovídá v konfiguraci **hostované grafitová domény a adresy URL** části webu Azure portal.
-   
+3. Potvrďte tyto adresy URL neodpovídá v konfiguraci **základní konfiguraci SAML** části webu Azure portal.
+
     ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
-1. V **Entity nebo ID vystavitele** a **přihlašovací adresu URL pro jednotné přihlašování** textových polí, vložte hodnotu **SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby** který jste zkopírovali z portálu Azure portal. 
-   
-    ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
-   
+4. V **Entity nebo ID vystavitele** a **přihlašovací adresu URL pro jednotné přihlašování** textových polí, vložte hodnotu **Azure Ad identifikátor** a **přihlašovací adresa URL** který jste zkopírovali z webu Azure portal.
 
-1. Vyberte "**jen pro čtení**" jako **výchozí Role uživatele**.
-    
+    ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+
+5. Vyberte **jen pro čtení** jako **výchozí Role uživatele**.
+
     ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
-1. Otevřete váš certifikát base-64 kódovaných v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a a vložte ho do **certifikát X.509** textového pole.
-    
+6. Otevřete váš certifikát base-64 kódovaných v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a a vložte ho do **certifikát X.509** textového pole.
+
     ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+7. Klikněte na tlačítko **Uložit** tlačítko.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/hostedgraphite-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/hostedgraphite-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/hostedgraphite-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/hostedgraphite-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="creating-a-hosted-graphite-test-user"></a>Vytváření hostované grafitová testovacího uživatele
 
-Cílem této části je vytvořte uživatele Britta Simon v hostovaných grafitová. Hostované grafitová podporuje just-in-time zřizování, který je ve výchozím nastavení povolená.
-
-Neexistuje žádná položka akce pro vás v této části. Vytvoří se nový uživatel během pokusu o přístup k hostované grafitová, pokud ještě neexistuje.
-
->[!NOTE]
->Pokud je potřeba ručně vytvořit uživatele, budete muset požádat tým podpory hostovaných grafitová prostřednictvím <mailto:help@hostedgraphite.com>. 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k hostované grafitová.
 
-![Přiřadit uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **hostované grafitová**.
 
-**Přiřadit hostované grafitová Britta Simon, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **hostované grafitová**.
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz grafitová hostované v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **hostované grafitová**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Konfigurace jednotného přihlašování](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_app.png) 
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Přiřadit uživatele][202] 
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Přiřadit uživatele][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-hosted-graphite-test-user"></a>Vytvoření hostovaného grafitová testovacího uživatele
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+V této části se vytvoří uživateli Britta Simon v hostovaných grafitová. Hostované grafitová podporuje zřizování uživatelů v čase, je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi hostované grafitová, vytvoří se nový po ověření.
 
-Cílem této části je testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.
+> [!NOTE]
+> Pokud je potřeba ručně vytvořit uživatele, budete muset požádat tým podpory hostovaných grafitová prostřednictvím <mailto:help@hostedgraphite.com>.
 
-Po kliknutí na dlaždici grafitová hostované na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci hostované grafitová.
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-## <a name="additional-resources"></a>Další materiály
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+Po kliknutí na dlaždici grafitová hostované na přístupovém panelu, můžete by měl být automaticky přihlášeni k hostované grafitová, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
+## <a name="additional-resources"></a>Další prostředky
 
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/hostedgraphite-tutorial/tutorial_general_01.png
-[2]: ./media/hostedgraphite-tutorial/tutorial_general_02.png
-[3]: ./media/hostedgraphite-tutorial/tutorial_general_03.png
-[4]: ./media/hostedgraphite-tutorial/tutorial_general_04.png
-
-[100]: ./media/hostedgraphite-tutorial/tutorial_general_100.png
-
-[200]: ./media/hostedgraphite-tutorial/tutorial_general_200.png
-[201]: ./media/hostedgraphite-tutorial/tutorial_general_201.png
-[202]: ./media/hostedgraphite-tutorial/tutorial_general_202.png
-[203]: ./media/hostedgraphite-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 922f64f3e9588b3bfcfeedf7602df781c8ee6172
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f91ac8e8a6a71f2a5eb5c686aa5bc5b83be36545
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226600"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586606"
 ---
 # <a name="search-edit-and-delete-projects"></a>Hledání, upravovat a odstraňovat projekty
 
@@ -39,7 +39,7 @@ Nástroj filtr umožňuje vyhledávat projekty podle podmínek jiný filtr. Filt
 
 ## <a name="edit-a-project"></a>Upravit projekt
 
-Vlastní Translator umožňuje upravit název a popis projektu. Další metadata projektu, jako jsou kategorie, zdrojový, cílový jazyk nejsou k dispozici pro úpravy. Níže uvedené kroky popisují, jak upravit projekt.
+Vlastní Translator umožňuje upravit název a popis projektu. Další metadata projektu jako kategorie, jazyk zdrojového a cílového jazyka nejsou k dispozici pro úpravy. Níže uvedené kroky popisují, jak upravit projekt.
 
 1.  Klikněte na ikonu tužky, která se zobrazí, když najedete myší do projektu.
 

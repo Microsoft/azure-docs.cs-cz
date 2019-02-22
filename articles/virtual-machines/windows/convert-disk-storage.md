@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 18258bf8ac9d241fd8a01957d903b1db882c2d36
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 14b6559420fad22cfc2294817cbefd23a6c47a70
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326870"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650100"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizovat typ úložiště spravovaného disku
 
@@ -118,6 +118,21 @@ Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
+
+## <a name="convert-managed-disks-from-standard-to-premium-in-azure-portal"></a>Převést spravované disky standard na premium na webu Azure portal
+
+Můžete převést spravovaného disku z úrovně standard na premium na webu Azure Portal.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Vyberte virtuální počítač ze seznamu **virtuálních počítačů** na portálu.
+3. Pokud není virtuální počítač zastavený, klikněte na tlačítko **Zastavit** horní části okna Přehled virtuálních počítačů a vyčkat, než virtuální počítač zastavit.
+3. V okně pro virtuální počítač, vyberte **disky** z nabídky.
+4. Vyberte disk, který má být převeden.
+5. Vyberte **konfigurace** z nabídky.
+6. Změnit **typ účtu** z **standardní HDD** k **Premium SSD**.
+7. Klikněte na tlačítko **Uložit** a zavřít okno disku.
+
+Aktualizovat typ disku je účinné okamžité. Váš virtuální počítač můžete restartovat po převodu.
 
 ## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd"></a>Převést spravovaného disku ze standardní pevného disku na SSD na úrovni standard
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: ee807387b5fc7c8a9d42564cdb6cee7d59db2508
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6864e282319bc5a0539c4c94f3062dcab7315970
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819786"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652242"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnostika potíží se směrováním virtuálních počítačů
 
@@ -54,12 +54,14 @@ I když bylo efektivní trasy zobrazit pomocí virtuálních počítačů v pře
 
 ## <a name="diagnose-using-powershell"></a>Diagnostikovat pomocí Powershellu
 
-Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné *AzureRM* modul prostředí PowerShell, verze 6.0.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzureRmAccount` přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Získat efektivní trasy pro síťové rozhraní s [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable). Následující příklad získá efektivní trasy pro síťové rozhraní s názvem *myVMVMNic*, která je ve skupině prostředků s názvem *myResourceGroup*:
+Můžete spouštět příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Při spuštění PowerShell z počítače, je nutné modul Azure PowerShell verze 1.0.0 nebo novějším. Spustit `Get-Module -ListAvailable Az` v počítači nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzAccount` přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
+
+Získat efektivní trasy pro síťové rozhraní s [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable). Následující příklad získá efektivní trasy pro síťové rozhraní s názvem *myVMVMNic*, která je ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveRouteTable `
+Get-AzEffectiveRouteTable `
   -NetworkInterfaceName myVMVMNic `
   -ResourceGroupName myResourceGroup `
   | Format-Table
@@ -70,7 +72,7 @@ Seznamte se s informacemi vrácena ve výstupu, najdete v článku [Přehled sm�
 Pokud neznáte název síťového rozhraní, ale znáte název je síťové rozhraní připojené k virtuálnímu počítači, tyto příkazy vrátí ID všechna síťová rozhraní připojená k virtuálnímu počítači:
 
 ```azurepowershell-interactive
-$VM = Get-AzureRmVM -Name myVM `
+$VM = Get-AzVM -Name myVM `
   -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```

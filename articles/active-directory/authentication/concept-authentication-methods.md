@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 02/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d57e3d647acfe9400d7b575f5635e2ab5254352
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 185dfbcee7ab352a73e4a998cbd0d8c36cb92ff5
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162216"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588033"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -229,6 +229,6 @@ Pokud je vaše organizace Federovaná pro jednotné přihlašování s Azure AD 
 
 [Povolit ověřování Azure Multi-Factor Authentication pro vaši organizaci](howto-mfa-getstarted.md)
 
-[Povolit sblížené registraci pro resetování hesla pomocí samoobslužné služby Azure Multi-Factor Authentication a Azure AD](concept-registration-mfa-sspr-converged.md)
+[Povolení kombinovaná registrace ve vašem tenantovi](howto-registration-mfa-sspr-combined.md)
 
 [Dokumentace konfigurace metoda ověřování koncového uživatele](https://aka.ms/securityinfoguide)

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 42e5fd713f6353a2a939236f34463e9ba4195e29
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313564"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650202"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
 
@@ -285,14 +285,14 @@ Ukázkové nasazení se zobrazí pod: ![ethereum během nastavení](./media/ethe
 
 #### <a name="monitoring"></a>Monitorování
 
-V okně monitorování umožňuje nakonfigurovat prostředku Log Analytics pro vaši síť. Agent monitorování shromáždí a poskytuje schopnost rychle zkontrolovat stav sítě nebo ladění vydá surface užitečné metriky a protokoly z vaší sítě.
+V okně monitorování umožňuje nakonfigurovat prostředek protokoly Azure monitoru pro vaši síť. Agent monitorování shromáždí a poskytuje schopnost rychle zkontrolovat stav sítě nebo ladění vydá surface užitečné metriky a protokoly z vaší sítě.
 
   Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
   ---|---|---|---
 Monitorování|Možnost povolit monitorování|Povolit nebo zakázat|Povolení
-Připojení k existující Log Analytics|Vytvořit novou instanci Log Analytics nebo připojit k existující instanci|Vytvořit nový nebo existující připojení|Vytvořit nový
-Monitorování umístění (připojit k existující Log Analytics = vytvořit nový)|Oblast, kam se nasadí novou instanci Log Analytics|Všechny oblasti Log Analytics|Není k dispozici
-Id pracovního prostoru Log Analytics existující (připojit k existující Log Analytics = připojte se k existující)|ID pracovního prostoru Log Analytics existující instance||Není k dispozici
+Připojte se k existující protokoly Azure monitoru|Vytvořit novou instanci protokoly Azure monitoru nebo připojit k existující instanci|Vytvořit nový nebo existující připojení|Vytvořit nový
+Monitorování umístění (připojit k existující protokoly Azure monitoru = vytvořit nový)|Oblast, kde na nový Azure Monitor protokoly instance se nasadí.|Azure Monitor všechny protokoly oblastí|Není k dispozici
+Id pracovního prostoru Log Analytics existující (připojit k existující protokoly Azure monitoru = připojte se k existující)|ID pracovního prostoru z existující Azure Monitor protokoly instance||Není k dispozici
 Existující Log Analytics primárního klíče (připojit k existující Log Analytics = připojte se k existující)|Primární klíč pro připojení k existující instanci Log Analytics||Není k dispozici
 
 
@@ -425,7 +425,7 @@ Výběr **Statistika sítě** nasměruje zobrazit statistiku sítě Etherea.
 
 ![Statistika sítě](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-log-analytics-queries"></a>Ukázkové dotazy Log Analytics
+#### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
 
 Za tyto řídicí panely je sada dotazovatelné nezpracovaných protokolů. Tyto nezpracovaných protokolů můžete použít k přizpůsobení řídicích panelů, vyšetřování chyb nebo nastavit prahovou hodnotu upozornění. Tady najdete, spustili sadu ukázky dotazů, které lze v nástroji pro hledání v protokolu:
 

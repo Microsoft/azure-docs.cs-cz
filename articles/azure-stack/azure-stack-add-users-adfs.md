@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/21/2019
 ms.author: patricka
 ms.reviewer: unknown
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 7ecffacee03650adc709a055ba942ef182da5fb8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: 1b47739200c79317273ea0c788f21a7ee4a3b818
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239975"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648502"
 ---
 # <a name="add-azure-stack-users-in-ad-fs"></a>Přidat uživatele Azure stacku ve službě AD FS
 Můžete použít **Active Directory Users and Computers** modul snap-in pro přidání dalších uživatelů do prostředí Azure Stack využití služby AD FS jako zprostředkovatele identity.
@@ -29,12 +29,13 @@ Můžete použít **Active Directory Users and Computers** modul snap-in pro př
 > [!TIP]
 > Tento příklad používá výchozí azurestack.local ASDK služby active directory. 
 
-1.  Přihlaste se pomocí účtu poskytuje přístup k nástrojům pro správu Windows počítači a otevře nové Microsoft Management Console (MMC).
-2.  Klikněte na tlačítko **soubor > Přidat nebo odebrat modul snap-in**.
-3.  Vyberte **uživatelů služby Active Directory a počítače** > **AzureStack.local** > **uživatelé**.
-4.  Klikněte na tlačítko **akce** > **nové** > **uživatele**.
-5.  V tento nový objekt – uživatel zadejte a potvrďte heslo
-6.  Klikněte na tlačítko **Další** finalize hodnoty a klikněte na tlačítko Dokončit vytvořte uživatele.
+1. Přihlaste se pomocí účtu poskytuje přístup k nástrojům pro správu Windows počítači a otevře nové Microsoft Management Console (MMC).
+2. Vyberte **soubor > Přidat nebo odebrat modul snap-in**.
+3. Vyberte **uživatelů služby Active Directory a počítače** > **AzureStack.local** > **uživatelé**.
+4. Vyberte **akce** > **nové** > **uživatele**.
+5. Nový objekt – uživatel zadejte podrobné informace o uživateli. Vyberte **Další**.
+6. Zadejte a potvrďte heslo.
+7. Vyberte **Další** pro dokončení hodnoty. Vyberte **Dokončit** pro vytvoření uživatele.
 
 
 ## <a name="next-steps"></a>Další postup

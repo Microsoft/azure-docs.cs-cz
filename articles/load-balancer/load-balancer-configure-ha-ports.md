@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: d4464f6188efb479f21a23bf936a8222061d9987
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244133"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593399"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurace portů s vysokou dostupností pro interní load balancer
 
@@ -38,9 +38,9 @@ Na obrázku vidíte příklad nasazení, které jsou popsané v tomto článku n
 
 ![Příklad nasazení portů s vysokou dostupností](./media/load-balancer-configure-ha-ports/haports.png)
 
-
-
 ## <a name="configure-high-availability-ports"></a>Konfigurace portů s vysokou dostupností
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Konfigurace portů s vysokou dostupností, nastavte v back endového fondu interního nástroje se síťovými virtuálními zařízeními. Nastavte odpovídající stavu testu konfiguraci nástroje pro vyrovnávání zatížení ke zjištění stavu síťového virtuálního zařízení a pravidlo nástroje pro vyrovnávání zatížení pomocí portů s vysokou dostupností. Konfigurace související se nástroj pro vyrovnávání zatížení Obecné je obsažen v [Začínáme](load-balancer-get-started-ilb-arm-portal.md). Tento článek popisuje konfiguraci portů s vysokou dostupností.
 
@@ -51,7 +51,6 @@ V podstatě zahrnuje konfiguraci nastavení front-endový port a port back-end h
 Konfigurace portů s vysokou dostupností pomocí webu Azure portal, vyberte **porty s vysokou DOSTUPNOSTÍ** zaškrtávací políčko. Pokud je vybráno, se automaticky vyplní související konfiguraci portu a protokolu. 
 
 ![Konfigurace portů s vysokou dostupností pomocí webu Azure portal](./media/load-balancer-configure-ha-ports/haports-portal.png)
-
 
 ### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>Konfigurace portů s vysokou dostupností pravidla Vyrovnávání zatížení pomocí šablony Resource Manageru
 
@@ -91,7 +90,7 @@ Porty s vysokou dostupností můžete nakonfigurovat pomocí rozhraní API verze
 Použijte následující příkaz k vytvoření pravidla služby load balancer portů s vysokou dostupností, při vytvoření interní služby load balancer pomocí prostředí PowerShell:
 
 ```powershell
-lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
+lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Konfigurace portů s vysokou dostupností pravidlo nástroje pro vyrovnávání zatížení pomocí Azure CLI

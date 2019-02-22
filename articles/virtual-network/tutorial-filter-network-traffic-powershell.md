@@ -17,14 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: dfeff34de882602711ed375d81977ae501ec51cf
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 023662f0293debb1b40fc8ea10bb725eab7be4d8
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428389"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649930"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtrování síťového provozu se skupinou zabezpečení sítě pomocí Powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat pomocí skupiny zabezpečení sítě. Skupiny zabezpečení sítě obsahují pravidla zabezpečení, která filtrují síťový provoz podle IP adresy, portu a protokolu. Pravidla zabezpečení se vztahují na prostředky nasazené v podsíti. V tomto článku získáte informace o těchto tématech:
 
@@ -37,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte modul Azure PowerShell verze 6.2.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
@@ -45,22 +47,21 @@ Skupina zabezpečení sítě obsahuje pravidla zabezpečení. Pravidla zabezpeč
 
 ### <a name="create-application-security-groups"></a>Vytvoření skupin zabezpečení aplikací
 
-Nejprve vytvořte skupinu prostředků pro všechny prostředky vytvořené v tomto článku se [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků v umístění *eastus*: 
-
+Nejprve vytvořte skupinu prostředků pro všechny prostředky vytvořené v tomto článku se [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků v umístění *eastus*:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Vytvořte skupinu zabezpečení aplikací pomocí rutiny [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup). Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými požadavky na filtrování portů. Následující příklad vytvoří dvě skupiny zabezpečení aplikací.
+Vytvoření skupiny zabezpečení aplikací s [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup). Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými požadavky na filtrování portů. Následující příklad vytvoří dvě skupiny zabezpečení aplikací.
 
 ```azurepowershell-interactive
-$webAsg = New-AzureRmApplicationSecurityGroup `
+$webAsg = New-AzApplicationSecurityGroup `
   -ResourceGroupName myResourceGroup `
   -Name myAsgWebServers `
   -Location eastus
 
-$mgmtAsg = New-AzureRmApplicationSecurityGroup `
+$mgmtAsg = New-AzApplicationSecurityGroup `
   -ResourceGroupName myResourceGroup `
   -Name myAsgMgmtServers `
   -Location eastus
@@ -68,10 +69,10 @@ $mgmtAsg = New-AzureRmApplicationSecurityGroup `
 
 ### <a name="create-security-rules"></a>Vytvoření pravidel zabezpečení
 
-Vytvořte pravidlo zabezpečení pomocí rutiny [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). Následující příklad vytvoří pravidlo povolující příchozí provoz z internetu do skupiny zabezpečení aplikací *myWebServers* na portech 80 a 443:
+Vytvořit pravidlo zabezpečení s [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo povolující příchozí provoz z internetu do skupiny zabezpečení aplikací *myWebServers* na portech 80 a 443:
 
 ```azurepowershell-interactive
-$webRule = New-AzureRmNetworkSecurityRuleConfig `
+$webRule = New-AzNetworkSecurityRuleConfig `
   -Name "Allow-Web-All" `
   -Access Allow `
   -Protocol Tcp `
@@ -84,7 +85,7 @@ $webRule = New-AzureRmNetworkSecurityRuleConfig `
 
 The following example creates a rule that allows traffic inbound from the internet to the *myMgmtServers* application security group over port 3389:
 
-$mgmtRule = New-AzureRmNetworkSecurityRuleConfig `
+$mgmtRule = New-AzNetworkSecurityRuleConfig `
   -Name "Allow-RDP-All" `
   -Access Allow `
   -Protocol Tcp `
@@ -100,10 +101,10 @@ V tomto článku protokolu RDP (portu 3389) je přístupný z Internetu pro *myA
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Vytvořte skupinu zabezpečení sítě pomocí rutiny [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Následující příklad vytvoří skupinu zabezpečení sítě *myNsg*: 
+Vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Následující příklad vytvoří skupinu zabezpečení sítě *myNsg*:
 
 ```powershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup `
   -Location eastus `
   -Name myNsg `
@@ -112,56 +113,57 @@ $nsg = New-AzureRmNetworkSecurityGroup `
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Následující příklad vytvoří virtuální síť *myVirtualNetwork*:
+Vytvoření virtuální sítě s [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť *myVirtualNetwork*:
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Pomocí rutiny [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) vytvořte konfiguraci podsítě a pak tuto konfiguraci podsítě zapište do virtuální sítě pomocí rutiny [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork). Následující příklad do virtuální sítě přidá podsíť *mySubnet* a přidruží k ní skupinu zabezpečení sítě *myNsg*:
+Vytvořte konfiguraci podsítě pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)a pak tuto konfiguraci podsítě zapište do virtuální sítě pomocí [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork). Následující příklad do virtuální sítě přidá podsíť *mySubnet* a přidruží k ní skupinu zabezpečení sítě *myNsg*:
 
 ```azurepowershell-interactive
-Add-AzureRmVirtualNetworkSubnetConfig `
+Add-AzVirtualNetworkSubnetConfig `
   -Name mySubnet `
   -VirtualNetwork $virtualNetwork `
   -AddressPrefix "10.0.2.0/24" `
   -NetworkSecurityGroup $nsg
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-Před vytvořením virtuálních počítačů načtěte objekt virtuální sítě s podsítí pomocí rutiny [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork):
+Před vytvořením virtuálních počítačů načtěte objekt virtuální sítě s podsítí pomocí [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
 
 ```powershell-interactive
-$virtualNetwork = Get-AzureRmVirtualNetwork `
+$virtualNetwork = Get-AzVirtualNetwork `
  -Name myVirtualNetwork `
  -Resourcegroupname myResourceGroup
 ```
-Vytvořte pro jednotlivé virtuální počítače veřejné IP adresy pomocí rutiny [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress):
+
+Vytvoření veřejné IP adresy pro každý virtuální počítač s [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress):
 
 ```powershell-interactive
-$publicIpWeb = New-AzureRmPublicIpAddress `
+$publicIpWeb = New-AzPublicIpAddress `
   -AllocationMethod Dynamic `
   -ResourceGroupName myResourceGroup `
   -Location eastus `
   -Name myVmWeb
 
-$publicIpMgmt = New-AzureRmPublicIpAddress `
+$publicIpMgmt = New-AzPublicIpAddress `
   -AllocationMethod Dynamic `
   -ResourceGroupName myResourceGroup `
   -Location eastus `
   -Name myVmMgmt
 ```
 
-Pomocí rutiny [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) vytvořte dvě síťová rozhraní a přiřaďte k nim veřejné IP adresy. Následující příklad vytvoří síťové rozhraní, přidruží k němu veřejnou IP adresu *myVmWeb* a udělá z něj člena skupiny zabezpečení aplikací *myAsgWebServers*:
+Vytvořte dvě síťová rozhraní s [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)a přiřadit veřejné IP adresy k síťovému rozhraní. Následující příklad vytvoří síťové rozhraní, přidruží k němu veřejnou IP adresu *myVmWeb* a udělá z něj člena skupiny zabezpečení aplikací *myAsgWebServers*:
 
 ```powershell-interactive
-$webNic = New-AzureRmNetworkInterface `
+$webNic = New-AzNetworkInterface `
   -Location eastus `
   -Name myVmWeb `
   -ResourceGroupName myResourceGroup `
@@ -173,7 +175,7 @@ $webNic = New-AzureRmNetworkInterface `
 Následující příklad vytvoří síťové rozhraní, přidruží k němu veřejnou IP adresu *myVmMgmt* a udělá z něj člena skupiny zabezpečení aplikací *myAsgMgmtServers*:
 
 ```powershell-interactive
-$mgmtNic = New-AzureRmNetworkInterface `
+$mgmtNic = New-AzNetworkInterface `
   -Location eastus `
   -Name myVmMgmt `
   -ResourceGroupName myResourceGroup `
@@ -182,28 +184,28 @@ $mgmtNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $publicIpMgmt.Id
 ```
 
-Vytvořte ve virtuální síti dva virtuální počítače, abyste v pozdějším kroku mohli ověřit filtrování provozu. 
+Vytvořte ve virtuální síti dva virtuální počítače, abyste v pozdějším kroku mohli ověřit filtrování provozu.
 
-Pomocí rutiny [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) vytvořte konfiguraci virtuálního počítače a pak vytvořte virtuální počítač pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální počítač, který bude sloužit jako webový server. Pomocí možnosti `-AsJob` se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku: 
+Vytvořte konfiguraci virtuálního počítače pomocí [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig), pak vytvořte virtuální počítač s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač, který bude sloužit jako webový server. Pomocí možnosti `-AsJob` se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku:
 
 ```azurepowershell-interactive
 # Create user object
 $cred = Get-Credential -Message "Enter a username and password for the virtual machine."
 
-$webVmConfig = New-AzureRmVMConfig `
+$webVmConfig = New-AzVMConfig `
   -VMName myVmWeb `
   -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
+Set-AzVMOperatingSystem -Windows `
   -ComputerName myVmWeb `
   -Credential $cred | `
-Set-AzureRmVMSourceImage `
+Set-AzVMSourceImage `
   -PublisherName MicrosoftWindowsServer `
   -Offer WindowsServer `
   -Skus 2016-Datacenter `
   -Version latest | `
-Add-AzureRmVMNetworkInterface `
+Add-AzVMNetworkInterface `
   -Id $webNic.Id
-New-AzureRmVM `
+New-AzVM `
   -ResourceGroupName myResourceGroup `
   -Location eastus `
   -VM $webVmConfig `
@@ -217,20 +219,20 @@ Vytvořte virtuální počítač, který bude sloužit jako server pro správu:
 $cred = Get-Credential -Message "Enter a username and password for the virtual machine."
 
 # Create the web server virtual machine configuration and virtual machine.
-$mgmtVmConfig = New-AzureRmVMConfig `
+$mgmtVmConfig = New-AzVMConfig `
   -VMName myVmMgmt `
   -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
+Set-AzVMOperatingSystem -Windows `
   -ComputerName myVmMgmt `
   -Credential $cred | `
-Set-AzureRmVMSourceImage `
+Set-AzVMSourceImage `
   -PublisherName MicrosoftWindowsServer `
   -Offer WindowsServer `
   -Skus 2016-Datacenter `
   -Version latest | `
-Add-AzureRmVMNetworkInterface `
+Add-AzVMNetworkInterface `
   -Id $mgmtNic.Id
-New-AzureRmVM `
+New-AzVM `
   -ResourceGroupName myResourceGroup `
   -Location eastus `
   -VM $mgmtVmConfig
@@ -240,10 +242,10 @@ Vytvoření virtuálního počítače trvá několik minut. Nepokračujte dalš�
 
 ## <a name="test-traffic-filters"></a>Testování filtrů provozu
 
-Pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získejte veřejnou IP adresu virtuálního počítače. Následující příklad vrátí veřejnou IP adresu virtuálního počítače *myVmMgmt*:
+Použití [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) vrátí veřejnou IP adresu virtuálního počítače. Následující příklad vrátí veřejnou IP adresu virtuálního počítače *myVmMgmt*:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmMgmt `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -257,8 +259,8 @@ mstsc /v:<publicIpAddress>
 
 Otevřete stažený soubor RDP. Pokud se zobrazí výzva, vyberte **Připojit**.
 
-Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače (abyste mohli zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače, možná budete muset vybrat **Další možnosti** a pak **Použít jiný účet**), a pak vyberte **OK**. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** a pokračujte v připojování. 
-   
+Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače (abyste mohli zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače, možná budete muset vybrat **Další možnosti** a pak **Použít jiný účet**), a pak vyberte **OK**. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** a pokračujte v připojování.
+
 Připojení bude úspěšné, protože do skupiny zabezpečení aplikací *myAsgMgmtServers*, která obsahuje síťové rozhraní připojené k virtuálnímu počítači *myVmMgmt*, je povolený příchozí provoz z internetu na portu 3389.
 
 Pomocí následujícího příkazu v PowerShellu vytvořte připojení ke vzdálené ploše virtuálního počítače *myVmWeb* z virtuálního počítače *myVmMgmt*:
@@ -282,7 +284,7 @@ Odpojte se od virtuálního počítače *myVmMgmt*.
 Zadáním následujícího příkazu v PowerShellu na svém počítači načtěte veřejnou IP adresu serveru *myVmWeb*:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmWeb `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -292,10 +294,10 @@ Pokud chcete ověřit, že máte přístup k webovému serveru *myVmWeb* i mimo 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup):
+Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Další postup

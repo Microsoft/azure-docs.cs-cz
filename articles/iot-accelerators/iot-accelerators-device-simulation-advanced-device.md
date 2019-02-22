@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7e680e3cd8a3d7056141814c5e7d4539b72073b4
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: a97afe64992db6b48558561ba958b513c8416494
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50757204"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592821"
 ---
 # <a name="create-an-advanced-device-model"></a>Vytvoření modelu pokročilé zařízení
 
@@ -26,11 +26,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Postupujte podle kroků v této příručce s postupy, je třeba nasazené instance simulace zařízení ve vašem předplatném Azure.
 
-Pokud jste nenasadili simulace zařízení ještě by se měl Dokončit [nasadit a spustit simulaci zařízení IoT v Azure](quickstart-device-simulation-deploy.md) rychlý start.
+Pokud jste Simulaci zařízení ještě nenasadili, měli byste dokončit rychlý start [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md).
 
-### <a name="open-device-simulation"></a>Simulace zařízení otevřít
+### <a name="open-device-simulation"></a>Otevření Simulace zařízení
 
-Simulace zařízení spustit v prohlížeči, nejprve přejděte do [akcelerátory řešení IoT Microsoft Azure](https://www.azureiotsolutions.com).
+Pokud chcete spustit Simulaci zařízení v prohlížeči, nejprve přejděte na web [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com).
 
 Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
 
@@ -494,13 +494,13 @@ function main(context, state) {
 
 Nasazení modelu pokročilé zařízení, můžete odeslat soubory instanci simulace zařízení:
 
-Vyberte **modely zařízení** v panelu nabídek. **Modely zařízení** stránce uvedeny modely zařízení, která je k dispozici v tomto případě simulace zařízení:
+Na řádku nabídek vyberte **Modely zařízení**. **Modely zařízení** stránce uvedeny modely zařízení, která je k dispozici v tomto případě simulace zařízení:
 
 ![Modely zařízení](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
-Klikněte na tlačítko **+ přidat zařízení modely** v pravém horním rohu stránky:
+V pravém horním rohu stránky klikněte na **+ Přidat modely zařízení**:
 
-![Přidat model zařízení](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
+![Přidání modelu zařízení](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
 Klikněte na tlačítko **Upřesnit** otevřete kartu Upřesnit zařízení modelu:
 
@@ -516,4 +516,4 @@ Pokud vaše soubory projít ověřením, klikněte na tlačítko **Uložit** a m
 
 ## <a name="next-steps"></a>Další postup
 
-V této příručce s postupy jste se dozvěděli o soubory modelu zařízení používaných pro simulaci zařízení a jak vytvořit model pokročilé zařízení. V dalším kroku můžete chtít prozkoumat jak [použití Time Series Insights k vizualizaci telemetrická data odesílaná ze zařízení simulace akcelerátor řešení](about-iot-accelerators.md).
+V této příručce s postupy jste se dozvěděli o soubory modelu zařízení používaných pro simulaci zařízení a jak vytvořit model pokročilé zařízení. V dalším kroku můžete chtít prozkoumat jak [použití Time Series Insights k vizualizaci telemetrická data odesílaná ze zařízení simulace akcelerátor řešení](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).

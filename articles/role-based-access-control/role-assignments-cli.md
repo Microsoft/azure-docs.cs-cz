@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d7888fd52495f7d2a195b729fae6d0411cfbd64c
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341707"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587952"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní příkazového řádku Azure
 
@@ -89,9 +89,9 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role"></a>Seznam akcí role
+## <a name="list-a-role-definition"></a>Seznam definice role
 
-Seznam akcí definice role, použít [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Seznam definice role, použít [az role definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
@@ -104,6 +104,7 @@ az role definition list --name "Contributor"
 ```
 
 ```Output
+[
   {
     "additionalProperties": {},
     "assignableScopes": [
@@ -134,7 +135,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-Následující příklad zobrazí *akce* a *notActions* z *Přispěvatel* role:
+### <a name="list-actions-of-a-role"></a>Seznam akcí role
+
+Následující příklad vypíše pouze *akce* a *notActions* z *Přispěvatel* role:
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -153,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-Následující příklad zobrazí seznam akcí *Přispěvatel virtuálních počítačů* role:
+Následující příklad vypíše pouze akce *Přispěvatel virtuálních počítačů* role:
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
