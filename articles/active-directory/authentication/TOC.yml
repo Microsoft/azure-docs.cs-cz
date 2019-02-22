@@ -25,8 +25,8 @@ items:
   items:
   - name: Metody ověřování
     href: concept-authentication-methods.md
-  - name: Konvergovaná registrace
-    href: concept-registration-mfa-sspr-converged.md
+  - name: Kombinovaná registrace
+    href: concept-registration-mfa-sspr-combined.md
   - name: Resetování hesla
     items:
     - name: Jak funguje resetování hesel
@@ -104,6 +104,12 @@ items:
         href: howto-mfa-nps-extension-rdg.md
       - name: Síť VPN
         href: howto-mfa-nps-extension-vpn.md
+  - name: Kombinovaná registrace
+    items:
+    - name: Povolení kombinované registrace
+      href: howto-registration-mfa-sspr-combined.md
+    - name: Řešení potíží s kombinovanou registrací
+      href: howto-registration-mfa-sspr-combined-troubleshoot.md
   - name: Ochrana hesel Azure AD
     items:
     - name: Konfigurace seznamu zakázaných hesel
@@ -191,8 +197,6 @@ items:
         href: howto-mfa-nps-extension-errors.md
   - name: Řešení potíží
     items:
-    - name: Zakázání konvergované registrace
-      href: howto-registration-mfa-sspr-converged-troubleshoot.md
     - name: Řešení potíží se SSPR
       href: active-directory-passwords-troubleshoot.md
     - name: Nejčastější dotazy k SSPR
@@ -225,9 +229,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: d834bcd12f4f8af44c467233230744571dd9b23c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99d21cd59b7281dbb6a34c2e3cdc9026c9955622
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660047"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585980"

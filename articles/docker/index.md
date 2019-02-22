@@ -11,12 +11,6 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: fa2cce2314b3df0d9d32d9d8d6ede5a70520a7d4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647236"
 ---
 <div class="content">
    <h1>Docker v Azure</h1>   
@@ -28,7 +22,7 @@ Docker je oblíbená platforma pro správu a vytváření imagí kontejnerů, kt
     </div>
 <h2>Zprovoznění během 5 minut</h2>
 <p>Podívejte se, jak nasadit Docker v Azure:</p>
-<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS">Nasazení šablony Rychlý start pro Docker v Ubuntu</a><br/>
+<a href="https://azure.microsoft.com/resources/templates/docker-simple-on-ubuntu/">Nasazení šablony Rychlý start pro Docker v Ubuntu</a><br/>
 <h2>Podrobné kurzy</h2>
 <p>Naučte se využívat Docker ve vaší aplikaci a jako součást kanálu pro průběžnou integraci a doručování:</p>
 <ol>

@@ -1,8 +1,8 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API | Dokumentace Microsoftu
-description: Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.
+title: 'Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
+description: 'Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.'
 services: active-directory
 author: barbkess
 manager: daveba
@@ -11,13 +11,8 @@ ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ae193bbb5bdd3de3e26a48fd38705ef8ca7082
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204555"
 ---
+
 <div id="main" class="v2">
     <div class="container">
         <h1>Dokumentace k Azure Active Directory</h1>
@@ -278,7 +273,7 @@ ms.locfileid: "56204555"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="privileged-identity-management/index.yml">Spravované identity pro prostředky Azure</a></h3>
+                                                        <h3><a href="managed-identities-azure-resources/index.yml">Spravované identity pro prostředky Azure</a></h3>
                                                         <p>
                                                             <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Použití virtuálního počítače s Windows pro přístupu k Azure SQL</a><br>
                                                             <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Použití virtuálního počítače Azure pro získání tokenu</a><br>

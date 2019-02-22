@@ -72,6 +72,14 @@ items:
       items:
       - name: Systém s více variantami DRM s řízením přístupu
         href: design-multi-drm-system-with-access-control.md
+      - name: Licence DRM
+        items:
+        - name: Šablona licencování PlayReady
+          href: playready-license-template-overview.md
+        - name: Šablona licencování Widevine
+          href: widevine-license-template-overview.md
+        - name: Licenční požadavky FairPlay
+          href: fairplay-license-overview.md
     - name: Koncové body streamování
       displayName: Origins
       href: streaming-endpoint-concept.md
@@ -101,6 +109,8 @@ items:
     items:
     - name: Události s využitím Event Gridu
       href: reacting-to-media-services-events.md
+    - name: Schémata Event Gridu
+      href: media-services-event-schemas.md
   - name: Klienti přehrávače
     items:
     - name: Přehrávač médií Azure
@@ -197,16 +207,6 @@ items:
       href: https://aka.ms/ams-v3-go-ref
   - name: Šablona Resource Manageru
     href: /azure/templates/microsoft.media/allversions
-  - name: Schémata Event Gridu
-    href: media-services-event-schemas.md
-  - name: Licence DRM
-    items:
-    - name: Šablona licencování PlayReady
-      href: playready-license-template-overview.md
-    - name: Šablona licencování Widevine
-      href: widevine-license-template-overview.md
-    - name: Licenční požadavky FairPlay
-      href: fairplay-license-overview.md
 - name: Zdroje a prostředky
   items:
   - name: Plány Azure do budoucna
@@ -241,9 +241,9 @@ items:
     href: frequently-asked-questions.md
   - name: Oblasti a cloudy Azure
     href: azure-clouds-regions.md
-ms.openlocfilehash: ca4ad36aab79f82c558c3d653a77ad5ec10b254c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b73b6018a2627918ebf31a046422c09f80d900e2
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416948"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652811"
