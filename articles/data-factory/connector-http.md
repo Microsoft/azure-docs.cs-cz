@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/202018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: b092509c1029bbff028da6bf94b9f7dbd1068b16
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020026"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670839"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-http-connector.md)
 > * [Aktuální verze](connector-http.md)
 
@@ -170,10 +170,10 @@ Chcete-li kopírovat data z protokolu HTTP, nastavte **typ** vlastnosti datové 
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost datové sady **HttpFile**. | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když tato vlastnost neurčí, použije se pouze adresu URL, která je zadána v definici propojené služby. | Ne |
-| requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne |
+| requestMethod | Metoda HTTP Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
-| formát | Pokud chcete načíst data z koncového bodu HTTP jako-je bez analýzy a zkopírujte data do úložiště založené na souborech, přeskočte **formátu** části v definici vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. V části **formátu**, nastavte **typ** vlastnost na jednu z těchto hodnot. Další informace najdete v tématu [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format), [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formát Avro](supported-file-formats-and-compression-codecs.md#avro-format), [formát Orc](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Ne |
+| formát | Pokud chcete načíst data z koncového bodu HTTP jako-je bez analýzy a zkopírujte data do úložiště založené na souborech, přeskočte **formátu** části v definici vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, and **ParquetFormat**. V části **formátu**, nastavte **typ** vlastnost na jednu z těchto hodnot. Další informace najdete v tématu [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format), [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formát Avro](supported-file-formats-and-compression-codecs.md#avro-format), [formát Orc](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Ne |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Podporované úrovně:  **Optimální** a **nejrychlejší**. |Ne |
 
 > [!NOTE]

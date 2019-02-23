@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 7ab37122697170d62789ef5872a2815cd8c55bb0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 268f4e07fee2fedda37b86e589d3be7fd3d84df4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884677"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737174"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníkuC#
 

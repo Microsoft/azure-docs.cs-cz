@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312850"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733695"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Přístup aplikací k prostředkům Azure Stack tak, že vytvoříte instanční objekty
 
@@ -75,7 +75,7 @@ Při přihlašování prostřednictvím kódu programu, použijte ID pro vaše a
 
 2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikace v ukázkových aplikací používají **id klienta** k odkazování na **ID aplikace**.
 
-     ![ID aplikace pro aplikaci](./media/azure-stack-create-service-principal/image12.png)
+     ![ID aplikace pro aplikaci](./media/azure-stack-create-service-principals/image12.png)
 3. Pokud chcete generovat ověřovací klíč, vyberte **Klíče**.
 
 4. Zadejte popis klíče a jeho dobu platnosti. Až budete hotovi, vyberte **Uložit**.
@@ -83,7 +83,7 @@ Při přihlašování prostřednictvím kódu programu, použijte ID pro vaše a
 >[!IMPORTANT]
 Po uložení klíče, klíče **hodnotu** se zobrazí. Poznamenejte si tuto hodnotu vzhledem k tomu, že klíč nelze načíst později. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
-![Klíč-hodnota upozornění pro klíč uložený.](./media/azure-stack-create-service-principal/image15.png)
+![Klíč-hodnota upozornění pro klíč uložený.](./media/azure-stack-create-service-principals/image15.png)
 
 Posledním krokem je [přiřazení role aplikace](azure-stack-create-service-principals.md).
 
@@ -110,7 +110,7 @@ Následující postup použijte jako vodítko pro přiřazení role instančním
 
 2. Vyberte předplatné, které chcete přiřadit aplikaci. V tomto příkladu je předplatné sady Visual Studio Enterprise.
 
-     ![Vyberte předplatné sady Visual Studio Enterprise pro přiřazení](./media/azure-stack-create-service-principal/image16.png)
+     ![Vyberte předplatné sady Visual Studio Enterprise pro přiřazení](./media/azure-stack-create-service-principals/image16.png)
 
 3. Vyberte **řízení přístupu (IAM)** pro předplatné.
 

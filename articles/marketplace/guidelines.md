@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro Azure Marketplace a AppSource vydavatele | Azure
+title: Pokyny pro vydavatele Azure Marketplace a AppSource | Azure
 description: Pokyny pro Azure Marketplace a AppSource pro vydavatele aplikace a služby
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
@@ -14,65 +14,65 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a0ab88b1375f5178ca6f41689de8d2f30f8d7808
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307481"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728127"
 ---
 # <a name="guidelines"></a>Pokyny  
 
 <!--
 ## Guidelines for AppSource  
 -->
----  
+---
 
 ## <a name="guidelines-for-azure-marketplace"></a>Pokyny pro Azure Marketplace  
 
-### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Pokyny pro vytváření a ID Microsoft ke správě účtu webu marketplace  
-Pokud víc než jedna osoba vyžaduje přístup ke stejným ID Microsoft používá k vytvoření účtu webu marketplace, pak postupujte podle těchto pokynů, které vám pomůžou vytvořit účet společnosti. 
+### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Pokyny k tvorbě ID Microsoftu ke správě účtu marketplace  
+Pokud více než jedna osoba vyžaduje přístup ke stejným ID Microsoft používá k vytvoření účtu marketplace, by měl důsledném následování těchto směrnic vám pomůže vytvořit účet společnosti. 
 
 >[!IMPORTANT]
->K autorizaci několika uživatelům přístup k účtu Microsoft Developer Center (Dev Center), Microsoft doporučuje, že používáte Azure Active Directory (Azure AD) k přiřazení rolí pro jednotlivé uživatele. Každý uživatel musí přístup k účtu po přihlášení pomocí individuální přihlašovací údaje Azure AD. Vytvoření ID služeb Microsoft pomocí e-mailovou adresu v doméně zaregistrován pro vaši společnost Microsoft naznačuje, že e-mailu, nelze ho přiřadit až k jednotlivcům. Příklad: `windowsapps@fabrikam.com`.  
->*   Další informace najdete v článku [problém: ID společnosti Microsoft ve službě Azure AD Federovaná domény](#issue-microsoft-id-in-an-azure-ad-federated-domain) části.  
+>Povolit více uživatelů pro přístup k účtu Microsoft Developer Center (Centrum pro vývojáře), společnost Microsoft doporučuje použít Azure Active Directory (Azure AD) pro přiřazení rolí pro jednotlivé uživatele. Každý uživatel musí přístup k účtu, když se přihlásíte pomocí jednotlivých přihlašovacích údajů Azure AD. Vytvoření účtu Microsoft ID pomocí e-mailovou adresu v doméně registrované pro vaši společnost Microsoft navrhuje, že e-mailu nebudou přiřazené k jednotlivec. Příklad: `windowsapps@fabrikam.com`.  
+>*   Další informace najdete [problému: ID Microsoftu v Azure AD Federovaná doména](#issue-microsoft-id-in-an-azure-ad-federated-domain) oddílu.  
 
-*   Omezit přístup k Microsoft ID, který má nejmenší možný počet vývojáři. 
-*   Nastavení podnikových e-mailů distribučního seznamu (DL), který zahrnuje všechny uživatele, kteří musí přístup k vašemu účtu Dev Center. E-mailovou adresu DL přidáte do vašich bezpečnostních údajů. DL umožňuje všichni zaměstnanci v seznamu můžete získat zabezpečovací kódy vyžádání a spravovat informace o zabezpečení Microsoft ID. Nastavení distribučního seznamu není vhodná, vlastník jednotlivé e-mailového účtu musí být k dispozici pro přístup k a sdílet bezpečnostní kód po zobrazení výzvy.  
-    *   Například vlastník vyzván při přidání nové informace o zabezpečení Microsoft ID nebo ID společnosti Microsoft, se získají z nového zařízení.  
-*   Přidejte telefonní číslo společnosti, který nevyžaduje rozšíření a je přístupný pro členy týmu klíče.  
-*   Obecně byste měli vyžadovat vývojářům používat důvěryhodné zařízení pro přihlášení do účtu Dev Center. Všichni členové týmu klíče mají mít přístup k důvěryhodná zařízení. Používá pro přístup k důvěryhodné zařízení, sníží se požadavky na odeslání zabezpečovací kódy, když někdo přistupuje k účtu Dev Center.  
-*   Pokud jsou potřeba k udělení přístupu k účtu Dev Center z nedůvěryhodné počítače, měli byste omezit přístup k více než pět vývojáři. V ideálním případě by vaše vývojáři měli přístup k účtu z počítače, které sdílejí stejné zeměpisné a síťové umístění.  
-*   Často zkontrolujte a ověřte své informace o zabezpečení.  
-    *   Pokud chcete zobrazit informace o zabezpečení, navštivte web Security stránka nastavení nacházející se v [account.live.com/proofs/Manage](https://account.live.com/proofs/Manage).
+*   Omezit přístup k Microsoft ID na nejmenší možný počet vývojářů. 
+*   Nastavení firemního e-mailu distribučního seznamu (DL), která obsahuje všechny uživatele, kteří musí přístup k vašemu účtu Dev Center. Přidáte e-mailová adresa bude používat pro informace o zabezpečení. Umožňuje distribučního seznamu všech zaměstnanců na seznamu získat zabezpečovací kódy na požádání a spravovat informace o zabezpečení Microsoft ID. Nastavení distribučního seznamu není proveditelné, vlastník jednotlivé e-mailový účet musí být k dispozici pro přístup k a sdílet kód zabezpečení po zobrazení výzvy.  
+    *   Vlastník například se zobrazí výzva při přidání nové informace o zabezpečení pro Microsoft ID nebo Microsoft ID přistupuje z nového zařízení.  
+*   Přidáte telefonní číslo společnosti, který nevyžaduje, aby rozšíření a je přístupné členům týmu klíče.  
+*   Obecně platí je potřeba vývojářům používat důvěryhodná zařízení pro přihlášení na svém účtu centra vývojářů. Všichni členové týmu klíče by měl mít přístup k důvěryhodným zařízením. Používat důvěryhodná zařízení pro přístup k sníží se požadavky na odeslání zabezpečovací kódy, když uživatel přistupuje k účtu centra vývojářů.  
+*   V případě potřeby udělit přístup k účtu centra vývojářů z nedůvěryhodné počítače by měly omezit přístup k více než pět vývojářů. V ideálním případě by vývojáři měli přístup k účtu z počítačů, které sdílejí stejné zeměpisné a síťové umístění.  
+*   Často zkontrolujte a ověřte informace o zabezpečení.  
+    *   Chcete-li zobrazit informace o zabezpečení, navštivte web Security stránka nastavení umístění [account.live.com/proofs/Manage](https://account.live.com/proofs/Manage).
 
-Účtu Dev Center by měly být dostupné především z důvěryhodné počítače. Je důležité přístup k z důvěryhodné počítače, protože existuje omezení počtu kódů generovaných každý účet Centrum vývojářů pro za týden. Použití důvěryhodné počítače také umožňuje nejbezpečnější a konzistentní přihlašování. 
-*   Další informace o další pokyny účtu Dev Center a zabezpečení, najdete v článku otevírání nacházející se stránku účtu vývojáře v [docs.microsoft.com/windows/uwp/publish/opening-a-developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account). 
+Váš účet vývojáře pro by měla primárně přistupovat z důvěryhodné počítače. Je důležité získat přístup z důvěryhodné počítače, protože je limit pro počet kódů generovaných každý účtu centra vývojářů pro za týden. Použití důvěryhodné počítače také umožní nejbezpečnější a konzistentní přihlašování. 
+*   Další informace o další pokyny účtu Dev Center a zabezpečení, navštivte počáteční stránka účtu vývojáře umístěného v [docs.microsoft.com/windows/uwp/publish/opening-a-developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account). 
 
----  
+---
 
-#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Problém: Microsoft ID v federované domény Azure AD  
-Podnikový účet může být federovaný pomocí služby Azure Active Directory (Azure AD). Pokud se pokusíte vytvořit ID Microsoft podnikových e-mailovou adresu, která je Federovaná pomocí Azure AD, obdržíte chybu. Pokud se zobrazí chyba, pak je potřeba zkontrolovat u vašeho IT týmu a ověřte, zda že váš účet federovaný pomocí služby Azure AD. Azure AD Federovaná e-mailu se o známý problém a společnost Microsoft pracuje na jeho řešení.  
-*   Další informace o Azure AD, najdete v Azure Active Directory dokumentaci stránky nacházející se v [docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory).
+#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Problém: Microsoft ID do federované domény Azure AD  
+Podnikový účet může Federovaná pomocí služby Azure Active Directory (Azure AD). Pokud se pokusíte vytvořit Microsoft ID, pomocí podnikové e-mailovou adresu, která je Federovaná pomocí služby Azure AD, obdržíte chybu. Pokud obdržíte chybu, pak byste měli zkontrolovat s pracovníky IT, abychom potvrdili, že váš účet je Federovaná pomocí služby Azure AD. Microsoft pracuje na řešení se Azure AD Federovaná e-mailu je známý problém.  
+*   Další informace o službě Azure AD, najdete na webu Azure Active Directory dokumentaci stránky umístění [docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory).
 
-Společnost Microsoft doporučuje alternativní řešení. Postupujte podle těchto kroků můžete vytvořit novou e-mailovou adresu v `outlook.com` domény a vytvořte pravidlo pro předávání vaší komunikace.  
-1.  Přejděte na stránku vytvořit účet a klikněte na Get nový odkaz e-mailovou adresu. 
-    *   Pro ID služeb Microsoft, přejděte na stránku vytvořit účet, které se nachází na [signup.live.com/signup](https://signup.live.com/signup).  
-2.  Vytvořte novou e-mailovou adresu a zadejte heslo. Nové ID společnosti Microsoft a e-mailové schránky v `outlook.com` vytvoření domény. Proces registrace pokračujte, dokud je účet vytvořený.  
+Společnost Microsoft doporučuje alternativní řešení. Postupujte podle těchto kroků a vytvořte novou e-mailovou adresu v `outlook.com` domény a vytvořte pravidlo pro předávání komunikace.  
+1.  Přejděte na stránku vytvoření účtu a klikněte na získat nový odkaz e-mailovou adresu. 
+    *   K registraci pro Microsoft ID, navštivte stránka pro vytvoření účtu na [signup.live.com/signup](https://signup.live.com/signup).  
+2.  Vytvořit novou e-mailovou adresu a zadejte heslo. Nové ID společnosti Microsoft a e-mailové schránky v `outlook.com` doména je vytvořená. V registraci pokračujte, dokud je účet vytvořený.  
 
     >[!IMPORTANT]
-    >Je nutné použít e e-mailovou adresu nebo distribuční seznam, který je zaregistrován jako ID Microsoft zaregistrovat na webu Dev Center. Microsoft doporučuje používat distribuční seznam odebrání závislostí jednotlivce. Pokud není registrované e-mailovou adresu nebo distribuční seznam, pak je nutné zaregistrovat nyní.    
+    >Je nutné použít e-mailovou adresu nebo distribuční seznam, který je registrovaný jako ID Microsoftu k registraci ve službě Dev Center. Společnost Microsoft doporučuje používat distribuční seznam odebrat závislost jednotlivců. Pokud vaše e-mailovou adresu nebo v distribučním seznamu není zaregistrovaný, pak budete muset zaregistrovat nyní.    
 
     >[!Important]
-    >Pokud vaše všechny e-mailová adresa je umístěná v `Microsoft` firemní domény, pak nemůžete použít pro registraci na Dev Center.  
+    >Pokud vaše všechny e-mailová adresa je umístěn v `Microsoft` firemní domény, pak nemůžete použít k registraci ve službě Dev Center.  
 
-3.  Po vytvoření Microsoft ID Outlook e-mailové adrese, přihlaste se k vaší poštovní schránce Outlooku. Vytvořte pravidlo předávání e-mailu. E-mailu předávání pravidlo přesuňte všechny e-mailů, které jsou přijaty v poštovní schránce Outlooku e-mailovou adresu ve vaší doméně, kterou jste vytvořili pro správu účtu webu marketplace.  
-    *   Přihlaste se k vaší poštovní schránce Outlooku, najdete na stránce Outlook nacházející se v [outlook.live.com/owa](https://outlook.live.com/owa).  
-    *   Další informace o předávání pravidla, najdete v článku použití pravidel v aplikaci Outlook Web App pro automatické předávání zpráv na jiné stránky účtu nacházející se v [support.office.com/article/ Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed).  
+3.  Po vytvoření Microsoft ID s e-mailovou adresu Outlook přihlášení do vaší poštovní schránce aplikace Outlook. Vytvořte pravidlo přeposílání e-mailu. Pravidlo přeposílání e-mailu by se měla přesunout všechny e-mailů, které nejsou přijímána v poštovní schránce aplikace Outlook pro e-mailovou adresu ve vaší doméně, kterou jste vytvořili ke správě vašeho účtu na webu marketplace.  
+    *   Pro přihlášení do vaší poštovní schránce aplikace Outlook, najdete na stránce aplikace Outlook na [outlook.live.com/owa](https://outlook.live.com/owa).  
+    *   Další informace o předávání pravidla, najdete pomocí pravidel v Outlook Web App automaticky předávat zprávy na jinou stránku účtu v [support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed).  
 
-1.  Pravidlo předávání odešle všechny e-mailu a komunikace obdrželi v e-mailový účet Outlook e-mailovou adresu v doméně zaregistrován pro vaši společnost. Vaše `outlook.com` e-mailovou adresu musíte použít k ověřování v centru vývojářů a portál pro partnery cloudu.  
+1.  Pravidlo pro předávání odešle všechny e-mailu a komunikace dostali e-mailový účet Outlooku e-mailovou adresu v doméně registrované pro vaši společnost. Vaše `outlook.com` e-mailovou adresu musíte použít k ověřování v centru vývojářů pro i portál partnerů cloudu.  
 
 ## <a name="next-steps"></a>Další postup
-*   Přejděte [AppSource vydavatele průvodce a Azure Marketplace](./marketplace-publishers-guide.md) stránky.  
+*   Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
  
----  
+---

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/20/2019
 ms.author: pareshmu
-ms.openlocfilehash: c80477eee18eda2bb3f6e273fdab760d27531310
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0e999017f7c093b1b9b18db92950d66e453db47c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456431"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670655"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -97,7 +97,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Podporováno |Podporováno |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Hongkong, Londýn, London2, Los Angeles, Melbourne, Miami, New York, Ósaka, Paříž, Sao Paulo, Seattle, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **euNetworks** |Podporováno |Podporováno |Amsterdam, Dublin, Londýn |
 | **GÉANT** |Podporováno |Podporováno |Amsterdam |
-| **[Global Cloud Xchange (GCX)](http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | Podporováno| Podporováno | Čennaj, Bombaj |
+| **[Global Cloud Xchange (GCX)](http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Podporováno| Podporováno | Čennaj, Bombaj |
 | **[InterCloud](https://www.intercloud.com/)** |Podporováno |Podporováno |Amsterdam, Londýn, New York, Paříž, Silicon Valley, Singapur, Washington DC |
 | **Internet2** |Podporováno |Podporováno |Chicago, Dallas, Washington DC |
 | **[Internet Initiative Japan Inc. – IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Podporováno |Podporováno |Ósaka, Tokio |
@@ -289,7 +289,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | Severní Amerika |
 | **[FlexManage](http://www.flexmanage.com/cloud)** | Severní Amerika |
 | **[Lightstream](https://www.ltstream.com/expressroute)** | Severní Amerika |
-| **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | Austrálie |
+| **[The IT Consultancy Group](http://itconsult.com.au/)** | Austrálie |
 | **[MOQdigital](http://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Austrálie |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Evropa (Německo) |
 | **[Nelite](https://www.nelite.com/offres-services/)** | Evropa |

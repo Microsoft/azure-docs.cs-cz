@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: fe781802309ad0945eaee23c35dda1617e47ae06
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237865"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727345"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Potíže při přidávání aplikace Galerie Azure AD
 
@@ -38,7 +38,7 @@ V některých případech z důvodu přechodné problémy, problémy se sítí n
 
 Pokud narazíte na chybu při kliknutí **přidat** tlačítko, zobrazí se vám **oznámení** v **chyba** stavu. Pokud chcete podrobnosti o této chybě Další informace o nebo sdílet s pracovníkem technické podpory, zobrazí se další informace o chybě pomocí následujících kroků v [jak zobrazit podrobnosti o oznámení na portálu](#how-to-see-the-details-of-a-portal-notification) oddílu.
 
- ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nevím, jak nastavit Moje aplikace až po jeho přidání
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nevím, jak nastavit Moje aplikace až po jeho přidání
 
 Pokud potřebujete pomoc, další informace o aplikacích [seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) článku je dobrým začátkem.
 

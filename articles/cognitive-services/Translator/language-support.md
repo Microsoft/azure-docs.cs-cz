@@ -7,19 +7,19 @@ author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.topic: article
-ms.date: 09/25/2018
+ms.topic: reference
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: c0e024281782ede67aa3092d7af05a54113b0d68
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 4e8193a9996c9675a353e3e427c86ecfee45da8f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587527"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737837"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
-Translator Text API podporuje následující jazyky pro překlad textu do textu. Neurální strojový překlad sítí (NMT) je novým standardem pro strojový překlad s využitím AI vysoce kvalitní a je k dispozici jako výchozí používá Translator Text API V3 neuronových sítí systému je k dispozici. 
+Translator Text API podporuje následující jazyky pro překlad textu do textu. Neurální strojový překlad sítí (NMT) je novým standardem pro strojový překlad s využitím AI vysoce kvalitní a je k dispozici jako výchozí používá Translator Text API V3 neuronových sítí systému je k dispozici.
 
 [Další informace o tom, jak funguje strojový překlad](https://www.microsoft.com/translator/mt.aspx)
 
@@ -33,7 +33,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 * Neurální výchozí nastavení: Neurální je výchozí překladový systém. Použijte parametr `category=smt` pro přístup k statistické lokality pro použití v centru Microsoft Translator.
 * Neurální pouze: Je k dispozici pouze Neurální překlady.
 
-**V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. Vlastní Translator jde použít jenom s jazyky neuronových sítí. 
+**V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. Vlastní Translator jde použít jenom s jazyky neuronových sítí.
 
 |Jazyk|  Kód jazyka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|

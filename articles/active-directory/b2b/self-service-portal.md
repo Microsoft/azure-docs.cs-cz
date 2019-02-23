@@ -1,5 +1,5 @@
 ---
-title: Portál se samoobslužnou registrací pro spolupráci B2B služby Azure Active Directory | Microsoft Docs
+title: Registrační portál samoobslužné služby pro spolupráci B2B – Azure Active Directory | Dokumentace Microsoftu
 description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše vztahy s ostatními společnostmi tím, že vašim obchodním partnerům umožní selektivní přístup ke podnikovým aplikacím
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e2f22188d825cfb5d51efe1f305fb2f8f52f6e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0c3ad424e8cab444b2405715eaa468411166ebd9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185039"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674272"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Portál se samoobslužnou registrací pro spolupráci B2B služby Azure AD
 

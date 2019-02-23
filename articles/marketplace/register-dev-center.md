@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 549f37c1287373fe8bf4c10dc64e6e778b37be02
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815230"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730133"
 ---
 # <a name="register-in-dev-center"></a>Registrace ve službě Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -82,7 +82,7 @@ K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete
 
     *   Příklad obchodní nabídka je nabídka virtuálního počítače s na hodinový model fakturace.  
 
----  
+---
 
 ## <a name="get-help-with-dev-center-registration"></a>Získejte pomoc s registrací Dev Center  
 Pokud máte problémy s registrací Dev Center, postupujte podle těchto kroků vyplňte lístek podpory.  
@@ -125,7 +125,7 @@ Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomoc�
 
 4.  Klikněte na tlačítko Další. 
 
----   
+---
 
 ## <a name="add-tax-information"></a>Přidejte informace o daních  
 1.  Přihlaste se pomocí účtu Microsoft ID. Dev Center  
@@ -195,4 +195,4 @@ Pro přístup k podpoře, navštivte web Windows stránku podpory developer umí
 ## <a name="next-steps"></a>Další postup
 *   Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
  
----  
+---

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a80ed6af005f04ec48729e918543b2de67810eba
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234284"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738585"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -255,6 +255,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource - zdroj není nakonfigurovaný tak, aby přijímal pouze zařízení tokeny. |
 | AADSTS240001 | BulkAADJTokenUnauthorized – uživatel nemá oprávnění k registraci zařízení ve službě Azure AD. |
 | AADSTS240002 | RequiredClaimIsMissing – požadavku id_token nelze použít jako `urn:ietf:params:oauth:grant-type:jwt-bearer` udělit.|
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy - tenanta správce nakonfiguroval zásady zabezpečení, které blokuje této žádosti. Zkontrolujte zásady zabezpečení, které jsou definovány na úrovni tenanta k určení, pokud požadavek splňuje požadavky zásad. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest – aplikace nebyla nalezena v tenantu Active directory /. To může nastat, pokud aplikace nebyla nainstalována správcem tenanta nebo souhlas. k libovolným uživatelem v tenantovi. Možná máte správně nakonfigurovaný. hodnota identifikátoru pro aplikaci nebo odeslání žádosti o ověření do nesprávného tenanta. |
 | AADSTS700020 | InteractionRequired – udělení přístupu vyžaduje zásah. |
 | AADSTS700022 | InvalidMultipleResourcesScope – zadaná hodnota pro obor vstupní parametr není platný, protože obsahuje více než jeden prostředek. |

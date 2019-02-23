@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/22/2019
 ms.author: juliako
-ms.openlocfilehash: 09de372ffdb48c00fde9a43c07f8f8b574462d1f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 18e629571a45046e5cf54996cd38b425c999ee36
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56405706"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737633"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Definujte účet filtry a filtry asset  
 
-Při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services umožňuje definovat účtu filtry a filtry asset pro obsah. 
+Při doručování obsahu zákazníkům (živě streamovaných událostí nebo Video na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services umožňuje definovat účtu filtry a filtry asset pro obsah. 
 
 Filtry jsou pravidla na straně serveru, které umožňují zákazníkům provádět například následující akce: 
 
@@ -38,8 +38,7 @@ V následující tabulce jsou uvedeny příklady adresy URL s filtry:
 
 |Protocol (Protokol)|Příklad:|
 |---|---|
-|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
+|HLS|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>Pro HLS verze 3, použijte: `format=m3u8-aapl-v3`.|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Technologie Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -62,22 +61,22 @@ Následující vlastnosti použít k popisu filtry.
 |presentationTimeRange|Prezentace časový rozsah. Tato vlastnost se používá k filtrování manifestu počáteční nebo koncové body, délka okna prezentace a živé počáteční pozice. <br/>Další informace najdete v tématu [PresentationTimeRange](#PresentationTimeRange).|
 |stop|Podmínky výběr stopy. Další informace najdete v tématu [stopy](#tracks)|
 
-### <a name="presentationtimerange"></a>PresentationTimeRange
+### <a name="presentationtimerange"></a>presentationTimeRange
 
 Pomocí této vlastnosti se **Asset filtry**. Nedoporučuje se nastavit vlastnost s **filtrů účtů**.
 
 |Název|Popis|
 |---|---|
-|**endTimestamp**|Hranice absolutní koncový čas. Vztahuje se na Video na vyžádání (VoD). Pro živou prezentaci je tiše ignorováno a použít jakmile skončí prezentace a datový proud změní videa na vyžádání.<br/><br/>Hodnota představuje absolutní koncového bodu datového proudu. Získá zaokrouhlí na nejbližší další GOP Start.<br/><br/>Použití StartTimestamp a EndTimestamp k oříznutí seznamu testů (manifest). Například StartTimestamp = 40000000 a EndTimestamp = 100000000 vygeneruje seznam testů, který obsahuje média mezi StartTimestamp a EndTimestamp. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.<br/><br/>Další informace naleznete **forceEndTimestamp** definice, který následuje.|
-|**forceEndTimestamp**|Platí pro živá filtry.<br/><br/>**forceEndTimestamp** je logická hodnota, která určuje, zda je či není **endTimestamp** byl nastaven na platnou hodnotu. <br/><br/>Pokud je hodnota **true**, **endTimestamp** je třeba zadat hodnotu. Pokud není zadán, je vrácena chybnou žádost.<br/><br/>Pokud například chcete definovat filtr, který začíná na 5 minut na vstupním videu a má platnost až do konce datového proudu, nastavíte **forceEndTimestamp** na hodnotu false a vynechat, nechte nastavení **endTimestamp**.|
-|**liveBackoffDuration**|Platí pouze pro živé. Vlastnost se používá k definování přehrávání živé pozice. Pomocí tohoto pravidla, můžete zpoždění přehrávání živé pozice a vytvořit vyrovnávací paměti na straně serveru pro hráče. LiveBackoffDuration je relativní vzhledem k živé pozice. Maximální omezení rychlosti za provozu doba trvání je 300 sekund.|
-|**presentationWindowDuration**|Platí pro živá. Použití **presentationWindowDuration** použít posuvné okno k zobrazení seznamu stop. Například nastavte presentationWindowDuration = 1200000000 použít dvouminutového posuvného okna. Média během 2 minut za provozu edge se zahrne seznam stop. Pokud fragment přechází na hranici, bude celý fragment součástí seznamu stop. Doba trvání okna minimální prezentace je 60 sekund.|
-|**startTimestamp**|Vztahuje se na videa na vyžádání a živé streamy. Hodnota reprezentuje absolutní počáteční bod datového proudu. Získá hodnotu zaokrouhlí na nejbližší další GOP Start.<br/><br/>Použití **startTimestamp** a **endTimestamp** k oříznutí seznamu testů (manifest). Například startTimestamp = 40000000 a endTimestamp = 100000000 vygeneruje seznam testů, který obsahuje média mezi StartTimestamp a EndTimestamp. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.|
-|**timescale**|Vztahuje se na videa na vyžádání a živé streamy. Časové měřítko používat časová razítka a doby trvání výše uvedené. Výchozí časové osy je 10000000. Dá se alternativní časový rámec. Výchozí hodnota je 10000000 HNS (stovek nanosekund).|
+|**endTimestamp**|Vztahuje se na Video na vyžádání (VoD).<br/>Pro prezentaci živého streamování je tiše ignorováno a použít jakmile skončí prezentace a datový proud změní videa na vyžádání.<br/>To je dlouhou hodnotu, která představuje absolutní koncový bod prezentace zaokrouhlí na nejbližší další GOP start. Jednotka je na časové ose, takže endTimestamp 1800000000 bude po dobu 3 minut.<br/>Použijte startTimestamp a endTimestamp oříznout fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí časové osy výchozí vygeneruje seznam testů, který obsahuje fragmenty mezi 4 sekundami a 10 sekund prezentace videa na vyžádání. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.|
+|**forceEndTimestamp**|Platí pro živé streamování.<br/>Určuje, zda vlastnost endTimestamp musí být k dispozici. Při hodnotě true se endTimestamp musí být zadán nebo je vrácen chybný požadavek kód.<br/>Povolené hodnoty: false, true.|
+|**liveBackoffDuration**|Platí pro živé streamování.<br/> Tato hodnota určuje nejnovější živé pozice, který může klient vyhledat.<br/>Pomocí této vlastnosti, můžete zpoždění přehrávání živé pozice a vytvořit vyrovnávací paměti na straně serveru pro hráče.<br/>Jednotka pro tuto vlastnost je časová osa (viz níže).<br/>Maximální délka živé regresi doby trvání je 300 sekund (3000000000).<br/>Například hodnota 2000000000 prostředky, které se nejnovější dostupný obsah je 20 sekund zpožděné od skutečné živé okraje.|
+|**presentationWindowDuration**|Platí pro živé streamování.<br/>Použijte presentationWindowDuration posuvné okno fragmentů mají být zahrnuty seznamu testů.<br/>Jednotka pro tuto vlastnost je časová osa (viz níže).<br/>Například nastavte presentationWindowDuration = 1200000000 použít dvouminutového posuvného okna. Média během 2 minut za provozu edge se zahrne seznam stop. Pokud fragment přechází na hranici, bude celý fragment součástí seznamu stop. Doba trvání okna minimální prezentace je 60 sekund.|
+|**startTimestamp**|Vztahuje se na Video na vyžádání (VoD) nebo živého streamování.<br/>To je dlouhou hodnotu, která reprezentuje absolutní počáteční bod datového proudu. Získá hodnotu zaokrouhlí na nejbližší další GOP Start. Jednotka je na časové ose, takže startTimestamp 150000000 bude po dobu 15 sekund.<br/>Použijte startTimestamp a endTimestampp oříznout fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí časové osy výchozí vygeneruje seznam testů, který obsahuje fragmenty mezi 4 sekundami a 10 sekund prezentace videa na vyžádání. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu|
+|**timescale**|Platí pro všechna časová razítka a doby trvání prezentace časový rozsah, zadaný jako počet kroků v jedné sekundy.<br/>Výchozí hodnota je 10000000 – deset milionů přírůstky v jedné sekundy, kde každý přírůstek by 100 nanosekund dlouho.<br/>Například pokud chcete nastavit startTimestamp na 30 sekund, můžete využít hodnotu 300000000 při použití výchozí časový rámec.|
 
 ### <a name="tracks"></a>stop
 
-Můžete zadat seznam podmínek vlastností sledování filtru (FilterTrackPropertyConditions) podle, na kterém sleduje váš datový proud (Live nebo Video na vyžádání) by měly být zahrnuty do dynamicky generovaný manifest. Filtry jsou kombinovat pomocí logické **a** a **nebo** operace.
+Můžete zadat seznam podmínek vlastností sledování filtru (FilterTrackPropertyConditions) podle, na kterém sleduje váš datový proud (živého streamování a Video na vyžádání) by měly být zahrnuty do dynamicky generovaný manifest. Filtry jsou kombinovat pomocí logické **a** a **nebo** operace.
 
 Podmínky pro vlastnost sledování filtru popisují typy stop, hodnoty (popsané v následující tabulce) a operací (rovná, NotEqual). 
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 00/19/2018
+ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 05529b1d9397fb14e4a0eece5587023321b955b7
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 3d7bdb3f7d3343c5c165636b131f9a5c3a1458fd
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586889"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674595"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows se zobrazuje chyba modrá obrazovka při dalším spuštění virtuálního počítače Azure
 Tento článek popisuje modrá obrazovka chyby, které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje kroky při shromažďování dat pro lístek podpory. 

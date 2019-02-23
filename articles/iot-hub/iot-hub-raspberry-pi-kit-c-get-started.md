@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 3a4fbac0000569a17a9916bd1d84dd140576c9ee
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327237"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672062"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Raspberry Pi
 
@@ -82,7 +82,7 @@ Následující položky jsou volitelné:
 Příprava pro instalaci bitové kopie Raspbian karty microSD.
 
 1. Stáhněte si Raspbian.
-   1. [Stáhnout Raspbian Jessie s Desktopem](https://www.raspberrypi.org/downloads/raspbian/) (soubor .zip).
+   1. [Stáhnout Raspbian Stretch s Desktopem](https://www.raspberrypi.org/downloads/raspbian/) (soubor .zip).
    1. Extrahujte Raspbian image do složky v počítači.
 1. Instalace na kartě microSD Raspbian.
    1. [Stáhněte a nainstalujte nástroj zapisovací jednotka karty Etcher SD](https://etcher.io/).

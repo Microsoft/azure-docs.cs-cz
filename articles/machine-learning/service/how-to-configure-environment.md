@@ -12,18 +12,18 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: b5109c9c93947118397c383cab3df90c02016ce3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 61c380ee3427afdf40427ed82ed0fd5c4f1b49fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651994"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729011"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
 V tomto článku se dozvíte, jak nakonfigurovat vývojové prostředí pro práci se službou Azure Machine Learning. Služba Machine Learning je pro více platforem.
 
-Jediným požadavkem pro vaše vývojové prostředí je Python 3, Conda (pro izolované prostředí) a konfigurační soubor, který obsahuje informace o pracovním prostoru Azure Machine Learning.
+Jediným požadavkem pro vaše vývojové prostředí je Python 3, Anaconda (pro izolované prostředí) a konfigurační soubor, který obsahuje informace o pracovním prostoru Azure Machine Learning.
 
 Tento článek se zaměřuje na tyto prostředí a nástroje:
 
@@ -139,20 +139,22 @@ Další informace najdete v tématu [virtuální počítače pro datové vědy](
 
 ## <a id="local"></a>Místní počítač
 
-Při použití místního počítače (který může být také vzdálené virtuálního počítače), vytvořit prostředí Conda a nainstalujte ji následujícím způsobem:
+Při použití místního počítače (který může být také vzdálené virtuálního počítače), vytvořte Anaconda prostředí a nainstalujte sadu SDK následujícím způsobem:
 
 1. Stáhněte a nainstalujte [Anaconda](https://www.anaconda.com/distribution/#download-section) (verze Python 3.7) Pokud jste ho už nemáte.
 
 1. Otevřít řádek Anaconda a vytvořit prostředí pomocí následujících příkazů:
 
+    Spusťte následující příkaz k vytvoření prostředí.
+
     ```shell
     conda create -n myenv python=3.6.5
+    ```
 
-    # activate the Conda environment
+    Potom aktivujte prostředí.
+
+    ```shell
     conda activate myenv
-
-    # On macOS run
-    source activate myenv
     ```
 
     Tento příklad vytvoří prostředí, které používá python 3.6.5, ale je možné zvolit všechny konkrétní subversions. Kompatibilita sady SDK nemůže zaručit s některé hlavní verze (3.5 + je doporučeno) a doporučujeme vyzkoušet různé verze a podverze ve vašem prostředí Anaconda, pokud dojde k chybám. To bude trvat několik minut vytvořit prostředí, zatímco se stáhnou součásti a balíčky.
@@ -188,7 +190,7 @@ Při použití místního počítače (který může být také vzdálené virtu
    >
    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
 
-   To bude trvat několik minut nainstalovat sadu SDK.
+   To bude trvat několik minut nainstalovat sadu SDK. Zobrazit [Instalační příručka](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) pro další informace o možnostech instalace.
 
 1. Instalace dalších balíčků pro strojového učení experimentování.
 
@@ -286,7 +288,7 @@ Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
     | Typy virtuálních počítačů uzlů pracovního procesu | Optimalizované pro paměť virtuálního počítače upřednostňované |
     | Povolení automatického škálování | Zrušte zaškrtnutí políčka |
 
-    Počet pracovních uzlů v clusteru Databricks určuje maximální počet souběžných iterací v nastavení automatického ML.
+    Počet pracovních uzlů v clusteru Databricks určuje maximální počet souběžných iterací v automatizovaných strojového učení konfigurace.
 
     Bude trvat několik minut pro vytvoření clusteru. Počkejte, než je cluster spuštěn, než budete pokračovat.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 0a73119c7d079498f0e766fb92904c86ff5131c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 4fb2a398baa306cf9303284526bb43cd7f778441
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767218"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734621"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Nahraďte fyzický disk ve službě Azure Stack
 
@@ -39,7 +39,7 @@ Pokud některý disk selže, obdržíte výstrahu, která říká, že připojen
 
 Pokud otevřete výstrahy, popis výstrahy obsahuje uzel jednotek škálování a slotu přesné fyzické umístění disku, který je třeba nahradit. Další Azure Stack pomáhá identifikovat pomocí možnosti indikátor LED selhání disku.
 
- ## <a name="replace-the-disk"></a>Výměna disku
+## <a name="replace-the-disk"></a>Výměna disku
 
 Postupujte podle pokynů výrobce OEM dodavatele hardwaru FRU určena k nahrazení skutečné disku.
 
@@ -50,7 +50,7 @@ Zabránit používání nepodporované disku v integrovaný systém, bude systé
 
 Po vyměňujete disk, Azure Stack automaticky zjistí nový disk a spustí proces opravy virtuálního disku.
  
- ## <a name="check-the-status-of-virtual-disk-repair"></a>Kontrola stavu oprava virtuálního disku
+## <a name="check-the-status-of-virtual-disk-repair"></a>Kontrola stavu oprava virtuálního disku
  
  Po vyměňujete disk, můžete sledovat stav virtuálního disku a opravit průběh úlohy pomocí privilegovaných koncový bod. Z libovolného počítače, který má síťové připojení ke koncovému bodu privileged postupujte podle těchto kroků.
 

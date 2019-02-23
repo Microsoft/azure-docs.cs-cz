@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 722159b82845eff08e0c302eafd503459941ebe7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260315"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734757"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Poznámky k verzi pro služby Azure BizTalk Services
 
@@ -47,7 +47,8 @@ Poznámky k verzi pro služby Microsoft Azure BizTalk Services obsahují známé
 * Straně odesílání smlouvy teď můžete zadat jiné oddělovače skupin pro každé schéma. Tato konfigurace je zadaný v nastavení protokolu pro dohody straně odeslání. Další informace najdete v tématu [vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) a [vytvořili ve službě Azure BizTalk Services smlouvu EDIFACT](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dvě nové entity, které jsou také přidány do rozhraní API TPM OM ke stejnému účelu. Zobrazit [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) a [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
 * Standardní XSD konstrukcím, včetně odvozené typy jsou nyní podporovány. Zobrazit [použijte standardní XSD vytvoří v mapách](https://msdn.microsoft.com/library/azure/dn793987.aspx) a [použijte odvozené typy v mapování scénářů a příklady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
 * AS2 podporuje nový algoritmus MIC pro podepisování zpráv a nových šifrovacích algoritmů. Zobrazit [vytvořili ve službě Azure BizTalk Services smlouvu AS2](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
-  ## <a name="know-issues"></a>Zjistit problémy
+
+## <a name="known-issues"></a>Známé problémy
 
 ### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Problémy s připojením po aktualizaci portálu služby BizTalk Services
   Pokud máte portálu BizTalk Services, otevřít, zatímco služby BizTalk Services se upgraduje na vrácení se změnami do služby, může setkat problémy s připojením pomocí portálu BizTalk Services.  

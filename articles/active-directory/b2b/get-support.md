@@ -1,5 +1,5 @@
 ---
-title: Získání podpory pro Azure Active Directory s B2B spolupráce | Dokumentace Microsoftu
+title: Získání podpory pro spolupráci B2B – Azure Active Directory | Dokumentace Microsoftu
 description: Co je prostředí podpory pro Azure Active Directory s B2B spolupráce?
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d2ae596315b65d3f738a48dc3ad7e1d7c90f68d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d64e1ec4dcf2103c7635b69510f818480d83a6d6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169288"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673626"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Získání podpory pro spolupráci B2B
 

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 02/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: cd129ea68315223516ac1cd3e7577b5ee4bf92e5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5fe1aee35f5501d3ec4910aadb9ef43d2f9fb8ed
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005110"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727515"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight pomocí Azure Log Analytics
 
@@ -37,7 +37,9 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
   * Spark
   * Storm
 
-  Pokyny o tom, jak vytvořit HDInsight cluster najdete v tématu [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+  Pokyny o tom, jak vytvořit HDInsight cluster najdete v tématu [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
+
+* **Modul Azure PowerShell Az**.  Zobrazit [představení nového modulu Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
 > [!NOTE]  
 > Doporučujeme umístit HDInsight cluster a pracovní prostor Log Analytics ve stejné oblasti pro zajištění lepšího výkonu. Azure Log Analytics není k dispozici ve všech oblastech Azure.
@@ -52,41 +54,44 @@ V této části nakonfigurujete existujícího clusteru HDInsight Hadoop pomocí
 
 3. V části **ANALYTICS**vyberte **clustery HDInsight**.
 
-4. Z levé straně v části **monitorování**vyberte **Operations Management Suite**.
+4. Ze seznamu vyberte svůj cluster.
 
-5. Hlavní zobrazení v části **monitorování OMS**vyberte **povolit**.
+5. Z levé straně v části **monitorování**vyberte **Operations Management Suite**.
 
-6. Z **vyberte pracovní prostor** rozevíracího seznamu vyberte existující pracovní prostor Log Analytics.
+6. Hlavní zobrazení v části **monitorování OMS**vyberte **povolit**.
 
-7. Vyberte **Uložit**.
+7. Z **vyberte pracovní prostor** rozevíracího seznamu vyberte existující pracovní prostor Log Analytics.
+
+8. Vyberte **Uložit**.  Trvá několik okamžiků se uložit nastavení.
 
     ![Zapněte sledování pro clustery HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "zapněte sledování pro clustery HDInsight")
 
-    Trvá několik okamžiků se uložit nastavení.
-
 ## <a name="enable-log-analytics-by-using-azure-powershell"></a>Povolení Log Analytics pomocí Azure Powershellu
 
-Můžete povolit Log Analytics pomocí Azure Powershellu. Rutina je:
+Můžete povolit Log Analytics pomocí modulu Azure PowerShell Az [povolit AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightoperationsmanagementsuite) rutiny.
 
 ```powershell
-Enable-AzureRmHDInsightOperationsManagementSuite
-      [-Name] <CLUSTER NAME>
-      [-WorkspaceId] <LOG ANALYTICS WORKSPACE NAME>
-      [-PrimaryKey] <LOG ANALYTICS WORKSPACE PRIMARY KEY>
-      [-ResourceGroupName] <RESOURCE GROUIP NAME>
+# Enter user information
+$resourceGroup = "<your-resource-group>"
+$cluster = "<your-cluster>"
+$LAW = "<your-Log-Analytics-workspace>"
+# End of user input
+
+# obtain workspace id for defined Log Analytics workspace
+$WorkspaceId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroup -Name $LAW).CustomerId
+
+# obtain primary key for defined Log Analytics workspace
+$PrimaryKey = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroup -Name $LAW | Get-AzOperationalInsightsWorkspaceSharedKeys).PrimarySharedKey
+
+# Enables Operations Management Suite
+Enable-AzHDInsightOperationsManagementSuite -ResourceGroupName $resourceGroup -Name $cluster -WorkspaceId $WorkspaceId -PrimaryKey $PrimaryKey
 ```
 
-Zobrazit [povolit AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0).
-
-Pokud chcete zakázat, rutina je:
+Chcete zakázat, použití [zakázat AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite) rutiny:
 
 ```powershell
-Disable-AzureRmHDInsightOperationsManagementSuite
-       [-Name] <CLUSTER NAME>
-       [-ResourceGroupName] <RESOURCE GROUP NAME>
+Disable-AzHDInsightOperationsManagementSuite -Name "<your-cluster>"
 ```
-
-Zobrazit [zakázat AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0).
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>Nainstalujte řešení pro správu clusteru HDInsight
 
@@ -101,7 +106,7 @@ Toto jsou k dispozici řešení HDInsight:
 * Sledování pro HDInsight Spark
 * Sledování pro HDInsight Storm
 
-Pokyny k instalaci řešení pro správu najdete v tématu [řešení pro správu v Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Můžete experimentovat, nainstalujte řešení HDInsight Hadoop Monotiring. Po dokončení, uvidíte **HDInsightHadoop** dlaždici v části **Souhrn**. Vyberte **HDInsightHadoop** dlaždici. Řešení HDInsightHadoop vypadá takto:
+Pokyny k instalaci řešení pro správu najdete v tématu [řešení pro správu v Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Můžete experimentovat, nainstalujte řešení HDInsight Hadoop monitorování. Po dokončení, uvidíte **HDInsightHadoop** dlaždici v části **Souhrn**. Vyberte **HDInsightHadoop** dlaždici. Řešení HDInsightHadoop vypadá takto:
 
 ![Zobrazení monitorování řešení HDInsight](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 

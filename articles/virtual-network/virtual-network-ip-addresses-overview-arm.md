@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a71870115c3ea5e64c8b365d6c4aa64920bc6ca3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997325"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675037"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -121,7 +121,7 @@ Veřejnou IP adresu vytvořenou s kteroukoli [SKU](#SKU) můžete přiřadit slu
 
 ### <a name="application-gateways"></a>Application Gateway
 
-Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. Tato veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. Konfiguraci front-endu služby Application Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu úrovně Basic.
+Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. Tato veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. Můžete přiřadit jenom *dynamické* základní veřejnou IP adresu pro konfiguraci front-endu služby application gateway V1 a pouze statické, základní nebo standardní SKU adresu front-endové konfigurace V2.
 
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
@@ -131,7 +131,7 @@ Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
 | VPN Gateway |Konfigurace protokolu IP brány |Ano |Ano |
-| Application Gateway |Konfigurace front-endu |Ano |Ano |
+| Application Gateway |Konfigurace front-endu |Ano (pouze verze 1) |Ano (pouze verze 2) |
 
 ## <a name="private-ip-addresses"></a>Privátní IP adresy
 Privátní IP adresy umožňují prostředkům Azure komunikovat s ostatními prostředky ve [virtuální](virtual-networks-overview.md) nebo místní síti prostřednictvím brány sítě VPN nebo okruhu ExpressRoute, a to bez použití IP adresy dostupné na internetu.

@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b05713fd8acb49b25dba04781c1049c9f05115fb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 5161a35fd52b2f3d8374c76bdab60281e33dacf6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444682"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730643"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Jak přidat vlastní certifikát certifikační Autority ve službě Azure API Management
 
 Azure API Management umožňuje nainstalovat počítač v rámci důvěryhodných kořenových a zprostředkujících certifikátů úložišť certifikátů certifikační Autority. Tato funkce by měla použít, pokud vaše služby vyžadovat vlastní certifikát certifikační Autority.
 
 Tento článek ukazuje, jak spravovat certifikáty certifikační Autority instance služby Azure API Management na webu Azure Portal.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -51,7 +53,7 @@ Postupujte podle následujících kroků, abyste nahrát nový certifikát certi
     ![Přidat certifikáty certifikační Autority](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
-> Můžete nahrát pomocí certifikátu certifikační Autority `New-AzureRmApiManagementSystemCertificate` příkaz prostředí Powershell.
+> Můžete nahrát pomocí certifikátu certifikační Autority `New-AzApiManagementSystemCertificate` příkaz prostředí Powershell.
 
 ## <a name="step1a"> </a>Odstranit klientský certifikát
 

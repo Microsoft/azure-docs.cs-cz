@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 60767c3c61b0d386e4ac9b0a93d16ad161c59949
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0467f131ab4300ba3217ed01f37ebb7f4b8dbe5e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445930"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732768"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -132,22 +132,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     ![App Service Installer][10]
 
-11. Zadejte podrobnosti serveru SQL Server instance serveru použitý k hostování databáze poskytovatele prostředků App Service a potom vyberte **Další**. Instalační program ověří vlastnosti připojení SQL.
-
-    > [!NOTE]
-    > Instalační program se pokusí o test připojení k SQL serveru, než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální síť, tento test připojení se nemusí podařit. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Informace o SQL serveru je správná, pokračujte v nasazení.
-    >
-    > Ze služby Azure App Service v Azure stacku a vyšší 1.3 instalační program bude zkontrolujte, zda SQL Server databáze členství ve skupině na úrovni serveru SQL povoleno.  Pokud není, zobrazí výzva k následující výjimce:
-    > ```sql
-    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
-    >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
-    >    GO
-    >    ***********************************************************
-    > ```
-    > Odkazovat [poznámky k verzi pro služby Azure App Service v Azure stacku 1.3](azure-stack-app-service-release-notes-update-three.md) další podrobnosti.
+11. Zadejte podrobnosti serveru SQL Server instance serveru použitý k hostování databáze poskytovatele prostředků App Service a potom vyberte **Další**. Instalační program ověří vlastnosti připojení SQL.<br><br>Instalační program služby App Service se pokusí o test připojení k SQL serveru, než budete pokračovat. Pokud nasazení provádíte do existující virtuální síť, tento test připojení se nemusí podařit. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Informace o SQL serveru je správná, pokračujte v nasazení.
 
     ![App Service Installer][11]
 

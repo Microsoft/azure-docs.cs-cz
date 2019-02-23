@@ -4,7 +4,7 @@ description: Jak najít a odstranit nepřipojené spravovaných a nespravovanýc
 services: virtual-machines-windows
 documentationcenter: ''
 author: ramankumarlive
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 02/22/2019
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 15b82455813c75ca14903f019a17828156638569
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 705706b011464f9e1f437db7b608b3a73e7c3655
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983555"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727379"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Vyhledat a odstranit nepřipojené spravovaných a nespravovaných disků v Azure
-Když odstraníte virtuální počítač (VM) v Azure, ve výchozím nastavení, nebudou odstraněny všechny disky, které jsou připojené k virtuálnímu počítači. Tato funkce pomáhá zabránit ztrátě dat v důsledku neúmyslnému odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete i nadále platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky a omezení zbytečných nákladů. 
 
+Když odstraníte virtuální počítač (VM) v Azure, ve výchozím nastavení, nebudou odstraněny všechny disky, které jsou připojené k virtuálnímu počítači. Tato funkce pomáhá zabránit ztrátě dat v důsledku neúmyslnému odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete i nadále platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky a omezení zbytečných nákladů.
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>Spravované disky: Vyhledat a odstranit nepřipojené disky 
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>Spravované disky: Vyhledat a odstranit nepřipojené disky
 
 Následující skript hledá nepřipojené [spravované disky](managed-disks-overview.md) porovnáním hodnoty **ManagedBy** vlastnost. Když spravovaný disk je připojený k virtuálnímu počítači, **ManagedBy** vlastnost obsahuje ID prostředku virtuálního počítače. Když spravovaný disk není připojený, **ManagedBy** vlastnost má hodnotu null. Tento skript kontroluje všechny spravované disky v rámci předplatného Azure. Pokud skript vyhledá spravovaného disku s **ManagedBy** nastavenou na hodnotu null, který určuje, zda disk není připojený.
 
@@ -92,13 +92,13 @@ foreach($storageAccount in $storageAccounts){
 
     $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
 
-    $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $storageKey
+    $context = New-AzStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $storageKey
 
-    $containers = Get-AzureStorageContainer -Context $context
+    $containers = Get-AzStorageContainer -Context $context
 
     foreach($container in $containers){
 
-        $blobs = Get-AzureStorageBlob -Container $container.Name -Context $context
+        $blobs = Get-AzStorageBlob -Container $container.Name -Context $context
 
         #Fetch all the Page blobs with extension .vhd as only Page blobs can be attached as disk to Azure VMs
         $blobs | Where-Object {$_.BlobType -eq 'PageBlob' -and $_.Name.EndsWith('.vhd')} | ForEach-Object { 
@@ -110,7 +110,7 @@ foreach($storageAccount in $storageAccounts){
 
                         Write-Host "Deleting unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
 
-                        $_ | Remove-AzureStorageBlob -Force
+                        $_ | Remove-AzStorageBlob -Force
 
                         Write-Host "Deleted unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
                   }
@@ -132,6 +132,3 @@ foreach($storageAccount in $storageAccounts){
 ## <a name="next-steps"></a>Další postup
 
 Další informace najdete v tématu [odstranit účet úložiště](../../storage/common/storage-create-storage-account.md) a [identifikovat osamocené disky pomocí prostředí PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
-
-
-

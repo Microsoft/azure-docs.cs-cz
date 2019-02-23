@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastní image Azure DevTest Labs ze souboru virtuálního pevného disku pomocí prostředí PowerShell | Microsoft Docs
-description: Automatizovat vytvoření vlastní image v Azure DevTest Labs ze souboru virtuálního pevného disku pomocí prostředí PowerShell
+title: Vytvoření vlastní image Azure DevTest Labs ze souboru VHD pomocí Powershellu | Dokumentace Microsoftu
+description: Automatizace vytvoření vlastní image ve službě Azure DevTest Labs ze souboru VHD pomocí Powershellu
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 17679ee3a5cb50f78cad0f66cb3fffcc6d556087
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7c18ac13b9663ad541ae206347a8df17ff06297c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787497"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737378"
 ---
-# <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Vytvořit vlastní image ze souboru virtuálního pevného disku pomocí prostředí PowerShell
+# <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Vytvoření vlastní image ze souboru VHD pomocí Powershellu
 
 [!INCLUDE [devtest-lab-create-custom-image-from-vhd-selector](../../includes/devtest-lab-create-custom-image-from-vhd-selector.md)]
 
@@ -29,45 +29,47 @@ ms.locfileid: "33787497"
 
 [!INCLUDE [devtest-lab-upload-vhd-options](../../includes/devtest-lab-upload-vhd-options.md)]
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
-Následující postup vás provede procesem vytvoření vlastní image ze souboru virtuálního pevného disku pomocí prostředí PowerShell:
+Následující kroky vás provedou procesem vytvoření vlastní image ze souboru VHD pomocí Powershellu:
 
-1. Na příkazovém řádku prostředí PowerShell, přihlaste se k účtu Azure s následující volání **Connect-AzureRmAccount** rutiny.  
+1. Na příkazový řádek Powershellu, přihlaste se ke svému účtu Azure pomocí následujícího volání **připojit AzAccount** rutiny.  
     
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
-1.  Vyberte požadované předplatné Azure voláním **Select-AzureRmSubscription** rutiny. Nahraďte následující zástupný symbol pro **$subscriptionId** proměnné s ID platné předplatné Azure. 
+1.  Vyberte požadované předplatné Azure voláním **vyberte AzSubscription** rutiny. Nahraďte následující zástupnou hodnotu **$subscriptionId** proměnné s ID platné předplatné Azure. 
 
     ```PowerShell
     $subscriptionId = '<Specify your subscription ID here>'
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
+    Select-AzSubscription -SubscriptionId $subscriptionId
     ```
 
-1.  Získání testovacího prostředí objektu voláním **Get-AzureRmResource** rutiny. Nahraďte následující zástupné symboly **$labRg** a **$labName** proměnné s příslušnými hodnotami pro vaše prostředí. 
+1.  Získejte objekt služby testovacího prostředí pomocí volání **Get-AzResource** rutiny. Nahraďte následující zástupné symboly **$labRg** a **$labName** proměnné s příslušnými hodnotami pro vaše prostředí. 
 
     ```PowerShell
     $labRg = '<Specify your lab resource group name here>'
     $labName = '<Specify your lab name here>'
-    $lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
+    $lab = Get-AzResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
     ```
  
-1.  Získáte testovací prostředí úložiště účet a testovacího prostředí úložiště účet klíče hodnoty z objektu testovacího prostředí. 
+1.  Získáte úložiště účtu a testovacího prostředí úložiště klíčových hodnot účtu testovacího prostředí z objektu testovacího prostředí. 
 
     ```PowerShell
-    $labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
-    $labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
+    $labStorageAccount = Get-AzResource -ResourceId $lab.Properties.defaultStorageAccount 
+    $labStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
     ```
 
-1.  Nahraďte následující zástupný symbol pro **$vhdUri** proměnné s identifikátor URI pro nahraný soubor virtuálního pevného disku. Identifikátor URI virtuálního pevného disku soubor můžete získat v okně účtu úložiště objektů blob na portálu Azure.
+1.  Nahraďte následující zástupnou hodnotu **$vhdUri** proměnné s identifikátorem URI pro nahraný soubor virtuálního pevného disku. Identifikátor URI souboru VHD můžete získat z okna účet úložiště blob na webu Azure Portal.
 
     ```PowerShell
     $vhdUri = '<Specify the VHD URI here>'
     ```
 
-1.  Vytvoření vlastní image pomocí **New-AzureRmResourceGroupDeployment** rutiny. Nahraďte následující zástupné symboly **$customImageName** a **$customImageDescription** proměnné na smysluplný názvy pro vaše prostředí.
+1.  Vytvoření s použitím vlastní image **New-AzResourceGroupDeployment** rutiny. Nahraďte následující zástupné symboly **$customImageName** a **$customImageDescription** proměnné smysluplné názvy pro vaše prostředí.
 
     ```PowerShell
     $customImageName = '<Specify the custom image name>'
@@ -75,29 +77,29 @@ Následující postup vás provede procesem vytvoření vlastní image ze soubor
 
     $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
-    New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
+    New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
     ```
 
-## <a name="powershell-script-to-create-a-custom-image-from-a-vhd-file"></a>Skript prostředí PowerShell pro vytvoření vlastní image ze souboru virtuálního pevného disku
+## <a name="powershell-script-to-create-a-custom-image-from-a-vhd-file"></a>Skript Powershellu pro vytvoření vlastní image ze souboru VHD
 
-Následující skript prostředí PowerShell můžete použít k vytvoření vlastní image z soubor virtuálního pevného disku. Nahraďte zástupné symboly (počáteční a koncovou s lomené závorky) na odpovídající hodnoty pro své potřeby. 
+Následující skript prostředí PowerShell slouží k vytvoření vlastní image ze souboru virtuálního pevného disku. Nahraďte zástupné symboly (počáteční a koncovou pomocí ostrých závorek) odpovídajícími hodnotami pro vaše potřeby. 
 
 ```PowerShell
 # Log in to your Azure account.  
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # Select the desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'
-Select-AzureRmSubscription -SubscriptionId $subscriptionId
+Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab object.
 $labRg = '<Specify your lab resource group name here>'
 $labName = '<Specify your lab name here>'
-$lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
+$lab = Get-AzResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
 
 # Get the lab storage account and lab storage account key values.
-$labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
-$labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
+$labStorageAccount = Get-AzResource -ResourceId $lab.Properties.defaultStorageAccount 
+$labStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
 
 # Set the URI of the VHD file.  
 $vhdUri = '<Specify the VHD URI here>'
@@ -110,14 +112,14 @@ $customImageDescription = '<Specify the custom image description>'
 $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
 # Create the custom image. 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
+New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
 ```
 
-## <a name="related-blog-posts"></a>Příspěvky blogu související
+## <a name="related-blog-posts"></a>Související blogové příspěvky
 
 - [Vlastní Image nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopírování vlastních bitových kopií mezi Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Kopírování vlastních Imagí mezi Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přidejte virtuální počítač do testovacího prostředí](devtest-lab-add-vm.md)
+- [Přidání virtuálního počítače do testovacího prostředí](devtest-lab-add-vm.md)

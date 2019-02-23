@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 64f02b1165d014a0eaa89dae64a7d9aa283cac32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7be10f03d65e53b51c3916849dc12feb4de9c919
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834583"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737650"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Popis clusteru service fabric
 Service Fabric Cluster Resource Manager poskytuje několik mechanismů pro popis clusteru. Cluster Resource Manageru za běhu, používá tyto informace k zajištění vysoké dostupnosti služby spuštěné v clusteru. Při vynucování tyto důležité pravidla, je taky automatický pokus o optimalizaci spotřeby prostředků v rámci clusteru.
@@ -28,7 +28,7 @@ Service Fabric Cluster Resource Manager poskytuje několik mechanismů pro popis
 Cluster Resource Manager podporuje několik funkcí, které popisují clusteru:
 
 * Domény selhání
-* Upgradovací domény
+* Upgrade Domains
 * Vlastnosti uzlu
 * Uzel kapacity
 
@@ -54,7 +54,7 @@ Za běhu Service Fabric Cluster Resource Manager bere v úvahu domén selhání 
 
 Service Fabric Cluster Resource Manageru není pro vás počet vrstev jsou v hierarchii doména selhání. Ale pokusí se ujistěte, že ztráta jakékoli jedné části hierarchie nebude mít vliv na služby spuštěné v ní. 
 
-Je vhodné, pokud existují stejný počet uzlů na všech úrovních hloubka v hierarchii doména selhání. Je-li "stromu" domén selhání nevyváženou ve vašem clusteru, obtížnější pro Cluster Resource Manager zjistit nejlepší přidělení služeb. Rozložení imbalanced domén selhání znamenají, že ke ztrátě některých domén dopadu na dostupnost služeb víc než jiných domén. V důsledku toho se odpojí Cluster Resource Manageru se mezi dva cíle: chce použít na počítačích v této doméně "heavy" tak, že služby na nich a chce umístí služeb v jiných doménách, aby nezpůsobí ztrátu domény problémy. 
+Je vhodné, pokud existují stejný počet uzlů na všech úrovních hloubka v hierarchii doména selhání. Je-li "stromu" domén selhání nevyváženou ve vašem clusteru, obtížnější pro Cluster Resource Manager zjistit nejlepší přidělení služeb. Rozložení imbalanced domén selhání znamenají, že ke ztrátě některých domén dopadu na dostupnost služeb víc než jiných domén. V důsledku toho se odpojí Cluster Resource Manageru se mezi dva cíle: Chce použít na počítačích v této doméně "heavy" tak, že služby na nich a chce umístí služeb v jiných doménách, aby nezpůsobí ztrátu domény problémy. 
 
 Jak imbalanced domén vypadat? Na obrázku níže ukážeme dvě rozložení jiného clusteru. V prvním příkladu se uzly rovnoměrně distribuovaných napříč doménami selhání. V druhém příkladu jednu doménu selhání má mnoho dalších uzlů, než v jiných doménách selhání. 
 
@@ -97,14 +97,14 @@ Matice FD/ud stejný, kde tabulku tvoří doménami selhání a aktualizačními
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Omezení chyb a doména upgradu a výsledné chování
 ### <a name="default-approach"></a>*Výchozí přístup*
-Ve výchozím nastavení Cluster Resource Manageru udržuje služby vyvažují mezi selhání a upgradu domény. To je modelovaná jako [omezení](service-fabric-cluster-resource-manager-management-integration.md). Stavy omezení chyb a doména upgradu: "pro daného oddílu by neměla existovat rozdíl větší než jedna v počet objektů služeb (Bezstavová služba instancí nebo replik pro stavové služby) mezi dvěma doménami na stejné úrovni hierarchie". Řekněme, že toto omezení poskytuje záruku "maximální rozdíl". Omezení chyb a upgradu domény brání určitých operací přesunutí nebo ujednání, které porušují pravidlo bylo uvedeno výše. 
+Ve výchozím nastavení Cluster Resource Manageru udržuje služby vyvažují mezi selhání a upgradu domény. To je modelovaná jako [omezení](service-fabric-cluster-resource-manager-management-integration.md). Stavy omezení chyb a doména upgradu: "Pro oddíl dané služby by nikdy existovat rozdíl větší než jedna v počet objektů služeb (Bezstavová služba instancí nebo replik pro stavové služby) mezi dvěma doménami na stejné úrovni hierarchie". Řekněme, že toto omezení poskytuje záruku "maximální rozdíl". Omezení chyb a upgradu domény brání určitých operací přesunutí nebo ujednání, které porušují pravidlo bylo uvedeno výše. 
 
 Podívejme se na příklad. Řekněme, že máme cluster s uzly šesti, nakonfigurovaný s pěti doménami selhání a pěti doménami upgradovat.
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
-| **UD1** |N6 |N2. | | | |
+| **UD1** |N6 |N2 | | | |
 | **UD2** | | |N3 | | |
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
@@ -166,7 +166,7 @@ Tento přístup na druhé straně může být příliš přísné a, aby mohli v
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | |N10 |
-| **UD1** |N6 |N2. | | | |
+| **UD1** |N6 |N2 | | | |
 | **UD2** | |N7 |N3 | | |
 | **UD3** | | |N8 |N4 | |
 | **UD4** | | | |N9 |N5 |
@@ -176,7 +176,7 @@ Tento přístup na druhé straně může být příliš přísné a, aby mohli v
 
 ### <a name="alternative-approach"></a>*Alternativním přístupem*
 
-Cluster Resource Manager podporuje jinou verzi omezení chyb a doména upgradu, které umožňuje umístění při zůstává zaručena minimální úroveň zabezpečení. Alternativní omezení chyb a doména upgradu můžete uvést následujícím způsobem: "Pro určitou službu oddíl, distribuce replik napříč doménami se ujistěte, že oddíl nezpůsobuje žádné ztrátě kvora". Řekněme, že toto omezení poskytuje záruku "bezpečné kvorum". 
+Cluster Resource Manager podporuje jinou verzi omezení chyb a doména upgradu, které umožňuje umístění při zůstává zaručena minimální úroveň zabezpečení. Alternativní omezení chyb a doména upgradu můžete uvést následujícím způsobem: "Pro určitou službu oddíl, distribuce replik napříč doménami zajistil, že oddíl nezpůsobuje žádné ztrátě kvora". Řekněme, že toto omezení poskytuje záruku "bezpečné kvorum". 
 
 > [!NOTE]
 >Pro stavové služby definujeme *ztráty kvora* v situaci, když většinou replik oddílů jsou vypnuté ve stejnou dobu. Například pokud TargetReplicaSetSize je pět, představuje sadu všechny tři repliky kvora. Podobně pokud TargetReplicaSetSize 6, čtyři repliky jsou nezbytné pro kvorum. Více než dvě repliky můžou v obou případech být mimo provoz ve stejnou dobu, pokud chce oddílu dál normálně fungovat. Pro bezstavovou službu, je i *ztráty kvora* jako bezstavové služby dál normálně fungovat i v případě, že většina instancí, přestanou fungovat ve stejnou dobu. Proto se zaměříme na stavové služby ve zbývající části textu.
@@ -192,14 +192,14 @@ Vzhledem k tomu, že oba přístupy mít silné a slabé stránky, jsme naši na
 > [!NOTE]
 >Bude to výchozí chování, počínaje Service Fabric verze 6.2. 
 >
-Adaptivní přístup ve výchozím nastavení používá "maximální rozdíl" logika a přepne do logiky "kvora bezpečné" pouze v případě potřeby. Cluster Resource Manager se automaticky zjistí strategii, kterou je nutné zobrazením konfiguraci clusteru a služeb. Pro danou službu: *při rovnoměrně dělitelné podle počtu domén selhání a počet domén upgradu TargetReplicaSetSize **a** počet uzlů je menší než nebo rovno (počet domén selhání) * () počet domén upgradu), Cluster Resource Manager by měla využívat "na základě kvora" logiku pro danou službu.* Berte v úvahu, že Cluster Resource Manager bude tuto metodu použijte pro bezstavové a stavové služby, bez ohledu na ztráty kvora, které nejsou relevantní pro bezstavové služby.
+Adaptivní přístup ve výchozím nastavení používá "maximální rozdíl" logika a přepne do logiky "kvora bezpečné" pouze v případě potřeby. Cluster Resource Manager se automaticky zjistí strategii, kterou je nutné zobrazením konfiguraci clusteru a služeb. Pro danou službu: *Pokud je TargetReplicaSetSize rovnoměrně dělitelné podle počtu domén selhání a počet domén upgradu **a** počet uzlů je menší než nebo rovno (počet domén selhání) * (počet domén upgradu), clusteru Resource Manager by měla využívat "na základě kvora" logiku pro danou službu.* Berte v úvahu, že Cluster Resource Manager bude tuto metodu použijte pro bezstavové a stavové služby, bez ohledu na ztráty kvora, které nejsou relevantní pro bezstavové služby.
 
 Přejděte zpět do předchozího příkladu a předpokládá, že cluster má teď 8 uzlů (stále konfigurací clusteru s pěti doménami selhání a pěti doménami upgradovat a TargetReplicaSetSize službě hostované na tento cluster zůstane pět). 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
-| **UD1** |N6 |N2. | | | |
+| **UD1** |N6 |N2 | | | |
 | **UD2** | |N7 |N3 | | |
 | **UD3** | | |N8 |N4 | |
 | **UD4** | | | | |N5 |
@@ -431,7 +431,7 @@ serviceDescription.PlacementConstraints = "(HasSSD == true && SomeProperty >= 4)
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
@@ -449,7 +449,7 @@ updateDescription.PlacementConstraints = "NodeType == NodeType01";
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstraints "NodeType == NodeType01"
@@ -490,7 +490,7 @@ serviceDescription.Metrics.Add(metric);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)

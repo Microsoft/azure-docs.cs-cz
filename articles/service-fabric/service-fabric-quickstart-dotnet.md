@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 3b7b70a5ac0c74cc920df823d1f9ae1152f86bff
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561191"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736579"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikací .NET do Service Fabric reliable services
 
@@ -55,10 +55,10 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 Po instalaci modulu runtime, sady SDK, nástroje sady Visual Studio, Docker a mít spuštěnou Dockeru, vytvořte pěti uzly místního vývojového clusteru.
 
-> [!IMPORTANT]
-> Před vytvořením clusteru **musí** být spuštěný Docker.
+> [!Note]
+> Důvodem pro Docker spuštěný při vytváření clusteru je tak, aby se vytvoření clusteru s povolenými funkcemi kontejneru. Pokud není spuštěný Docker, budete muset znovu vytvořit cluster k povolení funkcí kontejneru.
+> I když je nezbytné pro tento konkrétní rychlý start, instrukce pro Docker spuštěné při vytváření clusteru je součástí osvědčeného postupu.
 > Zkontrolujte, že je Dockeru spuštěný, otevřením okna terminálu a zadáním příkazu `docker ps`, abyste viděli, jestli došlo k chybě. Pokud odpověď neindikuje chybu, Docker je spuštěný a vy jste připravení vytvořit cluster.
-
 
 1. Jako správce otevřete nové okno PowerShellu se zvýšenými oprávněními.
 2. Vývojový cluster vytvoříte spuštěním následujícího příkazu PowerShellu:

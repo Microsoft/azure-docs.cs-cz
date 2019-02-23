@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 0e17fa877bc2e1e4f72891315d940546a11e674d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 893273fc325eaf878814c07eb095c67f5ea3c3f1
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812489"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675054"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
 
@@ -110,7 +110,7 @@ Datová sada se rozdělené do trénovací sady 50 000 obrázků a testovací sa
 * Sada cognitive Toolkit se načíst model a score předběžného zpracování imagí na každém uzlu.
 * Poznámkové bloky Jupyter pro spuštění skriptu PySpark agregovat výsledky a použít [Matplotlib](https://matplotlib.org/) můžete vizualizovat výkon modelů.
 
-Na clusteru se 4 uzly pracovního procesu celý předběžného zpracování nebo vyhodnocení 10 000 obrázků trvá méně než jedna minuta. Tento model předpovídá přesně popisky ~ 9,100 imagí (91 %). Chybová matice ukazuje nejběžnější chyby klasifikace. Matice příkladu mislabeling PSI jako koček a naopak vyvolá se, že více často než pro ostatní kombinace popisek.
+Na clusteru se 4 uzly pracovního procesu celý předběžného zpracování nebo vyhodnocení 10 000 obrázků trvá méně než jedna minuta. Tento model předpovídá přesné štítky ~ 9,100 (91 %) bitové kopie. Chybová matice ukazuje nejběžnější chyby klasifikace. Matice příkladu mislabeling PSI jako koček a naopak vyvolá se, že více často než pro ostatní kombinace popisek.
 
 ![Výsledky](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
@@ -133,6 +133,5 @@ Apache Spark a MLLib
 
 Obsáhlý Learning, Cognitive Toolkit a dalších
 
-* [Klasifikace obrázků jednoduše paralelně zpracovatelné, pomocí Cognitive Toolkit a TensorFlow v Azure HDInsight Spark](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)
 * [Vědecké zpracování dat virtuálních počítačů Azure](../../machine-learning/data-science-virtual-machine/overview.md)
 * [Představujeme H2O.ai v Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)

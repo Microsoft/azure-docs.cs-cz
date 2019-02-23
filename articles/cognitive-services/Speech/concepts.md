@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816204"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670413"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -198,7 +199,7 @@ Výsledný formát frázi můžete řídit tak, že zadáte `format` parametr do
 
 ### <a name="n-best-values"></a>N-best hodnoty
 
-Naslouchacích procesů, zda překladatelem nebo strojově, mohl nikdy být jistý, že jsou vyslyšeni *přesně* co je slyšet. Můžete přiřadit naslouchací proces *pravděpodobnost* jenom na konkrétní výklad utterance. 
+Naslouchacích procesů, zda překladatelem nebo strojově, mohl nikdy být jistý, že jsou vyslyšeni *přesně* co je slyšet. Můžete přiřadit naslouchací proces *pravděpodobnost* jenom na konkrétní výklad utterance.
 
 Za běžných podmínek, když mluvíme ostatním uživatelům se kterými často interagují mají uživatelé vysoká pravděpodobnost rozpoznávání slova, která se používá. Naslouchacích procesů založených na počítačích řeči snažit dosáhnout podobné úrovně přesnosti a správné podmínek [jejich dosažení parity s člověka](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
 
@@ -308,7 +309,7 @@ Microsoft Speech Service rozpozná všechny formy lidské řeči, včetně slova
 
 | *Vulgárních výrazů* hodnota | Popis |
 | - | - |
-| `masked` | Masky vulgárních výrazů hvězdičkami. Toto chování je výchozí nastavení. | 
+| `masked` | Masky vulgárních výrazů hvězdičkami. Toto chování je výchozí nastavení. |
 | `removed` | Zruší všechny výsledky vulgárních výrazů. |
 | `raw` | Rozpozná a vrátí vulgárních výrazů v všechny výsledky. |
 
@@ -322,7 +323,7 @@ Když *vulgárních výrazů* dotazu parametr má hodnotu *odebrat*, služba vul
 
 #### <a name="profanity-only-utterances"></a>Projevy pouze vulgárních výrazů
 
-Uživatel může přečíst *pouze* vulgárních výrazů, když aplikace má nakonfigurovanou službu vulgárních výrazů. Pro tento scénář, pokud je režim rozpoznávání *diktování* nebo *konverzace*, nesmí vracet služby *speech.result*. Pokud je režim rozpoznávání *interaktivní*, služba vrátí hodnotu *speech.result* se stavovým kódem *NoMatch*. 
+Uživatel může přečíst *pouze* vulgárních výrazů, když aplikace má nakonfigurovanou službu vulgárních výrazů. Pro tento scénář, pokud je režim rozpoznávání *diktování* nebo *konverzace*, nesmí vracet služby *speech.result*. Pokud je režim rozpoznávání *interaktivní*, služba vrátí hodnotu *speech.result* se stavovým kódem *NoMatch*.
 
 ### <a name="profanity-value-raw"></a>Hodnota vulgárních výrazů `Raw`
 

@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: e80ebcd6de7a793450a0503c99af151e96658ea9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 99b54a5fe5c28eb66a61fad61d23b94f0955f126
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876738"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728564"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu Azure API Management.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="contact-us"></a>Kontaktujte nás
 * [Jak můžu pokládat ve službě Microsoft Azure API Management team dotaz?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
@@ -89,9 +91,9 @@ Zde je, jak můžete přidat uživatele do skupiny správců:
 
 Teď nově přidané Přispěvatel můžete použít Azure PowerShell [rutiny](https://docs.microsoft.com/powershell/azure/overview). Tady je postup přihlášení jako správce:
 
-1. Použití `Connect-AzureRmAccount` rutiny pro přihlášení.
-2. Nastavte kontext předplatného, který má služba s využitím `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
-3. Získat adresu URL jednotné přihlašování s použitím `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
+1. Použití `Connect-AzAccount` rutiny pro přihlášení.
+2. Nastavte kontext předplatného, který má služba s využitím `Set-AzContext -SubscriptionID <subscriptionGUID>`.
+3. Získat adresu URL jednotné přihlašování s použitím `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
 4. Použijte adresu URL pro přístup k portálu pro správu.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Proč se zásadami, které chcete přidat k dispozici v editoru zásad?
@@ -132,11 +134,11 @@ Ano. Zobrazit [služby Azure API Management](https://aka.ms/apimtemplate) šablo
 Ano. To lze provést pomocí Powershellu nebo přímo, odešlete do rozhraní API. To zakáže ověřování řetězu certifikátů a vám umožní použít certifikáty podepsané svým držitelem nebo soukromě podepsané při komunikaci ze služby API Management se back-end služby.
 
 #### <a name="powershell-method"></a>Metoda využívající PowerShell ####
-Použití [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (pro nový back-end) nebo [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (pro existující back-end) rutiny prostředí PowerShell a nastavte `-SkipCertificateChainValidation` parametr `True`. 
+Použití [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (pro nový back-end) nebo [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (pro existující back-end) rutiny prostředí PowerShell a nastavte `-SkipCertificateChainValidation` parametr `True`. 
 
 ```powershell
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+$context = New-AApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 #### <a name="direct-api-update-method"></a>Přímé metody aktualizace rozhraní API ####

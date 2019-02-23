@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
-ms.date: 01/31/18
-ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/31/2018
+ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230129"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671790"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, příklady, kurzy a názorné postupy pro Azure Logic Apps
 
@@ -27,9 +27,9 @@ Můžete získat další informace o mnoha způsoby a funkce, která [Azure Logi
 
 Každá aplikace logiky začíná [ *aktivační událost*](../logic-apps/logic-apps-overview.md#logic-app-concepts)a pouze jednu aktivační událost, která spustí pracovní postup aplikace logiky a předají všechna data jako součást této aktivační události. Některé konektory poskytují triggery, které se dělí na tyto typy:
 
-* *Triggery*: pravidelně kontroluje koncový bod služby pro nová data. Když existovala nová data, trigger vytvoří a spustí novou instanci pracovního postupu pomocí data jako vstup.
+* *Triggery*: Pravidelně kontroluje koncový bod služby pro nová data. Když existovala nová data, trigger vytvoří a spustí novou instanci pracovního postupu pomocí data jako vstup.
 
-* *Triggery nabízených oznámení*: naslouchá dat u koncového bodu služby a počká, až se stane konkrétní události. Pokud k události dojde, trigger spustí okamžitě, vytvoření a spuštění nové instance pracovního postupu, který používá všechna dostupná data jako vstup.
+* *Triggery nabízených oznámení*: Přijímá data na koncový bod služby a počká, až se stane konkrétní události. Pokud k události dojde, trigger spustí okamžitě, vytvoření a spuštění nové instance pracovního postupu, který používá všechna dostupná data jako vstup.
 
 Tady je pár příkladů oblíbený trigger:
 
@@ -70,7 +70,7 @@ Aplikace logiky zahrnují bohaté možnosti pro pokročilé řízení toku, nap�
 * [Opakujte kroky nebo proces položky pole a kolekce pomocí smyček](../logic-apps/logic-apps-control-flow-loops.md)
 * [Akce skupiny spolu s obory](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Autor chyb a zpracování výjimek v pracovním postupu](../logic-apps/logic-apps-exception-handling.md)
-* [Případ použití: jak společnost poskytující zdravotní používá zpracování pro pracovní postupy HL7 FHIR výjimek aplikace logiky](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [Případ použití: Jak společnost poskytující zdravotní používá zpracování pro pracovní postupy HL7 FHIR výjimek aplikace logiky](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Zapnout sledování, protokolování a výstrahy pro existující aplikace logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Zapněte monitorování a protokolování diagnostiky vytváření aplikací logiky](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
 
@@ -99,12 +99,12 @@ Logic apps nabízí také integrace s mnoha službami, jako je Azure Functions, 
 * [Kurz: Trigger aplikace logiky s využitím Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [Kurz: Monitorování změn virtuálního počítače pomocí Azure Event Grid a Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Kurz: Vytvoření funkce, která se integruje s Azure Logic Apps a Microsoft Cognitive Services analýza sentimentu Twitter příspěvku](../azure-functions/functions-twitter-email.md)
-* [Kurz: Vzdáleného sledování IoT a oznámení pomocí Azure Logic Apps propojení vaší služby IoT hub a poštovní schránky](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [Kurz: Sada IoT vzdálené monitorování a oznámení pomocí Azure Logic Apps propojení vaší služby IoT hub a poštovní schránky](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: Volání koncových bodů protokolu SOAP z aplikací logiky](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>Kompletní scénáře
 
-* [Dokument White Paper: Začátku do konce správu případu, integrace se službami Azure, jako je například Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+* [Dokument White Paper: Správu případu začátku do konce integrace se službami Azure, jako je například Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
 
 ## <a name="customer-stories"></a>Příběhy zákazníků
 

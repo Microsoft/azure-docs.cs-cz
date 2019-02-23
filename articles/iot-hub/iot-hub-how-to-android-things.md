@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e5b075a457c646eb03810b2c51af1a1181ee96ed
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981668"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670248"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Vývoj pro platformu Android věci pomocí sad SDK Azure IoT
 [Sady SDK služby Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) podporují první úroveň pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci naší snahy o povolení větší možnost volby a flexibilitu v nasazení IoT, sady Java SDK podporuje také [Android věci](https://developer.android.com/things/) platformy.  Vývojáři mohou využít výhod operačního systému Android věci na straně zařízení při používání [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) jako centrální zprávy centru s možností škálování na miliony současně připojených zařízení. 
@@ -69,7 +69,6 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     ```
 4.  V nástroji Android Studio otevřete projekt pro Android v umístěný v "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample".
 5.  Otevřete soubor gradle.properties a nahraďte "Device_connection_string" vaším připojovacím řetězcem zařízení jste si předtím poznamenali.
-    ![Snímek obrazovky s hlavní větví úložiště](./media/how-to-android-things/connection-string.png)
 6.  Klikněte na tlačítko na spuštění – ladění a vyberte zařízení k nasazení tohoto kódu do zařízení s Androidem věci.
 7.  Když je aplikace spuštěna úspěšně, uvidíte aplikaci spuštěnou na zařízení s Androidem věci.  Tato ukázková aplikace odešle náhodně generované teplotní hodnoty.
 

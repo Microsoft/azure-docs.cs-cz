@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c8bab609212c837802be6f70e7fc74df6b5eaf2e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e4f446ff67408ef390ba817de935c286c5b2a47e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346249"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727600"
 ---
 # <a name="introduction-to-application-groups"></a>Úvod do skupiny aplikací
 Service Fabric Cluster Resource Manageru obvykle spravuje prostředky clusteru rozložení zátěže (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v celém clusteru. Service Fabric spravuje kapacity uzlů v clusteru a clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacitu fungují velmi vhodné pro mnoho úloh, ale vzorce, které se hojně používají různé instance aplikace Service Fabric v některých případech umožňuje přinést si další požadavky. Například můžete chtít:
@@ -77,7 +77,7 @@ Pro jednotlivé aplikace metriky jsou dvě hodnoty, které je možné nastavit:
 - **Maximální kapacita uzlu** – toto nastavení určuje maximální celkové zatížení aplikace v jednom uzlu. Zatížení překročí tuto kapacitu, přesune Cluster Resource Manager repliky na jiné uzly tak, aby zatížení sníží.
 
 
-Prostředí PowerShell:
+Powershell:
 
 ``` posh
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -Metrics @("MetricName:Metric1,MaximumNodeCapacity:100,MaximumApplicationCapacity:1000")
@@ -107,7 +107,7 @@ Rezervování prostoru v clusteru pro aplikace se okamžitě stane i v případ�
 - počet služeb v rámci instance aplikace změní pokaždé, když 
 - služby existuje, ale nejsou využívající tyto prostředky 
 
-Rezervování prostředků pro instanci aplikace vyžaduje zadání dvou dalších parametrů: *MinimumNodes* a *NodeReservationCapacity*
+Rezervování prostředků pro instanci aplikace vyžaduje určení další dva parametry: *MinimumNodes* a *NodeReservationCapacity*
 
 - **MinimumNodes** – Určuje minimální počet uzlů, které by se spustit na instanci aplikace.  
 - **NodeReservationCapacity** – toto nastavení je na metriku pro aplikaci. Hodnota je množství tuto metriku vyhrazena pro aplikaci ve všech uzlech kde spuštění služby v dané aplikaci.
@@ -126,7 +126,7 @@ V příkladu na pravé straně Řekněme, že Application1 byl vytvořen s násl
 
 - MinimumNodes nastavena na dvě
 - Metrika definovaná pomocí aplikace
-  - NodeReservationCapacity 20
+  - NodeReservationCapacity of 20
 
 PowerShell
 
@@ -157,7 +157,7 @@ Service Fabric rezervuje kapacitu na dvou uzlech pro Application1 a neumožňuje
 ## <a name="obtaining-the-application-load-information"></a>Získávání informací o zatížení aplikace
 Pro každou aplikaci, která má kapacity aplikace definované pro jednu nebo víc metrik, které můžete získat informace o agregované zatížení hlášených repliky z jejích služeb.
 
-Prostředí PowerShell:
+Powershell:
 
 ``` posh
 Get-ServiceFabricApplicationLoadInformation –ApplicationName fabric:/MyApplication1

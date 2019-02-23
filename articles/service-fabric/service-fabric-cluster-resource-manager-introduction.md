@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a5499826c06f5f8f5e5db91badf134befa44c9d0
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203195"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738228"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Úvod do Service Fabric cluster resource Manageru
 Tradičně Správa informačních systémů nebo online služby určené vyhradíte konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byla navržena jako úrovně. By být "web" a "data" nebo "úložiště" vrstvu. Aplikace by měla mít zasílání zpráv úrovně, kde požadavky byly převedeny dovnitř a ven a také sadu počítačů vyhrazený pro ukládání do mezipaměti. Každou vrstvu nebo typu úlohy konkrétního počítače, které jsou vyhrazené pro to měl: databáze je teď několik počítačů dedicated, webové servery v pár. Je-li konkrétní typ zatížení počítače, ve kterém se k spuštění příliš horké, pak jste přidali další počítače pomocí této stejnou konfiguraci na dané úrovni. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvou obvykle nahradíte počítače s větší počítače. Snadné. Pokud na počítači se nezdařilo, část celkové aplikace nižší kapacitu spuštěné, dokud se počítač může obnovit. Stále poměrně snadné (Pokud není nutně zábavné).

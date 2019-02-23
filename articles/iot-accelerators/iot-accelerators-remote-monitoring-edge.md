@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d28a88efc1a9f980d74737936bb960ba13573fa3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606244"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675088"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekovat anomálie na hraničních zařízeních s akcelerátor řešení vzdálené monitorování
 
@@ -55,12 +55,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Existují dva kroky pro přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování. V této části se dozvíte, jak používat:
 
-* Přidat zařízení IoT Edge na **zařízení** stránky ve vzdálené monitorování webového uživatelského rozhraní.
+* Přidat zařízení IoT Edge na **Device Explorer** stránky ve vzdálené monitorování webového uživatelského rozhraní.
 * Nainstalujte modul runtime IoT Edge v Linuxu virtuálních počítačů (VM).
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>Do řešení přidat zařízení IoT Edge
 
-Přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování, přejděte **zařízení** stránku ve webovém uživatelském rozhraní a klikněte na tlačítko **+ nové zařízení**.
+Přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování, přejděte **Device Explorer** stránku ve webovém uživatelském rozhraní a klikněte na tlačítko **+ nové zařízení**.
 
 V **nové zařízení** panelu, vyberte **zařízení IoT Edge** a zadejte **ropy čerpadlo** jako ID zařízení. Můžete ponechat výchozí hodnoty pro ostatní nastavení. Pak klikněte na **Použít**:
 
@@ -68,13 +68,13 @@ V **nové zařízení** panelu, vyberte **zařízení IoT Edge** a zadejte **rop
 
 Poznamenejte si připojovací řetězec zařízení, budete potřebovat v další části tohoto kurzu.
 
-Když registrujete zařízení prostřednictvím služby IoT hub v akcelerátoru řešení vzdáleného monitorování, nejsou na **zařízení** stránku ve webovém uživatelském rozhraní:
+Když registrujete zařízení prostřednictvím služby IoT hub v akcelerátoru řešení vzdáleného monitorování, nejsou na **Device Explorer** stránku ve webovém uživatelském rozhraní:
 
 [![Nové zařízení IoT Edge](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 Aby bylo snazší spravovat zařízení IoT Edge v řešení, vytvořte skupinu zařízení a přidání zařízení IoT Edge:
 
-1. Vyberte **ropy čerpadlo** zařízení v seznamu na **zařízení** stránce a potom klikněte na tlačítko **úlohy**.
+1. Vyberte **ropy čerpadlo** zařízení v seznamu na **Device Explorer** stránce a potom klikněte na tlačítko **úlohy**.
 
 1. Vytvoření úlohy pro přidání **IsEdge** značka, které zařízení pomocí následujících nastavení:
 
@@ -84,13 +84,13 @@ Aby bylo snazší spravovat zařízení IoT Edge v řešení, vytvořte skupinu 
     | Název úlohy | AddEdgeTag |
     | Klíč     | IsOilPump |
     | Hodnota   | Ano     |
-    | Typ    | Text  |
+    | Type    | Text  |
 
     [![Přidat značku](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
 1. Klikněte na tlačítko **použít**, pak **Zavřít**.
 
-1. Na **zařízení** klikněte na **Správa skupin zařízení**.
+1. Na **Device Explorer** klikněte na **Správa skupin zařízení**.
 
 1. Klikněte na tlačítko **vytvořit novou skupinu zařízení**. Vytvořte novou skupinu zařízení s následujícími nastaveními:
 
@@ -100,7 +100,7 @@ Aby bylo snazší spravovat zařízení IoT Edge v řešení, vytvořte skupinu 
     | Pole   | Tags.IsOilPump |
     | Operátor | = Rovná se |
     | Hodnota    | Ano |
-    | Typ     | Text |
+    | Type     | Text |
 
     [![Vytvořte skupinu zařízení](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
@@ -277,7 +277,7 @@ Nyní jste připraveni nasadit balíček do zařízení.
     | ------ | ----- |
     | Název   | OilPumpDevices |
     | Typ balíčku | Edge Manifest |
-    | Balíček | ropa. čerpadlo device.json |
+    | Balíček | oil-pump-device.json |
     | Skupiny zařízení | OilPumps |
     | Priorita | 10 |
 
@@ -300,7 +300,7 @@ Budete muset počkat několik minut, než pro balíček pro nasazení do zaříz
 
 Můžete zobrazit teplotní telemetrie ze zařízení čerpadlo ropy ve vzdálené monitorování webového uživatelského rozhraní:
 
-1. Přejděte **zařízení** stránky a vyberte své zařízení ropy čerpadla.
+1. Přejděte **Device Explorer** stránky a vyberte své zařízení ropy čerpadla.
 1. V **Telemetrie** část **podrobnosti o zařízení** panelu, klikněte na tlačítko **teploty**:
 
     [![Zobrazení telemetrie](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)

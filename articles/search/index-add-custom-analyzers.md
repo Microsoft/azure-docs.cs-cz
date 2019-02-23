@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cb2f06bf2a05e2642eb688a48006d0df5fa4fc2c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 82b2910a1654461cade853b71e6d57a674bb849e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587816"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733193"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Vlastní analyzátory přidat do indexu Azure Search
 
@@ -189,7 +189,7 @@ Můžete použít **Analyzéru testu operace** v [rozhraní REST API](https://do
   }
 ```
 
- ## <a name="update-custom-analyzers"></a>Aktualizovat vlastní analyzátory
+## <a name="update-custom-analyzers"></a>Aktualizovat vlastní analyzátory
 
 Po definování analyzátor, tokenizátor, token filtru nebo char filtru nelze změnit. Nové značky mohou být přidány do existujícího indexu pouze v případě, `allowIndexDowntime` příznak je nastaven na true v žádosti o aktualizaci indexu:
 
@@ -205,7 +205,7 @@ Tato operace přebírá pro alespoň několik sekund, způsobí selhání žádo
 
 V tabulce dole najdete seznam vlastností konfigurace analyzátory, tokenizátory, token filtry a char oddílu filtrů definici indexu. Struktura analyzátoru, tokenizátor nebo filtru v indexu se skládá z těchto atributů. Informace o přiřazení hodnoty, najdete v článku [odkaz na vlastnost](#PropertyReference).
 
- ### <a name="analyzers"></a>Analyzátory
+### <a name="analyzers"></a>Analyzátory
 
 Atributy indexu pro analyzátory, se liší v závislosti na tom, určete, jestli používáte předdefinovanou nebo vlastní analyzátory.
 
@@ -229,7 +229,7 @@ Atributy indexu pro analyzátory, se liší v závislosti na tom, určete, jestl
 
 <a name="CharFilter"></a>
 
- ### <a name="char-filters"></a>Char – filtry
+### <a name="char-filters"></a>Char – filtry
 
  Filtr char slouží k přípravě vstupního textu, než je zpracován programovacím modelem tokenizátor. Například můžete nahradit některé znaky a symboly. Může mít několik filtrů char v vlastní analyzátor. Char filtry se spouští v pořadí, ve kterém jsou uvedeny.  
 
@@ -239,7 +239,7 @@ Atributy indexu pro analyzátory, se liší v závislosti na tom, určete, jestl
 |Type|Typ ze seznamu podporovaných char filtrů filtru Char. Zobrazit **char_filter_type** sloupec v [Char filtry](#CharFilter) následující tabulka.|  
 |Možnosti|Musí být platné možnosti danou [Char filtry](#CharFilter) typu.|  
 
- ### <a name="tokenizers"></a>Tokenizátory
+### <a name="tokenizers"></a>Tokenizátory
 
  Tokenizátor rozdělí průběžné text do sekvence tokenů, jako je zastavení větu na slova.  
 
@@ -252,7 +252,7 @@ Vlastní analyzátor můžete použít předdefinované tokenizátor výchozí n
 |Type|Tokenizátor název ze seznamu podporovaných tokenizátory. Zobrazit **tokenizer_type** sloupec v [Tokenizátory](#Tokenizers) následující tabulka.|  
 |Možnosti|Musí být platné možnosti tokenizátor daného typu uvedené v [Tokenizátory](#Tokenizers) následující tabulka.|  
 
- ### <a name="token-filters"></a>Token filtry
+### <a name="token-filters"></a>Token filtry
 
  Token filtru se používá k filtrování nebo upravit tokeny generovaných tokenizátor. Můžete například zadat filtr, který převádí všechny znaky na malá písmena malá písmena.   
 Může mít více tokenů filtry ve vlastní analyzátor. Token filtry se spouští v pořadí, ve kterém jsou uvedeny.  

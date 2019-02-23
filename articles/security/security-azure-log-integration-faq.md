@@ -4,7 +4,7 @@ description: Tento článek obsahuje odpovědi na otázky týkající se integra
 services: security
 documentationcenter: na
 author: TomShinder
-manager: barbkess
+manager: MBaldwin
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: f1b809e52cc532d13be85776f73aba4465fa2140
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fc94208ef01e52207b6efbf88223119cf58ddb7f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114922"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727158"
 ---
 # <a name="azure-log-integration-faq"></a>Integrace protokolů Azure – nejčastější dotazy
 
@@ -32,6 +32,8 @@ Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o integraci pr
 Integrace protokolů Azure je služba operačního systému Windows, která vám umožní integrovat vaše místní zabezpečení informací a událostí (SIEM) systémy pro správu nezpracovaných protokolů z vašich prostředků Azure. Tato integrace poskytuje jednotný řídicí panel pro všechny vaše prostředky, místní nebo v cloudu. Můžete pak agregovat, korelovat, analyzovat a výstrahy pro události zabezpečení související s vašimi aplikacemi.
 
 Je upřednostňovanou metodou pro integraci protokolů Azure pomocí Azure Monitor konektor SIEM dodavatele a podle těchto [pokyny](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Nicméně pokud dodavatele vašeho systému SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné používat Azure Log Integration jako dočasné řešení (Pokud vašeho systému SIEM je podporovaný službou Azure Log Integration) dokud tyto connector je k dispozici.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Integrace protokolů Azure softwaru je zdarma?
 
@@ -118,8 +120,8 @@ Podrobnosti o tom, jak získat, upravit a nastavit konfiguraci diagnostiky Azure
 
 Následující příklad načte konfiguraci diagnostiky Azure:
 
-    -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
+    Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
@@ -136,7 +138,7 @@ Následující příklad změní konfiguraci diagnostiky Azure. V této konfigur
 Následující příklad nastaví konfiguraci diagnostiky Azure:
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
+    Set-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
 Když provedete změny, zkontrolujte účet úložiště k zajištění, že se shromažďují události správný.
 

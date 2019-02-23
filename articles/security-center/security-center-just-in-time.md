@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 94364a54a5a0994cc3de3a2fe014b556d438b2c2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2bfa3b6001d714da39ebeb709600504f9d7331c5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114905"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733653"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 
@@ -29,6 +29,8 @@ Chcete-li zamezit příchozímu provozu na virtuální počítače Azure, tím o
 > Funkce just-in-time je k dispozici na na úrovni Standard služby Security Center.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="attack-scenario"></a>Útoku
 
@@ -208,7 +210,7 @@ Funkce just-in-time virtuální počítač přístup je možné prostřednictví
 
 ### <a name="using-jit-vm-access-via-powershell"></a>Pomocí přístupu k virtuálnímu počítači podle potřeby přes PowerShell 
 
-Pokud chcete používat řešení just-in-time virtuálních počítačů přístup prostřednictvím Powershellu, použijte oficiální rutiny prostředí PowerShell Azure Security Center a to konkrétně `Set-AzureRmJitNetworkAccessPolicy`.
+Pokud chcete používat řešení just-in-time virtuálních počítačů přístup prostřednictvím Powershellu, použijte oficiální rutiny prostředí PowerShell Azure Security Center a to konkrétně `Set-AzJitNetworkAccessPolicy`.
 
 Následující příklad nastaví zásadu přístupu za běhu virtuálního počítače na konkrétní virtuální počítač a nastaví následující:
 1.  Zavřít porty 22 a 3389.
@@ -238,7 +240,7 @@ Spuštěním následujícího příkazu v Powershellu k provedení této:
 
 3.  Konfigurace zásady přístupu za běhu virtuálního počítače na vybraný virtuální počítač:
     
-        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
+        Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 #### <a name="requesting-access-to-a-vm"></a>Žádost o přístup k virtuálnímu počítači
 
@@ -258,7 +260,7 @@ Spuštěním následujícího příkazu v Powershellu:
         $JitPolicyArr=@($JitPolicyVm1)
 3.  Odeslat žádost o přístup (použijte ID prostředku v jste získali v kroku 1)
 
-        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+        Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
 Další informace najdete v článku dokumentace k rutinám prostředí PowerShell.
 

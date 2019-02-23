@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 44182d686548fa5b6363a87be0ce7851829e20ab
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3ebc4d94e0bbf24895be0aeba9fef1cc7aacd6b9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820552"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736708"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN stroj pravidel splňují podmínky 
 Tento článek obsahuje podrobný popis dostupných odpovídají podmínkám pro sítě Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -233,7 +233,7 @@ Informace o klíči:
 
 </br>
 
---- 
+---
 ### <a name="country"></a>Země
 Můžete zadat prostřednictvím jeho směrové číslo země. 
 
@@ -388,7 +388,7 @@ Informace o klíči:
 
 </br>
 
----  
+---
 ### <a name="request-header-literal"></a>Literál hlavičky požadavku
 **Shody**/**neodpovídá** možnost určuje podmínky, za kterých žádost o záhlaví literálu odpovídat podmínka je splněna.
 - **Odpovídá**: Vyžaduje žádost obsahující zadanou hlavičku. Její hodnota musí odpovídat objektu, který je definován v tomto stavu shody.
@@ -409,7 +409,7 @@ Informace o klíči:
 
 </br>
 
----  
+---
 ### <a name="request-header-regex"></a>Regulární výraz hlavičky požadavku
 **Shody**/**neodpovídá** možnost určuje splněny podmínky, za kterých regulární výraz záhlaví požadavku odpovídají podmínce.
 - **Odpovídá**: Vyžaduje žádost obsahující zadanou hlavičku. Jeho hodnota musí odpovídat vzoru, který je definován v zadaném [regulárního výrazu](cdn-rules-engine-reference.md#regular-expressions).
@@ -468,7 +468,7 @@ Informace o klíči:
 ### <a name="request-method"></a>Request – metoda
 Pouze v případě, že prostředky jsou požadovány prostřednictvím metody vybrané žádosti je splněna podmínka shody metoda žádosti. K dispozici žádosti metody jsou následující:
 - GET
-- HLAVNÍ 
+- HEAD 
 - POST 
 - MOŽNOSTI 
 - PUT 

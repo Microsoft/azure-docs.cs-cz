@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: ed2205455c4d3c82554f3d552bacc059fffa68e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cbfe4fcf30e9529f191f2a80de8ab83e7e0811f7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174652"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735883"
 ---
 # <a name="add-public-ip-addresses"></a>Přidání veřejné IP adresy
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*  
@@ -53,11 +53,6 @@ První věc, kterou je potřeba udělat, je získat blok adres, které chcete p�
 8.   Zadejte blok adres, které chcete přidat v zápisu CIDR.  Příklad: 192.168.203.0/24
 9.  Když zadáte platný rozsah CIDR v poli (blok CIDR) rozsah adres počáteční IP adresa, koncová IP adresa a k dispozici IP adresy pole budou automaticky vyplněna.  Jsou jen pro čtení a automaticky vygenerovat tak, že nebudete moct změnit tyto beze změny hodnotu v poli rozsah adres.
 10. Po zkontrolování informací v okně a potvrdí všechno, co vypadá opravit, klikněte na tlačítko Ok potvrďte změnu a přidat rozsah adres do služby Azure Stack.
-
-## <a name="update-the-acls-on-your-top-of-rack-switches"></a>Aktualizovat seznamy ACL v přepínačích Top-of-Rack
-Poslední věcí, kterou je třeba provést, chcete-li povolit nově přidané rozsah IP adres práce je aktualizovat seznamů řízení přístupu (ACL) v přepínačích Top-of-Rack (ToR).  Seznamy ACL v tak, že připojení mimo Azure Stack na nově přidaných rozsah IP adres nebudou fungovat až do nového rozsahu jsou uzamčené přepínače ToR je přidán do seznamů řízení přístupu na přepínači.  
-
-Budete muset kontaktovat výrobce OEM a pracovat s nimi se aktualizovat seznam ACL v přepínači ToR.  Mají nástroje potřebné k tomu podporované způsobem.
 
 
 ## <a name="next-steps"></a>Další postup 

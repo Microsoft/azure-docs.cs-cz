@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 46df2d6828cd60aee3c64128197579eb6f51a11a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 874e8da66fb01df1b25d14bd8d86186f0f6b55bb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340327"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733890"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Nasazení Azure Monitor pro virtuální počítače (preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače. Služba monitoruje stav operačního systému Azure virtuální počítače (VM) a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí. Toto monitorování zahrnuje zjišťování a mapování závislostí aplikace, které mohou být hostovány na nich. 
@@ -36,7 +36,7 @@ Než začnete, ujistěte se, že rozumíte informace v následujících částec
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Pracovní prostor Log Analytics je aktuálně podporované v těchto oblastech:
+Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v těchto oblastech:
 
 - Západní střed USA
 - USA – východ

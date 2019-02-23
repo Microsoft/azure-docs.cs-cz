@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a73eac1dea731bbf1ffb903ddf2438e791fec9d5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309858"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726445"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -70,7 +70,7 @@ Níže uvedený oddíl přijmout procházení prostřednictvím nejběžnější
 
 
 
- ## <a name="move-vms-as-is-to-a-target-region"></a>Přesunout virtuální počítače, protože je v cílové oblasti
+## <a name="move-vms-as-is-to-a-target-region"></a>Přesunout virtuální počítače, protože je v cílové oblasti
 
 Podle výše uvedených [architektury](#typical-architectures-for-a-multi-tier-deployment), heres jak nasazení bude vypadat po provedení přesunu jako cílové oblasti.
 

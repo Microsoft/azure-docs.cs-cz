@@ -1,5 +1,5 @@
 ---
-title: 'Skript prostředí PowerShell: Přidat externího uživatele do testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu'
+title: 'Skript prostředí PowerShell: Přidání externího uživatele do testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu'
 description: Tento skript Powershellu přidá externího uživatele do testovacího prostředí ve službě Azure DevTest Labs.
 services: lab-services
 author: spelluru
@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0acff1eb4cee441187205b11a7e07cc718072cbf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 042fa1e24ebadfb00a2d55cc97d742f198cb5662
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248185"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738347"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>Použití Powershellu k přidání externího uživatele do testovacího prostředí ve službě Azure DevTest Labs
 
 Tento ukázkový skript Powershellu přidá externího uživatele do testovacího prostředí ve službě Azure DevTest Labs. 
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-* **Testovací prostředí**. Skript je potřeba mít existující testovací prostředí. 
+* **A lab**. Skript je potřeba mít existující testovací prostředí. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,8 +40,8 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) | Počet opakování objekt uživatele ze služby Azure active directory. |
-| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | Přiřadí zadané role zadaného objektu zabezpečení v zadaném oboru. |
+| [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | Počet opakování objekt uživatele ze služby Azure active directory. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | Přiřadí zadané role zadaného objektu zabezpečení v zadaném oboru. |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/19/2019
 ms.author: glenga
-ms.openlocfilehash: ab502c25a632977065e55d2eeafd684203636b14
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a2e07f9022d7404d037903fda627649918134cb7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109907"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732734"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -212,7 +212,7 @@ static void Main(string[] args)
 
 Vstupní vazby poskytují deklarativní způsob zpřístupnění dat z Azure nebo služby třetích stran do vašeho kódu. Výstupní vazby poskytují způsob, jak aktualizovat data. [Get článku](webjobs-sdk-get-started.md) ukazuje příklad každého.
 
-Návratová hodnota metody můžete použít pro výstupní vazby, použitím atributu na návratovou hodnotu metody. Podívejte se na příklad ve službě Azure Functions [aktivačními událostmi a vazbami](../azure-functions/functions-triggers-bindings.md#using-the-function-return-value) článku.
+Návratová hodnota metody můžete použít pro výstupní vazby, použitím atributu na návratovou hodnotu metody. Podívejte se na příklad ve službě Azure Functions [aktivačními událostmi a vazbami](../azure-functions/functions-bindings-return-value.md) článku.
 
 ## <a name="binding-types"></a>Vazby typů
 
@@ -445,13 +445,13 @@ public static void CreateThumbnail(
 }
 ```
 
-Další informace o výrazech vazeb, naleznete v tématu [vazby výrazů a vzory](../azure-functions/functions-triggers-bindings.md#binding-expressions-and-patterns) v dokumentaci ke službě Azure Functions.
+Další informace o výrazech vazeb, naleznete v tématu [vazby výrazů a vzory](../azure-functions/functions-bindings-expressions-patterns.md) v dokumentaci ke službě Azure Functions.
 
 ### <a name="custom-binding-expressions"></a>Výrazy vlastní vazby
 
 Někdy chcete zadat název fronty, název objektu blob nebo kontejneru, nebo tabulka název v kódu namísto pevně zakódovat. Například můžete chtít určit název fronty `QueueTrigger` atribut v konfigurační soubor nebo prostředí proměnnou.
 
-Můžete to udělat předáním `NameResolver` objektu `JobHostConfiguration` objektu. Obsahují zástupné symboly v aktivační události nebo parametry konstruktoru atributu vazby a vaše `NameResolver` kód obsahuje skutečné hodnoty, které mají být zastoupen tyto zástupné symboly. Zástupné symboly jsou označeny obklopením znaky procenta (%), jak je znázorněno v následujícím příkladu:
+Můžete to udělat předáním `NameResolver` objektu `JobHostConfiguration` objektu. Obsahují zástupné symboly v aktivační události nebo parametry konstruktoru atributu vazby a vaše `NameResolver` kód obsahuje skutečné hodnoty, které mají být zastoupen tyto zástupné symboly. Zástupné symboly jsou označeny okolní s procent (%) příznaky, jak je znázorněno v následujícím příkladu:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)

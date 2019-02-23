@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 4accff7410d17e76a000b7cef957b75c65a16960
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 91193cc328c02f5ba4f5eb18e0bf853f9d91313a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008388"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732258"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Vysvětlení čas zpracování ve službě Azure Stream Analytics
 
@@ -163,7 +163,7 @@ Azure Stream Analytics používá pokroku vodoznak jako pouze aktivační událo
 
 Při použití [agregací](stream-analytics-window-functions.md), kterou služba produkuje pouze výstupů na konci okna. V některých případech může být vhodné uživatele zobrazíte částečné agregace vygenerované z ovládacího prvku windows. Částečné agregace nejsou aktuálně podporované ve službě Azure Stream Analytics.
 
-V jiných datových proudů řešení může být vyhodnocena výstupních událostí v různých fázích aktivační událost, v závislosti na externí okolností. Je možné v některých řešeních, že výstupní události pro dané časové okno několik generovat více než jednou. Vstupní hodnoty jsou kontrast, se stanou přesnější agregovat výsledky. Události by mohla spekulaci na první a upravené v čase. Například při určitých zařízení je offline ze sítě, může použít odhadovanou hodnotu na systému. Později na stejném zařízení převede do režimu online k síti. Potom data skutečné události mohou být zařazeny do vstupního datového proudu. Výsledky výstupu z dané časové okno zpracování vytváří přesnější výstup.
+V jiných datových proudů řešení může být vyhodnocena výstupních událostí v různých fázích aktivační událost, v závislosti na externí okolností. Je možné v některých řešeních, že výstupní události pro dané časové okno nejde generovat více než jednou. Vstupní hodnoty jsou kontrast, se stanou přesnější agregovat výsledky. Události by mohla spekulaci na první a upravené v čase. Například při určitých zařízení je offline ze sítě, může použít odhadovanou hodnotu na systému. Později na stejném zařízení převede do režimu online k síti. Potom data skutečné události mohou být zařazeny do vstupního datového proudu. Výsledky výstupu z dané časové okno zpracování vytváří přesnější výstup.
 
 ## <a name="illustrated-example-of-watermarks"></a>Ilustrované příklad vodoznaky
 

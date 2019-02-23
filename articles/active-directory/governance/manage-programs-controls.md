@@ -1,6 +1,6 @@
 ---
-title: Správa programů a ovládacích prvků pro službu Azure AD kontrol přístupu | Dokumentace Microsoftu
-description: Ve vaší organizaci shromažďování a uspořádání využitím kontrol přístupu Azure Active Directory jako ovládací prvky můžete vytvořit další programy pro každou zásad správného řízení, řízení rizik a dodržování předpisů iniciativy.
+title: Správa programů a ovládacích prvků pro kontroly přístupu Azure AD | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit další programy pro každou zásad správného řízení, řízení rizik a dodržování předpisů iniciativy ve vaší organizaci moci shromažďovat a organizovat Azure Active Directory využitím kontrol přístupu jako ovládací prvky.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f4c978a04a7589e71ba39676e06ca5cc37f579
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0ea210c79833ad9e070253a9511cae539730a8d5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170665"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731408"
 ---
-# <a name="manage-programs-and-their-controls"></a>Správa programů a jejich řízení 
+# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>Správa programů a ovládacích prvků pro kontroly přístupu Azure AD
 
 Azure Active Directory (Azure AD) obsahuje kontrol přístupu členů skupiny a přístup k aplikacím. Příklady ovládacích prvků zajistit dohledu, pro který má přístup k vaší organizaci členství ve skupinách a aplikace. Organizace můžou použít tyto ovládací prvky efektivně vyřešit jejich zásad správného řízení, řízení rizik a požadavky na dodržování předpisů.
 
@@ -38,5 +38,5 @@ Pokud už nepotřebujete programu a nemá žádné ovládací prvky na sebe, mů
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytváření kontroly přístupu pro členy skupiny nebo přístupu k aplikaci](create-access-review.md)
-- [Načíst výsledky kontroly přístupu](retrieve-access-review.md)
+- [Vytvoření kontroly přístupu skupiny nebo aplikace](create-access-review.md)
+- [Načíst výsledky kontroly přístupu pro skupiny a aplikace](retrieve-access-review.md)

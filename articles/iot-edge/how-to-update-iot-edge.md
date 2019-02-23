@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dfad3199ba3a9cd2f3bca55be50760ddde676e70
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b11f11aa3966bc57caa5b8dd0379f4d5c59c8375
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558188"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672895"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
 
@@ -28,7 +28,7 @@ Dvě součásti zařízení IoT Edge je potřeba aktualizovat, pokud chcete pře
 >* Vaše zařízení jste neupgradovali na Windows 17763 sestavení. Sestavení verze IoT Edge 1.0.5 nepodporuje Windows starší než 17763.
 >* Spusťte moduly Java nebo Node.js na zařízení s Windows. Přeskočte verze 1.0.5 i v případě, že jste aktualizovali zařízení s Windows na nejnovější verzi. 
 >
->Další informace o verzi 1.0.5 IoT Edge najdete v tématu [poznámky k verzi 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Další informace o tom, jak zajistit vývojářských nástrojů od aktualizace na nejnovější verzi, naleznete v tématu [blog pro vývojáře IoT](https://aka.ms/dev-win-iot-edge-module).
+>Další informace o verzi 1.0.5 IoT Edge najdete v tématu [poznámky k verzi 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Další informace o tom, jak zajistit vývojářských nástrojů od aktualizace na nejnovější verzi, naleznete v tématu [blog pro vývojáře IoT](https://devblogs.microsoft.com/iotdev/).
 
 
 Nejnovější verzi služby Azure IoT Edge najdete v tématu [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).

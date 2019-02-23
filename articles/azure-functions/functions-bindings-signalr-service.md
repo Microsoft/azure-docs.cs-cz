@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 7a7063b9177774c5207746283dc7cd25e3dd5793
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 73fd388ad8d35543138c06b413cd40d7052806a7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721882"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735640"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -64,7 +64,7 @@ public static SignalRConnectionInfo GetSignalRInfo(
 
 Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování do aplikace function app pomocí [ověřování pomocí služby App Service] (.. /App-Service/Overview-Authentication-Authorization.MD).
 
-Ověřování pomocí služby App Service nastaví hlavičky protokolu HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` obsahují ověřeného uživatele ID klienta instančního objektu a název, v uvedeném pořadí. Můžete nastavit `UserId` vlastnost vazby na hodnotu buď pomocí hlavičky [vazby výraz](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
+Ověřování pomocí služby App Service nastaví hlavičky protokolu HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` obsahují ověřeného uživatele ID klienta instančního objektu a název, v uvedeném pořadí. Můžete nastavit `UserId` vlastnost vazby na hodnotu buď pomocí hlavičky [vazby výraz](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
 
 ```cs
 [FunctionName("GetSignalRInfo")]
@@ -110,7 +110,7 @@ module.exports = function (context, req, connectionInfo) {
 
 Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování do aplikace function app pomocí [ověřování pomocí služby App Service] (.. /App-Service/Overview-Authentication-Authorization.MD).
 
-Ověřování pomocí služby App Service nastaví hlavičky protokolu HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` obsahují ověřeného uživatele ID klienta instančního objektu a název, v uvedeném pořadí. Můžete nastavit `userId` vlastnost vazby na hodnotu buď pomocí hlavičky [vazby výraz](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
+Ověřování pomocí služby App Service nastaví hlavičky protokolu HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` obsahují ověřeného uživatele ID klienta instančního objektu a název, v uvedeném pořadí. Můžete nastavit `userId` vlastnost vazby na hodnotu buď pomocí hlavičky [vazby výraz](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
 
 Příklad function.json:
 
@@ -249,7 +249,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction**|| Musí být nastaveno na `in`.|
 |**Jméno**|| Název proměnné používá v kódu funkce pro objekt informací o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název rozbočovače SignalR, pro které se generuje informace o připojení.|
-|**userId**|**ID uživatele**| Volitelné: Nastavení přístupového klíče tokenu deklarací identity hodnota identifikátoru uživatele. |
+|**userId**|**UserId**| Volitelné: Nastavení přístupového klíče tokenu deklarací identity hodnota identifikátoru uživatele. |
 |**connectionStringSetting**|**connectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby SignalR (výchozí nastavení "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR

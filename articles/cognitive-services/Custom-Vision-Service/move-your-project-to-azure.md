@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 76207e83e31ba3919da80e4ecc99435e88c76c66
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b46ccd98145342fda58672b64b838ab92ba4f97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56654554"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731918"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure-using-the-customvisionai-site"></a>Postup přesunutí omezenou zkušební verzí projektu do Azure pomocí webu CustomVision.ai
 
@@ -76,7 +76,7 @@ Více projektů lze přidružit jeden prostředek. Další podrobnosti o [ceny a
 
 2. Najdete ID prostředku vašeho prostředku Custom Vision školení. To můžete najít na webu Azure Portal otevřením Custom Vision školení prostředku a výběrem "Properties" v části "Správa prostředků". Vaše ID prostředku budou tam. 
 
-    ![Vaše ID prostředku v naleznete na webu Azure Portal otevřením Custom Vision školení prostředku a výběrem "Properties" v části "Správa prostředků".](./media/move-your-project-to-azure/resource_ID_azure_portal.jpg)
+    ![Vaše ID zdroje naleznete na webu Azure Portal otevřením Custom Vision školení prostředku a výběrem "Properties" v části "Správa prostředků".](./media/move-your-project-to-azure/resource_ID_azure_portal.jpg)
 
 
 3. Alternativně můžete najít ID prostředku pro zpracování obrazu prostředku vlastní přímo na webu Custom Vision [stránka nastavení]( https://www.customvision.ai/projects#/settings). Je potřeba přepnout do stejného adresáře, se váš prostředek Azure.

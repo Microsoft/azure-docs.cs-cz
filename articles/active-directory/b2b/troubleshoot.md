@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Azure Active Directory s B2B spolupráce | Dokumentace Microsoftu
+title: Řešení potíží s B2B collaboration – Azure Active Directory | Dokumentace Microsoftu
 description: Řešení běžných problémů se spoluprací Azure Active Directory s B2B
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f69bad355bf5644988416958c4b4f32ed66714d9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f772c14f414e4e1c5401e3c85de7009355453c98
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186399"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668526"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s spolupráce Azure Active Directory s B2B
 
@@ -37,7 +37,7 @@ Tuto funkci můžete povolit pomocí nastavení "ShowPeoplePickerSuggestionsForG
 
 Pokud se zobrazí oznámení, že nemáte oprávnění pozvat uživatele, ujistěte se, že je váš uživatelský účet oprávnění k pozvání externího uživatele v části Nastavení uživatele:
 
-![](media/troubleshoot/external-user-settings.png)
+![Nastavení externího uživatele](media/troubleshoot/external-user-settings.png)
 
 Pokud jste naposledy upravili tato nastavení nebo uživateli přiřadit roli odesílatel pozvánky hostů, může existovat zpoždění 15 až 60 minut předtím, než se změny projevily.
 
@@ -49,7 +49,7 @@ Běžné chyby patří:
 
 Když pozvání uživatele, jejichž organizace používá Azure Active Directory, ale pokud neexistuje konkrétní uživatelský účet (například uživatel neexistuje v doméně contoso.com Azure AD). Správce contoso.com může mít zásadu na místě, aby bránil uživatelům ve vytváření. Uživatel musí obraťte se na svého správce určit, pokud jsou povoleny externí uživatele. Možná bude nutné správce externího uživatele umožňuje uživatelům ověřit e-mailu z vlastní domény (najdete v tomto [článku](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na umožnit uživatelům ověřit e-mailu).
 
-![](media/troubleshoot/allow-email-verified-users.png)
+![Chyba oznamující, že tento tenant neumožňuje e-mailová ověření přidat uživatele.](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Externí uživatel ještě neexistuje ve federované domény
 

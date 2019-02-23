@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2d1818f42cb2bcb19f979f25962a6c9bdea10155
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053308"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728008"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a zatížení v Service Fabric s metrikami
 *Metriky* jsou prostředky, které vaše služby péče o a které jsou k dispozici uzly v clusteru. Metriky je všechno, co potřebujete ke správě za účelem zlepšení nebo sledovat výkon vašich služeb. Například může sledovat využití paměti vědět, pokud je vaše služba přetížená. Další možností použití je zjistit, zda služba přesunout jinde kde paměti je že menší, aby bylo možné dosáhnout lepšího výkonu omezené.
@@ -56,7 +56,7 @@ Poznamenat několik věcí:
 
 Dobré!
 
-Metriky výchozí skvěle fungovat jako spuštění. Ale metriky výchozí bude vykonávat pouze jste zatím. Příklad: co je pravděpodobnost, že jste rozdělení schéma prodlouží výsledků nemusíte zajistit dokonalou i využití všech oddílů? Co je pravděpodobné, že zatížení pro danou službu je konstantní v čase, nebo dokonce stejně napříč několika oddíly teď?
+Metriky výchozí skvěle fungovat jako spuštění. Ale metriky výchozí bude vykonávat pouze jste zatím. Příklad: Co je pravděpodobnost, že jste rozdělení schéma prodlouží výsledků nemusíte zajistit dokonalou i využití všech oddílů? Co je pravděpodobné, že zatížení pro danou službu je konstantní v čase, nebo dokonce stejně napříč několika oddíly teď?
 
 Můžete spustit s pouze výchozí metriky. Obvykle to ale znamená, že vaše využití clusteru je nižší a více nerovnoměrné, než byste chtěli. Je to proto, že výchozí metriky nejsou adaptivní a předpokládá, že všechno, co je ekvivalentní. Například primární, který je zaneprázdněný a, který není obou přispívat "1" do PrimaryCount metriky. V nejhorším případě používání pouze výchozí metriky můžete také přinést overscheduled uzly, což vede k problémům s výkonem. Pokud vás zajímá maximum vašeho clusteru a jak se vyhnout problémům s výkonem, budete muset použít vlastní metriky a generování sestav dynamického zatížení.
 
@@ -67,10 +67,10 @@ Jakékoliv metriky, má některé vlastnosti, které popisují ho: název, váhu
 
 * Název metriky: Název metriky. Název metriky je jedinečný identifikátor pro metriku v rámci clusteru z pohledu správce prostředků.
 * Váha: Váha metriky definuje, jak důležité tato metrika je relativní vůči jiné metriky pro tuto službu.
-* Načítání výchozí: Výchozí zatížení je reprezentován odlišně v závislosti na tom, zda služba je Bezstavová nebo stavová.
+* Výchozí zatížení: Výchozí zatížení je reprezentován odlišně v závislosti na tom, zda služba je Bezstavová nebo stavová.
   * Pro bezstavové služby jednotlivé metriky má jednu vlastnost s názvem DefaultLoad
   * Pro stavové služby, které definujete:
-    * PrimaryDefaultLoad: Výchozí velikost tuto metriku tato služba využívá až bude primární
+    * PrimaryDefaultLoad: Až bude primární využívá tuto službu výchozí dobu tuto metriku
     * SecondaryDefaultLoad: Výchozí velikost tuto metriku tato služba využívá při je sekundární
 
 > [!NOTE]
@@ -126,7 +126,7 @@ serviceDescription.Metrics.Add(totalCountMetric);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ConnectionCount,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
@@ -204,7 +204,7 @@ Můžeme využít naše předchozí příklad a zjistěte, co se stane, když js
 
 Pojďme předpokládají, že jsme původně vytvořili stavové služby pomocí následujícího příkazu:
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
@@ -232,7 +232,7 @@ Existuje několik věcí, které musíme popisují:
 ## <a name="metric-weights"></a>Metriky váhy
 Sledování stejné metriky napříč různými službami je důležité. Globální zobrazení je co umožňuje Cluster Resource Manager ke sledování využití v clusteru, vyrovnání využití napříč uzly a ujistěte se, že uzly nenavazují přes kapacity. Služby, ale mohou mít různá zobrazení význam stejné metriky. Také v clusteru s mnoha metrik a velké množství služeb, nemusíte zajistit dokonalou vyvážené řešení neexistuje pro všechny metriky. Jak Cluster Resource Manager pracovat s těmito situacemi?
 
-Metriky váhy povolit Cluster Resource Manageru k rozhodování o způsobu vyvážit clusteru, pokud neexistuje žádný ideální odpovědí. Metriky váhy také povolit Cluster Resource Manageru pro určité služby odlišně. Metriky můžete mít čtyři různé váhy úrovně: nula, nízká, střední a vysokou. Metrika s váhou nula přispívá nic, když zvažujete, zda věci vyvažují nebo ne. Ale jeho zatížení stále přispívají ke správě kapacity. Metriky s nulovou váhou jsou stále užitečné a často slouží jako součást služby chování a sledování výkonu. [Tento článek](service-fabric-diagnostics-event-generation-infra.md) poskytuje další informace o použití metrik pro monitorování a Diagnostika služeb. 
+Metriky váhy povolit Cluster Resource Manageru k rozhodování o způsobu vyvážit clusteru, pokud neexistuje žádný ideální odpovědí. Metriky váhy také povolit Cluster Resource Manageru pro určité služby odlišně. Metriky může mít čtyři různé váhy úrovně: Nula, nízká, střední a vysokou. Metrika s váhou nula přispívá nic, když zvažujete, zda věci vyvažují nebo ne. Ale jeho zatížení stále přispívají ke správě kapacity. Metriky s nulovou váhou jsou stále užitečné a často slouží jako součást služby chování a sledování výkonu. [Tento článek](service-fabric-diagnostics-event-generation-infra.md) poskytuje další informace o použití metrik pro monitorování a Diagnostika služeb. 
 
 Skutečný dopad různé metriky váhy v clusteru je, že Cluster Resource Manageru generuje různá řešení. Metriky váhy řekněte Cluster Resource Manager, že některé metriky jsou důležitější než jiné. Když neexistuje ideální řešení Cluster Resource Manageru můžete preferovat řešení, která vyvážit vyšší vážený metriky lepší. Pokud služba předpokládá, že není důležitý, že jejich použití tuto metriku může najít imbalanced konkrétní metriky. To umožňuje další služby k získání rovnoměrnou distribuci přenosu některé metriky, které jsou důležité k němu.
 

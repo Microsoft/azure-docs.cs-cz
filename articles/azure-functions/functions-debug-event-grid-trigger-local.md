@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 7a3468d9a0d128bd51ae742189e60bb8e2af6c0e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 96d88fafd6824ed85f1d91bab59374b3490a55b2
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097800"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736494"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Funkce Azure Event Grid aktivovat místní ladění
 
@@ -62,7 +62,7 @@ Jak je nastavit nástroj, příkazové okno by měl vypadat podobně jako na ná
 
 Kopírovat **HTTPS** URL generována v případě *ngrok* běží. Tato hodnota se používá při konfiguraci koncový bod event grid událostí.
 
- ## <a name="add-a-storage-event"></a>Přidání úložiště událostí
+## <a name="add-a-storage-event"></a>Přidání úložiště událostí
 
 Otevřete na webu Azure portal a přejděte do účtu úložiště a klikněte **události** možnost.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7fbf157152bd5c2c35c496b1fd8e707884d0f3da
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063656"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731459"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure při spuštění virtuálního počítače se zasekla na Windows update
 
@@ -27,7 +27,7 @@ Tento článek pomůže problém vyřešit, když vašeho virtuálního počíta
 > [!NOTE] 
 > Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto pomocí modelu nasazení classic.
 
- ## <a name="symptom"></a>Příznak
+## <a name="symptom"></a>Příznak
 
  Virtuální počítač Windows nespustí. Když vrátíte se změnami na snímcích obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) okně uvidíte, že se zablokovala spuštění v procesu aktualizace. Následují příklady zpráv, které se mohou zobrazit:
 

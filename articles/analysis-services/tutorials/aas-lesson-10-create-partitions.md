@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 91d34065753ae29b14aad8580bf922b8213a7988
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191832"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738619"
 ---
 # <a name="create-partitions"></a>Vytvoření oddílů
 
@@ -108,5 +108,5 @@ Ve správci oddílů si všimněte, že sloupec **Poslední zpracování** pro k
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
- ## <a name="whats-next"></a>Co dále?
-Přejdete na další lekci: [Lekce 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md). 
+## <a name="whats-next"></a>Co dále?
+Přejdete na další lekci: [Lesson 11: Vytvoření rolí](../tutorials/aas-lesson-11-create-roles.md). 

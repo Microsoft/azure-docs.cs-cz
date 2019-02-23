@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4d6838ecdbf1a33a4f3ee1562f26db7952fdfb83
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819854"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734230"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujete si prostředí díky řešení System Center Operations Manager kontroly stavu (Preview)
 
@@ -40,7 +40,7 @@ Poté, co jste přidali řešení a posouzení se provádí, souhrnné informace
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 
-Toto řešení spolupracuje s Microsoft nástrojem Operations Manager 2012 Service Pack (SP) 1 a 2012 R2.
+Toto řešení spolupracuje s Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager a Microsoft System System Center Operations Manager 1807
 
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
@@ -57,9 +57,9 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 1. [Nastavení účtu spustit jako pro kontroly systému System Center Operations Manager Health](#operations-manager-run-as-accounts-for-log-analytics)  
 2. Konfigurace pravidla kontroly systému System Center Operations Manager Health
 
-## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Podrobnosti o systému System Center Operations Manager assessment dat kolekce
+## <a name="system-center-operations-manager-health-check-data-collection-details"></a>Systém System Center Operations Manager Health zkontrolujte podrobnosti dat kolekce
 
-Hodnocení System Center Operations Manager shromažďuje data z následujících zdrojů:
+Řešení kontroly systému System Center Operations Manager Health shromažďuje data z následujících zdrojů:
 
 * Registr
 * Windows Management Instrumentation (WMI)
@@ -97,7 +97,7 @@ Teď, když se vytvoří účet Spustit jako, musí cílové servery pro správu
 2. Na **distribuce** klikněte na tlačítko **přidat** pro **vybrané počítače** a přidejte k distribuci účtu na serveru pro správu.  Klikněte na tlačítko **OK** dvakrát tím uložíte provedené změny.
 3. V části **konfigurace spustit jako**, klikněte na tlačítko **profily**.
 4. Hledat *profilu posouzení SCOM*.
-5. By měl být název profilu: *Posouzení SCOM Microsoft System Center Advisor profil spustit jako*.
+5. By měl být název profilu: *Microsoft System Center Operations Manager Health Check profil spustit jako*.
 6. Klikněte pravým tlačítkem myši a aktualizovat jeho vlastnosti a přidat naposledy vytvořený účet Spustit jako jste vytvořili dříve.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skript SQL pro udělovat různě odstupňovaná oprávnění k účtu spustit jako
@@ -152,13 +152,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Konfigurace pravidla kontroly stavu
 
-Sada management pack řešení kontroly systému System Center Operations Manager Health obsahují pravidlo s názvem *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo*. Toto pravidlo je zodpovědný za spouštění kontroly stavu. Následující postupy použijte, pokud chcete povolit pravidlo a nastavte četnost.
+Sada management pack řešení kontroly systému System Center Operations Manager Health obsahují pravidlo s názvem *Microsoft System Center Operations Manager spustit zkontrolujte pravidlo pro kontrolu stavu*. Toto pravidlo je zodpovědný za spouštění kontroly stavu. Následující postupy použijte, pokud chcete povolit pravidlo a nastavte četnost.
 
-Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo je ve výchozím nastavení zakázána. Pokud chcete spustit kontrolu stavu, je nutné povolit pravidlo na serveru pro správu. Pomocí následujícího postupu.
+Ve výchozím nastavení je zakázána Microsoft systému System Center Operations Manager spusťte zkontrolujte pravidlo pro kontrolu stavu. Pokud chcete spustit kontrolu stavu, je nutné povolit pravidlo na serveru pro správu. Pomocí následujícího postupu.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Povolení pravidla pro konkrétní server pro správu
 
-1. V **Authoring** pracovního prostoru na konzole Operations Manageru, vyhledejte pravidlo *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo* v **pravidla** podokně.
+1. V **Authoring** pracovního prostoru na konzole Operations Manageru, vyhledejte pravidlo *Microsoft System Center Operations Manager spustit zkontrolujte pravidlo pro kontrolu stavu* v **pravidla** podokně.
 2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
 3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **přepíše** > **pro konkrétní objekt třídy: Server pro správu**.
 4.  V seznamu serverů pro správu k dispozici vyberte ve kterém se má pravidlo spustit server pro správu.  To by měl být stejný server pro správu, který jste nakonfigurovali dříve přidružit účet Spustit jako s.
@@ -170,7 +170,7 @@ Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo je v
 
 Hodnocení je ve výchozím nastavení nakonfigurované ke spuštění každých 10 080 minut (nebo sedm dní). Můžete přepsat hodnotu na minimální hodnotu 1 440 minut (nebo jeden den). Hodnota představuje minimální časové prodlevy mezi po sobě jdoucích posouzení spuštění vyžaduje. K přepsání intervalu, použijte následující postup.
 
-1. V **Authoring** pracovního prostoru na konzole nástroje Operations Manager, vyhledejte pravidlo *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo* v **pravidla** oddíl.
+1. V **Authoring** pracovního prostoru na konzole nástroje Operations Manager, vyhledejte pravidlo *Microsoft System Center Operations Manager spustit zkontrolujte pravidlo pro kontrolu stavu* v **pravidla** oddíl.
 2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
 3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **přepsat pravidlo** > **pro všechny objekty třídy: Server pro správu**.
 4. Změnit **Interval** hodnota parametru hodnotě požadované intervalu. V následujícím příkladu je hodnota nastavena na 1 440 minut (jeden den).<br><br> ![Parametr interval](./media/scom-assessment/interval.png)<br>  
@@ -277,7 +277,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 
 *Existuje způsob, jak konfigurovat, jak často neproběhne kontrola?* Ano. Zobrazit [konfigurovat frekvenci běhu](#configure-the-run-frequency).
 
-*Pokud jiný server je zjištěno, po přidali jsme řešení System Center Operations Manager Assessment, budou se kontrolovat?* Ano, po zjištění, které od té chvíle se kontroluje ve výchozím nastavení každých sedm dní.
+*Pokud po přidali jsme řešení kontroly systému System Center Operations Manager Health je zjistit další server, budou se kontrolovat?* Ano, po zjištění, které od té chvíle se kontroluje ve výchozím nastavení každých sedm dní.
 
 *Jaký je název procesu, která provádí sběr dat?* AdvisorAssessment.exe
 

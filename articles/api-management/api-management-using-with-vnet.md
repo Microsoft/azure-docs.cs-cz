@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: cc4893837feeec6116750a7e37e7621af11ab0a4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 2770c6a31f0117b96e08eb8a03986f37ebdb7098
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453915"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733737"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -27,6 +27,8 @@ Azure API Management se dá nasadit ve virtuální síti (VNET), aby měl přís
 
 > [!NOTE]
 > Azure API Management podporuje classic a Azure Resource virtuálních sítí správce.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -85,9 +87,9 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 ## <a name="enable-vnet-powershell"> </a>Povolit připojení virtuální sítě pomocí rutin prostředí PowerShell
 Můžete také povolit připojení k virtuální síti pomocí rutin prostředí PowerShell
 
-* **Vytvoření služby API Management v síti VNET**: Použijte rutinu [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) k vytvoření služby Azure API Management v síti VNET.
+* **Vytvoření služby API Management v síti VNET**: Použijte rutinu [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) k vytvoření služby Azure API Management v síti VNET.
 
-* **Nasazení služby API Management existující v síti VNET**: Použijte rutinu [aktualizace AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) přesunout existující služby Azure API Management ve virtuální síti.
+* **Nasazení služby API Management existující v síti VNET**: Použijte rutinu [aktualizace AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) přesunout existující služby Azure API Management ve virtuální síti.
 
 ## <a name="connect-vnet"> </a>Připojit k webové službě hostované v rámci virtuální sítě
 Poté, co vaše služba API Management je připojený k virtuální síti, přístup ke službám back-endu v rámci něj se nijak neliší od přístupu k veřejné služby. Stačí zadat místní IP adresa nebo název hostitele (Pokud je nakonfigurovaný DNS server pro virtuální síť) do vaší webové služby **adresu URL webové služby** pole při vytváření nového rozhraní API nebo úpravou existující.

@@ -1,6 +1,6 @@
 ---
-title: Dokončení kontroly přístupu členů skupiny či přístup uživatelů k aplikaci s Azure AD | Dokumentace Microsoftu
-description: Zjistěte, jak dokončení kontroly přístupu pro členy skupiny nebo uživatelé s přístupem k aplikaci v Azure Active Directory.
+title: Dokončení kontroly přístupu skupinám nebo aplikacím v kontrol přístupu Azure AD | Dokumentace Microsoftu
+description: Zjistěte, jak dokončení kontroly přístupu členů skupiny nebo přístupu k aplikacím v kontrol přístupu Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2da3b7f8b7ed60344978fb255696980ec620fd2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192264"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729606"
 ---
-# <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Dokončení kontroly přístupu členů skupiny či přístup uživatelů k aplikaci ve službě Azure AD
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupinám nebo aplikacím v kontrol přístupu Azure AD
 
-Správci můžou pomocí Azure Active Directory (Azure AD) [vytvořit kontrolu přístupu](create-access-review.md) pro členy skupiny nebo uživatele přiřazené k aplikaci. Azure AD automaticky pošle e-mail s výzvou ke kontrole přístupu revidující. Pokud uživatel e-mail neobdrželi, můžete jim poslat pokyny [kontrolovat přístup](perform-access-review.md). (Všimněte si, že hosté, kteří jsou přiřazeny jako revidující, ale nepřijali pozvánku nebude dostávat e-mailu z kontroly přístupu, jak se musí nejdřív přijmout pozvánku před revizí.) Po období kontroly přístupu nebo zastaví kontrolu přístupu správce, postupujte podle kroků v tomto článku najdete v článku a použít výsledky.
+Správci můžou pomocí Azure Active Directory (Azure AD) [vytvořit kontrolu přístupu](create-access-review.md) pro členy skupiny nebo uživatele přiřazené k aplikaci. Azure AD automaticky pošle e-mail s výzvou ke kontrole přístupu revidující. Pokud uživatel e-mail neobdrželi, můžete jim poslat pokyny [kontrolovat přístup skupinám nebo aplikacím](perform-access-review.md). (Všimněte si, že hosté, kteří jsou přiřazeny jako revidující, ale nepřijali pozvánku nebude dostávat e-mailu z kontroly přístupu, jak se musí nejdřív přijmout pozvánku před revizí.) Po období kontroly přístupu nebo zastaví kontrolu přístupu správce, postupujte podle kroků v tomto článku najdete v článku a použít výsledky.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Zobrazit kontroly přístupu na webu Azure Portal
 
@@ -62,5 +62,5 @@ Pokud už máte zájem revizi, můžete ho odstranit. Vyberte **odstranit** odeb
 - [Správa přístupu uživatelů pomocí kontrol přístupu Azure AD](manage-user-access-with-access-reviews.md)
 - [Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD](manage-guest-access-with-access-reviews.md)
 - [Správa programů a ovládacích prvků pro kontroly přístupu Azure AD](manage-programs-controls.md)
-- [Vytváření kontroly přístupu pro členy skupiny nebo přístupu k aplikaci](create-access-review.md)
+- [Vytvoření kontroly přístupu skupiny nebo aplikace](create-access-review.md)
 - [Vytváření kontroly přístupu uživatelů v roli správce Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md)

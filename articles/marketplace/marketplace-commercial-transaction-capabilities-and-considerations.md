@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075630"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731085"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace obchodní transakce možnosti a důležité faktory
 
@@ -98,7 +98,7 @@ Tento cenový tarif může být vyšší nebo nižší než veřejně zobrazené
 
 ### <a name="examples"></a>Příklady
 
-**Průběžné platby** 
+**Pay-As-You-Go** 
 
 * Pokud povolíte možnost s průběžnými platbami, mají následující strukturu nákladů.
 
@@ -186,9 +186,9 @@ Pokud zákazník koupí pomocí smlouvy Enterprise:
 |Datum fakturace | 15. října 2018 |
 |Úschovu používala služba období (kreditní karty, 30 dnů) | neuvedeno |
 |Kolekce doby spuštění | 15. října 2018 |
-|Konec období kolekce (maximální počet, 90 dní) | 15. ledna 2018 |
+|Konec období kolekce (maximální počet, 90 dní) | 15. ledna 2019 |
 |Datum platby zákazníků | 30. prosince 2018 |
-|Datum výpočtu výběr (každý měsíc na 15. dne) | 15. ledna 2018 |
+|Datum výpočtu výběr (každý měsíc na 15. dne) | 15. ledna 2019 |
 |Výběr data | 15. února 2019 |
 
 **Bezplatné kredity a peněžní závazek** 
@@ -226,7 +226,7 @@ Transact požadavky na jinou nabídku typy jsou popsané v této části.
 
 * U transact publikování možnost, bez ohledu na to nabídky cenových modelů je vyžadováno Dev Center a účet Microsoft.
 * Účet vývojáře pro obsahuje všechny relevantní finanční informace požadované pro společnost Microsoft shromažďovat poplatky od zákazníka jménem vydavatele a platit na vydavatele.
-* I když můžete použít stejné organizace nebo společnosti Microsoft přihlašovací podrobnosti prostřednictvím obou účtů, Dev Center je samostatný účet z portálu pro vydavatele cloudu účtu. Použít možnost publikování transact vydavatel musí Dev Center účet registraci dokončit, kromě registrace přístup na portál partnerů cloudu.
+* I když můžete použít stejné organizace nebo společnosti Microsoft přihlašovací podrobnosti prostřednictvím obou účtů, Centrum pro vývojáře je samostatný účet než účet portál partnerů cloudu. Použít možnost publikování transact vydavatel musí Dev Center účet registraci dokončit, kromě registrace přístup na portál partnerů cloudu.
 
 *Další informace o nastavení těchto účtů najdete v tématu [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).*
 

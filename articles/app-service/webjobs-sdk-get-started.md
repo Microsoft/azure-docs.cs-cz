@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: glenga
-ms.openlocfilehash: b39c8c19b494422d34bae7145d69e8e95cb16846
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 390d9dcda18e10c21db8165653faec7880863ba1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416816"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734468"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -656,7 +656,7 @@ Vstupní vazby zjednodušit kód, který čte data. V tomto příkladu zpráva f
    }
    ```
 
-   V tomto kódu `queueTrigger` je [vazby výraz](../azure-functions/functions-triggers-bindings.md#binding-expressions-and-patterns), což znamená, že se překládá na jinou hodnotu za běhu.  Za běhu má obsah zprávy fronty.
+   V tomto kódu `queueTrigger` je [vazby výraz](../azure-functions/functions-bindings-expressions-patterns.md), což znamená, že se překládá na jinou hodnotu za běhu.  Za běhu má obsah zprávy fronty.
 
 1. Přidat `using`:
 

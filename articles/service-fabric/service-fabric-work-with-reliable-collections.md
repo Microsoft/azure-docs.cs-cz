@@ -7,19 +7,19 @@ author: tylermsft
 manager: jeanpaul.connock
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/12/2019
+ms.date: 02/22/2019
 ms.author: twhitney
-ms.openlocfilehash: e7f0219919fe0569633cc85b89a1a91b1704b269
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9e542143810745712fb148e0b5ebe126cc8a93bf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114820"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727876"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model k dispozici pro vývojáře na platformě .NET pomocí spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé fronty třídy a spolehlivého slovníku. Při použití těchto tříd je svůj stav rozdělit na oddíly (pro zajištění škálovatelnosti), replikuje (dostupnosti) a nepodporuje transakce v rámci oddílu (pro odpovídající zásadám ACID sémantiku). Pojďme podívat se na Typickým použitím spolehlivého slovníku objektu a zobrazit, co se skutečně dělají.
@@ -207,8 +207,7 @@ Kromě toho kód služby je upgradovaný jednu upgradovací doménu najednou. Pr
 
 > [!WARNING]
 > Při změně schématu klíč, musíte zajistit, že jsou stabilní kód hash si klíč a algoritmy rovná se. Pokud změníte, jak pracovat buď tyto algoritmy, nebude možné nikdy znovu vyhledat klíč do spolehlivého slovníku.
->
->
+> .NET řetězce lze použít jako klíč, ale použít samotný řetězec jako klíč – nepoužívejte výsledek String.GetHashCode jako klíč.
 
 Alternativně můžete provádět, co se obvykle označuje jako dvě upgrade. Dvoufázové upgradu upgradu služby z V1 na V2: V2 obsahuje kód, který ví, jak zacházet s novou změnu schématu, ale nebude spouštět tento kód. Když V2 kód čte V1 data, funguje na něj a zapisuje V1 data. Poté po dokončení upgradu je přes všechny upgradovacích domén, vám může nějakým způsobem signál spuštěné instance V2 nebude dokončen upgrade. (Jeden ze způsobů, jak signál, toto je zavedení konfigurace upgradu; to je to kvůli tomu dvoufázového upgrade.) Instance V2 můžete nyní číst V1 data, převeďte jej na V2 dat, pracovat s nimi a vypsat jako V2 data. Při čtení dat V2 ostatních instancí není potřeba ho převést, jsou právě pracovat s nimi a zapíše V2 data.
 

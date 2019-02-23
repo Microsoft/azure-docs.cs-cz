@@ -1,5 +1,5 @@
 ---
-title: Vlastnosti uživatele spolupráce Azure Active Directory B2B | Dokumentace Microsoftu
+title: Vlastnosti uživatele spolupráce B2B – Azure Active Directory | Dokumentace Microsoftu
 description: Je možné konfigurovat Azure Active Directory s B2B spolupráce uživatelské vlastnosti
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ef27b1365078ea2c5a7b92338a6c10f8d05de0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 45e9553a3af8a09a6630efa771294661702feef5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209247"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670690"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti uživatele spolupráce Azure Active Directory s B2B
 

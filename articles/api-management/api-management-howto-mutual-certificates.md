@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b8f8d0a089a74334a908e3dad65c63231bbe5975
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 13a2eb080c6822a8a6786be1952bc588fa8afd80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098931"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729198"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Jak zabezpečit back endovým službám pomocí klienta ověření certifikátu ve službě Azure API Management
 
@@ -27,6 +27,8 @@ API Management umožňuje zabezpečený přístup ke službě back endové rozhr
 Informace o správě certifikátů pomocí REST API služby API Management najdete v tématu <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">entita Azure API Management REST API certifikát</a>.
 
 ## <a name="prerequisites"> </a>Požadované součásti
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Tato příručka ukazuje, jak nakonfigurovat instanci služby API Management používat ověřování pomocí certifikátu klienta pro přístup k back endovou službu pro rozhraní API. Před provedením kroků v tomto článku, měli byste mít vaše back-end služba nakonfigurovaná pro ověření certifikátu klienta ([ke konfiguraci ověřování certifikátů na Azure WebSites najdete v tomto článku] [ to configure certificate authentication in Azure WebSites refer to this article]). Je nutné použít certifikát a heslo pro jeho odeslání do služby API Management.
 
@@ -81,11 +83,11 @@ Pokud tento certifikát se používá rozhraní API, se zobrazí obrazovka upozo
 
 ## <a name="self-signed-certificates"></a>Certifikáty podepsané svým držitelem
 
-Pokud používáte certifikáty podepsané svým držitelem, je potřeba zakázat ověřování řetězu certifikátů v pořadí pro službu API Management ke komunikaci s back-end systému. V opačném případě vrátí kód 500 – Chyba. Chcete-li nastavit tuto konfiguraci, můžete použít [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (pro nový back-end) nebo [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (pro existující back-end) rutiny prostředí PowerShell a nastavte `-SkipCertificateChainValidation` parametr `True`.
+Pokud používáte certifikáty podepsané svým držitelem, je potřeba zakázat ověřování řetězu certifikátů v pořadí pro službu API Management ke komunikaci s back-end systému. V opačném případě vrátí kód 500 – Chyba. Chcete-li nastavit tuto konfiguraci, můžete použít [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (pro nový back-end) nebo [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (pro existující back-end) rutiny prostředí PowerShell a nastavte `-SkipCertificateChainValidation` parametr `True`.
 
 ```powershell
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+$context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 [How to add operations to an API]: api-management-howto-add-operations.md

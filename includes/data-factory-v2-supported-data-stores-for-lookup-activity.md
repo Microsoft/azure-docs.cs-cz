@@ -5,21 +5,20 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 02/15/2019
+ms.date: 02/22/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d9562bb9c91700e817c120934e59c0c308d1e55b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 83fce210fe76b436dc4923710578fb21157d320d
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56323477"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56741455"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
-| &nbsp; |[Rozhraní API služby Azure Cosmos DB pro MongoDB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |
 | &nbsp; |[Průzkumník dat Azure](../articles/data-factory/connector-azure-data-explorer.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
@@ -58,7 +57,6 @@ ms.locfileid: "56323477"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (Preview)](../articles/data-factory/connector-couchbase.md) |
-| &nbsp; |[MongoDB](../articles/data-factory/connector-mongodb.md) |
 | **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[Systém souborů](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
@@ -68,7 +66,6 @@ ms.locfileid: "56323477"
 | **Obecný protokol** |[Obecná rozhraní HTTP](../articles/data-factory/connector-http.md) |
 | &nbsp; |[Obecná OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[Obecná rozhraní ODBC](../articles/data-factory/connector-odbc.md) |
-| &nbsp; |[Obecný REST](../articles/data-factory/connector-rest.md) |
 | **Služby a aplikace** |[Amazon Marketplace Web Service (Preview)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
 | &nbsp; |[Common Data Service pro aplikace](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓
 | &nbsp; |[Concur (Preview)](../articles/data-factory/connector-concur.md) |

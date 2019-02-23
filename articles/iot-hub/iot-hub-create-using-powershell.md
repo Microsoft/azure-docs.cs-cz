@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 7ecd35ba33d2860ba052aa27286c69985c2f7dd9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6462673f6c3992aacbaee168eafc6bdb1b2fa944
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190226"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733466"
 ---
-# <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>Vytvoření IoT hubu pomocí rutiny New-AzureRmIotHub
+# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Vytvoření IoT hubu pomocí rutiny New-AzIotHub
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -25,6 +25,8 @@ Rutiny prostředí Azure PowerShell můžete použít k vytváření a správě 
 
 Pokud chcete dokončit tento návod, potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="connect-to-your-azure-subscription"></a>Připojení k předplatnému služby Azure
@@ -33,25 +35,25 @@ Pokud používáte Cloud Shell, jste již přihlášeni ke svému předplatnému
 
 ```powershell
 # Log into Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Potřebujete skupinu prostředků pro nasazení služby IoT hub. Můžete použít existující skupinu prostředků nebo vytvořte novou.
 
-Chcete-li vytvořit skupinu prostředků pro službu IoT hub, použijte [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) příkazu. Tento příklad vytvoří skupinu prostředků s názvem **MyIoTRG1** v **USA – východ** oblasti:
+Chcete-li vytvořit skupinu prostředků pro službu IoT hub, použijte [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) příkazu. Tento příklad vytvoří skupinu prostředků s názvem **MyIoTRG1** v **USA – východ** oblasti:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
+New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-K vytvoření služby IoT hub ve skupině prostředků, kterou jste vytvořili v předchozím kroku, použijte [New-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/New-AzureRmIotHub) příkazu. Tento příklad vytvoří **S1** centrum s názvem **MyTestIoTHub** v **USA – východ** oblasti:
+K vytvoření služby IoT hub ve skupině prostředků, kterou jste vytvořili v předchozím kroku, použijte [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) příkazu. Tento příklad vytvoří **S1** centrum s názvem **MyTestIoTHub** v **USA – východ** oblasti:
 
 ```azurepowershell-interactive
-New-AzureRmIotHub `
+New-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub `
     -SkuName S1 -Units 1 `
@@ -62,33 +64,33 @@ Název služby IoT hub, musí být globálně jedinečný.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-IoT hub můžete vytvořit seznam v předplatném pomocí [Get-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/Get-AzureRmIotHub) příkaz:
+IoT hub můžete vytvořit seznam v předplatném pomocí [Get-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) příkaz:
 
 ```azurepowershell-interactive
-Get-AzureRmIotHub
+Get-AzIotHub
 ```
 
 Tento příklad ukazuje S1 Standard služby IoT Hub, že kterou jste vytvořili v předchozím kroku.
 
-Můžete odstranit pomocí centra IoT [odebrat AzureRmIotHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/remove-azurermiothub) příkaz:
+Můžete odstranit pomocí centra IoT [odebrat AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) příkaz:
 
 ```azurepowershell-interactive
-Remove-AzureRmIotHub `
+Remove-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub
 ```
 
-Alternativně můžete odebrat skupinu prostředků a všechny prostředky obsahuje pomocí [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Remove-AzureRmResourceGroup) příkaz:
+Alternativně můžete odebrat skupinu prostředků a všechny prostředky obsahuje pomocí [odebrat AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) příkaz:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyIoTRG1
+Remove-AzResourceGroup -Name MyIoTRG1
 ```
 
 ## <a name="next-steps"></a>Další postup
 
 Nyní jste nasadili službu IoT hub pomocí rutiny Powershellu, pokud chcete podrobněji, projděte si následující články:
 
-* [Rutiny Powershellu pro práci se službou IoT hub](https://docs.microsoft.com/powershell/module/azurerm.iothub/).
+* [Rutiny Powershellu pro práci se službou IoT hub](https://docs.microsoft.com/powershell/module/az.iothub/).
 
 * [Rozhraní REST API poskytovatele prostředků služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource).
 

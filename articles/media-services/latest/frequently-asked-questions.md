@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: a815d03dd4e7163d4d9f00ce8f9c16f1b3055ce9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: c0dc67ddf0f1de9ca72fd14a9113219209a6bda0
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652327"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674206"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Azure Media Services v3
 
@@ -62,7 +62,7 @@ Správný přístup je využívat služby tokenů zabezpečení (zabezpečení T
 
 Služba tokenů zabezpečení v závislosti na profil uživatele, přidejte různé deklarace (například "Premium User", "Základní uživatel", "Uživatele bezplatné zkušební verze"). S jinou deklarací v token JWT uživatel uvidí jiný obsah. Samozřejmě pro jiný obsah nebo prostředek, bude mít ContentKeyPolicyRestriction odpovídající RequiredClaims.
 
-Licence/klíč API služby Azure Media Services použijte ke konfiguraci doručování a šifruje vaše prostředky (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs).
+Licence/klíč API služby Azure Media Services použijte ke konfiguraci doručování a šifruje vaše prostředky (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
 Další informace naleznete v tématu:
 
@@ -87,5 +87,4 @@ Nyní se doporučuje použít šifrování úložiště na straně serveru (kter
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Přehled služby Media Services v3](media-services-overview.md)
+[Přehled služby Media Services v3](media-services-overview.md)

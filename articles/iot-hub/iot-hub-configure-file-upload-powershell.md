@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e8f37adc07bffb8a1e770085ecee6f813d3c2932
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7d63cc4e57ba3c1b962c893bf8c8bd03664dac6f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425607"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729250"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurace centra IoT nahrávání souborů pomocí Powershellu
 
@@ -20,36 +20,38 @@ ms.locfileid: "54425607"
 
 Použít [funkci nahrávání souborů ve službě IoT Hub](iot-hub-devguide-file-upload.md), je třeba nejprve přidružit účet úložiště Azure s centrem IoT. Můžete použít existující účet úložiště nebo vytvořte novou.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.
 
-* [Rutiny Powershellu pro Azure](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+* [Rutiny Powershellu pro Azure](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Služby Azure IoT hub. Pokud nemáte k dispozici služby IoT hub, můžete použít [rutiny New-AzureRmIoTHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub) a vytvořte si ho pomocí portálu [vytvoření služby IoT hub](iot-hub-create-through-portal.md).
+* Služby Azure IoT hub. Pokud nemáte k dispozici služby IoT hub, můžete použít [rutiny New-AzIoTHub](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) a vytvořte si ho pomocí portálu [vytvoření služby IoT hub](iot-hub-create-through-portal.md).
 
-* Účet úložiště Azure. Pokud nemáte účet úložiště Azure, můžete použít [rutin Powershellu pro Azure Storage](https://docs.microsoft.com/powershell/module/azurerm.storage/) a vytvořte si ho pomocí portálu [vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md)
+* Účet úložiště Azure. Pokud nemáte účet úložiště Azure, můžete použít [rutin Powershellu pro Azure Storage](https://docs.microsoft.com/powershell/module/az.storage/) a vytvořte si ho pomocí portálu [vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a v nastavení účtu Azure
 
 Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
-1. Na příkazovém řádku Powershellu, spusťte **Connect-AzureRmAccount** rutiny:
+1. Na příkazovém řádku Powershellu, spusťte **připojit AzAccount** rutiny:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 2. Pokud máte více předplatných Azure, přihlášení k Azure získáte přístup ke Všechna předplatná Azure přidružená svoje přihlašovací údaje. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure k dispozici pro použití:
 
     ```powershell
-    Get-AzureRMSubscription
+    Get-AzSubscription
     ```
 
     Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro správu služby IoT hub. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
     ```powershell
-    Select-AzureRMSubscription `
+    Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
@@ -60,7 +62,7 @@ Následující postup předpokládá, že jste vytvořili pomocí účtu úloži
 Pokud chcete nakonfigurovat nahrávání souborů ze zařízení, potřebujete připojovací řetězec pro účet úložiště Azure. Účet úložiště musí být ve stejném předplatném jako služby IoT hub. Potřebujete také název kontejneru objektů blob v účtu úložiště. Použijte následující příkaz k načtení klíčů účtů úložiště:
 
 ```powershell
-Get-AzureRmStorageAccountKey `
+Get-AzStorageAccountKey `
   -Name {your storage account name} `
   -ResourceGroupName {your storage account resource group}
 ```
@@ -72,19 +74,19 @@ Můžete použít existující kontejner objektů blob pro vaše nahrávání so
 * K zobrazení seznamu existující kontejnery objektů blob v účtu úložiště, použijte následující příkazy:
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    Get-AzureStorageContainer -Context $ctx
+    Get-AzStorageContainer -Context $ctx
     ```
 
 * Chcete-li vytvořit kontejner objektů blob v účtu úložiště, použijte následující příkazy:
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    New-AzureStorageContainer `
+    New-AzStorageContainer `
         -Name {your new container name} `
         -Permission Off `
         -Context $ctx
@@ -109,7 +111,7 @@ Následující konfigurace vyžaduje následující hodnoty:
 Pomocí následující rutiny prostředí PowerShell můžete nakonfigurovat soubor nahrát nastavení ve službě IoT hub:
 
 ```powershell
-Set-AzureRmIotHub `
+Set-AzIotHub `
     -ResourceGroupName "{your iot hub resource group}" `
     -Name "{your iot hub name}" `
     -FileUploadNotificationTtl "01:00:00" `

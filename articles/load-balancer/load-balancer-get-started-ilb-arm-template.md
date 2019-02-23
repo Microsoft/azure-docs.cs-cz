@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: aa1df4811bfe1a59671e8e696958bed9c5ebff45
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 6cbde9d0d53cdd688c39381978bd338c66d5688e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593026"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671671"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -47,7 +47,7 @@ Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShe
 3. Upravte soubor a uložte ho.
 4. Spustit **New-AzResourceGroupDeployment** rutina pro vytvoření skupiny prostředků pomocí šablony.
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
         -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json' `
         -TemplateParameterFile 'C:\temp\azuredeploy.parameters.json'
@@ -60,7 +60,7 @@ Pokud chcete nasadit šablonu pomocí rozhraní příkazového řádku Azure, po
 1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
 2. Spuštěním příkazu **azure config mode** přejděte do režimu Resource Manager, jak vidíte níže.
 
-    ```azurecli
+    ```azurecli-interactive
     azure config mode arm
     ```
 

@@ -1,32 +1,19 @@
 ---
-title: Přizpůsobení pravidel firewallu webových aplikací ve službě Azure Application Gateway – PowerShell | Dokumentace Microsoftu
+title: Přizpůsobení pravidel firewallu webových aplikací ve službě Azure Application Gateway – PowerShell
 description: Tento článek obsahuje informace o tom, jak přizpůsobení pravidel firewallu webových aplikací ve službě Application Gateway pomocí Powershellu.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: dfcd82a17a399f213f5c4e32326a8995d26e8458
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 1e1638d69915f16b9f30acc5b6a0265b25c2c561
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218265"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728875"
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>Přizpůsobení pravidel firewallu webových aplikací pomocí prostředí PowerShell
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Firewall webových aplikací (WAF) Azure Application Gateway chrání webové aplikace. Tyto ochrany jsou k dispozici ve Open Web Application zabezpečení projektu (OWASP) základní pravidlo nastavte (CRS). Některá pravidla může způsobit, že počet falešně pozitivních výsledků a blokovat skutečný provoz. Z tohoto důvodu Application Gateway poskytuje schopnost přizpůsobit skupin pravidel a pravidla. Další informace o příslušné pravidlo skupiny a pravidel, naleznete v tématu [seznam skupin pravidel CRS brány firewall webových aplikací a pravidla](application-gateway-crs-rulegroups-rules.md).
 
@@ -103,6 +90,19 @@ $disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -Rul
 Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
 Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```
+
+## <a name="mandatory-rules"></a>Povinné pravidla
+
+Následující seznam obsahuje podmínky, které způsobí WAF blokování požadavku v režimu ochrany před únikem informací (v režimu detekce, kterému jsou přihlášeni jako výjimky). Tyto nelze nakonfigurované nebo zakázané:
+
+* Nepodařilo se analyzovat datovou část požadavku výsledkem požadavku blokován, pokud je text kontroly nevypnuli (XML, JSON, data formuláře)
+* Délka dat požadavku textu (spolu s žádné soubory) je větší než nakonfigurovaný limit
+* Text (včetně souborů) je větší než limit požadavku
+* Došlo k vnitřní chybě v modulu WAF
+
+CRS 3.x konkrétní:
+
+* Příchozí anomálií skóre překročil prahovou hodnotu
 
 ## <a name="next-steps"></a>Další postup
 

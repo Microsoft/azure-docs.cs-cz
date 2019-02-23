@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4beb9811a57ecd0a1eada5b36bd65b67851d2564
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989181"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731969"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Cílení na řešení monitorování v Azure Monitor (Preview)
 Když přidáte řešení pro monitorování ke svému předplatnému, se automaticky nasadí ve výchozím nastavení pro všechny agenty Windows a Linuxem, připojený k pracovnímu prostoru Log Analytics.  Můžete chtít spravovat náklady a omezit objem dat shromážděných pro řešení podle omezení na konkrétní sadu agentů.  Tento článek popisuje způsob použití **cílení řešení** což je funkce, která vám umožní použít obor do vašich řešení.
@@ -35,7 +35,7 @@ Zadejte počítače, které chcete zahrnout do oboru tak, že vytvoříte [skupi
 Jakmile máte skupinu počítačů, které jsou vytvořené v pracovním prostoru, budete jej zahrnout v konfiguraci oboru, který lze použít na jeden nebo více řešení.
  
  
- ### <a name="2-create-a-scope-configuration"></a>2. Vytvořit konfiguraci oboru
+### <a name="2-create-a-scope-configuration"></a>2. Vytvořit konfiguraci oboru
  A **konfiguraci oboru** obsahuje jeden nebo více skupin počítačů které můžou uplatnit na jeden nebo více řešení. 
  
  Vytvořte konfiguraci oboru podle následujícího postupu.  
@@ -49,7 +49,7 @@ Jakmile máte skupinu počítačů, které jsou vytvořené v pracovním prostor
  6. Klikněte na tlačítko **OK** se vytvořit konfiguraci oboru. 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Použijte konfiguraci oboru řešení.
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Použijte konfiguraci oboru řešení.
 Jakmile se konfigurace oboru, můžete ji použít na jeden nebo více řešení.  Všimněte si, že i když jeden obor konfigurace můžete použít pomocí více řešení, každé řešení lze použít pouze jednu konfiguraci oboru.
 
 Použijte konfiguraci oboru podle následujícího postupu.  

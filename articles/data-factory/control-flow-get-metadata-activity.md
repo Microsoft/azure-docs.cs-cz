@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 02/22/2019
 ms.author: shlo
-ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca77fa092e41534e0f18323014c9cea583c19758
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354259"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671654"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání metadat aktivity v Azure Data Factory
 Aktivita GetMetadata slouží k načtení **metadat** jakýchkoli dat ve službě Azure Data Factory. Tato aktivita se dá použít v následujících scénářích:
@@ -45,14 +45,15 @@ Aktivita GetMetadata přijímá datovou sadu jako požadovaný vstup a výstup i
 | Connector/metadat | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>(soubor) | vytvořené<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | počet sloupců<br>(soubor) | Existuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Cloudové úložiště Googlu | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Azure Blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure Data Lake Storage Gen1 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Systém souborů | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Pro Amazon S3 `lastModified` se vztahuje na kbelík a klíč, ale ne virtuální složka; a `exists` se vztahuje na kontejneru a klíč, ale ne předponu nebo virtuální složka.
+- Pro Amazon S3 a Google Sloud Storage `lastModified` se vztahuje na kbelík a klíč, ale ne virtuální složka; a `exists` se vztahuje na kontejneru a klíč, ale ne předponu nebo virtuální složka.
 - U objektů Blob v Azure `lastModified` platí do kontejnerů a objektů blob, ale není virtuální složku.
 
 **Relační databáze:**

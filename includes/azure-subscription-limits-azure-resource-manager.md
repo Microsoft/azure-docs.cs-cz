@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4cc115d068736f61f9edb4ec609ac592607e7fa0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 29fce45da89a20681f725f5abd38f534d300f829
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246798"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56740876"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Počet virtuálních počítačů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |10 000<sup>1</sup> na oblast |10 000 na oblast |
+| Počet virtuálních počítačů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |25 000 <sup>1</sup> na oblast |25 000 na oblast |
 | Celkový počet jader virtuálního počítače na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast | Kontaktování podpory |
 | Počet jader virtuálního počítače podle řady (Dv2, F atd.) na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast | Kontaktování podpory |
 | Počet [spolusprávců](../articles/billing-add-change-azure-subscription-administrator.md) na předplatné |Unlimited |Unlimited |

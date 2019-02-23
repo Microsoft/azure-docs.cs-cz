@@ -7,39 +7,33 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 02/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1d57b6edcff5222bb411a74cc86afbbd7819f9d3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dba7fbe026725510cc357fecbc7d3251849f6af8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970827"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675071"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazy Apache Hive pomocí ovladače JDBC v HDInsight
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Zjistěte, jak použít ovladač JDBC z aplikace Java k zadávání dotazů na Apache Hadoop v Azure HDInsight s Apache Hive. Informace v tomto dokumentu ukazuje, jak se připojit prostřednictvím kódu programu a klienta SQuirrel SQL.
+Zjistěte, jak použít ovladač JDBC z aplikace Java k zadávání dotazů na Apache Hadoop v Azure HDInsight s Apache Hive. Informace v tomto dokumentu ukazuje, jak se připojit prostřednictvím kódu programu a klienta SQuirreL SQL.
 
 Další informace o rozhraní Hive JDBC, naleznete v tématu [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Hadoop v clusteru HDInsight.
-
-  > [!IMPORTANT]
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight 3.3 vyřazení](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+* Cluster HDInsight Hadoop. Pokud chcete jeden vytvořit, přečtěte si téma [Začínáme s Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* [Java Developer Kit (JDK) verze 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) nebo vyšší.
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL je JDBC klientské aplikace.
 
-* [Java Developer Kit (JDK) verze 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) nebo vyšší.
-
-* [Apache Maven](https://maven.apache.org) Maven je projekt sestavovacího systému pro projekty Java, který se používá v projektu spojený s tímto článkem.
 
 ## <a name="jdbc-connection-string"></a>Připojovací řetězec JDBC
 
-JDBC připojení ke clusteru služby HDInsight v Azure jsou vytvořena více než 443, a provoz je zabezpečená pomocí protokolu SSL. Veřejnou brány, který clustery se nacházejí za provoz přesměruje na port, který HiveServer2 skutečně naslouchá. Následující připojovací řetězec znázorňuje formátu pro HDInsight:
+Vytváří se JDBC připojení ke clusteru služby HDInsight v Azure přes port 443 a provoz je zabezpečená pomocí protokolu SSL. Veřejnou brány, který clustery se nacházejí za provoz přesměruje na port, který HiveServer2 skutečně naslouchá. Následující připojovací řetězec znázorňuje formátu pro HDInsight:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -59,24 +53,23 @@ DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 
 SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů Hive pomocí clusteru HDInsight. Následující postup předpokládá, že jste již nainstalovali SQuirreL SQL.
 
-1. Vytvoření adresáře, který obsahuje soubory. Například, `mkdir hivedriver`.
+1. Vytvoření adresáře tak, aby obsahovala určité soubory zkopírovány z vašeho clusteru.
 
-2. Z příkazového řádku použijte následující příkazy pro kopírování souborů z clusteru HDInsight:
+2. V následujícím skriptu, nahraďte `sshuser` s název uživatelského účtu SSH pro cluster.  Nahraďte `CLUSTERNAME` s názvem clusteru HDInsight.  Z příkazového řádku zadejte následující příkaz pro kopírování souborů z clusteru služby HDInsight:
 
     ```bash
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libfb*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-common.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-codec*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libfb*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
     ```
-
-    Nahraďte `USERNAME` s název uživatelského účtu SSH pro cluster. Nahraďte `CLUSTERNAME` s názvem clusteru HDInsight.
 
 3. Spusťte aplikaci SQuirreL SQL. V levé části okna, vyberte **ovladače**.
 
@@ -95,9 +88,9 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
    ![Přidat dialog ovladače](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 
-   Klikněte na tlačítko **OK** nastavení uložte.
+   Vyberte **OK** nastavení uložte.
 
-6. Na levé straně okna SQuirreL SQL vyberte **aliasy**. Klikněte **+** ikona vytvoření aliasu připojení.
+6. Na levé straně okna SQuirreL SQL vyberte **aliasy**. Vyberte **+** ikona vytvoření aliasu připojení.
 
     ![Přidat nový alias](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
 
@@ -126,9 +119,11 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
     ![Dialogové okno připojení](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
 
-9. Jakmile budete připojeni, zadejte následující dotaz do dialogu dotazu SQL a pak vyberte **spustit** ikonu. V oblasti výsledky by měly zobrazit výsledky dotazu.
+9. Jakmile budete připojeni, zadejte následující dotaz do dialogu dotazu SQL a pak vyberte **spustit** ikonu (spuštěné osoba). V oblasti výsledky by měly zobrazit výsledky dotazu.
 
-        select * from hivesampletable limit 10;
+    ```hql
+    select * from hivesampletable limit 10;
+    ```
 
     ![Dialogové okno dotazu SQL, včetně výsledků](./media/apache-hadoop-connect-hive-jdbc-driver/sqlquery.png)
 
@@ -148,17 +143,13 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**Příčina**: Tato chyba je způsobena starší verzi commons codec.jar aplikace součástí SQuirreL.
+**Příčina:** Tato chyba je způsobena starší verzi commons codec.jar aplikace součástí SQuirreL.
 
-**Rozlišení**: Chcete-li tuto chybu opravit, postupujte následovně:
+**Řešení:** Chcete-li tuto chybu opravit, postupujte následovně:
 
-1. Stažení souboru jar commons kodek z vašeho clusteru HDInsight.
+1. Ukončete SQuirreL a pak přejděte do adresáře, kde je nainstalován SQuirreL ve vašem systému. V adresáři SquirreL pod `lib` adresář, nahraďte existující codec.jar commons s tím se stáhne z clusteru HDInsight.
 
-        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-codec*.jar ./commons-codec.jar
-
-2. Ukončete SQuirreL a pak přejděte do adresáře, kde je nainstalován SQuirreL ve vašem systému. V adresáři SquirreL pod `lib` adresář, nahraďte existující codec.jar commons s tím se stáhne z clusteru HDInsight.
-
-3. Restartujte SQuirreL. Chyba by už není k dispozici při připojování k Hive v HDInsight.
+2. Restartujte SQuirreL. Chyba by už není k dispozici při připojování k Hive v HDInsight.
 
 ## <a name="next-steps"></a>Další postup
 

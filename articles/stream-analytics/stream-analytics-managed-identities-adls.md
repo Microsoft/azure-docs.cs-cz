@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 02d3cd3688f3b34c92422168b79cb4da5a93d970
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 4537d15f88732d4b0c3c3cf514d6b8528af10f81
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587986"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737463"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravované identity (Preview)
 
@@ -22,6 +22,8 @@ Azure Stream Analytics podporuje spravovanou identitu ověřování pomocí Azur
 Přejděte [osm nových funkcí ve službě Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) příspěvek na blogu k registraci pro tuto verzi preview a přečtěte si více o nových funkcích.
 
 Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlohy Azure Stream Analytics, jejichž výstupem jsou do Azure Data Lake Storage Gen1 prostřednictvím webu Azure portal, nasazení šablony Azure Resource Manageru a Azure Stream Analytics tools for Visual Studio.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -158,7 +160,7 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
 2. Poskytnout přístup k objektu zabezpečení pomocí prostředí PowerShell. Udělit přístup ke službě instančního objektu pomocí Powershellu, spusťte následující příkaz:
 
    ```powershell
-   Set-AzureRmDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
+   Set-AzDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
    ```
 
    **PrincipalId** je ID objektu instančního objektu a je uvedené na portálu obrazovka po vytvoření instančního objektu. Pokud jste vytvořili úlohu pomocí nasazení šablony Resource Manageru, ID objektu je uvedeno ve vlastnosti identita třídy odpověď úlohy.
@@ -166,11 +168,11 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
    **Příklad**
 
    ```powershell
-   PS > Set-AzureRmDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
+   PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   Další informace o výše uvedený příkaz Powershellu, přečtěte si [Set-AzureRmDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry?view=azurermps-6.8.1&viewFallbackFrom=azurermps-4.2.0#optional-parameters) dokumentaci.
+   Další informace o výše uvedený příkaz Powershellu, přečtěte si [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry#optional-parameters) dokumentaci.
 
 ## <a name="limitations"></a>Omezení
 Tato funkce nepodporuje následující:

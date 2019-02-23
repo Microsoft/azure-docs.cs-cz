@@ -1,5 +1,5 @@
 ---
-title: Doprovodné materiály k licencování spolupráce Azure Active Directory s B2B | Dokumentace Microsoftu
+title: Doprovodné materiály k – Azure Active Directory licencování spolupráce B2B ve službě | Dokumentace Microsoftu
 description: Azure Active Directory s B2B, které nevyžaduje spolupráci placené licence Azure AD, ale je můžete také získat placených funkcí pro uživatele typu Host B2B
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0032eb1e6b92abb130521945f64fda3133d9b7fc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7fa01a6bf522061e54e9622cb9201f81c699a8ec
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198877"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668448"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Doprovodné materiály k licencování spolupráce Azure Active Directory s B2B
 

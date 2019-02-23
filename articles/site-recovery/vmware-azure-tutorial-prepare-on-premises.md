@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bee9d2f823fe46d81550ea5090222f491562d636
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ea67c19beeb2fa52b77b04913aee1838569c4ac6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700107"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675020"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
@@ -80,7 +80,7 @@ Ujistěte se, že servery a virtuální počítače VMware splňují požadavky.
 3. Zkontrolujte podporu místní [sítě](vmware-physical-azure-support-matrix.md#network) a [úložiště](vmware-physical-azure-support-matrix.md#storage). 
 4. Zkontrolujte podporované [sítě Azure](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](vmware-physical-azure-support-matrix.md#azure-storage) a [výpočetní prostředí](vmware-physical-azure-support-matrix.md#azure-compute) po převzetí služeb při selhání.
 5. Místní virtuální počítače, které replikujete do Azure, musí splňovat [Požadavky na virtuální počítače Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-6. Ve virtuálních počítačích s Linuxem musí být jedinečný název zařízení nebo název přípojného bodu. Zajistěte, aby velká a malá písmena názvy žádné dvě zařízení a přípojné body. Například názvy dvou zařízení pro stejný virtuální počítač jako *zařízení1* a *zařízení1* není povolený.
+6. Ve virtuálních počítačích s Linuxem musí být jedinečný název zařízení nebo název přípojného bodu. Ujistěte se, že žádné dvě zařízení a přípojné body mají stejné názvy. Všimněte si, že název nejsou velká a malá písmena. Například názvy dvou zařízení pro stejný virtuální počítač jako _zařízení1_ a _zařízení1_ není povolený.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání

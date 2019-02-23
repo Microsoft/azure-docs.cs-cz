@@ -6,19 +6,19 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 6cad142c050ca1de7e4c5f9b4415132a82f38c7b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 912d62796074c6841d8fb99801bd6ce1f54c7fcf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215244"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726580"
 ---
 # <a name="view-system-test-results"></a>Zobrazení výsledků systémových testů
 
-Po úspěšném trénování, zkontrolujte systémové testy k analýze výsledky školení. Pokud jste spokojeni s výsledky školení, umístěte žádost o nasazení pro trénovaného modelu. 
+Po úspěšném trénování, zkontrolujte systémové testy k analýze výsledky školení. Pokud jste spokojeni s výsledky školení, umístěte žádost o nasazení pro trénovaného modelu.
 
 ## <a name="system-test-results-page"></a>Stránka s výsledky testu systému
 

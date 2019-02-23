@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory s B2B spolupráce rozhraní API a přizpůsobení | Dokumentace Microsoftu
+title: B2B spolupráce rozhraní API a přizpůsobení – Azure Active Directory | Dokumentace Microsoftu
 description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše vztahy s ostatními společnostmi tím, že vašim obchodním partnerům umožní selektivní přístup ke podnikovým aplikacím
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a475c9032d2c4062b506c1e6ebcadd1901c946b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fbeffd012d2d2445d4a9a927981728e1bbe43e97
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177423"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670566"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory s B2B spolupráce rozhraní API a přizpůsobení
 

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: aee005aed52563e214e24148af2563fd7869de76
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1335b86431bcf345f452ead0c95926d295ae185f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271668"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728756"
 ---
 # <a name="azure-data-factory-data-flow-derived-column-transformation"></a>Azure Data Factory Data tok transformace odvozených sloupců
 

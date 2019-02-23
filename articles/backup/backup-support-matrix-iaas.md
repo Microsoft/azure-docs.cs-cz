@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: b99d6285942bafe5467827c30b5ba2e42094fdf3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 2bd499c3afc423047dda9ff3ad657d110dab282a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430882"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673643"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a virtuální počítače Azure. Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure (VM) pomocí služby Azure Backup.
@@ -37,7 +37,7 @@ Tady je způsob zálohování a obnovení virtuálních počítačů Azure pomoc
 **Přímé zálohování virtuálních počítačů Azure (jenom Windows)** | Zálohovat konkrétní soubory nebo složky/svazku | Nainstalujte [agenta Microsoft Azure Recovery Services (MARS)](backup-azure-file-folder-backup-faq.md).<br/><br/> Můžete spustit agenta MARS společně s rozšířením zálohování pro agenta virtuálního počítače Azure k zálohování virtuálních počítačů na úrovni souboru nebo složky. | Obnovte určité soubory a složky.
 **Zálohování virtuálních počítačů Azure na záložní server** |  Zálohování souborů/složek nebo svazků; Stav/úplné systému soubory systému; data aplikací do nástroje System Center DPM nebo Microsoft Azure Backup Server (MAB server).<br/><br/> Potom zálohuje aplikace DPM nebo MABS do trezoru záloh | Nainstalujte agenta ochrany MABS/DPM ve virtuálním počítači. MARS agent se instaluje na aplikaci DPM nebo MABS.| Obnovení souborů/složek nebo svazků; Stav/úplné systému soubory systému; data aplikací. 
 
-Další informace o zálohování pomocí zálohování server(backup-architecture.md#architecture-back-up-to-dpmmabs) a [požadavky na podporu](backup-support-matrix-mabs-dpm.md).
+Další informace o zálohování [pomocí zálohování serveru](backup-architecture.md#architecture-back-up-to-dpmmabs), a [požadavky na podporu](backup-support-matrix-mabs-dpm.md).
 
 
 ## <a name="supported-backup-actions"></a>Nepodporuje zálohování akce
@@ -189,7 +189,7 @@ Virtuální počítače s veřejnými IP adresami    | Podporuje se.<br/><br/> M
 Skupina zabezpečení sítě (NSG) na síťovou kartu a podsítě. |   Podporuje se.
 Vyhrazená IP adresa (staticky) | Nepodporuje se.<br/><br/> Nelze zálohovat virtuální počítač s rezervovanou IP adresu a není definovaný koncový bod.
 Dynamická IP adresa |    Podporuje se.<br/><br/> Pokud síťové karty na zdroji virtuální počítač používá dynamické přidělování IP adres, ve výchozím nastavení síťového rozhraní na obnovený virtuální počítač se moc.
-Traffic Manager | Podporováno<br/><br/>. Pokud zálohovaného virtuálního počítače je v Traffic Manageru, budete muset ručně přidat obnovený virtuální počítač do stejné Traffic Manageru. 
+Traffic Manager | Podporováno<br/><br/> Pokud zálohovaného virtuálního počítače je v Traffic Manageru, budete muset ručně přidat obnovený virtuální počítač do stejné Traffic Manageru. 
 Azure DNS | Podporuje se.
 Vlastní DNS |    Podporuje se.
 Odchozí připojení přes server proxy protokolu HTTP | Podporuje se.<br/><br/> Ověřený proxy server nepodporuje. 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: lagayhar
-ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 224da9285ab0aef312688e4dfa1da49451abfa5a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699314"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674646"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -32,8 +32,6 @@ Budete potřebovat:
 
 * JRE verze 1.7 nebo 1.8
 * Předplatné [Microsoft Azure](https://azure.microsoft.com/).
-
-*Pokud máte webovou aplikaci, která je už v provozu, můžete použít alternativní postup [přidání sady SDK za běhu na webovém serveru](java-live.md). S touto alternativou se vyhnete opětovnému sestavování kódu, ale nebudete mít možnost napsat kód ke sledování činnosti uživatelů.*
 
 Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Spring Boot Initializer, abyste mohli použít příručku ke službě Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 

@@ -2,28 +2,28 @@
 title: Porovnání Azure IoT Hub a Azure Event Hubs | Dokumentace Microsoftu
 description: Porovnání služeb IoT Hub a Event Hubs Azure, zvýraznění funkční rozdíly a případy použití. Porovnání zahrnuje podporovaných protokolů, zařízení, monitorování, správy a nahrávání souborů.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819633"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669734"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Připojení zařízení IoT k Azure: IoT Hub a Event Hubs
 
-Azure poskytuje služby, vyvinutá speciálně pro různých typů připojení a komunikace připojení dat k elektrické energie cloudu vám usnadní. Azure IoT Hub a Azure Event Hubs jsou cloudové služby, které můžete ingestovat velké objemy dat a zpracování nebo uložení dat k obchodním přehledům. Tyto dvě služby jsou podobné v tom, že obě podporují ingestování dat s nízkou latencí a vysokou spolehlivostí, ale jsou určené pro různé účely. Konkrétně k vyřešení jedinečné požadavky na připojení zařízení IoT ve velkém měřítku, do cloudu Azure, zatímco služba Event Hubs je navržená pro streamování velkých objemů dat byla vyvinuta služby IoT Hub. To je důvod, proč společnost Microsoft doporučuje používat Azure IoT Hub připojit zařízení IoT pro Azure
+Azure poskytuje služby, vyvinutá speciálně pro různých typů připojení a komunikace připojení dat k elektrické energie cloudu vám usnadní. Azure IoT Hub a Azure Event Hubs jsou cloudové služby, které můžete ingestovat velké objemy dat a zpracování nebo uložení dat k obchodním přehledům. Tyto dvě služby jsou podobné v tom, že obě podporují ingestování dat s nízkou latencí a vysokou spolehlivostí, ale jsou určené pro různé účely. K vyřešení jedinečné požadavky propojení zařízení IoT do cloudu Azure Event Hubs je navržená pro streamování velkých objemů dat byla vyvinuta služby IoT Hub. Společnost Microsoft doporučuje používat Azure IoT Hub připojit zařízení IoT pro Azure
 
-Azure IoT Hub je cloudové bráně, které propojuje zařízení IoT ke shromáždění dat k získání obchodních přehledů a automatizace. Kromě toho služby IoT Hub obsahuje funkce, které obohacují vztah mezi zařízeními a back-endových systémů. Obousměrná komunikace, které funkce znamená, že při přijímat data ze zařízení můžete také posílat příkazy a zásady zpět do zařízení, třeba k aktualizaci vlastností nebo vyvolání akce správy zařízení.  Toto připojení typu cloud zařízení také poskytuje důležité možnosti doručování inteligentních cloudových funkcí do hraničních zařízení pomocí služby Azure IoT Edge. Jedinečná identita úrovni zařízení poskytované služby IoT Hub pomáhá lépe zabezpečené řešení IoT z možných útoků. 
+Azure IoT Hub je cloudové bráně, které propojuje zařízení IoT ke shromažďování dat a získání obchodních přehledů a automatizace. Kromě toho služby IoT Hub obsahuje funkce, které obohacují vztah mezi zařízeními a back-endových systémů. Možnosti obousměrnou komunikaci znamená, že zatímco přijímat data ze zařízení můžete také posílat příkazy a zásady zpět do zařízení. Například pomocí zasílání zpráv typu cloud zařízení k aktualizaci vlastností nebo vyvolání akce správy zařízení. Komunikaci typu cloud zařízení můžete také odeslat inteligentních cloudových funkcí do hraničních zařízení pomocí služby Azure IoT Edge. Jedinečná identita úrovni zařízení poskytované služby IoT Hub pomáhá lépe zabezpečené řešení IoT z možných útoků. 
 
-[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) jsou velké objemy dat, streamování služby Azure. Je navržená pro streamování scénáře s vysokou propustností data kde mohou zákazníci odesílat miliardy požadavků denně. Event Hubs využívá modelu oddělených příjemců je pravidlo pro horizontální navýšení kapacity datového proudu a je integrována do velkých objemů dat a analytické služby Azure, včetně Databricks, Stream Analytics, ADLS a HDInsight. Pomocí funkcí, jako jsou Event Hubs Capture a automatické rozšiřování tato služba je účelem je podporovat své aplikace pro velké objemy dat a řešení. Kromě toho služby IoT Hub využívá Event Hubs pro cestu tok telemetrických dat, tak řešení IoT také těží z obrovské sílu služby Event Hubs.
+[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) jsou velké objemy dat, streamování služby Azure. Je navržená pro streamování scénáře s vysokou propustností data kde mohou zákazníci odesílat miliardy požadavků denně. Event Hubs využívá modelu oddělených příjemců je pravidlo pro horizontální navýšení kapacity datového proudu a je integrována do velkých objemů dat a analytické služby Azure, včetně Databricks, Stream Analytics, ADLS a HDInsight. Pomocí funkcí, jako jsou Event Hubs Capture a automatické rozšiřování tato služba je účelem je podporovat své aplikace pro velké objemy dat a řešení. Kromě toho služby IoT Hub používá službu Event Hubs pro cestu tok telemetrických dat, takže vaše řešení IoT také těží z obrovské sílu služby Event Hubs.
 
-Souhrnně řečeno, zatímco obě řešení jsou určeny pro příjem dat ve velkém měřítku, pouze služby IoT Hub poskytuje bohaté IoT specifické možnosti, které jsou určeny pro vás k maximalizaci obchodní hodnoty jazyka připojení vašich zařízení IoT do cloudu Azure.  Pokud začínáte svoji cestu k IoT, spouští se službou IoT Hub pro podporu scénářů příjmu dat zajistí, že máte okamžitý přístup k funkcím IoT plně funkční po obchodní a technické požadavky, které je vyžadují.
+Souhrnně řečeno, jsou obě řešení navržené pro příjem dat ve velkém měřítku. Pouze služby IoT Hub poskytuje bohaté IoT specifické možnosti, které jsou určeny pro vás k maximalizaci obchodní hodnoty jazyka připojení vašich zařízení IoT do cloudu Azure.  Pokud začínáte svoji cestu k IoT, spouští se službou IoT Hub pro podporu scénářů příjmu dat zajistí, že máte okamžitý přístup k funkcím IoT plně funkční po obchodní a technické požadavky, které je vyžadují.
 
 Následující tabulka obsahuje podrobnosti o dvě úrovně služby IoT Hub porovnání do služby Event Hubs při hodnocení je pro funkce IoT. Další informace o úrovních standard a basic služby IoT Hub najdete v tématu [návodu k výběru správné úrovně služby IoT Hub](iot-hub-scaling.md).
 

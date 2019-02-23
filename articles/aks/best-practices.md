@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 12/07/18
+ms.date: 12/07/2018
 ms.author: iainfou
-ms.openlocfilehash: ef7dabc8bf792893380b80458d5fb20aa15cd909
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c73f2fea808944847fab6a675914ee57e537560b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256464"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731323"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vytváření a správě aplikací ve službě Azure Kubernetes Service (AKS) – operátor clusteru a pro vývojáře
 

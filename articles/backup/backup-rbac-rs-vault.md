@@ -6,20 +6,20 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/09/2018
 ms.author: trinadhk
-ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e86595ceb940ebcfa702823e9c9b8ad3ef50bb45
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704643"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674629"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití řízení přístupu na základě rolí ke správě body obnovení Azure Backup
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
 
 > [!IMPORTANT]
-> Role, které poskytuje Azure Backup jsou omezené na akce, které můžete provádět na webu Azure portal nebo rutin Powershellu pro trezor služby Recovery Services. Akce prováděné v Azure zálohování uživatelského rozhraní agenta klienta nebo systému System center Data Protection Manager uživatelského rozhraní nebo uživatelské rozhraní serveru služby zálohování Azure jsou mimo ovládací prvek z těchto rolí.
+> Role, které poskytuje Azure Backup jsou omezené na akce, které lze provést na webu Azure portal nebo prostřednictvím rozhraní REST API nebo rutiny prostředí PowerShell nebo rozhraní příkazového řádku pro trezor služby Recovery Services. Akce prováděné v Azure zálohování uživatelského rozhraní agenta klienta nebo systému System center Data Protection Manager uživatelského rozhraní nebo uživatelské rozhraní serveru služby zálohování Azure jsou mimo ovládací prvek z těchto rolí.
 
 Azure Backup poskytuje 3 vestavěné role řízení operací správy zálohování. Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md)
 
@@ -63,9 +63,9 @@ Následující tabulka udává akce správy zálohování a odpovídající mini
 > Pokud zadáte Přispěvatel virtuálních počítačů v oboru prostředků virtuálního počítače a klikněte na zálohu jako součást nastavení virtuálního počítače, otevře se obrazovka 'Povolit zálohování' i v případě, že virtuální počítač je již zálohovali jako volání zkontrolujte, jestli stav zálohování funguje pouze na úrovni předplatného. Abyste tomu předešli, buď přejděte do trezoru a otevřete zobrazení zálohovaná položka virtuálního počítače nebo zadejte role Přispěvatel virtuálních počítačů na úrovni předplatného. 
 
 ## <a name="next-steps"></a>Další postup
-* [Řízení přístupu na základě rolí](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC na webu Azure Portal.
+* [Řízení přístupu podle rolí](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC na webu Azure Portal.
 * Další informace o správě přístupu pomocí:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Na základě rolí řešení potíží s řízením přístupu](../role-based-access-control/troubleshooting.md): získat doporučení pro řešení běžných problémů.
+* [Na základě rolí řešení potíží s řízením přístupu](../role-based-access-control/troubleshooting.md): Získáte návrhy pro řešení běžných problémů.

@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 28d1ed43ecdb1ff853e066567f331b8c302ce7aa
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103068"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730439"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -93,7 +93,7 @@ Nemají přístup k záznamy o pacientech.
 
 -   Rozsah: ResourceGroup
 
- ### <a name="data-scientist"></a>Mezi odborníky přes data
+### <a name="data-scientist"></a>Mezi odborníky přes data
 
 
 Mezi odborníky přes data funguje nástroje Azure Machine Learning Studio. Můžete importovat, exportovat a spravovat data a spouštět sestavy. Má přístup k datům o pacientech mezi odborníky přes data, ale nemá oprávnění správce.

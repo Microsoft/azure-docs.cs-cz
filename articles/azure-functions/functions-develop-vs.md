@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b60861b4daced5e3d292feec54f8a54839a80b8f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098077"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728909"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -143,7 +143,7 @@ Stejně jako u triggerů, vstupní a výstupní vazby jsou přidány do funkce j
 
 1. Ujistěte se, že máte [nakonfigurovali projekt pro místní vývoj](#configure-the-project-for-local-development).
 
-2. Přidejte si odpovídající balíček NuGet rozšíření pro konkrétní vazbu. Další informace najdete v tématu [místní C# vývoj pomocí sady Visual Studio](functions-triggers-bindings.md#local-csharp) v článku triggerů a vazeb. Požadavky balíčku NuGet specifické pro vazbu se nacházejí v článku odkaz pro vazbu. Například vyhledejte balíček požadavky pro trigger služby Event Hubs v [článku vazby služby Event Hubs](functions-bindings-event-hubs.md).
+2. Přidejte si odpovídající balíček NuGet rozšíření pro konkrétní vazbu. Další informace najdete v tématu [místní C# vývoj pomocí sady Visual Studio](./functions-bindings-register.md#local-csharp) v článku triggerů a vazeb. Požadavky balíčku NuGet specifické pro vazbu se nacházejí v článku odkaz pro vazbu. Například vyhledejte balíček požadavky pro trigger služby Event Hubs v [článku vazby služby Event Hubs](functions-bindings-event-hubs.md).
 
 3. Pokud jsou nastavení aplikace, které potřebuje vazby, přidejte je do **hodnoty** kolekce [místní nastavení souboru](functions-run-local.md#local-settings-file). Tyto hodnoty se používají, když je funkce spuštěná místně. Když je funkce spuštěná v aplikaci function app v Azure, [fungovat nastavení aplikace](#function-app-settings) se používají.
 

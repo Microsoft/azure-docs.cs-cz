@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fcd3af6c000debb8da6200205a9aa2ae61feac58
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661237"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675411"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store přihlašovacích údajů ve službě Azure Key Vault
 
@@ -26,14 +26,14 @@ V současné době tuto funkci podporovat všechny typy aktivit s výjimkou vlas
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tato funkce využívá identita služeb datové továrny. Zjistěte, jak to funguje z [identita služeb datové továrny](data-factory-service-identity.md) a ujistěte se, že svou datovou továrnu mít některý z přidružené.
+Tato funkce spoléhá na objekt pro vytváření spravované identity data. Zjistěte, jak to funguje z [spravovaných identit pro službu Data factory](data-factory-service-identity.md) a ujistěte se, že svou datovou továrnu mít některý z přidružené.
 
 ## <a name="steps"></a>Kroky
 
 Chcete-li odkazovat přihlašovací údaje uložené ve službě Azure Key Vault, budete muset:
 
-1. **Načíst identita služeb datové továrny** tak, že zkopírujete hodnotu "ID aplikace IDENTITY služby" generované spolu se svým objektem pro vytváření. Pokud používáte ADF vytváření uživatelského rozhraní, v okně vytvoření propojené služby Azure Key Vault; se zobrazí ID identity služby Můžete také načíst ji z webu Azure portal najdete [načíst identita služeb datové továrny](data-factory-service-identity.md#retrieve-service-identity).
-2. **Udělte přístup identit do služby Azure Key Vault.** V trezoru klíčů -> zásady -> přístup přidat nový -> vyhledávání ID této aplikace identity služby udělit **získat** oprávnění v rozevírací nabídce oprávnění tajného klíče. To umožňuje tento určený objekt pro vytváření pro přístup k tajným kódem v trezoru klíčů.
+1. **Načíst data factory spravované identity** tak, že zkopírujete hodnotu "ID aplikace IDENTITY služby" generované spolu se svým objektem pro vytváření. Pokud používáte ADF vytváření uživatelského rozhraní, ID aplikace spravovaná identita zobrazí v okně vytvoření propojené služby Azure Key Vault; Můžete také načíst ji z webu Azure portal najdete [identita spravované služby data factory načtení](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Udělení přístupu spravovaných identit do služby Azure Key Vault.** V trezoru klíčů -> zásady -> přístup přidat nový -> Toto ID aplikace identity udělit spravované hledání **získat** oprávnění v rozevírací nabídce oprávnění tajného klíče. To umožňuje tento určený objekt pro vytváření pro přístup k tajným kódem v trezoru klíčů.
 3. **Vytvoření propojené služby odkazuje na službě Azure Key Vault.** Odkazovat na [propojená služba Azure Key Vault](#azure-key-vault-linked-service).
 4. **Vytvořte propojenou službu úložiště dat, uvnitř které odkaz odpovídající tajného klíče uložené v trezoru.** Odkazovat na [odkaz tajného klíče uložené ve službě key vault](#reference-secret-stored-in-key-vault).
 

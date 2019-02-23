@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: c2c23b6709552d053ca8db5e32a045b416c1acfc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 642353218960e2e995d717260ae82b6dbd7c2612
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733412"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727056"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Správa Azure API Management pomocí Azure Automation
 Tato příručka vás seznámí s služby Azure Automation a jak ji můžete použít k zjednodušení správy Azure API Management.
@@ -32,7 +32,7 @@ Azure Automation poskytuje s vysoce spolehlivé a vysoce dostupné prováděcíh
 Snižte operační režii a uvolnit tak IT a týmu DevOps umožňovaly práci, která vytváří přidanou hodnotu díky přesunu úkoly správy cloudu ke spuštění automaticky službou Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-api-management"></a>Jak Azure Automation pomáhá spravovat službu Azure API Management?
-API Management můžete spravovat ve službě Azure Automation s použitím [rutiny prostředí Windows PowerShell pro rozhraní API služby Azure API Management](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/?view=azurermps-5.5.0). V rámci Azure Automation můžete psát skripty pracovního postupu Powershellu provádět mnoho úkolů správy rozhraní API pomocí rutin. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
+API Management můžete spravovat ve službě Azure Automation s použitím [rutiny prostředí Windows PowerShell pro rozhraní API služby Azure API Management](https://docs.microsoft.com/powershell/module/az.apimanagement). V rámci Azure Automation můžete psát skripty pracovního postupu Powershellu provádět mnoho úkolů správy rozhraní API pomocí rutin. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
 
 Tady je několik příkladů použití služby API Management pomocí prostředí Powershell:
 

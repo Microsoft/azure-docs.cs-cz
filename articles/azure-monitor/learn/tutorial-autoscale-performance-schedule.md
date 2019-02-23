@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: b9d54dc1483da20b4c411047af0b44b681fe197c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9c8803ff73b3e70c19a409ef6c1e072b5f7c8b53
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429272"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734264"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Vytvoření nastavení automatického škálování prostředků Azure na základě údajů o výkonu nebo časového plánu
 
@@ -55,7 +55,7 @@ Následujících několik kroků vás provede vyplněním obrazovky automatické
 
    ![Uložení nastavení automatického škálování](./media/tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
- ## <a name="configure-default-profile"></a>Konfigurace výchozího profilu
+## <a name="configure-default-profile"></a>Konfigurace výchozího profilu
 1. Zadejte **Název** pro nastavení automatického škálování.
 2. Ve výchozím profilu zkontrolujte, že je možnost **Režim škálování** nastavená na hodnotu Škálovat na konkrétní počet instancí.
 3. Nastavte počet instancí **1**. Toto nastavení zajistí, že když žádný jiný profil nebude aktivní nebo se nebude uplatňovat, výchozí profil obnoví počet instancí 1.

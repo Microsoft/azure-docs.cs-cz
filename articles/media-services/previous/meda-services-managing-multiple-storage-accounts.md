@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: b538e1b2d37c92e1712da517ab5f3c46f5e2c3a3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e25da238648b32edcbfaefbdcf1a6240df97916f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992176"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728314"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa prostředků služby Media Services ve více účtech úložiště  
 
@@ -27,7 +27,9 @@ K jednomu účtu Media Services připojit více účtů úložiště. Možnost p
 * Vyrovnávání zatížení vašich prostředků napříč několika účty úložiště.
 * Škálování Media Services pro velké objemy zpracování obsahu (jako je aktuálně na jeden účet úložiště má maximální limit 500 TB). 
 
-Tento článek ukazuje, jak připojit více účtů úložiště do účtu Media Services pomocí [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](/powershell/module/azurerm.media). Také ukazuje, jak zadat jiný účet úložiště při vytváření prostředků pomocí sady SDK služby Media Services. 
+Tento článek ukazuje, jak připojit více účtů úložiště do účtu Media Services pomocí [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](/powershell/module/az.media). Také ukazuje, jak zadat jiný účet úložiště při vytváření prostředků pomocí sady SDK služby Media Services. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="considerations"></a>Požadavky
 
@@ -44,7 +46,7 @@ Služba Media Services použije hodnotu **IAssetFile.Name** vlastnost při vytv�
 
 ## <a name="to-attach-storage-accounts"></a>Pro připojení účtů úložiště  
 
-Chcete-li připojit ke svému účtu AMS účty úložiště, použijte [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](/powershell/module/azurerm.media), jak je znázorněno v následujícím příkladu:
+Chcete-li připojit ke svému účtu AMS účty úložiště, použijte [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](/powershell/module/az.media), jak je znázorněno v následujícím příkladu:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -54,11 +56,11 @@ Chcete-li připojit ke svému účtu AMS účty úložiště, použijte [rozhran
     $storageAccount2Name = "skystorage2"
     $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
     $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
-    $storageAccount1 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
-    $storageAccount2 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+    $storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+    $storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
     $storageAccounts = @($storageAccount1, $storageAccount2)
     
-    Set-AzureRmMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+    Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
 
 ### <a name="support-for-cool-storage"></a>Podpora pro studeného úložiště
 

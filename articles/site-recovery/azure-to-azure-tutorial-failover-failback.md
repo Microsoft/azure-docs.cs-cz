@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ab920094561b9143945793ddd4ea3da877a7ae90
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 46dae28fd6c9eaa3d5e03f5f06c5e92449653679
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340531"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737718"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Převzetí služby při selhání a navrácení služby po obnovení pro virtuální počítače Azure mezi oblastmi Azure
 
@@ -48,7 +48,7 @@ Tento kurz popisuje, jak provést převzetí služeb při selhání jednoho virt
    * **Nejnovější zpracovaný**: Tato možnost vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
    * **Vlastní**: Tuto možnost použijte k převzetí služeb při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
 
-3. Vyberte možnost **Před spuštěním převzetí služeb při selhání vypnout počítač**, pokud chcete, aby se služba Site Recovery pokusila před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede.
+3. Vyberte možnost **Před spuštěním převzetí služeb při selhání vypnout počítač**, pokud chcete, aby se služba Site Recovery pokusila před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Všimněte si, že Site Recovery nepodporuje vyčištění zdroj po převzetí služeb při selhání.
 
 4. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 

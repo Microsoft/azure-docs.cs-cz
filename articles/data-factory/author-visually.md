@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e934c8bdc851f8c550e8b87a923215df3f95e389
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188490"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728248"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -221,7 +221,7 @@ Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v p
 
 Úložiště GitHub Enterprise můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
 
- #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfigurace metody 1 (Enterprise úložiště): Stránka Začínáme
+#### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfigurace metody 1 (Enterprise úložiště): Stránka Začínáme
 
 Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vyberte **konfigurace úložiště kódu**:
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ed7f18d1a40e0b766a2f10cce99aa735d51b4110
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743166"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672545"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Poznámky k verzi archivované pro Azure HDInsight
 
@@ -40,9 +40,9 @@ Následující části jsou nejdůležitější funkce obsahuje. Podrobné pozn�
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>Poznámky k verzi 08/01/2017 v HDInsight
 
-| Titul | Popis | Ovlivněné oblasti  | Typ clusteru  | 
+| Název | Popis | Ovlivněné oblasti  | Typ clusteru  | 
 | --- | --- | --- | --- | --- |
-| Verze Microsoft R Server 9.1 na HDInsight |HDInsight teď podporuje zřizování clustery R serveru 9.1 na HDInsight. Další informace o vydání Microsoft R serveru 9.1, naleznete v tématu [tento blog](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Služba |R Server |
+| Verze Microsoft R Server 9.1 na HDInsight |HDInsight teď podporuje zřizování clustery R serveru 9.1 na HDInsight. |Služba |R Server |
 | Teď obsahuje novější verze do zásobníku Hadoop HDInsight 3.6|<ul><li>Podrobný seznam aktualizovaných verzí, naleznete v tématu [verze součástí Apache Hadoop v HDInsight k dispozici](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).</li><li>Seznam opravených v nejnovějších verzích do zásobníku Hadoop najdete v tématu [informace o opravě Apache](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Seznam rozbíjejících změn mezi HDP 2.6.1 (která je teď dostupná v HDInsight 3.6), najdete v části [ https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html ](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Seznam známých problémů v HDP 2.6.1 najdete v tématu [známé problémy](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Služba |Vše |neuvedeno |
 | Aktualizace pro clustery s interaktivním Hivem (Preview) |<ul><li><b>Zlepšení funkce.</b> Implementace v mezipaměti metastore, která snižuje zatížení na back-endu SQL díky ukládání do mezipaměti metadat a zvyšuje výkon pro všechny operace s metadaty.  Toto vylepšení je teď výchozí nastavení na všech clusterech Interactive Apache Hive. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>Zlepšení funkce.</b> Načítání dynamických oddílů je optimalizovaný. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>Zlepšení funkce.</b> Konfigurace optimalizace pro HDInsight v Linuxu.</li><li><b>Oprava chyby.</b> `CredentialProviderFactory$getProviders` není bezpečné pro vlákna. Tato chyba je opravená. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Oprava chyby.</b> Vysoké využití procesoru s ovladačem WASB `liststatus` výsledkem je špatné ATS výkon rozhraní API. Tato chyba je opravená. Další informace najdete na adrese [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Služba |Interaktivní Hive (Preview) |
 | Aktualizace pro clustery Hadoop |Templeton úlohy operace spolehlivost. Další informace najdete v tématu [https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) |Služba |Hadoop |

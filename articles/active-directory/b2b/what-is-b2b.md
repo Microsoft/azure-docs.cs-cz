@@ -1,5 +1,5 @@
 ---
-title: Co je spolupráce B2B v Azure Active Directory? | Dokumenty Microsoft
+title: Co je spolupráce B2B v Azure Active Directory? – Azure Active Directory | Dokumentace Microsoftu
 description: Spolupráce B2B v Azure Active Directory podporuje přístup uživatelů typu host, abyste mohli s externími partnery bezpečně sdílet prostředky a spolupracovat s nimi.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f787faceeb9c517ada124411e8090d0b91bd433f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fa36ab67957dcba7b5282e219706e442be9dc97
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182251"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674476"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 

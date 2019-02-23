@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7da97b763c532a2189ef058cbb8ffb14c5b150f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 56d0b8ced4a0eed3c2bf215ed0e5fc77c343f7fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968369"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728637"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -32,6 +32,8 @@ Tato příručka ukazuje, jak ověřování požadavků Azure Resource Manageru.
 > Proces zálohování a obnovení instance služby API Management pro zotavení po havárii lze použít také pro replikaci instance služby API Management pro scénáře, jako je pracovní.
 >
 > Každá záloha vyprší po 30 dnech. Pokud se pokusíte obnovit zálohu po vypršení doby platnosti 30 dnů, obnovení se nezdaří s `Cannot restore: backup expired` zprávy.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -207,7 +209,7 @@ Obnovení je dlouho běžící operace, která může trvat až 30 nebo více mi
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Operace zálohování a obnovení lze provést také pomocí Powershellu *Backup-AzureRmApiManagement* a *Restore-AzureRmApiManagement* příkazy v uvedeném pořadí.
+> Operace zálohování a obnovení lze provést také pomocí Powershellu *zálohování AzApiManagement* a *obnovení AzApiManagement* příkazy v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další postup
 

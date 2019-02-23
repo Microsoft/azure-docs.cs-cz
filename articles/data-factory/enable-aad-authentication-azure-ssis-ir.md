@@ -12,18 +12,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 2/19/2019
 ms.author: douglasl
-ms.openlocfilehash: b672264e1cb3cd415532cf4bcfbbd268afffa70d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 77ee2a0649d5c815fb68a4a40106455839030695
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415933"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671518"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS Integration Runtime
 
 V tomto článku se dozvíte, jak povolit ověřování Azure Active Directory (Azure AD) pomocí spravované identity pro váš Azure Data Factory (ADF) a používat ho místo ověřování systému SQL k vytvoření Azure-SSIS Integration Runtime (IR), pak vytvoříte služby SSIS databáze katalogu (SSISDB) v databázi Azure SQL server nebo spravované Instance vaším jménem.
 
-Další informace o spravované identity pro vaše ADF [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+Další informace o spravované identity pro vaše ADF [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
 > Pokud jste již vytvořili prostředí Azure-SSIS IR pomocí ověřování SQL, nelze změnit konfiguraci prostředí IR v tuto chvíli používat ověřování Azure AD pomocí Powershellu, ale můžete udělat v aplikaci Azure portal/ADF. 
@@ -57,7 +57,7 @@ Můžete použít existující skupinu Azure AD nebo vytvořit novou zásadu pom
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Přidáte spravovanou identitu pro vaši ADF do skupiny. Můžete postupovat podle článku [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID objektu zabezpečení IDENTITY služby (třeba 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale není pro tento účel použít ID aplikace IDENTITY služby).
+3.  Přidáte spravovanou identitu pro vaši ADF do skupiny. Můžete postupovat podle článku [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID objektu zabezpečení IDENTITY služby (třeba 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale není pro tento účel použít ID aplikace IDENTITY služby).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -167,7 +167,7 @@ Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio]
 
 4.  Klikněte pravým tlačítkem na **hlavní** databáze a vyberte **nový dotaz**.
 
-5.  Získejte spravovanou identitu pro vaši ADF. Můžete postupovat podle článku [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID aplikace IDENTITY objektu zabezpečení služby (ale nepoužívejte ID IDENTITY služby k tomuto účelu).
+5.  Získejte spravovanou identitu pro vaši ADF. Můžete postupovat podle článku [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID aplikace IDENTITY objektu zabezpečení služby (ale nepoužívejte ID IDENTITY služby k tomuto účelu).
 
 6.  V okně dotazu spusťte následující skript T-SQL k převodu spravovanou identitu pro vaši ADF na binární typ:
 

@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 9d0f751e8d0bc0275cc5fd2c47aaba7a6058931c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b579816a4367537a7da4aa0f68c8776465295448
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430784"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670748"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování pomocí agenta Microsoft Azure Recovery Services (MARS)
 
@@ -148,7 +148,7 @@ Azure Backup podporuje "offline předvyplnění" pro přenos počáteční zálo
 
 ## <a name="support-for-restore"></a>Podpora pro obnovení
 
-- Nové [okamžitá obnova](/backup-instant-restore-capability.md) verze služby Azure Backup umožňuje obnovení dat, než je zkopírován do trezoru.<br/><br/> Pomocí této funkce zálohovaný počítač musí být spuštěná rozhraní .NET Framework 4.5.2 nebo novější.
+- Nové [okamžitá obnova](backup-instant-restore-capability.md) verze služby Azure Backup umožňuje obnovení dat, než je zkopírován do trezoru.<br/><br/> Pomocí této funkce zálohovaný počítač musí být spuštěná rozhraní .NET Framework 4.5.2 nebo novější.
 - Zálohování není možné obnovit do cílového počítače starší verzí operačního systému. Například je možné obnovit zálohu z počítače Windows 7 v systému Windows 8 nebo novější. Nicméně zálohování provést z počítače se systémem Windows 8 nelze obnovit do počítače Windows 7.
 
 

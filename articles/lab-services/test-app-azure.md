@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814882"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730405"
 ---
 # <a name="test-your-app-in-azure"></a>Testování aplikace v Azure 
 Tento článek popisuje kroky pro testování vašich aplikací v Azure DevTest Labs pomocí. Nejprve nastavení sdílené složky v testovacím prostředí a připojit jako disk na svém místním vývojovém počítači a virtuálních počítačů v testovacím prostředí. Pak Nasaďte aplikaci do sdílené složky tak, aby aplikaci můžete spustit na virtuálním počítači v testovacím prostředí pomocí sady Visual Studio 2017.  
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky 
 1. [Předplatné Azure, vytvořte](https://azure.microsoft.com/free/) Pokud nemáte již účet máte a přihlaste se do [webu Azure portal](https://portal.azure.com).
@@ -56,7 +58,7 @@ Tento článek popisuje kroky pro testování vašich aplikací v Azure DevTest 
 
     ![Vyberte testovací virtuální počítač](media/test-app-in-azure/select-lab-vm.png)
 2. Vyberte **připojit** na panelu nástrojů pro připojení k virtuálnímu počítači. 
-3. [Nainstalovat Azure PowerShell](https://azure.microsoft.com/downloads/) pomocí **nainstalovat Windows** odkaz v **nástroje příkazového řádku** oddílu. Další způsoby instalace Azure Powershellu najdete v části [v tomto článku](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
+3. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/install-az-ps).
 4. Postupujte podle pokynů v připojení oddílu sdílené složky souboru. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Publikování aplikace ze sady Visual Studio

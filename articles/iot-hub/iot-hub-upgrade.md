@@ -2,18 +2,18 @@
 title: Upgrade služby Azure IoT Hub | Dokumentace Microsoftu
 description: Změňte úroveň cen a škálování pro službu IoT Hub získat další funkce pro správu zasílání zpráv a zařízení.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: e1342ed574d84ed5b4edd5060c2d6d3ec8bca1a8
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6f6cf6de9b1f12451bf28a9bd7fc7077c1c6b1cd
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003107"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673449"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Postup upgradu služby IoT hub
 
@@ -23,11 +23,11 @@ Pokud máte více zařízení a potřebujete další funkce, existují tři způ
 
 * Přidáte jednotky ve službě IoT hub. Například každá další jednotky v B1 IoT hub umožňuje další 400 000 zpráv denně. 
 * Změna velikosti služby IoT hub. Třeba migrate z vrstvy B1 do vrstvy B2 zvýšit počet zpráv, které může podporovat každá jednotka za den.
-* Upgrade na vyšší úroveň. Například upgradujte z úrovně B1 na úroveň S1 pro zasílání zpráv kapacitu, ale pomocí pokročilých funkcí, které jsou na úrovni standard.
+* Upgrade na vyšší úroveň. Například upgradujte z úrovně B1 na úroveň S1 pro přístup k pokročilým funkcím se stejným kapacitou zasílání zpráv.
 
 Tyto změny můžou nastat bez přerušení existující operace.
 
-Pokud chcete přejít na nižší verzi služby IoT hub, můžete odebrat jednotky a snížení velikosti služby IoT hub. Ale nemůžete přejít na nižší úroveň. Můžete například přesunout z vrstvy S2 pro úroveň S1, ale ne z vrstvy S2 na úroveň B1. Všimněte si také, že pouze jeden typ [edition](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně je možné zvolit jednotlivé služby IoT Hub. Můžete například vytvořit IoT Hub s více jednotek úrovně S1, ale ne s kombinaci jednotek z různých edicích, jako je například S1 a K3 nebo S1 a S2.
+Pokud chcete přejít na nižší verzi služby IoT hub, můžete odebrat jednotky a zmenšit velikost služby IoT hub, ale nemůžete přejít na nižší úroveň. Můžete například přesunout z vrstvy S2 pro úroveň S1, ale ne z vrstvy S2 na úroveň B1. Pouze jeden typ [edition](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně je možné zvolit jednotlivé služby IoT Hub. Můžete například vytvořit IoT Hub s více jednotek úrovně S1, ale ne s kombinaci jednotek z různých edicích, jako je například S1 a K3 nebo S1 a S2.
 
 Tyto příklady jsou určené k vám pomohou pochopit, jak nastavit službu IoT hub jako vaše změny v řešení. Konkrétní informace o jednotlivých úrovních funkce byste měli vždy použít [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/). 
 
@@ -40,12 +40,12 @@ Tyto příklady jsou určené k vám pomohou pochopit, jak nastavit službu IoT 
 
 3. Pokud chcete změnit úroveň pro vaše centrum, vyberte **úrovně cen a škálování**. Zvolte Nová úroveň a potom klikněte na tlačítko **vyberte**.
 
-   ![Ceny a škálování](./media/iot-hub-upgrade/select-tier.png)
+   ![Cenová úroveň a úroveň škálování](./media/iot-hub-upgrade/select-tier.png)
 
 4. Chcete-li změnit počet jednotek v centru, zadejte novou hodnotu v rámci **jednotek služby IoT Hub**. 
 5. Vyberte **Uložit** uložte provedené změny. 
 
-Služby IoT hub se nyní upraví a vaše konfigurace jsou beze změny. Všimněte si, že oddíl maximální limit pro úroveň basic služby IoT Hub je 8 a pro úroveň standard je 32. Většina centra IoT hub stačí jenom 4 oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. 
+Služby IoT hub se nyní upraví a vaše konfigurace jsou beze změny. Oddíl maximální limit pro úroveň basic služby IoT Hub je 8 a pro úroveň standard je 32. Většina centra IoT hub stačí jenom čtyři oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. 
 
 ## <a name="next-steps"></a>Další postup
 

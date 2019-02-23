@@ -1,6 +1,6 @@
 ---
-title: Kontroly přístupu pomocí služby Azure AD ke správě uživatelů, které jsou vyloučené ze zásad podmíněného přístupu | Dokumentace Microsoftu
-description: Použití Azure Active Directory ke správě uživatelů, kteří jsou ze zásad podmíněného přístupu vyloučené kontroly přístupu (Azure AD)
+title: Pomocí kontrol přístupu Azure AD ke správě uživatelů vyloučit ze zásad podmíněného přístupu | Dokumentace Microsoftu
+description: Zjistěte, jak pomocí kontrol přístupu Azure Active Directory (Azure AD) můžete spravovat uživatele, které jsou vyloučené ze zásad podmíněného přístupu
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82fdfe598e11415130950443fb0d3e27f5d9d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75ff08111e96fd4b210dfeb09db521856f4f5e52
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168536"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727498"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>Kontroly přístupu pomocí služby Azure AD ke správě uživatelů, které jsou vyloučené ze zásad podmíněného přístupu
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Kontroly přístupu Azure AD použijte ke správě uživatelů vyloučit ze zásad podmíněného přístupu
 
 Ideální světě, všemi uživateli proveďte následujícím způsobem přístup zásady zabezpečení přístupu k prostředkům vaší organizace. Někdy existují však obchodních případů, které vyžadují, abyste provedli výjimky. Tento článek popisuje některé příklady, kde může být vyžadováno vyloučení a jak můžete jako správce IT může spravovat tuto úlohu, vyhnout dohledu výjimky zásad a auditoři poskytnout důkaz, že tyto výjimky jsou kontrolovány pravidelně používáte Azure Kontroly přístupu Active Directory (Azure AD).
 
@@ -158,5 +158,5 @@ Jako správce IT víte, že správa vyloučení skupin do zásad je někdy nevyh
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření kontroly přístupu členů skupiny nebo přístupu k aplikacím v Azure AD](create-access-review.md)
+- [Vytvoření kontroly přístupu skupiny nebo aplikace](create-access-review.md)
 - [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

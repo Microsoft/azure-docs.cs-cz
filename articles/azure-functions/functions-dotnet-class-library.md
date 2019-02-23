@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 661cdddb4682d003b0c1149819a096a2a3756090
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994542"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728994"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -29,7 +29,7 @@ Služba Azure Functions podporuje C# a C# skript programovacích jazyků. Pokud 
 Tento článek předpokládá, že jste již přečíst následující články:
 
 * [Příručka pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions nástroje Visual Studio 2017](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2017 Tools](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Projekt knihovny tříd – funkce
 
@@ -50,7 +50,7 @@ Při sestavování projektu strukturu složek, který bude vypadat jako následu
  | - host.json
 ```
 
-Tento adresář je, co se nasadí do vaší aplikace funkcí v Azure. Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou [přidány do projektu jako balíčky NuGet](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017).
+Tento adresář je, co se nasadí do vaší aplikace funkcí v Azure. Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou [přidány do projektu jako balíčky NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2017).
 
 > [!IMPORTANT]
 > Vytvoří proces sestavení *function.json* souboru pro každou funkci. To *function.json* souboru neměl být upravován přímo. Nelze změnit konfiguraci vazby nebo zakázat funkci úpravou tohoto souboru. Zjistěte, jak zakázat funkce, najdete v článku [zakázání funkce](disable-function.md#functions-2x---c-class-libraries).
@@ -83,7 +83,7 @@ Podpis metody mohou obsahovat jiné parametry, než jaký se používá s atribu
 * [Vstupní a výstupní vazby](functions-triggers-bindings.md) jako takové označeny upravení s atributy.  
 * `ILogger` Nebo `TraceWriter` ([verzi 1.x – jen](functions-versions.md#creating-1x-apps)) pro parametr [protokolování](#logging).
 * A `CancellationToken` parametr pro [řádné vypnutí](#cancellation-tokens).
-* [Výrazy vazeb](functions-triggers-bindings.md#binding-expressions-and-patterns) aktivovat parametry se mají získat metadata.
+* [Výrazy vazeb](./functions-bindings-expressions-patterns.md) aktivovat parametry se mají získat metadata.
 
 Pořadí parametrů v signatuře funkce na nezáleží. Například parametry aktivační události můžete umístit před nebo po jiných vazbách a parametr protokolovacího nástroje můžete umístit před nebo za triggerem nebo vazbou parametry.
 
@@ -205,7 +205,7 @@ Každá vazba má svůj vlastní podporované typy; Například lze atribut akti
 
 ## <a name="binding-to-method-return-value"></a>Vytvoření vazby na návratovou hodnotu metody
 
-Návratová hodnota metody můžete použít pro výstupní vazby, použitím atributu na návratovou hodnotu metody. Příklady najdete v tématu [aktivačními událostmi a vazbami](functions-triggers-bindings.md#using-the-function-return-value). 
+Návratová hodnota metody můžete použít pro výstupní vazby, použitím atributu na návratovou hodnotu metody. Příklady najdete v tématu [aktivačními událostmi a vazbami](./functions-bindings-return-value.md). 
 
 Použijte návratovou hodnotu, pouze v případě, že výsledky spuštění úspěšné funkce, který je vždy v návratovou hodnotu pro předání do výstupní vazbu. Jinak použijte `ICollector` nebo `IAsyncCollector`, jak je znázorněno v následující části.
 
@@ -250,7 +250,7 @@ public static class SimpleExample
 
 Vyhněte se použití `Console.Write` ve službě Azure Functions. Další informace najdete v tématu [zápisu přihlásí C# funkce](functions-monitoring.md#write-logs-in-c-functions) v **monitorování Azure Functions** článku.
 
-## <a name="async"></a>asynchronní
+## <a name="async"></a>Async
 
 Provést funkci [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), použijte `async` – klíčové slovo a vraťte se `Task` objektu.
 

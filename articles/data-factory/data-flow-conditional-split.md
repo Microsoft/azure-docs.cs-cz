@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 9fe650465160ab837d8c8c191887d0f952976682
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a4ea79e05165dfae4f79aa6473a07151ba7c00fc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271666"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727804"
 ---
 # <a name="azure-data-factory-mapping-data-flow-conditional-split-transformation"></a>Azure Data Factory mapování transformace podmíněné rozdělení toku dat
 

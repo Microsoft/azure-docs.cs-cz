@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 488b97074d74650ecf5602d25e2a90a1998e5585
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8f8bdb4d601e35cf489c1c4c1db3574fb8c8f18f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883870"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730781"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizujte a analyzujte události z prostory vaší digitální dvojče Azure s využitím Time Series Insights
 
@@ -90,13 +90,13 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
       - UdfCustom
       connectionString: Primary_connection_string_for_your_event_hub
       secondaryConnectionString: Secondary_connection_string_for_your_event_hub
-      path: Name_of_your_Event_Hubs_namespace
+      path: Name_of_your_Event_Hub
     - type: EventHub
       eventTypes:
       - DeviceMessage
       connectionString: Primary_connection_string_for_your_event_hub
       secondaryConnectionString: Secondary_connection_string_for_your_event_hub
-      path: Name_of_your_Event_Hubs_namespace
+      path: Name_of_your_Event_Hub
     ```
 
 1. Nahraďte zástupné symboly `Primary_connection_string_for_your_event_hub` s hodnotou **připojovací řetězec – primární klíč** pro Centrum událostí. Ujistěte se, že formát tento připojovací řetězec vypadá takto:
@@ -111,7 +111,7 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Zástupné texty `Name_of_your_Event_Hubs_namespace` nahraďte názvem vašeho oboru názvů služby Event Hubs.
+1. Nahraďte zástupné symboly `Name_of_your_Event_Hub` s názvem vašeho centra událostí.
 
     > [!IMPORTANT]
     > Všechny hodnoty zadávejte bez uvozovek. Ujistěte se, že existuje alespoň jeden znak po dvojtečky v souboru YAML. Můžete také ověřit váš obsah souboru YAML pomocí jakékoli online validátoru YAML [tento nástroj](https://onlineyamltools.com/validate-yaml).

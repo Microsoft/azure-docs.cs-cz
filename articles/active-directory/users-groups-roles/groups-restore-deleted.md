@@ -1,72 +1,81 @@
 ---
 title: Obnovení odstraněné skupiny Office 365 v Azure AD | Microsoft Docs
-description: Jak v Azure Active Directory obnovit odstraněnou skupinu, zobrazit obnovitelné skupiny a trvale odstranit skupinu
+description: Jak obnovit odstraněné skupiny, zobrazení obnovitelné skupin a trvale odstranit skupinu v Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 08/28/2017
+ms.date: 02/21/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2e756676ee1abde88f75a1629640239f3162ea
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: cacd4a24becab1dfe797fe29aea125c016527192
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430637"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734383"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Obnovení odstraněné skupiny Office 365 v Azure Active Directory
-
 Když odstraníte skupinu Office 365 v Azure Active Directory (Azure AD), uchovává se tato odstraněná skupina po dobu 30 dnů od data odstranění, ale není viditelná. Je to kvůli tomu, abyste v případě potřeby mohli skupinu, včetně jejího obsahu, obnovit. Tato funkce je omezená výhradně pro skupiny Office 365 v Azure AD. Není dostupná pro skupiny zabezpečení a distribuční skupiny.
 
 > [!NOTE]
-> Nepoužívejte rutinu `Remove-MsolGroup`, protože tato rutina danou skupinu trvale vymaže. K odstranění skupiny O365 vždycky použijte rutinu `Remove-AzureADMSGroup`.
+> Nepoužívejte rutinu `Remove-MsolGroup`, protože tato rutina danou skupinu trvale vymaže. Vždy používejte `Remove-AzureADMSGroup` odstranit skupinu Office 365.
 
 K obnovení skupiny jsou potřebná některá z následujících oprávnění:
 
 Role | Oprávnění
 --------- | ---------
-Správce společnosti, podpora partnerů úrovně 2 a správci služby InTune | Můžou obnovit jakoukoli odstraněnou skupinu Office 365.
-Správce uživatelských účtů a podpora partnerů úrovně 1 | Můžou obnovit jakoukoli odstraněnou skupinu Office 365 kromě těch, které byly přiřazeny roli Správce společnosti.
+Správce společnosti, podpora partnerů úrovně 2 a správci služby Intune | Můžou obnovit jakoukoli odstraněnou skupinu Office 365.
+Správce uživatelských účtů a podpora partnerů úrovně 1 | Můžete obnovit všechny odstraněné skupiny Office 365 s výjimkou těchto skupin přiřazen k roli správce společnosti
 Uživatel | Můžou obnovit jakoukoli odstraněnou skupinu Office 365, kterou vlastnili.
 
+## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>Umožňuje zobrazit a spravovat odstraněné skupiny Office 365, které jsou k dispozici pro obnovení
 
-## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore"></a>Zobrazení odstraněných skupin Office 365, které lze obnovit
+1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) s účtem správce.
 
+2. Vyberte **skupiny**a pak vyberte **odstraněných skupin** zobrazíte odstraněné skupiny, které jsou k dispozici pro obnovení.
+
+    ![Okno odstraněné skupiny](media/groups-lifecycle/deleted-groups3.png)
+
+3. Na **odstraněných skupin** okně můžete:
+
+  - Obnovení odstraněné skupiny a její obsah tak, že vyberete **obnovení skupiny**.
+  - Trvale odebrat z odstraněné skupiny tak, že vyberete **trvale odstranit**. Pokud chcete trvale odebrat skupinu, musíte být správcem.
+
+## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>Zobrazit odstraněné skupiny Office 365, které jsou k dispozici pro obnovení pomocí prostředí Powershell
 K zobrazení odstraněných skupin a ověření, že ty, které vás zajímají, ještě nejsou trvale vymazané, můžete použít následující rutiny. Tyto rutiny jsou součástí [modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/). Další informace o tomto modulu najdete v článku [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 1.  Spuštěním následující rutiny zobrazíte všechny odstraněné skupiny Office 365 ve vašem tenantovi, které je ještě možné obnovit.
    
-  ```
-  Get-AzureADMSDeletedGroup
-  ```
+    ```
+    Get-AzureADMSDeletedGroup
+    ```
 
 2.  Pokud znáte identifikátor objectID konkrétní skupiny (a můžete ho získat z rutiny v kroku 1), můžete ověřit, že daná konkrétní rutina ještě není trvale vymazaná, také spuštěním následující rutiny.
-  
-  ```
-  Get-AzureADMSDeletedGroup –Id <objectId>
-  ```
 
-## <a name="how-to-restore-your-deleted-office-365-group"></a>Obnovení odstraněné skupiny Office 365
+    ```
+    Get-AzureADMSDeletedGroup –Id <objectId>
+    ```
+
+## <a name="how-to-restore-your-deleted-office-365-group-using-powershell"></a>Jak obnovit vaše odstraněné skupiny Office 365 pomocí Powershellu
 Když jste ověřili, že příslušnou skupinu je ještě možné obnovit, obnovte tuto odstraněnou skupinu některým z následujících postupů. Pokud daná skupina obsahuje dokumenty, weby SP nebo jiné trvalé objekty, může úplné obnovení této skupiny a jejího obsahu trvat až 24 hodin.
 
-1.  Obnovte danou skupinu a její obsah spuštěním následující rutiny.
+1. Obnovte danou skupinu a její obsah spuštěním následující rutiny.
  
- ```
- Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
- ``` 
+   ```
+    Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
+    ``` 
 
-Odstraněnou skupinu lze případně trvale odebrat spuštěním následující rutiny.
- ```
- Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
- ```
+2. Odstraněnou skupinu lze případně trvale odebrat spuštěním následující rutiny.
+    
+    ```
+    Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
+    ```
 
 ## <a name="how-do-you-know-this-worked"></a>Jak zjistíte, že obnovení bylo úspěšné?
 

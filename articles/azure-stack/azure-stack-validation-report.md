@@ -16,17 +16,17 @@ ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 1545fa3c1c94edc98e53b3579e5617a6bf16461c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0f6230dd3fe59e2aa34e358bfa9133f736d17f36
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238853"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732445"
 ---
 # <a name="azure-stack-validation-report"></a>Sestava ověření služby Azure Stack
 Použijte nástroj prerequisite Checker připravenosti Azure Stack spustit ověření, které podporují nasazení a údržby prostředí Azure Stack. Nástroj zapisuje výsledky do sestavy soubor .json. Sestava zobrazí podrobné a souhrnné údaje o stavu všech požadovaných součástí pro nasazení služby Azure Stack. Sestava také zobrazí informace o otočení tajné kódy pro existující nasazení Azure Stack.  
 
- ## <a name="where-to-find-the-report"></a>Kde najít sestavy
+## <a name="where-to-find-the-report"></a>Kde najít sestavy
 Když je nástroj spuštěn, zaznamená výsledky do **AzsReadinessCheckerReport.json**. Nástroj také vytvoří protokol s názvem **AzsReadinessChecker.log**. Umístění těchto souborů se zobrazí s výsledky ověření v prostředí PowerShell.
 
 ![spustit ověření](./media/azure-stack-validation-report/validation.png)

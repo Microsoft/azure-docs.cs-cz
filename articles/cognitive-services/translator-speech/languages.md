@@ -10,18 +10,19 @@ ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 482968af53694f7d40a7077435d33a83884c8808
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873038"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673693"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Jazyky podporované rozhraní Translator Speech API
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Pro překlad řeči se podporují tyto jazyky. Pokud oba jazyky jsou podporovány pro překlad řeči, převod řeči na řeč a převod řeči na text je k dispozici. Pokud cílový jazyk není podporován pro překlad řeči, je k dispozici pouze převod řeči na text překladu. 
+Pro překlad řeči se podporují tyto jazyky. Pokud oba jazyky jsou podporovány pro překlad řeči, převod řeči na řeč a převod řeči na text je k dispozici. Pokud cílový jazyk není podporován pro překlad řeči, je k dispozici pouze převod řeči na text překladu.
 
 | Rozpoznávání řeči, jazyka    |
 |:----------- |
@@ -34,9 +35,9 @@ Pro překlad řeči se podporují tyto jazyky. Pokud oba jazyky jsou podporován
 | Japonština      |
 | Portugalština (Brazílie)     |
 | ruština      |
-| Španělština      | 
+| Španělština      |
 
-Translator Speech API podporuje následující jazyky jako cílový jazyk pro převod řeči na text překladu. 
+Translator Speech API podporuje následující jazyky jako cílový jazyk pro převod řeči na text překladu.
 
 | Jazyk textu    | Kód jazyka |
 |:----------- |:-------------:|
@@ -47,7 +48,7 @@ Translator Speech API podporuje následující jazyky jako cílový jazyk pro p�
 | Bulharština      | `bg`          |
 | Kantonština (tradiční)      | `yue`          |
 | Katalánština      | `ca`          |
-| Zjednodušená čínština      | `zh-Hans`          | 
+| Zjednodušená čínština      | `zh-Hans`          |
 | Tradiční čínština      | `zh-Hant`          |
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
@@ -116,4 +117,4 @@ Prostředek jazyky vrátí seznam podporovaných jazyků pro řeč, text a přev
 
 Pro rychlý přehled jazyků na webu Microsoft Translatoru zobrazí všechny jazyky podporované Translator Text API a rozhraní API pro rozpoznávání řeči. Tento seznam nezahrnuje informace specifické pro vývojáře, jako je jazyk kódy.
 
-[Zobrazit seznam jazyků](https://www.microsoft.com/translator/languages.aspx) 
+[Zobrazit seznam jazyků](https://www.microsoft.com/translator/languages.aspx)

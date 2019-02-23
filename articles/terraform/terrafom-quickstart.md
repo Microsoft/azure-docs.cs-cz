@@ -7,16 +7,16 @@ ms.service: terraform
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: 408e07e9b6214dbd223bd4ec7959b00ecc414f1e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869173"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736919"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Vytvoření konfigurace Terraformu pro Azure
 
-V tomto příkladu získáte prostředí při vytváření konfigurace Terraformu a tato konfigurace se nasazuje do Azure. Po dokončení jste nasadili, instance služby Azure Cosmos DB, Azure Container Instances a aplikace, která funguje napříč tyto dva prostředky. Tento dokument předpokládá, že je ve službě Azure Cloud Shell, který má předinstalované nástroje Terraformu dokončena veškerá práce. Pokud chcete pro seznámení se základními v příkladu na svém vlastním systému, Terraform, můžete ho nainstalovat pomocí pokynů uvedených [tady](../virtual-machines/linux/terraform-install-configure.md).
+V tomto příkladu získáte prostředí při vytváření konfigurace Terraformu a tato konfigurace se nasazuje do Azure. Po dokončení jste nasadili, instance služby Azure Cosmos DB, Azure Container Instance a aplikace, která funguje napříč tyto dva prostředky. Tento dokument předpokládá, že je ve službě Azure Cloud Shell, který má předinstalované nástroje Terraformu dokončena veškerá práce. Pokud chcete pro seznámení se základními v příkladu na svém vlastním systému, Terraform, můžete ho nainstalovat pomocí pokynů uvedených [tady](../virtual-machines/linux/terraform-install-configure.md).
 
 ## <a name="create-first-configuration"></a>Vytvoření první konfigurace
 
@@ -93,7 +93,7 @@ Aktualizujte konfiguraci zahrnout Instance kontejneru Azure. Kontejner spustí a
 
 Zkopírujte následující konfiguraci k dolnímu okraji `main.tf` souboru. Po dokončení soubor uložte.
 
-Dvě proměnné prostředí jsou nastaveny, `COSMOS_DB_ENDPOINT` a `COSMOS_DB_MASTERKEY`. Tyto proměnné podržte umístění a klíče pro přístup k databázi. Hodnoty pro tyto proměnné jsou získávány z instance databáze vytvořené v předchozím kroku. Tento proces se nazývá interpolace. Další informace o Terraformu umožňuje stručně popsat, naleznete v tématu [interpolace syntaxe](https://www.terraform.io/docs/configuration/interpolation.html).
+Dvě proměnné prostředí jsou nastaveny, `COSMOS_DB_ENDPOINT` a `COSMOS_DB_MASTERKEY`. Tyto proměnné podržte umístění a klíče pro přístup k databázi. Hodnoty pro tyto proměnné jsou získávány z instance databáze vytvořené v předchozím kroku. Tento proces se označuje jako interpolace. Další informace o Terraformu umožňuje stručně popsat, naleznete v tématu [interpolace syntaxe](https://www.terraform.io/docs/configuration/interpolation.html).
 
 
 Konfigurace zahrnuje také výstupního bloku, které vrací plně kvalifikovaný název domény (FQDN) instanci kontejneru.

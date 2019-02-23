@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c8cfa0174d3e3300bdc3cfbc68ca416d9b736300
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210374"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674901"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -122,13 +122,13 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |AppDiagnosticStoreAccessRequiresImpersonation |Logická hodnota, výchozí hodnota je true | Dynamická |Určuje, jestli je potřeba zosobnění, při přístupu k diagnostiky ukládá jménem aplikace. |
 |AppEtwTraceDeletionAgeInDays |Int, výchozí hodnota je 3 | Dynamická |Počet dní, po jejichž uplynutí jsme odstranit staré soubory ETL trasování událostí pro Windows trasování aplikací obsahující. |
 |ApplicationLogsFormatVersion |int, výchozí je 0 | Dynamická |Verze aplikace protokoluje formátu. Podporované hodnoty jsou 0 a 1. Verze 1 obsahuje více polí ze záznamu události trasování událostí pro Windows než verze 0. |
-|ClusterId |Řetězec | Dynamická |Jedinečné id clusteru. Tím se vygeneruje, když se cluster vytvoří. |
-|ConsumerInstances |Řetězec | Dynamická |Seznam instancí DCA příjemce. |
+|ClusterId |String | Dynamická |Jedinečné id clusteru. Tím se vygeneruje, když se cluster vytvoří. |
+|ConsumerInstances |String | Dynamická |Seznam instancí DCA příjemce. |
 |DiskFullSafetySpaceInMB |Int, výchozí hodnota je 1024 | Dynamická |Zbývající místo na disku v MB k ochraně před používá DCA. |
 |EnableCircularTraceSession |Logická hodnota, výchozí hodnota je false | Statická |Příznak určuje, zda má být použita cyklické trasování relace. |
 |EnableTelemetry |Logická hodnota, výchozí hodnota je true | Dynamická |Tím vytvořím k zapnutí nebo vypnutí telemetrie. |
 |MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamická |Disková kvóta v MB pro Windows Fabric protokolových souborech. |
-|ProducerInstances |Řetězec | Dynamická |Seznam instancí DCA výrobce. |
+|ProducerInstances |String | Dynamická |Seznam instancí DCA výrobce. |
 
 ## <a name="dnsservice"></a>DnsService
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
@@ -280,7 +280,8 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="healthmanager"></a>HealthManager
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| EnableApplicationTypeHealthEvaluation |Logická hodnota, výchozí hodnota je false |Statická|Zásady pro vyhodnocení stavu clusteru: Povolit za vyhodnocování stavu typu aplikace. |
+|EnableApplicationTypeHealthEvaluation |Logická hodnota, výchozí hodnota je false |Statická|Zásady pro vyhodnocení stavu clusteru: Povolit za vyhodnocování stavu typu aplikace. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, výchozí hodnota je 500 |Dynamická|Maximální počet stavů hlásí, že entita může mít před vyvoláním obavy týkající sledovacího zařízení stav logiky generování sestav. Každá entita stavu by měl mít relativně malý počet sestav o stavu. Pokud sestava počet překročí tento počet; mohou nastat problémy s implementací sledovacího zařízení. Entita se příliš mnoho sestav je označen jako prostřednictvím sestava stavu upozornění, při vyhodnocování entity. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -451,7 +452,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Čítače |Řetězec | Dynamická |Čárkami oddělený seznam čítačů výkonu k získání. |
+|Čítače |String | Dynamická |Čárkami oddělený seznam čítačů výkonu k získání. |
 |IsEnabled |Logická hodnota, výchozí hodnota je true | Dynamická |Příznak určuje, zda je povoleno shromažďování čítačů výkonu na místní uzel wsfc. |
 |MaxCounterBinaryFileSizeInMB |int, výchozí je 1 | Dynamická |Maximální velikost (v MB) pro každý soubor binární čítače výkonu. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, výchozí hodnota je 10 | Dynamická |Maximální interval (v sekundách) po kterém se vytvoří nový soubor binární čítače výkonu. |
@@ -756,10 +757,10 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | --- | --- | --- | --- |
 |ContainerNetworkName|řetězec, výchozí hodnota je ""| Statická |Název sítě pro použití při vytváření kontejneru sítě.|
 |ContainerNetworkSetup|Logická hodnota, výchozí hodnotu FALSE| Statická |Určuje, zda nastavení sítě kontejneru.|
-|FabricDataRoot |Řetězec | Nepovolené |Service Fabric data kořenový adresář. Výchozí pro Azure je d:\svcfab |
-|FabricLogRoot |Řetězec | Nepovolené |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
+|FabricDataRoot |String | Nepovolené |Service Fabric data kořenový adresář. Výchozí pro Azure je d:\svcfab |
+|FabricLogRoot |String | Nepovolené |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
 |NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamická |Uzly, které byste měli odebrat jako součást konfigurace upgradu. (Pouze pro samostatné nasazení)|
-|ServiceRunAsAccountName |Řetězec | Nepovolené |Název účtu, pod kterým chcete spustit service fabric hostitele. |
+|ServiceRunAsAccountName |String | Nepovolené |Název účtu, pod kterým chcete spustit service fabric hostitele. |
 |SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Nepovoleno|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
 |SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false | Nepovolené |Určuje, pokud nastavení brány firewall, který je potřeba nastavit v systému nebo ne. To platí jenom v případě, že používáte bránu windows firewall. Pokud používáte brány firewall třetích stran, pak je nutné otevřít porty pro systém a aplikace, aby používaly |
 

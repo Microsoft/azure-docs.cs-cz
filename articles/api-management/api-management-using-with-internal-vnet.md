@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 21175e74bd40d0d4aeaf1c0a1e677f1c8113e80a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446498"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738007"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -67,11 +67,14 @@ Po úspěšném nasazení, měli byste vidět interní virtuální IP adresa slu
 > K dispozici na webu Azure Portal testovací konzole nebude fungovat pro **interní** virtuální sítě nasadili službu, protože adresa Url brány není registrovaný ve veřejném DNS. Je vhodné použít testovací konzole k dispozici na **portál pro vývojáře**.
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Povolit připojení k virtuální síti pomocí rutin prostředí PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Můžete také povolit připojení k virtuální síti pomocí rutin prostředí PowerShell.
 
-* Vytvoření služby API Management ve virtuální síti: použijte rutinu [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) k vytvoření služby Azure API Management ve virtuální síti a nakonfigurujte ho na použití typu interní virtuální síti.
+* Vytvoření služby API Management ve virtuální síti: Použijte rutinu [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) k vytvoření služby Azure API Management ve virtuální síti a nakonfigurujte ho na použití typu interní virtuální síti.
 
-* Nasazení ve virtuální síti existující službu API Management: použijte rutinu [aktualizace AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) přesunout existující službu API Management ve virtuální síti a nakonfigurujte ho na interní použití typ virtuální sítě.
+* Nasazení ve virtuální síti existující službu API Management: Použijte rutinu [aktualizace AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) přesunout existující službu API Management ve virtuální síti a nakonfigurujte ho na použití typu interní virtuální síti.
 
 ## <a name="apim-dns-configuration"></a>Konfigurace služby DNS
 Když služba API Management je v režimu externí virtuální síť, DNS spravuje Azure. U režimu interní virtuální síti budete muset spravovat své vlastní směrování.

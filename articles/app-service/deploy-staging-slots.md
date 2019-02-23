@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 17b1adae9b369df53d69949e8183cf31daf7e35f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181418"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674680"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -205,7 +205,9 @@ Při použití [Auto-Swap](#Auto-Swap), některé aplikace mohou vyžadovat akce
         </applicationInitialization>
     </system.webServer>
 
-Můžete také přizpůsobit chování zahřívání s jednou nebo více z následujících [nastavení aplikace](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md):
+Další informace o přizpůsobení `applicationInitialization` prvku, naleznete v tématu [nejběžnějších selhání prohození slotu nasazení a jak je opravit](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+
+Můžete také přizpůsobit chování zahřívání s jednou nebo více z následujících [nastavení aplikace](web-sites-configure.md):
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Cesta k odeslání příkazu ping trvala Příprava na váš web. Přidáte nastavení aplikace tak, že zadáte vlastní cestu, která začíná s lomítkem, jako hodnotu. Například, `/statuscheck`. Výchozí hodnota je `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Platný kódy odpovědí protokolu HTTP pro operace zahřívání. Přidáte nastavení aplikace s čárkou oddělený seznam kódů HTTP. Příklad: `200,202` . Pokud vrácený kód stavu není v seznamu, zastaví se zahřívání a přepnutí operace. Ve výchozím nastavení všechny kódy odpovědí jsou platné.

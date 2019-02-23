@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f9a6511d63e57c6cbfa5ee2453f8038bb259047
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b35707b857c66f0f1b91f2f1b5dd7a0ffa24dd9e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428988"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733754"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -21,6 +21,7 @@ Důležitou součástí řešení služby Analysis Services je monitorování, j
 
 ![Protokolování diagnostiky pro protokoly úložiště služby Event Hubs a Azure Monitor](./media/analysis-services-logging/aas-logging-overview.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-logged"></a>Co je protokolováno?
 
@@ -103,7 +104,7 @@ Chcete-li povolit protokolování pomocí prostředí PowerShell Diagnostika a m
 - Pokud chcete povolit úložiště pro diagnostické protokoly v účtu úložiště, použijte tento příkaz:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
    ID účtu úložiště je ID prostředku účtu úložiště, ve které chcete odeslat protokoly.
@@ -111,7 +112,7 @@ Chcete-li povolit protokolování pomocí prostředí PowerShell Diagnostika a m
 - Pokud chcete povolit streamování protokolů diagnostiky do centra událostí, použijte tento příkaz:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
    ID pravidla služby Azure Service Bus je řetězec v tomto formátu:
@@ -123,13 +124,13 @@ Chcete-li povolit protokolování pomocí prostředí PowerShell Diagnostika a m
 - Povolení odesílání protokolů diagnostiky k pracovnímu prostoru Log Analytics, použijte tento příkaz:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
 - ID prostředku pracovního prostoru Log Analytics můžete získat pomocí následujícího příkazu:
 
    ```powershell
-   (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+   (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
 Tyto parametry pro povolení více možností výstupu můžete kombinovat.
@@ -187,7 +188,7 @@ Existují stovky dotazy, které můžete použít. Další informace o dotazech 
 
 ## <a name="turn-on-logging-by-using-powershell"></a>Zapnutí protokolování s využitím Powershellu
 
-V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako váš server Analysis Service. Pak pomocí Set-AzureRmDiagnosticSetting zapnete diagnostiku protokolování, odesílání výstupu pro nový účet úložiště.
+V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako váš server Analysis Service. Pak použijete sadu AzDiagnosticSetting zapnete diagnostiku protokolování, odesílání výstupu pro nový účet úložiště.
 
 ### <a name="prerequisites"></a>Požadavky
 K dokončení tohoto kurzu musíte mít následující prostředky:
@@ -199,7 +200,7 @@ K dokončení tohoto kurzu musíte mít následující prostředky:
 Spusťte relaci Azure PowerShellu a přihlaste se k účtu Azure pomocí následujícího příkazu:  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Azure PowerShell získá všechna předplatná přidružená k tomuto účtu a ve výchozím nastavení použije první předplatné.
@@ -207,13 +208,13 @@ V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno
 Máte-li více předplatných, možná budete muset zadat předplatné, které jste použili pro vytvoření Azure Key Vault. Chcete-li zobrazit předplatná vašeho účtu, zadejte následující:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Chcete-li specifikovat předplatné přidružené k účtu služby Azure Analysis Services, které se přihlašujete, zadejte:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -228,7 +229,7 @@ Pro svoje protokoly můžete použít existující účet úložiště, pokud je
 Rovněž použijte stejnou skupinu prostředků jako ten, který obsahuje váš server Analysis Services. Nahraďte hodnoty `awsales_resgroup`, `awsaleslogs`, a `West Central US` vlastními hodnotami:
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
+$sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 -Name awsaleslogs -Type Standard_LRS -Location 'West Central US'
 ```
 
@@ -237,16 +238,16 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
 Nastavte název účtu do proměnné s názvem **účet**, kde ResourceName je název účtu.
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName awsales_resgroup `
+$account = Get-AzResource -ResourceGroupName awsales_resgroup `
 -ResourceName awsales -ResourceType "Microsoft.AnalysisServices/servers"
 ```
 
 ### <a name="enable-logging"></a>Povolit protokolování
 
-Povolit protokolování, použijte rutinu Set-AzureRmDiagnosticSetting spolu s proměnnými pro nový účet úložiště, účet serveru a kategorii. Spuštěním následujícího příkazu nastavení **-povoleno** příznak **$true**:
+Povolení protokolování, použijte rutinu Set-AzDiagnosticSetting spolu s proměnnými pro nový účet úložiště, účet serveru a kategorii. Spuštěním následujícího příkazu nastavení **-povoleno** příznak **$true**:
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
 ```
 
 Výstup by měl vypadat přibližně jako v tomto příkladu:
@@ -293,7 +294,7 @@ Tento výstup potvrzuje, že je nyní povoleno protokolování pro server uklád
 Můžete také nastavit zásady uchovávání informací pro svoje protokoly, tak starší protokoly automaticky odstraněny. Například nastavení zásad uchovávání informací pomocí **- RetentionEnabled** příznak **$true**a nastavte **- RetentionInDays** parametr **90**. Protokoly starší než 90 dnů automaticky odstraněny.
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories Engine`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -302,4 +303,4 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 
 Další informace o [protokolování diagnostiky prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-Zobrazit [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/Set-AzureRmDiagnosticSetting) v nápovědě k prostředí PowerShell.
+Zobrazit [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/Set-azDiagnosticSetting) v nápovědě k prostředí PowerShell.

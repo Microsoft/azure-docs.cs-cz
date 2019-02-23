@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/10/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 3b6daa60e8c8945d49170a00da5bd3ffb57b48ac
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000110"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733295"
 ---
 # <a name="manage-multiple-tenants"></a>Správa několika klientů
 
@@ -56,7 +56,7 @@ Pomocí této možnosti můžete sdílené nebo samostatný mezi tenanty filtrov
 
 Když [nahrávání videí](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), můžete určit atribut jiný oddíl každého tenanta. To vám umožní izolace v [hledání rozhraní API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Zadáním atributu oddílu v rozhraní API pro vyhledávání získáte jenom výsledky zadaný oddíl. 
 
- ### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Požadavky
 
 * Možnost sdílení obsahu a přizpůsobení modelů mezi tenanty.
 * Jeden tenant má vliv na výkon jiných klientů.

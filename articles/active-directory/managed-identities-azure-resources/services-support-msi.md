@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa25d2e0fe4700eab69d383d1ec8b57fca86bd4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d7b030794017f29b56b51b106ebd6be485620b50
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201546"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671008"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -107,10 +107,10 @@ Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | A
 
 Najdete v následujícím seznamu ke konfiguraci spravovaných identit pro Azure Data Factory verze 2 (v oblastech dostupné):
 
-- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)
-- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)
-- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)
-- [Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk)
+- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
+- [Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-api-management"></a>Azure API Management
 

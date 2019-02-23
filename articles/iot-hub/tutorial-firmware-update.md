@@ -9,15 +9,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
+ms.date: 02/22/2019
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 20891b0d73783c9b68a42ecfed130e377b6f8eab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c387a7c10b962cfd27a7563c00ce58f58e97b9d5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729808"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671824"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementujte proces aktualizace firmwaru zařízení
 
@@ -94,7 +94,8 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ```
 
-Pokud tyto příkazy spouštíte na příkazovém řádku Windows nebo Powershellu, přečtěte si informace o uvozování řetězců JSON na stránce s [tipy pro azure-iot-cli-extension](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
+> [!TIP]
+> Pokud tyto příkazy spouštíte na příkazovém řádku Windows nebo Powershellu, přečtěte si informace o uvozování řetězců JSON na stránce s [tipy pro azure-iot-cli-extension](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
 ).
 
 ## <a name="start-the-firmware-update"></a>Spuštění aktualizace firmwaru
@@ -205,7 +206,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. V dalším kurzu zjistíte, jak pomocí nástrojů portálu Azure IoT Hub a příkazů Azure CLI otestovat připojení zařízení.
+V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejděte k dalšímu kurzu, kde se naučíte, jak použít nástroje na portálu Azure IoT Hub a příkazy rozhraní příkazového řádku Azure k testování připojení zařízení.
 
 > [!div class="nextstepaction"]
 [Použití simulovaného zařízení pro otestování připojení k IoT Hubu](tutorial-connectivity.md)

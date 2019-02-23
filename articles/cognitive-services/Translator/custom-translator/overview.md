@@ -6,21 +6,21 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: 852a16f14466d91a0ebfaadb83c674253d0ea15e
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: c3f8d06cf68714f3a8abc203421ae3ff9b533ca6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587748"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737803"
 ---
 # <a name="what-is-custom-translator"></a>Co je Custom Translator?
 
 [Vlastní Translator](https://portal.customtranslator.azure.ai) je funkce služby Microsoft Translator, který umožňuje podnikům Translator, vývojáři aplikací a poskytovatelé služeb jazyka vytvářet přizpůsobené systémy pro strojový překlad neuronových (sítí NMT). Přizpůsobených překladových systémů bez problémů integrovat do stávajících aplikací, pracovní postupy a websites. [Vlastní Translator](https://portal.customtranslator.azure.ai/) nabízí podobné funkce pro co [Microsoft Translator Hub](https://hub.microsofttranslator.com/) nemá pro statistické strojový překlad (SMT), ale výhradně pro Neurální strojový překlad sítí (NMT) systémy.
 
-Sestavován systémů překladu [vlastní Translator](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejné založené na cloudu [zabezpečené](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), vysoký výkon, vysoce škálovatelné Microsoft Translatoru [Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), která využívá miliardy překlady každý den. 
+Sestavován systémů překladu [vlastní Translator](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejné založené na cloudu [zabezpečené](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), vysoký výkon, vysoce škálovatelné Microsoft Translatoru [Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), která využívá miliardy překlady každý den.
 
 Vlastní Translator podporuje více než tři deseti jazycích a mapuje přímo na jazyky dostupné pro NMT. Úplný seznam najdete v tématu [jazyky Microsoft Translatoru](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
@@ -48,7 +48,7 @@ Pokud je zadán odpovídající typ a velikost trénovacích dat, není nic neob
 
 ## <a name="be-productive-and-cost-effective"></a>Produktivitu a nákladově efektivní
 
-S [vlastní Translator](https://portal.customtranslator.azure.ai), školení a nasazení vlastních systému nevyžaduje žádné znalosti programování. 
+S [vlastní Translator](https://portal.customtranslator.azure.ai), školení a nasazení vlastních systému nevyžaduje žádné znalosti programování.
 
 Používat zabezpečená [vlastní Translator](https://portal.customtranslator.azure.ai) portálu, uživatelé mohou nahrát trénovacích dat, trénování systémy, testovací systémy a jejich nasazení do produkčního prostředí prostřednictvím intuitivního uživatelského rozhraní. Systém pak bude k dispozici pro použití ve velkém měřítku během několika hodin (skutečná doba závisí na školení velikost dat).
 

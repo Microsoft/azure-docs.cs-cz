@@ -6,15 +6,15 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745805"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674495"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k službě IoT hub
 
@@ -122,7 +122,7 @@ Tentokrát se poté, co se aplikace pokusí o připojení, zobrazí chyba ověř
 
 Pokud zařízení používá některou ze sad SDK pro zařízení centra IoT Hub, vygeneruje kód knihovny SDK token SAS potřebný k ověření u centra. Token SAS se generuje z názvu centra, názvu zařízení a klíče zařízení.
 
-V některých scénářích, například v cloudové bráně protokolu nebo v rámci schématu vlastního ověřování, může být nutné, abyste token SAS vygenerovali sami. Při řešení problémů s generováním kódu SAS je užitečné, když jste schopni vytvořit známý funkční token SAS k použití při testování.
+V některých scénářích, například v cloudové bráně protokolu nebo v rámci schématu vlastního ověřování, může být nutné, abyste token SAS vygenerovali sami. Řešení potíží s vaším kódem generování SAS, je užitečné k vygenerování tokenu SAS známého úspěšného použití během testování.
 
 > [!NOTE]
 > Ukázka SimulatedDevice-2.js zahrnuje příklady generování tokenu SAS se sadou SDK i bez ní.
@@ -133,7 +133,7 @@ Známý funkční token SAS vygenerujete v rozhraní příkazového řádku nás
 az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-Poznamenejte si úplný text vygenerovaného tokenu SAS. Token SAS bude vypadat přibližně takto: `'SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307'`
+Poznamenejte si úplný text vygenerovaného tokenu SAS. Token SAS bude vypadat přibližně takto: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
 V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Pak přejděte do složky **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
 
@@ -189,13 +189,9 @@ V okně terminálu se během odesílání telemetrie do centra IoT budou zobrazo
 
 ![Simulované zařízení odesílá zprávy](media/tutorial-connectivity/sim-3-sending.png)
 
-V části **Metrics** (Metriky) na portálu můžete ověřit, zda telemetrické zprávy přicházejí do centra IoT:
+Můžete použít **metriky** portálu k ověření, že telemetrické zprávy jsou tam dostupné pro službu IoT hub. Vyberte centrum IoT v rozevíracím seznamu **Resource** (Prostředek), vyberte metriku **Telemetry messages sent** (Odeslané telemetrické zprávy) a časové rozmezí nastavte na **Past hour** (Poslední hodina). Graf zobrazuje agregovaný počet zpráv odeslaných simulovaným zařízením:
 
-![Přechod k metrikám služby IoT Hub](media/tutorial-connectivity/metrics-portal.png)
-
-Vyberte centrum IoT v rozevíracím seznamu **Resource** (Prostředek), vyberte metriku **Telemetry messages sent** (Odeslané telemetrické zprávy) a časové rozmezí nastavte na **Past hour** (Poslední hodina). Graf zobrazuje agregovaný počet zpráv odeslaných simulovaným zařízením:
-
-![Zobrazení metrik služby IoT Hub](media/tutorial-connectivity/metrics-active.png)
+![Zobrazení metrik služby IoT Hub](media/tutorial-connectivity/metrics-portal.png)
 
 Po spuštění simulovaného zařízení několik minut trvá, než jsou metriky k dispozici.
 

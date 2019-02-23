@@ -5,15 +5,15 @@ services: iot-hub
 ms.service: iot-hub
 author: dominicbetts
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 02/17/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 69fdc6cf678107ef64ea1fe7b819738fd4a4ff4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096382"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56740836"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>Přizpůsobení a rozšíření akce správy zařízení
 
@@ -27,10 +27,6 @@ Obvykle konfigurace zařízení k provádění akcí po jednom, které minimaliz
 
 V tomto kurzu jste použili přímé metody k aktivaci vzdálené restartování zařízení. Používají ohlášené vlastnosti k hlášení poslední čas restartování ze zařízení a dotazování dvojčat zařízení ke zjištění poslední čas restartování zařízení z cloudu.
 
-Chcete-li pokračovat v seznamování se službou IoT Hub a schémata správy zařízení jako vzdálené přes aktualizace firmwaru air, naleznete v tématu:
+Chcete-li pokračovat v seznamování se službou IoT Hub a schémata správy zařízení jako vzdálené přes aktualizace firmwaru air, přečtěte si téma [jak provést upgrade firmwaru](../articles/iot-hub/tutorial-firmware-update.md)
 
-[Kurz: Jak provést upgrade firmwaru](../articles/iot-hub/tutorial-firmware-update.md)
-
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md) kurzu.
-
-Chcete-li pokračovat v seznamování se službou IoT Hub, přečtěte si téma [Začínáme s IoT Edge](../articles/iot-edge/tutorial-simulate-device-linux.md).
+Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md).

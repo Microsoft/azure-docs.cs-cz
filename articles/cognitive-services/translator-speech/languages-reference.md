@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
-ms.date: 05/18/18
+ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 12f989137c3aea57bdcde0d50315ad157898cd28
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 111adad627ffd830d69efc61bc7a06a99fee30f3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862747"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673320"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
@@ -27,7 +28,7 @@ Ukázky kódu pro demonstraci použití rozhraní API za účelem získání dos
 
 ## <a name="implementation-notes"></a>Poznámky k implementaci
 
-### <a name="get-languages"></a>ZÍSKAT /languages 
+### <a name="get-languages"></a>ZÍSKAT /languages
 
 Široké škále jazycích je k dispozici pro zpracování řeči, můžete přeložit text přepisu a k vytvoření řečového překladu přepisy.
 
@@ -125,7 +126,7 @@ Tato služba vrátí všechny názvy v jazyce, který hlavičku 'Accept-Language
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 Objekt, který popisuje sadu podporované jazyky.
 
-Hodnota ModelExample: 
+Hodnota ModelExample:
 
 Langagues {řeči (object, volitelné), text (object, volitelné), převod textu na řeč (object, volitelné)}
 
@@ -143,7 +144,7 @@ X-RequestId|Hodnota generován serverem k identifikaci žádosti a používá pr
 |scope  |Nastaví podporované jazyky nebo hlasy vrácena klientovi. Tento parametr zadán jako čárkou oddělený seznam klíčových slov. Následující klíčová slova jsou k dispozici:<ul><li>`speech`: Poskytuje sadu jazyky podporované pro přepisy řeči.</li><li>`tts`: Poskytuje sadu podporuje pro převod textu na řeč.</li><li>`text`: Poskytuje sadu jazyky podporované pro překlad textu.</li></ul>Pokud není zadána hodnota, hodnota `scope` výchozí hodnota je `text`.|query|řetězec|
 |X-ClientTraceId    |Identifikátor GUID klientem generovaná použít ke sledování požadavku. Usnadňuje řešení potíží se musí klienti zadejte novou hodnotu s každou žádostí a zaznamenejte ho.|záhlaví|řetězec|
 |Přijměte jazyka    |Některá pole v odpovědi jsou názvy jazyků nebo oblastech. Použijte tento parametr se definuje jazyk, ve kterém se vrátí názvy. Jazyk je zadán zadáním značky jazyka ve správném formátu BCP 47. Vyberte značku ze seznamu identifikátorů jazyka se vrátil s `text` oboru. U nepodporovaných jazyků názvy jsou k dispozici v angličtině.<br/>Například použijte hodnotu `fr` žádosti názvy ve francouzštině, nebo použijte hodnotu `zh-Hant` požadavek názvy v tradiční čínštině.|záhlaví|řetězec|
-    
+
 ### <a name="response-messages"></a>Zprávy odpovědi
 
 |Kód stavu HTTP|Důvod|

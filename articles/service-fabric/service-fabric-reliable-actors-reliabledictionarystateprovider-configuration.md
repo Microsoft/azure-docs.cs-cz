@@ -7,19 +7,19 @@ author: sumukhs
 manager: timlt
 editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 13cf9c148e36201bd8ee81d4072d8b8cd8660bd1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 186305083d3e952d87a67b890a88e52eacc2b361
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053144"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734536"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors – ReliableDictionaryActorStateProvider
 Výchozí konfigurace pro ReliableDictionaryActorStateProvider můžete upravit změnou souboru settings.xml vygenerované v kořenovém adresáři balíčku sady Visual Studio ve složce Konfigurace pro zadaný objekt actor.

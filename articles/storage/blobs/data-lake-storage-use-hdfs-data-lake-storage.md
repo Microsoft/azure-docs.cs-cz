@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 167c8b4dff2e6f392dd6608d20d8924d446f95aa
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269736"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729929"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
@@ -77,10 +77,6 @@ Další informace o rozhraní příkazového řádku HDFS najdete v článku [of
 ## <a name="hdfs-cli-with-azure-databricks"></a>HDFS CLI s Azure Databricks
 
 Databricks poskytuje snadno použitelné rozhraní příkazového řádku postavené na rozhraní REST API Databricks. Open source projektu hostována službou [Githubu](https://github.com/databricks/databricks-cli). Níže jsou uvedeny často používané příkazy.
-
-### <a name="create-a-file-system"></a>Vytvořit systém souborů
-
-Sem zadejte pokyny.
 
 ### <a name="get-a-list-of-files-or-directories"></a>Získat seznam souborů či adresářů
 

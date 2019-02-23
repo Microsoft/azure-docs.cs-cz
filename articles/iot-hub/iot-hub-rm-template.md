@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 2f9728fc3304534619fbd3a8b44abf6bab78887a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 979e99e4f9aea692de9c9797f65e3cb6a8e0a1e4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436038"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736817"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Vytvoření IoT hubu pomocí šablony Azure Resource Manageru (.NET)
 
@@ -24,6 +24,8 @@ Azure Resource Manageru můžete použít k vytváření a správě služby Azur
 
 > [!NOTE]
 > Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Azure Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Azure Resource Manageru.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -193,10 +195,10 @@ Aplikace je nyní možné dokončit voláním **CreateIoTHub** metoda před sest
 
 3. Klikněte na tlačítko **ladění** a potom **spustit ladění** ke spuštění aplikace. Může trvat několik minut, než se nasazení pro spuštění.
 
-4. K ověření vaší aplikace přidat novou službu IoT hub, najdete [webu Azure portal] [ lnk-azure-portal] a zobrazit seznam prostředků. Můžete taky použít **Get-AzureRmResource** rutiny Powershellu.
+4. K ověření vaší aplikace přidat novou službu IoT hub, najdete [webu Azure portal] [ lnk-azure-portal] a zobrazit seznam prostředků. Můžete taky použít **Get-AzResource** rutiny Powershellu.
 
 > [!NOTE]
-> Tato ukázková aplikace přidá S1 Standard služby IoT Hub pro kterou se vám účtuje. Můžete odstranit centrum IoT prostřednictvím [webu Azure portal] [ lnk-azure-portal] nebo s použitím **Remove-AzureRmResource** rutiny Powershellu, až budete hotovi.
+> Tato ukázková aplikace přidá S1 Standard služby IoT Hub pro kterou se vám účtuje. Můžete odstranit centrum IoT prostřednictvím [webu Azure portal] [ lnk-azure-portal] nebo s použitím **odebrat AzResource** rutiny Powershellu, až budete hotovi.
 
 ## <a name="next-steps"></a>Další postup
 Nyní jste nasadili IoT hubu pomocí šablony Azure Resource Manageru pomocí programu v jazyce C#, můžete dále zkoumat:
@@ -218,7 +220,7 @@ Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md

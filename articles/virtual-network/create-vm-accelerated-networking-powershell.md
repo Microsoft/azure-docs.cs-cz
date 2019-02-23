@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: 7f056ab79bbd2d2b66e40546a6df7677ffe75a21
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a5f32504fc7d8fe0faa17d469aec017d39a6b1ce
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649454"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737140"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvořte virtuální počítač Windows s Akcelerovanými síťovými službami
 
@@ -62,9 +62,13 @@ Podporované velikosti virtuálního počítače bez povolenými akcelerovanými
 Nelze nasadit virtuální počítače (klasické) s Akcelerovanými síťovými službami.
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Vytvoření virtuálního počítače Windows s Akcelerovanými síťovými službami Azure
+## <a name="portal-creation"></a>Vytvoření portálu
+Přestože tento článek popisuje kroky k vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí Azure Powershellu, můžete také [vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí webu Azure portal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu v **vytvoření virtuálního počítače** okno, vyberte **sítě** kartu.  Na této kartě je možné pro **akcelerované síťové služby**.  Pokud jste vybrali [s podporovaným operačním systémem](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances), tato možnost se automaticky vyplní pro "Na".  Pokud ne, bude naplnit možnost "Off" pro Akcelerovanými síťovými službami a uživateli přidělit důvod, proč není povolený.   
+* *Poznámka:* Pouze podporované operační systémy je možné povolit prostřednictvím portálu.  Pokud používáte vlastní image a image podporuje Akcelerovanými síťovými službami, vytvořte prosím virtuální počítač použijte Powershell nebo rozhraní příkazového řádku. 
 
-Přestože tento článek popisuje kroky k vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí Azure Powershellu, můžete také [vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí webu Azure portal](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu v části **nastavení**vyberte **povoleno**v části **akcelerované síťové služby**. Možnost povolit akcelerované síťové služby nezobrazí na portálu, pokud jste vybrali [s podporovaným operačním systémem](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances). Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [Potvrdit instalaci ovladače v operačním systému](#confirm-the-driver-is-installed-in-the-operating-system).
+Po vytvoření virtuálního počítače můžete ověřit Akcelerovanými síťovými službami je povoleno podle pokynů v [potvrďte, že je povoleno akcelerovanými síťovými službami](#confirm-that-accelerated-networking-is-enabled).
 
+## <a name="powershell-creation"></a>Vytvoření prostředí PowerShell
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

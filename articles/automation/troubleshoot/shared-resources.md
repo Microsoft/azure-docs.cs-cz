@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit potíže s prostředky Azure Automation, kte
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/3/2018
+ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: abce40958f8d775e0a579a18cf8d1351740031ff
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475437"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671059"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Řešení potíží s chybami se sdílenými prostředky
 
@@ -38,6 +38,24 @@ Chcete-li vyřešit tento problém, musíte odebrat modul, který se zasekla v a
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+### <a name="update-azure-modules-importing"></a>Scénář: Moduly AzureRM se zablokuje a import po pokusu o aktualizaci jejich
+
+#### <a name="issue"></a>Problém
+
+Banner s následující zprávou zůstává ve vašem účtu po pokusu o aktualizaci moduly AzureRM:
+
+```
+Azure modules are being updated
+```
+
+#### <a name="cause"></a>Příčina
+
+Existuje známý problém s aktualizací moduly AzureRM účtu Automation, který je ve skupině prostředků s názvem číselné, který začíná číslem 0.
+
+#### <a name="resolution"></a>Řešení
+
+Pokud chcete aktualizovat moduly Azure ve vašem účtu Automation, musí být ve skupině prostředků s názvem alfanumerické znaky. Skupiny prostředků s číselnou názvy počínaje 0 se nám aktualizovat moduly AzureRM v tuto chvíli.
 
 ### <a name="module-fails-to-import"></a>Scénář: Chyby modulu k importu nebo rutin nelze provést po dokončení importu
 

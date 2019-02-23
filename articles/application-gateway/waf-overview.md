@@ -4,14 +4,14 @@ description: Tento článek obsahuje přehled firewallu webových aplikací (WAF
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/16/2018
+ms.date: 2/22/2019
 ms.author: amsriva
-ms.openlocfilehash: 014353bafa31b1c4e924cba8335dbd30a48c2d11
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e53dde549034e8029fdb7f9c780a7880a1ca515d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651426"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733822"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -58,19 +58,8 @@ Tady jsou základní výhody, které poskytují Application Gateway s firewallem
 - Ochrana proti anomálie protokolu HTTP například chybějící user-agent hostitele nebo hlavičky accept.
 - Ochrana před roboty, prohledávacími moduly a skenery.
 - Detekce běžných chyb v konfiguraci aplikací (například Apache, IIS atd.)
-
-### <a name="public-preview-features"></a>Funkce ve verzi Public preview
-
-Aktuální public preview WAF SKU zahrnuje následující funkce:
-
-- **Požádat o omezení velikosti** – Firewall webových aplikací umožňuje uživatelům konfigurovat omezení velikosti požadavku v rámci dolní a horní hranice.
-- **Seznamy vyloučení** – seznamy vyloučení WAF povolit uživatelům vynechání určité atributy žádosti ze zkušební verze WAF. Běžným příkladem je že vložen tokeny, které se používají pro ověřování nebo pole s heslem služby Active Directory.
-
-Další informace o verzi public preview WAF najdete v tématu [webové omezení velikosti brány firewall na žádost o aplikaci a seznamy vyloučení (Public Preview)](application-gateway-waf-configuration.md).
-
-
-
-
+- Požádat o omezení velikosti – Firewall webových aplikací umožňuje uživatelům konfigurovat omezení velikosti požadavku v rámci dolní a horní hranice.
+- Seznamy vyloučení – seznamy vyloučení WAF umožňují uživatelům chcete vynechat, nechte určité atributy žádosti ze zkušební verze WAF. Běžným příkladem je že vložen tokeny, které se používají pro ověřování nebo pole s heslem služby Active Directory.
 
 ### <a name="core-rule-sets"></a>Základní sady pravidel
 
@@ -87,7 +76,6 @@ Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravi
 - Detekce běžných chyb v konfiguraci aplikací (např. Apache, IIS atd.)
 
 Podrobnější seznam pravidel a jejich ochrany najdete v tématu [základních sad pravidel](#core-rule-sets).
-
 
 #### <a name="owasp30"></a>OWASP_3.0
 

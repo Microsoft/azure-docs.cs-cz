@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 9a3d596d79aec2305dfc3ec61bd587da57f4a397
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 5b409063d2fac874bb6ea4d14aa1d8ad2fea4ec2
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56409016"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734638"
 ---
 # <a name="mapping-data-flow-expression-functions"></a>Mapování funkce výraz toku dat
 

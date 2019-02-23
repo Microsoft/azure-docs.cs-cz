@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 12/06/2018
+ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cadcd369f9cadf0fc7eb8728f83e8d6345ed2574
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 80c9944628eaa828a34ea16eb9f79271d6cd5728
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587765"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729206"
 ---
 # <a name="what-is-translator-text-api"></a>Co je Translator Text API?
 
@@ -54,16 +54,6 @@ Další informace o [přizpůsobení jazyka](customization.md)
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).
-
 - [Zaregistrujte se](translator-text-how-to-signup.md) a získejte přístupový klíč.
-
-- [Rychlý start](quickstarts/csharp.md) obsahuje vysvětlení volání rozhraní REST API napsaných v jazyce C#. Zjistěte, jak překládat text z jednoho jazyka do jiného s minimem kódu.
-
-- [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) obsahuje technickou dokumentaci k rozhraním API.
-
-## <a name="see-also"></a>Další informace najdete v tématech
-
-- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai)
-- [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
-- [Informace o řešení a cenách](https://www.microsoft.com/en-us/translator/default.aspx)
+- [Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) poskytuje technická dokumentace pro rozhraní API.
+- [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

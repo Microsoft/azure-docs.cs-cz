@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: bbec2205fc6b29476cf531c071b5c2ac4c014bcb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227076"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732510"
 ---
 # <a name="how-to-manage-settings"></a>Jak spravovat nastavení
 
@@ -45,7 +45,7 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
     ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key.png)
 
 3. V dialogovém okně zadejte klíč pro vaše předplatné translator a potom klikněte na tlačítko "Přidat".
- 
+
     ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key-dialog.png)
 4.  Po přidání klíče, můžete upravit nebo odstranit klíč v každém okamžiku.
 
@@ -53,29 +53,29 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
 
 ## <a name="manage-your-workspace"></a>Správa pracovního prostoru
 
-Pracovní prostor je pracovní oblast pro sestavování a vytváření vlastních překladový systém. Pracovní prostor může obsahovat více projektů, modely a dokumenty. 
+Pracovní prostor je pracovní oblast pro sestavování a vytváření vlastních překladový systém. Pracovní prostor může obsahovat více projektů, modely a dokumenty.
 
-Pokud různé části vaší práce je potřeba sdílet s různým lidem, může být užitečné pak vytvořit víc pracovních prostorů. 
+Pokud různé části vaší práce je potřeba sdílet s různým lidem, může být užitečné pak vytvořit víc pracovních prostorů.
 
 ## <a name="create-a-new-workspace"></a>Vytvořit nový pracovní prostor
 
 1.  Přejděte na stránku "Nastavení" pracovní prostor.
 2.  Klikněte na "nový pracovní prostor" tlačítko v části "Vytvořit nový pracovní prostor".
-    
+
     ![Vytvořit nový pracovní prostor](media/how-to/create-new-workspace.png)
 
 4.  V dialogovém okně zadejte název nového pracovního prostoru.
 5.  Klikněte na možnost "Vytvořit".
-    
+
     ![Vytvořit dialogové okno Nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>Sdílení pracovního prostoru
 
-Ve vlastní Translator můžete sdílet váš pracovní prostor s jinými uživateli, pokud jinou částí vaší práce je potřeba sdílet s různým lidem. 
+Ve vlastní Translator můžete sdílet váš pracovní prostor s jinými uživateli, pokud jinou částí vaší práce je potřeba sdílet s různým lidem.
 
 1.  Přejděte na stránku "Nastavení" pracovní prostor.
 2.  Klikněte na tlačítko "Sdílení" v části "Nastavení sdílení".
-    
+
     ![Sdílení pracovního prostoru](media/how-to/share-workspace.png)
 
 3.  V dialogovém okně zadejte čárkou oddělený seznam e-mailové adresy, které chcete, aby tento pracovní prostor dostaly. Ujistěte se, že sdílíte s e-mailovou adresu, uživatel používá pro přihlášení k vlastní Translator s. Potom vyberte vhodnou úroveň sdílení oprávnění.
@@ -85,7 +85,7 @@ Ve vlastní Translator můžete sdílet váš pracovní prostor s jinými uživa
 
 ## <a name="sharing-permissions"></a>Oprávnění ke sdílení
 
-1.  **Čtenář:** Čtečku v pracovním prostoru budou moct prohlížet všechny informace v pracovním prostoru. 
+1.  **Čtenář:** Čtečku v pracovním prostoru budou moct prohlížet všechny informace v pracovním prostoru.
 
 2.  **Editor:** V pracovním prostoru editoru budete moci přidat dokumenty, trénování modelů a odstraňování dokumentů a projektů. Můžete přidat klíč předplatného, ale nelze upravit, který pracovní prostor se sdílí s, odstranit pracovní prostor nebo změnit název pracovního prostoru.
 

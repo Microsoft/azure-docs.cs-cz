@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 164f3b8ef42d07606d98d200fa9bebcd0add3d38
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f5d25232ebbdb6f8cf07839cc51485dd53381cd9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319570"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733839"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -31,7 +31,7 @@ Zpráva IoT Hub se skládá ze:
 
 * Neprůhledný binární tělo.
 
-Názvy a hodnoty vlastností můžou obsahovat jenom alfanumerické znaky ASCII, plus `{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`"," | "," ~ "}" při odesílání zpráv typu zařízení cloud pomocí HTTPS protokolu nebo odesílání zpráv typu cloud zařízení.
+Názvy a hodnoty vlastností můžou obsahovat jenom alfanumerické znaky ASCII, plus ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` při odesílání zpráv typu zařízení cloud pomocí HTTPS protokolu nebo odesílání zpráv typu cloud zařízení.
 
 Zařízení cloud zasílání zpráv pomocí služby IoT Hub má následující vlastnosti:
 
@@ -49,19 +49,19 @@ V následující tabulce jsou uvedeny sadu vlastností systému v zpráv ve slu�
 
 | Vlastnost | Popis | Je uživatel nastavit? |
 | --- | --- | --- |
-| id zprávy |Nastavit uživatele identifikátor pro zprávu použitou pro požadavek odpověď vzory. Formát: Malá a velká písmena řetězec (až 128 znaků) alfanumerických znaků ASCII 7 bitů + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. | Ano |
+| id zprávy |Nastavit uživatele identifikátor pro zprávu použitou pro požadavek odpověď vzory. Formát: Řetězec malá a velká písmena (maximálně 128 znaků) alfanumerické znaky ASCII 7 bitů + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. | Ano |
 | pořadové číslo |Číslo (jedinečný za každou frontu zařízení) ve službě IoT Hub přiřazená každé zprávy typu cloud zařízení. | Ne pro C2D zprávy. v opačném případě Ano. |
 | na |Určení v [typu Cloud-zařízení](iot-hub-devguide-c2d-guidance.md) zprávy. | Ne pro C2D zprávy. v opačném případě Ano. |
 | absolutní čas vypršení platnosti |Datum a čas vypršení platnosti zpráv. | Ano |
-| iothub enqueuedtime |Datum a čas [typu Cloud-zařízení](iot-hub-devguide-c2d-guidance.md) byla přijata zpráva ve službě IoT Hub. | Ne pro C2D zprávy. v opačném případě Ano. |
+| iothub-enqueuedtime |Datum a čas [typu Cloud-zařízení](iot-hub-devguide-c2d-guidance.md) byla přijata zpráva ve službě IoT Hub. | Ne pro C2D zprávy. v opačném případě Ano. |
 | id korelace |Vlastnost řetězce v odpovědi, který obvykle obsahuje ID zprávy požadavku ve vzorech pro požadavek odpověď. | Ano |
 | id uživatele |ID používané k určení počátku zprávy. Při generování zpráv ve službě IoT Hub, je nastavena na `{iot hub name}`. | Ne |
 | IOT hub objektu ACK. |Generátor zprávy zpětné vazby. Tato vlastnost se používá v zprávy typu cloud zařízení do služby IoT Hub ke generování zpráv se zpětnou vazbou v důsledku spotřeby zprávy požadavku zařízení. Možné hodnoty: **žádný** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: Pokud zpráva byla dokončena, zobrazí se zpráva zpětnou vazbu **negativní**: přijímat zpráva zpětnou vazbu, pokud vypršela platnost zprávy (nebo bylo dosaženo maximální počet doručení) bez dokončení zařízení, nebo **úplné**: kladné a záporné. 
 <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Ano |
-| IOT hub připojení zařízení id |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **deviceId** zařízení, který zprávu odeslal. | Ne pro D2C zprávy. v opačném případě Ano. |
-| iothub připojení – ověřování generation-id |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **generationId** (jak je uvedeno [vlastnosti identity zařízení](iot-hub-devguide-identity-registry.md#device-identity-properties)) zařízení, který zprávu odeslal. | Ne pro D2C zprávy. v opačném případě Ano. |
-| iothub připojení ověřovací – metoda |Metoda ověřování nastavena na zprávy typu zařízení cloud ve službě IoT Hub. Tato vlastnost obsahuje informace o metodu ověřování používanou k ověření zařízení posílání zprávy. <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | Ne pro D2C zprávy. v opačném případě Ano. |
-| IOT hub vytváření čas utc | Datum a čas byla zpráva vytvořena na zařízení. Zařízení musí tuto hodnotu nastavit explicitně. | Ano |
+| iothub-connection-device-id |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **deviceId** zařízení, který zprávu odeslal. | Ne pro D2C zprávy. v opačném případě Ano. |
+| iothub-connection-auth-generation-id |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **generationId** (jak je uvedeno [vlastnosti identity zařízení](iot-hub-devguide-identity-registry.md#device-identity-properties)) zařízení, který zprávu odeslal. | Ne pro D2C zprávy. v opačném případě Ano. |
+| iothub-connection-auth-method |Metoda ověřování nastavena na zprávy typu zařízení cloud ve službě IoT Hub. Tato vlastnost obsahuje informace o metodu ověřování používanou k ověření zařízení posílání zprávy. <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | Ne pro D2C zprávy. v opačném případě Ano. |
+| iothub-creation-time-utc | Datum a čas byla zpráva vytvořena na zařízení. Zařízení musí tuto hodnotu nastavit explicitně. | Ano |
 
 ## <a name="message-size"></a>Velikost zpráv
 
@@ -77,9 +77,9 @@ Názvy a hodnoty vlastností jsou omezené na znaky ASCII, takže délky řetěz
 
 Chcete-li vyhnout falšování identity v zpráv typu zařízení cloud, IoT Hub zařízení razítka všechny zprávy s následujícími vlastnostmi:
 
-* **IOT hub připojení zařízení id**
-* **iothub připojení – ověřování generation-id**
-* **iothub připojení ověřovací – metoda**
+* **iothub-connection-device-id**
+* **iothub-connection-auth-generation-id**
+* **iothub-connection-auth-method**
 
 První dva obsahují **deviceId** a **generationId** původní zařízení, jak je uvedeno [vlastnosti identity zařízení](iot-hub-devguide-identity-registry.md#device-identity-properties).
 

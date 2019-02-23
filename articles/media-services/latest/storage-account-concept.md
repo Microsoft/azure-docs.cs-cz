@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: d49d056ab84b60389df8bcaf1c75d6224633863d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 471bc34272b8e141c8640bd218bdafd840850d24
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337852"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672266"
 ---
 # <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
 
@@ -30,6 +30,8 @@ Ke svému účtu Media Services musíte mít přidružený jeden **primární** 
 > Účty jen pro objekty blob nejsou povolené jako **primární**. 
 
 Doporučujeme používat účty GPv2, takže můžete využít vybrat mezi horkou a studenou úrovní úložiště. Další informace o účtech úložiště najdete v tématu [přehled účtu Azure Storage](../../storage/common/storage-account-overview.md). 
+
+Existují různé skladové položky, které můžete použít pro váš účet úložiště. Další informace najdete v tématu [účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS`. Ale při výběru SKU pro produkční prostředí byste měli zvážit, `--sku Standard_RAGRS`, která poskytuje geografické replikace zajišťuje nepřetržitý chod podniků. 
 
 ## <a name="assets-in-a-storage-account"></a>Prostředky v účtu úložiště
 

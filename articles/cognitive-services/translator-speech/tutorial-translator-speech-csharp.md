@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 383e17e0a9e60b52a63420af19c2bca4337083d4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876908"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673747"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Kurz: Translator Speech aplikace vC#
 
@@ -33,7 +34,7 @@ Soubor řešení sady Visual Studio pro tuto aplikaci je [dostupný na GitHubu](
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro účely tohoto kurzu potřebujete libovolnou edici sady Visual Studio 2017 včetně Community Edition. 
+Pro účely tohoto kurzu potřebujete libovolnou edici sady Visual Studio 2017 včetně Community Edition.
 
 Toto řešení sady Visual Studio také vytvoří instalační program pro aplikaci. Kvůli podpoře této funkce potřebujete [WiX Toolset](http://wixtoolset.org/) a rozšíření [WiX Toolset Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension).
 
@@ -63,7 +64,7 @@ V době psaní tohoto článku podporuje služba Translator Speech více než 60
 
 Jinými slovy, kvůli překladu řeči musí zdrojový jazyk podporovat přepis. Jazyk výstupu může být libovolný z podporovaných jazyků pro překlad textu, pokud chcete výsledek v podobě textu. Pokud chcete řečový výstup, můžete překládat jen do jazyka s podporou převodu textu na řeč.
 
-Microsoft může čas od času přidat podporu nových jazyků. Z tohoto důvodu byste neměli znalost podporovaných jazyků v aplikaci pevně zakódovat. Rozhraní Translator Speech API místo toho poskytuje koncový bod Jazyky, který umožňuje získat podporované jazyky za běhu. Můžete přijmout jeden nebo více seznamů jazyků: 
+Microsoft může čas od času přidat podporu nových jazyků. Z tohoto důvodu byste neměli znalost podporovaných jazyků v aplikaci pevně zakódovat. Rozhraní Translator Speech API místo toho poskytuje koncový bod Jazyky, který umožňuje získat podporované jazyky za běhu. Můžete přijmout jeden nebo více seznamů jazyků:
 
 | | |
 |-|-|
@@ -73,7 +74,7 @@ Microsoft může čas od času přidat podporu nových jazyků. Z tohoto důvodu
 
 Koncový bod Jazyky nevyžaduje klíč předplatného a jeho použití se nezapočítává do vaší kvóty. Jeho identifikátor URI je `https://dev.microsofttranslator.com/languages` a vrací výsledky ve formátu JSON.
 
-Zde uvedená metoda `UpdateLanguageSettingsAsync()` v souboru `MainWindow.xaml.cs` získává voláním koncového bodu Jazyky seznam podporovaných jazyků. 
+Zde uvedená metoda `UpdateLanguageSettingsAsync()` v souboru `MainWindow.xaml.cs` získává voláním koncového bodu Jazyky seznam podporovaných jazyků.
 
 ```csharp
 private async Task UpdateLanguageSettingsAsync()
@@ -193,9 +194,9 @@ Tato metoda nejprve sestaví žádost HTTP na koncový bod Jazyky a vyžádá si
 
 Koncový bod Jazyky pomocí hlavičky žádosti `Accept-Languages` určí jazyk, ve kterém jsou uvedeny názvy jazyků. Například jazyk, který je anglicky mluvícím lidem známý jako „German“, se v němčině řekne „Deutsch“ a ve španělštině „Alemán“, přičemž do seznamu jazyků jsou tyto rozdíly promítnuty. Pro tuto hlavičku se používá výchozí jazyk systému.
 
-Potom, co byla odeslána žádost a přijata odpověď JSON, se tato odpověď parsuje do interních datových struktur. Tyto struktury se následně použijí k sestavení nabídek zdrojového a cílového jazyka. 
+Potom, co byla odeslána žádost a přijata odpověď JSON, se tato odpověď parsuje do interních datových struktur. Tyto struktury se následně použijí k sestavení nabídek zdrojového a cílového jazyka.
 
-Protože dostupné hlasy závisejí na cílovém jazyku zvoleném uživatelem, není zatím možné nastavit nabídku hlasů. Místo toho se dostupné hlasy pro jednotlivé jazyky uloží pro pozdější použití. Obslužná rutina `ToLanguage_SelectionChanged` (ve stejném zdrojovém souboru) později aktualizuje nabídku hlasů voláním metody `UpdateVoiceComboBox()`, když uživatel zvolí cílový jazyk. 
+Protože dostupné hlasy závisejí na cílovém jazyku zvoleném uživatelem, není zatím možné nastavit nabídku hlasů. Místo toho se dostupné hlasy pro jednotlivé jazyky uloží pro pozdější použití. Obslužná rutina `ToLanguage_SelectionChanged` (ve stejném zdrojovém souboru) později aktualizuje nabídku hlasů voláním metody `UpdateVoiceComboBox()`, když uživatel zvolí cílový jazyk.
 
 Čistě pro zábavu se cílový jazyk vybere náhodně, pokud uživatel tuto aplikaci dříve nespustil. (Nastavení nabídek se uloží pro následné relace.)
 
@@ -281,7 +282,7 @@ private void Connect()
         TranslateTo = ((ComboBoxItem)this.ToLanguage.SelectedItem).Tag.ToString(),
         Voice = voicename,
     };
-    
+
     options.Hostname = baseUrl;
     options.AuthHeaderKey = "Authorization";
     options.AuthHeaderValue = ""; // set later in ConnectAsync.
@@ -368,11 +369,11 @@ Zde je metoda `ConnectAsync()`, která vytváří instanci třídy `speechClient
 private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAudioDuringTTS)
 {
     await ADMAuthenticate(options);
-    
+
     TextMessageDecoder textDecoder;
-    
+
     s2smtClient = new SpeechClient((SpeechTranslateClientOptions)options, CancellationToken.None);
-    
+
     s2smtClient.OnBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnEndOfBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnTextData += (c, a) => { textDecoder.AppendData(a); lastReceivedPacketTick = DateTime.Now.Ticks; };
@@ -410,7 +411,7 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
     {
         SafeInvoke(() =>
         {
-            // We only care to react to server disconnect when our state is Connected. 
+            // We only care to react to server disconnect when our state is Connected.
             if (currentState == UiState.Connected)
             {
                 Log("E: Connection has been lost.");

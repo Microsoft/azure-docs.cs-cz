@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/10/2017
+ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9c59da35f5dafcdcf62901689814e696dce3cd20
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159448"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674167"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžící na Windows serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů Windows serveru, už to jsou v místním prostředí nebo jakýkoli jiný poskytovatel cloudu. Service Fabric nabízí instalační balíček pro vytváření clusterů Service Fabric volá samostatného balíčku Windows serveru.
@@ -61,7 +61,9 @@ Několik ukázkových konfiguračních souborů clusteru se nainstaluje spolu s 
 
 V rámci tohoto článku vytvořili cluster není zabezpečený.  Každý se může anonymně připojit a provádět operace správy, proto by produkční clustery vždy měly být zabezpečené pomocí certifikátů X.509 nebo zabezpečení systému Windows.  Zabezpečení se konfiguruje jenom při vytváření clusteru a není možné povolit zabezpečení po vytvoření clusteru. Aktualizace konfiguračního souboru povolit [certifikátu zabezpečení](service-fabric-windows-cluster-x509-security.md) nebo [zabezpečení Windows](service-fabric-windows-cluster-windows-security.md). V článku [Zabezpečení clusteru](service-fabric-cluster-security.md) najdete další informace o zabezpečení clusteru Service Fabric.
 
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>Krok 1A: Vytvořte zabezpečená místního vývojového clusteru
+### <a name="step-1-create-the-cluster"></a>Krok 1: Vytvoření clusteru
+
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Scénář A: Vytvořte zabezpečená místního vývojového clusteru
 Service Fabric je nasadit na jeden počítač vývojový cluster pomocí *ClusterConfig.Unsecure.DevCluster.json* souboru zahrnutém v [ukázky](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 Rozbalit samostatného balíčku do počítače, zkopírovat ukázkový konfigurační soubor do místního počítače a potom spusťte *CreateServiceFabricCluster.ps1* skriptu prostřednictvím relaci prostředí PowerShell správce ze složky samostatného balíčku .
@@ -74,7 +76,7 @@ V části nastavení prostředí v [plánování a příprava vašeho nasazení 
 
 Pokud dokončíte spuštěné vývojové scénáře, můžete odebrat cluster Service Fabric z počítače pomocí kroků v části "[odebrat cluster](#removecluster_anchor)". 
 
-### <a name="step-1b-create-a-multi-machine-cluster"></a>Krok 1B: Vytvoření clusteru s více počítači
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>Scénář B: Vytvoření clusteru s více počítači
 Poté, co jste prošli plánování a podrobné kroky přípravy na [plánování a příprava vašeho nasazení clusteru](service-fabric-cluster-standalone-deployment-preparation.md), jste připraveni vytvořit cluster produkčním prostředí pomocí souboru konfigurace clusteru.
 
 Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslušném počítači oprávnění správce. Service Fabric nelze nainstalovat na řadič domény.
@@ -114,7 +116,7 @@ Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslu�
 > 
 > 
 
-### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>Krok 1C: Vytvořit cluster v režimu offline (internet odpojen)
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Scénář C: Vytvořit cluster v režimu offline (internet odpojen)
 Při vytváření clusteru se automaticky stáhne balíček modulu runtime Service Fabric. Při nasazování clusteru na počítače bez připojení k Internetu, je potřeba stáhnout balíček modulu runtime Service Fabric samostatně a zadejte cestu k němu při vytváření clusteru.
 Balíček modulu runtime se dají stáhnout samostatně, z jiného počítače připojené k Internetu, na [stáhnout odkaz – modul Runtime Service Fabric – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Pokud nasazujete offline clusteru ze a vytvořte cluster spuštěním zkopírujte balíček modulu runtime `CreateServiceFabricCluster.ps1` s `-FabricRuntimePackagePath` parametr zahrnuty, jak je znázorněno v tomto příkladu: 
 

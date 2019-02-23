@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 35f1d75f28271cd7efc2911fe14de9ed6b525557
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217284"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671739"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokol WebSocket pro zpracování řeči Bingu
 
@@ -77,7 +78,7 @@ Content-Length: 0
 
 Následující informace záhlaví jsou nezbytné k tokenu přístupu.
 
-| Name | Formát | Popis |
+| Název | Formát | Popis |
 |----|----|----|
 | OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného |
 
@@ -131,13 +132,13 @@ Text zprávy protokolu WebSocket musíte zadat cestu zprávu v hlavičce *cesta*
 
 ### <a name="binary-websocket-messages"></a>Binární zprávy protokolu WebSocket
 
-Binární zprávy protokolu WebSocket provádět binární datové části. V protokolu Speech Service je zvuk předány a přijal od služby pomocí binární zprávy protokolu WebSocket. Všechny ostatní zprávy jsou textové zprávy pomocí protokolu WebSocket. 
+Binární zprávy protokolu WebSocket provádět binární datové části. V protokolu Speech Service je zvuk předány a přijal od služby pomocí binární zprávy protokolu WebSocket. Všechny ostatní zprávy jsou textové zprávy pomocí protokolu WebSocket.
 
 Stejně jako textové zprávy pomocí protokolu WebSocket binární zprávy protokolu WebSocket sestávají z hlavičky a tělo oddílu. Zadejte první 2 bajty binární zprávy protokolu WebSocket, [formát big-endian](https://en.wikipedia.org/wiki/Endianness) velikost 16bitové celé číslo oddílu záhlaví objednávky. Velikost oddílu minimální záhlaví je 0 bajtů. Maximální velikost je 8 192 bajtů. Text v záhlaví binární zprávy protokolu WebSocket *musí* použít [US-ASCII](https://tools.ietf.org/html/rfc20) kódování.
 
 Záhlaví ve zprávě protokolu WebSocket binární jsou kódovány ve stejném formátu jako v textových zpráv protokolu WebSocket. *Názvu a hodnoty* formátu jsou oddělené oddělovačem CR jednoho znaku nového řádku pár. Binární zprávy protokolu WebSocket musí určovat cestu zprávy v hlavičce *cesta*. Hodnotu této hlavičky musí být jeden z typů zpráv protokolu řeči definované dále v tomto dokumentu.
 
-Textové a binární zprávy protokolu WebSocket se používají v protokolu Speech Service. 
+Textové a binární zprávy protokolu WebSocket se používají v protokolu Speech Service.
 
 ## <a name="client-originated-messages"></a>Vytvoří se klient zprávy
 
@@ -149,7 +150,7 @@ Hlavní zprávy odeslané klientem služby jsou `speech.config`, `audio`, a `tel
 
 Následující hlavičky jsou požadovány pro všechny zprávy klienta pochází.
 
-| Hlavička | Value |
+| Hlavička | Hodnota |
 |----|----|
 | Cesta | Cesta zprávy, jak je uvedeno v tomto dokumentu |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
@@ -178,7 +179,7 @@ Klienti *musí* odeslat `speech.config` zpráv okamžitě po navázání připoj
 
 #### <a name="required-message-headers"></a>Požadovaná zpráva hlavičky
 
-| Název hlavičky | Value |
+| Název hlavičky | Hodnota |
 |----|----|
 | Cesta | `speech.config` |
 | X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
@@ -187,7 +188,7 @@ Klienti *musí* odeslat `speech.config` zpráv okamžitě po navázání připoj
 Stejně jako všechny zprávy v protokolu Speech Service klientského vznikla `speech.config` zpráva *musí* patří *X časové razítko* hlavičku, která zaznamenává klient UTC Čas odeslání zprávy ke službě. `speech.config` Zpráva *nemá* vyžadují *X-RequestId* záhlaví vzhledem k tomu, že tato zpráva není přidružený k žádosti o konkrétní řeči.
 
 #### <a name="message-payload"></a>Datovou část zprávy
-Datová část `speech.config` zprávy je struktura JSON, který obsahuje informace o aplikaci. Následující příklad zobrazuje tyto informace. Informace o kontextu klienta a zařízení je součástí *kontextu* element struktuře JSON. 
+Datová část `speech.config` zprávy je struktura JSON, který obsahuje informace o aplikaci. Následující příklad zobrazuje tyto informace. Informace o kontextu klienta a zařízení je součástí *kontextu* element struktuře JSON.
 
 ```JSON
 {
@@ -249,7 +250,7 @@ Speech Service používá první `audio` zprávu, která obsahuje identifikátor
 
 Následující hlavičky jsou potřebné pro všechny `audio` zprávy.
 
-| Hlavička         |  Value     |
+| Hlavička         |  Hodnota     |
 | ------------- | ---------------- |
 | Cesta | `audio` |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
@@ -507,7 +508,7 @@ Klienti musí obsahovat informace o událostech, ke kterým došlo během život
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Name | `Connection` | Požaduje se |
+| Název | `Connection` | Požaduje se |
 | ID | Hodnota identifikátoru připojení, která byla použita v *X ConnectionId* záhlaví pro tento požadavek na připojení | Požaduje se |
 | Start | Čas, kdy klient odešle požadavek na připojení | Požaduje se |
 | Konec | Čas při přijetí oznámení, že bylo připojení úspěšně vytvořeno klienta nebo v chybových případech, odmítnuto, odmítnuto nebo se nezdařilo | Požaduje se |
@@ -527,7 +528,7 @@ Popis chyby musí být maximálně 50 znaků a v ideálním případě by měla 
 | ServerUnavailable | Klient nemohl připojit ke službě, protože služba vrátila HTTP `503 Server Unavailable` stavový kód na požadavek na upgrade objektu WebSocket. |
 | ServerError | Klient nemohl připojit ke službě, protože služba vrátila `HTTP 500` vnitřní chyba stavový kód na požadavek na upgrade objektu WebSocket. |
 | Vypršení časového limitu | Požadavek na připojení klienta vypršel časový limit bez odpověď ze služby. *End* pole obsahuje čas vypršení časového limitu klienta a zastavení čeká na připojení. |
-| ClientError | Klient ukončil připojení kvůli chybě vnitřní klienta. | 
+| ClientError | Klient ukončil připojení kvůli chybě vnitřní klienta. |
 
 ### <a name="metric-microphone"></a>Metrika `Microphone`
 
@@ -547,7 +548,7 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* časo
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Name | Mikrofon | Požaduje se |
+| Název | Mikrofon | Požaduje se |
 | Start | Čas, kdy klient začít používat zvukového vstupu z mikrofon nebo jiných zvukový datový proud nebo aktivační událost poslal spotter – klíčové slovo | Požaduje se |
 | Konec | Čas, kdy klienta zastavena pomocí datového proudu mikrofon nebo ve zvukovém souboru | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Operace mikrofon byly úspěšné, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
@@ -567,7 +568,7 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* a *En
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Name | ListeningTrigger | Nepovinné |
+| Název | ListeningTrigger | Nepovinné |
 | Start | Čas zahájení aktivační událost pro naslouchání klienta | Požaduje se |
 | Konec | Čas dokončení aktivační událost pro naslouchání klienta | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud operace aktivační události byl úspěšný, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
@@ -636,7 +637,7 @@ Pokud služba Speech zjistí porušení protokolu z klienta, služba ukončuje p
 
 #### <a name="incorrect-message-format"></a>Nesprávný formát
 
-Pokud klient odešle text nebo binární zprávy do služby, který není ve správném formátu, které jsou uvedeny v téhle specifikaci kódování, služba zavře připojení *1007 Neplatná datová část Data* stavový kód. 
+Pokud klient odešle text nebo binární zprávy do služby, který není ve správném formátu, které jsou uvedeny v téhle specifikaci kódování, služba zavře připojení *1007 Neplatná datová část Data* stavový kód.
 
 Tato služba vrátí tímto stavovým kódem pro celou řadu důvodů, jak je znázorněno v následujícím příkladu:
 

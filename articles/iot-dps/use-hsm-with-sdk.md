@@ -10,15 +10,15 @@ services: iot-dps
 manager: arjmands
 ms.custom: mvc
 ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319247"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728705"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning pro C
 
-V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-security.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. Zřizovací služba podporuje ověřování pro dva typy mechanismů ověřování: X **.** 509 a TPM (Trusted Platform Module).
+V tomto článku se dozvíte, jak používat různé [mechanismy ověřování](concepts-security.md#attestation-mechanism) pomocí klientské sady SDK služby Device Provisioning pro C. Můžete použít fyzické zařízení nebo simulátor. Zřizovací služba podporuje ověřování pro dva typy mechanismů ověřování: X **.** 509 a důvěryhodné platformě Module (TPM).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,9 +28,9 @@ Připravte vývojové prostředí podle části Příprava vývojového prostře
 
 Jako výrobce zařízení musíte nejprve zvolit mechanismus ověřování založený na některém z podporovaných typů. V současné době [klientská sada SDK služby Device Provisioning pro C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) poskytuje podporu následujících mechanismů ověřování: 
 
-- [TPM (Trusted Platform Module):](https://en.wikipedia.org/wiki/Trusted_Platform_Module) TPM představuje zavedený standard pro většinu platforem zařízení založených na Windows a také pro několik zařízení založených na Linuxu nebo Ubuntu. Jako výrobce zařízení můžete zvolit tento mechanismus ověřování, pokud vaše zařízení používají některý z následujících operačních systémů a hledáte zavedený standard. V případě čipů TPM můžete zařízení do služby Device Provisioning registrovat pouze jednotlivě. Pro účely vývoje můžete použít simulátor TPM na svém vývojovém počítači s Windows nebo Linuxem.
+- [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM představuje zavedený standard pro většinu platforem zařízení se systémem Windows, jakož i několik zařízení založenou na Linuxu nebo Ubuntu. Jako výrobce zařízení můžete zvolit tento mechanismus ověřování, pokud vaše zařízení používají některý z následujících operačních systémů a hledáte zavedený standard. V případě čipů TPM můžete zařízení do služby Device Provisioning registrovat pouze jednotlivě. Pro účely vývoje můžete použít simulátor TPM na svém vývojovém počítači s Windows nebo Linuxem.
 
-- [X.509:](https://cryptography.io/en/latest/x509/) Certifikáty X.509 je možné ukládat v relativně novějších čipech označovaných jako [moduly hardwarového zabezpečení (HSM)](concepts-security.md#hardware-security-module). V Microsoft se také pracuje na čipech RIoT nebo DICE, které implementují certifikáty X.509. V případě čipů X.509 můžete registrace zařízení dávkovat na portálu. Podporují také určité operační systémy mimo Windows, jako je například embedOS. Pro účely vývoje klientská sada SDK služby Device Provisioning podporuje simulátor zařízení X.509. 
+- [X.509](https://cryptography.io/en/latest/x509/): Certifikáty X.509 můžou být uložené v relativně novějších čipech označovaných jako [moduly hardwarového zabezpečení (HSM)](concepts-security.md#hardware-security-module). V Microsoft se také pracuje na čipech RIoT nebo DICE, které implementují certifikáty X.509. V případě čipů X.509 můžete registrace zařízení dávkovat na portálu. Podporují také určité operační systémy mimo Windows, jako je například embedOS. Pro účely vývoje klientská sada SDK služby Device Provisioning podporuje simulátor zařízení X.509. 
 
 Další informace najdete v tématech věnovaných [konceptům zabezpečení](concepts-security.md) a [konceptům automatického zřizování](/azure/iot-dps/concepts-auto-provisioning) ve službě IoT Hub Device Provisioning.
 
@@ -149,8 +149,8 @@ Pokud používáte TPM, podle pokynů v tématu [Vytvoření a zřízení simulo
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
-   - X **.** 509 – Jednotlivá registrace: V okně s přehledem zřizovací služby vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *Mechanismus* ověření identity vyberte **X**.**509** a nahrajte listový certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
-   - X **.** 509 – Skupinová registrace: V okně s přehledem zřizovací služby vyberte **Správa registrací**. Vyberte kartu **Skupinové registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *Mechanismus* ověření identity vyberte **X**.**509**, zadejte název skupiny a název certifikátu a nahrajte certifikát webu nebo zprostředkující certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - X **.** 509 – jednotlivá registrace: V okně zřizovací služby summary, vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *Mechanismus* ověření identity vyberte **X**.**509** a nahrajte listový certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - X **.** 509 skupinové registrace: V okně zřizovací služby summary, vyberte **Správa registrací**. Vyberte kartu **Skupinové registrace** a klikněte na tlačítko **Přidat** v horní části. Jako *Mechanismus* ověření identity vyberte **X**.**509**, zadejte název skupiny a název certifikátu a nahrajte certifikát webu nebo zprostředkující certifikát, jak to okno vyžaduje. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Povolení ověřování pro zařízení používající vlastní mechanismus ověřování (volitelné)
 

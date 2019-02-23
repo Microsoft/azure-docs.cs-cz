@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 47800ce467beb43c514e5e5474247d8c2029feff
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: d87fe608b92dd70cb2dee78c817e0055445b7c70
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188228"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732511"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace pomocí instančních objektů
 
@@ -45,7 +45,9 @@ ID aplikace instančního objektu služby a heslo nebo certifikát je možné v 
 
 ### <a name="powershell"></a>PowerShell
 
-Při použití instančního objektu pro operace správy zdrojů se [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) modul, použijte `Login-AzureRmAccount` rutiny. Při použití instančního objektu pro operace serveru se [SQLServer](https://www.powershellgallery.com/packages/SqlServer) modul, použijte `Add-AzureAnalysisServicesAccount` rutiny. 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Při použití instančního objektu pro operace správy zdrojů se [Az.AnalysisServices](/powershell/module/az.analysisservices) modul, použijte `Connect-AzAccount` rutiny. Při použití instančního objektu pro operace serveru se [SQLServer](https://www.powershellgallery.com/packages/SqlServer) modul, použijte `Add-AzAnalysisServicesAccount` rutiny. 
 
 V následujícím příkladu appID a heslo slouží k provedení operace obnovení databáze modelu:
 
@@ -60,7 +62,7 @@ $PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
 
 $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
 
-Add-AzureAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
+Add-AzAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
 
 Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserver" -TableName "MyTable" -Database "MyDb" -RefreshType "Full"
 ```

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 9f1ee309156a39078ffdfeed2c75d86476ac8b48
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 2f08d5b8548b8b7af282356d41c26442edd145b0
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158648"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669577"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak spustit a zastavit prostředí Azure-SSIS Integration Runtime podle plánu
 Tento článek popisuje, jak naplánovat spuštění a zastavení prostředí Azure-SSIS Integration Runtime (IR) pomocí Azure Data Factory (ADF). Prostředí Azure-SSIS IR je ADF výpočetní prostředky, které jsou vyhrazené pro spouštění balíčků SQL Server Integration Services (SSIS). Spuštění prostředí Azure-SSIS IR s náklady s ním spojená. Proto je obvykle chcete spustit prostředí IR jenom v případě, že budete muset spouštění balíčků služby SSIS v Azure a zastavit prostředí IR, když ho už není nutné. Můžete použít ADF uživatelské rozhraní (UI) / aplikaci nebo prostředí Azure PowerShell potřeba [ručně spustit nebo zastavit prostředí IR](manage-azure-ssis-integration-runtime.md)).
@@ -92,7 +92,7 @@ Pokud vytvoříte třetí aktivační událost, která je naplánované spoušt�
   
     2. Pro **metoda**vyberte **příspěvek**. 
     3. Pro **tělo**, zadejte `{"message":"Start my IR"}`. 
-    4. Pro **ověřování**vyberte **MSI** pomocí spravované identity pro vaše ADF naleznete v části [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) najdete další informace.
+    4. Pro **ověřování**vyberte **MSI** pomocí spravované identity pro vaše ADF naleznete v části [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) najdete další informace.
     5. Pro **prostředků**, zadejte `https://management.azure.com/`.
     
        ![Plán ADF webové aktivity SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)

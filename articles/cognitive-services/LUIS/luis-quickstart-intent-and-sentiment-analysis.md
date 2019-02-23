@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 9493e8b5d5e02f1408423334ceaa5c5c47ae6668
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 463ff73519232f56d41e9d70c20fcd8103806495
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867745"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729113"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Kurz:  Získat mínění utterance
 

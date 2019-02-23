@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 4d63eb817f7dc1ff957223cb5e9181fbc441fe29
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b09b2cd3a7a642debb28de7ce71a2b3af4f558a8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227484"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730253"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -25,7 +25,6 @@ Tento článek obsahuje odpovědi na nejčastější dotazy o [vlastní Translat
 Existují omezení a limity s ohledem na velikost souboru, cvičení modelu a nasazení modelu. Mějte na tato omezení při nastavování trénování sestavit model ve vlastní překladač.
 
 - Zadané soubory musí být menší než 100 MB.
-
 - Jeden jazyk data se nepodporuje.
 
 ## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>Pokud by měl požádat o nasazení pro překlad systému, který byl vyškolila?

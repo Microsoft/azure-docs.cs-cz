@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834124"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727957"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele ve službě Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -37,7 +37,7 @@ Existují tři hlavní role, kterou můžete přiřadit uživatele:
 
 Následující tabulka popisuje akce, které mohou provádět uživatelé v každé z těchto rolí:
 
-| **Můžete provádět akce, které uživatelé v této roli** | **Uživatel služby DevTest Labs** | **Vlastník** | **Přispěvatel** |
+| **Můžete provádět akce, které uživatelé v této roli** | **DevTest Labs User** | **Vlastník** | **Přispěvatel** |
 | --- | --- | --- | --- |
 | **Úlohy testovacího prostředí** | | | |
 | Přidání uživatelů do testovacího prostředí |Ne |Ano |Ne |
@@ -71,12 +71,15 @@ Následující postup vás provede procesem přidávání roli vlastníka nebo u
 5. Na **konfigurace a zásad** stránce **řízení přístupu (IAM)** z nabídky na levé straně. 
 6. Vyberte **přidat přiřazení role** na panelu nástrojů můžete přidat uživatele k roli.
 1. V **přidat oprávnění** okno, proveďte následující akce: 
-    1. Vyberte roli (Příklad: uživatel služby DevTest Labs). V části [akce, které lze provádět v každé role](#actions-that-can-be-performed-in-each-role) uvádí různé akce, které mohou provádět uživatelé v rolích vlastník, uživatel služby DevTest a Přispěvatel.
+    1. Vyberte roli (například: DevTest Labs User). V části [akce, které lze provádět v každé role](#actions-that-can-be-performed-in-each-role) uvádí různé akce, které mohou provádět uživatelé v rolích vlastník, uživatel služby DevTest a Přispěvatel.
     2. Vyberte uživatele, který má být přidáni do role. 
     3. Vyberte **Uložit**. 
 11. Po návratu k **uživatelé** okně se uživateli přidala.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Přidat externího uživatele do testovacího prostředí pomocí Powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Kromě přidání uživatelů na webu Azure Portal, můžete přidat externího uživatele do testovacího prostředí pomocí Powershellového skriptu. V následujícím příkladu, upravte hodnoty parametrů v části **hodnoty změnit** komentář.
 Můžete načíst `subscriptionId`, `labResourceGroup`, a `labName` hodnoty v okně testovacího prostředí na webu Azure Portal.
 
@@ -96,18 +99,18 @@ Můžete načíst `subscriptionId`, `labResourceGroup`, a `labName` hodnoty v ok
     $userDisplayName = "<Enter user's display name here>"
 
     # Log into your Azure account
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
     # Select the Azure subscription that contains the lab. 
     # This step is optional if you have only one subscription.
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
+    Select-AzSubscription -SubscriptionId $subscriptionId
 
     # Retrieve the user object
-    $adObject = Get-AzureRmADUser -SearchString $userDisplayName
+    $adObject = Get-AzADUser -SearchString $userDisplayName
 
     # Create the role assignment. 
     $labId = ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
-    New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
+    New-AzRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
 
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Přidání vlastníkem nebo uživateli na úrovni předplatného
 Oprávnění Azure přecházejí z nadřazeného oboru na podřízeném oboru v Azure. Vlastníci předplatného Azure, který obsahuje testovací prostředí se proto automaticky vlastníků těchto testovacích prostředí. Také vlastní virtuální počítače a další prostředky vytvořené v rámci testovacího prostředí uživatele a služba Azure DevTest Labs. 

@@ -1,7 +1,7 @@
 ---
 title: Podpora jazyka Java Enterprise na Linux – Azure App Service | Dokumentace Microsoftu
 description: Příručka pro vývojáře k nasazování aplikací Java Enterprise Wildfly pomocí služby Azure App Service v Linuxu.
-keywords: služby Azure app service, web Apps, linux, oss, java, wildfly, enterprise
+keywords: služby Azure app service, web Apps, linux, oss, java, wildfly, enterprise, platformě java EE určený dží, javaee
 services: app-service
 author: rloutlaw
 manager: angerobe
@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 408141650a11a81f0c6000c6e7927af8333e2afe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6618e5317db1a7a4332a35b7ee9cd74934c8a787
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548472"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737888"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java podniková Příručka pro službu App Service v Linuxu
 
-Azure App Service v Linuxu umožňuje vývojářům vytvářet, nasazovat a škálovat aplikace pro platformu Java Enterprise (JEE) na plně spravované služby založené na Linuxu v jazyce Java.  Základní běhové prostředí Java Enterprise je open source [Wildfly](https://wildfly.org/) aplikačního serveru.
+Azure App Service v Linuxu umožňuje vývojářům vytvářet, nasazovat a škálovat aplikace Java Enterprise (Java EE) na plně spravované služby založené na Linuxu v jazyce Java.  Základní běhové prostředí Java Enterprise je open source [Wildfly](https://wildfly.org/) aplikačního serveru.
 
 Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře Java Enterprise, kteří používají ve službě App Service pro Linux. Pokud jste nikdy nasadili aplikace Java pomocí Azure App Service pro Linux, by se měl Dokončit [Java quickstart](quickstart-java.md) první. Dotazy týkající se App Service pro Linux, které nejsou specifické pro jazyk Java Enterprise v odpovědi [Příručka pro vývojáře Java](app-service-linux-java.md) a [nejčastější dotazy týkající se App Service Linux](app-service-linux-faq.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 76239f80076cbe0f86d6e091a29b008a5a5d06c1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7f09db1f37617519926955daf0c29c13993dbf80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116639"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728450"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.
@@ -108,15 +108,15 @@ K získání přehledu pro všechna předplatná, správcům tenantů nutné př
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>Přiřazení role RBAC uživatelům pomocí prostředí PowerShell: 
-1. Nainstalujte [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+1. Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps).
 2. Spusťte následující příkazy: 
 
     ```azurepowershell
-    # Install Management Groups Powershell module
-    Install-Module AzureRM.Resources
-    
     # Login to Azure as a Global Administrator user
-    Login-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Po zobrazení výzvy, přihlaste se pomocí přihlašovacích údajů globálního správce. 
@@ -128,12 +128,12 @@ K získání přehledu pro všechna předplatná, správcům tenantů nutné př
     ```azurepowershell
     # Add Reader role to the required user on the Root Management Group
     # Replace "user@domian.com” with the user to grant access to
-    New-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
+    New-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
     ```
 5. Pokud chcete odebrat roli, použijte následující příkaz: 
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
+    Remove-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
 ### <a name="open-or-refresh-security-center"></a>Otevřete nebo aktualizujte Security Center
@@ -141,11 +141,16 @@ Jakmile musí mít zvýšená přístup, otevřete nebo aktualizujte Azure Secur
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Ujistěte se, že vyberete všechna předplatná v modulu pro výběr předplatného, který chcete zobrazit ve službě Security Center.
+
     ![Snímek obrazovky výběru předplatného](./media/security-center-management-groups/subscription-selector.png)
+
 1. Vyberte **všechny služby** v hlavní nabídce Azure zvolte **Security Center**.
-2. V **přehled**, je graf pokrytí předplatného. 
+2. V **přehled**, je graf pokrytí předplatného.
+
     ![Snímek obrazovky grafu pokrytí předplatného](./media/security-center-management-groups/security-center-subscription-coverage.png)
+
 3. Klikněte na **pokrytí** zobrazíte seznam předplatných zahrnuté. 
+
     ![Snímek obrazovky seznamu pokrytí předplatného](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Odebrat přístup se zvýšeným oprávněním 

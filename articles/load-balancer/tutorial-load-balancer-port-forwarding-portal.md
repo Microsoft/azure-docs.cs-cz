@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/18
+ms.date: 12/11/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: da41b33f3e5d24c0391c8486d9c0b372877eff21
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e376011feacd59c84686aa3d60a7e79e07d61dbd
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232188"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672946"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Kurz: Konfigurace přesměrování portu ve službě Azure Load Balancer pomocí portálu
 
@@ -53,7 +53,7 @@ Nejprve vytvořte veřejný load balancer úrovně Standard, která můžou vyro
    - **SKLADOVÁ POLOŽKA**: Vyberte **standardní**.
    - **Veřejná IP adresa**: Vyberte **vytvořit nový**, zadejte *MyPublicIP* v poli.
    - **Nakonfigurovat veřejnou IP adresu** > **zóna dostupnosti**: Vyberte **zónově redundantní**.
-   - **Skupina prostředků**: Vyberte **vytvořit nový**, zadejte *MyResourceGroupLB*a vyberte **OK**. 
+   - **ResourceGroup**: Vyberte **vytvořit nový**, zadejte *MyResourceGroupLB*a vyberte **OK**. 
    - **Umístění**: Vyberte **Západní Evropa**. 
      
      >[!NOTE]
@@ -74,7 +74,7 @@ Vytvoření virtuální sítě s dva virtuální počítače a přidání do bac
 1. V **vytvořit virtuální síť** podokně, zadejte nebo vyberte tyto hodnoty:
    
    - **Název**: Typ *MyVNet*.
-   - **Skupina prostředků**: Rozevírací nabídka **vybrat existující** a vyberte **MyResourceGroupLB**. 
+   - **ResourceGroup**: Rozevírací nabídka **vybrat existující** a vyberte **MyResourceGroupLB**. 
    - **Podsíť** > **název**: Typ *MyBackendSubnet*.
    
 1. Vyberte **Vytvořit**.

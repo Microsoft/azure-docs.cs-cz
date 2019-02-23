@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: c68d9c3d40ffa3d4a5a5ae635fbc0ea0a010239c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874732"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675105"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -90,7 +91,7 @@ Všimněte si, že velikost celkový počet souborů (bajty 4-7) a velikost "dat
 Po odeslání hlaviček WAV (RIFF), klient odešle bloky zvuková data. Klient bude obvykle datový proud pevnou velikost bloků dat představující pevnou platnost (například datový proud 100 MS zvuku současně).
 
 ### <a name="signal-the-end-of-the-utterance"></a>Signalizuje, že na konec utterance
-Translator Speech API vrátí přepisu a překladu zvukový datový proud jako e-mail posíláte zvuku. Konečné přepisu, konečný překlad a přeložený zvuk se vrátí, až po konec utterance. V některých případech můžete chtít vynutit ukončení utterance. Odešlete 2,5 sekundách nečinnosti vynutit ukončení utterance. 
+Translator Speech API vrátí přepisu a překladu zvukový datový proud jako e-mail posíláte zvuku. Konečné přepisu, konečný překlad a přeložený zvuk se vrátí, až po konec utterance. V některých případech můžete chtít vynutit ukončení utterance. Odešlete 2,5 sekundách nečinnosti vynutit ukončení utterance.
 
 ### <a name="final-result"></a>Konečný výsledek
 Na konci utterance se vygeneruje výsledek rozpoznání řeči finální. Výsledkem je ze služby předány klienta pomocí protokolu WebSocket zpráva typu Text. Obsah zprávy se serializací JSON objektu s následujícími vlastnostmi:
@@ -112,7 +113,7 @@ Ukázka konečný výsledek je následující:
 {
   type: "final"
   id: "23",
-  recognition: "what was said", 
+  recognition: "what was said",
   translation: "translation of what was said",
   audioStreamPosition: 319680,
   audioSizeBytes: 35840,
@@ -143,7 +144,7 @@ Ukázka konečný výsledek je následující:
 {
   type: "partial"
   id: "23.2",
-  recognition: "what was", 
+  recognition: "what was",
   translation: "translation of what was",
   audioStreamPosition: 319680,
   audioSizeBytes: 25840,
@@ -193,46 +194,3 @@ Když klientská aplikace dokončení vysílání datového proudu zvuku, obdrž
 |401    |Neautorizováno. Ujistěte se, že se přihlašovací údaje nastavené, že jsou platné a že vaše předplatné Azure Tržiště dat je v pořádku s dostupné vyrovnávání.|||
 |500    |Došlo k chybě. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|||
 |503    |Server je dočasně nedostupný. Zkuste prosím požadavek. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|||
-
-    
-
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-            
-
-
-
-
-        
-
-
-
-
-
-
-
-
-

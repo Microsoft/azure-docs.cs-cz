@@ -1,5 +1,5 @@
 ---
-title: Přidat služby Google jako zprostředkovatele identity pro Azure Active Directory s B2B | Dokumentace Microsoftu
+title: Přidat služby Google jako zprostředkovatele identity pro B2B – Azure Active Directory | Dokumentace Microsoftu
 description: Provést federaci se službou Google, aby uživatelé typu Host k přihlášení do aplikace Azure AD pomocí účtu Gmail
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d565d2215ac84d42b6682f4c4a52dd87278a70a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 283cf8d13260531a12fa6c860d1a4e7b6207d22e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206833"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674612"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
 

@@ -2,19 +2,19 @@
 title: Začínáme s dvojčaty zařízení Azure IoT Hub (Python) | Dokumentace Microsoftu
 description: Jak používat dvojče zařízení Azure IoT Hub pro přidání značek a následné použití k dotazu služby IoT Hub. Implementace aplikace simulovaného zařízení a app service, které přidá značky a spustí dotaz služby IoT Hub pomocí sad Azure IoT SDK pro Python.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 12/04/2017
+ms.date: 02/21/2019
 ms.author: kgremban
-ms.openlocfilehash: 5086c831f45fd9c8e411fb02b21d03795d747c8a
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 692639f42d893adcc4b865d3c76fed2d458c4d20
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514175"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670603"
 ---
 # <a name="get-started-with-device-twins-python"></a>Začínáme s dvojčaty zařízení (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -25,18 +25,16 @@ Na konci tohoto kurzu budete mít dvě aplikace konzoly v Pythonu:
 * **ReportConnectivity.py**, aplikace v Pythonu, která simuluje zařízení, která se připojuje ke službě IoT hub s dříve vytvořenou identitou zařízení a sestav stavu připojení.
 
 > [!NOTE]
-> Tento článek [sad SDK Azure IoT] [ lnk-hub-sdks] poskytuje informace o Azure IoT SDK, že vám pomůže vytvářet aplikace pro zařízení i back-end.
-> 
-> 
+> Tento článek [sad SDK Azure IoT](iot-hub-devguide-sdks.md) poskytuje informace o Azure IoT SDK, že vám pomůže vytvářet aplikace pro zařízení i back-end.
 
 K dokončení tohoto kurzu budete potřebovat následující:
 
-* [Python 2.x nebo 3.x][lnk-python-download]. Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém pro správu balíčků Pythonu][lnk-install-pip].
-* Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++][lnk-visual-c-redist].
-* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
+* [Python 2.x nebo 3.x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém správy balíčků Pythonu](https://pip.pypa.io/en/stable/installing/).
+* Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++](http://www.microsoft.com/download/confirmation.aspx?id=48145).
+* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 > [!NOTE]
-> Balíčky *pip* pro `azure-iothub-service-client` a `azure-iothub-device-client` jsou v současné době dostupné jenom pro operační systém Windows. Informace o operačních systémech Linux a Mac OS najdete v částech věnovaných těmto operačním systémům v příspěvku, v němž se autor věnuje [přípravě vývojových prostředí pro Python][lnk-python-devbox].
+> Balíčky *pip* pro `azure-iothub-service-client` a `azure-iothub-device-client` jsou v současné době dostupné jenom pro operační systém Windows. Linux/Mac OS, naleznete v části operačních systémů Linux a Mac OS konkrétní na [Příprava vývojového prostředí pro jazyk Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) příspěvku.
 > 
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
@@ -52,7 +50,7 @@ K dokončení tohoto kurzu budete potřebovat následující:
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-the-service-app"></a>Vytvoření aplikace služby
-V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umístění metadat do dvojčete zařízení spojené s vaší **{Id zařízení}**. Následně se dotazuje dvojčata zařízení, které jsou uložené ve službě IoT hub, výběrem zařízení umístěných v Redmondu a ty, které vykazují mobilní připojení.
+V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umístění metadat do dvojčete zařízení spojené s vaší **{ID zařízení}**. Následně se dotazuje dvojčata zařízení, které jsou uložené ve službě IoT hub, výběrem zařízení umístěných v Redmondu a ty, které vykazují mobilní připojení.
 
 1. Otevřete příkazový řádek a nainstalujte **sadu SDK služby Azure IoT Hub pro Python**. Po dokončení instalace sady SDK zavřete příkazový řádek.
 
@@ -70,7 +68,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umíst
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
     from iothub_service_client import IoTHubDeviceTwin, IoTHubError
     ```
-2. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Connection String]` a `[Device Id]` připojovacím řetězcem pro službu IoT hub a id zařízení, kterou jste vytvořili v předchozích částech.
+2. Přidejte následující kód a nahraďte zástupnou hodnotu `[IoTHub Connection String]` a `[Device Id]` připojovacím řetězcem pro službu IoT hub a ID zařízení, kterou jste vytvořili v předchozích částech.
    
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -152,7 +150,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který přidá umíst
 V další části můžete vytvořit aplikace pro zařízení, která hlásí informace o připojení a změní výsledek dotazu v předchozí části.
 
 ## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
-V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje k vašemu centru jako vaše **{Id zařízení}** a pak aktualizuje jeho dvojče zařízení uživatele ohlášené vlastnosti k obsahují informace, že je připojený pomocí mobilní síti.
+V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje k vašemu centru jako vaše **{ID zařízení}** a pak aktualizuje jeho dvojče zařízení uživatele ohlášené vlastnosti k obsahují informace, že je připojený pomocí mobilní síti.
 
 1. Otevřete příkazový řádek a nainstalujte **sadu SDK služby Azure IoT Hub pro Python**. Po dokončení instalace sady SDK zavřete příkazový řádek.
 
@@ -259,7 +257,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, který se připojuje 
     python AddTagsAndQuery.py
     ```
    
-    Tentokrát vaše **{Id zařízení}** by se měla objevit v obou výsledky dotazu.
+    Tentokrát vaše **{ID zařízení}** by se měla objevit v obou výsledky dotazu.
    
     ![druhý dotaz][3]
 
@@ -268,37 +266,11 @@ V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a 
 
 Pomocí následujících zdrojích se dozvíte jak:
 
-* odesílání telemetrie ze zařízení s [Začínáme se službou IoT Hub] [ lnk-iothub-getstarted] kurzu
-* Konfigurace zařízení pomocí požadované vlastnosti dvojčete zařízení s [použití požadované vlastnosti ke konfiguraci zařízení] [ lnk-twin-how-to-configure] kurzu
-* kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem), se [použití přímých metod] [ lnk-methods-tutorial] kurzu.
+* Odesílání telemetrie ze zařízení s [Začínáme se službou IoT Hub](quickstart-send-telemetry-python.md) kurzu
+* Konfigurace zařízení pomocí požadované vlastnosti dvojčete zařízení s [použití požadované vlastnosti ke konfiguraci zařízení](tutorial-device-twins.md) kurzu
+* Kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem), se [použití přímých metod](quickstart-control-device-python.md) kurzu.
 
 <!-- images -->
 [1]: media/iot-hub-python-twin-getstarted/1.png
 [2]: media/iot-hub-python-twin-getstarted/2.png
 [3]: media/iot-hub-python-twin-getstarted/3.png
-
-<!-- links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-[lnk-python-devbox]: https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md
-
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
-[lnk-methods]: iot-hub-devguide-direct-methods.md
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-identity]: iot-hub-devguide-identity-registry.md
-
-[lnk-iothub-getstarted]: quickstart-send-telemetry-python.md
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/quickstart-linux.md
-[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-
-[lnk-twin-how-to-configure]: tutorial-device-twins.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-methods-tutorial]: quickstart-control-device-node.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md

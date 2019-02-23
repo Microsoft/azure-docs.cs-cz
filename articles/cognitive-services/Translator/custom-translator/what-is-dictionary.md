@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 87ea4edd9bb548701d6bcf63dd542ed6e35d9f7f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.topic: conceptual
+ms.openlocfilehash: 2b7e709a06797323cc99bfd636ee26e9bfb8026d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585540"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731850"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 
@@ -22,7 +22,7 @@ Slovník je zarovnaný páru dokumentů, která určuje seznam fráze nebo věty
 
 Slovníky fungovat pouze pro projekty v párech jazyka, které mají plně podporovaný systém Neurální strojový překlad (sítí NMT) společnosti Microsoft za nimi stojí. [Zobrazit úplný seznam jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="phrase-dictionary"></a>Fráze slovníku 
+## <a name="phrase-dictionary"></a>Fráze slovníku
 Při cvičení modelu zahrnete fráze slovníku, je přeložen libovolné slovo nebo frázi, které jsou uvedeny v způsob, jakým jste zadali. Zbývající věty je přeložen jako obvykle. Fráze slovníku můžete použít k určení frázích, které nemá být přeložen tím, že poskytuje stejnou nepřeloženém frázi v souboru zdroj a cíl ve slovníku.
 
 ## <a name="sentence-dictionary"></a>Slovník větu
@@ -36,9 +36,9 @@ Můžete trénování modelu s použitím pouze data slovníku. Provedete to tak
 
 ## <a name="recommendations"></a>Doporučení
 
-- Slovníky nejsou náhradou za trénovaného modelu s trénovací data.  Slovníky sloučených v podstatě najít a nahradit slova nebo věty.  Umožněte systému, Učte se od vaše školicí materiály v celé věty je obecně vhodnější než použití slovníku. 
+- Slovníky nejsou náhradou za trénovaného modelu s trénovací data.  Slovníky sloučených v podstatě najít a nahradit slova nebo věty.  Umožněte systému, Učte se od vaše školicí materiály v celé věty je obecně vhodnější než použití slovníku.
 - Fráze slovníku měly používat střídmě. Když se nahradí frázi v rámci věty, kontextu v rámci této věty dojde ke ztrátě nebo omezené pro převod rest věty. Výsledkem je, že při fráze nebo slov v rámci věty přeloží podle fráze slovníku, často sníží celkovou kvalitu překladu věty.
-- Fráze slovníku dobře funguje pro složená, jako jsou názvy produktů ("Microsoft SQL Server"), správné názvy ("City Hamburk") nebo funkce produktů ("kontingenční tabulky"). To nebude fungovat stejně dobře pro příkazy nebo přídavných jmen, protože ty jsou obvykle vysoce Gramatický tvar ve zdrojovém nebo cílovém jazyce. Vyhněte se položky fráze slovníku pro jakoukoliv složená. 
+- Fráze slovníku dobře funguje pro složená, jako jsou názvy produktů ("Microsoft SQL Server"), správné názvy ("City Hamburk") nebo funkce produktů ("kontingenční tabulky"). To nebude fungovat stejně dobře pro příkazy nebo přídavných jmen, protože ty jsou obvykle vysoce Gramatický tvar ve zdrojovém nebo cílovém jazyce. Vyhněte se položky fráze slovníku pro jakoukoliv složená.
 - Při použití slovníku, bude odrážet malá a velká písmena a interpunkce v překlady malá a velká písmena a interpunkční znaménka, které jsou k dispozici v cílovém souboru. Malá a velká písmena a interpunkční znaménka jsou ignorovány při pokusu o identifikaci shody mezi vstupní věty a věty zdroje v souboru slovníku. Řekněme například, že jsme školili anglické Španělština systému, který se používá slovník, že zadané "City Hamburk" ve zdrojovém souboru a "Ciudad de univerzitní nemocnice hamburg" v cílovém souboru. Pokud jsem si vyžádali překladu věty zahrnující frázi "city Hamburg", pak "city Hamburg" odpovídá souboru slovníku pro položku "City Hamburg" a by mapování na "Ciudad de univerzitní nemocnice hamburg" v mé konečný překlad.
 - Pokud u slov velká uveden více než jednou v souboru slovníku, systém bude vždy používat poslední položky, které jsou k dispozici. Slovník, nesmí obsahovat více překlady téhož slova.
 

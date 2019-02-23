@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 91814579675882ba969f5903ebeddcebbcbd6616
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 45824ba93e86622b1bbd92aae01f18f89bee6adf
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301532"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673338"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -230,6 +230,7 @@ V závislosti na vlastnostech vaší aplikace můžete začít několika způsob
 * [Webová aplikace ASP.NET](../../azure-monitor/app/asp-net.md)
 * [Webová aplikace Java](../../azure-monitor/app/java-get-started.md)
 * [Webová aplikace Node.js](../../azure-monitor/app/nodejs.md)
-* Již nasazené aplikace hostované na [IIS](../../azure-monitor/app/monitor-web-app-availability.md), [platformě Java EE určený](../../azure-monitor/app/java-live.md), nebo [Azure](../../azure-monitor/app/app-insights-overview.md).
+* Již nasazené aplikace hostované na [služby IIS](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Azure](../../azure-monitor/app/app-insights-overview.md).
 * [Webové stránky](../../azure-monitor/app/javascript.md) – Samostatná webová stránka nebo obyčejná webová stránka – tuto možnost můžete použít samotnou nebo společně s jakoukoli z možností serveru.
 * [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) pro účely testování aplikace z veřejného internetu.

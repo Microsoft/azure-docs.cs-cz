@@ -9,12 +9,12 @@ ms.service: backup, virtual-machines
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 518d171c96b9c4f9bf3e195a7130f4c022b7ad07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0cb1d925d4f9c67439b3c96a85088102c7d0e05c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879872"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737191"
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Povolit zálohování během vytváření virtuálních počítačů Azure 
 
@@ -70,8 +70,8 @@ Pro povolení zálohování během vytváření virtuálních počítačů jsou 
 - **Red Hat** -RHEL 6.7, 6.8 6.9, 7.2, 7.3, 7.4 
 - **SUSE** -SP4 operačním systémem SUSE Linux Enterprise Server 11, 12 SP2, 12 SP3 
 - **Debian** – Debian 8, Debian 9 
-- **CentOS** -CentOS 6.9, CentOS 7.3 
-- **Oracle Linux** – Oracle Linux 6.7, 6.8 6.9, 7.2, 7.3 
+- **CentOS** - CentOS 6.9, CentOS 7.3 
+- **Oracle Linux** - Oracle Linux 6.7, 6.8, 6.9, 7.2, 7.3 
  
 ### <a name="is-backup-cost-included-in-the-vm-cost"></a>Je záložní cena součástí cena za virtuální počítače? 
 

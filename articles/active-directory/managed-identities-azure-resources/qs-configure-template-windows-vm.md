@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fdabc16e191fb265b15af4a6d4a57cb749adc9f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 30702aae0dd54e2acf8d2a328696f50d13b82b74
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202549"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734196"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony
 
@@ -202,14 +202,14 @@ Následující příklad ukazuje, jak odebrat spravovanou identitu systém při�
 }
 ```
 
-## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
 
 V této části přiřadíte spravovanou identitu uživatelsky přiřazené k virtuálnímu počítači Azure pomocí šablony Azure Resource Manageru.
 
 > [!Note]
 > Vytvoření uživatelsky přiřazené spravovanou identitu pomocí šablony Azure Resource Manageru najdete v tématu [vytvoření uživatelsky přiřazené identity spravované](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
- ### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Spravované identity přiřazené uživateli přiřadit Virtuálním počítači Azure
+### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Spravované identity přiřazené uživateli přiřadit Virtuálním počítači Azure
 
 K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí váš účet [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) přiřazení rolí. Žádné další Azure AD přiřazení rolí adresáře se vyžadují.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: cdbce2073213906dbb82b0684f8ef4e3528f6cf4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0afc507a49ae7cc54fb0daa5c7ae71c3a40ee637
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652692"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731102"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Log Analytics, která z počítače načítá různé konfigurace týkající se zabezpečení a protokolů událostí a zkopíruje data na váš pracovní prostor pro analýzu. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agenta Log Analytics také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -266,7 +266,8 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
   > [!NOTE]
   > V části **shromažďování dat o událostech a výkonu** je volitelný.
   >
-6. Použití Powershellu k nasazení rozšíření, použijte následující příklad Powershellu:
+6. Použití Powershellu k nasazení rozšíření, použijte následující příklad Powershellu:  [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+   
     1.  Přejděte na **Log Analytics** a klikněte na **upřesňující nastavení**.
     
         ![Nastavení log analytics][11]
@@ -288,11 +289,11 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
 
       - Při instalaci na virtuálním počítači s Windows:
         
-             Set-AzureRmVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+             Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
     
        - Při instalaci na virtuální počítač s Linuxem:
         
-             Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+             Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
 > [!NOTE]
 > Pokyny, jak připojit Centrum zabezpečení pomocí Powershellu, v tématu [automatizace registrace služby Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).

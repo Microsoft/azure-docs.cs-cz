@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 17/07/2018
+ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: d5d344f47fa46e9fe0adea048db200ec67a3fadc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 1f0f9c548d9b3c8a7df2d356bcb4c5f993285c28
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262574"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670403"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -51,7 +51,7 @@ Tato příručka popisuje, jak nastavit Azure konektoru pro SAP LaMa, vytvořit 
 
 Následující poznámky SAP se vztahují na téma o LaMa SAP v Azure:
 
-| Poznámka: číslo | Titul |
+| Poznámka: číslo | Název |
 | --- | --- |
 | [2343511] |Konektor Microsoft Azure pro správu SAP na šířku (LaMa) |
 | [2350235] |SAP Landscape Management 3.0 – Enterprise edition |

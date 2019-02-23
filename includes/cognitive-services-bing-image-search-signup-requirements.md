@@ -4,11 +4,11 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/08/2018
-ms.openlocfilehash: 8ef93b4d126bd0774d9b26ff627c40f73c78d960
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e783605a830bfdd19d17a58c993f91b284fb2319
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40100113"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738942"
 ---
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) zdarma. Než budete pokračovat, budete potřebovat přístupový klíč k dispozici po aktivaci vaší bezplatné zkušební verze nebo placené předplatné klíč z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si zdarma [vytvořit účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Než budete pokračovat, budete potřebovat přístupový klíč k dispozici po aktivaci vaší bezplatné zkušební verze nebo placené předplatné klíč z řídicího panelu Azure.

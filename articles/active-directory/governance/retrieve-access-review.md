@@ -1,6 +1,6 @@
 ---
-title: Načtení výsledků kontroly přístupu k Azure AD | Microsoft Docs
-description: Přečtěte si, jak načíst výsledky kontrol přístupu do Azure Active Directory.
+title: Načíst výsledky kontroly přístupu pro skupiny a aplikace v kontrol přístupu Azure AD | Dokumentace Microsoftu
+description: Zjistěte, jak načíst výsledky kontroly přístupu pro členy skupiny nebo přístupu k aplikacím v kontrol přístupu Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dccacb82b34e7e257fcee9632045f12839b5425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a422f619c4ef63da59516ff2748683eb0f7f70
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210794"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726683"
 ---
-# <a name="retrieve-access-review-results"></a>Načtení výsledků kontroly přístupu
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Načíst výsledky kontroly přístupu pro skupiny a aplikace v kontrol přístupu Azure AD
 
 Správci můžou pomocí Azure Active Directory (Azure AD) [vytvořit kontrolu přístupu](create-access-review.md) pro členy skupiny nebo uživatele přiřazené k aplikaci.  Uživatel, který je v roli **Globální správce**, **Správce uživatelských účtů**, **Správce zabezpečení** nebo **Čtenář zabezpečení**, může také číst výsledky kontroly přístupu.  Pokud chcete uživatele přiřadit k jedné z těchto rolí, může Správce privilegovaných rolí pomocí nástroje Azure Active Directory Privileged Identity Management nastavit u uživatele nárok na aktivaci role, nebo Globální správce může trvale [přiřadit uživatele k roli](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
@@ -55,7 +55,7 @@ Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure Activ
 - [Správa přístupu uživatelů pomocí kontrol přístupu Azure AD](manage-user-access-with-access-reviews.md)
 - [Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD](manage-guest-access-with-access-reviews.md)
 - [Správa programů a ovládacích prvků pro kontroly přístupu Azure AD](manage-programs-controls.md)
-- [Vytváření kontroly přístupu pro členy skupiny nebo přístupu k aplikaci](create-access-review.md)
+- [Vytvoření kontroly přístupu skupiny nebo aplikace](create-access-review.md)
 - [Vytváření kontroly přístupu uživatelů v roli správce Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 

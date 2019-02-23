@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: c498cbb5f164e5979aac07eb87ea899063525330
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 48552105ddd2defb0f38350c7840cd8ded40ab0f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592770"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672827"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s IPv6 pomocí prostředí PowerShell pro Resource Manager
 
@@ -67,7 +67,7 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
 
 1. Přihlaste se k Azure
 
-    ```powershell
+    ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
@@ -75,19 +75,19 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
 
 2. Zkontrolujte předplatná pro příslušný účet.
 
-    ```powershell
+   ```azurepowershell-interactive
     Get-AzSubscription
     ```
 
 3. Zvolte předplatné Azure, které chcete použít.
 
-    ```powershell
+    ```azurepowershell-interactive
     Select-AzSubscription -SubscriptionId 'GUID of subscription'
     ```
 
 4. Vytvořte skupinu prostředků (Pokud se používá existující skupina prostředků Tenhle krok přeskočit)
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzResourceGroup -Name NRP-RG -location "West US"
     ```
 
@@ -95,14 +95,14 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
 
 1. Vytvoření virtuální sítě k podsíti.
 
-    ```powershell
+    ```azurepowershell-interactive
     $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
 2. Vytvořte Azure veřejná IP adresa (PIP) prostředky pro front-endový fond IP adres. Nezapomeňte změnit hodnotu pro `-DomainNameLabel` před spuštěním následujících příkazů. Hodnota musí být jedinečný v rámci oblasti Azure.
 
-    ```powershell
+    ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
     $publicIPv6 = New-AzPublicIpAddress -Name 'pub-ipv6' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Dynamic -IpAddressVersion IPv6 -DomainNameLabel lbnrpipv6
     ```
@@ -114,14 +114,14 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
 
 1. Vytvořte konfiguraci front-endu adresy používá veřejné IP adresy, kterou jste vytvořili.
 
-    ```powershell
+    ```azurepowershell-interactive
     $FEIPConfigv4 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv4" -PublicIpAddress $publicIPv4
     $FEIPConfigv6 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv6" -PublicIpAddress $publicIPv6
     ```
 
 2. Vytvořte fondy adres back endu.
 
-    ```powershell
+    ```azurepowershell-interactive
     $backendpoolipv4 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv4"
     $backendpoolipv6 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv6"
     ```
@@ -138,7 +138,7 @@ Tento příklad vytvoří následující položky:
 
 1. Vytvořte pravidla překladu adres (NAT).
 
-    ```powershell
+    ```azurepowershell-interactive
     $inboundNATRule1v4 = New-AzLoadBalancerInboundNatRuleConfig -Name "NicNatRulev4" -FrontendIpConfiguration $FEIPConfigv4 -Protocol TCP -FrontendPort 443 -BackendPort 4443
     $inboundNATRule1v6 = New-AzLoadBalancerInboundNatRuleConfig -Name "NicNatRulev6" -FrontendIpConfiguration $FEIPConfigv6 -Protocol TCP -FrontendPort 443 -BackendPort 4443
     ```
@@ -147,13 +147,13 @@ Tento příklad vytvoří následující položky:
 
     Test protokolu HTTP
 
-    ```powershell
+    ```azurepowershell-interactive
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
     nebo test protokolu TCP
 
-    ```powershell
+    ```azurepowershell-interactive
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -Protocol Tcp -Port 8080 -IntervalInSeconds 15 -ProbeCount 2
     $RDPprobe = New-AzLoadBalancerProbeConfig -Name 'RDPprobe' -Protocol Tcp -Port 3389 -IntervalInSeconds 15 -ProbeCount 2
     ```
@@ -162,7 +162,7 @@ Tento příklad vytvoří následující položky:
 
 3. Vytvořte pravidlo nástroje pro vyrovnávání zatížení.
 
-    ```powershell
+    ```azurepowershell-interactive
     $lbrule1v4 = New-AzLoadBalancerRuleConfig -Name "HTTPv4" -FrontendIpConfiguration $FEIPConfigv4 -BackendAddressPool $backendpoolipv4 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 8080
     $lbrule1v6 = New-AzLoadBalancerRuleConfig -Name "HTTPv6" -FrontendIpConfiguration $FEIPConfigv6 -BackendAddressPool $backendpoolipv6 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 8080
     $RDPrule = New-AzLoadBalancerRuleConfig -Name "RDPrule" -FrontendIpConfiguration $FEIPConfigv4 -BackendAddressPool $backendpoolipv4 -Probe $RDPprobe -Protocol Tcp -FrontendPort 3389 -BackendPort 3389
@@ -170,7 +170,7 @@ Tento příklad vytvoří následující položky:
 
 4. Vytvoření nástroje pro vyrovnávání zatížení pomocí dříve vytvořeného objektů.
 
-    ```powershell
+    ```azurepowershell-interactive
     $NRPLB = New-AzLoadBalancer -ResourceGroupName NRP-RG -Name 'myNrpIPv6LB' -Location 'West US' -FrontendIpConfiguration $FEIPConfigv4,$FEIPConfigv6 -InboundNatRule $inboundNATRule1v6,$inboundNATRule1v4 -BackendAddressPool $backendpoolipv4,$backendpoolipv6 -Probe $healthProbe,$RDPprobe -LoadBalancingRule $lbrule1v4,$lbrule1v6,$RDPrule
     ```
 
@@ -178,14 +178,14 @@ Tento příklad vytvoří následující položky:
 
 1. Získejte virtuální síť a virtuální síť podsíť, ve kterém je potřeba vytvořit síťová rozhraní.
 
-    ```powershell
+    ```azurepowershell-interactive
     $vnet = Get-AzVirtualNetwork -Name VNet -ResourceGroupName NRP-RG
     $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
     ```
 
 2. Vytvoření konfigurace IP adresy a síťové adaptéry pro virtuální počítače.
 
-    ```powershell
+    ```azurepowershell-interactive
     $nic1IPv4 = New-AzNetworkInterfaceIpConfig -Name "IPv4IPConfig" -PrivateIpAddressVersion "IPv4" -Subnet $backendSubnet -LoadBalancerBackendAddressPool $backendpoolipv4 -LoadBalancerInboundNatRule $inboundNATRule1v4
     $nic1IPv6 = New-AzNetworkInterfaceIpConfig -Name "IPv6IPConfig" -PrivateIpAddressVersion "IPv6" -LoadBalancerBackendAddressPool $backendpoolipv6 -LoadBalancerInboundNatRule $inboundNATRule1v6
     $nic1 = New-AzNetworkInterface -Name 'myNrpIPv6Nic0' -IpConfiguration $nic1IPv4,$nic1IPv6 -ResourceGroupName NRP-RG -Location 'West US'
@@ -201,7 +201,7 @@ Další informace o vytvoření virtuálního počítače najdete v tématu [vyt
 
 1. Vytvoření skupiny dostupnosti a úložiště účtu
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzAvailabilitySet -Name 'myNrpIPv6AvSet' -ResourceGroupName NRP-RG -location 'West US'
     $availabilitySet = Get-AzAvailabilitySet -Name 'myNrpIPv6AvSet' -ResourceGroupName NRP-RG
     New-AzStorageAccount -ResourceGroupName NRP-RG -Name 'mynrpipv6stacct' -Location 'West US' -SkuName "Standard_LRS"
@@ -210,7 +210,7 @@ Další informace o vytvoření virtuálního počítače najdete v tématu [vyt
 
 2. Každý virtuální počítač vytvořit a přiřadit předchozí vytvořené síťové karty
 
-    ```powershell
+    ```azurepowershell-interactive
     $mySecureCredentials= Get-Credential -Message "Type the username and password of the local administrator account."
 
     $vm1 = New-AzVMConfig -VMName 'myNrpIPv6VM0' -VMSize 'Standard_G1' -AvailabilitySetId $availabilitySet.Id

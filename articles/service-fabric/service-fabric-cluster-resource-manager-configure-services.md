@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea781b5dbbf09c0a21fbcf781ae129295d02dbad
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 55d75bb0bae4bf3feb370b7fdf4d80dc43bdc0ca
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054787"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736885"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurace nastavení správce prostředků clusteru služby Service Fabric
 Service Fabric Cluster Resource Manager umožňuje velice přesně kontrolovat, pravidla, kterými se řídí každé jednotlivé s názvem služby. Každá služba s názvem můžete určit pravidla pro jak by měly být přiděleny v clusteru. Každá služba s názvem, můžete také definovat sadu metriky, které chce do sestavy, včetně jak důležité jsou na tuto službu. Konfigurace služeb rozdělí do tří různých úloh:

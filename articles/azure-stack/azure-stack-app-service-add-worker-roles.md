@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 02/22/2010
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 0ac20ee9f6197a8322bb741020aee813c690847e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 839fa7fe8374f1f85b019178d4c3fe53f7137372
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445879"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729640"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>App Service v Azure stacku: Přidat další infrastrukturu nebo pracovní role
 
@@ -37,11 +37,6 @@ App Service ve službě Azure Stack, ve výchozím nastavení, podporuje vrstvy 
 Pokud si nejste jisti, co byla nasazena s výchozí služby App Service na instalaci služby Azure Stack, najdete další informace v [služby App Service v Azure stacku přehled](azure-stack-app-service-overview.md).
 
 Azure App Service ve službě Azure Stack nasazuje všech rolí pomocí Škálovací sady virtuálních počítačů a jako takový využívá možnosti škálování této úlohy. Proto všechny škálování vrstvy pracovních procesů se provádí prostřednictvím Správce App Service.
-
-> [!IMPORTANT]
-> Aktuálně není možné škálovat škálovací sady virtuálních počítačů na portálu jsme uvedli v poznámkách k verzi Azure Stack, proto použijte příklad Powershellu pro horizontální navýšení kapacity.
->
->
 
 ## <a name="add-additional-workers-with-powershell"></a>Přidat další pracovní procesy s využitím Powershellu
 
@@ -80,7 +75,7 @@ Azure App Service ve službě Azure Stack nasazuje všech rolí pomocí Škálov
 
 3. Monitorování stavu nové instance rolí v aplikaci Správa služby, chcete-li zkontrolovat stav instance jednotlivých rolí klikněte na typ role v seznamu.
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Přidat další pracovní procesy přímo v rámci správce poskytovatele prostředků služby aplikace
+## <a name="add-additional-workers-using-the-administration-portal"></a>Přidat další pracovní procesy pomocí portálu pro správu
 
 1. Přihlaste se k portálu pro správu služby Azure Stack jako správce služeb.
 

@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 0be1814fd501824056bc80d4aeb561ff58735125
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 02/22/2019
+ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447442"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737480"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -307,6 +307,16 @@ Instanci systému SQL Server pro službu Azure App Service ve službě Azure Sta
 > Počet imagí virtuálních počítačů SQL IaaS jsou dostupné prostřednictvím funkce pro správu webu Marketplace. Ujistěte se, že můžete kdykoli stáhnout nejnovější verzi rozšíření SQL IaaS, před nasazením virtuálního počítače pomocí položky Marketplace. Image s SQL serverem jsou stejné jako virtuální počítače SQL, které jsou dostupné v Azure. Pro virtuální počítače vytvořené z těchto imagí rozšíření IaaS a odpovídající portálu vylepšení SQL poskytují funkce, jako jsou automatické opravy a zálohování.
 >
 Pro všechny role systému SQL Server můžete použít výchozí instance nebo pojmenované instance. Pokud používáte pojmenovanou instanci, je potřeba ručně spusťte službu SQL Server Browser a otevřete port 1434.
+
+Instalační program služby App Service zkontroluje, ujistěte se, že systém SQL Server má povolené členství ve skupině databází. Pokud chcete povolit omezení databáze na SQL serveru, který bude hostitelem databáze služby App Service, spusťte tyto příkazy SQL:
+
+```sql
+sp_configure 'contained database authentication', 1;  
+GO  
+RECONFIGURE;  
+GO
+```
+
 
 >[!IMPORTANT]
 > Pokud budete chtít nasadit službu App Service v existující virtuální sítě serveru SQL Server musí být nasazené do samostatné podsítě služby App Service a souborový Server.

@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/23/2018
+ms.date: 02/21/2019
 ms.author: kumud
-ms.openlocfilehash: 1142b808d0b992f5a9216f8a1ca247d8af2da16a
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: aa042237eaf3afb219a7ac3260d6e16a77cc8719
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592345"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671756"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí Azure Powershellu
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
-```powershell
+```azurepowershell-interactive
 Connect-AzAccount
 ```
 
@@ -44,14 +44,14 @@ Connect-AzAccount
 
 Vytvořte skupinu prostředků pomocí následujícího příkazu:
 
-```powershell
+```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location westeurope
 ```
 
 ## <a name="create-a-public-ip-standard"></a>Vytvoření veřejného standardní IP 
 Vytvořte veřejné IP Standard pomocí následujícího příkazu:
 
-```powershell
+```azurepowershell-interactive
 $publicIp = New-AzPublicIpAddress -ResourceGroupName myResourceGroup -Name 'myPublicIP' `
   -Location westeurope -AllocationMethod Static -Sku Standard
 ```
@@ -60,7 +60,7 @@ $publicIp = New-AzPublicIpAddress -ResourceGroupName myResourceGroup -Name 'myPu
 
 Vytvoření konfigurace IP front-endu pomocí následujícího příkazu:
 
-```powershell
+```azurepowershell-interactive
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEndPool' -PublicIpAddress $publicIp
 ```
 
@@ -68,7 +68,7 @@ $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEndPool' -PublicIpAddre
 
 Vytvořte fond back-end adres pomocí následujícího příkazu:
 
-```powershell
+```azurepowershell-interactive
 $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ```
 
@@ -76,7 +76,7 @@ $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 
 Vytvoření sondy stavu na portu 80 pro nástroj pro vyrovnávání zatížení pomocí následujícího příkazu:
 
-```powershell
+```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
   -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
 ```
@@ -84,14 +84,14 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
  Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí následujícího příkazu:
 
-```powershell
+```azurepowershell-interactive
    $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
 ## <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 Vytvořte Standard pro vyrovnávání zatížení pomocí následujícího příkazu:
 
-```powershell
+```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalancer' -Location westeurope `
   -FrontendIpConfiguration $feip -BackendAddressPool $bepool `
   -Probe $probe -LoadBalancingRule $rule -Sku Standard

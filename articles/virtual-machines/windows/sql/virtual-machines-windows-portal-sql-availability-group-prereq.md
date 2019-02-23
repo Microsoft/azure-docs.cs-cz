@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7aebdace6b6200f400d0c642c8cbdc6d31544752
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818018"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733023"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Zajistěte splnění požadavků pro vytváření skupin dostupnosti AlwaysOn na virtuálních počítačích Azure
 
@@ -85,7 +85,7 @@ Vytvoření virtuální sítě:
    | --- | --- |
    | **Název** |autoHAVNET |
    | **Adresní prostor** |10.33.0.0/24 |
-   | **Název podsítě** |Správce |
+   | **Název podsítě** |Správa |
    | **Rozsah adres podsítě** |10.33.0.0/29 |
    | **Předplatné** |Určete předplatné, kterou chcete použít. **Předplatné** je prázdné, pokud máte pouze jedno předplatné. |
    | **Skupina prostředků** |Zvolte **použít existující** a vyberte název skupiny prostředků. |
@@ -308,7 +308,7 @@ Jakmile server dokončí změny konfigurace, restartujte server.
 
 Na webu Azure Portal, v rámci virtuální sítě změňte obsahující IP adresu řadiče domény sekundární Server DNS. Toto nastavení umožňuje redundance služby DNS.
 
-### <a name=DomainAccounts></a> Konfigurace účtů domény
+### <a name="DomainAccounts"></a> Konfigurace účtů domény
 
 V dalších krocích konfigurace účtů služby Active Directory. V následující tabulce jsou uvedeny účty:
 

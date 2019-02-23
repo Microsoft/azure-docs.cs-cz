@@ -7,17 +7,17 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.date: 02/21/2019
+ms.openlocfilehash: e87f9b4905abec2c00ed238445b3e36e41cfa2f6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408829"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674867"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pokud chcete použít Azure Data Explorer, musíte nejdříve vytvořit *cluster* a v něm vytvořit jednu nebo více *databází*. Do databáze potom *ingestujete* (načtete) data, abyste se na ně mohli dotazovat spouštěním dotazů. V tomto rychlém startu vytvoříte cluster a databázi. V dalších článcích vám ukážeme, jak ingestovat data.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databázi.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -27,7 +27,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Cluster Azure Data Exploreru vytvoříte ve skupině prostředků Azure s definovanou sadou výpočetních prostředků a prostředků úložiště.
+Vytvoření clusteru Průzkumník dat Azure s definovanou sadou výpočetních a úložných prostředků ve skupině prostředků Azure.
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
@@ -37,28 +37,22 @@ Cluster Azure Data Exploreru vytvoříte ve skupině prostředků Azure s defino
 
 1. V dolní části obrazovky v části **Azure Data Explorer** vyberte **Vytvořit**.
 
-1. Zadejte pro svůj cluster jedinečný název, vyberte svoje předplatné a vytvořte skupinu prostředků s názvem *test-resource-group*.
-
-    ![Vytvoření skupiny prostředků](media/create-cluster-database-portal/create-resource-group.png)
-
-1. Do formuláře zadejte následující informace.
+1. Vyplňte údaje o základní cluster s následujícími informacemi.
 
    ![Formulář pro vytvoření clusteru](media/create-cluster-database-portal/create-cluster-form.png)
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Název clusteru | Jedinečný název clusteru | Zvolte jedinečný název, který identifikuje váš cluster. Například *mytestcluster*. K názvu clusteru, který zadáte, bude připojen název domény *[oblast].kusto.windows.net*. Název může obsahovat jenom malá písmena a číslice. Musí se skládat ze 3 až 22 znaků.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj cluster.|
-    | Skupina prostředků | *test-resource-group* | Vytvořte novou skupinu prostředků. |
+    | Skupina prostředků | *test-resource-group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
+    | Název clusteru | Jedinečný název clusteru | Zvolte jedinečný název, který identifikuje váš cluster. Například *mydataexplorercluster*. K názvu clusteru, který zadáte, bude připojen název domény *[oblast].kusto.windows.net*. Název může obsahovat jenom malá písmena a číslice. Musí se skládat ze 3 až 22 znaků.
     | Umístění | *Západní USA* | V tomto rychlém startu vyberte *Západní USA*. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám.
     | Specifikace výpočetních prostředků | *D13_v2* | Pro tento rychlý start vyberte specifikaci nejnižší ceny. Pro produkční systém vyberte specifikaci, která nejlépe vyhovuje vašim potřebám.
     | | |
 
-1. Výběrem možnosti **Vytvořit** spusťte zřizování clusteru. Zřizování obvykle trvá asi deset minut. Pokud chcete proces zřizování monitorovat, vyberte na panelu nástrojů **Oznámení**.
+1. Vyberte **zkontrolujte + vytvořit** zobrazíte podrobnosti o clusteru, a **vytvořit** ke zřízení clusteru. Zřizování obvykle trvá asi 10 minut.
 
-    ![Oznámení](media/create-cluster-database-portal/notifications.png)
-
-1. Po dokončení procesu vyberte **Oznámení** a pak vyberte **Přejít k prostředku**.
+1. Po dokončení nasazení vyberte **přejít k prostředku**.
 
     ![Přejít k prostředku](media/create-cluster-database-portal/notification-resource.png)
 
@@ -68,7 +62,7 @@ Teď jste připraveni na druhý krok procesu: vytvoření databáze.
 
 1. Na kartě **Přehled** vyberte **Vytvořit databázi**.
 
-    ![Druhý krok: vytvoření databáze](media/create-cluster-database-portal/database-creation.png)
+    ![Krok 2: vytvoření databáze](media/create-cluster-database-portal/database-creation.png)
 
 1. Do formuláře zadejte následující informace.
 
@@ -78,26 +72,22 @@ Teď jste připraveni na druhý krok procesu: vytvoření databáze.
     |---|---|---|
     | Název databáze | *TestDatabase* | Název databáze musí být v rámci clusteru jedinečný.
     | Doba uchovávání | *3650* | Časové období (ve dnech) u kterého je zaručeno, že je udržuje k dispozici pro dotazy. Časový rozsah se začíná měřit od okamžiku, kdy jsou data ingestována.
-    | Doba uložení v mezipaměti | *31* | Časový interval (ve dnech), pro které chcete ponechat často dotazovat data k dispozici v úložiště SSD nebo paměti RAM, nikoli v dlouhodobé úložiště.
+    | Doba uložení v mezipaměti | *31* | Časový interval (ve dnech), pro které chcete zachovat často načtená data k dispozici v úložišti SSD nebo paměti RAM, nikoli v dlouhodobé úložiště.
     | | | |
 
-1. Výběrem možnosti **Uložit** vytvořte databázi. Vytvoření obvykle trvá méně než minutu. Po dokončení procesu budete zpět na kartě **Přehled** clusteru.
+1. Vyberte **vytvořit** k vytvoření databáze. Vytvoření obvykle trvá méně než minutu. Po dokončení procesu budete zpět na kartě **Přehled** clusteru.
 
 ## <a name="run-basic-commands-in-the-database"></a>Spuštění základních příkazů v databázi
 
 Teď, když máte cluster a databázi, můžete spouštět dotazy a příkazy. V databázi ještě nemáte žádná data, i tak ale můžete vidět, jak nástroje fungují.
 
-1. V rámci svého clusteru vyberte **Dotaz**.
-
-    ![Databázový dotaz](media/create-cluster-database-portal/query-database.png)
-
-1. Do okna dotazu vložte následující příkaz: `.show databases` a pak vyberte **Spustit**.
+1. V rámci svého clusteru vyberte **Dotaz**. Vložte příkaz `.show databases` do okna dotazu vyberte **spustit**.
 
     ![Příkaz Show databases](media/create-cluster-database-portal/show-databases.png)
 
     Sada výsledků dotazu obsahuje databázi **TestDatabase**, což je jediná databáze v clusteru.
 
-1. Do okna dotazu vložte následující příkaz: `.show tables` a tento příkaz pak vyberte v okně. Vyberte **Run** (Spustit).
+1. Vložte příkaz `.show tables` do okna dotazu a vyberte **spustit**.
 
     Tento příkaz vrátí prázdnou sadu výsledků dotazu, protože zatím nemáte žádné tabulky. Tabulku přidáte v dalším článku v této sérii.
 
@@ -111,21 +101,15 @@ Cluster můžete v závislosti na potřebách firmy zastavit a restartovat.
 
 1. Cluster restartujete tak, že v horní části karty **Přehled** vyberete možnost **Spustit**.
 
-    Při restartování clusteru to trvá přibližně deset minut, než bude cluster k dispozici (podobně jako při jeho prvotním zřizování). Chvíli pak také trvá načtení dat do aktivní mezipaměti.  
+    Při restartování clusteru trvá asi 10 minut, než je k dispozici (např. když byla původně zřízena). Chvíli pak také trvá načtení dat do aktivní mezipaměti.  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte. Pokud ne, pak skupinu prostředků **test-resource-group** vyčistěte, abyste se vyhnuli účtování poplatků.
+Pokud budete chtít postupovat podle dalšími rychlými starty a kurzy, zachovat prostředky, které jste vytvořili. V opačném případě odstraňte vaší skupiny prostředků, aby se zabránilo bez nákladů.
 
-1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
+1. Na webu Azure Portal, vyberte **skupiny prostředků** úplně vlevo a pak vyberte skupinu prostředků, který obsahuje Průzkumník dat clusteru.  
 
-    Pokud je nabídka vlevo sbalená, výběrem ![tlačítko Rozbalit](media/create-cluster-database-portal/expand.png) ji rozbalte.
-
-   ![Výběr skupiny prostředků k odstranění](media/create-cluster-database-portal/delete-resources-select.png)
-
-1. Ve skupině prostředků **test-resource-group** vyberte **Odstranit skupinu prostředků**.
-
-1. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit (*test-resource-group*), a pak klikněte na **Odstranit**.
+1. Vyberte **odstranit skupinu prostředků** odstranit celou skupinu prostředků. Pokud používáte některou ze stávajících skupin prostředků, můžete odstranit pouze Průzkumník dat clusteru.
 
 ## <a name="next-steps"></a>Další postup
 

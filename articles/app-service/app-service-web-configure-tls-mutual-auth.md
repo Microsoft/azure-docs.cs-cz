@@ -3,7 +3,7 @@ title: Konfigurace vzájemného ověřování TLS – Azure App Service
 description: Zjistěte, jak nakonfigurovat aplikace pro použití ověřování pomocí certifikátu klienta v TLS.
 services: app-service
 documentationcenter: ''
-author: naziml
+author: cephalin
 manager: erikre
 editor: jimbe
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
@@ -12,54 +12,43 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
-ms.author: naziml
+ms.date: 02/22/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d441329bc3f279e95b2ee302db53d78f786c3470
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650393"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671960"
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro službu Azure App Service
-## <a name="overview"></a>Přehled
-Tím, že různé typy ověřování, můžete omezit přístup k aplikaci Azure App Service. Provedete to jedním ze způsobů je k ověření pomocí klientského certifikátu, pokud je požadavek přes protokol TLS/SSL. Tento mechanismus je volána vzájemného ověřování TLS nebo klientský certifikát, ověřování a tento článek podrobně popisuje postup nastavení aplikace pro použití ověřování pomocí certifikátu klienta.
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro službu Azure App Service
 
-> **Poznámka:** Pokud přístup k serveru prostřednictvím protokolu HTTP a nikoli HTTPS, neobdržíte žádné klientské certifikáty. Proto pokud vaše aplikace vyžaduje certifikáty klienta by nemělo umožňovat požadavků do vaší aplikace prostřednictvím protokolu HTTP.
-> 
-> 
+Tím, že různé typy ověřování, můžete omezit přístup k aplikaci Azure App Service. Jeden způsob, jak to udělat, je k vyžádání certifikátu klienta, pokud je požadavek klienta přes protokol TLS/SSL a ověření certifikátu. Tento mechanismus je volána vzájemného ověřování TLS nebo ověřování certifikátu klienta. Tento článek ukazuje, jak nastavit aplikaci pro použití ověřování pomocí certifikátu klienta.
 
-## <a name="configure-app-service-for-client-certificate-authentication"></a>Konfigurace služby App Service pro ověření klientského certifikátu
-Nastavit aplikaci tak, aby vyžadovala certifikáty klienta, budete muset přidat nastavení lokality povoleném certifikátu klienta pro vaši aplikaci a nastavte ho na hodnotu true. Toto nastavení je také možné nakonfigurovat na webu Azure Portal v části okno certifikáty SSL.
+> [!NOTE]
+> Pokud přístup k serveru prostřednictvím protokolu HTTP a nikoli HTTPS, neobdržíte žádné klientské certifikáty. Proto pokud vaše aplikace vyžaduje klientské certifikáty, by nemělo umožňovat požadavků do vaší aplikace prostřednictvím protokolu HTTP.
+>
 
-Můžete použít [ARMClient nástroj](https://github.com/projectkudu/ARMClient) k tomu, aby si poradit při volání REST API. Po přihlášení pomocí nástroje, budete muset vydejte následující příkaz:
+## <a name="enable-client-certificates"></a>Povolit klientské certifikáty
 
-    ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
+Chcete-li nastavit aplikaci tak, aby vyžadovala certifikáty klientů, je nutné nastavit `clientCertEnabled` nastavení pro aplikaci tak, aby `true`. Nastavení, spusťte následující příkaz [Cloud Shell](https://shell.azure.com).
 
-všechno, co v nahrazení {} spolu s informacemi o vaši aplikaci a vytvořit soubor s názvem obsahu enableclientcert.json následujícím kódem JSON:
+```azurecli-interactive
+az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+```
 
-    {
-        "location": "My App Location",
-        "properties": {
-            "clientCertEnabled": true
-        }
-    }
+## <a name="access-client-certificate"></a>Přístup klientského certifikátu
 
-Ujistěte se, že chcete změnit hodnotu "umístění" na všude, kde se vaše aplikace je pro příklad, střed USA – sever a západ USA atd.
+Ve službě App Service se odehrává ukončení protokolu SSL požadavku na nástroj pro vyrovnávání zatížení front-endu. Při předání požadavku na kód vaší aplikace s [klientské certifikáty, které jsou povolené](#enable-client-certificates), vloží služby App Service `X-ARR-ClientCert` hlavičku požadavku pomocí klientských certifikátů. App Service nedělá se tento certifikát klienta než předávání do vaší aplikace. Kód vaší aplikace zodpovídá za ověření klientského certifikátu.
 
-Můžete také použít https://resources.azure.com k převrácení `clientCertEnabled` vlastnost `true`.
+Pro technologii ASP.NET, je dostupná prostřednictvím klientského certifikátu **HttpRequest.ClientCertificate** vlastnost.
 
-> **Poznámka:** Pokud ARMClient z prostředí Powershell, budete muset řídicí \@ symbolu pro soubor JSON s zpět značek ".
-> 
-> 
+Pro další balíčky aplikace (Node.js, PHP, atd.), je k dispozici v aplikaci prostřednictvím hodnotou kódovanou jako base64 v klientský certifikát `X-ARR-ClientCert` hlavičky žádosti.
 
-## <a name="accessing-the-client-certificate-from-app-service"></a>Přístup k certifikátu klienta, ze služby App Service
-Pokud používáte ASP.NET a konfigurace aplikace pro použití ověřování pomocí certifikátu klienta, certifikát bude k dispozici prostřednictvím **HttpRequest.ClientCertificate** vlastnost. U jiných zásobníky aplikací bude klientský certifikát k dispozici v aplikaci prostřednictvím hodnotou kódovanou jako base64 v hlavičce žádosti "X ClientCert směrování žádostí na aplikace". Aplikace můžete vytvořit certifikát z této hodnoty a použít jej pro účely ověřování a autorizace ve vaší aplikaci.
+## <a name="aspnet-sample"></a>Ukázka technologie ASP.NET
 
-## <a name="special-considerations-for-certificate-validation"></a>Zvláštní upozornění pro ověření certifikátu
-Klientský certifikát, který je odeslán do aplikace neprochází jakéhokoli ověřování podle platformy Azure App Service. Ověřit tento certifikát zodpovídá aplikace. Tady je ukázkový kód ASP.NET, která ověřuje vlastnosti certifikátu pro účely ověřování.
-
+```csharp
     using System;
     using System.Collections.Specialized;
     using System.Security.Cryptography.X509Certificates;
@@ -175,22 +164,53 @@ Klientský certifikát, který je odeslán do aplikace neprochází jakéhokoli 
                 // 4. Check thumprint of certificate
                 if (String.Compare(certificate.Thumbprint.Trim().ToUpper(), "30757A2E831977D8BD9C8496E4C99AB26CB9622B") != 0) return false;
 
-                // If you also want to test if the certificate chains to a Trusted Root Authority you can uncomment the code below
-                //
-                //X509Chain certChain = new X509Chain();
-                //certChain.Build(certificate);
-                //bool isValidCertChain = true;
-                //foreach (X509ChainElement chElement in certChain.ChainElements)
-                //{
-                //    if (!chElement.Certificate.Verify())
-                //    {
-                //        isValidCertChain = false;
-                //        break;
-                //    }
-                //}
-                //if (!isValidCertChain) return false;
-
                 return true;
             }
         }
     }
+```
+
+## <a name="nodejs-sample"></a>Ukázky Node.js
+
+Získá následující vzorový kód Node.js `X-ARR-ClientCert` záhlaví a používá [vytvoření uzlu](https://github.com/digitalbazaar/forge) k převedení řetězec s kódováním base64 PEM certifikátu a ověřte ho:
+
+```javascript
+import { NextFunction, Request, Response } from 'express';
+import { pki, md, asn1 } from 'node-forge';
+
+export class AuthorizationHandler {
+    public static authorizeClientCertificate(req: Request, res: Response, next: NextFunction): void {
+        try {
+            // Get header
+            const header = req.get('X-ARR-ClientCert');
+            if (!header) throw new Error('UNAUTHORIZED');
+
+            // Convert from PEM to pki.CERT
+            const pem = `-----BEGIN CERTIFICATE-----${header}-----END CERTIFICATE-----`;
+            const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
+
+            // Validate certificate thumbprint
+            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
+
+            // Validate time validity
+            const currentDate = new Date();
+            if (currentDate < incomingCert.validity.notBefore || currentDate > incomingCert.validity.notAfter) throw new Error('UNAUTHORIZED');
+
+            // Validate issuer
+            if (incomingCert.issuer.hash.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
+
+            // Validate subject
+            if (incomingCert.subject.hash.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
+
+            next();
+        } catch (e) {
+            if (e instanceof Error && e.message === 'UNAUTHORIZED') {
+                res.status(401).send();
+            } else {
+                next(e);
+            }
+        }
+    }
+}
+```

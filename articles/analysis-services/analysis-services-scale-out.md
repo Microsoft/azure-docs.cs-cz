@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8f253d150a5073d2d19daf51c12180c9f7b3660b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411675"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734519"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
 
@@ -87,11 +87,13 @@ Použití **synchronizace** operace.
 
 ### <a name="powershell"></a>PowerShell
 
-Před použitím prostředí PowerShell, [nainstalovat nebo aktualizovat nejnovější modul AzureRM](https://github.com/Azure/azure-powershell/releases). 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud chcete nastavit počet replik dotazu, použijte [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Zadejte nepovinný `-ReadonlyReplicaCount` parametru.
+Před použitím prostředí PowerShell, [nainstalovat nebo aktualizovat nejnovější modul Azure PowerShell](/powershell/azure/install-az-ps). 
 
-Chcete-li spustit synchronizaci, použijte [synchronizace AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+Pokud chcete nastavit počet replik dotazu, použijte [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte nepovinný `-ReadonlyReplicaCount` parametru.
+
+Chcete-li spustit synchronizaci, použijte [synchronizace AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
 ## <a name="connections"></a>Připojení
 

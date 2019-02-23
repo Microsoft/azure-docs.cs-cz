@@ -1,5 +1,5 @@
 ---
-title: Správce prostředků clusteru Service Fabric - zásady umístění | Microsoft Docs
+title: Service Fabric Cluster Resource Manager – zásady umístění | Dokumentace Microsoftu
 description: Přehled další umístění zásad a pravidel pro služby Service Fabric
 services: service-fabric
 documentationcenter: .net
@@ -7,41 +7,41 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 66c51b08884c9d7a4d522c94f7b81774ec7a8bda
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2858628874dc9955db5084ef5732d85acd6e7fc1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641998"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729780"
 ---
-# <a name="placement-policies-for-service-fabric-services"></a>Umístění zásady pro služby service fabric
-Umístění zásady jsou další pravidla, které lze použít k řízení umístění služby v některých scénářích konkrétní, méně běžné. Mezi příklady tyto scénáře patří:
+# <a name="placement-policies-for-service-fabric-services"></a>Zásady umístění služeb service fabric
+Zásady umístění jsou další pravidla, které lze použít k řízení umístění služby v některé konkrétní, méně běžné scénáře. Mezi příklady tyto scénáře patří:
 
-- Cluster Service Fabric zahrnuje geografické vzdálenosti, například několik datových center v místě nebo mezi oblastmi Azure
-- Vaše prostředí zahrnuje více oblastí řízení geopolitické nebo právních nebo některých jiných případu, kdy máte zásady potřebujete vynutit hranice
-- Výkon nebo latenci rozhodnutí z důvodu dlouhé vzdálenosti nebo použití odkazů pomalejší nebo méně spolehlivé síťové komunikace
-- Je třeba zachovat určité úlohy společně umístěná jako nejlepší úsilí, s ostatními úlohami, nebo v blízkosti zákazníkům
+- Cluster Service Fabric zahrnuje geografické vzdálenosti, jako je například více místních datových centrech nebo mezi oblastmi Azure
+- Vaše prostředí zahrnuje několik oblastí geopolitických nebo právní ovládacího prvku nebo některé ostatní případy, kdy máte zásady budete muset vynutit hranice
+- Některé aspekty výkonu nebo latence komunikace z důvodu dlouhé vzdálenosti nebo použití nižší nebo méně spolehlivé síťová propojení
+- Je potřeba nechat určité úlohy společně umístěná v podobě nezaručené, buď s ostatními úlohami nebo v blízkosti zákazníkům
 
-Většinu těchto požadavků zarovnané s fyzické rozložení clusteru, vyjádřené domén selhání clusteru. 
+Většina tyto požadavky odpovídaly fyzické rozložení clusteru, vyjádřené domén selhání clusteru. 
 
-Zásady rozšířené umístění, které pomůžou adresy jsou tyto scénáře:
+Zásady rozšířené umístění, které řešení jsou tyto scénáře:
 
 1. Neplatný domén
 2. Požadované domén
-3. Upřednostňovaných domén
-4. Zakazuje se okolních repliky
+3. Upřednostňované domén
+4. Zákaz repliky balení
 
-Většina následující ovládacích prvků se daly konfigurovat prostřednictvím vlastnosti uzlu a omezení umístění, ale některé jsou složitější. Chcete-li věcí jednodušší, správce prostředků clusteru Service Fabric poskytuje tyto zásady další umístění. Konfigurace zásad umístění na základě služby za názvem instance. Se dá se taky aktualizovat dynamicky.
+Většina následující ovládací prvky může být konfigurováno prostřednictvím vlastnosti uzlu a omezení umístění, ale některé jsou složitější. Aby to bylo jednodušší, Service Fabric Cluster Resource Manager poskytuje tyto zásady další umístění. Zásady umístění se konfigurují na základě služby za názvem instance. Dá se taky aktualizovat dynamicky.
 
 ## <a name="specifying-invalid-domains"></a>Neplatné zadání domén
-**InvalidDomain** umístění zásady umožňuje určit, že je neplatný pro konkrétní službu konkrétní domény selhání. Tato zásada zajišťuje, že konkrétní službu nikdy běží v určité oblasti, například důvodů geopolitické nebo podnikové zásady. Přes samostatné zásady je možné zadat více domén neplatný.
+**InvalidDomain** umístění zásad umožňuje zadat, že konkrétní doména selhání je neplatný pro konkrétní službu. Tato zásada zajistí, že konkrétní službu nikdy nespustí v konkrétní oblasti, například kvůli geopolitických nebo firemní zásady. Přes samostatné zásady je možné zadat více domén neplatný.
 
 <center>
 ![Příklad domény je neplatný][Image1]
@@ -55,13 +55,13 @@ invalidDomain.DomainName = "fd:/DCEast"; //regulations prohibit this workload he
 serviceDescription.PlacementPolicies.Add(invalidDomain);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
-## <a name="specifying-required-domains"></a>Určení požadované domén
-Zásady požadovanou doménu umístění vyžaduje, aby služba pouze v zadané doméně nenachází. Lze zadat více domén požadované přes samostatné zásady.
+## <a name="specifying-required-domains"></a>Určení požadovaných domén
+Zásady umístění vyžaduje domény vyžaduje, že služba je k dispozici pouze v zadané doméně. Přes samostatné zásady je možné zadat několik požadovaných domén.
 
 <center>
 ![Příklad požadovanou doménu][Image2]
@@ -75,17 +75,17 @@ requiredDomain.DomainName = "fd:/DC01/RK03/BL2";
 serviceDescription.PlacementPolicies.Add(requiredDomain);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
-## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Určení upřednostňované domény pro primární repliky stavové služby
-Upřednostňovaný primární doménu Určuje domény selhání umístit primární v. Primární skončilo v této doméně při všechno, co je v pořádku. Pokud doméně nebo primární repliky selže nebo vypne, primární přesune do jiného umístění, nejlépe ve stejné doméně. Není-li toto nové umístění v upřednostňované doméně, správce prostředků clusteru přesouvá ji zpět do upřednostňovaných domény co nejdříve. Přirozeně toto nastavení má smysl jenom pro stavové služby. Tato zásada je velmi užitečné v clusterech, které jsou rozloženy oblastí Azure nebo několik datových center ale máte služby, které dávají přednost umístění v určitých umístění. Zachovat základní barvy blízko uživatelů nebo jiné služby pomáhá poskytovat nižší latenci, hlavně pro čtení, které jsou zpracovávány základní barvy ve výchozím nastavení.
+## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Určení upřednostňovaného domény pro primární repliky stavové služby
+Primární doména upřednostňované určuje doména selhání umístit primární v. Primární skončilo v této doméně při všechno, co je v pořádku. Pokud domény nebo je primární replika selže nebo vypne, primární přesune do jiného umístění, v ideálním případě ve stejné doméně. Není-li tohoto nového umístění v doméně, upřednostňovanou, Cluster Resource Manager přesouvá ji zpět do upřednostňované doménu co nejdříve. Toto nastavení je přirozeně pouze dává smysl pro stavové služby. Tato zásada je nejužitečnější v clusterech, které jsou rozložené mezi oblastmi Azure nebo několik datových center, ale na nich služby, které dáváte přednost umístění na určité místo. Udržování Primárek blízko uživatelům nebo jiné služby, pomáhá zajistit nižší latenci, zejména pro čtení, které jsou zpracovány Primárek ve výchozím nastavení.
 
 <center>
-![Upřednostňovaný primární domény a převzetí služeb při selhání][Image3]
+![Upřednostňované primární domény a převzetí služeb při selhání][Image3]
 </center>
 
 ```csharp
@@ -94,24 +94,24 @@ primaryDomain.DomainName = "fd:/EastUS/";
 serviceDescription.PlacementPolicies.Add(primaryDomain);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
-## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Vyžadování distribučních repliky a zakazuje okolních
-Repliky jsou _normálně_ distribuované napříč doménami selhání a upgradu, až bude cluster v pořádku. Existují však případy, kdy může se stát víc než jednu repliku pro daný oddíl dočasně sbalené do jedné domény. Předpokládejme například, že aby cluster má devět uzly v tři domén selhání, fd: / 0, fd: / 1 a fd: / 2. Dále předpokládejme, že vaše služba má tři repliky. Řekněme, že uzly, které byly používány pro tyto repliky v fd: / 1 a fd: / 2 byl vypnut. Obvykle správce prostředků clusteru přejete jiné uzly v těchto stejné domény selhání. V takovém případě Řekněme kvůli problémům s kapacitu, že žádný z jiných uzlů v těchto doménách nebyly platné. Pokud správce prostředků clusteru sestavení nahrazení pro tyto repliky, by mělo zvolte uzlů v fd: / 0. To však _,_ vytvoří situaci, kdy porušení omezení domény selhání. Balení zvyšuje repliky může pravděpodobnost, že nastavení celou repliku přejděte nebo ztratí. 
+## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Vyžadování distribučního repliky a Probíhá balení
+Repliky jsou _obvykle_ distribuovány napříč chybových nebo upgradovacích doménách v případě, že cluster je v pořádku. Existují však případy, ve kterém je více než jednu repliku pro daný oddíl uvíznout dočasně komprimovat komprimovaný objekt do jedné domény. Například Řekněme, že má cluster devíti uzlů v tři domény selhání, fd: / 0, fd: / 1 a fd: / 2. Také Předpokládejme, že vaše služba má tři repliky. Řekněme, že uzly, které byly používány pro tyto repliky ve fd: / 1 a fd: / 2 byl vypnut. Cluster Resource Manageru obvykle raději jiných uzlů v těchto stejných doménách selhání. V takovém případě Řekněme kvůli potíže s kapacitou, že žádný z jiných uzlů v těchto doménách nebyly platné. Pokud Cluster Resource Manager vytvoří nahrazení pro tyto repliky, ho bude potřeba, abyste si uzly ve fd: / 0. Nicméně to _, který_ vytvoří situace, kde je porušena omezení doména selhání. Balení zvýšení replik může pravděpodobnost, že celý replik vypne nebo ztratí. 
 
 > [!NOTE]
-> Další informace o omezení a omezení priority obecně platí, podívejte se na [v tomto tématu](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
+> Další informace o omezení a omezení priority obecně platí, projděte si [v tomto tématu](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
 >
 
-Pokud někdy vidíte zprávu stavu, jako "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`", pak jste stisknutí tlačítka tato podmínka nebo něco podobného jako ho. Obvykle pouze jednu nebo dvě repliky jsou společně zabaleny dočasně. Tak dlouho, dokud je méně než kvorum repliky v dané doméně, jste bezpečné. Okolních je taková situace vzácná, ale může se stát, a obvykle jsou tyto situace přechodný vzhledem k tomu, že uzly se vraťte. Pokud uzly zůstat dolů a správce prostředků clusteru je potřeba vytvořit náhrady, obvykle existuje jiné uzly v doménách selhání ideální.
+Pokud jste někdy viděli stavu zprávy, jako "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`", pak jste přístupů k tomuto stavu nebo něco líbilo. Obvykle pouze jednu nebo dvě repliky jsou zkomprimována společně dočasně. Tak dlouho, dokud jsou kratší než kvorum replik v dané doméně jste bezpečné. Balení je taková situace vzácná, ale může stát, a těchto situacích jsou obvykle přechodné, neboť uzly se vraťte. Uzly zůstat dolů a Cluster Resource Manager je potřeba vytvořit nahrazení, obvykle existuje další uzly v doménách selhání ideální.
 
-Některé úlohy by raději vždy s cílovým počtem replik, i když jsou zabaleny do menšího počtu domén. Tyto úlohy jsou ale proti selhání celkový počet souběžných trvalé domény a obvykle můžete obnovit místní stavu. Další úlohy by starší než riziko správnost nebo ke ztrátě dat. místo trvat výpadek. Většina produkční úlohy spustit s víc než tři repliky, víc než třemi domén selhání a mnoho platný uzlů na domény selhání. Z tohoto důvodu se výchozí chování umožňuje okolních domény ve výchozím nastavení. Výchozí chování umožňuje normální vyrovnávání a převzetí služeb při selhání pro zpracování těchto výjimečných případech i v případě, že to znamená okolních dočasné domény.
+Některé úlohy přejete vždy s cílovým počtem replik, i když jsou zkomprimována do menšího počtu domén. Tyto úlohy jsou sází na celkový počet souběžných trvalých domény selhání a obvykle můžete obnovit místní stavu. Další úlohy by starší než riziko správnosti nebo ke ztrátě dat. spíše trvat výpadek. Většinu provozních úloh spustit s víc než tři repliky, více než tři domény selhání a mnoha uzly platnou doménu selhání. Z tohoto důvodu výchozí chování umožňuje komprimaci domény ve výchozím nastavení. Výchozí chování umožňuje normální vyrovnávání a převzetí služeb při selhání pro zpracování těchto extrémních případech i v případě, že to znamená, že komprimaci dočasných domény.
 
-Pokud chcete zakázat tyto obaly pro danou úlohu, můžete zadat `RequireDomainDistribution` zásady ve službě. Pokud je tato zásada nastavená, zajišťuje správce prostředků clusteru spustí žádné dvě repliky ze stejného oddílu ve stejné doméně selhání nebo upgradu.
+Pokud chcete zakázat tyto balení pro konkrétní úlohu, můžete zadat `RequireDomainDistribution` zásady ve službě. Pokud je nastavena tato zásada, Cluster Resource Manager zajišťuje že spustit žádné dvě repliky ze stejného oddílu ve stejné doméně selhání nebo upgradu.
 
 Kód:
 
@@ -120,16 +120,16 @@ ServicePlacementRequireDomainDistributionPolicyDescription distributeDomain = ne
 serviceDescription.PlacementPolicies.Add(distributeDomain);
 ```
 
-Prostředí PowerShell:
+Powershell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-Teď by bylo možné použít tyto konfigurace pro služby v clusteru, který nebyl předané geograficky? Vám může, ale není skvělé důvod příliš. Pokud je vyžadují scénáře je nutno konfigurace vyžaduje, neplatný a upřednostňované domény. Nemá smysl žádné pokusí vynutit daného zatížení spustit v jednom stojanu nebo raději některé segment místním clusteru oproti jinému. Různé hardwarové konfigurace by měl být rozloženy domén selhání a zpracovávají pomocí normální umístění omezení a vlastnosti uzlu.
+Teď by bylo možné použít tyto konfigurace pro služby v clusteru, který nebyl geograficky rozložených? Vám může, ale není k dispozici skvělý důvod, proč příliš. Konfigurace domén povinné, neplatné a upřednostňovaný mělo by se vyhnout, pokud scénáře, které je vyžadují. Nemá smysl jakékoli pokusí vynutit konkrétní úlohu pro spuštění v jedné stojanu nebo upřednostňovat některé segmentu místní cluster před jiným. Jiné hardwarové konfigurace by měl rozložit napříč doménami selhání a zpracování prostřednictvím vlastnosti uzlu a omezení normální umístění.
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o konfiguraci služby [Další informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
+- Další informace o konfiguraci služby [informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: d1d7c5df1b49a1f8c2fe4fbae4d8c8fdbd481e0e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7734a273f6e07290ec7124def5cb3b095f7f067b
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053904"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674130"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -111,7 +111,7 @@ Tato karta je, kde budete spravovat zařízení registrovaná ve službě IoT hu
 
 1. Pokud se rozhodnete **zkopírujte připojovací řetězec pro vybrané zařízení**, připojovací řetězec zařízení je zkopírován do schránky. Zkopírujte připojovací řetězec zařízení. Když je potřebujete při spuštění ukázkové aplikace popsané v následujících částech.
 
-Až provedete všechny výše uvedené kroky, jste připraveni začít spouštět nějaký kód. Většina ukázky obsahovat konstanty v horní části hlavní zdrojový soubor, který umožňuje zadat připojovací řetězec. Například odpovídající řádek z **iothub\_klienta\_ukázka\_mqtt** aplikace se zobrazí takto.
+Až provedete všechny výše uvedené kroky, jste připraveni začít spouštět nějaký kód. Většina ukázky obsahovat konstanty v horní části hlavní zdrojový soubor, který umožňuje zadat připojovací řetězec. Například odpovídající řádek **iothub_client\_ukázky\_iothub_convenience_sample** aplikace se zobrazí takto.
 
 ```c
 static const char* connectionString = "[device connection string]";
@@ -121,7 +121,7 @@ static const char* connectionString = "[device connection string]";
 
 V rámci **iothub\_klienta** složky [azure-iot-sdk-c](https://github.com/azure/azure-iot-sdk-c) úložiště, je **ukázky** složky, která obsahuje aplikaci s názvem **iothub\_klienta\_ukázka\_mqtt**.
 
-Verze Windows **iothub\_klienta\_ukázka\_mqtt** aplikace obsahuje následující řešení sady Visual Studio:
+Verze Windows **iothub_client\_ukázky\_iothub_convenience_sample** aplikace obsahuje následující řešení sady Visual Studio:
 
   ![Průzkumník řešení sady Visual Studio](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
@@ -137,7 +137,7 @@ Toto řešení obsahuje jeden projekt. Existují čtyři balíčky NuGet, nainst
 
 Budete vždy potřebovat **Microsoft.Azure.C.SharedUtility** balíček při práci se sadou SDK. Tato ukázka používá protokol MQTT, proto je nutné zahrnout **Microsoft.Azure.umqtt** a **Microsoft.Azure.IoTHub.MqttTransport** balíčky (je ekvivalentní balíčky AMQP a HTTPS). Protože příklad používá **pro IoTHubClient** knihovny, musíte taky zahrnout **Microsoft.Azure.IoTHub.IoTHubClient** balíček ve vašem řešení.
 
-Můžete najít implementaci pro ukázkovou aplikaci v **iothub\_klienta\_ukázka\_mqtt.c** zdrojový soubor.
+Implementace pro ukázkovou aplikaci v můžete najít **iothub_client\_ukázky\_iothub_convenience_sample** zdrojový soubor.
 
 Následující kroky vás provedou co je potřeba použít pomocí této ukázkové aplikaci **pro IoTHubClient** knihovny.
 
@@ -351,7 +351,7 @@ Stejně jako u předchozí ukázce tohohle zahrnuje několik balíčků NuGet:
 
 Většina těchto balíčků v předchozí ukázce jste viděli, ale **Microsoft.Azure.IoTHub.Serializer** novinky. Tento balíček je povinný při použití **serializátor** knihovny.
 
-Provádění ukázkovou aplikaci v můžete najít **simplesample\_mqtt.c** souboru.
+Provádění ukázkovou aplikaci v můžete najít ***iothub_client\_ukázky\_iothub_convenience_sample** souboru.
 
 Následující části vás provede procesem klíčových částí této ukázky.
 
@@ -392,7 +392,7 @@ Nakonec proveďte volání **vytvořit\_modelu\_INSTANCE** funkce. **WeatherStat
 
 ### <a name="define-the-model"></a>Definovat model
 
-V modelu **serializátor** knihovna definuje zprávy, které vaše zařízení může odesílat do služby IoT Hub a zprávy, označované jako *akce* v Modelovací jazyk, který může přijímat. Definovat model pomocí sady maker v jazyce C jako v **simplesample\_mqtt** ukázkovou aplikaci:
+V modelu **serializátor** knihovna definuje zprávy, které vaše zařízení může odesílat do služby IoT Hub a zprávy, označované jako *akce* v Modelovací jazyk, který může přijímat. Definovat model pomocí sady maker v jazyce C jako v **iothub_client\_ukázky\_iothub_convenience_sample** ukázkovou aplikaci:
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);

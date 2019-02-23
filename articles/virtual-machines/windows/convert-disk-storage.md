@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 02/22/2019
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 14b6559420fad22cfc2294817cbefd23a6c47a70
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b1230c033019d21228fe5283e3ee6cfa478bef4c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650100"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727022"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizovat typ úložiště spravovaného disku
 
@@ -31,11 +31,8 @@ Azure managed disks nabízí čtyři úložiště typu volby: Jednotky Ultra SSD
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Protože převod vyžaduje restartování virtuálního počítače (VM), měli byste naplánovat migraci disků úložiště během už existujícího časového období údržby. 
-* Pokud používáte nespravovaný disk, nejprve [ho převést na spravovaný disk](convert-unmanaged-to-managed-disks.md) aby bylo možné přepínat mezi typy úložišť. 
-* Příklady v tomto článku vyžadují modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Spustit [připojit AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) vytvořit připojení k Azure.
-
-* Příklady v tomto článku vyžadují modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Spustit [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) vytvořit připojení k Azure.
+* Protože převod vyžaduje restartování virtuálního počítače (VM), měli byste naplánovat migraci disků úložiště během už existujícího časového období údržby.
+* Pokud používáte nespravovaný disk, nejprve [ho převést na spravovaný disk](convert-unmanaged-to-managed-disks.md) aby bylo možné přepínat mezi typy úložišť.
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>Převést všechny spravované disky virtuálního počítače z úrovně standard na premium
 

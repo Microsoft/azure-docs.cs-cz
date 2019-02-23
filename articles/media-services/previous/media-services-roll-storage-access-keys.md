@@ -14,18 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 419e7b1ae05f92b5b97f5317c0315a71958eff9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cdf644ab37d7f2e15cb35a3234786900a1a64ec1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005161"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733499"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti 
 
 Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se výzva, vyberte účet služby Azure Storage, který se používá k ukládání vašeho mediálního obsahu. Můžete přidat více účtů úložiště do účtu Media Services. Tento článek ukazuje, jak otočení klíčů úložiště. Také ukazuje, jak přidat účty úložiště do účtu media. 
 
-K provádění akcí popsaných v tomto článku, měli byste použít [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí Resource Manageru a Powershellu](../../azure-resource-manager/powershell-azure-resource-manager.md).
+K provádění akcí popsaných v tomto článku, měli byste použít [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](https://docs.microsoft.com/powershell/module/az.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí Resource Manageru a Powershellu](../../azure-resource-manager/powershell-azure-resource-manager.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -42,15 +44,15 @@ Služba Media Services závisí na zadaný klíč k úložišti. Konkrétně lok
 ## <a name="steps-to-rotate-storage-keys"></a>Kroky pro otočení klíčů úložiště 
  
  1. Změna primárního klíče účtu úložiště pomocí rutiny prostředí powershell nebo [Azure](https://portal.azure.com/) portálu.
- 2. Volání rutiny Sync-AzureRmMediaServiceStorageKeys s odpovídající parametry přinutit účet mediální ke sbírání klíče účtu úložiště
+ 2. Volání rutiny Sync-AzMediaServiceStorageKeys s odpovídající parametry přinutit účet mediální ke sbírání klíče účtu úložiště
  
     Následující příklad ukazuje, jak synchronizovat klíče pro účty úložiště.
   
-         Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+         Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
  3. Počkejte přibližně do hodiny. Ověřte, že pracujete streamování scénáře.
  4. Změnit sekundární klíč účtu úložiště pomocí powershellu nebo webu Azure portal.
- 5. Volání powershellu AzureRmMediaServiceStorageKeys synchronizace s odpovídající parametry přinutit účet mediální ke sbírání nové klíče účtu úložiště. 
+ 5. Volání powershellu AzMediaServiceStorageKeys synchronizace s odpovídající parametry přinutit účet mediální ke sbírání nové klíče účtu úložiště. 
  6. Počkejte přibližně do hodiny. Ověřte, že pracujete streamování scénáře.
  
 ### <a name="a-powershell-cmdlet-example"></a>Příklad rutiny prostředí powershell 
@@ -63,7 +65,7 @@ Následující příklad ukazuje, jak načíst účet úložiště a synchronizo
     $storageAccountName = "skystorage"
     $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-    Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+    Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
 
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Postup přidání účtů úložiště pro svůj účet AMS

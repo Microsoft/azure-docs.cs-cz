@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: f2f1313461fcb58ea48af99aeda2f7005534fe34
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: cc19a2d7641b20a413bbc39efe0d1c5ede362e6d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885183"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734451"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
 
@@ -29,7 +29,7 @@ Modul runtime verze 2.x běží na .NET Core 2, která umožňuje spustit na vš
 
 Naproti tomu modul runtime verze 1.x podporuje jenom vývoj a hostování na webu Azure Portal nebo počítačích s Windows.
 
-## <a name="languages"></a>Jazyky
+## <a name="languages"></a>Languages
 
 Modul runtime verze 2.x používá nový model rozšiřitelnosti jazyka. Ve verzi 2.x, všechny funkce v aplikaci function app musí sdílet stejný jazyk. Jazykové funkce v aplikaci function app se volí při vytváření aplikace.
 
@@ -37,7 +37,7 @@ Azure Functions 1.x experimentálních jazyků, neaktualizuje se použít nový 
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Další informace najdete v tématu [podporované jazyky](supported-languages.md).
+Další informace najdete v tématu [Podporované jazyky](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Spustit ve verzi 1.x
 
@@ -49,7 +49,7 @@ Můžete se rozhodnout migrovat stávající aplikace napsané pomocí modulu ru
 
 ### <a name="changes-in-triggers-and-bindings"></a>Změny v aktivačními událostmi a vazbami
 
-Verze 2.x je nutné nainstalovat rozšíření pro konkrétní triggery a vazby používá funkce ve vaší aplikaci. Jedinou výjimkou tohoto protokolu HTTP a časovač aktivačních událostí, které nevyžadují rozšíření.  Další informace najdete v tématu [registrace a instalace rozšíření vazby](./functions-triggers-bindings.md#register-binding-extensions).
+Verze 2.x je nutné nainstalovat rozšíření pro konkrétní triggery a vazby používá funkce ve vaší aplikaci. Jedinou výjimkou tohoto protokolu HTTP a časovač aktivačních událostí, které nevyžadují rozšíření.  Další informace najdete v tématu [registrace a instalace rozšíření vazby](./functions-bindings-expressions-patterns.md).
 
 Také došlo k několika změnám v `function.json` nebo atributy funkce mezi verzemi. Například centra událostí `path` vlastnost je nyní `eventHubName`. Zobrazit [existující vazby tabulky](#bindings) odkazy na dokumentaci pro každou vazbu.
 
@@ -73,7 +73,7 @@ Ve verzi 2.x, byly provedeny následující změny:
 
 * Omezení souběžnosti HTTP jsou implementovány ve výchozím nastavení pro funkce plánu consumption, výchozí hodnota je 100 souběžných požadavků na jednu instanci. Můžete to změnit [ `maxConcurrentRequests` ](functions-host-json.md#http) nastavení v souboru host.json.
 
-* Z důvodu [.NET core omezení](https://github.com/Azure/azure-functions-host/issues/3414), podpora pro F # skript (.fsx) funkce se odebrala. Kompilované funkcí F # (.fs) jsou stále podporovány.
+* Z důvodu [.NET core omezení](https://github.com/Azure/azure-functions-host/issues/3414), podporu F# skript (.fsx) funkce se odebrala. Zkompilovat F# funkcí (.fs) jsou stále podporovány.
 
 * Formát adresy URL služby Event Grid trigger webhooky se změnil na `https://{app}/runtime/webhooks/{triggerName}`.
 
@@ -121,7 +121,7 @@ Používá nový modul runtime verze 2.x [model rozšiřitelnosti vazby](https:/
 
 * Světlejší spuštění prostředí, kde jsou pouze vazby používá známé a načten modulem runtime.
 
-S výjimkou aktivační události HTTP a časovač všechny vazby musí být explicitně přidány do projektu aplikace funkcí, nebo registrované na portálu. Další informace najdete v tématu [registraci rozšíření vazby](functions-triggers-bindings.md#register-binding-extensions).
+S výjimkou aktivační události HTTP a časovač všechny vazby musí být explicitně přidány do projektu aplikace funkcí, nebo registrované na portálu. Další informace najdete v tématu [registraci rozšíření vazby](./functions-bindings-expressions-patterns.md).
 
 V následující tabulce jsou uvedeny vazby, které jsou podporovány v každé verzi modulu runtime.
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: dc92c806a67869e1cc894a8ee9f4d287b5b3b1f2
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446847"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670226"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>Zálohování databází SQL Serveru na virtuálních počítačích Azure 
 
@@ -52,8 +52,7 @@ Tato veřejná Předběžná verze má několik omezení.
 - Operace zálohování a obnovení pro FCI zrcadlení databáze, snímky databází a databází nejsou podporovány.
 - Databáze s velkým počtem souborů nelze chránit. Maximální počet souborů, které jsou podporovány není deterministický. Nejen to závisí na počtu souborů, ale také závisí na délka cesty k souborům. 
 
-Najdete [oddílu Nejčastější dotazy](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) podrobné informace o podpoře nebo není podporované scénáře.
-
+Kontrola [– nejčastější dotazy](faq-backup-sql-server.md) o zálohování databází systému SQL Server.
 ## <a name="scenario-support"></a>Scénáře podpory
 
 **Podpora** | **Podrobnosti**
@@ -197,7 +196,7 @@ Konfigurace zálohování následujícím způsobem:
 
     - Vyberte výchozí zásady: **HourlyLogBackup**.
     - Vyberte existující zásadu zálohování dříve vytvořili pro SQL.
-    - [Definovat novou zásadu](backup-azure-sql-database.md#define-a-backup-policy) na základě cíle bodu obnovení a uchovávání rozsahu.
+    - [Definovat novou zásadu](backup-azure-sql-database.md#configure-a-backup-policy) na základě cíle bodu obnovení a uchovávání rozsahu.
     - Ve verzi Preview nejde upravit existující zásadu zálohování.
     
 9. Na **nabídka zálohování**vyberte **povolit zálohování**.
@@ -326,7 +325,7 @@ Pokud je potřeba opravit oprávnění z důvodu **UserErrorSQLNoSysadminMembers
 
     ![Zpráva o úspěšném nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-Alternativně můžete povolit [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) celý instance nebo skupina vždy na dostupnosti tak, že vyberete **ON** možnost v rozevíracím seznamu příslušné v **AUTOPROTECT**  sloupce. [Automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funkci nejen umožňuje ochranu pro všechny existující databáze najednou, ale také automaticky chrání jakýchkoli nových databází, které budou přidány do této instance nebo skupina dostupnosti v budoucnosti.  
+Alternativně můžete povolit [automatickou ochranu](backup-azure-sql-database.md#enable-auto-protection) celý instance nebo skupina vždy na dostupnosti tak, že vyberete **ON** možnost v rozevíracím seznamu příslušné v **AUTOPROTECT**  sloupce. [Automatickou ochranu](backup-azure-sql-database.md#enable-auto-protection) funkci nejen umožňuje ochranu pro všechny existující databáze najednou, ale také automaticky chrání jakýchkoli nových databází, které budou přidány do této instance nebo skupina dostupnosti v budoucnosti.  
 
    ![Povolit automatické ochrany na skupiny dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 

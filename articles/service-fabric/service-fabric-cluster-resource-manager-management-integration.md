@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a1bab75521730f7e80e5b86112bbb0aed129f88
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: a51593753cab8a6b07d99df46560808de5400047
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917870"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737922"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Cluster resource manager integrace s správy clusteru Service Fabric
 Service Fabric Cluster Resource Manageru není jednotka upgradu v Service Fabric, ale je zahrnuta. První způsob, který Cluster Resource Manager pomáhá se správou se sledováním požadovaný stav clusteru a služby dovnitř. Cluster Resource Manager odešle sestav o stavu pokud ho nelze vložit do požadovanou konfiguraci clusteru. Například pokud není k dispozici dostatečná kapacita Cluster Resource Manager odešle upozornění stavu a chyb, které označují problém. Další část integrace souvisí se fungování upgradu. Cluster Resource Manager mírně změní jeho chování během upgradu.  
@@ -73,11 +73,11 @@ HealthEvents          :
 
 Zde je, co tato zpráva stavu nám oznamuje je:
 
-1. Všechny repliky samotných jsou v pořádku: každá má AggregatedHealthState: Ok
+1. Všechny repliky samotných jsou v pořádku: Každý má AggregatedHealthState: OK
 2. Omezení distribuce upgradu domény je aktuálně porušen. To znamená, že má víc replik oddílu, než by měl v určité doméně upgradu.
 3. Který uzel obsahuje repliku způsobuje narušení. V tomto případě je uzel s názvem "Node.8"
 4. Určuje, zda upgrade se právě děje pro tento oddíl ("aktuálně upgrade--false")
-5. Zásady distribuce pro tuto službu: "Distribuci zásad – balení". To se vztahují `RequireDomainDistribution` [zásady umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Komprimace" znamená, že v tomto případě DomainDistribution byla _není_ vyžaduje, abychom měli jistotu, že zásady umístění nebyl zadaný pro tuto službu. 
+5. Zásady distribuce pro tuto službu: "Zásady distribuce – balení". To se vztahují `RequireDomainDistribution` [zásady umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Komprimace" znamená, že v tomto případě DomainDistribution byla _není_ vyžaduje, abychom měli jistotu, že zásady umístění nebyl zadaný pro tuto službu. 
 6. Když se stalo sestavy – 8/10/2015 19:13:02: 00
 
 Informace, jako je tato mocniny výstrahy, které se aktivují v produkčním prostředí s oznámením, něco se pokazilo a slouží také ke zjišťování a zastavit chybný upgrady. V tomto případě jsme byste chtěli zobrazit, pokud jsme můžete zjistit, proč museli pack repliky do domény upgradu Resource Manageru. Obvykle balení je přechodná, protože uzly v upgradu domény nebyly, třeba.
@@ -92,12 +92,12 @@ V těchto případech sestav o stavu z Cluster Resource Manager vám pomohou ur�
 ## <a name="constraint-types"></a>Typy omezení
 Povězme si o všech jiná omezení v těchto sestav o stavu. Zobrazí se stav zprávy související s těmito omezeními během repliky nemůže být umístěn.
 
-* **ReplicaExclusionStatic** a **ReplicaExclusionDynamic**: těmto omezením znamená, že řešení byl odmítnut, protože dva objekty služby ze stejného oddílu by mají být umístěny na stejném uzlu. To není povoleno, protože pak selhání uzlu příliš postihlo daného oddílu. ReplicaExclusionStatic a ReplicaExclusionDynamic jsou téměř stejné pravidlo a nejsou ve skutečnosti důležité rozdíly. Pokud dochází k sekvenci odstranění omezení obsahující ReplicaExclusionStatic nebo ReplicaExclusionDynamic omezení, Cluster Resource Manager domnívá, že nejsou k dispozici dostatek uzlů. To vyžaduje zbývající řešení použít tyto neplatné umístění, které nejsou povoleny. Další omezení v sekvenci se obvykle Řekněte nám, proč uzly se zanikne brány na prvním místě.
+* **ReplicaExclusionStatic** a **ReplicaExclusionDynamic**: Tato omezení znamená, že řešení byl odmítnut, protože dva objekty služby ze stejného oddílu by mají být umístěny na stejném uzlu. To není povoleno, protože pak selhání uzlu příliš postihlo daného oddílu. ReplicaExclusionStatic a ReplicaExclusionDynamic jsou téměř stejné pravidlo a nejsou ve skutečnosti důležité rozdíly. Pokud dochází k sekvenci odstranění omezení obsahující ReplicaExclusionStatic nebo ReplicaExclusionDynamic omezení, Cluster Resource Manager domnívá, že nejsou k dispozici dostatek uzlů. To vyžaduje zbývající řešení použít tyto neplatné umístění, které nejsou povoleny. Další omezení v sekvenci se obvykle Řekněte nám, proč uzly se zanikne brány na prvním místě.
 * **PlacementConstraint**: Pokud se zobrazí tato zpráva, znamená to, že jsme odstranili některé uzly vzhledem k tomu, že neodpovídají omezení umístění služby. Jsme trasování si omezení umístění aktuálně nakonfigurovaný jako součást této zprávy. To je normální, pokud máte definované omezení umístění. Nicméně pokud omezení umístění je moc velký počet uzlů se nesprávně příčinou to je, jak by si.
 * **NodeCapacity**: Toto omezení znamená, že Cluster Resource Manager nemohl umístit repliky na uvedené uzly, protože, které vložili překročena kapacita.
 * **Spřažení**: Toto omezení znamená, že jsme nemohl umístit repliky na ovlivněné uzly protože by způsobil porušení omezení spřažení. Další informace o spřažení je v [v tomto článku](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
 * **FaultDomain** a **UpgradeDomain**: Toto omezení eliminuje uzly, pokud umístění repliky na uvedené uzly by způsobilo balení v konkrétní chyba nebo upgradovací doméně. Několik příkladů diskuze o tato omezení jsou uvedeny v tématu na [chybových nebo upgradovacích omezení domény a výsledné chování](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: byste neměli vidět normálně toto omezení odebrání uzlů z řešení, protože poběží brána jako optimalizace ve výchozím nastavení. Omezení upřednostňované umístění je také k dispozici během upgradu. Během upgradu se používá k přesunutí služeb zpět do kdy byly při spuštění upgradu.
+* **PreferredLocation**: Toto omezení odebrání uzlů z řešení, protože je ve výchozím nastavení spustí jako optimalizace neměli vidět normálně. Omezení upřednostňované umístění je také k dispozici během upgradu. Během upgradu se používá k přesunutí služeb zpět do kdy byly při spuštění upgradu.
 
 ## <a name="blocklisting-nodes"></a>Blocklisting uzly
 Další zpráva stavu sestavy Cluster Resource Manageru je při blocklisted jsou uzly. Blocklisting si lze představit jako dočasné omezení, které se automaticky použije za vás. Uzly získáte blocklisted opakovaných neúspěšných dojde při spuštění instance daného typu služby. Uzly jsou blocklisted na základě typu na službu. Uzlem může být blocklisted jedna služba typu, ale jiné ne. 

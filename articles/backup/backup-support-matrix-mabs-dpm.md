@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 74b6d953939a569a3240c9d64134d143dc4f179e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 0544782763bebac42b4b68fda42cff80b18ff067
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430847"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670730"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-serversystem-center-dpm"></a>Matice podpory pro zálohování pomocí Microsoft Azure Backup Server nebo System Center DPM
 
@@ -75,7 +75,7 @@ Azure Backup můžete zálohovat MABS/aplikace DPM s některým z následující
 --- | --- 
 **MABS na Virtuálním počítači Azure** | Windows Server 2012 R2<br/><br/> Windows 2016 Datacenter<br/><br/> Windows 2019 Datacenter<br/><br/> Doporučujeme že začít s imagí z marketplace.<br/><br/> Minimální A2 Standard s využitím dvou jader a 3,5 GB paměti RAM. 
 **Aplikace DPM na Virtuálním počítači Azure** | System Center 2012 R2 s aktualizací Update 3 nebo novější.<br/><br/> Operační systém Windows jako [vyžadované System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Doporučujeme že začít s imagí z marketplace.<br/><br/> Minimální A2 Standard s využitím dvou jader a 3,5 GB paměti RAM. 
-**MABS místní** | Podporované 64bitové operační systémy:<br/><br/> -MABS verze 3 a vyšší: Windows Server 2019 (Standard, Datacenter, Essentials) <br/><br/> MABS verze 2 a vyšší: Windows Server 2016 (Standard, Datacenter, Essentials)<br/><br/> Všechny verze MABS: Windows Server 2012 R2/2012 (Standard, Datacenter, Foundation)<br/><br/>Všechny verze MABS: Windows Storage Server 2012 R2/2012 (Standard nebo pracovní skupiny)
+**MABS místní** | Podporované 64bitové operační systémy:<br/><br/> MABS verze 3 a vyšší: Windows Server 2019 (Standard, Datacenter, Essentials) <br/><br/> MABS verze 2 a vyšší: Windows Server 2016 (Standard, Datacenter, Essentials)<br/><br/> Všechny verze MABS: Windows Server 2012 R2/2012 (Standard, Datacenter, Foundation)<br/><br/>Všechny verze MABS: Windows Storage Server 2012 R2/2012 (Standard nebo pracovní skupiny)
 **Aplikace DPM na místě** | Fyzický server nebo Hyper-V virtuálního počítače: System Center 2012 SP1 nebo novější.<br/><br/> Virtuální počítač VMware: System Center 2012 R2 s aktualizací Update 5 nebo novější. 
 
 
@@ -106,7 +106,7 @@ MABS na virtuálním počítači Azure Stack můžete nasadit pro zálohování 
 Rozhraní .NET framework na MABS | Virtuální počítač MABS vyžaduje rozhraní .NET Framework 3.3 SP1 nebo vyšší na něm nainstalován.
 **MABS domain** | Virtuální počítač MABS musí být připojené k doméně. Uživatel domény s oprávněními správce, musíte nainstalovat MABS na virtuálním počítači.
 **Zálohování dat Azure Stack virtuálního počítače** | Můžete zálohovat soubory, složky a aplikace.
-**Podporované zálohování** | Tyto operační systémy se podporují pro virtuální počítače, které chcete zálohovat:<br/><br/> – Windows Server prostřednictvím půlročního kanálu (Datacenter nebo Enterprise nebo Standard)<br/><br/> Windows Server 2016/2012 R2/2012/2008 R2.
+**Podporované zálohování** | Tyto operační systémy se podporují pro virtuální počítače, které chcete zálohovat:<br/><br/> Windows Server prostřednictvím půlročního kanálu (Datacenter nebo Enterprise nebo Standard)<br/><br/> Windows Server 2016/2012 R2/2012/2008 R2.
 **Podpora SQL pro virtuální počítače Azure Stack** | Zálohování SQL serveru 2016/2014/2012 s aktualizací SP1.<br/><br/> Zálohování a obnovení databáze.
 **Podpora služby SharePoint pro virtuální počítače Azure Stack** | SharePoint 2016/2013/2010.<br/><br/> Zálohování a obnovení farmy, databáze, front-endu, webový server.
 **Požadavky na síť pro zálohování virtuálních počítačů** | Všechny virtuální počítače v Azure stacku úlohy musí být ve stejné virtuální síti a patří do stejného předplatného.
@@ -220,4 +220,4 @@ Následující tabulka shrnuje, co je možné zálohovat do aplikace DPM z míst
 - [Další informace](backup-architecture.md#architecture-back-up-to-dpmmabs) o architektuře MABS.
 - [Kontrola](backup-support-matrix-mars-agent.md) co je podporováno pro agenta MARS.
 - [Nastavit](backup-azure-microsoft-azure-backup.md) serveru MABS.
-- [Nastavení] (https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180
+- [Nastavení aplikace DPM](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180)

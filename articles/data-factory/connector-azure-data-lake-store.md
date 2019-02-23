@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: d148b43750b4e57ff650f8e96bfda1fb5c57dd4b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ac0a4bf6f332095bd75a6be83d7a1cd3d37c8e1c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657327"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674544"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,15 +113,15 @@ Podporovány jsou následující vlastnosti:
 
 ### <a name="managed-identity"></a> Použití spravované identity pro ověřování prostředků Azure
 
-Objekt pro vytváření dat můžou být spojené s [spravované identity pro prostředky Azure](data-factory-service-identity.md), která představuje této konkrétní datové továrně. Tuto identitu služby můžete použít přímo pro ověřování Data Lake Store, podobně jako u vlastních instančního objektu. Tento objekt pro vytváření určené umožňuje přístup a kopírování dat do nebo z Data Lake Store.
+Objekt pro vytváření dat můžou být spojené s [spravované identity pro prostředky Azure](data-factory-service-identity.md), která představuje této konkrétní datové továrně. Tuto spravovanou identitu můžete použít přímo pro ověřování Data Lake Store, podobně jako u vlastních instančního objektu. Tento objekt pro vytváření určené umožňuje přístup a kopírování dat do nebo z Data Lake Store.
 
 Použití spravované identity pro ověřování prostředků Azure:
 
-1. [Načíst identita služeb datové továrny](data-factory-service-identity.md#retrieve-service-identity) tak, že zkopírujete hodnoty "ID aplikace Identity služby" generované spolu se svým objektem pro vytváření.
-2. Udělte přístup identit služby Data Lake Store, stejným způsobem jako pro instanční objekt služby, za tyto poznámky.
+1. [Načíst informace o data factory spravované identity](data-factory-service-identity.md#retrieve-managed-identity) tak, že zkopírujete hodnoty "ID aplikace Identity služby" generované spolu se svým objektem pro vytváření.
+2. Udělení přístupu spravovanou identitu do Data Lake Store, stejným způsobem jako pro instanční objekt služby, za tyto poznámky.
 
 >[!IMPORTANT]
-> Ujistěte se, že udělíte data factory služby identity správné oprávnění v Data Lake Store:
+> Ujistěte se, že udělíte data factory spravované identity správné oprávnění v Data Lake Store:
 >- **Jako zdroj**: V **Průzkumník dat** > **přístup**, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory do složek a podsložek. Nebo můžete udělit **čtení** oprávnění zkopírovat jeden soubor. Můžete také přidat do **tato složka a všechny podřízené objekty** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Neexistuje žádný požadavek na účet řízení přístupu (IAM).
 >- **Jako jímku**: V **Průzkumník dat** > **přístup**, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete také přidat do **tato složka a všechny podřízené objekty** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure integration runtime ke kopírování (zdroj a jímka mají v cloudu), v IAM, udělit alespoň **čtečky** role, aby bylo možné nechat Data Factory rozpoznat oblast pro Data Lake Store. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure integration runtime](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store. Jako v následujícím příkladu je ve službě Data Lake Store propojená přidružení.
 

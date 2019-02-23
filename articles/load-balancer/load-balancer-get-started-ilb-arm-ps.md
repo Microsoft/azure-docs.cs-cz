@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 36543bf50cb015993841267fdac61ed42297d27e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 17753ba374475c19fee1a213654caf4a624088f8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594368"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669903"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí modulu Azure PowerShellu
 
@@ -60,7 +60,7 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure PowerShellu
 
 Spusťte modul PowerShellu pro Azure Resource Manager.
 
-```powershell
+```azurepowershell-interactive
 Connect-AzAccount
 ```
 
@@ -68,7 +68,7 @@ Connect-AzAccount
 
 Zkontrolujte dostupná předplatná Azure.
 
-```powershell
+```azurepowershell-interactive
 Get-AzSubscription
 ```
 
@@ -78,7 +78,7 @@ Po zobrazení výzvy k ověření zadejte své přihlašovací údaje.
 
 Zvolte, které z vašich předplatných Azure se má použít k nasazení nástroje pro vyrovnávání zatížení.
 
-```powershell
+```azurepowershell-interactive
 Select-AzSubscription -Subscriptionid "GUID of subscription"
 ```
 
@@ -86,7 +86,7 @@ Select-AzSubscription -Subscriptionid "GUID of subscription"
 
 Vytvořte pro nástroj pro vyrovnávání zatížení novou skupinu prostředků. Tento krok přeskočte, pokud používáte některou ze stávajících skupin prostředků.
 
-```powershell
+```azurepowershell-interactive
 New-AzResourceGroup -Name NRP-RG -location "West US"
 ```
 
@@ -98,13 +98,13 @@ V tomto příkladu jsme vytvořili skupinu prostředků s názvem **NRP-RG** a u
 
 Vytvořte podsíť pro virtuální síť a přiřaďte ji do proměnné **$backendSubnet**.
 
-```powershell
+```azurepowershell-interactive
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
 ```
 
 Vytvořte virtuální síť.
 
-```powershell
+```azurepowershell-interactive
 $vnet= New-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
 ```
 
@@ -118,7 +118,7 @@ Vytvořte front-endový fond IP adres pro příchozí provoz a back-endový fond
 
 Vytvořte front-endový fond IP adres s privátní IP adresou 10.0.2.5 pro podsíť 10.0.2.0/24. Tato adresa je koncovým bodem příchozího síťového provozu.
 
-```powershell
+```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $vnet.subnets[0].Id
 ```
 
@@ -143,7 +143,7 @@ Tento příklad vytvoří následující čtyři objekty pravidel:
 * Pravidlo testu stavu: Kontroluje stav HealthProbe.aspx cesty.
 * Pravidlo nástroje pro vyrovnávání zatížení: Vyrovnává zatížení veškerý příchozí provoz na veřejném portu 80 na port 80 v back endových adres fondu.
 
-```powershell
+```azurepowershell-interactive
 $inboundNATRule1= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
 
 $inboundNATRule2= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP2" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
@@ -157,7 +157,7 @@ $lbrule = New-AzLoadBalancerRuleConfig -Name "HTTP" -FrontendIpConfiguration $fr
 
 Vytvořte nástroj pro vyrovnávání zatížení a zkombinujte objekty pravidel (příchozí NAT pro protokol RDP, nástroj pro vyrovnávání zatížení a sonda stavu):
 
-```powershell
+```azurepowershell-interactive
 $NRPLB = New-AzLoadBalancer -ResourceGroupName "NRP-RG" -Name "NRP-LB" -Location "West US" -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
 ```
 
@@ -169,7 +169,7 @@ Po vytvoření interního nástroje pro vyrovnávání zatížení definujte, kt
 
 Získejte virtuální síť a podsíť prostředku. Tyto hodnoty se použijí k vytvoření síťových rozhraní:
 
-```powershell
+```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
 
 $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
@@ -177,7 +177,7 @@ $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNet
 
 Vytvořte první síťové rozhraní s názvem **lb-nic1-be**. Přiřaďte toto rozhraní k back-endovému fondu nástroje pro vyrovnávání zatížení. Přidružte k tomuto síťovému rozhraní první pravidlo NAT pro protokol RDP:
 
-```powershell
+```azurepowershell-interactive
 $backendnic1= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-be -Location "West US" -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
 ```
 
@@ -185,7 +185,7 @@ $backendnic1= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-b
 
 Vytvořte druhé síťové rozhraní s názvem **lb-nic2-be**. Přiřaďte druhé síťové rozhraní ke stejnému back-endovému fondu nástroje pro vyrovnávání zatížení jako první rozhraní. Přidružte k druhému síťovému rozhraní druhé pravidlo NAT pro protokol RDP:
 
-```powershell
+```azurepowershell-interactive
 $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
 ```
 
@@ -253,7 +253,7 @@ Po vytvoření virtuálního počítače přidejte síťové rozhraní.
 
 Uložte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). Používáme proměnnou s názvem **$lb**. Jako hodnoty atributů ve skriptu použijte názvy prostředků nástroje pro vyrovnávání zatížení vytvořené v předchozích krocích.
 
-```powershell
+```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 ```
 
@@ -261,7 +261,7 @@ $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 
 Uložte konfiguraci back-endu do proměnné **$backend**.
 
-```powershell
+```azurepowershell-interactive
 $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
 ```
 
@@ -269,7 +269,7 @@ $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBala
 
 Do další proměnné uložte síťové rozhraní. Toto rozhraní jste vytvořili v kroku 1: Vytvoření síťových rozhraní. Používáme proměnnou s názvem **$nic1**. Použijte stejný název síťového rozhraní jako v předchozím příkladu.
 
-```powershell
+```azurepowershell-interactive
 $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 ```
 
@@ -277,7 +277,7 @@ $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 
 Změňte konfiguraci back-endu na síťovém rozhraní.
 
-```powershell
+```azurepowershell-interactive
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 ```
 
@@ -285,7 +285,7 @@ $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 
 Uložte objekt síťového rozhraní.
 
-```powershell
+```azurepowershell-interactive
 Set-AzNetworkInterface -NetworkInterface $nic
 ```
 
@@ -297,7 +297,7 @@ Po přidání rozhraní do back-endového fondu se zatížení síťového provo
 
 Přiřaďte objekt nástroje pro vyrovnávání zatížení (z předchozího příkladu) do proměnné **$slb** pomocí příkazu `Get-AzLoadBalancer`:
 
-```powershell
+```azurepowershell-interactive
 $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
@@ -305,7 +305,7 @@ $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 
 Přidejte do stávajícího nástroje pro vyrovnávání zatížení nové příchozí pravidlo NAT. Pro front-endový fond použijte port 81 a pro back-endový fond použijte port 8181:
 
-```powershell
+```azurepowershell-interactive
 $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol Tcp
 ```
 
@@ -313,7 +313,7 @@ $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfigura
 
 Uložte novou konfiguraci pomocí příkazu `Set-AzureLoadBalancer`:
 
-```powershell
+```azurepowershell-interactive
 $slb | Set-AzLoadBalancer
 ```
 
@@ -321,7 +321,7 @@ $slb | Set-AzLoadBalancer
 
 Odstraňte nástroj pro vyrovnávání zatížení **NRP-LB** ve skupině prostředků **NRP-RG** pomocí příkazu `Remove-AzLoadBalancer`:
 
-```powershell
+```azurepowershell-interactive
 Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 

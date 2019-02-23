@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9399f9d47d89215080b1f633423843f501fefb7b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850427"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670872"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení vícevrstvé aplikace SAP NetWeaver
 
@@ -80,7 +80,7 @@ Pro podporu prostředí clusteru převzetí služeb při selhání [SIOS DataKee
 
 Jiný způsob, jak zpracovat clustering je implementace cluster souborových sdílené složky. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) naposledy upravovaných model nasazení centrální služby pro přístup k /sapmnt globální adresáře prostřednictvím cesty UNC. Ale přesto doporučujeme Ujistěte se, že sdílené složky UNC /sapmnt s vysokou dostupností. To můžete udělat v instanci centrální služby s použitím clusteru převzetí služeb při selhání Windows serveru se škálování na souborový Server (SOFS) a funkci prostory úložiště – přímé (S2D) ve Windows serveru 2016. 
  > [!NOTE]
- > Aktuálně Azure Site Recovery podporu pouze havárií bod konzistentní vzhledem k replikaci virtuálních počítačů pomocí prostorů úložiště s přímým přístupem 
+ > Aktuálně Azure Site Recovery podporu pouze havárií bod konzistentní vzhledem k replikaci virtuálních počítačů pomocí prostorů úložiště s přímým přístupem a pasivní uzel SIOS Datakeeper
 
 
 ## <a name="disaster-recovery-considerations"></a>Aspekty zotavení po havárii
@@ -166,5 +166,5 @@ Další informace najdete v tématu [testovací převzetí služeb při selhán�
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery najdete v tématu ke stažení dokument white paper [SAP NetWeaver: vytváření řešení pro zotavení po havárii pomocí Azure Site Recovery](https://aka.ms/asr-sap). Dokument white paper popisuje doporučení pro různé architektury SAP, seznam podporovaných aplikací a typy virtuálních počítačů pro SAP v Azure a popisuje možnosti testovací plán pro vaše řešení zotavení po havárii.
+* Další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery najdete v tématu ke stažení dokument white paper [SAP NetWeaver: Sestavování řešení zotavení po havárii pomocí Azure Site Recovery](https://aka.ms/asr-sap). Dokument white paper popisuje doporučení pro různé architektury SAP, seznam podporovaných aplikací a typy virtuálních počítačů pro SAP v Azure a popisuje možnosti testovací plán pro vaše řešení zotavení po havárii.
 * Další informace o [replikaci jiných úloh](site-recovery-workload.md) pomocí Site Recovery.

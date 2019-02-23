@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: 77b863bc32442261e220b5dd3f11c0bd33b4fa7a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809208"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727107"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ruční instalace nebo aktualizace rozšíření vazby Azure Functions na portálu
 
-Modul runtime verze 2.x Azure Functions používá rozšíření vazby k implementaci kódu pro triggery a vazby. Rozšíření vazby jsou k dispozici v balíčcích NuGet. K registraci rozšíření, je v podstatě nainstalovat balíček. Při vytváření funkcí, tak, jak nainstalovat rozšíření vazby závisí na vývojové prostředí. Další informace najdete v tématu [registraci rozšíření vazby](functions-triggers-bindings.md#register-binding-extensions) v aktivační události a vazby článku.
+Modul runtime verze 2.x Azure Functions používá rozšíření vazby k implementaci kódu pro triggery a vazby. Rozšíření vazby jsou k dispozici v balíčcích NuGet. K registraci rozšíření, je v podstatě nainstalovat balíček. Při vytváření funkcí, tak, jak nainstalovat rozšíření vazby závisí na vývojové prostředí. Další informace najdete v tématu [registraci rozšíření vazby](./functions-bindings-register.md) v aktivační události a vazby článku.
 
 V některých případech budete muset ručně nainstalovat nebo aktualizovat rozšíření vazby na webu Azure Portal. Například budete muset aktualizovat registrované vazby na novější verzi. Také můžete potřebovat k registraci podporovanou vazbu, která nejde nainstalovat v **integrace** karta na portálu.
 

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: b706e229bed48c821d5ca772450df320fd7e0b7f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271659"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728229"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Vytvoření toku dat Azure Data Factory
 
@@ -34,7 +34,12 @@ Se výzva k zadání informací o vašem účtu úložiště objektů Blob v Azu
 
 [Data ukládaná za účelem těchto ukázek můžete najít zde](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Stáhněte si ukázková data a ukládat soubory v účtu úložiště objektů Blob v Azure tak, aby bylo možné provést ukázky.
 
+## <a name="create-new-data-flow"></a>Vytvoření nového toku dat
+
 Použijte tlačítko vytvořit prostředek "znaménko plus" v Uživatelském rozhraní ADF na vytváření toků dat.
 
 ![Možnosti toku dat](media/data-flow/newresource.png "nový prostředek")
 
+## <a name="next-steps"></a>Další postup
+
+Začít sestavovat vaši jak transformovat data pomocí [zdroje transformace](data-flow-source.md).

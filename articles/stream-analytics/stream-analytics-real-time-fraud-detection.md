@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73fffda6ec0ae0a65af9b5aa8505e3b9551bd3b4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6433d130da108ce7bd0b6f8b4093161043c32645
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558171"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733142"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: Zjišťování možných podvodů v reálném čase
 
@@ -188,9 +188,9 @@ Teď, když máte stream událostí volání, můžete nastavit úlohu Stream An
    |---------|---------|---------|
    |Alias vstupu  |  CallStream   |  Zadejte název pro identifikaci vstupu úlohy.   |
    |Předplatné   |  \<Vaše předplatné\> |  Vyberte předplatné Azure, který má centra událostí, které jste vytvořili.   |
-   |Obor názvů centra událostí  |  Azure Stream Analytics eh-ns – ukázka |  Zadejte název pro obor názvů centra událostí.   |
-   |Název centra událostí  | Azure Stream Analytics eh – frauddetection – ukázka | Vyberte název vašeho centra událostí.   |
-   |Název zásad centra událostí  | Azure Stream Analytics – zásady – Správa – ukázka | Vyberte zásady přístupu, který jste vytvořili dříve.   |
+   |Obor názvů centra událostí  |  asa-eh-ns-demo |  Zadejte název pro obor názvů centra událostí.   |
+   |Název centra událostí  | asa-eh-frauddetection-demo | Vyberte název vašeho centra událostí.   |
+   |Název zásad centra událostí  | asa-policy-manage-demo | Vyberte zásady přístupu, který jste vytvořili dříve.   |
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -355,10 +355,10 @@ Pokud máte existující účet úložiště objektů blob, můžete použít, k
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
-   |Alias pro výstup  |  CallStream Podvodnávolání   |  Zadejte název pro identifikaci výstupu úlohy.   |
+   |Alias pro výstup  |  CallStream-FraudulentCalls   |  Zadejte název pro identifikaci výstupu úlohy.   |
    |Předplatné   |  \<Vaše předplatné\> |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
    |Účet úložiště  |  asaehstorage |  Zadejte název účtu úložiště, který jste vytvořili. |
-   |Kontejner  | Azure Stream Analytics – podvodnávolání – ukázka | Zvolte možnost vytvořit novou a zadejte název kontejneru. |
+   |Kontejner  | asa-fraudulentcalls-demo | Zvolte možnost vytvořit novou a zadejte název kontejneru. |
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
