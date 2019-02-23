@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dd13a8178fd74f54ffa6fa5d9d8c23d214965dca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d6daf9805737294fb5bf0e9f4e48a3c7cfbb98e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866964"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731833"
 documentType: LandingData
 title: Dokumentace ke službě Translator Text
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/06/18
+  ms.date: 02/21/2019
   ms.author: v-jansko
 abstract:
   description: Translator Text je cloudová služba strojového překladu, kterou můžete využít k překladu textu téměř v reálném čase pomocí jednoduchého volání rozhraní REST API. Rozhraní API využívá moderní technologie neurálního strojového překladu a nabízí technologie statistického strojového překladu. Custom Translator je rozšíření rozhraní Translator Text API, které umožňuje vytvářet neurální překladové systémy. Přizpůsobené překladové systémy se dají využít k překladu textu s využitím Translator Text API nebo <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">hlasových služeb Microsoftu</a>. Seznam podporovaných jazyků pro neurální i statistický strojový překlad najdete v části věnované <a href="languages.md">podporovaným jazykům</a>.
