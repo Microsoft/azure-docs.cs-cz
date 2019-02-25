@@ -1,6 +1,6 @@
 ---
 title: Práce s řetězci v dotazech protokolu Azure Monitor | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz použití Azure Monitor log analytics na portálu Azure portal k dotazování a analýze dat protokolů ve službě Azure Monitor.
+description: Tento článek obsahuje kurz použití Azure monitoru Log Analytics na portálu Azure portal k dotazování a analýze dat protokolů ve službě Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993720"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750952"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Práce s formátem JSON a datovými struktury v dotazů na protokoly Azure monitoru
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) a [Začínáme se službou Azure Monitor protokolu dotazy](get-started-queries.md) před dokončením v této lekci.
+> By se měla Dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme se službou Azure Monitor protokolu dotazy](get-started-queries.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

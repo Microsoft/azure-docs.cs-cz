@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c79becfda84e1a7d65399c7211bdc3b98a28696f
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004634"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750561"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Spojení v dotazů na protokoly Azure monitoru
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) a [dotazů na protokoly Azure monitoru](get-started-queries.md) před dokončením v této lekci.
+> By se měla Dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [dotazů na protokoly Azure monitoru](get-started-queries.md) před dokončením v této lekci.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

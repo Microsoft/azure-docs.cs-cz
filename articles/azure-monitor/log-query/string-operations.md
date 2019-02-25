@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4998084ed15e6ed455789689674e134c6cd9d0a8
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995403"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749762"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v dotazech protokolu Azure Monitor
 
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) a [Začínáme se službou Azure Monitor protokolu dotazy](get-started-queries.md) před tímto kurzem.
+> By se měla Dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme se službou Azure Monitor protokolu dotazy](get-started-queries.md) před tímto kurzem.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

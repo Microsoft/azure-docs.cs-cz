@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457047"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56751424"
 ---
 > [!div class="op_single_selector"]
 > * [C ve Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -58,9 +58,9 @@ Po dokončení procesu nasazení pro řešení vzdáleného monitorování klikn
 
 Aby zařízení mohlo připojit k akcelerátoru řešení musí se identifikovat do služby IoT Hub pomocí platných přihlašovacích údajů. Máte možnost Uložit připojovací řetězec zařízení, která obsahuje tyto přihlašovací údaje při přidávání zařízení do řešení. Připojovací řetězec zařízení můžete zahrnout do klientské aplikace později v tomto kurzu.
 
-Přidání zařízení do řešení vzdáleného monitorování, proveďte následující kroky na **zařízení** stránku v řešení:
+Přidání zařízení do řešení vzdáleného monitorování, proveďte následující kroky na **Device Explorer** stránku v řešení:
 
-1. Zvolte **+ nové zařízení**a klikněte na tlačítko **fyzické** jako **typ zařízení**:
+1. Zvolte **+ nové zařízení**a klikněte na tlačítko **skutečné** jako **typ zařízení**:
 
     ![Přidání skutečného zařízení](media/iot-suite-selector-connecting/devicesprovision.png)
 

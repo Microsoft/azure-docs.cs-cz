@@ -10,22 +10,33 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08dcb75fabc109a8869151402d3a448333beb556
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0fe77a1093bec52c3786a9ae623a2d63e1ba82ce
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247523"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750935"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
-V tomto článku se dozvíte, načítání dat pomocí různých metod [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk). Sada SDK podporuje různé funkce příjem dat, včetně:
+V tomto článku se naučíte různými způsoby načítání dat pomocí sady SDK pro Azure Machine Learning Data Prep. Referenční dokumentace pro SDK najdete v tématu [přehled](https://aka.ms/data-prep-sdk). Sada SDK podporuje různé funkce příjem dat, včetně:
 
 * Načtení z mnoha typů souborů s analýzy odvozování parametrů (kódování, oddělovač, hlavičky)
 * Převod typu pomocí odvození během načítání souboru
 * Podpora připojení pro MS SQL Server a úložiště Azure Data Lake
+
+V následující tabulce jsou uvedeny výběru sady funkcí pro načítání dat z běžných typů souborů.
+
+| Typ souboru | Funkce | Referenční odkaz |
+|-------|-------|-------|
+|Všechny|`auto_read_file()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|Text|`read_lines()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-lines-path--filepath--header--azureml-dataprep-api-engineapi-typedefinitions-promoteheadersmode----promoteheadersmode-none--0---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---skip-rows--int---0--skip-mode--azureml-dataprep-api-engineapi-typedefinitions-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|CSV|`read_csv()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-csv-path--filepath--separator--str--------header--azureml-dataprep-api-engineapi-typedefinitions-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---quoting--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-engineapi-typedefinitions-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--archive-options--azureml-dataprep-api--archiveoption-archiveoptions---none-----azureml-dataprep-api-dataflow-dataflow)|
+|Excel|`read_excel()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-excel-path--filepath--sheet-name--str---none--use-column-headers--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|Fixed-width|`read_fwf()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-fwf-path--filepath--offsets--typing-list-int---header--azureml-dataprep-api-engineapi-typedefinitions-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-engineapi-typedefinitions-skipmode----skipmode-none--0---include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|JSON|`read_json()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-json-path--filepath--encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---flatten-nested-arrays--bool---false--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 
 ## <a name="load-data-automatically"></a>Načtení dat automaticky
 
@@ -43,7 +54,7 @@ Tato funkce je užitečná pro automatické zjišťování typu souboru, kódov�
 * Přeskakuje se prázdné záznamy v horní části souboru
 * Odvození a nastavení záhlaví řádku
 
-Případně pokud znáte souboru zadejte předem domluvili a chcete explicitně kontrolovat způsob, jakým je analyzován, dál za nabízí tento článek a zobrazit tak, že že specializované funkce sady SDK.
+Případně pokud znáte souboru zadejte předem domluvili a chcete explicitně kontrolovat způsob, jakým je analyzován, použijte funkce konkrétního souboru.
 
 ## <a name="load-text-line-data"></a>Načtení dat řádku textu
 
@@ -59,8 +70,7 @@ dataflow.head(5)
 |0|Datum \| \| minimální teploty \| \| nejvyšší teplota|
 |1|2015-07-1 \| \| -4.1 \| \| 10.0.|
 |2|2015-07-2 \| \| -0.8 \| \| 10.8|
-|3|2015-07-3 \| \| -7.0 \| \| 10.5|
-|4|2015-07-4 \| \| -5.5 \| \| 9.3|
+
 
 Po data ingestují, spusťte následující kód pro převod objektu toku dat do Pandas dataframe.
 
@@ -73,7 +83,6 @@ pandas_df = dataflow.to_pandas_dataframe()
 Při čtení textových souborů s oddělovači, lze odvodit základní spuštění analýzy parametry (oddělovač, kódování, jestli se má použít, hlavičky atd.). Spusťte následující kód, který pokus o čtení souboru CSV zadáním pouze jeho umístění.
 
 ```python
-# SAS expires June 16th, 2019
 dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
 dataflow.head(5)
 ```
@@ -83,8 +92,7 @@ dataflow.head(5)
 |0||stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |1|ALABAMA|1|101710|Hale kraj|10171002158| |
 |2|ALABAMA|1|101710|Hale kraj|10171002162| |
-|3|ALABAMA|1|101710|Hale kraj|10171002156| |
-|4|ALABAMA|1|101710|Hale kraj|10171000588|2|
+
 
 Chcete-li při načítání, vyloučit řádky, definujte `skip_rows` parametru. Tento parametr vynechá načítání řádků sestupně v souboru CSV (pomocí indexu se základem 1).
 
@@ -98,24 +106,22 @@ dataflow.head(5)
 |-----|-------|---------| -------|------|-----|------|-----|
 |0|ALABAMA|1|101710|Hale kraj|10171002158|29|
 |1|ALABAMA|1|101710|Hale kraj|10171002162|40 |
-|2|ALABAMA|1|101710|Hale kraj|10171002156| 43|
-|3|ALABAMA|1|101710|Hale kraj|10171000588|2|
-|4|ALABAMA|1|101710|Hale kraj|10171000589|23 |
 
 Spusťte následující kód k zobrazení datové typy sloupce.
 
 ```python
 dataflow.head(1).dtypes
-
-stnam                     object
-fipst                     object
-leaid                     object
-leanm10                   object
-ncessch                   object
-schnam10                  object
-MAM_MTH00numvalid_1011    object
-dtype: object
 ```
+Výstup:
+
+    stnam                     object
+    fipst                     object
+    leaid                     object
+    leanm10                   object
+    ncessch                   object
+    schnam10                  object
+    MAM_MTH00numvalid_1011    object
+    dtype: object
 
 Ve výchozím nastavení sady SDK pro Azure Machine Learning Data Prep nemění datový typ. Zdroj dat, které právě čtete z je textový soubor, takže sady SDK čte všechny hodnoty jako řetězce. V tomto příkladu by měl být číselné sloupce analyzovat jako čísla. Nastavte `inference_arguments` parametr `InferenceArguments.current_culture()` automaticky odvodit a převést typy sloupců při čtení souboru.
 
@@ -124,16 +130,18 @@ dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/tes
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
 dataflow.head(1).dtypes
-
-stnam                      object
-fipst                     float64
-leaid                     float64
-leanm10                    object
-ncessch                   float64
-schnam10                   object
-ALL_MTH00numvalid_1011    float64
-dtype: object
 ```
+Výstup:
+
+    stnam                      object
+    fipst                     float64
+    leaid                     float64
+    leanm10                    object
+    ncessch                   float64
+    schnam10                   object
+    ALL_MTH00numvalid_1011    float64
+    dtype: object
+
 
 Několik sloupců byly správně rozpozná jako číselný a jejich typ je nastavený na `float64`.
 
@@ -164,9 +172,6 @@ dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_c
 |------|------|------|-----|------|-----|-------|----|-----|-----|
 |0|1|Miniatury|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|
 |1|2|Titanic|Pamětích.|2186.8|658.7|0.301|1528.1|0.699|1997 ^|
-|2|3|Společnosti Marvel Avengers|BV|1518.6|623.4|0.41|895.2|0.59|2012|
-|3|4|Harry Potter a Deathly Hallows 2. část|WB|1341.5|381|0.284|960.5|0.716|2011|
-|4|5|Zmrazené|BV|1274.2|400.7|0.314|873.5|0.686|2013|
 
 ## <a name="load-fixed-width-data-files"></a>Načíst soubory s pevnou šířkou dat
 
@@ -181,9 +186,7 @@ dataflow.head(5)
 |------|------|------|-----|------|-----|-------|----|-----|----|
 |0|010003|99999|NEPLATNÉ NORSKO|NO|NO|ENSO||||
 |1|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
-|2|010013|99999|ROST|NO|NO|||||
-|3|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
-|4|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
+
 
 Pokud chcete zabránit záhlaví detekce a analyzovat správná data, předat `PromoteHeadersMode.NONE` k `header` parametru.
 
@@ -197,14 +200,11 @@ dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
 |------|------|------|-----|------|-----|-------|----|-----|----|
 |0|010000|99999|NEPLATNÉ NORSKO|NO|NO_1|ENRS|Column7|Column8|Column9|
 |1|010003|99999|NEPLATNÉ NORSKO|NO|NO|ENSO||||
-|2|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
-|3|010013|99999|ROST|NO|NO|||||
-|4|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
-|5|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
+
 
 ## <a name="load-sql-data"></a>Načtení dat SQL
 
-Sady SDK můžete také načíst data ze zdroje SQL. V současné době se podporuje jenom Microsoft SQL Server. Chcete-li čtení dat z SQL serveru, vytvořte `MSSQLDataSource` objekt, který obsahuje parametry připojení. Parametr hesla `MSSQLDataSource` přijímá `Secret` objektu. Můžete vytvořit objekt tajných kódů dvěma způsoby:
+Sady SDK můžete také načíst data ze zdroje SQL. V současné době se podporuje jenom Microsoft SQL Server. Chcete-li čtení dat z SQL serveru, vytvořte [ `MSSQLDataSource` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.mssqldatasource?view=azure-dataprep-py) objekt, který obsahuje parametry připojení. Parametr hesla `MSSQLDataSource` přijímá [ `Secret` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#register-secret-value--str--id--str---none-----azureml-dataprep-api-engineapi-typedefinitions-secret) objektu. Můžete vytvořit objekt tajných kódů dvěma způsoby:
 
 * Prováděcí modul zaregistrujte tajný kód a její hodnotu.
 * Vytvoření tajného kódu s pouze `id` (Pokud hodnota tajného klíče už je zaregistrovaný v prostředí pro spouštění) pomocí `dprep.create_secret("[SECRET-ID]")`.
@@ -230,8 +230,7 @@ dataflow.head(5)
 |0|680|HL Road Frame – Black, 58|FR-R92B 58|Black|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000 + 00:00|
 |1|706|HL Road Frame – Red, 58|FR-R92R 58|Červená|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000 + 00:00|
 |2|707|Sport – 100 Helmet, Red|HL-U509-R|Červená|13.0863|34.99|Žádný|Žádný|35|33|2005-07-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|2e1ef41a-c08a-4ff6-8ada-bde58b64a712|2008-03-11 |10:01:36.827000 + 00:00|
-|3|708|Sport – 100 Helmet, Black|HL U509|Black|13.0863|34.99|Žádný|Žádný|35|33|2005-07-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|a25a44fb-c2de-4268-958f-110b8d7621e2|2008-03-11 |10:01:36.827000 + 00:00|
-|4|709|Socks kolo Horská oblast, M|TAK B909-M|White|3.3963|9.50|M|Žádný|27|18|2005-07-01: 00:00:00 + 00:00|2006-06-30 00:00:00 + 00:00|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|18f95f47-1540-4e02-8f1f-cc1bcb6828d0|2008-03-11 |10:01:36.827000 + 00:00|
+
 
 ## <a name="use-azure-data-lake-storage"></a>Použití Azure Data Lake Storage
 
@@ -311,3 +310,8 @@ dataflow.to_pandas_dataframe().head()
 |2|1011878|100 přepočet mílí na trhu|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. hlavní ulice Farmářům trhu|http://thetownofsixmile.wordpress.com/ |106 S. hlavní ulice|Šest míle|||
 |4|1010691|Ulice 10 Farmářům trh|https://agrimissouri.com/... |Ulice 10 a topolů|Lamar|Barton|
+
+## <a name="next-steps"></a>Další postup
+
+* Sada SDK [přehled](https://aka.ms/data-prep-sdk) vzory návrhu a příklady použití
+* Zobrazit sadu SDK pro Azure Machine Learning Data Prep [kurzu](tutorial-data-prep.md) příklad řešení konkrétní scénář

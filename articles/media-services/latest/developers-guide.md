@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/20/2019
+ms.date: 02/22/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 6724a66f9a2b80f94f986db19d67b27884797e6f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 97123ec795353073b912bd83e0abb45e23549a75
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592362"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749796"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Začněte vyvíjet s využitím rozhraní API služby Media Services v3 pomocí sady SDK a nástroje
 
@@ -95,6 +95,7 @@ Prozkoumejte Media Services [.NET ref](https://aka.ms/ams-v3-dotnet-ref) dokumen
 - [DRM dynamického šifrování a licence doručování služba – .NET](protect-with-drm.md)
 - [Získejte podpisový klíč ze stávající zásady – .NET](get-content-key-policy-dotnet-howto.md)
 - [Vytváření filtrů pomocí Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [Pokročilé videa na vyžádání příklady Azure Functions a 2 služby Media Services v3](http://aka.ms/ams3functions)
 
 ## <a name="java"></a>Java
 

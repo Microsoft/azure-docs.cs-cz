@@ -1,0 +1,1 @@
+Po vytvoření vaší sledovací proces událostí AnchorLocated bude platit pro každý ukotvení požadovaný. Tato událost je vyvoláno, když ukotvení se nachází, nebo pokud ukotvení nejde najít. Pokud taková situace nastane, důvod se bude zobrazovat v stav. Po zpracování všech kotvy sledování nalezen nebo nebyl nalezen, pak LocateAnchorsCompleted událost se aktivuje.

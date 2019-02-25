@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/25/2019
+ms.date: 02/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 97f9c893487b486bd76031cb6321fe100321931d
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340839"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750714"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -68,6 +68,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Role služby operátor klíčů účtů klasického úložiště.](#classic-storage-account-key-operator-service-role) | Operátoři klíčů klasických účtů úložiště můžou vypisovat a znovu generovat klíče pro klasické účty úložiště. |
 | [Přispěvatel klasických virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
 | [Přispěvatel služby cognitive Services](#cognitive-services-contributor) | Umožňuje vytvořit, přečíst, aktualizovat, odstranit a spravovat klíče služeb Cognitive Services. |
+| [Cognitive Services Data Reader (Preview)](#cognitive-services-data-reader-preview) | Umožňuje číst data služby Cognitive Services. |
 | [Cognitive Services User](#cognitive-services-user) | Umožňuje přečíst a vypsat klíče služeb Cognitive Services. |
 | [Role čtenáře účtu cosmos DB](#cosmos-db-account-reader-role) | Může číst data účtu služby Azure Cosmos DB. Zobrazit [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) ke správě účtů službu Azure Cosmos DB. |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Může odesílat požadavky na obnovení databáze Cosmos DB nebo kontejneru pro určitý účet. |
@@ -113,6 +114,9 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Přispěvatel Site Recovery](#site-recovery-contributor) | Umožňuje spravovat službu Site Recovery, ale ne vytvářet trezory a přiřazovat role. |
 | [Operátor Site Recovery](#site-recovery-operator) | Umožňuje provádět převzetí služeb při selhání a navrácení služeb po obnovení, ale žádné jiné operace správy služby Site Recovery. |
 | [Čtenář Site Recovery](#site-recovery-reader) | Umožňuje zobrazovat stav služby Site Recovery, ale ne provádět jiné operace správy. |
+| [Přispěvatel účtů prostorových kotvy](#spatial-anchors-account-contributor) | Umožňuje spravovat prostorové kotvy ve vašem účtu, ale nikoli jejich odstraňování |
+| [Vlastník účtu prostorových kotvy](#spatial-anchors-account-owner) | Umožňuje spravovat prostorové kotvy ve vašem účtu, včetně jejich odstranění |
+| [Účet čtečky prostorových kotvy](#spatial-anchors-account-reader) | Umožňuje vyhledat a přečíst vlastnosti prostorových kotvy ve vašem účtu |
 | [Přispěvatel databází SQL](#sql-db-contributor) | Umožňuje správu databází SQL, ale ne přístup k nim. Kromě toho nemůžete spravovat jejich zásady související se zabezpečením nebo nadřazené servery SQL. |
 | [SQL Security Manager](#sql-security-manager) | Umožňuje vám spravovat zásady vztahující se k zabezpečení serverů a databází SQL, ale ne přístup k nim. |
 | [Přispěvatel SQL serveru](#sql-server-contributor) | Umožňuje vám spravovat servery a databáze SQL, ale ne přístup k nim ani jejich zásady vztahující se k zabezpečení. |
@@ -122,6 +126,8 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Vlastník dat úložiště objektů Blob (Preview)](#storage-blob-data-owner-preview) | Umožňuje úplný přístup k kontejnery objektů blob v Azure Storage a data, včetně přiřazování řízení přístupu POSIX. |
 | [Čtenář dat objektu Blob služby Storage (Preview)](#storage-blob-data-reader-preview) | Umožňuje číst kontejnery a data objektů blob služby Azure Storage. |
 | [Přispěvatel dat fronty služby Storage (Preview)](#storage-queue-data-contributor-preview) | Umožňuje číst, zapisovat a odstraňovat fronty služby Azure Storage a jejich zprávy. |
+| [Procesor zpráva Data fronty úložiště (Preview)](#storage-queue-data-message-processor-preview) | Umožňuje pro náhled, příjem a odstraňovat zprávy fronty Azure Storage |
+| [Odesílatel zprávy Data fronty úložiště (Preview)](#storage-queue-data-message-sender-preview) | Umožňuje odesílání zpráv fronty Azure Storage |
 | [Čtenář dat fronty služby Storage (Preview)](#storage-queue-data-reader-preview) | Umožňuje číst fronty služby Azure Storage a jejich zprávy. |
 | [Přispěvatel žádostí o podporu](#support-request-contributor) | Umožňuje vytvořit a spravovat žádosti o podporu. |
 | [Přispěvatel Traffic Manageru](#traffic-manager-contributor) | Umožňuje spravovat profily Traffic Manageru, ale neumožňuje řídit, kdo k nim má přístup. |
@@ -934,6 +940,21 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="cognitive-services-data-reader-preview"></a>Cognitive Services Data Reader (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje číst data služby Cognitive Services. |
+> | **ID** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | **Akce** |  |
+> | *None* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="cognitive-services-user"></a>Uživatel Cognitive Services
 > [!div class="mx-tableFixed"]
 > | | |
@@ -943,11 +964,11 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Akce** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Zobrazit seznam klíčů |
-> | Microsoft.Insights/metricdefinitions/read | Číst definice metrik |
-> | Microsoft.Insights/metrics/read | Čtení metrik |
 > | Microsoft.Insights/alertRules/read | Přečte klasické upozornění na metriku. |
 > | Microsoft.Insights/diagnosticSettings/read | Přečte nastavení diagnostiky prostředků. |
 > | Microsoft.Insights/logDefinitions/read | Číst definice protokolů |
+> | Microsoft.Insights/metricdefinitions/read | Číst definice metrik |
+> | Microsoft.Insights/metrics/read | Čtení metrik |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Resources/deployments/operations/read | Načte nebo vypíše operace nasazení. |
 > | Microsoft.Resources/subscriptions/operationresults/read | Načte výsledky operací s předplatným. |
@@ -957,7 +978,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **notActions** |  |
 > | *None* |  |
 > | **DataActions** |  |
-> | *None* |  |
+> | Microsoft.CognitiveServices/* |  |
 > | **NotDataActions** |  |
 > | *None* |  |
 
@@ -1177,16 +1198,16 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Vyhodnotí zásady testovacího prostředí. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Převzít vlastnictví existujícího virtuálního počítače |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Obsahuje příslušné spustit/zastavit plány. |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Připojí pro fond adres back-endu nástroje pro vyrovnávání zatížení |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Připojí pravidla příchozích pravidel nat služby load balancer |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Spojí pro fond adres back-endu nástroje pro vyrovnávání zatížení. Výstražné. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Připojí pravidla příchozích pravidel nat služby load balancer. Výstražné. |
 > | Microsoft.Network/networkInterfaces/*/read | Čtení vlastností síťového rozhraní (třeba všechny nástroje pro vyrovnávání zatížení, které se síťové rozhraní je součástí) |
-> | Microsoft.Network/networkInterfaces/join/action | Připojí k síťovému rozhraní virtuálního počítače |
+> | Microsoft.Network/networkInterfaces/join/action | Virtuální počítač připojí k síťovému rozhraní. Výstražné. |
 > | Microsoft.Network/networkInterfaces/read | Získá definici rozhraní sítě.  |
 > | Microsoft.Network/networkInterfaces/write | Vytvoří síťové rozhraní nebo aktualizuje existující síťové rozhraní.  |
 > | Microsoft.Network/publicIPAddresses/*/read | Umožňuje číst vlastnosti veřejné IP adresy |
-> | Microsoft.Network/publicIPAddresses/join/action | Připojí veřejná ip adresa |
+> | Microsoft.Network/publicIPAddresses/join/action | Spojí veřejnou ip adresu. Výstražné. |
 > | Microsoft.Network/publicIPAddresses/read | Získá definici veřejnou ip adresu. |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Připojí virtuální sítě |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Připojí virtuální sítě. Výstražné. |
 > | Microsoft.Resources/deployments/operations/read | Načte nebo vypíše operace nasazení. |
 > | Microsoft.Resources/deployments/read | Načte nebo vypíše nasazení. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
@@ -2033,6 +2054,65 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="spatial-anchors-account-contributor"></a>Přispěvatel účtů prostorových kotvy
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje spravovat prostorové kotvy ve vašem účtu, ale nikoli jejich odstraňování |
+> | **ID** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | **Akce** |  |
+> | *None* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Prostorový ukotvení vytvářet |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Zjišťovat okolní prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Získá vlastnosti prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Vyhledejte prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Odeslat diagnostická data ke zlepšování kvality služeb Azure prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualizovat vlastnosti prostorových kotvy |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="spatial-anchors-account-owner"></a>Vlastník účtu prostorových kotvy
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje spravovat prostorové kotvy ve vašem účtu, včetně jejich odstranění |
+> | **ID** | 70bbe301-9835-447d-afdd-19eb3167307c |
+> | **Akce** |  |
+> | *None* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Prostorový ukotvení vytvářet |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Odstranění prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Zjišťovat okolní prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Získá vlastnosti prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Vyhledejte prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Odeslat diagnostická data ke zlepšování kvality služeb Azure prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualizovat vlastnosti prostorových kotvy |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="spatial-anchors-account-reader"></a>Účet čtečky prostorových kotvy
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje vyhledat a přečíst vlastnosti prostorových kotvy ve vašem účtu |
+> | **ID** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
+> | **Akce** |  |
+> | *None* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Zjišťovat okolní prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Získá vlastnosti prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Vyhledejte prostorových kotvy |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Odeslat diagnostická data ke zlepšování kvality služeb Azure prostorových kotvy |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="sql-db-contributor"></a>Přispěvatel databází SQL
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2082,7 +2162,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Autorizace Microsoft pro čtení |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Prostředků, jako je například účet úložiště nebo databáze SQL se připojí k podsíti. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Prostředků, jako je například účet úložiště nebo databáze SQL se připojí k podsíti. Výstražné. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
@@ -2173,7 +2253,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Authorization/*/read | Číst všechny autorizace |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
 > | Microsoft.Insights/diagnosticSettings/* | Spravovat nastavení diagnostiky |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Prostředků, jako je například účet úložiště nebo databáze SQL se připojí k podsíti. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Prostředků, jako je například účet úložiště nebo databáze SQL se připojí k podsíti. Výstražné. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
@@ -2267,6 +2347,37 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Vrátí výsledek odstranění zprávy. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Vrátí zprávu. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Vrátí výsledek zápisu zprávy. |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="storage-queue-data-message-processor-preview"></a>Procesor zpráva Data fronty úložiště (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje pro náhled, příjem a odstraňovat zprávy fronty Azure Storage |
+> | **ID** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | **Akce** |  |
+> | *None* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Vrátí zprávu. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Vrátí výsledek zpracování zprávy. |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="storage-queue-data-message-sender-preview"></a>Odesílatel zprávy Data fronty úložiště (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje odesílání zpráv fronty Azure Storage |
+> | **ID** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | **Akce** |  |
+> | *None* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Vrátí výsledek přidání zprávy. |
 > | **NotDataActions** |  |
 > | *None* |  |
 
@@ -2374,20 +2485,20 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Compute/virtualMachineScaleSets/* | Vytvoření a správa škálovací sady virtuálních počítačů |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
-> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Připojí fond adres back-endu aplikace brány |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Připojí pro fond adres back-endu nástroje pro vyrovnávání zatížení |
-> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Připojí nástroj pro vyrovnávání zatížení příchozí fond nat |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Připojí pravidla příchozích pravidel nat služby load balancer |
-> | Microsoft.Network/loadBalancers/probes/join/action | Umožňuje použití sondy nástroje pro vyrovnávání zatížení. S touto vlastností sondu stavu oprávnění z virtuálního počítače škálovací sady můžete odkazovat, sondy. |
+> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Spojí fond adres back-endu aplikace brány. Výstražné. |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Spojí pro fond adres back-endu nástroje pro vyrovnávání zatížení. Výstražné. |
+> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Připojí nástroj pro vyrovnávání zatížení příchozí fond NAT. Výstražné. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Připojí pravidla příchozích pravidel nat služby load balancer. Výstražné. |
+> | Microsoft.Network/loadBalancers/probes/join/action | Umožňuje použití sondy nástroje pro vyrovnávání zatížení. S touto vlastností sondu stavu oprávnění z virtuálního počítače škálovací sady můžete odkazovat, sondy. Výstražné. |
 > | Microsoft.Network/loadBalancers/read | Získá definice nástroje pro vyrovnávání zatížení |
 > | Microsoft.Network/locations/* | Vytváření a správě síťových umístění |
 > | Microsoft.Network/networkInterfaces/* | Vytvoření a Správa síťových rozhraní |
-> | Microsoft.Network/networkSecurityGroups/join/action | Připojí skupinu zabezpečení sítě |
+> | Microsoft.Network/networkSecurityGroups/join/action | Spojí skupinu zabezpečení sítě. Výstražné. |
 > | Microsoft.Network/networkSecurityGroups/read | Získá definici skupiny zabezpečení sítě |
-> | Microsoft.Network/publicIPAddresses/join/action | Připojí veřejná ip adresa |
+> | Microsoft.Network/publicIPAddresses/join/action | Spojí veřejnou ip adresu. Výstražné. |
 > | Microsoft.Network/publicIPAddresses/read | Získá definici veřejnou ip adresu. |
 > | Microsoft.Network/virtualNetworks/read | Získat definici virtuální sítě |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Připojí virtuální sítě |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Připojí virtuální sítě. Výstražné. |
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Vytvořit záložní záměr ochrany |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |

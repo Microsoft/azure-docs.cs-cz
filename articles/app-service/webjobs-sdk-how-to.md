@@ -4,45 +4,51 @@ description: Další informace o tom, jak psát kód pro sadu WebJobs SDK. Vytvo
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/19/2019
+ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a2e07f9022d7404d037903fda627649918134cb7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ba9dbeb01be5a9869b69836b118651cff7f0c92d
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732734"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750544"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
-Tento článek obsahuje pokyny o tom, jak napsat kód pro [sady Azure WebJobs SDK](webjobs-sdk-get-started.md). V dokumentaci k platí pro obě verze 3.x a 2.x sady SDK pro WebJobs. Pokud existují rozdíly rozhraní API, jsou k dispozici příklady obou. Hlavní změny zavedené ve verzi 3.x je použití .NET Core namísto rozhraní .NET Framework.
+Tento článek obsahuje pokyny o tom, jak pracovat se sadou Azure WebJobs SDK. Pomocí WebJobs rovnou začít, najdete v článku [Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech](webjobs-sdk-get-started.md). 
 
->[!NOTE]
-> [Služba Azure Functions](../azure-functions/functions-overview.md) je postavené na sadě WebJobs SDK a tento článek obsahuje odkazy na dokumentaci ke službě Azure Functions pro některá témata. Mějte na paměti následující rozdíly mezi službami Functions a WebJobs SDK:
+## <a name="webjobs-sdk-versions"></a>Verze sady WebJobs SDK
+
+Toto jsou hlavní rozdíly ve verzi ve srovnání 3.x sada WebJobs SDK na verzi 2.x:
+
+* Verze 3.x přidává podporu pro .NET Core.
+* Ve verzi 3.x, je nutné explicitně nainstalovat rozšíření vazby úložiště vyžadované sada WebJobs SDK. Ve verzi 2.x, úložiště vazby byly obsažené v sadě SDK.
+* Nástroje pro projekty .NET Core (3.x) sady Visual Studio se liší od projektů rozhraní .NET Framework (2.x). Další informace najdete v tématu [vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service](webjobs-dotnet-deploy-vs.md).
+
+Když poskytuje pro obě verze je to možné, jsou příklady 3.x a verze 2.x.
+
+> [!NOTE]
+> [Služba Azure Functions](../azure-functions/functions-overview.md) je postavené na sadě WebJobs SDK a tento článek obsahuje odkazy na dokumentaci ke službě Azure Functions pro některá témata. Zde jsou rozdíly mezi službami Functions a WebJobs SDK:
 > * Azure Functions verze 2.x odpovídá verzi sady SDK pro WebJobs 3.x a Azure Functions 1.x odpovídá sada WebJobs SDK 2.x. Úložišť zdrojového kódu pomocí sady SDK pro WebJobs číslování.
 > * Ukázkový kód pro knihovny tříd Azure funkce C# je jako sada WebJobs SDK kódu s tím rozdílem, není nutné `FunctionName` atribut v projektu sady WebJobs SDK.
 > * Některé typy vazeb jsou podporovány pouze u funkcí, jako jsou HTTP, webhook a Event Grid (která je založená na protokolu HTTP).
-> 
+>
 > Další informace najdete v tématu [porovnání sadou WebJobs SDK a Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-## <a name="prerequisites"></a>Požadavky
-
-Tento článek předpokládá přečetl(a) a dokončených úloh v [Začínáme se sadou WebJobs SDK](webjobs-sdk-get-started.md).
-
-## <a name="webjobs-host"></a>WebJobs hostitele
+## <a name="webhobs-host"></a>WebHobs host
 
 Hostitel je kontejner modulu runtime pro funkce.  Naslouchá aktivačních událostí a volání funkce. Ve verzi 3.x, hostitel je implementace `IHost`a ve verzi 2.x použijete `JobHost` objektu. Vytvoření instance hostitele ve vašem kódu a psaní kódu můžete přizpůsobit její chování.
 
 Toto je klíčovým rozdílem mezi přímo pomocí sady WebJobs SDK a nepřímo pomocí s využitím Azure Functions. Ve službě Azure Functions služba ovládací prvky hostitele a si nemůžete přizpůsobit napsáním kódu. Azure Functions umožňuje přizpůsobit chování hostitele v nastaveních *host.json* souboru. Tato nastavení jsou řetězce, není kód, který omezuje typy vlastního nastavení, které vám pomůžou.
 
-### <a name="host-connection-strings"></a>Hostitel připojovacích řetězců 
+### <a name="host-connection-strings"></a>Hostitel připojovacích řetězců
 
 Sada WebJobs SDK hledá připojovacích řetězců Azure Storage a Azure Service Bus v *local.settings.json* souboru při spuštění místně nebo v prostředí webové úlohy při spuštění v Azure. Ve výchozím nastavení, řetězec připojení úložiště nastavení s názvem `AzureWebJobsStorage` je povinný.  
 
@@ -151,7 +157,20 @@ Funkce musí být veřejné metody a musí obsahovat jeden atribut aktivační u
 
 ### <a name="automatic-trigger"></a>Automatická aktivační událost
 
-Automatických aktivačních procedur volání funkce v reakci na událost. Příklad najdete v tématu aktivační událost fronty v [Get článku](webjobs-sdk-get-started.md).
+Automatických aktivačních procedur volání funkce v reakci na událost. Vezměte v úvahu následující příklad funkce aktivované službou zprávy přidané do Azure Queue storage, který čte objekt blob z blogu o Azure storage:
+
+```cs
+public static void Run(
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    ILogger log)
+{
+    log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
+}
+```
+
+`QueueTrigger` Atribut oznamuje modul runtime pro volání funkce pokaždé, když se zobrazí zpráva fronty v `myqueue-items` fronty. `Blob` Atribut oznamuje modul runtime pro použití fronty zpráv ke čtení objektů blob v *ukázka workitems* kontejneru. Obsah zprávy fronty předaného do funkce v `myQueueItem` parametr, je název objektu blob.
+
 
 ### <a name="manual-trigger"></a>Ruční aktivační události
 
@@ -345,9 +364,78 @@ Některé aktivační událost a vazby umožňují konfigurovat jejich chování
 * **Verze 3.x:** Konfigurace je nastavena, když `Add<Binding>` metoda je volána `ConfigureWebJobs`.
 * **Verze 2.x:** Nastavením vlastností v objektu konfigurace, který můžete předat do `JobHost`.
 
+Tato nastavení specifické pro vazby jsou ekvivalentní nastavení v [soubor projektu host.json](../azure-functions/functions-host-json.md) ve službě Azure Functions.
+
+Můžete nakonfigurovat následující vazby:
+
+* [Aktivační událost Azure cosmos DB](#azure-cosmosdb-trigger-configuration-version-3x)
+* [Aktivace služby Event Hubs](#event-hubs-trigger-configuration-version-3x)
+* [Aktivační událost fronty úložiště](#queue-trigger-configuration)
+* [Vazby služby SendGrid](#sendgrid-binding-configuration-version-3x)
+* [Aktivační události služby Service Bus](#service-bus-trigger-configuration-version-3x)
+
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Konfigurace aktivační událost Azure cosmos DB (verze 3.x)
+
+Následující příklad ukazuje postup při konfiguraci triggeru služby Azure Cosmos DB:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddCosmosDB(a =>
+        {
+            a.ConnectionMode = ConnectionMode.Gateway;
+            a.Protocol = Protocol.Https;
+            a.LeaseOptions.LeasePrefix = "prefix1";
+
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+Další podrobnosti najdete v tématu [článku vazby služby Azure cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings).
+
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Konfigurace aktivace služby Event Hubs (verze 3.x)
+
+Následující příklad ukazuje postup při konfiguraci triggeru služby Event Hubs:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddEventHubs(a =>
+        {
+            a.BatchCheckpointFrequency = 5;
+            a.EventProcessorOptions.MaxBatchSize = 256;
+            a.EventProcessorOptions.PrefetchCount = 512;
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+Další podrobnosti najdete v tématu [článku vazby služby Event Hubs](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings).
+
 ### <a name="queue-trigger-configuration"></a>Konfigurace aktivační událost fronty
 
-Nastavení můžete nakonfigurovat pro aktivační událost fronty úložiště je podrobně popsaný v Azure Functions [referenční materiály k host.json](../azure-functions/functions-host-json.md#queues). Následující příklady ukazují, jak je nastavit v konfiguraci:
+Následující příklady ukazují, jak nakonfigurovat aktivační událost fronty úložiště:
 
 #### <a name="version-3x"></a>Verze 3.x
 
@@ -374,6 +462,8 @@ static void Main()
 }
 ```
 
+Další podrobnosti najdete v tématu [článku vazby úložiště front](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings).
+
 #### <a name="version-2x"></a>Verze 2.x
 
 ```cs
@@ -388,6 +478,64 @@ static void Main(string[] args)
     host.RunAndBlock();
 }
 ```
+
+Další podrobnosti najdete v tématu [referenční materiály k host.json v1.x](../azure-functions/functions-host-json-v1.md#queues).
+
+### <a name="sendgrid-binding-configuration-version-3x"></a>Konfigurace vazby služby SendGrid (verze 3.x)
+
+Následující příklad ukazuje, jak nakonfigurovat SendGrid výstupní vazby:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddSendGrid(a =>
+        {
+            a.FromAddress.Email = "samples@functions.com";
+            a.FromAddress.Name = "Azure Functions";
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+Další podrobnosti najdete v tématu [článku vazby služby SendGrid](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings).
+
+### <a name="service-bus-trigger-configuration-version-3x"></a>Konfigurace aktivační události služby Service Bus (verze 3.x)
+
+Následující příklad ukazuje postup při konfiguraci aktivační události služby Service Bus:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddServiceBus(sbOptions =>
+        {
+            sbOptions.MessageHandlerOptions.AutoComplete = true;
+            sbOptions.MessageHandlerOptions.MaxConcurrentCalls = 16;
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+Další podrobnosti najdete v tématu [článku vazby služby Service Bus](../azure-functions/functions-bindings-service-bus.md#hostjson-settings).
 
 ### <a name="configuration-for-other-bindings"></a>Konfigurace u jiných vazeb
 

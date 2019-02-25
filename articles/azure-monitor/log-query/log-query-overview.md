@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 4c428372868e3d3fac58bc851de8c59ad01d1d8f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 259a792acb4d2fb8f9695f0f5a856bdf5069f2cd
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269956"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749745"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analyzuje data protokolů ve službě Azure Monitor
 
@@ -102,5 +102,5 @@ Zatímco [Application Insights](../app/app-insights-overview.md) ukládá data a
 
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o použití [protokolu analytics můžete vytvářet a upravovat prohledávání protokolů](../log-query/portals.md).
+- Další informace o použití [prohledávání protokolu Log Analytics můžete vytvářet a upravovat](../log-query/portals.md).
 - Podívejte se [kurz o psaní dotazů](../log-query/get-started-queries.md) pomocí nového dotazovacího jazyka.

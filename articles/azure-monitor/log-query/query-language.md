@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343047"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749814"
 ---
 # <a name="azure-monitor-log-queries"></a>Dotazů na protokoly Azure monitoru
 Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a použít verzi jazyka stejný dotaz Kusto dotazů na protokoly Azure monitoru. [Dokumentace k jazyku dotaz Kusto](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro psaní dotazů na protokoly Azure monitoru. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a rozdíly mezi Azure Monitor implementace jazyka.
@@ -27,7 +27,7 @@ Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a pou�
 
 ## <a name="getting-started"></a>Začínáme
 
-- [Začínáme se službou Azure Monitor log analytics](get-started-portal.md) je lekce pro zápis dotazů a práci s výsledky na webu Azure Portal.
+- [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) je lekce pro zápis dotazů a práci s výsledky na webu Azure Portal.
 - [Začínáme s Azure Monitor protokolu dotazy](get-started-queries.md) je lekce pro psaní dotazů pomocí Azure monitoru data protokolu.
 
 ## <a name="concepts"></a>Koncepty

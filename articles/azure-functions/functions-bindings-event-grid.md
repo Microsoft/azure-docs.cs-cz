@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 3d0c72f0178cddd668c0ac029c803ff339a1f6f4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 12056ebec0f0a23ed255532a8ba27b130ecb81d1
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311609"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750442"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -30,17 +30,17 @@ Pokud dáváte přednost, můžete použít aktivační událost HTTP pro zpraco
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
-
-Trigger služby Event Grid je k dispozici v [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) úložiště GitHub.
-
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
-
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
 Trigger služby Event Grid je k dispozici v [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
+
+Trigger služby Event Grid je k dispozici v [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) úložiště GitHub.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>Příklad:
 
@@ -53,31 +53,6 @@ Podívejte se na příklad konkrétní jazyk pro trigger Event Grid:
 * [Python](#python-example)
 
 Příklad trigger HTTP, naleznete v tématu [použití triggeru HTTP](#use-an-http-trigger-as-an-event-grid-trigger) dále v tomto článku.
-
-### <a name="c-version-1x"></a>C#(Verze 1.x)
-
-Následující příklad ukazuje funkci 1.x [funkce jazyka C#](functions-dotnet-class-library.md) , která vytvoří vazbu `JObject`:
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Azure.WebJobs.Host;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
-
-namespace Company.Function
-{
-    public static class EventGridTriggerCSharp
-    {
-        [FunctionName("EventGridTriggerCSharp")]
-        public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
-        {
-            log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-        }
-    }
-}
-```
 
 ### <a name="c-2x"></a>C#(2.x)
 
@@ -105,6 +80,31 @@ namespace Company.Function
 
 Další informace najdete v tématu balíčky, [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
 
+### <a name="c-version-1x"></a>C#(Verze 1.x)
+
+Následující příklad ukazuje funkci 1.x [funkce jazyka C#](functions-dotnet-class-library.md) , která vytvoří vazbu `JObject`:
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTriggerCSharp")]
+        public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
+        {
+            log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
+}
+```
+
 ### <a name="c-script-example"></a>Ukázkový skript jazyka C#
 
 Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba.
@@ -124,22 +124,6 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-#### <a name="c-script-version-1x"></a>C#skript (verzi 1.x)
-
-Tady je kód skriptu 1.x C# funkce s vazbou na `JObject`:
-
-```cs
-#r "Newtonsoft.Json"
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-public static void Run(JObject eventGridEvent, TraceWriter log)
-{
-    log.Info(eventGridEvent.ToString(Formatting.Indented));
-}
-```
-
 #### <a name="c-script-version-2x"></a>C#skript (verze 2.x)
 
 Tady je kód skriptu 2.x C# funkce s vazbou na `EventGridEvent`:
@@ -156,6 +140,22 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 ```
 
 Další informace najdete v tématu balíčky, [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
+
+#### <a name="c-script-version-1x"></a>C#skript (verzi 1.x)
+
+Tady je kód skriptu 1.x C# funkce s vazbou na `JObject`:
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject eventGridEvent, TraceWriter log)
+{
+    log.Info(eventGridEvent.ToString(Formatting.Indented));
+}
+```
 
 ### <a name="javascript-example"></a>Příklad v jazyce JavaScript
 
@@ -528,11 +528,18 @@ Použijte nástroj, jako [Postman](https://www.getpostman.com/) nebo [curl](http
 * Nastavte `Content-Type: application/json` záhlaví.
 * Nastavení `aeg-event-type: Notification` záhlaví.
 * RequestBin dat vložte do textu žádosti.
-* Odeslání na adresu URL vaší funkce triggeru služby Event Grid pomocí následujícímu vzoru:
+* Odeslání na adresu URL vaší funkce triggeru služby Event Grid.
+  * 2.x používají následující vzor:
 
-```
-http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname}
-```
+    ```
+    http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
+    ```
+
+  * Pro použití 1.x:
+
+    ```
+    http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
+    ```
 
 `functionName` Parametr musí být název zadaný v `FunctionName` atribut.
 
@@ -591,19 +598,19 @@ Adresa URL ngrok nezíská zvláštní zacházení Event grid, funkce musí být
 
 Vytvořit odběr Event gridu typu, který chcete testovat a poskytněte ngrok koncový bod.
 
-Tento model koncový bod se používá pro funkce 1.x:
-
-```
-https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
-```
-
 Tento model koncový bod se používá pro funkce 2.x:
 
 ```
-https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
+https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
 ```
 
-`functionName` Parametr musí být název zadaný v `FunctionName` atribut.
+Tento model koncový bod se používá pro funkce 1.x:
+
+```
+https://{SUBDOMAIN}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
+```
+
+`{FUNCTION_NAME}` Parametr musí být název zadaný v `FunctionName` atribut.
 
 Tady je příklad použití Azure CLI:
 

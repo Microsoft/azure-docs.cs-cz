@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b6a7fe2c12b2f1f5bcc0ba8cccd1a51ee39c4a6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5e80ac2229c3a2962702527dc3162229c25a5c5
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882078"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750867"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -123,6 +123,8 @@ Tyto parametry odstranit složku, která používají Application Insights Profi
 Profiler běží jako nepřetržitá webová úloha ve webové aplikaci. Můžete otevřít v prostředku webové aplikace [webu Azure portal](https://portal.azure.com). V **WebJobs** podokně zkontrolujte stav **ApplicationInsightsProfiler**. Pokud není spuštěná, Otevřít **protokoly** zobrazíte další informace.
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Poradce při potížích s Profiler a diagnostice Azure
+
+  >**V profileru, který se dodává v nejnovější verzi WAD pro Cloud Services je chyba.** Chcete-li použít profiler s cloudovou službou, podporuje pouze sady Application Insights SDK verzi 2.7.2. Pokud používáte novější verzi sady Application Insights SDK, budete muset přejít zpět na 2.7.2, aby bylo možné využívat profiler.
 
 Chcete-li zjistit, zda je Profiler správně nakonfigurován pomocí Azure Diagnostics, proveďte následující tři věci: 
 1. Nejprve zkontrolujte, zda jsou obsah konfigurace diagnostiky Azure, které jsou nasazeny, co očekáváte. 

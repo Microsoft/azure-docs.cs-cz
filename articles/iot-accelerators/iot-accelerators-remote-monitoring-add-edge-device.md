@@ -8,23 +8,23 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5172ba9881f80e202bdc69689e67befb79101dc0
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d34ac159a216c5c77214b4c8b799a233c3671235
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450656"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749541"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Přidat zařízení IoT Edge na akcelerátor řešení vzdálené monitorování
 
 Chcete-li přidat [IoT Edge](../iot-edge/about-iot-edge.md) zařízení akcelerátor řešení, proveďte následující dva kroky:
 
-1. Přidat na hraniční zařízení **zařízení** stránky ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní.
+1. Přidat na hraniční zařízení **Device Explorer** stránky ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní.
 1. Nainstalujte modul runtime IoT Edge na hraniční zařízení.
 
 ## <a name="add-the-iot-edge-device"></a>Přidat zařízení IoT Edge
 
-Přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování, přejděte **zařízení** stránku ve webovém uživatelském rozhraní a klikněte na tlačítko **+ nové zařízení**.
+Přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování, přejděte **Device Explorer** stránku ve webovém uživatelském rozhraní a klikněte na tlačítko **+ nové zařízení**.
 
 V **nové zařízení** panelu, vyberte **zařízení IoT Edge**. Můžete ponechat výchozí hodnoty pro ostatní nastavení. Pak klikněte na **Použít**:
 
@@ -38,7 +38,7 @@ Je také možné zaregistrovat zařízení IoT Edge přímo s instancí služby 
 - [Pomocí Azure CLI zaregistrujte nové zařízení Azure IoT Edge](../iot-edge/how-to-register-device-cli.md)
 - [Zaregistrujte si nové zařízení Azure IoT Edge z Visual Studio Code](../iot-edge/how-to-register-device-vscode.md)
 
-Když registrujete zařízení přímo prostřednictvím služby IoT hub v akcelerátoru řešení vzdáleného monitorování, nejsou na **zařízení** stránku ve webovém uživatelském rozhraní.
+Když registrujete zařízení přímo prostřednictvím služby IoT hub v akcelerátoru řešení vzdáleného monitorování, nejsou na **Device Explorer** stránku ve webovém uživatelském rozhraní.
 
 ## <a name="install-the-iot-edge-runtime"></a>Nainstalovat modul runtime IoT Edge
 

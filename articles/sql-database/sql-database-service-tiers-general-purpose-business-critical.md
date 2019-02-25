@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 02/13/2019
-ms.openlocfilehash: 59eb0b842392faa2adfcd99b028f1e283a7e8db7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.date: 02/23/2019
+ms.openlocfilehash: db91e67254e9927caba68a84b38a1ee94da8d3ab
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243825"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750119"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Úrovně služby Azure SQL Database
 
@@ -42,7 +42,7 @@ Zvažte použití těchto zdrojů:
 - Velikost úložiště ve spravované instanci musí být určena v násobcích po 32 GB.
 - Můžete vybrat libovolné velikosti izolované databáze mezi 10 GB a podporované maximum
   - Pro úložiště úrovně standard nebo obecné účely zvětšit nebo zmenšit velikost v přírůstcích po 10 GB
-  - Pro úložiště úrovně premium nebo buxiness kritických služeb zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
+  - Pro úložiště úrovně premium nebo pro důležité obchodní informace úrovně služeb, zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
 - V úrovni General Purpose služby `tempdb` používá připojené SSD a náklady na toto úložiště je zahrnutá v ceně vCore.
 - V rámci úrovně služeb pro důležité obchodní informace `tempdb` sdílené složky připojené SSD se soubory MDF a LDF a náklady na úložiště databáze tempDB je zahrnutá v ceně vCore.
 

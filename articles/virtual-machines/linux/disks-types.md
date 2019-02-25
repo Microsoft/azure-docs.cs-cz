@@ -1,6 +1,6 @@
 ---
-title: Vyberte typ disku pro virtuální počítače Azure IaaS – spravované disky
-description: Další informace o typech disků k dispozici Azure pro virtuální počítače, včetně ultra disky, SSD disků úrovně premium, standardní disků SSD a HDD Standard.
+title: Vyberte typ disku pro virtuální počítače Linux Azure IaaS – spravované disky
+description: Další informace o typech disků k dispozici Azure pro virtuální počítače s Linuxem, včetně ultra disků SSD, SSD disků úrovně premium, standardní disků SSD a HDD Standard.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: cb5098821399a7515bd7303a37dc2bb8b911bd6c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6cd3804d41f2ff98e2f97415a2ce62fc5a851ba0
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331173"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750089"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 

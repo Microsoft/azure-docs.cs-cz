@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
-ms.openlocfilehash: b1cf3dc24482da70372f775d0ba63a203df1b285
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571990"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56753794"
 ---
 Některé odpovědi Bingu zahrnuje adresy URL miniatur obsluhuje Bingu. Můžete změnit velikost a oříznutí obrázků miniatur. 
 
@@ -17,11 +17,11 @@ Některé odpovědi Bingu zahrnuje adresy URL miniatur obsluhuje Bingu. Můžete
 > Zkontrolujte, velikost a oříznutí miniatury, která poskytují scénáři vyhledávání a respektují práva třetí strany, podle potřeby pomocí rozhraní API Bingu pro vyhledávání a zobrazit požadavky.
 
 
-Změna velikosti obrázku, zahrnují w (šířka) a (výška) parametrů v adrese URL na miniaturu dotazu. Zadejte šířku a výšku v pixelech. Příklad:  
+Změna velikosti obrázku, zahrnují dotazu w (šířka) parametr h (výška) dotazů, parametr nebo obojí v adrese URL na miniaturu. Zadejte šířku a výšku v pixelech. Příklad:  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   
-Pokud změníte velikost obrázku, je zachováno jeho poměru stran. Zachovat poměr stran bílé odsazení se můžou přidat na okraj obrázku. Například pokud změníte velikost bitové kopie 480 x 359 200 x 200 bez oříznutí, celou šířku obsahuje bitovou kopii ale výška obsahuje 25 prázdné odsazení v horní a dolní části obrázku v pixelech. Stejné by mít hodnotu true, pokud image byla 359 × 480 měřiče s výjimkou vlevo a pravého ohraničení by obsahovat bílé odsazení. Pokud jste Oříznout okraje obrázku, není přidaná bílé odsazení.  
+Pokud zadáte pouze šířku nebo pouze výšku parametr dotazu, Bingu zachová poměr stran obrázku. Pokud zadáte šířku a výšku a není zachovat původní poměr stran obrázku, přidá Bingu bílé odsazení okraj obrázku. Například pokud změníte velikost bitové kopie 480 x 359 200 x 200 bez oříznutí, celou šířku obsahuje bitovou kopii ale výška obsahuje 25 prázdné odsazení v horní a dolní části obrázku v pixelech. Stejné by mít hodnotu true, pokud image byla 359 × 480 měřiče s výjimkou vlevo a pravého ohraničení by obsahovat bílé odsazení. Pokud jste Oříznout okraje obrázku, není přidaná bílé odsazení.  
 
  
 Následující obrázek znázorňuje původní velikost obrázek miniatury (480 x 300).  

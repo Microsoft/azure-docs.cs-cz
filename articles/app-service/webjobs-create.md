@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001166"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749915"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
@@ -47,8 +47,7 @@ Následující tabulka popisuje rozdíly mezi *průběžné* a *aktivuje* WebJob
 | Spustí se všechny instance webové aplikace, na kterých běží. Webové úlohy můžete volitelně omezit na jednu instanci. |Spuštění na jednu instanci, Azure vybere pro vyrovnávání zatížení.|
 | Podporuje vzdálené ladění. | Nepodporuje vzdálené ladění.|
 
-> [!NOTE]
-> Webové aplikace můžete po 20 minutách nečinnosti časový limit. Jenom požadavky na aplikace skutečný webové resetování časovač. Zobrazení konfigurace aplikace na webu Azure Portal nebo zasílání požadavků na serveru Rozšířené nástroje (https:// < název_aplikace >. scm.azurewebsites.net) Neobnovovat časovač. Pokud vaše aplikace běží průběžné nebo plánované webové úlohy, povolte **Always On** zajistit spolehlivě spouštět webové úlohy. Tato funkce je dostupná jenom na Basic, Standard a Premium [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ## <a name="acceptablefiles"></a>Podporované typy souborů pro skripty nebo programy
 
@@ -181,10 +180,9 @@ Můžete zadat [výraz CRON](../azure-functions/functions-bindings-timer.md#cron
 {
     "schedule": "0 */15 * * * *"
 }
-``` 
+```
 
-> [!NOTE]
-> Když nasadíte webovou úlohu ze sady Visual Studio, označit vaše `settings.job` vlastnosti jako souboru **kopírovat, pokud je novější**.
+Další informace najdete v tématu [plánování aktivované webové úlohy](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
 
 ## <a name="ViewJobHistory"></a> Zobrazení historie úloh
 

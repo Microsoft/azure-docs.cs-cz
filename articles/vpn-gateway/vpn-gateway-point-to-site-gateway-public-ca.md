@@ -5,21 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 02/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8d5dca65734640dc9e756f9130e6b362178781f2
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d4f75a7bc552a7764a46865bf300b8fc5ffb350e
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453508"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750782"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Přechod na certifikát veřejné brány CA pro P2S
 
 Azure VPN Gateway už vydává certifikáty podepsané svým držitelem úrovně Azure pro své brány pro připojení P2S. Vystavené certifikáty jsou podepsané nyní podle veřejnou certifikační autoritu (CA). Nicméně některé starší brány může stále používat certifikáty podepsané svým držitelem. Tyto certifikáty podepsané svým držitelem se mu blížíte jejich data vypršení platnosti a musí být převeden do veřejné certifikáty certifikační Autority.
 
 >[!NOTE]
-> Certifikáty podepsané svým držitelem použit pro ověření klienta P2S neovlivní tato změna certifikátu úrovně Azure. Můžete pokračovat k vystavování a použití certifikátů podepsaných svým držitelem jako za normálních okolností.
+> * Certifikáty podepsané svým držitelem použit pro ověření klienta P2S neovlivní tato změna certifikátu úrovně Azure. Můžete pokračovat k vystavování a použití certifikátů podepsaných svým držitelem jako za normálních okolností.
+> * Webové aplikace nejsou touto změnou ovlivněny.
 >
 
 Certifikáty v tomto kontextu jsou další úrovně Azure certifikát. Nejsou řetězy certifikátů, které používáte při vytváření vlastní kořenovými certifikáty podepsanými svým držitelem a klientských certifikátů pro ověřování. Tyto certifikáty zůstanou beze změny a dnů do vypršení platnosti dat je k tomu vygeneroval.

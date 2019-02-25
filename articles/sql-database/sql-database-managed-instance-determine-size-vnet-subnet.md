@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/04/2019
-ms.openlocfilehash: 12b0690c7653b03c8099253bee509a79a2ae2600
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/22/2019
+ms.openlocfilehash: cdd9f4eed30744f0eb65f8890eb1d7149f39736c
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561854"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750238"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Určit velikost podsítě virtuální sítě pro Azure SQL Database Managed Instance
 
@@ -27,7 +27,7 @@ Počet spravovaných instancí, který je možné nasadit v podsíti virtuální
 
 Když vytvoříte Managed Instance, Platforma Azure přiřadí počet virtuálních počítačů v závislosti na úroveň, na kterou jste zvolili během zřizování. Protože tyto virtuální počítače jsou spojeny s vaší podsítě, vyžadují IP adresy. K zajištění vysoké dostupnosti během standardních operací a údržby služby, může Azure přidělte další virtuální počítače. V důsledku toho počet požadované IP adresy v podsíti je větší než počet spravovaných instancí v této podsíti.
 
-Návrh Managed Instance vyžaduje minimálně 16 IP adresy v podsíti a může použít až 256 IP adresy. V důsledku toho můžete použít masky podsítě velikosti/28 do /24 při definování rozsahy IP adres vaší podsítě.
+Návrh Managed Instance vyžaduje minimálně 16 IP adresy v podsíti a může použít až 256 IP adresy. V důsledku toho můžete použít masky podsítě velikosti/28 až /24 při definování rozsahy IP adres vaší podsítě. Bit masky sítě o velikosti/28 (14 hostitelů v síti) je vhodná velikost pro důležité obchodní informace nasazení nebo jedné obecné účely. Bitová maska/27 (30 hostitelů v síti) je ideální pro více nasazení Managed Instance v rámci stejné virtuální síti. Nastavení bitové masky /26 (62 hostitelů) a /24 (254 hostiteli) umožňuje další škálování mimo virtuální síť pro podporu dalších spravovaných instancí.
 
 > [!IMPORTANT]
 > Velikost podsítě s IP adresami 16 je minimum, s omezenou potenciál pro další Managed Instance horizontální navýšení kapacity. Když zvolíte podsítě s předponou velikost/27 nebo pod důrazně doporučujeme.

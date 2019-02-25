@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/15/2019
-ms.openlocfilehash: d67bc99a63242dd56d65d6bdac0448c7742a6b9d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 02/20/2019
+ms.openlocfilehash: 63d32aa3c8e64cc8ccfab4c97c48cef021c1781a
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311898"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750340"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
 
@@ -60,22 +60,25 @@ Další informace o prostředí integrační služby naleznete v tématu [přís
 
 Prostředí integrační služby (ISE) fungovat správně a zůstat přístupný, musí mít určité porty, které jsou k dispozici ve vaší virtuální síti. Jinak pokud kterýkoliv z těchto portů je k dispozici, může ztratit přístup k vaší ISE, což může přestat pracovat. Při použití ISE ve virtuální síti běžný problém instalační program má jeden nebo více portů blokované. Pro připojení mezi vaší ISE a cílový systém konektor, který můžete použít také může mít vlastní požadavky na porty. Například pokud komunikovat s FTP systémem pomocí konektoru služby FTP, ujistěte se, že port, který používáte v systému FTP, jako je například 21 portu pro odesílání příkazů, je k dispozici.
 
-K řízení příchozího a odchozího provozu mezi podsítěmi virtuální sítě nasadíte kdekoli vašeho ISE, můžete nastavit [skupiny zabezpečení sítě](../virtual-network/security-overview.md) pro tyto podsítě učení [jak filtrovat síťový provoz mezi podsítě](../virtual-network/tutorial-filter-network-traffic.md). Tyto tabulky popisují porty ve vaší virtuální síti, která používá vaše ISE a kde získat používají tyto porty. Hvězdička (*) představuje všechny přenosy zdroje. [Značka služby](../virtual-network/security-overview.md#service-tags) představuje skupinu předpon IP adres, které pomáhá minimalizovat složitost při vytváření pravidel zabezpečení.
+K řízení příchozího a odchozího provozu mezi podsítěmi virtuální sítě nasadíte kdekoli vašeho ISE, můžete nastavit [skupiny zabezpečení sítě](../virtual-network/security-overview.md) pro tyto podsítě učení [jak filtrovat síťový provoz mezi podsítě](../virtual-network/tutorial-filter-network-traffic.md). Tyto tabulky popisují porty ve vaší virtuální síti, která používá vaše ISE a kde získat používají tyto porty. Hvězdička (\*) představuje zdroje všechny možné přenosů. [Značka služby](../virtual-network/security-overview.md#service-tags) představuje skupinu předpon IP adres, které pomáhá minimalizovat složitost při vytváření pravidel zabezpečení.
 
-| Účel | Směr | Zdrojový port <br>Cílový port | Značka zdrojové služby <br>Značka cílové služby |
-|---------|-----------|---------------------------------|-----------------------------------------------|
-| Komunikace s Azure Logic Apps <br>Sdělení Azure Logic Apps | Příchozí <br>Odchozí | * <br>80 & 443 | INTERNET <br>VIRTUAL_NETWORK |
-| Azure Active Directory | Odchozí | * <br>80 & 443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
-| Závislosti Azure Storage | Odchozí | * <br>80 & 443 | VIRTUAL_NETWORK <br>Storage |
-| Historie spouštění vaší aplikace logiky | Příchozí | * <br>443 | INTERNET <br>VIRTUAL_NETWORK |
-| Správa připojení | Odchozí | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
-| Publikování diagnostické protokoly a metriky | Odchozí | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
-| Návrhář pro Logic Apps – dynamické vlastnosti <br>Nasazení konektoru <br>Aktivační událost požadavku koncového bodu | Příchozí | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
-| Závislost aplikace Service Management | Příchozí | * <br>454 & 455 | AppServiceManagement <br>VIRTUAL_NETWORK |
-| API Management – koncový bod správy | Příchozí | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
-| Závislost z protokolu do zásady centra událostí a agenta monitorování | Odchozí | * <br>5672 | VIRTUAL_NETWORK <br>Centrum událostí |
-| Přístup k mezipaměti Azure pro instance Redis mezi instancemi Role | Příchozí <br>Odchozí | * <br>6381-6383 | VIRTUAL_NETWORK <br>VIRTUAL_NETWORK |
-|||||
+| Účel | Směr | Porty | Značka zdrojové služby | Značka cílové služby | Poznámky |
+|---------|-----------|-------|--------------------|-------------------------|-------|
+| Sdělení Azure Logic Apps | Odchozí | 80 & 443 | VIRTUAL_NETWORK | INTERNET | Port, který závisí na externí služby, se kterým komunikuje služba Logic Apps |
+| Azure Active Directory | Odchozí | 80 & 443 | VIRTUAL_NETWORK | AzureActiveDirectory | |
+| Závislosti Azure Storage | Odchozí | 80 & 443 | VIRTUAL_NETWORK | Storage | |
+| Komunikace s Azure Logic Apps | Příchozí | 443 | INTERNET  | VIRTUAL_NETWORK | IP adresa pro počítač nebo služba, která volá všechny triggeru požadavku nebo webhooku, která existuje ve vaší aplikaci logiky. Zavření nebo zablokování tohoto portu brání volání aplikace logiky s triggery požadavku HTTP.  |
+| Historie spuštění aplikace logiky | Příchozí | 443 | INTERNET  | VIRTUAL_NETWORK | IP adresa pro počítač, ze které můžete zobrazit aplikace logiky na historie spuštění. I když zavření nebo blokování tento port není zabránit zobrazení historie spuštění, nelze zobrazit vstupy a výstupy jednotlivých kroků v tomto historie spuštění. |
+| Správa připojení | Odchozí | 443 | VIRTUAL_NETWORK  | INTERNET | |
+| Publikování diagnostické protokoly a metriky | Odchozí | 443 | VIRTUAL_NETWORK  | AzureMonitor | |
+| Návrhář pro Logic Apps – dynamické vlastnosti | Příchozí | 454 | INTERNET  | VIRTUAL_NETWORK | Požadavky pocházejí z aplikace logiky [přístup ke koncovému bodu příchozí IP adresy v dané oblasti](../logic-apps/logic-apps-limits-and-config.md#inbound). |
+| Závislost aplikace Service Management | Příchozí | 454 & 455 | AppServiceManagement | VIRTUAL_NETWORK | |
+| Nasazení konektoru | Příchozí | 454 & 3443 | INTERNET  | VIRTUAL_NETWORK | Nezbytné pro nasazení a aktualizaci konektory. Zavřít nebo blockng tento port způsobí, že nasazení ISE selhání a brání konektor aktualizace a opravy. |
+| API Management – koncový bod správy | Příchozí | 3443 | APIManagement  | VIRTUAL_NETWORK | |
+| Závislost z protokolu do zásady centra událostí a agenta monitorování | Odchozí | 5672 | VIRTUAL_NETWORK  | Centrum událostí | |
+| Přístup k mezipaměti Azure pro instance Redis mezi instancemi Role | Příchozí <br>Odchozí | 6379-6383 | VIRTUAL_NETWORK  | VIRTUAL_NETWORK | |
+| Nástroj pro vyrovnávání zatížení Azure | Příchozí | 8500 | AzureLoadBalancer  | VIRTUAL_NETWORK | |
+||||||
 
 <a name="vnet-access"></a>
 
