@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vynutit ověřování Multi-Factor Authentication pro uživatele typu Host Azure AD s B2B'
+title: 'Kurz: Vícefaktorové ověřování pro B2B – Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak vyžadovat vícefaktorové ověřování (MFA), když používáte B2B služby Azure AD ke spolupráci s externími uživateli a partnerskými organizacemi.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d25b6fa5101f8a19e30d68cb5ce58125b4e30f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 70f6718c13534e7f43b183400a1ccf25c3f8d1e1
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178511"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669000"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Kurz: Vynutit ověřování Multi-Factor Authentication pro uživatele typu Host B2B
 
