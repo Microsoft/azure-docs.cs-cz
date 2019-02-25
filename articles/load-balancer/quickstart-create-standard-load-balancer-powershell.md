@@ -10,18 +10,18 @@ Customer intent: I want to create a Standard Load balancer so that I can load ba
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: qucikstart
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: b2da2092c71d109081f05f3e4f12d7d11de37397
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
+ms.openlocfilehash: 56fc3942b82d43273ea39f6075382bcb255fc0f7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593943"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673815"
 ---
 # <a name="get-started"></a>Rychlý start: Vytvořit Standard pro vyrovnávání zatížení pomocí Azure Powershellu
 
@@ -58,7 +58,7 @@ $publicIP = New-AzPublicIpAddress `
 
 ## <a name="create-standard-load-balancer"></a>Vytvoření Load Balanceru úrovně Standard
 
-V této části konfigurace front-endové IP adresy a fond back endových adres nástroje pro vyrovnávání zatížení a pak vytvořte Load balanceru úrovně Basic.
+V této části nakonfigurujete front-endové IP adresy a fond back endových adres nástroje pro vyrovnávání zatížení a vytvořte Load balanceru úrovně Standard.
 
 ### <a name="create-front-end-ip"></a>Vytvoření front-endové IP adresy
 
@@ -133,7 +133,7 @@ $natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 
 ### <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Vytvoření nástroje pro vyrovnávání zatížení Standard s [nové AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří veřejný Load balancer úrovně Basic s názvem myLoadBalancer pomocí front-endové konfigurace protokolu IP, back endového fondu, sondy stavu, pravidla Vyrovnávání zatížení a pravidla NAT, které jste vytvořili v předchozích krocích:
+Vytvoření nástroje pro vyrovnávání zatížení Standard s [nové AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří veřejného Load balanceru úrovně Standard s názvem myLoadBalancer pomocí front-endové konfigurace protokolu IP, back endového fondu, sondy stavu, pravidla Vyrovnávání zatížení a pravidla NAT, které jste vytvořili v předchozích krocích:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -347,7 +347,7 @@ Remove-AzResourceGroup -Name myResourceGroupLB
 
 ## <a name="next-steps"></a>Další postup
 
-V rámci tohoto rychlého startu jste vytvořili Load Balancer úrovně Basic, připojili jste k němu virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
+V rámci tohoto rychlého startu jste vytvořili službu Load Balancer úrovně Standard, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)
