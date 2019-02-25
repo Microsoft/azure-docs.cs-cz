@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: a16b9126bb2d5a5daa382417a413c8ceba0cea9a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b6b8db03c8aa5dd05dcc6f430fbaca5e4f1bf3bc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649528"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729062"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -156,7 +156,7 @@ Ve verzi 2.x modulu runtime Azure Functions, je nutné provést explicitně regi
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
-Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](functions-triggers-bindings.md#register-binding-extensions).
+Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](./functions-bindings-expressions-patterns.md).
 
 ## <a name="local-settings-file"></a>Soubor místního nastavení
 

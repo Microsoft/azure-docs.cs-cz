@@ -1,5 +1,5 @@
 ---
-title: Vyřadit oznámení diagnostiku Azure Notification Hubs
+title: Diagnostika Azure Notification Hubs – vynechaná oznámení
 description: Zjistěte, jak diagnostikovat běžné problémy s vynechanými oznámeními ve službě Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: Mobile
@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 9dd6a66ea416ad61682b8e33c6163db3ac345d92
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4419b68a0005ff6e0b5e46f22fba918699f3ba4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447713"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672198"
 ---
-# <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Diagnostika vynechanými oznámeními ve službě Notification Hubs
+# <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Diagnostika Azure Notification Hubs – vynechaná oznámení
 
 Jedním z nejčastějších dotazů od zákazníků Azure Notification Hubs je řešení potíží při oznámení, které se odesílají z aplikace nejsou zobrazeny na klientských zařízeních. Chtějí vědět, kde a proč oznámení, byly vyřazeny a jak vyřešit problém. Tento článek identifikuje proč oznámení může získáte nebo nebudou přijímány zařízení. Zjistěte, jak analyzovat a určit hlavní příčinu.
 
@@ -246,10 +246,7 @@ Na portálu můžete získat rychlý přehled o všech aktivit v centru oznámen
 
 * **Programový přístup**
 
-Další informace o programový přístup najdete v těchto článcích:
-
-* [Telemetrie programový přístup]  
-* [Telemetrie přístup přes rozhraní API vzorku]
+Další informace o programový přístup, najdete v části [telemetrie programový přístup]
 
 > [!NOTE]
 > Některé funkce související s telemetrií jako Export a import registrace a telemetrie přístup přes rozhraní API, jsou k dispozici pouze v rámci úrovně služeb Standard. Při pokusu o použití těchto funkcí z Free nebo Basic úroveň služby, obdržíte zprávu o výjimce, pokud používáte sadu SDK a chybu HTTP 403 (zakázáno), pokud používáte funkce přímo z rozhraní REST API.
@@ -282,4 +279,3 @@ Další informace o programový přístup najdete v těchto článcích:
 [Oznamujeme vydání sady Visual Studio 2013 Update 3 a Azure SDK 2.4]: http://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
 [Telemetrie programový přístup]: http://msdn.microsoft.com/library/azure/dn458823.aspx
-[Telemetrie přístup přes rozhraní API vzorku]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel

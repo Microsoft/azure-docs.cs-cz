@@ -1,0 +1,86 @@
+items:
+- name: Dokumentace ke Spatial Anchors
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Informace o Spatial Anchors
+    href: overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření aplikace Unity
+    href: unity-overview.yml
+    items:
+    - name: HoloLens
+      href: quickstarts/get-started-unity-hololens.md
+    - name: Android
+      href: quickstarts/get-started-unity-android.md
+    - name: iOS
+      href: quickstarts/get-started-unity-ios.md
+    expanded: true
+  - name: Vytvoření aplikace pro iOS
+    href: quickstarts/get-started-ios.md
+  - name: Vytvoření aplikace pro Android
+    href: quickstarts/get-started-android.md
+  - name: Vytvoření aplikace HoloLens
+    href: quickstarts/get-started-hololens.md
+- name: Kurzy
+  items:
+  - name: Sdílení v Unity
+    href: tutorials/tutorial-share-anchors-across-devices.md
+  - name: Sdílení v Unity s využitím Azure Cosmos DB
+    href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+- name: Ukázky
+  items:
+  - name: Ukázky Azure Spatial Anchors (GitHub)
+    href: https://github.com/Azure/azure-spatial-anchors-samples
+- name: Koncepty
+  items:
+  - name: Vytvoření a zjištění kotev
+    href: create-locate-anchors-overview.md
+    items:
+    - name: V Unity
+      href: concepts/create-locate-anchors-unity.md
+    - name: V Objective-C
+      href: concepts/create-locate-anchors-objc.md
+    - name: Ve Swiftu
+      href: concepts/create-locate-anchors-swift.md
+    - name: V Javě
+      href: concepts/create-locate-anchors-java.md
+    - name: V C++/NDK
+      href: concepts/create-locate-anchors-cpp-ndk.md
+    - name: V C++/WinRT
+      href: concepts/create-locate-anchors-cpp-winrt.md
+  - name: Relace mezi kotvami
+    href: concepts/anchor-relationships-way-finding.md
+  - name: Pokyny k prostředí
+    href: concepts/guidelines-effective-anchor-experiences.md
+  - name: Protokolování a diagnostika
+    href: concepts/logging-diagnostics.md
+- name: Odkazy
+  items:
+  - name: SDK pro Unity
+    href: https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/
+  - name: SDK pro iOS Objective-C
+    href: https://docs.microsoft.com/objectivec/api/spatial-anchors/
+  - name: SDK pro Android Javu
+    href: https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/
+  - name: SDK pro Android NDK
+    href: https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/
+  - name: SDK pro HoloLens C++/WinRT
+    href: https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/
+- name: Zdroje a prostředky
+  items:
+  - name: Nejčastější dotazy
+    href: spatial-anchor-faq.md
+  - name: Poskytnutí zpětné vazby k produktu
+    href: https://feedback.azure.com/forums/919252-azure-spatial-anchors
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-spatial-anchors
+  - name: Podpora
+    href: spatial-anchor-support.md
+ms.openlocfilehash: c3d27c3c8f13d97fd416b37fc153e8c81e81d866
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56753360"

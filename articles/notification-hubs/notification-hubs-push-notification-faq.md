@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f2f11abcb3290e1d9459c26167706abc79c1b7fa
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563979"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670328"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 
@@ -209,8 +209,6 @@ Zobrazení telemetrických dat v Azure Notification Hubs umožňuje [Azure Porta
 > [!NOTE]
 > Úspěšná oznámení jednoduše znamená, že byly dodány nabízených oznámení do externího systému oznámení platformy (například služby APN pro Apple) nebo FCM pro Google. Je odpovědností systému oznámení platformy doručování oznámení do cílových zařízení. Systém oznámení platformy standardně nevystavuje doručování metrik třetím stranám.  
 
-Nabízíme také možnost exportovat telemetrická data prostřednictvím kódu programu (na úrovni Standard). Podrobnosti najdete v tématu [Ukázky využití Notification Hubs metriky].
-
 [Azure Portal]: https://portal.azure.com
 [Ceník Notification Hubs]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
@@ -229,7 +227,6 @@ Nabízíme také možnost exportovat telemetrická data prostřednictvím kódu 
 [Kurzu centra zabezpečení nabízená oznámení]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [Řešení potíží s Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metriky]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Ukázky využití Notification Hubs metriky]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Registrace exportu/importu]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
