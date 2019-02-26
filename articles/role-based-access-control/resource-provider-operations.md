@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ab5ec4e61649f7c9a705759a69d335260bfdc75
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: c296ed4011b874eb9b5635735d46b3f63a79a2be
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750816"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807554"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -681,30 +681,30 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.Cache/checknameavailability/action | Kontroluje, jestli je název k dispozici pro použití s novou mezipamětí Azure pro Redis |
+> | Akce | Microsoft.Cache/checknameavailability/action | Zkontroluje, jestli je název k dispozici, aby se dal použít spolu s novou mezipamětí Redis Cache. |
 > | Akce | Microsoft.Cache/locations/operationresults/read | Získá výsledek dlouho spuštěné operace, pro kterou se klientovi dříve vrátila hlavička Location. |
 > | Akce | Microsoft.Cache/operations/read | Vypíše operace, které podporuje poskytovatel Microsoft.Cache. |
-> | Akce | Microsoft.Cache/redis/delete | Odstranit celou mezipaměť Azure Redis |
+> | Akce | Microsoft.Cache/redis/delete | Odstranit celou službu Redis Cache |
 > | Akce | Microsoft.Cache/redis/export/action | Export dat Redis v určeném formátu do objektů blob úložiště označených prefixem |
-> | Akce | Microsoft.Cache/redis/firewallRules/delete | Odstranit pravidla firewallu protokolu IP mezipaměti Azure Redis |
-> | Akce | Microsoft.Cache/redis/firewallRules/read | Získat pravidla firewallu protokolu IP mezipaměti Azure Redis |
-> | Akce | Microsoft.Cache/redis/firewallRules/write | Upravit pravidla firewallu protokolu IP mezipaměti Azure Redis |
+> | Akce | Microsoft.Cache/redis/firewallRules/delete | Odstraní pravidla firewallu protokolu IP mezipaměti Redis Cache. |
+> | Akce | Microsoft.Cache/redis/firewallRules/read | Získá pravidla firewallu protokolu IP mezipaměti Redis Cache. |
+> | Akce | Microsoft.Cache/redis/firewallRules/write | Upraví pravidla firewallu protokolu IP mezipaměti Redis Cache. |
 > | Akce | Microsoft.Cache/redis/forceReboot/action | Vynuťte restartování instance mezipaměti, což ale může mít za následek ztrátu dat. |
 > | Akce | Microsoft.Cache/redis/import/action | Import dat určeného formátu z víc objektů blob do Redis |
-> | Akce | Microsoft.Cache/redis/linkedservers/delete | Odstranit propojený Server z Azure mezipaměti pro Redis |
-> | Akce | Microsoft.Cache/redis/linkedservers/read | Získáte propojené servery přidružené mezipaměti Azure pro Redis. |
-> | Akce | Microsoft.Cache/redis/linkedservers/write | Přidat propojený Server do Azure Cache pro Redis |
-> | Akce | Microsoft.Cache/redis/listKeys/action | Zobrazení hodnoty mezipaměti Azure pro přístupové klíče služby Redis na portálu management portal |
+> | Akce | Microsoft.Cache/redis/linkedservers/delete | Odstranit propojený server z mezipaměti Redis Cache |
+> | Akce | Microsoft.Cache/redis/linkedservers/read | Získat propojené servery přidružené k mezipaměti Redis Cache |
+> | Akce | Microsoft.Cache/redis/linkedservers/write | Přidat propojený server do mezipaměti Redis Cache |
+> | Akce | Microsoft.Cache/redis/listKeys/action | Zobrazit hodnotu přístupových klíčů služby Redis Cache na portálu pro správu |
 > | Akce | Microsoft.Cache/redis/listUpgradeNotifications/read | Vypíše seznam nejnovějších upozornění na upgrady pro klienta mezipaměti. |
-> | Akce | Microsoft.Cache/redis/metricDefinitions/read | Získá dostupné metriky pro Redis pro Azure Cache |
-> | Akce | Microsoft.Cache/redis/patchSchedules/delete | Odstranit plán oprav mezipaměti Azure Redis |
-> | Akce | Microsoft.Cache/redis/patchSchedules/read | Získá plán oprav mezipaměti Azure pro Redis |
-> | Akce | Microsoft.Cache/redis/patchSchedules/write | Upraví plán oprav mezipaměti Azure pro Redis |
-> | Akce | Microsoft.Cache/redis/read | Zobrazení mezipaměti Azure pro nastavení a konfiguraci Redis na portálu pro správu |
-> | Akce | Microsoft.Cache/redis/regenerateKey/action | Změňte hodnotu z mezipaměti Azure přístupové klíče služby Redis na portálu management portal |
+> | Akce | Microsoft.Cache/redis/metricDefinitions/read | Načte dostupné metriky pro Redis Cache. |
+> | Akce | Microsoft.Cache/redis/patchSchedules/delete | Odstraní plán oprav mezipaměti Redis Cache. |
+> | Akce | Microsoft.Cache/redis/patchSchedules/read | Získá plán oprav mezipaměti Redis Cache. |
+> | Akce | Microsoft.Cache/redis/patchSchedules/write | Upraví plán oprav mezipaměti Redis Cache. |
+> | Akce | Microsoft.Cache/redis/read | Zobrazit nastavení a konfiguraci Redis Cache na portálu pro správu |
+> | Akce | Microsoft.Cache/redis/regenerateKey/action | Změnit hodnotu přístupových klíčů služby Redis Cache na portálu pro správu |
 > | Akce | Microsoft.Cache/redis/start/action | Spuštění instance mezipaměti |
 > | Akce | Microsoft.Cache/redis/stop/action | Zastavení instance mezipaměti |
-> | Akce | Microsoft.Cache/redis/write | Upravit ukládání do mezipaměti Azure Redis pro nastavení a konfigurace v portálu pro správu |
+> | Akce | Microsoft.Cache/redis/write | Upravit nastavení a konfiguraci služby Redis Cache na portálu pro správu |
 > | Akce | Microsoft.Cache/register/action | Zaregistruje poskytovatele prostředků Microsoft.Cache u předplatného. |
 > | Akce | Microsoft.Cache/unregister/action | Zruší registraci poskytovatele prostředků Microsoft.Cache u předplatného. |
 
@@ -1600,17 +1600,21 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/delete | Odstraní Data Box hraničních zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/downloadUpdates/action | Stáhnout aktualizace na zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/action | Načte doplňkové informace o prostředku. |
-> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/write | Vytvoří nebo aktualizuje prostředek rozšířené informace |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/getExtendedInformation/action | ArmApiDesc_action_getExtendedInformation_dataBoxEdgeDevices |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | Nainstalovat aktualizace na zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | Obsahuje seznam nebo získá úlohy |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | Obsahuje seznam nebo získá nastavení síťového zařízení |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/delete | Odstraní objednávky |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Obsahuje seznam nebo získá objednávky |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Obsahuje seznam nebo získá objednávky |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/write | Vytvoří nebo aktualizuje objednávky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Obsahuje seznam nebo získá Data Box hraničních zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Obsahuje seznam nebo získá Data Box hraničních zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Obsahuje seznam nebo získá Data Box hraničních zařízení |
-> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Odstraní ArmApiRes_roles |
-> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Obsahuje seznam nebo získá ArmApiRes_roles |
-> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Obsahuje seznam nebo získá ArmApiRes_roles |
-> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Vytvoří nebo aktualizuje ArmApiRes_roles |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Odstraní role |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Obsahuje seznam nebo získá role |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Obsahuje seznam nebo získá role |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Vytvoří nebo aktualizuje role |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/scanForUpdates/action | Vyhledat aktualizace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/update/action | Aktualizovat nastavení zabezpečení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/delete | Odstraní sdílené složky |
@@ -1622,6 +1626,10 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Obsahuje seznam nebo získá přihlašovací údaje účtu úložiště |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Obsahuje seznam nebo získá přihlašovací údaje účtu úložiště |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/write | Vytvoří nebo aktualizuje přihlašovací údaje účtu úložiště |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/delete | Odstraní aktivačních událostí |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Obsahuje seznam nebo získá aktivační události |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Obsahuje seznam nebo získá aktivační události |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/write | Vytvoří nebo aktualizuje aktivačních událostí |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/updateSummary/read | Obsahuje seznam nebo získá aktualizace souhrnu |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | Aktualizovat certifikát pro registraci zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/delete | Odstraní uživatele sdílené složky |
@@ -4766,6 +4774,8 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/managedInstances/databases/read | Získá existující spravované databáze |
 > | Akce | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Označení citlivosti seznamu na danou databázi |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Odstranit označení citlivosti daného sloupce |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/disable/action | Zakázat citlivosti doporučení v daném sloupci |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/enable/action | Povolte doporučení citlivosti na daný sloupec |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | Získat označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/write | Vytvořit nebo aktualizovat označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Načíst podrobnosti o zásadu detekce hrozeb databáze nakonfigurované na dané spravované databáze |
@@ -4899,6 +4909,8 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/servers/databases/schemas/read | Načíst seznam schémata databáze |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Načíst seznam sloupců tabulky. |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Odstranit označení citlivosti daného sloupce |
+> | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/disable/action | Zakázat citlivosti doporučení v daném sloupci |
+> | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/enable/action | Povolte doporučení citlivosti na daný sloupec |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | Získat označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/write | Vytvořit nebo aktualizovat označení citlivosti daného sloupce |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/read | Načíst seznam tabulek databáze |
@@ -5023,6 +5035,7 @@ Aktualizujte název a userData existující osoby skupiny. Vlastnosti ponechat b
 > | Akce | Microsoft.Sql/servers/vulnerabilityAssessments/write | Změnit posouzení ohrožení zabezpečení pro daný server |
 > | Akce | Microsoft.Sql/servers/write | Vytvoří server se zadanými parametry nebo aktualizovat vlastnosti a značky pro zadaný server. |
 > | Akce | Microsoft.Sql/unregister/action | Zruší registraci předplatného u poskytovatele prostředků Microsoft SQL Database a povolí vytváření databází Microsoft SQL. |
+> | Akce | Microsoft.Sql/virtualClusters/delete | Odstraní existující virtuální cluster. |
 > | Akce | Microsoft.Sql/virtualClusters/read | Vrátí seznam virtuálních clusterů nebo získá vlastnosti pro zadanou virtuální cluster. |
 > | Akce | Microsoft.Sql/virtualClusters/write | Aktualizuje virtuální cluster značky. |
 

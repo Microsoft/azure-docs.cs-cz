@@ -5,17 +5,17 @@ description: Postup převedení školicího experimentu na prediktivní experime
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5990f47a7cc1517349d85654bf5f02f6240e9baa
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b77c21b75147a9bb5203effb20379dc208122d05
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327591"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819136"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Nasazení webové služby Azure Machine Learning Studio
 
@@ -209,7 +209,7 @@ Vzhledem k tomu, že jste nasadili před tento experiment, zobrazí se výzva, p
 > [!NOTE]
 > Pokud jste provedli změny konfigurace v původní webové služby, například zadáte nový zobrazovaný název nebo popis, je potřeba znovu zadat tyto hodnoty.
 
-Jednou z možností pro aktualizaci webové služby je přeučování modelu. Další informace najdete v tématu [modelů Přeučování Machine Learning Studio](retrain-models-programmatically.md).
+Jednou z možností pro aktualizaci webové služby je přeučování modelu. Další informace najdete v tématu [modelů Přeučování Machine Learning Studio](/azure/machine-learning/studio/retrain-machine-learning-model).
 
 ## <a name="next-steps"></a>Další postup
 

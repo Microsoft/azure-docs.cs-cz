@@ -35,13 +35,16 @@
 ## Konfigurace vysoké dostupnosti
 ### [Použití služby Azure Storage pro zálohování a obnovení](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 ### Skupina dostupnosti Always On
-#### [Použití šablony webu Azure Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [Použití šablon Rychlý start](virtual-machines-windows-sql-availability-group-quickstart-template.md)
-#### [Ručně – požadavky](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [Ručně – kurz](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Load Balancer – web Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [Load Balancer – Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Rozhraní Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)
+#### [Šablona webu Azure Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Šablony Azure pro rychlý start](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [Několik oblastí](virtual-machines-windows-portal-sql-availability-group-dr.md)
+#### Ruční konfigurace    
+##### [Požadavky](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+##### [Kurz](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+##### [Load Balancer – web Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+##### [Load Balancer – Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+
 ### Instance clusteru převzetí služeb při selhání
 #### [Konfigurace](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 

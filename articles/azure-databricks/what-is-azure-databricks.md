@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: f6a2f89828dbc13ca716ccb40bb05234b7e31464
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 01e35ed32be8b28f291cc2be69a8b2d71c3acab2
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418802"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806636"
 ---
 # <a name="what-is-azure-databricks"></a>Co je Azure Databricks?
 
@@ -23,21 +23,25 @@ Azure Databricks je analytická platforma založená na Apache Spark a optimaliz
 
 ![Co je Azure Databricks?](./media/what-is-azure-databricks/azure-databricks-overview.png "Co je Azure Databricks?")
 
+Azure Databricks je rychlá, snadná a spolupráci založená na Apache Sparku analytická služba. Pro velké objemy dat profilace, data (raw nebo strukturovaná) je ingestovat v Azure pomocí Azure Data Factory v dávkách nebo streamuje téměř v reálném čase pomocí Kafka, Centrum událostí nebo službu IoT Hub. Tato data území ve službě data lake pro dlouhodobé trvalé úložiště v Azure Blob Storage nebo Azure Data Lake Storage. Jako součást pracovního postupu analytics pomocí Azure Databricks se číst data z různých zdrojů dat, jako [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [služby Azure Cosmos DB](../cosmos-db/index.yml) , nebo [Azure SQL Data Warehouse](../sql-data-warehouse/index.md) a znovu je zapnout na Převratné přehledy s využitím Sparku.
+
+![Databricks kanálu](./media/what-is-azure-databricks/databricks-pipeline.png)
+
 ## <a name="apache-spark-based-analytics-platform"></a>Analytická platforma založená na Apache Sparku
 
 Azure Databricks zahrnuje kompletní opensourcové možnosti a technologie clusteru Apache Spark. Spark v Azure Databricks zahrnuje následující komponenty:
 
 ![Apache Spark v Azure Databricks](./media/what-is-azure-databricks/apache-spark-ecosystem-databricks.png "Apache Spark v Azure Databricks")
 
-* **Spark SQL a DataFrames:** Spark SQL je modul Sparku pro práci se strukturovanými daty. DataFrame je distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
+* **Spark SQL a DataFrames**: Spark SQL je modul Sparku pro práci se strukturovanými daty. DataFrame je distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
 
-* **Streamování:** Zpracování dat a analýzy v reálném čase pro analytické a interaktivní aplikace. Integruje se s HDFS, Flume a Kafka.
+* **Streamování**: Zpracování dat v reálném čase a analýzy pro analytické a interaktivní aplikace. Integruje se s HDFS, Flume a Kafka.
 
-* **MLib:** Knihovna Machine Learning, která se skládá z běžných algoritmů a nástrojů strojového učení, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení počtu dimenzí a také základních primitiv optimalizace.
+* **MLib**: Knihovna pro Machine Learning skládající se z běžných algoritmů a nástrojů, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení, také základních primitiv optimalizace.
 
-* **GraphX:** Grafy a grafické výpočetní funkce pro širokou škálu případů použití od kognitivních analýz až po zkoumání dat.
+* **GraphX**: Grafy a grafické výpočetní funkce pro široký rozsah případů použití od kognitivních analýz až po zkoumání dat.
 
-* **Spark Core API:** Zahrnuje podporu pro R, SQL, Python, Scalu a Javu.
+* **Spark Core API**: Zahrnuje podporu pro R, SQL, Python, Scala a Java.
 
 ## <a name="apache-spark-in-azure-databricks"></a>Apache Spark na platformě Azure Databricks
 
@@ -89,9 +93,9 @@ Azure Databricks se úzce integruje s úložišti a databázemi Azure: SQL Data 
 ## <a name="integration-with-power-bi"></a>Integrace s Power BI
 Díky bohaté integraci s Power BI vám Azure Databricks umožňuje rychle a snadno sdílet důležité nové poznatky. Prostřednictvím koncových bodů clusteru JDBC/ODBC můžete také využívat další nástroje BI, jako je třeba Tableau Software.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Rychlý start: Spuštění úlohy Sparku na platformě Azure Databricks](quickstart-create-databricks-workspace-portal.md)
+* [Rychlé zprovoznění: Spuštění úlohy Spark job v Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 * [Práce s clustery Spark](https://docs.azuredatabricks.net/user-guide/clusters/index.html)
 * [Práce s poznámkovými bloky](https://docs.azuredatabricks.net/user-guide/notebooks/index.html)
 * [Vytvoření sparkových úloh](https://docs.azuredatabricks.net/user-guide/jobs.html)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fb8dedac8b795ec127d7b4a14728d73c9397a1dd
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716459"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807401"
 ---
 # <a name="configure-apps-in-azure-app-service"></a>Konfigurace aplikací ve službě Azure App Service
 
@@ -37,7 +37,7 @@ Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci, mobilní back-end n
 ### <a name="general-settings"></a>Obecná nastavení
 **Verze rozhraní Framework**. Pokud vaše aplikace používá některé tyto architektury, nastavte tyto možnosti: 
 
-* **Rozhraní .NET framework**: Nastavte verzi rozhraní .NET framework. 
+* **.NET Framework**: Nastavte verzi rozhraní .NET framework. 
 * **PHP**: Nastavení verze PHP nebo **OFF** zakázat PHP. 
 * **Java**: Vyberte verzi jazyka Java nebo **OFF** zakázat Java. Použití **webový kontejner** možnost si vybrat mezi verzí Tomcat a Jetty.
 * **Python**: Vyberte verzi Pythonu, nebo **OFF** zakázat Python.
@@ -163,13 +163,14 @@ Chcete-li zobrazit nasazovacích slotů, klikněte na tlačítko **všechna nast
 ### <a name="monitoring"></a>Monitorování
 V režimu Basic nebo Standard můžete otestovat dostupnost protokolu HTTP nebo HTTPS koncových bodů, z až tři geograficky distribuované umístění. Monitorování test selže, pokud se o chybu (4xx nebo 5xx), kód HTTP odpovědi nebo odpovědi trvá déle než 30 sekund. Koncový bod se považuje za k dispozici v případě úspěšné testy monitorování z určitých umístění. 
 
-Další informace najdete v tématu [Jak: Stav koncového bodu monitorování webu].
+Další informace najdete v tématu [Postup: Stav koncového bodu monitorování webu].
 
 ## <a name="next-steps"></a>Další postup
 * [Konfigurace vlastní domény ve službě Azure App Service]
 * [Povolení HTTPS pro aplikaci ve službě Azure App Service]
 * [Škálování aplikace ve službě Azure App Service]
 * [Monitorování základy ve službě Azure App Service]
+* [Změnit nastavení applicationHost.config s applicationHost.xdt](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
@@ -178,7 +179,7 @@ Další informace najdete v tématu [Jak: Stav koncového bodu monitorování we
 [Konfigurace vlastní domény ve službě Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Nasazení do přípravných prostředí pro službu Azure App Service]: ./deploy-staging-slots.md
 [Povolení HTTPS pro aplikaci ve službě Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[Jak: Stav koncového bodu monitorování webu]: https://go.microsoft.com/fwLink/?LinkID=279906
+[Postup: Stav koncového bodu monitorování webu]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Monitorování základy ve službě Azure App Service]: ./web-sites-monitor.md
 [režim kanálů]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Škálování aplikace ve službě Azure App Service]: ./web-sites-scale.md
