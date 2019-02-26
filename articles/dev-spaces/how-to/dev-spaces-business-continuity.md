@@ -11,12 +11,12 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: jeconnoc
-ms.openlocfilehash: 877d49a49333d70ac7660900e49e7c588f52756c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b7eba0e63f68cd56f2bcc310c3bde65c36e933dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451559"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822459"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii v Azure Dev mezery
 
@@ -93,7 +93,7 @@ Tento postup opakujte pro všechny projekty, které umožňují použít k půvo
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>Přístup ke službě zálohování clusteru
 
-Pokud jste nakonfigurovali služby pro použití veřejného názvu DNS, pak služba bude mít jinou adresu URL při spuštění v clusteru zálohování. Veřejné názvy DNS jsou vždy ve formátu `<space name>.s.<service name>.<cluster GUID>.<region>.aksapp.io`. Pokud přejdete do jiného clusteru, se změní GUID clusteru a případně oblast.
+Pokud jste nakonfigurovali služby pro použití veřejného názvu DNS, pak služba bude mít jinou adresu URL při spuštění v clusteru zálohování. Veřejné názvy DNS jsou vždy ve formátu `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Pokud přejdete do jiného clusteru, se změní GUID clusteru a případně oblast.
 
 Při spuštění vývoje prostorů vždy zobrazovat správnou adresu URL pro službu `azds up`, nebo v okně Výstup v sadě Visual Studio v části **Azure Dev prostory**.
 
@@ -102,7 +102,7 @@ Můžete také vyhledat adresu URL spuštěním `azds list-uris` příkaz:
 $ azds list-uris
 Uri                                                     Status
 ------------------------------------------------------  ---------
-http://mywebapi.d05afe7e006a4fddb73c.eastus.aksapp.io/  Available
+http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
 Pomocí této adresy URL při přístupu ke službě.

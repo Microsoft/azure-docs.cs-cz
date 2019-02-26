@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600297"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823854"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Glosář Microsoft Azure: Slovník terminologie cloudu na platformě Azure
 
@@ -39,7 +39,7 @@ Jiný název pro [aplikace služby App Service](#app-service-app).
 ## <a name="app-service-app"></a>Aplikace služby App Service
 Výpočetní prostředky, které [služby Azure App Service](app-service/overview.md) poskytuje k hostování webu či webové aplikace, webové rozhraní API, nebo [back-endu mobilní aplikace](app-service-mobile/app-service-mobile-value-prop.md). Aplikace služby App Service se také označují jako *App Services*, *webové aplikace*, *API apps*, a *mobilní aplikace*.
 
-## <a name="availability-set"></a>Skupina dostupnosti
+## <a name="availability-set"></a>skupina dostupnosti
 Kolekce virtuálních počítačů, které se spravují dohromady pro zajištění redundance aplikace a spolehlivost. Použití skupiny dostupnosti zajišťuje, že během události plánované i neplánované údržby je k dispozici alespoň jeden virtuální počítač.  
 Zobrazit [Správa dostupnosti virtuálních počítačů Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů s Linuxem](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -49,7 +49,7 @@ Jeden ze dvou [modely nasazení](resource-manager-deployment-model.md) použít 
 ## <a name="cli"></a>Rozhraní příkazového řádku Azure (CLI)
 Rozhraní příkazového řádku, který slouží ke správě služeb Azure z Windows, macOS a Linuxu.  Některé služby nebo funkce služby je možné spravovat jenom prostřednictvím Powershellu nebo rozhraní příkazového řádku. Zobrazit [rozhraní příkazového řádku Azure](/cli/azure)
 
-## <a name="powershell"></a>Prostředí Azure PowerShell
+## <a name="powershell"></a>Azure PowerShell
 Rozhraní příkazového řádku ke správě služeb Azure přes příkazový řádek z počítačů s Windows. Některé služby nebo funkce služby je možné spravovat jenom prostřednictvím Powershellu nebo rozhraní příkazového řádku.
 Zobrazit [instalace a konfigurace Azure Powershellu](/powershell/azure/overview)
 
@@ -60,11 +60,11 @@ Jeden ze dvou [modely nasazení](resource-manager-deployment-model.md) použít 
 Kolekce virtuálních počítačů ve skupině dostupnosti, která pravděpodobně nepůjde ve stejnou dobu. Příkladem je skupina počítačů do racku, které sdílejí společný power přepínač zdroje a sítě. V Azure jsou automaticky oddělené virtuální počítače ve skupině dostupnosti napříč několika doménami selhání.  
 Zobrazit [Správa dostupnosti virtuálních počítačů Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [Správa dostupnosti virtuálních počítačů s Linuxem](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
-## <a name="geo"></a>Geograficky
+## <a name="geo"></a>geo
 Definovaných hranic rezidenci dat, který obvykle obsahuje dvě nebo víc oblastech. Hranice může být v rámci nebo mimo národní ohraničení a jsou ovlivněny nařízení daně. Každé geografické má aspoň jednu oblast. Příklady zeměpisných oblastech: Asie a Tichomoří a Japonsko. Zkratka *Geografie*.  
 Zobrazit [oblastí Azure](best-practices-availability-paired-regions.md)
 
-## <a name="geo-replication"></a>Geografická replikace
+## <a name="geo-replication"></a>geo-replication
 Proces automaticky replikuje obsah, jako jsou objekty BLOB, tabulky a fronty v páru oblastí.  
 Zobrazit [aktivní geografické replikace pro Azure SQL Database](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
@@ -77,7 +77,7 @@ Zobrazit [vyhledání a výběr imagí virtuálních počítačů Windows v Azur
 Počet prostředků, které je možné vytvořit nebo srovnávacího testu výkonu, který jde dosáhnout. Omezení jsou obvykle přidruženy k předplatných, služeb a nabídky.  
 Zobrazit [předplatného Azure a limity, kvóty a omezení](azure-subscription-service-limits.md)
 
-## <a name="load-balancer"></a>Nástroj pro vyrovnávání zatížení
+## <a name="load-balancer"></a>nástroj pro vyrovnávání zatížení
 Prostředek, který distribuuje příchozí provoz mezi počítači v síti. V Azure nástroje pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů, které jsou definovány v sadě nástroje pro vyrovnávání zatížení. A [nástroj pro vyrovnávání zatížení](load-balancer/load-balancer-overview.md) může být přístupem k Internetu, nebo může být vnitřní.  
 
 ## <a name="mobile-app"></a>mobile app
@@ -112,7 +112,7 @@ Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-grou
 
 ## <a name="role"></a>role
 Prostředky pro řízení přístupu, který je možné přiřadit uživatelům, skupinám a službám. Role budou moct provádět akce, jako je vytvářet, spravovat a přečtěte si o prostředky Azure.  
-Zobrazit [RBAC: Předdefinované role](role-based-access-control/built-in-roles.md)
+See [RBAC: Předdefinované role](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>Smlouva o úrovni služeb (SLA)
 Smlouva, která popisuje závazky společnosti Microsoft týkající se dostupnosti a konektivity. Jednotlivé služby Azure má konkrétní smlouvy SLA.  
@@ -147,7 +147,7 @@ Prostředek, který implementuje chování nebo funkce, které buď pomáhají o
 Zobrazit [funkce (Windows) a rozšíření virtuálního počítače](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [funkce (Linux) a rozšíření virtuálního počítače](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="vnet"></a>Virtuální sítě
-Síť, která poskytuje připojení mezi prostředky Azure, které je izolovaná od všech ostatních tenantů Azure. [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) umožňuje vytvořit připojení mezi virtuálními sítěmi a [mezi virtuální sítí a místní sítí](vpn-gateway/vpn-gateway-plan-design.md). Vám plnou kontrolu nad bloky IP adres, nastavení DNS, zásady zabezpečení a směrovacích tabulek v rámci virtuální sítě.  
+Síť, která poskytuje připojení mezi prostředky Azure, které je izolovaná od všech ostatních tenantů Azure. [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) umožňuje vytvořit připojení mezi virtuálními sítěmi a mezi virtuální sítí a místní sítí. Vám plnou kontrolu nad bloky IP adres, nastavení DNS, zásady zabezpečení a směrovacích tabulek v rámci virtuální sítě.  
 Zobrazit [Přehled služby Virtual Network](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Webová aplikace

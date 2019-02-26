@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: 8b1a4bbb100fc4db1323f530808a8d01bd8f30ce
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f1d64170c3f9622169dd1218e4c63652c9f94b9b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582425"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820667"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -30,7 +30,7 @@ Koncový bod FTP/S pro aplikace je již aktivní. Žádná konfigurace je nutná
 
 ## <a name="open-ftp-dashboard"></a>Otevřít řídicí panel FTP
 
-V [webu Azure portal](https://portal.azure.com), otevřete v této aplikaci [stránka s materiály pro](../azure-resource-manager/resource-group-portal.md#manage-resources).
+V [webu Azure portal](https://portal.azure.com), otevřete v této aplikaci [stránka s materiály pro](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
 Řídicí panel FTP, klikněte na tlačítko **Deployment Center** > **FTP** > **řídicí panel**.
 

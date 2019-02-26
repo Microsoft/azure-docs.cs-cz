@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6706da978195cff65a3454e6b2d71dfea3b414c4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0b3128184942dbc750ea54bd7156c6e79b8bedea
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651409"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804837"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: Nejčastější dotazy 
 Níže jsou dotazy a odpovědi, které můžou mít při použití služby Azure Import/Export pro přenos dat do služby Azure storage. Otázky a odpovědi jsou uspořádané do těchto kategorií:
@@ -96,7 +96,7 @@ Mějte prosím na paměti, že fyzických médií, která se možná muset různ
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Existují nějaké speciální požadavky na doručování Moje disků do datacentra?
 
 Požadavky závisí na konkrétní datové centrum Azure omezení.
-- Existuje několik serverů třídy C (například Frankfurt), které vyžadují datového centra Microsoftu příchozí identifikační číslo má být zapsán na balení z bezpečnostních důvodů. Ještě před vydáním aplikace jednotek nebo disků do datacentra, obraťte se na Azure DataBox operací (adbops@microsoft.com) Chcete-li získat tento počet. Bez tohoto čísla budou odmítnuty balíček.
+- Existuje několik serverů, které vyžadují datového centra Microsoftu příchozí identifikační číslo má být zapsán na balení z bezpečnostních důvodů. Ještě před vydáním aplikace jednotek nebo disků do datacentra, obraťte se na Azure DataBox operací (adbops@microsoft.com) Chcete-li získat tento počet. Bez tohoto čísla budou odmítnuty balíček.
 - Tato datová centra v Indii vyžadují osobní údaje ovladač, jako je karta státní správy nebo ne. testování (například POSOUVÁNÍ, AADHAR, bude používat) název, kontaktů a auta štítku číslo zobrazíte pass položka brány. Aby se vyhnuli prodlevám doručování, informuje o těchto požadavcích váš poskytovatel služeb.
 
 

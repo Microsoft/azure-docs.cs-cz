@@ -3,8 +3,8 @@ title: Další informace o verzích clusterů Azure Service Fabric | Dokumentace
 description: Podporované verze clusteru Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
-author: twhitney
-manager: jpconnock
+author: aljo-microsoft
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
-ms.author: TylerMSFT
-ms.openlocfilehash: 154869c3e6bcd44a71480a3cf7363537dddcebf9
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: aljo
+ms.openlocfilehash: 9da51d40c4a94af9bdcf16b48302e8eb2b60eb2f
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727677"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807707"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -42,6 +42,6 @@ Tady je seznam podporovaných verzích Service Fabric a jejich podpora koncové 
 | 5.7.* | 5.4.164.* |Menší nebo rovna verze 2.7 |Prosinec 15,2017  |
 | 6.0.* | 5.6.205.* |Menší nebo rovna verze 2.8 |Březen 30,2018     |
 | 6.1.* | 5.7.221.* |Menší nebo rovna verzi 3.0 |Červenec 15,2018      |
-| 6.2. * | 6.0.232.* |Menší nebo rovna verzi 3.1 |Říjen 26,2018   |
-| 6.3. * | 6.1.480.* |Menší nebo rovna verzi 3.2 |Únor 28,2019  |
-| 6.4. * | 6.2.301.* |Menší nebo rovna verze 3.3 |Aktuální verze a proto žádné datum ukončení |
+| 6.2.* | 6.0.232.* |Menší nebo rovna verzi 3.1 |Říjen 26,2018   |
+| 6.3.* | 6.1.480.* |Menší nebo rovna verzi 3.2 |Únor 28,2019  |
+| 6.4.* | 6.2.301.* |Menší nebo rovna verze 3.3 |Aktuální verze a proto žádné datum ukončení |

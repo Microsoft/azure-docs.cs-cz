@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: ac0a4bf6f332095bd75a6be83d7a1cd3d37c8e1c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 87811cd44b04b55537da166722dd1903d97e7ef5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674544"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821024"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -76,6 +76,7 @@ Pokud chcete používat ověřování instančních objektů, entity aplikaci za
 >Do seznamu složek od kořene, je nutné nastavit oprávnění instančního objektu k **na kořenové úrovni s oprávněním "Spustit"**. To platí při použití:
 >- **Nástroj pro kopírování dat** můžete vytvořit kanál kopírování.
 >- **Uživatelské rozhraní služby Data Factory** otestovat připojení a procházení složek během vytváření obsahu.
+>Pokud máte obavy o udělení oprávnění na kořenové úrovni, můžete přeskočit test připojení a vstupní cesta ručně během vytváření obsahu. Aktivitu kopírování, která budou i nadále fungovat jako služby, které je udělen s řádným oprávněním na soubory, které se mají zkopírovat.
 
 Podporovány jsou následující vlastnosti:
 
@@ -126,9 +127,10 @@ Použití spravované identity pro ověřování prostředků Azure:
 >- **Jako jímku**: V **Průzkumník dat** > **přístup**, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete také přidat do **tato složka a všechny podřízené objekty** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure integration runtime ke kopírování (zdroj a jímka mají v cloudu), v IAM, udělit alespoň **čtečky** role, aby bylo možné nechat Data Factory rozpoznat oblast pro Data Lake Store. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure integration runtime](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store. Jako v následujícím příkladu je ve službě Data Lake Store propojená přidružení.
 
 >[!NOTE]
->Do seznamu složek od kořene, je nutné nastavit oprávnění instančního objektu k **na kořenové úrovni s oprávněním "Spustit"**. To platí při použití:
+>Do seznamu složek od kořene, je nutné nastavit oprávnění spravovanou identitu udělované **na kořenové úrovni s oprávněním "Spustit"**. To platí při použití:
 >- **Nástroj pro kopírování dat** můžete vytvořit kanál kopírování.
 >- **Uživatelské rozhraní služby Data Factory** otestovat připojení a procházení složek během vytváření obsahu.
+>Pokud máte obavy o udělení oprávnění na kořenové úrovni, můžete přeskočit test připojení a vstupní cesta ručně během vytváření obsahu. Aktivitu kopírování, která budou i nadále fungovat jako spravovanou identitu udělením s řádným oprávněním na soubory, které se mají zkopírovat.
 
 Ve službě Azure Data Factory není nutné zadávat jakékoli vlastnosti kromě obecné informace o Data Lake Store v propojené službě.
 

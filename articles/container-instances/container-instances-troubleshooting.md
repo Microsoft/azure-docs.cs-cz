@@ -2,19 +2,19 @@
 title: Řešení potíží s Azure Container Instances
 description: Zjistěte, jak řešit problémy se službou Azure Container Instances
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/08/2019
-ms.author: seanmck
+ms.date: 02/15/2019
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bfa616fb16470a3543f8c981a0104f6bda24cf4d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119046"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823466"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
 
@@ -29,9 +29,9 @@ Při definování vašeho kontejneru specifikace, vyžadují některé parametry
 | Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Porty kontejneru | Mezi 1 a 65535. |Integer |Celé číslo mezi 1 a 65535. |`<port-number>` |`443` |
-| Popisek názvu DNS | 5 63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>` |`frontend-site1` |
+| Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>` |`frontend-site1` |
 | Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a kdekoli s výjimkou první ani poslední znak podtržítka (_) |`<name>` |`MY_VARIABLE` |
-| Název svazku | 5 63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a spojovníky kdekoli s výjimkou první ani poslední znak. Nesmí obsahovat dvě po sobě jdoucí pomlčky. |`<name>` |`batch-output-volume` |
+| Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a spojovníky kdekoli s výjimkou první ani poslední znak. Nesmí obsahovat dvě po sobě jdoucí pomlčky. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Verze operačního systému z bitové kopie není podporována
 
@@ -66,7 +66,7 @@ Pokud nelze načíst obrázek, události, jako jsou následující se zobrazí v
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "pulling image \"microsoft/aci-hellowrld\"",
+    "message": "pulling image \"microsoft/aci-helloworld\"",
     "name": "Pulling",
     "type": "Normal"
   },
@@ -74,7 +74,7 @@ Pokud nelze načíst obrázek, události, jako jsou následující se zobrazí v
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "message": "Failed to pull image \"microsoft/aci-helloworld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
     "name": "Failed",
     "type": "Warning"
   },
@@ -82,7 +82,7 @@ Pokud nelze načíst obrázek, události, jako jsou následující se zobrazí v
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:20+00:00",
     "lastTimestamp": "2017-12-21T22:57:16+00:00",
-    "message": "Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "message": "Back-off pulling image \"microsoft/aci-helloworld\"",
     "name": "BackOff",
     "type": "Normal"
   }
@@ -93,7 +93,7 @@ Pokud nelze načíst obrázek, události, jako jsou následující se zobrazí v
 
 Skupin kontejnerů ve výchozím nastavení [zásady restartování](container-instances-restart-policy.md) z **vždy**, takže kontejnery ve skupině kontejnerů vždy restartuje po jejich dokončení. Budete muset změnit tuto hodnotu na **OnFailure** nebo **nikdy** Pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **OnFailure** a stále viz neustálého restartování, může být problém s aplikací nebo skript spustit v kontejneru.
 
-Při spuštění skupiny kontejnerů bez dlouho běžící procesy se může zobrazit opakované ukončí a restartuje s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [EXEC](container-instances-exec.md) nebude fungovat podle kontejneru nemá žádný proces udržování zachování připojení. Chcete-li vyřešit to zahrnovat start příkaz podobný tomuto s nasazením kontejneru skupiny pro zachování provozu kontejneru.
+Při spuštění skupiny kontejnerů bez dlouho běžící procesy se může zobrazit opakované ukončí a restartuje s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [EXEC](container-instances-exec.md) nebude fungovat podle kontejneru nemá žádný proces udržování zachování připojení. Chcete-li tento problém vyřešit, patří start příkaz podobný tomuto s nasazením kontejneru skupiny pro zachování provozu kontejneru.
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -178,11 +178,11 @@ Dalším způsobem, jak omezit dopad obrázek o přijetí změn na dobu spuště
 
 ### <a name="cached-windows-images"></a>Bitové kopie v mezipaměti Windows
 
-Služba Azure Container Instances pomocí mechanismu ukládání do mezipaměti Doba spuštění kontejneru rychlost imagí založených na určité Image Windows.
+Služba Azure Container Instances pomocí mechanismu ukládání do mezipaměti urychlili čas spuštění kontejneru pro Image založené na běžných imagí Windows a Linuxem. Podrobný seznam v mezipaměti obrázků a značek, použijte [bitové kopie v mezipaměti seznamu] [ list-cached-images] rozhraní API.
 
 Pokud chcete zajistit nejrychlejší doba spuštění kontejneru Windows, použijte jednu z **poslední tři** verze následující **dvě bitové kopie** jako základní image:
 
-* [Windows Server 2016] [ docker-hub-windows-core] (pouze LTS)
+* [Jádra Windows serveru 2016] [ docker-hub-windows-core] (pouze LTSC)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
 ### <a name="windows-containers-slow-network-readiness"></a>Připravenost pomalou síť kontejnery Windows
@@ -207,10 +207,12 @@ Tato chyba označuje, že z důvodu zátěží v oblasti, ve které se pokouší
 Služba Azure Container Instances nevystavuje přímý přístup k základní infrastruktury, který je hostitelem skupiny kontejnerů. To zahrnuje přístup k rozhraní API Dockeru, běží na hostiteli kontejneru a spouštění privilegovaných kontejnerů. Pokud budete potřebovat interakce Dockeru, zkontrolujte [referenční dokumentace k REST](https://aka.ms/aci/rest) co podporuje rozhraní API konektoru ACI. Pokud existuje něco chybí, odešlete žádost na [ACI zpětnou vazbu fóra](https://aka.ms/aci/feedback).
 
 ## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresy možná nejsou dostupná z důvodu neodpovídající porty
+
 Služba Azure Container Instances nepodporuje aktuálně port mapování jako s konfigurací regulární dockeru, ale tato oprava se na roadmapě. Pokud zjistíte IP adres nejsou dostupné, když budete přesvědčeni, že by měl být, ujistěte se, nakonfigurovali jste image kontejneru tak, aby naslouchala na stejné porty zveřejnit ve vaší skupině kontejnerů s `ports` vlastnost.
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak [načíst události a protokoly kontejneru](container-instances-get-logs.md) pro ladění vaše kontejnery.
+
+Zjistěte, jak [získat protokoly kontejneru a události](container-instances-get-logs.md) pro ladění vaše kontejnery.
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
@@ -221,3 +223,4 @@ Zjistěte, jak [načíst události a protokoly kontejneru](container-instances-g
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
+[list-cached-images]: /rest/api/container-instances/listcachedimages

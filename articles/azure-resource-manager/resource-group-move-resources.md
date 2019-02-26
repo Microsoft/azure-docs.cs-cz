@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 5a9ea460684383bd09e5a679f3140d3b8f083d4d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417087"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823616"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -89,13 +89,13 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * IoT Huby
 * Služby Key Vault – Key Vault používá pro šifrování disků nelze přesunout do skupiny prostředků v rámci stejného předplatného nebo napříč předplatnými.
 * Nástroje pro vyrovnávání zatížení – nástroj pro vyrovnávání zatížení základní SKU se dají přesunout. Nástroj pro vyrovnávání zatížení standardní SKU nejde přesunout.
-* Log Analytics
 * Logic Apps
 * Machine Learning – Machine Learning Studio webové služby je možné přesunout do skupiny prostředků ve stejném předplatném, ale jiné předplatné. Další prostředky služby Machine Learning je možné přesunout mezi předplatnými.
 * Managed Disks – viz [omezení virtuálních počítačů pro omezení](#virtual-machines-limitations)
 * Spravovaná identita - přiřazená uživatelem
 * Media Services
 * Monitorování – zkontrolujte, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#monitor-limits)
+* Protokoly Azure monitoru
 * Notification Hubs
 * Operational Insights
 * Správa operací
@@ -145,7 +145,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Je povoleno Lab Services - přesunout do nové skupiny prostředků ve stejném předplatném, ale přesun mezi předplatnými není povolen.
 * Managed Applications
 * Microsoft Genomics
-* NetApp
+* Azure NetApp Files
 * SAP HANA v Azure
 * Zabezpečení
 * Site Recovery
@@ -513,7 +513,7 @@ V textu požadavku zadejte cílovou skupinu prostředků a prostředky, které c
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o rutinách prostředí PowerShell pro správu předplatného, naleznete v tématu [pomocí Azure Powershellu s Resource Managerem](powershell-azure-resource-manager.md).
-* Další informace o příkazech rozhraní příkazového řádku Azure pro správu předplatného, naleznete v tématu [pomocí rozhraní příkazového řádku Azure s využitím Resource Manageru](xplat-cli-azure-resource-manager.md).
+* Další informace o rutinách prostředí PowerShell pro správu prostředků, najdete v článku [pomocí Azure Powershellu s Resource Managerem](manage-resources-powershell.md).
+* Další informace o příkazech rozhraní příkazového řádku Azure pro správu prostředků, najdete v článku [pomocí rozhraní příkazového řádku Azure s využitím Resource Manageru](manage-resources-cli.md).
 * Další informace o funkce portálu pro správu předplatného najdete v tématu [pomocí webu Azure portal ke správě prostředků](resource-group-portal.md).
 * Další informace o použití logické uspořádání vašich prostředků najdete v tématu [použití značek k uspořádání prostředků](resource-group-using-tags.md).

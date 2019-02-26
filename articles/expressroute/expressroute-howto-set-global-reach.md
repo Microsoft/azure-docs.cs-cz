@@ -2,27 +2,21 @@
 title: 'Konfigurace globální dosah – ExpressRoute: Azure | Dokumentace Microsoftu'
 description: Tento článek vám pomůže propojit okruhy ExpressRoute tvořit privátní sítě mezi místními sítěmi a povolit globální dosah.
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2018
-ms.author: mialdrid
+ms.date: 02/25/2019
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: ab1098ca65ad92cffdbe1dfb24fd43fcc8f10eae
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aff283da27197b11ee496faecdd8b69571d3547e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431668"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821332"
 ---
-# <a name="configure-expressroute-global-reach-preview"></a>Konfigurace ExpressRoute globální dosah (preview)
+# <a name="configure-expressroute-global-reach"></a>Konfigurace služby ExpressRoute Global Reach
 Tento článek vám pomůže nakonfigurovat ExpressRoute globální dosah pomocí Powershellu. Další informace najdete v tématu [ExpressRouteRoute globální dosah](expressroute-global-reach.md).
- 
-## <a name="before-you-begin"></a>Před zahájením
-> [!IMPORTANT]
-> Tato veřejná Předběžná verze je k dispozici bez smlouvu o úrovni služeb a nemělo používat pro produkční úlohy. Některé funkce nemusí být podporované, mohou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
-
 
 Před zahájením konfigurace, zkontrolujte následující body:
 

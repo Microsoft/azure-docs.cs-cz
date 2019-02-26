@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 48098ba32a8eb1c2d7a7bafa246b8e850229b430
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343234"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804531"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "56343234"
 Tento článek popisuje, jak pomocí webu Azure portal zobrazit zamítnout přiřazení.
 
 > [!NOTE]
-> V tuto chvíli zamítnout přiřazení jsou jen pro čtení a lze nastavit pouze v Azure.
+> V tuto chvíli zamítnout přiřazení jsou jen pro čtení a lze nastavit pouze společností Microsoft.
 
 ## <a name="view-deny-assignments"></a>Zobrazit přiřazení zamítnutí
 

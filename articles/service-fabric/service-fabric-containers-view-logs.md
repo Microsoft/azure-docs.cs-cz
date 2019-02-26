@@ -3,7 +3,7 @@ title: Zobrazit protokoly kontejnerů v Azure Service Fabric | Dokumentace Micro
 description: Popisuje postup zobrazení protokolů kontejneru pro spuštěné služby container Service Fabric pomocí Service Fabric Exploreru.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
-ms.author: twhitney
-ms.openlocfilehash: d66e27d860d18a37ffd9c6355b8d769116f26d73
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.author: aljo
+ms.openlocfilehash: 801d96dc154c1d7144217fe0f70c179c086690f0
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391240"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804497"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro Service Fabric container service
 Azure Service Fabric je orchestrátor kontejnerů a podporuje obě [kontejnerů Linuxu a Windows](service-fabric-containers-overview.md).  Tento článek popisuje postup zobrazení protokolů kontejneru spuštěných služby kontejneru nebo dead kontejneru, takže můžete diagnostikovat a řešit problémy.

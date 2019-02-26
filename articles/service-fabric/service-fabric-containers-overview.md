@@ -3,7 +3,7 @@ title: Přehled Service Fabric a kontejnery | Dokumentace Microsoftu
 description: Přehled Service Fabric a použití kontejnerů pro nasazení aplikací mikroslužeb. Tento článek obsahuje základní informace o používání kontejnerů a možnosti dostupné v Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: twhitney, msfussell
-ms.openlocfilehash: 0acbd2d4ccf35c9490a06228eeb1bb465a8ca732
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, msfussell
+ms.openlocfilehash: 5344f34e0e35d4d47b032b660726a4d70a4f1987
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299970"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807010"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric a kontejnery
 
@@ -35,8 +35,8 @@ Ve výchozím nastavení Service Fabric nasadí a aktivuje tyto služby jako pro
 
 Pustit do práce a vyzkoušejte si kontejnerů v Service Fabric, zkuste použít rychlý start, kurz nebo vzorku:  
 
-[Rychlý start: Nasazení aplikace typu kontejner Linuxu do Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[Rychlý start: Nasazení aplikace typu kontejner Windows do Service Fabric](service-fabric-quickstart-containers.md)  
+[Rychlé zprovoznění: Nasazení aplikace typu kontejner Linuxu do Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Rychlé zprovoznění: Nasazení aplikace typu kontejner Windows do Service Fabric](service-fabric-quickstart-containers.md)  
 [Kontejnerizace existující aplikace v .NET](service-fabric-host-app-in-a-container.md)  
 [Ukázky kontejnerů Service Fabric](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +48,10 @@ Kontejnery běží přímo nad jádra a mít pohled izolovaný systém souborů 
 
 Porovnání s virtuálními počítači, kontejnery mají následující výhody:
 
-* **Malé**: kontejnery pomocí jednoho místa a verze vrstvy a aktualizace zvýšíte efektivitu.
-* **Rychlé**: kontejnery nemají spustit celý operační systém, aby mohli začít mnohem rychleji – obvykle v řádu sekund.
-* **Přenositelnost**: image kontejnerizované aplikace můžete přenést na spouštění v cloudu, v místním prostředí, uvnitř virtuálních počítačů, nebo přímo na fyzických počítačích.
-* **Zásady správného řízení prostředků**: kontejneru můžete omezit fyzické prostředky, které můžou využívat svého hostitele.
+* **Malé**: Kontejnery pomocí jednoho místa a verze vrstvy a aktualizace ke zvýšení efektivity.
+* **Rychlé**: Kontejnery nemají spustit celý operační systém, aby mohli začít mnohem rychleji – obvykle v řádu sekund.
+* **Přenositelnost**: Image kontejnerizované aplikace můžete přenést na spouštění v cloudu, v místním prostředí, uvnitř virtuálních počítačů, nebo přímo na fyzických počítačích.
+* **Zásady správného řízení prostředků**: Kontejner můžete omezit fyzické prostředky, které můžou využívat svého hostitele.
 
 ### <a name="container-types-and-supported-environments"></a>Typy kontejnerů a podporovaných prostředí
 
@@ -62,7 +62,7 @@ Service Fabric podporuje kontejnery v Linuxu i Windows a podporuje režimu izola
 Docker nabízí rozhraní API pro vytváření a správu kontejnerů nad jádra kontejnery Linuxu. Docker Hubu poskytuje centrální úložiště pro ukládání a načítání imagí kontejneru.
 Kurz založených na Linuxu najdete v tématu [vytvořit svou první aplikaci typu kontejner Service Fabric v Linuxu](service-fabric-get-started-containers-linux.md).
 
-#### <a name="windows-server-containers"></a>Kontejnery Windows serveru
+#### <a name="windows-server-containers"></a>Kontejnery Windows Server
 
 Windows Server 2016 poskytuje dva různé typy kontejnerů, které se liší podle úrovně izolace. Kontejnery Windows serveru a kontejnery Dockeru jsou podobné, protože obě mají obor názvů a soubor izolace systému při sdílení jádro s hostitelem, které, na kterém běží. V systému Linux Tato izolace tradičně poskytl cgroup a obory názvů a kontejnery Windows serveru se chovají podobně.
 
@@ -76,11 +76,11 @@ Následující obrázek znázorňuje různé typy virtualizace a izolace úrovn�
 
 Tady jsou příklady typických kde kontejner je dobrou volbou:
 
-* **IIS lift a shift**: můžete umístit existující [ASP.NET MVC](https://www.asp.net/mvc) aplikace v kontejneru místo migrace na ASP.NET Core. Tyto aplikace ASP.NET MVC jsou závislé na Internetové informační služby (IIS). Vytvořit balíček tyto aplikace do Image kontejneru z vytvořených image služby IIS a nasadit je s využitím Service Fabric. Zobrazit [Imagí kontejnerů v systému Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) informace o kontejnerech Windows.
+* **Služba IIS lift a shift**: Můžete vložit existující [ASP.NET MVC](https://www.asp.net/mvc) aplikace v kontejneru místo migrace na ASP.NET Core. Tyto aplikace ASP.NET MVC jsou závislé na Internetové informační služby (IIS). Vytvořit balíček tyto aplikace do Image kontejneru z vytvořených image služby IIS a nasadit je s využitím Service Fabric. Zobrazit [Imagí kontejnerů v systému Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) informace o kontejnerech Windows.
 
-* **Kombinovat kontejnery a mikroslužby pro Service Fabric**: použít stávající image kontejneru pro součást aplikace. Například můžete použít [kontejner NGINX](https://hub.docker.com/_/nginx/) pro front-endu webové aplikace a stavové služby pro více náročné na výpočty back-end.
+* **Kombinovat kontejnery a mikroslužby pro Service Fabric**: Použijte existující image kontejneru pro součást aplikace. Například můžete použít [kontejner NGINX](https://hub.docker.com/_/nginx/) pro front-endu webové aplikace a stavové služby pro více náročné na výpočty back-end.
 
-* **Omezit dopad služeb "" hlučným sousedům""**: možnost zásad správného řízení prostředků kontejnerů můžete použít k omezení prostředků, které služba používá na hostiteli. Pokud služby může využívat víc prostředků a ovlivnit tak výkon jiných (jako je například dlouhotrvající, dotaz jako operace), zvažte uvedení do kontejnerů, které mají zásady správného řízení prostředků těchto služeb.
+* **Omezit dopad služeb "" hlučným sousedům""**: Možnost zásad správného řízení prostředků kontejnerů můžete použít k omezení prostředků, které služba používá na hostiteli. Pokud služby může využívat víc prostředků a ovlivnit tak výkon jiných (jako je například dlouhotrvající, dotaz jako operace), zvažte uvedení do kontejnerů, které mají zásady správného řízení prostředků těchto služeb.
 
 ## <a name="service-fabric-support-for-containers"></a>Podpora Service Fabric pro kontejnery
 

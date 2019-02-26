@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ba1c60d45fb53be158d9e302748366ddf417f23e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341619"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805473"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Seznam zamítnout přiřazení pro prostředky Azure pomocí rozhraní REST API
 
-Přiřazení zamítnutí jsou momentálně **jen pro čtení** a může je nastavit jen Azure. Nemůžete sice vytvářet vlastní přiřazení zamítnutí, můžete ale vytvořit jejich seznam, protože můžou ovlivnit účinnost vašich oprávnění. Tento článek popisuje, jak lze uvést zamítnout přiřazení pomocí RBAC a rozhraní REST API.
+V současné době zamítnout přiřazení **jen pro čtení** a lze nastavit pouze společností Microsoft. Nemůžete sice vytvářet vlastní přiřazení zamítnutí, můžete ale vytvořit jejich seznam, protože můžou ovlivnit účinnost vašich oprávnění. Tento článek popisuje, jak lze uvést zamítnout přiřazení pomocí RBAC a rozhraní REST API.
 
 ## <a name="list-a-single-deny-assignment"></a>Seznam jedné zamítnout přiřazení
 

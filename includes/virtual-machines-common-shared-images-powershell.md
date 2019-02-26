@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c74a96e3dcce1394e0af5447c07ad38c54b960fa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984987"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825730"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -74,8 +74,8 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-
-V příští verzi, budete moct používat vaše osobní definované **-vydavatel**, **-nabízejí** a **- Sku** hodnoty, které mají vyhledávat a zadávat definici image vytvořte virtuální počítač pomocí nejnovější verze image z odpovídající definici image. Tady jsou například tři definice, které image a jejich hodnoty:
+### <a name="using-publisher-offer-and-sku"></a>Pomocí vydavatele, nabídky a skladové položky 
+Pro zákazníky, kteří plánují na implementaci sdílené bitové kopie **v nadcházející verzi**, budete moct používat vaše osobní definované **-vydavatel**, **-nabízejí** a **- Sku** hodnoty najít a zadejte definici image a pak vytvořte virtuální počítač pomocí nejnovější verze image z odpovídající image definice. Tady jsou například tři definice, které image a jejich hodnoty:
 
 |Definice image|Vydavatel|Nabídka|Skladová jednotka (SKU)|
 |---|---|---|---|
@@ -83,10 +83,9 @@ V příští verzi, budete moct používat vaše osobní definované **-vydavate
 |myImage2|myPublisher|standardOffer|mySku|
 |myImage3|Testování|standardOffer|testSku|
 
-Všechny tyto tři mají jedinečné sady hodnot. V příští verzi bude moct tyto hodnoty kombinovat, aby bylo možné požádat o nejnovější verzi konkrétní image. 
+Všechny tyto tři mají jedinečné sady hodnot. Verze bitové kopie, které sdílejí jeden nebo dva, ale ne všechny tři hodnoty může mít. **V příští verzi**, bude moct tyto hodnoty kombinovat, aby bylo možné požádat o nejnovější verzi konkrétní image. **To nebude fungovat v aktuální verzi**, ale bude k dispozici v budoucnu. Po vydání, pomocí následující syntaxe by měla sloužit pro nastavení zdrojového obrazu jako *myImage1* z výše uvedené tabulky.
 
 ```powershell
-# The following should set the source image as myImage1 from the table above
 $vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
@@ -94,7 +93,7 @@ $vmConfig = Set-AzVMSourceImage `
    -Skus mySku 
 ```
 
-Podobá se to, jak můžete nyní zadat jejich [Image Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) vytvoření virtuálního počítače. Každá definice image s myslete na to, musí mít jedinečnou sadu tyto hodnoty. Verze bitové kopie, které sdílejí jeden nebo dva, ale ne všechny tři hodnoty může mít. 
+Podobá se to jak aktuálně určíte pomocí vydavatele, nabídky a skladové položky pro [Image Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) získat nejnovější verzi Marketplace image. Každá definice image s myslete na to, musí mít jedinečnou sadu tyto hodnoty.  
 
 ##<a name="create-an-image-version"></a>Vytvoření image verze
 

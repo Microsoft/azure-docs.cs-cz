@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: bf9e83a1dfed0aac7f48cd47dc12bf56c7cb1b64
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 47d2e051cf3eeebbfaea95cfc16f5077559e6847
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38481698"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807129"
 ---
 # <a name="about-azure-devtest-labs"></a>Azure DevTest Labs
 ## <a name="overview"></a>Přehled
@@ -44,6 +44,7 @@ Zaznamenání a sdílení prostředí šablon a artefaktů v rámci vašeho tým
 
 ## <a name="integrates-with-your-existing-toolchain"></a>Integrace s existujícím řetězcem nástrojů
 Využijte předem vytvořených moduly plug-in nebo naše API k zřizování vývojových/testovacích prostředí přímo z vašeho nástroje pro upřednostňovaného kontinuální integrace (CI), integrovaného vývojového prostředí (IDE) nebo kanálu automatických vydání. Můžete také použít Naše komplexní nástroj příkazového řádku.
+
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

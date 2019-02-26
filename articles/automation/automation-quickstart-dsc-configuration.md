@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f272f72a0bcae70a25bada266dc6b080f46526cd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431584"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817711"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s Linuxem s využitím konfigurace požadovaného stavu
 
@@ -144,5 +144,5 @@ V rámci tohoto rychlého startu jste připojili virtuální počítač s Linuxe
 
 * Další informace o konfiguraci požadovaného stavu PowerShellu najdete v tématu [Přehled konfigurace požadovaného stavu PowerShellu](https://docs.microsoft.com/powershell/dsc/overview).
 * Další informace o správě Automation DSC z PowerShellu najdete v tématu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0).
-* Informace o přesměrování sestav DSC do Log Analytics za účelem generování sestav a upozorňování najdete v tématu [Přesměrování generování sestav DSC do Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics). 
+* Informace o přesměrování sestav DSC do protokolů Azure Monitor pro generování sestav a upozorňování najdete v tématu [přesměrování sestav DSC do Azure monitoru protokoly](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

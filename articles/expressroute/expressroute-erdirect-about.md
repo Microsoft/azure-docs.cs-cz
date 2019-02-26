@@ -1,21 +1,21 @@
 ---
 title: Informace o ExpressRoute přímo – Azure | Dokumentace Microsoftu
-description: Tato stránka obsahuje přehled služby ExpressRoute Direct (Preview)
+description: Tato stránka obsahuje přehled služby ExpressRoute přímo
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 98c5dc7dc6d977525d889a4cd97492183d1aad22
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100733"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818149"
 ---
-# <a name="about-expressroute-direct-preview"></a>Informace o ExpressRoute Direct (Preview)
+# <a name="about-expressroute-direct"></a>O službě ExpressRoute Direct
 
 Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Přímé ExpressRoute poskytuje připojení duální 100 GB/s, která podporuje připojení k aktivní/aktivní ve velkém měřítku.
 
@@ -25,14 +25,9 @@ Klíčové funkce, které poskytuje ExpressRoute Direct patří, ale nejsou omez
 * Fyzické izolace pro obory, které upraví a vyžadují izolované a vyhrazené připojení jako: Bankovnictví, Government a maloobchodního prodeje
 * Podrobné řízení distribuce okruhů podle organizační jednotky
 
-> [!IMPORTANT]
-> Přímé ExpressRoute je aktuálně ve verzi Preview.
->
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="onboard-to-expressroute-direct"></a>Připojení k ExpressRoute přímo
 
-## <a name="enroll-in-the-preview"></a>Registrace verze Preview
-
-Před použitím ExpressRoute přímo, musí nejdřív zaregistrovat předplatné ve verzi preview. Při registraci odeslat e-mailu <ExpressRouteDirect@microsoft.com> svým ID předplatného, včetně následující podrobnosti:
+Před použitím ExpressRoute přímo, musí nejdřív zaregistrovat vaše předplatné. Při registraci odeslat e-mailu <ExpressRouteDirect@microsoft.com> svým ID předplatného, včetně následující podrobnosti:
 
 * Scénáře, které pokud chcete provést s **přímo ExpressRoute**
 * Naleznete v tématu předvolby umístění - [partnery a umístění partnerského vztahu](expressroute-locations-providers.md) úplný seznam všech umístění
@@ -74,7 +69,7 @@ Přímé ExpressRoute podporuje QinQ a Dot1Q označování příznaky VLAN.
 
 ## <a name="sla"></a>SLA
 
-Přímé ExpressRoute poskytuje stejnou smlouvu SLA na podnikové úrovni s aktivní/aktivní redundantní připojení globální síti Microsoftu. Infrastruktura ExpressRoute je redundantní a je redundantní a rozmanitým připojení globální síti Microsoftu a odpovídajícím způsobem se škáluje s požadavky zákazníků. Během období preview nebude žádná smlouva SLA a by měly být považovány za pouze pro neprodukční úlohy.
+Přímé ExpressRoute poskytuje stejnou smlouvu SLA na podnikové úrovni s aktivní/aktivní redundantní připojení globální síti Microsoftu. Infrastruktura ExpressRoute je redundantní a je redundantní a rozmanitým připojení globální síti Microsoftu a odpovídajícím způsobem se škáluje s požadavky zákazníků. 
 
 ## <a name="next-steps"></a>Další postup
 

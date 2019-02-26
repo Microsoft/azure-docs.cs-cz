@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 17b1adae9b369df53d69949e8183cf31daf7e35f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: d9530d35bbaf608ae25e2a753685ee90e9e13501
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674680"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823293"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -42,7 +42,7 @@ Každá úroveň plánu služby App Service podporuje jiný počet nasazovacích
 ## <a name="add-slot"></a>Přidat slot
 Aplikace musí být spuštěn v **standardní**, **Premium**, nebo **izolované** úrovně měli povolit několik nasazovacích slotů.
 
-1. V [webu Azure portal](https://portal.azure.com/), otevřete v této aplikaci [stránka s materiály pro](../azure-resource-manager/resource-group-portal.md#manage-resources).
+1. V [webu Azure portal](https://portal.azure.com/), otevřete v této aplikaci [stránka s materiály pro](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
 2. V levém navigačním panelu zvolte **nasazovací sloty (Preview)** možnost a potom klikněte na **přidat Slot**.
    

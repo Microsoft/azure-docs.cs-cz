@@ -5,17 +5,17 @@ description: Vědecké zpracování dat pro začátečníky je vás naučí zák
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 93af2e283a1dd1ec11541087b33b3303c13364cc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 4483fc82ad4bf935153c76922fbece84c6ca2ea8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491990"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816895"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Datová věda pro začátečníky – video 1: 5 otázky, které odpovídá vědecké zkoumání dat
 Rychlý úvod do datových věd z *datová věda pro začátečníky* v pěti krátkých videích z hlavní vědec. Tato videa jsou užitečné, ale základní, ať už vás zajímá datových věd nebo pracujete s odborníky přes data.
@@ -136,4 +136,4 @@ Tak je to – 5 otázek datové vědy můžete odpovědět.
 
 ## <a name="next-steps"></a>Další postup
 * [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)
-* [Úvod do strojového učení v Microsoft Azure](what-is-machine-learning.md)
+* [Úvod do strojového učení v Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

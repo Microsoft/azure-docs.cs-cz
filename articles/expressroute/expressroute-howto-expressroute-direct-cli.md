@@ -1,28 +1,23 @@
 ---
 title: Konfigurace ExpressRoute přímo – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Tento článek vám pomůže s konfigurací ExpressRoute přímo pomocí rozhraní příkazového řádku Azure (preview)
+description: Tento článek vám pomůže s konfigurací ExpressRoute přímo pomocí rozhraní příkazového řádku Azure
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 2/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 285b429f565f8a2c7f8c20756f076e631223b10f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e918a8624d637e44a4bb1122b58d5bd5dac67690
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076708"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816670"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli-preview"></a>Konfigurace ExpressRoute přímo pomocí rozhraní příkazového řádku Azure (preview)
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute přímo pomocí rozhraní příkazového řádku Azure
 
 Azure ExpressRoute Direct můžete použít pro připojení přímo k globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
-
-> [!IMPORTANT]
-> Přímé ExpressRoute je aktuálně ve verzi preview.
->
-> Přímá ExpressRoute ve verzi public preview se poskytuje bez smlouvu o úrovni služeb. ExpressRoute s přímým přístupem ve verzi Preview byste neměli používat pro produkční úlohy. Některé funkce nemusí být podporované, některé funkce můžou mít omezené možnosti a některé funkce nemusí být k dispozici ve všech umístěních Azure. Podrobnosti najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Vytvoření prostředku
 

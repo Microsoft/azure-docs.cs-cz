@@ -17,8 +17,6 @@ items:
     href: powershell-samples.md
 - name: Koncepty
   items:
-  - name: Plánování a návrh pro VPN Gateway
-    href: vpn-gateway-plan-design.md
   - name: Informace o nastavení služby VPN Gateway
     href: vpn-gateway-about-vpn-gateway-settings.md
   - name: Informace o zařízeních VPN
@@ -254,9 +252,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: 55170e8f0f4371ef7883725089a664e035f3ae09
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: af9469c41660e8f5d98e93a8bfea9af977396d04
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416594"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817554"

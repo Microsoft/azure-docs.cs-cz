@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: a6c17ad8d4af568d910597da4b44f09676d1c36a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4e56d22dde5fca50d17c055be93db5b91deeb287
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652486"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819169"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -41,14 +41,14 @@ HDInsight cluster se dodává s ukázkovými daty. Můžete použít následují
   
   | Pole | Typ dat |
   | --- | --- |
-  | ID klienta |řetězec |
-  | querytime |řetězec |
-  | na trhu |řetězec |
-  | deviceplatform |řetězec |
-  | devicemake |řetězec |
-  | devicemodel |řetězec |
-  | state |řetězec |
-  | Země |řetězec |
+  | ID klienta |string |
+  | querytime |string |
+  | na trhu |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | Země |string |
   | querydwelltime |double |
   | ID relace |bigint |
   | sessionpagevieworder |bigint |
@@ -163,7 +163,7 @@ Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v témat
 V ukázce Powershellu provede následující kroky:
 
 1. Připojení k Azure.
-2. Vytvořte skupinu prostředků Azure. Další informace najdete v tématu [pomocí Azure Powershellu s Azure Resource Manageru](../../azure-resource-manager/powershell-azure-resource-manager.md)
+2. Vytvořte skupinu prostředků Azure. Další informace najdete v tématu [pomocí Azure Powershellu s Azure Resource Manageru](../../azure-resource-manager/manage-resource-groups-powershell.md)
 3. Vytvoření serveru Azure SQL Database, Azure SQL database a dvě tabulky. 
    
     Pokud raději používáte SQL Server, použijte následující příkazy k vytvoření tabulek:

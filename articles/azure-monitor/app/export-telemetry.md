@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: eda41870e86db206847f5ea81e23fa1b7612234c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076769"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817299"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  
@@ -32,6 +32,16 @@ Před nastavením průběžný export je některé alternativy, které můžete 
 * Také přístup k nastavení [průběžný export prostřednictvím prostředí Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 
 Poté, co průběžný Export zkopíruje data do služby storage (ve kterém může zůstat pro dlouho budete chtít), je stále k dispozici ve službě Application Insights pro obvyklého [dobu uchování](../../azure-monitor/app/data-retention-privacy.md).
+
+## <a name="continuous-export-advanced-storage-configuration"></a>Průběžný Export rozšířené úložiště konfigurace
+
+Průběžný Export **nepodporuje** následující funkce a konfigurace služby Azure storage:
+
+* Použití [brány firewall virtuální sítě nebo Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security) ve spojení s Azure Blob storage.
+
+* [Neměnné úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) pro úložiště objektů Blob v Azure.
+
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
 ## <a name="setup"></a> Vytvoření průběžný Export
 1. V prostředku Application Insights pro vaši aplikaci, otevřete průběžný Export a zvolte **přidat**:

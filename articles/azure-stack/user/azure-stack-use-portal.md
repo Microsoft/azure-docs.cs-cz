@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 026e37534169fda8dbbf5a568f72046bc6ff55f7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 28b8971b61ff09346b2a2f89cd5ea8ae04e44079
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252043"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819356"
 ---
 # <a name="use-the-azure-stack-portal"></a>Použití portálu Azure Stack
 
@@ -40,6 +40,10 @@ Vaše služby Azure Stack – operátor (poskytovatel služeb nebo správce ve v
 Řídicí panel obsahuje sadu výchozích dlaždic. Můžete vybrat **upravit řídicí panel** změnit výchozí řídicí panel, nebo vyberte **nový řídicí panel** k vytvoření vlastního řídicího panelu. Řídicí panel můžete snadno přizpůsobit přidáním nebo odebráním dlaždice. Například pokud chcete přidat dlaždici výpočetní prostředky, vyberte **+ vytvořit prostředek**. Klikněte pravým tlačítkem na **Compute**a pak vyberte **připnout na řídicí panel**.
 
 ![Snímek obrazovky portálu user Portal Azure Stack](media/azure-stack-use-portal/userportal.png)
+
+Chcete-li obnovit původní nastavení řídicího panelu:
+1.  Vyberte **upravit řídicí panel**. 
+2.  Klikněte pravým tlačítkem a vyberte **resetovat do výchozího stavu**.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Vytvoření odběru a procházet dostupné prostředky.
 

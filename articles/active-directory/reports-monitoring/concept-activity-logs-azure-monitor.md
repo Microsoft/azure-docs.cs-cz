@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dee8e1a005027899698d55ee120acadc0240b1b6
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6cf9131fa5eb82fdd3248d78b1e6965cdc69cd3d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672640"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816143"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Protokoly aktivit Azure AD ve službě Azure Monitor (Preview)
 
@@ -34,6 +34,8 @@ Protokoly aktivit Azure Active Directory (Azure AD) můžete nyní provést smě
 * Protokoly aktivit odeslat Azure AD umožňují přehledné vizualizace, monitorování a upozorňování na připojených dat protokoly Azure monitoru.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>Podporované sestavy
 

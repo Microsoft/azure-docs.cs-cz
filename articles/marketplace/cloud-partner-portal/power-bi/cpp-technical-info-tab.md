@@ -14,33 +14,33 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d96ef2fd318d6164e1b7dfc5c4b72d6957af0f3e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ca77da897eed51c8d832cad7052c2144d6ada562
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744430"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806482"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI Apps technické informace o kartě
 
-**Technické informace o** karty **nová nabídka** je stránka, kde se adresa URL balíčku a žádné další informace požadované pro ověření nová nabídka poskytuje instalační služby Power BI.  Počáteční verze všechny aplikace Power BI jsou zdarma, k dispozici ke stažení z AppSource bez dalších poplatků. V důsledku toho nebudete mít k definování skladové jednotky (SKU) pro tento typ nabídky.
+Na **nová nabídka** stránky, použijte **technické informace o** kartu a zadejte instalační služby Power BI – adresa URL balíčku a dalších informací, že je potřeba ověřit nové nabídky.  Počáteční verze všechny aplikace Power BI je zdarma a je k dispozici ke stažení z webu AppSource. Z tohoto důvodu nelze definovat skladové jednotky (SKU) pro tento typ nabídky.
 
-![Technické informace o kartě](./media/technical-info-tab.png)
+![Na kartě technické informace](./media/technical-info-tab.png)
 
 
 ## <a name="technical-info-fields"></a>Technické informace o polích 
 
-V **technické informace o** kartu, je nutné zadat následující pole.  Připojený hvězdička (*) na popisek pole označuje, že je povinný.
+Na **technické informace o** kartu, vyplňte pole jsou popsané v následující tabulce. Na konci popisek pole hvězdičku (*) znamená, že toto pole je povinné.
 
 |        Pole          |  Popis                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **Adresa URL instalační program**     | Adresa vytvořené pomocí Power BI po publikování aplikace a jeho přesun do produkčního prostředí.  Další informace o tom, jak generovat adresu URL, najdete v tématu [publikování aplikací služby v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
-|  **Pokyny k ověřování**  |  Volitelný text, který pokyny (max 3000 znaků) pro ověřovací tým Microsoft pomáhat při konfiguraci, připojení a testování vaší aplikace, včetně: obvyklý konfigurační nastavení, účty testovacích nebo parametry, které můžete použít k testování možnost "Připojit dat." atd. Tyto informace pouze budou viditelné pro ověřovací tým a používá se pouze pro účely ověření.  |
-| **Tuto aplikaci vytvořili jako balíček obsahu Power BI?** | V současné době se interně používá pole. Ponechte nastavenou na výchozí hodnotu, `No`; v opačném případě toto pole a změna `Yes` by mohl bránit publikování.  |  
+| **Adresa URL instalační program**     | Power BI vygeneruje tuto adresu URL, když publikujete aplikaci a přesun do produkčního prostředí.  Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavy v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+|  **Pokyny k ověřování**  |  Pokud chcete, přidejte pokyny (až 3 000 znaků), které pomohou ověřovací tým Microsoft konfiguraci, připojení a testování vaší aplikace. Zahrnují typické nastavení, účty, parametry nebo Další informace, které můžete použít k testování připojení dat možnost. Tyto informace jsou viditelné pouze pro ověřovací tým a používá se pouze pro účely ověření.  |
+| **Tuto aplikaci vytvořili jako balíček obsahu Power BI?** | V současné době toto pole se používá jen interně. Ponechejte výchozí nastavení **ne**. Pokud změníte nastavení **Ano**, může ukončit proces publikování.  |  
 |  |  |
 
 
 ## <a name="next-steps"></a>Další postup
 
-V dalším [podrobnosti z prodejních míst](./cpp-storefront-details-tab.md) kartu, bude poskytovat uvádění na trh a právní informace pro vaši aplikaci.
+Na [podrobnosti z prodejních míst](./cpp-storefront-details-tab.md) kartu, zadejte uvádění na trh a právní informace pro vaši aplikaci.
 

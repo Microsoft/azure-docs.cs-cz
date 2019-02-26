@@ -5,24 +5,24 @@ description: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 915b972774fb418a454d8a3acd2a61f25af7a6aa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: b15fddcace19abcd1cd08d059c497c1c209f74d0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488505"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823429"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
 ## <a name="overview"></a>Přehled
 Tento průvodce vám ukáže, jak rychle začít pomocí služby API Management ke správě vašich webových služeb Azure Machine Learning Studio.
 
 ## <a name="what-is-azure-api-management"></a>Co je Azure API Management?
-Azure API Management je služba Azure, která vám umožní spravovat definováním přístup uživatelů, omezení využití a řídicího panelu monitorování koncových bodů rozhraní REST API. Klikněte na tlačítko [tady](https://azure.microsoft.com/services/api-management/) podrobné informace o službě Azure API Management. Klikněte na tlačítko [tady](../../api-management/api-management-get-started.md) pokyny o tom, jak začít pracovat s Azure API Management. Tato další příručku, která je na základě této příručce, popisuje další témata, včetně konfigurace oznámení, ceny, zpracování odpovědi, ověřování uživatelů, vytvoření produkty, předplatná pro vývojáře a mnoha využití.
+Azure API Management je služba Azure, která vám umožní spravovat definováním přístup uživatelů, omezení využití a řídicího panelu monitorování koncových bodů rozhraní REST API. Klikněte na tlačítko [tady](https://azure.microsoft.com/services/api-management/) podrobné informace o službě Azure API Management. Klikněte na tlačítko [tady](/azure/api-management/import-and-publish) pokyny o tom, jak začít pracovat s Azure API Management. Tato další příručku, která je na základě této příručce, popisuje další témata, včetně konfigurace oznámení, ceny, zpracování odpovědi, ověřování uživatelů, vytvoření produkty, předplatná pro vývojáře a mnoha využití.
 
 ## <a name="what-is-azureml"></a>Co je Azure ml?
 Azure ml je služba Azure pro strojové učení, který umožňuje snadno vytvářet, nasazovat a sdílet Pokročilá analytická řešení. Klikněte na tlačítko [tady](https://azure.microsoft.com/services/machine-learning/) podrobné informace o Azure ml.

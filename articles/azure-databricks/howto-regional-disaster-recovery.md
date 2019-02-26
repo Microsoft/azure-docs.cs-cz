@@ -8,22 +8,16 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: fa32aafa4f042351db7693ee684deafe9ed13fb0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a42d2c75913b2c9fdfa0d2b7c3ec2742525a4c97
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748319"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806092"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
 Tento článek popisuje architekturu zotavení po havárii, která je pro clustery Azure Databricks a kroky k provedení tohoto návrhu.
-
-## <a name="azure-databricks-overview"></a>Přehled služby Azure Databricks
-
-Azure Databricks je rychlá, snadná a spolupráci založená na Apache Sparku analytická služba. Pro velké objemy dat profilace, data (raw nebo strukturovaná) je ingestovat v Azure pomocí Azure Data Factory v dávkách nebo streamuje téměř v reálném čase pomocí Kafka, Centrum událostí nebo službu IoT Hub. Tato data území ve službě data lake pro dlouhodobé trvalé úložiště v Azure Blob Storage nebo Azure Data Lake Storage. Jako součást pracovního postupu analytics pomocí Azure Databricks se číst data z různých zdrojů dat, jako [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [služby Azure Cosmos DB](../cosmos-db/index.yml) , nebo [Azure SQL Data Warehouse](../sql-data-warehouse/index.md) a znovu je zapnout na Převratné přehledy s využitím Sparku.
-
-![Databricks kanálu](media/howto-regional-disaster-recovery/databricks-pipeline.png)
 
 ## <a name="azure-databricks-architecture"></a>Architektura služby Azure Databricks
 
@@ -37,7 +31,7 @@ Jednou z výhod této architektury je, se můžou uživatelé připojit k jakém
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Postup vytvoření topologie zotavení po havárii místních
 
-Jak si všimnete, že v předchozím popisu architektury, existují určité komponenty pro velké objemy dat kanál s Azure Databricks: Azure Storage, Azure Database a další zdroje dat. Azure Databricks je *compute* pro velké objemy dat profilace. Je *dočasné* ze své podstaty, to znamená, že zatímco vaše data jsou stále k dispozici ve službě Azure Storage *compute* (Azure Databricks pro cluster) lze ukončit, takže nemusíte platit za compute, kdy jste ho nepotřebujete. *Compute* (Azure Databricks) a úložiště zdroje musí být ve stejné oblasti tak, aby úlohy není docházet k vysoké latenci.  
+Jak si všimnete, že v předchozím popisu architektury, existují určité komponenty pro velké objemy dat kanál s Azure Databricks:  Azure Storage, Azure Database a jiných zdrojů dat. Azure Databricks je *compute* pro velké objemy dat profilace. Je *dočasné* ze své podstaty, to znamená, že zatímco vaše data jsou stále k dispozici ve službě Azure Storage *compute* (Azure Databricks pro cluster) lze ukončit, takže nemusíte platit za compute, kdy jste ho nepotřebujete. *Compute* (Azure Databricks) a úložiště zdroje musí být ve stejné oblasti tak, aby úlohy není docházet k vysoké latenci.  
 
 Pokud chcete vytvořit vlastní regionálního obnovení topologie, postupujte podle těchto požadavků:
 

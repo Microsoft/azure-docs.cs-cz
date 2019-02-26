@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: edd3912b3674f3a80a81fd47ed490479f663852c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7b3a8ac0500652b8c4250b4bc3b4f5514b62c4aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830248"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816927"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>Rychlý start: Komunikace zařízení pro aplikace v C# prostřednictvím datových proudů zařízení služby IoT Hub (preview)
 
@@ -39,8 +39,7 @@ Aktuální verzi C# na počítači používaném pro vývoj můžete ověřit po
 dotnet --version
 ```
 
-Stáhněte si ukázkový projekt C# z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a extrahujte archiv ZIP.
-
+Stáhněte si ukázkový projekt C# z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a extrahujte archiv ZIP. Je třeba na straně zařízení a služeb.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -86,18 +85,17 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     Poznamenejte si vrácené hodnoty, který vypadá takto:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
-    
 
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>Komunikaci mezi zařízením a službou prostřednictvím datových proudů zařízení
 
 ### <a name="run-the-service-side-application"></a>Spuštění aplikace straně služby
 
-Přejděte na `device-streams-echo/service` ve složce rozzipovaný projekt. Budete potřebovat následující informace užitečné:
+Přejděte na `iot-hub/Quickstarts/device-streams-echo/service` ve složce rozzipovaný projekt. Budete potřebovat následující informace užitečné:
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `ServiceConnectionString` | Připojovací řetězec služby IoT hub. |
-| `DeviceId` | Identifikátor zařízení, které jste vytvořili dříve. |
+| `ServiceConnectionString` | Zadejte připojovací řetězec služby IoT hub. |
+| `DeviceId` | Zadejte ID zařízení, které jste vytvořili dříve, například Mojezařízení. |
 
 Kompilace a spuštění kódu následujícím způsobem:
 
@@ -109,19 +107,22 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $ServiceConnectionString MyDevice
+dotnet run "<ServiceConnectionString>" "<MyDevice>"
 
 # In Windows
-dotnet run %ServiceConnectionString% MyDevice
+dotnet run <ServiceConnectionString> <MyDevice>
 ```
+
+> [!NOTE]
+> Vypršení časového limitu dojde, pokud aplikace na straně zařízení nereaguje v čase.
 
 ### <a name="run-the-device-side-application"></a>Spuštění aplikace straně zařízení
 
-Přejděte na `device-streams-echo/device` ve složce rozzipovaný projekt. Budete potřebovat následující informace užitečné:
+Přejděte na `iot-hub/Quickstarts/device-streams-echo/device` ve složce rozzipovaný projekt. Budete potřebovat následující informace užitečné:
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `DeviceConnectionString` | Připojovací řetězec zařízení, které jste vytvořili dříve. |
+| `DeviceConnectionString` | Zadejte připojovací řetězec zařízení služby IoT Hub. |
 
 Kompilace a spuštění kódu následujícím způsobem:
 
@@ -133,28 +134,23 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $DeviceConnectionString
+dotnet run "<DeviceConnectionString>"
 
 # In Windows
-dotnet run %DeviceConnectionString%
+dotnet run <DeviceConnectionString>
 ```
 
 Na konci posledního kroku program straně služeb opraví, zahájí se stream do vašeho zařízení a po vytvoření se odeslat vyrovnávací paměti řetězce ke službě prostřednictvím datového proudu. V této ukázce straně služby program jednoduše vrací zpět stejná data na zařízení, ukázka úspěšné obousměrnou komunikaci mezi těmito dvěma aplikacemi. Viz následující obrázek.
 
 Na straně zařízení výstupu konzoly: ![alternativní text](./media/quickstart-device-streams-echo-csharp/device-console-output.png "výstupu na straně zařízení konzoly")
 
-
 Na straně služby výstupu konzoly: ![alternativní text](./media/quickstart-device-streams-echo-csharp/service-console-output.png "výstupu na straně služby konzoly")
 
-
-
 Přenosy budou odesílat prostřednictvím datového proudu se tunelové propojení prostřednictvím služby IoT Hub spíše než odesílají přímo. To poskytuje [tyto výhody](./iot-hub-device-streams-overview.md#benefits).
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
-
 
 ## <a name="next-steps"></a>Další postup
 

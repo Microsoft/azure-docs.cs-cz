@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 41f1c6dc8904f167f34ea72aeb9b3866504b7087
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9352130eeeb68a87947450cb5616aa59e8e99ae9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341296"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807367"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a webu Azure portal
 
@@ -38,9 +38,9 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. V navigačním seznamu zvolte **Skupiny prostředků**.
+1. V navigačním seznamu klikněte na tlačítko **skupiny prostředků**.
 
-1. Vyberte **Přidat** a otevřete okno **Skupina prostředků**.
+1. Klikněte na tlačítko **přidat** otevřít **skupiny prostředků** okno.
 
    ![Přidání nové skupiny prostředků](./media/quickstart-assign-role-user-portal/resource-group.png)
 
@@ -48,9 +48,9 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 1. Vyberte předplatné a umístění.
 
-1. Vyberte **Vytvořit** a vytvořte skupinu prostředků.
+1. Klikněte na tlačítko **vytvořit** a vytvořte skupinu prostředků.
 
-1. Vyberte **Aktualizovat** a aktualizujte seznam skupin prostředků.
+1. Klikněte na tlačítko **aktualizovat** aktualizovat seznam skupin prostředků.
 
    Nová skupina prostředků se zobrazí v seznamu skupin prostředků.
 
@@ -60,17 +60,19 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 V RBAC se přístup uděluje vytvořením přiřazení role.
 
-1. V seznamu **skupiny prostředků**, zvolte Nový **rbac-resource-group** skupinu prostředků.
+1. V seznamu **skupiny prostředků**, klikněte na nový **rbac-resource-group** skupinu prostředků.
 
-1. Zvolte **Řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)**.
 
-1. Zvolte **přiřazení rolí** kartu pro zobrazení aktuálního seznamu přiřazení rolí.
+1. Klikněte na tlačítko **přiřazení rolí** kartu pro zobrazení aktuálního seznamu přiřazení rolí.
 
    ![Okno Řízení přístupu (IAM) pro skupinu prostředků](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Zvolte **přidat přiřazení role** otevřete podokno Přidat přiřazení role.
+1. Klikněte na tlačítko **přidat** > **přidat přiřazení role** otevřete podokno Přidat přiřazení role.
 
    Pokud nemáte oprávnění k přiřazování rolí, možnost Přidat přiřazení role se deaktivuje.
+
+   ![Přidat nabídku](./media/role-assignments-portal/add-menu.png)
 
    ![Přidání podokna přiřazení role](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
@@ -78,7 +80,7 @@ V RBAC se přístup uděluje vytvořením přiřazení role.
 
 1. V seznamu **Vybrat** vyberte sebe nebo jiného uživatele.
 
-1. Zvolte **Uložit** a vytvořte přiřazení role.
+1. Klikněte na tlačítko **Uložit** k vytvoření tohoto přiřazení role.
 
    Po chvíli se má uživatel přiřazenou roli Přispěvatel virtuálních počítačů v oboru skupiny prostředků rbac-resource-group.
 
@@ -90,25 +92,25 @@ V RBAC se přístup odebírá odebrání přiřazení role.
 
 1. V seznamu přiřazení rolí přidejte zaškrtnutí vedle uživatele k roli Přispěvatel virtuálních počítačů.
 
-1. Zvolte **Odebrat**.
+1. Klikněte na tlačítko **odebrat**.
 
    ![Zpráva Odebrání přiřazení role](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. Ve zprávě Odebrání přiřazení role, která se zobrazí, zvolte **Ano**.
+1. Ve zprávě přiřazení role odebrat, která se zobrazí, klikněte na tlačítko **Ano**.
 
 ## <a name="clean-up"></a>Vyčištění
 
-1. V navigačním seznamu zvolte **Skupiny prostředků**.
+1. V navigačním seznamu klikněte na tlačítko **skupiny prostředků**.
 
-1. Zvolte **rbac-resource-group** otevřete skupinu prostředků.
+1. Klikněte na tlačítko **rbac-resource-group** otevřete skupinu prostředků.
 
-1. Vyberte **Odstranit skupinu prostředků** a skupinu prostředků odstraňte.
+1. Klikněte na tlačítko **odstranit skupinu prostředků** odstranit skupinu prostředků.
 
    ![Odstranění skupiny prostředků](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
 1. Na **Opravdu chcete odstranit** okně zadejte název skupiny prostředků: **rbac-resource-group**.
 
-1. Vyberte **Odstranit** a skupinu prostředků odstraňte.
+1. Klikněte na tlačítko **odstranit** odstranit skupinu prostředků.
 
 ## <a name="next-steps"></a>Další postup
 

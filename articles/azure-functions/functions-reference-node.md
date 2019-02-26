@@ -10,22 +10,24 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 10/26/2018
+ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: cff486f79abb02861c07e0daacaf2f58d3efaac4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 04653dcdf0fb64e8b935cda18c01198ec91c548d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729658"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807469"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
 Tato příručka obsahuje informace o složitými rozhraními vytváření Azure Functions s použitím jazyka JavaScript.
 
-Funkce jazyka JavaScript je exportovaná `function` , který se spustí při aktivaci ([aktivační události jsou nakonfigurované v function.json](functions-triggers-bindings.md)). První argument je předán každá funkce `context` objekt, který se používá pro příjem a odesílání vazby dat, protokolování a komunikaci s modulem runtime.
+Funkce jazyka JavaScript je exportovaná `function` , který se spustí při aktivaci ([aktivační události jsou nakonfigurované v function.json](functions-triggers-bindings.md)). První argument předaný každou funkci je `context` objektu, který se používá pro příjem a odesílání vazby dat, protokolování a komunikaci s modulem runtime.
 
-Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Také by se měla dokončit funkce Rychlý start k vytvoření první funkce pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo [na portálu](functions-create-first-azure-function.md).
+Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Projděte si funkce Rychlý start k vytvoření první funkce pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo [na portálu](functions-create-first-azure-function.md).
+
+Tento článek také podporuje [vývoj aplikací pro TypeScript](#typescript).
 
 ## <a name="folder-structure"></a>struktura složek
 
@@ -109,7 +111,7 @@ V jazyce JavaScript [vazby](functions-triggers-bindings.md) se konfigurují a de
 
 ### <a name="inputs"></a>Vstupy
 Vstup dělí do dvou kategorií ve službě Azure Functions: jeden je vstup triggeru a druhý je další vstupy. Aktivační události a dalších vstupních vazeb (vazby `direction === "in"`) lze číst pomocí funkce třemi způsoby:
- - **_[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Všimněte si, `name` vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
+ - **_[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. `name` Vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -138,7 +140,8 @@ Vstup dělí do dvou kategorií ve službě Azure Functions: jeden je vstup trig
 ### <a name="outputs"></a>Výstupy
 Výstupy (vazby `direction === "out"`) je možné zapisovat na funkci v několika způsoby. Ve všech případech `name` vlastnost vazby, jak jsou definovány v *function.json* odpovídá názvu členem objektu napsané ve své funkci. 
 
-Data můžete přiřadit výstupních vazeb v jednom z následujících způsobů. Tyto metody by neměli kombinovat.
+Data můžete přiřadit výstupních vazeb v jednom z následujících způsobů (není sloučit tyto metody):
+
 - **_[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise, vrací funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
 
   ```javascript
@@ -152,7 +155,7 @@ Data můžete přiřadit výstupních vazeb v jednom z následujících způsob�
       };
   };
   ```
-  
+
   Pokud používáte synchronní funkce, můžete se vrátit objekt pomocí [ `context.done` ](#contextdone-method) (viz příklad).
 - **_[Doporučuje pro jeden výstup]_  Návratová hodnota přímo a pomocí názvu $return vazby.** Tento postup funguje pouze pro asynchronní/Promise vrácení funkce. Viz příklad v [export asynchronní funkce](#exporting-an-async-function). 
 - **Přiřazování hodnot k `context.bindings`**  přímo do context.bindings můžete přiřadit hodnoty.
@@ -167,7 +170,7 @@ Data můžete přiřadit výstupních vazeb v jednom z následujících způsob�
       return;
   };
   ```
- 
+
 ### <a name="bindings-data-type"></a>Datový typ vazby
 
 Chcete-li definovat datový typ pro vstupní vazby, použijte `dataType` vlastnost v definici vazby. Například pokud chcete číst obsah požadavku HTTP v binárním formátu, použijte typ `binary`:
@@ -550,7 +553,47 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-V tomto příkladu je důležité si uvědomit, že probíhá Export objektu, neobejde se to ale bez guarantess kolem zachování stavu mezi spuštěními.
+V tomto příkladu je důležité si uvědomit, že i když objekt se exportuje, neexistují žádné záruky pro uchování stavu mezi spuštěními.
+
+## <a name="typescript"></a>TypeScript
+
+Pokud cílíte na verzi 2.x modul runtime služby Functions, obě [Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md) a [nástrojů Azure Functions Core](functions-run-local.md) umožňují vytvářet aplikace function App pomocí šablony, které podporují Projekty aplikací pro TypeScript funkce. Tato šablona vygeneruje `package.json` a `tsconfig.json` soubory projektu, které usnadňují transpiluje, spouštět a publikovat funkce jazyka JavaScript, TypeScript kódu pomocí těchto nástrojů.
+
+Vygenerovanou `.funcignore` soubor se používá k označení souborů, které jsou vyloučené při publikování projektu do Azure.  
+
+Soubory TypeScript (.ts) jsou transpiled do souborů JavaScriptu (.js) `dist` výstupní adresář. Použití šablon TypeScript [ `scriptFile` parametr](#using-scriptfile) v `function.json` označující umístění odpovídající soubor .js v `dist` složky. Umístění výstupu je nastavena pomocí šablony s použitím `outDir` parametr `tsconfig.json` souboru. Pokud změníte toto nastavení nebo název složky, modul runtime nedokáže najít spuštění kódu.
+
+> [!NOTE]
+> Experimentální podpora pro TypeScript existuje verzi 1.x modul runtime služby Functions. Experimentální verzi transpiles soubory TypeScript do souborů JavaScript, když je funkce zavolána. Ve verzi 2.x, tento experimentální podporu byla nahrazena nástroj řízené metodou, která provádí transpilation před dokončením inicializace hostitele a během procesu nasazení.
+
+Tak, jak místní vývoj a nasazení z projektu TypeScript závisí na vývojový nástroj.
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+[Azure Functions pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) rozšíření vám umožní vyvíjet funkce pomocí TypeScript. Základní nástroje je požadavek rozšíření Azure Functions.
+
+Chcete-li vytvořit aplikaci function app TypeScript ve Visual Studio Code, jednoduše klikněte `TypeScript` při vytvoření aplikace function app a vyzváni k volbě jazyka.
+
+Když stisknete klávesu **F5** spusťte aplikaci místně, transpilation se provádí před dokončením inicializace hostitele (func.exe). 
+
+Když nasadíte aplikaci function app do Azure s využitím **nasadit do aplikace function app...**  tlačítko, rozšíření Azure Functions nejprve vygeneruje připravené pro produkční prostředí sestavení souborů JavaScriptu z zdrojové soubory TypeScript.
+
+### <a name="azure-functions-core-tools"></a>Nástroje Azure Functions Core
+
+Vytvoření projektu aplikace funkcí TypeScript pomocí základní nástroje, musíte zadat možnost jazyka typescript, když vytvoříte aplikaci function app. Můžete to udělat v jednom z následujících způsobů:
+
+- Spustit `func init` příkaz select `node` jako zásobník jazyka a pak vyberte `typescript`.
+
+- Spusťte příkaz `func init --worker-runtime typescript`.
+
+Chcete-li spustit kód vaší funkce aplikace místně s použitím základní nástroje, použijte `npm start` příkaz místo `func host start`. `npm start` Příkaz je ekvivalentní s následující příkazy:
+
+- `npm run build`
+- `func extensions install`
+- `tsc`
+- `func start`
+
+Než použijete [ `func azure functionapp publish` ] příkaz pro nasazení do Azure, je třeba nejprve spustit `npm run build:production` příkazu. Tento příkaz vytvoří sestavení připravené pro produkční prostředí Javascriptové soubory ze zdrojových souborů TypeScript, které je možné nasadit s použitím [ `func azure functionapp publish` ].
 
 ## <a name="considerations-for-javascript-functions"></a>Důležité informace pro funkce jazyka JavaScript
 
@@ -558,11 +601,7 @@ Při práci s funkcí jazyka JavaScript, mějte na paměti aspekty uvedené v n�
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Zvolte jeden virtuální procesor plány služby App Service
 
-Když vytvoříte aplikaci function app, který používá plán služby App Service, doporučujeme, že vyberete jeden virtuální procesor plán spíše než plán s více virtuálních procesorů. V současné době funkce jazyka JavaScript funkce efektivněji běží na virtuálních počítačích s jedním virtuálním procesorem a pomocí větší virtuální počítače nevytvoří vylepšení očekávaný výkon. Pokud je to nezbytné, můžete ručně škálovat přidáváním dalších instancí virtuálních počítačů na jeden virtuální procesor, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
-
-### <a name="typescript-and-coffeescript-support"></a>Podpora TypeScript a CoffeeScript
-
-Protože přímou podporu ještě neexistuje pro automatické kompilaci TypeScript nebo CoffeeScript prostřednictvím modulu runtime, musí být zpracována mimo modul runtime v době nasazení těchto podpory. 
+Když vytvoříte aplikaci function app, který používá plán služby App Service, doporučujeme, že vyberete jeden virtuální procesor plán spíše než plán s více virtuálních procesorů. V současné době funkce jazyka JavaScript funkce efektivněji běží na virtuálních počítačích s jedním virtuálním procesorem a pomocí větší virtuální počítače nevytvoří vylepšení očekávaný výkon. Pokud je to nezbytné, můžete ručně škálovat přidáváním dalších instancí virtuálních počítačů na jeden virtuální procesor, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
 
 ### <a name="cold-start"></a>Studený Start
 
@@ -575,3 +614,5 @@ Další informace najdete v následujících materiálech:
 + [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 + [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 + [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
+
+[Funkce azure functionapp publikování]: functions-run-local.md#project-file-deployment

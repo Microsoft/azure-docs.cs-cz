@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 407bb2e39e92390576da9c23868f5af9c444bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/25/2019
+ms.openlocfilehash: fab5d69239c420c394645cef632d119848d0f4c4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341528"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818829"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Odstranit aktivitu ve službě Azure Data Factory
 
@@ -37,21 +37,20 @@ Zde je několik doporučení pro použití aktivity odstranit:
 
 -   Ujistěte se, že nejsou mazání souborů, které jsou zapisovány ve stejnou dobu. 
 
--   Pokud chcete odstranění souboru nebo složky z místního systému, ujistěte se, že používáte místní prostředí integration runtime verze větší než 3.13.
+-   Pokud chcete odstranění souboru nebo složky z místního systému, ujistěte se, že používáte místní prostředí integration runtime verze větší než 3.14.
 
 ## <a name="supported-data-stores"></a>Úložiště dat podporovaných
 
-### <a name="azure-data-stores"></a>Úložiště dat Azure
-
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2 Preview](connector-azure-data-lake-storage.md)
+-   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 
 ### <a name="file-system-data-stores"></a>Úložiště dat systému souborů
 
 -   [Systém souborů](connector-file-system.md)
 -   [FTP](connector-ftp.md)
--   [HDFS](connector-hdfs.md)
+-   [SFTP](connector-sftp.md)
+-   [Amazon S3](connector-amazon-simple-storage-service.md)
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -61,7 +60,7 @@ Zde je několik doporučení pro použití aktivity odstranit:
     "type": "Delete",
     "typeProperties": {
         "dataset": {
-            "referenceName": "<dataset name to be deleted>",
+            "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
         "recursive": true/false,
@@ -87,7 +86,7 @@ Zde je několik doporučení pro použití aktivity odstranit:
 | maxConcurrentConnections | Počet připojení pro připojení k úložišti úložiště současně pro odstranění složky nebo soubory.   |  Ne. Výchozí formát je `1`. |
 | EnableLogging | Určuje, zda je potřeba zaznamenat názvy souboru nebo složky, které se odstranily. Pokud je hodnota true, budete muset dál zadejte účet úložiště k ukládání souboru protokolu tak, aby mohl sledovat chování aktivity odstranit soubor protokolu pro čtení. | Ne |
 | logStorageSettings | Platí jenom v případě enablelogging = true.<br/><br/>Skupina vlastností úložiště, které mohou být zadat, kam chcete uložit soubor protokolu obsahující názvy souboru nebo složky, které se odstranily aktivitou odstranit. | Ne |
-| linkedServiceName | Platí jenom v případě enablelogging = true.<br/><br/>Propojené služby [služby Azure Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) k uložení souboru protokolu, který obsahuje názvy souboru nebo složky, které se odstranily aktivitou odstranit. | Ne |
+| linkedServiceName | Platí jenom v případě enablelogging = true.<br/><br/>Propojené služby [služby Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties), nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) uložení souboru protokolu, který obsahuje složku nebo názvy souborů byla odstraněna aktivita odstranit. | Ne |
 | path | Platí jenom v případě enablelogging = true.<br/><br/>Cesta pro uložení souboru protokolu v účtu úložiště. Pokud nezadáte cestu, služby kontejneru vytvoří za vás. | Ne |
 
 ## <a name="monitoring"></a>Monitorování
@@ -100,13 +99,15 @@ Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity od
 
 ```json
 { 
-  "isWildcardUsed": false, 
-  "wildcard": null,
-  "type": "AzureBlobStorage",
+  "datasetName": "AmazonS3",
+  "type": "AmazonS3Object",
+  "prefix": "test",
+  "bucketName": "adf",
   "recursive": true,
-  "maxConcurrentConnections": 10,
-  "filesDeleted": 1,
-  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07/5c698705-a6e2-40bf-911e-e0a927de3f07.json",
+  "isWildcardUsed": false,
+  "maxConcurrentConnections": 2,  
+  "filesDeleted": 4,
+  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07",
   "effectiveIntegrationRuntime": "MyAzureIR (West Central US)",
   "executionDuration": 650
 }
@@ -114,22 +115,12 @@ Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity od
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Ukázkový soubor protokolu aktivit Delete
 
-```json
-{
-  "customerInput": {
-    "type": "AzureBlob",
-    "fileName": "",
-    "folderPath": "folder/filename_to_be_deleted",
-    "recursive": false,
-    "enableFileFilter": false
-  },
-  "deletedFileList": [
-    "folder/filename_to_be_deleted"
-  ],
-  "deletedFolderList": null,
-  "error":"the reason why files are failed to be deleted"
-}
-```
+| Název | Kategorie | Status | Chyba |
+|:--- |:--- |:--- |:--- |
+| test1/yyy.json | File | Odstraněno |  |
+| test2/hello789.txt | File | Odstraněno |  |
+| test2/test3/hello000.txt | File | Odstraněno |  |
+| test2/test3/zzz.json | File | Odstraněno |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Příklady použití aktivit Delete
 
@@ -332,7 +323,7 @@ Můžete vytvořit kanál Vyčistit stará nebo vypršela její platnost soubor�
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Přesunout soubory řetězení aktivitu kopírování a aktivitu Delete
 
-Můžete přesunout do souboru pomocí aktivity kopírování zkopírovat soubor a pak aktivity Odstranit pro odstranění souboru v kanálu.  Pokud chcete přesunout více souborů, vám dá se použít aktivitě GetMetadata + aktivita filtru + aktivita Foreach + aktivitu kopírování a aktivitu jako v následující ukázce odstranit:
+Přesunutí souboru pomocí aktivity kopírování zkopírovat soubor a pak aktivitou odstranit pro odstranění souboru v kanálu.  Pokud chcete přesunout více souborů, vám dá se použít aktivitě GetMetadata + aktivita filtru + aktivita Foreach + aktivitu kopírování a aktivitu jako v následující ukázce odstranit:
 
 > [!NOTE]
 > Pokud chcete přesunout celou složku definováním obsahující cestu ke složce pouze datovou sadu a pak pomocí aktivit kopírování a aktivitu odstranit tak, aby odkazovaly na stejné datové sady představující složku, budete muset buďte velmi opatrní. Je to proto, že máte, abyste měli jistotu, že není bude nové soubory, které dorazily do složky mezi operace kopírování a odstraňování operace.  Pokud existují nové soubory ve složce přicházející v tuto chvíli při aktivitě kopírování právě dokončili úlohu kopírování, ale nebyl byla stared aktivity odstranit, je možné, že aktivita Delete Odstraní tento nový soubor opravovány, který není byl zkopírován do destinati na odstraněním ještě celou složku. 
@@ -575,9 +566,6 @@ Datová sada pro cíl dat používá aktivitu kopírování.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o kopírování souborů v Azure Data Factory.
-
--   [Aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md)
+Další informace o přesunutí souborů ve službě Azure Data Factory.
 
 -   [Nástroj pro kopírování dat v Azure Data Factory](copy-data-tool.md)
-- 

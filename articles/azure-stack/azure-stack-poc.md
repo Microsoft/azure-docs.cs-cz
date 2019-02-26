@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/25/2018
+ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 9341eefdbe1eaa8e27394fd4b10f50b1a48bd4c6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/25/2019
+ms.openlocfilehash: 65894ccd9514bce1d429b336f8bd5e6674048e65
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247319"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820259"
 ---
 # <a name="what-is-azure-stack"></a>Co je Azure Stack?
 
@@ -41,7 +41,7 @@ Microsoft [Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) je jední
 ASDK má následující omezení:
 
 * ASDK je přidružen jedné služby Azure Active Directory (Azure AD) nebo zprostředkovatele identity služby Active Directory Federation Services (AD FS). Můžete vytvořit více uživatelů v tomto adresáři a přiřaďte předplatná každému uživateli.
-* Protože komponenty služby Azure Stack jsou nasazené na jednom počítači hostitele, existují omezené fyzické prostředky dostupné pro prostředky tenanta. Tato konfigurace není určena pro zkušební škálování a výkon.
+* Protože komponenty služby Azure Stack jsou nasazené na jeden hostitelský počítač, se omezené fyzické prostředky dostupné pro prostředky tenanta. Tato konfigurace není určen pro škálování nebo pro účely vyhodnocení výkonu.
 * Scénáře pro sítě jsou omezené z důvodu jednom hostiteli a síťovou kartu požadavky na nasazení.
 
 ## <a name="azure-stack-integrated-systems"></a>Integrované systémy pro službu Azure Stack

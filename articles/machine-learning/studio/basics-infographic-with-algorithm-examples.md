@@ -5,17 +5,17 @@ description: Přehled snadno pochopit základy machine learning obsahuje příkl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 78daf4534334d56c962d97e7a9aac8a7910db34c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0d7210bfd333a5941d25f72dc0af0743ed234f8c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453592"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818897"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Machine learning s příklady algoritmů základy
 

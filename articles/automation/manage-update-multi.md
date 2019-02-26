@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 864e93dcd94fd36b0e34495e0ea27f22d8b0dd0c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427419"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817673"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -72,7 +72,7 @@ Až po dokončení registrace, povolení správy aktualizací pro virtuální po
 
 Informace o povolení správy aktualizací pro počítače a virtuální počítače Windows Azure najdete v tématu [počítače Windows se připojit ke službě Log Analytics v Azure](../log-analytics/log-analytics-windows-agent.md).
 
-Další postup pro povolení správy aktualizací pro a virtuální počítače s Linuxem jiné než Azure najdete v tématu [připojení počítačů s Linuxem ke službě Log Analytics](../log-analytics/log-analytics-agent-linux.md).
+Další postup pro povolení správy aktualizací pro a virtuální počítače s Linuxem jiné než Azure najdete v tématu [připojení počítačů s Linuxem do Azure monitoru protokolů](../log-analytics/log-analytics-agent-linux.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Zobrazení počítačů připojených k účtu služby Automation
 
@@ -113,7 +113,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
-Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
+Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné protokoly Azure monitoru. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
 
 Mimo plán kontrol je zahájeno kontroly dodržování předpisů pro aktualizace do 15 minut po restartování, před instalací aktualizací a po instalaci aktualizací agenta MMA.
 
@@ -132,7 +132,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: Vyberte **Windows** nebo **Linux**.
 - **Skupiny, které se aktualizace (preview)**: Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
-- **Počítače k aktualizaci**: Vyberte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
+- **Počítače k aktualizaci**: Vyberte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md)
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
 

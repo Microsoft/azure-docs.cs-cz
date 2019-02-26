@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: juliako
-ms.openlocfilehash: 02af95de3793f1d56204b17b0a3d91efbb285e55
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d3222b2a2c47d6c2db4ca890a2618e89891d9deb
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726410"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804820"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -26,9 +26,9 @@ Microsoft Azure Media Services umožňuje doručovat mnoho média zdrojového fo
 
 [Koncové body streamování](streaming-endpoint-concept.md) je služba dynamického balení ve službě Media Services používá k doručování multimediálního obsahu pro klientské přehrávače. Dynamické balení je funkce, která obsahuje standardní na všechny koncové body streamování (Standard nebo Premium). Neexistuje žádné další náklady spojené s touto funkcí v Media Services v3. Při dynamickém balení je vše, co potřebujete asset, který obsahuje sadu souborů MP4 s soubory manifestu obsahují. Potom založené na formátu určeného v manifestu nebo fragment požadavek, můžete datový proud obdrželi v protokolu, kterou jste zvolili. Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů.
 
-Ve službě Media Services se používá dynamické balení, zda jsou streamování na vyžádání nebo Live.
+Ve službě Media Services se používá dynamické balení, zda jsou streamování na vyžádání nebo za provozu.
 
-Následující diagram znázorňuje dynamické balení pracovního postupu.
+Následující diagram znázorňuje streamování na vyžádání s dynamickým vytvářením paketů pracovního postupu.
 
 ![Dynamické kódování](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
@@ -39,7 +39,11 @@ Toto je běžné Media Services pracovní postup streamování, ve kterém se po
 1. Nahrání vstupního souboru (označované jako soubor mezzanine). Například H.264 MP4 nebo WMV (seznam podporovaných formátů naleznete v části [formátů podporovaných Media Encoder Standard](media-encoder-standard-formats.md).
 2. Zakódujte váš soubor mezzanine do sady H.264 MP4 s adaptivní přenosovou rychlostí.
 3. Publikujte asset, který obsahuje s adaptivní přenosovou sady souborů MP4.
-4. Vytvoření adres URL, které cílí různé formáty (HLS, Dash nebo Smooth Streaming). Koncový bod streamování by zajistíme obsluhující správný manifest a žádostí o těchto různých formátech.
+4. Vytvoření adres URL, které cílí různé formáty (HLS, Dash nebo Smooth Streaming). Koncový bod streamování by zajistíme obsluhující správný manifest a žádostí o těchto různých formátech. Příklad:
+
+ - HLS: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)`
+ - Dash: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)`
+ - Smooth: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest`
  
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Video kodeků podporuje dynamické balení
 

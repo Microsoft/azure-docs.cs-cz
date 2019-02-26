@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743680"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804636"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Rychlý start: Ingestování objektů BLOB Azure do Průzkumníku dat Azure pomocí přihlášení k odběru oznámení služby Event Grid
 
@@ -58,7 +58,7 @@ Vytvořte tabulku v Průzkumníku dat Azure, do kterého bude Služba Event Hubs
 
 1. Na portálu Azure Portal vyberte v rámci svého clusteru možnost **Dotaz**.
 
-    ![Dotaz – odkaz aplikace](media/ingest-data-event-hub/query-explorer-link.png)
+    ![Dotaz – odkaz aplikace](media/ingest-data-event-grid/query-explorer-link.png)
 
 1. Zkopírujte následující příkaz do okna a vyberte **spustit** k vytvoření tabulky (TestTable), který bude přijímat přijaté data.
 
@@ -82,11 +82,11 @@ Teď připojíte do služby Event Grid z Průzkumníka dat služby Azure, tak, a
 
 1. V rámci clusteru, který jste vytvořili, vyberte **Databáze** a pak **TestDatabase**.
 
-    ![Výběr testovací databáze](media/ingest-data-event-hub/select-test-database.png)
+    ![Výběr testovací databáze](media/ingest-data-event-grid/select-test-database.png)
 
 1. Vyberte **Ingestace dat** a pak **Přidat datové připojení**.
 
-    ![Přijímání dat](media/ingest-data-event-hub/data-ingestion-create.png)
+    ![Přijímání dat](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1. Vyberte typ připojení: **Úložiště objektů blob**.
 
@@ -185,9 +185,9 @@ Pokud nemáte v úmyslu znovu pomocí služby event grid, vyčistit **test-hub-r
 
 1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
 
-    Pokud je nabídka vlevo sbalená, výběrem ![tlačítko Rozbalit](media/ingest-data-event-hub/expand.png) ji rozbalte.
+    Pokud je nabídka vlevo sbalená, výběrem ![tlačítko Rozbalit](media/ingest-data-event-grid/expand.png) ji rozbalte.
 
-   ![Výběr skupiny prostředků k odstranění](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Výběr skupiny prostředků k odstranění](media/ingest-data-event-grid/delete-resources-select.png)
 
 1. Ve skupině prostředků **test-resource-group** vyberte **Odstranit skupinu prostředků**.
 

@@ -11,7 +11,7 @@
 ### [Zotavení po havárii s využitím Azure DNS a Traffic Manageru](disaster-recovery-dns-traffic-manager.md)
 ## Plánování a návrh
 ### [Virtuální sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Připojení mezi místními sítěmi – síť VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Připojení mezi místními sítěmi – síť VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Připojení mezi místními sítěmi – vyhrazené privátní](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### Interoperabilita možností připojení back-endu
 #### [Úvod a nastavení testu](connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json)

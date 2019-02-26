@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 74061eb081fcc7c2c84707f2414a2edfbfde3289
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fe0783891bd5f571c06551e19c154d6f22768e84
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299533"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821537"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open centra pomocí služby Azure Data Factory
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat
 
 [SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) je účinný způsob, jak extrahovat data z SAP BW. Následující diagram znázorňuje jeden z typických toků, zákazníci mají v jejich systému SAP, v jaké velikosti písmen datové toky z SAP ECC -> PSA -> DSO -> datové krychle.
 
-SAP BW Open Centrum cílový (OHD) definuje cíl, do které se předá SAP data. Všechny objekty podporovány službou SAP Data Transfer procesu (DTP) může sloužit jako otevřete Centrum zdrojů dat, například DSO InfoCube, MultiProvider, zdroj dat, atd. Otevřete Centrum cílový typ – přenášená data se mají ukládat – mohou být databázových tabulek (místní nebo vzdálené) a plochých souborů. Tato podpora konektoru SAP BW Open centra kopírování dat z tabulky OHD místní BW. V případě, že používáte jiné typy, můžou přímo připojit k databázi nebo souboru systému pomocí jiné konektory.
+SAP BW Open Centrum cílový (OHD) definuje cíl, do které se předá SAP data. Všechny objekty podporovány službou SAP Data Transfer procesu (DTP) může sloužit jako otevřete Centrum zdrojů dat, například DSO InfoCube, zdroj dat, atd. Otevřete Centrum cílový typ – přenášená data se mají ukládat – mohou být databázových tabulek (místní nebo vzdálené) a plochých souborů. Tato podpora konektoru SAP BW Open centra kopírování dat z tabulky OHD místní BW. V případě, že používáte jiné typy, můžou přímo připojit k databázi nebo souboru systému pomocí jiné konektory.
 
 ![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
@@ -37,7 +37,7 @@ Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open rozb
 
 Konkrétně tento konektor SAP Business Warehouse otevřete Centrum podporuje:
 
-- SAP Business Warehouse **verze 7.30 nebo vyšší (v posledních SAP podporu balíčku zásobníku vydanou po roce 2015)**.
+- SAP Business Warehouse **verze 7.01 nebo vyšší (v posledních SAP podporu balíčku zásobníku vydanou po roce 2015)**.
 - Kopírování dat přes otevřít Centrum cílový místní tabulky, který pod může být DSO InfoCube, MultiProvider, zdroj dat, atd.
 - Kopírování dat pomocí základního ověřování.
 - Připojení k aplikační Server.

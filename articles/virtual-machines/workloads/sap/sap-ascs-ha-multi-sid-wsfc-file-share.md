@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 486044656b1c288b1658d10a162e1f9fa071172a
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745014"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817112"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -347,7 +347,7 @@ Vytvoření druhého **Volume2**. Spusťte tento skript Powershellu:
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![Obrázek 5: SOFS s několika SID je stejný jako SAP globální název hostitele 2][sap-ha-guide-figure-8016]
+![Obrázek 5: Druhý Volume2 v modulu Správce clusteru převzetí služeb při selhání][sap-ha-guide-figure-8016]
 
 _**Obrázek 5:** Druhý Volume2 v modulu Správce clusteru převzetí služeb při selhání_
 

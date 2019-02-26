@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d61b39eb0a7b6a35330e0cde2142029b8eb7ce03
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8fb1b5e06e694368cf80029fe5ce2dcf0749cc62
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512206"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818370"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -97,9 +97,11 @@ Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook W
 
 ### <a name="hybrid-worker-role"></a>Role pracovního procesu hybrid
 
-Pro Hybrid Runbook Worker mohl připojit a zaregistrovat pomocí Log Analytics musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je v horní části [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) pro připojení ke službě Log Analytics.
+Pro Hybrid Runbook Worker mohl připojit a zaregistrovat protokoly Azure monitoru musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je v horní části [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) pro připojení k protokoly Azure monitoru.
 
-Pokud používáte proxy server pro komunikaci mezi agentem a službou Log Analytics, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány Log Analytics pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Pokud používáte proxy server pro komunikaci mezi agentem a službou Azure Monitor, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány Log Analytics pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 
 Následující portů a adres URL jsou požadovány pro role Hybrid Runbook Worker ke komunikaci se službou Automation:
 

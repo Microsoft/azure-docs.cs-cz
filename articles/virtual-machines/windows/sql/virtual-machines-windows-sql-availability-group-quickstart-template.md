@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby WSFC, naslouchací proces a nakonfigurujte ILB pro skupiny dostupnosti Always On na virtuálním počítači SQL serveru pomocí šablony Azure Quickstart
-description: Použití šablon rychlý start Azure zjednodušuje proces vytváření skupin dostupnosti pro virtuální počítače s SQL serverem v Azure pomocí šablony k vytvoření clusteru, připojí virtuální počítače s SQL do clusteru, vytvořte naslouchací proces a nakonfigurujte ILB.
+title: Konfigurace skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure pomocí šablon rychlého startu Azure
+description: Použití šablon pro rychlý start Azure vytvořit cluster převzetí služeb při selhání Windows, připojí virtuální počítače SQL serveru do clusteru, vytvořit naslouchací proces a konfigurace interního nástroje Load Balancer v Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/04/2018
+ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 093fa1414ec624f66bc7cb4559fa8c0535834c10
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 675933b46a228f636c4907e84d66263dde52f274
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981923"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823327"
 ---
-# <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>Vytvoření služby WSFC, naslouchací proces a nakonfigurujte ILB pro skupiny dostupnosti Always On na virtuálním počítači SQL serveru pomocí šablony Azure Quickstart
+# <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurace skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure pomocí šablon rychlého startu Azure
 Tento článek popisuje, jak pomocí šablon Azure Quickstart částečně automatizovat nasazení konfigurace dostupnosti skupin Always On pro SQL Server Virtual Machines v Azure. Existují dvě šablony Quickstart pro Azure, které se používají v tomto procesu. 
 
    | Šablona | Popis |
@@ -38,7 +38,7 @@ Ostatní části Konfigurace skupiny dostupnosti je nutné provést ručně, nap
 K automatizaci instalací skupiny dostupnosti Always On pomocí šablony pro rychlý start, musí už máte splněné následující požadavky: 
 - [Předplatného Azure](https://azure.microsoft.com/free/).
 - Skupina prostředků s řadičem domény. 
-- Jeden nebo více připojených k doméně [virtuálních počítačů v Azure spuštěné systému SQL Server 2016 (nebo vyšší) Enterprise edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) ve stejné sadě nebo dostupnost zóně dostupnosti, které byly [zaregistrované u poskytovatele prostředků SQL VM](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider).  
+- Jeden nebo více připojených k doméně [virtuálních počítačů v Azure spuštěné systému SQL Server 2016 (nebo vyšší) Enterprise edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) ve stejné sadě nebo dostupnost zóně dostupnosti, které byly [zaregistrované u poskytovatele prostředků SQL VM](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
 
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>Krok 1 – vytvoření služby WSFC a připojte se ke clusteru pomocí šablony pro rychlý start k virtuální počítače s SQL serverem 
@@ -74,7 +74,7 @@ Jakmile se vaše virtuální počítače s SQL serverem jste zaregistrovali pomo
 
 
 ## <a name="step-2---manually-create-the-availability-group"></a>Krok 2: ruční vytvoření skupiny dostupnosti 
-Ruční vytvoření skupiny dostupnosti jako obvykle, buď pomocí [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017), [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) nebo [příkazů jazyka Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017). 
+Ruční vytvoření skupiny dostupnosti jako obvykle, buď pomocí [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell), nebo [příkazů jazyka Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
   >[!IMPORTANT]
   > Proveďte **není** v tuto chvíli vytvořit naslouchací proces, protože toto je automatizováno pomocí **101--vm-aglistener – instalační program systému sql** šablonu pro rychlý start v kroku 4. 
@@ -104,7 +104,7 @@ Always On naslouchací proces skupiny dostupnosti (AG) vyžaduje vnitřní Azure
 6. Vyberte **Vytvořit**. 
 
 
-  >[!NOTE]
+  >[!IMPORTANT]
   > Standardní SKU se kvůli kompatibilitě s Load balanceru úrovně Standard by měl mít prostředek veřejné IP pro každý virtuální počítač s SQL serverem. Určit SKU prostředek veřejné IP adresy Virtuálního počítače, přejděte na vaše **skupiny prostředků**vyberte vaše **veřejnou IP adresu** prostředek požadovaný virtuální počítač SQL Server a vyhledejte hodnotu v rámci **SKU**  z **přehled** podokně. 
 
 ## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>Krok 4 – vytvoření naslouchacího procesu AG a nakonfigurovat ILB šablonu pro rychlý start

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7c923dd819f826d9d9aaf8d5b88355a9feb344f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567481"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823157"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických plány prostřednictvím parametrů
 
@@ -52,9 +52,9 @@ Hodnota parametru definované v definici plán, podle kterého se volá **static
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Statické parametery nastavení na portálu
 
-1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
+1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
 
-1. Vyberte **definice podrobného plánu** ze stránky na levé straně.
+1. Vyberte **podrobný plán definice** ze stránky na levé straně.
 
 1. Klikněte na existující plán a pak klikněte na tlačítko **upravit podrobný plán** nebo klikněte na tlačítko **+ vytvořit podrobný plán** a vyplňte informace o **Základy** kartu.
 
@@ -169,9 +169,9 @@ Je opakem statický parametr **dynamického parametru**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Nastavení dynamické parametry na portálu
 
-1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
+1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
 
-1. Vyberte **definice podrobného plánu** ze stránky na levé straně.
+1. Vyberte **podrobný plán definice** ze stránky na levé straně.
 
 1. Klikněte pravým tlačítkem na podrobný plán, který chcete přiřadit. Vyberte **přiřazení podrobného plánu** nebo na plán, podle kterého chcete přiřadit, klepněte **přiřazení podrobného plánu** tlačítko.
 

@@ -3,7 +3,7 @@ title: Nastavení gMSA pro služby Azure Service Fabric container Service | Doku
 description: Naučte se nastavení gMSA pro kontejneru spuštěného v Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: 1adb2e7fcf5542c3f422bf073e5085717c5b82e4
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, subramar
+ms.openlocfilehash: 4ad697e01ef9e023232e2a2a16e4584a2779f84a
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299737"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806296"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Nastavení gMSA pro kontejnery Windows se spuštěnou v Service Fabric
 

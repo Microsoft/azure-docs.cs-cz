@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0aaddb841687718295e09e64b23d9cefa9246fd
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 29ca8c4114d48fa0d3756930354660712b1b35b3
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436106"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820412"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Linuxu Hybrid Runbook Worker
 
@@ -62,7 +62,7 @@ Než budete pokračovat, Všimněte si pracovní prostor Log Analytics, která v
 
 1. Povolit **Automation Hybrid Worker** řešení v Azure pomocí jedné z následujících metod:
 
-   * Přidat **Automation Hybrid Worker** řešení do vašeho předplatného, pomocí postupu v [řešení pro správu přidat Log Analytics pro váš pracovní prostor](../log-analytics/log-analytics-add-solutions.md).
+   * Přidat **Automation Hybrid Worker** řešení do vašeho předplatného, pomocí postupu v [přidat Azure Monitor protokoly řešení do pracovního prostoru](../log-analytics/log-analytics-add-solutions.md).
    * Spusťte následující rutinu:
 
         ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Než budete pokračovat, Všimněte si pracovní prostor Log Analytics, která v
 
 ## <a name="turning-off-signature-validation"></a>Vypnout ověřování podpisu
 
-Ve výchozím nastavení Linux Hybrid Runbook Worker vyžadovat ověření podpisu. Pokud spouštíte skript pracovního procesu runbook služby bez znaménka, zobrazí chybová zpráva "ověření podpisu se nezdařilo." Chcete-li vypnout ověřování podpisu, spusťte následující příkaz. Nahraďte druhý parametr vaše ID pracovního prostoru Log Analytics.
+Ve výchozím nastavení Linux Hybrid Runbook Worker vyžadovat ověření podpisu. Pokud spouštíte skript pracovního procesu runbook služby bez znaménka, zobrazí chybová zpráva "ověření podpisu se nezdařilo." Chcete-li vypnout ověřování podpisu, spusťte následující příkaz. Nahraďte druhý parametr s vaším ID pracovního prostoru analýzy protokolů.
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>

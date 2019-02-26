@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a494e403b8afa1424640ac2e24d0f832b3de02dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d64ab85ee2b289878d4468703e8e4d51982a7304
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210607"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vrcholu
 
@@ -217,8 +217,8 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se vytvoří uživateli Britta Simon portálu vrcholu. Vrcholu portál podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel portálu vrcholu ještě neexistuje, vytvoří se nový po ověření.
 
-> [!NOTE]
-> Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory vrcholu portál](mailto:support@apexanalytix.com).
+> [!NOTE]
+> Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory vrcholu portál](mailto:support@apexanalytix.com).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6cd1d917be67d21e3e6dfe54ed5dec77b92509e9
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768558"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821451"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -22,6 +22,10 @@ Tento článek shrnuje všechny funkce aktuálně ve verzi preview pro Azure Str
 ## <a name="public-previews"></a>Verze Public Preview
 
 Následující funkce jsou ve verzi public preview. Můžete využít výhod těchto funkcích ještě dnes, ale nemusíte používat v produkčním prostředí.
+
+### <a name="anomaly-detection"></a>Detekce anomálií
+
+Azure Stream Analytics zavádí nové modely strojového učení s podporou *zásobníku* a *poklesy* detekce kromě detekce obousměrný, pomalé kladné a pomalé negativních trendů. Další informace najdete v článku [detekce anomálií ve službě Azure Stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
 
 ### <a name="sql-database-reference-data"></a>SQL Database referenčních dat
 
@@ -47,10 +51,6 @@ Pomocí .NET standard uživatelem definované funkce můžete spustit .NET Stand
 
 Následující funkce jsou ve verzi private preview.
 
-### <a name="anomaly-detection"></a>Detekce anomálií
-
-Azure Stream Analytics zavádí nové modely strojového učení s podporou *zásobníku* a *poklesy* detekce kromě detekce obousměrný, pomalé kladné a pomalé negativních trendů.
-
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>C# vlastní deserializátor pro Azure Stream Analytics na hraničních zařízeních IoT
 
 Vývojáři teď můžete implementovat vlastní deserializers v jazyce C# k deserializaci událostí přijatých službou Azure Stream Analytics. Příklady formátů, které lze deserializovat: Parquet, Protobuf, XML nebo libovolný binární formát.
@@ -61,7 +61,7 @@ Můžete teď provozu v reálném čase kanály pomocí spravované identity pro
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code pro Azure Stream Analytics
 
-Úlohy Azure Stream Analytics se můžou vytvořit ve Visual Studio Code.
+Úlohy Azure Stream Analytics se můžou vytvořit ve Visual Studio Code. Pro přístup k nástrojů funkce ve verzi private preview, obraťte se na *ASAToolsfeedback@microsoft.com*.
 
 ## <a name="next-steps"></a>Další postup
 

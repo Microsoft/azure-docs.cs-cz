@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71d49edc3fa52cce5d128b94d42098150aa5f3a3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f795571de275453738d23e80885f4d9006ca3a20
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585079"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804446"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Vlastní role pro prostředky Azure
 
@@ -72,8 +72,7 @@ Když vytvoříte vlastní roli, se zobrazí na webu Azure Portal s ikona oranž
 
 1. Určit oprávnění, které potřebujete
 
-    Když vytvoříte vlastní roli, musíte znát prostředek operace poskytovatele, které je možné definovat oprávnění. Chcete-li zobrazit seznam operací, můžete použít [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) nebo [seznam operací az provider](/cli/azure/provider/operation#az-provider-operation-list) příkazy.
-    Operace, které přidáte `Actions` nebo `NotActions` vlastnosti [definice role](role-definitions.md). Pokud máte operace s daty, které přidáte do `DataActions` nebo `NotDataActions` vlastnosti.
+    Když vytvoříte vlastní roli, musíte znát prostředek operace poskytovatele, které je možné definovat oprávnění. Chcete-li zobrazit seznam operací, najdete v článku [operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md). Operace, které přidáte `Actions` nebo `NotActions` vlastnosti [definice role](role-definitions.md). Pokud máte operace s daty, které přidáte do `DataActions` nebo `NotDataActions` vlastnosti.
 
 1. Vytvořit vlastní roli
 

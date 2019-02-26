@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 0530dbac88fcfbfb05ab29d1c5934a468f263034
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: aff92e8dd45fecc3fabd005e8921eda7add07fb4
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096632"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804949"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Kurz: Nastavení testovacího prostředí pomocí Azure DevTest Labs
 V tomto kurzu vytvoříte testovací prostředí na webu Azure Portal. Správce testovacího prostředí nastaví testovací prostředí v organizaci, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady. Uživatelé testovacího prostředí (například vývojář a testeři) nárokují virtuální počítače v testovacím prostředí, připojují se k nim a používají je. 
@@ -80,7 +80,7 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
 1. Jakmile se virtuální počítač vytvoří, zobrazí se v seznamu **Nárokovatelné virtuální počítače**. 
 
     > [!NOTE] 
-    > Při přidávání virtuálního počítače s Linuxem do testovacího prostředí můžete povolit přístup k tomuto virtuálnímu počítači přes SSH a protokol RDP. Pokud přístup nepovolíte během vytváření virtuálního počítače, můžete ručně přidat pravidla do skupiny zabezpečení sítě přidružené k virtuálnímu počítači a otevřít porty pro SSH a protokol RDP.
+    > Na **Upřesnit nastavení** stránky, můžete nakonfigurovat veřejný, privátní nebo sdílenou IP adresu pro virtuální počítač. Když **sdílených IP** je povoleno, Azure DevTest Labs automaticky povolí Windows VMs pro protokol RDP a SSH pro virtuální počítače s Linuxem. Pokud vytvoříte virtuální počítače s **veřejnou IP adresu** adresy protokolu RDP a SSH jsou povoleny bez uložení změn v DevTest Labs.  
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Přidání uživatele do role uživatele testovacího prostředí
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c1e596516136240b1d1d08b4e8386e9cf5ef48e5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563707"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819118"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Princip životního cyklu Azure podrobného plánu
 
@@ -35,7 +35,7 @@ Abyste úplně pochopili podrobný plán a fáze, si probereme standardní živo
 
 Při vytváření podrobného plánu, přidat artefakty, uložit do skupiny pro správu nebo předplatného a zadat jedinečný název a verzi jedinečný. Podrobný plán je nyní v **koncept** režimu a ještě nemůžete přiřadit. Během činnosti v **koncept** režimu, můžete dál aktualizovat a změnit.
 
-A nemá být nikdy publikováno podrobného plánu v **koncept** režim zobrazuje na jinou ikonu **definice podrobného plánu** stránky než těch, které byly **publikováno**. **Nejnovější verzi** se také zobrazí jako **koncept** tyto nikdy publikovaného podrobné plány.
+A nemá být nikdy publikováno podrobného plánu v **koncept** režim zobrazuje na jinou ikonu **definice podrobného plánu** stránky než těch, které byly **publikováno**. **Nejnovější verzi** se zobrazí jako **koncept** tyto nikdy publikovaného podrobné plány.
 
 Vytvořte a upravte plán, podle kterého se [webu Azure portal](../create-blueprint-portal.md#create-a-blueprint) nebo [rozhraní REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
@@ -68,9 +68,9 @@ Každá verze plán, podle kterého je jedinečný objekt a může být zvláš�
 > [!NOTE]
 > Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verze, kterou chcete odebrat.
 
-1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
+1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
 
-1. Vyberte **definice podrobného plánu** ze stránky na levé straně a použití možnosti filtru k vyhledání plán, podle kterého chcete odstranit verzi. Klikněte na něj pro otevření stránky pro úpravu.
+1. Vyberte **podrobný plán definice** ze stránky na levé straně a použití možnosti filtru k vyhledání plán, podle kterého chcete odstranit verzi. Klikněte na něj pro otevření stránky pro úpravu.
 
 1. Klikněte na tlačítko **publikované verze** kartu a vyhledejte verzi, kterou chcete odstranit.
 

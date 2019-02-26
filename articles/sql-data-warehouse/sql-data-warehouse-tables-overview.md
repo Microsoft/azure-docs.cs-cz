@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cb2261e92e90bef7cdd51b0ebf7a4ed34ca01624
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247336"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806229"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek ve službě Azure SQL Data Warehouse
 
@@ -61,7 +61,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 ```
 
 ### <a name="temporary-table"></a>Dočasné tabulky
-Dočasná tabulka existuje pouze po dobu trvání relace. Dočasnou tabulku můžete použít jiné účely zabráníte zobrazovat výsledky dočasné a také omezit pro vyčištění.  Protože dočasné tabulky také používat místní úložiště, vyšší výkon pro některé operace můžou nabídnout.  Další informace najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md).
+Dočasná tabulka existuje pouze po dobu trvání relace. Dočasnou tabulku můžete použít ostatním uživatelům zabránit v zobrazení dočasný výsledky a také omezit pro vyčištění.  Protože dočasné tabulky také používat místní úložiště, vyšší výkon pro některé operace můžou nabídnout.  Další informace najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Externí tabulka
 Externí tabulka odkazuje na data umístěná v objektu blob Azure Storage nebo Azure Data Lake Store. Při použití ve spojení s příkazem CREATE TABLE AS SELECT, výběr z externí tabulky naimportuje data do SQL Data Warehouse. Proto jsou užitečné pro načítání dat externí tabulky. Kurz načítání najdete v tématu [použití PolyBase k načítání dat z Azure blob storage](load-data-from-azure-blob-storage-using-polybase.md).
@@ -95,7 +95,7 @@ Tabulka kategorie často určuje, kterou možnost zvolte pro distribuci v tabulc
 |:---------------|:--------------------|
 | Fakt           | Použijte distribuci algoritmus hash s clusterovaným indexem columnstore. Dvě tabulky hash jsou připojená na stejný sloupec distribuce zlepšuje výkon. |
 | Dimenze      | Použití replikuje menší tabulky. Pokud tabulky je příliš velký pro uložení na jednotlivých výpočetních uzlech, pomocí algoritmu hash distribuce. |
-| Fázování        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí příkazu CTAS je rychlá. Jakmile jsou data v pracovní tabulce, použijte INSERT... Vyberte pro přesun dat do produkčních tabulek. |
+| Staging        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí příkazu CTAS je rychlá. Jakmile jsou data v pracovní tabulce, použijte INSERT... Vyberte pro přesun dat do produkčních tabulek. |
 
 ## <a name="table-partitions"></a>Oddíly tabulky
 Dělenou tabulku ukládá a provede operace s řádky tabulky podle oblasti dat. Například tabulky může být dělené podle dne, měsíce nebo roku. Může zlepšit výkon dotazů pomocí eliminace oddílů, který omezuje dotazu prohledávání dat v rámci oddílu. Můžete také spravovat dat prostřednictvím přepínání oddílů. Protože je již distribuovaných dat ve službě SQL Data Warehouse, příliš mnoho oddílů může zpomalit výkon dotazů. Další informace najdete v tématu [pokyny k dělení](sql-data-warehouse-tables-partition.md).

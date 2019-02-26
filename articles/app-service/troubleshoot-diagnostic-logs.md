@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: d7bcff89ba7f76980287f9aad3413a6ef3f41b4f
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904450"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807418"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky aplikací ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -34,7 +34,7 @@ App Service poskytuje diagnostické funkce pro protokolování informací z webo
 ### <a name="web-server-diagnostics"></a>Diagnostika webového serveru
 Můžete povolit nebo zakázat následující typy protokolů:
 
-* **Podrobné protokolování chyb** – podrobné informace o chybě pro stavové kódy HTTP, které indikují chybu (stavový kód 400 nebo vyšší). Může obsahovat informace, které vám pomůže určit, proč server vrátil kód chyby.
+* **Podrobné protokolování chyb** – podrobné informace pro všechny požadavky, které má za následek stavový kód HTTP 400 nebo vyšší. Může obsahovat informace, které vám pomůže určit, proč server vrátil kód chyby. Jeden soubor HTML se generuje pro každou chybu (v *D:\LogFiles\DetailedErrors* ve výchozím nastavení), a až 50 chyb (soubory) se zachovají. Když počet souborů HTML, které překračují 50, se automaticky odstraní nejstarší soubory 26.
 * **Se nezdařilo, trasování požadavku** – podrobné informace o neúspěšných požadavcích, včetně trasování součásti služby IIS používá ke zpracování požadavku a doba trvání v jednotlivých komponentách. To je užitečné, pokud chcete zlepšit výkon webu a izolovat konkrétní chyba protokolu HTTP.
 * **Web, protokolování na Server** – informace o transakce HTTP pomocí [rozšířený formát protokolu W3C souboru](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
 

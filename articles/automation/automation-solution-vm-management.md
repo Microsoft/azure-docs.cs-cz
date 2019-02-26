@@ -1,6 +1,6 @@
 ---
 title: Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení
-description: Toto řešení správy virtuálního počítače spustí a zastaví virtuální počítače Azure Resource Managerem podle časového plánu a aktivně monitoruje od Log Analytics.
+description: Toto řešení správy virtuálního počítače spustí a zastaví virtuální počítače Azure Resource Managerem podle časového plánu a aktivně monitoruje z protokolů Azure Monitor.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3fcab4c7456295d8f7414232bc90bc5ab352e43a
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979645"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817877"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
-Spuštění/zastavení virtuálních počítačů mimo špičku řešení spustí a zastaví virtuální počítače Azure na uživatelské plány, poskytuje přehledy prostřednictvím Azure Log Analytics a posílání e-mailů volitelné [skupiny akcí](../azure-monitor/platform/action-groups.md). Azure Resource Manager a klasické virtuální počítače podporuje pro většinu scénářů.
+Spuštění/zastavení virtuálních počítačů mimo špičku řešení spustí a zastaví virtuální počítače Azure na uživatelské plány, poskytuje přehledy prostřednictvím protokoly Azure monitoru a posílání e-mailů volitelné [skupiny akcí](../azure-monitor/platform/action-groups.md). Azure Resource Manager a klasické virtuální počítače podporuje pro většinu scénářů.
 
 Toto řešení poskytuje možnost automatizace decentralizované s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na jejich virtuální počítač. S tímto řešením můžete:
 
@@ -35,6 +35,8 @@ Toto jsou omezení do aktuálního řešení:
 > Pokud používáte řešení pro klasické virtuální počítače, pak všechny virtuální počítače se budou zpracovávat postupně na jednu cloudovou službu. Virtuální počítače jsou stále zpracovávána paralelně napříč různými cloudovými službami.
 >
 > Předplatná Azure Cloud Solution Provider (CSP pro Azure) podporují pouze model Azure Resource Manageru, services – Azure Resource Manageru nejsou k dispozici v programu. Při spuštění/zastavení řešení běží se může zobrazit chyby jako obsahuje rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupných služeb v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Pokud používáte předplatné poskytovatele CSP, byste měli upravit [ **External_EnableClassicVMs** ](#variables) proměnnou **False** po nasazení.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -63,7 +65,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    - Vyberte **předplatné** k propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané není vhodné.
    - Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte existující.
    - Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada – střed**, **střed Indie**, **USA – východ**, **Japonsko – východ**, **jihovýchodní Asie**, **Velká Británie – jih**, **západní Evropa**, a **USA – západ 2**.
-   - Vyberte možnost u položky **Cenová úroveň**. Zvolte **Per GB (Standalone)** možnost. Log Analytics se aktualizovala [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a úroveň Per GB je jedinou možností.
+   - Vyberte možnost u položky **Cenová úroveň**. Zvolte **Per GB (Standalone)** možnost. Protokoly služby Azure Monitor byl aktualizován [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a úroveň Per GB je jedinou možností.
 
 5. Po zadání požadovaných informací v **pracovní prostor Log Analytics** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.
 6. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se má přidružit ho nebo vyberte existující účet Automation, který není již propojený s pracovním prostorem Log Analytics. Vyberte existující účet Automation, nebo klikněte na tlačítko **vytvořit účet Automation**a na **přidat účet Automation** stránky, zadejte následující informace:
@@ -174,7 +176,7 @@ Teď, když máte plán pro zastavení virtuálních počítačů založených n
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Toto řešení obsahuje předem nakonfigurované sady runbook, plány a integraci s Log Analytics, takže můžete přizpůsobit plánů spouštění a vypínání virtuálních počítačů tak, aby vyhovovala vašim obchodním potřebám.
+Toto řešení obsahuje předem nakonfigurované sady runbook, plány a integrace s protokoly Azure monitoru, takže můžete přizpůsobit plánů spouštění a vypínání virtuálních počítačů tak, aby vyhovovala vašim obchodním potřebám.
 
 ### <a name="runbooks"></a>Runbooky
 
@@ -209,7 +211,7 @@ V následující tabulce jsou uvedeny proměnných vytvořené v účtu Automati
 |External_AutoStop_TimeAggregationOperator | Operátor agregace času, který se použije pro vybrané okno velikost vyhodnocení podmínky. Přípustné hodnoty jsou **průměrné**, **minimální**, **maximální**, **celkový**, a **poslední**.|
 |External_AutoStop_TimeWindow | Velikost okna, během kterého Azure analyzuje vybrané metriky pro aktivaci výstrahy. Tento parametr přijímá vstup ve formátu timespan. Možné hodnoty jsou od 5 minut až 6 hodin.|
 |External_EnableClassicVMs| Určuje, zda klasické virtuální počítače jsou cílem řešení. Výchozí hodnota je True. Měla by být nastavena na hodnotu False pro předplatná CSP.|
-|External_ExcludeVMNames | Zadejte názvy virtuálních počítačů, které se mají vyloučit, oddělení názvy oddělte čárkou bez mezer. Tento požadavek omezuje na 140 virtuálních počítačů. Pokud chcete přidat více než 140 virtuální počítače se přidávají virtuální počítače určené k vyloučení může spuštění nebo vypnutí neúmyslně|
+|External_ExcludeVMNames | Zadejte názvy virtuálních počítačů, které se mají vyloučit, oddělení názvy oddělte čárkou bez mezer. Tento požadavek omezuje na 140 virtuálních počítačů. Pokud přidáte více než 140 virtuální počítače do tohoto seznamu oddělených čárkami, virtuální počítače, které jsou nastaveny k vyloučení může být neúmyslně spuštěna nebo zastavena.|
 |External_Start_ResourceGroupNames | Určuje jeden nebo více skupin prostředků oddělení hodnoty oddělte čárkou, je určená pro zahájení akce.|
 |External_Stop_ResourceGroupNames | Určuje jeden nebo více skupin prostředků oddělení hodnoty oddělte čárkou, je určená pro zastavení akce.|
 |Internal_AutomationAccountName | Určuje název účtu služby Automation.|
@@ -233,7 +235,7 @@ Všechny plány, neměli byste povolit, protože by to mohlo způsobit překrýv
 |Sekvencování StopVM | 1:00 AM (UTC), každý pátek | Ke spuštění sady runbook Sequenced_Parent s parametrem _Zastavit_ každý pátek v zadanou dobu. Postupně (vzestupně) se zastaví všechny virtuální počítače se značkou **SequenceStop** určené příslušných proměnných. Další informace o hodnoty značek a asset proměnné naleznete v části sady Runbook. Povolit související plán **Sequenced StartVM**.|
 |Sekvencování StartVM | 1:00 hodin (UTC), každé pondělí | Ke spuštění sady runbook Sequenced_Parent s parametrem _Start_ každé pondělí v zadanou dobu. Postupně (sestupně) začíná značku ze všech virtuálních počítačů **SequenceStart** určené příslušných proměnných. Další informace o hodnoty značek a asset proměnné naleznete v části sady Runbook. Povolit související plán **Sequenced StopVM**.|
 
-## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
+## <a name="azure-monitor-logs-records"></a>Zaznamenává údaje o Azure Monitor
 
 Služba Automation vytváří dva typy záznamů v pracovním prostoru Log Analytics: protokoly úloh a úloh datových proudů.
 
@@ -290,7 +292,7 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 ## <a name="viewing-the-solution"></a>Zobrazení řešení
 
-Pro přístup k řešení, přejděte na svém účtu Automation vyberte **pracovní prostor** pod **související prostředky**. Na stránce Log Analytics vyberte **řešení** pod **Obecné**. Na **řešení** vyberte řešení, **Start-Stop-VM [pracovní prostor]** ze seznamu.
+Pro přístup k řešení, přejděte na svém účtu Automation vyberte **pracovní prostor** pod **související prostředky**. Na stránce log analytics vyberte **řešení** pod **Obecné**. Na **řešení** vyberte řešení, **Start-Stop-VM [pracovní prostor]** ze seznamu.
 
 Výběr řešení zobrazí **Start-Stop-VM [pracovní prostor]** stránka řešení. Tady můžete zkontrolovat důležité podrobnosti, jako **StartStopVM** dlaždici. Stejně jako v pracovním prostoru Log Analytics této dlaždici se zobrazuje počet a grafická reprezentace úloh runbooků pro příslušné řešení, které byly spuštěny a úspěšně dokončili.
 
@@ -364,14 +366,14 @@ Pokud chcete odstranit toto řešení, postupujte následovně:
 
 Účet Automation a pracovního prostoru Log Analytics se neodstraní jako součást tohoto procesu. Pokud nechcete zachovat pracovní prostor Log Analytics, musíte ručně odstranit. Můžete to provést z portálu Azure portal:
 
-1. V Azure domovskou obrazovku portálu vyberte **Log Analytics**.
-1. Na **Log Analytics** stránky, vyberte pracovní prostor.
+1. V Azure domovskou obrazovku portálu vyberte **pracovních prostorů Log Analytics**.
+1. Na **pracovních prostorů Log Analytics** stránky, vyberte pracovní prostor.
 1. Vyberte **odstranit** v nabídce na stránce nastavení pracovního prostoru.
 
 Pokud nechcete zachovat součásti účet Azure Automation, můžete každý ručně odstranit. Seznam sad runbook, proměnné a plány runbooků vytvořené řešení, najdete v článku [komponenty řešení](#solution-components).
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak vytvářet různé vyhledávací dotazy a zkontrolujte protokoly úloh služby Automation s Log Analytics najdete v tématu [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md).
+- Další informace o tom, jak vytvářet různé vyhledávací dotazy a kontrolovat protokoly úloh služby Automation s protokoly Azure monitoru, naleznete v tématu [prohledávání protokolu ve službě Azure Monitor protokoly](../log-analytics/log-analytics-log-searches.md).
 - Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).
-- Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).
+- Další informace o zdrojích pro shromažďování dat a protokolování Azure Monitor, naleznete v tématu [shromažďování dat úložiště Azure ve službě Azure Monitor protokoly přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).

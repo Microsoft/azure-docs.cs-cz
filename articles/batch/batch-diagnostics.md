@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 368e1f6b9501c677eca1cf80d24a06c0a6533e86
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811456"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817350"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -91,7 +91,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
 * Stream Batch diagnostický protokol událostí do [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs můžete ingestovat miliony událostí za sekundu, které pak můžete transformovat a uložit pomocí libovolného zprostředkovatele datové analýzy v reálném čase. 
 
-* Poslat protokoly pro diagnostiku [Azure Log Analytics](../log-analytics/log-analytics-overview.md), kde můžete analyzovat nebo exportovat pro analýzy v Power BI nebo Excelu.
+* Poslat protokoly pro diagnostiku [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md), kde můžete analyzovat nebo exportovat pro analýzy v Power BI nebo Excelu.
 
 > [!NOTE]
 > Vám může účtovat další poplatky za uložení nebo zpracování protokol diagnostiky dat pomocí služby Azure. 
@@ -101,7 +101,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
 1. Na portálu klikněte na tlačítko **všechny služby** > **účty Batch**a pak klikněte na název vašeho účtu Batch.
 2. V části **monitorování**, klikněte na tlačítko **diagnostické protokoly** > **zapnout diagnostiku**.
-3. V **nastavení diagnostiky**, zadejte název pro nastavení a vyberte cíl protokolu (existující úložiště účtu, Centrum událostí nebo Log Analytics). Vyberte jednu nebo obě **ServiceLog** a **AllMetrics**.
+3. V **nastavení diagnostiky**, zadejte název pro nastavení a vyberte cíl protokolu (existující účet úložiště, Centrum událostí nebo protokoly Azure monitoru). Vyberte jednu nebo obě **ServiceLog** a **AllMetrics**.
 
     Když vyberete účet úložiště, volitelně nastavte zásady uchovávání informací. Pokud nechcete zadat počet dní pro uchovávání dat, data se uchovávají po dobu trvání účtu úložiště.
 

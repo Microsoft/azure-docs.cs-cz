@@ -10,18 +10,18 @@ ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e429d9577b938aea20318aa09a0247e00e4f66b6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429260"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819578"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
 Tento článek vám pomůže používat řešení Change Tracking snadno identifikovat změny ve vašem prostředí. Řešení sleduje změny softwaru Windows a Linux, Windows a Linuxem soubory, klíče registru Windows, služby Windows a Linuxové procesy démon. Určení změn konfigurace vám může pomoct přesně určit provozní problémy.
 
-Změny nainstalovaného softwaru, služby Windows, Windows registru a souborů a procesy démon Linuxu na monitorovaných serverech odesílají do služby Log Analytics v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data. Podle informací uvedených na řídicím panelu řešení Change Tracking, můžete snadno zobrazit změny, které byly provedeny v serverové infrastruktuře.
+Změny nainstalovaného softwaru, služby Windows, Windows registru a souborů a procesy démon Linuxu na monitorovaných serverech se odesílají do služby Azure Monitor v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data. Podle informací uvedených na řídicím panelu řešení Change Tracking, můžete snadno zobrazit změny, které byly provedeny v serverové infrastruktuře.
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 
@@ -261,7 +261,7 @@ Kliknutím na změnit nebo událostí zobrazí podrobné informace o této změn
 
 ## <a name="search-logs"></a>Hledat protokoly
 
-Kromě podrobností, které jsou k dispozici na portálu můžete udělat protokoly hledání. S **řešení Change Tracking** otevřít, klikněte na stránce **Log Analytics**, tím se otevře **prohledávání protokolů** stránky.
+Kromě podrobností, které jsou k dispozici na portálu můžete udělat protokoly hledání. S **řešení Change Tracking** otevřít, klikněte na stránce **Log Analytics**, tím se otevře **protokoly** stránky.
 
 ### <a name="sample-queries"></a>Ukázkové dotazy
 
@@ -314,5 +314,5 @@ Navštivte tento kurz na další informace o použití řešení sledování zm�
 > [!div class="nextstepaction"]
 > [Řešení potíží se změnami ve vašem prostředí](automation-tutorial-troubleshoot-changes.md)
 
-* Použití [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md) zobrazíte podrobné data řešení change tracking.
+* Použití [prohledávání protokolu ve službě Azure Monitor protokoly](../log-analytics/log-analytics-log-searches.md) zobrazíte podrobné data řešení change tracking.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f9db156562692107a5603e15340f01ecf9f9d52c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187432"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823412"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -61,6 +61,8 @@ Teď, když máte agregaci událostí ve službě Azure Storage [nastavení Log 
 
 >[!NOTE]
 >Aktuálně neexistuje žádný způsob, jak filtrovat nebo mazání událostí, které se odesílají do tabulky. Pokud implementujete není procesu odebrání události z tabulky, bude dál rozšiřovat tabulky (výchozí limit je 50 GB). Návod, jak změnit jsou [níže v tomto článku](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Kromě toho je příkladem data výmazu dat služby spuštěné [sledovacích ukázka](https://github.com/Azure-Samples/service-fabric-watchdog-service), a je doporučeno, že napíšete nějakou, pokud není dobrý důvod pro ukládání protokolů nad rámec 30 nebo 90 den časový rámec.
+
+
 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Nasazení rozšíření diagnostiky prostřednictvím Azure Resource Manageru
 
@@ -292,7 +294,49 @@ Pokud používáte jímky Application Insights, jak je popsáno v následující
 
 ## <a name="send-logs-to-application-insights"></a>Odeslání protokolů s Application Insights
 
-Jako součást konfigurace WAD lze provést odeslání dat monitorování a diagnostiky k Application Insights (AI). Pokud se rozhodnete využít AI k události analýzu a vizualizaci, přečtěte si [nastavení jímky AI](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) jako součást vaší "WadCfg".
+### <a name="configuring-application-insights-with-wad"></a>Konfigurace Application Insights s využitím WAD
+
+>[!NOTE]
+>To platí pouze pro clustery s Windows v tuto chvíli.
+
+Existují dva základní způsoby odesílání dat z WAD do služby Azure Application Insights, který můžete vytvořit přidáním jímky Application Insights do konfigurace WAD, prostřednictvím webu Azure portal nebo pomocí šablony Azure Resource Manageru.
+
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Přidat Instrumentační klíč Application Insights při vytváření clusteru na webu Azure portal
+
+![Přidání AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+
+Při vytváření clusteru, pokud je Diagnostika "On", volitelné pole a zadejte kód instrumentace Application Insights se zobrazí. Pokud vám Application Insights sem vložte klíč, jímku Application Insights automaticky nakonfigurované pro vás v šabloně Resource Manageru, který se používá k nasazení clusteru.
+
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Přidání Application Insights jímky do šablony Resource Manageru
+
+V "WadCfg" šablony Resource Manageru přidejte "Sink" zahrnutím následující dvě změny:
+
+1. Přidat konfiguraci jímky přímo po deklaraci sady `DiagnosticMonitorConfiguration` dokončení:
+
+    ```json
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "applicationInsights",
+                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
+            }
+        ]
+    }
+
+    ```
+
+2. Zahrnout jímce ve `DiagnosticMonitorConfiguration` přidáním následujícího řádku `DiagnosticMonitorConfiguration` z `WadCfg` (bezprostředně před `EtwProviders` jsou deklarovány):
+
+    ```json
+    "sinks": "applicationInsights"
+    ```
+
+V obou předchozích fragmenty kódu byl použit název "applicationInsights" k popisu jímky. Toto není povinné a jako jímku název je součástí "jímky", můžete nastavit název na libovolný řetězec.
+
+V současné době protokoly z clusteru zobrazí jako **trasy** v log vieweru. Application Insights. Protože většina trasování z platformy je úrovně "Informační", můžete také zvážit změnu konfigurace jímky pouze odeslat protokoly typu "Varování" nebo "Chyba". To můžete udělat tak, že přidáte "Kanály" do jímky, jak je ukázáno v [v tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+
+>[!NOTE]
+>Pokud používáte nesprávný klíč Application Insights na portálu nebo v šabloně Resource Manageru, budete muset ručně změnit klíč a aktualizaci clusteru a znovu ji nasadíte.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a63155e65460f9e2193c121bb49849940104eff1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: dd2ba0ec3427cd99da3321b50fb43f4c00f2d1a9
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649220"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822817"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled Azure Automation stavu konfigurace
 
@@ -37,9 +37,9 @@ Na webu Azure Portal nebo prostředí PowerShell můžete spravovat všechny va�
 
 ![Snímek obrazovky stránky Azure Automation.](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-log-analytics"></a>Importovat data pro generování sestav do Log Analytics
+### <a name="import-reporting-data-into-azure-monitor-logs"></a>Importovat data pro generování sestav do protokolů Azure Monitor
 
-Uzly, které se spravují pomocí Azure Automation State Configuration odesílání podrobná data sestav stavu na server integrované o přijetí změn. Konfigurace stavu Azure Automation k odesílání dat do pracovního prostoru Log Analytics můžete nakonfigurovat. Zjistěte, jak odesílat data o stavu konfigurace stavu do pracovního prostoru Log Analytics, najdete v článku [vpřed Azure Automation stav konfigurace generování sestav dat do služby Log Analytics](automation-dsc-diagnostics.md).
+Uzly, které se spravují pomocí Azure Automation State Configuration odesílání podrobná data sestav stavu na server integrované o přijetí změn. Konfigurace stavu Azure Automation k odesílání dat do pracovního prostoru Log Analytics můžete nakonfigurovat. Zjistěte, jak odesílat data o stavu konfigurace stavu do pracovního prostoru Log Analytics, najdete v článku [vpřed Azure Automation stavu konfigurační data pro generování sestav na protokoly Azure monitoru](automation-dsc-diagnostics.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

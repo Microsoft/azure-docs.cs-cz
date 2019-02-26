@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 963bc8f6602a33ed703344f5277bb427f11390bb
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424315"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823514"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
@@ -142,7 +142,7 @@ Přispěvatel Log Analytics může číst všechna data monitorování a upravit
 |Microsoft.Compute/virtualMachines/extensions/*|Vytvářejte a spravujte rozšíření klasický virtuální počítač.|
 |Microsoft.Insights/alertRules/*|Čtení, zápisu a odstranění pravidla upozornění.|
 |Microsoft.Insights/diagnosticSettings/*|Nastavení diagnostiky pro čtení/zápis/delete.|
-|Microsoft.OperationalInsights/*|Správa služby Log Analytics.|
+|Microsoft.OperationalInsights/*|Správa protokolů Azure Monitor.|
 |Microsoft.OperationsManagement/*|Spravujte řešení v pracovních prostorech.|
 |Microsoft.Resources/deployments/*|Vytvářejte a spravujte nasazení skupiny prostředků.|
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Vytvářejte a spravujte nasazení skupiny prostředků.|
@@ -156,8 +156,8 @@ Přispěvatel Log Analytics může číst všechna data monitorování a upravit
 |**Akce**  |**Popis**  |
 |---------|---------|
 |* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|Spravujte dotazy v Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/search/action|Vyhledávání dat Log Analytics.|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|Správa dotazů v protokoly Azure monitoru.|
+|Microsoft.OperationalInsights/workspaces/search/action|Hledat data protokolů Azure Monitor.|
 |Microsoft.Support/*|Vytvořit a spravovat lístky podpory.|
 |**Ne akce**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|Nebylo možné získat klíče pro sdílený přístup.|

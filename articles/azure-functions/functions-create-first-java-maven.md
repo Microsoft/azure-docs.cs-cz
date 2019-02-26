@@ -12,53 +12,30 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dfbd8425048ddc5c96349bfd6a7462dcd32dc1d9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a72d6b180db35f3e0f0e0527e8ae0f544a585b25
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727752"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822958"
 ---
-# <a name="create-your-first-function-with-java-and-maven-preview"></a>Vytvoření první funkce pomocí Javy a Mavenu (Preview)
+# <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Javy a Mavenu
 
-> [!NOTE] 
-> Java pro službu Azure Functions je aktuálně ve verzi Preview.
-
-Tento rychlý start vás provede vytvořením [bez serveru](https://azure.microsoft.com/solutions/serverless/) projektu funkci pomocí Mavenu, jejím místním otestováním a jeho nasazení do Azure. Až budete hotovi, kód v jazyce Java funkce běží v cloudu a lze spustit z požadavku HTTP.
-
-![Přístup k funkci Hello World z příkazového řádku pomocí cUrl](media/functions-create-java-maven/hello-azure.png)
+Tento článek vás provede pomocí nástroje příkazového řádku Maven k sestavení a publikování funkce Java do služby Azure Functions. Až budete hotovi, kód vaší funkce poběží [plánu Consumption](functions-scale.md#consumption-plan) v Azure a můžete aktivovat pomocí požadavku HTTP.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-K vývoji aplikace funkcí pomocí Javy potřebujete následující:
 
--  [Java Developer Kit](https://www.azul.com/downloads/zulu/) verze 8.
--  [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější.
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+K vývoji funkcí pomocí Javy, musíte mít nainstalované tyto položky:
 
-> [!IMPORTANT] 
+- [Java Developer Kit](https://www.azul.com/downloads/zulu/) verze 8.
+- [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější.
+- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Nástroje Azure Functions Core](functions-run-local.md#v2) (vyžaduje **.NET Core 2.x SDK**)
+
+> [!IMPORTANT]
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
-
-## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
-
-[Nástroje Azure Functions Core 2.0](https://www.npmjs.com/package/azure-functions-core-tools) poskytují místní vývojové prostředí pro psaní, spouštění a ladění funkcí Azure Functions. 
-
-Pokud je chcete nainstalovat, přejděte k části [Installing](https://github.com/azure/azure-functions-core-tools#installing) (Instalace) projektu nástrojů Azure Functions Core, kde najdete konkrétní pokyny pro váš operační systém.
-
-Můžete je nainstalovat také ručně pomocí správce balíčků [npm](https://www.npmjs.com/), který je součástí [Node.js](https://nodejs.org/). Před tím je však potřeba nainstalovat následující požadované součásti:
-
--  Nejnovější verzi [.NET Core](https://www.microsoft.com/net/core).
--  [Node.js](https://nodejs.org/download/) verze 8.6 nebo novější.
-
-Pokud chcete pokračovat v instalaci založené na npm, spusťte:
-
-```
-npm install -g azure-functions-core-tools
-```
-
-> [!NOTE]
-> Pokud máte potíže s instalací nástrojů Azure Functions Core verze 2.0, podívejte se na [Modul runtime verze 2.x](/azure/azure-functions/functions-run-local).
 
 ## <a name="generate-a-new-functions-project"></a>Vygenerování nového projektu Functions
 

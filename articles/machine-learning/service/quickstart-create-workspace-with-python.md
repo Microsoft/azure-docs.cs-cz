@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1962cef85c5e663de640f296a6e8e9efd5a1f4d6
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 513df9f68fdd54b5dc90e57bd8389688c46bf615
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310351"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804242"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí sady Python SDK
 
@@ -60,16 +60,18 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
 Před instalací sady SDK doporučujeme vytvořit izolované prostředí Pythonu. Přestože tento článek používá [Miniconda](https://docs.conda.io/en/latest/miniconda.html), můžete také použít úplnou [Anaconda](https://www.anaconda.com/) nainstalované nebo [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
+Podle pokynů v tomto rychlém startu se nainstaluje všechny balíčky, které potřebujete možnost spouštět poznámkové bloky rychlý start a kurzů.  Další ukázkové poznámkové bloky může vyžadovat instalaci dalších součástí.  Další informace o těchto součástech naleznete v tématu [nainstalovat sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+
 ### <a name="install-miniconda"></a>Instalace aplikace Miniconda
 
-[Stáhněte a nainstalujte Miniconda](https://docs.conda.io/en/latest/miniconda.html). Vyberte Python 3.7 nebo novější verze, chcete-li nainstalovat. Nevybírejte Python verze 2.x.  
+[Stáhněte a nainstalujte Miniconda](https://docs.conda.io/en/latest/miniconda.html). Vyberte verzi Pythonu 3.7 k instalaci. Nevybírejte Python verze 2.x.  
 
 ### <a name="create-an-isolated-python-environment"></a>Vytvoření izolovaného prostředí Pythonu
 
-1. Otevřete okno příkazového řádku a pak vytvořte nové prostředí conda s názvem *myenv* a nainstalujte Python 3.6. Azure Machine Learning SDK bude pracovat s Python verze 3.5.2 nebo novější, ale automatizované strojového učení komponenty nejsou plně funkční na Python 3.7.
+1. Otevřete okno příkazového řádku a pak vytvořte nové prostředí conda s názvem *myenv* a nainstalujte Python 3.6.5. Azure Machine Learning SDK bude pracovat s Python verze 3.5.2 nebo novější, ale automatizované strojového učení komponenty nejsou plně funkční na Python 3.7.  To bude trvat několik minut vytvořit prostředí, zatímco se stáhnou součásti a balíčky.
 
     ```shell
-    conda create -n myenv -y Python=3.6
+    conda create -n myenv python=3.6.5
     ```
 
 1. Aktivujte prostředí.
@@ -78,18 +80,24 @@ Před instalací sady SDK doporučujeme vytvořit izolované prostředí Pythonu
     conda activate myenv
     ```
 
+1. Povolení specifických pro prostředí ipython jádra:
+
+    ```shell
+    conda install notebook ipykernel
+    ```
+
+    Pak vytvořte jádra:
+
+    ```shell
+    ipython kernel install --user
+    ```
+
 ### <a name="install-the-sdk"></a>Instalace sady SDK
 
 1. V prostředí aktivovaných conda instalace základních součástí sady SDK Machine Learning s možnostmi Poznámkový blok Jupyter.  Instalace trvá několik minut na dokončení závislosti na konfiguraci vašeho počítače.
 
   ```shell
     pip install --upgrade azureml-sdk[notebooks]
-    ```
-
-1. Instalace serveru Poznámkový blok Jupyter v prostředí conda.
-
-  ```shell
-    conda install -y nb_conda
     ```
 
 1. Pro účely tohoto prostředí kurzy Azure Machine Learning, instalaci těchto balíčků.

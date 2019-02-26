@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: bdffcdee87c0c5c9c878948797ac7c6be566c7ea
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270262"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818846"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -78,11 +78,11 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>Scénář: Aktualizace správy dat se nezobrazuje v Log Analytics pro počítač
+### <a name="nologs"></a>Scénář: Aktualizace správy dat se nezobrazuje v protokoly Azure monitoru pro počítač
 
 #### <a name="issue"></a>Problém
 
-Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, ale uvidíte prezenčního signálu dat v Log Analytics pro Hybrid Runbook Worker, ale ne Update Management.
+Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, ale zobrazit data prezenčního signálu v protokoly Azure monitoru pro Hybrid Runbook Worker, ale ne Update Management.
 
 #### <a name="cause"></a>Příčina
 

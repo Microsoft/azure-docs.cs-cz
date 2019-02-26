@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 657211378d7b38b88ccd40aa31a175058e1ad67c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015552"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820310"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Zřizování a nasazování mikroslužeb předvídatelně v Azure
 Tento kurz ukazuje, jak zřídit a nasadit aplikaci skládající se z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [služby Azure App Service](https://azure.microsoft.com/services/app-service/) jako jednu jednotku a předvídatelným způsobem použití šablony skupin prostředků JSON a Skriptování PowerShell. 
@@ -39,9 +39,7 @@ V tomto kurzu nasazujete aplikaci, která zahrnuje:
 V tomto kurzu použijete následující nástroje. Protože není komplexní informace o nástroji, teď předvedu zůstat do scénáře začátku do konce a právě získáte stručný úvod ke každému, a místo, kde najdete další informace v něm. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Šablony Azure Resource Manageru (JSON)
-Pokaždé, když vytvoříte aplikaci v Azure App Service, například Azure Resource Manageru používá k vytvoření celou skupinu prostředků s prostředky součásti šablony JSON. Komplexní šablony z [Azure Marketplace](/azure/marketplace) může obsahovat databáze, účty úložiště, plán služby App Service, aplikace, pravidel upozornění, nastavení aplikace, nastavení automatického škálování a další, a tyto šablony jsou k dispozici pomocí prostředí PowerShell. Informace o tom, jak stáhnout a použít tyto šablony najdete v tématu [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
-
-Další informace o šablonách Azure Resource Manageru najdete v tématu [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
+Pokaždé, když vytvoříte aplikaci v Azure App Service, například Azure Resource Manageru používá k vytvoření celou skupinu prostředků s prostředky součásti šablony JSON. Komplexní šablony z [Azure Marketplace](/azure/marketplace) může obsahovat databáze, účty úložiště, plán služby App Service, aplikace, pravidel upozornění, nastavení aplikace, nastavení automatického škálování a další, a tyto šablony jsou k dispozici pomocí prostředí PowerShell. Další informace o šablonách Azure Resource Manageru najdete v tématu [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 pro Visual Studio
 Nejnovější sada SDK obsahuje vylepšení podpory šablony Resource Manageru v editoru JSON. Používá se pro rychlé vytvoření zcela nové šablony skupiny prostředků nebo otevřete existující šablonu JSON (například šablonu stažené galerie) pro úpravy, naplnění souboru parametrů a i nasazení skupiny prostředků přímo z Azure Resource Skupina řešení.
@@ -160,7 +158,7 @@ Připojovací řetězce jsou také definovány jako vnořených prostředků.
 V `properties` – element pro `config/connectionstrings`, každý připojovací řetězec je také definováno jako dvojice názvu a hodnoty ve formátu konkrétní `"<name>" : {"value": "…", "type": "…"}`. Pro `type` elementu, možné hodnoty jsou `MySql`, `SQLServer`, `SQLAzure`, a `Custom`.
 
 > [!TIP]
-> Konečné seznam typů řetězec připojení spusťte následující příkaz v prostředí Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.websites.Services.WebEntities.DatabaseType")
+> Konečné seznam typů řetězec připojení spusťte následující příkaz v prostředí Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 60fd4a3ba83370327b6be775d7b2723fbb26de64
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983436"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819731"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru Service Fabric s Linuxem na počítači pro vývojáře Windows
 
@@ -30,6 +30,7 @@ Linuxových clusterech Service Fabric není nativně běžet na Windows. Pro spu
 
 * Minimálně 4 GB RAM
 * Nejnovější verzi [Dockeru](https://store.docker.com/editions/community/docker-ce-desktop-windows)
+* Docker musí být spuštěna v režimu systému Linux
 
 >[!TIP]
 > * Můžete postupovat podle postupu uvedeného v oficiální Dockeru [dokumentaci](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) chcete nainstalovat Docker na vaše Windows. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: kfollis
-ms.openlocfilehash: 4a2dee4ad90fb269268ec7d3e86def58f2444e3a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884724"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818574"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytvářejte a sdílejte řídicí panely na webu Azure Portal
 Můžete vytvořit více řídicích panelů a sdílet je s ostatními uživateli, kteří mají přístup k předplatným Azure.  Tento článek probírá základní informace o vytváření, úpravy, publikování a správa přístupu k řídicím panelům.
@@ -93,6 +93,6 @@ Po publikování řídicího panelu **sdílení a přístup** ovládací panel b
 ![Správa řízení přístupu](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>Další postup
-* Pokud chcete spravovat prostředky, najdete v článku [Správa prostředků Azure prostřednictvím portálu](../azure-resource-manager/resource-group-portal.md).
+* Pokud chcete spravovat prostředky, najdete v článku [Správa prostředků Azure pomocí webu Azure portal](../azure-resource-manager/manage-resources-portal.md).
 * Nasazení prostředků najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a webu Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 

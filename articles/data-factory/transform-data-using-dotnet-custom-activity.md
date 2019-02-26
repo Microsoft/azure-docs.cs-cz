@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 0236d9118389b4f8fb79453b425c70f09e94bbb8
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 408776b0b0053b2b2d45112568a2e28467123768
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213803"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805371"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-use-custom-activities.md)
 > * [Aktuální verze](transform-data-using-dotnet-custom-activity.md)
 
@@ -106,10 +106,13 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | resourceLinkedService | Propojená služba Azure Storage do účtu úložiště, kde je uložený vlastní aplikace | Ne&#42;       |
 | folderPath            | Cesta ke složce vlastní aplikace a všechny její závislosti<br/><br/>Pokud máte závislosti uložena v podsložkách – to znamená, že v hierarchickou strukturu složek v části *folderPath* – struktura složek se sloučí aktuálně, když soubory se zkopírují do služby Azure Batch. To znamená všechny soubory se zkopírují do jediné složky žádné podsložky. Chcete-li tento problém vyřešit, zvažte komprese souborů, kopírování komprimovaného souboru a pak rozzipovávání vlastního kódu do požadovaného umístění. | Ne&#42;       |
 | referenceObjects      | Pole z existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON tak váš vlastní kód může odkazovat na prostředky služby Data Factory | Ne       |
-| ExtendedProperties    | Uživatelem definované vlastnosti, které mohou být předány vlastní aplikaci ve formátu JSON, tak váš vlastní kód mohou odkazovat další vlastnosti | Ne       |
+| extendedProperties    | Uživatelem definované vlastnosti, které mohou být předány vlastní aplikaci ve formátu JSON, tak váš vlastní kód mohou odkazovat další vlastnosti | Ne       |
 
 &#42;Vlastnosti `resourceLinkedService` a `folderPath` buď musí být zadány oba, nebo obojí vynechat.
 
+> [!NOTE]
+> Pokud jako referenceObjects ve vlastní aktivitě předáváte propojené služby, je, že osvědčeným postupem zabezpečení služby Azure Key Vault předat povolená propojené služby, (protože neobsahuje žádné zabezpečené řetězce) a načítání přihlašovacích údajů pomocí název tajného kódu přímo z klíče Trezoru z kódu. Příklad můžete nalézt [tady](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , že odkazy AKV povolené propojené služby, načte přihlašovací údaje ze služby Key Vault a pak přistupuje k úložišti v kódu.  
+ 
 ## <a name="custom-activity-permissions"></a>Vlastní aktivita oprávnění
 
 Vlastní aktivita nastaví automaticky uživatelský účet Azure Batch na *přístup bez oprávnění správce s oborem úloh* (specifikace výchozí uživatele automaticky). Nelze změnit úroveň oprávnění automaticky uživatelského účtu. Další informace najdete v tématu [spouštění úloh v rámci uživatelských účtů ve službě Batch | Automatické uživatelské účty](../batch/batch-user-accounts.md#auto-user-accounts).

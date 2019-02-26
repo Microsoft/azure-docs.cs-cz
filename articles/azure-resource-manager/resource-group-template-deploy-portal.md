@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0711743d46aaac08f8572917d91e452ee919134c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220121"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816894"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal
 
-Tento článek popisuje, jak používat [webu Azure portal](https://portal.azure.com) s [Azure Resource Manageru](resource-group-overview.md) k nasazení prostředků Azure. Další informace o správě prostředků najdete v tématu [Správa prostředků Azure prostřednictvím portálu](resource-group-portal.md).
+Tento článek popisuje, jak používat [webu Azure portal](https://portal.azure.com) s [Azure Resource Manageru](resource-group-overview.md) k nasazení prostředků Azure. Další informace o správě prostředků najdete v tématu [Správa prostředků Azure pomocí webu Azure portal](manage-resources-portal.md).
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -89,7 +89,7 @@ Pokud chcete provést nasazení, ale ne použít některý z šablony na webu Ma
 
    ![Výběr možnosti vytvoření](./media/resource-group-template-deploy-portal/show-template-option.png)
 
-1. Uvidíte několik možností pro vytváření šablony. Vyberte **vytvořit vlastní šablonu v editoru**.
+1. Uvidíte několik možností pro vytváření šablony. Vyberte **Vytvořit vlastní šablonu v editoru**.
 
    ![Možnosti zobrazení](./media/resource-group-template-deploy-portal/see-options.png)
 
@@ -134,7 +134,7 @@ Na portálu můžete uložit šablonu ke svému účtu Azure a později znovu na
    ![Nasazení uloženého šablony](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>Další postup
-* Protokoly auditu najdete v tématu [Audit operací pomocí Resource Manageru](resource-group-audit.md).
-* Řešení chyb nasazení, najdete v článku [zobrazení operací nasazení](resource-manager-deployment-operations.md).
-* Načíst šablonu z nasazení nebo skupinu prostředků, najdete v článku [šablony exportovat Azure Resource Manageru z existujících prostředků](resource-manager-export-template.md).
-* Bezpečně zavedení služby napříč několika oblastmi, najdete v článku [Azure Deployment Manager](deployment-manager-overview.md).
+* Protokoly auditu najdete v tématu [Audit operací pomocí Resource Manageru](./resource-group-audit.md).
+* Řešení chyb nasazení, najdete v článku [zobrazení operací nasazení](./resource-manager-deployment-operations.md).
+* Pokud chcete vyexportovat šablonu z nasazení nebo skupinu prostředků, přečtěte si téma [exportovat Azure Resource Manageru šablony](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+* Bezpečně zavedení služby napříč několika oblastmi, najdete v článku [Azure Deployment Manager](./deployment-manager-overview.md).

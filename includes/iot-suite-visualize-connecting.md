@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 73ba80878615f04e1755a4d12014691c5ae2a077
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5bb2db84a21efb9c8bffb345e05e17d99b866fe9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453116"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56825775"
 ---
 ## <a name="view-device-telemetry"></a>Zobrazení telemetrie zařízení
 
-Můžete zobrazit telemetrická data odesílaná ze zařízení **zařízení** stránku v řešení.
+Můžete zobrazit telemetrická data odesílaná ze zařízení **Device Explorer** stránku v řešení.
 
-1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **zařízení** stránky. Panelu se zobrazí informace o vašem zařízení, včetně diagramů telemetrie zařízení:
+1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **Device Explorer** stránky. Panelu se zobrazí informace o vašem zařízení, včetně diagramů telemetrie zařízení:
 
     ![Viz podrobnosti o zařízení](media/iot-suite-visualize-connecting/devicesdetail.png)
 
@@ -33,11 +33,11 @@ Můžete zobrazit telemetrická data odesílaná ze zařízení **zařízení** 
 
 ## <a name="act-on-your-device"></a>Reagovat na vaše zařízení
 
-Chcete-li vyvolávat metody v zařízení, použijte **zařízení** stránku v řešení vzdáleného monitorování. Například v řešení vzdáleného monitorování **chladič** zařízení implementovat **FirmwareUpdate** metody.
+Chcete-li vyvolávat metody v zařízení, použijte **Device Explorer** stránku v řešení vzdáleného monitorování. Například v řešení vzdáleného monitorování **chladič** zařízení implementovat **FirmwareUpdate** metody.
 
-1. Zvolte **zařízení** přejděte **zařízení** stránku v řešení.
+1. Zvolte **zařízení** přejděte **Device Explorer** stránku v řešení.
 
-1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **zařízení** stránky:
+1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **Device Explorer** stránky:
 
     ![Vyberte skutečných zařízení](media/iot-suite-visualize-connecting/devicesselect.png)
 
@@ -49,7 +49,7 @@ Chcete-li vyvolávat metody v zařízení, použijte **zařízení** stránku v 
 
 1. Pořadí zpráv se zobrazí v konzole spuštěný kód vašeho zařízení, když Simulovaná zařízení zpracovává tuto metodu.
 
-1. Po dokončení aktualizace se zobrazí nová verze firmwaru na **zařízení** stránky:
+1. Po dokončení aktualizace se zobrazí nová verze firmwaru na **Device Explorer** stránky:
 
     ![Aktualizace dokončena](media/iot-suite-visualize-connecting/complete.png)
 

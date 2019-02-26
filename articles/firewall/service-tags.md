@@ -5,23 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/21/2019
+ms.date: 2/25/2019
 ms.author: victorh
-ms.openlocfilehash: 9ecc5d3779ac6632f4a5c05914cbb0e756c79e91
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1d03d896de947fcc938619c52a3690962a0d2d6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458004"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805616"
 ---
 # <a name="azure-firewall-service-tags"></a>Značky služeb Azure bránu Firewall
 
 Značka služby představuje skupinu předpon IP adres a tím pomáhá minimalizovat složitost vytváření pravidla zabezpečení. Nemůžete vytvořit vlastní značku služby ani určit, které IP adresy jsou ve značce zahrnuté. Předpony adres zahrnuté ve značce služby spravuje Microsoft, a pokud se adresy změní, automaticky značku služby aktualizuje.
 
 Značky služeb Azure bránu Firewall je možné v síti pravidla cílového pole. Můžete je použít místo konkrétních IP adres.
-
-> [!NOTE]
-> Značky služeb se přidávají do oblastí postupně a bude k dispozici ve všech oblastech v blízké budoucnosti.
 
 ## <a name="supported-service-tags"></a>Podporované značky služeb
 

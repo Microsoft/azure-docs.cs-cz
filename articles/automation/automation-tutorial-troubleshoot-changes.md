@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9fa1e3ffd92b3c375837c7b9a4a0e7fd1a80893a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433675"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816930"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -62,12 +62,14 @@ Během připojování se virtuální počítač zřídí s agentem Microsoft Mon
 Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
-Po povolení řešení začnou do Log Analytics proudit informace o nainstalovaném softwaru a změnách na virtuálních počítačích.
+Po povolení řešení informace o nainstalovaném softwaru a změny ve virtuálním počítači jsou přenášeny do protokoly Azure monitoru.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
-## <a name="using-change-tracking-in-log-analytics"></a>Použití řešení Change Tracking v Log Analytics
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Řešení Change Tracking generuje data protokolu, která se odesílají do Log Analytics.
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>Použití řešení Change tracking v protokoly Azure monitoru
+
+Řešení Change tracking generuje data protokolu, která se odešle protokoly Azure monitoru.
 Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Change Tracking** vyberte **Log Analytics**.
 Data řešení Change Tracking se ukládají jako typ **ConfigurationChange** (Změna konfigurace).
 Následující ukázka dotazu Log Analytics vrátí všechny zastavené služby systému Windows.
@@ -77,7 +79,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Další informace o provozu a prohledávání souborů protokolů v Log Analytics najdete na stránce [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md).
+Další informace o provozu a prohledávání souborů protokolů v protokoly Azure monitoru, najdete v článku [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="configure-change-tracking"></a>Konfigurace řešení Change Tracking
 

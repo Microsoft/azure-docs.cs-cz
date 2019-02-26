@@ -5,17 +5,17 @@ description: Jak vytvořit jednoduchý regresní model k predikci cenu v datová
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 6adcf59053186c961a115164baac1f0af631ff4a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: dfac085727ee86be018cfee1e15c3ee51b221763
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456839"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819867"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Předpovídání odpovědi pomocí jednoduchého modelu
 ## <a name="video-4-data-science-for-beginners-series"></a>Video 4: Datová věda pro začátečníky řady
@@ -128,4 +128,4 @@ Nezapomeňte se podívat na další videa v "Datové vědě pro začátečníky"
 
 ## <a name="next-steps"></a>Další postup
 * [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)
-* [Úvod do strojového učení v Microsoft Azure](what-is-machine-learning.md)
+* [Úvod do strojového učení v Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

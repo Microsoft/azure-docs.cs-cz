@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/16/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 97f9c893487b486bd76031cb6321fe100321931d
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 106cda22f8f7c54441f438b61eb427446f36a69a
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750714"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807486"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -82,8 +82,8 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [DevTest Labs User](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
 | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sady záznamů v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) | Můžete spravovat účty služby Azure Cosmos DB. Azure Cosmos DB je dříve DocumentDB. |
-| [Přispěvatel EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Umožňuje spravovat operace předplatných událostí Event Gridu. |
-| [Čtečka EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Umožňuje číst předplatná událostí Event Gridu. |
+| [Přispěvatel EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-contributor-preview) | Umožňuje spravovat operace předplatných událostí Event Gridu. |
+| [Čtenář EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-reader-preview) | Umožňuje číst předplatná událostí Event Gridu. |
 | [HDInsight Domain Services Contributor](#hdinsight-domain-services-contributor) | Může číst, vytvářet, upravovat a odstraňovat operace, které souvisí s Domain Services a jsou nezbytné pro Balíček zabezpečení podniku HDInsight. |
 | [Přispěvatel účtů inteligentních systémů](#intelligent-systems-account-contributor) | Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim. |
 | [Přispěvatel Key Vaultu](#key-vault-contributor) | Umožňuje spravovat trezory klíčů, ale ne přistupovat k nim. |
@@ -104,7 +104,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Přispěvatel sítě](#network-contributor) | Umožňuje správu sítí, ale ne přístup k nim. |
 | [Nové Přispěvatel účtů Relic APM](#new-relic-apm-account-contributor) | Umožňuje správu účtů a aplikací New Relic Application Performance Management, ale ne přístup k nim. |
 | [Čtenář a přístup k datům](#reader-and-data-access) | Umožňuje zobrazit všechno, ale neumožní odstraňovat ani vytvářet účet úložiště nebo obsažený prostředek. To vám také umožní přístup pro čtení a zápis ke všem datům obsaženým v účtu úložiště prostřednictvím přístupu ke klíčům účtu úložiště. |
-| [Přispěvatel služby redis Cache](#redis-cache-contributor) | Umožňuje spravovat Azure mezipaměti Redis, ale ne přístup k nim. |
+| [Přispěvatel služby redis Cache](#redis-cache-contributor) | Umožňuje správu mezipamětí Redis, ale ne přístup k nim. |
 | [Přispěvatel zásad prostředků (Preview)](#resource-policy-contributor-preview) | (Preview) Obnovení uživatelé z EA s oprávněními vytvářet a upravovat zásady prostředků, vytvářet lístky podpory a číst prostředky a hierarchii |
 | [Přispěvatel kolekcí úloh scheduleru](#scheduler-job-collections-contributor) | Umožňuje správu kolekcí úloh Scheduleru, ale ne přístup k nim. |
 | [Přispěvatel služby Search](#search-service-contributor) | Umožňuje správu služeb Search, ale ne přístup k nim. |
@@ -1198,6 +1198,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Vyhodnotí zásady testovacího prostředí. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Převzít vlastnictví existujícího virtuálního počítače |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Obsahuje příslušné spustit/zastavit plány. |
+> | Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action | Získá řetězec, který představuje obsah souboru RDP pro virtuální počítač |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Spojí pro fond adres back-endu nástroje pro vyrovnávání zatížení. Výstražné. |
 > | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Připojí pravidla příchozích pravidel nat služby load balancer. Výstražné. |
 > | Microsoft.Network/networkInterfaces/*/read | Čtení vlastností síťového rozhraní (třeba všechny nástroje pro vyrovnávání zatížení, které se síťové rozhraní je součástí) |
@@ -1261,7 +1262,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
-## <a name="eventgrid-eventsubscription-contributor"></a>Přispěvatel EventSubscription EventGrid
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>Přispěvatel předplatného událostí Event Gridu (Preview)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1284,7 +1285,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
-## <a name="eventgrid-eventsubscription-reader"></a>Čtečka EventSubscription EventGrid
+## <a name="eventgrid-eventsubscription-reader-preview"></a>Čtenář předplatného událostí Event Gridu (Preview)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1502,6 +1503,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Akce** |  |
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Solutions/applications/read | Načte seznam aplikací. |
+> | Microsoft.Solutions/*/action |  |
 > | **notActions** |  |
 > | *None* |  |
 > | **DataActions** |  |
@@ -1737,11 +1739,11 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat Azure mezipaměti Redis, ale ne přístup k nim. |
+> | **Popis** | Umožňuje správu mezipamětí Redis, ale ne přístup k nim. |
 > | **ID** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení role |
-> | Microsoft.Cache/redis/* | Vytvoření a Správa mezipaměti Azure Redis |
+> | Microsoft.Cache/redis/* | Vytvoření a Správa mezipaměti Redis |
 > | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |

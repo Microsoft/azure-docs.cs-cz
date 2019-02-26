@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84b66605939abd0f676625a5959f4a31ef1774db
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116911"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818285"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -51,7 +51,7 @@ Použijte ovládací prvky filtru pro výběr virtuálních počítačů z různ
 
 ![Začlenění řešení Update management](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Projděte si možnosti pro pracovní prostor Log analytics a účet Automation. Ve výchozím nastavení jsou vybrány existující pracovní prostor a účet Automation. Pokud chcete použít jiný pracovní prostor Log Analytics a účet Automation, klikněte na tlačítko **vlastní** vybírat z **vlastní konfigurace** stránky. Při výběru pracovního prostoru Log Analytics se provede kontrola k určení, pokud je propojený s účtem Automation. Pokud je nalezen propojeného účtu Automation, zobrazí se na následující obrazovce. Až budete hotovi, klikněte na tlačítko **OK**.
+Projděte si možnosti pro pracovní prostor Log Analytics a účet Automation. Ve výchozím nastavení jsou vybrány existující pracovní prostor a účet Automation. Pokud chcete použít jiný pracovní prostor Log Analytics a účet Automation, klikněte na tlačítko **vlastní** vybírat z **vlastní konfigurace** stránky. Při výběru pracovního prostoru Log Analytics se provede kontrola k určení, pokud je propojený s účtem Automation. Pokud je nalezen propojeného účtu Automation, zobrazí se na následující obrazovce. Až budete hotovi, klikněte na tlačítko **OK**.
 
 ![Vyberte pracovní prostor a účet](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
@@ -89,7 +89,7 @@ Následující řešení jsou závislé na pracovní prostor Log Analytics:
 * [Sledování změn](automation-change-tracking.md)
 * [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
 
-Pokud se rozhodnete, že již nechcete integraci vašeho účtu Automation s Log Analytics, můžete svůj účet neodpojíte přímo z portálu Azure portal. Než budete pokračovat, budete nejdřív muset odebrat řešení již bylo zmíněno dříve, jinak nebudou moct tento proces budete pokračovat. Přečtěte si článek pro konkrétní řešení, které jste importovali pochopit kroky nutné k jeho odebrání.
+Pokud se rozhodnete, že již nechcete integrace účtu služby Automation s pracovním prostorem Log Analytics, můžete svůj účet neodpojíte přímo z portálu Azure portal. Než budete pokračovat, budete nejdřív muset odebrat řešení již bylo zmíněno dříve, jinak nebudou moct tento proces budete pokračovat. Přečtěte si článek pro konkrétní řešení, které jste importovali pochopit kroky nutné k jeho odebrání.
 
 Po odebrání těchto řešení provedením následujících kroků se zrušit propojení účtu Automation.
 

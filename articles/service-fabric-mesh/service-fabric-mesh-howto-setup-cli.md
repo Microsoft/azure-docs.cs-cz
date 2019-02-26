@@ -3,18 +3,18 @@ title: Nastavení rozhraní příkazového řádku služby Azure Service Fabric 
 description: Naučte se nastavit rozhraní příkazového řádku služby Azure Service Fabric Mesh.
 services: service-fabric-mesh
 keywords: ''
-author: tylermsft
-ms.author: twhitney
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: daeec38863ee7e9dd4e56f2470e5f9459dcc8bc1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 675848f26b991978dce2e8686a71d86756180586
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958589"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806724"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
 Service Fabric mřížky rozhraní příkazového řádku (CLI) je potřeba nasadit a spravovat prostředky, místně i v Azure Service Fabric mřížky. 
@@ -25,7 +25,7 @@ Existují tři typy rozhraní příkazového řádku, který můžete použít a
 |---|---|---|
 | síť az | Síť Azure Service Fabric | Primární CLI, který umožňuje nasazení aplikací a správě prostředků v prostředí Azure Service Fabric mřížky. 
 | sfctl | Místní clusterů | Service Fabric CLI, který umožňuje nasazení a testování prostředky Service Fabric na místní clustery.  
-| Maven rozhraní příkazového řádku | Místní clustery & sítě Azure Service Fabric | Obálka kolem 'az sítě' a "sfctl", která umožňuje Java vývojářům používat známé příkazový řádek prostředí pro vývoj pro Azure a místním prostředí.  
+| Maven CLI | Místní clustery & sítě Azure Service Fabric | Obálka kolem 'az sítě' a "sfctl", která umožňuje Java vývojářům používat známé příkazový řádek prostředí pro vývoj pro Azure a místním prostředí.  
 
 Ve verzi Preview je rozhraní příkazového řádku služby Azure Service Fabric Mesh jako rozšíření Azure CLI. Můžete ho nainstalovat do Azure Cloud Shellu nebo do místní instalace Azure CLI. 
 

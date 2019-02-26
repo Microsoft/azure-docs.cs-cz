@@ -3,7 +3,7 @@ title: Ukázka skriptu rozhraní Service Fabric CLI – výpis aplikací v clust
 description: Ukázka skriptu rozhraní Service Fabric CLI – výpis aplikací v clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: ''
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 04/13/2018
-ms.author: twhitney
+ms.author: aljo
 ms.custom: ''
-ms.openlocfilehash: bea88460ecaa093a0719d627e3608fd1d530727b
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: HT
+ms.openlocfilehash: 60cb5aaf93521a3e2f7c922949d112ad96a00180
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070194"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805633"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Výpis aplikací spuštěných v clusteru Service Fabric
 
@@ -32,7 +32,7 @@ Tento ukázkový skript se připojí ke clusteru Service Fabric a potom zobrazí
 
 [!code-sh[main](../../../cli_scripts/service-fabric/list-application/list-application.sh "List provisioned applications from a cluster")]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace najdete v [dokumentaci k rozhraní Service Fabric CLI](../service-fabric-cli.md).
 

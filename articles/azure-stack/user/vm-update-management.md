@@ -16,19 +16,19 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4683b6f63af9fe0081911db9914f04b1c90f9d23
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168133"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819441"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM update a správu
 Následující funkce řešení Azure Automation můžete použít ke správě Windows a virtuální počítače s Linuxem, které jsou nasazeny pomocí služby Azure Stack:
 
 - **[Správa aktualizací](https://docs.microsoft.com/azure/automation/automation-update-management)**. Řešení Update Management můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro tyto virtuální počítače Linux a Windows.
 
-- **[Sledování změn](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Změny nainstalovaného softwaru, služby Windows, Windows registru a souborů a procesy démon Linuxu na monitorovaných serverech odesílají do služby Log Analytics v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data. Podle informací uvedených na řídicím panelu řešení Change Tracking, můžete snadno zobrazit změny, které byly provedeny v serverové infrastruktuře.
+- **[Sledování změn](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Změny nainstalovaného softwaru, služby Windows, Windows registru a souborů a procesy démon Linuxu na monitorovaných serverech se odesílají do služby Azure Monitor v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data. Podle informací uvedených na řídicím panelu řešení Change Tracking, můžete snadno zobrazit změny, které byly provedeny v serverové infrastruktuře.
 
 - **[Inventář](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. Sledování pro virtuální počítač Azure Stack inventáře poskytuje založené na prohlížeči uživatelské rozhraní pro nastavení a konfiguraci shromažďování dat pro inventarizaci. 
 
@@ -44,7 +44,7 @@ Pokud chcete použít inventář, Change Tracking a Update Management Azure auto
 > [!TIP]
 > Pokud už máte tyto funkce povolené pro virtuální počítače Azure, můžete použít už existující pracovní prostor LogAnalytics pověření. Pokud už máte LogAnalytics ID pracovního prostoru a primární klíč, který chcete použít, přeskočte k části [v další části](./vm-update-management.md#in-the-azure-stack-administration-portal). V opačném případě pokračujte v této části, abyste vytvořili nový účet LogAnalytics pracovní prostor a automatizace.
 
-Prvním krokem při povolování těchto řešení je [vytvořit pracovní prostor LogAnalytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) ve vašem předplatném Azure. Pracovní prostor Log Analytics je jedinečné prostředí Log Analytics s vlastním úložištěm dat, zdroje dat a řešení. Po vytvoření pracovního prostoru, poznamenejte si ID pracovního prostoru a klíč. Chcete-li zobrazit tyto informace, přejděte do okna pracovního prostoru, klikněte na **upřesňující nastavení**a projděte si **ID pracovního prostoru** a **primární klíč** hodnoty. 
+Prvním krokem při povolování těchto řešení je [vytvořit pracovní prostor LogAnalytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) ve vašem předplatném Azure. Pracovní prostor Log Analytics je jedinečné prostředí protokoly Azure monitoru s vlastním úložištěm dat, zdroje dat a řešení. Po vytvoření pracovního prostoru, poznamenejte si ID pracovního prostoru a klíč. Chcete-li zobrazit tyto informace, přejděte do okna pracovního prostoru, klikněte na **upřesňující nastavení**a projděte si **ID pracovního prostoru** a **primární klíč** hodnoty. 
 
 V dalším kroku je nutné [vytvořit účet Automation](https://docs.microsoft.com/azure/automation/automation-create-standalone-account). Účet Automation je kontejnerem pro vaše prostředky Azure Automation. Poskytuje způsob, jak oddělení vašich prostředí nebo dalšího uspořádání pracovních postupů služby Automation a prostředky. Po vytvoření účtu automation, potřebujete povolení inventáře, sledování změn a aktualizace funkcí pro správu. K tomuto účelu těchto kroků k povolení jednotlivých funkcí:
 

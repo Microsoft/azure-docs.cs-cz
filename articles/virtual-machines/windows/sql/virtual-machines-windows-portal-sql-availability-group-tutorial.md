@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 61a05f912e8b8e0b954dc43faeb7d6e35a08b657
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359710"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820140"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
 
@@ -53,7 +53,7 @@ V následující tabulce jsou uvedeny požadavky, které je potřeba dokončit p
 Před zahájením tohoto kurzu, budete muset [splnit požadavky pro vytváření skupin dostupnosti Always On v Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md). Pokud tyto požadavky jsou již dokončen, můžete přejít na [vytvořit Cluster](#CreateCluster).
 
   >[!NOTE]
-  > Celá řada kroků v tomto kurzu je možné automatizovat pomocí šablony Azure Quickstart. Další informace najdete v tématu [vytvoření služby WSFC, naslouchací proces a nakonfigurujte ILB pro skupiny dostupnosti Always On na virtuálním počítači SQL serveru pomocí šablon Azure Quickstart](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Celá řada kroků v tomto kurzu k dispozici teď je možné automatizovat pomocí [příkazového řádku Azure SQL VM](virtual-machines-windows-sql-availability-group-cli.md) a [šablony pro rychlý start Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->

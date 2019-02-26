@@ -1,28 +1,23 @@
 ---
 title: Konfigurace ExpressRoute přímo – Azure | Dokumentace Microsoftu
-description: Tato stránka vám pomůže nakonfigurovat přímé ExpressRoute (Preview).
+description: Tato stránka vám pomůže nakonfigurovat ExpressRoute přímo.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 05eb75c77cef5b975d0122714bb0ec9fba1d09a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9157466f0768b052f55f6d225e72ae7a036f8b9c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463970"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822168"
 ---
-# <a name="how-to-configure-expressroute-direct-preview"></a>Konfigurace ExpressRoute Direct (Preview)
+# <a name="how-to-configure-expressroute-direct"></a>Konfigurace ExpressRoute přímo
 
 Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
-
-> [!IMPORTANT]
-> Přímé ExpressRoute je aktuálně ve verzi Preview.
->
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Vytvoření prostředku
 

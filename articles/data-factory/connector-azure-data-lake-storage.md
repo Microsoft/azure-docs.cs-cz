@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 0f38902a166de8d623106849a124b8e2e5cceb5c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ac9bb6969e7771e1570670c83c88ddc892dc759e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674786"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823582"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -98,10 +98,16 @@ Pokud chcete používat ověřování instančních objektů, postupujte takto:
     - Klíč aplikace
     - ID tenanta
 
-2. Udělte hlavní správné oprávnění služby ve službě Azure storage.
+2. Udělení oprávnění objektu zabezpečení správné služby.
 
-    - **Jako zdroj**, do Access control (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
-    - **Jako jímku**, do Access control (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+    - **Jako zdroj**, v Průzkumníku služby Storage, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složkách a podsložkách nebo udělit **čtení** oprávnění zkopírovat jeden soubor. Můžete taky v řízení přístupu (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
+    - **Jako jímku**, v Průzkumníku služby Storage, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+
+>[!NOTE]
+>Do seznamu složek od kořene, je nutné nastavit oprávnění instančního objektu k **na kořenové úrovni s oprávněním "Spustit"** nebo oprávnění pro IAM. To platí při použití:
+>- **Nástroj pro kopírování dat** můžete vytvořit kanál kopírování.
+>- **Uživatelské rozhraní služby Data Factory** otestovat připojení a procházení složek během vytváření obsahu. 
+>Pokud máte obavy o udělení oprávnění na kořenové úrovni, můžete přeskočit test připojení a vstupní cesta ručně během vytváření obsahu. Aktivitu kopírování, která budou i nadále fungovat jako služby, které je udělen s řádným oprávněním na soubory, které se mají zkopírovat.
 
 Tyto vlastnosti jsou podporovány v propojené službě:
 
@@ -146,10 +152,16 @@ Použití spravované identity pro ověřování prostředků Azure, postupujte 
 
 1. [Získat informace o identitě data factory spravované](data-factory-service-identity.md#retrieve-managed-identity) tak, že zkopírujete hodnotu "ID aplikace IDENTITY služby" generované spolu se svým objektem pro vytváření.
 
-2. Udělení oprávnění správné spravovanou identitu ve službě Azure storage. 
+2. Udělení oprávnění správné spravovaná identita. 
 
-    - **Jako zdroj**, do Access control (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
-    - **Jako jímku**, do Access control (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+    - **Jako zdroj**, v Průzkumníku služby Storage, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složkách a podsložkách nebo udělit **čtení** oprávnění zkopírovat jeden soubor. Můžete taky v řízení přístupu (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
+    - **Jako jímku**, v Průzkumníku služby Storage, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+
+>[!NOTE]
+>Do seznamu od kořenové složky, je nutné nastavit oprávnění spravovanou identitu udělované **na kořenové úrovni s oprávněním "Spustit"** nebo oprávnění pro IAM. To platí při použití:
+>- **Nástroj pro kopírování dat** můžete vytvořit kanál kopírování.
+>- **Uživatelské rozhraní služby Data Factory** otestovat připojení a procházení složek během vytváření obsahu. 
+>Pokud máte obavy o udělení oprávnění na kořenové úrovni, můžete přeskočit test připojení a vstupní cesta ručně během vytváření obsahu. Aktivitu kopírování, která budou i nadále fungovat jako spravovanou identitu udělením s řádným oprávněním na soubory, které se mají zkopírovat.
 
 Tyto vlastnosti jsou podporovány v propojené službě:
 

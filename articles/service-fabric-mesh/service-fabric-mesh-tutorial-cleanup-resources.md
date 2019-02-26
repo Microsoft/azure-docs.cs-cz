@@ -3,8 +3,8 @@ title: Kurz – Vyčištění prostředků Azure Service Fabric Mesh | Microsoft
 description: Naučte se, jak odebrat prostředky Azure Service Fabric Mesh, aby vám nebyly účtovány prostředky, které už nepoužíváte.
 services: service-fabric-mesh
 documentationcenter: .net
-author: TylerMSFT
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/18/2018
-ms.author: twhitney
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fb7a444c54a57e7f2c38d941eb99f2fea7eebcef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993353"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815786"
 ---
-# <a name="tutorial-remove-azure-resources"></a>Kurz: Odebrání prostředků Azure
+# <a name="tutorial-remove-azure-resources"></a>Kurz: Odebrat prostředky Azure
 
 V tomto kurzu, který je pátou částí série, se dozvíte, jak odstranit aplikaci a její prostředky, abyste za ně nemuseli platit.
 
@@ -62,9 +62,9 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-Alternativně můžete skupinu prostředků **sfmeshTutorial1RG** odstranit [z portálu](../azure-resource-manager/resource-group-portal.md#delete-resource-group-or-resources). 
+Alternativně můžete skupinu prostředků **sfmeshTutorial1RG** odstranit [z portálu](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nyní, když jste dokončili publikování aplikace Service Fabric Mesh do Azure, vyzkoušejte toto:
 

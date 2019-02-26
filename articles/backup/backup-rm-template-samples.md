@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 96d4a61a14d3b1fac1c31c485edf66742c763673
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c0b023b6bdd01bc64eb5a6deb5fafa8e3c34c616
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497753"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819016"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Šablony Azure Resource Manageru pro službu Azure Backup
 
@@ -31,6 +31,6 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro p
 | [Vytvoření zásady pro denní zálohování virtuálních počítačů IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-daily-backup-policy-create) | Šablona vytvoří trezor služby Recovery Services a zásadu pro denní zálohování, která se použije k zálohování virtuálních počítačů Classic a Resource Manageru.|
 | [Nasazení virtuálního počítače s Windows Serverem a povoleným zálohováním](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | Šablona vytvoří virtuální počítač s Windows Serverem a trezor služby Recovery Services s povolenou výchozí zásadou zálohování.|
 |**Monitorování úloh služby Backup** |  |
-| [Použití Log Analytics k monitorování služby Azure Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Šablona nasadí monitorování Log Analytics pro službu Azure Backup, které umožňuje monitorovat úlohy zálohování a obnovení, výstrahy zálohování a cloudové úložiště využívané ve vašich trezorech služby Recovery Services.|  
+| [Použití Azure monitoru protokolů pomocí služby Azure Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Šablona nasadí Azure Monitor protokolů pomocí Azure Backup, které vám umožní monitorovat zálohování a obnovení úloh, výstrahy zálohování a cloudové úložiště využívané ve vašich trezorech služby Recovery Services.|  
 |   |   |
 

@@ -5,17 +5,17 @@ description: Zjistěte, jak model přetrénujete a aktualizovat klasické webov�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 73ab816c7043c7fb0f572677c6ceeb722653dec1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: fa4448c2a44a3c56548120bd04abf53df9a85ba0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650766"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822015"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Přeučování a nasazení webové služby classic Studio
 
@@ -23,7 +23,7 @@ Přetrénování modelů strojového učení je jedním ze způsobů zajistilo �
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že již máte retraining experiment a prediktivní experiment. Tyto kroky jsou vysvětlené v [Přetrénujete a nasadit model strojového učení.](retrain-models-programmatically.md) Namísto nasazení svůj model strojového učení jako nové webové služby, ale bude nasazení prediktivní experiment jako klasickou webovou službou.
+Tento článek předpokládá, že již máte retraining experiment a prediktivní experiment. Tyto kroky jsou vysvětlené v [Přetrénujete a nasadit model strojového učení.](/azure/machine-learning/studio/retrain-machine-learning-model) Namísto nasazení svůj model strojového učení jako nové webové služby, ale bude nasazení prediktivní experiment jako klasickou webovou službou.
      
 ## <a name="add-a-new-endpoint"></a>Přidat nový koncový bod
 

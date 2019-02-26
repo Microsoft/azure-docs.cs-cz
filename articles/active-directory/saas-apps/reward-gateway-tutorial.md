@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a375b60acbb6636cdc651a41d65bc232b50946b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85c2dcfb6ff1ba0bb122a0bf9aae5f01a4085f29
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198928"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Kurz: Integrace Azure Active Directory s bránou Rewards
 
@@ -130,7 +130,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Chcete-li získat tyto hodnoty začít nastavovat integraci na portálu pro účet správce. Podrobnosti najdete na https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Chcete-li získat tyto hodnoty začít nastavovat integraci na portálu pro účet správce. Podrobnosti najdete na https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -140,7 +140,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. Ke konfiguraci jednotného přihlašování na **Reward brány** straně, začít nastavovat integraci na portálu pro účet správce. Použijte stažené metadata získat certifikát pro podpis a nahrát, která během konfigurace. Podrobnosti najdete na https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+1. Ke konfiguraci jednotného přihlašování na **Reward brány** straně, začít nastavovat integraci na portálu pro účet správce. Použijte stažené metadata získat certifikát pro podpis a nahrát, která během konfigurace. Podrobnosti najdete na https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)

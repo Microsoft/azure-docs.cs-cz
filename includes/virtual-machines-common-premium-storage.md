@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 9f0dbc549600ef2b931ee99a36c60cae57cc7a67
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cd29fb968bd73e09c2e3b60e62a478b4e577146d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331218"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805487"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 
@@ -67,7 +67,7 @@ Tady jsou některé z funkcí úložiště Premium Storage:
     - [Azure CLI pro úložiště Azure](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (pro nasazení Azure Resource Manager) nebo jedna z klientských knihoven Azure Storage resource provider
 
-    Další informace o omezeních účtu úložiště úrovně premium, najdete v článku škálovatelnost a výkonnostní cíle Storage úrovně Premium.
+    Další informace o omezeních účtu úložiště úrovně premium, najdete v článku [škálovatelnost a výkonnostní cíle](#scalability-and-performance-targets).
 
 * **Místně redundantní úložiště úrovně Premium**
 
@@ -158,7 +158,7 @@ Velikosti označený hvězdičkou jsou aktuálně ve verzi preview.
 | Propustnost / disk | 25 MB za sekundu | 50 MB za sekundu | 100 MB za sekundu | 125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 480 MB za sekundu | 750 MB za sekundu | 750 MB za sekundu |
 
 > [!NOTE]
-> Zkontrolujte, zda je k dispozici na na jednotce diskové přenosy virtuálního počítače dostatečnou šířku pásma, jak je popsáno v [virtuálních počítačů služby Premium Storage podporuje](). V opačném případě propustnost disku a vstupně-výstupních operací je omezen na nižší hodnoty. Maximální propustnost a vstupně-výstupních operací jsou založeny na omezení virtuálního počítače, ne na disku omezení jsou popsané v předchozí tabulce.  
+> Zkontrolujte, zda je k dispozici na na jednotce diskové přenosy virtuálního počítače dostatečnou šířku pásma, jak je popsáno v [nepodporuje virtuální počítače](#supported-vms). V opačném případě propustnost disku a vstupně-výstupních operací je omezen na nižší hodnoty. Maximální propustnost a vstupně-výstupních operací jsou založeny na omezení virtuálního počítače, ne na disku omezení jsou popsané v předchozí tabulce.  
 > Azure je navržená tak, platforma Premium Storage bude masivně paralelní. Návrh aplikace jako vícevláknového vám pomůže zajistit vysoký výkon cíl nabízíme na větší velikosti disku.
 
 Zde jsou některé důležité kroky vědět o škálovatelnost a výkonnostní cíle služby Premium Storage:
@@ -292,7 +292,7 @@ Pokud používáte Storage úrovně Premium, platí následující aspekty faktu
 
 * **Velikost disku a objektů blob úložiště úrovně Premium**
 
-    Fakturace pro disk storage úrovně premium nebo objekt blob závisí na zřízená velikost disku nebo objektu blob. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost disku úložiště úrovně premium. Podrobnosti najdete v tabulce v [škálovatelnost a výkonnostní cíle Storage úrovně Premium](). Každý disk mapuje na velikosti zřízeného disku podporované a účtuje se odpovídajícím způsobem. Za všechny zajišťovaným diskem se fakturuje po hodinách pomocí cenu za měsíc pro nabídku služby Premium Storage. Například pokud zřízení disku P10 a odstraní ji po 20 hodin, fakturuje se vám pro nabídky P10 nebo jeho poměrnou část 20 hodin. To je bez ohledu na množství skutečné dat zapsaných na disk nebo IOPS a propustnost použít.
+    Fakturace pro disk storage úrovně premium nebo objekt blob závisí na zřízená velikost disku nebo objektu blob. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost disku úložiště úrovně premium. Podrobnosti najdete v tabulce v [škálovatelnost a výkonnostní cíle](#scalability-and-performance-targets). Každý disk mapuje na velikosti zřízeného disku podporované a účtuje se odpovídajícím způsobem. Za všechny zajišťovaným diskem se fakturuje po hodinách pomocí cenu za měsíc pro nabídku služby Premium Storage. Například pokud zřízení disku P10 a odstraní ji po 20 hodin, fakturuje se vám pro nabídky P10 nebo jeho poměrnou část 20 hodin. To je bez ohledu na množství skutečné dat zapsaných na disk nebo IOPS a propustnost použít.
 
 * **Nespravované disky Premium snímky**
 

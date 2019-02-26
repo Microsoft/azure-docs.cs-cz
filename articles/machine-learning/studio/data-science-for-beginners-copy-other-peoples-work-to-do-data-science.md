@@ -5,17 +5,17 @@ description: 'Tajemství pro datové vědy: Získejte ostatním uživatelům pr�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 821ee126350d18102ec92de04436a76050734dc4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a179efe3c4dcd3b36fa8d86910f10c4ab4cdb0aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456822"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817809"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopírování práce jiných lidí pro vědecké zkoumání dat
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Datová věda pro začátečníky řady
@@ -92,4 +92,4 @@ Nezapomeňte se podívat na další videa v "Datové vědě pro začátečníky"
 
 ## <a name="next-steps"></a>Další postup
 * [Zkuste prvního experimentu datové vědy s Azure Machine Learning Studio](create-experiment.md)
-* [Úvod do strojového učení v Microsoft Azure](what-is-machine-learning.md)
+* [Úvod do strojového učení v Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

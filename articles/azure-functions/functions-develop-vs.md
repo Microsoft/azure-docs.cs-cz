@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: b60861b4daced5e3d292feec54f8a54839a80b8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 58c7506b71ade8ff70519b895995153896006ade
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728909"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804669"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -220,8 +220,6 @@ Povolení Application Insights pro aplikaci funkcí v Azure:
 Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Další postup
-
-Další informace o Azure Functions Tools najdete v části Nejčastější dotazy [Visual Studio 2017 Tools pro službu Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) blogový příspěvek.
 
 Další informace o Azure Functions Core Tools, naleznete v tématu [kódu a testování Azure functions místně](functions-run-local.md).
 

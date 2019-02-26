@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/14/2018
+ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0fbd15b1d29d877ad0066d01945389665126bbcc
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 1c3f67cbe422ffe839018f0682fa2de6440de773
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649250"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823361"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak změnit licenční model virtuálního počítače s SQL serverem v Azure
-Tento článek popisuje, jak změnit licenční model pro virtuální počítače s SQL serverem v Azure pomocí nového poskytovatele prostředků SQL VM - **Microsoft.SqlVirtualMachine**. Existují dva licenční modely pro virtuální počítač (VM), který je hostitelem SQL serveru – platby za využití a používání vlastní licence (BYOL). A teď se pomocí Powershellu nebo rozhraní příkazového řádku Azure, můžete upravit který licenční model virtuálního počítače s SQL Server používá. 
+Tento článek popisuje, jak změnit licenční model pro virtuální počítače s SQL serverem v Azure pomocí nového poskytovatele prostředků SQL VM - **Microsoft.SqlVirtualMachine**. Existují dva licenční modely pro virtuální počítač (VM), který je hostitelem SQL serveru – s průběžnými platbami a používání vlastní licence (BYOL). A teď se pomocí Powershellu nebo rozhraní příkazového řádku Azure, můžete upravit který licenční model virtuálního počítače s SQL Server používá. 
 
-**Platby za využití** modelu (PAYG) znamená, že za sekundu náklady na provozování virtuálního počítače Azure zahrnují cenu licence SQL serveru.
+**s průběžnými platbami** modelu (PAYG) znamená, že za sekundu náklady na provozování virtuálního počítače Azure zahrnují cenu licence SQL serveru.
 
-**Bring your-používání vlastní licence** model (BYOL) se také označuje jako [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/), a to umožňuje používat vlastní licenci na SQL Server v případě virtuálních počítačů s SQL serverem. Další informace o cenách najdete v tématu [cenové Průvodce virtuálního počítače s SQL serverem](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance).
+**Přineste svůj – používání vlastní licence** model (BYOL) se také označuje jako [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/), a to umožňuje používat vlastní licenci na SQL Server v případě virtuálních počítačů s SQL serverem. Další informace o cenách najdete v tématu [cenové Průvodce virtuálního počítače s SQL serverem](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance).
 
 Přepínání mezi těmito dvěma modely licence s sebou nese náklady **bez výpadků**, neprovede restartování virtuálního počítače, přidá **bez dalších poplatků** (ve skutečnosti aktivace AHB *snižuje* nákladů) a je **okamžitou platností**. 
 
   >[!NOTE]
-  > - Schopnost převést licenčního modelu je aktuálně k dispozici pouze při spuštění s průběžnými platbami image virtuálního počítače s SQL serverem. Pokud byste začali s bitovou kopii bring your-používání vlastní licence z portálu, nebudete mít k převedení této bitové kopie na průběžné platby. 
+  > - Schopnost převést licenčního modelu je aktuálně k dispozici pouze při spuštění s průběžnými platbami image virtuálního počítače s SQL serverem. Pokud byste začali s bitovou kopii bring your-používání vlastní licence z portálu, nebudete mít k převedení této bitové kopie na průběžné platby.
   > - Zákazníky CSP se můžou využívat výhody AHB tak, že nejprve nasazení virtuálního počítače s průběžnými platbami a jeho převodu do přineste svůj – používání vlastní licence. 
   > - Tato schopnost je aktuálně povolena pouze pro veřejné cloudové zařízení.
 
@@ -40,28 +40,20 @@ Přepínání mezi těmito dvěma modely licence s sebou nese náklady **bez vý
 ## <a name="prerequisites"></a>Požadavky
 Použití zprostředkovatele prostředků virtuálního počítače s SQL se vyžaduje rozšíření SQL IaaS. V důsledku toho pokud chcete pokračovat s využitím poskytovatele prostředků virtuálního počítače s SQL, budete potřebovat následující:
 - [Předplatného Azure](https://azure.microsoft.com/free/).
-- A [virtuálního počítače s SQL serverem](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) s [rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) nainstalované. 
+- [Program software assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 
+- A *s průběžnými platbami* [virtuálního počítače s SQL serverem](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) s [rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) nainstalované. 
 
 
-## <a name="register-existing-sql-server-vm-with-sql-resource-provider"></a>Zaregistrovat poskytovatele prostředků SQL existujícího virtuálního počítače SQL serveru
+## <a name="register-sql-resource-provider-with-your-subscription"></a>Ve vašem předplatném zaregistrovat poskytovatele prostředků SQL 
+
 Umožňuje přepnout mezi licenční modely je funkce poskytované nového poskytovatele prostředků SQL VM (Microsoft.SqlVirtualMachine). Virtuální počítače SQL serveru nasadit po prosince 2018 jsou automaticky zaregistrované u nového poskytovatele prostředků. Stávající virtuální počítače nasazené před tímto datem je však nutné se ručně zaregistrované u poskytovatele prostředků, aby je bylo možné přepnout jejich licenční model. 
 
   > [!NOTE] 
-  > Pokud odstraníte váš prostředek virtuálního počítače s SQL, přejdete zpět na pevně zakódované licence nastavení bitové kopie. 
+  > Pokud odstraníte váš prostředek virtuálního počítače s SQL serverem, přejdete zpět na pevně zakódované licence nastavení bitové kopie. 
 
-### <a name="register-sql-resource-provider-with-your-subscription"></a>Ve vašem předplatném zaregistrovat poskytovatele prostředků SQL 
+Zaregistrovat poskytovatele prostředků SQL virtuálního počítače s SQL serverem, zaregistrujte poskytovatele prostředků ke svému předplatnému. Můžete provést pomocí rozhraní příkazového řádku Azure, PowerShell, nebo pomocí webu Azure portal. 
 
-Zaregistrovat poskytovatele prostředků SQL virtuálního počítače s SQL serverem, zaregistrujte poskytovatele prostředků ke svému předplatnému. Můžete provést pomocí Powershellu nebo pomocí webu Azure portal. 
-
-#### <a name="using-powershell"></a>Pomocí prostředí PowerShell
-Následující fragment kódu se zaregistrujte poskytovatele prostředků SQL ve vašem předplatném Azure. 
-
-```powershell
-# Register the new SQL resource provider for your subscription
-Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
-```
-
-#### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
+### <a name="with-the-azure-portal"></a>S využitím webu Azure Portal
 Následující postup k registraci poskytovatele prostředků SQL k vašemu předplatnému Azure pomocí webu Azure portal. 
 
 1. Otevřete na webu Azure portal a přejděte do **všechny služby**. 
@@ -72,10 +64,38 @@ Následující postup k registraci poskytovatele prostředků SQL k vašemu pře
 
   ![Upravit poskytovatele](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
-### <a name="register-sql-server-vm-with-sql-resource-provider"></a>Virtuální počítač s SQL serverem zaregistrovat poskytovatele prostředků SQL
-Po poskytovatele prostředků SQL byl zaregistrován u vašeho předplatného, můžete použít PowerShell k registraci virtuálního počítače s SQL Server u poskytovatele prostředků SQL. 
+### <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
+Následující fragment kódu k registraci poskytovatele prostředků SQL do Azure susbcription. 
+
+```cli
+# Register the new SQL resource provider for your subscription 
+az provider register --namespace Microsoft.SqlVirtualMachine 
+```
+
+### <a name="with-powershell"></a>S využitím PowerShellu
+Následující fragment kódu se zaregistrujte poskytovatele prostředků SQL ve vašem předplatném Azure. 
+
+```powershell
+# Register the new SQL resource provider for your subscription
+Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
+```
 
 
+## <a name="register-sql-server-vm-with-sql-resource-provider"></a>Virtuální počítač s SQL serverem zaregistrovat poskytovatele prostředků SQL
+Jakmile poskytovatele prostředků SQL byl zaregistrován u vašeho předplatného, pak je možné zaregistrovat virtuální počítač s SQL serverem s poskytovatelem prostředků. Můžete provést pomocí rozhraní příkazového řádku Azure a Powershellu. 
+
+### <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
+
+Registraci virtuálního počítače SQL serverem pomocí Azure CLI následujícím fragmentem kódu: 
+
+```cli
+# Register your existing SQL Server VM with the new resource provider
+az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
+```
+
+### <a name="with-powershell"></a>S využitím PowerShellu
+
+Registraci virtuálního počítače SQL serverem pomocí Powershellu pomocí následujícího fragmentu kódu: 
 ```powershell
 # Register your existing SQL Server VM with the new resource provider
 # example: $vm=Get-AzureRmVm -ResourceGroupName AHBTest -Name AHBTest
@@ -84,12 +104,52 @@ New-AzureRmResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupN
 ```
 
 
-## <a name="use-powershell"></a>Použití prostředí PowerShell 
-Chcete-li změnit váš licenční model můžete použít PowerShell.  Ujistěte se, že váš virtuální počítač SQL Server již byl zaregistrován u nového poskytovatele prostředků SQL před přepnutím licenčního modelu. 
+## <a name="change-licensing-model"></a>Změnit licenční model
+Jakmile se váš virtuální počítač SQL Server byl zaregistrován u poskytovatele prostředků, můžete změnit licenční model pomocí webu Azure portal, rozhraní příkazového řádku Azure nebo PowerShell. 
 
-Následující fragment kódu přepne licencí platit za použití modelu BYOL (nebo pomocí programu zvýhodněné hybridní využití Azure): 
+
+  >[!NOTE]
+  >  Schopnost převést licenčního modelu je aktuálně k dispozici pouze při spuštění s průběžnými platbami image virtuálního počítače s SQL serverem. Pokud byste začali s bitovou kopii bring your-používání vlastní licence z portálu, nebudete mít k převedení této bitové kopie na průběžné platby. 
+
+### <a name="with-the-azure-portal"></a>S využitím webu Azure Portal
+Můžete změnit licenční model přímo z portálu. 
+
+1. Přejděte k virtuálnímu počítači SQL serveru v rámci [webu Azure portal](https://portal.azure.com). 
+1. Vyberte **konfigurace systému SQL Server** v **nastavení** podokně. 
+1. Vyberte **upravit** v **licence SQL serveru** podokno, upravte licenci. 
+
+![AHB portálu](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
+
+  >[!NOTE]
+  > Tato možnost není k dispozici pro Image přineste svůj – používání vlastní licence. 
+
+### <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
+Chcete-li změnit váš licenční model můžete použít rozhraní příkazového řádku Azure.  
+
+Následující fragment kódu přepne s průběžnými platbami licenční model BYOL (nebo pomocí programu zvýhodněné hybridní využití Azure):
+```azurecli
+# Switch  your SQL Server VM license from pay-as-you-go to bring-your-own
+# example: az sql vm update -n AHBTest -g AHBTest --license-type AHUB
+
+az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
+```
+
+Následující fragment kódu přepne na průběžné platby BYOL model: 
+```azurecli
+# Switch  your SQL Server VM license from bring-your-own to pay-as-you-go
+# example: az sql vm update -n AHBTest -g AHBTest --license-type PAYG
+
+az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
+```
+
+### <a name="with-powershell"></a>S využitím PowerShellu 
+Chcete-li změnit váš licenční model můžete použít PowerShell. 
+
+Následující fragment kódu přepne s průběžnými platbami licenční model BYOL (nebo pomocí programu zvýhodněné hybridní využití Azure): 
 ```PowerShell
+# Switch  your SQL Server VM license from pay-as-you-go to bring-your-own
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
+
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType="AHUB"
 <# the following code snippet is only necessary if using Azure Powershell version > 4
@@ -97,11 +157,13 @@ $SqlVm.Kind= "LicenseChange"
 $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
 $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
 $SqlVm | Set-AzResource -Force 
-``` 
+```
 
-Následující fragment kódu přepne na platby za využití BYOL model:
+Následující fragment kódu přepne na průběžné platby BYOL model:
 ```PowerShell
+# Switch  your SQL Server VM license from bring-your-own to pay-as-you-go
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
+
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType="PAYG"
 <# the following code snippet is only necessary if using Azure Powershell version > 4
@@ -109,30 +171,8 @@ $SqlVm.Kind= "LicenseChange"
 $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
 $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
 $SqlVm | Set-AzResource -Force 
-```
+``` 
 
-  >[!NOTE]
-  > Chcete-li přepnout mezi licence, musí používat nového poskytovatele prostředků virtuálního počítače s SQL. Pokud se pokusíte spustit tyto příkazy před zaregistrováním virtuálního počítače s SQL serverem pomocí nového poskytovatele, může dojít k této chybě: `Get-AzResource : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set. ` Pokud se zobrazí tato chyba, zaregistrujte prosím virtuální počítač s SQL serverem pomocí nového poskytovatele prostředků. 
-
- 
-
-## <a name="use-azure-cli"></a>Použití Azure CLI
-Chcete-li změnit váš licenční model můžete použít rozhraní příkazového řádku Azure.  Ujistěte se, že váš virtuální počítač SQL Server již byl zaregistrován u nového poskytovatele prostředků SQL před přepnutím licenčního modelu. 
-
-Následující fragment kódu přepne licencí platit za použití modelu BYOL (nebo pomocí programu zvýhodněné hybridní využití Azure):
-```azurecli
-az resource update -g <resource_group_name> -n <sql_virtual_machine_name> --resource-type "Microsoft.SqlVirtualMachine/SqlVirtualMachines" --set properties.sqlServerLicenseType=AHUB
-# example: az resource update -g AHBTest -n AHBTest --resource-type "Microsoft.SqlVirtualMachine/SqlVirtualMachines" --set properties.sqlServerLicenseType=AHUB
-```
-
-Následující fragment kódu přepne na platby za využití BYOL model: 
-```azurecli
-az resource update -g <resource_group_name> -n <sql_virtual_machine_name> --resource-type "Microsoft.SqlVirtualMachine/SqlVirtualMachines" --set properties.sqlServerLicenseType=PAYG
-# example: az resource update -g AHBTest -n AHBTest --resource-type "Microsoft.SqlVirtualMachine/SqlVirtualMachines" --set properties.sqlServerLicenseType=PAYG
-```
-
-  >[!NOTE]
-  >Chcete-li přepnout mezi licence, musí používat nového poskytovatele prostředků virtuálního počítače s SQL. Pokud se pokusíte spustit tyto příkazy před zaregistrováním virtuálního počítače s SQL serverem pomocí nového poskytovatele, může dojít k této chybě: `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. ` Pokud se zobrazí tato chyba, [registraci nového poskytovatele prostředků virtuálního počítače s SQL serverem](#register-existing-sql-server-vm-with-sql-resource-provider). 
 
 ## <a name="view-current-licensing"></a>Zobrazit aktuální licencování 
 
@@ -141,6 +181,7 @@ Následující fragment kódu umožňuje zobrazit vaše aktuální model správy
 ```PowerShell
 # View current licensing model for your SQL Server VM
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType
 ```
@@ -175,6 +216,9 @@ Použijte následující kód k ověření verze Azure Powershellu:
 ```PowerShell
 Get-Module -ListAvailable -Name Azure -Refresh
 ```
+
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>Prostředek 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/ < resource-group >"ve skupině prostředků '< resource-group >' nebyl nalezen. Vlastnost 'sqlServerLicenseType' nebyl nalezen v tomto objektu. Ověřte, že vlastnost existuje a je možné nastavit.
+Tato chyba nastane, pokud virtuální počítač serveru SQL není zaregistrovaný u poskytovatele prostředků SQL. Musíte se zaregistrovat poskytovatele prostředků s vaší [předplatné](#register-sql-resource-provider-with-your-subscription)a pak zaregistrujte virtuální počítač s SQL serverem pomocí SQL [poskytovatele prostředků](#register-sql-server-vm-with-sql-resource-provider). 
 
 ## <a name="next-steps"></a>Další postup
 

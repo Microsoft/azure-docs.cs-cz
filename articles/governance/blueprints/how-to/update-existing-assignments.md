@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: edfc14e837c92cac5bab589e33069bb771a53cb7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314820"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818251"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -26,11 +26,11 @@ Pokud je podrobný plán přiřazen, je možné aktualizovat přiřazení. Exist
 
 ## <a name="updating-assignments"></a>Aktualizují se přiřazení
 
-1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
+1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
 
-1. Vyberte **Přiřazené podrobné plány** ze stránky vlevo.
+1. Vyberte **přiřazené podrobné plány** ze stránky na levé straně.
 
-1. V seznamu plány kliknutím levého tlačítka myši přiřazení podrobného plánu. Klikněte **přiřazení aktualizací** tlačítko nebo klikněte pravým tlačítkem na přiřazení podrobného plánu a vyberte **přiřazení aktualizací**.
+1. V seznamu plány kliknutím levého tlačítka myši přiřazení podrobného plánu. Klikněte **aktualizovat přiřazení** tlačítko nebo klikněte pravým tlačítkem na přiřazení podrobného plánu a vyberte **aktualizovat přiřazení**.
 
    ![Aktualizovat přiřazení](../media/update-existing-assignments/update-assignment.png)
 
@@ -40,7 +40,7 @@ Pokud je podrobný plán přiřazen, je možné aktualizovat přiřazení. Exist
 
    ![Aktualizované přiřazení - uzamčen](../media/update-existing-assignments/updated-assignment.png)
 
-1. Prozkoumejte podrobnosti o dalších **operací přiřazení** pomocí rozevíracího seznamu. Tabulka **spravovaných prostředků** aktualizace podle operace vybrané přiřazení.
+1. Prozkoumejte podrobnosti o dalších **operací přiřazení** pomocí rozevíracího seznamu. Tabulka **spravované prostředky** aktualizace podle operace vybrané přiřazení.
 
    ![Operace přiřazení](../media/update-existing-assignments/assignment-operations.png)
 

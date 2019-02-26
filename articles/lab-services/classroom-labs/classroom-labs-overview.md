@@ -13,54 +13,28 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: e9c3cae7c7129cc489ddd38b5b2de18dd6f52e58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 03384db96338bf78ed89c1cd0fb8780489ee0e13
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660495"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807384"
 ---
 # <a name="introduction-to-classroom-labs"></a>Úvod k testovacímu prostředí v učebnách
 Služba Azure Lab Services vám umožňuje rychle vytvořit cloudové testovací prostředí v učebně. Vyučující vytvoří testovací prostředí v učebně, zřídí virtuální počítače s Windows nebo Linuxem, nainstaluje nezbytný software a nástroje a zpřístupní je studentům. Studenti se ve třídě připojí k virtuálním počítačům v testovacím prostředí a budou je používat na projekty, úkoly a aktivity ve vyučování. 
 
-Testovací prostředí v učebnách jsou spravovanými testovacími prostředími, které spravuje Azure. Služba zajišťuje veškerou správu infrastruktury pro spravovaná testovací prostředí od poskytování potřebného výkonu virtuálních počítačů přes zpracovávání chyb až po škálování infrastruktury. Musíte zadat, jaký typ infrastruktury potřebujete, a nainstalovat veškeré nástroje nebo software potřebný k výuce. Spravovaná testovací prostředí jsou v současné době ve verzi Preview.  
+Testovací prostředí v učebnách jsou spravované prostředí typy, které se spravují přes Azure. Služba zajišťuje veškerou správu infrastruktury pro spravovaná testovací prostředí od poskytování potřebného výkonu virtuálních počítačů přes zpracovávání chyb až po škálování infrastruktury. Musíte zadat, jaký typ infrastruktury potřebujete, a nainstalovat veškeré nástroje nebo software potřebný k výuce. Spravovaná testovací prostředí jsou v současné době ve verzi Preview.   
 
-## <a name="scenarios"></a>Scénáře
-Toto je hlavní scénář, který testovací prostředí v učebnách služby Azure Lab Services podporují: 
+## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Automatická správa infrastruktury Azure a škálování 
+Azure Lab Services je spravovaná služba, což znamená, že zřizování a správu podkladové infrastruktury testovacího prostředí je automaticky zpracována službou. Můžete soustředit jen na přípravě prostředí správné testovací prostředí pro vaše uživatele. Nechte službu postaráme o všechno ostatní a zavést testovacího prostředí virtuálních počítačů pro cílovou skupinu. Škálování testovacího prostředí pro stovky virtuálních počítačů s jedním kliknutím.
 
-### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>Nastavení cloudové počítačové učebny s proměnlivou velikostí  
+## <a name="simple-experience-for-your-lab-users"></a>Jednoduché prostředí pro vaši uživatelé testovacího prostředí 
+Uživatelé, kteří byli pozváni do testovacího prostředí získat okamžitý přístup k prostředkům, které poskytují uvnitř laboratoří. Stačí, když se přihlaste se k podívejte se na seznam virtuálních počítačů mezi více testovacích prostředí mají přístup k. Můžete kliknout na na jediné tlačítko pro připojení k virtuálním počítačům a začít pracovat. Uživatelé nepotřebují předplatná Azure k používání služby. 
 
-- Vytvořte spravované testovací prostředí v učebně. Stačí, když zadáte své požadavky, a služba už se postará o vytvoření a správu infrastruktury testovacího prostředí. Vy se tak nemusíte zabývat technickými detaily testovacího prostředí a můžete se soustředit na učení a na své studenty. 
-- Poskytněte studentům testovací prostředí s virtuálními počítači, které jsou nakonfigurované přesně tak, jak je pro vyučování potřeba. Můžete pro studenty omezit používání virtuálních počítačů k práci na školních projektech na určitý počet hodin.  
-- Přesuňte fyzickou počítačovou učebnu ve vaší škole do cloudu. Automaticky škálujte počet virtuálních počítačů tak, aby nedošlo k překročení limitů využití a nákladů, které jste pro testovací prostředí nastavili. 
-- Jakmile testovací prostředí přestanete potřebovat, můžete ho jedním kliknutím odstranit. 
+## <a name="cost-optimization-and-tracking"></a>Optimalizace nákladů a sledování  
+Měli rozpočet pod kontrolou kontrolou přesně kolik hodin uživatelům testovacího prostředí můžete použít virtuální počítače. Nastavte si plány v testovacím prostředí umožňující uživatelům používat virtuální počítače pouze během určené časové úseky nebo nastavit opakované automatického vypínání a časy spuštění. Mějte přehled o využití jednotlivých uživatelů a nastavte limity.
 
-## <a name="user-profiles"></a>Profily uživatelů
-Tento článek popisuje různé uživatelské profily v Azure Lab Services. 
-
-### <a name="lab-account-owner"></a>Vlastník účtu testovacího prostředí
-Správce cloudových prostředků organizace, který je vlastníkem předplatného Azure, obvykle plní roli vlastníka účtu testovacího prostředí a má následující úkoly:   
-
-- Nastavit účet testovacího prostředí pro organizaci
-- Spravovat a konfigurovat zásady pro všechna testovací prostředí
-- Udělovat uživatelům v organizaci oprávnění vytvářet v příslušném účtu testovací prostředí
-
-### <a name="educator"></a>Pedagog
-Uživatelé jako například učitel nebo online instruktor si většinou vytváří testovací prostředí v učebnách na účtu testovacího prostředí. Pedagog má následující úkoly: 
-
-- Vytvořit testovacího prostředí v učebně
-- Vytvořit v testovacím prostředí virtuální počítače 
-- Nainstalovat na virtuálních počítačích příslušný software
-- Určit, kdo má mít k testovacímu prostředí přístup
-- Poskytnout studentům odkaz pro registraci do testovacího prostředí
-
-### <a name="student"></a>Student
-Student má následující úkoly:
-
-- Zaregistrovat se pomocí registračního odkazu, který obdrží od tvůrce testovacího prostředí 
-- Připojit se k virtuálnímu počítači v testovacím prostředí a používat ho k aktivitám ve vyučování a k práci na úkolech a projektech. 
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Začněte vytvořením účtu testovacího prostředí, bez kterého není možné pomocí služby Azure Lab Services vytvořit testovací prostředí v učebnách:
 
 - [Nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md)

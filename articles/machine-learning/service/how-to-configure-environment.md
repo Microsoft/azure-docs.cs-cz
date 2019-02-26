@@ -8,16 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-manager: cgronlun
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c380ee3427afdf40427ed82ed0fd5c4f1b49fd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 2eb47bede14b139d011d8a74b5196a94a93a62c7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729011"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817095"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -267,76 +266,69 @@ Chcete-li použít Visual Studio Code pro vývoj, postupujte takto:
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
+Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Poskytuje prostředí poznámkového bloku na základě spolupráci s clusterem výpočetní prostředky na základě CPU nebo GPU.
 
-Vlastní verzi sady Azure Machine Learning SDK pro Azure Databricks můžete použít pro začátku do konce vlastním strojovým učením. Nebo můžete trénování modelu v Databricks a nasadit ho pomocí [Visual Studio Code](how-to-vscode-train-deploy.md#deploy-your-service-from-vs-code).
+Jak funguje Azure Databricks se službou Azure Machine Learning:
++ Můžete trénování modelu pomocí Spark MLlib a nasadit model s ACI a AKS z Azure databricks. 
++ Můžete také použít [automatizované strojového učení](concept-automated-ml.md) možnosti ve speciální sadu SDK ML Azure s Azure Databricks.
++ Azure Databricks můžete použít jako cílové výpočetní prostředí z [kanálu Azure Machine Learning](concept-ml-pipelines.md). 
 
-Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
+### <a name="set-up-your-databricks-cluster"></a>Nastavení clusteru Databricks
 
-1. Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s následujícím nastavením:
+Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Některá nastavení platí jenom v případě, že instalace sady SDK pro automatizované strojové učení v Databricks.
+**Bude trvat několik minut pro vytvoření clusteru.**
 
-    | Nastavení | Hodnota |
-    |----|---|
-    | Název clusteru | yourclustername |
-    | Modul runtime Databricks | Any non ML runtime (non ML 4.x, 5.x) |
-    | Verze Pythonu | 3 |
-    | Pracovní procesy | 2 nebo vyšší |
+Pomocí těchto nastavení:
 
-    Použijte tato nastavení jenom v případě, že budete používat automatizované strojového učení v Databricks:
+| Nastavení |Platí pro| Hodnota |
+|----|---|---|
+| Název clusteru |vždy| yourclustername |
+| Modul runtime Databricks |vždy| Any non ML runtime (non ML 4.x, 5.x) |
+| Verze Pythonu |vždy| 3 |
+| Pracovní procesy |vždy| 2 nebo vyšší |
+| Typy virtuálních počítačů uzlů pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované ML<br>Pouze| Optimalizované pro paměť virtuálního počítače upřednostňované |
+| Povolení automatického škálování |Automatizované ML<br>Pouze| Zrušte zaškrtnutí políčka |
 
-    |   Nastavení | Hodnota |
-    |----|---|
-    | Typy virtuálních počítačů uzlů pracovního procesu | Optimalizované pro paměť virtuálního počítače upřednostňované |
-    | Povolení automatického škálování | Zrušte zaškrtnutí políčka |
+Počkejte, než je cluster spuštěn, než budete pokračovat.
 
-    Počet pracovních uzlů v clusteru Databricks určuje maximální počet souběžných iterací v automatizovaných strojového učení konfigurace.
+### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Nainstalujte správnou sadu SDK do knihovny Databricks
+Jakmile je cluster spuštěn, [vytvořit knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) připojit odpovídající balíček sady SDK Azure Machine Learning k vašemu clusteru. 
 
-    Bude trvat několik minut pro vytvoření clusteru. Počkejte, než je cluster spuštěn, než budete pokračovat.
+1. Zvolte **pouze jeden** možnost (žádné další instalace sady SDK jsou podporovány)
 
-1. Nainstalujte a připojte balíček sady SDK Azure Machine Learning k vašemu clusteru.
+   |Sada SDK&nbsp;balíčku&nbsp;funkce|Zdroj|PyPi&nbsp;název&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |----|---|---|
+   |Pro Databricks| Nahrát Python Egg nebo PyPI | azureml-sdk[databricks]|
+   |Pro Databricks - with-<br> automatizované funkce ML| Nahrát Python Egg nebo PyPI | azureml-sdk[automl_databricks]|
 
-    * [Vytvoření knihovny](https://docs.databricks.com/user-guide/libraries.html#create-a-library) s jedním z těchto nastavení (_pouze jednu z těchto možností zvolte_):
+   * Je možné nainstalovat žádný další funkce sady SDK. Zvolte pouze jeden z předchozích možností [databricks] nebo [automl_databricks].
+   * Nesmí být zvolen **automaticky připojí na všech clusterech**.
+   * Vyberte **připojit** vedle názvu vašeho clusteru.
 
-        * Chcete-li nainstalovat sadu SDK Azure Machine Learning _bez_ automatizované funkce machine learning:
-            | Nastavení | Hodnota |
-            |----|---|
-            |Zdroj | Nahrát Python Egg nebo PyPI
-            |Název PyPi | azureml-sdk[databricks]
+1. Sledování chyb, dokud se stav změní na **připojené**, což může trvat několik minut.  Pokud tento krok nezdaří, zkontrolujte následující: 
 
-        * Chcete-li nainstalovat sadu SDK Azure Machine Learning _s_ automatizované strojového učení:
-            | Nastavení | Hodnota |
-            |----|---|
-            |Zdroj | Nahrát Python Egg nebo PyPI
-            |Název PyPi | azureml-sdk[automl_databricks]
+   Zkuste restartovat svůj cluster prostřednictvím:
+   1. V levém podokně vyberte **clustery**.
+   1. V tabulce vyberte název vašeho clusteru.
+   1. Na **knihovny** kartu, vyberte možnost **restartovat**.
+      
+   Zvažte také:
+   + Některé balíčky, jako například `psutil`, může způsobit konflikty Databricks během instalace. Nechcete-li tyto chyby, nainstalovat balíčky zmrazení lib verzí, jako je `pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0`. 
+   + Nebo, pokud máte starší verzi sady SDK, zrušte zaškrtnutí možnosti z nainstalovaných knihoven clusteru a přesunout do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po této dochází k nějakému problému, odpojit a znovu ho připojte svůj cluster.
 
-    * Nesmí být zvolen **automaticky připojí k všechny clustery**
+Pokud byla instalace úspěšná, importované knihovny by měl vypadat jako jednu z těchto:
+   
+Sada SDK pro Databricks **_bez_** automatizované strojového učení ![Azure Machine Learning SDK for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-    * Vyberte **připojit** vedle vašeho názvu clusteru
+Sada SDK pro Databricks **WITH** automatizované strojového učení ![SDK s automatizované strojového učení, které jsou nainstalované v Databricks ](./media/how-to-configure-environment/automlonadb.jpg)
 
-    * Ujistěte se, dokud se stav změní na nejsou žádné chyby **připojené**. To může trvat několik minut.
+### <a name="start-exploring"></a>Začít prozkoumávat
 
-    Pokud máte starší verzi sady SDK, zrušte zaškrtnutí možnosti z nainstalovaných knihoven clusteru a přesunout do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po této dochází k nějakému problému, odpojit a znovu ho připojte svůj cluster.
-
-    Jakmile budete hotovi, knihovny je připojený, jak je znázorněno na následujících obrázcích. Mějte na paměti tyto [běžných potíží s Databricks](resource-known-issues.md#databricks).
-
-    * Pokud jste nainstalovali sadu SDK Azure Machine Learning _bez_ automatizované strojového učení ![SDK bez automatizované strojového učení, které jsou nainstalované v Databricks ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
-
-    * Pokud jste nainstalovali sadu SDK Azure Machine Learning _s_ automatizované strojového učení ![SDK s automatizované strojového učení, které jsou nainstalované v Databricks ](./media/how-to-configure-environment/automlonadb.jpg)
-
-   Pokud tento krok nezdaří, restartujte svůj cluster následujícím způsobem:
-
-   a. V levém podokně vyberte **clustery**.
-
-   b. V tabulce vyberte název vašeho clusteru.
-
-   c. Na **knihovny** kartu, vyberte možnost **restartovat**.
-
-1. Stáhněte si [soubor archivu poznámkových bloků Azure Databricks a Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc).
-
-   >[!Warning]
-   > Mnoho ukázkové poznámkové bloky jsou k dispozici pro použití se službou Azure Machine Learning. Pouze [tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) fungují s Azure Databricks.
-
-1.  [Importovat soubor archivu](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do vaší Databricks clusteru a začít prozkoumávat, jak je popsáno na [poznámkových bloků Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) stránky.
-
+Vyzkoušejte si to:
++ Stáhněte si [poznámkového bloku archivní soubor](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) pro sadu SDK Azure Databricks a Azure Machine Learning a [importovat soubor archivu](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do vašeho clusteru Databricks.  
+  Mnoho ukázkové poznámkové bloky jsou k dispozici, **pouze [tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) fungují s Azure Databricks.**
+  
++ Zjistěte, jak [vytvoření kanálu s Databricks jako výpočetní školení](how-to-create-your-first-pipeline.md).
 
 ## <a id="workspace"></a>Vytvořte konfigurační soubor pracovního prostoru
 

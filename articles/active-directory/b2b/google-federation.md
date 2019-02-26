@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 283cf8d13260531a12fa6c860d1a4e7b6207d22e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fe259b6a0f45828e100de33f533e370323128eef
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674612"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821692"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -99,8 +99,8 @@ Můžete odstranit nastavení federace služby Google. Pokud tak učiníte, nebu
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Chcete-li odstranit federační služby Google na portálu Azure AD: 
 1. Přejděte na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **organizační vztahy**.
-3. Vyberte **zprostředkovatelé Identity**a potom klikněte na tlačítko **Google** tlačítko.
-4. Vyberte **Google**a pak vyberte **odstranit**. 
+3. Vyberte **zprostředkovatelé Identity**.
+4. Na **Google** řádek, vyberte příslušnou kontextovou nabídku (**...** ) a pak vyberte **odstranit**. 
    
    ![Odstranit zprostředkovatele identity v sociálních sítích](media/google-federation/google-social-identity-providers.png)
 

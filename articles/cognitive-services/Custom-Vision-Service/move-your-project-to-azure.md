@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: b46ccd98145342fda58672b64b838ab92ba4f97b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a9f49af54f391b159f8b3d626fffc36635f5e51f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731918"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821298"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure-using-the-customvisionai-site"></a>Postup přesunutí omezenou zkušební verzí projektu do Azure pomocí webu CustomVision.ai
 
@@ -64,7 +64,7 @@ Více projektů lze přidružit jeden prostředek. Další podrobnosti o [ceny a
     ![Okno projektu migrace.](./media/move-your-project-to-azure/Project_Migration_Window.jpg)
 
 
-## <a name="move-your-limited-trial-project-to-an-azure-resource-in-another-directory"></a>Přesunout prostředek Azure v jiném adresáři projektu omezenou zkušební verzí 
+## <a name="move-project-to-another-azure-directory"></a>Projekt přesunout do jiného adresáře Azure 
 
 > [!NOTE]
 > Na webu Azure portal i CustomVision.ai můžete vybrat adresáře z rozevírací nabídky uživatele v pravém horním rohu obrazovky.   
@@ -92,4 +92,6 @@ Více projektů lze přidružit jeden prostředek. Další podrobnosti o [ceny a
 
 5. Nezapomeňte, že váš projekt je nyní v jiném adresáři. K vyhledání projektu, je potřeba přepnout do stejného adresáře na webovém portálu vlastní zpracování obrazu, který váš projekt je v. Jak na webu Azure Portal a [webu Custom Vision](https://customvision.ai), adresáře můžete vybrat z rozevíracího seznamu účet nabídky v pravém horním rohu obrazovky. 
 
+## <a name="next-steps"></a>Další postup
 
+Váš projekt nyní byl přesunut do prostředku Azure. Je potřeba aktualizovat trénování a Predikcí klíče ve všech aplikacích, které jste napsali.

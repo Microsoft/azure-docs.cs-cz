@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 11/22/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a92440e97f47f0778eb73b81b239b45476d4e733
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d89197fad8354b0bae41ab67b9bb1dfac0a179eb
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551337"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820293"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurujte přihlašovací údaje nasazení pro službu Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro [místní nasazení přes Git](deploy-local-git.md) a [nasazení FTP/S](deploy-ftp.md). Se nejedná stejná jako přihlašovacích údajů Azure Active Directory.
 
-* **Přihlašovací údaje na úrovni uživatele**: jednu sadu přihlašovacích údajů pro celý účet Azure. Slouží k nasazení do služby App Service pro libovolnou aplikaci, v libovolné předplatné, který má oprávnění pro přístup k účtu Azure. Je výchozí skupinu, která se zobrazí v grafickém uživatelském rozhraní portálu (například **přehled** a **vlastnosti** z aplikace [stránka s materiály pro](../azure-resource-manager/resource-group-portal.md#manage-resources)). Když uživateli je udělen přístup k aplikaci prostřednictvím řízení přístupu na základě Role (RBAC) nebo oprávnění coadmin, tohoto uživatele můžete používat své vlastní přihlašovací údaje na úrovni uživatele, dokud odvolat přístup. Nesdílejte tyto přihlašovací údaje s jinými uživateli Azure.
+* **Přihlašovací údaje na úrovni uživatele**: jednu sadu přihlašovacích údajů pro celý účet Azure. Slouží k nasazení do služby App Service pro libovolnou aplikaci, v libovolné předplatné, který má oprávnění pro přístup k účtu Azure. Je výchozí skupinu, která se zobrazí v grafickém uživatelském rozhraní portálu (například **přehled** a **vlastnosti** z aplikace [stránka s materiály pro](../azure-resource-manager/manage-resources-portal.md#manage-resources)). Když uživateli je udělen přístup k aplikaci prostřednictvím řízení přístupu na základě Role (RBAC) nebo oprávnění coadmin, tohoto uživatele můžete používat své vlastní přihlašovací údaje na úrovni uživatele, dokud odvolat přístup. Nesdílejte tyto přihlašovací údaje s jinými uživateli Azure.
 
 * **Přihlašovací údaje na úrovni aplikace**: jednu sadu přihlašovacích údajů pro každou aplikaci. Slouží k nasazení do této aplikace jenom. Přihlašovací údaje pro každé aplikaci, která jsou generovány při vytváření aplikací. Nejde nakonfigurovat ručně, ale může resetovat kdykoli. Tento uživatel musí být uživatel chce být udělen přístup k přihlašovací údaje na úrovni aplikace prostřednictvím (RBAC), Přispěvatel nebo vyšší na aplikaci. Čtenáři není povoleno publikovat a nelze získat přístup k přihlašovací údaje.
 
 ## <a name="userscope"></a>Nastavení a resetovat přihlašovací údaje na úrovni uživatele
 
-Nakonfigurujete své přihlašovací údaje uživatele ve všech aplikacích [stránka s materiály pro](../azure-resource-manager/resource-group-portal.md#manage-resources). Bez ohledu na to v kterou aplikaci konfigurujete tyto přihlašovací údaje, se vztahuje na všechny aplikace a pro všechna předplatná v účtu Azure. 
+Nakonfigurujete své přihlašovací údaje uživatele ve všech aplikacích [stránka s materiály pro](../azure-resource-manager/manage-resources-portal.md#manage-resources). Bez ohledu na to v kterou aplikaci konfigurujete tyto přihlašovací údaje, se vztahuje na všechny aplikace a pro všechna předplatná v účtu Azure. 
 
 Postup konfigurace vaše přihlašovací údaje na úrovni uživatele:
 

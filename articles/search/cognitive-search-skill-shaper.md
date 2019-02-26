@@ -8,21 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: c55783e9b209a1280a21edca34b75e72481f4cb6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410111"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806984"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper kognitivních dovedností
 
-**Shaper** dovednosti umožňuje vytvořit komplexní typ pro podporu složeného pole (označované také jako pole s více částmi.). Komplexní typ pole má více částí, ale je považován za jednu položku v indexu Azure Search. Konsolidované pole, které jsou užitečné v situacích, hledání příklady zkombinují název první a poslední do jednoho pole, Město a stát do jednoho pole, nebo název a datum narození do jednoho pole ke zjištění jedinečné identity.
-
-**Shaper** dovednosti umožňuje v podstatě vytvořit strukturu, definování názvu členem struktury a přiřadit hodnoty k jednotlivým členům.
+**Shaper** dovednosti konsoliduje několik vstupy do komplexní typ, který může být odkazováno později v rozšíření kanálu. **Shaper** dovednosti umožňuje v podstatě vytvořit strukturu, definování názvu členem struktury a přiřadit hodnoty k jednotlivým členům. Konsolidované pole, které jsou užitečné v situacích, hledání příklady zkombinují název první a poslední do struktura single, Město a stát do jednoho struktury, nebo název a datum narození do jednoho struktury zřízení jedinečné identity.
 
 Ve výchozím nastavení tato technika podporuje objekty, které jsou jednu úroveň. Pro složitější objektů můžete zřetězit několik **Shaper** kroky.
 
@@ -58,7 +56,7 @@ Následující příklad obsahuje člen názvy jako vstup. Výstupní struktury 
   "outputs": [
     {
       "name": "output",
-      "targetName": analyzedText"
+      "targetName": "analyzedText"
     }
   ]
 }
@@ -125,8 +123,8 @@ Definici Shaper dovedností pro tento scénář může vypadat jako v následuj�
     ],
     "outputs": [
         {
-            "output": "titlesAndChapters",
-            "targetName": "analyzedText"
+            "name": "output",
+            "targetName": "titlesAndChapters"
         }
     ]
 }

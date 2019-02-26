@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 4511ef81ccfa7008cd21a22b09459fb122d46327
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 03ec8858ee4b9323e6f7964ba02f8bb38f32d6a4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452936"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818999"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuální sítě (VNet)
 
@@ -51,6 +51,9 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
 > Pokud chcete povolit koncové body služeb virtuální sítě, potřebujete následující oprávnění pro předplatné:
   * Předplatné s virtuální sítí: Přispěvatel sítě
   * Předplatné s účtem služby Azure Cosmos DB: Přispěvatel účtů DocumentDB
+  * Pokud vaše virtuální síť a účet služby Azure Cosmos DB jsou v různých předplatných, ujistěte se, že předplatné, které má virtuální síť má také `Microsoft.DocumentDB` zaregistrovaný poskytovatel prostředků. Registrace poskytovatele prostředků, najdete v článku [poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md) článku. 
+
+Tady je návod k registraci předplatného u poskytovatele prostředků.
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Konfigurace koncového bodu služby pro novou virtuální síť Azure a podsíť
 

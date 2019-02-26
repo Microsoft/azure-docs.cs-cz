@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/19/2018
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 9e16c3bb4e4e5ba384bdc664e2c056acb0b70caf
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: eb807082443da495cd89e1dd624058c89d3ee65b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448224"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825482"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co je ExpressRoute přímo?
 
@@ -23,9 +23,9 @@ ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke glo
 
 Zákazníci bude nutné spolupracovat s jejich místní prostředníci a poskytovatelé ve společném umístění k získání připojení k ExpressRoute směrovače využívat přímo ExpressRoute.
 
-### <a name="what-locations-will-the-100-gbps-expressroute-direct-be-available-for-public-preview"></a>Umístění, ve kterých 100 GB/s přímou ExpressRoute bude dostupná ve veřejné verzi Preview? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Umístění, ve kterých se aktuálně podporují přímé ExpressRoute? 
 
-Vyberte počet umístění partnerského vztahu ExpressRoute to bude podporovat ve veřejné verzi preview. K dispozici porty se bude dynamicky a bude k dispozici v prostředí PowerShell, chcete-li zobrazit kapacitu. Zahrnují umístění a *se může změnit závislosti na dostupnosti*:
+K dispozici porty se bude dynamicky a bude k dispozici v prostředí PowerShell, chcete-li zobrazit kapacitu. Zahrnují umístění a *se může změnit závislosti na dostupnosti*:
 
 * Amsterdam
 * Canberra

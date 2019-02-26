@@ -3,7 +3,7 @@ title: Azure Service Fabric události agregace pomocí diagnostiky Azure pro Lin
 description: Další informace o agregaci a shromažďování událostí pomocí LAD pro monitorování a diagnostiku clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: c7eb98eb2dbff05e67b6a60c413932ba51fdfdf7
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.date: 2/25/2019
+ms.author: srrengar
+ms.openlocfilehash: a41599194d6dd6230c80aa078375b798c3002adf
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573752"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56824007"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregace událostí a kolekce pomocí diagnostiky Azure Linux
 > [!div class="op_single_selector"]

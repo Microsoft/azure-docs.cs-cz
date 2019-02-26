@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 293c2325f57f04c3a77b0b2b8ec2ef30e8c912b8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: d5c92e31850cdac5e05021fd231259b0d3b064d1
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156234"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822800"
 ---
 # <a name="door-monitor"></a>Dvířka knihovny monitorování          
 
@@ -66,7 +66,7 @@ Nyní uvidíte registrační formulář SendGrid.
 
 Vyplnění registračního formuláře:
 
-   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid, nebo použijte již existující. Zobrazit [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-portal.md).
+   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid, nebo použijte již existující. Zobrazit [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/manage-resource-groups-portal.md).
 
    * **Název**: Název vaší služby SendGrid. Vyberte jedinečný název, který je odlišný od jiných služeb, které máte uzavřeny.
 
@@ -106,11 +106,11 @@ Registrační formulář se zobrazí.
 
 Přejít k vyplnění polí na formuláři pro registraci.
 
-   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid, nebo použijte již existující. Zobrazit [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-portal.md).
+   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid, nebo použijte již existující. Zobrazit [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/manage-resource-groups-portal.md).
 
    * **Název centra IOT**: Název služby IoT hub. Vyberte jedinečný název, který je odlišný od jiných služeb, které máte uzavřeny.
 
-   * **Sku služby IOT Hub**: F1 (omezeno na jeden do každého předplatného) je zdarma. Další informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
+   * **Iot Hub Sku**: F1 (omezeno na jeden do každého předplatného) je zdarma. Další informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
 
    * **Z e-mailu**: Toto pole musí mít stejné e-mailovou adresu, kterou jste použili při nastavování služby SendGrid.
 
@@ -145,7 +145,7 @@ V okně řešení spouštění úloh zřizování cloudu:
 
 V terminálu VS Code interaktivního příkazového řádku vás provede zřizování požadovaných služeb Azure. Všechny položky na stejné vyberte ze seznamu výzvami, kterou jste zřídili dříve v [nasazení centra IoT Azure](#deploy-iot-hub-in-azure).
 
-![Zřizování cloudu](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
+![Cloud Provision](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
 
 > [!NOTE]
 > Pokud na stránce přestane reagovat ve stavu načítání při pokusu o přihlášení k Azure, přečtěte si ["stránce kající změny při přihlašování" část Nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) k vyřešení tohoto problému. 
@@ -177,7 +177,7 @@ VS Code pak spustí ověření a nahrajete Arduino náčrt DevKit.
 DevKit restartuje a spustí kód.
 
 > [!NOTE]
-> V některých případech se může zobrazit "Chyba: AZ3166 SE: Neznámý balíček"chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tuto chybu vyřešit, přečtěte si [části vývoj nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> V některých případech se může zobrazit "Chyba: AZ3166: Neznámý balíček"chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tuto chybu vyřešit, přečtěte si [části vývoj nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testování projektu
 
@@ -193,7 +193,7 @@ Po inicializaci `Door closed` se zobrazí na obrazovce. Když dojde ke změně v
 
 Pokud narazíte na potíže, přečtěte si [nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následujících kanálů:
 
-* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup

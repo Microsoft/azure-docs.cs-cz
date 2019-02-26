@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/16/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: a69a739f36854cacd6b361ca2bd17d904e9c4c96
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0cb3de7d893ccfe638468110b1b6f5fb61b2bc7c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38753648"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825084"
 ---
 Zámky prostředků zabránit uživatelům ve vaší organizaci omylem odstranit nebo upravit důležitých prostředků. Na rozdíl od řízení přístupu na základě role používají zámky prostředků omezení pro všechny uživatele a role. 
 

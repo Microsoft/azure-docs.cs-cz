@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb2302a8a20a9a5f50b9d11de7ac786ad04853d
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 7c5b61dbb3c6dde8dfcabdba015ee41e968cc5dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652259"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817078"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci galerii konfigurované pro federované jednotné přihlašování
 
@@ -160,7 +160,7 @@ Azure AD nepodporuje požadavek SAML, kterou aplikace odeslala, pro jednotné p�
 
 Na dodavatele aplikace by měl ověřit, že podporují implementace Azure AD SAML pro jednotné přihlašování.
 
-## <a name="no-resource-in-requiredresourceaccess-list"></a>V seznamu requiredResourceAccess se žádný prostředek
+## <a name="misconfigured-application"></a>Nesprávně nakonfigurované aplikace
 
 *Chyba AADSTS650056: Nesprávně nakonfigurované aplikace. Může to být způsobené jedním z následujících důvodů: Klienta není uvedená žádná oprávnění pro "AAD Graph" požadovaných oprávnění v registraci klienta aplikace. Nebo správce nevyjádřil v tenantovi. Nebo zkontrolujte identifikátor aplikace do požadavku Ujistěte se, že odpovídá identifikátor konfigurovaného klienta aplikace. Obraťte se prosím na svého správce a opravte konfiguraci nebo udělit souhlas jménem klienta.* .
 
@@ -237,6 +237,33 @@ Azure AD nebyl schopen identifikovat si požadavek SAML v rámci parametrů adre
 
 Aplikace potřebuje k odeslání požadavku SAML překóduje se na hlavičku location, pomocí protokolu HTTP přesměrovat vazby. Další informace o tom, jak implementovat, najdete v části přesměrování vazby protokolu HTTP v [dokument specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
+## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure AD odesílá do nesprávné koncový bod tokenu
+
+**Možná příčina**
+
+Během jednotného přihlašování Pokud žádost o přihlášení neobsahuje adresu URL odpovědi explicitní (adresa URL služby příjemce kontrolního výrazu) a Azure AD bude vyberte některou z nakonfigurované spolehněte adresy URL pro tuto aplikaci. I v případě, že má explicitní odpovědi není nakonfigurována adresa URL aplikace, může být uživatel přesměrován https://127.0.0.1:444. 
+
+Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Directory vytvořila tuto adresu URL pro odpověď jako výchozí hodnotu. Toto chování se změnilo a Azure Active Directory už tuto adresu URL ve výchozím nastavení nepřidává. 
+
+**Řešení**
+
+Odstraňte nepoužívané odpovědních adres URL nakonfigurované pro aplikaci.
+
+1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **spolusprávce**.
+
+2.  Otevřít **rozšíření Azure Active Directory** tak, že vyberete **všechny služby** v horní části hlavní navigační nabídce vlevo.
+
+3.  Typ **"Azure Active Directory"** do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+
+4.  Vyberte **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+
+5.  Vyberte **všechny aplikace** zobrazíte seznam všech aplikací.
+
+    Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace**.
+
+6.  Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
+
+7.  Po načtení aplikace, otevřete **konfigurace základní SAML**. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)**, odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořených systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problém při přizpůsobování deklarací identity SAML, odesílá se do aplikace
 

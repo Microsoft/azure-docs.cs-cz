@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 2/5/2019
-ms.openlocfilehash: a678722666146fdf22e88680ab414b09d2a7ffaa
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 39c96608dd843577f41d2111e9e7c5517136ccae
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749932"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823565"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Kurz: Příjem dat v Průzkumníku dat Azure bez jeden řádek kódu
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Průzkumník dat Azure clusteru a databáze služby](create-cluster-database-portal.md). V tomto kurzu je název databáze *AzureMonitoring*.
+* [Průzkumník dat Azure clusteru a databáze služby](create-cluster-database-portal.md). V tomto kurzu je název databáze *TestDatabase*.
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Zprostředkovatel dat Azure Monitor: Diagnostika a protokolů aktivit
 
@@ -123,7 +123,7 @@ Nastavení kanál Průzkumník dat Azure zahrnuje několik kroků, jako napřík
 
 ### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Připojit se k webu Průzkumník dat Azure uživatelského rozhraní
 
-V Průzkumníku dat Azure *AzureMonitoring* databáze, vyberte **dotazu** otevřete uživatelské rozhraní služby Azure Data Explorer Web.
+V Průzkumníku dat Azure *TestDatabase* databáze, vyberte **dotazu** otevřete uživatelské rozhraní služby Azure Data Explorer Web.
 
 ![Stránka dotazu](media/ingest-data-no-code/query-database.png)
 
@@ -133,7 +133,7 @@ Vytvoření cílové tabulky v databázi Průzkumníka služby Azure Data pomoc�
 
 #### <a name="the-diagnostic-logs-table"></a>Diagnostické protokoly tabulky
 
-1. V *AzureMonitoring* databáze, vytvořte tabulku s názvem *DiagnosticLogsRecords* k ukládání diagnostických protokolů záznamů. Pomocí následujících `.create table` řídit příkaz:
+1. V *TestDatabase* databáze, vytvořte tabulku s názvem *DiagnosticLogsRecords* k ukládání diagnostických protokolů záznamů. Pomocí následujících `.create table` řídit příkaz:
 
     ```kusto
     .create table DiagnosticLogsRecords (Timestamp:datetime, ResourceId:string, MetricName:string, Count:int, Total:double, Minimum:double, Maximum:double, Average:double, TimeGrain:string)
@@ -147,13 +147,13 @@ Vytvoření cílové tabulky v databázi Průzkumníka služby Azure Data pomoc�
 
 Vzhledem k tomu, že struktura protokoly aktivit se tabulkový, budete potřebovat k manipulaci s daty a rozšiřovat každá událost a jeden nebo více záznamů. Nezpracovaná data se ingestují do převodní tabulky s názvem *ActivityLogsRawRecords*. Data budou v té době manipulovat a rozšířit. Rozšířená data se potom být přijímána *ActivityLogsRecords* tabulky pomocí zásady aktualizace. To znamená, že bude nutné k vytvoření dvou samostatných tabulek pro příjem protokolů aktivit.
 
-1. Vytvořte tabulku s názvem *ActivityLogsRecords* v *AzureMonitoring* databáze pro příjem záznamů protokolu aktivit. K vytvoření této tabulky, spusťte následující dotaz Průzkumník dat Azure:
+1. Vytvořte tabulku s názvem *ActivityLogsRecords* v *TestDatabase* databáze pro příjem záznamů protokolu aktivit. K vytvoření této tabulky, spusťte následující dotaz Průzkumník dat Azure:
 
     ```kusto
     .create table ActivityLogsRecords (Timestamp:datetime, ResourceId:string, OperationName:string, Category:string, ResultType:string, ResultSignature:string, DurationMs:int, IdentityAuthorization:dynamic, IdentityClaims:dynamic, Location:string, Level:string)
     ```
 
-1. Vytváření dočasných dat tabulku s názvem *ActivityLogsRawRecords* v *AzureMonitoring* databáze pro manipulaci s daty:
+1. Vytváření dočasných dat tabulku s názvem *ActivityLogsRawRecords* v *TestDatabase* databáze pro manipulaci s daty:
 
     ```kusto
     .create table ActivityLogsRawRecords (Records:dynamic)
@@ -265,9 +265,7 @@ Vyberte zdroj, ze kterého se má exportovat metriky. Několik typů prostředk�
     1. V **název zásady centra událostí vyberte** vyberte **RootManagerSharedAccessKey**.
     1. Vyberte **OK**.
 
-1. Vyberte **Uložit**. Název oboru názvů, název a zásady centra událostí se zobrazí v okně.
-
-    ![Uložit nastavení diagnostiky](media/ingest-data-no-code/save-diagnostic-settings.png)
+1. Vyberte **Uložit**.
 
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Připojte protokoly aktivit se do vašeho centra událostí
 
@@ -309,7 +307,7 @@ Teď je potřeba vytvořit datová připojení pro diagnostické protokoly a pro
 ### <a name="create-the-data-connection-for-diagnostic-logs"></a>Vytvoření datového připojení pro diagnostické protokoly
 
 1. Ve vašem clusteru Průzkumník dat Azure s názvem *kustodocs*vyberte **databází** v levé nabídce.
-1. V **databází** okně vaše *AzureMonitoring* databáze.
+1. V **databází** okně vaše *TestDatabase* databáze.
 1. V nabídce vlevo vyberte **ingestování**.
 1. V **ingestování** okna, klikněte na tlačítko **+ přidat datové připojení**.
 1. V **datové připojení** okno, zadejte následující informace:
@@ -332,9 +330,9 @@ Teď je potřeba vytvořit datová připojení pro diagnostické protokoly a pro
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | **Tabulka** | *DiagnosticLogsRecords* | V tabulce, kterou jste vytvořili v *AzureMonitoring* databáze. |
+    | **Tabulka** | *DiagnosticLogsRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
     | **Formát dat** | *JSON* | Formát používaný v tabulce. |
-    | **Mapování sloupců** | *DiagnosticLogsRecordsMapping* | Mapování, kterou jste vytvořili v *AzureMonitoring* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *DiagnosticLogsRecords* tabulky.|
+    | **Mapování sloupců** | *DiagnosticLogsRecordsMapping* | Mapování, kterou jste vytvořili v *TestDatabase* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *DiagnosticLogsRecords* tabulky.|
     | | |
 
 1. Vyberte **Vytvořit**.  
@@ -361,9 +359,9 @@ Opakujte kroky v [vytvoření datového připojení pro diagnostické protokoly]
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | **Tabulka** | *ActivityLogsRawRecords* | V tabulce, kterou jste vytvořili v *AzureMonitoring* databáze. |
+    | **Tabulka** | *ActivityLogsRawRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
     | **Formát dat** | *JSON* | Formát používaný v tabulce. |
-    | **Mapování sloupců** | *ActivityLogsRawRecordsMapping* | Mapování, kterou jste vytvořili v *AzureMonitoring* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *ActivityLogsRawRecords* tabulky.|
+    | **Mapování sloupců** | *ActivityLogsRawRecordsMapping* | Mapování, kterou jste vytvořili v *TestDatabase* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *ActivityLogsRawRecords* tabulky.|
     | | |
 
 1. Vyberte **Vytvořit**.  

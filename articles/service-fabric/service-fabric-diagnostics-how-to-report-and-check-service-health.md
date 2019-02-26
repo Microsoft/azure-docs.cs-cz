@@ -3,7 +3,7 @@ title: Hlášení a kontrola stavu pomocí Azure Service Fabric | Dokumentace Mi
 description: Zjistěte, jak zasílání zpráv o stavu z vašeho kódu služby a o tom, aby zkontroloval stav vaší služby pomocí nástrojů pro monitorování stavu, které poskytuje Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: mfussell
 editor: ''
 ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/2/2017
-ms.author: dekapur
-ms.openlocfilehash: d374886efb708797db1dd6352aa063a56aff4f44
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 02/25/2019
+ms.author: srrengar
+ms.openlocfilehash: 2126157f49bd978d2218986601245cae2e4157b6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427304"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821674"
 ---
 # <a name="report-and-check-service-health"></a>Hlášení a kontrola stavu služeb
 Když vaše služby dojde k potížím, schopnost reagovat na a vyřešit incidenty a výpadků a Dosáhněte závisí na vaši schopnost rychle rozpoznat problémy. Pokud hlásit problémy a chyby do nástroje health manager Azure Service Fabric z vašeho kódu služby můžete použít standardní nástroje, které Service Fabric nabízí ke kontrole stavu pro monitorování stavu.

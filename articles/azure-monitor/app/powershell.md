@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4b633f3294faf11c8ef9d4a4077254c3df5353cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 74da56b5e90512f8b903d5a62f7dde4e903560b8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264849"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817860"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
 Tento článek ukazuje, jak automatizovat vytváření a aktualizaci [Application Insights](../../azure-monitor/app/app-insights-overview.md) prostředky automaticky pomocí Azure Resource Manageru. Například provádět jako součást procesu sestavení. Spolu s základní prostředek Application Insights, můžete vytvořit [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../../azure-monitor/app/alerts.md), nastavte [cenové schéma](pricing.md)a vytvořit další prostředky Azure .
 
-Klíčem k vytvoření těchto prostředků je šablony JSON pro [Azure Resource Manageru](../../azure-resource-manager/powershell-azure-resource-manager.md). Řečeno v kostce, postup je: stáhnout definice JSON z existujících prostředků; parametrizovat určité hodnoty jako jsou názvy; a spusťte šablonu pokaždé, když chcete vytvořit nový prostředek. Několik prostředků můžete zabalit dohromady, k jejich vytvoření všechno v jednom přejděte – například monitorování aplikace s testy dostupnosti, upozornění a úložiště pro průběžný export. Existují některé odlišnosti k některým parameterizations, které vám objasníme tady.
+Klíčem k vytvoření těchto prostředků je šablony JSON pro [Azure Resource Manageru](../../azure-resource-manager/manage-resources-powershell.md). Řečeno v kostce, postup je: stáhnout definice JSON z existujících prostředků; parametrizovat určité hodnoty jako jsou názvy; a spusťte šablonu pokaždé, když chcete vytvořit nový prostředek. Několik prostředků můžete zabalit dohromady, k jejich vytvoření všechno v jednom přejděte – například monitorování aplikace s testy dostupnosti, upozornění a úložiště pro průběžný export. Existují některé odlišnosti k některým parameterizations, které vám objasníme tady.
 
 ## <a name="one-time-setup"></a>Jednorázová nastavení
 Pokud jste ještě nepoužívali prostředí PowerShell ve vašem předplatném Azure před:

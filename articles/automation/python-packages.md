@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: de0998dffeac54db5311bbcde1c9499488b23556
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 28ddecb20944893b23b54775e22f19644f0afbf0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434967"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816500"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Správa balíčků Python 2 ve službě Azure Automation
 
@@ -34,9 +34,38 @@ Po naimportování balíčku je uvedená na **balíčků Python 2** stránku ve 
 
 ![Seznam balíčků](media/python-packages/package-list.png)
 
+## <a name="import-packages-with-dependencies"></a>Importovat balíčky se závislostmi
+
+Azure automation není během procesu importu vyřešení závislostí pro balíčky pythonu. Existují dva způsoby, jak importovat balíček se všemi jeho závislostmi. Pouze jeden z následujících kroků je potřeba použít k importu balíčky do vašeho účtu Automation.
+
+### <a name="manually-download"></a>Ručně stáhnout.
+
+Na Windows 64-bit počítače s [python2.7](https://www.python.org/download/releases/2.7/) a [pip](https://pip.pypa.io/stable/installing/) nainstalovali, spusťte následující příkaz se stáhnout balíček a jeho závislosti:
+
+```
+C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
+```
+
+Jakmile se stáhnou balíčky, můžete je importovat do účtu automation.
+
+### <a name="runbook"></a>Runbook
+
+Importovat python runbook [balíčků Python 2 importovat z pypi do účtu Azure Automation](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) z Galerie do účtu Automation. Ujistěte se, že parametry spuštění jsou nastaveny **Azure** a spuštění sady runbook s parametry. Sada runbook vyžaduje účet Spustit jako pro účet Automation pro práci. Pro každý parametr Ujistěte se, že spustíte ho s přepínačem jak je znázorněno v následujícím seznamu a bitové kopie:
+
+* -s \<ID předplatného\>
+* -g \<resourceGroup\>
+* -a \<automationAccount\>
+* -m \<modulePackage\>
+
+![Seznam balíčků](media/python-packages/import-python-runbook.png)
+
+Sada runbook umožňuje určit, co balíček ke stažení, třeba `Azure` (čtvrtého parametru) stáhne všechny moduly Azure a všem jeho závislostem, což je přibližně 105.
+
+Po dokončení runbooku můžete zkontrolovat **balíčků Python 2** stránky **sdílené prostředky** ve vašem účtu Automation a ověřte, že balíček byl správně importovány.
+
 ## <a name="use-a-package-in-a-runbook"></a>Použití balíčku v sadě runbook
 
-Jakmile naimportujete balíček, můžete teď v sadě runbook. V následujícím příkladu [ balíček nástroje Azure Automation](https://github.com/azureautomation/azure_automation_utility). Tento balíček usnadňuje použití Pythonu s využitím Azure Automation. Pomocí balíčku, postupujte podle pokynů v úložišti GitHub a přidání do sady runbook pomocí `from azure_automation_utility import get_automation_runas_credential` třeba když chcete importovat funkce pro načtení účet Spustit jako.
+Po importu balíčku, můžete teď v sadě runbook. V následujícím příkladu [ balíček nástroje Azure Automation](https://github.com/azureautomation/azure_automation_utility). Tento balíček usnadňuje použití Pythonu s využitím Azure Automation. Pomocí balíčku, postupujte podle pokynů v úložišti GitHub a přidání do sady runbook pomocí `from azure_automation_utility import get_automation_runas_credential` třeba když chcete importovat funkce pro načtení účet Spustit jako.
 
 ```python
 import azure.mgmt.resource

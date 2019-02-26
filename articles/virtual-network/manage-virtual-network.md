@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: aa1078811d7de0933a8da761d597570eca9358f5
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: c1bbfbbdc2fd98ef3637ec021038a9f68cc8fb40
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652429"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820616"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -92,7 +92,7 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
      - [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
      - [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Automatizační skript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
+     - [Automatizační skript](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Příkazy**
 

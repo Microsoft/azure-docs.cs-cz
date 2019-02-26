@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035614"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821657"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
@@ -38,7 +38,7 @@ Tento článek ukazuje, jak ověření propustnosti sítě z místních prostře
 Připojení brány VPN typu zahrnuje následující součásti:
 
 - Místní zařízení VPN (Úplný seznam [ověřených zařízení VPN)](vpn-gateway-about-vpn-devices.md#devicetable).
-- Veřejný Internet
+- Public Internet
 - Služba Azure VPN gateway
 - Virtuální počítač Azure
 
@@ -49,7 +49,7 @@ Následující diagram znázorňuje logické připojení místní sítě ke slu�
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>Vypočítat maximální očekávané příchozí/odchozí
 
 1.  Určete požadavky na propustnost aplikace směrného plánu.
-2.  Určení vaší omezení propustnosti brány Azure VPN. Nápovědu najdete v části "Agregovaná propustnost podle SKU a typu sítě VPN" [plánování a návrh pro VPN Gateway](vpn-gateway-plan-design.md).
+2.  Určení vaší omezení propustnosti brány Azure VPN. Nápovědu najdete v části "Skladové položky brány" [informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku).
 3.  Určit, [propustnosti virtuálního počítače Azure](../virtual-machines/virtual-machines-windows-sizes.md) pro velikosti virtuálních počítačů.
 4.  Určete šířku pásma vašeho poskytovatele služeb Internetu (ISP).
 5.  Vypočítat očekávané propustnosti - nejmenší šířka pásma (virtuální počítač brány, poskytovatele internetových služeb) * 0,8.
@@ -77,7 +77,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
 
 2. Na obou uzlech povolte výjimku brány firewall pro port 5001.
 
-    **Windows:** jako správce spusťte následující příkaz:
+    **Windows:** Jako správce spusťte následující příkaz:
 
     ```CMD
     netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -89,7 +89,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
      
-    **Azure s Linuxem:** Azure s Linuxem Image obsahují povolující brány firewall. Pokud je aplikace, která naslouchá na portu, provoz je povolený průchod přes. Vlastních imagí, které jsou zabezpečené možná bude nutné explicitně otevřené porty. Běžné Linux OS – vrstva brány firewall zahrnout `iptables`, `ufw`, nebo `firewalld`.
+    **Azure Linux:**  Azure Linux Image obsahují povolující brány firewall. Pokud je aplikace, která naslouchá na portu, provoz je povolený průchod přes. Vlastních imagí, které jsou zabezpečené možná bude nutné explicitně otevřené porty. Běžné Linux OS – vrstva brány firewall zahrnout `iptables`, `ufw`, nebo `firewalld`.
 
 3. Na uzlu serveru přejděte do adresáře, kde je extrahován iperf3.exe. Potom spusťte iPerf v režimu serveru a nastavte ho tak, aby naslouchala na portu 5001 jako následující příkazy:
 

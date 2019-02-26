@@ -5,17 +5,17 @@ description: Použití Powershellu k vytvoření více modelů Machine Learning 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 442acb88a7a758517b8007b85dd6a58520a0caa4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455054"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817503"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Použití Powershellu k vytvoření Studio modely a koncových bodů webové služby z jednoho experimentu
 
@@ -27,7 +27,7 @@ Může trénování modelu jednou pomocí sloučené verze všech sad dat ve vš
 
 Který může být nejlepším řešením, ale nechcete, aby k vytváření experimentů 1 000 školení v Azure Machine Learning Studio s každou z nich představující jedinečné umístění. Kromě toho tak velmi náročný úkol, je zřejmě neefektivní od každého testu bude mít stejné komponenty s výjimkou trénovací datové sady.
 
-Naštěstí to můžete provést pomocí [přetrénování rozhraní API Azure Machine Learning Studio](retrain-models-programmatically.md) a automatizace úloh s [Azure Machine Learning Studio PowerShell](powershell-module.md).
+Naštěstí to můžete provést pomocí [přetrénování rozhraní API Azure Machine Learning Studio](/azure/machine-learning/studio/retrain-machine-learning-model) a automatizace úloh s [Azure Machine Learning Studio PowerShell](powershell-module.md).
 
 > [!NOTE]
 > Chcete-li ukázku rychleji, snižte počet umístění z 1 000 na 10. Ale stejné zásady a postupy platí i pro 1 000 umístění. Nicméně pokud chcete k trénování z datových sad, 1 000 můžete chtít při paralelním spuštění následujících skriptů prostředí PowerShell. Postup, který je nad rámec tohoto článku, ale najdete příklady prostředí PowerShell ukryta v síti Internet.  

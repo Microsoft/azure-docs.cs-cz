@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d2c2e87b3dade68dc311aa38743c11a60a69f68b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6c93c0228425b2ff020e5b4301e68eae5b1062a3
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004539"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807826"
 ---
 # <a name="find-exact-moments-within-videos"></a>Vyhledání určitých momentů ve videích
 
@@ -23,12 +23,14 @@ Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určit�
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
 2. Prohledávat všechna videa ve vašem účtu.
 
-    V následujícím příkladu jsme hledali všechna videa, které jsou vytvořené na webu Channel 9 se Scottem Hanselmanem.
+    V následujícím příkladu jsme vyhledávání pro všechna videa, které mluvit o zabezpečení a která Satya se zobrazí,
 
     ![Search](./media/video-indexer-search/video-indexer-search01.png)
 3. Hledejte souhrnný poznatky o videu.
 
-    Můžete vyhledávat ve videu kliknutím **Přehrát** na video. Potom můžete hledat ve videu výběrem **hledání** kartu. Například jsme hledali všechna místa, kde se používá text "identity protection". 
+    Můžete vyhledávat ve videu kliknutím **Přehrát** na video. Potom můžete hledat ve videu výběrem **hledání** kartu. 
+
+    V následujícím příkladu jsme vyhledejte "Secure (zabezpečeno) uvnitř vybrané videa.
 
     ![Search](./media/video-indexer-search/video-indexer-search02.png)
 

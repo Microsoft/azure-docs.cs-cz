@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cebbc8b61a806663e7cb58e0bf7fbdd589f46cca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 0d49045eea5a65461b142262bae83b9b8e7f84c8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343302"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816585"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení potíží s chybami pomocí Azure podrobné plány
 
@@ -24,7 +24,7 @@ Pravděpodobně dojde k chybám při vytváření nebo přiřazení podrobné pl
 
 Mnoho chyb bude výsledek přiřazení podrobný plán oboru. Při přiřazení selže, podrobný plán poskytuje podrobnosti o selhání nasazení. Tato informace indikuje problém tak, aby ho mohli opravit a úspěšném další nasazení.
 
-1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
+1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
 
 1. Vyberte **přiřazené podrobné plány** ze stránky na levé straně a použijte pole hledání k filtrování přiřazení podrobného plánu se najít přiřazení se nezdařilo. Můžete také řadit tabulce přiřazení podle **Stav zřizování** sloupec zobrazíte všechny neúspěšné přiřazení seskupené dohromady.
 

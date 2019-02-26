@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 516d8e9116bbdcd421897b5a5c2d9755e7e636c8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: cd137f8fb44b20c9a1b3a506ad2703fc780bae89
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903549"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806645"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačních údajů pro Azure
 
@@ -45,7 +45,7 @@ Tyto role mají přístup k fakturační údaje v [webu Azure portal](https://po
 
 ### <a name="opt-in"></a> Povolit uživatelům stahovat faktury
 
-Poté co přiřaďte odpovídající role, které chcete členům vašeho týmu účtu správce musíte zapnout vyhodnocení ke stažení faktury na webu Azure Portal. Faktury starší než prosince 2016 jsou k dispozici pouze pro účet správce.
+Po přiřazení příslušné role ke členům vašeho týmu účtu správce musíte zapnout přístup ke stažení faktury na webu Azure Portal. Faktury starší než prosince 2016 jsou k dispozici pouze pro účet správce.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Jako správce účtu, vyberte své předplatné z [okně předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure portal.

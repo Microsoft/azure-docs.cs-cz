@@ -14,19 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b7cbd69a4551605b71930a23f837b467177e3cc3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a6ab19207b2c98064f99914e16cdde85133bfd96
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451353"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821760"
 ---
-<a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
-=================================
+# <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
 
 Tento článek je určený pro vydavatele, kteří mají jejich nabídek zveřejněných na webu Azure Marketplace nebo kteří jsou v AppSource, ale má být sestaveno jejich testovací verze s pouze prostředky Azure.
 
-Šablonu Azure Resource Manageru (Azure Resource Manager) je programový kontejner prostředků Azure navrhnout pro představují doporučené řešení. Pokud nejste obeznámeni s tím, jaké šablony Resource Manageru je, přečtěte si o [pochopení šablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [vytváření šablon ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) k Ujistěte se, že víte, jak vytvářet a testovat vlastní šablony.
+Šablony Azure Resource Manageru (Resource Manager) je programový kontejner prostředků Azure navrhnout pro představují doporučené řešení. Pokud nejste obeznámeni s tím, jaké šablony Resource Manageru je, přečtěte si o [pochopení šablon Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [Tvorba šablon Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) k Ujistěte se, že víte, jak vytvářet a testovat vlastní šablony.
 
 Co dělá Test Drive je, že přijímá zadané šablony Resource Manageru a umožňuje nasazení všech prostředků potřebných z této šablony Resource Manageru do skupiny prostředků.
 
@@ -36,8 +35,7 @@ Pokud budete chtít vytvořit vyzkoušejte Azure Resource Manageru, jsou požada
 - Nakonfigurujte všechna požadovaná metadata a nastavení, aby mohla vaše testovací verze.
 - Publikujte vaši nabídku s testovací verze povolena.
 
-<a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak vytvořit vyzkoušejte Azure Resource Manageru
-------------------------------
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak vytvořit vyzkoušejte Azure Resource Manageru
 
 Nejdůležitější část o vytvoření Azure Resource Manageru Test Drive je určit, jaké scénáře mají vaši zákazníci práce. Je, že brána firewall a chcete je ukázka, jak dobře zpracování útoků prostřednictvím injektáže skriptu? Se, že je produkt úložiště a chcete ukázka jak rychlé a snadné řešení komprimuje soubory?
 
@@ -47,8 +45,7 @@ Chcete-li pokračovat v našem příkladu brány firewall, může být architekt
 
 Jakmile je návrh balíček požadovaných prostředků, nyní zahrnuje psaní a vytváření testů jednotek Resource Manageru šablony.
 
-<a name="writing-test-drive-resource-manager-templates"></a>Zápis testů jednotek Resource Manageru šablony
---------------------------------
+## <a name="writing-test-drive-resource-manager-templates"></a>Zápis testů jednotek Resource Manageru šablony
 
 Testovací verze spustí nasazení v plně automatizované režimu a proto, testovací verze šablony mají určitá omezení je popsáno níže.
 
@@ -62,24 +59,26 @@ Testovací verze však funguje v režimu plně automatická, bez zásahu člově
 
 Můžete použít libovolný platný název pro parametry, vyzkoušejte rozpozná parametr kategorie pomocí metadat typu hodnoty. Můžete **musíte zadat typ metadat pro každý parametr šablony**, jinak nebude šablony projít ověřením:
 
-    "parameters": {
-      ...
-      "username": {
-        "type": "string",
-        "metadata": {
-          "type": "username"
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "username": {
+    "type": "string",
+    "metadata": {
+      "type": "username"
     }
+  },
+  ...
+}
+```
 
 Je také důležité si uvědomit, že **všechny parametry jsou volitelné**, pokud nepoužíváte\'t chcete použít, vám\'nemusíte.
 
 ### <a name="accepted-parameter-metadata-types"></a>Typy parametru přijatý metadat
 
 | Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
-|---|---|---|---|---|
-| **BaseURI**     | řetězec          | Základní identifikátor URI balíčku nasazení| [https://\<\..\>.blob.core.windows.net/\<\..\>](#) |
+|---|---|---|---|
+| **BaseURI**     | řetězec          | Základní identifikátor URI balíčku nasazení| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
 | **uživatelské jméno**    | řetězec          | Nový náhodný uživatelské jméno.| admin68876      |
 | **Heslo**    | zabezpečený řetězec    | Nový náhodné heslo | LP! ACS\^2kh     |
 | **Id relace**   | řetězec          | Testovací verze relace jedinečný Identifikátor (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
@@ -88,40 +87,46 @@ Je také důležité si uvědomit, že **všechny parametry jsou volitelné**, p
 
 Tento parametr se inicializuje testovací verze **základní identifikátor Uri** balíčku nasazení, takže tento parametr slouží k vytváření identifikátorů Uri jakéhokoli souboru zahrnuté do balíčku.
 
-    "parameters": {
-      ...
-      "baseuri": {
-        "type": "string",
-        "metadata": {
-          "type": "baseuri",
-          "description": "Base Uri of the deployment package."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "baseuri": {
+    "type": "string",
+    "metadata": {
+      "type": "baseuri",
+      "description": "Base Uri of the deployment package."
     }
+  },
+  ...
+}
+```
 
 Uvnitř šablony můžete použít tento parametr k vytváření identifikátorů Uri jakéhokoli souboru z balíčku pro nasazení vaší testovací verze. Následující příklad ukazuje, jak vytvořit identifikátor Uri propojené šablony:
 
-    "templateLink": {
-      "uri": "[concat(parameters('baseuri'),'templates/solution.json')]",
-      "contentVersion": "1.0.0.0"
-    }
+```json
+"templateLink": {
+  "uri": "[concat(parameters('baseuri'),'templates/solution.json')]",
+  "contentVersion": "1.0.0.0"
+}
+```
 
 #### <a name="username"></a>uživatelské jméno
 
 Testovací verze inicializuje tento parametr s novým názvem náhodné uživatele:
 
-    "parameters": {
-      ...
-      "username": {
-        "type": "string",
-        "metadata": {
-          "type": "username",
-          "description": "Solution admin name."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "username": {
+    "type": "string",
+    "metadata": {
+      "type": "username",
+      "description": "Solution admin name."
     }
+  },
+  ...
+}
+```
 
 Hodnota vzorku:
 
@@ -133,17 +138,19 @@ Náhodné nebo konstantní uživatelská jména můžete pro vaše řešení.
 
 Testovací verze inicializuje tohoto parametru s novou náhodné heslo:
 
-    "parameters": {
-      ...
-      "password": {
-        "type": "securestring",
-        "metadata": {
-          "type": "password",
-          "description": "Solution admin password."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "password": {
+    "type": "securestring",
+    "metadata": {
+      "type": "password",
+      "description": "Solution admin password."
     }
+  },
+  ...
+}
+```
 
 Hodnota vzorku:
 
@@ -155,17 +162,19 @@ Náhodné nebo konstantní hesla můžete použít pro vaše řešení.
 
 Testovací verze inicializovat tento parametr s jedinečný identifikátor GUID představující ID relace testovací verze:
 
-    "parameters": {
-      ...
-      "sessionid": {
-        "type": "string",
-        "metadata": {
-          "type": "sessionid",
-          "description": "Unique Test Drive session id."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "sessionid": {
+    "type": "string",
+    "metadata": {
+      "type": "sessionid",
+      "description": "Unique Test Drive session id."
     }
+  },
+  ...
+}
+```
 
 Hodnota vzorku:
 
@@ -179,12 +188,14 @@ Některé prostředky Azure, jako jsou účty úložiště nebo názvy DNS, vyž
 
 To znamená, že pokaždé, když se Test Drive nasadí šablony Resource Manageru, vytváří **novou skupinu prostředků s jedinečným názvem** pro všechny jeho\' prostředky. Proto je potřeba použít [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkce, které jsou spojeny s názvy proměnných ve skupině prostředků. ID pro generování náhodných jedinečné hodnoty:
 
-      "variables": {
-      ...
-      "domainNameLabel": "[concat('contosovm',uniquestring(resourceGroup().id))]",
-      "storageAccountName": "[concat('contosodisk',uniquestring(resourceGroup().id))]",
-      ...
-    }
+```json
+"variables": {
+  ...
+  "domainNameLabel": "[concat('contosovm',uniquestring(resourceGroup().id))]",
+  "storageAccountName": "[concat('contosodisk',uniquestring(resourceGroup().id))]",
+  ...
+}
+```
 
 Ujistěte se, že zřetězí vašeho parametru nebo proměnnou řetězce (\'contosovm\') s výstupem jedinečný řetězec (\'resourceGroup () .id\'), protože toto zaručuje jedinečnost a spolehlivost každou proměnnou.
 
@@ -198,41 +209,45 @@ Můžete zpřístupnit můžete vyzkoušet testovací jízdu v různých oblaste
 
 Když Test Drive vytvoří instanci tohoto prostředí, vždy vytvoří skupinu prostředků v oblasti zvolit uživatelem a pak spustí vaši šablonu nasazení v tomto kontextu skupiny. Šabloně byste tedy vybrat umístění nasazení ze skupiny prostředků:
 
-    "variables": {
-      ...
-      "location": "[resourceGroup().location]",
-      ...
-    }
+```json
+"variables": {
+  ...
+  "location": "[resourceGroup().location]",
+  ...
+}
+```
 
 A pak pro každý prostředek pro konkrétní instance testovacího prostředí používá toto umístění:
 
-    "resources": [
-      {
-        "type": "Microsoft.Storage/storageAccounts",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/publicIPAddresses",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/virtualNetworks",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/networkInterfaces",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Compute/virtualMachines",
-        "location": "[variables('location')]",
-        ...
-      }
-    ]
+```json
+"resources": [
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/virtualNetworks",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "[variables('location')]",
+    ...
+  }
+]
+```
 
 Potřebujete, abyste měli jistotu, že vaše předplatné může nasadit všechny prostředky, které chcete nasadit ve všech oblastech, které vyberete. Také budete muset ověřit, že vaše Image virtuálních počítačů jsou k dispozici ve všech oblastech, které chcete povolit, jinak nebude fungovat šablony nasazení pro některé oblasti.
 
@@ -246,20 +261,22 @@ Nejsou žádná omezení související s výstupů šablony. Jenom nezapomeňte 
 
 Příklad:
 
-    "outputs": {
-      "Host Name": {
-        "type": "string",
-        "value": "[reference(variables('pubIpId')).dnsSettings.fqdn]"
-      },
-      "User Name": {
-        "type": "string",
-        "value": "[parameters('adminName')]"
-      },
-      "Password": {
-        "type": "string",
-        "value": "[parameters('adminPassword')]"
-      }
-    }
+```json
+"outputs": {
+  "Host Name": {
+    "type": "string",
+    "value": "[reference(variables('pubIpId')).dnsSettings.fqdn]"
+  },
+  "User Name": {
+    "type": "string",
+    "value": "[parameters('adminName')]"
+  },
+  "Password": {
+    "type": "string",
+    "value": "[parameters('adminPassword')]"
+  }
+}
+```
 
 ### <a name="subscription-limits"></a>Limity předplatného
 
@@ -277,20 +294,18 @@ Během publikování certifikace Test Drive unzips balíček pro nasazení a jej
 
 | Package.zip                       | Test kontejneru objektů blob disku         |
 |---|---|
-hlavní template.json                | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/main-template.json](#)  |
- Templates/Solution.JSON           | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/templates/solution.json](#) |
-| Scripts/warmup.ps1                | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/scripts/warmup.ps1](#)  |
+| hlavní template.json                | https:\//\<\...\>.blob.core.windows.net/\<\...\>/main-template.json  |
+| Templates/Solution.JSON           | https:\//\<\...\>.blob.core.windows.net/\<\...\>/templates/solution.json |
+| Scripts/warmup.ps1                | https:\//\<\...\>.blob.core.windows.net/\<\...\>/scripts/warmup.ps1  |
 
 
 Označujeme je identifikátor Uri tento kontejner objektů blob základní identifikátor Uri. Každou revizí testovacího prostředí má svůj vlastní kontejner objektů blob, a proto každou revizí testovacího prostředí má svůj vlastní základní identifikátor Uri. Testovací verze můžete předat základní identifikátor Uri balíčku rozzipovaný nasazení do šablony prostřednictvím parametrů šablony.
 
-<a name="transforming-template-examples-for-test-drive"></a>Transformace v příkladech šablon pro testovací verze
----------------------------------------------
+## <a name="transforming-template-examples-for-test-drive"></a>Transformace v příkladech šablon pro testovací verze
 
 Proces zapnutí architekturu prostředků do šablony Resource Manageru jednotky testů může být složitý. Aby bylo možné pomohou lépe tohoto procesu jsme\'uložit provedené příklady o tom, aby se co nejlépe [transformovat aktuální šablony nasazení zde](./transforming-examples-for-test-drive.md).
 
-<a name="how-to-publish-a-test-drive"></a>Jak publikovat testovací verze
----------------------------
+## <a name="how-to-publish-a-test-drive"></a>Jak publikovat testovací verze
 
 Teď, když máte vaše testovací verze vytvořené, tato část vás provede každé pole, které potřebujete k úspěšnému publikování vaše testovací verze.
 
@@ -394,8 +409,7 @@ Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro t
 
 ![Obsahuje seznam klíčů pro aplikaci Azure AD](./media/azure-resource-manager-test-drive/subdetails8.png)
 
-<a name="next-steps"></a>Další postup
-----------
+## <a name="next-steps"></a>Další postup
 
 Teď, když máte všechna vaše testovací verze pole doplnit, projděte si a **znovu publikovat** vaší nabídky. Jakmile se vaše testovací verze uplynutí certifikace, byste se měli zúčastnit rozsáhlé testování prostředí pro zákazníky v **ve verzi preview** o vaší nabídce. Spusťte si testovací jízdu v uživatelském rozhraní a otevřete vašeho předplatného Azure v portálu Azure portal a ověřte, že vaše testovací verze se plně nasazují správně.
 

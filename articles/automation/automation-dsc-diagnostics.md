@@ -1,6 +1,6 @@
 ---
-title: Předávání Azure Automation stavu konfigurační data pro generování sestav do služby Log Analytics
-description: Tento článek ukazuje, jak odeslat Desired State Configuration (DSC) data z konfigurace stavu služby Azure Automation do Log Analytics k poskytování dalších přehledů a správu pro vytváření sestav.
+title: Předávání Azure Automation stavu konfigurační data pro generování sestav na protokoly Azure monitoru
+description: Tento článek ukazuje, jak odeslat Desired State Configuration (DSC) data z Azure Automation stavu konfigurace na protokoly Azure monitoru pro generování sestav k poskytování dalších přehledů a správu.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2450ffcbd9fa7bebd5a1b862aa9c35baa5dbdc95
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 33b3ed52d198d162af666e0f38066ba936d7874f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425169"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819816"
 ---
-# <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav do služby Log Analytics
+# <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav na protokoly Azure monitoru
 
-Konfigurace stavu Azure Automation může odesílat data stav uzlu Desired State Configuration (DSC) do pracovního prostoru Log Analytics. Stav dodržování předpisů se zobrazí na webu Azure Portal nebo v prostředí PowerShell pro uzly a pro jednotlivé prostředky DSC v konfigurace uzlu. Log Analytics vám umožňuje:
+Konfigurace stavu Azure Automation může odesílat data stav uzlu Desired State Configuration (DSC) do pracovního prostoru Log Analytics. Stav dodržování předpisů se zobrazí na webu Azure Portal nebo v prostředí PowerShell pro uzly a pro jednotlivé prostředky DSC v konfigurace uzlu. Protokoly Azure Monitor vám umožní:
 
 - Získejte informace o dodržování předpisů pro spravované uzly i jednotlivé prostředky
 - Aktivace e-mailem nebo výstrahu na základě stavu dodržování předpisů
@@ -26,18 +26,20 @@ Konfigurace stavu Azure Automation může odesílat data stav uzlu Desired State
 - Stav dodržování předpisů korelaci účty služby Automation
 - Vizualizovat historii uzel dodržování předpisů v čase
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete začít, odesílat sestavy stav konfigurace Automation do Log Analytics, budete potřebovat:
+Aby začalo odesílat sestavy stav konfigurace Automation do protokolů Azure Monitor, budete potřebovat:
 
 - Listopad 2016 nebo novější verze [prostředí Azure PowerShell](/powershell/azure/overview) (v2.3.0).
 - Účet Azure Automation. Další informace najdete v tématu [Začínáme s Azure Automation.](automation-offering-get-started.md)
-- Pracovní prostor Log Analytics se **Automation and Control** nabídky služeb. Další informace najdete v tématu [Začínáme se službou Log Analytics](../log-analytics/log-analytics-get-started.md).
+- Pracovní prostor Log Analytics se **Automation and Control** nabídky služeb. Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](../log-analytics/log-analytics-get-started.md).
 - Nejméně jeden uzel konfigurace stavu služby Azure Automation. Další informace najdete v tématu [připojování počítačů pro správu podle konfigurace stavu služby Azure Automation](automation-dsc-onboarding.md)
 
-## <a name="set-up-integration-with-log-analytics"></a>Nastavení integrace s Log Analytics
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Nastavení integrace s protokoly Azure monitoru
 
-Pokud chcete začít, import dat z Azure Automation DSC do Log Analytics, proveďte následující kroky:
+Pokud chcete začít, import dat z Azure Automation DSC do protokolů Azure Monitor, proveďte následující kroky:
 
 1. Přihlaste se ke svému účtu Azure v prostředí PowerShell. Zobrazit [přihlášení pomocí Azure Powershellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)
 1. Získejte _ResourceId_ vašeho účtu automation, spuštěním následujícího příkazu Powershellu: (Pokud máte více než jeden účet služby automation, zvolte _ResourceID_ pro účet, který chcete nakonfigurovat).
@@ -60,7 +62,7 @@ Pokud chcete začít, import dat z Azure Automation DSC do Log Analytics, prove�
   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
   ```
 
-Pokud chcete zastavit import dat z konfigurace stavu služby Azure Automation do Log Analytics, spusťte následující příkaz Powershellu:
+Pokud chcete zastavit import dat z Azure Automation stavu konfigurace na protokoly Azure monitoru, spusťte následující příkaz Powershellu:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
@@ -68,7 +70,7 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 ## <a name="view-the-state-configuration-logs"></a>Zobrazit protokoly konfigurace stavu
 
-Jakmile nastavíte integraci s Log Analytics pro vaše data Stav konfigurace Automation **prohledávání protokolů** tlačítko se zobrazí na **uzly DSC** okno vašeho účtu automation. Klikněte na tlačítko **prohledávání protokolů** tlačítko k zobrazení protokolů pro data uzlu DSC.
+Po nastavení integrace s protokoly Azure monitoru pro vaše data Stav konfigurace Automation **prohledávání protokolů** tlačítko se zobrazí na **uzly DSC** okno vašeho účtu automation. Klikněte na tlačítko **prohledávání protokolů** tlačítko k zobrazení protokolů pro data uzlu DSC.
 
 ![Tlačítko hledání protokolů](media/automation-dsc-diagnostics/log-search-button.png)
 
@@ -78,7 +80,8 @@ Jakmile nastavíte integraci s Log Analytics pro vaše data Stav konfigurace Aut
 
 Klikněte na každou operaci v seznamu zobrazíte data pro danou operaci.
 
-Protokoly můžete zobrazit také tak, že [v Log Analytics. Zobrazit [našla data pomocí prohledávání protokolů](../log-analytics/log-analytics-log-searches.md).
+Protokoly můžete zobrazit také tak, že v protokoly Azure monitoru.
+Zobrazit [našla data pomocí prohledávání protokolů](../log-analytics/log-analytics-log-searches.md).
 Zadejte následující dotaz pro vyhledání protokolů konfigurace stavu: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
 Můžete také zúžení dotazu podle názvu operace. Příklad: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
@@ -89,7 +92,7 @@ Jedním z našich požadavků důležité zákazníky je pro možnost odeslání
 
 Pokud chcete vytvořit pravidlo upozornění, začněte vytvořením prohledávání protokolu pro záznamy sestavy stav konfigurace, které by měla vyvolat výstrahu. Klikněte na tlačítko **+ nové pravidlo upozornění** tlačítko a vytvořte a nakonfigurujte pravidlo upozornění.
 
-1. Na stránce Log Analytics – přehled klikněte na tlačítko **prohledávání protokolů**.
+1. Na stránce Přehled pracovního prostoru Log Analytics, klikněte na tlačítko **protokoly**.
 1. Vytvoření vyhledávací dotaz protokolu upozornění tak, že zadáte následující vyhledávání do pole dotazu:  `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    Pokud jste nastavili protokoly z více než jeden účet služby Automation nebo odběru do pracovního prostoru, můžete je seskupovat vaše předplatné a účet Automation.  
@@ -98,10 +101,10 @@ Pokud chcete vytvořit pravidlo upozornění, začněte vytvořením prohledáv�
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Najít nevydařené zdroje DSC napříč všemi uzly
 
-Jednou z výhod pomocí Log Analytics je, že můžete vyhledat neúspěšné kontroly napříč uzly.
+Jednou z výhod pomocí protokolů Azure Monitor je, že můžete vyhledat neúspěšné kontroly mezi uzly.
 Všechny instance prostředků DSC, které se nepodařilo najít.
 
-1. Na stránce Log Analytics – přehled klikněte na tlačítko **prohledávání protokolů**.
+1. Na stránce Přehled pracovního prostoru Log Analytics, klikněte na tlačítko **protokoly**.
 1. Vytvoření vyhledávací dotaz protokolu upozornění tak, že zadáte následující vyhledávání do pole dotazu:  `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>Zobrazení historických stav uzlu DSC
@@ -113,9 +116,9 @@ Tento dotaz můžete použít k vyhledání pro stav stav uzlu DSC v čase.
 
 Zobrazí se graf stav uzlu v čase.
 
-## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
+## <a name="azure-monitor-logs-records"></a>Zaznamenává údaje o Azure Monitor
 
-Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy ve službě Log Analytics.
+Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy v protokolech Azure Monitor.
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
@@ -139,7 +142,7 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy ve sl
 | ReportStartTime_t |Datum a čas spuštění sestavy. |
 | ReportEndTime_t |Datum a čas dokončení sestavy. |
 | NumberOfResources_d |Počet prostředků DSC se volá v konfiguraci použitý k uzlu. |
-| SourceSystem | Jak Log Analytics shromažďuje data. Vždy *Azure* Azure Diagnostics. |
+| SourceSystem | Jak protokoly Azure monitoru shromažďuje data. Vždy *Azure* Azure Diagnostics. |
 | ResourceId |Určuje účet Azure Automation. |
 | resultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet Automation. |
@@ -170,7 +173,7 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy ve sl
 | ErrorCode_s | Kód chyby, pokud prostředek se nepovedlo. |
 | ErrorMessage_s |Chybová zpráva, pokud prostředek se nepovedlo. |
 | DscResourceDuration_d |Čas v sekundách, které byly spuštěny prostředků DSC. |
-| SourceSystem | Jak Log Analytics shromažďuje data. Vždy *Azure* Azure Diagnostics. |
+| SourceSystem | Jak protokoly Azure monitoru shromažďuje data. Vždy *Azure* Azure Diagnostics. |
 | ResourceId |Určuje účet Azure Automation. |
 | resultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet Automation. |
@@ -181,12 +184,12 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy ve sl
 
 ## <a name="summary"></a>Souhrn
 
-Odeslání dat Stav konfigurace Automation do Log Analytics, získáte lepší přehled o stavu vaší automatizace stavu konfigurace uzlů podle:
+Odesláním automatizace stavu konfiguračních dat do protokolů Azure Monitor můžete získat lepší přehled o stavu vaší automatizace stavu konfigurace uzlů podle:
 
 - Nastavení výstrah, které vás upozorní, když dojde k problému
 - Použití vlastní zobrazení a vyhledávací dotazy k vizualizaci výsledků sad runbook, stav úlohy runbooku a další související klíčových indikátorů nebo metriky.  
 
-Log Analytics poskytuje větší provozní viditelnost ke svým datům stav konfigurace Automation a pomůžou řešit incidenty rychleji.
+Protokoly Azure monitoru poskytuje větší provozní viditelnost ke svým datům stav konfigurace Automation a pomůžou řešit incidenty rychleji.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -196,5 +199,5 @@ Log Analytics poskytuje větší provozní viditelnost ke svým datům stav konf
 - Reference k rutinám Powershellu najdete v části [rutiny Azure Automation stavu konfigurace](/powershell/module/azurerm.automation/#automation)
 - Informace o cenách najdete v tématu [ceny konfigurace stavu služby Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
 - Příklad použití Azure Automation stav konfigurace v kanálu průběžného nasazování najdete v tématu [nepřetržité nasazení pomocí Azure Automation konfigurace stavu a Chocolatey](automation-dsc-cd-chocolatey.md)
-- Další informace o tom, jak vytvářet různé vyhledávací dotazy a kontrolovat protokoly stav konfigurace Automation s Log Analytics najdete v tématu [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md)
-- Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../azure-monitor/platform/collect-azure-metrics-logs.md)
+- Další informace o tom, jak vytvářet různé vyhledávací dotazy a kontrolovat stav konfigurace Automation protokoly s protokoly Azure monitoru, naleznete v tématu [prohledávání protokolu ve službě Azure Monitor protokoly](../log-analytics/log-analytics-log-searches.md)
+- Další informace o zdrojích pro shromažďování dat a protokolování Azure Monitor, naleznete v tématu [protokoly shromažďování dat úložiště Azure ve službě Azure Monitor – přehled](../azure-monitor/platform/collect-azure-metrics-logs.md)

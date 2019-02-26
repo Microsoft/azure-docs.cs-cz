@@ -3,7 +3,7 @@ title: Dotaz pro události clusteru v clusteru Azure Service Fabric pomocí rozh
 description: Zjistěte, jak použít rozhraní Azure Service Fabric Eventstoru API k dotazování pro události platformy
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/29/2018
-ms.author: dekapur
-ms.openlocfilehash: 556b3375a0f5d138255ba4c46b034894b1037da0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 02/25/2019
+ms.author: srrengar
+ms.openlocfilehash: 491f113a3f08293b5f978242d27714b576d85d6f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722322"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818795"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Dotazování rozhraní API Eventstoru pro události clusteru
 
@@ -46,7 +46,7 @@ Každá entita v clusteru může být dotazy na události. Můžete také zadáv
 * Aplikace: `/EventsStore/Applications/Events`
 * Aplikace: `/EventsStore/Applications/<AppName>/$/Events`
 * Služby: `/EventsStore/Services/Events`
-* Služba: `/EventsStore/Services/<ServiceName>/$/Events`
+* Service: `/EventsStore/Services/<ServiceName>/$/Events`
 * Oddíly: `/EventsStore/Partitions/Events`
 * Oddíl: `/EventsStore/Partitions/<PartitionID>/$/Events`
 * Repliky: `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`

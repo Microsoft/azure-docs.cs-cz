@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/19/2019
+ms.date: 02/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: df4ae4b0c3f230947e0b9a5885070049f32a4b2f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fb96d69604ce341cec2de029f9663f6b8d274876
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429858"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822374"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -39,7 +39,7 @@ Správa aktualizací umožňuje nativně připojit počítače v několika před
 
 Až CVE vydání, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení.  Pro počítače s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
 
-Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
+Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné protokoly Azure monitoru. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
 
 Mimo plán kontrol je zahájeno kontroly dodržování předpisů pro aktualizace do 15 minut po restartování, před instalací aktualizací a po instalaci aktualizací agenta MMA.
 
@@ -94,7 +94,7 @@ Agenti Windows musí být nakonfigurován pro komunikaci se serverem WSUS nebo m
 
 Pro Linux musí mít tento počítač přístup k úložišti aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Update managementem se vyžaduje protokol TLS 1.1 a TLS 1.2. Toto řešení nepodporuje agenta Log Analytics pro Linux, který je nakonfigurovaný k ukládání dat do více než jeden pracovní prostory Log Analytics.
 
-Informace o instalaci agenta Log Analytics pro Linux a stáhněte si nejnovější verzi najdete v tématu [agenta Operations Management Suite pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat Log Analytics agenta pro Windows najdete v tématu [Operations Management Suite Agent pro Windows](../log-analytics/log-analytics-windows-agent.md).
+Informace o instalaci agenta Log Analytics pro Linux a stáhněte si nejnovější verzi najdete v tématu [agenta Log Analytics pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat Log Analytics agenta pro Windows najdete v tématu [Microsoft Monitoring Agent pro Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -120,10 +120,10 @@ Pokud vaší skupině pro správu System Center Operations Manageru je připojen
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Aktualizace sady pro správu nasazení
 
-Další informace o způsobu aktualizace sad management Pack řešení najdete v tématu [připojení Operations Manageru k Log Analytics](../azure-monitor/platform/om-agents.md).
+Další informace o způsobu aktualizace sad management Pack řešení najdete v tématu [připojení Operations Manageru do Azure monitoru protokoly](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
-> Pro systémy s agentem Operations Manageru abyste mohli plně spravovat pomocí správy aktualizací, je zapotřebí agenta aktualizovat tak, aby Microsoft Monitoring Agent. Zjistěte, jak aktualizovat agenta, najdete v článku [postup upgradu agenta nástroje Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
+> Pro systémy s agentem Operations Manageru abyste mohli plně spravovat pomocí správy aktualizací, je zapotřebí agenta aktualizovat tak, aby Microsoft Monitoring Agent. Zjistěte, jak aktualizovat agenta, najdete v článku [postup upgradu agenta nástroje Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). Pro prostředí pomocí nástroje Operations Manager, je vyžadován, že používáte System Center Operations Manager 2012 R2 UR 14 nebo novější.
 
 ## <a name="onboard"></a>Povolení řešení Update Management
 
@@ -136,7 +136,7 @@ Pokud chcete začít, opravami systémů, je potřeba povolit řešení Update M
   
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Ověřte, zda připojení počítače mimo Azure
 
-Potvrďte, že jsou přímo připojené počítače nekomunikují s Log Analytics, po několika minutách můžete spustit jeden následující prohledávání protokolů.
+Potvrďte, že jsou přímo připojené počítače nekomunikují s protokoly Azure monitoru, po několika minutách můžete spustit jeden následující prohledávání protokolů.
 
 #### <a name="linux"></a>Linux
 

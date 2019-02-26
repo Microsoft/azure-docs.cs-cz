@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428473"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817452"
 ---
 # <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
 Tento článek obsahuje více témat pro správu prostředí Azure Automation.
@@ -39,7 +39,7 @@ Následující tabulka shrnuje zásady uchovávání informací pro různé pros
 
 Zásady uchovávání informací se vztahuje na všechny uživatele a aktuálně nejde přizpůsobit.
 
-Nicméně pokud je potřeba data uchovávat po delší dobu, můžete dál runbook protokoly úlohy ke službě Log Analytics.  Další informace najdete v tématu [předávání dat úloh Azure Automation do Log Analytics](automation-manage-send-joblogs-log-analytics.md).   
+Nicméně pokud je potřeba data uchovávat po delší dobu, můžete dál runbook protokoly úlohy a protokoly Azure monitoru.  Další informace najdete v tématu [předávání dat úloh Azure Automation na protokoly Azure monitoru](automation-manage-send-joblogs-log-analytics.md).   
 
 ## <a name="backing-up-azure-automation"></a>Zálohování Azure Automation
 Když odstraníte účet automation v Microsoft Azure, jsou odstraněny všechny objekty v účtu včetně runbooky, moduly, konfigurace, nastavení, úlohy a prostředky. Objekty nelze obnovit, po odstranění účtu.  Před odstraněním zálohovat obsah vašeho účtu automation můžete použít následující informace. 

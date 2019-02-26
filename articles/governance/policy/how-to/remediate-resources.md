@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 086ef9030451632ee4defa39a402e4d62c897f20
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342112"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816554"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
@@ -131,6 +131,8 @@ Přidání role pro toto přiřazení spravovanou identitu, postupujte podle tě
 
 ## <a name="create-a-remediation-task"></a>Vytvořte úlohu nápravy
 
+### <a name="create-a-remediation-task-through-portal"></a>Vytvořte úlohu nápravu prostřednictvím portálu
+
 Při vyhodnocování, přiřazení zásad s **deployIfNotExists** efekt Určuje, zda existují nekompatibilní prostředky. Po nalezení nekompatibilní prostředky jsou podrobné informace jsou k dispozici na **nápravy** stránky. Společně se seznamem zásad, které mají nekompatibilní prostředky je možnosti k aktivaci **úloha opravy**. Tato možnost je, co vytvoří nasazení z **deployIfNotExists** šablony.
 
 Chcete-li vytvořit **úloha opravy**, postupujte podle těchto kroků:
@@ -163,6 +165,32 @@ Chcete-li vytvořit **úloha opravy**, postupujte podle těchto kroků:
    ![Napravit - prostředků úkolu kontextové nabídky](../media/remediate-resources/resource-task-context-menu.png)
 
 Prostředky nasazené prostřednictvím **úloha opravy** jsou přidány do **nasazené prostředky** karty na stránce zásady dodržování předpisů.
+
+### <a name="create-a-remediation-task-through-azure-cli"></a>Vytvořte úlohu nápravu prostřednictvím rozhraní příkazového řádku Azure
+
+Chcete-li vytvořit **úloha opravy** pomocí Azure CLI, použijte `az policy remediation` příkazy. Nahraďte `{subscriptionId}` svým ID předplatného a `{myAssignmentId}` s vaší **deployIfNotExists** ID přiřazení zásady.
+
+```azurecli-interactive
+# Login first with az login if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+Další příkazy nápravy a příklady najdete v tématu [nápravy zásad az](/cli/azure/policy/remediation) příkazy.
+
+### <a name="create-a-remediation-task-through-azure-powershell"></a>Vytvořte úlohu nápravu prostřednictvím Azure Powershellu
+
+Vytvoření **úloha opravy** pomocí Azure Powershellu, použijte `Start-AzPolicyRemediation` příkazy. Nahraďte `{subscriptionId}` svým ID předplatného a `{myAssignmentId}` s vaší **deployIfNotExists** ID přiřazení zásady.
+
+```azurepowershell-interactive
+# Login first with Connect-AzAccount if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+Další rutiny nápravy a příklady najdete v tématu [Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) modulu.
 
 ## <a name="next-steps"></a>Další postup
 

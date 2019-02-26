@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0d67571024c9ace3618f7ae6172122ac48b57faa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c020d3c7513efda93d7ac5d3bdd79f21f8bc77dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106714"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818472"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -28,7 +28,7 @@ Přihlaste se k Azure na adrese https://portal.azure.com.
 
 Přejděte na svůj účet Automation a vyberte buď **inventáře** nebo **Change tracking** pod **CONFIGURATION MANAGEMENT**.
 
-Zvolte pracovní prostor Log analytics a účet Automation a klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+Zvolte pracovní prostor Log Analytics a účet Automation a klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Začlenění řešení Inventory](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
@@ -56,7 +56,7 @@ Po oznámení dokončení začlenění řešení Change Tracking a Inventory kli
 
 Řešení Update Management umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows. Můžete vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích. Tato akce Povolit řešení pro váš virtuální počítač.
 
-Vyberte **Správa aktualizací** pod **UPDATE MANAGEMENT**. Vybraný pracovní prostor Log Analytics je stejný jako pracovní prostor použitý v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management. Povolení řešení trvá přibližně 15 minut.
+Vyberte **Správa aktualizací** pod **UPDATE MANAGEMENT**. Vybraný pracovní prostor Log Analytics je stejný pracovní prostor v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management. Povolení řešení trvá přibližně 15 minut.
 
 ![Začlenění aktualizace řešení](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
@@ -129,7 +129,7 @@ Následující řešení jsou závislé na pracovní prostor Log Analytics:
 * [Sledování změn](automation-change-tracking.md)
 * [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
 
-Pokud se rozhodnete, že již nechcete integraci vašeho účtu Automation s Log Analytics, můžete svůj účet neodpojíte přímo z portálu Azure portal.  Než budete pokračovat, budete nejdřív muset odebrat řešení již bylo zmíněno dříve, jinak nebudou moct tento proces budete pokračovat. Přečtěte si článek pro konkrétní řešení, které jste importovali, abyste pochopili kroky potřebné k jeho odebrání.
+Pokud se rozhodnete, že již nechcete integrace účtu služby Automation s pracovním prostorem Log Analytics, můžete svůj účet neodpojíte přímo z portálu Azure portal.  Než budete pokračovat, budete nejdřív muset odebrat řešení již bylo zmíněno dříve, jinak nebudou moct tento proces budete pokračovat. Přečtěte si článek pro konkrétní řešení, které jste importovali, abyste pochopili kroky potřebné k jeho odebrání.
 
 Po odebrání těchto řešení můžou proveďte následující kroky se zrušit propojení účtu Automation.
 

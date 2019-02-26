@@ -11,12 +11,12 @@ ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ffa14e3fb3fd41d6a30e1cf30713b26d7ecd255a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436004"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815888"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
 
@@ -58,8 +58,10 @@ Pokud chcete řešení povolit, nakonfigurujte umístění, pracovní prostor Lo
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
-Po povolení řešení začnou do Log Analytics proudit informace o nainstalovaném softwaru a změnách na virtuálních počítačích.
+Po povolení řešení informace o nainstalovaném softwaru a změny ve virtuálním počítači jsou přenášeny do protokoly Azure monitoru.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ## <a name="onboard-a-vm"></a>Připojení virtuálního počítače
@@ -101,7 +103,7 @@ Pokud například vyhledáte Contoso, vrátí se veškerý software, jehož náz
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Vyhledávání nainstalovaného softwaru v protokolech inventáře
 
-Inventarizace generuje data protokolu, která se odesílají do Log Analytics. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Inventory** vyberte **Log Analytics**.
+Inventarizace generuje data protokolu, která se odešle protokoly Azure monitoru. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Inventory** vyberte **Log Analytics**.
 
 Data řešení Inventory se ukládají jako typ **ConfigurationData** (Konfigurační data).
 Následující ukázkový dotaz Log Analytics vrátí výsledky inventáře, kde se Publisher (Vydavatel) rovná Microsoft Corporation.
@@ -113,11 +115,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Další informace o provozu a prohledávání souborů protokolů v Log Analytics najdete na stránce [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md).
+Další informace o provozu a prohledávání souborů protokolů v protokoly Azure monitoru, najdete v článku [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Inventarizace jediného počítače
 
-Pokud chcete zobrazit inventář softwaru pro jediný počítač, můžete ze stránky prostředku virtuálního počítače Azure přejít k inventáři nebo pomocí Log Analytics vyfiltrovat odpovídající počítač.
+Pokud chcete zobrazit inventář softwaru pro jeden počítač, můžete na stránce prostředků virtuálního počítače Azure přejít k inventáři nebo použít protokoly Azure monitoru vyfiltrovat odpovídající počítač.
 Následující příklad dotazu Log Analytics vrátí seznam softwaru pro počítač ContosoVM.
 
 ```loganalytics

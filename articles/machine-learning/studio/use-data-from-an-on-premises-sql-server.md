@@ -5,17 +5,17 @@ description: Data z místní databáze systému SQL Server použijte k provádě
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 0d7b7ce4d79b078b389ff80727f2b233afe0da5a
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 77e8a951d806d93eb2a0a59152ec8388e2a6397b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587289"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818608"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Provádět analýzy k místní databázi SQL serveru pomocí Azure Machine Learning Studio
 

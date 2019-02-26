@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: 86e4720f001f05534bc9af703f0f98d7ca5d95e4
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a09d880a1a17e429692dcb8e542657f416de7b30
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268834"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823531"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -91,7 +91,7 @@ Při vytváření trasy definované uživatelem můžete zadat následující ty
 
     Můžete definovat trasu s předponou adresy 0.0.0.0/0 a typem dalšího segmentu směrování Virtuální zařízení a tím umožnit zařízení kontrolovat provoz a určit, jestli ho předat, nebo zahodit. Pokud máte v úmyslu vytvořit trasu definovanou uživatelem, která obsahuje předponu adresy 0.0.0.0/0, přečtěte si nejprve část [Předpona adresy 0.0.0.0/0](#default-route).
 
-- **Brána virtuální sítě**: Určete, kdy chcete provoz určený pro konkrétní předpony adres směruje do brány virtuální sítě. Brána virtuální sítě musí být vytvořená s typem **VPN**. Nemůžete zadat bránu virtuální sítě vytvořenou s typem **ExpressRoute** v uživatelsky definované trase protože službou ExpressRoute, musíte použít protokol BGP pro vlastní trasy. Můžete definovat trasu, která směruje provoz určený pro předponu adresy 0.0.0.0/0 do brány virtuální sítě [založené na trasách](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype). V místním prostředí můžete mít zařízení, které kontroluje provoz a určuje, jestli ho předat, nebo zahodit. Pokud máte v úmyslu vytvořit trasu definovanou uživatelem pro předponu adresy 0.0.0.0/0, přečtěte si nejprve část [Předpona adresy 0.0.0.0/0](#default-route). Pokud jste [povolili protokol BGP pro bránu virtuální sítě VPN](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), místo konfigurace trasy definované uživatelem pro předponu adresy 0.0.0.0/0 můžete trasu s předponou 0.0.0.0/0 inzerovat přes protokol BGP.
+- **Brána virtuální sítě**: Určete, kdy chcete provoz určený pro konkrétní předpony adres směruje do brány virtuální sítě. Brána virtuální sítě musí být vytvořená s typem **VPN**. Nemůžete zadat bránu virtuální sítě vytvořenou s typem **ExpressRoute** v uživatelsky definované trase protože službou ExpressRoute, musíte použít protokol BGP pro vlastní trasy. Můžete definovat trasu, která směruje provoz určený pro předponu adresy 0.0.0.0/0 do brány virtuální sítě [založené na trasách](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype). V místním prostředí můžete mít zařízení, které kontroluje provoz a určuje, jestli ho předat, nebo zahodit. Pokud máte v úmyslu vytvořit trasu definovanou uživatelem pro předponu adresy 0.0.0.0/0, přečtěte si nejprve část [Předpona adresy 0.0.0.0/0](#default-route). Pokud jste [povolili protokol BGP pro bránu virtuální sítě VPN](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), místo konfigurace trasy definované uživatelem pro předponu adresy 0.0.0.0/0 můžete trasu s předponou 0.0.0.0/0 inzerovat přes protokol BGP.
 - **Žádný**: Určete, kdy chcete zahodit provoz určený pro předponu adresy, nikoli předávají provoz směřující do cíle. Pokud jste nějakou možnost plně nenakonfigurovali, Azure může pro některé volitelné systémové trasy uvést typ *Žádný*. Pokud se například typ *Žádný* zobrazí jako **IP adresa dalšího segmentu směrování** s **Typem dalšího segmentu směrování** *Brána virtuální sítě* nebo *Virtuální zařízení*, může být důvodem zastavení nebo neúplná konfigurace zařízení. Azure vytvoří [výchozí systémové trasy](#default) pro vyhrazené předpony adres s typem dalšího segmentu směrování **Žádný**.
 - **Virtuální síť**: Určete, kdy chcete přepsat výchozí směrování v rámci virtuální sítě. V části [Příklad směrování](#routing-example) najdete příklad, proč byste mohli vytvořit trasu s typem segmentu směrování **Virtuální síť**.
 - **Internet**: Zadejte, pokud chcete explicitně směrovat provoz směřující na předponu adresy do Internetu, nebo pokud chcete provoz určený pro služby Azure s veřejnými IP adresami zachovat v páteřní síti Azure.

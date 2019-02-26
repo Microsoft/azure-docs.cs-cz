@@ -4,18 +4,18 @@ ms.service: service-bus-relay
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
-ms.openlocfilehash: 13ac2ec0569dc79791eca9efb2bd51e7b76ddd05
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571947"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825596"
 ---
 1. Přihlaste se na web [Azure Portal][Azure portal].
 2. V nabídce vlevo vyberte **+ Vytvořit prostředek**. Pak vyberte **Integrace** > **Přenos**. Pokud se v seznamu **Přenos** nezobrazuje, vyberte v pravém horním rohu **Zobrazit vše**. 
 3. V části **Vytvořit obor názvů** zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
 4. V poli **Předplatné** vyberte předplatné Azure, ve kterém chcete obor názvů vytvořit.
-5. V poli [Skupina prostředků](../articles/azure-resource-manager/resource-group-portal.md) vyberte existující skupinu prostředků, do které se obor názvů umístí, nebo vytvořte novou.  
+5. V poli [Skupina prostředků](../articles/azure-resource-manager/manage-resource-groups-portal.md) vyberte existující skupinu prostředků, do které se obor názvů umístí, nebo vytvořte novou.  
 6. V části **Umístění** vyberte zemi nebo oblast, ve které by se měl váš oboru názvů hostovat.
    
     ![Vytvoření oboru názvů][create-namespace]
@@ -28,7 +28,7 @@ ms.locfileid: "51571947"
 3. V části **Zásady sdíleného přístupu** vyberte **RootManageSharedAccessKey**.
    
     ![connection-info][connection-info]
-4. V části **Zásady: RootManageSharedAccessKey** vyberte tlačítko **Kopírovat** vedle možnosti **Připojovací řetězec – primární klíč**. Tím se připojovací řetězec zkopíruje do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
+4. V části **zásad: RootManageSharedAccessKey**, vyberte **kopírování** vedle **připojovací řetězec – primární klíč**. Tím se připojovací řetězec zkopíruje do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
    
     ![connection-string][connection-string]
 

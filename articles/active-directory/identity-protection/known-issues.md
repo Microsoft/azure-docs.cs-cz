@@ -17,17 +17,17 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a1cc8a9305103a30fc0ea0fc40c23a522e136d80
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339019"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807180"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Nejčastější dotazy a známé problémy s (Aktualizovat) v Azure Active Directory identity protection
 
 
-## <a name="dismiss-user-risk"></a>Skrýt riziko uživatele
+## <a name="dismiss-user-risk-known-issues"></a>Zavřít uživatelského rizika známé problémy
 
 **Zavřít uživatelského rizika** v modelu classic Identity Protection nastaví objekt actor v historii rizika uživatele ve službě Identity Protection (Aktualizovat) na **Azure AD**.
 
@@ -37,7 +37,7 @@ ms.locfileid: "56339019"
 Existuje problém aktuální známé příčinou latence v toku propuštění rizika uživatele. Pokud máte "zásady rizik uživatelů", přestane tato zásada použití dismissed uživatelům v rámci minut po kliknutí na "Zavřít uživatelského rizika". Nicméně jsou známy zpoždění pomocí uživatelského rozhraní "stavu riziko" dismissed uživatelů. Jako alternativní řešení aktualizujte stránku, na úrovni prohlížeče zobrazíte nejnovější uživatele "Stav rizika".
 
 
-## <a name="risky-users-report"></a>Sestava o rizikových uživatelích
+## <a name="risky-users-report-known-issues"></a>Sestava rizikových uživatelé známé problémy
 
 Dotazy na **uživatelské jméno** pole jsou malá a velká písmena, při dotazech na **název** pole jsou nezávislá na případ.
 
@@ -45,14 +45,10 @@ Při přepínání **hierarchické zobrazení** skryje **poslední aktualizace r
 
 **Zavřít všechny události** v modelu classic Identity Protection nastaví stav rizikových událostí na **uzavřené (vyřešené)**.
 
-Pokud se pokusíte o přístup k sestavě rizikových uživatelů kliknutím **Rizikoví uživatelé sestavy** záznamu přihlášení v sestavě rizikových přihlášení, mohou někdy zobrazit **došlo k chybě. Zkuste to prosím znovu**. Chcete-li to napravit, klikněte na tlačítko **použít** nebo **resetování** v horní části obrazovky a rizikových uživatelů se vyplní data.
 
-
-## <a name="risky-sign-ins-report"></a>Sestava rizikových přihlášení
+## <a name="risky-sign-ins-report-known-issues"></a>Sestavy rizikových přihlášení známé problémy
 
 **Vyřešit** na riziko událostí, nastaví stav na **uživatele předaný MFA řízené zásadami na základě rizik**.
-
-**Resetovat** v **rizikových přihlášení** sestavy nevymaže hodnotu **rizikových událostí typu**.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy

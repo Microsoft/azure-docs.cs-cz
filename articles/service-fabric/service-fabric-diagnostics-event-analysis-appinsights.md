@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: efcd2e279d1bf387bc11c238a0592ecee6545cc4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7a3abd854ec5e492407d1fbdc8d170f2a27ba1bc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053615"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816721"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Události analýzy a vizualizace s využitím Application Insights
 
@@ -48,50 +48,6 @@ Application Insights má určené zobrazení pro dotazování na data, která se
 ![Podrobnosti o žádosti Application Insights](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
 Prozkoumat další možnosti portálu služby Application Insights, přejděte na [portálu dokumentace k Application Insights](../azure-monitor/app/app-insights-dashboards.md).
-
-### <a name="configuring-application-insights-with-wad"></a>Konfigurace Application Insights s využitím WAD
-
->[!NOTE]
->To platí pouze pro clustery s Windows v tuto chvíli.
-
-Existují dva základní způsoby odesílání dat z WAD do služby Azure Application Insights, který můžete vytvořit přidáním jímky Application Insights do konfigurace WAD, jak je uvedeno v [v tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
-
-#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Přidat Instrumentační klíč Application Insights při vytváření clusteru na webu Azure portal
-
-![Přidání AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
-
-Při vytváření clusteru, pokud je Diagnostika "On", volitelné pole a zadejte kód instrumentace Application Insights se zobrazí. Pokud vám Application Insights sem vložte klíč, jímku Application Insights automaticky nakonfigurované pro vás v šabloně Resource Manageru, který se používá k nasazení clusteru.
-
-#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Přidání Application Insights jímky do šablony Resource Manageru
-
-V "WadCfg" šablony Resource Manageru přidejte "Sink" zahrnutím následující dvě změny:
-
-1. Přidat konfiguraci jímky přímo po deklaraci sady `DiagnosticMonitorConfiguration` dokončení:
-
-    ```json
-    "SinksConfig": {
-        "Sink": [
-            {
-                "name": "applicationInsights",
-                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
-            }
-        ]
-    }
-
-    ```
-
-2. Zahrnout jímce ve `DiagnosticMonitorConfiguration` přidáním následujícího řádku `DiagnosticMonitorConfiguration` z `WadCfg` (bezprostředně před `EtwProviders` jsou deklarovány):
-
-    ```json
-    "sinks": "applicationInsights"
-    ```
-
-V obou předchozích fragmenty kódu byl použit název "applicationInsights" k popisu jímky. Toto není povinné a jako jímku název je součástí "jímky", můžete nastavit název na libovolný řetězec.
-
-V současné době protokoly z clusteru zobrazí jako **trasy** v log vieweru. Application Insights. Protože většina trasování z platformy je úrovně "Informační", můžete také zvážit změnu konfigurace jímky pouze odeslat protokoly typu "Kritický" nebo "Chyba". To můžete udělat tak, že přidáte "Kanály" do jímky, jak je ukázáno v [v tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
-
->[!NOTE]
->Pokud používáte nesprávný klíč Application Insights na portálu nebo v šabloně Resource Manageru, budete muset ručně změnit klíč a aktualizaci clusteru a znovu ji nasadíte.
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Konfigurace Application Insights s využitím EventFlow
 

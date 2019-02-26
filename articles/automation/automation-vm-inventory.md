@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c0caece57885dfa3c26d368990a6af8e5b14eed6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765377"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823990"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
 
@@ -36,7 +36,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. V levém podokně webu Azure Portal vyberte **Virtuální počítače**.
 2. V seznamu virtuálních počítačů vyberte virtuální počítač.
 3. Na **prostředků** nabídky v části **operace**vyberte **inventáře**.
-4. Vyberte pracovní prostor Log Analytics, ve kterém se budou ukládat vaše protokoly dat.
+4. Vyberte pracovní prostor Log Analytics pro ukládání datových protokolů.
     Pokud v dané oblasti nemáte k dispozici žádný pracovní prostor, zobrazí se výzva k vytvoření výchozího pracovního prostoru a účtu Automation.
 5. Pokud chcete zahájit připojování vašeho počítače, vyberte **Povolit**.
 
@@ -91,7 +91,9 @@ Následující tabulka obsahuje informace o jednotlivých vlastnostech, které j
 
 ## <a name="manage-machine-groups"></a>Spravovat skupiny počítačů
 
-Inventář můžete vytvořit a zobrazit skupiny počítačů v Log Analytics. Skupiny počítačů jsou kolekce počítačů, které jsou definované v dotazu v Log Analytics.
+Inventář můžete vytvářet a zobrazovat skupiny počítačů v Azure Monitor protokoly. Skupiny počítačů jsou kolekce počítačů, které jsou definované v dotazu v protokolech Azure Monitor.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Zobrazení skupin vyberte váš počítač **Machine skupiny** karty na stránce inventáře.
 
@@ -116,7 +118,7 @@ Odebrání virtuálního počítače ze správy inventáře:
 3. V seznamu vyberte virtuální počítač, který chcete odpojit. U virtuálního počítače se zobrazí zelené zaškrtnutí vedle textu **Tento pracovní prostor** ve sloupci **Připojení OMS**.
 
    >[!NOTE]
-   >OMS se teď označuje jako Log Analytics.
+   >OMS se teď označuje jako protokoly Azure monitoru.
    
 4. V horní části další stránky vyberte **Odpojit**.
 5. V potvrzovacím okně vyberte **Ano**.

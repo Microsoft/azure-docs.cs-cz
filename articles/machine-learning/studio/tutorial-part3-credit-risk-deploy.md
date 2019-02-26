@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 1d860b14a878aa7daf43404744eb897f3bd91e13
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587187"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823786"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Kurz 3: Nasadit model rizika kredit – Azure Machine Learning Studio
 
@@ -234,7 +234,7 @@ Nejrychlejší a nejjednodušší způsob pro přístup k webové služby Classi
 
 Tyto šablony webové aplikace můžete vytvářet vlastní webové aplikace, který zná vstupních dat webové služby a budou vracet. Všechno, co je třeba provést je poskytnout přístup k vaší webové služby a data a udělá zbytek šablony.
 
-Další informace o použití šablony webové aplikace najdete v tématu [využívání služby Azure Machine Learning Web pomocí šablony webové aplikace](consume-web-service-with-web-app-template.md).
+Další informace o použití šablony webové aplikace najdete v tématu [využívání služby Azure Machine Learning Web pomocí šablony webové aplikace](/azure/machine-learning/studio/consume-web-services).
 
 
 

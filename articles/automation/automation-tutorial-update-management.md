@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: bd7072ce8212366bf3d8a0a9e0a30000debea2ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434610"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822342"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Správa aktualizací pro Windows pomocí služby Azure Automation
 
@@ -66,7 +66,7 @@ V části **Update Management** nastavte umístění, pracovní prostor Log Anal
 
 ![Okno Povolit řešení Update Management](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-Povolení řešení může trvat až několik minut. Během této doby nezavírejte okno prohlížeče. Po povolení řešení začnou do Log Analytics proudit informace o chybějících aktualizacích na virtuálních počítačích. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
+Povolení řešení může trvat až několik minut. Během této doby nezavírejte okno prohlížeče. Po povolení řešení informace o chybějících aktualizacích na virtuálním počítači jsou přenášeny do protokoly Azure monitoru. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ## <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
@@ -137,13 +137,13 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Skupiny, které se aktualizace (preview)**: Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)
 
-* **Počítače k aktualizaci**: Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
+* **Počítače k aktualizaci**: Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md)
 
 * **Klasifikace aktualizací**: Vyberte typy softwaru, který nasazení aktualizací zahrnutých v nasazení. Pro účely tohoto kurzu nechte vybrané všechny typy.
 
   Typy klasifikace jsou:
 
-   |Operační systém  |Typ  |
+   |Operační systém  |Type  |
    |---------|---------|
    |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/16/2018
+ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 700295c94428021445f6cbbd84175046d57b9147
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 559409ac73fb28df18c2ddeca7eb2bcd06a24835
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054890"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817656"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostikovat běžné scénáře s využitím Service Fabric
 
@@ -47,7 +47,7 @@ Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti mon
 
     Když kliknete na výjimku v seznamu, můžete si prohlédnout podrobnosti, včetně kontext služby, pokud použijete Service Fabric Application Insights SDK.
 
-    ![Výjimka AI](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
+    ![AI Exception](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
 
 ## <a name="how-do-i-view-which-http-calls-are-used-in-my-services"></a>Jak zobrazím které HTTP volání se používají v mých služeb?
 
@@ -111,7 +111,6 @@ Ve stejném zobrazení se všechny grafy zobrazí se některé dlaždice pro vý
 
     * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
     * `Processor(_Total)\\% Processor Time`
-    * `Service Fabric Service(*)\\Average milliseconds per request`
 
     V tomto rychlém startu, VotingData a VotingWeb jsou názvy procesů používá, takže tyto čítače pro sledování může vypadat třeba
 
@@ -128,7 +127,10 @@ Ve stejném zobrazení se všechny grafy zobrazí se některé dlaždice pro vý
 
 ## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Jak mohu sledovat výkon modelu Reliable Services a objekty actor?
 
-Pro sledování výkonu modelu Reliable Services nebo Actors ve svých aplikacích, měli byste přidat také čítače Service Fabric Actor, metoda objektu Actor, služby a metody služby. Tyto čítače můžete přidat podobným způsobem jako výše uvedeného scénáře, tady jsou příklady spolehlivé služby a objekt actor čítačů výkonu přidat v Log Analytics:
+Ke sledování výkonu modelu Reliable Services nebo Actors ve svých aplikacích, mají shromažďovat také čítače Service Fabric Actor, metoda objektu Actor, služby a metody služby. Tady jsou příklady spolehlivé služby a objekt actor čítače výkonu ke shromažďování
+
+>[!NOTE]
+>Čítače výkonu Service Fabric není možné shromáždit pomocí agenta Log Analytics aktuálně, ale může shromáždit [další diagnostiky řešení](service-fabric-diagnostics-partners.md)
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`

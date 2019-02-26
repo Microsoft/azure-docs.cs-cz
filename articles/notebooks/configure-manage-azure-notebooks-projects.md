@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 6d7cacf699df580b8a5c46b8bfc6d48e1a8daea1
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904365"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821726"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
 
@@ -58,6 +58,15 @@ Pokud jsou splněny následující podmínky, rozevírací seznam také zobrazuj
 Při výběru DSVM instance poznámkových bloků Azure může výzvu pro konkrétní počítač pověření použitá při vytváření virtuálního počítače.
 
 Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů [vytvoření virtuálního počítače s Ubuntu Data Science](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Použití **virtuální počítač pro datové vědy pro Linux (Ubuntu)** obrázku, pokud chcete zobrazit v rozevíracím seznamu v poznámkových bloků Azure datové VĚDY.  Pokud z jiných důvodů budete muset použít obraz Windows nebo CentOS, můžete použít **přímé Compute** možnost ručně připojit k datové VĚDY.
+
+> [!IMPORTANT]
+> Při použití virtuálních počítačů s přímým přístupem Compute nebo vědecké zpracování dat, poznámkové bloky, které běží na těchto musí být zcela samostatné. V současné době poznámkových bloků Azure zkopíruje pouze *.ipynb* souboru k virtuálnímu počítači, ale nebude zkopírujte všechny soubory v projektu. V důsledku toho poznámkových bloků, které běží na ostatních virtuálních počítačů se nepovedlo se najít jiné soubory projektu.
+>
+> Můžete obejít toto chování dvěma způsoby:
+>
+> 1. Ručně kopírovat soubory projektu k virtuálnímu počítači.
+>
+> 2. Vložení souborů v rámci instalační program Poznámkový blok, abyste spustili před primární poznámkového bloku. V poznámkovém bloku instalační program vytvořte buňku kódu pro každý soubor, kde buňka obsahuje obsah souboru. V horní části každé buňce, vložte příkaz `%writefile <filename>`, kde `<filename>` je název souboru pro příjem obsahu. Při spuštění poznámkového bloku vytvoří všechny tyto soubory na virtuálním počítači. Příklad najdete v tématu [setup.ipynb soubor v ukázce Microsoft domácí mazlíček detektor](https://github.com/microsoft/connect-petdetector) (GitHub).
 
 ## <a name="edit-project-metadata"></a>Úprava metadat projektu
 

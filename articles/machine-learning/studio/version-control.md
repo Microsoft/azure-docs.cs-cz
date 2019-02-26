@@ -5,17 +5,17 @@ description: Použít osvědčené postupy správy životního cyklu aplikací v
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: 1b57fefad726f8fb21f23fa9eef9e71643a3f51b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 22fe9a6bc6eaec1f4c73f9b92e30f174dd7855f2
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588394"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820378"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Správa životního cyklu aplikací v nástroji Azure Machine Learning Studio
 Azure Machine Learning Studio je nástroj pro vývoj experimenty machine learning, které se mají zprovoznit v cloudové platformy Azure. Je třeba Visual Studio IDE a škálovatelné cloudové služby sloučena do jedné platformy. Standardní postupy Application Lifecycle Management (ALM) ze správy verzí můžete začlenit různých prostředků a na automatické spuštění a nasazení do Azure Machine Learning Studio. Tento článek popisuje některé z možností a přístupů.
@@ -42,7 +42,7 @@ Snímky historie spuštění zachovat neměnné verzi experiment v nástroji Azu
 Soubor JSON je textovou reprezentaci řetězce grafem experimentu, který může obsahovat odkaz na prostředky v pracovním prostoru jako datová sada nebo trénovaného modelu. Serializovaná verze prostředku neobsahuje. Při pokusu o import dokumentu JSON zpět do pracovního prostoru, musí již existovat odkazované prostředky s identifikátory, které jsou odkazovány v experimentu na stejný prostředek. Jinak nelze přistupovat k importované experimentu.
 
 ## <a name="versioning-trained-model"></a>Správa verzí trénovaného modelu
-Trained model v Azure Machine Learning Studio je serializován do formátu, známé jako soubor s příponou iLearner (`.iLearner`) a je uložena v účtu úložiště objektů Blob v Azure, který je přidružený k pracovnímu prostoru. Jeden způsob, jak získat kopii soubor iLearner, který je prostřednictvím rozhraní retraining API. [Tento článek](retrain-models-programmatically.md) vysvětluje, jak funguje rozhraní retraining API. Postup vysoké úrovně:
+Trained model v Azure Machine Learning Studio je serializován do formátu, známé jako soubor s příponou iLearner (`.iLearner`) a je uložena v účtu úložiště objektů Blob v Azure, který je přidružený k pracovnímu prostoru. Jeden způsob, jak získat kopii soubor iLearner, který je prostřednictvím rozhraní retraining API. [Tento článek](/azure/machine-learning/studio/retrain-machine-learning-model) vysvětluje, jak funguje rozhraní retraining API. Postup vysoké úrovně:
 
 1. Nastavení vašeho výukového experimentu.
 2. Přidáte pro modul trénování modelu nebo modul, který vytváří trénovaného modelu, jako je ladění Hyperparameter modelu nebo vytvořit Model R výstupní port webové služby.

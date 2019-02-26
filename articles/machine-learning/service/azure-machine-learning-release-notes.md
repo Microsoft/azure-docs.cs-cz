@@ -9,20 +9,35 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 12/20/2018
+ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 899e33db242a34d09df6109c2e195bdff9c65262
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446762"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823599"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný popis jednotlivých sadách SDK navštivte referenční dokumenty pro:
 + Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-25"></a>2019-02-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Azure Machine Learning sady SDK pro Python v1.0.17
+
++ **Nové funkce**
+
+  + Azure Machine Learning SDK teď podporuje [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) estimator třídy ke zjednodušení procesu trénování a nasazování modelů pomocí vlastního kódu Chainer.
+
+### <a name="azure-portal"></a>portál Azure
++ **Nové funkce**
+    + Nové přetažení tabulky prostředí editoru sestav. Uživatelé můžou z vrtu přetáhnout sloupec na oblast tabulky, ve kterém se zobrazí náhled tabulky. Můžete změnit jejich uspořádání sloupců.
+    + Pro spuštění odeslanou s ScriptRunConfig nové tlačítko spustit. Uživatele můžete spustit znovu z existujícího spouštět vzdálený výpočetní cluster podle vlastní volby.
+    + Nový prohlížeč souborů protokolů
+    + Odkazy na experimentování spuštění, výpočetních, modely, Image a nasazení z karty aktivity
 
 ## <a name="2019-02-11"></a>2019-02-11
 

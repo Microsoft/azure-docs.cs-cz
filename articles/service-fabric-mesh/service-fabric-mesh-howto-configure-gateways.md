@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat bránu, která zpracovává příchoz
 services: service-fabric-mesh
 documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 928ba5074577fda05162dd4f113572fa66d7847f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 47709b84fe67c55c84bea59123d5a46a6e3940fb
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892168"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806593"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány pro směrování požadavků
 

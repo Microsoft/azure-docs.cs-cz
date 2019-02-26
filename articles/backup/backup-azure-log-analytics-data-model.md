@@ -1,6 +1,6 @@
 ---
-title: Datový model Log Analytics pro Azure Backup
-description: Tento článek pojednává o podrobnosti modelu dat Log Analytics pro Azure zálohování – uložená data.
+title: Azure Monitor protokoly datový model pro službu Azure Backup
+description: Tento článek týká Azure Monitor protokoluje podrobné informace o modelu dat pro zálohování Azure – uložená data.
 services: backup
 author: adigan
 manager: shivamg
@@ -8,15 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.openlocfilehash: 5921ca696076a16e39252a6cb3bfae98854b5a85
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b17e7548a19543add6274243d64ede3b61544c52
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299568"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819561"
 ---
-# <a name="log-analytics-data-model-for-azure-backup-data"></a>Datový model log Analytics pro Azure zálohování – uložená data
-Datový model Log Analytics můžete použijte k vytvoření sestav. S datovým modelem můžete vytvořit vlastní dotazy a řídicí panely nebo přizpůsobení zálohování Azure – uložená data, ale chcete.
+# <a name="azure-monitor-logs-data-model-for-azure-backup-data"></a>Azure Monitor protokoly datový model pro zálohování Azure – uložená data
+Použití Azure monitoru protokoly datový model pro vytváření sestav. S datovým modelem můžete vytvořit vlastní dotazy a řídicí panely nebo přizpůsobení zálohování Azure – uložená data, ale chcete.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="using-azure-backup-data-model"></a>Pomocí Azure Backup datového modelu
 Následující pole k dispozici jako součást modelu dat můžete použít k vytváření vizuálů, vlastní dotazy a řídicí panel podle vašich požadavků.
@@ -37,7 +39,7 @@ Tato tabulka obsahuje podrobnosti o upozornění související pole.
 | State_s |Text |Aktuální stav výstrahy objektu, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro provádění zálohování, například IaaSVM FileFolder, ke kterému patří tato výstraha |
 | OperationName |Text |Název aktuální operace, například výstrahy |
-| Kategorie |Text |Kategorie diagnostická data do Log Analytics. Vždy AzureBackupReport |
+| Kategorie |Text |Kategorie diagnostická data do protokoly Azure monitoru. Vždy AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | ProtectedServerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přiřazené k výstraze |
 | VaultUniqueId_s |Text |Jedinečný identifikátor chráněné trezor souvisejícího s výstrahou |
@@ -65,7 +67,7 @@ Tato tabulka obsahuje podrobnosti o zálohování související položku pole.
 | State_s |Text |Stav objektu zálohované položky, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro provádění zálohování, například IaaSVM FileFolder, ke kterému patří této zálohované položky |
 | OperationName |Text |Název operace, například BackupItem |
-| Kategorie |Text |Kategorie diagnostická data do Log Analytics. Vždy AzureBackupReport |
+| Kategorie |Text |Kategorie diagnostická data do protokoly Azure monitoru. Vždy AzureBackupReport |
 | Prostředek |Text |Prostředek pro jaká data se shromažďují, například název trezoru služby Recovery Services |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
 | ResourceId |Text |Id prostředku pro shromažďování dat, například trezor služby Recovery Services id prostředku |
@@ -85,7 +87,7 @@ Tato tabulka obsahuje podrobné informace o přidružení zálohovaná položka 
 | State_s |Text |Aktuální stav objektu přidružení zálohovaná položka, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
 | OperationName |Text |Toto pole představuje název aktuální operace - BackupItemAssociation |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | PolicyUniqueId_g |Text |Jedinečný identifikátor pro zásady přidružené k zálohované položky |
 | ProtectedServerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přidružené k zálohované položky |
@@ -108,7 +110,7 @@ Tato tabulka obsahuje podrobné informace o souvisejících s úlohami pole.
 | State_s |Text |Aktuální stav objektu úlohy, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
 | OperationName |Text |Toto pole představuje název aktuální operace – úloha |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | ProtectedServerUniqueId_s |Text |Jedinečný identifikátor na chráněném serveru související úlohy |
 | VaultUniqueId_s |Text |Jedinečný identifikátor chráněné trezoru |
@@ -137,7 +139,7 @@ Tato tabulka obsahuje podrobnosti o týkající se zásad pole.
 | State_s |Text |Aktuální stav objektu zásad, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
 | OperationName |Text |Toto pole představuje název aktuální akce – zásady |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | PolicyUniqueId_g |Text |Jedinečný identifikátor zásad |
 | PolicyName_s |Text |Název definice zásady |
@@ -177,7 +179,7 @@ Tato tabulka obsahuje podrobné informace o přidružení zásady s různými en
 | State_s |Text |Aktuální stav objektu zásad, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
 | OperationName |Text |Toto pole představuje název aktuální operace - PolicyAssociation |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | PolicyUniqueId_g |Text |Jedinečný identifikátor zásad |
 | VaultUniqueId_s |Text |Jedinečné Id trezoru, ke kterému patří tato zásada |
@@ -199,7 +201,7 @@ Tato tabulka obsahuje podrobnosti o chráněný server související pole.
 | State_s |Text |Aktuální stav objektu chráněného serveru, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
 | OperationName |Text |Toto pole představuje název aktuální operace - ProtectedServer |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | ProtectedServerUniqueId_s |Text |Jedinečné Id chráněného serveru |
 | RegisteredContainerId_s |Text |ID kontejneru zaregistrované pro zálohování |
@@ -223,7 +225,7 @@ Tato tabulka obsahuje podrobnosti o sdružení chráněným serverem s jinými e
 | State_s |Text |Aktuální stav přidružení objektu chráněného serveru, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
 | OperationName |Text |Toto pole představuje název aktuální operace - ProtectedServerAssociation |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | ProtectedServerUniqueId_s |Text |Jedinečné Id chráněného serveru |
 | VaultUniqueId_s |Text |Jedinečné Id trezoru, ke kterému patří tento chráněný server |
@@ -246,7 +248,7 @@ Tato tabulka obsahuje podrobnosti o polích týkající se úložiště.
 | State_s |Text |Aktuální stav objektu úložiště, například aktivní, odstraněno |
 | BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
 | OperationName |Text |Toto pole představuje název aktuální operace - úložiště |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | ProtectedServerUniqueId_s |Text |Jedinečné Id chráněného serveru, pro které se počítá úložiště |
 | VaultUniqueId_s |Text |Jedinečné Id trezoru pro úložiště se počítá. |
@@ -266,7 +268,7 @@ Tato tabulka obsahuje podrobnosti o trezoru související pole.
 | SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, ale **V1** |
 | State_s |Text |Aktuální stav objektu úložiště, například aktivní, odstraněno |
 | OperationName |Text |Toto pole představuje název aktuální operace - Vault |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
+| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
 | Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
 | VaultUniqueId_s |Text |Jedinečné Id trezoru |
 | VaultName_s |Text |Název úložiště |
@@ -280,4 +282,4 @@ Tato tabulka obsahuje podrobnosti o trezoru související pole.
 | ResourceType |Text |Typ prostředku, pro které se shromažďují data. Například trezory Recovery Services |
 
 ## <a name="next-steps"></a>Další postup
-Jakmile zkontrolujete datový model pro vytváření sestav Azure Backup, můžete začít [vytváření řídicího panelu](../azure-monitor/learn/tutorial-logs-dashboards.md) v Log Analytics.
+Jakmile zkontrolujete datový model pro vytváření sestav Azure Backup, můžete začít [vytváření řídicího panelu](../azure-monitor/learn/tutorial-logs-dashboards.md) v protokoly Azure monitoru.

@@ -3,7 +3,7 @@ title: Azure Service Fabric zásady správného řízení prostředků pro konte
 description: Azure Service Fabric můžete zadat omezení prostředků pro služby spuštěné uvnitř nebo mimo kontejnery.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: twhitney, subramar
-ms.openlocfilehash: 66f651f921773f638b4493be70319d5d80b122db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.author: aljo, subramar
+ms.openlocfilehash: 1a9d9e0b6a82bd4bb3312df5288c04d0e52af3a6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956836"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805668"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
 
@@ -32,9 +32,9 @@ Pokud používáte víc služeb na stejném clusteru nebo uzlu, je možné, že 
 
 Zásady správného řízení prostředků je podporována v Service Fabric v souladu s maticí [balíček služby](service-fabric-application-model.md). Prostředky, které jsou přiřazeny k balíčku služby je možné dále rozdělit mezi balíčky kódu. Omezení prostředků, které jsou uvedeny také znamenat rezervované prostředky. Service Fabric podporuje zadávání procesoru a paměti na jeden balíček služby se dvě předdefinované [metriky](service-fabric-cluster-resource-manager-metrics.md):
 
-* *Procesor* (název metriky `servicefabric:/_CpuCores`): logické jádro, které jsou k dispozici na hostitelském počítači. Všechna jádra napříč všemi uzly jsou váha stejné.
+* *Procesor* (název metriky `servicefabric:/_CpuCores`): Logické jádro, která je k dispozici na hostitelském počítači. Všechna jádra napříč všemi uzly jsou váha stejné.
 
-* *Paměť* (název metriky `servicefabric:/_MemoryInMB`): je vyjádřena paměti v megabajtech a mapuje se na fyzické paměti, která je k dispozici na počítači.
+* *Paměť* (název metriky `servicefabric:/_MemoryInMB`): Paměť je vyjádřena v megabajtech a mapuje se na fyzické paměti, která je k dispozici na počítači.
 
 Pro tyto dvě metriky [Cluster Resource Manageru](service-fabric-cluster-resource-manager-cluster-description.md) sleduje celková kapacita clusteru, zatížení na každém uzlu v clusteru a zbývající prostředky v clusteru. Tyto dvě metriky jsou ekvivalentní pro všechny uživatele nebo vlastní metriky. Všechny existující funkce lze použít s nimi:
 
@@ -190,12 +190,12 @@ V tomto příkladu nastavené výchozí hodnoty parametrů pro produkční prost
 
 Kromě procesoru a paměti je možné určit další omezení prostředků pro kontejnery. Tato omezení jsou určeny na úrovni balíček kódu a se použijí při spuštění kontejneru. Na rozdíl od s procesoru a paměti, Cluster Resource Manageru není si vědom těchto prostředků a nebude provádět žádné kontroly kapacity nebo Vyrovnávání zatížení pro ně.
 
-* *MemorySwapInMB*: velikost paměti odkládacího souboru, který můžete použít kontejner.
-* *MemoryReservationInMB*: doporučeného limitu pro zásady správného řízení paměti, které je vynucuje pouze v případě, že se detekuje kolize paměti na uzlu.
-* *CpuPercent*: procento využití procesoru, které kontejner může použít. Pokud omezení procesoru jsou určeny pro balíček služby, tento parametr je ignorován efektivně.
-* *MaximumIOps*: maximální vstupně-výstupních operací, které můžete použít kontejner (čtení a zápis).
-* *MaximumIOBytesps*: maximální vstupně-výstupní (bajty za sekundu), můžete použít kontejner (čtení a zápis).
-* *BlockIOWeight*: bloku vstupně-výstupních operací váha pro relativní vzhledem k jiných kontejnerů.
+* *MemorySwapInMB*: Velikost paměti odkládacího souboru, který můžete použít kontejner.
+* *MemoryReservationInMB*: Doporučeného limitu pro zásady správného řízení paměti, které je vynucuje pouze v případě, že se detekuje kolize paměti na uzlu.
+* *CpuPercent*: Procento využití procesoru, které kontejner může použít. Pokud omezení procesoru jsou určeny pro balíček služby, tento parametr je ignorován efektivně.
+* *MaximumIOps*: Maximální IOPS, můžete použít kontejner (čtení a zápis).
+* *MaximumIOBytesps*: Maximální vstupně-výstupních operací (bajty za sekundu), můžete použít kontejner (čtení a zápis).
+* *BlockIOWeight*: Blok váha vstupně-výstupních operací pro relativní vzhledem k jiných kontejnerů.
 
 Tyto prostředky lze kombinovat s procesoru a paměti. Tady je příklad toho, jak určit další zdroje informací o kontejnerů:
 

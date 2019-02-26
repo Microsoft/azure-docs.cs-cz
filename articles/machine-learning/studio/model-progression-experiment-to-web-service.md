@@ -5,17 +5,17 @@ description: Přehled o mechanismu jak experimentovat vaše postupuje model Azur
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 776f33e3e550ad9a711a90732c6c4526e647aa89
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 808883fc96369538a26a06a7dadb5f0ecd6628d5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456788"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823395"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu ke zprovozněné službě webové
 Azure Machine Learning Studio poskytuje interaktivní plátno, která umožňuje vyvíjet, spouštět, testovat a iterovat ***experimentovat*** představující model prediktivní analýzy. Existují nejrůznější moduly, které můžete:
@@ -95,7 +95,7 @@ Zde naleznete příklad: Předpokládejme, že prediktivní experiment vrátí c
 
 Pokud chcete zachovat váš model strojového učení, ale chcete přeučování s novými daty, máte dvě možnosti:
 
-1. **Přeučování modelu je spuštěna webová služba** – Pokud chcete přeučování váš model prediktivní webová služba je spuštěna, můžete to provést tak, že několik úprav výukového experimentu, aby byl ***přetrénování Experimentujte***, pak můžete nasadit jako  ***retraining webové* služby**. Pokyny, jak to udělat, najdete v části [modelů Machine Learning Přeučování](retrain-models-programmatically.md).
+1. **Přeučování modelu je spuštěna webová služba** – Pokud chcete přeučování váš model prediktivní webová služba je spuštěna, můžete to provést tak, že několik úprav výukového experimentu, aby byl ***přetrénování Experimentujte***, pak můžete nasadit jako  ***retraining webové* služby**. Pokyny, jak to udělat, najdete v části [modelů Machine Learning Přeučování](/azure/machine-learning/studio/retrain-machine-learning-model).
 2. **Přejděte zpět do původní výukového experimentu a použití různých trénovacích dat k vývoji modelu** – prediktivní experiment je propojena k webové službě, ale výukového experimentu není propojena přímo tímto způsobem. Pokud upravíte původní výukového experimentu a klikněte na tlačítko **nastavení webové služby**, se vytvoří *nové* prediktivní experiment, který se vytvoří při nasazení, *nové* Web Služba. Právě neaktualizuje původní webové služby.
 
    Pokud je potřeba upravit výukového experimentu, otevřete ho a klikněte na tlačítko **uložit jako** k vytvoření kopie. To nechte beze změny původní výukový experiment prediktivní experiment a webové služby. Nyní můžete vytvořit novou webovou službu se změnami. Po nasazení nové webové služby, potom se můžete rozhodnout, jestli se má zastavit předchozí webovou službu nebo je Uchovávejte společně s novým systémem.
@@ -109,7 +109,7 @@ Podrobné informace o procesu vývoje a experimentu najdete v následujících �
 
 * Převod experiment - [přípravu modelu pro nasazení v Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md)
 * nasazení webové služby - [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* přetrénování modelu - [Machine Learning Přeučování modelů prostřednictvím kódu programu](retrain-models-programmatically.md)
+* přetrénování modelu - [Machine Learning Přeučování modelů prostřednictvím kódu programu](/azure/machine-learning/studio/retrain-machine-learning-model)
 
 Příklady celého procesu naleznete v tématu:
 

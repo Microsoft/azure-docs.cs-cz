@@ -3,7 +3,7 @@ title: Konfigurace síťové režimy kontejneru služby Azure Service Fabric | D
 description: Zjistěte, jak nastavit jiné síťové režimy, které jsou podporovány službou Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: 62812dd8f92bcace8f764a21aba608157815cec3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: aljo, subramar
+ms.openlocfilehash: 2ae533c81e68f8f6a32ad8fa0e45aed3c63eceb9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093141"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805252"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -209,10 +209,10 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
  
 3. V případě clusterů Windows nastavte pravidlo skupiny zabezpečení sítě Azure (NSG), které se otevře port UDP/53 virtuální sítě s použitím následujících hodnot:
 
-   |Nastavení |Value | |
+   |Nastavení |Hodnota | |
    | --- | --- | --- |
    |Priorita |2000 | |
-   |Name |Custom_Dns  | |
+   |Název |Custom_Dns  | |
    |Zdroj |VirtualNetwork | |
    |Cíl | VirtualNetwork | |
    |Služba | DNS (UDP/53) | |

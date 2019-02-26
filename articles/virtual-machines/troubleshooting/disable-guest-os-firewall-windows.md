@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: b0cd20278287b41dd953c64044b705aa2dba7557
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319404"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820021"
 ---
-# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Vypnout hostovaný operační systém brány Firewall na virtuálním počítači Azure
+# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
 
 Tento článek poskytuje odkaz pro situace, ve kterých je podezření, že brána firewall operačního systému hosta je filtrování částečné nebo úplné provozu do virtuálních počítačů (VM). Tato situace může nastat, pokud úmyslně provedly se změny brány firewall, která způsobila selhání připojení RDP.
 
@@ -33,7 +33,7 @@ Proces, který je popsaný v tomto článku je určena pro použití tento probl
 
 Pokud virtuální počítač je v režimu online a je přístupný jinému virtuálnímu počítači ve stejné virtuální síti, můžete vytvořit tyto způsoby zmírnění rizik pomocí druhým virtuálním Počítačem.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Zmírnění 1: Rozšíření vlastních skriptů nebo spustit příkaz funkci
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Zmírnění dopadů 1: Funkce vlastní rozšíření skriptů nebo spustit příkaz
 
 Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vlastních skriptů](../extensions/custom-script-windows.md) nebo [spustit příkazy](../windows/run-command.md) funkci (virtuální počítače Resource Manageru jenom) pro vzdálené spuštění těchto skriptů.
 
@@ -54,7 +54,7 @@ Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vla
 >   ```
 >   Ale co nejdříve zásady se použijí znovu, můžete budete má zahájit mimo vzdálenou relaci. Trvalé řešení tohoto problému je upravit zásady, které jsou použity na tomto počítači.
 
-#### <a name="mitigation-2-remote-powershell"></a>Zmírnění dopadů 2: Vzdálený PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Zmírnění dopadů 2: Vzdáleného prostředí PowerShell
 
 1.  Připojte se k virtuálnímu počítači, který je umístěný ve stejné virtuální síti jako virtuální počítač, který nemůže získat přístup pomocí připojení RDP.
 
@@ -70,9 +70,9 @@ Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vla
     ```
 
 > [!Note]
-> Pokud je brána firewall nastavená pomocí objektu zásad skupiny, tato metoda nemusí fungovat, protože tento příkaz změní pouze položky místního registru. Pokud je zásada na místě, přepíše tuto změnu. 
+> Pokud je brána firewall nastavená pomocí objektu zásad skupiny, tato metoda nemusí fungovat, protože tento příkaz změní pouze položky místního registru. Pokud je zásada na místě, přepíše tuto změnu. 
 
-#### <a name="mitigation-3-pstools-commands"></a>Zmírnění 3: Příkazy PSTools
+#### <a name="mitigation-3-pstools-commands"></a>Zmírnění dopadů 3: Příkazy PSTools
 
 1.  Řešení potíží virtuálního počítače, stáhněte si [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
@@ -86,7 +86,7 @@ Pokud máte funkční agenta služby Azure, můžete použít [rozšíření vla
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>Zmírnění 4: Vzdálený registr 
+#### <a name="mitigation-4-remote-registry"></a>Zmírnění dopadů 4: Vzdálený registr 
 
 Použijte následující postup použijte [Remote Registry](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
 
