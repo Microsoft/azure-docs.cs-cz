@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0f5de24d42ccc930a4746251b9f466f241c3508e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789496"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806704"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -45,7 +45,7 @@ ms.locfileid: "53789496"
 [suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
 
 Pro místní vývoj můžete použít buď HANA System Replication nebo používat sdílené úložiště k vytvoření vysoké dostupnosti pro SAP HANA.
 Na Azure virtual machines (VM) systémové replikace HANA v Azure je aktuálně že jediný podporovaný funkce vysoké dostupnosti. Replikace SAP HANA se skládá z jedné primární a alespoň jeden sekundární uzel. Změny dat na primárním uzlu jsou replikovány na sekundární uzel synchronně nebo asynchronně.
@@ -201,9 +201,9 @@ Postupujte podle kroků v [nastavení Pacemaker na SUSE Linux Enterprise Server 
 ## <a name="install-sap-hana"></a>Instalace SAP HANA
 
 Kroky v této části používají následující předpony:
-- **[A]** : V kroku se vztahuje na všechny uzly.
-- **[1]** : V kroku se týká pouze uzlu 1.
-- **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+- **[A]**: V kroku se vztahuje na všechny uzly.
+- **[1]**: V kroku se týká pouze uzlu 1.
+- **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[A]**  Nastavení rozložení disků: **Správce logických svazků (LVM)**.
 
@@ -320,27 +320,27 @@ Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce
    * Vyberte další součásti k instalaci: Zadejte **1**.
    * Zadejte instalační cesta [/ hana/sdílené]: Vyberte možnost Enter.
    * Zadejte název místního hostitele [hodnota]: Vyberte možnost Enter.
-   * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [[n]: Vyberte možnost Enter.
+   * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [n]: Vyberte možnost Enter.
    * Zadejte ID systému SAP HANA: Zadejte identifikátor SID HANA, například: **HN1**.
    * Zadejte číslo Instance [00]: Zadejte číslo HANA Instance. Zadejte **03** -li použít šablony Azure nebo následován ručního nasazení části tohoto článku.
    * Vyberte režim databáze / zadejte Index [1]: Vyberte možnost Enter.
    * Využití systému vyberte / zadejte Index [4]: Vyberte hodnotu využití systému.
    * Zadejte umístění datové svazky [/ hana/data/HN1]: Vyberte možnost Enter.
    * Zadejte umístění svazky s protokoly [/ hana/log/HN1]: Vyberte možnost Enter.
-   * Omezit maximální přidělení paměti? [[n]: Vyberte možnost Enter.
+   * Omezit maximální přidělení paměti? [n]: Vyberte možnost Enter.
    * Zadejte název hostitele certifikátu pro hostitele '...' [...]: Vyberte možnost Enter.
-   * Zadejte SAP hostitele agenta uživatele (sapadm) heslo: Zadejte heslo uživatele agenta hostitele.
+   * Enter SAP Host Agent User (sapadm) Password: Zadejte heslo uživatele agenta hostitele.
    * Potvrďte uživatel agenta hostitele systému SAP (sapadm) heslo: Zadejte heslo uživatele agenta hostitele znovu pro potvrzení.
    * Zadejte správce systému (hdbadm) heslo: Zadejte heslo správce systému.
    * Potvrzení správce systému (hdbadm) heslo: Zadejte heslo správce systému znovu pro potvrzení.
    * Zadejte domovského adresáře správce systému [/ usr / / sap/HN1 home]: Vyberte možnost Enter.
    * Zadejte prostředí přihlašovací jméno správce systému [/ bin/sh]: Vyberte možnost Enter.
-   * Zadejte ID uživatele pro správce systému [1001]: Vyberte možnost Enter.
+   * Enter System Administrator User ID [1001]: Vyberte možnost Enter.
    * Zadejte ID ze skupiny uživatelů (sapsys) [79]: Vyberte možnost Enter.
    * Zadejte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze.
    * Potvrďte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze znovu pro potvrzení.
-   * Restartování systému po restartování počítače? [[n]: Vyberte možnost Enter.
-   * Chcete pokračovat? (Ano/Ne): Souhrn ověření. Zadejte **y** pokračujte.
+   * Restartování systému po restartování počítače? [n]: Vyberte možnost Enter.
+   * Chcete pokračovat? (y/n): Souhrn ověření. Zadejte **y** pokračujte.
 
 1. **[A]**  Upgrade agenta hostitele SAP.
 
@@ -353,9 +353,9 @@ Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : V kroku se vztahuje na všechny uzly.
-* **[1]** : V kroku se týká pouze uzlu 1.
-* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]**: V kroku se vztahuje na všechny uzly.
+* **[1]**: V kroku se týká pouze uzlu 1.
+* **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[1]**  Vytvoření databáze tenanta.
 
@@ -398,9 +398,9 @@ Kroky v této části používají následující předpony:
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : V kroku se vztahuje na všechny uzly.
-* **[1]** : V kroku se týká pouze uzlu 1.
-* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]**: V kroku se vztahuje na všechny uzly.
+* **[1]**: V kroku se týká pouze uzlu 1.
+* **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[1]**  Vytvořit požadovaní uživatelé.
 
