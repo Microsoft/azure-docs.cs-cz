@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2018
+ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6083237426e86220f8a3cb7fbe0cdfc30f44f8cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b05f2dc1ed766ccb06b71c2977ceaf2b7cd823d3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208822"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869662"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla zavedena v systému sestavení [1.1.105.0 (všeobecně dostupné. února 2016)](reference-connect-version-history.md#111050).  Tato funkce byla aktualizována v [sestavení 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které dříve nebyly podporovány.
@@ -43,7 +43,7 @@ Aktuální stav automatického upgradu lze zobrazit pomocí rutiny Powershellu `
 | Pozastaveno |Nastavte pouze v systému. Systém je **není aktuálně** nárok na automatické upgrady. |
 | Zakázáno |Automatický upgrade je zakázaná. |
 
-Můžete změnit mezi **povoleno** a **zakázané** s `Set-ADSyncAutoUpgrade`. Jen systém by měl nastavit stav **pozastaveno**.
+Můžete změnit mezi **povoleno** a **zakázané** s `Set-ADSyncAutoUpgrade`. Jen systém by měl nastavit stav **pozastaveno**.  Před 1.1.750.0 rutinu Set-ADSyncAutoUpgrade by blokovaly Autoupgrade stav automatické aktualizace byl nastavený na pozastaveno. Tato funkce se změnilo tak, že nedochází k blokování AutoUpgrade.
 
 Automatický upgrade je upgrade infrastruktury pomocí služby Azure AD Connect Health. Pro automatický upgrade na práci, ujistěte se, že jste otevřeli adresy URL vašeho proxy serveru pro **Azure AD Connect Health** podle postupu uvedeného v [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 

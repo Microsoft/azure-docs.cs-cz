@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7da813022527830a5ede62c9f4ce98645fe63d4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447816"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871587"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (Dwu) a výpočetní jednotky datového skladu (cDWUs)
 Doporučení pro výběr ideální počet jednotek datového skladu (Dwu, cDWUs) optimalizovat ceny a výkonu a jak změnit počet jednotek. 
@@ -68,7 +68,7 @@ Každá úroveň výkonu používá mírně odlišné jednotka měření pro jej
 
 Jednotky Dwu a cDWUs podporují škálování výpočetního výkonu navýšit nebo snížit kapacitu a pozastavení výpočetních, když není potřeba použít datový sklad. Tyto operace jsou všechny na vyžádání. Gen2 používá místní mezipaměti na disku na výpočetních uzlech ke zlepšení výkonu. Při škálování nebo pozastavit systému, platnost mezipaměti a tak dobu mezipaměti připravuje se musí provést dosáhnout optimálního výkonu.  
 
-Zvyšuje se jednotky datového skladu, jsou lineárně zvýšení výpočetních prostředků. Gen2 poskytuje nejlepší výkon dotazů a co největším měřítku, ale má vyšší cenu položka. Je určená pro podniky, které mají konstantní nároky na výkon. Aby tyto systémy se nejlépe využil mezipaměti. 
+Zvyšuje se jednotky datového skladu, jsou lineárně zvýšení výpočetních prostředků. Gen2 poskytuje nejlepší výkon dotazů a co největším měřítku. Aby tyto systémy se nejlépe využil mezipaměti.
 
 ### <a name="capacity-limits"></a>Omezení kapacity
 Každý server SQL (např. myserver.database.windows.net) [jednotky transakcí databáze (DTU)](../sql-database/sql-database-what-is-a-dtu.md) kvótu, která umožňuje určitý počet jednotek datového skladu. Další informace najdete v tématu [limity kapacity úloh správy](sql-data-warehouse-service-capacity-limits.md#workload-management).

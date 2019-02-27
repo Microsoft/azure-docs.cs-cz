@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 704c12bc2ea16fcad5672dde4181f63495fbe967
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001960"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870835"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "56001960"
 * **Tenant protokoly** – protokoly pocházejí z služby na úrovni tenanta, které existují mimo předplatné Azure, jako je Azure Active Directory protokoly.
 * **Protokoly prostředku** – protokoly pocházejí ze služby Azure, které nasazení prostředků v rámci předplatného Azure, jako jsou skupiny zabezpečení sítě nebo účty úložiště.
 
-    ![Protokoly diagnostiky zdroje vs jiné typy protokolů ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
+    ![Protokoly diagnostiky zdroje vs jiné typy protokolů](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
 
 Obsah tyto protokoly se liší podle typu prostředků a služeb Azure. Například počítadla pravidel skupin zabezpečení sítě a služby Key Vault audity jsou dva typy diagnostických protokolů.
 

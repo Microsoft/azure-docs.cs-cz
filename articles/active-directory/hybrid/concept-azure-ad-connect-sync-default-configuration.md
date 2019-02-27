@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae428f18a2b927f42716a1c00b55790fe73d81a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 06f51f56de29d5e598ea74b39352d3c15bf7b375
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173398"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880627"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje, out-of-box konfigurační pravidla. Dokumentují pravidla a vliv těchto pravidel v konfiguraci. To vás také provede výchozí konfiguraci synchronizace Azure AD Connect. Cílem je, že čtečky rozumí fungováním konfigurační model s názvem deklarativní zřizování v reálný příklad. Tento článek předpokládá, že jste již nainstalovali a konfigurace synchronizace služby Azure AD Connect pomocí Průvodce instalací.
@@ -151,7 +151,7 @@ Synchronizační pravidlo obsahuje čtyři oddíly konfigurace: Popis, Scoping f
 #### <a name="description"></a>Popis
 První část obsahuje základní informace, jako je název a popis.
 
-![Popis kartu editor pravidel synchronizace ](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
+![Popis kartu editor pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
 
 Můžete také najít informace, o které připojený systém se toto pravidlo vztahuje, kterých objekt v připojený systém, které se vztahuje na typ a typ objekt úložiště metaverse. Typ objektu úložiště metaverse je vždy osobě bez ohledu na to, když je typ zdrojového objektu uživatele, iNetOrgPerson nebo kontaktujte. Typ objektu úložiště metaverse by nikdy měnit, takže je vytvořena jako obecného typu. Typ odkazu můžete nastavit na spojení, StickyJoin nebo zřídit. Toto nastavení funguje společně s části pravidla pro připojení a se věnujeme později.
 
@@ -160,18 +160,18 @@ Uvidíte také, že toto synchronizační pravidlo se používá pro synchroniza
 #### <a name="scoping-filter"></a>Filtr oborů
 Část Filtr vytváření oboru slouží ke konfiguraci uplatnění synchronizační pravidlo. Vzhledem k tomu, že název synchronizačního pravidla máte před sebou označuje měly použít pouze pro povolené uživatele, obor je nakonfigurovaná tak, že atribut AD **userAccountControl** nesmí nastaven bit 2. Při synchronizační modul Vyhledá uživatele ve službě AD, se vztahuje toto synchronizační pravidlo, když **userAccountControl** je nastavena na desítkovou hodnotu 512 (povoleného uživatele normální). Pokud má uživatel nevztahuje pravidlo **userAccountControl** nastavena na 514 (zakázaný uživatel normální).
 
-![Zkoumání karta v editoru pravidel synchronizace ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Zkoumání karta v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Filtr oborů má skupiny a klauzule, které mohou být vnořené. Všechny klauzule uvnitř skupiny musí být splněny pro synchronizační pravidlo použít. Když jsou definovány více skupin, alespoň jednu skupinu musí být splněny pro pravidlo použít. To znamená logický operátor OR vyhodnocen mezi skupinami a logické a vyhodnotit uvnitř skupiny. Příklad této konfigurace najdete v pravidla odchozí synchronizace **na AAD – připojte se k skupiny**. Existuje několik skupin synchronizace filtr, třeba jednoho pro skupiny zabezpečení (`securityEnabled EQUAL True`) a jeden pro distribuční skupiny (`securityEnabled EQUAL False`).
 
-![Zkoumání karta v editoru pravidel synchronizace ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
+![Zkoumání karta v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 Toto pravidlo se používá k definování skupiny, které by mělo proběhnout zřízení do služby Azure AD. Distribuční skupiny musí být povolena synchronizace s Azure AD mail, ale pro skupiny zabezpečení e-mailu se nevyžaduje.
 
 #### <a name="join-rules"></a>Připojte se k pravidla
 Třetí části slouží ke konfiguraci, jak objekty v prostoru konektoru vztahují na objekty v úložišti metaverse. Pravidlo se podívat na dříve nemá žádnou konfiguraci pro připojení pravidla, takže místo toho chcete se podívat na **v ze služby AD – uživatel připojit**.
 
-![Karta pravidla zúčastnit editor pravidel synchronizace ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
+![Karta pravidla zúčastnit editor pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
 Obsah spojení pravidlo závisí na odpovídající možnosti vybrané v Průvodci instalací. Pro příchozí pravidlo hodnocení začíná objekt v prostoru konektoru zdroje a každou skupinu v pravidlech spojení se vyhodnocují v pořadí. Pokud zdrojový objekt je vyhodnoceno tak, aby odpovídaly právě jednoho objektu v úložišti metaverse pomocí některé z pravidel spojení, objekty jsou spojeny. Pokud není nalezena žádná shoda se vyhodnotily všechna pravidla, použije se typ odkazu na stránce popis. Pokud tuto konfiguraci je nastavená na **zřízení**, pak je vytvořen nový objekt v cílové úložiště metaverse. Nový objekt úložiště metaverse se také označuje jako k poskytování **projektu** objektu úložiště metaverse.
 
@@ -184,7 +184,7 @@ Když se podíváte na obrázku výše vidíte, že je pravidlo pokusu o připoj
 #### <a name="transformations"></a>Transformace
 Transformace oddíl definuje všechny toky atributů, které se vztahují k cílovému objektu, když jsou připojené objekty a filtr rozsahu je splněna. Když se vrátíme ke **v ze služby AD – uživatel AccountEnabled** synchronizačního pravidla, vyhledejte následující transformace:
 
-![Transformace kartu editor pravidel synchronizace ](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
+![Transformace kartu editor pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
 Vložit tuto konfiguraci v kontextu, v nasazení doménové struktury prostředků účtu, očekává se najít povolený účet v doménové struktuře účtu a zakázaný účet v doménové struktuře prostředku s nastavením Exchange a Lync. Synchronizační pravidlo, které sledujete obsahuje atributy vyžadované pro přihlášení a tyto atributy jakým způsobem se předávají z doménové struktury ve kterých je povolený účet. Tyto toky atributů jsou umístěny společně v jedné synchronizační pravidlo.
 

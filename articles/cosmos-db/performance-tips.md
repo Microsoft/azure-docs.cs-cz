@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 67bdabe24e789dc4d1f2020a7a7853eafaa607c3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fbb7ae2e741ab6f2c5045f412e18cd9ce1d5b812
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429362"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870920"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -47,7 +47,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
     |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
     |---------|---------|---------|---------|
-    |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
     |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
 

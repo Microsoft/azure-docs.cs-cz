@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: d3222b2a2c47d6c2db4ca890a2618e89891d9deb
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f20a242fc5f674738cde6af7d2797205f8298514
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804820"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871311"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -41,10 +41,10 @@ Toto je běžné Media Services pracovní postup streamování, ve kterém se po
 3. Publikujte asset, který obsahuje s adaptivní přenosovou sady souborů MP4.
 4. Vytvoření adres URL, které cílí různé formáty (HLS, Dash nebo Smooth Streaming). Koncový bod streamování by zajistíme obsluhující správný manifest a žádostí o těchto různých formátech. Příklad:
 
- - HLS: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)`
- - Dash: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)`
- - Smooth: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest`
- 
+    - HLS: `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`
+    - Dash: `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)`
+    - Smooth: `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`
+
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Video kodeků podporuje dynamické balení
 
 Dynamické balení podporuje soubory MP4, které obsahují video zakódovány [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (AVC MPEG-4 nebo AVC1), [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC hev1 nebo hvc1).

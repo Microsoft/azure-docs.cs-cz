@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.openlocfilehash: 5f804bf656b423d6dbe8f5c2ed73ba54d8361000
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a75ac9773072423c13eef85ecad29c632c13d024
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124531"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873249"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy XML a plochých souborů v Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -31,7 +31,7 @@ Enterprise Integration Pack zahrnuje:
 * [Výraz XPath](https://msdn.microsoft.com/library/mt643789.aspx) – obohacení zprávu a extrahovat určité vlastnosti ze zprávy. Extrahované vlastnosti můžete poté zprávy směruje do cíle nebo zprostředkující koncový bod.
 
 ## <a name="try-it-out"></a>Vyzkoušet
-[Nasazení aplikace logiky plně funkční ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (ukázka na Githubu) pomocí funkce XML v Azure Logic Apps.
+[Nasazení aplikace logiky plně funkční](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (ukázka na Githubu) pomocí funkce XML v Azure Logic Apps.
 
 ## <a name="learn-more"></a>Další informace
 [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")

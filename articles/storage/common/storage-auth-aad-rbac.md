@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 68511d62887cb0463fd8db01cb5c90cbc40ac4cd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 622a7bc870aba58205c1811de2fcdcabffd177e5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818982"
+ms.locfileid: "56869679"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udělení přístupu k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal (preview)
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak pomocí webu Azure portal přiřadíte role RBAC. N
 
 ## <a name="determine-resource-scope"></a>Určení oboru prostředků 
 
-Předtím, než přiřadíte roli RBAC k objektu zabezpečení, určete obor přístupu, který by měl mít tento objekt zabezpečení. Osvědčené postupy určují, že je vždy vhodné udělit pouze nejužší možná obor.
+Předtím, než přiřadíte roli RBAC k objektu zabezpečení, určete obor přístupu, který by měl mít objekt zabezpečení. Osvědčené postupy určují, že je vždy vhodné udělit pouze nejužší možná obor.
 
 Následující seznam popisuje úrovně, ve kterém můžete upřesnit rozsah přístupu k prostředkům Azure blob a fronty, počínaje zpomalit:
 
@@ -43,7 +43,7 @@ Až zjistíte požadovaný obor na přiřazení role, přejděte na příslušn�
 
 ## <a name="assign-rbac-roles-using-the-azure-portal"></a>Přiřadíte role RBAC pomocí webu Azure portal
 
-Udělení přístupu k prostředkům blob a fronty pomocí přihlašovacích údajů Azure AD zahrnuje následující kroky: 
+Udělení přístupu k prostředkům blob a fronty pomocí přihlašovacích údajů Azure AD na webu Azure Portal zahrnuje následující kroky: 
 
 1. Přiřadíte příslušné role RBAC úložiště Azure pro udělení přístupu k kontejnery nebo fronty. Přístup pro čtení, přiřaďte **čtecí modul dat objektů Blob (Preview)** nebo **Čtenář dat fronty služby (Preview)** role. Pro čtení, zápisu a odstranění přístup, přiřaďte **Přispěvatel dat objektu Blob (Preview)** nebo **Přispěvatel dat fronty služby (Preview)** role. Můžete také přiřadit vlastní roli.
 
@@ -80,7 +80,7 @@ Můžete použít podobným způsobem přiřazení role omezená na účet úlo�
 > 
 > Nelze přiřadit role omezená na kontejneru nebo fronty, pokud má váš účet úložiště hierarchického oboru názvů povolené.
 
-### <a name="assign-the-azure-resource-manager-reader-role"></a>Přiřadit role Čtenář Azure Resource Manageru
+### <a name="assign-the-reader-role-for-portal-access"></a>Přiřadit role Čtenář pro přístup k portálu
 
 Když přiřadíte předdefinovaných i vlastních rolí pro službu Azure Storage k objektu zabezpečení, udělujete oprávnění pro tento objekt zabezpečení k provedení operací s daty ve vašem účtu úložiště. Předdefinované **čtecí modul dat** v těchto rolích zajišťují oprávnění ke čtení pro data z kontejneru nebo fronty, zatímco integrovaná v **Přispěvatel Data** v těchto rolích zajišťují čtení, zápis a odstranění oprávnění ke kontejneru nebo fronty. Zadaný prostředek mají rozsah oprávnění.  
 
@@ -90,7 +90,7 @@ Nicméně, pokud chce Mary zobrazení objektu blob na webu Azure Portal, pak bud
 
 Pokud budou uživatelé potřebovat přístup k objektům blob na webu Azure Portal a pak je přiřadit další role RBAC, moct [čtečky](../../role-based-access-control/built-in-roles.md#reader) role za účelem těchto uživatelů. **Čtečky** rolí je role Azure Resource Manageru, která umožňuje uživatelům zobrazit prostředků účtu úložiště, ale ne je upravovat. Neposkytuje oprávnění ke čtení k datům ve službě Azure Storage, ale jenom pro účet správy zdrojů.
 
-Následující postup použijte k přiřazení **čtečky** role. V tomto případě má obor přiřazení ke kontejneru:
+Následující postup použijte k přiřazení **čtečky** rolí tak, aby uživatel může přístup k objektům blob na webu Azure Portal. V tomto případě má obor přiřazení ke kontejneru:
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště a zobrazit **přehled** pro účet.
 1. V části Služba vyberte **objekty BLOB**. 
@@ -100,6 +100,9 @@ Následující postup použijte k přiřazení **čtečky** role. V tomto příp
 1. Z **přiřadit přístup k** rozevíracího seznamu, vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**.
 1. Prohledávat při vyhledávání objektu zabezpečení, ke kterému chcete přiřadit roli.
 1. Uložte přiřazení role.
+
+> [!NOTE]
+> Přiřazení role čtenáře je potřebný jenom u uživatelů, kteří potřebují přístup k objektům BLOB nebo fronty pomocí webu Azure portal. 
 
 ## <a name="use-azure-ad-credentials-with-the-portal"></a>Přihlašovací údaje služby Azure AD pomocí portálu
 

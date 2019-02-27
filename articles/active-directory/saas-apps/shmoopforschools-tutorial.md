@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 095aff293b23f4589dce9f71890b5e9bfd8636d4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4d980bf28fb9248cc88c4b0802817e85992ef9ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201852"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Kurz: Integrace Azure Active Directory s Shmoop pro školy
 
@@ -131,7 +131,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. Chcete-li otevřít **přidat atribut** dialogu **přidat atribut**.
     
-    ![Konfigurace jednotného přihlašování ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
+    ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
     ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
     

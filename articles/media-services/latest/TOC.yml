@@ -25,6 +25,8 @@ items:
   - name: Analýza videa – .NET
     displayName: job, transform
     href: analyze-videos-tutorial-with-api.md
+  - name: Dynamické šifrování AES-128 – .NET
+    href: protect-with-aes128.md
   expanded: true
 - name: Ukázky
   items:
@@ -166,12 +168,10 @@ items:
       href: job-state-events-cli-how-to.md
   - name: Ochrana obsahu
     items:
-    - name: Dynamické šifrování AES-128 – .NET
-      href: protect-with-aes128.md
-    - name: Dynamické šifrování DRM – .NET
-      href: protect-with-drm.md
     - name: Získání zásad symetrických klíčů – .NET
       href: get-content-key-policy-dotnet-howto.md
+    - name: Dynamické šifrování DRM – .NET
+      href: protect-with-drm.md
     - name: FairPlay pro iOS v offline režimu
       href: offline-fairplay-for-ios.md
     - name: Widevine pro Android v offline režimu
@@ -242,9 +242,9 @@ items:
     href: frequently-asked-questions.md
   - name: Oblasti a cloudy Azure
     href: azure-clouds-regions.md
-ms.openlocfilehash: d8078f88c436b54e2f0b3a2edd1916684168af37
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 05743bbc6bc448fbea5b084fd945d1e056bf16e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807033"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867775"

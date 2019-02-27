@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d44dc7e7a7b3c63012518c3e854270555f469247
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652077"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873708"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Přehled streamování Apache Sparku
 
@@ -34,7 +34,7 @@ Začněte s jedinou událost, Řekněme, že teplota čtení z připojených ter
 
 Každý RDD představuje událostí shromážděných za období definované uživatelem volá *batch interval*. Protože každé dávky interval uplyne, je vytvořen nový RDD, který obsahuje všechna data z tohoto intervalu. Spojité sady Rdd se shromáždí do DStream. Například pokud batch interval je 1 sekunda dlouhý, vaše DStream vydává dávky každý druhý obsahující jeden RDD, obsahující všechna data přijatá během této druhé. Při zpracování DStream událostí teplotní se zobrazí v jednom z těchto listech. Aplikace Spark Streaming zpracovává listy, které obsahují události a nakonec pracuje s daty uloženými v každé RDD.
 
-![Příklad DStream s událostí teplotní ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![Příklad DStream s událostí teplotní](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Struktura aplikace Spark Streaming
 

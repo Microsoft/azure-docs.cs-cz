@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 43989ff9dac7cdad76117aaa6e3c862453b24813
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344087"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865106"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientskou architekturu 
 
@@ -134,7 +134,7 @@ Chcete-li vyčistit klidní, tyto virtuální počítače se přidají do stejn�
 
     **uživatelské jméno – správce**: Použijte vlastní uživatelské jméno správce.
 
-    **– Správce hesel**: Použijte heslo správce.
+    **--admin-password**: Použijte heslo správce.
 
     ```azurecli-interactive
     az vm create \
@@ -155,7 +155,7 @@ Chcete-li vyčistit klidní, tyto virtuální počítače se přidají do stejn�
 
     **uživatelské jméno – správce**: Použijte vlastní uživatelské jméno správce.
 
-    **– Správce hesel**: Použijte heslo správce.
+    **--admin-password**: Použijte heslo správce.
 
     ```azurecli-interactive
     az vm create \
@@ -421,7 +421,7 @@ Pokud chcete odstranit skupinu prostředků podle názvu:
 ## <a name="next-steps"></a>Další postup
 
 - Přečtěte si další Reprovisioning, najdete v článku [reprovisoning koncepty zařízení centra IoT](concepts-device-reprovision.md) 
-- Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování ](how-to-unprovision-devices.md) 
+- Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování](how-to-unprovision-devices.md) 
 
 
 

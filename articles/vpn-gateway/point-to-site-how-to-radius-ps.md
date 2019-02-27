@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0d31129a94d6e575ead01a62d22ae3ce8f2acf64
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0aea797458649af3f839b7b8ae9b5cea384fe3b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414912"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865140"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím ověřování pomocí protokolu RADIUS: PowerShell
 
@@ -64,7 +64,7 @@ Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-### <a name="sign-in"></a>Přihlášení
+## <a name="signin"></a>Přihlásit se
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
@@ -87,7 +87,7 @@ Příklady hodnot můžete použít k vytvoření testovacího prostředí nebo 
 * **DNS Server: IP adresa** serveru DNS, který chcete použít pro překlad názvů pro vaši virtuální síť. (volitelné)
 * **Název brány: Vnet1GW**
 * **Název veřejné IP: VNet1GWPIP**
-* **Typ sítě VPN: RouteBased** 
+* **Typ sítě VPN: RouteBased**
 
 ## 1. <a name="vnet"></a>Vytvořte skupinu prostředků, virtuální sítě a veřejné IP adresy
 

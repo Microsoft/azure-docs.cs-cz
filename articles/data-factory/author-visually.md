@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: e934c8bdc851f8c550e8b87a923215df3f95e389
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c4e71f3c355f00bda3df6d43bc81743b391ea0dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728248"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871957"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -31,7 +31,7 @@ Vizuální vytváření obsahu pomocí služby Data Factory se liší od vizuál
 - Služba Data Factory neobsahuje úložiště pro ukládání entity JSON pro vaše změny.
 - Služba Data Factory není optimalizovaná pro spolupráci a správu verzí.
 
-![Konfigurace služby Data Factory ](media/author-visually/configure-data-factory.png)
+![Konfigurace služby Data Factory](media/author-visually/configure-data-factory.png)
 
 Při použití uživatelského rozhraní **plátno pro vytváření obsahu** vytvořit přímo ve službě Data Factory, pouze **Publikovat vše** režim je k dispozici. Všechny změny, které provedete, se publikují přímo do služby Data Factory.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 97c33a5dc2eb43644081579b5d1c0172ce953906
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449346"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868183"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na disku Azure Data Box a ověřit
 
@@ -178,20 +178,20 @@ Tento volitelný postup můžete použít v případě, že používáte více d
 1. Ujistěte se, že na počítači s Windows máte stažený nástroj Data Box Split Copy, který je extrahovaný v místní složce. Tento nástroj se stáhnul při stahování sady nástrojů Data Box Disk pro Windows.
 2. Otevřete Průzkumníka souborů. Poznamenejte si písmeno jednotky zdroje dat a písmeno jednotky přiřazené k Data Box Disku. 
 
-     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-1.png)
  
 3. Identifikujte zdrojová data, která se mají zkopírovat. Například v tomto případě:
     - Identifikovala se následující data objektu blob bloku.
 
-         ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - Identifikovala se následující data objektu blob stránky.
 
-         ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. Přejděte do složky s extrahovaným softwarem. Vyhledejte `SampleConfig.json` soubor v této složce. Jedná se o soubor jen pro čtení, který můžete upravit a uložit.
 
-   ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. Upravit `SampleConfig.json` souboru.
  
@@ -200,36 +200,36 @@ Tento volitelný postup můžete použít v případě, že používáte více d
     - Zadejte písmena jednotek odpovídající cílovým diskům. Data se načtou ze zdrojové cesty a zkopírují se mezi několik disků.
     - Zadejte cestu pro soubory protokolů. Ve výchozím nastavení, je odeslána do aktuálního adresáře kde `.exe` nachází.
 
-     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. Pokud chcete ověřovat formát souboru, přejděte na `JSONlint`. Uložte soubor jako `ConfigFile.json`. 
 
-     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Otevřete okno příkazového řádku. 
 
-8. Spustit `DataBoxDiskSplitCopy.exe`. Typ
+8. Spustit `DataBoxDiskSplitCopy.exe`. Type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. Stiskněte Enter a pokračujte v provádění skriptu.
 
-    ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. Jakmile se datová sada rozdělí a zkopíruje, zobrazí se souhrn nástroje Split Copy pro relaci kopírování. Ukázkový výstup najdete níž.
 
-    ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. Ověřte, že se data rozdělila mezi cílové disky. 
  
-    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![Kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
     Je-li zkontrolovat obsah `n:` jednotka další, uvidíte, že se vytvoří dvě podsložky odpovídající objekt blob bloku a objektů blob stránky formát data.
     
-     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. Pokud operace kopírování selže, použijte k obnovení a pokračování následující příkaz:
 

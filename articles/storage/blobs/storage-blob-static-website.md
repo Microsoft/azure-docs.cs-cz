@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f42237c1bf5c4782f47254c253d1d40289b65099
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670540"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867730"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -51,6 +51,7 @@ Vybrané výchozí název souboru se používá v kořenovém adresáři a všec
 
 Aby váš statický web soubory k dispozici prostřednictvím protokolu HTTPS, naleznete v tématu [přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md). Jako součást tohoto procesu musíte *vaší sítě CDN přejděte na koncový bod webové* na rozdíl od koncový bod objektu blob. Budete muset počkat několik minut, než váš obsah je viditelné, protože konfigurace CDN není spuštěna ihned.
 
+Při aktualizaci statického webu, je potřeba vymazat obsah uložený v mezipaměti v krajních serverů CDN tím, že vyprázdnění koncového bodu CDN. Další informace najdete v tématu [Vyprázdnění koncového bodu Azure CDN](../../cdn/cdn-purge-endpoint.md).
 
 ## <a name="custom-domain-names"></a>Vlastní názvy domén
 

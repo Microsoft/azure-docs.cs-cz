@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 79a53c1b11a1bac0ea83afdd1333423aff4d6aa6
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b590d75abb9e3f6465594a5c8c684b94e6f2e07f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428462"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864291"
 ---
 # <a name="what-is-azure-backup"></a>Co je Azure Backup?
 
@@ -78,7 +78,7 @@ Azure Backup můžete zálohovat místní počítače i virtuální počítače 
 Výhody zálohování počítačů a aplikací MABS/DPM úložiště a zálohování aplikace DPM nebo MABS úložiště do trezoru se následujícím způsobem:
 
 - Zálohování MABS/DPM poskytuje s ohledem na aplikace zálohy optimalizovaných pro běžné aplikace, jako je například SQL Server, Exchange a SharePoint, v další soubor/složka/svazek zálohy a zálohy stavu počítač (holý, stav systému).
-- Pro místní mahines není nutné instalovat agenta MARS na každém počítači, který chcete zálohovat. Spuštění agenta ochrany aplikace DPM nebo MABS jednotlivých počítačů a agenta MARS běží na MABS/DPM pouze.
+- Pro místní počítače není nutné instalovat agenta MARS na každém počítači, který chcete zálohovat. Spuštění agenta ochrany aplikace DPM nebo MABS jednotlivých počítačů a agenta MARS běží na MABS/DPM pouze.
 - Máte větší flexibilitu a podrobné možnosti plánování pro zálohování.
 - Můžete spravovat zálohy pro víc počítačů, které shromáždíte do skupiny ochrany na jediné konzoly. To je zvlášť užitečné, když proběhne aplikací přes víc počítačů a chcete zálohovat společně.
 

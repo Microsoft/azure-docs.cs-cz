@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 56542ef116656bff979e27dfc2ddd5e82056c452
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: d0902c0e0b4c669f3918155f8416f064485abbea
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750136"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874898"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -132,12 +132,10 @@ Automatické škálování umožňuje mít správného množství prostředků s
 ### <a name="event-hub"></a>Centrum událostí
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) je streamování platformy a události služba příjmu, dají se transformovat a ukládat data pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů dávkování/úložišť. Použití služby Event Hubs do [Streamovat data Azure Monitor](platform/stream-monitoring-data-event-hubs.md) partnerovi SIEM a monitorovací nástroje.
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ### <a name="logic-apps"></a>Logic Apps
 [Logic Apps](https://azure.microsoft.com/services/logic-apps) je služba, která umožňuje automatizovat úlohy a obchodních procesů pomocí pracovních postupů, které se integrují s různými systémy a službami. Aktivity jsou k dispozici, čtení a zápis metrik a protokolů ve službě Azure Monitor, které umožňuje vytvářet pracovní postupy integrace s celou řadu jiných systémů.
 
-![Aplikace logiky](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="api"></a>Rozhraní API
 Několik rozhraní API jsou dostupná pro čtení a zápis metriky a protokoly z Azure monitoru a kromě přístupu vygenerované výstrahy. Můžete také nakonfigurovat a načíst výstrahy. To vám poskytne v podstatě neomezené možnosti, jak vytvářet vlastní řešení, které se integrují se službou Azure Monitor.

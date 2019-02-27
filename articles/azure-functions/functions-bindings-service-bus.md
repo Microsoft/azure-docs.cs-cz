@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: d88fbb3b5ece819270ca9c6b1060df31ba43854d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 85fdd67cd676db2a7c54c10523787b0d395de5dc
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821469"
+ms.locfileid: "56870784"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -148,7 +148,7 @@ let Run(myQueueItem: string, log: ILogger) =
 
 ### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
 
-Používá následující funkce Java `@ServiceBusQueueTrigger` poznámky z [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime) k popisu konfigurace pro aktivační událost fronty Service Bus. Funkce vezme zpráva umístit do fronty a přidá ho na protokoly.
+Používá následující funkce Java `@ServiceBusQueueTrigger` poznámky z [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime) k popisu konfigurace pro aktivační událost fronty Service Bus. Funkce vezme zpráva umístit do fronty a přidá jej do protokolů.
 
 ```java
 @FunctionName("sbprocessor")

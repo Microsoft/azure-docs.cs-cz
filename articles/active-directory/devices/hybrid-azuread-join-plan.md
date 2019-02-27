@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2e3ad4015df74ea3adb98eae4d98e30f2948ce
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a7a1d0dab08c4beb93d323bcd1a5f5b00a190daa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649182"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868285"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
@@ -116,7 +116,7 @@ Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v 
  - Všechny stávající stav registrováno v Azure AD by být automaticky odstraněna po zařízení je připojená k hybridní Azure AD. 
  - Vám může zakázat zařízení připojené k vaší doméně Azure AD registrované přidáním tohoto klíče registru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
 
-Kompatibilní se standardem FIPS čipy TPM nejsou podporovány pro připojení k hybridní službě Azure AD. Pokud vaše zařízení kompatibilní se standardem FIPS čipy TPM, je nutné zakázat před pokračováním v připojení k hybridní službě Azure AD.
+Kompatibilní se standardem FIPS čipy TPM nejsou podporovány pro připojení k hybridní službě Azure AD. Pokud vaše zařízení kompatibilní se standardem FIPS čipy TPM, je nutné zakázat před pokračováním v připojení k hybridní službě Azure AD. Společnost Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislá na výrobce čipu TPM. Obraťte se prosím na hardware pro výrobce OEM pro podporu.
 
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Přečtěte si, jak řídit připojení k hybridní službě Azure AD. zařízení
 

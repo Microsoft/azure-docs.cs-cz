@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b52e08485c5ce853f9c8eafaafd15f137aef10bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471143"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873440"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro aplikace SaaS s více tenanty pomocí geografické replikace databáze
 
@@ -241,7 +241,7 @@ Po dokončení procesu obnovení, aplikace a všech tenantů jsou plně funkčn�
     * _Tenants2-dpt -&lt;uživatele&gt;– obnovení_ systému SQL server.  Tento server slouží ke zřizování nových tenantů během výpadku.
     *   App Service s názvem, _události-wingtip-dpt -&lt;recoveryregion&gt;-&lt;uživatele & gt_; což je instance obnovení události aplikace. 
 
-    ![Prostředky Azure pro zotavení ](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png)    
+    ![Prostředky Azure pro zotavení](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
 4. Otevřít _tenants2-dpt -&lt;uživatele&gt;– obnovení_ systému SQL server.  Všimněte si, že obsahuje databázi _hawthornhall_ a elastický fond _Pool1_.  _Hawthornhall_ databáze je nakonfigurovaný jako elastické databáze v _Pool1_ elastického fondu.
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d94bc570f47d71a7e2b626041acd4bb6e84d0dc1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099768"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876003"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -73,7 +73,7 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Jaké oblasti v současné době podporují Hyperškálováním
 
-Velkokapacitní je aktuálně dostupné pro izolované databáze v těchto oblastech:  Západní US1, západní USA 2, východní US1, střed USA, západní Evropa, Severní Evropa, Velká Británie – Západ, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – jihovýchod a Austrálie – východ.
+Velkokapacitní je aktuálně dostupné pro izolované databáze v těchto oblastech:  Západní US1, západní USA 2, východní US1, střed USA, západní Evropa, Severní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – jihovýchod a Austrálie – východ.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Můžete vytvořit více databází hyperškálovatelný systém na serveru služby SQL Database
 

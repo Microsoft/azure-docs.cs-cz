@@ -1,6 +1,6 @@
 ---
-title: Správa Snapshot Manager zařízení StorSimple | Microsoft Docs
-description: Poskytuje přehled a odkazy na další informace o úlohách správy řešení StorSimple Snapshot Manager a pracovních postupů.
+title: StorSimple Snapshot Manageru správy | Dokumentace Microsoftu
+description: Poskytuje přehled a odkazy na další informace o úlohách správy řešení StorSimple Snapshot Manageru a pracovních postupů.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: v-sharos
-ms.openlocfilehash: a99b3d7336c3dc1a1f249915d6971a49f4b69be6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc72da98800ef85ef14be0882ba856fbf01386b9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875428"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872179"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Použití StorSimple Snapshot Manager ke správě vašeho řešení StorSimple
 
 ## <a name="overview"></a>Přehled
-Snapshot Manager zařízení StorSimple je modul snap-in konzoly Microsoft Management Console (MMC), který zjednodušuje ochrany dat a správu záloh v prostředí Microsoft Azure StorSimple. S StorSimple Snapshot Manager můžete spravovat Microsoft Azure StorSimple data v datovém centru i v cloudu jako řešení jedné integrované úložiště, proto kvůli zjednodušení zálohování procesů a snížení nákladů.
+StorSimple Snapshot Manageru je modul snap-in konzoly Microsoft Management Console (MMC), který zjednodušuje ochranu dat a správy zálohování v prostředí Microsoft Azure StorSimple. Pomocí StorSimple Snapshot Manager můžete spravovat Microsoft Azure StorSimple data v datovém centru i v cloudu jako jedné integrované řešení úložiště, tedy zjednodušení procesů zálohování a snížení nákladů.
 
-Konzola pro centrální správu StorSimple Snapshot Manager umožňuje vytvářet konzistentní, v okamžiku záložní kopie místní a Cloudová data. Například můžete použít konzolu pro:
+Konzolu pro centrální správu StorSimple Snapshot Manager umožňuje vytvářet konzistentní vzhledem k aplikacím, v okamžiku záložní kopie místní a Cloudová data. Například můžete použít konzolu pro:
 
-* Konfigurace, zálohovat a odstraňte svazky.
-* Konfigurace skupin svazku zajistit zálohovaných dat je konzistentní s aplikací.
-* Spravovat zásady zálohování tak, aby se data zálohují na předem určeného plánu.
-* Vytvořte nezávislé kopie dat, které lze uložených v cloudu a použít pro zotavení po havárii.
+* Konfigurace zálohování a odstraňte svazky.
+* Konfigurace skupin svazků, aby zálohovaných dat je konzistentních s aplikací.
+* Správa zásad zálohování tak, aby se data zálohují na předem určeného plánu.
+* Vytvoření nezávislých kopií dat, která můžete v cloudu pro ukládání a používání pro zotavení po havárii.
 
-Tento článek obsahuje odkazy na výukové programy, které popisují Snapshot Manager zařízení StorSimple a způsobu jeho použití k dokončení úlohy správy systému a pracovních postupů.
+Tento článek obsahuje odkazy na kurzy, které popisují StorSimple Snapshot Manageru a jak ji používat k dokončení úlohy systém správy a pracovních postupů.
 
-* Další informace o součástech Snapshot Manager zařízení StorSimple a architektura najdete v tématu [co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) 
-* Chcete-li stáhnout Snapshot Manager zařízení StorSimple, přejděte na [stránce pro stažení StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
-* Postupy nasazení zařízení StorSimple Snapshot Manager, přejděte na [nasazení zařízení StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+* Další informace o StorSimple Snapshot Manageru komponent a architektury, najdete v části [co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) 
+* Chcete-li stáhnout StorSimple Snapshot Manageru, přejděte na [stránce pro stažení StorSimple Snapshot Manageru](https://www.microsoft.com/download/details.aspx?id=44220).
+* Pro StorSimple Snapshot Manageru postupy nasazení, přejděte na [nasazení StorSimple Snapshot Manageru](storsimple-snapshot-manager-deployment.md).
 
 > [!NOTE]
-> StorSimple Snapshot Manager nelze použít pro správu Microsoft Azure StorSimple virtuální pole (také označované jako StorSimple místní virtuální zařízení).
+> StorSimple Snapshot Manageru nejde použít pro správu Microsoft Azure StorSimple virtuální pole (označované také jako StorSimple místní virtuální zařízení).
 
 
-## <a name="storsimple-snapshot-manager-tasks-and-workflows"></a>Úlohy StorSimple Snapshot Manager a pracovních postupů
-StorSimple Snapshot Manager můžete použít ke sledování a správě aktuální, plánované a dokončené úlohy zálohování. Kromě toho StorSimple Snapshot Manager nabízí katalog až 64 dokončené záloh. Katalog můžete použít k vyhledání a obnovit svazky nebo jednotlivé soubory. 
+## <a name="storsimple-snapshot-manager-tasks-and-workflows"></a>StorSimple Snapshot Manageru úloh a pracovních postupů
+StorSimple Snapshot Manager můžete použít ke sledování a správě aktuální, plánované a dokončení úlohy zálohování. Kromě toho StorSimple Snapshot Manageru poskytuje katalog až 64 dokončené zálohy. Můžete vyhledat a obnovit svazky nebo jednotlivé soubory katalogu. 
 
-| POKUD CHCETE TO UDĚLAT... | TENTO KURZ POUŽIJTE... |
+| POKUD CHCETE UDĚLAT... | POMOCÍ TOHOTO KURZU... |
 |:--- |:--- |
-| Další informace o Snapshot Manager zařízení StorSimple |[Co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
-| Nainstalujte Snapshot Manager zařízení StorSimple<br>Přeinstalujte Snapshot Manager zařízení StorSimple<br>Odebrat Snapshot Manager zařízení StorSimple |[Nasazení Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-deployment.md) |
-| Použití StorSimple Snapshot Manager nabídky a funkce:<ul><li>Panel nabídek</li><li>Panel nástrojů</li><li>Podokno oboru</li><li>Podokno výsledků</li><li>Podokna akcí</li><li>Navigace klávesnice a zkratky</li></ul> |[Uživatelské rozhraní Snapshot Manager zařízení StorSimple](storsimple-use-snapshot-manager.md) |
-| Použití běžných konzoly MMC funkcí obsažených v StorSimple Snapshot Manager:<ul><li>Zobrazení</li><li>Nové okno</li><li>Aktualizace</li><li>Export seznamu</li><li>Nápověda</li></ul> |[Pomocí akcí nabídce konzoly MMC v Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-mmc-menu.md) |
-| Přidat nebo nahradit zařízení<br>Připojení zařízení<br>Ověřte importované svazku skupiny<br>Aktualizujte připojená zařízení<br>Ověřování zařízení<br>Zobrazení podrobností o zařízeních<br>Odstranění konfigurace zařízení<br>Změnit heslo k zařízení<br>Nahraďte zařízení se nezdařilo<br> |[Použít k připojení a správě zařízení StorSimple Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-manage-devices.md) |
-| Připojit svazky<br>Zobrazení informací o svazcích<br>Odstranění svazku<br>Prohledat znovu svazky<br>Konfigurace a zálohovat vytvoření základního svazku<br>Konfigurace a zálohování dynamické zrcadleného svazku |[Pomocí StorSimple Snapshot Manager můžete zobrazit a spravovat svazky](storsimple-snapshot-manager-manage-volumes.md) |
-| Zobrazit svazku skupiny<br>Vytvořte skupinu svazku<br>Zálohování svazku skupiny<br>Úprava skupiny svazku<br>Odstranit skupinu svazku |[Použít k vytvoření a Správa skupin svazku Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-manage-volume-groups.md) |
-| Vytvořit zásady zálohování <br>Upravit zásady zálohování<br>Odstranit zásady zálohování |[Pomocí StorSimple Snapshot Manager vytvořit a spravovat zásady zálohování](storsimple-snapshot-manager-manage-backup-policies.md) |
-| Zobrazit a spravovat naplánované úlohy zálohování<br>Zobrazit a spravovat poslední úlohy zálohování<br>Zobrazit a spravovat právě probíhajících úloh zálohování |[Pomocí StorSimple Snapshot Manager můžete zobrazit a spravovat úlohy zálohování](storsimple-snapshot-manager-manage-backup-jobs.md) |
-| Obnovení svazku<br>Klonování svazku nebo svazku skupiny<br>Odstranit zálohy<br>Obnovit soubor<br>Obnovit databázi Snapshot Manager zařízení StorSimple |[Použití StorSimple Snapshot Manager ke správě katalogu zálohování](storsimple-snapshot-manager-manage-backup-catalog.md) |
+| Další informace o StorSimple Snapshot Manageru |[Co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
+| Nainstalovat Snapshot Manageru zařízení StorSimple<br>Přeinstalujte StorSimple Snapshot Manageru<br>Odebrat StorSimple Snapshot Manageru |[Nasazení StorSimple Snapshot Manageru](storsimple-snapshot-manager-deployment.md) |
+| Použití StorSimple Snapshot Manageru nabídek a funkce:<ul><li>Panel nabídek</li><li>Panel nástrojů</li><li>Podokno přehledu</li><li>Podokno výsledků</li><li>Podokna akcí</li><li>Navigace pomocí kláves a klávesové zkratky</li></ul> |[Uživatelské rozhraní StorSimple Snapshot Manageru](storsimple-use-snapshot-manager.md) |
+| Použijte běžné funkce konzoly MMC, které jsou zahrnuté ve StorSimple Snapshot Manageru:<ul><li>Zobrazení</li><li>Nové okno</li><li>Obnovení</li><li>Exportovat seznam</li><li>Nápověda</li></ul> |[Použijte nabídku akcí MMC prostřednictvím StorSimple Snapshot Manageru](storsimple-snapshot-manager-mmc-menu.md) |
+| Přidat nebo nahradit zařízení<br>Připojení zařízení<br>Ověřte importované svazku skupiny<br>Aktualizovat připojená zařízení<br>Ověřování zařízení<br>Zobrazení podrobností o zařízení<br>Odstranění konfigurace zařízení<br>Změnit heslo zařízení<br>Nahraďte zařízení se nezdařilo<br> |[K připojení a správě zařízení StorSimple pomocí StorSimple Snapshot Manageru](storsimple-snapshot-manager-manage-devices.md) |
+| Připojit svazky<br>Zobrazení informací o svazcích<br>Odstranění svazku<br>Znovu prohledat svazky<br>Konfigurace a zálohujte základního svazku<br>Konfigurace a zálohování dynamické zrcadlený svazek |[Pomocí StorSimple Snapshot Manageru k zobrazení a správa svazků](storsimple-snapshot-manager-manage-volumes.md) |
+| Zobrazení skupin svazků<br>Vytvoření skupiny svazků<br>Zálohování skupiny svazků<br>Upravit skupiny svazků<br>Odstranění skupiny svazků |[Vytvoření a Správa skupin svazků pomocí StorSimple Snapshot Manageru](storsimple-snapshot-manager-manage-volume-groups.md) |
+| Vytvoření zásady zálohování <br>Upravit zásady zálohování<br>Odstraňování zásady zálohování |[Vytvoření a Správa zásad zálohování pomocí StorSimple Snapshot Manageru](storsimple-snapshot-manager-manage-backup-policies.md) |
+| Zobrazení a správa naplánovaných úloh zálohování<br>Umožňuje zobrazit a spravovat poslední úlohy zálohování<br>Umožňuje zobrazit a spravovat právě probíhajících úloh zálohování |[K zobrazení a Správa úloh zálohování pomocí StorSimple Snapshot Manageru](storsimple-snapshot-manager-manage-backup-jobs.md) |
+| Obnovit svazek<br>Klonovat svazek nebo skupiny svazků<br>Odstranit zálohu<br>Obnovení souboru<br>Obnovení databáze StorSimple Snapshot Manageru |[Použití StorSimple Snapshot Manageru Správa katalogu záloh](storsimple-snapshot-manager-manage-backup-catalog.md) |
 
-## <a name="next-steps"></a>Další kroky
-[Stáhnout Snapshot Manager zařízení StorSimple](https://www.microsoft.com/download/details.aspx?id=44220).
+## <a name="next-steps"></a>Další postup
+[Stáhněte si StorSimple Snapshot Manageru](https://www.microsoft.com/download/details.aspx?id=44220).
 

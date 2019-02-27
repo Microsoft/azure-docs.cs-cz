@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4d576fb79ed931d6a07ab231888617c95c0e465d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452548"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867197"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -63,7 +63,7 @@ Cíle, úkoly a artefakty dokumentaci pro každou fázi životního cyklu v TDSP
 
 Následující diagram představuje zobrazení mřížky úloh (modře) a artefakty (zeleně), které jsou spojené s každou fázi životního cyklu (na vodorovné ose) pro tyto role (na svislé ose). 
 
-[ ![TDSP-role a úlohy](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>Struktura standardizované projektu
 
@@ -77,7 +77,7 @@ Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardn
 - metriky výkonu modelu, jako je například křivky roc s více TŘÍDAMI nebo MSE
 
 
-[ ![Adresáře TDSP](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
+[![Adresáře TDSP](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 Struktura adresářů můžete naklonovat z [Githubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
@@ -94,7 +94,7 @@ Analýzy a úložné infrastruktuře může být v cloudu nebo místně. To je, 
 
 Tady je příklad sdílení různých komponent infrastruktury cloudové analýzy a práce v několika projektech týmu.
 
-[ ![Infrastruktura TDSP](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Nástroje pro spuštění projektu

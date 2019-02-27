@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4b737117880393e24fe6ea00223fb0f719be4e4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 542fe0064de84e6266d2d0274809d7b2046b855c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980463"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874405"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálních počítačů a funkce pro Windows
 
@@ -366,7 +366,7 @@ Následující postup platí pro všechna rozšíření virtuálních počítač
 
 ### <a name="view-extension-status"></a>Zobrazit stav rozšíření
 
-Po spuštění rozšíření virtuálního počítače na virtuálním počítači použít [rutiny Get-AzVM ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) vrátit stav rozšíření. *Dílčí stavy [0]* odhalí zřizování rozšíření bylo úspěšné, což znamená, že se úspěšně nasadit do virtuálních počítačů, ale provádění rozšíření ve virtuálním počítači se nezdařilo, *dílčí stavy [1]*.
+Po spuštění rozšíření virtuálního počítače na virtuálním počítači použít [rutiny Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) vrátit stav rozšíření. *Dílčí stavy [0]* odhalí zřizování rozšíření bylo úspěšné, což znamená, že se úspěšně nasadit do virtuálních počítačů, ale provádění rozšíření ve virtuálním počítači se nezdařilo, *dílčí stavy [1]*.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status

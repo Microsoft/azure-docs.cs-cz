@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf0eb7a0b9e38397034c03ef2b4310ed67c6e6dd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980376"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864970"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření nespravované image virtuálního počítače z virtuálního počítače Azure
 
@@ -41,7 +41,7 @@ Ujistěte se, že na počítači spuštěná role serveru jsou podporované pomo
 > 
 > 
 
-Můžete také zobecnit virtuální počítač s Linuxem pomocí `sudo waagent -deprovision+user` a následné použití Powershellu k zachycení virtuálního počítače. Informace o zachycení virtuálního počítače pomocí rozhraní příkazového řádku najdete v tématu [generalize a zachytit virtuální počítač s Linuxem pomocí Azure CLI ](../linux/capture-image.md).
+Můžete také zobecnit virtuální počítač s Linuxem pomocí `sudo waagent -deprovision+user` a následné použití Powershellu k zachycení virtuálního počítače. Informace o zachycení virtuálního počítače pomocí rozhraní příkazového řádku najdete v tématu [generalize a zachytit virtuální počítač s Linuxem pomocí Azure CLI](../linux/capture-image.md).
 
 
 1. Přihlaste se k virtuálnímu počítači Windows.

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 0797a8a2d5633a30dcb2099ea475e4daae026686
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854161"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874031"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Váš profil a ID uživatele pro poznámkové bloky Azure
 
@@ -46,7 +46,7 @@ A **nakonfigurovat ID uživatele** příkaz také zobrazí vedle názvu dočasn�
 
 Vaše ID uživatele můžete kdykoli změnit také na stránce svého profilu.
 
-ID uživatele se skládají z nejméně čtyři písmena, číslice a pomlčky. Žádná ostatní znaky jsou povolené a ID uživatele nesmí začínat nebo končit pomlčkou ani použít víc spojovníků za sebou.
+ID uživatele musí být složený z mezi čtyřmi a šestnáct písmena, číslice a pomlčky. Žádná ostatní znaky jsou povolené a ID uživatele nesmí začínat nebo končit pomlčkou ani použít víc spojovníků za sebou. Vzhledem k tomu, že ID uživatele jsou jedinečná ve všech účtech poznámkových bloků Azure, zobrazí se zpráva, "ID uživatele je již používán." (Se zpráva zobrazí také při pokusu o použití ochranná známka společnosti Microsoft jako ID uživatele.) V těchto případech vyberte ID jiné uživatele.
 
 > [!Important]
 > Změna ID vašeho zruší platnost žádné adresy URL možná jste sdíleli pomocí předchozí ID. Můžete změnit ID zpět k předchozí ID na znovu ověřit odkazy. Nicméně je možné pro jiného uživatele, pokud chcete uplatnit nárok nepoužité ID do té doby.
