@@ -4,18 +4,17 @@ description: Pokyny, které vám umožní začít pomocí nástroje pro vývoj �
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 12/03/2018
+ms.date: 11/05/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 857e12664defb1fc0106dd0d3012b77a89f826c2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: aa044ba9a7fcb66b5314144dd77bdd3435488218
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495101"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877592"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Začínáme s Azure Stack nástroje pro vývoj úložišť
 
@@ -30,9 +29,9 @@ Použijte tento článek jako vodítko a začněte využívat nástroje pro výv
 
 ## <a name="azure-client-libraries"></a>Klientské knihovny Azure
 
-Pro klientské knihovny pro úložiště mějte na paměti, která je kompatibilní s rozhraním REST API verze. Ve vašem kódu, musíte zadat také koncový bod služby Azure Stack.
+Podporované verze rozhraní REST API pro Azure Stack úložiště jsou 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 pro verzi 1802 update nebo novější verze a 2015-04-05 pro předchozí verze. Koncové body služby Azure Stack nemají úplná parita s nejnovější verzí rozhraní REST API služby Azure storage. Klientské knihovny pro úložiště musíte mít na paměti, která je kompatibilní s rozhraním REST API verze.
 
-### <a name="1811-update-or-newer-versions"></a>1811 update nebo novější verze
+### <a name="1802-update-or-newer-versions"></a>1802 update nebo novější verze
 
 | Klientská knihovna | Podporovaná verze služby Azure Stack | Odkaz | Koncový bod specifikace |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -46,22 +45,22 @@ Pro klientské knihovny pro úložiště mějte na paměti, která je kompatibil
 
 #### <a name="install-php-client-via-composer---current"></a>Instalace klienta PHP prostřednictvím autora – aktuální
 
-Chcete-li nainstalovat prostřednictvím autora: (trvat objektů blob jako příklad).
+Chcete-li nainstalovat prostřednictvím autora: (take blob jako příklad).
 
 1. Vytvořte soubor s názvem **composer.json** v kořenovém adresáři projektu s následujícím kódem:
 
-    ```json
+  ```php
     {
       "require": {
-      "Microsoft/azure-storage-blob":"1.2.0"
+      "Microsoft/azure-storage-blob":"1.0.0"
       }
     }
-    ```
+  ```
 
 2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenového adresáře projektu.
 3. Spustit: `php composer.phar install`.
 
-### <a name="previous-versions-1802-to-1809-update"></a>Předchozí verze (aktualizace 1802 k 1809)
+### <a name="previous-versions"></a>Předchozí verze
 
 |Klientská knihovna|Podporovaná verze služby Azure Stack|Odkaz|Koncový bod specifikace|
 |---------|---------|---------|---------|
@@ -75,19 +74,19 @@ Chcete-li nainstalovat prostřednictvím autora: (trvat objektů blob jako pří
 
 #### <a name="install-php-client-via-composer---previous"></a>Instalace klienta PHP prostřednictvím autora - předchozí
 
-Chcete-li nainstalovat prostřednictvím autora: (take blob jako příklad).
+Chcete-li nainstalovat prostřednictvím autora:
 
 1. Vytvořte soubor s názvem **composer.json** v kořenovém adresáři projektu s následujícím kódem:
 
-  ```json
+  ```php
     {
-      "require": {
-      "Microsoft/azure-storage-blob":"1.0.0"
-      }
+          "require":{
+          "Microsoft/azure-storage":"0.15.0"
+          }
     }
   ```
 
-2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenového adresáře projektu.
+2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenu projektu.
 3. Spustit: `php composer.phar install`.
 
 ## <a name="endpoint-declaration"></a>Koncový bod deklarace
@@ -102,7 +101,7 @@ Pokud si nejste jisti o váš koncový bod, obraťte se na správce cloudu.
 
 Pro Azure Stack, která je zadaná přípona koncového bodu v souboru app.config:
 
-```xml
+```
 <add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
@@ -112,7 +111,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 Pro službu Azure Stack přípona koncového bodu je zadán v nastavení připojovacího řetězce:
 
-```java
+```
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
@@ -124,7 +123,7 @@ public static final String storageConnectionString =
 
 Pro službu Azure Stack je přípona koncového bodu podle instance deklarace:
 
-```javascript
+```
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
@@ -133,7 +132,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 Pro službu Azure Stack přípona koncového bodu je zadán v nastavení připojovacího řetězce:
 
-```cpp
+```
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
 AccountName=your_storage_account;
 AccountKey=your_storage_account_key;
@@ -144,7 +143,7 @@ EndpointSuffix=local.azurestack.external"));
 
 Pro službu Azure Stack přípona koncového bodu je zadán v nastavení připojovacího řetězce:
 
-```php
+```
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
 QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
 TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
@@ -155,7 +154,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 Pro službu Azure Stack je přípona koncového bodu podle instance deklarace:
 
-```python
+```
 block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
@@ -165,7 +164,7 @@ endpoint_suffix='local.azurestack.external')
 
 Pro službu Azure Stack přípona koncového bodu je zadán v nastavení připojovacího řetězce:
 
-```ruby
+```
 set
 AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;
 AccountName=myaccount;

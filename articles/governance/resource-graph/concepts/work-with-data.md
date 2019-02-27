@@ -4,16 +4,16 @@ description: Pochopit, jak získat a řídit velkých datových sad při práci 
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 8808f42cdd6fb547b70695278993faa0f52cdb61
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338389"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889031"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s datovými sadami velkých prostředků Azure
 
@@ -22,6 +22,9 @@ Azure Graph prostředků je určená pro práci s a získávání informací o p
 ## <a name="data-set-result-size"></a>Velikost datové sady výsledků
 
 Ve výchozím omezení prostředků grafu jakýkoli dotaz vrací pouze **100** záznamy. Tento ovládací prvek chrání před neúmyslným dotazy, které by mělo za následek velkých datových sad uživatele a služby. Nejčastěji dochází k tomu jako zákazník je experimentování s dotazy k hledání a filtrování zdrojů způsobem, který vyhovuje jejich potřebám. Tento ovládací prvek se liší od používání [horní](/azure/kusto/query/topoperator) nebo [limit](/azure/kusto/query/limitoperator) operátory jazyka Průzkumníka služby Azure Data omezit rozsah výsledků.
+
+> [!NOTE]
+> Při použití **první**, se doporučuje řazení výsledků podle alespoň jeden sloupec s `asc` nebo `desc`. Bez řazení, jsou výsledky vrácené náhodné a repeatable nejsou.
 
 Přes všechny metody interakci s grafem prostředků lze přepsat výchozí omezení. Následující příklady ukazují, jak chcete-li změnit omezení velikosti datové sady do _200_:
 
@@ -42,6 +45,9 @@ Ovládací prvek, který je _nejvíce omezující_ vyhraje. Například, pokud v
 ## <a name="skipping-records"></a>Přeskakuje záznamy
 
 Další možnost pro práci s velkými datovými sadami **přeskočit** ovládacího prvku. Tento ovládací prvek umožňuje tak přeskočím nebo přeskočit definovaný počet záznamů před vrácením výsledky dotazu. **Přeskočit** je užitečné pro dotazy, které řazení výsledků srozumitelným způsobem kde je cílem získat na záznamy někde uprostřed sadu výsledků dotazu. Pokud jsou na konci sady dat vrácené výsledky potřebné, je efektivnější použít konfiguraci jinou řazení a místo toho načtěte výsledky z horní části datové sady.
+
+> [!NOTE]
+> Při použití **přeskočit**, se doporučuje řazení výsledků podle alespoň jeden sloupec s `asc` nebo `desc`. Bez řazení, jsou výsledky vrácené náhodné a repeatable nejsou.
 
 Následující příklady ukazují, jak chcete-li přeskočit první _10_ záznamy dotazu by výsledkem, místo toho počínaje vrácený výsledek nastavit s 11 záznam:
 

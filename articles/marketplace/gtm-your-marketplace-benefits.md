@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747522"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887246"
 ---
 # <a name="your-marketplace-benefits"></a>Výhody Marketplace
 
@@ -63,9 +63,9 @@ Chcete-li využít tyto výhody, budete muset:
 1. Publikování nabídky v Azure Marketplace nebo AppSource.
 2. Zkontrolujte zadané marketingových kontaktů v **kontaktní informace** část vaší nabídky. To by měl být vyhrazených marketingové prostředků, na rozdíl od alias pokrývající vše. (tj, nepoužívejte "podporují\@", "informace o\@", "marketing\@" atd.)
 
-Na základě vašeho řešení stavu, zobrazí se vám e-mail s sami nebo jako pozvánku do volání konzultaci s vyhrazenou zapojení správce. Není potřeba dělat nic. iniciujte hovor – Marketplace Onboardingový tým vás bude kontaktovat na základě informací poskytují v [portál partnerů cloudu](https://cloudpartner.azure.com/).
+Na základě stavu vašeho řešení, nabídka se seznam, zkušební verze nebo Transact, obdržíte e-mail s sami nebo jako pozvánku do volání konzultaci s vyhrazenou zapojení správce. Není potřeba dělat nic. iniciujte hovor – Marketplace Onboardingový tým vás bude kontaktovat na základě informací poskytují v [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-Obor aktivit, které jsou k dispozici, rozšíří růstem vaší nabídky na webu marketplace. Všechny výpisy přijímat základní úroveň optimalizace doporučení a podporu.  Tyto výpisy jsou také nárok na další výhody marketingové na základě stavu řešení, zvolili marketplace a Microsoft Partner s kompetencí ocenění. 
+Obor aktivit, které jsou k dispozici, rozšíří růstem vaší nabídky na webu marketplace. Všechny výpisy přijímat základní úroveň optimalizace doporučení a podporu.  Tyto výpisy jsou také nárok na další výhody marketingové na základě stavu řešení (seznam, zkušební verze nebo Transact), zvolené marketplace a Microsoft Partner s kompetencí ocenění.
 
 Následující tabulky shrnují požadavky zakládající nárok:
 

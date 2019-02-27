@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2fd6321dcdcb8102b38217eb377ae3c200d5d737
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a549a46912b0d60f878a18cae1e70a763afc0243
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818557"
+ms.locfileid: "56874694"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -46,6 +46,7 @@ Služba Azure Machine Learning nabízí různé podporu napříč různými výp
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **Všechny výpočetní cíle lze opětovně použít pro více úlohy trénování**. Například po připojení vzdáleném virtuálním počítači do svého pracovního prostoru, jej můžete znovu použít pro více úloh.
 
@@ -240,6 +241,42 @@ Azure HDInsight je oblíbená platforma pro analýzy velkých objemů dat. Tato 
 
 Teď, když jste připojené tak výpočetní prostředky a nakonfigurovat spuštění, dalším krokem je [odeslat spuštění školení](#submit).
 
+
+### <a id="azbatch"></a>Služba Azure Batch 
+
+Služba Azure Batch umožňuje efektivně spouštět rozsáhlé paralelní a vysoce výkonné aplikace výpočetního prostředí (HPC) v cloudu. AzureBatchStep je možné v kanálu služby Azure Machine Learning odesílat úlohy do fondu počítačů služby Azure Batch.
+
+Pro připojení služby Azure Batch jako cílové výpočetní prostředí, musíte používat sadu SDK Azure Machine Learning a zadejte následující informace:
+
+-   **Služba Azure Batch výpočetní název**: Popisný název se použije pro výpočetní prostředky v rámci pracovního prostoru
+-   **Název účtu služby Azure Batch**: Název účtu služby Azure Batch
+-   **Skupina prostředků**: Skupina prostředků obsahující účet Azure Batch.
+
+Následující kód ukazuje, jak připojit služby Azure Batch jako cílové výpočetní prostředí:
+
+```python
+from azureml.core.compute import ComputeTarget, BatchCompute
+from azureml.exceptions import ComputeTargetException
+
+batch_compute_name = 'mybatchcompute' # Name to associate with new compute in workspace
+
+# Batch account details needed to attach as compute to workspace
+batch_account_name = "<batch_account_name>" # Name of the Batch account
+batch_resource_group = "<batch_resource_group>" # Name of the resource group which contains this account
+
+try:
+    # check if the compute is already attached
+    batch_compute = BatchCompute(ws, batch_compute_name)
+except ComputeTargetException:
+    print('Attaching Batch compute...')
+    provisioning_config = BatchCompute.attach_configuration(resource_group=batch_resource_group, account_name=batch_account_name)
+    batch_compute = ComputeTarget.attach(ws, batch_compute_name, provisioning_config)
+    batch_compute.wait_for_completion()
+    print("Provisioning state:{}".format(batch_compute.provisioning_state))
+    print("Provisioning errors:{}".format(batch_compute.provisioning_errors))
+
+print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
+```
 
 ## <a name="set-up-compute-in-the-azure-portal"></a>Nastavte výpočetní prostředky na webu Azure Portal
 

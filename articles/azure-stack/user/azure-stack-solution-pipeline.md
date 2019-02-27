@@ -15,12 +15,12 @@ ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: bfbafea13f49ada59dae88e0336f926a8ad89d36
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: deaf7defe5aca4f53df073b19e471a52bd7b8a5d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430246"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878740"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikací na platformy Azure a Azure Stack
 
@@ -335,7 +335,7 @@ V této části kurzu, je nutné:
 > [!Note]
  > Vaším prostředím Azure Stack potřebuje správný imagí syndikovat do spuštění systému Windows Server a SQL Server. Musí také mít nasazení služby App Service. Najdete v dokumentaci služby App Service "Požadavky" v tématu požadavky na operátor Azure stacku.
 
-Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použití [šablony Azure Resource Manageru, jako je web ](https://azure.microsoft.com/resources/templates/) kód aplikace z Azure DevOps služby pro nasazení pro oba cloudy.
+Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použití [šablony Azure Resource Manageru, jako je web](https://azure.microsoft.com/resources/templates/) kód aplikace z Azure DevOps služby pro nasazení pro oba cloudy.
 
 ### <a name="add-code-to-an-azure-devops-services-project"></a>Přidání kódu do projektu služby Azure DevOps
 

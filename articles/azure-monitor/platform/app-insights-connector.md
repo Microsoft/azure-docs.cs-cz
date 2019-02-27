@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b1504961254fefcaafc22008b4cc5adaf77e9c4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447867"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878451"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení Application Insights Connector správy (zastaralé)
 
@@ -127,7 +127,7 @@ Po kliknutí na libovolné místo v **výjimky** okně zobrazí vizualizaci, kte
 
 Bez ohledu na to, zda klepnutí na něco **Application Insights Connector** řídicího panelu, v rámci **hledání** stránce samostatně, jakýkoli dotaz vrací data Application Insights zobrazí aplikace Insights perspektivy. Například, pokud se vám zobrazuje data Application Insights **&#42;** dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
 
-![Application Insights ](./media/app-insights-connector/app-insights-search.png)
+![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
 Součástí perspektivy jsou aktualizovány v závislosti na vyhledávací dotaz. To znamená, že výsledky můžete filtrovat pomocí vyhledávacího pole, která vám dává možnost vidět data z:
 

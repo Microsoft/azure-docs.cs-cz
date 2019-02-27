@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d451b53868dcd3253aba2a1c3118ddcc140445c3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013181"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882990"
 ---
-# <a name="security-frame-communication-security--mitigations"></a>Zabezpečení Frame: Zabezpečení komunikace | Zmírnění rizik 
+# <a name="security-frame-communication-security--mitigations"></a>Zabezpečení rámce: Zabezpečení komunikace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
-| **Centrum událostí Azure** | <ul><li>[Zabezpečená komunikace do centra událostí pomocí protokolu SSL/TLS](#comm-ssltls)</li></ul> |
+| **Azure Event Hub** | <ul><li>[Zabezpečená komunikace do centra událostí pomocí protokolu SSL/TLS](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Zkontrolujte oprávnění k účtu služby a zkontrolujte, že vlastní služby nebo stránky ASP.NET respektovat zabezpečení CRM](#priv-aspnet)</li></ul> |
 | **Azure Data Factory** | <ul><li>[Brána správy dat používané k připojení na místní SQL Server do služby Azure Data Factory](#sqlserver-factory)</li></ul> |
 | **Serveru identit** | <ul><li>[Ujistěte se, že veškerý provoz do serveru identit přes připojení HTTPS](#identity-https)</li></ul> |
@@ -32,15 +32,15 @@ ms.locfileid: "53013181"
 | **Database** | <ul><li>[Ujistěte se SQL server šifrování a certifikát ověření platnosti připojení](#sqlserver-validation)</li><li>[Platnost šifrované komunikace se serverem SQL](#encrypted-sqlserver)</li></ul> |
 | **Azure Storage** | <ul><li>[Ujistěte se, že komunikace s Azure Storage prostřednictvím protokolu HTTPS](#comm-storage)</li><li>[Ověřit hodnotu hash MD5 po stažení objektů blob, pokud nelze povolit HTTPS](#md5-https)</li><li>[Použití protokolu SMB 3.0 kompatibilní klient k zajištění šifrování během přenosu dat do sdílených složek Azure](#smb-shares)</li></ul> |
 | **Mobilního klienta** | <ul><li>[Implementace Připnutí certifikátu](#cert-pinning)</li></ul> |
-| **WCF** | <ul><li>[Povolení HTTPS – Zabezpečte přenosový kanál](#https-transport)</li><li>[WCF: Zabezpečení zpráv sada úroveň ochrany EncryptAndSign](#message-protection)</li><li>[WCF: Nejméně privilegovaný účet použijte ke spuštění služby WCF](#least-account-wcf)</li></ul> |
+| **WCF** | <ul><li>[Povolení HTTPS – Zabezpečte přenosový kanál](#https-transport)</li><li>[WCF: Nastavení zabezpečení zpráv úroveň ochrany EncryptAndSign](#message-protection)</li><li>[WCF: Použijte nejméně privilegovaný účet ke spuštění služby WCF](#least-account-wcf)</li></ul> |
 | **Webové rozhraní API** | <ul><li>[Vynutit veškerý provoz přes připojení HTTPS k webovým rozhraním API](#webapi-https)</li></ul> |
-| **Azure mezipaměti Redis** | <ul><li>[Ujistěte se, že komunikaci do mezipaměti Azure Redis pomocí protokolu SSL](#redis-ssl)</li></ul> |
+| **Azure Cache for Redis** | <ul><li>[Ujistěte se, že komunikaci do mezipaměti Azure Redis pomocí protokolu SSL](#redis-ssl)</li></ul> |
 | **Brána IoT pole** | <ul><li>[Hraniční brána komunikaci zabezpečit zařízení](#device-field)</li></ul> |
-| **Brána IoT cloudu** | <ul><li>[Zabezpečení zařízení pro Cloudová brána komunikaci pomocí protokolu SSL/TLS](#device-cloud)</li></ul> |
+| **IoT Cloud Gateway** | <ul><li>[Zabezpečení zařízení pro Cloudová brána komunikaci pomocí protokolu SSL/TLS](#device-cloud)</li></ul> |
 
 ## <a id="comm-ssltls"></a>Zabezpečená komunikace do centra událostí pomocí protokolu SSL/TLS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Centrum událostí Azure | 
 | **SDL fáze**               | Sestavení |  
@@ -51,7 +51,7 @@ ms.locfileid: "53013181"
 
 ## <a id="priv-aspnet"></a>Zkontrolujte oprávnění k účtu služby a zkontrolujte, že vlastní služby nebo stránky ASP.NET respektovat zabezpečení CRM
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Sestavení |  
@@ -62,18 +62,18 @@ ms.locfileid: "53013181"
 
 ## <a id="sqlserver-factory"></a>Brána správy dat používané k připojení na místní SQL Server do služby Azure Data Factory
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Data Factory | 
 | **SDL fáze**               | Nasazení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | Typy propojené služby – Azure a v místním nasazení |
-| **Odkazy**              |[ Přesun dat mezi místním nasazení ve a Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [brána správy dat](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **Odkazy**              |[Přesun dat mezi místním nasazení ve a Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [brána správy dat](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **Kroky** | <p>Nástroj Data Management Gateway (DMG) je nutná pro připojení ke zdrojům dat, které jsou chráněné za bránou corpnetu a bránou firewall.</p><ol><li>Uzamčení počítače izoluje nástroj DMG a zabraňuje nefunkční programům poškození nebo monitorování na zdrojovém počítači data. (Např.) musí být nainstalované nejnovější aktualizace, povolit minimální požadované porty řízené účty zřizování a auditování povoleno, na disku povoleno šifrování atd.)</li><li>Musí v pravidelných intervalech nebo pokaždé, když se tato možnost obnoví heslo účtu služby DMG obměnit klíč brány dat</li><li>Musí být šifrovaná data tranzitů přes službu propojení</li></ol> |
 
 ## <a id="identity-https"></a>Ujistěte se, že veškerý provoz do serveru identit přes připojení HTTPS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Nasazení |  
@@ -84,7 +84,7 @@ ms.locfileid: "53013181"
 
 ## <a id="x509-ssltls"></a>Ověření X.509 certifikáty sloužící k ověření připojení SSL, TLS a DTLS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -95,7 +95,7 @@ ms.locfileid: "53013181"
 
 ## <a id="ssl-appservice"></a>Konfigurace certifikátu SSL pro vlastní domény ve službě Azure App Service
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -106,7 +106,7 @@ ms.locfileid: "53013181"
 
 ## <a id="appservice-https"></a>Vynutit veškerý provoz do služby Azure App Service přes připojení HTTPS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -139,18 +139,18 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="http-hsts"></a>Povolit zabezpečení striktní přenosu HTTP (HSTS)
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Zabezpečení striktní přenosu HTTP OWASP Tahák](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Kroky** | <p>Striktní přenos HTTP zabezpečení (HSTS) je vylepšení zabezpečení přihlášení, která je zadána webovou aplikaci pomocí hlavičky speciální odpovědi. Jakmile podporovaný prohlížeč obdrží toto záhlaví prohlížeče zabrání jakékoli komunikační nezabránil odesílání prostřednictvím protokolu HTTP k zadané doméně a místo toho pošle veškerou komunikaci přes protokol HTTPS. Zabrání také klikněte na protokol HTTPS pomocí pokynů v prohlížečích.</p><p>K implementaci HSTS následující hlavičky odpovědi musí být nakonfigurované pro web globálně, v kódu nebo v konfiguraci. Strict –-zabezpečení přenosu: max-age = 300; includeSubDomains HSTS řeší následující hrozby:</p><ul><li>Záložky uživatele, nebo ručně typy http://example.com a se může útočník man-in-the-middle: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Webovou aplikaci, která má být čistě HTTPS neúmyslně obsahuje odkazy protokolu HTTP nebo poskytuje obsah prostřednictvím protokolu HTTP: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Man-in-the-middle útočník pokusí zachytávat provoz z victim uživatele s využitím neplatný certifikát a doufá, uživatel bude nesprávný certifikát přijmout: HSTS neumožňuje uživateli ignorovat neplatný certifikát</li></ul>|
+| **Kroky** | <p>Striktní přenos HTTP zabezpečení (HSTS) je vylepšení zabezpečení přihlášení, která je zadána webovou aplikaci pomocí hlavičky speciální odpovědi. Jakmile podporovaný prohlížeč obdrží toto záhlaví prohlížeče zabrání jakékoli komunikační nezabránil odesílání prostřednictvím protokolu HTTP k zadané doméně a místo toho pošle veškerou komunikaci přes protokol HTTPS. Zabrání také klikněte na protokol HTTPS pomocí pokynů v prohlížečích.</p><p>K implementaci HSTS následující hlavičky odpovědi musí být nakonfigurované pro web globálně, v kódu nebo v konfiguraci. Strict –-zabezpečení přenosu: max-age = 300; includeSubDomains HSTS řeší následující hrozby:</p><ul><li>Záložky uživatele, nebo ručně typy http://example.com a se může útočník man-in-the-middle: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Webovou aplikaci, která má být čistě HTTPS neúmyslně obsahuje odkazy protokolu HTTP nebo poskytuje obsah prostřednictvím protokolu HTTP: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Man-in-the-middle útočník pokusí zachytávat provoz z victim uživatele s využitím neplatný certifikát a doufá, že uživatel bude nesprávný certifikát přijmout: HSTS neumožňuje uživateli ignorovat neplatný certifikát</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Ujistěte se SQL server šifrování a certifikát ověření platnosti připojení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -161,7 +161,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="encrypted-sqlserver"></a>Platnost šifrované komunikace se serverem SQL
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -172,7 +172,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="comm-storage"></a>Ujistěte se, že komunikace s Azure Storage prostřednictvím protokolu HTTPS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Nasazení |  
@@ -183,7 +183,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="md5-https"></a>Ověřit hodnotu hash MD5 po stažení objektů blob, pokud nelze povolit HTTPS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -194,7 +194,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="smb-shares"></a>Použití protokolu SMB 3.0 kompatibilní klient k zajištění šifrování během přenosu dat do sdílené složky Azure
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Mobilního klienta | 
 | **SDL fáze**               | Sestavení |  
@@ -205,7 +205,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="cert-pinning"></a>Implementace Připnutí certifikátu
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -282,28 +282,28 @@ namespace CertificatePinningExample
 
 ## <a id="https-transport"></a>Povolení HTTPS – Zabezpečte přenosový kanál
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | NET Framework 3 |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
-| **Kroky** | Konfigurace aplikace by měl zajistit, aby používal protokol HTTPS pro veškerý přístup k citlivým údajům.<ul><li>**Vysvětlení:** Pokud aplikace zpracovává citlivé informace a nepoužívá šifrování na úrovni zpráv, pak by měly povoleny pouze pro komunikaci přes kanál přenosu zašifrované.</li><li>**DOPORUČENÍ:** Ujistěte se, že je zakázána přenos pomocí protokolu HTTP a místo toho povolit přenos protokolu HTTPS. Nahraďte třeba `<httpTransport/>` s `<httpsTransport/>` značky. Nespoléhejte na konfiguraci sítě (Brána firewall) k zajištění, že aplikaci lze přistupovat pouze prostřednictvím zabezpečeného kanálu. Aplikace by neměl z filozofické pohledu, závisí na síť pro jeho zabezpečení.</li></ul><p>Z praktického pohledu osoby odpovědné za zabezpečení sítě vždy nesledovaly požadavky na zabezpečení aplikace, jak se vyvíjí.</p>|
+| **Kroky** | Konfigurace aplikace by měl zajistit, aby používal protokol HTTPS pro veškerý přístup k citlivým údajům.<ul><li>**VYSVĚTLENÍ:** Pokud aplikace zpracovává citlivé informace a nepoužívá šifrování na úrovni zpráv, pak ji by měl pouze bude moct komunikovat přes kanál přenosu zašifrované.</li><li>**DOPORUČENÍ:** Ujistěte se, že je zakázána přenos pomocí protokolu HTTP a místo toho povolit přenos protokolu HTTPS. Nahraďte třeba `<httpTransport/>` s `<httpsTransport/>` značky. Nespoléhejte na konfiguraci sítě (Brána firewall) k zajištění, že aplikaci lze přistupovat pouze prostřednictvím zabezpečeného kanálu. Aplikace by neměl z filozofické pohledu, závisí na síť pro jeho zabezpečení.</li></ul><p>Z praktického pohledu osoby odpovědné za zabezpečení sítě vždy nesledovaly požadavky na zabezpečení aplikace, jak se vyvíjí.</p>|
 
-## <a id="message-protection"></a>WCF: Zabezpečení zpráv sada úroveň ochrany EncryptAndSign
+## <a id="message-protection"></a>WCF: Nastavení zabezpečení zpráv úroveň ochrany EncryptAndSign
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
-| **Použitelných technologiích** | Rozhraní .NET framework 3 |
+| **Použitelných technologiích** | .NET Framework 3 |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Kroky** | <ul><li>**Vysvětlení:** Pokud zpráva ochrana se vypnout ochranu úroveň je nastavená na "none" ho. Důvěrnost a integrita se dosahuje prostřednictvím odpovídající úroveň nastavení.</li><li>**DOPORUČENÍ:**<ul><li>Když `Mode=None` – zakáže ochranu zprávy</li><li>Když `Mode=Sign` -příznaky ale nešifruje zprávy; má být použit při integritu dat je důležité</li><li>Když `Mode=EncryptAndSign` – značky a šifruje zprávy</li></ul></li></ul><p>Zvažte vypnutí šifrování a pouze podepisování zpráv při stačí k ověření integrity informace důvěrnost bez starostí. To může být užitečné pro operace nebo servisní smlouvy ve které je potřeba ověřit původního odesilatele, ale přenášet citlivá data. Při snížení úrovně ochrany, buďte opatrní, že zpráva neobsahuje žádné identifikovatelné osobní údaje (PII).</p>|
+| **Kroky** | <ul><li>**VYSVĚTLENÍ:** Při ochrany úroveň je nastavená na "none" ho zakážete ochrany zprávy. Důvěrnost a integrita se dosahuje prostřednictvím odpovídající úroveň nastavení.</li><li>**DOPORUČENÍ:**<ul><li>Když `Mode=None` – zakáže ochranu zprávy</li><li>Když `Mode=Sign` -příznaky ale nešifruje zprávy; má být použit při integritu dat je důležité</li><li>Když `Mode=EncryptAndSign` – značky a šifruje zprávy</li></ul></li></ul><p>Zvažte vypnutí šifrování a pouze podepisování zpráv při stačí k ověření integrity informace důvěrnost bez starostí. To může být užitečné pro operace nebo servisní smlouvy ve které je potřeba ověřit původního odesilatele, ale přenášet citlivá data. Při snížení úrovně ochrany, buďte opatrní, že zpráva neobsahuje žádné identifikovatelné osobní údaje (PII).</p>|
 
 ### <a name="example"></a>Příklad:
-Konfigurace služby a operace pouze podepisování zpráv se zobrazí v následujících příkladech. Příklad kontraktu služby `ProtectionLevel.Sign`: následující je příklad použití ProtectionLevel.Sign na úrovni kontraktu služby: 
+Konfigurace služby a operace pouze podepisování zpráv se zobrazí v následujících příkladech. Příklad kontraktu služby `ProtectionLevel.Sign`: Následuje příklad použití ProtectionLevel.Sign na úrovni kontraktu služby: 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -313,27 +313,27 @@ public interface IService
 ```
 
 ### <a name="example"></a>Příklad:
-Operace kontraktu příklad `ProtectionLevel.Sign` (pro detailní kontrolu): následující je příklad použití `ProtectionLevel.Sign` na úrovni OperationContract:
+Operace kontraktu příklad `ProtectionLevel.Sign` (pro detailní kontrolu): Následuje příklad použití `ProtectionLevel.Sign` na úrovni OperationContract:
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 
 string GetData(int value);
 ``` 
 
-## <a id="least-account-wcf"></a>WCF: Nejméně privilegovaný účet použijte ke spuštění služby WCF
+## <a id="least-account-wcf"></a>WCF: Použijte nejméně privilegovaný účet ke spuštění služby WCF
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
-| **Použitelných technologiích** | Rozhraní .NET framework 3 |
+| **Použitelných technologiích** | .NET Framework 3 |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
-| **Kroky** | <ul><li>**Vysvětlení:** nespouštějte služeb WCF v části správce nebo vysoká oprávnění účtu. v případě ohrožení bezpečnosti služby způsobí vysoký dopad.</li><li>**DOPORUČENÍ:** použít k hostování služby WCF, protože bude omezíte prostor pro možný útok vaší aplikace a omezit možné škody, jestliže jsou napadených nejméně privilegovaný účet. Pokud účet služby vyžaduje další přístupová práva pro prostředky infrastruktury jako služby MSMQ, do protokolu událostí, čítače výkonu a systému souborů, příslušná oprávnění by měla být věnována tyto prostředky tak, že můžete úspěšně spustit službu WCF.</li></ul><p>Pokud vaše služba potřebuje přístup k určitým prostředkům jménem původního volajícího, použijte zosobnění a delegování tok identitu volajícího pro kontrolu příjem dat autorizace. Ve scénáři vývoje pomocí účtu služby místní sítě, což je zvláštní předdefinovaný účet, který má omezená oprávnění. V případě produkčního prostředí vytvořte účet služby vlastní domény nejnižší úrovní oprávnění.</p>|
+| **Kroky** | <ul><li>**VYSVĚTLENÍ:** Nespouštějte služeb WCF v části správce nebo vysoká oprávnění účtu. v případě ohrožení bezpečnosti služby způsobí vysoký dopad.</li><li>**DOPORUČENÍ:** Použijte k hostování služby WCF, protože bude omezíte prostor pro možný útok vaší aplikace a omezit možné škody, jestliže jsou napadených nejméně privilegovaný účet. Pokud účet služby vyžaduje další přístupová práva pro prostředky infrastruktury jako služby MSMQ, do protokolu událostí, čítače výkonu a systému souborů, příslušná oprávnění by měla být věnována tyto prostředky tak, že můžete úspěšně spustit službu WCF.</li></ul><p>Pokud vaše služba potřebuje přístup k určitým prostředkům jménem původního volajícího, použijte zosobnění a delegování tok identitu volajícího pro kontrolu příjem dat autorizace. Ve scénáři vývoje pomocí účtu služby místní sítě, což je zvláštní předdefinovaný účet, který má omezená oprávnění. V případě produkčního prostředí vytvořte účet služby vlastní domény nejnižší úrovní oprávnění.</p>|
 
 ## <a id="webapi-https"></a>Vynutit veškerý provoz přes připojení HTTPS k webovým rozhraním API
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -374,7 +374,7 @@ public class ValuesController : ApiController
  
 ## <a id="redis-ssl"></a>Ujistěte se, že komunikaci do mezipaměti Azure Redis pomocí protokolu SSL
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Cache for Redis | 
 | **SDL fáze**               | Sestavení |  
@@ -387,7 +387,7 @@ Všimněte si, že Redis je určený ke přístupná pomocí důvěryhodné klie
 
 ## <a id="device-field"></a>Hraniční brána komunikaci zabezpečit zařízení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Brána IoT pole | 
 | **SDL fáze**               | Sestavení |  
@@ -398,9 +398,9 @@ Všimněte si, že Redis je určený ke přístupná pomocí důvěryhodné klie
 
 ## <a id="device-cloud"></a>Zabezpečení zařízení pro Cloudová brána komunikaci pomocí protokolu SSL/TLS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Brána IoT cloudu | 
+| **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |

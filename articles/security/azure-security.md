@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 28630a1d1b2ce212fe1054496814a9084f8cfc98
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 74bdcc831f19031162d004e1ba98c0cfc258ce4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116299"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879407"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -80,7 +80,7 @@ Tato část obsahuje další informace o klíčových funkcí v oddělení zabez
 Kromě toho můžete nakonfigurovat zabezpečení a dodržování předpisů pro [automaticky provádět konkrétní akce](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) při zjištění určité události.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manageru ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) umožňuje pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Můžete použít [šablony Azure Resource Manageru](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) pro nasazení a tato šablona může fungovat v různých prostředích, jako je například testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
+[Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) umožňuje pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Můžete použít [šablony Azure Resource Manageru](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) pro nasazení a tato šablona může fungovat v různých prostředích, jako je například testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
 
 Nasazení pomocí šablony Azure Resource Manageru vylepšení zabezpečení řešení nasazené v Azure, protože standard zabezpečení řídit nastavení a můžete integrovat do standardizované nasazení založené na šabloně. To snižuje riziko chyby konfigurace zabezpečení, které může probíhat během ruční nasazení.
 

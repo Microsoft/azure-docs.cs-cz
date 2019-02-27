@@ -5,19 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: c7622252cd5b375e8c580bfcf7a45806d219d828
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/26/2019
+ms.openlocfilehash: 52f192a179c02e63c394401cce82b51fbe96e92d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900557"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887263"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak vytvořit a spravovat čtení replik ve službě Azure Database for MySQL pomocí webu Azure portal
-
-
-> [!IMPORTANT]
-> Funkce repliky pro čtení je ve verzi Public Preview.
 
 V tomto článku se dozvíte, jak vytvořit a spravovat čtení replik v rámci stejné oblasti Azure jako hlavní v služba Azure Database for MySQL pomocí webu Azure portal. Tato funkce je aktuálně ve verzi public preview.
 
@@ -40,18 +36,18 @@ Server repliky pro čtení můžete vytvořit pomocí následujících kroků:
 
 4. Vyberte **přidání repliky**.
 
-   ![Azure Database for MySQL – replikace ](./media/howto-read-replica-portal/add-replica.png)
+   ![Azure Database for MySQL – replikace](./media/howto-read-replica-portal/add-replica.png)
 
 5. Zadejte název pro server repliky a klikněte na tlačítko **OK** pro potvrzení vytvoření repliky.
 
-   ![Azure Database for MySQL – vytvoření repliky ](./media/howto-read-replica-portal/create-replica.png)
+   ![Azure Database for MySQL – vytvoření repliky](./media/howto-read-replica-portal/create-replica.png)
 
 > [!NOTE]
 > Repliky pro čtení jsou vytvořeny se stejnou konfigurací serveru na hlavní server. Konfigurace serveru repliky můžete po jejím vytvoření změnit. Doporučuje se, že konfigurace serveru repliky by udržováno na hodnoty roven nebo větší než hlavní Ujistěte se, že je replika schopné udržovat tempo s hlavní.
 
 Po vytvoření serveru repliky, ho můžete prohlížet **replikace** okno.
 
-   ![Azure Database for MySQL – seznam replik ](./media/howto-read-replica-portal/list-replica.png)
+   ![Azure Database for MySQL – seznam replik](./media/howto-read-replica-portal/list-replica.png)
 
 ## <a name="stop-replication-to-a-replica-server"></a>Zastavuje se replikace na serveru repliky
 
@@ -66,15 +62,15 @@ Pokud chcete zastavit replikaci mezi hlavní a serverem repliky na webu Azure Po
 
 3. Vyberte, kterou chcete zastavit replikaci pro server repliky.
 
-   ![Azure Database for MySQL – výběr serveru zastavení replikace ](./media/howto-read-replica-portal/stop-replication-select.png)
+   ![Azure Database for MySQL – výběr serveru zastavení replikace](./media/howto-read-replica-portal/stop-replication-select.png)
 
 4. Vyberte **zastavení replikace**.
 
-   ![Azure Database for MySQL – zastavení replikace ](./media/howto-read-replica-portal/stop-replication.png)
+   ![Azure Database for MySQL – zastavení replikace](./media/howto-read-replica-portal/stop-replication.png)
 
 5. Potvrďte chcete zastavit replikaci kliknutím **OK**.
 
-   ![Azure Database for MySQL – potvrdit zastavení replikace ](./media/howto-read-replica-portal/stop-replication-confirm.png)
+   ![Azure Database for MySQL – potvrdit zastavení replikace](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
 ## <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 
@@ -86,15 +82,15 @@ Pokud chcete odstranit server repliky pro čtení z portálu Azure portal, postu
 
 3. Vyberte server repliky, který chcete odstranit.
 
-   ![Azure Database for MySQL – odstranění repliky vyberte serveru ](./media/howto-read-replica-portal/delete-replica-select.png)
+   ![Azure Database for MySQL – odstranění repliky vyberte serveru](./media/howto-read-replica-portal/delete-replica-select.png)
 
 4. Vyberte **odstranit repliku**
 
-   ![Azure Database for MySQL – odstranění repliky ](./media/howto-read-replica-portal/delete-replica.png)
+   ![Azure Database for MySQL – odstranění repliky](./media/howto-read-replica-portal/delete-replica.png)
 
 5. Zadejte název repliky a klikněte na tlačítko **odstranit** potvrďte odstranění repliky.  
 
-   ![Azure Database for MySQL – odstranění repliky potvrzení ](./media/howto-read-replica-portal/delete-replica-confirm.png)
+   ![Azure Database for MySQL – odstranění repliky potvrzení](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
 ## <a name="delete-a-master-server"></a>Odstranit hlavního serveru
 
@@ -107,11 +103,11 @@ Pokud chcete odstranit hlavním serverem na webu Azure Portal, postupujte násle
 
 2. Z **přehled**vyberte **odstranit**.
 
-   ![Azure Database for MySQL – odstranění master ](./media/howto-read-replica-portal/delete-master-overview.png)
+   ![Azure Database for MySQL – odstranění master](./media/howto-read-replica-portal/delete-master-overview.png)
 
 3. Název hlavního serveru a klikněte na **odstranit** potvrďte odstranění hlavního serveru.  
 
-   ![Azure Database for MySQL – odstranění master ](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MySQL – odstranění master](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>Monitorování replikace
 
@@ -121,15 +117,15 @@ Pokud chcete odstranit hlavním serverem na webu Azure Portal, postupujte násle
 
 3. Vyberte **zpoždění replikace během několika sekund** z rozevíracího seznamu dostupných metrik. 
 
-   ![Vyberte možnost replikace prodleva ](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
+   ![Vyberte možnost replikace prodleva](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 
 4. Vyberte časový rozsah, který chcete zobrazit. Na následujícím obrázku vybere rozsah času 30 minut.
 
-   ![Vyberte časový rozsah ](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
+   ![Vyberte časový rozsah](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
 
 5. Zobrazení je zpoždění replikace pro vybraný časový rozsah. Následující obrázek zobrazuje posledních 30 minut.
 
-   ![Vyberte časový rozsah ](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Vyberte časový rozsah](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>Další postup
 

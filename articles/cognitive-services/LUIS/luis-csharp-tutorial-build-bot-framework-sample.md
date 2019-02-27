@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: fc8283d85cf7d516edd78f20c9a47d806fbb827b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1fd472c452b476820414d51b8d13bce8a72dfb3d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328958"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874932"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v C# pomocí rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -130,7 +130,7 @@ Otevřít **nastavení aplikace** a upravit **LuisAppId** pole obsahující ID a
 ## <a name="build-the-bot"></a>Sestavit robota
 V editoru kódu, klikněte pravým tlačítkem na `build.cmd` a vyberte **spustit z konzoly**.
 
-![Sestavit robota Web ](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
+![Sestavit robota Web](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
 
 Zobrazení kódu se nahradí okno terminálu znázorňující průběh a výsledky sestavení.
 

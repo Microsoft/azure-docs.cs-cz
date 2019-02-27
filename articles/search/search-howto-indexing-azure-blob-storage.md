@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 2a282b76805ab91215d6b34ea30a7008d8c8244b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 56afc933eff2e06df270b17403b767ebaddd4154
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467974"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872994"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů ve službě Azure Blob Storage pomocí služby Azure Search
 Tento článek popisuje, jak používat Azure Search k indexování dokumentů (jako jsou soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené ve službě Azure Blob storage. Nejprve vysvětluje základy tohoto nastavení a konfigurace indexeru blob. Potom nabízí blíže zkoumat chování a scénáře se pravděpodobně dojde k.
@@ -333,7 +333,7 @@ Indexování objektů BLOB může být časově náročný proces. V případech
 
 Můžete chtít "sestavení" dokumenty z více zdrojů v indexu. Chcete například sloučit text z objektů BLOB s další metadata uložená v databázi Cosmos DB. Nasdílení změn indexování rozhraní API spolu s různými indexery můžete použít i Vybudujte vyhledávání dokumentů z více částí. 
 
-Aby to fungovalo všechny indexery a další součásti musí shodnout na klíč dokumentu. Podrobný návod najdete v článku externí: [Kombinovat dokumenty s ostatními daty ve službě Azure Search ](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+Aby to fungovalo všechny indexery a další součásti musí shodnout na klíč dokumentu. Podrobný návod najdete v článku externí: [Kombinovat dokumenty s ostatními daty ve službě Azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indexování prostý text 

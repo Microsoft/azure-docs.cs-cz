@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2eb47bede14b139d011d8a74b5196a94a93a62c7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e055ddc49120d77047fa349b7e58c612eb724b41
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817095"
+ms.locfileid: "56881545"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -301,7 +301,9 @@ Jakmile je cluster spuštěn, [vytvořit knihovnu](https://docs.databricks.com/u
    |Pro Databricks| Nahrát Python Egg nebo PyPI | azureml-sdk[databricks]|
    |Pro Databricks - with-<br> automatizované funkce ML| Nahrát Python Egg nebo PyPI | azureml-sdk[automl_databricks]|
 
-   * Je možné nainstalovat žádný další funkce sady SDK. Zvolte pouze jeden z předchozích možností [databricks] nebo [automl_databricks].
+   > [!Warning]
+   > Je možné nainstalovat žádný další funkce sady SDK. Zvolte pouze jeden z předchozích možností [databricks] nebo [automl_databricks].
+
    * Nesmí být zvolen **automaticky připojí na všech clusterech**.
    * Vyberte **připojit** vedle názvu vašeho clusteru.
 
@@ -320,7 +322,7 @@ Pokud byla instalace úspěšná, importované knihovny by měl vypadat jako jed
    
 Sada SDK pro Databricks **_bez_** automatizované strojového učení ![Azure Machine Learning SDK for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Sada SDK pro Databricks **WITH** automatizované strojového učení ![SDK s automatizované strojového učení, které jsou nainstalované v Databricks ](./media/how-to-configure-environment/automlonadb.jpg)
+Sada SDK pro Databricks **WITH** automatizované strojového učení ![SDK s automatizované strojového učení, které jsou nainstalované v Databricks](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>Začít prozkoumávat
 

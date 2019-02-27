@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 52c5cb640bfb861fb2da52ee711fe3955a169bcf
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6fedc1b9a6b88419dbcae41b5bb6f89bd8c5cbf7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244024"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886873"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 
@@ -43,7 +43,7 @@ Aktuálně můžete odeslat dokumenty stejný pro všechny operace rozhraní Tex
 | Element | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
 |`id` |Datový typ je řetězec, ale v praxi ID dokumentu mají být celá čísla. | Požaduje se | Systém používá ID zadáte strukturovat výstup. Pro každé ID v požadavku se generují kódech jazyků, klíčové fráze a skóre mínění.|
-|`text` | Nestrukturované nezpracovaný text, maximálně 5 000 znaků. | Požaduje se | Pro rozpoznávání jazyka lze vyjádřit text v libovolném jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikace entit, musí mít text [podporovaný jazyk](../text-analytics-supported-languages.md). |
+|`text` | Nestrukturované nezpracovaný text, maximálně 5 120 znaků. | Požaduje se | Pro rozpoznávání jazyka lze vyjádřit text v libovolném jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikace entit, musí mít text [podporovaný jazyk](../text-analytics-supported-languages.md). |
 |`language` | 2 znacích [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kód [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu mínění, extrakci klíčových frází a propojování entit; volitelné pro rozpoznání jazyka. Se nezobrazí žádná chyba, pokud se můžete vyloučit, ale analýza správné provedení příslušných činností bez něj. Kód jazyka, musí odpovídat `text` zadáte. |
 
 Další informace o omezeních najdete v tématu [Text Analytics – přehled > omezení datové](../overview.md#data-limits). 

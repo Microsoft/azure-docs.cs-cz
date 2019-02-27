@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3ad33968107aec551ea99e503797382c7fcea0c5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993805"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877077"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s jedním, ve fondu a instanci databáze ve službě Azure SQL Database
 
@@ -90,7 +90,7 @@ Obecně platí vydavatelem a distributorem musí být buď v cloudu nebo místn�
 
 ### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Vydavatele s místní Distributor na Managed Instance
 
-![Jedna instance jako vydavateli a distributorovi ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+![Jedna instance jako vydavateli a distributorovi](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
 Vydavateli a distributorovi jsou nakonfigurované v rámci jednoho Managed Instance a distribuce změny jiných Managed Instance, izolovaná databáze, databáze ve fondu, nebo místní SQL Server. V této konfiguraci vydavatel/spravované Instance distributora nelze konfigurovat pomocí [geografickou replikaci a automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md).
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 94dec611a04819580696133c48db66da1ea9c463
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000438"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890075"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – výhody a motivace
 
@@ -54,7 +54,7 @@ Azure HDInsight je Cloudová distribuce komponent Hadoop z [Hortonworks Data Pl
 
 - **Rozšíření s vlastní nástroje nebo aplikace jiných výrobců** – clustery HDInsight je možné rozšířit pomocí nainstalovaných komponent a je také možné integrovat s jinými řešeními pro velké objemy dat s využitím [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)  nasazení z Azure Market place.
 
-- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [Azure Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md) a poskytuje jednotné rozhraní, pomocí kterého můžete monitorování všech vašich clusterů.
+- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitoru](../hdinsight-hadoop-oms-log-analytics-tutorial.md) a poskytuje jednotné rozhraní, pomocí kterého můžete monitorování všech vašich clusterů.
 
 - **Integrace s dalšími službami Azure** – HDInsight je možné snadno integrovat s dalšími oblíbenými službami Azure jako je následující:
 
@@ -88,12 +88,12 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 
 ### <a name="on-premises-deployment-questionnaire"></a>Dotazník pro místní nasazení
 
-| **Dotaz** | **Příklad** | **Odpověď** |
+| **Dotaz** | **Příklad** | **Answer** |
 |---|---|---|
-|**Téma**: **prostředí**|||
+|**téma**: **Prostředí**|||
 |Typ clusteru distribuce|Hortonworks, Cloudera, MapR| |
-|Verze clusteru distribuce|HDP 2.6.5 CDH – 5.7|
-|Komponenty ekosystému velkých objemů dat|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, střední, Falcon, Zeppelin, R|
+|Verze clusteru distribuce|HDP 2.6.5, CDH 5.7|
+|Komponenty ekosystému velkých objemů dat|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Typy clusterů|Hadoop, Spark, nesrostlé Kafka, Storm, Solr|
 |Počet clusterů|4|
 |Číslo hlavní uzly|2|
@@ -104,26 +104,26 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 |Konfigurace datové uzly|min nebo y, procesoru, disku atd.|
 |Hraniční uzly konfigurace|min nebo y, procesoru, disku atd.|
 |HDFS šifrování?|Ano|
-|Vysoká dostupnost|HA HDFS, Metastore HA|
+|Vysoká dostupnost|HDFS HA, Metastore HA|
 |Zotavení po havárii / zálohování|Zálohování clusteru?|  
 |Systémy, které jsou závislé na clusteru|SQL Server, Teradata, Power BI, MongoDB|
 |Integrace třetích stran|Tableau GridGain Qubole, Informatica, Splunk|
-|**Téma**: **zabezpečení**|||
+|**téma**: **Zabezpečení**|||
 |Zabezpečení perimetru|Brány firewall|
 |Cluster ověřování a autorizace|Active Directory, Ambari, Cloudera správce, bez ověřování|
-|Řízení přístupu HDFS|  Ruční, ssh uživatelů|
+|HDFS Access Control|  Ruční, ssh uživatelů|
 |Hive ověřování a autorizace|SENTRY, LDAP, Kerberos, Ranger AD|
-|Auditování|Ambari, Cloudera Navigátor Ranger|
+|Auditování|Ambari, Cloudera Navigator, Ranger|
 |Monitorování|Grafitová, shromážděná, statsd, Telegraf, InfluxDB|
-|Zobrazení výstrah|Kapacitor Prometheus, služby Datadog|
+|Zobrazení výstrah|Kapacitor, Prometheus, Datadog|
 |Doba uchování dat| 3 roky, 5 let.|
 |Správce clusteru|Jeden správce, více správců|
 
 ### <a name="project-details-questionnaire"></a>Dotazník podrobností projektu
 
-|**Dotaz**|**Příklad**|**Odpověď**|
+|**Dotaz**|**Příklad**|**Answer**|
 |---|---|---|
-|**Téma**: **úloh a četnost**|||
+|**téma**: **Úlohy a frekvence**|||
 |Úlohy MapReduce|10 úlohy--dvakrát denně||
 |Úlohy Hive|100 úloh – každou hodinu||
 |Sparkových úloh služby batch|50 úlohy--každých 15 minut||
@@ -132,53 +132,53 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 |Úlohy trénování modelů ML|2 úlohy--jednou za týden||
 |Programovací jazyky|Python, Scala, Java||
 |Skriptování|Prostředí Pythonu||
-|**Téma**: **dat**|||
-|Zdroje dat|Ploché soubory Json, Kafka, relační databázový systém||
+|**téma**: **Data**|||
+|Zdroje dat|Flat files, Json, Kafka, RDBMS||
 |Orchestrace dat|Pracovní postupy Oozie, vzduchu||
-|V paměti pro vyhledávání|Apache ke konferenci Ignite, redis Cache||
-|Cíle dat|HDFS, relační databázový systém, Kafka, MPP ||
-|**Téma**: **metadat**|||
+|V paměti pro vyhledávání|Apache Ignite, Redis||
+|Cíle dat|HDFS, RDBMS, Kafka, MPP ||
+|**téma**: **Metadata**|||
 |Typ databáze Hive|MySQL, Postgres||
 |Ne. z metaúložiště Hive|2||
 |Ne. tabulek Hive|100||
 |Ne. zásad Ranger|20||
 |Ne. Oozie pracovních postupů|100||
-|**Téma**: **škálování**|||
+|**téma**: **Škálování**|||
 |Objem dat, včetně replikace|100 TB||
 |Denní objem příjmu|50 GB||
 |Míry růstu dat|10 % za rok||
 |Míra růstu uzlů clusteru|% 5, ročně
-|**Téma**: **clusteru využití**|||
-|Průměrné využití procesoru % využití|60%||
-|Průměrná paměť % využití|75 %||
-|Využité místo na disku|75 %||
+|**téma**: **Využití clusteru**|||
+|Průměrné využití procesoru % využití|60 %||
+|Průměrná paměť % využití|75%||
+|Využité místo na disku|75%||
 |Průměrná sítě % využití|25 %
-|**Téma**: **zaměstnanců**|||
+|**téma**: **Zaměstnanci**|||
 |Ne. správců|2||
 |Ne. vývojářů|10||
 |Ne. koncových uživatelů|100||
 |Dovednosti|Hadoop, Spark||
 |Ne. z dostupných prostředků pro účely migrace|2||
-|**Téma**: **omezení**|||
+|**téma**: **Omezení**|||
 |Aktuální omezení|Latence je vysoká.||
 |Aktuální problémy|Problém souběžnosti||
 
 ### <a name="azure-requirements-questionnaire"></a>Dotazník požadavky pro Azure
 
-|**Téma**: **infrastruktury** |||
+|**téma**: **Infrastruktura** |||
 |---|---|---|
-|**Dotaz**|**Příklad**|**Odpověď**|
+|**Dotaz**|**Příklad**|**Answer**|
 | Preferované oblasti|USA – východ||
 |Upřednostňované sítě VNet?|Ano||
 |HA / DR potřeby?|Ano||
-|Integrace s jinými cloudovými službami?|ADF, služby cosmos DB||
-|**Téma**: **přesun dat**  |||
+|Integrace s jinými cloudovými službami?|ADF, CosmosDB||
+|**téma**:   **Pohyb dat**  |||
 |Předvolby počátečním načtení|DistCp, Data box, ADF, WANDisco||
 |Rozdílová data přenosu|DistCp, AzCopy||
 |Průběžné přírůstkové datové přenosy|DistCp, Sqoop||
-|**Téma**: **Monitoring a Alerting** |||
+|**téma**:   **Monitoring a Alerting** |||
 |Použití Azure Monitoring a Alerting integrace Vs monitorování třetích stran|Použití Azure Monitoring a Alerting||
-|**Téma**: **předvolby pro zabezpečení** |||
+|**téma**:   **Předvolby pro zabezpečení** |||
 |Soukromým a chráněným datovým kanálem?|Ano||
 |Cluster připojeno k doméně (ESP)?|     Ano||
 |On-Premises synchronizace AD do cloudu?|     Ano||
@@ -191,7 +191,7 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 |Auditování potřeba?|                  Ano||
 |Šifrování dat v klidovém stavu?|          Ano||
 |Šifrování dat při přenosu?|       Ano||
-|**Téma**: **předvolby Re – architektura** |||
+|**téma**:   **Předvolby RE – architektura** |||
 |Jeden cluster vs specifické typy clusterů|Specifické typy clusterů||
 |Společně umísťovat úložiště Vs vzdálené úložiště?|Vzdálené úložiště||
 |Protože data uložená vzdáleně menší velikost clusteru?|Menší velikost clusteru||

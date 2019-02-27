@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b2d1c71049ae72ad974d9ab9761d4668aeb17929
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312578"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889116"
 ---
 # <a name="output-metadata"></a>Výstupní Metadata
 ## <a name="overview"></a>Přehled
@@ -33,7 +33,7 @@ Tento článek popisuje elementů a typů schématu XML, na kterém metada výst
 
 Můžete najít kód úplné schéma a ukázkový kód XML na konci tohoto článku.  
 
-## <a name="AssetFiles "></a> AssetFiles kořenový element
+## <a name="AssetFiles"></a> AssetFiles kořenový element
 Kolekce položek AssetFile pro úlohy kódování.  
 
 ### <a name="child-elements"></a>Podřízené prvky
@@ -41,7 +41,7 @@ Kolekce položek AssetFile pro úlohy kódování.
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFile element, který je součástí kolekce AssetFiles. |
 
-## <a name="AssetFile "></a> AssetFile – element
+## <a name="AssetFile"></a> AssetFile – element
 Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
 
 ### <a name="attributes"></a>Atributy
@@ -58,7 +58,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](#xml).
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více videa sleduje prokládané do formátu odpovídajícího kontejneru. Další informace najdete v tématu VideoTracks elementu. |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Každý fyzický AssetFile může obsahovat v něm nula nebo více zvukové stopy prokládané do formátu odpovídajícího kontejneru. Jedná se o kolekci tyto zvukové stopy. Další informace najdete v tématu AudioTracks elementu. |
 
-## <a name="Sources "></a> Zdrojový element
+## <a name="Sources"></a> Zdrojový element
 Kolekce vstupu/zdrojových multimediálních souborů, který byl zpracován cílem vytvořit tento AssetFile.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
@@ -68,7 +68,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](#xml).
 | --- | --- |
 | **Zdroj**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Vstup/zdrojového souboru, které používá při generování tohoto prostředku. Další informace najdete v tématu Source element. |
 
-## <a name="Source "></a> Zdrojový element
+## <a name="Source"></a> Zdrojový element
 Vstup/zdrojového souboru, které používá při generování tohoto prostředku.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
@@ -78,7 +78,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](#xml).
 | --- | --- | --- |
 | **Název**<br/><br/> Požaduje se |**xs:string** |Název souboru vstupní zdroj. |
 
-## <a name="VideoTracks "></a> VideoTracks – element
+## <a name="VideoTracks"></a> VideoTracks – element
 Každý fyzický AssetFile může obsahovat v něm nula nebo více videa sleduje prokládané do formátu odpovídajícího kontejneru. **VideoTracks** element představuje kolekci videa stopy.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
@@ -110,7 +110,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](#xml).
 | **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Požaduje se |**xs:int** |Cíl průměrná přenosové rychlosti pro toto video stopu podle požadavku prostřednictvím kódovací předvolby, v kilobity za sekundu. |
 | **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs:int** |Maximální počet GOP průměrná přenosové rychlosti pro tato videa sledovat v kilobity za sekundu. |
 
-## <a name="AudioTracks "></a> AudioTracks – element
+## <a name="AudioTracks"></a> AudioTracks – element
 Každý fyzický AssetFile může obsahovat v něm nula nebo více zvukové stopy prokládané do formátu odpovídajícího kontejneru. **AudioTracks** element představuje kolekci tyto zvukové stopy.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
@@ -120,7 +120,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](#xml).
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Konkrétní zvukové stopy v nadřazeném prvku AssetFile. Další informace najdete v tématu AudioTrack elementu. |
 
-## <a name="AudioTrack "></a> AudioTrack – element
+## <a name="AudioTrack"></a> AudioTrack – element
 Konkrétní zvukové stopy v nadřazeném prvku AssetFile.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](#xml).  
@@ -141,7 +141,7 @@ Příklad XML můžete nalézt [ukázkový kód XML](#xml).
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parametry výsledek měření rytmu. Další informace najdete v tématu LoudnessMeteringResultParameters elementu. |
 
-## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters – element
+## <a name="LoudnessMeteringResultParameters"></a> LoudnessMeteringResultParameters – element
 Parametry výsledek měření rytmu.  
 
 Příklad XML můžete nalézt [ukázkový kód XML](#xml).  

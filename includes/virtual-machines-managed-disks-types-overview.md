@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8a067474fb172d4ff7a7fdf7eb6d24536bd2d017
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1556a7d482a6644831589937b1847b1d63e72693
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443437"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56890936"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
 
@@ -99,7 +99,7 @@ Velikosti s hvězdičkou jsou aktuálně ve verzi preview.
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Velikost disku v GB           | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8 192     | 16,384     | 32,767    |
 | Vstupně-výstupní operace za sekundu / disk       | Až 500              | Až 500              | Až 500              | Až 500 | Až 500              | Až 500              | Až 500             | Až 500              | 1 až 300              | Až 2 000              | Až 2 000              |
-| Propustnost / disk | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu| Až 300 MiB za sekundu |  Až 500 MiB/s | Až 500 MiB/s |
+| Propustnost / disk |  Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu| Až 300 MiB za sekundu |  Až 500 MiB/s | Až 500 MiB/s |
 
 ## <a name="standard-hdd"></a>Standard HDD
 

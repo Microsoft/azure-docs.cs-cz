@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9b3c0f7b1ff56cb269f6852be8fd2affeca8b8f1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddc051eb5f9638f7afec34db41c0e9d6e6d9d57d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143731"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890058"
 ---
 # <a name="render-custom-data-on-raster-map"></a>Vykreslování vlastních dat na rastrových map
 
@@ -154,7 +154,7 @@ Prostřednictvím můžete také získat informace o cestu a PIN kódů umístě
 > [!Note]
 > Tento příklad vyžaduje účet Azure Maps s cenovou úroveň S1.
 
-Můžete upravit vzhled mnohoúhelník s použitím stylu modifikátory [parametr cesty](https://docs.microsoft.com/rest-staging/api/maps/render/getmapimage#uri-parameters).
+Můžete upravit vzhled mnohoúhelník s použitím stylu modifikátory [parametr cesty](https://docs.microsoft.com/rest-staging/api/maps/render/getmapimage).
 
 1. V aplikaci Postman otevřete novou kartu ve stejné kolekci, kterou jste vytvořili výše. Vyberte metodu GET HTTP na kartě tvůrce a zadejte následující adresu URL pro požadavek GET pro vykreslení mnohoúhelník s barvy a krytí:
     
@@ -173,7 +173,7 @@ Na obrázku odpověď by měla vypadat nějak takto:
 > [!Note]
 > Tento příklad vyžaduje účet Azure Maps s cenovou úroveň S1.
 
-Můžete provést připínáčky a jejich popisky zvětšit nebo zmenšit s použitím modifikátor "sc" škálovací style. Jedná se o hodnotu větší než nula. Hodnota 1 je standardní škálování. Hodnoty větší než 1 budou zvětšit kódy PIN a hodnoty menší než 1 budou tyto menší. Další informace o stylu modifikátory zobrazíte [parametry cesty služby statický obrázek](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Můžete provést připínáčky a jejich popisky zvětšit nebo zmenšit s použitím modifikátor "sc" škálovací style. Jedná se o hodnotu větší než nula. Hodnota 1 je standardní škálování. Hodnoty větší než 1 budou zvětšit kódy PIN a hodnoty menší než 1 budou tyto menší. Další informace o stylu modifikátory zobrazíte [parametry cesty služby statický obrázek](https://docs.microsoft.com/rest/api/maps/render/getmapimage).
 
 Podle následujících pokynů k vykreslení mnohoúhelník s PIN kódy kruh a nabízených oznámení pomocí vlastních popisků:
 

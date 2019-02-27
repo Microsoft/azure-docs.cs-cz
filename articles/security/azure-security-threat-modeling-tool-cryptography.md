@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 947740ed28deea9682d10eecf9a66dab7540669e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824622"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880304"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Zabezpečení rámce: Kryptografie | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -34,7 +34,7 @@ ms.locfileid: "54824622"
 
 ## <a id="cipher-length"></a>Používat pouze schválený symetrický blokové šifry a délky klíčů
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -45,7 +45,7 @@ ms.locfileid: "54824622"
 
 ## <a id="vector-ciphers"></a>Použití schválené režimy šifrování bloku a inicializační vektory pro symetrické šifrování
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -56,7 +56,7 @@ ms.locfileid: "54824622"
 
 ## <a id="padding"></a>Použití schválené asymetrické algoritmy, délky klíčů a odsazení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -67,7 +67,7 @@ ms.locfileid: "54824622"
 
 ## <a id="numgen"></a>Použití schválené generátorů náhodných čísel
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -78,7 +78,7 @@ ms.locfileid: "54824622"
 
 ## <a id="stream-ciphers"></a>Nepoužívejte stream symetrického šifrování
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -89,7 +89,7 @@ ms.locfileid: "54824622"
 
 ## <a id="mac-hash"></a>Použití schválené MAC/HMAC/označenými hashovacích algoritmů
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -100,7 +100,7 @@ ms.locfileid: "54824622"
 
 ## <a id="hash-functions"></a>Používat pouze funkce schválené kryptografické hodnoty hash
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -111,7 +111,7 @@ ms.locfileid: "54824622"
 
 ## <a id="strong-db"></a>Používat silné šifrovací algoritmy k šifrování dat v databázi
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -122,7 +122,7 @@ ms.locfileid: "54824622"
 
 ## <a id="ssis-signed"></a>Balíčků služby SSIS by měl být zašifrované a digitálně podepsané
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -133,7 +133,7 @@ ms.locfileid: "54824622"
 
 ## <a id="securables-db"></a>Přidat digitální podpis zabezpečitelným prostředkům kritické databáze
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -144,7 +144,7 @@ ms.locfileid: "54824622"
 
 ## <a id="ekm-keys"></a>Použít systém SQL server EKM chrání šifrovací klíče
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -155,7 +155,7 @@ ms.locfileid: "54824622"
 
 ## <a id="keys-engine"></a>Pokud šifrovací klíče by neměl být odhalena k databázovému stroji AlwaysEncrypted funkci používat
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -166,7 +166,7 @@ ms.locfileid: "54824622"
 
 ## <a id="keys-iot"></a>Bezpečně Store kryptografických klíčů v zařízení IoT
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Sestavení |  
@@ -189,7 +189,7 @@ Jak je vidět, primární klíč zařízení není k dispozici v kódu. Místo t
 
 ## <a id="random-hub"></a>Generování náhodného symetrického klíče dostatečně dlouhé pro ověření do služby IoT Hub
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Sestavení |  
@@ -200,7 +200,7 @@ Jak je vidět, primární klíč zařízení není k dispozici v kódu. Místo t
 
 ## <a id="pin-remote"></a>Ujistěte se, že zásady správy zařízení je v místě, ke kterému potřebuje použít PIN kód a umožňuje vzdálené vymazání
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM Mobile Client | 
 | **SDL fáze**               | Nasazení |  
@@ -211,7 +211,7 @@ Jak je vidět, primární klíč zařízení není k dispozici v kódu. Místo t
 
 ## <a id="bitlocker"></a>Ujistěte se, že zásady správy zařízení je v místě, ke kterému vyžaduje kód PIN a hesla/automatické zamykání a šifruje všechna data (např. BitLocker)
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM Outlook Client | 
 | **SDL fáze**               | Sestavení |  
@@ -222,18 +222,18 @@ Jak je vidět, primární klíč zařízení není k dispozici v kódu. Místo t
 
 ## <a id="rolled-server"></a>Ujistěte se, že podpisové klíče jsou jednotlivě při použití serveru identit
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Nasazení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Identita serveru – klíče, podpisů a šifrování ](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
+| **Odkazy**              | [Identita serveru – klíče, podpisů a šifrování](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
 | **Kroky** | Ujistěte se, že podpisové klíče jsou jednotlivě při použití serveru identit. Odkaz v části odkazy vysvětluje, jak to plánování byste měli využít aniž by to způsobilo výpadky aplikací spoléhá na serveru identit. |
 
 ## <a id="client-server"></a>Ujistěte se, že ID přidělení kryptograficky silného klienta, tajného klíče klienta jsou použity na serveru identit
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Sestavení |  

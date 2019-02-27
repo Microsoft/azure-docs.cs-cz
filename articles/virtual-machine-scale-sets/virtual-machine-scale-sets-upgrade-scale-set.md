@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 4e6186310f63fde8648ded03a62b207b5f81a8e2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984796"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873623"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -316,7 +316,7 @@ Pokud chcete aktualizovat stávající virtuální počítače, musíte udělat 
 - Můžete také použít konkrétní jazyk [sady Azure SDK](https://azure.microsoft.com/downloads/).
 
 >[!NOTE]
-> Clustery Service Fabric můžete použít jenom *automatické* režim, ale aktualizace je zpracována jiným způsobem. Další informace najdete v tématu [ upgrady aplikací Service Fabric](../service-fabric/service-fabric-application-upgrade.md).
+> Clustery Service Fabric můžete použít jenom *automatické* režim, ale aktualizace je zpracována jiným způsobem. Další informace najdete v tématu [upgrady aplikací Service Fabric](../service-fabric/service-fabric-application-upgrade.md).
 
 Existuje jeden typ změny nastavení vlastností globální škálování, které nedodržuje zásady upgradu. Změny na škálovací sadu, profil operačního systému (například uživatelské jméno admin a heslo) lze změnit pouze ve verzi rozhraní API *2017-12-01* nebo novější. Tyto změny platí jenom pro virtuální počítače vytvořené po změnu v hodnotě stupnice nastavení modelu. Pokud chcete přenést aktuální stávající virtuální počítače, musíte udělat "obnovit" každý existujícího virtuálního počítače. Můžete provést toto obnovení z Image prostřednictvím:
 

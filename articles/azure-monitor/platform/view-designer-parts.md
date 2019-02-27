@@ -1,6 +1,6 @@
 ---
-title: Referenční příručka k části návrháře zobrazení v Azure Log Analytics | Dokumentace Microsoftu
-description: Pomocí návrháře zobrazení v Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který zobrazí různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
+title: Referenční příručka k částem Návrhář zobrazení ve službě Azure Monitor | Dokumentace Microsoftu
+description: Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit vlastní zobrazení, které se zobrazují na webu Azure Portal a obsahovat nejrůznější vizualizace dat v pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 53323e70884e61b4643f7950a1a6333f08dbbb6f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193871"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889898"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka k části vizualizace návrháře zobrazení v Log Analytics
-Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat z pracovního prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenční příručka k části vizualizace návrháře zobrazení ve službě Azure Monitor
+Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit řadu vlastních zobrazení na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
 
 Další informace o návrháři zobrazení najdete v tématu:
 
@@ -33,9 +33,9 @@ Dostupné typy dlaždici Návrhář zobrazení jsou popsány v následující ta
 
 | Typ zobrazení | Popis |
 |:--- |:--- |
-| [Seznam dotazů](#list-of-queries-part) |Zobrazí seznam dotazy prohledávání protokolu. Můžete vybrat každý dotaz k zobrazení jeho výsledky. |
-| [Číslo a seznam](#number-and-list-part) |Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu vyhledávacího dotazu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
-| [Dvě čísla a seznam](#two-numbers-and-list-part) |Záhlaví zobrazí dvě čísla, které zobrazují počet záznamů v samostatném protokolu vyhledávací dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
+| [Seznam dotazů](#list-of-queries-part) |Zobrazí seznam dotazů na protokoly. Můžete vybrat každý dotaz k zobrazení jeho výsledky. |
+| [Číslo a seznam](#number-and-list-part) |Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu dotazu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
+| [Dvě čísla a seznam](#two-numbers-and-list-part) |Záhlaví zobrazí dvě čísla, které zobrazují počty záznamů z protokolu na samostatné dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
 | [Prstenec a seznam](#donut-and-list-part) |Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Prstencový graficky zobrazuje výsledky z prvních tří záznamů. |
 | [Dvě časové osy a seznam](#two-timelines-and-list-part) |Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové grafy s popiskem, která zobrazuje jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
 | [Informace o](#information-part) |Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu nebo více položek s statické nadpis a text. |
@@ -46,14 +46,14 @@ Dostupné typy dlaždici Návrhář zobrazení jsou popsány v následující ta
 Následující části popisují typy dlaždic a jejich vlastnosti podrobně.
 
 ## <a name="list-of-queries-part"></a>Seznam dotazů část
-Seznam dotazů části zobrazí seznam dotazy prohledávání protokolu. Můžete vybrat každý dotaz k zobrazení jeho výsledky. Ve výchozím nastavení obsahuje zobrazení pomocí jediného dotazu a můžete vybrat **+ dotaz** přidáte další dotazy.
+Seznam dotazů části zobrazí seznam dotazů na protokoly. Můžete vybrat každý dotaz k zobrazení jeho výsledky. Ve výchozím nastavení obsahuje zobrazení pomocí jediného dotazu a můžete vybrat **+ dotaz** přidáte další dotazy.
 
 ![Seznam dotazů zobrazení](media/view-designer-parts/view-list-queries.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Titul |Text, který se zobrazí v horní části stránky zobrazení. |
+| Název |Text, který se zobrazí v horní části stránky zobrazení. |
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Předem vybrané filtry |Čárkami oddělený seznam vlastnosti, které chcete zahrnout do filtru v levém podokně vyberete dotaz. |
 | Režim vykreslování |Počáteční zobrazení, které se zobrazí, když je vybrána dotazu. Můžete vybrat libovolné dostupné zobrazení po otevření dotazu. |
@@ -62,7 +62,7 @@ Seznam dotazů části zobrazí seznam dotazy prohledávání protokolu. Můžet
 | Popisný název | Popisný název, který se zobrazí. |
 
 ## <a name="number-and-list-part"></a>Část číslo a seznam
-Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu vyhledávacího dotazu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
+Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu dotazu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
 ![Seznam dotazů zobrazení](media/view-designer-parts/view-number-list.png)
 
@@ -91,7 +91,7 @@ Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu 
 | Povolit prahové hodnoty |Vyberte tento odkaz povolit prahové hodnoty. Další informace najdete v tématu [obecná nastavení](#thresholds). |
 
 ## <a name="two-numbers-and-list-part"></a>Dvě čísla a další část seznamu
-Záhlaví má dvě čísla, které zobrazují počet záznamů v samostatném protokolu vyhledávací dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
+Záhlaví má dvě čísla, které zobrazují počet záznamů z protokolu na samostatné dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
 ![Dvě čísla a zobrazení seznamu](media/view-designer-parts/view-two-numbers-list.png)
 
@@ -133,13 +133,13 @@ Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protok
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
 | Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
-| **Záhlaví** | |
-| Titul |Text, který se zobrazí v horní části záhlaví. |
+| **Header** | |
+| Název |Text, který se zobrazí v horní části záhlaví. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Prstencový** | |
 | Dotaz |Dotaz pro spuštění prstencový. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. |
 | Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
-| **Prstencový** |**> System center** |
+| **Prstencový** |**> Center** |
 | Text |Text, který se zobrazí v části v prstencovém hodnotu. |
 | Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jedinou hodnotu.<ul><li>Součet: Přidá hodnoty všechny záznamy.</li><li>Procento: Podíl záznamů vrácených hodnot v **způsobit hodnot použitých v operaci center** celkový počet záznamů v dotazu.</li></ul> |
 | Hodnoty výsledku, které se zobrazí ve středu |Volitelně vyberte znaménko plus (+) přidejte jednu nebo více hodnot. Výsledky dotazu jsou omezené na záznamy s hodnotami vlastností, které zadáte. Pokud jsou přidány žádné hodnoty, jsou zahrnuty všechny záznamy v dotazu. |
@@ -205,14 +205,14 @@ Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu n
 | Název skupiny |Text, který se zobrazí v horní části dlaždice. |
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Barva |Barva pozadí záhlaví. |
-| **Záhlaví** | |
+| **Header** | |
 | Image |Soubor obrázku, který se zobrazí v záhlaví. |
 | Štítek |Text, který je zobrazený v záhlaví. |
-| **Záhlaví** |**> Odkaz** |
+| **Header** |**> Odkaz** |
 | Štítek |Text odkazu. |
 | URL |Adresa Url odkazu. |
 | **Informační položky** | |
-| Titul |Text zobrazený v nadpisu každé položky. |
+| Název |Text zobrazený v nadpisu každé položky. |
 | Obsah |Text, který se zobrazí pro každou položku. |
 
 ## <a name="line-chart-callout-and-list-part"></a>Spojnicový graf, popisek a seznam součástí
@@ -227,13 +227,13 @@ Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu za �
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
 | Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
-| **Záhlaví** | |
-| Titul |Text, který se zobrazí v horní části záhlaví. |
+| **Header** | |
+| Název |Text, který se zobrazí v horní části záhlaví. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
 | Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
-| **Spojnicový graf** |**> Popis obrázku** |
+| **Spojnicový graf** |**> Callout** |
 | Název popisku |Text, který se zobrazí nad hodnotou popisku. |
 | Název řady |Hodnota vlastnosti řady, použít pro hodnotu popisku. Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
 | Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota od posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
@@ -267,8 +267,8 @@ Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu v č
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
 | Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
-| **Záhlaví** | |
-| Titul |Text, který se zobrazí v horní části záhlaví. |
+| **Header** | |
+| Název |Text, který se zobrazí v horní části záhlaví. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
@@ -303,7 +303,7 @@ Zásobník spojnicový graf zobrazuje tři samostatné spojnicových grafů s v�
 | Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
 | **Graf 1<br>graf 2<br>graf 3** |**> Záhlaví** |
-| Titul |Text, který se zobrazí v horní části grafu. |
+| Název |Text, který se zobrazí v horní části grafu. |
 | Podtitul |Text, který se zobrazí pod nadpisem v horní části grafu. |
 | **Graf 1<br>graf 2<br>graf 3** |**Spojnicový graf** |
 | Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
@@ -322,14 +322,14 @@ Oddělovač názvu a hodnoty je oddělovač jedním znakem, který má použít 
 Zvažte například vlastnost s názvem *umístění* , které například obsahovat hodnoty *Redmond budování 41* a *Bellevue budování 12*. Oddělovač názvu a hodnoty můžete zadat pomlčku (-) a *město budování* pro název. Tento přístup analyzuje jednotlivé hodnoty do dvě vlastnosti volá *Město* a *vytváření*.
 
 ### <a name="click-through-navigation"></a>Navigace pomocí kliknutí
-Navigace pomocí kliknutí definuje, jaká akce se provedou, když kliknete na záhlaví a seznam položek v zobrazení.  Tím otevřete dotaz v buď [portál pro prohledávání protokolů](../../azure-monitor/log-query/portals.md) nebo spuštění jiného zobrazení.
+Navigace pomocí kliknutí definuje, jaká akce se provedou, když kliknete na záhlaví a seznam položek v zobrazení.  Tím otevřete dotaz v buď [Analyticsl protokolu](../../azure-monitor/log-query/portals.md) nebo spuštění jiného zobrazení.
 
 Následující tabulka popisuje nastavení navigace pomocí kliknutí.
 
 | Nastavení           | Popis |
 |:--|:--|
-| Prohledávání protokolu (automaticky) | Prohledávání protokolů pro spuštění při výběru položky záhlaví.  Toto je stejný položky založené na prohledávání protokolu.
-| Prohledávání protokolů        | Prohledávání protokolů spustit, když vyberete položku v seznamu.  Zadejte dotaz do **navigační dotaz** pole.   Použití *{vybranou položku}* zahrnout syntaxe pro položku, kterou uživatel vybral.  Například, pokud dotaz obsahuje sloupec s názvem *počítače* a navigační dotaz je *{vybranou položku}*, dotaz jako *počítač = "Počítač"* se spustí, když vyberete počítač. Navigační dotaz, je-li *typ = událostí {vybranou položku}*, dotaz *typ = události počítač = "Počítač"* běží. |
+| Prohledávání protokolu (automaticky) | Dotaz protokolu spuštění při výběru položky záhlaví.  Jedná se o stejný dotaz protokolu, založenou na položce.
+| Prohledávání protokolů        | Protokol dotazu spustit, když vyberete položku v seznamu.  Zadejte dotaz do **navigační dotaz** pole.   Použití *{vybranou položku}* zahrnout syntaxe pro položku, kterou uživatel vybral.  Například, pokud dotaz obsahuje sloupec s názvem *počítače* a navigační dotaz je *{vybranou položku}*, dotaz jako *počítač = "Počítač"* se spustí, když vyberete počítač. Navigační dotaz, je-li *typ = událostí {vybranou položku}*, dotaz *typ = události počítač = "Počítač"* běží. |
 | Zobrazení              | Zobrazení se otevře, když vyberete záhlaví položky nebo položky v seznamu.  Vyberte název zobrazení v pracovním prostoru v **název zobrazení** pole. |
 
 
@@ -361,4 +361,4 @@ Následující tabulka popisuje nastavení prahových hodnot:
 | Barva |Barva, která určuje prahovou hodnotu. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) pro podporu dotazů v části vizualizace.
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) pro podporu dotazů v části vizualizace.

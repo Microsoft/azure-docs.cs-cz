@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6e3c456b3ee92f30b3b152a39faf3f1fe483013f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992717"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876598"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -142,7 +142,7 @@ Tyto informace vám pomůžou identifikovat:
 
 **Název žádosti o registraci**. Horní dlaždice ukazuje spojnice trendu úspěšné i neúspěšné požadavky dynamické aktualizace DNS. Nižší dlaždice obsahuje hlavní 10 klienty, kteří odesílají aktualizace neúspěšné DNS na servery DNS, seřazený podle počtu neúspěšných požadavků.
 
-![Název okna požadavky registrace ](./media/dns-analytics/name-reg-req-blade.png)
+![Název okna požadavky registrace](./media/dns-analytics/name-reg-req-blade.png)
 
 **Ukázkový DDI analytických dotazů**. Obsahuje seznam nejběžnějších vyhledávacích dotazů, které načítají data nezpracovaná analytics přímo.
 

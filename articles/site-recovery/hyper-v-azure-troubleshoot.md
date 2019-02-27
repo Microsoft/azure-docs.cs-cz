@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: e79ffba90f0812d79bcb7ab808e2b6ba80e1c61b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 703bf7425962ddcb5e7566f99c461ca37d237b68
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756661"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868421"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 
@@ -30,7 +30,7 @@ Pokud máte problémy při povolení ochrany pro virtuální počítače Hyper-V
 5. Na virtuálním počítači hosta ověřte, že rozhraní WMI povolené a přístupné.
   - [Další informace o](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) základní testování služby WMI.
   - [Řešení potíží s](https://aka.ms/WMiTshooting) rozhraní WMI.
-  - [Řešení potíží s ](https://technet.microsoft.com/library/ff406382.aspx#H22) problémy s WMI skripty a službami.
+  - [Řešení potíží s](https://technet.microsoft.com/library/ff406382.aspx#H22) problémy s WMI skripty a službami.
 6. Na virtuálním počítači hosta Ujistěte se, že je spuštěna nejnovější verzi integrační služby.
     - [Zkontrolujte](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , že máte nejnovější verzi.
     - [Zachovat](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) nejnovější integrační služby.

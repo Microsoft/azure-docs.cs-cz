@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/26/2019
+ms.openlocfilehash: f6179c14c0a057a08203764316eeb43783cd7fc8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995048"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887739"
 ---
-# <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Vytvoření čitelné sekundární databáze pomocí aktivní geografické replikace
+# <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
 Aktivní geografická replikace je funkce Azure SQL Database, která vám umožní vytvořit čitelné sekundární databáze jednotlivých databází na serveru služby SQL Database ve stejném nebo jiném datovém centru (oblast).
 
@@ -110,7 +110,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Udržování synchronizace přihlašovacích údajů a pravidla brány firewall**
 
-  Doporučujeme používat [pravidla brány firewall databáze](sql-database-firewall-configure.md) pro geograficky replikované databáze, tak tato pravidla se dají replikovat s databází a zkontrolujte všechny sekundární databáze mají stejná pravidla brány firewall jako primární. Tento přístup se eliminuje potřeba zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databází. Podobně použití [uživatelé databáze s omezením](sql-database-manage-logins.md) dat přístup zajistí primární i sekundární databáze vždy stejné přihlašovací údaje uživatele, takže při selhání, není k dispozici žádné přerušení z důvodu neshody se uživatelská jména a hesla. Přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), zákazníci můžou spravovat přístup uživatelů k primární i sekundární databáze a eliminují ke správě pověření v databázích úplně se vynechá.
+Doporučujeme používat [pravidla brány firewall databáze](sql-database-firewall-configure.md) pro geograficky replikované databáze, tak tato pravidla se dají replikovat s databází a zkontrolujte všechny sekundární databáze mají stejná pravidla brány firewall jako primární. Tento přístup se eliminuje potřeba zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databází. Podobně použití [uživatelé databáze s omezením](sql-database-manage-logins.md) dat přístup zajistí primární i sekundární databáze vždy stejné přihlašovací údaje uživatele, takže při selhání, není k dispozici žádné přerušení z důvodu neshody se uživatelská jména a hesla. Přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), zákazníci můžou spravovat přístup uživatelů k primární i sekundární databáze a eliminují ke správě pověření v databázích úplně se vynechá.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade nebo při downgradu primární databáze
 
@@ -125,6 +125,16 @@ Z důvodu vysoké latenci sítě WAN průběžného kopírování používá mec
 
 > [!NOTE]
 > **uložená procedura sp_wait_for_database_copy_sync** zabrání ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro oprávnění ke čtení. Zpoždění způsobené **uložená procedura sp_wait_for_database_copy_sync** TDS může být významný a závisí na velikosti protokolů transakcí v době volání.
+
+## <a name="monitoring-geo-replication-lag"></a>Monitorování prodleva geografické replikace
+
+K monitorování prodleva s ohledem na cíle bodu obnovení, použijte *replication_lag_sec* sloupec [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) u primární databáze. Zobrazuje prodlevy v sekundách mezi transakcí na primární potvrzena a zachována na sekundární. Například Pokud hodnota je zpoždění je 1 sekunda, znamená to, pokud je v tomto okamžiku vliv výpadku primární a převzetí služeb při selhání je intiated, 1 sekunda nejnovější transtions se neuloží. 
+
+K měření prodleva s ohledem na změny u primární databáze, které byly použity na sekundárním, tedy k dispozici ke čtení ze sekundárního, porovnat *last_commit* čas na sekundární databázi se stejnou hodnotou na primární databáze.
+
+> [!NOTE]
+> Někdy *replication_lag_sec* u primární databáze má hodnotu NULL, což znamená, že primární nezná aktuálně jak daleko je sekundární.   To se obvykle stává po restartování procesu a měli byste být přechodné podmínky. Vezměte v úvahu upozornění aplikace, pokud *replication_lag_sec* vrátí hodnotu NULL pro delší dobu. By mohlo znamenat, že sekundární databáze nemůže komunikovat s primární z důvodu selhání trvalé připojení. Existují také podmínky, které by mohly způsobit rozdíl mezi *last_commit* dobu na sekundárním a v primární databázi, a jsou velké. Například Pokud se potvrzení změn se provádí na primárním po dlouhou dobu žádné změny, rozdíl přeskočí až po velké hodnoty před vrácením rychle na hodnotu 0. Považuje za chybový stav po dlouhou dobu zůstává velký rozdíl mezi těmito dvěma hodnotami.
+
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programová správa aktivní geografické replikace
 

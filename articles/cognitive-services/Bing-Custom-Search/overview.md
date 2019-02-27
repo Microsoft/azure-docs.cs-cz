@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: aahi
-ms.openlocfilehash: 56be136aff3aa7fbe813fee500dcf2fe35ca0859
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3a951f793ec946fc66d6a14acacd548a5f990be3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875382"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872858"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Co je rozhraní API pro vlastní vyhledávání Bingu?
 
@@ -29,7 +29,7 @@ Rozhraní API pro vlastní vyhledávání Bingu umožňuje vytvořit míru bez r
 |[Možnosti hledání vlastní image](get-images-from-instance.md)     | Povolte uživatelům vyhledávání obrázků z domény a webů podle vaší instance vlastního hledání.        |        
 |[Prostředí pro vlastní vyhledávání videí](get-videos-from-instance.md)     | Umožní vašim uživatelům hledání videí z domény a weby určené ve vaší instance vlastního hledání.        |    
 |[Sdílet vaše instance vlastního vyhledávání](share-your-custom-search.md)     | Společně upravovat a testovat vaše hledání instance při sdílení se členy vašeho týmu.        | 
-|[Konfigurace uživatelského rozhraní pro aplikace a weby ](hosted-ui.md)     | Společně upravovat a testovat vaše hledání instance při sdílení se členy vašeho týmu.        | 
+|[Konfigurace uživatelského rozhraní pro aplikace a weby](hosted-ui.md)     | Společně upravovat a testovat vaše hledání instance při sdílení se členy vašeho týmu.        | 
 ## <a name="workflow"></a>Pracovní postup
 
 Můžete vytvořit vlastní hledání instance pomocí [vlastní vyhledávání Bingu portál](https://customsearch.ai). Na portálu můžete vytvořit instanci vlastního vyhledávání, která určuje domén, webů a webových stránek, které chcete, aby Bingu pro vyhledávání, spolu s těmi, které nechcete, aby ji k prohledávání. Můžete taky použít portál pro: Seznámení s prostředím vyhledávání, upravte pořadí hledání, které poskytuje rozhraní API a volitelně nakonfigurujete prohledávatelná uživatelského rozhraní mají být vykresleny v k webům a aplikacím.

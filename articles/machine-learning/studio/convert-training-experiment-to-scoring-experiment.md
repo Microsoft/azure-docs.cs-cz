@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 82ed1378f1a754c8b5c64db2a190db5ceeb0de4a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0a6296441374c3cf716211f8ba5961392407e240
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821202"
+ms.locfileid: "56870260"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Příprava vašeho modelu pro nasazení v Azure Machine Learning Studio
 
@@ -22,7 +22,7 @@ Azure Machine Learning Studio poskytuje nástroje, které potřebujete k vývoji
 
 K tomuto účelu použijete k vytvoření experimentu - volá Studio *výukového experimentu* – kde trénování, stanovení skóre a upravit model. Jakmile budete spokojeni, budete připravovat modelu pro nasazení na základě vašeho výukového experimentu k převedení *prediktivní experiment* , který je konfigurován ke skóre uživatelská data.
 
-Uvedený příklad tohoto procesu v [ kurz 1: Předpovědět úvěrové riziko](tutorial-part1-credit-risk.md).
+Uvedený příklad tohoto procesu v [kurz 1: Předpovědět úvěrové riziko](tutorial-part1-credit-risk.md).
 
 Tento článek používá podrobné informace o způsobu získá převést školicího experimentu na prediktivní experiment a jak se tento prediktivní experiment nasadit. Pochopením tyto podrobnosti se dozvíte, jak nakonfigurovat nasazeného modelu k němu efektivnější.
 

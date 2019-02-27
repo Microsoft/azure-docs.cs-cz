@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 56ad75bc0bed77c2107a49ab339368ab2a63c1fe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458087"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881256"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -409,7 +409,7 @@ Následující uložené procedury jsou v [úloh databáze](sql-database-job-aut
 |Uložená procedura  |Popis  |
 |---------|---------|
 |[sp_add_job](#spaddjob)     |     Přidá novou úlohu.    |
-|[sp_update_job ](#spupdatejob)    |      Aktualizuje existující úlohy.   |
+|[sp_update_job](#spupdatejob)    |      Aktualizuje existující úlohy.   |
 |[sp_delete_job](#spdeletejob)     |      Odstraní existující úlohy.   |
 |[sp_add_jobstep](#spaddjobstep)    |    Přidá nový krok do úlohy.     |
 |[sp_update_jobstep](#spupdatejobstep)     |     Aktualizuje krok úlohy.    |
@@ -420,7 +420,7 @@ Následující uložené procedury jsou v [úloh databáze](sql-database-job-aut
 |[sp_delete_target_group](#spdeletetargetgroup)     |    Odstraní cílovou skupinu.     |
 |[sp_add_target_group_member](#spaddtargetgroupmember)     |    Přidá do skupiny cílové databázi nebo skupině databází.     |
 |[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     Odebere z cílová skupina členem cílové skupiny.    |
-|[sp_purge_jobhistory ](#sppurgejobhistory)    |    Odebere záznamy historie úlohy.     |
+|[sp_purge_jobhistory](#sppurgejobhistory)    |    Odebere záznamy historie úlohy.     |
 
 
 
@@ -448,7 +448,7 @@ Přidá novou úlohu.
 #### <a name="arguments"></a>Argumenty  
 
 [  **@job_name =** ] "hodnotu job_name.  
-Název úlohy. Název musí být jedinečné a nesmí obsahovat znak procenta (%). hodnotu job_name je nvarchar(128) bez výchozí hodnoty.
+Název úlohy. Název musí být jedinečné a nesmí obsahovat procent (%) znak. hodnotu job_name je nvarchar(128) bez výchozí hodnoty.
 
 [  **@description =** ] "popisu"  
 Popis úlohy. Popis je nvarchar(512), výchozí hodnota je NULL. Pokud popis je vynechán, použije se prázdný řetězec.

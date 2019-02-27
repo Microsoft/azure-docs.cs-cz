@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c9a772af79cba8b5bfb592eaf03efa37520d5e48
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 97e29ba166d652f053f754482b6da36a33ec5bb5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870601"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878165"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Přidání služby LUIS výsledky do Application Insights a Azure functions
 V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
@@ -51,11 +51,11 @@ K zachycení LUIS žádost a odpověď, použijete web app bot potřebuje **[App
 
 1. Na webu Azure Portal, ve službě web app bot vyberte **sestavení** pod **Bot správu** oddílu. 
 
-    ![Na webu Azure Portal, ve službě web app bot vyberte v části "Správa Bot" "Sestavení". ](./media/luis-tutorial-appinsights/build.png)
+    ![Na webu Azure Portal, ve službě web app bot vyberte v části "Správa Bot" "Sestavení".](./media/luis-tutorial-appinsights/build.png)
 
 2. S App Service editoru se otevře na nové kartě prohlížeče. V horním panelu vyberte název aplikace a pak vyberte **otevřete konzoly Kudu**. 
 
-    ![V horním panelu vyberte název aplikace a pak vyberte "Otevřete konzoly Kudu". ](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![V horním panelu vyberte název aplikace a pak vyberte "Otevřete konzoly Kudu".](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. V konzole zadejte následující příkaz k instalaci služby Application Insights a podtržítka balíčky:
 

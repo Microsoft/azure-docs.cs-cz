@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 32e705c5c338d9bd7c16514b2dc2ab081a9caf6a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 301dd9357bc1585d96eda216d7e47601e488665b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115551"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871789"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -108,7 +108,7 @@ V centru [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-anal
 
 Shromažďování dat do úložiště z připojených zdrojů tak, že konfigurace zdroje dat a přidání řešení do vašeho předplatného.
 
-![Řídicí panel Log Analytics ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Řídicí panel Log Analytics](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Zdroje dat a řešení vytvořit samostatný záznam typy s vlastní sadu vlastností, ale stále je můžete analyzovat společně v dotazech do úložiště. Můžete stejné nástroje a metody pro práci s širokou škálu dat, která se shromažďují z různých zdrojů.
 

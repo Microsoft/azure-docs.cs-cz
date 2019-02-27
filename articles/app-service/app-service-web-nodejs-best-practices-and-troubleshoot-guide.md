@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6a22600f7d6653da64256d7ec63ba26f272b2184
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051848"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888266"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v Azure App Service Windows
 
@@ -90,7 +90,7 @@ Kromě toho pro streamování aplikací, musíte taky nastavit responseBufferLim
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Středníkem oddělený seznam souborů, které jsou sledovány pro změny. Všechny změny do souboru způsobí, že aplikace recyklovat. Každý záznam se skládá z názvu nepovinných adresářů jako název požadovaný soubor, který jsou relativní vzhledem k adresáři, kde se nachází hlavní aplikace vstupní bod. Zástupné znaky jsou povoleny v pouze část názvu souboru. Výchozí hodnota je `*.js;web.config`
+Středníkem oddělený seznam souborů, které jsou sledovány pro změny. Všechny změny do souboru způsobí, že aplikace recyklovat. Každý záznam se skládá z názvu nepovinných adresářů jako název požadovaný soubor, který jsou relativní vzhledem k adresáři, kde se nachází hlavní aplikace vstupní bod. Zástupné znaky jsou povoleny v pouze část názvu souboru. Výchozí hodnota je `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 

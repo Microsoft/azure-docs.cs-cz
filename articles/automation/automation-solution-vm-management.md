@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fcab4c7456295d8f7414232bc90bc5ab352e43a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 991a50828059d850627e1f8f3f34f65a55fdf3f6
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817877"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890228"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -41,6 +41,8 @@ Toto jsou omezení do aktuálního řešení:
 ## <a name="prerequisites"></a>Požadavky
 
 Sady runbook pro toto řešení pracovat [účet Spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může být vypršení platnosti nebo se často měnit.
+
+Doporučujeme použít samostatný účet Automation pro řešení spuštění/zastavení virtuálního počítače. Je to proto, že modul Azure verze jsou často upgradována, a jejich parametrů se může změnit. Řešení spuštění/zastavení virtuálního počítače není upgradována na stejné tempo tak nemusí fungovat s novějšími verzemi rutiny, které používá. Doporučuje se pro účely testování aktualizací modulu v rámci účtu Automation testu před importem do svého produkčního účtu Automation.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 

@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d6805b3d60e5e30d35acc12c5564498830ddd8fb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337557"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881719"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -76,7 +76,7 @@ Zobrazit [získání obsahu klíče zásad – .NET](get-content-key-policy-dotn
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3?
 
-Informace o tom, jak začít s vývojem pomocí rozhraní API služby Media Services v3 pomocí variuos nástroje a sady SDK najdete v tématu [začít s vývojem](developers-guide.md).
+Informace o tom, jak začít s vývojem pomocí rozhraní API v3 Media Services pomocí různých nástrojů a sad SDK najdete v tématu [začít s vývojem](developers-guide.md).
 
 ## <a name="v3-content-map"></a>Mapa obsahu v3
 
@@ -88,7 +88,7 @@ Služba Media Services v3 obsah je uspořádaný podle následující strukturu 
 | Šablony Rychlý start | Zobrazit základní 1 den pokyny pro rychlé vyzkoušení služby Media Services ji noví zákazníci.|
 | Kurzy | Zobrazte založené na scénářích postupy pro některé nejčastější úkoly Media Services.|
 | Ukázky | Obsahuje odkazy na ukázky kódu. |
-| Koncepty | Obsahují podrobné vysvětlení funkcí služby Media Services v3 a diagramy. Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.<br/><br/>* Cloudu nahrávání a úložiště<br/>* Kódování<br/>* Media analytics<br/>* Balení, poskytování ochrany<br/>* Živé streamování<br/>* Nepřetržité monitorování<br/>* Player klientů<br/><br/>a další. |
+| Koncepty | Obsahují podrobné vysvětlení Media Services v3 koncepcích a funkcích. Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.<br/><br/>* Cloudu nahrávání a úložiště<br/>* Kódování<br/>* Media analytics<br/>* Balení, poskytování ochrany<br/>* Živé streamování<br/>* Nepřetržité monitorování<br/>* Player klientů<br/><br/>a další. |
 | Návody | Předvedeme vám k dokončení úkolu.|
 
 ## <a name="next-steps"></a>Další postup

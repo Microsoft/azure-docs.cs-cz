@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 6d7cacf699df580b8a5c46b8bfc6d48e1a8daea1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 2c81369bc278a0995af04a38b0143eb0df8ba3a5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821726"
+ms.locfileid: "56877363"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
 
@@ -66,7 +66,9 @@ Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů [vytvořen�
 >
 > 1. Ručně kopírovat soubory projektu k virtuálnímu počítači.
 >
-> 2. Vložení souborů v rámci instalační program Poznámkový blok, abyste spustili před primární poznámkového bloku. V poznámkovém bloku instalační program vytvořte buňku kódu pro každý soubor, kde buňka obsahuje obsah souboru. V horní části každé buňce, vložte příkaz `%writefile <filename>`, kde `<filename>` je název souboru pro příjem obsahu. Při spuštění poznámkového bloku vytvoří všechny tyto soubory na virtuálním počítači. Příklad najdete v tématu [setup.ipynb soubor v ukázce Microsoft domácí mazlíček detektor](https://github.com/microsoft/connect-petdetector) (GitHub).
+> 2. Vložení souborů v rámci instalační program Poznámkový blok, abyste spustili před primární poznámkového bloku. V poznámkovém bloku instalační program vytvořte buňku kódu pro každý soubor, kde buňka obsahuje obsah souboru. V horní části každé buňce, vložte příkaz `%%writefile <filename>`, kde `<filename>` je název souboru pro příjem obsahu. Při spuštění poznámkového bloku vytvoří všechny tyto soubory na virtuálním počítači. Příklad najdete v tématu [setup.ipynb soubor v ukázce Microsoft domácí mazlíček detektor](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub).
+>
+>     ![Použití %% writefile příkaz na začátku buňku kódu](media/setup-notebook-writefile-command.png)
 
 ## <a name="edit-project-metadata"></a>Úprava metadat projektu
 
@@ -75,7 +77,7 @@ Na řídicím panelu Projekt, vyberte **nastavení projektu**a pak **informace**
 | Nastavení | Popis |
 | --- | --- |
 | Název projektu | Popisný název pro váš projekt, který poznámkových bloků Azure používá pro účely zobrazení. Například "Hello World v Pythonu". |
-| ID projektu | Vlastní identifikátor, který se stane součástí adresy URL, které umožňují sdílet projekt (je formulář `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Toto ID můžete použít jenom písmena, číslice a pomlčky a je omezená na 30 znaků. Pokud si nejste jisti, co se má použít, je běžné konvence, používat malá písmena verzi název vašeho projektu, kde mezery jsou převedena na spojovníky, například "My Project Name" změní na "my-project-name". |
+| ID projektu | Vlastní identifikátor, který se stane součástí adresy URL použijete sdílet projekt. Toto ID můžete použít jenom písmena, číslice a spojovníky, je omezená na 30 znaků a nesmí být [rezervované ID projektu](create-clone-jupyter-notebooks.md#reserved-project-ids). Pokud si nejste jisti, co se má použít, je běžné konvence používat malá písmena verzi název vašeho projektu, kde jsou mezery převedena na rozdělovníků, například "my-poznámkového bloku – projekt" (zkráceno, aby odpovídala délkový limit). |
 | Veřejného projektu | Pokud nastavíte, může prakticky kdokoli s odkazem na přístup k projektu. Při vytváření projektu privátní, zrušte zaškrtnutí tohoto políčka. |
 | Skrýt klony | Pokud je nastaveno, ostatní uživatelé neuvidí seznamu duplicity, které mají za cíl pro tento projekt. Skrytí duplicit je užitečné pro projekty, které jsou sdíleny s mnoha lidmi, kteří nejsou součástí stejné organizaci, jako například při použití poznámkového bloku pro vyučují třídu. |
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba1e7d7f9226b3ca42d4117be33b9c236f0557b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164018"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867316"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure Stack
 Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento článek poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.
@@ -119,7 +119,7 @@ Informace v těchto článcích shrnuje rozdíly mezi service v Azure a Azure St
 
 Ve vývojovém prostředí sady Pokud uživatel nemá přístup ke vzdálené ploše k hostiteli development kit, musíte nakonfigurovat připojení virtuální privátní sítě (VPN) předtím, než získají přístup k Azure Stack. Zobrazit [připojení k Azure Stack](azure-stack-connect-azure-stack.md). 
 
-Vaši uživatelé budou chtít vědět jak [přístup k portálu user portal ](user/azure-stack-use-portal.md) nebo jak se připojit prostřednictvím prostředí PowerShell. V prostředí integrované systémy uživatelského portálu adresy se liší podle nasazení. Budete muset uživatelům poskytnout správnou adresu URL.
+Vaši uživatelé budou chtít vědět jak [přístup k portálu user portal](user/azure-stack-use-portal.md) nebo jak se připojit prostřednictvím prostředí PowerShell. V prostředí integrované systémy uživatelského portálu adresy se liší podle nasazení. Budete muset uživatelům poskytnout správnou adresu URL.
 
 Pokud používáte PowerShell, uživatelé nemusí registrovat poskytovatele prostředků před použitím služby. (Poskytovatel prostředků spravuje služba. For example, poskytovateli síťových prostředků spravuje prostředky, jako jsou virtuální sítě, síťová rozhraní a nástroje pro vyrovnávání zatížení.) Musí [nainstalovat](user/azure-stack-powershell-install.md) prostředí PowerShell, [Stáhnout](user/azure-stack-powershell-download.md) dalších modulů, a [nakonfigurovat](user/azure-stack-powershell-configure-user.md) Powershellu (která zahrnuje registrace poskytovatele prostředků).
 

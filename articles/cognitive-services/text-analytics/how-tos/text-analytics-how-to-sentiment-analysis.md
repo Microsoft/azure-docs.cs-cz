@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: add284a3a001d5bc2e756f9ad4a2a3b9550b212c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7287a9ddbd84960dcde790d813a6204e9e790094
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242121"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887416"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Příklad: Jak rozpoznávání mínění pomocí analýzy textu
 
@@ -39,7 +39,7 @@ Výsledky analýzy mínění jsou kvalitnější pro menší bloky textu. Je to 
 
 Musíte mít dokumenty JSON v tomto formátu: ID, text, kód jazyka.
 
-Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete mít až 1 000 položek (ID). Kolekce se posílá v textu žádosti. Následuje příklad obsahu, který můžete odeslat pro analýzu mínění.
+Velikost dokumentu musí být v jednom dokumentu v části 5 120 znaků a může mít až 1 000 položek (ID) na kolekci. Kolekce se posílá v textu žádosti. Následuje příklad obsahu, který můžete odeslat pro analýzu mínění.
 
 ```
     {

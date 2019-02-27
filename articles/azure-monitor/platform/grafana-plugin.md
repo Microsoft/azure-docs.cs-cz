@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f592cfdba940b95a9935c6b68f3294233d9fbf15
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730896"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888487"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikace shromážděná službou Azure Monitor, včetně různé protokoly a metriky. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -26,7 +26,8 @@ Následujícím postupem nastavit Grafana server a sestavovat řídicí panely p
 ## <a name="set-up-a-grafana-server"></a>Nastavení serveru Grafana
 
 ### <a name="set-up-grafana-locally"></a>Místní nastavení služby Grafana
-Nastavit místní server Grafana [stáhněte a nainstalujte v místním prostředí Grafana](https://grafana.com/grafana/download). K používání integrace služby Log Analytics modul plug-in, nainstalujte Grafana verze 5.3 nebo novější.
+Nastavit místní server Grafana [stáhněte a nainstalujte v místním prostředí Grafana](https://grafana.com/grafana/download). Pokud chcete používat modul plug-in Azure Monitor integrace, nainstalujte Grafana verze 5.3 nebo novější.
+
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Nastavit Grafana v Azure prostřednictvím Azure Marketplace
 1. Přejít na Azure Marketplace a vyberte Grafana pomocí služby Grafana Labs.
 
@@ -70,7 +71,7 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
     Rozhraní API služby Log Analytics vyžaduje [role Čtenář Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), která zahrnuje všechna oprávnění role čtenáře a přidá do něj.
 
 4. Zadejte podrobnosti připojení k rozhraním API, které chcete použít. Můžete připojit ke všem nebo k některé z nich. 
-    * Pokud připojíte k Azure Monitor (Chcete-li shromažďovat metriky) a Azure Log Analytics (pro data protokolu), můžete znovu použít stejné přihlašovací údaje tak, že vyberete **stejné informace jako rozhraní API služby Azure Monitor**.
+    * Pokud se připojíte k metrik a protokolů ve službě Azure Monitor můžete znovu použít stejné přihlašovací údaje tak, že vyberete **stejné informace jako rozhraní API služby Azure Monitor**.
     * Při konfiguraci modulu plug-in, můžete určit, který Cloud Azure chcete modul plug-in pro sledování (veřejné, Azure US Government, Azure Germany nebo Azure China).
     * Pokud používáte Application Insights, můžete použít také rozhraní API Application Insights a ID aplikace shromažďovat metriky na základě služby Application Insights. Další informace najdete v tématu [získání klíče rozhraní API a ID aplikace](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
@@ -97,7 +98,7 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
 4. Vyberte zdroj dat monitorování Azure, který jste nakonfigurovali.
     * Shromažďování monitorování Azure vyberte metriky – **Azure Monitor** v rozevírací nabídce služby. Seznam zobrazuje selektory, kde můžete vybrat prostředky a metriku k monitorování v tomto grafu. Chcete-li shromažďovat metriky z virtuálního počítače, použijte obor názvů **Microsoft.Compute/VirtualMachines**. Jakmile vyberete virtuální počítače a metrik, můžete začít zobrazení jejich dat na řídicím panelu.
     ![Grafana grafu konfigurace pro monitorování Azure](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Azure Log Analytics pro shromažďování dat – vyberte **Azure Log Analytics** v rozevírací nabídce služby. Vyberte pracovní prostor, který chcete vyhledat a nastavit text dotazu. Můžete zkopírovat sem jakýkoli dotaz Log Analytics, už máte nebo vytvořte novou. Při zadávání dotazu, technologie IntelliSense se zobrazí a navrhují možnosti automatického dokončování. Vyberte typ vizualizace **časové řady** **tabulky**, a spusťte dotaz.
+    * Shromažďování Azure Monitor můžete vytvářet protokoly dat – výběr **Azure Log Analytics** v rozevírací nabídce služby. Vyberte pracovní prostor, který chcete vyhledat a nastavit text dotazu. Můžete zkopírovat sem jakýkoli dotaz protokolu již mít nebo vytvořit nový. Při zadávání dotazu, technologie IntelliSense se zobrazí a navrhují možnosti automatického dokončování. Vyberte typ vizualizace **časové řady** **tabulky**, a spusťte dotaz.
     
     > [!NOTE]
     >

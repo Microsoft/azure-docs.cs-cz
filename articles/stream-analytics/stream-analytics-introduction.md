@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: e14da7dff62d85c730034b620a6168b3d9b3dde7
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d08fb915870355b49fafa91752cdd4264cbe6ad8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752686"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887535"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
 
@@ -76,11 +76,18 @@ Azure Stream Analytics používá stejné dotazovací jazyk v cloudu i inteligen
 
 Stream Analytics je cloudová služba, takže je optimalizovaná z hlediska nákladů. Neexistují žádné předem dané náklady, platíte jenom za [spotřebované jednotky streamování](stream-analytics-streaming-unit-consumption.md) a množství zpracovaných dat. Nevyžaduje se žádný závazek nebo zřizování clusterů. Úlohu je možné škálovat vertikálně v rámci streamovacích úloh podle obchodních potřeb. 
 
-## <a name="reliability"></a>Spolehlivost 
+## <a name="mission-critical-ready"></a>Klíčové připravené
+Azure Stream Analytics je dostupná v několika oblastech po celém světě a je navržen pro spouštění klíčových úloh, které podporuje požadavky na spolehlivost, zabezpečení a dodržování předpisů.
+### <a name="reliability"></a>Spolehlivost
+Azure Stream Analytics zaručuje právě-po zpracování událostí a na alespoň jedno doručení událostí, takže události se nikdy ztratí. Exacty – jedno zpracování je zaručeno, že se vybrané výstupem jak je popsáno v [záruky doručení událostí](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics). Azure Stream Analytics je vestavěným funkcím pro obnovení v případě se doručení události nezdaří. Stream Analytics také poskytuje integrované vytváření kontrolních bodů pro uchování stavu vašich úloh a poskytuje opakovatelné výsledky.
 
-Stream Analytics zaručuje právě jedno zpracování událostí a na alespoň jedno doručení událostí, takže události se nikdy ztratí. Obsahuje funkce obnovení pro případ, že by se doručení události nezdařilo. Stream Analytics také poskytuje integrované vytváření kontrolních bodů pro uchování stavu vašich úloh a poskytuje opakovatelné výsledky.
+Stream Analytics je spravovaná služba, zaručuje zpracování událostí s 99,9 % dostupnost na úrovni minut. Další informace najdete v tématu [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) stránky pro další podrobnosti. 
 
-Stream Analytics je spravovaná služba, zaručuje zpracování událostí s 99,9 % dostupnost. Další informace najdete v tématu [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) stránky pro další podrobnosti. 
+### <a name="security"></a>Zabezpečení
+Z hlediska zabezpečení Azure Stream Analytics šifruje všechny příchozí a odchozí komunikace a podporuje TLS 1.2. Integrované kontrolní body je také šifrovaný. Stream Analytics nejsou uloženy příchozích dat, protože probíhá veškeré zpracování v paměti. 
+
+### <a name="compliance"></a>Dodržování předpisů
+Azure Stream Analytics následuje několik certifikací dodržování předpisů, jak je popsáno v [přehled o dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
 
 ## <a name="performance"></a>Výkon
 

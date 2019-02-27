@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3013365f96fa6841e4db826f9010c6ea994eba2a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211440"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879590"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa úložiště objektů Blob v Azure životního cyklu (Preview)
 
@@ -187,7 +187,7 @@ Filtry omezují akce pravidla na podmnožinu objektů BLOB v účtu úložiště
 
 Ve verzi preview platné filtry zahrnují:
 
-| Název filtru | Typ filtru | Poznámky | Vyžaduje se |
+| Název filtru | Typ filtru | Poznámky | Je požadováno |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole hodnot předdefinovaných výčtu. | Vydání verze preview podporuje pouze `blockBlob`. | Ano |
 | prefixMatch | Pole řetězců u předpony, jež mají být shodovat. Řetězec předpony musí začínat znakem název kontejneru. Například, pokud chcete najít všechny objekty BLOB v části "https://myaccount.blob.core.windows.net/container1/foo/..." pro pravidlo, je prefixMatch `container1/foo`. | Pokud nebudete definovat prefixMatch, pravidla se vztahují na všechny objekty BLOB v rámci účtu. | Ne |
@@ -337,4 +337,4 @@ Platforma se spustí jednou denně zásady životního cyklu. Jakmile jednou nas
 
 Zjistěte, jak obnovit data po nechtěnému odstranění:
 
-- [Obnovitelné odstranění pro objekty BLOB služby Azure Storage ](../blobs/storage-blob-soft-delete.md)
+- [Obnovitelné odstranění pro objekty BLOB služby Azure Storage](../blobs/storage-blob-soft-delete.md)

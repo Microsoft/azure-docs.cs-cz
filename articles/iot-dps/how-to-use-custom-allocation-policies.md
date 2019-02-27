@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4c02df5684036aef078b0f79c70d3b66d60e013b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340045"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881511"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
 
@@ -27,8 +27,8 @@ Například možná jste chcete prozkoumat certifikát, který zařízení použ
 
 Tento článek ukazuje vlastní přidělení zásad, pomocí funkce Azure napsané v jazyce C#. Dvě nové služby IoT hub se vytvářejí představující *divizi společnosti Contoso opékače* a *divizi společnosti Contoso Heat čerpadel*. Zařízení vyžadující zřizování, musí mít ID registrace s jedním z následujících přípon přijetí pro zřizování:
 
-- **-contoso-tstrsd 007**: Opékače divizi společnosti Contoso
-- **-contoso-hpsd 088**: Heat čerpadel divizi společnosti Contoso
+- **-contoso-tstrsd-007**: Opékače divizi společnosti Contoso
+- **-contoso-hpsd-088**: Heat čerpadel divizi společnosti Contoso
 
 Zařízení se zřídí na základě jedné z těchto požadovaných přípon na ID registrace. Tato zařízení budou simulované pomocí ukázkou zřizování součástí [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
 
@@ -284,8 +284,8 @@ Vygenerujte klíč zařízení, kterou použijete **primární klíč** jste si 
 
 Například v tomto článku použijte následující dvě drs ID a výpočetní klíč zařízení i zařízení. Mají obě ID registrace platnou příponu pro práci s ukázkový kód pro vlastní přidělení zásad:
 
-- **breakroom499 contoso tstrsd 007**
-- **mainbuilding167 contoso hpsd 088**
+- **breakroom499-contoso-tstrsd-007**
+- **mainbuilding167-contoso-hpsd-088**
 
 #### <a name="linux-workstations"></a>Pracovní stanice pro Linux
 
@@ -525,11 +525,11 @@ V následující tabulce jsou uvedeny očekávané scénáře a výsledky kódy 
 | Scénář | Výsledek registrace ze služby zřizování | Zřizování výsledky sady SDK |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook vrátí 200 OK iotHubHostName nastavena na platný název hostitele centra IoT | Výsledný stav: Přiřazené  | Sada SDK vrátí PROV_DEVICE_RESULT_OK společně s informacemi centra |
-| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Výsledný stav: Selhalo<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | Sada SDK vrátí PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Výsledný stav: Selhalo<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
 | Webhook vrátí 401 Neautorizováno | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrátí PROV_DEVICE_RESULT_UNAUTHORIZED |
 | Jednotlivé registrace byl vytvořen za účelem zakázání zařízení | Výsledný stav: Zakázáno | Sada SDK vrátí PROV_DEVICE_RESULT_DISABLED |
 | Webhook vrátí kód chyby: > = 429 | Orchestrace distribučních bodů se bude opakovat několikrát. Zásady opakování je aktuálně:<br><br>&nbsp;&nbsp;-Počet opakování: 10<br>&nbsp;&nbsp;-Počátečního intervalu: 1s<br>&nbsp;&nbsp;-Inkrementace: 9s | Sada SDK bude chybu ignorovat a odeslat další get stavová zpráva v zadaném čase |
-| Každý jiný stavový kód vrátí se webhook. | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationFailed (400207) | Sada SDK vrátí PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Každý jiný stavový kód vrátí se webhook. | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -555,7 +555,7 @@ Pokud chcete odstranit skupinu prostředků podle názvu:
 ## <a name="next-steps"></a>Další postup
 
 - Přečtěte si další Reprovisioning, najdete v článku [reprovisoning koncepty zařízení centra IoT](concepts-device-reprovision.md) 
-- Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování ](how-to-unprovision-devices.md) 
+- Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování](how-to-unprovision-devices.md) 
 
 
 

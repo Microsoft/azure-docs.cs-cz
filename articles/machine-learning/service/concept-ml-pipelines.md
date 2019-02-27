@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: 917bac81923650405c37dfee500c9606dc7c54ca
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d4bef53a21e6ab7b55c16e27083b818929fbd47c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816602"
+ms.locfileid: "56879250"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Sestavit machine learning kanály ve službě Azure Machine Learning
 
@@ -34,13 +34,23 @@ Následující diagram znázorňuje kanál příkladu:
 
 ![Strojové učení kanály ve službě Azure Machine Learning](./media/concept-ml-pipelines/pipelines.png)
 
+### <a name="which-azure-pipeline-technology-should-i-use"></a>Použijte technologii, která Azure kanálu
+
+Azure cloud poskytuje několik jiných kanálech, každý s jiným způsobem. Následující tabulka uvádí různé kanály a jaké se používají pro:
+
+| Kanál | Co dělá | Canonical kanálu |
+| ---- | ---- | ---- |
+| Kanály Azure Machine Learning | Definuje opakovaně použitelné strojového učení pracovní postupy, které lze použít jako šablonu pro strojového učení scénáře. | Data -> modelu |
+| [Kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Přesun dat skupin, transformaci a aktivity řízení potřebné k provedení úkolu.  | Data -> data |
+| [Kanály Azure](https://azure.microsoft.com/services/devops/pipelines/) | Průběžná integrace a doručování vaší aplikace pro všechny platformy a libovolného cloudu  | Kód -> aplikace nebo služby |
+
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Proč vytvářet kanály pomocí služby Azure Machine Learning?
 
 Můžete použít [Azure Machine Learning SDK pro Python](#the-python-sdk-for-pipelines) k vytvoření kanálů ML, a jde o odesílání a sledování spuštění jednotlivých kanálu.
 
 S kanály můžete optimalizovat pracovní postup s jednoduchost, rychlost, přenositelnost a opakované použití. Při sestavování kanálů v Azure Machine learningu, můžete se soustředit na svou odbornost, strojové učení, nikoli na infrastrukturu.
 
-Použití samostatné kroky umožňuje znovu spustit pouze kroky, které potřebujete, jak upravit a testování pracovního postupu. Krok je výpočetní jednotka v kanálu. Jak je znázorněno na předchozím obrázku, úkolů přípravy dat může zahrnovat mnoho kroků. Ty zahrnují, ale nejsou omezené na normalizace, transformace, ověření a snadné. Zdroje dat a dočasných dat se využívají opakovaně v kanálu, který uloží výpočetní čas a prostředky. 
+Použití samostatné kroky umožňuje znovu spustit pouze kroky, které potřebujete, jak upravit a testování pracovního postupu. Krok je výpočetní jednotka v kanálu. Jak je znázorněno na předchozím obrázku, úkolů přípravy dat může zahrnovat mnoho kroků. Tyto kroky zahrnují, ale nejsou omezené na normalizace, transformace, ověření a snadné. Zdroje dat a dočasných dat se využívají opakovaně v kanálu, který uloží výpočetní čas a prostředky. 
 
 Po kanálu je určená, je často Další doladění kolem smyčky školení kanálu. Když znovu spusťte kanál, spuštění přejde do kroků, které je potřeba znovu spustit, jako je například aktualizované cvičný skript a přeskočí, co se nezměnil. Stejné paradigma se vztahuje na beze změny skripty používané pro provedení kroku. 
 

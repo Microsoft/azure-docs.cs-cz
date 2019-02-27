@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 36f919d1c22a88dfaf13079f09e6a43980a22828
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4fedc5b8b3b69ff364374dbef0460930e1f631a6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981776"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869067"
 ---
 # <a name="how-to-reprovision-devices"></a>Jak na bázi zařízení
 
 Během životního cyklu řešení IoT se běžně přesouvat zařízení mezi IoT huby. Důvody pro tento krok může zahrnovat následující scénáře:
 
-* **Informace o zeměpisné poloze**: jak zařízení přesune mezi umístěními, zlepší se latence sítě tím, že zařízení migrovat do služby IoT hub blíže s jednotlivými umístěními.
+* **Informace o zeměpisné poloze**: Při přesunu zařízení mezi umístěními, zlepší se latence sítě tím, že zařízení migrovat do služby IoT hub blíže s jednotlivými umístěními.
 
-* **Víceklientská architektura**: zařízení může používat ve stejném řešení IoT, ale znovu přiřazen nebo pronajatý na nového zákazníka nebo zákazníka. Tento nový zákazník může údržba používání různých služby IoT hub.
+* **Víceklientská architektura**: Zařízení může používat ve stejném řešení IoT, ale znovu přiřazen nebo pronajatý na nového zákazníka nebo zákazníka. Tento nový zákazník může údržba používání různých služby IoT hub.
 
-* **Změna řešení**: zařízení může přesunout do nové nebo aktualizované řešení IoT. Této změně přiřazení může vyžadovat, aby zařízení komunikovat s nového centra IoT, která je připojena k jiné komponenty back-endu. 
+* **Změna řešení**: Zařízení může přesunout do nové nebo aktualizované řešení IoT. Této změně přiřazení může vyžadovat, aby zařízení komunikovat s nového centra IoT, která je připojena k jiné komponenty back-endu. 
 
-* **Karantény**: podobné změny řešení. Zařízení, které je nefunkční, ohrožení zabezpečení nebo zastaralý může být přeřazen do služby IoT hub, kde je všechno, co můžete dělat aktualizaci a zase dostat dodržování předpisů. Když zařízení pracuje správně, je potom migrovat zpět na jeho hlavní centra.
+* **Karantény**: Podobně jako řešení změnit. Zařízení, které je nefunkční, ohrožení zabezpečení nebo zastaralý může být přeřazen do služby IoT hub, kde je všechno, co můžete dělat aktualizaci a zase dostat dodržování předpisů. Když zařízení pracuje správně, je potom migrovat zpět na jeho hlavní centra.
 
 Další podrobnější přehled o neukončil, naleznete v tématu [IoT Hub Device reprovisoning koncepty](concepts-device-reprovision.md).
 
@@ -42,7 +42,7 @@ Následující kroky konfigurace zásad přidělování pro registraci zařízen
 
 3. V části **vyberte, jak chcete přiřadit zařízení k centrům**, vyberte jednu z následujících zásad přidělování:
 
-    * **Nejnižší latence**: tyto zásady přiřadí zařízení k propojené Centrum IoT, který bude mít za následek nejnižší latence komunikace mezi zařízením a centrem IoT. Tato možnost umožní zařízení komunikovat na základě umístění co nejblíže služby IoT hub. 
+    * **Nejnižší latence**: Tyto zásady přiřadí zařízení k propojené Centrum IoT, který bude mít za následek nejnižší latence komunikace mezi zařízením a centrem IoT. Tato možnost umožní zařízení komunikovat na základě umístění co nejblíže služby IoT hub. 
     
     * **Rovnoměrně vážená distribuce**: Tato zásada distribuuje zařízení mezi propojená centra IoT hub podle váha přidělení přiřazená každé propojené Centrum IoT. Tato zásada umožňuje zařízení na Vyrovnávání zatížení mezi skupinu propojená centra podle váhy přidělení nastavit na těchto rozbočovače. Pokud zřizujete zařízení pouze v jednom centru IoT, doporučujeme toto nastavení. Toto nastavení je výchozí. 
     
@@ -94,7 +94,7 @@ Například zřizování požadavky ze zařízení během sekvence spouštění 
 ## <a name="next-steps"></a>Další postup
 
 - Přečtěte si další Reprovisioning, najdete v článku [reprovisoning koncepty zařízení centra IoT](concepts-device-reprovision.md) 
-- Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování ](how-to-unprovision-devices.md) 
+- Zrušení zřízení Další informace najdete v tématu [jak zrušit zřízení zařízení, které byly dříve automatické zřizování](how-to-unprovision-devices.md) 
 
 
 

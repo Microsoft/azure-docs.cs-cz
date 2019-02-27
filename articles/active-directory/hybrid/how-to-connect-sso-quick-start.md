@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69645c4aa9034b9a3459c7ee5fb0378c790a6e18
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f2539674668a9738d03e9af9c4fb88327cb1933
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178086"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865055"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
@@ -120,7 +120,7 @@ Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
 
 1. Otevřete nástroj Editor správy zásad skupiny.
 2. Upravit zásady skupiny, které se použije k některým nebo všem uživatelům. Tento příklad používá **výchozí zásady domény**.
-3. Přejděte do **konfigurace uživatele** > **šablony pro správu** > **součásti Windows**  >   **Aplikace Internet Explorer** > **ovládací Panel Možnosti Internetu** > **stránku zabezpečení**. Potom vyberte **web k zóně Assignment List**.
+3. Přejděte do **konfigurace uživatele** > **zásady** > **šablony pro správu** > **Windows Součásti** > **aplikace Internet Explorer** > **ovládací Panel Možnosti Internetu** > **stránku zabezpečení**. Potom vyberte **web k zóně Assignment List**.
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte zásady a pak v dialogovém okně zadejte následující hodnoty:
    - **Název hodnoty**: Azure AD adresa URL, které jsou předávány lístky protokolu Kerberos.
@@ -140,7 +140,7 @@ Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Přejděte do **konfigurace uživatele** > **šablony pro správu** > **součásti Windows**  >   **Aplikace Internet Explorer** > **ovládací Panel Možnosti Internetu** > **stránku zabezpečení** > **zóny intranetu**. Potom vyberte **povolit aktualizace stavového řádku prostřednictvím skriptu**.
+6. Přejděte do **konfigurace uživatele** > **šablony pro správu** **zásady** > ** > **součásti Windows**  >  **Aplikace Internet Explorer** > **ovládací Panel Možnosti Internetu** > **stránku zabezpečení**  >   **Zóny intranetu**. Potom vyberte **povolit aktualizace stavového řádku prostřednictvím skriptu**.
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso11.png)
 

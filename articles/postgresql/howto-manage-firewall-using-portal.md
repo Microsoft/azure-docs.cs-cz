@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 7211b7f5db14f4bad114556e5c080cf5d535b00b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 20c5d66f51cffeb7e4e73ba9f16b7ea5ce305e5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545480"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874099"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí webu Azure portal
 Pravidla brány firewall na úrovni serveru umožňují správcům přístup k Azure Database for PostgreSQL Server ze zadané IP adresy nebo rozsah IP adres. 
@@ -36,7 +36,7 @@ Pomocí vyhledávacího webu nebo jiný nástroj pro online zkontrolujte svou vl
 
 4. Přidejte další adresní rozsahy adres. V pravidlech brány firewall pro službu Azure Database for PostgreSQL můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete omezit platnost pravidla pro jednu IP adresu, zadejte stejnou adresu v poli pro počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správci, uživatelé a aplikace pro přihlášení k libovolné databázi na serveru PostgreSQL, ke kterému mají platné přihlašovací údaje.
 
-  ![Azure portal – pravidla brány firewall ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+  ![Azure portal – pravidla brány firewall](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. Klikněte na tlačítko **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall na úrovni serveru. Čekání na potvrzení, že aktualizace pravidla brány firewall byla úspěšná.
 

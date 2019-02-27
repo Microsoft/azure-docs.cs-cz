@@ -1,6 +1,6 @@
 ---
-title: Referenční příručka pro Návrhář zobrazení dlaždice v Azure Log Analytics | Dokumentace Microsoftu
-description: Pomocí návrháře zobrazení v Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který zobrazí různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
+title: Referenční příručka pro Návrhář zobrazení dlaždice ve službě Azure Monitor | Dokumentace Microsoftu
+description: Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit vlastní zobrazení, které se zobrazují na webu Azure Portal a obsahovat nejrůznější vizualizace dat v pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c380f0391c51628b0eb71723a0faf982a4399680
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817379"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887756"
 ---
-# <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenční příručka pro dlaždice Návrhář zobrazení v Log Analytics
-Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
+# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referenční příručka pro Návrhář zobrazení dlaždice ve službě Azure Monitor
+Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit řadu vlastních zobrazení na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
 
 Další informace o návrháři zobrazení najdete v tématu:
 
@@ -177,5 +177,5 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) pro podporu dotazů v dlaždicích.
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) pro podporu dotazů v dlaždicích.
 * Přidat [části vizualizace](view-designer-parts.md) do vlastních zobrazení.

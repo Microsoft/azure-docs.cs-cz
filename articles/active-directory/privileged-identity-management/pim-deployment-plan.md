@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54fa8d09d930069191fb48e0ab015d436496b725
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fb675778d899d6f4cec22de8a1c81fdae76ba17e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166398"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879760"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -120,7 +120,7 @@ Následující část vám pomůže Identifikujte všechny zúčastněné strany
 
 Jako součást procesu plánování, musíte nejdřív vyjádřit souhlas a povolení PIM podle našich [začít používat PIM dokumentu](pim-getting-started.md). Povolení PIM umožňuje přístup k některým funkcím, které jsou vytvořené speciálně pro pomoct s nasazením.
 
-Pokud je váš cíl nasazení PIM pro prostředky Azure, měli byste postupovat podle našich [vyhledejte prostředky Azure ke správě v PIM dokumentu](pim-resource-roles-discover-resources.md). Pouze vlastníci každý prostředek, skupinu prostředků a předplatné budete moct vyhledat v PIM. Pokud jste globální správce pokusu o nasazení PIM pro prostředky Azure, můžete [zvýšení úrovně přístupu ke správě všech předplatných Azure ](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , abyste měli přístup ke všem prostředkům Azure v adresáři pro zjišťování. Doporučujeme však získat schválení ze všech vašich na vlastníky těchto předplatných než začnete spravovat své prostředky pomocí služby PIM.
+Pokud je váš cíl nasazení PIM pro prostředky Azure, měli byste postupovat podle našich [vyhledejte prostředky Azure ke správě v PIM dokumentu](pim-resource-roles-discover-resources.md). Pouze vlastníci každý prostředek, skupinu prostředků a předplatné budete moct vyhledat v PIM. Pokud jste globální správce pokusu o nasazení PIM pro prostředky Azure, můžete [zvýšení úrovně přístupu ke správě všech předplatných Azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , abyste měli přístup ke všem prostředkům Azure v adresáři pro zjišťování. Doporučujeme však získat schválení ze všech vašich na vlastníky těchto předplatných než začnete spravovat své prostředky pomocí služby PIM.
 
 ### <a name="enforce-principle-of-least-privilege"></a>Vynutit principu nejnižších možných oprávnění
 
@@ -161,7 +161,7 @@ Kontroly přístupu závisí na e-mailů, aby bylo uživatelům zkontrolovat př
 
 Pro předplatná Azure a prostředky můžete nastavit podobným kontroly přístupu ke kontrole role v každé předplatné nebo prostředek. Cílem tohoto procesu je minimalizovat přiřazení vlastníka a správce uživatelských přístupů připojeny k každé předplatné nebo prostředek stejně jako odebrat nepotřebné přiřazení. Organizace ale často delegovat takových úloh vlastníkovi každé předplatné nebo prostředek, protože mají lépe pochopit specifické role (zejména vlastní role).
 
-Pokud jste správcem IT s rolí globálního správce při nasazení PIM pro prostředky Azure ve vaší organizaci, můžete [zvýšení úrovně přístupu ke správě všech předplatných Azure ](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) získat přístup ke každé předplatné. Můžete najít každý vlastník předplatného a pracovat s nimi odebrat nepotřebné přiřazení a minimalizovat přiřazení role vlastníka.
+Pokud jste správcem IT s rolí globálního správce při nasazení PIM pro prostředky Azure ve vaší organizaci, můžete [zvýšení úrovně přístupu ke správě všech předplatných Azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) získat přístup ke každé předplatné. Můžete najít každý vlastník předplatného a pracovat s nimi odebrat nepotřebné přiřazení a minimalizovat přiřazení role vlastníka.
 
 Uživatelé s rolí vlastník předplatného Azure můžete také využít [kontroly pro prostředky Azure přístupu](pim-resource-roles-start-access-review.md) auditu a odeberte nepotřebné role přiřazení podobný procesu pro role Azure AD je popsáno výše.
 

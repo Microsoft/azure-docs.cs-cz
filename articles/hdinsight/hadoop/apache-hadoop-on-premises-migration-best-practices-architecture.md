@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f1e2b9dfc329e67d94fba998a01d593b992ba90f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433998"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886804"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy architektury
 
@@ -105,7 +105,7 @@ Některé osvědčené postupy metastore Hive v HDInsight jsou následující:
 - Nesdílejte metastore vytvořit pro jednu verzi clusteru HDInsight s clustery s jinou verzí. Různé verze Hive pomocí různých schémat. Například metastoru nelze sdílet s clustery Hive 1.2 a Hive 2.1.
 - Pravidelně zálohujte vlastní úložiště metadat.
 - Udržujte metastore a HDInsight cluster ve stejné oblasti.
-- Monitorování metastore výkonu a dostupnosti s využitím Azure SQL Database monitorování nástrojů, jako je Azure portal nebo Azure Log Analytics.
+- Monitorování metastore výkonu a dostupnosti s využitím Azure SQL Database monitorování nástrojů, jako je Azure Monitor protokolů nebo portálu Azure portal.
 - Spustit **analyzovat tabulky** příkaz jako vyžadovaných ke generování statistik pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy

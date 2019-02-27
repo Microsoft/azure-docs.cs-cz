@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 852cc5e5b3b018d871bd40775dce64d669fb3011
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492228"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880610"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Kurz: Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 4.x a použijete Azure Web app bot
 Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
@@ -66,7 +66,7 @@ Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službo
     
 5. Vyberte **Vytvořit**. Tím se vytvoří a nasadí služba robota do Azure. Část tohoto procesu vytvoří aplikaci LUIS nazvanou `luis-nodejs-bot-XXXX`. Tento název je založený na názvu robota a aplikace v předchozí části.
 
-    [ ![Vytvoření Web App Bota](./media/bfv4-nodejs/create-web-app-service.png) ](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [![Vytvoření webové aplikace robota](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
 6. Tuto kartu prohlížeče nechte otevřenou. Pro všechny kroky s portálem LUIS otevřete novou kartu prohlížeče. Po nasazení nové služby robota pokračujte k další části.
 
@@ -106,7 +106,7 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
 3. Vyberte **Download Bot source code** (Stáhnout zdrojový kód robota). 
 
-    [ ![Stáhnout zdrojový kód Web App Bota pro základního robota](../../../includes/media/cognitive-services-luis/bfv4/download-code.png) ](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![Stáhněte si web app bot zdrojový kód pro základního robota](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 4. Když se zdrojový kód zazipuje, zobrazí se zpráva s odkazem na stažení kódu. Vyberte odkaz. 
 
@@ -230,7 +230,7 @@ Před změnou kódu nebo nastavení zkontrolujte, jestli robot funguje.
 
 2. V emulátoru robota vyberte soubor *.bot v kořenovém adresáři projektu. Tento soubor `.bot` obsahuje koncový bod adresy URL robota pro zprávy:
 
-    [ ![Emulátor robota v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png) ](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
+    [![Bot emulátor v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
 
 3. Zadejte tajný kód robota, který jste zkopírovali z Application Settings (Nastavení aplikace) služby Azure Bot Service v 1. kroku v části **[Stažení Web App Bota](#download-the-web-app-bot)**. Emulátoru to umožní přístup k zašifrovaným polím v souboru .bot.
 
@@ -239,7 +239,7 @@ Před změnou kódu nebo nastavení zkontrolujte, jestli robot funguje.
 
 4. V emulátoru robota zadejte `Hello` a získejte správnou odpověď pro základního robota.
 
-    [ ![Odpověď základního robota v emulátoru](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png) ](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
+    [![Odpověď základního robota v emulátoru](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png)](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
 
 ## <a name="modify-bot-code"></a>Úprava kódu robota 
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: f3376b8077302eb6bd9a96710f92d692b641cac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866776"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874881"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použijte frázi v seznamech boost signál seznam slov
 
@@ -44,7 +44,7 @@ Služba LUIS umožňuje až 10 frázi seznamy na aplikaci.
 
 5. Klikněte na tlačítko **tyto hodnoty jsou zaměnitelné** Pokud jsou hodnoty seznamu přidal frázi alternativy, které můžete používat Zaměnitelně.
 
-    ![Navrhované hodnoty seznamu frázi – políčko zaměnitelné ](./media/luis-add-features/interchangeable.png)
+    ![Navrhované hodnoty seznamu frázi – políčko zaměnitelné](./media/luis-add-features/interchangeable.png)
 
 6. Klikněte na **Uložit**. Přidání seznamu frázi "Cities" **frázi seznamy** stránky.
 

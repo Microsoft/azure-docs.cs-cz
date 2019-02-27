@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 6907382fccaa463fe305ac5049b3858e59b8631b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991391"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888810"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa DNS záznamů a sad záznamů v DNS Azure pomocí Azure Powershellu
 
@@ -238,7 +238,7 @@ Tato posloupnost operací může být také *směrované*, což znamená, přede
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Výše uvedené příklady ukazují, jak přidat záznam "A" do existující sady záznamů typu "A". Podobně jako posloupnost operací se používá k přidání záznamů do sad záznamů z ostatních typů, přičemž nahradíte `-Ipv4Address` parametr `Add-AzDnsRecordConfig` s další parametry, které jsou specifické pro jednotlivé typy záznamů. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzDnsRecordConfig` rutiny, jak je znázorněno v [Příklady dalších typů záznamu](#additional-record-type-examples) výše.
+Výše uvedené příklady ukazují, jak přidat záznam "A" do existující sady záznamů typu "A". Podobně jako posloupnost operací se používá k přidání záznamů do sad záznamů z ostatních typů, přičemž nahradíte `-Ipv4Address` parametr `Add-AzDnsRecordConfig` s další parametry, které jsou specifické pro jednotlivé typy záznamů. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzDnsRecordConfig` rutiny, jak je znázorněno výše uvedené příklady dalších typů záznamu.
 
 Sady záznamů typu "CNAME" nebo "SOA" nemůže obsahovat více než jeden záznam. Toto omezení mohou nastat z norem DNS. Není omezení Azure DNS.
 
@@ -272,7 +272,7 @@ Podobně pro přidání záznamů do sady záznamů, posloupnost operací odebra
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Podporuje různé typy záznamů předávání do příslušné parametry specifické pro typ. `Remove-AzDnsRecordSet`. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzDnsRecordConfig` rutiny, jak je znázorněno v [Příklady dalších typů záznamu](#additional-record-type-examples) výše.
+Podporuje různé typy záznamů předávání do příslušné parametry specifické pro typ. `Remove-AzDnsRecordSet`. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzDnsRecordConfig` rutiny, jak je znázorněno výše uvedené příklady dalších typů záznamu.
 
 
 ## <a name="modify-an-existing-record-set"></a>Upravit existující sady záznamů

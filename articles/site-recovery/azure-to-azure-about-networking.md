@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fb80af9df58fba41e5ece060099eb98e3d2f90fe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693985"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883143"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v replikaci z Azure do Azure
 
@@ -163,4 +163,4 @@ Můžete přepsat Azure výchozí systémovou trasu pro předponu adresy 0.0.0.0
 ## <a name="next-steps"></a>Další postup
 - Začněte chránit svoje úlohy pomocí [replikaci virtuálních počítačů Azure](site-recovery-azure-to-azure.md).
 - Další informace o [IP adresu uchování](site-recovery-retain-ip-azure-vm-failover.md) převzetí služeb při selhání virtuálních počítačů Azure.
-- Další informace o zotavení po havárii [virtuálních počítačů Azure pomocí ExpressRoute ](azure-vm-disaster-recovery-with-expressroute.md).
+- Další informace o zotavení po havárii [virtuálních počítačů Azure pomocí ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).

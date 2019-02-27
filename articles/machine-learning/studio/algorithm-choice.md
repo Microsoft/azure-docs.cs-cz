@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: cf45c97fccb89fe7175796322f0d3d7d114eea11
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8ae8ecab5363c9eff7fcadd65c76dd31ca6818e1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822955"
+ms.locfileid: "56877924"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak zvolit algoritmy pro Azure Machine Learning Studio
 
@@ -129,7 +129,7 @@ Některé studijní algoritmy určité domněnky o struktuře dat nebo požadova
 | **Klasifikace víc tříd** | | | | | |
 | [Logistické regrese](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [rozhodovací les](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
-| [rozhodovací Džungle ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Nedostatek paměti nároky na místo |
+| [rozhodovací Džungle](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Nedostatek paměti nároky na místo |
 | [neurálních sítí](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Další přizpůsobení je možné](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobrazit vlastnosti vybrané metody dvěma třídami |
 | **Regrese** | | | | | |

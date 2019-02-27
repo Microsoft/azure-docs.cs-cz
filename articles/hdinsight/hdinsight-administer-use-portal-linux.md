@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: a0da4339586982f5210834bcec5acfe463bc1a9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 8fccf82371225acd5839537f7629ffe7df138d43
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816437"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888147"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -71,9 +71,9 @@ Vyberte název vašeho clusteru z [ **clustery HDInsight** stránky](#showCluste
 
 - **Monitorování nabídky**
   - **Výstrahy**: Správa výstrah a akce.
-  - **Metriky**: Monitorujte metriky clusteru v Azure Log Analytics.
+  - **Metriky**: Umožňuje monitorujte metriky clusteru na protokoly Azure monitoru.
   - **Nastavení diagnostiky**: Nastavení, ve kterém můžete ukládat metriky diagnostiku.
-  - **Operations Management Suite**:  Monitorování clusteru v Azure Operations Management Suite (OMS) a Azure Log Analytics.
+  - **Operations Management Suite**:  Monitorujte svůj cluster v Azure Operations Management Suite (OMS) a protokoly Azure monitoru.
 
 - **Podpora a řešení potíží nabídky**
   - **Služba Resource health**: Zobrazit [přehled Azure resource health](../service-health/resource-health-overview.md).

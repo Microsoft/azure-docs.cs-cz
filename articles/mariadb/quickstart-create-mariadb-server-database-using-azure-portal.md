@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: 076a29de227447c75644bd3b59bda1053794d739
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e739ed1f7cd1b832ffe11299d3444c9bf0ac99e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191883"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874456"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Vytvoření serveru Azure Database for MariaDB pomocí webu Azure Portal
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for MariaDB pomocí webu Azure Portal
 
 Azure Database for MariaDB je spravovaná služba, pomocí které můžete provozovat, spravovat a škálovat vysoce dostupné databáze MariaDB v cloudu. V tomto rychlém startu se dozvíte, jak přibližně během pěti minut vytvořit server Azure Database for MariaDB pomocí webu Azure Portal.  
 
@@ -152,7 +152,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
     > [!TIP]
     > Pokud brána firewall není nakonfigurovaná k povolení IP adresy služby Azure Cloud Shell, dojde k následující chybě:
     >
-    >   CHYBA 2003 (28000): Klient s IP adresou 123.456.789.0 nepovoluje přístup k serveru.
+    >   ERROR 2003 (28000): Klient s IP adresou 123.456.789.0 nepovoluje přístup k serveru.
     >
     > Pokud chcete chybu vyřešit, zajistěte,aby konfigurace serveru odpovídala postupu popsanému v části [Konfigurace pravidla brány firewall na úrovni serveru](#configure-firewall-rule).
 

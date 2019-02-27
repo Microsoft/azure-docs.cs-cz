@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7bc6b57122072c2fe0c063c1278cf11d97469b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191312"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Kurz: Integrace Azure Active Directory s Snowflake
 
@@ -141,7 +141,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Snowflake, proveďte násle
     > [!NOTE]
     > Toto je oddělené od kontextu, ve kterém jste zvolili v pravém horním rohu pod názvem vašeho uživatele
     
-    ![Správce Snowflake ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Správce Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 10. Otevřít **stáhnout certifikát Base 64** v poznámkovém bloku. Zkopírujte hodnotu mezi "---BEGIN CERTIFICATE---" a "-END CERTIFICATE---" a vložit do uvozovek vedle **certifikát** níže. V **ssoUrl**, vložte **přihlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal. Vyberte **všechny dotazy** a klikněte na tlačítko **spustit**.
 
@@ -219,11 +219,11 @@ Povolení služby Azure AD uživatelům přihlášení ke Snowflake, musí být 
 
 2. **Přepnout Role** k **ACCOUNTADMIN**, kliknutím na **profilu** v pravé horní části stránky.  
 
-    ![Správce Snowflake ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Správce Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 3. Vytvoření uživatele spuštěním následující dotaz SQL, zajištění "Přihlašovací jméno" je nastavena na uživatelské jméno Azure AD na listu jak je znázorněno níže.
 
-    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
 
     ```
     use role accountadmin;
@@ -238,9 +238,9 @@ Po kliknutí na dlaždici Snowflake na přístupovém panelu, vám by měl být 
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

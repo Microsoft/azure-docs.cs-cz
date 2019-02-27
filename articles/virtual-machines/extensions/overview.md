@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 1d092f03013d98106138f35734d960567121a5bf
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692709"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881851"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Funkce a rozšíření virtuálních počítačů Azure
 Rozšíření virtuálních počítačů (VM) Azure jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure, můžete použít existující Image a pak si je přizpůsobit, jako součást nasazení, začít z firmy vlastní vytváření bitové kopie.
@@ -54,6 +54,6 @@ Rozšíření instalovat aplikace, stejně jako všechny aplikace jsou některé
 ## <a name="next-steps"></a>Další postup
 * Další informace o fungování agenta pro Linux a rozšíření najdete v tématu [funkcí a rozšíření virtuálních počítačů Azure pro Linux](features-linux.md).
 * Další informace o fungování agenta hosta Windows a rozšíření najdete v tématu [funkcí a rozšíření virtuálních počítačů Azure pro Windows](features-windows.md).  
-* Chcete-li nainstalovat agenta hosta Windows, naleznete v tématu [přehled agenta virtuálního počítače Windows Azure ](agent-windows.md).  
-* Pokud chcete nainstalovat agenta pro Linux, najdete v článku [přehled agenta virtuálního počítače Linux Azure ](agent-linux.md).  
+* Chcete-li nainstalovat agenta hosta Windows, naleznete v tématu [přehled agenta virtuálního počítače Windows Azure](agent-windows.md).  
+* Pokud chcete nainstalovat agenta pro Linux, najdete v článku [přehled agenta virtuálního počítače Linux Azure](agent-linux.md).  
 

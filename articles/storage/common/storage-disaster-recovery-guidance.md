@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753584"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871532"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage
 
@@ -152,7 +152,6 @@ Nespravované disky jsou uložené jako objekty BLOB stránky ve službě Azure 
 4. Počkejte, dokud **čas poslední synchronizace** byl aktualizován a je pozdější než čas, kdy odstraníte virtuální počítač. Tento krok je důležitý, protože pokud sekundární koncový bod nebyl aktualizován plně se soubory virtuálního pevného disku dojde převzetí služeb při selhání, pak virtuální počítač možná nebude fungovat správně v nové primární oblasti.
 5. Zahájení převzetí služeb při selhání účtu.
 6. Počkejte na dokončení převzetí služeb při selhání účtu a sekundární oblasti jsou nové primární oblasti.
-6. Vytvoření účtu úložiště v nové primární oblasti a zkopírujte do něj nespravovaný disk.
 7. Vytvoření virtuálního počítače v nové primární oblasti a znovu ho připojte virtuální pevné disky.
 8. Spuštění nového virtuálního počítače.
 

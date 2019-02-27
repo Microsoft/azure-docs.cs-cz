@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b80a2effb4cdfe45ad3f37785f7e97449d60f00c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bf831936f86de9e43170a87c03b61df9a4865b3d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340140"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878043"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
@@ -95,8 +95,8 @@ Prvním krokem k lepší přehled o vašich prostředků je vytvoření a přiř
 
    Nahraďte _ContosoRG_ s názvem vaší skupiny prostředků určené.
 
-   **Oboru** parametru u `New-AzPolicyAssignment` funguje taky s předplatných a skupin pro správu. Parametr používá cestu úplné prostředku, který **ResourceId** vlastnost `Get-AzResourceGroup` vrátí. Vzor pro **oboru** pro každý kontejner je následujícím způsobem.
-   Nahraďte `{rName}`, `{rgName}`, `{subId}`, a `{mgName}` se název prostředku, skupina prostředků název, ID předplatného a název skupiny pro správu, v uvedeném pořadí. `{rType}` by měl být nahrazen **typ prostředku** prostředku, jako například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
+   **Oboru** parametru u `New-AzPolicyAssignment` funguje s skupiny pro správu, předplatné, skupinu prostředků nebo jediný prostředek. Parametr používá cestu úplné prostředku, který **ResourceId** vlastnost `Get-AzResourceGroup` vrátí. Vzor pro **oboru** pro každý kontejner je následujícím způsobem. Nahraďte `{rName}`, `{rgName}`, `{subId}`, a `{mgName}` se název prostředku, skupina prostředků název, ID předplatného a název skupiny pro správu, v uvedeném pořadí.
+   `{rType}` by měl být nahrazen **typ prostředku** prostředku, jako například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
 
    - Prostředek – `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Skupina prostředků- `/subscriptions/{subId}/resourceGroups/{rgName}`

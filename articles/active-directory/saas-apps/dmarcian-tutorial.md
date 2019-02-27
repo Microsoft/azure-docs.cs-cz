@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4768c38b2e76bfa8cdff3187c32c03fdaaf57bbf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207649"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Kurz: Integrace Azure Active Directory s dmarcian
 
@@ -143,15 +143,15 @@ Ke konfiguraci Azure AD jednotné přihlašování s dmarcian, proveďte násled
 
 2. Klikněte na **profilu** v pravém horním rohu a přejít na **Předvolby**.
 
-    ![Předvolby ](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
+    ![Předvolby](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
 3. Posuňte se dolů a klikněte na **Single Sign-On** části a potom klikněte na **konfigurovat**.
 
-    ![Jedné ](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
+    ![Jedné](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
 4. Na **SAML jednotného přihlašování** stránce nastavení **stav** jako **povoleno** a proveďte následující kroky:
 
-    ![Ověřování ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
+    ![Ověřování](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
     * V části **přidat dmarcian ke zprostředkovateli Identity** klikněte na tlačítko **kopírování** zkopírovat **adresa URL služby Assertion příjemce** pro vaši instanci a vložte ji  **Adresa URL pro odpověď** textového pole v **části základní konfiguraci SAML** na portálu Azure portal.
 
@@ -229,15 +229,15 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k dmarcian, mus�
 
 2. Klikněte na **profilu** v horním pravém rohu a přejít na **spravovat uživatele**.
 
-    ![Uživatel ](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
+    ![Uživatel](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
 3. Na pravé straně **jednotné přihlašování uživatelů** části, klikněte na **Add New User**.
 
-    ![Přidat uživatele ](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
+    ![Přidat uživatele](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
 4. Na **Add New User** automaticky otevírané okno, proveďte následující kroky:
 
-    ![Nový uživatel ](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
+    ![Nový uživatel](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
     a. V **novou e-mailu uživatele** textového pole zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
 
@@ -253,9 +253,9 @@ Po kliknutí na dlaždici dmarcian na přístupovém panelu, můžete by měl b�
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

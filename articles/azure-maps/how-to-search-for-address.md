@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413545"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875782"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby vyhledávání Azure Maps
 
@@ -37,7 +37,7 @@ Většinu vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` zí
 
 2. Na kartě tvůrce, vyberte **získat** metodu HTTP a zadejte adresu URL požadavku pro koncový bod rozhraní API.
 
-    ![Vyhledávání přibližných shod ](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![Vyhledávání přibližných shod](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
@@ -49,7 +49,7 @@ Většinu vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` zí
 
 3. Klikněte na tlačítko **Params**a zadejte následující klíč / hodnota dvojice, které budou používat jako parametry dotazu nebo cesta v adrese URL požadavku:
 
-    ![Vyhledávání přibližných shod ](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![Vyhledávání přibližných shod](./media/how-to-search-for-address/fuzzy_search_params.png)
 
     | Klíč | Hodnota |
     |------------------|-------------------------|
@@ -75,7 +75,7 @@ Většinu vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` zí
   
 6. Parametry, zadejte následující klíč / páry hodnot a klikněte na tlačítko **odeslat**:
 
-    ![Vyhledávání přibližných shod ](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![Vyhledávání přibližných shod](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
     | Klíč | Hodnota |
     |-----|------------|
@@ -89,7 +89,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
 1. V nástroji Postman, klikněte na tlačítko **novou žádost o** | **požadavek GET** a pojmenujte ho **hledání adresy**.
 2. Na kartě tvůrce, vyberte **získat** metodu HTTP, zadejte adresu URL požadavku pro koncový bod rozhraní API a vyberte autorizační protokol, pokud existuje.
 
-    ![Hledání adresy ](./media/how-to-search-for-address/address_search_url.png)
+    ![Hledání adresy](./media/how-to-search-for-address/address_search_url.png)
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
@@ -99,7 +99,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
 
 3. Klikněte na tlačítko **Params**a zadejte následující klíč / hodnota dvojice, které budou používat jako parametry dotazu nebo cesta v adrese URL požadavku:
   
-    ![Hledání adresy ](./media/how-to-search-for-address/address_search_params.png)
+    ![Hledání adresy](./media/how-to-search-for-address/address_search_params.png)
   
     | Klíč | Hodnota |
     |------------------|-------------------------|
@@ -130,7 +130,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
 
 2. Na kartě tvůrce, vyberte **získat** metodu HTTP a zadejte adresu URL požadavku pro koncový bod rozhraní API.
   
-    ![Zpětná adresa URL vyhledávání ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Zpětná adresa URL vyhledávání](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
@@ -140,7 +140,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
   
 3. Klikněte na tlačítko **Params**a zadejte následující klíč / hodnota dvojice, které budou používat jako parametry dotazu nebo cesta v adrese URL požadavku:
   
-    ![Zpětná adresa parametry hledání ](./media/how-to-search-for-address/reverse_address_search_params.png)
+    ![Zpětná adresa parametry hledání](./media/how-to-search-for-address/reverse_address_search_params.png)
   
     | Klíč | Hodnota |
     |------------------|-------------------------|
@@ -190,7 +190,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
 
 2. Na kartě tvůrce, vyberte **získat** metodu HTTP a zadejte adresu URL požadavku pro koncový bod rozhraní API.
   
-    ![Reverse hledání napříč ulici adresy ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Reverse hledání napříč ulici adresy](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986afa1239ad0efd9ccb936252ead37c8379b447
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8c9f410fa890df7aac3c3bf4d89468b92e69ba38
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192893"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Kurz: Integrace Azure Active Directory s Tangoe příkaz Premium Mobile
 
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat integraci Tangoe příkaz Premium mobilní zařízen
 
 1. Do vyhledávacího pole zadejte **Tangoe příkaz Premium Mobile**vyberte **Tangoe příkaz Premium Mobile** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Přidání Mobile Premium Tangoe příkaz z Galerie ](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
+    ![Přidání Mobile Premium Tangoe příkaz z Galerie](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Tangoe příkaz Premium mobilní zařízení podle testovacího uživatele nazývá "Britta Simon".

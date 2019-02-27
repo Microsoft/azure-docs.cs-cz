@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: ff7d886d3f219d007f159167cacfed1b8ee13863
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001013"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887552"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení ve službě Azure Monitor
 Řešení monitorování využití služeb v Azure a poskytuje další informace o provozu určitá aplikace nebo služby. Tento článek poskytuje stručný přehled monitorování řešení v Azure a podrobnosti o používání a jejich instalace.
@@ -65,7 +65,7 @@ Klikněte na název řešení, otevřete její souhrnnou stránku. Tato stránka
 ## <a name="install-a-monitoring-solution"></a>Nainstalujte řešení monitorování
 Monitorování řešení od Microsoftu a partnerů, jsou k dispozici [Azure Marketplace](https://azuremarketplace.microsoft.com). Můžete vyhledat dostupná řešení a nainstalujte je pomocí následujícího postupu. Při instalaci řešení, musíte vybrat [pracovní prostor Log Analytics](../platform/manage-access.md) nainstalovanou řešení a kde budou shromažďovány svá data.
 
-1. Z [seznam řešení pro vaše předplatné](#list-installed-management-solutions), klikněte na tlačítko **přidat**. 
+1. Z [seznam řešení pro vaše předplatné](#list-installed-monitoring-solutions), klikněte na tlačítko **přidat**. 
 1. Napravo od **řešení pro správu**, klikněte na tlačítko **Další**. 
 1. Vyhledejte řešení monitorování vám vyhovuje a přečtěte si její popis.
 1. Klikněte na tlačítko **vytvořit** spustit proces instalace.

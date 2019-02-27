@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.openlocfilehash: cd9275e9e112d24d9dbb3d1d5a60c871d7d8ae5c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6cf6679dc6398b112ffc964f50986b2ab30aba47
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890448"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882480"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Restartovat – Azure Database for MySQL pomocí webu Azure portal
 Toto téma popisuje, jak je možné restartovat serveru Azure Database for MySQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
@@ -36,15 +36,15 @@ MySQL server restartovat následující kroky:
 
 3. Klikněte na tlačítko **Ano** potvrďte restartování serveru.
 
-   ![Azure Database for MySQL – potvrzení restartování ](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for MySQL – potvrzení restartování](./media/howto-restart-server-portal/3-restart-confirm.png)
 
 4. Podívejte se, že stav serveru změní na "Restartování".
 
-   ![Azure Database for MySQL – restartování stav ](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for MySQL – restartování stav](./media/howto-restart-server-portal/4-restarting-status.png)
 
 5. Potvrďte úspěšné restartování serveru.
 
-   ![Azure Database for MySQL – úspěšné restartování ](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for MySQL – úspěšné restartování](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>Další postup
 

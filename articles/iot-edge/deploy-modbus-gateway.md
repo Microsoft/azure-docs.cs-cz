@@ -6,51 +6,57 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 02/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 0b94a57f04d9e4b5884162dcd4cfd89d6b4bf879
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341027"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873759"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes zařízení brány IoT Edge
 
 Pokud chcete připojit zařízení IoT využívající protokol Modbus TCP ke službě Azure IoT Hub, můžete jako bránu použít zařízení IoT Edge. Zařízení brány čte data ze zařízení Modbus a předává je do cloudu s použitím podporovaného protokolu.
 
-![Připojení zařízení Modbus ke službě IoT Hub přes bránu Edge](./media/deploy-modbus-gateway/diagram.png)
+![Připojení zařízení Modbus ke službě IoT Hub pomocí brány IoT Edge](./media/deploy-modbus-gateway/diagram.png)
 
 Tento článek popisuje vytvoření vlastní bitové kopie kontejneru pro modul Modbus (nebo můžete použít připravený vzor) a jeho nasazení do zařízení IoT Edge, které bude sloužit jako brána.
 
 V tomto článku se předpokládá, že používáte protokol Modbus TCP. Další informace o tom, jak nakonfigurovat modul pro podporu Modbus RTU najdete v článku [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu na Githubu.
 
 ## <a name="prerequisites"></a>Požadavky
-* Zařízení Azure IoT Edge. Postup vytvoření tohoto zařízení najdete v článku [Nasazení Azure IoT Edge na simulovaném zařízení ve Windows](quickstart.md) nebo [na Linuxu](quickstart-linux.md).
+* Zařízení Azure IoT Edge. Návod, jak nastavit jeden, naleznete v tématu [nasazení Azure IoT Edge na Windows](quickstart.md) nebo [Linux](quickstart-linux.md).
 * Primární připojovací řetězec klíče pro zařízení IoT Edge.
 * Fyzické nebo simulované zařízení Modbus, které podporuje protokol Modbus TCP.
 
 ## <a name="prepare-a-modbus-container"></a>Příprava kontejneru Modbus
 
-Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, který můžete použít. Chcete-li použít vzorový modul, přejděte k části [Spuštění řešení](#run-the-solution) a zadejte následující jako identifikátor URI bitové kopie:
+Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, který můžete použít. V modulu se dá dostat z Azure Marketplace [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview), nebo identifikátor URI, image **mcr.microsoft.com/azureiotedge/modbus:1.0**.
 
-```URL
-mcr.microsoft.com/azureiotedge/modbus:1.0
-```
+Pokud chcete vytvořit vlastní modul a přizpůsobit pro vaše prostředí, je open source [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu na Githubu. Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Pokud vytvoříte vlastní image kontejneru, podívejte se na [vývoj C# moduly v sadě Visual Studio](how-to-visual-studio-develop-csharp-module.md) nebo [vývoj modulů ve Visual Studio Code](how-to-vs-code-develop-module.md). Tyto články poskytují pokyny k vytvoření nové moduly a publikování Image kontejneru do registru.
 
-Pokud chcete vytvořit vlastní modul a přizpůsobit pro vaše prostředí, je open source [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu na Githubu. Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Když vytvoříte vlastní bitovou kopii kontejneru, vyhledejte pokyny k jejímu publikování do registru a nasazení vlastního modulu do zařízení v článku [Vývoj a nasazení modulu IoT Edge v jazyce C#](tutorial-csharp-module.md).
+## <a name="try-the-solution"></a>Vyzkoušejte toto řešení
 
+Tato část vás provede nasazením modul Modbus od Microsoftu do zařízení IoT Edge.
 
-## <a name="run-the-solution"></a>Spuštění řešení
 1. Na webu [Azure Portal](https://portal.azure.com/) otevřete vaše centrum IoT Hub.
+
 2. Přejděte na **IoT Edge** a klikněte na zařízení IoT Edge.
+
 3. Vyberte **Nastavit moduly**.
+
 4. Přidejte modul Modbus:
+
    1. Klikněte na tlačítko **přidat** a vyberte **modul IoT Edge**.
+
    2. Do pole **Name** (Název) zadejte „modbus“.
+
    3. Do pole **Image** (Bitová kopie) zadejte identifikátor URI vzorového kontejneru: `mcr.microsoft.com/azureiotedge/modbus:1.0`.
+
    4. Zaškrtnutím políčka **Enable** (Povolit) aktualizujte požadované vlastnosti dvojčete modulu.
+
    5. Do textového pole zkopírujte následující JSON. Změňte hodnotu **SlaveConnection** na adresu IPv4 vašeho zařízení Modbus.
 
       ```JSON
@@ -76,8 +82,10 @@ Pokud chcete vytvořit vlastní modul a přizpůsobit pro vaše prostředí, je 
       ```
 
    6. Vyberte **Uložit**.
+
 5. Zpět v kroku **přidání modulů** vyberte **Další**.
-7. V kroku **určení tras** zkopírujte do textového pole následující JSON. Tato trasa odešle všechny zprávy shromážděné modulem Modbus do centra IoT Hub. V této trase znamená „modbusOutput“ koncový bod, který modul Modbus pomocí používá pro výstup dat a „upstream“ je speciální cílové umístění, které bráně Edge říká, aby odesílala zprávy do centra IoT Hub.
+
+7. V kroku **určení tras** zkopírujte do textového pole následující JSON. Tato trasa odešle všechny zprávy shromážděné modulem Modbus do centra IoT Hub. V této trase je "modbusOutput" koncový bod, který modul Modbus pomocí používá pro výstup dat a "upstream" je speciální cílové umístění, která říká hraničních zařízeních IoT hub pro odesílání zpráv do služby IoT Hub.
    ```JSON
    {
     "routes": {
@@ -87,18 +95,20 @@ Pokud chcete vytvořit vlastní modul a přizpůsobit pro vaše prostředí, je 
    ```
 
 8. Vyberte **Další**.
+
 9. V kroku **Kontrola nasazení** vyberte **Odeslat**.
+
 10. Vraťte se na obrazovku podrobností o zařízení a zvolte **Refresh** (Obnovit). Měli byste vidět nové **modbus** modulu spuštěn společně s runtime IoT Edge.
 
 ## <a name="view-data"></a>Zobrazení dat
 Takto si můžete prohlédnout data přicházející z modulu modbus:
 ```cmd/sh
-docker logs -f modbus
+iotedge logs modbus
 ```
 
 Můžete také zobrazit telemetrická data odeslaná ze zařízení s použitím [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit).
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak zařízení IoT Edge může fungovat jako brána najdete v článku [Vytvoření zařízení IoT Edge které slouží jako transparentní brána](./how-to-create-transparent-gateway.md).
-- Další informace o fungování modulů IoT Edge najdete v tématu [Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md).
+- Další informace o tom, jak zařízení IoT Edge může fungovat jako brána najdete v tématu [vytvoření zařízení IoT Edge, který funguje jako transparentní brána](./how-to-create-transparent-gateway.md).
+- Další informace o fungování modulů IoT Edge najdete v tématu [moduly pochopit Azure IoT Edge](iot-edge-modules.md).

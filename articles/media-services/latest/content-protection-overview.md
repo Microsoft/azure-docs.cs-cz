@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 02c786209c81e755b05cc3875778f98faf8a1ae1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e515f7c0587e8bbcba10bcd2d2a726c16401bfbd
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650933"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889765"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -31,7 +31,7 @@ Následující obrázek ukazuje pracovní postup služby Media Services content 
 
 &#42;*podporuje dynamické šifrování AES-128 "nezašifrovaný klíč", CBCS a CENC. Podrobnosti najdete v tématu Přehled funkcí pro podporu [tady](#streaming-protocols-and-encryption-types).*
 
-Tento článek vysvětluje koncepty a terminologie relevantní pro pochopení ochrany obsahu pomocí služby Media Services. Tento článek obsahuje také [nejčastější dotazy k](#faq) části a poskytuje odkazy na články, které ukazují, jak chránit obsah. 
+Tento článek vysvětluje koncepty a terminologie relevantní pro pochopení ochrany obsahu pomocí služby Media Services. Tento článek také má v části Nejčastější dotazy a obsahuje odkazy na články, které ukazují, jak chránit obsah. 
 
 ## <a name="main-components-of-a-content-protection-system"></a>Hlavní součásti systému Ochrana obsahu
 

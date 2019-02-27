@@ -16,12 +16,12 @@ ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 88cbfc895d188162d0f242a5aceaab721a6c877f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239091"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877941"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 
@@ -74,7 +74,7 @@ Chcete-li zobrazit existující kvótu dvěma způsoby:
 3.  V okně, které se otevře, vyberte **služby a kvóty**.
 4.  Vyberte kvót chcete zobrazíte ho kliknutím **název** sloupce.
 
-    [ ![Kvóty](media/azure-stack-quota-types/quotas1sm.png "zobrazit kvóty") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Kvóty](media/azure-stack-quota-types/quotas1sm.png "zobrazit kvóty")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>Poskytovatelé prostředků
 
@@ -92,7 +92,7 @@ Upravit kvótu dvěma různými způsoby:
 2.  Vyberte plán, pro kterou chcete upravit kvótu, kliknutím na jeho název.
 3.  V okně, které se otevře, vyberte **služby a kvóty**.
 4.  Vyberte kvótu byste chtěli upravit kliknutím v **název** sloupce.
-    [ ![Kvóty](media/azure-stack-quota-types/quotas1sm.png "zobrazit kvóty") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Kvóty](media/azure-stack-quota-types/quotas1sm.png "zobrazit kvóty")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5.  V okně, které se otevře, vyberte **upravit na výpočty**, **upravit v síti**, nebo **upravit ve službě Storage**.
     ![Kvóty](media/azure-stack-quota-types/quotas3.png "zobrazit kvóty")    

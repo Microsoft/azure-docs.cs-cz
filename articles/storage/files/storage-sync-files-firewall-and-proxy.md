@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 96389e9aa5758ea51448affa389c90eaa8e5842d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 23bf70cd60639aec3ea7e8504dc3f6ebccd4923f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588598"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883585"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -93,14 +93,14 @@ Jak je uvedeno v předchozí části, otevřít odchozí port 443 musí být. Na
 
 Následující tabulka popisuje požadovaných domén pro komunikace:
 
-| Služba | Domain (Doména) | Využití |
-|---------|----------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | Jakékoli volání uživatele (jako je PowerShell) prochází přes tuto adresu URL, včetně volání registrace počáteční server. |
-| **Azure Active Directory** | https://login.windows.net | Ověřený uživatel se musí provádět volání Azure Resource Manageru. Úspěšné, tato adresa URL slouží k ověřování uživatelů. |
-| **Azure Active Directory** | https://graph.windows.net/ | Jako součást nasazení Azure File Sync se vytvoří instanční objekt služby ve službě Active Directory předplatného Azure. Pro, který se používá tuto adresu URL. Tento objekt se používá pro delegování minimální sadu práv ve službě Azure File Sync. Uživatel provádějící počáteční nastavení služby Azure File Sync musí být ověřený uživatel s oprávněními vlastníka předplatného. |
-| **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provede tento přesun dat efektivněji přímo s sdílené složky Azure v účtu úložiště. Server má klíč SAS, která povoluje jenom pro přístup ke sdílené složce cílového souboru. |
-| **Azure File Sync** | &ast;.one.microsoft.com | Po registraci počáteční server přijímá na serveru místní adresu URL instance služby Azure File Sync v dané oblasti. Server může komunikovat přímo a efektivně s instancí zpracování synchronizace. použijte adresu URL. |
-| **Microsoft PKI** | `https://www.microsoft.com/pki/mscorp`<br>http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync a sdílené složky Azure. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
+| Služba | Koncový bod veřejného cloudu. | Koncový bod Azure Government | Využití |
+|---------|----------------|---------------|------------------------------|
+| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Jakékoli volání uživatele (jako je PowerShell) prochází přes tuto adresu URL, včetně volání registrace počáteční server. |
+| **Azure Active Directory** | https://login.windows.net | https://login.microsoftonline.us | Ověřený uživatel se musí provádět volání Azure Resource Manageru. Úspěšné, tato adresa URL slouží k ověřování uživatelů. |
+| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | Jako součást nasazení Azure File Sync se vytvoří instanční objekt služby ve službě Active Directory předplatného Azure. Pro, který se používá tuto adresu URL. Tento objekt se používá pro delegování minimální sadu práv ve službě Azure File Sync. Uživatel provádějící počáteční nastavení služby Azure File Sync musí být ověřený uživatel s oprávněními vlastníka předplatného. |
+| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Pokud server stáhne soubor, pak server provede tento přesun dat efektivněji přímo s sdílené složky Azure v účtu úložiště. Server má klíč SAS, která povoluje jenom pro přístup ke sdílené složce cílového souboru. |
+| **Azure File Sync** | &ast;.one.microsoft.com | &ast;.afs.azure.us | Po registraci počáteční server přijímá na serveru místní adresu URL instance služby Azure File Sync v dané oblasti. Server může komunikovat přímo a efektivně s instancí zpracování synchronizace. použijte adresu URL. |
+| **Microsoft PKI** | `https://www.microsoft.com/pki/mscorp`<br />http://ocsp.msocsp.com | `https://www.microsoft.com/pki/mscorp`<br />http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync a sdílené složky Azure. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
 
 > [!Important]
 > Při povolení provozu na &ast;. one.microsoft.com, provoz do více než jen synchronizační služby je možné ze serveru. Nejsou k dispozici v části subdomény mnoho další služby Microsoftu.
@@ -109,22 +109,24 @@ Pokud &ast;. one.microsoft.com je příliš široké, komunikaci serverem může
 
 Pro provozní kontinuitu a po havárii (BCDR) obnovení důvodů jste zadali, že vaše sdílených složek Azure v účtu globálně redundantní úložiště (GRS). Pokud je to tento případ, pak sdílených složek Azure převezme spárované oblasti v případě výpadku oblasti trvalé zhodnocení. Azure File Sync používá stejné oblastní párování jako úložiště. Takže pokud používáte účty úložiště GRS, je potřeba povolit další adresy URL, aby váš server komunikovat s spárované oblasti pro Azure File Sync. Následující tabulka volá této "Paired oblasti". Kromě toho je adresa URL profilu Správce provozu, která musí být povolena také. Tím se zajistí síťový provoz můžete bezproblémově znovu směrovat do spárované oblasti v případě převzetí služeb při selhání a se nazývá "Zjišťování adresy URL" v následující tabulce.
 
-| Oblast | Primární koncový bod adresy URL | Spárovaná oblast | Adresa URL pro zjišťování |
-|--------|---------------------------------------|--------|---------------------------------------|
-| Austrálie – východ | https://kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https://kailani-aue.one.microsoft.com |
-| Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com |
-| Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com |
-| Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
-| USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
-| Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
-| USA – východ | https://kailani1.one.microsoft.com | Západní USA | https://tm-kailani1.one.microsoft.com |
-| Východ USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
-| Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
-| Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
-| Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
-| Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
-| Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
-| Západní USA | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
+| Cloud  | Oblast | Primární koncový bod adresy URL | Spárovaná oblast | Adresa URL pro zjišťování |
+|--------|--------|----------------------|---------------|---------------|
+| Public |Austrálie – východ | https://kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https://kailani-aue.one.microsoft.com |
+| Public |Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com |
+| Public | Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com |
+| Public | Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
+| Public | USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
+| Public | Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
+| Public | USA – východ | https://kailani1.one.microsoft.com | Západní USA | https://tm-kailani1.one.microsoft.com |
+| Public | Východní USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
+| Public | Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
+| Public | Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
+| Public | Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
+| Public | Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
+| Public | Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
+| Public | Západní USA | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
+| Státní správa | USA (Gov) – Arizona | https://usgovarizona01.afs.azure.us | USA (Gov) – Texas | https://tm-usgovarizona01.afs.azure.us |
+| Státní správa | USA (Gov) – Texas | https://usgovtexas01.afs.azure.us | USA (Gov) – Arizona | https://tm-usgovtexas01.afs.azure.us |
 
 - Pokud používáte místně redundantní (LRS) a účty úložiště (ZRS) redundantní zóny, potřebujete jenom povolit adresu URL v části "primární koncový bod adresy URL".
 

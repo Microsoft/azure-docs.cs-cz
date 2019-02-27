@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial;anavin
-ms.openlocfilehash: a2d799a85932f8b7fdf1f6ae53dc50579c266311
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 52c0799dd2f3c22b1ae3553869aafe9a1fcffc7f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674507"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887926"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -71,7 +71,7 @@ Podrobné pokyny k implementaci partnerský vztah mezi virtuálními sítěmi v 
 
 ### <a name="commands"></a>Příkazy
 
-- **Azure CLI**: [vytvořit partnerský vztah virtuální sítě az sítě](/cli/azure/network/vnet/peering#create)
+- **Azure CLI**: [vytvořit partnerský vztah virtuální sítě az sítě](/cli/azure/network/vnet/peering)
 - **PowerShell**: [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Zobrazit nebo změnit nastavení partnerského vztahu
@@ -88,7 +88,7 @@ Před změnou, partnerský vztah, seznamte se s požadavky a omezení a [potřeb
 
 **Příkazy**
 
-- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) Chcete-li změnit nastavení partnerského vztahu. |
+- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering) Chcete-li změnit nastavení partnerského vztahu. |
 - **PowerShell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) načíst zobrazení nastavení partnerského vztahu a [Set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) Chcete-li změnit nastavení.
 
 ## <a name="delete-a-peering"></a>Odstranit partnerský vztah
@@ -97,7 +97,7 @@ Před odstraňuje se partnerský vztah, ujistěte, že má váš účet [potřeb
 
 Při odstranění partnerského vztahu, provoz z virtuální sítě už vede do partnerské virtuální síti. Po vytvoření partnerského vztahu virtuální sítě nasazené prostřednictvím Resource Manageru, každá virtuální síť má partnerský vztah k jiné virtuální síti. I když odstraňuje se partnerský vztah z jedné virtuální sítě zakáže komunikaci mezi virtuálními sítěmi, ale neodstraníte partnerského připojení z druhé virtuální sítě. Stav partnerského vztahu pro partnerský vztah, který existuje ve virtuální síti je **odpojeno**. Nelze znovu vytvořit partnerský vztah dokud je znovu vytvořit partnerský vztah v první virtuální sítě a stav partnerského vztahu pro obě virtuální sítě změny *připojeno*.
 
-Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, ale ne vždy místo odstraňuje se partnerský vztah, můžete nastavit **povolit přístup k virtuální síti** nastavení **zakázané** místo toho. Další informace, jak číst kroku 6 postupu [vytvoření partnerského vztahu](#create-a-peering) části tohoto článku. Může se stát zakázání a povolení přístupu k síti je jednodušší než odstranili a znovu vytvořili partnerské vztahy.
+Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, ale ne vždy místo odstraňuje se partnerský vztah, můžete nastavit **povolit přístup k virtuální síti** nastavení **zakázané** místo toho. Další informace, jak číst kroku 6 postupu vytvoření partnerského vztahu části tohoto článku. Může se stát zakázání a povolení přístupu k síti je jednodušší než odstranili a znovu vytvořili partnerské vztahy.
 
 1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji. Nesmí být zvolen **virtuální sítě (klasické)** Pokud se zobrazí v seznamu, nelze vytvoříte partnerské připojení z virtuální sítě nasazené pomocí modelu nasazení classic.
 2. Vyberte v seznamu, který chcete odstranit partnerský vztah virtuální sítě.

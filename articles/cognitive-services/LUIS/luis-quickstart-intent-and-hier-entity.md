@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 455090d9023b234742e0c42380536c95d7eb11a5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c17a74c81d9c9d2ac3f585ab17f0b7d2acc628f6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738653"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873912"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrahovat kontextově souvisejících dat ze utterance
 
@@ -74,7 +74,7 @@ Hierarchické entita je vhodný pro tento typ dat, protože dva druhy dat, podř
     |Steve Standish přenos v síti San Diegu směrem k Bellevue |
     |výtah Nováková Thompson ze Kansas Město a shift do Chicaga|
 
-    [ ![Snímek obrazovky aplikace LUIS s novými promluvami v záměru MoveEmployee (Přesunutí zaměstnance)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+    [![Snímek obrazovky služby LUIS s novou projevy v MoveEmployee záměr](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
 
 ## <a name="create-a-location-entity"></a>Vytvoření entity místa
 Služba LUIS potřebuje porozumět tomu, co je místo, tím, že v promluvách označí počáteční a cílové místo. Pokud potřebujete promluvu zobrazit v zobrazení tokenů (nezpracovaných), vyberte přepínač na panelu nad promluvami s popiskem **Entities View** (Zobrazení entit). Po přepnutí přepínače bude mít tento ovládací prvek popisek **Tokens View** (Zobrazení tokenů).

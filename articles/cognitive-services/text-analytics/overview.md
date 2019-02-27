@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242921"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889274"
 ---
 # <a name="what-is-text-analytics"></a>Co je Analýza textu?
 
@@ -64,11 +64,11 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 ## <a name="data-limits"></a>Omezení dat
 
-Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Současný limit je 5 000 znaků pro každý dokument. Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků. Pokud budete přesto potřebovat vyšší limit, [kontaktujte nás](https://azure.microsoft.com/overview/sales-number/), abychom mohli projednat vaše požadavky.
+Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Současný limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků. Pokud budete přesto potřebovat vyšší limit, [kontaktujte nás](https://azure.microsoft.com/overview/sales-number/), abychom mohli projednat vaše požadavky.
 
 | Omezení | Hodnota |
 |------------------------|---------------|
-| Maximální velikost jednoho dokumentu | 5 000 znaků pohledu [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
+| Maximální velikost jednoho dokumentu | 5 120 znaků, měřený podle [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximální velikost celého požadavku | 1 MB |
 | Maximální počet dokumentů v požadavku | 1 000 dokumentů |
 
@@ -80,7 +80,7 @@ Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyj
 
 ## <a name="next-steps"></a>Další postup
 
-Nejprve zkuste [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Můžete vložit textový vstup (maximálně 5 000 znaků) a zjistit jazyk (až 120), vypočítat skóre mínění nebo extrahovat klíčové fráze. Registrace není potřeba.
+Nejprve zkuste [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Můžete vložit textový vstup (maximálně 5 120 znaků) Chcete-li zjistit jazyk (až 120), vypočítat skóre mínění nebo extrahovat klíčové fráze. Registrace není potřeba.
 
 Jakmile budete připraveni volat rozhraní API přímo:
 

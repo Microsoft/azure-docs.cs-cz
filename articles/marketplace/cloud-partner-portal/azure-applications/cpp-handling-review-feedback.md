@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106949"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882684"
 ---
 # <a name="handling-review-feedback"></a>Zpracování zpětné vazby z revize
 
@@ -58,14 +58,14 @@ Pomocí následujícího postupu zkontrolovat problémy uvedené v žádosti o p
 
 1. V **Microsoft revize** část **publikování kroky** formulář a potom klikněte na odkaz žádosti o přijetí změn spusťte prohlížeč a přejděte na **přehled** (domů) stránky pro tuto žádost o přijetí změn  Následující obrázek znázorňuje příklad kritický problém Domovská stránka pro nabídku ukázková aplikace Contoso.  Tato stránka obsahuje užitečné souhrnné informace o Zkontrolujte problémy zjištěné v aplikaci Azure.  
 
-    [ ![Domovská stránka žádosti o přijetí změn](./media/pr-home-page-thumb.png) ](./media/pr-home-page.png)
+    [![Domovská stránka žádosti o přijetí změn](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Kliknutím na obrázek rozbalení.*
     
 2. (Volitelné) Na pravé straně okna, v části **zásady**, klikněte na zprávu problém (v tomto příkladu: **Nepovedlo se ověřit zásady**) Chcete-li prozkoumat podrobnosti nízké úrovně týkající problému, a to včetně související soubory protokolu.  Chyby se obvykle zobrazují v dolní části souboru protokolu.
 
 3. V nabídce na levé straně domovské stránky vyberte **soubory** k zobrazení seznamu souborů, které tvoří technických prostředků pro tuto nabídku.  Microsoft revidující by přidat komentář popisující zjištěných kritické problémy.  V následujícím příkladu byly zjištěny dva problémy. 
 
-    [ ![Domovská stránka žádosti o přijetí změn](./media/pr-files-page-thumb.png) ](./media/pr-files-page.png)
+    [![Domovská stránka žádosti o přijetí změn](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Kliknutím na obrázek rozbalení.*
 
 4. Klikněte na každý uzel komentáře v levém stromu přejděte na komentář v kontextu okolním kódem.  Opravte zdrojový kód v projektu váš tým a opravte problém popsaný komentáře.

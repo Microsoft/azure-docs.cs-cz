@@ -5,23 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/30/2019
-ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/26/2019
+ms.openlocfilehash: 6e33c7571dc735ce9984a0ce1b37275a6c4c7eca
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493044"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888461"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
-> [!IMPORTANT]
-> Funkce repliky pro čtení je ve verzi Public Preview.
-
 Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for MySQL server (správce) až k pěti jen pro čtení serverům (repliky) v rámci stejné oblasti Azure. Repliky jen pro čtení se aktualizují asynchronně pomocí technologie replikace na základě pozice souboru nativní binární protokol (binlog) stroje MySQL. Další informace o binlog replikace, najdete v článku [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Repliky vytvořené v Azure Database for MySQL služby jsou nové servery, které je možné spravovat stejným způsobem jako normální nebo samostatné servery MySQL. Za každou repliku pro čtení se vám účtuje zřízený výpočetní výkon ve virtuálních jádrech a zřízené úložiště v GB za měsíc. 
-
+Repliky vytvořené v Azure Database for MySQL služby jsou nové servery, které je možné spravovat stejným způsobem jako normální nebo samostatné servery MySQL. Za každou repliku pro čtení se vám účtuje zřízený výpočetní výkon ve virtuálních jádrech a zřízené úložiště v GB za měsíc.
 
 Další informace o funkcích replikace MySQL a problémů, najdete v tématu [MySQL replikace dokumentaci](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
@@ -39,7 +35,7 @@ Repliky pro čtení jsou aktuálně dostupné jenom v cenové úrovně pro obecn
 
 ### <a name="master-server-restart"></a>Hlavní server restartovat
 
-Během tohoto období preview při vytvoření repliky pro hlavní server, který nemá žádnou existující repliku, hlavní nejprve restartuje připraví pro replikaci. Vzít v úvahu a provádění těchto operací během období mimo špičku.
+Při vytváření repliky pro hlavní server, který nemá žádnou existující repliku hlavní restartuje nejprve připraví pro replikaci. Vzít v úvahu a provádění těchto operací během období mimo špičku.
 
 ### <a name="stopping-replication"></a>Zastavení replikace
 

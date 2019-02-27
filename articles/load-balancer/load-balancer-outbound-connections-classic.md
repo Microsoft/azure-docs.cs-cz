@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821503"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876938"
 ---
 # <a name="outbound-connections-classic"></a>Odchozí připojení (Classic)
 
@@ -41,7 +41,7 @@ Azure nabízí tři různých způsobů dosažení klasickými nasazeními odcho
 | --- | --- | --- | --- | --- | --- |
 | [1. Virtuální počítač s veřejnou IP adresu Instance úroveň adresou](#ilpip) | SNAT, ho maskují portu se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejné IP adresy přiřazené virtuálního počítače. Instance má všechny dočasné porty, které jsou k dispozici. | Ne | Ano |
 | [2. veřejný koncový bod s vyrovnáváním zatížení](#publiclbendpoint) | SNAT s ho maskují port (cesta) k veřejnému koncovému bodu | TCP, UDP | Azure sdílí s několika koncovými body privátní veřejné IP adresy veřejného koncového bodu. Azure používá pro token PAT dočasné porty veřejného koncového bodu. | Ano | Ano |
-| [3. Samostatný virtuální počítač ](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí tuto veřejnou IP adresu s celého nasazení a používá dočasné porty koncový bod veřejné IP adresy pro token PAT. Toto je základní scénář pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. | Ano | Ano |
+| [3. Samostatný virtuální počítač](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí tuto veřejnou IP adresu s celého nasazení a používá dočasné porty koncový bod veřejné IP adresy pro token PAT. Toto je základní scénář pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. | Ano | Ano |
 
 Toto je podmnožinou odchozí připojení funkce k dispozici pro nasazení Resource Manager v Azure.  
 

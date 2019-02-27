@@ -1,6 +1,6 @@
 ---
-title: Log Analytics pro Apache Kafka – Azure HDInsight
-description: Zjistěte, jak používat službu Log Analytics k analýze protokolů z cluster Apache Kafka v Azure HDInsight.
+title: Protokoly Azure monitoru pro Apache Kafka – Azure HDInsight
+description: Zjistěte, jak používat Azure Monitor protokoly k analýze protokolů z cluster Apache Kafka v Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,37 +9,39 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 0862bcb2c04f3a8cd46a5e60644ebbb8c7735e51
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 65416a00ebd487e80625e4f3c8d8a95b5995daa9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729963"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886566"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka v HDInsight
 
-Zjistěte, jak používat službu Log Analytics k analýze protokolů generovaných Apache Kafka v HDInsight.
+Zjistěte, jak používat Azure Monitor protokoly k analýze protokolů generovaných Apache Kafka v HDInsight.
 
-## <a name="enable-log-analytics-for-apache-kafka"></a>Povolení Log Analytics pro Apache Kafka
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Postup povolení Log Analytics pro HDInsight je stejný pro všechny clustery HDInsight. Chcete-li pochopit, jak vytvořit a nakonfigurovat požadované služby použijte následující odkazy:
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Povolit protokoly Azure monitoru pro Apache Kafka
+
+Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny clustery HDInsight. Chcete-li pochopit, jak vytvořit a nakonfigurovat požadované služby použijte následující odkazy:
 
 1. Vytvoření pracovního prostoru Log Analytics. Další informace najdete v tématu [Začínáme s pracovním prostorem Log Analytics](https://docs.microsoft.com/azure/log-analytics) dokumentu.
 
 2. Vytvořte systém Kafka na clusteru HDInsight. Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) dokumentu.
 
-3. Konfigurace clusteru Kafka pro použití služby Log Analytics. Další informace najdete v tématu [použití Log Analytics k monitorování HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
+3. Konfigurace clusteru Kafka používat protokoly Azure monitoru. Další informace najdete v tématu [protokoly použití Azure Monitor k monitorování HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
 
     > [!NOTE]  
-    > Můžete také nakonfigurovat cluster používat Log Analytics s využitím `Enable-AzureRmHDInsightOperationsManagementSuite` rutiny. Tato rutina vyžaduje následující informace:
+    > Můžete také nakonfigurovat cluster používat protokoly Azure monitoru s využitím `Enable-AzureRmHDInsightOperationsManagementSuite` rutiny. Tato rutina vyžaduje následující informace:
     >
     > * Název clusteru HDInsight.
-    > * ID pracovního prostoru Log Analytics. ID pracovního prostoru můžete najít ve vašem pracovním prostoru Log Analytics.
-    > * Primární klíč pro připojení k Log Analytics. Chcete-li najít primární klíč, otevřete pracovní prostor na webu Azure Portal, vyberte __upřesňující nastavení__ v levé nabídce. Upřesňující nastavení, vyberte __připojené zdroje__>__servery s Linuxem__.
+    > * ID pracovního prostoru pro protokoly Azure monitoru. ID pracovního prostoru můžete najít ve vašem pracovním prostoru Log Analytics.
+    > * Primární klíč pro připojení k log analytics. Chcete-li najít primární klíč, otevřete pracovní prostor na webu Azure Portal, vyberte __upřesňující nastavení__ v levé nabídce. Upřesňující nastavení, vyberte __připojené zdroje__>__servery s Linuxem__.
 
 
 > [!IMPORTANT]  
-> Může trvat přibližně 20 minut, než se data jsou k dispozici pro Log Analytics.
+> Může trvat přibližně 20 minut, než se data jsou k dispozici pro protokoly Azure monitoru.
 
 ## <a name="query-logs"></a>Protokoly dotazů
 
@@ -72,7 +74,7 @@ Postup povolení Log Analytics pro HDInsight je stejný pro všechny clustery HD
  
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Log Analytics najdete v článku [Začínáme s pracovním prostorem Log Analytics](../../log-analytics/log-analytics-get-started.md) dokumentu.
+Další informace o monitorování Azure, najdete v článku [Přehled monitorování Azure](../../log-analytics/log-analytics-get-started.md) dokumentu.
 
 Další informace o práci s využitím Apache Kafka najdete v následujících dokumentech:
 

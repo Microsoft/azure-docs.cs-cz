@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 561982f7a7842ed717044c6709085bbd4621206e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002095"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868625"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
 **Protokolu aktivit Azure** je předplatné protokol, který poskytuje podrobné informace o události na úrovni předplatného, ke kterým došlo v Azure. To zahrnuje celou řadu dat z Azure Resource Manageru provozních dat k aktualizacím na události služby Service Health. Protokol aktivit se dřív označovalo jako "Protokolů auditu" nebo "Provozní protokoly," od události administrativní kategorie sestavy rovina řízení pro vaše předplatná. Použití protokolu aktivit, můžete určit "co, kdo a kdy" veškerých operací (PUT, POST, DELETE) provedených ve prostředků ve vašem předplatném zápisu. Můžete také zjištění stavu operace a další relevantní vlastnosti. Protokol aktivit neobsahuje operace čtení (GET) ani operace pro prostředky, které používají Classic nebo model "RDFE".
 
-![Vs protokoly aktivit jiné typy protokolů ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Vs protokoly aktivit jiné typy protokolů](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 Obrázek 1: Vs protokoly aktivit jiné typy protokolů
 

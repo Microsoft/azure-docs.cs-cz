@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e84c33b35ef7828cc16be4b532ab8406e0236ee3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847792"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876666"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server 
 
@@ -26,9 +26,9 @@ Než začnete, ujistěte se, že rozumíte možnosti zotavení po havárii serve
 
 Mnoho úloh SQL serveru použít jako základ a dá se integrovat s aplikací, jako jsou SharePoint, Dynamics a SAP, implementovat datové služby.  SQL Server se dá nasadit v několika způsoby:
 
-* **Samostatný SQL Server**: SQL Server a všechny databáze jsou hostované na jednom počítači (fyzický nebo virtuální). Pokud virtualizovaný, hostitele clustering slouží pro místní vysokou dostupnost. Vysoká dostupnost na úrovni hosta není implementována.
-* **Převzetí služeb při selhání Clustering instance systému SQL Server (vždy na FCI)**: dva nebo více uzlů se systémem SQL Server instance se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání Windows. Pokud uzel je vypnutý, clusteru můžete předat serveru SQL Server do jiné instance. Toto nastavení se obvykle používá pro implementaci vysoké dostupnosti v primární lokalitě. Toto nasazení nebude chránit proti selhání nebo kvůli výpadku ve vrstvě sdíleného úložiště. Sdílený disk je možné implementovat pomocí iSCSI, fiber channel nebo sdílený soubor vhdx.
-* **SQL skupin dostupnosti Always On**: dva nebo více uzlů se nastavují v sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání.
+* **Standalone SQL Server**: SQL Server a všechny databáze jsou hostované na jednom počítači (fyzický nebo virtuální). Pokud virtualizovaný, hostitele clustering slouží pro místní vysokou dostupnost. Vysoká dostupnost na úrovni hosta není implementována.
+* **SQL Server Failover Clustering instance (vždy pro FCI)**: Dva nebo více uzlů se systémem SQL Server instance se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání Windows. Pokud uzel je vypnutý, clusteru můžete předat serveru SQL Server do jiné instance. Toto nastavení se obvykle používá pro implementaci vysoké dostupnosti v primární lokalitě. Toto nasazení nebude chránit proti selhání nebo kvůli výpadku ve vrstvě sdíleného úložiště. Sdílený disk je možné implementovat pomocí iSCSI, fiber channel nebo sdílený soubor vhdx.
+* **SQL skupin dostupnosti Always On**: Dva nebo více uzlů jsou nastavené ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání.
 
  V tomto článku využívají následující nativní SQL po havárii obnovení technologie pro obnovení databází do vzdálené lokality:
 
@@ -53,7 +53,7 @@ Tyto verze systému SQL Server jsou podporovány pro podporované scénáře:
 * SQL Server 2016 Enterprise a Standard
 * SQL Server 2014 Enterprise a Standard
 * SQL Server 2012 Enterprise a Standard
-* SQL Server 2008 R2 Enterprise a Standard
+* SQL Server 2008 R2 Enterprise and Standard
 
 ### <a name="supported-sql-server-integration"></a>Podporované integrace SQL serveru
 
@@ -61,10 +61,10 @@ Site Recovery je možné integrovat s nativní technologiemi BCDR SQL serveru, k
 
 **Funkce** | **Podrobnosti** | **SQL Server** |
 --- | --- | ---
-**Skupiny dostupnosti Always On** | Více samostatných instancí systému SQL Server běží v clusteru převzetí služeb při selhání, který má více uzlů.<br/><br/>Databáze je možné seskupit do skupiny převzetí služeb při selhání, které je možné zkopírovat (zrcadlení) v instancích systému SQL Server tak, že je potřeba žádné sdílené úložiště.<br/><br/>Poskytuje zotavení po havárii mezi primární lokalitou a jeden nebo více sekundárních lokalit. Dva uzly lze nastavit ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání. | SQL Server 2016, SQL Server 2014 a SQL Server 2012 Enterprise edition
-**Převzetí služeb clusteringu (vždy na FCI)** | SQL Server využívá Windows převzetí služeb při selhání clusteringu pro vysokou dostupnost úloh v místním SQL serveru.<br/><br/>Uzly, které běží instance systému SQL Server se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání. Pokud instance je mimo provoz clusteru převezme služby při selhání do jiné.<br/><br/>Cluster nebude chránit proti selhání a méně výpadků ve sdíleném úložišti. Je možné implementovat pomocí iSCSI, Fibre channel, sdílený disk, nebo sdílené soubory Vhdx. | Verze SQL Server Enterprise Edition<br/><br/>SQL Server Standard edition (omezeno na pouze dva uzly)
+**Skupiny dostupnosti Always On** | Více samostatných instancí systému SQL Server běží v clusteru převzetí služeb při selhání, který má více uzlů.<br/><br/>Databáze je možné seskupit do skupiny převzetí služeb při selhání, které je možné zkopírovat (zrcadlení) v instancích systému SQL Server tak, že je potřeba žádné sdílené úložiště.<br/><br/>Poskytuje zotavení po havárii mezi primární lokalitou a jeden nebo více sekundárních lokalit. Dva uzly lze nastavit ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání. | SQL Server 2016, SQL Server 2014 & SQL Server 2012 Enterprise edition
+**Převzetí služeb clusteringu (vždy na FCI)** | SQL Server využívá Windows převzetí služeb při selhání clusteringu pro vysokou dostupnost úloh v místním SQL serveru.<br/><br/>Uzly, které běží instance systému SQL Server se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání. Pokud instance je mimo provoz clusteru převezme služby při selhání do jiné.<br/><br/>Cluster nebude chránit proti selhání a méně výpadků ve sdíleném úložišti. Je možné implementovat pomocí iSCSI, Fibre channel, sdílený disk, nebo sdílené soubory Vhdx. | SQL Server Enterprise editions<br/><br/>SQL Server Standard edition (omezeno na pouze dva uzly)
 **Zrcadlení (vysokou bezpečnost režim)** | Chrání izolovanou databázi na jednu sekundární kopii. K dispozici v obou vysokou bezpečnost (synchronní) a vysoký výkon (asynchronní) replikace režimy. Nevyžaduje, aby cluster převzetí služeb při selhání. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise všechny edice
-**Samostatný SQL Server** | SQL Server a databáze jsou hostované na jeden server (fyzický nebo virtuální). Hostitele clusterů se používá pro zajištění vysoké dostupnosti, pokud je virtuální server. Bez vysoké dostupnosti úrovni hosta. | Edice Enterprise nebo Standard
+**Standalone SQL Server** | SQL Server a databáze jsou hostované na jeden server (fyzický nebo virtuální). Hostitele clusterů se používá pro zajištění vysoké dostupnosti, pokud je virtuální server. Bez vysoké dostupnosti úrovni hosta. | Edice Enterprise nebo Standard
 
 ## <a name="deployment-recommendations"></a>Doporučení pro nasazení
 
@@ -76,7 +76,7 @@ Tato tabulka shrnuje našimi doporučeními k integraci technologiemi BCDR SQL s
 || Enterprise |Skupiny dostupnosti AlwaysOn pro vysokou dostupnost |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn | |
 || Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek | |
 || Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery | |
-| SQL Server 2008 R2 nebo 2008 |Enterprise nebo Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek |
+| SQL Server 2008 R2 or 2008 |Enterprise nebo Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek |
 || Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery | |
 | SQL Server (libovolná verze) |Enterprise nebo Standard |Instance clusteru převzetí služeb při selhání – DTC aplikace |Replikace služby Site Recovery |Nepodporuje se |
 
@@ -116,7 +116,7 @@ SQL Always On nenabízí nativní podporu převzetí služeb při selhání test
 
 1. Před aktivací převzetí služeb při selhání testů v plánu obnovení, obnovení virtuálního počítače ze zálohy pořízené v předchozím kroku.
 
-    ![Obnovení z Azure Backup ](./media/site-recovery-sql/restore-from-backup.png)
+    ![Obnovení z Azure Backup](./media/site-recovery-sql/restore-from-backup.png)
 
 1. [Vynucení kvora](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) ve virtuálním počítači obnovení ze zálohy.
 
@@ -130,9 +130,9 @@ SQL Always On nenabízí nativní podporu převzetí služeb při selhání test
 
 1. Vytvoření load balanceru úrovně s jednou z IP vytvořené v rámci front-endový fond IP odpovídající každé naslouchacího procesu skupiny dostupnosti a virtuální počítač SQL do back-endový fond.
 
-     ![Vytvoření Load balanceru úrovně – IP front-endový fond ](./media/site-recovery-sql/create-load-balancer1.png)
+     ![Vytvoření Load balanceru úrovně – IP front-endový fond](./media/site-recovery-sql/create-load-balancer1.png)
 
-    ![Vytvoření Load balanceru úrovně – back-endový fond ](./media/site-recovery-sql/create-load-balancer2.png)
+    ![Vytvoření Load balanceru úrovně – back-endový fond](./media/site-recovery-sql/create-load-balancer2.png)
 
 1. Proveďte testovací převzetí služeb při selhání plánu obnovení.
 
@@ -179,7 +179,7 @@ U clusteru se systémem SQL Server Standard edition nebo SQL Server 2008 R2 dopo
 * Pokud aplikace využívá distribuované transakce doporučujeme nasadíte [Site Recovery pomocí replikace sítě SAN](site-recovery-vmm-san.md) pro prostředí Hyper-V nebo [server VMware/fyzických prostředků do VMware](site-recovery-vmware-to-vmware.md) pro prostředí VMware.
 * Pro aplikace bez DTC použijte výše uvedené přístup k obnově clusteru jako samostatný server s využitím místní vysokou bezpečnost zrcadlení databáze.
 
-### <a name="on-premises-to-azure"></a>On-premises do Azure
+### <a name="on-premises-to-azure"></a>Z místního nasazení do služby Azure
 
 Site Recovery neposkytuje hostovaného clusteru podporu při replikaci do Azure. SQL Server také neposkytuje řešení zotavení po havárii s nízkými náklady pro edici Standard. V tomto scénáři doporučujeme chránit místní cluster serveru SQL Server do samostatného systému SQL Server a obnovení v Azure.
 

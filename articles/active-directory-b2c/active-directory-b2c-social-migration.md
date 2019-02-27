@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4d4acecbbb90fff7865902a3371d282f1d402374
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6f857e926343c4c3c26d746134bbb9d94754c12
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662886"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866007"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrace uživatelů se sociálními identitami
 Při plánování migrace vašeho zprostředkovatele identity do Azure AD B2C, budete také muset migrace uživatelů se sociálními identitami. Tento článek vysvětluje, jak provést migraci existujících účtů sociálních identit, jako například: Facebook, LinkedIn, Microsoft nebo Google účty Azure AD B2C. Tento článek se týká také federované identity, ale jsou méně běžné tyto migrace.
@@ -139,7 +139,7 @@ Název vystavitele nebo název zprostředkovatele identit je nakonfigurované v 
 1. Přihlaste se pomocí jeden z účtů v sociálních sítích
 2. Z tokenu JWT, zkopírujte `sub` hodnotu. `sub` Obvykle obsahuje ID objektu uživatele v Azure AD B2C. Nebo z webu Azure portal, otevřete vlastnosti uživatele a zkopírujte ID objektu.
 3. Otevřít [Azure AD Graph Exploreru](https://graphexplorer.azurewebsites.net)
-4. Přihlaste se pomocí svého správce. Ne
+4. Přihlaste se pomocí svého správce.
 5. Spusťte následující požadavek GET. Nahraďte ID uživatele, který jste zkopírovali userObjectId. **GET** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 6. Vyhledejte `userIdentities` prvek uvnitř šablony JSON návrat z Azure AD B2C.
 7. [Volitelné] Můžete také dekódování `issuerUserId` hodnotu.

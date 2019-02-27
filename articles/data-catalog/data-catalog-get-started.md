@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5513948a6611e93833c7e70fa4e5667b3901a9f3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238484"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880219"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Začínáme s Azure Data Catalog
 Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém pro registraci a zjišťování podnikových datových assetů. Podrobný přehled naleznete v části [Co je Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -82,7 +82,7 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
     ![Azure Data Catalog – zobrazení katalogu v seznamu](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. Klikněte na katalog, který jste vytvořili. Na portálu se vám zobrazí okno **Data Catalog**.
    
-   ![Azure Data Catalog – okno na portálu ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+   ![Azure Data Catalog – okno na portálu](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
 4. Můžete zobrazit vlastnosti katalogu dat a aktualizovat je. Můžete například kliknout na **Cenová úroveň** a změnit edici.
    
     ![Azure Data Catalog – cenová úroveň](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
@@ -144,7 +144,7 @@ V tomto cvičení použijete registrační nástroj k registraci datových asset
       ![Azure Data Catalog – registrované objekty](media/data-catalog-get-started/data-catalog-registered-objects.png)
    9. Registrované objekty zdrojů dat zobrazíte kliknutím na tlačítko **Zobrazit portál**. Zkontrolujte na portálu Azure Data Catalog, jestli se vám zobrazují všechny čtyři tabulky a databáze v zobrazení mřížky.
       
-      ![Objekty na portálu Azure Data Catalog ](media/data-catalog-get-started/data-catalog-view-portal.png)
+      ![Objekty na portálu Azure Data Catalog](media/data-catalog-get-started/data-catalog-view-portal.png)
 
 V tomto cvičení jste zaregistrovali objekty z ukázkové databáze Adventure Works, aby je uživatelé ve vaší organizaci mohli snadno zjistit. V dalším cvičení se dozvíte, jak zjistit registrované datové assety.
 

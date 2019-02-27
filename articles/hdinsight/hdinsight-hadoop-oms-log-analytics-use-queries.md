@@ -1,6 +1,6 @@
 ---
-title: Dotazování Azure Log Analytics k monitorování clusterů Azure HDInsight
-description: Zjistěte, jak spouštět dotazy na Azure Log Analytics k monitorování úlohy spuštěné v clusteru služby HDInsight.
+title: Azure Monitor dotazů zaznamená do monitorování clusterů Azure HDInsight
+description: Zjistěte, jak spouštět dotazy na protokoly Azure monitoru a monitorovat úlohy spuštěné v clusteru služby HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,26 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e1187867fc9da9a89f92d7b321c8703ee7a8a407
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386498"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889252"
 ---
-# <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Dotazování Azure Log Analytics k monitorování clusterů HDInsight
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Zaznamená dotaz Azure Monitor k monitorování clusterů HDInsight
 
-Další informace o tom, jak pomocí Azure Log Analytics k monitorování clusterů Azure HDInsight některé základní scénáře:
+Další informace o tom, jak použít protokoly Azure Monitor k monitorování clusterů Azure HDInsight některé základní scénáře:
 
 * [Analyzovat metriky clusteru HDInsight](#analyze-hdinsight-cluster-metrics)
 * [Vyhledat konkrétní zprávy protokolu](#search-for-specific-log-messages)
 * [Vytvořit výstrahy pro události](#create-alerts-for-tracking-events)
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Musíte mít nakonfigurovaný clusteru HDInsight pro použití služby Azure Log Analytics a přidá do pracovního prostoru řešení pro správu Log Analytics specifických pro cluster HDInsight. Pokyny najdete v tématu [pomocí Azure Log Analytics s clustery HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
+* Musíte mít nakonfigurovaný cluster HDInsight používat protokoly Azure monitoru a přidá protokoly Azure monitoru specifických pro cluster HDInsight řešení do pracovního prostoru monitorování. Pokyny najdete v tématu [protokolů pomocí Azure monitoru s clustery HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>Analyzovat metriky clusteru HDInsight
 
@@ -34,7 +36,7 @@ Zjistěte, jak hledat konkrétní metriky pro váš cluster HDInsight.
 
 1. Otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
 2. Vyberte **prohledávání protokolů** dlaždici.
-3. Zadejte následující dotaz do vyhledávacího pole vyhledejte všechny metriky pro všechny dostupné metriky pro všechny clustery HDInsight umožňují používat službu Azure Log Analytics a pak vyberte **spustit**.
+3. Zadejte následující dotaz do vyhledávacího pole vyhledejte všechny metriky pro všechny dostupné metriky pro všechny clustery HDInsight umožňují používat protokoly Azure monitoru a pak vyberte **spustit**.
 
         search *
 
@@ -67,7 +69,7 @@ Zjistěte, jak se vás pod rouškou chybové zprávy během konkrétního časov
 
 1. Otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
 2. Vyberte **prohledávání protokolů** dlaždici.
-3. Zadejte následující dotaz pro vyhledání všech chybových zpráv pro všechny clustery HDInsight umožňují použít Azure Log Analytics a pak vyberte **spustit**. 
+3. Zadejte následující dotaz pro vyhledání všech chybových zpráv pro všechny clustery HDInsight umožňují použít protokoly Azure monitoru a pak vyberte **spustit**. 
 
          search "Error"
 
@@ -117,11 +119,11 @@ Chcete-li upravit nebo odstranit existující výstrahy:
 3. Vyberte výstrahu, kterou chcete upravit nebo odstranit.
 4. Máte následující možnosti: **Uložit**, **zahodit**, **zakázat**, a **odstranit**.
 
-    ![Odstranění upozornění úpravy HDInsight Log Analytics](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![Upravit upozornění odstranit protokoly sledování Azure HDInsight](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-Další informace najdete v tématu [práce s pravidly upozornění v Log Analytics](../log-analytics/log-analytics-alerts-creating.md).
+Další informace najdete v tématu [vytvoření, zobrazení a Správa upozornění na metriku pomocí Azure monitoru](../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Práce s Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
-* [Vytvoření pravidla upozornění v Log Analytics](../log-analytics/log-analytics-alerts-creating.md)
+* [OMS Log Analytics: Návrhář zobrazení](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru](../azure-monitor/platform/alerts-metric.md)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28ddecb20944893b23b54775e22f19644f0afbf0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f14d29ef3d03a0899fe208d801e127ecfc28168b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816500"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889133"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Správa balíčků Python 2 ve službě Azure Automation
 
@@ -40,7 +40,7 @@ Azure automation není během procesu importu vyřešení závislostí pro balí
 
 ### <a name="manually-download"></a>Ručně stáhnout.
 
-Na Windows 64-bit počítače s [python2.7](https://www.python.org/download/releases/2.7/) a [pip](https://pip.pypa.io/stable/installing/) nainstalovali, spusťte následující příkaz se stáhnout balíček a jeho závislosti:
+Na Windows 64-bit počítače s [python2.7](https://www.python.org/downloads/release/latest/python2) a [pip](https://pip.pypa.io/stable/installing/) nainstalovali, spusťte následující příkaz se stáhnout balíček a jeho závislosti:
 
 ```
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>

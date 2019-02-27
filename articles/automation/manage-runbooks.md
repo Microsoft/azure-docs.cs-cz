@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da3b09998d163ffcc16bfcbbf9f516467dd3311d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 5bb52e0547ed9bc18d67370ffb9db35942212aab
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418541"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887586"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků ve službě Azure Automation
 
-Sady runbook můžete přidat do Azure Automation. buď [vytvořením nového](#creating-a-new-runbook) nebo importováním existujícího runbooku ze souboru nebo [Galerie Runbooků](automation-runbook-gallery.md). Tento článek obsahuje informace o vytváření a import runbooků ze souboru.  Můžete získat všechny podrobnosti o přístupu k komunity runbooky a moduly v [Galerie modulů a Runbooků Azure Automation](automation-runbook-gallery.md).
+Sady runbook můžete přidat do Azure Automation. buď [vytvořením nového](#create-a-runbook) nebo importováním existujícího runbooku ze souboru nebo [Galerie Runbooků](automation-runbook-gallery.md). Tento článek obsahuje informace o vytváření a import runbooků ze souboru.  Můžete získat všechny podrobnosti o přístupu k komunity runbooky a moduly v [Galerie modulů a Runbooků Azure Automation](automation-runbook-gallery.md).
 
 ## <a name="create-a-runbook"></a>Vytvoření runbooku
 
@@ -65,7 +65,7 @@ Následující postup slouží k importu souboru skriptu do služby Azure Automa
 5. Pokud **název** pole je povolená, pak máte možnost ho změnit.  Název runbooku musí začínat písmenem a může obsahovat písmena, číslice, podtržítka a pomlčky.
 6. [Typ runbooku](automation-runbook-types.md) se vybere automaticky, ale můžete změnit typ po provedení příslušných omezení v úvahu. 
 7. Nová sada runbook se zobrazí v seznamu sad runbook pro účet Automation.
-8. Je nutné [Publikovat sadu runbook](#publishing-a-runbook) než budete moct spustit.
+8. Je nutné [Publikovat sadu runbook](#publish-a-runbook) než budete moct spustit.
 
 > [!NOTE]
 > Jakmile dokončíte import grafický runbook nebo grafický runbook pracovního postupu Powershellu, máte možnost převést na jiný typ, pokud je potřeba. Nelze převést na textový sady runbook.
@@ -89,7 +89,7 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Testování runbooku
 
-Při testování sady runbook [koncept](#publishing-a-runbook) spuštění a jsou dokončeny všechny akce, které aplikace provádí. Nevytvoří se žádná historie úlohy, ale [výstup](automation-runbook-output-and-messages.md#output-stream) a [upozornění a chyby](automation-runbook-output-and-messages.md#message-streams) datové proudy jsou zobrazeny v testovací podokno výstup. Zprávy [podrobné Stream](automation-runbook-output-and-messages.md#message-streams) se zobrazují v podokně výstupu pouze tehdy, pokud [proměnnou $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) je nastavena na pokračovat.
+Při testování sady runbook [koncept](#publish-a-runbook) spuštění a jsou dokončeny všechny akce, které aplikace provádí. Nevytvoří se žádná historie úlohy, ale [výstup](automation-runbook-output-and-messages.md#output-stream) a [upozornění a chyby](automation-runbook-output-and-messages.md#message-streams) datové proudy jsou zobrazeny v testovací podokno výstup. Zprávy [podrobné Stream](automation-runbook-output-and-messages.md#message-streams) se zobrazují v podokně výstupu pouze tehdy, pokud [proměnnou $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) je nastavena na pokračovat.
 
 I když je právě spuštěna verze konceptu, sada runbook stále normálně spouští a dělá všechny akce s prostředky v prostředí. Z tohoto důvodu jste měli runbooky testovat jenom o neprodukční prostředky.
 

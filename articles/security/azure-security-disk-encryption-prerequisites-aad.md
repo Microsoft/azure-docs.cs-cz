@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 76e25c04afbce215028699d54cb6022f0caeced5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: aa4c4beacd6f6755c1e5ce56f70dcf5a74166c80
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118237"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880236"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -232,7 +232,7 @@ Spusťte následující příkazy, získat a používat [modulu Azure AD PowerSh
 
 ### <a name="bkmk_ADappCLI"></a> Nastavení aplikace Azure AD a služby instančního objektu pomocí Azure CLI
 
-Můžete spravovat vaše instančních objektů s použitím rozhraní příkazového řádku Azure [az ad sp](/cli/azure/ad/sp) příkazy. Další informace najdete v tématu [vytvoření instančního objektu Azure ](/cli/azure/create-an-azure-service-principal-azure-cli).
+Můžete spravovat vaše instančních objektů s použitím rozhraní příkazového řádku Azure [az ad sp](/cli/azure/ad/sp) příkazy. Další informace najdete v tématu [vytvoření instančního objektu Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Vytvořte nový instanční objekt.
@@ -293,7 +293,7 @@ Použití [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) n
 
 ![Azure Key Vault kryptografické operace/v – zabalit klíč](./media/azure-security-disk-encryption/keyvault-portal-fig3.png)
 
-![Azure Key Vault tajný klíč oprávnění – nastavení ](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
+![Azure Key Vault tajný klíč oprávnění – nastavení](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
 
 ## <a name="bkmk_KVper"></a> Nastavení trezoru klíčů pokročilé zásady přístupu
 Platforma Azure potřebuje přístup k šifrování klíčů nebo tajných klíčů v trezoru klíčů, aby byly k dispozici pro virtuální počítač pro spuštění a dešifrování svazky. Povolit šifrování disku v trezoru klíčů nebo nasazení se nezdaří.  

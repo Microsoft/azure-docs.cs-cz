@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 040fac6cd4feb60b6635ba0868634f16dd9f146f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733114"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881718"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizujte náklady zřízenou propustnost v databázi Azure Cosmos DB
 
@@ -159,7 +159,7 @@ Následující kroky umožňují vaše řešení byla vysoce škálovatelný a h
 
 2. Jedním ze způsobů pro odhad množství vyhrazenou propustností, které jsou požadovány příslušnou aplikací je k zaznamenání požadavku jednotky RU poplatky se spouštěním typických operací proti reprezentativní kontejneru Azure Cosmos nebo databáze, které používá vaše aplikace a potom odhadněte počet operací, které očekáváte, že pokud chcete provést každou sekundu. Nezapomeňte pro měření a zahrnují typické dotazy a také jejich použití. Další informace tom, jak odhadnout náklady za RU dotazů prostřednictvím kódu programu nebo použití portálu najdete v tématu [optimalizovat náklady na dotazy](online-backup-and-restore.md). 
 
-3. Dalším způsobem, jak získat operací a náklady v RU, je povolení Log Analytics, vám dá přehled/doby provádění operací a požadavku poplatky. Azure Cosmos DB poskytuje zátěž žádostí pro všechny operace, takže každý poplatek za operaci můžete ukládat zpět z odpovědi a pak použije k analýze. 
+3. Jiný způsob, jak získat operací a náklady v jednotky ru je tím, že protokoly Azure monitoru, které vám poskytne přehled/doby provádění operací a požadavku poplatky. Azure Cosmos DB poskytuje zátěž žádostí pro všechny operace, takže každý poplatek za operaci můžete ukládat zpět z odpovědi a pak použije k analýze. 
 
 4. Dá se pružně škálovat nahoru a dolů zřízená propustnost podle potřeby tak, aby vyhovovaly vašim potřebám pracovního vytížení. 
 

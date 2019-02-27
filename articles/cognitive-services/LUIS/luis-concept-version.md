@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: b363f68b625a6f0987e58609477f51c7098423bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874076"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870648"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Pochopit, jak a kdy používat verzi služby LUIS
 
@@ -35,7 +35,7 @@ K [nastavit verzi](luis-how-to-manage-versions.md#set-active-version) jako aktiv
 
 Název aktuálně aktivní verze se zobrazí v horní, levý panel za názvem aplikace. 
 
-[ ![Změnit verzi rozhraní active](./media/luis-concept-version/version-in-nav-bar-inline.png) ](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![Změnit verzi rozhraní active](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
 ## <a name="versions-and-publishing-slots"></a>Verze a publikování sloty
 Publikujete do fáze a produktu sloty. Každý slot může mít jinou verzi nebo stejnou verzi. To je užitečné pro ověření změn mezi verzemi modelu přes koncový bod, který je k dispozici pro roboty nebo jiné služby LUIS volání aplikace. 

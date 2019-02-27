@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
-ms.openlocfilehash: 9da51d40c4a94af9bdcf16b48302e8eb2b60eb2f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ac25ad0e43930555153abdba19bb81baaee40305
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807707"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879233"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -27,8 +27,8 @@ Ujistěte se, že váš cluster běží vždy s podporovanou verzí Service Fabr
 
 Přečtěte si následující dokumenty na podrobnosti o tom, jak zajistit cluster spuštěna podporovaná verze Service Fabric.
 
-- [Upgrade verze Service Fabric v clusteru Azure ](service-fabric-cluster-upgrade.md)
-- [Upgrade Service Fabric verze na serveru windows samostatného clusteru ](service-fabric-cluster-upgrade-windows-server.md)
+- [Upgrade verze Service Fabric v clusteru Azure](service-fabric-cluster-upgrade.md)
+- [Upgrade Service Fabric verze na serveru windows samostatného clusteru](service-fabric-cluster-upgrade-windows-server.md)
 
 Tady je seznam podporovaných verzích Service Fabric a jejich podpora koncové datum.
 

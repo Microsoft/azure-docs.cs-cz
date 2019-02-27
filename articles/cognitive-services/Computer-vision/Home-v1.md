@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 35002ccfc294b59a13e6826b4ca75a1ab6c68b62
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 812f957ffe2a3f24ead4ef0fe66a25c3cfd17995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870295"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866908"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co je rozhraní API pro počítačové zpracování obrazu verze 1.0?
 
@@ -29,7 +29,7 @@ Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývoj�
 * Označit Image na základě obsahu.
 * Kategorizace obrázků.
 * Určete typ a kvalitu imagí.
-* [Můžou zjišťovat lidské tváře a získávat jejich souřadnice.](#Faces)
+* [Rozpoznávejte lidské tváře a vrátit jejich souřadnice.](#Faces)
 * Rozpoznávání obsahu specifického pro doménu.
 * Generovat popisy obsahu.
 * Optické rozpoznávání znaků na slouží k identifikaci tištěný text nalezeno v obrázcích.

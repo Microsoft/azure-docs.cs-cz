@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 93beef5702df9b4cf0a51a01fb286a3f023f9839
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892554"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876615"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Zabezpečení rámce: Citlivá Data | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Hranice vztahů důvěryhodnosti počítače** | <ul><li>[Ujistěte se, že binární soubory jsou zakódovány, pokud obsahují citlivé informace](#binaries-info)</li><li>[Vezměte v úvahu, že pomocí šifrované File System (EFS) se používá k ochraně důvěrných údajů konkrétního uživatele](#efs-user)</li><li>[Ujistěte se, že citlivá data uložená v aplikaci na systém souborů je šifrovaná](#filesystem)</li></ul> | 
 | **Webové aplikace** | <ul><li>[Ujistěte se, že není citlivý obsah do mezipaměti, v prohlížeči](#cache-browser)</li><li>[Šifrování oddíly konfiguračních souborů webové aplikace, které obsahují citlivá data](#encrypt-data)</li><li>[Explicitně zakážete automatické dokončování atributu HTML ve formulářích citlivé a vstupy](#autocomplete-input)</li><li>[Ujistěte se, že je zakryté hvězdičkami citlivá data zobrazí na obrazovce pro uživatele](#data-mask)</li></ul> | 
-| **Database** | <ul><li>[Maskování dynamických dat implementují omezení citlivá data bez ohrožení privilegovaných uživatelů](#dynamic-users)</li><li>[Ujistěte se, že hesla jsou uložena ve formátu hashe](#salted-hash)</li><li>[ Ujistěte se, že je zašifrovaný citlivá data v databázi sloupce](#db-encrypted)</li><li>[Ujistěte se, že je povoleno šifrování databáze (TDE)](#tde-enabled)</li><li>[Ujistěte se, že jsou šifrovaná zálohování databáze](#backup)</li></ul> | 
+| **Database** | <ul><li>[Maskování dynamických dat implementují omezení citlivá data bez ohrožení privilegovaných uživatelů](#dynamic-users)</li><li>[Ujistěte se, že hesla jsou uložena ve formátu hashe](#salted-hash)</li><li>[Ujistěte se, že je zašifrovaný citlivá data v databázi sloupce](#db-encrypted)</li><li>[Ujistěte se, že je povoleno šifrování databáze (TDE)](#tde-enabled)</li><li>[Ujistěte se, že jsou šifrovaná zálohování databáze](#backup)</li></ul> | 
 | **Webové rozhraní API** | <ul><li>[Ujistěte se, že citlivá data, které jsou relevantní pro webové rozhraní API není uložený v úložišti v prohlížeči](#api-browser)</li></ul> | 
 | Azure Documentdb | <ul><li>[Šifrovat citlivá data uložená ve službě Azure Cosmos DB](#encrypt-docdb)</li></ul> | 
 | **Hranice vztahů důvěryhodnosti virtuálních počítačů Azure IaaS** | <ul><li>[Použití Azure Disk Encryption pro šifrování disků, které jsou používány virtuálními počítači](#disk-vm)</li></ul> | 
@@ -34,7 +34,7 @@ ms.locfileid: "55892554"
 | **Dynamics CRM** | <ul><li>[Provádět modelování zabezpečení a použití obchodní jednotky nebo týmy vyžadováno](#modeling-teams)</li><li>[Minimalizovat přístup ke sdílení funkcí na důležité entity](#entities)</li><li>[Naučím uživatele na rizicích spojených s postupy vhodné zabezpečení a funkce sdílení Dynamics CRM](#good-practices)</li><li>[Zahrnout pravidlo standardů vývoje proscribing zobrazující podrobnosti konfigurace v Správa výjimek](#exception-mgmt)</li></ul> | 
 | **Azure Storage** | <ul><li>[Použijte šifrování služby Azure Storage (SSE) pro Data v klidovém stavu (Preview)](#sse-preview)</li><li>[Šifrování na straně klienta používá k ukládání citlivých dat ve službě Azure Storage](#client-storage)</li></ul> | 
 | **Mobilního klienta** | <ul><li>[Šifrování citlivé nebo identifikovatelné osobní údaje data zapsaná do místního úložiště telefony](#pii-phones)</li><li>[Před distribucí koncovým uživatelům obfuskaci generovaný binární soubory](#binaries-end)</li></ul> | 
-| **WCF** | <ul><li>[ Typ clientCredentialType nastaven na certifikátu nebo Windows](#cert)</li><li>[Není povolen režim zabezpečení WCF](#security)</li></ul> | 
+| **WCF** | <ul><li>[Typ clientCredentialType nastaven na certifikátu nebo Windows](#cert)</li><li>[Není povolen režim zabezpečení WCF](#security)</li></ul> | 
 
 ## <a id="binaries-info"></a>Ujistěte se, že binární soubory jsou zakódovány, pokud obsahují citlivé informace
 

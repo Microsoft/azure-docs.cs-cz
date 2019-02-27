@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 924befd2ec1949973123acc9b7c7d1b89e707e3e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6dad4fc98dccc5c8db22019fdc548efdf7165d9e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245622"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888742"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -252,4 +252,5 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus vaší infrastruktury Azure stacku. **Stažení položek z obou Puppet Marketplace.** | Puppet |
 | ![Quest rychlého obnovení](media/azure-stack-marketplace-azure-items/quest.png) | [Quest rychlého obnovení Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rychlé obnovení rozšířené ochrany dat sjednocuje zálohování, replikace a obnovení v jediném řešení softwaru snadným ovládáním. | Quest softwaru |
 | ![SUSE správce 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE správce 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Správa infrastruktury ve své třídě nejlepší open source. | SUSE |
+| ![CipherTrust Cloud Key Manager](media/azure-stack-marketplace-azure-items/cckm.png) | [Správce klíčů CipherTrust cloudu](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Využití Microsoft Azure a jiný poskytovatel cloudu rozhraní API přineste si vlastní klíč (BYOK), Správce klíčů CipherTrust cloudu snižuje složitost správy klíčů a provozní náklady tím, že ovládací prvek multicloud životního cyklu šifrovacích klíčů s centralizované zajištění viditelnosti a správy. | ESecurity společnosti Thales |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [Kontinuita podnikových procesů ZeroDown Software jako služba](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | Firmách nepřetržitý přístup ke své firemní data prostřednictvím jejich obchodní kontinuity podnikových procesů poskytuje technologie ZeroDown® Software jako služba (BCaaS)™ architektury, ochranu aplikací a transakce, pokud dojde k přerušení sítě, který se normálně cripple podniku. | ZeroDown Software |

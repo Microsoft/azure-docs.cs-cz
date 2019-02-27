@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bbede01844f20c0240b154fd319b818a43463131
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: efa8f4fc604440b8c1396aa654834ce83a41844e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823356"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875807"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure do jiné
 > * [Příprava zdrojové virtuální počítače](#prepare-the-source-vms)
 > * [Připravte cílové oblasti](#prepare-the-target-region)
 > * [Kopírování dat do cílové oblasti](#copy-data-to-the-target-region)
-> * [Otestujte konfiguraci ](#test-the-configuration)
-> * [Provedení přesunu ](#perform-the-move-to-the-target-region-and-confirm)
-> * [Zahodit prostředků ve zdrojové oblasti ](#discard-the-resource-in-the-source-region)
+> * [Otestujte konfiguraci](#test-the-configuration)
+> * [Provedení přesunu](#perform-the-move-to-the-target-region-and-confirm)
+> * [Zahodit prostředků ve zdrojové oblasti](#discard-the-resource-in-the-source-region)
 
 > [!IMPORTANT]
 > Tento dokument vás přesunout virtuální počítače Azure z jedné oblasti do jiného, jak je, pokud váš požadavek se má zvýšit dostupnost vaší infrastruktury přesun virtuálních počítačů do zóny dostupnosti, podívejte se na kurz tady.
@@ -73,7 +73,7 @@ V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure do jiné
 
     - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Veřejná IP adresa ](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Veřejná IP adresa](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
     
     Ostatními síťovými součástmi, najdete v části sítě [dokumentaci.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
 

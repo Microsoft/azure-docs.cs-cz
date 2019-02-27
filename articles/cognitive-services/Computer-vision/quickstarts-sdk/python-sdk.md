@@ -8,24 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 02/26/2019
 ms.author: pafarley
-ms.openlocfilehash: afe8081032e0358e8e0653e9a2b6aad30ad496a9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: d14b9c88b447583eedc8b50f4f9acf80ae4e3c75
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651222"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889626"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services pro počítačové zpracování obrazu SDK pro Python
 
-Služba počítačového zpracování obrazu umožňuje vývojářům používat pokročilé algoritmy, které zpracovávají obrázky a vrací informace. Algoritmy pro zpracování obrazu počítače analyzovat obsah image různými způsoby v závislosti na vizuální funkce, které vás zajímají. Například pro počítačové zpracování obrazu může určují, jestli obrázek obsahuje obsah pro dospělé nebo pikantního, vyhledání všech tváří v obrázku, získat rukou nebo tisk textu. Tato služba funguje s image oblíbené formáty, jako je například JPEG a PNG. 
+Služba počítačového zpracování obrazu umožňuje vývojářům používat pokročilé algoritmy, které zpracovávají obrázky a vrací informace. Algoritmy pro zpracování obrazu počítače analyzovat obsah image různými způsoby v závislosti na vizuální funkce, které vás zajímají. 
 
-V aplikaci můžete použít pro počítačové zpracování obrazu:
+* [Analýza obrázku](#analyze-an-image)
+* [Seznam domén předmětu GET](#get-subject-domain-list)
+* [Analýza obrázku podle domény](#analyze-an-image-by-domain)
+* [Získat textový popis obrázku](#get-text-description-of-an-image)
+* [Získání rukou psaný text z obrázků](#get-text-from-image)
+* [Vygenerování thumbnail](#generate-thumbnail)
 
-- Díky analýze obrázků za vytváření přehledů
-- Rozbalte text z obrázků
-- Generování miniatur
+Další informace o této službě najdete v tématu [co je pro počítačové zpracování obrazu?] [computervision_docs].
 
 Hledáte další dokumentaci?
 
@@ -34,11 +37,21 @@ Hledáte další dokumentaci?
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si bezplatný účet][azure_sub]
-* Azure [prostředků pro počítačové zpracování obrazu][computervision_resource]
 * [Python 3.6 +][python]
+* Bezplatné [klíč pro počítačové zpracování obrazu] [ computervision_resource] a přidruženou oblastí. Tyto hodnoty budete potřebovat při vytváření instance třídy [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta. Použijte jednu z následujících metod k získání těchto hodnot. 
 
-Pokud budete potřebovat účet rozhraní API pro počítačové zpracování obrazu, můžete ji vytvořit s tímto [rozhraní příkazového řádku Azure] [ azure_cli] příkaz:
+### <a name="if-you-dont-have-an-azure-subscription"></a>Pokud nemáte předplatné Azure
+
+Vytvořit bezplatný klíč platný po dobu 7 dní s **vyzkoušet** prostředí. Když se klíč, zkopírujte název klíče a oblast. Budete ho potřebovat k [vytvoření klienta](#create-client).
+
+Po vytvoření klíče zachovat následující:
+
+* Hodnotu klíče: řetězec 32 znaků ve formátu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 
+* Klíčové oblasti: subdoménu adresu URL koncového bodu https://**westcentralus**. api.cognitive.microsoft.com
+
+### <a name="if-you-have-an-azure-subscription"></a>Pokud máte předplatné Azure
+
+Pokud budete potřebovat účet rozhraní API pro počítačové zpracování obrazu, nejjednodušším způsobem, jak vytvořit v rámci vašeho předplatného je používání následujících [rozhraní příkazového řádku Azure] [ azure_cli] příkazu. Musíte zvolit název skupiny prostředků, například "my-cogserv-group" a název prostředku pro zpracování obrazu počítače, jako je například "my--pro zpracování obrazu – prostředku v počítači". 
 
 ```Bash
 RES_REGION=westeurope 
@@ -54,18 +67,20 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="installation"></a>Instalace
+<!--
+## Installation
 
-Instalace Azure Cognitive Services počítače Vision SDK s [pip][pip], Volitelně můžete v rámci [virtuální prostředí][venv].
+Install the Azure Cognitive Services Computer Vision SDK with [pip][pip], optionally within a [virtual environment][venv].
 
-### <a name="configure-a-virtual-environment-optional"></a>Nakonfigurujte virtuální prostředí (volitelné)
+### Configure a virtual environment (optional)
 
-I když není nutné, abyste mohli základní systém a izolované od sebe, pokud používáte prostředí Azure SDK [virtuální prostředí][virtualenv]. Spusťte následující příkazy ke konfiguraci a potom zadejte do virtuálního prostředí s [venv][venv], jako například `cogsrv-vision-env`:
+Although not required, you can keep your base system and Azure SDK environments isolated from one another if you use a [virtual environment][virtualenv]. Execute the following commands to configure and then enter a virtual environment with [venv][venv], such as `cogsrv-vision-env`:
 
 ```Bash
 python3 -m venv cogsrv-vision-env
 source cogsrv-vision-env/bin/activate
 ```
+-->
 
 ### <a name="install-the-sdk"></a>Instalace sady SDK
 
@@ -81,9 +96,20 @@ Po vytvoření prostředku pro počítačové zpracování obrazu, budete potře
 
 Tyto hodnoty použít při vytváření instance [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta. 
 
-### <a name="get-credentials"></a>Získat přihlašovací údaje
+<!--
 
-Použití [rozhraní příkazového řádku Azure] [ cloud_shell] fragment k naplnění dvou proměnných prostředí s účtem pro počítačové zpracování obrazu **oblasti** a jeden z jeho **klíče**(můžete také najít tyto hodnoty [webu Azure portal][azure_portal]). Fragment kódu je ve formátu pro prostředí Bash.
+For example, use the Bash terminal to set the environment variables:
+
+```Bash
+ACCOUNT_REGION=<resourcegroup-name>
+ACCT_NAME=<computervision-account-name>
+```
+
+### For Azure subscription usrs, get credentials for key and region
+
+If you do not remember your region and key, you can use the following method to find them. If you need to create a key and region, you can use the method for [Azure subscription holders](#if-you-have-an-azure-subscription) or for [users without an Azure subscription](#if-you-dont-have-an-azure-subscription).
+
+Use the [Azure CLI][cloud_shell] snippet below to populate two environment variables with the Computer Vision account **region** and one of its **keys** (you can also find these values in the [Azure portal][azure_portal]). The snippet is formatted for the Bash shell.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -101,44 +127,25 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
     --query key1 \
     --output tsv)
 ```
+-->
 
 ### <a name="create-client"></a>Vytvoření klienta
 
-Až `ACCOUNT_REGION` a `ACCOUNT_KEY` proměnné prostředí, můžete vytvořit [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta.
+Vytvořte [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta. Změňte hodnoty oblasti a klíč v následujícím příkladu kódu na vaše vlastní hodnoty.
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-import os
-region = os.environ['ACCOUNT_REGION']
-key = os.environ['ACCOUNT_KEY']
+region = "westcentralus"
+key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 credentials = CognitiveServicesCredentials(key)
 client = ComputerVisionAPI(region, credentials)
 ```
 
-## <a name="usage"></a>Využití
-
-Jakmile jste inicializován [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta, můžete:
-
-* Analýza obrázku: Obrázek pro určité funkce, třeba tváří, barvy, značky můžete analyzovat.   
-* Generování miniatur: Vytvoření vlastní image ve formátu JPEG chcete použít jako miniatura původní bitové kopie.
-* Získáte popis obrázku: Získáte popis image založenou na její předmět domény. 
-
-Další informace o této službě najdete v tématu [co je pro počítačové zpracování obrazu?] [computervision_docs].
-
-## <a name="examples"></a>Příklady
-
-Některé z nejčastějších úloh pro počítačové zpracování obrazu, včetně pokrývající několik fragmentů kódu naleznete v následujících částech:
-
-* [Analýza obrázku](#analyze-an-image)
-* [Seznam domén předmětu GET](#get-subject-domain-list)
-* [Analýza obrázku podle domény](#analyze-an-image-by-domain)
-* [Získat textový popis obrázku](#get-text-description-of-an-image)
-* [Získání rukou psaný text z obrázků](#get-text-from-image)
-* [Vygenerování thumbnail](#generate-thumbnail)
+Je nutné [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta před použitím některého z následujících úloh.
 
 ### <a name="analyze-an-image"></a>Analýza obrázku
 
@@ -169,8 +176,13 @@ for x in models.models_property:
 Můžete analyzovat image podle domény předmětu s [ `analyze_image_by_domain` ] [ ref_computervisionclient_analyze_image_by_domain]. Získejte [seznam podporovaných domény předmětu](#get-subject-domain-list) Chcete-li použít správný název domény.  
 
 ```Python
+# type of prediction
 domain = "landmarks"
-url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
+
+# Public domain image of Eiffel tower
+url = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg"
+
+# English language response
 language = "en"
 
 analysis = client.analyze_image_by_domain(domain, url, language)
@@ -202,6 +214,10 @@ for caption in analysis.captions:
 Rukou psaný nebo tisk text můžete získat z image. To vyžaduje dvě volání sady SDK: [ `recognize_text` ] [ ref_computervisionclient_recognize_text] a [ `get_text_operation_result` ] [ ref_computervisionclient_get_text_operation_result]. Volání recognize_text je asynchronní. Ve výsledcích get_text_operation_result volání, je potřeba zkontrolovat, pokud první volání byla dokončena s [ `TextOperationStatusCodes` ] [ ref_computervision_model_textoperationstatuscodes] před extrahováním textová data. Budou výsledky obsahovat text, jakož i ohraničující pole souřadnic pro text. 
 
 ```Python
+# import models
+from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+
 url = "https://azurecomcdn.azureedge.net/cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png"
 mode = TextRecognitionMode.handwritten
 raw = True
@@ -231,10 +247,19 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 Image s Miniatura (JPG) můžete vygenerovat [ `generate_thumbnail` ] [ ref_computervisionclient_generate_thumbnail]. Miniaturu se nemusí být ve stejné rozměry jako původní bitové kopie. 
 
-V tomto příkladu [Poduškový] [ pypi_pillow] balíčku uložte nový obrázek miniatury místně.
+Nainstalujte **Poduškový** používat v tomto příkladu:
+
+```bash
+pip install Pillow
+``` 
+
+Po instalaci Poduškový, vygeneruje se obrázek miniatury pomocí balíčku v následujícím příkladu kódu.
 
 ```Python
+# Pillow package
 from PIL import Image
+
+# IO package to create local image
 import io
 
 width = 50

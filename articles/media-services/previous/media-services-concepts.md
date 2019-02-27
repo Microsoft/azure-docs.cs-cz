@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 32367559ba4ae6931804c1ea702dca6c2c5ee297
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993907"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870903"
 ---
 # <a name="azure-media-services-concepts"></a>Koncepty služby Azure Media Services 
 
@@ -177,7 +177,7 @@ Ve výchozím nastavení může mít až 2 koncové body streamování ve účtu
 Nebudete dostávat faktury, pokud je vaše StreamingEndpoint ve spuštěném stavu.
 
 ### <a name="asset-delivery-policy"></a>Zásady doručení assetu
-Jedním z kroků v pracovním postupu doručování obsahu v Media Services konfiguruje [zásady doručování prostředků ](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy), kterou chcete Streamovat. Zásady doručení assetu říká Media Services způsob pro váš prostředek, který bude doručen: do datových proudů protokol, který by měl váš asset dynamicky balí (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), jestli chcete šifrovat dynamicky váš asset a jak (Obálka nebo používat standard common encryption).
+Jedním z kroků v pracovním postupu doručování obsahu v Media Services konfiguruje [zásady doručování prostředků](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy), kterou chcete Streamovat. Zásady doručení assetu říká Media Services způsob pro váš prostředek, který bude doručen: do datových proudů protokol, který by měl váš asset dynamicky balí (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), jestli chcete šifrovat dynamicky váš asset a jak (Obálka nebo používat standard common encryption).
 
 Pokud máte úložiště šifrované asset, před Streamovat prostředek, server streamování zruší šifrování úložiště a streamuje obsah pomocí zadaného doručování zásad. Například dodávat váš asset zašifrovaný pomocí klíče pro šifrování Advanced Encryption (Standard AES), nastavte typ zásad DynamicEnvelopeEncryption. Pokud chcete odstranit úložiště šifrování a streamování majetku v nezašifrované podobě, nastavte typ zásad k NoDynamicEncryption.
 

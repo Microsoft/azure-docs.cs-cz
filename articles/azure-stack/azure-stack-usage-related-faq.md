@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.lastreviewed: 11/08/2018
-ms.openlocfilehash: 92774592f86a71a8482fd3d44eca404fcf2d4e6e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/26/2019
+ms.openlocfilehash: 00fb888f201f4bb8d211050b288516021d837dc5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429549"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888760"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Nejčastější dotazy v rozhraní API pro využití služby Azure Stack
 
@@ -407,6 +407,10 @@ V současné době můžete dát dotaz na pouze *hlášené čas*.
 | 400/Chybný požadavek |*SubscriptionIdMissingInRequest* |Chybí ID předplatného volajícího. |
 | 400/Chybný požadavek |*InvalidAggregationGranularity* |Byla vyžádána neplatnou agregace členitosti. Platné hodnoty jsou denně a po hodinách. |
 | 503 |*ServiceUnavailable* |Vzhledem k tomu, služba je zaneprázdněná nebo volání je omezené došlo k opakovatelné chybě. |
+
+## <a name="what-is-the-policy-for-charging-for-vms"></a>Co jsou zásady účtování pro virtuální počítače?
+
+Spuštěných a zastavených virtuálních počítačů Generovat data o využití. Konzistentní s Azure, zrušení přidělení, je potřeba zastavit emisí data o využití. V případě, ve kterém není k dispozici na portálu, ale poskytovateli prostředků compute je stále spuštěna bude využití generované.
 
 ## <a name="next-steps"></a>Další kroky
 [Fakturace zákazníkům a vrácení peněz ve službě Azure Stack](azure-stack-billing-and-chargeback.md)

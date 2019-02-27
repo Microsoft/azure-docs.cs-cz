@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 40557d4e71dfea5996396cde634f7a1c80913556
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 16c7fe68e67094cef21d9efbffdccd614827ae6d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430535"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887467"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
@@ -66,7 +66,7 @@ K zálohování virtuálních počítačů Azure, Azure Backup nainstaluje rozš
 
   ![Stav služby Backup](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. Po povolení zálohování, [prvotní zálohování](#run-the-initial-backup) běží. Můžete okamžitě spustit prvotní zálohování, nebo počkejte, až se spustí podle plánu zálohování.
+10. Po povolení zálohování, spuštění prvotního zálohování. Můžete okamžitě spustit prvotní zálohování, nebo počkejte, až se spustí podle plánu zálohování.
     - Až do dokončení prvotní zálohy **stav poslední zálohy** ukazovat **upozornění (nedokončené prvotní zálohování)**.
     - Pokud chcete zobrazit při příští plánované zálohování se spustí, klikněte na název zásady zálohování.
     

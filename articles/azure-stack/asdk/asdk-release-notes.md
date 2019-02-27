@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 485d88a4765d7cedcb171a5b325fe5f366fff1f9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8268408137653e99863f7803300e6d843c1d9a47
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004743"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889303"
 ---
 # <a name="asdk-release-notes"></a>Zpráva k vydání verze ASDK
 
@@ -29,6 +29,8 @@ Tento článek obsahuje informace o změnách, opravy a známé problémy v Azur
 Udržujte si s tím, co se přihlásíte k odběru je novinkou ASDK [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanálu](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
 ## <a name="build-11901095"></a>Sestavení 1.1901.0.95
+
+Zobrazit [informace důležité sestavení v poznámkách k verzi Azure Stack](../azure-stack-update-1901.md#build-reference).
 
 ### <a name="changes"></a>Změny
 

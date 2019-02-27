@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/14/2019
-ms.openlocfilehash: 76fe764d828a7fa6e4ebb015f98b9af485d5df5f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/25/2019
+ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567078"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866823"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database – podpora klientů nižší úrovně a změny koncových bodů IP pro auditování tabulek
 
@@ -28,6 +28,7 @@ ms.locfileid: "55567078"
 [Auditování databáze](sql-database-auditing.md) automaticky spolupracuje se službou SQL klienty, kteří podporují přesměrování TDS. Všimněte si, že přesměrování se nedá použít při použití metody auditování objektů Blob.
 
 ## <a id="subheading-1"></a>Podpora klientů nižší úrovně
+
 Libovolného klienta, který implementuje TDS 7.4 by měl také podporovat přesměrování. Výjimky zahrnují JDBC 4.0, ve kterém se plně nepodporuje funkci přesměrování a Tedious pro Node.JS, v které přesměrování nebyla implementována.
 
 Pro "Klienty nižší úrovně" tedy který podporu TDS verzi 7.3 a pod - server plně kvalifikovaný název domény v připojení řetězec třeba upravit:
@@ -46,6 +47,7 @@ Upravené server plně kvalifikovaný název domény v připojovacím řetězci:
 **Poznámka:** Výše uvedeném serveru úpravy plně kvalifikovaný název domény může být užitečné také při použití zásad auditování služby SQL Server úroveň nemusejí pro krok konfigurace v každé databázi (dočasná omezení rizik).
 
 ## <a id="subheading-2"></a>Koncový bod IP adresy se změní při zapínání auditování
+
 Mějte prosím na paměti, že když povolíte auditování tabulek, dojde ke změně koncový bod IP adresy vaší databáze. Pokud máte nastavení striktní brány firewall, aktualizujte prosím tato nastavení brány firewall odpovídajícím způsobem.
 
 Nový koncový bod IP databáze závisí na oblasti databáze:
@@ -78,5 +80,4 @@ Nový koncový bod IP databáze závisí na oblasti databáze:
 | Západní střed USA |52.161.29.186, 52.161.27.213 |
 | Kanada – střed |13.88.248.106, 13.88.248.110 |
 | Kanada – východ |40.86.227.82, 40.86.225.194 |
-| Velká Británie – sever |13.87.101.18, 13.87.100.232 |
-| Velká Británie – jih 2 |13.87.32.202, 13.87.32.226 |
+| Velká Británie – jih |13.87.32.202, 13.87.32.226 |

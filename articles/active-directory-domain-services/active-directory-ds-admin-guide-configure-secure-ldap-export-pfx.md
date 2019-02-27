@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: 18c91b0bfee3f423e2d60e3c9893e8e5208aa292
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 801ba3b84ba9956ca8d13916ac4d90060a7f4037
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164601"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883449"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Vytvoření. Soubor PFX s certifikátem zabezpečeného protokolu LDAP (LDAPS) pro spravovanou doménu
 
@@ -82,7 +82,7 @@ Export certifikátu protokolu LDAPS pro. Soubor PFX:
 
 14. Na **zabezpečení** stránky, vyberte **heslo** možnost a zadejte heslo k ochraně. Soubor PFX. Toto heslo si zapamatujte, protože budete ji potřebovat v dalším úkolem. Klikněte na **Další**.
 
-    ![Heslo pro export certifikátu ](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
+    ![Heslo pro export certifikátu](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
     > [!NOTE]
     > Toto heslo si poznamenejte. Je třeba při povolování protokolu secure LDAP pro tuto spravovanou doménu v [úloha 3 – povolení protokolu LDAPS pro spravované domény](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ae26a2daf2a65eaf56672c9e75147bd71e489a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b89c02aa0d30ec1928be2110fe6470da4f28080c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330728"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889915"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení SQL serveru Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -383,7 +383,7 @@ SQL Server 2014 a novějších verzích open možnost k ukládání databázový
 * Důležité informace týkající se distribuce virtuální pevné disky výše uvedených přes různé účty úložiště Azure použít pro tuto metodu i nasazení. Znamená, že počet vstupně-výstupní operace proti limity účtu úložiště Azure.
 * Místo účetní proti podíl vstupně-výstupní operace úložiště Virtuálního počítače, provoz proti představující systému SQL Server soubory protokolu a data objektů BLOB služby storage se s tím při výběru do šířky pásma sítě Virtuálního počítače z konkrétní typ virtuálního počítače. Síť a úložiště šířky pásma určitého typu virtuálních počítačů, projděte si článek [velikosti pro Windows virtual machines v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
 * V důsledku doručením (push) vstup a výstup souborů přes kvótu sítě, jsou většinou ztroskotání kvóta úložiště a s ním používat celkovou šířku pásma virtuálního počítače pouze částečně.
-* Vstupně-výstupních operací a vstupně-výstupní propustnost výkonnostní cíle, které Azure Premium Storage nabízí pro jiný disk velikosti už neplatí. I když jsou objekty BLOB, který jste vytvořili jsou uložená na Azure Premium Storage. Cíle, které jsou popsané v článku [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets). V důsledku umístění datové soubory SQL serveru a souborů protokolu přímo na objektech BLOB, které jsou uložené na Azure Premium Storage, výkonové charakteristiky se může lišit v porovnání s virtuální pevné disky na Azure Premium Storage.
+* Vstupně-výstupních operací a vstupně-výstupní propustnost výkonnostní cíle, které Azure Premium Storage nabízí pro jiný disk velikosti už neplatí. I když jsou objekty BLOB, který jste vytvořili jsou uložená na Azure Premium Storage. Cíle, které jsou popsané v článku [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage). V důsledku umístění datové soubory SQL serveru a souborů protokolu přímo na objektech BLOB, které jsou uložené na Azure Premium Storage, výkonové charakteristiky se může lišit v porovnání s virtuální pevné disky na Azure Premium Storage.
 * Na základě použití mezipaměti u hostitele jako k dispozici pro disky Azure Premium Storage není k dispozici, při umísťování datové soubory SQL serveru přímo na objektech BLOB Azure.
 * Na virtuální počítače řady M-Series nelze použít akcelerátor zápisu Azure pro podporu hranicí milisekund zápisů ve službě soubor protokolu transakcí serveru SQL Server. 
 

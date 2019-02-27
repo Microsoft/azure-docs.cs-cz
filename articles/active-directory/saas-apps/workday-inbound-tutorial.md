@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 722fc5366d8f6863d19d09bd6e555fcc9a73d570
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340106"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868115"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro automatické zřizování uživatelů
 
@@ -1064,7 +1064,7 @@ Tato část zahrnuje následující aspekty řešení potíží:
 
 Když se zjistí nové zařazení ve Workday (Řekněme, že s ID zaměstnance *21023*), Azure AD, služba se pokusí vytvořit nový uživatelský účet AD pro pracovníka a v procesu zřizování vytvoří 4 záznamů protokolu auditu, jak je popsáno níže:
 
-  [ ![Operace vytvoření protokolu auditu](media/workday-inbound-tutorial/wd_audit_logs_02.png) ](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![Operace vytvoření protokolu auditu](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 Když kliknete na některý z záznamů protokolu auditu **podrobnosti o aktivitě** otevře se stránka. Co **podrobnosti o aktivitě** zobrazí se stránka pro jednotlivé typy záznamů protokolu.
 
@@ -1132,7 +1132,7 @@ Když kliknete na některý z záznamů protokolu auditu **podrobnosti o aktivit
 
 Atribut manager je ve službě AD atribut typu odkaz. Zřizovací služba nenastaví atribut manager jako součást operace vytváření uživatele. Místo toho je nastaven atribut manager jako součást *aktualizovat* operaci po vytvoření účtu služby AD pro uživatele. Rozbalení výše uvedený příklad, Řekněme, že nové zařazení s ID zaměstnance "21451" se aktivuje ve Workday a nové zařazení správce (*21023*) už má účet AD. V tomto scénáři prohledávání protokolů auditu pro uživatele 21451 zobrazuje 5 položek.
 
-  [ ![Aktualizace Správce](media/workday-inbound-tutorial/wd_audit_logs_03.png) ](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![Aktualizace Správce](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 První 4 záznamy jsou jako ty, které Prozkoumali jsme uživatele v rámci operace vytvoření. 5. záznam je export spojené s atributem update manager. Záznam protokolu zobrazuje výsledek AD účet správce aktualizace operace, která se provádí pomocí manažera *objectGuid* atribut.
 

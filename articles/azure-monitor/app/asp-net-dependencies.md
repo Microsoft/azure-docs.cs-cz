@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bcb00029acbe8c64e29addbc9291a694f1de98b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4aa18ae791e5fa573eae76d5bdb9c45b9311e6b5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267713"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888079"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: Sledování závislostí
 A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](../../azure-monitor/app/app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
@@ -50,7 +50,7 @@ Závislost částečné informace jsou shromažďovány automaticky [Application
 
 ## <a name="where-to-find-dependency-data"></a>Kde najít data závislostí
 * [Mapa aplikace](#application-map) vizualizuje závislosti mezi vaší aplikací a sousední komponenty.
-* [Výkon, prohlížeče a selhání oken](#performance-and-blades) zobrazit závislosti dat serveru.
+* [Výkon, prohlížeče a selhání oken](#performance-and-failure-blades) zobrazit závislosti dat serveru.
 * [Okno prohlížečů](#ajax-calls) ukazuje volání AJAX z prohlížečů uživatelů.
 * Klikněte na z pomalý nebo neúspěšné žádosti ke kontrole jejich voláním závislostí.
 * [Analytics](#analytics) slouží k dotazování na data závislostí.

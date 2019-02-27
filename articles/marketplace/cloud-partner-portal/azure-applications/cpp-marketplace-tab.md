@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74b21a9dd8faa8eb35aa8a2ef738bd6303e4cdd7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1203f33458c83bbde7a263022b78563bad183143
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196666"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870733"
 ---
 # <a name="azure-application-marketplace-tab"></a>Karta aplikace Azure Marketplace
 
@@ -35,7 +35,7 @@ Následující tabulka popisuje nastavení se použije pro vytvoření výkladn�
 
 |    **Pole**       |  **Popis**  |
 |  ---------------   |  ---------------  |
-|        Titul            |        Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace. Maximální délka je 50 znaků.           |
+|        Název            |        Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace. Maximální délka je 50 znaků.           |
 |         Souhrn           |        Krátký popis nabídky Maximální délka je 100 znaků.           |
 |         Dlouhé shrnutí           |        Už souhrn nabídky (i když může být stejný jako souhrn). Maximální délka je 256 znaků.           |
 |       Popis            |         Popis nabídky. Maximální délka je 3000 znaků. Jednoduché formátování HTML je povolený, včetně &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; hlavičky značky a žádné jiné.           |
@@ -66,7 +66,7 @@ Následující tabulka popisuje marketingové artefakty.
 
 Následující snímek obrazovky ukazuje příklad výsledků na vyhledávacím webu Marketplace.
 
-![Výsledek hledání nabídky Marketplace ](./media/azureapp-marketplace-example-browse.png)
+![Výsledek hledání nabídky Marketplace](./media/azureapp-marketplace-example-browse.png)
 
 Následující obrázek ukazuje, jak se nabídky zobrazí na webu Marketplace po zákazník klikne na dlaždici nabídky ve výsledcích hledání.
 

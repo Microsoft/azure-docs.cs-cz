@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/25/2019
+ms.openlocfilehash: 3be2f804bc755b92896305a2ba2b38a45450aed3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809976"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871226"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
@@ -28,10 +28,12 @@ Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento čl�
 > Zákazníkům doporučujeme vytvořit nové servery a nastavte existující aplikace s typem připojení explicitně nastavená na přesměrování (vhodnější) nebo proxy serverem v závislosti na architektuře jejich připojení.
 >
 > Zabránit možnosti připojení prostřednictvím koncového bodu služby rozdělení v existujících prostředích v důsledku této změny, použijeme telemetrie postupujte takto:
+>
 > - U serverů, které byly přístupné prostřednictvím koncových bodů služby před provedením změny, které zjistíme, můžeme Přepnout typ připojení na `Proxy`.
 > - Pro všechny ostatní servery, můžeme Přepnout připojení typu bude přepínat na `Redirect`.
 >
 > Uživatelé koncový bod služby může být stále postižená v následujících scénářích:
+>
 > - Aplikace se připojí k existující server zřídka, naše telemetrie nebyla zaznamenat informace o těchto aplikací
 > - Automatické nasazení logic vytvoří server služby SQL Database za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy`
 >
@@ -106,10 +108,7 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy br
 | Severní Evropa | 191.235.193.75 | 40.113.93.91 |
 | Středojižní USA | 23.98.162.75 | 13.66.62.124 |
 | Jihovýchodní Asie | 23.100.117.95 | 104.43.15.0 |
-| Velká Británie – sever | 13.87.97.210 | |
-| Velká Británie – jih 1 | 51.140.184.11 | |
-| Velká Británie – jih 2 | 13.87.34.7 | |
-| Spojené království – západ | 51.141.8.11 | |
+| Velká Británie – jih | 51.140.184.11 | |
 | Západní střed USA | 13.78.145.25 | |
 | Západní Evropa | 191.237.232.75 | 40.68.37.158 |
 | USA – západ 1 | 23.99.34.75 | 104.42.238.205 |

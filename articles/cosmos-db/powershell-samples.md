@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: f4220653b39381c360b4b05ab018262e46288e8f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3498ac6a2a4aaa1682d7b5bc5aae5383866d5bcd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043800"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873793"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Ukázky Azure PowerShellu pro službu Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 |**Vytvoření účtu služby Azure Cosmos DB**||
 |[Vytvořit a nakonfigurovat účet Cosmos pomocí rozhraní SQL API](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním SQL API. |
 |[Vytvořit a nakonfigurovat účet Cosmos s rozhraním API služby Azure Cosmos DB pro MongoDB](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet Cosmos s rozhraním API služby Azure Cosmos DB pro MongoDB. |
-|[Vytvořit a nakonfigurovat účet Cosmos pomocí rozhraní Gremlin API ](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním Gremlin API. |
+|[Vytvořit a nakonfigurovat účet Cosmos pomocí rozhraní Gremlin API](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním Gremlin API. |
 |[Vytvořit a nakonfigurovat účet Cosmos s rozhraním Cassandra API](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB pro použití s rozhraním API Cassandra. |
 |[Vytvořit a nakonfigurovat účet Cosmos s rozhraním Table API](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB pro použití s rozhraním Table API. |
 |**Škálování služby Azure Cosmos DB**||

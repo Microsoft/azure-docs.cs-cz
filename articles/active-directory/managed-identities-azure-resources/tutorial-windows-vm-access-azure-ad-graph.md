@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed94b7571acb0ced124644dafc59d805d5112e8a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268562"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890092"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API
 
@@ -43,10 +43,14 @@ V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systé
 
 ## <a name="connect-to-azure-ad"></a>Připojení k Azure AD
 
-Kvůli tomu, abyste virtuální počítač přiřadili do skupiny a udělili mu oprávnění k načtení jeho členství ve skupinách, se musíte připojit ke službě Azure AD.
+Kvůli tomu, abyste virtuální počítač přiřadili do skupiny a udělili mu oprávnění k načtení jeho členství ve skupinách, se musíte připojit ke službě Azure AD. Můžete použít rutiny Connect-AzureAD přímo nebo pomocí parametru ID Tenanta v případě, že máte více tenantů.
 
 ```powershell
 Connect-AzureAD
+```
+NEBO
+```powershell
+Connect-AzureAD -TenantId "Object Id of the tenant"
 ```
 
 ## <a name="add-your-vm-identity-to-a-group-in-azure-ad"></a>Přidání identity virtuálního počítače do skupiny ve službě Azure AD
@@ -79,7 +83,13 @@ K použití této možnosti budete potřebovat Azure AD PowerShell. Pokud ho nem
    ```powershell
    Connect-AzureAD
    ```
+   Chcete-li připojit k určité Azure Active Directory, použijte _TenantId_ parametr následujícím způsobem:
 
+   ```PowerShell
+   Connect-AzureAD -TenantId "Object Id of the tenant"
+   ```
+
+   
 2. Spuštěním následujících příkazů PowerShellu přiřaďte oprávnění aplikace ``Directory.Read.All`` k instančnímu objektu, který reprezentuje identitu virtuálního počítače.
 
    ```powershell

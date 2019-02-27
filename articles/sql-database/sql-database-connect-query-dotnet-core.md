@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 82b412d7fc9e54ca213fecde783a5e27f8ee93bc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6cc5d6a778f16b857d0596780a737df3358ac8c3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233554"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867350"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rychlý start: Použití .NET Core (jazyk C#) k dotazování databáze SQL Azure
 
@@ -196,5 +196,5 @@ namespace sqltest
 
 - [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
 - Zjistěte, jak [připojení a dotazování Azure SQL database pomocí rozhraní .NET Framework a sady Visual Studio](sql-database-connect-query-dotnet-visual-studio.md).  
-- Zjistěte, jak [návrh první databáze Azure SQL pomocí SSMS](sql-database-design-first-database.md) nebo [ návrh služby Azure SQL database a její připojení pomocí C# a ADO.NET](sql-database-design-first-database-csharp.md).
+- Zjistěte, jak [návrh první databáze Azure SQL pomocí SSMS](sql-database-design-first-database.md) nebo [návrh služby Azure SQL database a její připojení pomocí C# a ADO.NET](sql-database-design-first-database-csharp.md).
 - Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).

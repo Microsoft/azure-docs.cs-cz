@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 70206fac7bfe34ea1a138437db35720a1f02337d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.date: 02/26/2019
+ms.openlocfilehash: 64e0444c85440a017872aa32017e7d1c47e44e89
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585364"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889766"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Architektura připojení k Azure SQL Database managed instance
 
@@ -157,7 +157,7 @@ Nasadíte spravovanou instanci ve vyhrazené podsíti (podsíti spravované inst
 |mi-8-7-nexthop-internet|8.0.0.0/7|Internet|
 ||||
 
-Kromě toho můžete přidat položky do směrovací tabulky směruje provoz, který má místní rozsahy privátních IP jako cíl přes bránu virtuální sítě nebo virtuální síťové zařízení (NVA).
+Kromě toho můžete přidat položky do směrovací tabulky pro směrování provozu, který má místní rozsahy privátních IP jako cíl přes bránu virtuální sítě nebo virtuální síťové zařízení (NVA).
 
 - **Volitelné vlastní DNS**: Pokud vlastní DNS je zadána ve službě virtual network, Azure rekurzivní překladač IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Další informace najdete v tématu [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md). Vlastní server DNS musí být schopen překladu názvů hostitelů na následující domény a jejich subdomény: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, a *microsoftonline-p.com*.
 

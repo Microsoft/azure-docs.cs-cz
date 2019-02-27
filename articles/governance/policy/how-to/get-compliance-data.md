@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 41c44d1f4054d93c770f80496c8d7a0bddf5eb13
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 44f0309d472a79526537f79feabcd9777b70bcc7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650339"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888767"
 ---
 # <a name="getting-compliance-data"></a>Získávání dat o dodržování předpisů
 
@@ -142,25 +142,11 @@ Klikněte pravým tlačítkem na řadu událostí, které chcete shromažďovat 
 
 ![Protokol aktivit zásad dodržování předpisů](../media/getting-compliance-data/compliance-activitylog.png)
 
-### <a name="change-history-preview"></a>Historie změn (Preview)
+### <a name="understand-non-compliance"></a>Vysvětlení nedodržení předpisů
 
-Jako součást nového **ve verzi public preview**, za posledních 14 dní historie změn jsou k dispozici pro prostředek nedodržující předpisy. Historie změn při byla zjištěna změna a poskytuje podrobnosti o _visual diff_ pro každou změnu. Detekce změn se aktivuje při přidání, odebrání nebo změnit vlastnosti neodpovídajících prostředků Resource Manageru.
+<a name="change-history-preview"></a>
 
-1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
-
-1. Na **přehled** nebo **dodržování předpisů** vyberte zásadu, která je _nekompatibilní_.
-
-1. V části **dodržování předpisů prostředkem** karty **dodržování zásad** vyberte prostředek, to je _nekompatibilní_.
-
-1. Vyberte **historii změn (preview)** kartě **dodržování předpisů prostředkem** stránky. Seznam zjistila změny, pokud jsou zobrazeny všechny existují.
-
-   ![Historie změn zásad – karta](../media/getting-compliance-data/change-history-tab.png)
-
-1. Vyberte jednu z nalezenými změnami. _Visual diff_ pro neodpovídajících prostředků se zobrazí na **historii změn** stránky.
-
-   ![Historie změn zásad - Visual Diff](../media/getting-compliance-data/change-history-visual-diff.png)
-
-_Visual diff_ formě identifikovat změny prostředku. Byly zjištěny změny nemusí vztahovat na tom, co způsobilo prostředek, který se jako nevyhovující pro vybranou zásadu.
+Když je určena jako zdroje **neodpovídajících**, mnoho důvodů, proč je to možné. Chcete-li zjistit, proč je prostředek **nedodržují předpisy** nebo změnu zodpovědná, najdete v tématu [určit nedodržení předpisů](./determine-non-compliance.md).
 
 ## <a name="command-line"></a>Příkazový řádek
 

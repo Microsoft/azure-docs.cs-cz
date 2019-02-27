@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54aab6e9718b5a4a55cf2a3f9c472e9e02a53ea7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191074"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869543"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect a federace
 Konfigurace federace se službou Azure Active Directory (Azure AD) Connect umožňuje místní služby Active Directory Federation Services (AD FS) a Azure AD. S federací přihlášení můžete povolit uživatelům umožní přihlásit k Azure AD službám pomocí jejich místních hesel – a v podnikové síti, aniž byste museli znovu zadávat hesla. Pomocí možnosti federační službou AD FS, můžete nasadit nové instalace služby AD FS, nebo můžete zadat existující instalace ve farmě systému Windows Server 2012 R2.
@@ -36,7 +36,7 @@ Toto téma je domovská stránka pro informace o funkcím souvisejícím s feder
 | **Instalace služby AD FS pomocí služby Azure AD Connect** | |
 | [Požadavky](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Viz předpoklady pro úspěšnou instalaci služby AD FS pomocí služby Azure AD Connect. |
 | [Konfigurovat farmu služby AD FS](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Instalace nové farmě služby AD FS pomocí služby Azure AD Connect. |
-| [Provést federaci se službou Azure AD pomocí alternativního přihlašovacího ID ](how-to-connect-fed-management.md#alternateid) | Konfigurovat federaci pomocí alternativního přihlašovacího ID  |
+| [Provést federaci se službou Azure AD pomocí alternativního přihlašovacího ID](how-to-connect-fed-management.md#alternateid) | Konfigurovat federaci pomocí alternativního přihlašovacího ID  |
 | **Změny konfigurace služby AD FS** | |
 | [Opravit důvěryhodnost](how-to-connect-fed-management.md#repairthetrust) |Oprava aktuální vztah důvěryhodnosti mezi místní služby AD FS a Office 365 nebo Azure. |
 | [Přidání nového serveru služby AD FS](how-to-connect-fed-management.md#addadfsserver) |Rozbalte farmu služby AD FS s dalším serverem služby AD FS po počáteční instalaci. |

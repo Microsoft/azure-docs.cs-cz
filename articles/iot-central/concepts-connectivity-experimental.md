@@ -8,53 +8,62 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 5d90980172b49071601edeebbf28907def862e4e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: edffc6677609537d8a07aeae45a57c5e88449099
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824011"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882650"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
-Tento článek představuje klíčové koncepty týkající se připojení zařízení v Microsoft Azure IoT Central.
+Tento článek představuje klíčových konceptů, které se vztahují na připojení zařízení v Microsoft Azure IoT Central.
 
-Azure IoT Central používá [Azure IoT Hub Device Provisioning service (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps), povolování IoT Central pro podporu registrace a připojování zařízení ve velkém měřítku.
+Azure IoT Central používá [Azure IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/about-iot-dps) k registraci a připojení zařízení ve velkém měřítku.
 
--   Zákazníci teď můžete vygenerovat přihlašovací údaje zařízení a nakonfigurovat zařízení offline bez nutnosti nejprve zaregistrovat zařízení v IoT Central
--   IoT Central podporuje připojení zařízení se doporučuje X509 cert založené na připojení, zatímco i nadále bude podporovat a vylepší připojení sdílených přístupových podpisů (SAS)
--   IoT Central zákazníci můžou teď začít přenášet své vlastní ID zařízení k registraci zařízení v IoT Central umožňuje snadnou integraci s existujícími systémy administrativní
--   Existuje jeden konzistentní způsob připojení zařízení k IoT Central 
+Pomocí služby Device Provisioning Service:
 
->[!NOTE]
->IoT Central používá službu Azure IoT Device Provisioning (DPS) pod pro všechny registrace zařízení a připojení, [Další informace o distribučních bodů](https://docs.microsoft.com/azure/iot-dps/about-iot-dps).
-
-Podle vašeho použití případu postupujte podle pokynů pro připojení zařízení k IoT Central
-1. [Rychlé připojení jedno zařízení (použití sdílených přístupových podpisů)](#connect-a-single-device)
-1. [Připojení zařízení ve velkém měřítku pomocí sdílených přístupových podpisů (SAS)](#connect-devices-at-scale-using-shared-access-signatures)
-1. [Připojení zařízení ve velkém měřítku pomocí X509 certifikáty](#connect-devices-using-x509-certificates) **doporučuje pro produkční úlohy**
-1. [Připojit bez první registrace zařízení](#connect-without-first-registering-devices) 
-
+- Zákazníci teď můžete vygenerovat přihlašovací údaje zařízení a nakonfigurovat zařízení offline bez nutnosti nejprve zaregistrovat zařízení v Azure IoT Central.
+- Azure IoT Central podporuje připojení zařízení pomocí certifikátů X.509, zatímco i nadále bude podporovat a vylepší připojení pomocí signatur sdíleného přístupu.
+- Azure IoT Central zákazníci teď můžou využívat vlastní ID zařízení k registraci zařízení v Azure IoT Central, což umožňuje snadnou integraci s existujícími systémy administrativní.
+- Neexistuje jeden konzistentní způsob připojení zařízení k Azure IoT Central.
 
 >[!NOTE]
->Tady je globální koncový bod zařízení, připojení a zřízení **global.azure. zařízení provisioning.net**.
+>Azure IoT Central IoT Hub Device Provisioning Service používá pro všechny registrace zařízení a připojení. [Další informace](https://docs.microsoft.com/azure/iot-dps/about-iot-dps).
+
+Podle vašemu případu použití, postupujte podle příslušných pokynů a připojení zařízení k Azure IoT Central:
+
+- [Připojení jedno zařízení rychle (s použitím sdílených přístupových podpisů)](#connect-a-single-device)
+- [Připojení zařízení ve velkém měřítku pomocí signatur sdíleného přístupu](#connect-devices-at-scale-using-shared-access-signatures)
+- [Připojení zařízení ve velkém měřítku pomocí certifikátů X.509](#connect-devices-using-x509-certificates) (doporučeno pro produkční úlohy)
+- [Připojit bez první registrace zařízení](#connect-without-first-registering-devices) 
+
+>[!NOTE]
+>Globální koncový bod pro zařízení se připojte a zřídit je **global.azure. zařízení provisioning.net**.
 
 ## <a name="connect-a-single-device"></a>Připojení jedno zařízení
-Pomocí SAS připojení jedno zařízení k IoT Central je jednoduché a zabere jenom pár kroků 
-1. Přidat **skutečné zařízení** z Device Explorer, klikněte na **+ nový > skutečné** skutečné zařízení přidat.
-    * Zadejte Id zařízení **<span style="color:Red">(by měl být malými písmeny)</span>** nebo použijte navrhovaný ID zařízení.
-    * Zadejte název zařízení nebo použijte navrhovaný název   
+
+Připojení jedno zařízení k Azure IoT Central podle použití sdílených přístupových podpisů:
+
+1. Přidat **skutečné zařízení** z **Device Explorer**. Vyberte **+ nová** > **skutečné** skutečné zařízení přidat.
+    - Zadejte **ID zařízení** (by měl být malými písmeny) nebo použijte ID zařízení navrhované.
+    - Zadejte **název zařízení** nebo použijte navrhovaný název.
+
     ![Přidání zařízení](media/concepts-connectivity/add-device.png)
-1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení kliknutím **připojit** na stránce zařízení.
-    * **[ID rozsahu](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)**  za aplikace IoT Central je a generuje distribučních bodů, zajišťuje jedinečné ID zařízení v rámci aplikace.
-    * **Id zařízení** je jedinečné ID na aplikaci, zařízení je potřeba poslat Id zařízení jako součást volání registrace zařízení.   
-    * **Primární klíč** je SAS token vygenerovaný IoT Central pro toto konkrétní zařízení. 
-    ![Podrobné informace o připojení](media/concepts-connectivity/device-connect.png)
-1. Tyto podrobnosti připojení **Identity zařízení, název zařízení a primární klíč zařízení** ve svém kódu zařízení pro zřízení a připojení zařízení a začnou zobrazovat data protékají okamžitě. Pokud používáte zařízení použijte MxChip, [podrobných pokynů](howto-connect-devkit-experimental.md#add-a-real-device), spusťte z části **připravit zařízení DevKit**.   
 
-    V následující tabulce jsou odkazy na další jazyky, které chcete použít.
+1. Získání podrobností o připojení, jako je **ID oboru**, **ID zařízení**, a **primární klíč**, pro přidání zařízení tak, že vyberete **připojit** na stránka zařízení.
 
-    *   **Jazyk C:** Pokud používáte C, postupujte podle [tohoto klienta zařízení ukázka C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) připojit zařízení vzorku. Použijte následující nastavení ve vzorku.   
+    - **[ID rozsahu](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)**  je za aplikaci Azure IoT Central a vygeneruje se služba Device Provisioning. Tento Identifikátor slouží k zajištění jedinečné ID zařízení v rámci aplikace.
+    - **ID zařízení** je jedinečné ID zařízení na aplikaci. Zařízení je potřeba poslat ID zařízení jako součást volání registrace.
+    - **Primární klíč** token sdíleného přístupového podpisu je generováno pomocí Azure IoT Central pro toto konkrétní zařízení.
+ 
+    ![Podrobnosti připojení](media/concepts-connectivity/device-connect.png)
+
+1. Podrobnosti připojení **identitu zařízení**, **název zařízení**a zařízení **primární klíč** ve svém kódu zařízení pro zřízení a připojení zařízení a začnou zobrazovat tok dat prostřednictvím okamžitě. Pokud používáte zařízení MXChip IoT DevKit (DevKit), postupujte podle [podrobných pokynů](howto-connect-devkit-experimental.md#add-a-real-device)začíná v části "Příprava zařízení DevKit."
+
+    Tady jsou odkazy na další jazyky, které chcete použít.
+
+    - **Jazyk C:** Postupujte podle [tohoto klienta zařízení ukázka C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) připojit zařízení vzorku. Ve vzorku, použijte následující nastavení:
 
          ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
@@ -63,193 +72,196 @@ Pomocí SAS připojení jedno zařízení k IoT Central je jednoduché a zabere 
          prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
 
-    *   **Node.js:**  Pokud chcete pomocí Node.js [pomocí podrobných pokynů zde](tutorial-add-device-experimental.md#prepare-the-client-code), spusťte z části **Příprava klientský kód**.
+    - **Node.js:**  Postupujte podle [podrobných pokynů](tutorial-add-device-experimental.md#prepare-the-client-code)začíná v části "Příprava kód klienta."
 
+## <a name="connect-devices-at-scale-by-using-shared-access-signatures"></a>Připojení zařízení ve velkém měřítku pomocí signatur sdíleného přístupu
 
+Připojení zařízení ve velkém měřítku pomocí Azure IoT Central pomocí sdílené přístupové podpisy, jsou dvou krocích:
 
-## <a name="connect-devices-at-scale-using-shared-access-signatures"></a>Připojení zařízení ve velkém měřítku pomocí sdílených přístupových podpisů
-
-Připojení zařízení ve velkém měřítku pomocí SAS IoT Central, jsou dva kroky zahrnuté 
-1. **Registrace zařízení** podle jejich importování do IoT Central prostřednictvím sdíleného svazku clusteru souboru a exportovat zařízení se podrobnosti o připojení zařízení používat pro připojení vašich zařízení
-1. **Nastavení zařízení** zařízení je naprogramovat se podrobnosti o připojení ( **ID oboru, ID zařízení a primární klíč**), aby mohla volat službu zřizování můžete získat jeho připojení info/IoT přiřazení centrální aplikace je zapnuté.
+1. **Registrace zařízení:** Zaregistrujte zařízení podle jejich importování do Azure IoT Central prostřednictvím souboru CSV. Potom použijte **exportovat** akce k exportu vašeho zařízení a získat tak podrobné údaje jejich připojení zařízení.
+1. **Nastavení zařízení:** Program zařízení s podrobnostmi o připojení (**ID oboru**, **ID zařízení**, a **primární klíč**). Když je zapnuté každé zařízení, bude volat služby Device Provisioning můžete získat jeho informace o připojení nebo Azure IoT Central přiřazení aplikace.
 
 >[!NOTE]
->Upřesňující možnost je k dispozici také v případě zařízení se můžete připojit bez nutnosti nejprve zaregistrovat zařízení v IoT Central [Další informace najdete tady](https://docs.microsoft.com/azure/iot-dps/about-iot-dps).
+>Upřesňující možnost je také k dispozici ve kterém můžete zařízení můžete připojit bez nutnosti nejprve zaregistrovat zařízení v Azure IoT Central. [Další informace](https://docs.microsoft.com/azure/iot-dps/about-iot-dps).
 
-**Registrace zařízení**
+### <a name="device-registration"></a>Registrace zařízení
 
-K připojení velkého počtu zařízení pro vaši aplikaci, Azure IoT Central nabídky hromadně importovat zařízení prostřednictvím souboru CSV. 
+K připojení velkého počtu zařízení pro vaši aplikaci, Azure IoT Central podporuje hromadný import zařízení prostřednictvím souboru CSV. 
 
-Požadavky na soubor CSV: Soubor CSV by měl obsahovat následující sloupce (a hlavičky)
-1.  IOTC_DeviceID  **<span style="color:Red">(by měl být malými písmeny)</span>**
-1.  IOTC_DeviceName (volitelné)
+1. Importovat zařízení k registraci ve vaší aplikaci:
 
+   1. Vyberte **Device Explorer** v nabídce vlevo.
+   1. Na levém panelu, vyberte šablonu zařízení pro které chcete hromadně vytvořit zařízení. 
+   1. Vyberte **Import**a potom vyberte soubor CSV obsahující seznam ID zařízení k importu. Soubor CSV by měl obsahovat následující sloupce (a záhlaví):
 
+       - IOTC_DeviceID (by měl obsahovat malá písmena)
+       - IOTC_DeviceName (volitelné)
 
-Importovat zařízení k registraci ve vaší aplikaci
-1.  Zvolte **Explorer** v levé navigační nabídce.
-1.  Na levém panelu vyberte šablonu zařízení, pro které chcete hromadně vytvořit zařízení. 
-1.  Klikněte na tlačítko **Import**, vyberte soubor CSV obsahující seznam ID zařízení k importu.
-Soubor CSV by měl obsahovat následující sloupce (a hlavičky)
-    *   IOTC_DeviceID  **<span style="color:Red">(by měl být malými písmeny)</span>**
-    *   IOTC_DeviceName (volitelné)
-1.  Po dokončení importu zprávu o úspěšném dokončení se zobrazí v mřížce zařízení.
+   1. Po dokončení importu zprávu o úspěšném dokončení se zobrazí v mřížce zařízení.
 
-Export zařízení načte podrobné informace o připojení Export vytvoří soubor CSV s Id zařízení, název zařízení a klíč zařízení. Tyhle podrobnosti použijte pro připojení zařízení k IoT Central.
-Chcete-li hromadně exportovat zařízení z vaší aplikace:
-1.  Zvolte **Explorer** v levé navigační nabídce.
-1.  Vyberte zařízení, která chcete exportovat a pak klikněte na tlačítko **exportovat** akce.
-1.  Po dokončení exportu zprávu o úspěšném dokončení se zobrazí spolu s odkazem na stažení generovaného souboru.
-1.  Klikněte na zprávy o úspěchu a stáhněte soubor do místní složky na disku.
-1.  Exportovaný soubor CSV bude obsahovat následující sloupce informace: **Id zařízení, název zařízení, zařízení primárního/sekundárního klíče a primárního a sekundárního kryptografické otisky certifikátů**
-    *   IOTC_DEVICEID
-    *   IOTC_DEVICENAME
-    *   IOTC_SASKEY_PRIMARY
-    *   IOTC_SASKEY_SECONDARY
-    *   IOTC_X509THUMBPRINT_PRIMARY 
-    *   IOTC_X509THUMBPRINT_SECONDARY
+1. Exportujte zařízení, která jejich podrobnosti připojení:
 
+   **Exportovat** vytvoří soubor CSV s ID zařízení, název zařízení a klíče zařízení. Tyhle podrobnosti použijte pro připojení zařízení k Azure IoT Central. Pro export hromadné zařízení z vaší aplikace:
 
-**Nastavení zařízení**
+   1. Vyberte **Device Explorer** v nabídce vlevo.
+   1. Vyberte zařízení, která chcete exportovat a pak vyberte **exportovat** akce.
+   1. Po dokončení exportu zprávu o úspěšném dokončení se zobrazí spolu s odkazem na stažení generovaného souboru.
+   1. Úspěch na zprávu klikněte a stáhněte soubor do místní složky na disku.
+   1. Exportovaný soubor CSV bude obsahovat následující sloupce, které obsahují podrobnosti o připojení **ID zařízení**, **název zařízení**, **zařízení primární nebo sekundární klíč**a  **Primární nebo sekundární kryptografické otisky certifikátů**:
 
-Tyto podrobnosti připojení **Identity zařízení (IOTC_DEVICEID), primární klíč zařízení (IOTC_SASKEY_PRIMARY) a ID oboru** ve vašem kódu zařízení ke zřízení a připojení zařízení. Pokud nemáte, získejte **Id oboru** z vaší aplikace IoT Central **správy > připojení zařízení > ID oboru**.
-Pokud používáte **MxChip** zařízení pro připojení postupujte podle [podrobných pokynů](howto-connect-devkit-experimental.md#add-a-real-device), spusťte z části **připravit zařízení DevKit**.   
+       - IOTC_DEVICEID
+       - IOTC_DEVICENAME
+       - IOTC_SASKEY_PRIMARY
+       - IOTC_SASKEY_SECONDARY
+       - IOTC_X509THUMBPRINT_PRIMARY
+       - IOTC_X509THUMBPRINT_SECONDARY
 
-V následující tabulce jsou odkazy na další jazyky, které chcete použít.
+### <a name="device-setup"></a>Instalace zařízení
 
-   *   **Jazyk C:** Pokud používáte C postupujte [tohoto klienta zařízení ukázka C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) připojit zařízení vzorku. Použijte následující nastavení ve vzorku.   
-         ```c
-         hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
+ Chcete-li zřídit a připojení zařízení, použijte podrobné informace o připojení **Identity zařízení (IOTC_DEVICEID)**, **zařízení primární klíč (IOTC_SASKEY_PRIMARY)**, a **ID oboru** v kód vašeho zařízení. Pokud jste tak již neučinili, získat **ID oboru** z aplikace Azure IoT Central tak, že vyberete **správu** > **připojení zařízení**  >  **ID rozsahu**.
 
-         ## Enter the Device Id and Symmetric keys 
-         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
-        ```
-    * **Node.js:**  Pokud chcete pomocí Node.js [pomocí podrobných pokynů zde](tutorial-add-device-experimental.md#prepare-the-client-code), spusťte z části **Příprava klientský kód**.
+Pokud se připojujete DevKit zařízení, postupujte podle [podrobných pokynů](howto-connect-devkit-experimental.md#add-a-real-device)začíná v části "Příprava zařízení DevKit."
 
+Tady jsou odkazy na další jazyky, které chcete použít.
 
-## <a name="connect-devices-using-x509-certificates"></a>Připojení zařízení pomocí X509 certifikáty
+- **Jazyk C:** Postupujte podle [tohoto klienta zařízení ukázka C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) připojit zařízení vzorku. Ve vzorku, použijte následující nastavení:
 
-Pomocí X.509 certifikáty jako mechanismus ověřování je vynikající způsob, jak škálovat **produkční** a zjednodušuje zřizování zařízení. Certifikáty X.509 jsou obvykle uspořádány v řetězu certifikátů, ve kterém je každý certifikát v řetězu podepsány privátní klíč další vyšší certifikátu a tak dále, ukončuje v certifikát podepsaný svým držitelem kořenové důvěryhodnosti. Tím dojde k vytvoření delegovaného řetěz certifikátů z kořenového certifikátu vygenerovaného důvěryhodné kořenové certifikační autority (CA) dolů prostřednictvím každý zprostředkující certifikační Autority pro certifikát koncové entity "typu list", nainstalované v zařízení. Další informace najdete v tématu [zařízení ověřování pomocí certifikátů X.509 certifikační Autority](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+     ```c
+     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
-Připojení zařízení k IoT Central X509 pomocí certifikátů, existuje se využívá řada tři klíčové kroky: 
-1. **Konfigurace nastavení připojení** v IoT Central aplikaci tak, že přidání/ověříte X509 kořenový nebo zprostředkující certifikát použít k vytvoření certifikátů zařízení.  Existují dva kroky pro konfiguraci nastavení připojení pro X509 certifikáty.  
+     ## Enter the Device Id and Symmetric keys 
+     prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
+    ```
 
-    *   **Přidat X509 kořenový nebo zprostředkující certifikát** použijete k vytvoření certifikátů zařízení typu list. Přejděte na Správa > připojení zařízení > certifikáty. 
+- **Node.js:** Postupujte podle [podrobných pokynů](tutorial-add-device-experimental.md#prepare-the-client-code)začíná v části "Příprava kód klienta."
+
+## <a name="connect-devices-by-using-x509-certificates"></a>Připojení zařízení pomocí certifikátů X.509
+
+Jako mechanismus ověřování pomocí certifikátů X.509 je vynikající způsob, jak škálovat produkčního prostředí a zjednodušuje zřizování zařízení. Certifikáty X.509 jsou obvykle uspořádány v řetězu certifikátů vztahu důvěryhodnosti, ve kterém je každý certifikát v řetězu podepsány privátní klíč certifikátu další vyšší a tak dále, s koncovkou certifikát podepsaný svým držitelem. Tato struktura vytváří delegované řetěz certifikátů z kořenového certifikátu, který je generován důvěryhodné kořenové certifikační autority (CA) dolů prostřednictvím jednotlivých zprostředkující certifikační Autority pro certifikát koncové entity "typu list", který je nainstalovaný na zařízení. Další informace najdete v tématu [zařízení ověřování pomocí certifikátů webu X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+
+Připojení zařízení k Azure IoT Central pomocí certifikátů X.509, existují tři klíčové kroky zahrnuté:
+ 
+1. **Konfigurace nastavení připojení** v aplikaci Azure IoT Central přidáním nebo ověřování X.509 kořenový nebo zprostředkující certifikát, který se používá ke generování certifikátů zařízení. Existují tři kroky pro konfiguraci nastavení připojení pro certifikáty X.509:  
+
+    - **Přidat X.509 kořenový nebo zprostředkující certifikát** , které používáte k vytvoření certifikátů zařízení typu list. Přejděte na **správu** > **připojení zařízení** > **certifikáty**. 
     
-        ![Nastavení připojení](media/concepts-connectivity/connection-settings.png)
-    *   **Ověření certifikátů:** Ověření vlastnictví certifikátu zajišťuje, že uživatele nahrávajícího certifikátu ve vlastnictví privátní klíč certifikátu. Chcete-li ověřit certifikát
-        *  Vygenerovat ověřovací kód, klikněte na tlačítko vedle pole ověřovací kód a vygenerovat ověřovací kód. 
-        *  Vytvořte certifikát pro ověření X.509 s ověřovacím kódem, uložte certifikát jako soubor .cer. 
-        *  Nahrát podepsaný ověřovacího certifikátu a klikněte na tlačítko ověřit.
+       ![Nastavení připojení](media/concepts-connectivity/connection-settings.png)
+
+    - **Ověřte certifikát.** Ověření vlastnictví certifikátu se zajistí, že odeslání certifikát nemá privátní klíč certifikátu. Chcete-li ověřit certifikát:
+
+        - Vygenerujte ověřovací kód. Vyberte tlačítko vedle **ověřovací kód** pole k vygenerování tohoto kódu. 
+        - Vytvořte certifikát pro ověření X.509 s ověřovacím kódem. Uložte si certifikát jako soubor .cer. 
+        - Nahrát podepsaný ověřovací certifikát a vyberte **ověřte**.
 
         ![Nastavení připojení](media/concepts-connectivity/verify-cert.png)
-    *   **Sekundární certifikát:** Během životního cyklu řešení IoT musíte vrátit certifikáty. Dva hlavní důvody pro certifikáty se zajištěním provozu by bezpečnosti a vypršení platnosti certifikátů. Sekundární certifikáty se používají k zkrátit výpadky pro zařízení s pokusem o zřízení, když aktualizujete primární certifikát.
 
-    **TESTOVÁNÍ POUZE PRO ÚČELY** 
+    - **Přidání sekundárního certifikátu.** Během životního cyklu řešení IoT musíte vrátit certifikáty. Dva hlavní důvody pro certifikáty se zajištěním provozu jsou porušením zabezpečení a vypršení platnosti certifikátů. Sekundární certifikáty snížit prostoje pro zařízení, které se pokoušejí o zřízení, když aktualizujete primární certifikát.
+
+      **Pouze pro testovací účely:**
     
-    Níže jsou některé nástroje příkazového řádku nástroje, které můžete použít ke generování certifikátů certifikační Autority a certifikátů zařízení.
+      Tady jsou některé nástroje příkazového řádku nástroje, které lze použít ke generování certifikátů certifikačních Autorit a certifikátů zařízení.
 
-    * Pokud používáte MxChip tady je [nástroj příkazového řádku](https://aka.ms/iotcentral-docs-dicetool) ke generování certifikační Autority ho přidejte do své aplikace IoT Central a ověřit certifikáty. 
+      - Pokud používáte zařízení DevKit, tady je [nástroj příkazového řádku](https://aka.ms/iotcentral-docs-dicetool) ke generování certifikátů certifikační Autority. Přidat do aplikace Azure IoT Central a ověřit certifikáty. 
 
-    *   Použijte tento [nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) do
-        * Vytvořte řetěz certifikátů (v Githubu dokumentace postupujte podle kroku 2). 
-         Uložit jako soubory .cer certifikáty a nahrajte do IoT Central (primární).   
-        * Získat ověřovací kód z aplikace IoT Central, certifikát (v Githubu dokumentace postupujte podle kroku 3) můžete vytvořit a odeslat k ověření. 
-        * Vytvoření certifikátů listu s vaším zařízením Id jako parametr pro nástroj (postupujte podle kroku 4). Uložte certifikát a použijte ji na svém zařízení.     
+      - Použití [tento nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) na:
 
-1. **Registrace zařízení** podle jejich importování do IoT Central prostřednictvím souboru CSV.
+          - Vytvořte řetěz certifikátů (krok použijte 2 v dokumentace Githubu). Uložit jako soubory .cer certifikáty a jejich nahrání do Azure IoT Central (jako primární certifikáty).
+          - Získat ověřovací kód z aplikace Azure IoT Central, vygenerujte certifikát (krok použijte 3 v dokumentace Githubu) a nahrát certifikát, který chcete ověřit. 
+          - Vytvoření certifikátů listu se svým ID zařízení jako parametr pro nástroj (postupujte podle kroku 4). Uložte si certifikát a použijte ji na svém zařízení.
 
-1. **Nastavení zařízení** : Generovat listové certifikáty pomocí nahrané kořenový certifikát. Ujistěte se, že používáte **ID zařízení** jako záznam CNAME v listu certifikáty a je v **malými písmeny**. Tady je [nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) ke generování certifikátů listu nebo zařízení pro **pouze testování účely**.
+1. **Registrace zařízení** podle jejich importování do Azure IoT Central prostřednictvím souboru CSV.
 
-    Program zařízení umožňuje získat jeho podrobnosti připojení a IoT Central přiřazení aplikace při přepnutí informace o službě zřizování.    
+1. **Nastavení zařízení**: Generovat listové certifikáty pomocí nahrané kořenový certifikát. Ujistěte se, že používáte ID zařízení jako záznam CNAME v listu certifikáty a ujistěte se, že je na malá písmena. Tady je [nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) pro generování certifikátů listu nebo zařízení pro **testování mají jenom**.
 
-    **Odkaz na další** 
-    *   Ukázková implementace pro [raspberrypi nebo.](https://aka.ms/iotcentral-docs-Raspi-releases)  
+1. **Program zařízení informace o službě zřizování**, aby mohla získat jeho podrobnosti připojení a jeho Azure IoT Central přiřazení aplikace, když je zapnuté.
 
-    *   [Ukázky klienta zařízení v jazyce C.](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
+    Další informace najdete v těchto článcích:
 
->[!NOTE]
->Použití **ID zařízení** jako záznam cname generovat listové certifikáty pro zařízení.
+    - [Ukázková implementace pro Raspberry Pi](https://aka.ms/iotcentral-docs-Raspi-releases)  
 
->[!NOTE]
->**ID zařízení** by měl být malými písmeny 
- 
+    - [Ukázky klienta zařízení v jazyce C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+
 ## <a name="connect-without-first-registering-devices"></a>Připojit bez první registrace zařízení
-Jeden z klíčových scénářů, které umožňuje IoT Central je pro výrobce OEM, do zařízení hromadné výroby, vytvoření přihlašovacích údajů a nakonfigurujete je v objektu pro vytváření bez nutnosti nejprve zaregistrujte je v IoT Central. Jakmile se zařízení jsou zapnuté a připojte se k IoT Central operátor schválí zařízení pro připojení k aplikaci IoT Central.
 
-Níže se tok připojil zařízení s touto funkcí
+Jednou z klíčových scénářů, které podporuje Azure IoT Central je pro výrobce OEM velkokapacitních od výrobce zařízení, vytvoření přihlašovacích údajů a konfiguraci zařízení v objektu pro vytváření, aniž byste museli nejdřív zaregistrovat zařízení v Azure IoT Central. Poté, co zařízení jsou zapnuté a pokusí se připojit k Azure IoT Central, operátor schválí zařízení pro připojení k aplikaci Azure IoT Central.
+
+Tady se tok připojil zařízení s touto funkcí:
 
 ![Nastavení připojení](media/concepts-connectivity/device-connection-flow.png)
 
+Postupujte podle kroků na základě vaší volby schématu ověřování zařízení (certifikáty X.509 nebo sdílených přístupových podpisů):
 
-Postupujte podle pokynů na základě vaší volby schéma ověřování zařízení (X509/SAS)
+1. **Konfigurace nebo získání nastavení připojení:**
 
-1. **nastavení připojení** 
-    * **X509 certifikáty:** [Přidat a ověřit kořenový nebo zprostředkující certifikát](#connect-devices-using-x509-certificates) a použít ho ke generování certifikátů zařízení v dalším kroku.
-    * **SAS:** Zkopírujte primární klíč (klíč SAS pro skupinu pro tuto aplikaci IoT Central je tento klíč) a použít ho ke generování klíče SAS zařízení v dalším kroku. 
-![Nastavení připojení SAS](media/concepts-connectivity/connection-settings-sas.png)
+    - **Certifikáty X.509:** [Přidání a ověření kořenový nebo zprostředkující certifikát](#connect-devices-using-x509-certificates) a použít ho ke generování certifikátů zařízení v dalším kroku.
+    - **Sdílené přístupové podpisy:** Zkopírujte primární klíč (Tento klíč je klíč skupiny sdíleného přístupového podpisu pro tuto aplikaci Azure IoT Central) a použít ho ke generování klíče podpisu zařízení sdíleného přístupu v dalším kroku.
 
-1. **Vytvoření přihlašovacích údajů pro zařízení** 
-    *   **Certifikáty X509:** Generovat listové certifikáty pro zařízení s použitím kořenové nebo zprostředkující certifikát, který jste přidali do této aplikace. Ujistěte se, že používáte **ID zařízení** jako záznam cname v listu certifikáty a  **<span style="color:Red">(by měl být malými písmeny)</span>**. Tady je [nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) ke generování certifikátů listu nebo zařízení pro testování.
-    *   **SAS** klíče zařízení SAS můžete vygenerovat pomocí to [nástroj příkazového řádku](https://www.npmjs.com/package/dps-keygen). Použijte primární SAS klíč (klíč SAS pro skupiny) z předchozího kroku. Ujistěte se, že ID zařízení  **<span style="color:Red">je malými písmeny</span>**.
+       ![Nastavení připojení pro sdílených přístupových podpisů](media/concepts-connectivity/connection-settings-sas.png)
 
-        Použití následujících pokynů k vygenerování klíče SAS zařízení           
+1. **Vytvoření přihlašovacích údajů zařízení:**
+
+    - **Certifikáty X.509:** Generovat listové certifikáty pro vaše zařízení s použitím kořenový nebo zprostředkující certifikát, které jste přidali k této aplikaci. Ujistěte se, že používáte ID zařízení jako záznam CNAME v listu certifikáty a ujistěte se, že je malá písmena. Tady je [nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) pro generování certifikátů listu nebo zařízení pro testování.
+    - **Sdílené přístupové podpisy:** Ke generování zařízení sdíleného přístupu podpisové klíče, použijte toto [nástroj příkazového řádku](https://www.npmjs.com/package/dps-keygen). Použijte klíč primární sdílený přístupový podpis (klíč skupiny sdílený přístupový podpis) z předchozího kroku. Ujistěte se, že zařízení je ID malými písmeny.
+
+        Chcete-li získat připojovací řetězec zařízení použijte následující příkaz: 
 
         ```
         npm i -g dps-keygen
         ```
     
-        **Použití**
+        Ke generování klíče sdíleného přístupového podpisu zařízení použijte následující příkaz:
                         
         ```
         dps-keygen <Primary_Key(GroupSAS)> <device_id>
         ```
 
-1. **Nastavení zařízení** 
-    
-     Flash zařízení s **ID oboru, ID zařízení, zařízení certifikát a SAS klíč** a zapněte zařízení pro připojení k aplikaci IoT Central.
+1. **Nastavení zařízení:** Flash každému zařízení **ID oboru**, **ID zařízení**, a **certifikátu nebo SAS klíč zařízení**a tato zařízení pro připojení k aplikaci Azure IoT Central.
 
-1. **Připojení zařízení k IoT Central:** Po zapnutí zařízení připojit k Device Provisioning a IoT Central pro registraci.
+1. **Připojení zařízení k Azure IoT Central:** Po zařízení jsou zapnuté, pro registraci se připojit k zařízení zřizování služby Azure IoT Central.
 
-1. **Přidružení zařízení do šablony:** Připojené zařízení se zobrazí v části **nepřidružené zařízení** v **Device Explorer**. Zařízení, Stav zřizování je **registrované**. **Přidružit** zařízení k šabloně příslušné zařízení a schválit zařízení pro připojení k aplikaci IoT Central. Zařízení získá podrobnosti o připojení pro aplikace IoT Central, a potom připojí a spustí odesílat data. Zřizování zařízení je teď dokončený a *Stav zřizování* se změní **zřízená**.
+1. **Přidružení zařízení do šablony:** Připojená zařízení zobrazí v části **zrušení přidružené zařízení** v **Device Explorer**. Stav zřizování zařízení je **registrované**. **Přidružit** zařízení k šabloně příslušné zařízení a schválit zařízení pro připojení k aplikaci Azure IoT Central. Zařízení získat podrobnosti o připojení pro aplikaci Azure IoT Central, a potom připojit a začít odesílat data. Zřizování zařízení je nyní dokončena a **Stav zřizování** pro zařízení se změní **zřízená**.
 
 ## <a name="device-provisioning-status"></a>Stav zřizování zařízení
-Obsahuje sérii kroků při se využívá řada skutečné zařízení je připojené k Azure IoT Central 
-1. **Registrovaný**: Zařízení je první **registrované**, což znamená vytvoření zařízení v IoT Central a má ID zařízení pro zařízení.
-Registrace zařízení při  
-    *   Jsou přidávány nové skutečné zařízení **Průzkumníka**
-    *   Sadu zařízení přidána pomocí **Import** na **Průzkumníka**
-    *   Zařízení, který nebyl registrován, ale nepřipojí k platné přihlašovací údaje a je viditelný v **zrušení přidružené** zařízení. 
 
-    Ve všech případech *Stav zřizování* je **registrované**
+Pokud se skutečné zařízení připojené k Azure IoT Central, dojde k následujícím krokům:
 
-1. **Zřízení**: Dalším krokem je, když se zařízení připojí pomocí platných přihlašovacích údajů IoT Central krok zajišťování dokončí (tak, že vytvoříte zařízení ve službě IoT Hub). Potom vrátí připojovací řetězec zařízení připojit a začít odesílat data. Zařízení *Stav zřizování* nyní se změní z **registrované** k **zřízená**.
+1. **Registrovaný**: Nejprve registrace zařízení, což znamená vytvoření zařízení v Azure IoT Central a nemá ID zařízení pro zařízení. Je zařízení registrováno při:
 
-1.  **Zablokuje**: Operátor může blokovat zařízení, jakmile je zařízení blokované nemůže odesílat data do IoT Central a bude nutné resetovat. Zařízení, které jsou blokovány mají *Stav zřizování* z **blokováno**. Operátor může také odblokování zařízení. Po odblokování zařízení *Stav zřizování* zpět jeho předchozí *Stav zřizování* (zaregistrované nebo zřízené). 
+    * Přidá nový skutečné zařízení **Device Explorer**
+    * Přidání skupiny zařízení s použitím **Import** v **Device Explorer**
+    * Zařízení, která nebyla registrována připojuje pomocí platných přihlašovacích údajů a je viditelný v **zrušení přidružená zařízení.**
 
-## <a name="getting-device-connection-string"></a>Získat připojovací řetězec zařízení
-Můžete získat připojovací řetězec zařízení Iot hub pro službu Azure IoT Hub pomocí následujících kroků 
-1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení, zařízení primární klíč** ze stránky zařízení (je teď na stránce zařízení > klikněte na tlačítko Připojit) 
+    Ve všech výše uvedených případech **Stav zřizování** je **registrované**.
+
+1. **Zřízení**: Když se zařízení připojí pomocí platných přihlašovacích údajů, Azure IoT Central se dokončí zřizování kroku (tak, že vytvoříte zařízení ve službě IoT Hub). Azure IoT Central pak vrátí připojovací řetězec do zařízení, takže se můžete připojit a začít odesílat data. Zařízení **Stav zřizování** se změní z **registrované** k **zřízená**.
+
+1. **Zablokuje**: Operátor může blokovat zařízení. Po zařízením se zablokuje, kterou nelze odesílat data do Azure IoT Central a bude mít k obnovení. Zařízení, které jsou blokovány mají **Stav zřizování** z **blokováno**. Operátor může také odblokování zařízení. Po jeho má odblokováno, zařízení **Stav zřizování** vrátí do stavu předchozího (**registrované** nebo **zřízená**). 
+
+## <a name="get-the-device-connection-string"></a>Získání připojovacího řetězec zařízení
+
+Připojovací řetězec služby Iot Hub zařízení do služby Azure IoT Hub můžete získat pomocí následujících kroků:
+
+1. Získat podrobnosti o připojení zařízení, jako **ID oboru**, **ID zařízení**, a **primární klíč** z **připojení zařízení** stránky. Tyto informace, přejděte k **zařízení** stránku a vybrat **připojit**. 
 
     ![Podrobnosti připojení](media/concepts-connectivity/device-connect.png)
 
-1. Získá připojovací řetězec zařízení pomocí nástroje příkazového řádku.
-    Použití následujících pokynů k získání připojovacího řetězce zařízení  
+1. Získání připojovacího řetězce zařízení pomocí nástroje příkazového řádku keygen distribučních bodů. Chcete-li získat připojovací řetězec zařízení použijte následující příkaz:  
 
     ```cmd/sh
     npm i -g dps-keygen
     ```
-    **Použití**
 
-    Chcete-li vytvořit připojovací řetězec, najít v části bin binárního souboru nebo složky
+    Vytvoření připojovacího řetězce, vyhledejte binární soubor v rámci *bin /* složky:
+
     ```cmd/sh
     dps_cstr <scope_id> <device_id> <Primary Key(for device)>
     ```
-    Další informace o [zde o nástroj keygen distribučních bodů.](https://www.npmjs.com/package/dps-keygen)
+
+    [Další informace o nástroj dps keygen](https://www.npmjs.com/package/dps-keygen).
 
 ## <a name="sdk-support"></a>Podpora v sadě SDK
 
-Nabídka sady SDK pro zařízení Azure nejjednodušší můžete implementovat kód na zařízení, která se připojuje k vaší aplikaci Azure IoT Central. Sady SDK pro následující zařízení jsou k dispozici:
+Sady SDK Azure IoT nabízejí Nejsnadnějším způsobem, jak používat kód na zařízeních, která se připojují k vaší aplikaci Azure IoT Central. Následující sady SDK jsou k dispozici:
 
 - [Sada Azure IoT SDK pro jazyk C](https://github.com/azure/azure-iot-sdk-c)
 - [Azure IoT SDK pro Python](https://github.com/azure/azure-iot-sdk-python)
@@ -266,7 +278,7 @@ Veškerá komunikace zařízení pomocí služby IoT Hub používá následujíc
 - [Zasílání zpráv typu zařízení cloud](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)
 - [Dvojčata zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
 
-Následující tabulka shrnuje, jak Azure IoT Central zařízení funkce mapují k funkcích ve službě IoT Hub:
+Následující tabulka shrnuje, jak Azure IoT Central funkcí na zařízeních se mapují na funkcích ve službě IoT Hub:
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
@@ -274,36 +286,31 @@ Následující tabulka shrnuje, jak Azure IoT Central zařízení funkce mapují
 | Vlastnosti zařízení | Ohlášené vlastnosti dvojčete zařízení |
 | Nastavení | Dvojče zařízení požadovaného a ohlášené vlastnosti |
 
-Další informace o použití sady SDK pro zařízení, najdete v jednom z následujících článků příklad kódu:
+Další informace o použití sady SDK Azure IoT, naleznete v následujících článcích pro ukázkový kód:
 
 - [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs-experimental.md)
 - [Připojte Raspberry Pi zařízení do aplikace Azure IoT Central](howto-connect-raspberry-pi-python.md)
-- [Připojte zařízení za kit DevDiv do aplikace Azure IoT Central](howto-connect-devkit-experimental.md).
+- [Připojení MXChip IoT DevKit zařízení k vaší aplikaci Azure IoT Central](howto-connect-devkit-experimental.md)
 
 
 ## <a name="protocols"></a>Protokoly
 
-Sady SDK pro zařízení se podporují následující síťové protokoly pro připojení do služby IoT hub:
+Azure IoT SDK podporují následující síťové protokoly pro připojení do služby IoT hub:
 
 - MQTT
 - AMQP
 - HTTPS
 
-Informace o těchto protokolů rozdíl a pokyny o volbě jeden najdete v tématu [volba komunikačního protokolu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-protocols).
+Informace o těchto protokolů a pokyny o volbě jeden najdete v tématu [volba komunikačního protokolu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-protocols).
 
 Pokud vaše zařízení nemohou použít žádný z podporovaných protokolů, můžete použít Azure IoT Edge na protokol převodu. IoT Edge podporuje další scénáře intelligence na the-edge pro snižování zátěže zpracování do hraničních zařízení z aplikace v Azure IoT Central.
 
 ## <a name="security"></a>Zabezpečení
 
-Všechna data se vyměňují mezi zařízeními a vaše Azure IoT Central je zašifrovaná. IoT Hub provádí ověřování každý požadavek ze zařízení, která se připojuje k některé z koncových bodů určených pro zařízení služby IoT Hub. Zařízení se pokud chcete vyhnout, výměnu přihlašovacích údajů při přenosu, používá k ověření podepsané tokeny. Další informace najdete v tématu, [řízení přístupu ke službě IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security).
-
-> [!NOTE]
-> V současné době zařízení, která připojení k Azure IoT Central, musíte použít tokeny SAS. Certifikáty X.509 nejsou podporovány pro zařízení, která se připojují k Azure IoT Central.
+Všechna data se vyměňují mezi zařízeními a aplikace Azure IoT Central je zašifrovaná. IoT Hub provádí ověřování každý požadavek ze zařízení, která se připojuje k některé z koncových bodů určených pro zařízení služby IoT Hub. Zařízení se pokud chcete vyhnout, výměnu přihlašovacích údajů při přenosu, používá k ověření podepsané tokeny. Další informace najdete v tématu [Řízení přístupu ke službě IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security).
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se dozvěděli o připojení zařízení v Azure IoT Central, tady jsou další navrhované kroky:
-
-- [Příprava a připojte zařízení za DevKit](howto-connect-devkit-experimental.md)
-- [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
+- [Příprava a připojte zařízení za MXChip IoT DevKit](howto-connect-devkit-experimental.md)
+- [Příprava a připojte zařízení za Raspberry Pi](howto-connect-raspberry-pi-python.md)
 - [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs-experimental.md)

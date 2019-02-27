@@ -1,5 +1,5 @@
 ---
-title: Používat dynamické šifrování AES Azure Media Services | Dokumentace Microsoftu
+title: Použití Azure Media Services k šifrování pomocí AES-128 video | Dokumentace Microsoftu
 description: Doručování obsahu pomocí klíčů AES 128-bit šifrování, šifrován pomocí Microsoft Azure Media Services. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. Toto téma ukazuje, jak dynamicky šifrovat pomocí standardu AES-128 a používat službu doručování klíčů.
 services: media-services
 documentationcenter: ''
@@ -11,31 +11,49 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 87d427bd6b4a58948e43c42d81337f7603659e5a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2216deb7a59dda2a7c3b99c55956ef8541925425
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991446"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877278"
 ---
-# <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a doručení klíče služby
+# <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Kurz: Použití dynamického šifrování AES-128 a doručení klíče služby
 
-Media Services můžete použít k zajištění HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming, šifrují pomocí AES pomocí 128bitového šifrování klíčů. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. Pokud chcete pro Media Services k šifrování prostředek, šifrovací klíč přidružit StreamingLocator a taky nakonfigurovat obsahu klíče zásad. Datový proud je žádost přehrávač, Media Services používá k dynamické šifrování obsahu pomocí šifrování AES se zadaným klíčem. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. K tomu, aby služba zjistila, jestli má daný uživatel povolené získání klíče, vyhodnocuje zásadu symetrického klíče, kterou jste pro klíč určili.
+Media Services můžete použít k zajištění HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming, šifrují pomocí AES pomocí 128bitového šifrování klíčů. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. Pokud chcete pro Media Services k dynamické šifrování vašeho videa, šifrovací klíč přidružit Lokátor streamování a také nakonfigurovat zásady obsahu klíčů. Přehrávač je žádost datového proudu, používá Media Services se zadaným klíčem k dynamické šifrování obsahu pomocí AES-128. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. K tomu, aby služba zjistila, jestli má daný uživatel povolené získání klíče, vyhodnocuje zásadu symetrického klíče, kterou jste pro klíč určili.
 
-Tento článek je založen na [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) vzorku. Vzorek ukazuje, jak vytvořit kódování transformaci, která používá integrované přednastavení kódování s adaptivní přenosovou rychlostí a ingestuje souboru přímo z [adresa URL zdroje HTTPs](job-input-from-http-how-to.md). Prostředku výstupu se potom zveřejní pomocí šifrování AES (ClearKey). Výstup z ukázky je adresa URL pro Azure Media Player, včetně DASH manifestu a AES token potřebné k přehrávání obsahu. Ukázka nastaví vypršení platnosti tokenu JWT na 1 hodinu. Můžete otevřít prohlížeč a vložit bude Výsledná adresa URL ke spuštění stránky ukázku Azure Media Player pomocí adresy URL a tokenu doplnit pro vás již v následujícím formátu: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
+Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl. Viz také [ochrana pomocí DRM](protect-with-drm.md).
 
-> [!NOTE]
-> Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl.
+Výstup z ukázky v tomto článku obsahuje adresu URL pro Azure Media Player, adresu URL manifestu a AES token potřebné k přehrávání obsahu. Ukázka nastaví vypršení platnosti tokenu JWT na 1 hodinu. Můžete otevřít prohlížeč a vložit bude Výsledná adresa URL ke spuštění stránky ukázku Azure Media Player pomocí adresy URL a tokenu doplnit pro vás již v následujícím formátu: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
+
+V tomto kurzu získáte informace o následujících postupech:    
+
+> [!div class="checklist"]
+> * Stáhněte si [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) ukázku popsanou v článku
+> * Začínáme s rozhraním API služby Media Services se sadou .NET SDK
+> * Vytvoření výstupního prostředku
+> * Vytvoření kódování transformace
+> * Odeslání úlohy
+> * Čekání na dokončení úlohy
+> * Vytvořit zásadu klíče obsahu
+> * Konfigurace zásad používat omezení s tokenem JWT 
+> * Vytvořit lokátor streamování
+> * Konfigurace Lokátor streamování šifrování videa pomocí standardu AES (ClearKey)
+> * Získání testovacího tokenu
+> * Vytvořit adresu URL streamování
+> * Vyčištění prostředků
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující:
 
-* Přečíst si článek [Přehled ochrany obsahu](content-protection-overview.md)
+* Zkontrolujte [obsahu Přehled služby Endpoint protection](content-protection-overview.md) článku
 * Nainstalovat Visual Studio Code nebo Visual Studio
-* Vytvořit si nový účet služby Azure Media Services podle popisu [v tomto rychlém startu](create-account-cli-quickstart.md)
+* [Vytvoření účtu Media Services](create-account-cli-quickstart.md)
 * Získat přihlašovací údaje nutné k používání rozhraní API služby Media Services podle článku [Přístup k rozhraním API](access-api-cli-how-to.md)
 
 ## <a name="download-code"></a>Stažení kódu
@@ -87,27 +105,27 @@ V tomto kurzu vytvoříme vstup úlohy na základě souboru, který se ingestuje
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-contentkeypolicy"></a>Vytvoření zásady symetrického klíče
+## <a name="create-a-content-key-policy"></a>Vytvořit zásadu klíče obsahu
 
-Symetrický klíč poskytuje zabezpečený přístup k vašim prostředkům. Je potřeba vytvořit **ContentKeyPolicy** , který konfiguruje, jak je klíč k obsahu doručit koncovým klientům. Klíč obsahu je přidružené k **StreamingLocator**. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. 
+Symetrický klíč poskytuje zabezpečený přístup k vašim prostředkům. Je potřeba vytvořit **zásad klíče k obsahu** , který konfiguruje, jak je klíč k obsahu doručit koncovým klientům. Klíč obsahu je přidružené k **Lokátor streamování**. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. 
 
 Datový proud je žádost přehrávač, Media Services využívá se zadaným klíčem k dynamické šifrování obsahu (v tomto případě s použitím šifrování AES.) K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. K tomu, aby služba zjistila, jestli má daný uživatel povolené získání klíče, vyhodnocuje zásadu symetrického klíče, kterou jste pro klíč určili.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="create-a-streaminglocator"></a>Vytvoření lokátoru streamování StreamingLocator
+## <a name="create-a-streaming-locator"></a>Vytvořit lokátor streamování
 
 Po dokončení kódování a nastavení zásady symetrického klíče spočívá další krok ve vytvoření videa ve výstupním prostředku, které budou moct klienti přehrávat. To sestává ze dvou kroků: 
 
-1. Vytvoření lokátoru streamování [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)
+1. Vytvoření [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)
 2. Vytvoření adres URL pro streamování, které můžou používat klienti 
 
-Proces vytváření streamovacího lokátoru **StreamingLocator** označujeme jako publikování. Pokud nenakonfigurujete volitelný počáteční a koncový čas, je **streamovací lokátor** ve výchozím nastavení platný hned po zavolání rozhraní API a jeho platnost zrušíte až jeho odstraněním. 
+Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
 
-Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto kurzu používáme jednu z předdefinovaných zásad streamování, která sděluje službě Azure Media Services, jak publikovat obsah určený ke streamování. V tomto příkladu se použije šifrování standardu AES Envelope (označované také jako ClearKey šifrování vzhledem k tomu, že je klíč doručen klientovi přehrávání prostřednictvím protokolu HTTPS a ne licence DRM).
+Při vytváření [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators), budete muset zadat požadovaný **StreamingPolicyName**. V tomto kurzu používáme jednu z předdefinovaných zásad streamování, která sděluje službě Azure Media Services, jak publikovat obsah určený ke streamování. V tomto příkladu se použije šifrování standardu AES Envelope (označované také jako ClearKey šifrování vzhledem k tomu, že je klíč doručen klientovi přehrávání prostřednictvím protokolu HTTPS a ne licence DRM).
 
 > [!IMPORTANT]
-> Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
+> Při použití vlastního [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), by měly omezenou sadu zásad návrhu pro svůj účet Media Service a znovu je použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti šifrování a protokoly. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. By neměl být vytváření nové StreamingPolicy každý Lokátor streamování.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
 
@@ -115,22 +133,32 @@ Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/m
         
 V tomto kurzu určíme, že má mít zásada symetrického klíče omezení tokenu. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve formátu JWT ([JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) a právě ten v ukázce nakonfigurujeme.
 
-ContentKeyIdentifierClaim se používá v ContentKeyPolicy, což znamená, že token, který zobrazí ve službě Key doručování musí mít identifikátor ContentKey v ní. V ukázce při vytváření streamovacího lokátoru StreamingLocator neurčujeme symetrický klíč a systém ho tedy vytvoří náhodně. K vygenerování testovacího tokenu musíme získat identifikátor symetrického klíče, který se vloží do deklarace ContentKeyIdentifierClaim.
+Je používán ContentKeyIdentifierClaim **zásad klíče k obsahu**, což znamená, že token, který zobrazí ve službě Key doručování musí mít identifikátor klíče k obsahu v ní. V ukázce jsme nezadali obsahem klíče při vytváření Lokátor streamování, systém vytvořil náhodné jeden pro USA. K vygenerování testovacího tokenu musíme získat identifikátor symetrického klíče, který se vloží do deklarace ContentKeyIdentifierClaim.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>Vytvoření adresy URL pro streamování DASH
 
-Vytvořili jste streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) a teď můžete vytvořit adresy URL pro streamování. Pokud chcete vytvořit adresu URL, musíte zřetězit název hostitele [koncového bodu hostování](https://docs.microsoft.com/rest/api/media/streamingendpoints) a cestu **streamovacího lokátoru**. V této ukázce je použit *výchozí* **koncový bod streamování**. Když poprvé vytvoříte účet Media Service, tento *výchozí* **koncový bod streamování** bude v zastaveném stavu, proto je potřeba zavolat **spuštění**.
+Teď, když [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) byl vytvořen, můžete získat adresy URL pro streamování. Sestavit adresu URL, je nutné zřetězit [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) název hostitele a **Lokátor streamování** cestu. V této ukázce *výchozí* **koncový bod streamování** se používá. Při prvním vytvoření účtů Media Service, to *výchozí* **koncový bod streamování** budou v zastaveném stavu, takže je potřeba volat **Start**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
-Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte v plánu použít znovu, (obvykle jsou to transformace, streamovací lokátory apod.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  Následující kód například odstraní Úlohy.
+Obecně platí, by měl odstraníte všechno, co s výjimkou objektů, které máte v úmyslu znovu použít (obvykle messagingfactory transformací, a se zachová streamování lokátory atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  Následující kód například odstraní Úlohy.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. 
+
+Spusťte následující příkaz rozhraní příkazového řádku:
+
+```azurecli
+az group delete --name amsResourceGroup
+```
 ## <a name="next-steps"></a>Další postup
 
-Podívejte se na tom, jak [chránit pomocí DRM](protect-with-drm.md)
+> [!div class="nextstepaction"]
+> [Ochrana s využitím DRM](protect-with-drm.md)

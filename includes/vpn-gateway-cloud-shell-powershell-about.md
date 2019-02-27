@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ece75ff84c9f45e7284d7a5976f55f8a4ac4680f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418083"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884028"
 ---
-Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
+Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell. Azure Cloud Shell je bezplatné interaktivní prostředí, který má obecné nástroje Azure, které jsou předinstalované a nakonfigurovány pro použití s vaším účtem. Stačí kliknout na **kopírování** zkopírovat kód, vložte ho do Cloud Shellu a stiskněte klávesu enter k jeho spuštění. Existuje několik způsobů, jak Cloud Shell spustit:
 
 |  |   |
 |-----------------------------------------------|---|
@@ -24,4 +24,6 @@ Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit ru
 | Klikněte na tlačítko **Cloud Shell** v nabídce v pravé horní části webu Azure Portal. | [![Cloud Shell na portálu](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
 |  |  |
 
-Pokud nechcete použít Azure Cloud Shell, můžete nainstalovat prostředí PowerShell místně místo. Pokud se rozhodnete nainstalovat a používat PowerShell místně, nezapomeňte nainstalovat nejnovější verzi rutin Powershellu pro Azure Resource Manager k získání nejnovější funkce. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+**Místní použití Powershellu**
+
+Můžete také nainstalovat a spustit rutiny prostředí Azure PowerShell místně ve vašem počítači. Rutiny Powershellu se často aktualizují. Pokud používáte nejnovější verzi, zadané v pokynech pro hodnoty nemusí fungovat. Pokud chcete zjistit verzi prostředí PowerShell, které spouštíte místně, použijte `Get-Module -ListAvailable Az` rutiny. Pro instalaci nebo aktualizaci, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).

@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c34b3fa1597866e4f722fccee84f83f4caab6bfb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231134"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876292"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>V reálném čase analýza sentimentu na Twitteru ve službě Azure Stream Analytics
 
@@ -58,7 +58,7 @@ V tomto postupu vytvoříte obor názvů centra událostí a pak přidáte do da
 
 5. Klikněte na nový obor názvů a v okně oboru názvů klikněte na tlačítko  **+ &nbsp;centra událostí**. 
 
-    ![Tlačítko Přidat Centrum událostí pro vytvoření nové Centrum událostí ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
+    ![Tlačítko Přidat Centrum událostí pro vytvoření nové Centrum událostí](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
 6. Název nové Centrum událostí `socialtwitter-eh`. Můžete použít jiný název. Pokud tak učiníte, si poznamenejte, protože je budete později potřebovat názvu. Není nutné nastavit další možnosti pro Centrum událostí.
 

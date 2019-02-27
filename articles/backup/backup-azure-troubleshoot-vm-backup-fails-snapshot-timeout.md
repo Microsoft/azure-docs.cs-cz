@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c62560d2f80375a725464607f38b9e8adf221d16
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236970"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875595"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -225,7 +225,7 @@ Dokončení tohoto postupu způsobí, že rozšíření znovu při dalším zál
 3. V **nastavení** vyberte **zámky** zobrazíte zámků.
 4. Odebrat zámek, vyberte tři tečky a klikněte na **odstranit**.
 
-    ![Zámek proti odstranění ](./media/backup-azure-arm-vms-prepare/delete-lock.png)
+    ![Zámek proti odstranění](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
 ### <a name="clean_up_restore_point_collection"></a> Odstranit kolekci bodů obnovení
 Po ze zařízení zámek odebral, mají body obnovení na vyčištění. Chcete-li vyčistit body obnovení, postupovat podle některého z metody:<br>
@@ -244,12 +244,12 @@ Ručně vymažte obnovení bodů kolekce, které nejsou zrušeno z důvodu zámk
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com/).
 2. Na **centra** nabídky, klikněte na tlačítko **všechny prostředky**, vyberte skupinu prostředků v následujícím formátu AzureBackupRG_`<Geo>`_`<number>` kde je umístěn virtuální počítač.
 
-    ![Zámek proti odstranění ](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Zámek proti odstranění](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Klikněte na skupinu prostředků **přehled** zobrazí se okno.
 4. Vyberte **zobrazit skryté typy** možnost zobrazit všechny skryté prostředky. Vyberte kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<VMName>`_`<number>`.
 
-    ![Zámek proti odstranění ](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![Zámek proti odstranění](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
 5. Klikněte na tlačítko **odstranit**, vyčistit kolekci bodů obnovení.
 6. Zkuste operaci zálohování znovu.

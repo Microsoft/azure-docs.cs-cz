@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: bb2d57d3e119fd83d1a984fc31f29a5d93e957d1
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e7a5ed6274a0429726f0ed19c0765cfdc3378daa
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745941"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888521"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů s využitím rezervované kapacity ve službě Azure Cosmos DB
 
@@ -68,6 +68,10 @@ Velikost rezervace by měla vycházet z celkové množství propustnost, které 
 Po nákupu rezervace se okamžitě použije na nějaké stávající prostředky Azure Cosmos DB, které odpovídají podmínkám použití rezervace. Pokud nemáte k dispozici nějaké stávající prostředky Azure Cosmos DB, rezervace platit, když nasadíte novou instanci služby Cosmos DB, která odpovídá podmínky rezervace. V obou případech se období rezervace začne hned po úspěšném nákupu. 
 
 Když vyprší platnost vaší rezervace, nadále spouštět vaše instance služby Azure Cosmos DB a jsou účtovány za běžné sazby průběžných plateb.
+
+## <a name="cancellation-and-exchanges"></a>Zrušení a výměny
+
+Pomoc při identifikaci přímo rezervované kapacity najdete v tématu [pochopit, jak sleva za rezervaci se použije ke službě Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). V případě, že, budete muset zrušit nebo exchange rezervací služby Azure Cosmos DB, kontaktujte prosím tým služby Azure Cosmos DB v `askCosmosDB@microsoft.com`.
 
 ## <a name="next-steps"></a>Další postup
 

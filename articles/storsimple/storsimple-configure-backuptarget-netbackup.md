@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: 361ab36d3029dbc00e8d1e53ef9f9af42be3e1eb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 913df079b56e131a3120971b635c49c2c04b2b1e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255832"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871566"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
 
@@ -79,7 +79,7 @@ StorSimple nabízí tyto výhody:
 
 I když StorSimple v podstatě představuje dva scénáře nasazení hlavní (primární, záložní cíl a sekundární záložní cíl), je jednoduché, zařízení s blokovým úložištěm. StorSimple nemá všechny komprese a odstranění duplicit. Bez problémů odešle a načítá data mezi cloudem a aplikace a systém souborů.
 
-Další informace o StorSimple najdete v tématu [řady StorSimple 8000 series: řešení hybridního cloudového úložiště](storsimple-overview.md). Navíc můžete zkontrolovat [technických specifikací řady StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Další informace o StorSimple najdete v tématu [StorSimple řady 8000: Řešení hybridního cloudového úložiště](storsimple-overview.md). Navíc můžete zkontrolovat [technických specifikací řady StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > Použití StorSimple zařízení jako cíl zálohování je podporováno pouze pro StorSimple 8000 Update 3 a novějších verzích.
@@ -183,7 +183,7 @@ V této části ukážeme některé příklady konfigurace. Následující pří
 
 | Úlohy nasazení StorSimple  | Další komentáře |
 |---|---|
-| Nasazení místního zařízení StorSimple. | Podporované verze: 3 a novější verze aktualizace. |
+| Nasazení místního zařízení StorSimple. | Podporované verze: Aktualizací Update 3 a novějších verzích. |
 | Zapněte cíl zálohování. | Pomocí těchto příkazů zapnout nebo vypnout režim cíl zálohování a získat stav. Další informace najdete v tématu [připojit vzdáleně k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnout režim zálohování: `Set-HCSBackupApplianceMode -enable`. </br> Chcete-li vypnout režim zálohování: `Set-HCSBackupApplianceMode -disable`. </br> Chcete-li získat aktuální stav nastavení režim zálohování: `Get-HCSBackupApplianceMode`. |
 | Vytvořte kontejner svazků běžné svazku, který uchovává zálohovaná data. Všechna data v kontejneru svazku se odstraňují duplicity. | Kontejnery svazků StorSimple definování domén odstranění duplicit.  |
 | Vytvořte svazky zařízení StorSimple. | Vytvořte svazky s velikostí jako blízko očekávané využití nejdříve, protože velikost svazku ovlivňuje dobu trvání snímku v cloudu. Informace o tom, jak upravit velikost svazku, přečtěte si informace o [zásady uchovávání informací](#retention-policies).</br> </br> Použití StorSimple vrstvené svazky a vyberte **použít tento svazek pro archivní data s méně častým** zaškrtávací políčko. </br> Použití pouze místně připojené svazky se nepodporuje. |
@@ -292,7 +292,7 @@ Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku p
 
 Následující obrázek znázorňuje mapování svazku typické pro úlohu zálohování. V takovém případě všechny týdenní zálohy namapovat na sobotu celého disku a mapování přírůstkové zálohování na disky přírůstkové pondělí až pátek. Všechno, co zálohování a obnovení jsou ze StorSimple vrstveného svazku.
 
-![Primární cíl zálohování konfigurace Logický diagram ](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
+![Primární cíl zálohování konfigurace Logický diagram](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
 ### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>StorSimple jako cíl zálohování primární GFS naplánovat příklad
 
@@ -403,7 +403,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 \* Celková kapacita zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Příklad plánu GFS: otočení GFS týdenní, měsíční a roční plán
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS Příklad plánu: Otočení GFS týdenní, měsíční a roční plán
 
 | Týden | Úplná | Přírůstkové dne 1 | Přírůstkové den 2 | Přírůstkové den 3 | Přírůstkové den 4 | Přírůstková denně, 5 |
 |---|---|---|---|---|---|---|
@@ -421,7 +421,7 @@ Vzhledem k tomu, že NetBackup nabízí širokou škálu možností pro správu 
 
 Po definování počáteční diskových fondech, je třeba definovat tři zásady životního cyklu další úložiště, a cena celkem čtyři zásady:
 * LocalRAIDVolume
-* StorSimpleWeek2 4
+* StorSimpleWeek2-4
 * StorSimpleMonthlyFulls
 * StorSimpleYearlyFulls
 

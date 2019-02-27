@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 8e31717f9fd232a7c256b65d044a97396af8f960
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448638"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878009"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Unity (beta verze)
 
@@ -74,7 +74,7 @@ Přidáme minimálního uživatelského rozhraní do našich scény skládajíc�
 
 Až skončíte, uživatelské rozhraní by měl vypadat zhruba takto:
 
-[ ![Snímek obrazovky uživatelského rozhraní pro rychlý start v Unity editoru](media/sdk/qs-csharp-unity-02-ui-inline.png) ](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
+[![Snímek obrazovky uživatelského rozhraní pro rychlý start v Unity editoru](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
@@ -111,7 +111,7 @@ Až skončíte, uživatelské rozhraní by měl vypadat zhruba takto:
 
 * Po spuštění aplikace, klikněte na tlačítko a Mluvte anglickou fráze nebo větu do počítače mikrofon. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí v okně.
 
-  [ ![Snímek obrazovky spuštěné rychlý start v okně hry Unity](media/sdk/qs-csharp-unity-03-output-inline.png) ](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
+  [![Snímek obrazovky spuštěné rychlý start v okně hry Unity](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 
 * Zkontrolujte, [okna konzoly](https://docs.unity3d.com/Manual/Console.html) pro zprávy ladění.
 

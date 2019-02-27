@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 255dd58e98a65e30c61c57b7538311dcd2fbe277
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8d9a1076320459d5c213c762cd88b5902b952041
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585249"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Kurz: Integrace Azure Active Directory s HireVue
 
@@ -110,14 +110,14 @@ Ke konfiguraci Azure AD jednotné přihlašování s HireVue, proveďte následu
     | Prostředí | zprostředkovatele identity |
     |-------------|---|
     | Výroba | `https://<companyname>.hirevue.com` |
-    | Fázování    | `https://<companyname>.stghv.com` |
+    | Staging    | `https://<companyname>.stghv.com` |
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
 
     | Prostředí | NÁZEV URN |
     |-------------|-----|
     | Výroba |`urn:federation:hirevue.com:saml:sp:prod` |
-    | Fázování    | `urn:federation:hirevue.com:saml:sp:staging`|
+    | Staging    | `urn:federation:hirevue.com:saml:sp:staging`|
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory HireVue klienta](mailto:samlsupport@hirevue.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
@@ -203,8 +203,8 @@ Po kliknutí na dlaždici HireVue na přístupovém panelu, můžete by měl bý
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: d97171003507ea0d7412c0706f9deea02fe06c0d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0a2027e3ae0fb40058b5bdbfd212687697877076
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418534"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875255"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv typu zařízení cloud Azure IoT s distribuované trasování (preview)
 
@@ -214,7 +214,7 @@ Chcete-li změnit procento zprávy k trasování z cloudu, je nutné aktualizova
 
     ![Režim vzorkování aktualizace](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
-    ![Vzorkovací frekvence aktualizace ](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
+    ![Vzorkovací frekvence aktualizace](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
 
 ### <a name="bulk-update-for-multiple-devices"></a>Hromadná aktualizace pro různá zařízení
 

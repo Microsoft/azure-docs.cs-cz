@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: f326c8608f92cc974a9decad3b010888c358c667
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b7e9a46caf39d736fd7fdc5b3742a47c2bab51fd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818523"
+ms.locfileid: "56876411"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Referenční příručka jazyka SQL pro službu Azure Cosmos DB 
 
@@ -2351,7 +2351,7 @@ StringToArray(<expr>)
   
  **Příklady**  
   
-Následující příklad ukazuje, jak se chová StringToArray do různých typů. 
+ Následující příklad ukazuje, jak se chová StringToArray do různých typů. 
   
 ```  
 SELECT 
@@ -2395,7 +2395,7 @@ StringToBoolean(<expr>)
   
  **Příklady**  
   
-Následující příklad ukazuje, jak se chová StringToBoolean do různých typů. 
+ Následující příklad ukazuje, jak se chová StringToBoolean do různých typů. 
   
 ```  
 SELECT 
@@ -2438,7 +2438,7 @@ StringToNull(<expr>)
   
  **Příklady**  
   
-Následující příklad ukazuje, jak se chová StringToNull do různých typů. 
+ Následující příklad ukazuje, jak se chová StringToNull do různých typů. 
   
 ```  
 SELECT 
@@ -2480,7 +2480,7 @@ StringToNumber(<expr>)
   
  **Příklady**  
   
-Následující příklad ukazuje, jak se chová StringToNumber do různých typů. 
+ Následující příklad ukazuje, jak se chová StringToNumber do různých typů. 
   
 ```  
 SELECT 
@@ -2525,7 +2525,7 @@ StringToObject(<expr>)
   
  **Příklady**  
   
-Následující příklad ukazuje, jak se chová StringToObject do různých typů. 
+ Následující příklad ukazuje, jak se chová StringToObject do různých typů. 
   
 ```  
 SELECT 

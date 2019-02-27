@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 899e33db242a34d09df6109c2e195bdff9c65262
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5bb2c7d9eed2ed33f3cd0c33bfc479d2e3627370
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823599"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889847"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -31,6 +31,10 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + **Nové funkce**
 
   + Azure Machine Learning SDK teď podporuje [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) estimator třídy ke zjednodušení procesu trénování a nasazování modelů pomocí vlastního kódu Chainer.
+  + Azure Machine Learning kanály přidat aktivační možnost změny úložiště dat na základě spuštění kanálu. Kanál [Poznámkový blok plán](https://aka.ms/pl-schedule) se aktualizuje a představte tuto funkci.
+  
++ **Opravy chyb a vylepšení**
+  + Přidali jsme podporu Azure Machine Learning kanály pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (jako je například úložiště objektů blob) na [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , které jsou předány [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Kroky ve výchozím nastavení používají jako základní úložiště dat, který se může spustit do omezování problémy, když jsou současně spouštěny velký počet kroků úložiště souborů Azure.
 
 ### <a name="azure-portal"></a>portál Azure
 + **Nové funkce**
@@ -38,6 +42,18 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
     + Pro spuštění odeslanou s ScriptRunConfig nové tlačítko spustit. Uživatele můžete spustit znovu z existujícího spouštět vzdálený výpočetní cluster podle vlastní volby.
     + Nový prohlížeč souborů protokolů
     + Odkazy na experimentování spuštění, výpočetních, modely, Image a nasazení z karty aktivity
+
+### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Sada SDK v1.0.15 pro přípravu dat Azure Machine Learning
+
++ **Nové funkce**
+  + Teď podporuje zápis souborů datových proudů toku dat pro přípravu dat. Také poskytuje možnost manipulace s názvy souborů datového proudu k vytvoření nové názvy souborů.
+    + Postupy: Průvodce: [Práce s datové proudy souborů poznámkového bloku](https://aka.ms/aml-data-prep-file-stream-nb)
+ 
++ **Opravy chyb a vylepšení**
+  + Vylepšení výkonu t-Digest na velkých datových sad.
+  + Příprava dat teď podporuje čtení dat z DataPath.
+  + Horké kódování teď funguje pro logické a číselné sloupce.
+  + Ostatní různé opravy chyb.
 
 ## <a name="2019-02-11"></a>2019-02-11
 
@@ -100,7 +116,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Sada SDK v1.0.7 pro přípravu dat Azure Machine Learning
 
 + **Nové funkce**
-  + Vylepšení úložiště dat (popsané v [úložiště dat k postupy – průvodce](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
+  + Vylepšení úložiště dat (popsané v [úložiště dat k postupy – průvodce](https://aka.ms/aml-data-prep-datastore-nb))
     + Přidání možnosti číst z a zapisovat do sdílené složky Azure a úložiště ADLS v vertikálně navýšit kapacitu.
     + Při použití úložiště, přípravy dat pomocí ověřování instančních objektů místo interaktivní ověřování teď podporuje.
     + Přidání podpory pro wasb a wasbs adresy URL.

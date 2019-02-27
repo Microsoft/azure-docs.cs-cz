@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 598af6bb945318f0a76ffe094dd5786abacccc3f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b55f8d44d12fa503a17218db4a5166819024f1aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543525"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872892"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Vytvoření a správě Azure Database for MySQL pravidla brány firewall pomocí webu Azure portal
 Pravidla brány firewall na úrovni serveru umožňují správcům přístup k Azure Database for MySQL Server ze zadané IP adresy nebo rozsah IP adres. 
@@ -34,7 +34,7 @@ Pravidla brány firewall na úrovni serveru umožňují správcům přístup k A
 
 4. Přidejte další adresní rozsahy adres. V pravidlech brány firewall pro službu Azure Database for MySQL můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete omezit platnost pravidla pro jednu IP adresu, zadejte stejnou adresu do pole Počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správci, uživatelé a aplikace pro přístup k libovolné databázi na serveru MySQL, ke kterému mají platné přihlašovací údaje.
 
-   ![Azure portal – pravidla brány firewall ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Azure portal – pravidla brány firewall](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. Klikněte na tlačítko **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall na úrovni serveru. Čekání na potvrzení, jestli aktualizace, která se pravidla brány firewall se úspěšně dokončila.
 

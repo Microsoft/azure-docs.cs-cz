@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 7c0559a1f96c1585e2032af1ebe1323817d8d881
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: cf16f27a8d39871491b7cf46a509b9714a669667
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734502"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873810"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Kurz: Identifikovat běžné záměry a entity
 
@@ -51,7 +51,7 @@ Služba LUIS poskytuje několik předem připravených záměrů, které vám po
 
 1. Vyhledejte `Utilities`. 
 
-    [ ![Snímek obrazovky s dialogovým oknem předem připravených záměrů s textem Utilities (Nástroje) ve vyhledávacím poli](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
+    [![Snímek obrazovky dialogového okna předem připravené příkazy nástroje do vyhledávacího pole](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
 1. Vyberte následující záměry a pak vyberte **Done** (Hotovo): 
 

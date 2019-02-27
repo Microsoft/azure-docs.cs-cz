@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 81684031ddaa1ca8fa63a6c7e512f3fe6769a639
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 621e691eaedb06c26b5e6a05a12d0b742c798172
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859806"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864511"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -53,7 +53,7 @@ Podpora jazyků se liší u [předem připravených entit](luis-reference-prebui
 
  - V `zh-cn` jazykovou verzi, LUIS očekává zjednodušené čínštiny znakové sady namísto tradičních znakovou sadu.
  - Názvy tříd Intent, entity, funkce a regulární výrazy mohou být znaky čínské nebo římské číslice.
- - Najdete v článku [předem připravených domén odkaz ](luis-reference-prebuilt-domains.md) informace, na kterém jsou předem připravených domén podporovány v `zh-cn` jazykovou verzi.
+ - Najdete v článku [předem připravených domén odkaz](luis-reference-prebuilt-domains.md) informace, na kterém jsou předem připravených domén podporovány v `zh-cn` jazykovou verzi.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>* Japonské podporuje poznámky

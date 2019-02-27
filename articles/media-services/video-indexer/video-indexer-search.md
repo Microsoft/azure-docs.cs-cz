@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6c93c0228425b2ff020e5b4301e68eae5b1062a3
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 07b3c806dc5df5f93bee3206cbca53485675e7dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807826"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872399"
 ---
 # <a name="find-exact-moments-within-videos"></a>Vyhledání určitých momentů ve videích
 
@@ -36,11 +36,13 @@ Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určit�
 
     Pokud kliknete na některý z výsledků, hráč přináší je na daném okamžiku videa. Ve vaší aplikaci můžete dosáhnout zobrazení player a přehledy a synchronizace. Další informace najdete v tématu [vložit Video Indexer widgetů do aplikace](video-indexer-embed-widgets.md). 
 4. Vyhledejte podrobný přehled videa.
+    
+    Pokud chcete vytvořit vlastní galerie založené na video, které jste našli, stiskněte **upravit** tlačítko. Této stránce se zobrazují videa spolu s jeho insights jako filtry. Další informace najdete v tématu [zobrazení a úprava přehledů funkce Video Indexer](video-indexer-view-edit.md). 
 
-    Pokud chcete vytvořit vlastní rozpis podle video, které jste našli, stiskněte **upravit** tlačítko. Tato stránka zobrazuje úplný rozpis videa. Můžete vyhledávat v rozpis k zobrazení pouze řádky, které vás zajímají. Další informace najdete v tématu [zobrazení a úprava přehledů funkce Video Indexer](video-indexer-view-edit.md).
-
-    V tomto příkladu budeme prohledávat text "identity protection". Můžeme také použít další filtry, jak je znázorněno na následující obrazovce.
-
+    Můžete hledat ve videu, aby se zobrazily pouze řádky zajímají a insights na straně použít k filtrování částí, které chcete zobrazit. Když dokončíte, můžete zobrazit náhled klipu a stiskněte klávesu **publikovat** k vytvoření nové galerie, která se zobrazí v galerii.
+    
+    V následujícím příkladu jsme hledali text "smíšené reality". Můžeme také použít další filtry, jak je znázorněno na následující obrazovce.
+    
     ![Search](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>Další postup 

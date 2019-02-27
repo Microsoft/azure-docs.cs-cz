@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 37e1a308d63d782c6ff18c10a5874842341eeec7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8840944f6757813b10b01c8e512b1ef64c05a85f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818098"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888283"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -68,9 +68,9 @@ Na portálu neposkytuje možnost pro síťové rozhraní přiřadit do skupin za
 
 **Příkazy**
 
-|Nástroj|Příkaz|
+|Tool|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
+|Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Zobrazení nastavení síťového rozhraní
@@ -95,9 +95,9 @@ Můžete zobrazit a změnit většinu nastavení síťového rozhraní po jeho v
 
 Pokud k síťovému rozhraní není přiřazena adresa protokolu IPv6, na výstupu prostředí PowerShell vrátí skutečnost, že je přiřazena adresa, ale nevrací přiřazenou adresu. Podobně, rozhraní příkazového řádku vrátí skutečnost, že je přiřazena adresa, ale vrátí *null* v jeho výstupní adresy.
 
-|Nástroj|Příkaz|
+|Tool|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic seznamu](/cli/azure/network/nic#az_network_nic_list) zobrazíte síťová rozhraní v rámci předplatného; [az network nic show](/cli/azure/network/nic#az_network_nic_show) Chcete-li zobrazit nastavení pro síťové rozhraní|
+|Rozhraní příkazového řádku|[AZ network nic seznamu](/cli/azure/network/nic) zobrazíte síťová rozhraní v rámci předplatného; [az network nic show](/cli/azure/network/nic) Chcete-li zobrazit nastavení pro síťové rozhraní|
 |PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) zobrazíte síťová rozhraní v předplatném nebo zobrazit nastavení pro síťové rozhraní|
 
 ## <a name="change-dns-servers"></a>Změnit servery DNS
@@ -114,7 +114,7 @@ DNS server je přiřazené serverem Azure DHCP k síťovému rozhraní v operač
 
 **Příkazy**
 
-|Nástroj|Příkaz|
+|Tool|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -135,7 +135,7 @@ Nastavení musí být povolena pro každé síťové rozhraní, který je připo
 
 **Příkazy**
 
-|Nástroj|Příkaz|
+|Tool|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -155,9 +155,9 @@ Můžete změnit podsíť, ale ne virtuální síti, přiřazené k síťovému 
 
 **Příkazy**
 
-|Nástroj|Příkaz|
+|Tool|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Přidat nebo odebrat ze skupiny zabezpečení aplikací
@@ -169,7 +169,7 @@ Pouze můžete přidat síťové rozhraní nebo odebrat ze skupiny zabezpečení
 
 **Příkazy**
 
-|Nástroj|Příkaz|
+|Tool|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -201,7 +201,7 @@ Při odstranění síťového rozhraní se vydávají jakékoli MAC nebo IP adre
 
 **Příkazy**
 
-|Nástroj|Příkaz|
+|Tool|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|

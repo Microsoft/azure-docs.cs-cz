@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: ed2d1256508e588000970879dae7ac653797fbf9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7f20f237b83550b4c78b1fb7488e62119470a85a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883309"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876989"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integrace služby Virtual network pro Azure Data Lake Storage Gen1
 
@@ -87,7 +87,7 @@ Mezi dostupné možnosti patří:
 
 1.  Přejděte na web Azure Portal a přihlaste se ke svému účtu.
  
-2.  Ve svém předplatném [vytvořte novou virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal). Případně můžete přejít k existující virtuální síti. Virtuální síť musí být ve stejné oblasti jako účet Data Lake Storage Gen1.
+2.  [Vytvořit novou virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)ve vašem předplatném. Případně můžete přejít k existující virtuální síti. Virtuální síť musí být ve stejné oblasti jako účet Data Lake Storage Gen1.
  
 3.  V okně **Virtuální síť** vyberte **Koncové body služby**.
  

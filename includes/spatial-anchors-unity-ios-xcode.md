@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 36d509bdcd1fda61cb85fae7fa38ed126697f888
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b802c9dbd0cef65325cb03538b68b49c57b85bb3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752176"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56891002"
 ---
 Vyberte **sestavení** otevřete dialogové okno. Vyberte složku pro export projektů Xcode.
 
@@ -20,7 +20,7 @@ Po dokončení exportu do složky se zobrazí obsahující exportovaném projekt
 Ve složce projektu exportované Xcode spuštěním následujícího příkazu nainstalujte CocoaPods nezbytné pro projekt:
 
 ```bash
-pod install
+pod install --repo-update
 ```
 
 Nyní můžete otevřít `Unity-iPhone.xcworkspace` projekt otevřít v Xcode:

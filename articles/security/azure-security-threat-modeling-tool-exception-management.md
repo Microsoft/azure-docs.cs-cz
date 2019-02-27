@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 68bffaeef0451dae3a3b9707049dd2e44ad311fd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302145"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865871"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>Zabezpečení Frame: Správa výjimek | Zmírnění rizik 
+# <a name="security-frame-exception-management--mitigations"></a>Zabezpečení rámce: Správa výjimek | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru](#servicedebug)</li><li>[WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru](#servicemetadata)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Ujistěte se, že se provádí zpracování správné výjimek v rozhraní ASP.NET Web API ](#exception)</li></ul> |
-| **Webové aplikace** | <ul><li>[Nezveřejňujte podrobné informace o zabezpečení v chybové zprávy ](#messages)</li><li>[Implementace zpracování stránky výchozí chyb ](#default)</li><li>[Nastavit na prodejní ve službě IIS metoda nasazení](#deployment)</li><li>[Výjimky by selhat bezpečně](#fail)</li></ul> |
+| **Webové rozhraní API** | <ul><li>[Ujistěte se, že se provádí zpracování správné výjimek v rozhraní ASP.NET Web API](#exception)</li></ul> |
+| **Webové aplikace** | <ul><li>[Nezveřejňujte podrobné informace o zabezpečení v chybové zprávy](#messages)</li><li>[Implementace zpracování stránky výchozí chyb](#default)</li><li>[Nastavit na prodejní ve službě IIS metoda nasazení](#deployment)</li><li>[Výjimky by selhat bezpečně](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -54,7 +54,7 @@ Zakážete informace o ladění ve službě. Toho můžete docílit tak, že ode
 
 ## <a id="servicemetadata"></a>WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -65,7 +65,7 @@ Zakážete informace o ladění ve službě. Toho můžete docílit tak, že ode
 
 ## <a id="exception"></a>Ujistěte se, že se provádí zpracování správné výjimek v rozhraní ASP.NET Web API
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -183,7 +183,7 @@ Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výji
 
 ## <a id="messages"></a>Nezveřejňujte podrobné informace o zabezpečení v chybové zprávy
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -194,7 +194,7 @@ Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výji
 
 ## <a id="default"></a>Implementace zpracování stránky výchozí chyb
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -205,7 +205,7 @@ Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výji
 
 ## <a id="deployment"></a>Nastavit na prodejní ve službě IIS metoda nasazení
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Nasazení |  
@@ -216,7 +216,7 @@ Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výji
 
 ## <a id="fail"></a>Výjimky by selhat bezpečně
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  

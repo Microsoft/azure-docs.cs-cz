@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: f615c4ca9ffc56daafcedd711f27672e0855e4fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301821"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883943"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -169,7 +169,7 @@ Předplatná také mít přidružený k adresáři. Adresář definuje sadu uži
 
 Týkající se zabezpečení společnosti byste se zaměřit na poskytuje zaměstnancům konkrétní oprávnění, které potřebují. Příliš mnoho oprávnění, mohou vystavit účet tak, aby útočníci. Příliš málo oprávnění znamená, že zaměstnanci nelze práci efektivně. [Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) pomáhá tento problém vyřešit tím, že nabízí propracovanou správu přístupu pro Azure.
 
-![Přístup k zabezpečeným prostředkům ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
+![Přístup k zabezpečeným prostředkům](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
 Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce. Ne všichni poskytuje neomezená oprávnění v předplatném Azure nebo prostředky, můžete povolit pouze určité akce. Například pomocí RBAC nechat jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat databáze SQL v rámci stejného předplatného.
 

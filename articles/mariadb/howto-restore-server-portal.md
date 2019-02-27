@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ec55a33874973bf9aeaaa34ab07b162a46db44eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548749"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873997"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database pro MariaDB pomocí webu Azure portal
 
@@ -63,7 +63,7 @@ Následující kroky obnoví ukázkový server k určitému bodu v čase:
 
 3. Vyplňte formulář obnovit požadované údaje:
 
-   ![Azure Database pro MariaDB – informace o obnovení ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database pro MariaDB – informace o obnovení](./media/howto-restore-server-portal/3-restore.png)
   - **Bod obnovení**: Vyberte v daném okamžiku, kterou chcete obnovit.
   - **Cílový server**: Zadejte název pro nový server.
   - **Umístění**: Nejde vyberte oblast. Ve výchozím nastavení je stejná jako u zdrojového serveru.

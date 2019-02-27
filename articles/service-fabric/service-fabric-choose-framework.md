@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f37e1ed2c7dd720e4a77076c8587fdf540b29ca5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d791148e6ee023239b0a6bf49c705c2da4eea9a2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713948"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881868"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled programovacího modelu Service Fabric
 Service Fabric nabízí několik způsobů, jak zapisovat a spravovat vaše služby. Služby můžete zvolit použití rozhraní API služby Service Fabric plně využít funkce platformy a aplikace rozhraní. Služby mohou být také všechny zkompilovaný spustitelný program napsané v libovolném jazyce nebo kód spuštěný v kontejneru hostovaná v clusteru Service Fabric.
@@ -65,7 +65,7 @@ Protože Reliable Actors je aplikační rozhraní založené na modelu Reliable 
 
 [Přehled Reliable Actors](service-fabric-reliable-actors-introduction.md)
 
-[Service Fabric a ASP.NET Core ](service-fabric-reliable-services-communication-aspnetcore.md)
+[Service Fabric a ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
 
 

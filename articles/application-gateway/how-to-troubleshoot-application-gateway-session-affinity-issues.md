@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: d98834abaf925cdabd312869615a60f64049826d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c98328342eec7fa59a56fbcc70da8cdd7a8fabf1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808475"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880882"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Řešení potíží s spřažením relace Azure Application Gateway
 
@@ -75,7 +75,7 @@ Při přístupu k Application Gateway pomocí adresy URL krátký název v aplik
 
 Pokud chcete identifikovat problém, postupujte podle pokynů:
 
-1. Využijte ladicí program webového trasování trasování v "Klientovi", který se připojuje k aplikace za bránou Gateway(We are using Fiddler in this example) aplikace.
+1. Převezměte ladicího programu trasování web "Klientovi", který se připojuje k aplikace za bránou Gateway(We are using Fiddler in this example) aplikace.
     **Tip** Pokud si nejste jisti, jak použít aplikaci Fiddler, zaškrtněte možnost "**budu chtít shromažďovat síťový provoz a analyzujte je pomocí ladicího programu webového**" v dolní části.
 
 2. Zkontrolovat a analyzovat protokoly relace, chcete-li zjistit, jestli mají soubory cookie, který klient poskytl ARRAffinity podrobnosti. Pokud nenajdete ARRAffinity podrobnosti, jako například "**ARRAffinity =** *ARRAffinityValue*" v rámci sady souborů cookie, která znamená, že klient není odpovědi s EŘADIT soubor cookie, který je poskytován Application Gateway.

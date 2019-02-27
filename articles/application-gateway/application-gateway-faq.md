@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 040aeda10410cc164c3f68b6615ebfb12d45541e
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a65aabc7b56c4dd5f2d22974756f5f3e54cebb31
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453482"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867707"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -220,7 +220,7 @@ Ano, Azure distribuuje instancí napříč aktualizace a domény selhání k zaj
 
 ### <a name="what-certificates-are-supported-on-application-gateway"></a>Jaké certifikáty jsou podporovány ve službě Application Gateway?
 
-Certifikáty podepsané svým držitelem, certifikáty CA certs a zástupný znak – certifikáty jsou podporovány. Rozšířené certifikátů nejsou podporovány.
+Certifikáty podepsané svým držitelem, certifikáty CA certs, EV certifikáty a certifikáty divokých karet jsou podporovány.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-application-gateway"></a>Jaké jsou aktuální šifrovací sada podporovaná službou Application Gateway?
 

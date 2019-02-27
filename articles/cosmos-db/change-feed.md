@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2224c798d0854aab2d3ec7fc2c03b51de58dbfc0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244432"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886719"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Změna informačního kanálu ve službě Azure Cosmos DB – přehled
 
@@ -118,7 +118,7 @@ Kanál změn je k dispozici pro každý logický oddíl klíč v kontejneru a je
 
 * Změny jsou k dispozici současně pro všechny klíče logický oddíl kontejneru Azure Cosmos. Tato funkce umožňuje, aby změny z velkých kontejnerů ke zpracování paralelní několik příjemců.
 
-* Aplikace můžou požádat o více změn kanálů současně na stejném kontejneru. ChangeFeedOptions.StartTime slouží k poskytování počátečního bodu. Chcete-li například najít odpovídající dané čas token pro pokračování. Token ContinuationToken, je-li zadána, wins přes hodnoty StartTime a StartFromBeginning. Přesnost ChangeFeedOptions.StartTime je přibližně 5 sekund. 
+* Aplikace můžou požádat souběžně více kanálů změnit na stejný kontejner. ChangeFeedOptions.StartTime slouží k poskytování počátečního bodu. Chcete-li například najít odpovídající dané čas token pro pokračování. Token ContinuationToken, je-li zadána, wins přes hodnoty StartTime a StartFromBeginning. Přesnost ChangeFeedOptions.StartTime je přibližně 5 sekund. 
 
 ## <a name="next-steps"></a>Další postup
 

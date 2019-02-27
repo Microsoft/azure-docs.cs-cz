@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4bc76f67b2d8908abe601aa1fcdfd1962678c548
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2704981b92725d24562b02c427a72dfc59ff2029
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865647"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870546"
 ---
 # <a name="quickstart-change-model-using-go"></a>Rychlý start: Změnit model pomocí jazyka Go
 
@@ -45,7 +45,7 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 
 3. Přidejte obecnou funkci požadavku HTTP, která zahrnuje předání klíče vytváření obsahu v hlavičce. 
 
-   [!code-go[Add HTTP request function which includes passing authoring key in header. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
+   [!code-go[Add HTTP request function which includes passing authoring key in header.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
 
 4. Přidejte ukázkové promluvy ze souboru JSON.
 
@@ -53,15 +53,15 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 
 5. Požádejte o trénování. Používá pomocnou funkci k nastavení příkazu pro stejnou trasu jako stav trénování. 
 
-   [!code-go[Request training. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
+   [!code-go[Request training.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
 
 6. Požádejte o stav trénování. Používá pomocnou funkci k nastavení příkazu pro stejnou trasu jako žádost o trénování. 
 
-   [!code-go[Request training status. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
+   [!code-go[Request training status.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
 
 7. Přidejte hlavní funkci ke zpracování analýzy příkazového řádku.
 
-   [!code-go[Add main function to handle command line parsing. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
+   [!code-go[Add main function to handle command line parsing.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
 
 ## <a name="add-an-utterance-from-the-command-line-train-and-get-status"></a>Přidání promluvy z příkazového řádku, trénování a získání stavu
 

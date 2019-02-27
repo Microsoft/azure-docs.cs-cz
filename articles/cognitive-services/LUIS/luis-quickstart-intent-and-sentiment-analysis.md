@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 463ff73519232f56d41e9d70c20fcd8103806495
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1805d54e66187a97bf598734801f0d94895e7490
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729113"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880343"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Kurz:  Získat mínění utterance
 
@@ -90,7 +90,7 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
     |Označit Mathews rocked prodejní prvotního na Harvard|
     |Walter Williams nebyla Skvělá práce na prezentaci v informačních technologií|
 
-    [ ![Snímek obrazovky aplikace LUIS s příklady promluv v záměru EmployeeFeedback (Zpětná vazba o zaměstnancích)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
+    [![Snímek obrazovky LUIS aplikace s využitím příkladu projevy v EmployeeFeedback záměr](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
 

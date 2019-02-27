@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 8a660de0502a6ab215d3a23615f6a53813f1695e
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4b6c4af37211ede2cb2153afdd071c219178f2ba
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649199"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882837"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup serveru
 
@@ -72,7 +72,7 @@ Zabezpečený kanál nastavte následujícím způsobem:
 
 5. V **certifikátů** složky, klikněte pravým tlačítkem na soubor kořenového certifikátu > **přejmenovat**.
 
-    ![Přejmenovat kořenového certifikátu ](./media/backup-azure-backup-server-vmware/rename-cert.png)
+    ![Přejmenovat kořenového certifikátu](./media/backup-azure-backup-server-vmware/rename-cert.png)
 
 6. Změňte příponu kořenový certifikát na .crt a potvrďte. Ikona, který představuje kořenový certifikát.
 
@@ -124,7 +124,7 @@ Azure Backup Server potřebuje účet uživatele s oprávněními pro přístup 
 1. Přihlaste se k serveru vCenter (nebo hostiteli ESXi, pokud nepoužíváte vCenter Server).
 2. V **Navigátor** panelu, klikněte na tlačítko **správu**.
 
-    ![Správa ](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
+    ![Správa](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
 3. V **správu** > **role**, klikněte na ikonu Přidat roli (+ symbol).
 

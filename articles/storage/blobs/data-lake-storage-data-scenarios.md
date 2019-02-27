@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 09514e37d1d40c489eda483980237d26e4a08730
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: ec97cf903a37465f98007750fc41edc0952ab3a6
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417918"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889592"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Pro potřeby velkého objemu dat pomocí Azure Data Lake Storage Gen2
 
@@ -37,7 +37,7 @@ Pokud chcete jeden vytvořit, přečtěte si téma [rychlý start: Vytvoření �
 
 A *systém souborů* je kontejner pro soubory a složky. Budete potřebovat alespoň jeden z nich zahájíte ingestovat data ve vašem účtu úložiště.  Tady je seznam nástrojů, které můžete použít k jejich vytvoření.
 
-|Nástroj | Doprovodné materiály |
+|Tool | Doprovodné materiály |
 |---|--|
 |Azure Storage Explorer | [Vytvořit systém souborů pomocí Průzkumníka služby Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-filesystem) |
 |AzCopy | [Vytvoření kontejneru objektů Blob nebo sdílené složky pomocí AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-blob-container-or-file-share)|
@@ -66,13 +66,13 @@ Není k dispozici tři způsoby, jak udělit přístup:
 
 Tato tabulka ukazuje, jak udělit přístup pro každý nástroj nebo služba Azure.
 
-|Nástroj | K udělení přístupu | Doprovodné materiály |
+|Tool | K udělení přístupu | Doprovodné materiály |
 |---|--|---|
 |Storage Explorer| Přiřazení role pro uživatele a skupiny | [Přiřazení rolí správce a bez oprávnění správce uživatelům v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
 |AzCopy| Přiřazení role pro uživatele a skupiny <br>**nebo**<br> Pomocí tokenu SAS| [Přiřazení rolí správce a bez oprávnění správce uživatelům v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[Snadné vytvoření SAS ke stažení souboru z Azure Storage – pomocí Průzkumníka služby Azure Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
-|Apache DistCp | Přiřazení role uživatel přiřazenou spravované identity | [Vytvoření clusteru služby HDInsight s Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2) |
+|Apache DistCp | Přiřazení role uživatel přiřazenou spravované identity | [Vytvoření clusteru služby HDInsight s Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| Přiřazení role na identitu uživatele přiřazeny – spravované<br>**nebo**<br> Přiřadit roli instančnímu objektu služby<br>**nebo**<br> Použít klíče účtu úložiště | [Vlastnosti propojené služby](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
-|Azure HDInsight| Přiřazení role uživatel přiřazenou spravované identity | [Vytvoření clusteru služby HDInsight s Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2)|
+|Azure HDInsight| Přiřazení role uživatel přiřazenou spravované identity | [Vytvoření clusteru služby HDInsight s Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
 |Azure Databricks| Přiřadit roli instančnímu objektu služby | [Postup: Použití portálu k vytvoření aplikace Azure AD a instanční objekt, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Pokud chcete udělit přístup pro konkrétní soubor a složky, najdete v těchto článcích.
@@ -106,7 +106,7 @@ Reprezentuje data, která mohou být generovány různých zdrojů, jako jsou ap
 
 Tady je seznam nástrojů, které vám umožní ingestovat streamovaná data.
 
-|Nástroj | Doprovodné materiály |
+|Tool | Doprovodné materiály |
 |---|--|
 |Azure HDInsight Storm | [Zápis do Apache Hadoop HDFS z Apache Storm v HDInsight](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
@@ -116,7 +116,7 @@ Můžete také zdroje dat z relačních databází. Po určitou dobu shromažďo
 
 Tady je seznam nástrojů, které vám umožní ingestovat relační data.
 
-|Nástroj | Doprovodné materiály |
+|Tool | Doprovodné materiály |
 |---|--|
 |Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
@@ -126,7 +126,7 @@ Tento typ datové sady je konkrétně volat, protože analýzy dat protokolů we
 
 Tady je seznam nástrojů, které vám umožní ingestovat data webového serveru.
 
-|Nástroj | Doprovodné materiály |
+|Tool | Doprovodné materiály |
 |---|--|
 |Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 
@@ -138,7 +138,7 @@ Většina typy clusterů HDInsight (Hadoop, HBase, Storm) podporují jako úlož
 
 Tady je seznam nástrojů, které vám umožní ingestovat data související s clustery HDInsight.
 
-|Nástroj | Doprovodné materiály |
+|Tool | Doprovodné materiály |
 |---|--|
 |Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |Nástroj AzCopy | [Přenos dat pomocí AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
@@ -167,7 +167,7 @@ Jakmile jsou data dostupná v Data Lake Storage Gen2 je na těchto datech pomoc�
 
 Tady je seznam nástrojů, které můžete použít ke spuštění úlohy analýzy dat na data, která je uložená v Data Lake Storage Gen2.
 
-|Nástroj | Doprovodné materiály |
+|Tool | Doprovodné materiály |
 |---|--|
 |Azure HDInsight | [Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Rychlé zprovoznění: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
@@ -193,7 +193,7 @@ Můžete také chtít stáhnout nebo přesun dat z Azure Data Lake Storage Gen2 
 
 Tady je seznam nástrojů, které vám umožní stáhnout data z Data Lake Storage Gen2.
 
-|Nástroj | Doprovodné materiály |
+|Tool | Doprovodné materiály |
 |---|--|
 |Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCop | [Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

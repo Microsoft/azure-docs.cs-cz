@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 2/5/2019
-ms.openlocfilehash: 39c96608dd843577f41d2111e9e7c5517136ccae
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823565"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889218"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Kurz: Příjem dat v Průzkumníku dat Azure bez jeden řádek kódu
 
@@ -339,7 +339,7 @@ Teď je potřeba vytvořit datová připojení pro diagnostické protokoly a pro
 
 ### <a name="create-the-data-connection-for-activity-logs"></a>Vytvoření datového připojení pro protokoly aktivit
 
-Opakujte kroky v [vytvoření datového připojení pro diagnostické protokoly](#diagnostic-logs-data-connection) část, která vytvoří datové připojení pro vaše protokoly aktivit.
+Opakujte kroky v části Vytvoření datového připojení pro diagnostické protokoly část vytvoření datového připojení pro vaše protokoly aktivit.
 
 1. Použijte následující nastavení v **datové připojení** okno:
 

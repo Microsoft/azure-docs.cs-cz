@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1a40399ab0e27be5ba9dd01f2647bd5b8ccf10e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1f2837121c84081c77176b18758dfe1a83d6a070
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202501"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876904"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: Reference k funkcím
 Ve službě Azure AD Connect funkce se používají k práci s hodnotu atributu během synchronizace.  
@@ -59,7 +59,7 @@ Funkce s typy **mvbin**, **mvstr**, a **mvref** funguje jenom u více jednohodno
 | [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
 | [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[ CertVersion](#certversion) |[IsCert](#iscert) | | | |
+[CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Převod** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
@@ -989,7 +989,7 @@ PadLeft funkce vlevo-dotyková zařízení a řetězce na určenou délku pomoc�
 **Poznámky:**
 
 * Pokud délka řetězce je menší než délka, pak padCharacter opakovaně připojí do začátku (vlevo) řetězce dokud má délku rovna délce.
-* padCharacter může být znak mezery, ale nemůže být hodnota null.
+* PadCharacter může být znak mezery, ale nemůže být hodnota null.
 * Pokud délka řetězce je roven nebo větší než délka, řetězec je vrácen beze změny.
 * Pokud řetězec má délku větší než nebo rovna délce, vrátí se stejný řetězec jako řetězec.
 * Pokud délka řetězce je menší než délka, je vrácena nový řetězec má požadovanou délku obsahující řetězce, aby bylo vytvořeno padCharacter.

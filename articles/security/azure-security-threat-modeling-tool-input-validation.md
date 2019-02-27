@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dd2914c675d3bca32ca8951ffca1b04e23786400
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 51ede2ecf60b2b1dbe0b7afa47bce41a101e5bf4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266898"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879406"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Zabezpečení rámce: Ověřování vstupu | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -32,7 +32,7 @@ ms.locfileid: "54266898"
 
 ## <a id="disable-xslt"></a>Zakázat skriptování všechny transformace pomocí nedůvěryhodného šablony stylů XSLT
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -64,7 +64,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 
 ## <a id="out-sniffing"></a>Ujistěte se, že každé stránce, které by mohly obsahovat obsah může ovládat uživatel požádá o mimo automatické sledování toku dat MIME
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -133,7 +133,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 
 ## <a id="xml-resolution"></a>Posílení nebo zakázat rozlišení Entity XML
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -195,7 +195,7 @@ Všimněte si, že v MSXML6, ProhibitDTD nastavena na hodnotu true (zakázání 
 
 ## <a id="app-verification"></a>Aplikace využívající http.sys provedení převodu do kanonického tvaru ověření adresy URL
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -206,7 +206,7 @@ Všimněte si, že v MSXML6, ProhibitDTD nastavena na hodnotu true (zakázání 
 
 ## <a id="controls-users"></a>Ujistěte se, že odpovídající ovládací prvky jsou na místě při přijetí soubory od uživatelů
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -322,7 +322,7 @@ Poslední bod týkající se ověření formátu podpisu souboru najdete v tří
 
 ## <a id="typesafe"></a>Ujistěte se, že se používají parametry zajišťující bezpečnost typů ve webové aplikaci pro přístup k datům
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -352,7 +352,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="binding-mvc"></a>Použít samostatný model vazby třídy nebo aby se zabránilo ohrožení zabezpečení hromadné přiřazení MVC seznamy vazby filtru
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -363,7 +363,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="rendering"></a>Kódování výstupu nedůvěryhodném webovém před vykreslování
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -388,7 +388,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="typemodel"></a>Provedení ověření vstupu a filtrování na všechny řetězce typu vlastnosti modelu
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -399,7 +399,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="richtext"></a>Sanitizace bude použito na pole formuláře, které přijímají všechny znaky, např., editor formátovaného textu
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -410,7 +410,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="inbuilt-encode"></a>Nepřiřazujte elementů modelu DOM do jímky, které nemají integrované kódování
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -432,7 +432,7 @@ Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, nikoli 
 
 ## <a id="redirect-safe"></a>Ověřit, zda všechny jsou uzavřeny nebo bezpečně provést přesměrování v rámci aplikace
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -443,7 +443,7 @@ Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, nikoli 
 
 ## <a id="string-method"></a>Implementace ověření vstupu na všechny parametry typu řetězec přijal metody Kontroleru
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -454,13 +454,13 @@ Nepoužívejte `innerHtml`; místo toho použijte `innerText`. Podobně, nikoli 
 
 ## <a id="dos-expression"></a>Nastavit časový limit horní mez pro zpracování, aby se zabránilo DoS z důvodu chybné regulárních výrazů regulární výraz
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné, webových formulářů, MVC5, MVC6  |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Vlastnost DefaultRegexMatchTimeout ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
+| **Odkazy**              | [DefaultRegexMatchTimeout Property](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
 | **Kroky** | Zajistit odmítnutí útoků služby proti chybně vytvořený regulární výrazy, které způsobují velké množství používání mechanismu zpětného navracení, nastavte globální výchozí časový limit. Pokud doba zpracování trvá déle než definované horní mez, vede výjimka časového limitu. Pokud není nic nakonfigurované, by neomezený časový limit.| 
 
 ### <a name="example"></a>Příklad:
@@ -472,7 +472,7 @@ Například následující konfigurace vyvolá RegexMatchTimeoutException, pokud
 
 ## <a id="html-razor"></a>Vyhněte se použití Html.Raw v zobrazení Razor
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -497,7 +497,7 @@ Nepoužívejte `Html.Raw()` Pokud potřebujete zobrazit značky. Tato metoda nep
 
 ## <a id="stored-proc"></a>Nepoužívejte dynamické dotazy v uložených procedurách
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -557,13 +557,13 @@ AS
 
 ## <a id="validation-api"></a>Ujistěte se, že ověření modelu se provádí na metody webového rozhraní API
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | MVC5, MVC6 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Ověření modelu v rozhraní ASP.NET Web API ](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Odkazy**              | [Ověření modelu v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Kroky** | Když klient odešle data do webového rozhraní API, je nutné ověřit data před provedením jakékoli zpracování. Pro webová rozhraní API technologie ASP.NET, které přijímají modely jako vstup, používají anotacemi dat na modely nastavování pravidel ověřování pro vlastnosti modelu.|
 
 ### <a name="example"></a>Příklad:
@@ -614,7 +614,7 @@ namespace MyApi.Controllers
 
 ## <a id="string-api"></a>Implementace ověření vstupu na všechny parametry typu řetězec přijal metody webového rozhraní API
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -625,7 +625,7 @@ namespace MyApi.Controllers
 
 ## <a id="typesafe-api"></a>Ujistěte se, že jsou typově bezpečné parametry použity ve webové rozhraní API pro přístup k datům
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -655,7 +655,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="sql-docdb"></a>Použití parametrizovaných dotazů SQL pro službu Cosmos DB
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Documentdb | 
 | **SDL fáze**               | Sestavení |  
@@ -666,7 +666,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="schema-binding"></a>Ověření vstupu WCF prostřednictvím vazbu schémat
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -677,7 +677,7 @@ V předchozím příkladu kódu vstupní hodnota nemůže být delší než 11 z
 
 ## <a id="parameters"></a>Zadání WCF ověřování prostřednictvím parametru kontroly
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  

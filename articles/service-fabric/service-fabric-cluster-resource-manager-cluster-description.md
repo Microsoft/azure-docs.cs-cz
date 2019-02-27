@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7be10f03d65e53b51c3916849dc12feb4de9c919
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1020e18894f4bb307ad14f780e76eab1df1314bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737650"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875969"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Popis clusteru service fabric
 Service Fabric Cluster Resource Manager poskytuje několik mechanismů pro popis clusteru. Cluster Resource Manageru za běhu, používá tyto informace k zajištění vysoké dostupnosti služby spuštěné v clusteru. Při vynucování tyto důležité pravidla, je taky automatický pokus o optimalizaci spotřeby prostředků v rámci clusteru.
@@ -603,7 +603,7 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Informace o architektuře a informačního toku v Cluster Resource Manager, projděte si [v tomto článku ](service-fabric-cluster-resource-manager-architecture.md)
+* Informace o architektuře a informačního toku v Cluster Resource Manager, projděte si [v tomto článku](service-fabric-cluster-resource-manager-architecture.md)
 * Definování defragmentaci metrik je jeden způsob, jak konsolidovat zatížení na uzlech, místo aby rozložil ho navýšení kapacity. Další informace o konfiguraci defragmentace, najdete v tématu [v tomto článku](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * Začít od začátku a [Úvod do Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
 * Přečtěte si o tom, jak Cluster Resource Manager spravuje a vyrovnává zatížení v clusteru, přečtěte si článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)

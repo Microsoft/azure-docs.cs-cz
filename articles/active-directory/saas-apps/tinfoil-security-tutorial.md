@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ed0912e8d4705b6cbefa9eb8f7a712a37d8b0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d2001e221ef9c02ee2ab80b647a9bafe6490432
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183172"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Kurz: Integrace Azure Active Directory s TINFOIL SECURITY
 
@@ -186,7 +186,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Všichni uživatelé -> uživatele a skupiny ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
+    ![Všichni uživatelé -> uživatele a skupiny](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
 1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  

@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3851e4c35b333e862ead296ad1e8448c3317228
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e5b06ad551b45bc0c892bc789c6f5c5a27b5bb0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210488"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882973"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -135,7 +135,7 @@ Azure AD Connect Upgrade selže, pokud vždy na dostupnosti SQL je nakonfigurova
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
 - Příkaz Ping Federovat integrace ve službě Azure AD Connect je nyní k dispozici pro obecnou dostupnost. [Další informace o tom, jak federované službě Azure AD pomocí příkazu Ping Federovat](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
-- Zálohování vztah důvěryhodnosti Azure AD ve službě AD FS vytvoří Azure AD Connect nyní pokaždé, když se aktualizace se provádí a uloží jej do samostatného souboru pro snadné obnovení v případě potřeby. [Přečtěte si další informace o nové funkce a služby Azure AD vztah důvěryhodnosti správy ve službě Azure AD Connect ](https://aka.ms/fedtrustinaadconnect).
+- Zálohování vztah důvěryhodnosti Azure AD ve službě AD FS vytvoří Azure AD Connect nyní pokaždé, když se aktualizace se provádí a uloží jej do samostatného souboru pro snadné obnovení v případě potřeby. [Přečtěte si další informace o nové funkce a služby Azure AD vztah důvěryhodnosti správy ve službě Azure AD Connect](https://aka.ms/fedtrustinaadconnect).
 - Nové nástroje pro řešení problémů s pomáhá řešit Změna primární e-mailovou adresu a skrytí účet z globálního adresáře
 - Azure AD Connect bylo aktualizováno, aby zahrnovalo nejnovější SQL Server 2012 Native Client
 - Po přepnutí přihlašování uživatele synchronizace hodnot Hash hesel nebo předávací ověřování v úloze "Změna uživatele přihlášení", je ve výchozím nastavení povolena na zaškrtávací políčko bezproblémové jednotné přihlašování.

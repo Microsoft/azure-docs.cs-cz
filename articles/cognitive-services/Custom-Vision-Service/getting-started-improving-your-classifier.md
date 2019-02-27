@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 54faf8b37afa953aac7d411df2f539188dc5b451
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6e97001497ebdddebe9b5b726e0526a987b6c63c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310208"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873317"
 ---
 # <a name="how-to-improve-your-classifier"></a>K vylepšení klasifikátoru
 
@@ -39,7 +39,7 @@ Chcete-li tento problém vyřešit, použijte následující pokyny pro vzdělá
 
 ## <a name="data-quantity"></a>Množství dat
 
-Počet trénovacích obrázků je nejdůležitějším faktorem. Jsme recomment pomocí alespoň 50 obrázků na popisek jako výchozí bod. S menším počtem obrázky je vyšší riziko overfitting a zatímco vaše čísla výkonu může navrhnout kvalitní, může váš model zápolí s dat z reálného světa. 
+Počet trénovacích obrázků je nejdůležitějším faktorem. Doporučujeme používat alespoň 50 obrázků na popisek jako výchozí bod. S menším počtem obrázky je vyšší riziko overfitting a zatímco vaše čísla výkonu může navrhnout kvalitní, může váš model zápolí s dat z reálného světa. 
 
 ## <a name="data-balance"></a>Data zůstatek
 

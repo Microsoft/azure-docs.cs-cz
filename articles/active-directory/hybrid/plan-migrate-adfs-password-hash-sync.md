@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2effd6c067a1378d9f774f282f6cea69a50596c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 806d060cd58322d745ea6ebdaa59eb85c6a35cbd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204436"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867123"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -319,7 +319,7 @@ Nejprve změňte metodu přihlašování:
    * **Bezproblémové jednotné přihlašování** je nastavena na **povoleno**.
    * **Synchronizace hesla** je nastavena na **povoleno**.<br /> 
 
-   ![Snímek obrazovky, který zobrazuje nastavení v části přihlášení uživatele ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![Snímek obrazovky, který zobrazuje nastavení v části přihlášení uživatele](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 Přejděte k [testování a další kroky](#testing-and-next-steps).
 
@@ -337,7 +337,7 @@ Tuto možnost použijte, pokud nebyla původně konfiguraci federovaných domén
 
    Dříve než povolíte synchronizaci hodnot hash hesel: ![Snímek obrazovky zobrazující provést konfiguraci možnosti na stránce přihlášení uživatele](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Po povolení synchronizace hodnot hash hesel: ![Snímek obrazovky zobrazující nové možnosti na stránce přihlášení uživatele ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Po povolení synchronizace hodnot hash hesel: ![Snímek obrazovky zobrazující nové možnosti na stránce přihlášení uživatele](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Spouští se službou Azure AD Connect verze 1.1.880.0, **bezproblémové jednotné přihlašování** ve výchozím nastavení je zaškrtnuté políčko.

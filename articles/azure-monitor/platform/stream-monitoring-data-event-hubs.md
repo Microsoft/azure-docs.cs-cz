@@ -1,6 +1,6 @@
 ---
 title: Azure Stream monitorování dat do služby Event Hubs
-description: Zjistěte, jak pro všemi daty Azure monitorování do centra událostí k získání dat do partnerský server SIEM nebo nástroj pro analýzu streamování.
+description: Naučíte se Streamovat do centra událostí k získání dat do partnerský server SIEM nebo nástroj pro analýzu Azure data monitorování.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468229"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870682"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
-Platforma Azure Monitor poskytuje jeden kanál pro získání přístupu ke všem data monitorování z vašeho prostředí Azure, umožňuje snadno nastavit partnera SIEM a monitorovací nástroje pro tato data zpracovat. Tento článek vás provede nastavením různé úrovně dat z vašeho prostředí Azure k odeslání pro jedno služby Event Hubs oboru názvů nebo událost centrum, kde může být shromažďovány externího nástroje.
+Tento článek vás provede nastavením různé úrovně dat z vašeho prostředí Azure k odeslání pro jedno služby Event Hubs oboru názvů nebo událost centrum, kde může být shromažďovány externího nástroje.
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
@@ -33,7 +33,7 @@ V rámci prostředí Azure existuje několik "vrstvy" dat monitorování a způs
 - **Předplatné Azure, monitorování dat:** Data o provozu a správy předplatného Azure, jakož i informace o stavu a provoz Azure samotný. [Protokolu aktivit](./../../azure-monitor/platform/activity-logs-overview.md) obsahuje většinu předplatné sledování dat, jako jsou incidenty health service a Azure Resource Manageru audity. Můžete shromažďovat tato data pomocí profilu protokolu.
 - **Data monitorování klienta Azure:** Data o provozu služeb Azure úrovni klienta, jako je Azure Active Directory. Auditování Azure Active Directory a přihlášení jsou příklady dat monitorování klientů. Tato data se můžou shromažďovat diagnostické nastavení tenanta.
 
-Data ze všech úrovních lze odesílat do centra událostí, kde lze načíst do nástroje partnera. Tento oddíl popisuje, jak nakonfigurovat data z každé vrstvy Streamovat do centra událostí. Kroky předpokládají, že už máte prostředky na dané úrovni, která se má monitorovat.
+Data ze všech úrovních lze odesílat do centra událostí, kde lze načíst do nástroje partnera. Některé zdroje lze nastavit k odesílání dat přímo do centra událostí, zatímco jiné zpracování, jako je aplikace logiky může být potřeba načíst požadovaná data. Tento oddíl popisuje, jak nakonfigurovat data z každé vrstvy Streamovat do centra událostí. Kroky předpokládají, že už máte prostředky na dané úrovni, která se má monitorovat.
 
 ## <a name="set-up-an-event-hubs-namespace"></a>Nastavit obor názvů služby Event Hubs
 

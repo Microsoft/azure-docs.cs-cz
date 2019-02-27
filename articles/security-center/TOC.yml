@@ -93,8 +93,8 @@ items:
     items:
     - name: Výstrahy zabezpečení
       href: security-center-managing-and-responding-alerts.md
-    - name: Export upozornění ve službě Azure Security Center
-      href: security-center-alert-export.md
+    - name: Incidenty zabezpečení
+      href: security-center-incident.md
     - name: Principy výstrah zabezpečení
       href: security-center-alerts-type.md
     - name: Ověřování výstrah
@@ -191,9 +191,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Řešení potíží
     href: security-center-troubleshooting-guide.md
-ms.openlocfilehash: 4b132957bf24b68ccb7a8d43ca23a72baa97418f
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4c68265d59ab40ed93ceb7b1961520866d89129f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649879"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889388"

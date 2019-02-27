@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a5499826c06f5f8f5e5db91badf134befa44c9d0
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f41027b5455aa3b1835a0d4fd0c1be11cddccd0d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738228"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871991"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Úvod do Service Fabric cluster resource Manageru
 Tradičně Správa informačních systémů nebo online služby určené vyhradíte konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byla navržena jako úrovně. By být "web" a "data" nebo "úložiště" vrstvu. Aplikace by měla mít zasílání zpráv úrovně, kde požadavky byly převedeny dovnitř a ven a také sadu počítačů vyhrazený pro ukládání do mezipaměti. Každou vrstvu nebo typu úlohy konkrétního počítače, které jsou vyhrazené pro to měl: databáze je teď několik počítačů dedicated, webové servery v pár. Je-li konkrétní typ zatížení počítače, ve kterém se k spuštění příliš horké, pak jste přidali další počítače pomocí této stejnou konfiguraci na dané úrovni. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvou obvykle nahradíte počítače s větší počítače. Snadné. Pokud na počítači se nezdařilo, část celkové aplikace nižší kapacitu spuštěné, dokud se počítač může obnovit. Stále poměrně snadné (Pokud není nutně zábavné).
@@ -54,7 +54,7 @@ I když některé z těchto strategií zajímavé, Service Fabric Cluster Resour
 Vzhledem k tomu, že Cluster Resource Manager je zodpovědný za přesun služby kolem, obsahuje různé funkce set v porovnání s byste našli v nástroj pro vyrovnávání zatížení sítě. Je to proto, že nástroje pro vyrovnávání zatížení sítě doručovat síťový provoz ve kterém už jsou služby, i v případě, že umístění není ideální pro provoz samotné služby. Service Fabric Cluster Resource Manager používá fundamentálně odlišný způsob strategie pro zajištění, že jsou efektivní využívání prostředků v clusteru.
 
 ## <a name="next-steps"></a>Další postup
-- Informace o architektuře a informačního toku v Cluster Resource Manager, projděte si [v tomto článku ](service-fabric-cluster-resource-manager-architecture.md)
+- Informace o architektuře a informačního toku v Cluster Resource Manager, projděte si [v tomto článku](service-fabric-cluster-resource-manager-architecture.md)
 - Cluster Resource Manager má mnoho možností pro popis clusteru. Další informace o metrikách, prohlédněte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
 - Další informace o konfiguraci služby [informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
 - Metriky se, jak spravuje správce prostředků Service Fabric Cluster využití a kapacitu v clusteru. Další informace o metriky a způsob jejich konfigurace rezervace [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
-ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478232"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883837"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -193,7 +193,7 @@ Další informace naleznete v tématu:
 
 * [Určení podmíněné záhlaví pro operace služby objektů Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Zapůjčení kontejneru](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Zapůjčení objektu Blob ](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Zapůjčení objektu Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Správa souběžnosti v službě Table Service
 Služba table service používá optimistické souběžnosti kontrol jako výchozí chování při práci s entitami, na rozdíl od blob service, kde je nutné explicitně vybrat k provedení kontroly optimistické souběžnosti. Rozdíl mezi službami tabulek a objektů blob je, že službou blob service můžete spravovat souběžnosti kontejnerů a objektů BLOB můžete pouze spravovat souběžnosti chování entit.  

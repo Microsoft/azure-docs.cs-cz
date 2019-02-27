@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: c04b9b04a14e5cba205db5e0fa86094ef098bc7b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585869"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886430"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizovat inventáře pomocí webu Azure portal a témata nebo předplatná
 
@@ -67,7 +67,7 @@ Kód spustíte následovně:
 
 2. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`.
 
-3. Vyhledejte připojovací řetězec, který jste si zkopírovali do poznámkového bloku dříve v kurzu, v části [Získání přihlašovacích údajů pro správu](#obtain-the-management-credentials). Budete potřebovat také název tématu, které jste vytvořili v předchozí části.
+3. Získání připojovacího řetězce, který jste zkopírovali do poznámkového bloku v získat části přihlašovací údaje pro správu v tomto kurzu. Budete potřebovat také název tématu, které jste vytvořili v předchozí části.
 
 4. Do příkazového řádku zadejte následující příkaz:
 

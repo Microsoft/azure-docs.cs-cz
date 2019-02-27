@@ -13,14 +13,14 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190462"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881800"
 ---
-# <a name="what-is-hybrid-identity"></a>Co je hybridní identita? 
+# <a name="what-is-hybrid-identity"></a>Co je hybridní identita?
 
 Dnes, podniky a společnosti se častěji stávají směs místních a cloudových aplikací.  Uživatelé, kteří potřebují přístup k těmto aplikacím v místním prostředí i v cloudu. Tento požadavek se stal náročné scénáře. 
 
@@ -30,7 +30,7 @@ K dosažení hybridní identity, jedním ze tří způsobů ověřování je mo�
 
 - **[Synchronizace hodnot hash hesel (PHS)](whatis-phs.md)**  
 - **[Předávací ověřování (PTA)](how-to-connect-pta.md)**  
-- **[Federace](whatis-fed.md)** 
+- **[Federování (AD FS)](whatis-fed.md)** 
 
 Tyto metody ověřování také poskytují [jednotného přihlašování](how-to-connect-sso.md) možnosti.  Jednotného přihlašování automaticky přihlásí uživatele v případě, že nejsou v jejich firemní zařízení připojených k podnikové síti.
 
@@ -47,7 +47,7 @@ Tady najdete několik běžných scénářů souvisejících s hybridní identit
 |Povolení uživatelé přihlásit a přístup ke cloudovým službám pomocí jejich místní heslo.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
 |Implementaci jednotného přihlašování pomocí firemních přihlašovacích údajů.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|  
 |Ujistěte se, že žádné hodnoty hash hesel se ukládají v cloudu.| |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
-|Povolení řešení cloudové služby Multi-Factor authentication.| |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Povolení řešení cloudové služby Multi-Factor authentication.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
 |Povolit místní řešení vícefaktorového ověřování.| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
 |Podpora ověřování pomocí čipové karty pro moje uživatele. <sup>4</sup>| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
 |Zobrazit oznámení o vypršení platnosti hesel portálu Office a na Windows 10 desktop.| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 

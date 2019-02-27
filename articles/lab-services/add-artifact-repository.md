@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: e8a94fdae74c5a30ba75e9143b298c3372b886d7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a267b48e185e02c1b1217380429453799308bbe
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733006"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886757"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje určit artefakt, který chcete přidat do virtuálního počítače během vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroje nebo aplikace, kterou chcete nainstalovat do virtuálního počítače. Artefakty jsou definovány v souboru JSON načíst z úložiště GitHub nebo VSTS Git. 
@@ -60,7 +60,7 @@ Přidání úložiště do vašeho testovacího prostředí, nejprve získejte i
    4. Vyberte **všechny obory** možnost.
    5. Vyberte **vytvořit Token**.
 9. Nový token se zobrazí v **osobní přístupové tokeny** seznamu. Vyberte **kopírování Token**a potom uložte hodnota tokenu pro pozdější použití.
-10. Dál [připojit se k úložišti testovacího prostředí](#connect-your-lab-to-the-repository) oddílu.
+10. Pokračujte k připojení vašeho testovacího prostředí a v části úložiště.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 Tato část obsahuje postup pro přidání úložiště artefaktů do testovacího prostředí na webu Azure Portal. 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
-ms.openlocfilehash: 1fb0f3f76b9363d5e467e91b90287d4b0c5cfc64
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0cbb4d2bc6449dc1cf12a374085b429743224995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735885"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872875"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Kurz: Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení
 
@@ -75,7 +75,7 @@ Jakmile budete hotovi, vyberte **souboru** a **Uložit** uložte provedené změ
 
 ### <a name="interrupting-the-application"></a>Přerušení aplikace
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[Rozhraní .NET, Python a Java v7] (# kartu/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[Verze rozhraní .NET, Python a Java 7](#tab/dotnet-python-java-v7)
 
 Spusťte aplikaci v integrovaném vývojovém prostředí nebo prostředí.
 
@@ -83,7 +83,7 @@ Jakmile aplikace zahájí čtení z primárního koncového bodu, pozastavte apl
 
 ![Aplikace scénáře](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (# kartu nebo Java – v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Spusťte aplikaci v integrovaném vývojovém prostředí nebo prostředí.
 
@@ -113,7 +113,7 @@ Odkomentujte následující řádky, nahraďte `STORAGEACCOUNTNAME` s názvem ú
          }
 ```
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[Rozhraní .NET, Python a Java v7] (# kartu/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[Verze rozhraní .NET, Python a Java 7](#tab/dotnet-python-java-v7)
 
 Obnovte chod aplikace stisknutím **libovolné klávesy**.
 
@@ -123,7 +123,7 @@ Tento model představuje model [Jistič](https://docs.microsoft.com/azure/archit
 
 ![Vložení vlastního pravidla](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (# kartu nebo Java – v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Teď, když jste naši nabídku doplnili o selhání, zadejte **G** na test chybou.
 
@@ -133,7 +133,7 @@ Informuje vás, že používá sekundární kanál na rozdíl od primární kan�
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Simulovat obnovení primárního koncového bodu
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[Rozhraní .NET, Python a Java v7] (# kartu/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[Verze rozhraní .NET, Python a Java 7](#tab/dotnet-python-java-v7)
 
 Se sadou vlastních pravidel Fiddleru nastavenou v předchozím kroku žádosti na primární koncový bod selžou.
 
@@ -153,7 +153,7 @@ Potom obnovte chod aplikace stisknutím **libovolné klávesy**. Aplikace bude p
 
 ![Obnovení chodu aplikace](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (# kartu nebo Java – v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Se sadou vlastních pravidel Fiddleru nastavenou v předchozím kroku žádosti na primární koncový bod selžou.
 
@@ -173,11 +173,11 @@ Pro všechny žádosti na primární koncový bod vašeho účtu [geograficky re
 
 ### <a name="start-and-pause-the-application"></a>Spuštění a pozastavení aplikace
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[Rozhraní .NET, Python a Java v7] (# kartu/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[Verze rozhraní .NET, Python a Java 7](#tab/dotnet-python-java-v7)
 
 Spusťte aplikaci v integrovaném vývojovém prostředí nebo prostředí. Jakmile aplikace zahájí čtení z primárního koncového bodu, pozastavte aplikaci stisknutím **libovolné klávesy** v okně konzoly.
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (# kartu nebo Java – v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Protože řídíte vzorku, není nutné přerušit účely otestování selhání.
 
@@ -210,13 +210,13 @@ Zadáním následujícího příkazu na příkazovém řádku Windows nebo termi
 
 Nahraďte `<destination_ip>` IP adresou vašeho učtu úložiště a `<gateway_ip>` IP adresou místního hostitele.
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[Rozhraní .NET, Python a Java v7] (# kartu/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[Verze rozhraní .NET, Python a Java 7](#tab/dotnet-python-java-v7)
 
 Obnovte chod aplikace stisknutím **libovolné klávesy**.
 
 Jakmile se aplikace znovu spustí, žádosti na primární koncový bod začnou být neúspěšné. Aplikace se pokusí znovu připojit k primárnímu koncovému bodu pětkrát. Po dosažení prahové hodnoty pěti pokusů aplikace zažádá o bitovou kopii ze sekundárního koncového bodu jen pro čtení. Jakmile aplikace dvacetkrát úspěšně načte bitovou kopii ze sekundárního koncového bodu, pokusí se připojit k primárnímu koncovému bodu. Pokud je primární koncový bod stále nedostupný, obnoví aplikace čtení ze sekundárního koncového bodu. Tento model představuje model [Jistič](/azure/architecture/patterns/circuit-breaker) popsaný v předchozím kurzu.
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (# kartu nebo Java – v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Teď, když jste naši nabídku doplnili o selhání, zadejte **G** na test chybou. Informuje vás, že používá sekundární kanál na rozdíl od primární kanál.
 
@@ -236,14 +236,14 @@ Zadáním následujícího příkazu na příkazovém řádku Windows nebo na te
 
 `route delete <destination_ip>`
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[Rozhraní .NET, Python a Java v7] (# kartu/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[Verze rozhraní .NET, Python a Java 7](#tab/dotnet-python-java-v7)
 
 Obnovte chod aplikace stisknutím **libovolné klávesy**. Aplikace bude pokračovat ve čtení z primárního koncového bodu, dokud nedosáhne 999 čtení.
 
 ![Obnovení chodu aplikace](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (# kartu nebo Java – v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Zadejte **G** otestovat stahování. Aplikace budou hlásit, že nyní používá primární kanál znovu.
 

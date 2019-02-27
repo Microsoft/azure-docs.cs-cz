@@ -7,24 +7,24 @@ ms.reviewer: chipalost
 ms.service: iot-edge
 services: iot-edge
 ms.topic: overview
-ms.date: 06/12/2018
+ms.date: 02/25/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6bd72fd91190c9ed54b4dfd3e7b1e957c375bd4c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2d1e4ce719311a28fb4b2075864f8f411cd2713d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230556"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877448"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co je Azure IoT Edge
 
-Azure IoT Edge přesouvá analýzy a vlastní obchodní logiku z cloudu do zařízení, aby se vaše organizace mohla místo správy dat soustředit na obchodní přehledy. Nakonfigurujte vlastní software IoT, nasaďte ho do zařízení prostřednictvím standardních kontejnerů, to vše monitorujte z cloudu a umožněte tak skutečné škálování vašeho řešení.
+Azure IoT Edge přesouvá analýzy a vlastní obchodní logiku z cloudu do zařízení, aby se vaše organizace mohla místo správy dat soustředit na obchodní přehledy. Konfigurace vlastní software IoT, nasaďte do zařízení prostřednictvím standardních kontejnerů a monitorování všechno z cloudu.
 
 >[!NOTE]
 >Azure IoT Edge je k dispozici na úrovni Free a Standard služby IoT Hub. Úroveň Free je určená pouze k testování a posouzení. Další informace o úrovních Basic a Standard najdete v [návodu k výběru správné úrovně služby IoT Hub](../iot-hub/iot-hub-scaling.md).
 
-Analýzy zvyšují přidanou hodnotu řešení IoT, ale ne všechny analýzy musí být v cloudu. Pokud chcete, aby zařízení reagovalo na nouzové situace co nejrychleji, můžete provádět detekci anomálií přímo v zařízení. Podobně pokud chcete snížit náklady na šířku pásma a vyhnout se přenosu terabajtů nezpracovaných dat, můžete provádět čištění a agregaci dat místně. Přehledy pak můžete odeslat do cloudu. 
+Analýzy zvyšují přidanou hodnotu řešení IoT, ale ne všechny analýzy musí být v cloudu. Pokud chcete, aby zařízení reagovalo na nouzové situace co nejrychleji, můžete provádět detekci anomálií přímo v zařízení. Podobně pokud chcete snížit náklady na šířku pásma a vyhnout se přenosu terabajtů nezpracovaných dat, můžete provádět čištění a agregaci dat místně. Přehledy pak můžete odesílejte do cloudu pro účely analýzy. 
 
 Azure IoT Edge se skládá ze tří komponent:
 * Moduly IoT Edge jsou kontejnery, na kterých běží služby Azure, třeba služby třetích stran nebo váš vlastní kód. Moduly jsou nasazené na zařízení IoT Edge a na těchto zařízeních se místně spouštějí. 
@@ -33,11 +33,11 @@ Azure IoT Edge se skládá ze tří komponent:
 
 ## <a name="iot-edge-modules"></a>Moduly IoT Edge
 
-Moduly IoT Edge jsou jednotky spuštění, aktuálně implementované jako kontejnery kompatibilní s Dockerem, které spouští vaši obchodní logiku na hraničních zařízeních. Můžete nakonfigurovat vzájemnou komunikaci několika modulů a vytvořit tak kanál zpracování dat. Můžete vyvíjet vlastní moduly nebo balit určité služby Azure do modulů, které poskytují přehledy v režimu offline a na hraničních zařízení. 
+Moduly IoT Edge jsou jednotky spuštění, které jsou implementované jako kontejnery kompatibilní s Dockerem, které spouští vaši obchodní logiku na hraničních zařízeních. Můžete nakonfigurovat vzájemnou komunikaci několika modulů a vytvořit tak kanál zpracování dat. Můžete vyvíjet vlastní moduly nebo balit určité služby Azure do modulů, které poskytují přehledy v režimu offline a na hraničních zařízení. 
 
 ### <a name="artificial-intelligence-on-the-edge"></a>Umělá inteligence na hraničních zařízeních
 
-Azure IoT Edge umožňuje nasazovat komplexní zpracování událostí, machine learning, rozpoznávání obrazu a další hodnotnou AI aniž byste museli napsat interně. Služby Azure, jako jsou Azure Functions, Azure Stream Analytics a Azure Machine Learning můžete spouštět v místním prostřednictvím Azure IoT Edge, ale nejste omezeni pouze na služby Azure. Kdokoli může vytvářet moduly AI a zpřístupnit je pro použití komunitě. 
+Azure IoT Edge umožňuje nasazovat komplexní zpracování událostí, machine learning, rozpoznávání obrazu a další hodnotnou AI aniž byste museli napsat interně. Služby Azure, jako jsou Azure Functions, Azure Stream Analytics a Azure Machine Learning můžete spouštět v místním prostřednictvím Azure IoT Edge, ale nejste omezeni pouze na služby Azure. Každý, je schopna vytvářet moduly AI a zpřístupnit je pro použití v Tržišti Azure Marketplace komunitě. 
 
 ### <a name="bring-your-own-code"></a>Používání vlastního kódu
 
@@ -55,7 +55,7 @@ Modul runtime Azure IoT Edge umožňuje používat na hraničních zařízeních
 
 ![Modul runtime IoT Edge odesílá přehledy a sestavy do služby IoT Hub.](./media/about-iot-edge/runtime.png)
 
-Použití zařízení Azure IoT Edge je na vás. Modul runtime se často používá k nasazování AI do bran které agregují a zpracovávají data z několika místních zařízení, ale tento model nasazení je pouze jedna z možností. Zařízení typu list také můžou být hraničními zařízeními Azure IoT bez ohledu na to, jestli jsou připojená k bráně nebo přímo ke cloudu.
+Použití zařízení Azure IoT Edge je na vás. Modul runtime se často používá k nasazování AI do bran, které agregují a zpracovávají data z jiných místních zařízení, ale tento model nasazení je pouze jedna z možností. Zařízení typu list také můžou být hraničními zařízeními Azure IoT bez ohledu na to, jestli jsou připojená k bráně nebo přímo ke cloudu.
 
 Modul runtime Azure IoT Edge běží ve velké sadě zařízení IoT a díky tomu jej můžete používat nejrůznějšími způsoby. Podporuje operační systémy Linux a Windows a abstraktní podrobnosti o hardwaru. Můžete použijte menší zařízení než Raspberry Pi 3 Pokud nezpracováváte množství dat, nebo použijte kapacitu na průmyslový server ke spouštění náročných úloh.
 
@@ -74,5 +74,3 @@ Azure IoT Edge se bezproblémově integruje s akcelerátory řešení Azure IoT 
 ## <a name="next-steps"></a>Další postup
 
 Vyzkoušejte si tyto koncepty při [nasazení IoT Edge na simulovaném zařízení](quickstart.md).
-
- 

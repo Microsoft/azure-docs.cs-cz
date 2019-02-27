@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 62a953467e212d0cb78686e9b0d98a7f1fcb5135
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4f9fee0c405c893d76d044278c80e7b31823fce
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699006"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881331"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL pomocí webu Azure portal
 
@@ -57,7 +57,7 @@ Následující kroky obnoví ukázkový server k určitému bodu v čase:
 
 3. Vyplňte formulář obnovit požadované údaje:
 
-   ![Azure Database for PostgreSQL – informace o obnovení ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database for PostgreSQL – informace o obnovení](./media/howto-restore-server-portal/3-restore.png)
   - **Bod obnovení**: Vyberte v daném okamžiku, kterou chcete obnovit.
   - **Cílový server**: Zadejte název pro nový server.
   - **Umístění**: Nejde vyberte oblast. Ve výchozím nastavení je stejná jako u zdrojového serveru.

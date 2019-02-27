@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: eda41870e86db206847f5ea81e23fa1b7612234c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b1f6024538c6807fd68a0d7b0b7ae2776938055b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817299"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888183"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  
@@ -150,7 +150,7 @@ V malém měřítku můžete napsání kódu pro vaše data o přijetí změn od
 Větší ukázky kódu, naleznete v tématu [pomocí role pracovního procesu][exportasa].
 
 ## <a name="delete"></a>Odstranit stará data
-Všimněte si, že jste zodpovědní za správu vaší kapacity úložiště a odstraňování starých dat v případě potřeby.
+Jste zodpovědní za správu vaší kapacity úložiště a odstraňování starých dat v případě potřeby.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Pokud znovu vygenerovat klíče účtu úložiště...
 Pokud změníte klíč do úložiště, průběžný export přestanou fungovat. Zobrazí se vám oznámení v účtu Azure.
@@ -187,7 +187,7 @@ Na velkých měřítek, vezměte v úvahu [HDInsight](https://azure.microsoft.co
 * *Jak velký počet objektů BLOB zobrazit ve službě storage?*
 
   * Pro každý datový typ, který jste vybrali pro export nový objekt blob se vytvoří každou minutu (pokud jsou k dispozici data).
-  * Pro aplikace s intenzivním provozem, navíc další oddíl jednotky jsou přiděleny. V tomto případě každá jednotka vytvoří objekt blob každou minutu.
+  * Pro aplikace s intenzivním provozem, navíc další oddíl jednotky jsou přiděleny. V takovém případě každá jednotka vytvoří objekt blob každou minutu.
 * *Můžu znovu vygenerovat klíč do úložiště nebo změnit název kontejneru a nyní exportu nefunguje.*
 
     Export upravit a otevře se okno cíl exportu. Ponechat stejné úložiště jako předtím vybrali a klikněte na tlačítko OK pro potvrzení. Export se restartuje. Pokud se tato změna byla během posledních několik dní, nebude přijít o data.

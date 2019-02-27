@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a72df28fbaed89076976f567774bd5fdb15bc2f9
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c24d8bd382dc57a8a354b61252d7a5e16640436f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229485"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864633"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředků služby Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "54229485"
 [Řešení pro správu]( solutions.md) by měl obvykle zahrnovat sady runbook ve službě Azure Automation pro automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Kromě runbooků účty služby Automation obsahuje prostředky, jako jsou proměnné a plány, které podporoval runbooky, které používají v řešení.  Tento článek popisuje, jak zahrnout do řešení sady runbook a jejich souvisejících prostředcích.
 
 > [!NOTE]
-> Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure ]( solutions-creating.md) 
+> Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure]( solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -201,7 +201,7 @@ Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
 |:--- |:--- |
 | description |Volitelný popis pro daný plán. |
 | startTime |Určuje počáteční čas plánu jako objekt DateTime. Řetězec lze zadat, pokud je možné převést na platný DateTime. |
-| hodnotu isEnabled |Určuje, zda je povolena v plánu. |
+| isEnabled |Určuje, zda je povolena v plánu. |
 | interval |Typ intervalu pro daný plán.<br><br>den<br>hodina |
 | frequency |Četnost plán by měl vyvolat za počet dnů nebo hodin. |
 
@@ -281,7 +281,7 @@ Pokud jste nastavili počáteční hodnotu pro proměnnou, musí nakonfigurovat 
 
 | Typ dat | Popis | Příklad: | Řeší na |
 |:--|:--|:--|:--|
-| řetězec   | Hodnota uzavřete do dvojitých uvozovek.  | "\"Hello world\"" | "Hello world" |
+| string   | Hodnota uzavřete do dvojitých uvozovek.  | "\"Hello world\"" | "Hello world" |
 | Číselné  | Číselná hodnota v jednoduchých uvozovkách.| "64" | 64 |
 | Boolean  | **Hodnota TRUE** nebo **false** v uvozovkách.  Všimněte si, že tato hodnota musí obsahovat malá písmena. | "true" | true (pravda) |
 | datetime | Hodnota serializovaná data.<br>Rutiny ConvertTo-Json v prostředí PowerShell můžete použít k vygenerování této hodnoty pro konkrétní datum.<br>Příklad: get datum "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |

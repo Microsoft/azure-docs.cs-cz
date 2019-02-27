@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19039a6a1337c2ddc7494805b18f564466d4f1f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85e773d74231b0b0847dad41a071be499724e2d4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168727"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Kurz: Integrace Azure Active Directory s InstaVR prohlížeč
 
@@ -136,11 +136,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s InstaVR prohlížeč, prove
 
 2. Klikněte na **ikonu uživatele** a vyberte **účet**.
 
-    ![Konfigurace prohlížeče InstaVR ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![Konfigurace prohlížeče InstaVR](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. Přejděte dolů k položce **ověřování SAML** a proveďte následující kroky:
 
-    ![Konfigurace prohlížeče InstaVR ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![Konfigurace prohlížeče InstaVR](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. V **adresu URL jednotného přihlašování** vložit do textového pole **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
@@ -215,22 +215,22 @@ V této části se v prohlížeči InstaVR vytvoří uživateli Britta Simon. In
 
 2. Vyberte **balíčku** v levém navigačním panelu a vyberte **vytvořit balíček pro Web**.
 
-    ![Konfigurace prohlížeče InstaVR ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![Konfigurace prohlížeče InstaVR](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. Vyberte **Download** (Stáhnout).
 
-    ![Konfigurace prohlížeče InstaVR ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![Konfigurace prohlížeče InstaVR](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Vyberte **otevřít stránku hostované** po, který ho budete přesměrováni do služby Azure AD pro přihlášení.
 
-    ![Konfigurace prohlížeče InstaVR ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![Konfigurace prohlížeče InstaVR](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Zadejte svoje přihlašovací údaje Azure AD k úspěšnému přihlášení k Azure AD prostřednictvím jednotného přihlašování.
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

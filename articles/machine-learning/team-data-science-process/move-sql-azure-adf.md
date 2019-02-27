@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6017aa5172efa72bb708004e2c4aee7f9ae4acad
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 85edaeab67c7b5164dabbc817429e2ab82f5ea11
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733905"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864664"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory
 
@@ -52,7 +52,7 @@ Tento kurz předpokládá, že máte:
 
 * **Předplatného Azure**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Zobrazit [Správa přístupových klíčů úložiště](../../storage/common/storage-account-manage.md#access-keys).
-* Přístup **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, tématu [Začínáme s Microsoft Azure SQL Database ](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
+* Přístup **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, tématu [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
 * Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 > [!NOTE]
@@ -99,7 +99,7 @@ Definice založenými na JSON v tabulkách nepoužívejte následující názvy:
 Tři tabulky definice, které jsou potřebné pro tento kanál ADF:
 
 1. [On-premises tabulky SQL](#adf-table-onprem-sql)
-2. [Tabulka objektů BLOB ](#adf-table-blob-store)
+2. [Tabulka objektů BLOB](#adf-table-blob-store)
 3. [SQL Azure Table](#adf-table-azure-sql)
 
 > [!NOTE]

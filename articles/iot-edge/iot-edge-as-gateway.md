@@ -4,17 +4,17 @@ description: Vytvoření transparentní, neprůhledné nebo proxy zařízení br
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092277"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877585"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Použití zařízení IoT Edge jako brána
 
@@ -54,4 +54,4 @@ Tady je rychlý tahák, která porovnává primitiv služby IoT Hub, při použi
 Při použití model neprůhledné brány (překlad protokolu), všechna zařízení, připojení přes tuto bránu sdílet stejné fronty typu cloud zařízení, která může obsahovat maximálně 50 zprávy. Vyplývá, že model neprůhledné brány by měla sloužit pouze v případě, že se několik zařízení připojují prostřednictvím brány každé pole a je malý provoz jejich typu cloud zařízení.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o konfiguraci zařízení IoT Edge jako [transparentní brána](how-to-create-transparent-gateway-linux.md).
+Další informace o konfiguraci zařízení IoT Edge jako [transparentní brána](how-to-create-transparent-gateway.md).

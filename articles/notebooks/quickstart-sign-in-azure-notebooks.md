@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4daae4357a7a9577c48edc8643355d319b701944
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106307"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881562"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>Rychlý start: Přihlaste se a nastavit ID uživatele
+# <a name="quickstart-sign-in-and-set-a-user-id"></a>Rychlý start: Přihlášení a nastavení ID uživatele
 
 I když se vždy zobrazí poznámkových bloků Azure bez přihlášení, musíte se přihlásit k možnost spouštět poznámkové bloky, přístup k uložených projektů a poznámkové bloky a sdílení vašich poznámkových bloků s ostatními.
 
@@ -52,6 +52,9 @@ I když se vždy zobrazí poznámkových bloků Azure bez přihlášení, musít
 
     ![Počáteční zobrazení stránky profil poznámkových bloků Azure](media/accounts/profile-page-new.png)
 
+> [!NOTE]
+> Pokud se zobrazí zpráva "ID uživatele se už používá," akci jiné ID. ID uživatele jsou jedinečná ve všech účtech poznámkových bloků Azure a poznámkových bloků Azure si zároveň vyhrazuje určité ID uživatelů, jako je například Microsoft názvy.
+
 ## <a name="sign-out"></a>Odhlásit se
 
 Odhlásit, vyberte své uživatelské jméno v pravém horním rohu stránky a pak vyberte **Odhlásit**:
@@ -61,4 +64,4 @@ Odhlásit, vyberte své uživatelské jméno v pravém horním rohu stránky a p
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
+> [Rychlé zprovoznění: Vytvářejte a sdílejte poznámkového bloku](quickstart-create-share-jupyter-notebook.md)

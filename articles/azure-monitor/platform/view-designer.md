@@ -1,6 +1,6 @@
 ---
-title: Vytvořit zobrazení pro analýzu dat ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Pomocí návrháře zobrazení v Log Analytics můžete vytvořit vlastní zobrazení, které se zobrazují na webu Azure Portal a obsahovat různé vizualizace dat v pracovním prostoru Log Analytics. Tento článek obsahuje základní informace o návrháři zobrazení a uvede postupy pro vytváření a úpravu vlastní zobrazení.
+title: Vytvořit zobrazení, která analyzuje data protokolů ve službě Azure Monitor | Dokumentace Microsoftu
+description: Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit vlastní zobrazení, které se zobrazují na webu Azure Portal a obsahovat nejrůznější vizualizace dat v pracovním prostoru Log Analytics. Tento článek obsahuje základní informace o návrháři zobrazení a uvede postupy pro vytváření a úpravu vlastní zobrazení.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: ec56e21a989fb0e8db7b8bafb1357c6ed64eae75
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1996befa78409e572798a9043f7e6ee3b6f647bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192242"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887896"
 ---
-# <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Log Analytics
-Pomocí návrháře zobrazení v [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), řadu vlastních zobrazení můžete vytvořit na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
+# <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení ve službě Azure Monitor
+Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit řadu vlastních zobrazení na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Další informace o návrháři zobrazení najdete v tématu:
 
@@ -30,7 +32,7 @@ Další informace o návrháři zobrazení najdete v tématu:
 
 
 ## <a name="concepts"></a>Koncepty
-Zobrazení se zobrazí na **přehled** stránku vašeho pracovního prostoru Log Analytics na portálu Azure portal. Dlaždice v každém vlastní zobrazení se zobrazují podle abecedy a dlaždic pro řešení nainstalují stejného pracovního prostoru.
+Zobrazení se zobrazí ve službě Azure Monitor **přehled** stránky na webu Azure Portal. Otevřete tuto stránku z **Azure Monitor** nabídky kliknutím **Další** pod **Insights** oddílu. Dlaždice v každém vlastní zobrazení se zobrazují podle abecedy a dlaždic pro řešení monitorování jsou nainstalovány stejného pracovního prostoru.
 
 ![Stránka s přehledem](media/view-designer/overview-page.png)
 
@@ -38,9 +40,9 @@ Zobrazení, které vytvoříte pomocí návrháře zobrazení obsahovat prvky, k
 
 | Část | Popis |
 |:--- |:--- |
-| Dlaždice | Jsou zobrazeny ve svém pracovním prostoru Log Analytics **přehled** stránky. Každé dlaždici se zobrazí vizuální přehled, který představuje vlastní zobrazení. Každý typ dlaždice obsahuje vizualizaci různých záznamů. Můžete vybrat příslušnou dlaždici a vlastní zobrazení. |
+| Dlaždice | Jsou zobrazeny v Azure Monitor **přehled** stránky. Každé dlaždici se zobrazí vizuální přehled, který představuje vlastní zobrazení. Každý typ dlaždice obsahuje vizualizaci různých záznamů. Můžete vybrat příslušnou dlaždici a vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí, když vyberete dlaždici. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
-| Části vizualizace | K dispozici vizualizace dat v pracovním prostoru Log Analytics na základě jedné nebo více [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md). Většina části patří hlavičky, která poskytuje vizualizaci vysoké úrovně, a seznam, který zobrazí nejlepší výsledky. Každý typ části poskytuje různé vizualizace záznamů v pracovním prostoru Log Analytics. Vybrat elementy v části provést hledání v protokolu, která poskytuje podrobné záznamy. |
+| Části vizualizace | K dispozici vizualizace dat v pracovním prostoru Log Analytics na základě jedné nebo více [protokolu dotazy](../log-query/log-query-overview.md). Většina části patří hlavičky, která poskytuje vizualizaci vysoké úrovně, a seznam, který zobrazí nejlepší výsledky. Každý typ části poskytuje různé vizualizace záznamů v pracovním prostoru Log Analytics. Vybrat elementy v části o provedení dotazu protokolu, která poskytuje podrobné záznamy. |
 
 
 ## <a name="work-with-an-existing-view"></a>Práce s existující zobrazení
@@ -53,7 +55,7 @@ Tyto možnosti jsou popsány v následující tabulce:
 | Možnost | Popis |
 |:--|:--|
 | Obnovení   | Aktualizuje zobrazení s nejnovější data. | 
-| Analýzy | Otevře [portálu pro pokročilou analýzu](../../azure-monitor/log-query/portals.md) k analýze dat pomocí dotazů na protokoly. |
+| Logs      | Otevře [Log Analytics](../log-query/portals.md) k analýze dat pomocí dotazů na protokoly. |
 | Upravit       | Otevře se zobrazení v Návrháři zobrazení k úpravě jeho obsah a konfiguraci.  |
 | Klon      | Vytvoří nové zobrazení a otevře v zobrazení návrhu. Název nového zobrazení je stejný jako původní název, ale s *kopírování* připojí k němu. |
 | Rozsah dat | Nastavte filtr rozsahu data a času pro data, která je zahrnutá v zobrazení. Tento rozsah je použit před všechny rozsahy kalendářních dat nastavit v dotazech v zobrazení.  |

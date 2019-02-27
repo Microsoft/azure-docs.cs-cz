@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee41c6d543ac4f52b537ebc8054f2986c4217c
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b06151b9cb5603ef54c8e84d261bb7a4e7885e1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649575"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880457"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trénování TensorFlow a Keras modelů pomocí služby Azure Machine Learning
 
@@ -71,10 +71,10 @@ keras_est = TensorFlow(source_directory='./my-keras-proj',
                        script_params=script_params,
                        compute_target=compute_target,
                        entry_script='keras_train.py',
-                       conda_packages=['keras'], # just add keras through conda
+                       pip_packages=['keras'], # just add keras through pip
                        use_gpu=True)
 ```
-Výše uvedené konstruktor estimator TensorFlow instruuje služby Azure Machine Learning k instalaci Keras prostřednictvím Conda do prostředí pro spuštění. A `keras_train.py` pak můžete importovat rozhraní Keras API k natrénování modelu Keras. Úplný příklad, prozkoumejte [tento poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb).
+Výše uvedené konstruktor estimator TensorFlow instruuje služby Azure Machine Learning k instalaci Keras pomocí pip do prostředí provádění. A `keras_train.py` pak můžete importovat rozhraní Keras API k natrénování modelu Keras. Úplný příklad, prozkoumejte [tento poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb).
 
 ## <a name="distributed-training"></a>Distribuované trénování
 Odhad TensorFlow také umožňuje trénování modelů ve velkém měřítku napříč clustery CPU a GPU virtuálních počítačů Azure. Můžete snadno spouštět distribuované trénování tensorflowu se několik volání rozhraní API, zatímco bude Azure Machine Learning spravovat na pozadí, infrastruktury a potřeby provádět tyto úlohy Orchestrace.

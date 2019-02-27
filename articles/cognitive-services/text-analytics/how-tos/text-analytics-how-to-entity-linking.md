@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 135b684c67776da7d722074abe185b5ed2a860fa
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242743"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889405"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
 
@@ -74,7 +74,7 @@ Musíte mít dokumenty JSON v tomto formátu: ID, text, kód jazyka.
 
 Seznam aktuálně podporovaných jazyků najdete v části [tento seznam](../text-analytics-supported-languages.md).
 
-Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete mít až 1 000 položek (ID). Kolekce se posílá v textu žádosti. V následujícím příkladu je ilustraci obsah, který může odeslat za účelem vytváření odkazů entit.
+Velikost dokumentu musí být v jednom dokumentu v části 5 120 znaků a může mít až 1 000 položek (ID) na kolekci. Kolekce se posílá v textu žádosti. V následujícím příkladu je ilustraci obsah, který může odeslat za účelem vytváření odkazů entit.
 
 ```
 {"documents": [{"id": "1",

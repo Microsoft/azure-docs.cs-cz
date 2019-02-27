@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e9c1c35236ce6449a9c9bf06ba291f46db472
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5e749f68aba48ac258363a0a03e3474e1e28b064
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730961"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876768"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikace ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -103,7 +103,7 @@ Nejjednodušší způsob, jak najít příčinu chyby je často povolit podrobn�
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Upravit soubor Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Aktualizujte prohlížeč, který se zobrazuje zpráva čitelná a nyní získáte podrobné chybové zprávy, jako v následujícím příkladu:
 
     ![Podrobná chybová zpráva](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
@@ -225,7 +225,7 @@ Vzdálené ladění pracuje pouze s průběžné WebJobs. Na vyžádání a plá
 
 15. Přihlaste se pomocí přihlašovacích údajů Azure a pak klikněte na název úlohy WebJob přejdete na stránku pro webové úlohy.
 
-     ![Klikněte na tlačítko ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
+     ![Click ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
      Řídicí panel, který ukazuje `GenerateThumbnail` nedávno funkce.
 
@@ -685,7 +685,7 @@ Další informace o analýze protokolů webového serveru najdete v následujíc
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Nástroj pro zobrazení dat v protokolů webového serveru (*.log* soubory).
-* [Řešení potíží s problémy s výkonem služby IIS nebo chyby aplikace pomocí LogParser ](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [Řešení potíží s problémy s výkonem služby IIS nebo chyby aplikace pomocí LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do nástroje analyzátoru protokolů, který můžete použít k analýze protokolů webového serveru.
 * [Příspěvky do blogu podle Robert McMurray pomocí LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Stavový kód HTTP ve službě IIS 7.0, IIS 7.5 a IIS 8.0](https://support.microsoft.com/kb/943891)

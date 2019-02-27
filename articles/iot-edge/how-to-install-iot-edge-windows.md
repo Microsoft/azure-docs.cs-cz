@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 27478de68cde9a097dcc160a4553839aef9a018c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 3981ae197515803821891402e525852901963f63
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902801"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871591"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows
 
@@ -213,6 +213,34 @@ A seznam s moduly:
 ```powershell
 iotedge list
 ```
+
+Po dokončení nové instalace pouze modulu byste měli vidět spuštění **edgeAgent**. Poté co [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md), zobrazí se ostatním. 
+
+## <a name="manage-module-containers"></a>Správa kontejnerů modulu
+
+Služba IoT Edge vyžaduje, aby modul container běžícího ve vašem zařízení. Při nasazení modulu do zařízení, modul runtime IoT Edge používá modul kontejneru pro vyžádejte si image kontejneru z registru v cloudu. Služba IoT Edge umožňuje pracovat s moduly a protokoly načíst, ale v některých případech můžete chtít použít modul kontejneru pro interakci s kontejner sám o sobě. 
+
+Další informace o modulu koncepty, najdete v části [moduly pochopit Azure IoT Edge](iot-edge-modules.md). 
+
+Pokud používáte kontejnery Windows na zařízení s Windows IoT Edge, IoT Edge instalace zahrnuté modul Moby kontejneru. Pokud vytváříte kontejnery Linuxu ve svém vývojovém počítači s Windows, pravděpodobně používáte Desktop Dockeru. Modul Moby byl založen na stejné standardy jako Docker a nebyl navržený pro běh paralelně na stejném počítači jako Docker Desktop. Z tohoto důvodu Pokud chcete cíl kontejnery spravuje Moby modul, budete muset specificky cílí tento motor místo Dockeru. 
+
+Například seznam všech imagí Dockeru, použijte následující příkaz:
+
+```powershell
+docker images
+```
+
+Chcete-li seznam všech imagí Moby, upravte stejný příkaz pomocí ukazatele na modul Moby: 
+
+```powershell
+docker -H npipe:////./pipe/iotedge_moby_engine images
+```
+
+Modul identifikátoru URI je uvedená ve výstupu skriptu instalace nebo najdete ho v části nastavení modulu runtime kontejneru config.yaml souboru. 
+
+![identifikátor uri moby_runtime v config.yaml](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
+
+Další informace o příkazech, která vám umožní pracovat s kontejnery a imagí běžící na vašem zařízení, najdete v části [rozhraní příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/docker/).
 
 ## <a name="uninstall-iot-edge"></a>Odinstalujte IoT Edge
 

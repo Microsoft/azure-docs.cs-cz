@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5e198dff2dd3cd93455d5cca25428723bf1ce9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5ee322dd3ff6ccd68b09645fb46b1488b17819bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171974"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871685"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Potíže při přihlašování k místní aplikaci pomocí proxy aplikací služby Azure AD
 
@@ -56,7 +56,7 @@ Následující dokumenty vám mohou pomoci při řešení některých nejběžn�
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Mám potíže s konektorem agenta aplikačního proxy serveru
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Vyskytují se potíže při instalaci konektoru agenta aplikačního proxy serveru](application-proxy-connector-installation-problem.md)
+  * [Mám problémy s instalací konektorem agenta aplikačního proxy serveru](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>Další postup
 [Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md)

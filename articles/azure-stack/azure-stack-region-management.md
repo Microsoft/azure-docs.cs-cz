@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: c28fce9c6c9d7b0ddeba54e1ba643817436adb4e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244959"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871039"
 ---
 # <a name="region-management-in-azure-stack"></a>Správa oblastí ve službě Azure Stack
 
@@ -39,7 +39,7 @@ Obsahuje sadu možností správy oblasti k dispozici v Azure Stack **Správa obl
 
 Pokud kliknete na oblasti v **Správa oblastí** dlaždici můžete získat následující informace:
 
-[ ![Popis podoken v okně správy oblasti](media/azure-stack-region-management/regionssm.png "okno správy oblasti") ](media/azure-stack-region-management/regions.png#lightbox)
+[![Popis podoken v okně správy oblasti](media/azure-stack-region-management/regionssm.png "okno správy oblasti")](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **V nabídce prostředků**. Přístup k oblasti konkrétní infrastrukturu správy a zobrazovat a spravovat prostředky uživatele, jako jsou virtuální síť a účet úložiště.
 
@@ -55,5 +55,5 @@ Pokud kliknete na oblasti v **Správa oblastí** dlaždici můžete získat nás
 
 ## <a name="next-steps"></a>Další postup
 
-- [Monitorování stavu a výstrah ve službě Azure Stack](azure-stack-monitor-health.md)
+- [Monitorování stavu a upozornění ve službě Azure Stack](azure-stack-monitor-health.md)
 - [Správa aktualizací ve službě Azure Stack](azure-stack-updates.md)

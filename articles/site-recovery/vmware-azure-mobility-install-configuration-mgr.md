@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: cd50a957894c2c6c4944b0ba3768a00754abaa15
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: eb7d5acdcfade47ca916dcfd58aa271a9b1298ac
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835076"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867129"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizace instalace služby Mobility pomocí nástroje System Center Configuration Manager
 
@@ -24,7 +24,7 @@ Tento článek poskytuje příklad, jak můžete pomocí System Center Configura
 
 Tento článek používá System Center Configuration Manager 2012 R2 k předvedení aktivity nasazení. Jsme předpokládá, že používáte verzi **9.9.4510.1** nebo vyšší služby Mobility.
 
-Alternativně můžete automatizovat instalaci služby Mobility s [Azure Automation DSC ](vmware-azure-mobility-deploy-automation-dsc.md).
+Alternativně můžete automatizovat instalaci služby Mobility s [Azure Automation DSC](vmware-azure-mobility-deploy-automation-dsc.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -173,7 +173,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
   | **Název parametru** | **Hodnota** |
   |--|--|
   | Název | Nainstalovat službu Mobility Microsoft Azure (Windows) |
-  | Příkazový řádek | Install.bat |
+  | Příkazový řádek | install.bat |
   | Program lze spustit | Určuje, jestli je uživatel přihlášen |
 
   ![Snímek obrazovky s vytvořením balíčku a programu Průvodce](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -398,7 +398,7 @@ cd /tmp
     | **Název parametru** | **Hodnota** |
   |--|--|
   | Název | Nainstalovat službu Mobility Microsoft Azure (Linux) |
-  | Příkazový řádek | ./install_linux.SH |
+  | Příkazový řádek | ./install_linux.sh |
   | Program lze spustit | Určuje, jestli je uživatel přihlášen |
 
   ![Snímek obrazovky s vytvořením balíčku a programu Průvodce](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)

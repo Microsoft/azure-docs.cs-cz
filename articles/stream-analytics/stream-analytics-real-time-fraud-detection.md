@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6433d130da108ce7bd0b6f8b4093161043c32645
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5317eb83552b5ea15b2d709f61b456a7a508e9ba
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733142"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876173"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: Zjišťování možných podvodů v reálném čase
 
@@ -68,7 +68,7 @@ V tomto postupu vytvoříte obor názvů centra událostí a pak přidáte do da
 
 5. Klikněte na nový obor názvů a v podokně oboru názvů klikněte na tlačítko **centra událostí**.
 
-   ![Tlačítko Přidat Centrum událostí pro vytvoření nové Centrum událostí ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
+   ![Tlačítko Přidat Centrum událostí pro vytvoření nové Centrum událostí](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
 6. Název nové Centrum událostí `asa-eh-frauddetection-demo`. Můžete použít jiný název. Pokud tak učiníte, si poznamenejte, protože je budete později potřebovat názvu. Není nutné nastavit další možnosti pro Centrum událostí hned teď.
 

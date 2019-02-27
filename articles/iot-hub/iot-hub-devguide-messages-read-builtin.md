@@ -6,19 +6,18 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 02/26/2019
 ms.author: dobett
-ms.openlocfilehash: 02ea4b94f8d1442360bebb36fdbba13d973f8555
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 81cdd53769cc33daaed70ba824a0a3bbf68f8134
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242400"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877227"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
-Ve výchozím nastavení, zprávy jsou směrovány na integrovaný koncový bod služby přístupem (**zpráv/události**), která je kompatibilní s [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/
-). Tento koncový bod je aktuálně pouze vystavené pomocí [AMQP](https://www.amqp.org/) protokolu na portu 5671. Služba IoT hub zpřístupní následující vlastnosti pro vám umožňují řídit integrovaný zasílání zpráv koncový bod kompatibilní s centrem událostí **zpráv/události**.
+Ve výchozím nastavení, zprávy jsou směrovány na integrovaný koncový bod služby přístupem (**zpráv/události**), která je kompatibilní s [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Tento koncový bod je aktuálně pouze vystavené pomocí [AMQP](https://www.amqp.org/) protokolu na portu 5671. Služba IoT hub zpřístupní následující vlastnosti pro vám umožňují řídit integrovaný zasílání zpráv koncový bod kompatibilní s centrem událostí **zpráv/události**.
 
 | Vlastnost            | Popis |
 | ------------------- | ----------- |
@@ -27,7 +26,7 @@ Ve výchozím nastavení, zprávy jsou směrovány na integrovaný koncový bod 
 
 IoT Hub můžete také spravovat skupiny uživatelů na integrovaných zařízení cloud přijímat koncový bod.
 
-Pokud používáte [směrování zpráv](iot-hub-devguide-messages-d2c.md) a [trasy pro použití náhradní lokality](iot-hub-devguide-messages-d2c.md#fallback-route) je povoleno, všechny zprávy, které neodpovídají dotaz na všechny trasy se zapisují do integrovaného koncového bodu. Pokud zakážete tuto trasu pro použití náhradní lokality, se zahodí zprávy, které se neshodují s dotazy.
+Pokud používáte [směrování zpráv](iot-hub-devguide-messages-d2c.md) a [trasy pro použití náhradní lokality](iot-hub-devguide-messages-d2c.md#fallback-route) je povoleno, všechny zprávy, které neodpovídají dotaz na žádné trase přejít na integrovaný koncový bod. Pokud zakážete tuto trasu pro použití náhradní lokality, se zahodí zprávy, které neodpovídají žádné dotazu.
 
 Můžete upravit dobu uchování buď prostřednictvím kódu programu pomocí [poskytovatele prostředků služby IoT Hub rozhraní REST API](/rest/api/iothub/iothubresource), nebo se [webu Azure portal](https://portal.azure.com).
 
@@ -35,33 +34,45 @@ Služba IoT Hub zpřístupní **zpráv/události** integrovaný koncový bod pro
 
 ## <a name="read-from-the-built-in-endpoint"></a>Čtení z integrovaného koncového bodu
 
-Při použití [Azure Service Bus SDK for .NET](https://www.nuget.org/packages/WindowsAzure.ServiceBus) nebo [Event Hubs – Event Processor Host](..//event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md), můžete použít libovolný připojovací řetězce centra IoT se správnými oprávněními. Pak pomocí **zpráv/události** jako název centra událostí.
+Některé integrace produktů a Event Hubs sady SDK služby IoT Hub víme a umožňují používat IoT hub služba připojovací řetězec pro připojení k integrovaný koncový bod.
 
-Při použití sady SDK (nebo Integrace produktu), které jsou vědět o službě IoT Hub, musíte načíst koncový bod kompatibilní s centrem událostí a název kompatibilní s centrem událostí služby:
+Pokud používáte Event Hubs sad SDK nebo integrace produktů, které nejste vědomi služby IoT Hub, potřebujete koncový bod kompatibilní s centrem událostí a název kompatibilní s centrem událostí. Tyto hodnoty můžete načíst z portálu následujícím způsobem:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do služby IoT hub.
 
 2. Klikněte na tlačítko **integrovaných koncových bodech**.
 
-3. **Události** oddíl obsahuje následující hodnoty: **koncový bod kompatibilní s centrem událostí**, **název kompatibilní s centrem událostí**, **oddíly**, **Doba uchovávání**, a **skupiny příjemců**.
+3. **Události** oddíl obsahuje následující hodnoty: **Oddíly**, **název kompatibilní s centrem událostí**, **koncový bod kompatibilní s centrem událostí**, **doba uchovávání**, a **skupiny příjemců**.
 
     ![Nastavení zařízení-cloud](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-IoT Hub SDK vyžaduje název koncového bodu služby IoT Hub, který je **zpráv/události** zobrazen pod **koncové body**.
+Na portálu pole pro koncový bod kompatibilní s centrem událostí obsahuje úplný připojovací řetězec služby Event Hubs, bude vypadat takto: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Pokud používáte sadu SDK vyžaduje jiné hodnoty, pak by:
 
-Pokud používáte sadu SDK vyžaduje **Hostname** nebo **Namespace** hodnoty, odeberte schéma z **koncový bod kompatibilní s centrem událostí**. Například, pokud je váš koncový bod kompatibilní s centrem událostí **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**, **Hostname** by  **IOT hub ns myiothub 1234.servicebus.windows.net**. **Namespace** by **iothub-ns-myiothub-1234**.
+| Název | Hodnota |
+| ---- | ----- |
+| Koncový bod | sb://abcd1234namespace.servicebus.windows.net/ |
+| Název hostitele | abcd1234namespace.servicebus.windows.net |
+| Obor názvů | abcd1234namespace |
 
 Pak můžete použít libovolné zásady sdíleného přístupu, který má **ServiceConnect** oprávnění pro připojení k zadané centra událostí.
 
-Pokud je potřeba vytvořit připojovací řetězec centra událostí pomocí pokrývají informace uvedené výše, používají následující vzor:
+Sady SDK, které můžete použít pro připojení k integrovaný koncový bod kompatibilní s centrem událostí, které služba IoT Hub zpřístupní zahrnují:
 
-`Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy name};SharedAccessKey={iot hub policy key}`
+| Jazyk | Sada SDK | Příklad: | Poznámky |
+| -------- | --- | ------ | ----- |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Rychlý start](quickstart-send-telemetry-dotnet.md) | Pomocí informací kompatibilní se službou Event Hubs |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Rychlý start](quickstart-send-telemetry-java.md) | Pomocí informací kompatibilní se službou Event Hubs |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Rychlý start](quickstart-send-telemetry-node.md) | Používá připojovací řetězec služby IoT Hub |
+| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Používá připojovací řetězec služby IoT Hub |
 
-Sady SDK a integrace, které můžete použít s koncové body kompatibilní s centrem událostí, které služba IoT Hub zpřístupní obsahuje položky v následujícím seznamu:
+Integrace produktů, které můžete použít integrovaný koncový bod kompatibilní s centrem událostí, které služba IoT Hub zpřístupní patří:
 
-* [Java Event Hubs klienta](https://github.com/Azure/azure-event-hubs-java).
+* [Služba Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Zobrazit [zpracování dat ze služby IoT Hub s využitím Azure Functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/). Zobrazit [Stream data jako vstup do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
+* [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/). Zobrazit [přidání zdroje událostí IoT hub do prostředí Time Series Insights](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md).
 * [Apache Storm spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). Můžete zobrazit [zdroje spout](https://github.com/apache/storm/tree/master/external/storm-eventhubs) na Githubu.
 * [Integrace Apache Spark](../hdinsight/spark/apache-spark-eventhub-streaming.md).
+* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
 
 ## <a name="next-steps"></a>Další postup
 

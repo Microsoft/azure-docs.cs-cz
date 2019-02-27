@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 77b3d8bd1d16e90e9929c41f0f28940694dc7906
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416509"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889830"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 
@@ -34,7 +34,14 @@ Tento článek popisuje obsah balíčku 1901 aktualizace. Obsahuje vylepšení, 
 
 ## <a name="build-reference"></a>Referenční informace o buildu
 
-Číslo sestavení aktualizace Azure Stack 1901 je **1.1901.0.95**.
+Číslo sestavení aktualizace Azure Stack 1901 je **1.1901.0.95** nebo **1.1901.0.99** po 26. února 2019. Viz následující Poznámka:
+
+> [!IMPORTANT]  
+> Microsoft zjistil problém, který může mít vliv zákazníkům aktualizaci z 1811 (1.1811.0.101) k 1901 a vydala aktualizovaný balíček 1901 k vyřešení příslušného problému: 1.1901.0.99 aktualizováno z hodnoty 1.1901.0.95 sestavení. Zákazníci, kteří mají už aktualizace na 1.1901.0.95 není potřeba provádět další akci.
+>
+> Připojené zákazníky, kteří jsou na 1811 se automaticky zobrazí nový balíček 1901 (1.1901.0.99), která je dostupná na portálu správce a nainstalujte ho až to budete mít. Odpojené zákazníků můžete stáhnout a naimportovat nový balíček 1901 stejným procesem [je zde popsáno,](azure-stack-apply-updates.md).
+>
+> Zákazníci s jakoukoli verzí 1901 neovlivní při instalaci balíčku další úplné nebo opravy hotfix.
 
 ## <a name="hotfixes"></a>Opravy hotfix
 
@@ -84,9 +91,9 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
    * **AzureRm.Insights**  
          Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 5.1.5 **verze api-version 2018-01-01** pro metriky, typy prostředků definice metrik.
 
-- **AzureStack 1.7.0** to k zásadní změně verze. Podrobnosti o nejnovějších změnách najdete v tématu https://aka.ms/azspshmigration170
+- **AzureStack 1.7.0** to k zásadní změně verze. Podrobnosti o zásadních změnách najdete v tématu https://aka.ms/azspshmigration170.
    * **Azs.Backup.Admin modulu**  
-         Zásadní změna: Zálohování se změní na režim šifrování založené na certifikátu. Podpora pro symetrické klíče je zastaralá.  
+         Zásadní změna: Zálohování se mění na režim šifrování založené na certifikátu. Podpora symetrických klíčů je zastaralá.  
    * **Azs.Fabric.Admin modulu**  
          `Get-AzsInfrastructureVolume` se už nepoužívá. Pomocí nové rutiny `Get-AzsVolume`.  
          `Get-AzsStorageSystem` se už nepoužívá.  Pomocí nové rutiny `Get-AzsStorageSubSystem`.  
@@ -170,33 +177,6 @@ Referenční informace pro aktualizovaný modulů najdete v tématu [referenčn�
 
    Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManagerEndpoint `
      -DirectoryTenantName $homeDirectoryTenantName -Verbose
-   ```
-
-- Je v současnosti rozšíření ve službě Azure Stack, které úspěšně nasadit bez nutnosti explicitně stažení rozšíření prostřednictvím webu marketplace syndikace. Odeberou se následující verze těchto rozšíření. Operátoři Azure stacku musí nyní explicitně syndikovat markeplace Azure Stack tato rozšíření:
-
-   | Type                     | Verze        |
-   |--------------------------|----------------|
-   | DSC                      | 2.19.0.0       |
-   | IaaSAntimalware          | 1.4.0.0        |
-   | BGInfo                   | 2.1            |
-   | VMAccessAgent            | 2.0            |
-   | CustomScriptExtension    | 1.8            |
-   | MicrosoftMonitoringAgent | 1.0.10900.0    |
-   | IaaSDiagnostics          | 1.10.1.1       |
-   | VMAccessForLinux         | 1.4.0.0        |
-   | CustomScriptForLinux     | 1.5.2.0        |
-   | DockerExtension          | 1.1.1606092330 |
-   | JsonADDomainExtension    | 1.3            |
-   | OSPatchingForLinux       | 2.3.0.1        |
-   | WebRole                  | 4.3000.14.0    |
-
-   Doporučuje se, že při zavádění rozšíření uživatele Azure stacku nastavit `autoUpgradeMinorVersion` k **true**. Příklad:
-
-   ```json
-   "type": "Extension",
-           "publisher": "ExtensionPublisher",
-           "typeHandlerVersion": "1.2",
-           "autoUpgradeMinorVersion": "true"
    ```
 
 - Není k dispozici nové posouzení pro přesné plánování kapacity služby Azure Stack. S aktualizací 1901 nyní platí omezení celkového počtu virtuálních počítačů, které je možné vytvořit.  Toto omezení je určen jako dočasné, aby se zabránilo nestabilitě řešení. Zdroj problému stabilitu na větší počet virtuálních počítačů je určeno, ale konkrétní časové osy pro nápravu nebyl dosud určit. S aktualizací update 1901, že už serveru maximální 60 virtuálních počítačů s limitem celkové řešení 700 jeden.  Například virtuálnímu počítači Azure Stack limit 8 serveru by 480 (8 * 60).  Pro server 12 až 16 řešení Azure Stack limit by 700. Toto omezení se vytvořil, dodržujte při tom všechny výpočetní kapacity aspekty například rezervy odolnost proti chybám a procesoru virtuálních a fyzických poměr, který operátor chtěli zachovat na razítko. Další informace najdete v tématu novou verzi sady capacity planner.  

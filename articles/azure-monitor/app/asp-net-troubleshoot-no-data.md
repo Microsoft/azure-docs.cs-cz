@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: e32d3fe30796015c8189eee819a0cc3dd4581e22
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 532121f4e9a3c658e544a8d322ac0f17fa22a2b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700906"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875901"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -213,7 +213,7 @@ Postupujte podle těchto pokynů k zachycení protokoly pro řešení potíží 
   
 ### <a name="net-core"></a>.Net Core
 
-1. Nainstalujte [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) balíčku od Nugetu. Verze, kterou instalujete, musí odpovídat aktuální nainstalovaná verze `Microsoft.ApplicationInsighs`
+1. Nainstalujte [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) balíčku od Nugetu. Verze, kterou instalujete, musí odpovídat aktuální nainstalovaná verze `Microsoft.ApplicationInsights`
 
 2. Upravit `ConfigureServices` metoda ve vaší `Startup.cs` třídy.:
 

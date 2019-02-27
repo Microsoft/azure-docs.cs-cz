@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b52bdd5948676c09c433cbda249248ce26ce8a48
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223778"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866024"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavte mapování sítě a IP adresy pro virtuální sítě
 
@@ -32,7 +32,7 @@ Mapovat sítě následujícím způsobem:
 
 3. V **přidání mapování sítě**vyberte zdrojové a cílové umístění. V našem příkladu zdroj virtuální počítač běží v oblasti východní Asie a replikuje do oblasti jihovýchodní Asie.
 
-    ![Vyberte zdroj a cíl ](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+    ![Vyberte zdroj a cíl](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. V adresáři opačné nyní vytvořte mapování sítě. V našem příkladu zdrojem bude nyní jihovýchodní Asii a cíl bude východní Asie.
 
     ![Přidání podokna mapování sítě – vyberte zdrojové a cílové umístění pro cílovou síť](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)

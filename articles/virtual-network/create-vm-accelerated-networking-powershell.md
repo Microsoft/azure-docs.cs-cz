@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: a5f32504fc7d8fe0faa17d469aec017d39a6b1ce
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ae3d1fa6a921067e8c3b629206e47e1a1314adc1
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737140"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889235"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvořte virtuální počítač Windows s Akcelerovanými síťovými službami
 
@@ -66,7 +66,7 @@ Nelze nasadit virtuální počítače (klasické) s Akcelerovanými síťovými 
 Přestože tento článek popisuje kroky k vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí Azure Powershellu, můžete také [vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí webu Azure portal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu v **vytvoření virtuálního počítače** okno, vyberte **sítě** kartu.  Na této kartě je možné pro **akcelerované síťové služby**.  Pokud jste vybrali [s podporovaným operačním systémem](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances), tato možnost se automaticky vyplní pro "Na".  Pokud ne, bude naplnit možnost "Off" pro Akcelerovanými síťovými službami a uživateli přidělit důvod, proč není povolený.   
 * *Poznámka:* Pouze podporované operační systémy je možné povolit prostřednictvím portálu.  Pokud používáte vlastní image a image podporuje Akcelerovanými síťovými službami, vytvořte prosím virtuální počítač použijte Powershell nebo rozhraní příkazového řádku. 
 
-Po vytvoření virtuálního počítače můžete ověřit Akcelerovanými síťovými službami je povoleno podle pokynů v [potvrďte, že je povoleno akcelerovanými síťovými službami](#confirm-that-accelerated-networking-is-enabled).
+Po vytvoření virtuálního počítače můžete ověřit, že Akcelerovanými síťovými službami je povoleno podle pokynů v potvrďte, že akcelerovanými síťovými službami je povolená.
 
 ## <a name="powershell-creation"></a>Vytvoření prostředí PowerShell
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě

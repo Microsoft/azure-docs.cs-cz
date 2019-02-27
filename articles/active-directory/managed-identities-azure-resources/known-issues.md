@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1162eb7964c8ec40f2b342e33044b60385cbd5f6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f7829627352815bc96a7a81bcbbc7e51240c858e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727481"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870852"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
@@ -38,7 +38,7 @@ Ne, nejsou žádné plány pro podporu spravovaných identit pro prostředky Azu
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Funguje s Active Directory Authentication Library (ADAL) nebo Microsoft Authentication Library (MSAL) spravovaných identit pro prostředky Azure?
 
-Ne, spravované identity pro prostředky Azure zatím není sadou ADAL nebo MSAL integrované. Podrobnosti o získání tokenu pro spravované identity pro prostředky Azure pomocí koncového bodu REST, naleznete v tématu [použití spravované identity pro prostředky Azure na Virtuálním počítači Azure získat přístupový token ](how-to-use-vm-token.md).
+Ne, spravované identity pro prostředky Azure zatím není sadou ADAL nebo MSAL integrované. Podrobnosti o získání tokenu pro spravované identity pro prostředky Azure pomocí koncového bodu REST, naleznete v tématu [použití spravované identity pro prostředky Azure na Virtuálním počítači Azure získat přístupový token](how-to-use-vm-token.md).
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Co je hranice zabezpečení spravovaných identit pro prostředky Azure?
 

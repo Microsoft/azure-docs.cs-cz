@@ -1,5 +1,5 @@
 ---
-title: Vytvoření .NET Core aplikace v Linuxu – služba Azure App Service | Dokumentace Microsoftu
+title: Vytvoření aplikace ASP.NET Core v Linuxu – služba Azure App Service | Dokumentace Microsoftu
 description: Během několika minut můžete nasadit svou první aplikaci Hello World v .NET Core do služby App Service v Linuxu.
 keywords: azure app service, web app, dotnet, core, linux, oss
 services: app-service
@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633925"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889711"
 ---
-# <a name="create-a-net-core-app-in-app-service-on-linux"></a>Vytvoření .NET Core aplikace ve službě App Service v Linuxu
+# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Vytvoření aplikace ASP.NET Core ve službě App Service v Linuxu
 
 > [!NOTE]
 > Tento článek nasadí aplikaci do služby App Service v Linuxu. Nasazení do služby App Service v _Windows_, naleznete v tématu [vytvoření aplikace ASP.NET Core v Azure](../app-service-web-get-started-dotnet.md).

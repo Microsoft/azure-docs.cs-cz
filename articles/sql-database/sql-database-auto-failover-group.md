@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 5afd5020b060961d215b922c9e49466b73f2a69e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301923"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889881"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
@@ -129,6 +129,18 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   > [!IMPORTANT]
   > Managed Instance nepodporuje více skupin převzetí služeb při selhání.
+  
+## <a name="permissions"></a>Oprávnění
+Oprávnění pro skupinu převzetí služeb při selhání se spravují přes [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md). [Přispěvatel SQL serveru](../role-based-access-control/built-in-roles.md#sql-server-contributor) role má všechna potřebná oprávnění ke správě skupin převzetí služeb při selhání. 
+
+### <a name="create-failover-group"></a>Vytvořte skupinu převzetí služeb při selhání
+Pokud chcete vytvořit skupinu převzetí služeb při selhání, potřebujete přístup pro zápis RBAC pro primární a sekundární server a ke všem databázím ve skupině převzetí služeb při selhání. Pro spravovanou instanci potřebujete RBAC oprávnění k zápisu do primárních a sekundárních spravovanou instanci, ale oprávnění pro jednotlivé databáze nejsou relevantní, protože jednotlivé spravované instanci databáze nelze přidat do nebo odebrán ze skupiny převzetí služeb při selhání. 
+
+### <a name="update-a-failover-group"></a>Aktualizace skupiny převzetí služeb při selhání
+Aktualizace skupiny převzetí služeb při selhání, budete potřebovat RBAC přístup pro zápis do skupiny převzetí služeb při selhání a všem databázím na aktuální primární server nebo spravované instance.  
+
+### <a name="failover-a-failover-group"></a>Převzetí služeb při selhání skupiny převzetí služeb při selhání
+Převzít služby při selhání skupiny převzetí služeb při selhání, budete potřebovat přístup RBAC pro zápis do skupiny převzetí služeb při selhání na nový primární server nebo spravované instance. 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Osvědčené postupy používání skupin převzetí služeb při selhání izolované databáze a elastické fondy
 

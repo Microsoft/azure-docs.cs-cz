@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: c3b97ee7181d6475b7271d5ae4bcea0f6c9ff2b3
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f91ea4c4ec887a9f9fe0c15000e3810109caeb96
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805218"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889065"
 ---
 # <a name="capacity-planning-and-scaling"></a>Plánování kapacity a škálování
 
@@ -40,7 +40,7 @@ Operace škálování by měl možné provádět prostřednictvím šablony nasa
 
 ## <a name="vertical-scaling-considerations"></a>Vertikální škálování důležité informace
 
-[Vertikální škálování](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out#upgrade-the-size-and-operating-system-of-the-primary-node-type-vms) typ uzlu v Azure Service Fabric vyžaduje několik kroků a důležité informace. Příklad:
+[Vertikální škálování](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out) typ uzlu v Azure Service Fabric vyžaduje několik kroků a důležité informace. Příklad:
 * Cluster musí být v pořádku před Škálováním. V opačném případě bude pouze destabilizovat další clusteru.
 * **Odolnost větší nebo na úrovni Silver** se vyžaduje pro všechny služby NodeTypes clusteru prostředků infrastruktury, které jsou hostiteli stavové služby.
 

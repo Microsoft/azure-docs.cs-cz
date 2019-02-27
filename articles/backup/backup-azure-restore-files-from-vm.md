@@ -7,14 +7,14 @@ manager: shivamg
 keywords: obnovení na úrovni položek; obnovení souborů ze záloh virtuálních počítačů Azure; obnovení souborů z virtuálního počítače Azure
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/22/2018
-ms.author: pvrk
-ms.openlocfilehash: c267b3a8289d87402647a399376161cf18716112
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 2/26/2019
+ms.author: pullabhk
+ms.openlocfilehash: 4bae9a09dad217b8d805a64372ed404eb7ada723
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488488"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874153"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
 
@@ -73,11 +73,15 @@ Obnovit soubory a složky z bodu obnovení, přejděte na virtuální počítač
         - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Pro Azure Germany)
     - odchozí port 3260
 
-    Pro Linux vyžaduje skript 'open-iscsi' a "lshw" součásti pro připojení k bodu obnovení. Pokud komponenty na počítači, ve kterém se skript spouští neexistují, skript vyzve k zadání oprávnění k instalaci součásti. Poskytnout souhlas nainstalujte nezbytné součásti.
+> [!Note]
+> Název souboru staženého skriptu bude mít "geo-name" pro vyplnění v adrese URL. Pro např: Název staženého skriptu začíná \'VMname\'\_\'geoname\'_\'GUID\', jako jsou ContosoVM_wcus_12345678... Adresa URL bude "https://pod01-rec2.wcus.backup.windowsazure.com"
+> 
 
-    Přístup k download.microsoft.com je potřeba stáhnout součásti sloužící k sestavení zabezpečený kanál mezi počítačem, ve kterém se skript spouští a dat v bodu obnovení.
-
-    Spusťte skript na jakýkoli počítač, který má stejné (nebo kompatibilní) operačního systému jako zálohování virtuálního počítače. Zobrazit [tabulky kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements) pro kompatibilní operační systémy. Pokud chráněný virtuální počítač Azure používá prostory úložiště ve Windows (pro virtuální počítače Azure s Windows) nebo pole LVM/RAID (pro virtuální počítače s Linuxem), nelze spustit spustitelný soubor nebo skript ve stejném virtuálním počítači. Místo toho spusťte spustitelný soubor nebo skript na jiný počítač s kompatibilní operační systém.
+   Pro Linux vyžaduje skript 'open-iscsi' a "lshw" součásti pro připojení k bodu obnovení. Pokud komponenty na počítači, ve kterém se skript spouští neexistují, skript vyzve k zadání oprávnění k instalaci součásti. Poskytnout souhlas nainstalujte nezbytné součásti.
+   
+   Přístup k download.microsoft.com je potřeba stáhnout součásti sloužící k sestavení zabezpečený kanál mezi počítačem, ve kterém se skript spouští a dat v bodu obnovení.
+   
+   Spusťte skript na jakýkoli počítač, který má stejné (nebo kompatibilní) operačního systému jako zálohování virtuálního počítače. Zobrazit [tabulky kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements) pro kompatibilní operační systémy. Pokud chráněný virtuální počítač Azure používá prostory úložiště ve Windows (pro virtuální počítače Azure s Windows) nebo pole LVM/RAID (pro virtuální počítače s Linuxem), nelze spustit spustitelný soubor nebo skript ve stejném virtuálním počítači. Místo toho spusťte spustitelný soubor nebo skript na jiný počítač s kompatibilní operační systém.
 
 ### <a name="identifying-volumes"></a>Určení svazků
 
@@ -199,6 +203,11 @@ V systému Linux musí podporovat operační systém počítače používá k ob
 | Oracle Linux | 6.4 a vyšší |
 | SLES | 12 a vyšší |
 | openSUSE | 42.2 a vyšší |
+
+> [!Note]
+> Zjistili jsme některé problémy ve spuštění skriptu pro obnovení souborů na počítačích s operačním systémem SLES 12 SP4. Analyzuje se SLES týmem.
+> Aktuálně, spuštění skriptu pro obnovení souborů funguje na počítačích s verzí SLES 12 SP2 a SP3 operačního systému.
+>
 
 Skript také vyžaduje součásti Python a bash ke spouštění a bezpečně připojit k bodu obnovení.
 

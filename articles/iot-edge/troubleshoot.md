@@ -4,17 +4,17 @@ description: Další standardní diagnostiky dovednosti pro Azure IoT Edge, tře
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: cd9ff1a1a7730ae870ef4e80fbca2d934aa5c8e2
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342659"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876360"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -101,15 +101,15 @@ Ve Windows:
 
 ### <a name="check-container-logs-for-issues"></a>Zkontrolujte protokoly kontejneru pro problémy
 
-Po spuštění démona zabezpečení IoT Edge, prohlédněte si protokoly kontejnerů a detekujte problémy. Začněte nasazenými kontejnery, pak si prohlédněte kontejnery, které tvoří modul runtime IoT Edge: Edge Agent a Centrum Edge. Protokoly agenta Edge obvykle obsahují informace o životním cyklu jednotlivých kontejnerů. Protokoly centra Edge obsahují informace o zasílání zpráv a směrování. 
+Po spuštění démona zabezpečení IoT Edge, prohlédněte si protokoly kontejnerů a detekujte problémy. Začněte nasazenými kontejnery, pak si prohlédněte kontejnery, které tvoří modul runtime IoT Edge: edgeAgent a edgeHub. Protokoly agenta IoT Edge obvykle obsahují informace o životním cyklu jednotlivých kontejnerů. Protokoly centra IoT Edge obsahují informace o zasílání zpráv a směrování. 
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-edge-hub"></a>Zobrazte zprávy procházející přes Centrum Edge
+### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Zobrazte zprávy procházející přes Centrum IoT Edge
 
-Můžete zobrazit zprávy procházející přes Centrum Edge a shromažďování přehledů z podrobné protokoly z kontejnerů modulu runtime. Chcete-li zapnout podrobné protokolování na těchto kontejnerů, nastavte `RuntimeLogLevel` v konfiguračním souboru yaml. Otevřít soubor:
+Můžete zobrazit zprávy procházející přes Centrum IoT Edge a shromažďování přehledů z podrobné protokoly z kontejnerů modulu runtime. Chcete-li zapnout podrobné protokolování na těchto kontejnerů, nastavte `RuntimeLogLevel` v konfiguračním souboru yaml. Otevřít soubor:
 
 V Linuxu:
 
@@ -137,13 +137,13 @@ Ve výchozím nastavení `agent` element bude vypadat jako v následujícím př
 
 Nahraďte `env: {}` pomocí:
 
-> [!WARNING]
-> Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery.
-
    ```yaml
    env:
      RuntimeLogLevel: debug
    ```
+
+   > [!WARNING]
+   > Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery.
 
 Uložte soubor a restartujte správce zabezpečení IoT Edge.
 
@@ -180,11 +180,11 @@ Ve Windows:
    Start-Service iotedge
    ```
 
-## <a name="edge-agent-stops-after-about-a-minute"></a>Agent Edge se přibližně po minutě zastaví
+## <a name="iot-edge-agent-stops-after-about-a-minute"></a>IoT Edge agent přestane po přibližně minutu
 
-Agent Edge se spustí, přibližně minutu je spuštěný a pak se zastaví Z protokolů vyplývá, že se Agent Edge pokouší připojit ke službě IoT Hub přes protokol AMQP a poté se pokusí připojit pomocí protokolu AMQP přes WebSocket. V případě selhání se agent Edge ukončí. 
+Modul edgeAgent spustí a je spuštěný přibližně minutu a pak zastaví. Z protokolů vyplývá, že agenta IoT Edge se pokusí připojit ke službě IoT Hub přes protokol AMQP a poté se pokusí připojit pomocí protokolu AMQP přes WebSocket. V případě selhání agenta IoT Edge ukončí. 
 
-Příklad protokolů agenta Edge:
+Příklad edgeAgent protokoly:
 
 ```output
 2017-11-28 18:46:19 [INF] - Starting module management agent. 
@@ -194,16 +194,16 @@ Příklad protokolů agenta Edge:
 ```
 
 ### <a name="root-cause"></a>Původní příčina
-Konfigurace sítě v hostitelské síti brání připojení agenta Edge k síti. Agent se nejprve pokusí připojit přes protokol AMQP (port 5671). Pokud se nepovede, zkusí Websocket (port 443).
+Konfigurace sítě v hostitelské síti brání dosažení síti agenta IoT Edge. Agent se nejprve pokusí připojit přes protokol AMQP (port 5671). Pokud se nepovede, zkusí Websocket (port 443).
 
 Modul runtime IoT Edge nastaví pro každý z modulů síť, na které budou komunikovat. V Linuxu je tato síť síťovým mostem. Ve Windows využívá překlad adres (NAT). K tomuto problému častěji dochází na zařízeních s Windows využívajících kontejnery Windows a síť s překladem adres (NAT). 
 
 ### <a name="resolution"></a>Řešení
 Ujistěte se, že se IP adresy přiřazené k tomuto síťovému mostu nebo síti NAT směrují do internetu. Někdy konfigurace sítě VPN na hostiteli přepíše síť IoT Edge. 
 
-## <a name="edge-hub-fails-to-start"></a>Centrum Edge se nedaří spustit
+## <a name="iot-edge-hub-fails-to-start"></a>Centrum IoT Edge se nepodaří spustit
 
-Centrum Edge se nedaří spustit a do protokolů se zapisuje následující zpráva: 
+Modul edgeHub se nezdaří spuštění a zapisuje následující zpráva do protokolů: 
 
 ```output
 One or more errors occurred. 
@@ -213,16 +213,16 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 ```
 
 ### <a name="root-cause"></a>Původní příčina
-Nějaký jiný proces na hostitelském počítači používá port 443. Centrum Edge mapuje porty 5671 a 443 pro použití ve scénářích brány. Toto mapování portů selže, pokud daný port již používá jiný proces. 
+Nějaký jiný proces na hostitelském počítači používá port 443. Centrum IoT Edge mapuje porty 5671 a 443 pro použití ve scénářích brány. Toto mapování portů selže, pokud daný port již používá jiný proces. 
 
 ### <a name="resolution"></a>Řešení
 Vyhledejte a zastavte proces používající port 443. Tímto procesem je obvykle webový server.
 
-## <a name="edge-agent-cant-access-a-modules-image-403"></a>Agent Edge nemá přístup k imagi modulu (403)
-Kontejner se nedaří spustit a v protokolech agenta Edge se zobrazí chyba 403. 
+## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge agent nemá přístup k imagi modulu (403)
+Kontejner se nedaří spustit a protokoly edgeAgent zobrazit Chyba 403. 
 
 ### <a name="root-cause"></a>Původní příčina
-Agent Edge nemá oprávnění pro přístup k imagi modulu. 
+Iot Edge agent nemá oprávnění pro přístup k imagi modulu. 
 
 ### <a name="resolution"></a>Řešení
 Ujistěte se, že jsou vaše přihlašovací údaje registru správně zadána v manifestu nasazení
@@ -266,14 +266,14 @@ Když se zobrazí tato chyba, ho mohli vyřešit tak, že konfigurace názvu DNS
 Můžete setkat s problémy stabilitu na omezené zařízeními, jako je Raspberry Pi, zejména v případě, že se používá jako brána. Mezi příznaky patří nedostatek paměti výjimky v modulu Centrum edge, podřízené zařízení se nemohou připojit nebo zařízení zastaví odesílání telemetrických zpráv po několik hodin.
 
 ### <a name="root-cause"></a>Původní příčina
-Centrum edge, která je součástí modulu runtime edge, je optimalizován pro výkon ve výchozím nastavení a pokusí se přidělit velké množství paměti. Tato optimalizace není ideální pro omezené hraničními zařízeními a může způsobit problémy se stabilitou.
+Centrum IoT Edge, která je součástí modulu runtime IoT Edge, je optimalizován pro výkon ve výchozím nastavení a pokusí se přidělit velké množství paměti. Tato optimalizace není ideální pro omezené hraničními zařízeními a může způsobit problémy se stabilitou.
 
 ### <a name="resolution"></a>Řešení
-Centrum edge nastavení proměnné prostředí **OptimizeForPerformance** k **false**. Chcete-li to provést dvěma způsoby:
+Pro Centrum IoT Edge, nastavte proměnnou prostředí **OptimizeForPerformance** k **false**. Chcete-li to provést dvěma způsoby:
 
 V uživatelském rozhraní: 
 
-Na portálu ze *podrobnosti o zařízení*->*nastavit moduly*->*konfigurovat rozšířená nastavení modulu Runtime Edge*, vytvořte proměnnou prostředí volá se, *OptimizeForPerformance* , která je nastavena na *false* pro *Centrum Edge*.
+Na portálu přejděte na **podrobnosti o zařízení** > **nastavit moduly** > **konfigurovat rozšířená nastavení modulu Runtime Edge**. Vytvořte proměnnou prostředí pro Centrum Edge modul s názvem *OptimizeForPerformance* , která je nastavena na *false*.
 
 ![OptimizeForPerformance nastavena na hodnotu false](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -324,13 +324,13 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 Proces démon IoT Edge vynutí proces identifikace pro všechny moduly propojíte edgeHub z bezpečnostních důvodů. Ověřuje, že všechny zprávy modulem pocházejí z hlavní proces ID modulu. Pokud zpráva je odesíláno modul z ID jiného procesu než původně vytvořeno, odmítne zprávy s 404 chybovou zprávu.
 
 ### <a name="resolution"></a>Řešení
-Ujistěte se, že stejné ID procesu je vždy používá vlastní modul IoT Edge pro odesílání zpráv edgeHub. Například se ujistěte, že `ENTRYPOINT` místo `CMD` příkaz v souboru Docker, protože `CMD` povede k jeden proces ID modulu a jiné ID procesu pro příkaz prostředí bash s hlavní program, že `ENTRYPOINT` povede k id jednoho procesu.
+Ujistěte se, že stejné ID procesu je vždy používá vlastní modul IoT Edge pro odesílání zpráv edgeHub. Například se ujistěte, že `ENTRYPOINT` místo `CMD` příkaz v souboru Docker, protože `CMD` povede k jeden proces ID modulu a jiné ID procesu pro příkaz prostředí bash s hlavní program, že `ENTRYPOINT` povede k ID jednoho procesu.
 
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Konfigurace pravidla brány firewall a portů pro nasazení IoT Edge
-Azure IoT Edge umožňuje komunikaci z místní hraniční server do cloudu Azure pomocí podporovaných protokolů služby IoT Hub, najdete v článku [výběr komunikační protokol](../iot-hub/iot-hub-devguide-protocols.md). Pro zvýšení zabezpečení komunikačních kanálů mezi Azure IoT Edge a Centrum IoT Azure jsou vždy nakonfigurované jako odchozí. Tato konfigurace je založená na [komunikace s asistencí služby](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), což minimalizuje napadení škodlivým entity prozkoumat. Příchozí komunikace je pouze požadovaná u konkrétních scénářů, kde Azure IoT Hub potřebuje k odesílání zpráv zařízení Azure IoT Edge. Zprávy typu cloud zařízení jsou chráněny pomocí zabezpečené kanály TLS a můžete dál zabezpečit pomocí certifikátů X.509 a modulů zařízení TPM. Správce zabezpečení Azure IoT Edge se řídí, jak může být tato komunikace naváže, naleznete v tématu [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Azure IoT Edge umožňuje komunikaci z místního serveru do cloudu Azure pomocí podporovaných protokolů služby IoT Hub, najdete v článku [výběr komunikační protokol](../iot-hub/iot-hub-devguide-protocols.md). Pro zvýšení zabezpečení komunikačních kanálů mezi Azure IoT Edge a Centrum IoT Azure jsou vždy nakonfigurované jako odchozí. Tato konfigurace je založená na [komunikace s asistencí služby](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), což minimalizuje napadení škodlivým entity prozkoumat. Příchozí komunikace je pouze požadovaná u konkrétních scénářů, kde Azure IoT Hub potřebuje k odesílání zpráv zařízení Azure IoT Edge. Zprávy typu cloud zařízení jsou chráněny pomocí zabezpečené kanály TLS a můžete dál zabezpečit pomocí certifikátů X.509 a modulů zařízení TPM. Správce zabezpečení Azure IoT Edge se řídí, jak může být tato komunikace naváže, naleznete v tématu [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
-I když IoT Edge poskytuje rozšířené konfigurace pro zabezpečení modulu runtime Azure IoT Edge a nasadit moduly, je stále závislá na základní konfiguraci počítače a sítě. Proto je nutné zajistit správné sítě a pravidel brány firewall jsou nastavené pro zabezpečené hraničními zařízeními a komunikace cloudu. Tímto lze použít jako vodítko při konfiguraci brány firewall pravidla pro základní servery je hostitelem modulu runtime Azure IoT Edge:
+I když IoT Edge poskytuje rozšířené konfigurace pro zabezpečení modulu runtime Azure IoT Edge a nasadit moduly, je stále závislá na základní konfiguraci počítače a sítě. Proto je nezbytné k zajištění řádné síťové a pravidla brány firewall jsou nastavené pro zabezpečené hraničními zařízeními a cloudovým komunikace. V následující tabulce slouží jako vodítko při konfiguraci brány firewall pravidla pro základní servery je hostitelem modulu runtime Azure IoT Edge:
 
 |Protocol (Protokol)|Port|příchozí|Odchozí|Doprovodné materiály|
 |--|--|--|--|--|

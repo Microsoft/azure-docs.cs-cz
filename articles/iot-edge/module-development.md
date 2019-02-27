@@ -4,17 +4,17 @@ description: Vývoj vlastních modulů pro Azure IoT Edge, který může komunik
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3dd5005312e1c59fa53a0d917951c89033374192
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ea2d1dbcf991ce858f07905bc1bb41809f9bcdd8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200628"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882735"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Vyvíjet vlastní moduly IoT Edge
 
@@ -65,5 +65,9 @@ Vytvoření instance ModuleClient připojit modul IoT Edge hub spuštěného v p
 
 ## <a name="next-steps"></a>Další postup
 
-Poté, co při vývoji modulu, zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).
+[Připravte vývojové a testovací prostředí pro IoT Edge](development-environment.md)
+
+[Použití sady Visual Studio 2017 k vývoji C# moduly IoT Edge](how-to-visual-studio-develop-csharp-module.md)
+
+[Použití Visual Studio Code pro vývoj modulů IoT Edge](how-to-vs-code-develop-module.md)
 
