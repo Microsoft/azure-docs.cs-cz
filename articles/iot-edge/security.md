@@ -4,23 +4,23 @@ description: Další informace o zabezpečení, ověřování a autorizace stand
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b174d7f9b4b8438687512a90dc7a65b5649f758a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 8aadddbc9ae13a87f89db4d7e7189ea7aa8aeef5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229882"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883500"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Standardy zabezpečení Azure IoT Edge
 
-Přesun dat a analýz do inteligentních hraničních zařízení vytvoří riziko scénáře, které Azure IoT Edge je navržena řešit. Standardy zabezpečení IoT Edge jsou určené k zajištění flexibility, ale současně stále nabízíme stejnou úroveň ochrany, který očekáváte, že ze všech služeb Azure pro scénáře nasazení a různých rizikových profilů. 
+Azure IoT Edge je navržená k řešení scénářů rizik, které jsou obsaženy při přesunu dat a analýz na inteligentních hraničních zařízení. Standardy zabezpečení IoT Edge poskytují flexibilitu pro scénáře nasazení a různých rizikových profilů současně stále nabízíme ochrany, který očekáváte, že ze všech služeb Azure. 
 
-Azure IoT Edge běží na různých využívá hardware a modely, podporuje několik operačních systémů a platí pro scénáře odlišných nasazení. Hodnocení rizik scénář nasazení závisí na mnoha důležité informace, včetně řešení vlastnictví, zeměpisnou oblast nasazení, citlivosti dat, ochrany osobních údajů, svislé a zákonným požadavkům aplikace. Místo nabídku konkrétní řešení pro konkrétní scénáře IoT Edge je rozšiřovatelnou platformu pro extensible zabezpečení založené na základě dobře konkrétních zásady navržené pro škálování. 
+Azure IoT Edge běží na různých využívá hardware a modely, podporuje několik operačních systémů a platí pro scénáře odlišných nasazení. Hodnocení rizik scénář nasazení závisí na mnoha důležité informace, včetně řešení vlastnictví, zeměpisnou oblast nasazení, citlivosti dat, ochrany osobních údajů, svislé a zákonným požadavkům aplikace. Místo nabídku konkrétní řešení pro konkrétní scénáře IoT Edge je rozšiřovatelnou platformu pro extensible zabezpečení založené na základě dobře konkrétních zásady, které jsou navržené pro škálování. 
  
 Tento článek obsahuje přehled architektury zabezpečení IoT Edge. Další informace najdete v tématu [zabezpečení inteligentních hraničních zařízení](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
@@ -30,15 +30,15 @@ Standardy podporovat snadnost kontroly a snadné implementaci, které jsou hallm
 
 ## <a name="authentication"></a>Authentication
 
-Když nasadíte řešení IoT, je potřeba vědět, že pouze důvěryhodné objektů actor, zařízení a komponenty mají přístup k vašemu řešení. Tyto znalosti nabízí zabezpečené zodpovědnost účastníkům povolení základ pro přijetí.  Azure IoT Edge dosáhne tyto znalosti prostřednictvím ověřování.  Hlavní mechanismus pro ověřování pro platformu Azure IoT Edge je ověřování prostřednictvím certifikátu.  Tento mechanismus je odvozena ze sady standardů pro řízení infrastruktury veřejných klíčů (PKiX) podle Engineering Task Force IETF (Internet).     
+Když nasadíte řešení IoT, je potřeba vědět, že pouze důvěryhodné objektů actor, zařízení a moduly mají přístup do vašeho řešení. Tyto znalosti nabízí zabezpečené zodpovědnost účastníků. Azure IoT Edge dosáhne tyto znalosti prostřednictvím ověřování. Ověřování pomocí certifikátů je primární mechanismus ověřování pro platformu Azure IoT Edge. Tento mechanismus je odvozena ze sady standardů pro řízení infrastruktury veřejných klíčů (PKiX) podle Engineering Task Force IETF (Internet).     
 
-Všechna zařízení, moduly a objekty actor interakci s zařízení Azure IoT Edge, ať už fyzicky, nebo prostřednictvím připojení k síti, by měly mít jedinečný certifikát identity. Každý scénář nebo součásti mohou řešení k ověřování prostřednictvím certifikátu. V těchto případech extensibility framework zabezpečení nabízí zabezpečené alternativy. 
+Všechna zařízení, moduly a objekty actor interakci s zařízení Azure IoT Edge, ať už fyzicky, nebo prostřednictvím připojení k síti, by měly mít jedinečný certifikát identity. Ale ne každý scénář nebo součásti mohou řešení k ověřování prostřednictvím certifikátu. V těchto případech extensibility framework zabezpečení nabízí zabezpečené alternativy. 
 
 ## <a name="authorization"></a>Autorizace
 
-Princip nejnižších oprávnění říká, že uživatelé a součástí systému by měly mít přístup jen k minimální sadu prostředků a data potřebná k provedení jejich role. Zařízení, moduly a objekty actor by měl přístup k prostředkům a data v rámci oboru jejich oprávnění a jenom v případě, že je architektonicky povolená. Některá oprávnění se dají konfigurovat s dostatečnými oprávněními a ostatní architektonicky vynucovat.  Modul může oprávnění prostřednictvím privilegovaných konfigurace, například k navázání připojení ke službě Azure IoT Hub. Neexistuje však žádný důvod, proč by měl modul na jednom zařízení Azure IoT Edge přístup k dvojčeti modulu v jiném zařízení Azure IoT Edge.
+Princip nejnižších oprávnění říká, že uživatelé a součástí systému by měly mít přístup jen k minimální sadu prostředků a data potřebná k provedení jejich role. Zařízení, moduly a objekty actor by měl přístup k prostředkům a data v rámci oboru jejich oprávnění a jenom v případě, že je architektonicky povolená. Některá oprávnění se dají konfigurovat s dostatečnými oprávněními a ostatní jsou architektonicky vynucena.  Modul může oprávnění prostřednictvím privilegovaných konfigurace, například k navázání připojení ke službě Azure IoT Hub. Neexistuje však žádný důvod, proč by měl modul na jednom zařízení Azure IoT Edge přístup k dvojčeti modulu v jiném zařízení Azure IoT Edge.
 
-Jiná schémata autorizace zahrnout certifikát Podepisování práva, řízení přístupu na základě role (RBAC) a jiné systémy až po zralé autorizace. 
+Ostatní schémata autorizace obsahují práva podpisový certifikát a řízení přístupu na základě role (RBAC). 
 
 ## <a name="attestation"></a>Osvědčení
 
@@ -54,11 +54,11 @@ Statické ověření ověří integritu veškerého softwaru na zařízení, vč
 
 ### <a name="runtime-attestation"></a>Ověření modulu runtime
 
-Jakmile systém dokončil proces zabezpečeného spuštění a je spuštěná, dobře navržené systémy by odhalit pokusy o vložení malware a provést řádné protiopatření. Porty a rozhraní pro přístup k systému v systému, mohou být zaměřeny Malwarových útoků. Nebo pokud útočníky mají fyzický přístup k zařízení mohou manipulovat s samotné zařízení nebo útoků na straně kanálu použije k získání přístupu. Takové malcontent, což může být ve formě malwaru nebo změny neoprávněné konfigurace, se vloží po procesu spouštění tak by ho detekovat statické ověření identity. Opatření nabízí nebo vynucuje zařízení hardwaru pomáhají zabránit těchto hrozeb.  Pro rozšíření, která proti hrozbám runtime explicitně volá framework zabezpečení pro Azure IoT Edge.  
+Jakmile systém dokončil proces zabezpečeného spuštění a je spuštěná, dobře navržené systémy by odhalit pokusy o vložení malware a provést řádné protiopatření. Porty a rozhraní pro přístup k systému v systému, mohou být zaměřeny Malwarových útoků. Nebo pokud útočníky mají fyzický přístup k zařízení mohou manipulovat s samotné zařízení nebo útoků na straně kanálu použije k získání přístupu. Takové malcontent, což může být ve formě malwaru nebo změny konfigurace neoprávněným, nebyl nalezen ve statické ověření vzhledem k tomu, že se vloží po procesu spouštění. Opatření nabízí nebo vynucuje zařízení hardwaru pomáhají zabránit těchto hrozeb.  Pro rozšíření, která proti hrozbám runtime explicitně volá framework zabezpečení pro Azure IoT Edge.  
 
 ### <a name="software-attestation"></a>Ověření softwaru
 
-Všechny systémy v pořádku, včetně systémů inteligentních hraničních zařízení musí přijmout, opravy a upgrady.  Zabezpečení je důležité pro procesy aktualizace v opačném případě, že můžou být potenciální jinými vektory hrozeb.  Architektura zabezpečení pro Azure IoT Edge volání aktualizací prostřednictvím měří a podepsaných balíčků pro zajistit integritu a ověřování zdroje balíčků.  Tento standard platí pro všechny operační systémy a aplikace softwaru bitů. 
+Všechny systémy v pořádku, včetně systémů inteligentních hraničních zařízení, musí přijmout, opravy a upgrady.  Zabezpečení je důležité pro procesy aktualizace v opačném případě, že můžou být potenciální jinými vektory hrozeb.  Architektura zabezpečení pro Azure IoT Edge volání aktualizací prostřednictvím měří a podepsaných balíčků pro zajistit integritu a ověřování zdroje balíčků.  Tento standard platí pro všechny operační systémy a aplikace softwaru bitů. 
 
 ## <a name="hardware-root-of-trust"></a>Důvěryhodný kořenový certifikát hardwaru
 
@@ -70,7 +70,7 @@ Azure IoT Edge framework pomáhá zákazníkům umožňují přijímat informova
 
 ## <a name="extensibility"></a>Rozšiřitelnost
 
-Rozšiřitelnost je prvotřídní občanem v rámci zabezpečení Azure IoT Edge.  S technologií IoT řízení různých typů transformace firmy stojí z důvodu, že by se měl zabezpečení vyvíjet paralelně na adresu nově vznikající scénáře.  Architektury zabezpečení Azure IoT Edge začíná slušný základ, na kterém sestavení v rozšíření do různých dimenzí, které chcete zahrnout: 
+S technologií IoT řízení různých typů transformace firmy stojí z důvodu, že by se měl zabezpečení vyvíjet paralelně na adresu nově vznikající scénáře.  Architektury zabezpečení Azure IoT Edge začíná slušný základ, na kterém sestavení v rozšíření do různých dimenzí, které chcete zahrnout: 
 
 * Zabezpečení služeb, jako jsou služby Device Provisioning pro službu Azure IoT Hub.
 * Třeba služby třetích stran, jako je zabezpečení spravované služby pro vertikálně jinou aplikaci (například průmyslové nebo zdravotní péče) nebo technologie fokus (jako je monitorování v zabezpečení sítě, sítě nebo službách ověření hardwaru silicon) prostřednictvím bohaté sítě partneři.

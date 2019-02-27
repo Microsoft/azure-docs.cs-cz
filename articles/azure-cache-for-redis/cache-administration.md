@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: d36f2851f9c4f30725c8f8057d61970b6560009e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 81ef669b62c822e10d8bf5c45e58dd769c5dbeb9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313207"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888385"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Správa mezipaměti Azure pro Redis
 Toto téma popisuje, jak provádět úlohy správy, například [restartování](#reboot) a [plánování aktualizace](#schedule-updates) pro mezipaměť Azure pro instance Redis.
@@ -72,7 +72,7 @@ Ano, pokud restartování mezipaměti se vymaže všechna připojení klientů. 
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Budou mi přijít o data z mezipaměť když restartování?
-Pokud restartujete i **hlavní** a **podřízený server** uzly, dojde ke ztrátě všech dat v mezipaměti (nebo v daném horizontálním oddílu, pokud používáte cache ve verzi premium s aktivovaným clusteringem). Pokud jste nakonfigurovali [trvalost dat](cache-how-to-premium-persistence.md), nejvíce poslední zálohu. až se obnoví do mezipaměti přejde do režimu online, ale všechny zápisy mezipaměti, ke kterým došlo po zálohování se ztratí.
+Pokud restartujete i **hlavní** a **podřízený server** uzlů, může dojít ke ztrátě všech dat v mezipaměti (nebo v daném horizontálním oddílu, pokud používáte cache ve verzi premium s aktivovaným clusteringem), ale to není zaručeno, že buď. Pokud jste nakonfigurovali [trvalost dat](cache-how-to-premium-persistence.md), nejvíce poslední zálohu. až se obnoví do mezipaměti přejde do režimu online, ale všechny zápisy mezipaměti, ke kterým došlo po zálohování se ztratí.
 
 Pokud restartujete právě jeden z uzlů, nedojde obvykle ke ztrátě dat, ale stále může být. Například pokud hlavní uzel se restartuje a zápis do mezipaměti je v průběhu, data z mezipaměti zápisu je ztraceny. Jiný scénář ztráty dat bude-li restartovat jeden uzel a druhý uzel se stane se přestanou fungovat, protože došlo k chybě ve stejnou dobu. Další informace o možných příčin ztráty dat, naleznete v tématu [co se stalo s Redis má data?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
