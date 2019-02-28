@@ -1,6 +1,6 @@
 ---
 title: Škálování clusteru Průzkumník dat Azure tak, aby vyhovovaly měnících se požadavků
-description: Tento článek popisuje kroky pro horizontální navýšení kapacity a škálování na méně instancí clusteru Průzkumník dat Azure na základě změny poptávky.
+description: Tento článek popisuje kroky pro horizontální navýšení kapacity a škálování v clusteru Azure Průzkumník dat na základě změny poptávky.
 author: orspod
 ms.author: v-orspod
 ms.reviewer: mblythe
@@ -8,32 +8,34 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 15ef5282e0a073e870f2ac12b5fc442407535770
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 7b99dcf621eac90d4b75d6827102b656f95aafbb
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408438"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958877"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Správa clusteru škálování tak, aby vyhovovaly měnících se požadavků
 
-Nastavování velikosti clusteru správně je důležité pro výkon Průzkumník dat Azure. Ale nemůže být předpovězen nároky na cluster s 100 % přesností. Velikost statické clusteru může vést k snížení využití nebo nadměrné využívání, ani jedno z nich je ideální. Lepším řešením je *škálování* cluster, přidávání a odebírání kapacitu s měnícími poptávky. Existují dva pracovní postupy pro škálování, škálování zatížení a škálování na víc systémů. Tento článek vysvětluje, škálování na více instancí pracovního postupu.
+Nastavování velikosti clusteru správně je důležité pro výkon Průzkumník dat Azure. Ale nemůže být předpovězen nároky na cluster s absolutní přesnost. Velikost statické clusteru může vést k nízkého využití nebo overutilization, ani jedno z nich je ideální.
 
-V tomto článku se dozvíte, jak spravovat cluster horizontální navýšení kapacity, označované také jako automatické škálování. Automatické škálování umožňuje škálování automaticky na základě předdefinovaných pravidel a plány počet instancí. Určete nastavení automatického škálování pro váš cluster na webu Azure Portal, jak je popsáno níže.
+Lepším řešením je *škálování* cluster, přidávání a odebírání kapacitu s měnícími poptávky. Existují dva pracovní postupy pro škálování: škálování zatížení a škálování na víc systémů. Tento článek vysvětluje, škálování na více instancí pracovního postupu.
 
-Přejděte ke svému clusteru a v části **nastavení** vyberte **horizontální navýšení kapacity**. V části **konfigurovat**vyberte **povolit automatické škálování**.
+Tento článek ukazuje, jak spravovat cluster horizontální navýšení kapacity, označované také jako automatické škálování. Automatické škálování umožňuje škálovat počet instancí automaticky na základě předdefinovaných pravidel a plány. Zadejte nastavení automatického škálování pro váš cluster na webu Azure Portal, jak je popsáno v tomto článku.
+
+Přejděte ke svému clusteru. V části **nastavení**vyberte **horizontální navýšení kapacity**. V části **konfigurovat**vyberte **povolit automatické škálování**.
 
 ![Povolit automatické škálování](media/manage-cluster-scaling/enable-autoscale.png)
 
-Následující obrázek znázorňuje tok následujících několika krocích. Další podrobnosti níže na obrázku, budeme poskytovat.
+Následující obrázek znázorňuje tok následujících několika krocích. Další podrobnosti najdete níže na obrázku.
 
 ![Pravítko měřítka](media/manage-cluster-scaling/scale-rule.png)
 
-1. V části **název nastavení automatického škálování**, zadejte název, jako třeba *horizontální navýšení kapacity: využití mezipaměti*.
+1. V **název nastavení automatického škálování** pole, zadejte název, jako třeba *horizontální navýšení kapacity: využití mezipaměti*.
 
-1. V části **režim škálování**vyberte **škálování podle metriky**. Tento režim umožňuje dynamické škálování; Můžete také vybrat **škálovat na konkrétní počet instancí**.
+1. Pro **režim škálování**vyberte **škálování podle metriky**. Tento režim umožňuje dynamické škálování. Můžete také vybrat **škálovat na konkrétní počet instancí**.
 
-1. Vyberte **přidat pravidlo**.
+1. Vyberte **+ přidat pravidlo**.
 
 1. V **pravítko měřítka** části na pravé straně, zadejte hodnoty pro každé nastavení.
 
@@ -45,7 +47,7 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
     | **Název metriky** | Vyberte metriku, chcete, aby operace škálování na základě na, například **využití mezipaměti**. |
     | **Statistika agregačního intervalu** | Výběr mezi **průměrné**, **minimální**, **maximální**, a **součet**. |
     | **– Operátor** | Vyberte příslušnou možnost, například **větší než nebo rovna hodnotě**. |
-    | **Prahová hodnota** | Zvolte příslušnou hodnotu. Například 80 % využití mezipaměti je dobrým výchozím bodem. |
+    | **Prahová hodnota** | Zvolte příslušnou hodnotu. Pro využití mezipaměti, třeba 80 procent je dobrým výchozím bodem. |
     | **Doba trvání (v minutách)** | Zvolte odpovídající množství času pro systém vás pod rouškou zpět při výpočtu metrik. Začněte s výchozí hodnotu 10 minut. |
     |  |  |
 
@@ -53,7 +55,7 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
 
     | Nastavení | Popis a hodnotu |
     | --- | --- | --- |
-    | **Operace** | Vyberte odpovídající možnost škálování na méně instancí nebo horizontální navýšení kapacity. |
+    | **Operace** | Vyberte příslušnou možnost v vertikálně nebo horizontálně navýšit kapacitu. |
     | **Počet instancí** | Vyberte počet uzlů nebo instance, které chcete přidat nebo odebrat, když se splní podmínku metriky. |
     | **Přestávka (minuty)** | Zvolte vhodný časový interval čekání mezi operace škálování. Začněte s výchozí pět minut. |
     |  |  |
@@ -64,15 +66,15 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
 
     | Nastavení | Popis a hodnotu |
     | --- | --- | --- |
-    | *Minimum* | Počet instancí, které váš cluster nebude škálování níže, bez ohledu na využití. |
-    | *Maximální počet* | Počet instancí, které váš cluster nebude škálování nad, bez ohledu na využití. |
-    | *Výchozí* | Výchozí počet instancí, používá, pokud dochází k problémům čtení metrik prostředku. |
+    | **Minimum** | Počet instancí, které váš cluster nebude škálování níže, bez ohledu na využití. |
+    | **Maximální počet** | Počet instancí, které váš cluster nebude škálování nad, bez ohledu na využití. |
+    | **Výchozí** | Výchozí počet instancí. Toto nastavení se používá, pokud dochází k problémům s čtení metrik prostředku. |
     |  |  |
 
 1. Vyberte **Uložit**.
 
-Nyní jste nakonfigurovali operace škálování pro váš cluster Průzkumník dat Azure. Přidáte další pravidlo pro operace škálování na méně instancí. To clusteru umožní škálování dynamicky na základě metrik, který zadáte.
+Nyní jste nakonfigurovali operace škálování pro váš cluster Průzkumník dat Azure. Přidáte další pravidlo pro operace škálování na méně instancí. Tato konfigurace umožňuje škálovat cluster dynamicky na základě metrik, který zadáte.
 
-Můžete také provést [škálování clusteru nahoru](manage-cluster-scale-up.md) vhodné k určení velikosti clusteru.
+Můžete také [spravovat vertikálně navýšit kapacitu clusteru](manage-cluster-scale-up.md) vhodné k určení velikosti clusteru.
 
-Pokud potřebujete pomoc s problémy škálování clusteru, otevřete žádost o podporu v [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Pokud potřebujete pomoc s problémy škálování clusterů [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal.

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 6f6cf6de9b1f12451bf28a9bd7fc7077c1c6b1cd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 4acd4f3fd9c013d622a23853dc2f0d02b8b753d9
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673449"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985780"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Postup upgradu služby IoT hub
 
@@ -45,7 +45,9 @@ Tyto příklady jsou určené k vám pomohou pochopit, jak nastavit službu IoT 
 4. Chcete-li změnit počet jednotek v centru, zadejte novou hodnotu v rámci **jednotek služby IoT Hub**. 
 5. Vyberte **Uložit** uložte provedené změny. 
 
-Služby IoT hub se nyní upraví a vaše konfigurace jsou beze změny. Oddíl maximální limit pro úroveň basic služby IoT Hub je 8 a pro úroveň standard je 32. Většina centra IoT hub stačí jenom čtyři oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. 
+Služby IoT hub se nyní upraví a vaše konfigurace jsou beze změny. 
+
+Oddíl maximální limit pro úroveň basic služby IoT Hub a úroveň standard služby IoT Hub je 32. Většina centra IoT hub stačí jenom 4 oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. 
 
 ## <a name="next-steps"></a>Další postup
 

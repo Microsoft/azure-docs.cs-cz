@@ -15,12 +15,12 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 106cda22f8f7c54441f438b61eb427446f36a69a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ce9ef687643de7ec9b289f74feea613fb9a1db7a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807486"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960600"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -1628,11 +1628,11 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Insights/Register/Action | Zaregistruje poskytovatele platformy Microsoft Insights. |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Application Insights pro čtení, zápisu nebo odstranění webové testy. |
-> | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Balíčky řešení Log Analytics pro čtení/zápis/delete. |
-> | Microsoft.OperationalInsights/workspaces/savedSearches/* | Log Analytics pro čtení/zápis/delete uložená hledání. |
+> | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Čtení/zápis/delete log analytics řešení balíčky. |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/* | Čtení/zápis/delete log analytics uložená hledání. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Spouští vyhledávací dotaz |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
-> | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Konfigurace přehledu úložiště čtení/zápis/delete Log Analytics. |
+> | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Čtení/zápis/delete log analytics úložiště insight konfigurace. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
@@ -1831,7 +1831,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Authorization/policySetDefinitions/* | Vytváření a správě sady zásad |
 > | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
 > | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
-> | Microsoft.operationalInsights/workspaces/*/read | Zobrazení dat Log Analytics |
+> | Microsoft.operationalInsights/workspaces/*/read | Zobrazení data služby log analytics |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Security/*/read | Čtení bezpečnostních komponent a zásad |
@@ -1886,7 +1886,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
 > | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
-> | Microsoft.operationalInsights/workspaces/*/read | Zobrazení dat Log Analytics |
+> | Microsoft.operationalInsights/workspaces/*/read | Zobrazení data služby log analytics |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Security/*/read | Čtení bezpečnostních komponent a zásad |

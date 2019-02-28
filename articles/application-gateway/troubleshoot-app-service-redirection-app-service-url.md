@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 9874ff7fde049c4dba4efb77ff541c80e462671a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 7a645574a75a040c3b0218714363cf85e0384e68
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808478"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959829"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>Řešení potíží s Application Gateway pomocí služby App Service – přesměrování na adresu URL služby App Service
+# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>Řešení potíží s Application Gateway s využitím služby App Service – přesměrování na adresu URL služby App Service
 
  Zjistěte, jak diagnostikovat a vyřešit problémy přesměrování pomocí služby Application Gateway, kde získat adresu URL služby App Service zpřístupněn.
 
@@ -45,27 +45,27 @@ Chcete-li toho dosáhnout pomocí služby Application Gateway, používáme pře
 ![appservice-1](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-1.png)
 
 Kvůli tomu když služby App Service nemá přesměrování, používá název hostitele "example.azurewebsites.net" v hlavičce Location namísto původní název hostitele Pokud se nenakonfiguruje. Můžete zkontrolovat příkladu hlaviček žádostí a odpovědí níže.
+```
+## Request headers to Application Gateway:
 
-Hlavičky žádosti k Application Gateway:
+Request URL: http://www.contoso.com/path
 
-Adresa URL požadavku: http://www.contoso.com/path
+Request Method: GET
 
-Metoda požadavku: GET
+Host: www.contoso.com
 
-Hostitele: www.contoso.com
+## Response headers:
 
-Hlavičky odpovědi:
+Status Code: 301 Moved Permanently
 
-Stavový kód: 301 trvale přesunuto
-
-Umístění: http://example.azurewebsites.net/path/
+Location: http://example.azurewebsites.net/path/
 
 Server: Microsoft-IIS/10.0
 
 Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=example.azurewebsites.net
 
-X-využívá podle: ASP.NET
-
+X-Powered-By: ASP.NET
+```
 V předchozím příkladu si všimnete, že hlavička odpovědi se stavovým kódem 301 pro přesměrování a hlavičku location "www.contoso.com" má název hostitele služby App Service namísto původní název hostitele.
 
 ## <a name="solution"></a>Řešení
@@ -76,43 +76,45 @@ Jakmile to služby App Service bude proveďte přesměrování (pokud existuje) 
 
 K dosažení tohoto musí vlastní doménu a pokračujte v procesu uvedených níže.
 
-- Registrace domény do seznamu vlastních domén služby App Service. V takovém případě musí mít záznam CNAME ve vaší vlastní doméně, přejdete na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [mapování existujícího vlastního názvu DNS do služby Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).![ služby App Service – 2](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-2.png)
+- Registrace domény do seznamu vlastních domén služby App Service. V takovém případě musí mít záznam CNAME ve vaší vlastní doméně, přejdete na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [mapování existujícího vlastního názvu DNS do služby Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+
+![appservice-2](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-2.png)
 
 - Po dokončení, který je připraven přijmout hostname "www.contoso.com" na službu App Service. Teď změňte váš záznam CNAME v DNS tak, aby odkazovala zpátky na plně kvalifikovaný název domény Application Gateway. Například "appgw.eastus.cloudapp.azure.com".
 
 - Ujistěte se, že "www.contoso.com" doména překládá na plně kvalifikovaný název domény Application Gateway použijete dotaz DNS.
 
-- Nastavte vaše vlastní test paměti zakázat "Vybrat název hostitele z back-Endového nastavení HTTP". To můžete udělat z portálu zrušení zaškrtnutí políčka v nastavení testu a v prostředí PowerShell nepoužíváte - PickHostNameFromBackendHttpSettings přepnout.
+- Nastavte vaše vlastní test paměti zakázat "Vybrat název hostitele z back-Endového nastavení HTTP". To můžete udělat z portálu zrušení zaškrtnutí políčka v nastavení testu a v prostředí PowerShell nepoužíváte - PickHostNameFromBackendHttpSettings v příkazu Set-AzApplicationGatewayProbeConfig přepínač. V poli Název hostitele testu zadejte váš plně kvalifikovaný název domény služby App Service "example.azurewebsites.net", sondy požadavky odeslané ze služby Application Gateway to budou mít v hlavičce hostitele.
 
   > [!NOTE]
-  > Při provádění tohoto kroku, ujistěte se prosím, že vlastní test paměti není přidružen k nastavení HTTP back-endu.
+  > Při dalším krokem, ujistěte se prosím, že vlastní test paměti není přidružen k nastavení HTTP back-endu, protože vaši dál nastavení protokolu HTTP má přepínač "Vybrat název hostitele z back-end adres" v tuto chvíli povoleno.
 
-- Nastavte nastavení HTTP Application Gateway zakázat "Vybrat název hostitele z back-endová adresa". To můžete udělat z portálu zrušení zaškrtnutí políčka a v prostředí PowerShell nepoužíváte - PickHostNameFromBackendAddress přepnout.
+- Nastavte nastavení HTTP Application Gateway zakázat "Vybrat název hostitele z back-endová adresa". To můžete udělat z portálu, že zrušíte zaškrtnutí políčka a v prostředí PowerShell nepoužíváte - PickHostNameFromBackendAddress v příkazu Set-AzApplicationGatewayBackendHttpSettings přepínač.
 
 - Přidružení vlastní test paměti nastavení HTTP back-endu a ověřte stav back-endu, pokud je v pořádku.
 
 - Až to uděláte, služba Application Gateway nyní předávat stejný název hostitele "www.contoso.com" do služby App Service a provede přesměrování na stejný název hostitele. Můžete zkontrolovat příkladu hlaviček žádostí a odpovědí níže.
+```
+  ## Request headers to Application Gateway:
 
-  Hlavičky žádosti k Application Gateway:
+  Request URL: http://www.contoso.com/path
 
-  Adresa URL požadavku: http://www.contoso.com/path
-
-  Metoda požadavku: GET
+  Request Method: GET
 
   Host: [www.contoso.com](http://www.contoso.com)
 
-  Hlavičky odpovědi:
+  ## Response headers:
 
-  Stavový kód: 301 trvale přesunuto
+  Status Code: 301 Moved Permanently
 
-  Umístění: http://www.contoso.com/path/
+  Location: http://www.contoso.com/path/
 
   Server: Microsoft-IIS/10.0
 
   Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=www.contoso.com
 
-  X-využívá podle: ASP.NET
-
+  X-Powered-By: ASP.NET
+```
 ## <a name="next-steps"></a>Další postup
 
 Pokud předchozí kroky není problém vyřešit, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).

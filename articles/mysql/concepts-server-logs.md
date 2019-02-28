@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/03/2018
-ms.openlocfilehash: c9f8fc4bee370f287b40275b76fa98d2552d7600
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60ef547cb3a6ef579f5ab0b3f5438212145d92ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545069"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961784"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Protokolů serveru ve službě Azure Database for MySQL
 Ve službě Azure Database for MySQL je k dispozici uživatelům v protokolu pomalých dotazů. Přístup k protokolu transakcí se nepodporuje. Protokol pomalých dotazů je možné identifikovat kritické body výkonu pro řešení potíží. 
@@ -44,7 +44,7 @@ Další parametry, které můžete upravit patří:
 Zobrazit MySQL [zpomalit dokumentace ke službě log dotazu](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) úplný popis parametrů protokol pomalých dotazů.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for MySQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly pomalých dotazů na váš server MySQL, můžete je mít znovu vygenerován pro Log Analytics a Event Hubs, Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, zjistit, jak část [dokumentace k diagnostickým protokolům](../azure-monitor/platform/diagnostic-logs-overview.md).
+Azure Database for MySQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly pomalých dotazů na váš server MySQL, můžete je mít znovu vygenerován pro protokoly Azure monitoru, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, zjistit, jak část [dokumentace k diagnostickým protokolům](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě výstup pole zahrnutá a pořadí, ve kterém jsou uvedeny se mohou lišit.
 
@@ -53,12 +53,12 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | TenantId | Vaše ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
-| Typ | Typ protokolu. Vždy `AzureDiagnostics` |
+| Type | Typ protokolu. Vždy `AzureDiagnostics` |
 | SubscriptionId | Identifikátor GUID pro předplatné, které server patří do |
 | ResourceGroup | Název skupiny prostředků, do které patří server |
 | ResourceProvider | Název poskytovatele prostředků. Vždy `MICROSOFT.DBFORMYSQL` |
 | ResourceType | `Servers` |
-| ID prostředku | Identifikátor URI prostředku |
+| ResourceId | Identifikátor URI prostředku |
 | Prostředek | Název serveru |
 | Kategorie | `MySqlSlowLogs` |
 | OperationName | `LogEvent` |

@@ -98,6 +98,16 @@ items:
         href: azure-stack-network-overview.md
       - name: Aspekty sítí
         href: azure-stack-network-differences.md
+      - name: VPN Gateway
+        items:
+        - name: Připojení pomocí VPN
+          href: azure-stack-connect-vpn.md
+        - name: Informace o službě VPN gateway
+          href: azure-stack-vpn-gateway-about-vpn-gateways.md
+        - name: Konfigurace zásad IPSec/IKE připojení
+          href: azure-stack-vpn-s2s.md
+        - name: Nastavení služby VPN gateway
+          href: azure-stack-vpn-gateway-settings.md
       - name: iDNS pro Azure Stack
         href: azure-stack-understanding-dns.md
       - name: DNS v Azure Stacku
@@ -138,6 +148,8 @@ items:
           href: azure-stack-solution-template-kubernetes-azuread.md
         - name: Nasazení Kubernetes pomocí služby AD FS
           href: azure-stack-solution-template-kubernetes-adfs.md
+        - name: Povolit řídicí panel Kubernetes
+          href: azure-stack-solution-template-kubernetes-dashboard.md
         - name: Řešení potíží s clusterem Kubernetes
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Nasazení služeb Cognitive Services
@@ -169,7 +181,7 @@ items:
           href: azure-stack-version-profiles-powershell.md
         - name: Azure CLI
           href: azure-stack-version-profiles-azurecli2.md
-        - name: PŘEJÍT
+        - name: Přejít
           href: azure-stack-version-profiles-go.md
         - name: Ruby
           href: azure-stack-version-profiles-ruby.md
@@ -223,9 +235,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 256560806e1065ec1ca9cfa9ba1d9f4521755ee8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: a06965bc494da93dfb945ccdfbbf10db310df48c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351756"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986290"

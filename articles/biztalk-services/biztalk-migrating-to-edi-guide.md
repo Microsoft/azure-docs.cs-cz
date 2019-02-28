@@ -10,22 +10,22 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 38fe0e4901977637be22670d09dccffdfa274304
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5543fd5ee2b86a57414a384df9d808e87b297a5e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253818"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983026"
 ---
-# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrace řešení EDI z BizTalk serveru do BizTalk Services: technický průvodce
+# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrace řešení EDI z BizTalk serveru do BizTalk Services: Technický průvodce
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Autora: Tim Wieman a Nitin Mehrotra
+Autor: TIM Wieman a Nitin Mehrotra
 
 Recenzenti: Karthik Bharthy
 
-Napsané s využitím: verze Microsoft Azure BizTalk Services – únor 2014.
+Napsané s využitím:  Microsoft Azure BizTalk Services – únor 2014 vydání.
 
 ## <a name="introduction"></a>Úvod
 Elektronické výměny dat (EDI) je jedním z nejrozšířenější prostředky dat systému exchange které firmám elektronicky, také označován jako Business-to-Business nebo B2B transakce. BizTalk Server měl podporovat víc než dekádu od vydání počáteční BizTalk Server EDI. Microsoft pokračuje s BizTalk Services v podpory pro řešení EDI z na platformě Microsoft Azure. B2B transakce jsou většinou externí vůči organizaci, a proto je snadnější implementovat, pokud bylo implementováno na cloudové platformě. Microsoft Azure poskytuje tuto funkci služby BizTalk Services.
@@ -97,12 +97,12 @@ Microsoft Azure BizTalk Services zajišťují, že nástroj pro migraci BizTalk 
 
 Můžete se také podívat na ukázku Sandro Pereira, MVP pro BizTalk, o tom, jak [migrace mapy BizTalk serveru do BizTalk Services transformace](https://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
 
-## <a name="orchestrations"></a>Orchestrace
+## <a name="orchestrations"></a>Orchestrations
 Pokud je potřeba migrovat BizTalk Server Orchestrace zpracování do Microsoft Azure, Orchestrace bude nutné, aby se povolilo, protože Microsoft Azure nepodporuje spuštěné Orchestrace BizTalk serveru.  Může přepsat funkci Orchestrace ve službě Windows Workflow Foundation 4.0 (WF4).  To může být kompletní revize, protože není aktuálně žádné migrace z Orchestrace BizTalk serveru do WF4. Tady jsou některé prostředky pracovního postupu Windows:
 
 * [*Postup při integraci služby pracovního postupu WCF pomocí front Service Bus a témat* ](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) podle Paolo Salvatori. 
 * [*Vytváření aplikací pomocí Windows Workflow Foundation a Azure* relace](https://go.microsoft.com/fwlink/p/?LinkId=237314) z konference Build 2011.
-* [*Středisko pro vývojáře aplikace Windows Workflow Foundation* ](https://go.microsoft.com/fwlink/p/?LinkId=237315) na webové stránce MSDN.
+* [*Středisko pro vývojáře aplikace Windows Workflow Foundation*](https://docs.microsoft.com/previous-versions/dotnet/articles/ee342461(v=msdn.10)).
 * [*Dokumentaci k Windows Workflow Foundation 4 (WF4)* ](https://msdn.microsoft.com/library/dd489441.aspx) na webové stránce MSDN.
 
 ## <a name="other-considerations"></a>Další důležité informace

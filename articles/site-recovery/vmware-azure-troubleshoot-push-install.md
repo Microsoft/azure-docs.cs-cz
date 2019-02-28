@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 02/07/2019
-ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/27/2019
+ms.openlocfilehash: 3b46ffe49aeb31aaf9040be038e8a9e83641ae51
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895682"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984371"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -58,7 +58,7 @@ Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, post
 
 ## <a name="insufficient-privileges-failure-errorid-95518"></a>Selhání dostatečná oprávnění (ID chyby: 95518)
 
-Když zařízení vztah důvěryhodnosti domény mezi primární doménou a pracovní stanice se nezdaří při pokusu o přihlášení ke zdrojovému počítači, instalace agenta mobility se nezdaří s id chyby 95518. Ano Ujistěte se, že uživatelský účet použitý k instalaci agenta mobility má oprávnění správce k přihlášení pomocí primární domény zdrojového počítače.
+Když zařízení vztah důvěryhodnosti domény mezi primární doménou a pracovní stanice se nezdaří při pokusu o přihlášení ke zdrojovému počítači, instalace agenta mobility se nezdaří s ID chyby 95518. Ano Ujistěte se, že uživatelský účet použitý k instalaci agenta mobility má oprávnění správce k přihlášení pomocí primární domény zdrojového počítače.
 
 Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, postupujte podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
@@ -80,7 +80,7 @@ Ano, měnit přihlašovací údaje zvolí podle pokynů [tady](vmware-azure-mana
 
 ### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Přihlašovací servery nejsou k dispozici na zdrojovém počítači (ID chyby: 95521)
 
-K této chybě dochází, pokud nejsou k dispozici na zdrojovém počítači přihlašovací servery. Nedostupnost přihlašovací servery povede k selhání žádosti o přihlášení, a proto není možné nainstalovat agenta mobility. Pro úspěšné přihlášení Ujistěte se, že přihlašovací servery jsou k dispozici na zdrojovém počítači a spuštění služby přihlašování. Podrobné pokyny, klikněte na tlačítko [tady](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
+K této chybě dochází, pokud nejsou k dispozici na zdrojovém počítači přihlašovací servery. Nedostupnost přihlašovací servery povede k selhání žádosti o přihlášení, a proto není možné nainstalovat agenta mobility. Pro úspěšné přihlášení Ujistěte se, že přihlašovací servery jsou k dispozici na zdrojovém počítači a spuštění služby přihlašování. Podrobné pokyny najdete v článku KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) chybová zpráva: K dispozici aktuálně žádné přihlašovací servery.
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Na zdrojovém počítači neběží služba přihlášení (ID chyby: 95522)
 
@@ -122,9 +122,9 @@ Pro **windows 2008 R2 a v předchozích verzích**,
 * Povolit sdílení pomocí zásad skupiny souborů
   * Přejít na začátek zadejte gpmc.msc a hledání.
   * V navigačním podokně otevřete následující složky: Zásady místního počítače, konfigurace uživatele, šablony pro správu, součásti Windows a sdílení v síti.
-  * V podokně podrobností klikněte dvakrát na **zabránit uživatelům ve sdílení souborů v rámci jejich profilu**. Zakázání nastavení zásad skupiny a povolení uživatele umožňují sdílet soubory, klikněte na možnost zakázáno. Klikněte na tlačítko OK uložte provedené změny. Další informace, klikněte na tlačítko [tady](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
+  * V podokně podrobností klikněte dvakrát na **zabránit uživatelům ve sdílení souborů v rámci jejich profilu**. Zakázání nastavení zásad skupiny a povolení uživatele umožňují sdílet soubory, klikněte na možnost zakázáno. Klikněte na tlačítko OK uložte provedené změny. Další informace najdete v tématu [povolení nebo zakázání sdílení souborů pomocí zásad skupiny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
-Pro **novější verze**, postupujte podle pokynů uvedených [tady](vmware-azure-install-mobility-service.md) umožňující sdílení souborů a tiskáren.
+Pro **novější verze**, postupujte podle pokynů uvedených v [instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů](vmware-azure-install-mobility-service.md) umožňující sdílení souborů a tiskáren.
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Kontrola konfigurace Windows Management Instrumentation (WMI) (kód chyby: 95103)
 
@@ -191,7 +191,7 @@ blkid /dev/sda2
 /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
 ```
 
-2. Nyní nahraďte její identifikátor UUID v následujícím formátu název zařízení "kořenový = UUID =<UUID>". Například, pokud jsme nahradit názvy zařízení UUID pro kořenové a pokračovat v parametru zmíněné v souborech "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub: pak řádků v souborech bude vypadat takto. <br>
+2. Nyní nahraďte její identifikátor UUID v následujícím formátu název zařízení "kořenový = UUID =<UUID>". Například, pokud jsme nahradit názvy zařízení UUID pro kořenové a pokračovat v parametru zmíněné v souborech "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub: pak řádky v souborech vypadat. <br>
 *jádra /boot/vmlinuz-3.0.101-63-default **kořenové = UUID = 62927e85 f7ba-40bc-9993-cc1feeb191e4** **obnovit = UUID = 6f614b44 433b-431b-9ca1-4dd2f6f74f6b** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
 3. Opětné spuštění ochrany znovu
 
@@ -199,10 +199,10 @@ blkid /dev/sda2
 
 Službu mobility Site Recovery má spoustu součástí, z nichž jeden je volána ovladač filtru. Ovladač filtru získá načtou do systémové paměti pouze po jednom restartování systému. To znamená, že opravy ovladač filtru pouze se dají realizovat nový ovladač filtru je načtena; které může dojít pouze v době restartování systému.
 
-**Mějte prosím na paměti** , toto je upozornění a stávající replikaci budou fungovat i po nová aktualizace agenta. Je možné restartovat, kdykoli budete chtít získat výhody nový ovladač filtru, ale pokud nemáte restartovat než také starý filtru ovladačů udržuje o práci. Ano, po aktualizaci bez restartování, kromě ovladač filtru **získá realizované výhody další vylepšení a oprav ve službě mobility**. Takže i když doporučuje, není to povinné restartování po každém upgradu. Informace o tom, kdy je povinný restart, klikněte na tlačítko [tady](https://aka.ms/v2a_asr_reboot).
+**Mějte prosím na paměti** , toto je upozornění a stávající replikaci budou fungovat i po nová aktualizace agenta. Je možné restartovat, kdykoli budete chtít získat výhody nový ovladač filtru, ale pokud nemáte restartovat staré udržuje ovladač filtru o práci. Ano, po aktualizaci bez restartování, kromě ovladač filtru **získá realizované výhody další vylepšení a oprav ve službě mobility**. Takže i když doporučuje, není to povinné restartování po každém upgradu. Informace o tom, kdy je povinný restart, nastavte [restartování zdrojového počítače po upgradu agenta mobility ](https://aka.ms/v2a_asr_reboot) oddílu služby aktualizací ve službě Azure Site Recovery.
 
 > [!TIP]
->Doporučených postupech ohledně plánování upgrady období údržby, najdete v tématu [tady](https://aka.ms/v2a_asr_upgrade_practice).
+>Doporučených postupech ohledně plánování upgrady období údržby, najdete v článku [podporu pro nejnovější verze operačního systému nebo jádra](https://aka.ms/v2a_asr_upgrade_practice) v aktualizacích ve službě Azure Site Recovery.
 
 ## <a name="lvm-support-from-920-version"></a>Podpora LVM z 9.20 verze
 
@@ -220,7 +220,7 @@ Instalace služby VSS je součástí instalace agenta Mobility. Tato služba se 
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>Došlo k chybě VSS-2147023170 [0x800706BE] - ukončovací kód 511
 
-Tento problém většinou dochází, když antivirový software blokuje provoz služby Azure Site Recovery. Chcete-li vyřešit,
+Tento problém většinou dochází, když antivirový software blokuje provoz služby Azure Site Recovery. Řešení tohoto problému:
 
 1. Vyloučit všechny složky, které jsou uvedené [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
 2. Postupujte podle pokynů publikovaných poskytovatelem antivirový program odblokujete registrace knihovny DLL ve Windows.
@@ -250,6 +250,97 @@ Tato chyba nastane, pokud uživatelský účet použitý k instalaci nemá oprá
 Pokus nainstalovat poskytovatele služby VSS na zdrojovém počítači ručně spuštěním následující příkazový řádek
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+
+
+## <a name="vss-error---0x8004e00f"></a>Chyba VSS - 0x8004E00F
+
+K této chybě obvykle dochází během instalace agenta mobility kvůli problémům v modelu DCOM a DCOM je v kritickém stavu.
+
+Použijte následující postup a zjistěte příčinu chyby.
+
+**Zkontrolujte protokoly instalace**
+
+1. Otevřete umístění c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log protokolu instalace.
+2. Přítomnost následující chybu označuje potíže:
+
+    Zrušení registrace existující aplikaci...  Vytvořit objekt katalogu získat kolekci aplikací 
+
+    CHYBA:
+
+    - Kód chyby:-2147164145 [0x8004E00F]
+    - Ukončovací kód: 802
+
+Řešení tohoto problému:
+
+Obraťte se [tým platformy Microsoft Windows](https://aka.ms/Windows_Support) získat pomoc s řešením problému modelu DCOM.
+
+Pokud je model DCOM problém vyřešen, přeinstalujte Azure Site Recovery VSS Provider ručně pomocí následujícího příkazu:
+ 
+**C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent > "C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
+  
+Pokud není konzistence aplikace důležité pro vaše požadavky na zotavení po havárii, můžete obejít instalace zprostředkovatele služby VSS. 
+
+Instalace zprostředkovatele Azure Site Recovery VSS obejít a ručně nainstalujte zprostředkovatele Azure Site Recovery VSS po instalaci:
+
+1. Instalace služby mobility. 
+> [!Note]
+> 
+> Instalace se nezdaří v kroku "Poinstalační konfigurace". 
+2. Obejít instalace služby VSS:
+   1. Otevřete v instalačním adresáři Azure Site Recovery Mobility Service:
+   
+    C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent
+   2.  Upravit skripty instalace zprostředkovatele Azure Site Recovery VSS **nMageVSSProvider_Install** a **InMageVSSProvider_Uninstall.cmd** vždy úspěšné tak, že přidáte následující řádky:
+    
+    ```     
+    rem @echo off
+    setlocal
+    exit /B 0
+    ```
+
+3. Znovu spusťte ruční instalace agenta Mobility. 
+4. Po úspěšné instalaci a přesune k dalšímu kroku, **konfigurovat**, odebrání řádků, které jste přidali.
+5. Pokud chcete nainstalovat poskytovatele služby VSS, otevřete příkazový řádek jako správce a spusťte následující příkaz:
+   
+    **C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent >.\InMageVSSProvider_Install.cmd**
+
+9.  Ověřte, zda je nainstalován Azure Site Recovery VSS Provider jako služba ve Windows Services a otevřete konzolu MMC komponenty Service k ověření, že je uvedena Azure Site Recovery VSS Provider.
+10. Pokud poskytovatel služby VSS nainstalovat i nadále nezdaří, pracovat s CX vyřeší chyby oprávnění v CAPI2.
+
+## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Instalace zprostředkovatele služby VSS se nepovedlo kvůli služby clusteru se povoluje na počítači bez clusteru
+
+Tento problém způsobuje selhání během kroku instalace zprostředkovatele služby VSS RecoveryR Site ASAzure kvůli problému s modelu COM +, která zabrání instalaci zprostředkovatele služby VSS instalace agenta služby Mobility Azure Site Recovery.
+ 
+### <a name="to-identify-the-issue"></a>Chcete-li identifikovat problém
+
+V protokolu umístěný na konfiguračním serveru v C:\ProgramData\ASRSetupLogs\UploadedLogs\<datum a čas > UA_InstallLogFile.log, najdete následující výjimku:
+
+COM + se nepovedlo komunikovat s Microsoft Distributed Transaction Coordinator (výjimka z HRESULT: 0x8004E00F)
+
+Řešení tohoto problému:
+
+1.  Ověřte, že tento počítač hostuje bez clusteru a že součásti clusteru nejsou používány.
+3.  Pokud součásti nejsou používány, odeberte z počítače součásti clusteru.
+
+## <a name="drivers-are-missing-on-the-source-server"></a>Ovladače nebyly nalezeny na zdrojovém serveru
+
+V případě selhání instalace agenta Mobility, zkontrolujte protokoly v rámci C:\ProgramData\ASRSetupLogs určí, jestli je v některých kontrolních sadách chybí některé požadované ovladače.
+ 
+Řešení tohoto problému:
+  
+1. V editoru registru například regedit.msc, otevřete registr.
+2. Otevřete uzel HKEY_LOCAL_MACHINE\SYSTEM.
+3. V uzlech systému, vyhledejte ovládací prvek sady.
+4. Otevřete každou sada ovládacích prvků a ověřte, zda jsou k dispozici následující ovladače Windows:
+
+   - ATAPI
+   - Vmbus
+   - storflt
+   - storvsc
+   - Intelide
+ 
+Znovu nainstalujte všechny chybějící ovladače.
 
 ## <a name="next-steps"></a>Další postup
 

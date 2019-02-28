@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 2ae533c81e68f8f6a32ad8fa0e45aed3c63eceb9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: cb918516a9180b4bffdc72c688df5d830e83833a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805252"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959659"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -30,7 +30,7 @@ Pokud máte jeden container service pomocí statické koncový bod v manifestu s
 Pokud služby container service restartuje nebo přesune do jiného uzlu v clusteru, změní se IP adresa. Z tohoto důvodu nedoporučujeme používat IP adresu dynamicky přiřazeného ke zjišťování služby kontejneru. Zjišťování služby by měla sloužit pouze služba pojmenování Service Fabric nebo službu DNS. 
 
 >[!WARNING]
->Azure umožňuje celkem 4 096 IP adresy na virtuální síť. Součet počtu uzlů a počet instancí služby kontejneru, (, které používají režim otevření) může mít maximálně 4 096 IP adres ve virtuální síti. Pro scénáře s vysokou hustotou doporučujeme síťový režim překladu adres.
+>Azure umožňuje celkem 65,356 IP adresy na virtuální síť. Součet počtu uzlů a počet instancí služby kontejneru, (, které používají režim otevření) může mít maximálně 65,356 IP adres ve virtuální síti. Pro scénáře s vysokou hustotou doporučujeme síťový režim překladu adres. Kromě toho další závislosti, jako jsou nástroje pro vyrovnávání zatížení bude mít jiné [omezení](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits) vzít v úvahu. Byly testovány a ověřené stabilní aktuálně až 50 IP adresy na jeden uzel. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nastavit režim otevření sítě

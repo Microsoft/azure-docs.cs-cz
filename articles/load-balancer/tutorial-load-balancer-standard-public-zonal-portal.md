@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 76e55c643378e689f12d485100a81ccefa4196f4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229808"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985984"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů v zóně dostupnosti s využitím Load balanceru úrovně Standard s využitím webu Azure portal
 
@@ -48,18 +48,22 @@ Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://por
 Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když při vytváření nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, automaticky se nakonfiguruje jako standardní verze SKU a bude automaticky zónově redundantní.
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
-2. Na stránce **Vytvořit nástroj pro vyrovnávání zatížení** zadejte pro nástroj pro vyrovnávání zatížení tyto hodnoty:
-    - **myLoadBalancer** – název nástroje pro vyrovnávání zatížení.
-    - **Public** – typ nástroje pro vyrovnávání zatížení.
-      - **myPublicIPZonal** – nová veřejná IP adresa, kterou vytvoříte. Vyberte **Zvolte veřejnou IP adresu**. Potom vyberte, že chcete **vytvořit novou** adresu. Do názvu zadejte **myPublicIP**. SKU je ve výchozím nastavení standardní. V poli **Zóna dostupnosti** vyberte **Zóna 1**.
-    - **myResourceGroupZLB** – název nové skupiny prostředků, kterou vytvoříte.
-    - **westeurope** – umístění.
-3. Stisknutím tlačítka **Vytvořit** vytvořte nástroj pro vyrovnávání zatížení.
-   
-    ![Vytvoření instance Standard Load Balanceru na webu Azure Portal](./media/tutorial-load-balancer-standard-zonal-portal/create-load-balancer-zonal-frontend.png)
+2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
+    | Nastavení                 | Hodnota                                              |
+    | ---                     | ---                                                |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupZLB* v textovém poli.|
+    | Název                   | *myLoadBalancer*                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Type          | Vyberte **veřejné**.                                        |
+    | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
+    | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
+    |Zóna dostupnosti| Vyberte **1**.    |
+3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**.   
 
-## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+ ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V této části vytvoříte virtuální síť. Vytvoříte také dva virtuální počítače ve stejné zóně (konkrétně v zóně 1) oblasti a přidáte je do back-endového fondu nástroje pro vyrovnávání zatížení. Potom na virtuální počítače nainstalujete službu IIS, abyste mohli zónově redundantní nástroj pro vyrovnávání zatížení otestovat. Pokud jeden virtuální počítač selže, ohlásí chybu i sonda stavu virtuálního počítače ve stejné zóně. K zajištění provozu se použijí další virtuální počítače ve stejné zóně.
 

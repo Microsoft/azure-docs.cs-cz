@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 69c4e7729ca4255eca24648e4c5fe03669f6186c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: cb75e943416c227730589ab5e7feeb7b8ba5e245
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593586"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957919"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Přírůstkové načtení dat ze zdrojového úložiště dat do cílového úložiště dat
 
@@ -43,12 +43,17 @@ Pracovní postup pro tento přístup je znázorněn v následujícím diagramu:
 Podrobné pokyny najdete v následujícím kurzu: <br/>
 [Přírůstkové kopírování dat ze služby Azure SQL Database do úložiště Azure Blob Storage pomocí technologie Change Tracking](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
-## <a name="loading-new-and-changed-files-only-by-using-their-lastmodifieddate"></a>Načítají se nové a změněné soubory pouze pomocí jejich LastModifiedDate
+## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>Načítají se nové a změněné soubory pouze pomocí LastModifiedDate
 Můžete získat metadata (LastModifiedDate) souborů nejprve a zkopírujte do nové a změněné soubory pouze do cílového úložiště.
 
 Podrobné pokyny najdete v následujícím kurzu: <br/>
-[Přírůstkové kopírování nové a změněné soubory, které jsou založené na LastModifiedDate pomocí nástroje pro kopírování dat](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+[Přírůstkové kopírování nové a změněné soubory podle LastModifiedDate z úložiště objektů Blob Azure do Azure Blob storage](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
+## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Načítají se nové soubory pouze pomocí času rozdělený název složky nebo souboru.
+Můžete zkopírovat nového pouze pro soubory, kde soubory nebo složky se už čas rozdělený do oddílů pomocí timeslice informace jako součást názvu souboru nebo složky (například /yyyy/mm/dd/file.csv). 
+
+Podrobné pokyny najdete v následujícím kurzu: <br/>
+[Přírůstkové kopírování nových souborů na základě čas dělené složka nebo název souboru z úložiště objektů Blob Azure do Azure Blob storage](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
 ## <a name="next-steps"></a>Další postup
 Přejděte k následujícímu kurzu: 

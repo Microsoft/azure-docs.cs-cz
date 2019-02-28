@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 426c090a79931f252a5daeacbdd83d0238ecf672
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2726c1fd08414f112035d5378fc7e395ca7ace4c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868106"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959081"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování elastického fondu prostředků ve službě Azure SQL Database
 
@@ -37,7 +37,7 @@ Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dos
 
 ## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>nákupní model založený na virtuálních jádrech: Změna elastického fondu výpočetních prostředků (virtuálních jader)
 
-Můžete zvýšit nebo snížit velikost výpočetního do elastického fondu podle potřeby pomocí prostředků [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Můžete zvýšit nebo snížit velikost výpočetního do elastického fondu podle potřeby pomocí prostředků [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
 - Když změny měřítka virtuálních jader v elastickém fondu, jsou vynechány stručně připojení k databázi. Toto chování je stejné chování, která nastane, pokud se změny měřítka Dtu pro izolovanou databázi. Podrobnosti o dobu trvání a dopad přerušená připojení pro databázi během mění se škálování operací, najdete v části [změna výpočetních prostředků (Dtu)](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-compute-resources-dtus).
 - Doba trvání, chcete-li změnit fond virtuálních jader může záviset na celkové množství prostor úložiště využitý všechny databáze ve fondu. Obecně platí, mění se škálování latence předběhli aktuální fázi 90 minut nebo méně na každých 100 GB. Například pokud používá celkové místo všech databází ve fondu je 200 GB, očekávaná latence pro změny měřítka fondu je 3 hodiny nebo i rychleji. V některých případech v rámci úrovně Standard nebo Basic mění se škálování latence může být v části 5 minut bez ohledu na množství využité místo.
@@ -47,7 +47,7 @@ Můžete zvýšit nebo snížit velikost výpočetního do elastického fondu po
 ## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>Nákupní model založený na DTU: Změnit velikost úložiště elastického fondu
 
 - Cena eDTU pro elastický fond obsahuje objem úložiště bez dalších poplatků. Dodatečné úložiště nad rámec objemu zahrnutého v ceně je možné zřídit za poplatek až po limit maximální velikosti, v přírůstcích po 250 GB až 1 TB a potom dokupuje se násobek 256 GB nad rámec 1 TB. Částky zahrnutého úložiště a omezení maximální velikosti najdete v tématu [elastického fondu: velikosti úložiště a výpočty velikostí](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
-- Dodatečné úložiště pro elastický fond je možné zřídit zvýšením jeho pomocí maximální velikosti [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [rozhraní REST API ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+- Dodatečné úložiště pro elastický fond je možné zřídit zvýšením jeho pomocí maximální velikosti [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [rozhraní REST API ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 - Cena dodatečného úložiště pro elastický fond je velikost dodatečného úložiště vynásobí jednotkovou cenu dodatečné úložiště na úrovni služby. Podrobnosti o cenách dodatečného úložiště najdete v tématu [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -55,7 +55,7 @@ Můžete zvýšit nebo snížit velikost výpočetního do elastického fondu po
 
 ## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>Nákupní model založený na DTU: Změnit elastický fond, výpočetní prostředky (Edtu)
 
-Při zvětšování a zmenšování prostředků k dispozici do elastického fondu podle potřeby pomocí prostředků [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Při zvětšování a zmenšování prostředků k dispozici do elastického fondu podle potřeby pomocí prostředků [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
 - Když změny měřítka jednotky Edtu fondu, jsou vynechány stručně připojení k databázi. Toto chování je stejné chování, která nastane, pokud se změny měřítka Dtu pro izolovanou databázi. Podrobnosti o dobu trvání a dopad přerušená připojení pro databázi během mění se škálování operací, najdete v části [změna výpočetních prostředků (Dtu)](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-compute-resources-dtus).
 - Doba trvání, chcete-li změnit jednotky Edtu fondu může záviset na celkové množství prostor úložiště využitý všechny databáze ve fondu. Obecně platí, mění se škálování latence předběhli aktuální fázi 90 minut nebo méně na každých 100 GB. Například pokud používá celkové místo všech databází ve fondu je 200 GB, očekávaná latence pro změny měřítka fondu je 3 hodiny nebo i rychleji. V některých případech v rámci úrovně Standard nebo Basic mění se škálování latence může být v části 5 minut bez ohledu na množství využité místo.

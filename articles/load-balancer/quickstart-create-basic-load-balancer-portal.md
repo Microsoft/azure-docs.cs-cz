@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3ec4b8fb9ebb7a03983ce5da3dad56e0fe9917e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231967"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986324"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření veřejného load balanceru úrovně Basic pomocí webu Azure portal
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Basic pomocí webu Azure portal
 
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky ve virtuálních počítačích (VM). Na webu Azure portal můžete použít k vytvoření nástroje pro vyrovnávání zatížení a vyrovnávat přenosy mezi virtuálními počítači. V tomto rychlém startu se dozvíte, jak vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení, back-end serverů a síťových prostředků v cenové úrovni Basic.
 
@@ -32,23 +32,25 @@ Provádění úkolů v rámci tohoto rychlého startu, přihlaste se k [webu Azu
 
 ## <a name="create-a-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
 
-Nejprve vytvořte veřejného load balanceru úrovně Basic prostřednictvím portálu. Název a veřejnou IP adresu, kterou jste vytvořili, se automaticky nakonfiguruje jako front-endu nástroje pro vyrovnávání zatížení.
+Nejprve vytvořte veřejný Load balancer úrovně Basic prostřednictvím portálu. Název a veřejnou IP adresu, kterou jste vytvořili, se automaticky nakonfiguruje jako front-endu nástroje pro vyrovnávání zatížení.
 
-1. V levém horním rohu webu Azure Portal klikněte na **Vytvořit prostředek** > **Sítě** > **Nástroj pro vyrovnávání zatížení**.
-   
-1. V **vytvořit nástroj pro vyrovnávání zatížení** podokně, zadejte nebo vyberte tyto hodnoty:
-   
-   - **Název**: Typ *MyLoadBalancer*.
-   - **Typ**: Vyberte **veřejné**. 
-   - **SKLADOVÁ POLOŽKA**: Vyberte **Basic**.
-   - **Veřejná IP adresa:** Vyberte, že chcete **vytvořit novou** IP adresu. 
-     - **Veřejná IP adresa** pole: Typ *MyPublicIP*.
-     - **Konfigurace veřejné IP adresy** > **přiřazení**: Vyberte **dynamické**.
-   - **Skupina prostředků**: Vyberte **vytvořit nový**, zadejte *MyResourceGroupLB*a vyberte **OK**. 
-   
-1. Vyberte **Vytvořit**.
-   
-![Vytvoření nástroje pro vyrovnávání zatížení](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
+2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
+
+    | Nastavení                 | Hodnota                                              |
+    | ---                     | ---                                                |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
+    | Název                   | *myLoadBalancer*                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Type          | Vyberte **veřejné**.                                        |
+    | Skladová jednotka (SKU)           | Vyberte **Basic**.                          |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
+    | Název veřejné IP adresy              | *MyPublicIP*   |
+    | Přiřazení| Statická|
+
+3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**.   
+
 
 ## <a name="create-back-end-servers"></a>Vytvoření back-end serverů
 
@@ -61,7 +63,7 @@ Dále vytvořte virtuální síť a dva virtuální počítače pro back endový
 1. V **vytvořit virtuální síť** podokně, zadejte nebo vyberte tyto hodnoty:
    
    - **Název**: Typ *MyVnet*.
-   - **Skupina prostředků**: Rozevírací nabídka **vybrat existující** a vyberte **MyResourceGroupLB**. 
+   - **ResourceGroup**: Rozevírací nabídka **vybrat existující** a vyberte **MyResourceGroupLB**. 
    - **Podsíť** > **název**: Typ *MyBackendSubnet*.
    
 1. Vyberte **Vytvořit**.
@@ -82,7 +84,7 @@ Dále vytvořte virtuální síť a dva virtuální počítače pro back endový
 1. Vyberte **sítě** kartě nebo vyberte **Další: Disky**, pak **Další: Sítě**. 
    
    Ujistěte se, že jsou vybrány následující:
-   - **Virtuální síť**: **myVnet**
+   - **Virtuální síť**: **MyVnet**
    - **Podsíť**: **MyBackendSubnet**
    - **Veřejná IP adresa**: **MyVM1-ip**
    

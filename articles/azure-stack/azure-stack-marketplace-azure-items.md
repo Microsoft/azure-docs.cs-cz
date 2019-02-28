@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 6dad4fc98dccc5c8db22019fdc548efdf7165d9e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 86a3542c39fe81607187442799ef7b546e053a8e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888742"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985831"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -166,7 +166,6 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![MongoDB](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mongodb) | Vysoce výkonná open source databáze NoSQL napsaný v jazyce C++. | Bitnami |
 | ![MongoDB s replikací](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB s replikací](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-mongodb) | Vysoce výkonná open source databáze NoSQL napsaný v jazyce C++. **Tato šablona řešení vyžaduje služby Azure Stack na verze 1807 nebo novější a také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![Moodle](media/azure-stack-marketplace-azure-items/moodle.png) | [Systém Moodle](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.moodle) | Efektivní CMS pro komunity online výukové kurzy. | Bitnami |
-| ![Multicraft](media/azure-stack-marketplace-azure-items/multicraft.png) | [Multicraft](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.multicraft) | Minecraftu. server, který je hostitelem panelu řešení a ovládací prvek. | Bitnami |
 | ![MyBB](media/azure-stack-marketplace-azure-items/mybb.png) | [MyBB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mybb) | Zdarma a open source softwaru fóra. | Bitnami |
 | ![MySQL](media/azure-stack-marketplace-azure-items/mysql.png) | [MySQL](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mysql) | Nejoblíbenější databázový systém. | Bitnami |
 | ![MySQL s replikací](media/azure-stack-marketplace-azure-items/mysql.png) | [MySQL s replikací](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mysql-cluster) | MySQL je rychlé, spolehlivé, škálovatelné a snadno se používá open source relační databázový systém. MySQL Server je určená pro nepostradatelné a zatížení náročná na výkon provozního systémů a vložení do velkokapacitních nasazení softwaru. Toto řešení používá k replikaci databáze z hlavního uzlu Konfigurovatelný počet replik několika virtuálních počítačů. **Tato šablona řešení také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |

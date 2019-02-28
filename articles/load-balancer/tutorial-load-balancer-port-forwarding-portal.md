@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e376011feacd59c84686aa3d60a7e79e07d61dbd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6cb9e839b1fffd29ce1d78e82fb4ab054b92efc6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672946"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959117"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Kurz: Konfigurace přesměrování portu ve službě Azure Load Balancer pomocí portálu
 
@@ -44,25 +44,26 @@ Pro všechny kroky v tomto kurzu, přihlaste se k webu Azure portal na [ https:/
 
 Nejprve vytvořte veřejný load balancer úrovně Standard, která můžou vyrovnávat zatížení virtuálních počítačů. Nástroj pro vyrovnávání zatížení Standard podporuje pouze standardní veřejnou IP adresu. Když vytvoříte nástroj pro vyrovnávání zatížení Standard, vytvoříte novou standardní veřejnou IP adresu, která je nakonfigurovaná jako front-endu nástroje pro vyrovnávání zatížení a s názvem **LoadBalancerFrontEnd** ve výchozím nastavení. 
 
-1. V levém horním rohu webu Azure Portal klikněte na **Vytvořit prostředek** > **Sítě** > **Nástroj pro vyrovnávání zatížení**.
-   
-1. V **vytvořit nástroj pro vyrovnávání zatížení** podokně, zadejte nebo vyberte tyto hodnoty:
-   
-   - **Název**: Typ *MyLoadBalancer*.
-   - **Typ**: Vyberte **veřejné**. 
-   - **SKLADOVÁ POLOŽKA**: Vyberte **standardní**.
-   - **Veřejná IP adresa**: Vyberte **vytvořit nový**, zadejte *MyPublicIP* v poli.
-   - **Nakonfigurovat veřejnou IP adresu** > **zóna dostupnosti**: Vyberte **zónově redundantní**.
-   - **ResourceGroup**: Vyberte **vytvořit nový**, zadejte *MyResourceGroupLB*a vyberte **OK**. 
-   - **Umístění**: Vyberte **Západní Evropa**. 
-     
-     >[!NOTE]
-     >Ujistěte se, že chcete vytvořit nástroj pro vyrovnávání zatížení a všech prostředků, do umístění, které podporují zóny dostupnosti. Další informace najdete v tématu [oblasti, které podporují zóny dostupnosti](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
-   
-1. Vyberte **Vytvořit**.
-   
-![Vytvoření nástroje pro vyrovnávání zatížení](./media/tutorial-load-balancer-port-forwarding-portal/1-load-balancer.png)
+1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
+2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
+    | Nastavení                 | Hodnota                                              |
+    | ---                     | ---                                                |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
+    | Název                   | *myLoadBalancer*                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Type          | Vyberte **veřejné**.                                        |
+    | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
+    | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
+    |Zóna dostupnosti| Vyberte **Zónově redundantní**.    |
+     
+    >[!NOTE]
+     >Ujistěte se, že chcete vytvořit nástroj pro vyrovnávání zatížení a všech prostředků, do umístění, které podporují zóny dostupnosti. Další informace najdete v tématu [oblasti, které podporují zóny dostupnosti](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+
+3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**.  
+  
 ## <a name="create-and-configure-back-end-servers"></a>Vytvoření a konfigurace back-end serverů
 
 Vytvoření virtuální sítě s dva virtuální počítače a přidání do back endový fond vašeho nástroje pro vyrovnávání zatížení virtuálních počítačů. 

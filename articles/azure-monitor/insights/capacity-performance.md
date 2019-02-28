@@ -1,6 +1,6 @@
 ---
-title: Kapacitu a výkon řešení v Azure Log Analytics | Dokumentace Microsoftu
-description: Pomocí řešení kapacitu a výkon v Log Analytics vám objasní, kapacita serverech technologie Hyper-V.
+title: Kapacitu a výkon řešení ve službě Azure Monitor | Dokumentace Microsoftu
+description: Pomocí řešení kapacitu a výkon v monitoru vám objasní, kapacita serverech technologie Hyper-V.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 41508a1d99ed243d377cc72c0accc005c5ca737d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: db2bbd8c3c0e3d7d172ea2948a42f300c2875745
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189196"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983706"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálních počítačů Hyper-V s řešením kapacitu a výkon (Preview)
 
@@ -27,7 +27,7 @@ ms.locfileid: "53189196"
 > [!NOTE]
 > Kapacitu a výkon řešení je zastaralá.  Zákazníci, kteří už jste nainstalovali řešení můžete ho nadále používat, ale kapacitu a výkon nelze přidat do jakékoli nové pracovní prostory.
 
-Můžete použít řešení kapacitu a výkon v Log Analytics vám objasní, kapacita serverech technologie Hyper-V. Řešení poskytuje přehled o prostředí Hyper-V tím, že zobrazuje celkové využití (využití procesoru, paměti a disku) hostitelů a virtuálních počítačů spuštěných na těchto hostitelích Hyper-V. Shromažďování metrik pro využití procesoru, paměti a disků napříč virtuálními počítači na nich spuštěné a všichni hostitelé.
+Můžete použít řešení kapacitu a výkon v monitoru vám objasní, kapacita serverech technologie Hyper-V. Řešení poskytuje přehled o prostředí Hyper-V tím, že zobrazuje celkové využití (využití procesoru, paměti a disku) hostitelů a virtuálních počítačů spuštěných na těchto hostitelích Hyper-V. Shromažďování metrik pro využití procesoru, paměti a disků napříč virtuálními počítači na nich spuštěné a všichni hostitelé.
 
 Řešení:
 

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04631431c03f6fdd378bfa99edb9b67f8d6a0cad
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf47e3b48f1047af88a19c59459c19c078f71a63
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193913"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984471"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -42,19 +42,21 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
     ![Vytvoření účtu Batch][account_portal]
 
-    a. **Název účtu**: Název, který zvolíte, musí být jedinečný v rámci oblasti Azure, kde se účet vytvoří (viz **umístění** níže). Název účtu smí obsahovat jenom malá písmena a číslice a musí mít 3 až 24 znaků.
+    a. **Předplatné**: Předplatné, ve kterém chcete vytvořit účet Batch. Pokud máte jenom jedno předplatné, bude ve výchozím nastavení vybrané.
 
-    b. **Předplatné**: Předplatné, ve kterém chcete vytvořit účet Batch. Pokud máte jenom jedno předplatné, bude ve výchozím nastavení vybrané.
+    b. **Skupina prostředků**: Vyberte existující skupinu prostředků vašeho nového účtu Batch, nebo volitelně vytvořte novou.
 
-    c. **Skupina prostředků**: Vyberte existující skupinu prostředků vašeho nového účtu Batch, nebo volitelně vytvořte novou.
+    c. **Název účtu**: Název, který zvolíte, musí být jedinečný v rámci oblasti Azure, kde se účet vytvoří (viz **umístění** níže). Název účtu smí obsahovat jenom malá písmena a číslice a musí mít 3 až 24 znaků.
 
     d. **Umístění**: Azure oblast, ve kterém chcete vytvořit účet Batch. Jako možnosti se zobrazí jenom oblasti, které podporuje vaše předplatné a skupina prostředků.
 
-    e. **Účet úložiště** (volitelné): Účet služby Azure Storage, který přidružíte k účtu Batch. Toto nastavení se doporučuje pro většinu účtů Batch. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account). Na portálu vyberte stávající účet úložiště nebo vytvořte nový.
+    e. **Účet úložiště**: Volitelný účet služby Azure Storage, který přidružíte k účtu Batch. Účet úložiště pro obecné účely v2 se doporučuje pro zajištění nejlepšího výkonu. Všechny možnosti účtu úložiště ve službě Batch najdete v článku [přehled funkcí Batch](batch-api-basics.md#azure-storage-account). Na portálu vyberte existující účet úložiště nebo vytvořte novou.
 
       ![vytvořit účet úložiště][storage_account]
 
-    f. **Režim přidělování fondů**: Pro většinu scénářů, přijměte výchozí nastavení **služba Batch**.
+    f. **Režim přidělování fondů**: V **Upřesnit** kartě nastavení můžete zadat režim přidělování fondů jako **služba Batch** nebo **předplatné uživatele**. Pro většinu scénářů, přijměte výchozí nastavení **služba Batch**.
+
+      ![Režim přidělování fondů služby batch][pool_allocation]
 
 1. Výběrem možnosti **Vytvořit** vytvořte účet.
 
@@ -115,7 +117,7 @@ K vytvoření účtu Batch v režimu předplatného uživatele použijte skupinu
 
 ### <a name="configure-subscription-quotas"></a>Konfigurace kvóty předplatných
 
-Základní kvóty nejsou nastavené ve výchozím nastavení u účtů Batch předplatného uživatele. Základní kvóty musíte ručně nastavit, protože Typická základní kvóty služby Batch se nevztahují na účty v režimu předplatného uživatele.
+Základní kvóty nejsou nastavené ve výchozím nastavení u účtů Batch předplatného uživatele. Kvóty jader nutné ručně nastavit, protože standardní základní kvóty služby Batch se nevztahují na účty v režimu předplatného uživatele.
 
 1. V [webu Azure portal][azure_portal], vyberte režim předplatného uživatele účtu Batch k zobrazení jeho nastavením a vlastnostem.
 
@@ -142,8 +144,8 @@ K vytváření a správě účtů Batch můžete kromě webu Azure Portal použ�
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
+[pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png
 [account_keys]: ./media/batch-account-create-portal/batch-account-keys.png
-[account_url]: ./media/batch-account-create-portal/account_url.png
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png

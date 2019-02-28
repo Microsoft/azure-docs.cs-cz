@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 34c303ef45c32d5b210b48a6de36589bcac5dacc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f20c62f574b22d55d2acd8f9c7b811067837adb7
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189114"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985933"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning pomocíC#
 
@@ -59,7 +59,7 @@ Pokud chcete vygenerovat certifikáty pomocí těchto testovacích nástrojů, p
 
 2. Ukázky a kurzy najdete v článku [Správa testovacích certifikátů certifikační autority](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md). 
 
-Kromě nástrojů v sadě SDK pro jazyk C předvádí [ukázka ověření certifikátu skupiny](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample) v sadě *SDK Microsoft Azure IoT pro .NET*, jak v jazyce C# provést test vlastnictví pomocí existujícího zprostředkujícího nebo kořenového certifikátu X.509 certifikační autority. 
+Kromě nástrojů v sadě SDK pro jazyk C předvádí [ukázka ověření certifikátu skupiny](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) v sadě *SDK Microsoft Azure IoT pro .NET*, jak v jazyce C# provést test vlastnictví pomocí existujícího zprostředkujícího nebo kořenového certifikátu X.509 certifikační autority. 
 
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>Získání připojovacího řetězce pro službu zřizování

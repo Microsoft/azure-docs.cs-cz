@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: a55652c8d19866b717cbafec4629030a7708bb50
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d63fdbfd71e812e9b445fb0055cb9aee5876ecc1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359489"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962141"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojení služby Cosmos DB pomocí Azure Search pomocí indexerů
 
@@ -65,7 +65,7 @@ A **zdroj dat** data určená k indexu, přihlašovacích údajů a zásady pro 
 
 Nastavení služby Azure Cosmos DB indexer, budete muset vytvořit index, zdroj dat a nakonec indexeru. Můžete vytvořit tyto objekty pomocí [portál](search-import-data-portal.md), [sady .NET SDK](/dotnet/api/microsoft.azure.search), nebo [rozhraní REST API](/rest/api/searchservice/). 
 
-Tento článek ukazuje, jak používat rozhraní REST API. Pokud se rozhodnete pro tento portál [Průvodce importem dat](search-import-data-portal.md) provede vás procesem vytvoření všechny tyto prostředky, včetně index.
+Tento článek ukazuje, jak používat rozhraní REST API. Pokud se rozhodnete pro portál, ujistěte se, že vaše databáze Cosmos DB obsahuje data. [Průvodce importem dat](search-import-data-portal.md) načte metadata a provádí vzorkování dat k odvození schématu indexu, ale taky načítání dat ze služby Cosmos DB. Pokud chybí data, průvodce bude ukončen s touto chybou "Chyba rozpoznání schéma indexu ze zdroje dat: Prototypový index nelze vytvořit, protože zdroj dat "emptycollection" nevrátil žádná data. ".
 
 > [!TIP]
 > Z řídicího panelu služby Azure Cosmos DB můžete spustit průvodce **Importem dat** a zjednodušit tak indexování zdroje dat. Začněte tak, že v levém navigačním panelu přejdete do **Collections** (Kolekce) > **Add Azure Search** (Přidat službu Azure Search).
@@ -182,10 +182,10 @@ Ujistěte se, že schéma cílový index je kompatibilní s schématu zdroje dok
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Mapování mezi JSON datové typy a typy dat Azure Search
 | JSON datového typu | Typy polí kompatibilní cílový index |
 | --- | --- |
-| BOOL |Edm.Boolean, Edm.String |
+| Bool |Edm.Boolean, Edm.String |
 | Čísla, které vypadají jako celá čísla |Edm.Int32, Edm.Int64, Edm.String |
 | Čísla tento vzhled jako číslo s plovoucí čárkou body |Edm.Double, Edm.String |
-| Řetězec |Edm.String |
+| String |Edm.String |
 | Pole jednoduchých typů, třeba ["a", "b", "c"] |Collection(Edm.String) |
 | Řetězce, které vypadají, jako jsou kalendářní data |Edm.DateTimeOffset, Edm.String |
 | Objekty GeoJSON, třeba {"type": "Point", "coordinates": [dlouhý, lat]} |Edm.GeographyPoint |

@@ -9,18 +9,20 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 2749a5c6c4e6003c51523d83c46b48d3b55b3d45
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 23759a6c3d920e2b791a10ddd5ac5c5285ed1889
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807580"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959863"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v Azure digitální dvojče
 
-Azure digitální dvojče podporuje robustní protokolování, monitorování a analýzy. Vývojáři řešení můžete použít Azure Log Analytics, diagnostické protokoly, protokolování aktivit a dalších služeb pro podporu komplexní monitorování potřeb aplikace IoT. Možnosti protokolování můžete kombinovat, zadat dotaz nebo zobrazení záznamů napříč několika službami a poskytuje podrobné protokolování pokrytí u řady služeb.
+Azure digitální dvojče podporuje robustní protokolování, monitorování a analýzy. Řešení mohou vývojáři protokoly Azure monitoru, diagnostické protokoly, protokolování aktivit a dalších služeb pro podporu komplexní monitorování potřeb aplikace IoT. Možnosti protokolování můžete kombinovat, zadat dotaz nebo zobrazení záznamů napříč několika službami a poskytuje podrobné protokolování pokrytí u řady služeb.
 
 Tento článek shrnuje protokolování a monitorování možnosti a zkombinujte je způsoby specifické pro digitální dvojče Azure.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="review-activity-logs"></a>Zkontrolujte protokoly aktivit
 
@@ -75,7 +77,7 @@ Povolení diagnostických protokolů pro instanci:
 
     ![Dvě nastavení diagnostiky][5]
 
-    Diagnostické protokoly jsou často ukládají pomocí [Azure File Storage](../storage/files/storage-files-deployment-guide.md) a sdílené s [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md). Obě možnosti se dají vybrat.
+    Diagnostické protokoly jsou často ukládají pomocí [Azure File Storage](../storage/files/storage-files-deployment-guide.md) a sdílené s [protokoly Azure monitoru](../azure-monitor/log-query/get-started-portal.md). Obě možnosti se dají vybrat.
 
 >[!TIP]
 >Použití **diagnostické protokoly** postřehy operací s prostředky.
@@ -84,7 +86,7 @@ Povolení diagnostických protokolů pro instanci:
 
 Aplikace IoT seskupení různorodých zdrojů, zařízení, umístění a dat do jednoho. Podrobné protokolování poskytuje podrobné informace o každé konkrétní, služba nebo komponenta architektury aplikací, ale jednotný přehled, je často nutné na údržbu a ladění.
 
-Azure Monitor obsahuje výkonné služby Log Analytics, která umožňuje protokolování zdrojů a zobrazit a analyzovat na jednom místě. Azure Monitor je proto velmi užitečné pro analýzu protokolů v rámci sofistikovaných aplikací IoT.
+Azure Monitor zahrnuje služby výkonné log analytics, která umožňuje protokolování zdrojů a zobrazit a analyzovat na jednom místě. Azure Monitor je proto velmi užitečné pro analýzu protokolů v rámci sofistikovaných aplikací IoT.
 
 Příklady použití:
 
@@ -92,32 +94,32 @@ Příklady použití:
 * Zobrazení protokolů pro několik uživatelsky definovaných funkcí
 * Zobrazení protokolů pro dvě nebo více služeb v určitém časovém limitu
 
-Dotazování na celý protokol je poskytována prostřednictvím [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md). Výkonné funkce, které tato nastavení:
+Dotazování na celý protokol je poskytována prostřednictvím [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md). Výkonné funkce, které tato nastavení:
 
 1. Vyhledejte **Log Analytics** na webu Azure Portal.
-1. Uvidí vaši dostupný **Log Analytics** instancí. Vyberte jednu a vyberte **protokoly** dotazu:
+1. Uvidí vaši dostupný **pracovní prostor Log Analytics** instancí. Vyberte jednu a vyberte **protokoly** dotazu:
 
     ![Log Analytics][6]
 
-1. Pokud ještě nemáte **Log Analytics** instance, můžete vytvořit pracovní prostor kliknutím **přidat** tlačítka:
+1. Pokud ještě nemáte **pracovní prostor Log Analytics** instance, můžete vytvořit pracovní prostor kliknutím **přidat** tlačítka:
 
     ![Vytváření OMS][7]
 
-Jakmile vaše **Log Analytics** zřídí instance, můžete použít zadávat efektivní dotazy na hledání v protokolech násobky položky nebo pomocí určitých kritérií pomocí **Správa protokolů**:
+Jednou vaše **pracovní prostor Log Analytics** zřídí instance, můžete použít zadávat efektivní dotazy na hledání v protokolech násobky položky nebo pomocí určitých kritérií pomocí **Správa protokolů**:
 
    ![Správa protokolů][8]
 
 Další informace o operacích výkonný dotazovací najdete v tématu [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Může dojít ke zpoždění 5 minut při odesílání událostí do **Log Analytics** poprvé.
+> Může dojít ke zpoždění 5 minut při odesílání událostí do **pracovní prostor Log Analytics** poprvé.
 
-Azure Log Analytics také poskytuje výkonné chyb a oznámení výstrah služeb, které můžete zobrazit kliknutím **diagnostikovat a řešit problémy**:
+Protokoly Azure monitoru také poskytuje výkonné chyb a oznámení výstrah služeb, které můžete zobrazit kliknutím **diagnostikovat a řešit problémy**:
 
    ![Oznámení o upozornění a chyby][9]
 
 >[!TIP]
->Použití **Log Analytics** do historie protokolu dotazu více funkce aplikace, předplatných a služeb.
+>Použití **pracovní prostor Log Analytics** do historie protokolu dotazu více funkce aplikace, předplatných a služeb.
 
 ## <a name="other-options"></a>Další možnosti
 
@@ -129,7 +131,7 @@ Azure digitální dvojče také podporuje specifické pro aplikaci protokolován
 
 - Ponořte se hlouběji do nastavení diagnostiky služby Azure ve čtení [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-- Další informace o [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md).
+- Další informace o [protokoly Azure monitoru](../azure-monitor/log-query/get-started-portal.md).
 
 <!-- Images -->
 [1]: media/how-to-configure-monitoring/activity-log.png

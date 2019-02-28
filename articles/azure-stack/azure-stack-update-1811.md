@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 14e587276deab9656c3be04c96182942767ae0f2
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099135"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986018"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -86,6 +86,8 @@ Azure Stack vydává opravy hotfix v pravidelných intervalech. Nezapomeňte nai
     Jakmile správně naimportujete certifikáty povinné rozšíření hostitele, můžete obnovit 1811 aktualizace z portálu správce. Když Microsoft vás informuje o tom operátorům Azure stacku k naplánování okna údržby během procesu aktualizace, selhání z důvodu chybějící certifikáty hostitele rozšíření by neměla mít vliv existující úlohy nebo služby.  
 
     Při instalaci této aktualizace není k dispozici na portálu user portal pro Azure Stack, zatímco hostitel rozšíření je konfigurován. Konfigurace hostitele rozšíření může trvat až 5 hodin. Během této doby můžete zkontrolovat stav aktualizace nebo obnovit instalaci neúspěšné aktualizace pomocí [Azure Stack PowerShellu s oprávněními správce nebo privilegovaného koncového bodu](azure-stack-monitor-update.md).
+
+- Azure Stack je spravovaná službou System Center Operations Manager (SCOM), nezapomeňte aktualizovat sadu Management Pack for Microsoft Azure Stack na verzi 10.0.3.11 před použitím 1811.
 
 ## <a name="new-features"></a>Nové funkce
 

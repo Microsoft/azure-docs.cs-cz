@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 4f1ce84dba4e9f35e7884ebd9058781eb30c3ec4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 8dd3c6ce7eabdf90c2a84f4d1e52ce3aef2d5c12
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815842"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984625"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -41,13 +41,13 @@ Virtuální sítě Azure mají protokoly toků NSG, které vám poskytnou inform
 
 - **Skupina zabezpečení sítě (NSG)**: Obsahuje seznam pravidel zabezpečení, která povolují nebo odpírají síťový provoz prostředků připojených k virtuální síti Azure. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Další informace najdete v tématu [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Zabezpečení skupiny (NSG) protokolů síťového toku**: Umožňuje zobrazit informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě. NSG flow protokoly jsou napsané ve formátu json a zobrazení odchozí a příchozí toků na základě pravidel na že nic toku se vztahuje na pět řazené kolekce členů informace o toku (zdrojová a cílová IP adresa, zdrojový/cílový port a protokol) a pokud byl povolený přenos nebo zakázaná. Další informace o protokoly toků NSG najdete v tématu [protokolů toku NSG](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Služba Azure, která shromažďuje data monitorování a ukládá data v centrálním úložišti. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API služby Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako je monitorování a provoz Analýza výkonu sítě se vytvářejí pomocí Log Analytics jako základ. Další informace najdete v tématu [Log analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Pracovní prostor log analytics**: Instance služby log analytics, které jsou uložena data vztahující se k účtu Azure. Další informace o pracovních prostorech log analytics najdete v tématu [vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics**: Služba Azure, která shromažďuje data monitorování a ukládá data v centrálním úložišti. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API služby Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako je monitorování a provoz Analýza výkonu sítě se vytvářejí pomocí Azure monitoru protokoly jako základ. Další informace najdete v tématu [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Pracovní prostor log Analytics**: Instance Azure Monitor protokolů, které jsou uložena data vztahující se k účtu Azure. Další informace o pracovních prostorech Log Analytics najdete v tématu [vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher**: Místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v Azure. Můžete zapnout protokolů toku NSG a vypnout pomocí služby Network Watcher. Další informace najdete v tématu [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Jak funguje traffic analytics
 
-Analýza provozu prozkoumá nezpracovaných protokolů toku NSG a zachytí sníženou protokoly na základě agregace běžných toků mezi stejné zdrojové IP adresy, cílová IP adresa, cílový port a protokol. Například hostitel 1 (IP adresa: . 10.10.10.10) komunikaci s hostiteli 2 (IP adresa: 10.10.20.10), než 100krát po dobu 1 hodinu používání portu (například 80) a protokolu (třeba http). Snížení protokol má jednu položku, které hostitele 1 a 2 hostitele předávány 100krát po dobu 1 hodiny pomocí portu *80* a protokol *HTTP*, namísto nutnosti 100 položek. Snížení protokoly jsou navíc zeměpisné oblasti, zabezpečení a informace o topologii a pak uloženy v pracovním prostoru log analytics. Následující obrázek znázorňuje tok dat:
+Analýza provozu prozkoumá nezpracovaných protokolů toku NSG a zachytí sníženou protokoly na základě agregace běžných toků mezi stejné zdrojové IP adresy, cílová IP adresa, cílový port a protokol. Například hostitel 1 (IP adresa: . 10.10.10.10) komunikaci s hostiteli 2 (IP adresa: 10.10.20.10), než 100krát po dobu 1 hodinu používání portu (například 80) a protokolu (třeba http). Snížení protokol má jednu položku, které hostitele 1 a 2 hostitele předávány 100krát po dobu 1 hodiny pomocí portu *80* a protokol *HTTP*, namísto nutnosti 100 položek. Snížení protokoly jsou navíc zeměpisné oblasti, zabezpečení a informace o topologii a pak uloženy v pracovním prostoru Log Analytics. Následující obrázek znázorňuje tok dat:
 
 ![Tok dat pro zpracování protokolů toku NSG](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -164,9 +164,9 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 2. Vyberte existující účet úložiště pro ukládání protokolů toku v. Pokud chcete uložit data navždy, nastavte hodnotu na *0*. Se vám účtovat žádné poplatky za úložiště Azure pro účet úložiště.
 3. Nastavte **uchování** na počet dní, které chcete uložit data.
 4. Vyberte *na* pro **Traffic Analytics stav**.
-5. Vyberte existující pracovní prostor Log Analytics nebo **vytvořit nový pracovní prostor** vytvořit nový certifikát. Pracovní prostor Log Analytics používá k ukládání agregované a indexaci dat, která se pak použije k vygenerování analýzy analýzu provozu. Pokud vyberete existující pracovní prostor, musí existovat v jednom z podporovaných oblastí a se upgradovaly na nový dotazovací jazyk. Pokud nechcete, aby existující pracovní prostor, nebo nemáte pracovní prostor v podporované oblasti, vytvořte novou. Další informace o dotazovací jazyky, naleznete v tématu [Azure Log Analytics upgradovat na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Vyberte existující pracovní prostor Log Analytics nebo **vytvořit nový pracovní prostor** vytvořit nový certifikát. Pracovní prostor Log Analytics používá k ukládání agregované a indexaci dat, která se pak použije k vygenerování analýzy analýzu provozu. Pokud vyberete existující pracovní prostor, musí existovat v jednom z podporovaných oblastí a se upgradovaly na nový dotazovací jazyk. Pokud nechcete, aby existující pracovní prostor, nebo nemáte pracovní prostor v podporované oblasti, vytvořte novou. Další informace o dotazovací jazyky, naleznete v tématu [protokoly Azure monitoru upgradu na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Pracovní prostor log analytics hostování řešení pro analýzu provozu a skupiny zabezpečení sítě, nemusí být ve stejné oblasti. Například možná analýza provozu v pracovním prostoru v oblasti západní Evropa, dokud máte skupiny zabezpečení sítě v oblastech východní USA a západní USA. Více skupin zabezpečení sítě je možné nakonfigurovat ve stejném pracovním prostoru.
+    Pracovní prostor Log Analytics, který je hostitelem řešení pro analýzu provozu a skupiny zabezpečení sítě, nemusí být ve stejné oblasti. Například možná analýza provozu v pracovním prostoru v oblasti západní Evropa, dokud máte skupiny zabezpečení sítě v oblastech východní USA a západní USA. Více skupin zabezpečení sítě je možné nakonfigurovat ve stejném pracovním prostoru.
 6. Vyberte **Uložit**.
 
     ![Výběr účtu úložiště, pracovního prostoru Log Analytics a povolení analýzy provozu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)

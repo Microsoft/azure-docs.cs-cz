@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 87c624e0fc5eac60b309a2535afc7508f1b6b3ac
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383005"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986103"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -105,7 +105,7 @@ Ano.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Můžete použít stávající pracovní prostor?
 
-Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byla migrována na nový dotazovací jazyk. Pokud nechcete upgradovat pracovní prostor, musíte vytvořit nový. Další informace o nový dotazovací jazyk, v tématu [Azure Log Analytics upgradovat na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md).
+Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byla migrována na nový dotazovací jazyk. Pokud nechcete upgradovat pracovní prostor, musíte vytvořit nový. Další informace o nový dotazovací jazyk, v tématu [protokoly Azure monitoru upgradu na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Můžete svůj účet úložiště Azure se v jednom předplatném a pracovní prostor Log Analytics se v jiném předplatném?
 

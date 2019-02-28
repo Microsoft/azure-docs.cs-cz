@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a074f0f9c08803e7227bcfb218863a5f0f094306
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b8824ba7bd3042f447df19fe20ca3ab255dfb165
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875391"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961512"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Důležitou součástí zajištění vysoké dostupnosti zajišťuje, že služby přežijí všechny různé druhy chyb. To je obzvláště důležité pro chyby, které neplánované a mimo vaši kontrolu. Tento článek popisuje některé běžné režimy selhání, které může být jiného problému ovlivňujícího není-li modelovat a spravovány správně. Je také zaměří na omezení rizik a akcí Pokud přesto došlo k havárii. Cílem je omezit nebo eliminovat riziko výpadkům nebo ztrátě, které se objeví chyby, plánované nebo jinak, mohlo dojít.
@@ -131,7 +131,7 @@ Není k dispozici dva různé strategie pro přežití trvalé nebo trvalé selh
 2. Spusťte jeden cluster Service Fabric, která zahrnuje více datacentrech nebo oblastech. Minimální podporovanou konfiguraci pro tento je tři datacentrech nebo oblastech. Doporučený počet oblastí nebo datových centrech je pět. To vyžaduje složitější topologie clusteru. Výhodou tohoto modelu je však, že selhání jednoho datacentra nebo oblasti se převede po havárii na normální selhání. Tyto chyby může být zpracována mechanismy, které fungují pro clustery v rámci jedné oblasti. Domén selhání a upgradovacích domén, pravidla pro umístění Service Fabric zajistěte, aby úlohy distribuují tak, aby se tolerovat běžné chyby. Další informace o zásadách, které pomáhají provozovat služby v tomto typu clusteru, přečtěte si [zásady umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
 
 ### <a name="random-failures-leading-to-cluster-failures"></a>Náhodné chyby, což vede k selhání clusteru
-Service Fabric obsahuje koncepci počáteční uzly. Jedná se o uzly, které zajišťují dostupnost základního clusteru. Tyto uzly pomáhají zajistit, že cluster zůstane až vytvořením zapůjčení s ostatními uzly a slouží jako tiebreakers během určité druhy chyb v síti. Pokud nejsou opět nepřipojí náhodným chybám odebrání většinou počáteční uzly v clusteru, váš kanál federace clusteru sbalí jak jste ztratili počáteční uzel kvora a cluster selže. V Azure, poskytovatele prostředků služby Service Fabric spravuje konfigurace clusteru Service Fabric a ve výchozím nastavení distribuuje počáteční uzly v odolnost pro primární typ uzlu a nebo upgradovacích doménách; Pokud primární nodetype je označená jako stříbrné nebo zlaté úrovně odolnosti, když odeberete uzel počáteční hodnoty tak, že změna měřítka ve vaší primární nodetype nebo ručně odstranit uzel počáteční hodnoty, cluster se pokusí o zvýšení úrovně jiný uzel – počáteční hodnota z primární nodetype, který je k dispozici kapacita a selže, pokud máte méně dostupnou kapacitu než úroveň spolehlivosti clusteru vyžaduje pro primární typ uzlu.
+Service Fabric obsahuje koncepci počáteční uzly. Jedná se o uzly, které zajišťují dostupnost základního clusteru. Tyto uzly pomáhají zajistit, že cluster zůstane až vytvořením zapůjčení s ostatními uzly a slouží jako tiebreakers během určité druhy chyb v síti. Pokud nejsou opět nepřipojí náhodným chybám odebrání většinou počáteční uzly v clusteru, váš kanál federace clusteru sbalí jak jste ztratili počáteční uzel kvora a cluster selže. V Azure poskytovatele prostředků služby Service Fabric spravuje konfigurace clusteru Service Fabric a ve výchozím nastavení distribuuje počáteční uzly v primární typ uzlu chybových nebo upgradovacích doménách; Pokud primární nodetype je označená jako stříbrné nebo zlaté úrovně odolnosti, když odeberete uzel počáteční hodnoty tak, že změna měřítka ve vaší primární nodetype nebo ručně odstranit uzel počáteční hodnoty, cluster se pokusí o zvýšení úrovně jiný uzel – počáteční hodnota z primární nodetype, který je k dispozici kapacita a selže, pokud máte méně dostupnou kapacitu než úroveň spolehlivosti clusteru vyžaduje pro primární typ uzlu.
 
 "Primární uzel typu" v samostatných clusterů Service Fabric a Azure, je ten, který běží rychlosti. Při definování typu primárního uzlu Service Fabric se automaticky výhod počet uzlů zajištěna vytvořením až 9 počáteční uzly a 7 repliky všech systémových služeb. Sada náhodná selhání trvá současně si většina těchto replik služby systému, systémové služby přejde ztráty kvora, jak jsme je popsáno výše. Pokud se většina počáteční uzly jsou ztraceny, cluster se vypne krátce po.
 

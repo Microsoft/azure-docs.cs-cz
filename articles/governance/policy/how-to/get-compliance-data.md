@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 44f0309d472a79526537f79feabcd9777b70bcc7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 05802c2a6e1d5e0ea16aa8cfcc4333c14d05c7ae
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888767"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986075"
 ---
 # <a name="getting-compliance-data"></a>Získávání dat o dodržování předpisů
 
@@ -28,7 +28,7 @@ Přístup k informacím o dodržování předpisů, generovaných zásady a při
 Před zobrazením metody k vytvoření sestavy dodržování předpisů, Podívejme se na při aktualizaci informací o dodržování předpisů a četnost a události, které aktivují cyklu hodnocení.
 
 > [!WARNING]
-> Pokud hlásí stav dodržování předpisů jako **Neregistrovaný**, ověřte, že **Microsoft.policyinsights do** zaregistrovaný poskytovatel prostředků a že uživatel má odpovídající přístup na základě rolí (ovládací prvek Oprávnění RBAC), jak je popsáno [tady](../overview.md#rbac-permissions-in-azure-policy).
+> Pokud hlásí stav dodržování předpisů jako **Neregistrovaný**, ověřte, že **Microsoft.policyinsights do** zaregistrovaný poskytovatel prostředků a že uživatel má odpovídající přístup na základě rolí (ovládací prvek Oprávnění RBAC), jak je popsáno v [RBAC ve službě Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 

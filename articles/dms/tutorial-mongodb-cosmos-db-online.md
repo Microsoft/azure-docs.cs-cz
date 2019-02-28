@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 95286b7a63471ee07f76276d8b4b63ca5f2aecce
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/27/2019
+ms.openlocfilehash: 06e76b8eed283c6ef09f38e876c60b05477cf0ce
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212835"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985814"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB online pomocí DMS (Preview)
 Azure Database Migration Service můžete použít k provedení migrace databází do online (minimálními prostoji) z místní nebo cloudové instance MongoDB API služby Azure Cosmos DB pro MongoDB.
@@ -121,7 +121,18 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
        * **Režim připojovacího řetězce**, která přijímá řetězec připojení MongoDB, jak je popsáno v článku [formát připojovacího řetězce identifikátoru URI](https://docs.mongodb.com/manual/reference/connection-string/).
        * **Data ze služby Azure storage**, která přijímá adresy URL SAS kontejneru objektů blob. Vyberte **objekt Blob obsahuje BSON výpisy** Pokud kontejner objektů blob se výpisy BSON vytvářených MongoDB [bsondump nástroj](https://docs.mongodb.com/manual/reference/program/bsondump/)a vyberte ho zrušit, pokud kontejner obsahuje soubory JSON.
 
-    Můžete použít IP adresu pro situace, ve které DNS není možné překlad.
+      Pokud vyberete tuto možnost, ujistěte se, že připojovací řetězec účtu úložiště se zobrazí ve formátu:
+
+    ```
+    https://blobnameurl/container?SASKEY
+    ```
+      Na základě typu výpis informací ve službě Azure storage, mějte také následující podrobnosti.
+
+      * BSON výpisy dat v rámci kontejneru objektů blob musí být ve formátu bsondump tak, že datové soubory jsou umístěny do složky s názvem po obsahující databází ve formátu collection.bson. Soubory metadat (pokud existuje) by měly být pojmenovány ve formátu *kolekce*. metadata.json.
+
+      * Pro výpisy JSON musí být umístěna souborů v kontejneru objektů blob do složky s názvem po obsahující databáze. V rámci každé složky databáze datové soubory musí být umístěn v podsložce s názvem "data" a s názvem ve formátu *kolekce*.json. Soubory metadat (pokud existuje) musí být umístěny v podsložce s názvem "metadat" a s názvem ve stejném formátu *kolekce*.json. Soubory metadat musí být ve stejném formátu jako vytvořený nástrojem bsondump MongoDB.
+
+   Můžete použít IP adresu pro situace, ve které DNS není možné překlad.
 
    ![Zadání podrobností o zdroji](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 

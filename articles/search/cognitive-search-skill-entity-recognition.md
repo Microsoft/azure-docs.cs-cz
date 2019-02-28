@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 02/27/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4bdc17e444239652fa612078e89ec85e357c9316
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 2a245a6e3d76a7df41b5ef28f9bac8a2c2122402
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750510"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985414"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Kognitivní dovednosti rozpoznávání entit
 
@@ -43,7 +43,8 @@ Parametry jsou malá a velká písmena a jsou nepovinné.
 | categories    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
 |defaultLanguageCode |  Kód jazyka vstupního textu. Jsou podporovány následující jazyky: `de, en, es, fr, it`|
 |minimumPrecision | Nevyužité. Vyhrazeno pro budoucí použití. |
-|includeTypelessEntities | Pokud je nastavený na hodnotu true, pokud text obsahuje dobře známé entity, ale nelze zařadit do jedné z podporovaných kategorií, bude se vrátil jako součást `"entities"` komplexní výstupního pole. Výchozí hodnota je `false` |
+|includeTypelessEntities | Pokud je nastavený na hodnotu true, pokud text obsahuje dobře známé entity, ale nelze zařadit do jedné z podporovaných kategorií, bude se vrátil jako součást `"entities"` komplexní výstupního pole. 
+Toto jsou entity, které jsou dobře známé, ale nejsou klasifikovány jako součást aktuální podporované "kategorie". Například "systém Windows 10" je dobře známé entity (produkt), ale nejsou v kategoriích, které dnes podporuje "Produktů". Výchozí hodnota je `false` |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností

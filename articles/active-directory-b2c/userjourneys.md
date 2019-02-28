@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5c63a838d6cffce5ca45dbf0dde50bb9bd01892c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171639"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961291"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -49,7 +49,7 @@ K definování cest uživatele podporovaného zásadami, **Userjourney** prvek p
 
 Cesty uživatele představuje orchestraci pořadí, který musí být následován úspěšná transakce. Pokud kterýkoli krok selže, transakce se nezdaří. V souboru zásad povoleny poskytovatele deklarací identity a kroků Orchestrace odkazovat na stavební bloky. Libovolný krok Orchestrace, která odpovídá zobrazení nebo vykreslení uživatelské prostředí také obsahuje odkaz na odpovídající identifikátor definici obsahu.
 
-Orchestrace postup může být conditionaly provedl a vytvořil podle předběžné podmínky definované v elementu krok Orchestrace. Pro examle můžete zkontrolovat provést krok Orchestrace pouze v případě, že konkrétní deklarace identity existuje, nebo pokud se deklarace identity rovná nebo není na zadanou hodnotu. 
+Kroků Orchestrace může podmíněně spustí, na základě předběžné podmínky definované v elementu krok Orchestrace. Můžete například zkontrolovat provést krok Orchestrace pouze v případě, že konkrétní deklarace identity existuje, nebo pokud se deklarace identity rovná nebo není na zadanou hodnotu. 
 
 Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** prvek se přidá jako součást této zásady. Tento element je povinný.
 
@@ -64,7 +64,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Objednání | Ano | Pořadí kroků Orchestrace. | 
-| Typ | Ano | Typ kroku Orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** – označuje, že krok Orchestrace představuje různých zprostředkovatelů deklarací identity k uživateli vybrat jednu.</li><li>**CombinedSignInAndSignUp** – označuje, že krok Orchestrace představuje kombinovanou poskytovatele sociálních sítí registrační stránku pro přihlášení a místní účet.</li><li>**ClaimsExchange** – označuje, že krok Orchestrace výměny deklarací identity se zprostředkovatelem deklarací identity.</li><li>**SendClaims** – označuje, že krok Orchestrace, odešle se u tokenu vydaného službou deklarace identity vystavitele deklarace identity na přijímající straně.</li></ul> | 
+| Type | Ano | Typ kroku Orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** – označuje, že krok Orchestrace představuje různých zprostředkovatelů deklarací identity k uživateli vybrat jednu.</li><li>**CombinedSignInAndSignUp** – označuje, že krok Orchestrace představuje kombinovanou poskytovatele sociálních sítí registrační stránku pro přihlášení a místní účet.</li><li>**ClaimsExchange** – označuje, že krok Orchestrace výměny deklarací identity se zprostředkovatelem deklarací identity.</li><li>**SendClaims** – označuje, že krok Orchestrace, odešle se u tokenu vydaného službou deklarace identity vystavitele deklarace identity na přijímající straně.</li></ul> | 
 | ContentDefinitionReferenceId | Ne | Identifikátor [obsahu definice](contentdefinitions.md) přidružené k tento krok Orchestrace. Obvykle identifikátor obsahu definice odkazu je definován v s vlastním potvrzením technický profil. Ale existují případy, když Azure AD B2C potřebuje rychle zobrazit něco bez technického profilu. Existují dva příklady, pokud je typ kroku Orchestrace jednu z následujících akcí: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`. Azure AD B2C musí zobrazit výběru zprostředkovatele identity bez nutnosti technický profil. | 
 | CpimIssuerTechnicalProfileReferenceId | Ne | Typ kroku Orchestrace je `SendClaims`. Tato vlastnost definuje technický profil identifikátor zprostředkovatele deklarací identity, který vydá token pro předávající stranu.  Pokud chybí, je vytvořen žádný předávající strany token. |
 
@@ -77,7 +77,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 | ClaimsProviderSelections | 0: n | Seznam výběru zprostředkovatele deklarací identity pro krok Orchestrace. | 
 | ClaimsExchanges | 0: n | Seznam výměny deklarací identity pro krok Orchestrace. | 
 
-#### <a name="preconditions"></a>Předběžné podmínky
+### <a name="preconditions"></a>Předběžné podmínky
 
 **Předběžné podmínky** prvek obsahuje následující element:
 
@@ -86,13 +86,13 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 | Předběžné podmínky | 0: n | V závislosti na tom technický profil používá buď přesměruje klienta podle výběru zprostředkovatele deklarací identity nebo je deklarace volání serveru exchange. | 
 
 
-##### <a name="precondition"></a>Předběžné podmínky
+#### <a name="precondition"></a>Předběžné podmínky
 
 **Předběžné podmínky** prvek obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Typ | Ano | Typ kontroly nebo dotaz k provedení této předběžné podmínky. Hodnota může být **ClaimsExist**, která určuje, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo **ClaimEquals**, která určuje, že akce je třeba provést, pokud existuje zadaný deklarace identity a jeho hodnota se rovná se zadanou hodnotou. |
+| Type | Ano | Typ kontroly nebo dotaz k provedení této předběžné podmínky. Hodnota může být **ClaimsExist**, která určuje, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo **ClaimEquals**, která určuje, že akce je třeba provést, pokud existuje zadaný deklarace identity a jeho hodnota se rovná se zadanou hodnotou. |
 | ExecuteActionsIf | Ano | Použijte hodnotu true nebo false test se rozhodnout, pokud by provádět akce v předpoklad. | 
 
 **Předběžné podmínky** prvky obsahuje následující prvky:
@@ -102,7 +102,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 | Hodnota | 1: n | ClaimTypeReferenceId, aby se dalo dotazovat pro. Jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.</li></ul>|
 | Akce | 1:1 | Akce, která má být provedena, pokud v jednom z kroků Orchestrace předpoklad platí. Pokud hodnota `Action` je nastavena na `SkipThisOrchestrationStep`, přidružené `OrchestrationStep` by neměl být spouštěn. | 
 
-### <a name="preconditions-examples"></a>Příklady předběžné podmínky
+#### <a name="preconditions-examples"></a>Příklady předběžné podmínky
 
 Tyto předběžné požadavky kontroluje, jestli ID objektu uživatele existuje. V cestě uživatele uživatel vybral se přihlásit pomocí místního účtu. Pokud existuje objectId, přeskočte tento krok Orchestrace.
 
@@ -226,20 +226,3 @@ V následujícím kroku Orchestrace můžete uživatele k přihlášení pomocí
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor kroku exchange deklarací identity. Tento identifikátor slouží k odkazu krok výměna deklarací identit z výběru zprostředkovatele deklarací identity v zásadách. | 
 | TechnicalProfileReferenceId | Ano | Identifikátor technický profil, který má být provedena. |
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

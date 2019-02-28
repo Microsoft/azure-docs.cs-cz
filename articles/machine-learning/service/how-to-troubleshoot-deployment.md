@@ -1,7 +1,7 @@
 ---
 title: Průvodce řešením problémů s nasazením
 titleSuffix: Azure Machine Learning service
-description: Další problém obejdete tak, jak řešení a řešení potíží s běžnými chybami nasazení Dockeru s AKS a ACI pomocí služby Azure Machine Learning.
+description: Zjistěte, jak obejít, řešení a řešení potíží s běžnými chybami nasazení Dockeru s AKS a ACI pomocí služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4b0dddf14564f2813ea019addf6b97b79707b78e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267135"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983570"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Řešení potíží s nasazením služby AKS a ACI Azure Machine Learning
 
@@ -43,7 +43,7 @@ Další informace o tomto procesu v [Správa modelů ve službě](concept-model-
 
 Pokud narazíte na jakékoli potíže, je prvním krokem je rozdělit úlohu nasazení (viz předchozí) do jednotlivých kroků a izolovat daný problém. 
 
-To je zvláště užitečné, pokud používáte `Webservice.deploy` rozhraní API, nebo `Webservice.deploy_from_model` rozhraní API, protože tyto funkce seskupit dohromady výše uvedené kroky v rámci jedné akce. Obvykle jsou velmi vhodné těchto rozhraních API, ale je k rozdělení kroky při řešení potíží s nahrazením pomocí následující volání rozhraní API.
+To je užitečné, pokud používáte `Webservice.deploy` rozhraní API, nebo `Webservice.deploy_from_model` rozhraní API, protože tyto funkce seskupit dohromady výše uvedené kroky v rámci jedné akce. Obvykle jsou vhodné těchto rozhraních API, ale je k rozdělení kroky při řešení potíží s nahrazením pomocí následující volání rozhraní API.
 
 1. Zaregistrujte model. Tady je ukázkový kód:
 
@@ -101,9 +101,54 @@ for name, img in ws.images.items():
 ```
 Identifikátor uri protokolu bitové kopie je adresa URL SAS odkazující na soubor protokolu se ukládají ve službě Azure blob storage. Jednoduše zkopírujte a vložte identifikátor uri do okna prohlížeče a můžete stáhnout a zobrazit soubor protokolu.
 
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure zásad přístupu trezoru klíčů a šablon Azure Resource Manageru
+
+Sestavení image může také selhat z důvodu problému s zásady přístupu pro Azure Key Vault. Tato situace může nastat, když použijete šablony Azure Resource Manageru k vytvoření pracovního prostoru a přidružené prostředky (včetně služby Azure Key Vault), více než jednou. Například pomocí šablony více než jednou se stejnými parametry jako součást průběžné integrace a nasazení kanálu.
+
+Většina operací vytváření prostředků prostřednictvím šablony jsou idempotentní, ale služby Key Vault vymaže zásady přístupu při každém použití této šablony. Tím je prolomen přístup ke službě Key Vault pro existující pracovní prostor, který jej používá. V důsledku chyb při pokusu o vytvoření nových imagí. Následují příklady chyb, které můžou přijímat:
+
+__Portál__:
+```text
+Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
+```
+
+__SDK__:
+```python
+image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
+Creating image
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
+    resp.raise_for_status()
+  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
+    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
+azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
+Response Code: 500
+Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
+Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
+```
+
+__CLI__:
+```text
+ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
+GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
+\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
+b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
+```
+
+K tomuto problému vyhnout, doporučujeme jednu z následujících postupů:
+
+* Nenasazujte šablony více než jednou pro stejné parametry. Nebo odstraňte existující prostředky před je znovu vytvořit pomocí šablony.
+* Zkontrolujte zásady přístupu trezoru klíčů a použijte ji nastavit `accessPolicies` vlastnosti šablony.
+* Zkontrolujte, jestli prostředek Key Vault už existuje. Pokud ano, nelze jej znovu vytvořit pomocí šablony. Například přidejte parametr, který umožňuje zakázat vytvoření prostředku služby Key Vault, pokud již existuje.
 
 ## <a name="service-launch-fails"></a>Selhání spuštění služby
-Jakmile na obrázku je úspěšně vytvořen, se systém pokusí o spuštění kontejneru v ACI a AKS v závislosti na konfiguraci vašeho nasazení. Obecně se doporučuje nejprve vyzkoušet nasazení služby ACI, protože je jednodušší nasazení jeden kontejner. Tímto způsobem lze potom vyloučit jakýkoli problém s konkrétní AKS.
+Jakmile na obrázku je úspěšně vytvořen, se systém pokusí o spuštění kontejneru v ACI a AKS v závislosti na konfiguraci vašeho nasazení. Se doporučuje nejprve vyzkoušet nasazení služby ACI, protože je jednodušší nasazení jeden kontejner. Tímto způsobem lze potom vyloučit jakýkoli problém s konkrétní AKS.
 
 Jako součást procesu spouštění kontejneru `init()` vyvolání funkce v hodnoticí skript v systému. Pokud existují nezachycených výjimek `init()` fungovat, může se zobrazit **CrashLoopBackOff** chyby v chybové zprávě. Níže uvádíme tipy, které vám pomohou vyřešit problém.
 
@@ -222,6 +267,47 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 **Poznámka:** Vrací chybové zprávy z `run(input_data)` volání by mělo být provedeno pro ladění pouze pro účely. Nemusí být vhodné provést v produkčním prostředí z bezpečnostních důvodů.
+
+## <a name="http-status-code-503"></a>Stavový kód HTTP 503
+
+Nasazení služby Azure Kubernetes Service podporují automatické škálování, která umožňuje repliky přidaná kvůli podpoře dalších zatížení. Nicméně, automatického škálování je určen ke zpracování **postupné** změn v zatížení. Pokud se zobrazí extrémní požadavků za sekundu, klienti mohou obdržet stavový kód HTTP 503.
+
+Existují dvě věci, které pomáhají zabránit 503 kódy stavu:
+
+* Změnit úroveň využití, které automatické škálování vytvoří nové repliky.
+    
+    Ve výchozím nastavení, je nastavit automatické škálování cílové využití na 70 %, což znamená, že služba může zpracovat poraďte se špičkami požadavků za sekundu (předávajících stran) až 30 %. Cílové využití můžete upravit tak, že nastavíte `autoscale_target_utilization` na nižší hodnotu.
+
+    > [!IMPORTANT]
+    > Tato změna nezpůsobí repliky, který se má vytvořit *rychleji*. Místo toho se vytvoří při nižší prahové hodnotě využití. Namísto čekání, dokud služba nebude 70 % využití, změna hodnoty na 30 % způsobí, že repliky vytvořit, když dojde k využití 30 %.
+    
+    Pokud webová služba používá aktuální maximální počet replik a stále se zobrazuje 503 stavové kódy, zvýšit `autoscale_max_replicas` hodnotu zvýšit maximální počet replik.
+
+* Změňte minimální počet replik. Zvýšení minimální repliky poskytuje větší fond pro zpracování příchozích provozní špičky.
+
+    Chcete-li zvýšit minimální počet replik, nastavte `autoscale_min_replicas` na vyšší hodnotu. Požadované repliky můžete vypočítat pomocí následujícího kódu, nahraďte hodnoty hodnotami specifickými do projektu:
+
+    ```python
+    from math import ceil
+    # target requests per second
+    targetRps = 20
+    # time to process the request (in seconds)
+    reqTime = 10
+    # Maximum requests per container
+    maxReqPerContainer = 1
+    # target_utilization. 70% in this example
+    targetUtilization = .7
+
+    concurrentRequests = targetRps * reqTime / targetUtilization
+
+    # Number of container replicas
+    replicas = ceil(concurrentRequests / maxReqPerContainer)
+    ```
+
+    > [!NOTE]
+    > Pokud se zobrazí špičky požadavek větší, než dokáže zpracovat nové minimální repliky, může se zobrazit 503s znovu. Například jako provoz do vaší služby zvyšuje, budete muset zvýšit minimální repliky.
+
+Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_replicas`, a `autoscale_min_replicas` , najdete v článku [AksWebservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) odkazu na modul.
 
 
 ## <a name="next-steps"></a>Další postup

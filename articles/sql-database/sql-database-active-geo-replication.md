@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/26/2019
-ms.openlocfilehash: f6179c14c0a057a08203764316eeb43783cd7fc8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 02/27/2019
+ms.openlocfilehash: 0d0ee3664a5f442e4fbf61af3111a53110afd740
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887739"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984743"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -51,9 +51,6 @@ Aktivní geografická replikace využívá [Always On](https://docs.microsoft.co
 > Pokud dojde k chybě sítě mezi dvěma oblastmi, jsme opakovat každých 10 sekund a znovu navázat spojení.
 > [!IMPORTANT]
 > Pokud chcete zajistit, že důležité změny u primární databáze se replikují do sekundární lokality před převezmete služby při selhání, můžete vynutit synchronizaci k zajištění replikace důležité změny (například aktualizace hesel). Vynucené synchronizace ovlivňuje výkon, protože blokuje volající vlákno, dokud se replikují všechny potvrzené transakce. Podrobnosti najdete v tématu [uložená procedura sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Monitorování je zpoždění replikace mezi primární databází a geo-secondary najdete v tématu [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
-
-
-
 
 Následující obrázek znázorňuje příklad aktivní geografickou replikaci nakonfigurovaná s primárním v oblasti střed USA – sever a sekundární v oblasti střed USA – jih.
 
@@ -110,7 +107,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Udržování synchronizace přihlašovacích údajů a pravidla brány firewall**
 
-Doporučujeme používat [pravidla brány firewall databáze](sql-database-firewall-configure.md) pro geograficky replikované databáze, tak tato pravidla se dají replikovat s databází a zkontrolujte všechny sekundární databáze mají stejná pravidla brány firewall jako primární. Tento přístup se eliminuje potřeba zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databází. Podobně použití [uživatelé databáze s omezením](sql-database-manage-logins.md) dat přístup zajistí primární i sekundární databáze vždy stejné přihlašovací údaje uživatele, takže při selhání, není k dispozici žádné přerušení z důvodu neshody se uživatelská jména a hesla. Přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), zákazníci můžou spravovat přístup uživatelů k primární i sekundární databáze a eliminují ke správě pověření v databázích úplně se vynechá.
+Doporučujeme používat [pravidla firewallu protokolu IP na úrovni databáze](sql-database-firewall-configure.md) pro geograficky replikované databáze, takže tato pravidla se dají replikovat s databází a zkontrolujte všechny sekundární databáze mají stejné pravidla firewallu protokolu IP jako primární. Tento přístup se eliminuje potřeba zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databází. Podobně použití [uživatelé databáze s omezením](sql-database-manage-logins.md) dat přístup zajistí primární i sekundární databáze vždy stejné přihlašovací údaje uživatele, takže při selhání, není k dispozici žádné přerušení z důvodu neshody se uživatelská jména a hesla. Přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), zákazníci můžou spravovat přístup uživatelů k primární i sekundární databáze a eliminují ke správě pověření v databázích úplně se vynechá.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade nebo při downgradu primární databáze
 

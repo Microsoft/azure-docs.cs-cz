@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 74bdcc831f19031162d004e1ba98c0cfc258ce4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c66f0e67b09dab15431a8c7c10db1c820038dea6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879407"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984981"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -116,7 +116,7 @@ Jeden z nejjednodušších způsobů, jak začít pracovat s testováním ohrož
 Pokud budete chtít provádět testování průniku nebo chcete použít jiný skener suite nebo poskytovatele, je třeba dodržet [proces schválení testování průniku s Azure](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) a získat předchozí schválení k provedení požadovaného průniku testy.
 
 ### <a name="web-application-firewall"></a>Firewall webových aplikací
-Firewall webových aplikací (WAF) ve [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomáhá chránit webové aplikace z common webovými útoky, jako jsou Injektáž SQL, útoky skriptování napříč weby a napadení relace. Obsahuje předem nakonfigurovanou ochranu před hrozbami identifikován [Open Web Application zabezpečení projektu (OWASP) jako top 10 nejběžnějších ohrožení zabezpečení](https://msdn.microsoft.com/library/).
+Firewall webových aplikací (WAF) ve [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomáhá chránit webové aplikace z common webovými útoky, jako jsou Injektáž SQL, útoky skriptování napříč weby a napadení relace. Obsahuje předem nakonfigurovanou ochranu před hrozbami identifikován [Open Web Application zabezpečení projektu (OWASP) jako top 10 nejběžnějších ohrožení zabezpečení](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 [App Service ověřování / autorizace](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) je funkce, která poskytuje způsob, jak vaše aplikace k přihlášení uživatelů, takže není nutné měnit kód back-endové aplikace. Poskytuje snadný způsob, jak chránit vaše aplikace a pracovat s daty jednotlivých uživatelů.

@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31aaa24dd6020cb8203e4ab1bfec8ce3e0ffd2b8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d273e963c6191fdc87c4f19c6465d8a9026a074e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299686"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959404"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metriky Azure Event Hubs ve službě Azure Monitor
 
@@ -48,7 +48,7 @@ Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenze, jak j
 
 ## <a name="billing"></a>Fakturace
 
-Pomocí metrik ve službě Azure Monitor je aktuálně zdarma. Ale pokud používáte další řešení, která ingestovat data metrik, vám může účtovat podle těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Se taky účtují Azure Pokud streamování dat metrik do Log Analytics pro pokročilé analýzy.
+Pomocí metrik ve službě Azure Monitor je aktuálně zdarma. Ale pokud používáte další řešení, která ingestovat data metrik, vám může účtovat podle těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Se taky účtují Azure Pokud streamování dat metriky s protokoly Azure monitoru pro pokročilé analýzy.
 
 Následujících metrik získáte přehled o stavu vaší služby. 
 

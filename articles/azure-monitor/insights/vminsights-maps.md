@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 73c94b79bb315c317d39ade704e2ee70a241a348
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187741"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984845"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pro virtuální počítače (preview) mapy pochopit součásti aplikace pomocí Azure monitoru
 Zobrazení komponenty zjištěnou aplikaci virtuálních počítačích s Windows a Linuxem v Azure, prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
@@ -39,7 +39,7 @@ Když kliknete na virtuálním počítači, **vlastnosti** rozbalený na pravé 
 
 ![Vlastnosti systému počítače](./media/vminsights-maps/properties-pane-01.png)
 
-Na pravé straně podokna, klikněte na **události protokolu** ikonu pro přepnutí podokna se zobrazí seznam tabulek, které shromažďují data z virtuálního počítače se odesílají do Log Analytics a je k dispozici pro dotazování.  Kliknutím na některou z uvedených typů záznamů se otevře **protokoly** stránka pro zobrazení výsledků pro daný typ pomocí předem nakonfigurovaných dotaz vyfiltruje proti konkrétní virtuální počítač.  
+Na pravé straně podokna, klikněte na **události protokolu** ikonu pro přepnutí podokna se zobrazí seznam tabulek, které shromažďují data z virtuálního počítače odeslala do Azure monitoru a je k dispozici pro dotazování.  Kliknutím na některou z uvedených typů záznamů se otevře **protokoly** stránka pro zobrazení výsledků pro daný typ pomocí předem nakonfigurovaných dotaz vyfiltruje proti konkrétní virtuální počítač.  
 
 ![Seznam protokolu hledání v podokně vlastností](./media/vminsights-maps/properties-pane-logs-01.png)
 

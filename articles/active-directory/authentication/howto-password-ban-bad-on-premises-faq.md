@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adbfb0e42bc7057313c7652402fce2b2ede47735
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 6f0a10a56aeecf9973ea12b022e0030fb4635fbf
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592498"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984544"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Verze Preview: Azure AD ochrana heslem v místním – nejčastější dotazy
 
@@ -26,10 +26,6 @@ ms.locfileid: "56592498"
 |     |
 
 ## <a name="general-questions"></a>Obecné otázky
-
-**Otázka: Při dosažení obecné dostupnosti (GA) ochranu hesel služby Azure AD**
-
-Verze GA plánujeme přidat Q1 CY2019 (konce března 2019). Děkujeme, že jste pro každého uživatele, který poskytl zpětnou vazbu na funkci tak, aby datum - Vážíme si ho!
 
 **Otázka: O tom, jak vybrat zabezpečené heslo jaké by měly mít uživatelé?**
 

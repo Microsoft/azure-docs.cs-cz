@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 02055ec07de2b08abdc949e17c668912431e00ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f45663fd0f63537f87ee4466ad5f17cce0bed6a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871247"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961716"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indexu ve službě Azure Cosmos DB
 
@@ -54,6 +54,9 @@ Tady jsou příklady dotazů, které hodnoty Hash, rozsah, a prostorové indexy 
 
 ## <a name="index-precision"></a>Index přesnost
 
+> [!NOTE]
+> Kontejnery služby Azure Cosmos podporuje nové rozložení index, který se už nevyžaduje vlastního indexového přesností než value(-1) maximální přesnost. Pomocí této metody vždy jsou cesty indexované Maximální přesnost. Pokud zadáte hodnotu přesnost na zásady indexování, žádosti CRUD kontejnerům, bude tiše ignorovat hodnota přesnosti a odpověď z kontejneru obsahuje pouze value(-1) maximální přesnost.  Všechny nové kontejnery Cosmos použít nové rozložení index ve výchozím nastavení.
+
 - Aby kompromis mezi nároky na úložiště indexů a výkon dotazů, můžete použít index přesnost. Pro čísla doporučujeme použít výchozí konfiguraci přesnost-1 (maximální). Protože jsou čísla 8 bajtů ve formátu JSON, jde o ekvivalent konfigurace 8 bajtů. Výběrem hodnoty nižší přesnost, jako je například 1 až 7, prostředky, které hodnoty v rámci některé oblasti mapují na stejný index položky. Proto můžete snížit index úložného prostoru, ale provádění dotazů může být nutné zpracovat více položek. V důsledku toho využívá další propustnost/RU.
 
 - Index přesnosti má více praktické využití s oblastmi řetězec. Protože řetězce může být jakékoli libovolné délky, volba přesnosti indexu může ovlivnit výkon dotazů na rozsah řetězec. Velikost indexu úložného prostoru, který je potřeba také může ovlivnit. Řetězec rozsah indexů lze nastavit s přesností na index mezi 1 a 100 nebo -1 (maximální). Pokud chcete provést klauzule ORDER BY dotazy na vlastnosti řetězce, je nutné zadat s přesností na -1 pro odpovídající cesty.
@@ -61,9 +64,6 @@ Tady jsou příklady dotazů, které hodnoty Hash, rozsah, a prostorové indexy 
 - Prostorové indexy vždy používat výchozí přesnost index pro všechny typy (Point, LineString a mnohoúhelníku). Nelze přepsat výchozí přesnost index pro prostorové indexy.
 
 Azure Cosmos DB vrátí chybu při dotazu pomocí klauzule ORDER BY ale není zaškrtnuta možnost index na rozsah proti dotazované cestu s nejvyšší přesností.
-
-> [!NOTE]
-> Kontejnery služby Azure Cosmos podporuje nové rozložení index, který se už nevyžaduje vlastního indexového přesností než value(-1) maximální přesnost. Pomocí této metody vždy jsou cesty indexované Maximální přesnost. Pokud zadáte hodnotu přesnost na zásady indexování, žádosti CRUD kontejnerům, bude tiše ignorovat hodnota přesnosti a odpověď z kontejneru obsahuje pouze value(-1) maximální přesnost.  Všechny nové kontejnery Cosmos použít nové rozložení index ve výchozím nastavení.
 
 ## <a name="next-steps"></a>Další postup
 

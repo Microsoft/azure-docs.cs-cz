@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119205"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961410"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definovaných funkcí v Azure digitální dvojče
 
@@ -29,10 +29,10 @@ Vědět, jak diagnostikovat problémy, které vznikají v rámci vaší instanci
 
 ### <a name="enable-log-analytics-for-your-instance"></a>Povolení log analytics pro vaši instanci
 
-Protokoly a metriky pro vaši instanci Azure digitální dvojče se zobrazí ve službě Azure Monitor. Tato dokumentace předpokládá, že jste vytvořili [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) pracovní prostor prostřednictvím [webu Azure Portal](../azure-monitor/learn/quick-create-workspace.md), pomocí [rozhraní příkazového řádku Azure](../azure-monitor/learn/quick-create-workspace-cli.md), nebo prostřednictvím [ Prostředí PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+Protokoly a metriky pro vaši instanci Azure digitální dvojče se zobrazí ve službě Azure Monitor. Tato dokumentace předpokládá, že jste vytvořili [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md) pracovní prostor prostřednictvím [webu Azure Portal](../azure-monitor/learn/quick-create-workspace.md), pomocí [rozhraní příkazového řádku Azure](../azure-monitor/learn/quick-create-workspace-cli.md), nebo prostřednictvím [ Prostředí PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 > [!NOTE]
-> Při odesílání událostí do služby Azure Log Analytics pro první, může dojít ke zpoždění 5 minut.
+> 5 minut zpoždění může dojít při odesílání událostí do Azure monitoru protokoly poprvé.
 
 Ke konfiguraci, monitorování a protokolování pro prostředky Azure digitální dvojče, přečtěte si [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
 
@@ -43,11 +43,11 @@ Přečtěte si článek [shromažďovat a zpracovávat data protokolu z vašich 
 
 ### <a name="trace-sensor-telemetry"></a>Telemetrická data ze senzorů trasování
 
-Trasování telemetrická data ze senzorů, ujistěte se, že jsou povolené nastavení diagnostiky pro vaši instanci digitální dvojče Azure. Zkontrolujte, že všechny požadované jsou vybrané kategorie protokolu. Nakonec se přesvědčte, že se požadované protokoly odesílají do služby Azure Log Analytics.
+Trasování telemetrická data ze senzorů, ujistěte se, že jsou povolené nastavení diagnostiky pro vaši instanci digitální dvojče Azure. Zkontrolujte, že všechny požadované jsou vybrané kategorie protokolu. Nakonec se přesvědčte, že požadované protokoly jsou odesílány na protokoly Azure monitoru.
 
 Tak, aby odpovídaly zprávu telemetrická data ze senzorů do jeho příslušného protokolů, můžete zadat ID korelace odesílání dat události. Chcete-li to provést, nastavte `x-ms-client-request-id` vlastnost na identifikátor GUID.
 
-Po odeslání telemetrie, otevřete Azure Log Analytics k dotazování pomocí sady protokolů ID korelace:
+Po odeslání telemetrie, otevřete log analytics pro dotazování pomocí sady protokolů ID korelace:
 
 ```Kusto
 AzureDiagnostics
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | ID korelace, který byl zadán na data události |
 
-Pokud povolíte protokolování pro uživatelem definované funkce, těchto protokolů se objeví ve vaší instanci Azure Log Analytics s kategorií `UserDefinedFunction`. Pokud chcete je načíst, zadejte následující podmínka dotazu ve službě Azure Log Analytics:
+Pokud povolíte protokolování pro uživatelem definované funkce, těchto protokolů se objeví v log analytics instanci kategorii `UserDefinedFunction`. Pokud chcete je načíst, zadejte následující podmínka dotazu v log analytics:
 
 ```Kusto
 AzureDiagnostics

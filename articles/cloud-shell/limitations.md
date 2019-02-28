@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 1f2c218ed9ba2f5f9285c60b8d4c11704825c0f5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0cbd2c1f9a5a36d4e11eb86a3d531340b0e0ff03
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563877"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983723"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Omezení služby Azure Cloud Shell
 
@@ -45,7 +45,7 @@ Cloud Shell podporuje nejnovější verze Microsoft Edge, Microsoft Internet Exp
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Pro daného uživatele může být aktivní pouze jeden prostředí
 
-Uživatelé mohou pouze spouštět jeden typ prostředí najednou, buď **Bash** nebo **Powershellu**. Však může mít více instancí spuštěných v jednom okamžiku Bashe nebo Powershellu. Prohození mezi Bashe nebo Powershellu způsobí, že službě Cloud Shell k restartování, které ukončuje existující relace.
+Uživatelé mohou pouze spouštět jeden typ prostředí najednou, buď **Bash** nebo **Powershellu**. Však může mít více instancí spuštěných v jednom okamžiku Bashe nebo Powershellu. Prohození mezi Bashe nebo Powershellu pomocí nabídky způsobí, že službě Cloud Shell k restartování, která Ukončí existující relace. Alternativně můžete spustit bash v prostředí PowerShell zadáním `bash`, a prostředí PowerShell můžete spustit v prostředí bash zadáním `pwsh`.
 
 ### <a name="usage-limits"></a>Limity využití
 
@@ -57,9 +57,9 @@ Cloud Shell je určen pro případy použití interaktivní. V důsledku toho se
 
 Oprávnění se nastavují jako běžní uživatelé bez přístupu sudo. Všechny instalace mimo váš `$Home` adresář není trvalý.
 
-### <a name="editing-bashrc"></a>Úpravy .bashrc
+### <a name="editing-bashrc-or-profile"></a>Úpravy .bashrc nebo $PROFILE
 
-Provést upozornění, když úpravy .bashrc, to může způsobit neočekávané chyby ve službě Cloud Shell.
+Provést opatrní při úpravách .bashrc nebo Powershellu $PROFILE souboru, to může způsobit neočekávané chyby ve službě Cloud Shell.
 
 ## <a name="powershell-limitations"></a>Omezení prostředí PowerShell
 
@@ -73,23 +73,15 @@ Provést upozornění, když úpravy .bashrc, to může způsobit neočekávané
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Výchozí umístění souboru při vytvoření z disku Azure:
 
-Pomocí rutin prostředí PowerShell, uživatelé nemůžou vytvářet soubory v Azure disk. Když uživatelé vytvářejí nové soubory pomocí jiných nástrojů, jako je například vim nebo nano, soubory se uloží do `$HOME` ve výchozím nastavení. 
+Pomocí rutin prostředí PowerShell, uživatelé nemůžou vytvářet soubory v Azure: disk. Když uživatelé vytvářejí nové soubory pomocí jiných nástrojů, jako je například vim nebo nano, soubory se uloží do `$HOME` ve výchozím nastavení. 
 
 ### <a name="gui-applications-are-not-supported"></a>Aplikace grafického uživatelského rozhraní se nepodporují.
 
-Pokud uživatel spustí příkaz, který by vytvoření dialogového okna Windows, jako například `Connect-AzureAD`, `Connect-AzureRmAccount`, nebo `Connect-AzAccount` , jako jednu zobrazí chybová zpráva: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
-
-### <a name="tab-completion-crashes-psreadline"></a>Dokončování pomocí tabulátoru PSReadline dojde k chybě.
-
-Pokud uživatele EditMode v PSReadline je nastavena na (emacs), uživatel se pokusí zobrazit všechny možnosti prostřednictvím tab k dokončování příkazů a velikost okna je příliš malá, zobrazíte všechny možnosti, PSReadline dojde k chybě.
+Pokud uživatel spustí příkaz, který by se vytvořit dialogové okno Windows, jeden jako zobrazí chybová zpráva: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Velké mezeru po zobrazuje indikátor průběhu
 
 Pokud uživatel provede akci, která se zobrazí indikátor, tato karta při dokončení v `Azure:` jednotky, pak je možné, že kurzor nejsou správně nastaveny a mezera se zobrazí, pokud byla dříve indikátor průběhu.
-
-### <a name="random-characters-appear-inline"></a>Zobrazí vložený náhodných znaků
-
-Například sekvence pozice kurzoru kódů `5;13R`, se mohou objevit v vstupu uživatele.  Znaky lze ručně odebrat.
 
 ## <a name="next-steps"></a>Další postup
 

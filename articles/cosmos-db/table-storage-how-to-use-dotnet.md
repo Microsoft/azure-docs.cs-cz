@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
-ms.openlocfilehash: 7798af5d667bcf70ba562bb7198f9af570f3005a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 57ed02463555ce9e958aedd9c2b317f7a167567b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044412"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985882"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,7 +36,6 @@ Pro úspěšné dokončení této ukázky potřebujete následující položky:
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Storage Common Library for .NET (Preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). – Požadovaný balíček ve verzi Preview, který se podporuje v produkčním prostředí. 
 * [Microsoft Azure CosmosDB Table Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) –Tato knihovna je aktuálně dostupná pouze pro .NET Standard, pro .NET Core ještě dostupná není.
-* [Azure Configuration Manager for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Účet služby Azure Storage](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -77,14 +76,11 @@ Abyste mohli tuto ukázku dokončit, potřebujete ze svého projektu odkazovat n
 
 * [Microsoft Azure Cosmos DB Table Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Tento balíček zajišťuje programový přístup k datovým prostředkům v rámci účtu úložiště Azure Table nebo účtu rozhraní Table API služby Azure Cosmos DB. Tato knihovna je aktuálně dostupná pouze pro .NET Standard, pro .NET Core ještě dostupná není.
 
-* [Microsoft Azure Configuration Manager library for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
-
 Balíčky NuGet získáte pomocí následujících kroků:
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
 2. Vyhledejte online text „Microsoft.Azure.Storage.Common“, zvolte verzi <= 9.0.0.1 a výběrem **Instalovat** nainstalujte knihovnu Azure Storage Common Library for .NET (Preview) a její závislosti. Zkontrolujte, že je zaškrtnuté políčko **Zahrnout předběžné verze**, protože se jedná o balíček verze Preview.
 3. Vyhledejte online text „Microsoft.Azure.CosmosDB.Table“ a výběrem **Instalovat** nainstalujte knihovnu Microsoft Azure CosmosDB Table Library.
-4. Vyhledejte online text „WindowsAzure.ConfigurationManager“ a výběrem **Instalovat** nainstalujete knihovnu Microsoft Azure Configuration Manager Library.
 
 > [!NOTE]
 > Závislosti ODataLib v knihovně Storage Common Library for .NET jsou vyřešené prostřednictvím balíčků ODataLib, které jsou dostupné na NuGetu, a ne prostřednictvím služby WCF Data Services. Knihovny ODataLib můžete stáhnout přímo nebo z odkazu ve vašem kódovém projektu prostřednictvím balíčku NuGet. Konkrétní balíčky ODataLib používané knihovnou klienta služby Storage jsou [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/), a [Spatial](https://nuget.org/packages/System.Spatial/). I když tyto knihovny používají třídy Azure Table Storage, představují požadované závislosti pro programování s knihovnou Storage Common Library.

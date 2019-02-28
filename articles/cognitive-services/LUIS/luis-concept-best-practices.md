@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428903"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984199"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Osvědčené postupy pro vytváření aplikace language understanding pomocí služeb Cognitive Services
 Proces tvorby aplikace používejte k sestavení aplikace LUIS. 
@@ -78,7 +78,9 @@ Další informace najdete tady:
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Přidat frázi seznamy a vzory ve vyšším počtu iterací
 
-Osvědčeným postupem je předtím, než je testovaná aplikace se nedá použít tyto postupy. Měli byste porozumět chování aplikace, než přidáte frázi seznamy a vzory. Jakmile pochopíte chování aplikace bez těchto přidejte všechny tyto funkce, která je použita k vaší aplikaci. Není potřeba přidejte tyto funkce s každým [iterace](luis-concept-app-iteration.md) nebo změnit funkce s jednotlivými verzemi. 
+Osvědčeným postupem je předtím, než je testovaná aplikace se nedá použít tyto postupy. Měli byste porozumět chování aplikace před přidáním seznamy frázi a vzory vzhledem k tomu, že tyto funkce jsou větší váhu než příklad projevy a bude zkosení spolehlivosti. 
+
+Jakmile pochopíte chování aplikace bez těchto přidejte všechny tyto funkce, která je použita k vaší aplikaci. Není potřeba přidejte tyto funkce s každým [iterace](luis-concept-app-iteration.md) nebo změnit funkce s jednotlivými verzemi. 
 
 Není nezpůsobily žádné potíže, jejich přidání na začátku návrhu modelu, ale je snazší zjistit, jak jednotlivé funkce po modelu je testovat pomocí projevy změní výsledky. 
 

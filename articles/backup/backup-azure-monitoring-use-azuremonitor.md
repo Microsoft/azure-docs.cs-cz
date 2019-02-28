@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 35ac69c4e61c370c72a7d503920e02ff7258ed60
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e7b1b3e3fba04276fc284fd71adabedc01185251
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885316"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984811"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
@@ -28,6 +28,9 @@ ms.locfileid: "56885316"
 
 ## <a name="using-log-analytics-workspace"></a>Použití pracovního prostoru Log Analytics
 
+> [!NOTE]
+> Do pracovního prostoru Log Analytics přes nastavení diagnostiky se právě přijímat data ze záloh virtuálních počítačů Azure, MAB Agent, System Center DPM (SC-DPM). Podpora pro zálohování SQL na virtuálních počítačích Azure, záloh sdílených složek Azure, Microsoft Azure Backup Server (MABS) je již brzy.
+
 Můžeme se využívá k tomu možnosti ze dvou služeb Azure – **nastavení diagnostiky** (k odesílání dat z několika prostředků Azure Resource Manageru k jinému zdroji) a **Log Analytics** (LA - ke generování vlastní upozornění, ve kterém můžete definovat další kanály oznámení pomocí skupiny akcí) pro monitorování ve velkém měřítku. Následující části podrobně popisují, jak používat LA pro monitorování Azure Backup ve velkém měřítku.
 
 ### <a name="configuring-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
@@ -39,7 +42,7 @@ Prostředek Azure Resource Manageru, jako je Azure Recovery services vault zazna
 Pracovní prostor služby LA můžete vybrat z jiného předplatného jako cíl. *Výběrem stejného pracovního prostoru LA pro více trezorů RS můžete monitorovat trezory napříč předplatnými na jednom místě.* Vyberte "AzureBackupReport" jako protokolu kanálu všechny informace do pracovního prostoru LA související s Azure Backup.
 
 > [!IMPORTANT]
-> Po dokončení konfigurace čekat na dokončení počáteční datová oznámení po dobu 24 hodin. Po tomto datu všechny události se nasdílejí pokaždé, když jsou generovány (která může překládat na celkové prodlení 15 až 20 minut). Pro velmi často operací, jako jsou zálohami protokolů DB úlohy, jako jsou SQL, je vložit do dávky a odeslání každý X mins
+> Po dokončení konfigurace čekat na dokončení počáteční datová oznámení po dobu 24 hodin. Po tomto datu všechny události se nasdílejí, jak je uvedeno v [části četnost](#diagnostic-data-update-frequency).
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Nasazení řešení do pracovního prostoru Log Analytics
 

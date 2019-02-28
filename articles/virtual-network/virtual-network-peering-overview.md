@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 856da056f833b9c7bcff2c96ff0495d05f86366f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56667934"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958180"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -63,7 +63,7 @@ Když je mezi virtuálními sítěmi navázán partnerský vztah ve stejné obla
 
 ![přenos dat při partnerských vztazích virtuálních sítí](./media/virtual-networks-peering-overview/figure04.png)
 
-Průchod branou není podporován v případě, že jde o partnerský vztah mezi virtuálními sítěmi vytvořenými v různých oblastech. Pokud chcete používat průchod branou, musí obě partnerské virtuální sítě existovat ve stejné oblasti. Průchod branou mezi virtuálními sítěmi vytvořený pomocí různých modelů nasazení (Resource Manager a klasický) je podporovaný pouze v případě, že je brána ve virtuální síti (Resource Manager). Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Průchod branou není podporován v případě, že jde o partnerský vztah mezi virtuálními sítěmi vytvořenými v různých oblastech. Pokud chcete používat průchod branou, musí obě partnerské virtuální sítě existovat ve stejné oblasti. Průchod branou mezi virtuálními sítěmi vytvořenými pomocí různých modelů nasazení (Resource Manager a classic), je podporován pouze v případě, že je brána (síť VPN nebo ExpressRoute) ve virtuální síti (Resource Manager). Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Po nastavení partnerského vztahu mezi virtuálními sítěmi sdílejícími jedno připojení Azure ExpressRoute přenos dat prochází skrze partnerský vztah (tj. prostřednictvím páteřní sítě Azure). K připojení k místnímu okruhu lze v obou sítích nadále používat místní brány. Alternativním postupem je použití sdílené brány a konfigurace průchodu pro místní připojení.
 

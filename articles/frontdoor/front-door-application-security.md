@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: e5714f60b7fdd790f3af8e31250c41038110fd08
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047289"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984380"
 ---
 # <a name="application-layer-security-with-front-door"></a>Zabezpečení vrstvy aplikace s branou
 Služba Azure branou Service poskytuje možnost ochrany webové aplikace na trhu při ochraně webových aplikací před síťovými útoky a ohrožení zabezpečení běžnými jako jsou Injektáž SQL nebo různé lokality skriptování mezi weby (XSS). Povolené pro front endů http (s), přední dveře aplikace vrstva zabezpečení je globálně distribuovaná a vždy, útoky se zlými úmysly zastavení na Azure network hraniční, daleko od vaší back-EndY. Zvýšení zabezpečení a optimalizace výkonu branou nabízí rychlé a zabezpečené webové prostředí pro koncové uživatele.
@@ -25,9 +25,9 @@ Služba Azure branou Service poskytuje možnost ochrany webové aplikace na trhu
 Přední dveře Ochrana aplikace je nakonfigurovaná na každé edge prostředí po celém světě podle aplikací a automaticky blokuje bez – provoz http (s) dosažení vaše webové aplikace. Naše distribuovaná architektura s více tenanty povolí globální ochranu ve velkém měřítku bez omezení výkonu. Úlohy http (s) a službu ochrany přední dveře webové aplikace poskytuje bohaté pravidla modul pro vlastní pravidla, předem nakonfigurované sady pravidel před běžnými útoky, a podrobné protokolování pro všechny požadavky, který odpovídá pravidlu. Povolit, včetně flexibilní akce bloku nebo protokol jsou podporovány pouze.
 
 ## <a name="custom-access-control-rules"></a>Pravidla pro řízení vlastní přístupu
-- **IP seznamy zakázaných a povolených položek:** můžete nakonfigurovat vlastní pravidla pro řízení přístupu k webovým aplikacím na základě seznamu klientských IP adres. Jsou podporovány IP v4 a IP v6
-- **Řízení přístupu na základě geografické:** můžete nakonfigurovat vlastní pravidla pro řízení přístupu k vaší webové aplikace založené na IP adresu klienta je kód země
-- **Filtrování parametry protokolu HTTP:** můžete nakonfigurovat pravidla vlastního přístupu na základě porovnání parametry požadavku HTTP (s), včetně záhlaví, adresa URL a řetězce dotazu
+- **IP povolit seznamu a seznam blokovaných položek:** Můžete nakonfigurovat vlastní pravidla pro řízení přístupu k webovým aplikacím na základě seznamu klientských IP adres. Jsou podporovány IP v4 a IP v6
+- **Řízení geografické přístupu na základě:** Můžete nakonfigurovat vlastní pravidla pro řízení přístupu k webovým aplikacím na základě kódu země, IP adresa klienta byl vytvořen
+- **Parametry protokolu HTTP filtrování:** Můžete nakonfigurovat pravidla vlastního přístupu na základě porovnání parametry požadavku HTTP (s), včetně záhlaví, adresy URL a řetězce dotazu
 
 ## <a name="azure-managed-rules"></a>Pravidla spravované v Azure
 - Předem nakonfigurované sady pravidel proti známých chyb zabezpečení horní OWASP je standardně povolená. Ve verzi preview zahrnuje sadu pravidel sqli a xss žádostí o kontrolu. Přidá další pravidla. Můžete začít s jedinou akcí protokolu ověření předkonfigurovaných pravidel práce podle očekávání pro vaše aplikace 
@@ -51,5 +51,5 @@ Přední dveře zabezpečení vrstvy aplikace je zdarma ve verzi preview.
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [vytvořit přední dveře](quickstart-create-front-door.md).
-- Přečtěte si [fungování branou](front-door-routing-architecture.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

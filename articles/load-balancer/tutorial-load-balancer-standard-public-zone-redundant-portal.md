@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882633"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56982789"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s Standard pro vyrovnávání zatížení pomocí webu Azure portal
 
@@ -50,16 +50,20 @@ Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://por
 Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu. Když při vytváření nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, automaticky se nakonfiguruje jako standardní verze SKU a je také automaticky zónově redundantní.
 
 1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
-2. Na stránce **Vytvoření nástroje pro vyrovnávání zatížení** zadejte pro nástroj pro vyrovnávání zatížení tyto hodnoty:
-    - *myLoadBalancer* – název nástroje pro vyrovnávání zatížení.
-    - **Public** – typ nástroje pro vyrovnávání zatížení.
-     - *myPublicIP* – nová veřejná IP adresa, kterou vytvoříte. Postupujte tak, že kliknete na **Vybrat veřejnou IP adresu** a pak na **Vytvořit novou**. Jako název zadejte *myPublicIP*, SKU je ve výchozím nastavení standardní a pro možnost **Zóna dostupnosti** vyberte **Zónově redundantní**.
-    - *myResourceGroupLBAZ* – název nové skupiny prostředků, kterou vytvoříte.
-    - **westeurope** – umístění.
-3. Kliknutím na **Vytvořit** vytvořte nástroj pro vyrovnávání zatížení.
-   
-    ![Vytvoření nástroje pro vyrovnávání zatížení](./media/load-balancer-standard-public-availability-zones-portal/1a-load-balancer.png)
+2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
+    | Nastavení                 | Hodnota                                              |
+    | ---                     | ---                                                |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLBAZ* v textovém poli.|
+    | Název                   | *myLoadBalancer*                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Type          | Vyberte **veřejné**.                                        |
+    | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
+    | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
+    |Zóna dostupnosti| Vyberte **Zónově redundantní**.    |
+   
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 

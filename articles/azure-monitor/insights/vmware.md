@@ -1,5 +1,5 @@
 ---
-title: Řešení VMware Monitoring v Log Analytics | Dokumentace Microsoftu
+title: Řešení VMware Monitoring ve službě Azure Monitor | Dokumentace Microsoftu
 description: Zjistěte, jak řešení VMware Monitoring vám může pomoct spravovat protokoly a monitorovat hostitelích ESXi.
 services: log-analytics
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9f5bdc3686e35f09b461bd5c2df695218b48ede3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 92889708df2df06096ac74d6f270af990d02c07a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993363"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984250"
 ---
-# <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
+# <a name="vmware-monitoring-preview-solution-in-azure-monitor"></a>Řešení VMware Monitoring (Preview) ve službě Azure Monitor
 
 ![VMware symbol](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
 > Řešení VMware Monitoring je zastaralá.  Zákazníci, kteří už jste nainstalovali řešení můžete ho nadále používat, ale VMware Monitoring nelze přidat do jakékoli nové pracovní prostory.
 
-Řešení VMware Monitoring v Log Analytics je řešení, které vám pomůže vytvořit centralizované protokolování a monitorování přístupu pro objemné protokoly VMware. Tento článek popisuje, jak můžete řešit, zachycení a spravovat hostitele ESXi na jednom místě pomocí řešení. Pomocí tohoto řešení můžete získat podrobné informace pro všechny hostitele ESXi na jednom místě. Můžete zobrazit počty hlavních událostí, stavu a trendech virtuálních počítačů a ESXi hostitelů, které jsou k dispozici prostřednictvím protokolů hostitelů ESXi. Řešení potíží s pomocí zobrazení a hledání centralizované protokoly hostitele ESXi. A můžete vytvářet upozornění na základě dotazů vyhledávání protokolu.
+Řešení VMware Monitoring ve službě Azure Monitor je řešení, které vám pomůže vytvořit centralizované protokolování a monitorování přístupu pro objemné protokoly VMware. Tento článek popisuje, jak můžete řešit, zachycení a spravovat hostitele ESXi na jednom místě pomocí řešení. Pomocí tohoto řešení můžete získat podrobné informace pro všechny hostitele ESXi na jednom místě. Můžete zobrazit počty hlavních událostí, stavu a trendech virtuálních počítačů a ESXi hostitelů, které jsou k dispozici prostřednictvím protokolů hostitelů ESXi. Řešení potíží s pomocí zobrazení a hledání centralizované protokoly hostitele ESXi. A můžete vytvářet upozornění na základě dotazů vyhledávání protokolu.
 
-Toto řešení využívá nativní syslog funkce hostitele ESXi za účelem zápisu dat do cílového virtuálního počítače, který má agenta Log Analytics. Toto řešení však není zapisovat soubory do protokolu syslog v cílovém virtuálním počítači. Agenta Log Analytics se otevře port 1514 a naslouchá na to. Jakmile přijme data, odešle agenta Log Analytics data do Log Analytics.
+Toto řešení využívá nativní syslog funkce hostitele ESXi za účelem zápisu dat do cílového virtuálního počítače, který má agenta Log Analytics. Toto řešení však není zapisovat soubory do protokolu syslog v cílovém virtuálním počítači. Agenta Log Analytics se otevře port 1514 a naslouchá na to. Jakmile přijme data, odešle agenta Log Analytics data do služby Azure Monitor.
 
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
@@ -71,7 +71,7 @@ Vytvořte operační systém Linux virtuálního počítače pro příjem všech
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Na webu Azure Portal, provádět vyhledávání protokolu `VMware_CL`. Log Analytics shromažďuje data syslogu, zůstane ve formátu syslog. Na portálu pro některé konkrétní pole jsou zachyceny, jako například *Hostname* a *ProcessName*.  
+1. Na webu Azure Portal, proveďte dotaz protokolu pro `VMware_CL`. Azure Monitor provádí sběr dat syslog, zůstane ve formátu syslog. Na portálu pro některé konkrétní pole jsou zachyceny, jako například *Hostname* a *ProcessName*.  
 
     ![type](./media/vmware/type.png)  
 
@@ -129,7 +129,7 @@ V **VMware** zobrazení řídicího panelu okna jsou uspořádané podle:
 
 Klikněte na libovolné okno otevřete podokno hledání Log Analytics, který zobrazuje detailní informace specifické pro okno.
 
-Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](../log-query/log-query-overview.md).
+Z tohoto místa můžete upravit dotaz protokolu pro úpravu pro určitý objekt. Podrobnosti o vytváření dotazů na protokoly najdete v tématu [našla data pomocí dotazů na protokoly ve službě Azure Monitor](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Najít akce hostitele ESXi
 Jednoho hostitele ESXi generuje více protokolů na základě jejich procesů. Řešení VMware Monitoring centralizuje je a obsahuje souhrn počtu událostí. Toto zobrazení centralizované vám pomůže pochopit hostitele ESXi, který má k velkému počtu událostí a které události se nejčastěji vyskytují ve vašem prostředí.
@@ -151,14 +151,14 @@ Pokud chcete zobrazit další data vytvoření virtuálního počítače hostite
 
 ![Zobrazit podrobnosti](./media/vmware/createvm.png)
 
-#### <a name="common-search-queries"></a>Běžné dotazy na hledání
+#### <a name="common-log-queries"></a>Běžné dotazy log
 Toto řešení zahrnuje další užitečné dotazy, které vám může pomoci spravovat vaši hostitelé ESXi, jako je například vysoká úložný prostor, latence úložiště a cesta selhání.
 
 ![dotazy](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Ukládání dotazů
-Ukládání vyhledávacích dotazů je standardní funkce v Log Analytics a můžete zachovat všechny dotazy, které připadají užitečné. Jakmile vytvoříte dotaz, který je pro vás užitečné, uložte kliknutím **Oblíbené**. Uložený dotaz umožňuje snadno opakovaně použít později [Můj řídicí panel](../learn/tutorial-logs-dashboards.md) stránku, kde můžete vytvořit vlastní řídicích panelů.
+Ukládání dotazů protokolu je standardní funkce ve službě Azure Monitor a můžete zachovat všechny dotazy, které připadají užitečné. Jakmile vytvoříte dotaz, který je pro vás užitečné, uložte kliknutím **Oblíbené**. Uložený dotaz umožňuje snadno opakovaně použít později [Můj řídicí panel](../learn/tutorial-logs-dashboards.md) stránku, kde můžete vytvořit vlastní řídicích panelů.
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 

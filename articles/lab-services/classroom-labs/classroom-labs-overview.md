@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 03384db96338bf78ed89c1cd0fb8780489ee0e13
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 964f5624a3a588a1520a08365c5fa9c783114e48
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807384"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958826"
 ---
 # <a name="introduction-to-classroom-labs"></a>Úvod k testovacímu prostředí v učebnách
 Služba Azure Lab Services vám umožňuje rychle vytvořit cloudové testovací prostředí v učebně. Vyučující vytvoří testovací prostředí v učebně, zřídí virtuální počítače s Windows nebo Linuxem, nainstaluje nezbytný software a nástroje a zpřístupní je studentům. Studenti se ve třídě připojí k virtuálním počítačům v testovacím prostředí a budou je používat na projekty, úkoly a aktivity ve vyučování. 
 
-Testovací prostředí v učebnách jsou spravované prostředí typy, které se spravují přes Azure. Služba zajišťuje veškerou správu infrastruktury pro spravovaná testovací prostředí od poskytování potřebného výkonu virtuálních počítačů přes zpracovávání chyb až po škálování infrastruktury. Musíte zadat, jaký typ infrastruktury potřebujete, a nainstalovat veškeré nástroje nebo software potřebný k výuce. Spravovaná testovací prostředí jsou v současné době ve verzi Preview.   
+Testovací prostředí v učebnách jsou spravované prostředí typy, které se spravují přes Azure. Samotné služby zpracovává všechny správy infrastruktury pro typ spravovaného testovacího prostředí z opravíte vytvořením virtuálních počítačů (VM) pro zpracování chyb a škálování infrastruktury. Musíte zadat, jaký typ infrastruktury potřebujete, a nainstalovat veškeré nástroje nebo software potřebný k výuce. 
 
 ## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Automatická správa infrastruktury Azure a škálování 
 Azure Lab Services je spravovaná služba, což znamená, že zřizování a správu podkladové infrastruktury testovacího prostředí je automaticky zpracována službou. Můžete soustředit jen na přípravě prostředí správné testovací prostředí pro vaše uživatele. Nechte službu postaráme o všechno ostatní a zavést testovacího prostředí virtuálních počítačů pro cílovou skupinu. Škálování testovacího prostředí pro stovky virtuálních počítačů s jedním kliknutím.

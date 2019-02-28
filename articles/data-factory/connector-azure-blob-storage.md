@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: b2676d16abe3fb3cb1ec59b261c6cc059b4795de
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cacc17464d15e8872508cff0e626b383ee9a2808
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674765"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985389"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,7 +37,7 @@ Konkrétně tento konektor úložiště objektů Blob podporuje:
 - Kopírování objektů BLOB, jako je analýza kódu nebo generování objektů BLOB s [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
 >[!NOTE]
->Pokud vám umožňuje _"Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště"_ možnost v nastavení brány firewall služby Azure Storage, pomocí prostředí Azure Integration Runtime připojit k úložišti objektů Blob selže s chybou zakázané, protože ADF nejsou považovat za důvěryhodné služby Microsoftu. Použijte prosím modul Integration Runtime připojit přes místo.
+>Pokud povolíte _"Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště"_ možnost v nastavení brány firewall služby Azure Storage, pomocí prostředí Azure Integration Runtime připojit k úložišti objektů Blob se nezdaří s zakázaného přístupu, protože není ADF považovat za důvěryhodné služby Microsoftu. Připojte se přes modul Integration Runtime místo.
 
 ## <a name="get-started"></a>Začínáme
 

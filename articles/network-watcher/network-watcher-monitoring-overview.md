@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 8738ac52eeaf1f27df5f9cc21ffb0c683a912195
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0eb27e997d39ceb82098b63de607d3529ccc53b4
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427024"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984381"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
@@ -97,7 +97,7 @@ Další informace o protokolech toku NSG získáte tak, že si projdete kurz tý
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Zobrazení diagnostických protokolů pro síťové prostředky
 
-Pro síťové prostředky Azure, jako jsou skupiny zabezpečení sítě, veřejné IP adresy, nástroje pro vyrovnávání zatížení, brány virtuálních sítí a aplikační brány, můžete povolit protokolování diagnostiky. Funkce *diagnostických protokolů* poskytuje jednotné rozhraní umožňující povolení a zakázání diagnostických protokolů všech síťových prostředků, které generují diagnostické protokoly. Diagnostické protokoly můžete zobrazit pomocí nástrojů, jako jsou Microsoft Power BI a Azure Log Analytics. Další informace o analýze síťových diagnostických protokolů Azure najdete v tématu popisujícím [síťová řešení Azure v Log Analytics](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Pro síťové prostředky Azure, jako jsou skupiny zabezpečení sítě, veřejné IP adresy, nástroje pro vyrovnávání zatížení, brány virtuálních sítí a aplikační brány, můžete povolit protokolování diagnostiky. Funkce *diagnostických protokolů* poskytuje jednotné rozhraní umožňující povolení a zakázání diagnostických protokolů všech síťových prostředků, které generují diagnostické protokoly. Můžete zobrazit diagnostické protokoly pomocí nástrojů, jako je Microsoft Power BI a Azure Monitor protokoly. Další informace o analýze diagnostických protokolů síť Azure, najdete v článku [řešení Azure network v Azure Monitor protokoly](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="network-watcher-automatic-enablement"></a>Povolení automatického sledovací proces sítě
 Při vytváření nebo aktualizaci virtuální sítě ve vašem předplatném, Network Watcher se automaticky povolí v oblasti virtuální sítě. Na vaše prostředky to nemá žádný dopad a za automatické povolení služby Network Watcher se neúčtuje žádný poplatek. Další informace najdete v tématu [vytvořit Network Watcher](network-watcher-create.md).

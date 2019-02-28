@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 1596cf1337fa084fe6a160c99e52ae80ee3e2491
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 308d9a04e52572e00e1cbed24548e5f09adda571
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341969"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985916"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysokou dostupnost a zotavení po havárii
 
@@ -20,7 +20,7 @@ Jako první krok k implementaci odolných IoT řešení, architekty, vývojáři
 
 Tento článek popisuje vysokou dostupnost a zotavení po Havárii funkcí, které nabízí specificky službou IoT Hub. Různé oblasti popsané v tomto článku jsou:
 
-- Uvnitř oblasti HA
+- Intra-region HA
 - Mezi různými oblastmi zotavení po Havárii
 - Dosažení mezi různými oblastmi HA
 
@@ -30,7 +30,7 @@ V závislosti na cíli doby provozu, které definujete pro řešení IoT měli b
 - Implementace a správa složitosti
 - Náklady na prodané zboží dopad
 
-## <a name="intra-region-ha"></a>Uvnitř oblasti HA
+## <a name="intra-region-ha"></a>Intra-region HA
 
 Služba IoT Hub poskytuje vysokou dostupnost uvnitř oblasti implementací redundance v téměř všechny vrstvy služby. [SLA publikované ve službě IoT Hub](https://azure.microsoft.com/support/legal/sla/iot-hub) dosahuje tím, že použití těchto redundance. Žádná další práce nevyžadovala vývojáři řešení IoT, abyste mohli využívat tyto funkce HA. I když službu IoT Hub nabízí záruka poměrně vysoké dostupnosti, stále dají očekávat stejně jako u jakékoli distribuované výpočetní platforma přechodná selhání. Pokud jste právě začínáte se migrace řešení do cloudu z místního řešení, fokus musí přesunout z optimalizaci "střední doby mezi poruchami" "Průměrný čas potřebný k obnovení". Jinými slovy přechodná selhání se považuje za normální při provozu díky cloudu v kombinaci. Odpovídající [zásady opakování](iot-hub-reliability-features-in-sdks.md) musí být součástí komponent, které interagují s aplikací cloudového řešit přechodná selhání.
 
@@ -64,6 +64,7 @@ Po dokončení této operace převzetí služeb při selhání pro službu IoT h
 >
 > - Po převzetí služeb při selhání můžete využívat události generované přes službu Event Grid prostřednictvím stejné předplatná nakonfigurovali v předchozích krocích, dokud budete mít k dispozici tyto odběry služby Event Grid.
 >
+> - Při směrování do úložiště objektů blob, doporučujeme uvedení objektů BLOB a pak iterace je zajistit, že všechny kontejnery, které jsou pro čtení bez vytváření žádných předpokladů vyhodnocený oddílu. Rozsah oddílu může potenciálně změnit během převzetí služeb při selhání Microsoft zahájené nebo ruční převzetí služeb při selhání. Další informace o výčet seznamu objektů BLOB najdete v tématu [směrování do úložiště objektů blob](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
 ### <a name="microsoft-initiated-failover"></a>Microsoft iniciované převzetí služeb při selhání
 
@@ -71,7 +72,7 @@ Microsoft iniciované převzetí služeb při selhání provést microsoftem vý
 
 Velké RTO totiž Microsoft musíte provést operaci převzetí služeb při selhání jménem všech ovlivněných zákazníků v dané oblasti. Pokud používáte méně kritické řešení IoT, které může tolerovat výpadek přibližně za den, je ok můžete zavést závislost na tuto možnost splnit celkové cíle obnovení po havárii pro vaše řešení IoT. Celková doba běhu operations budou plně funkční, jakmile tento proces se aktivuje, je popsaný v části "Doba obnovení".
 
-### <a name="manual-failover-preview"></a>Ruční převzetí služeb při selhání (preview)
+### <a name="manual-failover-preview"></a>Ruční převzetí služeb při selhání (Preview)
 
 Pokud vaše cíle doby provozu firmy nejsou splněné podle RTO, která iniciovala Microsoft poskytuje převzetí služeb při selhání, měli byste zvážit, pomocí ruční převzetí služeb při selhání spustit proces převzetí služeb při selhání, sami. RTO, tato možnost může být kdekoli mezi 10 minut do několika hodin. RTO je aktuálně funkce počet zařízení zaregistrovaný s instancí centra IoT se převzetí služeb při selhání. Můžete očekávat RTO rozbočovače hostování přibližně 100 000 zařízení v ballpark 15 minut. Celková doba běhu operations budou plně funkční, jakmile tento proces se aktivuje, je popsaný v části "Doba obnovení".
 
@@ -111,14 +112,14 @@ V modelu regionální převzetí služeb při selhání řešení back end spuš
 
 Na vysoké úrovni k implementaci modelu regionální převzetí služeb při selhání službou IoT Hub, je třeba provést následující kroky:
 
-* **Sekundární služby IoT hub a zařízení směrování logiky**: Pokud narušení služby v primární oblasti, zařízení musí začínat připojení k sekundární oblasti. Vzhledem k s ohledem na stav povaze většina služeb zahrnutých, je běžné, že správců řešení, které spustí proces převzetí služeb při selhání mezi oblastmi. Je nejlepší způsob, jak komunikovat se zachováním potřebné kontroly nad procesu, nový koncový bod do zařízení, aby pravidelně kontrolovat *concierge* aktuální aktivní koncový bod služby. Služba Concierge, která může být webové aplikace, která je replikována a udržovat dostupný pomocí technik DNS přesměrování (například pomocí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
+* **Sekundární služby IoT hub a zařízení směrování logiky**: Pokud dojde k narušení služby v primární oblasti, zařízení musí začínat připojení k sekundární oblasti. Vzhledem k s ohledem na stav povaze většina služeb zahrnutých, je běžné, že správců řešení, které spustí proces převzetí služeb při selhání mezi oblastmi. Je nejlepší způsob, jak komunikovat se zachováním potřebné kontroly nad procesu, nový koncový bod do zařízení, aby pravidelně kontrolovat *concierge* aktuální aktivní koncový bod služby. Služba Concierge, která může být webové aplikace, která je replikována a udržovat dostupný pomocí technik DNS přesměrování (například pomocí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
 
    > [!NOTE]
    > Služby Azure IoT hub se nejedná o typ podporovaných koncových bodů v Azure Traffic Manageru. Doporučuje se službu navrhovaných concierge integrovat s Azure traffic Manageru tak, že ho implementovat sondu stavu koncového bodu rozhraní API.
 
-* **Replikace registru identit**: má být použitelná, sekundární služby IoT hub musí obsahovat všechny identity zařízení, které se můžete připojit k řešení. Řešení musí zachovat geograficky replikovaných záloh identit zařízení a jejich nahrávání do služby IoT hub sekundární před přepnutím aktivní koncový bod pro zařízení. Funkce exportu identity zařízení služby IoT Hub je užitečná v tomto kontextu. Další informace najdete v tématu [Příručka pro vývojáře IoT Hub – registr identit](iot-hub-devguide-identity-registry.md).
+* **Replikace registru identit**: Má být použitelná, sekundární služby IoT hub může obsahovat všechny identity zařízení, které se můžete připojit k řešení. Řešení musí zachovat geograficky replikovaných záloh identit zařízení a jejich nahrávání do služby IoT hub sekundární před přepnutím aktivní koncový bod pro zařízení. Funkce exportu identity zařízení služby IoT Hub je užitečná v tomto kontextu. Další informace najdete v tématu [Příručka pro vývojáře IoT Hub – registr identit](iot-hub-devguide-identity-registry.md).
 
-* **Slučování logiky**: když primární oblast opět k dispozici, všechny stav a data, které byly vytvořeny v sekundární lokalitě se musí migrovat zpět do primární oblasti. Tento stav a data většinou se týkají identit zařízení a metadata aplikace, které je potřeba sloučit s primární služby IoT hub a jiných úložišť specifické pro aplikaci v primární oblasti. 
+* **Slučování logiky**: Pokud primární oblast opět k dispozici, stavu a dat, který byl vytvořen v sekundární lokalitě musí migrovat zpět do primární oblasti. Tento stav a data většinou se týkají identit zařízení a metadata aplikace, které je potřeba sloučit s primární služby IoT hub a jiných úložišť specifické pro aplikaci v primární oblasti. 
 
 Pro zjednodušení tohoto kroku, měli byste použít idempotentní operace. Idempotentní operace minimalizovala vedlejších účinků z konečné konzistentní distribuci událostí a duplicitní hodnoty nebo mimo pořadí doručení událostí. Kromě toho logika aplikace by se měly navrhovat tolerovat potenciálním nekonzistencím nebo mírně zastaralý stav. Tato situace může nastat z důvodu další čas potřebný pro systém a oprava podle plánovaných bodů obnovení (RPO).
 
@@ -126,11 +127,11 @@ Pro zjednodušení tohoto kroku, měli byste použít idempotentní operace. Ide
 
 Tady je přehled HA/DR možnosti uvedené v tomto článku, který může sloužit jako referenční rámec zvolit možnost zprava, který vám vyhovuje řešení.
 
-| Možnost HA/DR | RTO | CÍL BODU OBNOVENÍ | Vyžaduje ruční zásah? | Implementace složitost | Další náklady dopad|
+| Možnost HA/DR | RTO | Cíl bodu obnovení (RPO) | Vyžaduje ruční zásah? | Implementace složitost | Další náklady dopad|
 | --- | --- | --- | --- | --- | --- | --- |
 | Microsoft iniciované převzetí služeb při selhání |2 - 26 hodin.|Přečtěte si výše uvedené tabulce cíle bodu obnovení|Ne|Žádný|Žádný|
 | Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Přečtěte si výše uvedené tabulce cíle bodu obnovení|Ano|Velmi nízké. Potřebujete aktivovat tuto operaci z portálu.|Žádný|
-| Pro různé oblasti HA |< 1 min.|Závisí na četnosti replikace vašeho vlastního řešení HA|Ne|Vysoký|1 > x náklady na 1 IoT hub|
+| Pro různé oblasti HA |< 1 min|Závisí na četnosti replikace vašeho vlastního řešení HA|Ne|Vysoký|1 > x náklady na 1 IoT hub|
 
 ## <a name="next-steps"></a>Další postup
 

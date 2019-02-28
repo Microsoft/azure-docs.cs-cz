@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 37140b665f30d8bb99dd49dbdcca265969eaaf2f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 047e058fee6cd72a7eeaecdde976b1b9d49aeb5c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806687"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958945"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme seznámit se s jak Service Fabric používá certifikáty X.509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Musíte porozumět tomu, jaký certifikát clusteru je a k čemu slouží, než budete pokračovat dál.
 
-Azure Service Fabric SDK výchozí certifikát zatížení chování, je při nasazení a používání definovaného certifikátu do budoucna; nejvzdálenější datum konce platnosti bez ohledu na jejich definice primární nebo sekundární konfiguraci. Návrat k classic chování je bez doporučená pokročilé akce a vyžaduje nastavení hodnotu "UseSecondaryIfNever" nastavení parametru na hodnotu false v rámci konfigurace Fabric.Code.
+Azure Service Fabric SDK výchozí certifikát zatížení chování, je při nasazení a používání definovaného certifikátu do budoucna; nejvzdálenější datum konce platnosti bez ohledu na jejich definice primární nebo sekundární konfiguraci. Návrat k classic chování je bez doporučená pokročilé akce a vyžaduje nastavení hodnotu "UseSecondaryIfNewer" nastavení parametru na hodnotu false v rámci konfigurace Fabric.Code.
 
 Service fabric umožňuje zadat dva certifikáty clusteru, primární a sekundární lokalitou, při konfiguraci certifikátů zabezpečení během vytváření clusteru, kromě klientských certifikátů. Odkazovat na [vytváření clusteru služby azure prostřednictvím portálu](service-fabric-cluster-creation-via-portal.md) nebo [vytváření clusteru služby azure prostřednictvím Azure Resource Manageru](service-fabric-cluster-creation-via-arm.md) pro informace o nastavení je na čas vytvoření. Pokud zadáte jenom jeden certifikát clusteru na doba pro vytvoření, pak, která se používá jako primární certifikát. Po vytvoření clusteru můžete přidat nový certifikát jako sekundární.
 

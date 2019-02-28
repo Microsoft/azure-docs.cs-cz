@@ -1,5 +1,5 @@
 ---
-title: Řešení Wire Data ve službě Log Analytics | Microsoft Docs
+title: Spojte Data řešení ve službě Azure Monitor | Dokumentace Microsoftu
 description: Při přenosu dat se konsolidované síti a výkonu data z počítačů s agenty Log Analytics. Kvůli pomoci při korelaci dat se síťová data kombinují s daty protokolu.
 services: log-analytics
 documentationcenter: ''
@@ -13,25 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fb75f1af2b644325ea614816637880a54eb09e80
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104705"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986120"
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
+# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) ve službě Azure Monitor
 
-![Symbol Wire Data](./media/wire-data/wire-data2-symbol.png)
+![Symbol Wire Data](media/wire-data/wire-data2-symbol.png)
 
 Při přenosu dat se konsolidované síti a výkonu data shromážděná z počítače připojeného k Windows a Linux připojené pomocí agenta Log Analytics, včetně těch, které monitorovány nástrojem Operations Manager ve vašem prostředí. Kvůli pomoci při korelaci dat se síťová data kombinují s jinými daty protokolu.
 
-Kromě agenta Log Analytics řešení Wire Data používá Microsoft Agents závislostí, který nainstalujete na počítačích ve vaší infrastruktuře IT. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak do služby Log Analytics posílají pomocí agentů.  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Kromě agenta Log Analytics řešení Wire Data používá Microsoft Agents závislostí, který nainstalujete na počítačích ve vaší infrastruktuře IT. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak posílají do Azure monitorování pomocí agentů.  
 
 >[!NOTE]
->Pokud jste už nasadili řešení Service Map, nebo zvažuje Service Map nebo [monitorování Azure pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md), je nové připojení metriky sady dat shromažďovat a ukládat ve službě Log Analytics, která poskytuje stejné informace s Wire Data.
+>Pokud jste už nasadili řešení Service Map, nebo zvažuje Service Map nebo [monitorování Azure pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md), je nové připojení metriky sady dat shromažďovat a ukládat ve službě Azure Monitor, která poskytuje stejné informace s Wire Data.
 
-Služba Log Analytics standardně protokoluje výkonnostní data procesoru, paměti, disku a sítě z čítačů integrovaných do Windows a Linuxu, stejně jako z jiných čítačů výkonu, které určíte. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile některá stana připojení zavře, označí se jako Odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
+Ve výchozím nastavení Azure Monitor protokoly dat týkající se využití procesoru, paměti, disku a sítě výkonnostní data z čítače integrovaný do Windows a Linuxem, jakož i další čítače, které můžete zadat. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile některá stana připojení zavře, označí se jako Odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
 
 Pokud používáte [sFlow](http://www.sflow.org/) nebo jiný software s [protokolem NetFlow společnosti Cisco](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), budou vám statistiky a údaje dat kabelové sítě povědomé.
 
@@ -50,33 +52,33 @@ Mezi předdefinované typy dotazů pro prohledávání protokolu patří:
 
 Při hledání pomocí dat kabelové sítě můžete filtrováním a seskupením dat zobrazit informace o hlavních agentech a protokolech. Můžete také zjistit, kdy určité počítače (IP adresy / adresy MAC) vzájemně komunikovaly, jak dlouho a kolik dat bylo odesláno – vidíte vlastně metadata o síťovém provozu, která se dají prohledávat.
 
-Protože si ale prohlížíte metadata, nemusí být užitečná při řešení problémů, kdy musíte jít do hloubky. Data kabelové sítě ve službě Log Analytics nepředstavují kompletní záznam síťových dat.  Nejsou určena k hloubkovému řešení problémů na úrovni paketů. V porovnání s jinými metodami shromažďování má použití agentů výhodu v tom, že nemusíte instalovat zařízení, měnit konfiguraci síťových přepínačů nebo provádět komplikované konfigurace. Data kabelové sítě jednoduše vycházejí z agenta, kterého nainstalujete do počítače a který bude monitorovat svůj vlastní síťový provoz. Další výhodu poznáte, když potřebujete monitorovat úlohy běžící u poskytovatele cloudu, poskytovatele hostování služeb nebo v Microsoft Azure, kdy uživatel nevlastní vrstvu prostředků infrastruktury.
+Protože si ale prohlížíte metadata, nemusí být užitečná při řešení problémů, kdy musíte jít do hloubky. Při přenosu dat ve službě Azure Monitor není úplné sběru dat v síti.  Nejsou určena k hloubkovému řešení problémů na úrovni paketů. V porovnání s jinými metodami shromažďování má použití agentů výhodu v tom, že nemusíte instalovat zařízení, měnit konfiguraci síťových přepínačů nebo provádět komplikované konfigurace. Data kabelové sítě jednoduše vycházejí z agenta, kterého nainstalujete do počítače a který bude monitorovat svůj vlastní síťový provoz. Další výhodu poznáte, když potřebujete monitorovat úlohy běžící u poskytovatele cloudu, poskytovatele hostování služeb nebo v Microsoft Azure, kdy uživatel nevlastní vrstvu prostředků infrastruktury.
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Řešení Wire Data získává data ze závislého agenta Microsoft. Agent závislostí závisí na agenta Log Analytics pro připojení ke službě Log Analytics. To znamená, že server musí mít nainstalovaný a nakonfigurovaný pomocí agenta závislostí agenta Log Analytics. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
+Řešení Wire Data získává data ze závislého agenta Microsoft. Agent závislostí závisí na agenta Log Analytics pro jeho připojení k Azure Monitor. To znamená, že server musí mít nainstalovaný a nakonfigurovaný pomocí agenta závislostí agenta Log Analytics. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
 
 | **Připojený zdroj** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
 | Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/agent-windows.md), agenti Windows vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems). |
 | Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), agenty Linux vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br> Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br> Přímé připojení z počítače agenta System Center Operations Manageru do Azure monitoru je povinný. |
 | Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
-Ve Windows se Microsoft Monitoring Agent (MMA) používá nástrojem System Center Operations Manager i službou Log Analytics ke shromažďování a odesílání dat. V závislosti na kontextu se nazývá agenta System Center Operations Manager Agent, agenta Log Analytics, MMA nebo přímý Agent. Nástroj System Center Operations Manager a služba Log Analytics poskytují mírně odlišné verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.
+Na Windows Microsoft Monitoring Agent (MMA) používá System Center Operations Manageru a Azure Monitor k shromažďuje a odesílá data. V závislosti na kontextu se nazývá agenta System Center Operations Manager Agent, agenta Log Analytics, MMA nebo přímý Agent. System Center Operations Manageru a Azure Monitor poskytuje trošku odlišné verze agenta MMA. Tyto verze můžete každou sestavu na System Center Operations Manager, Azure Monitor nebo obojí.
 
-V Linuxu agenta Log Analytics pro Linux shromažďuje a odesílá data do Log Analytics. Při přenosu dat můžete použít na servery s agenty, které jsou připojeny přímo k Log Analytics nebo na serverech, které se připojujete ke službě Log Analytics prostřednictvím skupin pro správu System Center Operations Manager.
+V Linuxu agenta Log Analytics pro Linux shromažďuje a odesílá data do Azure monitoru. Při přenosu dat můžete použít na servery s agenty, které jsou přímo připojené k Azure Monitor nebo na serverech, které se připojují k monitorování Azure prostřednictvím skupin pro správu System Center Operations Manager.
 
-Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data ve Wire Data se vždy přenášených v rámci agenta Log Analytics ke službě Log Analytics, buď přímo nebo přes bránu Log Analytics.
+Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data ve Wire Data přenášena agenta Log Analytics do Azure monitoru, vždy, buď přímo nebo přes bránu Log Analytics.
 
 ![Diagram agenta](./media/wire-data/agents.png)
 
-Pokud System Center Operations Manager používáte se skupinou pro správu připojenou ke službě Log Analytics:
+Pokud jste uživatel System Center Operations Manager s skupinu pro správu připojené k Azure Monitor:
 
-- Nevyžaduje se žádná další konfigurace, pokud mají agenti nástroje System Center Operations Manager přístup k internetu a mohou se připojit ke službě Log Analytics.
-- Budete muset nakonfigurovat bránu Log Analytics pro práci s nástrojem System Center Operations Manager při agenty System Center Operations Manager nemůže přistupovat k Log Analytics přes Internet.
+- Není nutná žádná další konfigurace, kdy agentů System Center Operations Manager můžete přístup k Internetu pro připojení k Azure Monitor.
+- Budete muset nakonfigurovat bránu Log Analytics pro práci s nástrojem System Center Operations Manager při agenty System Center Operations Manager nemá přístup k Azure Monitor přes Internet.
 
-Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení ke službě Log Analytics pomocí brány Log Analytics. Můžete stáhnout ze brána Log Analytics [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení k Azure monitorování pomocí Log Analytics brány. Můžete stáhnout ze brána Log Analytics [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -195,7 +197,7 @@ V následujících částech najdete seznam operačních systémů pro závislé
 
 Při konfiguraci řešení Wire Data pro vaše pracovní prostory použijte následující postup.
 
-1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](../../azure-monitor/insights/solutions.md).
+1. Povolení řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí procesu popsaného v [mnitoring řešení přidat z Galerie řešení](../../azure-monitor/insights/solutions.md).
 2. Nainstalujte závislého agenta na každý počítač, ze kterého chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
 > [!NOTE]
@@ -359,7 +361,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Když se řešení Wire Data aktivuje v pracovním prostoru Log Analytics, odešle se do všech serverů Windows v tomto pracovním prostoru sada Management Pack o velikosti 300 kB. Pokud používáte agenty nástroje System Center Operations Manager v [připojené skupině pro správu](../../azure-monitor/platform/om-agents.md), nasadí se sada Management Pack monitoru závislostí z nástroje System Center Operations Manager. Pokud jsou agenti připojení přímo, doručí sadu Management Pack služba Log Analytics.
+Když se řešení Wire Data aktivuje v pracovním prostoru Log Analytics, odešle se do všech serverů Windows v tomto pracovním prostoru sada Management Pack o velikosti 300 kB. Pokud používáte agenty nástroje System Center Operations Manager v [připojené skupině pro správu](../platform/om-agents.md), nasadí se sada Management Pack monitoru závislostí z nástroje System Center Operations Manager. Pokud byli přímo připojení agenti, Azure Monitor nabízí sadu management pack.
 
 Tato sada Management Pack má název Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Uloží se sem: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. Sada Management Pack používá tento zdroj dat: %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
@@ -371,7 +373,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 - Řešení Wire Data získává data z počítačů s operačními systémy Windows Server 2012 R2, Windows 8.1 a novějšími.
 - Na počítačích, ze kterých chcete data kabelové sítě získávat, se vyžaduje rozhraní Microsoft .NET 4.0 nebo novější.
-- Řešení Wire Data přidáte do pracovního prostoru Log Analytics pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](../../azure-monitor/insights/solutions.md). Není nutná žádná další konfigurace.
+- Přidat řešení Wire Data do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení z Galerie řešení monitorování](solutions.md). Není nutná žádná další konfigurace.
 - Pokud si chcete prohlédnout data kabelové sítě konkrétního řešení, musí být toto řešení už přidané do vašeho pracovního prostoru.
 
 Po instalaci agentů a tohoto řešení se ve vašem pracovním prostoru objeví dlaždice Wire Data 2.0.
@@ -384,9 +386,9 @@ Na stránce **Přehled** pracovního prostoru Log Analytics na Azure Portalu ote
 
 | **Okno** | **Popis** |
 | --- | --- |
-| Agenti zachytávající síťový přenos | Zobrazuje počet agentů, kteří zachytávají síťový provoz, a seznam 10 hlavních počítačů, které zachytávají provoz. Kliknutím na počet můžete v protokolu vyhledat <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kliknutím na počítač v seznamu vyhledáte v protokolu celkový počet zachycených bajtů. |
-| Místní podsítě | Zobrazuje počet místních podsítí zjištěných agenty.  Kliknutím na počet vyhledáte v protokolu <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> a zobrazíte seznam všech podsítí s počtem bajtů odeslaných přes každou z nich. Kliknutím na podsíť v seznamu vyhledáte v protokolu celkový počet bajtů odeslaných přes tuto podsíť. |
-| Protokoly na úrovni aplikace | Zobrazuje počet používaných protokolů na úrovni aplikace zjištěných agenty. Kliknutím na počet můžete v protokolu vyhledat <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kliknutím na protokol vyhledáte v protokolu celkový počet bajtů odeslaných pomocí tohoto protokolu. |
+| Agenti zachytávající síťový přenos | Zobrazuje počet agentů, kteří zachytávají síťový provoz, a seznam 10 hlavních počítačů, které zachytávají provoz. Kliknutím na počet můžete v protokolu vyhledat `WireData | summarize sum(TotalBytes) by Computer | take 500000`. Kliknutím na počítač v seznamu vyhledáte v protokolu celkový počet zachycených bajtů. |
+| Místní podsítě | Zobrazuje počet místních podsítí zjištěných agenty.  Kliknutím na počet vyhledáte v protokolu `WireData | summarize sum(TotalBytes) by LocalSubnet` a zobrazíte seznam všech podsítí s počtem bajtů odeslaných přes každou z nich. Kliknutím na podsíť v seznamu vyhledáte v protokolu celkový počet bajtů odeslaných přes tuto podsíť. |
+| Protokoly na úrovni aplikace | Zobrazuje počet používaných protokolů na úrovni aplikace zjištěných agenty. Kliknutím na počet můžete v protokolu vyhledat `WireData | summarize sum(TotalBytes) by ApplicationProtocol`. Kliknutím na protokol vyhledáte v protokolu celkový počet bajtů odeslaných pomocí tohoto protokolu. |
 
 ![Řídicí panel Wire Data](./media/wire-data/wire-data-dash.png)
 
@@ -401,10 +403,6 @@ V okně **Místní podsítě** můžete podobně zjistit, jak velký síťový p
 V okně **Protokoly na úrovni aplikace** můžete zjistit, jaké protokoly se používají. Můžete například očekávat, že se ve vašem síťovém prostředí nepoužívá protokol SSH. Prohlédnutím informací dostupných v tomto okně můžete tento předpoklad rychle potvrdit nebo vyvrátit.
 
 ![Příklad prohledávání protokolu](./media/wire-data/log-search-example03.png)
-
-V tomto příkladu můžete přechodem na podrobnosti SSH zjistit, které počítače používají SSH, a spoustu dalších detailů o komunikaci.
-
-![Výsledky hledání protokolu SSH](./media/wire-data/ssh-details.png)
 
 Je také užitečné vědět, jestli se provoz přes protokol časem zvyšuje nebo snižuje. Pokud se například množství dat přenášených nějakou aplikací zvyšuje, může se jednat o něco, o čem byste měli vědět nebo co může stát za povšimnutí.
 

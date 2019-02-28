@@ -11,49 +11,52 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 2/22/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946a70a1b3fe2ddcaf8ec58b9ebc297f1d8894fd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 785c02a0187cf02df3bb3cf5d248f97a3edf74c6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178851"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961750"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
 ## <a name="overview"></a>Přehled
-Azure Active Directory (Azure AD) je možné automaticky zřizovat uživatele a skupiny do jakékoli aplikace nebo identity úložiště, které je přední stěnou webovou službou pomocí rozhraní definují ve [systému pro protokol mezi doménami Identity Management (SCIM) 2.0 specifikace](https://tools.ietf.org/html/draft-ietf-scim-api-19). Azure Active Directory může odesílat požadavky na vytvoření, úprava nebo odstranění přiřazené uživatele a skupiny k webové službě. Webová služba potom může znamenat tyto požadavky týkající se cílové úložiště identit. 
+
+SCIM je standardizovaná protokol a schéma, které se zaměřuje na disku větší konzistence ve způsobu správy identit napříč systémy. Pokud aplikace podporuje koncový bod SCIM správy uživatelů, služba zřizování uživatelů Azure AD můžete posílat požadavky k vytvoření, úpravě nebo odstranění přiřazení uživatelé a skupiny k tomuto koncovému bodu. 
+
+Aplikace, pro který Azure AD podporuje mnoho [předem integrované automatické zřizování uživatelů](../saas-apps/tutorial-list.md) implementovat SCIM jako způsob, jak uživatel dostávat upozornění na změnu.  Kromě toho zákazníci mohou připojit aplikace, které podporují konkrétní profil [SCIM 2.0 specifikace protokolu](https://tools.ietf.org/html/rfc7644) pomocí možnosti integrace obecný "mimo Galerii" na webu Azure Portal. 
+
+Hlavní téma tohoto dokumentu je v profilu SCIM 2.0, který implementuje Azure AD jako součást její obecný konektor SCIM pro aplikace mimo galerii. Ale úspěšně testování aplikace, která podporuje SCIM pomocí obecného Azure AD connector je krok uvedená v galerii Azure AD jako podpora zřizování uživatelů pro aplikaci. Další informace o zařazení vaší aplikace, uvedená v galerii aplikací Azure AD, najdete v článku [Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx).
+ 
 
 >[!IMPORTANT]
 >Chování Azure AD SCIM implementace poslední aktualizace 18. prosince 2018. Informace o tom, co se změnilo, naleznete v tématu [SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD](application-provisioning-config-problem-scim-compatibility.md).
 
 ![][0]
-*Obrázek 1: Zřizování úložiště identit prostřednictvím webové služby z Azure Active Directory*
+*Obrázek 1: Zřizování z Azure Active Directory do aplikací nebo identity úložiště, který implementuje SCIM*
 
-Tuto funkci lze použít ve spojení s možností "přineste si vlastní aplikaci" ve službě Azure AD. Tato možnost umožňuje jednotné přihlašování a automatické zřizování pro aplikace, které jsou přední stěnou webová služba SCIM uživatelů.
+Tento článek je rozdělený do čtyř oddílů:
 
-Existují dva případy použití pro pomocí SCIM ve službě Azure Active Directory:
+* **[Zřizování uživatelů a skupin a aplikací třetích stran, které podporují SCIM 2.0](#provisioning-users-and-groups-to-applications-that-support-scim)**  – Pokud vaše organizace používá aplikaci třetí strany, že implementuje profil SCIM 2.0 této službě Azure AD podporuje, je můžete začít s automatizací obojí zřizování a zrušení zřizování uživatelů a skupin ještě dnes.
 
-* **Zřizování uživatelů a skupin a aplikace s podporou SCIM** – aplikací, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování fungují s Azure AD bez konfigurace.
+* **[Znalost implementace Azure AD SCIM](#understanding-the-azure-ad-scim-implementation)**  – Pokud vytváříte aplikaci, která podporuje správu uživatelů SCIM 2.0 rozhraní API, tato část podrobně popisuje způsob implementace klienta Azure AD SCIM a jak by měl modelů váš protokol SCIM žádosti o zpracování odpovědi.
   
-* **Vytváření vlastních řešení pro zřizování pro aplikace, které podporují jiné založené na rozhraní API zřizování** – pro aplikace bez SCIM vytvoříte SCIM koncový bod pro převod mezi koncového bodu Azure AD SCIM a jakéhokoli rozhraní API podporuje aplikace pro zřizování uživatelů. A pomohou vám vytvořit koncový bod SCIM, jsou knihovny společné jazykové infrastruktury (CLI) spolu s ukázek kódu, které ukazují, jak zadat koncový bod SCIM a překládat SCIM zprávy.  
+* **[Vytváření koncový bod SCIM pomocí knihovny Microsoft CLI](#building-a-scim-endpoint-using-microsoft-cli-libraries)**  – Pokud chcete pomoci při vývoji koncový bod SCIM, neexistují knihovny společné jazykové infrastruktury (CLI) spolu s ukázek kódu, které ukazují, jak zadat koncový bod SCIM a Převede uzel SCIM zprávy.  
+
+* **[Referenční dokumentace schématu uživatelů a skupin](#user-and-group-schema-reference)**  -popisuje schéma uživatele a skupiny podporováno implementací Azure AD SCIM pro aplikace mimo galerii. 
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Zřizování uživatelů a skupin a aplikace s podporou SCIM
-Dá se Azure AD automaticky zřizovat přiřazené uživatele a skupiny, které se aplikace, které implementují [systému pro správu identit mezi doménami 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) webové služby a přijímat tokeny nosičů OAuth pro ověřování. V rámci specifikace SCIM 2.0 musí aplikace splňovat tyto požadavky:
-
-* Podporuje vytváření uživatele a/nebo skupiny, jak je uvedeno části 3.3 SCIM protokolu.  
-* Podporuje úpravy uživatele a/nebo skupiny s žádostmi o opravu podle části 3.5.2 SCIM protokolu.  
-* Podporuje načítání známých prostředků podle části 3.4.1 SCIM protokolu.  
-* Podporuje dotazování uživatele a/nebo skupiny, jak je uvedeno části 3.4.2 SCIM protokolu.  Ve výchozím nastavení jsou externalId dotazovat uživatele a skupiny jsou dotazovat displayName.  
-* Podporuje dotazování uživatele tak, že ID a správce podle části 3.4.2 SCIM protokolu.  
-* Podporuje dotazování skupiny tak, že ID a člen podle části 3.4.2 SCIM protokolu.  
-* Přijímá tokeny nosičů OAuth pro autorizaci podle části 2.1 SCIM protokolu.
+Dá se Azure AD automaticky zřizovat přiřazené uživatele a skupiny, které se aplikace, které implementují konkrétní profil [protokol SCIM 2.0](https://tools.ietf.org/html/rfc7644). Podrobnosti profilu jsou dokumentovány v článku [znalost implementace Azure AD SCIM](#implementing-a-scim-endpoint-that-works-with-azure-ad-user-provisioning).
 
 Obraťte se na svého poskytovatele aplikace nebo dokumentaci poskytovatele aplikace pro příkazy kompatibilitu s těmito požadavky.
+
+>[!IMPORTANT]
+>Implementace Azure AD SCIM je postavený na uživatele Azure AD, zřizovací služba, která je navržena pro trvale synchronizaci uživatelů mezi službami Azure AD a cílovou aplikaci a implementuje specifickou sadu standardních operací. je důležité pochopit, chcete-li pochopit chování klienta Azure AD SCIM těchto chování. Další informace najdete v tématu [co se stane během zřizování uživatelů?](user-provisioning.md#what-happens-during-provisioning).
 
 ### <a name="getting-started"></a>Začínáme
 Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být připojen k Azure Active Directory pomocí funkce "aplikaci mimo Galerii" v galerii aplikací Azure AD. Jakmile budete připojeni, Azure AD spustí proces synchronizace každých 40 minut, kde dotazuje aplikace SCIM koncový bod pro přiřazení uživatelé a skupiny a vytvoří nebo upraví podle podrobnosti o přiřazení.
@@ -97,18 +100,491 @@ Jakmile se počáteční synchronizace se spustila, můžete použít **protokol
 > Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. 
 
 
-## <a name="building-your-own-provisioning-solution-for-any-application"></a>Vytváření vlastních řešení pro zřizování pro všechny aplikace
-Vytvořením SCIM webové služby, které sdílí rozhraní se službou Azure Active Directory, můžete povolit jeden uživatel přihlašování a automatické zřizování pro prakticky jakoukoli aplikaci, která poskytuje zřizování rozhraní API REST a SOAP uživatelů.
+## <a name="understanding-the-azure-ad-scim-implementation"></a>Znalost implementace Azure AD SCIM
+
+Pokud vytváříte aplikaci, která podporuje správu uživatelů SCIM 2.0 rozhraní API, tato část podrobně popisuje způsob implementace klienta Azure AD SCIM a jak by měl modelů váš protokol SCIM žádostí o zpracování a odpovědi. Když naimplementujete SCIM koncový bod, takže ji můžete otestovat pomocí následujícího postupu popsaného v předchozí části.
+
+V rámci [SCIM 2.0 specifikace protokolu](http://www.simplecloud.info/#Specification), vaše aplikace musí splňovat tyto požadavky:
+
+* Podporuje vytváření uživatele a volitelně také skupiny, podle části [3.3 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.3).  
+* Podporuje úpravy uživatele a/nebo skupiny s žádostmi o opravu podle [části 3.5.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
+* Podporuje načítání známých prostředků pro uživatele nebo skupinu vytvořili dříve, jak je uvedeno [části 3.4.1 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
+* Podporuje dotazování uživatele a/nebo skupiny, podle části [3.4.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Ve výchozím nastavení, uživatelé jsou načítána pro jejich `id` Power pivotu a dotazované podle jejich `username` a `externalid`, a jsou skupiny dotazovat `displayName`.  
+* Podporuje dotazování uživatele tak, že ID a správce podle části 3.4.2 SCIM protokolu.  
+* Podporuje dotazování skupiny tak, že ID a člen podle části 3.4.2 SCIM protokolu.  
+* Přijímá jeden nosný token pro ověření a autorizaci služby Azure AD pro vaši aplikaci.
+
+Kromě toho postupujte podle následujících obecných pokynů při implementaci koncový bod SCIM pro zajištění kompatibility s Azure AD:
+
+* `id` je povinná pro všechny zdroje. každé odpovědi, která vrací prostředku by měl zajistit každý prostředek je tato vlastnost, s výjimkou `ListResponse` s nulový počet členů.
+* Odpověď na žádost/filtr dotazu by měla být vždy `ListResponse`.
+* Skupiny jsou volitelné, ale pouze podporován, když SCIM implementace podporuje žádosti PATCH.
+* Není nutné zahrnout do odpovědi oprava celý zdroj.
+* Microsoft Azure AD používá pouze následující operátory  
+     - `eq`
+     - `and`
+* Nevyžadují, aby malá a velká písmena se vyhledala shoda podle konstrukční prvky v SCIM v PATCH zejména `op` operace hodnoty, jak jsou definovány v https://tools.ietf.org/html/rfc7644#section-3.5.2. Azure AD vydá hodnoty "op" jako `Add`, `Replace`, a `Remove`.
+* Microsoft Azure AD díky požadavky na načtení náhodné uživatele a skupiny k zajištění, že koncový bod a přihlašovací údaje jsou platné. Také se provádí jako součást **Test připojení** tok v [webu Azure portal](https://portal.azure.com). 
+* Atribut prostředky je možné zadávat dotazy na musí být nastavená jako odpovídající atribut v aplikaci v [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [přizpůsobení mapování atributů služby uživatele zřizování](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+
+### <a name="user-provisioning-and-de-provisioning"></a>Zřizování uživatelů a jeho rušení
+Následující ilustrace ukazuje zprávy, že Azure Active Directory odesílá do služby SCIM ke správě životního cyklu uživatele v úložišti identitu vaší aplikace.  
+
+![][4]
+*Obrázek 4: Zřizování uživatelů a jeho rušení pořadí*
+
+### <a name="group-provisioning-and-de-provisioning"></a>Skupinové zřizování a zrušení zřizování.
+Skupina zřizování a jeho rušení jsou volitelné. Když implementována a povolena, na následujícím obrázku zobrazuje zprávy, že Azure AD, které se odešle službě SCIM ke správě životního cyklu skupiny ve vaší aplikace úložiště identit.  Tyto zprávy se liší od zprávy týkající se uživatelů dvěma způsoby: 
+
+* Požadavky k načtení skupin stanovit, že atribut členy mají být vyloučeny z libovolného zdroje k dispozici v odpovědi na požadavek.  
+* Žádosti slouží k určení, zda má atribut typu odkaz určitou hodnotu se žádostí o členů atributu.  
+
+![][5]
+*Obrázek 5: Skupinové zřizování a jeho rušení pořadí*
+
+### <a name="scim-protocol-requests-and-responses"></a>SCIM protokol požadavky a odpovědi
+Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta Azure AD SCIM, jakož i očekává ukázkové odpovědi. Nejlepších výsledků dosáhnete by měl kód vaší aplikace pro zpracování těchto žádostí v následujícím formátu a generovat očekávané odpovědi.
+
+>[!IMPORTANT]
+>Vysvětlení, jak a kdy služba zřizování uživatelů Azure AD vydá operací popsaných níže najdete v tématu [co se stane během zřizování uživatelů?](user-provisioning.md#what-happens-during-provisioning).
+
+- [Operace uživatelů](#user-operations)
+    - [Vytvoření uživatele](#create-user) - [žádosti](#request) - [odpovědi](#response)
+    - [Načíst uživatele](#get-user) - [žádosti](#request-1) - [odpovědi](#response-1)
+    - [Načíst uživatele dotazem](#get-user-by-query) - [žádosti](#request-2) - [odpovědi](#response-2)
+    - [Načíst uživatele dotazem - nula výsledků](#get-user-by-query---zero-results) - [žádosti](#request-3) - [odpovědi](#response-3)
+    - [Aktualizace uživatele [více Vážíme si toho vlastnosti]](#update-user-multi-valued-properties) - [žádosti](#request-4) - [odpovědi](#response-4)
+    - [Aktualizace uživatele [jednou hodnotou vlastnosti]](#update-user-single-valued-properties) - [žádosti](#request-5) - [odpovědi](#response-5)
+    - [Odstranit uživatele](#delete-user) - [žádosti](#request-6) - [odpovědi](#response-6)
+- [Operace skupiny](#group-operations)
+    - [Vytvoření skupiny](#create-group) - [žádosti](#request-7) - [odpovědi](#response-7)
+    - [Získat skupinu](#get-group) - [žádosti](#request-8) - [odpovědi](#response-8)
+    - [Získat skupinu podle displayName](#get-group-by-displayname) - [žádosti](#request-9) - [odpovědi](#response-9)
+    - [Aktualizace skupiny [třetí atributy]](#update-group-non-member-attributes) - [žádosti](#request-10) - [odpovědi](#response-10)
+    - [Skupina aktualizací [přidat členy]](#update-group-add-members) - [žádosti](#request-11) - [odpovědi](#response-11)
+    - [Aktualizace skupiny [odebrat členy]](#update-group-remove-members) - [žádosti](#request-12) - [odpovědi](#response-12)
+    - [Odstranit skupinu](#delete-group) - [žádosti](#request-13) - [odpovědi](#response-13)
+
+### <a name="user-operations"></a>Operace uživatelů
+
+* Uživatelé nemůžou dotazovat `userName` nebo `email[type eq "work"]` atributy.  
+
+#### <a name="create-user"></a>Vytvořit uživatele
+
+###### <a name="request"></a>Žádost
+*PŘÍSPĚVEK/uživatelé*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User",
+        "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
+    "externalId": "0a21f0f2-8d2a-4f8e-bf98-7363c4aed4ef",
+    "userName": "Test_User_ab6490ee-1e48-479e-a20b-2d77186b5dd1",
+    "active": true,
+    "emails": [{
+        "primary": true,
+        "type": "work",
+        "value": "Test_User_fd0ea19b-0777-472c-9f96-4f70d2226f2e@testuser.com"
+    }],
+    "meta": {
+        "resourceType": "User"
+    },
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName"
+    },
+    "roles": []
+}
+```
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 201 vytvořili*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "48af03ac28ad4fb88478",
+    "externalId": "0a21f0f2-8d2a-4f8e-bf98-7363c4aed4ef",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "userName": "Test_User_ab6490ee-1e48-479e-a20b-2d77186b5dd1",
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName",
+    },
+    "active": true,
+    "emails": [{
+        "value": "Test_User_fd0ea19b-0777-472c-9f96-4f70d2226f2e@testuser.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+
+
+#### <a name="get-user"></a>Načíst uživatele
+
+###### <a name="request"></a>Žádost
+*GET /Users/5d48a0a8e9f04aa38008* 
+
+###### <a name="response"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "5d48a0a8e9f04aa38008",
+    "externalId": "58342554-38d6-4ec8-948c-50044d0a33fd",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "userName": "Test_User_feed3ace-693c-4e5a-82e2-694be1b39934",
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName",
+    },
+    "active": true,
+    "emails": [{
+        "value": "Test_User_22370c1a-9012-42b2-bf64-86099c2a1c22@testuser.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+#### <a name="get-user-by-query"></a>Načíst uživatele podle dotazu
+
+##### <a name="request"></a>Žádost
+*GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+    "totalResults": 1,
+    "Resources": [{
+        "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+        "id": "2441309d85324e7793ae",
+        "externalId": "7fce0092-d52e-4f76-b727-3955bd72c939",
+        "meta": {
+            "resourceType": "User",
+            "created": "2018-03-27T19:59:26.000Z",
+            "lastModified": "2018-03-27T19:59:26.000Z"
+            
+        },
+        "userName": "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081",
+        "name": {
+            "familyName": "familyName",
+            "givenName": "givenName"
+        },
+        "active": true,
+        "emails": [{
+            "value": "Test_User_91b67701-697b-46de-b864-bd0bbe4f99c1@testuser.com",
+            "type": "work",
+            "primary": true
+        }]
+    }],
+    "startIndex": 1,
+    "itemsPerPage": 20
+}
+
+```
+
+#### <a name="get-user-by-query---zero-results"></a>Načíst uživatele dotazem - nula výsledků
+
+##### <a name="request"></a>Žádost
+*/ GET uživatelé? filter = eq uživatelské jméno "neexistující uživatel"*
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+    "totalResults": 0,
+    "Resources": [],
+    "startIndex": 1,
+    "itemsPerPage": 20
+}
+
+```
+
+#### <a name="update-user-multi-valued-properties"></a>Aktualizace uživatele [více Vážíme si toho vlastnosti]
+
+##### <a name="request"></a>Žádost
+*Oprava/uživatele/6764549bef60420686bc HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [
+            {
+            "op": "Replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "updatedEmail@microsoft.com"
+            },
+            {
+            "op": "Replace",
+            "path": "name.familyName",
+            "value": "updatedFamilyName"
+            }
+    ]
+}
+```
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "6764549bef60420686bc",
+    "externalId": "6c75de36-30fa-4d2d-a196-6bdcdb6b6539",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "userName": "Test_User_fbb9dda4-fcde-4f98-a68b-6c5599e17c27",
+    "name": {
+        "formatted": "givenName updatedFamilyName",
+        "familyName": "updatedFamilyName",
+        "givenName": "givenName"
+    },
+    "active": true,
+    "emails": [{
+        "value": "updatedEmail@microsoft.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+
+#### <a name="update-user-single-valued-properties"></a>Aktualizace uživatele [jednou hodnotou vlastnosti]
+
+##### <a name="request"></a>Žádost
+*Oprava/uživatele/5171a35d82074e068ce2 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Replace",
+        "path": "userName",
+        "value": "5b50642d-79fc-4410-9e90-4c077cdd1a59@testuser.com"
+    }]
+}
+```
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "5171a35d82074e068ce2",
+    "externalId": "aa1eca08-7179-4eeb-a0be-a519f7e5cd1a",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+        
+    },
+    "userName": "5b50642d-79fc-4410-9e90-4c077cdd1a59@testuser.com",
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName",
+    },
+    "active": true,
+    "emails": [{
+        "value": "Test_User_49dc1090-aada-4657-8434-4995c25a00f7@testuser.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+
+#### <a name="delete-user"></a>Odstranění uživatele
+
+##### <a name="request"></a>Žádost
+*Odstranit /Users/5171a35d82074e068ce2 HTTP/1.1*
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 204 žádný obsah.*
+
+### <a name="group-operations"></a>Operace skupiny
+
+* Skupiny se vytvoří vždy se seznamem prázdné členy.
+* Skupiny nemůžou dotazovat `displayName` atribut.
+* Aktualizace skupiny požadavku PATCH by měl yield *HTTP 204 žádný obsah* v odpovědi. Vrátí text se seznamem všech členů není vhodné.
+* Není nutné pro podporu vrací všechny členy skupiny.
+
+#### <a name="create-group"></a>Vytvoření skupiny
+
+##### <a name="request"></a>Žádost
+*/ Groups POST protokolu HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
+    "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
+    "id": "c4d56c3c-bf3b-4e96-9b64-837018d6060e",
+    "displayName": "displayName",
+    "members": [],
+    "meta": {
+        "resourceType": "Group"
+    }
+}
+```
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 201 vytvořili*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+    "id": "927fa2c08dcb4a7fae9e",
+    "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
+    "meta": {
+        "resourceType": "Group",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+        
+    },
+    "displayName": "displayName",
+    "members": []
+}
+```
+
+#### <a name="get-group"></a>Získat skupinu
+
+##### <a name="request"></a>Žádost
+*GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+    "id": "40734ae655284ad3abcc",
+    "externalId": "60f1bb27-2e1e-402d-bcc4-ec999564a194",
+    "meta": {
+        "resourceType": "Group",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "displayName": "displayName",
+}
+```
+
+#### <a name="get-group-by-displayname"></a>Získat skupinu podle displayName
+
+##### <a name="request"></a>Žádost
+*/ GET groups? excludedAttributes = členy & filtr = eq displayName "displayName" HTTP/1.1*
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+    "totalResults": 1,
+    "Resources": [{
+        "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+        "id": "8c601452cc934a9ebef9",
+        "externalId": "0db508eb-91e2-46e4-809c-30dcbda0c685",
+        "meta": {
+            "resourceType": "Group",
+            "created": "2018-03-27T22:02:32.000Z",
+            "lastModified": "2018-03-27T22:02:32.000Z",
+            
+        },
+        "displayName": "displayName",
+    }],
+    "startIndex": 1,
+    "itemsPerPage": 20
+}
+```
+#### <a name="update-group-non-member-attributes"></a>Aktualizovat skupinu [třetí atributy]
+
+##### <a name="request"></a>Žádost
+*Oprava/skupin/fa2ce26709934589afc5 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Replace",
+        "path": "displayName",
+        "value": "1879db59-3bdf-4490-ad68-ab880a269474updatedDisplayName"
+    }]
+}
+```
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 204 žádný obsah.*
+
+### <a name="update-group-add-members"></a>Skupina aktualizací [přidat členy]
+
+##### <a name="request"></a>Žádost
+*Oprava/skupin/a99962b9f99d4c4fac67 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Add",
+        "path": "members",
+        "value": [{
+            "$ref": null,
+            "value": "f648f8d5ea4e4cd38e9c"
+        }]
+    }]
+}
+```
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 204 žádný obsah.*
+
+#### <a name="update-group-remove-members"></a>Aktualizovat skupinu [odebrat členy]
+
+##### <a name="request"></a>Žádost
+*Oprava/skupin/a99962b9f99d4c4fac67 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Remove",
+        "path": "members",
+        "value": [{
+            "$ref": null,
+            "value": "f648f8d5ea4e4cd38e9c"
+        }]
+    }]
+}
+```
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 204 žádný obsah.*
+
+#### <a name="delete-group"></a>Odstranění skupiny
+
+##### <a name="request"></a>Žádost
+*DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
+
+##### <a name="response"></a>Odpověď
+*HTTP/1.1 204 žádný obsah.*
+
+
+## <a name="building-a-scim-endpoint-using-microsoft-cli-libraries"></a>Vytváření koncový bod SCIM pomocí knihovny Microsoft CLI
+Vytvořením SCIM webové služby, které sdílí rozhraní se službou Azure Active Directory, můžete povolit automatické zřizování uživatelů pro téměř jakoukoli aplikaci nebo identity úložiště.
 
 Zde je, jak to funguje:
 
-1. Azure AD poskytuje společné knihovny jazyka infrastruktury s názvem [Microsoft.SystemForCrossDomainIdentityManagement](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/). Systémoví integrátoři a vývojáře, můžete použít tuto knihovnu k vytvoření a nasazení koncového bodu SCIM webové služby lze připojit k libovolné aplikace úložiště identit Azure AD.
-2. Mapování jsou implementovány ve webové službě k mapování schématu standardizované uživatele na schéma uživatele a protokol vyžadovaného aplikací.
+1. Azure AD poskytuje společné knihovny jazykové infrastruktury (CLI) s názvem Microsoft.SystemForCrossDomainIdentityManagement součástí kódu, které popisují ukázky níže. Systémoví integrátoři a vývojáře, můžete použít tuto knihovnu k vytvoření a nasazení koncového bodu SCIM webové služby lze připojit k libovolné aplikace úložiště identit Azure AD.
+2. Mapování jsou implementovány ve webové službě k mapování schématu standardizované uživatele na schéma uživatele a protokol vyžadovaného aplikací. 
 3. Adresa URL koncového bodu je zaregistrovaný ve službě Azure AD jako součást vlastní aplikace v galerii aplikací.
 4. Uživatelé a skupiny jsou přiřazeny k této aplikaci ve službě Azure AD. Po přiřazení jsou vloženy do fronty se dá provést synchronizace k cílové aplikaci. Procesu synchronizace zpracování fronty se spouští každých 40 minut.
 
 ### <a name="code-samples"></a>Ukázky kódů
-Pro zjednodušení tohoto procesu [ukázky kódu](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) jsou k dispozici, vytvořte koncový bod webové služby SCIM a ukažte, automatické zřizování. Jeden vzorek je zprostředkovatel, který udržuje soubor s řádky reprezentující uživatele a skupiny hodnot oddělených čárkami.  Druhá je poskytovatele, který funguje ve službě Amazon Web Services Identity a správy přístupu.  
+Pro zjednodušení tohoto procesu [ukázky kódu](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) jsou k dispozici, vytvořte koncový bod webové služby SCIM a ukažte, automatické zřizování. Vzorek je poskytovatele, který udržuje soubor s řádky reprezentující uživatele a skupiny hodnot oddělených čárkami.    
 
 **Požadavky**
 
@@ -150,8 +626,8 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
 4. Zobrazenou obrazovku, vyberte **zřizování** kartu v levém sloupci.
 5. V **režim zřizování** nabídce vyberte možnost **automatické**.
     
-   ![][2]
-   *Obrázek 4: Konfigurace zřizování na webu Azure Portal*
+  ![][2]
+  *Obrázek 6: Konfigurace zřizování na webu Azure Portal*
     
 6. V **adresy URL Tenanta** pole, zadejte adresu URL a port koncového bodu SCIM vystavený Internetu. Položka je něco jako http://testmachine.contoso.com:9000 nebo http://\<ip-address >: 9000 /, kde \<ip-address > je vystavený Internetu IP adresu.  
 7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole necháte prázdné, bude obsahovat Azure AD z Azure AD s každou žádostí vydány tokenu nosiče OAuth. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit této služby Azure AD – vydaný token.
@@ -174,14 +650,14 @@ V posledním kroku ověřování ukázka je k otevření souboru TargetFile.csv 
 ### <a name="development-libraries"></a>Knihovny pro vývoj
 K vývoji vlastní webové služby, který odpovídá specifikaci SCIM, nejdřív seznámíte s následující knihovny poskytované společností Microsoft vám pomohou zrychlit proces vývoje: 
 
-1. Společné jazykové infrastruktury (CLI) knihovny se nabízejí pro použití s jazyky na základě této infrastruktury, jako je C#. Jeden z těchto knihoven [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/), deklaruje rozhraní, Microsoft.SystemForCrossDomainIdentityManagement.IProvider, je znázorněno na následujícím obrázku:  Vývojáři používat knihovny by implementovat rozhraní s třídou, která může být uvedené, obecně jako poskytovatel. Tyto knihovny umožňují vývojářům nasazení webové služby, který odpovídá specifikaci SCIM. Webová služba může být buď hostovaný v rámci Internetové informační službě nebo libovolného spustitelného sestavení Common Language Infrastructure. Požadavek je přeložit na volání metody zprostředkovatele, které by být naprogramovány vývojářem na provádět některé úložiště identit.
+1. Společné jazykové infrastruktury (CLI) knihovny se nabízejí pro použití s jazyky na základě této infrastruktury, jako je C#. Deklaruje jednu z těchto knihoven Microsoft.SystemForCrossDomainIdentityManagement.Service, rozhraní, Microsoft.SystemForCrossDomainIdentityManagement.IProvider, je znázorněno na následujícím obrázku. Vývojáři používat knihovny by implementovat rozhraní s třídou, která může být uvedené, obecně jako poskytovatel. Tyto knihovny umožňují vývojářům nasazení webové služby, který odpovídá specifikaci SCIM. Webová služba může být buď hostovaný v rámci Internetové informační službě nebo libovolného spustitelného sestavení rozhraní příkazového řádku. Požadavek je přeložit na volání metody zprostředkovatele, které by být naprogramovány vývojářem na provádět některé úložiště identit.
   
    ![][3]
   
 2. [Express route obslužné rutiny](https://expressjs.com/guide/routing.html) jsou k dispozici pro analýzu node.js požadavek objektů představujících volání (jak jsou definovány ve specifikaci SCIM) provedené webových služeb node.js.   
 
 ### <a name="building-a-custom-scim-endpoint"></a>Vytváření koncových bodů vlastního SCIM
-Pomocí rozhraní příkazového řádku knihoven, vývojáře, kteří používají tyto knihovny hostování svých služeb v rámci jakékoli spustitelného sestavení Common Language Infrastructure nebo v rámci Internetové informační služby. Tady je ukázkový kód pro hostování služby v rámci spustitelného sestavení, na adrese http://localhost:9000: 
+Používání knihoven rozhraní příkazového řádku, vývojáře, kteří používají tyto knihovny hostování svých služeb v rámci jakékoli spustitelného sestavení rozhraní příkazového řádku nebo v rámci Internetové informační služby. Tady je ukázkový kód pro hostování služby v rámci spustitelného sestavení, na adrese http://localhost:9000: 
 
     private static void Main(string[] arguments)
     {
@@ -270,7 +746,7 @@ Ověřovací certifikát serverů může být vázaný na port na hostiteli Wind
 
 Hodnota poskytnutá pro certhash argument tady, je kryptografický otisk certifikátu, zatímco hodnota poskytnutá pro appid argument je libovolný globálně jedinečný identifikátor.  
 
-K hostování služby v rámci Internetové informační služby, vývojář bude sestavení s CLA kód knihovny s třídou s názvem po spuštění ve výchozím oboru názvů sestavení.  Tady je příklad této třídy: 
+K hostování služby v rámci Internetové informační služby, by vývojář vytvářet sestavení knihovny kódu rozhraní příkazového řádku s třídou s názvem po spuštění ve výchozím oboru názvů sestavení.  Tady je příklad této třídy: 
 
     public class Startup
     {
@@ -301,9 +777,9 @@ K hostování služby v rámci Internetové informační služby, vývojář bud
     }
 
 ### <a name="handling-endpoint-authentication"></a>Ověřování koncových bodů zpracování
-Požadavky z Azure Active Directory obsahovat nosného tokenu OAuth 2.0.   Jakoukoli službu přijetí požadavku by měl ověřit vystavitele jako Azure Active Directory jménem očekávanému tenantovi Azure Active Directory pro přístup k webové službě Azure Active Directory Graphu.  V tokenu, Vystavitel je identifikován deklaraci identity iss, stejně jako "jednotky ISS – překročené": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  V tomto příkladu základní adresa hodnotu deklarace identity https://sts.windows.net, identifikuje Azure Active Directory jako vystavitel, zatímco relativní adresy segmentu, cbb1a5ac f33b-45fa-9bf5-f37db0fed422, je jedinečný identifikátor tenanta Azure Active Directory na jménem, z nichž byl token vydán.  Pokud byl token vydán pro přístup k webové službě Azure Active Directory Graphu, musí být identifikátor této služby, 00000002-0000-0000-c000-000000000000, v hodnotu deklarace identity aud tokenu.  
+Požadavky z Azure Active Directory obsahovat nosného tokenu OAuth 2.0.   Jakoukoli službu přijetí požadavku by měl ověřit vystavitele jako Azure Active Directory jménem očekávanému tenantovi Azure Active Directory pro přístup k webové službě Azure Active Directory Graphu.  V tokenu, Vystavitel je identifikován deklaraci identity iss, stejně jako "jednotky ISS – překročené": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  V tomto příkladu základní adresa hodnotu deklarace identity https://sts.windows.net, identifikuje Azure Active Directory jako vystavitel, zatímco relativní adresy segmentu, cbb1a5ac f33b-45fa-9bf5-f37db0fed422, je jedinečný identifikátor tenanta Azure Active Directory na jménem, z nichž byl token vydán.  Pokud byl token vydán pro přístup k webové službě Azure Active Directory Graphu, musí být identifikátor této služby, 00000002-0000-0000-c000-000000000000, v hodnotu deklarace identity aud tokenu.  Všimněte si, že každý z aplikace, které jsou registrovány v jednom tenantovi se může zobrazit stejný `iss` deklarace identity pomocí SCIM žádostí.
 
-Vývojáři, kteří používají knihovny CLA poskytovaných microsoftem pro vytváření služeb SCIM může ověřit požadavky z Azure Active Directory pomocí balíčku Microsoft.Owin.Security.ActiveDirectory pomocí následujících kroků: 
+Vývojáři, kteří používají knihovny rozhraní příkazového řádku, poskytovaných microsoftem pro vytváření služeb SCIM může ověřit požadavky z Azure Active Directory pomocí balíčku Microsoft.Owin.Security.ActiveDirectory pomocí následujících kroků: 
 
 1. Ve zprostředkovateli implementace Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior vlastnosti tak, že se vrátí metoda má být volána při každém spuštění služby: 
 
@@ -356,61 +832,54 @@ Vývojáři, kteří používají knihovny CLA poskytovaných microsoftem pro vy
      }
    ```
 
+### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Zpracování zřizování a rušení zřízení uživatelů
 
-## <a name="user-and-group-schema"></a>Schéma uživatele a skupiny
-Azure Active Directory můžete zřídit dva typy prostředků, aby SCIM webové služby.  Tyto typy prostředků jsou uživatelé a skupiny.  
+1. Azure Active Directory dotáže služby pro uživatele s hodnotou atributu externalId odpovídající hodnota atributu mailNickname uživatele ve službě Azure AD. Dotaz je vyjádřena jako žádost protokolu HTTP (Hypertext Transfer), jako je tento příklad, ve které jyoung je ukázka mailNickname uživatele v Azure Active Directory.
 
-Prostředky uživatelů jsou označeny identifikátorem schématu, "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User", která je obsažena v téhle specifikaci protokolu: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Výchozí mapování atributů uživatelů ve službě Azure Active Directory pro atributy "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" prostředky jsou uvedeny v tabulce 1, níže.  
+    >[!NOTE]
+    > Toto je pouze příklad. Ne všichni uživatelé budou mít atributu mailNickname a hodnota, kterou má uživatel nemusí být jedinečný v adresáři. Kromě toho je možné konfigurovat v atribut použije k porovnání (v tomto případě je to externalId) [mapování atributů Azure AD](customize-application-attributes.md).
 
-Prostředky skupiny prostředků jsou označeny identifikátor schématu http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Tabulka 2 níže ukazuje výchozí mapování atributů skupin v Azure Active Directory atributů http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group prostředky.  
+  ````
+    GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
+    Authorization: Bearer ...
+  ````
+  Pokud služba je vytvořená pomocí rozhraní příkazového řádku knihovny poskytované společností Microsoft pro implementaci služeb SCIM, požadavek přeložit na volání metody dotazu poskytovatele.  Tady je signatura této metody: 
+  ````
+    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+    // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
+    // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
+    // Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters is defined in 
+    // Microsoft.SystemForCrossDomainIdentityManagement.Protocol.  
 
-### <a name="table-1-default-user-attribute-mapping"></a>Tabulka 1: Výchozí mapování atributů uživatele
+    System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource[]> Query(
+      Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters parameters, 
+      string correlationIdentifier);
+  ````
+  Tady je definice Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters rozhraní: 
+  ````
+    public interface IQueryParameters: 
+      Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
+    {
+        System.Collections.Generic.IReadOnlyCollection <Microsoft.SystemForCrossDomainIdentityManagement.IFilter> AlternateFilters 
+        { get; }
+    }
 
-| Uživatele Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
-| --- | --- |
-| IsSoftDeleted |aktivní |
-| displayName |displayName |
-| Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
-| givenName |name.givenName |
-| pracovní funkce |název |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
-| mailNickname |externalId |
-| manažer |manažer |
-| Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
-| ID objektu |ID |
-| PSČ |.postalCode adresy [typ eq "pracovní"] |
-| Adresy proxy serveru |e-mailů [Zadejte eq "other"]. Hodnota |
-| fyzický Delivery-OfficeName |adresy [Zadejte eq "other"]. Ve formátu |
-| streetAddress |.streetAddress adresy [typ eq "pracovní"] |
-| Příjmení |name.familyName |
-| telefonní číslo |phoneNumbers [typ eq "pracovní"] .value |
-| user-PrincipalName |uživatelské jméno |
-
-### <a name="table-2-default-group-attribute-mapping"></a>Tabulka 2: Výchozí skupiny atributů mapování
-
-| Skupina Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
-| --- | --- |
-| displayName |externalId |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
-| mailNickname |displayName |
-| členové |členové |
-| ID objektu |ID |
-| proxyAddresses |e-mailů [Zadejte eq "other"]. Hodnota |
-
-## <a name="user-provisioning-and-de-provisioning"></a>Zřizování uživatelů a jeho rušení
-Následující ilustrace ukazuje zprávy, že odesílá do SCIM služby Azure Active Directory ke správě životního cyklu uživatele v jiné úložiště identit. Diagram také ukazuje, jak služba SCIM implementovaná pomocí knihovny rozhraní příkazového řádku poskytovaných microsoftem pro vytváření, že tyto služby převede tyto požadavky na volání metody zprostředkovatele.  
-
-![][4]
-*Obrázek 5: Zřizování uživatelů a jeho rušení pořadí*
-
-1. Azure Active Directory dotáže služby pro uživatele s hodnotou atributu externalId odpovídající hodnota atributu mailNickname uživatele ve službě Azure AD. Dotaz je vyjádřena jako žádost protokolu HTTP (Hypertext Transfer), jako je tento příklad, ve které jyoung je ukázka mailNickname uživatele v Azure Active Directory: 
+    public interface Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
+    {
+      system.Collections.Generic.IReadOnlyCollection<string> ExcludedAttributePaths 
+      { get; }
+      System.Collections.Generic.IReadOnlyCollection<string> RequestedAttributePaths 
+      { get; }
+      string SchemaIdentifier 
+      { get; }
+    }
 
    ```
      GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
      Authorization: Bearer ...
    ```
 
-   Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure pro implementaci SCIM služeb poskytovaných microsoftem, požadavek přeložit na volání metody dotazu poskytovatele.  Tady je signatura této metody: 
+   If the service was built using the Common Language Infrastructure libraries provided by Microsoft for implementing SCIM services, then the request is translated into a call to the Query method of the service’s provider.  Here is the signature of that method: 
 
    ```
      // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
@@ -424,7 +893,7 @@ Následující ilustrace ukazuje zprávy, že odesílá do SCIM služby Azure Ac
        string correlationIdentifier);
    ```
 
-   Tady je definice Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters rozhraní: 
+   Here is the definition of the Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters interface: 
 
    ```
      public interface IQueryParameters: 
@@ -462,110 +931,77 @@ Následující ilustrace ukazuje zprávy, že odesílá do SCIM služby Azure Ac
      }
    ```
 
-   V následujícím ukázkovém dotazu pro uživatele s danou hodnotou pro atribut externalId jsou hodnoty argumentů předaných metodě dotazu: 
+   In the following sample of a query for a user with a given value for the externalId attribute, values of the arguments passed to the Query method are: 
    * parameters.AlternateFilters.Count: 1
-   * Parametry. AlternateFilters.ElementAt(0). AttributePath: externalId""
+   * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
    * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
-   * Parametry. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
+   * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
    * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
-2. Pokud odpověď na dotaz na webovou službu pro uživatele s externalId hodnotu atributu, který odpovídá hodnota atributu mailNickname uživatele nevrací žádné uživatele, pak Azure Active Directory si vyžádá, že služba zřízení uživatele odpovídá ten ve službě Azure Active Directory.  Tady je příklad takové žádosti: 
+2. If the response to a query to the web service for a user with an externalId attribute value that matches the mailNickname attribute value of a user does not return any users, then Azure Active Directory requests that the service provision a user corresponding to the one in Azure Active Directory.  Here is an example of such a request: 
 
-   ```
-     POST https://.../scim/Users HTTP/1.1
-     Authorization: Bearer ...
-     Content-type: application/scim+json
-     {
-       "schemas":
-       [
-         "urn:ietf:params:scim:schemas:core:2.0:User",
-         "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
-       "externalId":"jyoung",
-       "userName":"jyoung",
-       "active":true,
-       "addresses":null,
-       "displayName":"Joy Young",
-       "emails": [
-         {
-           "type":"work",
-           "value":"jyoung@Contoso.com",
-           "primary":true}],
-       "meta": {
-         "resourceType":"User"},
-        "name":{
-         "familyName":"Young",
-         "givenName":"Joy"},
-       "phoneNumbers":null,
-       "preferredLanguage":null,
-       "title":null,
-       "department":null,
-       "manager":null}
-   ```
+  ````
+    Povolení protokolu HTTP/1.1 https://.../scim/Users příspěvek: Nosiče...  Typ obsahu: application/scim + json {"schémata": ["urn: ietf:params:scim:schemas:core:2.0:User", "urn: ietf:params:scim:schemas:extension:enterprise:2.0User"], "externalId": "jyoung", "userName": "jyoung", "aktivní": true, "adresy": null,    "displayName": "Radosti a velkou Young", "e-mailů": [{"type": "pracovní", "value": "jyoung@Contoso.com", "primární": true}], "meta": {"resourceType": "User"}, "název": {"familyName": "Malé", "jméno": "Radosti a velkou"}, "phoneNumbers": null, "preferredLa nguage": null,"title": null,"oddělení": null,"správce": null}
+  ````
+  The CLI libraries provided by Microsoft for implementing SCIM services would translate that request into a call to the Create method of the service’s provider.  The Create method has this signature: 
+  ````
+    System.Threading.Tasks.Tasks je definována v knihovně mscorlib.dll.  
+    Microsoft.SystemForCrossDomainIdentityManagement.Resource je definována v / / Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
 
-   Common Language Infrastructure knihovny poskytované společností Microsoft pro implementaci služeb SCIM by převede tento požadavek na volání metody vytvoření poskytovatele služby.  Metoda vytvoření má tento podpis: 
+    System.Threading.Tasks.Task < Microsoft.SystemForCrossDomainIdentityManagement.Resource > vytvořit (Microsoft.SystemForCrossDomainIdentityManagement.Resource prostředků, řetězec correlationIdentifier);
+  ````
+  In a request to provision a user, the value of the resource argument is an instance of the Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser class, defined in the Microsoft.SystemForCrossDomainIdentityManagement.Schemas library.  If the request to provision the user succeeds, then the implementation of the method is expected to return an instance of the Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser class, with the value of the Identifier property set to the unique identifier of the newly provisioned user.  
 
-   ```
-     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-     // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
-     // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
- 
-     System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> Create (
-       Microsoft.SystemForCrossDomainIdentityManagement.Resource resource, 
-       string correlationIdentifier);
-   ```
+3. To update a user known to exist in an identity store fronted by an SCIM, Azure Active Directory proceeds by requesting the current state of that user from the service with a request such as: 
+  ````
+    ZÍSKÁTE autorizační ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1: Nosiče...
+  ````
+  In a service built using the CLI libraries provided by Microsoft for implementing SCIM services, the request is translated into a call to the Retrieve method of the service’s provider.  Here is the signature of the Retrieve method: 
+  ````
+    System.Threading.Tasks.Tasks je definována v knihovně mscorlib.dll.  
+    Microsoft.SystemForCrossDomainIdentityManagement.Resource a / nebo Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters / / jsou definovány v Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
+    System.Threading.Tasks.Task < Microsoft.SystemForCrossDomainIdentityManagement.Resource > načtení (Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters parametry, řetězec correlationIdentifier);
 
-   V požadavku na zřízení uživatele je hodnota argumentu prostředků instance Microsoft.SystemForCrossDomainIdentityManagement. Třída Core2EnterpriseUser definovaný v knihovně Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  Pokud je žádost o zřízení uživatele úspěšné, implementaci metody se má vracet instanci Microsoft.SystemForCrossDomainIdentityManagement. Třída Core2EnterpriseUser s hodnotou nastavenou na jedinečný identifikátor nově zřízeného uživatele vlastnost identifikátor.  
-
-3. Provést aktualizaci uživatele ví, že existují v úložišti identity přední stěnou podle SCIM, Azure Active Directory pokračuje vyžádáním aktuální stav daného uživatele ze služby s žádostí, jako například: 
-
-   ```
-     GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
-     Authorization: Bearer ...
-   ```
-
-   Ve službě vytvořené pomocí knihovny Common Language Infrastructure pro implementaci SCIM služeb poskytovaných microsoftem je požadavek přeložit na volání metody načtení poskytovatele služby.  Následuje podpis metody načtení: 
-
-    ```
-     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-     // Microsoft.SystemForCrossDomainIdentityManagement.Resource and 
-     // Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
-     // are defined in Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
-     System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> 
-        Retrieve(
-          Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
-            parameters, 
-            string correlationIdentifier);
- 
-     public interface 
-       Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters:   
-         IRetrievalParameters
-         {
-           Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier 
-             ResourceIdentifier 
-               { get; }
-     }
-     public interface Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier
-     {
-         string Identifier 
-           { get; set; }
-         string Microsoft.SystemForCrossDomainIdentityManagement.SchemaIdentifier 
-           { get; set; }
-     }
-   ```
-
-   V příkladu požadavek pro načtení aktuálního stavu uživatele hodnoty vlastnosti objektu, který je uvedený jako hodnota argumentu parametry jsou následující: 
+    veřejné rozhraní Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters:   
+        IRetrievalParameters {Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier ResourceIdentifier {get;}} veřejného rozhraní Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier {řetězec identifikátoru {get; nastavte;} řetězec Microsoft.SystemForCrossDomainIdentityManagement.SchemaIdentifier {get; nastavte;}}
+  ````
+  In the example of a request to retrieve the current state of a user, the values of the properties of the object provided as the value of the parameters argument are as follows: 
   
-   * Identifikátor: "54D382A4-2050-4C03-94D1-E769F1D15682"
+   * Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-4. Pokud je atribut typu odkaz má být aktualizován, Azure Active Directory dotáže služby k určení, zda aktuální hodnotu atributu odkazu v úložišti identity přední stěnou službou už odpovídá hodnotě atributu v Azure Active Adresář. Pro uživatele je jediným atributem, z nichž aktuální hodnota je dotazován tímto způsobem atribut správce. Tady je příklad požadavku k určení, zda atribut manager objektu konkrétní uživatel aktuálně má určitou hodnotu: 
+4. If a reference attribute is to be updated, then Azure Active Directory queries the service to determine whether or not the current value of the reference attribute in the identity store fronted by the service already matches the value of that attribute in Azure Active Directory. For users, the only attribute of which the current value is queried in this way is the manager attribute. Here is an example of a request to determine whether the manager attribute of a particular user object currently has a certain value: 
 
-   ```
-     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq  2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
-     Authorization: Bearer ...
-   ```
+  If the service was built using the CLI libraries provided by Microsoft for implementing SCIM services, then the request is translated into a call to the Query method of the service’s provider. The value of the properties of the object provided as the value of the parameters argument are as follows: 
+  
+  * parameters.AlternateFilters.Count: 2
+  * parameters.AlternateFilters.ElementAt(x).AttributePath: "ID"
+  * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
+  * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
+  * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
+  * parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
+  * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
+  * parameters.RequestedAttributePaths.ElementAt(0): "ID"
+  * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-   Hodnota parametru dotazu atributy "ID" označuje, pokud existuje objekt uživatele, který splňuje výraz zadaný jako hodnota parametru dotazu filtr a potom služby očekává odpověď s "urn: ietf:params:scim:schemas:core:2.0: Uživatel"nebo"urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"prostředků, včetně pouze hodnotu atributu"ID"tohoto prostředku.  Hodnota **ID** atribut se označuje žadateli. Hodnota parametru dotazu filtr; je součástí žádá o jeho účelem je ve skutečnosti požadavek minimální reprezentace daného prostředku, aby neodpovídajících výraz filtru jako údaj o tom, zda existuje takový objekt.   
+  Here, the value of the index x may be 0 and the value of the index y may be 1, or the value of x may be 1 and the value of y may be 0, depending on the order of the expressions of the filter query parameter.   
+
+5. Here is an example of a request from Azure Active Directory to an SCIM service to update a user: 
+  ````
+    Povolení protokolu HTTP/1.1 ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 opravy: Nosiče...  Typ obsahu: application/scim + json {"schémata": ["urn: ietf:params:scim:api:messages:2.0:PatchOp"], "Operace": [{"op": "Přidání", "cesty": "správce", "value": [{"$ref": "http://.../scim/Users/2819c223-7f76-453a-919d-413861904646", "value": "2819c223-7f76-453a-919d-413861904646"}]}]}
+  ````
+  The Microsoft CLI libraries for implementing SCIM services would translate the request into a call to the Update method of the service’s provider. Here is the signature of the Update method: 
+  ````
+    System.Threading.Tasks.Tasks a / nebo System.Collections.Generic.IReadOnlyCollection<T> / / jsou definovány v knihovně mscorlib.dll.  
+    Microsoft.SystemForCrossDomainIdentityManagement.IPatch, / / Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase, / / Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, / / Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation, / / Microsoft.SystemForCrossDomainIdentityManagement.OperationName, / / Microsoft.SystemForCrossDomainIdentityManagement.IPath a / nebo Microsoft.SystemForCrossDomainIdentityManagement.OperationValue / / jsou všechny definované v Microsoft.SystemForCrossDomainIdentityManagement.Protocol. 
+
+    System.Threading.Tasks.Task aktualizace (Microsoft.SystemForCrossDomainIdentityManagement.IPatch patch, řetězec correlationIdentifier);
+
+    veřejné rozhraní Microsoft.SystemForCrossDomainIdentityManagement.IPatch {Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase PatchRequest {get; nastavte;} Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier ResourceIdentifier {get; nastavte;}        
+    }
+
+    Veřejná třída PatchRequest2:    Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase {public System.Collections.Generic.IReadOnlyCollection < Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation > operace {get;}
+
 
    Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure pro implementaci SCIM služeb poskytovaných microsoftem, požadavek přeložit na volání metody dotazu poskytovatele. Hodnota vlastnosti objektu, který je uvedený jako hodnota argumentu parametry jsou následující: 
   
@@ -718,18 +1154,64 @@ Následující ilustrace ukazuje zprávy, že odesílá do SCIM služby Azure Ac
 
    Objekt zadaný jako hodnota argumentu resourceIdentifier má tyto hodnoty vlastností v příkladu požadavek na zrušení zřízení uživatele: 
 
-   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-   * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+6. Na zrušení zřízení uživatele z identity úložiště přední stěnou služba SCIM, Azure AD, jako odešle žádost: 
+  ````
+    DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+    Authorization: Bearer ...
+  ````
+  Pokud služba je vytvořená pomocí rozhraní příkazového řádku knihovny pro implementaci SCIM služeb poskytovaných microsoftem, je požadavek přeložit na volání metody Delete poskytovatele služby.   Tato metoda má tento podpis: 
+  ````
+    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+    // Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, 
+    // is defined in Microsoft.SystemForCrossDomainIdentityManagement.Protocol. 
+    System.Threading.Tasks.Task Delete(
+      Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier  
+        resourceIdentifier, 
+      string correlationIdentifier);
+  ````
+  Objekt zadaný jako hodnota argumentu resourceIdentifier má tyto hodnoty vlastností v příkladu požadavek na zrušení zřízení uživatele: 
+  
+  * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+  * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-## <a name="group-provisioning-and-de-provisioning"></a>Skupinové zřizování a zrušení zřizování.
-Následující ilustrace ukazuje zprávy, že Azure AcD odesílá do služby SCIM ke správě životního cyklu skupiny v jiné úložiště identit.  Tyto zprávy se liší od zprávy týkající se uživatelů třemi způsoby: 
+## <a name="user-and-group-schema-reference"></a>Referenční dokumentace schématu uživatelů a skupin
+Azure Active Directory můžete zřídit dva typy prostředků, aby SCIM webové služby.  Tyto typy prostředků jsou uživatelé a skupiny.  
 
-* Schéma skupiny prostředků se identifikuje jako `http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group`.  
-* Požadavky k načtení skupin stanovit, že atribut členy mají být vyloučeny z libovolného zdroje k dispozici v odpovědi na požadavek.  
-* Žádosti slouží k určení, zda má atribut typu odkaz určitou hodnotu se žádostí o členů atributu.  
+Prostředky uživatelů jsou označeny identifikátor schématu `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, která je zahrnutá v téhle specifikaci protokolu: https://tools.ietf.org/html/rfc7643.  Výchozí mapování atributů uživatelů ve službě Azure Active Directory pro atributy prostředky uživatelů najdete v následující tabulce 1.  
 
-![][5]
-*Obrázek 6: Skupinové zřizování a jeho rušení pořadí*
+Prostředky skupiny prostředků jsou označeny identifikátor schématu `urn:ietf:params:scim:schemas:core:2.0:Group`.  Tabulka 2 níže ukazuje výchozí mapování atributů skupin v Azure Active Directory na atributy skupiny prostředků.  
+
+### <a name="table-1-default-user-attribute-mapping"></a>Tabulka 1: Výchozí mapování atributů uživatele
+| Uživatele Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
+| --- | --- |
+| IsSoftDeleted |aktivní |
+| displayName |displayName |
+| Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
+| givenName |name.givenName |
+| pracovní funkce |název |
+| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| mailNickname |externalId |
+| manažer |manažer |
+| Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
+| ID objektu |ID |
+| PSČ |.postalCode adresy [typ eq "pracovní"] |
+| Adresy proxy serveru |e-mailů [Zadejte eq "other"]. Hodnota |
+| fyzický Delivery-OfficeName |adresy [Zadejte eq "other"]. Ve formátu |
+| streetAddress |.streetAddress adresy [typ eq "pracovní"] |
+| Příjmení |name.familyName |
+| telefonní číslo |phoneNumbers [typ eq "pracovní"] .value |
+| user-PrincipalName |uživatelské jméno |
+
+### <a name="table-2-default-group-attribute-mapping"></a>Tabulka 2: Výchozí skupiny atributů mapování
+| Skupina Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
+| --- | --- |
+| displayName |externalId |
+| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| mailNickname |displayName |
+| členové |členové |
+| ID objektu |ID |
+| proxyAddresses |e-mailů [Zadejte eq "other"]. Hodnota |
+
 
 ## <a name="related-articles"></a>Související články
 * [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 2bdd3cd05f78503962461abfcc85320c25350e69
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: a002c4ff843ad1e0bc48d490132d7499526f4d7b
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593127"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958758"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do obslužné rutiny rozšíření Azure Desired State Configuration
 
@@ -65,6 +65,25 @@ Instalaci WMF vyžaduje restartování. Po restartování počítače, rozšíř
 ### <a name="default-configuration-script"></a>Výchozí konfigurační skript
 
 Rozšíření DSC Azure obsahuje výchozí konfigurační skript, který má být určen nepoužívá, pokud připojíte virtuální počítač ke službě Azure Automation DSC. Parametry skriptu jsou v souladu s konfigurovatelné vlastnosti [Local Configuration Manageru](/powershell/dsc/metaconfig). Parametry skriptu, naleznete v tématu [výchozí konfigurační skript](dsc-template.md#default-configuration-script) v [Desired State Configuration rozšíření pomocí šablon Azure Resource Manageru](dsc-template.md). Úplná skript, najdete v článku [šablony Azure quickstart na Githubu](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informace pro registraci pomocí služby Azure Automation stavu Configuration (DSC)
+
+Při použití rozšíření DSC k uzlu zaregistrovat do služby konfiguraci stavu, bude nutné zadat tři hodnoty.
+
+- RegistrationUrl - adresu https účtu Azure Automation
+- RegistrationKey – sdílený tajný klíč používaný k registraci ve službě uzly
+- NodeConfigurationName – název z uzlu Konfigurace (MOF) na vyžádání ze služby konfigurace role serveru
+
+Tyto informace si můžete prohlédnout ve [webu Azure portal](../../automation/automation-dsc-onboarding.md#azure-portal) nebo můžete použít PowerShell.
+
+```PowerShell
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
+```
+
+Název konfigurace uzlu, ujistěte se, že používáte název *konfigurace uzlu* a není konfigurace.
+Konfigurace je definován ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile).
+Název bude vždy konfigurace následovaných tečkou `.` a buď `localhost` nebo název konkrétní počítače.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozšíření DSC v šablonách Resource Manageru
 

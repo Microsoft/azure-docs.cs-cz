@@ -1,5 +1,5 @@
 ---
-title: Řešení Agent Health v Azure | Dokumentace Microsoftu
+title: Řešení Agent Health v monitorování Azure | Dokumentace Microsoftu
 description: Tento článek je určený k vám pomůžou porozumět způsobu použití tohoto řešení monitorovat stav agentů odesílajících sestavy přímo do Log Analytics nebo System Center Operations Manager.
 services: operations-management-suite
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 203a37071637a7e0e44b65240be4c4cae974d95f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335948"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983371"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Řešení Agent Health v Azure
-Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojení k Log Analytics, která jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
+Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojené k monitorování Azure, které jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
 
 ## <a name="prerequisites"></a>Požadavky
-Před nasazením tohoto řešení potvrďte, že aktuálně podporujete [agentů Windows](../../log-analytics/log-analytics-windows-agent.md) sestavy do pracovního prostoru Log Analytics nebo odesílajících sestavy do [skupinu pro správu Operations Manageru](../../azure-monitor/platform/om-agents.md) integrované s váš pracovní prostor.    
+Před nasazením tohoto řešení potvrďte, že aktuálně podporujete [agentů Windows](../../log-analytics/log-analytics-windows-agent.md) sestavy do pracovního prostoru Log Analytics nebo odesílajících sestavy do [skupinu pro správu Operations Manageru](../../azure-monitor/platform/om-agents.md) integrované s váš pracovní prostor.
 
 ## <a name="solution-components"></a>Součásti řešení
 Toto řešení se skládá z následujících prostředků, které se přidají do vašeho pracovního prostoru, a přímo připojených agentů nebo skupiny pro správu připojené k nástroji Operations Manager.
@@ -48,7 +48,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | Agenti systému Windows | Ano | Události prezenčního signálu se shromažďují z přímých agentů systému Windows.|
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Události prezenčního signálu se shromažďují z agentů odesílajících sestavy do skupiny pro správu každých 60 sekund a pak se předávají do Log Analytics. Přímé připojení z agentů nástroje Operations Manager ke službě Log Analytics není potřeba. Data událostí prezenčního signálu se předávají ze skupiny pro správu do úložiště Log Analytics.|
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Události prezenčního signálu se shromažďují z agentů odesílajících sestavy do skupiny pro správu každých 60 sekund a pak se předávají do Azure monitoru. Přímé připojení z agentů nástroje Operations Manager do Azure monitoru se nevyžaduje. Data událostí prezenčního signálu se předávají ze skupiny pro správu do pracovního prostoru Log Analytics.|
 
 ## <a name="using-the-solution"></a>Použití řešení
 Když přidáte řešení do pracovního prostoru Log Analytics **stav agenta** se přidá dlaždice na řídicí panel. Tato dlaždice ukazuje celkový počet agentů a počet nereagujících agentů za posledních 24 hodin.<br><br> ![Dlaždice řešení Agent Health na řídicím panelu](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -68,7 +68,7 @@ Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Healt
 
 ![Ukázka řídicího panelu řešení Agent Health](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  
 
-## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
+## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
 Toto řešení vytvoří jeden typ záznamu v pracovním prostoru Log Analytics.  
 
 ### <a name="heartbeat-records"></a>Záznamy prezenčního signálu
@@ -76,7 +76,7 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 
 | Vlastnost | Popis |
 | --- | --- |
-| Typ | *Heartbeat* (Prezenční signál)|
+| Type | *Heartbeat* (Prezenční signál)|
 | Kategorie | Hodnota je *Direct Agent* (Přímý agent), *SCOM Agent* (Agent nástroje SCOM) nebo *SCOM Management Server* (Server pro správu nástroje SCOM).|
 | Počítač | Název počítače.|
 | OSType | Operační systém Windows nebo Linux.|
@@ -92,7 +92,7 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 | RemoteIPLongitude | Zeměpisná délka zeměpisného umístění počítače.|
 | RemoteIPLatitude | Zeměpisná šířka zeměpisného umístění počítače.|
 
-Každý agent generování sestav použít server pro správu nástroje Operations Manager bude odesílat dva prezenční signály a hodnota vlastnosti SCAgentChannel bude zahrnovat **přímé** a **SCManagementServer** v závislosti na tom, jaký protokol Zdroje dat Analytics a řešení, které jste povolili ve vašem předplatném. Pokud jste si možná Vzpomínáte, data z řešení se buď odesílají přímo ze serveru pro správu Operations Manageru ke službě Log Analytics nebo z důvodu objem dat shromážděných v agentovi, se odesílají přímo z agenta ke službě Log Analytics. U událostí prezenčního signálu, které mají hodnotu **SCManagementServer**, je hodnota ComputerIP IP adresou serveru pro správu, protože ten data ve skutečnosti odesílá.  U prezenčních signálů, které mají vlastnost SCAgentChannel nastavenou na hodnotu **Direct**, to je veřejná IP adresa agenta.  
+Každý agent generování sestav použít server pro správu nástroje Operations Manager bude odesílat dva prezenční signály a hodnota vlastnosti SCAgentChannel bude zahrnovat **přímé** a **SCManagementServer** v závislosti na tom, co zdroje dat a monitorování řešení, které jste povolili ve vašem předplatném. Pokud si možná Vzpomínáte, data z řešení se buď odesílají přímo ze serveru pro správu Operations Manageru do Azure monitoru, nebo z důvodu objem dat shromážděných v agentovi, se odesílají přímo z agenta do Azure monitoru. U událostí prezenčního signálu, které mají hodnotu **SCManagementServer**, je hodnota ComputerIP IP adresou serveru pro správu, protože ten data ve skutečnosti odesílá.  U prezenčních signálů, které mají vlastnost SCAgentChannel nastavenou na hodnotu **Direct**, to je veřejná IP adresa agenta.  
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záznamy shromážděné tímto řešením.
@@ -117,4 +117,4 @@ V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záz
 
 ## <a name="next-steps"></a>Další postup
 
-* Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../../azure-monitor/platform/alerts-overview.md). 
+* Další informace o [výstrah ve službě Azure Monitor](../platform/alerts-overview.md) podrobné informace o generování upozornění ze služby Log Analytics. 

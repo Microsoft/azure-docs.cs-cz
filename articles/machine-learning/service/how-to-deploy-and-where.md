@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19d34e76c73c5ec2472d3eacddc01d6aebb6b9fb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4f89fab47cf07538d1915d359fc29a21deb1e560
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889099"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986071"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -259,6 +259,44 @@ Azure Kubernetes Service poskytuje následující možnosti:
 * Protokolování
 * Shromažďování dat modelů
 * Rychlá doba odezvy pro webové služby
+* Ukončení protokolu TLS
+* Authentication
+
+#### <a name="autoscaling"></a>Automatické škálování
+
+Automatické škálování můžete řídit pomocí nastavení `autoscale_target_utilization`, `autoscale_min_replicas`, a `autoscale_max_replicas` AKS webové služby. Následující příklad ukazuje, jak povolit automatické škálování:
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+Využití z aktuálního kontejneru replik je založen na rozhodnutí o škálování směrem nahoru nebo dolů. Počet replik, které jsou zpracovává (požadavek) dělený celkový počet aktuální replik je aktuální využití. Pokud toto číslo překročí cílové využití, se vytvoří víc replik. Pokud je nižší, jsou sníženy repliky. Ve výchozím nastavení je cílové využití 70 %.
+
+Rozhodnutí, která chcete přidat repliky jsou pro nápovědy eager a rychlé (přibližně 1 sekundu). Rozhodnutí, která chcete-li odebrat repliky jsou konzervativní (přibližně 1 minuta).
+
+Požadované repliky můžete vypočítat pomocí následujícího kódu:
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_replicas`, a `autoscale_min_replicas`, najdete v článku [AksWebservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) odkazu na modul.
 
 #### <a name="create-a-new-cluster"></a>Vytvoření nového clusteru
 

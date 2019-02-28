@@ -4,132 +4,130 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/26/2018
+ms.topic: tutorial
+ms.date: 02/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4d702a33742da5501be208154cbdd593fa0524
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a510fcce6b004e8384ce888ad421802bc144e73f
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199704"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985967"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Kurz: Integrace Azure Active Directory s konektorem Meta sítě
 
 V tomto kurzu se dozvíte, jak integrovat Meta sítě konektor služby Azure Active Directory (Azure AD).
-
 Integrace konektoru Meta sítí s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Meta sítě konektoru.
-- Uživatele, aby automaticky získat přihlášení k Meta sítě konektoru (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Meta sítě konektoru.
+* Uživatelům se automaticky přihlášeni k Meta sítě konektoru (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s konektorem Meta sítě, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Konektor sítě Meta-jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Konektor sítě meta-jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání konektoru Meta sítě z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Meta sítě konektor podporuje **SP** a **IDP** jednotné přihlašování zahájené pomocí
+ 
+* Meta sítě konektor podporuje **JIT** zřizování uživatelů
 
 ## <a name="adding-meta-networks-connector-from-the-gallery"></a>Přidání konektoru Meta sítě z Galerie
+
 Ke konfiguraci integrace konektoru Meta sítě do služby Azure AD, budete muset přidat Meta sítě konektor z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Meta sítě konektoru přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
-    
-    ![Tlačítko Azure Active Directory][1]
-    
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
-    
-    ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-    
-    ![Tlačítko nové aplikace][3]
-    
-1. Do vyhledávacího pole zadejte **Meta sítě konektor**vyberte **Meta sítě konektor** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-    
-    ![Meta sítě konektor v seznamu výsledků](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_addfromgallery.png)
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
+
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+
+    ![Tlačítko nové aplikace](common/add-new-app.png)
+
+4. Do vyhledávacího pole zadejte **Meta sítě konektor**vyberte **Meta sítě konektor** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+     ![Meta sítě konektor v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí konektoru Meta sítě podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co protějšek uživatele v konektoru sítí Meta je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatel v konektoru sítí Meta je potřeba navázat.
+V této části, konfigurace a testování Azure AD jednotné přihlašování s konektorem Meta sítě podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Meta sítě konektoru.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s konektorem Meta sítě, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele Meta sítě konektor](#create-a-meta-networks-connector-test-user)**  – Pokud chcete mít protějšek Britta Simon v Meta sítě konektor, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Konfigurace Meta sítě konektor jednotného přihlašování](#configure-meta-networks-connector-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvoření konektoru sítě Meta testovacího uživatele](#create-meta-networks-connector-test-user)**  – Pokud chcete mít protějšek Britta Simon v Meta sítě konektor, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Meta sítě konektoru.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s konektorem Meta sítě, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s konektorem Meta sítě, proveďte následující kroky:
 
-1. Na webu Azure Portal na **Meta sítě konektor** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Meta sítě konektor** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **Meta sítě konektor domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Meta sítě konektor domény a adresy URL jednotného přihlašování – informace](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    1. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
-    
-    1. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
-    
-1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    ![Meta sítě konektor domény a adresy URL jednotného přihlašování – informace](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_url1.png)
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-    1. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
-    
-    1. V **stav přenosu** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
-    
+    ![Meta sítě konektor domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
+
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+
+    ![Meta sítě konektor domény a adresy URL jednotného přihlašování – informace](common/both-advanced-urls.png)
+
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
+
+    b. V **stav přenosu** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
+
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizovat s identifikátorem skutečná adresa URL odpovědi, a přihlašovací adresa URL jsou vysvětleny dále v tomto kurzu.
+
+6. Aplikace sítě konektor meta očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
+
+    ![image](common/edit-attribute.png)
     
-1. Aplikace sítě konektor meta očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
+7. Kromě toho výše aplikace Meta sítě konektor očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
     
-    ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_attribute.png)
-    
-1. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
-    
-    | Název atributu | Hodnota atributu | Obor názvů|
+    | Název | Zdrojový atribut | Obor názvů|
     | ---------------| --------------- | -------- |
     | jméno | user.givenname | |
     | Příjmení | user.surname | |
@@ -137,165 +135,150 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | jméno | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | telefon | user.telephonenumber | |
 
-    1. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
+    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
-        ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/tutorial_attribute_04.png)
-    
-        ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/tutorial_attribute_05.png)   
-    
-    1. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
-    
-    1. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-    
-    1. V **Namespace** textového pole zadejte hodnotu oboru názvů, který je zobrazený pro tento řádek.
-    
-    1. Klikněte na tlačítko **Ok**
-    
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
-    
-    ![Odkaz ke stažení certifikátu](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_certificate.png)
-    
-1. Na **konfigurace konektoru sítě Meta** klikněte na tlačítko **nakonfigurovat konektor sítě Meta** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
-    
-    ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_configure.png)
-    
-1. Klikněte na tlačítko **Uložit** tlačítko.
-    
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/metanetworksconnector-tutorial/tutorial_general_400.png)
-    
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+
+    c. Nechte **Namespace** prázdné.
+
+    d. Vyberte zdroj jako **atribut**.
+
+    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+
+    f. Klikněte na tlačítko **Ok**
+
+    g. Klikněte na **Uložit**.
+
+8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+
+9. Na **nastavte konektor sítě Meta** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-meta-networks-connector-single-sign-on"></a>Konfigurace Meta sítě konektor jednotného přihlašování
+
 1. Otevření nové záložky v prohlížeči a přihlaste se k vašemu účtu správce konektoru Meta sítě.
     
     > [!NOTE]
     > Konektor sítí meta je zabezpečení systému. Proto před přístupem k jejich portálu musíte získat vaše veřejné IP adresy přidat na seznam povolených na své straně. Chcete-li získat veřejnou IP adresu, postupujte níže uvedeném odkazu [tady](https://whatismyipaddress.com/). Poslat vaši IP adresu, které [tým podpory Meta sítě konektor klienta](mailto:support@metanetworks.com) zobrazíte vašeho seznamu povolených IP adres.
     
-1. Přejděte na **správce** a vyberte **nastavení**.
+2. Přejděte na **správce** a vyberte **nastavení**.
     
     ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/configure3.png)
     
-1. Ujistěte se, že **protokol internetové přenosy** a **platnost VPN MFA** jsou nastaveny na vypnuto.
+3. Ujistěte se, že **protokol internetové přenosy** a **platnost VPN MFA** jsou nastaveny na vypnuto.
     
     ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/configure1.png)
     
-1. Přejděte na **správce** a vyberte **SAML**.
+4. Přejděte na **správce** a vyberte **SAML**.
     
     ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/configure4.png)
     
-1. Následující postup proveďte **podrobnosti** stránky:
+5. Následující postup proveďte **podrobnosti** stránky:
     
     ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/configure2.png)
     
-    1. Kopírování **adresu URL jednotného přihlašování** hodnotu a vložte ho do **přihlašovací adresa URL** textového pole v **Meta sítě konektor domény a adresy URL** oddílu.
+    a. Kopírování **adresu URL jednotného přihlašování** hodnotu a vložte ho do **přihlašovací adresa URL** textového pole v **Meta sítě konektor domény a adresy URL** oddílu.
     
-    1. Kopírování **příjemce URL** hodnotu a vložte ho do **adresy URL odpovědi** textového pole v **Meta sítě konektor domény a adresy URL** oddílu.
+    b. Kopírování **příjemce URL** hodnotu a vložte ho do **adresy URL odpovědi** textového pole v **Meta sítě konektor domény a adresy URL** oddílu.
     
-    1. Kopírování **identifikátor URI cílové skupiny (SP Entity ID)** hodnotu a vložte ho do **identifikátor (Entity ID)** textového pole v **Meta sítě konektor domény a adresy URL** oddílu.
+    c. Kopírování **identifikátor URI cílové skupiny (SP Entity ID)** hodnotu a vložte ho do **identifikátor (Entity ID)** textového pole v **Meta sítě konektor domény a adresy URL** oddílu.
     
-    1. Povolit SAML
+    d. Povolit SAML
     
-1. Na **Obecné** kartu, proveďte následující kroky:
+6. Na **Obecné** kartu, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/metanetworksconnector-tutorial/configure5.png)
 
-    1. V **jednotné přihlašování – adresa URL zprostředkovatele Identity**, vložte **SAML jednotné přihlašování – adresa URL služby** hodnotu, která jste zkopírovali z portálu Azure portal.
+    a. V **jednotné přihlašování – adresa URL zprostředkovatele Identity**, vložte **přihlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal.
 
-    1. V **Vystavitel zprostředkovatele Identity**, vložte **SAML Entity ID** hodnotu, která jste zkopírovali z portálu Azure portal.
+    b. V **Vystavitel zprostředkovatele Identity**, vložte **Azure AD identifikátor** hodnotu, která jste zkopírovali z portálu Azure portal.
 
-    1. Otevřete stažený certifikát z webu Azure portal v programu Poznámkový blok, vložit do **certifikát X.509** textového pole.
+    c. Otevřete stažený certifikát z webu Azure portal v programu Poznámkový blok, vložit do **certifikát X.509** textového pole.
 
-    1. Povolit **Just-in-Time zřizování**.
+    d. Povolit **Just-in-Time zřizování**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
-    
-![Vytvořit testovacího uživatele Azure AD][100]
-    
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
-    
-    ![Tlačítko Azure Active Directory](./media/metanetworksconnector-tutorial/create_aaduser_01.png)
-    
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
-    
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/metanetworksconnector-tutorial/create_aaduser_02.png)
-    
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
-    
-    ![Tlačítko Přidat](./media/metanetworksconnector-tutorial/create_aaduser_03.png)
-    
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-    ![Dialogové okno uživatele](./media/metanetworksconnector-tutorial/create_aaduser_04.png)
-    
-    1. V **název** zadejte **BrittaSimon**.
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-    1. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-    
-    1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-    
-    1. Klikněte na možnost **Vytvořit**.
-    
-### <a name="create-a-meta-networks-connector-test-user"></a>Vytvoření zkušebního uživatele Meta sítě konektoru
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-Cílem této části je vytvořte uživatele Britta Simon v Meta sítě konektoru. Meta sítě konektor podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Meta sítě konektor, pokud ještě neexistuje.
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
->[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Meta sítě konektor klienta](mailto:support@metanetworks.com).
+3. Ve vlastnosti uživatele proveďte následující kroky.
+
+    ![Dialogové okno uživatele](common/user-properties.png)
+
+    a. V **název** zadejte **BrittaSimon**.
+  
+    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
+
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Meta sítě konektoru.
 
-![Přiřazení role uživatele][200]
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Meta sítě konektor**.
 
-**Britta Simon přiřadit Meta sítě konektor, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
-    
-    ![Přiřadit uživatele][201]
-    
-1. V seznamu aplikací vyberte **Meta sítě konektor**.
-    
-    ![Odkaz Meta sítě konektor v seznamu aplikací](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_app.png)  
-    
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-    
-    ![Odkaz "Uživatele a skupiny"][202]
-    
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-    
-    ![Podokno Přidat přiřazení][203]
-    
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-    
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-    
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+2. V seznamu aplikací vyberte **Meta sítě konektor**.
+
+    ![Odkaz Meta sítě konektor v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+
+### <a name="create-meta-networks-connector-test-user"></a>Vytvoření konektoru sítě Meta testovacího uživatele
+
+V této části se vytvoří uživateli Britta Simon v Meta sítě konektoru. Meta sítě konektor podporuje zřizování just-in-time je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel ještě neexistuje v Meta sítě konektor, je vytvořen nový při pokusu o přístup k Meta sítě konektoru.
+
+>[!Note]
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Meta sítě konektor klienta](mailto:support@metanetworks.com).
+
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Meta sítě konektor na přístupovém panelu, vám by měl získat automaticky přihlášení k Meta sítě konektoru aplikace.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici Meta sítě konektor na přístupovém panelu, vám by měl být automaticky přihlášeni ke konektoru Meta sítě, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/metanetworksconnector-tutorial/tutorial_general_01.png
-[2]: ./media/metanetworksconnector-tutorial/tutorial_general_02.png
-[3]: ./media/metanetworksconnector-tutorial/tutorial_general_03.png
-[4]: ./media/metanetworksconnector-tutorial/tutorial_general_04.png
-
-[100]: ./media/metanetworksconnector-tutorial/tutorial_general_100.png
-
-[200]: ./media/metanetworksconnector-tutorial/tutorial_general_200.png
-[201]: ./media/metanetworksconnector-tutorial/tutorial_general_201.png
-[202]: ./media/metanetworksconnector-tutorial/tutorial_general_202.png
-[203]: ./media/metanetworksconnector-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 30b83613637d97bfe265c4f5a9c911d14da50c4f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 26865acbf635f07db4799ab197e110d37cbe69e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810903"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984335"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
@@ -53,7 +53,7 @@ IoT Hub také nabízí úrovně free, která je určená pro testování a vyhod
 
 Azure IoT hub obsahovat mnoho základních součástí [Azure Event Hubs](../event-hubs/event-hubs-features.md), včetně [oddíly](../event-hubs/event-hubs-features.md#partitions). Streamování událostí služby IoT hubs jsou obvykle vyplní příchozí telemetrická data, která je ohlášena různých zařízení IoT. Dělení datového proudu událostí se používá k omezení sporů, ke kterým dochází při souběžné čtení a zápis do datových proudů událostí. 
 
-Omezení počtu oddílů se volí při vytvoření služby IoT Hub a nedá se změnit. Oddíl maximální limit pro IoT hub úrovně basic je 8 a pro úroveň standard maximum je 32. Většina centra IoT hub stačí jenom 4 oddíly. Další informace o určení oddíly, naleznete v tématu Nejčastější dotazy týkající se Event Hubs [počtu oddílů potřeba?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+Omezení počtu oddílů se volí při vytvoření služby IoT Hub a nedá se změnit. Oddíl maximální limit pro úroveň basic služby IoT Hub a úroveň standard služby IoT Hub je 32. Většina centra IoT hub stačí jenom 4 oddíly. Další informace o určení oddíly, naleznete v tématu Nejčastější dotazy týkající se Event Hubs [počtu oddílů potřeba?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 
 
 ## <a name="tier-upgrade"></a>Upgrade úrovně

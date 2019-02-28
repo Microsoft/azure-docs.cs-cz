@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: e6d16c31b8975036202fe77906e2d729391b5c59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c7b62f66830e17fd8f6607e0a629307a9ab6fc78
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038071"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983587"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů s využitím služby Azure Cosmos DB
 
@@ -215,6 +215,8 @@ V části týkající se metrik provádění dotazu vysvětluje, jak načíst č
 
 ### <a name="indexing-policy"></a>Zásady indexování
 Zobrazit [Konfigurace zásady indexování](index-policy.md) indexování cesty, typy a režimech a jak by mohly mít dopad provedení dotazu. Ve výchozím nastavení, zásady indexování používá indexování hodnot Hash pro řetězce, které platí pro dotazy na rovnost, ale ne pro dotazy na rozsah/order dotazy. Pokud potřebujete dotazy na rozsah pro řetězce, doporučujeme určení index typu rozsah pro všechny řetězce. 
+
+Ve výchozím nastavení použije službu Azure Cosmos DB automatického indexování ke všem datům. Pro vysoce výkonné vložit scénáře, zvažte možnost vyloučit cesty, protože tím se sníží náklady RU pro každou operaci insert. 
 
 ## <a name="query-execution-metrics"></a>Metriky spouštění dotazů
 Můžete získat podrobné metriky spouštění dotazů předáním volitelné `x-ms-documentdb-populatequerymetrics` záhlaví (`FeedOptions.PopulateQueryMetrics` v sadě .NET SDK). Hodnota vrácená v `x-ms-documentdb-query-metrics` má následující páry klíč hodnota, které jsou určené pro pokročilé Poradce při potížích pro spuštění dotazu. 

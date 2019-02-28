@@ -8,16 +8,18 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fb9ee97726632b7eeccc923596c1f5527a7c95bd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098574"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961602"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
-Tento článek vám pomůže nakonfigurovat rozšíření Network Performance Monitor k monitorování ExpressRoute. Network Performance Monitor (NPM) je řešení, která monitoruje připojení mezi nasazeními v cloudu Azure a místními umístěními (firemní pobočky, atd.) pro monitorování sítě založené na cloudu. NPM je součástí služby Log Analytics. NPM nabízí rozšíření pro ExpressRoute, který vám umožní monitorovat výkon sítě přes okruhy ExpressRoute, které jsou nakonfigurovány pro použití soukromého partnerského vztahu a partnerského vztahu Microsoftu. Když konfigurujete NPM pro ExpressRoute, můžete zjistit, identifikovat a eliminovat problémy se sítí. Tato služba je také k dispozici pro Azure Government Cloud.
+Tento článek vám pomůže nakonfigurovat rozšíření Network Performance Monitor k monitorování ExpressRoute. Network Performance Monitor (NPM) je řešení, která monitoruje připojení mezi nasazeními v cloudu Azure a místními umístěními (firemní pobočky, atd.) pro monitorování sítě založené na cloudu. NPM je součástí protokoly Azure monitoru. NPM nabízí rozšíření pro ExpressRoute, který vám umožní monitorovat výkon sítě přes okruhy ExpressRoute, které jsou nakonfigurovány pro použití soukromého partnerského vztahu a partnerského vztahu Microsoftu. Když konfigurujete NPM pro ExpressRoute, můžete zjistit, identifikovat a eliminovat problémy se sítí. Tato služba je také k dispozici pro Azure Government Cloud.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Můžete:
 
@@ -98,7 +100,7 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
 2. Na **úvodní** stránce klikněte na **Další**.
 3. Na **licenční podmínky** stránce, prostudujte licenční a potom klikněte na tlačítko **souhlasím**.
 4. Na **cílovou složku** stránce, změňte nebo ponechte výchozí instalační složku a potom klikněte na tlačítko **Další**.
-5. Na **možnosti instalace agenta** stránky, můžete také připojit agenta k Azure Log Analytics nebo Operations Manager. Nebo můžete ponechat volby prázdné Pokud chcete později konfigurovat agenta. Po provedení vybrané položky, klikněte na tlačítko **Další**.
+5. Na **možnosti instalace agenta** stránky, můžete také připojit agenta k Azure Monitor protokoly nebo Operations Manager. Nebo můžete ponechat volby prázdné Pokud chcete později konfigurovat agenta. Po provedení vybrané položky, klikněte na tlačítko **Další**.
 
   * Pokud jste zvolili pro připojení k **Azure Log Analytics**, vložte **ID pracovního prostoru** a **klíč pracovního prostoru** (primární klíč), který jste zkopírovali do poznámkového bloku v předchozí části. Pak klikněte na **Další**.
 
@@ -111,7 +113,7 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
     ![Účet](./media/how-to-npm/10.png)
 6. Na **připraveno k instalaci** stránky, zkontrolujte zvolené volby a pak klikněte na tlačítko **nainstalovat**.
 7. Na stránce **Konfigurace byla úspěšně dokončena** klikněte na **Dokončit**.
-8. Jakmile budete hotovi, zobrazí se v Ovládacích panelech agenta Microsoft Monitoring Agent. Můžete zkontrolovat svou konfiguraci existuje a ověřit připojení agenta k Azure Log Analytics. Když se připojí, agent zobrazí zprávu: **Microsoft Monitoring Agent úspěšně připojilo ke službě Microsoft Operations Management Suite**.
+8. Jakmile budete hotovi, zobrazí se v Ovládacích panelech agenta Microsoft Monitoring Agent. Můžete zkontrolovat svou konfiguraci existuje a ověřte, že agent je připojený k protokoly Azure monitoru. Když se připojí, agent zobrazí zprávu: **Microsoft Monitoring Agent úspěšně připojilo ke službě Microsoft Operations Management Suite**.
 
 9. Tento postup opakujte pro každou virtuální síť, které potřebujete k monitorování.
 
@@ -135,7 +137,7 @@ Můžete snadno ověřit, zda jsou komunikaci agentů.
 1. Na serveru agenta monitorování, otevřete **ovládací panely**.
 2. Otevřít **agenta Microsoft Monitoring Agent**.
 3. Klikněte na tlačítko **Azure Log Analytics** kartu.
-4. V **stav** sloupce, měli byste vidět, že agenta úspěšně připojil ke službě Log Analytics.
+4. V **stav** sloupce, měli byste vidět, že agenta úspěšně připojila k protokoly Azure monitoru.
 
   ![status](./media/how-to-npm/12.png)
 

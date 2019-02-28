@@ -9,19 +9,29 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 52e7fdf6de25300d4f78ee9822aca4ad83f646e9
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: ccf298c99851dc2418da894431c5c86adafe59b3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408421"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959438"
 ---
 # <a name="encoding-with-media-services"></a>Kódování pomocí Media Services
 
-Azure Media Services můžete digitální vysoce kvalitní mediální soubory můžete zakódovat formáty, které můžete přehrát na širokou škálu prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Toto téma poskytuje pokyny o tom, jak zakódovat svůj obsah pomocí služby Media Services v3.
+Azure Media Services umožňuje má kódovat do souborů MP4 vysoké kvality digitální mediální soubory, tak svůj obsah můžete přehrát na širokou škálu prohlížečů a zařízení. Úspěšné úlohy kódování Media Services vytvoří výstupní Asset se sadou s adaptivní přenosovou rychlostí soubory MP4 rychlostmi a soubory manifestu (serveru a klienta). V tomto okamžiku můžete využít výhod [dynamické balení](dynamic-packaging-overview.md).
+
+Chcete-li videa ve výstupu prostředek k dispozici pro klienty pro přehrávání, je nutné vytvořit **Lokátor streamování** a následně vytvořit adresy URL pro streamování. Potom podle formátu určeného v manifestu, vaši klienti datový proud obdrželi v protokolu, které jste vybrali.
+
+Následující diagram znázorňuje streamování na vyžádání s dynamickým vytvářením paketů pracovního postupu.
+
+![Dynamické kódování](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+
+Toto téma poskytuje pokyny o tom, jak zakódovat svůj obsah pomocí služby Media Services v3.
+
+## <a name="transforms-and-jobs"></a>Transformace a úlohy
 
 Ke kódování pomocí Media Services v3, je potřeba vytvořit [transformace](https://docs.microsoft.com/rest/api/media/transforms) a [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Transformace definuje předpisu pro kódování nastavení a výstupů a úloha je instance předpisu. Další informace najdete v tématu [transformuje a úlohy](transforms-jobs-concept.md)
 
@@ -60,9 +70,11 @@ Služba Media Services plně podporuje všechny hodnoty v předvolbách pro spln
 
 ## <a name="scaling-encoding-in-v3"></a>Škálování kódování ve verzi 3
 
-V současné době zákazníci mají nastavení ru pomocí webu Azure portal nebo rozhraní API služby Media Services v2 (jak je popsáno v [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). 
+Škálování zpracování médií, naleznete v tématu [škálování pomocí rozhraní příkazového řádku](media-reserved-units-cli-how-to.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Transformace a úlohy](transforms-jobs-concept.md)
+* [Kódování z adresy URL HTTPS pomocí předdefinované předvolby](job-input-from-http-how-to.md)
+* [Kódování pomocí předdefinované předvolby místního souboru](job-input-from-local-file-how-to.md)
+* [Vytvoření vlastního přednastaveny tak, aby cílit na konkrétní scénář nebo zařízení požadavky](customize-encoder-presets-how-to.md)
 * [Nahrávání, kódování a streamování pomocí služby Media Services](stream-files-tutorial-with-api.md)

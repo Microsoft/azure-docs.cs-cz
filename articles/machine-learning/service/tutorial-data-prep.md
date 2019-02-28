@@ -11,16 +11,16 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6c1af2051d946b29e2022c90d0ad9820b4d283
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1d483d14a08f589fc8d014a13a47008b9fb59690
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823497"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984947"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
-V tomto kurzu se dozvíte, jak připravit data pro modelování s použitím sady SDK pro Azure Machine Learning Data Prep regrese. Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.
+V tomto kurzu se dozvíte, jak připravit data pro modelování s využitím regrese [aplikaci Azure Machine Learning Data Prep SDK pro Python](https://aka.ms/data-prep-sdk). Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.
 
 Tento kurz je **první částí z dvoudílné série kurzů**. Po dokončení série kurzů, lze odhadnout náklady na cesty taxíkem díky trénování modelu na datových funkcích. Tyto funkce patří vyzvednutí den a čas, počet cestujících a výstupní umístění.
 
@@ -48,7 +48,7 @@ Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených čá
 
 ### <a name="azure"></a>Použití poznámkových bloků Azure: Bezplatné poznámkové bloky Jupyter v cloudu
 
-Je snadné začít s poznámkovými bloky Azure! [Aplikaci Azure Machine Learning Data Prep SDK pro Python](https://aka.ms/data-prep-sdk) je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
+Je snadné začít s poznámkovými bloky Azure! Sady SDK pro Azure Machine Learning Data Prep je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
 
 Po dokončení následujících kroků spustit **kurzy/regrese – část 1 data-prep.ipynb** Poznámkový blok v vaše **Začínáme** projektu.
 
@@ -662,7 +662,7 @@ Všimněte si, že profil dat výstup v `store_forward` sloupci se zobrazuje, ž
 replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-Spustit `replace` na fungovat `distance` pole. Funkce přeformátuje vzdálenost hodnoty, které jsou nesprávně označený jako `.00`a vyplní všechny hodnoty Null nulami. Převést `distance` pole na číselný formát. Tyto body nesprávná data jsou pravděpodobně anomolies v systému kolekce dat u souborů CAB taxislužby.
+Spustit `replace` na fungovat `distance` pole. Funkce přeformátuje vzdálenost hodnoty, které jsou nesprávně označený jako `.00`a vyplní všechny hodnoty Null nulami. Převést `distance` pole na číselný formát. Tyto body nesprávná data jsou pravděpodobně anomálie v systému kolekce dat u souborů CAB taxislužby.
 
 
 ```python

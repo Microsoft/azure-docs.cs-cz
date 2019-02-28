@@ -2,26 +2,22 @@
 title: Jak změnit, odstranit nebo Správa skupin pro správu v Azure – Azure zásad správného řízení
 description: Zjistěte, jak zobrazit, udržovat, aktualizovat a odstraňovat vaše hierarchie skupin správy.
 author: rthorn17
-manager: rithorn
 ms.service: azure-resource-manager
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/20/2018
+ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bcc0b247ee304e657b7679920a3956acad11adc9
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342574"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985117"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
-Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů napříč několika předplatnými. Můžete změnit, odstranit a správu těchto kontejnerů mít hierarchie, které lze použít s [Azure Policy](../policy/overview.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../../role-based-access-control/overview.md). Další informace o skupinách správy, najdete v článku [uspořádání prostředků se skupinami pro správu Azure](overview.md).
+Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure představují úroveň rozsahu nad předplatnými. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své zásady správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky, které se na příslušnou skupinu pro správu vztahují.
 
-Pokud chcete provést změny ve skupině pro správu, musíte mít roli vlastníka nebo přispěvatele skupiny pro správu. A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).
+Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.  Další informace o skupinách správy, najdete v článku [uspořádání prostředků se skupinami pro správu Azure](overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -73,7 +69,7 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 
    - Přesunout skupinu pro správu do jiné skupiny pro správu, najdete v článku [přesunutí správy skupin v hierarchii](#Move-management-groups-in-the-hierarchy).
 
-1. Máte oprávnění k zápisu na skupinu vlastníka nebo přispěvatele rolí správy skupiny pro správu. A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).  
+1. Máte oprávnění k zápisu ve skupině pro správu ("Vlastník", "Přispěvatel" nebo "Přispěvatel skupiny Management"). A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Odstranit na portálu
 
@@ -85,7 +81,8 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 
 1. Vyberte **odstranit**
 
-   - Pokud ikona je zakázaná, váš výběr myš najede myší na ikonu se dozvíte z důvodu.
+    > [!TIP]
+    > Pokud ikona je zakázaná, váš výběr myš najede myší na ikonu se dozvíte z důvodu.
 
    ![Skupina možností odstranit](./media/delete.png)
 
@@ -121,15 +118,15 @@ Můžete zobrazit všechny skupiny pro správu, kterou máte v roli RBAC s pří
 
 1. Vyberte **všechny služby** > **skupin pro správu**.
 
-1. Hierarchie skupiny správy stránka načte, kde můžete prozkoumat všechny skupiny pro správu a předplatná, ke kterým máte přístup k. Výběr názvu skupiny přejdete dolů úrovně v hierarchii. Navigační funguje stejně jako Průzkumník souborů.
+1. Se načítání stránky hierarchie skupiny správy. Tato stránka je, kde můžete prozkoumat všechny skupiny pro správu a předplatné, abyste měli přístup k. Výběr názvu skupiny přejdete dolů úrovně v hierarchii. Navigační funguje stejně jako Průzkumník souborů.
+
+1. Pokud chcete zobrazit podrobnosti o skupině pro správu, vyberte **(podrobnosti)** odkaz vedle názvu skupiny pro správu. Pokud tento odkaz není k dispozici, nemáte oprávnění k zobrazení této skupiny pro správu.
 
    ![Hlavní](./media/main.png)
 
-1. Pokud chcete zobrazit podrobnosti o skupině pro správu, vyberte **(podrobnosti)** odkaz vedle názvu skupiny pro správu. Pokud tento odkaz není k dispozici, nemáte oprávnění k zobrazení této skupiny pro správu.  
-
 ### <a name="view-in-powershell"></a>Zobrazení v prostředí PowerShell
 
-Pomocí příkazu Get-AzureRmManagementGroup k načtení všech skupin.  
+Pomocí příkazu Get-AzureRmManagementGroup k načtení všech skupin.  Zobrazit [ https://aka.ms/Get-MG-Powershell ](https://aka.ms/Get-MG-Powershell) pro úplný seznam příkazů prostředí Powershell získat skupiny správy.  
 
 ```azurepowershell-interactive
 Get-AzureRmManagementGroup
@@ -139,6 +136,41 @@ Jedna skupina pro správu vaší informace použijte parametr - GroupName
 
 ```azurepowershell-interactive
 Get-AzureRmManagementGroup -GroupName 'Contoso'
+```
+
+Pokud chcete vrátit konkrétní skupině pro správu a všechny úrovně v hierarchii pod ním, použijte **-rozbalte** a **-Recurse** parametry.  
+
+```azurepowershell-interactive
+PS C:\> $response = Get-AzureRmManagementGroup -GroupName TestGroupParent -Expand -Recurse
+PS C:\> $response
+
+Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
+Type              : /providers/Microsoft.Management/managementGroups
+Name              : TestGroupParent
+TenantId          : 00000000-0000-0000-0000-000000000000
+DisplayName       : TestGroupParent
+UpdatedTime       : 2/1/2018 11:15:46 AM
+UpdatedBy         : 00000000-0000-0000-0000-000000000000
+ParentId          : /providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000
+ParentName        : 00000000-0000-0000-0000-000000000000
+ParentDisplayName : 00000000-0000-0000-0000-000000000000
+Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
+
+PS C:\> $response.Children[0]
+
+Type        : /managementGroup
+Id          : /providers/Microsoft.Management/managementGroups/TestGroup1
+Name        : TestGroup1
+DisplayName : TestGroup1DisplayName
+Children    : {TestRecurseChild}
+
+PS C:\> $response.Children[0].Children[0]
+
+Type        : /managementGroup
+Id          : /providers/Microsoft.Management/managementGroups/TestRecurseChild
+Name        : TestRecurseChild
+DisplayName : TestRecurseChild
+Children    :
 ```
 
 ### <a name="view-in-azure-cli"></a>Zobrazení v rozhraní příkazového řádku Azure
@@ -155,17 +187,25 @@ Jedna skupina pro správu vaší informace použijte příkaz show
 az account management-group show --name 'Contoso'
 ```
 
+Pokud chcete vrátit konkrétní skupině pro správu a všechny úrovně v hierarchii pod ním, použijte **-rozbalte** a **-Recurse** parametry.
+
+```azurecli-interactive
+az account management-group show --name 'Contoso' -e -r
+```
+
 ## <a name="move-subscriptions-in-the-hierarchy"></a>Přesunout předplatná v hierarchii
 
 Jedním z důvodů, chcete-li vytvořit skupinu pro správu je pohromadě předplatných. Podřízené položky z jiné skupiny pro správu lze provést pouze skupiny pro správu a předplatných. Předplatné, které se přesune do skupiny pro správu dědí všechny zásady a přístup uživatelů z nadřazené skupiny pro správu.
 
-Pokud chcete přesunout předplatné, jsou několik oprávnění, které je potřeba:
+Pokud chcete přesunout předplatné, všech následujících oprávnění RBAC musí být splněny:
 
 - "Vlastník" role v podřízených předplatného.
-- "Vlastník" nebo "Přispěvatel" role v nové skupině pro správu nadřazené.
-- Role "Vlastník" nebo "Přispěvatel" staré nadřazené skupiny pro správu.
+- "Vlastník", "Přispěvatel" nebo "Správa skupiny přispěvatelů" role na group.* cílového nadřazeného správy
+- "Vlastník", "Přispěvatel" nebo "Správa skupiny přispěvatelů" role na existující group.* nadřazené správy
 
-A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).
+*: Pokud cíl nebo existující skupiny pro správu nadřazené není kořenovou skupinu správy. Protože kořenové skupině pro správu je výchozí úvodní přímé pro všechny nové skupiny pro správu a předplatných, uživatelé oprávnění na něm přesunout položku nepotřebují.
+
+Chcete-li zjistit, jaká oprávnění máte na webu Azure Portal, vyberte správu skupin a potom vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).
 
 ### <a name="move-subscriptions-in-the-portal"></a>Přesunout předplatná na portálu
 
@@ -235,7 +275,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>Přesunutí správy skupin v hierarchii  
 
-Při přesunu nadřazenou skupinu pro správu, všechny podřízené prostředky, které obsahují skupiny pro správu, předplatná, skupiny prostředků a přesun prostředků s nadřazenými.
+Při přesunutí nadřazená skupina pro správu hierarchie v této skupině se přesune s ním.
 
 ### <a name="move-management-groups-in-the-portal"></a>Přesunutí skupin pro správu na portálu
 
@@ -274,17 +314,29 @@ az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
 
-Pokud chcete přes toto rozhraní API sledovat skupiny pro správu, použijte [rozhraní API protokolů aktivit tenanta](/rest/api/monitor/tenantactivitylogs). Ke sledování aktivit skupin pro správu aktuálně není možné použít PowerShell, rozhraní příkazového řádku ani Azure Portal.
+Skupiny pro správu jsou podporovány v rámci [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md). Všechny události, ke kterým dochází ve skupině pro správu ve stejném centrální umístění jako ostatní prostředky Azure se můžete dotazovat.  Například můžete zobrazit všechna přiřazení rolí nebo přiřazení zásad změny provedené ve skupině pro správu konkrétní.
 
-1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`.
-1. Jako uživatel provádějící audit zavoláním [rozhraní API protokolů aktivit tenanta](/rest/api/monitor/tenantactivitylogs) zobrazte aktivity skupiny pro správu. Doporučujeme vyfiltrovat poskytovatele prostředků **Microsoft.Management**, aby se zobrazily všechny aktivity skupiny pro správu.  Příklad:
+![Protokoly aktivit se skupiny pro správu](media/al-mg.png)
 
-```xml
-GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+Když chcete dotaz na skupiny pro správu mimo na webu Azure portal, cílový obor pro skupiny pro správu vypadá jako **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+
+## <a name="referencing-management-groups-from-other-resource-providers"></a>Odkazování na skupiny pro správu od jiných poskytovatelů prostředků
+
+Při odkazování na skupiny pro správu z akce jiný poskytovatel prostředků, použijte následující cestu jako obor. Tato cesta se používá při použití prostředí PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API.  
+
+>"/providers/Microsoft.Management/managementGroups/{yourMgID}"
+
+Příkladem použití této cesty je při přiřazování přiřazení nové role pro skupinu pro správu v prostředí PowerShell
+
+```powershell-interactive
+New-AzureRmRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
-> [!NOTE]
-> Pokud chcete toto rozhraní API pohodlně volat z příkazového řádku, vyzkoušejte [ARMClient](https://github.com/projectkudu/ARMClient).
+Při načítání definice zásady na skupinu pro správu, se používá stejná cesta oboru.
+
+```http
+GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
+```
 
 ## <a name="next-steps"></a>Další postup
 

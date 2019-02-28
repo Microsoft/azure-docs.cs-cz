@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/04/2018
+ms.date: 02/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 3bdc3a91e87f1bbd06ef0181d0042ee618f519c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 78ad656648215b0e328c62ecdd9eb0a1eb855a88
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861438"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961682"
 ---
 # <a name="language-and-region-support-for-qna-maker"></a>Podpora jazyka a oblasti pro nástroj QnA Maker
 

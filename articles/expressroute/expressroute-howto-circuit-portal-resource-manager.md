@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 45e87be071e09a19f1d8164eb9a002909a964201
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894713"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960381"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Vytvoření a úprava okruhu ExpressRoute
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ Na této stránce **stav poskytovatele** poskytuje informace o aktuálním stavu
 
 Při vytváření nového okruhu ExpressRoute, je okruh v následujícím stavu:
 
-Stav poskytovatele: Není zajišťováno<BR>
+Stav poskytovatele: Není zajištěno<BR>
 Stav okruhu: Povoleno
 
 ![Zahájení procesu zřizování](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
@@ -119,9 +119,9 @@ Můžete provádět následující úlohy došlo k výpadku:
 
 * Povolit nebo zakázat doplněk ExpressRoute Premium pro váš okruh ExpressRoute.
 * Zvětšete šířku pásma okruhu ExpressRoute zadaný na portu je k dispozici kapacita.
-  > [!IMPORTANT] Šířku pásma okruhu downgradu není podporován. 
+> [!IMPORTANT] Šířku pásma okruhu downgradu není podporován. 
 * Změna plánu měření z *měření podle objemu dat* k *neomezená Data*.
-  > [!IMPORTANT] Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
+> [!IMPORTANT] Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
 * Můžete povolit nebo zakázat *povolit klasické operace*.
 > [!IMPORTANT]
 > Bude pravděpodobně nutné znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nemůže upgradovat okruh.

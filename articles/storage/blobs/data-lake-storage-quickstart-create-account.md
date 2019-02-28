@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884456"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984182"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2
 
@@ -83,7 +83,7 @@ Při vytváření skupiny prostředků na webu Azure Portal použijte tento post
 Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
 
 > [!NOTE]
-> Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech. Momentálně není k dispozici v suverénních cloudech.
+> Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech.
 
 1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Všechny služby**. Potom přejděte dolů do části **Úložiště** a zvolte **Účty úložiště**. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
 2. Vyberte vaše **předplatné** a **skupiny prostředků** jste vytvořili dříve.
@@ -141,7 +141,7 @@ Login-AzAccount
 Chcete-li vytvořit novou skupinu prostředků pomocí Powershellu, použijte [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkaz: 
 
 > [!NOTE]
-> Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech. Momentálně není k dispozici v suverénních cloudech.
+> Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -201,7 +201,7 @@ az group create `
 ```
 
 > [!NOTE]
-> > Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech. Momentálně není k dispozici v suverénních cloudech.
+> > Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Vytvoření účtu úložiště pro obecné účely verze 2
 

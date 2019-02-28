@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232613"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983179"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Kurz: Vyrovnávání zatížení interního provozu load balanceru úrovně Basic na webu Azure Portal
 
@@ -43,7 +43,7 @@ Nejprve vytvořte virtuální síť (VNet). Ve virtuální síti vytvořte dva v
 1. V **vytvořit virtuální síť** podokně, zadejte nebo vyberte tyto hodnoty:
    
    - **Název**: Typ *MyVNet*.
-   - **Skupina prostředků**: Vyberte **vytvořit nový**, zadejte *MyResourceGroupLB*a vyberte **OK**. 
+   - **ResourceGroup**: Vyberte **vytvořit nový**, zadejte *MyResourceGroupLB*a vyberte **OK**. 
    - **Podsíť** > **název**: Typ *MyBackendSubnet*.
    
 1. Vyberte **Vytvořit**.
@@ -87,20 +87,23 @@ Vytvoření interní load balanceru úrovně Basic prostřednictvím portálu. N
 
 1. V levém horním rohu webu Azure Portal klikněte na **Vytvořit prostředek** > **Sítě** > **Nástroj pro vyrovnávání zatížení**.
    
-1. V **vytvořit nástroj pro vyrovnávání zatížení** podokně, zadejte nebo vyberte tyto hodnoty:
+2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
+
+    | Nastavení                 | Hodnota                                              |
+    | ---                     | ---                                                |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
+    | Název                   | *myLoadBalancer*                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Type          | Vyberte **veřejné**.                                        |
+    | Skladová jednotka (SKU)           | Vyberte **Basic**.                          |
+    | Virtuální síť           | Vyberte *MyVNet*.                          |    
+| Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
+    | Přiřazení veřejné IP adresy              | Vyberte **statické**.   |
+    | Privátní IP adresa|Zadejte adresu, která je v adresním prostoru virtuální sítě a podsítě, například *10.3.0.7*.  |
+
+3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**. 
    
-   - **Název**: Typ *MyLoadBalancer*.
-   - **Typ**: Vyberte **interní**. 
-   - **SKLADOVÁ POLOŽKA**: Vyberte **Basic**.
-   - **Virtuální síť**: Vyberte **zvolit virtuální síť**a pak vyberte **MyVNet**.
-   - **Podsíť**: Vyberte **zvolit podsíť**a pak vyberte **MyBackendSubnet**.
-   - **Přiřazení IP adresy**: Vyberte **statické** Pokud není vybrán.
-   - **Privátní IP adresa**: Zadejte adresu, která je v adresním prostoru virtuální sítě a podsítě, například *10.3.0.7*.
-   - **Skupina prostředků**: Rozevírací nabídka **vybrat existující** a vyberte **MyResourceGroupLB**. 
-   
-1. Vyberte **Vytvořit**.
-   
-![Vytvoření nástroje pro vyrovnávání zatížení](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-basic-load-balancer-resources"></a>Vytvoření prostředků nástroje pro vyrovnávání zatížení základní
 

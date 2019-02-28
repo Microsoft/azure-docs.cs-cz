@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: f21d92dabfcfbe51cf8135388a1ab489c20593a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 56e203a212a4e0e81922336f72fd58ef3cb7dc64
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537541"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983502"
 ---
 # <a name="azure-networking"></a>Sítě Azure
 
@@ -136,7 +136,7 @@ Azure vytvoří výchozí směrovací tabulky, které umožňují prostředkům 
 
 Azure poskytuje následující nástroje pro monitorování a Správa sítě:
 - **Protokoly aktivit:** Všechny prostředky Azure mají protokoly aktivit, které poskytují informace o operacích provedených místo, stav operací a kdo operaci zahájil. Další informace o protokolech aktivit, [protokoly aktivit přehled](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Diagnostické protokoly:** Pravidelné a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech Azure storage, odeslaná do centra událostí Azure nebo odeslané do služby Azure Log Analytics. Diagnostické protokoly poskytují přehled o stavu prostředku. Diagnostické protokoly jsou k dispozici pro nástroj pro vyrovnávání zatížení (internetový), skupin zabezpečení sítě, tras a služba Application Gateway. Další informace o diagnostických protokolech najdete v článku [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+- **Diagnostické protokoly:** Pravidelné a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech Azure storage, odeslaná do centra událostí Azure nebo odesílat protokoly Azure monitoru. Diagnostické protokoly poskytují přehled o stavu prostředku. Diagnostické protokoly jsou k dispozici pro nástroj pro vyrovnávání zatížení (internetový), skupin zabezpečení sítě, tras a služba Application Gateway. Další informace o diagnostických protokolech najdete v článku [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Metriky:** Metriky jsou měření výkonu a čítače shromažďují za časové období na prostředky. Metriky lze použít k aktivaci výstrahy na základě prahových hodnot. Metriky jsou teď dostupné ve službě Application Gateway. Další informace o metrikách, [přehled metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Řešení potíží:** Informace o odstraňování potíží je přístupný přímo na webu Azure portal. Informace pomohou diagnostikovat běžné problémy se službou ExpressRoute, VPN Gateway, Application Gateway, protokoly zabezpečení sítě, tras, DNS, nástroj pro vyrovnávání zatížení a Traffic Manager.
 - **Řízení přístupu na základě role (RBAC):** Řídíte, kdo může vytvářet a spravovat síťové prostředky s řízením přístupu na základě rolí (RBAC). Další informace o RBAC pro čtení [vám umožní začít RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. 

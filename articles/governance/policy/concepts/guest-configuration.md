@@ -4,24 +4,21 @@ description: Zjistěte, jak Azure Policy používá hostovaný konfigurace audit
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/27/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 19f55c7d383d64e6c400e22e624b713f6c42dc58
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e6621172734ea02f971bd5064b403ad4844210a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649284"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960752"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Porozumět konfiguraci hosta Azure Policy
 
 Kromě auditování a [oprava](../how-to/remediate-resources.md) prostředky Azure, Azure Policy můžete auditovat nastavení uvnitř virtuálního počítače. Ověření se provede tak, že rozšíření konfigurace hosta a klienta. Toto rozšíření prostřednictvím klienta, ověří nastavení jako konfigurace operačního systému, konfigurace aplikace nebo přítomnost, nastavení prostředí a další.
-
-> [!IMPORTANT]
-> V současné době pouze **integrované** zásady jsou podporované s konfigurací hosta.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -83,7 +80,7 @@ Následující tabulka uvádí seznam podporovaný operační systém v imagích
 |SuSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Konfigurace hostovaného není momentálně podporovaná na vlastní Image virtuálních počítačů.
+> Konfigurace typu Host můžete auditovat jakéhokoli serveru se systémem podporovaný operační systém.  Pokud chcete auditovat servery, které používají vlastní image, budete muset duplicitní **DeployIfNotExists** definice a upravovat **Pokud** část vaší vlastnosti bitové kopie.
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
@@ -93,6 +90,17 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 |-|-|
 |Klient Windows | Klientské operační systémy (například Windows 7 a Windows 10) nejsou podporovány.
 |Windows Server 2016 Nano Server | Nepodporuje se.|
+
+### <a name="guest-configuration-extension-network-requirements"></a>Požadavky na síť hosta konfigurace rozšíření
+
+Ke komunikaci s poskytovatelem prostředků konfigurace hostovaného v Azure, virtuální počítače vyžadují odchozí přístup k datovým centrům Azure na portu **443**. Pokud používáte privátní virtuální síť v Azure a nechcete povolit odchozí přenosy, musí být nakonfigurované výjimky pomocí [skupinu zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) pravidla. V současné době neexistuje značku služby pro konfiguraci hosta zásad Azure.
+
+Pro seznamy adres IP, si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Potřebujete povolit odchozí přístup k IP adresy ve stejné oblasti, ve které jsou nasazené virtuální počítače.
+
+> [!NOTE]
+> Soubor XML adres Azure Datacenter IP obsahuje rozsahy IP adres, které se používají v datacentrech Microsoft Azure. Soubor obsahuje rozsahy compute, SQL a úložiště.
+> Aktualizovaný soubor každý týden se zveřejňuje. Soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Nové rozsahy, které se zobrazují v souboru nejsou používány v datových centrech alespoň jeden týden.
+> Je vhodné Stáhněte nový soubor XML každý týden. Potom aktualizujte váš web pro zajištění správné identifikace služeb spuštěných v Azure. Uživatelé Azure ExpressRoute upozorňujeme ale, že tento soubor se používá k aktualizaci inzerování protokolu BGP (Border Gateway) prostoru Azure probíhá první týden každého měsíce.
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na konfiguraci hosta definice
 

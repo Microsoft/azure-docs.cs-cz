@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c38b28a247feb94efd5f4b73e690d30aac9ed73a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 85beb9b7e0c62d5e1c8dae61fdd15d5faf3a294c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900234"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985865"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojit ID partnera účtů Azure
 
@@ -138,3 +138,25 @@ Propojení ID partnera a účet se provádí pro každého zákazníka tenanta. 
 **Můžete dalších partnerů nebo zákazníky za upravit nebo odebrat propojení s ID partnera?**
 
 Odkaz na úrovni účtu uživatele souvisí. Pouze můžete upravit nebo odebrat odkaz na ID partnera. Zákazníka a dalšími partnery, nelze změnit propojení ID partnera. 
+
+
+**U kterého ID MPN by měl používat když Moje společnost má víc?**
+
+Můžete použít libovolné platné ID MPN s výjimkou ID organizace v programu MPN. Většina partneři zvolit MPN ID pro zeměpisné oblasti, kde se zákazník nachází nebo služby jsou distribuována.
+
+**Kde najdu vliv na výnosy vytváření sestav pro ID propojené partnera?**
+
+Můžete najít na generování sestav k nim výnosy [Moje přehledný řídicí panel](https://partner.microsoft.com/membership/reports/myinsights) tak, že vyberete odkaz správce partnera, jak je znázorněno.
+
+**Proč nelze zobrazit Moje zákazníka v sestavách?**
+
+Nelze zobrazit zákazníka v sestavách z následujících důvodů
+
+1. Propojené uživatelský účet nemá [přístupu podle Role ](https://docs.microsoft.com/azure/role-based-access-control/overview) na kterýkoli zákazník předplatné Azure nebo prostředků.
+
+2. Předplatné Azure, kde má uživatel [přístupu podle Role ](https://docs.microsoft.com/azure/role-based-access-control/overview) přístup nemá žádné využití.
+
+**Odkaz partnera, se kterým ID funguje s Azure Stack?**
+
+Ano, je možné propojit ID partnera pro službu Azure Stack.
+

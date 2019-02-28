@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 355fa90113e931fa3e21df1ccca5736622475bb3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810376"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983460"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -58,8 +58,14 @@ Azure Disk Encryption vyžaduje připojení k Internetu pro přístup k Active D
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[keyVaultResourceID]",
+      
       "KeyVaultURL": "[keyVaultURL]",
+          "KeyVaultResourceId": "[keyVaultResourceID]",
+
+      "EncryptionOperation": "[encryptionOperation]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     },
@@ -74,18 +80,20 @@ Azure Disk Encryption vyžaduje připojení k Internetu pro přístup k Active D
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| vydavatele | Microsoft.Azure.Security | řetězec |
-| type | AzureDiskEncryptionForWindows| řetězec |
-| typeHandlerVersion | 1.0, 2.2 (VMSS) | int |
+| vydavatele | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForWindows| string |
+| typeHandlerVersion | 1.0, 1.1, 2.2 (VMSS) | int |
 | (volitelné) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
-| (volitelné) AADClientSecret | heslo | řetězec |
-| (volitelné) AADClientCertificate | Kryptografický otisk | řetězec |
-| EncryptionOperation | EnableEncryption | řetězec | 
-| KeyEncryptionAlgorithm | RSA-OAEP | řetězec |
-| KeyEncryptionKeyURL | url | řetězec |
-| KeyVaultURL | url | řetězec |
-| SequenceVersion | UniqueIdentifier | řetězec |
-| VolumeType | Operačního systému, dat, všechny | řetězec |
+| (volitelné) AADClientSecret | heslo | string |
+| (volitelné) AADClientCertificate | Kryptografický otisk | string |
+| EncryptionOperation | EnableEncryption | string | 
+| KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | string |
+| KeyEncryptionKeyURL | url | string |
+| KeyVaultResourceId | identifikátor uri prostředku | string |
+| KekVaultResourceId | identifikátor uri prostředku | string |
+| KeyVaultURL | url | string |
+| SequenceVersion | UniqueIdentifier | string |
+| VolumeType | Operačního systému, dat, všechny | string |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 Příklad nasazení šablony najdete v tématu [ vytvořit nový virtuální počítač šifrovaný Windows z image z Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).

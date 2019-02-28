@@ -11,50 +11,59 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 02/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b42eb963e33c14b003c053bb0f7fca6361dbd555
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005365"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985100"
 ---
-# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>Správa pracovních prostorů Log Analytics ve službě Azure Monitor
+# <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolů a pracovním prostorům ve službě Azure Monitor
 Azure Monitor úložiště vytvářet protokoly dat v pracovním prostoru Log Analytics, která je v podstatě kontejner, který obsahuje data a informace o konfiguraci. Ke správě přístupu k protokolování dat, můžete provádět různé úlohy správy související s pracovními prostory. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
 
-K vytvoření pracovního prostoru budete muset:
+Tento článek vysvětluje, jak spravovat přístup k protokolům a jak spravovat pracovní prostory, které je obsahují. 
+
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+Pokud chcete vytvořit pracovní prostor Log Analytics, budete muset:
 
 1. Mít předplatné Azure.
 2. Zvolit název pracovního prostoru.
 3. Přidružte pracovní prostor s jednou z vašich předplatných a skupin prostředků.
 4. Vybrat zeměpisné umístění.
 
-## <a name="determine-the-number-of-workspaces-you-need"></a>Určení potřebného počtu pracovních prostorů
-Pracovní prostor Log Analytics je prostředek Azure a je kontejner se shromažďují data, agregují, analyzují a zobrazí ve službě Azure Monitor.
+Přečtěte si podrobné informace o vytváření pracovního prostoru v následujících článcích:
 
-Můžete mít několik pracovních prostorů na předplatné Azure a budete mít přístup k více než jednomu pracovnímu prostoru, umožňuje snadno vytvářet dotazy mezi nimi. Tato část popisuje případy, kdy je užitečné mít víc než jeden pracovní prostor.
+- [Vytvoření pracovního prostoru Log Analytics na portálu Azure portal](../learn/quick-create-workspace.md)
+- [Vytvoření pracovního prostoru Log Analytics pomocí Azure CLI 2.0](../learn/quick-create-workspace-cli.md)
+- [Vytvořit pracovní prostor Log Analytics pomocí Azure Powershellu](../learn/quick-create-workspace-posh.md)
+
+## <a name="determine-the-number-of-workspaces-you-need"></a>Určení potřebného počtu pracovních prostorů
+Pracovní prostor Log Analytics je prostředek Azure a je kontejner se shromažďují data, agregují, analyzují a zobrazí ve službě Azure Monitor. Můžete mít několik pracovních prostorů na předplatné Azure a budete mít přístup k více než jednomu pracovnímu prostoru, umožňuje snadno vytvářet dotazy mezi nimi. Tato část popisuje případy, kdy je užitečné mít víc než jeden pracovní prostor.
 
 Pracovní prostor Log Analytics nabízí:
 
 * Zeměpisné umístění úložiště dat
-* Izolace dat k definování různých uživatelská přístupová práva
-* Obor pro konfiguraci nastavení, jako jsou [cenovou úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [uchování](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) a [malá a velká data](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap) 
+* Izolace dat k definování různých uživatelská přístupová práva v režimu zaměřené na pracovní prostor. Nejsou důležité při práci v režimu zaměřené na prostředek.
+* Obor pro konfiguraci nastavení, jako jsou [cenovou úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [uchování](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) a [malá a velká data](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap).
+* Poplatky za související s příjmem dat a jejich uchovávání probíhají v prostředku pracovního prostoru.
 
 Z využití pohledu doporučujeme, abyste že nejdříve vytvoříte jako několik pracovních prostorů. Správa a práce s dotazy díky jednodušší a rychlejší. Ale podle výše uvedených charakteristik, můžete chtít vytvořit víc pracovních prostorů, pokud:
 
 * Jste globální společnost a potřebujete protokolovat data uložená v různých oblastech z důvodů suverenity nebo dodržování předpisů data.
 * Používáte Azure a chcete se vyhnout poplatkům za odchozí datové přenosy tím, že budete mít pracovní prostor ve stejné oblasti jako prostředky Azure, které spravuje.
-* Chcete rozdělit náklady na různá oddělení nebo obchodní skupiny na základě jejich využití tak, že vytvoříte pracovní prostor pro každé oddělení nebo obchodní skupiny ve vlastním předplatném Azure.
 * Jste poskytovatel spravované služby a potřebujete uchovávat data Log Analytics pro každého zákazníka odděleně od dat ostatních zákazníků.
-* Spravujete víc zákazníků a chcete, aby každý zákazník / oddělení nebo obchodní skupina mohli podívat na svoje vlastní data, ale ne data od ostatních.
+* Spravujete víc zákazníků a chcete, aby každý zákazník / oddělení nebo obchodní skupina mohli podívat na svoje vlastní data, ale ne data od ostatních, a není nutné obchodní konsolidované křížové zákazníka nebo oddělení nebo pracovní skupina zobrazení. ".
 
 Při používání agentů Windows ke shromažďování dat můžete [každého agenta konfigurovat tak, aby ukládal data do jednoho nebo více pracovních prostorů](../../azure-monitor/platform/agent-windows.md).
 
 Pokud používáte System Center Operations Manager, můžete připojit každou skupinu nástroje Operations Manager jen do jednoho pracovního prostoru. Můžete nainstalovat Microsoft Monitoring Agent do počítačů spravovaných nástrojem Operations Manager a nastavit agenta tak, aby odesílal data do nástroje Operations Manager i do jiného pracovního prostoru Log Analytics.
 
-## <a name="workspace-information"></a>Informace o pracovním prostoru
-Při analýze dat v pracovním prostoru Log Analytics v **Azure Monitor** nabídky na webu Azure Portal, můžete vytvořit a spravovat pracovní prostory v **pracovních prostorů Log Analytics** nabídky.
+Po definování architektury pracovního prostoru by měl vynutit tyto zásady pro prostředky Azure s [Azure Policy](../../governance/policy/overview.md). Získáte tak integrované definice, která automaticky platit pro všechny prostředky Azure. Můžete například nastavit zásadu, která Ujistěte se, že všechny prostředky Azure v konkrétní oblasti odesílat jejich diagnostické protokoly pro konkrétní pracovní prostor.
+
+## <a name="view-workspace-details"></a>Zobrazit podrobnosti o pracovním prostoru
+Při analýze dat v pracovním prostoru Log Analytics z **Azure Monitor** nabídky na webu Azure Portal, můžete vytvořit a spravovat pracovní prostory v **pracovních prostorů Log Analytics** nabídky.
  
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a klikněte na tlačítko **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics** pracovní prostory.  
@@ -63,25 +72,104 @@ Při analýze dat v pracovním prostoru Log Analytics v **Azure Monitor** nabíd
 
 3. Vyberte pracovní prostor ze seznamu.
 
-4. Na stránce pracovního prostoru se zobrazí podrobnosti o zahájení práce, konfiguraci a odkazy na další informace.  
+4. Na stránce pracovní prostor se zobrazí podrobnosti o pracovním prostoru, jak začít, konfigurace a odkazy na další informace.  
 
     ![Podrobnosti o pracovním prostoru](./media/manage-access/workspace-overview-page.png)  
 
+
+## <a name="workspace-permissions-and-scope"></a>Oprávnění k pracovním prostorům a oboru
+Data, která má uživatel přístup k jsou určena několika faktory, které jsou uvedeny v následující tabulce. Každá je popsána v následujících částech.
+
+| faktor | Popis |
+|:---|:---|
+| [Režim přístupu](#access-modes) | Metoda, která uživatel používá pro má přístup k pracovním prostoru.  Definuje rozsah dat, které jsou k dispozici a režim řízení přístupu, který se použije. |
+| [Režim kontroly přístupu](#access-control-mode) | Nastavení v pracovním prostoru, který definuje, zda jsou oprávnění použít na úrovni pracovního prostoru nebo prostředků. |
+| [Oprávnění](#manage-accounts-and-users) | Oprávnění pro jednotlivce nebo skupiny uživatelů pro pracovní prostor nebo prostředků. Definuje, jaká data uživatel bude mít přístup k. |
+
+
+
+## <a name="access-modes"></a>Režimy přístupu
+_Přístupovém režimu_ odkazuje na přístup uživatele k pracovnímu prostoru Log Analytics a definuje rozsah datům bude mít přístup. 
+
+**Workspace-centric**: V tomto režimu může uživatel zobrazit všechny protokoly v pracovním prostoru, které mají oprávnění k. Dotazy v tomto režimu se rozsahu ke všem datům ve všech tabulkách v pracovním prostoru. Jedná se o režim přístupu používá protokoly jsou přístup k pracovnímu prostoru jako obor, například když vyberete **protokoly** z **Azure Monitor** nabídky na webu Azure Portal.
+
+**Závislý na prostředku**: Když otevřete pracovní prostor pro určitý prostředek, třeba když vyberete **protokoly** v nabídce prostředků na webu Azure Portal můžete zobrazit protokoly pro pouze příslušný prostředek. Dotazy v tomto režimu mají rozsah pouze data přidružená k tomuto prostředku. Tento režim také umožňuje řízení přístupu na detailní na základě rolí (RBAC). 
+
+> [!NOTE]
+> Protokoly jsou k dispozici pro dotazy na střed prostředků pouze v případě, že byly správně přidružené odpovídající zdroj. V současné době následující prostředky mají omezení: 
+> - Počítače mimo Azure
+> - Service Fabric
+> - Application Insights
+> - Containers
+> - Vlastní protokoly vytvořené metodou rozhraní API kolekce dat HTTP
+>
+> Můžete otestovat, pokud protokoly jsou správně spojené s jejich prostředků spuštěním dotazu a kontrola záznamů vás zajímá. Pokud je ID správné prostředku v [_ResourceId](log-standard-properties.md#resourceid) vlastnost a potom dat je k dispozici pro dotazy zaměřené na prostředek.
+
+### <a name="comparing-access-modes"></a>Porovnává režimy přístupu
+
+Následující tabulka shrnuje režimy přístupu:
+
+| | Workspace-centric | Resource-centric |
+|:---|:---|:---|
+| Komu je každý model určená? | Centrální správy. Správci, kteří potřebují přístup k široké škály zdrojů, kteří potřebují ke konfiguraci shromažďování dat a uživatelů. Také se momentálně nutná pro uživatele, kteří mají na přístup k protokolům pro prostředky mimo Azure. | Aplikační týmy. Správce prostředků Azure, které jsou monitorovány. |
+| Chcete-li zobrazit protokoly co vyžaduje uživatele? | Oprávnění k pracovnímu prostoru. Zobrazit **oprávnění k pracovním prostorům** v [Správa účtů a uživatelů](#manage-accounts-and-users). | Přístup pro čtení k prostředku. Zobrazit **oprávnění zdrojů** v [Správa účtů a uživatelů](#manage-accounts-and-users). Oprávnění může být zděděno (jako třeba příslušnou skupinu prostředků) nebo přímo přiřazenou k prostředku. Oprávnění k protokolům pro prostředek se automaticky přiřadí. |
+| Jaký je rozsah oprávnění? | Pracovní prostor. Uživatelé s přístupem k pracovnímu prostoru se můžete dotazovat všechny protokoly v daném pracovním prostoru. | Prostředek Azure. Uživatele můžete dotazovat protokoly pro prostředky máte přístup z libovolného pracovního prostoru, ale nemohou spustit dotaz pro protokoly pro další prostředky. |
+| Jak může uživatel přístup k protokolům? | Spustit **protokoly** z **Azure Monitor** nabídky nebo **pracovních prostorů Log Analytics**. | Spustit **protokoly** z nabídky pro prostředky Azure. |
+
+
+## <a name="access-control-mode"></a>Režim kontroly přístupu
+_Režim řízení přístupu_ je nastavení na jednotlivých pracovních prostorů, která definuje, jak se určují oprávnění pro tento pracovní prostor.
+
+**Vyžadovat oprávnění k pracovním prostorům**:  Tento režim ovládacího prvku neumožňuje detailní RBAC. Pro uživatele pro přístup k pracovnímu prostoru musí jim být udělena oprávnění k pracovnímu prostoru. 
+
+Pokud uživatel zobrazuje pracovní prostor v režimu zaměřené na pracovní prostor, mají přístup ke všem datům v pracovním prostoru. Pokud uživatel zobrazuje pracovní prostor v režimu zaměřené na prostředek, mají přístup pouze data pro daný prostředek.
+
+Toto je výchozí nastavení pro všechny pracovní prostory vytvořené před březnem 2019.
+
+**Použití prostředků nebo pracovní prostor oprávnění**: Tento ovládací prvek režim umožňuje granulární RBAC. Uživateli je udělen přístup k pouze data související s prostředky můžete zobrazit prostřednictvím oprávnění Azure, prostředky, ke kterým mají `read` oprávnění. 
+
+Když uživatel zobrazuje pracovní prostor v režimu zaměřené na pracovní prostor, použije se oprávnění pracovního prostoru. Když uživatel zobrazuje pracovní prostor v režimu zaměřené na prostředek, se ověří pouze příslušná oprávnění a oprávnění pracovního prostoru se bude ignorovat. Povolte RBAC pro uživatele. to je odeberete z pracovního prostoru, oprávnění a jejich příslušná oprávnění, chcete-li rozpoznán.
+
+Toto je výchozí nastavení pro všechny pracovní prostory vytvořené po března 2019.
+
+> [!NOTE]
+> Pokud má uživatel jenom oprávnění zdrojů do pracovního prostoru, pouze bude mít přístup k použití pracovního prostoru [zaměřené na prostředek režimu](#access-modes).
+
+
+### <a name="define-access-control-mode-in-azure-portal"></a>Definujte režim řízení přístupu na webu Azure portal
+Aktuální režim řízení přístupu pracovního prostoru můžete zobrazit na **přehled** stránky pro pracovní prostor v **pracovní prostor Log Analytics** nabídky.
+
+![Režim zobrazení pracovního prostoru přístup ovládacího prvku](media/manage-access/view-access-control-mode.png)
+
+Toto nastavení můžete změnit na **vlastnosti** stránky pro pracovní prostor. Změna nastavení bude zakázáno, pokud nemáte oprávnění ke konfiguraci pracovního prostoru.
+
+![Režim přístupu změnit pracovní prostor](media/manage-access/change-access-control-mode.png)
+
+### <a name="define-access-mode-in-resource-manager-template"></a>Režim přístupu k definování v šabloně Resource Manageru
+Chcete-li nakonfigurovat režim přístupu v šabloně Azure Resource Manageru, nastavte **enableLogAccessUsingOnlyResourcePermissions** funkce příznak v pracovním prostoru na jeden z následujících hodnot.
+
+- **False**: Nastavte pracovní prostor zaměřené na pracovní prostor oprávnění. Toto je výchozí nastavení, pokud není nastaven příznak.
+- **Hodnota TRUE**: Nastavte pracovní prostor zaměřené na prostředek oprávnění.
+
+
 ## <a name="manage-accounts-and-users"></a>Správa účtů a uživatelů
-Každý pracovní prostor může mít přiřazených více účtů a každý účet může mít přístup k několika pracovním prostorům. Přístup ke správě [přístupu na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md). Tato přístupová práva se vztahuje na webu Azure portal i na přístup k rozhraní API.
+Oprávnění k pracovnímu prostoru, které se použijí s určitým uživatelem definovanými v jejich [režim přístupu](#access-mode) a [režim řízení přístupu](#access-control-mode) pracovního prostoru. **Oprávnění k pracovním prostorům** se použijí, když uživatel přistupuje k jakékoli pracovní prostor pomocí **zaměřené na pracovní prostor** v [zaměřené na pracovní prostor režimu](#access-modes). **Oprávnění k prostředkům** se použijí, když uživatel zobrazuje pracovní prostor se **použít oprávnění prostředků nebo pracovní prostor** [režim řízení přístupu](#access-control-mode) pomocí [zaměřené na prostředek režimu ](#access-modes).
+
+### <a name="workspace-permissions"></a>Oprávnění pracovního prostoru.
+Každý pracovní prostor může mít přiřazených více účtů a každý účet může mít přístup k několika pracovním prostorům. Přístup ke správě [přístupu na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md). 
 
 
 Následující aktivity také vyžadují oprávnění Azure:
 
 | Akce                                                          | Potřebná oprávnění Azure | Poznámky |
 |-----------------------------------------------------------------|--------------------------|-------|
-| Přidání a odebrání řešení pro správu                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Tato oprávnění je potřeba udělit na úrovni skupiny prostředků nebo předplatného. |
+| Přidávání a odebírání řešení monitorování                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Tato oprávnění je potřeba udělit na úrovni skupiny prostředků nebo předplatného. |
 | Změna cenové úrovně                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Zobrazení dat na dlaždicích řešení *Backup* a *Site Recovery* | Správce nebo spolusprávce | Má přístup k prostředkům nasazeným pomocí modelu nasazení Azure Classic. |
 | Vytvoření pracovního prostoru na webu Azure Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>Správa přístupu k pracovnímu prostoru Log Analytics pomocí oprávnění Azure
+#### <a name="manage-access-to-log-analytics-workspace-using-azure-permissions"></a>Správa přístupu k pracovním prostoru Log Analytics pomocí oprávnění Azure 
 Pokud chcete udělit přístup k Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 
 Azure má dvě předdefinované role uživatele pro pracovní prostory Log Analytics:
@@ -141,7 +229,21 @@ Pomocí těchto rolí můžete uživatelům udělit přístup v různých oborec
 - Skupina prostředků – Přístup ke všem pracovním prostorům v rámci skupiny prostředků
 - Prostředek – Přístup pouze k zadanému pracovnímu prostoru
 
-Doporučujeme provést přiřazení na úrovni prostředků (pracovního prostoru), abyste zajistili přesné řízení přístupu.  Pomocí [vlastních rolí](../../role-based-access-control/custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
+Měli byste provést přiřazení na úrovni prostředků (pracovní prostor), aby zajistil řízení přístupu na přesné.  Pomocí [vlastních rolí](../../role-based-access-control/custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
+
+### <a name="resource-permissions"></a>Oprávnění k prostředkům 
+Když se přihlásí uživatelé dotazu z pracovního prostoru pomocí závislý na prostředku přístup, budou mít následující oprávnění pro prostředek:
+
+| Oprávnění | Popis |
+| ---------- | ----------- |
+| `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost zobrazit všechny data protokolu pro prostředek.  |
+
+
+Tato oprávnění jsou obvykle udělena z role, která zahrnuje  _\*/čtení nebo_ _\*_ oprávnění, jako je například předdefinované [čtečky](../../role-based-access-control/built-in-roles.md#reader) a [ Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) role. Mějte na paměti, že vlastní role, které zahrnují určité akce nebo vyhrazené předdefinovaných rolí nemusí zahrnovat toto oprávnění.
+
+
+
+
 
 ## <a name="next-steps"></a>Další postup
 * Zobrazit [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
