@@ -1,0 +1,60 @@
+items:
+- name: Dokumentace ke službě Azure App Configuration
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Služba Azure App Configuration
+    href: overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření aplikace v ASP.NET Core
+    href: quickstart-aspnet-core-app.md
+  - name: Vytvoření aplikace v .NET Core
+    href: quickstart-dotnet-core-app.md
+  - name: Vytvoření aplikace v .NET Frameworku
+    href: quickstart-dotnet-app.md
+  - name: Vytvoření funkce Azure
+    href: quickstart-azure-function-csharp.md
+  - name: Vytvoření aplikace v Java Springu
+    href: quickstart-java-spring-app.md
+  expanded: true
+- name: Kurzy
+  items:
+  - name: Povolení dynamické konfigurace v ASP.NET Core
+    href: enable-dynamic-configuration-aspnet-core.md
+  - name: Integrace s identitou spravované služby Azure
+    href: integrate-azure-managed-service-identity.md
+- name: Ukázky
+  items:
+  - name: Ukázky kódů
+    href: https://github.com/Azure/AppConfiguration/samples
+  - name: Azure CLI
+    href: cli-samples.md
+- name: Koncepty
+  items:
+  - name: Ukládání hodnot klíče
+    href: concept-key-value.md
+  - name: Snímek k určitému časovému okamžiku
+    href: concept-point-time-snapshot.md
+- name: Návody
+  items:
+  - name: Import nebo export konfiguračních dat
+    href: howto-import-export-data.md
+  - name: Integrace s kanálem CI/CD
+    href: howto-integrate-ci-cd-pipeline.md
+- name: Referenční informace
+  items:
+  - name: Zprostředkovatel konfigurace .NET Core
+    href: https://go.microsoft.com/fwlink/?linkid=2074664
+  - name: Tvůrce konfigurace .NET Framework
+    href: https://go.microsoft.com/fwlink/?linkid=2074663
+  - name: Zprostředkovatel konfigurace Java Spring
+    href: https://go.microsoft.com/fwlink/?linkid=2074659
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/azure-app-configuration
+ms.openlocfilehash: c35296a6923e464ca20a873de4165ea20c08278f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884130"

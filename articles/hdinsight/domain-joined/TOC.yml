@@ -47,12 +47,12 @@ items:
   - name: Replikace clusteru Apache HBase ve virtuální síti Azure
     href: ../hbase/apache-hbase-replication.md
     maintainContext: true
-- name: Monitorování s využitím Log Analytics
+- name: Monitorování s využitím protokolů Azure Monitoru
   items:
-  - name: Použití Azure Log Analytics
+  - name: Použití protokolů Azure Monitoru
     href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
     maintainContext: true
-  - name: Použití dotazů se službou Log Analytics
+  - name: Použití dotazů s protokoly Azure Monitoru
     href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
     maintainContext: true
   - name: Monitorování výkonu clusteru
@@ -103,9 +103,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 98324ce4510b40d21013198efd48f4dcb04a9c18
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a7e4c066ed79d71a60f01ccba6d7608fefdd3440
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56325819"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886328"

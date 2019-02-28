@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 112ff38ad4e35ac284501c5dd3881c4f340b5f9b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024089"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984631"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azure Data Factory.  
@@ -175,8 +175,35 @@ Ano. Výstup aktivity mohou být spotřebovány v následné aktivity s `@activi
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Jak můžu řádně zpracování hodnot null ve výstup aktivity? 
 Můžete použít `@coalesce` vytvořit ve výrazech řádně zpracování hodnot null. 
 
+## <a name="mapping-data-flows"></a>Mapování datových toků
+
+### <a name="which-adf-version-do-i-use-to-create-data-flows"></a>Kterou verzi ADF se dá použít k vytváření toků dat?
+K vytváření toků dat použijte verzi ADF V2
+  
+### <a name="i-was-a-previous-private-preview-customer-using-data-flows-and-i-used-the-adf-v2-wdata-flows-preview-version"></a>Používal jsem službu předchozí verzi private preview pomocí toky dat a použití verze ADF V2 w nebo datové toky ve verzi preview
+Tato verze je zastaralá. Používat ADF V2 pro datové toky
+  
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-data-flows"></a>Co se změnilo z verze private preview k omezené veřejné verzi preview v tocích dat?
+Už máte zpřístupnit vlastní clustery Databricks. Vytvoření clusteru a vše bude spravovat ADF. Datové sady objektů BLOB a ADLS datové sady jsou rozděleny do Text oddělený a Parquet datové sady. ADLS & Store objektů Blob můžete stále použít k ukládání těchto souborů. Použijte odpovídající propojené služby pro tyto moduly úložiště.
+
+### <a name="can-i-migrate-my-private-preview-factories-to-adf-v2"></a>Můžete migrovat Moje továrny ve verzi private preview pro ADF V2?
+
+[Ano, postupujte podle zde uvedených pokynů](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)
+
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-do-you-need"></a>Potřebuji pomoc s řešením potíží Moje logiky toku dat, co potřebujete?
+
+Když společnost Microsoft poskytuje pomoc nebo řešení potíží s toky dat, zadejte do "DSL kód plánu". Postupujte přitom takto:
+
+* Z Návrháře toku dat v pravém horním rohu klikněte na tlačítko "Kód". Tato akce zobrazí upravitelný kód JSON pro datový tok.
+* V zobrazení kódu klikněte na "Plán" v pravém horním rohu. Plánu přepínač nástroje DEVENV z formátu JSON do formátovaného skript plánu DSL.
+* Zkopírujte a vložte tento skript nebo uložte ho do textového souboru.
+
+### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Jak můžu přistupovat k datům pomocí jiných typů 80 datové sady ve službě ADF?
+
+Tok dat aktuálně umožňuje službě Azure SQL DB, Azure SQL data Warehouse, textových souborů s oddělovačem z objektu Blob nebo ADLS a soubory Parquet z objektu Blob nebo ADLS nativně zdroje a jímky. Použije aktivitu kopírování k připravit data z některého z jiných konektorů a následné provádění aktivitu toku dat pro transformaci dat po je připravené. Například váš kanál se nejprve zkopírovat do objektu Blob a pak aktivitu toku dat používá datovou sadu ve zdroji transformovat tato data.
+
 ## <a name="next-steps"></a>Další postup
 Podrobné pokyny pro vytváření dat najdete v následujících kurzech:
 
-- [Rychlý start: Vytvoření datové továrny](quickstart-create-data-factory-dot-net.md)
+- [Rychlé zprovoznění: Vytvoření datové továrny](quickstart-create-data-factory-dot-net.md)
 - [Kurz: Kopírování dat v cloudu](tutorial-copy-data-dot-net.md)

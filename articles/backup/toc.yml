@@ -240,6 +240,12 @@ items:
       href: troubleshoot-azure-files.md
     - name: SQL Server
       href: backup-sql-server-azure-troubleshoot.md
+  - name: Monitorování úloh služby Azure Backup
+    items:
+    - name: Pomocí webu Azure Portal
+      href: backup-azure-monitoring-built-in-monitor.md
+    - name: Pomocí Azure Monitoru
+      href: backup-azure-monitoring-use-azuremonitor.md
 - name: Referenční informace
   items:
   - name: .NET
@@ -270,9 +276,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 77f6bf8c4dd12c31f7461b273322b4ce41e3c58d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: c30132c7dcad3873daa39e7d8ecf112032183963
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428291"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873385"

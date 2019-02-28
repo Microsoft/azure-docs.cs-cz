@@ -420,8 +420,6 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Diagnostika nebo protokolování dat z úložiště Azure
         href: platform/azure-storage-iis-table.md
-      - name: Prostředky Azure PaaS
-        href: platform/collect-azurepass-posh.md
       - name: Korelace vlastních zdrojů dat
         href: app/custom-data-correlation.md
     - name: Shromažďování vlastních dat
@@ -448,10 +446,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: Ukládání diagnostických protokolů
         href: platform/diagnostic-logs-stream-log-store.md
+      - name: Data prostředků Azure do služby Event Hub
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: Streamování protokolu aktivit do služby Event Hubs
         href: platform/activity-logs-stream-event-hubs.md
-      - name: Protokoly a metriky do služby centra událostí
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: Diagnostické protokoly do centra událostí
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Data aplikací do služby Log Analytics
@@ -636,8 +634,9 @@ items:
   - name: Vizualizace dat
     items:
     - name: Zobrazení
-      href: platform/view-designer.md
       items:
+      - name: Návrhář zobrazení
+        href: platform/view-designer.md
       - name: Referenční informace k dlaždicím
         href: platform/view-designer-tiles.md
       - name: Referenční informace k části vizualizace
@@ -1031,9 +1030,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7ca33f101a86f08ce8249bd43975d6ed2aab6141
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455394"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888164"

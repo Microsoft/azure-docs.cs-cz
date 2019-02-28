@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e223cb060857d45d9f25e2ee1dfca7e159225d8b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237106"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983897"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Vytvoření Azure Cache pro Redis pomocí šablony
 
@@ -37,8 +37,8 @@ Další informace o vytváření šablon najdete v tématu [vytváření šablon
 > Šablony Resource Manageru pro nové [úroveň Premium](cache-premium-tier-intro.md) jsou k dispozici. 
 > 
 > * [Vytvoření Azure Cache úrovně Premium pro Redis s clusteringem](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [Vytvoření Azure Cache úrovně Premium pro Redis s trvalostí dat](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
-> * [Vytvoření Azure Cache úrovně Premium pro Redis s virtuální sítí a volitelné clustering](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
+> * [Vytvoření Azure Cache úrovně Premium pro Redis s trvalostí dat](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+> * [Vytvoření Redis Cache Premium, který je nasazený do virtuální sítě](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
 > Pro nejnovější šablony, najdete v části [šablony pro rychlý start Azure](https://azure.microsoft.com/documentation/templates/) a vyhledejte `Azure Cache for Redis`.
 > 

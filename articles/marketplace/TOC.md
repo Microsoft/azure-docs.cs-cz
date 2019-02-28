@@ -1,5 +1,6 @@
 # [Dokumentace k platformám Azure Marketplace a AppSource](index.md)
 ## [Plán nasazení pro Azure Marketplace a AppSource](./marketplace-roadmap.md)
+## [Podmínky a zásady Azure Marketplace](./policies-terms.md)
 
 ## [Přehled a výhody platforem Azure Marketplace a AppSource](./marketplace-publishers-guide.md)  
 ### [Jak se stát vydavatelem v Marketplace](./become-publisher.md)  
@@ -29,7 +30,6 @@
 #### [Osvědčené postupy nabídky](./gtm-offer-listing-best-practices.md)
 #### [Jak získat doporučení](./gtm-how-to-get-featured.md)
 #### [Ověření obsahu na Marketplace](./marketplace-criteria-content-validation.md)
-#### [Zásady hodnocení a recenzí](./rating-review-policies.md)   
 
 ### [Vaše výhody na trhu](./gtm-your-marketplace-benefits.md)
 #### [Propagace vašeho podnikání s Microsoftem](./gtm-promote-your-business.md)
@@ -37,9 +37,6 @@
 
 ### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)
 #### [Nejčastější dotazy k Marketplace](./marketplace-faq-publisher-guide.md)
-#### [Podmínky pro Marketplace](./marketplace-terms.md)
-#### [Zásady pro zapojení na Marketplace](./marketplace-participation-policy.md)
-
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
