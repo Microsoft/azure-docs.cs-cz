@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: sogup
-ms.openlocfilehash: fe0b47bbf1ebb9cba328bfc444172249135270c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 10b49c5ebcd73010a52da1fada32ba55198b287a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310270"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961529"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Nejčastější dotazy – Azure Backup
 
@@ -21,10 +21,8 @@ Tento článek odpovědi na běžné dotazy týkající [Azure Backup](backup-in
 
 ## <a name="general-questions"></a>Obecné otázky
 
-
 ### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Jaké virtuální počítače Azure můžete zálohovat pomocí služby Azure Backup?
 [Kontrola](backup-azure-arm-vms-prepare.md#before-you-start) podporované operační systémy a omezení.
-
 
 
 ## <a name="backup"></a>Backup
@@ -41,17 +39,16 @@ Ano, zálohy fungují. Není nutné nic překonfigurovat.
 ### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Proč nelze zobrazit v Průvodci nakonfigurujte zálohování virtuálního počítače?
 Průvodce uvádí pouze virtuální počítače ve stejné oblasti jako trezor, a, který už se nezálohují.
 
-
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Můj virtuální počítač je vypnutý. Bude na vyžádání nebo naplánované zálohování práce?
 Ano. Zálohování se spustí, když se vypne počítač. Bod obnovení se označí jako selhání konzistentní vzhledem k aplikacím.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžete zrušit úlohu zálohování probíhá?
 Ano. Můžete je zrušit úlohu zálohování v **pořizuje se snímek** stavu. Úlohu nelze zrušit, pokud probíhá přenos dat ze snímku.
 
-### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Můžu povoleno uzamčení skupiny prostředků na spravovaný disk Moje zálohy virtuálních počítačů. Budou moje zálohy stále fungovat?
-Pokud skupinu prostředků, služby Azure Backup nelze odstranit starší body obnovení.
-- Nových záloh se začnou nezdaří, protože je maximální limit 18 bodů obnovení.
-- Pokud zálohování se nezdaří s interní chybou po uzamčení, [postupujte podle těchto kroků](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) odebrat kolekci bodů obnovení.
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Můžu povolený zámek na skupiny prostředků vytvořené pomocí služby Azure Backup (např.) ` AzureBackupRG_<geo>_<number>`), budou Moje zálohy stále fungovat?
+Pokud skupina prostředků vytvoří ve službě Azure Backup Service uzamknete, zálohování se začnou nezdaří, protože je maximální limit 18 bodů obnovení.
+
+Uživatel musí odebrat zámek proti a zrušte zaškrtnutí kolekci bodů obnovení z této skupiny prostředků, aby budoucích zálohování bylo úspěšné, [postupujte podle těchto kroků](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) odebrat kolekci bodů obnovení.
 
 ### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Zásady zálohování za letního času (DST)?
 Ne. Datum a čas v místním počítači je místní s aktuální letní použít. Času nastavenému pro naplánované zálohování se mohou lišit od místního času z důvodu letního času.

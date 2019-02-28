@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad6dda9e41f1ea87439ffc315f020d4e3566e0c6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 231f3c44344f4119bab6e1efb5546e6fded0c784
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453541"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960602"
 ---
 # <a name="add-your-work-or-school-account"></a>Přidejte svůj pracovní nebo školní účet
 Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastavit svůj pracovní nebo školní účet k používání aplikace Microsoft Authenticator jako jednu z metod ověřování.
@@ -30,7 +30,7 @@ Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastav
 1. V počítači, přejděte [dalšího ověření zabezpečení](https://aka.ms/mfasetup) stránky.
 
     >[!Note]
-    >Pokud se nezobrazí **dalšího ověření zabezpečení** stránky, je možné, že správce má zapnuté informace (preview) prostředí zabezpečení. Pokud je to tento případ, postupujte podle pokynů v [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md) oddílu. Pokud to není tento případ, musíte požádat o pomoc HelpDesk vaší organizace. Další informace o bezpečnostní údaje, najdete v části [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
+    >Pokud se nezobrazí **dalšího ověření zabezpečení** stránky, je možné, že správce má zapnuté informace (preview) prostředí zabezpečení. Pokud je to tento případ, postupujte podle pokynů v [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md) oddílu. Pokud to není tento případ, musíte požádat o pomoc HelpDesk vaší organizace. Další informace o bezpečnostní údaje, najdete v části [zabezpečení informací (preview) – přehled](user-help-security-info-overview.md).
 
 2. Zaškrtněte políčko vedle položky **aplikace Authenticator**a pak vyberte **konfigurovat**.
 

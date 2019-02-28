@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302059"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960206"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 
@@ -213,7 +213,7 @@ Předchozí Přehled služby Azure Table část popisuje některé klíčové fu
 * Za druhé nejlepší je ***dotazu na rozsah*** , která používá **PartitionKey** a filtry na mnoha různých **RowKey** hodnoty k vrácení více než jednu entitu. **PartitionKey** hodnota označuje konkrétní oddíl a **RowKey** hodnoty identifikaci podmnožiny entity v tomto oddílu. Příklad: $filter = PartitionKey eq "Prodeje a RowKey ge" a RowKey lt 'T'  
 * Je třetí nejlepší ***oddílu kontrolovat*** , která používá **PartitionKey** a filtry v jiné neklíčovým vlastnosti, které může vrátit více než jednu entitu. **PartitionKey** identifikuje hodnotu konkrétního oddílu, a vlastnost hodnot vyberte pro celou dílčí sadu entit v oddílu. Příklad: $filter = PartitionKey eq "Prodeje" a LastName eq: Váša.  
 * A ***prohledávání tabulky*** nezahrnuje **PartitionKey** je neefektivní, protože vyhledá všechny oddíly, které tvoří tabulky pak u všech odpovídajících entit. Bude provedeno prohledání tabulky bez ohledu na to, jestli váš filtr používá **RowKey**. Příklad: $filter = LastName eq "Jones"  
-* Azure Table Storage dotazy, které vracejí více entit je řazení v vrátit **PartitionKey** a **RowKey** pořadí. Abyste se vyhnuli nutnosti uchýlit se entity v klientovi, zvolte **RowKey** , který definuje nejběžnější pořadí řazení. Výsledky dotazu vrácená rozhraním API tabulky Azure v Azure Cosmso DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+* Azure Table Storage dotazy, které vracejí více entit je řazení v vrátit **PartitionKey** a **RowKey** pořadí. Abyste se vyhnuli nutnosti uchýlit se entity v klientovi, zvolte **RowKey** , který definuje nejběžnější pořadí řazení. Výsledky dotazu vrácená rozhraním API tabulky Azure ve službě Azure Cosmos DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Pomocí "**nebo**" zadat filtr na základě **RowKey** hodnoty výsledky v oddílu kontroly a není považován za rozsahového dotazu. Proto byste se měli vyhnout dotazů, které používají jako filtry: $filter = PartitionKey eq "Prodeje" a (RowKey eq "121" nebo RowKey eq "322")  
 
@@ -255,7 +255,7 @@ Služba Table service automaticky indexuje entit pomocí **PartitionKey** a **Ro
 Vrácené služby Table service výsledky dotazu jsou seřazené ve vzestupném pořadí podle **PartitionKey** a potom podle **RowKey**.
 
 > [!NOTE]
-> Výsledky dotazu vrácená rozhraním API tabulky Azure v Azure Cosmso DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Výsledky dotazu vrácená rozhraním API tabulky Azure ve službě Azure DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Klíče v tabulce Azure Storage jsou řetězcové hodnoty a aby číselných hodnot řadily správně, musí je převést na pevnou délkou a vyplnění nulami. Například, pokud hodnota id zaměstnance použijete jako **RowKey** je celočíselná hodnota, je třeba id zaměstnance převést **123** k **00000123**. 
 
@@ -723,7 +723,7 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 Načíst *n* naposledy přidaný do oddílu s použitím entity **RowKey** hodnotu, která seřadí reverzní datum a čas objednávky.  
 
 > [!NOTE]
-> Výsledky dotazu vrácená rozhraním API tabulky Azure v Azure Cosmso DB nejsou seřazené podle klíče oddílu a klíče řádku. Proto tento model je vhodný pro Azure Table Storage a ne Azure Cosmos DB. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly v rozhraní Table API ve službě Azure Cosmos DB a Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Výsledky dotazu vrácená rozhraním API tabulky Azure ve službě Azure DB nejsou seřazené podle klíče oddílu a klíče řádku. Proto tento model je vhodný pro Azure Table Storage a ne Azure Cosmos DB. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly v rozhraní Table API ve službě Azure Cosmos DB a Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontext a problém
 Běžné požadavky, je moct načíst nedávno vytvořené entity, třeba posledních deset výdaje odeslal zaměstnanec deklarací identity. Dotazy podpory **$top** dotazové operace do vrátí první *n* entity ze sady: neexistuje žádná odpovídající dotaz operace vrátit poslední n entity v sadě.  

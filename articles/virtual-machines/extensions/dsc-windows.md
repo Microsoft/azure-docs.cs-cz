@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 26b083069380d7bf107cd3be54cb2e4786789e11
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 4f4793e18185c16ef144de33b4f116eff89a9969
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593859"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960152"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
 
@@ -101,31 +101,31 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| vydavatele | Microsoft.Powershell.DSC | řetězec |
-| type | DSC | řetězec |
+| vydavatele | Microsoft.Powershell.DSC | string |
+| type | DSC | string |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Nastavení hodnoty vlastností
 
 | Název | Typ dat | Popis
 | ---- | ---- | ---- |
-| settings.wmfVersion | řetězec | Určuje verzi Windows Management Framework, který musí být nainstalován na váš virtuální počítač. Nastavení této vlastnosti 'nejnovější' nainstaluje nejaktuálnější verzi WMF. Pouze aktuální možné hodnoty této vlastnosti jsou "4.0", '5.0' a 'nejnovější'. Tyto možné hodnoty jsou v souladu s aktualizací. Výchozí hodnota je 'nejnovější'. |
-| settings.configuration.url | řetězec | Určuje adresu URL umístění, ze kterého chcete stáhnout konfigurační soubor zip DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationUrlSasToken hodnotu váš token SAS. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.script a/nebo settings.configuration.function.
-| settings.configuration.script | řetězec | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce stažený z adresy URL určený vlastností configuration.url souboru zip. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.script.
-| settings.configuration.function | řetězec | Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu určené configuration.script. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.function.
+| settings.wmfVersion | string | Určuje verzi Windows Management Framework, který musí být nainstalován na váš virtuální počítač. Nastavení této vlastnosti 'nejnovější' nainstaluje nejaktuálnější verzi WMF. Pouze aktuální možné hodnoty této vlastnosti jsou "4.0", '5.0' a 'nejnovější'. Tyto možné hodnoty jsou v souladu s aktualizací. Výchozí hodnota je 'nejnovější'. |
+| settings.configuration.url | string | Určuje adresu URL umístění, ze kterého chcete stáhnout konfigurační soubor zip DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationUrlSasToken hodnotu váš token SAS. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.script a/nebo settings.configuration.function.
+| settings.configuration.script | string | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce stažený z adresy URL určený vlastností configuration.url souboru zip. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.script.
+| settings.configuration.function | string | Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu určené configuration.script. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.function.
 | settings.configurationArguments | Kolekce | Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost se šifrovat nebude.
-| settings.configurationData.url | řetězec | Určuje adresu URL z nichž lze stáhnout soubor konfiguračních dat (.pds1) použít jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationDataUrlSasToken hodnotu váš token SAS.
-| settings.privacy.dataEnabled | řetězec | Povolí nebo zakáže shromažďování telemetrie. Pouze možné hodnoty této vlastnosti jsou "Zapnout", "Zakázat", ", nebo $null. Opuštění tato vlastnost prázdná nebo mít hodnotu null bude povolit telemetrii
-| settings.advancedOptions.forcePullAndApply | Bool | Povolí rozšíření DSC k aktualizaci a o přijetí změn při aktualizaci režimu vydává konfigurace DSC.
+| settings.configurationData.url | string | Určuje adresu URL z nichž lze stáhnout soubor konfiguračních dat (.pds1) použít jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationDataUrlSasToken hodnotu váš token SAS.
+| settings.privacy.dataEnabled | string | Povolí nebo zakáže shromažďování telemetrie. Pouze možné hodnoty této vlastnosti jsou "Zapnout", "Zakázat", ", nebo $null. Opuštění tato vlastnost prázdná nebo mít hodnotu null bude povolit telemetrii
+| settings.advancedOptions.forcePullAndApply | Bool | Toto nastavení slouží k zajištění lepších možností práce s příponou k registraci uzlů ve službě Azure Automation DSC.  Pokud je hodnota `$true`, rozšíření počká na první spuštění konfigurace získaných ze služby teprve potom se informuje o úspěchu nebo selhání.  Pokud je hodnota nastavena na $false, stav vrácený rozšíření bude odkazovat pouze na Určuje, zda uzel byl zaregistrován ve službě Azure Automation stav konfigurace úspěšně a konfigurace uzlu nebude spuštěno během registrace.
 | settings.advancedOptions.downloadMappings | Kolekce | Definuje alternativní umístění pro stažení závislosti, jako jsou WMF a .NET
 
 ### <a name="protected-settings-property-values"></a>Chráněné hodnoty nastavení vlastností
 
 | Název | Typ dat | Popis
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | řetězec | Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost bude šifrovat. |
-| protectedSettings.configurationUrlSasToken | řetězec | Určuje token SAS k adrese URL definované configuration.url přístup. Tato vlastnost bude šifrovat. |
-| protectedSettings.configurationDataUrlSasToken | řetězec | Určuje token SAS k adrese URL definované configurationData.url přístup. Tato vlastnost bude šifrovat. |
+| protectedSettings.configurationArguments | string | Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost bude šifrovat. |
+| protectedSettings.configurationUrlSasToken | string | Určuje token SAS k adrese URL definované configuration.url přístup. Tato vlastnost bude šifrovat. |
+| protectedSettings.configurationDataUrlSasToken | string | Určuje token SAS k adrese URL definované configurationData.url přístup. Tato vlastnost bude šifrovat. |
 
 
 ## <a name="template-deployment"></a>Nasazení šablon

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: f8b072752a6cf538cb1a85d3b255af6201aa041e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cd4115aaeec15d14d48dcb71cbdc75212c6dc2db
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884806"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960667"
 ---
 # <a name="quickstart-create-an-net-core-app-with-app-configuration"></a>Rychlý start: Vytvoření .NET Core aplikace s konfigurací aplikace
 
@@ -74,15 +74,15 @@ Budete používat [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
 1. Nastavte proměnnou prostředí s názvem **ConnectionString** a nastavte ho na přístupový klíč k úložišti konfigurace aplikace. Pokud používáte Windows příkazového řádku, spusťte následující příkaz a potom restartujte příkazového řádku umožňující změna se projeví:
 
-        setx ConnectionString "Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>"
+        setx ConnectionString "connection-string-of-your-app-configuration-store"
 
     Pokud používáte prostředí Windows PowerShell, spusťte následující příkaz:
 
-        $Env:ConnectionString = "Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>"
+        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
     Pokud používáte v systému macOS nebo Linux, spusťte následující příkaz:
 
-        export ConnectionString='Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>'
+        export ConnectionString='connection-string-of-your-app-configuration-store'
 
 2. Spusťte následující příkaz k sestavení aplikace konzoly:
 

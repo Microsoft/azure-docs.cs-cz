@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 4e6d981ef1ac7985e9f230cfbbda440a765e20ea
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc8c62113a9a7a12525f1ba7e59c68831a322cfe
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695481"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959183"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Sestavení aplikace konzoly .NET Core pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB (sada SDK verze 3 ve verzi Preview)
 
@@ -131,7 +131,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Úp
 
    Zkopírujte identifikátor URI z portálu a vložte ho do `<your endpoint URL>` v `Program.cs` souboru. Zkopírujte primární klíč z portálu a vložte ho do `<your primary key>`.
 
-   ![Snímek obrazovky se získat klíče Azure Cosmso DB z webu Azure portal](./media/sql-api-get-started/dotnet-tutorial-portal-keys.png)
+   ![Snímek obrazovky se získat klíče služby Azure Cosmos DB na webu Azure portal](./media/sql-api-get-started/dotnet-tutorial-portal-keys.png)
 
 1. V dalším kroku vytvoříme novou instanci třídy `CosmosClient` a nastavit některé generování uživatelského rozhraní pro naši aplikaci.
 

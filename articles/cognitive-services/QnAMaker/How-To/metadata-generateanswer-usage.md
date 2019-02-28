@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/21/2019
-ms.author: tulasim88
-ms.openlocfilehash: 9cb16842e0bc80a1fcbd066bea44c5b9701bb6d5
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: tulasim
+ms.openlocfilehash: 462dfb2de8608eebd5609f7044bde03991fca3ca
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651205"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958044"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědí znalostní báze s rozhraním GenerateAnswer API a metadat
 
@@ -69,10 +69,10 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?i
 
 |Vlastnost požadavku HTTP|Název|Type|Účel|
 |--|--|--|--|
-|Parametr trasa adresy URL|ID znalostní báze|řetězec|Identifikátor GUID pro znalostní báze.|
-|Parametr trasa adresy URL|Hostitel koncového bodu QnA maker|řetězec|Název hostitele koncového bodu nasazené ve vašem předplatném Azure. Toto je k dispozici na stránce nastavení po publikování znalostní báze. |
-|Hlavička|Typ obsahu|řetězec|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
-|Hlavička|Autorizace|řetězec|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Parametr trasa adresy URL|ID znalostní báze|string|Identifikátor GUID pro znalostní báze.|
+|Parametr trasa adresy URL|Hostitel koncového bodu QnA maker|string|Název hostitele koncového bodu nasazené ve vašem předplatném Azure. Toto je k dispozici na stránce nastavení po publikování znalostní báze. |
+|Hlavička|Typ obsahu|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
+|Hlavička|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo POST|JSON – objekt|JSON|Dotaz s nastavením|
 |Parametr řetězce dotazu (volitelné)|`isTest`|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
 
@@ -80,10 +80,10 @@ Text JSON má několik nastavení:
 
 |Vlastnost text JSON|Požaduje se|Type|Účel|
 |--|--|--|--|
-|`question`|povinné|řetězec|Uživatel dotaz k odeslání do znalostní báze.|
+|`question`|povinné|string|Uživatel dotaz k odeslání do znalostní báze.|
 |`top`|nepovinné|integer|Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.|
-|`userId`|nepovinné|řetězec|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
-|`strictFilters`|nepovinné|řetězec|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat.|
+|`userId`|nepovinné|string|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
+|`strictFilters`|nepovinné|string|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat.|
 
 Příklad text JSON vypadá takto:
 

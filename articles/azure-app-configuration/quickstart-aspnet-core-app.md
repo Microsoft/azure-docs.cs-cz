@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: d9f27ae176796f72f9c6f460bf69c3f9a7acf0f7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ce19041b29d567f061dde59fbe041adf61f889a0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884814"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961478"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace ASP.NET Core s konfigurací aplikace Azure
 
@@ -53,8 +53,6 @@ Přidáte [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/co
 
 - Otevřete soubor *.csproj*. Přidat `UserSecretsId` elementu, jak je znázorněno níže a nahraďte její hodnotu s vlastním, což je obvykle identifikátor GUID. Uložte soubor.
 
-    *TestAppConfig.csproj:*
-
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
 
@@ -87,7 +85,7 @@ Přidáte [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/co
 
     Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
-        dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>"
+        dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<your_endpoint>;Id=<your_id>;Secret=<your_secret>"
 
     Tajný klíč správce se použije pouze pro testování webové aplikace místně. Při nasazení aplikace (například [služby Azure App Service](https://azure.microsoft.com/services/app-service/web)), bude používat nastavení aplikace (například **připojovací řetězce** ve službě App Service) místo uložení připojovacího řetězce s tajným klíčem Správce.
 

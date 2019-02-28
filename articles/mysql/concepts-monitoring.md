@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: de339fbab3d360507a77708816b5fccdca80a7d1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 05af196d115376d744df1976c6a3d9fe9cab74e0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544749"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958894"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorování v Azure Database for MySQL
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for MySQL poskytuje různé metriky, které poskytují přehled o chování vašeho serveru.
@@ -41,7 +41,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database for MySQL:
 |backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|
 
 ## <a name="server-logs"></a>Protokoly serveru
-Můžete povolit na vašem serveru protokolování pomalých dotazů. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v OMS Log Analytics, Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
+Můžete povolit na vašem serveru protokolování pomalých dotazů. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v protokolech, Event Hubs a účet úložiště Azure Monitor. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
 
 ## <a name="next-steps"></a>Další postup
 - Zobrazit [jak nastavit výstrahy](howto-alert-on-metric.md) pokyny k vytvoření upozornění na metriku.

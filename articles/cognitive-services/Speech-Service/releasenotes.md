@@ -11,14 +11,22 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e389df02966146b217802d4e93f844a4fee425a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446830"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958642"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="speech-sdk-131-2019-february-refresh"></a>Speech SDK 1.3.1: Aktualizace února 2019
+
+Toto je vydání opravy chyb a pouze by to ovlivnilo sady SDK nativního/spravovaného. Není to by to ovlivnilo verze jazyka JavaScript sady SDK.
+
+**Oprava chyby**
+
+* Oprava nevracení paměti při použití mikrofonu vstup. Na základě Stream nebo vstupní soubor nemá vliv.
 
 ## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: 2019 Únorová verze
 
@@ -26,6 +34,8 @@ ms.locfileid: "56446830"
 
 * Sadou SDK pro řeč podporuje výběr vstupní mikrofonu prostřednictvím AudioConfig třídy. Díky tomu datový proud zvukových dat ve službě řeči z jiné než výchozí mikrofonu. Další podrobnosti najdete v dokumentaci popisující [vstupní zvuková zařízení výběr](how-to-select-audio-input-devices.md). To ještě není k dispozici z jazyka JavaScript.
 * Sadou SDK pro řeč teď podporuje Unity v beta verzi. Poskytněte prosím zpětnou vazbu prostřednictvím v části problém [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples). Tato verze podporuje Unity na Windows x86 a x64 (desktop nebo aplikací univerzální platformy Windows) a Android (ARM32/64, x86). Další informace najdete v našich [rychlý start Unity](quickstart-csharp-unity.md).
+* Soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (k dispozici v předchozích verzích) už není potřeba. Funkce je teď integrovaná v core SDK.
+
 
 **Ukázky**
 
@@ -54,6 +64,7 @@ Následující nový obsah je k dispozici v našich [ukázkové úložiště](ht
   * Počáteční podpora a implementaci pro pomocné parametry frázi.
   * Vrátí kolekci properties službou JSON pro rozpoznávání
 * Knihovny DLL Windows teď obsahují verzi prostředku.
+* Pokud jste vytvořili rozpoznávání `FromEndpoint` můžete přidat parametry přímo na adresu URL koncového bodu. Pomocí `FromEndpoint` nejde nakonfigurovat nástroj pro rozpoznávání prostřednictvím vlastnosti standardní konfigurace.
 
 **Opravy chyb**
 

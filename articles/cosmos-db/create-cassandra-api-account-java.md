@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: fc1505526ddff33c68b6d7a4030338dd7d712598
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b6876bf8210d47729ad8e765ccffe709a0fccacc
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994468"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958690"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Kurz: Vytvořit účet Cassandra API ve službě Azure Cosmos DB s použitím aplikace v Javě pro ukládání dat klíč/hodnota
 
@@ -43,7 +43,7 @@ Tento kurz se zabývá následujícími úkony:
 
 1. Přihlaste se na  [Azure Portal](https://portal.azure.com/). 
 
-2. Vyberte  **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**. 
+2. Vyberte **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**. 
 
 3. V **nový účet** podokně zadejte nastavení pro nový účet Azure Cosmos. 
 
@@ -52,12 +52,12 @@ Tento kurz se zabývá následujícími úkony:
    |ID   |   Zadejte jedinečný název.    | Zadejte jedinečný název pro identifikaci tohoto účtu Azure Cosmos. <br/><br/>Vzhledem k tomu, že se váš kontaktní bod vytvoří připojením řetězce cassandra.cosmosdb.azure.com k ID, které zadáte, použijte jedinečné, ale snadno rozpoznatelné ID.         |
    |Rozhraní API    |  Cassandra   |  Rozhraní API určuje typ účtu, který se má vytvořit. <br/> Vyberte **Cassandra**, protože v tomto článku vytvoříte databázi širokých sloupců, která může být dotázán pomocí syntaxe jazyka dotazů Cassandra (CQL).  |
    |Předplatné    |  Vaše předplatné        |  Vyberte předplatné Azure, kterou chcete použít pro tento účet Azure Cosmos.        |
-   |Skupina prostředků   | Zadejte název.    |  Vyberte **vytvořit nový**a pak zadejte nový název skupiny prostředků pro váš účet. V zájmu jednoduchosti můžete použít název, který se shoduje s vaším ID.    |
+   |Skupina prostředků   | Zadejte název.    |  Vyberte **vytvořit nový**a pak zadejte nový název skupiny prostředků pro váš účet. V zájmu jednoduchosti můžete použít název, který se shoduje s vaším ID.    |
    |Umístění    |  Vyberte oblast nejbližší vašim uživatelům.    |  Vyberte zeměpisné umístění, ve kterém chcete účet Azure Cosmos hostovat. Použijte umístění co nejblíže vašim uživatelům, abyste jim zajistili nejrychlejší přístup k data.    |
 
    ![Vytvoření účtu pomocí portálu](./media/create-cassandra-api-account-java/create-account.png)
 
-4. Vyberte **vytvořit**. <br/>Vytvoření účtu trvá několik minut. Po vytvoření prostředku můžete zobrazit **nasazení bylo úspěšné** oznámení na pravé straně portálu.
+4. Vyberte **Vytvořit**. <br/>Vytvoření účtu trvá několik minut. Po vytvoření prostředku můžete zobrazit **nasazení bylo úspěšné** oznámení na pravé straně portálu.
 
 ## <a name="get-the-connection-details-of-your-account"></a>Získání podrobností o připojení vašeho účtu  
 

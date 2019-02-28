@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 45d828b32984363f611828ca3ea33e5fa96a5017
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 53af7ff840f9d04f0e09010b72e9eefc32a8eadd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745839"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961886"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Doporučené postupy pro používání Azure Data Lake Storage Gen1
 
@@ -140,7 +140,7 @@ Pokud se Data Lake Storage Gen1 přesouvání protokolu není zapnuté, Azure HD
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-Jakmile je vlastnost nastavena a uzly se restartují, Data Lake Storage Gen1 diagnostiky do protokolů se zapíšou YARN na uzlech (/tmp/\<uživatele\>/yarn.log) a důležité podrobnosti, jako jsou chyby nebo může být omezení využití sítě (kód chyby protokolu HTTP 429) monitorovat. Tytéž informace můžete také monitorovat a mít v Log Analytics nebo všude, kde jsou protokoly dodáno ve [diagnostiky](data-lake-store-diagnostic-logs.md) okně účtu Data Lake Storage Gen1. Doporučuje se alespoň zapnout protokolování na straně klienta, nebo využít možnost s Data Lake Storage Gen1 nabízí přehled o provozu a snadnější ladění přesouvání protokolu.
+Jakmile je vlastnost nastavena a uzly se restartují, Data Lake Storage Gen1 diagnostiky do protokolů se zapíšou YARN na uzlech (/tmp/\<uživatele\>/yarn.log) a důležité podrobnosti, jako jsou chyby nebo může být omezení využití sítě (kód chyby protokolu HTTP 429) monitorovat. Tytéž informace můžete také monitorovat a mít v Azure Monitor protokoly nebo všude, kde jsou protokoly dodáno ve [diagnostiky](data-lake-store-diagnostic-logs.md) okně účtu Data Lake Storage Gen1. Doporučuje se alespoň zapnout protokolování na straně klienta, nebo využít možnost s Data Lake Storage Gen1 nabízí přehled o provozu a snadnější ladění přesouvání protokolu.
 
 ### <a name="run-synthetic-transactions"></a>Spouštění syntetických transakcí
 

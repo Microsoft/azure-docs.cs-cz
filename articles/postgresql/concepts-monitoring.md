@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: c936d7946398183f0b0aac025503bb172bc147af
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bdfeb41c7881bfbd577cdf1a9190617e09979a7f
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101001"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961010"
 ---
 # <a name="monitor-and-tune"></a>Monitorování a ladění
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
@@ -40,7 +40,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
 |backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|
 
 ## <a name="server-logs"></a>Protokoly serveru
-Můžete povolit protokolování na server. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
+Můžete povolit protokolování na server. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md), Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
 
 ## <a name="query-store"></a>Úložiště dotazů
 [Query Store](concepts-query-store.md) je funkce ve verzi public preview, která uchovává informace o dotazu dotazování statistické údaje o výkonu v průběhu času včetně a počkejte události. Funkci nevyřeší dotazu informace o výkonu modulu runtime v systémové databázi s názvem **azure_sys** pod query_store schématu. Můžete řídit shromažďování a ukládání dat prostřednictvím různých knoflíky konfigurace.

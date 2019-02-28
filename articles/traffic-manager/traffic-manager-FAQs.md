@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4d47192ea69047b0b12deffc41776a87c16ca6ab
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696791"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959744"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -59,14 +59,7 @@ Metoda výkonu směruje provoz na nejbližší dostupný koncový bod. Net výsl
 Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Po dokončení vyhledávání DNS se klienti připojovat k koncový bod aplikace přímo, ne pomocí Traffic Manageru. Připojení proto můžete použít jakýkoli protokol aplikace. Pokud vyberete TCP jako monitorování protokolu, Traffic Manager koncový bod monitorování stavu se dá udělat bez použití jakékoli aplikačních protokolů. Pokud budete chtít mít stav ověření pomocí protokolu aplikace, koncový bod musí být schopné reagovat na požadavky HTTP nebo HTTPS GET.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Můžete použít Traffic Manageru s názvem "základní" doména?
-
-Ne. Standardy DNS nepovolují záznamy CNAME, aby nevznikaly konflikty s další záznamy DNS se stejným názvem. Vrcholu (nebo kořenový) zóny DNS vždy obsahuje dva existující záznamy DNS; záznamy autoritativních NS a SOA. To znamená, že nelze aniž by byla porušena standardy DNS vytvořit záznam CNAME, který ve vrcholu zóny.
-
-Traffic Manager vyžaduje záznam DNS CNAME pro mapování názvu DNS jednoduché. Například můžete namapovat `www.contoso.com` jako název DNS profilu Traffic Manageru `contoso.trafficmanager.net`. Kromě toho profilu služby Traffic Manager vrátí druhý záznam CNAME DNS označíte, který koncový bod by měl klient připojit k.
-
-Chcete-li tento problém obejít, doporučujeme používat přesměrování HTTP směrovat přenos dat ze základní doména jméno na jinou adresu URL, které pak může použít k Traffic Manageru. Základní doména "contoso.com" může například přesměrovat uživatele na CNAME "www.contoso.com", který odkazuje na název DNS Traffic Manageru.
-
-Plnou podporu pro základní domény ve službě Traffic Manager je sledována v backlogu a funkce. Můžete zaregistrovat vaše podpora pro tuto žádost o funkci ve [pro ni hlasovat o náš web pro zasílání názorů komunity](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
+Ano. Zjistěte, jak vytvořit záznam aliasu pro apex název vaší domény tak, aby odkazovaly profilu Azure Traffic Manageru, najdete v článku [konfigurace záznamu o aliasu pro podporu vrcholu názvy domén s Traffic Managerem](../dns/tutorial-alias-tm.md).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manageru zvažte adresa podsítě klienta při zpracování dotazů DNS 
 Ano, kromě IP adresu zdrojového dotazu DNS obdrží (což obvykle je IP adresa překladače DNS), když provádíte vyhledávání pro Geographic, výkonu a podsítě metod směrování, traffic Manageru také bere v úvahu adresa podsítě klienta Pokud pomocí překladače, který zadal žádost jménem koncového uživatele je zahrnutý v dotazu.  

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 87b68eceda6749e3bb0fdc64394b2b839f3963c3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7d40a29a0d9d708deb5485b18327d809ded0022d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866738"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959540"
 ---
 # <a name="dynamic-manifests"></a>Dynamické manifesty
 
@@ -41,7 +41,7 @@ Toto téma vysvětluje koncepty související s **dynamických manifestů** a uv
 
 ## <a name="manifest-files-overview"></a>Přehled soubory manifestu
 
-Při kódování prostředku pro streamování s adaptivní přenosovou rychlostí **manifest** se vytvoří soubor (seznam testů) (soubor je založený na textu nebo na základě XML). **Manifest** soubor obsahuje, jako datový proud metadat: sledování typu (zvuk, video nebo text), sledování název, počáteční a koncový čas, s přenosovou rychlostí (Vlastnosti), sledování jazyků, prezentace okno (posuvné okno pevnou platnost), (kodek videa FourCC). Nastaví také přehrávače pro načtení další fragment tím, že poskytuje informace o tyto další možné přehrát video fragmenty dostupné a jejich umístění. Fragmenty (nebo segmenty) jsou skutečné "bloky" obsah videa.
+A **manifest** soubor se (seznamem testů) (založený na textu nebo na základě XML) zahrnuje, jako datový proud metadat: sledování typu (zvuk, video nebo text), sledování název, počáteční a koncový čas, s přenosovou rychlostí (Vlastnosti), sledování jazyků (posuvné okno prezentace okno pevnou platnost), video kodek (FourCC). Nastaví také přehrávače pro načtení další fragment tím, že poskytuje informace o tyto další možné přehrát video fragmenty dostupné a jejich umístění. Fragmenty (nebo segmenty) jsou skutečné "bloky" obsah videa.
 
 Tady je příklad souboru manifestu HLS: 
 

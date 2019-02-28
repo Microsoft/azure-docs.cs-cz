@@ -7,40 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/02/2018
+ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: 30f96c54dd916188296ca0245d4095a32ae0bbe4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 85aba4478e27d88af439dbe2e474a84ee65b373c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742877"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960424"
 ---
 # <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
 
 HDInsight poskytuje pružnost tím, že možnost vertikálně navýšit a snížit počet pracovních uzlů v clusterech služby. To umožňuje zmenšit cluster po hodinách, nebo o víkendech a rozbalte ho během špičky obchodními požadavky.
 
-Například pokud máte nějaké zpracování služby batch, který se stane jednou denně nebo jednou za měsíc, clusteru HDInsight se dá škálovat pár minut před této naplánované události, bude mít dostatečnou paměť a výpočetní výkon procesoru. Škálování pomocí rutiny Powershellu můžete automatizovat [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Později po dokončení zpracování a využití ocitne mimo provoz znovu, můžete vertikálně snížit kapacitu clusteru HDInsight na míň pracovních uzlů.
+Například pokud máte nějaké zpracování služby batch, který se stane jednou denně nebo jednou za měsíc, clusteru HDInsight se dá škálovat pár minut před této naplánované události, bude mít dostatečnou paměť a výpočetní výkon procesoru.  Později po dokončení zpracování a využití ocitne mimo provoz znovu, můžete vertikálně snížit kapacitu clusteru HDInsight na míň pracovních uzlů.
 
-* Škálování clusteru prostřednictvím [Powershellu](hdinsight-administer-use-powershell.md):
+## <a name="utilities-to-scale-clusters"></a>Nástroje pro škálování clusterů
 
-    ```powershell
-    Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
-    ```
-    
-* Škálování clusteru prostřednictvím [rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md):
+Společnost Microsoft poskytuje následující nástroje, které škálování clusterů:
 
-    ```
-    azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-    ```
+|Nástroj | Popis|
+|---|---|
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/overview) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) - ClusterName \<název clusteru > - TargetInstanceCount \<NewSize >|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[Změna velikosti az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --& gt; resource-group \<skupinu prostředků > – název \<název clusteru > – cílový počet instancí \<NewSize >|
+|[Klasické rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count>|
+|[Azure Portal](https://portal.azure.com)|Otevřete podokno váš cluster HDInsight, vyberte **velikost clusteru** v nabídce vlevo a pak v podokně velikost clusteru, zadejte počet pracovních uzlů a vyberte Uložit.|  
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-    
-* Škálování clusteru prostřednictvím [webu Azure portal](https://portal.azure.com), otevřete podokno váš cluster HDInsight, vyberte **škálování clusteru** v nabídce vlevo a pak v podokně škálování clusteru, zadejte počet pracovních uzlů a Vyberte Uložit.
-
-    ![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
 Pomocí kteréhokoli z těchto metod, můžete škálovat svůj cluster HDInsight navýšit nebo snížit kapacitu během několika minut.
+
+> [!IMPORTANT]  
+> * Rozhraní příkazového řádku Azure classic je zastaralá a by měla sloužit pouze pomocí modelu nasazení classic. Pro všechna ostatní nasazení, použijte [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).  
+> * Modul AzureRM Powershellu je zastaralý.  Použijte prosím [Az modulu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) kdykoli je to možné.
 
 ## <a name="scaling-impacts-on-running-jobs"></a>Škálování dopad na probíhající úlohy
 
@@ -53,11 +53,12 @@ A tento problém vyřešit, můžete počkat na dokončení před snížení kap
 Pokud chcete zobrazit seznam čekajících a spuštěné úlohy, můžete použít uživatelské rozhraní správce prostředků YARN, následujícím postupem:
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. V nabídce vlevo vyberte **Procházet**vyberte **clustery HDInsight**a pak vyberte svůj cluster.
-3. Z podokna clusteru HDInsight, vyberte **řídicí panel** v horní nabídce otevřete uživatelské rozhraní Ambari. Zadejte své přihlašovací údaje clusteru.
-4. Klikněte na tlačítko **YARN** na seznam služeb v nabídce vlevo. Na stránce YARN vyberte **rychlé odkazy** a ukazatel myši aktivní hlavní uzel a potom klikněte na **uživatelské rozhraní správce prostředků**.
+2. V levé straně, přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**a pak vyberte svůj cluster.
+3. V hlavní zobrazení, přejděte na **řídicí panely clusteru** > **Ambari domácí**. Zadejte své přihlašovací údaje clusteru.
+4. Z uživatelského rozhraní Ambari, vyberte **YARN** na seznam služeb v nabídce vlevo.  
+5. Na stránce YARN vyberte **rychlé odkazy** a ukazatel myši aktivní hlavní uzel a potom vyberte **uživatelské rozhraní správce prostředků**.
 
-    ![Uživatelské rozhraní správce prostředků](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
+    ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
 Může přímý přístup k uživatelské rozhraní správce prostředků s `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
 
@@ -97,13 +98,11 @@ Jak už bylo zmíněno dříve, všechny čekající na vyřízení nebo spušt�
 
 ## <a name="hdinsight-name-node-stays-in-safe-mode-after-scaling-down"></a>Název uzlu HDInsight zůstane v nouzovém režimu po snížení kapacity
 
-![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster.png)
-
-Pokud váš cluster na minimálně jeden pracovní uzel, zmenšení, jak je znázorněno na předchozím obrázku, Apache HDFS, může zablokovány v nouzovém režimu, když pracovní uzly se restartují, z důvodu opravy nebo bezprostředně po provedení této operace škálování.
+Pokud můžete zmenšit na minimálně jeden pracovní uzel clusteru, může stát v nouzovém režimu zablokuje Apache HDFS a při pracovní uzly se restartují, z důvodu opravy nebo bezprostředně po provedení této operace škálování.
 
 Primární příčinou je, že Hive používá několik `scratchdir` soubory a ve výchozím nastavení předpokládá, že tří replik každého bloku, ale existuje pouze jedna replika možné Jestliže vertikálně snížit kapacitu k uzlu minimální jeden pracovní proces. V důsledku toho souborů `scratchdir` stát *under-replikované*. To může způsobit HDFS zůstat v nouzovém režimu, když po provedení této operace škálování se restartují služby.
 
-Když vertikálně pokus se stane, závisí HDInsight Apache Ambari rozhraní pro správu nejprve vyřadit z provozu velmi nežádoucí pracovních uzlů, které jejich HDFS bloky replikuje do dalších uzlů pracovního procesu online, a bezpečně clusteru vertikálně snížit kapacitu. HDFS přejde v nouzovém režimu během časového období údržby a by měl pocházet po dokončení změny velikosti. V tomto okamžiku je, že HDFS můžete zablokovány v nouzovém režimu.
+Když vertikálně pokus se stane, závisí HDInsight Apache Ambari rozhraní pro správu nejprve vyřadit z provozu velmi nežádoucí pracovních uzlů, které jejich HDFS bloky replikovat do jiné online pracovních uzlů, a bezpečně clusteru vertikálně snížit kapacitu. HDFS přejde v nouzovém režimu během časového období údržby a by měl pocházet po dokončení změny velikosti. V tomto okamžiku je, že HDFS můžete zablokovány v nouzovém režimu.
 
 HDFS, nastavena `dfs.replication` nastavení 3. Proto bloky pomocné soubory jsou under-replikované pokaždé, když jsou méně než tři pracovní uzly online, protože nejsou k dispozici není očekávaný tři kopie každého souboru bloku.
 
@@ -121,7 +120,7 @@ Po opuštění nouzovém režimu, můžete ručně odstranit dočasné soubory, 
 
 * H100 nejde odeslat příkaz Zobrazit databází: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Připojte se k hn0-clustername.servername.internal.cloudapp.net:10001 [hn0 clustername.servername. internal.cloudapp.NET/1.1.1.1] se nezdařilo: **Připojení bylo odmítnuto**
 
-* Není H020 může vytvořit připojení ke službě .net hn0 hdisrv.servername.bx.internal.cloudapp: 10001: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Připojte se ke hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: Připojení bylo odmítnuto: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Připojte se ke hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: **Připojení bylo odmítnuto**
+* Není H020 může vytvořit připojení ke službě .net hn0 hdisrv.servername.bx.internal.cloudapp: 10001: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed: Připojení bylo odmítnuto: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed: **Připojení bylo odmítnuto**
 
 * Z protokolů Hive: UPOZORNIT [main]: server. HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Chyba při spuštění serveru HiveServer2 při pokusu 21, bude akci opakovat v 60 sekundách java.lang.RuntimeException: Chyba při použití zásad autorizace na konfigurace hive: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Nelze vytvořit adresář** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Název uzlu je v nouzovém režimu**.
     Ohlášené bloky 0 potřebuje další bloky 9 k dosažení prahové hodnoty 0.9900 bloků celkem 9.
@@ -245,7 +244,7 @@ Nejmíň jedna kritická chyba může zobrazit také na aktivní nebo pohotovost
 
 ![Stav blocích NameNode](./media/hdinsight-scaling-best-practices/ambari-hdfs-crit.png)
 
-Vyčistit pomocné soubory, které odebere chyby replikace bloku, SSH do každého hlavního uzlu a spusťte následující příkaz:
+Vyčistit pomocné soubory, které odebrat chyby replikace bloku, SSH do každého hlavního uzlu a spusťte následující příkaz:
 
 ```
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/

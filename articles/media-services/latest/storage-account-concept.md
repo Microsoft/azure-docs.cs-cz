@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: 471bc34272b8e141c8640bd218bdafd840850d24
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cda029dd11e8cb4cb07e9fce7eef95d6d4d78d7e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672266"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960207"
 ---
 # <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
 
@@ -35,12 +35,10 @@ Existují různé skladové položky, které můžete použít pro váš účet 
 
 ## <a name="assets-in-a-storage-account"></a>Prostředky v účtu úložiště
 
-V Media Services v3 rozhraní API úložiště slouží k nahrání souborů.
+V Media Services v3 rozhraní API úložiště slouží k nahrání souborů do prostředků. Další informace najdete v tématu [prostředky koncept](assets-concept.md).
 
 > [!Note]
 > By se neměly pokoušet ke změně obsahu kontejnery objektů blob, které byly generovány pomocí sady Media Services SDK bez použití rozhraní API služby Media Services.
-
-Chcete-li zjistit, jak použít rozhraní API úložiště pomocí služby Media Services k nahrání vstupních souborů, přečtěte si [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md). 
  
 ## <a name="next-steps"></a>Další postup
 

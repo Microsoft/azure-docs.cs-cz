@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: a4eea340fe57ab3c05e527a476d9153113eedba5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f56b4f07b7155d9f465a6ce492b4718d4a66e76e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819390"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959319"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorování datové továrny pomocí Azure monitoru
 Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování poskytuje data k zajištění, že systém zůstane vaší aplikace v provozu a spuštěná v dobrém stavu. Také pomáhá stave vypnout potenciální problémy a řešení potíží s poslední těch, které jsou. Kromě toho můžete data monitorování získat podrobný přehled o vaší aplikaci. Tyto znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -40,11 +40,11 @@ Můžete použít úložiště účtu nebo událostí centra oboru názvů, kter
 ### <a name="diagnostic-settings"></a>Nastavení diagnostiky
 Diagnostické protokoly pro prostředky rozsáhlých výpočetních prostředků jsou nakonfigurováni pomocí nastavení diagnostiky. Nastavení diagnostiky pro ovládací prvek zdroje:
 
-* Diagnostické protokoly se odešle (účet úložiště, Event Hubs nebo Log Analytics).
+* Diagnostické protokoly se odešle (účet úložiště, Event Hubs nebo protokoly Azure monitoru).
 * Kategorie protokolu, které se odesílají.
 * Jak dlouho se uchovávají každou kategorii protokolů v účtu úložiště.
 * Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů mezi 1 a 2147483647.
-* Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pouze služby Event Hubs nebo Log Analytics jsou vybrané možnosti), zásady uchovávání informací nemají žádný vliv.
+* Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pouze služby Event Hubs nebo Azure Monitor jsou vybrané možnosti protokoly), zásady uchovávání informací nemají žádný vliv.
 * Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní.
 
 ### <a name="enable-diagnostic-logs-via-rest-apis"></a>Povolení diagnostických protokolů přes rozhraní REST API

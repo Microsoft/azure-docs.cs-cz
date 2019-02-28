@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 9704002a30556c76c65ddcad1cb576fbf4502b55
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 66ea269e2f29bfd39cdb81086391e0277474219d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014297"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961345"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-introduction.md)
 > * [Aktuální verze](introduction.md)
 
@@ -62,7 +62,7 @@ Jakmile budou data v centralizovaném úložišti dat v cloudu, můžete shromá
 Po převodu nezpracovaných dat do podoby, která umožňuje využití v rámci podniku, můžete tato data nahrát do služby Azure Data Warehouse, Azure SQL Database, Azure CosmosDB nebo jakéhokoli jiného analytického nástroje, na který se můžou vaši obchodní uživatelé nasměrovat ze svých nástrojů business intelligence.
 
 ### <a name="monitor"></a>Monitorování
-Jakmile úspěšně sestavíte a nasadíte kanál integrace dat, který ze zpracovaných dat získává obchodní hodnotu, můžete monitorovat naplánované aktivity a kanály a jejich míru úspěšnosti a chyb. Služba Azure Data Factory obsahuje integrovanou podporu monitorování kanálů prostřednictvím služby Azure Monitor, rozhraní API, PowerShellu, Log Analytics a panelů stavu na webu Azure Portal.
+Jakmile úspěšně sestavíte a nasadíte kanál integrace dat, který ze zpracovaných dat získává obchodní hodnotu, můžete monitorovat naplánované aktivity a kanály a jejich míru úspěšnosti a chyb. Azure Data Factory obsahuje integrovanou podporu monitorování kanálů prostřednictvím služby Azure Monitor, rozhraní API, Powershellu, protokoly Azure monitoru a panelů stavu na webu Azure portal.
 
 ## <a name="top-level-concepts"></a>Koncepty nejvyšší úrovně
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory se skládá ze čtyř klíčových součástí. Tyto součásti společně poskytují platformu, na které můžete vytvářet pracovní postupy řízené daty s kroky pro přesun a transformaci dat.

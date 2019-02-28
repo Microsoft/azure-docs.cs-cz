@@ -6,18 +6,15 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/20/2018
-ms.openlocfilehash: bfa55c0a91473a4adc6b9fb02ac9697208ef39f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: a86b755770dc59f196c57f1d86e7f29200ce25e3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540057"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962056"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Vytvoření a správě Azure Database for koncových bodů služby virtuální sítě MariaDB pomocí rozhraní příkazového řádku Azure
-
-> [!IMPORTANT]
-> Funkce koncových bodů služby virtuální sítě je ve verzi Public Preview.
 
 Koncové body služeb virtuální sítě (VNet) a pravidla rozšiřují privátní adresní prostor virtuální sítě k Azure Database pro MariaDB server. Pomocí pohodlné příkazů rozhraní příkazového řádku Azure (CLI), můžete vytvářet, aktualizovat, odstraňovat, seznamu a zobrazit koncové body služby virtuální sítě a pravidla ke správě serveru. Přehled služby Azure Database pro koncové body služby virtuální sítě MariaDB, včetně omezení, naleznete v tématu [– Azure Database for koncové body služby virtuální sítě serveru MariaDB](concepts-data-access-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastí pro službu Azure Database pro MariaDB.
 

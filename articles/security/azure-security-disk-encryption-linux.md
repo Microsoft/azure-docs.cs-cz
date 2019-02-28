@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 2/5/2018
+ms.date: 02/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ce8484151d59eef50efe1ad0598f736752eb03e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 19201512e107bcfc0d291d6496d5d1dcd35936ba
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746682"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961648"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivace Azure Disk Encryption pro virtuální počítače s Linuxem v režimu IaaS 
 
@@ -24,7 +24,7 @@ Přijmout [snímku](../virtual-machines/windows/snapshot-copy-managed-disk.md) n
 >[!WARNING]
 > - Pokud jste už dřív použili [Azure Disk Encryption pomocí Azure AD app](azure-security-disk-encryption-prerequisites-aad.md) pro šifrování tento virtuální počítač, budete muset pokračovat tuto možnost použijte k šifrování virtuálního počítače. Nemůžete použít [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tento šifrovaný virtuální počítač jako tato akce není podporovaný scénář význam přepnutí mimo aplikaci AAD pro tento šifrovaný virtuální počítač se zatím nepodporuje.
  > - Azure Disk Encryption musí být umístěné ve stejné oblasti služby Key Vault a virtuální počítače. Vytvoření a použití služby Key Vault, která je ve stejné oblasti jako virtuální počítač k šifrování.
-> - Při šifrování svazků operačního systému Linux, virtuální počítač nebude k dispozici a SSH se deaktivuje. Chcete-li zkontrolovat průběh, [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) nebo [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) příkazy lze použít. Tento proces můžete očekávat, že trvat několik hodin pro svazek operačního systému 30GB a další čas pro šifrování svazků s daty. Doba šifrování objem dat se přímo úměrná velikosti a množství datové svazky Pokud všechny možnost šifrovat formátu se používá. 
+> - Při šifrování svazků operačního systému Linux, virtuální počítač by měl být považuje za nedostupnou. Důrazně doporučujeme, aby se zabránilo přihlášení SSH, Probíhá šifrování abyste předešli problémům s blokuje všechny otevřené soubory, které bude třeba je získávat během procesu šifrování. Chcete-li zkontrolovat průběh, [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) nebo [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) příkazy lze použít. Tento proces můžete očekávat, že trvat několik hodin pro svazek operačního systému 30GB a další čas pro šifrování svazků s daty. Doba šifrování objem dat se přímo úměrná velikosti a množství datové svazky Pokud všechny možnost šifrovat formátu se používá. 
 > - Zakázáním šifrování na virtuální počítače s Linuxem je podporována pouze pro datové svazky. Není podporován na data nebo svazků operačního systému, pokud byla dříve zašifrována svazek s operačním systémem.  
 
 
@@ -71,9 +71,9 @@ Syntaxe pro hodnoty parametru klíč šifrovacího klíče je úplný identifik�
      ```
 
 ### <a name="bkmk_RunningLinuxPSH"> </a> Povoluje šifrování na existující nebo spuštěného virtuálního počítače s Linuxem pomocí Powershellu
-Použití [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) rutina pro povolení šifrování u spuštěného virtuálního počítače IaaS v Azure. 
+Použití [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) rutina pro povolení šifrování u spuštěného virtuálního počítače IaaS v Azure. Přijmout [snímku](../virtual-machines/windows/snapshot-copy-managed-disk.md) nebo zálohování virtuálního počítače s [Azure Backup](../backup/backup-azure-vms-encryption.md) před disky jsou šifrované. Parametr - skipVmBackup je už zadaná v skripty prostředí PowerShell k šifrování spuštěného virtuálního počítače s Linuxem.
 
--  **Šifrování spuštěného virtuálního počítače:** Níže uvedený skript inicializuje proměnných a spustí rutinu Set-AzureRmVMDiskEncryptionExtension. Skupinu prostředků, virtuálního počítače a služby key vault, musí již byly vytvořeny jako požadavky. Nahraďte hodnoty MySecureRg MySecureVM a MySecureVault. Budete muset přidat parametr - VolumeType Pokud šifrujete datové disky, nikoli disk s operačním systémem. 
+-  **Šifrování spuštěného virtuálního počítače:** Níže uvedený skript inicializuje proměnných a spustí rutinu Set-AzureRmVMDiskEncryptionExtension. Skupinu prostředků, virtuálního počítače a služby key vault, musí již byly vytvořeny jako požadavky. Nahraďte hodnoty MySecureRg MySecureVM a MySecureVault. Upravte parametr - VolumeType k určení, které disky, který šifrujete.
 
      ```azurepowershell-interactive
       $rgName = 'MySecureRg';
@@ -82,8 +82,9 @@ Použití [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.comp
       $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
       $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
       $KeyVaultResourceId = $KeyVault.ResourceId;
+      $sequenceVersion = [Guid]::NewGuid();  
 
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType '[All|OS|Data]' -SequenceVersion $sequenceVersion -skipVmBackup;
     ```
 - **Šifrování pomocí KEK spuštěného virtuálního počítače:** Budete muset přidat parametr - VolumeType Pokud šifrujete datové disky, nikoli disk s operačním systémem. 
 
@@ -96,8 +97,9 @@ Použití [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.comp
      $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
      $KeyVaultResourceId = $KeyVault.ResourceId;
      $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
+     $sequenceVersion = [Guid]::NewGuid();  
 
-     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
+     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType '[All|OS|Data]' -SequenceVersion $sequenceVersion -skipVmBackup;
      ```
 
     >[!NOTE]
@@ -373,35 +375,36 @@ Na rozdíl od syntaxe Powershellu rozhraní příkazového řádku, aby uživate
      ```
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>Povoluje šifrování na nově přidaný disk pomocí Azure Powershellu
- Při použití Powershellu k šifrování nový disk pro Linux, je potřeba zadat novou verzi pořadí. Pořadí verze musí být jedinečný. Níže uvedený skript vytvoří identifikátor GUID verze pořadí. 
+ Při použití Powershellu k šifrování nový disk pro Linux, je potřeba zadat novou verzi pořadí. Pořadí verze musí být jedinečný. Níže uvedený skript vytvoří identifikátor GUID verze pořadí. Přijmout [snímku](../virtual-machines/windows/snapshot-copy-managed-disk.md) nebo zálohování virtuálního počítače s [Azure Backup](../backup/backup-azure-vms-encryption.md) před disky jsou šifrované. Parametr - skipVmBackup je už zadaná v skripty Powershellu pro šifrování disku nově přidaná data.
  
 
 -  **Šifrování datové svazky spuštěného virtuálního počítače:** Níže uvedený skript inicializuje proměnných a spustí rutinu Set-AzureRmVMDiskEncryptionExtension. Skupinu prostředků, virtuální počítač a trezor klíčů by již byly vytvořeny jako požadavky. Nahraďte hodnoty MySecureRg MySecureVM a MySecureVault. Přijatelné hodnoty pro parametr - VolumeType jsou všechny, operačním systémem a daty. Pokud virtuální počítač byla dříve zašifrována s typem svazek "Operační systém" nebo "All", pak parametr - VolumeType by měl být změněn na všechny tak, aby operační systém i nový datový disk budou zahrnuty.
 
      ```azurepowershell-interactive
-      $sequenceVersion = [Guid]::NewGuid();
       $rgName = 'MySecureRg';
       $vmName = 'MySecureVM';
       $KeyVaultName = 'MySecureVault';
       $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
       $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
       $KeyVaultResourceId = $KeyVault.ResourceId;
+      $sequenceVersion = [Guid]::NewGuid();
 
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion;
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion -skipVmBackup;
     ```
 - **Šifrování u spuštěného virtuálního počítače pomocí KEK datové svazky:** Přijatelné hodnoty pro parametr - VolumeType jsou všechny, operačním systémem a daty. Pokud virtuální počítač byla dříve zašifrována s typem svazek "Operační systém" nebo "All", pak parametr - VolumeType by měl být změněn na všechny tak, aby operační systém i nový datový disk budou zahrnuty.
 
      ```azurepowershell-interactive
-     $rgName = 'MySecureRg';
-     $vmName = 'MyExtraSecureVM';
-     $KeyVaultName = 'MySecureVault';
-     $keyEncryptionKeyName = 'MyKeyEncryptionKey';
-     $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
-     $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
-     $KeyVaultResourceId = $KeyVault.ResourceId;
-     $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
+      $rgName = 'MySecureRg';
+      $vmName = 'MyExtraSecureVM';
+      $KeyVaultName = 'MySecureVault';
+      $keyEncryptionKeyName = 'MyKeyEncryptionKey';
+      $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+      $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
+      $KeyVaultResourceId = $KeyVault.ResourceId;
+      $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
+      $sequenceVersion = [Guid]::NewGuid();
 
-     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data';
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion -skipVmBackup;
 
      ```
 

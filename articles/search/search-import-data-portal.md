@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee1b2a40dbcbd53a758ac71f30401778ef07e872
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229753"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960749"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Průvodce importem dat pro službu Azure Search
 
@@ -77,7 +77,9 @@ Index je připraven k dotazování ihned poté, co je první dokument načten. M
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md) (není podporováno pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) kanálů)
 
-Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné tabulky, jednoho zobrazení databáze nebo ekvivalentní datové struktury. Tuto datovou strukturu byste měli vytvořit před spuštěním průvodce.
+Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné tabulky, jednoho zobrazení databáze nebo ekvivalentní datové struktury. 
+
+Tuto datovou strukturu byste měli vytvořit před spuštěním průvodce a musí obsahovat obsah. Nespouštějte **importovat data** průvodci z prázdného datového zdroje.
 
 |  Výběr | Popis |
 | ---------- | ----------- |
@@ -85,7 +87,7 @@ Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné t
 | **Ukázky**| Služba Azure Search je hostitelem bezplatné veřejné databáze Azure SQL, můžete použít další informace o importu a dotaz požadavků ve službě Azure Search. Zobrazit [rychlý start: Import, indexování a dotazování pomocí nástroje portálu](search-get-started-portal.md) návod. |
 | **Azure SQL Database** |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
 | **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [Připojení virtuálního počítače SQL ke službě Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
-| **Azure Cosmos DB** |Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz, který zploští nebo vyfiltruje sadu řádků nebo který rozpozná změněné dokumenty pro následné operace aktualizace dat. |
+| **Databáze Cosmos** |Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz, který zploští nebo vyfiltruje sadu řádků, nebo ponechejte prázdné, dotaz. Dotaz není nutné v tomto průvodci.|
 | **Azure Blob Storage** |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
 | **Azure Table Storage** |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
 

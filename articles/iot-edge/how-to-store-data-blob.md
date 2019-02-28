@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9faed53540d449f8658655ff7285b38aa20bee6c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ac40c4c974049f802da97846db5010652a420691
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901815"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961206"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -221,7 +221,7 @@ Pokud budete chtít nasadit víc instancí služby Azure Blob Storage na hranič
 
 Když se připojíte k modulům další objekt blob úložiště, změňte koncový bod tak, aby odkazoval na aktualizovaném hostiteli port. 
 
-### <a name="try-it-out"></a>Vyzkoušet
+## <a name="try-it-out"></a>Vyzkoušet
 
 Dokumentace ke službě Azure Blob Storage zahrnuje šablony rychlý start, která poskytuje ukázkový kód v několika jazycích. Můžete spustit tyto ukázky otestovat tak, že změníte koncový bod služby blob tak, aby odkazovala na váš modul úložiště objektů blob Azure Blob Storage na hraničních zařízeních IoT.
 

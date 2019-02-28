@@ -1,22 +1,22 @@
 ---
-title: Ukázky v Azure Log Analytics brány Firewall
-description: Ukázky v Azure Log Analytics brány Firewall
+title: Ukázky log analytics v Azure brány Firewall
+description: Ukázky log analytics v Azure brány Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: cff31ba73730b7cf7cb27ecb132ec70806234924
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2ea95a8e32e2162c31e95bc2e9dd5e60be07649f
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233391"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958061"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Ukázky v Azure Log Analytics brány Firewall
+# <a name="azure-firewall-log-analytics-samples"></a>Ukázky log analytics v Azure brány Firewall
 
-Následující ukázky Log Analytics můžete použít k analýze protokolů vaše Brána Firewall služby Azure. Ukázkový soubor je součástí Návrhář zobrazení Log Analytics, [Návrhář zobrazení Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článek obsahuje další informace o návrhu zobrazení koncept.
+Následující ukázky log analytics můžete použít k analýze protokolů vaše Brána Firewall služby Azure. Ukázkový soubor je součástí Návrhář zobrazení Log Analytics, [Návrhář zobrazení Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článek obsahuje další informace o návrhu zobrazení koncept.
 
 ## <a name="log-analytics-view"></a>Zobrazení v Log Analytics
 
@@ -151,4 +151,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o Brána Firewall služby Azure, monitorování a diagnostice najdete v tématu [kurz: Brána Firewall služby Azure Monitor protokoly a metriky](tutorial-diagnostics.md).
+Informace o Brána Firewall služby Azure, monitorování a diagnostice najdete v tématu [kurzu: Monitorujte metriky a protokoly brány Firewall Azure](tutorial-diagnostics.md).

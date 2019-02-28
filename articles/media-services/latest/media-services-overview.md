@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/07/2019
+ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: d6805b3d60e5e30d35acc12c5564498830ddd8fb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881719"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960645"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -88,7 +88,7 @@ Služba Media Services v3 obsah je uspořádaný podle následující strukturu 
 | Šablony Rychlý start | Zobrazit základní 1 den pokyny pro rychlé vyzkoušení služby Media Services ji noví zákazníci.|
 | Kurzy | Zobrazte založené na scénářích postupy pro některé nejčastější úkoly Media Services.|
 | Ukázky | Obsahuje odkazy na ukázky kódu. |
-| Koncepty | Obsahují podrobné vysvětlení Media Services v3 koncepcích a funkcích. Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.<br/><br/>* Cloudu nahrávání a úložiště<br/>* Kódování<br/>* Media analytics<br/>* Balení, poskytování ochrany<br/>* Živé streamování<br/>* Nepřetržité monitorování<br/>* Player klientů<br/><br/>a další. |
+| Koncepty | Obsahují podrobné vysvětlení [Media Services v3 koncepcích a funkcích](concepts-overview.md). Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.<br/><br/>* Cloudu nahrávání a úložiště<br/>* Kódování<br/>* Media analytics<br/>* Balení, poskytování ochrany<br/>* Živé streamování<br/>* Monitorování<br/>* Player klientů<br/><br/>a další. |
 | Návody | Předvedeme vám k dokončení úkolu.|
 
 ## <a name="next-steps"></a>Další postup

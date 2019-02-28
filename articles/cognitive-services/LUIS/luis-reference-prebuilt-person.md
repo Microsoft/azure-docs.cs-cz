@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje personName informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 342397264c364a4c07d8311cc1eda636e8a20e8d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7b748c507d5c848cc83a8a0c55cb7b05903bc542
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211421"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958521"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>PersonName předem připravených entit pro aplikace LUIS
 PersonName předem připravených entit rozpozná jména lidí. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující personName k záměry aplikace. personName entity se podporuje v angličtině a čínština [jazykové verze](luis-reference-prebuilt-entities.md).

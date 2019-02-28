@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445113"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962022"
 ---
 # <a name="ship-an-application"></a>Dodávejte aplikace
 
@@ -42,8 +42,10 @@ Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresá�
 | Název | Funkce
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK pro nativní a spravovaná nasazení
-| `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | vyžaduje se pro spravované nasazení
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | vyžaduje se pro spravované nasazení
+
+>[!NOTE]
+> Od verze 1.3.0 soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (k dispozici v předchozích verzích) už není potřeba. Funkce je teď integrovaná v core SDK.
 
 ## <a name="linux"></a>Linux
 

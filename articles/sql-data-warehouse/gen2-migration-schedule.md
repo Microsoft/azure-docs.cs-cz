@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8dbe282b919c988d5cb997a66914d81ce1981f88
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d21731549c55f8e3fe90711838fcd21e6770eefe
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592413"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960696"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 Microsoft pomáhá snížit základní náklady na provozování schopná zpracovat vyhovovat i vašim náročným dotazy přidáním nižší výpočetní úrovně pro Azure SQL Data Warehouse do datového skladu přečíst celé oznámení o [nižší výpočetní vrstva podpory pro Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nová nabídka je již k dispozici v oblastech, které jste si poznamenali v následující tabulce. Pro oblasti jsou podporované je možné upgradovat na Gen2 stávajících datových skladů Gen1 prostřednictvím:
@@ -36,27 +36,29 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Kanada – východ |\* |\* |
 | USA – střed |K dispozici. |1. května 2019 |
 | Čína – východ |\* |\* |
-| Čína – sever 1 |\* |\* |
+| Čína – východ 2 |\* |\* |
+| Čína – sever |\* |\* |
+| Čína – sever 2 |\* |\* |
 | Východní Asie |K dispozici. |1. května 2019 |
-| USA – východ 1 |K dispozici. |16. březnem 2019 |
+| USA – východ |K dispozici. |16. březnem 2019 |
 | Východní USA 2 |K dispozici. |16. březnem 2019 |
 | Francie – střed |1. března 2019 |1. května 2019 |
 | Německo – střed |\* |\* |
 | Indie – střed |K dispozici. |1. května 2019 |
-| Indie – jih 1 |1. března 2019 |15. června 2019 |
+| Indie – jih |1. března 2019 |15. června 2019 |
 | Japonsko – východ |K dispozici. |1. května 2019 |
 | Japonsko – západ |K dispozici. |15. června 2019 |
 | Korea – střed |1. března 2019 |1. května 2019 |
-| Korea – jih 1 |1. března 2019 |15. června 2019 |
+| Jižní Korea – jih |1. března 2019 |15. června 2019 |
 | Středoseverní USA |1. března 2019 |15. června 2019 |
 | Severní Evropa |K dispozici. |16. březnem 2019 |
 | Středojižní USA |K dispozici. |1. května 2019 |
 | Jihovýchodní Asie |K dispozici. |16. březnem 2019 |
 | Velká Británie – jih |1. března 2019 |1. května 2019 |
-| UK West 1 |1. března 2019 |15. června 2019 |
+| Spojené království – západ |1. března 2019 |15. června 2019 |
 | Západní střed USA |\* |\* |
 | Západní Evropa |K dispozici. |16. březnem 2019 |
-| USA – západ 1 |1. března 2019 |15. června 2019 |
+| Západní USA |1. března 2019 |15. června 2019 |
 | Západní USA 2 |K dispozici. |16. březnem 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu

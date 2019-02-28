@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 53061d4d09ac2769e59269701467a22f292cd919
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327551"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959761"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -63,10 +63,30 @@ Nejjednodušší způsob, jak získat přístup k vaší službě mimo cluster, 
 
 Pokud se nezobrazí řídicí panel Kubernetes, zkontrolujte, zda `kube-proxy` pod běží v `kube-system` oboru názvů. Pokud není ve spuštěném stavu, odstraňte pod a bude restartován.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nedaří se mi zprovoznit protokoly pomocí kubectl protokoly nebo nejde se připojit k serveru rozhraní API. Získávám "Chyba ze serveru: Chyba volání back-endu: vytáčení tcp..." Co bych měl/a dělat?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nedaří se mi zprovoznit protokoly pomocí kubectl protokoly nebo nejde se připojit k serveru rozhraní API. Získávám "Chyba ze serveru: Chyba volání back-endu: vytáčení tcp...". Co bych měl/a dělat?
 
-Ujistěte se, že se nezmění výchozí skupinu zabezpečení sítě (NSG) a že je otevřen pro připojení k rozhraní API serveru port 22. Zkontrolujte, zda `tunnelfront` pod běží v `kube-system` oboru názvů. Pokud tomu tak není, Vynutit odstranění pod a restartuje.
+Ujistěte se, že se nezmění výchozí skupinu zabezpečení sítě a, že je port 22 otevřený pro připojení k serveru rozhraní API. Zkontrolujte, zda `tunnelfront` pod běží v *kube-system* pomocí oboru názvů `kubectl get pods --namespace kube-system` příkazu. Pokud tomu tak není, Vynutit odstranění pod a restartuje.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>Mohu provést upgrade nebo změna velikosti a Power BI Desktop zobrazuje "zpráva: Chyba při změně hodnoty vlastnosti 'elementu imageReference' není povoleno".  Jak tento problém vyřešit?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Mohu provést upgrade nebo změna velikosti a Power BI Desktop zobrazuje "zpráva: Chyba při změně hodnoty vlastnosti 'elementu imageReference' není povoleno". Jak tento problém vyřešit?
 
 Vám může zobrazovat tato chyba vzhledem k tomu, že jste upravili značky v agentské uzly v clusteru AKS. Úprava a odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Upravit prostředky ve skupině MC_ * AKS clusteru dělí cíle úrovně služeb (SLO).
+
+## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Zobrazuje chyby, které se cluster je v chybovém stavu a upgrade nebo změna velikosti nebude fungovat, dokud se nevyřeší
+
+*Tato pomoc s řešením potíží se přesměruje z https://aka.ms/aks-cluster-failed*
+
+Tato chyba nastane, pokud clustery zadejte stavu selhání z několika důvodů. Postupujte podle následujících kroků, abyste před opakováním dříve nezdařené operace vyřešit stav vašeho clusteru se nezdařilo:
+
+1. Dokud je cluster z `failed` stavu, `upgrade` a `scale` operace nebude úspěšné. Běžné problémy kořenové a jejich řešení patří:
+    * Škálování s **kvóta dostatek výpočetních prostředků (CRP)**. Pokud chcete vyřešit, nejprve škálování clusteru zpět do stavu stabilní cíle v rámci kvóty. Potom postupujte podle těchto [postup k vyžádání kvóta výpočetních prostředků zvýšit](../azure-supportability/resource-manager-core-quotas-request.md) před pokusem o vertikální navýšení kapacity znovu za počáteční kvóty.
+    * Škálování clusteru se službou rozšířeného sítě a **prostředků nedostatečná podsítě (síť)**. Pokud chcete vyřešit, nejprve škálování clusteru zpět do stavu stabilní cíle v rámci kvóty. Potom postupujte podle [zvýšení postupem požadovat kvóty prostředků](../azure-resource-manager/resource-manager-quota-errors.md#solution) před pokusem o vertikální navýšení kapacity znovu za počáteční kvóty.
+2. Po vyřešení základní příčinu selhání upgradu clusteru musí být v úspěšném stavu. Po ověření bylo úspěšné. stav původní operaci opakujte.
+
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Zobrazuje chyby při pokusu o upgrade nebo určený počet číslic, které stav clusteru se aktuálně vrácení upgradu nebo selhal upgrade
+
+*Tato pomoc s řešením potíží se přesměruje z https://aka.ms/aks-pending-upgrade*
+
+Operace clusteru jsou omezené, když dochází k upgradu aktivní operace nebo byl pokus o upgrade, ale následně se nezdařilo. K diagnostice problému spusťte `az aks show -g myResourceGroup -n myAKSCluster -o table` získat podrobný stav ve vašem clusteru. Na základě výsledku:
+
+* Pokud je aktivním upgradu clusteru, počkejte, až do doby ukončení operace. Pokud byla úspěšná, zkuste to znovu dříve nezdařené operace.
+* Pokud cluster selhal upgrade, postupujte podle kroků uvedených [výše](#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade-directed-from-httpsakamsaks-pending-upgrade)

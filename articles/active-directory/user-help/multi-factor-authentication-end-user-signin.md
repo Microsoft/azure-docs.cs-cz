@@ -14,12 +14,12 @@ ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2545e85ff466ed7455161eb725b824da465457bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 153b3d61324d504fe260b104bf412913f9692627
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177297"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957534"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Přihlašovací prostředí s ověřováním Azure Multi-Factor Authentication
 > [!NOTE]
@@ -83,9 +83,8 @@ Někdy není nutné telefonu nebo zařízení, které jste nastavili jako vaše 
   ![Použití alternativní metody](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Další postup
+- Pokud máte potíže při přihlašování pomocí dvoustupňového ověření, získejte další informace na [potíže s Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-Pokud máte potíže při přihlašování pomocí dvoustupňového ověření, získejte další informace na [potíže s Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+- Zjistěte, jak [spravovat nastavení dvoustupňového ověření](multi-factor-authentication-end-user-manage-settings.md).
 
-Zjistěte, jak [spravovat nastavení dvoustupňového ověření](multi-factor-authentication-end-user-manage-settings.md).
-
-Zjistěte, jak [Začínáme s aplikací Microsoft Authenticator](user-help-auth-app-download-install.md) tak, aby oznámení můžete použít k přihlášení, místo texty a telefonních hovorů.
+- Zjistěte, jak [Začínáme s aplikací Microsoft Authenticator](user-help-auth-app-download-install.md) tak, aby oznámení můžete použít k přihlášení, místo texty a telefonních hovorů.

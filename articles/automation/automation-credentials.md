@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0454bc211d2ae8497babc808f9794fae4d22c47e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a842c0807a3cfbad78a43bcffa896c83bceedfb9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498161"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959285"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Assety přihlašovacích údajů ve službě Azure Automation
 
-Prostředek přihlašovacích údajů Automation obsahuje objekt, který obsahuje přihlašovací údaje zabezpečení, jako je například uživatelské jméno a heslo. Runbooků a DSC konfigurace může použít rutiny přijmout objekt PSCredential pro ověřování, nebo se může extrahovat uživatelské jméno a heslo objekt PSCredential poskytovat nějaká aplikace nebo služby, které vyžadují ověřování. Vlastnosti přihlašovacích údajů jsou bezpečně uložené ve službě Azure Automation a je přístupná v runbooku nebo konfigurace DSC se [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) aktivity.
+Prostředek přihlašovacích údajů Automation obsahuje objekt, který obsahuje zabezpečovacích přihlašovacích údajů, jako je například uživatelské jméno a heslo. Runbooků a DSC konfigurace může použít rutiny přijmout objekt PSCredential pro ověřování, nebo se může extrahovat uživatelské jméno a heslo objekt PSCredential poskytovat nějaká aplikace nebo služby, které vyžadují ověřování. Vlastnosti přihlašovacích údajů jsou bezpečně uložené ve službě Azure Automation a je přístupná v runbooku nebo konfigurace DSC se [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) aktivity.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -27,7 +27,7 @@ Prostředek přihlašovacích údajů Automation obsahuje objekt, který obsahuj
 
 ## <a name="azure-classic-powershell-cmdlets"></a>Rutiny Azure Classic PowerShell
 
-Rutiny v následující tabulce se používají k vytváření a správě prostředků přihlašovacích údajů automation pomocí prostředí Windows PowerShell.  Se dodávají jako součást [modulu Azure PowerShell](/powershell/azure/overview) která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
+Rutiny v následující tabulce se používají k vytváření a správě prostředků přihlašovacích údajů automation pomocí prostředí Windows PowerShell.  Se dodávají jako součást [modulu Azure PowerShell](/powershell/azure/overview), která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
 
 | Rutiny | Popis |
 |:--- |:--- |
@@ -38,7 +38,7 @@ Rutiny v následující tabulce se používají k vytváření a správě prost�
 
 ## <a name="azurerm-powershell-cmdlets"></a>Rutiny AzureRM Powershellu
 
-Pro AzureRM rutiny v následující tabulce se používají k vytváření a správě prostředků přihlašovacích údajů automation pomocí prostředí Windows PowerShell.  Se dodávají jako součást [modulu Azure RM.Automation](/powershell/azure/overview) která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
+Pro AzureRM rutiny v následující tabulce se používají k vytváření a správě prostředků přihlašovacích údajů automation pomocí prostředí Windows PowerShell.  Se dodávají jako součást [modulu Azure RM.Automation](/powershell/azure/overview), která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
 
 | Rutiny | Popis |
 |:--- |:--- |
@@ -106,6 +106,19 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
+Můžete také použít přihlašovací údaje pro ověření do Azure s [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). Ve většině případů byste měli používat [účet Spustit jako](manage-runas-account.md) a načíst ji [Get-AutomationConnection](automation-connections.md).
+
+```azurepowershell
+$myCred = Get-AutomationPSCredential -Name 'MyCredential`
+$userName = $myCred.UserName
+$securePassword = $myCred.Password
+$password = $myCred.GetNetworkCredential().Password
+
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+
+Connect-AzureRmAccount -Credential $myPsCred
+```
+
 ### <a name="graphical-runbook-sample"></a>Ukázkový grafický runbook
 
 Přidáte **Get-AutomationPSCredential** aktivitu grafický runbook tak, že kliknete pravým tlačítkem na přihlašovací údaje, které v podokně knihovna grafický editor a vyberete **přidat na plátno**.
@@ -118,7 +131,7 @@ Následující obrázek ukazuje příklad použití přihlašovacích údajů v 
 
 ## <a name="using-a-powershell-credential-in-dsc"></a>Pomocí přihlašovacích údajů prostředí PowerShell DSC
 
-Během konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů **Get-AutomationPSCredential**, assety přihlašovacích údajů můžete také předat ve prostřednictvím parametrů, v případě potřeby. Další informace najdete v tématu [kompilace konfigurací v Azure Automation DSC](automation-dsc-compile.md#credential-assets).
+Během konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů **Get-AutomationPSCredential**, assety přihlašovacích údajů můžete také předat ve prostřednictvím parametrů, pokud je potřeba. Další informace najdete v tématu [kompilace konfigurací v Azure Automation DSC](automation-dsc-compile.md#credential-assets).
 
 ## <a name="using-credentials-in-python2"></a>Pomocí přihlašovacích údajů v Python2
 
@@ -141,5 +154,3 @@ print cred["password"]
 * První kroky s grafickými runbooky najdete v článku [Můj první grafický runbook](automation-first-runbook-graphical.md).
 * První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md). 
 * Začínáme s runbooky Python2 najdete v článku [Můj první runbook Python2](automation-first-runbook-textual-python2.md) 
-
-

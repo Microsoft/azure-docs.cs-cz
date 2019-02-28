@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 0bade9f393d879123b7b1485052f70924d9c9b9c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045477"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959120"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
 
@@ -41,7 +41,7 @@ Protokolování diagnostiky umožňuje shromažďovat záznamy pro audit dat př
 
      * Vyberte **Stream do centra událostí** data protokolu Streamovat do centra událostí Azure. Tuto možnost použijte, pokud máte kanál zpracování příjmu dat, který analyzuje příchozí protokoly v reálném čase. Pokud vyberete tuto možnost, musíte zadat podrobnosti pro Azure Event Hubs, kterou chcete použít.
 
-     * Vyberte __odesílat do Log Analytics__ odesílat data do služby Log Analytics. Tuto možnost použijte, pokud chcete používat službu Log Analytics ke shromažďování a analýza protokolů.
+     * Vyberte __odesílat do Log Analytics__ odesílat data do služby Azure Monitor. Tuto možnost použijte, pokud budete chtít používat protokoly Azure monitoru ke shromažďování a analýza protokolů.
    * Určete, jestli chcete získat protokoly auditu nebo žádost o protokoly nebo obojí.  Požadavek protokolu zaznamená každého požadavku rozhraní API. Protokol auditu zaznamenává všechny operace, které jsou aktivovány tuto žádost rozhraní API.
 
    * Pro __archivovat do účtu úložiště__, zadejte počet dnů uchování data.
@@ -127,13 +127,13 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
 
 | Název | Typ | Popis |
 | --- | --- | --- |
-| time |Řetězec |Časové razítko (ve standardu UTC) v protokolu |
-| resourceId |Řetězec |Identifikátor prostředku, který operace trvalo umístit na |
-| category |Řetězec |Kategorie protokolu. Například **požadavky**. |
-| operationName |Řetězec |Název operace, která je zaznamenána. Například GetAggregatedJobHistory. |
-| resultType |Řetězec |Stav operace, například 200. |
-| callerIpAddress |Řetězec |IP adresu klientovi provádějícímu žádost |
-| correlationId |Řetězec |Identifikátor protokolu. Tato hodnota slouží k seskupení sady položek protokolu související. |
+| time |String |Časové razítko (ve standardu UTC) v protokolu |
+| resourceId |String |Identifikátor prostředku, který operace trvalo umístit na |
+| category |String |Kategorie protokolu. Například **požadavky**. |
+| operationName |String |Název operace, která je zaznamenána. Například GetAggregatedJobHistory. |
+| resultType |String |Stav operace, například 200. |
+| callerIpAddress |String |IP adresu klientovi provádějícímu žádost |
+| correlationId |String |Identifikátor protokolu. Tato hodnota slouží k seskupení sady položek protokolu související. |
 | identity |Objekt |Identita, která vygeneruje protokol |
 | properties |JSON |Viz následující část (schéma vlastnosti požadavku protokolu) podrobnosti |
 
@@ -141,12 +141,12 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
 
 | Název | Typ | Popis |
 | --- | --- | --- |
-| Vlastnost HttpMethod |Řetězec |Metoda protokolu HTTP se používá pro operaci. Třeba získáte. |
-| Cesta |Řetězec |Cesta operaci byla provedena |
+| HttpMethod |String |Metoda protokolu HTTP se používá pro operaci. Třeba získáte. |
+| Cesta |String |Cesta operaci byla provedena |
 | RequestContentLength |int |Délka obsahu žádosti HTTP |
-| ID žádosti klienta |Řetězec |Identifikátor, který jednoznačně identifikuje tento požadavek |
-| StartTime |Řetězec |Čas, kdy server přijal požadavek |
-| EndTime |Řetězec |Čas, odeslání odpovědi serveru |
+| ClientRequestId |String |Identifikátor, který jednoznačně identifikuje tento požadavek |
+| StartTime |String |Čas, kdy server přijal požadavek |
+| EndTime |String |Čas, odeslání odpovědi serveru |
 
 ### <a name="audit-logs"></a>Protokoly auditu
 
@@ -179,13 +179,13 @@ Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blo
 
 | Název | Typ | Popis |
 | --- | --- | --- |
-| time |Řetězec |Časové razítko (ve standardu UTC) v protokolu |
-| resourceId |Řetězec |Identifikátor prostředku, který operace trvalo umístit na |
-| category |Řetězec |Kategorie protokolu. Například **auditu**. |
-| operationName |Řetězec |Název operace, která je zaznamenána. Například JobSubmitted. |
-| resultType |Řetězec |Podřízený stav pro stav úlohy (operationName). |
-| resultSignature |Řetězec |Další podrobnosti o stavu úlohy (operationName). |
-| identity |Řetězec |Uživatel, který požadované operace. Například, susan@contoso.com. |
+| time |String |Časové razítko (ve standardu UTC) v protokolu |
+| resourceId |String |Identifikátor prostředku, který operace trvalo umístit na |
+| category |String |Kategorie protokolu. Například **auditu**. |
+| operationName |String |Název operace, která je zaznamenána. Například JobSubmitted. |
+| resultType |String |Podřízený stav pro stav úlohy (operationName). |
+| resultSignature |String |Další podrobnosti o stavu úlohy (operationName). |
+| identity |String |Uživatel, který požadované operace. Například, susan@contoso.com. |
 | properties |JSON |Viz následující část (schéma vlastnosti protokolu auditu) podrobnosti |
 
 > [!NOTE]
@@ -197,13 +197,13 @@ Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blo
 
 | Název | Typ | Popis |
 | --- | --- | --- |
-| JobId |Řetězec |ID přiřazených k úloze |
-| Název úlohy |Řetězec |Název, který byl k dispozici pro úlohu |
-| JobRunTime |Řetězec |Modul runtime používaný ke zpracování úlohy. |
-| SubmitTime |Řetězec |Čas (v UTC), který úloha byla odeslána. |
-| StartTime |Řetězec |Při spuštění úlohy spuštění po odeslání (ve standardu UTC) |
-| EndTime |Řetězec |Čas ukončení úlohy |
-| Paralelismus |Řetězec |Počet jednotek Data Lake Analytics požadovaná pro tuto úlohu během odesílání |
+| JobId |String |ID přiřazených k úloze |
+| Název úlohy |String |Název, který byl k dispozici pro úlohu |
+| JobRunTime |String |Modul runtime používaný ke zpracování úlohy. |
+| SubmitTime |String |Čas (v UTC), který úloha byla odeslána. |
+| StartTime |String |Při spuštění úlohy spuštění po odeslání (ve standardu UTC) |
+| EndTime |String |Čas ukončení úlohy |
+| Paralelismus |String |Počet jednotek Data Lake Analytics požadovaná pro tuto úlohu během odesílání |
 
 > [!NOTE]
 > **SubmitTime**, **StartTime**, **EndTime**, a **paralelismu** poskytují informace o operaci. Tyto položky pouze obsahovat hodnotu, pokud, které operace má zahájena nebo dokončena. Například **SubmitTime** obsahuje pouze hodnotu po **operationName** má hodnotu **JobSubmitted**.

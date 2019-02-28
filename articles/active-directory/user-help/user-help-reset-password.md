@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6521dc8db663df5e19fb97c495b4a5bcb6d3c1d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 170b96810130d33935e54c85529129e7e0267fe9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208466"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957772"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetovat heslo pracovního nebo školního
 
@@ -163,9 +163,6 @@ Tady jsou některé běžné případy chyb a jejich řešení:
 |Po zadání ID uživatele, se zobrazí chyba, že "Nemohli jsme ověřit váš účet."|Proces přihlašování nebyl schopen ověřit informace o účtu.|Existují dva důvody, že se že může zobrazit tato zpráva.<br><br>1. Správce zapnuté pro vaši organizaci resetování hesla, ale jste se ještě nezaregistrovali pro používání služby. K registraci pro resetování hesla, najdete v jedné z následujících článků založené na vaší metodě ověřování: [Upravit informace o zabezpečení tak, aby pomocí ověřovací aplikace (preview)](security-info-setup-auth-app.md), [upravit informace o zabezpečení tak, aby pomocí telefonního hovoru (preview)](security-info-setup-phone-number.md), [nastavení bezpečnostní údaje pro použití zasílání textových zpráv (preview)](security-info-setup-text-msg.md), [ Nastavení informací o zabezpečení pro použití e-mailu (preview)](security-info-setup-email.md), nebo [nastavení bezpečnostní údaje pro použití bezpečnostních otázek (preview)](security-info-setup-questions.md).<br><br>2. Správce není nastavená na on pro vaši organizaci resetování hesla. V takovém případě musíte vybrat "kontaktujte správce propojení" Odeslat e-mail s výzvou k resetování hesla správce systému.|
 
 ## <a name="next-steps"></a>Další postup
-
-- Upravte si bezpečnostní údaje chcete přidat nebo změnit svoje metody ověření v [spravovat svoje bezpečnostní údaje (preview)](security-info-manage-settings.md) článku. 
-
 - Další informace o bezpečnostním údajům v [zabezpečení informací (preview) – přehled](user-help-security-info-overview.md) článku.
 
 - Další informace o dvoustupňovém ověřování v [dvoustupňové ověření přehled](user-help-two-step-verification-overview.md) článku. 

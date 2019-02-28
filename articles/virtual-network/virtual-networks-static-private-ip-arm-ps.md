@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: ee990258be5ac6396754d5c42beb2ffd78ad7aca
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 536ca8895d130fd9273d556332830d020a485dc3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649219"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958282"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou privátní IP adresou pomocí Powershellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Vytvoření virtuálního počítače (VM) se statickou privátní IP adresou. Přiřadíte statickou privátní IP adresou, nikoli s dynamickou adresou, k zajištění, že adresa nikdy nemění. Další informace o [statické privátní IP adresy](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit přiřazené k existujícímu virtuálnímu počítači z dynamického na statické privátní IP adresu, nebo pro práci s veřejnými IP adresami, přečtěte si téma [přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
+Vytvoření virtuálního počítače (VM) se statickou privátní IP adresou. Pokud chcete vybrat adresu z podsítě, která je přiřazena k virtuálnímu počítači přiřadíte statickou privátní IP adresou, nikoli s dynamickou adresou. Další informace o [statické privátní IP adresy](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit přiřazené k existujícímu virtuálnímu počítači z dynamického na statické privátní IP adresu, nebo pro práci s veřejnými IP adresami, přečtěte si téma [přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -110,5 +110,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [privátních IP adres](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statickou privátní IP adresou](virtual-network-network-interface-addresses.md#add-ip-addresses) na virtuálním počítači Azure
-- Další informace o vytváření [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálních počítačů
+- Další informace o [privátních IP adres](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statickou privátní IP adresou](virtual-network-network-interface-addresses.md#add-ip-addresses) na virtuálním počítači Azure.
+- Další informace o vytváření [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálních počítačů.

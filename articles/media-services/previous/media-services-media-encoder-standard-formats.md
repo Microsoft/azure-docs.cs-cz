@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 02/26/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 27e9a5b33170855455e8906b659e0f0c009e42d3
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a5131449b5aa66e3075cbf67cc055286dbc4ccb9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984099"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957755"
 ---
-# <a name="media-encoder-standard-formats-and-codecs-legacy"></a>Media Encoder Standard formáty a kodeky (starší verze)
+# <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [Verze 2](media-services-media-encoder-standard-formats.md)

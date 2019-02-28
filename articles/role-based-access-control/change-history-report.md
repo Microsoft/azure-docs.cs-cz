@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 5a06b7f66742ad7e97e4ae2ab57aabf15f21faf3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338802"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957724"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Zobrazení protokolů aktivit se změny prostředků Azure RBAC
 
@@ -108,9 +108,9 @@ Tento příkaz vypíše protokolů aktivit pro poskytovatele prostředků autori
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
 ```
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete použít ke shromažďování a analýze RBAC změny provedené u všech vašich prostředků Azure. Log Analytics má následující výhody:
+[Protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete použít ke shromažďování a analýze RBAC změny provedené u všech vašich prostředků Azure. Protokoly Azure monitoru má následující výhody:
 
 - Zápis složitých dotazů a logiku
 - Integrujte upozornění, Power BI a další nástroje

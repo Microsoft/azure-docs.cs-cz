@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e6042d9a1d6dc0e737fb4cf7e55d2c6938f9b0f4
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106966"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961038"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway 
 
@@ -103,6 +103,7 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nelze nahrát data na účet, protože účet nebo sdílená složka jsou zakázané.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nelze se připojit ke kontejneru, protože oprávnění účtu jsou nesprávná nebo zastaralá. Zkontrolujte svůj přístup.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nelze přidat nová data, protože kontejner je plný. Nahlédněte do specifikací Azure a ověřte podporované velikosti kontejnerů podle typu. Soubor Azure například podporuje pouze maximální velikost 5 TB.                                     |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Nebylo možné nahrát data, protože neexistuje v kontejneru přidruženého k sdílenou složku.                                     |    
     |    2997            |    ERROR_ITEM_CANCELED                                     |    Došlo k neočekávané chybě. Jde o přechodnou chybu, která se vyřeší.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Došlo k neočekávané chybě. Chyba se může vyřešit sama, ale pokud přetrvá déle než 24 hodin, obraťte se na podporu Microsoftu.                                                                                                     |
     |    16000           |    RefreshException                                        |    Tento soubor nelze zpracovat.                                                                                                                                                                                                        |

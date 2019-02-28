@@ -6,25 +6,21 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 85a2810e8ab8de5ad2967aaf17f421d871368063
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314852"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958452"
 ---
 # <a name="indexing-external-data-for-queries-in-azure-search"></a>Indexování externích dat u dotazů ve službě Azure Search
-> [!div class="op_single_selector"]
-> * [Přehled](search-what-is-data-import.md)
-> * [.NET](search-import-data-dotnet.md)
-> * [REST](search-import-data-rest-api.md)
-> 
-> 
 
 Ve službě Azure Search se dotazy provádějí nad obsahem nahrán a uložili v [indexu vyhledávání](search-what-is-an-index.md). Tento článek zkoumá dva základní přístupy pro naplňování indexu: *nabízených* vaše data do indexu prostřednictvím kódu programu, nebo přejděte [indexeru Azure Search](search-indexer-overview.md) na podporovaný zdroj dat k  *o přijetí změn* v datech.
+
+U obou přístupu cílem je *načtení dat* z externího zdroje dat do indexu Azure Search. Služba Azure Search vám umožní vytvořit prázdný index, ale dokud nabízená nebo načítat data do ní není dotazovatelné.
 
 ## <a name="pushing-data-to-an-index"></a>Nabídka dat do indexu
 Model Push, který slouží k odesílání dat do služby Azure Search prostřednictvím kódu programu, je nejflexibilnějším přístupem. Za prvé u něj neplatí žádná omezení týkající se typu zdroje dat. Do indexu Azure Search je možné nabídnout jakoukoli datovou sadu skládající se z dokumentů JSON za předpokladu, že každý dokumente v datové sadě obsahuje mapování polí na pole definovaná ve schématu vašeho indexu. Za druhé u něj neplatí žádná omezení týkající se četnosti provádění. Do indexu můžete nabízet změny, jak často chcete. U aplikací vyžadujících velmi nízkou latenci (např. když potřebujete, aby operace hledání byly synchronizované s dynamickými databázemi zásob) je model Push vaší jedinou možností.

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b35aafdad081a48c0d6048743f87e10c6a6b3a77
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: e92c812ffc8b72fe79248c602e48ff01ef9fefcb
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752224"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961003"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android Unity s Azure prostorových kotev vztahů
 
@@ -77,6 +77,9 @@ Vyberte **spustit** z panelu nástrojů Android Studio.
 Vyberte zařízení s Androidem v **vyberte cíl nasazení** dialogového okna a vyberte **OK** ke spuštění aplikace na zařízení s Androidem.
 
 Postupujte podle pokynů v aplikaci umístit a odvolat ukotvení.
+
+> [!NOTE]
+> Při spuštění aplikace, pokud se nezobrazí fotoaparátu/kamery jako pozadí (pro instance, zobrazí se místo toho prázdnou hodnotu, modrá nebo jiných textury) pak budete pravděpodobně muset znovu importovat prostředky v Unity. Zastavte aplikaci. Z hlavní nabídky v Unity, zvolte **prostředků -> všechny opakovaný import**. Spusťte aplikaci znovu.
 
 Zastavte aplikaci tak, že vyberete **Zastavit** z panelu nástrojů Android Studio.
 

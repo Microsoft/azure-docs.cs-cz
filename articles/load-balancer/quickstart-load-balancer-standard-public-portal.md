@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 97d1cf2817ebfbf2eb1a6ba5a4d20d457b6369c6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232664"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961733"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí webu Azure Portal
 
@@ -40,21 +40,20 @@ Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://por
 V této části vytvoříte veřejný nástroj pro vyrovnávání zatížení, který pomáhá vyrovnávat zatížení virtuálních počítačů. Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu. Při vytváření Load Balanceru úrovně Standard musíte vytvořit také novou standardní veřejnou IP adresu nakonfigurovanou jako jeho front-end (ve výchozím nastavení má název *LoadBalancerFrontend*). 
 
 1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
-2. Na stránce **Vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
+2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
+    | Předplatné               | Vyberte své předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupSLB* v textovém poli.|
     | Název                   | *myLoadBalancer*                                   |
-    | Typ          | Public                                        |
-    | Skladová jednotka (SKU)           | Standard                          |
-    | Veřejná IP adresa | Vyberte **Vytvořit novou** a do textového pole zadejte *myPublicIP*. Ve výchozím nastavení je pro veřejnou IP adresu vybraná skladová položka Standard. V poli **Zóna dostupnosti** vyberte **Zónově redundantní**. |
-    | Předplatné               | Vyberte své předplatné.    |
-    |Skupina prostředků | Vyberte **Vytvořit novou** a zadejte *myResourceGroupSLB*.    |
-    | Umístění           | Vyberte **Západní Evropa**.                          |
-    
-
-![Vytvoření nástroje pro vyrovnávání zatížení](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Type          | Vyberte **veřejné**.                                        |
+    | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
+    | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
+    |Zóna dostupnosti| Vyberte **Zónově redundantní**.    |
+3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**.   
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
@@ -84,7 +83,7 @@ V této části vytvoříte virtuální síť a dva virtuální počítače pro 
         2. Na stránce **Vytvořit skupinu zabezpečení sítě** jako **Název** zadejte *myNetworkSecurityGroup* a pak vyberte **OK**.
 5. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 6. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
-7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2*, skupinou dostupnosti *myavailabilityset*, virtuální sítí *myVnet*, podsítí *myBackendSubnet* a skupinou zabezpečení sítě \**myNetworkSecurityGroup*. 
+7. Pomocí kroků 1 až 6 vytvořte druhý virtuální počítač s názvem, *VM2* s *myVnet* jako virtuální síť, *myBackendSubnet* a její podsítě a * *myNetworkSecurityGroup* jako skupinou zabezpečení sítě. 
 
 ### <a name="create-nsg-rule"></a>Vytvoření pravidla skupiny zabezpečení sítě
 

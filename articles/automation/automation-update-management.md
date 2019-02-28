@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fb96d69604ce341cec2de029f9663f6b8d274876
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 214c67e34fc8d36f2618c94414fe1c305efbf7d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822374"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960135"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -119,6 +119,9 @@ Pokud vaší skupině pro správu System Center Operations Manageru je připojen
 * Aktualizace Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Aktualizace sady pro správu nasazení
+
+> [!NOTE]
+> Pokud máte skupinu pro správu Operations Manageru 1807 s agenty, nakonfigurována na úrovni skupiny pro správu chcete přidružit k pracovní prostor, aktuální řešení zobrazíte jejich zobrazení je k přepsání **IsAutoRegistrationEnabled** do **True** v **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** pravidlo.
 
 Další informace o způsobu aktualizace sad management Pack řešení najdete v tématu [připojení Operations Manageru do Azure monitoru protokoly](../azure-monitor/platform/om-agents.md).
 
@@ -608,7 +611,7 @@ Odebrání virtuálního počítače ze správy aktualizací:
 
 * V pracovním prostoru Log Analytics, odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
 * Odeberte [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
-  
+
 ## <a name="troubleshoot"></a>Řešení potíží
 
 Zjistěte, jak řešení Update Management, najdete v článku [řešení potíží se správou aktualizací](troubleshoot/update-management.md)

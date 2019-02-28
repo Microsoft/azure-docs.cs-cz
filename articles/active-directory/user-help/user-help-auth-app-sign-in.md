@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 80fd458356cf5b375e0b3d922d9bdca3f3a30503
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456023"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961665"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se k účtům pomocí aplikace Microsoft Authenticator
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
@@ -110,14 +110,17 @@ Kroky potřebné k přihlášení k vaší pracovní nebo školní nebo osobní 
 |**Jak přihlášení pomocí telefonu bezpečnější než zadáním hesla?**|Dnes většina lidí přihlášení k webové stránky nebo aplikace pomocí uživatelského jména a hesla. Bohužel hesla můžou být ztráty, krádeže nebo uhodnout hackerů.<br><br>Jakmile nastavíte aplikaci Microsoft Authenticator, vytvoří klíč na vaše telefonní číslo a odemknout účet, který je chráněný službou PIN kód nebo biometrické zámek váš telefon. Tento klíč se pak používá k prokázání své identity při přihlášení.<br><br>**Důležité upozornění**<br>Vaše data slouží jenom k ochraně klíč místně. To má nikdy odeslaných a uložená v cloudu.|
 |**Přihlašování telefonem nahradila dvoustupňové ověřování? Doporučujeme zapnout ho?**|Přihlašování telefonem je typ dvoustupňovém ověření dojít, pokud dva kroky i na mobilním zařízení. Byste měli mít dvoustupňové ověřování zapnuté, kvůli poskytuje dodatečné zabezpečení pro váš účet.|
 |**Pokud mám pro svůj účet zapnuté dvoustupňové ověřování, je nutné schválit dvě oznámení?**| Ne. Přihlášení k účtu Microsoft také pomocí telefonu se počítá jako dvoustupňové ověřování, tedy žádná druhá požadováno schválení.|
-|**Co když mám ztratíte telefon nebo nemají se se mnou? Jak mám přístup ke svému účtu?**| Vždy můžete zvolit použití hesla místo toho odkaz na přihlašovací stránku přejít zpět na používání hesla. Ale pokud používáte dvoustupňové ověřování bude stále potřeba použít druhou metodu k ověření svojí identity.<br><br>**Důležité upozornění**<br>Důrazně doporučujeme, abyste měli jistotu, že máte více než jeden, aktuální, metodu ověřování, které jsou spojené s vaším účtem.<br><br>Můžete spravovat metody ověřování pro osobní účty z vaší [nastavení zabezpečení](https://account.live.com/proofs/manage) stránky. Pro pracovní nebo školní účty, můžete přejít na vaše organizace [dalšího ověření zabezpečení](https://aka.ms/MFASetup) stránky nebo **bezpečnost vašeho účtu** stránky, pokud správce zapnul bezpečnostní údaje. Další informace o bezpečnostní údaje, najdete v části [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).<br><br>Pokud nemůžete spravovat metody ověřování, obraťte se na správce.|
+|**Co když mám ztratíte telefon nebo nemají se se mnou? Jak mám přístup ke svému účtu?**| Vždy můžete zvolit použití hesla místo toho odkaz na přihlašovací stránku přejít zpět na používání hesla. Ale pokud používáte dvoustupňové ověřování bude stále potřeba použít druhou metodu k ověření svojí identity.<br><br>**Důležité upozornění**<br>Důrazně doporučujeme, abyste měli jistotu, že máte více než jeden, aktuální, metodu ověřování, které jsou spojené s vaším účtem.<br><br>Můžete spravovat metody ověřování pro osobní účty z vaší [nastavení zabezpečení](https://account.live.com/proofs/manage) stránky. Pro pracovní nebo školní účty, můžete přejít na vaše organizace [dalšího ověření zabezpečení](https://aka.ms/MFASetup) stránky nebo **bezpečnost vašeho účtu** stránky, pokud správce zapnul bezpečnostní údaje. Další informace o bezpečnostní údaje, najdete v části [zabezpečení informací (preview) – přehled](user-help-security-info-overview.md).<br><br>Pokud nemůžete spravovat metody ověřování, obraťte se na správce.|
 |**Jak přestat používat tuto funkci a přejít zpět k použití hesla?**|Pro osobní účty, vyberte **místo toho použít heslo** propojení během svého přihlašování. Nejnovější podle vašeho výběru se uloží a nabízí ve výchozím nastavení při příštím přihlášení. Pokud někdy budete chtít vrátit k používání přihlášení telefonem, vyberte **použít raději aplikaci** propojení během svého přihlašování.<br><br>Pro pracovní nebo školní účty, je potřeba na další bezpečnostní ověření stránku (jako jsou například https://aka.ms/MFASetup) a odebrání aplikace Microsoft Authenticator.|
 |**Proč nelze použít více než jeden pracovní nebo školní účet pro přihlášení telefonem?**| Telefon musí být zaregistrovaný do jednoho pracovního nebo školního účtu. Pokud chcete zapnout přihlašování telefonem pro různé pracovní nebo školní účet, musíte nejprve zrušit registraci se starým zařízením prostřednictvím **nastavení** stránky.|
 |**Se lze přihlásit do mého počítače pomocí telefonu?**| Pro počítače doporučujeme přihlásit pomocí Windows Hello ve Windows 10. Windows Hello vám umožní používat rozpoznávání tváře, otisk prstu nebo PIN kód pro přihlášení.|
 
 ## <a name="next-steps"></a>Další postup
+
+- Pokud máte problémy dostat se váš ověřovací kód pro svůj osobní účet Microsoft, přečtěte si článek **potíží ověření kódu** část [ověřová & ní bezpečnostní údaje účtu Microsoft kódy](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) článku.
+
 - Pokud máte další obecné dotazy o aplikaci, najdete v článku [nejčastější dotazy k aplikaci Microsoft Authenticator](user-help-auth-app-faq.md)
 
 - Pokud chcete získat další informace o dvoustupňovém ověřování, přečtěte si téma [nastavit účtu pro dvoustupňové ověřování.](multi-factor-authentication-end-user-first-time.md)
 
-- Pokud chcete získat další informace o bezpečnostních údajů, přečtěte si téma [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md)
+- Pokud chcete získat další informace o bezpečnostních údajů, přečtěte si téma [Přehled zabezpečení informací (preview)](user-help-security-info-overview.md)

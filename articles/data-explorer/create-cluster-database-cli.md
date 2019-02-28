@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí rozhraní příkazového řádku'
-description: V tomto rychlém startu se dozvíte, jak k vytvoření clusteru Průzkumník dat Azure a databáze pomocí Azure CLI
+description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocí rozhraní příkazového řádku Azure
 services: data-explorer
 author: radennis
 ms.author: radennis
@@ -8,16 +8,16 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 2/4/2019
-ms.openlocfilehash: 9e0ae547df34594674dc03702310a1537717a4ed
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 357f0efcf7300545d10113c92702d9fed4aad049
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881112"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958010"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-using-cli"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí rozhraní příkazového řádku
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí rozhraní příkazového řádku
 
-Tento rychlý start popisuje způsob vytvoření clusteru Průzkumník dat Azure a databáze pomocí Azure CLI.
+Tento rychlý start popisuje vytvoření clusteru Průzkumník dat Azure a databáze pomocí rozhraní příkazového řádku Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -25,11 +25,11 @@ K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure místně tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-the-cli-parameters"></a>Konfigurovat parametry příkazového řádku
 
-Pokud spouštíte příkazy ve službě Cloud Shell, následující kroky nemusíte provádět. Pokud používáte rozhraní příkazového řádku místně, provedením následujících kroků se přihlaste k Azure a nastavte své aktuální předplatné:
+Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azure Cloud Shell. Pokud používáte rozhraní příkazového řádku místně, postupujte podle těchto kroků pro přihlášení do Azure a nastavit aktuální předplatné:
 
 1. Spuštěním následujícího příkazu se přihlaste k Azure:
 
@@ -37,7 +37,7 @@ Pokud spouštíte příkazy ve službě Cloud Shell, následující kroky nemus�
     az login
     ```
 
-2. Nastavte předplatné, ve kterém chcete cluster vytvořit. Nahraďte `MyAzureSub` názvem předplatného Azure, které chcete použít:
+2. Nastavte předplatné, ve kterém chcete vašeho clusteru, který se má vytvořit. Nahraďte `MyAzureSub` s názvem předplatné Azure, kterou chcete použít:
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -54,7 +54,7 @@ Pokud spouštíte příkazy ve službě Cloud Shell, následující kroky nemus�
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | jméno | *azureclitest* | Požadovaný název vašeho clusteru.|
-   | SKU | *D13_v2* | SKU, které se použije pro váš cluster. |
+   | SKU | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
    | resource-group | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
@@ -65,7 +65,7 @@ Pokud spouštíte příkazy ve službě Cloud Shell, následující kroky nemus�
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-Pokud výsledek obsahuje "provisioningState" s hodnotou "ÚSPĚCH", pak clusteru se úspěšně vytvořil.
+Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru byl úspěšně vytvořen.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v Průzkumníku dat Azure clusteru
 
@@ -78,12 +78,12 @@ Pokud výsledek obsahuje "provisioningState" s hodnotou "ÚSPĚCH", pak clusteru
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | Název clusteru | *azureclitest* | Název clusteru s novou databází.|
-   | jméno | *clidatabase* | Požadovaný název vaší databáze.|
+   | jméno | *clidatabase* | Název databáze.|
    | resource-group | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
-   | Konfigurace soft-delete období | *3650:00:00:00* | Množství času, které se mají data ukládat tak, aby byl k dispozici pro dotazy. |
-   | Horká doby uložení v mezipaměti | *3650:00:00:00* | Množství času, které se mají data ukládat v mezipaměti. |
+   | Konfigurace soft-delete období | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
+   | Horká doby uložení v mezipaměti | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |
 
-2. Spuštěním následujícího příkazu databáze, že kterou jste vytvořili:
+2. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
 
     ```azurecli-interactive
     az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest

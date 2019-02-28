@@ -8,21 +8,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: b5d1908201de803ae065403600fc3478e604eedd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653709"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959098"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k sestavení služby machine learning aplikací a analyzovat datové sady
 
 Další informace o použití Apache Spark [MLlib](https://spark.apache.org/mllib/) k vytvoření služby machine learning aplikace provést jednoduché prediktivní analýzy pro otevřete datovou sadu. Spark integrované strojového učení knihovny, tento příklad používá *klasifikace* prostřednictvím logistické regrese. 
-
-> [!TIP]  
-> V tomto příkladu je také k dispozici [Poznámkový blok Jupyter](https://jupyter.org/) na cluster Spark (Linux), který vytvoříte v HDInsight. Plnohodnotném poznámkovém bloku umožňuje spouštět fragmenty kódu Pythonu z poznámkového bloku samotný. Chcete-li postupovat podle kurzu z v rámci poznámkového bloku, vytvoření clusteru Spark a spustit Poznámkový blok Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Spusťte Poznámkový blok **Spark Machine Learning – prediktivní analýzy na data kontroly potravin pomocí MLlib.ipynb** pod **Python** složky.
 
 MLlib je knihovna Spark core, která poskytuje řadu nástrojů, které jsou užitečné pro úlohy strojového učení, včetně nástroje, které jsou vhodné pro:
 
@@ -49,7 +46,7 @@ V následujících krocích vývoj modelu, pokud chcete zobrazit, co je potřeba
 
 1. Vytvořte poznámkový blok Jupyter pomocí jádra PySpark. Pokyny najdete v tématu [Vytvoření poznámkového bloku Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
-2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte klávesu **SHIRT + ENTER**.
+2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte klávesu **SHIFT + ENTER**.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -173,7 +170,7 @@ Začněme představu, co obsahuje datovou sadu.
 
     ```PySpark
     %%sql -o countResultsdf
-    SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
+    SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
     `%%sql` Magic, za nímž následuje `-o countResultsdf` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](https://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o `%%sql` magic a dalších Magic, které jsou k dispozici s jádrem pyspark, najdete v části [jádra dostupná v poznámkových blocích Jupyter s clustery Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
@@ -200,14 +197,6 @@ Začněme představu, co obsahuje datovou sadu.
     Výstup bude:
 
     ![Výstup Spark machine learningu aplikace - výsečový graf s pěti různých výsledků](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark machine learningu výstupu výsledku")
-
-    Existují 5 odlišné výsledky, které mohou mít kontrolu:
-
-    - Firmy, které se nenachází
-    - Chyba
-    - Úspěch
-    - Předejte plánovaným bodem obnovení kratším podmínky
-    - Nevyvíjí obchodní činnost
 
     Pro předpověď výsledků kontroly potravin, budete muset vyvinout model založený na porušení zásad. Protože logistické regrese je metoda binární klasifikace, je vhodné seskupit Výsledná data do dvou kategorií: **Selhání** a **předat**:
 
@@ -272,7 +261,7 @@ Můžete použít model, který jste vytvořili dříve na *předpovědět* co n
 1. Spusťte následující kód k vytvoření nového datového rámce, **predictionsDf** předpovědi generované modelem, který obsahuje. Fragment kódu vytvoří dočasné tabulky nazývané také **předpovědi** podle datového rámce.
 
     ```PySpark
-    testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+    testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                 .map(csvParse) \
                 .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
     testDf = spark.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -284,10 +273,6 @@ Můžete použít model, který jste vytvořili dříve na *předpovědět* co n
     Zobrazený výstup by měl vypadat asi takto:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     ['id',
         'name',
         'results',
@@ -321,10 +306,6 @@ Můžete použít model, který jste vytvořili dříve na *předpovědět* co n
     Výstup vypadá takto:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
@@ -377,7 +358,7 @@ Nyní můžete vytvořit finální vizualizace umožňující odůvodnitelný v�
     V tomto grafu "pozitivní" výsledek odkazuje na potravin neúspěšné kontroly, zatímco záporný výsledek odkazuje na úspěch kontroly.
 
 ## <a name="shut-down-the-notebook"></a>Poznámkový blok vypnout
-Po dokončení spuštění aplikace byste měli vypínat Poznámkový blok a uvolnit tak prostředky. To provedete kliknutím na položku **Zavřít a zastavit** z nabídky **Soubor** v poznámkovém bloku. Toto vypnutí a zavření poznámkového bloku.
+Po dokončení spuštění aplikace byste měli vypínat Poznámkový blok a uvolnit tak prostředky. Provedete to tak, že v nabídce **Soubor** poznámkového bloku vyberete **Zavřít a zastavit**. Toto vypnutí a zavření poznámkového bloku.
 
 ## <a name="seealso"></a>Viz také
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)

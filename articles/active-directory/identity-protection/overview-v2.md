@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e60804e6bdf37607a08b6c530fd900e0f481a45b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a9dc40af397e0d97ac5ddf47901c7da818faf8ae
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204504"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957789"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizovat)?
 
@@ -58,6 +58,7 @@ Reakce na ně, Azure AD Identity Protection vám dává možnost:
 
 Azure AD Identity Protection je funkce Azure Active Directory Premium P2, která vám umožní nakonfigurovat zásady, které automaticky reagují, když dojde k ohrožení identity uživatele nebo když je někdo jiný než vlastník účtu se pokouší přihlásit pomocí svých Identita. Tyto zásady, kromě jiných ovládacích prvků podmíněný přístup k dispozici službou Azure AD, můžete buď automaticky blokovat přístup nebo inicializace zmírňující opatření, jako je například resetování hesla nebo vynucení služby Multi-Factor authentication. Kromě toho Identity Protection poskytuje možnosti monitorování a vytváření sestav získat podrobnější přehled řízení rizik a potenciální ohrožení ve vaší organizaci. 
 
+> [!VIDEO https://youtu.be/1REQYdZ6364]
 
 
 ## <a name="risk-events"></a>Rizikové události

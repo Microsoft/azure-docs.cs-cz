@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/26/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456a094ed961b24e3db3944fe4ae2b9ff661d896
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c672d6ab04694a6d0b147b0e38c046abc527676a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190870"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959387"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 Tento článek obsahuje pokyny, jak pomocí rutin Powershellu pro Azure Active Directory (Azure AD) k vytvoření a aktualizaci skupiny. Tento obsah platí jenom pro skupiny Office 365 (říká se jim sjednocené skupiny). 
@@ -98,8 +98,7 @@ Tady je nastavení definované v Group.Unified SettingsTemplate. Pokud není uve
 |  <ul><li>EnableGroupCreation<li>Zadejte: Logická hodnota<li>Výchozí: True |Příznak označující, zda je vytvoření skupiny Office 365 povoleno v adresáři uživatelé bez oprávnění správce. Toto nastavení nevyžaduje licenci pro Azure Active Directory Premium P1.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Zadejte: String<li>Výchozí hodnota: "" |Identifikátor GUID skupiny zabezpečení, pro které členové můžou vytvářet skupiny Office 365 i v případě EnableGroupCreation == false. |
 |  <ul><li>UsageGuidelinesUrl<li>Zadejte: String<li>Výchozí hodnota: "" |Odkaz na pokyny k používání skupin. |
-|  <ul><li>ClassificationDescriptions<li>Zadejte: String<li>Výchozí hodnota: "" | Čárkami oddělený seznam popisů klasifikace. Hodnota ClassificationDescriptions je platná jenom v tomto formátu:
-  $setting ["ClassificationDescriptions"] = "Klasifikace: popisu, klasifikace: popis", kde klasifikace odpovídá řetězcům v ClassificationList.|
+|  <ul><li>ClassificationDescriptions<li>Zadejte: String<li>Výchozí hodnota: "" | Čárkami oddělený seznam popisů klasifikace. Hodnota ClassificationDescriptions je platná jenom v tomto formátu:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>kde klasifikace odpovídá řetězcům v ClassificationList.|
 |  <ul><li>DefaultClassification<li>Zadejte: String<li>Výchozí hodnota: "" | Klasifikace, která má být použita jako výchozí klasifikace pro skupinu Pokud nebyla zadána žádná.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Zadejte: String<li>Výchozí hodnota: "" | Řetězec s maximální délku 64 znaků, který definuje zásady vytváření názvů nakonfigurovaný pro skupiny Office 365. Další informace najdete v tématu [vynucení zásad pojmenování pro skupiny Office 365](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Zadejte: String<li>Výchozí hodnota: "" | Čárkou oddělený řetězec fráze, které uživatelé nebudou moci používat ve skupině názvy nebo aliasy. Další informace najdete v tématu [vynucení zásad pojmenování pro skupiny Office 365](groups-naming-policy.md). |

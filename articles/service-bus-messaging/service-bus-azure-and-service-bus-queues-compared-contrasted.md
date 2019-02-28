@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8c86ffaeb717914d9165ecb5b65f300ae7d903b2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852792"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959302"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty služby Storage a fronty služby Service Bus – porovnání a rozdíly
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure ještě dnes: Fronty služby Storage a fronty služby Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
@@ -83,7 +83,8 @@ Tato část porovnává některých základních funkcí front zpráv poskytuje 
 * Zprávy do fronty služby Storage jsou obvykle first-in-first-out, ale někdy může být mimo pořadí; například dobu trvání časového limitu viditelnost zpráva vypršení platnosti (třeba kvůli klientské aplikaci k chybám při zpracování). Když vyprší časový limit viditelnosti, zpráva se zobrazí znovu ve frontě pro jiný pracovní proces k jeho odstranění z fronty. V tu chvíli se nově viditelný zpráva může umístit ve frontě (vyjmutou znovu) za zprávu, která byla původně zařazených do fronty za ním.
 * Zaručené vzor FIFO do fronty služby Service Bus vyžaduje použití relací zasílání zpráv. V případě, že aplikace dojde k chybě při zpracování zprávy dostali **Náhled & uzamčení** režimu při příštím fronty přijímač přijímá relaci zasílání zpráv, spustí zprávou o selhání po jeho time to live (TTL) období platnosti.
 * Fronty služby Storage jsou navrženy pro podporu standardní řízení front zpráv scénáře, jako je oddělovací součásti aplikace chcete zvýšit škálovatelnost a odolnost pro selhání načtení vyrovnávání a postupy procesů sestavování buildů.
-* Podpora fronty služby Service Bus *na alespoň jedno* garance doručení. Kromě toho *jednou na většinu* sémantické může podporovat používání stavu relace pro uložení stavu aplikace a použitím transakce atomicky přijímat zprávy a aktualizovat stav relace.
+* Podpora fronty služby Service Bus *na alespoň jedno* garance doručení. 
+* Pomocí stav relace k uložení stavu aplikace vzhledem k průběh zpracování relace pořadí zpráv a pomocí transakcí kolem se lze vyvarovat nekonzistence jde o zpracování zpráv v rámci relací služby Service Bus vyrovnání přijaté zprávy a aktualizuje se stav relace. Tento druh funkce konzistence je někdy označeny *přesně – jedno zpracování* produkty jiných dodavatelů ale transakce zprávy redeliveried samozřejmě způsobí selhání a proto je přesně odpovídající výraz.
 * Fronty úložiště poskytují jednotnou a konzistentní programovací model napříč front, tabulek a objektů blob – pro vývojáře a pro provozní týmy.
 * Fronty Service Bus poskytují podporu pro místní transakce v rámci jediné fronty.
 * **Přijme a odstraní** režim podporovaný ve službě Service Bus poskytuje možnost omezit zasílání zpráv počet operací (a související náklady) výměnou za sníženou doručování assurance.

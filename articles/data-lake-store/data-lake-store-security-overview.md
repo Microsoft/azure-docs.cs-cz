@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4da387abe24318a29472c11dffa7aac67192408c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297415"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959608"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
 Řada podniků se využívat analýzy velkých objemů dat pro obchodní přehledy, aby to pomohl ostatním inteligentní rozhodování. Organizace může mít složité a regulované prostředí s rostoucí počet odlišných uživatelů. Je důležité pro podnik, abyste měli jistotu, že životně důležitá podniková data uložená bezpečněji, se správnou úroveň přístupu k jednotlivým uživatelům. Azure Data Lake Storage Gen1 slouží k vám pomohou splnit tyto požadavky na zabezpečení. V tomto článku najdete další informace o možnostech zabezpečení služby Data Lake Storage Gen1, včetně:
@@ -34,7 +34,7 @@ Ověřování je proces, podle kterého se ověřit identitu uživatele při int
 Každé předplatné Azure může být přidružena k instanci služby Azure Active Directory. Pouze uživatelé a služby identit, které jsou definovány ve službě Azure Active Directory můžete přístup k účtu Data Lake Storage Gen1 pomocí webu Azure portal, nástrojů příkazového řádku, nebo prostřednictvím klientských aplikací vaší organizace sestavení pomocí Data Lake Storage Gen1 SDK. Jsou klíčové výhody používání služby Azure Active Directory jako vhodný mechanismus řízení centralizovaný přístup:
 
 * Zjednodušená správa životního cyklu identit. Identita uživatele nebo službu (objektu zabezpečení identity služby) se dají rychle vytvářet a rychle odvolat jednoduše odstranění nebo zakázání účtů v adresáři.
-* Ověřování službou Multi-Factor Authentication. [Ověřování službou Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro uživatelská přihlášení a transakce.
+* Multi-Factor Authentication [Ověřování službou Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro uživatelská přihlášení a transakce.
 * Ověřování z libovolného klienta přes standardní otevřený protokol, jako jsou OAuth nebo OpenID.
 * Federace se službou enterprise adresářových služeb a poskytovatelů cloudových identit.
 
@@ -82,7 +82,7 @@ Data Lake Storage Gen1 také zajišťuje šifrování dat uložených v účtu. 
 
 Pro správu klíčů Data Lake Storage Gen1 nabízí dva režimy pro správu vašich hlavních šifrovacích klíčů (MEK), které jsou požadovány pro všechna data, která je uložena v Data Lake Storage Gen1 dešifrování. Můžete buď nechat Data Lake Storage Gen1 správu hlavních šifrovacích klíčů pro vás nebo zachovejte vlastnictví hlavních šifrovacích klíčů pomocí svého účtu služby Azure Key Vault. Při vytváření účtu Data Lake Storage Gen1 zadáte režimu správy klíčů. Další informace o tom, jak poskytnout konfigurace související se šifrováním najdete v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-get-started-portal.md).
 
-## <a name="activity-and-diagnostic-logs"></a>Aktivita a diagnostické protokoly
+## <a name="activity-and-diagnostic-logs"></a>Protokoly aktivit a diagnostické protokoly
 Můžete použít aktivitu nebo diagnostické protokoly, v závislosti na tom, jestli hledáte v protokolech aktivit souvisejících se správou účtu nebo aktivit souvisejících s daty.
 
 * Aktivity souvisejících se správou účtu pomocí rozhraní API Azure Resource Manageru a zobrazují na webu Azure Portal prostřednictvím protokolů aktivit.
@@ -98,7 +98,7 @@ Pro záznamy pro audit správy účtu zobrazit a vybrat sloupce, které chcete s
 Další informace o využití protokolů aktivit najdete v tématu [zobrazení protokolů aktivit pro auditování akcí u prostředků](../azure-resource-manager/resource-group-audit.md).
 
 ### <a name="diagnostics-logs"></a>Protokoly diagnostiky
-Můžete povolit auditování přístupu k data a diagnostické protokolování na portálu Azure portal a odesílání protokolů do účtu služby Azure Blob storage, se v Centru událostí nebo Log Analytics.
+Můžete povolit auditování přístupu k data a diagnostické protokolování na portálu Azure portal a odeslat protokoly do účtu úložiště objektů Blob v Azure, se v Centru událostí nebo protokoly Azure monitoru.
 
 ![Protokoly diagnostiky](./media/data-lake-store-security-overview/diagnostic-logs.png "diagnostické protokoly")
 

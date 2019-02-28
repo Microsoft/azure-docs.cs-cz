@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 0e2dc2af6b4c7ddf531458136e6bcabb49be3b8f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a7f4d10e3273fb2b4e17ff0a55c3a3ed6294833d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538801"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961274"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Protokolů serveru ve službě Azure Database for PostgreSQL 
 Azure Database for PostgreSQL generuje dotaz a chybových protokolů. Dotaz a chybových protokolů umožňuje zjistit, řešit a opravit chyby v konfiguraci a neoptimální výkonu. (Přístup k protokolům transakce není součástí). 
@@ -28,7 +28,7 @@ Pokud jste povolili protokoly, které můžete přistupovat k nim z Azure Databa
 
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for PostgreSQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly na váš server PostgreSQL, můžete je mít znovu vygenerován pro [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, najdete v části s postupy [dokumentace k diagnostickým protokolům](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Azure Database for PostgreSQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly na váš server PostgreSQL, můžete je mít znovu vygenerován pro [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md), Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, najdete v části s postupy [dokumentace k diagnostickým protokolům](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
 
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na výstupního koncového bodu, kterou zvolíte, pole zahrnutá a pořadí, ve kterém jsou uvedeny, se můžou lišit. 
@@ -38,12 +38,12 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na v�
 | TenantId | Vaše ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
-| Typ | Typ protokolu. Vždy `AzureDiagnostics` |
+| Type | Typ protokolu. Vždy `AzureDiagnostics` |
 | SubscriptionId | Identifikátor GUID pro předplatné, které server patří do |
 | ResourceGroup | Název skupiny prostředků, do které patří server |
 | ResourceProvider | Název poskytovatele prostředků. Vždy `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
-| ID prostředku | Identifikátor URI prostředku |
+| ResourceId | Identifikátor URI prostředku |
 | Prostředek | Název serveru |
 | Kategorie | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
@@ -52,7 +52,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na v�
 | Domain (Doména) | Verze serveru, například: postgres 10 |
 | Detail | Zpráva protokolu sekundární (Pokud je k dispozici) |
 | Název sloupce | Název sloupce (Pokud je k dispozici) |
-| %{Schemaname/ | Název schématu (Pokud je k dispozici) |
+| SchemaName | Název schématu (Pokud je k dispozici) |
 | DatatypeName | Název datového typu (Pokud je k dispozici) |
 | LogicalServerName | Název serveru | 
 | _ResourceId | Identifikátor URI prostředku |

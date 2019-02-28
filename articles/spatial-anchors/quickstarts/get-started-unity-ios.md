@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 42fc4b6b1924b858f58d714cee8f1b9d2e7aba33
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: fa9f613bfbb3028715629f1d27b90531bd1dac3a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752190"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959676"
 ---
 # <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro iOS Unity s Azure prostorových kotvy
 
@@ -61,6 +61,9 @@ Uložte výběrem scény **souboru** -> **Uložit**.
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
 Postupujte podle pokynů v aplikaci umístit a odvolat ukotvení.
+
+> [!NOTE]
+> Při spuštění aplikace, pokud se nezobrazí fotoaparátu/kamery jako pozadí (pro instance, zobrazí se místo toho prázdnou hodnotu, modrá nebo jiných textury) pak budete pravděpodobně muset znovu importovat prostředky v Unity. Zastavte aplikaci. Z hlavní nabídky v Unity, zvolte **prostředků -> znovu importovat všechny**. Spusťte aplikaci znovu.
 
 V Xcode, zastavte aplikaci stisknutím klávesy **Zastavit**.
 

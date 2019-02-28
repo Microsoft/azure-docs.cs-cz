@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 696b6b14b2a369e8b80ac615fc77fa7f48f51c57
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454646"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959931"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ručně přidat účet do aplikace
 Pokud fotoaparátu nemůže zachytit kód QR, můžete ručně přidat informace o vašem účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Tento postup funguje pro pracovní nebo školní účty a účty jiných společností než Microsoft.
@@ -102,5 +102,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 ## <a name="next-steps"></a>Další postup
 
 - Poté, co vaše účty přidáte do aplikace, můžete se přihlásit pomocí aplikace Microsoft Authenticator na vašem zařízení. Další informace najdete v tématu [Přihlaste se pomocí aplikace](user-help-auth-app-sign-in.md).
+
+- Pokud máte problémy dostat se váš ověřovací kód pro svůj osobní účet Microsoft, přečtěte si článek **potíží ověření kódu** část [ověřová & ní bezpečnostní údaje účtu Microsoft kódy](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) článku.
 
 - Pro zařízení s Iosem můžete také zálohovat přihlašovací údaje účtu a související nastavení aplikace, jako například pořadí z vašich účtů s cloudem. Další informace najdete v tématu [zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

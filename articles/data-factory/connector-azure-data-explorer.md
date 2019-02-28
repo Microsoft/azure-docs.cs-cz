@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: orspod
-ms.openlocfilehash: f614c6770dd29bc3d6b42c36fe8c81d9f129cd81
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d30eab024fa988b3341c5efc9fe188ee4802720a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816653"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961070"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -44,6 +44,22 @@ Průzkumník dat Azure konektor umožňuje postupujte takto:
 Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Průzkumník dat Azure.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+
+Průzkumník dat Azure konektor využívá ověřování instančních objektů. Následujícím postupem získejte objekt služby a udělení oprávnění:
+
+1. Zaregistrovat aplikaci entity ve službě Azure Active Directory (Azure AD) pomocí následujících [registrace aplikace pomocí tenanta služby Azure AD](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
+
+    - ID aplikace
+    - Klíč aplikace
+    - ID tenanta
+
+2. Udělte hlavní správné oprávnění služby v Průzkumníku dat Azure. Odkazovat na [oprávnění spravovat Průzkumník dat Azure databáze](../data-explorer/manage-database-permissions.md) s podrobnými informacemi o role a oprávnění, stejně jako návod na správu oprávnění. Obecně platí je potřeba
+
+    - **Jako zdroj**, přidělit nejméně **databáze prohlížeč** role k vaší databázi.
+    - **Jako jímku**, přidělit nejméně **databáze přijímač** role k vaší databázi.
+
+>[!NOTE]
+>Při použití ADF uživatelského rozhraní k vytváření, může operace výpis databáze na propojenou službu nebo výpis tabulek v datové sadě vyžadují vyšší privileged oprávněním pro instanční objekt. Alternativně můžete ručně zadat název databáze a název tabulky. Zkopírujte aktivity spuštění funguje, tak dlouho, dokud instanční objekt se udělují s správná oprávnění ke čtení a zápisu dat.
 
 Průzkumník dat Azure, propojené služby jsou podporovány následující vlastnosti:
 
@@ -162,7 +178,7 @@ Pro kopírování dat do Průzkumníku dat Azure, nastavte vlastnost typ v jímk
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na: **AzureDataExplorerSink** | Ano |
-| ingestionMappingName | Název předem vytvořené **[sdíleného svazku clusteru mapování](/azure/kusto/management/mappings#csv-mapping)** v tabulce Kusto; JSON mapování a mapování Avro v Průzkumníku dat Azure nejsou přímo podporované, ale stále může kopírovat data ze souborů JSON nebo Avro. Pokud chcete namapovat sloupce ze zdroje do Průzkumníku dat Azure, můžete použít aktivitu kopírování [mapování sloupců](copy-activity-schema-and-type-mapping.md) což společně funguje taky s mapováním CSV Průzkumník dat Azure - kopírování aktivity mapy nebo jejich opakované-shapes dat ze zdroje do jímky na základě sloupce mapování nastavení, pak namapuje data znovu podle konfigurace mapování ingestování, pokud existuje. Platí pro [všechny podporované zdrojové úložiště](copy-activity-overview.md#supported-data-stores-and-formats) včetně formátů JSON a Avro. | Ne |
+| ingestionMappingName | Název předem vytvořené **[sdíleného svazku clusteru mapování](/azure/kusto/management/mappings#csv-mapping)** v tabulce Kusto. Chcete-li namapovat sloupce ze zdroje do Průzkumníku dat Azure – které se vztahuje na **[všechny podporované zdrojové úložiště/formáty](copy-activity-overview.md#supported-data-stores-and-formats)** včetně CSV nebo JSON nebo Avro formáty atd, můžete použít aktivitu kopírování [sloupec mapování](copy-activity-schema-and-type-mapping.md) (implicitně podle názvu nebo explicitně nakonfigurovat) a/nebo mapování CSV Průzkumník dat Azure. | Ne |
 
 **Příklad:**
 

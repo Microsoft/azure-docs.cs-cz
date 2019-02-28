@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0698f1dbc491781089ef94eec32f2a427fd3cca4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: c129c394f3d694b832722287027c1f9e58028a33
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422384"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957687"
 ---
 # <a name="azure-firewall-logs"></a>Azure protokoly brány Firewall
 
 Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit.
 
-Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly můžete odeslat do služeb [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage a Event Hubs a analyzovat je můžete ve službě Log Analytics nebo jinými nástroji, jako je Excel nebo Power BI.
+Některé z těchto protokolů jsou přístupné z webu Azure Portal. Je možné odeslat protokoly [protokoly Azure monitoru](../azure-monitor/insights/azure-networking-analytics.md), úložiště a centra událostí a analyzovat v protokolech Azure Monitor nebo prostřednictvím různých nástrojů, jako je Excel a Power BI.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
@@ -26,7 +26,7 @@ Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly 
 
 * **Protokol pravidel aplikace**
 
-   Protokol pravidel aplikace se ukládá do účtu úložiště, streamuje do služby Event Hubs a/nebo odesílá do služby Log Analytics, pouze pokud jste to povolili v bráně Azure Firewall. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Jak je vidět v následujícím příkladu, data se protokolují ve formátu JSON:
+   Pravidlo protokolu je uložen na účet úložiště, Streamovat do centra událostí a/nebo odesílat protokoly Azure monitoru pouze v případě, že je povolená pro každou Brána Firewall služby Azure. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Jak je vidět v následujícím příkladu, data se protokolují ve formátu JSON:
 
    ```
    Category: application rule logs.
@@ -49,7 +49,7 @@ Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly 
 
 * **Protokol pravidel sítě**
 
-   Protokol pravidel sítě se ukládá do účtu úložiště, streamuje do služby Event Hubs a/nebo odesílá do služby Log Analytics, pouze pokud jste to povolili v bráně Azure Firewall. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Jak je vidět v následujícím příkladu, data se protokolují ve formátu JSON:
+   Protokol sítě pravidlo se ukládá do účtu úložiště, Streamovat do centra událostí a/nebo odesílat protokoly Azure monitoru pouze v případě, že je povolená pro každou Brána Firewall služby Azure. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Jak je vidět v následujícím příkladu, data se protokolují ve formátu JSON:
 
    ```
    Category: network rule logs.
@@ -73,9 +73,9 @@ Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly 
 
 Protokoly můžete ukládat třemi způsoby:
 
-* **Učet úložiště**: Účty úložiště jsou nejvhodnější pro ukládání protokolů na delší dobu, které budete kontrolovat pouze v případě potřeby.
-* **Centra událostí**: Centra událostí jsou skvělou volbou pro integrování protokolů s jinými nástroji správy akcí a informací o zabezpečení (SEIM), abyste o svých prostředcích získávali upozornění.
-* **Log Analytics**: Tato služba je nejvhodnější pro obecné monitorování aplikací v reálném čase nebo sledování trendů.
+* **Účet úložiště**: Účty úložiště jsou nejvhodnější pro protokoly protokoly ukládání delší dobu a zkontrolovat v případě potřeby.
+* **Služba Event hubs**: Služba Event hubs jsou skvělou možností pro integraci s dalšími nástroji pro správu (SEIM) informace a události zabezpečení, abyste mohli dostávat upozornění na prostředky.
+* **Protokoly Azure monitoru**: Protokoly služby Azure Monitor je nejvhodnější pro obecné v reálném čase sledování vaší aplikace nebo si chcete prohlédnout trendy.
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 
@@ -86,4 +86,4 @@ Protokoly můžete ukládat třemi způsoby:
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o monitorování metrik a protokolování Brána Firewall služby Azure, najdete v článku [kurz: Brána Firewall služby Azure Monitor protokoly](tutorial-diagnostics.md).
+Další informace o monitorování metrik a protokolování Brána Firewall služby Azure, najdete v článku [kurzu: Monitorujte protokoly brány Firewall Azure](tutorial-diagnostics.md).

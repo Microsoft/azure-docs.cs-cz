@@ -7,12 +7,12 @@ ms.service: batch-ai
 ms.topic: overview
 ms.date: 2/14/2019
 ms.author: garye
-ms.openlocfilehash: 9e893354fb8971826d6fa3eb6b565f660305da0a
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: fb1114e94c227ce6787532c6059186399d0f57f0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889643"
+ms.locfileid: "56961346"
 ---
 # <a name="whats-happening-to-azure-batch-ai"></a>Co se děje s Azure Batch AI?
 
@@ -434,7 +434,7 @@ estimator = TensorFlow(source_directory=project_folder,
                        use_gpu=True)
 ```
 
-Úplné informace pro tento fragment kódu školení (včetně souboru tf_mnist_replica.py) najdete v [úložišti na githubu ukázky poznámkového bloku Azure ML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server). Úložiště dat, samotného je možné připojit buď v jednotlivých uzlech, nebo trénovacích dat si můžete stáhnout na samotný uzel. Další informace o odkazování na úložiště dat ve vaší odhaduje se [dokumentace ke službě Azure ML](../machine-learning/service/how-to-access-data.md#access-datastores-for-training). 
+Úplné informace pro tento fragment kódu školení (včetně souboru tf_mnist_replica.py) najdete v [úložišti na githubu ukázky poznámkového bloku Azure ML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server). Úložiště dat, samotného je možné připojit buď v jednotlivých uzlech, nebo trénovacích dat si můžete stáhnout na samotný uzel. Další informace o odkazování na úložiště dat ve vaší odhaduje se [dokumentace ke službě Azure ML](../machine-learning/service/how-to-access-data.md#access). 
 
 Odesílání spustit v Azure ML je pomocí funkce Odeslat.
 

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a06276bcaa989fa04f105ac7858c25ab4d0ef
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1927e9b4aeec6f424c69632d8811c49c97d3aad1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887501"
+ms.locfileid: "56961546"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů účtu v aplikaci Microsoft Authenticator
 
@@ -28,7 +28,9 @@ ms.locfileid: "56887501"
 Aplikace Microsoft Authenticator zálohuje vaše přihlašovací údaje k účtu a související aplikace nastavení, například pořadí z vašich účtů do cloudu. Po dokončení zálohování, můžete také použít aplikace obnovte informace na novém zařízení, potenciálně zabránit získávání uzamčen na více instancí nebo nutnosti opětného vytváření účtů.
 
 >[!IMPORTANT]
-> Pro každé umístění úložiště pro zálohování budete potřebovat jeden osobní účet Microsoft a jeden účet serveru služby iCloud. Ale v tomto umístění úložiště, můžete zálohovat několik účtů. Například můžete mít osobní účet, školní účet a účet třetích stran, jako je Facebook, Google a tak dále.<br><br>Ukládají se jenom osobní a 3. stran přihlašovacích údajů svého účtu, což zahrnuje uživatelské jméno a ověřovací kód účtu, který je potřeba k prokázání své identity. Neukládáme nějakých jiných informací, které jsou přidružené k účtům, včetně e-mailů nebo souborů. Můžeme také není přidružení nebo sdílet vaše účty žádným způsobem nebo všem produktům a službám. A nakonec nebude váš správce IT získat všechny informace o všech těchto účtů.
+> Pro každé umístění úložiště pro zálohování budete potřebovat jeden osobní účet Microsoft a jeden účet serveru služby iCloud. Ale v tomto umístění úložiště, můžete zálohovat několik účtů. Například můžete mít osobní účet, školní účet a účet třetích stran, jako je Facebook, Google a tak dále.
+
+> Ukládají se jenom osobní a 3. stran přihlašovacích údajů svého účtu, což zahrnuje uživatelské jméno a ověřovací kód účtu, který je potřeba k prokázání své identity. Neukládáme nějakých jiných informací, které jsou přidružené k účtům, včetně e-mailů nebo souborů. Můžeme také není přidružení nebo sdílet vaše účty žádným způsobem nebo všem produktům a službám. A nakonec nebude váš správce IT získat všechny informace o všech těchto účtů.
 
 ## <a name="back-up-your-account-credentials"></a>Zálohování přihlašovacích údajů k účtu
 Než budete zálohovat přihlašovací údaje, musíte mít:
@@ -98,10 +100,12 @@ Existuje několik důvodů, proč vaše záloha nemusí být k dispozici:
 -   **Existující účty Microsoft Authenticator.** Pokud jste již nastavili účty v aplikaci Microsoft Authenticator, aplikace nebude možné obnovit své účty zálohování. Ochrana proti obnovení pomáhá zajistit, že podrobnosti o vašem účtu nejsou přepsána zastaralé informace. V takovém případě musíte odebrat všechny stávající informace o účtu z existujících účtů nastavení v aplikaci Authenticator před obnovením zálohy.
 
 ## <a name="next-steps"></a>Další postup
-Teď, když máte zálohovat a obnovit svoje přihlašovací údaje k novým zařízením, můžete nadále používat aplikaci Microsoft Authenticator ověřit vaši identitu.
+Teď, když máte zálohovat a obnovit svoje přihlašovací údaje k novým zařízením, můžete nadále používat aplikaci Microsoft Authenticator ověřit vaši identitu. Další informace najdete v tématu [přihlášení k účtům pomocí aplikace Microsoft Authenticator](user-help-sign-in.md).
 
 ## <a name="related-topics"></a>Související témata
-- [Začínáme s aplikací Microsoft Authenticator](user-help-auth-app-download-install.md)  
+
+- [Co je aplikace Microsoft Authenticator?](user-help-auth-app-overview.md)
+
 - [Nejčastější dotazy k aplikaci Microsoft Authenticator](user-help-auth-app-faq.md)
 
 - [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

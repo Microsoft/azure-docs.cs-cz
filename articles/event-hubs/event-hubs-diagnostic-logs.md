@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c32662b446df10649617570c63ce534071ed7d27
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540312"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957517"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostické protokoly pro centra událostí Azure
 
@@ -48,7 +48,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diag
 
     ![Změnit stav diagnostické protokoly](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Nastavení cíle archiv, který chcete zjistit. například účet úložiště, Centrum událostí nebo Azure Log Analytics.
+5.  Nastavení cíle archiv, který chcete zjistit. například protokoly účtu úložiště, Centrum událostí nebo Azure Monitor.
 
 6.  Uložte nové nastavení diagnostiky.
 

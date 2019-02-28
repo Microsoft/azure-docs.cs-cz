@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455037"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961580"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Přidejte osobní účty Microsoft
 Přidáte osobním účtům Microsoft, například Outlook.com a Xbox LIVE do aplikace Microsoft Authenticator pro proces standardní dvojúrovňového ověřování a metoda pro přihlašování k passwordless phone.
@@ -67,5 +67,7 @@ Váš osobní účet Microsoft můžete přidat podle prvního zapnutí dvojúro
 ## <a name="next-steps"></a>Další postup
 
 - Poté, co vaše účty přidáte do aplikace, můžete se přihlásit pomocí aplikace Authenticator na vašem zařízení. Další informace najdete v tématu [Přihlaste se pomocí aplikace](user-help-auth-app-sign-in.md).
+
+- Pokud máte problémy dostat se váš ověřovací kód pro svůj osobní účet Microsoft, přečtěte si článek **potíží ověření kódu** část [ověřová & ní bezpečnostní údaje účtu Microsoft kódy](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) článku.
 
 - Pro zařízení s Iosem můžete také zálohovat přihlašovací údaje účtu a související nastavení aplikace, jako například pořadí z vašich účtů s cloudem. Další informace najdete v tématu [zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).
