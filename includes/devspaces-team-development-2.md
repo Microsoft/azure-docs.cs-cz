@@ -10,12 +10,12 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 7dddf7e48913aea9d84e0f8b66c2c9d29449ee6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825663"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195601"
 ---
 ### <a name="run-the-service"></a>Spuštění služby
 
@@ -81,7 +81,7 @@ Dokončili jste úvodní příručku! Naučili jste se tyto postupy:
 > * Produktivně vyvíjet a testovat kód v týmovém prostředí
 > * Stanovení základní úrovně funkce s použitím vývoje prostorů na snadno testujte izolovaných změn v rámci větších aplikací mikroslužeb
 
-Teď když jste prozkoumali Azure Dev Spaces, [podělte se o svůj vývojářský prostor se členy týmu](../articles/dev-spaces/how-to/share-dev-spaces.md) a ukažte jim, jak snadná je vzájemná spolupráce.
+Teď, když zkoumáte prostory Azure Dev, [sdílet místa na vývoj se členem týmu](../articles/dev-spaces/how-to/share-dev-spaces.md) a zahájit spolupráci.
 
 ## <a name="clean-up"></a>Vyčištění
 Pokud chcete z clusteru úplně odstranit instanci Azure Dev Spaces včetně všech vývojových prostorů a služeb v nich spuštěných, použijte příkaz `az aks remove-dev-spaces`. Mějte na paměti, že tato akce je nevratná. Do clusteru můžete znovu přidat podporu Azure Dev Spaces, ale bude to, jako byste začínali znovu. Vaše staré služby a prostory se neobnoví.
