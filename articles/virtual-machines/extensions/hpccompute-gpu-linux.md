@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 5a5472e3790235caec65e56f31096de3abfae93d
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100257"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986358"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladačů NVIDIA GPU pro Linux
 
 ## <a name="overview"></a>Přehled
 
-Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích s Linuxem řady N-series. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
+Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích s Linuxem řady N-series. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](http://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
 
 Rozšíření je také dostupná k instalaci ovladačů NVIDIA GPU na [virtuální počítače řady N-series s Windows](hpccompute-gpu-windows.md).
 
@@ -74,8 +74,8 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| vydavatele | Microsoft.HpcCompute | řetězec |
-| type | NvidiaGpuDriverLinux | řetězec |
+| vydavatele | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Nastavení
@@ -85,7 +85,7 @@ Všechna nastavení jsou volitelná. Výchozí chování je k aktualizaci jádra
 | Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizovat jádro i v případě, že není nutné pro instalaci ovladače | false (nepravda) | Hodnota TRUE, false | Boolean |
-| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | nejnovější | GRID: "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | řetězec |
+| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | nejnovější | GRID: "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
 | installCUDA | Nainstalujte CUDA toolkit. Platí pouze pro řady NC/ND virtuálních počítačů. | true (pravda) | Hodnota TRUE, false | Boolean |
 
 

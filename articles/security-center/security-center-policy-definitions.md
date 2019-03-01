@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: e83ff9f3bf02a134919d497662744028e1b9acda
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 895afb7af8ed7100af237f88e2953f4dc0991acb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56343013"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195247"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Zásady zabezpečení Azure monitorovaný pomocí Azure Security Center
 Tento článek obsahuje seznam definic zásad Azure, které můžete sledovat v Security Center. Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
@@ -58,30 +58,30 @@ Informace o tom předdefinovaných zásadách, které jsou monitorovány pomocí
 |Auditovat povolení protokolů diagnostiky v App Services|Auditovat povolení diagnostických protokolů v aplikaci. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, pokud dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.| 
 |Auditování stavu transparentního šifrování dat|Auditování stavu transparentního šifrování dat pro databáze SQL.| 
 |Auditovat nastavení auditování SQL na úrovni serveru|Audity existenci auditování na úrovni serveru SQL.| 
-|[Preview]: Monitorovat nešifrovanou databázi SQL ve službě Azure Security Center|Nešifrované servery nebo databáze SQL se monitorovat pomocí Azure Security Center jako doporučení.| 
-|[Preview]: Monitorovat neauditovanou databázi SQL ve službě Azure Security Center|SQL servery a databáze, které nemají auditování SQL zapnuto bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Monitorovat chybějící aktualizace systému ve službě Azure Security Center|Chybějící aktualizace systému zabezpečení na vašich serverech bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Auditovat chybějící šifrování objektů blob pro účty úložiště|Tato zásada Audituje účty úložiště bez šifrování objektů blob. Platí pouze pro typy prostředků Microsoft.Storage, ne pro ostatní poskytovatele úložiště. Je to možné síťový přístup JIT se monitorovat pomocí Azure Security Center jako doporučení.| 
-|[Preview]: Monitorovat možné síťový přístup pouze In Time (JIT) ve službě Azure Security Center|Je to možné síťový přístup pouze In Time (JIT) bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Monitorovat možné přidávání aplikací na seznam povolených ve službě Azure Security Center|Služba Azure Security Center bude monitorovat konfiguraci seznamu možných seznam povolených aplikací.| 
-|[Preview]: Monitorovat benevolentní přístup k síti ve službě Azure Security Center|Skupiny zabezpečení sítě s příliš benevolentními pravidly bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Monitorování ohrožení zabezpečení operačního systému ve službě Azure Security Center|Servery, které nesplňují nakonfigurované standardní hodnoty bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center|Servery bez nainstalovaného agenta Endpoint Protection bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Monitorovat nešifrované disky virtuálních počítačů ve službě Azure Security Center|Virtuální počítače bez povoleného šifrování disků bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Monitorování ohrožení zabezpečení virtuálních počítačů ve službě Azure Security Center|Monitoruje ohrožení zabezpečení zjištěná řešením Posouzení ohrožení zabezpečení a virtuální počítače, které toto řešení nemají, ve službě Azure Security Center jako doporučení.| 
-|[Preview]: Monitorovat nechráněné webové aplikace ve službě Azure Security Center|Webové aplikace bez ochrany firewallu webových aplikací bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Monitorovat nechráněné koncové body sítě ve službě Azure Security Center|Koncové body sítě bez ochrany firewallem nové generace bude monitorovat služba Azure Security Center jako doporučení.| 
-|[Preview]: Sledovat výsledky posouzení ohrožení zabezpečení SQL ve službě Azure Security Center|Když budete monitorovat výsledky kontroly a doporučení Posouzení ohrožení zabezpečení, získáte informace o tom, jak opravit ohrožení zabezpečení databáze.| 
-|[Preview]: Auditovat maximální počet vlastníků pro odběr|Pokud chcete omezit riziko porušení zabezpečení ohroženým uživatelem, doporučuje se určit nanejvýš 3 vlastníky předplatných.| 
-|[Preview]: Auditovat minimální počet vlastníků pro předplatné|Aby se zajistila redundance přístupu s oprávněními správce, doporučuje se určit více než jednoho vlastníka předplatného.| 
-|[Preview]: Auditovat účty s oprávněními vlastníka, kteří nejsou v rámci předplatného povolená služba MFA|Pro všechny účty předplatných s oprávněními vlastníka by se měla povolit služba Multi-Factor Authentication (MFA), aby nedošlo k porušení zabezpečení účtů nebo prostředků.| 
-|[Preview]: Auditovat účty s oprávněním pro zápis, které nejsou v rámci předplatného povolená služba MFA|Pro všechny účty předplatných s oprávněními pro zápis by se měla povolit služba Mutli-Factor Authentication (MFA), aby nedošlo k porušení zabezpečení účtů nebo prostředků.| 
-|[Preview]: Auditovat účty s oprávněním pro čtení, kteří nejsou v rámci předplatného povolená služba MFA|Pro všechny účty předplatných s oprávněními pro čtení by se měla povolit služba Multi-Factor Authentication (MFA), aby nedošlo k porušení zabezpečení účtů nebo prostředků.| 
-|[Preview]: Auditovat zastaralé účty s oprávněními vlastníka na předplatné|Zastaralé účty s oprávněními vlastníka by měla být z předplatného odebrat. Zastaralé účty jsou účty, které byly zablokovány přihlašování.| 
-|[Preview]: Auditovat zastaralé účty v rámci předplatného|Zastaralé účty by se měly odebrat z předplatných. Zastaralé účty jsou účty, které byly zablokovány přihlašování.| 
-|[Preview]: Auditovat externí účty s oprávněními vlastníka na předplatné|Aby nedocházelo k nemonitorovanému přístupu, měly by se z předplatného odebrat externí účty s oprávněními vlastníka.| 
-|[Preview]: Audit externí účty s oprávnění k zápisu na předplatné|Aby nedocházelo k nemonitorovanému přístupu, měly by se z předplatného odebrat externí účty s oprávněními pro zápis.| 
-|[Preview]: Auditovat externí účty s oprávněním pro čtení v rámci předplatného|Aby nedocházelo k nemonitorovanému přístupu, měly by se z předplatného odebrat externí účty s oprávněními pro čtení.| 
+|\[[Preview]: Monitorovat nešifrovanou databázi SQL ve službě Azure Security Center|Nešifrované servery nebo databáze SQL se monitorovat pomocí Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorovat neauditovanou databázi SQL ve službě Azure Security Center|SQL servery a databáze, které nemají auditování SQL zapnuto bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorovat chybějící aktualizace systému ve službě Azure Security Center|Chybějící aktualizace systému zabezpečení na vašich serverech bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Auditovat chybějící šifrování objektů blob pro účty úložiště|Tato zásada Audituje účty úložiště bez šifrování objektů blob. Platí pouze pro typy prostředků Microsoft.Storage, ne pro ostatní poskytovatele úložiště. Je to možné síťový přístup JIT se monitorovat pomocí Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorovat možné síťový přístup pouze In Time (JIT) ve službě Azure Security Center|Je to možné síťový přístup pouze In Time (JIT) bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorovat možné přidávání aplikací na seznam povolených ve službě Azure Security Center|Služba Azure Security Center bude monitorovat konfiguraci seznamu možných seznam povolených aplikací.| 
+|\[[Preview]: Monitorovat benevolentní přístup k síti ve službě Azure Security Center|Skupiny zabezpečení sítě s příliš benevolentními pravidly bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorování ohrožení zabezpečení operačního systému ve službě Azure Security Center|Servery, které nesplňují nakonfigurované standardní hodnoty bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center|Servery bez nainstalovaného agenta Endpoint Protection bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorovat nešifrované disky virtuálních počítačů ve službě Azure Security Center|Virtuální počítače bez povoleného šifrování disků bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorování ohrožení zabezpečení virtuálních počítačů ve službě Azure Security Center|Monitoruje ohrožení zabezpečení zjištěná řešením Posouzení ohrožení zabezpečení a virtuální počítače, které toto řešení nemají, ve službě Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorovat nechráněné webové aplikace ve službě Azure Security Center|Webové aplikace bez ochrany firewallu webových aplikací bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Monitorovat nechráněné koncové body sítě ve službě Azure Security Center|Koncové body sítě bez ochrany firewallem nové generace bude monitorovat služba Azure Security Center jako doporučení.| 
+|\[[Preview]: Sledovat výsledky posouzení ohrožení zabezpečení SQL ve službě Azure Security Center|Když budete monitorovat výsledky kontroly a doporučení Posouzení ohrožení zabezpečení, získáte informace o tom, jak opravit ohrožení zabezpečení databáze.| 
+|\[[Preview]: Auditovat maximální počet vlastníků pro odběr|Pokud chcete omezit riziko porušení zabezpečení ohroženým uživatelem, doporučuje se určit nanejvýš 3 vlastníky předplatných.| 
+|\[[Preview]: Auditovat minimální počet vlastníků pro předplatné|Aby se zajistila redundance přístupu s oprávněními správce, doporučuje se určit více než jednoho vlastníka předplatného.| 
+|\[[Preview]: Auditovat účty s oprávněními vlastníka, kteří nejsou v rámci předplatného povolená služba MFA|Pro všechny účty předplatných s oprávněními vlastníka by se měla povolit služba Multi-Factor Authentication (MFA), aby nedošlo k porušení zabezpečení účtů nebo prostředků.| 
+|\[[Preview]: Auditovat účty s oprávněním pro zápis, které nejsou v rámci předplatného povolená služba MFA|Pro všechny účty předplatných s oprávněními pro zápis by se měla povolit služba Mutli-Factor Authentication (MFA), aby nedošlo k porušení zabezpečení účtů nebo prostředků.| 
+|\[[Preview]: Auditovat účty s oprávněním pro čtení, kteří nejsou v rámci předplatného povolená služba MFA|Pro všechny účty předplatných s oprávněními pro čtení by se měla povolit služba Multi-Factor Authentication (MFA), aby nedošlo k porušení zabezpečení účtů nebo prostředků.| 
+|\[[Preview]: Auditovat zastaralé účty s oprávněními vlastníka na předplatné|Zastaralé účty s oprávněními vlastníka by měla být z předplatného odebrat. Zastaralé účty jsou účty, které byly zablokovány přihlašování.| 
+|\[[Preview]: Auditovat zastaralé účty v rámci předplatného|Zastaralé účty by se měly odebrat z předplatných. Zastaralé účty jsou účty, které byly zablokovány přihlašování.| 
+|\[[Preview]: Auditovat externí účty s oprávněními vlastníka na předplatné|Aby nedocházelo k nemonitorovanému přístupu, měly by se z předplatného odebrat externí účty s oprávněními vlastníka.| 
+|\[[Preview]: Audit externí účty s oprávnění k zápisu na předplatné|Aby nedocházelo k nemonitorovanému přístupu, měly by se z předplatného odebrat externí účty s oprávněními pro zápis.| 
+|\[[Preview]: Auditovat externí účty s oprávněním pro čtení v rámci předplatného|Aby nedocházelo k nemonitorovanému přístupu, měly by se z předplatného odebrat externí účty s oprávněními pro čtení.| 
 
 
 

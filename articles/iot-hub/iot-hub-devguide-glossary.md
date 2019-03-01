@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub Glosář termínů | Dokumentace Microsoftu
 description: Příručka pro vývojáře – Glosář běžných termínů vztahující se ke službě Azure IoT Hub.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: dobett
-ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d79485fa7587a6cf8783f2e5779fa0a1d593aea7
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817373"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011428"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -97,7 +97,7 @@ V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), požadované
 Odkazuje na zprávy odeslané z připojených zařízení a [služby IoT Hub](#iot-hub). Tyto zprávy mohou být [datový bod](#data-point-message) nebo [interaktivní](#interactive-message) zprávy. Další informace najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Zařízení
-V souvislosti s IoT se zařízením je obvykle rozsáhlé, samostatné výpočetní zařízení, které může shromažďovat data nebo ovládání zařízení. Zařízení může být například prostředí monitorování zařízení, nebo kontroleru pro útok typu watering a ventilace systémy skleníkových. [Katalog zařízení](https://catalog.azureiotsuite.com/) obsahuje seznam hardwarových zařízení certifikovány pro práci s [služby IoT Hub](#iot-hub).
+V souvislosti s IoT se zařízením je obvykle rozsáhlé, samostatné výpočetní zařízení, které může shromažďovat data nebo ovládání zařízení. Zařízení může být například prostředí monitorování zařízení, nebo kontroleru pro útok typu watering a ventilace systémy skleníkových. [Katalog zařízení](https://catalog.azureiotsolutions.com/) obsahuje seznam hardwarových zařízení certifikovány pro práci s [služby IoT Hub](#iot-hub).
 
 ## <a name="device-app"></a>Aplikace pro zařízení
 Aplikace pro zařízení běží na vašich [zařízení](#device) a zpracovává komunikaci s vaší [služby IoT hub](#iot-hub). Obvykle, použijte jednu z [sady SDK pro zařízení Azure IoT](#azure-iot-device-sdks) při implementaci aplikace pro zařízení. V mnoha kurzy IoT používáte [simulovaného zařízení](#simulated-device) ke zvýšení pohodlí.

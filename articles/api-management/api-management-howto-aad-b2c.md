@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 8c60e7dec2d2a9bc3e063adfee0ffaff63417265
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bdc479c6cc91c3ebba343a8423a73fb2e0404a73
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960159"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992698"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory B2C ve službě Azure API Management
 
@@ -38,7 +38,7 @@ Azure Active Directory B2C je cloudové řešení správy identit pro zákaznick
    > [!NOTE]
    > Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance služby API Management] [ Create an API Management service instance] v [Začínáme s Azure API Management kurzu] [Get started with Azure API Management].
 
-2. V části **zabezpečení**vyberte **identit**. Klikněte na tlačítko **+ přidat** v horní části.
+2. V části **identit**. Klikněte na tlačítko **+ přidat** v horní části.
 
    **Přidat zprostředkovatele identity** otevře se podokno na pravé straně. Zvolte **Azure Active Directory B2C**.
     
@@ -89,7 +89,7 @@ Azure Active Directory B2C je cloudové řešení správy identit pro zákaznick
   ![Zásady][api-management-howto-aad-b2c-policies]
 
   > [!NOTE]
-  > Další informace o zásadách najdete v tématu [Azure Active Directory B2C: rozhraní rozšiřitelných zásad].
+  > Další informace o zásadách najdete v tématu [Azure Active Directory B2C: Rozšiřitelná architektura zásad].
 
 14. Po zadání požadované konfigurace, klikněte na tlačítko **Uložit**.
 
@@ -119,7 +119,7 @@ Azure Active Directory B2C je cloudové řešení správy identit pro zákaznick
 ## <a name="next-steps"></a>Další postup
 
 *  [Přehled služby Azure Active Directory B2C]
-*  [Azure Active Directory B2C: Rozhraní rozšiřitelných zásad]
+*  [Azure Active Directory B2C: Rozšiřitelná architektura zásad]
 *  [Použít účet Microsoft jako zprostředkovatele identity v Azure Active Directory B2C]
 *  [Použít účet Google jako zprostředkovatele identity v Azure Active Directory B2C]
 *  [Použít účet LinkedIn jako zprostředkovatele identity v Azure Active Directory B2C]
@@ -190,7 +190,7 @@ Azure Active Directory B2C je cloudové řešení správy identit pro zákaznick
 [Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [Přehled služby Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
 [Autorizace vývojářských účtů pomocí Azure Active Directory]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
-[Azure Active Directory B2C: Rozhraní rozšiřitelných zásad]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
+[Azure Active Directory B2C: Rozšiřitelná architektura zásad]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
 [Použít účet Microsoft jako zprostředkovatele identity v Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
 [Použít účet Google jako zprostředkovatele identity v Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
 [Pomocí účtu sítě Facebook jako zprostředkovatele identity v Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app
