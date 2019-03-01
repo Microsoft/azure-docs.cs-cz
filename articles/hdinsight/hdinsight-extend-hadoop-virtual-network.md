@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e752302baab14505e71c3f0f65840156833b8976
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447411"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194601"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+
+> [!IMPORTANT]  
+> 28. února 2019 síťové prostředky (jako jsou síťové karty, LBs atd.) pro nový clustery, které jsou vytvořené ve virtuální síti se zřídí ve stejné skupině prostředků clusteru HDInsight. Tyto prostředky byly dříve zřízeny ve skupině prostředků virtuální sítě. Není žádná změna aktuální spuštěné clustery a tyto clustery, které jsou vytvořené bez virtuální sítě.
 
 Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Použití služby Azure Virtual Network umožňuje následující scénáře:
 

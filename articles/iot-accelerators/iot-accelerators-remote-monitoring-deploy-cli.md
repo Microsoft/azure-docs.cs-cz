@@ -8,16 +8,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7f1b9bb9d542b54afb6bf8b7bfc0df9fc1a9e434
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463214"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009422"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování, který se pomocí rozhraní příkazového řádku
 
-Tato příručka ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování. Nasazení řešení pomocí rozhraní příkazového řádku. Můžete také nasadit řešení pomocí uživatelského rozhraní založeného na webu na webu azureiotsuite.com, další informace o této možnosti najdete[nasazení akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md) rychlý start.
+Tato příručka ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování. Nasazení řešení pomocí rozhraní příkazového řádku. Můžete také nasadit řešení pomocí uživatelského rozhraní založeného na webu na azureiotsolutions.com, další informace o této možnosti najdete [nasazení akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md) rychlý start.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +66,7 @@ Nasazení Basic slouží k předvádění řešení. Pokud chcete snížit nákl
 
 Základní nasazení vytvoří tyto služby ve vašem předplatném Azure:
 
-| Počet | Prostředek                       | Typ         | Používá pro |
+| Počet | Prostředek                       | Type         | Používá pro |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | Hostování mikroslužeb |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – úroveň Standard | Správa zařízení a komunikace |

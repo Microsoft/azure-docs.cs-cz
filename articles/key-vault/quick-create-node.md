@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node | Microsoft Docs
-description: Rychlý start – Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node
+title: Rychlý start – nastavení a získání tajného klíče ze služby Azure Key Vault s využitím webovou aplikaci v Node | Dokumentace Microsoftu
+description: V tomto rychlém startu nastavení a načtení tajného klíče ze služby Azure Key Vault s využitím webovou aplikaci v Node
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -11,66 +11,67 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 2b114a4aed812a91a9f6c4ed43f57411e47ea677
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 1e234b599325da0626c83a57d86ff977b88b5577
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260024"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991270"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webovou aplikaci v Node 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault s využitím webovou aplikaci v Node 
 
-V tomto rychlém startu se dozvíte, jak uložit tajný klíč ve službě Key Vault a jak ho načíst pomocí webové aplikace. Pokud chcete zobrazit hodnotu tajného klíče, musíte webovou aplikaci spustit v Azure. V tomto rychlém startu se používá Node.js a spravované identity pro prostředky Azure.
+V tomto rychlém startu se dozvíte, jak uložíte tajný klíč ve službě Azure Key Vault a jak ho načíst pomocí webové aplikace. Pomocí služby Key Vault pomáhá udržovat informace v bezpečí. Pokud chcete zobrazit tajnou hodnotu, by musíte spustit tento rychlý start v Azure. V tomto rychlém startu se používá Node.js a spravované identity pro prostředky Azure. Získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvoření trezoru klíčů
-> * Uložení tajného kódu ve službě Key Vault
-> * Načtení tajného kódu ze služby Key Vault
-> * Vytvoření webové aplikace Azure
-> * Povolení [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) pro webovou aplikaci
-> * Udělení požadovaných oprávnění k načtení dat ze služby Key Vault pro webovou aplikaci
+* Vytvoření trezoru klíčů
+* Uložení tajného klíče v trezoru klíčů
+* Načtení tajného klíče z trezoru klíčů
+* Vytvoření webové aplikace Azure
+* Povolení [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) pro webovou aplikaci
+* Udělení požadovaných oprávnění k načtení dat z trezoru klíčů pro webovou aplikaci
 
-Než budete pokračovat, ujistěte se, že znáte [základní koncepty](key-vault-whatis.md#basic-concepts).
+Než budete pokračovat, ujistěte se, že jste obeznámeni s [základní koncepty služby Key Vault](key-vault-whatis.md#basic-concepts).
 
->[!NOTE]
-Abyste pochopili, proč následující kurz představuje osvědčený postup, je potřeba porozumět několika konceptům. Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace nebo uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba pravidelně obměňovat také tento první tajný klíč. Ale [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) aplikace, které běží v Azure jsou uvedeny identitu, která je automaticky spravuje Azure. To vám pomůže vyřešit **problém se zavedením tajného klíče** a tím umožníte uživatelům a aplikacím dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
+> [!NOTE]
+> Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace a uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Podle osvědčené postupy zabezpečení tento první tajný klíč musí pravidelně otočen. 
+>
+> S [identit spravovaných služeb pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md), aplikace, které běží v Azure získat identitu, která automaticky spravuje Azure. To vám pomůže vyřešit *problém se zavedením tajného klíče*, abyste uživatelům a aplikacím umožnili dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/)
 * [Git](https://www.git-scm.com/)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 nebo novější
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 nebo novější. Tento rychlý start vyžaduje, abyste spustili Azure CLI místně. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="login-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, můžete zadat:
+Pokud se chcete přihlásit k Azure pomocí Azure CLI, zadejte:
 
 ```azurecli
 az login
 ```
 
-## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Vyberte název skupiny prostředků a nahraďte zástupný text.
-Následující příklad vytvoří skupinu prostředků *<YourResourceGroupName>* v umístění *eastus*.
+Následující příklad vytvoří skupinu prostředků v umístění východní USA.
 
 ```azurecli
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "East US"
 ```
 
-V tomto kurzu se používá skupina prostředků, kterou jste právě vytvořili.
+V tomto článku se používá skupina prostředků, kterou jste právě vytvořili.
 
-## <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
+## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
-Dále s použitím skupiny prostředků vytvořené v předchozím kroku vytvoříte službu Key Vault. Přestože se v tomto článku jako název pro trezor klíčů používá ContosoKeyVault, musíte použít jedinečný název. Zadejte tyto informace:
+Dále vytvoříte trezor klíčů pomocí skupiny prostředků, kterou jste vytvořili v předchozím kroku. I když tento článek používá "ContosoKeyVault" jako název, budete muset použít jedinečný název. Zadejte tyto informace:
 
-* Název trezoru – **tady vyberte název trezoru klíčů**.
-* Název skupiny prostředků – **tady vyberte název skupiny prostředků**.
-* Umístění – **USA – východ**.
+* Název trezoru klíčů.
+* Název skupiny prostředků. Název musí být řetězec dlouhý 3 až 24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a pomlčka (-).
+* Umístění: **USA – východ**.
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
@@ -78,11 +79,11 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
 
-## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do trezoru klíčů
+## <a name="add-a-secret-to-the-key-vault"></a>Přidání tajného klíče do trezoru klíčů
 
 Tajný klíč přidáváme proto, abychom ukázali, jak to funguje. Mohli byste ukládat připojovací řetězec SQL nebo jakékoli jiné informace, které potřebujete zabezpečeně uchovávat a současně zpřístupnit vaší aplikaci. V tomto kurzu budeme heslo označovat jako **AppSecret** a budeme v něm ukládat hodnotu **MySecret**.
 
-Zadáním následujících příkazů vytvořte ve službě Key Vault tajný kód **AppSecret**, který bude uchovávat hodnotu **MySecret**:
+Zadáním následujících příkazů vytvořte v trezoru klíčů tajný klíč **AppSecret**. V tomto tajném klíči bude uložená hodnota **MySecret**.
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -94,11 +95,11 @@ Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 ```
 
-Tento příkaz zobrazí informace o tajném kódu, včetně identifikátoru URI. Po dokončení těchto kroků byste měli mít URI pro tajný kód ve službě Azure Key Vault. Tuto informaci si poznamenejte. Budete je potřebovat později.
+Tento příkaz zobrazí informace o tajném klíči, včetně identifikátoru URI. Po dokončení těchto kroků byste měli mít identifikátor URI pro tajný klíč v trezoru klíčů. Poznamenejte si tyto informace. Budete je potřebovat později.
 
 ## <a name="clone-the-repo"></a>Klonování úložiště
 
-Spuštěním následujícího příkazu naklonujte úložiště, abyste získali místní kopii umožňující úpravu zdroje:
+Naklonováním úložiště vytvořte místní kopii, kde můžete upravit zdroj. Spusťte následující příkaz:
 
 ```
 git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
@@ -106,28 +107,30 @@ git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
 
 ## <a name="install-dependencies"></a>Instalace závislostí
 
-Teď nainstalujeme závislosti. Spusťte následující příkazy cd key-vault-node-quickstart npm install.
+Spuštěním následujících příkazů nainstalujte závislosti:
 
-V tomto projektu se používají 2 moduly Node:
+```
+cd key-vault-node-quickstart
+npm install
+```
 
-* [ms-rest-azure](https://www.npmjs.com/package/ms-rest-azure) 
-* [azure-keyvault](https://www.npmjs.com/package/azure-keyvault)
+Tento projekt používá dva moduly uzlu: [ms-rest azure](https://www.npmjs.com/package/ms-rest-azure) a [azure Key vaultu](https://www.npmjs.com/package/azure-keyvault).
 
-## <a name="publish-the-web-application-to-azure"></a>Publikování webové aplikace do Azure
+## <a name="publish-the-web-app-to-azure"></a>Publikování webové aplikace do služby Azure
 
-Následuje několik kroků, které je potřeba provést.
-
-- Prvním krokem je vytvořit plán služby [Azure App Service](https://azure.microsoft.com/services/app-service/). V tomto plánu můžete uložit několik webových aplikací.
+Vytvoření [služby Azure App Service](https://azure.microsoft.com/services/app-service/) plánu. V tomto plánu můžete uložit několik webových aplikací.
 
     ```
     az appservice plan create --name myAppServicePlan --resource-group myResourceGroup
     ```
-- Dále vytvoříme webovou aplikaci. V následujícím příkladu nahraďte <app_name> globálně jedinečným názvem aplikace (platné znaky jsou a–z, 0–9 a -). Modul runtime je nastavený na NODE|6.9. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz az webapp list-runtimes.
+V dalším kroku vytvoření webové aplikace. V následujícím příkladu nahraďte `<app_name>` s globálně jedinečným názvem aplikace (platné znaky jsou a – z, 0-9 a -). Modul runtime je nastavený na NODE|6.9. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte `az webapp list-runtimes`.
+
     ```
     # Bash
     az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git
     ```
-    Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
+Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
+
     ```
     {
       "availabilityState": "Normal",
@@ -142,15 +145,14 @@ Následuje několik kroků, které je potřeba provést.
       < JSON data removed for brevity. >
     }
     ```
-    Přejděte do své nově vytvořené webové aplikace. Měla by se zobrazit funkční webová aplikace. Nahraďte <app_name> jedinečným názvem aplikace.
+Přechod do nově vytvořené webové aplikace a měli byste vidět, že funguje. Nahraďte `<app_name>` s jedinečným názvem aplikace.
 
     ```
     http://<app name>.azurewebsites.net
     ```
-    Výše uvedený příkaz také vytvoří aplikaci s podporou Gitu, která umožňuje nasazení do Azure z místního Gitu. 
-    Místní Git má nakonfigurovanou adresu URL https://<username>@<název_aplikace>.scm.azurewebsites.net/<název_aplikace>.git.
+Předchozí příkaz také vytvoří aplikaci s podporou Git, které můžete nasadit do Azure ze svého místního úložiště Git. Místní úložiště Git má nakonfigurovanou tuto adresu URL: https://<username>@ .git.scm.azurewebsites.net/ < název_aplikace > < název_aplikace >.
 
-- Po dokončení předchozího příkazu vytvořte uživatele nasazení, abyste do místního úložiště Git mohli přidat vzdálené úložiště Azure. Nahraďte <url> adresou URL vzdáleného úložiště Git, kterou jste získali při povolení Gitu pro vaši aplikaci.
+Po dokončení předchozího příkazu, můžete přidat vzdálené Azure do místního úložiště Git. Nahraďte `<url>` za adresu URL úložiště Git.
 
     ```
     git remote add azure <url>
@@ -170,7 +172,7 @@ Tento příkaz je ekvivalentem přechodu na portál a přepnutí nastavení **Id
 
 ### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Přiřazení oprávnění ke čtení tajných kódů ze služby Key Vault vaší aplikaci
 
-Poznamenejte si nebo zkopírujte výstup výše uvedeného příkazu. Měl by mít následující formát:
+Poznamenejte si výstupu předchozího příkazu. Měl by mít následující formát:
         
         {
           "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -178,26 +180,23 @@ Poznamenejte si nebo zkopírujte výstup výše uvedeného příkazu. Měl by m�
           "type": "SystemAssigned"
         }
         
-Potom spusťte příkaz, ve kterém použijete název vašeho trezoru klíčů a zkopírovanou hodnotu PrincipalId:
+Spusťte následující příkaz s použitím názvu vaší služby key vault a hodnota **principalId**:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
 ```
 
-## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>Nasazení aplikace Node do Azure a načtení hodnoty tajného kódu
+## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>Uzel aplikaci nasadit do Azure a načíst tajná hodnota
 
-Teď je vše nastavené. Spuštěním následujícího příkazu nasaďte aplikaci do Azure.
+Spuštěním následujícího příkazu Nasaďte aplikaci do Azure:
 
 ```
 git push azure master
 ```
 
-Když teď přejdete na adresu https://<název_aplikace>.azurewebsites.net, zobrazí se hodnota tajného kódu.
-Ujistěte se, že jste nahradili název <YourKeyVaultName> názvem vašeho trezoru.
+Za to když přejdete na https://<app_name>.azurewebsites.net, uvidíte tajná hodnota. Ujistěte se, že jste nahradili názvem <YourKeyVaultName> názvem vašeho trezoru.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Domovská stránka služby Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
-* [Dokumentace ke službě Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)
-* [Azure SDK pro Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Reference k rozhraní Azure REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [!div class="nextstepaction"]
+> [Azure SDK pro Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)

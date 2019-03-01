@@ -4,18 +4,18 @@ description: Popisuje plánování před nasazením Avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744652"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990981"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
-Tento článek vysvětluje, jak naplánovat nové vFXT Avere pro Azure clusteru, ujistěte se, že je umístěn a odpovídající velikost pro vaše potřeby cluster, který vytvoříte. 
+Tento článek vysvětluje, jak naplánovat nové vFXT Avere pro cluster Azure, který je umístěn a odpovídající velikost pro vaše potřeby. 
 
 Před přechodem na Azure Marketplace nebo vytvořením virtuálních počítačů, zvažte, jak budou cluster používat další prvky v Azure. Naplánujte, kde bude umístěný ve vaší privátní sítě a podsítě prostředky clusteru a rozhodnout, kde bude back endové úložné. Ujistěte se, že jsou uzly clusteru, který vytvoříte dostatečný výkon pro podporu pracovního postupu. 
 
@@ -32,16 +32,22 @@ Při plánování síťové infrastruktury vašeho systému vFXT Avere, postupuj
 * Všechny prvky se mají spravovat s novým předplatným vytvořeným Avere vFXT nasazení. Mezi výhody patří: 
   * Jednodušší náklady sledování – zobrazení a auditování všech nákladů z prostředků infrastruktury a výpočetních cyklů v jednom předplatném.
   * Čištění jednodušší – můžete odebrat celé předplatné po dokončení projektu.
-  * Pohodlné dělení prostředků kvóty – prostředky omezení šířky pásma při přenosu do velkého počtu klientů, které jsou používané pro vysoce výkonné výpočetní pracovní postup izolaci klientů vFXT Avere chránit další důležité úlohy a v clusteru jedno předplatné.
+  * Vhodné vytváření oddílů prostředků kvóty - chránit další důležité úlohy z prostředky omezování izolováním Avere vFXT klientů a clusteru v rámci jednoho předplatného. Tím předejdete konfliktu při zpětném přepnutí velký počet klientů pro vysoce výkonné výpočetní pracovního postupu.
 
 * Vyhledejte vaše klientské systémy výpočetní blízko vFXT clusteru. Back endové úložiště může být více vzdálených.  
 
-* Pro jednoduchost vyhledejte vFXT clusteru a clusteru adaptéru virtuálního počítače ve stejné virtuální síti (vnet) a ve stejné skupině prostředků. Měli by také použít stejný účet úložiště. (Kontroler clusteru vytvoří cluster a může také sloužit pro správu příkazového řádku clusteru.)  
-
-  > [!NOTE] 
-  > Šablonu pro vytvoření clusteru můžete vytvořit novou skupinu prostředků a účet úložiště pro cluster. Můžete zadat existující skupinu prostředků, ale musí být prázdný.
+* VFXT clusteru a clusteru adaptéru virtuálního počítače se musí nacházet ve stejné virtuální síti (vnet), ve stejné skupině prostředků a použít stejný účet úložiště. Vytvoření šablony automatizované clusteru zpracovává to pro většinu situací.
 
 * Cluster se musí nacházet ve vlastní podsíti nedošlo ke konfliktům IP adres s klienty nebo výpočetní prostředky. 
+
+* Většinu prostředků infrastruktury potřebné pro cluster, včetně skupin prostředků, virtuální sítě, podsítě a účty úložiště můžete vytvořit šablonu pro vytvoření clusteru. Pokud chcete používat prostředky, které již existují, ujistěte se, že splňují požadavky uvedené v této tabulce. 
+
+  | Prostředek | Použít existující? | Požadavky |
+  |----------|-----------|----------|
+  | Skupina prostředků | Ano, pokud je prázdný | Musí být prázdný| 
+  | Účet úložiště | Ano, pokud připojení existující kontejner objektů Blob po vytvoření clusteru <br/>  Není-li vytvořit nový kontejner objektů Blob při vytváření clusteru | Existující kontejner objektů Blob musí být prázdný <br/> &nbsp; |
+  | Virtuální síť | Ano | Musí zahrnovat koncový bod služby úložiště, pokud vytváříte nový kontejner objektů Blob v Azure | 
+  | Podsíť | Ano |   |
 
 ## <a name="ip-address-requirements"></a>Požadavky IP adres 
 
@@ -62,22 +68,20 @@ Pokud používáte úložiště objektů Blob v Azure, také může být potřeb
 
 Máte možnost k vyhledání síťové prostředky a úložiště objektů Blob (Pokud se používá) v různých skupinách prostředků z clusteru.
 
-## <a name="vfxt-node-sizes"></a>velikosti uzlů vFXT 
+## <a name="vfxt-node-size"></a>velikost uzlu vFXT
 
-Virtuální počítače, které slouží jako uzly clusteru určit požadavek kapacitu propustnosti a úložiště mezipaměti. Můžete vybrat ze dvou typů instance s jinou paměť, procesor a charakteristiky místního úložiště. 
+Virtuální počítače, které slouží jako uzly clusteru určit požadavek kapacitu propustnosti a úložiště mezipaměti. <!-- The instance type offered has been chosen for its memory, processor, and local storage characteristics. You can choose from two instance types, with different memory, processor, and local storage characteristics. -->
 
 Každý uzel vFXT budou stejné. To znamená pokud vytvoříte cluster se třemi uzly budete mít tři virtuální počítače stejného typu a velikosti. 
 
 | Typ instance | vCPU | Memory (Paměť)  | Místní úložiště SSD  | Max. datových disků | Propustnost disku bez mezipaměti | Síťová karta (počet) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D16s_v3 | 16  | 64 GiB  | 128 GiB  | 32 | 25 600 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ <br/> 384 MB/s | 8 000 MB/s (8) |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51 200 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ <br/> 768 MBps | 16 000 MB/s (8)  |
 
-Mezipaměť disku na jeden uzel lze konfigurovat a můžete rage od 1 000 GB až 8000 GB. Doporučená velikost mezipaměti pro uzly Standard_D16s_v3 je 1 TB na jeden uzel a 4 TB na jeden uzel se doporučuje pro Standard_E32s_v3 uzly.
+Mezipaměť disku na jeden uzel lze konfigurovat a můžete rage od 1 000 GB až 8000 GB. 4 TB na jeden uzel je doporučená velikost mezipaměti pro Standard_E32s_v3 uzly.
 
-Další informace o těchto virtuálních počítačů přečtěte si následující dokumenty Microsoft Azure:
+Další informace o těchto virtuálních počítačů najdete v dokumentaci k Microsoft Azure:
 
-* [Velikosti virtuálních počítačů pro obecné účely](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general)
 * [Paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
 ## <a name="account-quota"></a>Kvóty účtu
@@ -120,7 +124,7 @@ Podrobnosti o těchto možnostech najdete v článku [dokumentace ke službě Az
 
 Pokud nastavíte veřejné IP adresy na adaptéru clusteru, můžete ho použít jako hostitele jump kontaktovat cluster vFXT Avere z mimo privátní podsítě. Protože kontroler má přístupová oprávnění k úpravě uzly clusteru, to však znamená malé bezpečnostní riziko.  
 
-Pro důkladnější zabezpečení s použitím veřejné IP adresy použijte skupinu zabezpečení sítě umožňující příchozí přístup jenom přes port 22. Případně jde dál chránit systém zamčením dolů přístup ke zdrojové váš rozsah IP adres – to znamená, povolit připojení pouze z počítačů, které máte v úmyslu používat pro přístup ke clusteru.
+Pro zlepšení zabezpečení pro kontroler s veřejnou IP adresu, skript nasazení automaticky vytvoří tyto seznamy omezují příchozí přístup na port 22 pouze skupiny zabezpečení sítě. Systém jde dál chránit zamčením dolů přístup ke zdrojové váš rozsah IP adres – to znamená, povolit připojení pouze z počítačů, které máte v úmyslu používat pro přístup ke clusteru.
 
 Při vytváření clusteru, můžete rozhodnout, zda se k vytvoření veřejné IP adresy na adaptéru clusteru. 
 

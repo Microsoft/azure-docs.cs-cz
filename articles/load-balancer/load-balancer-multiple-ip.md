@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4920d2a6c26da12effc2b44be8d3c6cbdb5e2a6f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0fd865a6890721d3889fc5cef39d9888fe1fb689
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199132"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191811"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení na více konfigurací protokolu IP pomocí webu Azure portal
 
@@ -194,4 +194,4 @@ V posledním kroku nakonfigurujte svoje záznamy prostředků DNS tak, aby odkaz
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o tom, jak kombinací služeb Vyrovnávání zatížení v Azure v [pomocí služby Vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Zjistěte, jak můžete pomocí různých typů protokolů pro správu a řešení potíží s nástroj pro vyrovnávání zatížení v [Log analytics pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- Zjistěte, jak můžete pomocí různých typů protokolů pro správu a řešení potíží s nástroj pro vyrovnávání zatížení v [protokoly Azure monitoru pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

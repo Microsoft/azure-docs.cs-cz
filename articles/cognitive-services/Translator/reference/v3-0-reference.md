@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 767021772fc86013cd8192216eb03840f1160807
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0260ecbf23e0240b836f6d6004959a9604085fc1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878693"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194958"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -51,7 +51,7 @@ Vynutit požadavek na ošetřit konkrétní datové centrum, změňte globální
 
 ## <a name="authentication"></a>Authentication
 
-Přihlaste se k rozhraní Translator Text API odběru nebo [služeb Cognitive Services All-in-one](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services a použít k ověření klíče (k dispozici na webu Azure Portal) vašeho předplatného. 
+Přihlaste se k rozhraní Translator Text API odběru nebo [více služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services a použít k ověření klíče (k dispozici na webu Azure Portal) vašeho předplatného. 
 
 Existují tři hlavičky, které můžete použít k ověření vašeho předplatného. Tato tabulka poskytuje, popisuje, jak každý používat:
 
@@ -59,7 +59,7 @@ Existují tři hlavičky, které můžete použít k ověření vašeho předpla
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Použít s předplatným služeb Cognitive Services, Pokud předáváte tajný klíč*.<br/>Hodnota je Azure tajný klíč pro vaše předplatné Translator Text API.|
 |Autorizace|*Použít s předplatným služeb Cognitive Services, Pokud předáváte ověřovací token.*<br/>Hodnota je nosný token: `Bearer <token>`.|
-|OCP-Apim předplatné – oblasti|*Pokud předáváte tajný klíč All-in-one, pomocí služeb Cognitive Services vše v jednom předplatném.*<br/>Hodnota je oblast vše v jednom předplatném. Tato hodnota je nepovinná, pokud nepoužíváte předplatné All-in-one.|
+|OCP-Apim předplatné – oblasti|*Pokud předáváte více služeb tajný klíč, pomocí předplatného víc služeb Cognitive Services.*<br/>Hodnota je oblasti pro víc služeb předplatného. Tato hodnota je volitelná, kdy se nepoužívá víc služeb předplatného.|
 
 ###  <a name="secret-key"></a>Tajný klíč
 První možností je provést ověření pomocí `Ocp-Apim-Subscription-Key` záhlaví. Stačí, když přidáte `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` záhlaví na váš požadavek.
@@ -89,21 +89,22 @@ Authorization: Bearer <Base64-access_token>
 
 Ověřovací token je platný 10 minut. Token, který by měl být znovu použít při vytváření více volání rozhraní Translator API. Ale pokud váš program provede požadavky rozhraní Translator API po delší dobu, potom aplikace musí požádat o nový přístupový token v pravidelných intervalech (například každých 8 minut).
 
-### <a name="all-in-one-subscription"></a>Vše v jednom předplatném
+### <a name="multi-service-subscription"></a>Víc služeb předplatného
 
-Jako poslední možnost ověřování je použití Cognitive Service vše v jednom předplatném. To umožňuje používat jeden tajný klíč k ověření požadavků pro víc služeb. 
+Poslední ověřování možností je použít víc služeb Cognitive Service předplatného. To umožňuje používat jeden tajný klíč k ověření požadavků pro víc služeb. 
 
-Pokud používáte tajný klíč All-in-one, musí obsahovat dvě záhlaví ověřování při zpracování požadavku. První předá tajný klíč, druhý určuje oblastí, přidružených k vašemu předplatnému. 
-* `Ocp-Api-Subscription-Key`
+Pokud používáte víc služeb tajného klíče, musí obsahovat dvě záhlaví ověřování při zpracování požadavku. První předá tajný klíč, druhý určuje oblastí, přidružených k vašemu předplatnému. 
+* `Ocp-Apim-Subscription-Key`
 * `Ocp-Apim-Subscription-Region`
+
+Oblast je povinná pro víc služeb předplatného rozhraní Text API. Oblast výběru je jen jedna oblast, můžete použít pro překlad textu při použití klíče víc služeb předplatného a musí být stejné oblasti, které jste vybrali při registraci předplatného víc služeb na webu Azure portal.
+
+Jsou dostupné oblasti `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, a `westus2`.
 
 Pokud předáte tajný klíč v řetězci dotazu s parametrem `Subscription-Key`, pak je nutné zadat oblast s parametrem dotazu `Subscription-Region`.
 
 Pokud používáte nosný token, je nutné získat token z koncového bodu oblasti: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
-Jsou dostupné oblasti `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, a `westus2`.
-
-Oblast je povinná pro předplatné vše v jednom rozhraní Text API.
 
 ## <a name="errors"></a>Chyby
 

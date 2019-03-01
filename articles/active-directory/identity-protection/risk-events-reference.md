@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1509f40b88e3dc9c51bd00ed379c5b0130230a99
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1c69705131cfea4e5ace9b5b9e829b3fdfa87e4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178834"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991644"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection rizikem události – referenční informace
 
@@ -83,6 +83,7 @@ Tento typ rizikové události označuje přihlášení z IP adresy napadený mal
 **Typ zjišťování:** V reálném čase  
 **Starý název:** Přihlášení z neznámých míst
 
-Tento typ rizikové události ohledem na minulou přihlášení vlastnosti (například zařízení, umístění, síť) k určení přihlášení s neznámé vlastnosti. Systém ukládá vlastnosti předchozí umístění použitá uživatelem a bere v úvahu tyto "známé". Riziková událost se aktivuje při přihlášení dochází u vlastnosti ještě není v seznamu známých vlastností. Systém má období učení 30 dní, během kterého neoznačuje žádné nové detekce.
+Tento typ rizikové události bere v úvahu minulé historie přihlašování (IP, zeměpisné šířky / délky a čísla ASN) k vyhledání neobvyklou přihlašovací aktivitou. Systém uchovává informace o předchozí umístění použitá uživatelem a bere v úvahu tyto "známé" umístění. Riziková událost se aktivuje, dojde li přihlásit z umístění, které již není v seznamu známých umístění. Nově vytvořený uživatelé budou v "režimu learning" pro určitou dobu v neznámého přihlášení vlastnosti, které rizikové události se vypne při naše algoritmy přečtěte si chování uživatele. Studijní doba trvání režimu je dynamický a závisí na tom, jak dlouho trvá algoritmus shromáždit dostatek informací o vzory přihlašování uživatele. Minimální doba trvání je pět dní. Uživatele můžete přejít zpět do režimu učení po delší době nečinnosti. Systém také ignoruje přihlášení ze známé zařízení a umístění, které jsou geograficky umístěné blízko známé umístění. 
+
 Můžeme také spustit toto zjišťování pro základní ověřování (nebo starších verzí protokolů). Protože tyto protokoly nejsou moderní vlastnosti, jako je ID klienta, je omezený telemetrických dat do snížil počet falešných poplachů. Doporučujeme, aby naše zákazníky, přesunout do moderního ověřování.
 

@@ -1,5 +1,5 @@
 ---
-title: Vytváření dotazů sledování zpráv B2B v Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
+title: Vytváření dotazů sledování zpráv B2B v protokolech Azure Monitor – Azure Logic Apps | Dokumentace Microsoftu
 description: Vytvoření dotazů, které sledování AS2, X 12 a EDIFACT zpráv ve službě Azure Log Analytics pro Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,19 +9,21 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d4a94e75de34bbafd3bc8f1c1a0d1a6817245e5f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995321"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194907"
 ---
-# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Vytváření dotazů sledování zpráv B2B v Azure Log Analytics pro Azure Logic Apps
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Vytvoření sledování dotazy na zprávy B2B v Azure Monitor protokoly pro Azure Logic Apps
 
-Chcete-li najít AS2, X12 nebo EDIFACT zprávy, že sledujete s [Azure Log Analytics](../log-analytics/log-analytics-overview.md), můžete vytvořit dotazy, které akce na základě určitých kritérií filtru. Například můžete vyhledat zprávy založené na kontrolní číslo výměny konkrétní.
+Chcete-li najít AS2, X12 nebo EDIFACT zprávy, že sledujete s [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md), můžete vytvořit dotazy, které akce na základě určitých kritérií filtru. Například můžete vyhledat zprávy založené na kontrolní číslo výměny konkrétní.
 
 > [!NOTE]
 > Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,7 +31,7 @@ Chcete-li najít AS2, X12 nebo EDIFACT zprávy, že sledujete s [Azure Log Analy
 
 * Účet integrace, který je nastaven díky monitorování a protokolování. Přečtěte si [tom, jak vytvořit integrační účet](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a [jak nastavit monitorování a protokolování pro tento účet](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Pokud jste tak dosud neučinili, [publikovat diagnostická data do Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) a [nastavení sledování v Log Analytics zpráv](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Pokud jste tak dosud neučinili, [publikovat diagnostická data do Azure monitoru protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) a [nastavení sledování v Azure Monitor protokoly zpráv](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="create-queries-with-filters"></a>Vytváření dotazů s filtry
 
@@ -53,7 +55,7 @@ K vyhledání zpráv na základě konkrétních vlastností nebo hodnot, můžet
 1. V dotazu upravit pole, začněte psát název pole, které chcete najít. Když začnete psát, editor dotazů zobrazí možných shod a operace, které můžete použít. Po vytvoření dotazu zvolte **spustit** nebo stiskněte klávesu Enter.
 
    Tento příklad vyhledá odpovídající položky na **LogicAppB2B**. 
-   Další informace o [jak najít data ve službě Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Další informace o [jak najít data v protokolech Azure Monitor](../log-analytics/log-analytics-log-searches.md).
 
    ![Začněte psát řetězec dotazu](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 

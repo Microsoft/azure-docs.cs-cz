@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 7975516e80576a9d79b35da816d049f47ebc7d3a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b80177d17e0dc5a4e54396907ecee61890ec523f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650185"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011343"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -77,6 +77,9 @@ Použití *Azure CNI* při:
 - Většina komunikace pod je na prostředky mimo cluster.
 - Nechcete spravovat trasy definované uživatelem.
 - Potřebujete pokročilé funkce, jako jsou virtuální uzly nebo zásady sítě.
+
+> [!NOTE]
+> Kuberouter díky tomu je možné povolit zásady sítě, pokud používá kubenet a je možné nainstalovat jako daemonset v clusteru AKS. Mějte prosím na kube směrovač je stále ve verzi beta a je dostupná podpora nabízené microsoftem pro projekt.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
 

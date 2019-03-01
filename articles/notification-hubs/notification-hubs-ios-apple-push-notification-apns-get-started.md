@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 63fb04e6b31fe4026b93cef09d88601d6182101a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 640abdd533a6c0b0ec448076c713aaf754baf2b6
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448305"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011292"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace pro iOS pomocí Azure Notification Hubs
 
@@ -96,9 +96,28 @@ Právě jste své centrum oznámení nakonfigurovali pro práci se službou APNS
 
     ![Xcode – možnosti nabízení][12]
 
-5. Stáhněte soubor rozhraní [Windows Azure Messaging Framework] a rozbalte ho. V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
+5. Přidáte sadu SDK služby Azure Notification Hubs moduly.
 
-    ![Rozbalte Azure SDK][10]
+   Můžete integrovat sadu SDK Azure Notification Hubs v aplikaci s použitím [Cocoapods](https://cocoapods.org) nebo ručním přidáním binární soubory do projektu.
+
+   - Integrace pomocí Cocoapods
+
+     Přidejte následující závislosti na vaší `podfile` zahrnout do své aplikace sadu SDK služby Azure Notification Hubs.
+
+     ```ruby
+     pod 'AzureNotificationHubs-iOS'
+     ```
+
+     Spustit `pod install` instalace nově definované podu a otevřete váš `.xcworkspace`.
+
+     > [!NOTE]
+     > Pokud se zobrazí chyba typu ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` během spuštění `pod install`, spusťte prosím `pod repo update` od úložiště Cocoapods získat nejnovější podů a pak spusťte `pod install`.
+
+   - Integrace tak, že zkopírujete binární soubory do projektu
+
+     Stáhněte soubor rozhraní [Windows Azure Messaging Framework] a rozbalte ho. V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
+
+     ![Rozbalte Azure SDK][10]
 
 6. Přidejte nový soubor záhlaví projektu s názvem `HubInfo.h`. V tomto souboru jsou konstanty vašeho centra oznámení. Přidejte následující definice a nahraďte zástupné symboly literálu řetězce ve vašem *názvu centra* a *DefaultListenSharedAccessSignature*, který jste si předtím poznamenali.
 

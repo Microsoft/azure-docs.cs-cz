@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: dbd9eaf531dcad230c23d1b41110036102faf3df
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 83229cdca0ccff68dcdd543495a7a19b6e6c4c5b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652660"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990047"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT pro Azure – nejčastější dotazy
 
@@ -63,7 +63,7 @@ Mezipaměť je Avere vFXT. To není konkrétně data ukládat. Kombinace paměti
 
 ### <a name="what-regions-are-supported"></a>Jaké oblasti jsou podporovány?
 
-Od 1. listopadu 2018 se podporuje Avere vFXT pro Azure ve všech oblastech kromě suverénních oblastech (Čína, Německo) a oblasti státní správy. Ujistěte se, že oblast, kterou chcete použít může podporovat velký počet výpočetních jader a instancí virtuálních počítačů, které jsou potřeba k vytvoření clusteru vFXT Avere.
+Avere vFXT for Azure je podporované ve všech oblastech kromě suverénních oblastech (Čína, Německo). Ujistěte se, že oblast, kterou chcete použít může podporovat velký počet výpočetních jader a instancí virtuálních počítačů, které jsou potřeba k vytvoření clusteru vFXT Avere.
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Jak získat pomoc s Avere vFXT?
 
@@ -88,15 +88,17 @@ Avere vFXT je clusterovaný zařízení z několika virtuálních počítačů A
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Jaké virtuální počítače Azure Avere vFXT ke spuštění?  
 
-Avere vFXT pro Azure cluster používá Microsoft Azure E32s_v3 nebo D16s_v3 virtuálních počítačů. 
+Avere vFXT pro Azure cluster používá Microsoft Azure E32s_v3 virtuální počítače. 
 
-### <a name="can-i-mix-and-match-virtual-machine-types-for-my-cluster"></a>Můžete kombinovat a párovat typy virtuálních počítačů pro cluster?
+<!-- ### Can I mix and match virtual machine types for my cluster?
 
-Ne, musíte zvolit jeden typ virtuálního počítače z nich.
+No, you must choose one virtual machine type or the other.
     
-### <a name="can-i-move-between-virtual-machine-types"></a>Můžu přesunout mezi typy virtuálních počítačů?
+### Can I move between virtual machine types?
 
-Ano, je migrační přesunout z jednoho typu virtuálního počítače na druhý. [Vytvořit lístek podpory](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) další jak.
+Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
+
+-->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Škálování prostředí vFXT Avere?
 
@@ -175,7 +177,7 @@ Ano, můžete vytvořit váš systém vFXT Avere v jiné virtuální sítě. Čt
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Vyžaduje Avere vFXT jeho vlastní podsíti?
 
-Ano. Avere vFXT běží výhradně jako clusteru s vysokou DOSTUPNOSTÍ a vyžaduje několik IP adres provoz. Pokud se cluster nachází ve vlastní podsíti, nevznikalo riziko, IP adresa je v konfliktu, které mohou způsobovat problémy s instalací a normálního provozu. Podsítě clusteru může být v rámci existující virtuální síť tak dlouho, dokud žádné IP adresy překrývají.
+Ano. Avere vFXT běží výhradně jako cluster s vysokou dostupností (HA) a vyžaduje několik IP adres provoz. Pokud se cluster nachází ve vlastní podsíti, nevznikalo riziko, IP adresa je v konfliktu, které mohou způsobovat problémy s instalací a normálního provozu. Podsítě clusteru může být v rámci existující virtuální síť tak dlouho, dokud žádné IP adresy překrývají.
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Můžete spustit Avere vFXT na InfiniBand?
 

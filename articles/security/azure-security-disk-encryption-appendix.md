@@ -8,16 +8,18 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 64ae354c9233821ea7e53abfdc0dde105b22e466
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d23e6d00b77e69f7f3353938c52b450eebbfd142
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208070"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990676"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
 Tento článek je dodatek k [Azure Disk Encryption pro virtuální počítače IaaS](azure-security-disk-encryption-overview.md). Nezapomeňte že si přečíst Azure Disk Encryption pro virtuální počítače IaaS články nejprve k pochopení kontextu. Tento článek popisuje, jak připravit předem šifrované virtuální pevné disky a další úlohy.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-your-subscription"></a>Připojení k vašemu předplatnému
 Než začnete, projděte si [požadavky](azure-security-disk-encryption-prerequisites.md) článku. Jakmile jsou splněné všechny požadavky, připojení k vašemu předplatnému spuštěním následující rutiny:
@@ -27,22 +29,22 @@ Než začnete, projděte si [požadavky](azure-security-disk-encryption-prerequi
 1. Spusťte relaci Azure Powershellu a přihlaste se ke svému účtu Azure pomocí následujícího příkazu:
 
      ```powershell
-     Connect-AzureRmAccount 
+     Connect-AzAccount 
      ```
 2. Pokud máte více předplatných a chcete určit nich se má použít, zadejte následující příkaz k zobrazení předplatných pro váš účet:
      
      ```powershell
-     Get-AzureRmSubscription
+     Get-AzSubscription
      ```
 3. Pokud chcete zadat předplatné, které chcete použít, zadejte:
  
      ```powershell
-      Select-AzureRmSubscription -SubscriptionName <Yoursubscriptionname>
+      Select-AzSubscription -SubscriptionName <Yoursubscriptionname>
      ```
 4. Pokud chcete ověřit správnost předplatné nakonfigurované, zadejte:
      
      ```powershell
-     Get-AzureRmSubscription
+     Get-AzSubscription
      ```
 5. V případě potřeby připojení k Azure AD s [Connect-AzureAD](/powershell/module/azuread/connect-azuread).
      
@@ -91,9 +93,9 @@ Než začnete, projděte si [požadavky](azure-security-disk-encryption-prerequi
 - **Seznam všech šifrovaných virtuálních počítačů v rámci vašeho předplatného**
 
      ```azurepowershell-interactive
-     $osVolEncrypted = {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-     $dataVolEncrypted= {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-     Get-AzureRmVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+     $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+     $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+     Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
      ```
 
 - **Seznam všech tajných kódů šifrování disku používaný k šifrování virtuálních počítačů ve službě key vault** 
@@ -112,8 +114,8 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 |------|------|------|
 |$resourceGroupName| Název skupiny prostředků, ke kterému patří trezoru klíčů.  Novou skupinu prostředků s tímto názvem bude vytvořen, pokud neexistuje.| True|
 |$keyVaultName|Název trezoru klíčů, ve které šifrovací klíče jsou umístit. Nový trezor s tímto názvem bude vytvořen, pokud neexistuje.| True|
-|$location|Umístění trezoru klíčů. Ujistěte se, že trezor klíčů a virtuální počítače k šifrování jsou ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzureRMLocation`.|True|
-|$subscriptionId|Identifikátor předplatného Azure, který se má použít.  Své ID předplatného můžete získat pomocí rutiny `Get-AzureRMSubscription`.|True|
+|$location|Umístění trezoru klíčů. Ujistěte se, že trezor klíčů a virtuální počítače k šifrování jsou ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|True|
+|$subscriptionId|Identifikátor předplatného Azure, který se má použít.  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|True|
 |$aadAppName|Název aplikace Azure AD, která se použije k zápisu tajných klíčů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace už existuje, předejte parametr aadClientSecret skriptu.|False|
 |$aadClientSecret|Tajný kód klienta aplikace Azure AD, který jste vytvořili dříve.|False|
 |$keyEncryptionKeyName|Název volitelné šifrovací klíč klíče v trezoru klíčů. Nový klíč s tímto názvem bude vytvořen, pokud neexistuje.|False|
@@ -225,7 +227,7 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
  Pro 7.2 CentOS je podporováno šifrování disku operačního systému přes speciální image. Pokud chcete použít tuto bitovou kopii, zadejte "7.2n" jako SKU při vytváření virtuálního počítače:
 
  ```powershell
-    Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
+    Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
  ```
 2. Konfigurace virtuálního počítače podle vašich potřeb. Pokud budete k šifrování všech (operační systém + data) jednotkami, musí být zadané a možnost připojit z /etc/fstab datové jednotky.
 
@@ -241,9 +243,9 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 
 5. Pravidelně sledovat průběh šifrování pomocí pokynů [další části](#monitoring-os-encryption-progress).
 
-6. Po Get-AzureRmVmDiskEncryptionStatus ukazuje "VMRestartPending", restartujte virtuální počítač po přihlášení k němu nebo pomocí portálu, Powershellu nebo rozhraní příkazového řádku.
+6. Po Get-AzVmDiskEncryptionStatus ukazuje "VMRestartPending", restartujte virtuální počítač po přihlášení k němu nebo pomocí portálu, Powershellu nebo rozhraní příkazového řádku.
     ```powershell
-    C:\> Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
+    C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
 
     OsVolumeEncrypted          : VMRestartPending
@@ -256,7 +258,7 @@ Předtím, než je restartovat, doporučujeme uložit [Diagnostika spouštění]
 ## <a name="monitoring-os-encryption-progress"></a>Sledování průběhu šifrování operačního systému
 Můžete sledovat průběh šifrování operačního systému třemi způsoby:
 
-* Použití `Get-AzureRmVmDiskEncryptionStatus` rutiny a zkontrolujte pole zpráva o průběhu:
+* Použití `Get-AzVmDiskEncryptionStatus` rutiny a zkontrolujte pole zpráva o průběhu:
     ```powershell
     OsVolumeEncrypted          : EncryptionInProgress
     DataVolumesEncrypted       : NotMounted
@@ -537,7 +539,7 @@ na
 ## <a name="bkmk_UploadVHD"></a> Nahrání šifrovaného virtuálního pevného disku do účtu služby Azure storage
 Po povolení šifrování nástrojem BitLocker nebo šifrování DM-Crypt místní šifrované virtuální pevný disk je potřeba nahrát do účtu úložiště.
 ```powershell
-    Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
+    Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a> Odešlete tajný kód k předem šifrovaných virtuálních počítačů do trezoru klíčů
 Při šifrování pomocí aplikace Azure AD (předchozí verzi), musí být tajný klíč šifrování disku, který jste získali dříve odeslán jako tajný klíč v trezoru klíčů. Key vault musí mít šifrování disku a povolenými oprávněními pro vašeho klienta Azure AD.
@@ -546,14 +548,14 @@ Při šifrování pomocí aplikace Azure AD (předchozí verzi), musí být tajn
  $AadClientId = "My-AAD-Client-Id"
  $AadClientSecret = "My-AAD-Client-Secret"
 
- $key vault = New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location
+ $key vault = New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location
 
- Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
- Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
+ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
+ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Tajný kód disk encryption není šifrován KEK
-Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzureKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
+Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzureKeyVaultSecret](/powershell/module/az.keyvault/set-azurekeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzureKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
 
 #### <a name="windows-bek-file"></a>Soubor klíče BEK Windows
 ```powershell
@@ -578,7 +580,7 @@ $SecretName = [guid]::NewGuid().ToString()
 $SecureSecretValue = ConvertTo-SecureString $FileContentEncoded -AsPlainText -Force
 $Secret = Set-AzureKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
 
-# Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzureRmVMOSDisk when you attach your OS disk. 
+# Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzVMOSDisk when you attach your OS disk. 
 $SecretUrl=$secret.Id
 $SecretUrl
 ```
@@ -602,7 +604,7 @@ $SecretUrl
 Použití `$secretUrl` v dalším kroku pro [připojení disku s operačním systémem bez použití KEK](#bkmk_URLnoKEK).
 
 ### <a name="bkmk_SecretKEK"></a> Tajný kód disk encryption šifrován KEK
-Před odesláním do služby key vault tajný klíč, které můžete volitelně šifrovat pomocí šifrovací klíč klíče. Použít obtékání [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) nejprve šifrování tajného klíče pomocí klíče šifrovacího klíče. Výstupem této operace zalamování řádků je řetězec kódování URL ve formátu base64, který pak můžete nahrát jako tajný kód pomocí [ `Set-AzureKeyVaultSecret` ](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) rutiny.
+Před odesláním do služby key vault tajný klíč, které můžete volitelně šifrovat pomocí šifrovací klíč klíče. Použít obtékání [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) nejprve šifrování tajného klíče pomocí klíče šifrovacího klíče. Výstupem této operace zalamování řádků je řetězec kódování URL ve formátu base64, který pak můžete nahrát jako tajný kód pomocí [ `Set-AzureKeyVaultSecret` ](/powershell/module/az.keyvault/set-azurekeyvaultsecret) rutiny.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -699,7 +701,7 @@ Použití `$KeyEncryptionKey` a `$secretUrl` v dalším kroku pro [připojení d
 ###  <a name="bkmk_URLnoKEK"></a>Bez použití KEK
 Když jste připojení disku s operačním systémem, je nutné předat `$secretUrl`. Adresa URL vytvořená v části "šifrování disku tajný klíč není šifrován KEK".
 ```powershell
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
             -VM $VirtualMachine `
             -Name $OSDiskName `
             -SourceImageUri $VhdUri `
@@ -712,7 +714,7 @@ Když jste připojení disku s operačním systémem, je nutné předat `$secret
 ### <a name="bkmk_URLKEK"></a>Použití KEK
 Po připojení disku s operačním systémem, předejte `$KeyEncryptionKey` a `$secretUrl`. Adresa URL vytvořená v části "Tajný kód Disk encryption šifrován KEK".
 ```powershell
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
             -VM $VirtualMachine `
             -Name $OSDiskName `
             -SourceImageUri $CopiedTemplateBlobUri `

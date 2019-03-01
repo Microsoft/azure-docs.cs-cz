@@ -8,19 +8,19 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: a0e643397372e5b132119a7c23f251ecec876916
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 292b25987f183df2091667312d4e6730b7f40dda
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346573"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990896"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spouštění Azure Functions ze souboru balíčku
 
 > [!NOTE]
-> Funkce popsané v tomto článku není k dispozici pro službu Functions v Linuxu.
+> Funkce popsané v tomto článku není k dispozici pro funkce aplikace běžící na Linuxu v [plán služby App Service](functions-scale.md#app-service-plan).
 
 V Azure můžete spustit přímo ze souboru balíčku nasazení vašich funkcí ve své aplikaci function app. Další možností je k nasazení svých souborů v `d:\home\site\wwwroot` adresáře aplikace function App.
 
@@ -44,8 +44,11 @@ Chcete-li aplikace function app na spuštění z balíčku, stačí přidat `WEB
 
 | Hodnota  | Popis  |
 |---------|---------|
+| **`1`**  | Doporučuje se pro funkce aplikace běžící na Windows. Spustit ze souboru balíčku v `d:\home\data\SitePackages` složky vaší aplikace function App. Pokud není [nasazení zip nasaďte] (#integration s zip-deployment], tato možnost vyžaduje složku, kterou chcete mít také soubor s názvem `packagename.txt`. Tento soubor obsahuje pouze název souboru balíčku ve složce, bez jakékoli prázdné znaky. |
 |**`<url>`**  | Umístění souboru konkrétního balíčku, kterou chcete spustit. Při použití úložiště objektů Blob, byste měli používat privátní kontejneru s [sdíleného přístupového podpisu (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) povolit modul runtime Functions pro přístup k balíčku. Můžete použít [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) k nahrání balíčku souborů do účtu Blob storage.         |
-| **`1`**  | Spustit ze souboru balíčku v `d:\home\data\SitePackages` složky vaší aplikace function App. Tato možnost vyžaduje složku, kterou chcete mít také soubor s názvem `packagename.txt`. Tento soubor obsahuje pouze název souboru balíčku ve složce, bez jakékoli prázdné znaky. |
+
+> [!CAUTION]
+> Při spuštění aplikace function app na Windows, poskytuje možnost externí adresa URL horší výkon studený start. Při nasazování aplikace function app na Windows, měli byste nastavit `WEBSITE_RUN_FROM_PACKAGE` k `1` a publikujete pomocí nasazení zip.
 
 Následující obrázek znázorňuje aplikaci function app nakonfigurovaný ke spouštění ze souboru ZIP hostované ve službě Azure Blob storage:
 

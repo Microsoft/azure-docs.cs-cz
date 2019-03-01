@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: bdb9b48549d24565fdafb9ac1c3215029445793c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ffa85a1a14434e638e76e699650a0be8e31ade00
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100481"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010952"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 
@@ -27,7 +27,7 @@ Následující diagram popisuje logické součásti tohoto akcelerátoru řešen
 
 ![Logická architektura][img-architecture]
 
-Modré položky jsou služby Azure zřízené v oblasti, kam jste nasadili akcelerátor řešení. Seznam oblastí, do kterých můžete nasadit akcelerátor řešení, najdete na [stránce zřizování][lnk-azureiotsuite].
+Modré položky jsou služby Azure zřízené v oblasti, kam jste nasadili akcelerátor řešení. Seznam oblastí, do kterých můžete nasadit akcelerátor řešení, najdete na [stránce zřizování][lnk-azureiotsolutions].
 
 Zelená položka je simulované leteckých motorů. Další informace o těchto simulovaných zařízeních najdete v části [Simulovaná zařízení](#simulated-devices).
 
@@ -39,7 +39,7 @@ Na webu Azure Portal přejděte do skupiny prostředků s názvem řešení, kte
 
 ![Prostředky akcelerátoru][img-resource-group]
 
-Při zřizování akcelerátoru řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Můžete také přejít do pracovního prostoru Machine Learning z [akcelerátory řešení IoT Microsoft Azure] [ lnk-azureiotsuite] stránky. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
+Při zřizování akcelerátoru řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Můžete také přejít do pracovního prostoru Machine Learning z [akcelerátory řešení IoT Microsoft Azure] [ lnk-azureiotsolutions] stránky. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
 
 ![Model strojového učení][img-machine-learning]
 
@@ -71,7 +71,7 @@ Služba IoT Hub zajišťuje potvrzení příkazu zařízení.
 **Hostitel procesoru událostí** běží ve webové úloze Azure. **Procesor událostí** přebírá průměrné hodnoty snímačů za dokončený cyklus. Tyto hodnoty pak předá trénovaného modelu, který vypočítá zbývající doby životnosti motoru. Rozhraní API poskytuje přístup k modelu v pracovním prostoru Machine Learning, která je součástí řešení.
 
 ## <a name="machine-learning"></a>Machine Learning
-Součást Machine Learning používá model odvozený z dat shromážděných z reálných leteckých motorů. Do pracovního prostoru Machine Learning se můžete dostat z dlaždice vašeho řešení na stránce [azureiotsuite.com][lnk-azureiotsuite]. Tato dlaždice je k dispozici v případě, že je řešení ve stavu **Připraveno**.
+Součást Machine Learning používá model odvozený z dat shromážděných z reálných leteckých motorů. Můžete přejít na pracovní prostor Machine Learning z dlaždice vašeho řešení na [azureiotsolutions.com] [ lnk-azureiotsolutions] stránky. Tato dlaždice je k dispozici v případě, že je řešení ve stavu **Připraveno**.
 
 Model Machine Learning je dostupná jako šablonu, která ukazuje, jak pracovat s telemetrická data shromážděná prostřednictvím služby akcelerátorů řešení IoT. Společnost Microsoft vytvořila [regresní model] [ lnk_regression_model] leteckého motoru na základě veřejně dostupných dat<sup>\[1\]</sup>a podrobné pokyny o tom, jak použít model.
 
@@ -93,7 +93,7 @@ Můžete si taky prostudovat některé další funkce akcelerátory řešení Io
 
 [lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
-[lnk-azureiotsuite]: https://www.azureiotsolutions.com/
+[lnk-azureiotsolutions]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/

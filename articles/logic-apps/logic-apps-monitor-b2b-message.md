@@ -1,6 +1,6 @@
 ---
-title: Monitorování zpráv B2B pomocí Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
-description: Sledování AS2, X 12 a EDIFACT a zprávy pro účty pro integraci Azure Logic Apps a nastavit protokolování diagnostiky pomocí Azure Log Analytics
+title: Monitorování zpráv B2B s protokoly Azure monitoru – Azure Logic Apps | Dokumentace Microsoftu
+description: Sledování AS2, X 12 a EDIFACT a zprávy pro účty pro integraci Azure Logic Apps a nastavit protokolování diagnostiky s protokoly Azure monitoru
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,25 +9,27 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818290"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195156"
 ---
-# <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorování zpráv B2B s Azure Log Analytics v Azure Logic Apps
+# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Monitorování zpráv B2B s protokoly Azure monitoru v Azure Logic Apps
 
-Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy mezi sebou. Chcete-li zkontrolovat, že tato komunikace funguje očekávaným způsobem, AS2, X12, můžete monitorovat a zprávy EDIFACT a nastavit Diagnostika protokolování pro váš účet integrace s [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Tato služba monitoruje cloudové a místní prostředí, umožňují zachovat jejich dostupnost a výkon a shromažďuje podrobnosti modulu CLR a události pro rozsáhlejší ladění. Tato data můžete použít také s ostatními službami, jako je například Azure Storage a Azure Event Hubs.
+Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy mezi sebou. Chcete-li zkontrolovat, že tato komunikace funguje očekávaným způsobem, AS2, X12, můžete monitorovat a zprávy EDIFACT a nastavit Diagnostika protokolování pro váš účet integrace s [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md). Tato služba monitoruje cloudové a místní prostředí, umožňují zachovat jejich dostupnost a výkon a shromažďuje podrobnosti modulu CLR a události pro rozsáhlejší ladění. Tato data můžete použít také s ostatními službami, jako je například Azure Storage a Azure Event Hubs.
 
 > [!NOTE]
 > Tato stránka pravděpodobně stále odkazy k Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), ale nahradí tyto kroky pomocí Azure Log Analytics, kde je to možné. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Aplikace logiky, která je nastavená pomocí diagnostického protokolování. Přečtěte si [jak vytvořit aplikaci logiky](quickstart-create-first-logic-app-workflow.md) a [jak nastavit protokolování pro tuto aplikaci logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Po předchozí požadavky splňujete, budete potřebovat pracovní prostor Log Analytics, který používáte pro monitorování a sledování B2B komunikace prostřednictvím Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+* Po předchozí požadavky splňujete, budete potřebovat pracovní prostor Log Analytics, který používáte pro monitorování a sledování B2B komunikaci přes protokoly Azure monitoru. Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 * Integrace účtu, který je propojený s vaší aplikací logiky. Přečtěte si [postup vytvoření účtu pro integraci s odkazem na aplikaci logiky](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
@@ -71,9 +73,9 @@ Jakmile budete hotovi, zvolte **přidejte nastavení diagnostiky**.
 
    Příklad: 
 
-   ![Nastavení Log Analytics, takže budete posílat diagnostická data do protokolu](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Nastavení protokolů Azure Monitor, můžete posílat diagnostická data do protokolu](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Nyní [nastavit sledování zpráv B2B v Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Nyní [nastavit sledování zpráv B2B v Azure Monitor protokoly](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 <a name="azure-monitor-service"></a>
 
@@ -113,13 +115,13 @@ Jakmile budete hotovi, zvolte **přidejte nastavení diagnostiky**.
 
    Příklad: 
 
-   ![Nastavení Log Analytics, takže budete posílat diagnostická data do protokolu](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Nastavení protokolů Azure Monitor, můžete posílat diagnostická data do protokolu](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Nyní [nastavit sledování zpráv B2B v Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Nyní [nastavit sledování zpráv B2B v Azure Monitor protokoly](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="use-diagnostic-data-with-other-services"></a>Použití diagnostických dat s jinými službami
 
-Spolu s Azure Log Analytics můžete rozšířit použití diagnostických dat vaší aplikace logiky s ostatními službami Azure, například: 
+Spolu s protokoly Azure monitoru můžete rozšířit použití diagnostických dat vaší aplikace logiky s ostatními službami Azure, například: 
 
 * [Archiv, který protokoly diagnostiky Azure ve službě Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Stream protokoly diagnostiky Azure do služby Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -144,6 +146,6 @@ Azure podporuje tyto typy schémat, které mají pevná schémata kromě vlastn�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Sledování zpráv B2B v Azure Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "zprávy sledování B2B ve službě Azure Log Analytics")
+* [Sledování zpráv B2B v Azure Monitor protokoly](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "zpráv sledování B2B v protokoly Azure monitoru")
 * [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")
 

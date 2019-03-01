@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6f4abd9f826864914abee0b5d513d5b1c530d416
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19b347423c28b4c615f90f325ead462b9d3e8e9e
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104148"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990030"
 ---
 # <a name="azure-event-hubs---authentication-and-security-model"></a>Azure Event Hubs – ověřování a modelu zabezpečení
 
@@ -68,13 +68,13 @@ nm.CreateEventHub(ed);
 
 ### <a name="generate-tokens"></a>Generování tokenů
 
-Můžete generovat tokeny SAS klíč. Musíte vytvořit pouze jeden token za klienta. Tokeny je pak možné vytvořit pomocí následující metody. Všechny tokeny jsou generovány pomocí **EventHubSendKey** klíč. Každý token je přiřazen jedinečný identifikátor URI.
+Můžete generovat tokeny SAS klíč. Musíte vytvořit pouze jeden token za klienta. Tokeny je pak možné vytvořit pomocí následující metody. Všechny tokeny jsou generovány pomocí **EventHubSendKey** klíč. Každý token je přiřazen jedinečný identifikátor URI. Parametr "prostředků" odpovídá identifikátoru URI koncového bodu služby (centra událostí v tomto případě).
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-Při volání této metody, identifikátor URI by měl být zadán jako `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Pro všechny tokeny, identifikátor URI je shodné, s výjimkou produktů `PUBLISHER_NAME`, který by měl být různé pro každý token. V ideálním případě `PUBLISHER_NAME` představuje ID klienta, která bude přijímat tento token.
+Při volání této metody, identifikátor URI by měl být zadán jako `https://<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Pro všechny tokeny, identifikátor URI je shodné, s výjimkou produktů `PUBLISHER_NAME`, který by měl být různé pro každý token. V ideálním případě `PUBLISHER_NAME` představuje ID klienta, která bude přijímat tento token.
 
 Tato metoda generuje token s následující strukturou:
 

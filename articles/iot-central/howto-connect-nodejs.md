@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b1d7c50970107300676213707368f9f16e04812
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410485"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194797"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
@@ -130,7 +130,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     ```
 
   > [!NOTE]
-  > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto instrustions k [získat připojovací řetězec zařízení](concepts-connectivity.md#getting-device-connection-string) a pokračujte se zbývající část tohoto kurzu. Další nápovědu najdete taky podrobné sadu pokynů [Příprava klientský kód](tutorial-add-device.md#prepare-the-client-code) v kurzech > Přidat zařízení.
+  > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto pokynů a [získat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) a pokračujte se zbývající část tohoto kurzu. Další nápovědu najdete taky podrobné sadu pokynů [Příprava klientský kód](tutorial-add-device.md#prepare-the-client-code) v kurzech > Přidat zařízení.
 
 
   Aktualizujte zástupný text `{your device connection string}` připojovacím řetězcem zařízení. V této ukázce jsme inicializovat `targetTemperature` na nulu, můžete volitelně provést aktuální čtení ze zařízení nebo hodnotu z dvojčete zařízení. 

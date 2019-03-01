@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 61219fc4e1fc329708a7e58ee6a293e4e25cca31
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 408d8ec1c14174fe0536681afcb8f646481b851b
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887807"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193904"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>Zálohování databází SQL Serveru na virtuálních počítačích Azure 
 
@@ -67,7 +67,7 @@ Kontrola [– nejčastější dotazy](faq-backup-sql-server.md) o zálohování 
 
 Zálohujte databázi SQL serveru, zkontrolujte následující podmínky:
 
-1. Identifikovat nebo [vytvořit](backup-azure-sql-database.md#create-a-recovery-services-vault) trezor služby Recovery Services ve stejné oblasti nebo národní prostředí jako virtuální počítač, který je hostitelem instance serveru SQL Server. V
+1. Identifikovat nebo [vytvořit](backup-azure-sql-database.md#create-a-recovery-services-vault) trezor služby Recovery Services ve stejné oblasti nebo národní prostředí jako virtuální počítač, který je hostitelem instance serveru SQL Server.
 2. [Zkontrolujte oprávnění VM](#fix-sql-sysadmin-permissions) potřebné k zálohování databází SQL.
 3. Ověřte, zda má virtuální počítač [připojení k síti](backup-azure-sql-database.md#establish-network-connectivity).
 4. Zkontrolujte, zda databáze systému SQL Server jsou pojmenovány v souladu s maticí [pokyny pro pojmenování](backup-azure-sql-database.md) pro službu Azure Backup.

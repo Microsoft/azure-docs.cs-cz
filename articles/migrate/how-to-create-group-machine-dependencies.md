@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: e62a792e7503e65ebe008a52430f86f1f3a00006
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f04b4dd473f98889b895fa3536c652fb6e3eb01a
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456013"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990795"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vytvořit skupinu počítačů pro [Azure Migrate](
 > Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
 
 ## <a name="prepare-for-dependency-visualization"></a>Příprava pro vizualizace závislostí
-Azure Migrate využívá řešení Service Map ve službě Log Analytics umožňuje vizualizace závislostí počítačů.
+Azure Migrate využívá řešení Service Map v protokolech Azure Monitor umožňuje vizualizace závislostí počítačů.
 
 ### <a name="associate-a-log-analytics-workspace"></a>Přiřadit pracovní prostor Log Analytics
 Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log Analytics, novou nebo existující s projekt Azure Migrate. Můžete pouze vytvářet nebo připojit pracovní prostor v rámci stejného předplatného, ve kterém se vytvoří projekt migrace.
@@ -106,7 +106,7 @@ Další informace o podpoře agenta závislostí [Windows](../azure-monitor/insi
 4. Po kliknutí na dobu trvání rozsah popisku čas můžete prohlédnout závislosti pro různé dob trvání. Rozsah ve výchozím nastavení je jedna hodina. Můžete upravit časový rozsah, nebo zadat počáteční a koncové datum a dobu trvání.
 
     > [!NOTE]
-      Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Log Analytics k [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu.
+      Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Azure monitoru zaznamená do [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu.
 
 5. Po identifikaci závislých počítačů, které chcete seskupit dohromady pomocí Ctrl + kliknutí výběr více počítačů na mapě, a klikněte na **skupiny počítačů**.
 6. Zadejte název skupiny. Ověřte, že se službou Azure Migrate zjistí závislých počítačů.
@@ -119,19 +119,19 @@ Další informace o podpoře agenta závislostí [Windows](../azure-monitor/insi
 
 Jakmile se vytvoří skupina, se doporučuje nainstalovat agenty na všech počítačích skupině a skupinu Upřesnit vizualizací závislostí celou skupinu.
 
-## <a name="query-dependency-data-from-log-analytics"></a>Dotazování na závislost data ze služby Log Analytics
+## <a name="query-dependency-data-from-azure-monitor-logs"></a>Dotazování na závislost data z protokolů Azure Monitor
 
-Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování v pracovním prostoru Log Analytics přidružený k projektu Azure Migrate. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) Service Map tabulky dat k dotazování v Log Analytics. 
+Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování v pracovním prostoru Log Analytics přidružený k projektu Azure Migrate. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) tabulky dat Service Map pro dotazování ve službě Azure Monitor protokoly. 
 
-Pokud chcete spustit dotazy Log Analytics:
+Spuštění dotazů Kusto:
 
 1. Po instalaci agentů, přejděte na portál a klikněte na tlačítko **přehled**.
 2. V **přehled**, přejděte na stránku **Essentials** části projektu a klikněte na název pracovního prostoru k dispozici vedle **pracovní prostor OMS**.
 3. Na stránce pracovního prostoru Log Analytics, klikněte na tlačítko **Obecné** > **protokoly**.
-4. Napsat dotaz pro shromažďování dat závislosti pomocí Log Analytics. Ukázkové dotazy pro shromažďování dat závislosti jsou k dispozici [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Napsat dotaz pro shromažďování dat závislosti pomocí protokolů z Azure monitoru. Ukázkové dotazy pro shromažďování dat závislosti jsou k dispozici [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
 5. Spusťte dotaz kliknutím na spustit. 
 
-[Další informace](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tom, jak psát dotazy Log Analytics. 
+[Další informace](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tom, jak psát dotazy Kusto. 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3e877733d473993a5acd2f44e088b8b0b4fe130
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 70a59ddc1b15693cb2a50c1dc2da6dd9233e0811
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447255"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990013"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 Upgradujte na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
@@ -25,7 +25,7 @@ Nově můžete bez problémů upgradovat na úroveň SQL Data Warehouse – Comp
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>Platná pro
+## <a name="applies-to"></a>Platí pro
 Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové sklady v [podporované oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
 ## <a name="before-you-begin"></a>Před zahájením
@@ -55,7 +55,7 @@ Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové s
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Upgrade v podporované oblasti pomocí webu Azure portal
 
 > [!NOTE]
-> Migrace z GEN1 na GEN2 prostřednictvím webu Azure portal je trvalá. Proces pro vrácení GEN1 není.  
+> Migrace z Gen1 na Gen2 prostřednictvím webu Azure portal je trvalá. Proces pro vrácení Gen1 není.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

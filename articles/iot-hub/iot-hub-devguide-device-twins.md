@@ -1,18 +1,19 @@
 ---
 title: Principy dvojčat zařízení Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – použití dvojčat zařízení k synchronizaci stavu a konfigurace dat mezi službou IoT Hub a zařízení
-author: fsautomata
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: elioda
-ms.openlocfilehash: 606a7c64cc60fa81a71bf40a8087875e08e7c984
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4cbb8e389f403aeb149998acc21956ebce40be78
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053019"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011496"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Principy a použití dvojčat zařízení ve službě IoT Hub
 
@@ -183,14 +184,14 @@ Back-end řešení funguje v dvojčeti zařízení pomocí následující atomic
 
    | Název | Hodnota |
    | --- | --- |
-   $content – typ | application/json |
+   $content-type | application/json |
    $iothub-enqueuedtime |  Čas odeslání oznámení |
-   $iothub – zpráva – zdroj | twinChangeEvents |
-   $content – kódování | utf-8 |
+   $iothub-message-source | twinChangeEvents |
+   $content-encoding | utf-8 |
    deviceId | ID zařízení |
-   HubName | Název služby IoT Hub |
+   hubName | Name of IoT Hub |
    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
-   schéma iothub zprávy | deviceLifecycleNotification |
+   iothub-message-schema | deviceLifecycleNotification |
    opType | "replaceTwin" nebo "updateTwin" |
 
    Vlastnosti zprávy systému začínají `$` symbol.

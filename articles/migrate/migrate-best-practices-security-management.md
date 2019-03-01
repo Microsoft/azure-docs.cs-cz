@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8b895580f2edc0b7af1c6195212490ce083208ad
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700073"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991151"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Osvědčené postupy pro zabezpečení a Správa úloh migrovat do Azure
 
@@ -588,7 +588,7 @@ Prostředky Azure generují přiměřený počet protokolování metrik a teleme
 
 - Ve výchozím nastavení většina typů prostředků nemají povolené protokolování diagnostiky.
 - Povolením protokolování diagnostiky napříč vašimi prostředky můžete dotazovat data protokolování a vytvářet výstrahy a na jejím základě playbooky.
-- Když povolíte protokolování diagnostiky, každý zdroj bude mít konkrétní sadu kategorií. Vyberte jeden nebo více kategorií, protokolování a umístění dat protokolu. Protokoly je možné odeslat do účtu úložiště, se v Centru událostí nebo ke službě Log Analytics. 
+- Když povolíte protokolování diagnostiky, každý zdroj bude mít konkrétní sadu kategorií. Vyberte jeden nebo více kategorií, protokolování a umístění dat protokolu. Protokolů je odeslat do účtu úložiště, Centrum událostí a protokoly Azure monitoru. 
 
 
 ![Protokolování diagnostiky](./media/migrate-best-practices-security-management/diagnostics.png)
@@ -679,7 +679,7 @@ Stejně jako u jakékoli produkční systém, vytváření jakéhokoli typu změ
 Azure nabízí řešení Change Tracking ve službě Azure automation:
 
 - Řešení sleduje změny softwaru Windows a Linuxem a soubory, klíče registru Windows, služby Windows a Linuxové procesy démon.
-- Změny na monitorované servery odesílají do služby Log Analytics v cloudu pro zpracování.
+- Změny na monitorované servery odesílají do služby Azure Monitor v cloudu pro zpracování.
 - Logika platí pro přijatá data a cloudové službě zaznamenává data.
 - Na řídicím panelu řešení Change Tracking můžete snadno zobrazit změny, které byly provedeny v serverové infrastruktuře.
 

@@ -1,5 +1,5 @@
 ---
-title: Sledování zpráv B2B pomocí Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
+title: Sledování zpráv B2B s protokoly Azure monitoru – Azure Logic Apps | Dokumentace Microsoftu
 description: Sledování B2B komunikace pro účty pro integraci a Azure Logic Apps s využitím Azure Log Analytics
 services: logic-apps
 ms.service: logic-apps
@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996544"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193207"
 ---
-# <a name="track-b2b-messages-with-azure-log-analytics"></a>Sledování zpráv B2B s Azure Log Analytics
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Sledování zpráv B2B s protokoly Azure monitoru
 
-Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy s protokoly, například AS2, X 12 a EDIFACT. Pokud chcete zkontrolovat, že tyto zprávy jsou zpracovány správně, můžete sledovat tyto zprávy s [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Například můžete použít tyto možnosti sledování založeného na webu pro sledování zpráv:
+Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy s protokoly, například AS2, X 12 a EDIFACT. Pokud chcete zkontrolovat, že tyto zprávy jsou zpracovány správně, můžete sledovat tyto zprávy s [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md). Například můžete použít tyto možnosti sledování založeného na webu pro sledování zpráv:
 
 * Počet zpráv a stav
 * Stav potvrzení
@@ -29,19 +29,21 @@ Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těcht
 > [!NOTE]
 > Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 * Aplikace logiky, která je nastavená pomocí diagnostického protokolování. Přečtěte si [jak vytvořit aplikaci logiky](quickstart-create-first-logic-app-workflow.md) a [jak nastavit protokolování pro tuto aplikaci logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Účet integrace, který je nastaven díky monitorování a protokolování. Přečtěte si [tom, jak vytvořit integrační účet](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a [jak nastavit monitorování a protokolování pro tento účet](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Pokud jste tak dosud neučinili, [publikovat diagnostická data do Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Pokud jste tak dosud neučinili, [publikovat diagnostická data do Azure monitoru protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 * Po předchozí požadavky splňujete, budete potřebovat pracovní prostor Log Analytics, který používáte pro sledování B2B komunikace prostřednictvím Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Nainstalujte řešení Logic Apps B2B
 
-Předtím, než máte Log Analytics sledování zpráv B2B pro vaši aplikaci logiky, přidejte **Logic Apps B2B** řešení do služby Log Analytics. Další informace o [přidání řešení do Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+Předtím, než může mít protokoly Azure monitoru sledování zpráv B2B pro vaši aplikaci logiky, přidejte **Logic Apps B2B** řešení, které protokoly Azure monitoru. Další informace o [přidání řešení do protokoly Azure monitoru](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby**. Do vyhledávacího pole vyhledejte "log analytics" a vyberte **Log Analytics**.
 
@@ -128,7 +130,7 @@ Po zpracování zpráv B2B, můžete zobrazit stav a podrobnosti o těchto zprá
    * Chcete-li hledat výsledky s využitím předem připravených dotazy, zvolte **Oblíbené**.
 
    * Přečtěte si [sestavování dotazů přidáním filtrů](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
-   Nebo si přečtěte Další informace o [vyhledání dat pomocí prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Nebo si přečtěte Další informace o [jak najít data pomocí prohledávání protokolů v protokoly Azure monitoru](../log-analytics/log-analytics-log-searches.md).
 
    * Chcete-li změnit dotaz do vyhledávacího pole, aktualizujte dotaz sloupců a hodnot, které chcete použít jako filtry.
 
@@ -154,7 +156,7 @@ Tady jsou popisy vlastností pro každou zprávu AS2.
 | Směr | Směr zprávy AS2 |
 | ID korelace | ID, které souvisí všechny aktivační události a akce v aplikaci logiky |
 | ID zprávy | ID zprávy AS2 ze záhlaví zpráv AS2 |
-| Timestamp | Čas, kdy akce AS2 zpracována zprávy |
+| Časové razítko | Čas, kdy akce AS2 zpracována zprávy |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -187,7 +189,7 @@ Tady jsou popisy vlastností pro každou X12 zprávy.
 | Typ zprávy | Typ zprávy 12 EDI X |
 | ICN | Kontrolní číslo výměny. pro X12 zprávy |
 | TSCN | Transakce nastavit kontrolní číslo pro X12 zprávy |
-| Timestamp | Čas při X12 akci zpracovat zprávu |
+| Časové razítko | Čas při X12 akci zpracovat zprávu |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -198,7 +200,7 @@ Tady jsou formáty názvů pro každý stáhli X12 složky a soubory zpráv.
 
 | Soubor nebo složku | Formát názvu |
 | :------------- | :---------- |
-| Složka zpráv | [odesílatele] \_[příjemce]\_X12\_[výměny kontrolní číslo]\_[global-ovládacího prvku number]\_[-číslo sady transakcí – ovládací prvek-]\_[timestamp] |
+| Složka zpráv | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
 | Vstup, výstup a pokud nastavení potvrzení souborů | **Datová část vstupního**: [odesílatele]\_[příjemce]\_X12\_[výměny kontrolní číslo]\_input_payload.txt </p>**Výstupní datovou část**: [odesílatele]\_[příjemce]\_X12\_[výměny kontrolní číslo]\_výstup\_payload.txt </p></p>**Vstupy**: [odesílatele]\_[příjemce]\_X12\_[výměny kontrolní číslo]\_inputs.txt </p></p>**Výstupy**: [odesílatele]\_[příjemce]\_X12\_[výměny kontrolní číslo]\_outputs.txt |
 |          |             |
 
@@ -220,7 +222,7 @@ Tady jsou popisy vlastností pro každou zprávu EDIFACT.
 | Typ zprávy | Typ zprávy EDIFACT |
 | ICN | Kontrolní číslo výměny. pro zprávy EDIFACT |
 | TSCN | Transakce nastavit kontrolní číslo pro zprávy EDIFACT |
-| Timestamp | Čas, kdy akce EDIFACT zpracována zprávy |
+| Časové razítko | Čas, kdy akce EDIFACT zpracována zprávy |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
@@ -231,13 +233,13 @@ Tady jsou formáty názvů pro každý stažený složce zpráv EDIFACT a soubor
 
 | Soubor nebo složku | Formát názvu |
 | :------------- | :---------- |
-| Složka zpráv | [odesílatele] \_[příjemce]\_EDIFACT\_[výměny kontrolní číslo]\_[global-ovládacího prvku number]\_[-číslo sady transakcí – ovládací prvek-]\_[timestamp] |
+| Složka zpráv | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
 | Vstup, výstup a pokud nastavení potvrzení souborů | **Datová část vstupního**: [odesílatele]\_[příjemce]\_EDIFACT\_[výměny kontrolní číslo]\_input_payload.txt </p>**Výstupní datovou část**: [odesílatele]\_[příjemce]\_EDIFACT\_[výměny kontrolní číslo]\_výstup\_payload.txt </p></p>**Vstupy**: [odesílatele]\_[příjemce]\_EDIFACT\_[výměny kontrolní číslo]\_inputs.txt </p></p>**Výstupy**: [odesílatele]\_[příjemce]\_EDIFACT\_[výměny kontrolní číslo]\_outputs.txt |
 |          |             |
 
 ## <a name="next-steps"></a>Další postup
 
-* [Dotaz na zprávy B2B ve službě Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Dotaz na zprávy B2B v protokoly Azure monitoru](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [Schémata sledování AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Schémata sledování X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Vlastní sledování schémata](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

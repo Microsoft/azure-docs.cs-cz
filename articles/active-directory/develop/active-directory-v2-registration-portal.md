@@ -18,15 +18,18 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 109ababa78292bf8b172144174af3216f3844941
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a90f530febccada5421323dd95461257e0fc5950
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203654"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194244"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
 Tento dokument poskytuje kontext a popisy různých funkcí najdete v [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
+
+> [!NOTE] 
+Se už nadále nepodporujeme registraci a správu konvergované a Azure AD aplikace v [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) od května 2019. Doporučujeme, abyste spravovat existující aplikace a registraci nové aplikace [registrace aplikací (Preview)](https://aka.ms/appregistrations) prostředí na webu Azure Portal.
 
 ## <a name="my-applications-or-converged-applications"></a>Moje aplikace nebo Konvergované aplikace
 Tento seznam obsahuje všechny vaše aplikace zaregistrovaná pro použití s koncovým bodem v2.0 Azure AD. Tyto aplikace se budou moct přihlásit uživatele pomocí osobních účtů Microsoft a pracovních nebo školních účtů ze služby Azure Active Directory. Další informace o koncový bod Azure AD v2.0, najdete v článku [v2.0 přehled](active-directory-appmodel-v2-overview.md). Tyto aplikace lze také integrovat koncový bod Microsoft účet ověřování `https://login.live.com`.

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d6b5a8b31b78e21868a7f81c481c4fce1cd4e6f5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164122"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192441"
 ---
-# <a name="log-analytics-for-public-basic-load-balancer"></a>Log analytics pro veřejný Load balancer úrovně Basic
+# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Protokoly Azure monitoru pro veřejný Load balancer úrovně Basic
 
 >[!IMPORTANT] 
 >Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard přehled](load-balancer-standard-overview.md) která zveřejní telemetrická data prostřednictvím vícedimenzionálních metrik ve službě Azure Monitor.
@@ -32,7 +32,7 @@ Správa a řešení potíží s základní nástroje pro vyrovnávání zatíže
 * **Protokoly sond stavu:** Chcete-li zobrazit problémů zjištěných vaše sondu stavu, jako je počet instancí v back-endového fondu, které nepřijímá požadavky z nástroje pro vyrovnávání zatížení z důvodu selhání testu stavu, které můžete použít tento protokol. Tento protokol je zapsán do, když dojde ke změně v sonda stavu.
 
 > [!IMPORTANT]
-> Protokolovat analytics aktuálně funguje pouze pro veřejné základní nástroje pro vyrovnávání zatížení. Protokoly jsou dostupné jenom pro prostředky nasazené v modelu nasazení Resource Manager. Protokoly nelze použít pro prostředky v modelu nasazení classic. Další informace o modelech nasazení najdete v tématu [vysvětlení Resource Manager a klasické nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
+> Azure Monitor protokoly aktuálně platí jenom pro nástroje pro vyrovnávání zatížení veřejnou základní. Protokoly jsou dostupné jenom pro prostředky nasazené v modelu nasazení Resource Manager. Protokoly nelze použít pro prostředky v modelu nasazení classic. Další informace o modelech nasazení najdete v tématu [vysvětlení Resource Manager a klasické nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
@@ -143,7 +143,7 @@ Budete muset připojit ke svému účtu úložiště a načtení položky protok
 > [!TIP]
 > Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Vizualizace protokolů auditu Azure pomocí Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogový příspěvek.
 * [Zobrazení a analýza protokolů auditu Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogový příspěvek.

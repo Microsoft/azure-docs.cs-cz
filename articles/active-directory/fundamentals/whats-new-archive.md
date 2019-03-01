@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/28/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6c1e0e7b1b5aa97137dc59e3e5cee1eb544af5a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fd42e1e06086a12b159a8510c3d53a7f32e46f6
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199398"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194626"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -30,6 +30,208 @@ Co je nového zpráva k vydání verze poskytování informací o:
 - Opravy chyb
 - Zastaralé funkce
 - Plány pro změny
+
+---
+
+## <a name="july-2018"></a>Červenec 2018
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Vylepšení e-mailových oznámení služby Azure Active Directory
+
+**Typ:** Změněná funkce  
+**Kategorie služby:** Ostatní  
+**Funkce produktu:** Správa životního cyklu identit
+ 
+Azure Active Directory (Azure AD) e-mailů nyní funkce aktualizovaný návrh, jakož i změny odesílatele e-mailové adresy a zobrazované jméno odesílatele, při odeslání z následující služby:
+ 
+- Kontroly přístupu Azure AD
+- Azure AD Connect Health 
+- Azure AD Identity Protection 
+- Azure AD Privileged Identity Management
+- Oznámení podnikových aplikací vypršení platnosti certifikátu
+- Oznámení služby zřizování podnikových aplikací
+ 
+E-mailová oznámení se odešlou z následujících e-mailové adresy a zobrazované jméno:
+
+- E-mailová adresa: azure-noreply@microsoft.com
+- Zobrazovaný název: Microsoft Azure
+ 
+Příklad některé z nových e-mailu návrhů a další informace najdete v tématu [e-mailová oznámení v Azure AD PIM](https://go.microsoft.com/fwlink/?linkid=2005832).
+
+---
+
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Protokoly aktivit Azure AD jsou teď k dispozici prostřednictvím Azure Monitoru
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Vytváření sestav  
+**Funkce produktu:** Monitorování a sestavy
+
+Protokoly aktivit Azure AD jsou teď dostupné ve verzi public preview pro Azure Monitor (Sledování služby celou platformu Azure). Azure Monitor nabízí dlouhodobé uchování a bezproblémové integrace. kromě tato vylepšení:
+
+- Dlouhodobé uchovávání přesměrováním souborů protokolu do účtu Azure storage.
+
+- Bezproblémová integrace SIEM, aniž by bylo potřeba psát nebo udržovat vlastní skripty.
+
+- Bezproblémová integrace s vlastními řešeními, analytické nástroje nebo řešení správy incidentů.
+
+Další informace o těchto nových funkcích najdete v blogovém [protokoly aktivit Azure AD ve službě Azure Monitor Diagnostika je teď ve verzi public preview](https://cloudblogs.microsoft.com/enterprisemobility/2018/07/26/azure-ad-activity-logs-in-azure-monitor-diagnostics-now-in-public-preview/) a naši dokumentaci [protokoly aktivit Azure Active Directory v Azure Monitorování (preview)](https://docs.microsoft.com/azure/active-directory/reporting-azure-monitor-diagnostics-overview).
+
+---
+
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Do sestav o přihlašování k Azure AD se přidaly informace o podmíněném přístupu
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Vytváření sestav  
+**Funkce produktu:** Zabezpečení a ochrana identity
+ 
+Umožňuje tato aktualizace můžete zjistit, které zásady jsou vyhodnocovány, když se uživatel přihlásí spolu s výsledky zásady. Kromě toho sestavu teď obsahuje typ klientské aplikace použitých uživatelem, abyste mohli identifikovat provozu starší verzi protokolu. Položky sestavy lze nyní také vyhledávat ID korelace, které najdete v chybové zprávě přístupných a slouží k identifikaci a řešení potíží s odpovídající žádost o přihlášení.
+
+---
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Zobrazení starších verzí ověřování prostřednictvím protokolů aktivit přihlášení
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Vytváření sestav  
+**Funkce produktu:** Monitorování a sestavy
+ 
+Se zavedením **klientskou aplikaci** pole v aktivit přihlašování protokoly, zákazníci můžou teď najdete v tématu uživatelé, které používají starší verze ověřování. Zákazníci budou moct přistupovat k těmto informacím pomocí rozhraní Graph API MS přihlášení nebo prostřednictvím přihlášení protokoly aktivit v portálu Azure AD, kde můžete použít **klientskou aplikaci** ovládací prvek pro filtrování starší verze ověřování. Přečtěte si další podrobnosti naleznete v dokumentaci.
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – červenec 2018
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podnikové aplikace  
+**Funkce produktu:** Integrace třetích stran
+ 
+V červenci 2018 jsme přidali podporu těchto 16 nové aplikace s federací do Galerie aplikací:
+
+[Inovace centra](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial), [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial), [některých jednotného přihlašování správce](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial), pracovní PSUC [iPass SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial), [Matic záznam dění na monitoru-O](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial) , PowerSchool Unified učebny, [Eli připojování](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial), [Podpora vzdáleného Bomgar](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial), [Nimblex](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial), [Imagineer WebVision](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial) , [Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial), [SecureW2 JoinNow konektor](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial), [Kanbanize](https://review.docs.microsoft.com/azure/active-directory/saas-apps/kanbanize-tutorial), [SmartLPA](https://review.docs.microsoft.com/azure/active-directory/saas-apps/smartlpa-tutorial), [základní dovednosti](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
+
+Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
+
+---
+ 
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Nové integrace aplikací SaaS pro zřizování uživatelů – červenec 2018
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Zřizování aplikací  
+**Funkce produktu:** Integrace třetích stran
+ 
+Azure AD umožňuje automatizovat vytváření, údržbu a odebírání uživatelských identit v aplikacích SaaS, jako je například Dropbox, Salesforce, ServiceNow a další. Pro července 2018 jsme přidali podporu pro následující aplikace v galerii aplikací Azure AD zřizování uživatelů:
+
+- [Cisco Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial)
+
+- [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
+
+- [Bonusly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
+
+Seznam všech aplikací, které podporují zřizování uživatelů ve galerii Azure AD najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial).
+
+---
+
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync – Snazší způsob, jak opravovat chyby synchronizace osamocených a duplicitních atributů
+
+**Typ:** Nová funkce  
+**Kategorie služby:** AD Connect  
+**Funkce produktu:** Monitorování a sestavy
+ 
+Azure AD Connect Health uvádí samoobslužnou nápravu můžete zvýraznit a oprava chyb synchronizace. Tato funkce odstraňování potíží s duplicitním atributem chyby synchronizace a opravy objekty, které jsou osamocené ze služby Azure AD. Tuto diagnostiku má následující výhody:
+
+- Chyby synchronizace duplicitním atributem, poskytují konkrétní opravy může zúžit oblast
+
+- Oprava se vztahuje vyhrazené scénáře služby Azure AD, řešení chyb v jediném kroku
+
+- Žádný upgrade nebo konfigurace je potřeba zapnout a použít tuto funkci
+
+Další informace najdete v tématu [diagnostikovat a opravovat chyby synchronizace duplicitním atributem](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-diagnose-sync-errors)
+
+---
+
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Vizuální aktualizace prostředí pro přihlašování k Azure AD a MSA
+
+**Typ:** Změněná funkce  
+**Kategorie služby:** Azure AD  
+**Funkce produktu:** Ověřování uživatelů
+
+Aktualizovali jsme v uživatelském rozhraní společnosti Microsoft online services přihlašovacího prostředí, například pro Office 365 a Azure. Díky této změně obrazovky, méně zaplněnou a jednodušší. Další informace o této změně najdete v tématu [nadcházející vylepšení prostředí pro přihlášení k Azure AD](https://cloudblogs.microsoft.com/enterprisemobility/2018/04/04/upcoming-improvements-to-the-azure-ad-sign-in-experience/) blogu.
+
+---
+
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nová verze služby Azure AD Connect – červenec 2018
+
+**Typ:** Změněná funkce  
+**Kategorie služby:** Zřizování aplikací  
+**Funkce produktu:** Správa životního cyklu identit
+
+Nejnovější verze služby Azure AD Connect zahrnuje: 
+
+- Opravy chyb a aktualizací možnosti podpory 
+
+- Obecná dostupnost integrace Federovat Ping
+
+- Aktualizace na nejnovější verzi klienta SQL 2012 
+
+Další informace o této aktualizaci najdete v tématu [Azure AD Connect: Historie vydaných verzí](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)
+
+---
+
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizace uživatelského rozhraní podmínek použití pro koncové uživatele
+
+**Typ:** Změněná funkce  
+**Kategorie služby:** Podmínky použití  
+**Funkce produktu:** Zásady správného řízení
+
+Aktualizujeme přijetí řetězce v uživatelském rozhraní podmínek použití koncového uživatele.
+
+**Aktuální text.** Aby bylo možné získat přístup k prostředkům [tenantName], je nutné přijmout podmínky použití.<br>**Nový text.** Aby bylo možné získat přístup k prostředku [tenantName], musí přečíst podmínky použití.
+
+**Aktuální text:** Zvolíte-li znamená, že souhlasíte se všemi výše uvedené podmínky použití přijmout.<br>**Nový text:** Klikněte prosím na potvrzení, že budete mít přečetl(a) a rozumím jí podmínky použití přijmout.
+
+---
+ 
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Předávací ověřování podporuje starší verze protokolů a aplikací
+
+**Typ:** Změněná funkce  
+**Kategorie služby:** Ověřování (přihlášení)  
+**Funkce produktu:** Ověřování uživatelů
+ 
+Předávací ověřování nyní podporuje starší protokoly a aplikace. Tato omezení jsou nyní plně podporovány:
+
+- Přihlášení uživatelů do starší klientské aplikace Office, Office 2010 a Office 2013, bez nutnosti moderní ověřování.
+
+- Přístup k sdílení kalendáře a volném informací v Exchangi hybridní prostředí s Office 2010 pouze.
+
+- Uživatelská přihlášení ke Skypu pro firmy klientských aplikací bez moderního ověřování.
+
+- Přihlašování uživatelů k prostředí PowerShell verze 1.0.
+
+- Programu registrace zařízení Apple (Apple DEP), pomocí Průvodce nastavením iOS. 
+
+---
+ 
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Sloučená správa bezpečnostních údajů pro samoobslužné resetování hesla a Multi-Factor Authentication
+
+**Typ:** Nová funkce  
+**Kategorie služby:** SSPR  
+**Funkce produktu:** Ověřování uživatelů
+
+Tato nová funkce umožňuje uživatelům spravovat svoje bezpečnostní údaje (například telefonní číslo, e-mailovou adresu, mobilní aplikace a tak dále) pro samoobslužné resetování hesla (SSPR) a Vícefaktorové ověřování (MFA) v jednom prostředí. Uživatelé už muset zaregistrovat stejné bezpečnostní údaje pro samoobslužné resetování HESLA a vícefaktorové ověřování ve dvou různých prostředích. Toto nové prostředí platí také pro uživatele, kteří mají samoobslužné resetování HESLA nebo vícefaktorové ověřování.
+
+Pokud organizace není vynucení registrace MFA nebo samoobslužné resetování HESLA, uživatelé můžou registrovat svoje bezpečnostní údaje prostřednictvím **Moje aplikace** portálu. Odtud uživatelé můžou registrovat jakékoli metody pro vícefaktorové ověřování a samoobslužné resetování HESLA povoleno. 
+
+Toto je vyjádření souhlasu se ve verzi public preview. Správce můžete pro vybrané skupiny uživatelů nebo všechny uživatele v tenantovi zapnout na nové prostředí (v případě potřeby).
+
+---
+ 
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Ověřování identity pomocí aplikace Microsoft Authenticator při resetování hesla
+
+**Typ:** Změněná funkce  
+**Kategorie služby:** SSPR  
+**Funkce produktu:** Ověřování uživatelů
+
+Tato funkce umožňuje bez oprávnění správce, potvrdit svou identitu při resetování hesla pomocí oznámení nebo kód v aplikaci Microsoft Authenticator (nebo jakoukoli ověřovací aplikaci). Po zapnutí admins tento samoobslužné resetování hesla – metoda, uživatelé, kteří se zaregistrovali prostřednictvím aka.ms/mfasetup nebo aka.ms/setupsecurityinfo mobilní aplikace můžete použít své mobilní aplikace jako metodu ověřování při resetování hesla.
+
+Oznámení mobilní aplikace je možné zapnout jenom na jako součást zásady, které vyžaduje dvě metody k resetování hesla.
 
 ---
 

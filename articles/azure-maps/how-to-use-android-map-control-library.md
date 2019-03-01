@@ -1,6 +1,6 @@
 ---
 title: Jak používat s Androidem mapový ovládací prvek ve službě Azure Maps | Dokumentace Microsoftu
-description: Pomocí Android mapový ovládací prvek ve službě Azure Maps.
+description: Android mapový ovládací prvek ve službě Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
@@ -9,53 +9,53 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341075"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010663"
 ---
-# <a name="how-to-use-azure-maps-android-sdk"></a>Jak používat Azure Maps Android SDK
+# <a name="how-to-use-the-azure-maps-android-sdk"></a>Jak používat Azure Maps Android SDK
 
-Azure Maps Android SDK je knihovna vektorové mapy pro Android. Tento článek vás provede procesem instalace sady Android SDK Azure Maps, načítání mapy a uvedení PIN kód na něm.
+Azure Maps Android SDK je knihovna vektorové mapy pro Android. Tento článek vás provede procesy, které instalace sady Android SDK Azure Maps, načítání mapu a uvedení na mapě kódu pin.
 
-## <a name="prerequisites-to-get-started"></a>Požadavky na Začínáme
+## <a name="prerequisites"></a>Požadavky
 
-### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
+### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
-Postupovat podle kroků v tomto průvodci, musíte nejprve zobrazíte [spravovat účet a klíče](how-to-manage-account-keys.md) k vytváření a správě účtu předplatného S1 pro cenovou úroveň.
+K dokončení postupu v tomto článku, musíte nejprve [vytvořit účet Azure Maps](how-to-manage-account-keys.md) v cenovou úroveň S1.
 
-### <a name="download-android-studio"></a>Stáhnout Android studio
+### <a name="download-android-studio"></a>Stáhnout Android Studio
 
-Můžete si stáhnout [Android Studio](https://developer.android.com/studio/) zdarma z Googlu. Pokud chcete nainstalovat Azure Maps Android SDK, musíte nejdřív stáhnout Android Studio a vytvořte projekt pomocí prázdná aktivita.
+Budete muset stáhnout Android Studio a vytvořte projekt pomocí prázdná aktivita před instalací sady Azure Maps Android SDK. Je možné [stáhnout Android Studio](https://developer.android.com/studio/) zdarma z Googlu. 
 
 ## <a name="create-a-project-in-android-studio"></a>Vytvoření projektu v nástroji Android Studio
 
-Budete muset vytvořit nový projekt s prázdná aktivita. Postupujte podle pokynů můžete vytvořit nový projekt Android Studio:
+Nejprve musíte vytvořit nový projekt s prázdná aktivita. Dokončete tyto kroky pro vytvoření projektu Android Studio:
 
-1. V části *zvolte projekt*, zaškrtněte políčko "Telefonu a tabletu" jako faktor formuláře, který vaše aplikace poběží.
-2. Klikněte na tlačítko *prázdná aktivita* v rámci provedení a klikněte na tlačítko **Další**.
-3. V části *nakonfigurujete svůj projekt*vyberte `API 21: Android 5.0.0 (Lollipop)` jako minimální sadu SDK. Toto je nejnižší verze podporuje Azure Maps Android SDK.
-4. Přijměte výchozí nastavení `Activity Name` a `Layout Name` a klikněte na tlačítko **dokončit**
+1. V části **zvolte projekt**vyberte **telefony a tablety**. Vaše aplikace poběží v tomto provedení.
+2. Na **telefony a tablety** kartu, vyberte možnost **prázdná aktivita**a pak vyberte **Další**.
+3. V části **nakonfigurujete svůj projekt**vyberte `API 21: Android 5.0.0 (Lollipop)` jako minimální sadu SDK. Toto je první verze podporovaná Azure Maps Android SDK.
+4. Přijměte výchozí nastavení `Activity Name` a `Layout Name` a vyberte **Dokončit**.
 
 Zobrazit [dokumentace k sadě Android Studio](https://developer.android.com/studio/intro/) další pomoc s instalací Android Studio a vytvoření nového projektu.
 
-![Vytvoření nového projektu](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Vytvoření projektu](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>Nastavit virtuální zařízení
 
-Android Studio umožňuje nastavit virtuální zařízení s Androidem ve vašem počítači. Pomáhá při vývoji, testování vaší aplikace. Nastavit virtuální zařízení klikněte na ikonu Android Virtual Device (AVD) Manager v horním pravém rohu obrazovky projektu. Klikněte **vytvořit virtuální zařízení** tlačítko. Můžete také získat pro správce prostřednictvím **nástroje > Android > AVD Manager** na panelu nástrojů. Z **telefony** vyberte **Nexus 5 X** a klikněte na tlačítko **Další**.
+Android Studio umožňuje nastavit virtuální zařízení s Androidem ve vašem počítači. To vám může pomoct testování aplikací během vývoje. Zřídit virtuální zařízení, vyberte ikonu Android Virtual Device (AVD) Manager v pravém horním rohu obrazovky projektu a pak vyberte **vytvořit virtuální zařízení**. Můžete také získat AVD Manager tak, že vyberete **nástroje** > **Android** > **AVD Manager** z panelu nástrojů. V **telefony** vyberte **Nexus 5 X**a pak vyberte **Další**.
 
 Další informace o nastavení AVD v [dokumentace k sadě Android Studio](https://developer.android.com/studio/run/managing-avds).
 
 ![Emulátor androidu](./media/how-to-use-android-map-control-library/android-emulator.png)
 
-## <a name="install-azure-maps-android-sdk"></a>Instalace sady Android SDK Azure Maps
+## <a name="install-the-azure-maps-android-sdk"></a>Instalace sady Android SDK Azure Maps
 
-Než budete pokračovat následujícími směrem k sestavení aplikace, postupujte podle pokynů k instalaci sady Android SDK pro Azure Maps. 
+Dalším krokem při sestavování aplikace je instalace Azure Maps Android SDK. Dokončete tyto kroky pro instalaci sady SDK:
 
-1. Přidejte následující text do **všechny projekty**, blok úložišť ve vaší **build.gradle** souboru.
+1. Přidejte následující kód, který **všechny projekty**, **úložišť** blok, ve vaší **build.gradle** souboru.
 
     ```
     maven {
@@ -63,9 +63,9 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
     }
     ```
 
-2. Aktualizace vašeho **app/build.gradle** a přidejte následující:
+2. Aktualizace vašeho **app/build.gradle** a přidejte do ní následující kód:
 
-    1. Přidejte následující text do bloku s Androidem:
+    1. Přidejte následující kód pro Android bloku:
 
         ```
         compileOptions {
@@ -73,13 +73,13 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. Aktualizujte vaše bloku závislostí a přidejte následující:
+    2. Aktualizujte vaše bloku závislostí a přidejte do ní následující kód:
 
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. Nastavení oprávnění přidáním následujícího kódu do vaší **AndroidManifest.xml**
+3. Nastavení oprávnění tak, že přidáte následující kód XML pro vaše **AndroidManifest.xml** souboru:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -90,7 +90,7 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
     </manifest>
     ```
 
-4. Upravit **res > rozložení > activity_main.xml**, takže to vypadá, že kód XML:
+4. Upravit **res** > **rozložení** > **activity_main.xml** tak, aby vypadala podobně jako tato konfigurace XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -113,7 +113,7 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
     </FrameLayout>
     ```
 
-5. Upravit **MainActivity.java** pro vytvoření třídy aktivity zobrazení mapy. Po dokončení úprav by měl vypadat jako následující třídy:
+5. Upravit **MainActivity.java** pro vytvoření třídy aktivity zobrazení mapy. Po úpravě, by měl vypadat podobně jako tato třída:
 
     ```java
     package com.example.myapplication;
@@ -187,21 +187,21 @@ Než budete pokračovat následujícími směrem k sestavení aplikace, postupuj
 
 ## <a name="import-classes"></a>Import tříd
 
-Po dokončení výše uvedených kroků, bude pravděpodobně získat upozornění z Android Studio na část textu v kódu. Chcete-li vyřešit tato upozornění, importovat třídy, na kterou se odkazuje v `MainActivity.java`.
+Po dokončení předchozích kroků, pravděpodobně dostanete upozornění z Android Studio o některý kód. Chcete-li vyřešit tato upozornění, importujte třídy odkazuje `MainActivity.java`.
 
-Tyto třídy mohl automaticky importovat stisknutím kombinace kláves `Alt` + `Enter`(`Option` + `Return` na počítači Mac). 
+Tyto třídy můžete automaticky importovat tak, že vyberete kombinaci kláves Alt + Enter (možnost + Return na počítači Mac).
 
-Klikněte na tlačítko **spuštění "Aplikace"** tlačítko (nebo `Control` + `R` na počítači Mac) k sestavení aplikace.
+Tlačítka Spustit vyberte, jak ukazuje následující obrázek (nebo stiskněte klávesu ovládací prvek + R na počítači Mac), k sestavení aplikace.
 
 ![Klikněte na tlačítko Spustit](./media/how-to-use-android-map-control-library/run-app.png)
 
-Bude trvat několik sekund pro android studio sestavte aplikaci. Aplikaci můžete otestovat v emulované zařízení s Androidem, po dokončení sestavení. Zobrazí se mapu podobné následující.
+Android Studio bude trvat několik sekund pro sestavení aplikace. Aplikaci můžete otestovat v emulované zařízení s Androidem, po dokončení sestavení. Měli byste vidět mapu podobné následující:
 
 ![Android mapy](./media/how-to-use-android-map-control-library/android-map.png)
 
 ## <a name="add-a-marker-to-the-map"></a>Přidat značku k mapě
 
-Chcete-li přidat značky do mapy přidat `mapView.getMapAsync()` funkce `MainActivity.java`. Finální `MainActivity.java` by měl vypadat nějak takto:
+Chcete-li přidat značky do mapy, přidejte `mapView.getMapAsync()` funkce `MainActivity.java`. Finální `MainActivity.java` kód by měl vypadat takto:
 
 ```java
 package com.example.myapplication;
@@ -288,6 +288,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Znovu spusťte aplikaci a značky byste měli vidět na mapě, jako je uvedený níže.
+Spusťte aplikaci znovu. Značky byste měli vidět na mapě, jak je znázorněno zde:
 
 ![Android mapy kódu pin](./media/how-to-use-android-map-control-library/android-map-pin.png)

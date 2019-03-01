@@ -1,20 +1,20 @@
 ---
 title: Rychlý start k odesílání telemetrických dat do služby Azure IoT Hub | Microsoft Docs
 description: V tomto rychlém startu spustíte ukázkovou aplikaci pro iOS, která odesílá simulovaná telemetrická data do centra IoT a čte z centra IoT telemetrická data pro účely zpracování v cloudu.
-author: kgremban
+author: wesmc7777
 manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: 05ae99425bbe16c27ca7efd475757499996e06b9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5def12acf3aa87c06ea7cd2f8a1102018750d36d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672113"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009490"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub (iOS)
 

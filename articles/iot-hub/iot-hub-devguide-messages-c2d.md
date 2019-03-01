@@ -1,19 +1,19 @@
 ---
 title: Vysvětlení, zasílání zpráv typu cloud zařízení Azure IoT Hub | Dokumentace Microsoftu
 description: Průvodce pro vývojáře – jak používat zasílání zpráv typu cloud zařízení pomocí služby IoT Hub. Obsahuje informace o životní cyklus zpráv a možnosti konfigurace.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: dobett
-ms.openlocfilehash: 3f137ea80dc67bb075f34846e5563fb72c72b69a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585641"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010238"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Odesílání zpráv z cloudu do zařízení z IoT Hubu
 
@@ -75,8 +75,8 @@ Při odesílání zpráv typu cloud zařízení služby můžou požádat o doru
 
 | Vlastnosti objektu ACK. | Chování |
 | ------------ | -------- |
-| **Pozitivní** | Pokud dosáhne zprávy typu cloud zařízení **dokončeno** stavu služby IoT Hub vygeneruje zprávu zpětnou vazbu. |
-| **Záporná** | Pokud dosáhne zprávy typu cloud zařízení **Dead lettered** stavu služby IoT Hub vygeneruje zprávu zpětnou vazbu. |
+| **positive** | Pokud dosáhne zprávy typu cloud zařízení **dokončeno** stavu služby IoT Hub vygeneruje zprávu zpětnou vazbu. |
+| **negative** | Pokud dosáhne zprávy typu cloud zařízení **Dead lettered** stavu služby IoT Hub vygeneruje zprávu zpětnou vazbu. |
 | **Úplné**     | IoT Hub vygeneruje zprávu zpětnou vazbu v obou případech. |
 
 Pokud **Ack** je **úplné**a neobdrželi zprávu zpětnou vazbu, znamená to, že vypršela platnost zprávy zpětné vazby. Služba nemůže vědět, co se stalo s původní zprávy. V praxi služba zajistil zpětnou vazbu ji může zpracovat, než vyprší její platnost. Čas vypršení platnosti maximální dva dny, které nechá je načase začít službu opětovném zprovoznění Pokud dojde k chybě.
@@ -94,8 +94,8 @@ Text je serializací JSON pole záznamů, každý s následujícími vlastnostmi
 | Vlastnost           | Popis |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Časové razítko určující, kdy se stalo výsledek zprávy. Například centra zobrazila zpráva zpětnou vazbu nebo vypršela její platnost původní zprávy. |
-| ID původní zprávy  | **ID zprávy** zprávy typu cloud zařízení, ke kterému se vztahuje tyto informace zpětnou vazbu. |
-| statusCode         | Povinný řetězec. Používá ve vygenerované službou IoT Hub zpráv se zpětnou vazbou. <br/> 'Success' <br/> "Platnost vypršela. <br/> "DeliveryCountExceeded. <br/> "Odmítl. <br/> "Vymazat" |
+| OriginalMessageId  | **ID zprávy** zprávy typu cloud zařízení, ke kterému se vztahuje tyto informace zpětnou vazbu. |
+| StatusCode         | Povinný řetězec. Používá ve vygenerované službou IoT Hub zpráv se zpětnou vazbou. <br/> 'Success' <br/> "Platnost vypršela. <br/> 'DeliveryCountExceeded' <br/> "Odmítl. <br/> "Vymazat" |
 | Popis        | Hodnoty pro řetězce **StatusCode**. |
 | DeviceId           | **ID zařízení** cílového zařízení zprávy typu cloud zařízení, na který se týká tato složka zpětné vazby. |
 | DeviceGenerationId | **DeviceGenerationId** cílového zařízení zprávy typu cloud zařízení, na který se týká tato složka zpětné vazby. |
@@ -127,9 +127,9 @@ Každé centrum IoT zpřístupňuje následující možnosti konfigurace pro zas
 
 | Vlastnost                  | Popis | Rozsah a výchozí |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Výchozí hodnota TTL pro zprávy typu cloud zařízení. | Interval ISO_8601 až 2D (minimální 1 minuta). Výchozí hodnota: 1 hodina. |
-| MaxDeliveryCount          | Maximální počet doručení zpráv typu cloud zařízení na zařízení fronty. | 1 až 100. Výchozí: 10. |
-| feedback.ttlAsIso8601     | Uchovávání zpráv se zpětnou vazbou vázané na služby. | Interval ISO_8601 až 2D (minimální 1 minuta). Výchozí hodnota: 1 hodina. |
+| defaultTtlAsIso8601       | Výchozí hodnota TTL pro zprávy typu cloud zařízení. | Interval ISO_8601 až 2D (minimální 1 minuta). Výchozí: 1 hodina. |
+| maxDeliveryCount          | Maximální počet doručení zpráv typu cloud zařízení na zařízení fronty. | 1 až 100. Výchozí: 10. |
+| feedback.ttlAsIso8601     | Uchovávání zpráv se zpětnou vazbou vázané na služby. | Interval ISO_8601 až 2D (minimální 1 minuta). Výchozí: 1 hodina. |
 | feedback.maxDeliveryCount |Maximální počet doručení pro frontu zpětné vazby. | 1 až 100. Výchozí: 100. |
 
 Další informace o tom, jak nastavit tyto možnosti konfigurace najdete v tématu [vytvořit IoT hub](iot-hub-create-through-portal.md).

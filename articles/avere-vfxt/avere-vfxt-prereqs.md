@@ -4,14 +4,14 @@ description: Předpoklady pro Avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 045b010736f8cecf877408f23530022af1f94f14
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299200"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991418"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -57,7 +57,7 @@ Musíte mít dostatečnou kvótu pro následující komponenty Azure. V případ
 
 |Komponenta Azure|Kvóta|
 |----------|-----------|
-|Virtuální počítače|3 nebo více virtuálních počítačů D16s_v3 nebo E32s_v3|
+|Virtuální počítače|3 nebo více E32s_v3|
 |Úložiště SSD úrovně Premium|200 GB místa na operační systém a 1 až 4 TB místa v mezipaměti na uzel |
 |Účet úložiště (volitelné) |v2|
 |Back-endové úložiště dat (volitelné) |Jeden nový kontejner objektů Blob LRS |
@@ -151,6 +151,30 @@ Než budete moct vytvořit vFXT Avere pro Azure cluster, je nutné vytvořit rol
    ```
 
 Název role se používá při vytváření clusteru. V tomto příkladu je název ``avere-operator``.
+
+## <a name="optional-create-a-storage-service-endpoint-in-your-virtual-network"></a>(Volitelné) Vytvoření koncového bodu služby úložiště ve službě virtual network
+
+A [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) udržuje objektů Blob v Azure provoz místní namísto směrování mimo virtuální síť. Doporučuje se pro všechny Avere vFXT pro cluster Azure, která využívá back endovým datům úložiště objektů Blob v Azure. 
+
+Pokud poskytujete existující virtuální síť a vytvořili nový kontejner objektů Blob v Azure pro váš back endové úložné jako součást vytváření clusteru, musí mít koncový bod služby ve virtuální síti pro úložiště od Microsoftu. Tento koncový bod, musí existovat před vytvořením clusteru nebo vytváření se nezdaří. 
+
+Koncový bod služby storage se doporučuje pro všechny Avere vFXT pro cluster Azure, která používá úložiště objektů Blob v Azure i v případě, že přidáte úložiště později. 
+
+> [!TIP] 
+> * Tento krok přeskočte, pokud vytváříte nové virtuální sítě jako součást vytváření clusteru. 
+> * Tento krok je volitelný, pokud nevytváříte úložiště objektů Blob při vytváření clusteru. V takovém případě můžete vytvořit koncový bod služby později Pokud se rozhodnete používat Azure Blob.
+
+Vytvoření koncového bodu služby úložiště na webu Azure Portal. 
+
+1. Z portálu, klikněte na tlačítko **virtuální sítě** na levé straně.
+1. Vyberte virtuální síť pro cluster. 
+1. Klikněte na tlačítko **koncové body služby** na levé straně.
+1. Klikněte na tlačítko **přidat** v horní části.
+1. Nechte službu jako ``Microsoft.Storage`` a zvolte podsíť clusteru.
+1. V dolní části, klikněte na tlačítko **přidat**.
+
+  ![Azure portal – snímek obrazovky s poznámkami postup vytvoření koncového bodu služby](media/avere-vfxt-service-endpoint.png)
+
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Další krok: Vytvoření clusteru vFXT
 

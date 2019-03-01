@@ -1,19 +1,19 @@
 ---
 title: Vysvětlení úloh služby Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – plánování spouštění úloh v různých zařízeních připojené ke službě IoT hub. Úlohy můžete aktualizovat značky a požadované vlastnosti a vyvolání přímých metod na více zařízeních.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: dobett
-ms.openlocfilehash: b9ad7a0e1947c9ca95b343a443688e976c306f95
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2b05b1854b4f1d7ee4ac65ebe635330ba8c604e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884220"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011360"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
 
@@ -115,26 +115,26 @@ Následující seznam obsahuje vlastnosti a odpovídající popisy, které je mo
 
 | Vlastnost | Popis |
 | --- | --- |
-| **ID úlohy** |Aplikace uvedené ID pro úlohu. |
+| **jobId** |Aplikace uvedené ID pro úlohu. |
 | **startTime** |Aplikace zadaný počáteční čas (ISO-8601) pro konkrétní úlohu. |
 | **endTime** |IoT Hub poskytuje data (ISO-8601) pro dokončení úlohy. Platné až po úloze dosáhne stavu "dokončení". |
 | **type** |Typy úloh: |
-| | **scheduledUpdateTwin**: úloha používá k aktualizaci sadu požadovaných vlastností nebo značky. |
-| | **scheduledDeviceMethod**: úloha použít k vyvolání metody zařízení na sadu dvojčata zařízení. |
-| **Stav** |Aktuální stav úlohy. Možné hodnoty pro stav: |
-| | **Čekající**: naplánované a čeká, aby ji mohla služba úloh. |
-| | **naplánované**: naplánováno na dobu v budoucnu. |
-| | **spuštění**: aktuálně aktivní úloha. |
-| | **bylo zrušeno**: Úloha byla zrušena. |
-| | **nepovedlo**: zpracování úlohy se nezdařilo. |
-| | **dokončení**: Úloha byla dokončena. |
+| | **scheduledUpdateTwin**: Úlohy, který se používá k aktualizaci sadu požadovaných vlastností nebo značky. |
+| | **scheduledDeviceMethod**: Úlohy použít k vyvolání metody zařízení na sadu dvojčata zařízení. |
+| **status** |Aktuální stav úlohy. Možné hodnoty pro stav: |
+| | **Čekající**: Naplánované a čeká, aby ji mohla služba úloh. |
+| | **Naplánované**: Naplánovat čas v budoucnosti. |
+| | **Spuštění**: Aktuálně aktivní úloha. |
+| | **Bylo zrušeno**: Úloha byla zrušena. |
+| | **Nepovedlo**: Úloha se nezdařila. |
+| | **Dokončení**: Úloha byla dokončena. |
 | **deviceJobStatistics** |Statistika týkající se spuštění úlohy. |
 | | **deviceJobStatistics** vlastnosti: |
-| | **deviceJobStatistics.deviceCount**: počet zařízení v rámci úlohy. |
-| | **deviceJobStatistics.failedCount**: počet zařízení, kde úloha se nezdařila. |
-| | **deviceJobStatistics.succeededCount**: počet zařízení, ve kterém úloha úspěšně. |
-| | **deviceJobStatistics.runningCount**: počet zařízení, které jsou aktuálně spuštěné úlohy. |
-| | **deviceJobStatistics.pendingCount**: počet zařízení, která čekají na spuštění úlohy. |
+| | **deviceJobStatistics.deviceCount**: Počet zařízení v rámci úlohy. |
+| | **deviceJobStatistics.failedCount**: Počet zařízení, kde úloha se nezdařila. |
+| | **deviceJobStatistics.succeededCount**: Počet zařízení, ve kterém úloha úspěšně. |
+| | **deviceJobStatistics.runningCount**: Počet zařízení, které jsou aktuálně spuštěné úlohy. |
+| | **deviceJobStatistics.pendingCount**: Počet zařízení, která čekají na spuštění úlohy. |
 
 ### <a name="additional-reference-material"></a>Další referenční materiál
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2019
+ms.date: 2/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 0b548acc92ab1efedab963e9bd3318e8525ffee4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 73a88ec0280728b4a485bd095096e90bbc43ef40
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649556"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990947"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
@@ -226,7 +226,11 @@ Pokud chcete nastavit všechny stávající škálovací sady, chcete-li nainsta
 |Počítač|30|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|Nainstalujte řešení Posouzení ohrožení zabezpečení na virtuální počítače.|
 |Počítač|1|Migrovat virtuální počítače do nové prostředky Azure Resource Manageru|Kvůli vylepšení zabezpečení pomocí Azure Resource Manageru pro vaše virtuální počítače: silnější access control (RBAC), lepší auditování, nasazení založené na Resource Manageru a zásad správného řízení, přístup ke spravovaným identitám přístup k trezoru klíčů pro tajné klíče, Ověřování Azure AD na základě a podpora značek a skupiny prostředků pro snadnější správu zabezpečení. |
 |Počítač|30|Náprava ohrožení zabezpečení pomocí řešení posouzení ohrožení zabezpečení|Virtuální počítače, u kterých je 3. stran řešení posouzení ohrožení zabezpečení nasazení průběžně hodnotí proti aplikace a ohrožení zabezpečení operačního systému. Pokaždé, když se najde takovýmto ohrožením zabezpečení, jsou dostupné pro více informací v rámci doporučení.|
-
+|Škálovací sada virtuálních počítačů |4|Povolit diagnostické protokoly ve Virtual Machine Scale Sets|Povolení protokolů a udrželi si je pro až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření. To je užitečné, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Škálovací sada virtuálních počítačů|35|Napravit v konfiguraci zabezpečení ohrožení zabezpečení škálovacích sad virtuálních počítačů|Pokud chcete chránit své škálovací sady virtuálních počítačů před útoky, napravte v konfiguraci zabezpečení ohrožení zabezpečení. |
+|Škálovací sada virtuálních počítačů|5|Napravit problémy se stavem Endpoint Protection ve škálovacích sadách virtuálních počítačů|Napravte problémy se stavem Endpoint Protection ve škálovacích sadách virtuálních počítačů, aby se chránily před hrozbami a ohroženími zabezpečení. |
+|Škálovací sada virtuálních počítačů|10|Nainstalovat řešení Endpoint Protection do škálovacích sad virtuálních počítačů|Nainstalujte řešení ochrany koncových bodů na vaši škálovací sady virtuálních počítačů, pro ochranu před hrozbami a ohrožení zabezpečení. |
+|Škálovací sada virtuálních počítačů|40|Nainstalovat aktualizace systému do škálovacích sad virtuálních počítačů|Nainstalujte chybějící aktualizace zabezpečení systému a kritické aktualizace, aby se zabezpečily škálovací sady virtuálních počítačů s Windows a Linuxem. |
  
 
 

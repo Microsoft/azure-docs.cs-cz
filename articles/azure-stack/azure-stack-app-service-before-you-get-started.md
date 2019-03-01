@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 02/22/2019
-ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 01b0a86ede79187d8f180df0f2f71f6eaadb7428
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737480"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990515"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -30,7 +30,7 @@ ms.locfileid: "56737480"
 Před nasazením služby Azure App Service ve službě Azure Stack, musíte dokončit požadované kroky uvedené v tomto článku.
 
 > [!IMPORTANT]
-> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.4.
+> Aktualizace 1901 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.5.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Stáhněte si instalační program a pomocné skripty
 
@@ -49,15 +49,7 @@ Před nasazením služby Azure App Service ve službě Azure Stack, musíte doko
 
 ## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Publikování rozšíření vlastních skriptů z Marketplace
 
-Azure App Service ve službě Azure Stack vyžaduje v1.9.0 rozšíření vlastních skriptů.  Přípona musí být [syndikovat markeplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) před zahájením nasazení nebo upgradu služby Azure App Service ve službě Azure Stack
-
-## <a name="high-availability"></a>Vysoká dostupnost
-
-Aktualizace Azure Stack 1802 přidali podporu domén selhání. Nová nasazení služby Azure App Service ve službě Azure Stack se bude distribuovat napříč doménami selhání a zajistit odolnost proti chybám.
-
-Existující nasazení služby Azure App Service ve službě Azure Stack, které se nasadily před aktualizace 1802, najdete v článku [vyrovnat poskytovatele prostředků App Service napříč doménami selhání](azure-stack-app-service-fault-domain-update.md) článku.
-
-Kromě toho nasaďte požadované souborového serveru a instance systému SQL Server v konfiguraci s vysokou dostupností.
+Azure App Service ve službě Azure Stack vyžaduje v1.9.1 rozšíření vlastních skriptů.  Přípona musí být [syndikovat markeplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) před zahájením nasazení nebo upgradu služby Azure App Service ve službě Azure Stack
 
 ## <a name="get-certificates"></a>Získání certifikátů
 

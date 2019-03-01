@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: e727e1ad9a4d202a3798f516d1db7d88464999fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d8031d4984a278c04342853a06fecb3c8a9a8171
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875952"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194436"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
 
@@ -30,11 +30,11 @@ Každý model poskytuje dostupnost a výkon kompromisy a je zajištěná komplex
 
 ## <a name="consistency-levels-and-latency"></a>Úrovně konzistence a latence
 
-- Latence čtení pro všechny úrovně konzistence je vždycky zaručená být kratší než 10 milisekund na 99. percentilu. Latence čtení je zajištěná smlouva SLA. Průměrná latence na 50. percentil, čtení, je obvykle 2 MS nebo nižší. Účty služby Azure Cosmos span několik oblastí, jež jsou nakonfigurovány s silná konzistence se výjimky této záruky.
+Latence čtení pro všechny úrovně konzistence je vždycky zaručená být kratší než 10 milisekund na 99. percentilu. Latence čtení je zajištěná smlouva SLA. Průměrná latence na 50. percentil, čtení, je obvykle 2 MS nebo nižší. Účty služby Azure Cosmos span několik oblastí, jež jsou nakonfigurovány s silná konzistence se výjimky této záruky.
 
-- Latence zápisu pro zbývající úrovně konzistence je vždycky zaručená být kratší než 10 milisekund na 99. percentilu. Latence zápisu je zajištěná smlouva SLA. Zápis průměrnou latenci, na 50. percentil, je obvykle 5 MS nebo nižší.
+Latence zápisu pro všechny úrovně konzistence je vždycky zaručená být kratší než 10 milisekund na 99. percentilu. Latence zápisu je zajištěná smlouva SLA. Zápis průměrnou latenci, na 50. percentil, je obvykle 5 MS nebo nižší.
 
-Některé účty služby Azure Cosmos může mít několik oblastí nakonfigurovanou silnou konzistenci. Latence zápisu je v tomto případě musí být menší než dvěma časy odezvy doba plus 10 milisekund na 99. percentilu. Požadavku mezi dvěma oblastmi nejvíce je přiřazená k vašemu účtu Azure Cosmos. Se rovná hodnotě požadavku mezi dvěma nejvíce oblastí, přidružených k účtu Azure Cosmos. Tato možnost je aktuálně ve verzi preview.
+Pro účty služby Azure Cosmos nakonfigurovanou silná konzistence s více než jedné oblasti latence zápisu je zaručeno, že bude menší než dvěma časy odezvy doba mezi dvěma oblastmi nejvíce plus 10 milisekund na 99. percentilu. Tato možnost je aktuálně ve verzi preview.
 
 Přesné čekací doba požadavku je funkce rychlostí světla vzdálenosti a topologii sítě Azure. Sítě Azure neposkytuje žádné latence smlouvy o úrovni služeb pro požadavku mezi všechny dvou oblastech Azure. Pro váš účet Azure Cosmos latenci replikace se zobrazují na webu Azure Portal. Na webu Azure portal můžete použít ke sledování latence replikace mezi různými oblastmi, které jsou spojené s vaším účtem.
 

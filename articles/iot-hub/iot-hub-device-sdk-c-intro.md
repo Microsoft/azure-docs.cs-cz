@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 7734a273f6e07290ec7124def5cb3b095f7f067b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fe34668577efb1552731af7760896bccbb99cf67
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674130"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009184"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -23,7 +23,7 @@ ms.locfileid: "56674130"
 
 Zařízení Azure IoT SDK pro jazyk C je napsán v C (C99) pro maximalizaci přenositelnost ANSI. Díky této funkci můžete knihoven skvěle se hodí hlavně v případě, že minimalizovat disku provozovat na více platformách a zařízeních, a nároky na paměť je prioritou.
 
-Existuje široká škála platforem, na kterých byly testovány sady SDK (najdete v článku [programu Azure Certified for IoT zařízení katalogu](https://catalog.azureiotsuite.com/) podrobnosti). I když tento článek obsahuje postupy, ukázkový kód běží na platformě Windows, je kód popsaný v tomto článku identické škále podporovaných platforem.
+Existuje široká škála platforem, na kterých byly testovány sady SDK (najdete v článku [programu Azure Certified for IoT zařízení katalogu](https://catalog.azureiotsolutions.com/) podrobnosti). I když tento článek obsahuje postupy, ukázkový kód běží na platformě Windows, je kód popsaný v tomto článku identické škále podporovaných platforem.
 
 Následující video představuje přehled sady SDK Azure IoT pro jazyk C:
 

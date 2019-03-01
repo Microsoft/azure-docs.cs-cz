@@ -1,19 +1,19 @@
 ---
 title: Vysvětlení registru identit služby Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – Popis registru identit služby IoT Hub a jak ji používat ke správě svých zařízení. Obsahuje informace o importu a exportu identit zařízení hromadně.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: dobett
-ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319128"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010256"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT hub
 
@@ -107,17 +107,17 @@ Oznámení pro zařízení:
 
 | Název | Hodnota |
 | --- | --- |
-|$content – typ | application/json |
+|$content-type | application/json |
 |$iothub-enqueuedtime |  Čas odeslání oznámení |
-|$iothub – zpráva – zdroj | deviceLifecycleEvents |
-|$content – kódování | utf-8 |
+|$iothub-message-source | deviceLifecycleEvents |
+|$content-encoding | utf-8 |
 |opType | **createDeviceIdentity** nebo **deleteDeviceIdentity** |
-|HubName | Název služby IoT Hub |
+|hubName | Name of IoT Hub |
 |deviceId | ID zařízení |
 |operationTimestamp | Časové razítko ISO8601 operace |
-|schéma iothub zprávy | deviceLifecycleNotification |
+|iothub-message-schema | deviceLifecycleNotification |
 
-Subjekt: Tato část je ve formátu JSON a představuje dvojčete identitou zařízení vytvořenou. Například:
+Text zprávy: Tato část je ve formátu JSON a představuje dvojčete identitou zařízení vytvořenou. Například:
 
 ```json
 {
@@ -143,17 +143,17 @@ Oznámení pro modul:
 
 | Název | Hodnota |
 | --- | --- |
-$content – typ | application/json |
+$content-type | application/json |
 $iothub-enqueuedtime |  Čas odeslání oznámení |
-$iothub – zpráva – zdroj | moduleLifecycleEvents |
-$content – kódování | utf-8 |
+$iothub-message-source | moduleLifecycleEvents |
+$content-encoding | utf-8 |
 opType | **createModuleIdentity** nebo **deleteModuleIdentity** |
-HubName | Název služby IoT Hub |
+hubName | Name of IoT Hub |
 ID modulu | ID modulu |
 operationTimestamp | Časové razítko ISO8601 operace |
-schéma iothub zprávy | moduleLifecycleNotification |
+iothub-message-schema | moduleLifecycleNotification |
 
-Text: Tato část je ve formátu JSON a představuje dvojčete vytvořený modul identity. Například:
+Text zprávy: Tato část je ve formátu JSON a představuje dvojčete vytvořený modul identity. Například:
 
 ```json
 {
@@ -185,7 +185,7 @@ Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími 
 | --- | --- | --- |
 | deviceId |aktualizace vyžaduje, na jen pro čtení |Řetězec malá a velká písmena (maximálně 128 znaků) alfanumerické znaky ASCII 7 bitů a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |vyžaduje jen pro čtení |IoT generované rozbočovače, velká a malá písmena řetězci až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejnou **deviceId**, když se odstraní a znovu vytvořen. |
-| Značka Etag |vyžaduje jen pro čtení |Řetězce představují slabou značku ETag pro identitu zařízení, jak je uvedeno [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| etag |vyžaduje jen pro čtení |Řetězce představují slabou značku ETag pro identitu zařízení, jak je uvedeno [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | ověřování |nepovinné |Složený objekt obsahující ověřování zabezpečení informací a materiály. |
 | auth.symkey |nepovinné |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
 | status |povinné |Indikátor přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení může připojit. Pokud **zakázané**, toto zařízení nemá přístup k libovolné koncového bodu připojeného k zařízení. |
@@ -210,7 +210,7 @@ Modul identity jsou reprezentovány jako dokumenty JSON s následujícími vlast
 | deviceId |aktualizace vyžaduje, na jen pro čtení |Řetězec malá a velká písmena (maximálně 128 znaků) alfanumerické znaky ASCII 7 bitů a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | ID modulu |aktualizace vyžaduje, na jen pro čtení |Řetězec malá a velká písmena (maximálně 128 znaků) alfanumerické znaky ASCII 7 bitů a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |vyžaduje jen pro čtení |IoT generované rozbočovače, velká a malá písmena řetězci až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejnou **deviceId**, když se odstraní a znovu vytvořen. |
-| Značka Etag |vyžaduje jen pro čtení |Řetězce představují slabou značku ETag pro identitu zařízení, jak je uvedeno [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| etag |vyžaduje jen pro čtení |Řetězce představují slabou značku ETag pro identitu zařízení, jak je uvedeno [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | ověřování |nepovinné |Složený objekt obsahující ověřování zabezpečení informací a materiály. |
 | auth.symkey |nepovinné |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
 | status |povinné |Indikátor přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení může připojit. Pokud **zakázané**, toto zařízení nemá přístup k libovolné koncového bodu připojeného k zařízení. |

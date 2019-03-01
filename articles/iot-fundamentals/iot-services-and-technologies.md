@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4b51809585d391cb815c0f61c2ba462809445867
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694002"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009796"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>Technologie Internetu věcí (IoT) a řešení: PaaS a SaaS
 
@@ -90,7 +90,7 @@ Díky nejucelenějšímu portfoliu IoT se službami platformy, vám technologie 
 
 ### <a name="device-support"></a>Podpora zařízení
 
-S důvěrou začněte svůj projekt IoT použitím [úvodních sad Azure IoT](https://catalog.azureiotsuite.com/kits) nebo výběrem ze stovek zařízení Certified for IoT v [katalogu zařízení](http://catalog.azureiotsuite.com/). Všechna zařízení jsou nezávislá na konkrétní platformě a prošla testy bezproblémového připojení k Centru IoT.
+S důvěrou začněte svůj projekt IoT použitím [úvodních sad Azure IoT](https://catalog.azureiotsolutions.com/kits) nebo výběrem ze stovek zařízení Certified for IoT v [katalogu zařízení](http://catalog.azureiotazureiotsolutionssuite.com/). Všechna zařízení jsou nezávislá na konkrétní platformě a prošla testy bezproblémového připojení k Centru IoT.
 Připojte všechna svoje zařízení k Azure IoT pomocí [sad SDK pro zařízení](/azure/iot-hub/iot-hub-devguide-sdks) typu open source. Sady SDK podporují více operačních systémů, například Linux, Windows a operační systémy pracující v reálném čase, a také více programovacích jazyků, například [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp) a [Python](https://github.com/Azure/azure-iot-sdk-python).
 
 ### <a name="iot"></a>IoT 

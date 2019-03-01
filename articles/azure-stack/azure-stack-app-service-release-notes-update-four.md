@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 2555ce4b9485ba6464bde3422df114343b579641
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5108d4f65208f12875ad592e2e9222f8e1fdb130
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243415"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991077"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 4
 
@@ -96,7 +96,12 @@ Azure App Service v Azure stacku Update 4 zahrnuje následující vylepšení a 
 
 - Ujistěte se, že koncový bod je zadán v připojovacím řetězci vlastního úložiště-li zadána v nové aplikaci – funkce
 
-### <a name="post-update-steps-optional"></a>Postup aktualizace Post (volitelné)
+### <a name="post-deployment-steps"></a>Kroky po nasazení
+
+> [!IMPORTANT]  
+> Pokud jste zadali RP App Service se vždy na instanci SQL je nutné [přidat do skupiny dostupnosti databáze appservice_hosting a appservice_metering](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) a synchronizaci databází, aby nedocházelo ke služby události převzetí služeb při selhání databáze.
+
+### <a name="post-update-steps-optional"></a>Postup po aktualizaci (volitelné)
 
 Pro zákazníky, kteří chtějí migrovat do databáze s omezením pro stávající služby Azure App Service v nasazení Azure Stack proveďte tyto kroky po dokončení Azure App Service ve službě Azure Stack 1.4 update:
 

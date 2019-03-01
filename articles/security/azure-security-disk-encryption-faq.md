@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a1b045ecf10399ca2297e4d9d010d5c973c40f4e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661832"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193275"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -72,6 +72,14 @@ Abyste mohli začít, přečtěte si [přehled Azure Disk Encryption](azure-secu
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Můžete šifrovat spouštěcích a datových svazků s Azure Disk Encryption?
 
 Ano, můžete šifrovat spouštěcích a datových svazků pro Windows a virtuálních počítačů IaaS s Linuxem. Pro virtuální počítače s Windows nejde šifrovat data bez první šifrování svazku operačního systému. Pro virtuální počítače s Linuxem je možné šifrovat objem dat bez nutnosti nejprve šifrování svazku operačního systému. Zakázáním šifrování svazku operačního systému pro virtuální počítače IaaS s Linuxem není podporována po zašifrujete svazek s operačním systémem Linux.
+
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak otočit tajné kódy nebo šifrovací klíče?
+
+Obměna tajné klíče, stačí zavoláte stejný příkaz, který jste původně použili povolit šifrování disku. Obměna klíčů šifrovací klíč, volání stejný příkaz, který jste použili původně povolit šifrování disku, určení nové šifrovací klíče. 
+
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak přidat nebo odebrat šifrovací klíč klíče, pokud nebyla původně ji používat?
+
+Chcete-li přidat šifrovací klíč klíče, volání příkazu povolit znovu předávání parametru klíče šifrování pomocí klíče. Chcete-li odebrat šifrovací klíč klíče, volání příkazu povolit znovu bez parametru klíče šifrování pomocí klíče.
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Azure Disk Encryption umožňuje přinést si vlastní klíč (BYOK)?
 

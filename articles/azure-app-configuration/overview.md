@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 11dd91039bb352e86800982d0a294f82622a56fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8207c9bb4cce3d793a5030febc532b869f54dd3f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884830"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195128"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikace pro Azure
 
 Konfigurace aplikace pro Azure poskytuje službu pro správu nastavení aplikace centrálně. Moderní aplikace, zejména těch, které jsou spuštěny v cloudu, mají obvykle spousta komponent, které jsou ze své podstaty distribuovány. Rozšíření nastavení konfigurace pro tyto součásti může vést k chybám obtížné vyřešit během nasazení aplikace. Konfigurace aplikace umožňuje uložit všechna nastavení pro vaši aplikaci a zabezpečení jejich přístupy na jednom místě.
+
+Služba konfigurace aplikace je v **ve verzi private preview**. Je pro použití během období preview zdarma.
 
 ## <a name="why-use-app-configuration"></a>Proč používat konfiguraci aplikací
 
@@ -44,6 +46,12 @@ Konfigurace aplikací nabízí následující výhody:
 * Rozšířené zabezpečení prostřednictvím identity spravované v Azure.
 * Dokončení šifrování pomocí dat v klidovém stavu nebo při přenosu.
 * Nativní integraci se sadou oblíbených architektur.
+
+Konfigurace aplikace doplňuje [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) se používá k ukládání tajných klíčů aplikací. Konfigurace aplikace usnadňují implementovat následující scénáře:
+
+* Centralizovaná správa a distribuce hierarchické konfigurační data pro různá prostředí a zeměpisných oblastech.
+* Změny konfigurace dynamické bez opětovného nasazení nebo restartování aplikace.
+* Funkce správy.
 
 ## <a name="how-to-use-app-configuration"></a>Jak používat konfiguraci aplikací
 

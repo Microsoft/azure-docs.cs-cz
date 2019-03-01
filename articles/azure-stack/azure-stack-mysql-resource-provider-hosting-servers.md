@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: e1a00ea36efa6af816c371f5498085fc2cf491b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: eb5d1ca55efed7e83739f21a432b61b6aad25f70
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165021"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194006"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků MySQL
 
@@ -44,7 +44,9 @@ Ujistěte se, že máte přihlašovací údaje pro účet s oprávněními sprá
 4. Zadejte podrobnosti připojení vaší instance serveru MySQL.
 
    * Pro **názvem serveru MySQL hostování**, zadejte plně kvalifikovaný název domény (FQDN) nebo platná adresa IPv4. Nepoužívejte krátký název virtuálního počítače.
-   * Výchozí instanci MySQL není k dispozici, takže budete muset zadat **velikost hostování služby v GB**. Zadejte velikost, která je blízko kapacity databázového serveru.
+   - Výchozí správce **uživatelské jméno** pro Bitnami MySQL Image dostupných v Tržišti Azure Stack je *kořenové*. 
+   - Pokud si nejste jisti kořenové **heslo**, najdete v článku [Bitnami dokumentaci](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) postup, jak se dá stáhnout. 
+   - Výchozí instanci MySQL není k dispozici, takže budete muset zadat **velikost hostování služby v GB**. Zadejte velikost, která je blízko kapacity databázového serveru.
    * Zachovat výchozí nastavení pro **předplatné**.
    * Pro **skupiny prostředků**, vytvořte novou, nebo použijte existující skupinu.
 

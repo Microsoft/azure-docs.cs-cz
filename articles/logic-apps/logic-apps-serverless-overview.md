@@ -10,12 +10,12 @@ ms.reviewer: klam, estfan, LADocs
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 068e5399073959d2c5aa6c4bbeb0d7bccf7d05e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9cd1946d8fa670764bcc95b82298d07cc70417bd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393775"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191319"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Přehled: Azure s Azure Logic Apps a Azure Functions bez serveru
 
@@ -29,7 +29,7 @@ Základní služby v Azure kolem bez serveru jsou [Azure Functions](https://azur
 
 ## <a name="what-are-azure-functions"></a>Co jsou Azure Functions?
 
-Azure Functions je řešení umožňující snadno spouštět malé kódy (tzv. „funkce“) v cloudu. Můžete napsat přesně takový kód, jaký potřebujete pro aktuální problém, a nestarat se o infrastrukturu k jeho spuštění nebo aplikaci jako celek. Funkce můžete ještě větší produktivitu vývoje, a můžete použít vývoj jazyk podle vlastní volby, například C#, F #, Node.js, Python nebo PHP. Plaťte jen za čas, kdy se spustí váš kód a Azure škáluje podle potřeby.
+Azure Functions je řešení umožňující snadno spouštět malé kódy (tzv. „funkce“) v cloudu. Můžete napsat přesně takový kód, jaký potřebujete pro aktuální problém, a nestarat se o infrastrukturu k jeho spuštění nebo aplikaci jako celek. Funkce můžete ještě větší produktivitu vývoje, a můžete použít vývoj jazyk podle vlastní volby, například C#, F#, Node.js, Python nebo PHP. Plaťte jen za čas, kdy se spustí váš kód a Azure škáluje podle potřeby.
 
 Pokud chcete rovnou začít používat Azure Functions, začněte tématem [Vytvoření první funkce Azure](../azure-functions/functions-create-first-azure-function.md). Pokud hledáte další odborné informace o Functions, přejděte k části [referenční informace pro vývojáře](../azure-functions/functions-reference.md).
 
@@ -41,7 +41,7 @@ Abyste mohli začít s Logic Apps, začněte s [vytváření vaší první aplik
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Jak můžete sestavovat a nasazovat aplikace bez serveru v Azure?
 
-Azure poskytuje bohatou sadu nástrojů v rámci vývoje, nasazení a Správa aplikací bez serveru.  Aplikace se dají přímo na webu Azure portal nebo pomocí [nástrojů ze sady Visual Studio](logic-apps-serverless-get-started-vs.md).  Jakmile vyvinula aplikaci může být [okamžitě nasadit](logic-apps-create-deploy-template.md).  Azure také poskytuje monitorování pro aplikace bez serveru.  Toto monitorování je přístupný z webu Azure portal, prostřednictvím rozhraní API nebo sady SDK, nebo pomocí integrovaných nástrojů do Log Analytics a Application Insights.
+Azure poskytuje bohatou sadu nástrojů v rámci vývoje, nasazení a Správa aplikací bez serveru.  Aplikace se dají přímo na webu Azure portal nebo pomocí [nástrojů ze sady Visual Studio](logic-apps-serverless-get-started-vs.md).  Jakmile vyvinula aplikaci může být [okamžitě nasadit](logic-apps-create-deploy-template.md).  Azure také poskytuje monitorování pro aplikace bez serveru.  Toto monitorování je přístupný z webu Azure portal, prostřednictvím rozhraní API nebo sady SDK, nebo pomocí integrovaných nástrojů pro protokoly Azure monitoru a Application Insights.
 
 ## <a name="next-steps"></a>Další postup
 

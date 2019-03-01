@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 21175e74bd40d0d4aeaf1c0a1e677f1c8113e80a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a2cf35203c673d6296754360ac4f794241d4c43
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738007"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008674"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -74,7 +74,7 @@ Můžete také povolit připojení k virtuální síti pomocí rutin prostředí
 
 * Vytvoření služby API Management ve virtuální síti: Použijte rutinu [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) k vytvoření služby Azure API Management ve virtuální síti a nakonfigurujte ho na použití typu interní virtuální síti.
 
-* Nasazení ve virtuální síti existující službu API Management: Použijte rutinu [aktualizace AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) přesunout existující službu API Management ve virtuální síti a nakonfigurujte ho na použití typu interní virtuální síti.
+* Aktualizace stávajícího nasazení služby API Management ve virtuální síti: Použijte rutinu [aktualizace AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) přesunout existující službu API Management ve virtuální síti a nakonfigurujte ho na použití typu interní virtuální síti.
 
 ## <a name="apim-dns-configuration"></a>Konfigurace služby DNS
 Když služba API Management je v režimu externí virtuální síť, DNS spravuje Azure. U režimu interní virtuální síti budete muset spravovat své vlastní směrování.

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: fc22babe6bc052ff2e746185d6ccec059aad7331
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417326"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992022"
 ---
-# <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API 
+# <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
 
 Tento kurz ukazuje, jak vaše API transformovat, aby nezobrazovalo privátní back-endové informace. Například byste mohli chtít skrýt informace o technologii, která běží na back-endu. Dále byste také mohli chtít skrýt původní adresy URL, které se objevují v těle odpovědi protokolu HTTP rozhraní API, a přesměrovat je na bránu služby APIM.
 
@@ -30,19 +30,20 @@ Tento kurz vám také ukáže, jak snadno můžete pomocí služby Azure API Man
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Odebrat hlavičky odpovědi transformováním rozhraní API
-> * Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
-> * Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
-> * Testovat transformace
+>
+> -   Odebrat hlavičky odpovědi transformováním rozhraní API
+> -   Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
+> -   Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
+> -   Testovat transformace
 
 ![Zásady](./media/transform-api/api-management-management-console.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
-+ Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
+-   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
+-   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
+-   Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
+-   Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -50,8 +51,8 @@ V tomto kurzu se naučíte:
 
 Tato část ukazuje, jak skrýt hlavičky protokolu HTTP, které by neměli vaši uživatelé vidět. V tomto příkladu se odstraní v odpovědi protokolu HTTP následující hlavičky:
 
-* **X-Powered-By**
-* **X-AspNet-Version**
+-   **X-Powered-By**
+-   **X-AspNet-Version**
 
 ### <a name="test-the-original-response"></a>Test původní odpovědi
 
@@ -71,22 +72,23 @@ Původní odpověď by měla vypadat takto:
 
 ![Nastavení odchozí zásady](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
 
-1. Vyberte **Demo Conference API**.
-2. V horní části obrazovky vyberte kartu **Návrh**.
-3. Vyberte **Všechny operace**.
-4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
-6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
+1.  Vyberte **Demo Conference API**.
+2.  V horní části obrazovky vyberte kartu **Návrh**.
+3.  Vyberte **Všechny operace**.
+4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
+5.  Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
+6.  V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
     ![Zásady](./media/transform-api/transform-api.png)
-7. Svůj kód **<outbound>** upravte následovně:
+
+7.  Svůj kód **<outbound>** upravte následovně:
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
 
     ![Zásady](./media/transform-api/set-policy.png)
 
-8. Klikněte na tlačítko **Uložit**.
+8.  Klikněte na tlačítko **Uložit**.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
 
@@ -99,7 +101,7 @@ Původní odpověď zobrazíte následovně:
 1. Vyberte **Demo Conference API**.
 2. Nahoře na obrazovce klikněte na kartu **Test**.
 3. Vyberte operaci **GetSpeakers**.
-4. V dolní části obrazovky klikněte na tlačítko **Odeslat**. 
+4. V dolní části obrazovky klikněte na tlačítko **Odeslat**.
 
     Jak můžete vidět, původní odpověď vypadá takto:
 
@@ -107,13 +109,13 @@ Původní odpověď zobrazíte následovně:
 
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
-1. Vyberte **Demo Conference API**.
-2. Vyberte **Všechny operace**.
-3. V horní části obrazovky vyberte kartu **Návrh**.
-4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
-6. V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
-7. Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Příklad:
+1.  Vyberte **Demo Conference API**.
+2.  Vyberte **Všechny operace**.
+3.  V horní části obrazovky vyberte kartu **Návrh**.
+4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
+5.  Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
+6.  V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
+7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Příklad:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -123,18 +125,18 @@ Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigur
 
 ![Nastavení příchozí zásady](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
-1. Vyberte **Demo Conference API**.
-2. Vyberte **Všechny operace**.
-3. V horní části obrazovky vyberte kartu **Návrh**.
-4. V **zpracování příchozích** klikněte na tlačítko **</>** ikonu.
-5. Umístěte kurzor myši do elementu **&lt;inbound&gt;**.
-6. V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
-7. Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>**) následovně:
+1.  Vyberte **Demo Conference API**.
+2.  Vyberte **Všechny operace**.
+3.  V horní části obrazovky vyberte kartu **Návrh**.
+4.  V **zpracování příchozích** klikněte na tlačítko **</>** ikonu.
+5.  Umístěte kurzor myši do elementu **&lt;inbound&gt;**.
+6.  V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
+7.  Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>**) následovně:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>Testovat transformace
-        
+
 Když se v tomto okamžiku podíváte na kód v editoru, budou vaše zásady vypadat takto:
 
     <policies>
@@ -148,6 +150,7 @@ Když se v tomto okamžiku podíváte na kód v editoru, budou vaše zásady vyp
         <outbound>
             <set-header name="X-Powered-By" exists-action="delete" />
             <set-header name="X-AspNet-Version" exists-action="delete" />
+            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
             <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
             <base />
         </outbound>
@@ -202,10 +205,11 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Odebrat hlavičky odpovědi transformováním rozhraní API
-> * Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
-> * Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
-> * Testovat transformace
+>
+> -   Odebrat hlavičky odpovědi transformováním rozhraní API
+> -   Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
+> -   Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
+> -   Testovat transformace
 
 Přejděte k dalšímu kurzu:
 

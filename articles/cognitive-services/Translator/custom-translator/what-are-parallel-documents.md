@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fc3e545db0529739659c1019cbed6d434b586f8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 10f34a24668981da5629bd9d03652aa76081bd44
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726954"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194108"
 ---
 # <a name="what-are-parallel-documents"></a>Co jsou paralelní dokumenty?
 
@@ -23,7 +23,7 @@ Nezáleží na jazyk, který je označen jako "zdroj" a jazyk, který je označe
 
 ## <a name="requirements"></a>Požadavky
 
-Budete potřebovat minimálně 10 000 paralelní věty a vytrénovat systém. Jako osvědčený postup, můžete průběžně přidat více paralelních obsahu a obsloužených a zlepšovat tak kvalitu překladu systému.
+Budete potřebovat minimálně 10 000 jedinečných paralelní věty a vytrénovat systém. Jako osvědčený postup, můžete průběžně přidat více paralelních obsahu a obsloužených a zlepšovat tak kvalitu překladu systému.
 
 Microsoft vyžaduje od dokumenty nahráli do vlastní překladač nebudou porušovat třetích stran o autorských právech nebo duševního vlastnosti. Další informace najdete v tématu [Terms of Use](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Nahrání dokumentu s použitím portálu nezmění vlastnictví duševního vlastnictví v dokumentu.

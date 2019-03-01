@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: 0e05bf71c1689015be0b8e3a4be1b37447ba6eb8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b08e8ea6a8768510177f1ea664f3036813e1a890
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961240"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009915"
 ---
 # <a name="manage-azure-vm-backups"></a>Správa záloh virtuálních počítačů Azure
 
@@ -74,20 +74,23 @@ Zálohování z řídicího panelu, můžete spravovat a podrobnostem jednotliv�
 Podle potřeby můžete využít zálohování virtuálního počítače, jakmile je nakonfigurován pro ochranu.
 - Pokud čeká na vyřízení prvotní zálohování, zálohování na vyžádání vytvoří úplná kopie virtuálního počítače v trezoru služby Recovery Services.
 - Po dokončení prvotní zálohy zálohu na vyžádání odešle pouze změny z předchozího snímku do trezoru služby Recovery Services. To znamená jsou následné zálohy vždy přírůstkové.
-- Uchování hodnota zadaná pro denního bodu zálohy v zásadě je rozsah uchování pro zálohu na vyžádání. Pokud je vybrána žádná denního bodu zálohy, použije se týdenního bodu zálohy.
+- Uchování hodnotu zadanou v době spuštění úlohy zálohování je rozsah uchování pro zálohu na vyžádání.
 
 Spustit zálohu na vyžádání:
 
-1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard), klikněte na tlačítko **zálohovat nyní**.
+1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard), klikněte na tlačítko **zálohovaná položka** pod **chráněné položky** oddílu.
 
     ![Zálohování teď tlačítko.](./media/backup-azure-manage-vms/backup-now-button.png)
 
- 2. Klikněte na tlačítko **Ano** spustit úlohu zálohování.
+2. Klikněte na tlačítko **virtuálních počítačů Azure** z **typ správy zálohování**. **Zálohované položky (virtuální počítač Azure)** otevře se okno.
+3. Vyberte virtuální počítač a klikněte na tlačítko **zazálohovat** vytvořit zálohu na vyžádání. **Okno zálohovat nyní** se zobrazí.
+4. V **záloha zachována** určete datum zálohy uchovávat.
 
     ![Zálohování teď tlačítko.](./media/backup-azure-manage-vms/backup-now-check.png)
 
+5. Klikněte na tlačítko **OK**, spuštění úlohy zálohování.
 
- Úloha zálohování vytvoří bod obnovení. Rozsah uchování bodu obnovení je stejný jako rozsah uchování uveden v zásadách, které jsou spojené s virtuálním počítačem. Chcete-li sledovat průběh úlohy v řídicím panelu trezoru klikněte na tlačítko **úlohy zálohování** dlaždici.  
+Chcete-li sledovat průběh úlohy v řídicím panelu trezoru klikněte na tlačítko **úlohy zálohování** dlaždici.
 
 ## <a name="stop-protecting-a-vm"></a>Ukončit ochranu virtuálního počítače
 

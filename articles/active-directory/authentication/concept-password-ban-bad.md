@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e2c3cfd509c9b0b77d0db00add31b58a07ce6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ca079fa2ec41f85c365102fbd81ffde23e97e2c4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206544"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990488"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
 
@@ -96,7 +96,7 @@ Příklad: uživatel změní heslo pro "C0ntos0Blank12"
 
 Po normalizace stane se toto heslo "contosoblank12". Proces vyhledávání shody zjistí, že toto heslo obsahuje dvě hesla zakázané: contoso a prázdné. Toto heslo je pak získají skóre:
 
-[contoso] + [prázdné] [1] = + [2] = 4 body vzhledem k tomu, že toto heslo se v části 5 body, dojde k odmítnutí.
+[contoso] + [prázdné] + [1] + [2] = 4 body vzhledem k tomu, že toto heslo se v části 5 body, dojde k odmítnutí.
 
 Příklad: uživatel změní heslo pro "ContoS0Bl@nkf9!".
 

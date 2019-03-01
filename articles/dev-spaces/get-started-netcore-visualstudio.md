@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vývojového prostoru Kubernetes v cloudu pomocí .NET Core a sady Visual Studio | Microsoft Docs
+title: Vytvoření prostoru vývoje Kubernetes v cloudu s využitím .NET Core a Visual Studio
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,13 +11,13 @@ ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: f345ff2e64670536771a639a7619c6e1d4d2d82d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
+ms.openlocfilehash: b8ae0e232ea70401a383f0a325b16caefcf51fae
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823939"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194992"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Začínáme s Azure Dev prostorů s .NET Core a Visual Studio
 

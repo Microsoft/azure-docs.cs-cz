@@ -4,58 +4,49 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 14297c74-0d57-4146-97fa-7a055fb73057
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/20/2018
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8859c0363a738c744f5c9b496cf77f5aaf1ba61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5578e74a6415f120840c8c0d8072144efa51750
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203501"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Kurz: Integrace s Azure Active Directory s Ivanti Service Manager (ISM)
 
 V tomto kurzu se dozvíte, jak integrovat Ivanti Service Manager (ISM) se službou Azure Active Directory (Azure AD).
-
 Integrace Ivanti Service Manager (ISM) s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Ivanti Service Manager (ISM).
-- Uživatele, aby automaticky získat přihlášeného k Ivanti Service Manager (ISM) (jednotné přihlašování) můžete povolit pomocí jejich účtů služby Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Ivanti Service Manager (ISM).
+* Uživatelům se automaticky přihlášeni k Ivanti Service Manager (ISM) (jednotné přihlašování) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Ivanti Service Manager (ISM), potřebujete následující položky:
 
-- Předplatné Azure AD
-- Ivanti Service Manager (ISM) jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Ivanti Service Manager (ISM) jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-1. Přidání Ivanti Service Manager (ISM) z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+* Podporuje Ivanti Service Manager (ISM) **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Podporuje Ivanti Service Manager (ISM) **JIT** zřizování uživatelů
 
 ## <a name="adding-ivanti-service-manager-ism-from-the-gallery"></a>Přidání Ivanti Service Manager (ISM) z Galerie
 
@@ -63,168 +54,163 @@ Konfigurace integrace nástroje Ivanti Service Manager (ISM) do služby Azure AD
 
 **Chcete-li přidat Ivanti Service Manager (ISM) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **Ivanti Service Manager (ISM)** vyberte **Ivanti Service Manager (ISM)** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Ivanti Service Manager (ISM) v seznamu výsledků](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-addfromgallery.png)
+     ![Ivanti Service Manager (ISM) v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Ivanti Service Manager (ISM) na základě testovací uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Ivanti Service Manager (ISM) je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v Service Manageru Ivanti (ISM) musí být vytvořeno.
+V této části nakonfigurujete a otestovat Azure AD jednotné přihlašování s Ivanti Service Manager (ISM) na základě testovací uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v Service Manageru Ivanti (ISM).
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Ivanti Service Manager (ISM), které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváří se testovací uživatelské jméno Ivanti Service Manager (ISM)](#creating-an-ivanti-service-manager-ism-test-user)**  – Pokud chcete mít protějšek Britta Simon v Ivanti Service Manager (ISM), který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování jednotného přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace Ivanti Service Manager (ISM) Single Sign-On](#configure-ivanti-service-manager-ism-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Ivanti Service Manager (ISM)](#create-ivanti-service-manager-ism-test-user)**  – Pokud chcete mít protějšek Britta Simon v Ivanti Service Manager (ISM), který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Správce služby Ivanti (ISM).
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Ivanti Service Manager (ISM), proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s Ivanti Service Manager (ISM), proveďte následující kroky:
 
-1. Na webu Azure Portal na **Ivanti Service Manager (ISM)** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Ivanti Service Manager (ISM)** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-    ![Konfigurace jednotného přihlašování](common/tutorial-general-301.png)
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Konfigurace jednotného přihlašování](common/editconfigure.png)
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-    ![Ivanti Service Manager (ISM) domény a adresy URL jednotného přihlašování – informace](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url.png)
+    ![Ivanti Service Manager (ISM) domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
     | |
     |--|
     | `https://<customer>.saasit.com/` |
     | `https://<customer>.saasiteu.com/` |
     | `https://<customer>.saasitau.com/` |
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 
 5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Ivanti Service Manager (ISM) domény a adresy URL jednotného přihlašování – informace](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url1.png)
+    ![Ivanti Service Manager (ISM) domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<customer>.saasit.com/`
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<customer>.saasit.com/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Ivanti Service Manager (ISM) klienta](https://www.ivanti.com/support/contact) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory Ivanti Service Manager (ISM) klienta](https://www.ivanti.com/support/contact) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-6. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **certifikát (Raw)** a uložte soubor certifikátu v počítači.
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-certificate.png) 
+    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-7. Na **nastavit až Ivanti Service Manager (ISM)** tématu, zkopírujte adresu URL odpovídající podle vašich požadavků.
+7. Na **nastavit až Ivanti Service Manager (ISM)** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor služby Azure Ad
 
     c. Adresa URL – odhlášení
 
-    ![Konfigurace portálu Service Manager (ISM) Ivanti](common/configuresection.png)
+### <a name="configure-ivanti-service-manager-ism-single-sign-on"></a>Konfigurace Ivanti Service Manager (ISM) jednotného přihlašování
 
-8. Ke konfiguraci jednotného přihlašování na **Ivanti Service Manager (ISM)** straně, je nutné odeslat na stažený **certifikát (Raw)** a zkopírovaný **přihlašovací adresa URL**,  **Azure AD identifikátor**, **odhlašovací adresa URL** k [tým podpory Ivanti Service Manager (ISM)](https://www.ivanti.com/support/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **Ivanti Service Manager (ISM)** straně, je nutné odeslat na stažený **certifikát (Raw)** a vhodné zkopírovaný adresy URL z webu Azure portal [Ivanti služby Správce (ISM) tým podpory](https://www.ivanti.com/support/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
 1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-    ![Vytvoření uživatele Azure AD][100]
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](common/create-aaduser-01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](common/create-aaduser-02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadejte **BrittaSimon**.
+    a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    d. Vyberte **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
-### <a name="creating-an-ivanti-service-manager-ism-test-user"></a>Vytváří se testovací uživatelské jméno Ivanti Service Manager (ISM)
-
-Cílem této části je vytvořte uživatele Britta Simon v Ivanti Service Manager (ISM). Ivanti Service Manager (ISM) podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Ivanti Service Manager (ISM), pokud ještě neexistuje.
->[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Ivanti Service Manager (ISM)](https://www.ivanti.com/support/contact).
-
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Ivanti Service Manager (ISM).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Ivanti Service Manager (ISM)**.
 
-    ![Přiřadit uživatele][201]
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte **Ivanti Service Manager (ISM)**.
 
-    ![Konfigurace jednotného přihlašování](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-app.png) 
+    ![Odkaz Ivanti Service Manager (ISM) v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Přiřadit uživatele][202]
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Přiřadit uživatele][203]
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-ivanti-service-manager-ism-test-user"></a>Vytvořit testovacího uživatele Ivanti Service Manager (ISM)
+
+V této části je uživateli Britta Simon vytvořené v Service Manageru Ivanti (ISM). Ivanti Service Manager (ISM) podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel ještě neexistuje v Ivanti Service Manager (ISM), se po ověření vytvoří nový.
+
+> [!Note]
+> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Ivanti Service Manager (ISM)](https://www.ivanti.com/support/contact).
+
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Ivanti Service Manager (ISM) na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Ivanti Service Manager (ISM).
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici Ivanti Service Manager (ISM) na přístupovém panelu, můžete by měl být automaticky přihlášeni do správce Ivanti služby (ISM) u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: common/tutorial-general-01.png
-[2]: common/tutorial-general-02.png
-[3]: common/tutorial-general-03.png
-[4]: common/tutorial-general-04.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: common/tutorial-general-100.png
-
-[201]: common/tutorial-general-201.png
-[202]: common/tutorial-general-202.png
-[203]: common/tutorial-general-203.png

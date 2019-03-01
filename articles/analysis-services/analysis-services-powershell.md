@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8f309d628ec4531ca5594ecb25533b1484e8b274
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 177d74a54e4ab4de698cbb63091656cc8b584e2b
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732394"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010680"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí Powershellu
 
@@ -51,7 +51,7 @@ Modul – [Azure.AnalysisServices](https://www.powershellgallery.com/packages/Az
 
 |Rutina|Popis| 
 |------------|-----------------| 
-|[Add-AzAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-AzAnalysisServicesaccount)|Přidá účet ověřený použitého pro požadavky rutiny serveru Azure Analysis Services.| 
+|[Add-AzAnalysisServicesAccount](/powershell/module/az.analysisservices/add-AzAnalysisServicesaccount)|Přidá účet ověřený použitého pro požadavky rutiny serveru Azure Analysis Services.| 
 |[Export-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/export-AzAnalysisServicesinstancelog)|Exportuje protokol z instance serveru Analysis Services v aktuálně přihlášeného prostředí jako zadaný v příkazu Add-AzAnalysisServicesAccount|  
 |[Restart-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|Restartování instance serveru Analysis Services v aktuálně přihlášený prostředí. zadané v příkazu Add-AzAnalysisServicesAccount.|  
 |[Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|Zadaná databáze na zadané instanci serveru Analysis Services pro všechny instance horizontální navýšení kapacity dotazu v aktuálně přihlášeného prostředí jako zadaný v příkazu Add-AzAnalysisServicesAccount synchronizuje|  

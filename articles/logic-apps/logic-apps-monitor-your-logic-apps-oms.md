@@ -1,5 +1,5 @@
 ---
-title: Monitorování aplikací logiky s využitím Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
+title: Monitorování aplikací logiky s využitím Azure monitoru protokoly – Azure Logic Apps | Dokumentace Microsoftu
 description: Získejte přehledy a data pro řešení potíží a Diagnostika spuštěních aplikací logiky s využitím Azure Log Analytics pro ladění
 services: logic-apps
 ms.service: logic-apps
@@ -9,21 +9,23 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995648"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192458"
 ---
-# <a name="monitor-logic-apps-with-azure-log-analytics"></a>Monitorování logic apps s využitím Azure Log Analytics
+# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Monitorování logic apps s protokoly Azure monitoru
 
-Chcete-li sledovat a získat bohatší ladění podrobné informace o logic apps, zapněte [Azure Log Analytics](../log-analytics/log-analytics-overview.md) při vytváření aplikace logiky. Log Analytics poskytuje diagnostické protokolování a monitorování pro aplikace logiky při instalaci řešení Správa služby Logic Apps na webu Azure Portal. Toto řešení také poskytuje souhrnné informace pro vaši aplikaci logiky se spouští s konkrétní podrobnosti, jako je například stav, čas spuštění, opakovaným odesláním stav a ID korelace. Tento článek ukazuje, jak zapnout v Log Analytics, můžete zobrazit události modulu runtime a dat o vaší aplikace logiky spouští.
+Chcete-li sledovat a získat bohatší ladění podrobné informace o logic apps, zapněte [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) při vytváření aplikace logiky. Protokoly Azure monitoru poskytuje diagnostické protokolování a monitorování pro aplikace logiky při instalaci řešení Správa služby Logic Apps na webu Azure Portal. Toto řešení také poskytuje souhrnné informace pro vaši aplikaci logiky se spouští s konkrétní podrobnosti, jako je například stav, čas spuštění, opakovaným odesláním stav a ID korelace. Tento článek ukazuje, jak zapnout protokoly Azure monitoru, můžete zobrazit události modulu runtime a dat o vaší aplikace logiky spouští.
 
-Chcete-li na Azure Log Analytics pro existující logic apps, postupujte podle těchto kroků [zapněte protokolování diagnostiky a odesílání dat získaných za běhu aplikace logiky do Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+Chcete-li na protokoly Azure monitoru pro existující logic apps, postupujte podle těchto kroků [zapněte protokolování diagnostiky a dat získaných za běhu aplikace logiky poslat protokoly Azure monitoru](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 > [!NOTE]
 > Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,7 +58,7 @@ Než začnete, musíte pracovnímu prostoru Log Analytics. Přečtěte si [jak v
 
 ## <a name="install-logic-apps-management-solution"></a>Nainstalujte řešení Správa služby Logic Apps
 
-Pokud již zapne Log Analytics, pokud jste vytvořili aplikaci logiky, tento krok přeskočit. Již máte nainstalované řešení Správa služby Logic Apps.
+Pokud už zapnutá protokoly Azure monitoru, když jste vytvořili aplikaci logiky, tento krok přeskočit. Již máte nainstalované řešení Správa služby Logic Apps.
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby**. Do vyhledávacího pole vyhledejte "log analytics" a vyberte **Log Analytics**.
 
@@ -116,13 +118,13 @@ Po spuštění aplikace logiky můžete zobrazit stav a počet těchto spuštěn
 
      Všechny nově přidané sledované vlastnosti může trvat 10 až 15 minut, než se zobrazují první. Přečtěte si [přidání sledované vlastnosti aplikace logiky](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-   * **Odešlete:** jeden nebo více spuštění aplikace logiky, které selhaly, byly úspěšné, neúspěšné nebo jsou stále běží. Zaškrtněte políčka pro spuštění, které chcete znovu odeslat a zvolte **znovu odeslat**. 
+   * **Znovu odešlete:** Můžete znovu spustit jeden nebo více spuštění aplikace logiky, které selhaly, byly úspěšné, nebo jsou pořád spuštěné. Zaškrtněte políčka pro spuštění, které chcete znovu odeslat a zvolte **znovu odeslat**. 
 
      ![Znovu odeslat spuštění aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 1. Chcete-li filtrovat výsledky, můžete provést filtrování na straně klienta i stranu serveru.
 
-   * **Filtrování na straně klienta**: pro každý sloupec, vyberte filtry, které potřebujete, třeba:
+   * **Filtrování na straně klienta**: Pro každý sloupec vyberte filtry, které potřebujete, třeba:
 
      ![Příklad sloupcovými filtry.](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
@@ -149,9 +151,9 @@ Po spuštění aplikace logiky můžete zobrazit stav a počet těchto spuštěn
 
      ![Zobrazit akce a podrobnosti pro běh aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      
-     Na stránce Azure Log Analytics můžete aktualizovat dotazy a zobrazit výsledky z tabulky. Tento dotaz používá [Kusto dotazovací jazyk](https://aka.ms/LogAnalyticsLanguageReference), který můžete upravit, pokud chcete zobrazit odlišné výsledky. 
+     Na stránce log analytics můžete aktualizovat dotazy a zobrazit výsledky z tabulky. Tento dotaz používá [Kusto dotazovací jazyk](https://aka.ms/LogAnalyticsLanguageReference), který můžete upravit, pokud chcete zobrazit odlišné výsledky. 
 
-     ![Azure Log Analytics – zobrazení dotazu](media/logic-apps-monitor-your-logic-apps-oms/query.png)
+     ![log analytics – zobrazení dotazu](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
 ## <a name="next-steps"></a>Další postup
 

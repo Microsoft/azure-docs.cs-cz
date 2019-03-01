@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: f366b9eee3104527fb9e974b51f339494b552e3b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f8af19056a343abdbafcd4ead8b072330cb41fd9
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739436"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192068"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavte si aplikace vývojáři řídit distribuce (ADCD) v IBM zD & T v1
 
@@ -89,7 +89,7 @@ Teď, když máte balíčky, musíte nahrát váš virtuální počítač v Azur
         gunzip \*.gz
     ```
     
-![](media/01-gunzip.png)
+![Zobrazení Průzkumníka souborů dekomprimovat gz svazky](media/01-gunzip.png)
 
 ## <a name="configure-the-image-storage"></a>Konfigurace úložiště obrázků
 
@@ -105,11 +105,11 @@ Dalším krokem je konfigurace zD & T používat nahrané balíčky. Proces úlo
      >
      > Nezapomeňte, že váš web Accessu pomocí portu 9443. To lze použijte k přihlášení k webovému serveru. ID uživatele pro ZD & T je **zdtadmin** a heslo je **heslo**.
 
-    ![](media/02-welcome.png)
+    ![IBM zD & T Enterprise Edition úvodní obrazovka](media/02-welcome.png)
 
 3. Na **rychlý Start** stránce v části **konfigurovat**vyberte **úložiště obrázků**.
 
-     ![](media/03-quickstart.png)
+     ![IBM zD & T Enterprise Edition s rychlým startem obrazovky](media/03-quickstart.png)
 
 4. Na **konfigurace úložiště obrázků** stránce **SSH File Transfer Protocol**.
 
@@ -133,7 +133,7 @@ Dalším krokem je konfigurace zD & T cílové prostředí. Toto emulované host
 
 5. V **cílové prostředí popisek** zadejte popisek, jako **MyCICS.**
 
-     ![](media/04-add-target.png)
+     ![Přidání obrazovky cílového prostředí](media/04-add-target.png)
 
 ## <a name="configure-adcd-and-deploy"></a>Konfigurace ADCD a nasazení
 
@@ -143,7 +143,7 @@ Po dokončení předchozích kroků konfigurace, je nutné nakonfigurovat zD & T
 
 2. Za předpokladu, že všechny bitové kopie nahraný do správného adresáře, klikněte na tlačítko **bitovou KOPII z ADCD** odkaz zobrazí v pravém dolním (uvedené v kroku 7 na následujícím snímku obrazovky).
 
-     ![](media/05-adcd.png)
+     ![IBM zD & T Enterprise Edition - konfigurace ADCD obrazovky](media/05-adcd.png)
 
 ## <a name="create-the-image"></a>Vytvoření image
 
@@ -157,7 +157,7 @@ Po dokončení předchozího kroku konfigurace **vytvoření image pomocí kompo
 
 4. Vyberte **vytvořit bitovou kopii** tlačítko vpravo dole.
 
-     ![](media/06-adcd.png)
+     ![IBM zD & T Enterprise Edition – vytvoření image pomocí komponenty ADCD obrazovky](media/06-adcd.png)
 
 5. V zobrazeném okně sděluje image byla úspěšně nasazena, zvolte **nasazení bitových kopií**.
 
@@ -169,7 +169,7 @@ Po dokončení předchozího kroku konfigurace **vytvoření image pomocí kompo
 
 9. Ujistěte se, že je vybraná pole **automaticky příkazu IPL problém z/OS po nasazení**.
 
-     ![](media/07-properties.png)
+     ![Vlastnosti obrazovky](media/07-properties.png)
 
 10. Vyberte **kompletní**.
 
@@ -194,5 +194,5 @@ Blahopřejeme! Teď používáte prostředí sálové počítače IBM v Azure.
 [microfocus-setup]: /microfocus/set-up-micro-focus-on-azure.md
 [microfocus-demo]: /microfocus/demo.md
 [ibm-get-started]: /ibm/get-started.md
-[ibm-install-z]: /ibm/install-ibm-z-environment.md
+[ibm-install-z]: install-ibm-z-environment.md
 [ibm-demo]: /ibm/demo.md

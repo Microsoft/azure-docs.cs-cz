@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 70ccee4c69ba04206e4a7fe74c3bf158ae11a7b4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564557"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989877"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního vyhledávání využitím dovedností a ukázkových dat
 
@@ -53,7 +53,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > [!NOTE]
 > Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
 >
-> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
+> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Další [informace](cognitive-search-attach-cognitive-services.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -86,7 +86,7 @@ Nejdříve se do služby Azure Search přihlaste.
   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Stránka definice služby na portálu")
 
   > [!NOTE]
-  > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Bude moct provádět omezené obohacení bez přiřazení placené prostředku služeb Cognitive Services. Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
+  > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Bude moct provádět omezené obohacení bez přiřazení placené prostředku služeb Cognitive Services. Další [informace](cognitive-search-attach-cognitive-services.md)
 
 1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
 
@@ -98,7 +98,9 @@ Kanál pro rozšiřování načítá data ze zdrojů dat Azure podporovaných [i
 
 1. [Stáhněte si ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestávající z malé sady souborů různých typů. 
 
-1. Zaregistrovat do Azure Blob storage, vytvořte účet úložiště, otevřete stránek služby objektů Blob a vytvořit kontejner. V kontejneru, nastavte úroveň pro veřejný přístup **kontejneru**. Další informace najdete v tématu [části "Vytvoření kontejneru"](../storage/blobs/storage-unstructured-search.md#create-a-container) v *prohledávání nestrukturovaných dat* kurzu.
+1. Zaregistrovat do Azure Blob storage, vytvořte účet úložiště, otevřete stránek služby objektů Blob a vytvořit kontejner. 
+
+1. V kontejneru, nastavte úroveň pro veřejný přístup **kontejner (anonymní přístup pro čtení kontejnerům a objektům BLOB)**. Další informace najdete v tématu [části "Vytvoření kontejneru"](../storage/blobs/storage-unstructured-search.md#create-a-container) v *prohledávání nestrukturovaných dat* kurzu.
 
 1. V kontejneru, který jste vytvořili, klikněte na tlačítko **nahrát** k nahrání ukázkových souborů, které jste si stáhli v předchozím kroku.
 

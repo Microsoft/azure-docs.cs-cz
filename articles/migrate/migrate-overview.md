@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 317e843f1fcc2fc85ffbc590d48e9bdf4aa934c1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e2cafe0c8c5d8194519428839ec3c73f5dc726c0
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415761"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992021"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -92,7 +92,7 @@ Komponenta | Komunikuje s |  Podrobnosti
 --- | --- |---
 Kolektor  | Služba Azure Migrate | Kolektor se ke službě připojuje přes port SSL 443.
 Kolektor | vCenter Server | Ve výchozím nastavení se kolektor připojuje k systému vCenter Server na portu 443. Pokud server naslouchá na jiném portu, nakonfigurujte ho jako odchozí port na virtuálním počítači kolektoru.
-Místní virtuální počítač | Pracovní prostor Log Analytics | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) se přes port TCP 443 připojuje k Log Analytics. Tento port potřebujete pouze v případě, že využíváte vizualizaci závislostí, která vyžaduje agenta MMA.
+Místní virtuální počítač | Pracovní prostor Log Analytics | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) používá TCP port 443 pro připojení k protokoly Azure monitoru. Tento port potřebujete pouze v případě, že využíváte vizualizaci závislostí, která vyžaduje agenta MMA.
 
 
 ## <a name="what-happens-after-assessment"></a>Co se stane po posouzení?

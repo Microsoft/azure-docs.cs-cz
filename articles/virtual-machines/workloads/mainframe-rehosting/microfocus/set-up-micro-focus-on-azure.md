@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2b730179cecee32282b9a79d8b62e3a35ee91048
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46b135aabaefb3a94e4470927297fb696f216b7a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739461"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192526"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Instalace Micro fokus Enterprise Server 4.0 a podnikový vývojář 4.0 v Azure
 
@@ -66,11 +66,11 @@ Než začnete, projděte si tyto požadavky:
 
 9. Poklikejte na soubor a spusťte instalaci. V prvním okně zvolte umístění instalace a přijetí licenční smlouvy s koncovým uživatelem.
 
-     ![](media/01-enterprise-server.png)
+     ![Na obrazovce Micro fokus Enterprise serveru instalace](media/01-enterprise-server.png)
 
      Když se instalace dokončí, zobrazí se následující zpráva:
 
-     ![](media/02-enterprise-server.png)
+     ![Na obrazovce Micro fokus Enterprise serveru instalace](media/02-enterprise-server.png)
 
 ### <a name="check-for-updates"></a>Zkontrolovat aktualizace
 
@@ -82,11 +82,11 @@ Po instalaci je potřeba zkontrolovat pro všechny další aktualizace od počet
 
 2. Klikněte na tlačítko **Start** \> **správce licencí fokus Micro** \> **správy licencí**a potom klikněte na tlačítko **nainstalovat** kartu. Zvolte typ formátu licence k nahrání: licenční soubor nebo 16 znacích licenční kód. Třeba u souborů v **licenční soubor**, přejděte **mflic** dříve nahraje soubor do virtuálního počítače a vyberte **nainstalovat licence**.
 
-     ![](media/03-enterprise-server.png)
+     ![Dialogové okno Micro správu licencí fokus](media/03-enterprise-server.png)
 
-3. Ověřte, že načte Enterprise Server. Zkuste webu Enterprise serveru správy z prohlížeče pomocí této adresy URL <http://localhost:86/> . Jak je znázorněno, zobrazí se stránka Enterprise serveru správy.
+3. Ověřte, že načte Enterprise Server. Zkuste webu Enterprise serveru správy z prohlížeče pomocí této adresy URL <http://localhost:86/> . Jak je znázorněno, zobrazí se stránka správy Enterprise serverů.
 
-     ![](media/04-enterprise-admin.png)
+     ![Stránka Správa Server Enterprise](media/04-enterprise-admin.png)
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Nainstalujte na počítači pro vývojáře pro podnikové vývojáře
 
@@ -102,17 +102,17 @@ Po instalaci je potřeba zkontrolovat pro všechny další aktualizace od počet
 
 4. Dvakrát klikněte **edvs2017.exe** souboru spusťte instalaci. V prvním okně zvolte umístění instalace a přijetí licenční smlouvy s koncovým uživatelem. Pokud chcete, zvolte **instalace programu Rumba 9.5** nainstalovat tento emulaci terminálu, které budete pravděpodobně potřebovat.
 
-     ![](media/04-enterprise-server.png)
+     ![Podnikový vývojář Micro fokus pro dialogové okno instalace aplikace Visual Studio 2017](media/04-enterprise-server.png)
 
 5. Po dokončení instalace se zobrazí následující zpráva:
 
-     ![](media/05-enterprise-server.png)
+     ![Instalační program úspěšně zprávy](media/05-enterprise-server.png)
 
 6. Stejně jako jste to udělali pro Enterprise serveru, spusťte Správce Micro fokus licence. Zvolte **Start** \> **správce licencí fokus Micro** \> **správu licencí**a klikněte na tlačítko **nainstalovat**kartu.
 
 7. Zvolte typ formátu licence k nahrání: licenční soubor nebo 16 znacích licenční kód. Třeba u souborů v **licenční soubor**, přejděte **mflic** dříve nahraje soubor do virtuálního počítače a vyberte **nainstalovat licence**.
 
-     ![](/edia/07-enterprise-server.png)
+     ![Dialogové okno Micro správu licencí fokus](/edia/07-enterprise-server.png)
 
 Při načtení pro podnikové vývojáře, vaše nasazení Micro zaměření vývojových a testovacích prostředí v Azure je hotová.
 

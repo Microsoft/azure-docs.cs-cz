@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 59271a96c5ad1a92483ca585fc30f1e9de0ed4f7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608745"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009678"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -71,9 +71,9 @@ Předchozí verze akcelerátor řešení vzdálené monitorování se označuje 
 
 Ano, nové vzdálené monitorování je k dispozici ve stejné zeměpisné oblasti.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Jaký je rozdíl mezi odstranění skupiny prostředků na webu Azure Portal a kliknutím na Odstranit v akcelerátoru řešení na stránkách azureiotsuite.com?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Jaký je rozdíl mezi odstranění skupiny prostředků na webu Azure Portal a kliknutím na Odstranit v akcelerátoru řešení v azureiotsolutions.com?
 
-* Pokud odstraníte akcelerátor řešení v [azureiotsuite.com](https://www.azureiotsolutions.com/), odstraňte všechny prostředky, které se nasadily při vytváření akcelerátor řešení. Pokud jste do skupiny prostředků přidali další prostředky, odstraní se také tyto prostředky.
+* Pokud odstraníte akcelerátor řešení v [azureiotsolutions.com](https://www.azureiotsolutions.com/), odstraňte všechny prostředky, které se nasadily při vytváření akcelerátor řešení. Pokud jste do skupiny prostředků přidali další prostředky, odstraní se také tyto prostředky.
 * Pokud odstraníte skupinu prostředků [webu Azure portal](https://portal.azure.com), můžete odstranit pouze prostředky v příslušné skupině prostředků. Musíte také odstranit aplikaci Azure Active Directory přidružené k akcelerátoru řešení.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>I nadále využívat své existující investice do akcelerátory řešení Azure IoT?

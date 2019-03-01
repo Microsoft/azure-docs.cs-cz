@@ -1,19 +1,19 @@
 ---
 title: Import a export identit zařízení Azure IoT Hub | Dokumentace Microsoftu
 description: Jak používat službu Azure IoT SDK k provedení operace hromadného proti registr identit pro import a export identit zařízení. Operace importu umožňují vytvářet, aktualizovat a odstraňovat identit zařízení hromadně.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
-ms.author: dobett
-ms.openlocfilehash: aedf2d0012f5af8ea2eb8e944f06b20c7f1a6bb8
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.author: robin.shahan
+ms.openlocfilehash: 5ef34fb039d35ff714e249a6ac107e6ec615093e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054622"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010986"
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Správa identit zařízení služby IoT Hub hromadné
 
@@ -253,7 +253,7 @@ Pokud soubor importu obsahuje metadata dvojčete, tato metadata přepíše exist
 
 Použít nepovinný **režimem importu** vlastnost v datech serializace import pro každé zařízení k řízení import procesu zařízení. **Režimem importu** vlastnost má následující možnosti:
 
-| režimem importu | Popis |
+| importMode | Popis |
 | --- | --- |
 | **createOrUpdate** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, dojde k přepsání zadaná vstupní data bez ohledem na stávající informace o **ETag** hodnotu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
 | **vytvoření** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud zařízení už existuje, chyba zapsána do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |

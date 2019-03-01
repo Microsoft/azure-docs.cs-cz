@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1851a6c27e89da71e75c59e025fee3800d0cd973
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876955"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193143"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
@@ -49,7 +49,7 @@ Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](https://
 |Po instalaci | [Ověření instalace a přiřazení licencí](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Další informace o instalaci Azure AD Connect
-Také asi bude chtít připravit na problematiku [provozu](how-to-connect-sync-operations.md). Možná byste měli mít pohotovostní server, abyste mohli jednoduše převzít funkce při selhání v případě [havárie](how-to-connect-sync-operations.md#disaster-recovery). Pokud plánujete často měnit konfiguraci, měli byste uvažovat o serveru v [pracovním režimu](how-to-connect-sync-operations.md#staging-mode).
+Také asi bude chtít připravit na problematiku [provozu](how-to-connect-sync-operations.md). Možná byste měli mít pohotovostní server, abyste mohli jednoduše převzít funkce při selhání v případě [havárie](how-to-connect-sync-staging-server.md#disaster-recovery). Pokud plánujete často měnit konfiguraci, měli byste uvažovat o serveru v [pracovním režimu](how-to-connect-sync-staging-server.md).
 
 |Téma |Odkaz|  
 | --- | --- |

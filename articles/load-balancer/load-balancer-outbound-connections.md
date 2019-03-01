@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814822"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194074"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -70,7 +70,7 @@ Porty SNAT přidělují předem podle popisu v [SNAT principy a token PAT](#snat
 
 Když [několik veřejných IP adres jsou spojeny s základní nástroje pro vyrovnávání zatížení](load-balancer-multivip-overview.md), některé z těchto veřejné IP adresy jsou kandidátem pro odchozí toky a jedna náhodně vybraná.  
 
-Pokud chcete monitorovat stav odchozí připojení s základní nástroje pro vyrovnávání zatížení, můžete použít [Log Analytics pro nástroj pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [upozornění protokolů událostí](load-balancer-monitor-log.md#alert-event-log) pro monitorování zpráv vyčerpání portů SNAT.
+K monitorování stavu odchozí připojení s základní nástroje pro vyrovnávání zatížení, můžete použít [Azure Monitor protokoly pro nástroj pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [upozornění protokolů událostí](load-balancer-monitor-log.md#alert-event-log) pro monitorování zpráv vyčerpání portů SNAT.
 
 ### <a name="defaultsnat"></a>Scénář 3: Samostatný virtuální počítač bez Instance úroveň veřejné IP adresy
 

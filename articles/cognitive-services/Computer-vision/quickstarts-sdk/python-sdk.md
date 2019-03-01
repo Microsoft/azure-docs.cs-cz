@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 02/28/2019
 ms.author: pafarley
-ms.openlocfilehash: d14b9c88b447583eedc8b50f4f9acf80ae4e3c75
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: ffecc07c49db8fd1b27cc2dd82192aa31a7fbd19
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889626"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194975"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services pro počítačové zpracování obrazu SDK pro Python
 
@@ -42,7 +42,7 @@ Hledáte další dokumentaci?
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Pokud nemáte předplatné Azure
 
-Vytvořit bezplatný klíč platný po dobu 7 dní s **vyzkoušet** prostředí. Když se klíč, zkopírujte název klíče a oblast. Budete ho potřebovat k [vytvoření klienta](#create-client).
+Vytvořit bezplatný klíč platný po dobu 7 dní s **[vyzkoušet] [ computervision_resource]** prostředí pro službu pro počítačové zpracování obrazu. Když se klíč, zkopírujte název klíče a oblast. Budete ho potřebovat k [vytvoření klienta](#create-client).
 
 Po vytvoření klíče zachovat následující:
 
@@ -51,7 +51,7 @@ Po vytvoření klíče zachovat následující:
 
 ### <a name="if-you-have-an-azure-subscription"></a>Pokud máte předplatné Azure
 
-Pokud budete potřebovat účet rozhraní API pro počítačové zpracování obrazu, nejjednodušším způsobem, jak vytvořit v rámci vašeho předplatného je používání následujících [rozhraní příkazového řádku Azure] [ azure_cli] příkazu. Musíte zvolit název skupiny prostředků, například "my-cogserv-group" a název prostředku pro zpracování obrazu počítače, jako je například "my--pro zpracování obrazu – prostředku v počítači". 
+Nejjednodušším způsobem, jak vytvořit prostředek v rámci vašeho předplatného je používání následujících [rozhraní příkazového řádku Azure] [ azure_cli] příkazu. Tím se vytvoří klíč služby Cognitive Services, který lze použít v rámci mnoha služeb cognitive services. Musíte zvolit _existující_ název skupiny prostředků, například "my-cogserv-group" a nový prostředek pro zpracování obrazu počítač pojmenovat, jako je například "my--pro zpracování obrazu – prostředku v počítači". 
 
 ```Bash
 RES_REGION=westeurope 
@@ -62,8 +62,8 @@ az cognitiveservices account create \
     --resource-group $RES_GROUP \
     --name $ACCT_NAME \
     --location $RES_REGION \
-    --kind ComputerVision \
-    --sku S1 \
+    --kind CognitiveServices \
+    --sku S0 \
     --yes
 ```
 
@@ -96,20 +96,18 @@ Po vytvoření prostředku pro počítačové zpracování obrazu, budete potře
 
 Tyto hodnoty použít při vytváření instance [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta. 
 
-<!--
-
-For example, use the Bash terminal to set the environment variables:
+Například k nastavení proměnných prostředí použijte Bash terminálu:
 
 ```Bash
 ACCOUNT_REGION=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 ```
 
-### For Azure subscription usrs, get credentials for key and region
+### <a name="for-azure-subscription-users-get-credentials-for-key-and-region"></a>Uživatelé předplatného Azure získání přihlašovacích údajů pro klíč a oblast
 
-If you do not remember your region and key, you can use the following method to find them. If you need to create a key and region, you can use the method for [Azure subscription holders](#if-you-have-an-azure-subscription) or for [users without an Azure subscription](#if-you-dont-have-an-azure-subscription).
+Pokud si nepamatujete oblast a klíč, můžete je najít následující metodu. Pokud je potřeba vytvořit klíč a oblasti, můžete použít metodu pro [držiteli předplatného Azure](#if-you-have-an-azure-subscription) nebo [uživatelé bez předplatného Azure](#if-you-dont-have-an-azure-subscription).
 
-Use the [Azure CLI][cloud_shell] snippet below to populate two environment variables with the Computer Vision account **region** and one of its **keys** (you can also find these values in the [Azure portal][azure_portal]). The snippet is formatted for the Bash shell.
+Použití [rozhraní příkazového řádku Azure] [ cloud_shell] fragment k naplnění dvou proměnných prostředí s účtem pro počítačové zpracování obrazu **oblasti** a jeden z jeho **klíče**(můžete také najít tyto hodnoty [webu Azure portal][azure_portal]). Fragment kódu je ve formátu pro prostředí Bash.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -127,23 +125,30 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
     --query key1 \
     --output tsv)
 ```
--->
+
 
 ### <a name="create-client"></a>Vytvoření klienta
 
-Vytvořte [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta. Změňte hodnoty oblasti a klíč v následujícím příkladu kódu na vaše vlastní hodnoty.
+Získání oblasti a klíče z proměnných prostředí a vytvořit [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta.  
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-region = "westcentralus"
-key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# Get region and key from environment variables
+import os
+region = os.environ['ACCOUNT_REGION']
+key = os.environ['ACCOUNT_KEY']
 
+# Set credentials
 credentials = CognitiveServicesCredentials(key)
+
+# Create client
 client = ComputerVisionAPI(region, credentials)
 ```
+
+## <a name="examples"></a>Příklady
 
 Je nutné [ComputerVisionAPI] [ ref_computervisionclient] objektu klienta před použitím některého z následujících úloh.
 
@@ -224,7 +229,7 @@ raw = True
 custom_headers = None
 numberOfCharsInOperationId = 36
 
-# SDK call
+# Async SDK call
 rawHttpResponse = client.recognize_text(url, mode, custom_headers,  raw)
 
 # Get ID from returned headers
@@ -233,7 +238,9 @@ idLocation = len(operationLocation) - numberOfCharsInOperationId
 operationId = operationLocation[idLocation:]
 
 # SDK call
-result = client.get_text_operation_result(operationId)
+while result.status in ['NotStarted', 'Running']:
+    time.sleep(1)
+    result = client.get_text_operation_result(operationId)
 
 # Get data
 if result.status == TextOperationStatusCodes.succeeded:
@@ -321,7 +328,7 @@ Několik vzorových počítače pro zpracování obrazu Python SDK jsou k dispoz
 [pip]: https://pypi.org/project/pip/
 [python]: https://www.python.org/downloads/
 
-[azure_cli]: https://docs.microsoft.com/cli/azure
+[azure_cli]: https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create
 [azure_pattern_circuit_breaker]: https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker
 [azure_pattern_retry]: https://docs.microsoft.com/azure/architecture/patterns/retry
 [azure_portal]: https://portal.azure.com
@@ -342,7 +349,7 @@ Několik vzorových počítače pro zpracování obrazu Python SDK jsou k dispoz
 [ref_httpfailure]: https://docs.microsoft.com/python/api/msrest/msrest.exceptions.httpoperationerror?view=azure-python
 
 
-[computervision_resource]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe
+[computervision_resource]: https://azure.microsoft.com/en-us/try/cognitive-services/?
 
 [computervision_docs]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/home
 

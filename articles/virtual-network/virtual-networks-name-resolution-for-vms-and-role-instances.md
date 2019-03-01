@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 3825181d14605752e2407d9ffceb01d22c1bb710
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649335"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193989"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -157,7 +157,7 @@ Pokud používáte překlad názvů poskytuje Azure, Azure Dynamic Host Configur
 
 V případě potřeby můžete určit interní přípony DNS pomocí Powershellu nebo rozhraní API:
 
-* Pro virtuální sítě v modelech nasazení Azure Resource Manageru je k dispozici prostřednictvím příponu [síťové rozhraní REST API](/rest/api/virtualnetwork/networkinterfaces/get), [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) rutiny prostředí PowerShell a [ AZ network nic show](/cli/azure/network/nic#az-network-nic-show) rozhraní příkazového řádku Azure.
+* Pro virtuální sítě v modelech nasazení Azure Resource Manageru je k dispozici prostřednictvím příponu [síťové rozhraní REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) rutiny prostředí PowerShell a [ AZ network nic show](/cli/azure/network/nic#az-network-nic-show) rozhraní příkazového řádku Azure.
 * V modelech nasazení classic, je k dispozici prostřednictvím příponu [získání rozhraní API nasazení](https://msdn.microsoft.com/library/azure/ee460804.aspx) volání nebo [Get-AzureVM – ladění](/powershell/module/servicemanagement/azure/get-azurevm) rutiny.
 
 Pokud předávání dotazů do Azure není vyhovovala vašim potřebám, byste měli poskytnout řešení DNS. Musí vaše řešení DNS:

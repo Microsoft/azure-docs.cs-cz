@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 02/19/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ed10c84be86304722020606873b0c7866df1e8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: f5b884ddda292b1c523a5364d34753ccb3a5bbdf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594045"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194432"
 ---
 # <a name="validate-oem-packages"></a>Ověření balíčky výrobce OEM
 
@@ -91,6 +91,9 @@ Použití **SAS URL objektu Blob** při poskytování balíček blob adresy URL 
 ## <a name="apply-monthly-update"></a>Měsíční aktualizace
 
 [!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
+
+> [!NOTE]
+> Po použití měsíčních aktualizacích, doporučujeme, abyste spustili Test-AzureStack ověřte, že aktualizace použil správně a zda je v dobrém stavu. Pokud selže Test AzureStack, ohlaste ho do Microsoftu. Není pokračovat s průchodu testu, dokud se problém nevyřeší. Informace o tom, jak spustit příkaz Test-Azure Stack najdete v tomto [článku](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
 
 ## <a name="create-a-package-validation-workflow"></a>Vytvořit pracovní postup ověření balíčku
 

@@ -4,145 +4,141 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 8db80d6e-3275-419f-aa39-6115a7bc9800
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/17/2017
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a511e17785898f7c52d942c057a67914e6fdfbca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5fa71834e134c29c69140bc4bc88a34c057d1a99
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174227"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Kurz: Integrace Azure Active Directory s LCVista
 
 V tomto kurzu se dozvíte, jak integrovat LCVista s Azure Active Directory (Azure AD).
-
 LCVista integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k LCVista
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k LCVista (Single Sign-On) s jejich účty Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup k LCVista.
+* Můžete povolit uživatelům být automaticky přihlášeni k LCVista (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s LCVista, potřebujete následující položky:
 
-- Předplatné Azure AD
-- LCVista jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* LCVista jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání LCVista z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Podporuje LCVista **SP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-lcvista-from-the-gallery"></a>Přidání LCVista z Galerie
+
 Konfigurace integrace LCVista do služby Azure AD, budete muset přidat LCVista z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat LCVista z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **LCVista**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/lcvista-tutorial/tutorial_lcvista_search.png)
+4. Do vyhledávacího pole zadejte **LCVista**vyberte **LCVista** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **LCVista**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+     ![LCVista v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/lcvista-tutorial/tutorial_lcvista_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování s LCVista podle testovacího uživatele nazývá "Britta Simon."
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v LCVista je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v LCVista potřeba navázat.
-
-Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v LCVista.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí LCVista podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v LCVista.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s LCVista, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele LCVista](#creating-a-lcvista-test-user)**  – Pokud chcete mít protějšek Britta Simon LCVista, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace LCVista Single Sign-On](#configure-lcvista-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele LCVista](#create-lcvista-test-user)**  – Pokud chcete mít protějšek Britta Simon LCVista, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci LCVista.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s LCVista, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s LCVista, proveďte následující kroky:
 
-1. Na webu Azure Portal na **LCVista** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **LCVista** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/lcvista-tutorial/tutorial_lcvista_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **LCVista domény a adresy URL** části, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/lcvista-tutorial/tutorial_lcvista_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.lcvista.com/rainier/login`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.lcvista.com` 
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečné identifikátorem a přihlašovací adresa URL. Kontakt [tým podpory LCVista klienta](https://lcvista.com/contact) k získání těchto hodnot. 
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+    ![LCVista domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    ![Konfigurace jednotného přihlašování](./media/lcvista-tutorial/tutorial_lcvista_certificate.png) 
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.lcvista.com/rainier/login`
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.lcvista.com`
 
-    ![Konfigurace jednotného přihlašování](./media/lcvista-tutorial/tutorial_general_400.png)
-    
-1. Na **LCVista konfigurace** klikněte na tlačítko **nakonfigurovat LCVista** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory LCVista klienta](https://lcvista.com/contact) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-    ![Konfigurace jednotného přihlašování](./media/lcvista-tutorial/tutorial_lcvista_configure.png) 
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-1.  Přihlaste se k aplikaci LCVista jako správce.
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-1. V **SAML Config** oddílu, zkontrolujte **povolit SAML přihlášení** a zadejte podrobnosti, jak je uvedeno v obrázku níže. 
+6. Na **nastavení LCVista** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-lcvista-single-sign-on"></a>Konfigurace LCVista jednotné přihlašování
+
+1. Přihlaste se k aplikaci LCVista jako správce.
+
+2. V **SAML Config** oddílu, zkontrolujte **povolit SAML přihlášení** a zadejte podrobnosti, jak je uvedeno v obrázku níže. 
 
     ![Konfigurace jednotného přihlašování](./media/lcvista-tutorial/tutorial_lcvista_config.png)
 
-    a. Vložit **URL vystavitele** zkopírovanou z Azure AD **Entity ID** oddílu. 
+    a. V **Entity ID** vložit do textového pole **Azure Ad identifikátor** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    b. Vložit **jednotné přihlašování – adresa URL služby** zkopírovanou z Azure AD **adresy URL** oddílu.
+    b. V **URL** vložit do textového pole **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    c. Z Metadata (XML) který jste si stáhli z webu Azure portal, zkopírujte hodnotu **certifikátu x 509** a vložte ji **certifikátu x509** oddílu.
+    c. Otevřete soubor metadat XML, který jste si stáhli z webu Azure portal do poznámkového bloku, zkopírujte hodnotu **certifikátu x 509** a vložte ji **x509 certifikátu** oddílu.
 
     d. V **křestní jméno atributu** textového pole vložte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
@@ -154,97 +150,71 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     e. Kliknutím na **Uložit** nastavení uložte.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
- 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/lcvista-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/lcvista-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/lcvista-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/lcvista-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="creating-a-lcvista-test-user"></a>Vytvoření zkušebního uživatele LCVista
 
-V této části vytvoříte uživatele v LCVista jako Britta Simon. Budete muset požádat [tým podpory LCVista klienta](https://lcvista.com/contact) přidat uživatele v aplikaci LCVista. 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon k udělení přístupu k LCVista použití Azure jednotného přihlašování.
 
-![Přiřadit uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **LCVista**.
 
-**Přiřadit LCVista Britta Simon, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **LCVista**.
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz LCVista v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **LCVista**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Konfigurace jednotného přihlašování](./media/lcvista-tutorial/tutorial_lcvista_app.png) 
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Přiřadit uživatele][202] 
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Přiřadit uživatele][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-lcvista-test-user"></a>Vytvoření LCVista testovacího uživatele
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+V této části vytvoříte uživatele v LCVista jako Britta Simon. Práce s [tým podpory LCVista klienta](https://lcvista.com/contact) přidat uživatele na platformě LCVista. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu. Kliknutím na dlaždici LCVista na přístupovém panelu, budete přesměrováni na přihlášení organizace na stránce. Po úspěšném přihlášení budete se být přihlášení k aplikaci LCVista. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-## <a name="additional-resources"></a>Další materiály
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+Po kliknutí na dlaždici LCVista na přístupovém panelu, můžete by měl být automaticky přihlášeni k LCVista, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
+## <a name="additional-resources"></a>Další prostředky
 
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/lcvista-tutorial/tutorial_general_01.png
-[2]: ./media/lcvista-tutorial/tutorial_general_02.png
-[3]: ./media/lcvista-tutorial/tutorial_general_03.png
-[4]: ./media/lcvista-tutorial/tutorial_general_04.png
-
-[100]: ./media/lcvista-tutorial/tutorial_general_100.png
-
-[200]: ./media/lcvista-tutorial/tutorial_general_200.png
-[201]: ./media/lcvista-tutorial/tutorial_general_201.png
-[202]: ./media/lcvista-tutorial/tutorial_general_202.png
-[203]: ./media/lcvista-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

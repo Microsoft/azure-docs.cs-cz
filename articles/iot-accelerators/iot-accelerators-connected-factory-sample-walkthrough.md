@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 19e340609e80998037938bdad59e9e6e74894bad
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 00a6e518dd6ffa8ea5a38e8433da02e0b88fce20
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098302"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010705"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Seznámení s akcelerátorem řešení propojené továrny
 
@@ -229,7 +229,7 @@ Webová aplikace nasazená jako součást akcelerátor řešení zahrnuje integr
 
 Další informace o akcelerátorech řešení IoT najdete v následujících článcích:
 
-* [Oprávnění na webu azureiotsuite.com][lnk-permissions]
+* [Oprávnění na webu azureiotsolutions.com][lnk-permissions]
 * [Nasazení brány pro akcelerátor řešení propojené továrny ve Windows nebo v Linuxu](iot-accelerators-connected-factory-gateway-deployment.md)
 * [Referenční implementace vydavatele OPC](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 

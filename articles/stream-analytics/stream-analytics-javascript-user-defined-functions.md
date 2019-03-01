@@ -1,26 +1,22 @@
 ---
-title: 'Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics | Microsoft Docs '
+title: 'Kurz: Azure uživatelem definované funkce jazyka JavaScript v Stream Analytics | Dokumentace Microsoftu '
 description: V tomto kurzu se provádějí postupy pro pokročilé dotazy, které využívají uživatelem definované funkce jazyka JavaScript.
-keywords: javascript, uživatelem definované funkce, udf
 services: stream-analytics
 author: rodrigoamicrosoft
-manager: kfile
-ms.assetid: ''
+ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.workload: data-services
-ms.author: rodrigoa
-ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088870"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192271"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
+# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Azure uživatelem definované funkce jazyka JavaScript v Stream Analytics
  
 Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. Díky bohaté sadě metod **String**, **RegExp**, **Math**, **Array** a **Date**, které jazyk JavaScript poskytuje, je teď vytváření komplexních transformací dat pomocí úloh Stream Analytics snadnější.
 
@@ -50,12 +46,19 @@ Některé věci, které není možné provádět pomocí uživatelem definované
 Funkce jako **Date.GetDate()** nebo **Math.random()** sice nejsou v definici funkcí blokované, jejich používání byste se ale měli vyhnout. Tyto funkce **nevracejí** při každém volání stejný výsledek a služba Azure Stream Analytics neudržuje deník obsahující záznamy volání funkcí a vrácené výsledky. Pokud funkce vrací při stejných událostech různé výsledky, při restartování úlohy vámi nebo službou Stream Analytics se nezaručuje opakovatelnost.
 
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Přidání uživatelem definované funkce jazyka JavaScript na Azure Portal
-Pokud chcete vytvořit jednoduchou uživatelem definovanou funkci jazyka JavaScript v rámci existující úlohy Stream Analytics, postupujte takto:
+Chcete-li vytvořit jednoduchou uživatelem definované funkce JavaScriptu v rámci existující úlohy Stream Analytics, postupujte podle těchto kroků:
+
+> [!NOTE]
+> Tento postup funguje na úlohy Stream Analytics konfigurované pro běh v cloudu. Pokud vaše úloha Stream Analytics je nakonfigurováno pro běh v Azure IoT Edge, použijte místo toho Visual Studio a [zápisu pomocí uživatelem definované funkce C# ](stream-analytics-edge-csharp-udf.md).
 
 1.  Na portálu Azure Portal vyhledejte příslušnou úlohu Stream Analytics.
-2.  V části **TOPOLOGIE ÚLOHY** vyberte danou funkci. Zobrazí se prázdný seznam funkcí.
-3.  Pokud chcete vytvořit novou uživatelem definovanou funkci, vyberte **Přidat**.
+
+2. V části **topologie úlohy** záhlaví, vyberte **funkce**. Zobrazí se prázdný seznam funkcí.
+
+3.  Chcete-li vytvořit novou uživatelem definovanou funkci, vyberte **+ přidat**.
+
 4.  V okně **Nová funkce** jako **Typ funkce** vyberte **JavaScript**. V editoru se zobrazí výchozí šablona funkce.
+
 5.  Jako **UDF alias** (Alias funkce definované uživatelem) zadejte **hex2Int** a změňte implementaci funkce takto:
 
     ```javascript
@@ -70,7 +73,7 @@ Pokud chcete vytvořit jednoduchou uživatelem definovanou funkci jazyka JavaScr
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Volání uživatelem definované funkce jazyka JavaScript v dotazu
 
-1. V editoru dotazů v části **TOPOLOGIE ÚLOHY** vyberte **Dotaz**.
+1. V editoru dotazů v rámci **topologie úlohy** záhlaví, vyberte **dotazu**.
 2.  Upravte dotaz a pak volejte uživatelem definovanou funkci, například takto:
 
     ```SQL

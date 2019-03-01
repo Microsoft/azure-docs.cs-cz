@@ -1,18 +1,19 @@
 ---
 title: Konfigurace odesílání souborů pomocí Azure Powershellu | Dokumentace Microsoftu
 description: Jak pomocí rutin Azure Powershellu ke konfiguraci služby IoT hub k povolení souborové ukládání z připojených zařízení. Obsahuje informace o konfiguraci cílového účtu úložiště Azure.
-author: dominicbetts
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 7d63cc4e57ba3c1b962c893bf8c8bd03664dac6f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: robin.shahan
+ms.openlocfilehash: 9754fe2bedae9c1eaf6b18614014485dbe8051f2
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729250"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010473"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurace centra IoT nahrávání souborů pomocí Powershellu
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: eb18fd521ca885b37c60c4f3a53e2bce1508fda2
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 02/28/2018
+ms.openlocfilehash: 87d4e85cec70ee8b1ac6999fb5d1888eb76988ad
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382817"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990336"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL do služby [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **DVD Rental** z místní instance PostgreSQL verze 9.6 do služby Azure Database for PostgreSQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
@@ -43,8 +43,17 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     Kromě toho místní verze PostgreSQL musí odpovídat Azure Database for PostgreSQL. Například PostgreSQL verze 9.5.11.5 je možné migrovat pouze do služby Azure Database for PostgreSQL verze 9.5.11 a ne verze 9.6.7.
 
 - [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
-- Vytvořte pro službu Azure Database Migration Service virtuální síť s použitím modelu nasazení Azure Resource Manager, který poskytuje možnosti připojení typu Site-to-Site k místním zdrojovým serverům prostřednictvím [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo sítě [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Zajistěte, aby pravidla skupiny zabezpečení virtuální sítě Azure neblokovala následující komunikační porty: 443, 53, 9354, 445 a 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+- Vytvoření Azure Virtual Network (VNET) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manageru, který poskytuje připojení site-to-site k vašich zdrojových serverů s místními pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+
+    > [!NOTE]
+    > Při nastavení virtuální sítě, pokud používáte ExpressRoute se síť vytvoření partnerského vztahu Microsoftu, přidejte následující službu [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) k podsíti, ve kterém se zřídí služby:
+    > - Koncový bod databázového cíl (například koncový bod SQL, koncového bodu služby Cosmos DB a tak dále)
+    > - Koncový bod úložiště
+    > - Koncový bod služby Service bus
+    >
+    > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
+
+- Ujistěte se, že vaše pravidla skupiny zabezpečení sítě VNET blokovat následující komunikační porty 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 - Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Otevřete bránu Windows Firewall a povolte službě Azure Database Migration Service přístup ke zdrojovému serveru PostgreSQL, který ve výchozím nastavení probíhá přes port TCP 5432.
 - Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
@@ -126,7 +135,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
     Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 
-5.  Triggery v datech (trigger vložení nebo aktualizace) budou dříve než u replikovaných dat ze zdroje vynucovat integritu dat v cíli. Během migrace se doporučuje zakázat triggery ve všech tabulkách **v cíli** a znovu je povolit až po dokončení migrace.
+5.  Triggery v datech (trigger vložení nebo aktualizace) budou dříve než u replikovaných dat ze zdroje vynucovat integritu dat v cíli. Doporučuje se, že zakážete aktivační události ve všech tabulkách **v cílovém** během migrace a znovu povolte aktivačních událostí po migrace dokončit.
 
     Pokud chcete zakázat triggery v cílové databázi, použijte následující příkaz:
 
@@ -135,7 +144,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     from information_schema.triggers;
     ```
 
-6.  Pokud je v některé tabulce datový typ ENUM, doporučujeme ho v cílové tabulce dočasně aktualizovat na datový typ „odlišující se znaky“. Po dokončení replikace dat vraťte datový typ na ENUM.
+6.  Pokud jsou datový typ ENUM v žádné tabulky, doporučujeme ho dočasně aktualizovat na znak různé datovým v cílové tabulce. Po dokončení replikace dat vraťte datový typ na ENUM.
 
 ## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>Zřízení instance DMS pomocí rozhraní příkazového řádku
 
@@ -269,7 +278,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
                 }
         ```
 
-    - Existuje také volitelný databázový soubor json, který obsahuje seznam objektů json. Pro PostgreSQL formát objektu JSON možností databáze je zobrazen níže:
+    - Je také používá soubor json možnost databáze, která obsahuje seznam objektů json. Pro PostgreSQL formát objektu JSON možností databáze je zobrazen níže:
 
         ```
         [

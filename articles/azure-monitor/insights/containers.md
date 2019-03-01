@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 6803e700a42a0d0279b48d38995c4fc299415075
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 58f16b0aa068c8b333ef4e7986bb49327b002fbb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985491"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195417"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů ve službě Azure Monitor
 
@@ -496,28 +496,16 @@ Použijte informace v části instalace a konfigurace hostitelích kontejnerů W
 
 Před instalací agentů v počítačích se systémem Windows, musíte nakonfigurovat služba Docker. Konfigurace umožňuje agenta Windows nebo rozšíření virtuálního počítače Azure Monitor k používání soket Docker TCP tak, aby agenti vzdálený přístup k démona Dockeru a sběr dat pro monitorování.
 
-##### <a name="to-start-docker-and-verify-its-configuration"></a>Spuštění Docker a ověřit jeho konfiguraci
+##### <a name="to-configure-the-docker-service"></a>Jak nakonfigurovat službu Docker  
 
-Existují kroky potřebné k nastavení pro systém Windows Server s názvem kanálu TCP:
+Proveďte následující příkazy Powershellu k povolení kanálu TCP a pojmenovaný kanál pro systém Windows Server:
 
-1. Ve Windows Powershellu povolte kanálu TCP a pojmenovaného kanálu.
-
-    ```
-    Stop-Service docker
-    dockerd --unregister-service
-    dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
-    Start-Service docker
-    ```
-
-2. Konfigurace Dockeru pomocí konfiguračního souboru pro kanálu TCP a pojmenovaného kanálu. Konfigurační soubor je umístěn v C:\ProgramData\docker\config\daemon.json.
-
-    V souboru daemon.json budete potřebovat následující:
-
-    ```
-    {
-    "hosts": ["tcp://0.0.0.0:2375", "npipe://"]
-    }
-    ```
+```
+Stop-Service docker
+dockerd --unregister-service
+dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
+Start-Service docker
+```
 
 Další informace o konfiguraci démona Dockeru, který se používá s kontejnery Windows najdete v tématu [modul Docker na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 

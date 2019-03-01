@@ -16,12 +16,12 @@ ms.date: 10/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91dd25eadd3842cf1a94608a6f0ad9cfcd25039a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b55a7016ec0068234dfc6110d9d4afc04119ccdd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197228"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194057"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -365,7 +365,7 @@ Nový synchronizační server se dá nastavit souběžně s pracovním režimem.
 
 V pracovním režimu je možné provést požadované změny synchronizačního modulu a zkontrolovat, co se bude exportovat. Když jste s konfigurací spokojeni, znovu spusťte průvodce instalací a vypněte pracovní režim. Data se z tohoto serveru nyní exportují do služby Azure AD. Nezapomeňte současně zakázat druhý server tak, aby pouze jeden server prováděl aktivní export.
 
-Další informace najdete v tématu [Pracovní režim](how-to-connect-sync-operations.md#staging-mode).
+Další informace najdete v tématu [Pracovní režim](how-to-connect-sync-staging-server.md).
 
 ### <a name="verify-your-federation-configuration"></a>Ověření konfigurace federace
 Když kliknete na tlačítko Ověřit, služba Azure AD Connect ověří nastavení DNS za vás.

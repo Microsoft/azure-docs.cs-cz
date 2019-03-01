@@ -1,20 +1,20 @@
 ---
 title: Začínáme s Azure IoT Hub identit a modul dvojče zařízení (Node.js) | Dokumentace Microsoftu
 description: Zjistěte, jak vytvořit modul identity a aktualizovat dvojče zařízení pomocí sad IoT SDK pro Node.js.
-author: chrissie926
-manager: ''
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.author: menchi
-ms.openlocfilehash: ae798ecf2ba5f53cdfdef45b74677615d2e0a06d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9ce17044bac09c1b3741b296f7af1129bca21f46
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446999"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008691"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí Node.js zařízení a back-end Node.js
 

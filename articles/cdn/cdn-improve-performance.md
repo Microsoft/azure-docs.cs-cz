@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4d1725b0559c34692d1a89d016fd2d6b7b1b26c1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997265"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193088"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů je jednoduchou a efektivní způsob zlepšit rychlost přenosu souborů a zvýšení výkonu načítání stránek díky snížení velikosti souboru před odesláním ze serveru. Komprese můžete snížit náklady na šířku pásma a poskytnout pohotovější prostředí pro vaše uživatele.
@@ -102,8 +102,10 @@ CDN úrovně standard a premium poskytují stejné funkce kompresi, ale uživate
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard od společnosti Microsoft profily
 
-Pro **Azure CDN Standard od společnosti Microsoft** profilů, pouze vhodné soubory jsou komprimované. Způsobilé pro kompresi, musíte soubor: – být typu MIME, která byla [nakonfigurované pro kompresi](#enabling-compression).
--Být větší než 1 KB-být menší než 8 MB
+Pro **Azure CDN Standard od společnosti Microsoft** profilů, pouze vhodné soubory jsou komprimované. Způsobilé pro kompresi, musíte soubor:
+- Být typu MIME, která byla [nakonfigurované pro kompresi](#enabling-compression).
+- Být větší než 1 kB?
+- Být menší než 8 MB
 
 Tyto profily podporují následující kódování komprese:
 - GZIP (GNU zip)
@@ -117,7 +119,7 @@ Když žádost pro určitý prostředek určuje kompresi gzip a výsledky požad
 
 Pro **Azure CDN Standard od Verizonu** a **Azure CDN Premium od Verizonu** profilů, pouze vhodné soubory jsou komprimované. Způsobilé pro kompresi, musíte soubor:
 - Být větší než 128 bajtů
-- Být menší než 1 MB
+- Být menší než 3 MB
  
 Tyto profily podporují následující kódování komprese:
 - GZIP (GNU zip)
@@ -161,7 +163,7 @@ Následující tabulky popisují komprese chování Azure CDN pro každý scén�
 ## <a name="media-services-cdn-compression"></a>CDN komprese služby Media Services
 Pro koncové body povolené pro Media Services CDN datových proudů komprese povolena ve výchozím nastavení pro následující typy MIME: 
 - application/vnd.ms-sstr+xml 
-- aplikace/dash + xml
+- application/dash+xml
 - application/vnd.Apple.mpegurl
 - aplikace/f4m + xml 
 

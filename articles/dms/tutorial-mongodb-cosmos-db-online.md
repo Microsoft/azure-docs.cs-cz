@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/27/2019
-ms.openlocfilehash: 06e76b8eed283c6ef09f38e876c60b05477cf0ce
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.date: 02/28/2019
+ms.openlocfilehash: 85455020099ee738425fde9c03df152669f73863
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985814"
+ms.locfileid: "56992494"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB online pomocí DMS (Preview)
 Azure Database Migration Service můžete použít k provedení migrace databází do online (minimálními prostoji) z místní nebo cloudové instance MongoDB API služby Azure Cosmos DB pro MongoDB.
@@ -45,6 +45,15 @@ Tento článek popisuje online migrace z MongoDB API služby Azure Cosmos DB pro
 Pro absolvování tohoto kurzu je potřeba provést následující:
 - [Vytvoření rozhraní API služby Azure Cosmos DB pro účet MongoDB](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
 - Vytvoření Azure Virtual Network (VNET) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manageru, který poskytuje připojení site-to-site k vašich zdrojových serverů s místními pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+
+    > [!NOTE]
+    > Při nastavení virtuální sítě, pokud používáte ExpressRoute se síť vytvoření partnerského vztahu Microsoftu, přidejte následující službu [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) k podsíti, ve kterém se zřídí služby:
+    > - Koncový bod databázového cíl (například koncový bod SQL, koncového bodu služby Cosmos DB a tak dále)
+    > - Koncový bod úložiště
+    > - Koncový bod služby Service bus
+    >
+    > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
+
 - Ujistěte se, že pravidla skupiny zabezpečení sítě VNET není blokovat následující komunikační porty: 53, 443, 9354, 445 a 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Změňte zdrojový server brány firewall umožňující Azure Database Migration Service přístup k serveru MongoDB zdroj, který ve výchozím nastavení je TCP port 27017.
 - Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
@@ -155,7 +164,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
     Pokud řetězec **vytvořit** se zobrazí vedle názvu databáze, znamená to, že Azure Database Migration Service se nepovedlo najít cílovou databázi a službu databáze se vytvoří za vás.
 
-    V tomto okamžiku migrace, pro potřeby propustnosti sdílené složky v databázi zadejte propustnost RU. Propustnost na úrovni databáze nebo jednotlivě pro každou kolekci můžete zřizovat v databázi Cosmos DB. Propustnost se měří v [jednotek žádostí](https://docs.microsoft.com/azure/cosmos-db/request-units) (ru). Další informace o [ceny služby Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/).
+    V tomto okamžiku migrace, pokud chcete sdílet propustnost v databázi, zadejte propustnost RU. Propustnost na úrovni databáze nebo jednotlivě pro každou kolekci můžete zřizovat v databázi Cosmos DB. Propustnost se měří v [jednotek žádostí](https://docs.microsoft.com/azure/cosmos-db/request-units) (ru). Další informace o [ceny služby Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
     ![Mapování na cílové databáze](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 

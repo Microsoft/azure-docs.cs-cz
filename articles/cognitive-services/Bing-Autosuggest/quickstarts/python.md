@@ -1,73 +1,81 @@
 ---
-title: 'Rychlý start: Rozhraní API Python pro automatické návrhy Bingu'
+title: 'Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu a Pythonu.'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 94903d00d47eee70f974fb8bf79703f49cdc08fd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: 463ace3aa9004bdffe07a16a062a4871b8daf699
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868153"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008402"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-python"></a>Rychlý start pro rozhraní API pro automatické návrhy Bingu s využitím Pythonu
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu a Pythonu.
 
-V tomto článku se dozvíte, jak používat [rozhraní API pro automatické návrhy Bingu](https://azure.microsoft.com/services/cognitive-services/autosuggest/) pomocí Pythonu. Rozhraní API pro automatické návrhy Bingu vrací seznam navrhovaných dotazů založený na části řetězce dotazu, který uživatel do vyhledávacího pole zadává. Obvykle se toto rozhraní API volá pokaždé, když uživatel zadá do vyhledávacího pole další znak, a potom se v rozevíracím seznamu ve vyhledávacím poli zobrazí návrhy. V tomto článku se dozvíte, jak odeslat požadavek, který vrátí navrhované řetězce dotazu pro dotaz *sail*.
+Použití v tomto rychlém startu zahájíte provádění volání rozhraní API pro automatické návrhy Bingu a získání odpovědi JSON. Tato jednoduchá aplikace Python odešle částečné vyhledávací dotaz na rozhraní API a vrátí návrhů pro hledání. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu budete potřebovat [Python 3.x](https://www.python.org/downloads/).
+* [Python 3.x](https://www.python.org/downloads/) 
 
-Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API pro automatické návrhy Bingu verze 7**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/#search). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>Získání výsledků automatických návrhů
+## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. V oblíbeném integrovaném vývojovém prostředí (IDE) vytvořte nový projekt Pythonu.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+1. Vytvořte nový soubor Pythonu ve vaší oblíbené prostředí IDE nebo editoru. Přidejte následující importy:
 
-```python
-# -*- coding: utf-8 -*-
+    ```python
+    import http.client, urllib.parse, json
+    ```
 
-import http.client, urllib.parse, json
+2. Vytváření proměnných pro rozhraní API hostitele a cestu, [uvedení na trh kód](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)a částečné vyhledávání.
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+    ```python
+    subscriptionKey = 'enter key here'
+    host = 'api.cognitive.microsoft.com'
+    path = '/bing/v7.0/Suggestions'
+    mkt = 'en-US'
+    query = 'sail'
+    ```
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'enter key here'
+3. Vytvoření řetězce parametry přidáním kódu na trhu `?mkt=` parametr a připojení dotazu `&q=` parametru.
 
-host = 'api.cognitive.microsoft.com'
-path = '/bing/v7.0/Suggestions'
+    ```python
+    params = '?mkt=' + mkt + '&q=' + query
+    ```
 
-mkt = 'en-US'
-query = 'sail'
+## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti o rozhraní API
 
-params = '?mkt=' + mkt + '&q=' + query
+1. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví.
+    
+    ```python
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    ```
 
-def get_suggestions ():
-  "Gets Autosuggest results for a query and returns the information."
+2. Připojte se k rozhraní API pomocí `HTTPSConnection()`a odeslat `GET` žádost obsahující parametry požadavku.
+    
+    ```python
+    conn = http.client.HTTPSConnection(host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read ()
+    ```
 
-  headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-  conn = http.client.HTTPSConnection(host)
-  conn.request ("GET", path + params, None, headers)
-  response = conn.getresponse ()
-  return response.read ()
+3. Získání a tisku odpověď JSON.
 
-result = get_suggestions ()
-print (json.dumps(json.loads(result), indent=4))
-```
+    ```python
+    result = get_suggestions ()
+    print (json.dumps(json.loads(result), indent=4))
+    ```
 
-### <a name="response"></a>Odpověď
+## <a name="example-json-response"></a>Příklad JSON odpovědi
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -138,7 +146,7 @@ print (json.dumps(json.loads(result), indent=4))
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz rozhraní API pro automatické návrhy Bingu](../tutorials/autosuggest.md)
+> [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

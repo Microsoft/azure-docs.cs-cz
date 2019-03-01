@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a0685f75111a5552645d487589734846b05968
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164630"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991476"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -175,7 +175,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkce:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Popis:**<br> Vyžaduje jeden argument řetězec. Vrátí řetězec, ale žádné repalced diakritická znaků s ekvivalentní-diakritická znaků.
+**Popis:**<br> Vrátí jeden appRoleAssignment ze seznamu všech appRoleAssignments přiřazená uživateli pro danou aplikaci. Tato funkce je potřeba převést objekt appRoleAssignments řetězec názvu jednu roli. Všimněte si, že osvědčeným postupem je zajistit appRoleAssignment pouze jeden je přiřazen jednomu uživateli v čase a pokud víc rolí přiřazených rolí řetězec vrácený nemusí být předvídatelné. 
 
 **Parametry:**<br> 
 

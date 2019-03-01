@@ -4,14 +4,14 @@ description: Zjistěte, jak funguje indexování ve službě Azure Cosmos DB. Zj
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2018
+ms.date: 3/1/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6c145b58a1f0eaaf93fb5797028e11ba8338d6be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2b46638a7e0fa3dc80fa4d2fa23d49b37b8885ec
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460229"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193142"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Zásady indexu ve službě Azure Cosmos DB
 
@@ -23,9 +23,9 @@ Můžete přepsat výchozí zásady na kontejner služby Azure Cosmos indexován
 
 * **Konfigurace režimů index**: Pomocí zásady indexování v kontejneru můžete nakonfigurovat různé režimy indexování například *konzistentní* nebo *žádný*.
 
-## <a name="indexing-modes"></a>Indexování režimy 
+## <a name="indexing-modes"></a>Indexování režimy
 
-Azure Cosmos DB podporuje dva režimy indexování, které můžete konfigurovat v kontejneru Azure Cosmos. Můžete nakonfigurovat následující dva režimy indexování prostřednictvím zásady indexování: 
+Azure Cosmos DB podporuje dva režimy indexování, které můžete konfigurovat v kontejneru Azure Cosmos. Můžete nakonfigurovat následující dva režimy indexování prostřednictvím zásady indexování:
 
 * **Konzistentní**: Pokud zásady kontejneru Azure Cosmos je nastavena na konzistentní, dotazy na konkrétní kontejner postupujte podle stejné úrovně konzistence, jako je určeno pro čtení bod (například silná, ohraničená odolnost, relace, nebo konečné). 
 
@@ -37,6 +37,9 @@ Azure Cosmos DB podporuje dva režimy indexování, které můžete konfigurovat
   > Konfigurace režimu indexování jako žádná má vedlejší účinek vyřadit všechny stávající indexy. Tuto možnost používejte, pokud vaše vzorce přístupu vyžaduje ID nebo odkaz na sebe sama pouze.
 
 Úrovně konzistence dotazu se udržuje podobné standardních operací čtení. Databáze Azure Cosmos vrátí chybu, když odešlete dotaz na kontejner, který nemá žádná indexování režimu. Dotazy můžete spustit jako kontroly prostřednictvím explicitního **x-ms-documentdb-enable kontroly** záhlaví v rozhraní REST API nebo **EnableScanInQuery** vyžádat možnost pomocí sady .NET SDK. Některé dotazu funkce, jako je klauzule ORDER BY není momentálně podporované s **EnableScanInQuery**, protože se stanoví odpovídající index.
+
+> [!NOTE]
+> Azure Cosmos DB má třetí, opožděné indexování režimu. Ale to se zruší zdůrazněný vzhledem k tomu, že výkon dotazů a náklady, může nepředvídatelný. Doporučujeme používat konzistentní indexování režimu.
 
 ## <a name="modifying-the-indexing-policy"></a>Úprava zásady indexování
 

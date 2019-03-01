@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: 69e9a49bf83be5b58faf3e71ab0ffbfb6c6f11a1
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 86d32726280cce12888f125c65254a7b02166704
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329700"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194746"
 ---
 # <a name="azure-and-jenkins"></a>Azure a Jenkins
 
@@ -29,7 +29,7 @@ Díky hostování Jenkinse v Azure můžete centralizovat automatizaci sestavov�
 - [Virtuální počítače Azure](/azure/virtual-machines/linux/overview). Informace o vytvoření instance Jenkinse na virtuálním počítači najdete v našem [kurzu](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd).
 - Pokud používáte cluster Kubernetes spuštěný ve službě [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), přečtěte si naše [postupy](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Nasazení Jenkinse v Azure můžete monitorovat a spravovat pomocí [Log Analytics](/azure/log-analytics/log-analytics-overview) a [Azure CLI](/cli/azure).
+Monitorování a správa s využitím Azure Jenkins nasazení [protokoly Azure monitoru](/azure/log-analytics/log-analytics-overview) a [rozhraní příkazového řádku Azure](/cli/azure).
 
 ## <a name="scale-your-build-automation-on-demand"></a>Škálování automatizace sestavování na vyžádání
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: ae3d1fa6a921067e8c3b629206e47e1a1314adc1
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c4567919490c8bc9094dea3dddbe22550d9eebb2
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889235"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192901"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvořte virtuální počítač Windows s Akcelerovanými síťovými službami
 
@@ -48,7 +48,7 @@ Připravených v galerii Azure jsou podporovány následující distribuce:
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
 Akcelerované síťové služby se podporuje na nejvíce obecné účely a velikostí optimalizovaných pro výpočetní instance s 2 nebo více virtuálních procesorů.  Tyto podporované řady jsou: D/DSv2 a F/Fs
 
-U instancí, které podporují hyperthreadingem Akcelerovanými síťovými službami se podporuje na instancích virtuálních počítačů s 4 nebo více virtuálních procesorů. Podporované řady jsou: D/DSv3, E nebo ESv3, Fsv2 a Ms a Mms
+U instancí, které podporují hyperthreadingem Akcelerovanými síťovými službami se podporuje na instancích virtuálních počítačů s 4 nebo více virtuálních procesorů. Podporované řady jsou: D/Dsv3, E nebo Esv3, Fsv2, Lsv2, Ms a Mms a Ms/Mmsv2.
 
 Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -73,7 +73,7 @@ Po vytvoření virtuálního počítače můžete ověřit, že Akcelerovanými 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Nainstalujte [prostředí Azure PowerShell](/powershell/azure/install-az-ps) verze 1.0.0 nebo novějším. Aktuálně nainstalovanou verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, nainstalujte nejnovější verzi modulu Az z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az). V relaci Powershellu připojte se k účtu Azure pomocí [připojit AzAccount](/powershell/module/az.profile/connect-azaccount).
+Nainstalujte [prostředí Azure PowerShell](/powershell/azure/install-az-ps) verze 1.0.0 nebo novějším. Aktuálně nainstalovanou verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, nainstalujte nejnovější verzi modulu Az z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az). V relaci Powershellu připojte se k účtu Azure pomocí [připojit AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *myNic*, a *myVM*.
 

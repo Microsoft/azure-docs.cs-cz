@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e5e80ac2229c3a2962702527dc3162229c25a5c5
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 7d0743c09adf1c50d888d2e279ba85a8369bf286
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750867"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991616"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -135,15 +135,19 @@ Chcete-li zjistit, zda je Profiler správně nakonfigurován pomocí Azure Diagn
 
 Chcete-li zkontrolovat nastavení, které byly použity ke konfiguraci diagnostiky Azure:
 
-1. Přihlaste se k virtuálnímu počítači (VM) a pak otevřete soubor protokolu v tomto umístění: 
+1. Přihlaste se k virtuálnímu počítači (VM) a pak otevřete soubor protokolu v tomto umístění. (Disku může být c: nebo d: a verze modulu plug-in může lišit.)
 
     ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.logs  
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
+    ```
+    nebo
+    ```
+    c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
 1. V souboru, můžete vyhledat řetězec **WadCfg** najít nastavení, které byly předány do virtuálního počítače ke konfiguraci diagnostiky Azure. Můžete zkontrolovat, zda je správný Instrumentační klíč používaný Profiler jímky.
 
-1. Zkontrolujte příkazový řádek, který se používá ke spuštění Profiler. Argumenty, které se používají ke spuštění Profiler jsou v následujícím souboru:
+1. Zkontrolujte příkazový řádek, který se používá ke spuštění Profiler. V tomto souboru jsou argumenty, které se používají ke spuštění Profiler. (Disku může být c: a d:)
 
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json

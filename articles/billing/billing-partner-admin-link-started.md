@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 85beb9b7e0c62d5e1c8dae61fdd15d5faf3a294c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985865"
+ms.locfileid: "57008589"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojit ID partnera účtů Azure
 
@@ -142,11 +142,11 @@ Odkaz na úrovni účtu uživatele souvisí. Pouze můžete upravit nebo odebrat
 
 **U kterého ID MPN by měl používat když Moje společnost má víc?**
 
-Můžete použít libovolné platné ID MPN s výjimkou ID organizace v programu MPN. Většina partneři zvolit MPN ID pro zeměpisné oblasti, kde se zákazník nachází nebo služby jsou distribuována.
+Můžete použít libovolné platné ID MPN s výjimkou orgnization(v-org) vyžaduje ID MPN. Většina partneři zvolit MPN ID pro zeměpisné oblasti, kde se zákazník nachází nebo služby jsou distribuována.
 
 **Kde najdu vliv na výnosy vytváření sestav pro ID propojené partnera?**
 
-Můžete najít na generování sestav k nim výnosy [Moje přehledný řídicí panel](https://partner.microsoft.com/membership/reports/myinsights) tak, že vyberete odkaz správce partnera, jak je znázorněno.
+Můžete najít na generování sestav k nim výnosy [Moje přehledný řídicí panel](https://partner.microsoft.com/membership/reports/myinsights). Musíte vybrat partnerské propojení správce jako typ přidružení partnera.
 
 **Proč nelze zobrazit Moje zákazníka v sestavách?**
 

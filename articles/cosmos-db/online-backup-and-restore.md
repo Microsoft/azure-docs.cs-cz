@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8b5b56e39e1b9830d5b998ace2a384d6878cd510
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6ed968b1613a96a2f4ab449c7b52488e066a38ab
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041811"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991814"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Zálohování online a na vyžádání dat obnovení ve službě Azure Cosmos DB
 
@@ -20,11 +20,18 @@ Azure Cosmos DB automaticky provede zálohování dat v pravidelných intervalec
 
 ## <a name="automatic-and-online-backups"></a>Automatické a online zálohování
 
-Pomocí služby Azure Cosmos DB jsou pouze data, ale také zálohy dat vysoce redundantní a odolná proti selháním regionální havárií. Automatizované zálohy jsou prováděny aktuálně každé čtyři hodiny a v libovolném bodě čas poslední dvě zálohy jsou uložené. Pokud jste omylem odstraněn nebo poškozen vaše data, měli byste požádat [podpory Azure](https://azure.microsoft.com/support/options/) do osmi hodin tak, aby tým služby Azure Cosmos DB může pomoci obnovíte data ze zálohy.
+Pomocí služby Azure Cosmos DB jsou pouze data, ale také zálohy dat vysoce redundantní a odolná proti selháním regionální havárií. Následující kroky ukazují, jak službu Azure Cosmos DB provádí zálohování dat:
 
-Zálohy jsou prováděny bez vlivu na výkon nebo dostupnost vaší aplikace. Azure Cosmos DB provede zálohování dat na pozadí bez použití jakékoli další zřízená propustnost (ru) nebo které mají vliv výkon a dostupnost vaší databáze.
+* Azure Cosmos DB automaticky převezme zálohu vaší databáze každé 4 hodiny a v libovolném okamžiku dobu pouze nejnovější 2 zálohy jsou uložené. Pokud však odstranění kontejneru nebo databáze Azure Cosmos DB zůstane existující snímky daného kontejneru nebo databáze po dobu 30 dnů.
 
-Azure Cosmos DB ukládá automatické zálohování ve službě Azure Blob Storage, že jsou skutečná data uložená místně v rámci služby Azure Cosmos DB. Pro zajištění nízké latence, snímek zálohy je uložen v úložišti objektů Blob v Azure ve stejné oblasti jako aktuální oblasti pro zápis (nebo jeden z oblasti zápisu, pokud máte více hlavních konfiguraci) účet databáze Cosmos DB. Což zvyšuje odolnost vůči regionálního jednotlivých snímků zálohování dat v úložišti objektů Blob v Azure znovu replikovat do jiné oblasti pomocí geograficky redundantního úložiště (GRS). Oblast, do které se replikují zálohování je na základě zdrojové oblasti a pár oblastí přidružené zdrojové oblasti. Další informace najdete v tématu [seznam dvojic geograficky redundantní oblastí Azure](../best-practices-availability-paired-regions.md) článku. Tuto zálohu nelze přistupovat přímo. Azure Cosmos DB bude používat tato záloha pouze v případě, že zahájila obnovení zálohy.
+* Azure Cosmos DB ukládá tyto zálohy v úložišti objektů Blob v Azure, že jsou skutečná data uložená místně v rámci služby Azure Cosmos DB.
+
+*  Pokud chcete zajistit s nízkou latencí, snímek zálohy je uložený v úložišti objektů Blob v Azure ve stejné oblasti jako aktuální oblasti pro zápis (nebo jednu z oblastí zápisu v případě, že máte konfiguraci s několika hlavními databázemi) účet databáze Azure Cosmos. Což zvyšuje odolnost vůči regionálního jednotlivých snímků zálohování dat v úložišti objektů Blob v Azure znovu replikovat do jiné oblasti pomocí geograficky redundantního úložiště (GRS). Oblast, do které se replikují zálohování je na základě zdrojové oblasti a pár oblastí přidružené zdrojové oblasti. Další informace najdete v tématu [seznam dvojic geograficky redundantní oblastí Azure](../best-practices-availability-paired-regions.md) článku. Tuto zálohu nelze přistupovat přímo. Azure Cosmos DB bude používat tato záloha pouze v případě, že zahájila obnovení zálohy.
+
+* Zálohy jsou prováděny bez vlivu na výkon nebo dostupnost vaší aplikace. Azure Cosmos DB provede zálohování dat na pozadí bez použití jakékoli další zřízená propustnost (ru) nebo které mají vliv výkon a dostupnost vaší databáze.
+
+* Pokud jste omylem odstraněn nebo poškozen vaše data, měli byste požádat [podpory Azure](https://azure.microsoft.com/support/options/) do 8 hodin tak, aby tým služby Azure Cosmos DB může pomoci obnovíte data ze zálohy.
+
 Následující obrázek ukazuje, jak je kontejner služby Azure Cosmos se všechny tři primární fyzické oddíly v oblasti západní USA zazálohovaný ve vzdálené účtu Azure Blob Storage v oblasti západní USA a pak replikují do USA – východ:
 
 ![Pravidelné úplné zálohy všechny entity Cosmos DB v geograficky Redundantního úložiště Azure Storage](./media/online-backup-and-restore/automatic-backup.png)

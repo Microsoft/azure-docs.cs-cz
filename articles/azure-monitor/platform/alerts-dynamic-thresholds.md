@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097805"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008901"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Upozornění na metriku s dynamickými prahovými hodnotami ve službě Azure Monitor (Public Preview)
 
@@ -79,7 +79,11 @@ Pravděpodobně není. Jsou vhodné pro zjištění významné odchylky, spíše
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Kolik dat se používá k zobrazení náhledu a pak vypočítat prahové hodnoty?
 
-Prahové hodnoty uvedené v grafu, předtím, než se vytvoří pravidlo upozornění na metriku, se počítají na posledních 10 dnů historických dat, po vytvoření pravidla upozornění dynamickými prahovými hodnotami se získání dalších historických dat, která je k dispozici a bude Další informace neustále na základě nových dat do zpřesnit prahové hodnoty.
+Prahové hodnoty uvedené v grafu, předtím, než se vytvoří pravidlo upozornění na metriku, se počítají na základě dostatečně historická data pro výpočet hodinu nebo každý den sezónní vzory (10 dní). Klávesy na zobrazení týdenní opakování využijí dostatek historických dat k výpočtu týdenní sezónní vzory (28 dní). Jakmile se vytvoří pravidlo upozornění, dynamickými prahovými hodnotami pomocí všechny potřebné historická data, která je k dispozici a bude průběžně informace a nimiž založené na nová data zpřesnit prahové hodnoty.
+
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Kolik dat je potřeba aktivovat upozornění?
+
+Dynamické prahové hodnoty vyžaduje alespoň tři dny dat, aby přesné prahových hodnot před aktivací výstrahy.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Osvědčené postupy pro dynamické prahové hodnoty
 

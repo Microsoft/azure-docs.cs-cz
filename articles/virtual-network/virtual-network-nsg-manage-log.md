@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 20c103c19de203d7598484b8f1d160256cb253e9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6cc75a70dfc7022efa8577234cc67659d53b2f88
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648859"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194413"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Protokolování diagnostiky pro skupiny zabezpečení sítě
 
@@ -78,7 +78,7 @@ $Oms=Get-AzOperationalInsightsWorkspace `
 
 Pokud nemáte existující pracovní prostor, můžete vytvořit s [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace).
 
-Existují dvě kategorie protokolování můžete povolit protokoly. Další informace najdete v tématu [protokolu kategorie](#log-categories). Povolit protokolování diagnostiky pro skupiny zabezpečení sítě s [Set-AzDiagnosticSetting](/powershell/module/az.insights/set-azdiagnosticsetting). Následující příklad protokoly událostí a čítače kategorie dat do pracovního prostoru pro skupinu zabezpečení sítě pomocí ID pro skupiny zabezpečení sítě a pracovní prostor, který jste získali dříve:
+Existují dvě kategorie protokolování můžete povolit protokoly. Další informace najdete v tématu [protokolu kategorie](#log-categories). Povolit protokolování diagnostiky pro skupiny zabezpečení sítě s [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting). Následující příklad protokoly událostí a čítače kategorie dat do pracovního prostoru pro skupinu zabezpečení sítě pomocí ID pro skupiny zabezpečení sítě a pracovní prostor, který jste získali dříve:
 
 ```azurepowershell-interactive
 Set-AzDiagnosticSetting `

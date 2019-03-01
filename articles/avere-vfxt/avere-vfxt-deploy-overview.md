@@ -4,14 +4,14 @@ description: Přehled nasazení Avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298530"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991797"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT pro Azure – Přehled nasazení
 
@@ -52,10 +52,12 @@ Tady je přehled o všech kroků.
 
      Kontroler clusteru je jednoduchý virtuální počítač, který se nachází ve stejné virtuální síti jako Avere vFXT cluster a má vlastní software potřebné k vytváření a správě clusteru. Kontroler vytvoří cluster vFXT uzly a formuláře a také poskytuje rozhraní příkazového řádku ke správě clusteru během celé jeho životnosti.
 
-     Při konfiguraci řadiče s použitím veřejné IP adresy, je také může sloužit jako jump hostitele pro připojení ke clusteru ze mimo virtuální síť.
+     Pokud vytvoříte novou virtuální síť během nasazení, kontrolér bude mít veřejnou IP adresu. To znamená, že kontroler může sloužit jako hostitel jump pro připojení ke clusteru ze mimo virtuální síť.
 
    * Vytvoření clusteru virtuálních počítačů s uzlu
-   * Konfigurace uzlu clusteru virtuálních počítačů jako clusteru
+
+   * Konfigurace uzlu clusteru virtuálních počítačů a vytvoří cluster
+
    * Volitelně vytvořili nový kontejner objektů Blob a jeho nakonfigurováním jako back endové úložiště pro cluster
 
 1. Konfigurace clusteru 

@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 067ab7538924f4aef7c48731d10fa7e68855214a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8be0ebc486739f8826e8a1d5a5307a219ba71b6f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739459"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192713"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Změna mainframových hostování na Azure virtual machines
 
@@ -25,7 +25,7 @@ Virtuální počítač Azure (VM) se používá k izolaci a řízení prostředk
 
 Virtuální počítače Azure můžete spouštět mainframových emulace prostředí a kompilátory, které podporují scénáře lift and shift. Vývoj a testování jsou často mezi první úlohy pro migraci z sálového počítače do prostředí Azure pro vývoj/testování. Běžné komponenty serveru, které mohou napodobovat zahrnují proces online transakcí (OLTP), batch a systémy ingestování dat jak ukazuje následující obrázek.
 
-![](media/01-overview.png)
+![Emulace prostředí v Azure umožňuje spouštět z/OS – systémy.](media/01-overview.png)
 
 Některé úlohy sálové počítače můžete migrovat do Azure s relativní snadností, zatímco jiné můžou rehosted v Azure pomocí partnerského řešení. Podrobné informace o výběru partnerského řešení [migrace Mainframů Azure center](https://azure.microsoft.com/migration/mainframe/) může pomoct.
 

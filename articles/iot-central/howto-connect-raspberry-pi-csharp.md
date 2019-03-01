@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4873c834a33ff5f401f38fdb810c65ca7ef20f5e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051386"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191183"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (C#)
 
@@ -275,7 +275,7 @@ Dokončete následující postup můžete použít Visual Studio Code. Další i
 Přidání konkrétní zařízení připojovací řetězec do kódu pro zařízení pro ověřování pomocí Azure IoT Central. Jste si poznamenali připojovacího řetězce při přidání skutečné zařízení do aplikace Azure IoT Central.
 
   > [!NOTE]
-   > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto instrustions k [získat připojovací řetězec zařízení](concepts-connectivity.md#getting-device-connection-string) a pokračujte se zbývající část tohoto kurzu.
+   > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto pokynů a [získat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) a pokračujte se zbývající část tohoto kurzu.
 
 1. Nahraďte `{your device connection string}` v **Program.cs** soubor s připojovacím řetězcem, který jste si poznamenali dříve.
 
@@ -331,7 +331,7 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberr
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
-| temp           | ° C     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | tlak       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
@@ -361,7 +361,7 @@ Přepínací tlačítko Nastavení
 
 ### <a name="properties"></a>Vlastnosti
 
-| Typ            | Zobrazované jméno | Název pole | Typ dat |
+| Type            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
 | Text            | Umístění     | location   | neuvedeno       |

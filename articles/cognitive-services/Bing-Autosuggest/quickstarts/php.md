@@ -1,31 +1,31 @@
 ---
-title: 'Rychlý start: Rozhraní API, PHP pro automatické návrhy Bingu'
+title: 'Rychlý start: Navrhnout vyhledávací dotazy pomocí rozhraní API REST pro automatické návrhy Bingu a PHP'
 titlesuffix: Azure Cognitive Services
-description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro automatické návrhy Bingu.
+description: Zjistěte, jak rychle začít, navrhněte hledaný text v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 139c7149173285283041f5f4b30d2002e40810c2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: 4918521698f939370734600a209e3bc1fdd0f104
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872913"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008954"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-php"></a>Rychlý start pro rozhraní API pro automatické návrhy Bingu s PHP
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí rozhraní API REST pro automatické návrhy Bingu a PHP
 
-V tomto článku se dozvíte, jak používat [rozhraní API pro automatické návrhy Bingu](https://azure.microsoft.com/services/cognitive-services/autosuggest/) s PHP. Rozhraní API pro automatické návrhy Bingu vrací seznam navrhovaných dotazů založený na části řetězce dotazu, který uživatel do vyhledávacího pole zadává. Obvykle se toto rozhraní API volá pokaždé, když uživatel zadá do vyhledávacího pole další znak, a potom se v rozevíracím seznamu ve vyhledávacím poli zobrazí návrhy. V tomto článku se dozvíte, jak odeslat požadavek, který vrátí navrhované řetězce dotazu pro dotaz *sail*.
+Použití v tomto rychlém startu zahájíte provádění volání rozhraní API pro automatické návrhy Bingu a získání odpovědi JSON. Tato jednoduchá aplikace PHP odešle částečné vyhledávací dotaz na rozhraní API a vrátí návrhů pro hledání. Zatímco tato aplikace je napsaný v jazyce PHP, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu budete potřebovat [PHP 5.6.x](http://php.net/downloads.php).
+* [PHP 5.6.x](http://php.net/downloads.php) nebo novější
 
-Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API pro automatické návrhy Bingu verze 7**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/#search). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="get-autosuggest-results"></a>Získání výsledků automatických návrhů
 

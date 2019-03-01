@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a97e03f3c195b9fbd0ee7a09950414b7a940c7c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 694eb49244afb6761ce274572f15273ccef6cbb5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217475"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195026"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Rychlý start: Přihlašování uživatelů a získání přístupového tokenu z aplikace v jazyce JavaScript
 
@@ -74,14 +74,15 @@ Jednu z těchto možností vhodná můžete do svého vývojového prostředí.
 * [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 Extrahujte soubor zip do místní složky, například **C:\Azure-Samples**.
+Chcete-li otevřít soubory ve složce, použijte editor, například [Visual Studio Code](https://code.visualstudio.com/).
 
 #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace pro JavaScript
 
 > [!div renderon="docs"]
-> Upravit `index.html` a nastavit `clientID` a `authority` hodnoty v rámci `applicationConfig`.
+> Ve složce *JavaScriptSPA*, upravit `index.html` a nastavit `clientID` a `authority` hodnoty v rámci `applicationConfig`.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Upravit `index.html` a nahraďte `applicationConfig` pomocí:
+> Ve složce *JavaScriptSPA*, upravit `index.html` a nahraďte `applicationConfig` pomocí:
 
 ```javascript
 var applicationConfig = {
@@ -103,13 +104,9 @@ var applicationConfig = {
 > > [!TIP]
 > > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 
-> [!NOTE]
-> Server je nakonfigurovaná k naslouchání na portu 30662 v *server.js* ve [Node.js](https://nodejs.org/en/download/) projektu a *.csproj* ve [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)projektu.
->
-
 #### <a name="step-4-run-the-project"></a>Krok 4: Spuštění projektu
 
-* Pokud používáte Node.js:
+* Pokud používáte [Node.js](https://nodejs.org/en/download/):
 
     1. Spusťte následující příkaz z adresáře projektu ke spuštění serveru:
 
@@ -122,7 +119,7 @@ var applicationConfig = {
     1. Klikněte na tlačítko **Sign In** tlačítko start přihlásit a pak volat Microsoft Graph API.
 
 
-* Pokud pomocí sady Visual Studio, je nutné vybrat projekt řešení a potom stiskněte klávesu **F5** ke spuštění projektu.
+* Pokud používáte [sady Visual Studio](https://visualstudio.microsoft.com/downloads/), ujistěte se, že vyberte projekt řešení a potom stiskněte klávesu **F5** ke spuštění projektu.
 
 ## <a name="more-information"></a>Další informace
 
@@ -217,9 +214,9 @@ Podrobnější podrobné informace o tom, jak vytvořit aplikaci pro tento rychl
 ### <a name="learn-the-steps-to-create-the-application-for-this-quickstart"></a>Přečtěte si postup, jak vytvořit aplikaci pro tento rychlý start
 
 > [!div class="nextstepaction"]
-> [Kurz volání rozhraní Graph API](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [Kurz k přihlášení a volání MS Graphu](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
 
 ### <a name="browse-the-msal-repo-for-documentation-faq-issues-and-more"></a>Procházet úložiště MSAL pro dokumentaci, nejčastější dotazy, problémy a další
 
 > [!div class="nextstepaction"]
-> [msal.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)

@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 2770c6a31f0117b96e08eb8a03986f37ebdb7098
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 98d8f530b91c2b2483d00838cd4001be88e18a6c
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733737"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011207"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -89,7 +89,7 @@ Můžete také povolit připojení k virtuální síti pomocí rutin prostředí
 
 * **Vytvoření služby API Management v síti VNET**: Použijte rutinu [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) k vytvoření služby Azure API Management v síti VNET.
 
-* **Nasazení služby API Management existující v síti VNET**: Použijte rutinu [aktualizace AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) přesunout existující služby Azure API Management ve virtuální síti.
+* **Nasazení služby API Management existující v síti VNET**: Použijte rutinu [aktualizace AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) přesunout existující služby Azure API Management ve virtuální síti.
 
 ## <a name="connect-vnet"> </a>Připojit k webové službě hostované v rámci virtuální sítě
 Poté, co vaše služba API Management je připojený k virtuální síti, přístup ke službám back-endu v rámci něj se nijak neliší od přístupu k veřejné služby. Stačí zadat místní IP adresa nebo název hostitele (Pokud je nakonfigurovaný DNS server pro virtuální síť) do vaší webové služby **adresu URL webové služby** pole při vytváření nového rozhraní API nebo úpravou existující.
@@ -132,7 +132,7 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 
 + **DNS Access**: Odchozí přístup na port 53, je nutné pro komunikaci se servery DNS. Pokud vlastní server DNS existuje na druhém konci bránu VPN, DNS server musí být dostupný z podsítě hostování API Management.
 
-+ **Metriky a monitorování stavu**: Odchozího síťového připojení k Azure monitorování koncových bodů, které vyřešit podle následujících domén: 
++ **Metriky a monitorování stavu**: Odchozího síťového připojení k Azure monitorování koncových bodů, které vyřešit podle následujících domén:
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -202,7 +202,6 @@ Výpočet vyšší než minimální velikost podsítě, ve kterém se dá nasadi
 * [Značky služeb](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
-[api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
 [api-management-setup-vpn-add-api]: ./media/api-management-using-with-vnet/api-management-using-vnet-add-api.png
 [api-management-vnet-private]: ./media/api-management-using-with-vnet/api-management-vnet-internal.png

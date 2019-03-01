@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4e8193a9996c9675a353e3e427c86ecfee45da8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3a99c0157ef3afe9823d73379775ddcf564faccc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737837"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193802"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -33,7 +33,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 * Neurální výchozí nastavení: Neurální je výchozí překladový systém. Použijte parametr `category=smt` pro přístup k statistické lokality pro použití v centru Microsoft Translator.
 * Neurální pouze: Je k dispozici pouze Neurální překlady.
 
-**V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. Vlastní Translator jde použít jenom s jazyky neuronových sítí.
+**V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. Vlastní Translator jde použít jenom s jazyky neuronových sítí. [Zobrazení k dispozici ve vlastní Translator langauges](#customization).
 
 |Jazyk|  Kód jazyka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
@@ -52,7 +52,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 |Holandština| `nl`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Angličtina|   `en`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Estonština|  `et`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Vládní|    `fj`    |Jenom statistické|  Statistické|
+|fidžijština|    `fj`    |Jenom statistické|  Statistické|
 |Filipínština|  `fil`   |Jenom statistické|  Statistické|
 |Finština|   `fi`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Francouzština|    `fr`    |Neuronových sítí k dispozici|  Neuronových sítí|
@@ -73,7 +73,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 |Korejština |`ko`   |Neuronových sítí k dispozici|  Neuronových sítí|
 |Lotyština|   `lv`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Litevština|    `lt`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Malgašský|  `mg`    |Jenom statistické|  Statistické|
+|Malgaština|  `mg`    |Jenom statistické|  Statistické|
 |Malajština| `ms`    |Jenom statistické   |Statistické|
 |Maltština|   `mt`    |Jenom statistické|  Statistické|
 |norština| `nb`    |Neuronových sítí k dispozici|  Neuronových sítí|
@@ -83,7 +83,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 |Queretaro Otomi|   `otq`   |Jenom statistické|  Statistické|
 |Rumunština|  `ro`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |ruština|   `ru`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Samoan|    `sm`    |Jenom statistické|  Statistické|
+|samojština|    `sm`    |Jenom statistické|  Statistické|
 |Srbština (cyrilice)|    `sr-Cyrl`   |Jenom statistické|  Statistické|
 |Srbština (latinka)|   `sr-Latn`   |Jenom statistické   |Statistické|
 |Slovenština|    `sk`    |Neuronových sítí k dispozici|  Neuronových sítí|
@@ -94,7 +94,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 |Tamilština| `ta`    |Jenom statistické|  Statistické|
 |Telugština|    `te`    |Pouze neuronových sítí|   Neuronových sítí|
 |Thajština|  `th`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Tonžská|    `to`    |Jenom statistické|  Statistické|
+|Tongánština|    `to`    |Jenom statistické|  Statistické|
 |turečtina|   `tr`    |Neuronových sítí k dispozici   |Neuronových sítí|
 |Ukrajinština| `uk`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Urdština|  `ur`    |Jenom statistické|  Statistické|

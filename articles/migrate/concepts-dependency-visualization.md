@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b266ff100d2573ce547564a52ec0efda6ec53458
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257963"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991848"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -26,7 +26,7 @@ Vizualizace závislostí ve službě Azure Migrate můžete vytvořit skupiny s 
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-Azure Migrate používá [Service Map](../operations-management-suite/operations-management-suite-service-map.md) řešení v [Log Analytics](../log-analytics/log-analytics-overview.md) pro vizualizace závislostí.
+Azure Migrate používá [Service Map](../operations-management-suite/operations-management-suite-service-map.md) řešení v [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) pro vizualizace závislostí.
 - Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log Analytics, novou nebo existující s projekt Azure Migrate.
 - Můžete pouze vytvářet nebo připojit pracovní prostor v rámci stejného předplatného, ve kterém se vytvoří projekt migrace.
 - Pracovní prostor Log Analytics připojit k projektu, přejděte na **Essentials** části projektu **přehled** stránky a klikněte na tlačítko **vyžaduje konfiguraci**

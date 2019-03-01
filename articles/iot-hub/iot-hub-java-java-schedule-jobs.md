@@ -1,19 +1,20 @@
 ---
 title: Plánování úloh s Azure IoT Hub (Java) | Dokumentace Microsoftu
 description: Jak naplánovat úlohu služby Azure IoT Hub k vyvolání přímé metody a nastavte požadované vlastnosti na více zařízeních. Použití zařízení Azure IoT SDK pro Javu k implementaci aplikace simulovaného zařízení a služby Azure IoT SDK pro Javu k implementaci app service na spuštění úlohy.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/10/2017
-ms.author: dobett
-ms.openlocfilehash: 52c5e1a2166c2c609b2edc486bd451f01b3395fa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d2d92c05e54bc78d5b01e73b586e5c25fc431255
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515790"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011394"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Úlohy vysílání a plánování (Java)
 
@@ -29,9 +30,9 @@ Azure IoT Hub použijte k plánování a sledování úloh, které aktualizují 
 
 Další informace o každé z těchto možností najdete v tématu:
 
-* Dvojče zařízení a vlastností: [Začínáme s dvojčaty zařízení](iot-hub-java-java-twin-getstarted.md)
+* Dvojče zařízení a vlastnosti: [Začínáme s dvojčaty zařízení](iot-hub-java-java-twin-getstarted.md)
 
-* Přímé metody: [Příručka pro vývojáře IoT Hub - přímých metod](iot-hub-devguide-direct-methods.md) a [kurz: použití přímých metod](quickstart-control-device-java.md)
+* Přímé metody: [Příručka pro vývojáře IoT Hub - přímých metod](iot-hub-devguide-direct-methods.md) a [kurzu: Použití přímých metod](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

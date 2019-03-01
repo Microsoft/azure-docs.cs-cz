@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5bb2db84a21efb9c8bffb345e05e17d99b866fe9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9b9e28f18208674609d0842b0e3a54e3fc661c9f
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56825775"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56988074"
 ---
 ## <a name="view-device-telemetry"></a>Zobrazení telemetrie zařízení
 
@@ -33,7 +33,7 @@ Můžete zobrazit telemetrická data odesílaná ze zařízení **Device Explore
 
 ## <a name="act-on-your-device"></a>Reagovat na vaše zařízení
 
-Chcete-li vyvolávat metody v zařízení, použijte **Device Explorer** stránku v řešení vzdáleného monitorování. Například v řešení vzdáleného monitorování **chladič** zařízení implementovat **FirmwareUpdate** metody.
+Chcete-li vyvolávat metody v zařízení, použijte **Device Explorer** stránku v řešení vzdáleného monitorování. Například v řešení vzdáleného monitorování **chladič** zařízení implementovat **restartování** metoda.
 
 1. Zvolte **zařízení** přejděte **Device Explorer** stránku v řešení.
 
@@ -41,20 +41,16 @@ Chcete-li vyvolávat metody v zařízení, použijte **Device Explorer** stránk
 
     ![Vyberte skutečných zařízení](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. Chcete-li zobrazit seznam metod, můžete volat na vašem zařízení, zvolte **úlohy**, pak **spustit metodu**. Naplánování úlohy spouštět na více zařízeních, můžete vybrat několik zařízení v seznamu. **Úlohy** panelu se zobrazí typy metoda společná pro všechna zařízení, která jste vybrali.
+1. Chcete-li zobrazit seznam metod, můžete volat na vašem zařízení, zvolte **úlohy**, pak **metody**. Naplánování úlohy spouštět na více zařízeních, můžete vybrat několik zařízení v seznamu. **Úlohy** panelu se zobrazí typy metoda společná pro všechna zařízení, která jste vybrali.
 
-1. Zvolte **FirmwareUpdate**, nastavte název úlohy **UpdatePhysicalChiller**. Nastavte **verze firmwaru** k **2.0.0**, nastavte **Firmware URI** k **http://contoso.com/updates/firmware.bin**a klikněte na tlačítko **použít**:
+1. Zvolte **restartovat**, nastavte název úlohy **RebootPhysicalChiller** a klikněte na tlačítko **použít**:
 
     ![Plán aktualizace firmwaru](media/iot-suite-visualize-connecting/deviceschedule.png)
 
 1. Pořadí zpráv se zobrazí v konzole spuštěný kód vašeho zařízení, když Simulovaná zařízení zpracovává tuto metodu.
 
-1. Po dokončení aktualizace se zobrazí nová verze firmwaru na **Device Explorer** stránky:
-
-    ![Aktualizace dokončena](media/iot-suite-visualize-connecting/complete.png)
-
 > [!NOTE]
-> Chcete-li sledovat stav úlohy v řešení, zvolte **zobrazení**.
+> Chcete-li sledovat stav úlohy v řešení, zvolte **zobrazení stavu úlohy**.
 
 ## <a name="next-steps"></a>Další postup
 

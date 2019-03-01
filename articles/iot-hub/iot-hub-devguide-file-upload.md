@@ -1,19 +1,19 @@
 ---
 title: Vysvětlení nahrávání souborů Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – použijte funkci odesílání souborů služby IoT Hub ke správě nahrávání souborů ze zařízení do kontejneru objektů blob v Azure storage.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.author: dobett
-ms.openlocfilehash: 724f655229347aa73747476e6bb4837b30e0fc4f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7678c50cbda0ea112c737e8230586081efe61081
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839002"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008555"
 ---
 # <a name="upload-files-with-iot-hub"></a>Nahrávání souborů pomocí služby IoT Hub
 
@@ -125,8 +125,8 @@ Každé centrum IoT má následující možnosti konfigurace pro soubor, odeslat
 
 | Vlastnost | Popis | Rozsah a výchozí |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Určuje, zda oznámení o nahrávání souborů se zapisují do koncového bodu oznámení souboru. |Logická hodnota. Výchozí: True. |
-| **fileNotifications.ttlAsIso8601** |Výchozí hodnota TTL pro oznámení o nahrávání souborů. |ISO_8601 interval až 48 H (minimální 1 minuta). Výchozí hodnota: 1 hodina. |
+| **enableFileUploadNotifications** |Určuje, zda oznámení o nahrávání souborů se zapisují do koncového bodu oznámení souboru. |Bool. Výchozí: Hodnota TRUE. |
+| **fileNotifications.ttlAsIso8601** |Výchozí hodnota TTL pro oznámení o nahrávání souborů. |ISO_8601 interval až 48 H (minimální 1 minuta). Výchozí: 1 hodina. |
 | **fileNotifications.lockDuration** |Doba trvání uzamknutí pro frontu oznámení nahrávání souboru. |5 do 300 sekund (minimální 5 sekund). Výchozí: 60 sekund. |
 | **fileNotifications.maxDeliveryCount** |Maximální počet doručení pro tento soubor nahrajte frontě oznámení. |1 až 100. Výchozí: 100. |
 

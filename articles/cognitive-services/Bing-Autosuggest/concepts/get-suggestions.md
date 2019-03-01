@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
-ms.date: 02/06/2019
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 8460f282a4372b4297b373bad669f56f2932e323
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 293dcaadfc20116455983b3fc0069f9e9df3f843
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271595"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010544"
 ---
-# <a name="suggesting-query-terms"></a>Navrhněte termíny dotazu
+# <a name="suggesting-query-terms"></a>Návrhy termínů dotazu
 
 Obvykle by volat rozhraní API pro automatické návrhy Bingu pokaždé, když uživatel zadá znak nového vyhledávacího pole vaší aplikace. Úplnost řetězce dotazu má vliv na relevanci navrhovaných termínů dotazu, které rozhraní API vrátí. Čím je řetězec dotazu úplnější, tím relevantnější seznam navrhovaných termínů dotazů se zobrazí. Například návrhy, které můžou vrátit rozhraní API pro `s` můžou mít méně závažné, než se vrací pro dotazy `sailing dinghies`.
 

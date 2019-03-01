@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: d2d62dea683d3e42411d526fe002596e6473b4a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 21e7406d566be5be73342d530a4ad66b80a1d23f
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736664"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990437"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Použití řízení přístupu na základě Role ve službě Azure API Management
 Azure API Management se spoléhá na Azure Role-Based řízení přístupu (RBAC) umožňuje přesnou správu přístupu služby API Management a entity (například rozhraní API a zásady). Tento článek poskytuje přehled předdefinovaných a vlastních rolí ve službě API Management. Další informace o řízení přístupu na webu Azure Portal najdete v tématu [Začínáme se správou přístupu na webu Azure Portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -47,6 +47,9 @@ Následující tabulka obsahuje stručný popis předdefinované role. Tyto role
 
 ## <a name="custom-roles"></a>Vlastní role
 Pokud žádná z předdefinovaných rolí nevyhovuje vašim konkrétním potřebám, můžete zajistit podrobnější řízení přístupu pro API Management entity vytvořit vlastní role. Například můžete vytvořit vlastní roli, která má přístup jen pro čtení ke službě API Management, ale má pouze oprávnění k zápisu do jednoho konkrétního rozhraní API. Další informace o vlastních rolích najdete v tématu [vlastní role Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
+
+> [!NOTE]
+> Aby bylo možné zobrazit instance služby API Management na webu Azure Portal, musí obsahovat vlastní role ```Microsoft.ApiManagement/service/read``` akce.
 
 Když vytvoříte vlastní roli, je jednodušší začít s některou z předdefinovaných rolí. Upravit atributy pro přidání **akce**, **NotActions**, nebo **AssignableScopes**a následně změny uložte novou roli. V následujícím příkladu začíná roli možnost Čtenář, služba Azure API Management"a vytváří vlastní roli s názvem" Kalkulačka API Editor. " Vlastní role můžete přiřadit konkrétní rozhraní API. V důsledku toho tato role má přístup pouze rozhraní API. 
 

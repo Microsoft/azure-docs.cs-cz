@@ -6,14 +6,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 4246259445cf096b5353ab87a9ed83f87332dc78
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: df4fcb505cce17663334d9b80245f5c981cdbe1e
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299322"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989622"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -21,13 +21,13 @@ Funkce v aplikaci function app sdílet prostředky a mezi těmito sdílené pros
 
 ## <a name="connections-limit"></a>Omezení počtu připojení
 
-Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [sandboxu služby Azure App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení, aktuálně 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
+Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení (aktuálně v 600 aktivní připojení, celkový počet připojení 1200)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) jednu instanci. Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
 
-Když přejde pravděpodobnost, že při překročení tohoto limitu [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works) zpracovávat další požadavky. Každá instance aplikace funkce může běžet současně, mnoho funkcí z nichž všechny používají připojení, které se počítají do 300 limit.
+Toto omezení se na jednu instanci.  Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works) pro zpracování více požadavků, každá instance má limit nezávislé připojení.  To znamená neomezený globální připojení a celkem máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
 
 ## <a name="use-static-clients"></a>Použití statických klientů
 
-Aby se zabránilo uchovávající víc připojení než je nutné, opakovaně používat instancí klientů, kteří místo vytvoření nové značky s každým vyvolání funkce. Klientů .NET, jako jsou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+Aby se zabránilo uchovávající víc připojení než je nutné, opakovaně používat instancí klientů, kteří místo vytvoření nové značky s každým vyvolání funkce.  Opětovné použití připojení klientů se doporučuje pro libovolný jazyk, který mohou psát funkce v. Třeba jako klientů .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ), a klienty služby Azure Storage můžete spravovat připojení, pokud používáte statické jednoho klienta.
 
 Tady jsou některé zásady dodržovat při použití klienta specifickou pro službu v aplikaci Azure Functions:

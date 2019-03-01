@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a5876a3f77eb0764edc5ce833f4b74284dda66
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ce4ad48a81d5f3b3b8574237b8d8685ad9b141ec
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211712"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194194"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Upgrade z nástroje DirSync
 Azure AD Connect je nástupcem nástroje DirSync. V tomto tématu najdete popis způsobů upgradu z nástroje DirSync. Pokud upgradujete z jiné verze služby Azure AD Connect nebo ze služby Azure AD Sync, tyto kroky nefungují.
@@ -71,7 +71,7 @@ Následující změnu nelze upgradovat. Pokud máte tuto konfiguraci, upgrade bu
 
 ![Upgradování zablokováno](./media/how-to-dirsync-upgrade-get-started/analysisblocked.png)
 
-V těchto případech doporučujeme nainstalovat nový server Azure AD Connect v [pracovním režimu](how-to-connect-sync-operations.md#staging-mode) a ověřit starou konfiguraci nástroje DirSync a novou konfiguraci služby Azure AD Connect. Veškeré změny znovu použijte pomocí vlastní konfigurace, jak je popsáno v tématu [Vlastní konfigurace služby Azure AD Connect Sync](how-to-connect-sync-whatis.md).
+V těchto případech doporučujeme nainstalovat nový server Azure AD Connect v [pracovním režimu](how-to-connect-sync-staging-server.md) a ověřit starou konfiguraci nástroje DirSync a novou konfiguraci služby Azure AD Connect. Veškeré změny znovu použijte pomocí vlastní konfigurace, jak je popsáno v tématu [Vlastní konfigurace služby Azure AD Connect Sync](how-to-connect-sync-whatis.md).
 
 Hesla, která nástroj DirSync používá pro účty služby, nelze získat a nebudou migrována. Tato hesla se při upgradu resetují.
 
@@ -161,12 +161,12 @@ Při instalaci služby Azure AD Connect na nový server bude instalační progra
      Tyto možnosti se zobrazí na této obrazovce:  
      ![Zadejte svoje přihlašovací údaje služby Azure AD](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. Klikněte na **Další**.
-8. Na stránce **Připraveno ke konfiguraci** nechejte zaškrtnuté políčko **Zahájit proces synchronizace ihned po dokončení konfigurace**. Server je teď v [pracovním režimu](how-to-connect-sync-operations.md#staging-mode), takže změny se nebudou exportovat do služby Azure AD.
+8. Na stránce **Připraveno ke konfiguraci** nechejte zaškrtnuté políčko **Zahájit proces synchronizace ihned po dokončení konfigurace**. Server je teď v [pracovním režimu](how-to-connect-sync-staging-server.md), takže změny se nebudou exportovat do služby Azure AD.
 9. Klikněte na **Nainstalovat**.
 10. Po dokončení instalace se odhlaste a znovu přihlaste do Windows. Teprve pak použijte Synchronization Service Manager, Synchronization Rule Editor, případně proveďte další změny v konfiguraci.
 
 > [!NOTE]
-> Bude zahájena synchronizace mezi službami Windows Server Active Directory a Azure Active Directory, ale žádné změny se nebudou exportovat do služby Azure AD. V jednu chvíli může změny aktivně exportovat pouze jeden synchronizační nástroj. Tento stav se nazývá [pracovní režim](how-to-connect-sync-operations.md#staging-mode).
+> Bude zahájena synchronizace mezi službami Windows Server Active Directory a Azure Active Directory, ale žádné změny se nebudou exportovat do služby Azure AD. V jednu chvíli může změny aktivně exportovat pouze jeden synchronizační nástroj. Tento stav se nazývá [pracovní režim](how-to-connect-sync-staging-server.md).
 
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>Kontrola připravenosti služby Azure AD Connect k zahájení synchronizace
 Pro ověření, že je služba Azure AD Connect připravena převzít roli nástroje DirSync, je třeba pomocí nabídky Start otevřít **Synchronization Service Manager** ve skupině **Azure AD Connect**.
@@ -182,7 +182,7 @@ V aplikaci přejděte na kartu **Operace**. Na této kartě uvidíte potvrzení,
 
 Zkontrolujte výsledky těchto operací a ujistěte se, že nikde nejsou žádné chyby.
 
-Pokud chcete zobrazit a zkontrolovat změny, které mají být exportovány do služby Azure AD, přečtěte si postup ověření konfigurace v [pracovním režimu](how-to-connect-sync-operations.md#staging-mode). Proveďte požadované změny, pokud nenarazíte na nic neočekávaného.
+Pokud chcete zobrazit a zkontrolovat změny, které mají být exportovány do služby Azure AD, přečtěte si postup ověření konfigurace v [pracovním režimu](how-to-connect-sync-staging-server.md). Proveďte požadované změny, pokud nenarazíte na nic neočekávaného.
 
 Pokud jste provedli tyto kroky a jste spokojeni s výsledkem, jste připraveni na přepnutí z nástroje DirSync na Azure AD.
 

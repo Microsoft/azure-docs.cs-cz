@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 41eed6bc878bff4c9d847f9a449ca693274bf234
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564438"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195502"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
@@ -75,12 +75,11 @@ Použít `Test-NetConnection` rutiny AzureRM PowerShell musí být nainstalovan�
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
     Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-  
     
 Pokud připojení proběhne úspěšně, měl by se zobrazit následující výstup:
     
   
-    ComputerName     : <storage-account-host-name>
+    ComputerName     : <your-storage-account-name>
     RemoteAddress    : <storage-account-ip-address>
     RemotePort       : 445
     InterfaceAlias   : <your-network-interface>
@@ -93,7 +92,19 @@ Pokud připojení proběhne úspěšně, měl by se zobrazit následující výs
 
 ### <a name="solution-for-cause-1"></a>Řešení příčiny 1
 
-Práce s vaším IT oddělením pro otevření portu 445 odchozí do [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+#### <a name="solution-1---use-azure-file-sync"></a>Řešení 1 – používání Azure File Sync
+Azure File Sync může transformuje váš místní Windows Server na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Azure File Sync funguje přes port 443 a lze tedy použít jako alternativní řešení pro přístup k službě soubory Azure od klientů, které máte port 445 blokované. [Další informace o nastavení Azure File Sync](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-extend-servers).
+
+#### <a name="solution-2---use-vpn"></a>Řešení 2 – použití sítě VPN
+Nastavení sítě VPN na vaše konkrétní účet úložiště, provoz se přejít přes zabezpečené tunelové propojení, nikoli přes internet. Postupujte podle [o nastavení VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
+) pro přístup k Azure Files z Windows.
+
+#### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Řešení 3 - odblokovat port 445 pomocí svého poskytovatele internetových služeb / správci IT
+Práce s oddělením IT nebo poskytovatele internetových služeb pro otevření portu 445 odchozí do [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+
+#### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>Řešení 4 - nástroje jako je Storage Explorer/Powershell založené na použití rozhraní REST API
+Služba soubory Azure podporuje také REST kromě protokolu SMB. Přístup REST funguje přes port 443 (standardní tcp). Existují různé nástroje, které jsou napsané pomocí rozhraní REST API, které umožňují bohaté možnosti uživatelského rozhraní. [Průzkumník služby Storage](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) je jedním z nich. [Stažení a instalace Storage Exploreru](https://azure.microsoft.com/en-us/features/storage-explorer/) a připojení ke sdílené složce se opírá o službě soubory Azure. Můžete také použít [Powershellu](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell) které také uživatelské rozhraní REST API.
+
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>2. příčina: NTLMv1 je povolená.
 

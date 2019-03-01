@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 21d4e8c3ea51da559ac1d576c1a076898136ded8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 13d446f9f2aa651c766f250e551a97a97cf4d5d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727838"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195230"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 
@@ -27,7 +27,7 @@ Během migrace se provádí tyto akce:
 * V libovolném bodě skóre BLEU migrovat z centra školení najdete na stránce TrainingDetails modelu v "Bleu skóre v centru MT" záhlaví.
 
 >[!Note]
->Školení na úspěšné, vlastní Translator vyžaduje minimální 10 000 extrahované věty. Pro menší počet extrahované věty než [navrhované minimální](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences), Translator vlastní nelze provést školení.
+>Školení na úspěšné, vlastní Translator vyžaduje minimálně 10 000 jedinečných extrahované věty. Vlastní překladač nemůže provádějte školení s méně extrahované věty, než [navrhované minimální](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="enable-account-migration"></a>Povolení migrace účtu
 

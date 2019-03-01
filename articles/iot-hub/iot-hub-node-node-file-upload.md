@@ -1,20 +1,20 @@
 ---
 title: Nahrání souborů ze zařízení do služby Azure IoT Hub s uzlem | Dokumentace Microsoftu
 description: Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro Node.js. Nahrané soubory se ukládají v kontejneru objektů blob v Azure storage.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.author: dobett
-ms.openlocfilehash: b3afbeb5a3fa2cda6ec5eaabe368163a370352d1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8b502c7616ed889166e0c5e708fe7858bf884031
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568188"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011156"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
 

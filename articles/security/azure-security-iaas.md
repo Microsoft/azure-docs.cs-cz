@@ -4,7 +4,7 @@ description: " Migrace úloh do Azure IaaS přináší příležitosti pro opět
 services: security
 documentationcenter: na
 author: barclayn
-manager: barbkess
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de89e0a30f39ba97379b4d55914338702aef5c32
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341212"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990404"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -39,7 +39,7 @@ Osvědčené postupy jsou založené na konsenzus názorů a práci s aktuální
 Prvním krokem při ochraně vašich virtuálních počítačů je, aby, který jen na autorizované uživatele můžete nastavit nové virtuální počítače a přístup k virtuálním počítačům.
 
 **Osvědčený postup**: Řízení přístupu k virtuálním počítačům.   
-**Podrobnosti o**: Použití [zásady Azure](../governance/policy/overview.md) k zahájení vytváření názvů pro prostředky ve vaší organizaci a vytvářet vlastní zásady. Použít tyto zásady na prostředky, jako například [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Virtuální počítače, které patří do skupiny prostředků dědit její zásady.
+**Podrobnosti o**: Použití [zásady Azure](../azure-policy/azure-policy-introduction.md) k zahájení vytváření názvů pro prostředky ve vaší organizaci a vytvářet vlastní zásady. Použít tyto zásady na prostředky, jako například [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Virtuální počítače, které patří do skupiny prostředků dědit její zásady.
 
 Pokud má vaše organizace více předplatných, můžete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů u těchto předplatných. [Skupiny pro správu Azure](../azure-resource-manager/management-groups-overview.md) zajišťují určitou úroveň oboru nad předplatných. Uspořádání předplatných do skupin pro správu (kontejnerů) a použít vaše podmínky zásad správného řízení do těchto skupin. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky na skupinu aplikují. Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.
 
@@ -153,10 +153,10 @@ Doporučené postupy pro používání Azure Disk Encryption jsou následující
 **Podrobnosti o**: Azure Disk Encryption generuje a zapíše šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů se vyžaduje ověřování Azure AD. Vytvořte aplikaci Azure AD pro tento účel. Pro účely ověřování, můžete použít buď ověřování na základě tajný kód klienta nebo [ověřování klienta na základě certifikátů Azure AD](../active-directory/active-directory-certificate-based-authentication-get-started.md).
 
 **Osvědčený postup**: Použijte šifrovací klíč klíče (KEK) pro další úroveň zabezpečení pro šifrovací klíče. Přidání KEK do trezoru klíčů.   
-**Podrobnosti o**: Použití [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) rutina pro vytvoření šifrovací klíč klíče v trezoru klíčů. Můžete také importovat KEK z vašeho místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace najdete v tématu [dokumentace ke službě Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. Uchování v úschově kopii tohoto klíče v místní správy klíčů HSM nabízí další ochranu před náhodným odstraněním klíčů.
+**Podrobnosti o**: Použití [přidat AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey) rutina pro vytvoření šifrovací klíč klíče v trezoru klíčů. Můžete také importovat KEK z vašeho místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace najdete v tématu [dokumentace ke službě Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. Uchování v úschově kopii tohoto klíče v místní správy klíčů HSM nabízí další ochranu před náhodným odstraněním klíčů.
 
 **Osvědčený postup**: Přijmout [snímku](../virtual-machines/windows/snapshot-copy-managed-disk.md) nebo zálohování před disky jsou šifrované. Zálohování poskytuje možnost obnovení, pokud dojde k neočekávané chybě při šifrování.   
-**Podrobnosti o**: Virtuální počítače se spravovanými disky vyžadují zálohu, než dojde k šifrování. Po zálohování se provádí, můžete použít **Set-AzureRmVMDiskEncryptionExtension** rutiny k šifrování spravované disky tak, že zadáte *- skipVmBackup* parametru. Další informace o tom, jak zálohování a obnovení šifrovaných virtuálních počítačů najdete v tématu [Azure Backup](../backup/backup-azure-vms-encryption.md) článku.
+**Podrobnosti o**: Virtuální počítače se spravovanými disky vyžadují zálohu, než dojde k šifrování. Po zálohování se provádí, můžete použít **Set-AzVMDiskEncryptionExtension** rutiny k šifrování spravované disky tak, že zadáte *- skipVmBackup* parametru. Další informace o tom, jak zálohování a obnovení šifrovaných virtuálních počítačů najdete v tématu [Azure Backup](../backup/backup-azure-vms-encryption.md) článku.
 
 **Osvědčený postup**: Pokud chcete mít jistotu, že šifrování tajných kódů není překračují hranice regionální, musí Azure Disk Encryption key vault a virtuální počítače umístěné ve stejné oblasti.   
 **Podrobnosti o**: Vytvoření a použití služby key vault je ve stejné oblasti jako virtuální počítač k šifrování.

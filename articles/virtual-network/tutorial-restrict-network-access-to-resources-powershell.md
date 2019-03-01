@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 501bfddd64d3353abc9212d63c76fb582e81a580
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b9672c55ae2285a7dd9d951038ef41eebcfa195c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649506"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192782"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Omezení síťového přístupu k prostředkům PaaS s koncovými body služby virtuální sítě pomocí Powershellu
 
@@ -197,13 +197,13 @@ Klíč slouží k vytvoření sdílené složky v pozdějším kroku. Zadejte `$
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Vytvoření sdílené složky v účtu úložiště
 
-Vytvořte kontext účtu úložiště a klíč [New-AzStorageContext](/powershell/module/azure.storage/new-AzStoragecontext). Kontext obsahuje klíč účtu úložiště název a účet:
+Vytvořte kontext účtu úložiště a klíč [New-AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext). Kontext obsahuje klíč účtu úložiště název a účet:
 
 ```azurepowershell-interactive
 $storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 ```
 
-Vytvoření sdílené složky s [New-AzStorageShare](/powershell/module/azure.storage/new-AzStorageshare):
+Vytvoření sdílené složky s [New-AzStorageShare](/powershell/module/az.storage/new-azstorageshare):
 
 $share = New-AzStorageShare my-file-share -Context $storageContext
 

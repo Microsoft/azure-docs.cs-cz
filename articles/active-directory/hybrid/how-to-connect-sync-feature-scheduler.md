@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40159a43db6f83029ed6eacd37d2a4eff28aa09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203841"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193054"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Scheduler
 Toto téma popisuje (označovaný také jako integrované plánovače ve službě Azure AD Connect sync synchronizační stroj).
@@ -55,7 +55,7 @@ Pokud se zobrazí **příkaz synchronizace nebo rutina není k dispozici** když
 * **PurgeRunHistoryInterval**. Čas se uchovávají protokoly operací. Tyto protokoly můžete zkontrolovat v synchronization service manager. Výchozí hodnota je pro tyto protokoly po dobu 7 dní.
 * **SyncCycleEnabled**. Určuje, zda Plánovač běží import, synchronizace a exportu procesů jako součást operace.
 * **MaintenanceEnabled**. Zobrazí, pokud je povoleno procesu údržby. Aktualizace certifikátů nebo klíčů a vymaže provoznímu protokolu.
-* **StagingModeEnabled**. Zobrazí-li [pracovním režimu](how-to-connect-sync-operations.md#staging-mode) je povolená. Pokud je toto nastavení povolené, pak potlačí exporty spouštění, ale stále spusťte import a synchronizaci.
+* **StagingModeEnabled**. Zobrazí-li [pracovním režimu](how-to-connect-sync-staging-server.md) je povolená. Pokud je toto nastavení povolené, pak potlačí exporty spouštění, ale stále spusťte import a synchronizaci.
 * **SchedulerSuspended**. Nastavte připojení během upgradu dočasně bloku Plánovač spouštění.
 
 Je možné změnit některá z těchto nastavení s `Set-ADSyncScheduler`. Je možné upravit následující parametry:

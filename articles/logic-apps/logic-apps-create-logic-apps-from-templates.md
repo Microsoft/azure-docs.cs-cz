@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 554171e02a369905bcf9cd4aa7bfa2e59ab46336
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229753"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193445"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytvoření pracovních postupů aplikace logiky z předem připravených šablon
 
@@ -52,7 +52,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    | **Předplatné** | *název_vašeho_předplatného_Azure* | Vyberte předplatné Azure, které chcete použít. | 
    | **Skupina prostředků** | *název_vaší_skupiny_prostředků_Azure* | Vytvořte nebo vyberte [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) pro tuto aplikaci logiky a uspořádat všechny prostředky přidružené k této aplikaci. | 
    | **Umístění** | *oblast_vašeho_datového_centra_Azure* | Vyberte oblast datového centra pro nasazení aplikace logiky, například Západní USA. | 
-   | **Log Analytics** | **Vypnout** (výchozí) nebo **na** | Zapnout [protokolování diagnostiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) pro vaši aplikaci logiky přes [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Vyžaduje se, že už máte pracovní prostor Log Analytics. | 
+   | **Log Analytics** | **Vypnout** (výchozí) nebo **na** | Zapnout [protokolování diagnostiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) pro vaši aplikaci logiky přes [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md). Vyžaduje se, že už máte pracovní prostor Log Analytics. | 
    |||| 
 
 4. Až budete připraveni, vyberte **Připnout na řídicí panel**. Aplikace logiky se tak automaticky zobrazí na řídicím panelu Azure a po nasazení se automaticky otevře. Zvolte **Vytvořit**.

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0df176185bde104a2beb34ea64d54e4069643f69
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d26cd97a248172955dcfcf2662424d1e782793bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190088"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192323"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -30,6 +30,8 @@ Jakmile jednou nastavíte skupinu do vypršení platnosti:
 -   Vlastníci skupiny se zobrazí oznámení, jak vypršení platnosti přiblíží obnovení skupiny
 -   Libovolná skupina, která se neobnoví se odstraní.
 -   Všechny skupiny Office 365, který je odstraněn, je možné obnovit do 30 dní vlastníci skupiny nebo správce
+
+V současné době se pro skupiny Office 365 v rámci jednoho tenanta dá nakonfigurovat jenom jedna zásada vypršení platnosti.
 
 > [!NOTE]
 > Konfigurace a použití zásady vypršení platnosti pro skupiny Office 365 vyžaduje, abyste na straně máte licence Azure AD Premium pro všechny členy skupiny, pro které se platí zásady vypršení platnosti.
@@ -61,6 +63,10 @@ Další informace o oprávnění k obnovení odstraněné skupiny, najdete v č�
   * Vyberte skupiny Office 365, které vyprší. Můžete povolit vypršení platnosti pro **všechny** skupiny Office 365, můžete také povolit pouze **vybrané** skupiny Office 365, nebo vyberte **žádný**  zakázat vypršení platnosti pro všechny skupiny.
   * Až to uděláte tak, že vyberete uložit nastavení **Uložit**.
 
+> [!NOTE]
+> * Při prvním nastavování vypršení platnosti všech skupin, které jsou starší než interval vypršení platnosti jsou nastavené na 30 dní do vypršení platnosti. První e-mail s oznámením obnovení bude odeslaná starší než jeden den. Například skupiny A vytvořil 400 dnů a vypršení platnosti interval je nastavená na 180 dnů. Při použití nastavení vypršení platnosti skupiny A má 30 dní, než je odstraníme, pokud jej obnoví vlastníka.
+> * Když dojde k odstranění a následnému obnovení dynamické skupiny, považuje se za novou skupinu a naplní se na základě pravidla. Tento proces může trvat až 24 hodin.
+
 ## <a name="email-notifications"></a>E-mailová oznámení
 
 E-mailová oznámení, jako je například tento se odesílají vlastníkům skupin Office 365 30 dnů, 15 dnů a 1 den před vypršením platnosti skupiny. Jazyk e-mailu je určen upřednostňovaného jazyka nebo jazyce tenanta vlastníka skupiny. Pokud vlastník skupiny definoval upřednostňovaného jazyka nebo více vlastníkům mají stejné preferovaný jazyk, použije se tento jazyk. U všech ostatních případech se používá jazyk tenanta.
@@ -77,11 +83,12 @@ Skupiny je možné obnovit do 30 dní od jeho odstranění tak, že vyberete **o
     
 Pokud na skupinu, kterou jste obnovení obsahuje dokumenty, Sharepointových webech nebo další trvalé objekty, může trvat až 24 hodin plně obnovit skupiny a její obsah.
 
+## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Jak načíst data vypršení platnosti skupin Office 365
+Kromě přístupovém panelu, kde uživatelé můžou zobrazit podrobnosti o skupině včetně datum vypršení platnosti a datum posledního obnovené a datum vypršení platnosti skupiny Office 365 mohou být načteny z verze Beta Microsoft Graph REST API. v Microsoft Graphu Beta se povolila expirationDateTime jako vlastnost skupiny. Se dá načíst požadavek GET. Další podrobnosti najdete [v tomto příkladu](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example).
+
 > [!NOTE]
-> * Při prvním nastavování vypršení platnosti všech skupin, které jsou starší než interval vypršení platnosti jsou nastavené na 30 dní do vypršení platnosti. První e-mail s oznámením obnovení bude odeslaná starší než jeden den. 
->   Například skupiny A vytvořil 400 dnů a vypršení platnosti interval je nastavená na 180 dnů. Při použití nastavení vypršení platnosti skupiny A má 30 dní, než je odstraníme, pokud jej obnoví vlastníka.
-> * V současné době se pro skupiny Office 365 v rámci jednoho tenanta dá nakonfigurovat jenom jedna zásada vypršení platnosti.
-> * Když dojde k odstranění a následnému obnovení dynamické skupiny, považuje se za novou skupinu a naplní se na základě pravidla. Tento proces může trvat až 24 hodin.
+> Pokud chcete spravovat členství ve skupině na přístupovém panelu, musí být nastavena na hodnotu "Ne" v Azure Active Directory skupiny Obecné nastavení "Omezení přístupu ke skupinám na přístupovém panelu".
+
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Jak funguje vypršení platnosti skupin Office 365 s poštovní schránku na blokování z právních důvodů
 Po vypršení platnosti skupiny a odstranění, potom 30 dnů od odstranění skupiny data z aplikací, jako jsou plánovače, weby, nebo týmy se trvale odstraní, ale poštovní skupiny, která je z důvodu soudního sporu se uchovávají, se trvale odstraní. Správce můžete použít k obnovení poštovní schránky k načtení dat rutin systému Exchange. 

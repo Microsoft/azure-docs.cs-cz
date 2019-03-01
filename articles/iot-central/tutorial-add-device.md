@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 04bdbd6c6af1f0e3a479920bc7f286343052281e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731525"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192152"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -102,18 +102,12 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 1. V prostředí příkazového řádku přejděte na složku `connectedairconditioner`, kterou jste vytvořili.
 
 1. Pomocí následujícího příkazu nainstalujte generátor klíčů DPS:
-    
+
     ```cmd/sh
     npm i -g dps-keygen
     ```
 
    Další informace o [nástroji příkazového řádku najdete zde](https://www.npmjs.com/package/dps-keygen).
-
-1. Stáhněte a rozbalte nástroj dps_cstr z [Githubu] ((Windows)https://github.com/Azure/dps-keygen/archive/master.zip
-
-)
-
-    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Připojovací řetězec pro instanci zařízení ve vaší aplikaci se vygeneruje z informací o zařízení, které poskytuje IoT Central.
 
@@ -121,17 +115,16 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 
    ![Stránka zařízení s odkazem pro zobrazení informací o připojení](media/tutorial-add-device/connectionlink.png)
 
-
 1. Na stránce Device Connection (Připojení zařízení) zkopírujte hodnoty Scope ID (ID oboru), Device ID (ID zařízení) a Primary Key (Primární klíč), vložte je do textového editoru a pak je uložte. Tyto hodnoty použijete v dalším kroku.
 
-   ![Podrobnosti připojení](media/tutorial-add-device/device-connect.PNG)
+   ![Podrobnosti připojení](media/tutorial-add-device/device-connect.png)
 
 1. Vraťte se do prostředí příkazového řádku a spuštěním následujícího příkazu vygenerujte připojovací řetězec:
 
-   ```cmd/sh
-   dps_cstr <scope_id> <device_id> <Primary Key>
-   ```
-   
+    ```cmd/sh
+    dps_keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
+    ```
+
    Výstup zkopírujte a uložte do nového souboru (například connection.txt).
 
 1. Pokud chcete inicializovat projekt Node.js, spusťte následující příkaz a přijměte všechny výchozí hodnoty:

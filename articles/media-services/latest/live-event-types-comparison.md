@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9671d9f61b610a85cbf2475e045c641a29dac11b
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878353"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010612"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živé události
 
@@ -33,7 +33,7 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů živá ud
 | Vstup s jednou přenosovou rychlostí je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
 | Maximální rozlišení příspěvek informačního kanálu |4K (4096 × 2160 na 60 snímků za sekundu) |1080p (1920 × 1088 na 30 snímků za sekundu)|
 | Doporučená maximální vrstvy v příspěvku informačního kanálu|Až 12|Jedno audio|
-| Maximální vrstvy ve výstupu| Stejné jako vstup|Až 7|
+| Maximální vrstvy ve výstupu| Stejné jako vstup|Až 6|
 | Maximální agregovaná šířka pásma příspěvku informačního kanálu|60 MB/s|neuvedeno|
 | Maximální přenosovou rychlost pro jednu vrstvu v příspěvku |20 MB/s|20 MB/s|
 | Podpora pro více jazyka zvukové stopy|Ano|Ne|

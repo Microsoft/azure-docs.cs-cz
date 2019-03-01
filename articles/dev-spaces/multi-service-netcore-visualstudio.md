@@ -1,5 +1,5 @@
 ---
-title: Spuštění více závislé služby pomocí .NET Core a Visual Studio | Dokumentace Microsoftu
+title: Spuštění více závislé služby pomocí .NET Core a Visual Studio
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,13 +11,13 @@ ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 6a9058d7f84b336b332ffdaf9b41abfb660433e6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
+ms.openlocfilehash: a2d7b4de47559ce3001662a1d4dd48187410d255
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819850"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191421"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Vývoj pro víc služeb prostory Azure Dev
 
@@ -33,7 +33,7 @@ Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHu
 
 ### <a name="run-mywebapi"></a>Spuštění *mywebapi*
 1. Otevřete službu `mywebapi` projektu v *samostatném okně sady Visual Studio*.
-1. Vyberte v rozevíracím okně nastavení spouštění **Azure Dev Spaces**, jak jste to udělali už dříve pro projekt `webfrontend`. Tentokrát místo vytváření nového clusteru AKS vyberte cluster, který jste už vytvořili. Stejně jako dříve nechte v rozevíracím seznamu Space (Prostor) vybranou položku `default` a klikněte na **OK**. V okně Výstup si můžete všimnout, že sada Visual Studio začíná tuto novou službu „připravovat“ ve vašem vývojovém prostoru, aby se při spuštění ladění postup urychlil.
+1. Vyberte v rozevíracím okně nastavení spouštění **Azure Dev Spaces**, jak jste to udělali už dříve pro projekt `webfrontend`. Tentokrát místo vytváření nového clusteru AKS vyberte cluster, který jste už vytvořili. Stejně jako dříve nechte v rozevíracím seznamu Space (Prostor) vybranou položku `default` a klikněte na **OK**. V okně výstupu můžete si všimnout spustí aplikace Visual Studio "zahřívání" Tato nová služba ve vašem prostoru dev k urychlení věci při zahájení ladění.
 1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Až se barva stavového řádku sady Visual Studio změní na oranžovou, bude služba připravená.
 1. Poznamenejte si koncový bod adresy URL se zobrazí v **Azure Dev prostory pro AKS** v podokně **výstup** okna. Bude vypadat přibližně takto: http://localhost:\<portnumber\>. I když to může vypadat, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure.
 2. Až se `mywebapi` připraví, otevřete v prohlížeči adresu místního hostitele a k adrese URL připojte `/api/values`, aby se vyvolalo výchozí rozhraní GET API pro `ValuesController`. 

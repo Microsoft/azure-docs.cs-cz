@@ -4,29 +4,27 @@ description: Kroky k nasazení clusteru vFXT Avere v Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 972ba937ad15fa9a6d2eb74e3e4c9e6e8f3923a4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 7081d46af335f29e5723ef8d471814a1564907c2
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745431"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990200"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
-Tento postup vás provede pomocí Průvodce nasazení k dispozici z webu Azure Marketplace. Průvodce automaticky nasadí do clusteru s použitím šablony Azure Resource Manageru. Po zadání parametrů ve formuláři a klikněte na tlačítko **vytvořit**, Azure automaticky provede tyto kroky: 
+Tento postup vás provede pomocí Průvodce nasazení k dispozici z webu Azure Marketplace. Průvodce automaticky nasadí do clusteru s použitím šablony Azure Resource Manageru. Po zadání parametrů ve formuláři a klikněte na tlačítko **vytvořit**, Azure automaticky provede tyto kroky:
 
-* Vytvoření kontroleru clusteru, což je základní virtuální počítač, který obsahuje software potřebný k nasazení a správě clusteru.
-* Nastavte skupinu prostředků a virtuální síťové infrastruktury, včetně vytváření nových elementů v případě potřeby.
-* Vytvořit virtuální počítače uzlu clusteru a lze nakonfigurovat jako Avere cluster.
-* Pokud o to požádá, vytvořit nový kontejner objektů Blob v Azure a nakonfiguruje ho jako filtr core clusteru.
+* Vytvoří kontroler clusteru, což je základní virtuální počítač, který obsahuje software potřebný k nasazení a správě clusteru.
+* Vytvoří skupinu prostředků a virtuální síťové infrastruktury, včetně vytváření nových elementů.
+* Vytvoří virtuální počítače uzlu clusteru a nakonfiguruje jako Avere clusteru.
+* Pokud o to požádá vytvoří nový kontejner objektů Blob v Azure a nakonfiguruje ho jako filtr core clusteru.
 
-Po provedení kroků v tomto dokumentu, budete mít virtuální síť, podsíť, kontroleru a vFXT clusteru, jak je znázorněno v následujícím diagramu:
+Po provedení kroků v tomto dokumentu, bude mít virtuální síť, podsíť, kontroleru a vFXT clusteru, jak je znázorněno v následujícím diagramu. Tento diagram znázorňuje základní filer volitelné objektů Blob v Azure, což zahrnuje nový kontejner úložiště objektů Blob (v rámci nového účtu úložiště, není vidět) a koncový bod služby pro Microsoft storage v podsíti. 
 
-![Diagram znázorňující virtuální síť obsahuje volitelné blob storage a podsítě obsahující tři seskupené virtuálních počítačů označené jako clusterové uzly/vFXT vFXT a jeden kontroler s popiskem clusteru virtuálních počítačů](media/avere-vfxt-deployment.png)
-
-Po vytvoření clusteru, měli byste [vytvořit koncový bod úložiště](#create-a-storage-endpoint-if-using-azure-blob) ve službě virtual network při použití služby Blob storage. 
+![Diagram znázorňující tři soustředných obdélníků se Avere součásti clusteru. Vnější obdélníku je označené jako "Skupiny prostředků" a obsahuje šestiúhelník označené jako "Blob storage (volitelné)". Další obdélníku v je označené jako "virtuální síť: 10.0.0.0/16 "a nesmí obsahovat žádné jedinečné součásti. Nejvnitřnější obdélníku je označené jako "Subnet:10.0.0.0/24" a obsahuje virtuální počítač s názvem "Řadič clusteru", množství tři virtuální počítače s názvem "vFXT uzly (vFXT clusteru)" a šestiúhelník označené jako koncový bod služby. Se šipkou připojení koncového bodu služby (což je v podsíti) a úložišti objektů blob (což je mimo podsíť a virtuální sítě ve skupině prostředků). Na šipku prochází podsítě a virtuální sítě hranice.](media/avere-vfxt-deployment.png)  
 
 Před použitím šablonu pro vytvoření, ujistěte se, že se že odstranily tyto požadavky:  
 
@@ -34,6 +32,7 @@ Před použitím šablonu pro vytvoření, ujistěte se, že se že odstranily t
 1. [Oprávnění vlastníka předplatného](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kvóta pro vFXT clusteru](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [Vlastní přístup role](avere-vfxt-prereqs.md#create-access-roles) -musí vytvořit roli řízení přístupu na základě role přiřadit uzlům clusteru. Máte možnost také vytvářet vlastní přístup role pro správce clusteru, ale většina uživatelů bude trvat výchozí role vlastníka, který dává oprávnění kontroleru odpovídající vlastníkovi skupiny prostředků. Čtení [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md#owner) další podrobnosti.
+1. [Koncový bod služby Storage (v případě potřeby)](avere-vfxt-prereqs.md#optional-create-a-storage-service-endpoint-in-your-virtual-network) – třeba nasadí použití existující virtuální síť a vytvoření úložiště objektů blob
 
 Další informace o plánování a kroky nasazení clusteru, najdete v článku [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md) a [Přehled nasazení](avere-vfxt-deploy-overview.md).
 
@@ -105,13 +104,13 @@ Na druhé stránce šablonu nasazení umožňuje nastavit velikost clusteru, typ
 
 * **Název clusteru vFXT Avere** – zadejte jedinečný název clusteru. 
 
-* **Velikost** -zadat typ virtuálního počítače pro použití při vytváření uzly clusteru. 
+* **Velikost** – Tato část ukazuje typ virtuálního počítače, který se použije pro uzly clusteru. I když existuje jenom jedna možnost doporučené, **změnit velikost** odkaz otevře tabulku s podrobnostmi o tento typ instance a odkaz na cenové kalkulačky.  <!-- old: Specify the VM type to use when creating the cluster nodes.  -->
 
 * **Velikost na jeden uzel mezipaměti** -clusteru mezipaměti se pak rozdělí mezi uzly clusteru, takže celková velikost mezipaměti ve vašem clusteru vFXT Avere bude velikost mezipaměti podle počtu uzlů vynásobenému z počtu uzlů. 
 
-  Doporučená konfigurace je používat 1 TB na jeden uzel, pokud pomocí Standard_D16s_v3 uzly clusteru a použít 4 TB na jeden uzel, pokud pomocí Standard_E32s_v3 uzlů.
+  Doporučená konfigurace, je pro uzly Standard_E32s_v3 využívat 4 TB na jeden uzel.
 
-* **Virtuální síť** – vyberte existující virtuální síť k umístění clusteru nebo definovat novou virtuální síť vytvořit. 
+* **Virtuální síť** – definovat novou virtuální síť k umístění clusteru, nebo vyberte existující virtuální síť, která splňuje požadavky popsané v [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md#resource-group-and-network-infrastructure). 
 
   > [!NOTE]
   > Pokud vytvoříte novou virtuální síť, clusteru kontrolér bude mít veřejnou IP adresu, aby měli přístup ke novou privátní síť. Pokud zvolíte existující virtuální síť, kontroler cluster je nakonfigurovaný bez veřejné IP adresy. 
@@ -121,17 +120,21 @@ Na druhé stránce šablonu nasazení umožňuje nastavit velikost clusteru, typ
   >  * Pokud není nastavení veřejné IP adresy na řadiči, musíte použít jiný hostitel jump, připojení k síti VPN nebo ExpressRoute pro přístup ke clusteru. Například vytvořte řadič ve virtuální síti, který už má nakonfigurované připojení k síti VPN.
   >  * Pokud vytvoříte řadič s použitím veřejné IP adresy, by měl ochranu virtuálního počítače řadiče se skupinou zabezpečení sítě. Ve výchozím nastavení vFXT Avere pro nasazení v Azure vytvoří skupinu zabezpečení sítě a omezuje příchozí přístup jenom port 22 pro řadiče s veřejnými IP adresami. Systém jde dál chránit zamčením dolů přístup ke zdrojové váš rozsah IP adres – to znamená, povolit připojení pouze z počítačů, které máte v úmyslu používat pro přístup ke clusteru.
 
+  Nasazení šablony také nakonfiguruje novou virtuální síť s koncového bodu služby storage pro Azure Blob storage a řízení přístupu k síti uzamčený, aby se jen IP adresy z podsítě clusteru. <!-- xxx make sure this is accurate --> <!-- do I need to say that this only happens if you choose to create storage? -->
+
 * **Podsíť** – zvolte podsíť z existující virtuální sítě, nebo vytvořte novou. 
 
-* **Používání úložiště blob** – zvolte **true** vytvořit nový kontejner objektů Blob v Azure a nakonfiguruje ho jako back endové úložiště pro nový cluster vFXT Avere. Tato možnost také vytvoří nový účet úložiště ve stejné skupině prostředků jako cluster. 
+* **Vytvoření a použití služby blob storage** – zvolte **true** vytvořit nový kontejner objektů Blob v Azure a nakonfiguruje ho jako back endové úložiště pro nový cluster vFXT Avere. Tato možnost také vytvoří nový účet úložiště ve stejné skupině prostředků jako cluster a koncový bod úložiště služby Microsoft uvnitř clusteru podsítě. 
+  
+  Pokud zadáte existující virtuální sítě, musí mít koncový bod služby úložiště před vytvořením clusteru. (Další informace najdete v článku [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md).)
 
   Nastavte pole na **false** Pokud nechcete vytvořit nový kontejner. V takovém případě musíte připojit a nakonfigurovat úložiště po vytvoření clusteru. Čtení [konfigurace úložiště](avere-vfxt-add-storage.md) pokyny. 
 
-* **Účet úložiště** - li vytvořit nový kontejner objektů Blob v Azure, zadejte název nového účtu úložiště. 
+* **(Nové) Účet úložiště** - li vytvořit nový kontejner objektů Blob v Azure, zadejte název nového účtu úložiště. 
 
 ## <a name="validation-and-purchase"></a>Ověření a nákup
 
-Stránka tři poskytuje souhrnné informace o konfiguraci a ověří parametry. Po ověření proběhne úspěšně, klikněte na tlačítko **OK** tlačítka budete pokračovat. 
+Třetí straně možnost shrne konfiguraci a ověří parametry. Po ověření proběhne úspěšně, klikněte na tlačítko **OK** tlačítka budete pokračovat. 
 
 ![Třetí stránka šablony nasazení – ověření](media/avere-vfxt-deploy-3.png)
 
@@ -159,20 +162,6 @@ Jak najít tyto informace, podle následujícího postupu:
 1. Na levé straně a klikněte na tlačítko **výstupy**. Zkopírujte hodnoty v každém z těchto polí. 
 
    ![Vypíše hodnoty SSHSTRING RESOURCE_GROUP, umístění, NETWORK_RESOURCE_GROUP, sítě, PODSÍTĚ, SUBNET_ID, VSERVER_IPs a MGMT_IP zobrazení stránky v polích napravo od popisků](media/avere-vfxt-outputs-values.png)
-
-
-## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Vytvoření koncového bodu úložiště (Pokud se používá objektů Blob v Azure)
-
-Pokud používáte úložiště objektů Blob v Azure pro váš back endovým datům úložiště, měli byste vytvořit koncový bod služby úložiště ve službě virtual network. To [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) udržuje objektů Blob v Azure provoz místní namísto směrování mimo virtuální síť.
-
-1. Z portálu, klikněte na tlačítko **virtuální sítě** na levé straně.
-1. Vyberte virtuální síť pro kontrolér. 
-1. Klikněte na tlačítko **koncové body služby** na levé straně.
-1. Klikněte na tlačítko **přidat** v horní části.
-1. Nechte službu jako ``Microsoft.Storage`` a zvolte podsíť kontroleru.
-1. V dolní části, klikněte na tlačítko **přidat**.
-
-  ![Azure portal – snímek obrazovky s poznámkami postup vytvoření koncového bodu služby](media/avere-vfxt-service-endpoint.png)
 
 ## <a name="next-step"></a>Další krok
 

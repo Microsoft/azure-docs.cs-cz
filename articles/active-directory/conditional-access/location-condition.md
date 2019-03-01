@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/21/2019
+ms.date: 02/28/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb991de113b13666eeaab3f283b9eccd75fbd39
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 14b277e505e2a4975945f4b2f8f8410e25e0f8b3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166025"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193581"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění podmíněného přístupu Azure Active Directory? 
 
@@ -59,7 +59,7 @@ Pojmenované umístění má následující komponenty:
 
 - **Název** – zobrazovaný název pojmenované umístění.
 
-- **Rozsahy IP adres** – jeden nebo více rozsahů adres IPv4 ve formátu CIDR. Zadání rozsahu adres Ipv6 není podporováno.
+- **Rozsahy IP adres** – jeden nebo více rozsahů adres IPv4 ve formátu CIDR. Zadání rozsahu adres IPv6 není podporováno.
 
 - **Označit jako důvěryhodné umístění** -příznak, který můžete nastavit pro pojmenované umístění pro důvěryhodného umístění. Důvěryhodná umístění jsou obvykle oblastem sítě, které jsou řízené vaším IT oddělením. Kromě podmíněného přístupu, důvěryhodné pojmenovaná umístění jsou také používány zprávy o zabezpečení Azure Identity Protection a Azure AD ke snížení [počet falešně pozitivních výsledků](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 
@@ -142,7 +142,7 @@ Ve výchozím nastavení Azure AD vydá token po hodinách. Po přesunutí mimo 
 
 ### <a name="user-ip-address"></a>IP adresy uživatele
 
-IP adresa, která se používá v hodnocení zásad je veřejnou IP adresu uživatele. Pro zařízení v privátní síti to není IP adresa klienta zařízení uživatele v síti intranet, je adresa použitá v síti se připojit k veřejnému Internetu. 
+IP adresa, která se používá v hodnocení zásad je veřejnou IP adresu uživatele. Pro zařízení v privátní síti to není IP adresa klienta zařízení uživatele v síti intranet, je adresa použitá v síti se připojit k veřejnému Internetu. Pokud vaše zařízení má jenom adresy IPv6, konfigurace podmínka umístění se nepodporuje.
 
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Hromadné nahrávání a stahování pojmenovaná umístění
 

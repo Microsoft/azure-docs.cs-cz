@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b05f2dc1ed766ccb06b71c2977ceaf2b7cd823d3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b044edbc24a83aeb98ff603a43f160a6c88d940f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869662"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193343"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla zavedena v systému sestavení [1.1.105.0 (všeobecně dostupné. února 2016)](reference-connect-version-history.md#111050).  Tato funkce byla aktualizována v [sestavení 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které dříve nebyly podporovány.
@@ -100,7 +100,7 @@ Tady je seznam nejběžnějších zprávy, které najdete. Neobsahuje všechny, 
 | UpgradeNotSupportedNonMsolAccount |[Účet AD DS konektoru](reference-connect-accounts-permissions.md#ad-ds-connector-account) MSOL_ výchozího účtu už není. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Při nastavování AAD Connect, zvolíte *nekonfigurujte* při výběru metody přihlašování. | 
 | UpgradeNotSupportedPtaSignInMethod | Jako metodu přihlašování jste vybrali předávací ověřování. |
-| UpgradeNotSupportedStagingModeEnabled |Server je nastaven v [pracovním režimu](how-to-connect-sync-operations.md#staging-mode). |
+| UpgradeNotSupportedStagingModeEnabled |Server je nastaven v [pracovním režimu](how-to-connect-sync-staging-server.md). |
 | UpgradeNotSupportedUserWritebackEnabled |Povolíte [zpětný zápis uživatelů](how-to-connect-preview.md#user-writeback) funkce. |
 
 ## <a name="next-steps"></a>Další postup

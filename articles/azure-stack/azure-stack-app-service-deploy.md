@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 0467f131ab4300ba3217ed01f37ebb7f4b8dbe5e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e8028bc9a4a6f3245dca61d6dd30db22dc295a7f
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732768"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992426"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -30,7 +30,7 @@ ms.locfileid: "56732768"
 K nasazení služby App Service ve službě Azure Stack, použijte pokyny v tomto článku.
 
 > [!IMPORTANT]  
-> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.4.
+> Aktualizace 1901 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.5.
 
 Může dát uživatelům možnost vytvářet webové aplikace a aplikace API. Umožníte uživatelům vytvářet tyto aplikace, budete muset:
 
@@ -38,7 +38,7 @@ Může dát uživatelům možnost vytvářet webové aplikace a aplikace API. Um
  - Po instalaci poskytovatele prostředků App Service, můžete jej zahrnout do nabídky a plány. Uživatelé můžou potom přihlásit k odběru službu a začněte vytvářet aplikace.
 
 > [!IMPORTANT]  
-> Než spustíte instalační program zprostředkovatele prostředků, ujistěte se, že jste postupovali podle pokynů v [před zahájením práce](azure-stack-app-service-before-you-get-started.md).
+> Předtím, než spustíte instalační program zprostředkovatele prostředků, ujistěte se, že jste postupovali podle pokynů v [před zahájením práce](azure-stack-app-service-before-you-get-started.md) a čtení [poznámky k verzi](azure-stack-app-service-release-notes-update-five.md), které nejsou poskytnuty verze 1.5, další informace o nové Funkce, opravy a známých problémech, které by mohly ovlivnit vaše nasazení.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Spusťte instalační program zprostředkovatele prostředků App Service
 
@@ -99,7 +99,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
    ![App Service Installer][4]
 
-8. Zadejte informace pro svou sdílenou složku a potom vyberte **Další**. Plně kvalifikovaný název domény (FQDN) nebo IP adresa souborového serveru se musí používat adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.
+8. Zadejte informace pro svou sdílenou složku a potom vyberte **Další**. Plně kvalifikovaný název domény (FQDN) nebo IP adresa souborového serveru se musí používat adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.  Pokud používáte souborový server, který je k doméně, je nutné zadat úplné uživatelské jméno včetně domény, například myfileserverdomain\FileShareOwner.
 
    >[!NOTE]
    >Instalační program se pokusí o test připojení ke sdílené složce než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální síť, tento test připojení se nemusí podařit. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Pokud je správný soubor sdílet informace, pokračujte v nasazení.
@@ -184,6 +184,11 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     ![App Service Installer][17]
 
+## <a name="post-deployment-steps"></a>Kroky po nasazení
+
+> [!IMPORTANT]  
+> Pokud jste zadali RP App Service se vždy na instanci SQL je nutné [přidat do skupiny dostupnosti databáze appservice_hosting a appservice_metering](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) a synchronizaci databází, aby nedocházelo ke služby události převzetí služeb při selhání databáze.
+
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Ověření služby App Service na instalaci služby Azure Stack
 
 1. V portálu pro správu služby Azure Stack, přejděte na **Správa – App Service**.
@@ -192,12 +197,12 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     ![Správa služby App Service](media/azure-stack-app-service-deploy/image12.png)
 
-    Pokud nasazení provádíte do existující virtuální sítě a pomocí interní IP adresu pro připojení k souborového serveru, je nutné přidat odchozí pravidlo zabezpečení. Toto pravidlo aktivuje přenosy SMB mezi podsítě pracovního procesu a souborového serveru.  Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
+    Pokud nasazení provádíte do existující virtuální sítě a pomocí interní IP adresu pro připojení k souborovému serveru, je nutné přidat odchozí pravidlo zabezpečení. Toto pravidlo aktivuje přenosy SMB mezi podsítě pracovního procesu a souborový server.  Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
 
     - Zdroj: Všechny
     - Zdrojový rozsah portů: *
     - Cíl: IP adresy
-    - Rozsah cílových IP adres: Rozsah IP adres pro souborového serveru
+    - Rozsah cílových IP adres: Rozsah IP adres pro souborový server
     - Rozsah cílových portů: 445
     - Protokol: TCP
     - Akce: Povolit

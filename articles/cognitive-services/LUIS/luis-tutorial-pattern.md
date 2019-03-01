@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 02/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3fe549a63f0fb4662ba5beb2e28f1ca72fcc1ee4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55855879"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193734"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Kurz: Přidejte společný vzor šablony utterance formátů
 
@@ -221,22 +221,7 @@ Entity v promluvě musejí nejdříve souhlasit s entitami v šabloně promluvy,
 
 **Vzory sice umožňují poskytovat méně ukázkových promluv, když ale není detekovaná entita, vzor se nespáruje.**
 
-V tomto kurzu přidejte dva nové záměry: `OrgChart-Manager` a `OrgChart-Reports`. 
-
-|Záměr|Promluva|
-|--|--|
-|OrgChart-Manager|Komu se zodpovídá Jana Nováková?|
-|OrgChart-Reports|Kdo se zodpovídá Janě Novákové?|
-
-Když LUIS vrátí klientské aplikaci predikci, může být název záměru použitý jako název funkce klientské aplikace a entita Zaměstnanec se dá použít jako parametr této funkce.
-
-```javascript
-OrgChartManager(employee){
-    ///
-}
-```
-
-Zapamatujte si, že se zaměstnanci vytvořili v [kurzu seznamu entit](luis-quickstart-intent-and-list-entity.md).
+## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Přidejte tyto vzory se dají pro záměr správce organizačního diagramu
 
 1. Vyberte **Sestavení** v horní nabídce.
 
@@ -259,7 +244,7 @@ Zapamatujte si, že se zaměstnanci vytvořili v [kurzu seznamu entit](luis-quic
 
     [![Screenshot zadávání šablony promluv záměru](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Vyberte záměr **OrgChart-Reports**, pak zadejte následující šablony promluv:
+4. Zatímco jste pořád na stránce vzory, vyberte **organizačního diagramu sestavy** záměr, pak zadejte následující projevy šablony:
 
     |Šablony promluv|
     |:--|
@@ -272,11 +257,13 @@ Zapamatujte si, že se zaměstnanci vytvořili v [kurzu seznamu entit](luis-quic
 
 ## <a name="query-endpoint-when-patterns-are-used"></a>Dotaz koncovému bodu při použití šablon
 
+Teď, když tyto vzory se dají se přidají do aplikace, trénování, publikovat a dotazování aplikací v koncovém bodě předpovědi modulu runtime.
+
 1. Trénujte a publikujte aplikaci znovu.
 
-2. Přepněte panel prohlížeče zpět na panel webové adresy koncového bodu.
+1. Přepněte panel prohlížeče zpět na panel webové adresy koncového bodu.
 
-3. Na konec adresy URL zadejte `Who is the boss of Jill Jones?` podle promluvy. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+1. Na konec adresy URL zadejte `Who is the boss of Jill Jones?` podle promluvy. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
     ```json
     {
@@ -362,11 +349,11 @@ Zapamatujte si, že se zaměstnanci vytvořili v [kurzu seznamu entit](luis-quic
     }
     ```
 
-Predikce záměru je teď výrazně vyšší.
+Záměru předpovědi je nyní výrazně větší jistotu.
 
 ## <a name="working-with-optional-text-and-prebuilt-entities"></a>Práce s volitelným textem a předpřipravenými entitami
 
-Předchozí vzor šablony promluv použitý v tomto kurzu obsahoval několik ukázek volitelného textu`'s`, například použití `?`. Předpokládejme, že promluvy koncového bou ukazují, že manažeři a pracovníci oddělení lidských zdrojů hledají historická data a také v budoucnu plánované přesuny zaměstnanců uvnitř společnosti.
+Předchozí vzor šablony promluv použitý v tomto kurzu obsahoval několik ukázek volitelného textu`'s`, například použití `?`. Předpokládejme, že je potřeba povolit pro aktuální a budoucí datum v textu utterance.
 
 Ukázkové promluvy jsou:
 
@@ -379,23 +366,22 @@ Ukázkové promluvy jsou:
 
 Každý z těchto příkladů používá slovesný čas (`was`, `is`, `will be`) a datum (`March 3`, `now`, `in a month`), které LUIS potřebuje k tomu, aby predikoval správně. Všimněte si, že poslední dva příklady používají stejný text s výjimkou `in` a `on`.
 
-Ukázková šablona promluv:
+Příklad šablony projevy, které umožňují této volitelné informace: 
+
 |Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
 |:--|:--|
 |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
 
 Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidávání volitelného textu do šablony promluvy. Tato syntaxe může být vnořená až na druhou úroveň `[[]]` a obsahovat entity nebo text.
 
-**Otázka: Proč nelze projevy poslední dva příklad zkombinovat do jedné šabloně utterance?** Šablona vzoru nepodporuje syntaxi OR (NEBO). Aby bylo možné zachytit jak verzi `in`, tak verzi `on`, musí být každá z nich v samostatné šabloně promluvy.
 
 **Otázka: Proč jsou všechny `w` písmena, první písmena jednotlivých utterance šablony, malá písmena? Nemělo by být volitelné, jestli budou velká nebo malá?** Promluva, kterou klientská aplikace odesílá koncovému bodu dotazu, se převádí na malá písmena. V šabloně promluvy můžete použít jak malá, tak velká písmena. V promluvě koncového bodu také. Porovnání se provádí vždy až po převodu na malá písmena.
 
 **Otázka: Proč není předem připravených číslo součástí šablony utterance Pokud dne 3 je předpovědět také jako číslo `3` data a času `March 3`?** Šablona promluvy podle kontextu použije datum buď doslova jako `March 3`, nebo abstrahovanou jako `in a month`. Datum sice může obsahovat číslo, ale ne každé číslo musí být nutně datum. Používejte vždy takovou entitu, která nejlépe vystihuje typ požadovaný ve výsledcích JSON predikce.  
 
-**Otázka: A co špatně obsahuje jiné spojení projevy například `Who will {Employee}['s] manager be on March 3?`.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS.
+**Otázka: A co špatně obsahuje jiné spojení projevy například `Who will {Employee}['s] manager be on March 3?`.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS. Je možné [skupiny a](#use-the-or-operator-and-groups) rodu příkaz ke sloučení těchto projevů. 
 
 **Pamatujte: nejdřív se najdou entity, pak se teprve spáruje vzor.**
 
@@ -403,11 +389,9 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
 
 1. Na webu LUIS vyberte **Zkompilovat** v horní nabídce, pak vyberte **Vzory** v nabídce vlevo. 
 
-2. Najděte existující šablonu promluvy `Who is {Employee}['s] manager[?]` a vpravo vyberte symbol tří teček (***...***). 
+1. Vyhledejte existující utterance šablony `Who is {Employee}['s] manager[?]`a vyberte tři tečky (***...*** ) na pravé straně vyberte **upravit** v místní nabídce. 
 
-3. Vyberte **Upravit** z místní nabídky. 
-
-4. Změňte šablonu promluvy na `who is {Employee}['s] manager [[on]{datetimeV2}?]]`
+1. Změňte šablonu promluvy na `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
 ## <a name="add-new-pattern-template-utterances"></a>Přidání nových vzorů šablony promluv
 
@@ -416,7 +400,6 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
     |Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
     |--|--|
     |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
@@ -426,7 +409,7 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
 
 4. Zadejte několik testovacích promluv. Ověříte tak, jestli je vzor spárovaný a skóre záměru výrazně vysoké. 
 
-    Po zadání první promluvy vyberte **Zkontrolovat** pod výsledkem. Zobrazíte tak všechny výsledky predikce.
+    Po zadání první promluvy vyberte **Zkontrolovat** pod výsledkem. Zobrazíte tak všechny výsledky predikce. Musí mít každý utterance **organizačního diagramu správce** záměr a by měl extrahovat hodnoty pro zaměstnance a datetimeV2 entity.
 
     |Promluva|
     |--|
@@ -438,6 +421,51 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
     |Kdo bude za měsíc manažerem Jany Novákové?|
 
 Ve všech promluvách jsou entity, proto se všechny shodují se stejným vzorem a mají vysoké skóre predikce.
+
+## <a name="use-the-or-operator-and-groups"></a>Použití operátoru OR a skupin
+
+Některé z předchozích projevy šablony jsou velmi podobné. Použití **skupiny** `()` a **nebo** `|` syntaxe ke snížení projevy šablony. 
+
+Následující modely 2 můžete zkombinovat do jednoho modelu pomocí skupiny `()` a nebo `|` syntaxe.
+
+|Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
+|--|--|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+Nová šablona utterance bude: 
+
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
+
+Tady se používá **skupiny** kolem příkaz vyžaduje čas a volitelné `in` a `on` s **nebo** kanálu mezi nimi. 
+
+1. Na **vzory** stránky, vyberte **organizačního diagramu správce** filtru. Zúžit seznam tak, že `manager`. 
+
+    ![Hledat ve vzorech záměr správce organizačního diagramu pro termín "správce"](./media/luis-tutorial-pattern/search-patterns.png)
+
+1. Zachovat jednu verzi utterance šablony (Chcete-li upravit v dalším kroku) a odstraňte další varianty konfigurací. 
+
+1. Změna utterance šablony pro: 
+
+    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+
+1. Trénujte aplikaci.
+
+1. Testovací podokno použijte k testování verzí utterance:
+
+    |Projevy zadejte testovací podokno|
+    |--|
+    |`Who is Jill Jones manager this month`|
+    |`Who is Jill Jones manager on July 5th`|
+    |`Who was Jill Jones manager last month`|
+    |`Who was Jill Jones manager on July 5th`|    
+    |`Who will be Jill Jones manager in a month`|
+    |`Who will be Jill Jones manager on July 5th`|
+
+
+## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Použít utterance počáteční a koncové kotvy
+
+Syntaxe vzor obsahuje počáteční a koncové utterance ukotvení syntaxe stříška, `^`. Počáteční a koncové utterance kotvy je možné společně na specifickou a pravděpodobně literálu utterance cíl nebo použít samostatně k cílové záměry. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

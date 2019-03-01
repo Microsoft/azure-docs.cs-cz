@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cb7f6799556406c4c5def12b1367bfd581d06b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198639"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193314"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s synchronizaci hodnot hash hesel pomocí synchronizace Azure AD Connect
 Toto téma popisuje kroky pro řešení potíží s synchronizaci hodnot hash hesel. Pokud hesla se nesynchronizují podle očekávání, může být pro podmnožinu uživatelů nebo pro všechny uživatele.
@@ -225,7 +225,7 @@ Můžete použít `Invoke-ADSyncDiagnostics` rutiny určit, proč se jeden objek
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Hesla se nesynchronizují: ruční kroky pro řešení potíží
 Postupujte podle následujících kroků zjistěte, proč hesla se nesynchronizují:
 
-1. Je server Connect v [pracovním režimu](how-to-connect-sync-operations.md#staging-mode)? Server v pracovní režimu nesynchronizuje hesla.
+1. Je server Connect v [pracovním režimu](how-to-connect-sync-staging-server.md)? Server v pracovní režimu nesynchronizuje hesla.
 
 2. Spusťte skript [získat stav nastavení synchronizace hesel](#get-the-status-of-password-sync-settings) oddílu. Poskytuje přehled o konfiguraci synchronizace hesel.  
 

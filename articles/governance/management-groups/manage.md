@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: bcc0b247ee304e657b7679920a3956acad11adc9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 51e9d44a95a3896767caf4b3f04d17c2933e8599
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985117"
+ms.locfileid: "56990526"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -20,6 +20,8 @@ Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způ
 Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.  Další informace o skupinách správy, najdete v článku [uspořádání prostředků se skupinami pro správu Azure](overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>Změňte název skupiny pro správu
 
@@ -45,10 +47,10 @@ Název skupiny pro správu můžete změnit pomocí portálu, Powershellu nebo r
 
 ### <a name="change-the-name-in-powershell"></a>Změňte název v prostředí PowerShell
 
-Aktualizovat pomocí názvu zobrazení **aktualizace AzureRmManagementGroup**. Například změnit název skupiny správy z "Contoso IT" do "Skupiny společnosti Contoso", spusťte následující příkaz:
+Aktualizovat pomocí názvu zobrazení **aktualizace AzManagementGroup**. Například změnit správy skupin zobrazované jméno z "Contoso IT" do "Skupiny společnosti Contoso", spusťte následující příkaz:
 
 ```azurepowershell-interactive
-Update-AzureRmManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
+Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
 ```
 
 ### <a name="change-the-name-in-azure-cli"></a>Změňte název v rozhraní příkazového řádku Azure
@@ -94,10 +96,10 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 
 ### <a name="delete-in-powershell"></a>Odstranit v prostředí PowerShell
 
-Použití **odebrat AzureRmManagementGroup** příkazu v Powershellu k odstranění skupin pro správu.
+Použití **odebrat AzManagementGroup** příkazu v Powershellu k odstranění skupin pro správu.
 
 ```azurepowershell-interactive
-Remove-AzureRmManagementGroup -GroupName 'Contoso'
+Remove-AzManagementGroup -GroupName 'Contoso'
 ```
 
 ### <a name="delete-in-azure-cli"></a>Odstranění v Azure CLI
@@ -126,22 +128,22 @@ Můžete zobrazit všechny skupiny pro správu, kterou máte v roli RBAC s pří
 
 ### <a name="view-in-powershell"></a>Zobrazení v prostředí PowerShell
 
-Pomocí příkazu Get-AzureRmManagementGroup k načtení všech skupin.  Zobrazit [ https://aka.ms/Get-MG-Powershell ](https://aka.ms/Get-MG-Powershell) pro úplný seznam příkazů prostředí Powershell získat skupiny správy.  
+Pomocí příkazu Get-AzManagementGroup k načtení všech skupin.  Zobrazit [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) moduly pro úplný seznam správy skupiny příkazů GET Powershellu.  
 
 ```azurepowershell-interactive
-Get-AzureRmManagementGroup
+Get-AzManagementGroup
 ```
 
 Jedna skupina pro správu vaší informace použijte parametr - GroupName
 
 ```azurepowershell-interactive
-Get-AzureRmManagementGroup -GroupName 'Contoso'
+Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
 Pokud chcete vrátit konkrétní skupině pro správu a všechny úrovně v hierarchii pod ním, použijte **-rozbalte** a **-Recurse** parametry.  
 
 ```azurepowershell-interactive
-PS C:\> $response = Get-AzureRmManagementGroup -GroupName TestGroupParent -Expand -Recurse
+PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
 PS C:\> $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
@@ -247,16 +249,16 @@ Chcete-li zjistit, jaká oprávnění máte na webu Azure Portal, vyberte správ
 
 ### <a name="move-subscriptions-in-powershell"></a>Přesunout předplatná v prostředí PowerShell
 
-Pokud chcete přesunout předplatné v prostředí PowerShell, použijte příkaz New-AzureRmManagementGroupSubscription.  
+Pokud chcete přesunout předplatné v prostředí PowerShell, použijte příkaz New-AzManagementGroupSubscription.  
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-Chcete-li odebrat propojení mezi a předplatném a skupině pro správu použijte příkaz Remove-AzureRmManagementGroupSubscription.
+Chcete-li odebrat propojení mezi a předplatném a skupině pro správu použijte příkaz Remove-AzManagementGroupSubscription.
 
 ```azurepowershell-interactive
-Remove-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
 ### <a name="move-subscriptions-in-azure-cli"></a>Přesun předplatných v Azure CLI
@@ -298,10 +300,10 @@ Při přesunutí nadřazená skupina pro správu hierarchie v této skupině se 
 
 ### <a name="move-management-groups-in-powershell"></a>Přesunutí skupin pro správu v prostředí PowerShell
 
-Pomocí příkazu Update-AzureRmManagementGroup v prostředí PowerShell přesunout skupinu pro správu v jiné skupině.
+Pomocí příkazu Update-AzManagementGroup v prostředí PowerShell přesunout skupinu pro správu v jiné skupině.
 
 ```azurepowershell-interactive
-Update-AzureRmManagementGroup -GroupName 'Contoso' -ParentName 'ContosoIT'
+Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoIT'
 ```  
 
 ### <a name="move-management-groups-in-azure-cli"></a>Přesunutí správy skupin v Azure CLI
@@ -309,7 +311,7 @@ Update-AzureRmManagementGroup -GroupName 'Contoso' -ParentName 'ContosoIT'
 Přesunout skupinu pro správu pomocí Azure CLI pomocí příkazu update.
 
 ```azurecli-interactive
-az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
+az account management-group update --name 'Contoso' --parent-id '/providers/Microsoft.Management/managementGroups/ContosoIT'
 ```
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
@@ -329,7 +331,7 @@ Při odkazování na skupiny pro správu z akce jiný poskytovatel prostředků,
 Příkladem použití této cesty je při přiřazování přiřazení nové role pro skupinu pro správu v prostředí PowerShell
 
 ```powershell-interactive
-New-AzureRmRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
+New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
 Při načítání definice zásady na skupinu pro správu, se používá stejná cesta oboru.
@@ -344,6 +346,6 @@ Další informace o řešeních pro správu najdete v následujících tématech
 
 - [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](https://aka.ms/mgPSdocs)
-- [Kontrola skupin pro správu v rozhraní REST API](https://aka.ms/mgAPIdocs)
-- [Kontrola skupin pro správu v Azure CLI](https://aka.ms/mgclidoc)
+- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
+- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
+- [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)

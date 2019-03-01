@@ -16,12 +16,12 @@ ms.date: 02/26/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41859195474f19906118dbe94503bcbe04d0ac65
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 31cfcc6d2309b90565f71a7827fb7057145323c3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960355"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192408"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL
 Před na nejnovější verzi Azure AD Connect správu delegování, při nasazování konfigurace, které vyžaduje SQL, nepodporovaly.  Uživatelé, kteří chtěli nainstalovat Azure AD Connect je potřeba mít oprávnění správce serveru na SQL serveru.
@@ -59,9 +59,9 @@ Zřízení databáze mimo IP síť a nainstalujte Azure AD Connect s oprávněn�
  3. Pošlete e-mail na správce Azure AD Connect označující název SQL serveru a instance, který se má použít při instalaci Azure AD Connect.
 
 ## <a name="additional-information"></a>Další informace
-Po zřízení databáze správce Azure AD Connect můžete nainstalovat a nakonfigurovat synchronizaci s místními svých možností.  
+Po zřízení databáze správce Azure AD Connect můžete nainstalovat a nakonfigurovat synchronizaci s místními svých možností.
 
-Další informace o instalaci Azure AD Connect s existující databázi, naleznete v tématu [instalace služby Azure AD Connect s použitím existující databáze ADSync](how-to-connect-install-existing-database.md)
+V případě, že správce SQL obnovila databáze ADSync z předchozí zálohy služby Azure AD Connect, je potřeba nainstalovat nový server Azure AD Connect pomocí stávající databáze. Další informace o instalaci Azure AD Connect s existující databázi, naleznete v tématu [instalace služby Azure AD Connect s použitím existující databáze ADSync](how-to-connect-install-existing-database.md).
 
 ## <a name="next-steps"></a>Další postup
 - [Začínáme se službou Azure AD Connect s použitím expresního nastavení](how-to-connect-install-express.md)

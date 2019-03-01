@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9839d636ba582c5006a260aeb6a17ac1a12e9b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdd4ecb1bfc9385ea3fa23756fcbf8fb20b6d87c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986001"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193241"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Verze Preview: Nasazení ochrany hesel Azure AD
 
@@ -57,6 +57,7 @@ Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows
 * Účet globálního správce pro registraci služby Proxy ochrana hesel Azure AD a doménové struktury s Azure AD.
 * Účet s oprávněním správce domény služby Active Directory v kořenové doméně doménové struktury pro registraci doménové struktury Windows Server Active Directory s Azure AD.
 * Libovolné doméně Active Directory, který je spuštěn řadič domény služby softwaru agenta musíte použít DFSR k replikování adresáře sysvol.
+* Službu Microsoft Key Distribution Service musí být povolené na všech systému Windows Server 2012 a novější řadiče domény v doméně (povolit prostřednictvím start ruční aktivační události je výchozí stav této služby).
 
 ## <a name="single-forest-deployment"></a>Nasazení jedné doménové struktury
 

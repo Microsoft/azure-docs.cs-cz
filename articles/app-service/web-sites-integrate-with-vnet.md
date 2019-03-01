@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cddc6ccd8360ef88c95cd33c0bc8e141d721042d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273343"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010510"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování. Tyto sítě můžou potom připojené k vaší místní sítí pomocí technologie VPN. 
@@ -51,7 +51,7 @@ Existuje několik věcí, které integrace virtuální sítě nepodporuje, včet
 
 * připojení na jednotku
 * Integrace služby AD 
-* Rozhraní NetBios
+* NetBios
 * přístup privátního lokality
 * přístup k prostředkům prostřednictvím ExpressRoute 
 * přístup k prostředkům prostřednictvím koncových bodů služby 
@@ -82,7 +82,7 @@ Pokud chcete vytvořit bránu:
 * 172.16.0.0/12 – to znamená, že rozsah IP adres z 172.16.0.0 k 172.31.255.255 
 * 192.168.0.0/16 – to znamená, že rozsah IP adres z 192.168.0.0 k 192.168.255.255
 
-Pokud není nutné jenom vytvořením brány pro použití s integrace virtuální sítě App Service, budete se nahrát certifikát. Vytvoření brány může trvat 30 minut. Nebude moct integrujte svou aplikaci s vaší virtuální síti, dokud se brána zřídí. 
+Pokud jste právě vytvořením brány pro použití s integrace virtuální sítě služby App, potom není potřeba nahrát certifikát. Vytvoření brány může trvat 30 minut. Nebude moct integrujte svou aplikaci s vaší virtuální síti, dokud se brána zřídí. 
 
 ### <a name="configure-vnet-integration-with-your-app"></a>Konfigurace integrace virtuální sítě s vaší aplikací ###
 

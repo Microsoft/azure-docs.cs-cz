@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 2f480fd4d5d7d6261776660f1a7eab587320c849
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0e668c0b31defd5c945ddf2fec1b00f75d92f174
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052506"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990149"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub
 
@@ -88,10 +88,10 @@ Když je připojení úspěšné, DevKit restartuje za pár sekund. Zobrazí ná
 
 ![Název sítě Wi-Fi a IP adresy](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-ip.jpg)
 
-> [!NOTE] 
-> Vlastní IP adresu, přiřadit a zobrazí na obrazovce DevKit nemusí odpovídat zobrazená v fotografie IP adresa. To je normální, protože Wi-Fi používající službu DHCP k dynamickému přidělení IP adresy.
+> [!NOTE]
+> Pro IoT DevKit práci budete potřebovat síť 2,4 GHz. Modul Wi-Fi na IoT DevKit není kompatibilní s 5GHz sítí. Zkontrolujte [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration) další podrobnosti.
 
-Po dokončení konfigurace Wi-Fi svoje přihlašovací údaje se uloží na zařízení pro toto připojení i v případě, zařízení je odpojen. Pokud nakonfigurujete DevKit pro Wi-Fi v domácnosti a pak proveďte DevKit kanceláři, je potřeba překonfigurovat režimu Asie a Tichomoří (cena začíná na krok v části "Zadejte přístupový bod režim") pro připojení DevKit pro pobočku Wi-Fi. 
+Po dokončení konfigurace Wi-Fi svoje přihlašovací údaje se uloží na zařízení pro toto připojení i v případě, zařízení je odpojen. Pokud nakonfigurujete DevKit pro Wi-Fi v domácnosti a pak proveďte DevKit kanceláři, je potřeba překonfigurovat režimu Asie a Tichomoří (cena začíná na krok v části "Zadejte přístupový bod režim") pro připojení DevKit pro pobočku Wi-Fi.
 
 ## <a name="start-using-the-devkit"></a>Začněte používat DevKit
 
@@ -175,7 +175,7 @@ Použijte následující postup Příprava vývojového prostředí pro DevKit:
 
 ### <a name="install-st-link-drivers"></a>Instalace ovladačů ST – odkaz
 
-[Sv-odkaz/V2](http://www.st.com/en/development-tools/st-link-v2.html) je rozhraní USB používající IoT DevKit ke komunikaci s počítači pro vývoj. Postupujte podle kroků specifické pro operační systém umožňující počítači přístup k zařízení.
+[Sv-odkaz/V2](http://www.st.com/en/development-tools/st-link-v2.html) je rozhraní USB používající IoT DevKit ke komunikaci s počítači pro vývoj. Potřebujete ji nainstalujete na Windows umožňující pracovat bez velkých příprav kód zkompilovaný deivce DevKit. Postupujte podle kroků specifické pro operační systém umožňující počítači přístup k zařízení.
 
 * **Windows:** Stáhnout a nainstalovat ovladač USB z [STMicroelectronics webu](http://www.st.com/en/development-tools/stsw-link009.html).
 * **macOS**: Žádný ovladač je vyžadován pro macOS.

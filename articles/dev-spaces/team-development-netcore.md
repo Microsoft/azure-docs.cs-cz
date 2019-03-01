@@ -1,5 +1,5 @@
 ---
-title: Týmový vývoj prostory vývoj Azure pomocí .NET Core a VS Code | Dokumentace Microsoftu
+title: Vývoj v týmu Azure Dev prostory pomocí .NET Core a VS Code
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 056c85414e08423f54a9a2196f71b845ae53a3ac
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
+ms.openlocfilehash: 8260372178b148dd822da307d014af72214c55d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660183"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191747"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 

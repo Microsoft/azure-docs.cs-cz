@@ -1,5 +1,5 @@
 ---
-title: Postup upgradu nástroje Azure Dev prostorů | Dokumentace Microsoftu
+title: Postup upgradu nástroje Azure Dev mezery
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,16 +7,16 @@ ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/03/2018
-ms.topic: article
+ms.topic: conceptual
 ms.technology: azds-kubernetes
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: ad4c608d773dd6838fa95ab05c59e09c29906f8a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b56c6069c255984e480b3e6b0e673d89e6c0ee3d
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476481"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194127"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Postup upgradu nástroje Azure Dev mezery
 

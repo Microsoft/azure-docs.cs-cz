@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: df3ae6fbeceb85df6d6e5245a5bbad517179733c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697445"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991355"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: Posouzení místních úloh pro migraci do Azure
 
@@ -82,7 +82,7 @@ Tým cloudových Contoso zjistila cíle pro jeho posouzení migrace:
 - Správa databází společnosti Contoso byste měli minimalizovat po přesunu aplikace do cloudu.  
 - Contoso chce znát pouze jeho možnosti migrace, ale také náklady spojené s vaší stávající infrastrukturou po přesunu do cloudu.
 
-## <a name="assessment-tools"></a>Nástroje pro vyhodnocení
+## <a name="assessment-tools"></a>Nástroje pro posouzení
 
 Společnost Contoso využívá Microsoft nástroje pro posouzení migrace. Nástroje bylo v souladu s cíli vaší společnosti a by měla poskytnout všechny informace, které potřebuje Contoso.
 
@@ -90,7 +90,7 @@ Technologie | Popis | Náklady
 --- | --- | ---
 [Pomocník s migrací dat](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Společnost Contoso využívá k vyhodnocení a zjištění problémů s kompatibilitou, které by mohly ovlivnit funkčnost databází v Azure Data Migration Assistant. Data Migration Assistant posuzuje paritu funkcí mezi SQL zdroje a cíle. Doporučuje vylepšení výkonu a spolehlivosti. | Data Migration Assistant je zdarma ke stažení nástroje.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Společnost Contoso využívá služba Azure Migrate k vyhodnocení svých virtuálních počítačů VMware. Azure Migrate posuzuje vhodnost k migraci počítačů. Poskytuje odhady velikostí a nákladů pro spuštění v Azure.  | Od května 2018 Azure Migrate je bezplatná služba.
-[Mapa služeb](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate využívá mapu služeb k zobrazení závislostí mezi počítači, které společnost chce migrovat. | Mapa služeb je součástí Azure Log Analytics. V současné době Contoso, můžete použít Service Map po dobu 180 dnů bez poplatků.
+[Mapa služeb](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate využívá mapu služeb k zobrazení závislostí mezi počítači, které společnost chce migrovat. | Řešení Service Map je součástí protokoly Azure monitoru. V současné době Contoso, můžete použít Service Map po dobu 180 dnů bez poplatků.
 
 V tomto scénáři Contoso stáhne a spustí Data Migration Assistant k posouzení místní databáze SQL serveru pro jeho cestovní aplikaci. Contoso používá Azure Migrate se mapování závislostí k vyhodnocení aplikací virtuálních počítačů před migrací do Azure.
 

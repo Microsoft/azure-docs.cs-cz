@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/07/2019
-ms.openlocfilehash: e716646ecf1646c561e9eeed71a83e99f1d1e6d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/28/2019
+ms.openlocfilehash: 24f4ac5851746e64ea910853f24db5a3ffa95574
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989402"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991291"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Kurz: Migrace SQL serveru do izolované databáze nebo databázi ve fondu ve službě Azure SQL Database pomocí DMS do offline režimu
 
@@ -45,11 +45,20 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 - Vytvoření databáze jedné (nebo ve fondu) ve službě Azure SQL Database, což uděláte pomocí následujících podrobností v článku [vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started).
 
     > [!NOTE]
-    > Pokud používáte SQL Server Integration Services (SSIS) a chcete provést migraci databáze katalogu projektů/balíčků SSIS (SSISDB) ze serveru SQL Server na Azure SQL Database, cílové databáze SSISDB, bude vytvořena a automaticky spravovány vaším jménem při vám zřízení prostředí SSIS v Azure Data Factory (ADF). Další informace o migraci balíčků služby SSIS, najdete v článku [balíčků migrovat SQL Server Integration Services do Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages). 
+    > Pokud používáte SQL Server Integration Services (SSIS) a chcete provést migraci databáze katalogu projektů/balíčků SSIS (SSISDB) ze serveru SQL Server na Azure SQL Database, cílové databáze SSISDB, bude vytvořena a automaticky spravovány vaším jménem při vám zřízení prostředí SSIS v Azure Data Factory (ADF). Další informace o migraci balíčků služby SSIS, najdete v článku [balíčků migrovat SQL Server Integration Services do Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
   
 - Stáhněte a nainstalujte nástroj [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) verze 3.3 nebo novější.
-- Vytvořte pro službu Azure Database Migration Service virtuální síť s použitím modelu nasazení Azure Resource Manager, který poskytuje možnosti připojení typu Site-to-Site k místním zdrojovým serverům prostřednictvím [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo sítě [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Zajistěte, aby pravidla skupiny zabezpečení virtuální sítě Azure neblokovala následující komunikační porty: 443, 53, 9354, 445 a 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Vytvoření Azure Virtual Network (VNET) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manageru, který poskytuje připojení site-to-site k vašich zdrojových serverů s místními pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+
+    > [!NOTE]
+    > Při nastavení virtuální sítě, pokud používáte ExpressRoute se síť vytvoření partnerského vztahu Microsoftu, přidejte následující službu [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) k podsíti, ve kterém se zřídí služby:
+    > - Koncový bod databázového cíl (například koncový bod SQL, koncového bodu služby Cosmos DB a tak dále)
+    > - Koncový bod úložiště
+    > - Koncový bod služby Service bus
+    >
+    > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
+
+- Ujistěte se, že pravidla skupiny zabezpečení sítě VNET není blokovat následující komunikační porty 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu pomocí skupiny zabezpečení virtuální sítě Azure najdete v článku [Filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Otevřete bránu Windows Firewall a povolte službě Azure Database Migration Service přístup ke zdrojovému SQL Serveru, který ve výchozím nastavení probíhá přes port TCP 1433.
 - Pokud provozujete několik pojmenovaných instancí SQL Serveru s využitím dynamických portů, možná budete chtít povolit službu SQL Browser a přístup k portu UDP 1434 přes vaše brány firewall, aby se služba Azure Database Migration Service mohla připojit k pojmenované instanci na vašem zdrojovém serveru.
@@ -65,7 +74,7 @@ Než zahájíte migraci dat z místní instance systému SQL Server pro izolovan
 1. V nástroji Data Migration Assistant vyberte ikonu Nový (+) a pak vyberte typ projektu **Posouzení**.
 2. Zadejte název projektu, v textovém poli **Typ zdrojového serveru** vyberte **SQL Server**, v textovém poli **Typ cílového serveru** vyberte **Azure SQL Database** a pak vyberte **Vytvořit** a vytvořte projekt.
 
-    Když jsou hodnocení, zdroj migrace databáze systému SQL Server na izolovanou databázi nebo databázi ve fondu ve službě Azure SQL Database, můžete jednu nebo obě z následujících posouzení typy sestav:
+    Když posuzovaných zdroje migrace databáze systému SQL Server na izolovanou databázi nebo databázi ve fondu ve službě Azure SQL Database, můžete jednu nebo obě z následujících posouzení typy sestav:
 
     - Kontrola kompatibility databáze
     - Kontrola parity funkcí
@@ -99,7 +108,7 @@ Poté, co už znáte posouzení a splněny, že vybraná databáze je vhodným k
 > [!IMPORTANT]
 > Pokud používáte služby SSIS, DMA aktuálně nepodporuje migraci ze zdrojové databáze SSISDB, ale nenasadíte vašich projektů/balíčků služby SSIS do cílového umístění databází SSISDB hostovanou službou Azure SQL Database. Další informace o migraci balíčků služby SSIS, najdete v článku [balíčků migrovat SQL Server Integration Services do Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
-Migrace **AdventureWorks2012** schématu omezené množství dat. izolovanou databázi nebo databázi ve fondu Azure SQL Database, proveďte následující kroky:
+Migrace **AdventureWorks2012** schématu pro izolovanou databázi nebo databázi ve fondu Azure SQL Database, proveďte následující kroky:
 
 1. V nástroji Data Migration Assistant vyberte ikonu Nový (+) a pak v části **Typ projektu** vyberte **Migrace**.
 2. Zadejte název projektu, v textovém poli **Typ zdrojového serveru** vyberte **SQL Server** a pak v textovém poli **Typ cílového serveru** vyberte **Azure SQL Database**.
@@ -170,7 +179,7 @@ Migrace **AdventureWorks2012** schématu omezené množství dat. izolovanou dat
 
     Další informace o nákladech a cenových úrovních najdete na [stránce s cenami](https://aka.ms/dms-pricing).
 
-    Pokud potřebujete pomoc s výběrem správné úrovně služby Azure Database Migration Service, projděte si doporučení v [tomto](https://go.microsoft.com/fwlink/?linkid=861067) příspěvku.  
+    Pokud potřebujete pomoc s výběrem správné úrovně služby Azure Database Migration Service, podívejte se na doporučení účtování [tady](https://go.microsoft.com/fwlink/?linkid=861067).  
 
      ![Konfigurace nastavení instance služby Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql/dms-settings2.png)
 

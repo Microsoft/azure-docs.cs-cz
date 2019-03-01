@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c941a9adb552bcd0a02e22b23970717f82c0308f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151086"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009932"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core v Service Fabric Reliable Services
 
@@ -333,6 +333,123 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
 V této konfiguraci `KestrelCommunicationListener` automaticky vybere nepoužitého portu z rozsahu portů aplikace.
+
+## <a name="service-fabric-configuration-provider"></a>Zprostředkovatel konfigurace Service Fabric
+Konfigurace aplikace v ASP.NET Core je založená na páry klíč hodnota stanovené poskytovatelé konfigurace, přečtěte si [konfigurace v ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/) pochopit další na obecné ASP.NET Core podpora konfigurace.
+
+Tato část popisuje konfigurace zprostředkovatele prostředků infrastruktury služby pro integraci s ASP.NET Core konfigurace importováním `Microsoft.ServiceFabric.AspNetCore.Configuration` balíček NuGet.
+
+### <a name="addservicefabricconfiguration-startup-extensions"></a>Po spuštění AddServiceFabricConfiguration rozšíření
+Po importu `Microsoft.ServiceFabric.AspNetCore.Configuration` balíčku NuGet, budete muset zaregistrovat zdroj konfigurace Service Fabric pomocí rozhraní API ASP.NET Core konfigurace podle **AddServiceFabricConfiguration** rozšíření v `Microsoft.ServiceFabric.AspNetCore.Configuration` obor názvů proti `IConfigurationBuilder`
+
+```csharp
+using Microsoft.ServiceFabric.AspNetCore.Configuration;
+
+public Startup(IHostingEnvironment env)
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+        .AddServiceFabricConfiguration() // Add Service Fabric configuration settings.
+        .AddEnvironmentVariables();
+    Configuration = builder.Build();
+}
+
+public IConfigurationRoot Configuration { get; }
+```
+
+Služba ASP.NET Core teď můžete přístup k nastavení konfigurace Service Fabric, stejně jako ostatní nastavení aplikace. Například můžete použít možnosti vzor k načtení nastavení do objektů se silným typem.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<MyOptions>(Configuration);  // Strongly typed configuration object.
+    services.AddMvc();
+}
+```
+### <a name="default-key-mapping"></a>Výchozí klíč mapování
+Ve výchozím nastavení, konfiguraci poskytovatele Service Fabric obsahuje název balíčku, název oddílu a názvu vlastnosti dohromady a konfigurace asp.net core klíče pomocí následujících funkcí:
+```csharp
+$"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
+```
+
+Například, pokud máte balíčky konfigurace s názvem `MyConfigPackage` s níže obsah, pak hodnota konfigurace bude k dispozici pro ASP.NET Core `IConfiguration` pomocí klíče *MyConfigPackage:MyConfigSection:MyParameter*
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
+  <Section Name="MyConfigSection">
+    <Parameter Name="MyParameter" Value="Value1" />
+  </Section>  
+</Settings>
+```
+### <a name="service-fabric-configuration-options"></a>Možnosti konfigurace Service Fabric
+Zprostředkovatel konfigurace Service Fabric také podporuje `ServiceFabricConfigurationOptions` Chcete-li změnit výchozí chování mapování kláves.
+
+#### <a name="encrypted-settings"></a>U šifrovaného nastavení
+Service Fabric podporuje nastavení šifrování, zprostředkovatel konfigurace Service Fabric také podporuje. Použít zabezpečené ve výchozí zásadě descrypted are't u šifrovaného nastavení ve výchozím nastavení k ASP.NET Core `IConfiguration`, zašifrovanou hodnotu ukládají se místo toho. Ale pokud budete chtít dešifrovat hodnotu pro uložení v ASP.NET Core s parametry IConfiguration můžete nastavit příznak DecryptValue na hodnotu false v `AddServiceFabricConfiguration` rozšíření následujícím způsobem:
+
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = true); // set flag to decrypt the value
+    Configuration = builder.Build();
+}
+```
+#### <a name="multiple-configuration-packages"></a>Více balíčků konfigurace
+Service Fabric podporuje více balíčků konfigurace. Ve výchozím nastavení název balíčku je součástí konfigurace klíče. Můžete nastavit `IncludePackageName` příznak změnit výchozí chování.
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        // exclude package name from key.
+        .AddServiceFabricConfiguration(activationContext, (options) => options.IncludePackageName = false); 
+    Configuration = builder.Build();
+}
+```
+#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Vlastní klíče mapování, hodnota extrakce a naplnění dat
+Kromě výše 2 příznaky Chcete-li změnit výchozí chování zprostředkovatele konfigurace Service Fabric také podporuje pokročilejší scénáře na vlastní klíče mapování prostřednictvím `ExtractKeyFunc` a na vlastní extrahovat hodnoty přes `ExtractValueFunc`. Můžete dokonce i změnit celého procesu k naplnění dat z konfigurace v Service Fabric do konfigurace ASP.NET Core přes `ConfigAction`.
+
+Následující příklady ilustrují použití `ConfigAction` přizpůsobení zaplňování daty.
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    
+    this.valueCount = 0;
+    this.sectionCount = 0;
+    var builder = new ConfigurationBuilder();
+    builder.AddServiceFabricConfiguration(activationContext, (options) =>
+        {
+            options.ConfigAction = (package, configData) =>
+            {
+                ILogger logger = new ConsoleLogger("Test", null, false);
+                logger.LogInformation($"Config Update for package {package.Path} started");
+
+                foreach (var section in package.Settings.Sections)
+                {
+                    this.sectionCount++;
+
+                    foreach (var param in section.Parameters)
+                    {
+                        configData[options.ExtractKeyFunc(section, param)] = options.ExtractValueFunc(section, param);
+                        this.valueCount++;
+                    }
+                }
+
+                logger.LogInformation($"Config Update for package {package.Path} finished");
+            };
+        });
+  Configuration = builder.Build();
+}
+```
+### <a name="configuration-update"></a>Aktualizace konfigurace
+Zprostředkovatel konfigurace Service Fabric také podporuje aktualizace konfigurace a by mohla používat ASP.NET Core `IOptionsMonitor` pro příjem oznámení o změnách a také s `IOptionsSnapshot` znovu načte konfigurační data. Další informace najdete v tématu [jádra ASP.NET](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options).
+
+To je podporováno ve výchozím nastavení a k povolení aktualizace konfigurace nejsou potřeba žádné další psaní kódu.
 
 ## <a name="scenarios-and-configurations"></a>Scénáře a konfigurace
 Tato část popisuje následující scénáře a poskytuje doporučené kombinaci webového serveru, konfigurace portů, možnosti integrace Service Fabric a různá nastavení dosáhnout správně fungující služby:

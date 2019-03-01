@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7f99b6d2f6fc1c6d1c270bd66965d978749ac63f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e79fdf2d7d680b3a229385c0fd96d844b3425b18
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455928"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992477"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Obnovte data ze zálohy ve službě Azure Cosmos DB 
 
@@ -33,6 +33,11 @@ Než požádáte o obnovení byste měli mít následující podrobnosti:
 * Pokud jeden nebo více databází se odstraní, by měla poskytnout účet Azure Cosmos, stejně jako názvy databází Azure Cosmos a určete, jestli nové databáze se stejným názvem existuje.
 
 * Pokud jeden nebo více kontejnerů se odstraní, by měla poskytnout název účtu Azure Cosmos, názvy databáze a názvu kontejneru. A určete, zda existuje kontejner se stejným názvem.
+
+* Pokud jste omylem odstraněn nebo poškozen vaše data, měli byste požádat [podpory Azure](https://azure.microsoft.com/support/options/) do 8 hodin tak, aby tým služby Azure Cosmos DB může pomoci obnovíte data ze zálohy.
+  
+  * Pokud jste omylem odstranili databázi nebo kontejneru, otevřete případ podpory závažnost B nebo závažnost C Azure. 
+  * Pokud jste omylem odstraněn nebo poškozen některé dokumenty v rámci kontejneru, otevřete případ podpory záv. A. 
 
 Pokud dojde k poškození dat, a pokud se změnily nebo odstranily, dokumenty v rámci kontejneru **co nejdříve odstranit kontejner**. Tak, že odstraníte kontejner, se můžete vyhnout služby Azure Cosmos DB přepsání zálohy. Pokud z nějakého důvodu není možné odstranění, jste měli lístek co nejdříve. Kromě názvu účtu Azure Cosmos, názvy databází, názvy kolekcí měli byste určit bod v čase, ke kterému lze obnovit data. Je důležité, aby bylo co nejpřesnější, které pomáhají určit nejlepší dostupné zálohy v daném čase. Je také důležité určit čas ve standardu UTC. 
 

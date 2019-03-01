@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124839"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192380"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Vytvořit vlastní sledování schémata, které sledují pracovní postupy začátku do konce v Azure Logic Apps
 
@@ -60,17 +60,17 @@ Tento článek obsahuje vlastní kód, který můžete použít v jednotlivých 
 | --- | --- | --- |
 | sourceType |   | Typ spuštění zdroje. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **vlastní**. (Povinné) |
 | Zdroj |   | Pokud je typ zdrojového **Microsoft.Logic/workflows**, informace o zdroji je potřeba postupovat podle tohoto schématu. Pokud je typ zdrojového **vlastní**, schéma je JToken. (Povinné) |
-| ID systému | Řetězec | ID logiku aplikace systému. (Povinné) |
-| runId | Řetězec | ID spuštění aplikace logiky (Povinné) |
-| operationName | Řetězec | Název operace (například akce nebo triggeru). (Povinné) |
-| repeatItemScopeName | Řetězec | Pokud je akce uvnitř opakujte název položky `foreach` / `until` smyčky. (Povinné) |
+| systemId | String | ID logiku aplikace systému. (Povinné) |
+| runId | String | ID spuštění aplikace logiky (Povinné) |
+| operationName | String | Název operace (například akce nebo triggeru). (Povinné) |
+| repeatItemScopeName | String | Pokud je akce uvnitř opakujte název položky `foreach` / `until` smyčky. (Povinné) |
 | repeatItemIndex | Integer | Zda "action" je uvnitř `foreach` / `until` smyčky. Určuje index opakované položky. (Povinné) |
-| trackingId | Řetězec | ID sledování ke korelaci zprávy. (Volitelné) |
-| correlationId | Řetězec | ID korelace ke korelaci zprávy. (Volitelné) |
-| ID žádosti klienta | Řetězec | Klienta můžete naplnit ho ke korelaci zprávy. (Volitelné) |
+| trackingId | String | ID sledování ke korelaci zprávy. (Volitelné) |
+| correlationId | String | ID korelace ke korelaci zprávy. (Volitelné) |
+| clientRequestId | String | Klienta můžete naplnit ho ke korelaci zprávy. (Volitelné) |
 | eventLevel |   | Úroveň události. (Povinné) |
 | čas události |   | Čas události ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. (Povinné) |
-| Typ záznamu |   | Typ záznamu sledování. Povolená hodnota je **vlastní**. (Povinné) |
+| recordType |   | Typ záznamu sledování. Povolená hodnota je **vlastní**. (Povinné) |
 | záznam |   | Vlastní typ záznamu. Povolený formát je JToken. (Povinné) |
 ||||
 
@@ -84,4 +84,4 @@ Informace o protokolu B2B schémata sledování najdete tady:
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md)
-* Další informace o [sledování zpráv B2B v Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* Další informace o [sledování zpráv B2B v protokoly Azure monitoru](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

@@ -1,164 +1,96 @@
 ---
-title: 'Rychlý start: Rozhraní API pro automatické návrhy BinguC#'
+title: 'Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu aC#'
 titlesuffix: Azure Cognitive Services
-description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro automatické návrhy Bingu.
+description: Zjistěte, jak rychle začít, navrhněte hledaný text v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 331b7f3cffa07003908cd339adf9dbea2a4593e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: 2ef0233898836dc35eb6bdedab4caba16cf8c752
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878210"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011020"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-c"></a>Rychlý start pro rozhraní API pro automatické návrhy Bingu s využitím C#
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu aC#
 
-V tomto článku se dozvíte, jak používat [rozhraní API pro automatické návrhy Bingu](https://azure.microsoft.com/services/cognitive-services/autosuggest/) s C#. Rozhraní API pro automatické návrhy Bingu vrací seznam navrhovaných dotazů založený na části řetězce dotazu, který uživatel do vyhledávacího pole zadává. Obvykle se toto rozhraní API volá pokaždé, když uživatel zadá do vyhledávacího pole další znak, a potom se v rozevíracím seznamu ve vyhledávacím poli zobrazí návrhy. V tomto článku se dozvíte, jak odeslat požadavek, který vrátí navrhované řetězce dotazu pro dotaz *sail*.
+Použití v tomto rychlém startu zahájíte provádění volání rozhraní API pro automatické návrhy Bingu a získání odpovědi JSON. Tento jednoduchý C# aplikace odešle částečné vyhledávací dotaz na rozhraní API a vrátí návrhů pro hledání. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
+* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](http://www.mono-project.com/).
 
-Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API pro automatické návrhy Bingu verze 7**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/#search). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>Získání výsledků automatických návrhů
+## <a name="create-a-visual-search-solution"></a>Vytvořte řešení pro vizuální vyhledávání
 
-1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+1. Vytvořte nové konzoly řešení v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    ```
 
-namespace AutosuggestSample1
-{
-    class Program
+2. Ve třídě nové vytvoření proměnných pro vaše rozhraní API hostitele a cestu, [uvedení na trh kód](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)a částečné vyhledávání.
+
+    ```csharp
+    static string host = "https://api.cognitive.microsoft.com";
+    static string path = "/bing/v7.0/Suggestions";
+    static string market = "en-US";
+    static string key = "your-api-key";
+    
+    static string query = "sail";
+    ```
+
+
+## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti o rozhraní API
+
+1. Vytvořit funkci s názvem `Autosuggest()` odeslat požadavek na rozhraní API. Vytvořte nový `HttpClient()`a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
+
+    ```csharp
+    async static void Autosuggest()
     {
-        static string host = "https://api.cognitive.microsoft.com";
-        static string path = "/bing/v7.0/Suggestions";
-
-        // For a list of available markets, go to:
-        // https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes
-        static string market = "en-US";
-
-        // NOTE: Replace this example key with a valid subscription key.
-                static string key = "INSERT API KEY";
-
-        static string query = "sail";
-
-        // These properties are used for optional headers (see below).
-        // static string ClientId = "<Client ID from Previous Response Goes Here>";
-        // static string ClientIp = "999.999.999.999";
-        // static string ClientLocation = "+90.0000000000000;long: 00.0000000000000;re:100.000000000000";
-
-        async static void Autosuggest()
-        {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-
-            // The following headers are optional, but it is recommended they be treated as required.
-            // These headers help the service return more accurate results.
-            //client.DefaultRequestHeaders.Add("X-Search-Location", ClientLocation);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientID", ClientId);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientIP", ClientIp);
-
-            string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
-
-            HttpResponseMessage response = await client.GetAsync(uri);
-
-            string contentString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(JsonPrettyPrint(contentString));
-        }
-
-        static void Main(string[] args)
-        {
-            Autosuggest();
-            Console.ReadLine();
-        }
-
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json)) {
-                return string.Empty;
-            }
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            char last = ' ';
-            int offset = 0;
-            int indentLength = 3;
-
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\\':
-                        if (quote && last != '\\') ignore = true;
-                        break;
-                }
-
-                if (quote)
-                {
-                    sb.Append(ch);
-                    if (last == '\\' && ignore) ignore = false;
-                }
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (quote || ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-                last = ch;
-            }
-
-            return sb.ToString().Trim();
-        }
+        HttpClient client = new HttpClient();
+        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+        //..
     }
-}
-```
+    ```
 
-### <a name="response"></a>Odpověď
+2. Ve stejné funkci výše vytvořte žádost identifikátoru URI kombinací rozhraní API hostitele a cestu. Připojení vašeho trhu `?mkt=` parametr a dotaz `&query=` parametru. Ujistěte se, určený ke kódování URL dotazu. 
+
+    ```csharp
+    string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
+    ```
+
+3. Odeslat požadavek na identifikátor uri vytvořený výše a tisku odpověď.
+
+    ```csharp
+    HttpResponseMessage response = await client.GetAsync(uri);
+
+    string contentString = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(contentString);
+    ```
+
+4. V hlavní metodě programu, volání `Autosuggest()`.
+
+    ```csharp
+    static void Main(string[] args)
+    {
+        Autosuggest();
+        Console.ReadLine();
+    }
+    ```
+
+## <a name="example-json-response"></a>Příklad JSON odpovědi
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 

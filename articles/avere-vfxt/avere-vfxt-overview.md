@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: b0b835dde4b98619238eaac9449432aaa9acffd3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670483"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989315"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT pro Azure? 
 
@@ -19,8 +19,8 @@ Avere vFXT pro Azure je řešení ukládání do mezipaměti na úrovni systému
 
 Avere vFXT podporuje tyto běžné scénáře výpočetního prostředí: 
 
-* Hybridní cloudová architektura: Avere vFXT pro Azure dokáže pracovat se systémem hardwarového úložiště a poskytuje tak výhody cloud computingu bez nutnosti přesouvat soubory. 
-* Shlukování cloudu: Avere vFXT pro Azure vám může pomoct s přesunem dat do cloudu pro jeden projekt nebo s trvalou migrací celého pracovního postupu metodou „lift and shift“. 
+* Hybridní cloudovou architekturu: Avere vFXT pro Azure můžete pracovat se systém hardwaru úložiště, která poskytuje výhody cloud computingu bez nutnosti přesouvat soubory. 
+* Shlukování cloudu: Avere vFXT pro Azure můžete přesunout data do cloudu pro jeden projekt, nebo metodou "lift and shift" celého pracovního postupu trvale. 
 
 ![Diagram znázorňující podrobnosti o systému Avere vFXT v předplatném Azure připojeném k úložišti objektů blob a místnímu datacentru](media/avere-vfxt-hybrid.png)
 
@@ -67,12 +67,12 @@ Azure vFXT používá následující prostředky Azure:
 
 |Komponenta Azure|   |
 |----------|-----------|
-|Virtuální počítače|3 nebo více virtuálních počítačů D16s_v3 nebo E32s_v3|
+|Virtuální počítače|3 nebo více E32s_v3|
 |Úložiště SSD úrovně Premium|200 GB místa na operační systém a 1 až 4 TB místa v mezipaměti na uzel |
 |Účet úložiště (volitelné) |v2|
 |Back-endové úložiště dat (volitelné) | Jeden prázdný kontejner objektů blob místně redundantního úložiště |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tady je několik odkazů, které vám pomůžou začít vytvářet vlastní nasazení Avere vFXT. 
 

@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f5e140e4f620362ca90a1e1cd06d23719cd2099
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 236009a3292f26d7fda73013c022f40535aa1ecb
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471602"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992324"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP) architektury
 Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti. 
@@ -84,7 +84,7 @@ Distribuované tabulky kruhové dotazování rovnoměrně distribuuje data v tab
 ## <a name="replicated-tables"></a>Replikované tabulky
 Replikované tabulky. poskytuje nejrychlejší výkon dotazů pro malé tabulky.
 
-Tabulka, která se replikuje ukládá do mezipaměti úplnou kopii tabulky na jednotlivých výpočetních uzlech. V důsledku toho replikuje tabulku eliminuje nutnost provádět přenos dat mezi výpočetní uzly před spojení nebo agregace. Replikované tabulky jsou nejlépe využít s malé tabulky. Dodatečné úložiště je povinný a existují další režie, které se účtují při zápis dat, což mohlo způsobit nepoužitelnost velké tabulky nepraktické.  
+Tabulka, která se replikuje ukládá do mezipaměti úplnou kopii tabulky na jednotlivých výpočetních uzlech. V důsledku toho replikuje tabulku eliminuje nutnost provádět přenos dat mezi výpočetní uzly před spojení nebo agregace. Replikované tabulky jsou nejlépe využít s malé tabulky. Dodatečné úložiště je povinný a je další režií, ke které dojde při zápisu dat, což mohlo způsobit nepoužitelnost velké tabulky nepraktické.  
 
 Následující diagram znázorňuje replikované tabulky. Pro službu SQL Data Warehouse je do mezipaměti replikované tabulky na první distribuci na jednotlivých výpočetních uzlech.  
 

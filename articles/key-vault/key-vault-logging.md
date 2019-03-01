@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: c9d8dd366ecabe9eb508998d526ddfe7b1da300d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960500"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194091"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -306,11 +306,11 @@ Následující tabulce jsou uvedeny **operationName** hodnoty a odpovídajícíc
 | **SecretList** |[Výpis tajných kódů v trezoru](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Výpis verzí tajného kódu](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a id="loganalytics"></a>Použití Log Analytics
+## <a id="loganalytics"></a>Použijte protokoly Azure monitoru
 
-Řešení Key Vault ve službě Azure Log Analytics můžete použít ke kontrole služby Key Vault **AuditEvent** protokoly. Ve službě Log Analytics pomocí dotazů na protokoly k analýze dat a získat informace, které potřebujete. 
+Řešení Key Vault v protokolech Azure Monitor můžete použít ke kontrole služby Key Vault **AuditEvent** protokoly. V protokoly Azure monitoru pomocí dotazů na protokoly k analýze dat a získat informace, které potřebujete. 
 
-Další informace včetně nastavení najdete v tématu [Řešení Azure Key Vault v Log Analytics](../azure-monitor/insights/azure-key-vault.md). Tento článek také obsahuje pokyny, pokud je potřeba migrovat z původního řešení Key Vault, které se nabízelo pro Log Analytics verze preview, kam jste nejprve směrovat vaše protokoly do účtu služby Azure storage a nakonfigurovali službu Log Analytics ke čtení z něj.
+Další informace, včetně postupu nastavení najdete v tématu [řešení Azure Key Vault v protokoly Azure monitoru](../azure-monitor/insights/azure-key-vault.md). Tento článek také obsahuje pokyny, pokud je potřeba migrovat z původního řešení Key Vault, které se nabízelo protokoly Azure monitoru ve verzi preview, ve kterém nejprve směrována protokolů pro účet úložiště Azure a nakonfigurovaných Azure Monitor protokoly číst z něj.
 
 ## <a id="next"></a>Další kroky
 

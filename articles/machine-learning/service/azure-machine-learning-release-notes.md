@@ -11,18 +11,25 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5bb2c7d9eed2ed33f3cd0c33bfc479d2e3627370
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: aeda7377a2d5d070a2e36126d53f8f5c203a8256
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889847"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991389"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný popis jednotlivých sadách SDK navštivte referenční dokumenty pro:
 + Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-27"></a>2019-02-27
+
+### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Sada SDK v1.0.16 pro přípravu dat Azure Machine Learning
+
++ **Oprava chyby**
+  + Oprava potíží s ověřováním, která byla výsledkem hlavního názvu služby změnou rozhraní API.
 
 ## <a name="2019-02-25"></a>2019-02-25
 
@@ -37,6 +44,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
   + Přidali jsme podporu Azure Machine Learning kanály pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (jako je například úložiště objektů blob) na [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , které jsou předány [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Kroky ve výchozím nastavení používají jako základní úložiště dat, který se může spustit do omezování problémy, když jsou současně spouštěny velký počet kroků úložiště souborů Azure.
 
 ### <a name="azure-portal"></a>portál Azure
+
 + **Nové funkce**
     + Nové přetažení tabulky prostředí editoru sestav. Uživatelé můžou z vrtu přetáhnout sloupec na oblast tabulky, ve kterém se zobrazí náhled tabulky. Můžete změnit jejich uspořádání sloupců.
     + Pro spuštění odeslanou s ScriptRunConfig nové tlačítko spustit. Uživatele můžete spustit znovu z existujícího spouštět vzdálený výpočetní cluster podle vlastní volby.

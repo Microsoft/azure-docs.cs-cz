@@ -1,19 +1,20 @@
 ---
 title: Začínáme se správou zařízení Azure IoT Hub (Java) | Dokumentace Microsoftu
 description: Jak používat správu zařízení Azure IoT Hub k zahajte restartování vzdáleném zařízení. Implementace aplikace s Simulovaná zařízení, která obsahuje metodu s přímým přístupem a službu Azure IoT SDK pro Javu k implementaci app service, která vyvolá přímou metodu pomocí zařízení Azure IoT SDK pro Javu.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 46b094e8436d74915a1cd5a0ccec402bee03e33b
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 272f4cfd4d79ef6d4fca3f3c00afb1c251649db8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515280"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010748"
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
 

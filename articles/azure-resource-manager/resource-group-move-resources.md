@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5a9ea460684383bd09e5a679f3140d3b8f083d4d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 579c23fc3092acb785e89ddfa390e9495fc004d3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823616"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194523"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -57,6 +57,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Certifikáty služby App Service – viz [omezení služby App Service Certificate](#app-service-certificate-limitations)
 * Automation – sady Runbook musí existovat ve stejné skupině prostředků jako účet služby Automation.
 * Azure Active Directory B2C
+* Mezipaměť Azure pro Redis - li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
 * Azure Cosmos DB
 * Průzkumník dat Azure
 * Azure Database for MariaDB
@@ -64,6 +65,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Azure Database for PostgreSQL
 * Azure DevOps – nákupy na Azure DevOps institucím rozšíření od jiných výrobců musí [zrušit jejich nákupů](https://go.microsoft.com/fwlink/?linkid=871160) než účet může pokračovat napříč předplatnými.
 * Azure Maps
+* Protokoly Azure monitoru
 * Azure Relay
 * Azure Stack – registrace
 * Batch
@@ -91,11 +93,10 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Nástroje pro vyrovnávání zatížení – nástroj pro vyrovnávání zatížení základní SKU se dají přesunout. Nástroj pro vyrovnávání zatížení standardní SKU nejde přesunout.
 * Logic Apps
 * Machine Learning – Machine Learning Studio webové služby je možné přesunout do skupiny prostředků ve stejném předplatném, ale jiné předplatné. Další prostředky služby Machine Learning je možné přesunout mezi předplatnými.
-* Managed Disks – viz [omezení virtuálních počítačů pro omezení](#virtual-machines-limitations)
+* Managed Disks – spravované disky v zónách dostupnosti nelze přesunout do jiného předplatného
 * Spravovaná identita - přiřazená uživatelem
 * Media Services
 * Monitorování – zkontrolujte, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#monitor-limits)
-* Protokoly Azure monitoru
 * Notification Hubs
 * Operational Insights
 * Správa operací
@@ -103,7 +104,6 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Power BI – jak Power BI Embedded a Power BI pracovního prostoru kolekce
 * Veřejná IP adresa – základní veřejnou IP adresu SKU je možné přesunout. Standardní veřejné IP adresy skladové položky nelze přesunout.
 * Služby Recovery Services vault – zaregistrujte se do [ve verzi preview](#recovery-services-limitations).
-* Mezipaměť Azure pro Redis - li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
 * Scheduler
 * Search – několik hledání prostředky nejde přesunout v různých oblastech v rámci jedné operace. Místo toho přesuňte je v samostatné operace.
 * Service Bus
@@ -116,7 +116,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Server služby SQL Database – databáze a serveru musí být ve stejné skupině prostředků. Přesunete-li SQL server, přesunou také všechny jeho databáze. Toto chování platí pro databáze Azure SQL Database a Azure SQL Data Warehouse.
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines – pro virtuální počítače pomocí spravované disky, najdete v článku [omezení virtuálních počítačů](#virtual-machines-limitations)
+* Virtual Machines – viz [omezení virtuálních počítačů](#virtual-machines-limitations)
 * Virtuální počítače (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Škálovací sady virtuálních počítačů – viz [omezení virtuálních počítačů](#virtual-machines-limitations)
 * Virtuální sítě – viz [omezení virtuální sítě](#virtual-networks-limitations)
@@ -133,6 +133,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Azure Databricks
 * Brána Azure Firewall
 * Azure Migrate
+* Azure NetApp Files
 * Certifikáty – certifikáty App Service je možné přesunout, ale mají odeslané certifikáty [omezení](#app-service-limitations).
 * Klasické aplikace
 * Container Instances
@@ -145,7 +146,6 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Je povoleno Lab Services - přesunout do nové skupiny prostředků ve stejném předplatném, ale přesun mezi předplatnými není povolen.
 * Managed Applications
 * Microsoft Genomics
-* Azure NetApp Files
 * SAP HANA v Azure
 * Zabezpečení
 * Site Recovery
@@ -166,12 +166,11 @@ V části najdete popis toho, jak zvládnout složité scénáře pro přesun pr
 
 ### <a name="virtual-machines-limitations"></a>Omezení virtuálních počítačů
 
-Z 24. září 2018 můžou přesunout spravované disky. Tato podpora znamená, že přesunete virtuální počítače se spravovanými disky, bitové kopie spravovaného, spravované snímky a skupiny dostupnosti s virtuálními počítači, které používají spravované disky.
+Můžete přesunout virtuální počítače se spravovanými disky, bitové kopie spravovaného, spravované snímky a skupiny dostupnosti s virtuálními počítači, které používají spravované disky. Spravované disky v zónách dostupnosti nelze přesunout do jiného předplatného.
 
 Zatím nejsou podporovány následující scénáře:
 
 * Virtuální počítače pomocí certifikátu uloženého ve službě Key Vault můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
-* Spravované disky v zónách dostupnosti nelze přesunout do jiného předplatného
 * Škálovací sady virtuálních počítačů pomocí nástroje pro vyrovnávání zatížení standardní SKU nebo standardní veřejnou IP Adresou skladové položky nelze přesunout.
 * Virtuální počítače vytvořené z Marketplace prostředky s plány připojené se nedají přesouvat mezi skupinami prostředků nebo předplatných. Zrušení zřízení virtuálního počítače v rámci aktuálního předplatného a znovu nasadit v rámci nového předplatného.
 
@@ -190,6 +189,8 @@ Pokud chcete přesunout virtuální počítače nakonfigurované s Azure Backup,
 ### <a name="virtual-networks-limitations"></a>Omezení virtuální sítě
 
 Při přesunu virtuální síť, musíte také přesunout její závislé prostředky. Pro brány sítě VPN musíte přesunout IP adresy brány virtuální sítě a všechny prostředky přidružené připojení. Brány místní sítě může být v jiné skupině prostředků.
+
+K přesunutí virtuálního počítače pomocí karty síťového rozhraní, musíte přesunout všechny závislé prostředky. Je nutné přesunout virtuální sítě pro síťové karty, všechny ostatní karty síťového rozhraní pro virtuální sítě a brány VPN.
 
 Pokud chcete přesunout partnerské virtuální síti, musíte nejprve zakázat, partnerský vztah virtuální sítě. Jakmile zakázaná, můžete přesunout virtuální sítě. Po přesunutí znovu povolte partnerský vztah virtuální sítě.
 

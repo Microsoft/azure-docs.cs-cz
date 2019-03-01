@@ -1,5 +1,5 @@
 ---
-title: Obchodní kontinuity podnikových procesů a zotavení po havárii v Azure Dev prostorů | Dokumentace Microsoftu
+title: Obchodní kontinuity podnikových procesů a zotavení po havárii v Azure Dev mezery
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,16 +7,16 @@ ms.subservice: azds-kubernetes
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
-ms.topic: article
+ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
 manager: jeconnoc
-ms.openlocfilehash: b7eba0e63f68cd56f2bcc310c3bde65c36e933dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 25397b52cbcfb141fe27e9261c78a2ef6adb677d
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822459"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192935"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii v Azure Dev mezery
 

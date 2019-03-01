@@ -1,5 +1,5 @@
 ---
-title: Spuštění více závislých služeb pomocí Node.js a VS Code | Dokumentace Microsoftu
+title: Spuštění více závislých služeb pomocí Node.js a VS Code
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: stevenry
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 8d305e051bd6708977926e3a4de47c15a784c7b6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
+ms.openlocfilehash: 98da52c193b24693857e0fdf89dd4f8f51f00530
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818812"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192867"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Vývoj pro víc služeb prostory Azure Dev
 

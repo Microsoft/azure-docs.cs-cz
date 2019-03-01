@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 124ac79971ca2ee1e7b5ad085a73aceb8f5d8841
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428967"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191386"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí webu Azure portal
 
@@ -100,7 +100,10 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
 6. V seznamu NSG vyberte NSG s názvem **myVm-nsg**.
 7. V **Nastavení protokolů toku** vyberte **Zapnuto**.
-8. Vyberte verzi protokolování toku. Verze 2 obsahuje Statistika tok relace (bajtů a paketů). ![Vyberte verzi protokolů toku](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+8. Vyberte verzi protokolování toku. Verze 2 obsahuje Statistika tok relace (bajtů a paketů)
+
+   ![Vyberte verzi protokolů toku](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+
 9. Vyberte účet úložiště, který jste vytvořili v kroku 3.
 10. Nastavte **Doba uchování (dny)** na 5 a pak vyberte **Uložit**.
 
@@ -109,17 +112,13 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 1. Ze služby Network Watcher na portálu vyberte **Protokoly toku NSG** pod **PROTOKOLY**.
 2. Vyberte **Protokoly toku si můžete stáhnout z nakonfigurovaných účtů úložiště**, jak je vidět na tomto obrázku:
 
-  ![Stažení protokolů toku](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+   ![Stažení protokolů toku](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Vyberte účet úložiště, který jste nakonfigurovali ve 2. kroku [Povolení protokolu toku NSG](#enable-nsg-flow-log).
-4. Vyberte **Kontejnery** pod **BLOB SERVICE** a pak vyberte kontejner **insights-logs-networksecuritygroupflowevent**, jak je vidět na tomto obrázku:
+4. V části **službu Blob service**vyberte **objekty BLOB**a pak vyberte **přehledy. protokoly networksecuritygroupflowevent** kontejneru.
+5. V kontejneru procházejte hierarchii složek dokud se nedostanete do souboru PT1H.json, jak je znázorněno na následujícím obrázku. Soubory protokolu se zapíšou do složky hierarchie, která se řídí následujícími zásadami vytváření názvů: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/ RESOURCEGROUPS/{resourceGroupName}/providers/Microsoft.Network/NETWORKSECURITYGROUPS/{nsgName}/y={Year}/m={Month}/d={Day}/h={Hour}/m=00/macAddress={macAddress}/PT1H.JSON
 
-    ![Výběr kontejneru](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
-5. Projděte hierarchií složek, dokud se nedostanete na soubor PT1H.json, jak je vidět na tomto obrázku:
-
-    ![Soubor protokolu](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
-
-    Soubory protokolu se zapisují do hierarchie složek, která se řídí následující konvencí názvů: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+   ![Protokol toku](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Vyberte **...**  vpravo od souboru PT1H.json a vyberte **Stáhnout**.
 
@@ -195,7 +194,6 @@ Následující kód json je příkladem toho, co se zobrazí v souboru PT1H.json
     }
 }
 ```
-
 
 Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, které se vytvořilo při vytvoření virtuálního počítače. Informace oddělené čárkou pro **flowTuples** vypadají takto:
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: spelluru
-ms.openlocfilehash: b69215a76b332db9b994827705d6bbc3b48af5c8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465509"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991202"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu
 
@@ -24,17 +24,20 @@ V současné době služby Event Grid odesílá každé události jednotlivě od
 
 ## <a name="retry-schedule-and-duration"></a>Plán opakování a dobu trvání
 
-Event Grid používá zásady opakování exponenciálního omezení rychlosti pro doručování událostí. Pokud koncový bod nereaguje nebo vrací kód chyby, služby Event Grid se opakuje doručování následujícího plánu:
+Event Grid používá zásady opakování exponenciálního omezení rychlosti pro doručování událostí. Pokud koncový bod nereaguje nebo vrací kód chyby, služby Event Grid se opakuje doručování na jak kapacita systému dovolí podle následujícího plánu:
 
 1. 10 sekund
-2. 30 sekund
-3. 1 minuta
-4. 5 minut
-5. 10 minut
-6. 30 minut
-7. 1 hodina
+1. 30 sekund
+1. 1 minuta
+1. 5 minut
+1. 10 minut
+1. 30 minut
+1. 1 hodina
+1. Každou hodinu po dobu až 24 hodin
 
-Event Grid přidá malé náhodné všechny kroky opakovat. Doručování událostí po jedné hodině, proběhne jednou za hodinu.
+Služby Event Grid přidá všechny kroky opakovat malé náhodné a může tj přeskočte určité opakovaných pokusů, pokud koncový bod je konzistentně není v pořádku, mimo provoz delší dobu, nebo se zdá být předešla zahlcení.
+
+Deterministické chování, nastavte události time to live a maximální počet doručení pokusů [zásady opakování předplatné](manage-event-delivery.md).
 
 Ve výchozím nastavení služby Event Grid vyprší platnost všech událostí, které nejsou doručeny do 24 hodin. Je možné [přizpůsobit zásady opakování](manage-event-delivery.md) při vytváření odběru událostí. Zadejte maximální počet pokusů o doručení (výchozí hodnota je 30) a události time to live (výchozí hodnota je 1440 minut).
 

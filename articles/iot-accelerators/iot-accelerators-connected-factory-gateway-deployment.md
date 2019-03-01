@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9208d9949ee68f966087c5e0bb50806ece8a2f60
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599940"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011411"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Nasazení brány edge pro akcelerátor řešení připojená továrna ve Windows nebo Linuxu
 
@@ -25,10 +25,10 @@ Budete potřebovat dvě součásti softwaru k nasazení brány edge pro *připoj
 
 Obě komponenty jsou open source a jsou k dispozici jako source na Githubu a jako kontejnery Dockeru na Dockerhubu:
 
-| GitHubu | Dockerhubu |
+| GitHubu | DockerHub |
 | ------ | --------- |
 | [Vydavatel OPC](https://github.com/Azure/iot-edge-opc-publisher) | [Vydavatel OPC](https://hub.docker.com/r/microsoft/iot-edge-opc-publisher/)   |
-| [Proxy server OPC](https://github.com/Azure/iot-edge-opc-proxy)         | [Proxy server OPC](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
+| [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy)         | [OPC Proxy](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
 
 Není nutné veřejnou IP adresu nebo otevřené příchozí porty v bráně firewall pro žádné komponenty. Proxy server OPC a vydavatel OPC součásti používat jenom odchozí port 443.
 
@@ -39,7 +39,7 @@ Kroky v tomto článku ukazují, jak nasazení hraniční brány pomocí Docker 
 
 ## <a name="choose-a-gateway-device"></a>Vyberte zařízení brány
 
-Pokud ještě nemáte zařízení brány, Microsoft doporučuje že koupit komerčních bran jednoho z jeho partnerů. Seznam zařízení brány, které jsou kompatibilní s řešení připojená továrna, přejděte [katalog zařízení Azure IoT](https://catalog.azureiotsuite.com/?q=opc). Postupujte podle pokynů, které jsou součástí zařízení nastavit bránu.
+Pokud ještě nemáte zařízení brány, Microsoft doporučuje že koupit komerčních bran jednoho z jeho partnerů. Seznam zařízení brány, které jsou kompatibilní s řešení připojená továrna, přejděte [katalog zařízení Azure IoT](https://catalog.azureiotsolutions.com/?q=opc). Postupujte podle pokynů, které jsou součástí zařízení nastavit bránu.
 
 Pokud je potřeba ručně nakonfigurovat stávající zařízení brány, použijte následující pokyny.
 

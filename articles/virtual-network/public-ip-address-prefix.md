@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700736"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195213"
 ---
 # <a name="public-ip-address-prefix"></a>Předpona veřejné IP adresy
 
 Předponu veřejné IP adresy je rezervovaný rozsah IP adres pro veřejné koncové body v Azure. Platforma Azure přiřadí souvislý rozsah adres pro vaše předplatné založené na tom, kolik je zadat. Pokud nejste obeznámeni s veřejnými adresami, přečtěte si téma [veřejné IP adresy.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 
-Veřejné IP adresy jsou přiřazené, z fondu adres v každé oblasti Azure. Je možné [Stáhnout](https://www.microsoft.com/download/details.aspx?id=41653) seznam oblastí Azure používá pro každou oblast. Například 40.121.0.0/16 je jedním z více než 100 rozsahů, které Azure používá v oblasti USA – východ. Rozsah zahrnuje použitelné adresy 40.121.0.1 - 40.121.255.254.
+Veřejné IP adresy jsou přiřazené, z fondu adres v každé oblasti Azure. Je možné [Stáhnout](https://www.microsoft.com/download/details.aspx?id=56519) seznam oblastí Azure používá pro každou oblast. Například 40.121.0.0/16 je jedním z více než 100 rozsahů, které Azure používá v oblasti USA – východ. Rozsah zahrnuje použitelné adresy 40.121.0.1 - 40.121.255.254.
 
 Vytvoření veřejné předpona IP adresy v oblasti Azure a předplatné tak, že zadáte název a kolik adres chcete předpona, kterou chcete zahrnout. Například pokud vytvoříte veřejnou předpona IP adresy velikosti/28, Azure přiděluje 16 adres z jednoho z jeho rozsahy za vás. Si nejste jisti, které oblasti Azure přiřadí, dokud nevytvoříte rozsahu, ale tyto adresy byly souvislé. Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ceny veřejných IP adres](https://azure.microsoft.com/pricing/details/ip-addresses).
 

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c11dc2b24e3cf5d201a73c1ed405ba4b7c09978b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982263"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992596"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
@@ -101,7 +101,15 @@ Můžete využít integrované nástroje pro [monitorování výkonu](sql-databa
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
-Dostupnost služby Azure se smlouvou o úrovní služeb [(SLA)](https://azure.microsoft.com/support/legal/sla/) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. Platforma Azure plně spravuje každou databázi a garantuje bez ztráty dat a vysoké procento dostupnosti data. Azure automaticky zpracovává opravy, zálohování, replikaci, detekci selhání, potenciální selhání základního hardwaru, softwaru nebo sítě, nasazování oprav chyb, převzetí služeb při selhání, upgrady databází a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Premium dostupnosti se dosahuje prostřednictvím integrace výpočetní výkon a úložiště na jednom uzlu pro výkon a potom implementace technologie podobný skupin dostupnosti Always On na pozadí. Úplnou diskusi o možnosti vysoké dostupnosti služby Azure SQL Database, najdete v části [dostupnost SQL Database](sql-database-high-availability.md). Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
+V tradičních prostředí systému SQL Server, obecně máte místně se nastavení s využitím přesné (synchronně udržována) kopií dat (pomocí funkcí, jako jsou skupiny dostupnosti AlwaysOn nebo instance clusteru převzetí služeb při selhání) k ochraně proti počítače (minimálně) 2 selhání jednoho počítače nebo komponenty.  To poskytuje vysokou dostupnost, ale nechrání před přírodní katastrofě zničení vašeho datového centra.
+ 
+Zotavení po havárii se předpokládá, že katastrofická událost bude geograficky lokalizované dost informací k existuje jiná počítač/sada počítačů pomocí kopie vašich dat daleko.  V systému SQL Server můžete použít skupiny dostupnosti Always On spuštěná v režimu asynchronního získat tuto funkci.  Rychlostí světla problémů obvykle znamená, že uživatelé nechtějí čekat pro replikaci, která se provede, která daleko před potvrzením transakce, takže není dojít ke ztrátě dat. po provedení neplánovaného převzetí služeb při selhání.
+
+Databáze ve službě premium a obchodní kritické úrovní již [udělat něco podobného velmi](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) k synchronizaci skupiny dostupnosti. Databáze v nižší úrovně služby poskytovat redundanci úložiště pomocí [různých ale ekvivalentní mechanismus](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability). Není k dispozici logiku, která chrání proti selhání jednoho počítače.  Tato funkce aktivní geografická replikace umožňuje pro ochranu proti havárii kde je zničen celou oblast.
+
+Zóny dostupnosti Azure je play na příslušný problém vysokou dostupnost.  Pokusí se chránit před výpadkem jednoho datového centra sestavení v rámci jedné oblasti.  Ano chce chránit proti ztrátě napájení nebo sítě v budově. V SQL Azure, bude to fungovat tak, že umístíte různé repliky do různých zón dostupnosti (různé budovy, efektivně) a jinak fungovat stejně jako předtím. 
+
+Ve skutečnosti smlouvu o úrovni služeb Azure odvětví přední 99,99 % dostupnost [(SLA)](https://azure.microsoft.com/support/legal/sla/), technologii globální síti Datacenter řízených microsoftem, pomáhá zachovat aplikaci spuštěnou 24 hodin denně 7. Platforma Azure plně spravuje každou databázi a garantuje bez ztráty dat a vysoké procento dostupnosti data. Azure automaticky zpracovává opravy, zálohování, replikaci, detekci selhání, potenciální selhání základního hardwaru, softwaru nebo sítě, nasazování oprav chyb, převzetí služeb při selhání, upgrady databází a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Premium dostupnosti se dosahuje prostřednictvím integrace výpočetní výkon a úložiště na jednom uzlu pro výkon a potom implementace technologie podobný skupin dostupnosti Always On na pozadí. Úplnou diskusi o možnosti vysoké dostupnosti služby Azure SQL Database, najdete v části [dostupnost SQL Database](sql-database-high-availability.md). Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
 
 - **[Automatické zálohování](sql-database-automated-backups.md)**:
 

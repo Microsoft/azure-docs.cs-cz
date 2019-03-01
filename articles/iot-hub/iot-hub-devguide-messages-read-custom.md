@@ -1,19 +1,19 @@
 ---
 title: Vysvětlení vlastní koncové body služby Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – použití směrování dotazů pro směrování zpráv typu zařízení cloud do vlastní koncové body.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.author: dobett
-ms.openlocfilehash: 1b0e99998aaf29c366cce1926f930174686cfee6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414894"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008708"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Použití vlastních koncových bodů a směrování zpráv pro zprávy typu zařízení cloud
 

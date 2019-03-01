@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení připojen objekt pro vytváření řešení – Azure | Microsoft Docs
-description: Popis toho, jak přizpůsobit chování akcelerátoru řešení připojen objekt pro vytváření.
+title: Přizpůsobení řešení připojené továrny – Azure | Dokumentace Microsoftu
+description: Popis postupu přizpůsobení chování akcelerátor řešení připojená továrna.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,79 +9,79 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: e91f36c9d6f0cb3195e6903d55cd676f1e9ccf5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626546"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010068"
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Přizpůsobit způsob, jakým připojen objekt pro vytváření řešení zobrazí data z vašich serverů OPC UA
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Přizpůsobit způsob, jakým zobrazuje řešení připojená továrna dat ze serverů OPC UA
 
-Řešení připojen objekt pro vytváření agreguje a zobrazí data ze serverů OPC UA připojení k řešení. Můžete procházet a odesílat příkazy na OPC UA servery ve vašem řešení. Další informace o OPC UA najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-accelerators-faq-cf.md).
+Řešení připojená továrna agreguje a zobrazí data ze serverů OPC UA připojených k řešení. Můžete procházet a odesílání příkazů do serverů OPC UA v rámci vašeho řešení. Další informace o OPC UA najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-accelerators-faq-cf.md).
 
-Agregovaná data v řešení příkladem efektivitu celkové zařízení (OEE) a klíčových ukazatelů výkonu (KPI), můžete zobrazit v řídicím panelu v objektu pro vytváření, řádku a úrovně stanice. Následující snímek obrazovky ukazuje hodnoty OEE a klíčového ukazatele výkonu **sestavení** na stanici **produkční řádku 1**v **Mnichov** objekt pro vytváření:
+Příklady agregovaných dat v řešení obsahovat celkové efektivity zařízení (OEE) a klíčových ukazatelů výkonu (KPI), který se zobrazí na řídicím panelu na objekt pro vytváření, řádku a úrovně stanice. Následující snímek obrazovky ukazuje hodnoty celkové efektivity zařízení a klíčové ukazatele výkonu **sestavení** stanice na **výrobní linky 1**v **Mnichově** objekt pro vytváření:
 
-![Příklad hodnoty OEE a klíčových ukazatelů výkonu v řešení][img-oee-kpi]
+![Příklad hodnoty celkové efektivity zařízení a klíčových ukazatelů výkonu v řešení][img-oee-kpi]
 
-Toto řešení umožňuje zobrazit podrobné informace z konkrétní datové položky z OPC UA servery, nazývané *stanice*. Následující snímek obrazovky ukazuje pozemků počet vyrobenou položek z konkrétní stanice:
+Toto řešení umožňuje zobrazit podrobné informace z konkrétní datové položky ze serverů OPC UA, volá *stanice*. Následující snímek obrazovky ukazuje vykreslení počet vyrobených položek z konkrétní stanice:
 
-![Pozemků počet vyrobenou položek][img-manufactured-items]
+![Vykreslení počet vyrobených položek][img-manufactured-items]
 
-Pokud kliknete na některý z grafů, můžete si prostudovat data další pomocí časové řady přehledy (TSI):
+Pokud kliknete na některý z grafy, můžete prozkoumat data s využitím další Time Series Insights (TSI):
 
-![Prozkoumejte data pomocí statistiky časové řady][img-tsi]
+![Zkoumání dat pomocí služby Time Series Insights][img-tsi]
 
 Tento článek popisuje:
 
-- Data jak je k dispozici různé zobrazení v řešení.
-- Jak můžete přizpůsobit způsob řešení zobrazí data.
+- Data jak je k dispozici na různá zobrazení v řešení.
+- Jak můžete přizpůsobit tak, jak řešení zobrazí data.
 
 ## <a name="data-sources"></a>Zdroje dat
 
-Připojen objekt pro vytváření řešení zobrazí data ze serverů OPC UA připojení k řešení. Výchozí instalace zahrnuje několik OPC UA servery se systémem simulace objekt pro vytváření. Můžete přidat vlastní servery OPC UA, [připojení přes bránu] [ lnk-connect-cf] do řešení.
+Zobrazuje řešení připojená továrna data ze serverů OPC UA připojených k řešení. Výchozí instalace zahrnuje několik serverů OPC UA spuštění simulace objekt pro vytváření. Můžete přidat vlastní servery OPC UA, který [připojení prostřednictvím brány] [ lnk-connect-cf] do vašeho řešení.
 
-Můžete procházet datových položek, které připojený server OPC UA může odesílat do řešení v řídicím panelu:
+Můžete procházet datové položky, které můžete odeslat připojený server OPC UA do vašeho řešení na řídicím panelu:
 
-1. Zvolte **prohlížeče** přejděte na **vyberte server OPC UA** zobrazení:
+1. Zvolte **prohlížeče** přejděte **vyberte server OPC UA** zobrazení:
 
-    ![Přejděte do vyberte zobrazení serverů OPC UA][img-select-server]
+    ![Přejděte na Select zobrazení serverů OPC UA][img-select-server]
 
-1. Vyberte server a klikněte na tlačítko **Connect**. Klikněte na tlačítko **pokračovat** Jakmile se zobrazí upozornění zabezpečení.
+1. Vyberte server a klikněte na tlačítko **připojit**. Klikněte na tlačítko **pokračovat** Jakmile se zobrazí upozornění zabezpečení.
 
     > [!NOTE]
-    > Toto upozornění pouze vyskytuje jednou pro každý server a vytvoří vztah důvěryhodnosti mezi řídicí panel řešení a serverem.
+    > Toto upozornění pouze se vyskytuje jednou pro každý server a vytváří vztah důvěryhodnosti mezi řídicím panelu řešení a serverem.
 
-1. Nyní je možné procházet datových položek, které může server odeslat do řešení. Položky, které jsou odesílány do řešení mají zaškrtnuto:
+1. Nyní můžete procházet datové položky, které může server odeslat do řešení. Položky, které jsou odesílány do řešení se zobrazí zaškrtnutí:
 
     ![Publikované položky][img-published]
 
-1. Pokud jste *správce* v řešení, můžete publikovat položku dat, aby byl k dispozici v rámci připojení objektu pro vytváření řešení. Jako správce můžete také změnit hodnotu datové položky a volání metody v serveru OPC UA.
+1. Pokud jste *správce* v řešení, můžete publikovat datové položky, které ho zpřístupní v řešení připojené továrny. Jako správce můžete také změnit hodnotu položky dat a volání metod na serveru OPC UA.
 
-## <a name="map-the-data"></a>Mapování dat.
+## <a name="map-the-data"></a>Mapy dat
 
-Řešení připojen objekt pro vytváření mapy a agreguje položky publikovaných dat ze serveru OPC UA u různých zobrazení v řešení. Připojen objekt pro vytváření řešení se nasadí do účtu Azure při zřizování řešení. Soubor JSON v řešení Visual Studio připojené Factory ukládá tyto informace o mapování. Můžete zobrazit a upravit tento konfigurační soubor JSON v řešení nástroje Visual Studio připojené objekt pro vytváření. Můžete znovu nasadit řešení po provedení změny.
+Řešení připojená továrna mapuje a agreguje položky publikovaných dat ze serveru OPC UA na různá zobrazení v řešení. Řešení připojená továrna nasadí ke svému účtu Azure, máte při zřizování řešení. Soubor JSON do řešení aplikace Visual Studio připojená továrna ukládá tyto informace o mapování. Můžete zobrazit a upravit tento konfigurační soubor JSON v řešení sady Visual Studio připojené továrny. Můžete znovu nasadit řešení po provedení změny.
 
-Můžete použít konfiguračního souboru na:
+Můžete použít konfigurační soubor na:
 
-- Upravte existující simulované objekty Factory, řádky výroby a stanice.
-- Mapování dat ze skutečné OPC UA serverů, které se připojují k řešení.
+- Upravte existující simulované objekty pro vytváření, výrobní linky a stanice.
+- Mapování dat ze skutečných serverů OPC UA, které se připojují k řešení.
 
-Další informace o mapování a agregace dat podle specifických požadavků najdete v tématu [postup konfigurace akcelerátoru řešení připojen objekt pro vytváření ](iot-accelerators-connected-factory-configure.md).
+Další informace o mapování a agregace dat podle vašich specifických požadavků najdete v tématu [konfigurace akcelerátor řešení připojená továrna ](iot-accelerators-connected-factory-configure.md).
 
 ## <a name="deploy-the-changes"></a>Nasazení změny
 
-Když dokončíte provádění změn **ContosoTopologyDescription.json** souboru, je nutné znovu nasadit řešení vytváření připojení k účtu Azure.
+Po dokončení provádění změn **ContosoTopologyDescription.json** souboru, je nutné znovu nasadit řešení připojená továrna ke svému účtu Azure.
 
-**Azure-iot připojené factory** zahrnuje úložiště **build.ps1** skript prostředí PowerShell můžete znovu vytvořit a nasadit řešení.
+**Azure-iot-connected-factory** zahrnuje úložiště **build.ps1** skript prostředí PowerShell můžete použít k sestavení a nasazení řešení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řešení akcelerátor připojen objekt pro vytváření přečíst v následujících článcích:
+Další informace o akcelerátor řešení připojená továrna v následujících článcích:
 
 * [Seznámení s akcelerátorem řešení propojené továrny][lnk-rm-walkthrough]
-* [Nasaďte bránu pro připojení objektu pro vytváření][lnk-connect-cf]
-* [Oprávnění na webu azureiotsuite.com][lnk-permissions]
+* [Nasazení brány pro propojenou továrnu][lnk-connect-cf]
+* [Oprávnění na webu azureiotsolutions.com][lnk-permissions]
 * [Propojená továrna – nejčastější dotazy](iot-accelerators-faq-cf.md)
 * [NEJČASTĚJŠÍ DOTAZY][lnk-faq]
 

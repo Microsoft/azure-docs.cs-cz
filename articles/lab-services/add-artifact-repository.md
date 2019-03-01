@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 9a267b48e185e02c1b1217380429453799308bbe
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 393a5c0af5ff7ccaef8aa462391c5c9457aa9c08
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886757"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011106"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje určit artefakt, který chcete přidat do virtuálního počítače během vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroje nebo aplikace, kterou chcete nainstalovat do virtuálního počítače. Artefakty jsou definovány v souboru JSON načíst z úložiště GitHub nebo VSTS Git. 
@@ -172,7 +172,7 @@ Existuje několik způsobů, jak nasazovat šablony do Azure a mít prostředek 
 - [Nasazení prostředků pomocí šablon Resource Manageru a webu Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-Nyní pokračujme a zjistit, jak nasadit šablonu v prostředí PowerShell. Rutiny používané k nasazení šablony jsou závislé na kontextu, takže aktuálního tenanta a aktuálním předplatném jsou používány. Použití [Set-AzContext](/powershell/module/az.profile/set-azcontext) před nasazením šablony, v případě potřeby, chcete-li změnit kontext.
+Nyní pokračujme a zjistit, jak nasadit šablonu v prostředí PowerShell. Rutiny používané k nasazení šablony jsou závislé na kontextu, takže aktuálního tenanta a aktuálním předplatném jsou používány. Použití [Set-AzContext](/powershell/module/az.accounts/set-azcontext) před nasazením šablony, v případě potřeby, chcete-li změnit kontext.
 
 Nejprve vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Pokud skupina prostředků, kterou chcete použít, již existuje, tento krok přeskočte.
 
@@ -375,7 +375,7 @@ if ($ArtifactRepositoryName -eq $null){
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Tento příkaz slouží k získání podrobností o testovacím prostředí například jeho umístění. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Neexistuje žádný konkrétní příkaz pro přidání úložiště artefaktů. Obecné [New-AzResource](/powershell/module/az.resources/new-azresource) rutina provede úlohu. Tato rutina se musí buď **ResourceId** nebo **ResourceName** a **ResourceType** pár znát typ prostředku, chcete-li vytvořit. Tento ukázkový skript používá dvojice typ prostředků a název prostředku. <br/><br/>Všimněte si, že vytvoříte zdroj artefaktu úložiště ve stejném umístění a ve stejné skupině prostředků jako testovacího prostředí.|
 
-Skript přidá nový prostředek do aktuálního předplatného. Použití [Get-AzContext](/powershell/module/az.profile/get-azcontext) tyto informace zobrazit. Použití [Set-AzContext](/powershell/module/az.profile/set-azcontext) nastavení aktuálního tenanta a předplatné.
+Skript přidá nový prostředek do aktuálního předplatného. Použití [Get-AzContext](/powershell/module/az.accounts/get-azcontext) tyto informace zobrazit. Použití [Set-AzContext](/powershell/module/az.accounts/set-azcontext) nastavení aktuálního tenanta a předplatné.
 
 Nejlepší způsob, jak zjistit název prostředku a informace o typu prostředek se má používat [Test Drive REST API služby Azure](https://azure.github.io/projects/apis/) webu. Podívejte se [DevTest Labs – 2016-05-15](http://aka.ms/dtlrestapis) poskytovatele dostupná rozhraní API REST pro zprostředkovatele DevTest Labs. Uživatelé skriptu následující ID prostředku. 
 

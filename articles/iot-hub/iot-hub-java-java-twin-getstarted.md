@@ -1,19 +1,20 @@
 ---
 title: Začínáme s dvojčaty zařízení Azure IoT Hub (Java) | Dokumentace Microsoftu
 description: Jak používat dvojče zařízení Azure IoT Hub pro přidání značek a následné použití k dotazu služby IoT Hub. Implementace aplikace pro zařízení a služby Azure IoT SDK pro Javu k implementaci app service, které přidá značky a spustí dotaz služby IoT Hub pomocí zařízení Azure IoT SDK pro Javu.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.author: dobett
-ms.openlocfilehash: a938e5d872d2c1602f7ce898f0d14e3e04feb759
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 75acacdd36b7e0829f347f23652128ed07544eff
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312557"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011071"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme s dvojčaty zařízení (Java)
 

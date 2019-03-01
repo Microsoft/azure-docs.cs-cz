@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8585557672c7db15e07be6a5e663ba1811e07694
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e051fddda6957e8eda00c0087663db129c1ae23a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961308"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008980"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 
@@ -28,14 +28,16 @@ Aplikace Microsoft Authenticator přispívá k přihlášení k účtům použí
 
 Můžete použít aplikaci Microsoft Authenticator několika různými způsoby, včetně:
 
-- Poskytnutí výzvy pro druhé metody ověřování po přihlášení pomocí uživatelského jména a hesla.
+- Reagujte na příkazový řádek pro ověřování, přihlaste se pomocí uživatelského jména a hesla.
 
-- Zajištění přihlášení bez hesla, vaše uživatelské jméno a vašeho mobilního zařízení pomocí otisků prstů, rozpoznávání tváře nebo PIN kód.
+- Přihlásit bez zadávání hesla, vaše uživatelské jméno, ověřovací aplikaci a vašeho mobilního zařízení pomocí otisků prstů, rozpoznávání tváře nebo PIN kód.
+
+- Jako generátor kódu pro všechny účty, které podporují aplikace.
 
 >[!Important]
->Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
+>Aplikace Microsoft Authenticator funguje pomocí libovolného účtu, který používá dvojúrovňového ověřování a podporuje podle času jednorázového hesla (TOTP) normami.
 
->Vaše organizace může vyžadovat přihlášení a přístup k datům organizace a dokumenty pomocí ověřovací aplikace. I když vaše uživatelské jméno se může zobrazit v aplikaci, účet není nastavené ve skutečnosti tak, aby fungoval jako metodu ověřování, až do dokončení procesu registrace. Další informace najdete v tématu [přidejte svůj pracovní nebo školní účet](user-help-auth-app-overview.md).
+>Vaše organizace může vyžadovat přihlášení a přístup k datům organizace a dokumenty pomocí ověřovací aplikace. I když vaše uživatelské jméno se může zobrazit v aplikaci, účet není nastavené ve skutečnosti tak, aby fungoval jako metodu ověřování, až do dokončení procesu registrace. Další informace najdete v tématu [přidejte svůj pracovní nebo školní účet](user-help-auth-app-add-work-school-account.md).
 
 >Pokud máte potíže s přihlášením k účtu, najdete v článku [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429) nápovědu. Získat další informace o tom, jak postupovat, když se zobrazí ["Tento účet Microsoft neexistuje"](https://support.microsoft.com/help/13811) zpráva při pokusu o přihlášení k účtu Microsoft.
 

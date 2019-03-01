@@ -1,19 +1,19 @@
 ---
 title: Plánování úloh s Azure IoT Hub (.NET/.NET) | Dokumentace Microsoftu
 description: Jak naplánovat úlohu služby Azure IoT Hub k vyvolání přímé metody v různá zařízení. Implementace aplikace simulovaného zařízení a app service na spuštění úlohy pomocí zařízení Azure IoT SDK pro .NET.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
-ms.author: dobett
-ms.openlocfilehash: 4089ee74b44bc17324c7cd33b1bbd734a651d75f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: robin.shahan
+ms.openlocfilehash: b39d7d4af4c476778665e844f647beecf20e3d9f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514804"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008878"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Úlohy vysílání a plánování (.NET/.NET)
 
@@ -29,9 +29,9 @@ Azure IoT Hub použijte k plánování a sledování úloh, které aktualizují 
 
 Další informace o každé z těchto možností najdete v tématu:
 
-* Dvojče zařízení a vlastností: [Začínáme s dvojčaty zařízení](iot-hub-csharp-csharp-twin-getstarted.md) a [kurz: jak používat vlastnosti dvojčat zařízení](tutorial-device-twins.md)
+* Dvojče zařízení a vlastnosti: [Začínáme s dvojčaty zařízení](iot-hub-csharp-csharp-twin-getstarted.md) a [kurzu: Jak používat vlastnosti dvojčat zařízení](tutorial-device-twins.md)
 
-* Přímé metody: [Příručka pro vývojáře IoT Hub - přímých metod](iot-hub-devguide-direct-methods.md) a [kurz: použití přímých metod](quickstart-control-device-dotnet.md)
+* Přímé metody: [Příručka pro vývojáře IoT Hub - přímých metod](iot-hub-devguide-direct-methods.md) a [kurzu: Použití přímých metod](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -291,6 +291,6 @@ Nyní jste připraveni aplikaci spustit.
 
 V tomto kurzu používají úlohy k plánování přímé metody, která zařízení a aktualizace vlastnosti dvojčete zařízení.
 
-Chcete-li pokračovat v seznamování se službou IoT Hub a schémata správy zařízení jako vzdálené přes aktualizace firmwaru air, přečtěte si [kurz: jak provést upgrade firmwaru](tutorial-firmware-update.md).
+Chcete-li pokračovat v seznamování se službou IoT Hub a schémata správy zařízení jako vzdálené přes aktualizace firmwaru air, přečtěte si [kurzu: Jak provést upgrade firmwaru](tutorial-firmware-update.md).
 
 Další informace o nasazování AI do hraničních zařízení pomocí služby Azure IoT Edge najdete v tématu [Začínáme s IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

@@ -9,26 +9,30 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c36e557f4e7c4a42726ee96de8bd73755d5e19c4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075824"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193666"
 ---
-# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
+# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provedení klasifikace obrázků na hraničních zařízeních pomocí služby Custom Vision Service
 
 Azure IoT Edge může zvýšit efektivitu vašeho řešení IoT tím, že přesune úlohy z cloudu na hraniční zařízení. Tato funkce je vhodná pro služby, které zpracovávají velké množství dat, jako jsou modely počítačového zpracování obrazu. [Služba Custom Vision](../cognitive-services/custom-vision-service/home.md) umožňuje vytvářet vlastní klasifikátory obrázků a nasazovat je do zařízení jako kontejnery. Kombinace těchto dvou služeb umožňuje získávat informace z obrázků a video streamů bez nutnosti nejprve přenášet všechna tato data do jiného umístění. Služba Custom Vision poskytuje klasifikátor, který generuje přehledy porovnáváním obrázků s natrénovaným modelem. 
 
 Služba Custom Vision na zařízení IoT Edge by například mohla určovat, jestli je na dálnici větší nebo menší provoz než normálně nebo jestli jsou v garáži v některé řadě volná parkovací místa. Tyto přehledy je možné sdílet s jinou službou, která na ně může reagovat. 
 
-
 V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
+>
 > * Vytvoření klasifikátoru obrázků s využitím služby Custom Vision
 > * Vytvoření modulu IoT Edge, který dotazuje webový server služby Custom Vision na vašem zařízení
 > * Odeslání výsledků klasifikátoru obrázků do služby IoT Hub
+
+<center>
+![Diagram – kurz architektury, Příprava a nasazení třídění](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +47,7 @@ Cloudové prostředky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
 * Registr kontejneru. V tomto kurzu se používá služba [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/). 
-    * Znalost přihlašovacích údajů [účtu správce](../container-registry/container-registry-authentication.md#admin-account) registru kontejneru.
+* Znalost přihlašovacích údajů [účtu správce](../container-registry/container-registry-authentication.md#admin-account) registru kontejneru.
 
 Prostředky pro vývoj:
 
@@ -151,7 +155,7 @@ Teď máte soubory pro kontejnerovou verzi klasifikátoru obrázků na svém mí
 
 3. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code. 
 
-4. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Na paletě příkazů zadejte následující informace k vytvoření řešení: 
+4. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**. Na paletě příkazů zadejte následující informace k vytvoření řešení: 
 
    | Pole | Hodnota |
    | ----- | ----- |
@@ -201,7 +205,7 @@ Ve skutečném nasazení služby Custom Vision byste měli kameru poskytující 
 
 V této části do stejného řešení CustomVisionSolution přidáte nový modul a zadáte kód pro vytvoření simulované kamery. 
 
-1. Ve stejném okně Visual Studio Code pomocí palety příkazů spusťte **Azure IoT Edge:Přidání modulu IoT Edge**. Na paletě příkazů zadejte následující informace o novém modulu: 
+1. Ve stejném okně Visual Studio Code, použít paletu příkazů ke spuštění **Azure IoT Edge: Přidat modul IoT Edge**. Na paletě příkazů zadejte následující informace o novém modulu: 
 
    | Výzva | Hodnota | 
    | ------ | ----- |
@@ -423,7 +427,7 @@ Nejprve sestavte řešení a odešlete ho do registru kontejneru.
 
 Dále nastavte přístup ke službě IoT Hub z Visual Studio Code. 
 
-1. Na paletě příkazů VS Code vyberte **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: Vybrat IoT Hub).
+1. Paleta příkazů VS Code, vyberte **Azure IoT Hub: Vyberte službu IoT Hub**.
 2. Podle pokynů se přihlaste ke svému účtu Azure. 
 3. Na paletě příkazů vyberte své předplatné Azure a pak vaši službu IoT Hub. 
 

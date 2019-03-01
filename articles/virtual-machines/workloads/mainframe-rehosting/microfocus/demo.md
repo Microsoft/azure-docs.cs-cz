@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c921fd0c52d555264ab511486709b888b50bd68e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 2a29b484b58b887981b1879ceba5bf7426bb6c2e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739440"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192000"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure
 
@@ -73,7 +73,7 @@ Po instalaci služby Enterprise Developer 4.0 na virtuálním počítači, musí
     - Aktivace protokolem TCP
     - Sdílení portů TCP
 
-     ![](media/01-demo-roles.png)
+     ![Průvodce přidáním rolí a funkcí: Služby role](media/01-demo-roles.png)
 
 8. Když vyberete všechny možnosti, klikněte na tlačítko **Další** k instalaci.
 
@@ -101,7 +101,7 @@ Některé organizace serverové procesy musí mít možnost vytvářet databáze
 
 4. Vyberte **role serveru** a zkontrolujte **sysadmin**.
 
-     ![](media/02-demo-explorer.png)
+     ![Okno Průzkumníka objektů SSMS: Vlastnosti přihlášení](media/02-demo-explorer.png)
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>Vytvořit databázi BankDemo a všechny objekty
 
@@ -117,7 +117,7 @@ Některé organizace serverové procesy musí mít možnost vytvářet databáze
 
 Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro aplikaci BankDemo.
 
-![](media/03-demo-query.png)
+![SQLQuery1.sql output](media/03-demo-query.png)
 
 ## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Ověřte, zda byly vytvořeny databáze tabulek a objektů
 
@@ -125,7 +125,7 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
 2. Rozbalte **databáze** a vyberte **tabulky**. By měl vypadat přibližně jako následující.
 
-     ![](media/04-demo-explorer.png)
+     ![Tabulka BANKDEMO rozbalení v Průzkumníku objektů](media/04-demo-explorer.png)
 
 ## <a name="build-the-application-in-enterprise-developer"></a>Vytvoření aplikace v podnikové vývojáře
 
@@ -147,7 +147,7 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
 6. Pokud je projekt vytvořen, podívejte se **výstup** okna. By měl vypadat jako na obrázku níže.
 
-     ![](media/05-demo-output.png)
+     ![Okno výstup zobrazuje úspěšné sestavení](media/05-demo-output.png)
 
 ## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>Nasazení aplikace BankDemo do oblasti databáze
 
@@ -164,7 +164,7 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 > [!NOTE]
 > Nezapomeňte použít lomítkem (/) není zpětné lomítko (\\). Tento skript se spustí nějakou dobu.
 
-![](media/06-demo-cmd.png)
+![Správa: Okno Enterprise Developer Command Prompt](media/06-demo-cmd.png)
 
 ## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>Vytvořit oblast BankDemo v správce podnikové sítě pro .NET
 
@@ -178,11 +178,11 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
 5. Zadat instanci databázového serveru, klikněte na tlačítko **Další**a pak zadejte název oblasti **BANKDEMO**.
 
-     ![](media/07-demo-cics.png)
+     ![Definujte oblasti, dialogové okno](media/07-demo-cics.png)
 
 6. Vyhledejte a vyberte soubor definice oblasti pro databázi mezi různými oblastmi, **oblasti\_bankdemo\_db.config** v **C:\\uživatelé\\veřejné\\ Dokumenty\\Micro fokus\\podnikový vývojář\\ukázky\\Mainframových\\CICS\\DotNet\\BankDemo**.
 
-     ![](media/08-demo-cics.png)
+     ![Definujte oblasti – název oblasti: BANKDEMO](media/08-demo-cics.png)
 
 7. Klikněte na **Dokončit**.
 
@@ -198,11 +198,11 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
 5. Vyberte **definice prostředků XA databáze** a pak zadejte **BANKDEMO** pro **název** a **oblasti**.
 
-     ![](media/09-demo-xa.png)
+     ![Nová obrazovka definice prostředků XA databáze](media/09-demo-xa.png)
 
 6. Klikněte na symbol tří teček (**...** ) a zobrazte si průvodce připojovací řetězec. Pro **název serveru**, typ **(místní)\\SQLEXPRESS**. Pro **přihlášení**vyberte **ověřování Windows**. Název databáze, zadejte **BANKDEMO**
 
-     ![](media/10-demo-string.png)
+     ![Připojovací řetězec obrazovka pro úpravy](media/10-demo-string.png)
 
 7. Vyzkouší připojení.
 
@@ -217,11 +217,11 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
 3. Klikněte pravým tlačítkem na **BANKDEMO CICS oblasti** v **konzoly** podokně a vyberte **operací spustit/zastavit oblasti**.
 
-4. V dolní části **Start / Stop** pole, které se zobrazí v prostředním podokně vyberte **Start**. Za několik sekund spustí se oblast.
+4. V dolní části **operací spustit/zastavit oblasti** pole, které se zobrazí v prostředním podokně vyberte **Start**. Za několik sekund spustí se oblast.
 
-     ![](/media/11-demo-sql.png)
+     ![Pole SQL spustit/zastavit](/media/11-demo-sql.png)
 
-     ![](media/12-demo-cics.png)
+     ![Oblast CICS BANKDEMO – Začínáme obrazovky](media/12-demo-cics.png)
 
 ## <a name="create-a-listener"></a>Vytvořit naslouchací proces
 
@@ -245,7 +245,7 @@ Je potřeba vytvořit naslouchací proces pro TN3270 relací, které přístup k
 
 9. Chcete-li spustit naslouchací proces, klikněte na tlačítko **spustit naslouchací proces** ikonu nebo zvolte **možnosti** \> **spustit naslouchací proces**.
 
-     ![](media/13-demo-listener.png)
+     ![Editor konfigurace naslouchacího procesu windows](media/13-demo-listener.png)
 
 
 ## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Konfigurace programu pro přístup k aplikaci BankDemo Rumba
@@ -264,8 +264,8 @@ Poslední věcí, kterou musíte udělat, je nakonfigurovat 3270 relaci pomocí 
 
 6. ID uživatele, zadejte **B0001** a heslo, zadejte cokoli. Na první obrazovce BANK20 otevře.
 
-![](media/14-demo.png)
-![](media/15-demo.png)
+![Zobrazení úvodní obrazovka mainframových](media/14-demo.png)
+![obrazovky zobrazení Mainframových - programu Rumba - subsystému ukázku](media/15-demo.png)
 
 Blahopřejeme! Je teď spuštěná CICS aplikace v Azure pomocí Micro fokus Enterprise Server.
 

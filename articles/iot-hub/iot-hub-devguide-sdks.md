@@ -1,19 +1,19 @@
 ---
 title: Principy sad SDK Azure IoT | Dokumentace Microsoftu
 description: Příručka pro vývojáře – informace a odkazy na různé Azure IoT zařízení a služby sady SDK, které můžete použít k vytváření aplikací pro zařízení a back endové aplikace.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: dobett
-ms.openlocfilehash: 3bdb09de04ec5041d671f5af709a1a1e7133d141
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: fcb6f564c97632e4d62f7f052ec5ecc35a9e479a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199506"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011241"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Pochopit a používat sady SDK služby Azure IoT Hub
 
@@ -37,7 +37,7 @@ Další informace o [výhodami vývoje pomocí sad Azure IoT SDK](https://azure.
 
 Podporované platformy pro sady SDK najdete v [podpora platformy sady SDK Azure IoT](iot-hub-device-sdk-platform-support.md).
 
-Další informace o kompatibilitě sady SDK s konkrétním hardwarovým zařízením, najdete v článku [programu Azure Certified for IoT zařízení katalogu](https://catalog.azureiotsuite.com/) nebo na individuální úložiště.
+Další informace o kompatibilitě sady SDK s konkrétním hardwarovým zařízením, najdete v článku [programu Azure Certified for IoT zařízení katalogu](https://catalog.azureiotsolutions.com/) nebo na individuální úložiště.
 
 ## <a name="azure-iot-hub-device-sdks"></a>Sady SDK pro zařízení Azure IoT Hub
 

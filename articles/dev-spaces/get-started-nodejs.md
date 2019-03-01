@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vývojového prostředí Kubernetes platformy Node.js v cloudu pomocí VS Code | Microsoft Docs
+title: Vytváření prostředí pro vývoj Kubernetes Node.js v cloudu s VS Code
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 6cdce9f7dbb2e3f0bc5b2d8a3f12e5d50cadc505
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
+ms.openlocfilehash: b7437264bd51bcdc1be4d378cd4fbee506a6e83f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816959"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193649"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme s Azure Dev prostory s využitím Node.js
 

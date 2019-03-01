@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: bd2f675fe646395b60aeb687f67269b0184563bd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412564"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193394"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
@@ -51,7 +51,7 @@ Nastavení zařízení s Windows IoT Core postupujte podle podrobného průvodce
 V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core** šablona zařízení a zaznamenání podrobností o připojení zařízení (**primární klíč ID oboru, ID zařízení**). Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
 
  > [!NOTE]
-   > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto instrustions k [získat připojovací řetězec zařízení](concepts-connectivity.md#getting-device-connection-string) a pokračujte se zbývající část tohoto kurzu.
+   > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto pokynů a [získat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) a pokračujte se zbývající část tohoto kurzu.
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Připravit zařízení Windows 10 IoT Core
 
@@ -119,7 +119,7 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows 
 
 ### <a name="properties"></a>Vlastnosti
 
-| Typ            | Zobrazované jméno | Název pole | Typ dat |
+| Type            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
 | Text            | Umístění     | location   | neuvedeno       |

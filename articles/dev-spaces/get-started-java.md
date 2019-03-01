@@ -1,5 +1,5 @@
 ---
-title: Vytvoření prostoru vývoje Kubernetes v cloudu pomocí Javy a VS Code | Dokumentace Microsoftu
+title: Vytvoření prostoru vývoje Kubernetes v cloudu pomocí Javy a VS Code
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,14 +9,14 @@ ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
+keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: d080a3d251d88095e14011b5834d2b923f204162
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d7e86b6c126874cef4bc33f6e17adca8b7f1d5e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822902"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194200"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Azure Dev prostory s Javou
 

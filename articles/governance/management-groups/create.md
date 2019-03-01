@@ -10,18 +10,20 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 01bfd10b2f37a7990ab9a1badfcb09422baa391a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342197"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992732"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci poskytující prostředky a správu
 
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů napříč několika předplatnými. Vytvoření těchto kontejnerů k sestavení účinný a efektivní hierarchie, který lze použít s [Azure Policy](../policy/overview.md) a [řízení přístupu na základě Role Azure](../../role-based-access-control/overview.md). Další informace o skupinách pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure](overview.md).
 
 První skupiny pro správu, vytvoří se v adresáři může trvat až 15 minut. Existují procesy, které se při prvním přístupu k nastavení služby správy skupin v rámci Azure pro svůj adresář. Po dokončení procesu, dostanete oznámení.
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-management-group"></a>Vytvořit skupinu pro správu
 
@@ -48,10 +50,10 @@ Skupina pro správu můžete vytvořit pomocí portálu, Powershellu nebo rozhra
 
 ### <a name="create-in-powershell"></a>Vytvořit v prostředí PowerShell
 
-V rámci prostředí PowerShell použijte rutinu New-AzureRmManagementGroup:
+V rámci prostředí PowerShell použijte rutinu New-AzManagementGroup:
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso'
+New-AzManagementGroup -GroupName 'Contoso'
 ```
 
 **GroupName** vytváří jedinečný identifikátor. Toto ID používá další příkazy odkazují na tuto skupinu a není možné později změnit.
@@ -59,7 +61,7 @@ New-AzureRmManagementGroup -GroupName 'Contoso'
 Pokud jste chtěli zobrazit na webu Azure portal jiný název skupiny pro správu, měli byste přidat **DisplayName** parametr s řetězcem. Například Kdybyste chtěli vytvořit skupinu pro správu s GroupName Contoso a zobrazovaný název "Skupina společnosti Contoso", můžete využít následující rutinu:
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId 'ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
 ```
 
 Použití **ParentId** vytvořit parametr má tuto skupinu pro správu v rámci různých pro správu.
@@ -78,6 +80,6 @@ Další informace o řešeních pro správu najdete v následujících tématech
 
 - [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](https://aka.ms/mgPSdocs)
-- [Kontrola skupin pro správu v rozhraní REST API](https://aka.ms/mgAPIdocs)
-- [Kontrola skupin pro správu v Azure CLI](https://aka.ms/mgclidoc)
+- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
+- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
+- [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)

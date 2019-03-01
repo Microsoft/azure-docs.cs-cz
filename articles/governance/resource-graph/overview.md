@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b5062dd4edf43fbb348a6de57f534096a8c922de
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267950"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193564"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph
 
@@ -52,7 +52,7 @@ Dotazy do grafu prostředků jsou omezené na poskytují nejlepší prostředí 
 
 ## <a name="running-your-first-query"></a>Spusťte váš první dotaz
 
-Resource Graph podporuje jak Azure CLI, tak i Azure PowerShell. Struktura dotazu je v obou jazycích stejná. Přečtěte si, jak povolit Resource Graph v [ Azure CLI ](first-query-azurecli.md#add-the-resource-graph-extension) a [ Azure PowerShell ](first-query-powershell.md#add-the-resource-graph-module).
+Diagram zdrojů podporuje rozhraní příkazového řádku Azure, Azure Powershellu a Azure SDK pro .NET. Strukturované dotaz stejný pro jednotlivé jazyky. Přečtěte si, jak povolit Resource Graph v [ Azure CLI ](first-query-azurecli.md#add-the-resource-graph-extension) a [ Azure PowerShell ](first-query-powershell.md#add-the-resource-graph-module).
 
 ## <a name="next-steps"></a>Další postup
 

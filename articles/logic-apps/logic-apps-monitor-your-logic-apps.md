@@ -10,18 +10,20 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: e06bf20a04c6a57ae5988d4cc334ec7a3cdd4bf1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6a8c4583d86b41e767e8a2057bae4cef8943a1c1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543852"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193414"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
 Poté co [vytvoření a spuštění aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md), můžete zkontrolovat historii spouštění, historie aktivačních událostí, stavu a výkonu. Pro sledování událostí v reálném čase a rozsáhlejší ladění, nastavte [protokolování diagnostiky](#azure-diagnostics) pro vaši aplikaci logiky. Tímto způsobem můžete [vyhledejte a zobrazte události](#find-events), jako jsou aktivační události, spuštění události a akce události. Můžete také použít tuto [diagnostická data s jinými službami](#extend-diagnostic-data), jako je Azure Storage a Azure Event Hubs. 
 
 Pokud chcete dostávat oznámení o selhání nebo jiné možné problémy, nastavte [výstrahy](#add-azure-alerts). Můžete například vytvořit výstrahu, která rozpozná "více než pět kterých došlo k selhání za hodinu." Můžete také nastavit monitorování, sledování a protokolování prostřednictvím kódu programu pomocí [nastavení Azure Diagnostics událostí a vlastností](#diagnostic-event-properties).
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>Zobrazit spuštění a historie triggeru aplikace logiky
 
@@ -72,7 +74,7 @@ Pokud chcete dostávat oznámení o selhání nebo jiné možné problémy, nast
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Zapnout diagnostiku protokolování pro vaši aplikaci logiky
 
-Pro širší ladění pomocí podrobnosti modulu CLR a události, můžete nastavit protokolování pomocí diagnostiky [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Log Analytics je služba v Azure, která monitoruje cloudové a místní prostředí můžete zachovat jejich dostupnost a výkon. 
+Pro širší ladění pomocí podrobnosti modulu CLR a události, můžete nastavit protokolování pomocí diagnostiky [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md). Azure Monitor je služba v Azure, která monitoruje cloudové a místní prostředí můžete zachovat jejich dostupnost a výkon. 
 
 Než začnete, musíte mít pracovní prostor Log Analytics. Přečtěte si [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
@@ -125,7 +127,7 @@ Najít a zobrazit události ve vaší aplikaci logiky, jako jsou aktivovat udál
 
    ![Zadejte hledaný řetězec](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   Další informace o [jak najít data ve službě Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Další informace o [jak najít data v protokolech Azure Monitor](../log-analytics/log-analytics-log-searches.md).
 
 5. Na stránce výsledky na panelu vlevo vyberte časový rámec, který chcete zobrazit.
 Chcete-li upřesněte svůj dotaz tak, že přidáte filtr, zvolte **+ přidat**.
@@ -153,7 +155,7 @@ Chcete-li upřesněte svůj dotaz tak, že přidáte filtr, zvolte **+ přidat**
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Rozšíření jak a kde použít diagnostických dat s jinými službami
 
-Spolu s Azure Log Analytics můžete rozšířit použití diagnostických dat vaší aplikace logiky s ostatními službami Azure, například: 
+Spolu s protokoly Azure monitoru můžete rozšířit použití diagnostických dat vaší aplikace logiky s ostatními službami Azure, například: 
 
 * [Archiv, který protokoly diagnostiky Azure ve službě Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Stream protokoly diagnostiky Azure do služby Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -176,7 +178,7 @@ Na základě možností, které chcete nastavit, ujistěte se, že jste první [
 
 Pokud chcete sledovat určité metriky nebo došlo k překročení prahové hodnoty pro svou aplikaci logiky, nastavte [výstrah ve službě Azure](../azure-monitor/platform/alerts-overview.md). Další informace o [metrik v Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
-Postup nastavení výstrah bez [Azure Log Analytics](../log-analytics/log-analytics-overview.md), postupujte podle těchto kroků. Pro pokročilejší kritéria výstrahy a akce [nastavení Log Analytics](#azure-diagnostics) příliš.
+Postup nastavení výstrah bez [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md), postupujte podle těchto kroků. Pro pokročilejší kritéria výstrahy a akce [nastavení protokoly Azure monitoru](#azure-diagnostics) příliš.
 
 1. V nabídce okno aplikace logiky podle **monitorování**, zvolte **diagnostiky** > **pravidla upozornění** > **přidat upozornění**jak je znázorněno zde:
 

@@ -1,18 +1,19 @@
 ---
 title: Konfigurace odesílání souborů do IoT Hubu pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
 description: Jak nakonfigurovat soubor nahraje do služby Azure IoT Hub pomocí Azure CLI pro různé platformy.
-author: dominicbetts
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 6cd0b657c8d0352c41e0da538396b166d633306a
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.author: robin.shahan
+ms.openlocfilehash: a77635b6c022527203d1df752723aac3ce2c296c
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058046"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010782"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurace centra IoT nahrávání souborů pomocí Azure CLI
 
@@ -24,7 +25,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 * Služby Azure IoT hub. Pokud nemáte k dispozici služby IoT hub, můžete použít [ `az iot hub create` příkaz](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) nějaké nebo [vytvoření IoT hubu pomocí portálu](iot-hub-create-through-portal.md).
 
@@ -88,15 +89,15 @@ Teď můžete nakonfigurovat službu IoT hub povolit možnost [nahrání soubor�
 
 Následující konfigurace vyžaduje následující hodnoty:
 
-* **Kontejner úložiště**: kontejner objektů blob v účtu služby Azure storage v aktuálním předplatném Azure pro přidružení k službě IoT hub. Který jste získali informace o účtu úložiště potřebné v předchozí části. IoT Hub automaticky generuje identifikátorů URI SAS s oprávněním pro zápis do tohoto kontejneru objektů blob pro zařízení se má použít při jejich nahrávání souborů.
+* **Kontejner úložiště**: Kontejner objektů blob v účtu služby Azure storage v aktuálním předplatném Azure pro přidružení k službě IoT hub. Který jste získali informace o účtu úložiště potřebné v předchozí části. IoT Hub automaticky generuje identifikátorů URI SAS s oprávněním pro zápis do tohoto kontejneru objektů blob pro zařízení se má použít při jejich nahrávání souborů.
 
 * **Přijímat oznámení o nahraných souborech**: Povolí nebo zakáže oznámení o nahrávání souborů.
 
-* **Hodnota TTL SAS**: Toto nastavení je, time-to-live identifikátorů URI SAS, které vrátí zařízení služby IoT Hub. Ve výchozím nastavení jedna hodina.
+* **HODNOTA TTL SAS**: Toto nastavení je, time-to-live identifikátorů URI SAS, které vrátí zařízení služby IoT Hub. Ve výchozím nastavení jedna hodina.
 
-* **Soubor oznámení, nastavení výchozí hodnota TTL**: time-to-live souboru odeslat oznámení, než vyprší jejich platnost. Ve výchozím nastavení má jeden den.
+* **Soubor oznámení, nastavení výchozí hodnota TTL**: Oznámení time-to-live souboru nahrát, než vyprší jejich platnost. Ve výchozím nastavení má jeden den.
 
-* **Soubor oznámení maximální počet doručení**: počet, kolikrát se IoT Hub pokusí doručit do souboru odeslat oznámení. Ve výchozím nastavení má 10.
+* **Soubor oznámení maximální počet doručení**: Počet, kolikrát se IoT Hub pokusí doručit do souboru odeslat oznámení. Ve výchozím nastavení má 10.
 
 Pomocí následujících příkazů Azure CLI ke konfiguraci nastavení nahrávání souborů ve službě IoT hub:
 

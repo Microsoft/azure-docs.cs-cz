@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 9577e2c8eea153b38475bf5126a41641b3642ae9
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416186"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991321"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -176,7 +176,7 @@ Tyto vlastnosti se zohledňují pouze při určování velikosti na základě v�
 
 ### <a name="what-is-dependency-visualization"></a>Co je vizualizace závislostí?
 
-Vizualizace závislostí můžete posouzení skupiny virtuálních počítačů pro migraci s větší jistotou napříč Kontrola závislostí počítačů před spuštěním posouzení. Vizualizace závislostí vám pomůže zajistit, že nic se zachovají, jak se vyhnout nečekaných výpadků při migraci do Azure. Azure Migrate využívá řešení Service Map ve službě Log Analytics umožňuje vizualizace závislostí.
+Vizualizace závislostí můžete posouzení skupiny virtuálních počítačů pro migraci s větší jistotou napříč Kontrola závislostí počítačů před spuštěním posouzení. Vizualizace závislostí vám pomůže zajistit, že nic se zachovají, jak se vyhnout nečekaných výpadků při migraci do Azure. Azure Migrate využívá řešení Service Map v protokolech Azure Monitor umožňuje vizualizace závislostí.
 
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Musím zaplatit pomocí funkce vizualizace závislostí?
 
@@ -217,7 +217,7 @@ Seznam operačních systémů Windows nepodporuje agenta závislostí je [tady](
 Seznam operačních systémů Linux podporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Je možné vizualizovat závislosti ve službě Azure Migrate déle než hodinu?
-Ne, Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. Azure Migrate vám umožní přejít zpět na konkrétní datum v historii pro až za poslední měsíc, ale až 1 hodinu, než je maximální doba trvání, pro kterou můžete vizualizovat závislosti. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít Log Analytics pro [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu.
+Ne, Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. Azure Migrate vám umožní přejít zpět na konkrétní datum v historii pro až za poslední měsíc, ale až 1 hodinu, než je maximální doba trvání, pro kterou můžete vizualizovat závislosti. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít protokoly Azure monitoru a [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Platí pro skupiny s více než 10 virtuálních počítačů vizualizace závislostí?
 Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , které mají až 10 virtuálních počítačů. Pokud máte skupinu pomocí více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.

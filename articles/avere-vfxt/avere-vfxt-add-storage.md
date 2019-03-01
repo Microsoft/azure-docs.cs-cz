@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 13084ac21315d725df3f0913583fff3e64ee5c4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cda95b8f7cbf1da85f080c7ea53306f48375db32
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813224"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992341"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -72,7 +72,7 @@ Potom pokračujte [vytvořit spojení](#create-a-junction).
 Používání úložiště objektů Blob v Azure jako úložiště clusteru vFXT back-endu, potřebujete prázdného zásobníku přidáte jako filtr core.
 
 > [!TIP] 
-> Pokud budete chtít vytvořit kontejner objektů blob v době vytváření clusteru vFXT Avere, šablona nasazení nebo skript vytvoří kontejner úložiště, ji definuje jako základní filtr a vytvoří obor názvů spojení jako součást vytváření vFXT clusteru. 
+> Pokud budete chtít vytvořit kontejner objektů blob v době vytváření clusteru vFXT Avere, šablona nasazení nebo skript vytvoří kontejner úložiště, ji definuje jako základní filtr a vytvoří obor názvů spojení jako součást vytváření vFXT clusteru. Šablona taky vytvoří koncový bod služby úložiště uvnitř virtuální sítě clusteru. 
 
 Přidání úložiště objektů Blob ke svému clusteru vyžaduje tyto úlohy:
 

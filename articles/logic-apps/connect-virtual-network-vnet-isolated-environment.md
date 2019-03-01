@@ -8,18 +8,18 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/24/2019
-ms.openlocfilehash: eb082d5194cb6948668c4944208ec11fab987206
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.date: 02/26/2019
+ms.openlocfilehash: c0f4d483c214847227059046c2dda305f63398d6
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806519"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991731"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
 
 > [!NOTE]
-> Tato funkce je v *ve verzi public preview*. 
+> Tato funkce je v [ *ve verzi public preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pro scénáře, ve kterém logic apps a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je privátní a izolované prostředí, která používá vyhrazeného úložiště a dalším prostředkům udržovány odděleně od veřejné nebo "globální" služba Logic Apps. Toto oddělení také snižuje předejde jiných tenantů Azure může mít na výkon vaší aplikace. Je vaše ISE *vložený* do ke službě Azure virtual network, která pak nasadí služba Logic Apps do vaší virtuální sítě. Při vytváření logiku aplikace nebo integračního účtu, vyberte tento ISE jako jejich umístění. Váš účet integrace nebo aplikace logiky můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti.
 
@@ -73,7 +73,7 @@ K řízení příchozího a odchozího provozu mezi podsítěmi virtuální sít
 | Publikování diagnostické protokoly a metriky | Odchozí | 443 | VIRTUAL_NETWORK  | AzureMonitor | |
 | Návrhář pro Logic Apps – dynamické vlastnosti | Příchozí | 454 | INTERNET  | VIRTUAL_NETWORK | Požadavky pocházejí z aplikace logiky [přístup ke koncovému bodu příchozí IP adresy v dané oblasti](../logic-apps/logic-apps-limits-and-config.md#inbound). |
 | Závislost aplikace Service Management | Příchozí | 454 & 455 | AppServiceManagement | VIRTUAL_NETWORK | |
-| Nasazení konektoru | Příchozí | 454 & 3443 | INTERNET  | VIRTUAL_NETWORK | Nezbytné pro nasazení a aktualizaci konektory. Zavřít nebo blockng tento port způsobí, že nasazení ISE selhání a brání konektor aktualizace a opravy. |
+| Nasazení konektoru | Příchozí | 454 & 3443 | INTERNET  | VIRTUAL_NETWORK | Nezbytné pro nasazení a aktualizaci konektory. Zavření nebo zablokování tohoto portu způsobí, že nasazení ISE selhání a brání konektor aktualizace a opravy. |
 | API Management – koncový bod správy | Příchozí | 3443 | APIManagement  | VIRTUAL_NETWORK | |
 | Závislost z protokolu do zásady centra událostí a agenta monitorování | Odchozí | 5672 | VIRTUAL_NETWORK  | Centrum událostí | |
 | Přístup k mezipaměti Azure pro instance Redis mezi instancemi Role | Příchozí <br>Odchozí | 6379-6383 | VIRTUAL_NETWORK  | VIRTUAL_NETWORK | |
@@ -142,7 +142,7 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
    | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Skupina prostředků Azure, ve kterém chcete vytvořit prostředí |
    | **Název prostředí integrační služby** | Ano | <*environment-name*> | Název prostředí |
    | **Umístění** | Ano | <*Azure-datacenter-region*> | Oblast datového centra Azure, jak nasadíte prostředí |
-   | **Zvýšení kapacity** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE |
+   | **Zvýšení kapacity** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE. Po vytvoření navyšovat kapacitu, najdete v článku [navyšovat kapacitu](#add-capacity). |
    | **Virtuální síť** | Ano | <*Azure-virtual-network-name*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nejste připojeni k síti, můžete jeden vytvořit tady. <p>**Důležité**: Je možné *pouze* provádět tento vkládání při vytváření vašeho ISE. Ale předtím, než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). |
    | **Podsítě** | Ano | <*subnet-resource-list*> | ISE vyžaduje čtyři *prázdný* podsítě pro vytváření prostředků ve vašem prostředí. Ano, ujistěte se, že tyto podsítě *nejsou přidělena* na libovolnou službu. Můžete *nelze změnit* tyto adresy podsítě po vytvoření prostředí. <p><p>K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet). Každá podsíť musí splňovat tato kritéria: <p>– Musí být prázdný. <br>-Používá název, který nezačíná znakem čísla nebo pomlčku. <br>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a prostor adres třídy B. <br>-Zahrnuje nejméně jednoho `/27` v adresním prostoru, získá alespoň 32 adres podsítě. Další informace o výpočtu počet adres najdete v tématu [bloky IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Příklad: <p>- `10.0.0.0/24` protože má 256 adresy 2<sup>(32-24)</sup> je 2<sup>8</sup> nebo 256. <br>- `10.0.0.0/27` protože má 32 adres 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32. <br>- `10.0.0.0/28` protože má jenom 16 adresy 2<sup>(32-28)</sup> je 2<sup>4</sup> nebo 16. |
    |||||
@@ -187,6 +187,30 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
    > Pokud nasazení selže nebo je odstranit ISE, Azure *může* trvat až jednu hodinu před uvolněním podsítě. Ano budete muset počkat před opětovným použitím těchto podsítí v jiném prostředí ISE.
 
 1. Chcete-li zobrazit své prostředí, zvolte **přejít k prostředku** Pokud Azure nemá automaticky přejít do svého prostředí po dokončení nasazení.  
+
+<a name="add-capacity"></a>
+
+### <a name="add-capacity"></a>Přidat kapacitu
+
+Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete přidat více jednotek škálování. Můžete se rozhodnout pro automatické škálování na základě metrik výkonu nebo podle určitého počtu jednotek zpracování. Pokud vyberete možnost automatického škálování na základě metrik, můžete vybrat z různých kritérií a zadání podmínek prahovou hodnotu pro splnění tohoto kritéria.
+
+1. Na webu Azure Portal najdete vaše ISE.
+
+1. Chcete-li zobrazit metriky výkonu pro vaše ISE v hlavní nabídce vašeho ISE, zvolte **přehled**.
+
+1. V části Nastavení automatického škálování, **nastavení**vyberte **horizontální navýšení kapacity**. Na **konfigurovat** kartě **povolit automatické škálování**.
+
+1. V **výchozí** zvolte buď **škálování podle metriky** nebo **škálovat na konkrétní počet instancí**.
+
+1. Pokud se rozhodnete založený na instancích, zadejte počet jednotek zpracování (včetně) od 0 do 3. Jinak pro na základě metrik, postupujte podle těchto kroků:
+
+   1. V **výchozí** zvolte **přidat pravidlo**.
+
+   1. Na **pravítko měřítka** podokně provést, když se pravidlo aktivuje nastavení kritéria a akce.
+   
+   1. Jakmile budete hotovi, zvolte **přidat**.
+
+1. Jakmile budete hotovi, nezapomeňte si uložit změny.
 
 <a name="create-logic-apps-environment"></a>
 
