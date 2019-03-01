@@ -2,7 +2,7 @@
 ## [Monitorování agenta](../monitoring/index.md)
 
 # Začínáme
-## [Log Analytics](../log-analytics/log-analytics-get-started.md)
+## [Protokoly Azure Monitoru](../log-analytics/log-analytics-get-started.md)
 ## [Automation](/azure/automation/)
 ## [Backup](../backup/backup-introduction-to-azure-backup.md)
 ## [Site Recovery](../site-recovery/site-recovery-overview.md)
@@ -11,7 +11,7 @@
 # Postup
 
 ## Analýza
-### [Log Analytics](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Protokoly Azure Monitoru](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Automatizace
 ### [Přehled Azure Automation](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2105919e0c21ef57ae2cd19450110df384252e97
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 43d28cde7e4287b5394087000b5e730a94748713
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730932"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010629"
 documentType: LandingData
 title: Dokumentace k Automatickým návrhům Bingu
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: Dokumentace k Automatickým návrhům Bingu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
   description: Naučte se používat rozhraní API pro automatické návrhy Bingu k získání navržených dotazů na základě dílčího dotazu. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
   services: cognitive-services
-  author: v-jaswel
-  manager: kamrani
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jaswel
+  ms.date: 02/20/2019
+  ms.author: aahi
 abstract:
-  description: Rozhraní API pro automatické návrhy Bingu umožňuje odeslat do Bingu částečný dotaz a získat zpátky seznam navrhovaných dotazů, které při hledání použili ostatní uživatelé.  Když například uživatel zadává jednotlivé znaky hledaného termínu, zavoláte toto rozhraní API a rozevírací seznam vyhledávacího pole se vyplní navrhovanými řetězci dotazu. Naučte se používat rozhraní API pro automatické návrhy prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: Rozhraní API pro automatické návrhy Bingu umožňuje odeslat do Bingu částečný dotaz a získat zpátky seznam navrhovaných dotazů, které při hledání použili ostatní uživatelé.  Když například uživatel zadává jednotlivé znaky hledaného termínu, můžete zavolat toto rozhraní API a rozevírací seznam vyhledávacího pole se naplní návrhy. Naučte se používat rozhraní API pro automatické návrhy prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-autosuggest/overview
+      html: <p>Další informace o rozhraní API pro automatické návrhy Bingu</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je rozhraní API pro automatické návrhy Bingu?
+    - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
+      html: <p>Další informace o získání návrhů hledání v reálném čase</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Získání návrhů z rozhraní API pro automatické návrhy Bingu
+    - href: /azure/cognitive-services/bing-autosuggest/language-support
+      html: <p>Zjistěte, které jazyky toto rozhraní API podporuje.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Podporované jazyky
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -60,7 +81,7 @@ sections:
   - type: paragraph
     text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro automatické návrhy Bingu:'
   - type: paragraph
-    text: <a href="tutorials/autosuggest.md">Jednostránková webová aplikace</a> &#124; <a href="tutorials/autosuggest-source.md">zdrojový kód</a>
+    text: <a href="tutorials/autosuggest.md">Jednostránková webová aplikace</a>
 - title: Referenční informace
   items:
   - type: list

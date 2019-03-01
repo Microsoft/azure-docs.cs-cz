@@ -1,0 +1,94 @@
+items:
+- name: Dokumentace k Azure Sentinelu verze Preview
+  href: index.yml
+- name: Přehled
+  href: overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Onboarding Azure Sentinelu
+    href: quickstart-onboard.md
+  - name: Získání přehledu o upozorněních
+    href: quickstart-get-visibility.md
+  expanded: true
+- name: Kurzy
+  items:
+  - name: Rozpoznávání podezřelých hrozeb
+    href: tutorial-detect-threats.md
+  - name: Prozkoumávání případů
+    href: tutorial-investigate-cases.md
+  - name: Reakce na hrozby
+    href: tutorial-respond-threats-playbook.md
+- name: Návody
+  items:
+  - name: Připojení zdrojů dat
+    href: connect-data-sources.md
+    items:
+    - name: Připojení služeb Microsoft
+      items:
+      - name: Připojení Azure AD
+        href: connect-azure-active-directory.md
+      - name: Připojení Office 365
+        href: connect-office-365.md
+      - name: Připojení Cloud App Security
+        href: connect-cloud-app-security.md
+      - name: Připojení protokolu aktivit Azure
+        href: connect-azure-activity.md
+      - name: Připojení Azure AD Identity Protection
+        href: connect-azure-ad-identity-protection.md
+      - name: Připojení služby Azure Information Protection
+        href: connect-azure-information-protection.md
+      - name: Připojení Azure ATP
+        href: connect-azure-atp.md
+      - name: Připojení služby Azure Security Center
+        href: connect-azure-security-center.md
+      - name: Připojení brány Windows Firewall
+        href: connect-windows-firewall.md
+      - name: Připojení událostí zabezpečení systému Windows
+        href: connect-windows-security-events.md
+    - name: Připojení externích řešení
+      items:
+      - name: Připojení obecného formátu CEF
+        href: connect-common-event-format.md
+      - name: Připojení Barracudy
+        href: connect-barracuda.md
+      - name: Připojení Check Pointu
+        href: connect-checkpoint.md
+      - name: Připojení Palo Alto
+        href: connect-paloalto.md
+      - name: Připojení Fortinetu
+        href: connect-fortinet.md
+      - name: Připojení F5
+        href: connect-f5.md
+      - name: Připojení Syslogu
+        href: connect-syslog.md
+      - name: Připojení Cisca
+        href: connect-cisco.md
+    - name: Připojení analýzy hrozeb
+      href: connect-threat-intelligence.md
+  - name: Uživatelské analýzy
+    href: user-analytics.md
+  - name: Vyhledávání
+    href: hunting.md
+    items:
+    - name: Využití poznámkových bloků k vyhledávání
+      href: notebooks.md
+    - name: Využití záložek k vyhledávání
+      href: bookmarks.md
+  - name: Povolení fúze
+    href: connect-fusion.md
+- name: Zdroje a prostředky
+  items:
+  - name: Užitečné materiály
+    href: resources.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=security-identity
+  - name: Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure
+    href: http://blogs.msdn.com/b/azuresecurity/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: 50587fc6b2fca37ddbe5a9a1cbe4ff1914c809c9
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56993363"

@@ -211,6 +211,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: Správa vztahu důvěryhodnosti služby AD FS s využitím Azure AD
       href: how-to-connect-azure-ad-trust.md
+    - name: Konfigurace deklarace identit skupin pro aplikace
+      href: how-to-connect-fed-group-claims.md
     - name: Změna algoritmu hash pro O365 RP
       href: how-to-connect-fed-sha256-guidance.md
     - name: Použití serveru SAML 2.0 jako vašeho bodu IDP
@@ -243,8 +245,8 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Správa synchronizace Azure AD Connect
     items:
-    - name: Správa provozních úloh
-      href: how-to-connect-sync-operations.md
+    - name: Pracovní server a zotavení po havárii
+      href: how-to-connect-sync-staging-server.md
     - name: Osvědčené postupy pro změnu výchozí konfigurace
       href: how-to-connect-sync-best-practices-changing-default-configuration.md
     - name: Změna výchozí konfigurace
@@ -335,9 +337,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Referenční informace k ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 8eb252f12a4a1a66ba7e8bd5c584e7aad227e24c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 613adb5c19c3ca7fa2f47700a0358a51beac98e4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889271"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193700"
