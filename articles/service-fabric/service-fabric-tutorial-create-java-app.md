@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 2ef38e34403a9c04eac5132c66682a045a589cf8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3309690212f8c2e92c4a2328721624a83928f315
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733057"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247473"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvořte aplikaci s webovým front-endová služba rozhraní API Java a stavovou back-end služby v Service Fabric
 
@@ -29,14 +29,6 @@ Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací 
 
 ![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 
-V první části této série se naučíte:
-
-> [!div class="checklist"]
-> * Vytvoření spolehlivé stavové služby v Javě
-> * Vytvoření bezstavové služby webové aplikace v Javě
-> * Použití vzdálené komunikace služby ke komunikaci se stavovou službou
-> * Nasazení aplikace do místního clusteru Service Fabric
-
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * Sestavení aplikace Service Fabric Reliable Services v Javě
@@ -44,6 +36,15 @@ V této sérii kurzů se naučíte:
 > * [Nasazení aplikace do clusteru Azure](service-fabric-tutorial-java-deploy-azure.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
+
+
+V první části této série se naučíte:
+
+> [!div class="checklist"]
+> * Vytvoření spolehlivé stavové služby v Javě
+> * Vytvoření bezstavové služby webové aplikace v Javě
+> * Použití vzdálené komunikace služby ke komunikaci se stavovou službou
+> * Nasazení aplikace do místního clusteru Service Fabric
 
 ## <a name="prerequisites"></a>Požadavky
 

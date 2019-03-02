@@ -4,7 +4,7 @@ description: Zjistěte, jak shromažďovat data Palo Alto v ověřovacích Azure
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: a4b21d67-1a72-40ec-bfce-d79a8707b4e1
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: a8df4d02952ffcb9a77367b6e5974f31e1505b03
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: c3546b70298c1f700701a3cbca1433bf3fce72ae
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992926"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247371"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Připojit zařízení Palo Alto Networks
 

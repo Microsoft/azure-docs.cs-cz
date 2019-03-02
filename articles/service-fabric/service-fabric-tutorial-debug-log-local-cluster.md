@@ -15,21 +15,16 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c1a8b18062f61be9eb020beefd3ad741c41b55f8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: abcc317233d7304365f8687de3c9bec2d09f7b33
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652698"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247405"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Kurz: Ladění aplikace v Javě nasazené v místním clusteru Service Fabric
 
 Tento kurz je druhá část série. Zjistíte, jak pro aplikaci Service Fabric připojit vzdálený ladicí program pomocí Eclipse. Kromě toho se dozvíte, jak přesměrovat protokoly ze spuštěných aplikací do umístění, které je vhodné pro vývojáře.
-
-Ve druhé části této série se naučíte:
-> [!div class="checklist"]
-> * Ladění aplikace v Javě pomocí Eclipse
-> * Přesměrování protokolů do konfigurovatelného umístění
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
@@ -38,6 +33,13 @@ V této sérii kurzů se naučíte:
 > * [Nasazení aplikace do clusteru Azure](service-fabric-tutorial-java-deploy-azure.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
+
+
+Ve druhé části této série se naučíte:
+> [!div class="checklist"]
+> * Ladění aplikace v Javě pomocí Eclipse
+> * Přesměrování protokolů do konfigurovatelného umístění
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -89,13 +91,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 10. V integrovaném vývojovém prostředí (IDE) Eclipse vyberte **Run –> Debug Configurations –> Remote Java Application** (Spustit –> Konfigurace ladění –> Vzdálená aplikace v Javě), klikněte na konfiguraci **Voting**, kterou jste vytvořili, a pak klikněte na **Debug** (Ladit).
 
-11. Ve webovém prohlížeči přejděte na adresu **localhost:8080**, kde dojdete až k zarážce, a v Eclipse přejděte do části **Debug perspective** (Perspektiva ladění).
+11. Přejděte na webový prohlížeč a přístup **localhost: 8080**. To se automaticky zarážce a Eclipse přejde **ladění perspektivy**.
+
+Teď můžete použít stejné kroky, chcete-li ladit libovolné aplikace Service Fabric v Eclipse.
 
 ## <a name="redirect-application-logs-to-custom-location"></a>Přesměrování protokolů aplikací do vlastního umístění
 
 Následující kroky vás provedou přesměrováním protokolů aplikací z výchozího umístění */var/log/syslog* do vlastního umístění.
 
-1. V současné době aplikace spuštěné v clusterech Service Fabric s Linuxem podporují sběr do jednoho souboru protokolu. V důsledku toho protokoly vždy putují do souboru */tmp/mysfapp0.0.log*. Vytvořte soubor logging.properties v umístění *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* a přidejte do něj následující obsah.
+1. V současné době aplikace běžící v pouze clustery Service Fabric s Linuxem podporují sběr jednoho souboru protokolu. Chcete-li nastavit aplikaci tak, aby protokoly vždy putují do */tmp/mysfapp0.0.log*, vytvořte soubor Logging.Properties v následujícím umístění *Voting/VotingApplication/VotingWebPkg/Code/logging.properties*  a přidejte následující obsah.
 
     ```
     handlers = java.util.logging.FileHandler
@@ -103,7 +107,8 @@ Následující kroky vás provedou přesměrováním protokolů aplikací z výc
     java.util.logging.FileHandler.level = ALL
     java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 
-    # This value specifies your custom location. You will have to ensure this path has read and write access by the process running the SF Application
+    # This value specifies your custom location.
+    # You will have to ensure this path has read and write access by the process running the SF Application
     java.util.logging.FileHandler.pattern = /tmp/mysfapp0.0.log
     ```
 
@@ -113,7 +118,7 @@ Následující kroky vás provedou přesměrováním protokolů aplikací z výc
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    Následující příklad ukazuje ukázkové spuštění:
+    Následující příklad ukazuje ukázkové spuštění s ladicím programem připojené, provedení podobně jako v předchozí části.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar
@@ -121,7 +126,7 @@ Následující kroky vás provedou přesměrováním protokolů aplikací z výc
 
 V této fázi už víte, jak při vývoji aplikací Service Fabric v Javě ladit protokoly aplikací a jak k nim přistupovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

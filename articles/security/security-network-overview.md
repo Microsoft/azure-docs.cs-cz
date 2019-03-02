@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 38a69327e5aaa758dc70ca950956d0bdc8001a4f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6fd25bbf6910140a338267c51955a817d0195939
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818081"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247184"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -324,7 +324,7 @@ Microsoft poskytuje ochranu před útoky DDoS říká **základní** jako souč�
 * **Adaptivní ladění:** Inteligentní přenos profilace učí o provozu vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil, který upravuje provoz mění v průběhu času. Vrstvy 3 ochrany vrstvy 7: Poskytuje ochranu před útoky DDoS plnohodnotných, při použití s firewallem webových aplikací.
 * **Škálování rozsáhlé omezení rizik:** Více než 60 útoku různé typy můžete řešit s využitím globální kapacitu, pro ochranu před největší známé útoky DDoS.
 * **Útok metriky:** Souhrnná metriky z každého útoku jsou přístupné prostřednictvím služby Azure Monitor.
-* **Útok výstrahy:** Oznámení se dají konfigurovat na spouštění a zastavování útoků a na dobu trvání útok, pomocí integrované útoku metrik. Upozornění integrovat do provozní softwaru, například Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailu a na webu Azure portal.
+* **Útok výstrahy:** Oznámení se dají konfigurovat na spouštění a zastavování útoků a na dobu trvání útok, pomocí integrované útoku metrik. Upozornění integrovat do provozní softwaru, například protokoly Microsoft Azure Monitor, Splunk, Azure Storage, e-mailu a na webu Azure portal.
 * **Se zárukou nákladů:**  Přenos dat a aplikací horizontální navýšení kapacity kredity pro dokument útoky DDoS.
 * **Před útoky DDoS rychlou odezvou** zákazníci s edicí Standard před útoky DDoS Protection teď mají přístup k týmu Rapid Response během aktivního útoku. Obsluhy DRR může pomoct s vyšetřování útoku, vlastní zmírnění rizik během útoku a analýzy po útoku.
 
@@ -401,4 +401,4 @@ Protokolování na úrovni sítě je klíčová funkce pro jakýkoli scénář z
 Můžete také použít [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), nástroj pro výkonné datové vizualizace, můžete zobrazit a analyzovat tyto protokoly.
 Další informace:
 
-* [Log Analytics pro skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-network-nsg-manage-log.md)
+* [Protokoly Azure monitoru pro skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-network-nsg-manage-log.md)

@@ -5,18 +5,20 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 2/25/2019
+ms.date: 3/1/2019
 ms.author: victorh
-ms.openlocfilehash: f1e92c8581f8528b3622ad88f086d3f66619b996
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7f5f377f34a43dfb01ea516e023bb98f118d0dd4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823467"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247218"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Použití Azure DNS pro privátní domény
 
 Domain Name System nebo DNS, je zodpovědný za převod (nebo řešení) název služby na jeho IP adresu. Hostitelská služba určená pro domény DNS, poskytuje Azure DNS překlad názvů s využitím infrastruktury Microsoft Azure. Kromě podpory domén DNS směřujících k Internetu, Azure DNS teď podporuje také privátní DNS domény jako funkci ve verzi preview.
+
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 Azure DNS poskytuje spolehlivou a zabezpečenou službu DNS pro správu a řešení názvů domén ve virtuální síti, aniž byste museli přidat vlastního řešení DNS. S využitím privátních zón DNS, můžete použít vlastní názvy vlastních domén, místo ještě dnes dostupných názvů poskytovaných Azure. Pomocí vlastních názvů domén vám umožní přizpůsobit Architektura virtuální sítě podle potřeb vaší organizace. Nabízí řešení názvů pro virtuální počítače (VM) v rámci virtuální sítě a mezi virtuálními sítěmi. Navíc můžete konfigurovat názvy zón s rozděleným zobrazením, což umožňuje, aby privátní a veřejné zóny DNS název sdílené složky.
 
@@ -26,7 +28,8 @@ Pokud chcete zadat registrační virtuální síť, záznamy DNS pro virtuální
 
 ![Přehled systému DNS](./media/private-dns-overview/scenario.png)
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+> [!NOTE]
+> As a best practice, do not use a .local domain for your private DNS zone. Všechny operační systémy podporují.
 
 ## <a name="benefits"></a>Výhody
 

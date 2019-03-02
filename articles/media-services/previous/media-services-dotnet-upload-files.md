@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: a07c4f285b2bb2d74b580648a3aad6a550766828
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d980c45822ea0ca189c3f6f9bb95ead628089dd3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984218"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247252"
 ---
-# <a name="upload-files-into-a-media-services-account-using-net-legacy"></a>Nahrání souborů do účtu Media Services pomocí rozhraní .NET (starší verze)
+# <a name="upload-files-into-a-media-services-account-using-net"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní .NET 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: e845adc3aad21e62009ee9b99dbd65bcff794bd9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 497fc1dd5691b5aa33207c6a3943a51c473d2f6c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117795"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247201"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -153,7 +153,7 @@ Monitorování je shromažďování a analýza dat s cílem určit výkon, stav 
 
 Použití [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) monitorovat dostupnost, výkon a využití vaší aplikace, jestli je hostovaný v cloudu nebo místně. S využitím Application Insights, můžete rychle identifikovat a diagnostikovat chyby ve vaší aplikaci bez čekání na jejich nahlášení uživatelem. Na základě shromažďovaných informací můžete informovaně rozhodovat o údržbě a vylepšení vaší aplikace.
 
-Application Insights obsahuje řadu nástrojů pro interakci se shromažďovanými daty. Application Insights ukládá svoje data do běžného úložiště. Může využívat sdílené funkce, například upozornění, řídicí panely a hloubkovou analýzu pomocí dotazovacího jazyka Log Analytics.
+Application Insights obsahuje řadu nástrojů pro interakci se shromažďovanými daty. Application Insights ukládá svoje data do běžného úložiště. To můžete využít výhod sdílenou funkci, jako je například výstrahy, řídicí panely a hloubková analýza s využitím jazyka dotaz Kusto.
 
 
 

@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 02/12/2019
-ms.openlocfilehash: 61c4edc5ec9c690944047ce67f619f0f69f62f6c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: 033b853537ade927e4bb7e47c92efe1acff226d9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236732"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247388"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Pomocí služby Machine Learning (s jazykem R) ve službě Azure SQL Database (preview)
 
@@ -29,8 +29,12 @@ Služby Machine Learning zahrnuje základní distribuci R překrývající se ba
 
 Pokud nemáte předplatné Azure, [vytvořit účet](https://azure.microsoft.com/free/) předtím, než začnete.
 
-> [!NOTE]
-> Machine Learning Services (s jazykem R) ve službě Azure SQL Database je aktuálně ve verzi public preview. [Zaregistrujte si verzi preview](sql-database-machine-learning-services-overview.md#signup).
+> [!IMPORTANT]
+> Služby Machine Learning Azure SQL Database je aktuálně ve verzi public preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> [Zaregistrujte si verzi preview](sql-database-machine-learning-services-overview.md#signup).
 
 ## <a name="prerequisites"></a>Požadavky
 

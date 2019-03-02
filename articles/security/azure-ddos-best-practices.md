@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 9f837a5dbea15b159a226b12c034add1dcf69834
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117846"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247337"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Osvědčené postupy a referenční architektury
 
@@ -126,7 +126,7 @@ Služba Azure DDoS Protection na úrovni Basic pomáhá zákazníkům chránit a
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>Služba DDoS Protection telemetrických dat, monitorování a upozorňování
 
-DDoS Protection Standard poskytuje bohaté telemetrická data prostřednictvím [Azure Monitor](../azure-monitor/overview.md) po dobu trvání s útoky DDoS. Můžete nakonfigurovat výstrahy pro některé z metrik Azure monitoru, který používá ochranu před útoky DDoS. Protokolování lze integrovat s Splunk (služby Azure Event Hubs), Azure Log Analytics a Azure Storage pro pokročilé analýzy prostřednictvím rozhraní Azure Diagnostics monitorování.
+DDoS Protection Standard poskytuje bohaté telemetrická data prostřednictvím [Azure Monitor](../azure-monitor/overview.md) po dobu trvání s útoky DDoS. Můžete nakonfigurovat výstrahy pro některé z metrik Azure monitoru, který používá ochranu před útoky DDoS. Protokolování můžete integrovat se Splunk (služby Azure Event Hubs), protokoly Azure monitoru a Azure Storage pro pokročilé analýzy prostřednictvím rozhraní Azure Diagnostics monitorování.
 
 ##### <a name="ddos-mitigation-policies"></a>Zásady omezení rizik před útoky DDoS
 

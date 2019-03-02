@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 924ed7c2a253ab74a4807559d190218d3125b92c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8627f5bb704c963b628fb3dab29b6d2cfee0789b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978591"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247320"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -374,9 +374,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 Můžete najít hodnotu extensionName v `$vmss`.
 
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Je k dispozici virtuálního počítače škálovací sady příkladu šablony, která spolupracuje se službou Log Analytics?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Je k dispozici příkladu šablony, která se integruje s protokoly Azure monitoru sady škálovací sadu virtuálních počítačů?
 
-Pro škálovací sadu virtuálních počítačů nastavte příkladu šablony, která spolupracuje se službou Log Analytics, najdete ve druhém příkladu v [nasazení clusteru Azure Service Fabric a povolte monitorování pomocí Log Analytics](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
+Pro škálovací sadu virtuálních počítačů nastavte příkladu šablony, která se integruje s protokoly Azure monitoru, najdete ve druhém příkladu v [nasazení clusteru Azure Service Fabric a povolte monitorování pomocí protokolů Azure Monitor](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
 
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Zdá se, že rozšíření spustit souběžně na škálovací sady virtuálních počítačů. To způsobí, že Moje rozšíření vlastních skriptů k selhání. Co můžete dělat na tento problém vyřešit?
 
@@ -658,7 +658,7 @@ Ano, můžete použít operace obnovení z Image resetovat beze změny image vir
 
 Další informace najdete v tématu [spravovat všechny virtuální počítače ve škálovací sadě virtuálních počítačů](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set).
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>Je možné integrovat škálovací sady pomocí Azure Log Analytics?
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Je možné integrovat škálovací sady pomocí Azure monitoru protokolů?
 
 Ano, můžete po instalaci rozšíření Log Analytics na stupnici nastavit virtuální počítače. Tady je příklad rozhraní příkazového řádku Azure:
 ```
@@ -666,7 +666,10 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 ```
 Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostoru Log Analytics z portálu Azure portal. Na stránce Přehled klikněte na dlaždici nastavení. Klikněte na kartu připojené zdroje v horní části.
 
-Poznámka: Pokud ve škálovací sadě _upgradePolicy_ nastavený na ruční, budete muset použijte rozšíření pro všechny virtuální počítače v sadě voláním upgrade na ně. V rozhraní příkazového řádku by to byl _az vmss update-instances_.
+> [!NOTE]
+> Pokud ve škálovací sadě _upgradePolicy_ nastavený na ruční, budete muset použijte rozšíření pro všechny virtuální počítače v sadě voláním upgrade na ně. V rozhraní příkazového řádku by to byl _az vmss update-instances_.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

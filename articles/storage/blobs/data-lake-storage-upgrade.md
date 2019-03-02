@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d07e11d005ac05c9bf048a48c5865885813707cb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d6644cf923d439a9f6ef13b53a84ff6626f04ade
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874541"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247456"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgradovat řešení analýzy velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2
 
@@ -45,7 +45,7 @@ Navíc existují komponenty vyskytující k zřizování, správě a monitorová
 
 **Obrázek 2** ukazuje příklad, jak tyto součásti bude možné implementovat pomocí konkrétní technologie.
 
-Funkce ukládání v **obrázek 1** poskytuje Data Lake Storage Gen1 (**obrázek 2**). Všimněte si, jak různé součásti v toku dat interakci s Data Lake Storage Gen1 s využitím Java SDK nebo rozhraní REST API. Všimněte si také, jak komponenty funkce společné interagují s Data Lake Storage Gen1. Součástí zřizování používá šablony Azure Resource, zatímco využívá provozních dat, který přichází z Data Lake Storage Gen1 monitorovací komponenta, která používá Log Analytics.
+Funkce ukládání v **obrázek 1** poskytuje Data Lake Storage Gen1 (**obrázek 2**). Všimněte si, jak různé součásti v toku dat interakci s Data Lake Storage Gen1 s využitím Java SDK nebo rozhraní REST API. Všimněte si také, jak komponenty funkce společné interagují s Data Lake Storage Gen1. Součástí zřizování používá šablony Azure Resource, zatímco využívá provozních dat, který přichází z Data Lake Storage Gen1 monitorovací komponenta, která používá protokoly Azure monitoru.
 
 Upgradovat řešení pomocí Data Lake Storage Gen1 na Gen2 úložiště Data Lake, bude nutné zkopírovat data a metadata, opětovné připojení toků dat, a potom všechny součásti bude muset být moct pracovat s Data Lake Storage Gen2.
 

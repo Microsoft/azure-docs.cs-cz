@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: f615c4ca9ffc56daafcedd711f27672e0855e4fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 22160a46b0c1d8fe53abe20b3d8a1b83891de5da
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883943"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247575"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -398,19 +398,19 @@ Kromě toho, kontrolní seznam:
 
 Provozní zabezpečení Azure je postavená na systém, který zahrnuje poznatky získané při různé schopnosti, které jsou jedinečné pro Microsoftu, mezi které patří Microsoft Security Development Lifecycle (SDL), programu Microsoft Security odpovědi střediska a hloubkové povědomí o zabezpečení.
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je řešení pro správu IT pro hybridní cloud. Používat samostatně nebo rozšířit existující nasazení nástroje System Center Log Analytics poskytuje maximální flexibilitu a kontrolu pro cloudovou správu infrastruktury.
+[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je řešení pro správu IT pro hybridní cloud. Používat samostatně nebo pro rozšíření stávajícího nasazení nástroje System Center, protokoly Azure monitoru poskytuje maximální flexibilitu a řízení pro správu cloudové infrastruktury.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-Pomocí služby Log Analytics můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, Log Analytics nabízí nový přístup ke správě vaší organizace, která je cenově nejvýhodnější, nejrychlejší způsob, jak nové obchodní výzvy a zvládnutí nových úloh, aplikací a cloudových prostředí.
+Díky nástroji Azure Monitor můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, Azure Monitor nabízí nový přístup ke správě vaší organizace, která je cenově nejvýhodnější, nejrychlejší způsob, jak nové obchodní výzvy a zvládnutí nových úloh, aplikací a cloudových prostředí.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
+[Protokoly Azure monitoru](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Protokoly Azure monitoru](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 Tato metoda umožňuje konsolidovat data z nejrůznějších zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje získávání dat od akcí provedených na těchto datech, takže všechny akce jsou dostupné pro všechny druhy dat.
 

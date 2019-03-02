@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/01/2019
+ms.openlocfilehash: 3e31842cf4b6afa2117ea71c644b0376e8434bd0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003665"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247303"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: Chyby připojení databáze a další problémy
 
@@ -58,7 +58,7 @@ Tyto chyby jsou přechodné a je třeba opakovat v aplikaci logiky:
 | 4060 |16 |Databázi nelze otevřít "%.&#x2a;ls" požadovaný v přihlášení. Přihlášení se nezdařilo. |
 | 40197 |17 |Služby došlo k chybě při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby: %d.<br/><br/>Tato chyba se zobrazí, až bude služba mimo provoz kvůli softwaru nebo upgradem hardwaru, selhání hardwaru nebo jiné problémy převzetí služeb při selhání. Kód chyby: (%d) vloženým do zprávu o chybě 40197 poskytuje další informace o typu selhání nebo převzetí služeb při selhání došlo k chybě. Některé příklady, které kódy jsou vložené v rámci zprávu o chybě 40197 chyby jsou 40020, 40143, 40166 a 40540.<br/><br/>Opětovné připojení k vašemu serveru služby SQL Database automaticky vás připojí k kopii databáze v dobrém stavu. Vaše aplikace musí zachytit 40197, protokol chyb kód vložený chyby (%d) v rámci zpráva pro řešení potíží a opakovat pokus o připojení ke službě SQL Database, dokud jsou prostředky k dispozici a je připojení znovu navázáno. |
 | 40501 |20 |Služba je aktuálně zaneprázdněna. Zkuste požadavek zopakovat za 10 sekund. ID incidentu: %ls. Kód: %d.<br/><br/>Další informace naleznete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 40613 |17 |Databáze '%.&#x2a;ls' na serveru '%.&#x2a;ls' není aktuálně k dispozici. Opakujte pokus o připojení později. Pokud potíže potrvají, obraťte se na zákaznickou podporu a poskytněte ID trasování relace '%.&#x2a;ls'. |
+| 40613 |17 |Databáze '%.&#x2a;ls' na serveru '%.&#x2a;ls' není aktuálně k dispozici. Opakujte pokus o připojení později. Pokud potíže potrvají, obraťte se na zákaznickou podporu a poskytněte ID trasování relace '%.&#x2a;ls'.<br/><br/> K této chybě může dojít, pokud je již existující vyhrazené připojení správce (DAC) vytvořit databázi. |
 | 49918 |16 |Požadavek nelze zpracovat. Není dostatek prostředků ke zpracování požadavku.<br/><br/>Služba je aktuálně zaneprázdněna. Zkuste prosím požadavek později. |
 | 49919 |16 |Proces nejde vytvořit nebo aktualizovat požadavku. Příliš mnoho operací vytvoření nebo aktualizace v průběhu pro předplatné "% ld".<br/><br/>Služba je zaneprázdněna zpracování více vytvořit nebo aktualizovat požadavky pro vaše předplatné nebo serveru. Požadavky jsou aktuálně zablokovány pro optimalizaci prostředků. Dotaz [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) pro čekající operace. Počkejte, dokud čekající vytváření nebo aktualizace žádosti o dokončení nebo odstraňte jednu z probíhajících žádostí a zkuste odeslat žádost později. |
 | 49920 |16 |Požadavek nelze zpracovat. Příliš mnoho operací v průběhu pro předplatné "% ld".<br/><br/>Tato služba je zaneprázdněná zpracováním více požadavků pro toto předplatné. Požadavky jsou aktuálně zablokovány pro optimalizaci prostředků. Dotaz [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) na provozní stav. Počkejte, dokud se čekající žádosti se dokončí nebo odstraňte jednu z probíhajících žádostí a zkuste odeslat žádost později. |

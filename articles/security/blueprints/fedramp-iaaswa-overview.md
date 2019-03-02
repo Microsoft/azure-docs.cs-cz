@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6dd413a6b6550e18551db1105d306f8a0bdaf9c2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: daa81f4ec14a0e022ea22948324478b8e9cc3ce3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106745"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247354"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů: IaaS webové aplikace pro FedRAMP
 
@@ -72,8 +72,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 - Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure Resource Manager
-- Log Analytics
-- Azure Monitor
+- Azure Monitor (logs)
 
 ## <a name="deployment-architecture"></a>Architektura nasazení
 
@@ -148,11 +147,11 @@ Tyto technologie nabízejí identity možnosti správy v prostředí Azure:
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
-Log Analytics poskytuje rozsáhlou protokolování systémových a uživatelských aktivit a také stav systému. [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) řešení shromažďuje a analyzuje data vygenerovaná prostředky v Azure a místním prostředí.
+Protokoly služby Azure Monitor poskytuje podrobné protokolování systémových a uživatelských aktivit a také stav systému. [Protokoly Azure monitoru](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) řešení shromažďuje a analyzuje data vygenerovaná prostředky v Azure a místním prostředí.
 
 - **Protokoly aktivit:**  [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operace prováděné s prostředky v rámci předplatného. Protokoly aktivit, vám pomůže určit operace iniciátoru čas výskytu a stav.
 - **Diagnostické protokoly:**  [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly, protože ho vygeneroval každý prostředek. Tyto protokoly patří protokoly událostí systému Windows, protokoly služby Azure storage, protokoly auditu služby Key Vault a protokolů Application Gateway přístup a brány firewall.
-- **Archivace protokolu:**  Všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci. Uchovávání je uživatelem konfigurovatelné, až do 730 dnů pro splnění požadavků na uchovávání specifické pro organizaci. Tyto protokoly se připojit ke službě Azure Log Analytics pro zpracování, ukládání a vytváření sestav na řídicím.
+- **Archivace protokolu:**  Všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci. Uchovávání je uživatelem konfigurovatelné, až do 730 dnů pro splnění požadavků na uchovávání specifické pro organizaci. Tyto protokoly se připojit k protokoly Azure monitoru pro zpracování, ukládání a sestavy řídicího panelu.
 
 Kromě toho jsou nainstalovány následující řešení monitorování v rámci této architektury. Všimněte si, že se jedná o odpovědnosti zákazníka ke konfiguraci těchto řešení, aby bylo v souladu s ovládacími prvky zabezpečení FedRAMP:
 -   [Posouzení AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Kontrola stavu služby Active Directory řešení posuzuje rizika a stav prostředí serveru v pravidelných intervalech a poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.

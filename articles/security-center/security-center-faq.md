@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 5fd885acc4294ae9f370d3becd0ad8cfb7935193
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 312e6c3c102946bcd19247f0730369dc7d0c8aba
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992358"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247422"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -54,8 +54,8 @@ Zobrazit [oprávnění ve službě Azure Security Center](security-center-permis
 ## <a name="data-collection-agents-and-workspaces"></a>Shromažďování dat, agentů a pracovní prostory
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru.
 
-### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Fakturují ke službě Log Analytics na pracovních prostorů vytvořených službou Security Center?
-Ne. Pracovních prostorů vytvořených službou Security Center, i když nakonfigurovat pro Log Analytics podle počtu uzlů, fakturace, ne poplatky Log Analytics. Fakturace centra zabezpečení je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru:
+### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Fakturují pro protokoly Azure monitoru pracovních prostorů vytvořených službou Security Center?
+Ne. Pracovních prostorů vytvořených službou Security Center, i když nakonfigurovat pro protokoly Azure monitoru fakturace uzlu, nejsou spojené poplatky za protokoly Azure monitoru. Fakturace centra zabezpečení je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru:
 
 - **Úroveň Free** – Security Center umožňuje řešení 'SecurityCenterFree' ve výchozím pracovním prostoru. Za na úrovni Free se nic neúčtuje.
 - **Úroveň standard** – Security Center umožňuje řešení "Zabezpečení" na výchozího pracovního prostoru.
@@ -63,9 +63,11 @@ Ne. Pracovních prostorů vytvořených službou Security Center, i když nakonf
 Další informace o cenách najdete v tématu [ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/). Stránce s cenami řeší změny úložiště dat zabezpečení a poměrné fakturace počínaje červnem 2017.
 
 > [!NOTE]
-> Cenová úroveň pracovních prostorů vytvořených službou Security Center Log Analytics nemá vliv na fakturaci Security Center.
+> Cenová úroveň pracovních prostorů vytvořených službou Security Center log analytics nemá vliv na fakturaci Security Center.
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ### <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-microsoft-monitoring-agent-installation"></a>Co splňuje podmínky virtuální počítač pro automatické zřizování instalace agenta Microsoft Monitoring Agent?
 Windows nebo virtuální počítače IaaS s Linuxem kvalifikovat, pokud:
@@ -217,7 +219,7 @@ Agent používá nominální množství systémových prostředků a mělo mít 
 ### <a name="where-is-my-data-stored"></a>Kde jsou moje data uložená?
 Data shromážděná z tohoto agenta se ukládají do existujícího pracovního prostoru Log Analytics přidružených k vašemu předplatnému nebo vytvořte nový. Další informace najdete v tématu [zabezpečení dat](security-center-data-security.md).
 
-## Stávající zákazníci Log Analytics<a name="existingloganalyticscust"></a>
+## Existující Azure Monitor protokoly zákazníků<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Security Center přepsat existující připojení mezi virtuálními počítači a pracovním prostorům?
 Pokud je virtuální počítač už Microsoft Monitoring Agent nainstalován jako rozšíření Azure, Security Center nemůže přepsat existující připojení pracovního prostoru. Security Center místo toho využívá existující pracovní prostor.
